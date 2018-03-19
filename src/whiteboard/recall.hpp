@@ -27,7 +27,7 @@ namespace wb
 class recall: public action
 {
 public:
-	recall(size_t team_index, bool hidden, const unit& unit, const map_location& recall_hex);
+	recall(std::size_t team_index, bool hidden, const unit& unit, const map_location& recall_hex);
 	recall(const config&, bool hidden); // For deserialization
 	virtual ~recall();
 

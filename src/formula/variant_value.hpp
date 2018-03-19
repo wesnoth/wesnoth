@@ -90,7 +90,7 @@ class variant_value_base
 {
 public:
 	/** Returns the number of elements in a type. Not relevant for every derivative. */
-	virtual size_t num_elements() const
+	virtual std::size_t num_elements() const
 	{
 		return 0;
 	}
@@ -321,7 +321,7 @@ public:
 		return callable_ != nullptr;
 	}
 
-	virtual size_t num_elements() const override
+	virtual std::size_t num_elements() const override
 	{
 		return 1;
 	}
@@ -442,7 +442,7 @@ public:
 		return container_.empty();
 	}
 
-	virtual size_t num_elements() const override
+	virtual std::size_t num_elements() const override
 	{
 		return container_.size();
 	}

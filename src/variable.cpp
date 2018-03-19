@@ -217,9 +217,9 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 	return res;
 }
 
-size_t vconfig::count_children(const std::string& key) const
+std::size_t vconfig::count_children(const std::string& key) const
 {
-	size_t n = 0;
+	std::size_t n = 0;
 
 	for (const config::any_child &child : cfg_->all_children_range())
 	{

@@ -39,7 +39,7 @@ public:
 	virtual ~hash_base() {}
 };
 
-template<size_t sz, typename T = uint8_t>
+template<std::size_t sz, typename T = uint8_t>
 class hash_digest : public hash_base
 {
 protected:

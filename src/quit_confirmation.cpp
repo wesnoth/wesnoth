@@ -63,7 +63,7 @@ bool quit_confirmation::show_prompt(const std::string& message)
 bool quit_confirmation::default_prompt()
 {
 	playmp_controller* pmc = dynamic_cast<playmp_controller*>(resources::controller);
-	size_t humans_notme_cnt = 0;
+	std::size_t humans_notme_cnt = 0;
 
 	if(pmc != nullptr) {
 		for(const auto& t : pmc->get_teams_const()) {

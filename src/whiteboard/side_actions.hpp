@@ -61,7 +61,7 @@ public:
 				boost::multi_index::tag< chronological >>,
 			boost::multi_index::hashed_non_unique<
 				boost::multi_index::tag< by_unit >,
-				boost::multi_index::const_mem_fun< action, size_t, &action::get_unit_id >>,
+				boost::multi_index::const_mem_fun< action, std::size_t, &action::get_unit_id >>,
 			boost::multi_index::hashed_non_unique<
 				boost::multi_index::tag< by_hex >,
 				boost::multi_index::const_mem_fun< action, map_location, &action::get_numbering_hex >>
@@ -100,13 +100,13 @@ public:
 	 * @return The queued action's position
 	 * @retval end() when the action can't be inserted
 	 */
-	iterator queue(size_t turn_num, action_ptr action);
+	iterator queue(std::size_t turn_num, action_ptr action);
 
 	/**
 	 * Pushes an action in front of a given turn.
 	 * @return The inserted action's position
 	 */
-	iterator push_front(size_t turn, action_ptr action);
+	iterator push_front(std::size_t turn, action_ptr action);
 
 	/**
 	 * Moves an action earlier in the execution order.
@@ -199,7 +199,7 @@ public:
 	/**
 	 * Returns the number of actions in the action queue.
 	 */
-	size_t size() const { return actions_.size(); }
+	std::size_t size() const { return actions_.size(); }
 
 	/**
 	 * Returns the number of turns that have plans.
@@ -208,7 +208,7 @@ public:
 	 *
 	 * @note The current turn is counted. That is if num_turns()==0 then empty()==true.
 	 */
-	size_t num_turns() const { return turn_beginnings_.size(); }
+	std::size_t num_turns() const { return turn_beginnings_.size(); }
 
 	/**
 	 * Returns the turn of a given iterator planned execution.
@@ -217,39 +217,39 @@ public:
 	 *
 	 * @retval 0 If the action is planned for the current turn.
 	 */
-	size_t get_turn(const_iterator it) const;
+	std::size_t get_turn(const_iterator it) const;
 
 	/**
 	 * Returns the position of a given iterator in its turn.
 	 */
-	size_t position_in_turn(const_iterator it) const;
+	std::size_t position_in_turn(const_iterator it) const;
 
 	/**
 	 * Returns the iterator for the first (executed earlier) action of a given turn within the actions queue.
 	 */
-	iterator turn_begin(size_t turn_num);
-	const_iterator turn_begin(size_t turn_num) const;
-	reverse_iterator turn_rbegin(size_t turn_num){ return reverse_iterator(turn_end(turn_num)); }
-	const_reverse_iterator turn_rbegin(size_t turn_num) const { return reverse_iterator(turn_end(turn_num)); }
+	iterator turn_begin(std::size_t turn_num);
+	const_iterator turn_begin(std::size_t turn_num) const;
+	reverse_iterator turn_rbegin(std::size_t turn_num){ return reverse_iterator(turn_end(turn_num)); }
+	const_reverse_iterator turn_rbegin(std::size_t turn_num) const { return reverse_iterator(turn_end(turn_num)); }
 
 	/*
 	 * Returns the iterator for the position *after* the last executed action of a given turn within the actions queue.
 	 */
-	iterator turn_end(size_t turn_num){ return turn_begin(turn_num+1); }
-	const_iterator turn_end(size_t turn_num) const { return turn_begin(turn_num+1); }
-	reverse_iterator turn_rend(size_t turn_num){ return reverse_iterator(turn_begin(turn_num)); }
-	const_reverse_iterator turn_rend(size_t turn_num) const { return reverse_iterator(turn_begin(turn_num)); }
+	iterator turn_end(std::size_t turn_num){ return turn_begin(turn_num+1); }
+	const_iterator turn_end(std::size_t turn_num) const { return turn_begin(turn_num+1); }
+	reverse_iterator turn_rend(std::size_t turn_num){ return reverse_iterator(turn_begin(turn_num)); }
+	const_reverse_iterator turn_rend(std::size_t turn_num) const { return reverse_iterator(turn_begin(turn_num)); }
 
 	/**
 	 * Returns an iterator range corresponding to the requested turn.
 	 */
-	range_t iter_turn(size_t turn_num){ return range_t(turn_begin(turn_num),turn_end(turn_num)); }
-	rrange_t riter_turn(size_t turn_num){ return rrange_t(turn_rbegin(turn_num),turn_rend(turn_num)); }
-	crange_t iter_turn(size_t turn_num) const { return crange_t(turn_begin(turn_num),turn_end(turn_num)); }
-	crrange_t riter_turn(size_t turn_num) const { return crrange_t(turn_rbegin(turn_num),turn_rend(turn_num)); }
+	range_t iter_turn(std::size_t turn_num){ return range_t(turn_begin(turn_num),turn_end(turn_num)); }
+	rrange_t riter_turn(std::size_t turn_num){ return rrange_t(turn_rbegin(turn_num),turn_rend(turn_num)); }
+	crange_t iter_turn(std::size_t turn_num) const { return crange_t(turn_begin(turn_num),turn_end(turn_num)); }
+	crrange_t riter_turn(std::size_t turn_num) const { return crrange_t(turn_rbegin(turn_num),turn_rend(turn_num)); }
 
 	/** Returns the number of actions planned for turn turn_num */
-	size_t turn_size(size_t turn_num) const { return turn_end(turn_num) - turn_begin(turn_num); }
+	std::size_t turn_size(std::size_t turn_num) const { return turn_end(turn_num) - turn_begin(turn_num); }
 
 	/** Get the underlying action container */
 	const action_set& actions() const { return actions_; }
@@ -259,7 +259,7 @@ private:
 	/**
 	 * Binary search to find the occurring turn of the action pointed by an iterator.
 	 */
-	size_t get_turn_impl(size_t begin, size_t end, const_iterator it) const;
+	std::size_t get_turn_impl(std::size_t begin, std::size_t end, const_iterator it) const;
 
 	action_set actions_;
 
@@ -296,10 +296,10 @@ public:
 	side_actions();
 
 	/** Must be called only once, right after the team that owns this side_actions is added to the teams vector */
-	void set_team_index(size_t team_index);
+	void set_team_index(std::size_t team_index);
 
 	/** Returns the team index this action queue belongs to */
-	size_t team_index() { assert(team_index_defined_); return team_index_; }
+	std::size_t team_index() { assert(team_index_defined_); return team_index_; }
 
 	struct numbers_t;
 	/** Gets called when display is drawing a hex to determine which numbers to draw on it */
@@ -327,7 +327,7 @@ public:
 	/**
 	 * Returns the number of actions in the action queue.
 	 */
-	size_t size() const { return actions_.size(); }
+	std::size_t size() const { return actions_.size(); }
 
 	/**
 	 * Returns the number of turns that have plans.
@@ -336,10 +336,10 @@ public:
 	 *
 	 * @note The current turn is counted. That is if num_turns()==0 then empty()==true.
 	 */
-	size_t num_turns() const { return actions_.num_turns(); }
+	std::size_t num_turns() const { return actions_.num_turns(); }
 
 	/** Returns the number of actions planned for turn turn_num */
-	size_t turn_size(size_t turn_num) const { return actions_.turn_size(turn_num); }
+	std::size_t turn_size(std::size_t turn_num) const { return actions_.turn_size(turn_num); }
 
 	/**
 	 * Returns the turn of a given iterator planned execution.
@@ -348,7 +348,7 @@ public:
 	 *
 	 * @retval 0 If the action is planned for the current turn.
 	 */
-	size_t get_turn(const_iterator it) const { return actions_.get_turn(it); }
+	std::size_t get_turn(const_iterator it) const { return actions_.get_turn(it); }
 
 	/**
 	 * Empties the action queue.
@@ -370,7 +370,7 @@ public:
 	 * Queues an action to be executed last
 	 * @return The queued action's position
 	 */
-	iterator queue_action(size_t turn_num, action_ptr action);
+	iterator queue_action(std::size_t turn_num, action_ptr action);
 
 	/**
 	 * Moves an action earlier in the execution order.
@@ -418,20 +418,20 @@ public:
 	const_iterator end() const { return actions_.end(); }
 	const_reverse_iterator rend() const { return actions_.rend(); }
 
-	iterator turn_begin(size_t turn_num){ return actions_.turn_begin(turn_num); }
-	iterator turn_end(size_t turn_num){ return actions_.turn_end(turn_num); }
-	reverse_iterator turn_rbegin(size_t turn_num){ return actions_.turn_rbegin(turn_num); }
-	reverse_iterator turn_rend(size_t turn_num){ return actions_.turn_rend(turn_num); }
-	const_iterator turn_begin(size_t turn_num) const { return actions_.turn_begin(turn_num); }
-	const_iterator turn_end(size_t turn_num) const { return actions_.turn_end(turn_num); }
-	const_reverse_iterator turn_rbegin(size_t turn_num) const { return actions_.turn_rbegin(turn_num); }
-	const_reverse_iterator turn_rend(size_t turn_num) const { return actions_.turn_rend(turn_num); }
+	iterator turn_begin(std::size_t turn_num){ return actions_.turn_begin(turn_num); }
+	iterator turn_end(std::size_t turn_num){ return actions_.turn_end(turn_num); }
+	reverse_iterator turn_rbegin(std::size_t turn_num){ return actions_.turn_rbegin(turn_num); }
+	reverse_iterator turn_rend(std::size_t turn_num){ return actions_.turn_rend(turn_num); }
+	const_iterator turn_begin(std::size_t turn_num) const { return actions_.turn_begin(turn_num); }
+	const_iterator turn_end(std::size_t turn_num) const { return actions_.turn_end(turn_num); }
+	const_reverse_iterator turn_rbegin(std::size_t turn_num) const { return actions_.turn_rbegin(turn_num); }
+	const_reverse_iterator turn_rend(std::size_t turn_num) const { return actions_.turn_rend(turn_num); }
 
 	/** Returns an iterator range corresponding to the requested turn. */
-	range_t iter_turn(size_t turn_num){ return actions_.iter_turn(turn_num); }
-	rrange_t riter_turn(size_t turn_num){ return actions_.riter_turn(turn_num); }
-	crange_t iter_turn(size_t turn_num) const { return actions_.iter_turn(turn_num); }
-	crrange_t riter_turn(size_t turn_num) const { return actions_.riter_turn(turn_num); }
+	range_t iter_turn(std::size_t turn_num){ return actions_.iter_turn(turn_num); }
+	rrange_t riter_turn(std::size_t turn_num){ return actions_.riter_turn(turn_num); }
+	crange_t iter_turn(std::size_t turn_num) const { return actions_.iter_turn(turn_num); }
+	crrange_t riter_turn(std::size_t turn_num) const { return actions_.riter_turn(turn_num); }
 
 
 	/**
@@ -481,7 +481,7 @@ public:
 	const_iterator find_last_action_of(const unit& unit) const;
 
 	bool unit_has_actions(const unit& unit);
-	size_t count_actions_of(const unit& unit);
+	std::size_t count_actions_of(const unit& unit);
 	std::deque<action_ptr> actions_of(const unit& unit);
 
 	/**
@@ -491,7 +491,7 @@ public:
 	 *
 	 * @retval 0 if the unit doesn't have any planned action
 	 */
-	size_t get_turn_num_of(const unit&) const;
+	std::size_t get_turn_num_of(const unit&) const;
 
 	/** Used to track gold spending by recruits/recalls when building the future unit map */
 	int get_gold_spent() const { return gold_spent_; }
@@ -507,33 +507,33 @@ public:
 	 * Queues a move to be executed last
 	 * @return The queued move's position
 	 */
-	iterator queue_move(size_t turn_num, unit& mover, const pathfind::marked_route& route,
+	iterator queue_move(std::size_t turn_num, unit& mover, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 
 	/**
 	 * Queues an attack or attack-move to be executed last
 	 * @return The queued attack's position
 	 */
-	iterator queue_attack(size_t turn_num, unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
+	iterator queue_attack(std::size_t turn_num, unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 
 	/**
 	 * Queues a recruit to be executed last
 	 * @return The queued recruit's position
 	 */
-	iterator queue_recruit(size_t turn_num, const std::string& unit_name, const map_location& recruit_hex);
+	iterator queue_recruit(std::size_t turn_num, const std::string& unit_name, const map_location& recruit_hex);
 
 	/**
 	 * Queues a recall to be executed last
 	 * @return The queued recall's position
 	 */
-	iterator queue_recall(size_t turn_num, const unit& unit, const map_location& recall_hex);
+	iterator queue_recall(std::size_t turn_num, const unit& unit, const map_location& recall_hex);
 
 	/**
 	 * Queues a suppose_dead to be executed last
 	 * @return The queued suppose_dead's position (an iterator to it)
 	 */
-	iterator queue_suppose_dead(size_t turn_num, unit& curr_unit, const map_location& loc);
+	iterator queue_suppose_dead(std::size_t turn_num, unit& curr_unit, const map_location& loc);
 
 	/**
 	 * Network code. A net_cmd object (a config in disguise) represents a modification
@@ -543,7 +543,7 @@ public:
 	 */
 	typedef config net_cmd;
 	void execute_net_cmd(const net_cmd&);
-	net_cmd make_net_cmd_insert(size_t turn_num, size_t pos, action_const_ptr) const;
+	net_cmd make_net_cmd_insert(std::size_t turn_num, std::size_t pos, action_const_ptr) const;
 	net_cmd make_net_cmd_insert(const const_iterator& pos, action_const_ptr) const;
 	net_cmd make_net_cmd_replace(const const_iterator& pos, action_const_ptr) const;
 	net_cmd make_net_cmd_remove(const const_iterator& pos) const;
@@ -552,15 +552,15 @@ public:
 	net_cmd make_net_cmd_refresh() const;
 
 private:
-	iterator safe_insert(size_t turn_num, size_t pos, action_ptr to_insert);
+	iterator safe_insert(std::size_t turn_num, std::size_t pos, action_ptr to_insert);
 	iterator synced_erase(iterator itor);
 	iterator synced_insert(iterator itor, action_ptr to_insert);
-	iterator synced_enqueue(size_t turn_num, action_ptr to_insert);
+	iterator synced_enqueue(std::size_t turn_num, action_ptr to_insert);
 	iterator safe_erase(const iterator& itor);
 
 	container actions_;
 
-	size_t team_index_;
+	std::size_t team_index_;
 	bool team_index_defined_;
 
 	/** Used to store gold "spent" in planned recruits/recalls when the future unit map is applied */
@@ -575,9 +575,9 @@ std::ostream& operator<<(std::ostream &out, const wb::side_actions& side_actions
 struct side_actions::numbers_t
 {
 	std::vector<int> numbers_to_draw;
-	std::vector<size_t> team_numbers;
+	std::vector<std::size_t> team_numbers;
 	int main_number;
-	std::set<size_t> secondary_numbers;
+	std::set<std::size_t> secondary_numbers;
 
 	numbers_t()
 			: numbers_to_draw()

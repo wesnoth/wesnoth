@@ -81,7 +81,7 @@ undo_action::undo_action(const config& cfg)
 }
 
 namespace {
-	unit_ptr get_unit(size_t uid, const std::string& id) {
+	unit_ptr get_unit(std::size_t uid, const std::string& id) {
 		assert(resources::gameboard);
 		auto iter = resources::gameboard->units().find(uid);
 		if(!iter.valid() || iter->id() != id) {

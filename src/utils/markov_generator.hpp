@@ -22,8 +22,8 @@ typedef std::map<ucs4::string, ucs4::string> markov_prefix_map;
 
 class markov_generator : public name_generator {
 	markov_prefix_map prefixes_;
-	size_t chain_size_, max_len_;
+	std::size_t chain_size_, max_len_;
 public:
-	markov_generator(const std::vector<std::string>& items, size_t chain_size, size_t max_len);
+	markov_generator(const std::vector<std::string>& items, std::size_t chain_size, std::size_t max_len);
 	std::string generate() const override;
 };

@@ -251,12 +251,12 @@ default_map_generator_job::default_map_generator_job(uint32_t seed)
  * the center of the map will be inverted (i.e. be valleys).  'island_size' as
  * 0 indicates no island.
  */
-height_map default_map_generator_job::generate_height_map(size_t width, size_t height, size_t iterations, size_t hill_size, size_t island_size, size_t island_off_center)
+height_map default_map_generator_job::generate_height_map(std::size_t width, std::size_t height, std::size_t iterations, std::size_t hill_size, std::size_t island_size, std::size_t island_off_center)
 {
 	height_map res(width, std::vector<int>(height,0));
 
-	size_t center_x = width/2;
-	size_t center_y = height/2;
+	std::size_t center_x = width/2;
+	std::size_t center_y = height/2;
 
 	LOG_NG << "off-centering...\n";
 
@@ -285,7 +285,7 @@ height_map default_map_generator_job::generate_height_map(size_t width, size_t h
 		}
 	}
 
-	for(size_t i = 0; i != iterations; ++i) {
+	for(std::size_t i = 0; i != iterations; ++i) {
 
 		// (x1,y1) is the location of the hill,
 		// and 'radius' is the radius of the hill.
@@ -305,9 +305,9 @@ height_map default_map_generator_job::generate_height_map(size_t width, size_t h
 
 		// We have to check whether this is actually a valley
 		if(island_size != 0) {
-			const size_t diffx = std::abs(x1 - int(center_x));
-			const size_t diffy = std::abs(y1 - int(center_y));
-			const size_t dist = size_t(std::sqrt(double(diffx*diffx + diffy*diffy)));
+			const std::size_t diffx = std::abs(x1 - int(center_x));
+			const std::size_t diffy = std::abs(y1 - int(center_y));
+			const std::size_t dist = std::size_t(std::sqrt(double(diffx*diffx + diffy*diffy)));
 			is_valley = dist > island_size;
 		}
 
@@ -342,8 +342,8 @@ height_map default_map_generator_job::generate_height_map(size_t width, size_t h
 
 	// Find the highest and lowest points on the map for normalization:
 	int highest = 0, lowest = 100000, x;
-	for(x = 0; size_t(x) != res.size(); ++x) {
-		for(int y = 0; size_t(y) != res[x].size(); ++y) {
+	for(x = 0; std::size_t(x) != res.size(); ++x) {
+		for(int y = 0; std::size_t(y) != res[x].size(); ++y) {
 			if(res[x][y] > highest) {
 				highest = res[x][y];
 			}
@@ -356,8 +356,8 @@ height_map default_map_generator_job::generate_height_map(size_t width, size_t h
 
 	// Normalize the heights to the range 0-1000:
 	highest -= lowest;
-	for(x = 0; size_t(x) != res.size(); ++x) {
-		for(int y = 0; size_t(y) != res[x].size(); ++y) {
+	for(x = 0; std::size_t(x) != res.size(); ++x) {
+		for(int y = 0; std::size_t(y) != res[x].size(); ++y) {
 			res[x][y] -= lowest;
 			res[x][y] *= 1000;
 			if(highest != 0) {
@@ -494,7 +494,7 @@ std::vector<map_location> default_map_generator_job::generate_river(const height
  * Returns a random tile at one of the borders of a map that is of the given
  * dimensions.
  */
-map_location default_map_generator_job::random_point_at_side(size_t width, size_t height)
+map_location default_map_generator_job::random_point_at_side(std::size_t width, std::size_t height)
 {
 	const int side = rng_()%4;
 	if(side < 2) {
@@ -516,14 +516,14 @@ static std::string output_map(const terrain_map& terrain,
 	// All other segments of the map are there only to give
 	// the important middle part some context.
 	// We also have a border so also adjust for that.
-	const size_t begin_x = terrain.w / 3 - gamemap::default_border ;
-	const size_t end_x = terrain.w * 2 / 3 + gamemap::default_border;
-	const size_t begin_y = terrain.h / 3 - gamemap::default_border;
-	const size_t end_y = terrain.h * 2 / 3 + gamemap::default_border;
+	const std::size_t begin_x = terrain.w / 3 - gamemap::default_border ;
+	const std::size_t end_x = terrain.w * 2 / 3 + gamemap::default_border;
+	const std::size_t begin_y = terrain.h / 3 - gamemap::default_border;
+	const std::size_t end_y = terrain.h * 2 / 3 + gamemap::default_border;
 
 	terrain_map map(end_x - begin_x, end_y - begin_y);
-	for(size_t y = begin_y; y != end_y; ++y) {
-		for(size_t x = begin_x; x != end_x; ++x) {
+	for(std::size_t y = begin_y; y != end_y; ++y) {
+		for(std::size_t x = begin_x; x != end_x; ++x) {
 			map[x - begin_x][y - begin_y] = terrain[x][y];
 		}
 	}
@@ -536,14 +536,14 @@ static std::string output_map(const terrain_map& terrain,
 	return t_translation::write_game_map(map, starting_positions);
 }
 
-static int rank_castle_location(int x, int y, const is_valid_terrain& valid_terrain, int min_x, int max_x, int min_y, int max_y, size_t min_distance, const std::vector<map_location>& other_castles, int highest_ranking)
+static int rank_castle_location(int x, int y, const is_valid_terrain& valid_terrain, int min_x, int max_x, int min_y, int max_y, std::size_t min_distance, const std::vector<map_location>& other_castles, int highest_ranking)
 {
 	const map_location loc(x,y);
 
-	size_t avg_distance = 0, lowest_distance = 1000;
+	std::size_t avg_distance = 0, lowest_distance = 1000;
 
 	for(std::vector<map_location>::const_iterator c = other_castles.begin(); c != other_castles.end(); ++c) {
-		const size_t distance = distance_between(loc,*c);
+		const std::size_t distance = distance_between(loc,*c);
 		if(distance < 6) {
 			return 0;
 		}
@@ -601,7 +601,7 @@ static int rank_castle_location(int x, int y, const is_valid_terrain& valid_terr
 typedef std::map<t_translation::terrain_code, t_translation::ter_list> tcode_list_cache;
 
 static map_location place_village(const t_translation::ter_map& map,
-	const size_t x, const size_t y, const size_t radius, const config& cfg,
+	const std::size_t x, const std::size_t y, const std::size_t radius, const config& cfg,
 	tcode_list_cache &adj_liked_cache)
 {
 	const map_location loc(x,y);
@@ -631,7 +631,7 @@ static map_location place_village(const t_translation::ter_map& map,
 			int rating = child["rating"];
 			adjacent_loc_array_t adj;
 			get_adjacent_tiles(map_location(i.x,i.y),adj.data());
-			for(size_t n = 0; n < adj.size(); ++n) {
+			for(std::size_t n = 0; n < adj.size(); ++n) {
 				if(adj[n].x < 0 || adj[n].y < 0 ||
 						adj[n].x >= map.w ||
 						adj[n].y >= map.h) {
@@ -657,10 +657,10 @@ static map_location place_village(const t_translation::ter_map& map,
 static void flood_name(const map_location& start, const std::string& name, std::map<map_location,std::string>& tile_names,
 	const t_translation::ter_match& tile_types, const terrain_map& terrain,
 	unsigned width, unsigned height,
-	size_t label_count, std::map<map_location,std::string>* labels, const std::string& full_name) {
+	std::size_t label_count, std::map<map_location,std::string>* labels, const std::string& full_name) {
 	adjacent_loc_array_t adj;
 	get_adjacent_tiles(start,adj.data());
-	size_t n;
+	std::size_t n;
 	//if adjacent tiles are tiles and unnamed, name them
 	for(n = 0; n < 6; n++) {
 		//we do not care for tiles outside the middle part
@@ -753,8 +753,8 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	}
 
 	terrain_map terrain(data.width, data.height, grassland);
-	for(size_t x = 0; x != heights.size(); ++x) {
-		for(size_t y = 0; y != heights[x].size(); ++y) {
+	for(std::size_t x = 0; x != heights.size(); ++x) {
+		for(std::size_t y = 0; y != heights[x].size(); ++y) {
 			for(auto i : height_conversion) {
 				if(i.convert_terrain(heights[x][y])) {
 					terrain[x][y] = i.convert_to();
@@ -785,8 +785,8 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 
 	std::map<map_location, std::string> river_names, lake_names, road_names, bridge_names, mountain_names, forest_names, swamp_names;
 
-	const size_t nlakes = data.max_lakes > 0 ? (rng_()%data.max_lakes) : 0;
-	for(size_t lake = 0; lake != nlakes; ++lake) {
+	const std::size_t nlakes = data.max_lakes > 0 ? (rng_()%data.max_lakes) : 0;
+	for(std::size_t lake = 0; lake != nlakes; ++lake) {
 		for(int tries = 0; tries != 100; ++tries) {
 			const int x = rng_()%data.width;
 			const int y = rng_()%data.height;
@@ -802,7 +802,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 				const std::string& name = river_name_generator->generate({{"base",  base_name}});
 				LOG_NG << "Named river '" << name << "'\n";
 
-				size_t name_frequency = 20;
+				std::size_t name_frequency = 20;
 				for(std::vector<map_location>::const_iterator r = river.begin(); r != river.end(); ++r) {
 					const map_location loc(r->x-data.width/3,r->y-data.height/3);
 
@@ -859,7 +859,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	LOG_NG << "Generated rivers. " << (SDL_GetTicks() - ticks) << " ticks elapsed" << "\n";
 	ticks = SDL_GetTicks();
 
-	const size_t default_dimensions = 40*40*9;
+	const std::size_t default_dimensions = 40*40*9;
 
 	/*
 	 * Convert grassland terrain to other types of flat terrain.
@@ -995,8 +995,8 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		dst.y += data.height/3 - 1;
 
 		if(data.link_castles && road < int(castles.size() * castles.size())) {
-			const size_t src_castle = road/castles.size();
-			const size_t dst_castle = road%castles.size();
+			const std::size_t src_castle = road/castles.size();
+			const std::size_t dst_castle = road%castles.size();
 			if(src_castle >= dst_castle) {
 				continue;
 			}
@@ -1092,7 +1092,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 
 				if(direction != -1) {
 					const std::vector<std::string> items = utils::split(convert_to_bridge);
-					if(size_t(direction) < items.size() && !items[direction].empty()) {
+					if(std::size_t(direction) < items.size() && !items[direction].empty()) {
 						terrain[x][y] = t_translation::read_terrain_code(items[direction]);
 					}
 
@@ -1171,7 +1171,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 				if(t_translation::terrain_matches(terr, t_translation::ALL_MOUNTAINS)) {
 					//name every 15th mountain
 					if((rng_() % 15) == 0) {
-						for(size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
+						for(std::size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
 							base_name = base_name_generator->generate();
 							name = mountain_name_generator->generate({{"base",  base_name}});
 						}
@@ -1182,7 +1182,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 					// If the forest tile is not named yet, name it
 					const std::map<map_location, std::string>::const_iterator forest_name = forest_names.find(loc);
 					if(forest_name == forest_names.end()) {
-						for(size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
+						for(std::size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
 							base_name = base_name_generator->generate();
 							name = forest_name_generator->generate({{"base",  base_name}});
 						}
@@ -1194,7 +1194,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 					// If the swamp tile is not named yet, name it
 					const std::map<map_location, std::string>::const_iterator swamp_name = swamp_names.find(loc);
 					if(swamp_name == swamp_names.end()) {
-						for(size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
+						for(std::size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
 							base_name = base_name_generator->generate();
 							name = swamp_name_generator->generate({{"base",  base_name}});
 						}
@@ -1221,8 +1221,8 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	if(data.nvillages > 0) {
 
 		// First we work out the size of the x and y distance between villages
-		const size_t tiles_per_village = ((data.width*data.height)/9)/data.nvillages;
-		size_t village_x = 1, village_y = 1;
+		const std::size_t tiles_per_village = ((data.width*data.height)/9)/data.nvillages;
+		std::size_t village_x = 1, village_y = 1;
 
 		// Alternate between incrementing the x and y value.
 		// When they are high enough to equal or exceed the tiles_per_village,
@@ -1251,9 +1251,9 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 			LOG_NG << "village at " << vx << "\n";
 
 			for(int vy = rng_()%village_y; vy < data.height; vy += village_y) {
-				const size_t add = rng_()%3;
-				const size_t x = (vx + add) - 1;
-				const size_t y = (vy + add) - 1;
+				const std::size_t add = rng_()%3;
+				const std::size_t x = (vx + add) - 1;
+				const std::size_t y = (vy + add) - 1;
 
 				const map_location res = place_village(terrain, x, y, 2, cfg, adj_liked_cache);
 
@@ -1300,11 +1300,11 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 					mountain = t_translation::ter_list(1, t_translation::MOUNTAIN),
 					hill	 = t_translation::ter_list(1, t_translation::HILL);
 
-				size_t field_count = 0, forest_count = 0, mountain_count = 0, hill_count = 0;
+				std::size_t field_count = 0, forest_count = 0, mountain_count = 0, hill_count = 0;
 
 				std::map<std::string,std::string> symbols;
 
-				size_t n;
+				std::size_t n;
 				for(n = 0; n != 6; ++n) {
 					const std::map<map_location,std::string>::const_iterator road_name = road_names.find(adj[n]);
 					if(road_name != road_names.end()) {
@@ -1386,7 +1386,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 				symbols["base"] = base_name_generator->generate();
 				std::shared_ptr<name_generator> village_name_generator = village_name_generator_factory.get_name_generator(name_type);
 
-				for(size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
+				for(std::size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
 					name = village_name_generator->generate(symbols);
 				}
 

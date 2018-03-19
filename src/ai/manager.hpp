@@ -124,7 +124,7 @@ public:
 	// CONSTANTS
 	// =======================================================================
 
-	static const size_t MAX_HISTORY_SIZE = 200;
+	static const std::size_t MAX_HISTORY_SIZE = 200;
 
 	static const std::string AI_TYPE_COMPOSITE_AI;
 	static const std::string AI_TYPE_SAMPLE_AI;

@@ -16,8 +16,8 @@
 #include "lexical_cast.hpp"
 
 wesnothd::player::player(const std::string& n, simple_wml::node& cfg,
-                         bool registered, const size_t max_messages,
-                         const size_t time_period, const bool sp,
+                         bool registered, const std::size_t max_messages,
+                         const std::size_t time_period, const bool sp,
                          const bool moderator)
   : name_(n)
   , cfg_(cfg)

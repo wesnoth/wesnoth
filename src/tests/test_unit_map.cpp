@@ -132,7 +132,7 @@ BOOST_AUTO_TEST_CASE( track_real_unit_by_underlying_id ) {
 
 	unit_ptr orc1_side0_real = unit::create(orc_type, 0, true);
 
-	size_t underlying_id = orc1_side0_real->underlying_id();
+	std::size_t underlying_id = orc1_side0_real->underlying_id();
 	map_location hex = map_location(1,1);
 
 	unit_map unit_map;
@@ -178,7 +178,7 @@ BOOST_AUTO_TEST_CASE( track_fake_unit_by_underlying_id ) {
 
 	unit_ptr orc1_side0_fake = unit::create(orc_type, 0, false);
 
-	size_t underlying_id = orc1_side0_fake->underlying_id();
+	std::size_t underlying_id = orc1_side0_fake->underlying_id();
 	map_location hex = map_location(1,1);
 
 	unit_map unit_map;

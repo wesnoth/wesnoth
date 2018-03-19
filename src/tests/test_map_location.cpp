@@ -77,12 +77,12 @@ static map_location vector_difference(const map_location & v1, const map_locatio
 }
 #endif
 
-static void characterization_distance_direction (const std::vector<map_location> & locs, const std::vector<map_location::DIRECTION> & dir_answers, const std::vector<size_t> & int_answers, map_location::RELATIVE_DIR_MODE mode)
+static void characterization_distance_direction (const std::vector<map_location> & locs, const std::vector<map_location::DIRECTION> & dir_answers, const std::vector<std::size_t> & int_answers, map_location::RELATIVE_DIR_MODE mode)
 {
 	BOOST_CHECK_EQUAL(dir_answers.size(), int_answers.size());
 
 	std::vector<map_location::DIRECTION>::const_iterator dir_it = dir_answers.begin();
-	std::vector<size_t>::const_iterator int_it = int_answers.begin();
+	std::vector<std::size_t>::const_iterator int_it = int_answers.begin();
 
 	for (std::vector<map_location>::const_iterator it_a = locs.begin(); it_a != locs.end(); ++it_a) {
 		for (std::vector<map_location>::const_iterator it_b = it_a + 1; it_b != locs.end(); ++it_b) {
@@ -127,14 +127,14 @@ static void characterization_distance_direction (const std::vector<map_location>
 	BOOST_CHECK_MESSAGE( int_it == int_answers.end(), "Did not exhaust answers list.");
 }
 
-static size_t get_first (std::pair<size_t, std::string> arg) {return arg.first; }
-static map_location::DIRECTION get_second (std::pair<size_t, std::string> arg) {return map_location::parse_direction(arg.second); }
+static std::size_t get_first (std::pair<std::size_t, std::string> arg) {return arg.first; }
+static map_location::DIRECTION get_second (std::pair<std::size_t, std::string> arg) {return map_location::parse_direction(arg.second); }
 
 /* This has to be recomputed, I'm commenting out the test so that it doesn't fail in the meantime. --iceiceice
 
 BOOST_AUTO_TEST_CASE ( map_location_characterization_test_default_mode )
 {
-	std::vector<std::pair<size_t, std::string>> generated_answers = boost::assign::list_of(std::make_pair(7,	"se"))
+	std::vector<std::pair<std::size_t, std::string>> generated_answers = boost::assign::list_of(std::make_pair(7,	"se"))
 (std::make_pair(6,	"s"))
 (std::make_pair(6,	"nw"))
 (std::make_pair(12,	"n"))
@@ -190,7 +190,7 @@ BOOST_AUTO_TEST_CASE ( map_location_characterization_test_default_mode )
 (std::make_pair(3,	"s"))
 (std::make_pair(1,	"sw")).to_container(generated_answers);
 
-	std::vector<size_t> ans1;
+	std::vector<std::size_t> ans1;
 	std::vector<map_location::DIRECTION> ans2;
 	std::transform(generated_answers.begin(), generated_answers.end(), back_inserter(ans1), &get_first);
 	std::transform(generated_answers.begin(), generated_answers.end(), back_inserter(ans2), &get_second);
@@ -200,7 +200,7 @@ BOOST_AUTO_TEST_CASE ( map_location_characterization_test_default_mode )
 
 BOOST_AUTO_TEST_CASE ( map_location_characterization_test_radial_mode )
 {
-	std::vector<std::pair<size_t, std::string>> generated_answers {
+	std::vector<std::pair<std::size_t, std::string>> generated_answers {
 std::make_pair(7,	"se"),
 std::make_pair(6,	"sw"),
 std::make_pair(6,	"n"),
@@ -257,7 +257,7 @@ std::make_pair(3,	"s"),
 std::make_pair(3,	"s"),
 std::make_pair(1,	"nw")};
 
-	std::vector<size_t> ans1;
+	std::vector<std::size_t> ans1;
 	std::vector<map_location::DIRECTION> ans2;
 	std::transform(generated_answers.begin(), generated_answers.end(), back_inserter(ans1), &get_first);
 	std::transform(generated_answers.begin(), generated_answers.end(), back_inserter(ans2), &get_second);

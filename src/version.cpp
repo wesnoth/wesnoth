@@ -77,7 +77,7 @@ version_info::version_info(const std::string& str)
 	}
 
 	const std::vector<std::string> components = utils::split(left_side, '.');
-	const size_t s = components.size();
+	const std::size_t s = components.size();
 	if(s == 0) {
 		return;
 	}
@@ -85,17 +85,17 @@ version_info::version_info(const std::string& str)
 		nums_.resize(s, 0);
 	}
 
-	for(size_t i = 0; (i < s); ++i) {
+	for(std::size_t i = 0; (i < s); ++i) {
 		nums_[i] = lexical_cast_default<unsigned int>(components[i]);
 	}
 }
 
 std::string version_info::str() const
 {
-	const size_t s = nums_.size();
+	const std::size_t s = nums_.size();
 
 	std::ostringstream o;
-	for(size_t k = 0; k < s; ++k) {
+	for(std::size_t k = 0; k < s; ++k) {
 		o << nums_[k];
 
 		if(s != 1+k) {
@@ -149,9 +149,9 @@ namespace {
 		std::vector<unsigned int> lc = l.components();
 		std::vector<unsigned int> rc = r.components();
 
-		const size_t lsize = lc.size();
-		const size_t rsize = rc.size();
-		const size_t csize = std::max(lsize, rsize);
+		const std::size_t lsize = lc.size();
+		const std::size_t rsize = rc.size();
+		const std::size_t csize = std::max(lsize, rsize);
 
 		// make compatible, missing items default to zero
 		if(lsize < csize) lc.resize(csize, 0);

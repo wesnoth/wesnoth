@@ -57,7 +57,7 @@ public:
 	std::vector<gui::widget>* get_widgets() { return nullptr; }
 
 	//group
-	virtual void set_group(size_t /*index*/) override {}
+	virtual void set_group(std::size_t /*index*/) override {}
 	virtual void next_group() override {}
 	virtual void prev_group() override {}
 	virtual const std::vector<item_group>& get_groups() const override { static const std::vector<item_group> empty; return empty; }
@@ -70,8 +70,8 @@ public:
 
     //item
 	virtual int num_items() override {return 0;}
-	virtual size_t start_num() override {return 0;}
-	virtual void set_start_item(size_t /*index*/) override {}
+	virtual std::size_t start_num() override {return 0;}
+	virtual void set_start_item(std::size_t /*index*/) override {}
 	virtual bool supports_swap() override { return false; }
 	virtual void swap() override {}
 

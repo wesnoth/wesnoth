@@ -236,7 +236,7 @@ const time_of_day tod_manager::get_illuminated_time_of_day(const unit_map & unit
 		std::array<map_location, 7> locs;
 		locs[0] = loc;
 		get_adjacent_tiles(loc, locs.data() + 1); // start at [1]
-		for ( size_t i = 0; i < locs.size(); ++i ) {
+		for ( std::size_t i = 0; i < locs.size(); ++i ) {
 			const unit_map::const_iterator itor = units.find(locs[i]);
 			if (itor != units.end() &&
 			    itor->get_ability_bool("illuminates", *resources::gameboard) &&
@@ -261,7 +261,7 @@ const time_of_day tod_manager::get_illuminated_time_of_day(const unit_map & unit
 		// Apply each unit's effect, tracking the best result.
 		int best_result = terrain_light;
 		const int base_light = terrain_light + (net_darker ? most_add : most_sub);
-		for ( size_t i = 0; i != mod_list.size(); ++i ) {
+		for ( std::size_t i = 0; i != mod_list.size(); ++i ) {
 			int result = bounded_add( base_light, mod_list[i], max_list[i], min_list[i] );
 
 			if ( net_darker  &&  result < best_result )

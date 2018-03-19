@@ -45,7 +45,7 @@ void editor_palette<Item>::expand_palette_groups_menu(std::vector<config>& items
 	std::vector<config> groups;
 	const std::vector<item_group>& item_groups = get_groups();
 
-	for (size_t mci = 0; mci < item_groups.size(); ++mci) {
+	for (std::size_t mci = 0; mci < item_groups.size(); ++mci) {
 		std::string groupname = item_groups[mci].name;
 		if (groupname.empty()) {
 			groupname = _("(Unknown Group)");
@@ -145,23 +145,23 @@ void editor_palette<Item>::set_group(const std::string& id)
 }
 
 template<class Item>
-void editor_palette<Item>::set_group(size_t index)
+void editor_palette<Item>::set_group(std::size_t index)
 {
 	assert(groups_.size() > index);
 	set_group(groups_[index].id);
 }
 
 template<class Item>
-size_t editor_palette<Item>::active_group_index()
+std::size_t editor_palette<Item>::active_group_index()
 {
 	assert(!active_group_.empty());
 
-	for (size_t i = 0 ; i < groups_.size(); i++) {
+	for (std::size_t i = 0 ; i < groups_.size(); i++) {
 		if (groups_[i].id == active_group_)
 			return i;
 	}
 
-	return static_cast<size_t>(-1);
+	return static_cast<std::size_t>(-1);
 }
 
 template<class Item>

@@ -53,7 +53,7 @@ private:
 	void process(side_actions &sa, side_actions::iterator action_it);
 
 	/** Function called after visiting a team. */
-	void post_visit_team(size_t turn);
+	void post_visit_team(std::size_t turn);
 
 	/** Does various preliminary actions on the unit map such as resetting moves for some units. */
 	void pre_build();

@@ -124,7 +124,7 @@ A poisoned unit cannot be cured of its poison by a healer, and must seek the car
 
 namespace {
 
-bool affects_side(const config& cfg, const std::vector<team>& teams, size_t side, size_t other_side)
+bool affects_side(const config& cfg, const std::vector<team>& teams, std::size_t side, std::size_t other_side)
 {
 	if (side == other_side)
 		return cfg["affect_allies"].to_bool(true);
@@ -321,7 +321,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 
 	for (const config &i : cfg.child_range("filter_adjacent"))
 	{
-		size_t count = 0;
+		std::size_t count = 0;
 		unit_filter ufilt{ vconfig(i) };
 		ufilt.set_use_flat_tod(illuminates);
 		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
@@ -352,7 +352,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 
 	for (const config &i : cfg.child_range("filter_adjacent_location"))
 	{
-		size_t count = 0;
+		std::size_t count = 0;
 		terrain_filter adj_filter(vconfig(i), resources::filter_con);
 		adj_filter.flatten(illuminates);
 
@@ -1017,7 +1017,7 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 	// Filter the adjacent units.
 	for (const config &i : special.child_range("filter_adjacent"))
 	{
-		size_t count = 0;
+		std::size_t count = 0;
 		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
 		unit_filter filter{ vconfig(i) };
 		for (const map_location::DIRECTION index : dirs)
@@ -1046,7 +1046,7 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 	// Filter the adjacent locations.
 	for (const config &i : special.child_range("filter_adjacent_location"))
 	{
-		size_t count = 0;
+		std::size_t count = 0;
 		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
 		terrain_filter adj_filter(vconfig(i), resources::filter_con);
 		for (const map_location::DIRECTION index : dirs)

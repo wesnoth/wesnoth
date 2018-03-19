@@ -39,8 +39,8 @@ public:
 	class connection_data
 	{
 	public:
-		virtual size_t total() { return 0; }
-		virtual size_t current() { return 0; }
+		virtual std::size_t total() { return 0; }
+		virtual std::size_t current() { return 0; }
 		virtual bool finished() = 0;
 		virtual void cancel() = 0;
 		virtual void poll() = 0;

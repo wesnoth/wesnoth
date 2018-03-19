@@ -157,7 +157,7 @@ namespace game_config
 	 * as maximum in wml loops.
 	 * WARNING : This should not be set to less than the max map area
 	 */
-	extern const size_t max_loop;
+	extern const std::size_t max_loop;
 
 	namespace sounds {
 		extern std::string turn_bell, timer_bell, public_message,

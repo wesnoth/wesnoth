@@ -44,11 +44,11 @@ public:
 	variant get_value(const std::string& key) const {
 		if(key == "__list") {
 			std::vector<variant> values;
-			size_t n = lua_rawlen(mState, table_i);
+			std::size_t n = lua_rawlen(mState, table_i);
 			if(n == 0) {
 				return variant();
 			}
-			for(size_t i = 1; i <= n; i++) {
+			for(std::size_t i = 1; i <= n; i++) {
 				lua_pushinteger(mState, i);
 				lua_gettable(mState, table_i);
 				values.push_back(luaW_tofaivariant(mState, -1));

@@ -49,8 +49,8 @@ namespace gui2
  * @returns                       The id of the timer.
  * @retval [0]                    Failed to create a timer.
  */
-size_t add_timer(const uint32_t interval,
-				 const std::function<void(size_t id)>& callback,
+std::size_t add_timer(const uint32_t interval,
+				 const std::function<void(std::size_t id)>& callback,
 				 const bool repeat = false);
 
 /**
@@ -66,7 +66,7 @@ size_t add_timer(const uint32_t interval,
  * @returns                       Status, false if the timer couldn't be
  *                                removed.
  */
-bool remove_timer(const size_t id);
+bool remove_timer(const std::size_t id);
 
 /**
  * Executes a timer.
@@ -80,6 +80,6 @@ bool remove_timer(const size_t id);
  * @returns                       Status, false if the timer couldn't be
  *                                executed.
  */
-bool execute_timer(const size_t id);
+bool execute_timer(const std::size_t id);
 
 } // namespace gui2

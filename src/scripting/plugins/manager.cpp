@@ -65,11 +65,11 @@ lua_kernel_base * plugins_manager::get_kernel_base()
 	return kernel_.get();
 }
 
-size_t plugins_manager::size() {
+std::size_t plugins_manager::size() {
 	return plugins_.size();
 }
 
-plugins_manager::STATUS plugins_manager::get_status(size_t idx) {
+plugins_manager::STATUS plugins_manager::get_status(std::size_t idx) {
 	if (idx < plugins_.size()) {
 		if (!plugins_[idx].thread) {
 			return plugins_manager::STATUS::NONE;
@@ -80,7 +80,7 @@ plugins_manager::STATUS plugins_manager::get_status(size_t idx) {
 	throw std::runtime_error("index out of bounds");
 }
 
-std::string plugins_manager::get_detailed_status(size_t idx) {
+std::string plugins_manager::get_detailed_status(std::size_t idx) {
 	if (idx < plugins_.size()) {
 		if (!plugins_[idx].thread) {
 			return "not loaded";
@@ -91,14 +91,14 @@ std::string plugins_manager::get_detailed_status(size_t idx) {
 	throw std::runtime_error("index out of bounds");
 }
 
-std::string plugins_manager::get_name(size_t idx) {
+std::string plugins_manager::get_name(std::size_t idx) {
 	if (idx < plugins_.size()) {
 		return plugins_[idx].name;
 	}
 	throw std::runtime_error("index out of bounds");
 }
 
-void plugins_manager::start_plugin(size_t idx)
+void plugins_manager::start_plugin(std::size_t idx)
 {
 	DBG_PLG << "start_plugin[" << idx <<"]\n";
 	if (idx < plugins_.size()) {
@@ -115,9 +115,9 @@ void plugins_manager::start_plugin(size_t idx)
 	throw std::runtime_error("index out of bounds");
 }
 
-size_t plugins_manager::add_plugin(const std::string & name, const std::string & prog)
+std::size_t plugins_manager::add_plugin(const std::string & name, const std::string & prog)
 {
-	size_t idx = plugins_.size();
+	std::size_t idx = plugins_.size();
 	plugins_.push_back(new plugin);
 
 	plugin & p = plugins_[idx];
@@ -128,9 +128,9 @@ size_t plugins_manager::add_plugin(const std::string & name, const std::string &
 	return idx;
 }
 
-size_t plugins_manager::load_plugin(const std::string & name, const std::string & filename)
+std::size_t plugins_manager::load_plugin(const std::string & name, const std::string & filename)
 {
-	size_t idx = plugins_.size();
+	std::size_t idx = plugins_.size();
 	plugins_.push_back(new plugin);
 
 	plugin & p = plugins_[idx];
@@ -147,7 +147,7 @@ void plugins_manager::notify_event(const std::string & name, const config & data
 	evt.name = name;
 	evt.data = data;
 
-	for (size_t idx = 0; idx < size(); ++idx)
+	for (std::size_t idx = 0; idx < size(); ++idx)
 	{
 		if (plugins_[idx].thread && plugins_[idx].thread->is_running()) {
 			plugins_[idx].queue.push_back(evt);
@@ -166,7 +166,7 @@ void plugins_manager::play_slice(const plugins_context & ctxt)
 	playing_ = std::make_shared<bool> (true);
 	std::shared_ptr<bool> local = playing_; //make a local copy of the pointer on the stack
 
-	for (size_t idx = 0; idx < size(); ++idx)
+	for (std::size_t idx = 0; idx < size(); ++idx)
 	{
 		DBG_PLG << "play_slice[" << idx << "] ... \n";
 		if (plugins_[idx].thread && plugins_[idx].thread->is_running()) {
@@ -185,7 +185,7 @@ void plugins_manager::play_slice(const plugins_context & ctxt)
 
 			DBG_PLG << "thread returned " << requests.size() << " requests\n";
 
-			for (size_t j = 0; j < requests.size(); ++j) {
+			for (std::size_t j = 0; j < requests.size(); ++j) {
 				if (!*local) return;		//check playing_ before each call to be sure that we should still continue
 				if (!requests[j]()) {
 					*local = false;
@@ -206,7 +206,7 @@ void plugins_manager::play_slice(const plugins_context & ctxt)
 bool plugins_manager::any_running()
 {
 
-	for (size_t i = 0; i < size(); ++i) {
+	for (std::size_t i = 0; i < size(); ++i) {
 		if (STATUS::RUNNING == get_status(i)) {
 			return true;
 		}

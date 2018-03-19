@@ -301,7 +301,7 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 	if (text.empty())
 		return;
 	const int remaining_width = get_remaining_width();
-	size_t first_word_start = text.find_first_not_of(" ");
+	std::size_t first_word_start = text.find_first_not_of(" ");
 	if (first_word_start == std::string::npos) {
 		first_word_start = 0;
 	}

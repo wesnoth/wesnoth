@@ -222,7 +222,7 @@ std::string encode(utils::byte_string_view bytes)
 }
 int decode(char encoded_char)
 {
-	size_t pos = crypt64_itoa_map.find(encoded_char);
+	std::size_t pos = crypt64_itoa_map.find(encoded_char);
 	return pos == std::string::npos ? -1 : pos;
 }
 char encode(int value)

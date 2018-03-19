@@ -1029,7 +1029,7 @@ int main(int argc, char** argv)
 	//       the startup banner is printed. We need to get a console up and
 	//       running before then if requested, so just perform a trivial search
 	//       here and let program_options ignore the switch later.
-	for(size_t k = 0; k < args.size(); ++k) {
+	for(std::size_t k = 0; k < args.size(); ++k) {
 		if(args[k] == "--wconsole" ||
 		   args[k] == "--help" ||
 		   args[k] == "--logdomains" ||

@@ -329,7 +329,7 @@ void test()
 {
 	gui2::new_widgets = false;
 
-//	for(size_t i = 0; i < 2; ++i) {
+//	for(std::size_t i = 0; i < 2; ++i) {
 
 		test_resolutions<T>(get_gui_resolutions());
 
@@ -343,7 +343,7 @@ void test_popup()
 {
 	gui2::new_widgets = false;
 
-	for(size_t i = 0; i < 2; ++i) {
+	for(std::size_t i = 0; i < 2; ++i) {
 
 		test_popup_resolutions<T>(get_gui_resolutions());
 
@@ -355,7 +355,7 @@ void test_tip(const std::string& id)
 {
 	gui2::new_widgets = false;
 
-	for(size_t i = 0; i < 2; ++i) {
+	for(std::size_t i = 0; i < 2; ++i) {
 
 		test_tip_resolutions(get_gui_resolutions(), id);
 

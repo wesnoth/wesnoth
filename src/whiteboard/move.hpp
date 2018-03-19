@@ -31,7 +31,7 @@ namespace wb {
 class move : public action
 {
 public:
-	move(size_t team_index, bool hidden, unit& mover, const pathfind::marked_route& route,
+	move(std::size_t team_index, bool hidden, unit& mover, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 	move(const config&, bool hidden); // For deserialization
 	virtual ~move();
@@ -97,7 +97,7 @@ protected:
 
 	void calculate_move_cost();
 
-	size_t unit_underlying_id_;
+	std::size_t unit_underlying_id_;
 	std::string unit_id_;
 	std::unique_ptr<pathfind::marked_route> route_;
 	int movement_cost_;

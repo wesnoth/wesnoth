@@ -56,7 +56,7 @@ const std::vector<map_location::DIRECTION> & map_location::default_dirs() {
 }
 
 std::size_t hash_value(const map_location& a){
-	std::hash<size_t> h;
+	std::hash<std::size_t> h;
 	return h( (static_cast<uint32_t>(a.x) << 16) ^ static_cast<uint32_t>(a.y) );
 }
 
@@ -72,7 +72,7 @@ map_location::DIRECTION map_location::parse_direction(const std::string& str)
 	// :cw and :ccw mean "one step (counter-)clockwise"
 	// Parentheses can be used for grouping or to apply an operator more than once
 
-	const size_t open = str.find_first_of('('), close = str.find_last_of(')');
+	const std::size_t open = str.find_first_of('('), close = str.find_last_of(')');
 	if (open != std::string::npos && close != std::string::npos) {
 		std::string sub = str.substr(open + 1, close - open - 1);
 		map_location::DIRECTION dir = parse_direction(sub);
@@ -81,8 +81,8 @@ map_location::DIRECTION map_location::parse_direction(const std::string& str)
 		return parse_direction(sub);
 	}
 
-	const size_t start = str[0] == '-' ? 1 : 0;
-	const size_t end = str.find_first_of(':');
+	const std::size_t start = str[0] == '-' ? 1 : 0;
+	const std::size_t end = str.find_first_of(':');
 	const std::string& main_dir = str.substr(start, end - start);
 	map_location::DIRECTION dir;
 
@@ -320,14 +320,14 @@ bool map_location::matches_range(const std::string& xloc, const std::string &ylo
 		std::vector<std::string> xlocs = utils::split(xloc);
 		std::vector<std::string> ylocs = utils::split(yloc);
 
-		size_t size;
+		std::size_t size;
 		for(size = xlocs.size(); size < ylocs.size(); ++size) {
 			xlocs.emplace_back();
 		}
 		while(size > ylocs.size()) {
 			ylocs.emplace_back();
 		}
-		for(size_t i = 0; i != size; ++i) {
+		for(std::size_t i = 0; i != size; ++i) {
 			if(matches_range(xlocs[i],ylocs[i]))
 				return true;
 		}
@@ -597,15 +597,15 @@ bool tiles_adjacent(const map_location& a, const map_location& b)
 	*/
 }
 
-size_t distance_between(const map_location& a, const map_location& b)
+std::size_t distance_between(const map_location& a, const map_location& b)
 {
-	const size_t hdistance = std::abs(a.x - b.x);
+	const std::size_t hdistance = std::abs(a.x - b.x);
 
-	const size_t vpenalty = ( (((a.x & 1)==0) && ((b.x & 1)==1) && (a.y < b.y))
+	const std::size_t vpenalty = ( (((a.x & 1)==0) && ((b.x & 1)==1) && (a.y < b.y))
 		|| (((b.x & 1)==0) && ((a.x & 1)==1) && (b.y < a.y)) ) ? 1 : 0;
 
 /* Don't want to include util.hpp in this header
-	const size_t vpenalty = ( (is_even(a.x) && is_odd(b.x) && (a.y < b.y))
+	const std::size_t vpenalty = ( (is_even(a.x) && is_odd(b.x) && (a.y < b.y))
 		|| (is_even(b.x) && is_odd(a.x) && (b.y < a.y)) ) ? 1 : 0;
 */
 	// For any non-negative integer i, i - i/2 - i%2 == i/2

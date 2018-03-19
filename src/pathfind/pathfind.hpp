@@ -191,7 +191,7 @@ struct marked_route
 
 plain_route a_star_search(const map_location& src, const map_location& dst,
 		double stop_at, const cost_calculator& costCalculator,
-		const size_t parWidth, const size_t parHeight,
+		const std::size_t parWidth, const std::size_t parHeight,
 		const teleport_map* teleports = nullptr, bool border = false);
 
 /**

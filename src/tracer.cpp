@@ -31,7 +31,7 @@ tracer::printer::~printer()
 	std::cerr << "Run statistics for " << tracer_->function << ":\n"
 			<< "Runs:\t" << std::dec << tracer_->run << "\n";
 
-	size_t maximum_length = 0;
+	std::size_t maximum_length = 0;
 	for(const auto& counter : tracer_->counters) {
 		maximum_length = std::max(
 				  maximum_length

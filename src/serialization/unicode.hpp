@@ -48,13 +48,13 @@ namespace utf8 {
 	 *
 	 * @return str.length() if there are less than @p index characters.
 	 */
-	size_t index(const utf8::string& str, const size_t index);
+	std::size_t index(const utf8::string& str, const std::size_t index);
 
 	/** Length in characters of a UTF-8 string. */
-	size_t size(const utf8::string& str);
+	std::size_t size(const utf8::string& str);
 
 	/** Insert a UTF-8 string at the specified position. */
-	utf8::string& insert(utf8::string& str, const size_t pos, const utf8::string& insert);
+	utf8::string& insert(utf8::string& str, const std::size_t pos, const utf8::string& insert);
 
 	/**
 	 * Erases a portion of a UTF-8 string.
@@ -66,7 +66,7 @@ namespace utf8 {
 	 * @note This implementation does not check for valid UTF-8. Don't use it
 	 *       for user input.
 	 */
-	utf8::string& erase(utf8::string& str, const size_t start, const size_t len = std::string::npos);
+	utf8::string& erase(utf8::string& str, const std::size_t start, const std::size_t len = std::string::npos);
 
 	/**
 	 * Truncates a UTF-8 string to the specified number of characters.
@@ -77,7 +77,7 @@ namespace utf8 {
 	 * @note This implementation does not check for valid UTF-8. Don't use it
 	 *       for user input.
 	 */
-	utf8::string& truncate(utf8::string& str, const size_t size);
+	utf8::string& truncate(utf8::string& str, const std::size_t size);
 
 	/**
 	 * Truncates a UTF-8 string to the specified number of characters.
@@ -92,5 +92,5 @@ namespace utf8 {
 	 *                             codepoints.
 	 * @param      size  The size to truncate to.
 	 */
-	void truncate_as_ucs4(utf8::string& str, const size_t size);
+	void truncate_as_ucs4(utf8::string& str, const std::size_t size);
 } // end namespace utf8

@@ -138,7 +138,7 @@ public:
 		history_ = text_history::get_history(id, true);
 	}
 
-	void set_max_input_length(const size_t length)
+	void set_max_input_length(const std::size_t length)
 	{
 		max_input_length_ = length;
 	}
@@ -184,7 +184,7 @@ private:
 	text_history history_;
 
 	/** The maximum length of the text input. */
-	size_t max_input_length_;
+	std::size_t max_input_length_;
 
 	/**
 	 * The x offset in the widget where the text starts.
@@ -308,7 +308,7 @@ public:
 
 	std::string history;
 
-	size_t max_input_length;
+	std::size_t max_input_length;
 };
 
 } // namespace implementation

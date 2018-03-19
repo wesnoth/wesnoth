@@ -423,7 +423,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 
 			// Don't take friendly villages
 			if(!enemy && resources::gameboard->map().is_village(dst)) {
-				for(size_t n = 0; n != resources::gameboard->teams().size(); ++n) {
+				for(std::size_t n = 0; n != resources::gameboard->teams().size(); ++n) {
 					if(resources::gameboard->teams()[n].owns_village(dst)) {
 						int side = n + 1;
 						if (get_side() != side && !current_team().is_enemy(side)) {
@@ -983,7 +983,7 @@ const std::set<map_location>& keeps_cache::get()
 				if(map_->is_keep(loc)) {
 					adjacent_loc_array_t adj;
 					get_adjacent_tiles(loc,adj.data());
-					for(size_t n = 0; n < adj.size(); ++n) {
+					for(std::size_t n = 0; n < adj.size(); ++n) {
 						if(map_->is_castle(adj[n])) {
 							keeps_.insert(loc);
 							break;

@@ -148,7 +148,7 @@ void text_surface::measure() const
 	}
 }
 
-size_t text_surface::width() const
+std::size_t text_surface::width() const
 {
 	if (w_ == -1) {
 		if(chunks_.empty())
@@ -158,7 +158,7 @@ size_t text_surface::width() const
 	return w_;
 }
 
-size_t text_surface::height() const
+std::size_t text_surface::height() const
 {
 	if (h_ == -1) {
 		if(chunks_.empty())

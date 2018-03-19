@@ -32,7 +32,7 @@ inline int relative_size(int size)
 }
 
 // GUI1 built-in maximum
-extern const size_t max_text_line_width;
+extern const std::size_t max_text_line_width;
 
 // String constants
 extern const std::string

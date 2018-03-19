@@ -230,7 +230,7 @@ void statistics_dialog::on_tab_select(window& window)
 
 void statistics_dialog::on_scenario_select(window& window)
 {
-	const size_t new_index = find_widget<menu_button>(&window, "scenario_menu", false).get_value();
+	const std::size_t new_index = find_widget<menu_button>(&window, "scenario_menu", false).get_value();
 
 	if(scenario_index_ != new_index) {
 		scenario_index_ = new_index;

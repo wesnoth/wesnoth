@@ -105,10 +105,10 @@ auto find_attack(T* u, const std::string& id) -> attack_ptr_in<T>
 }
 
 template<typename T>
-auto find_attack(T* u, size_t i) -> attack_ptr_in<T>
+auto find_attack(T* u, std::size_t i) -> attack_ptr_in<T>
 {
 	auto attacks = u->attacks();
-	if(i < static_cast<size_t>(attacks.size())) {
+	if(i < static_cast<std::size_t>(attacks.size())) {
 		auto iter = attacks.begin();
 		iter += i;
 		return *iter.base();

@@ -142,9 +142,9 @@ public:
 	node& set_attr_int(const char* key, int value);
 
 	node& add_child(const char* name);
-	node& add_child_at(const char* name, size_t index);
-	void remove_child(const char* name, size_t index);
-	void remove_child(const string_span& name, size_t index);
+	node& add_child_at(const char* name, std::size_t index);
+	void remove_child(const char* name, std::size_t index);
+	void remove_child(const string_span& name, std::size_t index);
 
 	node* child(const char* name);
 	const node* child(const char* name) const;
@@ -282,7 +282,7 @@ public:
 
 	static std::string stats();
 
-	static size_t document_size_limit;
+	static std::size_t document_size_limit;
 private:
 	void generate_root();
 	document(const document&);

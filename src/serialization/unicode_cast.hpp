@@ -29,7 +29,7 @@ namespace ucs4_convert_impl
 		oitor_t& out_;
 		iteratorwriter(oitor_t& out) : out_(out) {}
 
-		bool can_push(size_t /*count*/)
+		bool can_push(std::size_t /*count*/)
 		{
 			return true;
 		}

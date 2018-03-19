@@ -67,7 +67,7 @@ namespace builtin_conditions {
 				if(counts == default_counts && match_count) {
 					break;
 				}
-				for(size_t t = 0; t < team.recall_list().size(); ++t) {
+				for(std::size_t t = 0; t < team.recall_list().size(); ++t) {
 					if(counts == default_counts && match_count) {
 						break;
 					}

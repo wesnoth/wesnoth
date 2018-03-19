@@ -23,7 +23,7 @@ namespace ucs4_convert_impl
 	struct utf8_impl
 	{
 		static const char* get_name()  { return "utf8"; }
-		static size_t byte_size_from_ucs4_codepoint(ucs4::char_t ch)
+		static std::size_t byte_size_from_ucs4_codepoint(ucs4::char_t ch)
 		{
 			if(ch < (1u << 7))
 				return 1;
@@ -61,14 +61,14 @@ namespace ucs4_convert_impl
 		 *
 		 * @param out  An object to write utf8::char_t. Required operations:
 		 *             1) push(utf8::char_t) to write a single character
-		 *             2) can_push(size_t n) to check whether there is still
+		 *             2) can_push(std::size_t n) to check whether there is still
 		 *                enough space for n characters.
 		 * @param ch   The UCS-4 character to write to the stream.
 		 */
 		template<typename writer>
 		static inline void write(writer out, ucs4::char_t ch)
 		{
-			size_t count = byte_size_from_ucs4_codepoint(ch);
+			std::size_t count = byte_size_from_ucs4_codepoint(ch);
 			assert(out.can_push(count));
 			if(count == 1) {
 				out.push(static_cast<utf8::char_t>(ch));
@@ -95,7 +95,7 @@ namespace ucs4_convert_impl
 		static inline ucs4::char_t read(iitor_t& input, const iitor_t& end)
 		{
 			assert(input != end);
-			size_t size = byte_size_from_utf8_first(*input);
+			std::size_t size = byte_size_from_utf8_first(*input);
 
 			ucs4::char_t current_char = static_cast<unsigned char>(*input);
 
@@ -107,7 +107,7 @@ namespace ucs4_convert_impl
 			// Convert the continuation bytes
 			// i == number of '++input'
 			++input;
-			for(size_t i = 1; i < size; ++i, ++input) {
+			for(std::size_t i = 1; i < size; ++i, ++input) {
 				// If the string ends occurs within an UTF8-sequence, this is bad.
 				if (input == end)
 					throw utf8::invalid_utf8_exception();

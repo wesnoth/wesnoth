@@ -97,7 +97,7 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 			static const std::string wml_suffix = ".cfg";
 
 			if(base.size() > wml_suffix.size()) {
-				const size_t suffix_pos = base.size() - wml_suffix.size();
+				const std::size_t suffix_pos = base.size() - wml_suffix.size();
 				if(base.substr(suffix_pos) == wml_suffix) {
 					base.erase(suffix_pos);
 				}

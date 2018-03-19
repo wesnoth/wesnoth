@@ -38,12 +38,12 @@ namespace n_unit
 		return unit_id::create_fake(++fake_id_);
 	}
 
-	size_t id_manager::get_save_id() const
+	std::size_t id_manager::get_save_id() const
 	{
 		return next_id_;
 	}
 
-	void id_manager::set_save_id(size_t id)
+	void id_manager::set_save_id(std::size_t id)
 	{
 		clear();
 		DBG_UT << "set save id: " << id << "\n";

@@ -82,7 +82,7 @@ public:
 
 private:
 
-	int xpos(size_t width) const;
+	int xpos(std::size_t width) const;
 	surface surf_, buf_;
 	std::string text_;
 	int font_size_;

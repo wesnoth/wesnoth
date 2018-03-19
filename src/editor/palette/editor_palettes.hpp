@@ -28,7 +28,7 @@ class editor_palette : public tristate_palette {
 public:
 
 	editor_palette(editor_display &gui, const config& /*cfg*/
-	             , size_t item_size, size_t item_width, editor_toolkit &toolkit)
+	             , std::size_t item_size, std::size_t item_width, editor_toolkit &toolkit)
 		: tristate_palette(gui.video())
 		, groups_()
 		, gui_(gui)
@@ -57,14 +57,14 @@ public:
 
 	virtual sdl_handler_vector handler_members() override;
 
-	void set_start_item(size_t index) override { items_start_ = index; }
+	void set_start_item(std::size_t index) override { items_start_ = index; }
 
-	size_t start_num(void) override { return items_start_; }
+	std::size_t start_num(void) override { return items_start_; }
 
 	/** Menu expanding for palette group list */
 	void expand_palette_groups_menu(std::vector<config>& items, int i) override;
 
-	void set_group(size_t index) override;
+	void set_group(std::size_t index) override;
 //	int active_group();
 
 	const std::vector<item_group>& get_groups() const override { return groups_; }
@@ -103,7 +103,7 @@ public:
 
 private:
 
-	size_t active_group_index();
+	std::size_t active_group_index();
 
 	virtual void draw_item(const Item& item, surface& item_image, std::stringstream& tooltip) = 0;
 

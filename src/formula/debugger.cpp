@@ -327,7 +327,7 @@ public:
 		return false;
 	}
 private:
-	size_t level_;
+	std::size_t level_;
 };
 
 
@@ -354,7 +354,7 @@ public:
 		return false;
 	}
 private:
-	size_t level_;
+	std::size_t level_;
 };
 
 

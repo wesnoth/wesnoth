@@ -197,7 +197,7 @@ static filesystem::blacklist_pattern_list read_ignore_patterns(const std::string
 	std::string line;
 	while (std::getline(*stream, line)) {
 		boost::trim(line);
-		const size_t l = line.size();
+		const std::size_t l = line.size();
 		// .gitignore & WML like comments
 		if (l == 0 || !line.compare(0,2,"# ")) continue;
 		if (line[l - 1] == '/') { // directory; we strip the last /
@@ -296,7 +296,7 @@ void refresh_addon_version_info_cache()
 	std::transform(addons.begin(), addons.end(),
 	               addon_info_files.begin(), get_info_file_path);
 
-	for(size_t i = 0; i < addon_info_files.size(); ++i) {
+	for(std::size_t i = 0; i < addon_info_files.size(); ++i) {
 		assert(i < addons.size());
 
 		const std::string& addon = addons[i];

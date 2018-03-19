@@ -200,7 +200,7 @@ void editor_controller::do_screenshot(const std::string& screenshot_filename /* 
 bool editor_controller::quit_confirm()
 {
 	std::string modified;
-	size_t amount = context_manager_->modified_maps(modified);
+	std::size_t amount = context_manager_->modified_maps(modified);
 
 	std::string message;
 	if (amount == 0) {
@@ -544,7 +544,7 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 			return index == get_current_map_context().get_active_area()
 					? ACTION_SELECTED : ACTION_DESELECTED;
 		case editor::SIDE:
-			return static_cast<size_t>(index) == gui_->playing_team()
+			return static_cast<std::size_t>(index) == gui_->playing_team()
 					? ACTION_SELECTED : ACTION_DESELECTED;
 		case editor::TIME:
 			return index ==	get_current_map_context().get_time_manager()->get_current_time()

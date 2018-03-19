@@ -366,8 +366,8 @@ static config unit_abilities(const unit* u)
 
 	boost::dynamic_bitset<> active;
 	const std::vector<std::tuple<std::string, t_string,t_string,t_string>> &abilities = u->ability_tooltips(&active);
-	const size_t abilities_size = abilities.size();
-	for ( size_t i = 0; i != abilities_size; ++i )
+	const std::size_t abilities_size = abilities.size();
+	for ( std::size_t i = 0; i != abilities_size; ++i )
 	{
 		// Aliases for readability:
 		const std::string& id        = std::get<0>(abilities[i]);
@@ -815,8 +815,8 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 		auto ctx = at.specials_context_for_listing();
 		boost::dynamic_bitset<> active;
 		const std::vector<std::pair<t_string, t_string>> &specials = at.special_tooltips(&active);
-		const size_t specials_size = specials.size();
-		for ( size_t i = 0; i != specials_size; ++i )
+		const std::size_t specials_size = specials.size();
+		for ( std::size_t i = 0; i != specials_size; ++i )
 		{
 			// Aliases for readability:
 			const t_string &name = specials[i].first;

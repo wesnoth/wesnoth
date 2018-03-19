@@ -253,7 +253,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 		const std::string* energy_file = &game_config::images::energy;
 
-		if(size_t(side) != viewing_team+1) {
+		if(std::size_t(side) != viewing_team+1) {
 			if(disp.team_valid() &&
 			   viewing_team_ref.is_enemy(side)) {
 				if (preferences::show_enemy_orb() && !u.incapacitated())
@@ -350,12 +350,12 @@ void unit_drawer::redraw_unit (const unit & u) const
 }
 
 void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
-		const map_location& loc, size_t height, double filled,
+		const map_location& loc, std::size_t height, double filled,
 		const color_t& col, fixed_t alpha) const
 {
 
 	filled = std::min<double>(std::max<double>(filled,0.0),1.0);
-	height = static_cast<size_t>(height*zoom_factor);
+	height = static_cast<std::size_t>(height*zoom_factor);
 
 	surface surf(image::get_image(image,image::SCALED_TO_HEX));
 
@@ -386,7 +386,7 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 		bar_loc = scaled_bar_loc;
 	}
 
-	if(height > static_cast<size_t>(bar_loc.h)) {
+	if(height > static_cast<std::size_t>(bar_loc.h)) {
 		height = bar_loc.h;
 	}
 
@@ -397,7 +397,7 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 	//	}
 	//}
 
-	const size_t skip_rows = bar_loc.h - height;
+	const std::size_t skip_rows = bar_loc.h - height;
 
 	SDL_Rect top {0, 0, surf->w, bar_loc.y};
 	SDL_Rect bot = sdl::create_rect(0, bar_loc.y + skip_rows, surf->w, 0);
@@ -406,7 +406,7 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 	disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xpos, ypos, surf, top);
 	disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xpos, ypos + top.h, surf, bot);
 
-	size_t unfilled = static_cast<size_t>(height * (1.0 - filled));
+	std::size_t unfilled = static_cast<std::size_t>(height * (1.0 - filled));
 
 	if(unfilled < height && alpha >= ftofxp(0.3)) {
 		const uint8_t r_alpha = std::min<unsigned>(unsigned(fxpmult(alpha,255)),255);

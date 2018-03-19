@@ -128,7 +128,7 @@ bool show_theme_dialog()
 
 	gui2::dialogs::theme_list dlg(themes);
 
-	for (size_t k = 0; k < themes.size(); ++k) {
+	for (std::size_t k = 0; k < themes.size(); ++k) {
 		if(themes[k].id == preferences::theme()) {
 			dlg.set_selected_index(static_cast<int>(k));
 		}

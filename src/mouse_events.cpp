@@ -449,7 +449,7 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 	adjacent_loc_array_t adj;
 	get_adjacent_tiles(loc, adj.data());
 
-	for(size_t n = 0; n < adj.size(); ++n) {
+	for(std::size_t n = 0; n < adj.size(); ++n) {
 		if(pc_.gamestate().board_.map().on_board(adj[n]) == false) {
 			continue;
 		}
@@ -459,7 +459,7 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 		}
 
 		if(current_paths_.destinations.contains(adj[n])) {
-			static const size_t NDIRECTIONS = map_location::NDIRECTIONS;
+			static const std::size_t NDIRECTIONS = map_location::NDIRECTIONS;
 
 			unsigned int difference = std::abs(int(preferred - n));
 			if(difference > NDIRECTIONS / 2) {
@@ -847,7 +847,7 @@ bool mouse_handler::move_unit_along_current_route()
 
 	bool interrupted = false;
 	if(steps.size() > 1) {
-		size_t num_moves = move_unit_along_route(steps, interrupted);
+		std::size_t num_moves = move_unit_along_route(steps, interrupted);
 
 		interrupted = interrupted || num_moves + 1 < steps.size();
 		next_unit_ = steps[num_moves];
@@ -878,7 +878,7 @@ bool mouse_handler::move_unit_along_current_route()
  *          steps is not empty (the return value is guaranteed to be less
  *          than steps.size() ).
  */
-size_t mouse_handler::move_unit_along_route(const std::vector<map_location>& steps, bool& interrupted)
+std::size_t mouse_handler::move_unit_along_route(const std::vector<map_location>& steps, bool& interrupted)
 {
 	if(steps.empty()) {
 		interrupted = false;
@@ -902,7 +902,7 @@ size_t mouse_handler::move_unit_along_route(const std::vector<map_location>& ste
 	}
 
 	LOG_NG << "move unit along route  from " << steps.front() << " to " << steps.back() << "\n";
-	size_t moves = actions::move_unit_and_record(steps, &pc_.get_undo_stack(), false, true, &interrupted);
+	std::size_t moves = actions::move_unit_and_record(steps, &pc_.get_undo_stack(), false, true, &interrupted);
 
 	cursor::set(cursor::NORMAL);
 	gui().invalidate_game_status();
@@ -1036,7 +1036,7 @@ void mouse_handler::attack_enemy_(const map_location& att_loc, const map_locatio
 	std::vector<battle_context> bc_vector;
 	fill_weapon_choices(bc_vector, attacker, defender);
 
-	if(size_t(choice) >= bc_vector.size()) {
+	if(std::size_t(choice) >= bc_vector.size()) {
 		return;
 	}
 

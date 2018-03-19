@@ -36,7 +36,7 @@ void text_cache::resize(unsigned int size)
 
 text_surface &text_cache::find(const text_surface& t)
 {
-	static size_t lookup_ = 0, hit_ = 0;
+	static std::size_t lookup_ = 0, hit_ = 0;
 	text_list::iterator it_bgn = cache_.begin(), it_end = cache_.end();
 	text_list::iterator it = std::find(it_bgn, it_end, t);
 	if (it != it_end) {

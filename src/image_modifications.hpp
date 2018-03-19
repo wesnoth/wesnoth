@@ -45,7 +45,7 @@ public:
 	bool empty() const  { return priorities_.empty(); }
 	void push(modification * mod);
 	void pop();
-	size_t size() const;
+	std::size_t size() const;
 	modification * top() const;
 
 private:

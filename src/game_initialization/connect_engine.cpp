@@ -760,7 +760,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 
 int connect_engine::find_user_side_index_by_id(const std::string& id) const
 {
-	size_t i = 0;
+	std::size_t i = 0;
 	for(side_engine_ptr side : side_engines_) {
 		if(side->player_id() == id) {
 			break;
@@ -901,7 +901,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 	cfg_["side"] = index_ + 1;
 
 	// Check if this side should give its control to some other side.
-	const size_t side_cntr_index = cfg_["controller"].to_int(-1) - 1;
+	const std::size_t side_cntr_index = cfg_["controller"].to_int(-1) - 1;
 	if(side_cntr_index < parent_.side_engines().size()) {
 		// Remove this attribute to avoid locking side
 		// to non-existing controller type.

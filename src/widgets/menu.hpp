@@ -39,18 +39,18 @@ public:
 		virtual void init() {}
 
 		virtual SDL_Rect item_size(const std::string& item) const;
-		virtual void draw_row_bg(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
-		virtual void draw_row(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
+		virtual void draw_row_bg(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
+		virtual void draw_row(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 		void scale_images(int max_width, int max_height);
 		surface get_item_image(const image::locator &i_locator) const;
-		size_t get_font_size() const;
-		size_t get_cell_padding() const;
-		size_t get_thickness() const;
+		std::size_t get_font_size() const;
+		std::size_t get_cell_padding() const;
+		std::size_t get_thickness() const;
 
 	protected:
-		size_t font_size_;
-		size_t cell_padding_;
-		size_t thickness_;  //additional cell padding for style use only
+		std::size_t font_size_;
+		std::size_t cell_padding_;
+		std::size_t thickness_;  //additional cell padding for style use only
 
 		int normal_rgb_, selected_rgb_, heading_rgb_;
 		double normal_alpha_, selected_alpha_, heading_alpha_;
@@ -67,8 +67,8 @@ public:
 		virtual ~imgsel_style();
 
 		virtual SDL_Rect item_size(const std::string& item) const;
-		virtual void draw_row_bg(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
-		virtual void draw_row(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
+		virtual void draw_row_bg(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
+		virtual void draw_row(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 
 		virtual void init() { load_images(); }
 		bool load_images();
@@ -107,13 +107,13 @@ public:
 		item() : fields(), help(), id(0)
 		{}
 
-		item(const std::vector<std::string>& fields, size_t id)
+		item(const std::vector<std::string>& fields, std::size_t id)
 			: fields(fields), help(), id(id)
 		{}
 
 		std::vector<std::string> fields;
 		std::vector<std::string> help;
-		size_t id;
+		std::size_t id;
 	};
 
 	class sorter
@@ -157,14 +157,14 @@ public:
 
 	int selection() const;
 
-	void move_selection(size_t id);
-	void move_selection_keeping_viewport(size_t id);
+	void move_selection(std::size_t id);
+	void move_selection_keeping_viewport(std::size_t id);
 	void reset_selection();
 
 	// allows user to change_item while running (dangerous)
 	void change_item(int pos1,int pos2,const std::string& str);
 
-	virtual void erase_item(size_t index);
+	virtual void erase_item(std::size_t index);
 
 	void set_heading(const std::vector<std::string>& heading);
 
@@ -184,7 +184,7 @@ public:
 	int get_max_height() const { return max_height_; }
 	int get_max_width() const { return max_width_; }
 
-	size_t number_of_items() const { return items_.size(); }
+	std::size_t number_of_items() const { return items_.size(); }
 
 	int process();
 
@@ -209,7 +209,7 @@ protected:
 
 	bool requires_event_focus(const SDL_Event *event=nullptr) const;
 	const std::vector<int>& column_widths() const;
-	virtual void draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
+	virtual void draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 
 	style *style_;
 	bool silent_;
@@ -221,14 +221,14 @@ protected:
 
 	int hit_heading(int x, int y) const;
 
-	void invalidate_row(size_t id);
-	void invalidate_row_pos(size_t pos);
+	void invalidate_row(std::size_t id);
+	void invalidate_row_pos(std::size_t pos);
 	void invalidate_heading();
 
 private:
-	size_t max_items_onscreen() const;
+	std::size_t max_items_onscreen() const;
 
-	size_t heading_height() const;
+	std::size_t heading_height() const;
 
 	int max_height_, max_width_;
 	mutable int max_items_, item_height_;
@@ -237,7 +237,7 @@ private:
 	void key_press(SDL_Keycode key);
 
 	std::vector<item> items_;
-	std::vector<size_t> item_pos_;
+	std::vector<std::size_t> item_pos_;
 
 	std::vector<std::string> heading_;
 	mutable int heading_height_;
@@ -250,11 +250,11 @@ private:
 
 	mutable std::vector<int> column_widths_;
 
-	size_t selected_;
+	std::size_t selected_;
 	bool click_selects_;
 	bool out_;
 	bool previous_button_;
-	//std::set<size_t> undrawn_items_;
+	//std::set<std::size_t> undrawn_items_;
 
 	bool show_result_;
 
@@ -269,9 +269,9 @@ private:
 	mutable std::map<int,SDL_Rect> itemRects_;
 
 	SDL_Rect get_item_rect(int item) const;
-	SDL_Rect get_item_rect_internal(size_t pos) const;
-	size_t get_item_height_internal(const std::vector<std::string>& item) const;
-	size_t get_item_height(int item) const;
+	SDL_Rect get_item_rect_internal(std::size_t pos) const;
+	std::size_t get_item_height_internal(const std::vector<std::string>& item) const;
+	std::size_t get_item_height(int item) const;
 	int items_start() const;
 
 	int items_end() const;
@@ -306,10 +306,10 @@ private:
 
 	void update_size();
 	enum SELECTION_MOVE_VIEWPORT { MOVE_VIEWPORT, NO_MOVE_VIEWPORT };
-	void set_selection_pos(size_t pos, bool silent=false, SELECTION_MOVE_VIEWPORT move_viewport=MOVE_VIEWPORT);
-	void move_selection_to(size_t id, bool silent=false, SELECTION_MOVE_VIEWPORT move_viewport=MOVE_VIEWPORT);
-	void move_selection_up(size_t dep);
-	void move_selection_down(size_t dep);
+	void set_selection_pos(std::size_t pos, bool silent=false, SELECTION_MOVE_VIEWPORT move_viewport=MOVE_VIEWPORT);
+	void move_selection_to(std::size_t id, bool silent=false, SELECTION_MOVE_VIEWPORT move_viewport=MOVE_VIEWPORT);
+	void move_selection_up(std::size_t dep);
+	void move_selection_down(std::size_t dep);
 
 	std::set<int> invalid_;
 };

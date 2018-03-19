@@ -51,7 +51,7 @@ editor_team_info::editor_team_info(const team& t)
 {
 }
 
-const size_t map_context::max_action_stack_size_ = 100;
+const std::size_t map_context::max_action_stack_size_ = 100;
 
 map_context::map_context(const editor_map& map, bool pure_map, const config& schedule)
 	: filename_()

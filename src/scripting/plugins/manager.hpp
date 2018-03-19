@@ -48,18 +48,18 @@ public:
 		(STOPPED,	"stopped")
 	)
 
-	size_t size();
+	std::size_t size();
 
-	STATUS get_status(size_t idx);
-	std::string get_detailed_status(size_t idx);
-	std::string get_name (size_t idx);
+	STATUS get_status(std::size_t idx);
+	std::string get_detailed_status(std::size_t idx);
+	std::string get_name (std::size_t idx);
 
 	bool any_running();
 
-	size_t load_plugin(const std::string & name, const std::string & filename); 	//throws exceptions in case of failure
-	size_t add_plugin(const std::string & name, const std::string & prog);		//throws exceptions in case of failure
+	std::size_t load_plugin(const std::string & name, const std::string & filename); 	//throws exceptions in case of failure
+	std::size_t add_plugin(const std::string & name, const std::string & prog);		//throws exceptions in case of failure
 
-	void start_plugin(size_t idx);							//throws exceptions in case of failure
+	void start_plugin(std::size_t idx);							//throws exceptions in case of failure
 
 	struct event {
 		std::string name;

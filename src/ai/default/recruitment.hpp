@@ -254,7 +254,7 @@ private:
 	terrain_count_map important_terrain_;
 	int own_units_in_combat_counter_;
 	std::map<map_location, double> average_local_cost_;
-	std::map<size_t, int> cheapest_unit_costs_;
+	std::map<std::size_t, int> cheapest_unit_costs_;
 	cache_table combat_cache_;
 	enum states {NORMAL, SAVE_GOLD, SPEND_ALL_GOLD, LEADER_IN_DANGER};
 	states state_;

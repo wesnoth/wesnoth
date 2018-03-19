@@ -37,9 +37,9 @@ static bool contains_ignore_case(const std::string& str1, const std::string& str
 		return false;
 	}
 
-	for(size_t i = 0; i < str1.size() - str2.size() + 1; i++) {
+	for(std::size_t i = 0; i < str1.size() - str2.size() + 1; i++) {
 		bool ok = true;
-		for(size_t j = 0; j < str2.size(); j++) {
+		for(std::size_t j = 0; j < str2.size(); j++) {
 			if(std::tolower(str1[i + j]) != std::tolower(str2[j])) {
 				ok = false;
 				break;
@@ -339,7 +339,7 @@ public:
 	std::vector<level_ptr> get_levels_by_type_unfiltered(level::TYPE type) const;
 	std::vector<level_ptr> get_levels_by_type(level::TYPE type) const;
 
-	std::vector<size_t> get_filtered_level_indices(level::TYPE type) const;
+	std::vector<std::size_t> get_filtered_level_indices(level::TYPE type) const;
 
 	level& current_level() const;
 	const extras_metadata& current_era() const;
@@ -360,11 +360,11 @@ public:
 		return current_level_type_ == level::TYPE::CAMPAIGN || current_level_type_ == level::TYPE::SP_CAMPAIGN;
 	}
 
-	void set_current_level(const size_t index);
+	void set_current_level(const std::size_t index);
 
-	void set_current_era_index(const size_t index, bool force = false);
+	void set_current_era_index(const std::size_t index, bool force = false);
 
-	size_t current_era_index() const
+	std::size_t current_era_index() const
 	{
 		return current_era_index_;
 	}
@@ -408,12 +408,12 @@ private:
 	void init_extras(const MP_EXTRA extra_type);
 	void apply_level_filters();
 
-	size_t map_level_index(size_t index) const;
+	std::size_t map_level_index(std::size_t index) const;
 
 	level::TYPE current_level_type_;
-	size_t current_level_index_;
+	std::size_t current_level_index_;
 
-	size_t current_era_index_;
+	std::size_t current_era_index_;
 
 	std::string level_name_filter_;
 	int player_count_filter_;
@@ -423,13 +423,13 @@ private:
 		explicit type_list() : games(), games_filtered() {}
 
 		std::vector<level_ptr> games;
-		std::vector<size_t> games_filtered;
+		std::vector<std::size_t> games_filtered;
 
 		void apply_filter(const int player_count, const std::string& name_filter)
 		{
 			games_filtered.clear();
 
-			for(size_t i = 0; i < games.size(); i++) {
+			for(std::size_t i = 0; i < games.size(); i++) {
 				const bool num_players_match = player_count == 1 || games[i]->player_count_filter(player_count);
 
 				if(contains_ignore_case(games[i]->name(), name_filter) && num_players_match) {

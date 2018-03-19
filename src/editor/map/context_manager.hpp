@@ -34,7 +34,7 @@ public:
 
 	bool is_active_transitions_hotkey(const std::string& item);
 
-	size_t modified_maps(std::string& modified);
+	std::size_t modified_maps(std::string& modified);
 
 	void set_update_transitions_mode(int mode)
 	{
@@ -63,7 +63,7 @@ public:
 		return current_context_index_;
 	}
 
-	size_t open_maps(void)
+	std::size_t open_maps(void)
 	{
 		return map_contexts_.size();
 	}
@@ -150,7 +150,7 @@ public:
 	/** Display a load map dialog and process user input. */
 	void resize_map_dialog();
 
-	size_t size()
+	std::size_t size()
 	{
 		return map_contexts_.size();
 	}
@@ -277,7 +277,7 @@ private:
 	 * @return index of the map context containing the given filename,
 	 *         or map_contexts_.size() if not found.
 	 */
-	size_t check_open_map(const std::string& fn) const;
+	std::size_t check_open_map(const std::string& fn) const;
 
 	/**
 	 * Check if a map is already open. If yes, switch to it

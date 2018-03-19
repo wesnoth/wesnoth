@@ -110,7 +110,7 @@ bool display_context::unit_can_move(const unit &u) const
 int display_context::village_owner(const map_location& loc) const
 {
 	const std::vector<team> & t = teams();
-	for(size_t i = 0; i != t.size(); ++i) {
+	for(std::size_t i = 0; i != t.size(); ++i) {
 		if(t[i].owns_village(loc))
 			return i;
 	}

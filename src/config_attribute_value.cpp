@@ -291,9 +291,9 @@ unsigned config_attribute_value::to_unsigned(unsigned def) const
 	return apply_visitor(attribute_numeric_visitor<unsigned>(def));
 }
 
-size_t config_attribute_value::to_size_t(size_t def) const
+std::size_t config_attribute_value::to_size_t(std::size_t def) const
 {
-	return apply_visitor(attribute_numeric_visitor<size_t>(def));
+	return apply_visitor(attribute_numeric_visitor<std::size_t>(def));
 }
 
 time_t config_attribute_value::to_time_t(time_t def) const

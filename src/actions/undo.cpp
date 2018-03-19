@@ -445,11 +445,11 @@ bool undo_list::apply_shroud_changes() const
 	}
 	shroud_clearer clearer;
 	bool cleared_shroud = false;
-	const size_t list_size = undos_.size();
+	const std::size_t list_size = undos_.size();
 
 
 	// Loop through the list of undo_actions.
-	for( size_t i = 0; i != list_size; ++i ) {
+	for( std::size_t i = 0; i != list_size; ++i ) {
 		if (const shroud_clearing_action* action = dynamic_cast<const shroud_clearing_action*>(&undos_[i])) {
 			LOG_NG << "Turning an undo...\n";
 

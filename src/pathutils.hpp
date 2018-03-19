@@ -49,7 +49,7 @@ void get_tiles_in_radius(const map_location& center, const int radius,
  * of @a center (including @a center itself). @a result must be a std::set
  * of locations.
  */
-void get_tiles_radius(const map_location& center, size_t radius,
+void get_tiles_radius(const map_location& center, std::size_t radius,
                       std::set<map_location>& result);
 
 /**
@@ -58,7 +58,7 @@ void get_tiles_radius(const map_location& center, size_t radius,
  * @a result must be a std::set of locations.
  */
 void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
-                      size_t radius, std::set<map_location>& result,
+                      std::size_t radius, std::set<map_location>& result,
                       bool with_border=false);
 
 /**
@@ -68,5 +68,5 @@ void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
  * @a result must be a std::set of locations.
  */
 void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
-                      size_t radius, std::set<map_location>& result,
+                      std::size_t radius, std::set<map_location>& result,
                       bool with_border, const xy_pred &pred);

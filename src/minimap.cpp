@@ -50,8 +50,8 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 	DBG_DP << "creating minimap " << int(map.w()*scale*0.75) << "," << map.h()*scale << "\n";
 
-	const size_t map_width = map.w()*scale*3/4;
-	const size_t map_height = map.h()*scale;
+	const std::size_t map_width = map.w()*scale*3/4;
+	const std::size_t map_height = map.h()*scale;
 	if(map_width == 0 || map_height == 0) {
 		return surface(nullptr);
 	}

@@ -55,7 +55,7 @@ static lg::log_domain log_config("config");
 #define WRN_CF LOG_STREAM(warn, log_config)
 #define LOG_CF LOG_STREAM(info, log_config)
 
-static const size_t max_recursion_levels = 1000;
+static const std::size_t max_recursion_levels = 1000;
 
 namespace
 {
@@ -695,7 +695,7 @@ void write_close_child(std::ostream& out, const std::string& child, unsigned int
 	out << std::string(level, '\t') << "[/" << child << "]\n";
 }
 
-static void write_internal(const config& cfg, std::ostream& out, std::string& textdomain, size_t tab = 0)
+static void write_internal(const config& cfg, std::ostream& out, std::string& textdomain, std::size_t tab = 0)
 {
 	if(tab > max_recursion_levels) {
 		throw config::error("Too many recursion levels in config write");
@@ -722,7 +722,7 @@ static void write_internal(const config& cfg, std::ostream& out, std::string& te
 	}
 }
 
-static void write_internal(const configr_of& cfg, std::ostream& out, std::string& textdomain, size_t tab = 0)
+static void write_internal(const configr_of& cfg, std::ostream& out, std::string& textdomain, std::size_t tab = 0)
 {
 	if(tab > max_recursion_levels) {
 		throw config::error("Too many recursion levels in config write");

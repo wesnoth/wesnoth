@@ -227,7 +227,7 @@ void menu::fill_items(const std::vector<std::string>& items, bool strip_spaces)
 			continue;
 		}
 
-		const size_t id = items_.size();
+		const std::size_t id = items_.size();
 		item_pos_.push_back(id);
 		const item new_item(utils::quoted_split(*itor, COLUMN_SEPARATOR, !strip_spaces),id);
 		items_.push_back(new_item);
@@ -297,18 +297,18 @@ void menu::do_sort()
 
 void menu::recalculate_pos()
 {
-	size_t sz = items_.size();
+	std::size_t sz = items_.size();
 	item_pos_.resize(sz);
-	for(size_t i = 0; i != sz; ++i)
+	for(std::size_t i = 0; i != sz; ++i)
 		item_pos_[items_[i].id] = i;
 	assert_pos();
 }
 
 void menu::assert_pos()
 {
-	size_t sz = items_.size();
+	std::size_t sz = items_.size();
 	assert(item_pos_.size() == sz);
-	for(size_t n = 0; n != sz; ++n) {
+	for(std::size_t n = 0; n != sz; ++n) {
 		assert(item_pos_[n] < sz && n == items_[item_pos_[n]].id);
 	}
 }
@@ -342,7 +342,7 @@ void menu::update_scrollbar_grip_height()
 void menu::update_size()
 {
 	int h = heading_height();
-	for(size_t i = get_position(),
+	for(std::size_t i = get_position(),
 	    i_end = std::min(items_.size(), i + max_items_onscreen());
 	    i < i_end; ++i)
 		h += get_item_rect(i).h;
@@ -393,9 +393,9 @@ void menu::change_item(int pos1, int pos2,const std::string& str)
 	set_dirty();
 }
 
-void menu::erase_item(size_t index)
+void menu::erase_item(std::size_t index)
 {
-	size_t nb_items = items_.size();
+	std::size_t nb_items = items_.size();
 	if (index >= nb_items)
 		return;
 	--nb_items;
@@ -403,11 +403,11 @@ void menu::erase_item(size_t index)
 	clear_item(nb_items);
 
 	// fix ordered positions of items
-	size_t pos = item_pos_[index];
+	std::size_t pos = item_pos_[index];
 	item_pos_.erase(item_pos_.begin() + index);
 	items_.erase(items_.begin() + pos);
-	for(size_t i = 0; i != nb_items; ++i) {
-		size_t &n1 = item_pos_[i], &n2 = items_[i].id;
+	for(std::size_t i = 0; i != nb_items; ++i) {
+		std::size_t &n1 = item_pos_[i], &n2 = items_[i].id;
 		if (n1 > pos) --n1;
 		if (n2 > index) --n2;
 	}
@@ -480,22 +480,22 @@ void menu::set_max_width(const int new_max_width)
 	update_size();
 }
 
-size_t menu::max_items_onscreen() const
+std::size_t menu::max_items_onscreen() const
 {
 	if(max_items_ != -1) {
-		return size_t(max_items_);
+		return std::size_t(max_items_);
 	}
 
-	const size_t max_height = (max_height_ == -1 ? (video().get_height()*66)/100 : max_height_) - heading_height();
+	const std::size_t max_height = (max_height_ == -1 ? (video().get_height()*66)/100 : max_height_) - heading_height();
 
 	std::vector<int> heights;
-	size_t n;
+	std::size_t n;
 	for(n = 0; n != items_.size(); ++n) {
 		heights.push_back(get_item_height(n));
 	}
 
 	std::sort(heights.begin(),heights.end(),std::greater<int>());
-	size_t sum = 0;
+	std::size_t sum = 0;
 	for(n = 0; n != items_.size() && sum < max_height; ++n) {
 		sum += heights[n];
 	}
@@ -513,7 +513,7 @@ void menu::adjust_viewport_to_selection()
 	adjust_position(selected_);
 }
 
-void menu::set_selection_pos(size_t new_selected, bool silent, SELECTION_MOVE_VIEWPORT move_viewport)
+void menu::set_selection_pos(std::size_t new_selected, bool silent, SELECTION_MOVE_VIEWPORT move_viewport)
 {
 	if (new_selected >= items_.size())
 		return;
@@ -534,19 +534,19 @@ void menu::set_selection_pos(size_t new_selected, bool silent, SELECTION_MOVE_VI
 	}
 }
 
-void menu::move_selection_up(size_t dep)
+void menu::move_selection_up(std::size_t dep)
 {
 	set_selection_pos(selected_ > dep ? selected_ - dep : 0);
 }
 
-void menu::move_selection_down(size_t dep)
+void menu::move_selection_down(std::size_t dep)
 {
-	size_t nb_items = items_.size();
+	std::size_t nb_items = items_.size();
 	set_selection_pos(selected_ + dep >= nb_items ? nb_items - 1 : selected_ + dep);
 }
 
 // private function with control over sound and viewport
-void menu::move_selection_to(size_t id, bool silent, SELECTION_MOVE_VIEWPORT move_viewport)
+void menu::move_selection_to(std::size_t id, bool silent, SELECTION_MOVE_VIEWPORT move_viewport)
 {
 	if(id < item_pos_.size()) {
 		set_selection_pos(item_pos_[id], silent, move_viewport);
@@ -554,7 +554,7 @@ void menu::move_selection_to(size_t id, bool silent, SELECTION_MOVE_VIEWPORT mov
 }
 
 // public function
-void menu::move_selection(size_t id)
+void menu::move_selection(std::size_t id)
 {
 	if(id < item_pos_.size()) {
 		set_selection_pos(item_pos_[id], true, MOVE_VIEWPORT);
@@ -562,7 +562,7 @@ void menu::move_selection(size_t id)
 }
 
 // public function
-void menu::move_selection_keeping_viewport(size_t id)
+void menu::move_selection_keeping_viewport(std::size_t id)
 {
 	if(id < item_pos_.size()) {
 		set_selection_pos(item_pos_[id], true, NO_MOVE_VIEWPORT);
@@ -661,8 +661,8 @@ void menu::handle_event(const SDL_Event& event)
 			x = event.button.x;
 			y = event.button.y;
 		} else {
-			x = reinterpret_cast<size_t>(event.user.data1);
-			y = reinterpret_cast<size_t>(event.user.data2);
+			x = reinterpret_cast<std::size_t>(event.user.data1);
+			y = reinterpret_cast<std::size_t>(event.user.data2);
 		}
 
 		const int item = hit(x,y);
@@ -819,7 +819,7 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 	return res;
 }
 
-void menu::style::draw_row_bg(menu& menu_ref, const size_t /*row_index*/, const SDL_Rect& rect, ROW_TYPE type)
+void menu::style::draw_row_bg(menu& menu_ref, const std::size_t /*row_index*/, const SDL_Rect& rect, ROW_TYPE type)
 {
 	menu_ref.bg_restore(rect);
 
@@ -848,7 +848,7 @@ void menu::style::draw_row_bg(menu& menu_ref, const size_t /*row_index*/, const 
 	sdl::fill_rectangle(rect, c);
 }
 
-void menu::style::draw_row(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
+void menu::style::draw_row(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 {
 	if(rect.w == 0 || rect.h == 0) {
 		return;
@@ -869,13 +869,13 @@ void menu::style::draw_row(menu& menu_ref, const size_t row_index, const SDL_Rec
 
 void menu::column_widths_item(const std::vector<std::string>& row, std::vector<int>& widths) const
 {
-	for(size_t col = 0; col != row.size(); ++col) {
+	for(std::size_t col = 0; col != row.size(); ++col) {
 		const SDL_Rect res = style_->item_size(row[col]);
-		size_t text_trailing_space = (item_ends_with_image(row[col])) ? 0 : style_->get_cell_padding();
+		std::size_t text_trailing_space = (item_ends_with_image(row[col])) ? 0 : style_->get_cell_padding();
 
 		if(col == widths.size()) {
 			widths.push_back(res.w + text_trailing_space);
-		} else if(static_cast<size_t>(res.w) > widths[col] - text_trailing_space) {
+		} else if(static_cast<std::size_t>(res.w) > widths[col] - text_trailing_space) {
 			widths[col] = res.w + text_trailing_space;
 		}
 	}
@@ -892,7 +892,7 @@ const std::vector<int>& menu::column_widths() const
 {
 	if(column_widths_.empty()) {
 		column_widths_item(heading_,column_widths_);
-		for(size_t row = 0; row != items_.size(); ++row) {
+		for(std::size_t row = 0; row != items_.size(); ++row) {
 			column_widths_item(items_[row].fields,column_widths_);
 		}
 	}
@@ -908,7 +908,7 @@ void menu::clear_item(int item)
 	bg_restore(rect);
 }
 
-void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
+void menu::draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 {
 	//called from style, draws one row's contents in a generic and adaptable way
 	const std::vector<std::string>& row = (type == HEADING_ROW) ? heading_ : items_[row_index].fields;
@@ -922,7 +922,7 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 	int xpos = rect.x;
 	if(lang_rtl)
 		xpos += rect.w;
-	for(size_t i = 0; i != row.size(); ++i) {
+	for(std::size_t i = 0; i != row.size(); ++i) {
 
 		if(lang_rtl)
 			xpos -= widths[i];
@@ -955,9 +955,9 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 				std::min<int>(max_width_, ((lang_rtl)? xpos - rect.x : rect.x + rect.w - xpos));
 				if(img != nullptr && img->w <= remaining_width
 				&& rect.y + img->h < area.h) {
-					const size_t y = rect.y + (rect.h - img->h)/2;
-					const size_t w = img->w + 5;
-					const size_t x = xpos + ((lang_rtl) ? widths[i] - w : 0);
+					const std::size_t y = rect.y + (rect.h - img->h)/2;
+					const std::size_t w = img->w + 5;
+					const std::size_t x = xpos + ((lang_rtl) ? widths[i] - w : 0);
 					video().blit_surface(x,y,img);
 					if(!lang_rtl)
 						xpos += w;
@@ -982,8 +982,8 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 					}
 				}
 				const SDL_Rect& text_size = font::text_area(str,style_->get_font_size());
-				const size_t y = rect.y + (rect.h - text_size.h)/2;
-				const size_t padding = 2;
+				const std::size_t y = rect.y + (rect.h - text_size.h)/2;
+				const std::size_t padding = 2;
 				font::draw_text(&video(),column,style_->get_font_size(),font::NORMAL_COLOR,to_show,
 					(type == HEADING_ROW ? xpos+padding : xpos), y);
 
@@ -991,8 +991,8 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 					const surface sort_img = image::get_image(sortreversed_ ? "buttons/sliders/slider_arrow_blue.png" :
 					                                   "buttons/sliders/slider_arrow_blue.png~ROTATE(180)");
 					if(sort_img != nullptr && sort_img->w <= widths[i] && sort_img->h <= rect.h) {
-						const size_t sort_x = xpos + widths[i] - sort_img->w - padding;
-						const size_t sort_y = rect.y + rect.h/2 - sort_img->h/2;
+						const std::size_t sort_x = xpos + widths[i] - sort_img->w - padding;
+						const std::size_t sort_y = rect.y + rect.h/2 - sort_img->h/2;
 						video().blit_surface(sort_x,sort_y,sort_img);
 					}
 				}
@@ -1013,7 +1013,7 @@ void menu::draw_contents()
 	heading_rect.h = heading_height();
 	style_->draw_row(*this,0,heading_rect,HEADING_ROW);
 
-	for(size_t i = 0; i != item_pos_.size(); ++i) {
+	for(std::size_t i = 0; i != item_pos_.size(); ++i) {
 		style_->draw_row(*this,item_pos_[i],get_item_rect(i),
 			 (!out_ && item_pos_[i] == selected_) ? SELECTED_ROW : NORMAL_ROW);
 	}
@@ -1062,7 +1062,7 @@ int menu::hit(int x, int y) const
 {
 	const SDL_Rect& loc = inner_location();
 	if (x >= loc.x  && x < loc.x + loc.w && y >= loc.y && y < loc.y + loc.h) {
-		for(size_t i = 0; i != items_.size(); ++i) {
+		for(std::size_t i = 0; i != items_.size(); ++i) {
 			const SDL_Rect& rect = get_item_rect(i);
 			if (y >= rect.y && y < rect.y + rect.h)
 				return i;
@@ -1101,9 +1101,9 @@ std::pair<int,int> menu::hit_cell(int x, int y) const
 
 int menu::hit_heading(int x, int y) const
 {
-	const size_t height = heading_height();
+	const std::size_t height = heading_height();
 	const SDL_Rect& loc = inner_location();
-	if(y >= loc.y && static_cast<size_t>(y) < loc.y + height) {
+	if(y >= loc.y && static_cast<std::size_t>(y) < loc.y + height) {
 		return hit_column(x);
 	} else {
 		return -1;
@@ -1115,7 +1115,7 @@ SDL_Rect menu::get_item_rect(int item) const
 	return get_item_rect_internal(item_pos_[item]);
 }
 
-SDL_Rect menu::get_item_rect_internal(size_t item) const
+SDL_Rect menu::get_item_rect_internal(std::size_t item) const
 {
 	unsigned int first_item_on_screen = get_position();
 	if (item < first_item_on_screen ||
@@ -1159,9 +1159,9 @@ SDL_Rect menu::get_item_rect_internal(size_t item) const
 	return res;
 }
 
-size_t menu::get_item_height_internal(const std::vector<std::string>& item) const
+std::size_t menu::get_item_height_internal(const std::vector<std::string>& item) const
 {
-	size_t res = 0;
+	std::size_t res = 0;
 	for(std::vector<std::string>::const_iterator i = item.begin(); i != item.end(); ++i) {
 		SDL_Rect rect = style_->item_size(*i);
 		res = std::max<int>(rect.h,res);
@@ -1170,7 +1170,7 @@ size_t menu::get_item_height_internal(const std::vector<std::string>& item) cons
 	return res;
 }
 
-size_t menu::heading_height() const
+std::size_t menu::heading_height() const
 {
 	if(heading_height_ == -1) {
 		heading_height_ = int(get_item_height_internal(heading_));
@@ -1179,13 +1179,13 @@ size_t menu::heading_height() const
 	return std::min<unsigned int>(heading_height_,max_height_);
 }
 
-size_t menu::get_item_height(int) const
+std::size_t menu::get_item_height(int) const
 {
 	if(item_height_ != -1)
-		return size_t(item_height_);
+		return std::size_t(item_height_);
 
-	size_t max_height = 0;
-	for(size_t n = 0; n != items_.size(); ++n) {
+	std::size_t max_height = 0;
+	for(std::size_t n = 0; n != items_.size(); ++n) {
 		max_height = std::max<int>(max_height,get_item_height_internal(items_[n].fields));
 	}
 
@@ -1207,9 +1207,9 @@ void menu::process_help_string(int mousex, int mousey)
 			video().clear_help_string(help_string_);
 			help_string_ = -1;
 		}
-		if(size_t(loc.first) < items_.size()) {
+		if(std::size_t(loc.first) < items_.size()) {
 			const std::vector<std::string>& row = items_[item_pos_[loc.first]].help;
-			if(size_t(loc.second) < row.size()) {
+			if(std::size_t(loc.second) < row.size()) {
 				const std::string& help = row[loc.second];
 				if(help.empty() == false) {
 					//std::cerr << "setting help string from menu to '" << help << "'\n";
@@ -1222,7 +1222,7 @@ void menu::process_help_string(int mousex, int mousey)
 	cur_help_ = loc;
 }
 
-void menu::invalidate_row(size_t id)
+void menu::invalidate_row(std::size_t id)
 {
 	if(id >= items_.size()) {
 		return;
@@ -1231,7 +1231,7 @@ void menu::invalidate_row(size_t id)
 	invalid_.insert(int(id));
 }
 
-void menu::invalidate_row_pos(size_t pos)
+void menu::invalidate_row_pos(std::size_t pos)
 {
 	if(pos >= items_.size()) {
 		return;

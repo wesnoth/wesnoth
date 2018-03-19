@@ -90,7 +90,7 @@ public:
 	void on_mouseover_change(const map_location& hex);
 	void on_deselect_hex(){ erase_temp_move();}
 	void on_gamestate_change();
-	void on_viewer_change(size_t team_index);
+	void on_viewer_change(std::size_t team_index);
 	void on_change_controller(int side, const team& t);
 	void on_kill_unit();
 	/** Handles various cleanup right before removing an action from the queue */
@@ -103,7 +103,7 @@ public:
 	/** Called by turn_info::process_network_data() when network data needs to be processed */
 	void process_network_data(const config&);
 	/** Adds a side_actions::net_cmd to net_buffer_[team_index], whereupon it will (later) be sent to all allies */
-	void queue_net_cmd(size_t team_index, const side_actions::net_cmd&);
+	void queue_net_cmd(std::size_t team_index, const side_actions::net_cmd&);
 
 	/** Whether the current side has actions in the first turn of its planned actions queue */
 	static bool current_side_has_actions();
@@ -196,7 +196,7 @@ private:
 
 	void validate_actions_if_needed();
 	/** Called by all of the save_***() methods after they have added their action to the queue */
-	void update_plan_hiding(size_t viewing_team);
+	void update_plan_hiding(std::size_t viewing_team);
 	void update_plan_hiding(); //same as above, but uses wb::viewer_team() as default argument
 
 	/** Tracks whether the whiteboard is active. */
@@ -230,7 +230,7 @@ private:
 
 	std::vector<arrow_ptr> move_arrows_;
 	std::vector<fake_unit_ptr> fake_units_;
-	size_t temp_move_unit_underlying_id_;
+	std::size_t temp_move_unit_underlying_id_;
 
 	const std::unique_ptr<CKey> key_poller_;
 
@@ -243,7 +243,7 @@ private:
 	boost::dynamic_bitset<> team_plans_hidden_;
 
 	///used to keep track of units owning planned moves for visual ghosting/unghosting
-	std::set<size_t> units_owning_moves_;
+	std::set<std::size_t> units_owning_moves_;
 };
 
 /** Applies the planned unit map for the duration of the struct's life.

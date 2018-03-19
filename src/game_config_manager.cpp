@@ -473,7 +473,7 @@ void game_config_manager::load_addons_cfg()
 		}
 	}
 	if(error_addons.empty() == false) {
-		const size_t n = error_addons.size();
+		const std::size_t n = error_addons.size();
 		const std::string& msg1 =
 			_n("The following add-on had errors and could not be loaded:",
 			   "The following add-ons had errors and could not be loaded:",

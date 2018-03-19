@@ -560,7 +560,7 @@ stats calculate_stats(const std::string & save_id)
 	DBG_NG << "calculate_stats, side: " << save_id << " master_stats.size: " << master_stats.size() << "\n";
 	// The order of this loop matters since the turn stats are taken from the
 	// last stats merged.
-	for ( size_t i = 0; i != master_stats.size(); ++i ) {
+	for ( std::size_t i = 0; i != master_stats.size(); ++i ) {
 		team_stats_t::const_iterator find_it = master_stats[i].team_stats.find(save_id);
 		if ( find_it != master_stats[i].team_stats.end() )
 			merge_stats(res, find_it->second);
@@ -587,7 +587,7 @@ levels level_stats(const std::string & save_id)
 
 	levels level_list;
 
-	for ( size_t level = 0; level != master_stats.size(); ++level ) {
+	for ( std::size_t level = 0; level != master_stats.size(); ++level ) {
 		const team_stats_t & team_stats = master_stats[level].team_stats;
 
 		team_stats_t::const_iterator find_it = team_stats.find(save_id);

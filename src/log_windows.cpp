@@ -84,7 +84,7 @@ void rotate_logs(const std::string& log_dir)
 
 	std::sort(files.begin(), files.end());
 
-	for(size_t j = 0; j < files.size() - max_logs; ++j) {
+	for(std::size_t j = 0; j < files.size() - max_logs; ++j) {
 		const std::string path = log_dir + '/' + files[j];
 		LOG_LS << "rotate_logs(): delete " << path << '\n';
 		if(!filesystem::delete_file(path)) {

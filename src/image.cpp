@@ -76,9 +76,9 @@ namespace std
 template<>
 struct hash<image::locator::value>
 {
-	size_t operator()(const image::locator::value& val) const
+	std::size_t operator()(const image::locator::value& val) const
 	{
-		size_t hash = std::hash<unsigned>{}(val.type_);
+		std::size_t hash = std::hash<unsigned>{}(val.type_);
 
 		if(val.type_ == image::locator::FILE || val.type_ == image::locator::SUB_FILE) {
 			boost::hash_combine(hash, val.filename_);
@@ -206,13 +206,13 @@ struct parsed_data_URI{
 };
 parsed_data_URI::parsed_data_URI(utils::string_view data_URI)
 {
-	const size_t colon = data_URI.find(':');
+	const std::size_t colon = data_URI.find(':');
 	const utils::string_view after_scheme = data_URI.substr(colon + 1);
 
-	const size_t comma = after_scheme.find(',');
+	const std::size_t comma = after_scheme.find(',');
 	const utils::string_view type_info = after_scheme.substr(0, comma);
 
-	const size_t semicolon = type_info.find(';');
+	const std::size_t semicolon = type_info.find(';');
 
 	scheme = data_URI.substr(0, colon);
 	base64 = type_info.substr(semicolon + 1);
@@ -291,7 +291,7 @@ void locator::parse_arguments()
 		val_.is_data_uri_ = true;
 	}
 
-	size_t markup_field = fn.find('~');
+	std::size_t markup_field = fn.find('~');
 
 	if(markup_field != std::string::npos) {
 		val_.type_ = SUB_FILE;
@@ -479,7 +479,7 @@ static bool localized_file_uptodate(const std::string& loc_file)
 		std::string contents = filesystem::read_file(trackpath);
 
 		for(const std::string& line : utils::split(contents, '\n')) {
-			size_t p1 = line.find(fsep);
+			std::size_t p1 = line.find(fsep);
 			if(p1 == std::string::npos) {
 				continue;
 			}
@@ -487,7 +487,7 @@ static bool localized_file_uptodate(const std::string& loc_file)
 			std::string state = line.substr(0, p1);
 			boost::trim(state);
 			if(state == "fuzzy") {
-				size_t p2 = line.find(fsep, p1 + fsep.length());
+				std::size_t p2 = line.find(fsep, p1 + fsep.length());
 				if(p2 == std::string::npos) {
 					continue;
 				}
@@ -510,7 +510,7 @@ static std::string get_localized_path(const std::string& file, const std::string
 	std::string dir = filesystem::directory_name(file);
 	std::string base = filesystem::base_name(file);
 
-	const size_t pos_ext = base.rfind(".");
+	const std::size_t pos_ext = base.rfind(".");
 
 	std::string loc_base;
 	if(pos_ext != std::string::npos) {
@@ -749,7 +749,7 @@ static surface apply_light(surface surf, const light_string& ls)
 		};
 
 		// decompose into atomic lightmap operations (4 chars)
-		for(size_t c = 0; c + 3 < ls.size(); c += 4) {
+		for(std::size_t c = 0; c + 3 < ls.size(); c += 4) {
 			light_string sls = ls.substr(c, 4);
 
 			// get the corresponding image and apply the lightmap operation to it

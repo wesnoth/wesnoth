@@ -141,7 +141,7 @@ void aspect_attacks_base::do_attack_analysis(
 
 	ai::manager::get_singleton().raise_user_interact();
 	const int default_attack_depth = 5;
-	if(cur_analysis.movements.size() >= size_t(default_attack_depth)) {
+	if(cur_analysis.movements.size() >= std::size_t(default_attack_depth)) {
 		//std::cerr << "ANALYSIS " << cur_analysis.movements.size() << " >= " << get_attack_depth() << "\n";
 		return;
 	}
@@ -150,13 +150,13 @@ void aspect_attacks_base::do_attack_analysis(
 	std::vector<team> &teams_ = resources::gameboard->teams();
 
 
-	const size_t max_positions = 1000;
+	const std::size_t max_positions = 1000;
 	if(result.size() > max_positions && !cur_analysis.movements.empty()) {
 		LOG_AI << "cut analysis short with number of positions\n";
 		return;
 	}
 
-	for(size_t i = 0; i != units.size(); ++i) {
+	for(std::size_t i = 0; i != units.size(); ++i) {
 		const map_location current_unit = units[i];
 
 		unit_map::iterator unit_itor = units_.find(current_unit);
@@ -196,7 +196,7 @@ void aspect_attacks_base::do_attack_analysis(
                adjacent_loc_array_t adj;
                get_adjacent_tiles(current_unit, adj.data());
 
-               size_t tile;
+               std::size_t tile;
                for(tile = 0; tile != 3; ++tile) {
 
                        const unit_map::const_iterator tmp_unit = units_.find(adj[tile]);

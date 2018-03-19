@@ -103,11 +103,11 @@ public:
 		: formula_expression(name)
 		, args_(args)
 	{
-		if(min_args >= 0 && args_.size() < static_cast<size_t>(min_args)) {
+		if(min_args >= 0 && args_.size() < static_cast<std::size_t>(min_args)) {
 			throw formula_error("Too few arguments", "", "", 0);
 		}
 
-		if(max_args >= 0 && args_.size() > static_cast<size_t>(max_args)) {
+		if(max_args >= 0 && args_.size() > static_cast<std::size_t>(max_args)) {
 			throw formula_error("Too many arguments", "", "", 0);
 		}
 	}

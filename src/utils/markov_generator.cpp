@@ -22,17 +22,17 @@
 #include "serialization/unicode_cast.hpp"
 #include "random.hpp"
 
-static void add_prefixes(const ucs4::string& str, size_t length, markov_prefix_map& res)
+static void add_prefixes(const ucs4::string& str, std::size_t length, markov_prefix_map& res)
 {
-	for(size_t i = 0; i <= str.size(); ++i) {
-		const size_t start = i > length ? i - length : 0;
+	for(std::size_t i = 0; i <= str.size(); ++i) {
+		const std::size_t start = i > length ? i - length : 0;
 		const ucs4::string key(str.begin() + start, str.begin() + i);
 		const ucs4::char_t c = i != str.size() ? str[i] : 0;
 		res[key].push_back(c);
 	}
 }
 
-static markov_prefix_map markov_prefixes(const std::vector<std::string>& items, size_t length)
+static markov_prefix_map markov_prefixes(const std::vector<std::string>& items, std::size_t length)
 {
 	markov_prefix_map res;
 
@@ -44,7 +44,7 @@ static markov_prefix_map markov_prefixes(const std::vector<std::string>& items, 
 }
 
 static ucs4::string markov_generate_name(const markov_prefix_map& prefixes,
-	size_t chain_size, size_t max_len)
+	std::size_t chain_size, std::size_t max_len)
 {
 	if(prefixes.empty() || chain_size == 0) {
 		return ucs4::string();
@@ -63,7 +63,7 @@ static ucs4::string markov_generate_name(const markov_prefix_map& prefixes,
 	// traits to be different. To avoid that problem we call get_random()
 	// the maximum number of times and store the result in a lookup table.
 	std::vector<int> random(max_len);
-	size_t j = 0;
+	std::size_t j = 0;
 	for(; j < max_len; ++j) {
 		random[j] = randomness::generator->next_random();
 	}
@@ -123,7 +123,7 @@ static ucs4::string markov_generate_name(const markov_prefix_map& prefixes,
 	return originalRes;
 }
 
-markov_generator::markov_generator(const std::vector<std::string>& items, size_t chain_size, size_t max_len)
+markov_generator::markov_generator(const std::vector<std::string>& items, std::size_t chain_size, std::size_t max_len)
 	: prefixes_(markov_prefixes(items, chain_size))
 	, chain_size_(chain_size)
 	, max_len_(max_len)

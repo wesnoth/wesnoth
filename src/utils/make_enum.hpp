@@ -48,7 +48,7 @@
  * std::string enumname::enum_to_string(enumname);
  *
  * // Count of defined enum values.
- * const size_t enumname::count;
+ * const std::size_t enumname::count;
  * @endcode
  *
  * It also defines the following stream operations:
@@ -280,10 +280,10 @@ struct NAME : public enum_tag \
 	{ \
 		return static_cast<type>(i); \
 	} \
-	static const size_t count = 0 PP_SEQ_FOR_EACH_I_PAIR(EXPAND_ENUMFUNCTIONCOUNT, , CONTENT);\
+	static const std::size_t count = 0 PP_SEQ_FOR_EACH_I_PAIR(EXPAND_ENUMFUNCTIONCOUNT, , CONTENT);\
 	bool valid() \
 	{ \
-		return cast<size_t>() < count; \
+		return cast<std::size_t>() < count; \
 	} \
 private: \
 	/*prevent automatic conversion for any other built-in types such as bool, int, etc*/ \

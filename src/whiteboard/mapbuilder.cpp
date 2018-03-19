@@ -94,7 +94,7 @@ void mapbuilder::build_map()
 	}
 
 	bool stop = false;
-	for(size_t turn=0; !stop; ++turn) {
+	for(std::size_t turn=0; !stop; ++turn) {
 		stop = true;
 		for (team &side : resources::gameboard->teams()) {
 			side_actions &actions = *side.get_side_actions();
@@ -171,7 +171,7 @@ void mapbuilder::process(side_actions &sa, side_actions::iterator action_it)
 	applied_actions_this_turn_.push_back(action);
 }
 
-void mapbuilder::post_visit_team(size_t turn)
+void mapbuilder::post_visit_team(std::size_t turn)
 {
 	std::set<unit const*> seen;
 

@@ -364,7 +364,7 @@ void game_load::delete_button_callback(window& window)
 {
 	listbox& list = find_widget<listbox>(&window, "savegame_list", false);
 
-	const size_t index = size_t(list.get_selected_row());
+	const std::size_t index = std::size_t(list.get_selected_row());
 	if(index < games_.size()) {
 
 		// See if we should ask the user for deletion confirmation

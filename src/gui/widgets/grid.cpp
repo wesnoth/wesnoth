@@ -238,7 +238,7 @@ void grid::request_reduce_width(const unsigned maximum_width)
 
 	const unsigned too_wide = size.x - maximum_width;
 	unsigned reduced = 0;
-	for(size_t col = 0; col < cols_; ++col) {
+	for(std::size_t col = 0; col < cols_; ++col) {
 		if(too_wide - reduced >= col_width_[col]) {
 			DBG_GUI_L << LOG_HEADER << " column " << col
 					  << " is too small to be reduced.\n";
@@ -316,7 +316,7 @@ void grid::request_reduce_height(const unsigned maximum_height)
 
 	const unsigned too_high = size.y - maximum_height;
 	unsigned reduced = 0;
-	for(size_t row = 0; row < rows_; ++row) {
+	for(std::size_t row = 0; row < rows_; ++row) {
 		unsigned wanted_height = row_height_[row] - (too_high - reduced);
 		/**
 		 * @todo Improve this code.
@@ -1032,13 +1032,13 @@ unsigned grid_implementation::row_request_reduce_height(
 	// The minimum height required.
 	unsigned required_height = 0;
 
-	for(size_t x = 0; x < grid.cols_; ++x) {
+	for(std::size_t x = 0; x < grid.cols_; ++x) {
 		grid::child& cell = grid.get_child(row, x);
 		cell_request_reduce_height(cell, maximum_height);
 
 		const point size(cell.get_best_size());
 
-		if(required_height == 0 || static_cast<size_t>(size.y)
+		if(required_height == 0 || static_cast<std::size_t>(size.y)
 								   > required_height) {
 
 			required_height = size.y;
@@ -1057,13 +1057,13 @@ unsigned grid_implementation::column_request_reduce_width(
 	// The minimum width required.
 	unsigned required_width = 0;
 
-	for(size_t y = 0; y < grid.rows_; ++y) {
+	for(std::size_t y = 0; y < grid.rows_; ++y) {
 		grid::child& cell = grid.get_child(y, column);
 		cell_request_reduce_width(cell, maximum_width);
 
 		const point size(cell.get_best_size());
 
-		if(required_width == 0 || static_cast<size_t>(size.x)
+		if(required_width == 0 || static_cast<std::size_t>(size.x)
 								  > required_width) {
 
 			required_width = size.x;

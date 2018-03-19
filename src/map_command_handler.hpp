@@ -89,8 +89,8 @@ private:
 	void advance_to_arg(unsigned n) const
 	{
 		while (n < args.size() && !args_end) {
-			size_t first_space = str_.find_first_of(' ', args.back());
-			size_t next_arg_begin = str_.find_first_not_of(' ', first_space);
+			std::size_t first_space = str_.find_first_of(' ', args.back());
+			std::size_t next_arg_begin = str_.find_first_not_of(' ', first_space);
 			if (next_arg_begin != std::string::npos) {
 				args.push_back(next_arg_begin);
 			}
@@ -100,7 +100,7 @@ private:
 		}
 	}
 	std::string str_;
-	mutable std::vector<size_t> args;
+	mutable std::vector<std::size_t> args;
 	mutable bool args_end;
 };
 

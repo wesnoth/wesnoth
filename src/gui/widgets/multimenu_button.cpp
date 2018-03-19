@@ -163,7 +163,7 @@ void multimenu_button::signal_handler_left_button_click(const event::ui_event ev
 void multimenu_button::update_label()
 {
 	std::vector<t_string> selected;
-	for(size_t i = 0; i < toggle_states_.size() && i < values_.size(); i++) {
+	for(std::size_t i = 0; i < toggle_states_.size() && i < values_.size(); i++) {
 		if(!toggle_states_[i]) {
 			continue;
 		}
@@ -174,7 +174,7 @@ void multimenu_button::update_label()
 	if(selected.size() == values_.size()) {
 		set_label(_("multimenu^All Selected"));
 	} else {
-		if(selected.size() > static_cast<size_t>(max_shown_)) {
+		if(selected.size() > static_cast<std::size_t>(max_shown_)) {
 			const int excess = selected.size() - max_shown_;
 			selected.resize(max_shown_ + 1);
 			selected.back() = VNGETTEXT("multimenu^$excess other", "$excess others", excess, {{"excess", std::to_string(excess)}});

@@ -62,7 +62,7 @@ std::ostream& move::print(std::ostream &s) const
 	return s;
 }
 
-move::move(size_t team_index, bool hidden, unit& u, const pathfind::marked_route& route,
+move::move(std::size_t team_index, bool hidden, unit& u, const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
 : action(team_index,hidden),
   unit_underlying_id_(u.underlying_id()),
@@ -227,7 +227,7 @@ void move::execute(bool& success, bool& complete)
 	set_arrow_brightness(ARROW_BRIGHTNESS_HIGHLIGHTED);
 	hide_fake_unit();
 
-	size_t num_steps;
+	std::size_t num_steps;
 	bool interrupted;
 	try {
 		events::mouse_handler& mouse_handler = resources::controller->get_mouse_handler_base();

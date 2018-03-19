@@ -209,7 +209,7 @@ private:
 	wesnothd_connection &network_connection_;
 
 	/** Timer for updating the lobby. */
-	size_t lobby_update_timer_;
+	std::size_t lobby_update_timer_;
 
 	std::vector<int> gamelist_id_at_row_;
 

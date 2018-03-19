@@ -372,7 +372,7 @@ std::string file_dialog::get_filelist_selection(listbox& filelist)
 	if(row == 0 && !i_am_root) {
 		return PARENT_DIR;
 	} else {
-		size_t n = i_am_root ? row : row - 1;
+		std::size_t n = i_am_root ? row : row - 1;
 
 		if(n < dir_subdirs_.size()) {
 			return dir_subdirs_[n];
@@ -457,8 +457,8 @@ void file_dialog::set_input_text(text_box& t, const std::string& value)
 
 	t.set_value(value);
 
-	const size_t vallen = t.get_length();
-	const size_t extlen = utf8::size(extension_);
+	const std::size_t vallen = t.get_length();
+	const std::size_t extlen = utf8::size(extension_);
 
 	if(save_mode_ && extlen && vallen > extlen) {
 		// Highlight everything but the extension if it matches

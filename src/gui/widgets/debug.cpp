@@ -249,7 +249,7 @@ void debug_layout_graph::widget_generate_info(std::ostream& out,
 		const generator_base* generator = dynamic_cast<const generator_base*>(widget);
 
 		if(generator) {
-			for(size_t i = 0; i < generator->get_item_count(); ++i) {
+			for(std::size_t i = 0; i < generator->get_item_count(); ++i) {
 
 				const std::string child_id = id + "_I_"
 											 + std::to_string(i);

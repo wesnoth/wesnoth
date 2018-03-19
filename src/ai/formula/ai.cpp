@@ -224,7 +224,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
         adjacent_loc_array_t adj;
         get_adjacent_tiles(destination,adj.data());
 
-        for(size_t n = 0; n < adj.size(); ++n) {
+        for(std::size_t n = 0; n < adj.size(); ++n) {
                 if(resources::gameboard->map().on_board(adj[n]) == false) {
                         continue;
                 }
@@ -233,7 +233,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
                         continue;
                 }
 
-                static const size_t NDIRECTIONS = map_location::NDIRECTIONS;
+                static const std::size_t NDIRECTIONS = map_location::NDIRECTIONS;
                 unsigned int difference = std::abs(int(preferred - n));
                 if(difference > NDIRECTIONS/2) {
                         difference = NDIRECTIONS - difference;
@@ -386,7 +386,7 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "allies")
 	{
 		std::vector<variant> vars;
-		for( size_t i = 0; i < resources::gameboard->teams().size(); ++i) {
+		for( std::size_t i = 0; i < resources::gameboard->teams().size(); ++i) {
 			if ( !current_team().is_enemy( i+1 ) )
 				vars.emplace_back(i);
 		}
@@ -395,7 +395,7 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "enemies")
 	{
 		std::vector<variant> vars;
-		for( size_t i = 0; i < resources::gameboard->teams().size(); ++i) {
+		for( std::size_t i = 0; i < resources::gameboard->teams().size(); ++i) {
 			if ( current_team().is_enemy( i+1 ) )
 				vars.emplace_back(i);
 		}
@@ -428,7 +428,7 @@ variant formula_ai::get_value(const std::string& key) const
 
 		unit_types.build_all(unit_type::FULL);
 
-		for( size_t i = 0; i<resources::gameboard->teams().size(); ++i)
+		for( std::size_t i = 0; i<resources::gameboard->teams().size(); ++i)
 		{
 			std::vector<variant> v;
 			tmp.push_back( v );
@@ -447,7 +447,7 @@ variant formula_ai::get_value(const std::string& key) const
 			}
 		}
 
-		for( size_t i = 0; i<tmp.size(); ++i)
+		for( std::size_t i = 0; i<tmp.size(); ++i)
 			vars.emplace_back(tmp[i]);
 		return variant(vars);
 
@@ -463,7 +463,7 @@ variant formula_ai::get_value(const std::string& key) const
 	{
 		std::vector<variant> vars;
 		std::vector< std::vector< variant>> tmp;
-		for( size_t i = 0; i<resources::gameboard->teams().size(); ++i)
+		for( std::size_t i = 0; i<resources::gameboard->teams().size(); ++i)
 		{
 			std::vector<variant> v;
 			tmp.push_back( v );
@@ -471,7 +471,7 @@ variant formula_ai::get_value(const std::string& key) const
 		for(const unit &u : units) {
 			tmp[u.side() - 1].emplace_back(std::make_shared<unit_callable>(u));
 		}
-		for( size_t i = 0; i<tmp.size(); ++i)
+		for( std::size_t i = 0; i<tmp.size(); ++i)
 			vars.emplace_back(tmp[i]);
 		return variant(vars);
 
@@ -541,11 +541,11 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "villages_of_side")
 	{
 		std::vector<variant> vars;
-		for(size_t i = 0; i<resources::gameboard->teams().size(); ++i)
+		for(std::size_t i = 0; i<resources::gameboard->teams().size(); ++i)
 		{
 			vars.emplace_back();
 		}
-		for(size_t i = 0; i<vars.size(); ++i)
+		for(std::size_t i = 0; i<vars.size(); ++i)
 		{
 			vars[i] = villages_from_set(resources::gameboard->teams()[i].villages());
 		}
@@ -602,13 +602,13 @@ variant formula_ai::get_keeps() const
 {
 	if(keeps_cache_.is_null()) {
 		std::vector<variant> vars;
-		for(size_t x = 0; x != size_t(resources::gameboard->map().w()); ++x) {
-			for(size_t y = 0; y != size_t(resources::gameboard->map().h()); ++y) {
+		for(std::size_t x = 0; x != std::size_t(resources::gameboard->map().w()); ++x) {
+			for(std::size_t y = 0; y != std::size_t(resources::gameboard->map().h()); ++y) {
 				const map_location loc(x,y);
 				if(resources::gameboard->map().is_keep(loc)) {
 					adjacent_loc_array_t adj;
 					get_adjacent_tiles(loc,adj.data());
-					for(size_t n = 0; n < adj.size(); ++n) {
+					for(std::size_t n = 0; n < adj.size(); ++n) {
 						if(resources::gameboard->map().is_castle(adj[n])) {
 							vars.emplace_back(std::make_shared<location_callable>(loc));
 							break;

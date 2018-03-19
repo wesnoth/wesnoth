@@ -93,24 +93,24 @@ public:
 	const std::vector<team>& get_teams() const {return dc_->teams();}
 
 	/** The playing team is the team whose turn it is. */
-	size_t playing_team() const { return activeTeam_; }
+	std::size_t playing_team() const { return activeTeam_; }
 
 	bool team_valid() const;
 
 	/** The viewing team is the team currently viewing the game. */
-	size_t viewing_team() const { return currentTeam_; }
+	std::size_t viewing_team() const { return currentTeam_; }
 	int viewing_side() const { return currentTeam_ + 1; }
 
 	/**
 	 * Sets the team controlled by the player using the computer.
 	 * Data from this team will be displayed in the game status.
 	 */
-	void set_team(size_t team, bool observe=false);
+	void set_team(std::size_t team, bool observe=false);
 
 	/**
 	 * set_playing_team sets the team whose turn it currently is
 	 */
-	void set_playing_team(size_t team);
+	void set_playing_team(std::size_t team);
 
 
 	/**
@@ -637,13 +637,13 @@ public:
 	void init_flags();
 
 	/** Rebuild the flag list (not team colors) for a single side. */
-	void reinit_flags_for_side(size_t side);
+	void reinit_flags_for_side(std::size_t side);
 	void reset_reports(reports& reports_object)
 	{
 		reports_object_ = &reports_object;
 	}
 private:
-	void init_flags_for_side_internal(size_t side, const std::string& side_color);
+	void init_flags_for_side_internal(std::size_t side, const std::string& side_color);
 
 	int blindfold_ctr_;
 
@@ -727,7 +727,7 @@ protected:
 	static const std::string& get_variant(const std::vector<std::string>& variants, const map_location &loc);
 
 	CVideo& screen_;
-	size_t currentTeam_;
+	std::size_t currentTeam_;
 	bool dont_show_all_; //const team *viewpoint_;
 	int xpos_, ypos_;
 	bool view_locked_;
@@ -873,13 +873,13 @@ public:
 	 * The font size is adjusted to the zoom factor.
 	 */
 	void draw_text_in_hex(const map_location& loc,
-		const drawing_layer layer, const std::string& text, size_t font_size,
+		const drawing_layer layer, const std::string& text, std::size_t font_size,
 		color_t color, double x_in_hex=0.5, double y_in_hex=0.5);
 
 protected:
 
 	//TODO sort
-	size_t activeTeam_;
+	std::size_t activeTeam_;
 
 	/**
 	 * In order to render a hex properly it needs to be rendered per row. On

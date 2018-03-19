@@ -61,7 +61,7 @@ static void verify(const unit_map& units, const config& cfg) {
 	std::stringstream errbuf;
 	LOG_REPLAY << "verifying unit structure...\n";
 
-	const size_t nunits = cfg["num_units"].to_size_t();
+	const std::size_t nunits = cfg["num_units"].to_size_t();
 	if(nunits != units.size()) {
 		errbuf << "SYNC VERIFICATION FAILED: number of units from data source differ: "
 			   << nunits << " according to data source. " << units.size() << " locally\n";

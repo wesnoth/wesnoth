@@ -110,7 +110,7 @@ DEFINE_WFL_FUNCTION(dir, 1, 1)
 	formula_input_vector inputs = callable->inputs();
 
 	std::vector<variant> res;
-	for(size_t i = 0; i < inputs.size(); ++i) {
+	for(std::size_t i = 0; i < inputs.size(); ++i) {
 		const formula_input& input = inputs[i];
 		res.emplace_back(input.name);
 	}
@@ -120,7 +120,7 @@ DEFINE_WFL_FUNCTION(dir, 1, 1)
 
 DEFINE_WFL_FUNCTION(if, 2, -1)
 {
-	for(size_t n = 0; n < args().size() - 1; n += 2) {
+	for(std::size_t n = 0; n < args().size() - 1; n += 2) {
 		if(args()[n]->evaluate(variables, fdb).as_bool()) {
 			return args()[n + 1]->evaluate(variables, fdb);
 		}
@@ -137,7 +137,7 @@ DEFINE_WFL_FUNCTION(switch, 3, -1)
 {
 	variant var = args()[0]->evaluate(variables, fdb);
 
-	for(size_t n = 1; n < args().size() - 1; n += 2) {
+	for(std::size_t n = 1; n < args().size() - 1; n += 2) {
 		variant val = args()[n]->evaluate(variables, fdb);
 
 		if(val == var) {
@@ -175,7 +175,7 @@ DEFINE_WFL_FUNCTION(min, 1, -1)
 		res = *std::min_element(res.begin(), res.end());
 	}
 
-	for(size_t n = 1; n < args().size(); ++n) {
+	for(std::size_t n = 1; n < args().size(); ++n) {
 		variant v = args()[n]->evaluate(variables, fdb);
 
 		if(v.is_list()) {
@@ -205,7 +205,7 @@ DEFINE_WFL_FUNCTION(max, 1, -1)
 		res = *std::max_element(res.begin(), res.end());
 	}
 
-	for(size_t n = 1; n < args().size(); ++n) {
+	for(std::size_t n = 1; n < args().size(); ++n) {
 		variant v = args()[n]->evaluate(variables, fdb);
 
 		if(v.is_list()) {
@@ -355,7 +355,7 @@ DEFINE_WFL_FUNCTION(tomap, 1, 2)
 			return variant();
 		}
 
-		for(size_t i = 0; i < var_1.num_elements(); ++i) {
+		for(std::size_t i = 0; i < var_1.num_elements(); ++i) {
 			tmp[var_1[i]] = var_2[i];
 		}
 	} else {
@@ -389,7 +389,7 @@ DEFINE_WFL_FUNCTION(substring, 2, 3)
 			offset = 0;
 		}
 	} else {
-		if(static_cast<size_t>(offset) >= result.size()) {
+		if(static_cast<std::size_t>(offset) >= result.size()) {
 			return variant(std::string());
 		}
 	}
@@ -421,7 +421,7 @@ DEFINE_WFL_FUNCTION(replace, 3, 4)
 			offset = 0;
 		}
 	} else {
-		if(static_cast<size_t>(offset) >= result.size()) {
+		if(static_cast<std::size_t>(offset) >= result.size()) {
 			return variant(result);
 		}
 	}
@@ -452,7 +452,7 @@ DEFINE_WFL_FUNCTION(insert, 3, 3)
 		if(offset < 0) {
 			offset = 0;
 		}
-	} else if(static_cast<size_t>(offset) >= result.size()) {
+	} else if(static_cast<std::size_t>(offset) >= result.size()) {
 		return variant(result + insert);
 	}
 
@@ -625,7 +625,7 @@ DEFINE_WFL_FUNCTION(index_of, 2, 2)
 	const variant value = args()[0]->evaluate(variables, fdb);
 	const variant list = args()[1]->evaluate(variables, fdb);
 
-	for(size_t i = 0; i < list.num_elements(); ++i) {
+	for(std::size_t i = 0; i < list.num_elements(); ++i) {
 		if(list[i] == value) {
 			return variant(i);
 		}
@@ -730,7 +730,7 @@ DEFINE_WFL_FUNCTION(sort, 1, 2)
 	std::vector<variant> vars;
 	vars.reserve(list.num_elements());
 
-	for(size_t n = 0; n != list.num_elements(); ++n) {
+	for(std::size_t n = 0; n != list.num_elements(); ++n) {
 		vars.push_back(list[n]);
 	}
 
@@ -775,7 +775,7 @@ DEFINE_WFL_FUNCTION(find_string, 2, 2)
 	const std::string str = args()[0]->evaluate(variables, fdb).as_string();
 	const std::string key = args()[1]->evaluate(variables, fdb).as_string();
 
-	size_t pos = str.find(key);
+	std::size_t pos = str.find(key);
 	return variant(static_cast<int>(pos));
 }
 
@@ -916,7 +916,7 @@ namespace
 {
 struct indexer
 {
-	explicit indexer(size_t i)
+	explicit indexer(std::size_t i)
 		: i(i)
 	{
 	}
@@ -930,7 +930,7 @@ struct indexer
 		}
 	}
 
-	size_t i;
+	std::size_t i;
 };
 
 /** @todo: replace with lambda? */
@@ -970,10 +970,10 @@ DEFINE_WFL_FUNCTION(zip, 1, -1)
 
 	// So basically this does [[a,b,c],[d,e,f],[x,y,z]] -> [[a,d,x],[b,e,y],[c,f,z]]
 	// Or [[a,b,c,d],[x,y,z]] -> [[a,x],[b,y],[c,z],[d,null()]]
-	size_t max_i = std::max_element(input.begin(), input.end(), comparator())->num_elements();
+	std::size_t max_i = std::max_element(input.begin(), input.end(), comparator())->num_elements();
 	output.reserve(max_i);
 
-	for(size_t i = 0; i < max_i; i++) {
+	for(std::size_t i = 0; i < max_i; i++) {
 		std::vector<variant> elem(input.size());
 		std::transform(input.begin(), input.end(), elem.begin(), indexer(i));
 		output.emplace_back(elem);
@@ -1036,7 +1036,7 @@ DEFINE_WFL_FUNCTION(sum, 1, 2)
 		}
 	}
 
-	for(size_t n = 0; n != items.num_elements(); ++n) {
+	for(std::size_t n = 0; n != items.num_elements(); ++n) {
 		res = res + items[n];
 	}
 
@@ -1097,7 +1097,7 @@ DEFINE_WFL_FUNCTION(size, 1, 1)
 DEFINE_WFL_FUNCTION(null, 0, -1)
 {
 	if(!args().empty()) {
-		for(size_t i = 0; i < args().size(); ++i) {
+		for(std::size_t i = 0; i < args().size(); ++i) {
 			args()[i]->evaluate(variables, fdb);
 		}
 	}
@@ -1367,7 +1367,7 @@ formula_function_expression::formula_function_expression(const std::string& name
 	, arg_names_(arg_names)
 	, star_arg_(-1)
 {
-	for(size_t n = 0; n != arg_names_.size(); ++n) {
+	for(std::size_t n = 0; n != arg_names_.size(); ++n) {
 		if(arg_names_.empty() == false && arg_names_[n][arg_names_[n].size() - 1] == '*') {
 			arg_names_[n].resize(arg_names_[n].size() - 1);
 			star_arg_ = n;
@@ -1386,7 +1386,7 @@ variant formula_function_expression::execute(const formula_callable& variables, 
 	const int begin_time = SDL_GetTicks();
 	map_formula_callable callable;
 
-	for(size_t n = 0; n != arg_names_.size(); ++n) {
+	for(std::size_t n = 0; n != arg_names_.size(); ++n) {
 		variant var = args()[n]->evaluate(variables, fdb);
 		callable.add(arg_names_[n], var);
 
@@ -1399,7 +1399,7 @@ variant formula_function_expression::execute(const formula_callable& variables, 
 		if(!precondition_->evaluate(callable, fdb).as_bool()) {
 			DBG_NG << "FAILED function precondition for function '" << formula_->str() << "' with arguments: ";
 
-			for(size_t n = 0; n != arg_names_.size(); ++n) {
+			for(std::size_t n = 0; n != arg_names_.size(); ++n) {
 				DBG_NG << "  arg " << (n + 1) << ": " << args()[n]->evaluate(variables, fdb).to_debug_string() << "\n";
 			}
 		}

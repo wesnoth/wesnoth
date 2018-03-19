@@ -310,7 +310,7 @@ inline const T& animated<T, T_void_value>::get_first_frame() const
 }
 
 template<typename T, typename T_void_value>
-inline const T& animated<T, T_void_value>::get_frame(size_t n) const
+inline const T& animated<T, T_void_value>::get_frame(std::size_t n) const
 {
 	if(n >= frames_.size()) {
 		return void_value_;
@@ -330,7 +330,7 @@ inline const T& animated<T, T_void_value>::get_last_frame() const
 }
 
 template<typename T, typename T_void_value>
-inline size_t animated<T, T_void_value>::get_frames_count() const
+inline std::size_t animated<T, T_void_value>::get_frames_count() const
 {
 	return frames_.size();
 }

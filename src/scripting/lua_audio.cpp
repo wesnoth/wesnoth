@@ -167,7 +167,7 @@ static int intf_music_play(lua_State* L) {
 }
 
 static int intf_music_next(lua_State*) {
-	size_t n = sound::get_num_tracks();
+	std::size_t n = sound::get_num_tracks();
 	if(n > 0) {
 		sound::play_track(n);
 	}

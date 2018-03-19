@@ -1740,9 +1740,9 @@ void unit::set_advancements(std::vector<config> advancements)
 	}
 }
 
-size_t unit::modification_count(const std::string& mod_type, const std::string& id) const
+std::size_t unit::modification_count(const std::string& mod_type, const std::string& id) const
 {
-	size_t res = 0;
+	std::size_t res = 0;
 	for(const config& item : modifications_.child_range(mod_type)) {
 		if(item["id"] == id) {
 			++res;

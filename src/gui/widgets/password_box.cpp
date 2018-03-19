@@ -45,9 +45,9 @@ password_box::password_box(const implementation::builder_password_box& builder)
 void password_box::set_value(const std::string& text)
 {
 	real_value_ = text;
-	size_t sz = utf8::size(text);
+	std::size_t sz = utf8::size(text);
 	utf8::string passwd;
-	for(size_t i = 0; i < sz; i++) {
+	for(std::size_t i = 0; i < sz; i++) {
 		passwd.append(font::unicode_bullet);
 	}
 	text_box::set_value(passwd);
@@ -79,12 +79,12 @@ void password_box::insert_char(const utf8::string& unicode)
 		sel -= len;
 	}
 
-	size_t sz = utf8::size(unicode);
+	std::size_t sz = utf8::size(unicode);
 	if(sz == 1) {
 		text_box::insert_char(font::unicode_bullet);
 	} else {
 		utf8::string passwd;
-		for(size_t i = 0; i < sz; i++) {
+		for(std::size_t i = 0; i < sz; i++) {
 			passwd.append(font::unicode_bullet);
 		}
 		text_box::insert_char(passwd);

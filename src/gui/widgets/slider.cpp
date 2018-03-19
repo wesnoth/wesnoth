@@ -154,8 +154,8 @@ bool slider::on_positioner(const point& coordinate) const
 
 int slider::on_bar(const point& coordinate) const
 {
-	const unsigned x = static_cast<size_t>(coordinate.x);
-	const unsigned y = static_cast<size_t>(coordinate.y);
+	const unsigned x = static_cast<std::size_t>(coordinate.x);
+	const unsigned y = static_cast<std::size_t>(coordinate.y);
 
 	// Not on the widget, leave.
 	if(x > get_width() || y > get_height()) {
@@ -449,7 +449,7 @@ widget* builder_slider::build() const
 	widget->finalize_setup();
 
 	if(!value_labels_.empty()) {
-		VALIDATE(value_labels_.size() == static_cast<size_t>(widget->get_item_count()),
+		VALIDATE(value_labels_.size() == static_cast<std::size_t>(widget->get_item_count()),
 				 _("The number of value_labels and values don't match."));
 
 		widget->set_value_labels(value_labels_);

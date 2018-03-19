@@ -158,8 +158,8 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 
 void menu_button::set_values(const std::vector<::config>& values, int selected)
 {
-	assert(static_cast<size_t>(selected) < values.size());
-	assert(static_cast<size_t>(selected_) < values_.size());
+	assert(static_cast<std::size_t>(selected) < values.size());
+	assert(static_cast<std::size_t>(selected_) < values_.size());
 
 	if(values[selected]["label"] != values_[selected_]["label"]) {
 		set_is_dirty(true);
@@ -173,8 +173,8 @@ void menu_button::set_values(const std::vector<::config>& values, int selected)
 
 void menu_button::set_selected(int selected, bool fire_event)
 {
-	assert(static_cast<size_t>(selected) < values_.size());
-	assert(static_cast<size_t>(selected_) < values_.size());
+	assert(static_cast<std::size_t>(selected) < values_.size());
+	assert(static_cast<std::size_t>(selected_) < values_.size());
 
 	if(selected != selected_) {
 		set_is_dirty(true);

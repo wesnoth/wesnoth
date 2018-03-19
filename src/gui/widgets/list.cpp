@@ -215,7 +215,7 @@ void list_view::set_row_shown(const boost::dynamic_bitset<>& shown)
 	{
 		window::invalidate_layout_blocker invalidate_layout_blocker(*window);
 
-		for(size_t i = 0; i < shown.size(); ++i) {
+		for(std::size_t i = 0; i < shown.size(); ++i) {
 			generator_->set_item_shown(i, shown[i]);
 		}
 		generator_->place(generator_->get_origin(),
@@ -395,7 +395,7 @@ void list_view::signal_handler_pre_child_left_button_click(
 	assert(grid);
 	assert(generator_);
 
-	for(size_t i = 0; i < generator_->get_item_count(); ++i) {
+	for(std::size_t i = 0; i < generator_->get_item_count(); ++i) {
 		if(&generator_->item(i) == grid) {
 
 			/**
@@ -428,7 +428,7 @@ void list_view::signal_handler_left_button_click(grid* grid,
 	assert(generator_);
 
 	/** @todo Test the proper state to set. */
-	for(size_t i = 0; i < generator_->get_item_count(); ++i) {
+	for(std::size_t i = 0; i < generator_->get_item_count(); ++i) {
 		if(&generator_->item(i) == grid) {
 			generator_->select_item(i);
 			fire(event::NOTIFY_MODIFIED, *this, nullptr);

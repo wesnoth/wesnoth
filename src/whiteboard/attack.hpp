@@ -26,7 +26,7 @@ namespace wb
 class attack: public move
 {
 public:
-	attack(size_t team_index, bool hidden, unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
+	attack(std::size_t team_index, bool hidden, unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 	attack(const config&, bool hidden); // For deserialization
 	virtual ~attack();

@@ -98,10 +98,10 @@ static int intf_compare_versions(lua_State* L)
 int lua_kernel_base::intf_print(lua_State* L)
 {
 	DBG_LUA << "intf_print called:\n";
-	size_t nargs = lua_gettop(L);
+	std::size_t nargs = lua_gettop(L);
 
 	lua_getglobal(L, "tostring");
-	for (size_t i = 1; i <= nargs; ++i) {
+	for (std::size_t i = 1; i <= nargs; ++i) {
 		lua_pushvalue(L, -1); // function to call: "tostring"
 		lua_pushvalue(L, i); // value to pass through tostring() before printing
 		lua_call(L, 1, 1);
@@ -903,7 +903,7 @@ std::vector<std::string> lua_kernel_base::get_attribute_names(const std::string 
 {
 	std::vector<std::string> ret;
 	std::string base_path = input;
-	size_t last_dot = base_path.find_last_of('.');
+	std::size_t last_dot = base_path.find_last_of('.');
 	std::string partial_name = base_path.substr(last_dot + 1);
 	base_path.erase(last_dot);
 	std::string load = "return " + base_path;

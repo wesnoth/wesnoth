@@ -671,7 +671,7 @@ public:
 		{
 			return last_selected_item_;
 		} else {
-			for(size_t i = 0; i < items_.size(); ++i) {
+			for(std::size_t i = 0; i < items_.size(); ++i) {
 				if((*items_[i]).selected) {
 					return i;
 				}
@@ -958,7 +958,7 @@ private:
 		 */
 		bool shown;
 
-		size_t ordered_index;
+		std::size_t ordered_index;
 	};
 
 	/** The number of selected items. */
@@ -972,7 +972,7 @@ private:
 	child_list items_;
 
 	/** the elements of order_ are indexes to items_ */
-	mutable std::vector<size_t> order_;
+	mutable std::vector<std::size_t> order_;
 	/** whether need to recalculate order_dirty_ */
 	mutable bool order_dirty_;
 
@@ -997,7 +997,7 @@ private:
 		{
 		}
 
-		bool operator()(size_t a, size_t b)
+		bool operator()(std::size_t a, std::size_t b)
 		{
 			return order_func_(a, b);
 		}
@@ -1023,7 +1023,7 @@ private:
 			if(order_.size() != items_.size()) {
 				order_.resize(items_.size());
 
-				for(size_t i = 0; i < items_.size(); ++i) {
+				for(std::size_t i = 0; i < items_.size(); ++i) {
 					order_[i] = i;
 				}
 			}
@@ -1032,7 +1032,7 @@ private:
 				std::stable_sort(order_.begin(), order_.end(), calculate_order_helper(order_func_, items_));
 			}
 
-			for(size_t i = 0; i < order_.size(); ++i) {
+			for(std::size_t i = 0; i < order_.size(); ++i) {
 				items_[order_[i]]->ordered_index = i;
 			}
 

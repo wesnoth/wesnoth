@@ -408,7 +408,7 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 			res = mmenu.selected_item();
 		}
 	} // This will kill the dialog.
-	if (res < 0 || size_t(res) >= items.size()) return;
+	if (res < 0 || std::size_t(res) >= items.size()) return;
 
 	const theme::menu* submenu = gui.get_theme().get_menu_item(items[res]["id"]);
 	if (submenu) {
@@ -444,7 +444,7 @@ std::string command_executor::get_menu_image(display& disp, const std::string& c
 
 	// TODO: Find a way to do away with the fugly special markup
 	if(command[0] == '&') {
-		size_t n = command.find_first_of('=');
+		std::size_t n = command.find_first_of('=');
 		if(n != std::string::npos)
 			return command.substr(1, n - 1);
 	}
@@ -485,7 +485,7 @@ std::string command_executor::get_menu_image(display& disp, const std::string& c
 
 void command_executor::get_menu_images(display& disp, std::vector<config>& items)
 {
-	for(size_t i = 0; i < items.size(); ++i) {
+	for(std::size_t i = 0; i < items.size(); ++i) {
 		config& item = items[i];
 
 		const std::string& item_id = item["id"];

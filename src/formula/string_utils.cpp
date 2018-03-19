@@ -253,7 +253,7 @@ std::string format_conjunct_list(const t_string& empty, const std::vector<t_stri
 	// TRANSLATORS: Formats the first two elements of a conjunctive list.
 	std::string prefix = VGETTEXT("conjunct start^$first, $second", {{"first", elems[0]}, {"second", elems[1]}});
 	// For size=3 this loop is not entered
-	for(size_t i = 2; i < elems.size() - 1; i++) {
+	for(std::size_t i = 2; i < elems.size() - 1; i++) {
 		// TRANSLATORS: Formats successive elements of a conjunctive list.
 		prefix = VGETTEXT("conjunct mid^$prefix, $next", {{"prefix", prefix}, {"next", elems[i]}});
 	}
@@ -271,7 +271,7 @@ std::string format_disjunct_list(const t_string& empty, const std::vector<t_stri
 	// TRANSLATORS: Formats the first two elements of a disjunctive list.
 	std::string prefix = VGETTEXT("disjunct start^$first, $second", {{"first", elems[0]}, {"second", elems[1]}});
 	// For size=3 this loop is not entered
-	for(size_t i = 2; i < elems.size() - 1; i++) {
+	for(std::size_t i = 2; i < elems.size() - 1; i++) {
 		// TRANSLATORS: Formats successive elements of a disjunctive list.
 		prefix = VGETTEXT("disjunct mid^$prefix, $next", {{"prefix", prefix}, {"next", elems[i]}});
 	}

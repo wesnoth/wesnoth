@@ -100,7 +100,7 @@ private:
 	state_t state_;
 
 	/** The timer for the repeating events. */
-	size_t repeat_timer_;
+	std::size_t repeat_timer_;
 
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;

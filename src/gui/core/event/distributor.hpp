@@ -84,7 +84,7 @@ protected:
 	widget& owner_;
 
 	/** The timer for the hover event. */
-	size_t hover_timer_;
+	std::size_t hover_timer_;
 
 	/** The widget which should get the hover event. */
 	widget* hover_widget_;

@@ -196,7 +196,7 @@ void windows_tray_notification::switch_to_wesnoth_window()
 	SetForegroundWindow(window);
 }
 
-std::wstring windows_tray_notification::string_to_wstring(const std::string& string, size_t maxlength)
+std::wstring windows_tray_notification::string_to_wstring(const std::string& string, std::size_t maxlength)
 {
 	utf16::string u16_string = unicode_cast<utf16::string>(string);
 	if(u16_string.size() > maxlength) {

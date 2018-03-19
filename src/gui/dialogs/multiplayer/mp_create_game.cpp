@@ -497,7 +497,7 @@ void mp_create_game::on_filter_change(window& window, const std::string& id, boo
 	listbox& game_list = find_widget<listbox>(&window, "games_list", false);
 
 	boost::dynamic_bitset<> filtered(game_list.get_item_count());
-	for(const size_t i : create_engine_.get_filtered_level_indices(create_engine_.current_level_type())) {
+	for(const std::size_t i : create_engine_.get_filtered_level_indices(create_engine_.current_level_type())) {
 		filtered[i] = true;
 	}
 
@@ -627,7 +627,7 @@ void mp_create_game::display_games_of_type(window& window, ng::level::TYPE type,
 		on_filter_change<text_box>(window, "game_filter", false);
 
 		int level_index = create_engine_.find_level_by_id(level).second;
-		if(level_index >= 0 && size_t(level_index) < list.get_item_count()) {
+		if(level_index >= 0 && std::size_t(level_index) < list.get_item_count()) {
 			list.select_row(level_index);
 		}
 	}
@@ -659,7 +659,7 @@ void mp_create_game::regenerate_random_map(window& window)
 
 int mp_create_game::convert_to_game_filtered_index(const unsigned int initial_index)
 {
-	const std::vector<size_t>& filtered_indices = create_engine_.get_filtered_level_indices(create_engine_.current_level_type());
+	const std::vector<std::size_t>& filtered_indices = create_engine_.get_filtered_level_indices(create_engine_.current_level_type());
 	return std::distance(filtered_indices.begin(), std::find(filtered_indices.begin(), filtered_indices.end(), initial_index));
 }
 

@@ -159,7 +159,7 @@ void async_send_file(socket_ptr socket, const std::string& filename, Handler han
 {
 	std::vector<boost::asio::const_buffer> buffers;
 
-	size_t filesize = filesystem::file_size(filename);
+	std::size_t filesize = filesystem::file_size(filename);
 	int in_file(open(filename.c_str(), O_RDONLY));
 
 	sendfile_op<Handler, ErrorHandler> op = { socket, in_file, handler, error_handler, 0, 0 };
@@ -240,7 +240,7 @@ void async_send_file(socket_ptr socket, const std::string& filename, Handler han
 
 	SetLastError(ERROR_SUCCESS);
 
-	size_t filesize = filesystem::file_size(filename);
+	std::size_t filesize = filesystem::file_size(filename);
 	std::wstring filename_ucs2 = unicode_cast<std::wstring>(filename);
 	HANDLE in_file = CreateFileW(filename_ucs2.c_str(), GENERIC_READ, FILE_SHARE_READ, nullptr, OPEN_EXISTING,
 		FILE_FLAG_SEQUENTIAL_SCAN, nullptr);

@@ -153,7 +153,7 @@ private:
 	 * Returns true if modified reachmap and reachmap isn't empty.
 	 */
 	bool dispatch_village_simple(
-		treachmap& reachmap, tmoves& moves, size_t& village_count);
+		treachmap& reachmap, tmoves& moves, std::size_t& village_count);
 
 
 	/** Removes a village for all units, returns true if anything is deleted. */
@@ -168,7 +168,7 @@ private:
 
 	/** Dispatches the units to a village after the simple dispatching failed. */
 	void dispatch_complex(
-		treachmap& reachmap, tmoves& moves, const size_t village_count);
+		treachmap& reachmap, tmoves& moves, const std::size_t village_count);
 
 
 	/** Dispatches all units to a village, every unit can reach every village. */

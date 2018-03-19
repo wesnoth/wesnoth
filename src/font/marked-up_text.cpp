@@ -404,8 +404,8 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 	utf8::iterator ch(unwrapped_text);
 	std::string current_word;
 	std::string current_line;
-	size_t line_width = 0;
-	size_t current_height = 0;
+	std::size_t line_width = 0;
+	std::size_t current_height = 0;
 	bool line_break = false;
 	bool first = true;
 	bool start_of_line = true;
@@ -470,7 +470,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 			start_of_line = true;
 		} else {
 
-			const size_t word_width = line_size(current_word, preferences::font_scaled(font_sz), style).w;
+			const std::size_t word_width = line_size(current_word, preferences::font_scaled(font_sz), style).w;
 
 			line_width += word_width;
 
@@ -490,7 +490,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 
 		if(line_break || (current_word.empty() && ch == end)) {
 			SDL_Rect size = line_size(current_line, preferences::font_scaled(font_sz), style);
-			if(max_height > 0 && current_height + size.h >= size_t(max_height)) {
+			if(max_height > 0 && current_height + size.h >= std::size_t(max_height)) {
 				return wrapped_text;
 			}
 

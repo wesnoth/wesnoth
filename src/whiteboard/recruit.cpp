@@ -53,7 +53,7 @@ std::ostream& recruit::print(std::ostream &s) const
 	return s;
 }
 
-recruit::recruit(size_t team_index, bool hidden, const std::string& unit_name, const map_location& recruit_hex):
+recruit::recruit(std::size_t team_index, bool hidden, const std::string& unit_name, const map_location& recruit_hex):
 		action(team_index,hidden),
 		unit_name_(unit_name),
 		recruit_hex_(recruit_hex),
@@ -153,7 +153,7 @@ void recruit::draw_hex(const map_location& hex)
 		//position 0,0 in the hex is the upper left corner
 		std::stringstream number_text;
 		number_text << font::unicode_minus << cost_;
-		size_t font_size = 16;
+		std::size_t font_size = 16;
 		color_t color {255, 0, 0}; //red
 		display::get_singleton()->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
 						number_text.str(), font_size, color, x_offset, y_offset);

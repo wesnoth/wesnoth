@@ -24,7 +24,7 @@
 using namespace wb;
 
 struct dummy_action: action{
-	dummy_action(size_t team_index, bool hidden, int id): action(team_index, hidden), id_(id) {}
+	dummy_action(std::size_t team_index, bool hidden, int id): action(team_index, hidden), id_(id) {}
 	int id_;
 
 	// un-abstraction

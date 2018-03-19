@@ -106,7 +106,7 @@ unsigned lobby_refresh        = 4000;
 
 const std::string observer_team_name = "observer";
 
-const size_t max_loop = 65536;
+const std::size_t max_loop = 65536;
 
 std::vector<server_info> server_list;
 

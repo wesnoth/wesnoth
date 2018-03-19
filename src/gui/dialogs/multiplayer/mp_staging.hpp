@@ -81,7 +81,7 @@ private:
 
 	wesnothd_connection* network_connection_;
 
-	size_t update_timer_;
+	std::size_t update_timer_;
 
 	bool state_changed_;
 

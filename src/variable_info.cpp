@@ -78,9 +78,9 @@ variable_info<V>::variable_info(const std::string& varname, maybe_const_t<config
 template<typename V>
 void variable_info<V>::calculate_value()
 {
-	size_t previous_index = 0, name_size = name_.size();
+	std::size_t previous_index = 0, name_size = name_.size();
 
-	for(size_t loop_index = 0; loop_index < name_size; loop_index++) {
+	for(std::size_t loop_index = 0; loop_index < name_size; loop_index++) {
 		switch(name_[loop_index]) {
 		case '.':
 		case '[':

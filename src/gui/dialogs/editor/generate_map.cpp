@@ -94,7 +94,7 @@ void editor_generate_map::do_settings()
 
 map_generator* editor_generate_map::get_selected_map_generator()
 {
-	assert(static_cast<size_t>(current_map_generator_)
+	assert(static_cast<std::size_t>(current_map_generator_)
 		   < map_generators_.size());
 	return map_generators_[current_map_generator_].get();
 }

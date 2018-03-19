@@ -27,7 +27,7 @@ namespace dialogs
 
 class plugin_executor
 {
-	size_t timer_id;
+	std::size_t timer_id;
 
 	void play_slice() {
 		if(plugins_context_) {

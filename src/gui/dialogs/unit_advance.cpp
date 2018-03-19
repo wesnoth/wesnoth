@@ -39,7 +39,7 @@ namespace dialogs
 
 REGISTER_DIALOG(unit_advance)
 
-unit_advance::unit_advance(const unit_ptr_vector& samples, size_t real)
+unit_advance::unit_advance(const unit_ptr_vector& samples, std::size_t real)
 	: previews_(samples)
 	, selected_index_(0)
 	, last_real_advancement_(real)
@@ -58,7 +58,7 @@ void unit_advance::pre_show(window& window)
 		find_widget<button>(&window, "show_help", false),
 		std::bind(&unit_advance::show_help, this));
 
-	for(size_t i = 0; i < previews_.size(); i++) {
+	for(std::size_t i = 0; i < previews_.size(); i++) {
 		const unit& sample = *previews_[i];
 
 		std::map<std::string, string_map> row_data;

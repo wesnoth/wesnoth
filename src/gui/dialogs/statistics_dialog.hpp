@@ -65,7 +65,7 @@ private:
 	const statistics::stats  campaign_;
 	const statistics::levels scenarios_;
 
-	size_t scenario_index_;
+	std::size_t scenario_index_;
 
 	std::vector<const statistics::stats::str_int_map*> main_stat_table_;
 };

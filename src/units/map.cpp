@@ -141,7 +141,7 @@ unit_map::umap_retval_pair_t unit_map::insert(unit_ptr p)
 	self_check();
 	assert(p);
 
-	size_t unit_id = p->underlying_id();
+	std::size_t unit_id = p->underlying_id();
 	const map_location& loc = p->get_location();
 
 	if(!loc.valid()) {
@@ -230,10 +230,10 @@ unit_map::umap_retval_pair_t unit_map::replace(const map_location& l, unit_ptr p
 	return insert(p);
 }
 
-size_t unit_map::num_iters() const
+std::size_t unit_map::num_iters() const
 {
 	/// Add up number of extant iterators
-	size_t num_iters(0);
+	std::size_t num_iters(0);
 	umap::const_iterator ui = umap_.begin();
 	umap::const_iterator uend = umap_.end();
 
@@ -277,7 +277,7 @@ unit_ptr unit_map::extract(const map_location& loc)
 	umap::iterator uit(i->second);
 
 	unit_ptr u = uit->second.unit;
-	size_t uid(u->underlying_id());
+	std::size_t uid(u->underlying_id());
 
 	DBG_NG << "Extract unit " << uid << " - " << u->id() << " from location: (" << loc << ")\n";
 
@@ -295,7 +295,7 @@ unit_ptr unit_map::extract(const map_location& loc)
 	return u;
 }
 
-size_t unit_map::erase(const map_location& loc)
+std::size_t unit_map::erase(const map_location& loc)
 {
 	self_check();
 
@@ -308,7 +308,7 @@ size_t unit_map::erase(const map_location& loc)
 	return 1;
 }
 
-unit_map::unit_iterator unit_map::find(size_t id)
+unit_map::unit_iterator unit_map::find(std::size_t id)
 {
 	self_check();
 

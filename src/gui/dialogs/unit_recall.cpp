@@ -76,7 +76,7 @@ static void dump_recall_list_to_console(const T& units)
 
 	LOG_DP << "size: " << units.size() << "\n";
 
-	size_t idx = 0;
+	std::size_t idx = 0;
 	for(const unit_const_ptr& u_ptr : units) {
 		LOG_DP << "\tunit[" << (idx++) << "]: " << u_ptr->id() << " name = '" << u_ptr->name() << "'\n";
 	}

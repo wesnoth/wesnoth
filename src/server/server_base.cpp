@@ -102,7 +102,7 @@ void server_base::handle_handshake(const boost::system::error_code& error, socke
 	}
 	async_write(
 				*socket, boost::asio::buffer(handshake_response_.buf, 4),
-				[=](const boost::system::error_code& error, size_t)
+				[=](const boost::system::error_code& error, std::size_t)
 					{
 						if(!check_error(error, socket)) {
 							const std::string ip = client_address(socket);

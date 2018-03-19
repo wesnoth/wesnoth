@@ -65,8 +65,8 @@ private:
 	static bool message_reset;
 	static const int ICON_ID = 1007; // just a random number
 	static const unsigned int WM_TRAYNOTIFY = 32868; // WM_APP+100
-	static const size_t MAX_TITLE_LENGTH = 63; // 64 including the terminating null character
-	static const size_t MAX_MESSAGE_LENGTH = 255; // 256 including the terminating null character
+	static const std::size_t MAX_TITLE_LENGTH = 63; // 64 including the terminating null character
+	static const std::size_t MAX_MESSAGE_LENGTH = 255; // 256 including the terminating null character
 
 	static bool create_tray_icon();
 	static void destroy_tray_icon();
@@ -74,7 +74,7 @@ private:
 	static void adjust_length(std::string& title, std::string& message);
 	static HWND get_window_handle();
 	static void switch_to_wesnoth_window();
-	static std::wstring string_to_wstring(const std::string& string, size_t maxlength);
+	static std::wstring string_to_wstring(const std::string& string, std::size_t maxlength);
 
 	explicit windows_tray_notification();
 	windows_tray_notification(const windows_tray_notification& w);

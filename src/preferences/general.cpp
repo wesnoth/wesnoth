@@ -514,20 +514,20 @@ void _set_grid(bool ison)
 	preferences::set("grid", ison);
 }
 
-size_t sound_buffer_size()
+std::size_t sound_buffer_size()
 {
 	// Sounds don't sound good on Windows unless the buffer size is 4k,
 	// but this seems to cause crashes on other systems...
 	#ifdef _WIN32
-		const size_t buf_size = 4096;
+		const std::size_t buf_size = 4096;
 	#else
-		const size_t buf_size = 1024;
+		const std::size_t buf_size = 1024;
 	#endif
 
 	return prefs["sound_buffer_size"].to_int(buf_size);
 }
 
-void save_sound_buffer_size(const size_t size)
+void save_sound_buffer_size(const std::size_t size)
 {
 	#ifdef _WIN32
 		const char* buf_size = "4096";

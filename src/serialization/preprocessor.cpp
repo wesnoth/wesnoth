@@ -566,7 +566,7 @@ class preprocessor_file : public preprocessor
 {
 public:
 	/** Constructor. It relies on preprocessor_data so it's implemented after that class is declared. */
-	preprocessor_file(preprocessor_streambuf& t, const std::string& name, size_t symbol_index = -1);
+	preprocessor_file(preprocessor_streambuf& t, const std::string& name, std::size_t symbol_index = -1);
 
 	virtual void init() override;
 
@@ -739,7 +739,7 @@ bool operator!=(char lhs, preprocessor_data::token_desc::TOKEN_TYPE rhs)
 }
 
 /** preprocessor_file constructor. */
-preprocessor_file::preprocessor_file(preprocessor_streambuf& t, const std::string& name, size_t symbol_index)
+preprocessor_file::preprocessor_file(preprocessor_streambuf& t, const std::string& name, std::size_t symbol_index)
 	: preprocessor(t)
 	, files_()
 	, pos_()
@@ -755,7 +755,7 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf& t, const std::strin
 		);
 
 		for(const std::string& fname : files_) {
-			size_t cpos = fname.rfind(" ");
+			std::size_t cpos = fname.rfind(" ");
 
 			if(cpos != std::string::npos && cpos >= symbol_index) {
 				std::stringstream ss;
@@ -1454,7 +1454,7 @@ bool preprocessor_data::get_chunk()
 			//	strings_.pop_back();
 			//}
 
-			if(strings_.size() <= static_cast<size_t>(token.stack_pos)) {
+			if(strings_.size() <= static_cast<std::size_t>(token.stack_pos)) {
 				parent_.error("No macro or file substitution target specified", linenum_);
 			}
 
@@ -1491,8 +1491,8 @@ bool preprocessor_data::get_chunk()
 				put(v.str());
 			} else if(parent_.depth() < 100 && (macro = parent_.defines_->find(symbol)) != parent_.defines_->end()) {
 				const preproc_define& val = macro->second;
-				size_t nb_arg = strings_.size() - token.stack_pos - 1;
-				size_t optional_arg_num = 0;
+				std::size_t nb_arg = strings_.size() - token.stack_pos - 1;
+				std::size_t optional_arg_num = 0;
 
 				std::unique_ptr<std::map<std::string, std::string>> defines{new std::map<std::string, std::string>};
 				const std::string& dir = filesystem::directory_name(val.location.substr(0, val.location.find(' ')));
@@ -1501,7 +1501,7 @@ bool preprocessor_data::get_chunk()
 					deprecated_message(symbol, *val.deprecation_level, val.deprecation_version, val.deprecation_message);
 				}
 
-				for(size_t i = 0; i < nb_arg; ++i) {
+				for(std::size_t i = 0; i < nb_arg; ++i) {
 					if(i < val.arguments.size()) {
 						// Normal mandatory arguments
 
@@ -1510,10 +1510,10 @@ bool preprocessor_data::get_chunk()
 						// These should be optional argument overrides
 
 						std::string str = strings_[token.stack_pos + i + 1];
-						size_t equals_pos = str.find_first_of("=");
+						std::size_t equals_pos = str.find_first_of("=");
 
 						if(equals_pos != std::string::npos) {
-							size_t argname_pos = str.substr(0, equals_pos).find_last_of(" \n") + 1;
+							std::size_t argname_pos = str.substr(0, equals_pos).find_last_of(" \n") + 1;
 
 							std::string argname = str.substr(argname_pos, equals_pos - argname_pos);
 

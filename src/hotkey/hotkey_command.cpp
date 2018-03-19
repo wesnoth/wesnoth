@@ -295,7 +295,7 @@ std::set<HOTKEY_COMMAND> toggle_commands {
 std::vector<hotkey::hotkey_command> known_hotkeys;
 
 // Index map for known_hotkeys. Since known_hotkeys begins with hotkey_list_, they are also indexes for hotkey_list_.
-std::map<std::string, size_t> command_map_;
+std::map<std::string, std::size_t> command_map_;
 
 hk_scopes scope_active_(0);
 } // end anon namespace
@@ -383,7 +383,7 @@ bool remove_wml_hotkey(const std::string& id)
 		// command_map_ might be all wrong now, so we need to rebuild.
 		command_map_.clear();
 
-		for(size_t index = 0; index < known_hotkeys.size(); ++index) {
+		for(std::size_t index = 0; index < known_hotkeys.size(); ++index) {
 			command_map_[known_hotkeys[index].command] = index;
 		}
 
@@ -530,7 +530,7 @@ void init_hotkey_commands()
 	// items, but it doesn't cost us anything to have extra.
 	known_hotkeys.reserve(hotkey_list_.size() + 20);
 
-	size_t i = 0;
+	std::size_t i = 0;
 	for(hotkey_command_temp& cmd : hotkey_list_) {
 		known_hotkeys.emplace_back(cmd);
 

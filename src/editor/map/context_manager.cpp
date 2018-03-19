@@ -157,7 +157,7 @@ bool context_manager::toggle_update_transitions()
 	return false;
 }
 
-size_t context_manager::modified_maps(std::string& message)
+std::size_t context_manager::modified_maps(std::string& message)
 {
 	std::vector<std::string> modified;
 	for(auto& mc : map_contexts_) {
@@ -280,7 +280,7 @@ void context_manager::expand_open_maps_menu(std::vector<config>& items, int i)
 	auto pos = items.erase(items.begin() + i);
 	std::vector<config> contexts;
 
-	for(size_t mci = 0; mci < map_contexts_.size(); ++mci) {
+	for(std::size_t mci = 0; mci < map_contexts_.size(); ++mci) {
 		map_context& mc = *map_contexts_[mci];
 
 		std::string filename;
@@ -356,7 +356,7 @@ void context_manager::expand_areas_menu(std::vector<config>& items, int i)
 
 	std::vector<std::string> area_ids = tod->get_area_ids();
 
-	for(size_t mci = 0; mci < area_ids.size(); ++mci) {
+	for(std::size_t mci = 0; mci < area_ids.size(); ++mci) {
 		const std::string& area = area_ids[mci];
 
 		std::stringstream ss;
@@ -369,7 +369,7 @@ void context_manager::expand_areas_menu(std::vector<config>& items, int i)
 		}
 
 		const bool changed =
-			mci == static_cast<size_t>(get_map_context().get_active_area())
+			mci == static_cast<std::size_t>(get_map_context().get_active_area())
 			&& tod->get_area_by_index(mci) != get_map_context().map().selection();
 
 		const std::string label = ss.str();
@@ -386,7 +386,7 @@ void context_manager::expand_sides_menu(std::vector<config>& items, int i)
 	auto pos = items.erase(items.begin() + i);
 	std::vector<config> contexts;
 
-	for(size_t mci = 0; mci < get_map_context().teams().size(); ++mci) {
+	for(std::size_t mci = 0; mci < get_map_context().teams().size(); ++mci) {
 
 		const team& t = get_map_context().teams()[mci];
 		const std::string& teamname = t.user_team_name();
@@ -732,7 +732,7 @@ void context_manager::save_all_maps(bool auto_save_windows)
 {
 	int current = current_context_index_;
 	saved_windows_.clear();
-	for(size_t i = 0; i < map_contexts_.size(); ++i) {
+	for(std::size_t i = 0; i < map_contexts_.size(); ++i) {
 		switch_context(i);
 		std::string name = get_map_context().get_filename();
 		if(auto_save_windows) {
@@ -770,7 +770,7 @@ void context_manager::save_map()
 
 bool context_manager::save_scenario_as(const std::string& filename)
 {
-	size_t is_open = check_open_map(filename);
+	std::size_t is_open = check_open_map(filename);
 	if(is_open < map_contexts_.size() && is_open != static_cast<unsigned>(current_context_index_)) {
 		gui2::show_transient_message(_("This scenario is already open."), filename);
 		return false;
@@ -793,7 +793,7 @@ bool context_manager::save_scenario_as(const std::string& filename)
 
 bool context_manager::save_map_as(const std::string& filename)
 {
-	size_t is_open = check_open_map(filename);
+	std::size_t is_open = check_open_map(filename);
 	if(is_open < map_contexts_.size() && is_open != static_cast<unsigned>(current_context_index_)) {
 		gui2::show_transient_message(_("This map is already open."), filename);
 		return false;
@@ -844,9 +844,9 @@ bool context_manager::write_map(bool display_confirmation)
 	return true;
 }
 
-size_t context_manager::check_open_map(const std::string& fn) const
+std::size_t context_manager::check_open_map(const std::string& fn) const
 {
-	size_t i = 0;
+	std::size_t i = 0;
 	while(i < map_contexts_.size() && map_contexts_[i]->get_filename() != fn) {
 		++i;
 	}
@@ -856,7 +856,7 @@ size_t context_manager::check_open_map(const std::string& fn) const
 
 bool context_manager::check_switch_open_map(const std::string& fn)
 {
-	size_t i = check_open_map(fn);
+	std::size_t i = check_open_map(fn);
 	if(i < map_contexts_.size()) {
 		gui2::show_transient_message(_("This map is already open."), fn);
 		switch_context(i);
@@ -1028,7 +1028,7 @@ void context_manager::close_current_context()
 
 void context_manager::switch_context(const int index, const bool force)
 {
-	if(index < 0 || static_cast<size_t>(index) >= map_contexts_.size()) {
+	if(index < 0 || static_cast<std::size_t>(index) >= map_contexts_.size()) {
 		WRN_ED << "Invalid index in switch map context: " << index << std::endl;
 		return;
 	}

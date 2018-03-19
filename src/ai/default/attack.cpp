@@ -53,7 +53,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 	// See if the target is a threat to our leader or an ally's leader.
 	adjacent_loc_array_t adj;
 	get_adjacent_tiles(target,adj.data());
-	size_t tile;
+	std::size_t tile;
 	for(tile = 0; tile < adj.size(); ++tile) {
 		const unit_map::const_iterator leader = units.find(adj[tile]);
 		if(leader != units.end() && leader->can_recruit() && !ai_obj.current_team().is_enemy(leader->side())) {
@@ -76,7 +76,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 	// making itself.
 	alternative_terrain_quality = 0.0;
 	double cost_sum = 0.0;
-	for(size_t i = 0; i != movements.size(); ++i) {
+	for(std::size_t i = 0; i != movements.size(); ++i) {
 		const unit_map::const_iterator att = units.find(movements[i].first);
 		const double cost = att->cost();
 		cost_sum += cost;
@@ -345,7 +345,7 @@ wfl::variant attack_analysis::get_value(const std::string& key) const
 		return variant(std::make_shared<location_callable>(target));
 	} else if(key == "movements") {
 		std::vector<variant> res;
-		for(size_t n = 0; n != movements.size(); ++n) {
+		for(std::size_t n = 0; n != movements.size(); ++n) {
 			auto item = std::make_shared<map_formula_callable>(nullptr);
 			item->add("src", variant(std::make_shared<location_callable>(movements[n].first)));
 			item->add("dst", variant(std::make_shared<location_callable>(movements[n].second)));
@@ -355,7 +355,7 @@ wfl::variant attack_analysis::get_value(const std::string& key) const
 		return variant(res);
 	} else if(key == "units") {
 		std::vector<variant> res;
-		for(size_t n = 0; n != movements.size(); ++n) {
+		for(std::size_t n = 0; n != movements.size(); ++n) {
 			res.emplace_back(std::make_shared<location_callable>(movements[n].first));
 		}
 

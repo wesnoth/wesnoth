@@ -110,7 +110,7 @@ std::ostream& metrics::games(std::ostream& out) const
 {
 	if (terminations_.empty()) return out << "No game ended so far.";
 
-	size_t n = 0;
+	std::size_t n = 0;
 	out << "Games have been terminated in the following ways:\n";
 	for(std::map<std::string,int>::const_iterator i = terminations_.begin(); i != terminations_.end(); ++i) {
 		out << i->first << ": " << i->second << "\n";
@@ -130,9 +130,9 @@ std::ostream& metrics::requests(std::ostream& out) const
 
 	out << "\nSampled request types:\n";
 
-	size_t n = 0;
-	size_t pa = 0;
-	size_t pr = 0;
+	std::size_t n = 0;
+	std::size_t pa = 0;
+	std::size_t pr = 0;
 	for(std::vector<metrics::sample>::const_iterator s = ordered_samples.begin(); s != ordered_samples.end(); ++s) {
 		out << "'" << s->name << "' called " << s->nsamples << " times "
 			<< s->parsing_time << "("<< s->max_parsing_time <<") parsing time, "

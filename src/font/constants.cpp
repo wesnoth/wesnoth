@@ -29,7 +29,7 @@ const int
 	SIZE_XLARGE = 24 * SIZE_NORMAL / 14
 ;
 
-const size_t max_text_line_width = 4096;
+const std::size_t max_text_line_width = 4096;
 
 const std::string
 	ellipsis = "...",

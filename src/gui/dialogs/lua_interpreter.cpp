@@ -218,7 +218,7 @@ public:
 	~input_model()
 	{
 		try {
-			const size_t history_max = 500;
+			const std::size_t history_max = 500;
 			if (filesystem::file_exists(filename_)) {
 				append_history (history_max,filename_.c_str());
 			} else {
@@ -594,7 +594,7 @@ void lua_interpreter::controller::tab()
 	std::string text = text_entry->get_value();
 
 	std::string prefix;
-	size_t prefix_end_pos = text.find_last_of(" (");
+	std::size_t prefix_end_pos = text.find_last_of(" (");
 	if (prefix_end_pos != std::string::npos) {
 		prefix = text.substr(0, prefix_end_pos + 1);
 		text = text.substr(prefix_end_pos + 1);
@@ -644,10 +644,10 @@ void lua_interpreter::controller::tab()
 	if (matches.size() > 1) {
 		//std::string completion_list = utils::join(matches, " ");
 
-		const size_t wrap_limit = 80;
+		const std::size_t wrap_limit = 80;
 		std::string buffer;
 
-		for (size_t idx = 0; idx < matches.size(); ++idx) {
+		for (std::size_t idx = 0; idx < matches.size(); ++idx) {
 			if (buffer.size() + 1 + matches.at(idx).size() > wrap_limit) {
 				lua_model_->add_dialog_message(buffer);
 				buffer = matches.at(idx);

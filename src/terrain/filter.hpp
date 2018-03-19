@@ -95,6 +95,6 @@ private:
 	};
 
 	mutable terrain_filter_cache cache_;
-	const size_t max_loop_;
+	const std::size_t max_loop_;
 	bool flat_;
 };

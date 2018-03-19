@@ -37,9 +37,9 @@ public:
 
 	virtual sdl_handler_vector handler_members() override;
 
-	void set_start_item(size_t index) override { items_start_ = index; }
+	void set_start_item(std::size_t index) override { items_start_ = index; }
 
-	size_t start_num(void) override { return items_start_; }
+	std::size_t start_num(void) override { return items_start_; }
 
 	/** Menu expanding for palette group list */
 	void expand_palette_groups_menu(std::vector<config>& items, int i) override
@@ -47,7 +47,7 @@ public:
 		items.erase(items.begin() + i);
 	}
 
-	virtual void set_group(size_t /*index*/) override {}
+	virtual void set_group(std::size_t /*index*/) override {}
 	virtual void next_group() override {}
 	virtual void prev_group() override {}
 	virtual const std::vector<item_group>& get_groups() const override { static const std::vector<item_group> empty; return empty; }

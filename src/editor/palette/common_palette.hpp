@@ -68,7 +68,7 @@ public:
 	virtual void draw() = 0;
 
 	//group
-	virtual void set_group(size_t index) = 0;
+	virtual void set_group(std::size_t index) = 0;
 	virtual void next_group() = 0;
 	virtual void prev_group() = 0;
 	virtual const std::vector<item_group>& get_groups() const = 0;
@@ -78,8 +78,8 @@ public:
 
     //item
 	virtual int num_items() = 0;
-	virtual size_t start_num() = 0;
-	virtual void set_start_item(size_t index) = 0;
+	virtual std::size_t start_num() = 0;
+	virtual void set_start_item(std::size_t index) = 0;
 
 	virtual bool supports_swap() { return true; }
 	virtual void swap() = 0;

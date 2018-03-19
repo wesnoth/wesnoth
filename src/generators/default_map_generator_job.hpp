@@ -48,12 +48,12 @@ private:
 
 	std::vector<map_location> generate_river(const height_map& heights, terrain_map& terrain, int x, int y, int river_uphill);
 
-	height_map generate_height_map(size_t width, size_t height,
-			size_t iterations, size_t hill_size,
-			size_t island_size, size_t island_off_center);
+	height_map generate_height_map(std::size_t width, std::size_t height,
+			std::size_t iterations, std::size_t hill_size,
+			std::size_t island_size, std::size_t island_off_center);
 
 	bool generate_lake(t_translation::ter_map& terrain, int x, int y, int lake_fall_off, std::set<map_location>& locs_touched);
-	map_location random_point_at_side(size_t width, size_t height);
+	map_location random_point_at_side(std::size_t width, std::size_t height);
 
 	std::mt19937 rng_;
 	const config& game_config_;

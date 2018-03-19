@@ -89,7 +89,7 @@ public:
 	/**
 	 * Create an editor map with the given dimensions and filler terrain
 	 */
-	editor_map(const config& terrain_cfg, size_t width, size_t height, const t_translation::terrain_code & filler);
+	editor_map(const config& terrain_cfg, std::size_t width, std::size_t height, const t_translation::terrain_code & filler);
 
 	/**
 	 * Create an editor_map by upgrading an existing gamemap. The map data is

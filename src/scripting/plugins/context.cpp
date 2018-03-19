@@ -53,14 +53,14 @@ void plugins_context::set_callback(const std::string & name, callback_function f
 	callbacks_[name] = func;
 }
 
-size_t plugins_context::erase_callback(const std::string & name)
+std::size_t plugins_context::erase_callback(const std::string & name)
 {
 	return callbacks_.erase(name);
 }
 
-size_t plugins_context::clear_callbacks()
+std::size_t plugins_context::clear_callbacks()
 {
-	size_t ret = callbacks_.size();
+	std::size_t ret = callbacks_.size();
 	callbacks_ = callback_list();
 	return ret;
 }
@@ -81,14 +81,14 @@ void plugins_context::set_accessor_int(const std::string & name, std::function<i
 }
 
 
-size_t plugins_context::erase_accessor(const std::string & name)
+std::size_t plugins_context::erase_accessor(const std::string & name)
 {
 	return accessors_.erase(name);
 }
 
-size_t plugins_context::clear_accessors()
+std::size_t plugins_context::clear_accessors()
 {
-	size_t ret = accessors_.size();
+	std::size_t ret = accessors_.size();
 	accessors_ = accessor_list();
 	return ret;
 }

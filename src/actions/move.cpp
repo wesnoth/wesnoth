@@ -215,7 +215,7 @@ namespace { // Private helpers for move_unit()
 		const map_location & final_hex() const
 		{ return *move_loc_; }
 		/// The number of hexes actually entered.
-		size_t steps_travelled() const
+		std::size_t steps_travelled() const
 		{ return move_loc_ - begin_; }
 		/// After moving, use this to detect if movement was less than expected.
 		bool stopped_early() const  { return expected_end_ != real_end_; }
@@ -327,8 +327,8 @@ namespace { // Private helpers for move_unit()
 		bool sighted_;	// Records if sightings were made that could interrupt movement.
 		bool sighted_stop_;	// Records if sightings were made that did interrupt movement (the same as sighted_ unless movement ended for another reason).
 		bool teleport_failed_;
-		size_t enemy_count_;
-		size_t friend_count_;
+		std::size_t enemy_count_;
+		std::size_t friend_count_;
 		std::string ambush_string_;
 		std::vector<map_location> ambushers_;
 		std::deque<int> moves_left_;	// The front value is what the moving unit's remaining moves should be set to after the next step through the route.
@@ -632,7 +632,7 @@ namespace { // Private helpers for move_unit()
 		const unit_map &units = resources::gameboard->units();
 
 		// Loop through the previously-detected ambushers.
-		size_t i = 0;
+		std::size_t i = 0;
 		while ( i != ambushers_.size() ) {
 			if (units.count(ambushers_[i]) == 0) {
 				// Ambusher is gone.
@@ -838,7 +838,7 @@ namespace { // Private helpers for move_unit()
 	 */
 	void unit_mover::pump_sighted(const route_iterator & from)
 	{
-		const size_t track = resources::game_events->pump().wml_tracking();
+		const std::size_t track = resources::game_events->pump().wml_tracking();
 
 		auto pump_res = clearer_.fire_events();
 
@@ -1184,7 +1184,7 @@ namespace { // Private helpers for move_unit()
 }//end anonymous namespace
 
 
-static size_t move_unit_internal(undo_list* undo_stack,
+static std::size_t move_unit_internal(undo_list* undo_stack,
                  bool show_move,
                  bool* interrupted,
 				 unit_mover& mover)
@@ -1249,7 +1249,7 @@ static size_t move_unit_internal(undo_list* undo_stack,
  *          @a steps is not empty (the return value is guaranteed to be less
  *          than steps.size() ).
  */
-size_t move_unit_and_record(const std::vector<map_location> &steps,
+std::size_t move_unit_and_record(const std::vector<map_location> &steps,
                  undo_list* undo_stack,
                  bool continued_move, bool show_move,
                  bool* interrupted,
@@ -1282,7 +1282,7 @@ size_t move_unit_and_record(const std::vector<map_location> &steps,
 		*/
 		resources::recorder->add_synced_command("move",replay_helper::get_movement(steps, continued_move, skip_ally_sighted));
 		set_scontext_synced sync;
-		size_t r =  move_unit_internal(undo_stack, show_move, interrupted, mover);
+		std::size_t r =  move_unit_internal(undo_stack, show_move, interrupted, mover);
 		resources::controller->check_victory();
 		resources::controller->maybe_throw_return_to_play_side();
 		sync.do_final_checkup();
@@ -1295,7 +1295,7 @@ size_t move_unit_and_record(const std::vector<map_location> &steps,
 	}
 }
 
-size_t move_unit_from_replay(const std::vector<map_location> &steps,
+std::size_t move_unit_from_replay(const std::vector<map_location> &steps,
                  undo_list* undo_stack,
                  bool continued_move,bool skip_ally_sighted, bool show_move)
 {
