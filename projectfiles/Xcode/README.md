@@ -30,7 +30,7 @@ Builds the multiplayer server. The MP server is needed for hosting a local MP se
 Builds the unit tests. This is mainly useful when trying to fix a failing Travis build.
 
 * **campaignd**:
-Builds the addons server. This doesn't work currently.
+Builds the addons server.
 
 * **liblua**:
 Builds the lua library for Wesnoth.
@@ -70,3 +70,4 @@ When compiling Wesnoth for an official release, the following steps should be ta
  * Unmount it and convert it back using `hdiutil convert /PATH/TO/IMAGE.dmg -format UDBZ -o /PATH/TO/NEW/IMAGE.dmg` command.
  * Create SHA-256 checksum using `shasum -a 256 /PATH/TO/NEW/IMAGE.dmg` command.
  * Done! You can release it now.
+
