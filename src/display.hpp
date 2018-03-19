@@ -251,7 +251,7 @@ public:
 	/** return the screen surface or the surface used for map_screenshot. */
 	surface& get_screen_surface()
 	{
-		return map_screenshot_ ? map_screenshot_surf_ : video_.getSurface();
+		return video_.getSurface();
 	}
 
 	virtual bool in_game() const
@@ -1104,8 +1104,6 @@ private:
 
 	bool idle_anim_;
 	double idle_anim_rate_;
-
-	surface map_screenshot_surf_;
 
 	std::vector<std::function<void(display&)>> redraw_observers_;
 
