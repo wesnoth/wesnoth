@@ -183,8 +183,8 @@ void attack::draw_hex(const map_location& hex)
 			int xpos = display::get_singleton()->get_location_x(get_dest_hex());
 			int ypos = display::get_singleton()->get_location_y(get_dest_hex());
 
-			display::get_singleton()->drawing_queue_add(layer, get_dest_hex(), xpos, ypos,
-					image::get_image("whiteboard/attack-indicator-src-" + direction_text + ".png"));
+			//display::get_singleton()->drawing_queue_add(layer, get_dest_hex(), xpos, ypos,
+			//		image::get_image("whiteboard/attack-indicator-src-" + direction_text + ".png"));
 		}
 		else if (hex == target_hex_) //add symbol to defender hex
 		{

@@ -188,7 +188,6 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 	, animate_water_(true)
 	, flags_()
 	, activeTeam_(0)
-	, drawing_queue_()
 	, map_screenshot_(false)
 	, reach_map_()
 	, overlays_(nullptr)

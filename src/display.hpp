@@ -1059,41 +1059,6 @@ protected:
 	// TODO sort
 	std::size_t activeTeam_;
 
-	drawing_queue drawing_queue_;
-
-public:
-	drawing_queue& get_drawing_queue()
-	{
-		return drawing_queue_;
-	}
-
-	/**
-	 * Add an item to the drawing buffer. You need to update screen on affected area
-	 *
-	 */
-
-	void drawing_queue_add(const drawing_queue::layer,
-			const map_location&,
-			int,
-			int,
-			const surface&,
-			const SDL_Rect& clip = SDL_Rect())
-	{
-		UNUSED(clip);
-	}
-
-	void drawing_queue_add(const drawing_queue::layer,
-			const map_location&,
-			int,
-			int,
-			const std::vector<surface>&,
-			const SDL_Rect& clip = SDL_Rect())
-	{
-		UNUSED(clip);
-	}
-
-protected:
-
 	/** Used to indicate to drawing functions that we are doing a map screenshot */
 	bool map_screenshot_;
 
