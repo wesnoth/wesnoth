@@ -166,6 +166,8 @@ void attack::remove_temp_modifier(unit_map& unit_map)
 	move::remove_temp_modifier(unit_map);
 }
 
+#if 0
+// IF you're going to disable some code, disable all of it!
 void attack::draw_hex(const map_location& hex)
 {
 	if (hex == get_dest_hex() || hex == target_hex_) //draw attack indicator
@@ -196,6 +198,9 @@ void attack::draw_hex(const map_location& hex)
 		}
 	}
 }
+#else
+void attack::draw_hex(const map_location&) {}
+#endif
 
 void attack::redraw()
 {
