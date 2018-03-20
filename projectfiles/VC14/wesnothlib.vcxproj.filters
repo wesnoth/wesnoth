@@ -25,6 +25,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\serialization\base64.cpp">
+      <Filter>Serialization</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\serialization\binary_or_text.cpp">
       <Filter>Serialization</Filter>
     </ClCompile>
@@ -62,20 +65,20 @@
     <ClCompile Include="..\..\src\random.cpp" />
     <ClCompile Include="..\..\src\tstring.cpp" />
     <ClCompile Include="..\..\src\version.cpp" />
+    <ClCompile Include="..\..\src\crypt_blowfish\crypt_blowfish.c">
+      <Filter>crypt_blowfish</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\font\constants.cpp">
       <Filter>Font</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\formula\string_utils.cpp">
       <Filter>Formula</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\crypt_blowfish\crypt_blowfish.c">
-      <Filter>crypt_blowfish</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\serialization\base64.cpp">
-      <Filter>Serialization</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\serialization\base64.hpp">
+      <Filter>Serialization</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\serialization\binary_or_text.hpp">
       <Filter>Serialization</Filter>
     </ClInclude>
@@ -89,6 +92,9 @@
       <Filter>Serialization</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\serialization\string_utils.hpp">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\serialization\string_view.hpp">
       <Filter>Serialization</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\serialization\tokenizer.hpp">
@@ -116,8 +122,14 @@
     <ClInclude Include="..\..\src\tstring.hpp" />
     <ClInclude Include="..\..\src\version.hpp" />
     <ClInclude Include="..\..\src\wesconfig.h" />
+    <ClInclude Include="..\..\src\crypt_blowfish\crypt_blowfish.h">
+      <Filter>crypt_blowfish</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\font\constants.hpp">
       <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\formula\string_utils.hpp">
+      <Filter>Formula</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\spirit_po\catalog.hpp">
       <Filter>spirit_po</Filter>
@@ -149,20 +161,8 @@
     <ClInclude Include="..\..\src\spirit_po\version.hpp">
       <Filter>spirit_po</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\serialization\string_view.hpp">
-      <Filter>Serialization</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\utils\type_trait_aliases.hpp">
       <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\formula\string_utils.hpp">
-      <Filter>Formula</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\crypt_blowfish\crypt_blowfish.h">
-      <Filter>crypt_blowfish</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\serialization\base64.hpp">
-      <Filter>Serialization</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
