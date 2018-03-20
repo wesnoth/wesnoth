@@ -102,6 +102,8 @@
 		467D9DF4205EC3D300FA2FC4 /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 467D9DF1205EC3D200FA2FC4 /* texture.cpp */; };
 		467F3CF020605A3900CE0CE5 /* ingame_ui_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 467F3CEF20605A3900CE0CE5 /* ingame_ui_base.cpp */; };
 		467F3CF120605A3F00CE0CE5 /* ingame_ui_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 467F3CEF20605A3900CE0CE5 /* ingame_ui_base.cpp */; };
+		468A2EA72060F68B00B61D24 /* game_ui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468A2EA52060F68A00B61D24 /* game_ui.cpp */; };
+		468A2EA82060F68B00B61D24 /* game_ui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468A2EA52060F68A00B61D24 /* game_ui.cpp */; };
 		468C1B971F09245F002DF652 /* function_gamestate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468C1B951F09245E002DF652 /* function_gamestate.cpp */; };
 		469BDB55205C357500DBF748 /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
 		469BDB56205C357500DBF748 /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
@@ -1453,6 +1455,8 @@
 		467D9DF5205EC3DA00FA2FC4 /* surface.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = surface.hpp; sourceTree = "<group>"; };
 		467F3CEE20605A3800CE0CE5 /* ingame_ui_base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ingame_ui_base.hpp; sourceTree = "<group>"; };
 		467F3CEF20605A3900CE0CE5 /* ingame_ui_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ingame_ui_base.cpp; sourceTree = "<group>"; };
+		468A2EA52060F68A00B61D24 /* game_ui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_ui.cpp; sourceTree = "<group>"; };
+		468A2EA62060F68B00B61D24 /* game_ui.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_ui.hpp; sourceTree = "<group>"; };
 		468C1B951F09245E002DF652 /* function_gamestate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = function_gamestate.cpp; sourceTree = "<group>"; };
 		468C1B961F09245E002DF652 /* function_gamestate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = function_gamestate.hpp; sourceTree = "<group>"; };
 		469BDB53205C357400DBF748 /* base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = base64.cpp; sourceTree = "<group>"; };
@@ -4429,6 +4433,8 @@
 				B597EC610FC08E5D00CE81F5 /* game_save.hpp */,
 				9193FC771D5AC2D8004F6C07 /* game_stats.cpp */,
 				9193FC781D5AC2D8004F6C07 /* game_stats.hpp */,
+				468A2EA52060F68A00B61D24 /* game_ui.cpp */,
+				468A2EA62060F68B00B61D24 /* game_ui.hpp */,
 				ECABDA341B6A9461001407C1 /* game_version.cpp */,
 				9184385C1D4C786F00C42277 /* game_version.hpp */,
 				B5B4692A1071189700327599 /* gamestate_inspector.cpp */,
@@ -5346,6 +5352,7 @@
 				B54AC6F60FEA9F92006F6FBD /* transient_message.cpp in Sources */,
 				B55BE05311234B3300154E6C /* tree_view_node.cpp in Sources */,
 				B55BE05411234B3300154E6C /* tree_view.cpp in Sources */,
+				468A2EA72060F68B00B61D24 /* game_ui.cpp in Sources */,
 				49478714172FF6F8002B7ABA /* tristate_button.cpp in Sources */,
 				B5599AF10EC62181008DD061 /* tstring.cpp in Sources */,
 				ECAB84561B0C1934001A3EB7 /* undo_action.cpp in Sources */,
@@ -5585,6 +5592,7 @@
 				91E356631CACC67C00774252 /* game_state.cpp in Sources */,
 				91E356641CACC6E000774252 /* halo.cpp in Sources */,
 				91E356681CACC6E000774252 /* menu_events.cpp in Sources */,
+				468A2EA82060F68B00B61D24 /* game_ui.cpp in Sources */,
 				91E356691CACC6E000774252 /* mouse_events.cpp in Sources */,
 				91E3566A1CACC6E000774252 /* mouse_handler_base.cpp in Sources */,
 				91E3566B1CACC6E000774252 /* movetype.cpp in Sources */,
