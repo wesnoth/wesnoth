@@ -29,7 +29,6 @@
 #include "display.hpp"
 #include "quit_confirmation.hpp"
 #include "sdl/surface.hpp"
-#include "show_dialog.hpp"
 #include "../resources.hpp"
 #include "../playmp_controller.hpp"
 

@@ -18,6 +18,8 @@
 #include "display.hpp"
 #include "events.hpp"
 #include "game_config_manager.hpp"
+#include "gui/core/event/handler.hpp" // gui2::is_in_dialog
+#include "gui/dialogs/loading_screen.hpp"
 #include "hotkey/command_executor.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "log.hpp"
@@ -25,8 +27,6 @@
 #include "mouse_handler_base.hpp"
 #include "preferences/game.hpp"
 #include "scripting/plugins/context.hpp"
-#include "show_dialog.hpp" //gui::in_dialog
-#include "gui/core/event/handler.hpp" // gui2::is_in_dialog
 #include "soundsource.hpp"
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -50,7 +50,17 @@ controller_base::~controller_base()
 
 void controller_base::handle_event(const SDL_Event& event)
 {
-	if(gui::in_dialog()) {
+	/* TODO: since GUI2 and the main game are now part of the same event context, there is some conflict
+	 * between the GUI2 and event handlers such as these. By design, the GUI2 sdl handler is always on top
+	 * of the handler queue, so its events are handled last. This means events here have a chance to fire
+	 * first. have_keyboard_focus currently returns false if a dialog open, but this is just as stopgap
+	 * measure. We need to figure out a better way to filter out events.
+	 */
+	//if(gui2::is_in_dialog()) {
+	//	return;
+	//}
+
+	if(gui2::dialogs::loading_screen::displaying()) {
 		return;
 	}
 
@@ -162,7 +172,7 @@ void controller_base::keyup_listener::handle_event(const SDL_Event& event)
 
 bool controller_base::have_keyboard_focus()
 {
-	return true;
+	return !gui2::is_in_dialog();
 }
 
 bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, double x_axis, double y_axis)
