@@ -14,46 +14,61 @@
 
 #pragma once
 
+#include <string>
+
 class config;
 class terrain_type;
 class unit;
 class unit_type;
-class CVideo;
-#include <string>
 
-namespace help {
-
-struct help_manager {
-	help_manager(const config *game_config);
+namespace help
+{
+struct help_manager
+{
+	help_manager(const config* game_config);
 	~help_manager();
 };
 
 struct section;
+
 void init_help();
 
-/// Open a help dialog using a toplevel other than the default. This
-/// allows for complete customization of the contents, although not in a
-/// very easy way.
-void show_help(const section &toplevel, const std::string& show_topic="");
+/**
+ * Open a help dialog using a toplevel other than the default.
+ *
+ * This allows for complete customization of the contents, although not in a
+ * very easy way.
+ */
+void show_help(const section& toplevel, const std::string& show_topic = "");
 
-/// Open the help browser. The help browser will have the topic with id
-/// show_topic open if it is not the empty string. The default topic
-/// will be shown if show_topic is the empty string.
-void show_help(const std::string& show_topic="");
+/**
+ * Open the help browser, show topic with id show_topic.
+ *
+ * If show_topic is the empty string, the default topic will be shown.
+ */
+void show_help(const std::string& show_topic = "");
 
-/// wrapper to add unit prefix and hiding symbol
-void show_unit_help(const std::string& unit_id, bool has_variations=false,
-				bool hidden = false);
+/**
+ * Open the help browser, show unit with id unit_id.
+ *
+ * If show_topic is the empty string, the default topic will be shown.
+ */
+void show_unit_help(const std::string& unit_id, bool has_variations = false, bool hidden = false);
 
-/// wrapper to add variation prefix and hiding symbol
-void show_variation_help(const std::string &unit_id, const std::string &variation,
-				bool hidden = false);
+/**
+ * Open the help browser, show the variation of the unit matching.
+ */
+void show_variation_help(const std::string& unit_id, const std::string& variation, bool hidden = false);
 
-/// wrapper to add terrain prefix and hiding symbol
+/**
+ * Open the help browser, show terrain with id terrain_id.
+ *
+ * If show_topic is the empty string, the default topic will be shown.
+ */
 void show_terrain_help(const std::string& unit_id, bool hidden = false);
 
-void show_unit_description(const unit_type &t);
-void show_unit_description(const unit &u);
+void show_unit_description(const unit_type& t);
+void show_unit_description(const unit& u);
 void show_terrain_description(const terrain_type& t);
 
 } // End namespace help.
