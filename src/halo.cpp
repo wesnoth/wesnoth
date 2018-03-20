@@ -23,6 +23,7 @@
 #include "display.hpp"
 #include "log.hpp"
 #include "preferences/game.hpp"
+#include "sdl/texture.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <iostream>

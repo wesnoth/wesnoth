@@ -18,6 +18,7 @@
 #include "lexical_cast.hpp"
 #include "ogl/utils.hpp"
 #include "reports.hpp"
+#include "sdl/texture.hpp"
 #include "team.hpp"
 #include "terrain/builder.hpp"
 #include "units/map.hpp"

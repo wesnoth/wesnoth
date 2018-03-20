@@ -21,6 +21,7 @@
 
 #include "game_display.hpp"
 #include "log.hpp"
+#include "sdl/texture.hpp"
 
 static lg::log_domain log_arrows("arrows");
 #define ERR_ARR LOG_STREAM(err, log_arrows)

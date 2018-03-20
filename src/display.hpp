@@ -248,16 +248,11 @@ public:
 		return video_;
 	}
 
-	/** return the screen surface or the surface used for map_screenshot. */
-	surface& get_screen_surface()
-	{
-		return video_.getSurface();
-	}
-
 	virtual bool in_game() const
 	{
 		return false;
 	}
+
 	virtual bool in_editor() const
 	{
 		return false;
