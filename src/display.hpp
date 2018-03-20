@@ -60,6 +60,7 @@ class manager;
 #include "overlay.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/surface.hpp"
+#include "sdl/texture.hpp"
 #include "theme.hpp"
 #include "time_of_day.hpp"
 #include "utils/functional.hpp"
