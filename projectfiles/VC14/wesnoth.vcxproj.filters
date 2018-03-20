@@ -161,6 +161,9 @@
     <Filter Include="Font\Pango">
       <UniqueIdentifier>{c4a05de3-89fe-417e-a054-751a5d9d171b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="OGL">
+      <UniqueIdentifier>{9100fa1e-3fe6-4809-a351-ee0052f94a6d}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Preferences">
       <UniqueIdentifier>{b0433154-cf07-4ead-b777-917bbb4d553c}</UniqueIdentifier>
     </Filter>
@@ -548,6 +551,9 @@
     <ClCompile Include="..\..\src\gui\dialogs\campaign_selection.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\command_console.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\chat_log.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
@@ -599,6 +605,9 @@
     <ClCompile Include="..\..\src\gui\dialogs\game_stats.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\game_ui.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\game_version.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
@@ -609,6 +618,9 @@
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\hotkey_bind.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\ingame_ui_base.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\label_settings.cpp">
@@ -660,6 +672,9 @@
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\story_viewer.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\surrender_quit.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\terrain_layers.cpp">
@@ -782,6 +797,9 @@
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\player_info.cpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\player_list_helper.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\synced_choice_wait.cpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClCompile>
@@ -803,7 +821,13 @@
     <ClCompile Include="..\..\src\gui\auxiliary\iterator\walker_widget.cpp">
       <Filter>Gui\Auxiliary\Iterator</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\gui.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\core\canvas.cpp">
+      <Filter>Gui\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\gui_definition.cpp">
       <Filter>Gui\Core</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\core\linked_group_definition.cpp">
@@ -813,6 +837,9 @@
       <Filter>Gui\Core</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\core\placer.cpp">
+      <Filter>Gui\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\static_registry.cpp">
       <Filter>Gui\Core</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\core\timer.cpp">
@@ -1220,6 +1247,9 @@
     <ClCompile Include="..\..\src\sdl\surface.cpp">
       <Filter>SDL</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\sdl\texture.cpp">
+      <Filter>SDL</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\sdl\utils.cpp">
       <Filter>SDL</Filter>
     </ClCompile>
@@ -1411,9 +1441,11 @@
     <ClCompile Include="..\..\src\controller_base.cpp" />
     <ClCompile Include="..\..\src\countdown_clock.cpp" />
     <ClCompile Include="..\..\src\cursor.cpp" />
+    <ClCompile Include="..\..\src\deprecation.cpp" />
     <ClCompile Include="..\..\src\display.cpp" />
     <ClCompile Include="..\..\src\display_chat_manager.cpp" />
     <ClCompile Include="..\..\src\display_context.cpp" />
+    <ClCompile Include="..\..\src\drawing_queue.cpp" />
     <ClCompile Include="..\..\src\events.cpp" />
     <ClCompile Include="..\..\src\fake_unit_manager.cpp" />
     <ClCompile Include="..\..\src\fake_unit_ptr.cpp" />
@@ -1519,6 +1551,12 @@
     <ClCompile Include="..\..\src\font\text_surface.cpp">
       <Filter>Font</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\ogl\context.cpp">
+      <Filter>OGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ogl\utils.cpp">
+      <Filter>OGL</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\preferences\credentials.cpp">
       <Filter>Preferences</Filter>
     </ClCompile>
@@ -1536,34 +1574,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\preferences\lobby.cpp">
       <Filter>Preferences</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\gui.cpp">
-      <Filter>Gui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\core\gui_definition.cpp">
-      <Filter>Gui\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\core\static_registry.cpp">
-      <Filter>Gui\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\player_list_helper.cpp">
-      <Filter>Gui\Dialogs\Multiplayer</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\surrender_quit.cpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\deprecation.cpp" />
-    <ClCompile Include="..\..\src\sdl\texture.cpp">
-      <Filter>SDL</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\command_console.cpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\game_ui.cpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\ingame_ui_base.cpp">
-      <Filter>Gui\Dialogs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1879,6 +1889,9 @@
     <ClInclude Include="..\..\src\gui\widgets\repeating_button.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\retval.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\widgets\scroll_label.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
@@ -1975,6 +1988,9 @@
     <ClInclude Include="..\..\src\gui\dialogs\chat_log.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\command_console.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\core_selection.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
@@ -2023,6 +2039,9 @@
     <ClInclude Include="..\..\src\gui\dialogs\game_stats.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\game_ui.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\game_version.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
@@ -2033,6 +2052,9 @@
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\hotkey_bind.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\ingame_ui_base.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\label_settings.hpp">
@@ -2084,6 +2106,9 @@
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\story_viewer.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\surrender_quit.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\terrain_layers.hpp">
@@ -2206,6 +2231,9 @@
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\player_info.hpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\player_list_helper.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\plugin_executor.hpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClInclude>
@@ -2257,10 +2285,16 @@
     <ClInclude Include="..\..\src\gui\auxiliary\iterator\walker_widget.hpp">
       <Filter>Gui\Auxiliary\Iterator</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\gui.hpp">
+      <Filter>Gui</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\core\canvas.hpp">
       <Filter>Gui\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\core\canvas_private.hpp">
+      <Filter>Gui\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\gui_definition.hpp">
       <Filter>Gui\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\core\layout_exception.hpp">
@@ -2282,6 +2316,9 @@
       <Filter>Gui\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\core\register_widget.hpp">
+      <Filter>Gui\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\static_registry.hpp">
       <Filter>Gui\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\core\timer.hpp">
@@ -2623,7 +2660,13 @@
     <ClInclude Include="..\..\src\sdl\rect.hpp">
       <Filter>SDL</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\sdl\render_utils.hpp">
+      <Filter>SDL</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\sdl\surface.hpp">
+      <Filter>SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sdl\texture.hpp">
       <Filter>SDL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\sdl\userevent.hpp">
@@ -2842,9 +2885,11 @@
     <ClInclude Include="..\..\src\controller_base.hpp" />
     <ClInclude Include="..\..\src\countdown_clock.hpp" />
     <ClInclude Include="..\..\src\cursor.hpp" />
+    <ClInclude Include="..\..\src\deprecation.hpp" />
     <ClInclude Include="..\..\src\display.hpp" />
     <ClInclude Include="..\..\src\display_chat_manager.hpp" />
     <ClInclude Include="..\..\src\display_context.hpp" />
+    <ClInclude Include="..\..\src\drawing_queue.hpp" />
     <ClInclude Include="..\..\src\events.hpp" />
     <ClInclude Include="..\..\src\exceptions.hpp" />
     <ClInclude Include="..\..\src\fake_unit_manager.hpp" />
@@ -2987,6 +3032,12 @@
     <ClInclude Include="..\..\src\font\pango\stream_ops.hpp">
       <Filter>Font\Pango</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\ogl\context.hpp">
+      <Filter>OGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ogl\utils.hpp">
+      <Filter>OGL</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\preferences\credentials.hpp">
       <Filter>Preferences</Filter>
     </ClInclude>
@@ -3004,40 +3055,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\preferences\lobby.hpp">
       <Filter>Preferences</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\gui.hpp">
-      <Filter>Gui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\core\gui_definition.hpp">
-      <Filter>Gui\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\core\static_registry.hpp">
-      <Filter>Gui\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\player_list_helper.hpp">
-      <Filter>Gui\Dialogs\Multiplayer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\surrender_quit.hpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\deprecation.hpp" />
-    <ClInclude Include="..\..\src\gui\widgets\retval.hpp">
-      <Filter>Gui\Widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\sdl\render_utils.hpp">
-      <Filter>SDL</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\sdl\texture.hpp">
-      <Filter>SDL</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\command_console.hpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\game_ui.hpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\ingame_ui_base.hpp">
-      <Filter>Gui\Dialogs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
