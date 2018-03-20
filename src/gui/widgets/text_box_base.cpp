@@ -165,7 +165,7 @@ void text_box_base::insert_char(const utf8::string& unicode)
 
 size_t text_box_base::get_composition_length() const
 {
-	if(!ime_in_progress_) {
+	if(!is_composing()) {
 		return 0;
 	}
 	
@@ -395,7 +395,7 @@ void text_box_base::handle_key_backspace(SDL_Keymod /*modifier*/, bool& handled)
 		delete_selection();
 	} else if(selection_start_) {
 		delete_char(true);
-		if(ime_in_progress_) {
+		if(is_composing()) {
 			if(get_composition_length() == 0) {
 				ime_in_progress_ = false;
 			}
@@ -413,7 +413,7 @@ void text_box_base::handle_key_delete(SDL_Keymod /*modifier*/, bool& handled)
 		delete_selection();
 	} else if(selection_start_ < text_.get_length()) {
 		delete_char(false);
-		if(ime_in_progress_) {
+		if(is_composing()) {
 			if(get_composition_length() == 0) {
 				ime_in_progress_ = false;
 			}
@@ -428,7 +428,7 @@ void text_box_base::handle_commit(bool& handled, const utf8::string& unicode)
 
 	if(unicode.size() > 1 || unicode[0] != 0) {
 		handled = true;
-		if(ime_in_progress_) {
+		if(is_composing()) {
 			set_selection(ime_start_point_ + get_composition_length(), 0);
 			ime_in_progress_ = false;
 		} else {
@@ -447,7 +447,7 @@ void text_box_base::handle_editing(bool& handled, const utf8::string& unicode, i
 	if(unicode.size() > 1 || unicode[0] != 0) {
 		handled = true;
 		size_t new_len = utf8::size(unicode);
-		if(!ime_in_progress_) {
+		if(!is_composing()) {
 			ime_in_progress_ = true;
 			delete_selection();
 			ime_start_point_ = selection_start_;
@@ -608,7 +608,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 
 		case SDLK_RETURN:
 		case SDLK_KP_ENTER:
-			if(!ime_in_progress_ || (modifier & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT))) {
+			if(!is_composing() || (modifier & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT))) {
 				return;
 			}
 			// The IME will handle it, we just need to make sure nothing else handles it too.
@@ -616,7 +616,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			break;
 
 		case SDLK_ESCAPE:
-			if(!ime_in_progress_ || (modifier & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT))) {
+			if(!is_composing() || (modifier & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT))) {
 				return;
 			}
 			interrupt_composition();
