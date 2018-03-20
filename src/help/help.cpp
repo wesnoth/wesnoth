@@ -29,7 +29,6 @@
 #include "gui/dialogs/help_browser.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/settings.hpp"
-#include "help/help_browser.hpp"             // for help_browser
 #include "help/help_impl.hpp"                // for hidden_symbol, toplevel, etc
 #include "key.hpp"                      // for CKey
 #include "log.hpp"                      // for LOG_STREAM, log_domain
