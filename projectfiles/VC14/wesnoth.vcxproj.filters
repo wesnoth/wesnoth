@@ -989,21 +989,6 @@
     <ClCompile Include="..\..\src\widgets\button.cpp">
       <Filter>Widgets</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\widgets\menu.cpp">
-      <Filter>Widgets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\widgets\menu_style.cpp">
-      <Filter>Widgets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\widgets\scrollarea.cpp">
-      <Filter>Widgets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\widgets\scrollbar.cpp">
-      <Filter>Widgets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\widgets\textbox.cpp">
-      <Filter>Widgets</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\widgets\widget.cpp">
       <Filter>Widgets</Filter>
     </ClCompile>
@@ -1442,7 +1427,6 @@
     <ClCompile Include="..\..\src\fake_unit_ptr.cpp" />
     <ClCompile Include="..\..\src\filesystem_sdl.cpp" />
     <ClCompile Include="..\..\src\floating_label.cpp" />
-    <ClCompile Include="..\..\src\floating_textbox.cpp" />
     <ClCompile Include="..\..\src\format_time_summary.cpp" />
     <ClCompile Include="..\..\src\game_board.cpp" />
     <ClCompile Include="..\..\src\game_classification.cpp" />
@@ -1495,7 +1479,6 @@
     <ClCompile Include="..\..\src\savegame.cpp" />
     <ClCompile Include="..\..\src\seed_rng.cpp" />
     <ClCompile Include="..\..\src\settings.cpp" />
-    <ClCompile Include="..\..\src\show_dialog.cpp" />
     <ClCompile Include="..\..\src\side_filter.cpp" />
     <ClCompile Include="..\..\src\sound.cpp" />
     <ClCompile Include="..\..\src\sound_music_track.cpp" />
@@ -2474,18 +2457,6 @@
     <ClInclude Include="..\..\src\widgets\button.hpp">
       <Filter>Widgets</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\widgets\menu.hpp">
-      <Filter>Widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\widgets\scrollarea.hpp">
-      <Filter>Widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\widgets\scrollbar.hpp">
-      <Filter>Widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\widgets\textbox.hpp">
-      <Filter>Widgets</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\widgets\widget.hpp">
       <Filter>Widgets</Filter>
     </ClInclude>
@@ -2878,7 +2849,6 @@
     <ClInclude Include="..\..\src\fake_unit_ptr.hpp" />
     <ClInclude Include="..\..\src\filesystem.hpp" />
     <ClInclude Include="..\..\src\floating_label.hpp" />
-    <ClInclude Include="..\..\src\floating_textbox.hpp" />
     <ClInclude Include="..\..\src\format_time_summary.hpp" />
     <ClInclude Include="..\..\src\formatter.hpp" />
     <ClInclude Include="..\..\src\game_board.hpp" />
@@ -2938,7 +2908,6 @@
     <ClInclude Include="..\..\src\savegame_config.hpp" />
     <ClInclude Include="..\..\src\seed_rng.hpp" />
     <ClInclude Include="..\..\src\settings.hpp" />
-    <ClInclude Include="..\..\src\show_dialog.hpp" />
     <ClInclude Include="..\..\src\side_filter.hpp" />
     <ClInclude Include="..\..\src\sound.hpp" />
     <ClInclude Include="..\..\src\sound_music_track.hpp" />

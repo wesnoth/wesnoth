@@ -52,7 +52,6 @@
 #include "save_blocker.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"
-#include "show_dialog.hpp" //gui::in_dialog
 #include "sound.hpp"
 #include "soundsource.hpp"
 #include "statistics.hpp"

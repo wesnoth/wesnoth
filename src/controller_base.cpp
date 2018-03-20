@@ -17,6 +17,7 @@
 
 #include "display.hpp"
 #include "events.hpp"
+#include "gui/core/event/handler.hpp" // gui2::is_in_dialog
 #include "gui/dialogs/loading_screen.hpp"
 #include "hotkey/command_executor.hpp"
 #include "hotkey/hotkey_command.hpp"
@@ -25,7 +26,6 @@
 #include "mouse_handler_base.hpp"
 #include "preferences/game.hpp"
 #include "scripting/plugins/context.hpp"
-#include "show_dialog.hpp" //gui::in_dialog
 #include "soundsource.hpp"
 
 static lg::log_domain log_display("display");
@@ -57,7 +57,7 @@ void controller_base::handle_event(const SDL_Event& event)
 	 * first. have_keyboard_focus currently returns false if a dialog open, but this is just as stopgap
 	 * measure. We need to figure out a better way to filter out events.
 	 */
-	//if(gui::in_dialog()) {
+	//if(gui2::is_in_dialog()) {
 	//	return;
 	//}
 
@@ -163,7 +163,7 @@ void controller_base::keyup_listener::handle_event(const SDL_Event& event)
 
 bool controller_base::have_keyboard_focus()
 {
-	return !gui::in_dialog();
+	return !gui2::is_in_dialog();
 }
 
 bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, double x_axis, double y_axis)

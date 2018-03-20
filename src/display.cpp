@@ -49,7 +49,6 @@
 #include "units/animation_component.hpp"
 #include "units/drawer.hpp"
 #include "whiteboard/manager.hpp"
-#include "show_dialog.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "sdl/render_utils.hpp"
 #include "sdl/texture.hpp"

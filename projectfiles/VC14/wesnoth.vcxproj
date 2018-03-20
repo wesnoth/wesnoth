@@ -997,7 +997,6 @@
     <ClCompile Include="..\..\src\fake_unit_ptr.cpp" />
     <ClCompile Include="..\..\src\filesystem_sdl.cpp" />
     <ClCompile Include="..\..\src\floating_label.cpp" />
-    <ClCompile Include="..\..\src\floating_textbox.cpp" />
     <ClCompile Include="..\..\src\font\font_config.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Font\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Font\</ObjectFileName>
@@ -2835,7 +2834,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Serialization\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\settings.cpp" />
-    <ClCompile Include="..\..\src\show_dialog.cpp" />
     <ClCompile Include="..\..\src\side_filter.cpp" />
     <ClCompile Include="..\..\src\sound.cpp" />
     <ClCompile Include="..\..\src\soundsource.cpp" />
@@ -3466,41 +3464,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Widgets\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\widgets\menu.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Widgets\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="..\..\src\widgets\menu_style.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Widgets\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="..\..\src\widgets\scrollarea.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Widgets\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="..\..\src\widgets\scrollbar.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Widgets\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="..\..\src\widgets\textbox.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Widgets\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\widgets\widget.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Widgets\</ObjectFileName>
@@ -3640,7 +3603,6 @@
     <ClInclude Include="..\..\src\fake_unit_ptr.hpp" />
     <ClInclude Include="..\..\src\filesystem.hpp" />
     <ClInclude Include="..\..\src\floating_label.hpp" />
-    <ClInclude Include="..\..\src\floating_textbox.hpp" />
     <ClInclude Include="..\..\src\font\error.hpp" />
     <ClInclude Include="..\..\src\font\font_config.hpp" />
     <ClInclude Include="..\..\src\font\font_description.hpp" />
@@ -3997,7 +3959,6 @@
     <ClInclude Include="..\..\src\sdl\window.hpp" />
     <ClInclude Include="..\..\src\seed_rng.hpp" />
     <ClInclude Include="..\..\src\settings.hpp" />
-    <ClInclude Include="..\..\src\show_dialog.hpp" />
     <ClInclude Include="..\..\src\side_filter.hpp" />
     <ClInclude Include="..\..\src\sound.hpp" />
     <ClInclude Include="..\..\src\soundsource.hpp" />
@@ -4106,10 +4067,6 @@
     <ClInclude Include="..\..\src\whiteboard\utility.hpp" />
     <ClInclude Include="..\..\src\whiteboard\visitor.hpp" />
     <ClInclude Include="..\..\src\widgets\button.hpp" />
-    <ClInclude Include="..\..\src\widgets\menu.hpp" />
-    <ClInclude Include="..\..\src\widgets\scrollarea.hpp" />
-    <ClInclude Include="..\..\src\widgets\scrollbar.hpp" />
-    <ClInclude Include="..\..\src\widgets\textbox.hpp" />
     <ClInclude Include="..\..\src\widgets\widget.hpp" />
     <ClInclude Include="..\..\src\wml_exception.hpp" />
     <ClInclude Include="..\..\src\wml_separators.hpp" />
