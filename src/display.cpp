@@ -1593,7 +1593,7 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 
 	double velocity = 0.0;
 	while (dist_moved < dist_total) {
-		events::pump();
+		events::run_event_loop();
 
 		int t = SDL_GetTicks();
 		double dt = (t - t_prev) / 1000.0;

@@ -677,7 +677,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 	}
 
 	events::initialise();
-	events::pump();
+	events::run_event_loop();
 
 	res = image::update_from_preferences();
 	if(res == false) {
@@ -685,7 +685,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 		return 1;
 	}
 
-	events::pump();
+	events::run_event_loop();
 
 	if(preferences::joystick_support_enabled()) {
 		res = game->init_joystick();
@@ -698,7 +698,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 	const cursor::manager cursor_manager;
 	cursor::set(cursor::WAIT);
 
-	events::pump();
+	events::run_event_loop();
 
 #if(defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
 	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);

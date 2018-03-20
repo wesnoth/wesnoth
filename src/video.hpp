@@ -167,8 +167,8 @@ private:
 	/** Renders the screen. */
 	void render_screen();
 
-	/** events::pump() is the only place that should call render_screen(). */
-	friend void events::pump();
+	/** events::run_event_loop() is the only place that should call render_screen(). */
+	friend void events::run_event_loop();
 
 public:
 	void render_copy(const texture& txt,

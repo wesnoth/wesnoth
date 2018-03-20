@@ -469,7 +469,7 @@ void window::show_non_modal(/*const unsigned auto_close_timeout*/)
 	invalidate_layout();
 	suspend_drawing_ = false;
 
-	events::pump();
+	events::run_event_loop();
 }
 
 int window::show(const unsigned auto_close_timeout)
@@ -518,7 +518,7 @@ int window::show(const unsigned auto_close_timeout)
 		for(status_ = SHOWING; status_ != CLOSED;) {
 			// process installed callback if valid, to allow e.g. network
 			// polling
-			events::pump();
+			events::run_event_loop();
 
 			if(!mouse_button_state_initialized) {
 				/*

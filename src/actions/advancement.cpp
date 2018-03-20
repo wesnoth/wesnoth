@@ -142,7 +142,7 @@ namespace
 			animator.start_animations();
 			animator.wait_for_end();
 			animator.set_all_standing();
-			events::pump();
+			events::run_event_loop();
 		}
 
 		return true;

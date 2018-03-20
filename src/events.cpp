@@ -417,7 +417,7 @@ void finalize()
 // TODO: I'm uncertain if this is always safe to call at static init; maybe set in main() instead?
 static const boost::thread::id main_thread = boost::this_thread::get_id();
 
-void pump()
+void run_event_loop()
 {
 	if(boost::this_thread::get_id() != main_thread) {
 		// Can only call this on the main thread!
@@ -620,7 +620,7 @@ void pump()
 
 	video.render_screen();
 
-	// Inform the pump monitors that an events::pump() has occurred
+	// Inform the pump monitors that an events::run_event_loop() has occurred
 	for(auto monitor : pump_monitors) {
 		monitor->process(info);
 	}

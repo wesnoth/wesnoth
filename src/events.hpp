@@ -128,7 +128,7 @@ struct event_context
 };
 
 //causes events to be dispatched to all handler objects.
-void pump();
+void run_event_loop();
 
 //look for resize events and update references to the screen area
 void peek_for_resize();
@@ -142,7 +142,7 @@ private:
 };
 
 class pump_monitor {
-//pump_monitors receive notification after an events::pump() occurs
+//pump_monitors receive notification after an events::run_event_loop() occurs
 public:
 	pump_monitor();
 	virtual ~pump_monitor();

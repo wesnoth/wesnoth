@@ -70,7 +70,7 @@ static uint32_t timer_sdl_poll_events(uint32_t, void*)
 {
 	try
 	{
-		events::pump();
+		events::run_event_loop();
 	}
 	catch(CVideo::quit&)
 	{
