@@ -265,7 +265,7 @@ protected:
 public:
 	bool is_composing() const
 	{
-		return ime_in_progress_;
+		return ime_composing_;
 	}
 
 	void interrupt_composition();
@@ -315,7 +315,7 @@ private:
 	int selection_length_;
 
 	// Values to support input method editors
-	bool ime_in_progress_;
+	bool ime_composing_;
 	int ime_start_point_;
 
 	std::size_t cursor_timer_;

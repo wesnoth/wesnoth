@@ -37,7 +37,7 @@ text_box_base::text_box_base(const implementation::builder_styled_widget& builde
 	, text_()
 	, selection_start_(0)
 	, selection_length_(0)
-	, ime_in_progress_(false)
+	, ime_composing_(false)
 	, ime_start_point_(0)
 	, cursor_timer_(0)
 	, cursor_alpha_(0)
@@ -180,7 +180,7 @@ size_t text_box_base::get_composition_length() const
 
 void text_box_base::interrupt_composition()
 {
-	ime_in_progress_ = false;
+	ime_composing_ = false;
 	// We need to inform the IME that text input is no longer in progress.
 	SDL_StopTextInput();
 	SDL_StartTextInput();
@@ -397,7 +397,7 @@ void text_box_base::handle_key_backspace(SDL_Keymod /*modifier*/, bool& handled)
 		delete_char(true);
 		if(is_composing()) {
 			if(get_composition_length() == 0) {
-				ime_in_progress_ = false;
+				ime_composing_ = false;
 			}
 		}
 	}
@@ -415,7 +415,7 @@ void text_box_base::handle_key_delete(SDL_Keymod /*modifier*/, bool& handled)
 		delete_char(false);
 		if(is_composing()) {
 			if(get_composition_length() == 0) {
-				ime_in_progress_ = false;
+				ime_composing_ = false;
 			}
 		}
 	}
@@ -430,7 +430,7 @@ void text_box_base::handle_commit(bool& handled, const utf8::string& unicode)
 		handled = true;
 		if(is_composing()) {
 			set_selection(ime_start_point_ + get_composition_length(), 0);
-			ime_in_progress_ = false;
+			ime_composing_ = false;
 		} else {
 			insert_char(unicode);
 		}
@@ -448,7 +448,7 @@ void text_box_base::handle_editing(bool& handled, const utf8::string& unicode, i
 		handled = true;
 		std::size_t new_len = utf8::size(unicode);
 		if(!is_composing()) {
-			ime_in_progress_ = true;
+			ime_composing_ = true;
 			delete_selection();
 			ime_start_point_ = selection_start_;
 			text_cached_ = text_.text();
