@@ -22,6 +22,7 @@
 #include <SDL_render.h>
 
 #include <memory>
+#include <utility>
 
 class surface;
 class texture;
@@ -55,8 +56,11 @@ public:
 
 	/**
 	 * Creates a fake frame buffer for the unit tests.
+	 *
+	 * @param width   The width of the buffer.
+	 * @param height  The height of the buffer
 	 */
-	void make_test_fake();
+	void make_test_fake(const unsigned width = 1024, const unsigned height = 768);
 
 	bool faked() const
 	{
@@ -257,6 +261,8 @@ private:
 
 	// if there is no display at all, but we 'fake' it for clients
 	bool fake_screen_;
+
+	std::pair<unsigned, unsigned> fake_size_;
 
 	/** Helper class to manage SDL events. */
 	class video_event_handler : public events::sdl_handler

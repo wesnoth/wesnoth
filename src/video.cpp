@@ -51,6 +51,7 @@ CVideo::CVideo(FAKE_TYPES type)
 	, gl_context()
 #endif
 	, fake_screen_(false)
+	, fake_size_(0u, 0u)
 	, help_string_(0)
 	, updated_locked_(0)
 	, flip_locked_(0)
@@ -122,11 +123,14 @@ void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rec
 void CVideo::make_fake()
 {
 	fake_screen_ = true;
+	fake_size_ = { 1024, 768 };
 }
 
-void CVideo::make_test_fake()
+void CVideo::make_test_fake(const unsigned width, const unsigned height)
 {
 	fake_interactive = true;
+	fake_size_.first = width;
+	fake_size_.second = height;
 }
 
 void CVideo::init_window()
@@ -205,7 +209,9 @@ void CVideo::set_window_mode(const MODE_EVENT mode, const point& size)
 SDL_Rect CVideo::screen_area(bool as_pixels) const
 {
 	if(!window) {
-		return sdl::empty_rect;
+		return {0, 0,
+			static_cast<int>(fake_size_.first),
+			static_cast<int>(fake_size_.second)};
 	}
 
 	// First, get the renderer size in pixels.
