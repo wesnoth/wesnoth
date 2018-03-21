@@ -417,7 +417,6 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 	} else {
 		const hotkey::hotkey_command& cmd = hotkey::get_hotkey_command(items[res]["id"]);
 		do_execute_command(cmd, res);
-		set_button_state();
 	}
 }
 
@@ -433,7 +432,6 @@ void command_executor::execute_action(const std::vector<std::string>& items_arg,
 		const hotkey_command &command = hotkey::get_hotkey_command(*i);
 		if (can_execute_command(command)) {
 			do_execute_command(command);
-			set_button_state();
 		}
 		++i;
 	}
@@ -551,7 +549,6 @@ static void event_execute(const SDL_Event& event, command_executor* executor)
 {
 	if (!executor) return;
 	executor->execute_command(event);
-	executor->set_button_state();
 }
 
 void command_executor::execute_command(const SDL_Event& event, int index)
@@ -629,68 +626,6 @@ void command_executor::execute_command(const SDL_Event& event, int index)
 		default:
 			DBG_G << "command_executor: unknown command number " << command.id << ", ignoring.\n";
 			break;
-	}
-}
-
-void command_executor_default::set_button_state()
-{
-	display& disp = get_display();
-	for (const theme::menu& menu : disp.get_theme().menus()) {
-
-		std::shared_ptr<gui::button> button = disp.find_menu_button(menu.get_id());
-		if (!button) continue;
-		bool enabled = false;
-		for (const auto& command : menu.items()) {
-
-			const hotkey::hotkey_command& command_obj = hotkey::get_hotkey_command(command["id"]);
-			bool can_execute = can_execute_command(command_obj);
-			if (can_execute) {
-				enabled = true;
-				break;
-			}
-		}
-		button->enable(enabled);
-	}
-
-	for (const theme::action& action : disp.get_theme().actions()) {
-
-		std::shared_ptr<gui::button> button = disp.find_action_button(action.get_id());
-		if (!button) continue;
-		bool enabled = false;
-		int i = 0;
-		for (const std::string& command : action.items()) {
-
-			const hotkey::hotkey_command& command_obj = hotkey::get_hotkey_command(command);
-			std::string tooltip = action.tooltip(i);
-			if (filesystem::file_exists(game_config::path + "/images/icons/action/" + command + "_25.png" ))
-				button->set_overlay("icons/action/" + command);
-			if (!tooltip.empty())
-				button->set_tooltip_string(tooltip);
-
-			bool can_execute = can_execute_command(command_obj);
-			i++;
-			if (!can_execute) continue;
-			enabled = true;
-
-			ACTION_STATE state = get_action_state(command_obj.id, -1);
-			switch (state) {
-			case ACTION_SELECTED:
-			case ACTION_ON:
-				button->set_check(true);
-				break;
-			case ACTION_OFF:
-			case ACTION_DESELECTED:
-				button->set_check(false);
-				break;
-			case ACTION_STATELESS:
-				break;
-			default:
-				break;
-			}
-
-			break;
-		}
-		button->enable(enabled);
 	}
 }
 

@@ -117,7 +117,6 @@ public:
 	virtual void map_screenshot() {}
 	virtual void surrender_quit_game() {}
 
-	virtual void set_button_state() {}
 	virtual void recalculate_minimap() {}
 
 	// execute_command's parameter is changed to "hotkey_command& command" and this not maybe that is too inconsistent.
@@ -157,7 +156,6 @@ class command_executor_default : public command_executor
 protected:
 	virtual display& get_display() = 0;
 public:
-	void set_button_state();
 	void recalculate_minimap();
 	void lua_console();
 	void zoom_in();

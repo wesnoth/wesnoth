@@ -1226,7 +1226,6 @@ void editor_controller::refresh_image_cache()
 
 void editor_controller::display_redraw_callback(display&)
 {
-	set_button_state();
 	toolkit_->adjust_size();
 	toolkit_->get_palette_manager()->draw_contents();
 	get_current_map_context().get_labels().recalculate_labels();
@@ -1302,7 +1301,6 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 	LOG_ED << "Left click action " << hex_clicked << "\n";
 	editor_action* a = get_mouse_action().click_left(*gui_, x, y);
 	perform_refresh_delete(a, true);
-	if (a) set_button_state();
 
 	return false;
 }
@@ -1317,7 +1315,6 @@ void editor_controller::left_mouse_up(int x, int y, const bool /*browse*/)
 {
 	editor_action* a = get_mouse_action().up_left(*gui_, x, y);
 	perform_delete(a);
-	if (a) set_button_state();
 	toolkit_->set_mouseover_overlay();
 	context_manager_->refresh_after_action();
 }
@@ -1332,7 +1329,6 @@ bool editor_controller::right_click(int x, int y, const bool browse)
 	LOG_ED << "Right click action " << hex_clicked << "\n";
 	editor_action* a = get_mouse_action().click_right(*gui_, x, y);
 	perform_refresh_delete(a, true);
-	if (a) set_button_state();
 	return false;
 }
 
@@ -1349,7 +1345,6 @@ void editor_controller::right_mouse_up(int x, int y, const bool browse)
 
 	editor_action* a = get_mouse_action().up_right(*gui_, x, y);
 	perform_delete(a);
-	if (a) set_button_state();
 	toolkit_->set_mouseover_overlay();
 	context_manager_->refresh_after_action();
 }
