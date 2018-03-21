@@ -15,7 +15,7 @@ def update_pot(target, source, env):
     if not os.path.exists(new_pot): return
     if remove_pot_cdate(new_pot) != remove_pot_cdate(pot):
         shutil.copy2(new_pot, pot)
-        print pot + " updated."
+        print(pot + " updated.")
     os.remove(new_pot)
 
 #

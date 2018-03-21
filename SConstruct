@@ -112,7 +112,12 @@ opts.AddVariables(
 # Setup
 #
 
-toolpath = ["scons"] + map(lambda x : x.abspath + "/scons", Dir(".").repositories)
+toolpath = ["scons"]
+for repo in Dir(".").repositories:
+  # SCons repositories are additional dirs to look for source and lib files.
+  # It is possible to make out of tree builds by running SCons outside of this
+  # source code root and supplying this path with -Y option.
+  toolpath.append(repo.abspath + "/scons")
 sys.path = toolpath + sys.path
 env = Environment(tools=["tar", "gettext_tool", "install", "python_devel", "scanreplace"], options = opts, toolpath = toolpath)
 
@@ -290,7 +295,7 @@ def Warning(message):
 
 from metasconf import init_metasconf
 configure_args = dict(
-    custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext_tool", "lua"]),
+    custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "pango", "pkgconfig", "gettext_tool", "lua"]),
     config_h = "$build_dir/config.h",
     log_file="$build_dir/config.log", conf_dir="$build_dir/sconf_temp")
 
