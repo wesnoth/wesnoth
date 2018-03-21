@@ -10,8 +10,8 @@ Contents
 
 ## 1. Prerequisites
 
-Wesnoth requires a compiler with sufficient C++11 support such as GCC 4.8 and
-later, or Clang 3.3 and later.
+Wesnoth requires a compiler with sufficient C++14 support such as GCC 5.0 and
+later, or Clang 3.8 and later.
 
 You'll need to have these libraries and their development headers installed in
 order to build Wesnoth:
