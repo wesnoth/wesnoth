@@ -79,15 +79,12 @@ namespace t_translation {
 
 		ter_map() = default;
 		ter_map(const ter_map&) = default;
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
 		ter_map(ter_map&&) = default;
-#endif
+
 		ter_map(int w, int h, terrain_code fill = terrain_code()) : data(w * h, fill), w(w), h(h) {}
 
 		ter_map & operator= (const ter_map &) = default;
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
 		ter_map & operator= (ter_map &&) = default;
-#endif
 
 		terrain_code& get(int x, int y) { std::size_t index = x * h + y; return data.at(index); }
 		const terrain_code& get(int x, int y) const { std::size_t index = x * h + y; return data.at(index); }
