@@ -26,7 +26,7 @@
 
 #include "ai/formula/ai.hpp"
 
-#include <regex>
+#include <boost/regex.hpp>
 
 namespace pathfind {
 
@@ -141,10 +141,10 @@ static component *find_component(component *root, const std::string &path, path_
 	}
 
 	//match path elements in [modify_ai] tag
-	std::regex re(R"""(([^\.^\[]+)(\[(\d*)\]|\[([^\]]+)\]|()))""");
+	boost::regex re(R"""(([^\.^\[]+)(\[(\d*)\]|\[([^\]]+)\]|()))""");
 	const int sub_matches[] {1,3,4};
-	std::sregex_token_iterator i(path.begin(), path.end(), re, sub_matches);
-	std::sregex_token_iterator j;
+	boost::sregex_token_iterator i(path.begin(), path.end(), re, sub_matches);
+	boost::sregex_token_iterator j;
 
 	component *c  = root;
 

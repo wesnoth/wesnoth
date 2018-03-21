@@ -30,7 +30,7 @@
 #include "terrain/type_data.hpp"
 #include "units/unit.hpp"
 
-#include <regex>
+#include <boost/regex.hpp>
 
 namespace editor
 {
@@ -154,10 +154,11 @@ map_context::map_context(const config& game_config, const std::string& filename)
 	}
 
 	// 1.0 Pure map data
-	std::regex rexpression_map_data(R"""(map_data\s*=\s*"(.+?)")""");
-	std::smatch matched_map_data;
+	boost::regex rexpression_map_data(R"""(map_data\s*=\s*"(.+?)")""");
+	boost::smatch matched_map_data;
 
-	if(!std::regex_search(file_string, matched_map_data, rexpression_map_data)
+	if(!boost::regex_search(
+		file_string, matched_map_data, rexpression_map_data, boost::regex_constants::match_not_dot_null)
 	) {
 		map_ = editor_map::from_string(game_config, file_string); // throws on error
 		pure_map_ = true;
@@ -169,14 +170,14 @@ map_context::map_context(const config& game_config, const std::string& filename)
 	// 2.0 Embedded map
 	const std::string& map_data = matched_map_data[1];
 
-	std::regex rexpression_macro(R"""(\{(.+?)\})""");
-	std::smatch matched_macro;
+	boost::regex rexpression_macro(R"""(\{(.+?)\})""");
+	boost::smatch matched_macro;
 
-	if(!std::regex_search(map_data, matched_macro, rexpression_macro)) {
+	if(!boost::regex_search(map_data, matched_macro, rexpression_macro)) {
 		// We have a map_data string but no macro ---> embedded or scenario
 
-		std::regex rexpression_scenario(R"""(\[(scenario|test|multiplayer|tutorial)\])""");
-		if(!std::regex_search(file_string, rexpression_scenario)) {
+		boost::regex rexpression_scenario(R"""(\[(scenario|test|multiplayer|tutorial)\])""");
+		if(!boost::regex_search(file_string, rexpression_scenario)) {
 			LOG_ED << "Loading generated scenario file" << std::endl;
 			// 4.0 editor generated scenario
 			try {
@@ -547,7 +548,7 @@ config map_context::to_config()
 				u["name"].write_if_not_empty(i->name());
 				u["facing"] = map_location::write_direction(i->facing());
 
-				if(!std::regex_match(i->id(), std::regex(".*-[0-9]+"))) {
+				if(!boost::regex_match(i->id(), boost::regex(".*-[0-9]+"))) {
 					u["id"] = i->id();
 				}
 
@@ -616,10 +617,11 @@ bool map_context::save_map()
 		} else {
 			std::string map_string = filesystem::read_file(get_filename());
 
-			std::regex rexpression_map_data(R"""((.*map_data\s*=\s*")(.+?)(".*))""");
-			std::smatch matched_map_data;
+			boost::regex rexpression_map_data(R"""((.*map_data\s*=\s*")(.+?)(".*))""");
+			boost::smatch matched_map_data;
 
-			if(std::regex_search(map_string, matched_map_data, rexpression_map_data)) {
+			if(boost::regex_search(map_string, matched_map_data, rexpression_map_data,
+					   boost::regex_constants::match_not_dot_null)) {
 				std::stringstream ss;
 				ss << matched_map_data[1];
 				ss << map_data;

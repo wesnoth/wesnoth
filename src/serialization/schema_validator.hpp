@@ -19,9 +19,10 @@
 #include "serialization/tag.hpp"
 #include "serialization/validator.hpp"
 
+#include <boost/regex.hpp>
+
 #include <iostream>
 #include <queue>
-#include <regex>
 #include <stack>
 #include <string>
 
@@ -146,6 +147,6 @@ private:
 	std::stack<message_map> cache_;
 
 	/** Type validators. */
-	std::map<std::string, std::regex> types_;
+	std::map<std::string, boost::regex> types_;
 };
 } // namespace schema_validation{
