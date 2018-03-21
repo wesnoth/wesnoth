@@ -17,6 +17,7 @@ PLAY_TEST="$9"
 MP_TEST="${10}"
 BOOST_TEST="${11}"
 LTO="${12}"
+UNIT_TESTS="${13}"
 
 # only enable strict builds when no optimizations are done
 if [ "$EXTRA_FLAGS_RELEASE" == "-O0" ]; then
@@ -38,6 +39,7 @@ echo "PLAY_TEST: $PLAY_TEST"
 echo "MP_TEST: $MP_TEST"
 echo "BOOST_TEST: $BOOST_TEST"
 echo "LTO: $LTO"
+echo "UNIT_TESTS: $UNIT_TESTS"
 
 $CXX --version
 
@@ -75,7 +77,7 @@ else
 # needed since docker returns the exit code of the final comman executed, so a failure needs to be returned if any unit tests fail
     EXIT_VAL=0
 
-    if [ "$WML_TESTS" == "true" ]; then
+    if [ "$WML_TESTS" == "true" ] && [ "$UNIT_TESTS" == "true" ]; then
         echo "Executing run_wml_tests"
 
         ./run_wml_tests -g -v -c -t "$WML_TEST_TIME"
@@ -87,7 +89,7 @@ else
         fi
     fi
 
-    if [ "$PLAY_TEST" == "true" ]; then
+    if [ "$PLAY_TEST" == "true" ] && [ "$UNIT_TESTS" == "true" ]; then
         echo "Executing play_test_executor.sh"
 
         ./utils/travis/play_test_executor.sh
@@ -99,7 +101,7 @@ else
         fi
     fi
 
-    if [ "$MP_TEST" == "true" ]; then
+    if [ "$MP_TEST" == "true" ] && [ "$UNIT_TESTS" == "true" ]; then
         echo "Executing mp_test_executor.sh"
 
         ./utils/travis/mp_test_executor.sh
@@ -111,7 +113,7 @@ else
         fi
     fi
 
-    if [ "$BOOST_TEST" == "true" ]; then
+    if [ "$BOOST_TEST" == "true" ] && [ "$UNIT_TESTS" == "true" ]; then
         echo "Executing boost unit tests"
 
         ./utils/travis/test_executor.sh
