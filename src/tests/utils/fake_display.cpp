@@ -19,72 +19,67 @@
 #include "game_board.hpp"
 #include "game_display.hpp"
 #include "terrain/type_data.hpp"
-#include "reports.hpp"
 
-namespace wb {
-	class manager;
+namespace wb
+{
+class manager;
 }
 
-namespace test_utils {
+namespace test_utils
+{
+class fake_display_manager
+{
+	static fake_display_manager* manager_;
 
-	class fake_display_manager {
-		static fake_display_manager* manager_;
+	CVideo video_;
+	config dummy_cfg_;
+	config dummy_cfg2_;
+	game_board dummy_board_;
+	const events::event_context main_event_context_;
 
-		CVideo video_;
-		config dummy_cfg_;
-		config dummy_cfg2_;
-		game_board dummy_board_;
-		reports dummy_reports;
-		const events::event_context main_event_context_;
+	game_display disp_;
 
+public:
+	static fake_display_manager* get_manager();
+	game_display& get_display();
 
-		game_display disp_;
+	fake_display_manager();
+};
 
-		public:
-		static fake_display_manager* get_manager();
-		game_display& get_display();
+fake_display_manager* fake_display_manager::manager_ = nullptr;
 
-		fake_display_manager();
-//		~fake_display_manager();
-	};
-
-	fake_display_manager* fake_display_manager::manager_ = 0;
-
-	fake_display_manager* fake_display_manager::get_manager()
-	{
-		if (!manager_)
-		{
-			manager_ = new fake_display_manager();
-		}
-		return manager_;
+fake_display_manager* fake_display_manager::get_manager()
+{
+	if(!manager_) {
+		manager_ = new fake_display_manager();
 	}
 
-	fake_display_manager::fake_display_manager() :
-		video_(CVideo::FAKE_TEST),
-		dummy_cfg_(),
-		dummy_cfg2_(),
-		dummy_board_(std::make_shared<terrain_type_data>(dummy_cfg_), dummy_cfg2_),
-		main_event_context_(),
-		disp_(dummy_board_, std::shared_ptr<wb::manager> (), dummy_cfg_, dummy_cfg_)
-	{
+	return manager_;
+}
+
+fake_display_manager::fake_display_manager()
+	: video_(CVideo::FAKE_TEST)
+	, dummy_cfg_()
+	, dummy_cfg2_()
+	, dummy_board_(std::make_shared<terrain_type_data>(dummy_cfg_), dummy_cfg2_)
+	, main_event_context_()
+	, disp_(dummy_board_, std::shared_ptr<wb::manager>(), dummy_cfg_, dummy_cfg_)
+{
+}
+
+game_display& fake_display_manager::get_display()
+{
+	return disp_;
+}
+
+game_display& get_fake_display(const int width, const int height)
+{
+	game_display& display = fake_display_manager::get_manager()->get_display();
+
+	if(width >= 0 && height >= 0) {
+		display.video().make_test_fake(width, height);
 	}
 
-	game_display& fake_display_manager::get_display()
-	{
-		return disp_;
-	}
-
-	game_display& get_fake_display(const int width, const int height)
-	{
-		game_display& display =
-				fake_display_manager::get_manager()->get_display();
-
-		if(width >= 0 && height >= 0) {
-			display.video().make_test_fake(width, height);
-		}
-
-		return display;
-	}
-
-
+	return display;
+}
 }
