@@ -725,11 +725,6 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 			resources::undo_stack->clear();
 		}
 	}
-
-	// Update the screen.
-	if (display::get_singleton() != nullptr )
-		display::get_singleton()->invalidate_game_status();
-		// Other updates were done by place_recruit().
 }
 
 
@@ -772,11 +767,6 @@ bool recall_unit(const std::string & id, team & current_team,
 			resources::undo_stack->clear();
 		}
 	}
-
-	// Update the screen.
-	if (display::get_singleton() != nullptr )
-		display::get_singleton()->invalidate_game_status();
-		// Other updates were done by place_recruit().
 
 	return true;
 }

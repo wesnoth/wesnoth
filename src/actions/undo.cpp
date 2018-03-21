@@ -373,8 +373,6 @@ void undo_list::undo()
 		resources::whiteboard->on_gamestate_change();
 
 		// Screen updates.
-		gui.invalidate_unit();
-		gui.invalidate_game_status();
 		gui.redraw_minimap();
 	}
 	else
@@ -421,8 +419,6 @@ void undo_list::redo()
 	temp.swap(redos_);
 
 	// Screen updates.
-	gui.invalidate_unit();
-	gui.invalidate_game_status();
 	gui.redraw_minimap();
 }
 
@@ -487,7 +483,6 @@ bool undo_list::apply_shroud_changes() const
 	if ( std::get<0>(clearer.fire_events() )) {
 		// Fix up the display in case WML changed stuff.
 		clear_shroud(side_);
-		disp.invalidate_unit();
 	}
 
 	return true;

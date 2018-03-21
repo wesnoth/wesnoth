@@ -238,7 +238,6 @@ namespace {
 			patient.heal(amount);
 		else if ( amount < 0 )
 			patient.take_hit(-amount);
-		game_display::get_singleton()->invalidate_unit();
 	}
 
 

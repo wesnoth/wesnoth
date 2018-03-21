@@ -132,9 +132,6 @@ void recruit::apply_temp_modifier(unit_map& unit_map)
 	// Temporarily insert unit into unit_map
 	// unit map takes ownership of temp_unit
 	unit_map.insert(temp_unit_);
-
-	// Update gold in the top bar
-	display::get_singleton()->invalidate_game_status();
 }
 
 void recruit::remove_temp_modifier(unit_map& unit_map)

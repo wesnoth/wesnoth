@@ -160,8 +160,6 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 	unit_map.insert(temp_unit_);
 
 	resources::gameboard->teams().at(team_index()).get_side_actions()->change_gold_spent_by(cost);
-	// Update gold in top bar
-	display::get_singleton()->invalidate_game_status();
 }
 
 void recall::remove_temp_modifier(unit_map& unit_map)

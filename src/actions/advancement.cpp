@@ -134,7 +134,6 @@ namespace
 		}
 
 		u = resources::gameboard->units().find(loc);
-		game_display::get_singleton()->invalidate_unit();
 
 		if (animate && u != resources::gameboard->units().end() && !CVideo::get_singleton().update_locked()) {
 			unit_animator animator;

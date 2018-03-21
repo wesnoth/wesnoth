@@ -697,7 +697,6 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 	animator.start_animations();
 	animator.wait_for_end();
 	animator.set_all_standing();
-	if (loc==disp->mouseover_hex()) disp->invalidate_unit();
 }
 
 void unit_healing(unit &healed, const std::vector<unit *> &healers, int healing,

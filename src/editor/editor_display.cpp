@@ -29,8 +29,8 @@ namespace wb {
 
 namespace editor {
 
-editor_display::editor_display(editor_controller& controller, reports& reports_object, const config& theme_cfg)
-	: display(nullptr, std::shared_ptr<wb::manager>(), reports_object, theme_cfg, config())
+editor_display::editor_display(editor_controller& controller, const config& theme_cfg)
+	: display(nullptr, std::shared_ptr<wb::manager>(), theme_cfg, config())
 	, brush_locations_()
 	, controller_(controller)
 {
@@ -104,6 +104,8 @@ const SDL_Rect& editor_display::get_clip_rect()
 	return map_outside_area();
 }
 
+// USE AS REFERENCE FOR WHAT NEEDS TO BE UPDATED IN GUI2 UI
+#if 0
 void editor_display::draw_sidebar()
 {
 	config element;
@@ -125,6 +127,7 @@ void editor_display::draw_sidebar()
 		refresh_report("num_units");
 	}
 }
+#endif
 
 const time_of_day& editor_display::get_time_of_day(const map_location& /*loc*/) const
 {

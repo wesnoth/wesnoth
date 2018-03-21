@@ -456,8 +456,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 		assert(i.valid());
 	}
 
-	game_display::get_singleton()->invalidate_unit();
-
 	return true;
 }
 SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child,  use_undo, /*show*/, error_handler)
@@ -488,7 +486,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child,  use_undo, /*show*/, e
 	// Add the unit to the board.
 	std::tie(unit_it, std::ignore) = resources::gameboard->units().replace(loc, created);
 
-	game_display::get_singleton()->invalidate_unit();
 	resources::game_events->pump().fire("unit_placed", loc);
 	unit_display::unit_recruited(loc);
 

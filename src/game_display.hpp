@@ -42,7 +42,6 @@ class game_display : public display
 public:
 	game_display(game_board& board,
 			std::weak_ptr<wb::manager> wb,
-			reports & reports_object,
 			const config& theme_cfg,
 			const config& level,
 			bool dummy=false);
@@ -120,9 +119,6 @@ public:
 
 	/** Draws the movement info (turns available). */
 	void draw_movement_info();
-
-	/** Function to invalidate that unit status displayed on the sidebar. */
-	void invalidate_unit() { invalidateGameStatus_ = true; }
 
 	/** Same as invalidate_unit() if moving the displayed unit. */
 	void invalidate_unit_after_move(const map_location& src, const map_location& dst);
@@ -207,8 +203,6 @@ public:
 private:
 	game_display(const game_display&);
 	void operator=(const game_display&);
-
-	virtual void draw_sidebar() override;
 
 	void draw_footstep_images() const;
 

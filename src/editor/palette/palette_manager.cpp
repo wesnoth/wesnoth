@@ -197,7 +197,6 @@ void palette_manager::handle_event(const SDL_Event& event) {
 		//set_dirty(true);
 //		draw(true);
 //		set_dirty(active_palette().mouse_click());
-//		gui_.invalidate_game_status();
 	}
 }
 

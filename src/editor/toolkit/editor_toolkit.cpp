@@ -104,7 +104,6 @@ void editor_toolkit::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 		palette_manager_->adjust_size();
 
 		set_mouseover_overlay();
-		gui_.invalidate_game_status();
 		palette_manager_->active_palette().hide(false);
 	} else {
 		ERR_ED << "Invalid hotkey command ("

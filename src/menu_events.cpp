@@ -635,7 +635,6 @@ void menu_handler::rename_unit()
 	if(gui2::dialogs::edit_text::execute(title, label, name)) {
 		resources::recorder->add_rename(name, un->get_location());
 		un->rename(name);
-		gui_->invalidate_unit();
 	}
 }
 
@@ -860,7 +859,6 @@ void menu_handler::move_unit_to_loc(const unit_map::iterator& ui,
 	}
 
 	gui_->set_route(nullptr);
-	gui_->invalidate_game_status();
 }
 
 void menu_handler::execute_gotos(mouse_handler& mousehandler, int side)
@@ -952,7 +950,6 @@ void menu_handler::execute_gotos(mouse_handler& mousehandler, int side)
 
 	// erase the footsteps after movement
 	gui_->set_route(nullptr);
-	gui_->invalidate_game_status();
 }
 
 void menu_handler::toggle_ellipses()

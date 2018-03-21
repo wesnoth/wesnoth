@@ -36,7 +36,6 @@
 #include "minimap.hpp"
 #include "overlay.hpp"
 #include "play_controller.hpp" //note: this can probably be refactored out
-#include "reports.hpp"
 #include "resources.hpp"
 #include "color.hpp"
 #include "synced_context.hpp"
@@ -140,7 +139,7 @@ void display::remove_single_overlay(const map_location& loc, const std::string& 
 	}
 }
 
-display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, reports & reports_object, const config& theme_cfg, const config& level, bool auto_join)
+display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, const config& theme_cfg, const config& level, bool auto_join)
 	: events::sdl_handler(auto_join)
 	, dc_(dc)
 	, halo_man_(new halo::manager())
@@ -163,17 +162,12 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 	, diagnostic_label_(0)
 	, turbo_speed_(2)
 	, turbo_(false)
-	, invalidateGameStatus_(true)
 	, map_labels_(new map_labels(0))
-	, reports_object_(&reports_object)
 	, scroll_event_("scrolled")
 	, complete_redraw_event_("completely_redrawn")
 	, fps_counter_()
 	, fps_start_()
 	, fps_actual_()
-	, reportRects_()
-	, reportSurfaces_()
-	, reports_()
 	, menu_buttons_()
 	, action_buttons_()
 	, mouseover_hex_overlay_(nullptr)
@@ -346,7 +340,6 @@ void display::set_playing_team(std::size_t teamindex)
 {
 	assert(teamindex < dc_->teams().size());
 	activeTeam_ = teamindex;
-	invalidate_game_status();
 }
 
 bool display::add_exclusive_draw(const map_location& loc, unit& unit)
@@ -1650,254 +1643,6 @@ const SDL_Rect& display::get_clip_rect()
 image::TYPE display::get_image_type(const map_location& /*loc*/)
 {
 	return image::TOD_COLORED;
-}
-
-void display::draw_image_for_report(surface& img, SDL_Rect& rect)
-{
-	SDL_Rect visible_area = get_non_transparent_portion(img);
-	SDL_Rect target = rect;
-	if(visible_area.x != 0 || visible_area.y != 0 || visible_area.w != img->w || visible_area.h != img->h) {
-		if(visible_area.w == 0 || visible_area.h == 0) {
-			return;
-		}
-
-		if(visible_area.w > rect.w || visible_area.h > rect.h) {
-			img.assign(get_surface_portion(img,visible_area));
-			img.assign(scale_surface(img,rect.w,rect.h));
-			visible_area.x = 0;
-			visible_area.y = 0;
-			visible_area.w = img->w;
-			visible_area.h = img->h;
-		} else {
-			target.x = rect.x + (rect.w - visible_area.w)/2;
-			target.y = rect.y + (rect.h - visible_area.h)/2;
-			target.w = visible_area.w;
-			target.h = visible_area.h;
-		}
-
-		sdl_blit(img,&visible_area,video_.getSurface(),&target);
-	} else {
-		if(img->w != rect.w || img->h != rect.h) {
-			img.assign(scale_surface(img,rect.w,rect.h));
-		}
-
-		sdl_blit(img,nullptr,video_.getSurface(),&target);
-	}
-}
-
-/**
- * Redraws the specified report (if anything has changed).
- * If a config is not supplied, it will be generated via
- * reports::generate_report().
- */
-void display::refresh_report(const std::string& report_name, const config * new_cfg)
-{
-	return;
-
-	const theme::status_item *item = theme_.get_status_item(report_name);
-	if (!item) {
-		reportSurfaces_[report_name].assign(nullptr);
-		return;
-	}
-
-	// Now we will need the config. Generate one if needed.
-
-	boost::optional <events::mouse_handler &> mhb = boost::none;
-
-	if (resources::controller) {
-		mhb = resources::controller->get_mouse_handler_base();
-	}
-
-	reports::context temp_context = reports::context(*dc_, *this, *resources::tod_manager, wb_.lock(), mhb);
-
-	const config generated_cfg = new_cfg ? config() : reports_object_->generate_report(report_name, temp_context);
-	if ( new_cfg == nullptr )
-		new_cfg = &generated_cfg;
-
-	SDL_Rect &rect = reportRects_[report_name];
-	const SDL_Rect &new_rect = item->location(video_.screen_area());
-	surface &surf = reportSurfaces_[report_name];
-	config &report = reports_[report_name];
-
-	// Report and its location is unchanged since last time. Do nothing.
-	if (surf && rect == new_rect && report == *new_cfg) {
-		return;
-	}
-
-	// Update the config in reports_.
-	report = *new_cfg;
-
-	if (surf) {
-		sdl_blit(surf, nullptr, video_.getSurface(), &rect);
-	}
-
-	// If the rectangle has just changed, assign the surface to it
-	if (!surf || new_rect != rect)
-	{
-		surf.assign(nullptr);
-		rect = new_rect;
-
-		// If the rectangle is present, and we are blitting text,
-		// then we need to backup the surface.
-		// (Images generally won't need backing up,
-		// unless they are transparent, but that is done later).
-		if (rect.w > 0 && rect.h > 0) {
-			surf.assign(get_surface_portion(video_.getSurface(), rect));
-			if (reportSurfaces_[report_name] == nullptr) {
-				ERR_DP << "Could not backup background for report!" << std::endl;
-			}
-		}
-	}
-
-	tooltips::clear_tooltips(rect);
-
-	if (report.empty()) return;
-
-	int x = rect.x, y = rect.y;
-
-	// Add prefix, postfix elements.
-	// Make sure that they get the same tooltip
-	// as the guys around them.
-	std::string str = item->prefix();
-	if (!str.empty()) {
-		config &e = report.add_child_at("element", config(), 0);
-		e["text"] = str;
-		e["tooltip"] = report.child("element")["tooltip"];
-	}
-	str = item->postfix();
-	if (!str.empty()) {
-		config &e = report.add_child("element");
-		e["text"] = str;
-		e["tooltip"] = report.child("element", -1)["tooltip"];
-	}
-
-	// Loop through and display each report element.
-	int tallest = 0;
-	int image_count = 0;
-	bool used_ellipsis = false;
-	std::ostringstream ellipsis_tooltip;
-	SDL_Rect ellipsis_area = rect;
-
-	for (config::const_child_itors elements = report.child_range("element");
-		 elements.begin() != elements.end(); elements.pop_front())
-	{
-		SDL_Rect area {x, y, rect.w + rect.x - x, rect.h + rect.y - y};
-		if (area.h <= 0) break;
-
-		std::string t = elements.front()["text"];
-		if (!t.empty())
-		{
-			if (used_ellipsis) goto skip_element;
-
-			// Draw a text element.
-			font::pango_text text;
-			if (item->font_rgb_set()) {
-				text.set_foreground_color(item->font_rgb());
-			}
-			bool eol = false;
-			if (t[t.size() - 1] == '\n') {
-				eol = true;
-				t = t.substr(0, t.size() - 1);
-			}
-			text.set_font_size(item->font_size());
-			text.set_text(t, true);
-			text.set_maximum_width(area.w);
-			text.set_maximum_height(area.h, false);
-			surface s = text.render_and_get_surface();
-
-			// check if next element is text with almost no space to show it
-			const int minimal_text = 12; // width in pixels
-			config::const_child_iterator ee = elements.begin();
-			if (!eol && rect.w - (x - rect.x + s->w) < minimal_text &&
-				++ee != elements.end() && !(*ee)["text"].empty())
-			{
-				// make this element longer to trigger rendering of ellipsis
-				// (to indicate that next elements have not enough space)
-				//NOTE this space should be longer than minimal_text pixels
-				t = t + "    ";
-				text.set_text(t, true);
-				s = text.render_and_get_surface();
-				// use the area of this element for next tooltips
-				used_ellipsis = true;
-				ellipsis_area.x = x;
-				ellipsis_area.y = y;
-				ellipsis_area.w = s->w;
-				ellipsis_area.h = s->h;
-			}
-
-			video_.blit_surface(x, y, s);
-			area.w = s->w;
-			area.h = s->h;
-			if (area.h > tallest) {
-				tallest = area.h;
-			}
-			if (eol) {
-				x = rect.x;
-				y += tallest;
-				tallest = 0;
-			} else {
-				x += area.w;
-			}
-		}
-		else if (!(t = elements.front()["image"].str()).empty())
-		{
-			if (used_ellipsis) goto skip_element;
-
-			// Draw an image element.
-			surface img(image::get_image(t));
-
-			if (!img) {
-				ERR_DP << "could not find image for report: '" << t << "'" << std::endl;
-				continue;
-			}
-
-			if (area.w < img->w && image_count) {
-				// We have more than one image, and this one doesn't fit.
-				img = image::get_image(game_config::images::ellipsis);
-				used_ellipsis = true;
-			}
-
-			if (img->w < area.w) area.w = img->w;
-			if (img->h < area.h) area.h = img->h;
-			draw_image_for_report(img, area);
-
-			++image_count;
-			if (area.h > tallest) {
-				tallest = area.h;
-			}
-
-			if (!used_ellipsis) {
-				x += area.w;
-			} else {
-				ellipsis_area = area;
-			}
-		}
-		else
-		{
-			// No text nor image, skip this element
-			continue;
-		}
-
-		skip_element:
-		t = elements.front()["tooltip"].t_str().base_str();
-		if (!t.empty()) {
-			if (!used_ellipsis) {
-				tooltips::add_tooltip(area, t, elements.front()["help"].t_str().base_str());
-			} else {
-				// Collect all tooltips for the ellipsis.
-				// TODO: need a better separator
-				// TODO: assign an action
-				ellipsis_tooltip << t;
-				config::const_child_iterator ee = elements.begin();
-				if (++ee != elements.end())
-					ellipsis_tooltip << "\n  _________\n\n";
-			}
-		}
-	}
-
-	if (used_ellipsis) {
-		tooltips::add_tooltip(ellipsis_area, ellipsis_tooltip.str());
-	}
 }
 
 void display::invalidate_animations()

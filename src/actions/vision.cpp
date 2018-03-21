@@ -569,7 +569,6 @@ game_events::pump_result_t shroud_clearer::fire_events()
  */
 void shroud_clearer::invalidate_after_clear()
 {
-	display::get_singleton()->invalidate_game_status();
 	display::get_singleton()->recalculate_minimap();
 	display::get_singleton()->labels().recalculate_shroud();
 	// The tiles are invalidated as they are cleared, so no need

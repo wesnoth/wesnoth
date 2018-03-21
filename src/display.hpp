@@ -84,7 +84,6 @@ class display : public events::sdl_handler
 public:
 	display(const display_context* dc,
 			std::weak_ptr<wb::manager> wb,
-			reports& reports_object,
 			const config& theme_cfg,
 			const config& level,
 			bool auto_join = true);
@@ -367,12 +366,6 @@ public:
 
 	virtual void highlight_hex(map_location hex);
 
-	/** Function to invalidate the game status displayed on the sidebar. */
-	void invalidate_game_status()
-	{
-		invalidateGameStatus_ = true;
-	}
-
 	/** Functions to get the on-screen positions of hexes. */
 	int get_location_x(const map_location& loc) const;
 	int get_location_y(const map_location& loc) const;
@@ -533,8 +526,6 @@ public:
 	 */
 	std::shared_ptr<gui::button> find_action_button(const std::string& id);
 	std::shared_ptr<gui::button> find_menu_button(const std::string& id);
-
-	void refresh_report(const std::string& report_name, const config* new_cfg = nullptr);
 
 	void draw_minimap_units();
 
@@ -789,11 +780,6 @@ public:
 	/** Rebuild the flag list (not team colors) for a single side. */
 	void reinit_flags_for_side(std::size_t side);
 
-	void reset_reports(reports& reports_object)
-	{
-		reports_object_ = &reports_object;
-	}
-
 private:
 	void init_flags_for_side_internal(std::size_t side, const std::string& side_color);
 
@@ -837,14 +823,6 @@ protected:
 	 * No action here by default.
 	 */
 	virtual void post_draw()
-	{
-	}
-
-	/**
-	 * Called near the end of a draw operation, derived classes can use this
-	 * to render a specific sidebar. Very similar to post_commit.
-	 */
-	virtual void draw_sidebar()
 	{
 	}
 
@@ -965,8 +943,6 @@ protected:
 	/** Draw the appropriate fog or shroud transition images for a specific hex. */
 	void draw_fog_shroud_transition_images(const map_location& loc, image::TYPE image_type);
 
-	void draw_image_for_report(surface& img, SDL_Rect& rect);
-
 	void scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type, bool force = true);
 
 	static void fill_images_list(const std::string& prefix, std::vector<std::string>& images);
@@ -998,9 +974,7 @@ protected:
 	int diagnostic_label_;
 	double turbo_speed_;
 	bool turbo_;
-	bool invalidateGameStatus_;
 	const std::unique_ptr<map_labels> map_labels_;
-	reports* reports_object_;
 
 	/** Event raised when the map is being scrolled */
 	mutable events::generic_event scroll_event_;
@@ -1018,9 +992,6 @@ protected:
 	uint32_t last_frame_finished_ = 0u;
 
 	// Not set by the initializer:
-	std::map<std::string, SDL_Rect> reportRects_;
-	std::map<std::string, surface> reportSurfaces_;
-	std::map<std::string, config> reports_;
 	std::vector<std::shared_ptr<gui::button>> menu_buttons_, action_buttons_;
 	surface mouseover_hex_overlay_;
 	// If we're transitioning from one time of day to the next,

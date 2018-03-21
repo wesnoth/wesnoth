@@ -54,11 +54,10 @@ static lg::log_domain log_engine("engine");
 std::map<map_location, fixed_t> game_display::debugHighlights_;
 
 game_display::game_display(game_board& board, std::weak_ptr<wb::manager> wb,
-		reports & reports_object,
 		const config& theme_cfg,
 		const config& level,
 		bool)
-	: display(&board, wb, reports_object, theme_cfg, level, false)
+	: display(&board, wb, theme_cfg, level, false)
 	, overlay_map_()
 	, attack_indicator_src_()
 	, attack_indicator_dst_()
@@ -153,20 +152,17 @@ void game_display::highlight_hex(map_location hex)
 	const unit* u = resources::gameboard->get_visible_unit(hex, dc_->teams()[viewing_team()], !dont_show_all_);
 	if(u) {
 		displayedUnitHex_ = hex;
-		invalidate_unit();
 	} else {
 		u = resources::gameboard->get_visible_unit(mouseoverHex_, dc_->teams()[viewing_team()], !dont_show_all_);
 		if(u) {
 			// mouse moved from unit hex to non-unit hex
 			if(dc_->units().count(selectedHex_)) {
 				displayedUnitHex_ = selectedHex_;
-				invalidate_unit();
 			}
 		}
 	}
 
 	display::highlight_hex(hex);
-	invalidate_game_status();
 }
 
 void game_display::display_unit_hex(map_location hex)
@@ -179,7 +175,6 @@ void game_display::display_unit_hex(map_location hex)
 	const unit* u = resources::gameboard->get_visible_unit(hex, dc_->teams()[viewing_team()], !dont_show_all_);
 	if(u) {
 		displayedUnitHex_ = hex;
-		invalidate_unit();
 	}
 }
 
@@ -187,7 +182,6 @@ void game_display::invalidate_unit_after_move(const map_location& src, const map
 {
 	if(src == displayedUnitHex_) {
 		displayedUnitHex_ = dst;
-		invalidate_unit();
 	}
 }
 
@@ -376,6 +370,8 @@ bool game_display::has_time_area() const
 	return resources::tod_manager->has_time_area();
 }
 
+// USE AS REFERENCE FOR WHAT NEEDS TO BE UPDATED IN GUI2 UI
+#if 0
 void game_display::draw_sidebar()
 {
 	if(!team_valid())
@@ -395,6 +391,7 @@ void game_display::draw_sidebar()
 		invalidateGameStatus_ = false;
 	}
 }
+#endif
 
 void game_display::set_game_mode(const game_mode mode)
 {
