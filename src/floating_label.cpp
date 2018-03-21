@@ -119,7 +119,7 @@ texture floating_label::create_texture()
 		texture_ = renderer.render_and_get_texture();
 
 		if(texture_.null()) {
-			ERR_FT << "could not create floating label's text" << std::endl;
+			ERR_FT << "could not create floating label's text (was '" << text_ << "')" << std::endl;
 		}
 	}
 
