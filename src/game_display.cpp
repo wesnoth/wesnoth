@@ -28,7 +28,6 @@
 #include "font/standard_colors.hpp"
 #include "game_board.hpp"
 #include "gettext.hpp"
-#include "gui/dialogs/game_ui.hpp"
 #include "halo.hpp"
 #include "log.hpp"
 #include "map/label.hpp"
@@ -89,15 +88,6 @@ game_display::~game_display()
 		chat_man_->prune_chat_messages(true);
 	} catch(...) {
 	}
-}
-
-void game_display::initialize_ui()
-{
-	// Set member in the base class
-	ui_.reset(new gui2::dialogs::game_ui());
-	assert(ui_);
-
-	ui_->show(true);
 }
 
 void game_display::new_turn()

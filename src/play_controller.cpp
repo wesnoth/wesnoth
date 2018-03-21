@@ -32,6 +32,7 @@
 #include "game_events/pump.hpp"
 #include "game_state.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/game_ui.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "hotkey/command_executor.hpp"
@@ -148,6 +149,7 @@ play_controller::play_controller(const config& level,
 	, soundsources_manager_()
 	, persist_()
 	, gui_()
+	, ui_()
 	, xp_mod_(new unit_experience_accelerator(level["experience_modifier"].to_int(100)))
 	, statistics_context_(new statistics::scenario_context(level["name"]))
 	, replay_(new replay(state_of_game.get_replay()))
@@ -295,7 +297,17 @@ void play_controller::init(const config& level)
 
 	// Do this after the loadingscreen, so that ita happens in the main thread.
 	gui_->join();
-	gui_->initialize_ui();
+
+	initialize_and_show_ui();
+}
+
+void play_controller::initialize_and_show_ui()
+{
+	// Set member in the base class
+	ui_.reset(new gui2::dialogs::game_ui());
+	assert(ui_);
+
+	ui_->show(true);
 }
 
 void play_controller::reset_gamestate(const config& level, int replay_pos)

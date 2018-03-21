@@ -109,6 +109,9 @@ protected:
 	/** Get a reference to a display member a derived class uses. */
 	virtual display& get_display() = 0;
 
+	/** Creates and displays the HUD UI that accompanies this controller. */
+	virtual void initialize_and_show_ui() = 0;
+
 	/** Get (optionally) a soundsources manager a derived class uses. */
 	virtual soundsource::manager* get_soundsource_man()
 	{

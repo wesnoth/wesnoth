@@ -178,6 +178,11 @@ class editor_controller : public controller_base,
 		mouse_handler_base& get_mouse_handler_base() override { return *this; }
 		editor_display& get_display() override { return *gui_; }
 
+		virtual void initialize_and_show_ui() override
+		{
+			// TODO: IMPLEMENT
+		}
+
 		/** Get the current mouse action */
 		const mouse_action& get_mouse_action() const { return toolkit_->get_mouse_action(); }
 		/** Get the current mouse action */

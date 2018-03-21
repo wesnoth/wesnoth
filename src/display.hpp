@@ -79,19 +79,9 @@ class manager;
 
 class gamemap;
 
-namespace gui2
-{
-namespace dialogs
-{
-class ingame_ui_base;
-}
-}
-
 class display : public events::sdl_handler
 {
 public:
-	using ui_t = gui2::dialogs::ingame_ui_base;
-
 	display(const display_context* dc,
 			std::weak_ptr<wb::manager> wb,
 			reports& reports_object,
@@ -871,12 +861,6 @@ protected:
 	/** Draws the minimap. */
 	void draw_minimap();
 
-public:
-
-	virtual void initialize_ui()
-	{
-	}
-
 private:
 	enum TERRAIN_TYPE { FOREGROUND, BACKGROUND };
 
@@ -1002,8 +986,6 @@ protected:
 	exclusive_unit_draw_requests_t exclusive_unit_draw_requests_;
 
 	CVideo& video_;
-
-	std::unique_ptr<ui_t> ui_;
 
 	std::size_t currentTeam_;
 	bool dont_show_all_; // const team *viewpoint_;

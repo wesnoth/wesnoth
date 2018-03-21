@@ -76,6 +76,14 @@ namespace wb
 class manager; // whiteboard manager
 } // namespace wb
 
+namespace gui2
+{
+namespace dialogs
+{
+class game_ui;
+}
+}
+
 // Holds gamestate related objects
 class game_state;
 
@@ -333,6 +341,8 @@ public:
 
 	game_display& get_display() override;
 
+	virtual void initialize_and_show_ui() override;
+
 	void update_savegame_snapshot() const;
 	/**
 	 * Changes the UI for this client to the passed side index.
@@ -422,6 +432,8 @@ protected:
 
 	// other objects
 	std::unique_ptr<game_display> gui_;
+	std::unique_ptr<gui2::dialogs::game_ui> ui_; // TODO: better name?
+
 	const std::unique_ptr<unit_experience_accelerator> xp_mod_;
 	const std::unique_ptr<const statistics::scenario_context> statistics_context_;
 
