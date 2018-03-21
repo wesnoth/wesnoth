@@ -39,6 +39,8 @@ public:
 								const std::vector<std::string>& mods,
 								const std::string& requester);
 
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(depcheck_confirm_change)
+
 protected:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;

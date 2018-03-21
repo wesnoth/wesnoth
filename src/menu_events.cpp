@@ -200,8 +200,7 @@ void menu_handler::show_chat_log()
 {
 	config c;
 	c["name"] = "prototype of chat log";
-	gui2::dialogs::chat_log chat_log_dialog(vconfig(c), *resources::recorder);
-	chat_log_dialog.show();
+	gui2::dialogs::chat_log::display(vconfig(c), *resources::recorder);
 	// std::string text = resources::recorder->build_chat_log();
 	// gui::show_dialog(*gui_,nullptr,_("Chat Log"),"",gui::CLOSE_ONLY,nullptr,nullptr,"",&text);
 }
@@ -1806,15 +1805,13 @@ void console_handler::do_show_var()
 void console_handler::do_inspect()
 {
 	vconfig cfg = vconfig::empty_vconfig();
-	gui2::dialogs::gamestate_inspector inspect_dialog(
-			resources::gamedata->get_variables(), *resources::game_events, *resources::gameboard);
-	inspect_dialog.show();
+	gui2::dialogs::gamestate_inspector::display(
+		resources::gamedata->get_variables(), *resources::game_events, *resources::gameboard);
 }
 
 void console_handler::do_control_dialog()
 {
-	gui2::dialogs::mp_change_control mp_change_control(menu_handler_);
-	mp_change_control.show();
+	gui2::dialogs::mp_change_control::display(menu_handler_);
 }
 
 void console_handler::do_unit()

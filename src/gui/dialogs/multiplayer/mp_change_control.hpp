@@ -34,6 +34,8 @@ class mp_change_control : public modal_dialog
 public:
 	explicit mp_change_control(events::menu_handler& mh);
 
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(mp_change_control)
+
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;

@@ -62,10 +62,8 @@ void show_transient_message(const std::string& title,
 							const bool message_use_markup,
 							const bool title_use_markup)
 {
-	dialogs::transient_message dlg(
-			title, title_use_markup, message, message_use_markup, image);
-
-	dlg.show();
+	dialogs::transient_message::display(
+		title, title_use_markup, message, message_use_markup, image);
 }
 
 void show_transient_error_message(const std::string& message,

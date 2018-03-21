@@ -394,9 +394,7 @@ addons_client::install_result addons_client::do_resolve_addon_dependencies(const
 			options[dep] = addons.at(dep);
 		}
 
-		gui2::dialogs::install_dependencies dlg(options);
-		bool cont = dlg.show();
-		if(!cont) {
+		if(!gui2::dialogs::install_dependencies::execute(options)) {
 			return result; // the user has chosen to continue without installing anything.
 		}
 	}

@@ -41,6 +41,8 @@ public:
 
 	~mp_staging();
 
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(mp_staging)
+
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;

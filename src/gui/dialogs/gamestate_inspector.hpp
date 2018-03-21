@@ -33,6 +33,8 @@ public:
 	class controller;
 	gamestate_inspector(const config& vars, const game_events::manager& events, const display_context& dc, const std::string& title = "");
 
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(gamestate_inspector);
+
 private:
 	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;

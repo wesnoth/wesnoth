@@ -32,6 +32,8 @@ public:
 	class controller;
 	chat_log(const vconfig& cfg, const replay& replay);
 
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(chat_log)
+
 	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
