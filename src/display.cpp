@@ -212,9 +212,7 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 
 	read(level.child_or_empty("display"));
 
-	if(video_.non_interactive()
-		&& (video_.getSurface() != nullptr
-		&& video_.faked())) {
+	if(video_.non_interactive() && video_.faked()) {
 		video_.lock_updates(true);
 	}
 
