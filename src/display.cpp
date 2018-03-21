@@ -1020,9 +1020,11 @@ void display::draw_all_panels()
 	}
 }
 
-#if 0
-static void draw_background(const SDL_Rect& area, const std::string& image)
+void display::draw_background()
 {
+	const std::string& image = theme_.border().background_image;
+	SDL_Rect area = map_outside_area();
+
 	// No background image, just fill in black.
 	if(image.empty()) {
 		sdl::fill_rectangle(area, color_t(0, 0, 0));
@@ -1035,10 +1037,8 @@ static void draw_background(const SDL_Rect& area, const std::string& image)
 	}
 
 	// TODO: should probably tile this as before.
-	SDL_Rect a = area;
-	CVideo::get_singleton().render_copy(background, nullptr, &a);
+	video_.render_copy(background, nullptr, &area);
 }
-#endif
 
 int display::draw_text_in_hex(const map_location& loc,
 		const std::string& text,
@@ -2515,8 +2515,7 @@ void display::draw()
 	pre_draw();
 
 	// Draw theme background.
-	//const SDL_Rect outside_area = map_outside_area();
-	//draw_background(outside_area, theme_.border().background_image);
+	draw_background();
 
 	// Progress animations.
 	invalidate_animations();

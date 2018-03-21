@@ -857,6 +857,9 @@ protected:
 private:
 	enum TERRAIN_TYPE { FOREGROUND, BACKGROUND };
 
+	/** Draws the background behind the gamemap. */
+	void draw_background();
+
 	/** Draws the visible map hex terrains. Used by @ref draw_gamemap. */
 	void draw_visible_hexes(const rect_of_hexes& visible_hexes, TERRAIN_TYPE layer);
 
