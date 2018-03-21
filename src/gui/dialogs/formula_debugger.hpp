@@ -33,6 +33,8 @@ public:
 	{
 	}
 
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(formula_debugger)
+
 private:
 	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;

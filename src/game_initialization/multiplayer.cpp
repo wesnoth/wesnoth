@@ -651,8 +651,7 @@ bool goto_mp_connect(ng::connect_engine& engine, wesnothd_connection* connection
 {
 	lobby_info li({});
 
-	gui2::dialogs::mp_staging dlg(engine, li, connection);
-	return dlg.show();
+	return gui2::dialogs::mp_staging::execute(engine, li, connection);
 }
 
 bool goto_mp_wait(saved_game& state, wesnothd_connection* connection, bool observe)
