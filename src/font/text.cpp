@@ -41,9 +41,6 @@
 
 namespace font {
 
-// Cache
-//pango_text_cache_t rendered_text_cache {};
-
 pango_text::pango_text()
 	: context_(pango_font_map_create_context(pango_cairo_font_map_get_default()), g_object_unref)
 	, layout_(pango_layout_new(context_.get()), g_object_unref)
@@ -754,6 +751,7 @@ void pango_text::rerender(const bool force)
 #endif
 
 		// ...and add it to the cache.
+		assert(!surface_.null());
 		rendered_text_cache.emplace(hash_, texture(surface_));
 	}
 }
