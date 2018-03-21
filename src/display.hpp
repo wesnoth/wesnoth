@@ -534,13 +534,6 @@ public:
 	std::shared_ptr<gui::button> find_action_button(const std::string& id);
 	std::shared_ptr<gui::button> find_menu_button(const std::string& id);
 
-	static gui::button::TYPE string_to_button_type(std::string type);
-	void create_buttons();
-
-	void layout_buttons();
-
-	void render_buttons();
-
 	void refresh_report(const std::string& report_name, const config* new_cfg = nullptr);
 
 	void draw_minimap_units();

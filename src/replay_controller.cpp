@@ -75,7 +75,6 @@ replay_controller::replay_controller(play_controller& controller, bool control_v
 		vision_ = HUMAN_TEAM;
 	}
 	controller_.get_display().get_theme().theme_reset_event().attach_handler(this);
-	controller_.get_display().create_buttons();
 }
 replay_controller::~replay_controller()
 {
@@ -83,8 +82,6 @@ replay_controller::~replay_controller()
 		controller_.toggle_skipping_replay();
 	}
 	controller_.get_display().get_theme().theme_reset_event().detach_handler(this);
-	controller_.get_display().create_buttons();
-	controller_.get_display().create_buttons();
 }
 void replay_controller::add_replay_theme()
 {

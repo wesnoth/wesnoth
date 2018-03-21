@@ -229,10 +229,6 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 
 	init_flags();
 
-	if(!menu_buttons_.empty() || !action_buttons_.empty()) {
-		create_buttons();
-	}
-
 	rebuild_all();
 	assert(builder_);
 	//builder_->rebuild_cache_all();
@@ -247,7 +243,6 @@ display::~display()
 void display::set_theme(config theme_cfg) {
 	theme_ = theme(theme_cfg, video_.screen_area());	menu_buttons_.clear();
 	action_buttons_.clear();
-	create_buttons();
 }
 
 void display::init_flags() {
@@ -801,122 +796,6 @@ std::shared_ptr<gui::button> display::find_menu_button(const std::string& id)
 	return nullptr;
 }
 
-void display::layout_buttons()
-{
-	return;
-
-	DBG_DP << "positioning menu buttons...\n";
-	for(const auto& menu : theme_.menus()) {
-		std::shared_ptr<gui::button> b = find_menu_button(menu.get_id());
-		if(b) {
-			const SDL_Rect& loc = menu.location(video_.screen_area());
-			b->set_location(loc);
-			b->set_measurements(0,0);
-			b->set_label(menu.title());
-			b->set_image(menu.image());
-		}
-	}
-
-	DBG_DP << "positioning action buttons...\n";
-	for(const auto& action : theme_.actions()) {
-		std::shared_ptr<gui::button> b = find_action_button(action.get_id());
-		if(b) {
-			const SDL_Rect& loc = action.location(video_.screen_area());
-			b->set_location(loc);
-			b->set_measurements(0,0);
-			b->set_label(action.title());
-			b->set_image(action.image());
-		}
-	}
-}
-
-void display::create_buttons()
-{
-	return;
-
-	std::vector<std::shared_ptr<gui::button>> menu_work;
-	std::vector<std::shared_ptr<gui::button>> action_work;
-
-	DBG_DP << "creating menu buttons...\n";
-	for(const auto& menu : theme_.menus()) {
-		if (!menu.is_button()) continue;
-
- 		std::shared_ptr<gui::button> b(new gui::button(video_, menu.title(), gui::button::TYPE_PRESS, menu.image(),
-				gui::button::DEFAULT_SPACE, false, menu.overlay()));
-		DBG_DP << "drawing button " << menu.get_id() << "\n";
-		b->join_same(this);
-		b->set_id(menu.get_id());
-		if (!menu.tooltip().empty()){
-			b->set_tooltip_string(menu.tooltip());
-		}
-
-		std::shared_ptr<gui::button> b_prev = find_menu_button(b->id());
-		if(b_prev) {
-			b->enable(b_prev->enabled());
-		}
-
-		menu_work.push_back(b);
-	}
-
-	DBG_DP << "creating action buttons...\n";
-	for(const auto& action : theme_.actions()) {
-		std::shared_ptr<gui::button> b(new gui::button(video_, action.title(), string_to_button_type(action.type()), action.image(),
-				gui::button::DEFAULT_SPACE, false, action.overlay()));
-
-		DBG_DP << "drawing button " << action.get_id() << "\n";
-		b->set_id(action.get_id());
-		b->join_same(this);
-		if (!action.tooltip(0).empty()){
-			b->set_tooltip_string(action.tooltip(0));
-		}
-
-		std::shared_ptr<gui::button> b_prev = find_action_button(b->id());
-		if(b_prev) {
-			b->enable(b_prev->enabled());
-			if (b_prev->get_type() == gui::button::TYPE_CHECK) {
-				b->set_check(b_prev->checked());
-			}
-		}
-
-		action_work.push_back(b);
-	}
-
-
-	menu_buttons_.clear();
-	menu_buttons_.assign(menu_work.begin(), menu_work.end());
-	action_buttons_.clear();
-	action_buttons_.assign(action_work.begin(), action_work.end());
-
-	layout_buttons();
-	DBG_DP << "buttons created\n";
-}
-
-void display::render_buttons()
-{
-	return;
-
-	for (std::shared_ptr<gui::button> btn : menu_buttons_) {
-		btn->set_dirty(true);
-		btn->draw();
-	}
-
-	for (std::shared_ptr<gui::button> btn : action_buttons_) {
-		btn->set_dirty(true);
-		btn->draw();
-	}
-}
-
-
-gui::button::TYPE display::string_to_button_type(std::string type)
-{
-	gui::button::TYPE res = gui::button::TYPE_PRESS;
-	if (type == "checkbox") { res = gui::button::TYPE_CHECK; }
-	else if (type == "image") { res = gui::button::TYPE_IMAGE; }
-	else if (type == "radiobox") { res = gui::button::TYPE_RADIO; }
-	else if (type == "turbo") { res = gui::button::TYPE_TURBO; }
-	return res;
-}
-
 static const std::string& get_direction(std::size_t n)
 {
 	static const std::array<std::string, 6> dirs {{ "-n", "-ne", "-se", "-s", "-sw", "-nw" }};
@@ -1139,8 +1018,6 @@ void display::draw_all_panels()
 	for(const auto& label : theme_.labels()) {
 		draw_label(video(), screen, label);
 	}
-
-	render_buttons();
 }
 
 #if 0

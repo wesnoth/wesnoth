@@ -1402,8 +1402,6 @@ std::vector<std::string> menu_handler::get_commands_list()
 void console_handler::do_refresh()
 {
 	image::flush_cache();
-
-	menu_handler_.gui_->create_buttons();
 }
 
 void console_handler::do_droid()

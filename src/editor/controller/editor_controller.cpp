@@ -88,8 +88,6 @@ editor_controller::editor_controller(const config &game_config)
 	cursor::set(cursor::NORMAL);
 
 	join();
-
-	gui().create_buttons();
 }
 
 void editor_controller::init_gui()

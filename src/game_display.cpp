@@ -677,7 +677,6 @@ std::string game_display::current_team_name() const
 void game_display::begin_game()
 {
 	in_game_ = true;
-	create_buttons();
 }
 
 void game_display::needs_rebuild(bool b)
