@@ -147,7 +147,6 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 	, wb_(wb)
 	, exclusive_unit_draw_requests_()
 	, video_(CVideo::get_singleton())
-	, ui_(nullptr)
 	, currentTeam_(0)
 	, dont_show_all_(false)
 	, xpos_(0)
