@@ -101,27 +101,8 @@ public:
 	unit_filter(const unit_filter&) = default;
 	unit_filter& operator=(const unit_filter&) = default;
 
-#if defined(_MSC_VER) && _MSC_VER < 1900
-	unit_filter(unit_filter&& u)
-		: cfg_(std::move(u.cfg_))
-		, fc_(u.fc_)
-		, use_flat_tod_(u.use_flat_tod_)
-		, impl_(std::move(u.impl_))
-		, max_matches_(u.max_matches_)
-	{}
-	unit_filter& operator=(unit_filter&& u)
-	{
-		cfg_ = std::move(u.cfg_);
-		fc_ = u.fc_;
-		use_flat_tod_ = u.use_flat_tod_;
-		impl_ = std::move(u.impl_);
-		max_matches_ = u.max_matches_;
-		return *this;
-	}
-#else
 	unit_filter(unit_filter&&) = default;
 	unit_filter& operator=(unit_filter&&) = default;
-#endif
 
 	unit_filter& set_use_flat_tod(bool value) {
 		use_flat_tod_ = value;

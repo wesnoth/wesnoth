@@ -213,15 +213,7 @@ public:
 	wesnothd_connection_ptr(const wesnothd_connection_ptr&) = delete;
 	wesnothd_connection_ptr& operator=(const wesnothd_connection_ptr&) = delete;
 
-#if defined(_MSC_VER) && _MSC_VER == 1800
-	wesnothd_connection_ptr(wesnothd_connection_ptr&& other)
-		: ptr_(std::move(other.ptr_))
-	{
-	}
-
-#else
 	wesnothd_connection_ptr(wesnothd_connection_ptr&&) = default;
-#endif
 	wesnothd_connection_ptr& operator=(wesnothd_connection_ptr&&);
 
 	~wesnothd_connection_ptr();
