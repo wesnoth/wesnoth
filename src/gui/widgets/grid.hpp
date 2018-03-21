@@ -402,10 +402,7 @@ private:
 		 */
 		std::unique_ptr<widget> free_widget()
 		{
-			std::unique_ptr<widget> temp(nullptr);
-			widget_.swap(temp);
-
-			return temp;
+			return std::exchange(widget_, nullptr);
 		}
 
 	private:
