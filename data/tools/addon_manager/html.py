@@ -157,9 +157,9 @@ ADDON_TYPES_INFO = {
         "help": "Usually comes with an era or is a dependency of another add-on.",
     },
     "mod_mp": {
-        "short": "MP Modification",
-        "long": "Multiplayer modification",
-        "help": "After install the included MP gameplay modification(s) will be available in the multiplayer “Create Game” dialog.",
+        "short": "Modification",
+        "long": "Modification",
+        "help": "After install the included gameplay modification(s) will be available when choosing “Campaign” in the main menu, and in the multiplayer “Create Game” dialog.",
     },
     "media": {
         "short": "Resources",
