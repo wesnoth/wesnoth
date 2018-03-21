@@ -848,9 +848,6 @@ protected:
 	{
 	}
 
-	/** Redraw all panels associated with the map display */
-	void draw_all_panels();
-
 	/** Draws the minimap. */
 	void draw_minimap();
 

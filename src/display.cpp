@@ -943,83 +943,6 @@ void display::draw_debugging_aids()
 	}
 }
 
-static void draw_panel(CVideo &video, const theme::panel& panel, std::vector<std::shared_ptr<gui::button>>& /*buttons*/)
-{
-	//log_scope("draw panel");
-	DBG_DP << "drawing panel " << panel.get_id() << "\n";
-
-	texture tex(image::get_texture(panel.image()));
-
-	const SDL_Rect screen = video.screen_area();
-	SDL_Rect& loc = panel.location(screen);
-
-	DBG_DP << "panel location: x=" << loc.x << ", y=" << loc.y
-			<< ", w=" << loc.w << ", h=" << loc.h << "\n";
-
-	if(!tex.null()) {
-		// TODO: should probably tile this as before.
-		video.render_copy(tex, nullptr, &loc);
-	}
-}
-
-static void draw_label(CVideo& video, surface target, const theme::label& label)
-{
-	//log_scope("draw label");
-
-	const color_t& RGB = label.font_rgb();
-
-	std::string c_start="<";
-	std::string c_sep=",";
-	std::string c_end=">";
-	std::stringstream color;
-	color<< c_start << RGB.r << c_sep << RGB.g << c_sep << RGB.b << c_end;
-	std::string text = label.text();
-
-	if(label.font_rgb_set()) {
-		color<<text;
-		text = color.str();
-	}
-	const std::string& icon = label.icon();
-	SDL_Rect& loc = label.location(video.screen_area());
-
-	if(icon.empty() == false) {
-		surface surf(image::get_image(icon));
-		if(!surf.null()) {
-			if(surf->w > loc.w || surf->h > loc.h) {
-				surf.assign(scale_surface(surf,loc.w,loc.h));
-			}
-
-			sdl_blit(surf,nullptr,target,&loc);
-		}
-
-		if(text.empty() == false) {
-			tooltips::add_tooltip(loc,text);
-		}
-	} else if(text.empty() == false) {
-		font::draw_text(&video,loc,label.font_size(),font::NORMAL_COLOR,text,loc.x,loc.y);
-	}
-
-}
-
-void display::draw_all_panels()
-{
-	surface& screen(video_.getSurface());
-
-	/*
-	 * The minimap is also a panel, force it to update its contents.
-	 * This is required when the size of the minimap has been modified.
-	 */
-	//recalculate_minimap();
-
-	for(const auto& panel : theme_.panels()) {
-		draw_panel(video(), panel, menu_buttons_);
-	}
-
-	for(const auto& label : theme_.labels()) {
-		draw_label(video(), screen, label);
-	}
-}
-
 void display::draw_background()
 {
 	const std::string& image = theme_.border().background_image;
@@ -2520,7 +2443,6 @@ void display::draw()
 	// Progress animations.
 	invalidate_animations();
 
-	//draw_all_panels();
 	//draw_minimap();
 
 	// Draw the gamemap and its contents (units, etc)
