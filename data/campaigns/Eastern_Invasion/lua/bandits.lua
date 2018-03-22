@@ -75,7 +75,7 @@ function wml_actions.bandit_village_capture(cfg)
 
 	for i=1,#bandit_villages do
 		if bandit_villages[i].x == x and bandit_villages[i].y == y then
-			vars[string.format("bandit_villages[%d]"] = i - 1
+			vars[string.format("bandit_villages[%d]")] = i - 1
 
 			local visited = vars.villages_visited
 			vars.villages_visited = visited + 1
