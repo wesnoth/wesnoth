@@ -1106,9 +1106,9 @@ void manager::options_dlg()
 		t_vars["player"] = t.current_player();
 		std::size_t t_index = t.side()-1;
 		if(team_plans_hidden_[t_index])
-			options.emplace_back(vgettext("Show plans for $player", t_vars));
+			options.emplace_back(VGETTEXT("Show plans for $player", t_vars));
 		else
-			options.emplace_back(vgettext("Hide plans for $player", t_vars));
+			options.emplace_back(VGETTEXT("Hide plans for $player", t_vars));
 	}
 
 	gui2::dialogs::simple_item_selector dlg("", _("Whiteboard Options"), options);

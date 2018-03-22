@@ -94,7 +94,7 @@ bool addons_manager_ui(const std::string& remote_address)
 		symbols["msg"] = e.message;
 
 		gui2::show_error_message(
-			vgettext("A local file with add-on publishing information could not be read.\n\nFile: $path\nError message: $msg", symbols));
+			VGETTEXT("A local file with add-on publishing information could not be read.\n\nFile: $path\nError message: $msg", symbols));
 	} catch(wml_exception& e) {
 		e.show();
 	} catch(const addons_client::user_exit&) {
@@ -281,7 +281,7 @@ bool ad_hoc_addon_fetch_session(const std::vector<std::string>& addon_ids)
 			} else {
 				utils::string_map symbols;
 				symbols["addon_id"] = addon_id;
-				gui2::show_error_message(vgettext("Could not find an add-on matching id $addon_id on the add-on server.", symbols));
+				gui2::show_error_message(VGETTEXT("Could not find an add-on matching id $addon_id on the add-on server.", symbols));
 				return_value = false;
 			}
 		}
@@ -305,7 +305,7 @@ bool ad_hoc_addon_fetch_session(const std::vector<std::string>& addon_ids)
 		symbols["msg"] = e.message;
 
 		gui2::show_error_message(
-			vgettext("A local file with add-on publishing information could not be read.\n\nFile: $path\nError message: $msg", symbols));
+			VGETTEXT("A local file with add-on publishing information could not be read.\n\nFile: $path\nError message: $msg", symbols));
 	} catch(wml_exception& e) {
 		e.show();
 	} catch(const addons_client::user_exit&) {

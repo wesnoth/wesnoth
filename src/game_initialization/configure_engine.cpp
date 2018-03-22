@@ -62,7 +62,7 @@ std::string configure_engine::game_name_default()
 {
 	utils::string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
-	return vgettext("$login|’s game", i18n_symbols);
+	return VGETTEXT("$login|’s game", i18n_symbols);
 }
 
 int configure_engine::num_turns_default() const

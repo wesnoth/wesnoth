@@ -393,7 +393,7 @@ namespace
 		symbols["player"] = resources::controller->current_team().current_player();
 		display::announce_options announce_options;
 		announce_options.lifetime = 250;
-		display::get_singleton()->announce(vgettext(message, symbols), font::NORMAL_COLOR, announce_options);
+		display::get_singleton()->announce(VGETTEXT(message, symbols), font::NORMAL_COLOR, announce_options);
 	}
 }
 SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_handler*/)

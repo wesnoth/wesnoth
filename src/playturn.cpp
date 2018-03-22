@@ -18,7 +18,7 @@
 #include "chat_events.hpp"              // for chat_handler, etc
 #include "config.hpp"                   // for config, etc
 #include "display_chat_manager.hpp"	// for add_chat_message, add_observer, etc
-#include "formula/string_utils.hpp"     // for vgettext
+#include "formula/string_utils.hpp"     // for VGETTEXT
 #include "game_board.hpp"               // for game_board
 #include "game_display.hpp"             // for game_display
 #include "game_end_exceptions.hpp"      // for end_level_exception, etc
@@ -259,7 +259,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				//if you want that) and not ai or empty and if it is not the dropping side itself,
 				//get this team in as well
 				t_vars["player"] = t->current_player();
-				options.emplace_back(vgettext("Give control to their ally $player", t_vars));
+				options.emplace_back(VGETTEXT("Give control to their ally $player", t_vars));
 				control_change_options++;
 			}
 
@@ -268,7 +268,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			//get all observers in as options to transfer control
 			for (const std::string &screen_observers : game_display::get_singleton()->observers()) {
 				t_vars["player"] = screen_observers;
-				options.emplace_back(vgettext("Give control to observer $player", t_vars));
+				options.emplace_back(VGETTEXT("Give control to observer $player", t_vars));
 				observers.push_back(screen_observers);
 				control_change_options++;
 			}
@@ -279,7 +279,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			options.emplace_back(_("Save and abort game"));
 
 			t_vars["player"] = tm.current_player();
-			const std::string gettext_message =  vgettext("$player has left the game. What do you want to do?", t_vars);
+			const std::string gettext_message =  VGETTEXT("$player has left the game. What do you want to do?", t_vars);
 			gui2::dialogs::simple_item_selector dlg("", gettext_message, options);
 			dlg.set_single_button(true);
 			dlg.show();

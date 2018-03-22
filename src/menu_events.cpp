@@ -191,7 +191,7 @@ void menu_handler::save_map()
 	} catch(filesystem::io_exception& e) {
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
-		const std::string msg = vgettext("Could not save the map: $msg", symbols);
+		const std::string msg = VGETTEXT("Could not save the map: $msg", symbols);
 		gui2::show_transient_error_message(msg);
 	}
 }
@@ -1370,7 +1370,7 @@ void menu_handler::do_search(const std::string& new_search)
 		// Not found, inform the player
 		utils::string_map symbols;
 		symbols["search"] = last_search_;
-		const std::string msg = vgettext("Could not find label or unit "
+		const std::string msg = VGETTEXT("Could not find label or unit "
 										 "containing the string ‘$search’.",
 				symbols);
 		(void) gui2::show_message("", msg, gui2::dialogs::message::auto_close);
@@ -1413,12 +1413,12 @@ void console_handler::do_droid()
 	if(side < 1 || side > menu_handler_.teams().size()) {
 		utils::string_map symbols;
 		symbols["side"] = side_s;
-		command_failed(vgettext("Can't droid invalid side: '$side'.", symbols));
+		command_failed(VGETTEXT("Can't droid invalid side: '$side'.", symbols));
 		return;
 	} else if(menu_handler_.board().get_team(side).is_network()) {
 		utils::string_map symbols;
 		symbols["side"] = std::to_string(side);
-		command_failed(vgettext("Can't droid networked side: '$side'.", symbols));
+		command_failed(VGETTEXT("Can't droid networked side: '$side'.", symbols));
 		return;
 	} else if(menu_handler_.board().get_team(side).is_local_human()) {
 		if(menu_handler_.board().get_team(side).is_droid() ? action == " on" : action == " off") {
@@ -1436,7 +1436,7 @@ void console_handler::do_droid()
 
 		utils::string_map symbols;
 		symbols["side"] = side_s;
-		command_failed(vgettext("Can't droid a local ai side: '$side'.", symbols));
+		command_failed(VGETTEXT("Can't droid a local ai side: '$side'.", symbols));
 	}
 	menu_handler_.textbox_info_.close(*menu_handler_.gui_);
 }
@@ -1452,17 +1452,17 @@ void console_handler::do_idle()
 	if(side < 1 || side > menu_handler_.teams().size()) {
 		utils::string_map symbols;
 		symbols["side"] = side_s;
-		command_failed(vgettext("Can't idle invalid side: '$side'.", symbols));
+		command_failed(VGETTEXT("Can't idle invalid side: '$side'.", symbols));
 		return;
 	} else if(menu_handler_.board().get_team(side).is_network()) {
 		utils::string_map symbols;
 		symbols["side"] = std::to_string(side);
-		command_failed(vgettext("Can't idle networked side: '$side'.", symbols));
+		command_failed(VGETTEXT("Can't idle networked side: '$side'.", symbols));
 		return;
 	} else if(menu_handler_.board().get_team(side).is_local_ai()) {
 		utils::string_map symbols;
 		symbols["side"] = std::to_string(side);
-		command_failed(vgettext("Can't idle local ai side: '$side'.", symbols));
+		command_failed(VGETTEXT("Can't idle local ai side: '$side'.", symbols));
 		return;
 	} else if(menu_handler_.board().get_team(side).is_local_human()) {
 		if(menu_handler_.board().get_team(side).is_idle() ? action == " on" : action == " off") {
@@ -1522,7 +1522,7 @@ void console_handler::do_control()
 		if(it_t == resources::gameboard->teams().end()) {
 			utils::string_map symbols;
 			symbols["side"] = side;
-			command_failed(vgettext("Can't change control of invalid side: '$side'.", symbols));
+			command_failed(VGETTEXT("Can't change control of invalid side: '$side'.", symbols));
 			return;
 		} else {
 			side_num = it_t->side();
@@ -1532,7 +1532,7 @@ void console_handler::do_control()
 	if(side_num < 1 || side_num > menu_handler_.teams().size()) {
 		utils::string_map symbols;
 		symbols["side"] = side;
-		command_failed(vgettext("Can't change control of out-of-bounds side: '$side'.", symbols));
+		command_failed(VGETTEXT("Can't change control of out-of-bounds side: '$side'.", symbols));
 		return;
 	}
 
@@ -1549,14 +1549,14 @@ void console_handler::do_controller()
 	} catch(bad_lexical_cast&) {
 		utils::string_map symbols;
 		symbols["side"] = side;
-		command_failed(vgettext("Can't query control of invalid side: '$side'.", symbols));
+		command_failed(VGETTEXT("Can't query control of invalid side: '$side'.", symbols));
 		return;
 	}
 
 	if(side_num < 1 || side_num > menu_handler_.teams().size()) {
 		utils::string_map symbols;
 		symbols["side"] = side;
-		command_failed(vgettext("Can't query control of out-of-bounds side: '$side'.", symbols));
+		command_failed(VGETTEXT("Can't query control of out-of-bounds side: '$side'.", symbols));
 		return;
 	}
 

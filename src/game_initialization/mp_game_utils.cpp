@@ -98,7 +98,7 @@ config initial_level_config(saved_game& state)
 
 	if(!era_cfg) {
 		if(!params.saved_game) {
-			throw config::error(vgettext("Cannot find era $era", {{"era", era}}));
+			throw config::error(VGETTEXT("Cannot find era $era", {{"era", era}}));
 		}
 
 		// FIXME: @todo We should tell user about missing era but still load game...
