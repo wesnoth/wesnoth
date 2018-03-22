@@ -72,7 +72,7 @@ void addons_client::connect()
 	conn_.reset(new network_asio::connection(host_, port_));
 
 	this->wait_for_transfer_done(
-		vgettext("Connecting to $server_address|...", i18n_symbols),
+		VGETTEXT("Connecting to $server_address|...", i18n_symbols),
 		transfer_mode::connect);
 }
 
@@ -124,7 +124,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 	if(!addon_name_legal(id)){
 		i18n_symbols["addon_id"] = font::escape_text(id);
 		this->last_error_ =
-			vgettext("The add-on <i>$addon_title</i> has an invalid id '$addon_id' "
+			VGETTEXT("The add-on <i>$addon_title</i> has an invalid id '$addon_id' "
 				"and cannot be published.", i18n_symbols);
 		return false;
 	}
@@ -150,7 +150,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 		archive_addon(id, addon_data);
 	} catch(utf8::invalid_utf8_exception&){
 		this->last_error_ =
-			vgettext("The add-on <i>$addon_title</i> has a file or directory "
+			VGETTEXT("The add-on <i>$addon_title</i> has a file or directory "
 				"containing invalid characters and cannot be published.", i18n_symbols);
 		return false;
 	}
@@ -158,7 +158,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 	std::vector<std::string> badnames;
 	if(!check_names_legal(addon_data, &badnames)){
 		this->last_error_ =
-			vgettext("The add-on <i>$addon_title</i> has an invalid file or directory "
+			VGETTEXT("The add-on <i>$addon_title</i> has an invalid file or directory "
 				"name and cannot be published. "
 
 				"File or directory names may not contain '..' or end with '.' or be longer than 255 characters. "
@@ -169,7 +169,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 	}
 	if(!check_case_insensitive_duplicates(addon_data, &badnames)){
 		this->last_error_ =
-			vgettext("The add-on <i>$addon_title</i> contains files or directories with case conflicts. "
+			VGETTEXT("The add-on <i>$addon_title</i> contains files or directories with case conflicts. "
 				"File or directory names may not be differently-cased versions of the same string.", i18n_symbols);
 		this->last_error_data_ = font::escape_text(utils::join(badnames, "\n"));
 		return false;
@@ -181,7 +181,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 	LOG_ADDONS << "sending " << id << '\n';
 
 	this->send_request(request_buf, response_buf);
-	this->wait_for_transfer_done(vgettext("Sending add-on <i>$addon_title</i>...", i18n_symbols
+	this->wait_for_transfer_done(VGETTEXT("Sending add-on <i>$addon_title</i>...", i18n_symbols
 	), transfer_mode::upload);
 
 	if(const config& message_cfg = response_buf.child("message")) {
@@ -214,7 +214,7 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 	LOG_ADDONS << "requesting server to delete " << id << '\n';
 
 	this->send_request(request_buf, response_buf);
-	this->wait_for_transfer_done(vgettext("Removing add-on <i>$addon_title</i> from the server...", i18n_symbols
+	this->wait_for_transfer_done(VGETTEXT("Removing add-on <i>$addon_title</i> from the server...", i18n_symbols
 	));
 
 	if(const config& message_cfg = response_buf.child("message")) {
@@ -241,7 +241,7 @@ bool addons_client::download_addon(config& archive_cfg, const std::string& id, c
 	LOG_ADDONS << "downloading " << id << '\n';
 
 	this->send_request(request_buf, archive_cfg);
-	this->wait_for_transfer_done(vgettext("Downloading add-on <i>$addon_title</i>...", i18n_symbols));
+	this->wait_for_transfer_done(VGETTEXT("Downloading add-on <i>$addon_title</i>...", i18n_symbols));
 
 	return !this->update_last_error(archive_cfg);
 }
@@ -255,13 +255,13 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 
 	if(!check_names_legal(archive_cfg)) {
 		gui2::show_error_message(
-			vgettext("The add-on <i>$addon_title</i> has an invalid file or directory "
+			VGETTEXT("The add-on <i>$addon_title</i> has an invalid file or directory "
 				"name and cannot be installed.", i18n_symbols));
 		return false;
 	}
 	if(!check_case_insensitive_duplicates(archive_cfg)){
 		gui2::show_error_message(
-			vgettext("The add-on <i>$addon_title</i> has file or directory names "
+			VGETTEXT("The add-on <i>$addon_title</i> has file or directory names "
 				"with case conflicts. This may cause problems.", i18n_symbols));
 	}
 
@@ -446,7 +446,7 @@ bool addons_client::do_check_before_overwriting_addon(const addon_info& addon)
 	std::string text;
 	std::vector<std::string> extra_items;
 
-	text = vgettext("The add-on '$addon|' is already installed and contains additional information that will be permanently lost if you continue:", symbols);
+	text = VGETTEXT("The add-on '$addon|' is already installed and contains additional information that will be permanently lost if you continue:", symbols);
 	text += "\n\n";
 
 	if(pbl) {

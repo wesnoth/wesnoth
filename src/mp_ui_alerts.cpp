@@ -167,7 +167,7 @@ void turn_changed(const std::string & player_name)
 	if (notif_pref(id)) {
 		utils::string_map player;
 		player["name"] = player_name;
-		desktop::notifications::send(_("Turn changed"), vgettext("$name has taken control", player), desktop::notifications::TURN_CHANGED);
+		desktop::notifications::send(_("Turn changed"), VGETTEXT("$name has taken control", player), desktop::notifications::TURN_CHANGED);
 	}
 }
 

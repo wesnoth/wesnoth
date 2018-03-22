@@ -234,9 +234,9 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 
 				// Use addon name if provided, else fall back on the addon id.
 				if(addon.has_attribute("name")) {
-					r.message = vgettext("Missing addon: $name", {{"name", addon["name"].str()}});
+					r.message = VGETTEXT("Missing addon: $name", {{"name", addon["name"].str()}});
 				} else {
-					r.message = vgettext("Missing addon: $id", {{"id", addon["id"].str()}});
+					r.message = VGETTEXT("Missing addon: $id", {{"id", addon["id"].str()}});
 				}
 
 				required_addons.push_back(std::move(r));
@@ -261,7 +261,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 		} else {
 			have_era = !game["require_era"].to_bool(true);
-			era = vgettext("$era_name (missing)", {{"era_name", game["mp_era_name"].str()}});
+			era = VGETTEXT("$era_name (missing)", {{"era_name", game["mp_era_name"].str()}});
 			era_short = make_short_name(era);
 			verified = false;
 
@@ -492,7 +492,7 @@ game_info::ADDON_REQ game_info::check_addon_version_compatibility(const config& 
 		if(local_min_ver > remote_ver) {
 			r.outcome = CANNOT_SATISFY;
 
-			r.message = vgettext("The host's version of <i>$addon</i> is incompatible. They have version <b>$host_ver</b> while you have version <b>$local_ver</b>.", {
+			r.message = VGETTEXT("The host's version of <i>$addon</i> is incompatible. They have version <b>$host_ver</b> while you have version <b>$local_ver</b>.", {
 				{"addon",     local_item["addon_title"].str()},
 				{"host_ver",  remote_ver.str()},
 				{"local_ver", local_ver.str()}
@@ -506,7 +506,7 @@ game_info::ADDON_REQ game_info::check_addon_version_compatibility(const config& 
 		if(remote_min_ver > local_ver) {
 			r.outcome = NEED_DOWNLOAD;
 
-			r.message = vgettext("Your version of <i>$addon</i> is incompatible. You have version <b>$local_ver</b> while the host has version <b>$host_ver</b>.", {
+			r.message = VGETTEXT("Your version of <i>$addon</i> is incompatible. You have version <b>$local_ver</b> while the host has version <b>$host_ver</b>.", {
 				{"addon",     local_item["addon_title"].str()},
 				{"host_ver",  remote_ver.str()},
 				{"local_ver", local_ver.str()}

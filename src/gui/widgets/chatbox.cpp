@@ -260,7 +260,7 @@ void chatbox::add_whisper_sent(const std::string& receiver, const std::string& m
 		switch_to_window(t);
 		add_active_window_message(preferences::login(), message, true);
 	} else {
-		add_active_window_whisper(vgettext("whisper to $receiver", {{"receiver", receiver}}), message, true);
+		add_active_window_whisper(VGETTEXT("whisper to $receiver", {{"receiver", receiver}}), message, true);
 	}
 
 	lobby_info_->get_whisper_log(receiver).add_message(preferences::login(), message);
@@ -393,11 +393,11 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 	item["use_markup"] = "true";
 
 	if(whisper) {
-		item["label"] = vgettext("Whisper session with <i>“$name”</i> started. "
+		item["label"] = VGETTEXT("Whisper session with <i>“$name”</i> started. "
 			"If you do not want to receive messages from this user, type <i>/ignore $name</i>\n", {{"name", name}});
 		data.emplace("log_text", item);
 	} else {
-		item["label"] = vgettext("Room <i>“$name”</i> joined", {{"name", name}});
+		item["label"] = VGETTEXT("Room <i>“$name”</i> joined", {{"name", name}});
 		data.emplace("log_text", item);
 
 		lobby_info_->open_room(name);
@@ -594,7 +594,7 @@ void chatbox::process_room_join(const ::config& data)
 			r->add_member(player);
 
 			/* TODO: add/use preference */
-			add_room_window_message(room, "server", vgettext("$player has entered the room", {{"player", player}}));
+			add_room_window_message(room, "server", VGETTEXT("$player has entered the room", {{"player", player}}));
 		}
 
 		if(r == active_window_room()) {
@@ -636,7 +636,7 @@ void chatbox::process_room_part(const ::config& data)
 		r->remove_member(player);
 
 		/* TODO: add/use preference */
-		add_room_window_message(room, "server", vgettext("$player has left the room", {{"player", player}}));
+		add_room_window_message(room, "server", VGETTEXT("$player has left the room", {{"player", player}}));
 		if(active_window_room() == r) {
 			active_window_changed_callback_();
 		}

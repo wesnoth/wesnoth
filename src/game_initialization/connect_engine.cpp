@@ -1039,7 +1039,7 @@ config side_engine::new_config() const
 	if(!desc.empty()) {
 		res["user_description"] = t_string(desc, "wesnoth");
 
-		desc = vgettext("$playername $side", {
+		desc = VGETTEXT("$playername $side", {
 			{"playername", _(desc.c_str())},
 			{"side", res["side"].str()}
 		});

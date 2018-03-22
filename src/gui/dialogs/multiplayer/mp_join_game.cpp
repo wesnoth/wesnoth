@@ -249,7 +249,7 @@ static std::string generate_user_description(const config& side)
 	} else if(controller_type == "null") {
 		return _("Empty slot");
 	} else if(controller_type == "reserved") {
-		return vgettext("Reserved for $playername", {{"playername", reservation}});
+		return VGETTEXT("Reserved for $playername", {{"playername", reservation}});
 	} else if(owner.empty()) {
 		return _("Vacant slot");
 	} else if(controller_type == "human" || controller_type == "network") {

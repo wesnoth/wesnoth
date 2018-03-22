@@ -141,7 +141,7 @@ void playsingle_controller::hotkey_handler::whiteboard_toggle() {
 		utils::string_map symbols;
 		symbols["hotkey"] = hk;
 
-		gui()->announce(_("Planning mode activated!") + std::string("\n") + vgettext("(press $hotkey to deactivate)", symbols), font::NORMAL_COLOR);
+		gui()->announce(_("Planning mode activated!") + std::string("\n") + VGETTEXT("(press $hotkey to deactivate)", symbols), font::NORMAL_COLOR);
 	} else {
 		gui()->announce(_("Planning mode deactivated!"), font::NORMAL_COLOR);
 	}

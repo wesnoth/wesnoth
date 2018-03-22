@@ -63,11 +63,11 @@ depcheck_confirm_change::depcheck_confirm_change(
 	symbols["requester"] = requester;
 	std::string message;
 	if(action) {
-		message = vgettext("$requester requires the following modifications to "
+		message = VGETTEXT("$requester requires the following modifications to "
 						   "be enabled:",
 						   symbols);
 	} else {
-		message = vgettext("$requester requires the following modifications to "
+		message = VGETTEXT("$requester requires the following modifications to "
 						   "be disabled:",
 						   symbols);
 	}

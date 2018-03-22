@@ -320,7 +320,7 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 					symbols["campaign_name"] = "(" + campaign_id + ")";
 				}
 
-				str << vgettext("Campaign: $campaign_name", symbols);
+				str << VGETTEXT("Campaign: $campaign_name", symbols);
 
 				// Display internal id for debug purposes if we didn't above
 				if(game_config::debug && (campaign != nullptr)) {
