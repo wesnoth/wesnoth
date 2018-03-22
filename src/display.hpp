@@ -568,15 +568,6 @@ public:
 	/** Rebuild all dynamic terrain. */
 	void rebuild_all();
 
-	const theme::action* action_pressed();
-	const theme::menu* menu_pressed();
-
-	/**
-	 * Finds the menu which has a given item in it,
-	 * and enables or disables it.
-	 */
-	void enable_menu(const std::string& item, bool enable);
-
 	void set_diagnostic(const std::string& msg);
 
 	/**
@@ -992,7 +983,6 @@ protected:
 	uint32_t last_frame_finished_ = 0u;
 
 	// Not set by the initializer:
-	std::vector<std::shared_ptr<gui::button>> menu_buttons_, action_buttons_;
 	surface mouseover_hex_overlay_;
 	// If we're transitioning from one time of day to the next,
 	// then we will use these two masks on top of all hexes when we blit.

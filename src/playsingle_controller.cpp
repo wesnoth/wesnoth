@@ -503,9 +503,8 @@ void playsingle_controller::linger()
 
 void playsingle_controller::end_turn_enable(bool enable)
 {
-	gui_->enable_menu("endturn", enable);
+	//gui_->enable_menu("endturn", enable);
 }
-
 
 void playsingle_controller::after_human_turn()
 {

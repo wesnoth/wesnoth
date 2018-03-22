@@ -168,8 +168,6 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, cons
 	, fps_counter_()
 	, fps_start_()
 	, fps_actual_()
-	, menu_buttons_()
-	, action_buttons_()
 	, mouseover_hex_overlay_(nullptr)
 	, tod_hex_mask1(nullptr)
 	, tod_hex_mask2(nullptr)
@@ -233,8 +231,7 @@ display::~display()
 }
 
 void display::set_theme(config theme_cfg) {
-	theme_ = theme(theme_cfg, video_.screen_area());	menu_buttons_.clear();
-	action_buttons_.clear();
+	theme_ = theme(theme_cfg, video_.screen_area());
 }
 
 void display::init_flags() {
@@ -457,7 +454,6 @@ bool display::is_blindfolded() const
 	return blindfold_ctr_ > 0;
 }
 
-
 const SDL_Rect& display::max_map_area() const
 {
 	static SDL_Rect max_area {0, 0, 0, 0};
@@ -524,7 +520,6 @@ const map_location display::hex_clicked_on(int xclick, int yclick) const
 
 	return pixel_position_to_hex(xpos_ + xclick, ypos_ + yclick);
 }
-
 
 // This function uses the rect of map_area as reference
 const map_location display::pixel_position_to_hex(int x, int y) const
@@ -763,27 +758,13 @@ surface display::screenshot(bool map_screenshot)
 	return res;
 }
 
-std::shared_ptr<gui::button> display::find_action_button(const std::string& id)
+std::shared_ptr<gui::button> display::find_action_button(const std::string& /*id*/)
 {
-	return nullptr;
-
-	for (std::size_t i = 0; i < action_buttons_.size(); ++i) {
-		if(action_buttons_[i]->id() == id) {
-			return action_buttons_[i];
-		}
-	}
 	return nullptr;
 }
 
-std::shared_ptr<gui::button> display::find_menu_button(const std::string& id)
+std::shared_ptr<gui::button> display::find_menu_button(const std::string& /*id*/)
 {
-	return nullptr;
-
-	for (std::size_t i = 0; i < menu_buttons_.size(); ++i) {
-		if(menu_buttons_[i]->id() == id) {
-			return menu_buttons_[i];
-		}
-	}
 	return nullptr;
 }
 
@@ -1012,56 +993,6 @@ void display::set_diagnostic(const std::string& msg)
 		flabel.set_clip_rect(map_outside_area());
 
 		diagnostic_label_ = font::add_floating_label(flabel);
-	}
-}
-
-const theme::action* display::action_pressed()
-{
-	for(auto i = action_buttons_.begin(); i != action_buttons_.end(); ++i) {
-		if((*i)->pressed()) {
-			const std::size_t index = std::distance(action_buttons_.begin(), i);
-			if(index >= theme_.actions().size()) {
-				assert(false);
-				return nullptr;
-			}
-			return &theme_.actions()[index];
-		}
-	}
-
-	return nullptr;
-}
-
-const theme::menu* display::menu_pressed()
-{
-	for(auto i = menu_buttons_.begin(); i != menu_buttons_.end(); ++i) {
-		if((*i)->pressed()) {
-			const std::size_t index = std::distance(menu_buttons_.begin(), i);
-			if(index >= theme_.menus().size()) {
-				assert(false);
-				return nullptr;
-			}
-			return theme_.get_menu_item((*i)->id());
-		}
-	}
-
-	return nullptr;
-}
-
-void display::enable_menu(const std::string& item, bool enable)
-{
-	for(auto menu = theme_.menus().begin(); menu != theme_.menus().end(); ++menu) {
-
-		const auto hasitem = std::find_if(menu->items().begin(), menu->items().end(),
-			[&item](const config& c) { return c["id"].str() == item; }
-		);
-
-		if(hasitem != menu->items().end()) {
-			const std::size_t index = std::distance(theme_.menus().begin(), menu);
-			if(index >= menu_buttons_.size()) {
-				continue;
-			}
-			menu_buttons_[index]->enable(enable);
-		}
 	}
 }
 

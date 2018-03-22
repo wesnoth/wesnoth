@@ -263,6 +263,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 		l->update();
 	}
 
+#if 0
 	const theme::menu* const m = get_display().menu_pressed();
 	if(m != nullptr) {
 		const SDL_Rect& menu_loc = m->location(get_display().video().screen_area());
@@ -278,6 +279,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 		return;
 	}
+#endif
 
 	auto str_vec = additional_actions_pressed();
 	if(!str_vec.empty()) {
