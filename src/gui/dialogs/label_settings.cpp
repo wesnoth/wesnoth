@@ -73,7 +73,7 @@ label_settings::label_settings(display_context& dc) : viewer(dc) {
 		string_map subst;
 		subst["side_number"] = std::to_string(i + 1);
 		subst["name"] = team_name;
-		labels_display[label_cat_key] = vgettext("Side $side_number ($name)", subst);
+		labels_display[label_cat_key] = VGETTEXT("Side $side_number ($name)", subst);
 	}
 }
 

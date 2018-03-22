@@ -1142,7 +1142,7 @@ namespace { // Private helpers for move_unit()
 				// Both friends and enemies sighted -- neutral message.
 				symbols["friendphrase"] = VNGETTEXT("Part of 'Units sighted! (...)' sentence^1 friendly", "$friends friendly", friend_count_, symbols);
 				symbols["enemyphrase"] = VNGETTEXT("Part of 'Units sighted! (...)' sentence^1 enemy", "$enemies enemy", enemy_count_, symbols);
-				message = vgettext("Units sighted! ($friendphrase, $enemyphrase)", symbols);
+				message = VGETTEXT("Units sighted! ($friendphrase, $enemyphrase)", symbols);
 				msg_color = font::NORMAL_COLOR;
 			} else if ( enemy_count_ != 0 ) {
 				// Only enemies sighted -- bad message.
@@ -1165,7 +1165,7 @@ namespace { // Private helpers for move_unit()
 			if ( !name.empty() ) {
 				utils::string_map symbols;
 				symbols["hotkey"] = name;
-				std::string message = vgettext("(press $hotkey to keep moving)", symbols);
+				std::string message = VGETTEXT("(press $hotkey to keep moving)", symbols);
 				disp.announce(message_prefix + message, font::NORMAL_COLOR, announce_options);
 				message_prefix += " \n";
 			}

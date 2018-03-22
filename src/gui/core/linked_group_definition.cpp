@@ -35,7 +35,7 @@ std::vector<linked_group_definition> parse_linked_group_definitions(const config
 		VALIDATE(!linked_group.id.empty(), missing_mandatory_wml_key("linked_group", "id"));
 
 		if(!linked_group.fixed_width && !linked_group.fixed_height) {
-			const t_string msg = vgettext(
+			const t_string msg = VGETTEXT(
 				"Linked group '$id' needs a 'fixed_width' or 'fixed_height' key.", {{"id", linked_group.id}});
 
 			FAIL(msg);

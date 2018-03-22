@@ -93,7 +93,7 @@ std::string encode_text_alignment(const PangoAlignment alignment)
 
 t_string missing_widget(const std::string& id)
 {
-	return t_string(vgettext("Mandatory widget '$id' hasn't been defined.", {{"id", id}}));
+	return t_string(VGETTEXT("Mandatory widget '$id' hasn't been defined.", {{"id", id}}));
 }
 
 void get_screen_size_variables(wfl::map_formula_callable& variable)

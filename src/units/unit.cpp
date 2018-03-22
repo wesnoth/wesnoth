@@ -23,7 +23,7 @@
 #include "deprecation.hpp"
 #include "display_context.hpp"
 #include "formatter.hpp"
-#include "formula/string_utils.hpp" // for vgettext
+#include "formula/string_utils.hpp" // for VGETTEXT
 #include "game_board.hpp"			// for game_board
 #include "game_config.hpp"			// for add_color_info, etc
 #include "game_data.hpp"
@@ -1782,13 +1782,12 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 			utils::string_map symbols;
 			symbols["attack_list"] = utils::format_conjunct_list("", attack_names);
 			symbols["effect_description"] = desc;
-			return vgettext("$attack_list|: $effect_description", symbols);
+			return VGETTEXT("$attack_list|: $effect_description", symbols);
 		}
 	} else if(apply_to == "hitpoints") {
 		const std::string& increase_total = effect["increase_total"];
 		if(!increase_total.empty()) {
-			return vgettext(
-				"wesnoth",
+			return VGETTEXT(
 				"<span color=\"$color\">$number_or_percent</span> HP",
 				{{"number_or_percent", utils::print_modifier(increase_total)}, {"color", increase_total[0] == '-' ? "red" : "green"}});
 		}
@@ -1804,16 +1803,16 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 				std::stoi(increase),
 				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
 		} else if(apply_to == "vision") {
-			return vgettext(
+			return VGETTEXT(
 				"<span color=\"$color\">$number_or_percent</span> vision",
 				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
 		} else if(apply_to == "jamming") {
-			return vgettext(
+			return VGETTEXT(
 				"<span color=\"$color\">$number_or_percent</span> jamming",
 				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
 		} else if(apply_to == "max_experience") {
 			// Unlike others, decreasing experience is a *GOOD* thing
-			return vgettext(
+			return VGETTEXT(
 				"<span color=\"$color\">$number_or_percent</span> XP to advance",
 				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "green" : "red"}});
 		} else if(apply_to == "max_attacks") {
@@ -1824,7 +1823,7 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 					{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
 		} else if(apply_to == "recall_cost") {
 			// Unlike others, decreasing recall cost is a *GOOD* thing
-			return vgettext(
+			return VGETTEXT(
 				"<span color=\"$color\">$number_or_percent</span> cost to recall",
 				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "green" : "red"}});
 		}
@@ -2230,7 +2229,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		}
 
 		if(effect["times"] == "per level" && !times) {
-			description = vgettext("$effect_description per level", {{"effect_description", description}});
+			description = VGETTEXT("$effect_description per level", {{"effect_description", description}});
 		}
 
 		if(!description.empty()) {

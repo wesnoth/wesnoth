@@ -326,13 +326,13 @@ bool file_dialog::process_submit_common(window& window, const std::string& name)
 			// We get here in save mode or not. Use the file creation language only in
 			// save mode.
 			if(save_mode_) {
-				show_transient_error_message(vgettext("The file or folder $path cannot be created.", {{"path", name}}));
+				show_transient_error_message(VGETTEXT("The file or folder $path cannot be created.", {{"path", name}}));
 				break;
 			}
 			FALLTHROUGH;
 		case SELECTION_NOT_FOUND:
 			// We only get here if we aren't in save mode.
-			show_transient_error_message(vgettext("The file or folder $path does not exist.", {{"path", name}}));
+			show_transient_error_message(VGETTEXT("The file or folder $path does not exist.", {{"path", name}}));
 			break;
 		case SELECTION_IS_FILE:
 			// TODO: Adapt for implementing directory selection mode.
@@ -707,7 +707,7 @@ void file_dialog::on_dir_create_cmd(window& window)
 
 		if(!fs::make_directory(new_path)) {
 			show_transient_error_message(
-					vgettext("Could not create a new folder at $path|. Make sure you have the appropriate permissions to write to this location.",
+					VGETTEXT("Could not create a new folder at $path|. Make sure you have the appropriate permissions to write to this location.",
 					{{"path", new_path}}));
 		} else {
 			refresh_fileview(window);
@@ -739,7 +739,7 @@ void file_dialog::on_file_delete_cmd(window& window)
 
 	if(!result) {
 		show_transient_error_message(
-				vgettext("Could not delete $path|. Make sure you have the appropriate permissions to write to this location.",
+				VGETTEXT("Could not delete $path|. Make sure you have the appropriate permissions to write to this location.",
 						 {{"path", selection}}));
 	} else {
 		refresh_fileview(window);

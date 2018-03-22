@@ -33,7 +33,7 @@ editor_map_load_exception wrap_exc(const char* type, const std::string& e_msg, c
 	utils::string_map symbols;
 	symbols["type"] = type;
 	const char* error_msg = "There was an error ($type) while loading the file:";
-	std::string msg = vgettext(error_msg, symbols);
+	std::string msg = VGETTEXT(error_msg, symbols);
 	msg += "\n";
 	msg += e_msg;
 	return editor_map_load_exception(filename, msg);
@@ -145,7 +145,7 @@ std::set<map_location> editor_map::set_starting_position_labels(display& disp)
 
 		bool is_number = std::find_if(pair.first.begin(), pair.first.end(), [](char c) { return !std::isdigit(c); }) == pair.first.end();
 		if (is_number) {
-			label = vgettext("Player $side_num", utils::string_map{ { "side_num", pair.first } });
+			label = VGETTEXT("Player $side_num", utils::string_map{ { "side_num", pair.first } });
 		}
 		else {
 			label = pair.first;

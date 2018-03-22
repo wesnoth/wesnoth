@@ -764,7 +764,7 @@ void addon_manager::publish_addon(const addon_info& addon, window& window)
 void addon_manager::delete_addon(const addon_info& addon, window& window)
 {
 	const std::string addon_id = addon.id;
-	const std::string& text = vgettext(
+	const std::string& text = VGETTEXT(
 		"Deleting '$addon|' will permanently erase its download and upload counts on the add-ons server. Do you really wish to continue?",
 		{{"addon", make_addon_title(addon_id)}} // FIXME: need the real title!
 	);
@@ -797,7 +797,7 @@ void addon_manager::execute_default_action(const addon_info& addon, window& wind
 			if(!tracking_info_[addon.id].can_publish) {
 				utils::string_map symbols{ { "addon", addon.display_title() } };
 				int res = gui2::show_message(_("Uninstall add-on"),
-					vgettext("Do you want to uninstall '$addon|'?", symbols),
+					VGETTEXT("Do you want to uninstall '$addon|'?", symbols),
 					gui2::dialogs::message::ok_cancel_buttons);
 				if(res == gui2::retval::OK) {
 					uninstall_addon(addon, window);
