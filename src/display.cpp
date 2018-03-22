@@ -697,18 +697,8 @@ map_location display::minimap_location_on(int x, int y)
 	int py = (y - minimap_location_.y) * get_map().h() * hex_size() / std::max(minimap_location_.h, 1);
 
 	map_location loc = pixel_position_to_hex(px, py);
-
-	if(loc.x < 0) {
-		loc.x = 0;
-	} else if(loc.x >= get_map().w()) {
-		loc.x = get_map().w() - 1;
-	}
-
-	if(loc.y < 0) {
-		loc.y = 0;
-	} else if(loc.y >= get_map().h()) {
-		loc.y = get_map().h() - 1;
-	}
+	loc.x = utils::clamp(loc.x, 0, get_map().w() - 1);
+	loc.y = utils::clamp(loc.x, 0, get_map().h() - 1);
 
 	return loc;
 }
@@ -1466,18 +1456,19 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator& b
 		r.y += spacing;
 		r.w -= 2 * spacing;
 		r.h -= 2 * spacing;
-		
+
 		if(!outside_area(r, minx, miny) && !outside_area(r, maxx, maxy)) {
 			return;
 		}
 	}
 
 	// let's do "normal" rectangle math from now on
-	SDL_Rect locs_bbox;
-	locs_bbox.x = minx;
-	locs_bbox.y = miny;
-	locs_bbox.w = maxx - minx + hex_size();
-	locs_bbox.h = maxy - miny + hex_size();
+	SDL_Rect locs_bbox {
+		minx,
+		miny,
+		maxx - minx + hex_size(),
+		maxy - miny + hex_size()
+	};
 
 	// target the center
 	int target_x = locs_bbox.x + locs_bbox.w / 2;
@@ -1516,32 +1507,16 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator& b
 
 		if(map_center_x < r.x) {
 			target_x = r.x;
-			target_y = map_center_y;
-			if(target_y < r.y)
-				target_y = r.y;
-			if(target_y > r.y + r.h - 1)
-				target_y = r.y + r.h - 1;
+			target_y = utils::clamp(map_center_y, r.y, r.y + r.h - 1);
 		} else if(map_center_x > r.x + r.w - 1) {
 			target_x = r.x + r.w - 1;
-			target_y = map_center_y;
-			if(target_y < r.y)
-				target_y = r.y;
-			if(target_y >= r.y + r.h)
-				target_y = r.y + r.h - 1;
+			target_y = utils::clamp(map_center_y, r.y, r.y + r.h - 1);
 		} else if(map_center_y < r.y) {
 			target_y = r.y;
-			target_x = map_center_x;
-			if(target_x < r.x)
-				target_x = r.x;
-			if(target_x > r.x + r.w - 1)
-				target_x = r.x + r.w - 1;
+			target_x = utils::clamp(map_center_x, r.x, r.x + r.w - 1);
 		} else if(map_center_y > r.y + r.h - 1) {
 			target_y = r.y + r.h - 1;
-			target_x = map_center_x;
-			if(target_x < r.x)
-				target_x = r.x;
-			if(target_x > r.x + r.w - 1)
-				target_x = r.x + r.w - 1;
+			target_x = utils::clamp(map_center_x, r.x, r.x + r.w - 1);
 		} else {
 			ERR_DP << "Bug in the scrolling code? Looks like we would not need to scroll after all..." << std::endl;
 			// keep the target at the center
@@ -1673,29 +1648,25 @@ void display::reset_standing_animations()
 
 void display::add_arrow(arrow& arrow)
 {
-	const arrow_path_t& arrow_path = arrow.get_path();
-	for(const map_location& loc : arrow_path) {
+	for(const map_location& loc : arrow.get_path()) {
 		arrows_map_[loc].push_back(&arrow);
 	}
 }
 
 void display::remove_arrow(arrow& arrow)
 {
-	const arrow_path_t& arrow_path = arrow.get_path();
-	for(const map_location& loc : arrow_path) {
+	for(const map_location& loc : arrow.get_path()) {
 		arrows_map_[loc].remove(&arrow);
 	}
 }
 
 void display::update_arrow(arrow& arrow)
 {
-	const arrow_path_t& previous_path = arrow.get_previous_path();
-	for(const map_location& loc : previous_path) {
+	for(const map_location& loc : arrow.get_previous_path()) {
 		arrows_map_[loc].remove(&arrow);
 	}
 
-	const arrow_path_t& arrow_path = arrow.get_path();
-	for(const map_location& loc : arrow_path) {
+	for(const map_location& loc : arrow.get_path()) {
 		arrows_map_[loc].push_back(&arrow);
 	}
 }
