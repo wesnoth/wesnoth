@@ -469,7 +469,7 @@ variant variant::operator^(const variant& v) const
 {
 	if(is_decimal() || v.is_decimal()) {
 
-		double res = pow(as_decimal() / 1000.0 , v.as_decimal() / 1000.0);
+		double res = std::pow(as_decimal() / 1000.0 , v.as_decimal() / 1000.0);
 
 		if(std::isnan(res)) {
 			return variant();
@@ -478,7 +478,7 @@ variant variant::operator^(const variant& v) const
 		return variant(res, DECIMAL_VARIANT);
 	}
 
-	return variant(static_cast<int>(round_portable(pow(static_cast<double>(as_int()), v.as_int()))));
+	return variant(static_cast<int>(round_portable(std::pow(static_cast<double>(as_int()), v.as_int()))));
 }
 
 variant variant::operator-() const

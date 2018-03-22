@@ -552,7 +552,7 @@ point table::calculate_best_size() const
 	 */
 
 	std::size_t n_items = get_item_count();
-	std::size_t max_cols = sqrt(n_items) + 2;
+	std::size_t max_cols = std::sqrt(n_items) + 2;
 
 	std::vector<point> item_sizes;
 	for(std::size_t i = 0; i < n_items; i++) {
