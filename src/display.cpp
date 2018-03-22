@@ -30,12 +30,10 @@
 #include "language.hpp"
 #include "log.hpp"
 #include "font/marked-up_text.hpp"
-#include "gui/dialogs/ingame_ui_base.hpp"
 #include "map/map.hpp"
 #include "map/label.hpp"
 #include "minimap.hpp"
 #include "overlay.hpp"
-#include "play_controller.hpp" //note: this can probably be refactored out
 #include "resources.hpp"
 #include "color.hpp"
 #include "synced_context.hpp"
@@ -50,16 +48,12 @@
 #include "whiteboard/manager.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "sdl/render_utils.hpp"
-#include "sdl/texture.hpp"
-
-#include <SDL_image.h>
+#include "floating_label.hpp"
 
 #include <array>
 #include <cmath>
 #include <iomanip>
 #include <utility>
-
-// Includes for bug #17573
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -105,35 +99,20 @@ void display::add_overlay(const map_location& loc, const std::string& img, const
 
 void display::remove_overlay(const map_location& loc)
 {
-	/* This code no longer needed because of RAII in halo::handles
-	if (halo_man_) {
-		typedef overlay_map::const_iterator Itor;
-		std::pair<Itor,Itor> itors = overlays_->equal_range(loc);
-		while(itors.first != itors.second) {
-			halo_man_->remove(itors.first->second.halo_handle);
-			++itors.first;
-		}
-	}
-	*/
-
 	overlays_->erase(loc);
 }
 
 void display::remove_single_overlay(const map_location& loc, const std::string& toDelete)
 {
-	//Iterate through the values with key of loc
-	typedef overlay_map::iterator Itor;
-	overlay_map::iterator iteratorCopy;
-	std::pair<Itor,Itor> itors = overlays_->equal_range(loc);
+	// Iterate through the values with key of loc
+	auto itors = overlays_->equal_range(loc);
+
 	while(itors.first != itors.second) {
-		//If image or halo of overlay struct matches toDelete, remove the overlay
-		if(itors.first->second.image == toDelete || itors.first->second.halo == toDelete || itors.first->second.id == toDelete) {
-			iteratorCopy = itors.first;
-			++itors.first;
-			//Not needed because of RAII --> halo_man_->remove(iteratorCopy->second.halo_handle);
-			overlays_->erase(iteratorCopy);
-		}
-		else {
+		const overlay& o = itors.first->second;
+
+		if(o.image == toDelete || o.halo == toDelete ||o.id == toDelete) {
+			overlays_->erase(itors.first++);
+		} else {
 			++itors.first;
 		}
 	}
@@ -194,7 +173,6 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, cons
 	, arrows_map_()
 	, color_adjust_()
 {
-	//The following assertion fails when starting a campaign
 	assert(singleton_ == nullptr);
 	singleton_ = this;
 
@@ -254,7 +232,7 @@ void display::init_flags() {
 void display::reinit_flags_for_side(std::size_t side)
 {
 	if (!dc_ || side >= dc_->teams().size()) {
-		ERR_DP << "Cannot rebuild flags for inexistent or unconfigured side " << side << '\n';
+		ERR_DP << "Cannot rebuild flags for nonexistent or unconfigured side " << side << '\n';
 		return;
 	}
 
