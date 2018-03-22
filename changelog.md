@@ -1,4 +1,8 @@
 ## Version 1.13.12+dev
+ ### Language and i18n
+   * Fixed many cases of interpolated strings in the engine possibly having
+     their translations retrieved from the wrong textdomain and falling back
+     to the English original if that failed (PR #2711, bug #2709).
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
 
