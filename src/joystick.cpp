@@ -133,7 +133,7 @@ std::pair<double, double> joystick_manager::get_mouse_axis_pair() {
 		thrust = get_thrusta_axis();
 	}
 
-	const int radius = round_double(sqrt(pow(values.first, 2.0f) + pow(values.second, 2.0f)));
+	const int radius = round_double(std::sqrt(std::pow(values.first, 2.0f) + std::pow(values.second, 2.0f)));
 	const int deadzone = preferences::joystick_mouse_deadzone();
 	const double multiplier = 1.0 + thrust;
 
@@ -169,7 +169,7 @@ std::pair<double, double> joystick_manager::get_scroll_axis_pair() {
 		thrust = get_thrusta_axis();
 	}
 
-	const int radius = round_double(sqrt(pow(values.first, 2.0f) + pow(values.second, 2.0f)));
+	const int radius = round_double(std::sqrt(std::pow(values.first, 2.0f) + std::pow(values.second, 2.0f)));
 	const int deadzone = preferences::joystick_scroll_deadzone();
 	const double multiplier = 1.0 + thrust;
 
@@ -218,7 +218,7 @@ std::pair<double, double> joystick_manager::get_cursor_polar_coordinates() {
 std::pair<double, double> joystick_manager::get_polar_coordinates(int joystick_xaxis, int xaxis, int joystick_yaxis, int yaxis) {
 
 	const std::pair<int, int> values = get_axis_pair(joystick_xaxis, xaxis, joystick_yaxis, yaxis);
-	const double radius = (sqrt(pow(values.first, 2.0f) + pow(values.second, 2.0f))) / 32768.0;
+	const double radius = (std::sqrt(std::pow(values.first, 2.0f) + std::pow(values.second, 2.0f))) / 32768.0;
 	const double angle = (atan2(
 			  static_cast<double>(values.second)
 			, static_cast<double>(values.first))) * 180.0 / pi<double>();
@@ -275,7 +275,7 @@ bool joystick_manager::update_highlighted_hex(map_location& highlighted_hex, con
 	const int x_axis = values.first;
 	const int y_axis = values.second;
 
-	//const int radius = round_double(sqrt(pow(x_axis, 2.0f) + pow(y_axis, 2.0f)));
+	//const int radius = round_double(std::(std::pow(x_axis, 2.0f) + std::pow(y_axis, 2.0f)));
 
 //	const int deadzone = preferences::joystick_cursor_deadzone();
 	//const int threshold2 = 10*threshold;
@@ -310,7 +310,7 @@ bool joystick_manager::update_highlighted_hex(map_location& highlighted_hex) {
 	const int x_axis = values.first;
 	const int y_axis = values.second;
 
-	const int radius = round_double(sqrt(pow(x_axis, 2.0f) + pow(y_axis, 2.0f)));
+	const int radius = round_double(std::sqrt(std::pow(x_axis, 2.0f) + std::pow(y_axis, 2.0f)));
 
 	const int deadzone = preferences::joystick_cursor_deadzone();
 	const int threshold = deadzone + preferences::joystick_cursor_threshold();

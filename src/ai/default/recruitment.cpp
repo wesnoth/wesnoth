@@ -975,7 +975,7 @@ void recruitment::do_combat_analysis(std::vector<data>* leader_data) {
 			for (const std::string& recruit : leader.recruits) {
 				double score = compare_unit_types(recruit, enemy_unit);
 				score *= enemy_unit_hp;
-				score = pow(score, COMBAT_SCORE_POWER);
+				score = std::pow(score, COMBAT_SCORE_POWER);
 				temp_scores[recruit] += score;
 			}
 		}

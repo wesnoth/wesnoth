@@ -491,21 +491,21 @@ DEFINE_WFL_FUNCTION(str_lower, 1, 1)
 DEFINE_WFL_FUNCTION(sin, 1, 1)
 {
 	const double angle = args()[0]->evaluate(variables, fdb).as_decimal() / 1000.0;
-	const double result = sin(angle * pi<double>() / 180.0);
+	const double result = std::sin(angle * pi<double>() / 180.0);
 	return variant(result, variant::DECIMAL_VARIANT);
 }
 
 DEFINE_WFL_FUNCTION(cos, 1, 1)
 {
 	const double angle = args()[0]->evaluate(variables, fdb).as_decimal() / 1000.0;
-	const double result = cos(angle * pi<double>() / 180.0);
+	const double result = std::cos(angle * pi<double>() / 180.0);
 	return variant(result, variant::DECIMAL_VARIANT);
 }
 
 DEFINE_WFL_FUNCTION(tan, 1, 1)
 {
 	const double angle = args()[0]->evaluate(variables, fdb).as_decimal() / 1000.0;
-	const double result = tan(angle * pi<double>() / 180.0);
+	const double result = std::tan(angle * pi<double>() / 180.0);
 	if(std::isnan(result) || result <= INT_MIN || result >= INT_MAX) {
 		return variant();
 	}
@@ -516,7 +516,7 @@ DEFINE_WFL_FUNCTION(tan, 1, 1)
 DEFINE_WFL_FUNCTION(asin, 1, 1)
 {
 	const double num = args()[0]->evaluate(variables, fdb).as_decimal() / 1000.0;
-	const double result = asin(num) * 180.0 / pi<double>();
+	const double result = std::asin(num) * 180.0 / pi<double>();
 	if(std::isnan(result)) {
 		return variant();
 	}
@@ -527,7 +527,7 @@ DEFINE_WFL_FUNCTION(asin, 1, 1)
 DEFINE_WFL_FUNCTION(acos, 1, 1)
 {
 	const double num = args()[0]->evaluate(variables, fdb).as_decimal() / 1000.0;
-	const double result = acos(num) * 180.0 / pi<double>();
+	const double result = std::acos(num) * 180.0 / pi<double>();
 	if(std::isnan(result)) {
 		return variant();
 	}
@@ -538,14 +538,14 @@ DEFINE_WFL_FUNCTION(acos, 1, 1)
 DEFINE_WFL_FUNCTION(atan, 1, 1)
 {
 	const double num = args()[0]->evaluate(variables, fdb).as_decimal() / 1000.0;
-	const double result = atan(num) * 180.0 / pi<double>();
+	const double result = std::atan(num) * 180.0 / pi<double>();
 	return variant(result, variant::DECIMAL_VARIANT);
 }
 
 DEFINE_WFL_FUNCTION(sqrt, 1, 1)
 {
 	const double num = args()[0]->evaluate(variables, fdb).as_decimal() / 1000.0;
-	const double result = sqrt(num);
+	const double result = std::sqrt(num);
 	if(std::isnan(result)) {
 		return variant();
 	}
@@ -556,7 +556,7 @@ DEFINE_WFL_FUNCTION(sqrt, 1, 1)
 DEFINE_WFL_FUNCTION(cbrt, 1, 1)
 {
 	const double num = args()[0]->evaluate(variables, fdb).as_decimal() / 1000.0;
-	const double result = num < 0 ? -pow(-num, 1.0 / 3.0) : pow(num, 1.0 / 3.0);
+	const double result = num < 0 ? -std::pow(-num, 1.0 / 3.0) : std::pow(num, 1.0 / 3.0);
 	return variant(result, variant::DECIMAL_VARIANT);
 }
 
@@ -564,7 +564,7 @@ DEFINE_WFL_FUNCTION(root, 2, 2)
 {
 	const double base = args()[0]->evaluate(variables, fdb).as_decimal() / 1000.0;
 	const double root = args()[1]->evaluate(variables, fdb).as_decimal() / 1000.0;
-	const double result = base < 0 && fmod(root, 2) == 1 ? -pow(-base, 1.0 / root) : pow(base, 1.0 / root);
+	const double result = base < 0 && std::fmod(root, 2) == 1 ? -std::pow(-base, 1.0 / root) : std::pow(base, 1.0 / root);
 	if(std::isnan(result)) {
 		return variant();
 	}
@@ -576,7 +576,7 @@ DEFINE_WFL_FUNCTION(log, 1, 2)
 {
 	const double num = args()[0]->evaluate(variables, fdb).as_decimal() / 1000.0;
 	if(args().size() == 1) {
-		const double result = log(num);
+		const double result = std::log(num);
 		if(std::isnan(result)) {
 			return variant();
 		}
@@ -585,7 +585,7 @@ DEFINE_WFL_FUNCTION(log, 1, 2)
 	}
 
 	const double base = args()[1]->evaluate(variables, fdb).as_decimal() / 1000.0;
-	const double result = log(num) / log(base);
+	const double result = std::log(num) / std::log(base);
 	if(std::isnan(result)) {
 		return variant();
 	}
@@ -596,7 +596,7 @@ DEFINE_WFL_FUNCTION(log, 1, 2)
 DEFINE_WFL_FUNCTION(exp, 1, 1)
 {
 	const double num = args()[0]->evaluate(variables, fdb).as_decimal() / 1000.0;
-	const double result = exp(num);
+	const double result = std::exp(num);
 	if(result == 0 || result >= INT_MAX) {
 		// These are range errors rather than NaNs,
 		// but I figure it's better than returning INT_MIN.
@@ -617,7 +617,7 @@ DEFINE_WFL_FUNCTION(hypot, 2, 2)
 {
 	const double x = args()[0]->evaluate(variables, fdb).as_decimal() / 1000.0;
 	const double y = args()[1]->evaluate(variables, fdb).as_decimal() / 1000.0;
-	return variant(hypot(x, y), variant::DECIMAL_VARIANT);
+	return variant(std::hypot(x, y), variant::DECIMAL_VARIANT);
 }
 
 DEFINE_WFL_FUNCTION(index_of, 2, 2)
@@ -677,7 +677,7 @@ DEFINE_WFL_FUNCTION(wave, 1, 1)
 {
 	const int value = args()[0]->evaluate(variables, fdb).as_int() % 1000;
 	const double angle = 2.0 * pi<double>() * (static_cast<double>(value) / 1000.0);
-	return variant(static_cast<int>(sin(angle) * 1000.0));
+	return variant(static_cast<int>(std::sin(angle) * 1000.0));
 }
 
 namespace

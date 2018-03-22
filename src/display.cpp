@@ -2119,7 +2119,7 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 	int x_old = 0;
 	int y_old = 0;
 
-	const double dist_total = hypot(xmove, ymove);
+	const double dist_total = std::hypot(xmove, ymove);
 	double dist_moved = 0.0;
 
 	int t_prev = SDL_GetTicks();

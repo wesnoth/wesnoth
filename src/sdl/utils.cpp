@@ -1854,8 +1854,8 @@ surface rotate_any_surface(const surface& surf, float angle, int zoom, int offse
 		float max_x, max_y;
 		// convert angle to radiant (angle * 2 * PI) / 360
 		const float radians = angle * boost::math::constants::pi<float>() / 180;
-		cosine = cos(radians);
-		sine   = sin(radians);
+		cosine = std::cos(radians);
+		sine   = std::sin(radians);
 		// calculate the size of the dst image
 		src_w = surf->w * zoom;
 		src_h = surf->h * zoom;
