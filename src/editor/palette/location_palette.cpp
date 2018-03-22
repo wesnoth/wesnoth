@@ -108,7 +108,7 @@ public:
 		id_ = id;
 		bool is_number = std::find_if(id.begin(), id.end(), [](char c) { return !std::isdigit(c); }) == id.end();
 		if (is_number) {
-			desc_ = vgettext("Player $side_num", utils::string_map{ {"side_num", id} });
+			desc_ = VGETTEXT("Player $side_num", utils::string_map{ {"side_num", id} });
 		}
 		else {
 			desc_ = "";

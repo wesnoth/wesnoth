@@ -597,7 +597,7 @@ bool map_context::save_scenario()
 	} catch(filesystem::io_exception& e) {
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
-		const std::string msg = vgettext("Could not save the scenario: $msg", symbols);
+		const std::string msg = VGETTEXT("Could not save the scenario: $msg", symbols);
 
 		throw editor_map_save_exception(msg);
 	}
@@ -639,7 +639,7 @@ bool map_context::save_map()
 	} catch(filesystem::io_exception& e) {
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
-		const std::string msg = vgettext("Could not save the map: $msg", symbols);
+		const std::string msg = VGETTEXT("Could not save the map: $msg", symbols);
 
 		throw editor_map_save_exception(msg);
 	}

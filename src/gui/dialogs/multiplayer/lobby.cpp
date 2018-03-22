@@ -404,7 +404,7 @@ void mp_lobby::update_gamelist_diff()
 void mp_lobby::update_gamelist_header()
 {
 #ifndef GUI2_EXPERIMENTAL_LISTBOX
-	const std::string games_string = vgettext("Games: showing $num_shown out of $num_total", {
+	const std::string games_string = VGETTEXT("Games: showing $num_shown out of $num_total", {
 		{"num_shown", std::to_string(lobby_info_.games_visibility().count())},
 		{"num_total", std::to_string(lobby_info_.games().size())}
 	});

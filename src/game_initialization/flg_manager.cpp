@@ -213,7 +213,7 @@ void flg_manager::resolve_random(randomness::mt_rng& rng, const std::vector<std:
 		}
 
 		if(nonrandom_leaders.empty()) {
-			throw config::error(vgettext(
+			throw config::error(VGETTEXT(
 				"Unable to find a leader type for faction $faction", {{"faction", (*current_faction_)["name"].str()}}));
 		} else {
 			const int lchoice = rng.get_next_random() % nonrandom_leaders.size();
@@ -237,7 +237,7 @@ void flg_manager::resolve_random(randomness::mt_rng& rng, const std::vector<std:
 			const int gchoice = rng.get_next_random() % nonrandom_genders.size();
 			current_gender_ = nonrandom_genders[gchoice];
 		} else {
-			throw config::error(vgettext("Cannot obtain genders for invalid leader $leader", {{"leader", current_leader_}}));
+			throw config::error(VGETTEXT("Cannot obtain genders for invalid leader $leader", {{"leader", current_leader_}}));
 		}
 	}
 }

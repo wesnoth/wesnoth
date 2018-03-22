@@ -55,7 +55,7 @@ window* build(const builder_window::window_resolution* definition)
 
 	for(const auto& lg : definition->linked_groups) {
 		if(win->has_linked_size_group(lg.id)) {
-			t_string msg = vgettext("Linked '$id' group has multiple definitions.", {{"id", lg.id}});
+			t_string msg = VGETTEXT("Linked '$id' group has multiple definitions.", {{"id", lg.id}});
 
 			FAIL(msg);
 		}

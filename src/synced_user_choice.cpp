@@ -323,7 +323,7 @@ void user_choice_manager::update_local_choice()
 			}
 		}
 	}
-	wait_message_ = vgettext("waiting for $desc from side(s) $sides", {std::make_pair("desc", uch_.description()), std::make_pair("sides", sides_str)});
+	wait_message_ = VGETTEXT("waiting for $desc from side(s) $sides", {std::make_pair("desc", uch_.description()), std::make_pair("sides", sides_str)});
 	if(local_choice_prev != local_choice_) {
 		changed_event_.notify_observers();
 	}

@@ -105,7 +105,7 @@ void mp_change_control::pre_show(window& window)
 		std::map<std::string, string_map> data;
 		string_map item;
 
-		std::string side_str = vgettext("Side $side", {{"side", std::to_string(side)}});
+		std::string side_str = VGETTEXT("Side $side", {{"side", std::to_string(side)}});
 		side_str = font::span_color(team::get_side_color(side)) + side_str + "</span>";
 
 		item["id"] = (formatter() << "side_" << side).str();

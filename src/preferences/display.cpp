@@ -162,7 +162,7 @@ void show_wesnothd_server_search()
 		!old_path.empty() && filesystem::is_directory(old_path)
 		? old_path : filesystem::get_exe_dir();
 
-	const std::string msg = vgettext(
+	const std::string msg = VGETTEXT(
 			  "The <b>$filename</b> server application provides multiplayer server functionality and is required for hosting local network games. It will normally be found in the same folder as the game executable.", {{"filename", filename}});
 
 	gui2::dialogs::file_dialog dlg;

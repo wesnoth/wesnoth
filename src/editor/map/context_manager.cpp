@@ -907,7 +907,7 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 					symbols["map_data"] = get_map_context().get_map_data_key();
 					gui2::show_transient_message(_("Map loaded from scenario"),
 						//TODO: msg is already translated does vgettext make sense?
-						vgettext(msg.c_str(), symbols));
+						VGETTEXT(msg.c_str(), symbols));
 				}
 			}
 		}
