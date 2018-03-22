@@ -402,7 +402,7 @@ void render_minimap(texture& tex, const gamemap& map, const team* vw, const std:
 						color_t col(0, 0, 0, 0);
 
 						auto it = game_config::team_rgb_range.find(terrain_info.id());
-						if(it == game_config::team_rgb_range.end()) {
+						if(it != game_config::team_rgb_range.end()) {
 							col = it->second.rep();
 						}
 
