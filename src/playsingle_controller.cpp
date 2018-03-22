@@ -501,10 +501,14 @@ void playsingle_controller::linger()
 	LOG_NG << "ending end-of-scenario linger\n";
 }
 
+#if 0
 void playsingle_controller::end_turn_enable(bool enable)
 {
 	//gui_->enable_menu("endturn", enable);
 }
+#else
+void playsingle_controller::end_turn_enable(bool) {}
+#endif
 
 void playsingle_controller::after_human_turn()
 {
