@@ -745,7 +745,7 @@ void preferences_dialog::post_build(window& window)
 
 	std::vector<config> hotkey_category_entries;
 	for(const auto& name : cat_names_) {
-		hotkey_category_entries.emplace_back(config {"label", name, "checkbox", false});
+		hotkey_category_entries.emplace_back("label", name, "checkbox", false);
 	}
 
 	multimenu_button& hotkey_menu = find_widget<multimenu_button>(&window, "hotkey_category_menu", false);

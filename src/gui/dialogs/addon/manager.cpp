@@ -333,7 +333,7 @@ void addon_manager::pre_show(window& window)
 
 	std::vector<config> status_filter_entries;
 	for(const auto& f : status_filter_types_) {
-		status_filter_entries.emplace_back(config {"label", t_string(f.second, GETTEXT_DOMAIN)});
+		status_filter_entries.emplace_back("label", t_string(f.second, GETTEXT_DOMAIN));
 	}
 
 	status_filter.set_values(status_filter_entries);
@@ -343,7 +343,7 @@ void addon_manager::pre_show(window& window)
 
 	std::vector<config> type_filter_entries;
 	for(const auto& f : type_filter_types_) {
-		type_filter_entries.emplace_back(config {"label", t_string(f.second, GETTEXT_DOMAIN), "checkbox", false});
+		type_filter_entries.emplace_back("label", t_string(f.second, GETTEXT_DOMAIN), "checkbox", false);
 	}
 
 	type_filter.set_values(type_filter_entries);

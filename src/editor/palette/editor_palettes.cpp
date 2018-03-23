@@ -62,10 +62,10 @@ void editor_palette<Item>::expand_palette_groups_menu(std::vector<config>& items
 			img += ".png";
 		}
 
-		groups.emplace_back(config {
+		groups.emplace_back(
 			"label", groupname,
-			"icon", img,
-		});
+			"icon", img
+		);
 	}
 
 	items.insert(pos, groups.begin(), groups.end());
