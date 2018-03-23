@@ -401,7 +401,7 @@ namespace
 			// TODO: improve message and mark translatable.
 			sbuilder << "The game detected the use of a debug command, maybe another player is cheating";
 			sbuilder << "\n\n" << "details:" << "\n\n" << message;
-			savegame::oos_savegame save(controller.gamestate(), ignore);
+			savegame::oos_savegame save(controller.get_saved_game(), ignore);
 			save.save_game_interactive(sbuilder.str(), savegame::savegame::YES_NO); // can throw quit_game_exception
 		}
 		else {
