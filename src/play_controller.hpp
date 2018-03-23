@@ -272,6 +272,7 @@ public:
 		~scoped_savegame_snapshot();
 		const play_controller& controller_;
 	};
+	saved_game& get_saved_game() { return saved_game_; }
 protected:
 	friend struct scoped_savegame_snapshot;
 	void play_slice_catch();
