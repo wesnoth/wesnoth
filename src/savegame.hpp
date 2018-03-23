@@ -287,17 +287,6 @@ private:
 	bool& ignore_;
 };
 
-class mp_debug_savegame : public ingame_savegame
-{
-public:
-	mp_debug_savegame(saved_game& gamestate, bool& ignore);
-
-private:
-	/** Display the save game dialog. */
-	virtual int show_save_dialog(const std::string& message, DIALOG_TYPE dialog_type) override;
-	bool& ignore_;
-};
-
 /** Class for start-of-scenario saves */
 class scenariostart_savegame : public savegame
 {
