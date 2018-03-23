@@ -32,6 +32,7 @@
 #include "units/helper.hpp"
 #include "recall_list_manager.hpp"
 #include "resources.hpp"
+#include "savegame.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "formula/string_utils.hpp"
 #include "units/types.hpp"
@@ -396,8 +397,12 @@ namespace
 		
 		if(show_long_message && !ignore) {
 			play_controller::scoped_savegame_snapshot snapshot(controller);
-			auto& gamestate = controller.gamestate();
-			//TODO: implement by copying oos_savegame
+			std::stringstream message;
+			// TODO: improve message and mark translatable.
+			message << "The game detected the use of a debug command, maybe another player is cheating";
+			message << "\n\n" << "details:" << "\n\n" << message;
+			savegame::oos_savegame save(controller.gamestate(), ignore);
+			save.save_game_interactive(message.str(), savegame::savegame::YES_NO); // can throw quit_game_exception
 		}
 		else {
 			utils::string_map symbols;
