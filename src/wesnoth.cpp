@@ -506,7 +506,6 @@ static void init_locale()
 	setlocale(LC_ALL, "English");
 #else
 	std::setlocale(LC_ALL, "C");
-	translation::init();
 #endif
 
 	const std::string& intl_dir = filesystem::get_intl_dir();
