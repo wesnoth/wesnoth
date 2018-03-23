@@ -339,7 +339,7 @@ void controller_base::show_menu(
 		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(id);
 
 		if(cmd_exec->can_execute_command(command) && (!context_menu || in_context_menu(command.id))) {
-			items.emplace_back(config{"id", id});
+			items.emplace_back("id", id);
 		}
 	}
 

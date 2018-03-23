@@ -504,7 +504,7 @@ theme::menu::menu(const config& cfg)
 	, items_()
 {
 	for(const auto& item : utils::split(cfg["items"])) {
-		items_.emplace_back(config {"id", item});
+		items_.emplace_back("id", item);
 	}
 
 	if(cfg["auto_tooltip"].to_bool() && tooltip_.empty() && items_.size() == 1) {
