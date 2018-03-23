@@ -94,7 +94,7 @@ void editor_controller::init_gui()
 {
 	gui_->change_display_context(&get_current_map_context());
 	preferences::set_preference_display_settings();
-	gui_->add_redraw_observer(std::bind(&editor_controller::display_redraw_callback, this, _1));
+	//gui_->add_redraw_observer(std::bind(&editor_controller::display_redraw_callback, this, _1));
 	floating_label_manager_.reset(new font::floating_label_context());
 	gui().set_draw_coordinates(preferences::editor::draw_hex_coordinates());
 	gui().set_draw_terrain_codes(preferences::editor::draw_terrain_codes());

@@ -139,7 +139,6 @@ display::display(const display_context* dc,
 	, drawn_hexes_(0)
 	, idle_anim_(preferences::idle_anim())
 	, idle_anim_rate_(1.0)
-	, redraw_observers_()
 	, draw_coordinates_(false)
 	, draw_terrain_codes_(false)
 	, draw_num_of_bitmaps_(false)
@@ -2145,14 +2144,6 @@ void display::draw()
 	// TODO: what dis?
 	// events::raise_volatile_draw_event();
 	// events::raise_volatile_undraw_event();
-
-	// Call any redraw observers.
-	// FIXME: makes the editor slow.
-#if 0
-	for(std::function<void(display&)> f : redraw_observers_) {
-		f(*this);
-	}
-#endif
 
 	// Execute any post-draw actions from derived classes.
 	post_draw();

@@ -495,18 +495,6 @@ public:
 	/** Capture a (map-)screenshot into a surface. */
 	surface screenshot(bool map_screenshot = false);
 
-	/** Adds a redraw observer, a function object to be called when redraw_everything is used */
-	void add_redraw_observer(std::function<void(display&)> f)
-	{
-		redraw_observers_.push_back(f);
-	}
-
-	/** Clear the redraw observers */
-	void clear_redraw_observers()
-	{
-		redraw_observers_.clear();
-	}
-
 	theme& get_theme()
 	{
 		return theme_;
@@ -1036,8 +1024,6 @@ private:
 
 	bool idle_anim_;
 	double idle_anim_rate_;
-
-	std::vector<std::function<void(display&)>> redraw_observers_;
 
 	/** Debug flag - overlay x,y coords on tiles */
 	bool draw_coordinates_;
