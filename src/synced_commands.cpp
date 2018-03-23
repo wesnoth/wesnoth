@@ -389,11 +389,22 @@ namespace
 {
 	void debug_notification(const char* message)
 	{
-		utils::string_map symbols;
-		symbols["player"] = resources::controller->current_team().current_player();
-		display::announce_options announce_options;
-		announce_options.lifetime = 250;
-		display::get_singleton()->announce(VGETTEXT(message, symbols), font::NORMAL_COLOR, announce_options);
+		auto& controller = *resources::controller;
+		auto& current_team = controller.current_team();
+		static bool ignore = false;
+		bool show_long_message = controller.is_replay() || !current_team.is_local();
+		
+		if(show_long_message && !ignore) {
+			play_controller::scoped_savegame_snapshot snapshot(controller);
+			auto& gamestate = controller.gamestate();
+			//TODO: implement by copying oos_savegame
+		}
+		else {
+			utils::string_map symbols;
+			symbols["player"] = resources::controller->current_team().current_player();
+			display::announce_options announce_options;
+			display::get_singleton()->announce(VGETTEXT(message, symbols), font::NORMAL_COLOR, announce_options);
+		}
 	}
 }
 SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_handler*/)
