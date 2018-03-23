@@ -74,8 +74,6 @@ namespace translation
 
 	void set_language(const std::string& language, const std::vector<std::string>* alternates);
 
-	void init();
-
 	/** Case-sensitive lexicographical comparison. */
 	int compare(const std::string& s1,const std::string& s2);
 

@@ -438,10 +438,6 @@ int icompare(const std::string& s1, const std::string& s2)
 #endif
 }
 
-void init()
-{
-}
-
 std::string strftime(const std::string& format, const std::tm* time)
 {
 	std::basic_ostringstream<char> dummy;
