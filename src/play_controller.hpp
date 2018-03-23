@@ -266,13 +266,13 @@ public:
 	virtual void send_to_wesnothd(const config&, const std::string& = "unknown") const { }
 	virtual bool receive_from_wesnothd(config&) const { return false; }
 	void show_objectives() const;
-protected:
 	struct scoped_savegame_snapshot
 	{
 		scoped_savegame_snapshot(const play_controller& controller);
 		~scoped_savegame_snapshot();
 		const play_controller& controller_;
 	};
+protected:
 	friend struct scoped_savegame_snapshot;
 	void play_slice_catch();
 	bool have_keyboard_focus() override;
