@@ -397,12 +397,12 @@ namespace
 		
 		if(show_long_message && !ignore) {
 			play_controller::scoped_savegame_snapshot snapshot(controller);
-			std::stringstream message;
+			std::stringstream sbuilder;
 			// TODO: improve message and mark translatable.
-			message << "The game detected the use of a debug command, maybe another player is cheating";
-			message << "\n\n" << "details:" << "\n\n" << message;
+			sbuilder << "The game detected the use of a debug command, maybe another player is cheating";
+			sbuilder << "\n\n" << "details:" << "\n\n" << message;
 			savegame::oos_savegame save(controller.gamestate(), ignore);
-			save.save_game_interactive(message.str(), savegame::savegame::YES_NO); // can throw quit_game_exception
+			save.save_game_interactive(sbuilder.str(), savegame::savegame::YES_NO); // can throw quit_game_exception
 		}
 		else {
 			utils::string_map symbols;
