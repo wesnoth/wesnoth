@@ -93,33 +93,9 @@ bool dispatcher::has_event(const ui_event event, const event_queue_type event_ty
 			event, dispatcher_implementation::has_handler(event_type, *this));
 }
 
-/**
- * Helper class to do a runtime test whether an event is in a set.
- *
- * The class is supposed to be used in combination with find function. This
- * function is used in the fire functions to make sure an event is send to the
- * proper handler. If not there will be a run-time assertion failure. This
- * makes developing and testing the code easier, a wrong handler terminates
- * Wesnoth instead of silently not working.
- */
-class event_in_set
-{
-public:
-	/**
-	 * If found we get executed to set the result.
-	 *
-	 * Since we need to return true if found we always return true.
-	 */
-	template <class T>
-	bool oper(ui_event)
-	{
-		return true;
-	}
-};
-
 bool dispatcher::fire(const ui_event event, widget& target)
 {
-	assert(find<set_event>(event, event_in_set()));
+	assert(is_general_event(event));
 	switch(event) {
 		case LEFT_BUTTON_DOUBLE_CLICK:
 			return fire_event_double_click<LEFT_BUTTON_CLICK, LEFT_BUTTON_DOUBLE_CLICK,
@@ -140,7 +116,7 @@ bool dispatcher::fire(const ui_event event, widget& target)
 
 bool dispatcher::fire(const ui_event event, widget& target, const point& coordinate)
 {
-	assert(find<set_event_mouse>(event, event_in_set()));
+	assert(is_mouse_event(event));
 	return fire_event<signal_mouse_function>(event, this, &target, coordinate);
 }
 
@@ -150,38 +126,38 @@ bool dispatcher::fire(const ui_event event,
 		const SDL_Keymod modifier,
 		const utf8::string& unicode)
 {
-	assert(find<set_event_keyboard>(event, event_in_set()));
+	assert(is_keyboard_event(event));
 	return fire_event<signal_keyboard_function>(event, this, &target, key, modifier, unicode);
 }
 
 bool dispatcher::fire(const ui_event event, widget& target, const SDL_Event& sdlevent)
 {
-	assert(find<set_event_raw_event>(event, event_in_set()));
+	assert(is_raw_event(event));
 	return fire_event<signal_raw_event_function>(event, this, &target, sdlevent);
 }
 
 bool dispatcher::fire(const ui_event event, widget& target, const std::string& text, int32_t start, int32_t len)
 {
-	assert(find<set_event_text_input>(event, event_in_set()));
+	assert(is_text_input_event(event));
 	return fire_event<signal_text_input_function>(event, this, &target, text, start, len);
 }
 
 bool dispatcher::fire(const ui_event event, widget& target, const point& pos, const point& distance)
 {
-	assert(find<set_event_touch>(event, event_in_set()));
+	assert(is_touch_event(event));
 	return fire_event<signal_touch_function>(event, this, &target, pos, distance);
 }
 
 bool dispatcher::fire(const ui_event event, widget& target, void*)
 {
-	assert(find<set_event_notification>(event, event_in_set()));
+	assert(is_notification_event(event));
 	return fire_event<signal_notification_function>(event, this, &target, nullptr);
 }
 
 // TODO: is there any reason msg isn't a const reference?
 bool dispatcher::fire(const ui_event event, widget& target, message& msg)
 {
-	assert(find<set_event_message>(event, event_in_set()));
+	assert(is_message_event(event));
 	return fire_event<signal_message_function>(event, this, &target, msg);
 }
 
