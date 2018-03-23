@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 21:30+0300\n"
-"PO-Revision-Date: 2018-02-26 12:38+0100\n"
+"PO-Revision-Date: 2018-03-23 09:13+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -3479,6 +3479,7 @@ msgstr "Consola de Lua"
 msgid "Map Generator Settings"
 msgstr "Configuración del generador de mapas"
 
+# Jugadores: (queda demasiado largo y se descuadra)
 #. [grid]
 #. [label]
 #: data/gui/window/generator_settings.cfg:105
@@ -3487,7 +3488,7 @@ msgstr "Configuración del generador de mapas"
 #: data/gui/window/mp_create_game/small_resolution.cfg:147
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:137
 msgid "Players:"
-msgstr "Jugadores:"
+msgstr "Rivales:"
 
 # Cantidad sounds clearer than number.
 #. [grid]
@@ -4092,10 +4093,12 @@ msgstr "Opciones personalizadas"
 msgid "Game Settings"
 msgstr "Ajustes de la partida"
 
+# Cualquiera (queda demasiado largo y se descuadra)
+# Aún así hace falta un tipo de letra más pequeño para que cuadre con "Varios"
 #. [slider]: id=num_players
 #: data/gui/window/mp_create_game.cfg:701
 msgid "Any"
-msgstr "Cualquiera"
+msgstr "Varios"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:834
@@ -5337,10 +5340,8 @@ msgid "feature^Experimental OpenMP support"
 msgstr "Soporte OpenMP experimental"
 
 #: src/build_info.cpp:268
-#, fuzzy
-#| msgid "feature^PNG screenshots"
 msgid "feature^JPG screenshots"
-msgstr "Capturas de pantalla PNG"
+msgstr "Capturas de pantalla JPG"
 
 #: src/build_info.cpp:275
 msgid "feature^Lua console completion"

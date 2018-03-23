@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 21:31+0300\n"
-"PO-Revision-Date: 2018-02-26 12:30+0100\n"
+"PO-Revision-Date: 2018-03-23 09:14+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth Spanish translation\n"
 "Language: es\n"
@@ -1508,10 +1508,8 @@ msgstr ""
 
 #. [else]
 #: data/core/macros/deprecated-utils.cfg:43
-#, fuzzy
-#| msgid "This unit has been renamed to: {NEW_NAME}"
 msgid "This unit has been renamed to: "
-msgstr "Se ha renombrado a esta unidad como: {NEW_NAME}"
+msgstr "Se ha renombrado a esta unidad como: "
 
 #: data/core/macros/deprecated-utils.cfg:95
 msgid "<small>(early finish bonus)</small>"
@@ -2712,22 +2710,6 @@ msgstr ""
 
 #. Generator for male dunefolk human names
 #: data/core/macros/names.cfg:145
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{name_mid}\n"
-#| "name_mid={prefix}{suffix}|{name_short}\n"
-#| "name_long={prefix}{suffix}|{prefix}{centre}{suffix}\n"
-#| "name_short=Din|Sif|Din|Taj|Sud|Ali|Lut|Nuh|Qays|Nimr|Jad|Bushr|Lut|Maʿd|"
-#| "Nur|Fadl\n"
-#| "prefix=Ab|Bas|Fat|Gha|Al|Ba|Ja|Ha|Mu|Ra|Raz|Abi|Am|La|ʿAj|Ala|ʿAk|Fa|Du|"
-#| "Im|Ju|Mun|Ma|Ni|Ji|Mu|Lab|Luf|Mih|Mi|Qu|Tal|Ta|Tha|Za|Zi|Yas|Wa|Su|Qa|"
-#| "ʿIkri|Lu|Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
-#| "suffix=af|al|lih|bair|sur|bi|lah|at|sim|ma|ih|yl|iq|raj|mam|man|ya|zid|"
-#| "riya|ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|mal|"
-#| "kib\n"
-#| "connector= al-| bin | ibn \n"
-#| "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 msgid ""
 "\n"
 "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{name_mid}\n"
@@ -2754,39 +2736,11 @@ msgstr ""
 "Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
 "suffix=af|al|lih|bair|sur|bi|lah|at|sim|ma|ih|yl|iq|raj|mam|man|ya|zid|riya|"
 "ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|mal|kib\n"
-"connector= al-| bin | ibn \n"
+"connector= al-| bin | ibn\n"
 "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 
 #. Generator for female dunefolk human names
 #: data/core/macros/names.cfg:156
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{surname}\n"
-#| "name_mid={prefix}{suffix}|{name_short}\n"
-#| "surname={name_mid_male}|{name_mid}|{name_mid_male}\n"
-#| "name_long={prefix}{suffix}|{prefix}{centre}{suffix}\n"
-#| "name_short=Afaf|Aida|Alya|Arij|Arwa|Asma|Asra|Azra|Dua|Fajr|Hala|Hana|"
-#| "Hiba|Inas|Isra|Lina|Mona|Muna|Nida|Nima|Nur|Rana|Rim|Ruba|Ruya|Ruwa|Sana|"
-#| "Sara|Suha|Tuba|Uzma|Zara\n"
-#| "prefix=Ab|Bas|Fat|Gha|Al|Ba|Ja|Ha|Mu|Ra|Raz|Abi|Am|La|ʿAj|Ala|ʿAk|Fa|Du|"
-#| "Im|Ju|Mun|Ma|Ni|Ji|Mu|Lab|Luf|Mih|Mi|Qu|Tal|Ta|Tha|Za|Zi|Yas|Wa|Su|Qa|"
-#| "ʿIkri|Lu|Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
-#| "suffix=a|ab|ad|ah|af|aj|al|am|an|ar|as|at|ay|az|da|een|ia|ij|in|ir|la|ma|"
-#| "mas|n|na|nab|ni|r|ra|raa|ran|rat|ul|ur|uz|wa|ya|yah|yam|za|zi\n"
-#| "connector= al-| ibna | bint \n"
-#| "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
-#| "\n"
-#| "These nonterminals are literally copied from the male names.\n"
-#| "name_mid_male={prefix_male}{suffix_male}|{name_short_male}\n"
-#| "name_short_male=Din|Sif|Din|Taj|Sud|Ali|Lut|Nuh|Qays|Nimr|Jad|Bushr|Lut|"
-#| "Maʿd|Nur|Fadl\n"
-#| "prefix_male=Ab|Bas|Fat|Gha|Al|Ba|Ja|Ha|Mu|Ra|Raz|Abi|Am|La|ʿAj|Ala|ʿAk|Fa|"
-#| "Du|Im|Ju|Mun|Ma|Ni|Ji|Mu|Lab|Luf|Mih|Mi|Qu|Tal|Ta|Tha|Za|Zi|Yas|Wa|Su|Qa|"
-#| "ʿIkri|Lu|Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
-#| "suffix_male=af|al|lih|bair|sur|bi|lah|at|sim|ma|ih|yl|iq|raj|mam|man|ya|"
-#| "zid|riya|ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|"
-#| "mal|kib\n"
 msgid ""
 "\n"
 "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{surname}\n"
@@ -2828,7 +2782,7 @@ msgstr ""
 "Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
 "suffix=a|ab|ad|ah|af|aj|al|am|an|ar|as|at|ay|az|da|een|ia|ij|in|ir|la|ma|mas|"
 "n|na|nab|ni|r|ra|raa|ran|rat|ul|ur|uz|wa|ya|yah|yam|za|zi\n"
-"connector= al-| ibna | bint \n"
+"connector= al-| ibna | bint\n"
 "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 "\n"
 "These nonterminals are literally copied from the male names.\n"
@@ -3927,6 +3881,7 @@ msgstr ""
 "\t\tmain={suffix}$base{!}\n"
 "\t"
 
+# Cambiamos el orden
 #. [village_naming]
 #: data/english.cfg:71
 msgid ""
@@ -3938,21 +3893,14 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tprefix=$lake{!}|$base{!}\n"
-"\t\tsuffix= de la Bahía| del Puerto\n"
-"\t\tmain={prefix}{suffix}\n"
+"\t\tsuffix=Bahía de |Puerto de \n"
+"\t\tmain={suffix}{prefix}\n"
 "\t"
 
 # Accidentes geográficos en corrientes de agua
+# Cambiamos el orden
 #. [village_naming]
 #: data/english.cfg:76
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\t\tprefix=$base{!}|$river{!}\n"
-#| "\t\triver=$river{!}|River\n"
-#| "\t\tsuffix=ham|ford|cross| on {river} \n"
-#| "\t\tmain={prefix}{suffix}\n"
-#| "\t"
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$river{!}\n"
@@ -3963,9 +3911,9 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tprefix=$river{!}|$base{!}\n"
-"\t\triver=$river{!}|del Río\n"
-"\t\tsuffix= del Lecho| del Vado| del Cruce| {river} \n"
-"\t\tmain={prefix}{suffix}\n"
+"\t\triver=$river{!}| del Río\n"
+"\t\tsuffix=Lecho de |Vado de |Cruce de | {river} \n"
+"\t\tmain={suffix}{prefix}\n"
 "\t"
 
 # Cruces para corrientes de agua
@@ -3980,8 +3928,8 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tprefix=$base{!}|$river{!}|$bridge{!}\n"
-"\t\tsuffix= del Puente| del Vado| del Lecho| del Paso\n"
-"\t\tmain={prefix}{suffix}\n"
+"\t\tsuffix=Puente de |Vado de |Lecho de |Paso de \n"
+"\t\tmain={suffix}{prefix}\n"
 "\t"
 
 # Palabras inventadas a discreción. Digamos que solo campo está traducida.
@@ -3994,8 +3942,8 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tsuffix= del Lecho| del Paso| del Campo\n"
-"\t\tmain=$base{!}{suffix}\n"
+"\t\tsuffix=Lecho de |Paso de |Campo de \n"
+"\t\tmain={suffix}$base{!}\n"
 "\t"
 
 # Tipos variados de bosques
@@ -4010,8 +3958,8 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tprefix=$base{!}|$forest{!}\n"
-"\t\tsuffix= de la Espesura| de la Floresta| de la Arboleda| del Bosque\n"
-"\t\tmain={prefix}{suffix}\n"
+"\t\tsuffix=Espesura de |Floresta de |Arboleda de |Bosque de \n"
+"\t\tmain={suffix}{prefix}\n"
 "\t"
 
 # Aquí los ingleses usan una serie de sufijos para crear nombres aleatorios que en castellano no tienen ningún significado. Los que lo tienen quedan muy incoherentes. Así que lo que queda feo en el mapa se cambia por otra palabra más o menos adecuada. Muchas de las palabras en inglés se refieren a cementerios, tumbas, restos y otras desgracias que en castellano quedan fatal si se traducen directamente.
@@ -4024,8 +3972,8 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tsuffix= del Pozo| del Túmulo| de las Flores| de la Colina| de la Cima\n"
-"\t\tmain=$base{!}{suffix}\n"
+"\t\tsuffix=Pozo de |Túmulo de |Floresta de |Colina de |Cima de \n"
+"\t\tmain={suffix}$base{!}\n"
 "\t"
 
 #. [village_naming]
@@ -4039,8 +3987,8 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tprefix=$base{!}|$mountain{!}\n"
-"\t\tsuffix= del Monte| del Desfiladero| del Túmulo| del Foso\n"
-"\t\tmain={prefix}{suffix}\n"
+"\t\tsuffix=Monte de |Desfiladero de |Túmulo de |Foso de \n"
+"\t\tmain={suffix}{prefix}\n"
 "\t"
 
 # Los túmulos y tumbas, si resultan excesivos se podrían sustituir por cualquier otra cosa más neutral: flores, cabras, estrellas, etc.
@@ -4053,9 +4001,9 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tsuffix= del Foso| del Túmulo| de la Tumba| del Monte| de la Montaña| del "
-"Desfiladero| del Barranco\n"
-"\t\tmain=$base{!}{suffix}\n"
+"\t\tsuffix=Foso de |Túmulo de |Tumba de |Monte de |Montaña de |Desfiladero "
+"de |Barranco de \n"
+"\t\tmain={suffix}$base{!}\n"
 "\t"
 
 # Accidentes geográficos en los caminos. Bury en general es un cementerio así que se cambia por algo más adecuado en castellano. Lo mismo con cualquier otra palabra intraducible o poco útil en castellano. Cambiamos el orden de las palabras para castellanizarlo.
@@ -4086,8 +4034,8 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tprefix=$base{!}|$swamp{!}\n"
-"\t\tsuffix= del Túmulo| del Foso| de la Tumba\n"
-"\t\tmain={prefix}{suffix}\n"
+"\t\tsuffix=Túmulo de |Foso de |Tumba de \n"
+"\t\tmain={suffix}{prefix}\n"
 "\t"
 
 #. [server]
@@ -4139,7 +4087,7 @@ msgstr "No"
 #: data/gui/window/screenshot_notification.cfg:96
 #: src/hotkey/command_executor.cpp:599
 msgid "Screenshot"
-msgstr "Imagen de pantalla"
+msgstr "Captura de pantalla"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -4149,29 +4097,24 @@ msgstr "Nombre:"
 
 #. [label]
 #: data/gui/window/screenshot_notification.cfg:141
-#, fuzzy
-#| msgid "Size: "
 msgid "Size:"
-msgstr "Tamaño: "
+msgstr "Tamaño:"
 
 #. [button]: id=browse_dir
 #: data/gui/window/screenshot_notification.cfg:187
-#, fuzzy
-#| msgid "Screenshot"
 msgid "Screenshots..."
-msgstr "Imagen de pantalla"
+msgstr "Capturas de pantalla..."
 
 #. [button]: id=browse_dir
 #: data/gui/window/screenshot_notification.cfg:189
 msgid "Browse the screenshots folder using a file manager"
 msgstr ""
+"Visualiza la carpeta de capturas de pantalla utilizando un gestor de ficheros"
 
 #. [button]: id=save
 #: data/gui/window/screenshot_notification.cfg:203
-#, fuzzy
-#| msgid "Saved"
 msgid "Save"
-msgstr "Guardado"
+msgstr "Guardar"
 
 #. [button]: id=ok
 #: data/gui/window/screenshot_notification.cfg:216
@@ -4191,12 +4134,12 @@ msgstr "DejaVu Sans Mono"
 #. [fonts]
 #: data/hardwired/fonts.cfg:30
 msgid "Lato Light"
-msgstr ""
+msgstr "Lato Light"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:31
 msgid "Oldania ADF Std"
-msgstr ""
+msgstr "Oldania ADF Std"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:36
@@ -6050,10 +5993,8 @@ msgid "$elem has been deprecated and may be removed at any time."
 msgstr "$elem ha sido excluido y podría ser borrado en cualquier momento."
 
 #: src/deprecation.cpp:56
-#, fuzzy
-#| msgid "$elem has been deprecated and may be removed in version $version."
 msgid "$elem has been deprecated and will be removed in version $version."
-msgstr "$elem ha sido excluido y podría ser eliminado en la versión $version."
+msgstr "$elem ha sido excluido y será eliminado en la versión $version."
 
 #: src/deprecation.cpp:61
 msgid "$elem has been deprecated and removed."
