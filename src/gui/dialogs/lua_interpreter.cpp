@@ -231,7 +231,7 @@ public:
 #endif
 	void add_to_history (const std::string& str) {
 		prefix_ = "";
-		(void) str;
+		UNUSED(str);
 #ifdef HAVE_HISTORY
 		add_history(str.c_str());
 #endif
@@ -293,7 +293,7 @@ public:
 
 		// reset, set history to the end and prefix_ to empty, and return the current prefix_ for the user to edit
 		end_of_history_ = true;
-		(void) direction;
+		UNUSED(direction);
 		std::string temp = prefix_;
 		prefix_ = "";
 		return temp;
@@ -357,7 +357,7 @@ public:
 		cmd = expansion;
 		free(expansion);
 #endif
-		(void) cmd;
+		UNUSED(cmd);
 		return false;
 	}
 };

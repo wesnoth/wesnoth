@@ -1517,7 +1517,7 @@ int game_lua_kernel::impl_end_level_data_set(lua_State* L)
 static int impl_end_level_data_collect(lua_State* L)
 {
 	end_level_data* data = static_cast<end_level_data*>(lua_touserdata(L, 1));
-	(void)data; // Suppress an erroneous MSVC warning (a destructor call doesn't count as a reference)
+	UNUSED(data); // Suppress an erroneous MSVC warning (a destructor call doesn't count as a reference)
 	data->~end_level_data();
 	return 0;
 }

@@ -608,8 +608,8 @@ DEFINE_WFL_FUNCTION(exp, 1, 1)
 
 DEFINE_WFL_FUNCTION(pi, 0, 0)
 {
-	(void)variables;
-	(void)fdb;
+	UNUSED(variables);
+	UNUSED(fdb);
 	return variant(pi<double>(), variant::DECIMAL_VARIANT);
 }
 
