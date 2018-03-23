@@ -3,6 +3,8 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog.md
 
 ## Version 1.15.0-dev
+ ### Language and i18n
+   * Updated translations: Spanish.
 
 
 ## Version 1.13.12

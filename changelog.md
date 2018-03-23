@@ -3,6 +3,7 @@
    * Fixed many cases of interpolated strings in the engine possibly having
      their translations retrieved from the wrong textdomain and falling back
      to the English original if that failed (PR #2711, bug #2709).
+   * Updated translations: Spanish
 
 ## Version 1.13.12
  ### Security fixes
