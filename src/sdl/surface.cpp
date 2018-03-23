@@ -37,67 +37,6 @@ void surface::free_surface()
 	}
 }
 
-surface_restorer::surface_restorer()
-	: target_(nullptr)
-	, rect_(sdl::empty_rect)
-	, surface_(nullptr)
-{
-}
-
-surface_restorer::surface_restorer(CVideo* target, const SDL_Rect& rect)
-	: target_(target)
-	, rect_(rect)
-	, surface_(nullptr)
-{
-	update();
-}
-
-surface_restorer::~surface_restorer()
-{
-	restore();
-}
-
-void surface_restorer::restore(const SDL_Rect& dst) const
-{
-	if(surface_.null()) {
-		return;
-	}
-
-	SDL_Rect dst2 = sdl::intersect_rects(dst, rect_);
-	if(dst2.w == 0 || dst2.h == 0) {
-		return;
-	}
-
-	SDL_Rect src = dst2;
-	src.x -= rect_.x;
-	src.y -= rect_.y;
-	sdl_blit(surface_, &src, target_->getSurface(), &dst2);
-}
-
-void surface_restorer::restore() const
-{
-	if(surface_.null()) {
-		return;
-	}
-
-	SDL_Rect dst = rect_;
-	sdl_blit(surface_, nullptr, target_->getSurface(), &dst);
-}
-
-void surface_restorer::update()
-{
-	if(rect_.w <= 0 || rect_.h <= 0) {
-		surface_.assign(nullptr);
-	} else {
-		surface_.assign(::get_surface_portion(target_->getSurface(),rect_));
-	}
-}
-
-void surface_restorer::cancel()
-{
-	surface_.assign(nullptr);
-}
-
 bool operator<(const surface& a, const surface& b)
 {
 	return a.get() < b.get();
