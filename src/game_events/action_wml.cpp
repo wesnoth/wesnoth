@@ -711,7 +711,7 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 
 				for(std::vector<std::string>::iterator i=split_vector.begin(); i!=split_vector.end(); ++i)
 				{
-					data.emplace_back(config {key_name, *i});
+					data.emplace_back(key_name, *i);
 				}
 			}
 		}

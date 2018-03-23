@@ -181,7 +181,7 @@ void mp_create_game::pre_show(window& win)
 	//
 	std::vector<config> game_types;
 	for(level_type_info& type_info : level_types_) {
-		game_types.emplace_back(config {"label", type_info.second});
+		game_types.emplace_back("label", type_info.second);
 	}
 
 	if(game_types.empty()) {
@@ -249,7 +249,7 @@ void mp_create_game::pre_show(window& win)
 
 	std::vector<config> era_names;
 	for(const auto& era : create_engine_.get_const_extras_by_type(ng::create_engine::ERA)) {
-		era_names.emplace_back(config {"label", era->name, "tooltip", era->description});
+		era_names.emplace_back("label", era->name, "tooltip", era->description);
 	}
 
 	if(era_names.empty()) {

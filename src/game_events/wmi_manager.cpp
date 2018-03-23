@@ -130,7 +130,7 @@ void wmi_manager::get_items(const map_location& hex,
 				&& item->can_show(hex, gamedata, fc)) {
 			// Include this item.
 			items.push_back(item);
-			descriptions.emplace_back(config {"id", item->menu_text()});
+			descriptions.emplace_back("id", item->menu_text());
 		}
 	}
 }
