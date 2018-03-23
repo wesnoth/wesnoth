@@ -3,6 +3,7 @@
    * Fixed many cases of interpolated strings in the engine possibly having
      their translations retrieved from the wrong textdomain and falling back
      to the English original if that failed (PR #2711, bug #2709).
+   * Updated translations: Spanish
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
 
