@@ -137,7 +137,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalOptions>/SAFESEH:NO %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;libeay32.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng.lib;$(IntDir)liblua.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;libcrypto.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng.lib;$(IntDir)liblua.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\..\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>MSVCR90;MSVCRT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -177,7 +177,7 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
     <Link>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;libeay32.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng.lib;$(IntDir)liblua.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;libcrypto.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng.lib;$(IntDir)liblua.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\..\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -218,7 +218,7 @@
       <PreprocessorDefinitions>_MSC_VER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;libeay32.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng.lib;Debug\liblua.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;libcrypto.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng.lib;Debug\liblua.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)test.exe</OutputFile>
       <AdditionalLibraryDirectories>..\..\..\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -258,7 +258,7 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
     <Link>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;libeay32.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng.lib;Release\liblua.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;libcrypto.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng.lib;Release\liblua.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)test.exe</OutputFile>
       <AdditionalLibraryDirectories>..\..\..\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -305,7 +305,7 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
     <Link>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;libeay32.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng.lib;$(IntDir)liblua.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;libcrypto.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng.lib;$(IntDir)liblua.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\..\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
