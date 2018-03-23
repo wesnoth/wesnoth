@@ -15,6 +15,9 @@
 
 #pragma once
 
+// Need this to get the default GETTEXT_DOMAIN for VGETTEXT/VNGETTEXT
+#include "gettext.hpp"
+
 #include "serialization/string_utils.hpp"
 
 class variable_set;
