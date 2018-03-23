@@ -49,6 +49,8 @@
      MP game.
    * The Toggle Fullscreen hotkey now works everywhere.
  ### WML engine
+   * Leaderships abilities have now a [filter_weapon] filter for select the 
+     weapon to units affected by the leadership.
    * Fixed units shown with [move_units_fake] disappearing between steps
      (bug #1516).
    * [modify_side] now supports side_name
