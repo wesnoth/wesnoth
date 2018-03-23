@@ -1018,8 +1018,8 @@ int main(int argc, char** argv)
 #endif
 {
 #ifdef _WIN32
-	(void)argc;
-	(void)argv;
+	UNUSED(argc);
+	UNUSED(argv);
 
 	// windows argv is ansi encoded by default
 	std::vector<std::string> args =
