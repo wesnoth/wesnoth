@@ -1549,6 +1549,8 @@ private:
 	 * @param loc The location on which to resolve the ability
 	 */
 	bool ability_affects_self(const std::string& ability, const config& cfg, const map_location& loc) const;
+	
+	bool ability_affects_weapon(const std::string& ability,const config& cfg,const map_location& loc, const_attack_ptr weapon) const;
 
 public:
 	/** Get the unit formula manager. */
