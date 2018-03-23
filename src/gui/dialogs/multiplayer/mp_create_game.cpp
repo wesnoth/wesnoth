@@ -269,7 +269,9 @@ void mp_create_game::pre_show(window& win)
 	//
 	std::vector<config> rfm_options;
 	for(const auto& type : rfm_types_) {
-		rfm_options.emplace_back(config {"label", mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(type)});
+		rfm_options.emplace_back(config {"label",
+			translation::sgettext(mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(type).c_str())
+		});
 	};
 
 	// Manually insert tooltips. Need to find a better way to do this
