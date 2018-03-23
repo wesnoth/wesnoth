@@ -1479,6 +1479,13 @@ public:
 	{
 		return get_abilities(tag_name, loc_);
 	}
+	
+	unit_ability_list get_abilities(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon) const;
+
+	unit_ability_list get_abilities(const std::string& tag_name, const_attack_ptr weapon) const
+	{
+		return get_abilities(tag_name, loc_, weapon);
+	}
 
 	/**
 	 * Gets the names and descriptions of this unit's abilities.
