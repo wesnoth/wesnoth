@@ -41,7 +41,6 @@ CVideo* CVideo::singleton_ = nullptr;
 
 namespace
 {
-surface frameBuffer = nullptr;
 bool fake_interactive = false;
 }
 
@@ -421,12 +420,6 @@ std::vector<point> CVideo::get_available_resolutions(const bool include_current)
 	result.erase(std::unique(result.begin(), result.end()), result.end());
 
 	return result;
-}
-
-// TODO: REMOVE ASAP
-surface& CVideo::getSurface()
-{
-	return frameBuffer;
 }
 
 point CVideo::current_resolution()

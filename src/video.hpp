@@ -184,9 +184,6 @@ public:
 	/** Clear the screen contents */
 	void clear_screen();
 
-	/** Returns a reference to the framebuffer. */
-	surface& getSurface();
-
 	/**
 	 * Stop the screen being redrawn. Anything that happens while the updates are locked will
 	 * be hidden from the user's view.

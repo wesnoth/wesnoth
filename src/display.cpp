@@ -707,7 +707,8 @@ surface display::screenshot(bool map_screenshot)
 	if(!map_screenshot) {
 		// Use make_neutral_surface() to copy surface content
 		// TODO: convert to texture handling
-		return make_neutral_surface(video_.getSurface());
+		//return make_neutral_surface(video_.getSurface());
+		return surface(nullptr);
 	}
 
 	if(get_map().empty()) {

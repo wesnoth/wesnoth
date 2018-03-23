@@ -240,8 +240,6 @@ void widget::bg_update()
 
 void widget::bg_restore() const
 {
-	clip_rect_setter clipper(video().getSurface(), &clip_rect_, clip_);
-
 	if (needs_restore_) {
 		needs_restore_ = false;
 	}
@@ -249,7 +247,6 @@ void widget::bg_restore() const
 
 void widget::bg_restore(const SDL_Rect& rect) const
 {
-	clip_rect_setter clipper(video().getSurface(), &clip_rect_, clip_);
 }
 
 void widget::set_volatile(bool val)
@@ -265,9 +262,6 @@ void widget::draw()
 		return;
 
 	bg_restore();
-
-	clip_rect_setter clipper(video().getSurface(), &clip_rect_, clip_);
-
 	draw_contents();
 
 	set_dirty(false);
