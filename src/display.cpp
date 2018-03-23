@@ -114,7 +114,7 @@ display::display(const display_context* dc,
 	, diagnostic_label_(0)
 	, turbo_speed_(2)
 	, turbo_(false)
-	, map_labels_(new map_labels(0))
+	, map_labels_(new map_labels(nullptr))
 	, scroll_event_("scrolled")
 	, complete_redraw_event_("completely_redrawn")
 	, fps_counter_()
