@@ -182,7 +182,7 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 	turbo_speed_(2),
 	turbo_(false),
 	invalidateGameStatus_(true),
-	map_labels_(new map_labels(0)),
+	map_labels_(new map_labels(nullptr)),
 	reports_object_(&reports_object),
 	scroll_event_("scrolled"),
 	complete_redraw_event_("completely_redrawn"),

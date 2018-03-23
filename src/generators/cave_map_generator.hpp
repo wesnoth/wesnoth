@@ -45,7 +45,7 @@ private:
 			chamber()
 				: center()
 				, locs()
-				, items(0)
+				, items(nullptr)
 			{
 			}
 
