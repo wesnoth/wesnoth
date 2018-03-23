@@ -72,7 +72,7 @@ else
         exit $BUILD_RET
     fi
 
-# needed since docker returns the exit code of the final comman executed, so a failure needs to be returned if any unit tests fail
+# needed since docker returns the exit code of the final command executed, so a failure needs to be returned if any unit tests fail
     EXIT_VAL=0
 
     if [ "$WML_TESTS" == "true" ]; then
