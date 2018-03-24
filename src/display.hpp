@@ -57,6 +57,7 @@ class manager;
 #include "font/standard_colors.hpp"
 #include "image.hpp" //only needed for enums (!)
 #include "key.hpp"
+#include "map/hex_rect.hpp"
 #include "overlay.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/surface.hpp"
@@ -377,60 +378,6 @@ public:
 	 * @param loc                   The map location to look up.
 	 */
 	SDL_Point get_loc_drawing_origin(const map_location& loc) const;
-
-	/**
-	 * Rectangular area of hexes, allowing to decide how the top and bottom
-	 * edges handles the vertical shift for each parity of the x coordinate
-	 */
-	struct rect_of_hexes
-	{
-		int left;
-		int right;
-		int top[2]; // for even and odd values of x, respectively
-		int bottom[2];
-
-		/**  very simple iterator to walk into the rect_of_hexes */
-		struct iterator
-		{
-			iterator(const map_location& loc, const rect_of_hexes& rect)
-				: loc_(loc)
-				, rect_(rect)
-			{
-			}
-
-			/** increment y first, then when reaching bottom, increment x */
-			iterator& operator++();
-			bool operator==(const iterator& that) const
-			{
-				return that.loc_ == loc_;
-			}
-
-			bool operator!=(const iterator& that) const
-			{
-				return that.loc_ != loc_;
-			}
-
-			const map_location& operator*() const
-			{
-				return loc_;
-			}
-
-			typedef std::forward_iterator_tag iterator_category;
-			typedef map_location value_type;
-			typedef int difference_type;
-			typedef const map_location* pointer;
-			typedef const map_location& reference;
-
-		private:
-			map_location loc_;
-			const rect_of_hexes& rect_;
-		};
-
-		typedef iterator const_iterator;
-
-		iterator begin() const;
-		iterator end() const;
-	};
 
 	/** Return the rectangular area of hexes overlapped by r (r is in screen coordinates) */
 	const rect_of_hexes hexes_under_rect(const SDL_Rect& r) const;
