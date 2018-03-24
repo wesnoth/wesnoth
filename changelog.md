@@ -14,6 +14,8 @@
    * Fixed inability to deselect modifications in single-player
    * Fixed infinite loading screen when logging in with an invalid name
    * Made debug command notifications more noticeable
+   * Updated bundled Oldania font to version 1.007 (from 1.006).
+   * Added bold and italic Oldania font variant files.
 
 ## Version 1.13.12
  ### Security fixes
