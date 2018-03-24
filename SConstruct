@@ -179,7 +179,7 @@ if env['distcc']:
 
 if env['ccache']: env.Tool('ccache')
 
-boost_version = '1.50.0'
+boost_version = '1.56.0'
 
 
 Help("""Arguments may be a mixture of switches and targets in any order.
