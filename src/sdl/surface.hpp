@@ -100,25 +100,6 @@ private:
 
 bool operator<(const surface& a, const surface& b);
 
-struct surface_restorer
-{
-	surface_restorer();
-	surface_restorer(class CVideo* target, const SDL_Rect& rect);
-	~surface_restorer();
-
-	void restore() const;
-	void restore(const SDL_Rect& dst) const;
-	void update();
-	void cancel();
-
-	const SDL_Rect& area() const { return rect_; }
-
-private:
-	class CVideo* target_;
-	SDL_Rect rect_;
-	surface surface_;
-};
-
 /**
  * Helper class for pinning SDL surfaces into memory.
  * @note This class should be used only with neutral surfaces, so that

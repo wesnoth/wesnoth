@@ -649,7 +649,7 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 					sound::play_music_once(music_tracks_[index].id());
 					get_current_map_context().add_to_playlist(music_tracks_[index]);
 					std::vector<config> items;
-					items.emplace_back(config {"id", "editor-playlist"});
+					items.emplace_back("id", "editor-playlist");
 					std::shared_ptr<gui::button> b = gui_->find_menu_button("menu-playlist");
 					show_menu(items, b->location().x +1, b->location().y + b->height() +1, false, *gui_);
 					return true;
@@ -1011,7 +1011,7 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 		if((can_execute_command(command) && (!context_menu || in_context_menu(command.id)))
 			|| command.id == hotkey::HOTKEY_NULL)
 		{
-			items.emplace_back(config {"id", id});
+			items.emplace_back("id", id);
 		}
 	}
 

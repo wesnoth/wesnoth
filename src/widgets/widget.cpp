@@ -31,7 +31,7 @@ namespace gui {
 bool widget::mouse_lock_ = false;
 
 widget::widget(const widget &o)
-	: events::sdl_handler(), focus_(o.focus_), video_(o.video_), restorer_(o.restorer_), rect_(o.rect_),
+	: events::sdl_handler(), focus_(o.focus_), video_(o.video_), rect_(o.rect_),
 	   needs_restore_(o.needs_restore_), state_(o.state_), hidden_override_(o.hidden_override_),
 	  enabled_(o.enabled_), clip_(o.clip_), clip_rect_(o.clip_rect_), volatile_(o.volatile_),
 	  help_text_(o.help_text_), tooltip_text_(o.tooltip_text_), help_string_(o.help_string_), id_(o.id_), mouse_lock_local_(o.mouse_lock_local_)
@@ -74,10 +74,6 @@ bool widget::mouse_locked() const
 
 void widget::bg_cancel()
 {
-	for(std::vector< surface_restorer >::iterator i = restorer_.begin(),
-	    i_end = restorer_.end(); i != i_end; ++i)
-		i->cancel();
-	restorer_.clear();
 }
 
 void widget::set_location(const SDL_Rect& rect)
@@ -104,9 +100,8 @@ const SDL_Rect* widget::clip_rect() const
 	return clip_ ? &clip_rect_ : nullptr;
 }
 
-void widget::bg_register(const SDL_Rect& rect)
+void widget::bg_register(const SDL_Rect& /*rect*/)
 {
-	restorer_.emplace_back(&video(), rect);
 }
 
 void widget::set_location(int x, int y)
@@ -241,30 +236,17 @@ void widget::set_id(const std::string& id)
 
 void widget::bg_update()
 {
-	for(std::vector< surface_restorer >::iterator i = restorer_.begin(),
-	    i_end = restorer_.end(); i != i_end; ++i)
-		i->update();
 }
 
 void widget::bg_restore() const
 {
-	clip_rect_setter clipper(video().getSurface(), &clip_rect_, clip_);
-
 	if (needs_restore_) {
-		for(std::vector< surface_restorer >::const_iterator i = restorer_.begin(),
-		    i_end = restorer_.end(); i != i_end; ++i)
-			i->restore();
 		needs_restore_ = false;
 	}
 }
 
-void widget::bg_restore(const SDL_Rect& rect) const
+void widget::bg_restore(const SDL_Rect& /*rect*/) const
 {
-	clip_rect_setter clipper(video().getSurface(), &clip_rect_, clip_);
-
-	for(std::vector< surface_restorer >::const_iterator i = restorer_.begin(),
-	    i_end = restorer_.end(); i != i_end; ++i)
-		i->restore(rect);
 }
 
 void widget::set_volatile(bool val)
@@ -280,9 +262,6 @@ void widget::draw()
 		return;
 
 	bg_restore();
-
-	clip_rect_setter clipper(video().getSurface(), &clip_rect_, clip_);
-
 	draw_contents();
 
 	set_dirty(false);

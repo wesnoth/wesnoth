@@ -114,7 +114,7 @@ display::display(const display_context* dc,
 	, diagnostic_label_(0)
 	, turbo_speed_(2)
 	, turbo_(false)
-	, map_labels_(new map_labels(0))
+	, map_labels_(new map_labels(nullptr))
 	, scroll_event_("scrolled")
 	, complete_redraw_event_("completely_redrawn")
 	, fps_counter_()
@@ -497,6 +497,11 @@ const SDL_Rect& display::map_area() const
 	return res;
 }
 
+const SDL_Rect display::map_outside_area() const
+{
+	return map_screenshot_ ? max_map_area() : video_.screen_area();
+}
+
 bool display::outside_area(const SDL_Rect& area, const int x, const int y)
 {
 	const int x_thresh = hex_size();
@@ -572,41 +577,11 @@ const map_location display::pixel_position_to_hex(int x, int y) const
 	return map_location(x_base + x_modifier - offset, y_base + y_modifier - offset);
 }
 
-display::rect_of_hexes::iterator& display::rect_of_hexes::iterator::operator++()
-{
-	if(loc_.y < rect_.bottom[loc_.x & 1])
-		++loc_.y;
-	else {
-		++loc_.x;
-		loc_.y = rect_.top[loc_.x & 1];
-	}
-
-	return *this;
-}
-
-// begin is top left, and end is after bottom right
-display::rect_of_hexes::iterator display::rect_of_hexes::begin() const
-{
-	return iterator(map_location(left, top[left & 1]), *this);
-}
-
-display::rect_of_hexes::iterator display::rect_of_hexes::end() const
-{
-	return iterator(map_location(right + 1, top[(right + 1) & 1]), *this);
-}
-
-const display::rect_of_hexes display::hexes_under_rect(const SDL_Rect& r) const
+const rect_of_hexes display::hexes_under_rect(const SDL_Rect& r) const
 {
 	rect_of_hexes res;
 
 	if(r.w <= 0 || r.h <= 0) {
-		// empty rect, return dummy values giving begin=end
-		res.left = 0;
-		res.right = -1; // end is right + 1
-		res.top[0] = 0;
-		res.top[1] = 0;
-		res.bottom[0] = 0;
-		res.bottom[1] = 0;
 		return res;
 	}
 
@@ -644,6 +619,11 @@ const display::rect_of_hexes display::hexes_under_rect(const SDL_Rect& r) const
 	// Can maybe be optimized by using pixel_position_to_hex
 
 	return res;
+}
+
+const rect_of_hexes display::get_visible_hexes() const
+{
+	return hexes_under_rect(map_area());
 }
 
 bool display::team_valid() const
@@ -707,7 +687,8 @@ surface display::screenshot(bool map_screenshot)
 	if(!map_screenshot) {
 		// Use make_neutral_surface() to copy surface content
 		// TODO: convert to texture handling
-		return make_neutral_surface(video_.getSurface());
+		//return make_neutral_surface(video_.getSurface());
+		return surface(nullptr);
 	}
 
 	if(get_map().empty()) {
@@ -1580,7 +1561,7 @@ const map_labels& display::labels() const
 	return *map_labels_;
 }
 
-const SDL_Rect& display::get_clip_rect()
+const SDL_Rect display::get_clip_rect()
 {
 	return map_area();
 }

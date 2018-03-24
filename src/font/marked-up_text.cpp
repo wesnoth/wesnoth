@@ -197,13 +197,13 @@ SDL_Rect draw_text(surface& dst, const SDL_Rect& area, int size,
 	return res;
 }
 
-SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
+SDL_Rect draw_text(CVideo* /*gui*/, const SDL_Rect& area, int size,
                    const color_t& color, const std::string& txt,
                    int x, int y, bool use_tooltips, int style)
 {
 	surface null_surf = surface(nullptr);
 
-	return draw_text(gui != nullptr ? gui->getSurface() : null_surf, area, size, color, txt, x, y, use_tooltips, style);
+	return draw_text(null_surf, area, size, color, txt, x, y, use_tooltips, style);
 }
 
 bool is_format_char(char c)

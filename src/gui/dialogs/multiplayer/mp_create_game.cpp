@@ -180,7 +180,7 @@ void mp_create_game::pre_show(window& win)
 	//
 	std::vector<config> game_types;
 	for(level_type_info& type_info : level_types_) {
-		game_types.emplace_back(config {"label", type_info.second});
+		game_types.emplace_back("label", type_info.second);
 	}
 
 	if(game_types.empty()) {
@@ -246,7 +246,7 @@ void mp_create_game::pre_show(window& win)
 
 	std::vector<config> era_names;
 	for(const auto& era : create_engine_.get_const_extras_by_type(ng::create_engine::ERA)) {
-		era_names.emplace_back(config {"label", era->name, "tooltip", era->description});
+		era_names.emplace_back("label", era->name, "tooltip", era->description);
 	}
 
 	if(era_names.empty()) {
@@ -269,7 +269,11 @@ void mp_create_game::pre_show(window& win)
 	//
 	std::vector<config> rfm_options;
 	for(const auto& type : rfm_types_) {
-		rfm_options.emplace_back(config {"label", mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(type)});
+		// HACK: The labels are defined for the wesnoth textdomain in a header,
+		//       see mp_game_settings::RANDOM_FACTION_MODE in src/mp_game_settings.hpp
+		rfm_options.emplace_back("label",
+			translation::dsgettext("wesnoth", mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(type).c_str())
+		);
 	};
 
 	// Manually insert tooltips. Need to find a better way to do this

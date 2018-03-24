@@ -345,12 +345,7 @@ halo_record::~halo_record()
 	std::shared_ptr<halo_impl> man = my_manager_.lock();
 
 	if(man) {
-		try {
-			man->remove(id_);
-		} catch(std::exception& e) {
-			std::cerr << "Caught an exception in halo::halo_record destructor: \n" << e.what() << std::endl;
-		} catch(...) {
-		}
+		man->remove(id_);
 	}
 }
 

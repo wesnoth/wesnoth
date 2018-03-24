@@ -57,6 +57,7 @@ class manager;
 #include "font/standard_colors.hpp"
 #include "image.hpp" //only needed for enums (!)
 #include "key.hpp"
+#include "map/hex_rect.hpp"
 #include "overlay.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/surface.hpp"
@@ -297,10 +298,7 @@ public:
 	 * Returns the available area for a map, this may differ from the above.
 	 * This area will get the background area applied to it.
 	 */
-	const SDL_Rect& map_outside_area() const
-	{
-		return map_screenshot_ ? max_map_area() : theme_.main_map_location(video_.screen_area());
-	}
+	const SDL_Rect map_outside_area() const;
 
 	/** Check if the bbox of the hex at x,y has pixels outside the area rectangle. */
 	static bool outside_area(const SDL_Rect& area, const int x, const int y);
@@ -378,68 +376,11 @@ public:
 	 */
 	SDL_Point get_loc_drawing_origin(const map_location& loc) const;
 
-	/**
-	 * Rectangular area of hexes, allowing to decide how the top and bottom
-	 * edges handles the vertical shift for each parity of the x coordinate
-	 */
-	struct rect_of_hexes
-	{
-		int left;
-		int right;
-		int top[2]; // for even and odd values of x, respectively
-		int bottom[2];
-
-		/**  very simple iterator to walk into the rect_of_hexes */
-		struct iterator
-		{
-			iterator(const map_location& loc, const rect_of_hexes& rect)
-				: loc_(loc)
-				, rect_(rect)
-			{
-			}
-
-			/** increment y first, then when reaching bottom, increment x */
-			iterator& operator++();
-			bool operator==(const iterator& that) const
-			{
-				return that.loc_ == loc_;
-			}
-
-			bool operator!=(const iterator& that) const
-			{
-				return that.loc_ != loc_;
-			}
-
-			const map_location& operator*() const
-			{
-				return loc_;
-			}
-
-			typedef std::forward_iterator_tag iterator_category;
-			typedef map_location value_type;
-			typedef int difference_type;
-			typedef const map_location* pointer;
-			typedef const map_location& reference;
-
-		private:
-			map_location loc_;
-			const rect_of_hexes& rect_;
-		};
-
-		typedef iterator const_iterator;
-
-		iterator begin() const;
-		iterator end() const;
-	};
-
 	/** Return the rectangular area of hexes overlapped by r (r is in screen coordinates) */
 	const rect_of_hexes hexes_under_rect(const SDL_Rect& r) const;
 
 	/** Returns the rectangular area of visible hexes */
-	const rect_of_hexes get_visible_hexes() const
-	{
-		return hexes_under_rect(map_area());
-	}
+	const rect_of_hexes get_visible_hexes() const;
 
 	/** Returns true if location (x,y) is covered in shroud. */
 	bool shrouded(const map_location& loc) const;
@@ -917,7 +858,7 @@ protected:
 	 * Get the clipping rectangle for drawing.
 	 * Virtual since the editor might use a slightly different approach.
 	 */
-	virtual const SDL_Rect& get_clip_rect();
+	virtual const SDL_Rect get_clip_rect();
 
 	/** Draw the appropriate fog or shroud transition images for a specific hex. */
 	void draw_fog_shroud_transition_images(const map_location& loc, image::TYPE image_type);

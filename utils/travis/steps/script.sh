@@ -21,8 +21,10 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
         exit $BUILD_RET
     else
         ln -s $HOME/build-cache/ build
-        ./utils/travis/check_utf8.sh
-        ./utils/travis/utf8_bom_dog.sh
+
+        ./utils/travis/check_utf8.sh || exit 1
+        ./utils/travis/utf8_bom_dog.sh || exit 1
+
         "$CXX" --version
         scons wesnoth wesnothd campaignd boost_unit_tests build=release \
               ctool="$CC" cxxtool="$CXX" cxx_std="$CXXSTD" \
