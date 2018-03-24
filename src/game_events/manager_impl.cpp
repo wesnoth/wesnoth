@@ -109,8 +109,8 @@ void event_handlers::add_event_handler(const config& cfg, bool is_menu_item)
 		}
 	}
 
-	if(name.empty()) {
-		lg::wml_error() << "[event] is missing name field\n";
+	if(name.empty() && id.empty()) {
+		lg::wml_error() << "[event] is missing name or id field\n";
 		return;
 	}
 
@@ -121,18 +121,20 @@ void event_handlers::add_event_handler(const config& cfg, bool is_menu_item)
 	// Split the name field...
 	std::vector<std::string> standardized_names = utils::split(name);
 
-	// ...and standardize each one individually. This ensures they're all valid for by-name lookup.
-	for(std::string& single_name : standardized_names) {
-		if(!utils::might_contain_variables(single_name)) {
-			single_name = standardize_name(single_name);
+	if(!name.empty()) {
+		// ...and standardize each one individually. This ensures they're all valid for by-name lookup.
+		for(std::string& single_name : standardized_names) {
+			if(!utils::might_contain_variables(single_name)) {
+				single_name = standardize_name(single_name);
+			}
 		}
+
+		assert(!standardized_names.empty());
+
+		// Write the new name back to the config.
+		name = utils::join(standardized_names);
+		event_cfg["name"] = name;
 	}
-
-	assert(!standardized_names.empty());
-
-	// Write the new name back to the config.
-	name = utils::join(standardized_names);
-	event_cfg["name"] = name;
 
 	// Create a new handler.
 	// Do note active_ holds the main shared_ptr, and the other three containers
