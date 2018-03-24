@@ -232,6 +232,13 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 end
 
 if wesnoth.kernel_type() == "Game Lua Kernel" then
+	--[========[WML error helper]========]
+
+	--! Interrupts the current execution and displays a chat message that looks like a WML error.
+	function wml.error(m)
+		error("~wml:" .. m, 0)
+	end
+
 	--[========[Basic variable access]========]
 
 	-- Get all variables via wml.all_variables (read-only)

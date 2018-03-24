@@ -19,11 +19,6 @@ function helper.get_sides(cfg)
 	return f, { i = 0 }
 end
 
---! Interrupts the current execution and displays a chat message that looks like a WML error.
-function helper.wml_error(m)
-	error("~wml:" .. m, 0)
-end
-
 --! Returns an iterator over teams that can be used in a for-in loop.
 function helper.all_teams()
 	local function f(s)
@@ -234,6 +229,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	helper.get_variable_array = wesnoth.deprecate_api('helper.get_variable_array', ' wml.array_access.get', 1, nil, wml.array_access.get)
 	helper.set_variable_array = wesnoth.deprecate_api('helper.set_variable_array', 'wml.array_access.set', 1, nil, wml.array_access.set)
 	helper.get_variable_proxy_array = wesnoth.deprecate_api('helper.get_variable_proxy_array', 'wml.array_access.get_proxy', 1, nil, wml.array_access.get_proxy)
+	helper.wml_error = wesnoth.deprecate_api('helper.wml_error', 'wml.error', 1, nil, wml.error)
 end
 helper.literal = wesnoth.deprecate_api('helper.literal', 'wml.literal', 1, nil, wml.literal)
 helper.parsed = wesnoth.deprecate_api('helper.parsed', 'wml.parsed', 1, nil, wml.parsed)
