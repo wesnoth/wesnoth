@@ -40,6 +40,9 @@ public:
 	bool is_networked_mp() const override;
 	void send_to_wesnothd(const config& cfg, const std::string& packet_type = "unknown") const override;
 	bool receive_from_wesnothd(config& cfg) const override;
+	
+	
+	void play_slice(bool is_delay_enabled = true) override;
 protected:
 	virtual void handle_generic_event(const std::string& name) override;
 
@@ -67,6 +70,6 @@ protected:
 private:
 	void set_end_scenario_button();
 	void reset_end_scenario_button();
-	void process_network_data();
+	void process_network_data(bool chat_only = false);
 	mp_campaign_info* mp_info_;
 };

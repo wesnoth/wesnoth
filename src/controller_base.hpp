@@ -65,7 +65,7 @@ public:
 	controller_base(const config& game_config);
 	virtual ~controller_base();
 
-	void play_slice(bool is_delay_enabled = true);
+	virtual void play_slice(bool is_delay_enabled = true);
 
 	static const config& get_theme(const config& game_config, std::string theme_name);
 

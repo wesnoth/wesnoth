@@ -448,7 +448,15 @@ void playmp_controller::send_user_choice()
 	turn_data_.send_data();
 }
 
-void playmp_controller::process_network_data()
+void playmp_controller::play_slice(bool is_delay_enabled)
+{
+	process_network_data(true);
+	//cannot use turn_data_.send_data() here.
+	replay_sender_.sync_non_undoable();
+	playsingle_controller::play_slice(is_delay_enabled);
+}
+
+void playmp_controller::process_network_data(bool chat_only)
 {
 	if(end_turn_ == END_TURN_SYNCED || is_regular_game_end() || player_type_changed_) {
 		return;
@@ -459,10 +467,13 @@ void playmp_controller::process_network_data()
 		res = turn_info::replay_to_process_data_result(do_replay());
 	}
 	else if(network_reader_.read(cfg)) {
-		res = turn_data_.process_network_data(cfg);
+		res = turn_data_.process_network_data(cfg, chat_only);
 	}
 
-	if (res == turn_info::PROCESS_RESTART_TURN) {
+	if (res == turn_info::PROCESS_CANNOT_HANDLE) {
+		network_reader_.push_front(std::move(cfg));
+	}
+	else if (res == turn_info::PROCESS_RESTART_TURN) {
 		player_type_changed_ = true;
 	}
 	else if (res == turn_info::PROCESS_END_TURN) {
