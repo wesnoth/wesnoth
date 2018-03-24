@@ -696,15 +696,12 @@ void window::layout()
 
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
-	point size = get_best_size();
 	const point mouse = get_mouse_position();
 
 	variables_.add("mouse_x", wfl::variant(mouse.x));
 	variables_.add("mouse_y", wfl::variant(mouse.y));
 	variables_.add("window_width", wfl::variant(0));
 	variables_.add("window_height", wfl::variant(0));
-	variables_.add("best_window_width", wfl::variant(size.x));
-	variables_.add("best_window_height", wfl::variant(size.y));
 	variables_.add("size_request_mode", wfl::variant("maximum"));
 
 	get_screen_size_variables(variables_);
@@ -812,7 +809,7 @@ void window::layout()
 	}
 
 	/***** Get the best location for the window *****/
-	size = get_best_size();
+	point size = get_best_size();
 	assert(size.x <= maximum_width && size.y <= maximum_height);
 
 	point origin(0, 0);
