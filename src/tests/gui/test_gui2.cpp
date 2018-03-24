@@ -39,6 +39,7 @@
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
 #include "gui/dialogs/chat_log.hpp"
+#include "gui/dialogs/command_console.hpp"
 #include "gui/dialogs/core_selection.hpp"
 #include "gui/dialogs/debug_clock.hpp"
 #include "gui/dialogs/depcheck_confirm_change.hpp"
@@ -63,6 +64,7 @@
 #include "gui/dialogs/game_load.hpp"
 #include "gui/dialogs/game_save.hpp"
 #include "gui/dialogs/game_stats.hpp"
+#include "gui/dialogs/game_ui.hpp"
 #include "gui/dialogs/game_version.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/help_browser.hpp"
@@ -426,6 +428,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<campaign_difficulty>();
 	test<campaign_selection>();
 	test<chat_log>();
+	//test<command_console>();
 	test<core_selection>();
 	test<custom_tod>();
 	test<depcheck_confirm_change>();
@@ -454,6 +457,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	// test<game_stats>();
 	// test<gamestate_inspector>();
 	test<generator_settings>();
+	//test<game_ui>();
 	//test<help_browser>();
 	test<hotkey_bind>();
 	test<install_dependencies>();
@@ -546,6 +550,8 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		"mp_change_control", // Basically useless without a game_board object, so disabling
 		"game_stats", // segfault with LTO
 		"gamestate_inspector", // segfault with LTO
+		"command_console", // TODO: reenable once the dialog is stable
+		"game_ui", // TODO: reenable once the dialog is stable
 	};
 
 	std::vector<std::string> missing;
