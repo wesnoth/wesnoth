@@ -286,9 +286,7 @@ create_engine::create_engine(saved_game& state)
 		}
 	}
 
-	if(state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
-		dependency_manager_->try_modifications(state_.mp_settings().active_mods, true);
-	}
+	dependency_manager_->try_modifications(state_.mp_settings().active_mods, true);
 
 	reset_level_filters();
 }
