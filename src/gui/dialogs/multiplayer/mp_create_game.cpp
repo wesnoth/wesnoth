@@ -269,8 +269,10 @@ void mp_create_game::pre_show(window& win)
 	//
 	std::vector<config> rfm_options;
 	for(const auto& type : rfm_types_) {
+		// HACK: The labels are defined for the wesnoth textdomain in a header,
+		//       see mp_game_settings::RANDOM_FACTION_MODE in src/mp_game_settings.hpp
 		rfm_options.emplace_back("label",
-			translation::sgettext(mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(type).c_str())
+			translation::dsgettext("wesnoth", mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(type).c_str())
 		);
 	};
 
