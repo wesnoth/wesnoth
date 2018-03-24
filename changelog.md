@@ -1,4 +1,6 @@
 ## Version 1.15.0-dev
+ ### WML engine
+   * Support formula= key in [variable] ConditionalWML
  ### Language and i18n
    * Fixed many cases of interpolated strings in the engine possibly having
      their translations retrieved from the wrong textdomain and falling back
