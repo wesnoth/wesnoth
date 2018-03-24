@@ -245,7 +245,7 @@ void widget::bg_restore() const
 	}
 }
 
-void widget::bg_restore(const SDL_Rect& rect) const
+void widget::bg_restore(const SDL_Rect& /*rect*/) const
 {
 }
 
