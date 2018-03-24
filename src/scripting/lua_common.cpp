@@ -303,13 +303,17 @@ static int impl_vconfig_pairs_collect(lua_State *L)
 	void* p = lua_touserdata(L, 1);
 
 	// Triggers a false positive of C4189 with Visual Studio. Suppress.
+#ifdef _MSC_VER
 #pragma warning(push)
 #pragma warning(disable: 4189)
+#endif
 
 	const_attr_itors* cai = static_cast<const_attr_itors*>(p);
 	cai->~const_attr_itors();
 
+#ifdef _MSC_VER
 #pragma warning(pop)
+#endif
 
 	return 0;
 }

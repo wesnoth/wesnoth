@@ -36,8 +36,8 @@ struct rect_of_hexes
 	rect_of_hexes()
 		: left(0)
 		, right(-1) // end is right + 1
-		, top{0,0}
-		, bottom{0,0}
+		, top{{0,0}}
+		, bottom{{0,0}}
 	{
 	}
 
