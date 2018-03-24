@@ -85,10 +85,14 @@ void turn_info::send_data()
 	}
 }
 
-turn_info::PROCESS_DATA_RESULT turn_info::handle_turn(const config& t)
+turn_info::PROCESS_DATA_RESULT turn_info::handle_turn(const config& t, bool chat_only)
 {
 	//t can contain a [command] or a [upload_log]
 	assert(t.all_children_count() == 1);
+
+	if(!t.child_or_empty("command").has_child("speak") && chat_only) {
+		return PROCESS_CANNOT_HANDLE;
+	}
 	/** @todo FIXME: Check what commands we execute when it's our turn! */
 
 	//note, that this function might call itself recursively: do_replay -> ... -> get_user_choice -> ... -> playmp_controller::pull_remote_choice -> sync_network -> handle_turn
@@ -119,7 +123,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data_from_reader()
 	return PROCESS_CONTINUE;
 }
 
-turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg)
+turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg, bool chat_only)
 {
 	// the simple wesnothserver implementation in wesnoth was removed years ago.
 	assert(cfg.all_children_count() == 1);
@@ -154,7 +158,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	}
 	else if (const config &turn = cfg.child("turn"))
 	{
-		return handle_turn(turn);
+		return handle_turn(turn, chat_only);
 	}
 	else if (cfg.has_child("whiteboard"))
 	{
@@ -346,6 +350,9 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	// The host has ended linger mode in a campaign -> enable the "End scenario" button
 	// and tell we did get the notification.
 	else if (cfg.child("notify_next_scenario")) {
+		if(chat_only) {
+			return PROCESS_CANNOT_HANDLE;
+		}
 		std::shared_ptr<gui::button> btn_end = display::get_singleton()->find_action_button("button-endturn");
 		if(btn_end) {
 			btn_end->enable(true);

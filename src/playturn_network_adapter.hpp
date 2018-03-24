@@ -37,16 +37,24 @@ public:
 	void set_source(source_type source);
 	//returns a function to be passed to set_source.
 	static source_type get_source_from_config(config& src);
+	void push_front(config&& cfg);
 private:
 	//reads data from the network stream.
 	void read_from_network();
+	//a function to receive data from the network.
+	source_type network_reader_;
+
+	// note: all of the following could be replaced by a simple std::list<config> if we would
+	//       split incoming tags right after we rechived them from network_reader_ the reason
+	//       why we currently don'T do that is for performance.
+	
 	//this always contains one empty config because we want a valid value for next_.
 	std::list<config> data_;
+	//packages that the client could not process at that point.
+	std::list<config> data_front_;
 	//the position of the next to be received element in data_->front().
 	config::all_children_iterator next_;
 	//if we are processing a [turn] with multiple [command] we want to split them.
 	//In this case next_command_num_ is the next to be processed turn into a command otherwise it's 0;
 	unsigned int next_command_num_;
-	//a function to receive data from the network.
-	source_type network_reader_;
 };
