@@ -784,6 +784,14 @@ attack_type::specials_context_t::specials_context_t(attack_type::specials_contex
 	other.was_moved = true;
 }
 
+attack_type::specials_context_t& attack_type::specials_context_t::operator=(attack_type::specials_context_t&& other)
+{
+	// This ugly line calls into the default copy move assignment operator.
+	operator=(static_cast<attack_type::specials_context_t&>(other));
+	other.was_moved = true;
+	return *this;
+}
+
 /**
  * Calculates the number of attacks this weapon has, considering specials.
  * This returns two numbers because of the swarm special. The actual number of

@@ -125,11 +125,14 @@ public:
 		/// Initialize weapon specials context for a pair of units
 		specials_context_t(const attack_type& weapon, unit_const_ptr self, const map_location& loc, bool attacking);
 		specials_context_t(const specials_context_t&) = delete;
+		// Default assignment is needed as a base for the move assignment
+		specials_context_t& operator=(const specials_context_t&) = default;
 		bool was_moved = false;
 	public:
 		// Destructor at least needs to be public for all this to work.
 		~specials_context_t();
 		specials_context_t(specials_context_t&&);
+		specials_context_t& operator=(specials_context_t&&);
 	};
 	// Set up a specials context.
 	// Usage: auto ctx = weapon.specials_context(...);
