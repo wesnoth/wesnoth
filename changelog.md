@@ -6,6 +6,11 @@
    * Updated translations: Spanish
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
+   * Fixed events with an id but no name being rejected
+   * Fixed assertion when using [inspect]
+   * Fixed inability to deselect modifications in single-player
+   * Fixed infinite loading screen when logging in with an invalid name
+   * Made debug command notifications more noticeable
 
 ## Version 1.13.12
  ### Security fixes
