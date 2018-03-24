@@ -27,7 +27,7 @@ namespace dialogs
 ingame_ui_base::ingame_ui_base()
 	: disp_(display::get_singleton())
 	, game_config_(game_config_manager::get()->game_config())
-	, scenario_(game_config_.child("scenario"))
+	, scenario_(game_config_.child_or_empty("scenario")) // FIXME: invalid in MP
 {
 }
 
