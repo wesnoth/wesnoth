@@ -298,10 +298,7 @@ public:
 	 * Returns the available area for a map, this may differ from the above.
 	 * This area will get the background area applied to it.
 	 */
-	const SDL_Rect& map_outside_area() const
-	{
-		return map_screenshot_ ? max_map_area() : theme_.main_map_location(video_.screen_area());
-	}
+	const SDL_Rect map_outside_area() const;
 
 	/** Check if the bbox of the hex at x,y has pixels outside the area rectangle. */
 	static bool outside_area(const SDL_Rect& area, const int x, const int y);
@@ -383,10 +380,7 @@ public:
 	const rect_of_hexes hexes_under_rect(const SDL_Rect& r) const;
 
 	/** Returns the rectangular area of visible hexes */
-	const rect_of_hexes get_visible_hexes() const
-	{
-		return hexes_under_rect(map_area());
-	}
+	const rect_of_hexes get_visible_hexes() const;
 
 	/** Returns true if location (x,y) is covered in shroud. */
 	bool shrouded(const map_location& loc) const;
@@ -864,7 +858,7 @@ protected:
 	 * Get the clipping rectangle for drawing.
 	 * Virtual since the editor might use a slightly different approach.
 	 */
-	virtual const SDL_Rect& get_clip_rect();
+	virtual const SDL_Rect get_clip_rect();
 
 	/** Draw the appropriate fog or shroud transition images for a specific hex. */
 	void draw_fog_shroud_transition_images(const map_location& loc, image::TYPE image_type);

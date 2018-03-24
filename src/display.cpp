@@ -497,6 +497,11 @@ const SDL_Rect& display::map_area() const
 	return res;
 }
 
+const SDL_Rect display::map_outside_area() const
+{
+	return map_screenshot_ ? max_map_area() : video_.screen_area();
+}
+
 bool display::outside_area(const SDL_Rect& area, const int x, const int y)
 {
 	const int x_thresh = hex_size();
@@ -614,6 +619,11 @@ const rect_of_hexes display::hexes_under_rect(const SDL_Rect& r) const
 	// Can maybe be optimized by using pixel_position_to_hex
 
 	return res;
+}
+
+const rect_of_hexes display::get_visible_hexes() const
+{
+	return hexes_under_rect(map_area());
 }
 
 bool display::team_valid() const
@@ -1551,7 +1561,7 @@ const map_labels& display::labels() const
 	return *map_labels_;
 }
 
-const SDL_Rect& display::get_clip_rect()
+const SDL_Rect display::get_clip_rect()
 {
 	return map_area();
 }

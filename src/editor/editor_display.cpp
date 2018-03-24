@@ -99,7 +99,7 @@ void editor_display::draw_hex_overlays()
 	}
 }
 
-const SDL_Rect& editor_display::get_clip_rect()
+const SDL_Rect editor_display::get_clip_rect()
 {
 	return map_outside_area();
 }
