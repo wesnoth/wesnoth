@@ -1,5 +1,4 @@
-local helper = wesnoth.require "helper"
-local T = helper.set_wml_tag_metatable {}
+local T = wml.tag
 
 local res = {}
 
