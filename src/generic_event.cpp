@@ -57,20 +57,13 @@ bool generic_event::detach_handler(observer* obs){
 
 	//make sure observers are not notified right now
 	if (!notify_active_){
-		change_handler_ = true;
-		try{
-			std::vector<observer*>::iterator it = std::find(observers_.begin(), observers_.end(), obs);
-			if (it == observers_.end()){
-				handler_detached = false;
-			}
-			else{
-				observers_.erase(it);
-				handler_detached = true;
-			}
+		auto it = std::find(observers_.begin(), observers_.end(), obs);
+		if (it == observers_.end()){
+			handler_detached = false;
 		}
-		catch (...){
-			change_handler_ = false;
-			throw;
+		else{
+			observers_.erase(it);
+			handler_detached = true;
 		}
 		change_handler_ = false;
 	}

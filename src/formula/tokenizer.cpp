@@ -24,7 +24,7 @@ namespace tokenizer
 
 namespace {
 
-void raise_exception(iterator& i1, iterator i2, std::string str) {
+[[noreturn]] void raise_exception(iterator& i1, iterator i2, std::string str) {
 	std::ostringstream expr;
 	while( (i1 != i2) && (*i1 != '\n') ) {
 		if( (*i1 != '\t') )
@@ -283,8 +283,7 @@ token get_token(iterator& i1, const iterator i2) {
 				raise_exception(it, i2, std::string() );
 		}
 	}
-	raise_exception(it, i2, std::string() );
-	return token();
+	raise_exception(it, i2, std::string());
 }
 
 }
