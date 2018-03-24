@@ -132,11 +132,14 @@ void manager::add_events(const config::const_child_itors& cfgs, const std::strin
 	}
 }
 
-void manager::write_events(config& cfg) const
+void manager::write_events(config& cfg, bool strict) const
 {
 	for(const handler_ptr& eh : event_handlers_->get_active()) {
 		if(eh && !eh->is_menu_item()) {
-			assert(!eh->disabled());
+			if(strict) {
+				assert(!eh->disabled());
+			}
+
 			cfg.add_child("event", eh->get_config());;
 		}
 	}
