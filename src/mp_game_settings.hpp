@@ -62,6 +62,10 @@ struct mp_game_settings
 
 	bool saved_game;
 
+	// HACK: The Create Game dialog has special knowledge of these strings
+	//       and the fact that they're placed in the default (wesnoth)
+	//       textdomain by xgettext due to the absence of a GETTEXT_DOMAIN
+	//       declaration in this file. See gui2::dialogs::mp_create_game::pre_show().
 	MAKE_ENUM(RANDOM_FACTION_MODE,
 		(DEFAULT, N_("Independent"))
 		(NO_MIRROR, N_("No Mirror"))
