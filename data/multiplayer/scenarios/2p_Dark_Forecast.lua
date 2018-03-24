@@ -1,7 +1,7 @@
 
 local helper = wesnoth.require("helper")
 local _ = wesnoth.textdomain 'wesnoth-multiplayer'
-local T = helper.set_wml_tag_metatable {}
+local T = wml.tag
 local on_event = wesnoth.require("on_event")
 
 local random_spawns = {
