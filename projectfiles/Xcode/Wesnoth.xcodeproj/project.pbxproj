@@ -101,6 +101,8 @@
 		469BDB56205C357500DBF748 /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
 		469EC8EC20287C4A008A0CAD /* surrender_quit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469EC8EA20287C49008A0CAD /* surrender_quit.cpp */; };
 		46B2A7C12028DDA2006C2323 /* libpng16.16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C243118EF07B4001FA499 /* libpng16.16.dylib */; };
+		46BAF785206672250004711F /* libboost_chrono-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BAF784206672240004711F /* libboost_chrono-mt.dylib */; };
+		46BAF787206672300004711F /* libboost_timer-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BAF786206672300004711F /* libboost_timer-mt.dylib */; };
 		46BED4D3205060EA00842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46BED4D4205060EA00842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46BED4D52050611600842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
@@ -1445,6 +1447,8 @@
 		469BDB54205C357500DBF748 /* base64.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = base64.hpp; sourceTree = "<group>"; };
 		469EC8EA20287C49008A0CAD /* surrender_quit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surrender_quit.cpp; sourceTree = "<group>"; };
 		469EC8EB20287C49008A0CAD /* surrender_quit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = surrender_quit.hpp; sourceTree = "<group>"; };
+		46BAF784206672240004711F /* libboost_chrono-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_chrono-mt.dylib"; path = "lib/libboost_chrono-mt.dylib"; sourceTree = "<group>"; };
+		46BAF786206672300004711F /* libboost_timer-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_timer-mt.dylib"; path = "lib/libboost_timer-mt.dylib"; sourceTree = "<group>"; };
 		46BED4D0205060EA00842FA5 /* crypt_blowfish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt_blowfish.h; sourceTree = "<group>"; };
 		46BED4D1205060EA00842FA5 /* crypt_blowfish.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypt_blowfish.c; sourceTree = "<group>"; };
 		46BED4D92050710800842FA5 /* scenario-story.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "scenario-story.cfg"; sourceTree = "<group>"; };
@@ -2842,6 +2846,7 @@
 				91A215DC1CAD970800927AEA /* libboost_regex-mt.dylib in Frameworks */,
 				91A215DD1CAD971800927AEA /* libboost_locale-mt.dylib in Frameworks */,
 				91A215DE1CAD99E000927AEA /* libboost_filesystem-mt.dylib in Frameworks */,
+				46BAF785206672250004711F /* libboost_chrono-mt.dylib in Frameworks */,
 				91A215DF1CAD99E000927AEA /* libboost_iostreams-mt.dylib in Frameworks */,
 				91A215E01CAD99E000927AEA /* libboost_system-mt.dylib in Frameworks */,
 				91A215E11CAD99E000927AEA /* libboost_thread-mt.dylib in Frameworks */,
@@ -2849,6 +2854,7 @@
 				91A215E21CAD9B9000927AEA /* libpango-1.0.0.dylib in Frameworks */,
 				91A215E31CAD9B9000927AEA /* libpangocairo-1.0.0.dylib in Frameworks */,
 				916718EB1CADA88800B055A9 /* libgobject-2.0.0.dylib in Frameworks */,
+				46BAF787206672300004711F /* libboost_timer-mt.dylib in Frameworks */,
 				916719071CADAC0D00B055A9 /* libboost_random-mt.dylib in Frameworks */,
 				91C554691D77A545002DB0C8 /* libpcre.1.dylib in Frameworks */,
 			);
@@ -2895,6 +2901,7 @@
 		1058C7A2FEA54F0111CA2CBB /* Included Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				46BAF784206672240004711F /* libboost_chrono-mt.dylib */,
 				B508D13E10013BF900B12852 /* Growl.framework */,
 				B55999220EC61F59008DD061 /* SDL2_image.framework */,
 				B55999240EC61F59008DD061 /* SDL2_mixer.framework */,
@@ -3231,6 +3238,7 @@
 				F4EF0D5313AD4E35003C701D /* libboost_regex-mt.dylib */,
 				F4EF0D5413AD4E35003C701D /* libboost_system-mt.dylib */,
 				F4EF0D5B13AD4E6D003C701D /* libboost_thread-mt.dylib */,
+				46BAF786206672300004711F /* libboost_timer-mt.dylib */,
 				91E355621CACA1CE00774252 /* libboost_unit_test_framework-mt.dylib */,
 				EC5C242218EF07B4001FA499 /* libbz2.1.0.dylib */,
 				B513B2270ED36BFB0006E551 /* libcairo.2.dylib */,
