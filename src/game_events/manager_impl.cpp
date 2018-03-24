@@ -118,10 +118,10 @@ void event_handlers::add_event_handler(const config& cfg, bool is_menu_item)
 	// name field. Will be moved into the handler.
 	config event_cfg = cfg;
 
-	if(!name.empty()) {
-		// Split the name field...
-		std::vector<std::string> standardized_names = utils::split(name);
+	// Split the name field...
+	std::vector<std::string> standardized_names = utils::split(name);
 
+	if(!name.empty()) {
 		// ...and standardize each one individually. This ensures they're all valid for by-name lookup.
 		for(std::string& single_name : standardized_names) {
 			if(!utils::might_contain_variables(single_name)) {
