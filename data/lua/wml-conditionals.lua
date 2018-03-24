@@ -18,3 +18,18 @@ function wesnoth.wml_conditionals.lua(cfg)
 		return bytecode(wml.get_child(cfg, "args"))
 	end
 end
+
+-- Add formula= to [variable]
+-- Doesn't work for array variables though
+local old_variable = wesnoth.wml_conditionals.variable
+function wesnoth.wml_conditionals.variable(cfg)
+	if cfg.formula then
+		local value = wml.variables[cfg.name]
+		local result = wesnoth.eval_formula(cfg.formula, {value = value})
+		-- WFL considers 0 as false; Lua doesn't
+		if result == 0 then return false end
+		return result
+	else
+		return old_variable(cfg)
+	end
+end
