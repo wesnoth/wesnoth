@@ -109,8 +109,8 @@ void event_handlers::add_event_handler(const config& cfg, bool is_menu_item)
 		}
 	}
 
-	if(name.empty()) {
-		lg::wml_error() << "[event] is missing name field\n";
+	if(name.empty() && id.empty()) {
+		lg::wml_error() << "[event] is missing name or id field\n";
 		return;
 	}
 
