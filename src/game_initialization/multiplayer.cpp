@@ -228,6 +228,8 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 
 				if(gui2::show_message(_("Warning"), warning_msg, gui2::dialogs::message::yes_no_buttons) != gui2::retval::OK) {
 					return std::make_pair(wesnothd_connection_ptr(), config());
+				} else {
+					continue;
 				}
 			}
 
