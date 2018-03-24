@@ -1112,9 +1112,6 @@ int main(int argc, char** argv)
 	sigaction(SIGCHLD, &terminate_handler, nullptr);
 #endif
 
-	// declare this here so that it will always be at the front of the event queue.
-	events::event_context global_context;
-
 	SDL_StartTextInput();
 
 	try {

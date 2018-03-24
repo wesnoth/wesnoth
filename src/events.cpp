@@ -186,8 +186,8 @@ context::~context()
 // a new event context is created when e.g. a modal dialog is opened, and then
 // closed when that dialog is closed. Each context contains a list of the handlers
 // in that context. The current context is the one on the top of the stack.
-// The global context must always be in the first position.
-std::deque<context> event_contexts;
+// The global context must always be in the first position, so we initialize it here.
+std::deque<context> event_contexts(1);
 
 std::vector<pump_monitor*> pump_monitors;
 
