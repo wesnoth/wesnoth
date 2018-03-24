@@ -87,13 +87,9 @@
 		<Unit filename="../../packaging/windows/wesnoth.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
-		<Unit filename="../../src/SDL_SavePNG/savepng.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="../../src/crypt_blowfish/crypt_blowfish.c">
 			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="../../src/SDL_SavePNG/savepng.h" />
+			</Unit>
 		<Unit filename="../../src/crypt_blowfish/crypt_blowfish.h">
 		<Unit filename="../../src/about.cpp" />
 		<Unit filename="../../src/about.hpp" />
@@ -738,8 +734,6 @@
 		<Unit filename="../../src/gui/widgets/list.hpp" />
 		<Unit filename="../../src/gui/widgets/listbox.cpp" />
 		<Unit filename="../../src/gui/widgets/listbox.hpp" />
-		<Unit filename="../../src/gui/widgets/map_viewer.cpp" />
-		<Unit filename="../../src/gui/widgets/map_viewer.hpp" />
 		<Unit filename="../../src/gui/widgets/matrix.cpp" />
 		<Unit filename="../../src/gui/widgets/matrix.hpp" />
 		<Unit filename="../../src/gui/widgets/menu_button.cpp" />
@@ -816,14 +810,8 @@
 		<Unit filename="../../src/hash.hpp" />
 		<Unit filename="../../src/help/help.cpp" />
 		<Unit filename="../../src/help/help.hpp" />
-		<Unit filename="../../src/help/help_browser.cpp" />
-		<Unit filename="../../src/help/help_browser.hpp" />
 		<Unit filename="../../src/help/help_impl.cpp" />
 		<Unit filename="../../src/help/help_impl.hpp" />
-		<Unit filename="../../src/help/help_menu.cpp" />
-		<Unit filename="../../src/help/help_menu.hpp" />
-		<Unit filename="../../src/help/help_text_area.cpp" />
-		<Unit filename="../../src/help/help_text_area.hpp" />
 		<Unit filename="../../src/help/help_topic_generators.cpp" />
 		<Unit filename="../../src/help/help_topic_generators.hpp" />
 		<Unit filename="../../src/hotkey/command_executor.cpp" />
@@ -908,11 +896,11 @@
 		<Unit filename="../../src/multiplayer_error_codes.hpp" />
 		<Unit filename="../../src/network_asio.cpp" />
 		<Unit filename="../../src/network_asio.hpp" />
+		<Unit filename="../../src/overlay.hpp" />
 		<Unit filename="../../src/ogl/context.cpp" />
 		<Unit filename="../../src/ogl/context.hpp" />
 		<Unit filename="../../src/ogl/utils.cpp" />
 		<Unit filename="../../src/ogl/utils.hpp" />
-		<Unit filename="../../src/overlay.hpp" />
 		<Unit filename="../../src/pathfind/astarsearch.cpp" />
 		<Unit filename="../../src/pathfind/pathfind.cpp" />
 		<Unit filename="../../src/pathfind/pathfind.hpp" />
@@ -952,6 +940,8 @@
 		<Unit filename="../../src/quit_confirmation.hpp" />
 		<Unit filename="../../src/random.cpp" />
 		<Unit filename="../../src/random.hpp" />
+		<Unit filename="../../src/serialization/base64.cpp" />
+		<Unit filename="../../src/serialization/base64.hpp" />
 		<Unit filename="../../src/random_deterministic.cpp" />
 		<Unit filename="../../src/random_deterministic.hpp" />
 		<Unit filename="../../src/random_synced.cpp" />
@@ -1159,7 +1149,6 @@
 		<Unit filename="../../src/utils/context_free_grammar_generator.hpp" />
 		<Unit filename="../../src/utils/functional.hpp" />
 		<Unit filename="../../src/utils/general.hpp" />
-		<Unit filename="../../src/utils/io.hpp" />
 		<Unit filename="../../src/utils/irdya_datetime.cpp" />
 		<Unit filename="../../src/utils/irdya_datetime.hpp" />
 		<Unit filename="../../src/utils/iterable_pair.hpp" />
@@ -1214,8 +1203,6 @@
 		<Unit filename="../../src/whiteboard/visitor.hpp" />
 		<Unit filename="../../src/widgets/button.cpp" />
 		<Unit filename="../../src/widgets/button.hpp" />
-
-
 		<Unit filename="../../src/widgets/menu.cpp" />
 		<Unit filename="../../src/widgets/menu.hpp" />
 		<Unit filename="../../src/widgets/menu_style.cpp" />
