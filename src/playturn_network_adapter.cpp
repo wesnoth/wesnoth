@@ -66,9 +66,20 @@ bool playturn_network_adapter::is_at_end()
 	return this->next_ == data_.back().ordered_end();
 }
 
+void playturn_network_adapter::push_front(config&& cfg)
+{
+	data_front_.emplace_front(std::move(cfg));
+}
+
 bool playturn_network_adapter::read(config& dst)
 {
 	assert(dst.empty());
+	if(!data_front_.empty())
+	{
+		dst = std::move(data_front_.back());
+		data_front_.pop_back();
+		return true;
+	}
 	if(is_at_end())
 	{
 		read_from_network();
@@ -114,10 +125,12 @@ bool playturn_network_adapter::read(config& dst)
 }
 
 playturn_network_adapter::playturn_network_adapter(source_type source)
-	: data_({config()}),
-	next_(data_.front().ordered_end()),
-	next_command_num_(0),
-	network_reader_(source)
+	: network_reader_(source)
+	, data_({config()})
+	, data_front_()
+	, next_(data_.front().ordered_end())
+	, next_command_num_(0)
+	
 {
 
 }
