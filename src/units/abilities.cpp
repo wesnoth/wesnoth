@@ -574,7 +574,7 @@ namespace {
  * Returns whether or not @a *this has a special with a tag or id equal to
  * @a special. If @a simple_check is set to true, then the check is merely
  * for being present. Otherwise (the default), the check is for a special
- * active in the current context (see set_specials_context), including
+ * active in the current context (see specials_context), including
  * specials obtained from the opponent's attack.
  */
 bool attack_type::get_special_bool(const std::string& special, bool simple_check) const
@@ -610,7 +610,7 @@ bool attack_type::get_special_bool(const std::string& special, bool simple_check
 
 /**
  * Returns the currently active specials as an ability list, given the current
- * context (see set_specials_context).
+ * context (see specials_context).
  */
 unit_ability_list attack_type::get_specials(const std::string& special) const
 {
@@ -633,7 +633,7 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
  * Each std::pair in the vector has first = name and second = description.
  *
  * This uses either the active or inactive name/description for each special,
- * based on the current context (see set_specials_context), provided
+ * based on the current context (see specials_context), provided
  * @a active_list is not nullptr. Otherwise specials are assumed active.
  * If the appropriate name is empty, the special is skipped.
  */
@@ -670,7 +670,7 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
  * Empty names are skipped.
  *
  * This excludes inactive specials if only_active is true. Whether or not a
- * special is active depends on the current context (see set_specials_context)
+ * special is active depends on the current context (see specials_context)
  * and the @a is_backstab parameter.
  */
 std::string attack_type::weapon_specials(bool only_active, bool is_backstab) const
@@ -933,7 +933,7 @@ namespace { // Helpers for attack_type::special_active()
 
 /**
  * Returns whether or not the given special is active for the specified unit,
- * based on the current context (see set_specials_context).
+ * based on the current context (see specials_context).
  * @param[in] special           a weapon special WML structure
  * @param[in] whom              specifies which combatant we care about
  * @param[in] include_backstab  false if backstab specials should not be active
