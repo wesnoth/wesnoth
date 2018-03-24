@@ -182,7 +182,7 @@ struct sendfile_op
 	bool pending_;
 	std::shared_ptr<handle_doc<Handler, ErrorHandler>> handle_send_doc_;
 
-	void operator()(boost::system::error_code ec, std::size_t)
+	void operator()(boost::system::error_code, std::size_t)
 	{
 		bool failed = false;
 		if (!pending_)

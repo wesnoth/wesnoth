@@ -1917,15 +1917,15 @@ void put_pixel(const surface& surf, surface_lock& surf_lock, int x, int y, uint3
 		*reinterpret_cast<uint16_t*>(dst) = pixel;
 		break;
 	case 3:
-		if (SDL_BYTEORDER == SDL_BIG_ENDIAN) {
-			dst[0] = (pixel >> 16) & 0xff;
-			dst[1] = (pixel >> 8) & 0xff;
-			dst[2] = pixel & 0xff;
-		} else {
-			dst[0] = pixel & 0xff;
-			dst[1] = (pixel >> 8) & 0xff;
-			dst[2] = (pixel >> 16) & 0xff;
-		}
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+		dst[0] = (pixel >> 16) & 0xff;
+		dst[1] = (pixel >> 8) & 0xff;
+		dst[2] = pixel & 0xff;
+#else
+		dst[0] = pixel & 0xff;
+		dst[1] = (pixel >> 8) & 0xff;
+		dst[2] = (pixel >> 16) & 0xff;
+#endif
 		break;
 	case 4:
 		*reinterpret_cast<uint32_t*>(dst) = pixel;
@@ -1946,11 +1946,11 @@ uint32_t get_pixel(const surface& surf, const const_surface_lock& surf_lock, int
 	case 2:
 		return *reinterpret_cast<const uint16_t*>(src);
 	case 3:
-		if (SDL_BYTEORDER == SDL_BIG_ENDIAN)
-			return src[0] << 16 | src[1] << 8 | src[2];
-		else
-			return src[0] | src[1] << 8 | src[2] << 16;
-		break;
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+		return src[0] << 16 | src[1] << 8 | src[2];
+#else
+		return src[0] | src[1] << 8 | src[2] << 16;
+#endif
 	case 4:
 		return *reinterpret_cast<const uint32_t*>(src);
 	}

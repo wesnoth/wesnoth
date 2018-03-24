@@ -301,8 +301,16 @@ static int impl_vconfig_pairs_collect(lua_State *L)
 {
 	typedef config::const_attr_itors const_attr_itors;
 	void* p = lua_touserdata(L, 1);
+
+	// Triggers a false positive of C4189 with Visual Studio. Suppress.
+#pragma warning(push)
+#pragma warning(disable: 4189)
+
 	const_attr_itors* cai = static_cast<const_attr_itors*>(p);
 	cai->~const_attr_itors();
+
+#pragma warning(pop)
+
 	return 0;
 }
 
