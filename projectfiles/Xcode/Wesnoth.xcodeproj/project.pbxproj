@@ -816,9 +816,7 @@
 		91FBBAD81CB6BC3F00470BFE /* filesystem_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FBBAD71CB6BC3F00470BFE /* filesystem_sdl.cpp */; };
 		91FBBADB1CB6D1B700470BFE /* markov_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FBBAD91CB6D1B700470BFE /* markov_generator.cpp */; };
 		B504B94C1284C06B00261FE9 /* tips.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B504B94A1284C06B00261FE9 /* tips.cpp */; };
-		B508D13F10013BF900B12852 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B508D13E10013BF900B12852 /* Growl.framework */; };
 		B508D14B10013E4700B12852 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = B508D14A10013E4700B12852 /* Growl Registration Ticket.growlRegDict */; };
-		B508D15F10013F8100B12852 /* Growl.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = B508D13E10013BF900B12852 /* Growl.framework */; };
 		B508D193100146E300B12852 /* engine_fai.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508D191100146E300B12852 /* engine_fai.cpp */; };
 		B508D1FB100155F300B12852 /* helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508D1E7100155F300B12852 /* helper.cpp */; };
 		B508D2161001560100B12852 /* stacked_widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508D2141001560100B12852 /* stacked_widget.cpp */; };
@@ -1374,7 +1372,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				905440871EE46ABC0091D1AE /* libcrypto.1.1.dylib in Copy Frameworks */,
-				B508D15F10013F8100B12852 /* Growl.framework in Copy Frameworks */,
 				91B622011B76C0A600B00E0F /* libboost_filesystem-mt.dylib in Copy Frameworks */,
 				91B622021B76C0A600B00E0F /* libboost_iostreams-mt.dylib in Copy Frameworks */,
 				91B622031B76C0A600B00E0F /* libboost_locale-mt.dylib in Copy Frameworks */,
@@ -1854,7 +1851,6 @@
 		91FBBADA1CB6D1B700470BFE /* markov_generator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = markov_generator.hpp; sourceTree = "<group>"; };
 		B504B94A1284C06B00261FE9 /* tips.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tips.cpp; sourceTree = "<group>"; };
 		B504B94B1284C06B00261FE9 /* tips.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tips.hpp; sourceTree = "<group>"; };
-		B508D13E10013BF900B12852 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = lib/Growl.framework; sourceTree = "<group>"; };
 		B508D14A10013E4700B12852 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "Growl Registration Ticket.growlRegDict"; path = "Resources/Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 		B508D191100146E300B12852 /* engine_fai.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = engine_fai.cpp; sourceTree = "<group>"; };
 		B508D192100146E300B12852 /* engine_fai.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = engine_fai.hpp; sourceTree = "<group>"; };
@@ -2747,7 +2743,6 @@
 				ECA9E7471CA20AA800A947D6 /* libreadline.7.0.dylib in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				F4D2A99614DAED0E00CAFF31 /* CoreFoundation.framework in Frameworks */,
-				B508D13F10013BF900B12852 /* Growl.framework in Frameworks */,
 				91B6221D1B76C0F400B00E0F /* libboost_filesystem-mt.dylib in Frameworks */,
 				91B6221E1B76C0F400B00E0F /* libboost_iostreams-mt.dylib in Frameworks */,
 				91B6221F1B76C0F400B00E0F /* libboost_locale-mt.dylib in Frameworks */,
@@ -2881,7 +2876,6 @@
 			isa = PBXGroup;
 			children = (
 				46BAF784206672240004711F /* libboost_chrono-mt.dylib */,
-				B508D13E10013BF900B12852 /* Growl.framework */,
 				B55999220EC61F59008DD061 /* SDL2_image.framework */,
 				B55999240EC61F59008DD061 /* SDL2_mixer.framework */,
 				B5599E9B0EC68BF2008DD061 /* SDL2_ttf.framework */,
@@ -6338,7 +6332,7 @@
 				);
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-Wall",
@@ -6389,7 +6383,7 @@
 				);
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CFLAGS = (
 					"-Wno-unused-local-typedefs",
 					"-Wno-unused-private-field",
