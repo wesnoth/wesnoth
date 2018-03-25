@@ -84,13 +84,9 @@
 		<Unit filename="../../packaging/windows/wesnoth.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
-		<Unit filename="../../src/SDL_SavePNG/savepng.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="../../src/crypt_blowfish/crypt_blowfish.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="../../src/SDL_SavePNG/savepng.h" />
 		<Unit filename="../../src/crypt_blowfish/crypt_blowfish.h">
 		<Unit filename="../../src/about.cpp" />
 		<Unit filename="../../src/about.hpp" />
@@ -805,12 +801,8 @@
 		<Unit filename="../../src/hash.hpp" />
 		<Unit filename="../../src/help/help.cpp" />
 		<Unit filename="../../src/help/help.hpp" />
-		<Unit filename="../../src/help/help_browser.cpp" />
-		<Unit filename="../../src/help/help_browser.hpp" />
 		<Unit filename="../../src/help/help_impl.cpp" />
 		<Unit filename="../../src/help/help_impl.hpp" />
-		<Unit filename="../../src/help/help_menu.cpp" />
-		<Unit filename="../../src/help/help_menu.hpp" />
 		<Unit filename="../../src/help/help_text_area.cpp" />
 		<Unit filename="../../src/help/help_text_area.hpp" />
 		<Unit filename="../../src/help/help_topic_generators.cpp" />
@@ -872,6 +864,7 @@
 		<Unit filename="../../src/lua_jailbreak_exception.cpp" />
 		<Unit filename="../../src/lua_jailbreak_exception.hpp" />
 		<Unit filename="../../src/map/exception.hpp" />
+		<Unit filename="../../src/map/hex_rect.hpp" />
 		<Unit filename="../../src/map/label.cpp" />
 		<Unit filename="../../src/map/label.hpp" />
 		<Unit filename="../../src/map/location.cpp" />
@@ -1141,7 +1134,6 @@
 		<Unit filename="../../src/utils/context_free_grammar_generator.hpp" />
 		<Unit filename="../../src/utils/functional.hpp" />
 		<Unit filename="../../src/utils/general.hpp" />
-		<Unit filename="../../src/utils/io.hpp" />
 		<Unit filename="../../src/utils/irdya_datetime.cpp" />
 		<Unit filename="../../src/utils/irdya_datetime.hpp" />
 		<Unit filename="../../src/utils/iterable_pair.hpp" />
