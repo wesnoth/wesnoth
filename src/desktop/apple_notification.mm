@@ -34,6 +34,7 @@ bool available() {
 
 void send_cocoa_notification(const std::string& owner, const std::string& message);
 
+#pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"
 void send_notification(const std::string& owner, const std::string& message, const desktop::notifications::type note_type) {
     @autoreleasepool {
@@ -44,6 +45,7 @@ void send_notification(const std::string& owner, const std::string& message, con
     }
 }
 
+#pragma clang diagnostic pop
 void send_cocoa_notification(const std::string& owner, const std::string& message) {
     NSString *title = [NSString stringWithCString:owner.c_str() encoding:NSUTF8StringEncoding];
     NSString *description = [NSString stringWithCString:message.c_str() encoding:NSUTF8StringEncoding];
