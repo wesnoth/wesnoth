@@ -786,8 +786,7 @@ attack_type::specials_context_t::specials_context_t(attack_type::specials_contex
 
 attack_type::specials_context_t& attack_type::specials_context_t::operator=(attack_type::specials_context_t&& other)
 {
-	// This ugly line calls into the default copy move assignment operator.
-	operator=(static_cast<attack_type::specials_context_t&>(other));
+	*this = other; // Copy assign.
 	other.was_moved = true;
 	return *this;
 }
