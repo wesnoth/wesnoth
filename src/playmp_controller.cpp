@@ -456,9 +456,11 @@ void playmp_controller::send_user_choice()
 
 void playmp_controller::play_slice(bool is_delay_enabled)
 {
-	process_network_data(true);
-	//cannot use turn_data_.send_data() here.
-	replay_sender_.sync_non_undoable();
+	if(!linger_) {
+		process_network_data(true);
+		//cannot use turn_data_.send_data() here.
+		replay_sender_.sync_non_undoable();
+	}
 	playsingle_controller::play_slice(is_delay_enabled);
 }
 
