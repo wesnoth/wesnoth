@@ -131,7 +131,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	boost::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
-		opp_ctx = opp_weapon->specials_context(&defender.unit_, &attacker.unit_, defender.unit_.get_location(), attacker.unit_.get_location(), defender.stats_.is_attacker, weapon);
+		opp_ctx.emplace(opp_weapon->specials_context(&defender.unit_, &attacker.unit_, defender.unit_.get_location(), attacker.unit_.get_location(), defender.stats_.is_attacker, weapon));
 	}
 
 	// Get damage modifiers.
