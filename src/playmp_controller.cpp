@@ -138,6 +138,8 @@ void playmp_controller::play_human_turn()
 	while(!should_return_to_play_side()) {
 		try {
 			process_network_data();
+			check_objectives();
+			play_slice_catch();
 			if (player_type_changed_)
 			{
 				// Clean undo stack if turn has to be restarted (losing control)
@@ -159,8 +161,6 @@ void playmp_controller::play_human_turn()
 					undo_stack().undo();
 
 			}
-			check_objectives();
-			play_slice_catch();
 			if(timer)
 			{
 				bool time_left = timer->update();
