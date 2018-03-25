@@ -17,7 +17,7 @@ function wesnoth.wml_actions.move_unit(cfg)
 	local check_passability = cfg.check_passability
 	if check_passability == nil then check_passability = true end
 	cfg = wml.literal(cfg)
-	cfg.to_location = cfg.to_x, cfg.to_y, cfg.fire_event = nil
+	cfg.to_location, cfg.to_x, cfg.to_y, cfg.fire_event = nil
 	local units = wesnoth.get_units(cfg)
 
 	local pattern = "[^%s,]+"
