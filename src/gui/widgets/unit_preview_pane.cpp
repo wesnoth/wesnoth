@@ -29,6 +29,7 @@
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
+#include "language.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
@@ -222,7 +223,7 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 		add_name_tree_node(
 			subsection,
 			"item",
-			(formatter() << font::span_color(font::weapon_details_color) << a.range() << font::weapon_details_sep << a.type() << "</span>").str()
+			(formatter() << font::span_color(font::weapon_details_color) << string_table["range_" + a.range()] << font::weapon_details_sep << string_table["type_" + a.type()] << "</span>").str()
 		);
 
 		for(const auto& pair : a.special_tooltips()) {
