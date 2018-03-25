@@ -13,7 +13,6 @@ sdl2_image_required_version="2.0.3"
 sdl2_mixer_required_version="2.0.2"
 sdl2_net_required_version="2.0.1"
 sdl2_ttf_required_version="2.0.14"
-growl_required_version="2.0.1"
 ###/Required Version Defines
 
 ###Sha256
@@ -22,7 +21,6 @@ sdl2_image_dmg_sha256="f1beefadf4dfc4f923c5cdb37d012fd94063b9c5085f492f9170e0043
 sdl2_mixer_dmg_sha256="174a371e2acdfa7ae26be71134b9925f46e5257c8c8d608f09a6726a0368606b"
 sdl2_net_dmg_sha256="3a126e31b323d832be0ef4b9941fc3113b931e42a26e9bcc989487fd5348f858"
 sdl2_ttf_dmg_sha256="7cdfb4239aaacfed2fd235c12f600b21b193b6ceb60b32b1cbb674fbde04e9f3"
-growl_zip_sha256="f57c3beeba51738c44f1f741c008815c54352282d1085076e0ed61d6f17806a8"
 ###/Sha256
 
 ###Functions
@@ -60,39 +58,22 @@ framework_install() {
         fi
         if [ "$path" == "none" ]; then
                 echo "==> Downloading $PACKAGE $REQUIRED_VERSION"
-                if [ "$PACKAGE" != "Growl" ]; then
-                        if [ -f "$PACKAGE-$REQUIRED_VERSION.dmg" ]; then
-                                rm "$PACKAGE-$REQUIRED_VERSION.dmg"
-                        fi
-                        if [ "$PACKAGE" == "SDL2" ]; then
-                                wget "https://www.libsdl.org/release/$PACKAGE-$REQUIRED_VERSION.dmg" -q --show-progress
-                        else
-                                wget "https://www.libsdl.org/projects/$(echo "$PACKAGE" | sed -e 's/SDL2/SDL/g')/release/$PACKAGE-$REQUIRED_VERSION.dmg" -q --show-progress
-                        fi
-                        if [ "$(shasum -a 256 $PACKAGE-$REQUIRED_VERSION.dmg | awk '{print $1}')" != $SHA256 ]; then
-                                echo "Error: SHA256 Checksum of $PACKAGE-$REQUIRED_VERSION.dmg doesn't match!" >&2
-                                exit 1
-                        fi
-                        hdiutil attach "$PACKAGE-$REQUIRED_VERSION.dmg" > /dev/null
-                        cp -Rf /Volumes/$PACKAGE/$PACKAGE.framework $PACKAGE.framework
-                        hdiutil detach /Volumes/$PACKAGE > /dev/null
-                        path="$MY_PATH/temp/$PACKAGE.framework"
-                else
-                        if [ -f "$PACKAGE-$REQUIRED_VERSION-SDK.zip" ]; then
-                                rm "$PACKAGE-$REQUIRED_VERSION-SDK.zip"
-                        fi
-                        wget "http://growl.cachefly.net/$PACKAGE-$REQUIRED_VERSION-SDK.zip" -q --show-progress
-                        if [ "$(shasum -a 256 $PACKAGE-$REQUIRED_VERSION-SDK.zip | awk '{print $1}')" != $SHA256 ]; then
-                                echo "Error: SHA256 Checksum of $PACKAGE-$REQUIRED_VERSION-SDK.zip doesn't match!" >&2
-                                exit 1
-                        fi
-                        if [ -d "$PACKAGE-$REQUIRED_VERSION-SDK" ]; then
-                                rm -rf "$PACKAGE-$REQUIRED_VERSION-SDK"
-                        fi
-                        unzip "$PACKAGE-$REQUIRED_VERSION-SDK.zip" > /dev/null
-                        cp -Rf "$PACKAGE-$REQUIRED_VERSION-SDK/Framework/$PACKAGE.framework" Growl.framework
-                        path="$MY_PATH/temp/$PACKAGE.framework"
+                if [ -f "$PACKAGE-$REQUIRED_VERSION.dmg" ]; then
+                        rm "$PACKAGE-$REQUIRED_VERSION.dmg"
                 fi
+                if [ "$PACKAGE" == "SDL2" ]; then
+                        wget "https://www.libsdl.org/release/$PACKAGE-$REQUIRED_VERSION.dmg" -q --show-progress
+                else
+                        wget "https://www.libsdl.org/projects/$(echo "$PACKAGE" | sed -e 's/SDL2/SDL/g')/release/$PACKAGE-$REQUIRED_VERSION.dmg" -q --show-progress
+                fi
+                if [ "$(shasum -a 256 $PACKAGE-$REQUIRED_VERSION.dmg | awk '{print $1}')" != $SHA256 ]; then
+                        echo "Error: SHA256 Checksum of $PACKAGE-$REQUIRED_VERSION.dmg doesn't match!" >&2
+                        exit 1
+                fi
+                hdiutil attach "$PACKAGE-$REQUIRED_VERSION.dmg" > /dev/null
+                cp -Rf /Volumes/$PACKAGE/$PACKAGE.framework $PACKAGE.framework
+                hdiutil detach /Volumes/$PACKAGE > /dev/null
+                path="$MY_PATH/temp/$PACKAGE.framework"
         fi
 }
 
@@ -223,11 +204,6 @@ sdl2_net_path="$path"
 framework_install "SDL2_ttf" "$sdl2_ttf_required_version" "$sdl2_ttf_dmg_sha256"
 sdl2_ttf_path="$path"
 ###/SDL2_ttf
-
-###Growl
-framework_install "Growl" "$growl_required_version" "$growl_zip_sha256"
-growl_path="$path"
-###/Growl
 cd ..
 
 if [ -d "lib" ]; then
@@ -263,7 +239,6 @@ ln -s "$sdl2_image_path"
 ln -s "$sdl2_mixer_path"
 ln -s "$sdl2_net_path"
 ln -s "$sdl2_ttf_path"
-ln -s "$growl_path"
 
 
 

@@ -40,10 +40,6 @@
 // apple_notification.mm uses Foundation.h, which is an Objective-C header;
 // but CoreFoundation.h is a C header which also defines these.
 #include <CoreFoundation/CoreFoundation.h>
-
-#if (defined MAC_OS_X_VERSION_10_8) && (MAC_OS_X_VERSION_10_8 <= MAC_OS_X_VERSION_MAX_ALLOWED)
-#define HAVE_NS_USER_NOTIFICATION
-#endif
 #endif
 
 namespace game_config
@@ -298,17 +294,9 @@ version_table_manager::version_table_manager()
 #endif
 
 #ifdef __APPLE__
-
+    // Always compiled in.
 	features.emplace_back(N_("feature^Cocoa notifications back end"));
-#ifdef HAVE_NS_USER_NOTIFICATION
 	features.back().enabled = true;
-#endif
-
-	features.emplace_back(N_("feature^Growl notifications back end"));
-#ifdef HAVE_GROWL
-	features.back().enabled = true;
-#endif
-
 #endif /* __APPLE__ */
 }
 
