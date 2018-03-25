@@ -171,11 +171,6 @@ void fuh::set_is_moderator(const std::string& name, const bool& is_moderator) {
 	}
 }
 
-void fuh::password_reminder(const std::string& /*name*/) {
-	throw error("For now please use the password recovery "
-		"function provided at https://forums.wesnoth.org");
-}
-
 std::string fuh::user_info(const std::string& name) {
 	if(!user_exists(name)) {
 		throw error("No user with the name '" + name + "' exists.");

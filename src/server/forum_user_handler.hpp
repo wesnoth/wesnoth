@@ -69,9 +69,6 @@ class fuh : public user_handler {
 		void set_is_moderator(const std::string& name, const bool& is_moderator);
 
 		// Throws user_handler::error
-		void password_reminder(const std::string& name);
-
-		// Throws user_handler::error
 		std::string user_info(const std::string& name);
 
 		// Throws user_handler::error
