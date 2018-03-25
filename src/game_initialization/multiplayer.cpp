@@ -183,8 +183,6 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 
 		// Enter login loop
 		for(;;) {
-			std::string password_reminder = "";
-
 			std::string login = preferences::login();
 
 			config response ;
@@ -251,52 +249,48 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 				// or request a password reminder.
 				// Otherwise or if the user pressed 'cancel' in the confirmation dialog
 				// above go directly to the username/password dialog
-				if((is_pw_request || !password_reminder.empty()) && !fall_through) {
-					if(is_pw_request) {
-						if((*error)["phpbb_encryption"].to_bool()) {
-							// Apparently HTML key-characters are passed to the hashing functions of phpbb in this escaped form.
-							// I will do closer investigations on this, for now let's just hope these are all of them.
+				if(is_pw_request && !fall_through) {
+					if((*error)["phpbb_encryption"].to_bool()) {
+						// Apparently HTML key-characters are passed to the hashing functions of phpbb in this escaped form.
+						// I will do closer investigations on this, for now let's just hope these are all of them.
 
-							// Note: we must obviously replace '&' first, I wasted some time before I figured that out... :)
-							for(std::string::size_type pos = 0; (pos = password.find('&', pos)) != std::string::npos; ++pos)
-								password.replace(pos, 1, "&amp;");
-							for(std::string::size_type pos = 0; (pos = password.find('\"', pos)) != std::string::npos; ++pos)
-								password.replace(pos, 1, "&quot;");
-							for(std::string::size_type pos = 0; (pos = password.find('<', pos)) != std::string::npos; ++pos)
-								password.replace(pos, 1, "&lt;");
-							for(std::string::size_type pos = 0; (pos = password.find('>', pos)) != std::string::npos; ++pos)
-								password.replace(pos, 1, "&gt;");
+						// Note: we must obviously replace '&' first, I wasted some time before I figured that out... :)
+						for(std::string::size_type pos = 0; (pos = password.find('&', pos)) != std::string::npos; ++pos)
+							password.replace(pos, 1, "&amp;");
+						for(std::string::size_type pos = 0; (pos = password.find('\"', pos)) != std::string::npos; ++pos)
+							password.replace(pos, 1, "&quot;");
+						for(std::string::size_type pos = 0; (pos = password.find('<', pos)) != std::string::npos; ++pos)
+							password.replace(pos, 1, "&lt;");
+						for(std::string::size_type pos = 0; (pos = password.find('>', pos)) != std::string::npos; ++pos)
+							password.replace(pos, 1, "&gt;");
 
-							const std::string salt = (*error)["salt"];
+						const std::string salt = (*error)["salt"];
 
-							if(salt.length() < 12) {
-								throw wesnothd_error(_("Bad data received from server"));
-							}
+						if(salt.length() < 12) {
+							throw wesnothd_error(_("Bad data received from server"));
+						}
 
-							if(utils::md5::is_valid_prefix(salt)) {
-								sp["password"] = utils::md5(utils::md5(password, utils::md5::get_salt(salt),
-									utils::md5::get_iteration_count(salt)).base64_digest(), salt.substr(12, 8)).base64_digest();
-							} else if(utils::bcrypt::is_valid_prefix(salt)) {
-								try {
-									auto bcrypt_salt = utils::bcrypt::from_salted_salt(salt);
-									auto hash = utils::bcrypt::hash_pw(password, bcrypt_salt);
-									std::string outer_salt = salt.substr(bcrypt_salt.iteration_count_delim_pos + 23);
-									if(outer_salt.size() != 32)
-										throw utils::hash_error("salt wrong size");
-									sp["password"] = utils::md5(hash.base64_digest(), outer_salt).base64_digest();
-								} catch(utils::hash_error& err) {
-									ERR_MP << "bcrypt hash failed: " << err.what() << std::endl;
-									throw wesnothd_error(_("Bad data received from server"));
-								}
-							} else {
+						if(utils::md5::is_valid_prefix(salt)) {
+							sp["password"] = utils::md5(utils::md5(password, utils::md5::get_salt(salt),
+								utils::md5::get_iteration_count(salt)).base64_digest(), salt.substr(12, 8)).base64_digest();
+						} else if(utils::bcrypt::is_valid_prefix(salt)) {
+							try {
+								auto bcrypt_salt = utils::bcrypt::from_salted_salt(salt);
+								auto hash = utils::bcrypt::hash_pw(password, bcrypt_salt);
+								std::string outer_salt = salt.substr(bcrypt_salt.iteration_count_delim_pos + 23);
+								if(outer_salt.size() != 32)
+									throw utils::hash_error("salt wrong size");
+								sp["password"] = utils::md5(hash.base64_digest(), outer_salt).base64_digest();
+							} catch(utils::hash_error& err) {
+								ERR_MP << "bcrypt hash failed: " << err.what() << std::endl;
 								throw wesnothd_error(_("Bad data received from server"));
 							}
 						} else {
-							sp["password"] = password;
+							throw wesnothd_error(_("Bad data received from server"));
 						}
+					} else {
+						sp["password"] = password;
 					}
-
-					sp["password_reminder"] = password_reminder;
 
 					// Once again send our request...
 					sock->send_data(response);
@@ -309,8 +303,6 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 					// ... and get us out of here if the server is happy now
 					if(!*error) break;
 				}
-
-				password_reminder = "";
 
 				// Providing a password either was not attempted because we did not
 				// have any or failed:
@@ -362,10 +354,6 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 				switch(dlg.get_retval()) {
 					//Log in with password
 					case gui2::retval::OK:
-						break;
-					//Request a password reminder
-					case 1:
-						password_reminder = "yes";
 						break;
 					// Cancel
 					default:
