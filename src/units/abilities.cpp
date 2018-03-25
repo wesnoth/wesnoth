@@ -177,14 +177,15 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 	return false;
 }
 
-unit_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon) const
+unit_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
 {
 	unit_ability_list res(loc_);
 
 	for (const config &i : this->abilities_.child_range(tag_name)) {
 		if (ability_active(tag_name, i, loc) &&
 			ability_affects_self(tag_name, i, loc) &&
-			ability_affects_weapon(tag_name, i, loc, weapon))
+			ability_affects_weapon(tag_name, i, loc, weapon) &&
+		   ability_affects_second_weapon(tag_name, i, loc, opp_weapon))
 		{
 			res.push_back(unit_ability(&i, loc));
 		}
@@ -210,7 +211,8 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 			if (affects_side(j, resources::gameboard->teams(), side(), it->side()) &&
 			    it->ability_active(tag_name, j, adjacent[i]) &&
 			    ability_affects_adjacent(tag_name, j, i, loc, *it) &&
-			    ability_affects_weapon(tag_name, j, adjacent[i], weapon))
+			    ability_affects_weapon(tag_name, j, adjacent[i], weapon) &&
+			 ability_affects_second_weapon(tag_name, j, adjacent[i], opp_weapon))
 			{
 				res.push_back(unit_ability(&j, adjacent[i]));
 			}
@@ -420,10 +422,24 @@ bool unit::ability_affects_weapon(const std::string&, const config& cfg, const m
 	const config& filter = cfg.child("filter_weapon");
 	if(!weapon) {
 		// Not sure if this is the correct behaviour here
-		return false;
+		return true;
 	}
 
 	return weapon->matches_filter(filter);
+}
+
+bool unit::ability_affects_second_weapon(const std::string&, const config& cfg, const map_location&, const_attack_ptr opp_weapon) const
+{
+	if(!cfg.has_child("filter_second_weapon")) {
+		return true;
+	}
+	const config& filter = cfg.child("filter_second_weapon");
+	if(!opp_weapon) {
+		// Not sure if this is the correct behaviour here
+		return true;
+	}
+
+	return opp_weapon->matches_filter(filter);
 }
 
 
