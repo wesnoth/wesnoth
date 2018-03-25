@@ -44,8 +44,8 @@ void send_notification(const std::string& owner, const std::string& message, con
         }
     }
 }
-
 #pragma clang diagnostic pop
+
 void send_cocoa_notification(const std::string& owner, const std::string& message) {
     NSString *title = [NSString stringWithCString:owner.c_str() encoding:NSUTF8StringEncoding];
     NSString *description = [NSString stringWithCString:message.c_str() encoding:NSUTF8StringEncoding];
