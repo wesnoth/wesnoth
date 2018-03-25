@@ -15,8 +15,10 @@
    * Fixed infinite loading screen when logging in with an invalid name
    * Made debug command notifications more noticeable
    * Updated bundled Oldania font to version 1.007 (from 1.006).
-   * Added bold and italic Oldania font variant files.
-   * Updated bundled DejaVu Sans fonts to version 2.27 (from 2.35).
+   * Added bold and italic Oldania font variants.
+   * Updated bundled DejaVu Sans fonts to version 2.37 (from 2.35).
+   * Fixed [chat] not working during [delay] or animations.
+   * Removed the Password Reminder option from the Login screen.
 
 ## Version 1.13.12
  ### Security fixes
