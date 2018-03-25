@@ -1,15 +1,23 @@
 local helper = wesnoth.require "helper"
 
 function wesnoth.wml_actions.move_unit(cfg)
-	local coordinate_error = "invalid coordinate in [move_unit]"
-	local to_x = tostring(cfg.to_x or helper.wml_error(coordinate_error))
-	local to_y = tostring(cfg.to_y or helper.wml_error(coordinate_error))
+	local coordinate_error = "invalid location in [move_unit]"
+	local to_x, to_y
+	if cfg.to_location and wesnoth.special_locations[cfg.to_location] then
+		to_x, to_y = table.unpack(wesnoth.special_locations[cfg.to_location])
+	else
+		to_x = cfg.to_x
+		to_y = cfg.to_y
+	end
+	if not to_x or not to_y then
+		helper.wml_error(coordinate_error)
+	end
 	local fire_event = cfg.fire_event
 	local muf_force_scroll = cfg.force_scroll
 	local check_passability = cfg.check_passability
 	if check_passability == nil then check_passability = true end
 	cfg = wml.literal(cfg)
-	cfg.to_x, cfg.to_y, cfg.fire_event = nil, nil, nil
+	cfg.to_location = cfg.to_x, cfg.to_y, cfg.fire_event = nil
 	local units = wesnoth.get_units(cfg)
 
 	local pattern = "[^%s,]+"
