@@ -118,6 +118,9 @@ public:
 	void set_selection(size_t start, int length);
 
 protected:
+	/** Get length of composition text by IME **/
+	size_t get_composition_length() const;
+	
 	/**
 	 * Moves the cursor to the end of the line.
 	 *
@@ -259,15 +262,10 @@ protected:
 		return ime_start_point_;
 	}
 
-	size_t get_composition_length() const
-	{
-		return ime_length_;
-	}
-
 public:
 	bool is_composing() const
 	{
-		return ime_in_progress_;
+		return ime_composing_;
 	}
 
 	void interrupt_composition();
@@ -317,9 +315,8 @@ private:
 	int selection_length_;
 
 	// Values to support input method editors
-	bool ime_in_progress_;
+	bool ime_composing_;
 	int ime_start_point_;
-	int ime_length_;
 
 	size_t cursor_timer_;
 
