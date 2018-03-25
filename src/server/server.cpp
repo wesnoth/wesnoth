@@ -624,21 +624,6 @@ void server::handle_login(socket_ptr socket, std::shared_ptr<simple_wml::documen
 			}
 		}
 
-		// If this is a request for password reminder
-		if(user_handler_) {
-			std::string password_reminder = (*login)["password_reminder"].to_string();
-			if(password_reminder == "yes") {
-				try {
-					user_handler_->password_reminder(username);
-					async_send_error(socket, "Your password reminder email has been sent.");
-				} catch (user_handler::error& e) {
-					async_send_error(socket, "There was an error sending your password reminder email. The error message was: " +
-									 e.message);
-				}
-				return;
-			}
-		}
-
 		// Check the username isn't already taken
 		auto p = player_connections_.get<name_t>().find(username);
 		bool name_taken = p != player_connections_.get<name_t>().end();

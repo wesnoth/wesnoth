@@ -37,8 +37,6 @@ class suh : public user_handler {
 		bool login(const std::string& name, const std::string& password, const std::string&);
 		void user_logged_in(const std::string& name);
 
-		void password_reminder(const std::string& name);
-
 		bool user_exists(const std::string& name);
 		bool user_is_active(const std::string& name);
 
