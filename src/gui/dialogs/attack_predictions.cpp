@@ -182,7 +182,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	ss.str("");
 
 	// Resistance modifier.
-	const int resistance_modifier = defender.unit_.damage_from(*weapon, !attacker.stats_.is_attacker, defender.unit_.get_location());
+	const int resistance_modifier = defender.unit_.damage_from(*weapon, !attacker.stats_.is_attacker, defender.unit_.get_location(), weapon);
 	if(resistance_modifier != 100) {
 		if(attacker.stats_.is_attacker) {
 			ss << _("Defender resistance vs") << " ";
@@ -217,7 +217,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	}
 
 	// Leadership bonus.
-	const int leadership_bonus = under_leadership(resources::gameboard->units(), attacker.unit_.get_location()).first;
+	const int leadership_bonus = under_leadership(resources::gameboard->units(), attacker.unit_.get_location(), weapon).first;
 
 	if(leadership_bonus != 0) {
 		set_label_helper("leadership_modifier", utils::signed_percent(leadership_bonus));

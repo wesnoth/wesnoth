@@ -266,7 +266,7 @@ void attack_unit_and_advance(const map_location& attacker,
  * Returns a pair of bonus percentage and the leader's location if the unit is affected,
  * or 0 and map_location::null_location() otherwise.
  */
-std::pair<int, map_location> under_leadership(const unit_map& units, const map_location& loc);
+std::pair<int, map_location> under_leadership(const unit_map& units, const map_location& loc, const_attack_ptr weapon);
 
 /**
  * Returns the amount that a unit's damage should be multiplied by

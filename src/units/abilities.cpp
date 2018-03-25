@@ -176,13 +176,15 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 
 	return false;
 }
-unit_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc) const
+
+unit_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon) const
 {
 	unit_ability_list res(loc_);
 
 	for (const config &i : this->abilities_.child_range(tag_name)) {
 		if (ability_active(tag_name, i, loc) &&
-			ability_affects_self(tag_name, i, loc))
+			ability_affects_self(tag_name, i, loc) &&
+            ability_affects_weapon(tag_name, i, loc, weapon))
 		{
 			res.push_back(unit_ability(&i, loc));
 		}
@@ -207,7 +209,8 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		for (const config &j : it->abilities_.child_range(tag_name)) {
 			if (affects_side(j, resources::gameboard->teams(), side(), it->side()) &&
 			    it->ability_active(tag_name, j, adjacent[i]) &&
-			    ability_affects_adjacent(tag_name, j, i, loc, *it))
+			    ability_affects_adjacent(tag_name, j, i, loc, *it) &&
+                ability_affects_weapon(tag_name, j, adjacent[i], weapon))
 			{
 				res.push_back(unit_ability(&j, adjacent[i]));
 			}
@@ -408,6 +411,15 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 	if (!filter || !affect_self) return affect_self;
 	return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc);
 }
+
+bool unit::ability_affects_weapon(const std::string& ability,const config& cfg,const map_location& loc, const_attack_ptr weapon) const
+{
+  const config &filter = cfg.child("filter_weapon");
+  if (!filter || weapon->matches_filter(filter)) return true;
+			if ( !weapon )
+				return false;
+}
+
 
 bool unit::has_ability_type(const std::string& ability) const
 {
