@@ -446,7 +446,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 		std::string l_str = VGETTEXT("Lvl $lvl", {{"lvl", std::to_string(u.level())}});
 		str << l_str << "\n";
 
-		str << u.alignment() << "\n";
+		str << unit_type::alignment_description(u.alignment(), u.gender()) << "\n";
 
 		str << utils::join(u.trait_names(), ", ") << "\n";
 
