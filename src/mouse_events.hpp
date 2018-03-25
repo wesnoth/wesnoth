@@ -39,7 +39,6 @@ public:
 	~mouse_handler();
 	static mouse_handler* get_singleton() { return singleton_ ;}
 	void set_side(int side_number);
-	void mouse_press(const SDL_MouseButtonEvent& event, const bool browse);
 	void cycle_units(const bool browse, const bool reverse = false);
 	void cycle_back_units(const bool browse) { cycle_units(browse, true); }
 

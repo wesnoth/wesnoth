@@ -499,11 +499,6 @@ pathfind::marked_route mouse_handler::get_route(const unit* un, map_location go_
 	return mark_route(route);
 }
 
-void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool browse)
-{
-	mouse_handler_base::mouse_press(event, browse);
-}
-
 bool mouse_handler::right_click_show_menu(int x, int y, const bool /*browse*/)
 {
 	if(selected_hex_.valid() || unselected_reach_) {
