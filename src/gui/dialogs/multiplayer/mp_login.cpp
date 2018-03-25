@@ -51,9 +51,6 @@ namespace dialogs
  *         A toggle button to offer to remember the password in the
  *         preferences. $
  *
- * password_reminder & & button & o &
- *         Request a password reminder. $
- *
  * change_username & & button & o &
  *         Use a different username. $
  *
@@ -93,16 +90,6 @@ void mp_login::save_password(window& win) const
 
 void mp_login::pre_show(window& win)
 {
-	if(button* btn = find_widget<button>(&win, "password_reminder", false, false)) {
-
-		btn->set_retval(1);
-	}
-
-	if(button* btn = find_widget<button>(&win, "change_username", false, false)) {
-
-		btn->set_retval(2);
-	}
-
 	text_box& login = find_widget<text_box>(&win, "user_name", false);
 	login.connect_signal<event::RECEIVE_KEYBOARD_FOCUS>(std::bind(&mp_login::load_password, this, std::ref(win)));
 
