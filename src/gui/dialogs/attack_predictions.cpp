@@ -128,11 +128,6 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	// Set specials context (for safety, it should not have changed normally).
 	const_attack_ptr weapon = attacker.stats_.weapon, opp_weapon = defender.stats_.weapon;
 	auto ctx = weapon->specials_context(&attacker.unit_, &defender.unit_, attacker.unit_.get_location(), defender.unit_.get_location(), attacker.stats_.is_attacker, opp_weapon);
-	boost::optional<decltype(ctx)> opp_ctx;
-
-	if(opp_weapon) {
-		opp_ctx = opp_weapon->specials_context(&defender.unit_, &attacker.unit_, defender.unit_.get_location(), attacker.unit_.get_location(), defender.stats_.is_attacker, weapon);
-	}
 
 	// Get damage modifiers.
 	unit_ability_list dmg_specials = weapon->get_specials("damage");
