@@ -845,9 +845,9 @@ public:
 	 *
 	 * @returns                   The expected damage.
 	 */
-	int damage_from(const attack_type& attack, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr) const
+	int damage_from(const attack_type& attack, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon=nullptr) const
 	{
-		return resistance_against(attack, attacker, loc, weapon);
+		return resistance_against(attack, attacker, loc, weapon, opp_weapon);
 	}
 
 	/** The maximum number of attacks this unit may perform per turn, usually 1. */
@@ -887,7 +887,7 @@ public:
 	 * @param attacker True if this unit is on the offensive (to resolve [resistance] abilities)
 	 * @param loc The unit's location (to resolve [resistance] abilities)
 	 */
-	int resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr) const;
+	int resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon=nullptr) const;
 
 	/**
 	 * The unit's resistance against a given attack
@@ -895,9 +895,9 @@ public:
 	 * @param attacker True if this unit is on the offensive (to resolve [resistance] abilities)
 	 * @param loc The unit's location (to resolve [resistance] abilities)
 	 */
-	int resistance_against(const attack_type& atk, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr) const
+	int resistance_against(const attack_type& atk, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon=nullptr) const
 	{
-		return resistance_against(atk.type(), attacker, loc , weapon);
+		return resistance_against(atk.type(), attacker, loc , weapon, opp_weapon);
 	}
 
 	/** Gets resistances without any abilities applied. */
@@ -1468,16 +1468,16 @@ public:
 	 * @param loc The location to use for resolving abilities
 	 * @return A list of active abilities, paired with the location they are active on
 	 */
-	unit_ability_list get_abilities(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon = nullptr) const;
+	unit_ability_list get_abilities(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon=nullptr) const;
 
 	/**
 	 * Gets the unit's active abilities of a particular type.
 	 * @param tag_name The type of ability to check for
 	 * @return A list of active abilities, paired with the location they are active on
 	 */
-	unit_ability_list get_abilities(const std::string& tag_name, const_attack_ptr weapon = nullptr) const
+	unit_ability_list get_abilities(const std::string& tag_name, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon=nullptr) const
 	{
-		return get_abilities(tag_name, loc_, weapon);
+		return get_abilities(tag_name, loc_, weapon, opp_weapon);
 	}
 
 	/**
@@ -1544,7 +1544,9 @@ private:
 	bool ability_affects_self(const std::string& ability, const config& cfg, const map_location& loc) const;
 
 	bool ability_affects_weapon(const std::string& ability,const config& cfg,const map_location& loc, const_attack_ptr weapon) const;
-
+	
+	bool ability_affects_second_weapon(const std::string& ability,const config& cfg,const map_location& loc, const_attack_ptr opp_weapon) const;
+	
 public:
 	/** Get the unit formula manager. */
 	unit_formula_manager& formula_manager() const
