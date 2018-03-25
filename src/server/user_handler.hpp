@@ -67,14 +67,6 @@ class user_handler {
 		virtual void clean_up() =0;
 
 		/**
-		 * Send a password reminder email to the given user.
-		 *
-		 * Should throw user_handler::error if sending fails
-		 * (e.g. because we cannot send email).
-		 */
-		virtual void password_reminder(const std::string& name) =0;
-
-		/**
 		 * Return true if the given password matches the password for the given user.
 		 *
 		 * Password could also be a hash

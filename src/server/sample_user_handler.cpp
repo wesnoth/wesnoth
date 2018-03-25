@@ -203,12 +203,6 @@ void suh::user_logged_in(const std::string& name) {
 	set_lastlogin(name, time(nullptr));
 }
 
-void suh::password_reminder(const std::string& name) {
-	std::stringstream msg;
-	msg << "Hello " << name << ",\nyour password is '" << get_password(name) << "'.\n\nHave fun playing Wesnoth :)";
-	send_mail(name, "Wesnoth Password Reminder", msg.str());
-}
-
 std::string suh::user_info(const std::string& name) {
 	if(!user_exists(name)) throw error("No user with the name '" + name + "' exists.");
 
