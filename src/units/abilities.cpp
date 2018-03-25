@@ -415,11 +415,9 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 bool unit::ability_affects_weapon(const std::string& ability,const config& cfg,const map_location& loc, const_attack_ptr weapon) const
 {
   const config &filter = cfg.child("filter_weapon");
-  if (!filter ) return true;
-			if ( !weapon || !weapon->matches_filter(filter) )
+  if (!filter || weapon->matches_filter(filter)) return true;
+			if ( !weapon )
 				return false;
-
-	return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc);
 }
 
 
