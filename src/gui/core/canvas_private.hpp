@@ -276,7 +276,7 @@ private:
 	font::family_class font_family_;
 
 	/** The font size of the text. */
-	unsigned font_size_;
+	typed_formula<unsigned> font_size_;
 
 	/** The style of the text. */
 	font::pango_text::FONT_STYLE font_style_;
