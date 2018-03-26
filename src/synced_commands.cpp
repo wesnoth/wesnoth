@@ -402,7 +402,7 @@ namespace
 			sbuilder << "The game detected the use of a debug command, maybe another player is cheating";
 			sbuilder << "\n\n" << "details:" << "\n\n" << VGETTEXT(message, {{"player", current_team.current_player()}});
 			savegame::oos_savegame save(controller.get_saved_game(), ignore);
-			save.set_title("Debug Command Used");
+			save.set_title(_("Debug Command Used"));
 			save.save_game_interactive(sbuilder.str(), savegame::savegame::YES_NO); // can throw quit_game_exception
 		}
 		else {
