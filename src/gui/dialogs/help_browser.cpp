@@ -135,21 +135,6 @@ static std::string format_help_text(const config& cfg)
 			}
 			// For now, just output a placeholder so we know an image is supposed to be there.
 			ss << "[img]" << font::escape_text(item.cfg["src"]) << "[/img]";
-		} else if(item.key == "bold") {
-			if(item.cfg["text"].empty()) {
-				throw help::parse_error("Bold markup must have text attribute.");
-			}
-			ss << "<b>" << font::escape_text(item.cfg["text"]) << "</b>";
-		} else if(item.key == "italic") {
-			if(item.cfg["text"].empty()) {
-				throw help::parse_error("Italic markup must have text attribute.");
-			}
-			ss << "<i>" << font::escape_text(item.cfg["text"]) << "</i>";
-		} else if(item.key == "header") {
-			if(item.cfg["text"].empty()) {
-				throw help::parse_error("Header markup must have text attribute.");
-			}
-			ss << "<big>" << font::escape_text(item.cfg["text"]) << "</big>";
 		} else if(item.key == "jump") {
 			// This appears to be something akin to tab stops.
 			if(item.cfg["amount"].empty() && item.cfg["to"].empty()) {
