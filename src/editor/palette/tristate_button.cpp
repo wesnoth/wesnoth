@@ -234,7 +234,9 @@ void tristate_button::draw_contents() {
 	bg_restore();
 
 	image = nbase;
-	video().blit_surface(loc.x, loc.y, image);
+	UNUSED(loc);
+	UNUSED(image);
+	//video().blit_surface(loc.x, loc.y, image);
 }
 
 //TODO move to widget

@@ -154,19 +154,6 @@ public:
 
 	/***** ***** ***** ***** Drawing functions ***** ***** ****** *****/
 
-	/**
-	 * Draws a surface directly onto the screen framebuffer.
-	 *
-	 * @param x                   The x coordinate at which to draw.
-	 * @param y                   The y coordinate at which to draw.
-	 * @param surf                The surface to draw.
-	 * @param srcrect             The area of the surface to draw. This defaults to nullptr,
-	 *                            which implies the entire thing.
-	 * @param clip_rect           The clippin rect. If not null, the surface will only be drawn
-	 *                            within the bounds of the given rectangle.
-	 */
-	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect = nullptr, SDL_Rect* clip_rect = nullptr);
-
 private:
 	/** Renders the screen. */
 	void render_screen();

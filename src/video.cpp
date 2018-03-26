@@ -109,16 +109,6 @@ void CVideo::video_event_handler::handle_window_event(const SDL_Event& event)
 	}
 }
 
-void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rect* clip_rect)
-{
-	texture txt(surf);
-
-	render_clip_rect_setter crs(clip_rect);
-
-	SDL_Rect dst {x, y, surf->w, surf->h};
-	render_copy(txt, srcrect, &dst);
-}
-
 void CVideo::make_fake()
 {
 	fake_screen_ = true;
