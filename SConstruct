@@ -355,7 +355,6 @@ if env["prereqs"]:
     def have_sdl_other():
         return \
             conf.CheckSDL(require_version = '2.0.4') & \
-            conf.CheckSDL("SDL2_ttf", header_file = "SDL_ttf") & \
             conf.CheckSDL("SDL2_mixer", header_file = "SDL_mixer") & \
             conf.CheckSDL("SDL2_image", header_file = "SDL_image")
 
