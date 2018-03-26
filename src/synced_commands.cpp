@@ -399,6 +399,10 @@ namespace
 		std::string message;
 		utils::string_map i18n_vars = {{ "player", current_team.current_player() }};
 
+		if(i18n_vars["player"].empty()) {
+			i18n_vars["player"] = _("(unknown player)");
+		}
+
 		if(message_is_command) {
 			i18n_vars["command"] = text;
 			message = VGETTEXT("The :$command debug command was used during $player’s turn", i18n_vars);
