@@ -144,16 +144,18 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Formula\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\game_config.cpp" />
-    <ClCompile Include="..\..\src\gettext_boost.cpp" />
+    <ClCompile Include="..\..\src\gettext_boost.cpp">
+      <DisableSpecificWarnings>4459;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
     <ClCompile Include="..\..\src\log.cpp" />
     <ClCompile Include="..\..\src\log_windows.cpp" />
     <ClCompile Include="..\..\src\random.cpp" />
     <ClCompile Include="..\..\src\serialization\base64.cpp" />
     <ClCompile Include="..\..\src\serialization\binary_or_text.cpp">
-      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4706;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4706;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <ClCompile Include="..\..\src\serialization\parser.cpp">
-      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4706;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4706;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <ClCompile Include="..\..\src\serialization\preprocessor.cpp" />
     <ClCompile Include="..\..\src\serialization\schema_validator.cpp" />

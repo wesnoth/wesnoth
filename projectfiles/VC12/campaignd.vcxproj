@@ -115,6 +115,7 @@
     </ClCompile>
     <ClCompile Include="..\..\src\server\simple_wml.cpp">
       <ObjectFileName>$(IntDir)Server\</ObjectFileName>
+      <DisableSpecificWarnings>4458</DisableSpecificWarnings>
     </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
