@@ -1,11 +1,4 @@
 ## Version 1.15.0-dev
- ### WML engine
-   * Support formula= key in [variable] ConditionalWML
-   * Support to_location in [move_unit], taking a location ID
-   * Support [filter_weapon] in leadership and resistance abilities,
-     which activates the ability only when the affected unit is using
-     a matching weapon.
-   * Support WFL and percentages in [random_placement]num_items=
  ### Language and i18n
    * Fixed many cases of interpolated strings in the engine possibly having
      their translations retrieved from the wrong textdomain and falling back
@@ -19,6 +12,13 @@
    * Fixed "Search" placeholder text in dialog item filters not being
      translatable (bug #2709, bug #2732).
    * Updated translations: Spanish
+ ### WML engine
+   * Support formula= key in [variable] ConditionalWML
+   * Support to_location in [move_unit], taking a location ID
+   * Support [filter_weapon] in leadership and resistance abilities,
+     which activates the ability only when the affected unit is using
+     a matching weapon.
+   * Support WFL and percentages in [random_placement]num_items=
 
 ## Version 1.13.12
  ### Security fixes
