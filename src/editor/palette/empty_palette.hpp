@@ -27,9 +27,10 @@ class empty_palette : public common_palette {
 
 public:
 
-	empty_palette(display& gui) :
-		common_palette(gui.video()),
-		gui_(gui) {}
+	empty_palette(display& gui)
+		: common_palette(gui.video())
+		//, gui_(gui)
+	{}
 
 	//event handling
 	virtual bool mouse_click() { return false;}
@@ -78,7 +79,7 @@ public:
 	virtual void swap() override {}
 
 private:
-	display& gui_;
+	//display& gui_;
 };
 
 }

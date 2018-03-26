@@ -39,12 +39,12 @@ public:
 
 class unit_topic_generator: public topic_generator
 {
-	const unit_type& type_;
+	//const unit_type& type_;
 	const std::string variation_;
 	typedef std::pair< std::string, unsigned > item;
 	void push_header(std::vector< item > &row,  const std::string& name) const;
 public:
-	unit_topic_generator(const unit_type &t, std::string variation="") : type_(t), variation_(variation) {}
+	unit_topic_generator(const unit_type &/*t*/, std::string variation="") : /*type_(t),*/ variation_(variation) {}
 	virtual std::string operator()() const;
 };
 

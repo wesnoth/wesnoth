@@ -77,6 +77,8 @@ bool is_cjk_char(const ucs4::char_t ch)
 		(ch >= 0xff00 && ch < 0xffef);
 }
 
+// Re-enable if we find use for these
+#if 0
 namespace {
 
 /*
@@ -169,5 +171,6 @@ inline bool break_after(const ucs4::char_t ch)
 }
 
 } // end of anon namespace
+#endif
 
 } // end namespace font
