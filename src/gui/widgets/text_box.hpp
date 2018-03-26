@@ -143,6 +143,14 @@ public:
 		max_input_length_ = length;
 	}
 
+	void set_hint_data(const std::string& text, const std::string& image)
+	{
+		hint_text_ = text;
+		hint_image_ = image;
+
+		update_canvas();
+	}
+
 	void clear()
 	{
 		set_value("");
@@ -213,6 +221,12 @@ private:
 
 	/** Is the mouse in dragging mode, this affects selection in mouse move */
 	bool dragging_;
+
+	/** Helper text to display (such as "Search") if the text box is empty. */
+	std::string hint_text_;
+
+	/** Image (such as a magnifying glass) that accompanies the help text. */
+	std::string hint_image_;
 
 	/**
 	 * Inherited from text_box_base.
@@ -309,6 +323,9 @@ public:
 	std::string history;
 
 	std::size_t max_input_length;
+
+	std::string hint_text;
+	std::string hint_image;
 };
 
 } // namespace implementation

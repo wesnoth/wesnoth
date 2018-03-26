@@ -210,6 +210,9 @@ void text_box::update_canvas()
 
 		tmp.set_variable("composition_offset", wfl::variant(comp_start_offset));
 		tmp.set_variable("composition_width", wfl::variant(comp_end_offset - comp_start_offset));
+
+		tmp.set_variable("hint_text", wfl::variant(hint_text_));
+		tmp.set_variable("hint_image", wfl::variant(hint_image_));
 	}
 }
 
@@ -477,6 +480,8 @@ builder_text_box::builder_text_box(const config& cfg)
 	: builder_styled_widget(cfg)
 	, history(cfg["history"])
 	, max_input_length(cfg["max_input_length"])
+	, hint_text(cfg["hint_text"])
+	, hint_image(cfg["hint_image"])
 {
 }
 
@@ -492,6 +497,7 @@ widget* builder_text_box::build() const
 	}
 
 	widget->set_max_input_length(max_input_length);
+	widget->set_hint_data(hint_text, hint_image);
 
 	DBG_GUI_G << "Window builder: placed text box '" << id
 			  << "' with definition '" << definition << "'.\n";
