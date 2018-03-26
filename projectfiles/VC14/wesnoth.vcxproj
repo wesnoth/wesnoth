@@ -2884,7 +2884,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Terrain\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\terrain\translation.cpp">
-      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4459;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4459;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Terrain\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Terrain\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Terrain\</ObjectFileName>
@@ -3370,7 +3370,7 @@
     <ClCompile Include="..\..\src\variable_info.cpp" />
     <ClCompile Include="..\..\src\video.cpp" />
     <ClCompile Include="..\..\src\wesnoth.cpp">
-      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4706;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4706;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
