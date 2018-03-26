@@ -421,8 +421,8 @@ bool unit::ability_affects_weapon(const std::string&, const config& cfg, const m
 	}
 	const config& filter = cfg.child("filter_weapon");
 	if(!weapon) {
-		// Not sure if this is the correct behaviour here
-		return true;
+		// is nessecarry for filter the resistance in hp stats when the unit has not the weapon filtered
+		return false;
 	}
 
 	return weapon->matches_filter(filter);
@@ -436,7 +436,7 @@ bool unit::ability_affects_second_weapon(const std::string&, const config& cfg, 
 	const config& filter = cfg.child("filter_second_weapon");
 	if(!opp_weapon) {
 		// Not sure if this is the correct behaviour here
-		return true;
+		return false;
 	}
 
 	return opp_weapon->matches_filter(filter);
