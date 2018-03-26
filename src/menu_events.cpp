@@ -1149,9 +1149,10 @@ protected:
 	using map::is_enabled;
 	bool is_enabled(const chmap::command& c) const
 	{
-		return !((c.has_flag('D') && !game_config::debug) || (c.has_flag('N') && !menu_handler_.pc_.is_networked_mp())
+		return !((c.has_flag('D') && !game_config::debug)
+		      || (c.has_flag('N') && !menu_handler_.pc_.is_networked_mp())
 		      || (c.has_flag('A') && !preferences::is_authenticated())
-		      || (c.has_flag('S') && (synced_context::get_synced_state() != synced_context::UNSYNCED)));
+		      || (c.has_flag('S') && (synced_context::get_synced_state() != synced_context::UNSYNCED || !menu_handler_.pc_.current_team().is_local())));
 	}
 
 	void print(const std::string& title, const std::string& message)
