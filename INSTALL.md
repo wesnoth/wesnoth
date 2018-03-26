@@ -73,7 +73,7 @@ The following build systems are fully supported for compiling Wesnoth on Linux,
 *BSD, and other Unix-like platforms:
 
  * SCons >= 0.98.3
- * CMake >= 2.6.0
+ * CMake >= 2.8.5
 
 You will also need to have a working installation of GNU gettext to build the
 translations.
