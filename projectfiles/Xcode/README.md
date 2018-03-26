@@ -3,18 +3,18 @@
 ## Types of builds and requirements
 Currently there are two types of builds:
 
-* **local builds** - useful for regular builds which should work mainly on actual system and hardware. They are easiest to reproduce.
+* **local builds** - **Recommended** - useful for regular builds which should work mainly on actual system and hardware. They are easiest to reproduce.
 * **package builds** - useful (only) for packagers. These builds are trying to be as compatible as possible. They depends on `MacCompileStuff` which contains precompiled universal but sometimes outdated libraries.
 
 ### Requirements for local builds
- * Xcode 4.6.3 or higher...
- * Mac OS X 10.7.5 or higher...
+ * Xcode 7.2.1 or higher...
+ * Mac OS X [10.10.5](https://docs.brew.sh/Installation#2) or higher...
  * `scons` and `gettext` (if you want to compile translations)
  * Homebrew from https://brew.sh/
 
 ### Requirements for package builds
- * Xcode 4.6.3 or higher...
- * Mac OS X 10.7.5 or higher...
+ * Xcode 5.1.1 or higher...
+ * Mac OS X 10.8.5 or higher...
  * `scons` and `gettext` (if you want to compile translations)
  * The Headers and lib folders, which can be found in the newest zip here:
    https://sourceforge.net/downloads/wesnoth/unofficial/Mac%20Compile%20Stuff/
@@ -38,7 +38,7 @@ Builds the lua library for Wesnoth.
 
 ## Configurations
 * **Release**:
-Builds for maximum (runtime) speed and compatibility; it builds for 32-bit and 64-bit, with the latest SDK, but targets 10.7. You do not however need 10.7 SDK to build it. This is what's used for official releases.
+Builds for maximum (runtime) speed and compatibility; it builds for 64-bit, with the latest SDK, but targets 10.8. You do not however need 10.8 SDK to build it. This is what's used for official releases.
 
 * **Debug**:
 Builds for maximum compiling speed, and uses the current OS as the SDK. If you just want to compile for testing things yourself, this is the way to go.
@@ -60,14 +60,17 @@ When compiling Wesnoth for an official release, the following steps should be ta
 
  * You must use **package build**
  * Update version numbers in Info.plist (if not already by the release manager)
- * Update the changelog in SDLMain.nib with player_changelog
+ * Update the changelog in SDLMain.nib with players_changelog.md
  * Rebuild translations
  * Rebuild all in XCode (clean all, then build). Be sure to set it to release configuration first!
  * Download old `.dmg` release.
  * Convert it using Disk Utility to Read and Write disk image and mount it.
  * Delete old `Wesnoth.app` and copy new `Wesnoth.app`.
+ * CodeSign `Wesnoth.app` inside Read and Write disk image using `codesign --deep --force -s "Wesnoth, Inc" Wesnoth.app`. You must have Wesnoth's signing certificate.
+ * Verify that you signed `.app` propertly using `spctl -a -t exec -vv Wesnoth.app`.
  * Rename disk image to match new release version.
  * Unmount it and convert it back using `hdiutil convert /PATH/TO/IMAGE.dmg -format UDBZ -o /PATH/TO/NEW/IMAGE.dmg` command.
+ * Sign newly created `.dmg` using `codesign -s "Wesnoth, Inc" /PATH/TO/NEW/IMAGE.dmg`. You must have Wesnoth's signing certificate.
+ * Verify that you signed `.dmg` propertly using `spctl -a -t open --context context:primary-signature -v /PATH/TO/NEW/IMAGE.dmg`.
  * Create SHA-256 checksum using `shasum -a 256 /PATH/TO/NEW/IMAGE.dmg` command.
  * Done! You can release it now.
-
