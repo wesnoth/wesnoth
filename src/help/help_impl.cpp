@@ -1324,8 +1324,8 @@ color_t string_to_color(const std::string &cmp_str)
 	return font::NORMAL_COLOR;
 }
 
-std::vector<std::string> split_in_width(const std::string &s, const int font_size,
-		const unsigned width)
+std::vector<std::string> split_in_width(const std::string &/*s*/, const int /*font_size*/,
+		const unsigned /*width*/)
 {
 	std::vector<std::string> res;
 	try {

@@ -222,8 +222,8 @@ void location_palette::adjust_size(const SDL_Rect& target)
 {
 	palette_x_ = target.x;
 	palette_y_ = target.y;
-	const int button_height = 22;
-	const int button_y = 30;
+	//const int button_height = 22;
+	//const int button_y = 30;
 	int bottom = target.y + target.h;
 #if 0
 	if (!button_goto_) {
