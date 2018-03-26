@@ -845,8 +845,9 @@ public:
 	 *
 	 * @returns                   The expected damage.
 	 */
-	int damage_from(const attack_type& attack, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon=nullptr) const
+	int damage_from(const attack_type& attack, bool attacker, const map_location& loc, const_attack_ptr opp_weapon=nullptr) const
 	{
+		const_attack_ptr weapon = attack.shared_from_this();
 		return resistance_against(attack, attacker, loc, weapon, opp_weapon);
 	}
 
