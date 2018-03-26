@@ -324,7 +324,7 @@ public:
 
 	std::size_t max_input_length;
 
-	std::string hint_text;
+	t_string hint_text;
 	std::string hint_image;
 };
 
