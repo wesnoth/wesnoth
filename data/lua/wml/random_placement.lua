@@ -18,6 +18,8 @@ wesnoth.wml_actions.random_placement = function(cfg)
 			local params = {size = #locs}
 			local result = wesnoth.eval_formula(num_items)
 			num_items = math.floor(tonumber(result))
+		elseif num_items:match('^%d+%%$') then
+			num_items = tonumber(num_items:sub(1,-2))
 		else
 			wesnoth.deprecated_message('num_items=lua', 2, '1.17.0', 'Use of Lua for [random_placement]num_items is deprecated. Use WFL instead and enclose the whole thing in parentheses.')
 			num_items = math.floor(load("local size = " .. #locs .. "; return " .. num_items)())
