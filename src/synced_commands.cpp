@@ -415,7 +415,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 	if(use_undo) {
 		resources::undo_stack->clear();
 	}
-	debug_notification(":unit debug command was used during $player's turn");
+	debug_notification(N_(":unit debug command was used during $player’s turn"));
 	map_location loc(child);
 	const std::string name = child["name"];
 	const std::string value = child["value"];
@@ -480,7 +480,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child,  use_undo, /*show*/, e
 		resources::undo_stack->clear();
 	}
 
-	debug_notification("A unit was created using debug command during $player's turn");
+	debug_notification(N_("A unit was created using debug mode during $player’s turn"));
 	map_location loc(child);
 	resources::whiteboard->on_kill_unit();
 	const unit_race::GENDER gender = string_gender(child["gender"], unit_race::NUM_GENDERS);
@@ -526,7 +526,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_lua, child, use_undo, /*show*/, /*error_ha
 	if(use_undo) {
 		resources::undo_stack->clear();
 	}
-	debug_notification(":lua debug command was used during $player's turn");
+	debug_notification(N_(":lua debug command was used during $player’s turn"));
 	resources::lua_kernel->run(child["code"].str().c_str());
 	resources::controller->pump().flush_messages();
 
@@ -538,7 +538,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, use_undo, /*show*/, /*error_h
 	if (use_undo) {
 		resources::undo_stack->clear();
 	}
-	debug_notification("kill debug command was used during $player's turn");
+	debug_notification(N_(":kill debug command was used during $player’s turn"));
 
 	const map_location loc(child["x"].to_int(), child["y"].to_int(), wml_loc());
 	const unit_map::iterator i = resources::gameboard->units().find(loc);
@@ -568,7 +568,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_next_level, child, use_undo, /*show*/, /*e
 		resources::undo_stack->clear();
 	}
 
-	debug_notification(":next_level debug command was used during $player's turn");
+	debug_notification(N_(":next_level debug command was used during $player’s turn"));
 
 	std::string next_level = child["next_level"];
 	if (!next_level.empty())
@@ -592,7 +592,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn_limit, child, use_undo, /*show*/, /*e
 		resources::undo_stack->clear();
 	}
 
-	debug_notification(":turn_limit debug command was used during $player's turn");
+	debug_notification(N_(":turn_limit debug command was used during $player’s turn"));
 
 	resources::tod_manager->set_number_of_turns(child["turn_limit"].to_int(-1));
 	display::get_singleton()->redraw_everything();
@@ -605,7 +605,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn, child, use_undo, /*show*/, /*error_h
 		resources::undo_stack->clear();
 	}
 
-	debug_notification(":turn debug command was used during $player's turn");
+	debug_notification(N_(":turn debug command was used during $player’s turn"));
 
 	resources::tod_manager->set_turn(child["turn"].to_int(1), resources::gamedata);
 
@@ -621,7 +621,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_set_var, child, use_undo, /*show*/, /*erro
 		resources::undo_stack->clear();
 	}
 
-	debug_notification(":set_var debug command was used during $player's turn");
+	debug_notification(N_(":set_var debug command was used during $player’s turn"));
 
 	try {
 		resources::gamedata->set_variable(child["name"],child["value"]);
@@ -639,7 +639,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_gold, child, use_undo, /*show*/, /*error_h
 		resources::undo_stack->clear();
 	}
 
-	debug_notification(":gold debug command was used during $player's turn");
+	debug_notification(N_(":gold debug command was used during $player’s turn"));
 
 	resources::controller->current_team().spend_gold(-child["gold"].to_int(0));
 	display::get_singleton()->redraw_everything();
@@ -653,7 +653,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_event, child, use_undo, /*show*/, /*error_
 		resources::undo_stack->clear();
 	}
 
-	debug_notification(":throw debug command was used during $player's turn");
+	debug_notification(N_(":throw debug command was used during $player’s turn"));
 
 	resources::controller->pump().fire(child["eventname"]);
 	display::get_singleton()->redraw_everything();
@@ -668,7 +668,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_fog, /*child*/, use_undo, /*show*/, /*erro
 		resources::undo_stack->clear();
 	}
 
-	debug_notification(":fog debug command was used during $player's turn");
+	debug_notification(N_(":fog debug command was used during $player’s turn"));
 
 	team& current_team = resources::controller->current_team();
 	current_team.set_fog(!current_team.uses_fog());
@@ -687,7 +687,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_shroud, /*child*/, use_undo, /*show*/, /*e
 		resources::undo_stack->clear();
 	}
 
-	debug_notification(":shroud debug command was used during $player's turn");
+	debug_notification(N_(":shroud debug command was used during $player’s turn"));
 
 	team& current_team = resources::controller->current_team();
 	current_team.set_shroud(!current_team.uses_shroud());
