@@ -398,9 +398,12 @@ namespace
 		if(show_long_message && !ignore) {
 			play_controller::scoped_savegame_snapshot snapshot(controller);
 			std::stringstream sbuilder;
-			// TODO: improve message and mark translatable.
-			sbuilder << "The game detected the use of a debug command, maybe another player is cheating";
-			sbuilder << "\n\n" << "details:" << "\n\n" << VGETTEXT(message, {{"player", current_team.current_player()}});
+			sbuilder << _("A player used a debug command during the game. If this is unexpected, it is possible the player in question is cheating.")
+			         << "\n\n"
+			         << _("Details:") << "\n"
+			         << VGETTEXT(message, {{"player", current_team.current_player()}})
+			         << "\n\n"
+			         << _("Do you wish to save the game before continuing?");
 			savegame::oos_savegame save(controller.get_saved_game(), ignore);
 			save.set_title(_("Debug Command Used"));
 			save.save_game_interactive(sbuilder.str(), savegame::savegame::YES_NO); // can throw quit_game_exception
