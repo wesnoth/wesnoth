@@ -204,6 +204,9 @@ protected:
 	/** Filename of the savegame file on disk */
 	std::string filename_;
 
+	/** Title of the savegame dialog */
+	std::string title_;
+
 private:
 	/** Checks if a certain character is allowed in a savefile name. */
 	static bool is_illegal_file_char(char c);
@@ -226,8 +229,6 @@ private:
 	friend class save_info;
 	//before_save (write replay data) changes this so it cannot be const
 	saved_game& gamestate_;
-
-	const std::string title_; /** Title of the savegame dialog */
 
 	std::string error_message_; /** Error message to be displayed if the savefile could not be generated. */
 
@@ -280,6 +281,9 @@ class oos_savegame : public ingame_savegame
 {
 public:
 	oos_savegame(saved_game& gamestate, bool& ignore);
+
+	/** Customize the dialog's caption. */
+	void set_title(const std::string& val) { title_ = val; }
 
 private:
 	/** Display the save game dialog. */
