@@ -187,7 +187,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	ss.str("");
 
 	// Resistance modifier.
-	const int resistance_modifier = defender.unit_.damage_from(*weapon, !attacker.stats_.is_attacker, defender.unit_.get_location(), weapon);
+	const int resistance_modifier = defender.unit_.damage_from(*weapon, !attacker.stats_.is_attacker, defender.unit_.get_location(), opp_weapon);
 	if(resistance_modifier != 100) {
 		if(attacker.stats_.is_attacker) {
 			ss << _("Defender resistance vs") << " ";
