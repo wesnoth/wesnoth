@@ -242,7 +242,7 @@ std::string unit_topic_generator::operator()() const {
 
 	const int screen_width = CVideo::get_singleton().get_width();
 
-	ss << "Level " << type_.level();
+	ss << _("Level") << " " << type_.level();
 	ss << "\n\n";
 
 	ss << "<img>src='" << male_type.image();
