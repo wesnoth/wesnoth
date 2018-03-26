@@ -52,12 +52,6 @@ features:
    Bidirectional text support for RTL languages (Hebrew, etc.) in some parts
    of the user interface.
 
- * Growl
-   Desktop notifications on OS X, particularly on 10.7.
-
-Although not recommended, you may use libintl on platforms other than Windows
-instead of Boost.Locale. For scons, set the `libintl` option to `true`.
-
 
 ## 2. Build Environment
 
@@ -182,12 +176,9 @@ Some of the most important options follow.
    CMAKE_BUILD_TYPE=<build type>               (CMake)
 
    Selects a specific build configuration when compiling. `release` produces
-   the default, optimized (-O2) build for regular use. `debug` produces a
+   the default, optimized (-O3) build for regular use. `debug` produces a
    slower and larger unoptimized (-O0) build with full debug symbols, which is
    often needed for obtaining detailed backtraces when reporting bugs.
-
-   NOTE: By default, CMake will produce `debug` builds unless a different
-   configuration option is passed in the command line.
 
  * ENABLE_GAME=<boolean>                       (CMake)
 
