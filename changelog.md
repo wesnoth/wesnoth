@@ -5,7 +5,15 @@
  ### Language and i18n
    * Fixed many cases of interpolated strings in the engine possibly having
      their translations retrieved from the wrong textdomain and falling back
-     to the English original if that failed (PR #2711, bug #2709).
+     to the English original if that failed (PR #2711, bug #2709, bug #2732).
+   * Fixed parts of the MP game setup UI having their translations ignored by
+     the game (bug #2709).
+   * Fixed certain parts of the UI displaying unit stats and trait effects
+     having incomplete translations (bug #2732).
+   * Fixed "Level" label in unit descriptions in the help being untranslatable
+     (bug #2732)
+   * Fixed "Search" placeholder text in dialog item filters not being
+     translatable (bug #2709, bug #2732).
    * Updated translations: Spanish
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
