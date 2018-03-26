@@ -27,7 +27,6 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
-#include <SDL_ttf.h>
 
 #include <boost/version.hpp>
 
@@ -205,20 +204,6 @@ version_table_manager::version_table_manager()
 	}
 
 	names[LIB_SDL_MIXER] = "SDL_mixer";
-
-	//
-	// SDL_ttf
-	//
-
-	SDL_TTF_VERSION(&sdl_version);
-	compiled[LIB_SDL_TTF] = format_version(sdl_version);
-
-	sdl_rt_version = TTF_Linked_Version();
-	if(sdl_rt_version) {
-		linked[LIB_SDL_TTF] = format_version(*sdl_rt_version);
-	}
-
-	names[LIB_SDL_TTF] = "SDL_ttf";
 
 	//
 	// Boost

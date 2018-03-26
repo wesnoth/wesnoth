@@ -21,7 +21,6 @@
  */
 
 #include "font_options.hpp"
-#include "sdl_ttf.hpp"
 
 class t_string;
 
@@ -43,9 +42,6 @@ struct manager {
 	manager & operator = (const manager &) = delete;
 
 private:
-
-    /** Initialize sdl_ttf concurrent with font::manager lifetime */
-	sdl_ttf sdl_ttf_initializer_;
 };
 
 /***

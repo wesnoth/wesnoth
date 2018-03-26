@@ -13,9 +13,7 @@
 */
 
 #include "font/font_config.hpp"
-#include "font/font_description.hpp"
 #include "font/error.hpp"
-#include "font/sdl_ttf.hpp"
 
 #include "config.hpp"
 #include "log.hpp"
@@ -83,20 +81,6 @@ bool check_font_file(std::string name) {
 
 namespace
 {
-bool add_font_to_fontlist(const config &fonts_config,
-	std::vector<font::subset_descriptor>& fontlist, const std::string& name)
-{
-	const config &font = fonts_config.find_child("font", "name", name);
-	if (!font) {
-		return false;
-	}
-	//DBG_FT << "Adding a font record: " << font.debug() << std::endl;
-
-	fontlist.push_back(font::subset_descriptor(font));
-
-	return true;
-}
-
 #ifdef CAIRO_HAS_WIN32_FONT
 bool is_valid_font_file(const std::string& file)
 {
@@ -149,17 +133,6 @@ bool load_font_config()
 	if (!fonts_config)
 		return false;
 
-	std::set<std::string> known_fonts;
-	for (const config &font : fonts_config.child_range("font")) {
-		known_fonts.insert(font["name"]);
-		if (font.has_attribute("bold_name")) {
-			known_fonts.insert(font["bold_name"]);
-		}
-		if (font.has_attribute("italic_name")) {
-			known_fonts.insert(font["italic_name"]);
-		}
-	}
-
 	family_order_sans = fonts_config["family_order"];
 	family_order_mono = fonts_config["family_order_monospace"];
 	family_order_light = fonts_config["family_order_light"];
@@ -180,21 +153,6 @@ bool load_font_config()
 		family_order_script = family_order_sans;
 	}
 
-	std::vector<font::subset_descriptor> fontlist;
-
-	for(auto font : utils::split(fonts_config["order"])) {
-		add_font_to_fontlist(fonts_config, fontlist, font);
-		known_fonts.erase(font);
-	}
-
-	for(auto kfont : known_fonts) {
-		add_font_to_fontlist(fonts_config, fontlist, kfont);
-	}
-
-	if(fontlist.empty())
-		return false;
-
-	sdl_ttf::set_font_list(fontlist);
 	return true;
 }
 

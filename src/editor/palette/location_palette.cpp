@@ -55,7 +55,7 @@ public:
 		if (state_.selected) {
 			sdl::draw_rectangle(location(), {255, 255, 255, 255});
 		}
-		font::draw_text(&video(), location(), 16, font::NORMAL_COLOR, desc_.empty() ? id_ : desc_, location().x + 2, location().y, 0);
+		//font::draw_text(&video(), location(), 16, font::NORMAL_COLOR, desc_.empty() ? id_ : desc_, location().x + 2, location().y, 0);
 	}
 
 	//TODO move to widget

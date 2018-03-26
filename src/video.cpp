@@ -16,7 +16,7 @@
 
 #include "display.hpp"
 #include "floating_label.hpp"
-#include "font/sdl_ttf.hpp"
+#include "font/constants.hpp"
 #include "image.hpp"
 #include "log.hpp"
 #include "ogl/utils.hpp"
@@ -440,6 +440,7 @@ int CVideo::set_help_string(const std::string& str)
 
 	int size = font::SIZE_LARGE;
 
+#if 0
 	while(size > 0) {
 		if(font::line_width(str, size) > get_width()) {
 			size--;
@@ -447,6 +448,7 @@ int CVideo::set_help_string(const std::string& str)
 			break;
 		}
 	}
+#endif
 
 	const int border = 5;
 

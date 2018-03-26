@@ -25,7 +25,6 @@
 #include "fake_unit_manager.hpp"
 #include "floating_label.hpp"
 #include "font/marked-up_text.hpp"
-#include "font/sdl_ttf.hpp"
 #include "font/text.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/loading_screen.hpp"

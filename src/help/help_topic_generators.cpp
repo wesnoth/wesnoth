@@ -14,7 +14,6 @@
 
 #include "help/help_topic_generators.hpp"
 
-#include "font/sdl_ttf.hpp"             // for line_width
 #include "game_config.hpp"              // for debug, menu_contract, etc
 #include "preferences/game.hpp"         // for encountered_terrains, etc
 #include "gettext.hpp"                  // for _, gettext, N_
@@ -218,6 +217,7 @@ std::string terrain_topic_generator::operator()() const {
 //Typedef to help with formatting list of traits
 typedef std::pair<std::string, std::string> trait_data;
 
+#if 0
 //Helper function for printing a list of trait data
 static void print_trait_list(std::stringstream & ss, const std::vector<trait_data> & l)
 {
@@ -229,8 +229,9 @@ static void print_trait_list(std::stringstream & ss, const std::vector<trait_dat
 		ss << ", " << make_link(l[i].first,l[i].second);
 	}
 }
-
+#endif
 std::string unit_topic_generator::operator()() const {
+#if 0
 	// Force the lazy loading to build this unit.
 	unit_types.build_unit_type(type_, unit_type::FULL);
 
@@ -788,10 +789,12 @@ std::string unit_topic_generator::operator()() const {
 		WRN_HP << "When building unit help topics, the display object was null and we couldn't get the terrain info we need.\n";
 	}
 	return ss.str();
+#endif
+	return "";
 }
 
-void unit_topic_generator::push_header(std::vector< item > &row,  const std::string& name) const {
-	row.emplace_back(bold(name), font::line_width(name, normal_font_size, TTF_STYLE_BOLD));
+void unit_topic_generator::push_header(std::vector< item > &/*row*/,  const std::string& /*name*/) const {
+	//row.emplace_back(bold(name), font::line_width(name, normal_font_size, TTF_STYLE_BOLD));
 }
 
 } // end namespace help

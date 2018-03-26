@@ -31,13 +31,16 @@
 
 #pragma once
 
+#include "config.hpp"
+#include "color.hpp"
 #include "exceptions.hpp"               // for error
-#include "font/sdl_ttf.hpp"             // for line_width, relative_size
+#include "font/constants.hpp"
 #include "gettext.hpp"
 #include <cstring>
 #include <list>                         // for list
 #include <memory>
 #include <ostream>                      // for operator<<, stringstream, etc
+#include <sstream>
 #include <string>                       // for string, allocator, etc
 #include <utility>                      // for pair, make_pair
 #include <vector>                       // for vector, etc

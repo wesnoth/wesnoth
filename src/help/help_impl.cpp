@@ -347,12 +347,14 @@ topic_text &topic_text::operator=(topic_generator *g)
 
 const config& topic_text::parsed_text() const
 {
+#if 0
 	if (generator_) {
 		parsed_text_ = parse_text((*generator_)());
 		if (--generator_->count == 0)
 			delete generator_;
 		generator_ = nullptr;
 	}
+#endif
 	return parsed_text_;
 }
 
@@ -1327,11 +1329,13 @@ std::vector<std::string> split_in_width(const std::string &s, const int font_siz
 {
 	std::vector<std::string> res;
 	try {
+#if 0
 	const std::string& first_line = font::word_wrap_text(s, font_size, width, -1, 1, true);
 	res.push_back(first_line);
 	if(s.size() > first_line.size()) {
 		res.push_back(s.substr(first_line.size()));
 	}
+#endif
 	}
 	catch (utf8::invalid_utf8_exception&)
 	{
@@ -1481,9 +1485,9 @@ unsigned image_width(const std::string &filename)
 	return 0;
 }
 
-void push_tab_pair(std::vector<std::pair<std::string, unsigned int>> &v, const std::string &s)
+void push_tab_pair(std::vector<std::pair<std::string, unsigned int>> &/*v*/, const std::string &/*s*/)
 {
-	v.emplace_back(s, font::line_width(s, normal_font_size));
+	//v.emplace_back(s, font::line_width(s, normal_font_size));
 }
 
 std::string generate_table(const table_spec &tab, const unsigned int spacing)
