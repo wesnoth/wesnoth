@@ -468,7 +468,6 @@ endif(ENABLE_GAME OR ENABLE_TESTS)
 
 if(ENABLE_GAME OR ENABLE_TESTS)
 	find_package( SDL2_mixer 2.0.0 REQUIRED )
-	find_package( SDL2_ttf 2.0.12 REQUIRED )
 	find_package(VorbisFile REQUIRED)
 	find_package( PkgConfig REQUIRED )
 	pkg_check_modules( CAIRO REQUIRED cairo>=1.10 )
