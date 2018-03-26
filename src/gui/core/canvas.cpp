@@ -1254,7 +1254,9 @@ text_shape::text_shape(const config& cfg)
 	, characters_per_line_(cfg["text_characters_per_line"])
 	, maximum_height_(cfg["maximum_height"], -1)
 {
-	VALIDATE(font_size_, _("Text has a font size of 0."));
+	if(!font_size_.has_formula()) {
+		VALIDATE(font_size_(), _("Text has a font size of 0."));
+	}
 
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
@@ -1286,7 +1288,7 @@ void text_shape::draw(surface& canvas,
 		.set_text(text, text_markup_(variables));
 
 	text_renderer.set_family_class(font_family_)
-		.set_font_size(font_size_)
+		.set_font_size(font_size_(variables))
 		.set_font_style(font_style_)
 		.set_alignment(text_alignment_(variables))
 		.set_foreground_color(color_(variables))
