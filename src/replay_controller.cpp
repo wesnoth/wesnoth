@@ -107,6 +107,7 @@ void replay_controller::rebuild_replay_theme()
 	}
 }
 
+#if 0
 std::shared_ptr<gui::button> replay_controller::play_button()
 {
 	return controller_.get_display().find_action_button("button-playreplay");
@@ -136,12 +137,14 @@ std::shared_ptr<gui::button> replay_controller::play_move_button()
 {
 	return controller_.get_display().find_action_button("button-nextmove");
 }
+#endif
 
 void replay_controller::update_replay_ui()
 {
 	//check if we have all buttons - if someone messed with theme then some buttons may be missing
 	//if any of the buttons is missing, we just disable every one
 	if(!replay_ui_has_all_buttons()) {
+#if 0
 		std::shared_ptr<gui::button> play_b = play_button(), stop_b = stop_button(),
 		            reset_b = reset_button(), play_turn_b = play_turn_button(),
 		            play_side_b = play_side_button(), play_move_b = play_move_button();
@@ -169,6 +172,7 @@ void replay_controller::update_replay_ui()
 		if (play_move_b) {
 			play_move_b->enable(false);
 		}
+#endif
 	}
 }
 
@@ -176,38 +180,15 @@ void replay_controller::replay_ui_playback_should_start()
 {
 	if(!replay_ui_has_all_buttons())
 		return;
-
-	play_button()->enable(false);
-	reset_button()->enable(false);
-	play_turn_button()->enable(false);
-	play_side_button()->enable(false);
-	play_move_button()->enable(false);
 }
 
 void replay_controller::replay_ui_playback_should_stop()
 {
 	if(!replay_ui_has_all_buttons())
 		return;
-
-	if(!resources::recorder->at_end()) {
-		play_button()->enable(true);
-		reset_button()->enable(true);
-		play_turn_button()->enable(true);
-		play_side_button()->enable(true);
-		play_move_button()->enable(true);
-
-		play_button()->release();
-		play_turn_button()->release();
-		play_side_button()->release();
-		play_move_button()->release();
-	} else {
-		reset_button()->enable(true);
-		stop_button()->enable(false);
-	}
-
 	if(stop_condition_->should_stop()) {
 		//user interrupted
-		stop_button()->release();
+		//stop_button()->release();
 	}
 }
 
@@ -215,12 +196,6 @@ void replay_controller::reset_replay_ui()
 {
 	if(!replay_ui_has_all_buttons())
 		return;
-
-	play_button()->enable(true);
-	stop_button()->enable(true);
-	reset_button()->enable(true);
-	play_turn_button()->enable(true);
-	play_side_button()->enable(true);
 }
 
 
@@ -264,9 +239,11 @@ void replay_controller::handle_generic_event(const std::string& name)
 	} else {
 		add_replay_theme();
 	}
+#if 0
 	if(std::shared_ptr<gui::button> skip_animation_button = controller_.get_display().find_action_button("skip-animation")) {
 		skip_animation_button->set_check(controller_.is_skipping_replay());
 	}
+#endif
 }
 
 bool replay_controller::recorder_at_end() const

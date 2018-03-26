@@ -69,16 +69,17 @@ private:
 	void replay_ui_playback_should_start();
 	void replay_ui_playback_should_stop();
 
+#if 0
 	std::shared_ptr<gui::button> play_button();
 	std::shared_ptr<gui::button> stop_button();
 	std::shared_ptr<gui::button> reset_button();
 	std::shared_ptr<gui::button> play_turn_button();
 	std::shared_ptr<gui::button> play_side_button();
 	std::shared_ptr<gui::button> play_move_button();
+#endif
 
 	bool replay_ui_has_all_buttons() {
-		return play_button() && stop_button() && reset_button() &&
-		       play_turn_button() && play_side_button();
+		return true;
 	}
 	play_controller& controller_;
 	std::unique_ptr<replay_stop_condition> stop_condition_;

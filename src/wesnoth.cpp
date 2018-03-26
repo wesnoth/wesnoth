@@ -53,7 +53,6 @@
 #include "version.hpp"        // for version_info
 #include "video.hpp"          // for CVideo
 #include "wesconfig.h"        // for PACKAGE
-#include "widgets/button.hpp" // for button
 #include "wml_exception.hpp"  // for wml_exception
 
 #ifdef _WIN32
@@ -1161,9 +1160,6 @@ int main(int argc, char** argv)
 		error_exit(1);
 	} catch(config::error& e) {
 		std::cerr << e.message << "\n";
-		error_exit(1);
-	} catch(gui::button::error&) {
-		std::cerr << "Could not create button: Image could not be found\n";
 		error_exit(1);
 	} catch(CVideo::quit&) {
 		// just means the game should quit

@@ -36,7 +36,6 @@
 #include "team.hpp"                     // for team, team::CONTROLLER::AI, etc
 #include "wesnothd_connection_error.hpp"
 #include "whiteboard/manager.hpp"       // for manager
-#include "widgets/button.hpp"           // for button
 
 #include <cassert>                      // for assert
 #include <ctime>                        // for time
@@ -351,10 +350,12 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		if(chat_only) {
 			return PROCESS_CANNOT_HANDLE;
 		}
+#if 0
 		std::shared_ptr<gui::button> btn_end = display::get_singleton()->find_action_button("button-endturn");
 		if(btn_end) {
 			btn_end->enable(true);
 		}
+#endif
 		return PROCESS_END_LINGER;
 	}
 

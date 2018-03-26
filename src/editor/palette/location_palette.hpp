@@ -21,7 +21,6 @@
 #include <boost/ptr_container/ptr_vector.hpp>
 
 class location_palette_item;
-class location_palette_button;
 
 namespace editor {
 
@@ -116,9 +115,11 @@ private:
 	std::vector<std::string> items_;
 	editor_toolkit& toolkit_;
 	boost::ptr_vector<location_palette_item> buttons_;
+#if 0
 	std::unique_ptr<location_palette_button> button_add_;
 	std::unique_ptr<location_palette_button> button_delete_;
 	std::unique_ptr<location_palette_button> button_goto_;
+#endif
     int help_handle_;
 	editor_display& disp_;
 };

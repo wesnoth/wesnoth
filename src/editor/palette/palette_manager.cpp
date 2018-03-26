@@ -130,6 +130,7 @@ void palette_manager::draw_contents()
 
 	tooltips::clear_tooltips(loc);
 
+#if 0
 	std::shared_ptr<gui::button> upscroll_button = gui_.find_action_button("upscroll-button-editor");
 	if (upscroll_button)
 		upscroll_button->hide(false);
@@ -139,6 +140,7 @@ void palette_manager::draw_contents()
 	std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
 	if (palette_menu_button)
 		palette_menu_button->hide(false);
+#endif
 
 //	bg_restore(loc);
 	active_palette().set_dirty(true);

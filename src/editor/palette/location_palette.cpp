@@ -126,29 +126,6 @@ private:
 	editor::location_palette& parent_;
 };
 
-class location_palette_button : public gui::button
-{
-public:
-	location_palette_button(CVideo& video, const SDL_Rect& location, const std::string& text, const std::function<void (void)>& callback)
-		: gui::button(video, text)
-		, callback_(callback)
-	{
-		this->set_location(location.x, location.y);
-		this->hide(false);
-	}
-protected:
-	virtual void mouse_up(const SDL_MouseButtonEvent& e) override
-	{
-		gui::button::mouse_up(e);
-		if (callback_) {
-			if (this->pressed()) {
-				callback_();
-			}
-		}
-	}
-	std::function<void (void)> callback_;
-
-};
 namespace editor {
 location_palette::location_palette(editor_display &gui, const config& /*cfg*/,
                                    editor_toolkit &toolkit)
@@ -163,9 +140,9 @@ location_palette::location_palette(editor_display &gui, const config& /*cfg*/,
 		, items_()
 		, toolkit_(toolkit)
 		, buttons_()
-		, button_add_()
-		, button_delete_()
-		, button_goto_()
+		//, button_add_()
+		//, button_delete_()
+		//, button_goto_()
 		, help_handle_(-1)
 		, disp_(gui)
 	{
@@ -181,9 +158,11 @@ sdl_handler_vector location_palette::handler_members()
 	for (gui::widget& b : buttons_) {
 		h.push_back(&b);
 	}
+#if 0
 	if (button_add_) { h.push_back(button_add_.get()); }
 	if (button_delete_) { h.push_back(button_delete_.get()); }
 	if (button_goto_) { h.push_back(button_goto_.get()); }
+#endif
 	return h;
 }
 
@@ -193,9 +172,11 @@ void location_palette::hide(bool hidden)
 
 	disp_.video().clear_help_string(help_handle_);
 
+#if 0
 	std::shared_ptr<gui::button> palette_menu_button = disp_.find_menu_button("menu-editor-terrain");
 	palette_menu_button->set_overlay("");
 	palette_menu_button->enable(false);
+#endif
 
 	for(auto& w : handler_members()) {
 		static_cast<gui::widget&>(*w).hide(hidden);
@@ -244,6 +225,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 	const int button_height = 22;
 	const int button_y = 30;
 	int bottom = target.y + target.h;
+#if 0
 	if (!button_goto_) {
 		button_goto_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Go To"), [this]() {
 			//static_cast<mouse_action_starting_position&>(toolkit_.get_mouse_action()). ??
@@ -265,7 +247,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 		button_add_->set_location(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height });
 		button_delete_->set_location(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height });
 	}
-
+#endif
 	const int space_for_items = bottom - target.y;
 	const int items_fitting = space_for_items / item_space_;
 	if (num_visible_items() != items_fitting) {
@@ -312,6 +294,7 @@ void location_palette::draw_contents()
 	const int x = palette_x_;
 	const int starting = items_start_;
 	int ending = std::min<int>(starting + num_visible_items(), num_items());
+#if 0
 	std::shared_ptr<gui::button> upscroll_button = disp_.find_action_button("upscroll-button-editor");
 	if (upscroll_button)
 		upscroll_button->enable(starting != 0);
@@ -328,6 +311,7 @@ void location_palette::draw_contents()
 	if (button_delete_) {
 		button_delete_->set_dirty(true);
 	}
+#endif
 	for (int i = 0, size = num_visible_items(); i < size; i++) {
 
 		location_palette_item & tile = buttons_[i];
@@ -365,9 +349,11 @@ void location_palette::draw_contents()
 std::vector<std::string> location_palette::action_pressed() const
 {
 	std::vector<std::string> res;
+#if 0
 	if (button_delete_ && button_delete_->pressed()) {
 		res.push_back("editor-remove-location");
 	}
+#endif
 	return res;
 }
 

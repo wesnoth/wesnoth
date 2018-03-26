@@ -45,6 +45,7 @@ public:
 
 	void hide(bool /*hidden*/) override
 	{
+#if 0
 		std::shared_ptr<gui::button> upscroll_button = gui_.find_action_button("upscroll-button-editor");
 		upscroll_button->enable(false);
 		std::shared_ptr<gui::button> downscroll_button = gui_.find_action_button("downscroll-button-editor");
@@ -52,6 +53,7 @@ public:
 		std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
 		palette_menu_button->set_overlay("");
 		palette_menu_button->enable(false);
+#endif
 	}
 
 	std::vector<gui::widget>* get_widgets() { return nullptr; }

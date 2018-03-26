@@ -731,16 +731,6 @@ surface display::screenshot(bool map_screenshot)
 	return res;
 }
 
-std::shared_ptr<gui::button> display::find_action_button(const std::string& /*id*/)
-{
-	return nullptr;
-}
-
-std::shared_ptr<gui::button> display::find_menu_button(const std::string& /*id*/)
-{
-	return nullptr;
-}
-
 static const std::string& get_direction(std::size_t n)
 {
 	static const std::array<std::string, 6> dirs {{"-n", "-ne", "-se", "-s", "-sw", "-nw"}};

@@ -66,7 +66,6 @@ class manager;
 #include "time_of_day.hpp"
 #include "utils/functional.hpp"
 #include "video.hpp"
-#include "widgets/button.hpp"
 
 #include <SDL_rect.h>
 #include <boost/circular_buffer.hpp>
@@ -442,19 +441,6 @@ public:
 	}
 
 	void set_theme(config theme_cfg);
-
-	/**
-	 * Retrieves a pointer to a theme UI button.
-	 *
-	 * @note The returned pointer may either be nullptr, meaning the button
-	 *       isn't defined by the current theme, or point to a valid
-	 *       gui::button object. However, the objects retrieved will be
-	 *       destroyed and recreated by draw() method calls. Do *NOT* store
-	 *       these pointers for longer than strictly necessary to
-	 *       accomplish a specific task before the next screen refresh.
-	 */
-	std::shared_ptr<gui::button> find_action_button(const std::string& id);
-	std::shared_ptr<gui::button> find_menu_button(const std::string& id);
 
 	void draw_minimap_units();
 

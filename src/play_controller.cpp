@@ -1286,8 +1286,10 @@ void play_controller::show_objectives() const
 void play_controller::toggle_skipping_replay()
 {
 	skip_replay_ = !skip_replay_;
+#if 0
 	const std::shared_ptr<gui::button> skip_animation_button = get_display().find_action_button("skip-animation");
 	if(skip_animation_button) {
 		skip_animation_button->set_check(skip_replay_);
 	}
+#endif
 }

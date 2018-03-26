@@ -206,8 +206,10 @@ void playmp_controller::set_end_scenario_button()
 {
 	// Modify the end-turn button
 	if (! is_host()) {
+#if 0
 		std::shared_ptr<gui::button> btn_end = gui_->find_action_button("button-endturn");
 		btn_end->enable(false);
+#endif
 	}
 	gui_->get_theme().refresh_title2("button-endturn", "title2");
 }

@@ -127,12 +127,14 @@ void editor_palette<Item>::set_group(const std::string& id)
 	for (const item_group& group : groups_) {
 		if (group.id == id) {
 			found = true;
+#if 0
 			std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
 			if (palette_menu_button) {
 				//palette_menu_button->set_label(group.name);
 				palette_menu_button->set_tooltip_string(group.name);
 				palette_menu_button->set_overlay(group.icon);
 			}
+#endif
 		}
 	}
 	assert(found);
@@ -234,7 +236,7 @@ template<class Item>
 void editor_palette<Item>::draw_contents()
 {
 	toolkit_.set_mouseover_overlay(gui_);
-
+#if 0
 	std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
 	if (palette_menu_button) {
 
@@ -244,19 +246,20 @@ void editor_palette<Item>::draw_contents()
 		palette_menu_button->set_tooltip_string(name);
 		palette_menu_button->set_overlay(icon);
 	}
-
+#endif
 	unsigned int y = palette_y_;
 	unsigned int x = palette_x_;
 	int starting = items_start_;
 	int ending = std::min<int>(starting + nitems_, num_items());
 
+#if 0
 	std::shared_ptr<gui::button> upscroll_button = gui_.find_action_button("upscroll-button-editor");
 	if (upscroll_button)
 		upscroll_button->enable(starting != 0);
 	std::shared_ptr<gui::button> downscroll_button = gui_.find_action_button("downscroll-button-editor");
 	if (downscroll_button)
 		downscroll_button->enable(ending != num_items());
-
+#endif
 
 	int counter = starting;
 	for (int i = 0, size = num_visible_items(); i < size ; ++i) {
