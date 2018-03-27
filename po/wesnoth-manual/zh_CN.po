@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2018 Wesnoth development team
+# Copyright (C) 2005-2017 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # sylecn <sylecn@yahoo.com.cn>, 2009.
 # CloudiDust <cloudidust@gmail.com>, 2010.
@@ -9,14 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "POT-Creation-Date: 2018-03-27 04:20+0300\n"
-"PO-Revision-Date: 2017-05-23 23:06+0800\n"
+"PO-Revision-Date: 2018-03-27 21:35+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. type: Attribute 'lang' of: <book>
 #: doc/manual/manual.en.xml:6
@@ -217,15 +217,11 @@ msgstr ""
 
 #. type: Content of: <book><chapter><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:90
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/main-menu-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/main-menu-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/main-menu-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/main-menu-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><simpara><inlinemediaobject><textobject><phrase>
@@ -320,13 +316,6 @@ msgstr "载入"
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:153
-#, fuzzy
-#| msgid ""
-#| "Click this button to load a previously saved game. You will be shown a "
-#| "dialogue listing saved games. Select the game and click Ok to load and "
-#| "continue, or Cancel to return to the Main Menu. If you select a replay "
-#| "game, you can check the Replay check box. The loaded game will make all "
-#| "the moves from the beginning while you watch."
 msgid ""
 "Click this button to load a previously saved game. You will be shown a "
 "dialogue listing saved games. Select the game and click Ok to load and "
@@ -334,7 +323,7 @@ msgid ""
 "you can check the \"Show replay\" check box. The loaded game will make all "
 "the moves from the beginning while you watch."
 msgstr ""
-"点击此按钮以载入之前保存的游戏。您将会看到一个显示了游戏存档列表的对话框。选"
+"点击此按钮以载入之前的游戏存档。您将会看到一个显示了游戏存档列表的对话框。选"
 "择一个存档，点击“确定”来载入，或者点击“取消”返回主菜单。如果您选择的是游戏录"
 "像，可以选中“播放录像”复选框。载入的游戏会从头播放所有的行动，而您只需要看着"
 "就行。"
@@ -406,11 +395,6 @@ msgstr "制作人员"
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:215
-#, fuzzy
-#| msgid ""
-#| "Click this button for a list of major Wesnoth contributors. You will "
-#| "often be able to reach them in real time at irc.freenode.org:6667 on "
-#| "#wesnoth."
 msgid ""
 "Click this button for a list of major Wesnoth contributors. You will often "
 "be able to reach them in real time at irc.freenode.org:6667 on #wesnoth or "
@@ -418,7 +402,8 @@ msgid ""
 "battleforwesnoth</ulink>"
 msgstr ""
 "点击此按钮以查看韦诺主要贡献者的名单。通常您可以在irc.freenode.org:6667的"
-"#wesnoth频道与他们实时交流。"
+"#wesnoth频道里或者<ulink url=\"https://discord.gg/battleforwesnoth\">https://"
+"discord.gg/battleforwesnoth</ulink>上与他们实时交流。"
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:223
@@ -478,7 +463,7 @@ msgstr "i"
 msgid ""
 "Click this button to view game version and technical information. It may be "
 "useful when troubleshooting issues."
-msgstr ""
+msgstr "点击此按钮以查看游戏版本以及技术信息。当要解决疑难问题时这可能很有用。"
 
 #. type: Content of: <book><chapter><section><title>
 #: doc/manual/manual.en.xml:277
@@ -504,10 +489,8 @@ msgstr "玩一个单独的场景，可以与计算机对手对战，也可以与
 
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:292
-#, fuzzy
-#| msgid "Message another player (in multiplayer)"
 msgid "There are also campaigns that can be played in multiplayer."
-msgstr "和另一个玩家聊天（多人游戏中）"
+msgstr "可以在多人游戏中游玩的战役也是有的。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:294
@@ -560,18 +543,6 @@ msgstr ""
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:313
-#, fuzzy
-#| msgid ""
-#| "In general multiplayer games are played against other players via the "
-#| "Internet (you can also run them on your LAN if you have one). All these "
-#| "games are co-ordinated through the Wesnoth multiplayer server. "
-#| "Multiplayer games can take anywhere from 1 hour to 10 hours, depending on "
-#| "how many players there are (and the size of the map). The average time is "
-#| "between 3 to 7 hours. Games can be saved and loaded as many times as you "
-#| "like. So, it&#8217;s possible for some games to last 1 or 2 weeks, even "
-#| "though the play time is only a few hours. You cannot carry over units in "
-#| "multiplayer from one scenario to the next, so building up your army&#8217;"
-#| "s strength is possible only within the scenario."
 msgid ""
 "In general multiplayer games are played against other players via the "
 "Internet (you can also run them on your LAN if you have one). All these "
@@ -588,8 +559,8 @@ msgstr ""
 "中对战）。这些游戏全部都由韦诺多人游戏服务器进行协调。多人游戏时间可能从1小时"
 "到10小时不等，这取决于玩家人数（和地图大小）。平均一局要玩3到7个小时。游戏可"
 "以保存和载入，想存取多少次就存取多少次。因此，有可能有些游戏会持续1到2个星"
-"期，尽管实际游戏时间才几个小时而已。多人游戏里面的单位不能从一个场景带到下个"
-"场景。因此，您的部队的战斗力只能在单个场景之中提升。"
+"期，尽管实际游戏时间才几个小时而已。当只游玩单一场景时，您的单位不能带入以后"
+"的游戏中。因此，您的部队的战斗力只能在该场景之中提升。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:323
@@ -600,15 +571,11 @@ msgstr "点击“多人游戏”按钮后会提供给您下列几个可能的选
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:326
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/multiplayer-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/multiplayer-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/multiplayer-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/multiplayer-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -623,14 +590,6 @@ msgstr "登录"
 
 #. type: Content of: <book><chapter><section><section><section><simpara>
 #: doc/manual/manual.en.xml:333
-#, fuzzy
-#| msgid ""
-#| "This will be your name on the multiplayer server. If you have an account "
-#| "on the <ulink url=\"http://www.wesnoth.org/forum\">Wesnoth forums</"
-#| "ulink>, you may use the same username and password for joining the "
-#| "official server. A password box will pop up if a password is required for "
-#| "the current username. You cannot use a registered name without the "
-#| "password."
 msgid ""
 "This will be your name on the multiplayer server. If you have an account on "
 "the <ulink url=\"https://forums.wesnoth.org/\">Wesnoth forums</ulink>, you "
@@ -638,10 +597,10 @@ msgid ""
 "password box will pop up if a password is required for the current username. "
 "You cannot use a registered name without the password."
 msgstr ""
-"这将是您在多人游戏服务器上的名字。如果您拥有<ulink url=\"http://www.wesnoth."
-"org/forum\">韦诺官方论坛</ulink>的帐号，就可以使用相同的用户名和密码加入官方"
-"服务器。如果您填写的用户名需要提供密码，密码对话框会自动弹出。如果不提供密"
-"码，您就无法使用已经注册的用户名。"
+"这将是您在多人游戏服务器上的名字。如果您拥有<ulink url=\"https://forums."
+"wesnoth.org/\">韦诺论坛</ulink>的帐号，就可以使用相同的用户名和密码加入官方服"
+"务器。如果当前用户名需要密码，将弹出密码对话框。如果没有密码，您不能使用已注"
+"册的用户名。"
 
 #. type: Content of: <book><chapter><section><section><section><title>
 #: doc/manual/manual.en.xml:340
@@ -679,18 +638,13 @@ msgstr ""
 
 #. type: Content of: <book><chapter><section><section><section><simpara>
 #: doc/manual/manual.en.xml:351
-#, fuzzy
-#| msgid ""
-#| "A complete list of official and user setup servers is listed at this "
-#| "website: <ulink url=\"http://wesnoth.org/wiki/MultiplayerServers"
-#| "\">Multiplayer servers</ulink>."
 msgid ""
 "A complete list of official and user setup servers is listed at this "
 "website: <ulink url=\"https://wiki.wesnoth.org/MultiplayerServers"
 "\">Multiplayer servers</ulink>."
 msgstr ""
-"此网站上有一份完整的官方服务器和用户服务器列表：<ulink url=\"http://wesnoth."
-"org/wiki/MultiplayerServers\">多人游戏服务器</ulink>。"
+"此网站上有一份完整的官方和用户设立的服务器列表：<ulink url=\"https://wiki."
+"wesnoth.org/MultiplayerServers\">多人游戏服务器</ulink>。"
 
 #. type: Content of: <book><chapter><section><section><section><simpara>
 #: doc/manual/manual.en.xml:353
@@ -768,15 +722,11 @@ msgstr "游戏界面"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:391
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/game-screen-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/game-screen-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/game-screen-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/game-screen-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -799,15 +749,11 @@ msgstr ""
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:402
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/top_pane-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/top_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/top_pane-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/top_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -868,15 +814,11 @@ msgstr "当前时间或剩余时间（在限时多人游戏中）"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:456
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/right_pane-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/right_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/right_pane-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/right_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -1025,7 +967,7 @@ msgid ""
 "a certain number of turns have elapsed."
 msgstr ""
 "注意每个场景开始前弹出的目标窗口。通常击杀所有敌方首领后，您就能取得胜利，而"
-"只有当您的首领阵亡时您才会失败。但是有些场景可能有其他胜利目标——例如，让您的"
+"只有当您的首领被杀时您才会失败。但是有些场景可能有其他胜利目标——例如，让您的"
 "首领到达指定地点，或者救出某人，或者解决一个迷题，或者在被围攻时坚守城池直到"
 "撑过一定回合数。"
 
@@ -1357,7 +1299,7 @@ msgstr "l"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:809
 msgid "Move to leader unit"
-msgstr "移动到首领单位"
+msgstr "移动至首领单位处"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:820
@@ -1492,7 +1434,7 @@ msgstr "Ctrl+b"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:949
 msgid "Show potential enemy moves, if your units were not on the map"
-msgstr "显示如果您的单位不在地图上的话，敌方下回合可能的移动范围。"
+msgstr "显示若您的单位不在地图上的话，敌方下回合可能的移动范围"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:954
@@ -1502,7 +1444,7 @@ msgstr "1-7"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:957
 msgid "Show how far currently selected unit can move in that many turns"
-msgstr "数字N显示当前选中的单位在接下去的N回合中可能移动到的位置。"
+msgstr "显示当前选中单位在这么多回合中可以移动多远"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:968
@@ -1512,7 +1454,7 @@ msgstr "空格"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:971
 msgid "End unit turn and cycle to next unit that has movement left"
-msgstr "结束当前单位的回合，选中下一个还能移动的单位。"
+msgstr "结束当前单位的回合，选中下一个还能移动的单位"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:976
@@ -1707,18 +1649,13 @@ msgstr "设定团队标签"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1162
 msgid ":"
-msgstr ""
+msgstr ":"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1165
-#, fuzzy
-#| msgid ""
-#| "<ulink url=\"http://www.wesnoth.org/wiki/CommandMode\">Command mode</"
-#| "ulink>"
 msgid ""
 "<ulink url=\"https://wiki.wesnoth.org/CommandMode\">Command mode</ulink>"
-msgstr ""
-"<ulink url=\"http://www.wesnoth.org/wiki/CommandMode\">命令模式</ulink>"
+msgstr "<ulink url=\"https://wiki.wesnoth.org/CommandMode\">命令模式</ulink>"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1170
@@ -1800,15 +1737,11 @@ msgstr "征募与召回"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:1254
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/recruit-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/recruit-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/recruit-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/recruit-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -2369,8 +2302,8 @@ msgid ""
 "Does not suffer from a negative attack bonus during its unfavorable time of "
 "day (Heavy Infantry, Necrophage, Trolls, Walking Corpses)."
 msgstr ""
-"即使是在不适应的时段，此单位也不会受到负面攻击加成的影响（重甲步兵，死灵食尸"
-"鬼，巨魔，行尸）。"
+"即使是在不适应的时段，此单位也不会受到负面攻击加成的影响（如重甲步兵，死灵食"
+"尸鬼，巨魔，行尸）。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1646
@@ -2379,15 +2312,12 @@ msgstr "野生"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:1650
-#, fuzzy
-#| msgid ""
-#| "Units with the Feral trait only receive 50% defense in villages "
-#| "regardless of the base terrain the village is on."
 msgid ""
 "Units with the Feral trait only receive 50% defense in villages regardless "
 "of the base terrain the village is on (Bats, Falcons)."
 msgstr ""
-"拥有野生特质的单位，在村庄里的防御只有50%，而不论村庄所在的基础地形如何。"
+"拥有野生特质的单位，在村庄里的防御只有50%，而不论村庄所处的基础地形是什么（如"
+"蝙蝠、猎鹰）。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1657
@@ -2451,8 +2381,8 @@ msgid ""
 "and plague don&#8217;t work on them.  Elemental units generally have "
 "<emphasis>Elemental</emphasis> as their only trait."
 msgstr ""
-"元素单位并没有生命，因此对毒素免疫，而吸血与瘟疫对它们同样无效。元”单位通常只"
-"拥有元素这一个特质。"
+"元素单位并没有生命，因此对毒素免疫，而吸血与瘟疫对它们同样无效。元素单位通常"
+"只拥有<emphasis>元素</emphasis>这一个特质。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1708
@@ -2489,8 +2419,8 @@ msgid ""
 "and plague don&#8217;t work on them.  Mechanical units generally have "
 "<emphasis>Mechanical</emphasis> as their only trait."
 msgstr ""
-"“机械”单位并没有生命，因此对毒素免疫，而吸血与瘟疫对它们同样无效。“机械”单位"
-"通常只拥有“机械”这一个特质。"
+"“机械”单位并没有生命，因此对毒素免疫，而吸血与瘟疫对它们同样无效。机械单位通"
+"常只拥有<emphasis>机械</emphasis> 这一个特质。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1738 doc/manual/manual.en.xml:1880
@@ -2884,7 +2814,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:2056
 msgid "Skirmisher"
-msgstr "游击"
+msgstr "散兵"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:2060
@@ -3070,10 +3000,11 @@ msgid ""
 msgstr ""
 "如果您要移动选中的单位，只需单击要移动到的格子，您的单位就会向着那个位置移"
 "动。如果所选的目的地在本回合内无法到达，则在本回合中单位会移动到离目的地尽可"
-"能近的地方，并进入<strong>前往目的地模式</strong>。在<strong>前往目的地模式</"
-"strong>下，您的单位在接下来的几个回合中会自动移动到指定的地点。在您的下个回合"
-"开始时，您可以轻易地撤销单位的自动移动。您也可以选择该单位，并选择一个新的目"
-"的地来改变其目的地，或者也可以再次点击单位来取消<strong>前往目的地</strong>。"
+"能近的地方，并进入<emphasis>前往目的地模式</emphasis>。在<emphasis>前往目的地"
+"模式</emphasis>下，您的单位在接下来的几个回合中会自动移动到目的地。在您的下个"
+"回合开始时，您可以轻易地撤销单位的自动移动。您也可以选择该单位，并选择一个新"
+"的目的地来改变其目的地，或者也可以再次点击单位来取消<emphasis>前往目的地</"
+"emphasis>。"
 
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:2248
@@ -3111,7 +3042,7 @@ msgid ""
 "are able to move through the hexes around an enemy level 0 unit freely."
 msgstr ""
 "单位的控制区域延伸到和它紧邻的六格中。移动到敌方控制区域的单位会被迫停下。拥"
-"有游击能力的单位会忽略敌方控制区域，他们可以轻松穿越这些区域而不会被迫停下。0"
+"有散兵能力的单位会忽略敌方控制区域，他们可以轻松穿越这些区域而不会被迫停下。0"
 "级单位由于太弱，所以不能产生控制区域。所有单位都可以在敌方0级单位的四周自由穿"
 "行。"
 
@@ -3582,7 +3513,7 @@ msgid ""
 "speed up healing."
 msgstr ""
 "属于同盟中不同阵营的多名疗伤者可以共同对同一个单位疗伤，并加快单位的回复速"
-"度。 "
+"度。"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:2559
@@ -3703,7 +3634,7 @@ msgid ""
 msgstr ""
 "每个1级或以上的单位都会在周围的全部6个格子中维持控制区域。这意味着当敌人移动"
 "到这6个相邻区块中的任何一个时，就会被迫停下来，并结束移动阶段（只有拥有少见的"
-"游击能力的敌人才能忽略控制区域）。"
+"散兵能力的敌人才能忽略控制区域）。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:2614
@@ -4253,44 +4184,3 @@ msgid ""
 "loyal units are an exception."
 msgstr ""
 "高等级单位比低等级单位的维护费用高（每等级高1枚金币），而忠诚单位是个例外。"
-
-#~ msgid ""
-#~ "Some hotkeys were changed slightly to make better use of the controls "
-#~ "provided by the Pandora. If you are using a Pandora, these keys differ "
-#~ "from the lists above:"
-#~ msgstr ""
-#~ "为了更好地利用Pandora所提供的控制键，有些热键经过了细微的调整。如果您在使"
-#~ "用Pandora，那么下列这些按键和上面的列表有区别："
-
-#~ msgid "Pandora specific controls and hotkeys"
-#~ msgstr "Pandora专用控制和热键"
-
-#~ msgid "D-Pad"
-#~ msgstr "十字方向键"
-
-#~ msgid "GamingButton A"
-#~ msgstr "游戏键A"
-
-#~ msgid "GamingButton B"
-#~ msgstr "游戏键B"
-
-#~ msgid "GamingButton X"
-#~ msgstr "游戏键X"
-
-#~ msgid "GamingButton Y"
-#~ msgstr "游戏键Y"
-
-#~ msgid "Alt+GamingButton Y"
-#~ msgstr "Alt+游戏键Y"
-
-#~ msgid "Move action down queue"
-#~ msgstr "在队列中下移行动"
-
-#~ msgid "Alt+GamingButton X"
-#~ msgstr "Alt+游戏键X"
-
-#~ msgid "Move action up queue"
-#~ msgstr "在队列中上移行动"
-
-#~ msgid ";"
-#~ msgstr "；"

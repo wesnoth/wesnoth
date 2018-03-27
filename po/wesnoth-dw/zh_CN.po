@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2018 Wesnoth development team
+# Copyright (C) 2005-2017 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # MrKing <yideey@gmail.com>, 2011.
 # CloudiDust <cloudidust@gmail.com>, 2017.
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 01:20 UTC\n"
-"PO-Revision-Date: 2017-05-23 22:23+0800\n"
+"PO-Revision-Date: 2018-03-27 21:43+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:13
@@ -57,7 +57,7 @@ msgstr "挑战"
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:20
 msgid "Warrior"
-msgstr "勇士"
+msgstr "武士"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:21
@@ -257,7 +257,7 @@ msgid ""
 "aid."
 msgstr ""
 "凯王！我们被攻击了！残暴的生物入侵了我们的村庄，它们见人就杀。我拼死杀出，来"
-"此请求您的帮助！"
+"此请求您的帮助。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:337
@@ -408,7 +408,7 @@ msgstr ""
 msgid ""
 "Move Kai Krellis to the north-west corner of the map. He must be level one "
 "or higher."
-msgstr "将克雷利斯凯王移动到地图的西北角。他必须升级到一级或以上。"
+msgstr "移动克雷利斯凯王至地图西北角。他必须升级到一级或以上。"
 
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:85
@@ -1085,7 +1085,7 @@ msgstr ""
 msgid ""
 "Those are the words of a true kai and your father’s son. I am proud of you, "
 "Krellis."
-msgstr "这正是一位真正的凯王和您父王之子应该说的话。克雷利斯，我为您骄傲！"
+msgstr "这正是一位真正的凯王和您父王之子应该说的话。克雷利斯，我为您骄傲。"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:428
@@ -1179,7 +1179,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:610
 msgid "Uh...If you say so."
-msgstr "呃……既然您这么说……"
+msgstr "呃……既然您这样说，那就这样办吧。"
 
 #. [unit]: type=Drake Burner, id=Keshan
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:623
@@ -1416,7 +1416,7 @@ msgstr "我很好奇他靠这种态度是怎么招揽顾客的。"
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:402
 msgid ""
 "One hour will work for us. It will not take all of us to defeat the undead. "
-msgstr "一个小时就够了。我们不需要全部人手就可以击败亡灵。"
+msgstr "一个小时就够了。我们不需要全部人手就可以击败亡灵。 "
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:402
@@ -2144,7 +2144,7 @@ msgid ""
 "I would be HAPPY to guide such a pretty mermaid AND her friends. Follow me "
 "everybody!"
 msgstr ""
-"我也很<b>高兴</b>能给像您这样美丽的人鱼<b>和</b>您的朋友做向导。大家跟我来。"
+"我也很<b>高兴</b>能给像您这样美丽的人鱼<b>和</b>您的朋友做向导。大家跟我来！"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:487
@@ -2203,18 +2203,18 @@ msgstr "把烈焰神剑从它死去的主人手中撬出来"
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:277
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:115
 msgid "Death of Kai Krellis"
-msgstr "克雷利斯凯王阵亡"
+msgstr "克雷利斯凯王死亡"
 
 #. [objective]: condition=lose
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:192
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:119
 msgid "Death of Cylanna"
-msgstr "赛兰娜阵亡"
+msgstr "赛兰娜死亡"
 
 #. [objective]: condition=lose
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:196
 msgid "Death of Caladon"
-msgstr "卡拉东阵亡"
+msgstr "卡拉东死亡"
 
 #. [message]: speaker=$spy_unit.id
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:263
@@ -2625,9 +2625,9 @@ msgid ""
 "invaders."
 msgstr ""
 "曾经无法抵抗入侵而被迫逃离礁沙城的部落回来了，他们已然成为了由老兵组成的钢铁"
-"之师，而领导他们的，更是一位勇士之王。旅途的疲惫被即将回家的喜悦一扫而光。人"
-"鱼们于夜间抵达了礁沙城外，他们发现港口有重兵把守，于是他们沿岸向南，到几座偏"
-"僻的村庄里打探侵略者的消息。"
+"之师，而领导他们的，更是一位武士王。旅途的疲惫被即将回家的喜悦一扫而光。人鱼"
+"们于夜间抵达了礁沙城外，他们发现港口有重兵把守，于是他们沿岸向南，到几座偏僻"
+"的村庄里打探侵略者的消息。"
 
 #. [message]: speaker=Nebthun
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:439
@@ -2752,7 +2752,7 @@ msgstr "我们光复了家园！"
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:760
 msgid "Cylanna! I will miss you."
-msgstr "赛兰娜！我会怀念您的！"
+msgstr "赛兰娜！我会怀念您的。"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:771
@@ -2826,14 +2826,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:39
-#, fuzzy
-#| msgid ""
-#| "Not everything was as before, of course. Many good merfolk had been lost "
-#| "in the first attacks and on the journey. The visiting priestesses did "
-#| "much to console the families of the dead, and as it always does, life "
-#| "continued. In a few months, the giggles of children could be heard "
-#| "echoing through shallows. Many of those children were named after Kai "
-#| "Krellis, Gwabbo, Cylanna, and the other heroes."
 msgid ""
 "Not everything was as before, of course. Many good merfolk had been lost in "
 "the first attacks and on the journey. The visiting priestesses did much to "
@@ -2845,7 +2837,7 @@ msgstr ""
 "当然，并不是一切都会和以前一样。许多优秀的人鱼在起初的进攻中以及后来的征途上"
 "牺牲了。来访的女祭司们忙着安抚失去亲人的家庭。生活仍然继续着，正如过往一般。"
 "数月之后，浅滩上又回荡起孩子们的咯咯笑声。那些孩子中，有不少拥有着英雄的名"
-"字：克雷利斯凯王、瓜宝、赛兰娜还有别的英雄们。"
+"字：克雷利斯凯王、瓜宝、赛兰娜还有其他人。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:50
@@ -3041,8 +3033,8 @@ msgid ""
 "strength allows them to be truly formidable in battle. They are also fast "
 "despite their heavy armor. Even skilled soldiers look upon them with awe."
 msgstr ""
-"勇者之王常常会成为他们所处时代的传奇。他们的技巧和力量让他们在战斗中所向披"
-"靡。虽然身披重甲，他们依然身手矫捷。甚至连技艺精湛的士兵们都对他们满怀敬畏。"
+"勇士王常常会成为他们所处时代的传奇。他们的技巧和力量让他们在战斗中所向披靡。"
+"虽然身披重甲，他们依然身手矫捷。甚至连技艺精湛的士兵们都对他们满怀敬畏。"
 
 #. [unit_type]: id=Merman Young King, race=merman
 #: data/campaigns/Dead_Water/units/Young_King.cfg:4
@@ -3183,7 +3175,7 @@ msgstr ""
 #: data/campaigns/Dead_Water/utils/specials.cfg:4
 msgid ""
 " This unit is able to stun its enemies, disrupting their zones of control."
-msgstr "此单位能够击晕它的敌人，从而扰乱他们的控制区域。"
+msgstr " 此单位能够击晕它的敌人，从而扰乱他们的控制区域。"
 
 #. [damage]: id=tail_stun
 #: data/campaigns/Dead_Water/utils/specials.cfg:9

@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2018 Wesnoth development team
+# Copyright (C) 2005-2017 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Huang Huan <unicon221@gmail.com>, 2005.
 # Dionysus(unicon) <huang.wei.bhu@gmail.com>, 2007.
@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 01:21 UTC\n"
-"PO-Revision-Date: 2017-04-15 18:12+0800\n"
+"PO-Revision-Date: 2018-03-27 21:23+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [lua]: wml_actions.select_character
 #: data/campaigns/tutorial/lua/character_selection.lua:26
@@ -105,6 +105,8 @@ msgid ""
 "Part 1 will teach you the basics about movement, attacking, healing, and "
 "recruiting. Firstly, you’ll choose a hero (both heroes play the same)."
 msgstr ""
+"这是为本游戏的新玩家准备的教程，包含两部分。第一部分将教你移动、进攻、治疗和"
+"征募的基本操作。首先，你将选择一位英雄（两位英雄游玩起来是一模一样的）。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:159
@@ -114,7 +116,7 @@ msgid ""
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
-"在这个教程里，你扮演科纳德。你现在站在城堡主楼上，而你的导师德法多则在河的东"
+"在此教程里，你扮演科纳德。你现在站在城堡主楼上，而你的导师德法多则在河的东"
 "岸。你可以将鼠标移动到一个单位上，以在屏幕右侧查看其能力和属性统计的概述。"
 
 #. [message]: speaker=narrator
@@ -125,8 +127,8 @@ msgid ""
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
-"在这个教程里，你扮演莉莎。你现在站在城堡主楼上，而你的导师德法多则在河的东"
-"岸。你可以将鼠标移动到一个单位上，以在屏幕右侧查看其能力和属性统计的概述。"
+"在此教程里，你扮演莉莎。你现在站在城堡主楼上，而你的导师德法多则在河的东岸。"
+"你可以将鼠标移动到一个单位上，以在屏幕右侧查看其能力和属性统计的概述。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:173
@@ -146,15 +148,6 @@ msgstr "移动"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:211
-#, fuzzy
-#| msgid ""
-#| "When you select a unit, in this case Konrad, the places he can move to "
-#| "are highlighted. All units have a certain number of <i>movement points</"
-#| "i>, which dictate how many hexes that unit can move per turn. Normally, "
-#| "moving one hex uses one movement point, but moving across different types "
-#| "of hexes, or <i>terrains</i>, can use up more. You will learn more about "
-#| "that later. To move, simply click on your destination. You can press "
-#| "<b>u</b> to undo a move if you move to the wrong place."
 msgid ""
 "When you select a unit, in this case Konrad, the places he can move to are "
 "highlighted. All units have a certain number of <i>movement points</i>, "
@@ -165,21 +158,11 @@ msgid ""
 msgstr ""
 "当你选中一个单位（此时为科纳德）时，他可以移动到的位置会高亮显示。所有单位都"
 "拥有一定的<b>移动力</b>，移动力决定了该单位每个回合可以移动的格子数。通常来"
-"说，移动一格消耗一点移动力，但通过不同类型的格子，或<b>地形</b>时，消耗会变"
-"多。你之后将会学习到更多的相关内容。只需点击目的地即可移动。如果你移动到了错"
-"误的位置，可以按<b>u</b>以撤销移动。"
+"说，在平坦地形上移动一格消耗一点移动力。只需点击目的地即可移动。（如果你移动"
+"到了错误的位置，可以按<b>u</b>撤销移动。）"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:219
-#, fuzzy
-#| msgid ""
-#| "When you select a unit, in this case Li’sar, the places she can move to "
-#| "are highlighted. All units have a certain number of <i>movement points</"
-#| "i>, which dictate how many hexes that unit can move per turn. Normally, "
-#| "moving one hex uses one movement point, but moving across different types "
-#| "of hexes, or <i>terrains</i>, can use up more. You will learn more about "
-#| "that later. To move, simply click on your destination. You can press "
-#| "<b>u</b> to undo a move if you move to the wrong place."
 msgid ""
 "When you select a unit, in this case Li’sar, the places she can move to are "
 "highlighted. All units have a certain number of <i>movement points</i>, "
@@ -188,21 +171,20 @@ msgid ""
 "your destination. (You can press <b>u</b> to undo a move if you move to the "
 "wrong place.)"
 msgstr ""
-"当你选中一个单位（此时为莉莎）时，她可以移动到的位置会高亮显示。所有单位都拥"
+"当你选中一个单位（此时为莉莎）时，他可以移动到的位置会高亮显示。所有单位都拥"
 "有一定的<b>移动力</b>，移动力决定了该单位每个回合可以移动的格子数。通常来说，"
-"移动一格消耗一点移动力，但通过不同类型的格子，或<b>地形</b>时，消耗会变多。你"
-"之后将会学习到更多的相关内容。只需点击目的地即可移动。如果你移动到了错误的位"
-"置，可以按<b>u</b>以撤销移动。"
+"在平坦地形上移动一格消耗一点移动力。只需点击目的地即可移动。（如果你移动到了"
+"错误的位置，可以按<b>u</b>撤销移动。）"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:230
 msgid "Move Konrad next to Delfador."
-msgstr "将科纳德移动到德法多身边。"
+msgstr "移动科纳德至德法多身边。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:232
 msgid "Move Li’sar next to Delfador."
-msgstr "将莉莎移动到德法多身边。"
+msgstr "移动莉莎至德法多身边。"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:249
@@ -271,33 +253,23 @@ msgstr "攻击"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:340
-#, fuzzy
-#| msgid ""
-#| "To attack the quintain, first select the attacker (Konrad) then the "
-#| "target (the quintain). You will see an attack description. When you click "
-#| "<b>OK</b>, Konrad will attack."
 msgid ""
 "To attack the quintain, first select the attacker (Konrad), then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
 "b>, Konrad will attack."
 msgstr ""
 "要攻击刺靶，首先要选中进攻方（科纳德），然后点击目标（刺靶）。你将会看到攻击"
-"描述。当你点击<b>确定</b>时，科纳德就会发动攻击。"
+"描述。当你点击<b>确定</b>时，科纳德就会发动进攻。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:347
-#, fuzzy
-#| msgid ""
-#| "To attack the quintain, first select the attacker (Li’sar) then the "
-#| "target (the quintain). You will see an attack description. When you click "
-#| "<b>OK</b>, Li’sar will attack."
 msgid ""
 "To attack the quintain, first select the attacker (Li’sar), then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
 "b>, Li’sar will attack."
 msgstr ""
 "要攻击刺靶，首先要选中进攻方（莉莎），然后点击目标（刺靶）。你将会看到攻击描"
-"述。当你点击<b>确定</b>时，莉莎就会发动攻击。"
+"述。当你点击<b>确定</b>时，科纳德就会发动进攻。"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:362
@@ -330,7 +302,7 @@ msgstr "好主意！"
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:384
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:391
 msgid "Crowns"
-msgstr "皇冠"
+msgstr "王冠"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:386
@@ -367,18 +339,14 @@ msgstr "这<b>假人</b>也有进攻回合？"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:413
-#, fuzzy
-#| msgid ""
-#| "Yes. It’s a magical quintain! It gets 5 chances to hit you for 3 damage "
-#| "each. If it hits every time, you’ll drop from $student_hp to "
-#| "$($student_hp-15) hitpoints. Brace yourself!"
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
 "chances. If it hits every time, you’ll drop from $student_hp to "
 "$($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
-"是啊，这是一个魔法刺靶！它有5次机会击中你，每中一次会造成3点伤害。如果它每次"
-"都击中，那么你的生命值会从$student_hp|降到 $($student_hp-15)。打起精神来！"
+"是啊，这是一个魔法刺靶！如果它命中你，那么会造成3点伤害，而它有5次机会。如果"
+"它每次都命中，那么你的生命值会从$student_hp|降到 $($student_hp-15)。打起精神"
+"来！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:420
@@ -431,12 +399,12 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:452
 msgid "Move Konrad to a nearby village"
-msgstr "将科纳德移动到附近的村庄里"
+msgstr "移动科纳德至附近村庄里"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:454
 msgid "Move Li’sar to a nearby village"
-msgstr "将莉莎移动到附近的村庄里"
+msgstr "移动莉莎至附近村庄里"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:467
@@ -445,22 +413,15 @@ msgstr "村庄"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:469
-#, fuzzy
-#| msgid ""
-#| "You have captured a village! It now flies your colors and has been added "
-#| "to your total village count (the house icon at the top of the screen "
-#| "shows how many villages you currently control). Villages provide the gold "
-#| "needed to recruit units. Each turn, you gain two gold plus one for every "
-#| "village you own."
 msgid ""
 "You have captured a village! It now flies your colors and has been added to "
 "your total village count (the house icon at the top of the screen shows how "
 "many villages you currently control). Villages provide the gold needed to "
 "recruit units. Each turn, you gain 2 gold, plus 1 for every village you own."
 msgstr ""
-"你占领了一座村庄！它升起了你的旗帜，并且已经被加到了你的村庄总数中（屏幕顶部"
-"的房子图标旁会显示你当前控制着多少座村庄）。村庄会提供用于征募单位的金币。每"
-"回合你将得到两枚金币，再加上你拥有的每座村庄都会提供一枚额外的金币。"
+"你占领了一座村庄！它升起了你的旗帜，并被加到了你的村庄总数中（屏幕顶部的房子"
+"图标旁会显示你当前控制着多少座村庄）。村庄会提供用于征募单位的金币。每回合你"
+"将得到两枚金币，而你拥有的每座村庄都会提供一枚额外的金币。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:491
@@ -502,12 +463,12 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:511
 msgid "Move Konrad to the keep"
-msgstr "将科纳德移动到城堡主楼"
+msgstr "移动科纳德至城堡主楼"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:513
 msgid "Move Li’sar to the keep"
-msgstr "将莉莎移动到城堡主楼"
+msgstr "移动莉莎至城堡主楼"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:531
@@ -540,14 +501,6 @@ msgstr "特质"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:557
-#, fuzzy
-#| msgid ""
-#| "Be sure to examine the <i>traits</i> of your new recruits. They are "
-#| "listed under its race in the sidebar. Traits can subtly affect how you "
-#| "use your troops. For example, units with the <i>quick</i> trait can move "
-#| "a extra hex each turn, or units with the <i>intelligent</i> trait require "
-#| "20% less experience to level up. A full list of all possible traits may "
-#| "be found in help."
 msgid ""
 "Be sure to examine the <i>traits</i> of your new recruits. They are listed "
 "under its race in the sidebar. Traits can subtly affect how you use your "
@@ -557,8 +510,7 @@ msgid ""
 msgstr ""
 "一定要查看新兵的<b>特质</b>。特质列举在侧边栏中单位的种族旁边。特质会微妙地影"
 "响你使用部队的方式。例如，拥有<b>迅捷</b>特质的单位每回合可以多移动一格，而拥"
-"有<b>聪慧</b>特质的单位升级所需的经验值要少20%。所有可能拥有的特质的完整列表"
-"可以在帮助中找到。"
+"有<b>聪慧</b>特质的单位升级所需的经验值要少20%。"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:593
@@ -597,16 +549,13 @@ msgstr "我会让他们使用伤害比较高的攻击方式！"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:615
-#, fuzzy
-#| msgid ""
-#| "And which would that be? The sword (5×4) or the bow (3×3)? I suppose "
-#| "you’ll find out..."
 msgid ""
 "And which would that be? The sword (5×4; or 5 damage on each hit, with 4 "
 "attacks) or the bow (3×3; or 3 damage on each hit, with 3 attacks)? I "
 "suppose you’ll find out..."
 msgstr ""
-"那么你认为哪种攻击的伤害更高呢？剑（5×4）还是弓（3×3）？我想你会找到答案的……"
+"那么你认为哪种攻击的伤害更高呢？剑（5×4，或者说每次命中造成5点伤害，可攻击4"
+"次）还是弓（3×3，或者说每次命中造成3点伤害，可攻击3次）？我想你会找到答案的……"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:618
@@ -625,34 +574,25 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:660
-#, fuzzy
-#| msgid ""
-#| "Your elf used a sword (5×4; or 5 damage, 4 attacks), which is a <i>melee</"
-#| "i> attack. The quintain defended with its melee attack (3×5). The ranged "
-#| "attack (the bow) would have been safer."
 msgid ""
 "Your elf used a sword (5×4; or 5 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
 "or 3 damage on each hit, with 5 attacks). The ranged attack (the bow) would "
 "have been safer."
 msgstr ""
-"你的精灵使用了剑（5×4；或每次5点伤害，攻击4次），这是一种<b>近战</b>攻击。刺"
-"靶以它的近战攻击（3×5）进行了反击。若选择远程攻击（弓）的话，本该更为安全的。"
+"你的精灵使用了剑（5×4；或者说每次命中造成5点伤害，可攻击4次），这是一种<b>近"
+"战</b>攻击。刺靶以它的近战攻击（3×5；或者说每次命中造成3点伤害，可攻击5次）进"
+"行了反击。若选择远程攻击（弓）的话，本该更为安全的。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:672
-#, fuzzy
-#| msgid ""
-#| "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage, 3 "
-#| "attacks). The quintain has no ranged attack, only a melee attack, so it "
-#| "could not defend itself."
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
 "attack, so it could not defend itself."
 msgstr ""
-"你的精灵使用了弓，这是一种<b>远程</b>攻击（3×3；或每次3点伤害，攻击3次）。刺"
-"靶没有远程攻击，只有近战攻击，所以它无法保护自己。"
+"你的精灵使用了弓，这是一种<b>远程</b>攻击（3×3；或者说每次命中造成3点伤害，可"
+"攻击3次）。刺靶没有远程攻击，只有近战攻击，所以它无法保护自己。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:687
@@ -734,15 +674,6 @@ msgstr "防御"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:773
-#, fuzzy
-#| msgid ""
-#| "Whenever one of your units is selected, you’ll see varying percentages as "
-#| "you move the mouse over the map. The higher the percentage, the more "
-#| "<i>defense</i> that unit has in that kind of terrain. For example, most "
-#| "units have good defenses in castles and villages but poor defenses in "
-#| "rivers. However, these quintains use a <i>magical</i> attack, which "
-#| "always has a 70% chance of hitting no matter what terrain its target "
-#| "occupies."
 msgid ""
 "Whenever one of your units is selected, you’ll see varying percentages as "
 "you move the mouse over the map. The higher the percentage, the more "
@@ -752,10 +683,10 @@ msgid ""
 "which always has a 70% chance of hitting no matter what terrain their "
 "targets occupy."
 msgstr ""
-"一旦选中一个单位，那么当鼠标在地图上移动时，你将看到不断变化的百分数值：数值"
-"越高，则该单位在此类地形上的<b>闪避率</b>越高。例如，大多数单位在村庄和城堡中"
-"的闪避率挺不错，而在河里则很糟糕。但是，这些刺靶使用的是<b>魔法</b>攻击，所以"
-"不管对手占据了哪里，它们都有70%的可能命中。"
+"一旦选中一个单位，那么当鼠标在地图上移动时，你将看到不断变化的百分数值。数值"
+"越高，则该单位在此类地形上的<b>防御率</b>越高。例如，大多数单位在村庄和城堡中"
+"的防御率挺不错，而在河里则很糟糕。但是有些单位，例如这些刺靶，拥有<b>魔法</b>"
+"攻击，所以不管对手占据了哪里，它们都有70%的可能命中。"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:785
@@ -875,10 +806,8 @@ msgstr "只要一个走运的兽人步兵再打到我一下，我就完了！"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:96
-#, fuzzy
-#| msgid "Ouch! I could make use of some healing in a village."
 msgid "I could make use of some healing in a village."
-msgstr "啊！我得去村庄治疗。"
+msgstr "我现在需要在村庄里接受一些治疗。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:97
@@ -897,10 +826,8 @@ msgstr "只要一个走运的兽人步兵再打到我一下，我就完了！"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:100
-#, fuzzy
-#| msgid "female^Ouch! I could make use of some healing in a village."
 msgid "female^I could make use of some healing in a village."
-msgstr "啊！我得去村庄治疗。"
+msgstr "我现在需要在村庄里接受一些治疗。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:101
@@ -916,17 +843,17 @@ msgstr "击败兽人首领"
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:111
 msgid "Death of Konrad"
-msgstr "科纳德阵亡"
+msgstr "科纳德死亡"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:122
 msgid "Death of Li’sar"
-msgstr "莉莎阵亡"
+msgstr "莉莎死亡"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:133
 msgid "Death of Galdrad"
-msgstr "伽德拉德阵亡"
+msgstr "伽德拉德死亡"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:163
@@ -935,6 +862,8 @@ msgid ""
 "teach you about recalling units, abilities and weapon specials, income and "
 "upkeep, long-distance movement, zone of control, and time of day."
 msgstr ""
+"欢迎回来！这是两部分教程中的第二部分。第二部分将教给你有关召回单位、能力和武"
+"器特攻、收入和维护费用、长距离移动、控制区域以及时段的有关知识。"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:169
@@ -1034,10 +963,6 @@ msgstr "我们出发吧！进攻！"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:208
-#, fuzzy
-#| msgid ""
-#| "Hang on! You need to gather your forces. Or do you intend to fight the "
-#| "orcs singlehandedly?"
 msgid ""
 "Hang on! You need to gather your forces. Or do you intend to fight the orcs "
 "single-handedly?"
@@ -1136,26 +1061,6 @@ msgstr "能力与武器特攻"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:281
-#, fuzzy
-#| msgid ""
-#| "Certain unit types have special <i>abilities</i>. Unlike traits, which "
-#| "usually provide small buffs or debuffs, abilities give units special "
-#| "behaviors that normal units do not have. In this case, the Elvish Shaman "
-#| "has the Heal ability, which allows her to heal allied adjacent units 4 "
-#| "hitpoints at the start of each turn. Unit types with abilities, "
-#| "especially ones like Heal, can be very useful, so be careful when sending "
-#| "them into battle.\n"
-#| "\n"
-#| "Weapon specials are special attack modifiers that make certain attacks "
-#| "more powerful. Once again, in this case, the Shaman has the Slows special "
-#| "on her entangle attack. When this attack is used on an enemy, it will "
-#| "halve the damage they do for one turn. Other weapon specials include "
-#| "First Strike, which allows that attack to always hit first no matter who "
-#| "attacks first, and Magical, which gives that attack a constant 70% chance "
-#| "to hit.\n"
-#| "\n"
-#| "A full list of abilities and weapons specials, along with traits, may be "
-#| "found in help."
 msgid ""
 "Certain unit types have special <i>abilities</i>. Unlike traits, which "
 "usually provide small buffs or debuffs, abilities give units special "
@@ -1164,40 +1069,13 @@ msgid ""
 "at the start of each turn. Unit types with abilities, especially ones like "
 "Heal, can be very useful, so be careful when sending them into battle."
 msgstr ""
-"有些单位类型拥有特殊<b>能力</b>。特质通常提供少量的增益或者减益，而能力则给予"
-"单位特殊行为，这是普通单位所没有的。在此，精灵萨满拥有治疗能力，这让她能够在"
-"每一回合开始时为相邻的友方单位恢复4点生命值。拥有能力，尤其是治疗等能力的单位"
-"类型是非常有用的，因此派他们前去作战时要小心。\n"
-"\n"
-"武器特攻是使得某些攻击更加强力的特殊攻击修正。在此又要提到萨满，她的缠绕攻击"
-"拥有减速特攻。当此攻击作用于敌人时，它可将他们的伤害输出减半一回合。其他武器"
-"特攻例如先制，可以让该攻击总是先手，而不论是谁先进攻的，又例如魔法，可以让该"
-"攻击总是拥有70%的命中率。\n"
-"\n"
-"能力、武器特攻以及特质的完整列表，可以在帮助中找到。"
+"有些单位类型拥有特殊<b>能力</b>。能力与特质不同。特质通常提供少量的增益或者减"
+"益，而能力则给予单位特殊行为，这是普通单位所没有的。在此，精灵萨满拥有治疗能"
+"力，这让她能够在每一回合开始时为相邻的友方单位恢复4点生命值。拥有能力，尤其是"
+"治疗等能力的单位类型是非常有用的，因此派他们前去作战时要小心。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:288
-#, fuzzy
-#| msgid ""
-#| "Certain unit types have special <i>abilities</i>. Unlike traits, which "
-#| "usually provide small buffs or debuffs, abilities give units special "
-#| "behaviors that normal units do not have. In this case, the Elvish Shaman "
-#| "has the Heal ability, which allows her to heal allied adjacent units 4 "
-#| "hitpoints at the start of each turn. Unit types with abilities, "
-#| "especially ones like Heal, can be very useful, so be careful when sending "
-#| "them into battle.\n"
-#| "\n"
-#| "Weapon specials are special attack modifiers that make certain attacks "
-#| "more powerful. Once again, in this case, the Shaman has the Slows special "
-#| "on her entangle attack. When this attack is used on an enemy, it will "
-#| "halve the damage they do for one turn. Other weapon specials include "
-#| "First Strike, which allows that attack to always hit first no matter who "
-#| "attacks first, and Magical, which gives that attack a constant 70% chance "
-#| "to hit.\n"
-#| "\n"
-#| "A full list of abilities and weapons specials, along with traits, may be "
-#| "found in help."
 msgid ""
 "Weapon specials are special attack modifiers that make certain attacks more "
 "powerful. Once again, in this case, the Shaman has the Slows special on her "
@@ -1209,15 +1087,10 @@ msgid ""
 "A full list of abilities and weapons specials, along with traits, may be "
 "found in help."
 msgstr ""
-"有些单位类型拥有特殊<b>能力</b>。特质通常提供少量的增益或者减益，而能力则给予"
-"单位特殊行为，这是普通单位所没有的。在此，精灵萨满拥有治疗能力，这让她能够在"
-"每一回合开始时为相邻的友方单位恢复4点生命值。拥有能力，尤其是治疗等能力的单位"
-"类型是非常有用的，因此派他们前去作战时要小心。\n"
-"\n"
 "武器特攻是使得某些攻击更加强力的特殊攻击修正。在此又要提到萨满，她的缠绕攻击"
-"拥有减速特攻。当此攻击作用于敌人时，它可将他们的伤害输出减半一回合。其他武器"
-"特攻例如先制，可以让该攻击总是先手，而不论是谁先进攻的，又例如魔法，可以让该"
-"攻击总是拥有70%的命中率。\n"
+"拥有“减速”特攻。当此攻击作用于敌人时，它可将他们的伤害输出减半一回合。其他武"
+"器特攻例如“先制”，可以让该攻击总是先手，而不论是谁先进攻的，又例如“魔法”，可"
+"以让该攻击总是拥有70%的命中率。\n"
 "\n"
 "能力、武器特攻以及特质的完整列表，可以在帮助中找到。"
 
@@ -1291,7 +1164,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:374
 msgid "Status Table"
-msgstr ""
+msgstr "状态表"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:376
@@ -1301,6 +1174,8 @@ msgid ""
 "a side may be hidden. It is useful to check this table when a scenario "
 "begins."
 msgstr ""
+"状态表详细列出了各阵营当前的状态和起始条件。迷雾和黑幕会影响到你能从此表上看"
+"到的内容，有时有的阵营可能会被隐藏。在场景开始时检视此表，是很有用的。"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:394
@@ -1494,7 +1369,7 @@ msgid ""
 "if you have limited manpower."
 msgstr ""
 "紧邻一个单位的六个格子组成了它的<b>控制区域<b>。当敌方单位进入那些格子时，他"
-"们在该回合将无法继续移动。（有一个例外，拥有<b>游击</b>能力的单位不受控制区域"
+"们在该回合将无法继续移动。（有一个例外，拥有<b>散兵</b>能力的单位不受控制区域"
 "的影响。）这可以用于封锁强敌的行动，让他们不能接近诸如村庄一类的关键位置，哪"
 "怕你人手不足也是如此。"
 
@@ -1915,15 +1790,6 @@ msgstr "啊！现在谁来教你击败这些兽人啊！"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1127
-#, fuzzy
-#| msgid ""
-#| "You have beaten the orcs! You may want to try some novice-level campaigns "
-#| "next, such as: <i>The South Guard</i>, <i>An Orcish Incursion</i>, <i>A "
-#| "Tale of Two Brothers</i>, or <i>Heir to the Throne</i>. <i>The South "
-#| "Guard</i> was specifically designed as a beginner’s campaign. Konrad, "
-#| "Li’sar and Delfador are characters from <i>Heir to the Throne</i>. You "
-#| "can also refer to the in-game help browser if you ever need to refresh "
-#| "your memory on gameplay mechanics."
 msgid ""
 "You have beaten the orcs! You may want to try one of the novice-level "
 "campaigns next, such as <i>A Tale of Two Brothers</i>, <i>An Orcish "
@@ -1931,10 +1797,9 @@ msgid ""
 "characters from <i>Heir to the Throne</i>. You can also refer to the in-game "
 "help browser if you ever need to refresh your memory on gameplay mechanics."
 msgstr ""
-"你击败了兽人！接下来你可能会想试试看新手级别的战役，例如：<b>南疆卫队</b>、"
-"<b>兽人入侵</b>、<b>兄弟传说</b>或者<b>王座继承人</b>。<b>南疆哨所</b>是为初"
-"心者特别设计的战役。而科纳德、莉莎和德法多则是<b>王座继承人</b>中的人物。如果"
-"你需要刷新有关游戏玩法的记忆，那也可以参见游戏中的帮助浏览器。"
+"你击败了兽人！接下来你可能会想试试看新手级别的战役，例如：<b>兄弟传说</b>、"
+"<b>兽人入侵</b>或者<b>南疆卫队</b>。科纳德、莉莎和德法多是<b>王座继承人</b>中"
+"的角色。如果你需要回忆游戏玩法，那也可以参见游戏中的帮助浏览器。"
 
 #. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4

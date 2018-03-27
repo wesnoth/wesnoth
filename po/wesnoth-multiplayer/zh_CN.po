@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2018 Wesnoth development team
+# Copyright (C) 2005-2017 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # jan2xue <75jan@163.com>, 2005.
 # Huang huan <unicon221@gmail.com>, 2005.
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 01:20 UTC\n"
-"PO-Revision-Date: 2017-05-28 12:33+0800\n"
+"PO-Revision-Date: 2018-03-27 21:34+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -20,12 +20,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
 msgid "User Map"
-msgstr "玩家地图"
+msgstr "用户地图"
 
 #. [multiplayer_side]: id=Random
 #: data/multiplayer/eras.cfg:6
@@ -62,18 +62,10 @@ msgstr ""
 #. [era]: id=era_dunefolk
 #: data/multiplayer/eras.cfg:83
 msgid "Default + Dunefolk"
-msgstr ""
+msgstr "默认 + 沙丘游民"
 
 #. [era]: id=era_dunefolk
 #: data/multiplayer/eras.cfg:84
-#, fuzzy
-#| msgid ""
-#| "An era featuring an additional faction besides the six factions from "
-#| "Default Era. Khalifate units use no magic, but instead rely on careful "
-#| "use of terrain and coordinated strikes around dusk or dawn.\n"
-#| "\n"
-#| "This era is still under development, so please be sure to report any "
-#| "problems that arise."
 msgid ""
 "An era featuring an additional faction besides the six factions from Default "
 "Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
@@ -82,28 +74,18 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
-"此时代中除了默认时代的六大派系之外，还含有一个额外的派系。哈里发单位不使用魔"
-"法，而是依赖于对地形的谨慎利用和晨昏时段的协同攻击。\n"
+"此时代中除了默认时代的六大派系之外，还含有一个额外的派系。沙丘游民单位不使用"
+"魔法，而是依赖于对地形的谨慎利用和晨昏时段的协同攻击。\n"
 "\n"
 "此时代仍在开发中，因此请务必报告出现的一切问题。"
 
 #. [era]: id=era_dunefolk_heroes
 #: data/multiplayer/eras.cfg:94
-#, fuzzy
-#| msgid "Age of Heroes"
 msgid "Age of Heroes + Dunefolk"
-msgstr "英雄时代"
+msgstr "英雄时代 + 沙丘游民"
 
 #. [era]: id=era_dunefolk_heroes
 #: data/multiplayer/eras.cfg:95
-#, fuzzy
-#| msgid ""
-#| "An era featuring an additional faction besides the six factions from Age "
-#| "of Heroes Era. Khalifate units use no magic, but instead rely on careful "
-#| "use of terrain and coordinated strikes around dusk or dawn.\n"
-#| "\n"
-#| "This era is still under development, so please be sure to report any "
-#| "problems that arise."
 msgid ""
 "An era featuring an additional faction besides the six factions from Age of "
 "Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
@@ -112,8 +94,8 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
-"此时代中除了英雄时代的六大派系之外，还含有一个额外的派系。哈里发单位不使用魔"
-"法，而是依赖于对地形的谨慎利用和晨昏时段的协同攻击。\n"
+"此时代中除了英雄时代的六大派系之外，还含有一个额外的派系。沙丘游民单位不使用"
+"魔法，而是依赖于对地形的谨慎利用和晨昏时段的协同攻击。\n"
 "\n"
 "此时代仍在开发中，因此请务必报告出现的一切问题。"
 
@@ -169,21 +151,11 @@ msgstr ""
 #: data/multiplayer/factions/dunefolk-aoh.cfg:4
 #: data/multiplayer/factions/dunefolk-default.cfg:4
 msgid "Dunefolk"
-msgstr ""
+msgstr "沙丘游民"
 
 #. [multiplayer_side]: id=Dunefolk, type=random
 #: data/multiplayer/factions/dunefolk-aoh.cfg:14
 #: data/multiplayer/factions/dunefolk-default.cfg:14
-#, fuzzy
-#| msgid ""
-#| "The <bold>text='Khalifate'</bold> are a faction of humans from the "
-#| "deserts and hills of the southern lands. Lacking magic users, the "
-#| "Khalifate instead specialize in using terrain features to coordinate "
-#| "attacks at dawn or dusk. Their ranks boast lawful and liminal units, "
-#| "healers, high-accuracy melee fighters, and fearsome horse-mounted "
-#| "archers. While Khalifate units tend to be more expensive than those of "
-#| "the Loyalist faction, they make up for this with high mobility — "
-#| "especially on hilly terrains."
 msgid ""
 "The <bold>text='Dunefolk'</bold> are a faction of humans from the deserts "
 "and hills of the southern lands. The Dunefolk specialize in using terrain "
@@ -193,10 +165,10 @@ msgid ""
 "of the Loyalist faction, they make up for this with high mobility — "
 "especially on hilly terrains."
 msgstr ""
-"<bold>text='哈里发人'</bold>是由来自南方沙漠和丘陵的人类所组成的派系。他们缺"
+"<bold>text='沙丘游民'</bold>是由来自南方沙漠和丘陵的人类所组成的派系。他们缺"
 "少魔法使用者，而是专精于利用地形特征来进行晨昏时段的协同攻击。他们的队伍中有"
-"很多守序和边缘单位、治疗师、出手精准的近战武士以及令人恐惧的骑射弓手。哈里发"
-"单位常常比保王党单位金贵，但他们以高机动性来弥补——尤其是在山丘地形之上。"
+"很多守序和边缘单位、治疗师、出手精准的近战武士以及令人恐惧的骑射弓手。沙丘游"
+"民单位常常比保王党单位金贵，但他们以高机动性来弥补——尤其是在山丘地形之上。"
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
@@ -594,10 +566,8 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:89
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:95
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:91
-#, fuzzy
-#| msgid "teamname^Southwest"
 msgid "teamname^Statues"
-msgstr "西南"
+msgstr "雕像"
 
 # verses are, in my opinion, untranslatable. anyone interested may want to give a try...
 # 自便
@@ -1073,7 +1043,7 @@ msgstr "人类"
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:107
 msgid "Death of your leader"
-msgstr "你的首领阵亡"
+msgstr "你的首领死亡"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:108
@@ -1085,13 +1055,13 @@ msgstr "你的团队里只有一位首领，因此敌人不会竭尽全力进攻
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:111
 msgid "Death of both of your team’s leaders"
-msgstr "你队首领全部阵亡"
+msgstr "你队首领全部死亡"
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:112
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
-msgstr "你的团队里有两位首领，因而敌人会竭尽全力攻打过来。"
+msgstr "你的团队里有两位首领，因此敌人会竭尽全力攻打过来。"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:133
@@ -1259,7 +1229,7 @@ msgid ""
 "the Den of Onis, hoping to unlock the strange and mysterious magics of its "
 "creators."
 msgstr ""
-"这些最不同寻常的洞穴曾经被称为“惨笑恶魔之密室”，也曾是卡•鲁克鬼族的内部堡垒。"
+"这一最不同寻常的洞穴曾经被称为“惨笑恶魔之密室”，也曾是卡•鲁克鬼族的内部堡垒。"
 "卡•鲁克是一族邪恶又狡猾的食人恶魔。在从伊迪亚悄无声息地消失之前，他们曾让东方"
 "大陆的居民恐惧了长达四百年的时间。从那时起，很多派系都参与了对鬼之巢穴统治权"
 "的争夺，他们希望能解开洞穴创造者们奇怪而又神秘的魔力的秘密。"
@@ -1514,15 +1484,13 @@ msgstr "在这幅战线众多的决斗地图上，玩家必须穿越各种地形
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:38
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Shapeshifter"
-msgstr "中军"
+msgstr "化形者"
 
 #. [unit]: type=Tentacle of the Deep
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:52
 msgid "Nani the Shapeshifter"
-msgstr ""
+msgstr "化形者纳尼"
 
 #. [effect]: type=arcane
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:82
@@ -2278,7 +2246,7 @@ msgstr "撑过敌军的所有攻击"
 #. [objective]: condition=lose
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:375
 msgid "Death of your team leaders"
-msgstr "你队首领全部阵亡"
+msgstr "你队首领全部死亡"
 
 #. [note]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:380
@@ -2536,7 +2504,7 @@ msgstr ""
 #. [multiplayer]: id=wesbench_shroud_walk
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:9
 msgid "Wesnoth Benchmark: Walking through Shroud"
-msgstr "韦诺基准测试图：战场黑幕"
+msgstr "韦诺基准测试图：走过黑幕"
 
 #. [multiplayer]: id=wesbench_shroud_walk
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:10
@@ -2546,12 +2514,3 @@ msgid ""
 msgstr ""
 "一幅韦诺基准测试图，命令行参数为：--no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end。"
-
-#~ msgid "Default + Khalifate"
-#~ msgstr "默认 + 哈里发人"
-
-#~ msgid "Age of Heroes + Khalifate"
-#~ msgstr "英雄时代 + 哈里发人"
-
-#~ msgid "Khalifate"
-#~ msgstr "哈里发人"

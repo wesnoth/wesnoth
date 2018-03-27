@@ -4,7 +4,7 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 
 ## Version 1.13.12+dev
  ### Language and i18n
-   * Updated translations: Spanish
+   * Updated translations: Chinese (Simplified), Spanish
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
 
