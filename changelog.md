@@ -2,6 +2,8 @@
  ### Campaigns
    * Eastern Invasion
      * Fixed some Lua errors in S05.
+   * Under the Burning Suns
+     * Hide technical terrains in the Help browser (Human Ship, Lava overlay).
  ### Language and i18n
    * Fixed many cases of interpolated strings in the engine possibly having
      their translations retrieved from the wrong textdomain and falling back
