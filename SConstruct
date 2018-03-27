@@ -79,7 +79,6 @@ opts.AddVariables(
     PathVariable('python_site_packages_dir', 'sets the directory where python modules are installed', "lib/python/site-packages/wesnoth", PathVariable.PathAccept),
     BoolVariable('notifications', 'Enable support for desktop notifications', True),
     BoolVariable('nls','enable compile/install of gettext message catalogs',True),
-    BoolVariable('png', 'Clear to disable writing png files for screenshots, images', True),
     PathVariable('prefix', 'autotools-style installation prefix', "/usr/local", PathVariable.PathAccept),
     PathVariable('prefsdir', 'user preferences directory', "", PathVariable.PathAccept),
     PathVariable('default_prefs_file', 'default preferences file name', "", PathVariable.PathAccept),
@@ -409,10 +408,6 @@ if env["prereqs"]:
         client_env['fribidi'] = client_env['fribidi'] and (conf.CheckPKG('fribidi >= 0.10.9') or Warning("Can't find FriBiDi, disabling FriBiDi support."))
         if client_env['fribidi']:
             client_env.Append(CPPDEFINES = ["HAVE_FRIBIDI"])
-
-        env["png"] = env["png"] and conf.CheckLib("png")
-        if env["png"]:
-            client_env.Append(CPPDEFINES = ["HAVE_LIBPNG"])
 
         env["history"] = env["history"] and (conf.CheckLib("history") or Warning("Can't find GNU history, disabling history support."))
         if env["history"]:

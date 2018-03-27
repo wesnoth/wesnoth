@@ -84,13 +84,6 @@ set(game-external-libs
 	${VORBISFILE_LIBRARIES}
 )
 
-if(ENABLE_LIBPNG AND PNG_FOUND)
-	set(game-external-libs
-		${game-external-libs}
-		${PNG_LIBRARIES}
-	)
-endif(ENABLE_LIBPNG AND PNG_FOUND)
-
 if(ENABLE_HISTORY AND HISTORY_FOUND)
 	set(game-external-libs
 		${game-external-libs}
