@@ -89,14 +89,9 @@ endif(ENABLE_HISTORY AND HISTORY_FOUND)
 set(server-external-libs
 	${common-external-libs}
 	${Boost_SYSTEM_LIBRARIES}
-)
-
-set(tools-external-libs
-	${common-external-libs}
-	${sdl_image-lib}
-	${Boost_FILESYSTEM_LIBRARY}
-	${Boost_SYSTEM_LIBRARIES}
 	${Boost_RANDOM_LIBRARY}
+	${CRYPTO_LIBRARY}
+	${MYSQL_LIBS}
 )
 
 if(ENABLE_FRIBIDI AND FRIBIDI_FOUND)
@@ -314,9 +309,6 @@ if(ENABLE_SERVER)
 	target_link_libraries(wesnothd
 			wesnoth-core
 			${server-external-libs}
-			${Boost_RANDOM_LIBRARY}
-			${CRYPTO_LIBRARY}
-			${MYSQL_LIBS}
 		)
 	set_target_properties(wesnothd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnothd${BINARY_SUFFIX})
 
@@ -340,9 +332,6 @@ if(ENABLE_CAMPAIGN_SERVER)
 	target_link_libraries(campaignd
 			wesnoth-core
 			${server-external-libs}
-			${CRYPTO_LIBRARY}
-			${Boost_RANDOM_LIBRARY}
-			${MYSQL_LIBS}
 		)
 	set_target_properties(campaignd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}campaignd${BINARY_SUFFIX})
 
