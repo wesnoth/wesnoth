@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2018 Wesnoth development team
+# Copyright (C) 2005-2017 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # sylecn <sylecn@gmail.com>, 2009.
 # CloudiDust <cloudidust@gmail.com>, 2010.
@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
-"POT-Creation-Date: 2018-02-12 20:02+0300\n"
-"PO-Revision-Date: 2017-05-23 23:06+0800\n"
+"POT-Creation-Date: 2018-03-27 04:20+0300\n"
+"PO-Revision-Date: 2018-03-27 20:53+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -28,7 +28,7 @@ msgstr "WESNOTH"
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2018"
-msgstr ""
+msgstr "2018"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -46,7 +46,7 @@ msgstr "韦诺之战"
 #: doc/man/wesnoth.6:18 doc/man/wesnothd.6:18
 #, no-wrap
 msgid "NAME"
-msgstr "命名"
+msgstr "名称"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:20
@@ -101,10 +101,9 @@ msgstr "选项"
 
 #. type: TP
 #: doc/man/wesnoth.6:45
-#, fuzzy, no-wrap
-#| msgid "B<--bunzip>I<\\ infile.gz>"
+#, no-wrap
 msgid "B<--bunzip>I<\\ infile.bz2>"
-msgstr "B<--bunzip>I<\\ infile.gz>"
+msgstr "B<--bunzip>I<\\ infile.bz2>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:51
@@ -131,29 +130,22 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:57
-#, fuzzy, no-wrap
-#| msgid "B<-c,\\ --campaign\\ [>I<id_campaign>B<]>"
+#, no-wrap
 msgid "B<-c[>I<id_campaign>B<],\\ --campaign[>I<=id_campaign>B<]>"
-msgstr "B<-c,\\ --campaign\\ [>I<id_campaign>B<]>"
+msgstr "B<-c[>I<id_campaign>B<],\\ --campaign[>I<=id_campaign>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:62
-#, fuzzy
-#| msgid ""
-#| "goes directly to the campaign with id E<lt>id_campaignE<gt>. A selection "
-#| "menu will appear if no id was specified."
 msgid ""
 "goes directly to the campaign with id I<id_campaign>.  A selection menu will "
 "appear if no id was specified."
-msgstr ""
-"直接进入ID为 E<lt>id_campaignE<gt> 的战役。如果没有指定ID，则会出现选择菜单。"
+msgstr "直接进入ID为 I<id_campaign> 的战役。如果没有指定ID，则会出现选择菜单。"
 
 #. type: TP
 #: doc/man/wesnoth.6:62
-#, fuzzy, no-wrap
-#| msgid "B<--campaign-difficulty\\ [>I<difficulty>B<]>"
+#, no-wrap
 msgid "B<--campaign-difficulty[>I<=difficulty>B<]>"
-msgstr "B<--campaign-difficulty\\ [>I<difficulty>B<]>"
+msgstr "B<--campaign-difficulty[>I<=difficulty>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:66
@@ -197,7 +189,7 @@ msgstr "B<--data-dir>I<\\ directory>"
 #. type: Plain text
 #: doc/man/wesnoth.6:75
 msgid "overrides the data directory with the one specified"
-msgstr "使用指定的目录作为数据目录。"
+msgstr "使用指定的目录作为数据目录"
 
 #. type: TP
 #: doc/man/wesnoth.6:75
@@ -207,8 +199,6 @@ msgstr "B<--data-path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:78
-#, fuzzy
-#| msgid "print the path of the data directory and exits."
 msgid "prints the path of the data directory and exits."
 msgstr "打印数据目录的路径并退出。"
 
@@ -220,33 +210,26 @@ msgstr "B<-d, --debug>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:83
-#, fuzzy
-#| msgid ""
-#| "enables additional command mode options in-game (see the wiki page at "
-#| "http://www.wesnoth.org/wiki/CommandMode for more information about "
-#| "command mode)."
 msgid ""
 "enables additional command mode options in-game (see the wiki page at "
 "https://www.wesnoth.org/wiki/CommandMode for more information about command "
 "mode)."
 msgstr ""
-"在游戏中启用附加的命令模式选项。（关于命令模式的更多信息请参阅wiki页面："
+"在游戏中启用额外的命令模式选项。（关于命令模式的更多信息请参阅wiki页面："
 "http://www.wesnoth.org/wiki/CommandMode）"
 
 #. type: TP
 #: doc/man/wesnoth.6:83
-#, fuzzy, no-wrap
-#| msgid "B<-e,\\ --editor>I<\\ file>"
+#, no-wrap
 msgid "B<-e[>I<file>B<],\\ --editor[>I<=file>B<]>"
-msgstr "B<-e,\\ --editor>I<\\ file>"
+msgstr "B<-e[>I<file>B<],\\ --editor[>I<=file>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:89
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-l --load>"
-msgstr ""
-"直接启动游戏内置的地图编辑器。如果指定了I<file>，则和B<-e --load>等价。"
+msgstr "直接启动游戏内置的地图编辑器。如果指定了I<file>，则和B<-e --load>等价"
 
 #. type: TP
 #: doc/man/wesnoth.6:89
@@ -320,21 +303,15 @@ msgstr "B<-l,\\ --load>I<\\ file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:122
-#, fuzzy
-#| msgid ""
-#| "loads the savegame I<file> from the standard save game directory.  If the "
-#| "B<-e> or B<--editor> option is used as well, starts the editor with the "
-#| "map from I<file> open. If it is a directory, the editor will start with a "
-#| "load map dialog opened there."
 msgid ""
 "loads the savegame I<file> from the standard save game directory. If the B<-"
 "e> or B<--editor> option is used as well, starts the editor with the map "
 "from I<file> open. If it is a directory, the editor will start with a load "
 "map dialog opened there."
 msgstr ""
-"从默认游戏存档目录读取存档I<file>。如果与 B<-e> 或 B<--editor> 选项同时使用，"
-"启动地图编辑器并打开I<file>所对应的地图。如果是一个目录，则编辑器启动后自动打"
-"开读取地图对话框并定位到该目录。"
+"从标准游戏存档目录读取存档 I<file> 。如果与 B<-e> 或 B<--editor> 选项同时使"
+"用，则启动地图编辑器并打开来自 I<file> 的地图。如果是一个目录，则编辑器启动后"
+"自动打开读取地图对话框并定位到该目录。"
 
 #. type: TP
 #: doc/man/wesnoth.6:122
@@ -395,23 +372,18 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:147
-#, fuzzy, no-wrap
-#| msgid "B<--logdomains\\ [>I<filter>B<]>"
+#, no-wrap
 msgid "B<--logdomains[>I<=filter>B<]>"
-msgstr "B<--logdomains\\ [>I<filter>B<]>"
+msgstr "B<--logdomains[>I<=filter>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:152
-#, fuzzy
-#| msgid ""
-#| "lists defined log domains (only the ones containing B<filter> if used) "
-#| "and exits"
 msgid ""
 "lists defined log domains (only the ones containing I<filter> if used) and "
 "exits"
 msgstr ""
-"列出游戏中定义的日志域（如果使用了B<filter>则只列出饱含该字符串的日志域）而后"
-"退出。"
+"列出游戏中定义的日志域（如果使用了 I<filter> 则只列出饱含该字符串的日志域）而"
+"后退出"
 
 #. type: TP
 #: doc/man/wesnoth.6:152
@@ -421,14 +393,12 @@ msgstr "B<--max-fps>I<\\ fps>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:159
-#, fuzzy
-#| msgid ""
-#| "the number of frames per second the game can show, the value should be "
-#| "between the 1 and 1000, the default is B<50>."
 msgid ""
 "the number of frames per second the game can show, the value should be "
 "between I<1> and I<1000>, the default is the monitor's refresh rate."
-msgstr "游戏每秒能显示的帧数，这个值应该在1和1000之间，默认为B<50>。"
+msgstr ""
+"游戏每秒能显示的帧数，这个值应该在  I<1> 和  I<1000> 之间，默认为显示器的刷新"
+"率。"
 
 #. type: TP
 #: doc/man/wesnoth.6:159
@@ -463,16 +433,11 @@ msgstr "B<--no-delay>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:172
-#, fuzzy
-#| msgid ""
-#| "runs the game without any delays for graphic benchmarking.  This is "
-#| "automatically enabled by B<--nogui>."
 msgid ""
 "runs the game without any delays for graphic benchmarking. This is "
 "automatically enabled by B<--nogui>."
 msgstr ""
-"运行游戏而不进行任何延迟，以执行图像基准测试。使用 B<--nogui> 选项时会自动启"
-"用本选项。"
+"无延迟地运行游戏，以执行图像基准测试。使用 B<--nogui> 时会自动启用本选项。"
 
 #. type: TP
 #: doc/man/wesnoth.6:172
@@ -508,6 +473,8 @@ msgid ""
 "runs the game without the GUI. Only available in combination with B<--"
 "multiplayer> or B<--screenshot> or B<--plugin>."
 msgstr ""
+"运行游戏，但不运行图形界面。只能与 B<--multiplayer> 或 B<--screenshot> 或 "
+"B<--plugin> 组合使用。"
 
 #. type: TP
 #: doc/man/wesnoth.6:186
@@ -552,14 +519,10 @@ msgstr "B<--password>I<\\ password>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:201
-#, fuzzy
-#| msgid ""
-#| "uses E<lt>passwordE<gt> when connecting to a server, ignoring other "
-#| "preferences. Unsafe."
 msgid ""
 "uses I<password> when connecting to a server, ignoring other preferences. "
 "Unsafe."
-msgstr "在连接服务器时使用E<lt>passwordE<gt>，忽略其他首选项。不安全。"
+msgstr "在连接服务器时使用 I<password> ，忽略其他首选项。不安全。"
 
 #. type: TP
 #: doc/man/wesnoth.6:201
@@ -580,16 +543,6 @@ msgstr "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:214
-#, fuzzy
-#| msgid ""
-#| "preprocesses a specified file/folder. For each file(s) a plain .cfg file "
-#| "and a processed .cfg file will be written in specified target directory. "
-#| "If a folder is specified, it will be preprocessed recursively based on "
-#| "the known preprocessor rules. The common macroses from the \"data/core/"
-#| "macros\" directory will be preprocessed before the specified resources.  "
-#| "Example: B<-p ~/wesnoth/data/campaigns/tutorial ~/result.> For details "
-#| "regarding the preprocessor visit: http://wiki.wesnoth.org/"
-#| "PreprocessorRef#Command-line_preprocessor"
 msgid ""
 "preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
 "a processed .cfg file will be written in specified target directory. If a "
@@ -600,33 +553,27 @@ msgid ""
 "preprocessor visit: https://wiki.wesnoth.org/PreprocessorRef#Command-"
 "line_preprocessor"
 msgstr ""
-"预处理所指定的文件/文件夹。这些文件将被写入所指定的目标目录：包括一个普通的"
-"cfg文件和一个处理过的cfg文件。如果指定的是个文件夹，那么将根据已知的预处理器"
+"预处理指定的文件/文件夹。针对每个文件，一个未处理的.cfg文件和一个处理过的.cfg"
+"文件会被写入指定的目标目录中。如果指定的是个文件夹，那么将根据已知的预处理器"
 "规则递归地预处理之。“data/core/macros”目录中的常用宏会在指定的资源之前被预处"
 "理。例如： B<-p ~/wesnoth/data/campaigns/tutorial ~/result.> 有关预处理器的详"
 "情请见：http://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor"
 
 #. type: TP
 #: doc/man/wesnoth.6:214
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess-defines=>I<DEFINE1>B<,>I<DEFINE2>B<,>I<etc>"
+#, no-wrap
 msgid "B<--preprocess-defines=>I<DEFINE1>B<,>I<DEFINE2>B<,>I<...>"
-msgstr "B<--preprocess-defines=>I<DEFINE1>B<,>I<DEFINE2>B<,>I<etc>"
+msgstr "B<--preprocess-defines=>I<DEFINE1>B<,>I<DEFINE2>B<,>I<...>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:221
-#, fuzzy
-#| msgid ""
-#| "comma separated list of defines to be used by the '--preprocess' command. "
-#| "If B<SKIP_CORE> is in the define list the \"data/core\" directory won't "
-#| "be preprocessed."
 msgid ""
 "comma separated list of defines to be used by the B<--preprocess> command. "
 "If B<SKIP_CORE> is in the define list the \"data/core\" directory won't be "
 "preprocessed."
 msgstr ""
-"由逗号分隔的定义列表，用于“--preprocess”指令。如果B<SKIP_CORE>在定义列表中，"
-"则“data/core”目录不会被预处理。"
+"由逗号分隔的定义列表，用于 B<--preprocess> 指令。如果B<SKIP_CORE>在定义列表"
+"中，则“data/core”目录不会被预处理。"
 
 #. type: TP
 #: doc/man/wesnoth.6:221
@@ -636,33 +583,21 @@ msgstr "B<--preprocess-input-macros>I<\\ source-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:228
-#, fuzzy
-#| msgid ""
-#| "used only by the '--preprocess' command.  Specifies a file that contains "
-#| "[preproc_define]s to be included before preprocessing."
 msgid ""
 "used only by the B<--preprocess> command. Specifies a file that contains "
 "B<[preproc_define]>s to be included before preprocessing."
 msgstr ""
-"仅供“--preprocess“命令使用。用于指定一个包含了[preproce_defines]区块的文件，"
-"其中的定义将在预处理开始前生效。"
+"仅供 B<--preprocess> 命令使用。用于指定一个包含了一个或多个 "
+"B<[preproc_define]> 的文件，其中的定义将在预处理开始前生效。"
 
 #. type: TP
 #: doc/man/wesnoth.6:228
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess-output-macros\\ [>I<target-file>B<]>"
+#, no-wrap
 msgid "B<--preprocess-output-macros[>I<=target-file>B<]>"
-msgstr "B<--preprocess-output-macros\\ [>I<target-file>B<]>"
+msgstr "B<--preprocess-output-macros[>I<=target-file>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:239
-#, fuzzy
-#| msgid ""
-#| "used only by the '--preprocess' command.  Will output all preprocessed "
-#| "macros in the target file. If the file is not specified the output will "
-#| "be file '_MACROS_.cfg' in the target directory of preprocess's command.  "
-#| "The output file can be passed to B<--preprocess-input-macros> This switch "
-#| "should be typed before the --preprocess command."
 msgid ""
 "used only by the B<--preprocess> command. Will output all preprocessed "
 "macros in the target file. If the file is not specified the output will be "
@@ -670,10 +605,10 @@ msgid ""
 "output file can be passed to B<--preprocess-input-macros>.  This switch "
 "should be typed before the B<--preprocess> command."
 msgstr ""
-"仅供“--preprocess”命令使用。将会输出目标文件中所有经过了预处理的宏。如果没有"
-"指定文件，那么目标文件将是preprocess命令所指定的目标目录中的“_MACROS_.cfg”。"
-"输出文件可传递给 B<--preprocess-input-macros> 。这个开关选项必须出现在--"
-"preprocess命令之前。"
+"仅供 B<--preprocess> 命令使用。将会输出目标文件中所有经过了预处理的宏。如果没"
+"有指定文件，那么目标文件将是preprocess命令所指定的目标目录中的“_MACROS_."
+"cfg”。输出文件可传递给 B<--preprocess-input-macros> 。这个开关选项必须出现在 "
+"B<--preprocess> 命令之前。"
 
 #. type: TP
 #: doc/man/wesnoth.6:239
@@ -700,20 +635,22 @@ msgid ""
 "with .bmp or if libpng is not available. Image path functions are documented "
 "at https://wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
+"以一个合法的包含图像路径函数的韦诺“图像路径字符串”作为传入值，并输出一个.png"
+"文件。如果文件名以.bmp结尾或libpng不可用，则输出Windows .bmp文件。图像路径函"
+"数的文档位于https://wiki.wesnoth.org/ImagePathFunctionWML。"
 
 #. type: TP
 #: doc/man/wesnoth.6:246
-#, fuzzy, no-wrap
-#| msgid "B<port>"
+#, no-wrap
 msgid "B<-R,\\ --report>"
-msgstr "B<port>"
+msgstr "B<-R,\\ --report>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:249
 msgid ""
 "initializes game directories, prints build information suitable for use in "
 "bug reports, and exits."
-msgstr ""
+msgstr "初始化游戏目录，打印适用于缺陷报告的构建信息，并退出。"
 
 #. type: TP
 #: doc/man/wesnoth.6:249
@@ -723,10 +660,6 @@ msgstr "B<--rng-seed>I<\\ seed>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:253
-#, fuzzy
-#| msgid ""
-#| "seeds the random number generator with number E<lt>argE<gt>.  Example: "
-#| "B<--rng-seed 0>"
 msgid ""
 "seeds the random number generator with number E<lt>argE<gt>. Example: B<--"
 "rng-seed 0>"
@@ -740,20 +673,15 @@ msgstr "B<--screenshot>I<\\ map>B<\\ >I<output>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:260
-#, fuzzy
-#| msgid ""
-#| "saves a screenshot of E<lt>mapE<gt> to E<lt>outputE<gt> without "
-#| "initializing a screen."
 msgid ""
 "saves a screenshot of I<map> to I<output> without initializing a screen."
-msgstr "将 E<lt>mapE<gt> 的截图存入 E<lt>outputE<gt> 而不在屏幕上显示。"
+msgstr "将 I<map> 的截图存入 I<output> 而不初始化屏幕显示。"
 
 #. type: TP
 #: doc/man/wesnoth.6:260
-#, fuzzy, no-wrap
-#| msgid "B<-s,\\ --server\\ [>I<host>B<]>"
+#, no-wrap
 msgid "B<-s[>I<host>B<],\\ --server[>I<=host>B<]>"
-msgstr "B<-s,\\ --server\\ [>I<host>B<]>"
+msgstr "B<-s[>I<host>B<],\\ --server[>I<=host>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:264
@@ -772,10 +700,8 @@ msgstr "B<--showgui>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:268
-#, fuzzy
-#| msgid "runs the game with the GUI, overriding any implicit B<--nogui.>"
 msgid "runs the game with the GUI, overriding any implicit B<--nogui>."
-msgstr "以有图形界面的方式运行游戏，此选项将覆盖所有隐含的 B<--nogui> 选项。"
+msgstr "以有图形界面的方式运行游戏，此选项将覆盖所有隐含的 B<--nogui> 。"
 
 #. type: TP
 #: doc/man/wesnoth.6:268
@@ -790,26 +716,21 @@ msgstr "将验证错误视为致命错误。"
 
 #. type: TP
 #: doc/man/wesnoth.6:271
-#, fuzzy, no-wrap
-#| msgid "B<-t,\\ --test\\ [>I<scenario_id>B<]>"
+#, no-wrap
 msgid "B<-t[>I<scenario_id>B<],\\ --test[>I<=scenario_id>B<]>"
-msgstr "B<-t,\\ --test\\ [>I<scenario_id>B<]>"
+msgstr "B<-t[>I<scenario_id>B<],\\ --test[>I<=scenario_id>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:283
-#, fuzzy
-#| msgid ""
-#| "runs the game in a small test scenario. The scenario should be one "
-#| "defined with a B<[test]> WML tag. The default is \"test\". Implies B<--"
-#| "nogui.>"
 msgid ""
 "runs the game in a small test scenario. The scenario should be one defined "
 "with a B<[test]> WML tag. The default is B<test>.  A demonstration of the "
 "B<[micro_ai]> feature can be started with B<micro_ai_test>.  Implies B<--"
 "nogui>."
 msgstr ""
-"在小型测试场景中运行游戏。该场景应使用 B<[test]> WML标签定义。默认为“test”。"
-"隐含 B<--nogui> 。"
+"在小型测试场景中运行游戏。该场景应使用 B<[test]> WML标签定义。默认为 "
+"B<test> 。可使用 B<micro_ai_test> 启动对 B<[micro_ai]> 特性的演示。此选项隐"
+"含 B<--nogui> 。"
 
 #. type: TP
 #: doc/man/wesnoth.6:283
@@ -819,10 +740,8 @@ msgstr "B<-u,\\ --unit>I<\\ scenario-id>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:287
-#, fuzzy
-#| msgid "runs the specified test scenario as a unit test. Implies B<--nogui.>"
 msgid "runs the specified test scenario as a unit test. Implies B<--nogui>."
-msgstr "将指定的测试场景作为单元测试运行。隐含 B<--nogui> 。"
+msgstr "将指定的测试场景作为单元测试运行。此选项隐含 B<--nogui> 。"
 
 #. type: TP
 #: doc/man/wesnoth.6:287
@@ -887,13 +806,9 @@ msgstr "B<--username>I<\\ username>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:315
-#, fuzzy
-#| msgid ""
-#| "uses E<lt>usernameE<gt> when connecting to a server, ignoring other "
-#| "preferences."
 msgid ""
 "uses I<username> when connecting to a server, ignoring other preferences."
-msgstr "在连接服务器时使用E<lt>usernameE<gt>，忽略其他首选项。"
+msgstr "在连接服务器时使用 I<username> ，忽略其他首选项。"
 
 #. type: TP
 #: doc/man/wesnoth.6:315
@@ -1116,13 +1031,10 @@ msgstr "B<--turns>I<\\ value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:401
-#, fuzzy
-#| msgid ""
-#| "sets the number of turns for the chosen scenario. The default is B<50>."
 msgid ""
 "sets the number of turns for the chosen scenario. By default no turn limit "
 "is set."
-msgstr "设置所选场景的回合数限制。默认值为B<50>。"
+msgstr "设置所选场景的回合数限制。默认无限制。"
 
 #. type: SH
 #: doc/man/wesnoth.6:402 doc/man/wesnothd.6:265
@@ -1132,11 +1044,6 @@ msgstr "退出状态码"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:407
-#, fuzzy
-#| msgid ""
-#| "Normal exit status is 0.  An exit status of 1 indicates an (SDL, video, "
-#| "fonts, etc) initialization error.  An exit status of 2 indicates an error "
-#| "with the command line options."
 msgid ""
 "Normal exit status is 0.  An exit status of 1 indicates an (SDL, video, "
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
@@ -1147,16 +1054,6 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnoth.6:419
-#, fuzzy
-#| msgid ""
-#| "When running unit tests (withB<\\ -u>), the exit status is different.  An "
-#| "exit status of 0 indicates that the test passed, and 1 indicates that the "
-#| "test failed.  An exit status of 3 indicates that the test passed, but "
-#| "produced an invalid replay file.  An exit status of 4 indicates that the "
-#| "test passed, but the replay produced errors.  These latter two are only "
-#| "returned if B<--noreplaycheck> is not passed.  An exit status of 2 "
-#| "indicates that the test timed out, when used with the deprecated B<--"
-#| "timeout> option."
 msgid ""
 "When running unit tests (withB<\\ -u>), the exit status is different. An "
 "exit status of 0 indicates that the test passed, and 1 indicates that the "
@@ -1169,8 +1066,8 @@ msgstr ""
 "运行单元测试（使用 B<\\ -u> 时），退出状态码是不同的。退出状态码0代表测试通"
 "过，而1代表测试失败。退出状态码3代表测试通过，但生成了无效的录像文件。退出状"
 "态码4代表测试通过，但录像中产生了错误。后两个状态码仅在不传入 B<--"
-"noreplaycheck> 参数时才会返回。当与已废弃的 B<--noreplaycheck> 选项共同使用"
-"时，退出状态码2代表测试超时。"
+"noreplaycheck> 参数时才会返回。当与已废弃的 B<--timeout> 选项共同使用时，退出"
+"状态码2代表测试超时。"
 
 #. type: SH
 #: doc/man/wesnoth.6:420 doc/man/wesnothd.6:269
@@ -1201,12 +1098,8 @@ msgstr "这个手册页最初由 Cyril Bouthors E<lt>cyril@bouthors.orgE<gt> 编
 
 #. type: Plain text
 #: doc/man/wesnoth.6:429 doc/man/wesnothd.6:276
-#, fuzzy
-#| msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgid "Visit the official homepage: https://www.wesnoth.org/"
-msgstr ""
-"请访问官方主页：http://www.wesnoth.org/\n"
-"以及Wesnoth中文爱好者主页：http://www.wesnoth.cn"
+msgstr "请访问官方主页：https://www.wesnoth.org/"
 
 #. type: SH
 #: doc/man/wesnoth.6:430 doc/man/wesnothd.6:277
@@ -1216,11 +1109,8 @@ msgstr "版权"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:433 doc/man/wesnothd.6:280
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2016 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
-msgstr "版权所有 \\(co 2003-2016 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgstr "版权所有 \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:436 doc/man/wesnothd.6:283
@@ -1294,11 +1184,6 @@ msgstr "B<wesnothd> B<-V>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:44
-#, fuzzy
-#| msgid ""
-#| "Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
-#| "wiki/ServerAdministration on what commands the server accepts via the "
-#| "wesnoth client (/query ...) or the fifo."
 msgid ""
 "Manages Battle for Wesnoth multiplayer games. See https://www.wesnoth.org/"
 "wiki/ServerAdministration on what commands the server accepts via the "
@@ -1537,19 +1422,14 @@ msgstr "B<fifo_path>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:135
-#, fuzzy
-#| msgid ""
-#| "The path to the fifo you can echo server commands into (same as /"
-#| "query ... from wesnoth).  If not specified defaults to the compile-time "
-#| "path (default: B</var/run/socket/wesnothd/socket>)."
 msgid ""
 "The path to the fifo you can echo server commands into (same as /query ... "
 "from wesnoth).  If not specified defaults to the compile-time path (default: "
 "B</var/run/wesnothd/socket>)."
 msgstr ""
-"服务器所使用的fifo文件的路径（与在wesnoth中使用 /query 功能相同），您可以向该"
-"文件内echo服务器命令。如果不指定，则默认为编译时指定的路径（默认值：B</var/"
-"run/socket/wesnothd/socket>）。"
+"服务器所使用的fifo文件的路径（与在wesnoth中使用 /query ... 的功能相同），您可"
+"以向该文件内echo服务器命令。如果不指定，则默认为编译时指定的路径（默认值：B</"
+"var/run/socket/wesnothd/socket>）。"
 
 #. type: TP
 #: doc/man/wesnothd.6:135
@@ -1585,7 +1465,7 @@ msgstr "B<motd>"
 #. type: Plain text
 #: doc/man/wesnothd.6:144
 msgid "The message of the day."
-msgstr "每日一言"
+msgstr "每日一言。"
 
 #. type: TP
 #: doc/man/wesnothd.6:144
@@ -1946,7 +1826,7 @@ msgstr "B<server>"
 #. type: Plain text
 #: doc/man/wesnothd.6:252
 msgid "The hostname of the mail server"
-msgstr "邮件服务器的主机名。"
+msgstr "邮件服务器的主机名"
 
 #. type: TP
 #: doc/man/wesnothd.6:252
@@ -2019,15 +1899,3 @@ msgstr ""
 #: doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
-
-#~ msgid "2013"
-#~ msgstr "2013"
-
-#~ msgid "runs the game without the GUI."
-#~ msgstr "以无图形界面的方式运行游戏。"
-
-#~ msgid ""
-#~ "takes a valid wesnoth 'image path string' with image path functions, and "
-#~ "outputs to a windows .bmp file."
-#~ msgstr ""
-#~ "将有效的韦诺“图片路径字符串”传入图片路径函数中，并输出为Windows .bmp文件。"

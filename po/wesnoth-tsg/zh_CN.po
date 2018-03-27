@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2018 Wesnoth development team
+# Copyright (C) 2005-2017 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # luojie-dune <luojie-dune@operamail.com>, 2006.
 # sylecn <sylecn@yahoo.com.cn>, 2009.
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 17:02 UTC\n"
-"PO-Revision-Date: 2017-01-31 20:07+0800\n"
+"PO-Revision-Date: 2018-03-27 21:25+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:9
@@ -34,12 +34,6 @@ msgstr "TSG"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:19
-#, fuzzy
-#| msgid ""
-#| "A young Knight, Deoran, is dispatched to take command of the South "
-#| "Guard... Note: This campaign is designed as an introduction to Wesnoth. "
-#| "The ‘Civilian’ difficulty level is aimed at first-time players.\n"
-#| "\n"
 msgid ""
 "A young Knight, Deoran, is dispatched to take command of the South Guard.\n"
 "\n"
@@ -47,8 +41,9 @@ msgid ""
 "‘Civilian’ difficulty level is aimed at first-time players.\n"
 "\n"
 msgstr ""
-"一位年轻的骑士德欧兰，被派往接管南疆卫队……注意：本战役是作为韦诺的入门战役来"
-"设计的。‘平民’难度面向第一次游玩的玩家。\n"
+"一位年轻的骑士德欧兰，被派往接管南疆卫队。\n"
+"\n"
+"注：本战役是作为韦诺的入门战役来设计的。“平民”难度面向第一次游玩的玩家。\n"
 "\n"
 
 #. [campaign]: id=The_South_Guard
@@ -203,7 +198,7 @@ msgstr "击败乌扎·马辛"
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:483
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:259
 msgid "Death of Deoran"
-msgstr "德欧兰阵亡"
+msgstr "德欧兰死亡"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:136
@@ -216,7 +211,7 @@ msgstr "德欧兰阵亡"
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:241
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:536
 msgid "Death of Sir Gerrick"
-msgstr "格里克爵士阵亡"
+msgstr "格里克爵士死亡"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:180
@@ -281,8 +276,8 @@ msgid ""
 "Whenever you see a target that looks like this, you should move your leader "
 "(or whatever unit the dialog just suggested) onto the hex that contains it."
 msgstr ""
-"每当你看到一个像这样的目标时，你应该将你的领袖（或对话中刚指出的随便什么单"
-"位）移动到包含它的格子上。"
+"每当你看到一个像这样的目标时，你应该将你的首领（或对话中刚指出的随便什么单"
+"位）移动至包含它的格子上。"
 
 #. [message]: speaker=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:243
@@ -695,7 +690,7 @@ msgstr "击杀土匪首领，乌扎·纳尔马什"
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:315
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:41
 msgid "Death of Minister Hylas"
-msgstr "海拉斯辅佐官阵亡"
+msgstr "海拉斯辅佐官死亡"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:290
@@ -986,13 +981,13 @@ msgid ""
 "a force strong enough to drive off the bandits before moving Deoran from his "
 "encampment!"
 msgstr ""
-"你必须将德欧兰移动到精灵堡垒的中心。在将德欧兰从营地里移动出来之前，确保征募"
+"你必须将德欧兰移动至精灵堡垒的中心。在将德欧兰从营地里移动出来之前，确保征募"
 "一支足以驱逐土匪的强大军队！"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:237
 msgid "Move Deoran to the elvish city in the northern woods"
-msgstr "将德欧兰移动到北面丛林中的精灵城市"
+msgstr "移动德欧兰至北方丛林中的精灵城市处"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:267
@@ -1013,11 +1008,6 @@ msgstr "指挥官，我收到了您的增援请求，带来了我的骑手们！
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:297
-#, fuzzy
-#| msgid ""
-#| "You may now recruit Cavalrymen. They are fast and deadly on grassland, "
-#| "but weak in forests and hills. They can keep up with Deoran, so use them "
-#| "to guard him!"
 msgid ""
 "You may now recruit Cavalrymen. They are fast and deadly on grassland, but "
 "weak in forests and unable to traverse mountains. They can keep up with "
@@ -1284,7 +1274,7 @@ msgstr "扫除泪滴山谷之敌"
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:254
 msgid "Move Ethiliel to Mebrin’s village"
-msgstr "将艾茜丽尔移动到梅布林的村庄"
+msgstr "移动艾茜丽尔至梅布林的村庄处"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:270
@@ -1499,11 +1489,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:229
-#, fuzzy
-#| msgid ""
-#| "Elvish Fighters are at home in the thick forests. They have both a sword "
-#| "and a bow and are deadly with both. They are quick and can hold their own "
-#| "against just about anything."
 msgid ""
 "Elvish Fighters are at home in thick forests. They have both a sword and a "
 "bow and are deadly with both. They are quick and can hold their own against "
@@ -1756,7 +1741,7 @@ msgstr "别担心，等到恰当之时，我能带你们出去。"
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:683
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:544
 msgid "Death of Urza Afalas"
-msgstr "乌扎·阿法拉斯阵亡"
+msgstr "乌扎·阿法拉斯死亡"
 
 #. [message]: speaker=Urza Afalas
 #. [message]: speaker=unit
@@ -1885,13 +1870,6 @@ msgstr "我们得在收庄稼之前快点回到韦斯廷。秋天在几天前已
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:874
-#, fuzzy
-#| msgid ""
-#| "Do not be so hasty; great mages are no mere tricksters to be easily "
-#| "defeated. I fear that there are tunnels and catacombs buried beneath his "
-#| "fortress and that we have merely defeated a specter. If we wish to "
-#| "cleanse the land of his evil, we must enter the darkness and root him out "
-#| "from within."
 msgid ""
 "Do not be so hasty; great mages are no mere tricksters to be easily "
 "defeated. I fear that there are tunnels and catacombs buried beneath the "
@@ -1901,7 +1879,7 @@ msgid ""
 msgstr ""
 "别草率；大法师们可不是只会耍把戏的，没那么容易被击败。恐怕在他的要塞之下还有"
 "地道和墓穴，我们只是打败了一个幽影而已。如果我们想要从这片土地上清除他的邪恶"
-"影响，那我们必须进入黑暗中，从内部瓦解他。"
+"影响，那我们必须进入黑暗中，从内部瓦解它。"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:878
@@ -2066,7 +2044,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:224
 msgid "Move Sir Gerrick to the north end of the woods"
-msgstr "将格里克爵士移动到丛林北端"
+msgstr "移动格里克爵士至丛林北端"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:228
@@ -2426,14 +2404,10 @@ msgstr "灵眼守卫"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:277
-#, fuzzy
-#| msgid ""
-#| "Proceed slowly, who knows what evils inhabited these parts before Mebrin "
-#| "was turned! We cannot be too careful."
 msgid ""
 "Proceed slowly, who knows what evils the bandits have awoken here! We cannot "
 "be too careful."
-msgstr "慢慢前进，谁知道梅布林变身之前有什么妖孽住在这里！我们多小心都不为过。"
+msgstr "慢慢前进，谁知道那帮强盗在这里唤醒了什么邪恶之物！我们多小心都不为过。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:283
@@ -2468,18 +2442,13 @@ msgstr "那是什么恐怖的生物？我平生见过许多邪恶之物，但却
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:354
-#, fuzzy
-#| msgid ""
-#| "It must be a guardian of some kind set here by Mebrin. We elves have "
-#| "heard stories of these creatures but I wouldn’t have expected to come "
-#| "across one... the least of all here. Let us proceed with caution."
 msgid ""
 "Whatever evil lurks below must have set it here as a guardian. We elves have "
 "heard stories of these creatures but I wouldn’t have expected to come across "
 "one here. Let us proceed with caution."
 msgstr ""
-"那肯定是梅布林设置的某种守卫。我们精灵听说过这些生物的传说，但是我并没想到会"
-"遇到它们……尤其是在这种地方。我们要小心前进。"
+"它肯定是潜伏的邪恶所设置的守卫。我们精灵听说过这些生物的传说，但我并没想到会"
+"在这里遇到它们。我们得小心前进。"
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:372
@@ -2580,17 +2549,13 @@ msgstr ""
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:536
-#, fuzzy
-#| msgid ""
-#| "These creatures are much too simpleminded to be of any help to us but at "
-#| "least they will not attack us outright. We will have to face Mebrin alone."
 msgid ""
 "These creatures are much too simpleminded to be of any help to us but at "
 "least they will not attack us outright. We will have to face this enemy "
 "alone."
 msgstr ""
 "这些生物思维太简单，对我们毫无助力，但至少他们不会直接攻击我们。我们只能靠自"
-"己去对付梅布林了。"
+"己去对付这个敌人了。"
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:574
@@ -2757,10 +2722,8 @@ msgstr "玛尔·特拉"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:134
-#, fuzzy
-#| msgid "Sgt. Finde"
 msgid "Finde"
-msgstr "芬德军士"
+msgstr "芬德"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:135
@@ -2779,10 +2742,8 @@ msgstr "米切"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:141
-#, fuzzy
-#| msgid "Lt. Illan"
 msgid "Illan"
-msgstr "伊兰中尉"
+msgstr "伊兰"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:142
@@ -2796,10 +2757,8 @@ msgstr "朱尔"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:147
-#, fuzzy
-#| msgid "Lt. Meris"
 msgid "Meris"
-msgstr "梅里斯中尉"
+msgstr "梅里斯"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:148
@@ -2829,15 +2788,9 @@ msgstr "死亡卫队"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:177
-#, fuzzy
-#| msgid ""
-#| "We have escaped the great forest, but look! The undead are chasing us — "
-#| "we must not have rooted them all out of the wood."
 msgid ""
 "We have escaped the great forest, but look! The undead are still chasing us."
-msgstr ""
-"我们已经逃离了大森林，但是看哪！亡灵在追赶我们——我们肯定没有在丛林里根除他"
-"们。"
+msgstr "我们已经逃离了大森林，但是看哪！亡灵还在追赶我们。"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:181
@@ -2901,23 +2854,18 @@ msgstr "坚守防线：尽可能让格里克爵士活下去。"
 msgid ""
 "Starting with turn 6, each additional turn you survive strengthens the "
 "defenses of Westin."
-msgstr ""
+msgstr "从第六回合开始，你每多坚持一回合，韦斯廷的防御就增强一分。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:244
-#, fuzzy
-#| msgid ""
-#| "There is no way to win this scenario, and no way to lose. Hold off the "
-#| "undead hordes as long as you can. Keep Sir Gerrick alive as long as you "
-#| "can. Every turn that passes strengthens the defenses of Westin."
 msgid ""
 "There is no way to win this scenario, and no way to lose. Hold off the "
 "undead hordes as long as you can. Keep Sir Gerrick alive as long as you can. "
 "Starting with turn 6, every turn that passes strengthens the defenses of "
 "Westin."
 msgstr ""
-"此场景没有输赢可言。尽可能长时间地拖延亡灵军团。尽可能让格里克爵士活下去。每"
-"坚持一回合，韦斯廷的防御就增强一分。"
+"此场景中无法获胜，也不会失败。尽可能长时间拖延亡灵军团。尽可能让格里克爵士活"
+"下去。从第六回合开始，每坚持一回合，韦斯廷的防御就增强一分。"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:278
@@ -2947,7 +2895,7 @@ msgstr "回归克拉斯"
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:33
 msgid "Move Deoran into Kerlath Province"
-msgstr "将德欧兰移进克拉斯行省"
+msgstr "移动德欧兰，进入克拉斯行省"
 
 #. [side]: type=Outlaw, id=Tharzo Kalain
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:93
@@ -3029,10 +2977,8 @@ msgstr "行省卫队"
 
 #. [value]
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:152
-#, fuzzy
-#| msgid "Lt. Nilaf"
 msgid "Nilaf"
-msgstr "尼拉夫中尉"
+msgstr "尼拉夫"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:294
@@ -3486,14 +3432,12 @@ msgstr "吃我一剑！"
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:50
 msgid "I have lost all helping the humans... Now they will surely perish!"
-msgstr "帮助人类令我失去一切……现在他们难逃毁灭了！"
+msgstr "帮助人类让我失去一切……现在他们难逃一死！"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:104
-#, fuzzy
-#| msgid "Far from home I fall — but not in vain! Guard our people, Deoran!"
 msgid "Far from home I fall — but not in vain!"
-msgstr "我客死他乡——但并非白费！保卫我们的人民，德欧兰！"
+msgstr "我客死他乡——但并非白费！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:29
