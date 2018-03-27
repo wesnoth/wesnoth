@@ -25,6 +25,11 @@
 #include "formula/formula.hpp"
 #include "formula/callable.hpp"
 
+//for SDL_GetError
+#include <SDL_error.h>
+//for SDL_BlitSurface
+#include <SDL_surface.h>
+
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 static lg::log_domain log_display("display");
@@ -407,28 +412,18 @@ surface blit_modification::operator()(const surface& src) const
 		throw imod_exception(sstr);
 	}
 
-	if(surf_->w + x_ > src->w) {
-		std::stringstream sstr;
-		sstr << "~BLIT(): offset and width '"
-			<< x_ + surf_->w << "' larger than destination image's width '"
-			<< src->w << "' no blitting performed.\n";
-
-		throw imod_exception(sstr);
-	}
-
-	if(surf_->h + y_ > src->h) {
-		std::stringstream sstr;
-		sstr << "~BLIT(): offset and height '"
-			<< y_ + surf_->h << "' larger than destination image's height '"
-			<< src->h << "' no blitting performed.\n";
-
-		throw imod_exception(sstr);
-	}
-
 	surface nsrc = make_neutral_surface(src);
 	surface nsurf = make_neutral_surface(surf_);
 	SDL_Rect r {x_, y_, 0, 0};
-	sdl_blit(nsurf, nullptr, nsrc, &r);
+	int blit_err_code=SDL_BlitSurface(nsurf, nullptr, nsrc, &r);
+	//SDL_BlitSurface returns negative error code on failure
+	if(blit_err_code < 0){
+		std::stringstream sstr;
+		sstr<< "~BLIT(): SDL Error: "<<SDL_GetError()<<"\n";
+		SDL_ClearError();
+
+		throw imod_exception(sstr);
+	}
 	return nsrc;
 }
 
