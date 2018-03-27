@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.0-dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-17 18:30 UTC\n"
+"POT-Creation-Date: 2018-03-27 01:20 UTC\n"
 "PO-Revision-Date: 2012-09-03 17:38+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -253,22 +253,22 @@ msgstr "Urug-Telfar"
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
 #. [side]: type=Orcish Warrior, id=Mokolo Qimur
-#. [side]: type=Orcish Warlord, id=Kojun Herolm
-#. [side]: type=Orcish Warrior, id=Mokho Kimer
-#. [side]: type=Orcish Warlord, id=Urag-Tifer
 #. [side]: type=Orcish Warrior, id=Usadar Q'kai
 #. [side]: type=Orcish Warrior, id=Dwaba-Kukai
 #. [side]: type=Orcish Warrior, id=Managa'Gwin
+#. [side]: type=Orcish Warlord, id=Kojun Herolm
+#. [side]: type=Orcish Warrior, id=Mokho Kimer
 #. [side]: type=Orcish Warlord, id=Gaga-Breuk
 #. [side]: type=Orcish Warrior, id=Halgar Du'nar
 #. [side]: type=Orcish Warrior, id=Gorlak
-#. [side]: type=Goblin Rouser
-#. [side]: type=Orcish Warlord
-#. [side]: type=Troll Warrior
-#. [side]: type=Orcish Warlord, id=Kior-Dal
 #. [side]: type=Orcish Slurbow, id=Knafa-Telfar
 #. [side]: type=Orcish Warlord, id=Urug-Tan
 #. [side]: type=Orcish Sovereign, id=Shuuga-Mool
+#. [side]: type=Goblin Rouser
+#. [side]: type=Orcish Warlord
+#. [side]: type=Troll Warrior
+#. [side]: type=Orcish Warlord, id=Urag-Tifer
+#. [side]: type=Orcish Warlord, id=Kior-Dal
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:181
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:194
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:215
@@ -1007,8 +1007,8 @@ msgstr ""
 msgid "Defeat one enemy leader, and resist the other until turns run out"
 msgstr ""
 
-#. [objective]: condition=win
 #. [objectives]
+#. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:26
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:25
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:24
@@ -1442,6 +1442,8 @@ msgid "Muff Malal"
 msgstr "Muff Malal"
 
 #. [side]: type=Dark Sorcerer, id=Muff Malal
+#. [side]: id=Haf-Mal, type=Lich
+#. [side]: id=Jarmal-Gorg, type=Lich
 #. [side]: type=Lich, id=Galga
 #. [side]: type=Lich, id=Na-alga
 #. [side]: type=Lich, id=Selda-Mana
@@ -1450,8 +1452,6 @@ msgstr "Muff Malal"
 #. [side]: type=Lich, id=Aimucasur
 #. [side]: type=Death Knight, id=Secadius
 #. [side]: type=Death Knight, id=Dafeis
-#. [side]: id=Haf-Mal, type=Lich
-#. [side]: id=Jarmal-Gorg, type=Lich
 #. [side]: type=Ancient Lich, id=Muff Argulak
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:79
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:131
@@ -1644,8 +1644,8 @@ msgstr ""
 msgid "Looks like there is somebody hidden in the temple."
 msgstr ""
 
-#. [unit]: id=Moremirmu, type=Mage of Light
 #. [unit]: id=Moremirmu, type=White Mage
+#. [unit]: id=Moremirmu, type=Mage of Light
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:301
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:259
 msgid "Moremirmu"
@@ -1749,9 +1749,9 @@ msgstr "Agadla"
 
 #. [side]: type=Orcish Warlord, id=Agadla
 #. [side]: type=Dark Sorcerer, id=Muff Jaanal
-#. [side]: type=Troll Warrior, id=Haaf-Garga
 #. [side]: id=Brugg, type=Troll Warrior
 #. [side]: id=Lionel, type=Death Knight
+#. [side]: type=Troll Warrior, id=Haaf-Garga
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Death Knight, id=Unan-Ka'tall
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:74
@@ -6799,29 +6799,29 @@ msgstr "Pobijedi neprijateljskog vođu"
 msgid "Plainsmen"
 msgstr ""
 
-#. [then]
 #. [side]: type=Grand Knight, id=Sir Alric
+#. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:121
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:214
 msgid "Sir Alric"
 msgstr "Gospodin Alric"
 
-#. [then]
 #. [side]: type=Grand Knight, id=Sir Ruga
+#. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:150
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:205
 msgid "Sir Ruga"
 msgstr "Gospodin Ruga"
 
-#. [then]
 #. [side]: type=Grand Knight, id=Sir Daryn
+#. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:179
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:196
 msgid "Sir Daryn"
 msgstr "Gospodin Daryn"
 
-#. [then]
 #. [side]: type=Grand Knight, id=Bayar
+#. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:208
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:543
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:187
