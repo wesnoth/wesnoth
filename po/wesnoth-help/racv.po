@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-17 21:30+0300\n"
+"POT-Creation-Date: 2018-03-27 04:26+0300\n"
 "PO-Revision-Date: 2008-09-24 02:09+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -343,7 +343,7 @@ msgid ""
 "on which every Wesnoth scenario takes place. It also provides a limited set "
 "of features for setting up a basic scenario.\n"
 "\n"
-"The editor can be launched from the <italic>text='Map Editor'</italic>"
+"The editor can be launched from the <i>Map Editor</i>"
 msgstr ""
 
 #. [topic]: id=..editor
@@ -352,7 +352,7 @@ msgstr ""
 msgid ""
 " option at the title screen.\n"
 "\n"
-"<header>text='What you get'</header>"
+"<big>What you get</big>"
 msgstr ""
 "\n"
 "\n"
@@ -426,7 +426,7 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<header>text='Pure Map Mode'</header>"
+"<big>Pure Map Mode</big>"
 msgstr ""
 "\n"
 "\n"
@@ -452,7 +452,7 @@ msgid ""
 "\n"
 "How the information is saved depends on the loaded file:\n"
 "\n"
-"<bold>text='Native'</bold>"
+"<b>Native</b>"
 msgstr ""
 
 #. [topic]: id=editor_modes
@@ -464,7 +464,7 @@ msgid ""
 "The produced map can be played in the “User Maps” game type at the create "
 "multiplayer game dialog if saved to the default directory.\n"
 "\n"
-"<bold>text='Embedded'</bold>"
+"<b>Embedded</b>"
 msgstr ""
 
 #. [topic]: id=editor_modes
@@ -483,7 +483,7 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<header>text='Scenario Mode'</header>"
+"<big>Scenario Mode</big>"
 msgstr ""
 "\n"
 "\n"
@@ -1003,12 +1003,12 @@ msgstr "Órdens"
 msgid ""
 "\n"
 "\n"
-"<italic>text='Battle for Wesnoth'</italic> is a turn-based fantasy strategy "
-"game somewhat unusual among modern strategy games. While other games strive "
-"for complexity, <italic>text='Battle for Wesnoth'</italic> strives for "
-"simplicity of both rules and gameplay. This does not make the game simple, "
-"however — from these simple rules arise a wealth of strategy, making the "
-"game easy to learn but a challenge to master.\n"
+"<i>Battle for Wesnoth</i> is a turn-based fantasy strategy game somewhat "
+"unusual among modern strategy games. While other games strive for "
+"complexity, <i>Battle for Wesnoth</i> strives for simplicity of both rules "
+"and gameplay. This does not make the game simple, however — from these "
+"simple rules arise a wealth of strategy, making the game easy to learn but a "
+"challenge to master.\n"
 "\n"
 "The following pages outline all you need to know to play Wesnoth. As you "
 "play, new information is added to the various categories as you come across "
@@ -1037,19 +1037,18 @@ msgid ""
 "same computer (hotseat play), other players on the same network, or players "
 "worldwide in multiplayer mode.\n"
 "\n"
-"Each of these battles is called a <italic>text='scenario'</italic>, which "
-"can be strung together to make <italic>text='campaigns'</italic>. Besides "
-"the campaigns that ship with the game, Wesnoth supports user-made content, "
-"and the add-on server boasts hundreds of custom maps, campaigns, eras, "
-"factions, and resources.\n"
+"Each of these battles is called a <i>scenario</i>, which can be strung "
+"together to make <i>campaigns</i>. Besides the campaigns that ship with the "
+"game, Wesnoth supports user-made content, and the add-on server boasts "
+"hundreds of custom maps, campaigns, eras, factions, and resources.\n"
 "\n"
 "The game also features a human-readable markup called Wesnoth Markup "
 "Language (WML) to easily allow users to create their own content, as well as "
 "a fully-featured Map and Scenario Editor for designing your own "
 "battlefields.\n"
 "\n"
-"The <italic>text='Battle for Wesnoth'</italic> project was begun in 2003, "
-"and has been worked on by a multitude of volunteers ever since."
+"The <i>Battle for Wesnoth</i> project was begun in 2003, and has been worked "
+"on by a multitude of volunteers ever since."
 msgstr ""
 
 #. [topic]: id=..units
@@ -1134,36 +1133,34 @@ msgstr ""
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:169
 msgid ""
-"Wesnoth is comprised of a series of battles, called "
-"<italic>text='scenarios'</italic>, that pit your troops against the troops "
-"of one or more adversaries. Multiple scenarios that follow on from each "
-"other, telling a story, make up <italic>text='campaigns'</italic>. In a "
-"campaign, you often need to play more carefully, preserving your best troops "
-"for use again in later scenarios.\n"
+"Wesnoth is comprised of a series of battles, called <i>scenarios</i>, that "
+"pit your troops against the troops of one or more adversaries. Multiple "
+"scenarios that follow on from each other, telling a story, make up "
+"<i>campaigns</i>. In a campaign, you often need to play more carefully, "
+"preserving your best troops for use again in later scenarios.\n"
 "\n"
-"The interactive <bold>text='Tutorial'</bold> introduces the basics of "
-"Wesnoth gameplay in the context of a scenario. Most material covered in the "
-"tutorial is explained more in-depth in these pages, so you can always refer "
-"back here if you forget something.\n"
+"The interactive <b>Tutorial</b> introduces the basics of Wesnoth gameplay in "
+"the context of a scenario. Most material covered in the tutorial is "
+"explained more in-depth in these pages, so you can always refer back here if "
+"you forget something.\n"
 "\n"
-"After you master the basics, try out a beginner campaign, such as "
-"<italic>text='Heir to the Throne'</italic> or <italic>text='The South "
-"Guard'</italic>. A full list of installed campaigns can be found via the "
-"<bold>text='Campaign'</bold> option on the main menu. As Wesnoth can be "
-"quite challenging, you may wish to start on easy before progressing to "
+"After you master the basics, try out a beginner campaign, such as <i>Heir to "
+"the Throne</i> or <i>The South Guard</i>. A full list of installed campaigns "
+"can be found via the <b>Campaign</b> option on the main menu. As Wesnoth can "
+"be quite challenging, you may wish to start on easy before progressing to "
 "higher difficulties."
 msgstr ""
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:176
 #, fuzzy
-#| msgid "<header>text='Units of this race'</header>"
+#| msgid "Fundamentals of Gameplay"
 msgid ""
 "\n"
 "\n"
-"<header>text='Fundamentals of Gameplay'</header>\n"
+"<big>Fundamentals of Gameplay</big>\n"
 "\n"
-msgstr "<header>text='Unitats d'esta raça'</header>"
+msgstr "Fonaments del joc"
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:176
@@ -1191,10 +1188,10 @@ msgstr "Victòria i derrota"
 msgid ""
 "\n"
 "\n"
-"When you win a scenario, the map grays over and the <bold>text='End Turn'</"
-"bold> button changes to <bold>text='End Scenario'</bold>. You can now do "
-"things like changing your save options or (if you are in a multiplayer game) "
-"chatting with other players before pressing that button to advance."
+"When you win a scenario, the map grays over and the <b>End Turn</b> button "
+"changes to <b>End Scenario</b>. You can now do things like changing your "
+"save options or (if you are in a multiplayer game) chatting with other "
+"players before pressing that button to advance."
 msgstr ""
 "\n"
 "\n"
@@ -1207,13 +1204,13 @@ msgstr ""
 #: data/core/help.cfg:189
 #, fuzzy
 msgid ""
-"Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
-"the beginning of each scenario. In most scenarios, you will achieve victory "
-"by killing all enemy leaders ; likewise, the death of your own leader "
-"generally results in defeat. However, some scenarios may have other victory "
-"objectives, such as getting your leader to a designated point, rescuing an "
-"ally, solving a puzzle, or holding out against a siege until a certain "
-"number of turns have elapsed."
+"Pay careful attention to the <b>Objectives</b> pop-up box at the beginning "
+"of each scenario. In most scenarios, you will achieve victory by killing all "
+"enemy leaders ; likewise, the death of your own leader generally results in "
+"defeat. However, some scenarios may have other victory objectives, such as "
+"getting your leader to a designated point, rescuing an ally, solving a "
+"puzzle, or holding out against a siege until a certain number of turns have "
+"elapsed."
 msgstr ""
 "Presta la màxima atenció al quadro emergent dels Objectius al principi de "
 "cada escenari. Generalment, conseguiràs la victòria per matar tots els "
@@ -1262,13 +1259,12 @@ msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
 "text='units'</ref> into your army. To recruit, you must have your leader "
-"(for instance, Konrad in the <italic>text='Heir to the Throne'</italic> "
-"campaign) on the keep hex of a <ref>dst='terrain_castle' text='castle'</"
-"ref>. Then you may recruit by either choosing <bold>text='Recruit'</bold> "
-"from the menu or right-clicking on a hex and selecting <bold>text='Recruit'</"
-"bold>. This brings up the recruit menu, which lists units available for "
-"recruitment, along with their gold cost. Click on a unit to see its "
-"statistics, then press the OK button to recruit it."
+"(for instance, Konrad in the <i>Heir to the Throne</i> campaign) on the keep "
+"hex of a <ref>dst='terrain_castle' text='castle'</ref>. Then you may recruit "
+"by either choosing <b>Recruit</b> from the menu or right-clicking on a hex "
+"and selecting <b>Recruit</b>. This brings up the recruit menu, which lists "
+"units available for recruitment, along with their gold cost. Click on a unit "
+"to see its statistics, then press the OK button to recruit it."
 msgstr ""
 "Cada bando comença ab un líder en la seua torre. Al començament de cada "
 "batalla, i de vegades en mig d'esta, necessitareu reclutar unitats per al "
@@ -1361,7 +1357,7 @@ msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
 "gold over from one scenario to the next. There are two aspects to this; "
-"<italic>text='income'</italic> and <italic>text='upkeep'</italic>."
+"<i>income</i> and <i>upkeep</i>."
 msgstr ""
 "En Wesnoth, no basta reclutar unitats i lluitar. També has de vigilar la "
 "teua quantitat d'or, especialment en les campanyes, on pots acumular or d'un "
@@ -1416,9 +1412,9 @@ msgid ""
 "There are two important exceptions to upkeep: units with the loyal trait and "
 "leaders never incur upkeep. Units you begin the scenario with (such as "
 "Delfador), or units who join you during a scenario (such as the horseman in "
-"the second scenario of <italic>text='Heir to the Throne'</italic>) will "
-"usually have the <italic>text='loyal'</italic> trait. The unit you are "
-"playing (such as Konrad) will almost always be a leader."
+"the second scenario of <i>Heir to the Throne</i>) will usually have the "
+"<i>loyal</i> trait. The unit you are playing (such as Konrad) will almost "
+"always be a leader."
 msgstr ""
 "\n"
 "Hi ha dos excepcions importants que afecta el manteniment: les unitats ab la "
@@ -1437,11 +1433,10 @@ msgstr "Punts de vida i experiència"
 #: data/core/help.cfg:231
 #, fuzzy
 msgid ""
-"Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
-"the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
-"certain number of <italic>text='experience points'</italic> (XP). A freshly "
-"recruited unit starts with no experience points, and gains experience by "
-"fighting enemies."
+"Each unit has a certain number of <i>hitpoints</i> (HP). If the hitpoints of "
+"a unit drop below 1, the unit dies. Each unit also has a certain number of "
+"<i>experience points</i> (XP). A freshly recruited unit starts with no "
+"experience points, and gains experience by fighting enemies."
 msgstr ""
 "Cada unitat té un cert número de punts de vida (PV). Si estos apleguen a "
 "estar per davall de 1, l'unitat mor. D'atra banda, les unitats també tenen "
@@ -1519,12 +1514,12 @@ msgid ""
 "\n"
 "While most units have three levels, not all do. Occasional units (such as "
 "<ref>dst='unit_Mage' text='magi'</ref>) may have four. Once a unit has "
-"reached its maximum level, it may have an <italic>text='After Maximum Level "
-"Advancement'</italic> (AMLA) available to it. The AMLA will modify the unit "
-"each time the unit reaches the experience goal, but the unit will remain the "
-"same level. The typical AMLA effect is for the unit to raise the maximum HP "
-"by 3 and full-heal it. The first AMLA will normally be reached with 150 XP "
-"gained (120 XP for intelligent units). However, gaining an AMLA becomes "
+"reached its maximum level, it may have an <i>After Maximum Level "
+"Advancement</i> (AMLA) available to it. The AMLA will modify the unit each "
+"time the unit reaches the experience goal, but the unit will remain the same "
+"level. The typical AMLA effect is for the unit to raise the maximum HP by 3 "
+"and full-heal it. The first AMLA will normally be reached with 150 XP gained "
+"(120 XP for intelligent units). However, gaining an AMLA becomes "
 "progressively harder for each AMLA the unit receives, and so it is usually "
 "more useful to try to advance your lower level units."
 msgstr ""
@@ -1560,8 +1555,8 @@ msgid ""
 "in forest, elvish units only spend 1 movement point, most human and orc "
 "units spend 2, while horsemen spend 3. You can learn how many movement "
 "points a unit requires to enter a certain terrain type by right-clicking on "
-"it, selecting <bold>text='Unit Description'</bold>, and then looking at "
-"<bold>text='Terrain Modifiers'</bold>."
+"it, selecting <b>Unit Description</b>, and then looking at <b>Terrain "
+"Modifiers</b>."
 msgstr ""
 "\n"
 "\n"
@@ -1578,18 +1573,18 @@ msgstr ""
 #: data/core/help.cfg:257
 #, fuzzy
 msgid ""
-"Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
-"the unit you wish to move to select it, then click on the hex you wish to "
-"move it to. When a unit is selected, everywhere it can move this turn will "
-"be highlighted, and all other hexes on the map are made dull. Mousing over a "
-"highlighted hex shows the defense rating the unit would have if you moved it "
-"to that hex. Mousing over a dull hex will also show the number of turns "
-"required to reach it, and clicking will cause the unit to move towards it by "
-"the fastest route over this and subsequent turns. If you don’t use up all of "
-"a unit’s movement when you first move a unit, you may move it again. This is "
-"useful when having two units switch places. Attacking with a unit will use "
-"up its movement. Ending a move in a village you don’t already own will also "
-"use up a unit’s movement, but will still allow it to attack."
+"Movement in <i>Battle for Wesnoth</i> is simple. Click on the unit you wish "
+"to move to select it, then click on the hex you wish to move it to. When a "
+"unit is selected, everywhere it can move this turn will be highlighted, and "
+"all other hexes on the map are made dull. Mousing over a highlighted hex "
+"shows the defense rating the unit would have if you moved it to that hex. "
+"Mousing over a dull hex will also show the number of turns required to reach "
+"it, and clicking will cause the unit to move towards it by the fastest route "
+"over this and subsequent turns. If you don’t use up all of a unit’s movement "
+"when you first move a unit, you may move it again. This is useful when "
+"having two units switch places. Attacking with a unit will use up its "
+"movement. Ending a move in a village you don’t already own will also use up "
+"a unit’s movement, but will still allow it to attack."
 msgstr ""
 "El moviment en Batalla per Wesnoth és simple. Pulsa sobre l'unitat que "
 "desiges moure per a seleccionar-la, després pulsa en l'hexàgon de destí. "
@@ -1612,11 +1607,11 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"Another thing to keep in mind while moving is <italic>text='zones of "
-"control'</italic>. Each unit — except for level 0 units — generates a zone "
-"of control in the hexes immediately surrounding it, and any enemy unit "
-"entering those hexes immediately ends its movement. Learning how to use "
-"zones of control to your advantage is an important part of Wesnoth, as only "
+"Another thing to keep in mind while moving is <i>zones of control</i>. Each "
+"unit — except for level 0 units — generates a zone of control in the hexes "
+"immediately surrounding it, and any enemy unit entering those hexes "
+"immediately ends its movement. Learning how to use zones of control to your "
+"advantage is an important part of Wesnoth, as only "
 "<ref>dst='ability_skirmisher' text='skirmishers'</ref> can ignore zones of "
 "control."
 msgstr ""
@@ -1654,13 +1649,12 @@ msgstr "Ocultació i boira de guerra"
 #, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
-"mechanisms that can be used separately or together. The "
-"<italic>text='shroud'</italic> hides both the terrain and any units at a "
-"location. However, once it is cleared, you can always see that location. The "
-"<italic>text='fog of war'</italic> only hides units and ownership of "
-"villages (other than by you or your allies). The fog of war is cleared "
-"temporarily when you have units nearby, but returns when they leave. Both "
-"the shroud and the fog of war are cleared by units. Each unit clears "
+"mechanisms that can be used separately or together. The <i>shroud</i> hides "
+"both the terrain and any units at a location. However, once it is cleared, "
+"you can always see that location. The <i>fog of war</i> only hides units and "
+"ownership of villages (other than by you or your allies). The fog of war is "
+"cleared temporarily when you have units nearby, but returns when they leave. "
+"Both the shroud and the fog of war are cleared by units. Each unit clears "
 "locations adjacent to those within one turn’s move (ignoring zones of "
 "control and enemy units).\n"
 "\n"
@@ -1668,11 +1662,10 @@ msgid ""
 "randomized result has not occurred, such as combat or recruitment (as most "
 "units receive random traits when recruited). Exploring hidden terrain by "
 "clearing shroud or fog will also prevent undos to a previous state. You may "
-"wish to activate <bold>text='Delay Shroud Updates'</bold> in the actions "
-"menu. This will prevent units from clearing shroud or fog until the next "
-"randomized event or a manual update via <bold>text='Update Shroud Now'</"
-"bold> (or the end of your turn) and thereby preserve your ability to undo "
-"movement."
+"wish to activate <b>Delay Shroud Updates</b> in the actions menu. This will "
+"prevent units from clearing shroud or fog until the next randomized event or "
+"a manual update via <b>Update Shroud Now</b> (or the end of your turn) and "
+"thereby preserve your ability to undo movement."
 msgstr ""
 "En alguns escenaris hi haurà parts del mapa amagades. Hi ha dos mecanismes "
 "que es poden utilisar per separat o conjuntament. L'ocultació amaga tan el "
@@ -1706,7 +1699,7 @@ msgstr "Combat"
 msgid ""
 "\n"
 "\n"
-"<header>text='Order and Number of Strikes'</header>"
+"<big>Order and Number of Strikes</big>"
 msgstr ""
 "\n"
 "\n"
@@ -1716,16 +1709,16 @@ msgstr ""
 #: data/core/help.cfg:281
 #, fuzzy
 msgid ""
-"Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
-"between units in adjacent hexes. Click on your unit, and click on the enemy "
-"you want to attack: your unit will move towards the enemy unit, and when "
-"they are next to each other, combat will begin. The attacker and defender "
-"alternate strikes until each has used their allotted number of strikes. The "
-"attacker chooses one of its weapons to attack with, and the defender "
-"retaliates with one of its attacks of the same type. There are two types of "
-"attacks: <italic>text='melee'</italic>, which usually involves weapons such "
-"as swords, axes or fangs; and <italic>text='ranged'</italic>, which usually "
-"involves weapons such as bows, spears and fireballs."
+"Combat in <i>Battle for Wesnoth</i> always takes place between units in "
+"adjacent hexes. Click on your unit, and click on the enemy you want to "
+"attack: your unit will move towards the enemy unit, and when they are next "
+"to each other, combat will begin. The attacker and defender alternate "
+"strikes until each has used their allotted number of strikes. The attacker "
+"chooses one of its weapons to attack with, and the defender retaliates with "
+"one of its attacks of the same type. There are two types of attacks: "
+"<i>melee</i>, which usually involves weapons such as swords, axes or fangs; "
+"and <i>ranged</i>, which usually involves weapons such as bows, spears and "
+"fireballs."
 msgstr ""
 "El combat en Batalla per Wesnoth sempre es dona entre unitats que es troben "
 "en hexàgons adjacents. Pulsa sobre la teua unitat, i després pulsa sobre "
@@ -1767,7 +1760,7 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<header>text='Chance to Hit'</header>"
+"<big>Chance to Hit</big>"
 msgstr ""
 "\n"
 "\n"
@@ -1779,13 +1772,13 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"Every unit has a chance of being hit, based on the <italic>text='terrain'</"
-"italic> it is in. This is shown in the status pane, and may also be found by "
-"right-clicking a unit, selecting <bold>text='Unit Description'</bold>, and "
-"then looking at <bold>text='Terrain Modifiers'</bold>. For instance, many "
-"elves have a defense rating of 70% in forest, so a unit attacking them has "
-"only a 30% chance of hitting. Conversely, the elf’s chance of hitting the "
-"attacker in return depends on what terrain the attacker is in."
+"Every unit has a chance of being hit, based on the <i>terrain</i> it is in. "
+"This is shown in the status pane, and may also be found by right-clicking a "
+"unit, selecting <b>Unit Description</b>, and then looking at <b>Terrain "
+"Modifiers</b>. For instance, many elves have a defense rating of 70% in "
+"forest, so a unit attacking them has only a 30% chance of hitting. "
+"Conversely, the elf’s chance of hitting the attacker in return depends on "
+"what terrain the attacker is in."
 msgstr ""
 "\n"
 "\n"
@@ -1841,8 +1834,8 @@ msgid ""
 "damage. This is usually modified by two things: "
 "<ref>dst='damage_types_and_resistance' text='resistance'</ref> and "
 "<ref>dst='time_of_day' text='time of day'</ref>. To see how base damage is "
-"modified by the circumstances, select <bold>text='Damage Calculations'</"
-"bold> in the attack selection menu."
+"modified by the circumstances, select <b>Damage Calculations</b> in the "
+"attack selection menu."
 msgstr ""
 "\n"
 "\n"
@@ -1903,11 +1896,10 @@ msgstr ""
 #, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
-"attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
-"Additionally, there are three further types of damage usually associated "
-"with magical attacks: <italic>text='fire, cold, and arcane attacks'</"
-"italic>. Different units may have resistances which alter the damage which "
-"they take from certain damage types."
+"attacks: <i>blade, pierce, and impact damage</i>. Additionally, there are "
+"three further types of damage usually associated with magical attacks: "
+"<i>fire, cold, and arcane attacks</i>. Different units may have resistances "
+"which alter the damage which they take from certain damage types."
 msgstr ""
 "En Wesnoth hi ha tres tipos de dany associats normalment ab atacs físics: "
 "tallant, perforant i impactant. D'atra banda, també hi ha tres tipos de dany "
@@ -2000,13 +1992,10 @@ msgstr "Hora del dia"
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 "\n"
-"• <bold>text='Lawful'</bold> units get +25% damage in daytime, and −25% "
-"damage at night.\n"
-"• <bold>text='Chaotic'</bold> units get +25% damage at night, and −25% in "
-"daytime.\n"
-"• <bold>text='Neutral'</bold> units are unaffected by the time of day.\n"
-"• <bold>text='Liminal'</bold> units get −25% damage during both night and "
-"daytime."
+"• <b>Lawful</b> units get +25% damage in daytime, and −25% damage at night.\n"
+"• <b>Chaotic</b> units get +25% damage at night, and −25% in daytime.\n"
+"• <b>Neutral</b> units are unaffected by the time of day.\n"
+"• <b>Liminal</b> units get −25% damage during both night and daytime."
 msgstr ""
 "L'hora del dia afecta el dany que fan certes unitats de la següent manera:\n"
 " Les unitat lleals fan +25% de dany durant el dia, i −25% durant la nit.\n"
@@ -2111,8 +2100,8 @@ msgstr "Curació"
 msgid ""
 "\n"
 "\n"
-"• <bold>text='Resting'</bold>: A unit which neither moves, attacks, nor is "
-"attacked will heal 2 HP in its next turn."
+"• <b>Resting</b>: A unit which neither moves, attacks, nor is attacked will "
+"heal 2 HP in its next turn."
 msgstr ""
 "\n"
 "\n"
@@ -2132,9 +2121,8 @@ msgstr ""
 #, fuzzy
 msgid ""
 "\n"
-"• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
-"oasis will heal 8HP. If the unit is poisoned, the poison will be cured "
-"instead."
+"• <b>Villages</b>: A unit which starts a turn in a village or oasis will "
+"heal 8HP. If the unit is poisoned, the poison will be cured instead."
 msgstr ""
 "\n"
 "Aldees: una unitat que comença una tanda en una aldea curarà 8 PV."
@@ -2157,8 +2145,8 @@ msgstr ""
 #, fuzzy
 msgid ""
 "\n"
-"• <bold>text='Healing units'</bold>: Units with the <ref>dst='ability_heals "
-"+4' text='Heals'</ref> ability will heal each allied adjacent unit, usually "
+"• <b>Healing units</b>: Units with the <ref>dst='ability_heals +4' "
+"text='Heals'</ref> ability will heal each allied adjacent unit, usually "
 "<ref>dst='ability_heals +4' text='4HP'</ref> or <ref>dst='ability_heals +8' "
 "text='8HP'</ref> per turn, or prevent Poison from causing that unit damage."
 msgstr ""
@@ -2173,9 +2161,9 @@ msgstr ""
 #, fuzzy
 msgid ""
 "\n"
-"• <bold>text='Curing units'</bold>: Units with the <ref>dst='ability_cures' "
-"text='cures'</ref> ability will cure Poison in all allied adjacent units (in "
-"preference to healing, if it has that ability as well)."
+"• <b>Curing units</b>: Units with the <ref>dst='ability_cures' text='cures'</"
+"ref> ability will cure Poison in all allied adjacent units (in preference to "
+"healing, if it has that ability as well)."
 msgstr ""
 "\n"
 "Unitats curadores: les unitats ab l'habilitat de <ref>dst=ability_cures "
@@ -2186,9 +2174,9 @@ msgstr ""
 #: data/core/help.cfg:365
 msgid ""
 "\n"
-"• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
-"text='advances'</ref>, it will heal fully. This can happen as soon as your "
-"unit gains enough experience, whether it is your turn or not."
+"• <b>Advancement</b>: When a unit <ref>dst='advancement' text='advances'</"
+"ref>, it will heal fully. This can happen as soon as your unit gains enough "
+"experience, whether it is your turn or not."
 msgstr ""
 
 #. [topic]: id=healing
@@ -2212,7 +2200,7 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<bold>text='Advanced'</bold>"
+"<b>Advanced</b>"
 msgstr ""
 
 #. [topic]: id=healing
@@ -2239,8 +2227,8 @@ msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
 "text='traits'</ref> and <ref>dst='..abilities_section' text='abilities'</"
-"ref>, but you now know everything you need to know to play the "
-"<italic>text='Heir to the Throne'</italic> campaign. Have fun, and good luck!"
+"ref>, but you now know everything you need to know to play the <i>Heir to "
+"the Throne</i> campaign. Have fun, and good luck!"
 msgstr ""
 "Açò conclou els fonaments bàsics de Wesnoth. Pot que vullga seguir llegint "
 "més sobre el joc, en la secció Estratègia bàsica, o familiarisar-te tu "
@@ -2260,9 +2248,8 @@ msgid ""
 "\n"
 "\n"
 "Most units have two traits. However, goblins have only one trait, undead "
-"units are always assigned the single trait <italic>text='undead'</italic> "
-"and in some cases <italic>text='fearless'</italic>, and woses do not receive "
-"any traits. "
+"units are always assigned the single trait <i>undead</i> and in some cases "
+"<i>fearless</i>, and woses do not receive any traits. "
 msgstr ""
 "La majoria d'unitats tenen dos traces, ab l'excepció dels no morts, als que "
 "només se'ls assigna la traça 'no mort', i els Woses que no reben traces. Les "
@@ -2275,8 +2262,7 @@ msgstr ""
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
-"available to a unit are largely determined by its <italic>text='race'</"
-"italic>."
+"available to a unit are largely determined by its <i>race</i>."
 msgstr ""
 
 #. [topic]: id=..traits_section
@@ -2323,8 +2309,7 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"Terrains come in two types: <italic>text='basic'</italic> and "
-"<italic>text='mixed'</italic>."
+"Terrains come in two types: <i>basic</i> and <i>mixed</i>."
 msgstr ""
 
 #. [topic]: id=..terrains_section
@@ -2348,7 +2333,7 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<header>text='Basic Terrain Types'</header>"
+"<big>Basic Terrain Types</big>"
 msgstr ""
 "\n"
 "\n"
@@ -2381,7 +2366,7 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<header>text='Mixed Terrain Types'</header>"
+"<big>Mixed Terrain Types</big>"
 msgstr ""
 "\n"
 "\n"
@@ -2393,11 +2378,10 @@ msgid ""
 "\n"
 "\n"
 "Mixed terrain types share the properties of multiple basic terrain types — "
-"units generally receive the <italic>text='best defense'</italic> and "
-"<italic>text='worst movement'</italic> of the underlying basic types when "
-"they move onto a mixed type. For example, this is the case with "
-"<italic>text='forested hills'</italic>, <italic>text='sand hills'</italic>, "
-"and <italic>text='cave hills'</italic>.\n"
+"units generally receive the <i>best defense</i> and <i>worst movement</i> of "
+"the underlying basic types when they move onto a mixed type. For example, "
+"this is the case with <i>forested hills</i>, <i>sand hills</i>, and <i>cave "
+"hills</i>.\n"
 "\n"
 msgstr ""
 
@@ -2406,13 +2390,12 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"One notable exception is bridge terrains, such as <italic>text='bridges over "
-"shallow water'</italic>, <italic>text='fords'</italic>, and "
-"<italic>text='bridges over chasms'</italic>. Fords are easily passable to "
-"both merfolk and humans — all units moving on a ford enjoy the best defense "
-"and best movement out of flat and shallow water, rather than the worse "
-"movement of the two. Similarly, bridges over chasms are passable to "
-"nonfliers (unsurprisingly).\n"
+"One notable exception is bridge terrains, such as <i>bridges over shallow "
+"water</i>, <i>fords</i>, and <i>bridges over chasms</i>. Fords are easily "
+"passable to both merfolk and humans — all units moving on a ford enjoy the "
+"best defense and best movement out of flat and shallow water, rather than "
+"the worse movement of the two. Similarly, bridges over chasms are passable "
+"to nonfliers (unsurprisingly).\n"
 "\n"
 msgstr ""
 
@@ -2454,9 +2437,8 @@ msgid ""
 "\n"
 "\n"
 "You can see what type of behavior the mixed terrain gives by mousing over "
-"its hex and viewing the <italic>text='terrain description'</italic> by "
-"either pressing the hotkey, or right clicking and selecting from the context "
-"menu."
+"its hex and viewing the <i>terrain description</i> by either pressing the "
+"hotkey, or right clicking and selecting from the context menu."
 msgstr ""
 
 #. [topic]: id=..terrains_section
@@ -2465,7 +2447,7 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<header>text='Defense Caps'</header>"
+"<big>Defense Caps</big>"
 msgstr ""
 "\n"
 "\n"
@@ -2476,9 +2458,9 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"Some units have <italic>text='defense caps'</italic> for a particular basic "
-"terrain type. These units suffer a penalty on mixed terrains with that type "
-"— their defense cannot exceed the cap."
+"Some units have <i>defense caps</i> for a particular basic terrain type. "
+"These units suffer a penalty on mixed terrains with that type — their "
+"defense cannot exceed the cap."
 msgstr ""
 
 #. [topic]: id=..terrains_section
@@ -2507,7 +2489,7 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<header>text='Basic Terrain Types'</header>\n"
+"<big>Basic Terrain Types</big>\n"
 "\n"
 msgstr ""
 "\n"
@@ -2538,7 +2520,7 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<header>text='Campaigns and Scenarios'</header>"
+"<big>Campaigns and Scenarios</big>"
 msgstr ""
 "\n"
 "\n"
@@ -2558,8 +2540,8 @@ msgid ""
 "\n"
 "Single-player campaigns are collections of scenarios that fit together to "
 "tell a story. Both stand-alone scenarios—if intended to be played as such—"
-"and regular campaigns are available from the <italic>text='Campaigns'</"
-"italic> menu at the title screen."
+"and regular campaigns are available from the <i>Campaigns</i> menu at the "
+"title screen."
 msgstr ""
 
 #. [topic]: id=using_addons
@@ -2569,7 +2551,7 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
+"<big>Multiplayer Campaigns, Scenarios, and Map Packs</big>"
 msgstr "<header>text='Unitats ab est atac especial'</header>"
 
 #. [topic]: id=using_addons
@@ -2577,9 +2559,9 @@ msgstr "<header>text='Unitats ab est atac especial'</header>"
 msgid ""
 "\n"
 "\n"
-"<italic>text='Multiplayer'</italic> games can be played in fully customized, "
-"scripted scenarios or even specially designed campaigns. There are also "
-"packs providing sets of individual multiplayer scenarios."
+"<i>Multiplayer</i> games can be played in fully customized, scripted "
+"scenarios or even specially designed campaigns. There are also packs "
+"providing sets of individual multiplayer scenarios."
 msgstr ""
 
 #. [topic]: id=using_addons
@@ -2588,7 +2570,7 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<header>text='Multiplayer Eras and Factions'</header>"
+"<big>Multiplayer Eras and Factions</big>"
 msgstr ""
 "\n"
 "\n"
@@ -2604,9 +2586,9 @@ msgid ""
 "common theme; for example, the main factions of Wesnoth can be found in the "
 "included Default Era.\n"
 "\n"
-"In <italic>text='Multiplayer'</italic> mode, you can choose an era when "
-"creating a new game, and players can pick from the available factions for "
-"that era when setting up their sides and teams."
+"In <i>Multiplayer</i> mode, you can choose an era when creating a new game, "
+"and players can pick from the available factions for that era when setting "
+"up their sides and teams."
 msgstr ""
 
 #. [topic]: id=using_addons
@@ -2624,7 +2606,7 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<header>text='Multiplayer Modifications'</header>"
+"<big>Multiplayer Modifications</big>"
 msgstr ""
 "\n"
 "\n"
@@ -2636,9 +2618,8 @@ msgid ""
 "\n"
 "\n"
 "Modifications are optional scenario- and era-independent scripts for "
-"<italic>text='Multiplayer'</italic> games that can alter the default ruleset "
-"in various ways. You can choose and configure modifications when creating a "
-"new game."
+"<i>Multiplayer</i> games that can alter the default ruleset in various ways. "
+"You can choose and configure modifications when creating a new game."
 msgstr ""
 
 #. [topic]: id=using_addons
@@ -2647,7 +2628,7 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<header>text='Creator Resources'</header>"
+"<big>Creator Resources</big>"
 msgstr ""
 "\n"
 "\n"
@@ -2673,27 +2654,26 @@ msgstr ""
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:503
 msgid ""
-"User-made add-ons can be obtained and updated through the <italic>text='Add-"
-"ons'</italic> option in the main menu. After connecting to the add-ons "
-"server (by default <italic>text='add-ons.wesnoth.org'</italic>), you will be "
-"presented with a list of add-ons available on the server for downloading.\n"
+"User-made add-ons can be obtained and updated through the <i>Add-ons</i> "
+"option in the main menu. After connecting to the add-ons server (by default "
+"<i>add-ons.wesnoth.org</i>), you will be presented with a list of add-ons "
+"available on the server for downloading.\n"
 "\n"
 "The installation status for each add-on is shown below each entry. For add-"
-"ons that are <italic>text='upgradable'</italic> or <italic>text='outdated'</"
-"italic> on the server, their installed and published versions will be shown "
-"in the <italic>text='Version'</italic> column.\n"
+"ons that are <i>upgradable</i> or <i>outdated</i> on the server, their "
+"installed and published versions will be shown in the <i>Version</i> "
+"column.\n"
 "\n"
 "To search for add-ons by keywords, type any relevant terms in any order in "
-"the <bold>text='Filter'</bold> box, separated by spaces. You can also sort "
-"the add-on list by clicking the column headers. It is also possible to "
-"choose to only display add-ons of specific categories by clicking on the "
-"<bold>text='Options'</bold> button in the top-right corner.\n"
+"the <b>Filter</b> box, separated by spaces. You can also sort the add-on "
+"list by clicking the column headers. It is also possible to choose to only "
+"display add-ons of specific categories by clicking on the <b>Options</b> "
+"button in the top-right corner.\n"
 "\n"
-"To install an add-on, select it from the list and click <bold>text='OK'</"
-"bold>, or simply double-click on the add-on’s title. The "
-"<bold>text='Description'</bold> button provides you with additional details "
-"about the add-on, such as its full description, installation status, and "
-"available languages."
+"To install an add-on, select it from the list and click <b>OK</b>, or simply "
+"double-click on the add-on’s title. The <b>Description</b> button provides "
+"you with additional details about the add-on, such as its full description, "
+"installation status, and available languages."
 msgstr ""
 
 #. [topic]: id=removing_addons
@@ -2704,15 +2684,14 @@ msgstr ""
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:517
 msgid ""
-"To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
-"server connection dialog. You will be presented with options to remove any "
-"number of add-ons you currently have installed.\n"
+"To remove add-ons, choose <b>Remove Add-ons</b> in the add-ons server "
+"connection dialog. You will be presented with options to remove any number "
+"of add-ons you currently have installed.\n"
 "\n"
 "It is not possible to remove add-ons for which there is publishing "
-"information (<italic>text='.pbl'</italic> files) attached, in order to "
-"prevent its accidental loss. If necessary, you must manually delete the "
-"information files or the add-ons themselves using a file manager provided by "
-"your platform."
+"information (<i>.pbl</i> files) attached, in order to prevent its accidental "
+"loss. If necessary, you must manually delete the information files or the "
+"add-ons themselves using a file manager provided by your platform."
 msgstr ""
 
 #. [topic]: id=general_commands
@@ -2897,10 +2876,9 @@ msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
 "username (write here the nickname of the player or observer). You can check "
-"what side belongs to which player in the <bold>text='Scenario Settings'</"
-"bold> dialog (Press the <bold>text='More'</bold> button in the "
-"<bold>text='Status Table'</bold> (alt+s by default) to get there.). The host "
-"can change control of any side.\n"
+"what side belongs to which player in the <b>Scenario Settings</b> dialog "
+"(Press the <b>More</b> button in the <b>Status Table</b> (alt+s by default) "
+"to get there.). The host can change control of any side.\n"
 "\n"
 msgstr ""
 "\n"
@@ -5149,68 +5127,111 @@ msgid ""
 msgstr ""
 
 #. [race]: id=dunefolk
-#. [race]: id=khalifate
-#: data/core/units.cfg:208 data/core/units.cfg:223
+#: data/core/units.cfg:207
 #, fuzzy
 #| msgid "race^Human"
 msgid "race^Dunefolk Human"
 msgstr "Humà"
 
 #. [race]: id=dunefolk
-#. [race]: id=khalifate
-#: data/core/units.cfg:209 data/core/units.cfg:224
+#: data/core/units.cfg:208
 #, fuzzy
 #| msgid "race+female^Human"
 msgid "race+female^Dunefolk Human"
 msgstr "Humana"
 
 #. [race]: id=dunefolk
-#. [race]: id=khalifate
-#: data/core/units.cfg:210 data/core/units.cfg:225
+#: data/core/units.cfg:209
 #, fuzzy
 #| msgid "race+plural^Undead"
 msgid "race+plural^Dunefolk"
 msgstr "No morts"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:211
+#: data/core/units.cfg:210
 msgid ""
-"The Dunefolk are a human culture inhabiting the dry deserts in the southern "
-"region of the Great Continent."
-msgstr ""
-
-#. [race]: id=khalifate
-#: data/core/units.cfg:226
-msgid "This race does not have a description yet."
+"An offshoot of a forgotten nomadic civilization, the Dunefolk lay claim to "
+"the river valleys and oases of the Sandy Wastes. How they came to inhabit "
+"this far corner of the Great Continent is unknown. Their legends tell of "
+"many long and perilous travels through far-flung lands, but the true origin "
+"of their people is a topic of endless and heated debate among even the most "
+"erudite of their scholars.\n"
+"\n"
+"Whatever their origin, the Dunefolk have thrived. Bustling cities stand "
+"proudly in the largest fertile regions. Skilled artisans, fine smiths, and "
+"wealthy merchants form the backbone of the urban economy. Each of these "
+"cities also enjoys a degree of independence less common in the more "
+"centralized nations to the north, many even maintaining their own standing "
+"armies. In times of need, however, each and all rally to a higher authority "
+"designated to protect the superior interest of the nation.\n"
+"\n"
+"Those who have not settled in these urban centers still adhere to the "
+"lifestyle of their ancestors, roaming the dunes and leading their herds from "
+"one watering hole to another. They are most active during the early hours of "
+"dawn and the onset of dusk, when the wastelands are neither too hot nor too "
+"cold. Their skill at moving through the sands is excellent even by Dunefolk "
+"standards. Although sometimes regarded with contempt by their city "
+"counterparts, they provide an invaluable service as mobile, light troops in "
+"war, or as escorts for trading caravans during times of peace.\n"
+"\n"
+"The Dunefolk's inclination towards trade and exploration has allowed their "
+"cities to amass immense fortunes, a fact regarded both with admiration and "
+"envy by other races. Mutual interests have fostered cordial relations with "
+"neighboring Naga tribes, but more secretive races such as Drakes and Elves "
+"have always considered Dunefolk expeditions to be too intrusive, especially "
+"when they venture close to territorial boundaries. It is not uncommon for "
+"caravans to fall prey to troll ambushes in the mountains, something that has "
+"given rise to countless tales of unimaginable treasure amassed in hidden "
+"caves.\n"
+"\n"
+"As a result of living in hostile environments for centuries, the Dunefolk "
+"have developed rational methods of enquiry through which they continue to "
+"improve their understanding of the world. Their study of herbal medicine "
+"keeps their warriors and workers fresh and healthy. Their knowledge of "
+"alchemy allows them to tame fire and wield it as a deadly weapon in battle. "
+"At the same time, this analytical mindset has distanced them from magical "
+"arts; to the rational mind, magic is uncontrollable, unpredictable, and "
+"hence unreliable. For this reason, the Dunefolk especially loathe the "
+"perversions of necromancy and the dark arts, even moreso than other races.\n"
+"\n"
+"The Dunefolk's inquisitive and explorative nature does not preclude military "
+"strength. Not only do they field nimble light troops, cataphracts, and "
+"heavily armored infantry, but their keen knowledge of technology grants them "
+"a decisive advantage over their opponents. When facing the Dunefolk in "
+"battle, however, the most fearsome sight is certainly their deployment of "
+"ferocious and bizarre beasts. From the majestic Roc to the imposing Wyvern, "
+"their synergy with these creatures allows for great versatility in combat. "
+"The origins of this tradition likely lie in the heritage of the Dunefolk's "
+"distant past in the exotic far corners of Irdya."
 msgstr ""
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:237
+#: data/core/units.cfg:231
 msgid "race^Saurian"
 msgstr "Sauri"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:238
+#: data/core/units.cfg:232
 msgid "race+female^Saurian"
 msgstr "Sauria"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:239
+#: data/core/units.cfg:233
 msgid "race^Saurians"
 msgstr "Sauris"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:249
+#: data/core/units.cfg:243
 msgid "race^Mechanical"
 msgstr "Mecànic"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:250
+#: data/core/units.cfg:244
 msgid "race+plural^Mechanical"
 msgstr "Mecànics"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:251
+#: data/core/units.cfg:245
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -5219,22 +5240,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=merman
-#: data/core/units.cfg:260
+#: data/core/units.cfg:254
 msgid "race^Merman"
 msgstr "Sirènit"
 
 #. [race]: id=merman
-#: data/core/units.cfg:261
+#: data/core/units.cfg:255
 msgid "race^Mermaid"
 msgstr "Sirena"
 
 #. [race]: id=merman
-#: data/core/units.cfg:262
+#: data/core/units.cfg:256
 msgid "race^Mermen"
 msgstr "Sirènits"
 
 #. [race]: id=merman
-#: data/core/units.cfg:264
+#: data/core/units.cfg:258
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -5248,24 +5269,24 @@ msgid ""
 msgstr ""
 
 #. [race]: id=monster
-#: data/core/units.cfg:272
+#: data/core/units.cfg:266
 msgid "race^Monster"
 msgstr "Mònstruo"
 
 #. [race]: id=monster
-#: data/core/units.cfg:273
+#: data/core/units.cfg:267
 #, fuzzy
 #| msgid "race^Monster"
 msgid "race+female^Monster"
 msgstr "Mònstruo"
 
 #. [race]: id=monster
-#: data/core/units.cfg:274
+#: data/core/units.cfg:268
 msgid "race^Monsters"
 msgstr "Mònstruos"
 
 #. [race]: id=monster
-#: data/core/units.cfg:275
+#: data/core/units.cfg:269
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -5273,24 +5294,24 @@ msgid ""
 msgstr ""
 
 #. [race]: id=naga
-#: data/core/units.cfg:282
+#: data/core/units.cfg:276
 msgid "race^Naga"
 msgstr "Naga"
 
 #. [race]: id=naga
-#: data/core/units.cfg:283
+#: data/core/units.cfg:277
 #, fuzzy
 #| msgid "race^Nagani"
 msgid "race^Nagini"
 msgstr "Naga"
 
 #. [race]: id=naga
-#: data/core/units.cfg:284
+#: data/core/units.cfg:278
 msgid "race^Nagas"
 msgstr "Nagues"
 
 #. [race]: id=naga
-#: data/core/units.cfg:285
+#: data/core/units.cfg:279
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -5308,22 +5329,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=ogre
-#: data/core/units.cfg:293
+#: data/core/units.cfg:287
 msgid "race^Ogre"
 msgstr "Ogre"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:294
+#: data/core/units.cfg:288
 msgid "race+female^Ogre"
 msgstr "Ogra"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:295
+#: data/core/units.cfg:289
 msgid "race^Ogres"
 msgstr "Ogres"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:296
+#: data/core/units.cfg:290
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -5342,22 +5363,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:304
+#: data/core/units.cfg:298
 msgid "race^Orc"
 msgstr "Orc"
 
 #. [race]: id=orc
-#: data/core/units.cfg:305
+#: data/core/units.cfg:299
 msgid "race+female^Orc"
 msgstr "Orca"
 
 #. [race]: id=orc
-#: data/core/units.cfg:306
+#: data/core/units.cfg:300
 msgid "race^Orcs"
 msgstr "Orcs"
 
 #. [race]: id=orc
-#: data/core/units.cfg:307
+#: data/core/units.cfg:301
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -5411,7 +5432,7 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:318
+#: data/core/units.cfg:312
 msgid ""
 "\n"
 "\n"
@@ -5420,22 +5441,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=troll
-#: data/core/units.cfg:327
+#: data/core/units.cfg:321
 msgid "race^Troll"
 msgstr "Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:328
+#: data/core/units.cfg:322
 msgid "race+female^Troll"
 msgstr "Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:329
+#: data/core/units.cfg:323
 msgid "race^Trolls"
 msgstr "Trolls"
 
 #. [race]: id=troll
-#: data/core/units.cfg:330
+#: data/core/units.cfg:324
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -5474,22 +5495,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=undead
-#: data/core/units.cfg:350
+#: data/core/units.cfg:344
 msgid "race^Undead"
 msgstr "No morts"
 
 #. [race]: id=undead
-#: data/core/units.cfg:351
+#: data/core/units.cfg:345
 msgid "race+female^Undead"
 msgstr "No morta"
 
 #. [race]: id=undead
-#: data/core/units.cfg:352
+#: data/core/units.cfg:346
 msgid "race+plural^Undead"
 msgstr "No morts"
 
 #. [race]: id=undead
-#: data/core/units.cfg:353
+#: data/core/units.cfg:347
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -5518,34 +5539,34 @@ msgid ""
 msgstr ""
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:366
+#: data/core/units.cfg:360
 msgid "race^Wolf"
 msgstr ""
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:367
+#: data/core/units.cfg:361
 #, fuzzy
 #| msgid "race+female^Elf"
 msgid "race+female^Wolf"
 msgstr "Elfa"
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:368
+#: data/core/units.cfg:362
 msgid "race^Wolves"
 msgstr ""
 
 #. [race]: id=wose
-#: data/core/units.cfg:378
+#: data/core/units.cfg:372
 msgid "race^Wose"
 msgstr "Wose"
 
 #. [race]: id=wose
-#: data/core/units.cfg:379
+#: data/core/units.cfg:373
 msgid "race^Woses"
 msgstr "Woses"
 
 #. [race]: id=wose
-#: data/core/units.cfg:380
+#: data/core/units.cfg:374
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
@@ -5591,17 +5612,23 @@ msgstr ""
 msgid "+1 max HP"
 msgstr "+1 PV màx."
 
-#: src/help/help.cpp:181
-msgid "Close"
-msgstr "Tancar"
+#, fuzzy
+#~| msgid "<header>text='Units of this race'</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Fundamentals of Gameplay'</header>\n"
+#~ "\n"
+#~ msgstr "<header>text='Unitats d'esta raça'</header>"
 
-#: src/help/help.cpp:184
-msgid "The Battle for Wesnoth Help"
-msgstr "Ajuda de Batalla per Wesnoth"
+#~ msgid "Close"
+#~ msgstr "Tancar"
 
-#: src/help/help.cpp:239
-msgid "Parse error when parsing help text: "
-msgstr "S'ha produït un erro analisant el text d'ajuda: "
+#~ msgid "The Battle for Wesnoth Help"
+#~ msgstr "Ajuda de Batalla per Wesnoth"
+
+#~ msgid "Parse error when parsing help text: "
+#~ msgstr "S'ha produït un erro analisant el text d'ajuda: "
 
 #~ msgid "ingame_help_item^Contributors"
 #~ msgstr "Colaboradors"
@@ -5713,9 +5740,6 @@ msgstr "S'ha produït un erro analisant el text d'ajuda: "
 
 #~ msgid "Overview"
 #~ msgstr "Descripció"
-
-#~ msgid "Fundamentals of Gameplay"
-#~ msgstr "Fonaments del joc"
 
 #, fuzzy
 #~ msgid ""

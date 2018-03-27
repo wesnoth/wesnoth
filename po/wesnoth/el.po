@@ -29,7 +29,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-17 21:31+0300\n"
+"POT-Creation-Date: 2018-03-27 04:27+0300\n"
 "PO-Revision-Date: 2013-08-30 15:57+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -240,97 +240,110 @@ msgid "Show special unit graphical effects"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:199
+#: data/advanced_preferences.cfg:189
+msgid "Show deprecation messages in-game"
+msgstr ""
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:190
+msgid ""
+"Show warnings about deprecated API in the in-game chat area. These messages "
+"will still be shown in the log, even if this is disabled. In addition, the "
+"deprecation log-domain controls how many messages are printed."
+msgstr ""
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:198
 msgid "Joystick support"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:206
+#: data/advanced_preferences.cfg:205
 msgid "Joystick: number of the scroll X-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:216
+#: data/advanced_preferences.cfg:215
 msgid "Joystick: number of the scroll X-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:226
+#: data/advanced_preferences.cfg:225
 msgid "Joystick: number of the scroll Y-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:236
+#: data/advanced_preferences.cfg:235
 msgid "Joystick: number of the scroll Y-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:246
+#: data/advanced_preferences.cfg:245
 msgid "Joystick: deadzone of the scrolling stick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:256
+#: data/advanced_preferences.cfg:255
 msgid "Joystick: number of the cursor X-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:266
+#: data/advanced_preferences.cfg:265
 msgid "Joystick: number of the cursor X-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:276
+#: data/advanced_preferences.cfg:275
 msgid "Joystick: number of the cursor Y-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:286
+#: data/advanced_preferences.cfg:285
 msgid "Joystick: number of the cursor Y-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:296
+#: data/advanced_preferences.cfg:295
 msgid "Joystick: deadzone of the cursor stick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:306
+#: data/advanced_preferences.cfg:305
 msgid "Joystick: number of the mouse X-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:316
+#: data/advanced_preferences.cfg:315
 msgid "Joystick: number of the mouse X-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:326
+#: data/advanced_preferences.cfg:325
 msgid "Joystick: number of the mouse Y-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:336
+#: data/advanced_preferences.cfg:335
 msgid "Joystick: number of the mouse Y-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:346
+#: data/advanced_preferences.cfg:345
 msgid "Joystick: deadzone of the mouse stick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:356
+#: data/advanced_preferences.cfg:355
 msgid "Joystick: number of the thrust axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:366
+#: data/advanced_preferences.cfg:365
 msgid "Joystick: number of the thrust axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:376
+#: data/advanced_preferences.cfg:375
 msgid "Joystick: deadzone of the thruster"
 msgstr ""
 
@@ -345,14 +358,14 @@ msgstr "δηλητηριασμένος"
 #. [objectives]
 #. [lua]: generate_objectives
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:208
-#: data/lua/wml/objectives.lua:51
+#: data/lua/wml/objectives.lua:38
 msgid "Gold carryover:"
 msgstr ""
 
 #. [note]
 #. [lua]: generate_objectives
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:220
-#: data/lua/wml/objectives.lua:52
+#: data/lua/wml/objectives.lua:39
 msgid "Notes:"
 msgstr "Σημειώσεις:"
 
@@ -1544,17 +1557,17 @@ msgid "<small>(early finish bonus)</small>"
 msgstr ""
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:98 data/lua/wml/objectives.lua:119
+#: data/core/macros/deprecated-utils.cfg:98 data/lua/wml/objectives.lua:106
 msgid "Early finish bonus."
 msgstr "Πριμ πρόωρης λήξης."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:101 data/lua/wml/objectives.lua:122
+#: data/core/macros/deprecated-utils.cfg:101 data/lua/wml/objectives.lua:109
 msgid "No early finish bonus."
 msgstr "Χωρίς πριμ πρόωρης λήξης."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:104 data/lua/wml/objectives.lua:130
+#: data/core/macros/deprecated-utils.cfg:104 data/lua/wml/objectives.lua:117
 msgid "No gold carried over to the next scenario."
 msgstr ""
 
@@ -2897,7 +2910,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=gold
-#: data/core/team-colors.cfg:107 src/reports.cpp:1263
+#: data/core/team-colors.cfg:107 src/reports.cpp:1262
 msgid "Gold"
 msgstr "Χρυσό"
 
@@ -3304,27 +3317,6 @@ msgstr "Επίσημος Διακομιστής Γουέσνοθ"
 msgid "Alternate Wesnoth Server"
 msgstr "Εναλλακτικός Διακομιστής Γουέσνοθ"
 
-#. [label]: id=no_options_notice
-#: data/gui/macros/custom_options_tree.cfg:24
-msgid ""
-"There are no custom options available for the selected era, game, or "
-"modification."
-msgstr ""
-
-#. [button]: id=reset_option_values
-#: data/gui/macros/custom_options_tree.cfg:248
-#, fuzzy
-#| msgid "Defaults"
-msgid "Defaults"
-msgstr "Προκαθορισμένα"
-
-#. [label]
-#: data/gui/macros/player_list_panel.cfg:28
-#, fuzzy
-#| msgid "Computer Player"
-msgid "Connected Players"
-msgstr "Παίκτης ελεγχόμενος από τον υπολογιστή"
-
 #. [label]: id=title
 #: data/gui/window/install_dependencies.cfg:37
 msgid "Install Dependencies"
@@ -3346,47 +3338,10 @@ msgstr "Καμία"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/window/screenshot_notification.cfg:96
-#: src/hotkey/command_executor.cpp:599
+#: data/gui/window/screenshot_notification.cfg:95
+#: src/hotkey/command_executor.cpp:594
 msgid "Screenshot"
 msgstr "Φωτογραφία"
-
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]
-#: data/gui/window/screenshot_notification.cfg:120 src/menu_events.cpp:627
-msgid "Name:"
-msgstr "Όνομα:"
-
-#. [label]
-#: data/gui/window/screenshot_notification.cfg:141
-#, fuzzy
-#| msgid "Size: "
-msgid "Size:"
-msgstr "Μέγεθος: "
-
-#. [button]: id=browse_dir
-#: data/gui/window/screenshot_notification.cfg:187
-#, fuzzy
-#| msgid "Screenshot"
-msgid "Screenshots..."
-msgstr "Φωτογραφία"
-
-#. [button]: id=browse_dir
-#: data/gui/window/screenshot_notification.cfg:189
-msgid "Browse the screenshots folder using a file manager"
-msgstr ""
-
-#. [button]: id=save
-#: data/gui/window/screenshot_notification.cfg:203
-#, fuzzy
-#| msgid "Saved"
-msgid "Save"
-msgstr "Αποθηκεύτηκε"
-
-#. [button]: id=ok
-#: data/gui/window/screenshot_notification.cfg:216
-msgid "Close"
-msgstr "Κλείσιμο"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:28
@@ -3408,32 +3363,19 @@ msgstr ""
 msgid "Oldania ADF Std"
 msgstr ""
 
-#. [fonts]
-#: data/hardwired/fonts.cfg:36
-#, fuzzy
-#| msgid ""
-#| "DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull."
-#| "ttf,Junicode-Regular.ttf"
-msgid ""
-"Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
-"DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
-msgstr ""
-"DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull.ttf,"
-"Junicode-Regular.ttf"
-
 #. [lua]: wesnoth.deprecate_api
-#: data/lua/core.lua:165
+#: data/lua/core.lua:187
 msgid "(Note: You should use $replacement instead in new code)"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecate_api
-#: data/lua/core.lua:172 src/deprecation.cpp:69
+#: data/lua/core.lua:194 src/deprecation.cpp:69
 msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr ""
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:894
+#: data/lua/wml-tags.lua:883
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr ""
 
@@ -3481,24 +3423,24 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:390 src/scripting/game_lua_kernel.cpp:2778
-#: src/scripting/game_lua_kernel.cpp:2813
+#: data/lua/wml/message.lua:390 src/scripting/game_lua_kernel.cpp:2774
+#: src/scripting/game_lua_kernel.cpp:2809
 msgid "input"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:49 src/game_initialization/mp_game_utils.cpp:74
+#: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:74
 msgid "Victory:"
 msgstr "Νίκη:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:50
+#: data/lua/wml/objectives.lua:37
 msgid "Defeat:"
 msgstr "Ήττα:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:70
+#: data/lua/wml/objectives.lua:57
 #, fuzzy
 #| msgid "(this turn left)"
 msgid "(this turn left)"
@@ -3507,7 +3449,7 @@ msgstr[0] "(απομένει αυτός ο γύρος)"
 msgstr[1] "(απομένει αυτός ο γύρος)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:132
+#: data/lua/wml/objectives.lua:119
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "Το %d%% του χρυσαφιού μεταφέρεται στην επόμενη αποστολή."
 
@@ -3518,7 +3460,7 @@ msgstr "Το %d%% του χρυσαφιού μεταφέρεται στην επ
 msgid "Defeat enemy leader(s)"
 msgstr "Νικήστε τους αντίπαλους αρχηγούς"
 
-#: data/scenario-test.cfg:1031 src/game_initialization/depcheck.cpp:491
+#: data/scenario-test.cfg:1031 src/game_initialization/depcheck.cpp:489
 msgid "OK"
 msgstr "Εντάξει"
 
@@ -4441,7 +4383,7 @@ msgid ""
 msgstr ""
 
 #: src/actions/attack.cpp:394 src/actions/attack.cpp:663
-#: src/actions/attack.cpp:1376
+#: src/actions/attack.cpp:1371
 #, fuzzy
 msgid "An invalid attacker weapon got selected."
 msgstr "Ακυρη Επιλογή Εποχής"
@@ -4507,54 +4449,54 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "Δέν υπάρχουν κενές θέσεις στό κάστρο γιά να στρατολογήσεις μονάδες"
 
-#: src/actions/heal.cpp:275
+#: src/actions/heal.cpp:274
 #, fuzzy
 #| msgid "cures"
 msgid "cured"
 msgstr "θεραπεύει"
 
-#: src/actions/heal.cpp:275
+#: src/actions/heal.cpp:274
 #, fuzzy
 msgid "female^cured"
 msgstr "άφοβη"
 
-#: src/actions/move.cpp:622
+#: src/actions/move.cpp:615
 msgid "Ambushed!"
 msgstr "Έπεσες σε ενέδρα!"
 
-#: src/actions/move.cpp:1136
+#: src/actions/move.cpp:1127
 msgid "Failed teleport! Exit not empty"
 msgstr "Αποτυχία τηλεμεταφοράς! Η έξοδος δεν είναι άδεια."
 
-#: src/actions/move.cpp:1152
+#: src/actions/move.cpp:1143
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 φιλική"
 msgstr[1] "$friends φιλικές"
 
-#: src/actions/move.cpp:1153
+#: src/actions/move.cpp:1144
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 εχθρική"
 msgstr[1] "$enemies εχθρικές"
 
-#: src/actions/move.cpp:1154
+#: src/actions/move.cpp:1145
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Εθεάθησαν μονάδες! ($friendphrase, $enemyphrase)"
 
-#: src/actions/move.cpp:1158
+#: src/actions/move.cpp:1149
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Εθεάθη εχθρική μονάδα!"
 msgstr[1] "Εθεάθησαν $enemies εχθρικές μονάδες!"
 
-#: src/actions/move.cpp:1162
+#: src/actions/move.cpp:1153
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Εθεάθη φιλική μονάδα"
 msgstr[1] "Εθεάθησαν $friends φιλικές μονάδες"
 
-#: src/actions/move.cpp:1177
+#: src/actions/move.cpp:1168
 msgid "(press $hotkey to keep moving)"
 msgstr "(πατήστε $hotkey για να προχωρήσετε)"
 
@@ -4643,7 +4585,7 @@ msgstr[1] ""
 msgid "Broken Dependencies"
 msgstr "Ελαττωματικές Εξαρτήσεις"
 
-#: src/addon/client.cpp:422
+#: src/addon/client.cpp:420
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -4653,34 +4595,34 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/client.cpp:426
+#: src/addon/client.cpp:424
 msgid "Dependencies Installation Failed"
 msgstr ""
 
-#: src/addon/client.cpp:449
+#: src/addon/client.cpp:447
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
 
-#: src/addon/client.cpp:453
+#: src/addon/client.cpp:451
 msgid "Publishing information file (.pbl)"
 msgstr ""
 
-#: src/addon/client.cpp:457
+#: src/addon/client.cpp:455
 msgid "Version control system (VCS) information"
 msgstr ""
 
-#: src/addon/client.cpp:461
+#: src/addon/client.cpp:459
 msgid "Do you really wish to continue?"
 msgstr "Θέλετε πραγματικά να συνεχίσετε;"
 
-#: src/addon/client.cpp:463 src/addon/manager_ui.cpp:174
+#: src/addon/client.cpp:461 src/addon/manager_ui.cpp:174
 #: src/game_initialization/multiplayer.cpp:243
 msgid "Confirm"
 msgstr "Επιβεβαίωση"
 
-#: src/addon/client.cpp:583
+#: src/addon/client.cpp:581
 msgid "Add-ons Manager"
 msgstr "Διαχείριση Επεκτάσεων"
 
@@ -4897,7 +4839,7 @@ msgstr "Δεν βρέθηκαν πληροφορίες για την περιο�
 msgid "(A) — admin command"
 msgstr ""
 
-#: src/chat_command_handler.hpp:73 src/menu_events.cpp:1145
+#: src/chat_command_handler.hpp:73 src/menu_events.cpp:1146
 msgid "(admin only)"
 msgstr "(μόνο ως διαχειριστής)"
 
@@ -5312,7 +5254,7 @@ msgid "Reserved"
 msgstr "Επανεκκίνηση"
 
 #: src/game_initialization/create_engine.cpp:73
-#: src/game_initialization/create_engine.cpp:668
+#: src/game_initialization/create_engine.cpp:666
 #, fuzzy
 #| msgid "The game could not be loaded: "
 msgid "Map could not be loaded: "
@@ -5336,34 +5278,34 @@ msgstr "Η περιοχή δεν είναι διαθέσιμη"
 msgid "Custom map."
 msgstr "Διαταγές"
 
-#: src/game_initialization/depcheck.cpp:491
+#: src/game_initialization/depcheck.cpp:489
 #, fuzzy
 msgid "Failed to resolve dependencies"
 msgstr "Απαιτήσεις"
 
-#: src/game_initialization/depcheck.cpp:516
+#: src/game_initialization/depcheck.cpp:514
 msgid "Scenario can't be activated. Some dependencies are missing: "
 msgstr ""
 
-#: src/game_initialization/depcheck.cpp:570
-#: src/game_initialization/depcheck.cpp:693
+#: src/game_initialization/depcheck.cpp:568
+#: src/game_initialization/depcheck.cpp:691
 #, fuzzy
 #| msgid "No eras found."
 msgid "No compatible eras found."
 msgstr "Δεν βρέθηκαν περιοχές."
 
-#: src/game_initialization/depcheck.cpp:585
+#: src/game_initialization/depcheck.cpp:583
 msgid "Era can't be activated. Some dependencies are missing: "
 msgstr ""
 
-#: src/game_initialization/depcheck.cpp:638
-#: src/game_initialization/depcheck.cpp:730
+#: src/game_initialization/depcheck.cpp:636
+#: src/game_initialization/depcheck.cpp:728
 #, fuzzy
 #| msgid "No era information found."
 msgid "No compatible scenarios found."
 msgstr "Δεν βρέθηκαν πληροφορίες για την περιοχή."
 
-#: src/game_initialization/depcheck.cpp:667
+#: src/game_initialization/depcheck.cpp:665
 msgid ""
 "Not all of the chosen modifications are compatible. Some of them will be "
 "disabled."
@@ -5479,39 +5421,39 @@ msgstr ""
 msgid "Server-side redirect loop"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:218
+#: src/game_initialization/multiplayer.cpp:216
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
 "to do it for you."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:227
+#: src/game_initialization/multiplayer.cpp:225
 #, fuzzy
 #| msgid "Do you want to save your game?"
 msgid "Do you want to continue?"
 msgstr "Θέλεις να αποθηκεύσεις το παιχνίδι;"
 
-#: src/game_initialization/multiplayer.cpp:229
+#: src/game_initialization/multiplayer.cpp:227
 msgid "Warning"
 msgstr "Προειδοποίηση"
 
-#: src/game_initialization/multiplayer.cpp:271
-#: src/game_initialization/multiplayer.cpp:287
-#: src/game_initialization/multiplayer.cpp:290
+#: src/game_initialization/multiplayer.cpp:270
+#: src/game_initialization/multiplayer.cpp:286
+#: src/game_initialization/multiplayer.cpp:289
 msgid "Bad data received from server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:323
+#: src/game_initialization/multiplayer.cpp:317
 #, fuzzy
 msgid "You must login first."
 msgstr "Πρέπει να εισέλθετε στο εξυπηρετητή"
 
-#: src/game_initialization/multiplayer.cpp:325
+#: src/game_initialization/multiplayer.cpp:319
 msgid "The nickname ‘$nick’ is already taken."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:327
+#: src/game_initialization/multiplayer.cpp:321
 #, fuzzy
 #| msgid ""
 #| "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
@@ -5523,61 +5465,61 @@ msgstr ""
 "Το ψευδώνυμο \"$nick\" περιέχει μη έγκυρους χαρακτήρες. Επιτρέπονται μόνο "
 "αλφαριθμητικοί χαρακτήρες, κάτω παύλες και θέσεις διαχωρισμού."
 
-#: src/game_initialization/multiplayer.cpp:331
+#: src/game_initialization/multiplayer.cpp:325
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:334
+#: src/game_initialization/multiplayer.cpp:328
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:336
+#: src/game_initialization/multiplayer.cpp:330
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:337
+#: src/game_initialization/multiplayer.cpp:331
 msgid " This server disallows unregistered nicknames."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:339
-#: src/game_initialization/multiplayer.cpp:341
+#: src/game_initialization/multiplayer.cpp:333
+#: src/game_initialization/multiplayer.cpp:335
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:342
+#: src/game_initialization/multiplayer.cpp:336
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:345
+#: src/game_initialization/multiplayer.cpp:339
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:348
+#: src/game_initialization/multiplayer.cpp:342
 msgid "The password you provided was incorrect."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:350
+#: src/game_initialization/multiplayer.cpp:344
 msgid "You have made too many login attempts."
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:62
+#: src/game_initialization/playcampaign.cpp:61
 msgid "Remaining gold: "
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:66
+#: src/game_initialization/playcampaign.cpp:65
 msgid "Turns finished early: "
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:67
+#: src/game_initialization/playcampaign.cpp:66
 #, fuzzy
 #| msgid "per turn"
 msgid " per turn"
 msgstr "κάθε γύρο"
 
-#: src/game_initialization/playcampaign.cpp:67
+#: src/game_initialization/playcampaign.cpp:66
 msgid "Early finish bonus: "
 msgstr "Πριμ πρόωρης λήξης: "
 
@@ -5587,29 +5529,29 @@ msgstr "Πριμ πρόωρης λήξης: "
 msgid "Total bonus: "
 msgstr "Πριμ γύρου: "
 
-#: src/game_initialization/playcampaign.cpp:70
+#: src/game_initialization/playcampaign.cpp:71
 #, fuzzy
 #| msgid "Village gold: "
 msgid "Total gold: "
 msgstr "Χρυσάφι Χωριού: "
 
-#: src/game_initialization/playcampaign.cpp:73
+#: src/game_initialization/playcampaign.cpp:75
 msgid "Carryover percentage: "
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:76
+#: src/game_initialization/playcampaign.cpp:79
 #, fuzzy
 #| msgid "Bonus Gold: "
 msgid "Bonus gold: "
 msgstr "Πρόσθετος Χρυσός: "
 
-#: src/game_initialization/playcampaign.cpp:78
+#: src/game_initialization/playcampaign.cpp:81
 #, fuzzy
 #| msgid "Village gold: "
 msgid "Retained gold: "
 msgstr "Χρυσάφι Χωριού: "
 
-#: src/game_initialization/playcampaign.cpp:91
+#: src/game_initialization/playcampaign.cpp:95
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -5619,7 +5561,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/game_initialization/playcampaign.cpp:99
+#: src/game_initialization/playcampaign.cpp:101
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
@@ -5627,7 +5569,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/game_initialization/playcampaign.cpp:107
+#: src/game_initialization/playcampaign.cpp:108
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -5657,37 +5599,37 @@ msgstr "Ήττα"
 msgid "You have been defeated!"
 msgstr "Ηττηθήκατε!"
 
-#: src/game_initialization/playcampaign.cpp:291 src/game_launcher.cpp:862
+#: src/game_initialization/playcampaign.cpp:300 src/game_launcher.cpp:862
 msgid "The game could not be loaded: "
 msgstr "Η φόρτωση του παιχνιδιού ήταν αδύνατη: "
 
-#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:864
+#: src/game_initialization/playcampaign.cpp:306 src/game_launcher.cpp:864
 msgid "Error while playing the game: "
 msgstr "Σφάλμα ενώ παίζατε το παιχνίδι: "
 
-#: src/game_initialization/playcampaign.cpp:300 src/game_launcher.cpp:882
+#: src/game_initialization/playcampaign.cpp:309 src/game_launcher.cpp:882
 msgid "The game map could not be loaded: "
 msgstr "Η φόρτωση του χάρτη ήταν αδύνατη: "
 
-#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:866
+#: src/game_initialization/playcampaign.cpp:312 src/game_launcher.cpp:866
 #: src/game_launcher.cpp:981
 msgid "Map generator error: "
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:305
+#: src/game_initialization/playcampaign.cpp:314
 msgid "Error while reading the WML: "
 msgstr "Σφάλμα στο διάβασμα του WML:"
 
-#: src/game_initialization/playcampaign.cpp:342
-#: src/playsingle_controller.cpp:304
+#: src/game_initialization/playcampaign.cpp:351
+#: src/playsingle_controller.cpp:308
 msgid "Game Over"
 msgstr "Τέλος Παιχνιδιού"
 
-#: src/game_initialization/playcampaign.cpp:343
+#: src/game_initialization/playcampaign.cpp:352
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:408
+#: src/game_initialization/playcampaign.cpp:417
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Άγνωστη αποστολή: '$scenario|'"
 
@@ -5803,27 +5745,23 @@ msgstr "Σφάλμα"
 msgid "No units found."
 msgstr "Δεν βρέθηκαν εποχές."
 
-#: src/gui/widgets/status_label_helper.hpp:34
+#: src/gui/widgets/status_label_helper.hpp:33
 msgid "no"
 msgstr "όχι"
 
-#: src/gui/widgets/status_label_helper.hpp:34
+#: src/gui/widgets/status_label_helper.hpp:33
 msgid "yes"
 msgstr "ναι"
 
-#: src/help/help_browser.cpp:160
-msgid "Reference to unknown topic: "
-msgstr "Μονάδες αυτής της φυλής:"
-
-#: src/help/help_impl.cpp:365
+#: src/help/help_impl.cpp:367
 msgid "Only available during a scenario."
 msgstr ""
 
-#: src/help/help_impl.cpp:382
+#: src/help/help_impl.cpp:384
 msgid "Schedule"
 msgstr ""
 
-#: src/help/help_impl.cpp:474
+#: src/help/help_impl.cpp:476
 #, fuzzy
 msgid "<header>text='Units with this special attack'</header>"
 msgstr ""
@@ -5831,7 +5769,7 @@ msgstr ""
 "\n"
 "<header>text='Πιθανότητα επιτυχούς χτυπήματος'</header>"
 
-#: src/help/help_impl.cpp:535
+#: src/help/help_impl.cpp:537
 #, fuzzy
 msgid "<header>text='Units with this ability'</header>"
 msgstr ""
@@ -5839,69 +5777,69 @@ msgstr ""
 "\n"
 "<header>text='Πιθανότητα επιτυχούς χτυπήματος'</header>"
 
-#: src/help/help_impl.cpp:565
+#: src/help/help_impl.cpp:567
 msgid "Era:"
 msgstr "Εποχή:"
 
-#: src/help/help_impl.cpp:573
+#: src/help/help_impl.cpp:575
 #, fuzzy
 msgid "Factions"
 msgstr "Παράταξη"
 
-#: src/help/help_impl.cpp:622
+#: src/help/help_impl.cpp:624
 #, fuzzy
 #| msgid "Race: "
 msgid "Races: "
 msgstr "Φυλή: "
 
-#: src/help/help_impl.cpp:631 src/help/help_impl.cpp:981
+#: src/help/help_impl.cpp:633 src/help/help_impl.cpp:983
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignments: "
 msgstr "Νοοτροπία: "
 
-#: src/help/help_impl.cpp:638
+#: src/help/help_impl.cpp:640
 #, fuzzy
 msgid "Leaders"
 msgstr "Αρχηγός:"
 
-#: src/help/help_impl.cpp:647
+#: src/help/help_impl.cpp:649
 msgid "Recruits"
 msgstr "Στρατολόγηση"
 
-#: src/help/help_impl.cpp:708 src/units/types.cpp:479
+#: src/help/help_impl.cpp:710 src/units/types.cpp:479
 msgid "No description available."
 msgstr "Δεν υπάρχει διαθέσιμη περιγραφή."
 
-#: src/help/help_impl.cpp:712 src/help/help_impl.cpp:714
+#: src/help/help_impl.cpp:714 src/help/help_impl.cpp:716
 #, fuzzy
 #| msgid "Ability: "
 msgid "Availability: "
 msgstr "Ικανότητα: "
 
-#: src/help/help_impl.cpp:712
+#: src/help/help_impl.cpp:714
 msgid "Must-have"
 msgstr ""
 
-#: src/help/help_impl.cpp:714
+#: src/help/help_impl.cpp:716
 #, fuzzy
 #| msgid "Era not available"
 msgid "Unavailable"
 msgstr "Η περιοχή δεν είναι διαθέσιμη"
 
-#: src/help/help_impl.cpp:794 src/help/help_impl.cpp:969
-#: src/help/help_topic_generators.cpp:384
+#: src/help/help_impl.cpp:796 src/help/help_impl.cpp:971
+#: src/help/help_topic_generators.cpp:385
 #, fuzzy
 #| msgid "race^Merman"
 msgid "race^Miscellaneous"
 msgstr "Γοργόνος"
 
-#: src/help/help_impl.cpp:981 src/help/help_topic_generators.cpp:490
-#: src/reports.cpp:347
+#: src/help/help_impl.cpp:983 src/help/help_topic_generators.cpp:491
+#: src/reports.cpp:345
 msgid "Alignment: "
 msgstr "Νοοτροπία: "
 
-#: src/help/help_impl.cpp:988
+#: src/help/help_impl.cpp:990
 #, fuzzy
 msgid "<header>text='Units of this race'</header>"
 msgstr ""
@@ -5909,194 +5847,200 @@ msgstr ""
 "\n"
 "<header>text='Πιθανότητα επιτυχούς χτυπήματος'</header>"
 
-#: src/help/help_impl.cpp:1331
+#: src/help/help_impl.cpp:1342
 msgid "corrupted original file"
 msgstr "χαλασμένο αρχείο"
 
-#: src/help/help_topic_generators.cpp:46
+#: src/help/help_topic_generators.cpp:45
 msgid "Best of"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:46
+#: src/help/help_topic_generators.cpp:45
 msgid "Worst of"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:142
+#: src/help/help_topic_generators.cpp:141
 #, fuzzy
 #| msgid "Terrain: "
 msgid "Base Terrain: "
 msgstr "Έδαφος: "
 
-#: src/help/help_topic_generators.cpp:161
+#: src/help/help_topic_generators.cpp:160
 #, fuzzy
 #| msgid "Movement Costs:"
 msgid "Movement properties: "
 msgstr "Κόστος Κίνησης:"
 
-#: src/help/help_topic_generators.cpp:165
+#: src/help/help_topic_generators.cpp:164
 #, fuzzy
 #| msgid "Defense: "
 msgid "Defense properties: "
 msgstr "Άμυνα: "
 
-#: src/help/help_topic_generators.cpp:306
+#: src/help/help_topic_generators.cpp:246
+#, fuzzy
+#| msgid "Level: "
+msgid "Level"
+msgstr "Επίπεδο: "
+
+#: src/help/help_topic_generators.cpp:307
 msgid "Advances from: "
 msgstr "Προάχθηκε από:"
 
-#: src/help/help_topic_generators.cpp:308
+#: src/help/help_topic_generators.cpp:309
 msgid "Advances to: "
 msgstr "Προαγωγή σε: "
 
-#: src/help/help_topic_generators.cpp:337
+#: src/help/help_topic_generators.cpp:338
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Base unit: "
 msgstr "Νομιμόφρονες μονάδες: "
 
-#: src/help/help_topic_generators.cpp:342
+#: src/help/help_topic_generators.cpp:343
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Base units: "
 msgstr "Νομιμόφρονες μονάδες: "
 
-#: src/help/help_topic_generators.cpp:360
+#: src/help/help_topic_generators.cpp:361
 #, fuzzy
 msgid "Variations: "
 msgstr "Παράταξη"
 
-#: src/help/help_topic_generators.cpp:386 src/reports.cpp:185
+#: src/help/help_topic_generators.cpp:387 src/reports.cpp:183
 msgid "Race: "
 msgstr "Φυλή: "
 
-#: src/help/help_topic_generators.cpp:412
-#: src/help/help_topic_generators.cpp:435
+#: src/help/help_topic_generators.cpp:413
+#: src/help/help_topic_generators.cpp:436
 msgid "Traits"
 msgstr "Γνωρίσματα"
 
-#: src/help/help_topic_generators.cpp:445
+#: src/help/help_topic_generators.cpp:446
 msgid "Abilities: "
 msgstr "Ικανότητες: "
 
-#: src/help/help_topic_generators.cpp:463
+#: src/help/help_topic_generators.cpp:464
 #, fuzzy
 msgid "Ability Upgrades: "
 msgstr "Ικανότητες: "
 
-#: src/help/help_topic_generators.cpp:481
+#: src/help/help_topic_generators.cpp:482
 msgid "HP: "
 msgstr "Υγεία: "
 
-#: src/help/help_topic_generators.cpp:482
+#: src/help/help_topic_generators.cpp:483
 msgid "Moves: "
 msgstr "Κινήσεις: "
 
-#: src/help/help_topic_generators.cpp:484
+#: src/help/help_topic_generators.cpp:485
 #, fuzzy
 #| msgid "Version: "
 msgid "Vision: "
 msgstr "Έκδοση: "
 
-#: src/help/help_topic_generators.cpp:487
+#: src/help/help_topic_generators.cpp:488
 #, fuzzy
 #| msgid "Warning: "
 msgid "Jamming: "
 msgstr "Προειδοποίηση: "
 
-#: src/help/help_topic_generators.cpp:489
+#: src/help/help_topic_generators.cpp:490
 msgid "Cost: "
 msgstr "Κόστος:"
 
-#: src/help/help_topic_generators.cpp:494
+#: src/help/help_topic_generators.cpp:495
 msgid "Required XP: "
 msgstr "Απαιτούμενη εμπειρία: "
 
-#: src/help/help_topic_generators.cpp:503
+#: src/help/help_topic_generators.cpp:504
 #, fuzzy
 #| msgid "unit help^Name"
 msgid "unit help^Attacks"
 msgstr "Name"
 
-#: src/help/help_topic_generators.cpp:510
+#: src/help/help_topic_generators.cpp:511
 msgid "unit help^Name"
 msgstr "Name"
 
-#: src/help/help_topic_generators.cpp:511
+#: src/help/help_topic_generators.cpp:512
 msgid "Type"
 msgstr "Τύπος"
 
-#: src/help/help_topic_generators.cpp:512
+#: src/help/help_topic_generators.cpp:513
 msgid "Strikes"
 msgstr "Χτυπήματα"
 
-#: src/help/help_topic_generators.cpp:513
+#: src/help/help_topic_generators.cpp:514
 msgid "Range"
 msgstr "απόσταση βολής"
 
-#: src/help/help_topic_generators.cpp:514
+#: src/help/help_topic_generators.cpp:515
 #, fuzzy
 #| msgid "Specials: "
 msgid "Special"
 msgstr "Ιδιαιτερότητες: "
 
-#: src/help/help_topic_generators.cpp:576
+#: src/help/help_topic_generators.cpp:577
 msgid "Resistances"
 msgstr "Αντιστάσεις"
 
-#: src/help/help_topic_generators.cpp:580
+#: src/help/help_topic_generators.cpp:581
 msgid "Attack Type"
 msgstr "Τύπος Επίθεσης"
 
-#: src/help/help_topic_generators.cpp:581
+#: src/help/help_topic_generators.cpp:582
 msgid "Resistance"
 msgstr "Αντίσταση"
 
-#: src/help/help_topic_generators.cpp:610
+#: src/help/help_topic_generators.cpp:611
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Modifiers"
 msgstr "Συντελεστές Μορφολογίας Εδάφους"
 
-#: src/help/help_topic_generators.cpp:614
+#: src/help/help_topic_generators.cpp:615
 msgid "Terrain"
 msgstr "Μορφολογία Εδάφους"
 
-#: src/help/help_topic_generators.cpp:615
+#: src/help/help_topic_generators.cpp:616
 msgid "Defense"
 msgstr "Άμυνα"
 
-#: src/help/help_topic_generators.cpp:616
+#: src/help/help_topic_generators.cpp:617
 #, fuzzy
 #| msgid "Movement Costs:"
 msgid "Movement Cost"
 msgstr "Κόστος Κίνησης:"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:621
 #, fuzzy
 #| msgid "Defense: "
 msgid "Defense Cap"
 msgstr "Άμυνα: "
 
-#: src/help/help_topic_generators.cpp:625
+#: src/help/help_topic_generators.cpp:626
 #, fuzzy
 #| msgid "Version: "
 msgid "Vision Cost"
 msgstr "Έκδοση: "
 
-#: src/help/help_topic_generators.cpp:629
+#: src/help/help_topic_generators.cpp:630
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:367
+#: src/hotkey/command_executor.cpp:386
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you really want to surrender the game?"
 msgstr "Θές πραγματικά νά σβήσεις αυτό τό παιχνίδι; "
 
-#: src/hotkey/command_executor.cpp:367
+#: src/hotkey/command_executor.cpp:386
 msgid "Surrender"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:742
+#: src/hotkey/command_executor.cpp:675
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Φωτογραφία"
@@ -6131,12 +6075,12 @@ msgstr "Πίσω στην αρχή"
 msgid "(press $hotkey to deactivate)"
 msgstr "($hotkey για συνέχεια) "
 
-#: src/hotkey/hotkey_handler_sp.cpp:144 src/menu_events.cpp:1939
+#: src/hotkey/hotkey_handler_sp.cpp:144 src/menu_events.cpp:1930
 #, fuzzy
 msgid "Planning mode activated!"
 msgstr "Γενικές διαταγές"
 
-#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:1942
+#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:1933
 #, fuzzy
 msgid "Planning mode deactivated!"
 msgstr "Γενικές διαταγές"
@@ -6224,46 +6168,46 @@ msgstr "Χρήση:"
 msgid "aliases:"
 msgstr ""
 
-#: src/menu_events.cpp:179
+#: src/menu_events.cpp:174
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Αποθήκευση Χάρτη Ως"
 
-#: src/menu_events.cpp:190
+#: src/menu_events.cpp:185
 msgid "Map saved."
 msgstr "Ο χάρτης αποθηκεύτηκε."
 
-#: src/menu_events.cpp:194
+#: src/menu_events.cpp:189
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:223
-msgid "Message:"
-msgstr "Μήνυμα:"
-
-#: src/menu_events.cpp:225
+#: src/menu_events.cpp:219 src/menu_events.cpp:230
 msgid "Send to observers only"
 msgstr "Μόνο στους θεατές"
 
-#: src/menu_events.cpp:226
+#: src/menu_events.cpp:220 src/menu_events.cpp:231
 msgid "Send to allies only"
 msgstr "Στείλε μόνο στους συμμάχους"
 
-#: src/menu_events.cpp:275
+#: src/menu_events.cpp:224 src/menu_events.cpp:228
+msgid "Message:"
+msgstr "Μήνυμα:"
+
+#: src/menu_events.cpp:281
 msgid "You have no units available to recruit."
 msgstr "Δεν έχετε διαθέσιμες μονάδες για στρατολόγηση."
 
-#: src/menu_events.cpp:312
+#: src/menu_events.cpp:318
 msgid "You do not have enough gold to recruit that unit"
 msgstr "Δεν έχετε αρκετό χρυσό για να ανακαλέσετε αυτή τη μονάδα"
 
-#: src/menu_events.cpp:349
+#: src/menu_events.cpp:355
 msgid "You are separated from your soldiers and may not recall them"
 msgstr ""
 "Έχετε χωριστεί από τους στρατιώτες σας και δεν μπορείτε να τους ανακαλέσετε"
 
-#: src/menu_events.cpp:368
+#: src/menu_events.cpp:374
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -6271,11 +6215,11 @@ msgstr ""
 "Δεν υπάρχουν μονάδες για να ανακαλέσετε\n"
 "(Πρέπει να έχετε βετεράνους που επέζησαν από προηγούμενες αποστολές)"
 
-#: src/menu_events.cpp:372
+#: src/menu_events.cpp:378
 msgid "You currently can't recall at the highlighted location"
 msgstr ""
 
-#: src/menu_events.cpp:399
+#: src/menu_events.cpp:405
 #, fuzzy
 #| msgid "You must have at least 1 gold piece to recall a unit"
 #| msgid_plural "You must have at least $cost gold pieces to recall a unit"
@@ -6284,34 +6228,38 @@ msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgstr[0] "Πρέπει να έχετε τουλάχιστον 1 χρυσό για να ανακαλέσετε μονάδες"
 msgstr[1] "Πρέπει να έχετε τουλάχιστον $cost χρυσό για να ανακαλέσετε μονάδες"
 
-#: src/menu_events.cpp:539
+#: src/menu_events.cpp:545
 msgid "You cannot end your turn yet!"
 msgstr ""
 
-#: src/menu_events.cpp:552
+#: src/menu_events.cpp:558
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 
-#: src/menu_events.cpp:561
+#: src/menu_events.cpp:567
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 
-#: src/menu_events.cpp:570
+#: src/menu_events.cpp:576
 msgid "Some units have not moved. Do you really want to end your turn?"
 msgstr ""
 
-#: src/menu_events.cpp:626
+#: src/menu_events.cpp:632
 msgid "Rename Unit"
 msgstr "Μετονομασία Μονάδας"
 
-#: src/menu_events.cpp:801
+#: src/menu_events.cpp:633
+msgid "Name:"
+msgstr "Όνομα:"
+
+#: src/menu_events.cpp:806
 #, fuzzy
 #| msgid "Place Label"
 msgid "Clear Labels"
 msgstr "Δώσε Ονομα"
 
-#: src/menu_events.cpp:802
+#: src/menu_events.cpp:807
 #, fuzzy
 #| msgid "Are you sure you want to remove the following installed add-on?"
 #| msgid_plural ""
@@ -6319,305 +6267,305 @@ msgstr "Δώσε Ονομα"
 msgid "Are you sure you want to clear map labels?"
 msgstr "Είστε σίγουροι πως θέλετε να αφαιρέσετε την ακόλουθη επέκταση;"
 
-#: src/menu_events.cpp:997
+#: src/menu_events.cpp:996
 msgid "Search"
 msgstr "Έρευνα"
 
-#: src/menu_events.cpp:1136
+#: src/menu_events.cpp:1137
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr ""
 
-#: src/menu_events.cpp:1143
+#: src/menu_events.cpp:1144
 #, fuzzy
 msgid "(debug command)"
 msgstr "Γενικές διαταγές"
 
-#: src/menu_events.cpp:1144
+#: src/menu_events.cpp:1145
 #, fuzzy
 msgid "(network only)"
 msgstr "Δικτυακός παίκτης"
 
-#: src/menu_events.cpp:1146
+#: src/menu_events.cpp:1147
 msgid "(not during other events)"
 msgstr ""
 
-#: src/menu_events.cpp:1174
+#: src/menu_events.cpp:1176
 msgid "Refresh gui."
 msgstr ""
 
-#: src/menu_events.cpp:1175
+#: src/menu_events.cpp:1177
 msgid "Switch a side to/from AI control."
 msgstr ""
 
-#: src/menu_events.cpp:1176 src/menu_events.cpp:1178
+#: src/menu_events.cpp:1178 src/menu_events.cpp:1180
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr ""
 
-#: src/menu_events.cpp:1177
+#: src/menu_events.cpp:1179
 msgid "Switch a side to/from idle state."
 msgstr ""
 
-#: src/menu_events.cpp:1181
+#: src/menu_events.cpp:1183
 msgid "<side> <nickname>"
 msgstr ""
 
-#: src/menu_events.cpp:1181
+#: src/menu_events.cpp:1183
 msgid "Assign control of a side to a different player or observer."
 msgstr ""
 
-#: src/menu_events.cpp:1182
+#: src/menu_events.cpp:1184
 msgid "Query the controller status of a side."
 msgstr ""
 
-#: src/menu_events.cpp:1183
+#: src/menu_events.cpp:1185
 msgid "<side>"
 msgstr ""
 
-#: src/menu_events.cpp:1184
+#: src/menu_events.cpp:1186
 msgid "Clear chat history."
 msgstr "Καθαρισμός ιστορικού συνομιλίας."
 
-#: src/menu_events.cpp:1185
+#: src/menu_events.cpp:1187
 msgid "Debug foreground terrain."
 msgstr ""
 
-#: src/menu_events.cpp:1187
+#: src/menu_events.cpp:1189
 msgid "Debug layers from terrain under the mouse."
 msgstr ""
 
-#: src/menu_events.cpp:1188
+#: src/menu_events.cpp:1190
 msgid "Show fps."
 msgstr "Εμφάνιση επίδοσης."
 
-#: src/menu_events.cpp:1190
+#: src/menu_events.cpp:1192
 msgid "Save game."
 msgstr "Αποθήκευση παιχνιδιού."
 
-#: src/menu_events.cpp:1192
+#: src/menu_events.cpp:1194
 msgid "Quit game."
 msgstr "Έξοδος παιχνιδιού."
 
-#: src/menu_events.cpp:1195
+#: src/menu_events.cpp:1197
 msgid "Save and quit."
 msgstr "Αποθήκευση και έξοδος."
 
-#: src/menu_events.cpp:1197
+#: src/menu_events.cpp:1199
 msgid "Ignore replay errors."
 msgstr ""
 
-#: src/menu_events.cpp:1198
+#: src/menu_events.cpp:1200
 msgid "Disable autosaves."
 msgstr ""
 
-#: src/menu_events.cpp:1200
+#: src/menu_events.cpp:1202
 msgid "<id>"
 msgstr ""
 
-#: src/menu_events.cpp:1200
+#: src/menu_events.cpp:1202
 #, fuzzy
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "Αναμονή για το επόμενο σενάριο..."
 
-#: src/menu_events.cpp:1202
+#: src/menu_events.cpp:1204
 msgid "Choose next scenario"
 msgstr "Επιλογή επόμενης αποστολής..."
 
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1207
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
 
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1207
 msgid "[turn]"
 msgstr "[γύρος]"
 
-#: src/menu_events.cpp:1208
+#: src/menu_events.cpp:1210
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr ""
 
-#: src/menu_events.cpp:1208
+#: src/menu_events.cpp:1210
 msgid "[limit]"
 msgstr "[όριο]"
 
-#: src/menu_events.cpp:1210
+#: src/menu_events.cpp:1212
 #, fuzzy
 msgid "Turn debug mode on."
 msgstr "Γενικές διαταγές"
 
-#: src/menu_events.cpp:1211
+#: src/menu_events.cpp:1213
 msgid "Turn debug mode off."
 msgstr ""
 
-#: src/menu_events.cpp:1213 src/menu_events.cpp:1217
+#: src/menu_events.cpp:1215 src/menu_events.cpp:1219
 msgid "<command>[;<command>...]"
 msgstr ""
 
-#: src/menu_events.cpp:1213
+#: src/menu_events.cpp:1215
 msgid "Execute a Lua statement."
 msgstr ""
 
-#: src/menu_events.cpp:1215
+#: src/menu_events.cpp:1217
 msgid "Grant higher privileges to Lua scripts."
 msgstr ""
 
-#: src/menu_events.cpp:1216
+#: src/menu_events.cpp:1218
 msgid "Set the command used by the custom command hotkey"
 msgstr ""
 
-#: src/menu_events.cpp:1219
+#: src/menu_events.cpp:1221
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr ""
 
-#: src/menu_events.cpp:1220
+#: src/menu_events.cpp:1222
 msgid "Launch the gamestate inspector"
 msgstr ""
 
-#: src/menu_events.cpp:1222
+#: src/menu_events.cpp:1224
 msgid "<name>[=<command>]"
 msgstr ""
 
-#: src/menu_events.cpp:1222
+#: src/menu_events.cpp:1224
 msgid "Set or show alias to a command"
 msgstr ""
 
-#: src/menu_events.cpp:1224
+#: src/menu_events.cpp:1226
 msgid "<var>=<value>"
 msgstr ""
 
-#: src/menu_events.cpp:1224
+#: src/menu_events.cpp:1226
 msgid "Set a scenario variable."
 msgstr ""
 
-#: src/menu_events.cpp:1225
+#: src/menu_events.cpp:1227
 msgid "<var>"
 msgstr ""
 
-#: src/menu_events.cpp:1225
+#: src/menu_events.cpp:1227
 msgid "Show a scenario variable."
 msgstr ""
 
-#: src/menu_events.cpp:1227
+#: src/menu_events.cpp:1229
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 
-#: src/menu_events.cpp:1233
+#: src/menu_events.cpp:1235
 msgid "Discover all units in help."
 msgstr ""
 
-#: src/menu_events.cpp:1234
+#: src/menu_events.cpp:1236
 msgid "'Undiscover' all units in help."
 msgstr ""
 
-#: src/menu_events.cpp:1235
+#: src/menu_events.cpp:1237
 msgid "Create a unit."
 msgstr "Δημιουργία μίας μονάδας."
 
-#: src/menu_events.cpp:1236
+#: src/menu_events.cpp:1238
 msgid "Toggle fog for the current player."
 msgstr ""
 
-#: src/menu_events.cpp:1237
+#: src/menu_events.cpp:1239
 msgid "Toggle shroud for the current player."
 msgstr "Εναλλαγή πέπλου για τον τρέχοντα παίκτη."
 
-#: src/menu_events.cpp:1238
+#: src/menu_events.cpp:1240
 msgid "Give gold to the current player."
 msgstr ""
 
-#: src/menu_events.cpp:1239
+#: src/menu_events.cpp:1241
 msgid "Fire a game event."
 msgstr ""
 
-#: src/menu_events.cpp:1242
+#: src/menu_events.cpp:1244
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:1245
+#: src/menu_events.cpp:1247
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:1248
+#: src/menu_events.cpp:1250
 msgid "Toggle overlaying of number of bitmaps on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:1250
+#: src/menu_events.cpp:1252
 msgid "Toggle planning mode."
 msgstr ""
 
-#: src/menu_events.cpp:1253
+#: src/menu_events.cpp:1255
 msgid "Access whiteboard options dialog."
 msgstr ""
 
-#: src/menu_events.cpp:1373
+#: src/menu_events.cpp:1375
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr ""
 
-#: src/menu_events.cpp:1416
+#: src/menu_events.cpp:1415
 msgid "Can't droid invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:1421
+#: src/menu_events.cpp:1420
 msgid "Can't droid networked side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:1439
+#: src/menu_events.cpp:1438
 msgid "Can't droid a local ai side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:1455
+#: src/menu_events.cpp:1453
 msgid "Can't idle invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:1460
+#: src/menu_events.cpp:1458
 msgid "Can't idle networked side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:1465
+#: src/menu_events.cpp:1463
 msgid "Can't idle local ai side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:1525
+#: src/menu_events.cpp:1522
 msgid "Can't change control of invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:1535
+#: src/menu_events.cpp:1532
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:1552
+#: src/menu_events.cpp:1548
 msgid "Can't query control of invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:1559
+#: src/menu_events.cpp:1555
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:1677
+#: src/menu_events.cpp:1673
 msgid "Choose Scenario (Debug!)"
 msgstr "Επιλογή αποστολής (Αποσφαλμάτωση!)"
 
-#: src/menu_events.cpp:1713
+#: src/menu_events.cpp:1709
 #, fuzzy
 msgid "Debug mode activated!"
 msgstr "Γενικές διαταγές"
 
-#: src/menu_events.cpp:1716
+#: src/menu_events.cpp:1712
 msgid "Debug mode not available in network games"
 msgstr ""
 
-#: src/menu_events.cpp:1723
+#: src/menu_events.cpp:1719
 #, fuzzy
 msgid "Debug mode deactivated!"
 msgstr "Γενικές διαταγές"
 
-#: src/menu_events.cpp:1743
+#: src/menu_events.cpp:1739
 msgid "WARNING! Unsafe Lua Mode"
 msgstr ""
 
-#: src/menu_events.cpp:1744
+#: src/menu_events.cpp:1740
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -6626,38 +6574,38 @@ msgid ""
 "Do not continue unless you really know what you are doing."
 msgstr ""
 
-#: src/menu_events.cpp:1749
+#: src/menu_events.cpp:1745
 msgid "Unsafe mode enabled!"
 msgstr ""
 
-#: src/menu_events.cpp:1798
+#: src/menu_events.cpp:1794
 msgid "Variable not found"
 msgstr ""
 
-#: src/menu_events.cpp:1846
+#: src/menu_events.cpp:1840
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr ""
 
-#: src/menu_events.cpp:1872
+#: src/menu_events.cpp:1866
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr ""
 
-#: src/menu_events.cpp:1886
+#: src/menu_events.cpp:1880
 #, fuzzy
 msgid "Invalid unit type"
 msgstr "Μη έγκυρο όνομα:"
 
-#: src/menu_events.cpp:1893
+#: src/menu_events.cpp:1887
 msgid "Invalid location"
 msgstr "Άκυρη περιοχή"
 
-#: src/menu_events.cpp:1966 src/menu_events.cpp:1992
+#: src/menu_events.cpp:1957 src/menu_events.cpp:1984
 msgid "prompt^Command:"
 msgstr "Εντολή:"
 
-#: src/mouse_events.cpp:899
+#: src/mouse_events.cpp:894
 #, fuzzy
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
@@ -6666,20 +6614,20 @@ msgstr ""
 "Πρέπει νά έχεις τόν αρχηγό σέ κάστρο η στρατόπεδο γιά να στρατολογήσεις η νά "
 "ανακαλέσεις μονάδες"
 
-#: src/mouse_events.cpp:993
+#: src/mouse_events.cpp:987
 #, fuzzy
 msgid "This unit has no usable weapons."
 msgstr "Επιλέξτε όπλο:"
 
-#: src/mp_game_settings.hpp:66
+#: src/mp_game_settings.hpp:70
 msgid "Independent"
 msgstr ""
 
-#: src/mp_game_settings.hpp:67
+#: src/mp_game_settings.hpp:71
 msgid "No Mirror"
 msgstr ""
 
-#: src/mp_game_settings.hpp:68
+#: src/mp_game_settings.hpp:72
 msgid "No Ally Mirror"
 msgstr ""
 
@@ -6720,33 +6668,33 @@ msgstr "εξ αποστάσεως"
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr ""
 
-#: src/play_controller.cpp:241
+#: src/play_controller.cpp:249
 msgid "time left for current turn"
 msgstr ""
 
-#: src/play_controller.cpp:243 src/replay_controller.cpp:114
+#: src/play_controller.cpp:251 src/replay_controller.cpp:106
 msgid "current local time"
 msgstr ""
 
-#: src/play_controller.cpp:985
+#: src/play_controller.cpp:983
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr ""
 
-#: src/play_controller.cpp:986
+#: src/play_controller.cpp:984
 msgid "Error details:"
 msgstr "Λεπτομέρειες σφάλματος:"
 
-#: src/play_controller.cpp:1275
+#: src/play_controller.cpp:1280
 msgid "No objectives available"
 msgstr "Δεν υπάρχουν διαθέσιμοι στόχοι"
 
-#: src/playmp_controller.cpp:147
+#: src/playmp_controller.cpp:148
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 
-#: src/playmp_controller.cpp:358
+#: src/playmp_controller.cpp:355
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -6756,69 +6704,69 @@ msgid ""
 "Do you want to save an error log of your game?"
 msgstr ""
 
-#: src/playmp_controller.cpp:401
+#: src/playmp_controller.cpp:397
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
 "example."
 msgstr ""
 
-#: src/playsingle_controller.cpp:154
+#: src/playsingle_controller.cpp:153
 #, fuzzy
 #| msgid "Error"
 msgid "Game Error"
 msgstr "Σφάλμα"
 
-#: src/playsingle_controller.cpp:155
+#: src/playsingle_controller.cpp:154
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
 "reloaded a corrupt game."
 msgstr ""
 
-#: src/playsingle_controller.cpp:304
+#: src/playsingle_controller.cpp:308
 msgid "The game is over."
 msgstr "Το παιχνίδι τελείωσε."
 
-#: src/playsingle_controller.cpp:339
+#: src/playsingle_controller.cpp:343
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 
-#: src/playsingle_controller.cpp:428
+#: src/playsingle_controller.cpp:431
 msgid "It is now $name|’s turn"
 msgstr "Είναι η σειρά του παίκτη $name|"
 
-#: src/playturn.cpp:262
+#: src/playturn.cpp:263
 msgid "Give control to their ally $player"
 msgstr ""
 
-#: src/playturn.cpp:271
+#: src/playturn.cpp:272
 #, fuzzy
 #| msgid "Send to observers only"
 msgid "Give control to observer $player"
 msgstr "Μόνο στους θεατές"
 
-#: src/playturn.cpp:276
+#: src/playturn.cpp:277
 msgid "Replace with AI"
 msgstr "Αντικατάσταση με την τεχνητή νοημοσύνη"
 
-#: src/playturn.cpp:277
+#: src/playturn.cpp:278
 msgid "Replace with local player"
 msgstr "Αντικατάσταση με τοπικό παίχτη"
 
-#: src/playturn.cpp:278
+#: src/playturn.cpp:279
 msgid "Set side to idle"
 msgstr ""
 
-#: src/playturn.cpp:279
+#: src/playturn.cpp:280
 #, fuzzy
 #| msgid "Abort game"
 msgid "Save and abort game"
 msgstr "Ματαίωση παιχνιδιού"
 
-#: src/playturn.cpp:282
+#: src/playturn.cpp:283
 msgid "$player has left the game. What do you want to do?"
 msgstr "Ο παίκτης $player εγκατάλειψε το παιχνίδι. Τι θέλετε να κάνετε;"
 
@@ -6832,55 +6780,55 @@ msgstr "Έξοδος"
 msgid "Do you really want to quit?"
 msgstr "Θέλετε πραγματικά να τον απολύσετε;"
 
-#: src/reports.cpp:144 src/savegame.cpp:399
+#: src/reports.cpp:142 src/savegame.cpp:399
 msgid "Name: "
 msgstr "Όνομα: "
 
-#: src/reports.cpp:165
+#: src/reports.cpp:163
 msgid "Type: "
 msgstr "Τύπος: "
 
-#: src/reports.cpp:235
+#: src/reports.cpp:233
 msgid "Level: "
 msgstr "Επίπεδο: "
 
-#: src/reports.cpp:238
+#: src/reports.cpp:236
 msgid "No advancement"
 msgstr "Καμία προαγωγή"
 
-#: src/reports.cpp:240
+#: src/reports.cpp:238
 msgid "Advances to:"
 msgstr "Προαγωγή σε: "
 
-#: src/reports.cpp:280
+#: src/reports.cpp:278
 msgid "Trait: "
 msgstr "Γνώρισμα: "
 
-#: src/reports.cpp:303
+#: src/reports.cpp:301
 msgid "invisible: "
 msgstr "αόρατος: "
 
-#: src/reports.cpp:304
+#: src/reports.cpp:302
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Αυτή η μονάδα είναι αόρατη. Οι αντίπαλες μονάδες δεν μπορούν να την "
 "εντοπίσουν ή να της επιτεθούν."
 
-#: src/reports.cpp:307
+#: src/reports.cpp:305
 msgid "slowed: "
 msgstr "επιβραδυμένος:"
 
-#: src/reports.cpp:308
+#: src/reports.cpp:306
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
 msgstr ""
 
-#: src/reports.cpp:311
+#: src/reports.cpp:309
 msgid "poisoned: "
 msgstr "δηλητηριασμένος: "
 
-#: src/reports.cpp:312
+#: src/reports.cpp:310
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the ‘cures’ "
@@ -6890,147 +6838,147 @@ msgid ""
 "1 HP."
 msgstr ""
 
-#: src/reports.cpp:315
+#: src/reports.cpp:313
 msgid "petrified: "
 msgstr ""
 
-#: src/reports.cpp:316
+#: src/reports.cpp:314
 msgid "This unit has been petrified. It may not move or attack."
 msgstr ""
 "Αυτή η μονάδα έχει ακινητοποιηθεί. Δεν μπορεί ούτε να κινηθεί ούτε να "
 "επιτεθεί."
 
-#: src/reports.cpp:389
+#: src/reports.cpp:387
 msgid "Ability: "
 msgstr "Ικανότητα: "
 
-#: src/reports.cpp:391 src/reports.cpp:833
+#: src/reports.cpp:389 src/reports.cpp:832
 msgid " (inactive)"
 msgstr " (ανενεργός)"
 
-#: src/reports.cpp:443
+#: src/reports.cpp:441
 msgid "Resistances: "
 msgstr "Αντιστάσεις: "
 
-#: src/reports.cpp:445
+#: src/reports.cpp:443
 msgid "(Att / Def)"
 msgstr "(Επιθ / Αμυν)"
 
-#: src/reports.cpp:471
+#: src/reports.cpp:469
 msgid "Experience Modifier: "
 msgstr "Συντελεστής Εμπειρίας: "
 
-#: src/reports.cpp:522
+#: src/reports.cpp:520
 msgid "Terrain: "
 msgstr "Έδαφος: "
 
-#: src/reports.cpp:539
+#: src/reports.cpp:537
 msgid "maximum^max."
 msgstr "μεγ."
 
-#: src/reports.cpp:539
+#: src/reports.cpp:537
 msgid "minimum^min."
 msgstr "ελαχ."
 
-#: src/reports.cpp:544
+#: src/reports.cpp:542
 msgid "Defense: "
 msgstr "Άμυνα: "
 
-#: src/reports.cpp:567
+#: src/reports.cpp:565
 msgid "vision: "
 msgstr ""
 
-#: src/reports.cpp:595
+#: src/reports.cpp:593
 msgid "Movement Costs:"
 msgstr "Κόστος Κίνησης:"
 
-#: src/reports.cpp:695 src/reports.cpp:909 src/reports.cpp:921
+#: src/reports.cpp:694 src/reports.cpp:908 src/reports.cpp:920
 msgid "Weapon: "
 msgstr "Όπλο: "
 
-#: src/reports.cpp:696 src/reports.cpp:910
+#: src/reports.cpp:695 src/reports.cpp:909
 msgid "Damage: "
 msgstr "Ζημιά: "
 
-#: src/reports.cpp:700
+#: src/reports.cpp:699
 msgid "Base damage: "
 msgstr "Συνολική Ζημιά: "
 
-#: src/reports.cpp:702 src/reports.cpp:736 src/reports.cpp:746
+#: src/reports.cpp:701 src/reports.cpp:735 src/reports.cpp:745
 msgid "With specials: "
 msgstr "Με ιδιαιτερότητες: "
 
-#: src/reports.cpp:705
+#: src/reports.cpp:704
 msgid "Time of day: "
 msgstr "Ώρα της ημέρας: "
 
-#: src/reports.cpp:709
+#: src/reports.cpp:708
 msgid "Leadership: "
 msgstr "Ηγεσία: "
 
-#: src/reports.cpp:713
+#: src/reports.cpp:712
 msgid "Slowed: "
 msgstr "Επιβραδυμένος: "
 
-#: src/reports.cpp:717
+#: src/reports.cpp:716
 msgid "Attacks: "
 msgstr "Επιτιθέμενος: "
 
-#: src/reports.cpp:721
+#: src/reports.cpp:720
 #, fuzzy
 #| msgid "Max HP bonus +"
 msgid "Max swarm bonus: "
 msgstr "Μέγιστο Μπόνους Υγείας +"
 
-#: src/reports.cpp:722 src/reports.cpp:741
+#: src/reports.cpp:721 src/reports.cpp:740
 msgid "Swarm: "
 msgstr ""
 
-#: src/reports.cpp:723 src/reports.cpp:734 src/reports.cpp:745
+#: src/reports.cpp:722 src/reports.cpp:733 src/reports.cpp:744
 msgid "Base attacks: "
 msgstr ""
 
-#: src/reports.cpp:729
+#: src/reports.cpp:728
 msgid "Specials: "
 msgstr "Ιδιαιτερότητες: "
 
-#: src/reports.cpp:739
+#: src/reports.cpp:738
 msgid "Subject to swarm: "
 msgstr ""
 
-#: src/reports.cpp:758
+#: src/reports.cpp:757
 msgid "Weapon range: "
 msgstr "Εμβέλεια όπλου: "
 
-#: src/reports.cpp:759
+#: src/reports.cpp:758
 msgid "Damage type: "
 msgstr "Τύπος ζημιάς: "
 
-#: src/reports.cpp:760
+#: src/reports.cpp:759
 msgid "Damage versus: "
 msgstr "Ζημιάς ενάντια: "
 
-#: src/reports.cpp:804
+#: src/reports.cpp:803
 msgid "Accuracy:"
 msgstr "Ακρίβεια:"
 
-#: src/reports.cpp:809
+#: src/reports.cpp:808
 msgid "Parry:"
 msgstr ""
 
-#: src/reports.cpp:831
+#: src/reports.cpp:830
 msgid "Weapon special: "
 msgstr "Ιδιαιτερότητες όπλου: "
 
-#: src/reports.cpp:893
+#: src/reports.cpp:892
 msgid "None"
 msgstr "Καμία"
 
-#: src/reports.cpp:922
+#: src/reports.cpp:921
 msgid "Total damage"
 msgstr "Συνολική Ζημιά"
 
-#: src/reports.cpp:984
+#: src/reports.cpp:983
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack"
@@ -7038,56 +6986,56 @@ msgid_plural "Attacks"
 msgstr[0] "Επιτιθέμενος"
 msgstr[1] "Επιτιθέμενος"
 
-#: src/reports.cpp:1120 src/reports.cpp:1172
+#: src/reports.cpp:1119 src/reports.cpp:1171
 msgid "Lawful units: "
 msgstr "Νομιμόφρονες μονάδες: "
 
-#: src/reports.cpp:1122 src/reports.cpp:1174
+#: src/reports.cpp:1121 src/reports.cpp:1173
 msgid "Neutral units: "
 msgstr "Ουδέτερες μονάδες: "
 
-#: src/reports.cpp:1123 src/reports.cpp:1175
+#: src/reports.cpp:1122 src/reports.cpp:1174
 msgid "Chaotic units: "
 msgstr "Χαοτικές μονάδες: "
 
-#: src/reports.cpp:1125 src/reports.cpp:1177
+#: src/reports.cpp:1124 src/reports.cpp:1176
 msgid "Liminal units: "
 msgstr ""
 
-#: src/reports.cpp:1236
+#: src/reports.cpp:1235
 #, fuzzy
 #| msgid "Turn "
 msgid "Turn Number"
 msgstr "Γύρος "
 
-#: src/reports.cpp:1238
+#: src/reports.cpp:1237
 msgid ""
 "When the game reaches the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 
-#: src/reports.cpp:1263
+#: src/reports.cpp:1262
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 
-#: src/reports.cpp:1282
+#: src/reports.cpp:1281
 msgid "The fraction of known villages that your side has captured."
 msgstr ""
 
-#: src/reports.cpp:1282
+#: src/reports.cpp:1281
 msgid "Villages"
 msgstr "Χωριά"
 
-#: src/reports.cpp:1287
+#: src/reports.cpp:1286
 msgid "The total number of units on your side."
 msgstr ""
 
-#: src/reports.cpp:1287
+#: src/reports.cpp:1286
 msgid "Units"
 msgstr "Μονάδες"
 
-#: src/reports.cpp:1297
+#: src/reports.cpp:1296
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. The second is the "
@@ -7095,33 +7043,33 @@ msgid ""
 "the amount of gold that would be deducted if you lost all villages."
 msgstr ""
 
-#: src/reports.cpp:1297
+#: src/reports.cpp:1296
 msgid "Upkeep"
 msgstr "Συντήρηση"
 
-#: src/reports.cpp:1334
+#: src/reports.cpp:1333
 msgid "Income"
 msgstr "Εισόδημα"
 
-#: src/reports.cpp:1334
+#: src/reports.cpp:1333
 msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
 msgstr ""
 
-#: src/reports.cpp:1502
+#: src/reports.cpp:1501
 msgid "Observers:"
 msgstr "Παρατηρητές:"
 
-#: src/reports.cpp:1542
+#: src/reports.cpp:1541
 msgid "Clock"
 msgstr ""
 
-#: src/reports.cpp:1568
+#: src/reports.cpp:1567
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1568
+#: src/reports.cpp:1567
 msgid "Turn Countdown"
 msgstr ""
 
@@ -7378,6 +7326,35 @@ msgstr ""
 msgid "infix_binary^i"
 msgstr ""
 
+#: src/synced_commands.cpp:404
+msgid "The :$command debug command was used during $player’s turn"
+msgstr ""
+
+#: src/synced_commands.cpp:412
+msgid ""
+"A player used a debug command during the game. If this is unexpected, it is "
+"possible the player in question is cheating."
+msgstr ""
+
+#: src/synced_commands.cpp:414
+#, fuzzy
+#| msgid "Details"
+msgid "Details:"
+msgstr "Λεπτομέρειες"
+
+#: src/synced_commands.cpp:417
+msgid "Do you wish to save the game before continuing?"
+msgstr ""
+
+#: src/synced_commands.cpp:419
+#, fuzzy
+msgid "Debug Command Used"
+msgstr "Γενικές διαταγές"
+
+#: src/synced_commands.cpp:503
+msgid "A unit was created using debug mode during $player’s turn"
+msgstr ""
+
 #: src/synced_user_choice.cpp:326
 msgid "waiting for $desc from side(s) $sides"
 msgstr ""
@@ -7536,10 +7513,11 @@ msgstr ""
 
 #: src/units/unit.cpp:1791
 #, fuzzy
-msgid "wesnoth"
-msgstr "Η Μάχη για το Wesnoth"
+#| msgid "per turn"
+msgid "<span color=\"$color\">$number_or_percent</span> HP"
+msgstr "κάθε γύρο"
 
-#: src/units/unit.cpp:1802
+#: src/units/unit.cpp:1801
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -7547,25 +7525,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "κάθε γύρο"
 msgstr[1] "κάθε γύρο"
 
-#: src/units/unit.cpp:1808
+#: src/units/unit.cpp:1807
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "κάθε γύρο"
 
-#: src/units/unit.cpp:1812
+#: src/units/unit.cpp:1811
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "κάθε γύρο"
 
-#: src/units/unit.cpp:1817
+#: src/units/unit.cpp:1816
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "κάθε γύρο"
 
-#: src/units/unit.cpp:1821
+#: src/units/unit.cpp:1820
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -7574,13 +7552,13 @@ msgid_plural ""
 msgstr[0] "κάθε γύρο"
 msgstr[1] "κάθε γύρο"
 
-#: src/units/unit.cpp:1828
+#: src/units/unit.cpp:1827
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "κάθε γύρο"
 
-#: src/units/unit.cpp:2233
+#: src/units/unit.cpp:2232
 msgid "$effect_description per level"
 msgstr ""
 
@@ -7604,29 +7582,75 @@ msgstr ""
 msgid "$year AF"
 msgstr ""
 
-#: src/whiteboard/manager.cpp:1094
+#: src/whiteboard/manager.cpp:1083
 msgid "SHOW ALL allies’ plans"
 msgstr ""
 
-#: src/whiteboard/manager.cpp:1095
+#: src/whiteboard/manager.cpp:1084
 msgid "HIDE ALL allies’ plans"
 msgstr ""
 
-#: src/whiteboard/manager.cpp:1109
+#: src/whiteboard/manager.cpp:1098
 #, fuzzy
 #| msgid "Show replay"
 msgid "Show plans for $player"
 msgstr "Δείτε το replay"
 
-#: src/whiteboard/manager.cpp:1111
+#: src/whiteboard/manager.cpp:1100
 #, fuzzy
 #| msgid "Replace with $player"
 msgid "Hide plans for $player"
 msgstr "Αντικατάσταση με $player"
 
-#: src/whiteboard/manager.cpp:1114
+#: src/whiteboard/manager.cpp:1103
 msgid "Whiteboard Options"
 msgstr "Επιλογές Πίνακα"
+
+#, fuzzy
+#~| msgid "Defaults"
+#~ msgid "Defaults"
+#~ msgstr "Προκαθορισμένα"
+
+#, fuzzy
+#~| msgid "Computer Player"
+#~ msgid "Connected Players"
+#~ msgstr "Παίκτης ελεγχόμενος από τον υπολογιστή"
+
+#, fuzzy
+#~| msgid "Size: "
+#~ msgid "Size:"
+#~ msgstr "Μέγεθος: "
+
+#, fuzzy
+#~| msgid "Screenshot"
+#~ msgid "Screenshots..."
+#~ msgstr "Φωτογραφία"
+
+#, fuzzy
+#~| msgid "Saved"
+#~ msgid "Save"
+#~ msgstr "Αποθηκεύτηκε"
+
+#~ msgid "Close"
+#~ msgstr "Κλείσιμο"
+
+#, fuzzy
+#~| msgid ""
+#~| "DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull."
+#~| "ttf,Junicode-Regular.ttf"
+#~ msgid ""
+#~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
+#~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
+#~ msgstr ""
+#~ "DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull."
+#~ "ttf,Junicode-Regular.ttf"
+
+#~ msgid "Reference to unknown topic: "
+#~ msgstr "Μονάδες αυτής της φυλής:"
+
+#, fuzzy
+#~ msgid "wesnoth"
+#~ msgstr "Η Μάχη για το Wesnoth"
 
 #~ msgid "Unknown era: $era_id"
 #~ msgstr "Άγνωστη περιοχή: $era_id"
@@ -8082,11 +8106,6 @@ msgstr "Επιλογές Πίνακα"
 #~| msgid "No eras found."
 #~ msgid "Incompatible user-made content."
 #~ msgstr "Δεν βρέθηκαν περιοχές."
-
-#, fuzzy
-#~| msgid "Details"
-#~ msgid "Details:"
-#~ msgstr "Λεπτομέρειες"
 
 #~ msgid "Selected user: "
 #~ msgstr "Επιλεγμένος χρήστης: "
@@ -10530,10 +10549,6 @@ msgstr "Επιλογές Πίνακα"
 
 #~ msgid "Multiplayer commands"
 #~ msgstr "Δικτυακές λειτουργίες"
-
-#, fuzzy
-#~ msgid "Debug mode commands"
-#~ msgstr "Γενικές διαταγές"
 
 #~ msgid "regenerates"
 #~ msgstr "αναπλάθεται"
