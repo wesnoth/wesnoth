@@ -8,6 +8,10 @@ if "manual" in COMMAND_LINE_TARGETS or "update-po4a" in COMMAND_LINE_TARGETS or 
     env.Command("manual.en.xml", "manual.txt",
         "asciidoc -b docbook -d book -n -a toc -o $TARGET $SOURCE && dos2unix $TARGET")
     manuals = Glob("*.xml")
+    env["XHTML_XSL"] = env.FindFile("xhtml.xsl", ["/usr/share/asciidoc/docbook-xsl", "/etc/asciidoc/docbook-xsl", "/usr/share/xml/docbook/stylesheet/docbook-xsl/xhtml"])
+    if not env["XHTML_XSL"]:
+        print("Warning: xhtml.xsl not found, needed for generating manual")
+        env["XHTML_XSL"] = File("xhtml.xsl.not.found")
     for manual in manuals:
         html = env.Command(manual.name.replace(".xml", ".html"), manual,
             """${SOURCES[0].exists() and \
@@ -17,8 +21,8 @@ if "manual" in COMMAND_LINE_TARGETS or "update-po4a" in COMMAND_LINE_TARGETS or 
             --stringparam admon.textlabel 1 \
             --stringparam admon.graphics 0 \
             --stringparam html.stylesheet ./styles/manual.css \
-            /usr/share/asciidoc/docbook-xsl/xhtml.xsl \
-            %s > %s' % (SOURCE, TARGET) \
+            %s \
+            %s > %s' % (XHTML_XSL.path, SOURCE, TARGET) \
             or '@echo Skipped non-existant %s' % SOURCE} \
             """)
         env.Alias("manual", html)
