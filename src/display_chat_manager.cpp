@@ -100,15 +100,6 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 		msg = message;
 	}
 
-	try {
-		// We've had a joker who send an invalid utf-8 message to crash clients
-		// so now catch the exception and ignore the message.
-		//msg = my_disp_.video().faked() ? "" : font::word_wrap_text(msg,font::SIZE_NORMAL,my_disp_.map_outside_area().w*3/4);
-	} catch (utf8::invalid_utf8_exception&) {
-		ERR_NG << "Invalid utf-8 found, chat message is ignored." << std::endl;
-		return;
-	}
-
 	int ypos = chat_message_x;
 	for(std::vector<chat_message>::const_iterator m = chat_messages_.begin(); m != chat_messages_.end(); ++m) {
 		ypos += std::max(font::get_floating_label_rect(m->handle).h,
