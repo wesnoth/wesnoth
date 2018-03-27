@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-17 21:30+0300\n"
+"POT-Creation-Date: 2018-03-27 04:26+0300\n"
 "PO-Revision-Date: 2012-04-01 16:53+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -1853,6 +1853,38 @@ msgstr ""
 msgid " (Press '$hotkey' for more information)"
 msgstr ""
 
+#: data/gui/macros/_initial.cfg:348
+msgid "Search"
+msgstr ""
+
+#. [label]: id=no_options_notice
+#: data/gui/macros/custom_options_tree.cfg:26
+msgid ""
+"There are no custom options available for the selected era, game, or "
+"modification."
+msgstr ""
+
+#. [button]: id=reset_option_values
+#. [button]: id=btn_reset_hotkeys
+#. [button]: id=revert_to_defaults
+#. [button]: id=orb_defaults
+#: data/gui/macros/custom_options_tree.cfg:250
+#: data/gui/window/mp_alerts_options.cfg:234
+#: data/gui/window/preferences/02_hotkeys.cfg:263
+#: data/gui/window/select_orb_colors.cfg:102
+#, fuzzy
+#| msgid "Default"
+msgid "Defaults"
+msgstr "Podrazumevano"
+
+# >> @title:window
+#. [label]
+#: data/gui/macros/player_list_panel.cfg:30
+#, fuzzy
+#| msgid "Choose Player"
+msgid "Connected Players"
+msgstr "Izbor igrača"
+
 #. [toggle_button]: id=sort_0
 #. [label]
 #. [toggle_button]: id=sort_1
@@ -1890,9 +1922,9 @@ msgid "Downloads"
 msgstr ""
 
 #. [toggle_button]: id=sort_4
-#. [toggle_button]: id=sort_1
 #. [toggle_button]: id=sort_0
-#: data/gui/widget/addon_list.cfg:151 data/gui/window/unit_create.cfg:136
+#. [toggle_button]: id=sort_1
+#: data/gui/widget/addon_list.cfg:151 data/gui/window/unit_create.cfg:137
 #: data/gui/window/unit_list.cfg:79 data/gui/window/unit_recall.cfg:33
 msgid "Type"
 msgstr "tip"
@@ -1924,7 +1956,7 @@ msgstr ""
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:247
-#: src/gui/dialogs/addon/manager.cpp:800
+#: src/gui/dialogs/addon/manager.cpp:799
 #, fuzzy
 #| msgid "Uninstall Add-ons"
 msgid "Uninstall add-on"
@@ -1940,17 +1972,18 @@ msgstr "Čekaju poruke"
 #. [button]: id=cancel
 #. [button]: id=ok
 #: data/gui/widget/chatbox.cfg:51 data/gui/widget/window_default.cfg:106
-#: data/gui/window/attack_predictions.cfg:304 data/gui/window/chat_log.cfg:199
+#: data/gui/window/attack_predictions.cfg:304 data/gui/window/chat_log.cfg:200
 #: data/gui/window/end_credits.cfg:146
 #: data/gui/window/game_cache_options.cfg:247
 #: data/gui/window/game_stats.cfg:843 data/gui/window/game_version.cfg:645
 #: data/gui/window/gamestate_inspector.cfg:397
 #: data/gui/window/generator_settings.cfg:190
-#: data/gui/window/help_browser.cfg:188
+#: data/gui/window/help_browser.cfg:257
 #: data/gui/window/lobby_player_info.cfg:282
 #: data/gui/window/lua_interpreter.cfg:130 data/gui/window/message.cfg:135
 #: data/gui/window/mp_alerts_options.cfg:249
 #: data/gui/window/preferences.cfg:430
+#: data/gui/window/screenshot_notification.cfg:216
 #: data/gui/window/statistics_dialog.cfg:597
 #: data/gui/window/terrain_layers.cfg:434 data/gui/window/unit_list.cfg:447
 msgid "Close"
@@ -2018,8 +2051,8 @@ msgstr "Poveži se"
 #: data/gui/window/editor_new_map.cfg:126
 #: data/gui/window/editor_resize_map.cfg:284
 #: data/gui/window/editor_set_starting_position.cfg:175
-#: data/gui/window/file_dialog.cfg:454 data/gui/window/folder_create.cfg:133
-#: data/gui/window/game_load.cfg:578 data/gui/window/game_save.cfg:134
+#: data/gui/window/file_dialog.cfg:450 data/gui/window/folder_create.cfg:133
+#: data/gui/window/game_load.cfg:579 data/gui/window/game_save.cfg:134
 #: data/gui/window/label_settings.cfg:149
 #: data/gui/window/language_selection.cfg:162 data/gui/window/logging.cfg:169
 #: data/gui/window/message.cfg:149 data/gui/window/mp_change_control.cfg:216
@@ -2029,15 +2062,15 @@ msgstr "Poveži se"
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:334
 #: data/gui/window/mp_faction_select.cfg:391
 #: data/gui/window/mp_join_game_password_prompt.cfg:149
-#: data/gui/window/mp_login.cfg:271 data/gui/window/mp_method_selection.cfg:298
+#: data/gui/window/mp_login.cfg:257 data/gui/window/mp_method_selection.cfg:298
 #: data/gui/window/mp_server_list.cfg:231 data/gui/window/mp_staging.cfg:433
 #: data/gui/window/network_transmission.cfg:114
 #: data/gui/window/select_orb_colors.cfg:124
 #: data/gui/window/simple_item_selector.cfg:158
 #: data/gui/window/sp_options_configure.cfg:117
 #: data/gui/window/surrender_quit.cfg:114 data/gui/window/theme_list.cfg:155
-#: data/gui/window/unit_attack.cfg:233 data/gui/window/unit_create.cfg:279
-#: data/gui/window/unit_recall.cfg:430 data/gui/window/unit_recruit.cfg:231
+#: data/gui/window/unit_attack.cfg:233 data/gui/window/unit_create.cfg:280
+#: data/gui/window/unit_recall.cfg:431 data/gui/window/unit_recruit.cfg:231
 #: src/hotkey/hotkey_command.cpp:55
 msgid "Cancel"
 msgstr "Odustani"
@@ -2055,7 +2088,7 @@ msgstr "Izdanje:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:160
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:586
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:590
 msgid "No description available."
 msgstr "Bez opisa."
 
@@ -2067,7 +2100,7 @@ msgid "Delete add-on"
 msgstr "Obriši"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:318 data/gui/window/addon_manager.cfg:732
+#: data/gui/window/addon_manager.cfg:318 data/gui/window/addon_manager.cfg:733
 #, fuzzy
 #| msgid "Type"
 msgid "Type:"
@@ -2093,6 +2126,7 @@ msgstr ""
 #. [label]
 #: data/gui/window/addon_manager.cfg:437
 #: data/gui/window/game_cache_options.cfg:160
+#: data/gui/window/screenshot_notification.cfg:141
 msgid "Size:"
 msgstr "Veličina:"
 
@@ -2161,21 +2195,21 @@ msgid "Filters on addon description, version, type or author."
 msgstr ""
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:706
+#: data/gui/window/addon_manager.cfg:707
 #, fuzzy
 #| msgid "Status"
 msgid "State:"
 msgstr "Status"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:759
+#: data/gui/window/addon_manager.cfg:760
 #, fuzzy
 #| msgid "Leader"
 msgid "Order:"
 msgstr "Vođ"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:845 data/gui/window/addon_manager.cfg:1020
+#: data/gui/window/addon_manager.cfg:846 data/gui/window/addon_manager.cfg:1021
 #, fuzzy
 #| msgid "Add-ons"
 msgid "Add-ons Manager"
@@ -2183,20 +2217,20 @@ msgstr "Dodaci"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:945 src/gui/dialogs/addon/manager.cpp:452
-#: src/gui/dialogs/addon/manager.cpp:639
+#: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:451
+#: src/gui/dialogs/addon/manager.cpp:638
 msgid "Addon Details"
 msgstr ""
 
 #. [button]: id=update_all
-#: data/gui/window/addon_manager.cfg:959 data/gui/window/addon_manager.cfg:1123
+#: data/gui/window/addon_manager.cfg:960 data/gui/window/addon_manager.cfg:1124
 #, fuzzy
 #| msgid "Update Add-ons"
 msgid "Update All"
 msgstr "Ažuriraj dodatke"
 
 #. [button]: id=cancel
-#: data/gui/window/addon_manager.cfg:973 data/gui/window/addon_manager.cfg:1137
+#: data/gui/window/addon_manager.cfg:974 data/gui/window/addon_manager.cfg:1138
 msgid "Exit"
 msgstr ""
 
@@ -2288,8 +2322,8 @@ msgstr ""
 #: data/gui/window/editor_edit_scenario.cfg:287
 #: data/gui/window/editor_edit_side.cfg:443
 #: data/gui/window/editor_set_starting_position.cfg:162
-#: data/gui/window/file_dialog.cfg:441 data/gui/window/folder_create.cfg:119
-#: data/gui/window/game_load.cfg:565 data/gui/window/game_save.cfg:120
+#: data/gui/window/file_dialog.cfg:437 data/gui/window/folder_create.cfg:119
+#: data/gui/window/game_load.cfg:566 data/gui/window/game_save.cfg:120
 #: data/gui/window/label_settings.cfg:137
 #: data/gui/window/language_selection.cfg:148 data/gui/window/logging.cfg:159
 #: data/gui/window/mp_change_control.cfg:203
@@ -2300,9 +2334,9 @@ msgstr ""
 #: data/gui/window/simple_item_selector.cfg:145
 #: data/gui/window/sp_options_configure.cfg:105
 #: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:190
-#: data/gui/window/unit_create.cfg:268 data/gui/window/wml_error.cfg:162
-#: data/gui/window/wml_message.cfg:436 src/gui/dialogs/message.cpp:181
-#: src/gui/dialogs/message.cpp:188
+#: data/gui/window/unit_create.cfg:269 data/gui/window/wml_error.cfg:162
+#: data/gui/window/wml_message.cfg:436 src/gui/dialogs/message.cpp:179
+#: src/gui/dialogs/message.cpp:186
 msgid "OK"
 msgstr "U redu"
 
@@ -2448,8 +2482,8 @@ msgstr "Stranica:"
 msgid "Last"
 msgstr "Poslednje"
 
-#. [button]: id=previous_page
 #. [button]: id=previous_tip
+#. [button]: id=previous_page
 #: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:190
 msgid "Previous"
 msgstr "Prethodno"
@@ -2461,8 +2495,8 @@ msgstr "Prethodno"
 msgid "Previous page"
 msgstr "Prethodno"
 
-#. [button]: id=next_page
 #. [button]: id=next_tip
+#. [button]: id=next_page
 #: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:205
 msgid "Next"
 msgstr "Sljedeće"
@@ -2475,13 +2509,13 @@ msgid "Next page"
 msgstr "Sljedeća strana"
 
 #. [button]: id=copy
-#: data/gui/window/chat_log.cfg:185 data/gui/window/gamestate_inspector.cfg:335
+#: data/gui/window/chat_log.cfg:186 data/gui/window/gamestate_inspector.cfg:335
 #: data/gui/window/lua_interpreter.cfg:105 data/gui/window/wml_error.cfg:124
 msgid "clipboard^Copy"
 msgstr ""
 
 #. [button]: id=copy
-#: data/gui/window/chat_log.cfg:186 data/gui/window/lua_interpreter.cfg:106
+#: data/gui/window/chat_log.cfg:187 data/gui/window/lua_interpreter.cfg:106
 #, fuzzy
 #| msgid "Choose the game to load"
 msgid "Copy this log to clipboard"
@@ -2537,6 +2571,7 @@ msgstr ""
 #: data/gui/window/folder_create.cfg:72 data/gui/window/game_save.cfg:72
 #: data/gui/window/game_save_message.cfg:92
 #: data/gui/window/game_save_oos.cfg:90
+#: data/gui/window/screenshot_notification.cfg:120
 msgid "Name:"
 msgstr "Ime:"
 
@@ -2597,8 +2632,8 @@ msgstr "Obriši"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:773 src/gui/dialogs/file_dialog.cpp:307
-#: src/gui/dialogs/file_dialog.cpp:733 src/gui/widgets/label.cpp:172
+#: src/gui/dialogs/addon/manager.cpp:772 src/gui/dialogs/file_dialog.cpp:306
+#: src/gui/dialogs/file_dialog.cpp:732 src/gui/widgets/label.cpp:167
 msgid "Confirm"
 msgstr ""
 
@@ -2614,7 +2649,7 @@ msgstr ""
 #: data/gui/window/game_save_message.cfg:139
 #: data/gui/window/game_save_oos.cfg:191
 #: data/gui/window/game_save_overwrite.cfg:96
-#: data/gui/window/mp_host_game_prompt.cfg:105 src/gui/dialogs/message.cpp:195
+#: data/gui/window/mp_host_game_prompt.cfg:105 src/gui/dialogs/message.cpp:193
 msgid "Yes"
 msgstr "Da"
 
@@ -2625,7 +2660,7 @@ msgstr "Da"
 #: data/gui/window/game_save_message.cfg:153
 #: data/gui/window/game_save_oos.cfg:205
 #: data/gui/window/game_save_overwrite.cfg:110
-#: data/gui/window/mp_host_game_prompt.cfg:118 src/gui/dialogs/message.cpp:197
+#: data/gui/window/mp_host_game_prompt.cfg:118 src/gui/dialogs/message.cpp:195
 msgid "No"
 msgstr "Ne"
 
@@ -2868,7 +2903,7 @@ msgstr "Generator mapa"
 #. [button]: id=settings
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
-#: data/gui/window/mp_create_game.cfg:876
+#: data/gui/window/mp_create_game.cfg:877
 msgid "Settings"
 msgstr "Postavke"
 
@@ -2971,34 +3006,34 @@ msgid "↑ ↓ to adjust speed"
 msgstr ""
 
 #. [label]
-#: data/gui/window/file_dialog.cfg:105
+#: data/gui/window/file_dialog.cfg:103
 msgid "Places"
 msgstr ""
 
 #. [button]: id=add_bookmark
-#: data/gui/window/file_dialog.cfg:302
+#: data/gui/window/file_dialog.cfg:299
 msgid "Bookmarks the current folder"
 msgstr ""
 
 #. [button]: id=remove_bookmark
-#: data/gui/window/file_dialog.cfg:315
+#: data/gui/window/file_dialog.cfg:312
 msgid "Removes the current bookmark"
 msgstr ""
 
-#. [button]: id=delete
 #. [button]: id=delete_file
-#: data/gui/window/file_dialog.cfg:342 data/gui/window/game_load.cfg:479
+#. [button]: id=delete
+#: data/gui/window/file_dialog.cfg:339 data/gui/window/game_load.cfg:480
 msgid "Delete"
 msgstr "Obriši"
 
 #. [label]: id=title
 #. [button]: id=new_dir
-#: data/gui/window/file_dialog.cfg:355 data/gui/window/folder_create.cfg:43
+#: data/gui/window/file_dialog.cfg:352 data/gui/window/folder_create.cfg:43
 msgid "New Folder"
 msgstr "Nova fascikla"
 
 #. [label]
-#: data/gui/window/file_dialog.cfg:394
+#: data/gui/window/file_dialog.cfg:391
 #, fuzzy
 #| msgid "File: "
 msgid "File:"
@@ -3146,40 +3181,40 @@ msgstr "Datum"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #. [button]: id=load_game
-#: data/gui/window/game_load.cfg:286 data/gui/window/mp_create_game.cfg:897
+#: data/gui/window/game_load.cfg:286 data/gui/window/mp_create_game.cfg:898
 #: src/hotkey/hotkey_command.cpp:83
 msgid "Load Game"
 msgstr "Učitaj poziciju"
 
 #. [toggle_button]: id=change_difficulty
-#: data/gui/window/game_load.cfg:462
+#: data/gui/window/game_load.cfg:463
 #, fuzzy
 #| msgid "Difficulty"
 msgid "Change difficulty"
 msgstr "Težina"
 
 #. [toggle_button]: id=change_difficulty
-#: data/gui/window/game_load.cfg:463
+#: data/gui/window/game_load.cfg:464
 msgid "Change campaign difficulty before loading"
 msgstr ""
 
 #. [toggle_button]: id=show_replay
-#: data/gui/window/game_load.cfg:504
+#: data/gui/window/game_load.cfg:505
 msgid "Show replay"
 msgstr "Prikaži snimak"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/window/game_load.cfg:505
+#: data/gui/window/game_load.cfg:506
 msgid "Play the embedded replay from the saved game if applicable"
 msgstr ""
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/window/game_load.cfg:524
+#: data/gui/window/game_load.cfg:525
 msgid "Cancel orders"
 msgstr "Obustavi naređenja"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/window/game_load.cfg:525
+#: data/gui/window/game_load.cfg:526
 msgid "Cancel any pending unit movements in the saved game"
 msgstr ""
 
@@ -3465,7 +3500,7 @@ msgstr "Generator mapa"
 #. [grid]
 #. [label]
 #: data/gui/window/generator_settings.cfg:105
-#: data/gui/window/mp_create_game.cfg:682
+#: data/gui/window/mp_create_game.cfg:683
 #: data/gui/window/mp_create_game/default_resolution.cfg:132
 #: data/gui/window/mp_create_game/small_resolution.cfg:147
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:137
@@ -3519,7 +3554,7 @@ msgid "Show Labels"
 msgstr "Plutajuće etikete"
 
 #. [label]
-#: data/gui/window/help_browser.cfg:116
+#: data/gui/window/help_browser.cfg:127
 #, fuzzy
 #| msgid "Show Battle for Wesnoth help"
 msgid "Battle For Wesnoth Help"
@@ -3569,15 +3604,15 @@ msgstr "Zahtijeva lozinku za priključivanje"
 
 #. [button]: id=join
 #. [button]: id=join_global
-#: data/gui/window/lobby_main.cfg:158 data/gui/window/lobby_main.cfg:520
-#: data/gui/window/lobby_main.cfg:687
+#: data/gui/window/lobby_main.cfg:158 data/gui/window/lobby_main.cfg:521
+#: data/gui/window/lobby_main.cfg:688
 msgid "Join"
 msgstr "Pridruži se"
 
 #. [button]: id=observe
 #. [button]: id=observe_global
-#: data/gui/window/lobby_main.cfg:187 data/gui/window/lobby_main.cfg:530
-#: data/gui/window/lobby_main.cfg:699
+#: data/gui/window/lobby_main.cfg:187 data/gui/window/lobby_main.cfg:531
+#: data/gui/window/lobby_main.cfg:700
 msgid "Observe"
 msgstr "Posmatraj"
 
@@ -3598,42 +3633,42 @@ msgstr "Abecedno"
 
 #. [widget]: id=tab_label
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/window/lobby_main.cfg:419
+#: data/gui/window/lobby_main.cfg:420
 #: data/gui/window/preferences/05_multiplayer.cfg:415
 msgid "Friends"
 msgstr "Prijatelji"
 
 #. [toggle_button]: id=filter_without_ignored
-#: data/gui/window/lobby_main.cfg:431
+#: data/gui/window/lobby_main.cfg:432
 msgid "No ignored"
 msgstr "Bez ignorisanih"
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/window/lobby_main.cfg:443
+#: data/gui/window/lobby_main.cfg:444
 msgid "Vacant slots"
 msgstr "Slobodnih mijesta"
 
 #. [toggle_button]: id=filter_invert
-#: data/gui/window/lobby_main.cfg:454
+#: data/gui/window/lobby_main.cfg:455
 msgid "Invert filter"
 msgstr "Izvrni filter"
 
 #. [button]: id=quit
-#: data/gui/window/lobby_main.cfg:474 data/gui/window/lobby_main.cfg:637
+#: data/gui/window/lobby_main.cfg:475 data/gui/window/lobby_main.cfg:638
 #, fuzzy
 #| msgid "Zoom Out"
 msgid "Log Out"
 msgstr "Umanji"
 
 #. [button]: id=refresh
-#: data/gui/window/lobby_main.cfg:484 data/gui/window/lobby_main.cfg:625
+#: data/gui/window/lobby_main.cfg:485 data/gui/window/lobby_main.cfg:626
 msgid "Refresh"
 msgstr "Osvježi"
 
 #. [label]
 #. [button]: id=ok
 #. [button]: id=create
-#: data/gui/window/lobby_main.cfg:497 data/gui/window/lobby_main.cfg:675
+#: data/gui/window/lobby_main.cfg:498 data/gui/window/lobby_main.cfg:676
 #: data/gui/window/mp_create_game/default_resolution.cfg:45
 #: data/gui/window/mp_create_game/default_resolution.cfg:446
 #: data/gui/window/mp_create_game/small_resolution.cfg:44
@@ -3647,43 +3682,43 @@ msgstr "Napravi partiju"
 #. [label]: id=title
 #. [grid]
 #. [button]: id=show_preferences
-#: data/gui/window/lobby_main.cfg:507 data/gui/window/lobby_main.cfg:663
+#: data/gui/window/lobby_main.cfg:508 data/gui/window/lobby_main.cfg:664
 #: data/gui/window/preferences.cfg:212 data/gui/window/title_screen.cfg:259
 #: src/hotkey/hotkey_command.cpp:99
 msgid "Preferences"
 msgstr "Postavke"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:549 data/gui/window/lobby_main.cfg:714
+#: data/gui/window/lobby_main.cfg:550 data/gui/window/lobby_main.cfg:715
 #, fuzzy
 #| msgid "Save Replay"
 msgid "Normal Replays"
 msgstr "Sačuvaj snimak"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:553 data/gui/window/lobby_main.cfg:718
+#: data/gui/window/lobby_main.cfg:554 data/gui/window/lobby_main.cfg:719
 #, fuzzy
 #| msgid "Quick replay"
 msgid "Quick Replays"
 msgstr "Brzi snimak"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:554 data/gui/window/lobby_main.cfg:719
+#: data/gui/window/lobby_main.cfg:555 data/gui/window/lobby_main.cfg:720
 msgid "Skip quickly to the active turn when observing"
 msgstr ""
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:558 data/gui/window/lobby_main.cfg:723
+#: data/gui/window/lobby_main.cfg:559 data/gui/window/lobby_main.cfg:724
 msgid "Enter Blindfolded"
 msgstr ""
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:559 data/gui/window/lobby_main.cfg:724
+#: data/gui/window/lobby_main.cfg:560 data/gui/window/lobby_main.cfg:725
 msgid "Do not show the map until given control of a side"
 msgstr ""
 
 #. [label]
-#: data/gui/window/lobby_main.cfg:613 data/gui/window/lobby_main.cfg:833
+#: data/gui/window/lobby_main.cfg:614 data/gui/window/lobby_main.cfg:834
 msgid "Multiplayer Lobby"
 msgstr "Višeigrački hol"
 
@@ -3919,17 +3954,6 @@ msgstr ""
 msgid "When a new turn has begun"
 msgstr ""
 
-#. [button]: id=btn_reset_hotkeys
-#. [button]: id=revert_to_defaults
-#. [button]: id=orb_defaults
-#: data/gui/window/mp_alerts_options.cfg:234
-#: data/gui/window/preferences/02_hotkeys.cfg:263
-#: data/gui/window/select_orb_colors.cfg:102
-#, fuzzy
-#| msgid "Default"
-msgid "Defaults"
-msgstr "Podrazumevano"
-
 #. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:235
 msgid "Reset all options to their default values"
@@ -4162,72 +4186,72 @@ msgid "Game Settings"
 msgstr "Postavke"
 
 #. [slider]: id=num_players
-#: data/gui/window/mp_create_game.cfg:701
+#: data/gui/window/mp_create_game.cfg:702
 msgid "Any"
 msgstr ""
 
 #. [label]
-#: data/gui/window/mp_create_game.cfg:834
+#: data/gui/window/mp_create_game.cfg:835
 #, fuzzy
 #| msgid "Random start time"
 msgid "Random map options: "
 msgstr "Nasumično vrijeme početka"
 
 #. [button]: id=random_map_regenerate
-#: data/gui/window/mp_create_game.cfg:855
+#: data/gui/window/mp_create_game.cfg:856
 #, fuzzy
 #| msgid "Generate"
 msgid "Regenerate"
 msgstr "Stvori"
 
-#: data/gui/window/mp_create_game.cfg:928
+#: data/gui/window/mp_create_game.cfg:929
 msgid "Assign sides to players at random"
 msgstr "Nasumično dodeli strane igračima"
 
-#: data/gui/window/mp_create_game.cfg:928
+#: data/gui/window/mp_create_game.cfg:929
 msgid "Shuffle Sides"
 msgstr ""
 
-#: data/gui/window/mp_create_game.cfg:932
+#: data/gui/window/mp_create_game.cfg:933
 msgid "Allow users who are not playing to watch the game"
 msgstr ""
 
-#: data/gui/window/mp_create_game.cfg:932
+#: data/gui/window/mp_create_game.cfg:933
 #, fuzzy
 #| msgid "Observe"
 msgid "Observers"
 msgstr "Posmatraj"
 
-#: data/gui/window/mp_create_game.cfg:936
+#: data/gui/window/mp_create_game.cfg:937
 msgid "Allow only registered users to join the game"
 msgstr ""
 
-#: data/gui/window/mp_create_game.cfg:936
+#: data/gui/window/mp_create_game.cfg:937
 msgid "Registered Users Only"
 msgstr ""
 
-#: data/gui/window/mp_create_game.cfg:940
+#: data/gui/window/mp_create_game.cfg:941
 msgid "Strict Synchronization"
 msgstr ""
 
-#: data/gui/window/mp_create_game.cfg:940
+#: data/gui/window/mp_create_game.cfg:941
 msgid "Stricter checks for out-of-sync errors"
 msgstr ""
 
 #. [label]
-#: data/gui/window/mp_create_game.cfg:956
+#: data/gui/window/mp_create_game.cfg:957
 msgid "Name of game:"
 msgstr "Naziv partije:"
 
 #. [label]
-#: data/gui/window/mp_create_game.cfg:988
+#: data/gui/window/mp_create_game.cfg:989
 #: data/gui/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/window/mp_login.cfg:143
 msgid "Password:"
 msgstr "Lozinka:"
 
 #. [text_box]: id=game_password
-#: data/gui/window/mp_create_game.cfg:1002
+#: data/gui/window/mp_create_game.cfg:1003
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
 msgstr ""
@@ -4254,7 +4278,7 @@ msgstr "Vođ"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:161
-#: data/gui/window/unit_create.cfg:204
+#: data/gui/window/unit_create.cfg:205
 msgid "Gender:"
 msgstr "Pol:"
 
@@ -4268,14 +4292,14 @@ msgstr ""
 #. [row]
 #. [toggle_button]: id=male_toggle
 #: data/gui/window/mp_faction_select.cfg:169
-#: data/gui/window/unit_create.cfg:216
+#: data/gui/window/unit_create.cfg:217
 msgid "Male"
 msgstr "muški"
 
 #. [row]
 #. [toggle_button]: id=female_toggle
 #: data/gui/window/mp_faction_select.cfg:171
-#: data/gui/window/unit_create.cfg:228
+#: data/gui/window/unit_create.cfg:229
 msgid "Female"
 msgstr "ženski"
 
@@ -4381,11 +4405,6 @@ msgstr "Prijava:"
 #| msgid "Save password to preferences (clear text)"
 msgid "Save password locally (encrypted)"
 msgstr "Sačuvaj lozinku među postavkama (čist tekst)"
-
-#. [button]: id=password_reminder
-#: data/gui/window/mp_login.cfg:257
-msgid "Password Reminder"
-msgstr "Podsjetnik lozinke"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=label
@@ -5088,6 +5107,30 @@ msgstr ""
 msgid "Open this file with an external application"
 msgstr ""
 
+# >! contexts
+# >> Take screenshot
+# >> Base for screenshot file names
+#. [button]: id=browse_dir
+#: data/gui/window/screenshot_notification.cfg:187
+#, fuzzy
+#| msgid "Screenshot"
+msgid "Screenshots..."
+msgstr "Snimak ekrana"
+
+#. [button]: id=browse_dir
+#: data/gui/window/screenshot_notification.cfg:189
+msgid "Browse the screenshots folder using a file manager"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=save
+#: data/gui/window/screenshot_notification.cfg:203
+#: src/gui/dialogs/file_dialog.cpp:184
+#, fuzzy
+#| msgid "Save Map"
+msgid "Save"
+msgstr "Sačuvaj mapu"
+
 #. [label]
 #: data/gui/window/select_orb_colors.cfg:80
 msgid "Choose Orb/Minimap Colors"
@@ -5432,7 +5475,7 @@ msgid "Create Unit (Debug!)"
 msgstr "Napravi jedinicu (ispr.!)"
 
 #. [toggle_button]: id=sort_0
-#: data/gui/window/unit_create.cfg:123
+#: data/gui/window/unit_create.cfg:124
 msgid "Race"
 msgstr "rasa"
 
@@ -5467,8 +5510,8 @@ msgstr ""
 #. [toggle_button]: id=sort_6
 #. [toggle_button]: id=sort_4
 #: data/gui/window/unit_list.cfg:177 data/gui/window/unit_recall.cfg:89
-#: src/gui/widgets/unit_preview_pane.cpp:344
-#: src/gui/widgets/unit_preview_pane.cpp:487
+#: src/gui/widgets/unit_preview_pane.cpp:345
+#: src/gui/widgets/unit_preview_pane.cpp:488
 msgid "Traits"
 msgstr ""
 
@@ -5486,13 +5529,13 @@ msgid "Recall Unit"
 msgstr "Preimenuj jedinicu"
 
 #. [button]: id=dismiss
-#: data/gui/window/unit_recall.cfg:384
+#: data/gui/window/unit_recall.cfg:385
 msgid "Dismiss"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/unit_recall.cfg:418 src/hotkey/hotkey_command.cpp:86
+#: data/gui/window/unit_recall.cfg:419 src/hotkey/hotkey_command.cpp:86
 msgid "Recall"
 msgstr "Sazovi"
 
@@ -5511,49 +5554,45 @@ msgstr "Unajmi"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:210
+#: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:208
 #: src/gui/dialogs/preferences_dialog.cpp:267
-#: src/gui/dialogs/transient_message.cpp:78
+#: src/gui/dialogs/transient_message.cpp:74
 msgid "Error"
 msgstr "Greška"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
 #: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:228
-#: src/gui/dialogs/multiplayer/lobby.cpp:244 src/gui/dialogs/wml_error.cpp:197
+#: src/gui/dialogs/multiplayer/lobby.cpp:244 src/gui/dialogs/wml_error.cpp:195
 msgid "Details:"
 msgstr ""
 
-#: src/build_info.cpp:263
+#: src/build_info.cpp:244
 msgid "feature^Experimental OpenMP support"
 msgstr ""
 
-#: src/build_info.cpp:268
+#: src/build_info.cpp:249
 msgid "feature^JPG screenshots"
 msgstr ""
 
-#: src/build_info.cpp:275
+#: src/build_info.cpp:256
 msgid "feature^Lua console completion"
 msgstr ""
 
-#: src/build_info.cpp:280
+#: src/build_info.cpp:261
 msgid "feature^Legacy bidirectional rendering"
 msgstr ""
 
-#: src/build_info.cpp:287
+#: src/build_info.cpp:268
 msgid "feature^D-Bus notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:296
+#: src/build_info.cpp:277
 msgid "feature^Win32 notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:302
+#: src/build_info.cpp:283
 msgid "feature^Cocoa notifications back end"
-msgstr ""
-
-#: src/build_info.cpp:307
-msgid "feature^Growl notifications back end"
 msgstr ""
 
 #: src/desktop/paths.cpp:96
@@ -5588,11 +5627,7 @@ msgstr ""
 msgid "operating_system^<unknown>"
 msgstr ""
 
-#: src/font/marked-up_text.cpp:402
-msgid "The maximum text width is less than 1."
-msgstr "Najveća širina teksta je ispod 1."
-
-#: src/font/text.cpp:761
+#: src/font/text.cpp:789
 msgid "The text contains invalid markup: "
 msgstr "Tekst sadrži loše obeležavanje: "
 
@@ -5636,34 +5671,34 @@ msgstr ""
 msgid "disjunct end^$prefix, or $last"
 msgstr ""
 
-#: src/gui/core/canvas.cpp:612
+#: src/gui/core/canvas.cpp:605
 msgid "Line doesn't fit on canvas."
 msgstr "Linija ne staje na platno."
 
-#: src/gui/core/canvas.cpp:699
+#: src/gui/core/canvas.cpp:691
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Pravougaonik ne staje na platno."
 
-#: src/gui/core/canvas.cpp:814
+#: src/gui/core/canvas.cpp:806
 #, fuzzy
 #| msgid "Rectangle doesn't fit on canvas."
 msgid "Rounded Rectangle doesn't fit on canvas."
 msgstr "Pravougaonik ne staje na platno."
 
-#: src/gui/core/canvas.cpp:923 src/gui/core/canvas.cpp:928
-#: src/gui/core/canvas.cpp:933 src/gui/core/canvas.cpp:939
+#: src/gui/core/canvas.cpp:915 src/gui/core/canvas.cpp:920
+#: src/gui/core/canvas.cpp:925 src/gui/core/canvas.cpp:931
 msgid "Circle doesn't fit on canvas."
 msgstr "Krug ne staje na platno."
 
-#: src/gui/core/canvas.cpp:1039
+#: src/gui/core/canvas.cpp:1027
 msgid "Image doesn't fit on canvas."
 msgstr "Slika ne staje na platno."
 
-#: src/gui/core/canvas.cpp:1257
+#: src/gui/core/canvas.cpp:1241
 msgid "Text has a font size of 0."
 msgstr "Veličina fonta za tekst je 0."
 
-#: src/gui/core/canvas.cpp:1331
+#: src/gui/core/canvas.cpp:1335
 msgid "Text doesn't start on canvas."
 msgstr "Tekst ne staje na platno."
 
@@ -5680,12 +5715,12 @@ msgid "Linked '$id' group has multiple definitions."
 msgstr "Povezana grupa ‘$id’ ima višestruke definicije."
 
 #: src/gui/core/window_builder.cpp:314 src/gui/widgets/addon_list.cpp:429
-#: src/gui/widgets/chatbox.cpp:762 src/gui/widgets/listbox.cpp:819
-#: src/gui/widgets/multi_page.cpp:196 src/gui/widgets/panel.cpp:194
+#: src/gui/widgets/chatbox.cpp:762 src/gui/widgets/listbox.cpp:800
+#: src/gui/widgets/multi_page.cpp:192 src/gui/widgets/panel.cpp:192
 #: src/gui/widgets/scroll_label.cpp:220 src/gui/widgets/scrollbar_panel.cpp:98
 #: src/gui/widgets/size_lock.cpp:119 src/gui/widgets/stacked_widget.cpp:241
-#: src/gui/widgets/toggle_panel.cpp:402 src/gui/widgets/tree_view.cpp:311
-#: src/gui/widgets/unit_preview_pane.cpp:573
+#: src/gui/widgets/toggle_panel.cpp:396 src/gui/widgets/tree_view.cpp:297
+#: src/gui/widgets/unit_preview_pane.cpp:574
 msgid "No grid defined."
 msgstr "Mreža nije definisana."
 
@@ -5698,263 +5733,263 @@ msgid "Number of columns differ."
 msgstr "Broj kolona se razlikuje."
 
 # >> @title:window
-#: src/gui/dialogs/addon/manager.cpp:189
+#: src/gui/dialogs/addon/manager.cpp:188
 #, fuzzy
 #| msgid "Uninstall Add-ons"
 msgid "addons_view^All Add-ons"
 msgstr "Deinstaliranje dodataka"
 
-#: src/gui/dialogs/addon/manager.cpp:190
+#: src/gui/dialogs/addon/manager.cpp:189
 msgid "addons_view^Installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:191
+#: src/gui/dialogs/addon/manager.cpp:190
 msgid "addons_view^Upgradable"
 msgstr ""
 
 # >> @title:window
-#: src/gui/dialogs/addon/manager.cpp:192
+#: src/gui/dialogs/addon/manager.cpp:191
 #, fuzzy
 #| msgid "Uninstall Add-ons"
 msgid "addons_view^Publishable"
 msgstr "Deinstaliranje dodataka"
 
-#: src/gui/dialogs/addon/manager.cpp:193
+#: src/gui/dialogs/addon/manager.cpp:192
 msgid "addons_view^Not Installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:197
+#: src/gui/dialogs/addon/manager.cpp:196
 msgid "addons_of_type^Campaigns"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:198
+#: src/gui/dialogs/addon/manager.cpp:197
 msgid "addons_of_type^Scenarios"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:199
+#: src/gui/dialogs/addon/manager.cpp:198
 msgid "addons_of_type^SP/MP campaigns"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:200
+#: src/gui/dialogs/addon/manager.cpp:199
 msgid "addons_of_type^MP campaigns"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:201
+#: src/gui/dialogs/addon/manager.cpp:200
 msgid "addons_of_type^MP scenarios"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:202
+#: src/gui/dialogs/addon/manager.cpp:201
 msgid "addons_of_type^MP map-packs"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:203
+#: src/gui/dialogs/addon/manager.cpp:202
 msgid "addons_of_type^MP eras"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:204
+#: src/gui/dialogs/addon/manager.cpp:203
 msgid "addons_of_type^MP factions"
 msgstr ""
 
 # >> @title:window
-#: src/gui/dialogs/addon/manager.cpp:205
+#: src/gui/dialogs/addon/manager.cpp:204
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "addons_of_type^Modifications"
 msgstr "Izbor rezolucije"
 
-#: src/gui/dialogs/addon/manager.cpp:206
+#: src/gui/dialogs/addon/manager.cpp:205
 msgid "addons_of_type^Cores"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:207
+#: src/gui/dialogs/addon/manager.cpp:206
 msgid "addons_of_type^Resources"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:209
+#: src/gui/dialogs/addon/manager.cpp:208
 msgid "addons_of_type^Other"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:210
+#: src/gui/dialogs/addon/manager.cpp:209
 msgid "addons_of_type^Unknown"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:214
+#: src/gui/dialogs/addon/manager.cpp:213
 msgid "addons_order^Name ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:217
+#: src/gui/dialogs/addon/manager.cpp:216
 msgid "addons_order^Author ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:220
+#: src/gui/dialogs/addon/manager.cpp:219
 msgid "addons_order^Size ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:223
+#: src/gui/dialogs/addon/manager.cpp:222
 msgid "addons_order^Downloads ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:226
+#: src/gui/dialogs/addon/manager.cpp:225
 msgid "addons_order^Type ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:229
+#: src/gui/dialogs/addon/manager.cpp:228
 msgid "addons_order^Last updated ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:232
+#: src/gui/dialogs/addon/manager.cpp:231
 msgid "addons_order^First uploaded ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:261 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:260 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:261 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:266 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:267 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:266 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:271
+#: src/gui/dialogs/addon/manager.cpp:270
 msgid "addon_state^Installed, not tracking local version"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:274
+#: src/gui/dialogs/addon/manager.cpp:273
 msgid "addon_state^Published, not tracking local version"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:278
+#: src/gui/dialogs/addon/manager.cpp:277
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:279
+#: src/gui/dialogs/addon/manager.cpp:278
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:285
+#: src/gui/dialogs/addon/manager.cpp:284
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:286
+#: src/gui/dialogs/addon/manager.cpp:285
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:292 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:291 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:293 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:292 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:297 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:298 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:297 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:130
+#: src/gui/dialogs/addon/manager.cpp:300 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr ""
 
 #. TRANSLATORS: ascending
-#: src/gui/dialogs/addon/manager.cpp:361
+#: src/gui/dialogs/addon/manager.cpp:360
 msgid "asc"
 msgstr ""
 
 #. TRANSLATORS: descending
-#: src/gui/dialogs/addon/manager.cpp:365
+#: src/gui/dialogs/addon/manager.cpp:364
 msgid "desc"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:381 src/gui/dialogs/chat_log.cpp:420
+#: src/gui/dialogs/addon/manager.cpp:380 src/gui/dialogs/chat_log.cpp:420
 #: src/gui/dialogs/game_cache_options.cpp:105
 #: src/gui/dialogs/game_version.cpp:186
 #: src/gui/dialogs/gamestate_inspector.cpp:428
-#: src/gui/dialogs/lua_interpreter.cpp:490
-#: src/gui/dialogs/screenshot_notification.cpp:99
-#: src/gui/dialogs/wml_error.cpp:229
+#: src/gui/dialogs/lua_interpreter.cpp:488
+#: src/gui/dialogs/screenshot_notification.cpp:101
+#: src/gui/dialogs/wml_error.cpp:227
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:449
+#: src/gui/dialogs/addon/manager.cpp:448
 msgid "addons^Back to List"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:461
+#: src/gui/dialogs/addon/manager.cpp:460
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:497
+#: src/gui/dialogs/addon/manager.cpp:496
 #, fuzzy
 #| msgid "No description available."
 msgid "No Add-ons Available"
 msgstr "Bez opisa."
 
-#: src/gui/dialogs/addon/manager.cpp:497
+#: src/gui/dialogs/addon/manager.cpp:496
 msgid "There are no add-ons available for download from this server."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:672
+#: src/gui/dialogs/addon/manager.cpp:671
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:680
+#: src/gui/dialogs/addon/manager.cpp:679
 msgid "The following add-on could not be deleted properly:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:726
+#: src/gui/dialogs/addon/manager.cpp:725
 msgid "Warning"
 msgstr "Upozorenje"
 
-#: src/gui/dialogs/addon/manager.cpp:727
+#: src/gui/dialogs/addon/manager.cpp:726
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:736
+#: src/gui/dialogs/addon/manager.cpp:735
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:739 src/gui/dialogs/addon/manager.cpp:742
-#: src/gui/dialogs/addon/manager.cpp:781
+#: src/gui/dialogs/addon/manager.cpp:738 src/gui/dialogs/addon/manager.cpp:741
+#: src/gui/dialogs/addon/manager.cpp:780
 msgid "The server responded with an error:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:740
+#: src/gui/dialogs/addon/manager.cpp:739
 msgid "Terms"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:757 src/gui/dialogs/addon/manager.cpp:784
+#: src/gui/dialogs/addon/manager.cpp:756 src/gui/dialogs/addon/manager.cpp:783
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:439
 msgid "Response"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:769
+#: src/gui/dialogs/addon/manager.cpp:768
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:801
+#: src/gui/dialogs/addon/manager.cpp:800
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Želite li zaista da obrišete ovu poziciju?"
 
-#: src/gui/dialogs/addon/manager.cpp:885 src/gui/dialogs/addon/manager.cpp:899
+#: src/gui/dialogs/addon/manager.cpp:884 src/gui/dialogs/addon/manager.cpp:898
 #: src/gui/dialogs/campaign_selection.cpp:274
 #: src/gui/dialogs/multiplayer/lobby.cpp:459
 msgid "None"
@@ -5971,11 +6006,11 @@ msgstr ""
 msgid "No usable weapon"
 msgstr "Izbor rezolucije"
 
-#: src/gui/dialogs/attack_predictions.cpp:188
+#: src/gui/dialogs/attack_predictions.cpp:193
 msgid "Defender resistance vs"
 msgstr ""
 
-#: src/gui/dialogs/attack_predictions.cpp:190
+#: src/gui/dialogs/attack_predictions.cpp:195
 msgid "Attacker vulnerability vs"
 msgstr ""
 
@@ -6025,51 +6060,45 @@ msgstr "ostrvski"
 msgid "Find File"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:185
+#: src/gui/dialogs/file_dialog.cpp:184
 msgid "Open"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:185
-#, fuzzy
-#| msgid "Save Map"
-msgid "Save"
-msgstr "Sačuvaj mapu"
-
-#: src/gui/dialogs/file_dialog.cpp:306
+#: src/gui/dialogs/file_dialog.cpp:305
 #, fuzzy
 #| msgid "Save already exists. Do you want to overwrite it?"
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr "Pozicija već postoji. Želite li da je prebrišete?"
 
-#: src/gui/dialogs/file_dialog.cpp:330
+#: src/gui/dialogs/file_dialog.cpp:329
 msgid "The file or folder $path cannot be created."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:336
+#: src/gui/dialogs/file_dialog.cpp:335
 msgid "The file or folder $path does not exist."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:711
+#: src/gui/dialogs/file_dialog.cpp:710
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:729
+#: src/gui/dialogs/file_dialog.cpp:728
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:730
+#: src/gui/dialogs/file_dialog.cpp:729
 msgid "The following file will be permanently deleted:"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:731
+#: src/gui/dialogs/file_dialog.cpp:730
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you wish to continue?"
 msgstr "Želite li zaista da obrišete ovu poziciju?"
 
-#: src/gui/dialogs/file_dialog.cpp:743
+#: src/gui/dialogs/file_dialog.cpp:742
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
@@ -6088,7 +6117,7 @@ msgstr "Nepoznata epoha"
 #: src/gui/dialogs/game_cache_options.cpp:139
 #: src/gui/dialogs/network_transmission.cpp:53
 #: src/gui/dialogs/network_transmission.cpp:54
-#: src/gui/dialogs/screenshot_notification.cpp:140
+#: src/gui/dialogs/screenshot_notification.cpp:142
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -6479,31 +6508,31 @@ msgstr ""
 msgid "No eras found"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:276
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:280
 msgid "Independent: Random factions assigned independently"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:277
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:281
 msgid "No Mirror: No two players will get the same faction"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:278
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:282
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:532
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:536
 msgid "No eras available for this game."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:826
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:830
 msgid "The selected game has no sides!"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:892
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:896
 msgid "Choose Starting Scenario"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:892
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:896
 msgid "Select at which point to begin this campaign."
 msgstr ""
 
@@ -6676,44 +6705,44 @@ msgstr "Prečice"
 msgid "∞"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:185
+#: src/gui/dialogs/statistics_dialog.cpp:184
 #, fuzzy
 #| msgid "Recruit"
 msgid "Recruits"
 msgstr "Unajmi"
 
-#: src/gui/dialogs/statistics_dialog.cpp:186
+#: src/gui/dialogs/statistics_dialog.cpp:185
 #, fuzzy
 #| msgid "Recall"
 msgid "Recalls"
 msgstr "Sazovi"
 
-#: src/gui/dialogs/statistics_dialog.cpp:187
+#: src/gui/dialogs/statistics_dialog.cpp:186
 #, fuzzy
 #| msgid "sound^Advanced Options"
 msgid "Advancements"
 msgstr "Napredne opcije"
 
-#: src/gui/dialogs/statistics_dialog.cpp:188
+#: src/gui/dialogs/statistics_dialog.cpp:187
 msgid "Losses"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:189
+#: src/gui/dialogs/statistics_dialog.cpp:188
 #, fuzzy
 #| msgid "Hills"
 msgid "Kills"
 msgstr "brda"
 
-#: src/gui/dialogs/statistics_dialog.cpp:203
+#: src/gui/dialogs/statistics_dialog.cpp:202
 msgid "Inflicted"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:211
+#: src/gui/dialogs/statistics_dialog.cpp:210
 msgid "Taken"
 msgstr ""
 
 # >> @title:window
-#: src/gui/dialogs/title_screen.cpp:468
+#: src/gui/dialogs/title_screen.cpp:452
 #, fuzzy
 #| msgid "Choose Theme"
 msgid "Choose Test"
@@ -6807,44 +6836,44 @@ msgstr "$player napusti sobu"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Obavezni vidžet „$id“ nije definisan."
 
-#: src/gui/widgets/label.cpp:153
+#: src/gui/widgets/label.cpp:148
 msgid "Opening links is not supported, contact your packager"
 msgstr ""
 
-#: src/gui/widgets/label.cpp:172
+#: src/gui/widgets/label.cpp:167
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you want to open this link?"
 msgstr "Želite li zaista da obrišete ovu poziciju?"
 
-#: src/gui/widgets/label.cpp:203
+#: src/gui/widgets/label.cpp:198
 msgid "Copied link!"
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:929 src/gui/widgets/multi_page.cpp:282
+#: src/gui/widgets/listbox.cpp:910 src/gui/widgets/multi_page.cpp:278
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "Polje list_data mora imati isti broj kolona kao list_definition."
 
-#: src/gui/widgets/listbox.cpp:973 src/gui/widgets/listbox.cpp:1090
-#: src/gui/widgets/listbox.cpp:1207 src/gui/widgets/scrollbar_panel.cpp:147
+#: src/gui/widgets/listbox.cpp:954 src/gui/widgets/listbox.cpp:1071
+#: src/gui/widgets/listbox.cpp:1188 src/gui/widgets/scrollbar_panel.cpp:147
 msgid "No list defined."
 msgstr "Spisak nije zadat."
 
-#: src/gui/widgets/listbox.cpp:978 src/gui/widgets/listbox.cpp:1095
-#: src/gui/widgets/listbox.cpp:1212
+#: src/gui/widgets/listbox.cpp:959 src/gui/widgets/listbox.cpp:1076
+#: src/gui/widgets/listbox.cpp:1193
 msgid "A 'list_definition' should contain one row."
 msgstr "Polje list_definition mora sadržati jednu vrstu."
 
-#: src/gui/widgets/multi_page.cpp:258
+#: src/gui/widgets/multi_page.cpp:254
 msgid "No page defined."
 msgstr "Stranica nije definisana."
 
-#: src/gui/widgets/multimenu_button.cpp:175
+#: src/gui/widgets/multimenu_button.cpp:174
 msgid "multimenu^All Selected"
 msgstr ""
 
-#: src/gui/widgets/multimenu_button.cpp:180
+#: src/gui/widgets/multimenu_button.cpp:179
 msgid "multimenu^$excess other"
 msgid_plural "$excess others"
 msgstr[0] ""
@@ -6852,12 +6881,12 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/gui/widgets/multimenu_button.cpp:182
-#: src/gui/widgets/multimenu_button.cpp:239
+#: src/gui/widgets/multimenu_button.cpp:181
+#: src/gui/widgets/multimenu_button.cpp:236
 msgid "multimenu^None Selected"
 msgstr ""
 
-#: src/gui/widgets/pane.cpp:429
+#: src/gui/widgets/pane.cpp:419
 msgid "Need at least 1 parallel item."
 msgstr ""
 
@@ -6883,19 +6912,19 @@ msgstr "Broj value_labels i vrijednosti se ne slaže."
 msgid "No stack layers defined."
 msgstr "Stek nije zadat."
 
-#: src/gui/widgets/styled_widget.cpp:667
+#: src/gui/widgets/styled_widget.cpp:656
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Nađen vidžet sa tekstom pomoći a bez oblačića."
 
-#: src/gui/widgets/tree_view.cpp:389
+#: src/gui/widgets/tree_view.cpp:375
 msgid "No nodes defined for a tree view."
 msgstr "Nema nijednog čvora za prikaz stabla."
 
-#: src/gui/widgets/tree_view.cpp:425
+#: src/gui/widgets/tree_view.cpp:411
 msgid "[node]id 'root' is reserved for the implementation."
 msgstr "ID čvora ‘root’ rezervisan je za izvedbu."
 
-#: src/gui/widgets/tree_view.cpp:429
+#: src/gui/widgets/tree_view.cpp:415
 msgid "No node defined."
 msgstr "Nema nijednog čvora."
 
@@ -6903,69 +6932,69 @@ msgstr "Nema nijednog čvora."
 msgid "Unknown builder id for tree view node."
 msgstr "Nepoznat ID graditelja za čvor u prikazu stabla."
 
-#: src/gui/widgets/unit_preview_pane.cpp:133
+#: src/gui/widgets/unit_preview_pane.cpp:134
 msgid "Resistances: "
 msgstr ""
 
-#: src/gui/widgets/unit_preview_pane.cpp:135
+#: src/gui/widgets/unit_preview_pane.cpp:136
 msgid "(Att / Def)"
 msgstr ""
 
-#: src/gui/widgets/unit_preview_pane.cpp:148
+#: src/gui/widgets/unit_preview_pane.cpp:149
 msgid "Movement Costs:"
 msgstr ""
 
-#: src/gui/widgets/unit_preview_pane.cpp:211
+#: src/gui/widgets/unit_preview_pane.cpp:212
 #, fuzzy
 #| msgid "Attack"
 msgid "Attacks"
 msgstr "Napadni"
 
-#: src/gui/widgets/unit_preview_pane.cpp:264
-#: src/gui/widgets/unit_preview_pane.cpp:294
-#: src/gui/widgets/unit_preview_pane.cpp:415
-#: src/gui/widgets/unit_preview_pane.cpp:446
+#: src/gui/widgets/unit_preview_pane.cpp:265
+#: src/gui/widgets/unit_preview_pane.cpp:295
+#: src/gui/widgets/unit_preview_pane.cpp:416
+#: src/gui/widgets/unit_preview_pane.cpp:447
 msgid "Lvl $lvl"
 msgstr ""
 
-#: src/gui/widgets/unit_preview_pane.cpp:301
-#: src/gui/widgets/unit_preview_pane.cpp:314
-#: src/gui/widgets/unit_preview_pane.cpp:454
-#: src/gui/widgets/unit_preview_pane.cpp:467
+#: src/gui/widgets/unit_preview_pane.cpp:302
+#: src/gui/widgets/unit_preview_pane.cpp:315
+#: src/gui/widgets/unit_preview_pane.cpp:455
+#: src/gui/widgets/unit_preview_pane.cpp:468
 msgid "HP: "
 msgstr ""
 
-#: src/gui/widgets/unit_preview_pane.cpp:303
-#: src/gui/widgets/unit_preview_pane.cpp:319
-#: src/gui/widgets/unit_preview_pane.cpp:457
-#: src/gui/widgets/unit_preview_pane.cpp:472
+#: src/gui/widgets/unit_preview_pane.cpp:304
+#: src/gui/widgets/unit_preview_pane.cpp:320
+#: src/gui/widgets/unit_preview_pane.cpp:458
+#: src/gui/widgets/unit_preview_pane.cpp:473
 msgid "XP: "
 msgstr ""
 
-#: src/gui/widgets/unit_preview_pane.cpp:321
-#: src/gui/widgets/unit_preview_pane.cpp:474
+#: src/gui/widgets/unit_preview_pane.cpp:322
+#: src/gui/widgets/unit_preview_pane.cpp:475
 #, fuzzy
 #| msgid "Experience modifier"
 msgid "Experience Modifier: "
 msgstr "Modifikator iskustva"
 
-#: src/gui/widgets/unit_preview_pane.cpp:324
-#: src/gui/widgets/unit_preview_pane.cpp:477
+#: src/gui/widgets/unit_preview_pane.cpp:325
+#: src/gui/widgets/unit_preview_pane.cpp:478
 msgid "MP: "
 msgstr ""
 
-#: src/gui/widgets/unit_preview_pane.cpp:362
-#: src/gui/widgets/unit_preview_pane.cpp:505
+#: src/gui/widgets/unit_preview_pane.cpp:363
+#: src/gui/widgets/unit_preview_pane.cpp:506
 msgid "Abilities"
 msgstr ""
 
 # >? Wtf?
-#: src/gui/widgets/window.cpp:939
+#: src/gui/widgets/window.cpp:743
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Kliku otpuštanja treba dugme „click_dismiss“ ili „ok“."
 
-#: src/gui/widgets/window.cpp:964 src/gui/widgets/window.cpp:1001
-#: src/tests/gui/test_gui2.cpp:569
+#: src/gui/widgets/window.cpp:768 src/gui/widgets/window.cpp:805
+#: src/tests/gui/test_gui2.cpp:575
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Ne mogu da prikažem dijalog koji ne staje na ekran."
 
@@ -7852,7 +7881,7 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:532
+#: src/image.cpp:551
 msgid "language code for localized resources^en_US"
 msgstr "sr@ijekavianlatin,sr@latin"
 
@@ -7935,6 +7964,12 @@ msgstr ""
 "Ključ ‘$deprecated_key’ je preimenovan u ‘$key’. Podrška za "
 "‘$deprecated_key’ biće uklonjena u izdanju $removal_version."
 
+#~ msgid "Password Reminder"
+#~ msgstr "Podsjetnik lozinke"
+
+#~ msgid "The maximum text width is less than 1."
+#~ msgstr "Najveća širina teksta je ispod 1."
+
 #~ msgid "Rooms"
 #~ msgstr "Sobe"
 
@@ -7942,14 +7977,6 @@ msgstr ""
 #~| msgid "Screenshot done"
 #~ msgid "Screenshot Saved"
 #~ msgstr "Snimanje završeno"
-
-# >! contexts
-# >> Take screenshot
-# >> Base for screenshot file names
-#, fuzzy
-#~| msgid "Screenshot"
-#~ msgid "Screenshots..."
-#~ msgstr "Snimak ekrana"
 
 # >> @title:window
 #, fuzzy
@@ -8013,12 +8040,6 @@ msgstr ""
 
 #~ msgid "Ban"
 #~ msgstr "Zabrani"
-
-# >> @title:window
-#, fuzzy
-#~| msgid "Choose Player"
-#~ msgid "Connected Players"
-#~ msgstr "Izbor igrača"
 
 #~ msgid "Sort lobby list"
 #~ msgstr "Poređaj spisak hola"

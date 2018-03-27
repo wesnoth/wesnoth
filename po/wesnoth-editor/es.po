@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-17 21:29+0300\n"
+"POT-Creation-Date: 2018-03-27 04:26+0300\n"
 "PO-Revision-Date: 2018-02-22 12:09+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
@@ -255,39 +255,39 @@ msgstr "Lista de reproducción"
 msgid "Assign Time Schedule"
 msgstr "Asignar la planificación de fases horarias"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:62
+#: src/editor/action/mouse/mouse_action_unit.cpp:54
 msgid "Identifier: "
 msgstr "Identificador: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:63
+#: src/editor/action/mouse/mouse_action_unit.cpp:55
 msgid "Name: "
 msgstr "Nombre: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:64
+#: src/editor/action/mouse/mouse_action_unit.cpp:56
 msgid "Type: "
 msgstr "Tipo: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:65
+#: src/editor/action/mouse/mouse_action_unit.cpp:57
 msgid "Level: "
 msgstr "Nivel: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:66
+#: src/editor/action/mouse/mouse_action_unit.cpp:58
 msgid "Cost: "
 msgstr "Coste: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:67
+#: src/editor/action/mouse/mouse_action_unit.cpp:59
 msgid "Recruit: "
 msgstr "Reclutas: "
 
-#: src/editor/controller/editor_controller.cpp:177
+#: src/editor/controller/editor_controller.cpp:176
 msgid "Fatal error"
 msgstr "Error grave"
 
-#: src/editor/controller/editor_controller.cpp:207
+#: src/editor/controller/editor_controller.cpp:206
 msgid "Do you really want to quit?"
 msgstr "¿Realmente desea salir?"
 
-#: src/editor/controller/editor_controller.cpp:209
+#: src/editor/controller/editor_controller.cpp:208
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -295,7 +295,7 @@ msgstr ""
 "¿Realmente desea salir? Se perderán los cambios realizados en el mapa desde "
 "la última vez que guardó."
 
-#: src/editor/controller/editor_controller.cpp:211
+#: src/editor/controller/editor_controller.cpp:210
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -303,129 +303,129 @@ msgstr ""
 "¿Realmente desea salir? Se perderán los cambios realizados en los siguientes "
 "mapas desde la última vez que los guardó:"
 
-#: src/editor/controller/editor_controller.cpp:220
+#: src/editor/controller/editor_controller.cpp:219
 msgid "No editor time-of-day found."
 msgstr "No se encontraron datos de la «hora del día» para el editor."
 
-#: src/editor/controller/editor_controller.cpp:1142
+#: src/editor/controller/editor_controller.cpp:1137
 msgid "Change Unit ID"
 msgstr "Cambiar el ID de la unidad"
 
-#: src/editor/controller/editor_controller.cpp:1143
+#: src/editor/controller/editor_controller.cpp:1138
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1159
+#: src/editor/controller/editor_controller.cpp:1154
 msgid "Rename Unit"
 msgstr "Renombrar unidad"
 
-#: src/editor/controller/editor_controller.cpp:1160
+#: src/editor/controller/editor_controller.cpp:1155
 msgid "Name:"
 msgstr "Nombre:"
 
-#: src/editor/map/context_manager.cpp:191
+#: src/editor/map/context_manager.cpp:189
 msgid "Load Map"
 msgstr "Cargar mapa"
 
-#: src/editor/map/context_manager.cpp:259 src/editor/map/map_context.cpp:831
+#: src/editor/map/context_manager.cpp:257 src/editor/map/map_context.cpp:831
 msgid "New Map"
 msgstr "Nuevo mapa"
 
-#: src/editor/map/context_manager.cpp:272 src/editor/map/map_context.cpp:831
+#: src/editor/map/context_manager.cpp:270 src/editor/map/map_context.cpp:831
 msgid "New Scenario"
 msgstr "Nuevo escenario"
 
-#: src/editor/map/context_manager.cpp:328
+#: src/editor/map/context_manager.cpp:326
 msgid "No Recent Files"
 msgstr "Sin archivos recientes"
 
-#: src/editor/map/context_manager.cpp:366
+#: src/editor/map/context_manager.cpp:364
 msgid "Unnamed Area"
 msgstr "Área sin nombre"
 
-#: src/editor/map/context_manager.cpp:397
+#: src/editor/map/context_manager.cpp:395
 msgid "New Side"
 msgstr "Nuevo bando"
 
-#: src/editor/map/context_manager.cpp:453
+#: src/editor/map/context_manager.cpp:451
 msgid "Apply Mask"
 msgstr "Aplicar máscara"
 
-#: src/editor/map/context_manager.cpp:462
+#: src/editor/map/context_manager.cpp:460
 msgid "Error loading mask"
 msgstr "Error al cargar la máscara"
 
-#: src/editor/map/context_manager.cpp:482
+#: src/editor/map/context_manager.cpp:480
 msgid "Identifier:"
 msgstr "Identificador:"
 
-#: src/editor/map/context_manager.cpp:482
+#: src/editor/map/context_manager.cpp:480
 msgid "Rename Area"
 msgstr "Renombrar área"
 
-#: src/editor/map/context_manager.cpp:496
+#: src/editor/map/context_manager.cpp:494
 msgid "Choose Target Map"
 msgstr "Seleccionar mapa de destino"
 
-#: src/editor/map/context_manager.cpp:505
-#: src/editor/map/context_manager.cpp:915
+#: src/editor/map/context_manager.cpp:503
+#: src/editor/map/context_manager.cpp:905
 msgid "Error loading map"
 msgstr "Error al cargar el mapa"
 
-#: src/editor/map/context_manager.cpp:631
+#: src/editor/map/context_manager.cpp:621
 msgid "Save Map As"
 msgstr "Guardar mapa como"
 
-#: src/editor/map/context_manager.cpp:652
+#: src/editor/map/context_manager.cpp:642
 msgid "Save Scenario As"
 msgstr "Guardar escenario como"
 
-#: src/editor/map/context_manager.cpp:684
+#: src/editor/map/context_manager.cpp:674
 msgid "No random map generators found."
 msgstr "No se encontraron generadores de mapas aleatorios."
 
-#: src/editor/map/context_manager.cpp:698
-#: src/editor/map/context_manager.cpp:703
+#: src/editor/map/context_manager.cpp:688
+#: src/editor/map/context_manager.cpp:693
 msgid "Map creation failed."
 msgstr "Falló la creación del mapa."
 
-#: src/editor/map/context_manager.cpp:718
+#: src/editor/map/context_manager.cpp:708
 msgid "Unsaved Changes"
 msgstr "Cambios sin guardar"
 
-#: src/editor/map/context_manager.cpp:719
+#: src/editor/map/context_manager.cpp:709
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "¿Desea descartar todos los cambios efectuados en el mapa desde que guardó "
 "por última vez?"
 
-#: src/editor/map/context_manager.cpp:775
+#: src/editor/map/context_manager.cpp:765
 msgid "This scenario is already open."
 msgstr "Este escenario ya se encuentra abierto."
 
-#: src/editor/map/context_manager.cpp:798
-#: src/editor/map/context_manager.cpp:861
+#: src/editor/map/context_manager.cpp:788
+#: src/editor/map/context_manager.cpp:851
 msgid "This map is already open."
 msgstr "Este mapa ya se encuentra abierto."
 
-#: src/editor/map/context_manager.cpp:822
+#: src/editor/map/context_manager.cpp:812
 msgid "Scenario saved."
 msgstr "Escenario guardado."
 
-#: src/editor/map/context_manager.cpp:837
+#: src/editor/map/context_manager.cpp:827
 msgid "Map saved."
 msgstr "Mapa guardado."
 
-#: src/editor/map/context_manager.cpp:894
+#: src/editor/map/context_manager.cpp:884
 msgid "Loaded embedded map data"
 msgstr "Cargado los datos de mapa incrustados"
 
-#: src/editor/map/context_manager.cpp:895
-#: src/editor/map/context_manager.cpp:908
+#: src/editor/map/context_manager.cpp:885
+#: src/editor/map/context_manager.cpp:898
 msgid "Map loaded from scenario"
 msgstr "Mapa cargado desde escenario"
 
-#: src/editor/map/context_manager.cpp:905
+#: src/editor/map/context_manager.cpp:895
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -474,27 +474,27 @@ msgstr "No se pudo guardar el mapa: $msg"
 msgid "(Unknown Group)"
 msgstr "(Grupo desconocido)"
 
-#: src/editor/palette/editor_palettes.cpp:284
+#: src/editor/palette/editor_palettes.cpp:287
 msgid "(non-core)"
 msgstr "(no principal)"
 
-#: src/editor/palette/editor_palettes.cpp:285
+#: src/editor/palette/editor_palettes.cpp:288
 msgid "Will not work in game without extra care."
 msgstr "No funcionará en un juego sin atención adicional."
 
-#: src/editor/palette/location_palette.cpp:248
+#: src/editor/palette/location_palette.cpp:230
 msgid "Go To"
 msgstr "Ir a"
 
-#: src/editor/palette/location_palette.cpp:255
+#: src/editor/palette/location_palette.cpp:237
 msgid "Add"
 msgstr "Añadir"
 
-#: src/editor/palette/location_palette.cpp:257
+#: src/editor/palette/location_palette.cpp:239
 msgid "New Location Identifier"
 msgstr "Nuevo identificador de posición"
 
-#: src/editor/palette/location_palette.cpp:261
+#: src/editor/palette/location_palette.cpp:243
 msgid "Delete"
 msgstr "Borrar"
 
