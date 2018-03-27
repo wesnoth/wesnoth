@@ -35,6 +35,8 @@
    * Updated bundled DejaVu Sans fonts to version 2.37 (from 2.35).
    * Fixed [chat] not working during [delay] or animations.
    * Removed the Password Reminder option from the Login screen.
+   * Removed (optional) requirement of libpng from SCons and CMake and the
+     associated options as Wesnoth now uses SDL_image to write PNG files.
 
 ## Version 1.13.12
  ### Security fixes
