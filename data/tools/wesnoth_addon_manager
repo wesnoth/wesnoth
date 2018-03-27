@@ -336,7 +336,6 @@ if __name__ == "__main__":
             ign = [
                 ".*",
                 ".*/",
-                "__MACOSX/",
                 "#*#",
                 "*~",
                 "*-bak",
@@ -353,9 +352,11 @@ if __name__ == "__main__":
                 "*.js",
                 "*.vbs",
                 "*.o",
+                "*.ini",
                 "Thumbs.db",
                 "*.wesnoth",
-                "*.project"]
+                "*.project",
+                "__MACOSX/"]
 
         mythread = cs.put_campaign_async(name, cfgfile, wmldir, ign, pbl)
 
