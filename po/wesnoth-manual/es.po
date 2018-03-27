@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "POT-Creation-Date: 2018-03-27 04:20+0300\n"
-"PO-Revision-Date: 2018-02-25 20:14+0100\n"
+"PO-Revision-Date: 2018-03-27 13:40+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -253,17 +253,14 @@ msgstr ""
 "jugar la campaña «Un cuento sobre dos hermanos» haciendo clic en el botón "
 "«Campaña» y seleccionándola de la lista visualizada."
 
+# No entiendo que esto sea traducible
 #. type: Content of: <book><chapter><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:90
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/main-menu-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/main-menu-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/main-menu-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/main-menu-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><simpara><inlinemediaobject><textobject><phrase>
@@ -367,13 +364,6 @@ msgstr "Cargar"
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:153
-#, fuzzy
-#| msgid ""
-#| "Click this button to load a previously saved game. You will be shown a "
-#| "dialogue listing saved games. Select the game and click Ok to load and "
-#| "continue, or Cancel to return to the Main Menu. If you select a replay "
-#| "game, you can check the Replay check box. The loaded game will make all "
-#| "the moves from the beginning while you watch."
 msgid ""
 "Click this button to load a previously saved game. You will be shown a "
 "dialogue listing saved games. Select the game and click Ok to load and "
@@ -460,20 +450,16 @@ msgstr "Créditos"
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:215
-#, fuzzy
-#| msgid ""
-#| "Click this button for a list of major Wesnoth contributors. You will "
-#| "often be able to reach them in real time at irc.freenode.org:6667 on "
-#| "#wesnoth."
 msgid ""
 "Click this button for a list of major Wesnoth contributors. You will often "
 "be able to reach them in real time at irc.freenode.org:6667 on #wesnoth or "
 "at <ulink url=\"https://discord.gg/battleforwesnoth\">https://discord.gg/"
 "battleforwesnoth</ulink>"
 msgstr ""
-"Haz clic en este botón para obtener una lista de las principales personas "
-"que han contribuido en Wesnoth. Muchas veces te será posible contactar con "
-"ellos en tiempo real en irc.freenode.org:6667 en #wesnoth."
+"Haz clic en este botón para obtener una lista de las personas que más han "
+"contribuido en Wesnoth. Muchas veces te será posible contactar con ellos en "
+"tiempo real en irc.freenode.org:6667 en #wesnoth o en <ulink url=\"https://"
+"discord.gg/battleforwesnoth\">https://discord.gg/battleforwesnoth</ulink>"
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:223
@@ -538,6 +524,9 @@ msgid ""
 "Click this button to view game version and technical information. It may be "
 "useful when troubleshooting issues."
 msgstr ""
+"Haz clic en este botón para ver la versión del juego además de otra "
+"información técnica. Podría ser de utilidad al informar para la resolución "
+"de incidencias."
 
 #. type: Content of: <book><chapter><section><title>
 #: doc/manual/manual.en.xml:277
@@ -566,10 +555,8 @@ msgstr ""
 
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:292
-#, fuzzy
-#| msgid "Message another player (in multiplayer)"
 msgid "There are also campaigns that can be played in multiplayer."
-msgstr "Enviar un mensaje a otro jugador (partidas multijugador)"
+msgstr "También hay campañas que pueden ser jugadas en modo multijugador."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:294
@@ -627,18 +614,6 @@ msgstr ""
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:313
-#, fuzzy
-#| msgid ""
-#| "In general multiplayer games are played against other players via the "
-#| "Internet (you can also run them on your LAN if you have one). All these "
-#| "games are co-ordinated through the Wesnoth multiplayer server. "
-#| "Multiplayer games can take anywhere from 1 hour to 10 hours, depending on "
-#| "how many players there are (and the size of the map). The average time is "
-#| "between 3 to 7 hours. Games can be saved and loaded as many times as you "
-#| "like. So, it&#8217;s possible for some games to last 1 or 2 weeks, even "
-#| "though the play time is only a few hours. You cannot carry over units in "
-#| "multiplayer from one scenario to the next, so building up your army&#8217;"
-#| "s strength is possible only within the scenario."
 msgid ""
 "In general multiplayer games are played against other players via the "
 "Internet (you can also run them on your LAN if you have one). All these "
@@ -652,16 +627,16 @@ msgid ""
 "strength is possible only within the scenario."
 msgstr ""
 "En general las partidas multijugador se juegan contra otros jugadores a "
-"través de internet (también se pueden establecer en su red local si tiene "
-"una). Todas estas partidas son coordinadas a través del servidor "
+"través de internet (también se pueden establecer en su red de área local si "
+"tiene una). Todas estas partidas son coordinadas a través del servidor "
 "multijugador de Wesnoth. Las partidas multijugador pueden tomar de 1 a 10 "
 "horas, dependiendo de cuántos jugadores hay (y del tamaño del mapa). El "
 "tiempo promedio es de entre 3 a 7 horas. Las partidas se pueden guardar y "
 "cargar tantas veces como desee. Por lo tanto, es posible que algunas "
 "partidas duren entre 1 o 2 semanas, aunque el tiempo real del juego sea de "
-"tan sólo unas pocas horas. En multijugador no se pueden llevar unidades de "
-"un escenario al siguiente, por lo que el desarrollo de la fuerza de su "
-"ejército sólo es posible dentro de la partida en sí."
+"tan sólo unas pocas horas. Al jugar un solo escenario no se pueden "
+"reincorporar unidades de un escenario a otro, por lo que el desarrollo de la "
+"fuerza de su ejército sólo es posible dentro de la partida en sí."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:323
@@ -672,17 +647,14 @@ msgstr ""
 "Hay varias posibles opciones que se te ofrecen al hacer clic en el botón "
 "«Multijugador»:"
 
+# No encuentro nada traducible
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:326
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/multiplayer-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/multiplayer-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/multiplayer-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/multiplayer-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -697,14 +669,6 @@ msgstr "Nombre de usuario"
 
 #. type: Content of: <book><chapter><section><section><section><simpara>
 #: doc/manual/manual.en.xml:333
-#, fuzzy
-#| msgid ""
-#| "This will be your name on the multiplayer server. If you have an account "
-#| "on the <ulink url=\"http://www.wesnoth.org/forum\">Wesnoth forums</"
-#| "ulink>, you may use the same username and password for joining the "
-#| "official server. A password box will pop up if a password is required for "
-#| "the current username. You cannot use a registered name without the "
-#| "password."
 msgid ""
 "This will be your name on the multiplayer server. If you have an account on "
 "the <ulink url=\"https://forums.wesnoth.org/\">Wesnoth forums</ulink>, you "
@@ -713,11 +677,10 @@ msgid ""
 "You cannot use a registered name without the password."
 msgstr ""
 "Éste será tu nombre en el servidor multijugador. Si posees una cuenta en los "
-"<ulink url=\"http://www.wesnoth.org/forum\">foros de Wesnoth</ulink> (en "
-"inglés), podrás utilizar tu mismo nombre de usuario y contraseña para unirte "
-"al servidor oficial. Un cuadro de diálogo aparecerá para introducir la "
-"contraseña si es aplicable. No puedes utilizar un nombre registrado sin la "
-"contraseña."
+"<ulink url=\"https://forums.wesnoth.org/\">foros de Wesnoth</ulink>, podrás "
+"utilizar tu mismo nombre de usuario y contraseña para unirte al servidor "
+"oficial. Un cuadro de diálogo aparecerá para introducir la contraseña si es "
+"aplicable. No puedes utilizar un nombre registrado sin la contraseña."
 
 #. type: Content of: <book><chapter><section><section><section><title>
 #: doc/manual/manual.en.xml:340
@@ -757,19 +720,14 @@ msgstr ""
 
 #. type: Content of: <book><chapter><section><section><section><simpara>
 #: doc/manual/manual.en.xml:351
-#, fuzzy
-#| msgid ""
-#| "A complete list of official and user setup servers is listed at this "
-#| "website: <ulink url=\"http://wesnoth.org/wiki/MultiplayerServers"
-#| "\">Multiplayer servers</ulink>."
 msgid ""
 "A complete list of official and user setup servers is listed at this "
 "website: <ulink url=\"https://wiki.wesnoth.org/MultiplayerServers"
 "\">Multiplayer servers</ulink>."
 msgstr ""
-"Una lista bastante completa de servidores oficiales y servidores dispuestos "
-"por usuarios aparece en esta página web: <ulink url=\"http://wesnoth.org/"
-"wiki/MultiplayerServers\">Servidores multijugador (en inglés)</ulink>."
+"Una lista completa de servidores oficiales y de servidores proporcionados "
+"por usuarios aparece en esta página web: <ulink url=\"https://wiki.wesnoth."
+"org/MultiplayerServers\">Servidores multijugador</ulink>."
 
 #. type: Content of: <book><chapter><section><section><section><simpara>
 #: doc/manual/manual.en.xml:353
@@ -859,17 +817,14 @@ msgstr ""
 msgid "The Game Screen"
 msgstr "La pantalla del juego"
 
+# No encuentro nada traducible
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:391
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/game-screen-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/game-screen-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/game-screen-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/game-screen-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -893,17 +848,14 @@ msgstr ""
 "información útil sobre la partida y que se describen con más detalle a "
 "continuación."
 
+# No veo nada traducible
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:402
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/top_pane-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/top_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/top_pane-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/top_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -966,17 +918,14 @@ msgstr ""
 "Hora actual o tiempo restante (en los juegos multijugador con límite de "
 "tiempo por turno)"
 
+# No parece traducible
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:456
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/right_pane-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/right_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/right_pane-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/right_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -1859,15 +1808,10 @@ msgstr ":"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1165
-#, fuzzy
-#| msgid ""
-#| "<ulink url=\"http://www.wesnoth.org/wiki/CommandMode\">Command mode</"
-#| "ulink>"
 msgid ""
 "<ulink url=\"https://wiki.wesnoth.org/CommandMode\">Command mode</ulink>"
 msgstr ""
-"<ulink url=\"http://www.wesnoth.org/wiki/CommandMode\">Modo de comandos "
-"(Command mode)</ulink>"
+"<ulink url=\"https://wiki.wesnoth.org/CommandMode\">Modo de comandos</ulink>"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1170
@@ -1956,15 +1900,11 @@ msgstr "Reclutar y reincorporar"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:1254
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/recruit-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/recruit-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/recruit-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/recruit-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -2582,16 +2522,13 @@ msgstr "Salvaje"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:1650
-#, fuzzy
-#| msgid ""
-#| "Units with the Feral trait only receive 50% defense in villages "
-#| "regardless of the base terrain the village is on."
 msgid ""
 "Units with the Feral trait only receive 50% defense in villages regardless "
 "of the base terrain the village is on (Bats, Falcons)."
 msgstr ""
 "Una unidad con el rasgo «salvaje» recibirá un máximo del 50% de defensa en "
-"las ciudades terrestres."
+"las aldeas terrestres con independencia del tipo de terreno en el que se "
+"asiente la población (Murciélagos, Halcones)."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1657

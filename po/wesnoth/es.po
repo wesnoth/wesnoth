@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:21+0300\n"
-"PO-Revision-Date: 2018-03-23 09:14+0100\n"
+"PO-Revision-Date: 2018-03-27 13:06+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth Spanish translation\n"
 "Language: es\n"
@@ -6750,10 +6750,8 @@ msgid "Defense properties: "
 msgstr "Propiedades defensivas: "
 
 #: src/help/help_topic_generators.cpp:245
-#, fuzzy
-#| msgid "Level: "
 msgid "Level"
-msgstr "Nivel: "
+msgstr "Nivel"
 
 #: src/help/help_topic_generators.cpp:306
 msgid "Advances from: "
@@ -8198,20 +8196,21 @@ msgid "infix_binary^i"
 msgstr "i"
 
 #: src/synced_commands.cpp:403
-#, fuzzy
-#| msgid "Unknown era"
 msgid "(unknown player)"
-msgstr "Era desconocida"
+msgstr "(jugador desconocido)"
 
 #: src/synced_commands.cpp:408
 msgid "The :$command debug command was used during $player’s turn"
 msgstr ""
+"El comando de depuración :$command fue utilizado durante el turno de $player"
 
 #: src/synced_commands.cpp:416
 msgid ""
 "A player used a debug command during the game. If this is unexpected, it is "
 "possible the player in question is cheating."
 msgstr ""
+"Un jugador utilizó un comando de depuración durante el juego. Si esto parece "
+"inesperado, es posible que el jugador en cuestión esté haciendo trampa."
 
 #: src/synced_commands.cpp:418
 msgid "Details:"
@@ -8219,17 +8218,17 @@ msgstr "Detalles:"
 
 #: src/synced_commands.cpp:421
 msgid "Do you wish to save the game before continuing?"
-msgstr ""
+msgstr "¿Desea guardar la partida antes de continuar?"
 
 #: src/synced_commands.cpp:423
-#, fuzzy
-#| msgid "(debug command)"
 msgid "Debug Command Used"
-msgstr "(orden de depuración)"
+msgstr "Comando de depuración utilizado"
 
 #: src/synced_commands.cpp:509
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
+"Una unidad fue creada usando el modo de depuración durante el turno de "
+"$player"
 
 #: src/synced_user_choice.cpp:326
 msgid "waiting for $desc from side(s) $sides"
@@ -8365,11 +8364,8 @@ msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
 #: src/units/unit.cpp:1791
-#, fuzzy
-#| msgid "<span color=\"$color\">$number_or_percent</span> move"
-#| msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
-msgstr "<span color=\"$color\">$number_or_percent</span> movimiento"
+msgstr "<span color=\"$color\">$number_or_percent</span> PV"
 
 #: src/units/unit.cpp:1801
 msgid "<span color=\"$color\">$number_or_percent</span> move"
