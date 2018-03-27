@@ -1,4 +1,7 @@
 ## Version 1.15.0-dev
+ ### Campaigns
+   * Eastern Invasion
+     * Fixed some Lua errors in S05.
  ### Language and i18n
    * Fixed many cases of interpolated strings in the engine possibly having
      their translations retrieved from the wrong textdomain and falling back
@@ -20,8 +23,18 @@
      a matching weapon.
    * Support WFL and percentages in [random_placement]num_items=
  ### Miscellaneous and bug fixes
+   * Fixed minimap buttons not doing anything (bug #2681)
+   * Fixed events with an id but no name being rejected
+   * Fixed assertion when using [inspect]
+   * Fixed inability to deselect modifications in single-player
+   * Fixed infinite loading screen when logging in with an invalid name
    * Improved UX in multiplayer when synced debug commands are used during a
      game.
+   * Updated bundled Oldania font to version 1.007 (from 1.006).
+   * Added bold and italic Oldania font variants.
+   * Updated bundled DejaVu Sans fonts to version 2.37 (from 2.35).
+   * Fixed [chat] not working during [delay] or animations.
+   * Removed the Password Reminder option from the Login screen.
 
 ## Version 1.13.12
  ### Security fixes

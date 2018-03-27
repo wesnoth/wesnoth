@@ -5,6 +5,8 @@ changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog.md
 ## Version 1.15.0-dev
  ### Language and i18n
    * Updated translations: Spanish.
+ ### Miscellaneous and bug fixes
+   * Fixed minimap buttons not doing anything (bug #2681)
 
 
 ## Version 1.13.12
