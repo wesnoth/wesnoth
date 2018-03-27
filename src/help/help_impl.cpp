@@ -1327,22 +1327,7 @@ color_t string_to_color(const std::string &cmp_str)
 std::vector<std::string> split_in_width(const std::string &/*s*/, const int /*font_size*/,
 		const unsigned /*width*/)
 {
-	std::vector<std::string> res;
-	try {
-#if 0
-	const std::string& first_line = font::word_wrap_text(s, font_size, width, -1, 1, true);
-	res.push_back(first_line);
-	if(s.size() > first_line.size()) {
-		res.push_back(s.substr(first_line.size()));
-	}
-#endif
-	}
-	catch (utf8::invalid_utf8_exception&)
-	{
-		throw parse_error (_("corrupted original file"));
-	}
-
-	return res;
+	return {};
 }
 
 std::string remove_first_space(const std::string& text)
