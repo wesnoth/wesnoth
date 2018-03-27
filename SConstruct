@@ -182,6 +182,9 @@ if env['ccache']: env.Tool('ccache')
 boost_version = '1.50.0'
 
 
+def SortHelpText(a, b):
+    return (a > b) - (a < b)
+
 Help("""Arguments may be a mixture of switches and targets in any order.
 Switches apply to the entire build regardless of where they are in the order.
 Important switches include:
@@ -232,7 +235,7 @@ specifying --option-cache=FILE command line argument. Current option values can 
 
 If you set CXXFLAGS and/or LDFLAGS in the environment, the values will
 be appended to the appropriate variables within scons.
-""" + opts.GenerateHelpText(env, sort=cmp))
+""" + opts.GenerateHelpText(env, sort=SortHelpText))
 
 if GetOption("help"):
     Return()
