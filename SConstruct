@@ -232,7 +232,7 @@ specifying --option-cache=FILE command line argument. Current option values can 
 
 If you set CXXFLAGS and/or LDFLAGS in the environment, the values will
 be appended to the appropriate variables within scons.
-""" + opts.GenerateHelpText(env))
+""" + opts.GenerateHelpText(env, sort=cmp))
 
 if GetOption("help"):
     Return()
