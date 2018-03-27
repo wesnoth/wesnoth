@@ -623,11 +623,7 @@ void run_event_loop()
 	//
 	CVideo& video = CVideo::get_singleton();
 
-#ifdef USE_GL_RENDERING
 	gl::clear_screen();
-#else
-	video.clear_screen();
-#endif
 
 	raise_draw_event();
 

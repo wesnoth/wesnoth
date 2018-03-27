@@ -13,12 +13,7 @@
 
 #pragma once
 
-#ifdef USE_GL_RENDERING
-
 #include "sdl/window.hpp"
-
-#include <GL/glew.h>
-#include <GL/gl.h>
 
 namespace gl
 {
@@ -26,26 +21,20 @@ namespace gl
 class context
 {
 public:
+	context() = default;
 	context(const context&) = delete;
 	context& operator=(const context&) = delete;
 
-	/**
-	 * Constructor
-	 *
-	 * @param window           The SDL window to attach a context to.
-	 */
-	context(sdl::window* window);
-
 	~context();
+
+	void init(sdl::window* window);
 
 private:
 	/** Sets any relevant flags for the GL context. */
 	void set_context_flags();
 
 	/** The window's OpenGL context. */
-	SDL_GLContext gl_context_;
+	SDL_GLContext gl_context_ = nullptr;
 };
 
 } // namespace gl
-
-#endif // USE_GL_RENDERING

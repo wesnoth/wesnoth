@@ -13,13 +13,9 @@
 
 #pragma once
 
-#ifdef USE_GL_RENDERING
-
 namespace gl
 {
 /** Fills the screen with fully-transparent black. */
 void clear_screen();
 
 } // namespace gl
-
-#endif // USE_GL_RENDERING

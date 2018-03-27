@@ -35,11 +35,7 @@ editor_display::editor_display(editor_controller& controller, const config& them
 	, brush_locations_()
 	, controller_(controller)
 {
-#ifdef USE_GL_RENDERING
 	gl::clear_screen();
-#else
-	video().clear_screen();
-#endif
 }
 
 void editor_display::add_brush_loc(const map_location& hex)

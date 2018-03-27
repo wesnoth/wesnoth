@@ -217,10 +217,8 @@ private:
 	/** The SDL window object. */
 	std::unique_ptr<sdl::window> window;
 
-#ifdef USE_GL_RENDERING
 	/** The OpenGL context attached to the SDL window. */
-	std::unique_ptr<gl::context> gl_context;
-#endif
+	gl::context gl_context_;
 
 	/** Initializes the SDL video subsystem. */
 	void initSDL();

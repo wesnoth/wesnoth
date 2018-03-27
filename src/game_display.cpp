@@ -71,12 +71,7 @@ game_display::game_display(game_board& board, std::weak_ptr<wb::manager> wb,
 	, mode_(RUNNING)
 	, needs_rebuild_(false)
 {
-#ifdef USE_GL_RENDERING
 	gl::clear_screen();
-#else
-	video().clear_screen();
-#endif
-
 }
 
 game_display::~game_display()
