@@ -15,16 +15,14 @@
    * Fixed "Search" placeholder text in dialog item filters not being
      translatable (bug #2709, bug #2732).
    * Updated translations: Spanish
- ### WML engine
-   * Improved UX in multiplayer when synced debug commands are used during a
-     game.
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
    * Fixed events with an id but no name being rejected
    * Fixed assertion when using [inspect]
    * Fixed inability to deselect modifications in single-player
    * Fixed infinite loading screen when logging in with an invalid name
-   * Made debug command notifications more noticeable
+   * Improved UX in multiplayer when synced debug commands are used during a
+     game.
    * Updated bundled Oldania font to version 1.007 (from 1.006).
    * Added bold and italic Oldania font variants.
    * Updated bundled DejaVu Sans fonts to version 2.37 (from 2.35).
