@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2018 Wesnoth development team
+# Copyright (C) 2005-2017 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Dionysus(unicon) <huang.wei.bhu@gmail.com>, 2007.
 # sylecn <sylecn@yahoo.com.cn>, 2009.
@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2017-05-28 11:49+0800\n"
+"PO-Revision-Date: 2018-03-27 20:52+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -294,6 +294,8 @@ msgid ""
 "A welcome sight to any traveler, an oasis allows units to heal as if "
 "stationed in a village, but provides no income or defensive advantage."
 msgstr ""
+"对任何旅行者来说，见到绿洲都是让人高兴的事。绿洲可以治疗单位，就像村庄一样，"
+"但不提供任何收入和防御优势。"
 
 #. [terrain_type]: id=sand_rubble
 #: data/core/terrain.cfg:332
@@ -353,7 +355,7 @@ msgstr "营火"
 #. [terrain_type]: id=wallfire
 #: data/core/terrain.cfg:437
 msgid "Sconce"
-msgstr ""
+msgstr "烛台"
 
 #. [terrain_type]: id=brazier
 #: data/core/terrain.cfg:446
@@ -574,17 +576,13 @@ msgstr "沙漠山岭"
 
 #. [terrain_type]: id=regular_stone_floor
 #: data/core/terrain.cfg:821
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Stone Floor"
-msgstr "木地板"
+msgstr "石地板"
 
 #. [terrain_type]: id=regular_stone_floor
 #: data/core/terrain.cfg:824
-#, fuzzy
-#| msgid "Basic Wooden Floor"
 msgid "Basic Stone Floor"
-msgstr "基本木地板"
+msgstr "基本石地板"
 
 #. [terrain_type]: id=rug_floor
 #. [terrain_type]: id=rug2_floor
@@ -592,26 +590,22 @@ msgstr "基本木地板"
 #: data/core/terrain.cfg:831 data/core/terrain.cfg:841
 #: data/core/terrain.cfg:851
 msgid "Rug"
-msgstr ""
+msgstr "地毯"
 
 #. [terrain_type]: id=rug_floor
 #: data/core/terrain.cfg:834
 msgid "Royal Rug"
-msgstr ""
+msgstr "王家地毯"
 
 #. [terrain_type]: id=rug2_floor
 #: data/core/terrain.cfg:844
-#, fuzzy
-#| msgid "Normal Replays"
 msgid "Normal Rug"
-msgstr "普通回放"
+msgstr "普通地毯"
 
 #. [terrain_type]: id=rug3_floor
 #: data/core/terrain.cfg:854
-#, fuzzy
-#| msgid "Cave"
 msgid "Cave Rug"
-msgstr "洞穴"
+msgstr "洞穴地毯"
 
 #. [terrain_type]: id=wood_floor
 #: data/core/terrain.cfg:861
@@ -685,19 +679,6 @@ msgstr "岩石洞穴"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:967
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
-#| "water and wind, carrying erosive particles that carve the rock. It "
-#| "resembles a scraggy underground cavern which reduces efficiency of most "
-#| "units, but shoulders defense. Dwarves and trolls, who are main settlers "
-#| "of caves, have a relatively easy time navigating this terrain. Dwarves, "
-#| "who by dint of their small size have the full advantage of navigation in "
-#| "such topography. Occasionally caves are "
-#| "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>\n"
-#| "\n"
-#| "Most units have about 50% defense in rocky caves, whereas cavalry are "
-#| "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -713,13 +694,13 @@ msgid ""
 "text='illuminated'</ref>."
 msgstr ""
 "<bold>text='岩石洞穴'</bold>地形因携带有侵蚀性微粒的水和风的作用而形成。它形"
-"如散乱的地下洞窟，会降低绝大多数单位的移动效率，但却有助于防御。矮人和巨魔是"
-"洞穴中的主要住民，他们在此地形中游走会相对轻松一些。矮人们受益于他们低矮的身"
-"材，在这种地形中行动最方便。有时洞穴会被<ref>dst='terrain_illuminated_cave' "
-"text='照亮'</ref>。\n"
+"如散乱的地下洞窟，有助于防御，但绝大多数单位都难以在其中行动。只有洞穴的住"
+"民，例如矮人和巨魔，才能在此种地势上不受阻碍地行动。\n"
 "\n"
-"绝大多数单位在岩石洞穴中有50%的防御率，而骑兵被限制在40%。矮人在岩石洞穴中享"
-"有60%的防御率。"
+"绝大多数单位在岩石洞穴中有50%的防御率，而骑兵被限制在40%。由于矮人身材矮小，"
+"因此他们在岩石洞穴中享有60%的防御率。\n"
+"\n"
+"有时洞穴会被<ref>dst='terrain_illuminated_cave' text='照亮'</ref>。"
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -810,24 +791,24 @@ msgstr "沙漠中的高不可攀的山岭"
 #: data/core/terrain.cfg:1139 data/core/terrain.cfg:1161
 #: data/core/terrain.cfg:1175
 msgid "Cave Wall"
-msgstr "洞穴墙壁"
+msgstr "洞穴墙"
 
 #. [terrain_type]: id=cavewall
 #: data/core/terrain.cfg:1140
 msgid "Natural Cave Wall"
-msgstr "天然的洞穴墙壁"
+msgstr "天然洞穴墙"
 
 #. [terrain_type]: id=minewall
 #. [terrain_type]: id=wall_stone_mine
 #: data/core/terrain.cfg:1150 data/core/terrain.cfg:1151
 #: data/core/terrain.cfg:1208
 msgid "Mine Wall"
-msgstr "矿中墙壁"
+msgstr "矿中墙"
 
 #. [terrain_type]: id=cavewall_earthy
 #: data/core/terrain.cfg:1162
 msgid "Natural Earthy Cave Wall"
-msgstr "天然的泥土洞穴墙壁"
+msgstr "天然泥土洞穴墙"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
@@ -845,7 +826,7 @@ msgstr "被照亮的石墙"
 #. [terrain_type]: id=wall_stone_mine
 #: data/core/terrain.cfg:1209
 msgid "Straight Mine Wall"
-msgstr "矿中直壁"
+msgstr "矿中直墙"
 
 #. [terrain_type]: id=wall_stone_white
 #: data/core/terrain.cfg:1219
@@ -855,14 +836,12 @@ msgstr "内壁"
 #. [terrain_type]: id=wall_stone_white
 #: data/core/terrain.cfg:1220
 msgid "Straight White Wall"
-msgstr "白色直壁"
+msgstr "白色直墙"
 
 #. [terrain_type]: id=wall_stone_clean
 #: data/core/terrain.cfg:1231
-#, fuzzy
-#| msgid "Stone Wall"
 msgid "Clean Stone Wall"
-msgstr "石墙"
+msgstr "干净的石墙"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -886,7 +865,7 @@ msgstr "大门"
 #: data/core/terrain.cfg:1248 data/core/terrain.cfg:1261
 #: data/core/terrain.cfg:1275 data/core/terrain.cfg:1413
 msgid "Rusty Gate"
-msgstr "生锈的大门"
+msgstr "锈门"
 
 #. [terrain_type]: id=portal_door_wooden_sw
 #. [terrain_type]: id=portal_door_wooden_se
@@ -917,30 +896,26 @@ msgstr "木门"
 #. [terrain_type]: id=portal_gate_rusty_open_n
 #: data/core/terrain.cfg:1332 data/core/terrain.cfg:1344
 #: data/core/terrain.cfg:1357
-#, fuzzy
-#| msgid "Rusty Gate"
 msgid "Open Rusty Gate"
-msgstr "生锈的大门"
+msgstr "开启的锈门"
 
 #. [terrain_type]: id=portal_door_wooden_open_sw
 #. [terrain_type]: id=portal_door_wooden_open_se
 #. [terrain_type]: id=portal_door_wooden_open_n
 #: data/core/terrain.cfg:1370 data/core/terrain.cfg:1382
 #: data/core/terrain.cfg:1395
-#, fuzzy
-#| msgid "Wooden Door"
 msgid "Open Wooden Door"
-msgstr "木门"
+msgstr "开启的木门"
 
 #. [terrain_type]: id=p_open_rusty
 #: data/core/terrain.cfg:1443
 msgid "Rusty Open Gate"
-msgstr "生锈的打开的门"
+msgstr "开启的锈门"
 
 #. [terrain_type]: id=p_open_wooden
 #: data/core/terrain.cfg:1457
 msgid "Wooden Open Door"
-msgstr "木质的打开的门"
+msgstr "开启的木门"
 
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:1473
@@ -1191,10 +1166,8 @@ msgstr "营地"
 
 #. [terrain_type]: id=encampment_ruin
 #: data/core/terrain.cfg:1936
-#, fuzzy
-#| msgid "Aquatic Encampment"
 msgid "Ruined Encampment"
-msgstr "水中营地"
+msgstr "毁坏的营地"
 
 #. [terrain_type]: id=encampment_snow
 #: data/core/terrain.cfg:1948
@@ -1248,10 +1221,8 @@ msgstr "精灵城堡"
 
 #. [terrain_type]: id=elven_castle_ruin
 #: data/core/terrain.cfg:2019
-#, fuzzy
-#| msgid "Elven Castle"
 msgid "Elven Castle Ruin"
-msgstr "精灵城堡"
+msgstr "精灵城堡废墟"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:2031
@@ -1294,10 +1265,8 @@ msgstr "毁坏的沙漠城堡"
 
 #. [terrain_type]: id=troll_encampment
 #: data/core/terrain.cfg:2105
-#, fuzzy
-#| msgid "Tall Encampment Keep"
 msgid "Troll Encampment"
-msgstr "高耸的营地主楼"
+msgstr "巨魔营地"
 
 #. [terrain_type]: id=aquatic_camp
 #: data/core/terrain.cfg:2117
@@ -1322,10 +1291,8 @@ msgstr "营地主楼"
 
 #. [terrain_type]: id=encampment_ruin_keep
 #: data/core/terrain.cfg:2158
-#, fuzzy
-#| msgid "Encampment Keep"
 msgid "Ruined Encampment Keep"
-msgstr "营地主楼"
+msgstr "毁坏的营地主楼"
 
 #. [terrain_type]: id=encampment_keep_tall
 #: data/core/terrain.cfg:2171
@@ -1384,10 +1351,8 @@ msgstr "精灵城堡主楼"
 
 #. [terrain_type]: id=elven_keep_ruin
 #: data/core/terrain.cfg:2262
-#, fuzzy
-#| msgid "Elven Castle Keep"
 msgid "Elven Keep Ruin"
-msgstr "精灵城堡主楼"
+msgstr "精灵主楼废墟"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:2275
@@ -1435,10 +1400,8 @@ msgstr "水中营地主楼"
 
 #. [terrain_type]: id=troll_campkeep
 #: data/core/terrain.cfg:2366
-#, fuzzy
-#| msgid "Tall Encampment Keep"
 msgid "Troll Encampment Keep"
-msgstr "高耸的营地主楼"
+msgstr "巨魔营地主楼"
 
 #. [terrain_type]: id=merman_castlekeep
 #: data/core/terrain.cfg:2379
@@ -1589,10 +1552,8 @@ msgstr "战场黑幕"
 
 #. [terrain_type]: id=fake_shroud_overlay
 #: data/core/terrain.cfg:2752
-#, fuzzy
-#| msgid "Shroud"
 msgid "Fake Shroud"
-msgstr "战场黑幕"
+msgstr "虚假黑幕"
 
 #. [terrain_type]: id=fog
 #. [toggle_button]: id=sort_6
@@ -1779,7 +1740,7 @@ msgstr ""
 "<bold>text='山岭'</bold>非常陡峭，单位们常常得翻越重重的障碍才能在其上移"
 "动。\n"
 "正因为如此，山岭为绝大多数部队提供了可观的防御加成，但也严重阻碍了一切行军。"
-"绝大多数骑兵干脆不能进入山岭地形。但是，精灵骑兵和哥布林骑兵是例外。矮人和巨"
+"绝大多数骑兵干脆不能进入山岭地形。但是，精灵骑兵和地精狼骑手是例外。矮人和巨"
 "魔生活在山岭地形中，因而在此如鱼得水。\n"
 "\n"
 "绝大多数单位在山岭中拥有60%的防御率，而矮人则享受到70%。"
@@ -1949,7 +1910,7 @@ msgstr "（按‘$hotkey|’以查看更多信息）"
 
 #: data/gui/macros/_initial.cfg:348
 msgid "Search"
-msgstr ""
+msgstr "搜索"
 
 #. [label]: id=no_options_notice
 #: data/gui/macros/custom_options_tree.cfg:26
@@ -1958,7 +1919,7 @@ msgstr ""
 msgid ""
 "There are no custom options available for the selected era, game, or "
 "modification."
-msgstr "配置所选的自定义模组的设置"
+msgstr "配置所选的自定义模组的设置。"
 
 #. [button]: id=reset_option_values
 #. [button]: id=btn_reset_hotkeys
@@ -1973,8 +1934,10 @@ msgstr "默认"
 
 #. [label]
 #: data/gui/macros/player_list_panel.cfg:30
+#, fuzzy
+#| msgid "Computer Player"
 msgid "Connected Players"
-msgstr "已连接的玩家"
+msgstr "电脑玩家"
 
 #. [toggle_button]: id=sort_0
 #. [label]
@@ -2263,8 +2226,6 @@ msgstr "使用网页浏览器查看此URL"
 
 #. [text_box]: id=filter
 #: data/gui/window/addon_manager.cfg:694
-#, fuzzy
-#| msgid "Filters on addon descripton, version, type or author."
 msgid "Filters on addon description, version, type or author."
 msgstr "使用附加组件描述、版本、类型或作者进行筛选。"
 
@@ -2275,17 +2236,13 @@ msgstr "状态："
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:760
-#, fuzzy
-#| msgid "Leader:"
 msgid "Order:"
-msgstr "首领："
+msgstr "顺序："
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:846 data/gui/window/addon_manager.cfg:1021
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-ons Manager"
-msgstr "附加组件"
+msgstr "附加组件管理器"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
@@ -2470,27 +2427,23 @@ msgstr "玩一场战役"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:214
-#, fuzzy
-#| msgid "Sort players:"
 msgid "Sort by:"
-msgstr "玩家排序："
+msgstr "排序："
 
 #. [toggle_button]: id=sort_name
 #: data/gui/window/campaign_dialog.cfg:227
 msgid "Sort by full campaign name in alphabetical order"
-msgstr ""
+msgstr "按照战役全名的字母顺序排序"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:239
-#, fuzzy
-#| msgid "Date"
 msgid "Dates"
 msgstr "日期"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:240
 msgid "Sort in approximate chronological order of story events"
-msgstr ""
+msgstr "按照故事事件的大略时间顺序排序"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:276
@@ -2507,7 +2460,7 @@ msgstr "确定性随机模式"
 msgid ""
 "Makes the random number generator yield the same results even after "
 "reloading a game"
-msgstr "让随机数发生器即使在重新载入游戏后也产生同样的结果。"
+msgstr "让随机数发生器即使在重新载入游戏后也产生同样的结果"
 
 #. [label]: id=title
 #: data/gui/window/campaign_difficulty.cfg:63
@@ -3094,7 +3047,7 @@ msgstr "退出"
 #. [label]: id=title
 #: data/gui/window/game_cache_options.cfg:36
 msgid "WML Cache"
-msgstr "WML缓存："
+msgstr "WML缓存"
 
 #. [label]
 #: data/gui/window/game_cache_options.cfg:53
@@ -4252,10 +4205,8 @@ msgstr "账号："
 #. [toggle_button]: id=remember_password
 #: data/gui/window/mp_login.cfg:199
 #: data/gui/window/preferences/05_multiplayer.cfg:68
-#, fuzzy
-#| msgid "Save password to preferences (clear text)"
 msgid "Save password locally (encrypted)"
-msgstr "将密码保存至首选项（明文）"
+msgstr "在本地保存密码（明文）"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=label
@@ -4269,14 +4220,6 @@ msgstr "多人游戏"
 
 #. [text_box]: id=user_name
 #: data/gui/window/mp_method_selection.cfg:92
-#, fuzzy
-#| msgid ""
-#| "You may login to the official multiplayer server with your forum username "
-#| "and password.\n"
-#| "Note that registration is not required to join the server: you need to "
-#| "supply a password only if you wish to use a registered username.\n"
-#| "\n"
-#| "The Battle for Wesnoth forum can be found at http://forums.wesnoth.org/"
 msgid ""
 "You may login to the official multiplayer server with your forum username "
 "and password.\n"
@@ -4289,7 +4232,7 @@ msgstr ""
 "请注意，要加入服务器并不需要注册，只有在你想使用一个已经注册的用户名时才需要"
 "提供密码。\n"
 "\n"
-"韦诺之战论坛可在此处找到：http://www.wesnoth.org/forum/"
+"韦诺之战论坛可在此处找到：https://forums.wesnoth.org/"
 
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:183
@@ -4501,7 +4444,7 @@ msgstr "设置自动存档的最大保留数量"
 #. [button]: id=cachemg
 #: data/gui/window/preferences/01_general.cfg:221
 msgid "Cache"
-msgstr "缓存："
+msgstr "缓存"
 
 #. [button]: id=cachemg
 #: data/gui/window/preferences/01_general.cfg:222
@@ -4869,7 +4812,7 @@ msgstr "将此用户名从列表中移除"
 #. [label]: id=no_friends_notice
 #: data/gui/window/preferences/05_multiplayer.cfg:311
 msgid "You have not befriended or ignored any other players."
-msgstr "你并没有将任何其他玩家加为好友或忽略"
+msgstr "你并没有将任何其他玩家加为好友或忽略。"
 
 #. [button]: id=open
 #: data/gui/window/screenshot_notification.cfg:49
@@ -4889,7 +4832,7 @@ msgstr "截屏……"
 #. [button]: id=browse_dir
 #: data/gui/window/screenshot_notification.cfg:189
 msgid "Browse the screenshots folder using a file manager"
-msgstr "使用文件管理器浏览截屏文件夹"
+msgstr "使用文件管理器浏览截屏"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=save
@@ -4936,7 +4879,7 @@ msgstr "配置选项"
 #. [label]
 #: data/gui/window/sp_options_configure.cfg:62
 msgid "Configure settings for the selected custom modifications."
-msgstr "配置所选的自定义模组的设置"
+msgstr "配置所选的自定义模组的设置。"
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:129
@@ -4977,22 +4920,18 @@ msgstr "跳过"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/window/surrender_quit.cfg:40 src/hotkey/hotkey_command.cpp:105
-#, fuzzy
-#| msgid "Create Game"
 msgid "Surrender Game"
-msgstr "创建游戏"
+msgstr "投降"
 
 #. [label]: id=lblMessage
 #: data/gui/window/surrender_quit.cfg:60
-#, fuzzy
-#| msgid "Do you really want to delete this game?"
 msgid "Do you really want to surrender and quit the game?"
-msgstr "你真的要删除这个游戏吗？"
+msgstr "真的要投降并退出游戏吗？"
 
 #. [button]: id=quit_and_surrender
 #: data/gui/window/surrender_quit.cfg:85
 msgid "Surrender & Quit"
-msgstr ""
+msgstr "投降并退出"
 
 #. [label]: id=lblTitle
 #: data/gui/window/synced_choice_wait.cfg:40
@@ -5100,7 +5039,7 @@ msgstr "开始新的单人战役"
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
-msgstr "玩多人游戏（热座、局域网或因特网游戏），或者玩与AI对战的单个场景。"
+msgstr "玩多人游戏（热座、局域网或因特网游戏），或者玩与AI对战的单个场景"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:254
@@ -5110,7 +5049,7 @@ msgstr "载入"
 #. [grid]
 #: data/gui/window/title_screen.cfg:254
 msgid "Load a saved game"
-msgstr "载入保存的游戏"
+msgstr "载入游戏存档"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:255
@@ -5297,8 +5236,6 @@ msgid "feature^Experimental OpenMP support"
 msgstr "实验性OpenMP支持"
 
 #: src/build_info.cpp:249
-#, fuzzy
-#| msgid "feature^PNG screenshots"
 msgid "feature^JPG screenshots"
 msgstr "PNG截屏"
 
@@ -5360,51 +5297,43 @@ msgstr "此文本中有非法的标记："
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:251
-#, fuzzy
-#| msgid "multimenu^$first and $second"
 msgid "conjunct pair^$first and $second"
 msgstr "$first|及$second"
 
 #. TRANSLATORS: Formats the first two elements of a conjunctive list.
 #: src/formula/string_utils.cpp:254
-#, fuzzy
-#| msgid "multimenu^$first, $second"
 msgid "conjunct start^$first, $second"
 msgstr "$first，$second"
 
 #. TRANSLATORS: Formats successive elements of a conjunctive list.
 #: src/formula/string_utils.cpp:258
 msgid "conjunct mid^$prefix, $next"
-msgstr ""
+msgstr "$prefix|，$next"
 
 #. TRANSLATORS: Formats the final element of a conjunctive list.
 #: src/formula/string_utils.cpp:261
 msgid "conjunct end^$prefix, and $last"
-msgstr ""
+msgstr "$prefix|，及$last"
 
 #. TRANSLATORS: Formats a two-element disjunctive list.
 #: src/formula/string_utils.cpp:269
-#, fuzzy
-#| msgid "multimenu^$first and $second"
 msgid "disjunct pair^$first or $second"
-msgstr "$first|及$second"
+msgstr "$first|或$second"
 
 #. TRANSLATORS: Formats the first two elements of a disjunctive list.
 #: src/formula/string_utils.cpp:272
-#, fuzzy
-#| msgid "multimenu^$first, $second"
 msgid "disjunct start^$first, $second"
 msgstr "$first，$second"
 
 #. TRANSLATORS: Formats successive elements of a disjunctive list.
 #: src/formula/string_utils.cpp:276
 msgid "disjunct mid^$prefix, $next"
-msgstr ""
+msgstr "$prefix|，$next"
 
 #. TRANSLATORS: Formats the final element of a disjunctive list.
 #: src/formula/string_utils.cpp:279
 msgid "disjunct end^$prefix, or $last"
-msgstr ""
+msgstr "$prefix|，或$next"
 
 #: src/gui/core/canvas.cpp:605
 msgid "Line doesn't fit on canvas."
@@ -5478,10 +5407,8 @@ msgid "addons_view^Upgradable"
 msgstr "可升级"
 
 #: src/gui/dialogs/addon/manager.cpp:191
-#, fuzzy
-#| msgid "addons_view^Installed"
 msgid "addons_view^Publishable"
-msgstr "已安装"
+msgstr "可发布"
 
 #: src/gui/dialogs/addon/manager.cpp:192
 msgid "addons_view^Not Installed"
@@ -5520,10 +5447,8 @@ msgid "addons_of_type^MP factions"
 msgstr "多人游戏派系"
 
 #: src/gui/dialogs/addon/manager.cpp:204
-#, fuzzy
-#| msgid "addons_of_type^MP modifications"
 msgid "addons_of_type^Modifications"
-msgstr "多人游戏模组"
+msgstr "模组"
 
 #: src/gui/dialogs/addon/manager.cpp:205
 msgid "addons_of_type^Cores"
@@ -5543,33 +5468,31 @@ msgstr "未知"
 
 #: src/gui/dialogs/addon/manager.cpp:213
 msgid "addons_order^Name ($order)"
-msgstr ""
+msgstr "名称（$order）"
 
 #: src/gui/dialogs/addon/manager.cpp:216
 msgid "addons_order^Author ($order)"
-msgstr ""
+msgstr "作者（$order）"
 
 #: src/gui/dialogs/addon/manager.cpp:219
 msgid "addons_order^Size ($order)"
-msgstr ""
+msgstr "大小（$order）"
 
 #: src/gui/dialogs/addon/manager.cpp:222
 msgid "addons_order^Downloads ($order)"
-msgstr ""
+msgstr "下载数（$order）"
 
 #: src/gui/dialogs/addon/manager.cpp:225
-#, fuzzy
-#| msgid "addons_of_type^Cores"
 msgid "addons_order^Type ($order)"
-msgstr "核心"
+msgstr "类型（$order）"
 
 #: src/gui/dialogs/addon/manager.cpp:228
 msgid "addons_order^Last updated ($order)"
-msgstr ""
+msgstr "最近更新时间（$order）"
 
 #: src/gui/dialogs/addon/manager.cpp:231
 msgid "addons_order^First uploaded ($order)"
-msgstr ""
+msgstr "首次上传时间（$order）"
 
 #: src/gui/dialogs/addon/manager.cpp:260 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -5634,12 +5557,12 @@ msgstr "未知"
 #. TRANSLATORS: ascending
 #: src/gui/dialogs/addon/manager.cpp:360
 msgid "asc"
-msgstr ""
+msgstr "升序"
 
 #. TRANSLATORS: descending
 #: src/gui/dialogs/addon/manager.cpp:364
 msgid "desc"
-msgstr ""
+msgstr "降序"
 
 #: src/gui/dialogs/addon/manager.cpp:380 src/gui/dialogs/chat_log.cpp:420
 #: src/gui/dialogs/game_cache_options.cpp:105
@@ -5661,7 +5584,7 @@ msgstr "从服务器上下载附加组件列表时发生错误。"
 
 #: src/gui/dialogs/addon/manager.cpp:496
 msgid "No Add-ons Available"
-msgstr "没有可用的附加组件。"
+msgstr "没有可用的附加组件"
 
 #: src/gui/dialogs/addon/manager.cpp:496
 msgid "There are no add-ons available for download from this server."
@@ -5903,10 +5826,8 @@ msgid "Version: "
 msgstr "版本："
 
 #: src/gui/dialogs/game_stats.cpp:78
-#, fuzzy
-#| msgid "controller^Idle"
 msgid "controller^AI"
-msgstr "空闲"
+msgstr "AI"
 
 #: src/gui/dialogs/game_stats.cpp:78
 msgid "controller^Idle"
@@ -5936,7 +5857,7 @@ msgstr "运行于$os之上"
 
 #: src/gui/dialogs/game_version.cpp:226
 msgid "version^N/A"
-msgstr "N/A"
+msgstr "不可用"
 
 #: src/gui/dialogs/label_settings.cpp:53
 msgid "Team Labels"
@@ -6032,7 +5953,7 @@ msgstr "正在获取游戏数据"
 
 #: src/gui/dialogs/loading_screen.cpp:72
 msgid "Downloading lobby data"
-msgstr ""
+msgstr "正在下载大厅数据"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:104
 msgid "Selected Game"
@@ -6089,52 +6010,40 @@ msgid "Era:"
 msgstr "时代："
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:469
-#, fuzzy
-#| msgid "Settings"
 msgid "Settings:"
-msgstr "设置"
+msgstr "设置："
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:473
-#, fuzzy
-#| msgid "Registered Users Only"
 msgid "Registered users only:"
-msgstr "仅注册用户"
+msgstr "仅注册用户："
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:474
-#, fuzzy
-#| msgid "Reloaded game"
 msgid "Reloaded:"
-msgstr "重新载入的游戏"
+msgstr "重新载入："
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:475
-#, fuzzy
-#| msgid "Share Vision:"
 msgid "Shared vision:"
 msgstr "共享视野："
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:476
-#, fuzzy
-#| msgid "Shuffle Sides"
 msgid "Shuffle sides:"
-msgstr "阵营洗牌"
+msgstr "阵营洗牌："
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:477
-#, fuzzy
-#| msgid "Time limit"
 msgid "Time limit:"
-msgstr "时间限制"
+msgstr "时间限制："
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:478
-#, fuzzy
-#| msgid "Use map settings"
 msgid "Use map settings:"
-msgstr "使用地图设置"
+msgstr "使用地图设置："
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:486
 msgid ""
 "One or more items need to be installed\n"
 "in order to join this game."
 msgstr ""
+"为加入此游戏\n"
+"需要安装一个或多个项目"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:511
 msgid "Observers allowed"
@@ -6167,28 +6076,20 @@ msgid "Scenarios"
 msgstr "场景"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:109
-#, fuzzy
-#| msgid "Multiplayer"
 msgid "Multiplayer Campaigns"
-msgstr "多人游戏"
+msgstr "多人战役"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:110
-#, fuzzy
-#| msgid "Start a new single player campaign"
 msgid "Singleplayer Campaigns"
-msgstr "开始新的单人战役"
+msgstr "单人战役"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:111
-#, fuzzy
-#| msgid "Custom Options"
 msgid "Custom Maps"
-msgstr "自定义选项"
+msgstr "自定义地图"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:112
-#, fuzzy
-#| msgid "User Scenarios"
 msgid "Custom Scenarios"
-msgstr "用户场景"
+msgstr "自定义场景"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:113
 msgid "Random Maps"
@@ -6225,7 +6126,7 @@ msgstr "没有可用于此游戏的时代。"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:830
 msgid "The selected game has no sides!"
-msgstr ""
+msgstr "选定的游戏没有阵营！"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:896
 msgid "Choose Starting Scenario"
@@ -6274,7 +6175,7 @@ msgstr "完结"
 
 #: src/gui/dialogs/preferences_dialog.cpp:140
 msgid "Saved Games"
-msgstr "保存的游戏"
+msgstr "游戏存档"
 
 #: src/gui/dialogs/preferences_dialog.cpp:141
 msgid "Map Commands"
@@ -6515,13 +6416,10 @@ msgid "multimenu^All Selected"
 msgstr "全部选中"
 
 #: src/gui/widgets/multimenu_button.cpp:179
-#, fuzzy
-#| msgid "multimenu^$first and 1 other"
-#| msgid_plural "multimenu^$first and $excess others"
 msgid "multimenu^$excess other"
 msgid_plural "$excess others"
-msgstr[0] "$first|及另1个"
-msgstr[1] "$first|及另$excess|个"
+msgstr[0] "及另1个"
+msgstr[1] "及另$excess|个"
 
 #: src/gui/widgets/multimenu_button.cpp:181
 #: src/gui/widgets/multimenu_button.cpp:236
@@ -6534,7 +6432,7 @@ msgstr "还需要至少一件并行的物品。"
 
 #: src/gui/widgets/size_lock.cpp:154
 msgid "No widget defined."
-msgstr "没有已定义的界面构件"
+msgstr "没有已定义的界面构件。"
 
 #: src/gui/widgets/size_lock.cpp:175
 msgid "Invalid size."
@@ -6608,7 +6506,7 @@ msgstr "经验："
 #: src/gui/widgets/unit_preview_pane.cpp:322
 #: src/gui/widgets/unit_preview_pane.cpp:475
 msgid "Experience Modifier: "
-msgstr "经验值修正："
+msgstr "经验修正："
 
 #: src/gui/widgets/unit_preview_pane.cpp:325
 #: src/gui/widgets/unit_preview_pane.cpp:478
@@ -7496,7 +7394,7 @@ msgstr "在小节‘[$section|]’中，必须设定的主键‘$key|’没有�
 msgid ""
 "The key '$key' is deprecated and support will be removed in version "
 "$removal_version."
-msgstr "主键‘$key|’已废弃，对此主键的支持将在版本$removal_version|中移除。"
+msgstr "主键‘$key|’已废弃，且对此主键的支持将在版本$removal_version|中移除。"
 
 #: src/wml_exception.cpp:132
 msgid ""
@@ -7506,108 +7404,5 @@ msgstr ""
 "主键‘$deprecated_key|’已重命名为‘$key’。对‘$deprecated_key|’的支持将在版本"
 "$removal_version|中移除。"
 
-#~ msgid "Password Reminder"
-#~ msgstr "密码提示"
-
-#~ msgid "feature^Growl notifications back end"
-#~ msgstr "Growl提醒后端"
-
 #~ msgid "The maximum text width is less than 1."
 #~ msgstr "最大文字宽度小于1。"
-
-#~ msgid "Rooms"
-#~ msgstr "房间"
-
-#~ msgid "Screenshot Saved"
-#~ msgstr "截屏已保存"
-
-#~ msgid "Choose weapon:"
-#~ msgstr "选择武器："
-
-#~ msgid "file_size^Unknown"
-#~ msgstr "未知"
-
-#~ msgid "Get Add-ons"
-#~ msgstr "获取附加组件"
-
-#~ msgid "Send new version to server"
-#~ msgstr "发送新版本至服务器"
-
-#~ msgid "Only registered users may join"
-#~ msgstr "只有注册用户才能加入"
-
-#~ msgid "Unknown era"
-#~ msgstr "未知时代"
-
-#~ msgid "Gold per village"
-#~ msgstr "金币/村庄"
-
-#~ msgid "Experience modifier"
-#~ msgstr "经验值修正"
-
-#~ msgid "Multiplayer command dialog"
-#~ msgstr "多人游戏命令对话框"
-
-#~ msgid "Messaging"
-#~ msgstr "消息"
-
-#~ msgid "Message:"
-#~ msgstr "消息："
-
-#~ msgid "Send"
-#~ msgstr "发送"
-
-#~ msgid "Friends/Ignored List"
-#~ msgstr "好友/忽略列表"
-
-#~ msgid "Add as Friend"
-#~ msgstr "加入好友列表"
-
-#~ msgid "Add as Ignore"
-#~ msgstr "加入忽略列表"
-
-#~ msgid "Moderating"
-#~ msgstr "管理中"
-
-#~ msgid "Reason:"
-#~ msgstr "原因："
-
-#~ msgid "Time:"
-#~ msgstr "时间："
-
-#~ msgid "Ban"
-#~ msgstr "封禁"
-
-#~ msgid "Sort lobby list"
-#~ msgstr "对大厅列表排序"
-
-#~ msgid "Sort the player list in the lobby by player groups"
-#~ msgstr "根据玩家分组对大厅中的玩家列表进行排序"
-
-#~ msgid "Iconize lobby list"
-#~ msgstr "以图标形式显示大厅列表"
-
-#~ msgid "Show icons in front of the player names in the lobby"
-#~ msgstr "在大厅中玩家的名字前显示图标"
-
-#~ msgid "controller^Computer"
-#~ msgstr "计算机"
-
-#~ msgid "User Maps"
-#~ msgstr "用户地图"
-
-#~ msgid "SP Campaigns"
-#~ msgstr "单人游戏战役"
-
-#~ msgid "No description available"
-#~ msgstr "没有可用的描述。"
-
-#~ msgid ""
-#~ "Widget definition '$definition' doesn't contain the definition for '$id'."
-#~ msgstr "界面构件定义“$definition”不包含“$id”的定义。"
-
-#~ msgid "Save password to preferences (plain text)"
-#~ msgstr "将密码保存至首选项（明文）"
-
-#~ msgid "player"
-#~ msgstr "玩家"

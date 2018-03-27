@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2018 Wesnoth development team
+# Copyright (C) 2005-2017 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # wind <everywherewind@gmail.com>, 2010.
 # CloudiDust <cloudidust@gmail.com>, 2011.
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-04 16:39 UTC\n"
-"PO-Revision-Date: 2017-06-24 19:03+0800\n"
+"PO-Revision-Date: 2018-03-27 21:45+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [scenario]: id=11_Descent_into_Darkness
 #. [campaign]: id=Descent_into_Darkness
@@ -255,12 +255,12 @@ msgstr "兽人攻破河口要塞的防御"
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:169
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:662
 msgid "Death of Malin Keshar"
-msgstr "马林·凯沙阵亡"
+msgstr "马林·凯沙死亡"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:168
 msgid "Death of Drogan"
-msgstr "德罗甘阵亡"
+msgstr "德罗甘死亡"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:186
@@ -372,7 +372,7 @@ msgstr "奇袭队回来了，兽人便面对着一支比他们更强的部队，
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:332
 msgid "The orcs are broken, dead or fled."
-msgstr "兽人被击溃了，不是阵亡，便是逃跑。"
+msgstr "兽人被击溃了，不是战死，便是逃跑。"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:359
@@ -558,7 +558,7 @@ msgstr "占领所有的地精村庄"
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:373
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:437
 msgid "Death of Darken Volk"
-msgstr "达肯·沃克阵亡"
+msgstr "达肯·沃克死亡"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:121
@@ -902,7 +902,7 @@ msgstr "库拉·欧班"
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:112
 msgid "Move Malin to the end of the mountain pass"
-msgstr "将马林移动到山道的尽头"
+msgstr "移动马林至山道尽头"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:117
@@ -915,19 +915,14 @@ msgstr "击杀所有兽人首领"
 msgid ""
 "Orcs block the way out of the mountain pass. Destroy them, and we will move "
 "on to bigger targets."
-msgstr "兽人封锁了山路的出口。歼灭他们，之后我们将前去对付更大的目标。"
+msgstr "兽人封锁了山路的出口。歼灭他们，之后我们就去对付更大的目标。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:202
-#, fuzzy
-#| msgid ""
-#| "With the might of the undead at my command, many orcs will die this day. "
-#| "They shall pay for getting me banished from Parthyn."
 msgid ""
 "With the might of the undead at my command, many orcs will die this day. "
 "They shall pay for attacking Parthyn."
-msgstr ""
-"凭我麾下亡灵之力，大量兽人将命丧今日。他们害我被逐出帕辛，必须为此付出代价。"
+msgstr "凭我麾下亡灵之力，大量兽人将命丧今日。他们必须为进攻帕辛付出代价。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:220
@@ -1480,12 +1475,12 @@ msgstr "镇民"
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:268
 msgid "Move Malin and Darken Volk into the Mage Lord’s manor"
-msgstr "将马林和达肯·沃克移进法师领主的庄园"
+msgstr "移动马林和达肯·沃克，进入法师领主的庄园"
 
 #. [note]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:287
 msgid "This scenario takes place entirely at night."
-msgstr ""
+msgstr "此场景完全发生在夜间。"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:314
@@ -1520,12 +1515,8 @@ msgstr "拿起武器，弟兄们！"
 
 #. [message]: speaker=Taylor
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:354
-#, fuzzy
-#| msgid ""
-#| "Sir! Undead creatures are coming out of the forest! Wake the guard "
-#| "immediately!"
 msgid "Undead creatures are coming out of the forest! To arms, men!"
-msgstr "长官！亡灵生物从森林里出来了！立刻叫醒守卫！"
+msgstr "亡灵生物从森林里出来了！武装起来，弟兄们！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:375
@@ -2201,24 +2192,18 @@ msgstr "击败愚蠢的英雄"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:80
-#, fuzzy
-#| msgid "Defeat the foolish hero"
 msgid "Defeat another foolish hero"
-msgstr "击败愚蠢的英雄"
+msgstr "击败另一名愚蠢的英雄"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:88
-#, fuzzy
-#| msgid "Defeat the foolish hero"
 msgid "Defeat yet another foolish hero"
-msgstr "击败愚蠢的英雄"
+msgstr "击败再一名愚蠢的英雄"
 
 #. [note]: description=<b>
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:116
-#, fuzzy
-#| msgid "Endless Night"
 msgid "Endless Night $timesForever"
-msgstr "无尽长夜"
+msgstr "无尽长夜$timesForever"
 
 #. [unit]: type=Royal Guard, id=Foolish Hero
 #. [unit]: type=Assassin, id=Foolish Hero
@@ -2236,22 +2221,22 @@ msgstr "愚蠢的英雄"
 #. [modify_side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:172
 msgid "Humans"
-msgstr ""
+msgstr "人类"
 
 #. [modify_side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:199
 msgid "Bandits"
-msgstr ""
+msgstr "强盗"
 
 #. [modify_side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:222
 msgid "Elves"
-msgstr ""
+msgstr "精灵"
 
 #. [modify_side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:249
 msgid "Dwarves"
-msgstr ""
+msgstr "矮人"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:328
@@ -2352,12 +2337,12 @@ msgstr ""
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:411
 msgid "I will destroy you like the last foolish hero."
-msgstr ""
+msgstr "我会像摧毁上一个愚蠢的英雄一样摧毁你。"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:418
 msgid "Another foolish hero? Seriously?"
-msgstr ""
+msgstr "又一个愚蠢的英雄？你认真的吗？"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:425
@@ -2371,22 +2356,22 @@ msgstr ""
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:437
 msgid "Am I doomed to fight foolish heroes forever?"
-msgstr ""
+msgstr "我注定要永远和愚蠢的英雄们作战了吗？"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:444
 msgid "Is this going to keep happening?"
-msgstr ""
+msgstr "这会不断继续吗？"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:495
 msgid "His evil deeds have come to an end, and he has meet his doom."
-msgstr ""
+msgstr "他的恶行终于终结了，而他也终结了。"
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:500
 msgid "Who do you think he was before starting down the path of darkness?"
-msgstr ""
+msgstr "您觉得在堕入黑暗之道之前，他是谁？"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:505
@@ -2394,33 +2379,31 @@ msgid ""
 "It matters not who the lich was. He embraced death over life, and we have "
 "done our duty to defend life."
 msgstr ""
+"这巫妖曾经是谁并不重要。他将死亡置于生命之上，而我们尽到了自己守护生命的责"
+"任。"
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:510
-#, fuzzy
-#| msgid "Yes, master."
 msgid "Yes, sir."
-msgstr "遵命，主人。"
+msgstr "是的，长官。"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:518
 msgid "It is done. He will trouble us no more."
-msgstr ""
+msgstr "结束了。他再也不会侵扰我们了。"
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:523
 msgid "Who do you think he was before becoming a lich?"
-msgstr ""
+msgstr "您觉得在成为巫妖之前，他是谁？"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:528
 msgid "Probably an outlaw like us. Does it matter?"
-msgstr ""
+msgstr "也许和我们一样是强盗吧。这重要吗？"
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:533
-#, fuzzy
-#| msgid "No, I suppose it does not."
 msgid "No, I guess not."
 msgstr "不，我想这不重要。"
 
@@ -2434,7 +2417,7 @@ msgstr "好了，他的邪恶之路走到头了。"
 msgid ""
 "I wonder who he was in life, before falling into the evil ways that led him "
 "to today."
-msgstr "我想知道在堕入黑暗之道，落得今天的下场之前，在他活着的时候，他是谁。"
+msgstr "我想知道，在堕入黑暗之道落得今天的下场之前，在他活着的时候，他是谁。"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:551
@@ -2453,13 +2436,13 @@ msgstr "不，我想这不重要。"
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:564
 msgid "Hearing the crack of his bones was satisfying."
-msgstr ""
+msgstr "听到他骨头折断的声音真是心情舒爽。"
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:569
 msgid ""
 "Who do you think he was before becoming the bones crushed by our hammers?"
-msgstr ""
+msgstr "在他变成我们的锤下碎骨之前，您觉得他是谁？"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:574
@@ -2468,26 +2451,28 @@ msgid ""
 "those humans have. And when he did dark magic and got outlawed from Wesnoth, "
 "he came to hide in these caves."
 msgstr ""
+"也许是某个在人类的那个魔法学院里没办法毕业的焦虑的法师吧。当他使用了黑魔法，"
+"被韦诺视为违法之后，他逃到这些洞穴里，躲藏了起来。"
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:579
 msgid "I guess we'll never know for sure."
-msgstr ""
+msgstr "我猜我们永远都无法确定了。"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:587
 msgid "Finally, my father and my people are avenged!"
-msgstr ""
+msgstr "我的父亲和人民终于大仇得报了！"
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:592
 msgid "Who you think he was, boss?"
-msgstr ""
+msgstr "老大，您觉得他以前是谁？"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:597
 msgid "Who cares!"
-msgstr ""
+msgstr "谁在乎啊！"
 
 #. [unit_type]: id=Apprentice Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:4

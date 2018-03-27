@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2018 Wesnoth development team
+# Copyright (C) 2005-2017 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Dugucloud <dugucloud@qq.com>, 2011.
 # wind <everywherewind@gmail.com>, 2012.
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 17:01 UTC\n"
-"PO-Revision-Date: 2017-06-24 19:03+0800\n"
+"PO-Revision-Date: 2018-03-27 21:44+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:22
@@ -69,7 +69,7 @@ msgid ""
 "all life in Wesnoth?\n"
 "\n"
 msgstr ""
-"韦诺似将不可逆转地陷入混乱，掠食的兽人渡过泰河涌向南方，致死的神秘生物在夜晚"
+"韦诺似将不可逆转地陷入混乱，掠袭的兽人渡过泰河涌向南方，致死的神秘生物在夜晚"
 "漫游。那幽灵般的伊利阿-玛拉尔尔是谁？你能在他毁灭韦诺众生前阻止他吗？\n"
 "\n"
 
@@ -91,7 +91,7 @@ msgstr "合作作者"
 #. [about]
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:63
 msgid "Campaign Maintenance"
-msgstr ""
+msgstr "战役维护"
 
 #. [about]
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:70
@@ -232,32 +232,22 @@ msgstr ""
 
 #. [message]: speaker=Third Oracle
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:131
-#, fuzzy
-#| msgid ""
-#| "Yes. Peace is broken, but hope is not extinguished. There is always hope. "
-#| "And you will be the father of it. I call the power of the Bright Gods "
-#| "into the second part of your name. FA"
 msgid ""
 "Yes. Peace is broken, but hope is not extinguished. There is always hope. "
 "And you will be the father of it. I give you the final syllable of power, "
 "the last part of your name: DOR"
 msgstr ""
-"然。和平已破，而希望不灭。希望永在，而汝必成希望之父。吾呼唤光明神之力，加持"
-"汝名之二字：<b>法</b>"
+"然。和平已破，而希望不灭。希望永在，而汝必成希望之父。吾赐予汝力之终音，为汝"
+"名之终字：<b>多</b>"
 
 #. [message]: speaker=Fourth Oracle
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:140
-#, fuzzy
-#| msgid ""
-#| "After the battle, peace. After the darkness, dawn. From death springs new "
-#| "life. I give you the last part of your name, the final syllable of power. "
-#| "DOR"
 msgid ""
 "After the battle, peace. After the darkness, dawn. From death springs new "
 "life. I call the power of the Bright Gods into your name: DELFADOR"
 msgstr ""
-"战事若平，和平再临。黑暗消散，当是黎明。死亡之上，新生泉涌。吾赐予汝，名之末"
-"字，力之终音：<b>多</b>"
+"战事若平，和平再临。黑暗消散，当是黎明。死亡之上，新生泉涌。吾召唤光明诸神之"
+"力，倾注汝名：<b>德法多</b>"
 
 #. [message]: speaker=Marshal
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:149
@@ -418,7 +408,7 @@ msgstr ""
 msgid ""
 "Arrogant creature! We have little enough, and we will not suffer you to take "
 "it from us by force."
-msgstr "傲慢的畜生！我们的物资才刚好够用，我们不会允许你靠武力抢夺的！"
+msgstr "傲慢的畜生！我们的物资才刚好够用，我们不会让你用蛮力抢走的。"
 
 #. [message]: speaker=Grogor-Tuk
 #: data/campaigns/Delfadors_Memoirs/scenarios/02_This_Valley_Belongs_to_Me.cfg:85
@@ -458,12 +448,10 @@ msgstr "击败格罗高-图克"
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:93
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:189
 msgid "Death of Delfador"
-msgstr "德法多阵亡"
+msgstr "德法多死亡"
 
 #. [message]: speaker=unit
 #: data/campaigns/Delfadors_Memoirs/scenarios/02_This_Valley_Belongs_to_Me.cfg:116
-#, fuzzy
-#| msgid "Grooar! Burn! Burn! Ahahaha..."
 msgid "Grooar! Pillage! Pillage! Ahahaha..."
 msgstr "嘎啊啊！烧啊！烧啊！啊哈哈哈……"
 
@@ -536,10 +524,8 @@ msgstr "米利恩要塞"
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:81
-#, fuzzy
-#| msgid "Defeat Hagha-Tan"
 msgid "Defeat Urthaka-Tan"
-msgstr "击败哈格哈-坦"
+msgstr "击败乌萨卡-坦"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:106
@@ -688,7 +674,7 @@ msgstr "击败哈格哈-坦"
 #. [objective]: condition=lose
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:141
 msgid "Death of Leollyn"
-msgstr "利欧林阵亡"
+msgstr "利欧林死亡"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:161
@@ -760,7 +746,7 @@ msgstr "你们所有人都要格外小心！"
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:237
 msgid "Kill them all! For our murdered friend."
-msgstr "为了我们死去的朋友，把他们全部干掉！"
+msgstr "为了我们死去的朋友，把他们全部干掉。"
 
 #. [message]: speaker=Leollyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:248
@@ -854,7 +840,7 @@ msgstr ""
 #: data/campaigns/Delfadors_Memoirs/scenarios/05_Council_in_Weldyn.cfg:93
 msgid ""
 "Ah, now the last of my council is here. Lionel, what tidings from the north?"
-msgstr "好，会议所有人都到齐了。莱昂内尔，汇报一下北方边境的情报。"
+msgstr "好，会议所有人都到齐了。莱昂内尔，北方的情况如何？"
 
 # 参考 http://forums.wesnoth.org/viewtopic.php?f=7&t=30298&p=441243#p441243
 #. [message]: speaker=Lionel
@@ -1011,7 +997,7 @@ msgstr "哈罗德"
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:91
 msgid "Move Delfador to the signpost in the northeast"
-msgstr "把德法多送到东北路标处"
+msgstr "移动德法多至东北方路标处"
 
 #. [objective]: condition=lose
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:99
@@ -1019,7 +1005,7 @@ msgstr "把德法多送到东北路标处"
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:129
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:169
 msgid "Death of Lionel"
-msgstr "莱昂内尔阵亡"
+msgstr "莱昂内尔死亡"
 
 #. [message]: speaker=Lionel
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:116
@@ -1151,12 +1137,12 @@ msgstr "存活到破晓"
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:106
 msgid "Destroy the stones"
-msgstr ""
+msgstr "摧毁石碑"
 
 #. [note]
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:124
 msgid "Mages and Paladins are capable of destroying the stones"
-msgstr ""
+msgstr "法师和圣骑士能够摧毁石碑"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:138
@@ -1199,15 +1185,13 @@ msgstr "肮脏的怪物，粉身碎骨吧！"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:186
-#, fuzzy
-#| msgid "At least, morning is here... And the skeletons are disappearing!"
 msgid "At last, morning is here... And the skeletons are disappearing!"
-msgstr "终于，天亮了……骷髅都消失了！"
+msgstr "终于天亮了……骷髅开始消失了！"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:197
 msgid "At last, morning is here!"
-msgstr "终于，天亮了！"
+msgstr "终于天亮了！"
 
 #. [message]: speaker=Lionel
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:203
@@ -1299,7 +1283,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:121
 msgid "Move Delfador to Ur-Thorodor’s castle"
-msgstr "把德法多移动到乌-索罗多的城堡里"
+msgstr "移动德法多至乌-索罗多的城堡内"
 
 # This is only a sounds-like translation. More recommendations welcome.
 #. [objective]: condition=lose
@@ -1400,12 +1384,12 @@ msgstr "唔…………"
 #. [event]
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:266
 msgid "Gurbash"
-msgstr ""
+msgstr "伽巴什"
 
 #. [event]
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:274
 msgid "Pruark"
-msgstr ""
+msgstr "普鲁阿克"
 
 #. [message]: speaker=Pruark
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:285
@@ -1425,12 +1409,12 @@ msgstr "<b>砰</b>！"
 #. [scenario]: id=09_Houses_of_the_Dead
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:4
 msgid "Houses of the Dead"
-msgstr "鬼灵室"
+msgstr "亡灵之屋"
 
 #. [side]: type=Death Knight, id=Arakar
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:33
 msgid "Arakar"
-msgstr ""
+msgstr "阿拉卡"
 
 #. [side]
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:70
@@ -1464,25 +1448,23 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:93
-#, fuzzy
-#| msgid "Land of the Dead"
 msgid "Explore the Land of the Dead"
-msgstr "冥界"
+msgstr "探索死者之地"
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:100
 msgid "Have Delfador claim the magical artifact, then move him to the signpost"
-msgstr ""
+msgstr "让德法多获得魔法物品，而后移动他至路标处"
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:108
 msgid "Move Delfador to the signpost"
-msgstr "把德法多送至路标"
+msgstr "移动德法多至路标处"
 
 #. [note]
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:128
 msgid "Delfador must visit a village himself to find if help is there"
-msgstr ""
+msgstr "德法多必须亲自访问村庄，才能确定在那里是否能够找到帮助"
 
 # 中文印刷不习惯用斜体
 #. [message]: speaker=narrator
@@ -1517,56 +1499,43 @@ msgstr "那个灵魂，再说一遍！告诉我关于你自己的事。那伊利
 
 #. [message]: speaker=Rorthin
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:251
-#, fuzzy
-#| msgid ""
-#| "My name is Rorthin. I died long ago, in a great battle... I have almost "
-#| "forgotten... Iliah-Malal is a living man, like you, who walks among the "
-#| "dead. He promises life to all those who follow him."
 msgid ""
 "My name is Rorthin. I died long ago, in a great battle... I have almost "
 "forgotten... Iliah-Malal is a living man, like you, who walks among the "
 "dead. He promises life to all those who follow him. Such is against the way "
 "of things."
 msgstr ""
-"我是罗尔森。很久以前，我在一场浩大的战争中死去……我几乎忘记了……伊利阿-玛拉尔像"
-"你一样，是个活人，生活在冥界。他保证，所有跟随他的人都会复活。"
+"我的名字是罗尔森。很久以前，我在一场浩大的战争中死去……我几乎忘记了……伊利阿-玛"
+"拉尔像你一样，是个活人，但却在冥界游走。他保证，所有跟随他的人都会复活。这是"
+"违背万物之规律的。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:255
-#, fuzzy
-#| msgid "I would very much like to meet Iliah-Malal. Where can I find him?"
 msgid ""
 "I agree. I would very much like to meet Iliah-Malal. Where can I find him?"
-msgstr "我很想见一见伊利阿-玛拉尔。去哪里找他呢？"
+msgstr "我同意。我很想见一见伊利阿-玛拉尔。我可以在哪儿找到他呢？"
 
 #. [message]: speaker=Rorthin
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:259
-#, fuzzy
-#| msgid ""
-#| "Follow the dry river, then the road to the signpost in the north. I will "
-#| "guide you. Enter the houses of the dead as you pass, for others here may "
-#| "help you."
 msgid ""
 "Follow the dry river, then the road to the signpost in the north. I will "
 "help you. Enter the houses of the dead as you pass, for others here may help "
 "you."
 msgstr ""
-"沿着旱河，再沿着路走到北方的路标。我指给你看。进入那些你路过的房子里，别人也"
-"会帮你的。"
+"沿着旱河，再沿着路走到北方的路标。我指给你看。进入那些你路过的亡灵之屋里，别"
+"人或许也会帮你的。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:263
-#, fuzzy
-#| msgid "Speak again, spirit! Tell me of yourself. Who is this Iliah-Malal?"
 msgid "Speak again, spirit! What else do you know of this place?"
-msgstr "那个灵魂，再说一遍！告诉我关于你自己的事。那伊利阿-玛拉尔是谁啊？"
+msgstr "接着说，灵魂！关于此地你还知道些什么？"
 
 #. [message]: speaker=Rorthin
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:267
 msgid ""
 "I have heard there is a powerful magical artifact somewhere around here. Any "
 "more, I cannot tell you."
-msgstr ""
+msgstr "我听说这儿附近有一件强大的魔法物品。至于其他的信息，我也不能告诉你了。"
 
 #. [scenario]: id=09_Houses_of_the_Dead
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:302
@@ -1622,8 +1591,8 @@ msgid ""
 "Iliah-Malal says that he can open a portal to the world of the living. Those "
 "who follow him will walk the earth as they did in life."
 msgstr ""
-"伊利阿-玛拉尔说，它可以打开通向人间的门户。跟随他的人就会像活着的人一样在大地"
-"上行走。"
+"伊利阿-玛拉尔说，它可以打开通向人间的传送门。跟随他的人就会像活着的人一样在大"
+"地上行走。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:331
@@ -1724,24 +1693,18 @@ msgstr "那么你就永远去死吧！"
 
 #. [message]: speaker=Rattles
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:455
-#, fuzzy
-#| msgid "Do you serve Iliah-Malal, living man?"
 msgid "Do you serve Iliah-Malal?"
-msgstr "大活人，你为伊利阿-玛拉尔做事吗？"
+msgstr "你为伊利阿-玛拉尔做事吗？"
 
 #. [message]: speaker=Rattles
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:461
-#, fuzzy
-#| msgid "Then you will not mind if we kill you! Hahahahah!"
 msgid "Then you will not mind if we destroy you! Hahahahah!"
-msgstr "那么你不会介意我们杀掉你吧！哈哈哈哈！"
+msgstr "那么你不会介意我们毁掉你吧！哈哈哈哈！"
 
 #. [message]: speaker=Rattles
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:470
-#, fuzzy
-#| msgid "Then you will die forever!"
 msgid "Then you will perish forever!"
-msgstr "那么你就永远去死吧！"
+msgstr "那么你就永远死透吧！"
 
 #. [event]
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:485
@@ -1751,14 +1714,12 @@ msgstr "白骨"
 #. [message]: speaker=Bones
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:495
 msgid "Iliah-Malal commands your death!"
-msgstr "伊利阿-玛拉尔叫你死！"
+msgstr "伊利阿-玛拉尔要你死！"
 
 #. [message]: speaker=Bones
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:501
-#, fuzzy
-#| msgid "Iliah-Malal commands your death!"
 msgid "Iliah-Malal commands your destruction!"
-msgstr "伊利阿-玛拉尔叫你死！"
+msgstr "伊利阿-玛拉尔要你毙命！"
 
 #. [message]: speaker=narrator
 #. The Tomb Guardian's dialogue should sound especially archaic
@@ -1819,7 +1780,7 @@ msgid ""
 "tested. AND I AM THE TEST!"
 msgstr ""
 "数不清多少年前，元古的预言。安-乌斯鲁哈尔大师——我只是他最微小的影子和碎片——在"
-"消逝时间之镜中预见到，有个活人会来这里接受考验。<b>然后我就是考验！</b>"
+"消逝时间之镜中预见到，有个活人会来这里接受考验。<big>而我就是考验！</big>"
 
 #. [message]: speaker=Delfador
 #. "coil" is an archaism. In the English of around 1600, it was
@@ -1839,7 +1800,7 @@ msgid ""
 "Delfador, mage of Wesnoth, ARE YOU A SERVANT OF THE LIGHT?"
 msgstr ""
 "这只会让小人物觉得，命运之手并没有放在他们肩上；伟大的人肩负着命运的重担，无"
-"论是否愿意。德法多，韦诺的法师，<b>你是否效忠于光明？</b>"
+"论是否愿意。德法多，韦诺的法师，<big>你是否效忠于光明？</big>"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:571
@@ -1856,8 +1817,8 @@ msgid ""
 "Your king will die in an eyeblink and your kingdom in the drawing of a "
 "breath. Delfador, I ask you again, ARE YOU A SERVANT OF THE LIGHT?"
 msgstr ""
-"君主会在眨眼间死去，国家会在呼吸间崩溃。德法多，我再次问你，<b>你是否效忠于光"
-"明？</b>"
+"君主会在眨眼间死去，国家会在呼吸间崩溃。德法多，我再次问你，<big>你是否效忠于"
+"光明？</big>"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:584
@@ -1875,7 +1836,7 @@ msgid ""
 "your answer hangs your life: ARE YOU A SERVANT OF THE LIGHT?"
 msgstr ""
 "在永恒的无情注视下，人民会消失，国土会枯萎；世界的本原更深刻。德法多，我第三"
-"遍问你，你的回答关系着你的命运：<b>你是否效忠于光明？</b>"
+"遍问你，你的回答关系着你的命运：<big>你是否效忠于光明？</big>"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:596
@@ -1921,14 +1882,14 @@ msgstr "不可能！你这疯子！"
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:105
 msgid ""
 "Have not you yourself traveled between the realms of life and death? Behold!"
-msgstr "看着点！你自己还没在人间与冥界之间来回过吗？"
+msgstr "你自己还没在人间与冥界之间来回过吗？看看吧！"
 
 #. [message]: role=dead_sidekick
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:161
 msgid ""
 "Iliah-Malal has created a portal to the land of the living! How I long to go "
 "through it and see the sun again..."
-msgstr "伊利阿-玛拉尔已经打开了通向人间的门户！等了好久，我又能见到太阳啦……"
+msgstr "伊利阿-玛拉尔已经打开了通向人间的传送门！等了好久，我又能见到太阳啦……"
 
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:167
@@ -1940,17 +1901,17 @@ msgstr "现在活着的喽罗，我召唤你们！死亡都是浮云，只怕不
 #. [event]
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:176
 msgid "Vobryn"
-msgstr ""
+msgstr "沃博林"
 
 #. [event]
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:183
 msgid "Tur"
-msgstr ""
+msgstr "塔"
 
 #. [event]
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:190
 msgid "Meorraent"
-msgstr ""
+msgstr "梅欧兰特"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:195
@@ -1985,8 +1946,8 @@ msgid ""
 "This portal Iliah-Malal has created is a great and terrible work of magic. I "
 "must catch him, and somehow force him to close it!"
 msgstr ""
-"伊利阿-玛拉尔开的门户是个了不起又糟糕的魔法作品。我要抓住他，然后不择手段逼他"
-"关掉！"
+"伊利阿-玛拉尔创造的传送门是个伟大而可怖的魔法造物。我要抓住他，然后用什么方法"
+"强迫他关掉传送门！"
 
 #. [scenario]: id=11_Wasteland
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:3
@@ -2028,9 +1989,9 @@ msgid ""
 "necromancer’s footsteps in a thick layer of snow. Eventually, even these "
 "became indistinct."
 msgstr ""
-"德法多跟随伊利阿-玛拉尔进入门户时，涌来一阵刺骨的寒风；鬼魂们随着凝重的空气，"
-"泻入人间。冰冷占据了脚下的土地，德法多随着巫师的脚步，踏入深厚的积雪。最后，"
-"这些也变得朦胧了。"
+"德法多跟随伊利阿-玛拉尔进入传送门时，涌来一阵刺骨的寒风；鬼魂们随着凝重的空"
+"气，泻入人间。冰冷占据了脚下的土地，德法多随着巫师的脚步，踏入深厚的积雪。最"
+"后，这些也变得朦胧了。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:113
@@ -2188,7 +2149,7 @@ msgstr "击败敌人首领"
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:101
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:197
 msgid "Death of Chantal"
-msgstr "香黛尔阵亡"
+msgstr "香黛尔死亡"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:306
@@ -2400,7 +2361,7 @@ msgstr "我注意到了国王的旨意。我的人现在听从您的指挥。"
 #. [message]: speaker=narrator
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:507
 msgid "To wake up the mages, move a unit near their tower."
-msgstr "为了叫醒法师，请将一个单位移动到他们的塔旁。"
+msgstr "为了叫醒法师，移动一个单位至他们的塔旁。"
 
 #. [message]: role=Teacher
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:621
@@ -2663,7 +2624,8 @@ msgid ""
 "the Dead."
 msgstr ""
 "我们有的时间比我想象的少。伊利阿-玛拉尔的进攻开始了。虽然我必须在一切无法挽回"
-"之前关闭他的门户，但是我不懂怎么办。我们也要消灭那些已经从冥界逃出来的家伙。"
+"之前关闭他的传送门，但是我不知该怎么办到。我们也要消灭那些已经从冥界逃出来的"
+"家伙。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:1263
@@ -2770,13 +2732,6 @@ msgstr ""
 #. knights. It means he wandered around looking for monsters to
 #. slay and wrongs to right.
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:24
-#, fuzzy
-#| msgid ""
-#| "There was an elf named Kalenz who had already in Delfador’s time been a "
-#| "legend among his people for centuries; his is the tale called <i>the "
-#| "Legend of Wesmere</i>. Prolonged in life by a necromantic potion, he put "
-#| "aside the High Lordship of the Elves after the death of his beloved wife "
-#| "Cleodil, and wandered the Great Continent in errantry."
 msgid ""
 "There was an elf named Kalenz who had already in Delfador’s time been a "
 "legend among his people for centuries; his tale, <i>The Legend of Wesmere</"
@@ -2785,8 +2740,9 @@ msgid ""
 "beloved wife, and wandered the Great Continent in errantry."
 msgstr ""
 "从前有一位叫做卡雷兹的精灵，算到德法多的年代，他在他的人民中已经是几个世纪的"
-"传奇了。他的故事就是<b>韦弥尔传奇</b>。他因服用了巫术药水而变得长寿。在他亲爱"
-"的妻子科柳迪死后，他丢开了精灵高阶领主的职位，在泰陆四处，如游侠一般游荡。"
+"传奇了。他的故事，<b>韦弥尔传奇</b>，在精灵之地家喻户晓。他因服用了死灵术药水"
+"而变得长寿。在他亲爱的妻子死后，他丢开了精灵高阶领主的职位，在泰陆四方如游侠"
+"一般游荡。"
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:27
@@ -2832,7 +2788,7 @@ msgstr "克拉塔基斯"
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:97
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:193
 msgid "Death of Kalenz"
-msgstr "卡雷兹阵亡"
+msgstr "卡雷兹死亡"
 
 #. [message]: id=Tan-drul
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:212
@@ -2895,8 +2851,8 @@ msgid ""
 "There is more ill news. Evil has been unleashed. A portal has been opened "
 "from the Land of the Dead. An army of undead is being raised as we speak."
 msgstr ""
-"还有更多坏消息。冥界通向这里的门户已经打开，把恶灵释放了出来。就在我们说话的"
-"时候，一支亡灵的军队已经袭来。"
+"还有更多坏消息。冥界通向这里的传送门已经打开，把恶灵释放了出来。就在我们说话"
+"的时候，一支亡灵的军队已经袭来。"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:273
@@ -2916,7 +2872,7 @@ msgstr ""
 msgid ""
 "Holy water? What is this? Have you been dabbling where you should not, in "
 "the Book of Crelanu?"
-msgstr "圣水？这是什么？你是不是偷看了克雷拉努法书中你不该看的东西？"
+msgstr "圣水？这是什么？你是不是偷看了克雷拉努之书中你不该看的东西？"
 
 #. [message]: id=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:285
@@ -2948,7 +2904,7 @@ msgid ""
 msgstr ""
 "德法多，一位深受他们国王信任的人。他从通向冥界的路中逃生，而且没有堕落。他帮"
 "助我们打败了进犯林塔尼尔的兽人，我还和他在帕辛滩迎击亡灵。我来北方的一部分原"
-"因，是来拿克雷拉努法书给他的。"
+"因，是来拿克雷拉努之书给他的。"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:297
@@ -3105,7 +3061,7 @@ msgid ""
 "well, granddaughter; he is indeed the one to whom the Book of Crelanu should "
 "pass."
 msgstr ""
-"看见了。他就像照进我眼中的炽烈火光。孙女，你找的人不错；他是克雷拉努法书的可"
+"看见了。他就像照进我眼中的炽烈火光。孙女，你找的人不错；他是克雷拉努之书的可"
 "靠继承人。"
 
 #. [message]: id=Chantal
@@ -3225,7 +3181,7 @@ msgstr "特尔格罗"
 #. [objective]: condition=lose
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:209
 msgid "Death of Garard II"
-msgstr "伽拉德二世阵亡"
+msgstr "伽拉德二世死亡"
 
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:252
@@ -3249,8 +3205,8 @@ msgid ""
 "Elves! I heard you have been looking for me! But you will save neither the "
 "human prince, nor yourselves."
 msgstr ""
-"精灵！我早就知道你们在找我了！但你们既不会救下人类的王子，也不会拯救你们自"
-"己！"
+"精灵！我早就听说你们在找我了！但你们既不会救下人类的王子，也不会拯救你们自"
+"己。"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:264
@@ -3300,7 +3256,8 @@ msgid ""
 "skills may be insufficient for that task."
 msgstr ""
 "陛下，我们还有更紧急的问题。利欧林命我寻找亡灵躁动的原因。有个可恶的巫师打开"
-"了通向冥界的门户。我们必须付出一切代价关上它，我也担心以我绵薄之力不能胜任。"
+"了通向冥界的传送门。我们必须付出一切代价关上它，我也担心以我绵薄之力不能胜"
+"任。"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:300
@@ -3322,7 +3279,7 @@ msgid ""
 "close that portal."
 msgstr ""
 "克雷拉努叮嘱我们保护这本书直至配得上它的人出现。德法多，我们相信您是这样的一"
-"个人。这本书或许可以告诉你关闭门户的方法。"
+"个人。这本书或许可以告诉你关闭传送门的方法。"
 
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:308
@@ -3346,7 +3303,7 @@ msgstr ""
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:316
 msgid "Curse or no, we must close that portal soon, or else we are all doomed."
-msgstr "管它诅咒不诅咒，我们要尽快关闭那扇门户，不然我们都要完蛋。"
+msgstr "不论有没有诅咒，我们都要尽快关闭那扇传送门，不然我们都会被毁灭的。"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:320
@@ -3428,7 +3385,7 @@ msgid ""
 "with Lionel who was arriving with reinforcements, and were deeply saddened "
 "to learn that Leollyn had died under very suspicious circumstances."
 msgstr ""
-"卡雷兹和香黛尔的部队去对付兽人大军的残余势力，德法多带着精灵的礼物克雷拉努法"
+"卡雷兹和香黛尔的部队去对付兽人大军的残余势力，德法多带着精灵的礼物克雷拉努之"
 "书，随国王返回维尔帝。可是，尽管取得了胜利，然而德法多深深地为亡灵带来的威胁"
 "而担心。在返回的路上，他们遇到了带来援军的莱昂内尔将军，也悲伤地得知利欧林死"
 "了，而且情况非常可疑。"
@@ -3511,7 +3468,7 @@ msgstr ""
 msgid ""
 "With your permission, sire, I will take some picked men north and crush "
 "these abominations."
-msgstr "陛下，只要您许可，我就会带精兵向北行军，血洗亡灵！"
+msgstr "陛下，只要您许可，我就会带精兵向北行军，摧垮这些怪物。"
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:55
@@ -3524,8 +3481,8 @@ msgid ""
 "he fields now. Mages, in combination with heavy infantry are most effective "
 "against them."
 msgstr ""
-"陛下，这些亡灵并非自己出现的；有个疯子，伊利阿-玛拉尔，他打开了通向冥界的门"
-"户。除非我们关掉这扇门户，不然他现在统领的小队亡灵，就会变成无止尽的亡灵天"
+"陛下，这些亡灵并非自己出现的；有个疯子，伊利阿-玛拉尔，他打开了通向冥界的传送"
+"门。除非我们关掉这扇传送门，不然他现在统领的小队亡灵，就会变成无止尽的亡灵天"
 "灾。还有我们的部队，主要是武装训练来对付入侵兽人，甚至不适合打他现有的部队。"
 "只有法师，配合上重甲步兵才能最有效地对付他们。"
 
@@ -3629,7 +3586,7 @@ msgstr ""
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:108
 msgid "We will fight till the last man, my King."
-msgstr "陛下，我们即使只剩一个人，也要坚定地战斗！"
+msgstr "我们将会战至最后一人，吾王。"
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:112
@@ -3656,8 +3613,8 @@ msgid ""
 msgstr ""
 "我们必须做三件事。第一，必须尽可能的组织剩余的力量防御；第二，我们需要请求精"
 "灵来牵制伊利阿-玛拉尔，虽然精灵不能在平原上对付亡灵，但他们可以在森林里骚扰，"
-"亡灵不敢进入；最后一点，我已经知道怎么关闭伊利阿-玛拉尔的通向冥界的门户。我要"
-"一小队护卫，但是马上要行动。"
+"亡灵不敢进入；最后一点，我已经知道怎么关闭伊利阿-玛拉尔的通向冥界的传送门。我"
+"要一小队护卫，但是马上要行动。"
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:124
@@ -3678,7 +3635,7 @@ msgid ""
 "heavy infantry."
 msgstr ""
 "这还只是第一步。如果我们要打败亡灵，我们必须训练不同于现有部队的兵。首先，无"
-"论从安度云还是别的什么地方，必须召唤韦诺所有的法师；还有，必须训练更多的重甲"
+"论从奥渡因还是别的什么地方，必须召唤韦诺所有的法师；还有，必须训练更多的重甲"
 "步兵。"
 
 #. [part]
@@ -3696,7 +3653,7 @@ msgid ""
 "back soon!"
 msgstr ""
 "德法多管得住。你要统帅重甲步兵。一定要在战争中保护法师，因为他们太珍贵了。现"
-"在，行动吧，关闭门户之后尽快回来！"
+"在，行动吧，关闭传送门之后尽快回来！"
 
 #. [scenario]: id=17_A_New_Ally
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_A_New_Ally.cfg:3
@@ -3711,8 +3668,8 @@ msgid ""
 "was a perilous road. Delfador was constrained to avoid well-trodden paths. "
 "This meant a detour..."
 msgstr ""
-"德法多带领了一小支部队向北以关闭门户。然而伊利阿-玛拉尔的大批军队在泰河以北集"
-"结，这条路变得十分危险。德法多不得不放弃这条宽阔的大路，绕道而行……"
+"德法多带领了一小支部队向北，试图关闭传送门。然而伊利阿-玛拉尔的大批军队在泰河"
+"以北集结，这条路变得十分危险。德法多不得不放弃这条宽阔的大路，绕道而行……"
 
 #. [event]
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_A_New_Ally.cfg:46
@@ -3746,13 +3703,13 @@ msgstr "打败格鲁-玛拉"
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:336
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:177
 msgid "Death of Ulrek"
-msgstr "乌尔雷克阵亡"
+msgstr "乌尔雷克死亡"
 
 # This is only a sounds-like translation. More recommendations welcome.
 #. [objective]: condition=lose
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_A_New_Ally.cfg:132
 msgid "Death of Relgorn"
-msgstr "雷尔戈恩阵亡"
+msgstr "雷尔戈恩死亡"
 
 #. [message]: speaker=Gruv-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_A_New_Ally.cfg:152
@@ -3818,7 +3775,7 @@ msgid ""
 "all doomed."
 msgstr ""
 "我是德法多。朋友们，一个大恶魔挣脱了束缚。在丘陵最西边靠近林塔尼尔森林，一处"
-"通向冥界的门户已经打开。我必须关上这扇门，不然我们都将毁灭。"
+"通向冥界的传送门已经打开。我必须关上这扇门，不然我们都将毁灭。"
 
 #. [message]: speaker=Ulrek
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_A_New_Ally.cfg:225
@@ -3865,8 +3822,8 @@ msgid ""
 "With their leader slain we cannot count on dwarvish help to reach Iliah-"
 "Malal’s portal! All is lost!"
 msgstr ""
-"矮人的首领死了，我们就不能依靠他们的帮助，前往伊利阿-玛拉尔的门户了！一切都完"
-"了！"
+"矮人的首领死了，我们就不能依靠他们的帮助，前往伊利阿-玛拉尔的传送门了！一切都"
+"完了！"
 
 #. [message]: speaker=Ulrek
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_A_New_Ally.cfg:268
@@ -3876,7 +3833,7 @@ msgstr "雷尔戈恩死了！大家快逃！"
 #. [scenario]: id=18_The_Portal_of_Doom
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:3
 msgid "The Portal of Doom"
-msgstr "门户之劫"
+msgstr "毁灭之门"
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:40
@@ -3886,8 +3843,8 @@ msgid ""
 "Far sooner than he would have believed possible they reached their "
 "destination, undetected by Iliah-Malal."
 msgstr ""
-"矮人把德法多带进了名副其实的迷宫地道里。德法多惊异的发现，矮人在地道里移动得"
-"如此之快。比他原以为的提早了很多，他们到达了目的地，并且没有被伊利阿-玛拉尔发"
+"矮人把德法多带进了名副其实的迷宫地道里。矮人在地道里飞快的移动速度让德法多大"
+"为吃惊。他们到达目的地时比他原以为的要早了很多，而且他们没有被伊利阿-玛拉尔发"
 "现。"
 
 #. [side]: type=Death Knight, id=Prepolur
@@ -3897,29 +3854,21 @@ msgstr "普勒波卢"
 
 #. [side]: type=Necromancer, id=Unuvim-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:113
-#, fuzzy
-#| msgid "Gruv-Malal"
 msgid "Unuvim-Malal"
-msgstr "格鲁-玛拉"
+msgstr "阿纳威姆-玛拉尔"
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:191
-#, fuzzy
-#| msgid "Move Delfador to the signpost in the northeast"
 msgid ""
 "Move Delfador to close the Portal and then return everyone to the tunnel"
-msgstr "把德法多送到东北路标处"
+msgstr "移动德法多去关闭传送门，之后让所有人回到地道里"
 
 #. [message]: speaker=Prepolur
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:233
-#, fuzzy
-#| msgid ""
-#| "Living men and dwarves are nearing. Rise, Portal Guard and slay those "
-#| "intruders!"
 msgid ""
 "Living men and dwarves are nearing. Rise, Portal Guard and slay the "
 "intruders!"
-msgstr "活人和矮人接近了。起来吧，门户守卫，把那些碍事的家伙通通杀死！"
+msgstr "活人和矮人接近了。起身，传送门守卫，把那些入侵者通通杀死！"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:237
@@ -3927,27 +3876,27 @@ msgid ""
 "The portal must be closed at any cost. You must allow me to get close to it, "
 "so I can seal it."
 msgstr ""
-"无论付出什么代价也要把门户关上。你必须指引我接近它，这样我就能封印上了。"
+"无论付出什么代价都要把传送门关上。你必须指引我接近它，这样我就能封印上了。"
 
 #. [message]: speaker=Ulrek
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:241
 msgid "Ye all heard! Naught will ever say dwarves ever feared anyone. Attack!"
-msgstr "你们都给俺听清楚了！矮人绝不做懦夫。杀！"
+msgstr "你们都给俺听清楚了！矮人绝不做懦夫。进攻！"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:266
 msgid "Earth, rise and shut this gate of evil for good!"
-msgstr "大地，起来吧，为了正义关上这扇邪恶的门！"
+msgstr "大地，高耸吧，最终关上这邪恶之门吧！"
 
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:282
 msgid "Portal, reopen! No! What have you done?"
-msgstr "该死的门，不要关上啊！不！你究竟做了什么？"
+msgstr "传送门，重开！不！你究竟做了什么？"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:288
 msgid "Your portal is shut. And you cannot open another one."
-msgstr "你的门户关上了。你也无法再打开一个了。"
+msgstr "你的传送门关上了。你也无法再打开一个了。"
 
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:292
@@ -3956,7 +3905,7 @@ msgid ""
 "you will live as my right hand. Together our magic skills will be unmatched "
 "and irresistible."
 msgstr ""
-"德法多，你已经证明了你的能力了。我给你个机会。加入我，你就成为一人之下万人之"
+"德法多，你已经证明了你的能力。我给你个机会。加入我，你就成为一人之下万人之"
 "上。我们的魔法会无人匹敌，所向披靡。"
 
 #. [message]: speaker=Delfador
@@ -3974,7 +3923,8 @@ msgstr "或者，挑战我，然后死。我会把你复活成我的奴隶的。
 msgid ""
 "My path is set. Your path must end. I will not dishonor my oaths, and will "
 "not abandon friends and country."
-msgstr "我们根本不是一条道上的。我不会玷污誓言，也不会背叛朋友和国家。"
+msgstr ""
+"我的前路已定，而你的前路必被终结。我不会玷污誓言，也不会背叛朋友和国家。"
 
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:308
@@ -3982,25 +3932,23 @@ msgid ""
 "Then you shall perish. After I finish with these pesky elves and dwarves, "
 "Weldyn will be mine. Wesnoth has no army to resist me."
 msgstr ""
-"那你就去死吧。当我解决掉这些麻烦的精灵和矮人，维尔帝就是我的了。韦诺根本无力"
-"抵抗我。"
+"那你就去死吧。当我解决掉这些麻烦的精灵和矮人，维尔帝就是我的了。韦诺根本没有"
+"军队可以抵抗我。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:312
-#, fuzzy
-#| msgid ""
-#| "(<i>To the dwarves</i>). Quickly, back in the tunnel! I will stay last to "
-#| "seal the entrance."
 msgid ""
 "(<i>To the dwarves</i>). Now that the portal is closed, his power will start "
 "to weaken, but that doesn't help us now. Quickly, back in the tunnel! I will "
 "stay last to seal the entrance."
-msgstr "（<b>对矮人说</b>）。快，退回地道！我来断后关闭入口。"
+msgstr ""
+"（<b>对矮人说</b>）。传送门关上了，他的力量会开始变弱，但现在这帮不了我们。"
+"快，退回地道！我来断后关闭入口。"
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:328
 msgid "All the player’s units must reach the tunnel. Then Delfador."
-msgstr "所有玩家的单位必须进入地道。最后是德法多。"
+msgstr "所有玩家的单位必须到达地道。最后是德法多。"
 
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:385
@@ -4057,7 +4005,7 @@ msgstr "这里怎么回事？德法多来了吗？欢迎迎接你的末日，德
 msgid ""
 "They have reinforcements. Hurry, we must close the portal before we are "
 "overrun!"
-msgstr "他们还有援兵。快，我们必须在被消灭前关上门户！"
+msgstr "他们还有援兵。快，我们必须在被消灭前关上传送门！"
 
 #. [message]: id=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:486
@@ -4066,22 +4014,17 @@ msgstr "把他们都杀光！"
 
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:505
-#, fuzzy
-#| msgid ""
-#| "Fool! You could not kill me in the land of the dead, nor can you in the "
-#| "land of the living! I transcend both death and life, and I will return to "
-#| "destroy you!"
 msgid ""
 "Fool! You could not kill me in the land of the dead, nor can you in the land "
 "of the living! I transcend both death and life, and I will destroy you!"
-msgstr "傻瓜！你无法在冥界杀死我，人间也不行！我超越了生死，我还要回来毁灭你！"
+msgstr "傻瓜！你无法在冥界杀死我，人间也不行！我超越了生死，我将毁灭你！"
 
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:509
 msgid ""
 "We cannot defeat him now. We must carry out our mission first, so we will be "
 "able to defeat him later."
-msgstr ""
+msgstr "现在我们没法击败他。我们必须先完成任务，这样一来，之后我们才能击败他。"
 
 #. [scenario]: id=19_Showdown_in_the_Northern_Swamp
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:4
@@ -4097,9 +4040,9 @@ msgid ""
 "crossing the Listra by night, found the necromancer there, on the brink of "
 "raising another army amidst the fetid reek."
 msgstr ""
-"随着门户的关闭，伊利阿-玛拉尔的实力削弱了。他退进了恐怖沼泽赖回复元气，尝试其"
-"它魔咒。德法多的部队，通过矮人的秘密通道快速西进，在夜晚悄悄地穿过了条纹河，"
-"在那找到了巫师，正在从恶臭的水气中召唤军队。"
+"随着传送门的关闭，伊利阿-玛拉尔的实力削弱了。他退进了恐怖沼泽赖回复元气，尝试"
+"其它魔咒。德法多的部队，通过矮人的秘密通道快速西进，在夜晚悄悄地穿过了条纹"
+"河，在那找到了巫师，正在从恶臭的水气中召唤军队。"
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:23
@@ -4124,14 +4067,10 @@ msgstr "奥尔德罗特"
 
 #. [note]
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:189
-#, fuzzy
-#| msgid ""
-#| "The killing blow against Iliah-Malal can only be struck by one of your "
-#| "Undead veterans"
 msgid ""
 "The killing blow against Iliah-Malal can only be struck by one of your "
 "Undead veterans or by Delfador"
-msgstr "对伊利阿-玛拉尔的致命一击只能由你的一名亡灵老兵来完成"
+msgstr "对伊利阿-玛拉尔的致命一击只能由你的一名亡灵老兵或德法多来完成"
 
 #. [note]
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:199
@@ -4178,7 +4117,8 @@ msgid ""
 "Oracles? What nonsense you babble... After you die, I will raise your corpse "
 "and compel you to tell me how to reopen my portal!"
 msgstr ""
-"先知？鬼知道你在讲什么……你死后，我会复活你的尸体，让你吐露如何重启门户！"
+"先知？鬼知道你在讲什么……你死后，我会复活你的尸体，让你吐露如何重启我的传送"
+"门！"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:263
@@ -4187,18 +4127,13 @@ msgstr "不是你死就是我活。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:274
-#, fuzzy
-#| msgid ""
-#| "In this scenario only, you may recall your veterans from the Land of the "
-#| "Dead. The killing blow against Iliah-Malal can only be struck by one of "
-#| "them."
 msgid ""
 "In this scenario only, you may recall your veterans from the Land of the "
 "Dead. The killing blow against Iliah-Malal can only be struck by one of them "
 "or by Delfador."
 msgstr ""
-"只有在这幕场景，你可以从冥界召回你的老兵。只能由他们来对伊利阿-玛拉尔进行最后"
-"一击。"
+"只有在这幕场景里，你可以从冥界召回你的老兵。对伊利阿-玛拉尔的致命一击只能由它"
+"们之一或德法多来完成。"
 
 #. [message]: speaker=Lionel
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:292
@@ -4212,20 +4147,15 @@ msgid ""
 "in the otherworld a way here, and they come to us of their own will. Today "
 "they fight for the living."
 msgstr ""
-"不。我没有从死人中召唤亡灵；我唤来了在那边的世界和我一起作战的人，他们自愿来"
-"我们这。今天他们为活人而战。"
+"不。我没有从死人之中召唤亡灵；我给那边的世界和我一起作战的亡灵提供了一条前来"
+"此处之路，他们自愿前来帮助我们。今天他们为活人而战。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:305
-#, fuzzy
-#| msgid ""
-#| "I have prepared some holy water. Sprinkle it on your impact weapon and "
-#| "smash those foul creatures into dust!"
 msgid ""
 "I have prepared some holy water. Sprinkle it on your weapons and smash those "
 "foul creatures into dust!"
-msgstr ""
-"我准备了一些圣水。把它洒在你们的冲击型武器上，然后把这些肮脏的怪物打成灰！"
+msgstr "我准备了一些圣水。把它洒在你们的武器上，然后把这些肮脏的怪物砸成灰！"
 
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:310
@@ -4278,34 +4208,28 @@ msgstr "莱昂内尔，跟你并肩战斗是种荣耀。现在我们为了生存
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:372
-#, fuzzy
-#| msgid ""
-#| "Remember one of our undead must strike the final blow, for Iliah-Malal’s "
-#| "un-life can only be ended by the touch of un-life."
 msgid ""
 "Remember that one of our undead or I must strike the final blow, for Iliah-"
 "Malal’s un-life can only be ended by the touch of un-life or by the power of "
 "the Book of Crelanu."
 msgstr ""
-"记得我们的一个亡灵必须进行最后一击，伊利阿-玛拉尔的不死生命只能由不死族来完结"
+"记住，必须由我方的一名亡灵或我来打出最后一击，伊利阿-玛拉尔的不死生命只能由不"
+"死生命之触或者克雷拉努之书的力量来终结。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:378
-#, fuzzy
-#| msgid ""
-#| "Remember one of our undead must strike the final blow, for Iliah-Malal’s "
-#| "un-life can only be ended by the touch of un-life."
 msgid ""
 "Remember that I must strike the final blow, for Iliah-Malal’s un-life can "
 "only be ended by the power of the Book of Crelanu."
 msgstr ""
-"记得我们的一个亡灵必须进行最后一击，伊利阿-玛拉尔的不死生命只能由不死族来完结"
+"记住，必须由我来打出最后一击，伊利阿-玛拉尔的不死生命只能由克雷拉努之书的力量"
+"来终结。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:399
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:427
 msgid "Now your days are ended!"
-msgstr "明年的今天就是你的祭日！"
+msgstr "你完了！"
 
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:403
@@ -4323,8 +4247,8 @@ msgid ""
 "Book of Crelanu, and found there your final doom at the hands of the dead "
 "themselves."
 msgstr ""
-"这次不会了。我已经研究了克雷拉努法书中巫术的黑暗核心，发现你最后会死在亡灵的"
-"手上。"
+"这次不会了。只因我凝视过克雷拉努之书中死灵术的黑暗核心，并从中发现，你最终会"
+"死于亡灵之手。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:435
@@ -4332,7 +4256,8 @@ msgid ""
 "Not this time. For I have gazed upon the dark heart of necromancy in the "
 "Book of Crelanu, AND I REMAIN OF THE LIGHT!"
 msgstr ""
-"这次不会了。我已经研究了克雷拉努法书中巫术的黑暗核心，<b>我仍属于光明！</b>"
+"这次不会了。只因我凝视过克雷拉努之书中死灵术的黑暗核心，<big>而我仍属于光明！"
+"</big>"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:484
@@ -4349,7 +4274,7 @@ msgstr "你已经赢得了这该死的人给你的赠名……德法多大师。
 #. [message]: speaker=Ulrek
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:492
 msgid "Indeed. This will be quite a tale to tell."
-msgstr ""
+msgstr "确实。这可会是个好故事的。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:518
@@ -4361,7 +4286,7 @@ msgstr "你们在冥界和我并肩作战，今日又站在了生的一边，现
 #. [message]: speaker=Lionel
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:530
 msgid "And the portal, it is sealed for good?"
-msgstr "这门户，真的封印牢了吗？"
+msgstr "这传送门，终于封印牢了吗？"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:534
@@ -4451,8 +4376,8 @@ msgid ""
 "throne, claim it for Wesnoth and Queen Asheviere. Delfador does not rule in "
 "Wesnoth!"
 msgstr ""
-"这里不再是精灵的领地了。我，埃雷德，韦诺王子，王位继承人，以韦诺王国和艾什薇"
-"尔母后的名义宣布。德法多不在韦诺一手遮天了。"
+"这里不再是精灵的领地了。我，埃雷德，韦诺王子，王座继承人，以韦诺王国和艾什薇"
+"尔母后的名义占领此地。德法多并不是韦诺的统治者！"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_Prince_of_Wesnoth.cfg:184
@@ -4502,7 +4427,7 @@ msgid ""
 "soul. Delfador, has anyone but you opened its covers since you got it from "
 "us?"
 msgstr ""
-"我想知道克雷拉努法书是否是背后的原因。法书本身不邪恶，但它的力量能放大持有者"
+"我想知道克雷拉努之书是否是背后的原因。法书本身不邪恶，但它的力量能放大持有者"
 "内心的邪念。德法多，自我们把它给你以后，除了你以外是否还有别人打开看过？"
 
 #. [message]: id=Delfador
@@ -4576,25 +4501,21 @@ msgid ""
 "Asheviere had flattered them and beguiled them with promises of glory and "
 "plunder in a coming war."
 msgstr ""
-"尽管国王没有为埃雷德的行为惩罚他，德法多还是能感到军队的指挥官坚定的支持埃雷"
-"德和他的母亲。艾什薇尔讨好他们，并允诺在将来战争中的荣耀和战利品来诱骗他们"
+"尽管国王确实因为埃雷德的行为而惩罚了他，德法多还是能感到军队的指挥们官坚定地"
+"支持着埃雷德和他的母亲。艾什薇尔讨好他们，并以将来战争中的荣耀和战利品来诱骗"
+"他们。"
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:32
-#, fuzzy
-#| msgid ""
-#| "Delfador was granted an audience with the King and expressed his concerns "
-#| "about the Book, but the King put off a decision until Asheviere returned "
-#| "to Weldyn, and ordered Delfador to take no further action. And for once, "
-#| "Delfador knew he could not obey the King’s order."
 msgid ""
 "Delfador was granted an audience with the King and expressed his concerns "
 "about the missing Book, but the King put off a decision until Asheviere "
 "returned to Weldyn, and ordered Delfador to take no further action. And for "
 "once, Delfador knew he could not obey the King’s order."
 msgstr ""
-"德法多被国王接见，表达了他对法书的担忧，但国王在艾什薇尔回到维尔帝前都没有做"
-"出决定，最后命令德法多不要再深究了。立刻，德法多知道他不能遵守国王的命令了。"
+"德法多被国王接见，他表达了自己对丢失的法书的担忧，但国王在艾什薇尔回到维尔帝"
+"后才会做出决定，并命令德法多不得继续行动。这一次，德法多知道他不能遵守国王的"
+"命令了。"
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:36
@@ -4609,33 +4530,27 @@ msgstr ""
 #. [side]: type=General, id=Rhuwin
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:85
 msgid "Rhuwin"
-msgstr ""
+msgstr "鲁温"
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:118
 msgid "Kill all enemy units"
-msgstr ""
+msgstr "击杀所有地方单位"
 
 #. [objective]: condition=lose
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:122
-#, fuzzy
-#| msgid "Enemy unit reaches the signpost"
 msgid "Enemy unit reaches a signpost"
 msgstr "敌方单位到达路标"
 
 #. [note]
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:146
-#, fuzzy
-#| msgid "Enemy unit reaches the signpost"
 msgid "Enemy rider units will go for a signpost"
-msgstr "敌方单位到达路标"
+msgstr "敌方骑乘单位会前往路标"
 
 #. [note]
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:155
-#, fuzzy
-#| msgid "Enemy unit reaches the signpost"
 msgid "All enemy units will go for a signpost"
-msgstr "敌方单位到达路标"
+msgstr "敌方所有单位都会前往路标"
 
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:173
@@ -4676,10 +4591,8 @@ msgstr "守卫被杀死了。现在我们要马上找到法书。"
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:320
-#, fuzzy
-#| msgid "New Objective: Find the secret door. Explore the manor."
 msgid "Find the secret door to enter the manor"
-msgstr "新目标：找到密门。探索采邑。"
+msgstr "找到密门以进入庄园"
 
 #. [message]: id=$unit.id
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:346
@@ -4689,7 +4602,7 @@ msgstr "这里好像有扇密门。让我看看它通向哪里……"
 #. [message]: speaker=Rhuwin
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:375
 msgid "Everyone, quickly, go alert the queen!"
-msgstr ""
+msgstr "所有人，快点儿，去警告王后！"
 
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:486
@@ -4711,7 +4624,7 @@ msgstr "德法多和精灵进入了密门，尽头是地牢，一个名副其实
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:89
 msgid "Find the Book"
-msgstr ""
+msgstr "找到法书"
 
 #. [message]: speaker=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:123
@@ -4827,37 +4740,22 @@ msgid ""
 "armies to deal with the orcish menace, leading to the great battle at the "
 "Ford of Abez that was lost through betrayal."
 msgstr ""
-"德法多回到了维尔帝，但在之前就把克雷拉努法书藏在了一个只有他自己知道的地方。"
+"德法多回到了维尔帝，但在之前就把克雷拉努之书藏在了一个只有他自己知道的地方。"
 "出乎他的意料，艾什薇尔没有追究在采邑发生的事件。但不久之后，兽人的入侵增长到"
 "了威胁王国的程度。国王率领他的军队去解决兽人的威胁，走向了在雅碧滩因背叛而失"
 "败的重大战役。"
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/23_Epilogue.cfg:16
-#, fuzzy
-#| msgid ""
-#| "Delfador’s last great quest, after that battle, is described in the tale "
-#| "called <i>Heir to the Throne</i>. In it is told how he ended the "
-#| "usurpation of Asheviere and restored the rightful heir to the throne of "
-#| "Wesnoth."
 msgid ""
 "Delfador’s last great quest, after that battle, was ending the usurpation of "
 "Asheviere and restoring the rightful <i>Heir to the Throne</i>."
 msgstr ""
-"德法多在战役后最后的伟大探寻，在 <b>王座之承</b>故事中有描述。这个故事讲述了"
-"他如何终结艾什薇尔的篡位，如何匡正韦诺的王位。"
+"在此次战斗之后，德法多完成的最后的伟大任务，是终结了艾什薇尔的篡位阴谋，并扶"
+"正了合法的<b>王座继承人</b>。"
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/23_Epilogue.cfg:19
-#, fuzzy
-#| msgid ""
-#| "After restoring the rightful heir to the throne of Wesnoth, Delfador "
-#| "lived the rest of his life as an advisor to the new rulers. He devoted "
-#| "much of his attention to restoring the Great Academy in Alduin to its "
-#| "former glory. But his efforts there were to bear little fruit in his "
-#| "lifetime; for through many years of war and strife, very few mages were "
-#| "left, and none of them came near in power and skill to Delfador, greatest "
-#| "mage ever to grace the courts of Wesnoth."
 msgid ""
 "Afterwards, Delfador lived the rest of his life as an advisor to the new "
 "rulers. He devoted much of his attention to restoring the Great Academy in "
@@ -4866,10 +4764,10 @@ msgid ""
 "were left, and none of them came near in power and skill to Delfador, "
 "greatest mage ever to grace the courts of Wesnoth."
 msgstr ""
-"在匡正了韦诺的王位后，德法多用他剩余的人生来辅佐新的统治者。他投入了很多精力"
-"去重振安度云的大学院以前的荣耀。但是他的努力在他的活着的时候并没有起到多大作"
-"用；在多年的战争和冲突中，很少有法师毕业，更没有一个人能达到德法多的力量和技"
-"能，能让韦诺宫廷感到荣耀的伟大法师。"
+"之后，德法多用他剩余的人生来辅佐新的统治者。他投入了很多精力去重现奥渡因的大"
+"学院以前的荣耀。但是他的努力在他的活着的时候并没有起到多大作用；在多年的战争"
+"和冲突中，很少有法师幸存，更没有一个人能拥有和德法多——曾经莅临韦诺王庭的最伟"
+"大法师——匹敌的力量和技能。"
 
 #. [unit_type]: id=Journeyman Mage
 #: data/campaigns/Delfadors_Memoirs/units/Journeyman_Mage.cfg:7
@@ -4992,14 +4890,8 @@ msgstr "不要！一切都没了……"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/utils/deaths.cfg:83
-#, fuzzy
-#| msgid ""
-#| "With their leader slain we cannot count on dwarvish help to reach Iliah-"
-#| "Malal’s portal! All is lost!"
 msgid "With Ulrek slain we cannot count on dwarvish help! All is lost!"
-msgstr ""
-"矮人的首领死了，我们就不能依靠他们的帮助，前往伊利阿-玛拉尔的门户了！一切都完"
-"了！"
+msgstr "乌尔雷克死了，我们就不能依靠矮人的帮助了！一切都完了！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Delfadors_Memoirs/utils/generators.cfg:46
@@ -5080,39 +4972,3 @@ msgstr "德罗尼"
 #: data/campaigns/Delfadors_Memoirs/utils/sides.cfg:279
 msgid "Artor"
 msgstr "阿托"
-
-#~ msgid "Unuvim"
-#~ msgstr "乌努维姆"
-
-#~ msgid "Close the Portal and return Delfador to his keep"
-#~ msgstr "关上门户，并让德法多回到他的主楼"
-
-#~ msgid "Loss of all Undead veterans before Iliah-Malal is defeated"
-#~ msgstr "在击败伊利阿-玛拉尔之前，失去所有亡灵老兵"
-
-#~ msgid ""
-#~ "Alas! Without any undead to strike the killing blow, we will never be "
-#~ "able to defeat Iliah-Malal!"
-#~ msgstr "啊！没有亡灵来给伊利阿-玛拉尔致命一击，我们永远也不可能击败他了！"
-
-#~ msgid ""
-#~ "Remember that I must strike the final blow, for Iliah-Malal’s un-life "
-#~ "must be ended by a spell I have specially crafted to the task."
-#~ msgstr ""
-#~ "记住我必须进行最后一击，伊利阿-玛拉尔的不死生命必须被符咒终结，我有这样的"
-#~ "魔法。"
-
-#~ msgid "No! It’s all over!"
-#~ msgstr "不！全完了！"
-
-#~ msgid "Defeat all enemies"
-#~ msgstr "打败所有敌人"
-
-#~ msgid "New Objective: Defeat all enemies"
-#~ msgstr "新任务：打败所有敌人"
-
-#~ msgid "Pilafman"
-#~ msgstr "肉饭男"
-
-#~ msgid "Defeat Pilafman"
-#~ msgstr "击败肉饭男"
