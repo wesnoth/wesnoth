@@ -19,6 +19,7 @@
      which activates the ability only when the affected unit is using
      a matching weapon.
    * Support WFL and percentages in [random_placement]num_items=
+ ### Miscellaneous and bug fixes
    * Improved UX in multiplayer when synced debug commands are used during a
      game.
 
