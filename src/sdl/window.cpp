@@ -27,45 +27,13 @@ window::window(const std::string& title,
 				 const int y,
 				 const int w,
 				 const int h,
-				 const uint32_t window_flags,
-				 const uint32_t render_flags)
+				 const uint32_t window_flags)
 	: window_(SDL_CreateWindow(title.c_str(), x, y, w, h, window_flags))
 	, info_()
 {
 	if(!window_) {
 		throw exception("Failed to create a SDL_Window object.", true);
 	}
-
-#ifndef USE_GL_RENDERING
-	if(!SDL_CreateRenderer(window_, -1, render_flags)) {
-		throw exception("Failed to create a SDL_Renderer object.", true);
-	}
-
-	if(SDL_GetRendererInfo(*this, &info_) != 0) {
-		throw exception("Failed to retrieve the information of the renderer.",
-						 true);
-	}
-
-	if(info_.num_texture_formats == 0) {
-		throw exception("The renderer has no texture information available.\n",
-						 false);
-	}
-
-	if(!(info_.flags & SDL_RENDERER_TARGETTEXTURE)) {
-		throw exception("Render-to-texture not supported or enabled!", false);
-	}
-
-	// Set default blend mode to blend.
-	SDL_SetRenderDrawBlendMode(*this, SDL_BLENDMODE_BLEND);
-
-	// In fullscreen mode, do not minimize on focus loss.
-	// Minimizing was reported as bug #1606 with blocker priority.
-	SDL_SetHint(SDL_HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS, "0");
-
-	fill(0,0,0);
-
-	render();
-#endif
 }
 
 window::~window()
@@ -132,11 +100,7 @@ void window::fill(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 
 void window::render()
 {
-#ifdef USE_GL_RENDERING
 	SDL_GL_SwapWindow(*this);
-#else
-	SDL_RenderPresent(*this);
-#endif
 }
 
 void window::set_title(const std::string& title)

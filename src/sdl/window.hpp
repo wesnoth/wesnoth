@@ -61,15 +61,13 @@ public:
 	 * @param w                   Used as w for @ref SDL_CreateWindow.
 	 * @param h                   Used as x for @ref SDL_CreateWindow.
 	 * @param window_flags        Used as flags for @ref SDL_CreateWindow.
-	 * @param render_flags        Used as flags for @ref SDL_CreateRenderer.
 	 */
 	window(const std::string& title,
 			const int x,
 			const int y,
 			const int w,
 			const int h,
-			const uint32_t window_flags,
-			const uint32_t render_flags);
+			const uint32_t window_flags);
 
 	~window();
 

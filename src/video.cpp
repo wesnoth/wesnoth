@@ -46,9 +46,7 @@ bool fake_interactive = false;
 
 CVideo::CVideo(FAKE_TYPES type)
 	: window()
-#ifdef USE_GL_RENDERING
-	, gl_context()
-#endif
+	, gl_context_()
 	, fake_screen_(false)
 	, fake_size_(0u, 0u)
 	, help_string_(0)
@@ -137,9 +135,7 @@ void CVideo::init_window()
 
 	// Add any more default flags here
 	window_flags |= SDL_WINDOW_RESIZABLE;
-#ifdef USE_GL_RENDERING
-	video_flags |= SDL_WINDOW_OPENGL;
-#endif
+	window_flags |= SDL_WINDOW_OPENGL;
 
 	if(preferences::fullscreen()) {
 		window_flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
@@ -148,19 +144,17 @@ void CVideo::init_window()
 	}
 
 	// Initialize window
-	window.reset(new sdl::window("", x, y, w, h, window_flags, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE));
+	window.reset(new sdl::window("", x, y, w, h, window_flags));
 
 	std::cerr << "Setting mode to " << w << "x" << h << std::endl;
 
 	window->set_minimum_size(preferences::min_window_width, preferences::min_window_height);
 
-#ifdef USE_GL_RENDERING
 	// Initialize an OpenGL context for the window.
-	gl_context.reset(new gl::context(window.get()));
+	gl_context_.init(window.get());
 
 	gl::clear_screen();
 	render_screen();
-#endif
 
 	event_handler_.join_global();
 }

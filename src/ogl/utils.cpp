@@ -11,11 +11,9 @@
    See the COPYING file for more details.
 */
 
-#ifdef USE_GL_RENDERING
-
 #include "ogl/utils.hpp"
 
-#include <GL/gl.h>
+#include <GL/glew.h>
 
 namespace gl
 {
@@ -27,5 +25,3 @@ void clear_screen()
 }
 
 } // namespace gl
-
-#endif // USE_GL_RENDERING
