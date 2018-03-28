@@ -513,24 +513,36 @@ void class_tag::add_switch(const config& switch_cfg)
 		const std::string name = formatter() << get_name() << '[' << key << '=' << case_cfg["value"] << ']';
 		conditions_.back().set_name(name);
 	}
-	if(switch_cfg.has_child("default")) {
-		conditions_.emplace_back(switch_cfg.child("default"), default_cfg);
-		const std::string name = formatter() << get_name() << "[default]";
+	if(switch_cfg.has_child("else")) {
+		conditions_.emplace_back(switch_cfg.child("else"), default_cfg);
+		const std::string name = formatter() << get_name() << "[else]";
 		conditions_.back().set_name(name);
 	}
 }
 
 void class_tag::add_filter(const config& cond_cfg)
 {
-	config filter = cond_cfg;
-	filter.clear_children("then", "else");
+	config filter = cond_cfg, else_filter;
+	filter.clear_children("then", "else", "elseif");
+	// Note in case someone gets trigger-happy:
+	// DO NOT MOVE THIS! It needs to be copied!
+	else_filter.add_child("not", filter);
 	if(cond_cfg.has_child("then")) {
 		conditions_.emplace_back(cond_cfg.child("then"), filter);
 		const std::string name = formatter() << get_name() << "[then]";
 		conditions_.back().set_name(name);
 	}
+	int i = 1;
+	for(auto elseif_cfg : cond_cfg.child_range("elseif")) {
+		config elseif_filter = elseif_cfg;
+		elseif_filter.clear_children("then");
+		conditions_.emplace_back(elseif_cfg.child("then"), elseif_filter);
+		else_filter.add_child("not", elseif_filter);
+		const std::string name = formatter() << get_name() << "[elseif " << i++ << "]";
+		conditions_.back().set_name(name);
+	}
 	if(cond_cfg.has_child("else")) {
-		conditions_.emplace_back(cond_cfg.child("else"), config{"not", filter});
+		conditions_.emplace_back(cond_cfg.child("else"), else_filter);
 		const std::string name = formatter() << get_name() << "[else]";
 		conditions_.back().set_name(name);
 	}
