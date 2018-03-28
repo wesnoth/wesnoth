@@ -61,8 +61,7 @@ void context::init(sdl::window* window)
 
 	LOG_GL << "Using OpenGL " << (core_profile ? "core profile " : "") <<
 		"version " << glGetString(GL_VERSION) << std::endl;
-	LOG_GL << "GPU: " <<
-		glGetString(GL_VENDOR) << " " << glGetString(GL_RENDERER) << std::endl;
+	LOG_GL << "GPU: " << glGetString(GL_RENDERER) << std::endl;
 }
 
 void context::set_context_flags()
