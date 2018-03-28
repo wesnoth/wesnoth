@@ -413,6 +413,14 @@ if env["prereqs"]:
         if env["history"]:
             client_env.Append(CPPDEFINES = ["HAVE_HISTORY"])
 
+        if env["PLATFORM"] == 'darwin':
+            client_env.Append(FRAMEWORKS = "OpenGL")
+            client_env.AppendUnique(LIBS = ["GLEW"])
+        elif env["PLATFORM"] == 'posix':
+            opengl_config = check_output(["pkg-config", "--libs", "--cflags", "gl", "glew"])
+            opengl_flags = client_env.ParseFlags(opengl_config)
+            client_env.MergeFlags(opengl_flags)
+
     if env["forum_user_handler"]:
         mysql_config = check_output(["mysql_config", "--libs", "--cflags"]).replace("\n", " ").replace("-DNDEBUG", "")
         mysql_flags = env.ParseFlags(mysql_config)
@@ -864,7 +872,7 @@ env.Command("wesnoth-deps.dot", [],
 env.Command("wesnoth-deps.png", "wesnoth-deps.dot",
             "dot -Tpng -o ${TARGET} ${SOURCE}")
 env.Clean(all, ["wesnoth-deps.dot", "wesnoth-deps.png"])
-
+print(env.Dump())
 # Local variables:
 # mode: python
 # end:
