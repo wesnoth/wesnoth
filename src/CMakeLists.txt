@@ -20,6 +20,8 @@ include_directories(SYSTEM ${PANGOCAIRO_INCLUDE_DIRS} )
 include_directories(SYSTEM ${GETTEXT_INCLUDE_DIR} )
 include_directories(SYSTEM ${LIBDBUS_INCLUDE_DIRS} )
 include_directories(SYSTEM ${VORBISFILE_INCLUDE_DIR} )
+include_directories(SYSTEM ${GLEW_INCLUDE_DIRS})
+include_directories(SYSTEM ${OPENGL_INCLUDE_DIR})
 
 include_directories(SYSTEM ${SDL2_INCLUDE_DIR} )
 set(sdl-lib ${SDL2_LIBRARY})
@@ -77,6 +79,8 @@ set(game-external-libs
 	${FONTCONFIG_LIBRARIES}
 	${LIBDBUS_LIBRARIES}
 	${VORBISFILE_LIBRARIES}
+	${OPENGL_LIBRARIES}
+	${GLEW_LIBRARIES}
 )
 
 if(ENABLE_LIBPNG AND PNG_FOUND)

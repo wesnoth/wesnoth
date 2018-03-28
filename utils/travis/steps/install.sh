@@ -25,7 +25,7 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
         brew install ccache
         travis_wait ./projectfiles/Xcode/Fix_Xcode_Dependencies
     else
-        brew install scons cairo pango moreutils sdl2_image sdl2_mixer openssl
+        brew install scons cairo pango moreutils sdl2_image sdl2_mixer openssl glew
         export CXXFLAGS="-I/usr/local/opt/openssl/include $CFLAGS"
         export LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS"
     fi

@@ -78,6 +78,8 @@ else()
 	message(WARNING "You are cross-compiling. Skipping IEEE 754 test.")
 endif()
 
+find_package(OpenGL)
+find_package(GLEW)
 find_package(SDL2 2.0.4 REQUIRED)
 find_package(Crypto 1.0 REQUIRED)
 find_package(Boost 1.56 REQUIRED COMPONENTS iostreams program_options regex system thread random)
