@@ -96,6 +96,10 @@
 		4649B8D52028923500827CFB /* variant_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC179B871E91475300B4178C /* variant_value.cpp */; };
 		4649B8D62028927A00827CFB /* function_gamestate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468C1B951F09245E002DF652 /* function_gamestate.cpp */; };
 		4664B9441F462ED9009E4881 /* irdya_datetime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */; };
+		466CE462206B8FDC00FD3994 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 466CE461206B8FDC00FD3994 /* libGLEW.2.1.0.dylib */; };
+		466CE463206B8FDC00FD3994 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 466CE461206B8FDC00FD3994 /* libGLEW.2.1.0.dylib */; };
+		466CE464206B8FED00FD3994 /* libGLEW.2.1.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 466CE461206B8FDC00FD3994 /* libGLEW.2.1.0.dylib */; };
+		466CE466206B911900FD3994 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466CE465206B911900FD3994 /* OpenGL.framework */; };
 		467D9DEE205EC39300FA2FC4 /* command_console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 467D9DED205EC39300FA2FC4 /* command_console.cpp */; };
 		467D9DEF205EC39300FA2FC4 /* command_console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 467D9DED205EC39300FA2FC4 /* command_console.cpp */; };
 		467D9DF3205EC3D300FA2FC4 /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 467D9DF1205EC3D200FA2FC4 /* texture.cpp */; };
@@ -1390,6 +1394,7 @@
 				B5599E8C0EC64CF2008DD061 /* SDL2_image.framework in Copy Frameworks */,
 				B5599E8E0EC64CF2008DD061 /* SDL2_mixer.framework in Copy Frameworks */,
 				B5599E8B0EC64CF2008DD061 /* SDL2.framework in Copy Frameworks */,
+				466CE464206B8FED00FD3994 /* libGLEW.2.1.0.dylib in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1414,6 +1419,8 @@
 		4638966F2034180800075E54 /* deprecation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = deprecation.hpp; sourceTree = "<group>"; };
 		463896702034180900075E54 /* deprecation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = deprecation.cpp; sourceTree = "<group>"; };
 		4649B879202886F000827CFB /* test_irdya_date.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_irdya_date.cpp; sourceTree = "<group>"; };
+		466CE461206B8FDC00FD3994 /* libGLEW.2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.1.0.dylib; path = lib_old/libGLEW.2.1.0.dylib; sourceTree = "<group>"; };
+		466CE465206B911900FD3994 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		467D9DEC205EC39200FA2FC4 /* command_console.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = command_console.hpp; sourceTree = "<group>"; };
 		467D9DED205EC39300FA2FC4 /* command_console.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = command_console.cpp; sourceTree = "<group>"; };
 		467D9DF0205EC3D200FA2FC4 /* userevent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = userevent.hpp; sourceTree = "<group>"; };
@@ -2717,6 +2724,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				466CE466206B911900FD3994 /* OpenGL.framework in Frameworks */,
 				ECA9E7471CA20AA800A947D6 /* libreadline.7.0.dylib in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				F4D2A99614DAED0E00CAFF31 /* CoreFoundation.framework in Frameworks */,
@@ -2728,6 +2736,7 @@
 				91B622221B76C0F400B00E0F /* libboost_regex-mt.dylib in Frameworks */,
 				91B622231B76C0F400B00E0F /* libboost_system-mt.dylib in Frameworks */,
 				91B622241B76C0F400B00E0F /* libboost_thread-mt.dylib in Frameworks */,
+				466CE462206B8FDC00FD3994 /* libGLEW.2.1.0.dylib in Frameworks */,
 				90BC845B1EDBD7B600A6630D /* libcrypto.1.1.dylib in Frameworks */,
 				EC5C243B18EF07B4001FA499 /* libbz2.1.0.dylib in Frameworks */,
 				B513B2290ED36BFB0006E551 /* libcairo.2.dylib in Frameworks */,
@@ -2801,6 +2810,7 @@
 				91A215E11CAD99E000927AEA /* libboost_thread-mt.dylib in Frameworks */,
 				90BC845D1EDBD7B600A6630D /* libcrypto.1.1.dylib in Frameworks */,
 				91A215E21CAD9B9000927AEA /* libpango-1.0.0.dylib in Frameworks */,
+				466CE463206B8FDC00FD3994 /* libGLEW.2.1.0.dylib in Frameworks */,
 				91A215E31CAD9B9000927AEA /* libpangocairo-1.0.0.dylib in Frameworks */,
 				916718EB1CADA88800B055A9 /* libgobject-2.0.0.dylib in Frameworks */,
 				46BAF787206672300004711F /* libboost_timer-mt.dylib in Frameworks */,
@@ -3030,6 +3040,7 @@
 				B5951A831013BB0800C10B66 /* multiplayer_error_codes.hpp */,
 				F44490B413C5483F003B6442 /* network_asio.cpp */,
 				F44490B513C5483F003B6442 /* network_asio.hpp */,
+				466CE458206B8D4500FD3994 /* ogl */,
 				91B621AA1B76AC9600B00E0F /* overlay.hpp */,
 				B55BE02C11234AAB00154E6C /* pathfind */,
 				B55999D20EC62181008DD061 /* pathutils.cpp */,
@@ -3172,6 +3183,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				466CE465206B911900FD3994 /* OpenGL.framework */,
 				1058C7A2FEA54F0111CA2CBB /* Included Frameworks */,
 				ECF9D43F19F4026D00E6C9D9 /* libboost_filesystem-mt.dylib */,
 				F4EF0D4B13AD4D53003C701D /* libboost_iostreams-mt.dylib */,
@@ -3190,6 +3202,7 @@
 				EC5C242418EF07B4001FA499 /* libffi.6.dylib */,
 				EC5C242518EF07B4001FA499 /* libfontconfig.1.dylib */,
 				B5599FC90EC8FBCB008DD061 /* libfreetype.6.dylib */,
+				466CE461206B8FDC00FD3994 /* libGLEW.2.1.0.dylib */,
 				EC5C242618EF07B4001FA499 /* libglib-2.0.0.dylib */,
 				EC5C242718EF07B4001FA499 /* libgmodule-2.0.0.dylib */,
 				EC5C242818EF07B4001FA499 /* libgobject-2.0.0.dylib */,
@@ -3211,6 +3224,17 @@
 				90606A2A1D5599BA00719B40 /* libpcre.1.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		466CE458206B8D4500FD3994 /* ogl */ = {
+			isa = PBXGroup;
+			children = (
+				466CE459206B8D4500FD3994 /* utils.cpp */,
+				466CE45A206B8D4500FD3994 /* context.cpp */,
+				466CE45B206B8D4500FD3994 /* context.hpp */,
+				466CE45C206B8D4500FD3994 /* utils.hpp */,
+			);
+			path = ogl;
 			sourceTree = "<group>";
 		};
 		46BED4CE205060EA00842FA5 /* crypt_blowfish */ = {
