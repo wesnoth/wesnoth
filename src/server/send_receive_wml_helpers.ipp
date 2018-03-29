@@ -249,7 +249,7 @@ void async_send_file(socket_ptr socket, const std::string& filename, Handler han
 		throw std::runtime_error("Failed to open the file");
 	}
 
-	sendfile_op<Handler, ErrorHandler> op = { socket, in_file, OVERLAPPED(), handler, error_handler, false };
+	sendfile_op<Handler, ErrorHandler> op = { socket, in_file, OVERLAPPED(), handler, error_handler, false, nullptr };
 
 	HANDLE event = CreateEvent(nullptr, TRUE, TRUE, nullptr);
 	if (GetLastError() != ERROR_SUCCESS)
