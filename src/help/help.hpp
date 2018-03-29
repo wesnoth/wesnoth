@@ -23,12 +23,6 @@ class unit_type;
 
 namespace help
 {
-struct help_manager
-{
-	help_manager(const config* game_config);
-	~help_manager();
-};
-
 struct section;
 
 void init_help();

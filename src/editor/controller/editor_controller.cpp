@@ -43,6 +43,7 @@
 #include "desktop/clipboard.hpp"
 #include "floating_label.hpp"
 #include "game_board.hpp"
+#include "help/help.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "image.hpp"
@@ -73,14 +74,12 @@ editor_controller::editor_controller(const config &game_config)
 	, toolkit_(nullptr)
 	, tooltip_manager_()
 	, floating_label_manager_(nullptr)
-	, help_manager_(nullptr)
 	, do_quit_(false)
 	, quit_mode_(EXIT_ERROR)
 	, music_tracks_()
 {
 	init_gui();
 	toolkit_.reset(new editor_toolkit(*gui_.get(), key_, game_config_, *context_manager_.get()));
-	help_manager_.reset(new help::help_manager(&game_config));
 	context_manager_->switch_context(0, true);
 	init_tods(game_config);
 	init_music(game_config);

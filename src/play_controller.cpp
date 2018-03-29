@@ -142,7 +142,6 @@ play_controller::play_controller(const config& level,
 	, whiteboard_manager_()
 	, plugins_context_()
 	, labels_manager_()
-	, help_manager_(&game_config)
 	, mouse_handler_(nullptr, *this)
 	, menu_handler_(nullptr, *this, game_config)
 	, hotkey_handler_(new hotkey_handler(*this, saved_game_))

@@ -19,7 +19,6 @@
 #include "floating_label.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_state.hpp"
-#include "help/help.hpp"
 #include "hotkey/command_executor.hpp"
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
@@ -425,7 +424,6 @@ protected:
 
 	// more managers
 	font::floating_label_context labels_manager_;
-	help::help_manager help_manager_;
 	events::mouse_handler mouse_handler_;
 	events::menu_handler menu_handler_;
 	std::unique_ptr<hotkey_handler> hotkey_handler_;

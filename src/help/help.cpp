@@ -74,28 +74,6 @@ void show_unit_description(const unit_type& t)
 	}
 }
 
-extern config dummy_cfg;
-
-help_manager::help_manager(const config* cfg) //, gamemap *_map)
-{
-	game_cfg = cfg == nullptr ? &dummy_cfg : cfg;
-	//	map = _map;
-}
-
-help_manager::~help_manager()
-{
-	game_cfg = nullptr;
-
-	//	map = nullptr;
-	default_toplevel.clear();
-	hidden_sections.clear();
-
-	// These last numbers must be reset so that the content is regenerated.
-	// Upon next start.
-	last_num_encountered_units = -1;
-	last_num_encountered_terrains = -1;
-}
-
 void show_help(const std::string& show_topic)
 {
 	show_help(default_toplevel, show_topic);

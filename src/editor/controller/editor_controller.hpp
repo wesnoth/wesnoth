@@ -22,7 +22,6 @@
 #include "editor/toolkit/editor_toolkit.hpp"
 
 #include "controller_base.hpp"
-#include "help/help.hpp"
 #include "hotkey/command_executor.hpp"
 #include "mouse_handler_base.hpp"
 #include "tooltips.hpp"
@@ -255,8 +254,6 @@ class editor_controller : public controller_base,
 		std::unique_ptr<editor_toolkit> toolkit_;
 		tooltips::manager tooltip_manager_;
 		std::unique_ptr<font::floating_label_context> floating_label_manager_;
-
-		std::unique_ptr<help::help_manager> help_manager_;
 
 		/** Quit main loop flag */
 		bool do_quit_;
