@@ -1182,31 +1182,25 @@ bool config::matches(const config& filter) const
 {
 	check_valid(filter);
 
+	bool result = true;
+
 	for(const attribute& i : filter.attribute_range()) {
 		const attribute_value* v = get(i.first);
 		if(!v || *v != i.second) {
-			return false;
+			result = false;
+			break;
 		}
 	}
 
 	for(const any_child& i : filter.all_children_range()) {
 		if(i.key == "not") {
-			if(matches(i.cfg)) {
-				return false;
-			}
-
+			result = result && !matches(i.cfg);
 			continue;
 		} else if(i.key == "and") {
-			if(!matches(i.cfg)) {
-				return false;
-			}
-
+			result = result && matches(i.cfg);
 			continue;
 		} else if(i.key == "or") {
-			if(matches(i.cfg)) {
-				return true;
-			}
-
+			result = result || matches(i.cfg);
 			continue;
 		}
 
@@ -1218,12 +1212,10 @@ bool config::matches(const config& filter) const
 			}
 		}
 
-		if(!found) {
-			return false;
-		}
+		result = result && found;
 	}
 
-	return true;
+	return result;
 }
 
 std::string config::debug() const
