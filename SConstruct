@@ -308,7 +308,7 @@ def Warning(message):
 
 from metasconf import init_metasconf
 configure_args = dict(
-    custom_tests = init_metasconf(env, ["ieee_754", "cplusplus", "python_devel", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext_tool", "lua"]),
+    custom_tests = init_metasconf(env, ["ieee_754", "cplusplus", "python_devel", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext_tool", "lua", "gl"]),
     config_h = "$build_dir/config.h",
     log_file="$build_dir/config.log", conf_dir="$build_dir/sconf_temp")
 
@@ -389,6 +389,8 @@ if env["prereqs"]:
         conf.CheckOgg())) & \
         conf.CheckPNG() & \
         conf.CheckJPG() & \
+        conf.CheckOpenGL() and \
+        conf.CheckGLEW() and \
         conf.CheckCairo(min_version = "1.10") & \
         conf.CheckPango("cairo", require_version = "1.22.0") & \
         conf.CheckPKG("fontconfig") & \
@@ -416,14 +418,6 @@ if env["prereqs"]:
         env["history"] = env["history"] and (conf.CheckLib("history") or Warning("Can't find GNU history, disabling history support."))
         if env["history"]:
             client_env.Append(CPPDEFINES = ["HAVE_HISTORY"])
-
-        if env["PLATFORM"] == 'darwin':
-            client_env.Append(FRAMEWORKS = "OpenGL")
-            client_env.AppendUnique(LIBS = ["GLEW"])
-        elif env["PLATFORM"] == 'posix':
-            opengl_config = check_output(["pkg-config", "--libs", "--cflags", "gl", "glew"])
-            opengl_flags = client_env.ParseFlags(opengl_config)
-            client_env.MergeFlags(opengl_flags)
 
     if env["forum_user_handler"]:
         mysql_config = check_output(["mysql_config", "--libs", "--cflags"]).replace("\n", " ").replace("-DNDEBUG", "")
