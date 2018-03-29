@@ -1,9 +1,9 @@
 # Compiling Wesnoth on Windows using Visual Studio
 
-The current minimum Visual Studio version required for compiling Wesnoth is Visual Studio 2015 (VC14).
-Compilation is also supported with Visual Studio 2017 (VC15) and later versions. However, since we keep
+The current minimum Visual Studio version required for compiling Wesnoth is Visual Studio 2013 (VC12).
+Compilation is also supported with Visual Studio 2015 (VC14) and later versions. However, since we keep
 the project files in the Git repository targeted at the minimum version, it is recommended you duplicate
-the `wesnoth/projectfiles/VC14` directory and rename it after the Visual Studio version with which you
+the `wesnoth/projectfiles/VC12` directory and rename it after the Visual Studio version with which you
 wish to build.
 
 ## Prerequisites
@@ -23,7 +23,7 @@ resulting directory by default.  **DO NOT RENAME IT!**
 
 2. If you cloned the repository, switch to the the version-appropriate branch now.
 
-3. Return to `wesnoth/projectfiles` and duplicate the VC14 folder if applicable, as mentioned above.
+3. Return to `wesnoth/projectfiles` and duplicate the VC12 folder if applicable, as mentioned above.
 
 4. Open `projectfiles/VCXX/wesnoth.sln` in Visual Studio. At this point, it may prompt you to re-target the
 projectfiles for your current VS and Windows versions. Do so; the build will likely fail if you do not.
