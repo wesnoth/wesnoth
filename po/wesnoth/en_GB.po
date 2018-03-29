@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:21+0300\n"
-"PO-Revision-Date: 2018-02-15 13:13+1100\n"
+"PO-Revision-Date: 2018-03-29 12:24+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -1489,10 +1489,8 @@ msgstr ""
 
 #. [else]
 #: data/core/macros/deprecated-utils.cfg:43
-#, fuzzy
-#| msgid "This unit has been renamed to: {NEW_NAME}"
 msgid "This unit has been renamed to: "
-msgstr "This unit has been renamed to: {NEW_NAME}"
+msgstr "This unit has been renamed to: "
 
 #: data/core/macros/deprecated-utils.cfg:95
 msgid "<small>(early finish bonus)</small>"
@@ -2689,22 +2687,6 @@ msgstr ""
 
 #. Generator for male dunefolk human names
 #: data/core/macros/names.cfg:145
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{name_mid}\n"
-#| "name_mid={prefix}{suffix}|{name_short}\n"
-#| "name_long={prefix}{suffix}|{prefix}{centre}{suffix}\n"
-#| "name_short=Din|Sif|Din|Taj|Sud|Ali|Lut|Nuh|Qays|Nimr|Jad|Bushr|Lut|Maʿd|"
-#| "Nur|Fadl\n"
-#| "prefix=Ab|Bas|Fat|Gha|Al|Ba|Ja|Ha|Mu|Ra|Raz|Abi|Am|La|ʿAj|Ala|ʿAk|Fa|Du|"
-#| "Im|Ju|Mun|Ma|Ni|Ji|Mu|Lab|Luf|Mih|Mi|Qu|Tal|Ta|Tha|Za|Zi|Yas|Wa|Su|Qa|"
-#| "ʿIkri|Lu|Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
-#| "suffix=af|al|lih|bair|sur|bi|lah|at|sim|ma|ih|yl|iq|raj|mam|man|ya|zid|"
-#| "riya|ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|mal|"
-#| "kib\n"
-#| "connector= al-| bin | ibn \n"
-#| "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 msgid ""
 "\n"
 "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{name_mid}\n"
@@ -2731,39 +2713,11 @@ msgstr ""
 "Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
 "suffix=af|al|lih|bair|sur|bi|lah|at|sim|ma|ih|yl|iq|raj|mam|man|ya|zid|riya|"
 "ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|mal|kib\n"
-"connector= al-| bin | ibn \n"
+"connector= al-| bin | ibn\n"
 "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 
 #. Generator for female dunefolk human names
 #: data/core/macros/names.cfg:156
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{surname}\n"
-#| "name_mid={prefix}{suffix}|{name_short}\n"
-#| "surname={name_mid_male}|{name_mid}|{name_mid_male}\n"
-#| "name_long={prefix}{suffix}|{prefix}{centre}{suffix}\n"
-#| "name_short=Afaf|Aida|Alya|Arij|Arwa|Asma|Asra|Azra|Dua|Fajr|Hala|Hana|"
-#| "Hiba|Inas|Isra|Lina|Mona|Muna|Nida|Nima|Nur|Rana|Rim|Ruba|Ruya|Ruwa|Sana|"
-#| "Sara|Suha|Tuba|Uzma|Zara\n"
-#| "prefix=Ab|Bas|Fat|Gha|Al|Ba|Ja|Ha|Mu|Ra|Raz|Abi|Am|La|ʿAj|Ala|ʿAk|Fa|Du|"
-#| "Im|Ju|Mun|Ma|Ni|Ji|Mu|Lab|Luf|Mih|Mi|Qu|Tal|Ta|Tha|Za|Zi|Yas|Wa|Su|Qa|"
-#| "ʿIkri|Lu|Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
-#| "suffix=a|ab|ad|ah|af|aj|al|am|an|ar|as|at|ay|az|da|een|ia|ij|in|ir|la|ma|"
-#| "mas|n|na|nab|ni|r|ra|raa|ran|rat|ul|ur|uz|wa|ya|yah|yam|za|zi\n"
-#| "connector= al-| ibna | bint \n"
-#| "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
-#| "\n"
-#| "These nonterminals are literally copied from the male names.\n"
-#| "name_mid_male={prefix_male}{suffix_male}|{name_short_male}\n"
-#| "name_short_male=Din|Sif|Din|Taj|Sud|Ali|Lut|Nuh|Qays|Nimr|Jad|Bushr|Lut|"
-#| "Maʿd|Nur|Fadl\n"
-#| "prefix_male=Ab|Bas|Fat|Gha|Al|Ba|Ja|Ha|Mu|Ra|Raz|Abi|Am|La|ʿAj|Ala|ʿAk|Fa|"
-#| "Du|Im|Ju|Mun|Ma|Ni|Ji|Mu|Lab|Luf|Mih|Mi|Qu|Tal|Ta|Tha|Za|Zi|Yas|Wa|Su|Qa|"
-#| "ʿIkri|Lu|Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
-#| "suffix_male=af|al|lih|bair|sur|bi|lah|at|sim|ma|ih|yl|iq|raj|mam|man|ya|"
-#| "zid|riya|ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|"
-#| "mal|kib\n"
 msgid ""
 "\n"
 "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{surname}\n"
@@ -2805,10 +2759,10 @@ msgstr ""
 "Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
 "suffix=a|ab|ad|ah|af|aj|al|am|an|ar|as|at|ay|az|da|een|ia|ij|in|ir|la|ma|mas|"
 "n|na|nab|ni|r|ra|raa|ran|rat|ul|ur|uz|wa|ya|yah|yam|za|zi\n"
-"connector= al-| ibna | bint \n"
+"connector= al-| ibna | bint\n"
 "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 "\n"
-"These nonterminals are literally copied from the male names.\n"
+"These non-terminals are literally copied from the male names.\n"
 "name_mid_male={prefix_male}{suffix_male}|{name_short_male}\n"
 "name_short_male=Din|Sif|Din|Taj|Sud|Ali|Lut|Nuh|Qays|Nimr|Jad|Bushr|Lut|Maʿd|"
 "Nur|Fadl\n"
@@ -3897,14 +3851,6 @@ msgstr ""
 
 #. [village_naming]
 #: data/english.cfg:76
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\t\tprefix=$base{!}|$river{!}\n"
-#| "\t\triver=$river{!}|River\n"
-#| "\t\tsuffix=ham|ford|cross| on {river} \n"
-#| "\t\tmain={prefix}{suffix}\n"
-#| "\t"
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$river{!}\n"
@@ -3916,7 +3862,7 @@ msgstr ""
 "\n"
 "\t\tprefix=$base{!}|$river{!}\n"
 "\t\triver=$river{!}|River\n"
-"\t\tsuffix=ham|ford|cross| on {river} \n"
+"\t\tsuffix=ham|ford|cross| on {river}\n"
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 
@@ -4098,12 +4044,12 @@ msgstr "DejaVu Sans Mono"
 #. [fonts]
 #: data/hardwired/fonts.cfg:30
 msgid "Lato Light"
-msgstr ""
+msgstr "Lato Light"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:31
 msgid "Oldania ADF Std"
-msgstr ""
+msgstr "Oldania ADF Std"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:36
@@ -5891,10 +5837,8 @@ msgid "$elem has been deprecated and may be removed at any time."
 msgstr "$elem has been deprecated and may be removed at any time."
 
 #: src/deprecation.cpp:56
-#, fuzzy
-#| msgid "$elem has been deprecated and may be removed in version $version."
 msgid "$elem has been deprecated and will be removed in version $version."
-msgstr "$elem has been deprecated and may be removed in version $version."
+msgstr "$elem has been deprecated and will be removed in version $version."
 
 #: src/deprecation.cpp:61
 msgid "$elem has been deprecated and removed."
@@ -6664,10 +6608,8 @@ msgid "Defense properties: "
 msgstr "Defence properties: "
 
 #: src/help/help_topic_generators.cpp:245
-#, fuzzy
-#| msgid "Level: "
 msgid "Level"
-msgstr "Level: "
+msgstr "Level"
 
 #: src/help/help_topic_generators.cpp:306
 msgid "Advances from: "
@@ -8074,20 +8016,20 @@ msgid "infix_binary^i"
 msgstr "i"
 
 #: src/synced_commands.cpp:403
-#, fuzzy
-#| msgid "Unknown era"
 msgid "(unknown player)"
-msgstr "Unknown era"
+msgstr "(unknown player)"
 
 #: src/synced_commands.cpp:408
 msgid "The :$command debug command was used during $player’s turn"
-msgstr ""
+msgstr "The :$command debug command was used during $player’s turn"
 
 #: src/synced_commands.cpp:416
 msgid ""
 "A player used a debug command during the game. If this is unexpected, it is "
 "possible the player in question is cheating."
 msgstr ""
+"A player used a debug command during the game. If this is unexpected, it is "
+"possible the player in question is cheating."
 
 #: src/synced_commands.cpp:418
 msgid "Details:"
@@ -8095,17 +8037,15 @@ msgstr "Details:"
 
 #: src/synced_commands.cpp:421
 msgid "Do you wish to save the game before continuing?"
-msgstr ""
+msgstr "Do you wish to save the game before continuing?"
 
 #: src/synced_commands.cpp:423
-#, fuzzy
-#| msgid "(debug command)"
 msgid "Debug Command Used"
-msgstr "(debug command)"
+msgstr "Debug Command Used"
 
 #: src/synced_commands.cpp:509
 msgid "A unit was created using debug mode during $player’s turn"
-msgstr ""
+msgstr "A unit was created using debug mode during $player’s turn"
 
 #: src/synced_user_choice.cpp:326
 msgid "waiting for $desc from side(s) $sides"
@@ -8237,11 +8177,8 @@ msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
 #: src/units/unit.cpp:1791
-#, fuzzy
-#| msgid "<span color=\"$color\">$number_or_percent</span> move"
-#| msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
-msgstr "<span color=\"$color\">$number_or_percent</span> move"
+msgstr "<span color=\"$color\">$number_or_percent</span> HP"
 
 #: src/units/unit.cpp:1801
 msgid "<span color=\"$color\">$number_or_percent</span> move"
