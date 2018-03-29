@@ -16,7 +16,8 @@
      (bug #2732)
    * Fixed "Search" placeholder text in dialog item filters not being
      translatable (bug #2709, bug #2732).
-   * Updated translations: Chinese (Simplified), Scottish Gaelic, Spanish
+   * Updated translations: Chinese (Simplified), Scottish Gaelic, Spanish,
+     Ukrainian
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
    * Fixed events with an id but no name being rejected
