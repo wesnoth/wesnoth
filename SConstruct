@@ -842,7 +842,7 @@ env.Command("wesnoth-deps.dot", [],
 env.Command("wesnoth-deps.png", "wesnoth-deps.dot",
             "dot -Tpng -o ${TARGET} ${SOURCE}")
 env.Clean(all, ["wesnoth-deps.dot", "wesnoth-deps.png"])
-print(env.Dump())
+
 # Local variables:
 # mode: python
 # end:
