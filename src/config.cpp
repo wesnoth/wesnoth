@@ -27,6 +27,7 @@
 #include "utils/functional.hpp"
 #include "deprecation.hpp"
 #include "version.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <algorithm>
 #include <cstdlib>
@@ -1185,10 +1186,18 @@ bool config::matches(const config& filter) const
 	bool result = true;
 
 	for(const attribute& i : filter.attribute_range()) {
-		const attribute_value* v = get(i.first);
-		if(!v || *v != i.second) {
-			result = false;
-			break;
+		if(i.first.compare(0, 8, "glob_on_") == 0) {
+			const attribute_value* v = get(i.first.substr(8));
+			if(!v || !utils::wildcard_string_match(v->str(), i.second.str())) {
+				result = false;
+				break;
+			}
+		} else {
+			const attribute_value* v = get(i.first);
+			if(!v || *v != i.second) {
+				result = false;
+				break;
+			}
 		}
 	}
 
