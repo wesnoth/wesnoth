@@ -502,6 +502,7 @@ void class_tag::add_switch(const config& switch_cfg)
 {
 	config default_cfg;
 	const std::string key = switch_cfg["key"];
+	bool allow_missing = false;
 	for(const auto& case_cfg : switch_cfg.child_range("case")) {
 		if(case_cfg.has_attribute("value")) {
 			const std::vector<std::string> values = utils::split(case_cfg["value"], ',', utils::STRIP_SPACES);
@@ -516,6 +517,11 @@ void class_tag::add_switch(const config& switch_cfg)
 				}
 				default_cfg.add_child("not")[key] = value;
 			}
+			if(!allow_missing && case_cfg["trigger_if_missing"].to_bool()) {
+				config& missing_filter = filter.add_child("or").add_child("not");
+				missing_filter["glob_on_" + key] = "*";
+				allow_missing = true;
+			}
 			conditions_.emplace_back(case_cfg, filter);
 		} else {
 			// Match if the attribute is missing
@@ -525,6 +531,12 @@ void class_tag::add_switch(const config& switch_cfg)
 		conditions_.back().set_name(name);
 	}
 	if(switch_cfg.has_child("else")) {
+		if(allow_missing) {
+			// If a [case] matches the absence of the key, then [else] should not
+			// The previous [not] keys already failed if it had a value matched by another [case]
+			// So just add an [and] tag that matches any other value
+			default_cfg.add_child("and")["glob_on_" + key] = "*";
+		}
 		conditions_.emplace_back(switch_cfg.child("else"), default_cfg);
 		const std::string name = formatter() << get_name() << "[else]";
 		conditions_.back().set_name(name);
