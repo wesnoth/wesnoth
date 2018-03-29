@@ -2,6 +2,4 @@ FROM wesnoth/wesnoth:16.04
 
 COPY ./ /home/wesnoth-travis/
 
-RUN apt install -y -qq libglew1.13 libglew-dev
-
 WORKDIR /home/wesnoth-travis
