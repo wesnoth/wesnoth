@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -43,9 +43,10 @@
 #include "desktop/clipboard.hpp"
 #include "floating_label.hpp"
 #include "game_board.hpp"
+#include "help/help.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
-#include "picture.hpp"
+#include "image.hpp"
 #include "preferences/display.hpp"
 #include "sound.hpp"
 #include "units/unit.hpp"
@@ -61,42 +62,38 @@ static std::vector<std::string> saved_windows_;
 
 namespace editor {
 
-editor_controller::editor_controller()
-	: controller_base()
+editor_controller::editor_controller(const config &game_config)
+	: controller_base(game_config)
 	, mouse_handler_base()
 	, quit_confirmation(std::bind(&editor_controller::quit_confirm, this))
 	, active_menu_(editor::MAP)
 	, reports_(new reports())
-	, gui_(new editor_display(*this, *reports_, controller_base::get_theme(game_config_, "editor")))
+	, gui_(new editor_display(*this, controller_base::get_theme(game_config, "editor")))
 	, tods_()
 	, context_manager_(new context_manager(*gui_.get(), game_config_))
 	, toolkit_(nullptr)
 	, tooltip_manager_()
 	, floating_label_manager_(nullptr)
-	, help_manager_(nullptr)
 	, do_quit_(false)
 	, quit_mode_(EXIT_ERROR)
 	, music_tracks_()
 {
 	init_gui();
 	toolkit_.reset(new editor_toolkit(*gui_.get(), key_, game_config_, *context_manager_.get()));
-	help_manager_.reset(new help::help_manager(&game_config_));
-	context_manager_->locs_ = toolkit_->get_palette_manager()->location_palette_.get();
 	context_manager_->switch_context(0, true);
-	init_tods(game_config_);
-	init_music(game_config_);
+	init_tods(game_config);
+	init_music(game_config);
 	get_current_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
 
-	gui().create_buttons();
-	gui().redraw_everything();
+	join();
 }
 
 void editor_controller::init_gui()
 {
 	gui_->change_display_context(&get_current_map_context());
 	preferences::set_preference_display_settings();
-	gui_->add_redraw_observer(std::bind(&editor_controller::display_redraw_callback, this, _1));
+	//gui_->add_redraw_observer(std::bind(&editor_controller::display_redraw_callback, this, _1));
 	floating_label_manager_.reset(new font::floating_label_context());
 	gui().set_draw_coordinates(preferences::editor::draw_hex_coordinates());
 	gui().set_draw_terrain_codes(preferences::editor::draw_terrain_codes());
@@ -174,10 +171,10 @@ EXIT_STATUS editor_controller::main_loop()
 		while (!do_quit_) {
 			play_slice();
 		}
-	} catch (const editor_exception& e) {
+	} catch (editor_exception& e) {
 		gui2::show_transient_message(_("Fatal error"), e.what());
 		return EXIT_ERROR;
-	} catch (const wml_exception& e) {
+	} catch (wml_exception& e) {
 		e.show();
 	}
 	return quit_mode_;
@@ -190,10 +187,10 @@ void editor_controller::do_screenshot(const std::string& screenshot_filename /* 
 {
 	try {
 		surface screenshot = gui().screenshot(true);
-		if(screenshot.null() || image::save_image(screenshot, screenshot_filename) != image::save_result::success) {
+		if(screenshot.null() || !image::save_image(screenshot, screenshot_filename)) {
 			ERR_ED << "Screenshot creation failed!\n";
 		}
-	} catch (const wml_exception& e) {
+	} catch (wml_exception& e) {
 		e.show();
 	}
 }
@@ -650,10 +647,12 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 					//TODO mark the map as changed
 					sound::play_music_once(music_tracks_[index].id());
 					get_current_map_context().add_to_playlist(music_tracks_[index]);
+#if 0
 					std::vector<config> items;
 					items.emplace_back("id", "editor-playlist");
 					std::shared_ptr<gui::button> b = gui_->find_menu_button("menu-playlist");
 					show_menu(items, b->location().x +1, b->location().y + b->height() +1, false, *gui_);
+#endif
 					return true;
 				}
 			case SCHEDULE:
@@ -927,10 +926,6 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 
 		// Side specific ones
 		case HOTKEY_EDITOR_SIDE_NEW:
-			if(get_current_map_context().teams().size() >= 9) {
-				size_t new_side_num = get_current_map_context().teams().size() + 1;
-				toolkit_->get_palette_manager()->location_palette_->add_item(std::to_string(new_side_num));
-			}
 			get_current_map_context().new_side();
 			gui_->init_flags();
 			return true;
@@ -972,17 +967,14 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 		case HOTKEY_EDITOR_DRAW_COORDINATES:
 			gui().set_draw_coordinates(!gui().get_draw_coordinates());
 			preferences::editor::set_draw_hex_coordinates(gui().get_draw_coordinates());
-			gui().invalidate_all();
 			return true;
 		case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
 			gui().set_draw_terrain_codes(!gui().get_draw_terrain_codes());
 			preferences::editor::set_draw_terrain_codes(gui().get_draw_terrain_codes());
-			gui().invalidate_all();
 			return true;
 		case HOTKEY_EDITOR_DRAW_NUM_OF_BITMAPS:
 			gui().set_draw_num_of_bitmaps(!gui().get_draw_num_of_bitmaps());
 			preferences::editor::set_draw_num_of_bitmaps(gui().get_draw_num_of_bitmaps());
-			gui().invalidate_all();
 			return true;
 		case HOTKEY_EDITOR_REMOVE_LOCATION: {
 			location_palette* lp = dynamic_cast<location_palette*>(&toolkit_->get_palette_manager()->active_palette());
@@ -1071,7 +1063,7 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 		active_menu_ = editor::UNIT_FACING;
 		auto pos = items.erase(items.begin());
 		int dir = 0;
-		std::generate_n(std::inserter<std::vector<config>>(items, pos), static_cast<int>(map_location::NDIRECTIONS), [&dir]() -> config {
+		std::generate_n(std::inserter<std::vector<config>>(items, pos), int(map_location::NDIRECTIONS), [&dir]() -> config {
 			return config {"label", map_location::write_translated_direction(map_location::DIRECTION(dir++))};
 		});
 	}
@@ -1107,14 +1099,11 @@ void editor_controller::preferences()
 {
 	gui_->video().clear_all_help_strings();
 	gui2::dialogs::preferences_dialog::display(game_config_);
-
-	gui_->redraw_everything();
 }
 
 void editor_controller::toggle_grid()
 {
 	preferences::set_grid(!preferences::grid());
-	gui_->invalidate_all();
 }
 
 void editor_controller::unit_description()
@@ -1238,7 +1227,6 @@ void editor_controller::refresh_image_cache()
 
 void editor_controller::display_redraw_callback(display&)
 {
-	set_button_state();
 	toolkit_->adjust_size();
 	toolkit_->get_palette_manager()->draw_contents();
 	get_current_map_context().get_labels().recalculate_labels();
@@ -1314,7 +1302,6 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 	LOG_ED << "Left click action " << hex_clicked << "\n";
 	editor_action* a = get_mouse_action().click_left(*gui_, x, y);
 	perform_refresh_delete(a, true);
-	if (a) set_button_state();
 
 	return false;
 }
@@ -1329,7 +1316,6 @@ void editor_controller::left_mouse_up(int x, int y, const bool /*browse*/)
 {
 	editor_action* a = get_mouse_action().up_left(*gui_, x, y);
 	perform_delete(a);
-	if (a) set_button_state();
 	toolkit_->set_mouseover_overlay();
 	context_manager_->refresh_after_action();
 }
@@ -1344,7 +1330,6 @@ bool editor_controller::right_click(int x, int y, const bool browse)
 	LOG_ED << "Right click action " << hex_clicked << "\n";
 	editor_action* a = get_mouse_action().click_right(*gui_, x, y);
 	perform_refresh_delete(a, true);
-	if (a) set_button_state();
 	return false;
 }
 
@@ -1361,7 +1346,6 @@ void editor_controller::right_mouse_up(int x, int y, const bool browse)
 
 	editor_action* a = get_mouse_action().up_right(*gui_, x, y);
 	perform_delete(a);
-	if (a) set_button_state();
 	toolkit_->set_mouseover_overlay();
 	context_manager_->refresh_after_action();
 }
