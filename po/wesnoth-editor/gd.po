@@ -1,24 +1,25 @@
-# #-#-#-#-#  wesnoth-editor.cpp.pot (wesnoth_up VERSION)  #-#-#-#-#
-# Scottish Gaelic translations for wesnoth_up package.
-# Copyright (C) 2012 Wesnoth development team
-# This file is distributed under the same license as the wesnoth_up package.
-# Automatically generated, 2012.
-# GunChleoc <fios@foramnagaidhlig.net>, 2012, 2013, 2014, 2015, 2016, 2017.
+# #-#-#-#-#  wesnoth-editor.cpp.pot (PACKAGE VERSION)  #-#-#-#-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Wesnoth development team
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth 1.10\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 21:29+0300\n"
-"PO-Revision-Date: 2017-05-25 12:22+0100\n"
-"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
-"Language-Team: Fòram na Gàidhlig\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: GunChleoc, 2017\n"
+"Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
+"teams/12769/gd/)\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Generator: Virtaal 0.7.1\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -468,7 +469,7 @@ msgstr "Cha b' urrainn dhuinn am mapa a shàbhaladh: $msg"
 
 #: src/editor/palette/editor_palettes.cpp:51
 msgid "(Unknown Group)"
-msgstr "(Buidheann neo-aithnichte)"
+msgstr "(Buidheann nach aithne dhuinn)"
 
 #: src/editor/palette/editor_palettes.cpp:284
 msgid "(non-core)"
@@ -487,8 +488,6 @@ msgid "Add"
 msgstr "Cuir ris"
 
 #: src/editor/palette/location_palette.cpp:257
-#, fuzzy
-#| msgid "New Location Identifer"
 msgid "New Location Identifier"
 msgstr "Aithnichear ionaid ùr"
 
@@ -524,89 +523,3 @@ msgstr "Gin"
 #: src/gui/dialogs/editor/set_starting_position.cpp:101
 msgid "Player $player_number"
 msgstr "Cluicheadair $player_number"
-
-#~ msgid "(New Map)"
-#~ msgstr "(Mapa ùr)"
-
-#~ msgid "(New Scenario)"
-#~ msgstr "(Cnàmh-sgeul ùr)"
-
-#~ msgid "Choose a File to Open"
-#~ msgstr "Tagh faidhle airson fhosgladh"
-
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Tagh masg airson cur an sàs"
-
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr ""
-#~ "Tha am faidhle ann mu thràth. A bheil thu airson sgrìobhadh thairis air?"
-
-#~ msgid "Quit"
-#~ msgstr "Fàg an-seo"
-
-#~ msgid "Player"
-#~ msgstr "Cluicheadair"
-
-#~ msgid "ID"
-#~ msgstr "ID"
-
-#~ msgid ""
-#~ "Use left/right mouse button to draw fore-/background terrain. Hold Shift "
-#~ "to paint base layer only. Ctrl+click to sample terrain under cursor."
-#~ msgstr ""
-#~ "Cleachd putanan clì/deas gus cruth-tìre beulaibh/cùlaibh a tharraing. Cùm "
-#~ "air Shift gus bun-bhreath a-mhàin a pheantadh. Crtl+briog gus sampall "
-#~ "dhen chruth-tìre fon chùrsair  fhaighinn."
-
-#~ msgid ""
-#~ "Left mouse button selects, right deselects. Hold Shift for magic-wand "
-#~ "selection of tiles with same terrain."
-#~ msgstr ""
-#~ "Taghaidh putan clì na luchaige, neo-thaghaidh am putan deas. Cùm air "
-#~ "Shift airson taghadh dhe leacan aig a bheil an aon chruth-tìre le slat-"
-#~ "draoidheachd."
-
-#~ msgid ""
-#~ "Left mouse button displays player selection, right clears. Number keys "
-#~ "scroll to the starting position, alt+number sets respective starting "
-#~ "position under cursor, delete clears."
-#~ msgstr ""
-#~ "Seallaidh putan clì na luchaige taghadh cluicheadair, neo-thaghaidh am "
-#~ "putan deas. Nì iuchraichean àireimh sgroladh dhan ionad tòiseachaidh, "
-#~ "suidhichidh alt-àireamh an t-ionad tòiseachaidh àraidh fon chùrsair, nì "
-#~ "delete neo-thaghadh."
-
-#~ msgid ""
-#~ "Click to paste, zoom out for more accuracy when pasting large areas. Use "
-#~ "the edit menu to transform the clipboard (rotate, mirror)."
-#~ msgstr ""
-#~ "Briog airson cur ann, sùm a-mach airson barrachd pongalachd nuair a "
-#~ "chuireas tu roinnean farsaing ann. Cleachd an clàr-taice deasachaidh gus "
-#~ "am bòrd-chliopaichean cruth-atharrachadh (cuairtich, sgàthan)."
-
-#~ msgid "Edit"
-#~ msgstr "Deasaich"
-
-#~ msgid "Undo"
-#~ msgstr "Neo-dhèan"
-
-#~ msgid "Can’t Undo"
-#~ msgstr "Cha ghabh neo-dhèanamh"
-
-#~ msgid "Redo"
-#~ msgstr "Ath-dhèan"
-
-#~ msgid "Can’t Redo"
-#~ msgstr "Cha ghabh ath-dhèanamh"
-
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "Fèin-ùraich tar-mhùthaidhean crutha-thìre: air"
-
-#~ msgid "Auto-update Terrain Transitions: Partial"
-#~ msgstr "Fèin-ùraich tar-mhùthaidhean crutha-thìre: pàirt"
-
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "Fèin-ùraich tar-mhùthaidhean crutha-thìre: dheth"
-
-#~ msgid "Custom setting"
-#~ msgstr "Roghainn gnàthaichte"

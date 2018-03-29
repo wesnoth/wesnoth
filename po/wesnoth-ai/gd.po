@@ -1,24 +1,20 @@
-# #-#-#-#-#  wesnoth-ai.cpp.pot (PACKAGE VERSION)  #-#-#-#-#
-# Scottish Gaelic translations for PACKAGE package.
-# Copyright (C) 2013 Wesnoth development team
-# This file is distributed under the same license as the PACKAGE package.
-# Automatically generated, 2013.
-# GunChleoc <fios@foramnagaidhlig.net>, 2014.
+# Translators:
+# GunChleoc, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth AI\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 01:20 UTC\n"
-"PO-Revision-Date: 2014-07-17 11:53+0100\n"
-"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
-"Language-Team: Fòram na Gàidhlig\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: GunChleoc, 2017\n"
+"Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
+"teams/12769/gd/)\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Generator: Virtaal 0.7.1\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -37,10 +33,8 @@ msgstr "IF nan Dev: IF 'na thàmh"
 
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
-#, fuzzy
-#| msgid "Multiplayer_AI^Dev AI: Default + Old Recruitment"
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
-msgstr "IF nan Dev: Coitcheann &#204A; seann trusadh"
+msgstr "IF tùsail (RCA) le modh trusaidh eile"
 
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/dev/formula_ai.cfg:10
@@ -54,7 +48,7 @@ msgstr "IF nan Dev: Coitcheann &#204A; puinnseanachadh (Formula AI)"
 
 #: data/ai/lua/patrol.lua:4
 msgid "Use the Patrols Micro AI instead of patrol.lua."
-msgstr ""
+msgstr "Cleachd meanbh-IF nan cuairteachan seach patrol.lua."
 
 #. [test]: id=The_Elves_Besieged
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:5
@@ -136,13 +130,6 @@ msgstr ""
 
 #. [event]
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:216
-#, fuzzy
-#| msgid ""
-#| "This is a reenactment of scenario \"The Elves Besieged\" of the mainline "
-#| "campaign \"Heir to the Throne\", just that the AI is playing Konrad's "
-#| "side here. The goal is to move Konrad to the signpost in the northwest, "
-#| "while keeping both Konrad and Delfador alive. The same AI as in scenario "
-#| "\"Protect Unit"
 msgid ""
 "This is a reenactment of scenario The Elves Besieged of the mainline "
 "campaign Heir to the Throne, just that the AI is playing Konrad's side here. "
@@ -158,7 +145,7 @@ msgstr ""
 "Seo ath-achdachadh dhen chnàmh-sgeul “Na sìthichean fo shèist” aig an "
 "iomairt “Oighre na cathrach” ach an cluich IF an taobh aig Conall an-seo. Is "
 "an t-amas gun gluais Conall dhan t-sanas taobh iar-thuath fhad ’s a mhaireas "
-"Conall agus Deilfeadar beò. Seo an aon IF ’s a tha sa chnàmh-sgeul \"Dìon "
+"Conall agus Deilfeadar beò. Seo an aon IF ’s a tha sa chnàmh-sgeul “Dìon "
 "aonad”"
 
 #. [event]
@@ -1500,10 +1487,8 @@ msgstr "Teachdaire"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:121
-#, fuzzy
-#| msgid "Messenger Waypoint 2"
 msgid "Messenger Waypoint 1"
-msgstr "Puing-shlighe teachdaire 2"
+msgstr ""
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:123
@@ -1882,7 +1867,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/recruiting.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:78
 msgid "Recruiting"
-msgstr ""
+msgstr "Trusadh"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/recruiting.cfg:85
@@ -1901,13 +1886,6 @@ msgstr ""
 
 #. [event]
 #: data/ai/micro_ais/scenarios/recruiting.cfg:90
-#, fuzzy
-#| msgid ""
-#| "This is a reenactment of scenario \"The Elves Besieged\" of the mainline "
-#| "campaign \"Heir to the Throne\", just that the AI is playing Konrad's "
-#| "side here. The goal is to move Konrad to the signpost in the northwest, "
-#| "while keeping both Konrad and Delfador alive. The same AI as in scenario "
-#| "\"Protect Unit"
 msgid ""
 "If you have not changed anything in the scenario code, Side 1 uses the "
 "Random Recruitment Micro AI, with swordsmen and peasants having been given "
@@ -1923,11 +1901,6 @@ msgid ""
 "AI wiki page</span> at http://wiki.wesnoth.org/Micro_AIs for more "
 "information."
 msgstr ""
-"Seo ath-achdachadh dhen chnàmh-sgeul “Na sìthichean fo shèist” aig an "
-"iomairt “Oighre na cathrach” ach an cluich IF an taobh aig Conall an-seo. Is "
-"an t-amas gun gluais Conall dhan t-sanas taobh iar-thuath fhad ’s a mhaireas "
-"Conall agus Deilfeadar beò. Seo an aon IF ’s a tha sa chnàmh-sgeul \"Dìon "
-"aonad”"
 
 #. [test]: id=micro_ai_test
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:5
@@ -2655,46 +2628,3 @@ msgstr ""
 #: data/ai/scenarios/scenario-lua_ai_old_syntax.cfg:87
 msgid "Kiressh"
 msgstr ""
-
-#~ msgid "Messanger Waypoint 1"
-#~ msgstr "Puing-shlighe teachdaire 1"
-
-#~ msgid "Multiplayer_AI^Strong AI (RCA)"
-#~ msgstr "IF làidir (RCA)"
-
-#, fuzzy
-#~| msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
-#~ msgid "Multiplayer_AI^Dev AI: Strategy formulation with RCA "
-#~ msgstr "IF nan Dev: Coitcheann &#204A; puinnseanachadh (Formula AI)"
-
-#~ msgid ""
-#~ "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (C++ Akihara)"
-#~ msgstr "IF nan Dev: Coitcheann &#204A; Trusadh deuchainneach (C++ Akihara)"
-
-#~ msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (C++)"
-#~ msgstr "IF nan Dev: Coitcheann &#204A; Trusadh deuchainneach (C++)"
-
-#~ msgid "Patrol waypoint 1"
-#~ msgstr "Puing-shlighe chuairteachan 1"
-
-#~ msgid "Patrol waypoint 2"
-#~ msgstr "Puing-shlighe chuairteachan 2"
-
-#~ msgid "first"
-#~ msgstr "A' chiad dhiubh"
-
-#~ msgid "second"
-#~ msgstr "An dàrna dhiubh"
-
-#~ msgid "third"
-#~ msgstr "An treas dhiubh"
-
-#~ msgid "Zone Guard"
-#~ msgstr "Freiceadan roinne"
-
-#~ msgid ""
-#~ "Zone Guard with\n"
-#~ "separate attack Zone"
-#~ msgstr ""
-#~ "Freiceadan roinne le\n"
-#~ "roinn ionnsaighe fa leth"
