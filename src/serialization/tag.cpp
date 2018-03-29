@@ -503,13 +503,24 @@ void class_tag::add_switch(const config& switch_cfg)
 	config default_cfg;
 	const std::string key = switch_cfg["key"];
 	for(const auto& case_cfg : switch_cfg.child_range("case")) {
-		const std::vector<std::string> values = utils::split(case_cfg["value"]);
-		config filter;
-		for(const auto& value : values) {
-			filter.add_child("or")[key] = value;
-			default_cfg.add_child("not")[key] = value;
+		if(case_cfg.has_attribute("value")) {
+			const std::vector<std::string> values = utils::split(case_cfg["value"], ',', utils::STRIP_SPACES);
+			config filter;
+			for(const auto& value : values) {
+				// An [or] filter only works if there's something in the main filter.
+				// So, the first case cannot be wrapped in [or].
+				if(filter.empty()) {
+					filter[key] = value;
+				} else {
+					filter.add_child("or")[key] = value;
+				}
+				default_cfg.add_child("not")[key] = value;
+			}
+			conditions_.emplace_back(case_cfg, filter);
+		} else {
+			// Match if the attribute is missing
+			conditions_.emplace_back(case_cfg, config());
 		}
-		conditions_.emplace_back(case_cfg, filter);
 		const std::string name = formatter() << get_name() << '[' << key << '=' << case_cfg["value"] << ']';
 		conditions_.back().set_name(name);
 	}
