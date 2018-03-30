@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1EF6CE8214D9846D00ECBE58 /* mp_host_game_prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EF6CE8014D9846D00ECBE58 /* mp_host_game_prompt.cpp */; };
 		460CA6D52143362800B89741 /* apple_version.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46F54C26211DFB7200374A1C /* apple_version.mm */; };
+		4601124C206E59F50037E23F /* libGLEW.2.1.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 466CE461206B8FDC00FD3994 /* libGLEW.2.1.0.dylib */; };
+		4601124D206E5A590037E23F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466CE465206B911900FD3994 /* OpenGL.framework */; };
 		461CE967205C3A8700E6E98F /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
 		463896712034180900075E54 /* deprecation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 463896702034180900075E54 /* deprecation.cpp */; };
 		463896722034180900075E54 /* deprecation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 463896702034180900075E54 /* deprecation.cpp */; };
@@ -97,9 +99,12 @@
 		4649B8D62028927A00827CFB /* function_gamestate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468C1B951F09245E002DF652 /* function_gamestate.cpp */; };
 		465410A02078BC77002BCD13 /* l10n-track in Resources */ = {isa = PBXBuildFile; fileRef = 4654109E2078BC02002BCD13 /* l10n-track */; };
 		4664B9441F462ED9009E4881 /* irdya_datetime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */; };
+		466CE45D206B8D4500FD3994 /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 466CE459206B8D4500FD3994 /* utils.cpp */; };
+		466CE45E206B8D4500FD3994 /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 466CE459206B8D4500FD3994 /* utils.cpp */; };
+		466CE45F206B8D4500FD3994 /* context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 466CE45A206B8D4500FD3994 /* context.cpp */; };
+		466CE460206B8D4500FD3994 /* context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 466CE45A206B8D4500FD3994 /* context.cpp */; };
 		466CE462206B8FDC00FD3994 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 466CE461206B8FDC00FD3994 /* libGLEW.2.1.0.dylib */; };
 		466CE463206B8FDC00FD3994 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 466CE461206B8FDC00FD3994 /* libGLEW.2.1.0.dylib */; };
-		466CE464206B8FED00FD3994 /* libGLEW.2.1.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 466CE461206B8FDC00FD3994 /* libGLEW.2.1.0.dylib */; };
 		466CE466206B911900FD3994 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466CE465206B911900FD3994 /* OpenGL.framework */; };
 		467D9DEE205EC39300FA2FC4 /* command_console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 467D9DED205EC39300FA2FC4 /* command_console.cpp */; };
 		467D9DEF205EC39300FA2FC4 /* command_console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 467D9DED205EC39300FA2FC4 /* command_console.cpp */; };
@@ -1173,7 +1178,7 @@
 		EC67F7F01DB3144A0038337E /* constants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC67F7E91DB3144A0038337E /* constants.cpp */; };
 		EC67F7F11DB3144A0038337E /* font_config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC67F7EB1DB3144A0038337E /* font_config.cpp */; };
 		EC67F7FD1DB314580038337E /* text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC67F7F81DB314580038337E /* text.cpp */; };
-		EC6C6B8B1D77CB0800807ED1 /* libpcre.1.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 91C554661D77A545002DB0C8 /* libpcre.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		EC6C6B8B1D77CB0800807ED1 /* libpcre.1.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 91C554661D77A545002DB0C8 /* libpcre.1.dylib */; };
 		EC74C10F1975765F00B85A1A /* depcheck_confirm_change.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C10D1975765F00B85A1A /* depcheck_confirm_change.cpp */; };
 		EC74C1101975765F00B85A1A /* depcheck_select_new.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C10E1975765F00B85A1A /* depcheck_select_new.cpp */; };
 		EC74C11F197576F500B85A1A /* notifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C119197576F500B85A1A /* notifications.cpp */; };
@@ -1396,7 +1401,7 @@
 				B5599E8C0EC64CF2008DD061 /* SDL2_image.framework in Copy Frameworks */,
 				B5599E8E0EC64CF2008DD061 /* SDL2_mixer.framework in Copy Frameworks */,
 				B5599E8B0EC64CF2008DD061 /* SDL2.framework in Copy Frameworks */,
-				466CE464206B8FED00FD3994 /* libGLEW.2.1.0.dylib in Copy Frameworks */,
+				4601124C206E59F50037E23F /* libGLEW.2.1.0.dylib in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1422,7 +1427,11 @@
 		463896702034180900075E54 /* deprecation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = deprecation.cpp; sourceTree = "<group>"; };
 		4649B879202886F000827CFB /* test_irdya_date.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_irdya_date.cpp; sourceTree = "<group>"; };
 		4654109E2078BC02002BCD13 /* l10n-track */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "l10n-track"; path = "../../l10n-track"; sourceTree = "<group>"; };
-		466CE461206B8FDC00FD3994 /* libGLEW.2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.1.0.dylib; path = lib_old/libGLEW.2.1.0.dylib; sourceTree = "<group>"; };
+		466CE459206B8D4500FD3994 /* utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utils.cpp; sourceTree = "<group>"; };
+		466CE45A206B8D4500FD3994 /* context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = context.cpp; sourceTree = "<group>"; };
+		466CE45B206B8D4500FD3994 /* context.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = context.hpp; sourceTree = "<group>"; };
+		466CE45C206B8D4500FD3994 /* utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utils.hpp; sourceTree = "<group>"; };
+		466CE461206B8FDC00FD3994 /* libGLEW.2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.1.0.dylib; path = lib/libGLEW.2.1.0.dylib; sourceTree = "<group>"; };
 		466CE465206B911900FD3994 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		467D9DEC205EC39200FA2FC4 /* command_console.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = command_console.hpp; sourceTree = "<group>"; };
 		467D9DED205EC39300FA2FC4 /* command_console.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = command_console.cpp; sourceTree = "<group>"; };
@@ -2799,6 +2808,7 @@
 				B597C51F0FACD56A00CE81F5 /* libfreetype.6.dylib in Frameworks */,
 				46B2A7C12028DDA2006C2323 /* libpng16.16.dylib in Frameworks */,
 				B597C51E0FACD56600CE81F5 /* libpixman-1.0.dylib in Frameworks */,
+				4601124D206E5A590037E23F /* OpenGL.framework in Frameworks */,
 				B597C5280FACD58400CE81F5 /* SDL2_image.framework in Frameworks */,
 				B597C52A0FACD58400CE81F5 /* SDL2_mixer.framework in Frameworks */,
 				B597C5260FACD58400CE81F5 /* SDL2.framework in Frameworks */,
@@ -5111,6 +5121,7 @@
 				ECA4A67D1A1EC319006BCCF2 /* lua_rng.cpp in Sources */,
 				ECD26C951FE573D300E663E1 /* gui.cpp in Sources */,
 				468C1B971F09245F002DF652 /* function_gamestate.cpp in Sources */,
+				466CE45F206B8D4500FD3994 /* context.cpp in Sources */,
 				ECE09A551EBA529D0020C97B /* parser.cpp in Sources */,
 				EC5430231A4E6024006D206C /* lua_team.cpp in Sources */,
 				EC5430241A4E6024006D206C /* lua_unit_type.cpp in Sources */,
@@ -5238,6 +5249,7 @@
 				B52EE8DC121359A600CFBDAB /* sound_music_track.cpp in Sources */,
 				B5599B000EC62181008DD061 /* sound.cpp in Sources */,
 				B5599AFF0EC62181008DD061 /* soundsource.cpp in Sources */,
+				466CE45D206B8D4500FD3994 /* utils.cpp in Sources */,
 				ECA5562D1E7B5E3A006E907D /* tag.cpp in Sources */,
 				EC5401861EBE0C4500AE66EE /* editor.cpp in Sources */,
 				B5A9BD6D0ECA805A002BE442 /* spacer.cpp in Sources */,
@@ -5705,6 +5717,7 @@
 				91E3570B1CACC9B200774252 /* singleplayer.cpp in Sources */,
 				91E3570D1CACCA0600774252 /* iterator.cpp in Sources */,
 				91E3570E1CACCA0600774252 /* walker_grid.cpp in Sources */,
+				466CE45E206B8D4500FD3994 /* utils.cpp in Sources */,
 				91E3570F1CACCA0600774252 /* walker_widget.cpp in Sources */,
 				4649B88B20288EEF00827CFB /* surface.cpp in Sources */,
 				91E357101CACCA5700774252 /* canvas.cpp in Sources */,
@@ -5867,6 +5880,7 @@
 				91A215AC1CAD924000927AEA /* tokenizer.cpp in Sources */,
 				91A215AD1CAD924000927AEA /* unicode.cpp in Sources */,
 				91A215AE1CAD924000927AEA /* validator.cpp in Sources */,
+				466CE460206B8D4500FD3994 /* context.cpp in Sources */,
 				91A215AF1CAD925400927AEA /* color_range.cpp in Sources */,
 				91A215B01CAD925400927AEA /* config.cpp in Sources */,
 				91A215B11CAD925D00927AEA /* hash.cpp in Sources */,
@@ -6248,6 +6262,10 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lib",
+				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-include",
@@ -6280,6 +6298,10 @@
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lib",
+				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-include",
