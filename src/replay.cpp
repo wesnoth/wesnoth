@@ -700,8 +700,9 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 	{
 		const config *cfg = resources::recorder->get_next_action();
 		const bool is_synced = synced_context::is_synced();
+		const bool is_unsynced = synced_context::get_synced_state() == synced_context::UNSYNCED;
 
-		DBG_REPLAY << "in do replay with is_synced=" << is_synced << "\n";
+		DBG_REPLAY << "in do replay with is_synced=" << is_synced << "is_unsynced=" << is_unsynced << "\n";
 
 		if (cfg != nullptr)
 		{
@@ -782,7 +783,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		else if (cfg->child("init_side"))
 		{
 
-			if(is_synced)
+			if(!is_unsynced)
 			{
 				replay::process_error("found side initialization in replay expecting a user choice\n" );
 				resources::recorder->revert_action();
@@ -800,7 +801,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		//if there is an end turn directive
 		else if (const config& end_turn = cfg->child("end_turn"))
 		{
-			if(is_synced)
+			if(!is_unsynced)
 			{
 				replay::process_error("found turn end in replay while expecting a user choice\n" );
 				resources::recorder->revert_action();
@@ -832,7 +833,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		}
 		else if ((*cfg)["dependent"].to_bool(false))
 		{
-			if(!is_synced)
+			if(is_unsynced)
 			{
 				replay::process_error("found dependent command in replay while is_synced=false\n" );
 				//ignore this command
@@ -854,7 +855,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			const std::string & commandname = cfg->ordered_begin()->key;
 			config data = cfg->ordered_begin()->cfg;
 
-			if(is_synced)
+			if(!is_unsynced)
 			{
 				replay::process_error("found [" + commandname + "] command in replay expecting a user choice\n" );
 				resources::recorder->revert_action();
