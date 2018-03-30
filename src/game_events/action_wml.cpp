@@ -401,6 +401,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 	events::command_disabler command_disabler;
 	LOG_NG << "Processing [move_units_fake]\n";
 
+	const bool force_scroll = cfg["force_scroll"].to_bool();
 	const vconfig::child_list unit_cfgs = cfg.get_children("fake_unit");
 	std::size_t num_units = unit_cfgs.size();
 	std::vector<fake_unit_ptr > units;
@@ -440,7 +441,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 			DBG_NG << "Moving unit " << un << ", doing step " << step << '\n';
 			path_step[0] = paths[un][step - 1];
 			path_step[1] = paths[un][step];
-			unit_display::move_unit(path_step, units[un].get_unit_ptr());
+			unit_display::move_unit(path_step, units[un].get_unit_ptr(), true, map_location::NDIRECTIONS, force_scroll);
 			units[un]->set_location(path_step[1]);
 			units[un]->anim_comp().set_standing(false);
 		}
