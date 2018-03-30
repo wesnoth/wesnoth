@@ -183,6 +183,8 @@ local function get_speaker(cfg)
 		speaker = wesnoth.get_unit(context.x1 or 0, context.y1 or 0)
 	elseif cfg.speaker == "second_unit" then
 		speaker = wesnoth.get_unit(context.x2 or 0, context.y2 or 0)
+	elseif cfg.speaker ~= nil then
+		speaker = wesnoth.get_unit(cfg.speaker)
 	else
 		speaker = wesnoth.get_units(cfg)[1]
 	end
