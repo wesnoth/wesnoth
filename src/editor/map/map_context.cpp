@@ -477,7 +477,7 @@ config map_context::to_config()
 
 	scenario["experience_modifier"] = xp_mod_;
 	scenario["victory_when_enemies_defeated"] = victory_defeated_;
-	scenario["random_starting_time"] = random_time_;
+	scenario["random_start_time"] = random_time_;
 
 	scenario.append(tod_manager_->to_config());
 	scenario.remove_attribute("turn_at");
