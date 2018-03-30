@@ -87,13 +87,11 @@ function functional.map(input, formula)
 end
 
 function functional.reduce(input, operator, identity)
-	if #input == 0 then return identity end
-	local value = operator(identity or 0, input[1])
-	if #input == 1 then return value end
-	for i = 2, #input do
-		value = operator(value, input[i])
+	local result = identity or 0
+	for _, v in ipairs(input) do
+		result = operator(result, v)
 	end
-	return value
+	return result
 end
 
 function functional.take_while(input, condition)
