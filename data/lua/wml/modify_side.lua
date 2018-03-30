@@ -39,7 +39,7 @@ function wesnoth.wml_actions.modify_side(cfg)
 			side.village_gold = cfg.village_gold
 		end
 		if cfg.income then
-			side.base_income = cfg.income
+			side.base_income = cfg.income + wesnoth.game_config.base_income
 		end
 		if cfg.gold then
 			side.gold = cfg.gold
