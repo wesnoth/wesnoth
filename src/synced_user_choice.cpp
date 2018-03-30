@@ -424,7 +424,7 @@ std::map<int, config> user_choice_manager::get_user_choice_internal(const std::s
 
 void user_choice_manager::process(events::pump_info&)
 {
-	if(waiting())
+	if(!oos_ && !finished())
 	{
 		pull();
 	}
