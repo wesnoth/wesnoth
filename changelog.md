@@ -25,6 +25,15 @@
      which activates the ability only when the affected unit is using
      a matching weapon.
    * Support WFL and percentages in [random_placement]num_items=
+   * Support [or] in [filter_wml] and similar places
+   * Support globbing in [filter_wml] via glob_on_* keys
+   * Add trunc as a valid value for [set_variable]round=
+   * Remove support for speaker=id in SUF (but retain in [message])
+   * Support saner units for some formatting options in [message]
+   * Support underline=yes|no in [message]
+   * Support [set_variable]root=cube and root=_integer_
+   * Support force_scroll in [move_units_fake] (default no)
+   * Support facing= in [role][auto_recall]
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
    * Fixed events with an id but no name being rejected
