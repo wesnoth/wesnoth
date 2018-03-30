@@ -85,7 +85,16 @@ local function add_formatting(cfg, text)
 
 		-- add font_size
 		if cfg.font_size and cfg.font_size ~= '' then
-			formatting = formatting .. " font_size='" .. cfg.font_size .. "'"
+			local font_size = cfg.font_size
+			if type(font_size) == 'number' then
+				if font_size > 1024 then
+					wesnoth.deprecated_message("font_size units", 3, '1.16', "Specifying [message]font_size= in 1/1024ths of a point is deprecated. Specify it as points instead.")
+				else
+					-- Pango expects 1/1024ths of a point here
+					font_size = font_size * 1024
+				end
+			end
+			formatting = formatting .. " font_size='" .. font_size .. "'"
 		end
 
 		-- font_style
@@ -120,7 +129,15 @@ local function add_formatting(cfg, text)
 
 		-- underline
 		if cfg.underline and cfg.underline ~= '' then
-			formatting = formatting .. " underline='" .. cfg.underline .. "'"
+			local underline
+			if cfg.underline == true then
+				underline = 'single'
+			elseif cfg.underline == false then
+				underline = 'none'
+			else
+				underline = cfg.underline
+			end
+			formatting = formatting .. " underline='" .. underline .. "'"
 		end
 
 		-- underline_color
@@ -130,7 +147,16 @@ local function add_formatting(cfg, text)
 
 		-- rise
 		if cfg.rise and cfg.rise ~= '' then
-			formatting = formatting .. " rise='" .. cfg.rise .. "'"
+			local rise = cfg.rise
+			if type(rise) == 'number' then
+				if rise > 1000 then
+					wesnoth.deprecated_message("rise units", 3, '1.16', "Specifying [message]rise= in 1/10,000ths of an em is deprecated. Specify it as ems instead.")
+				else
+					-- Pango expects 1/1024ths of a point here
+					rise = rise * 10000
+				end
+			end
+			formatting = formatting .. " rise='" .. rise .. "'"
 		end
 
 		-- strikethrough
@@ -150,7 +176,16 @@ local function add_formatting(cfg, text)
 
 		-- letter_spacing
 		if cfg.letter_spacing and cfg.letter_spacing ~= '' then
-			formatting = formatting .. " letter_spacing='" .. cfg.letter_spacing .. "'"
+			local letter_spacing = cfg.letter_spacing
+			if type(letter_spacing) == 'number' then
+				if letter_spacing > 1024 then
+					wesnoth.deprecated_message("letter_spacing units", 3, '1.16', "Specifying [message]letter_spacing= in 1/1024ths of a point is deprecated. Specify it as points instead.")
+				else
+					-- Pango expects 1/1024ths of a point here
+					letter_spacing = letter_spacing * 1024
+				end
+			end
+			formatting = formatting .. " letter_spacing='" .. letter_spacing .. "'"
 		end
 
 		-- gravity
