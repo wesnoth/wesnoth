@@ -30,5 +30,5 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
         export LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS"
     fi
 else
-    docker build -t wesnoth-repo:16.04 -f docker/Dockerfile-travis .
+    docker build -t wesnoth-repo:"$LTS"-"$BRANCH" -f docker/Dockerfile-travis-"$LTS"-"$BRANCH" .
 fi
