@@ -54,8 +54,8 @@ local function generate_objectives(cfg)
 
 				if turn_limit >= current_turn then
 					local turn_count = turn_limit - current_turn + 1
-					turn_counter = _("(this turn left)", "(%d turns left)", turn_count)
-					turn_counter = tostring(turn_counter):format(turn_count)
+					turn_counter = _("(this turn left)", "($remaining_turns turns left)", turn_count)
+					turn_counter = wesnoth.format(turn_counter, {remaining_turns = turn_count})
 					turn_counter = "<span foreground='white'><small> " .. turn_counter .. "</small></span>"
 				end
 			end
@@ -116,7 +116,7 @@ local function generate_objectives(cfg)
 				if obj.carryover_percentage == 0 then
 					carryover_amount_string = _"No gold carried over to the next scenario."
 				else
-					carryover_amount_string = string.format(tostring(_ "%d%% of gold carried over to the next scenario."), obj.carryover_percentage)
+					carryover_amount_string = wesnoth.format(_ "$percent|% of gold carried over to the next scenario.", {percent = obj.carryover_percentage})
 				end
 
 				gold_carryover = gold_carryover
