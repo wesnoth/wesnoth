@@ -47,6 +47,7 @@ function wesnoth.wml_actions.role(cfg)
 		recall.show = original.show
 		recall.fire_event = original.fire_event
 		recall.check_passability = original.check_passability
+		recall.facing = original.facing
 	end
 
 	if not reassign then
