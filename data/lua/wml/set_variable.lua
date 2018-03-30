@@ -70,6 +70,11 @@ function wesnoth.wml_actions.set_variable(cfg)
 			wesnoth.set_variable(name, math.ceil(var))
 		elseif round_val == "floor" then
 			wesnoth.set_variable(name, math.floor(var))
+		elseif round_val == "trunc" then
+			-- Storing to a variable first because modf returns two values,
+			-- and I'm not sure if set_variable will complain about the extra parameter
+			local new_val = math.modf(var)
+			wesnoth.set_variable(name, new_val)
 		else
 			local decimals = math.modf(tonumber(round_val) or 0)
 			local value = var * (10 ^ decimals)
