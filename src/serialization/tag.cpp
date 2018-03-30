@@ -557,10 +557,12 @@ void class_tag::add_filter(const config& cond_cfg)
 	}
 	int i = 1;
 	for(auto elseif_cfg : cond_cfg.child_range("elseif")) {
-		config elseif_filter = elseif_cfg;
+		config elseif_filter = elseif_cfg, old_else_filter = else_filter;
 		elseif_filter.clear_children("then");
-		conditions_.emplace_back(elseif_cfg.child("then"), elseif_filter);
 		else_filter.add_child("not", elseif_filter);
+		// Ensure it won't match for any of the preceding cases, either
+		elseif_filter.append_children(old_else_filter);
+		conditions_.emplace_back(elseif_cfg.child("then"), elseif_filter);
 		const std::string name = formatter() << get_name() << "[elseif " << i++ << "]";
 		conditions_.back().set_name(name);
 	}
