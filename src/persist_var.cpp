@@ -200,7 +200,7 @@ void verify_and_clear_global_variable(const vconfig &pcfg)
 {
 	bool valid = true;
 	if (!pcfg.has_attribute("global")) {
-		ERR_PERSIST << "[clear_global_variable] missing required attribute \"from_global\"";
+		ERR_PERSIST << "[clear_global_variable] missing required attribute \"global\"";
 		valid = false;
 	}
 	if (!pcfg.has_attribute("namespace")) {
