@@ -562,7 +562,7 @@ void class_tag::add_filter(const config& cond_cfg)
 		else_filter.add_child("not", elseif_filter);
 		// Ensure it won't match for any of the preceding cases, either
 		elseif_filter.append_children(old_else_filter);
-		conditions_.emplace_back(elseif_cfg.child("then"), elseif_filter);
+		conditions_.emplace_back(elseif_cfg.child_or_empty("then"), elseif_filter);
 		const std::string name = formatter() << get_name() << "[elseif " << i++ << "]";
 		conditions_.back().set_name(name);
 	}
