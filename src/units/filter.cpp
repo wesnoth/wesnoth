@@ -309,14 +309,6 @@ void unit_filter_compound::fill(vconfig cfg)
 			}
 		);
 
-		create_attribute(literal["speaker"],
-			[](const config::attribute_value& c) { return c.str(); },
-			[](const std::string& speaker, const unit_filter_args& args)
-			{
-				return speaker == args.u.id();
-			}
-		);
-
 		create_attribute(literal["type"],
 			[](const config::attribute_value& c) { return utils::split(c.str()); },
 			[](const std::vector<std::string>& types, const unit_filter_args& args)
