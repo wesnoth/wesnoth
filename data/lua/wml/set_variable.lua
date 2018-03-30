@@ -52,11 +52,28 @@ function wesnoth.wml_actions.set_variable(cfg)
 	end
 
 	if cfg.root then
+		local root = tonumber(cfg.root)
+		local root_fcn
 		if cfg.root == "square" then
-			local radicand = tonumber(wesnoth.get_variable(name)) or 0
-			if radicand < 0 then helper.wml_error("square root of negative number on variable " .. name) end
-			wesnoth.set_variable(name, math.sqrt(radicand))
+			root = 2
+			root_fcn = math.sqrt
+		else
+			if cfg.root == "cube" then
+				root = 3
+			end
+			root_fcn = function(n) return n ^ (1 / root) end
 		end
+
+		local radicand = tonumber(wesnoth.get_variable(name)) or 0
+		if radicand < 0 and root % 2 == 0 then
+			if root == 2 then
+				helper.wml_error("square root of negative number on variable " .. name)
+			else
+				helper.wml_error(string.format("%dth root of negative number on variable %s", root, name))
+			end
+		end
+
+		wesnoth.set_variable(name, root_fcn(radicand))
 	end
 
 	if cfg.power then
