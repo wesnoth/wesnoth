@@ -189,16 +189,21 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			resources::controller->on_not_observer();
 		}
 
+		auto disp_set_team = [](int side_index) {
+			const bool side_changed = static_cast<int>(display::get_singleton()->viewing_team()) != side_index;
+			display::get_singleton()->set_team(side_index);
+	
+			if(side_changed) {
+				display::get_singleton()->redraw_everything();
+				display::get_singleton()->recalculate_minimap();
+				video2::trigger_full_redraw();
+			}
+		};
+
 		if (resources::gameboard->is_observer() || (resources::gameboard->teams())[display::get_singleton()->playing_team()].is_local_human()) {
-			display::get_singleton()->set_team(display::get_singleton()->playing_team());
-			display::get_singleton()->redraw_everything();
-			display::get_singleton()->recalculate_minimap();
-			video2::trigger_full_redraw();
+			disp_set_team(display::get_singleton()->playing_team());
 		} else if (tm.is_local_human()) {
-			display::get_singleton()->set_team(side - 1);
-			display::get_singleton()->redraw_everything();
-			display::get_singleton()->recalculate_minimap();
-			video2::trigger_full_redraw();
+			disp_set_team(side - 1);
 		}
 
 		resources::whiteboard->on_change_controller(side,tm);
