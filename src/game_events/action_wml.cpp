@@ -61,6 +61,7 @@
 #include "units/filter.hpp"
 #include "wml_exception.hpp"
 #include "whiteboard/manager.hpp"
+#include "deprecation.hpp"
 
 #include <boost/regex.hpp>
 
@@ -600,11 +601,14 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 		if(!cfg["map_file"].empty()) {
 			config file_cfg = mp_sync::get_user_choice("map_data", map_choice(cfg["map_file"].str()));
 			map.read(file_cfg["map_data"].str(), false);
+		} else if(!cfg["map_data"].empty()) {
+			map.read(cfg["map_data"], false);
 		} else {
+			deprecated_message("[replace_map]map=", DEP_LEVEL::INDEFINITE, "1.16", "Use map_data= instead.");
 			map.read(cfg["map"], false);
 		}
 	} catch(incorrect_map_format_error&) {
-		const std::string log_map_name = cfg["map"].empty() ? cfg["file"] : std::string("from inline data");
+		const std::string log_map_name = cfg["map"].empty() ? cfg["map_file"] : std::string("from inline data");
 		lg::wml_error() << "replace_map: Unable to load map " << log_map_name << std::endl;
 		return;
 	} catch(wml_exception& e) {
