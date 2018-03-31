@@ -19,7 +19,7 @@
    * Fixed "Time of Day Schedule" heading for the index for the ToD Schedule
      top-level help section, "Lawful Bonus", "Schedule" (back link to index)
      and an error message not being translatable.
-   * Updated translations: British English, Chinese (Simplified), French
+   * Updated translations: British English, Chinese (Simplified), Czech, French,
      Scottish Gaelic, Spanish, Ukrainian
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)

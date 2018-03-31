@@ -17,15 +17,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 01:20 UTC\n"
-"PO-Revision-Date: 2014-08-23 07:54+0200\n"
-"Last-Translator: Honza <Honza-mistic@seznam.cz>\n"
+"PO-Revision-Date: 2018-03-21 09:55+0100\n"
+"Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:49
@@ -57,10 +57,8 @@ msgstr "(Obtížnost: pokročilý hráč, 18 scénářů)"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:55
-#, fuzzy
-#| msgid "(Easy)"
 msgid "Easy"
-msgstr "(lehká)"
+msgstr "Lehká"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:55
@@ -74,15 +72,13 @@ msgstr "Lord"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:56
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(běžná)"
+msgstr "Normální"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:57
 msgid "Challenging"
-msgstr ""
+msgstr "Nelehká"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:57
@@ -285,29 +281,21 @@ msgstr "Kapitola první: útěk a boj"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:30
-#, fuzzy
-#| msgid ""
-#| "<i>The Legend of Wesmere</i>,\n"
-#| "Chapter One"
 msgid ""
 "<i>The Legend of Wesmere</i>\n"
 "Chapter One"
 msgstr ""
-"<i>Wesmerská legenda</i>,\n"
-"Kapitola 1"
+"<i>Wesmerská legenda</i>\n"
+"Kapitola 1."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:34
-#, fuzzy
-#| msgid ""
-#| "Chapter One,\n"
-#| "<i>Flight and Fight</i>"
 msgid ""
 "Chapter One\n"
 "<i>Flight and Fight</i>"
 msgstr ""
-"Kapitola 1,\n"
-"<i>Utěk a boj</i>"
+"Kapitola 1.\n"
+"<i>Útěk a boj</i>"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:38
@@ -522,7 +510,7 @@ msgid ""
 "me?"
 msgstr ""
 "Elfové se nikdy nesmí vzdát těmto špinavým bestiím! Kdo se se mnou do nich "
-"pustí? "
+"pustí?"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:370
@@ -737,7 +725,7 @@ msgid ""
 msgstr ""
 "Bojujte jen abyste je zahnali a nezabíjejte, pokud nebudete muset. Máme už "
 "tak dost nepřátel a není třeba si dělat zavilé nepřátele i z těchto "
-"trpaslíků. "
+"trpaslíků."
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:349
@@ -981,7 +969,7 @@ msgstr "Prokletí lesní pošuci a jejich špinavý luky! Počkáme na hlavní v
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:772
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:298
 msgid "Defeat all enemy leaders."
-msgstr "Poraz všechny nepřátelské vůdce"
+msgstr "Poraz všechny nepřátelské vůdce."
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:784
@@ -1100,7 +1088,7 @@ msgid ""
 "wose-spawned worm of an elf!"
 msgstr ""
 "Ty elfí červe, stromovej potrate! Než tě zabiju, nacpu ti ty arogantní kecy "
-"zpátky do držky!  "
+"zpátky do držky!"
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:961
@@ -1142,7 +1130,7 @@ msgstr ""
 #. [message]: id=Huraldur
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:1113
 msgid "Hurry! We were near overwhelmed as I left."
-msgstr "Rychle! Už když jsem odjížděl bylo skoro po nás! "
+msgstr "Rychle! Už když jsem odjížděl bylo skoro po nás!"
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:1117
@@ -1164,28 +1152,20 @@ msgstr "Kapitola druhá: Poklad"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:42
-#, fuzzy
-#| msgid ""
-#| "<i>The Legend of Wesmere</i>,\n"
-#| "Chapter Two"
 msgid ""
 "<i>The Legend of Wesmere</i>\n"
 "Chapter Two"
 msgstr ""
-"<i>Wesmerská legenda</i>,\n"
-"Kapitola 2"
+"<i>Wesmerská legenda</i>\n"
+"Kapitola 2."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:47
-#, fuzzy
-#| msgid ""
-#| "Chapter Two,\n"
-#| "<i>The Treasury</i>"
 msgid ""
 "Chapter Two\n"
 "<i>The Treasury</i>"
 msgstr ""
-"Kapitola 2,\n"
+"Kapitola 2.\n"
 "<i>Poklad</i>"
 
 #. [part]
@@ -1399,7 +1379,6 @@ msgstr "Spahr"
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:205
 #, fuzzy
-#| msgid "Enter the Saurian Treasury and leave with the gold"
 msgid "Enter the Saurian Treasury with a horse and leave with the gold"
 msgstr "Dostaň se k pokladu ještěráků a vynes zlato pryč"
 
@@ -1620,7 +1599,7 @@ msgstr ""
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:281
 msgid "For an elf, you think like a dwarf! I think I like you! "
-msgstr "Na elfa myslíš po trpaslicku! Líbíš se mi!"
+msgstr "Na elfa myslíš po trpaslicku! Líbíš se mi! "
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:281
@@ -1666,7 +1645,7 @@ msgid ""
 "find some o’ my people willing to fight on those terms!"
 msgstr ""
 "Řádná dohoda za řádné peníze? To je jiná! Jsem si jistej, že od nás někoho "
-"najdu, kdo za těhle podmínek bojovat pude."
+"najdu, kdo za těhle podmínek bojovat pude!"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:315
@@ -2315,28 +2294,20 @@ msgstr "Kapitola třetí: Krelanova kniha"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:28
-#, fuzzy
-#| msgid ""
-#| "<i>The Legend of Wesmere</i>,\n"
-#| "Chapter Three"
 msgid ""
 "<i>The Legend of Wesmere</i>\n"
 "Chapter Three"
 msgstr ""
-"<i>Wesmerská legenda</i>,\n"
-"Kapitola 3"
+"<i>Wesmerská legenda</i>\n"
+"Kapitola 3."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:35
-#, fuzzy
-#| msgid ""
-#| "Chapter Three,\n"
-#| "<i>The Book of Crelanu</i>"
 msgid ""
 "Chapter Three\n"
 "<i>The Book of Crelanu</i>"
 msgstr ""
-"Kapitola 3,\n"
+"Kapitola 3.\n"
 "<i>Krelanova kniha</i>"
 
 #. [part]
@@ -2494,7 +2465,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:438
 msgid "We made it. Onwards to Thoria!"
-msgstr "Zvládli jsme to. Vzhůru do Thorie! "
+msgstr "Zvládli jsme to. Vzhůru do Thorie!"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:442
@@ -2945,7 +2916,7 @@ msgid ""
 "we won in Wesmere there was an Orc mumbling something about a dastone..."
 msgstr ""
 "Teď to dává smysl. Ještěráci a potom i ten skřet, co jsme ho pak porazili ve "
-"Wesmérii, mumlali něco o stenkameni... "
+"Wesmérii, mumlali něco o stenkameni..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:77
@@ -3120,7 +3091,7 @@ msgstr ""
 msgid ""
 "If your book is as powerful as you say, why not use it against the orcs?"
 msgstr ""
-"Jestli je tvá kniha tak mocná jak říkáš, proč ji nepoužít proti skřetům? "
+"Jestli je tvá kniha tak mocná jak říkáš, proč ji nepoužít proti skřetům?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:172
@@ -3131,8 +3102,7 @@ msgid ""
 msgstr ""
 "Protože s touto knihou je to podobné jako s Ohnivým rubínem. Každý hlupák "
 "může použít její magii, ale pouze mistr ji dokáže použít a přitom ovládnout "
-"svou touhu po moci. Pokud ne, stane se z něj někdo jako Haldrik nebo "
-"horší... "
+"svou touhu po moci. Pokud ne, stane se z něj někdo jako Haldrik nebo horší..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:177
@@ -3398,28 +3368,20 @@ msgstr "Spojenectví s lidmi"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:42
-#, fuzzy
-#| msgid ""
-#| "<i>The Legend of Wesmere</i>,\n"
-#| "Chapter Four"
 msgid ""
 "<i>The Legend of Wesmere</i>\n"
 "Chapter Four"
 msgstr ""
-"<i>Wesmerská legenda</i>,\n"
-"Kapitola 4"
+"<i>Wesmerská legenda</i>\n"
+"Kapitola 4."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:47
-#, fuzzy
-#| msgid ""
-#| "Chapter Four,\n"
-#| "<i>The Alliance</i>"
 msgid ""
 "Chapter Four\n"
 "<i>The Alliance</i>"
 msgstr ""
-"Kapitola 4,\n"
+"Kapitola 4.\n"
 "<i>Aliance</i>"
 
 #. [part]
@@ -3470,7 +3432,7 @@ msgstr "Třeste se skřeti! Dostihla vás elfí pomsta!!"
 #. [message]: id=Aldar
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:294
 msgid "So it is true! The elves have come to our aid!"
-msgstr "Tak je to pravda! Elfové nám přišli na pomoc."
+msgstr "Tak je to pravda! Elfové nám přišli na pomoc!"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:298
@@ -4063,7 +4025,7 @@ msgstr ""
 "Nepřátelské jednotky tuto jednotku nevidí. Jednotky s vlky však mohou tuto "
 "jednotku zvětřit, pokud je dost blízko. Proto také nepřátelské jednotky "
 "(kromě těch s vlky) nemohou na neviditelnou jednotku sami zaútočit. Tato "
-"jednotka má v jakémkoli terénu obranu 80%, kromě vody, kde má obranu 70%.  "
+"jednotka má v jakémkoli terénu obranu 80%, kromě vody, kde má obranu 70%."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/16_The_Chief_Must_Die.cfg:632
@@ -4379,28 +4341,20 @@ msgstr "Kapitola pátá: Občanská válka"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:35
-#, fuzzy
-#| msgid ""
-#| "<i>The Legend of Wesmere</i>,\n"
-#| "Chapter Five"
 msgid ""
 "<i>The Legend of Wesmere</i>\n"
 "Chapter Five"
 msgstr ""
-"<i>Wesmerská legenda</i>,\n"
-"Kapitola 5"
+"<i>Wesmerská legenda</i>\n"
+"Kapitola 5."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:40
-#, fuzzy
-#| msgid ""
-#| "Chapter Five,\n"
-#| "<i>Civil War</i>"
 msgid ""
 "Chapter Five\n"
 "<i>Civil War</i>"
 msgstr ""
-"Kapitola 5,\n"
+"Kapitola 5.\n"
 "<i>Občanská válka</i>"
 
 #. [part]
@@ -4896,10 +4850,8 @@ msgstr "Přežij šest dní"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:319
-#, fuzzy
-#| msgid "Survive for six days"
 msgid "Kalenz survives for six days"
-msgstr "Přežij šest dní"
+msgstr "Kalenz přežije šest dní"
 
 #. [note]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:330
@@ -5146,10 +5098,8 @@ msgstr ""
 
 #. [unit_type]: id=Great Ogre, race=ogre
 #: data/campaigns/Legend_of_Wesmere/units/ogres/Great_Ogre.cfg:6
-#, fuzzy
-#| msgid "Creatures"
 msgid "Great Ogre"
-msgstr "Nestvůry"
+msgstr "Velcí Obři"
 
 #. [unit_type]: id=Great Ogre, race=ogre
 #: data/campaigns/Legend_of_Wesmere/units/ogres/Great_Ogre.cfg:34
@@ -5201,7 +5151,7 @@ msgid ""
 msgstr ""
 "Když si víla vytvoří zvláštní vazbu k nějaké osobě, je její schopnost léčit "
 "tuto osobu posílena. To dovoluje Kleodii vyléčit Kalenzovi na začátku tvého "
-"tahu více životů. "
+"tahu více životů."
 
 #: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:55
 msgid "Huraldur"
@@ -5320,7 +5270,7 @@ msgstr "Neee! Kleodil! Bez tebe nemůžu pokračovat!"
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:73
 msgid "I go to join my sires in the Halls of Death"
-msgstr "Jdu za svými předky do Síně smrti."
+msgstr "Jdu za svými předky do Síně smrti"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:78
