@@ -422,10 +422,22 @@ std::map<int, config> user_choice_manager::get_user_choice_internal(const std::s
 	return man.res_;
 }
 
+namespace {
+	// we want to prevent calling pull() while we are already calling pull()
+	// this could for example happen if pull() receives a [side_drop] and
+	// user_choice_manager::process is called while the "player has left the game.
+	// What do you want to do?" dialog is shown.
+	static bool ucm_in_proccess = false;
+	struct ucm_process_scope {
+		ucm_process_scope() { ucm_in_proccess = true; }
+		~ucm_process_scope() { ucm_in_proccess = false; }
+	};
+}
 void user_choice_manager::process(events::pump_info&)
 {
-	if(!oos_ && !finished())
+	if(!oos_ && !finished() && !ucm_in_proccess)
 	{
+		ucm_process_scope scope1;
 		pull();
 	}
 }
