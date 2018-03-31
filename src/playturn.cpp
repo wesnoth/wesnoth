@@ -193,10 +193,12 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			display::get_singleton()->set_team(display::get_singleton()->playing_team());
 			display::get_singleton()->redraw_everything();
 			display::get_singleton()->recalculate_minimap();
+			video2::trigger_full_redraw();
 		} else if (tm.is_local_human()) {
 			display::get_singleton()->set_team(side - 1);
 			display::get_singleton()->redraw_everything();
 			display::get_singleton()->recalculate_minimap();
+			video2::trigger_full_redraw();
 		}
 
 		resources::whiteboard->on_change_controller(side,tm);
