@@ -279,6 +279,9 @@ end)
 --   which unit types get spawned is defined in the 'main_spawn' wml array which is also spawned at prestart
 on_event("new turn", function()
 	local next_spawn = wesnoth.get_variable("timed_spawn[0]")
+	if next_spawn == nil then
+		return
+	end
 	if wesnoth.current.turn ~= next_spawn.turn then
 		return
 	end
