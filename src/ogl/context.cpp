@@ -14,6 +14,7 @@
 #include "ogl/context.hpp"
 
 #include "log.hpp"
+#include "ogl/texture.hpp"
 
 #include <GL/glew.h>
 #include <SDL.h>
@@ -52,6 +53,13 @@ void context::init(sdl::window* window)
 	if(result != GLEW_OK) {
 		ERR_GL << "Error initializing GLEW\n";
 		throw std::runtime_error("error initializing GLEW");
+	}
+
+	int maxTextureSize;
+	glGetIntegerv(GL_MAX_TEXTURE_SIZE, &maxTextureSize);
+	if(maxTextureSize < texture::MAX_DIMENSION) {
+		ERR_GL << "Too low texture size limit\n";
+		throw std::runtime_error("too low texture size limit");
 	}
 
 	// Print some information.

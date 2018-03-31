@@ -2530,6 +2530,13 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)OGL\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)OGL\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\ogl\texture.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)OGL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)OGL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)OGL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)OGL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)OGL\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\ogl\utils.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)OGL\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)OGL\</ObjectFileName>
@@ -3878,6 +3885,7 @@
     <ClInclude Include="..\..\src\multiplayer_error_codes.hpp" />
     <ClInclude Include="..\..\src\network_asio.hpp" />
     <ClInclude Include="..\..\src\ogl\context.hpp" />
+    <ClInclude Include="..\..\src\ogl\texture.hpp" />
     <ClInclude Include="..\..\src\ogl\utils.hpp" />
     <ClInclude Include="..\..\src\overlay.hpp" />
     <ClInclude Include="..\..\src\pathfind\pathfind.hpp" />
