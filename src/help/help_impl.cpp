@@ -361,9 +361,18 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 	std::vector<topic> topics;
 	std::stringstream toplevel;
 
+	// HACK: Wesnoth 1.14 only, to avoid breaking a string freeze in the middle
+	//       of the RC phase. The string already exists in the wesnoth-help
+	//       (WML) textdomain and it's used for the help sections tree on the
+	//       left. It was supposed to be used here as well but someone forgot
+	//       to mark the string translatable. Future versions will just use the
+	//       regular textdomain for this file.
+	const std::string& tod_schedule_heading =
+			translation::dsgettext("wesnoth-help", "Time of Day Schedule");
+
 	if (! resources::tod_manager) {
 		toplevel << N_("Only available during a scenario.");
-		topics.emplace_back("Time of Day Schedule", "..schedule", toplevel.str());
+		topics.emplace_back(tod_schedule_heading, "..schedule", toplevel.str());
 		return topics;
 	}
 	const std::vector<time_of_day>& times = resources::tod_manager->times();
@@ -384,7 +393,7 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 		topics.emplace_back(time.name.str(), id, text.str());
 	}
 
-	topics.emplace_back("Time of Day Schedule", "..schedule", toplevel.str());
+	topics.emplace_back(tod_schedule_heading, "..schedule", toplevel.str());
 	return topics;
 }
 
