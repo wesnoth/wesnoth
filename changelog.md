@@ -3,6 +3,8 @@
    * Eastern Invasion
      * Fixed some Lua errors in S05.
    * Under the Burning Suns
+     * Changed Sun Singer movetype from float to foot.
+     * Added some Quenoth elf unit animations.
      * Hide technical terrains in the Help browser (Human Ship, Lava overlay).
  ### Language and i18n
    * Fixed many cases of interpolated strings in the engine possibly having
@@ -21,6 +23,8 @@
      and an error message not being translatable.
    * Updated translations: British English, Chinese (Simplified), Czech, French,
      Scottish Gaelic, Spanish, Ukrainian
+ ### Multiplayer
+   * A New Land: Fixed the scenario being broken.
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
    * Fixed events with an id but no name being rejected
