@@ -217,9 +217,8 @@ cp /usr/local/opt/openssl@1.1/lib/libcrypto.1.1.dylib ./
 cp /usr/local/opt/libffi/lib/libffi.6.dylib ./
 cp /usr/local/opt/fontconfig/lib/libfontconfig.1.dylib ./
 cp /usr/local/opt/freetype/lib/libfreetype.6.dylib ./
-cp /usr/local/opt/glib/lib/libglib-2.0.0.dylib /usr/local/opt/glib/lib/libgmodule-2.0.0.dylib /usr/local/opt/glib/lib/libgobject-2.0.0.dylib ./
+cp /usr/local/opt/glib/lib/libglib-2.0.0.dylib /usr/local/opt/glib/lib/libgmodule-2.0.0.dylib /usr/local/opt/glib/lib/libgobject-2.0.0.dylib /usr/local/opt/glib/lib/libgthread-2.0.0.dylib ./
 cp /usr/local/opt/graphite2/lib/libgraphite2.3.0.1.dylib ./libgraphite2.3.dylib
-cp /usr/local/opt/glib/lib/libgthread-2.0.0.dylib ./
 cp /usr/local/opt/harfbuzz/lib/libharfbuzz.0.dylib ./
 cp /usr/local/opt/gettext/lib/libintl.8.dylib ./
 cp /usr/local/opt/pango/lib/libpango-1.0.0.dylib /usr/local/opt/pango/lib/libpangocairo-1.0.0.dylib /usr/local/opt/pango/lib/libpangoft2-1.0.0.dylib ./
