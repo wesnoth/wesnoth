@@ -18,15 +18,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2014-04-16 23:12+0100\n"
-"Last-Translator: Jan Dědič <jan.dedic@gmail.com>\n"
+"PO-Revision-Date: 2018-03-21 10:20+0100\n"
+"Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 1.6.4\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -193,7 +193,7 @@ msgstr "Soubor"
 #. [menu]: id=menu-editor-recent
 #: data/themes/editor.cfg:72
 msgid "Load Recent"
-msgstr ""
+msgstr "Načíst poslední"
 
 #. [menu]: id=menu-editor-map
 #: data/themes/editor.cfg:90
@@ -262,27 +262,27 @@ msgstr "Přiřadit nastavení času"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:54
 msgid "Identifier: "
-msgstr "Identifikátor:"
+msgstr "Identifikátor: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:55
 msgid "Name: "
-msgstr "Jméno:"
+msgstr "Jméno: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:56
 msgid "Type: "
-msgstr "Typ:"
+msgstr "Typ: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:57
 msgid "Level: "
-msgstr "Level:"
+msgstr "Level: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:58
 msgid "Cost: "
-msgstr "Cena:"
+msgstr "Cena: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:59
 msgid "Recruit: "
-msgstr "Naverbovat:"
+msgstr "Naverbovat: "
 
 #: src/editor/controller/editor_controller.cpp:176
 msgid "Fatal error"
@@ -333,39 +333,31 @@ msgstr "Jméno:"
 
 #: src/editor/map/context_manager.cpp:189
 msgid "Load Map"
-msgstr ""
+msgstr "Načti mapu"
 
 #: src/editor/map/context_manager.cpp:257 src/editor/map/map_context.cpp:831
-#, fuzzy
-#| msgid "(New Map)"
 msgid "New Map"
-msgstr "(Nová mapa)"
+msgstr "Nová mapa"
 
 #: src/editor/map/context_manager.cpp:270 src/editor/map/map_context.cpp:831
-#, fuzzy
-#| msgid "(New Scenario)"
 msgid "New Scenario"
-msgstr "(Nový scénář)"
+msgstr "Nový scénář"
 
 #: src/editor/map/context_manager.cpp:326
 msgid "No Recent Files"
 msgstr ""
 
 #: src/editor/map/context_manager.cpp:364
-#, fuzzy
-#| msgid "(Unnamed Area)"
 msgid "Unnamed Area"
-msgstr "(Nepojmenovaná oblast)"
+msgstr "Nepojmenovaná oblast"
 
 #: src/editor/map/context_manager.cpp:395
-#, fuzzy
-#| msgid "(New Side)"
 msgid "New Side"
-msgstr "(Nová strana)"
+msgstr "Nová strana"
 
 #: src/editor/map/context_manager.cpp:451
 msgid "Apply Mask"
-msgstr ""
+msgstr "Aplikovat masku"
 
 #: src/editor/map/context_manager.cpp:460
 msgid "Error loading mask"
@@ -381,7 +373,7 @@ msgstr "Přejmenovat oblast"
 
 #: src/editor/map/context_manager.cpp:494
 msgid "Choose Target Map"
-msgstr "vyber cílovou mapu"
+msgstr "Vyber cílovou mapu"
 
 #: src/editor/map/context_manager.cpp:503
 #: src/editor/map/context_manager.cpp:905
@@ -389,14 +381,10 @@ msgid "Error loading map"
 msgstr "Chyba načítání mapy"
 
 #: src/editor/map/context_manager.cpp:621
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Ulož mapu jako"
 
 #: src/editor/map/context_manager.cpp:642
-#, fuzzy
-#| msgid "Save the Scenario As"
 msgid "Save Scenario As"
 msgstr "Ulož scénář jako"
 
@@ -414,10 +402,6 @@ msgid "Unsaved Changes"
 msgstr "Neuložené změny"
 
 #: src/editor/map/context_manager.cpp:709
-#, fuzzy
-#| msgid ""
-#| "Do you want to discard all changes you made to the map since the last "
-#| "save?"
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr "Opravdu si přeješ zahodit všechny změny v mapě od posledního uložení?"
 
@@ -457,10 +441,8 @@ msgstr ""
 
 #: src/editor/map/editor_map.cpp:148
 #: src/editor/palette/location_palette.cpp:111
-#, fuzzy
-#| msgid "Player $player_number"
 msgid "Player $side_num"
-msgstr "Hráč $player_number"
+msgstr "Hráč $side_num"
 
 #: src/editor/map/editor_map.cpp:283
 msgid "The size of the target map is different from the current map"
@@ -508,11 +490,11 @@ msgstr "Nefunguje ve hře bez dodatečných úprav."
 
 #: src/editor/palette/location_palette.cpp:230
 msgid "Go To"
-msgstr ""
+msgstr "Jít na"
 
 #: src/editor/palette/location_palette.cpp:237
 msgid "Add"
-msgstr ""
+msgstr "Přidat"
 
 #: src/editor/palette/location_palette.cpp:239
 msgid "New Location Identifier"
@@ -520,7 +502,7 @@ msgstr ""
 
 #: src/editor/palette/location_palette.cpp:243
 msgid "Delete"
-msgstr ""
+msgstr "Smazat"
 
 #: src/editor/palette/terrain_palettes.cpp:231
 msgid "FG: "
@@ -533,6 +515,7 @@ msgstr "Pozadí: "
 #: src/gui/dialogs/editor/custom_tod.cpp:137
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
+"Podpora pro schránku nebyla nalezena, kontaktujte správce vašeho balíčku"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:201
 msgid "Choose File"
@@ -540,7 +523,7 @@ msgstr "Vybrat soubor"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:202
 msgid "Select"
-msgstr ""
+msgstr "Vybrat"
 
 # | msgid "(Player)^None"
 #: src/gui/dialogs/editor/set_starting_position.cpp:88
