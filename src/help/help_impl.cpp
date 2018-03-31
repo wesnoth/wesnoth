@@ -375,6 +375,14 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 		topics.emplace_back(tod_schedule_heading, "..schedule", toplevel.str());
 		return topics;
 	}
+
+	// HACK: Wesnoth 1.14 only, to avoid breaking a string freeze in the middle
+	//       of the RC phase. The string already exists in the wesnoth-lib
+	//       textdomain and it's used for a similar purpose in the Editor UI.
+	//       Future versions will just use the regular textdomain for this file.
+	const std::string& lawful_bonus_label =
+			translation::dsgettext("wesnoth-lib", "Lawful Bonus:");
+
 	const std::vector<time_of_day>& times = resources::tod_manager->times();
 	for (const time_of_day& time : times)
 	{
@@ -387,7 +395,7 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 
 		text << image << '\n' <<
 				time.description.str() << '\n' <<
-				"Lawful Bonus: " << time.lawful_bonus << '\n' <<
+				lawful_bonus_label << ' ' << time.lawful_bonus << '\n' <<
 				'\n' << make_link(N_("Schedule"), "..schedule");
 
 		topics.emplace_back(time.name.str(), id, text.str());

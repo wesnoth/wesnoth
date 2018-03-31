@@ -17,7 +17,7 @@
    * Fixed "Search" placeholder text in dialog item filters not being
      translatable (bug #2709, bug #2732).
    * Fixed "Time of Day Schedule" heading for the index for the ToD Schedule
-     top-level help section not being translatable.
+     top-level help section, and "Lawful Bonus" labels not being translatable.
    * Updated translations: British English, Chinese (Simplified),
      Scottish Gaelic, Spanish, Ukrainian
  ### Miscellaneous and bug fixes
