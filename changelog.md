@@ -25,6 +25,7 @@
      Scottish Gaelic, Spanish, Ukrainian
  ### Multiplayer
    * A New Land: Fixed the scenario being broken.
+   * Dark Forecast: Fixed possible Lua error when attempting to spawn units.
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
    * Fixed events with an id but no name being rejected
