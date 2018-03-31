@@ -16,7 +16,7 @@
      (bug #2732)
    * Fixed "Search" placeholder text in dialog item filters not being
      translatable (bug #2709, bug #2732).
-   * Updated translations: British English, Chinese (Simplified),
+   * Updated translations: British English, Chinese (Simplified), French
      Scottish Gaelic, Spanish, Ukrainian
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
