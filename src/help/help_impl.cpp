@@ -371,7 +371,7 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 			translation::dsgettext("wesnoth-help", "Time of Day Schedule");
 
 	if (! resources::tod_manager) {
-		toplevel << N_("Only available during a scenario.");
+		toplevel << _("Only available during a scenario.");
 		topics.emplace_back(tod_schedule_heading, "..schedule", toplevel.str());
 		return topics;
 	}
@@ -396,7 +396,7 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 		text << image << '\n' <<
 				time.description.str() << '\n' <<
 				lawful_bonus_label << ' ' << time.lawful_bonus << '\n' <<
-				'\n' << make_link(N_("Schedule"), "..schedule");
+				'\n' << make_link(_("Schedule"), "..schedule");
 
 		topics.emplace_back(time.name.str(), id, text.str());
 	}
