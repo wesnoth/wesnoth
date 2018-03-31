@@ -16,16 +16,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-12 20:02+0300\n"
-"PO-Revision-Date: 2014-09-02 13:30+0100\n"
-"Last-Translator: Jan Dědič <jan.dedic@gmail.com>\n"
+"POT-Creation-Date: 2018-03-27 04:20+0300\n"
+"PO-Revision-Date: 2018-03-21 09:49+0100\n"
+"Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 1.6.9\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -37,7 +37,7 @@ msgstr "WESNOTH"
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2018"
-msgstr ""
+msgstr "2018"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -122,46 +122,36 @@ msgstr "VOLBY"
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:45
-#, fuzzy, no-wrap
-#| msgid "B<--gunzip>I<\\ infile.gz>"
+#, no-wrap
 msgid "B<--bunzip>I<\\ infile.bz2>"
-msgstr "B<--gunzip>I<\\ soubor_se_hrou>"
+msgstr "B<—bunzip>I<\\ soubor_se_hrou.bz2>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:51
-#, fuzzy
-#| msgid ""
-#| "decompresses a file which should be in gzip format and stores it without "
-#| "the .gz suffix. The I<infile.gz> will be removed."
 msgid ""
 "decompresses a file which should be in bzip2 format and stores it without "
 "the .bz2 suffix. The I<infile.bz2> will be removed."
 msgstr ""
-"dekomprimuje soubor s uloženou hrou (soubor_se_hrou) ve formátu gzip a uloží "
-"jej bez koncovky .gz. Následně je I<soubor_se_hrou> smazán."
+"dekomprimuje soubor s uloženou hrou (soubor_se_hrou) ve formátu bzip2 a "
+"uloží jej bez koncovky .bz2. Následně je I<soubor_se_hrou.bz2> smazán."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:51
-#, fuzzy, no-wrap
-#| msgid "B<--gzip>I<\\ infile>"
+#, no-wrap
 msgid "B<--bzip>I<\\ infile>"
-msgstr "B<--gzip>I<\\ soubor_se_hrou>"
+msgstr "B<—bzip>I<\\ soubor_se_hrou>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:57
-#, fuzzy
-#| msgid ""
-#| "compresses a file in gzip format, stores it as I<infile>.gz and removes "
-#| "I<infile>."
 msgid ""
 "compresses a file in bzip2 format, stores it as I<infile>.bz2 and removes "
 "I<infile>."
 msgstr ""
-"komprimuje soubor s uloženou hrou (soubor_se_hrou) do formátu gzip a uloží "
-"jej jako I<soubor_se_hrou>.gz a odstraní I<soubor_se_hrou>."
+"komprimuje soubor s uloženou hrou (soubor_se_hrou) do formátu bzip2 a uloží "
+"jej jako I<soubor_se_hrou>.bz2 a odstraní I<soubor_se_hrou>."
 
 #. type: TP
 #: doc/man/wesnoth.6:57
@@ -206,7 +196,7 @@ msgid ""
 "The id of the scenario from the specified campaign. The default is the first "
 "scenario."
 msgstr ""
-"určuje identifikátor scénáře v daném tažení. Výchozí hodnota je první scénář."
+"Určuje identifikátor scénáře v daném tažení. Výchozí hodnota je první scénář."
 
 # type: TP
 #. type: TP
@@ -218,10 +208,8 @@ msgstr "B<-e, --editor>I<\\ soubor>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:72
-#, fuzzy
-#| msgid "overrides the data directory with the one specified"
 msgid "overrides the loaded core with the one whose id is specified."
-msgstr "nastavuje adresář s daty hry"
+msgstr "nastavuje adresář s daty hry."
 
 #. type: TP
 #: doc/man/wesnoth.6:72
@@ -471,16 +459,12 @@ msgstr "B<--logdomains\\ [filtr]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:152
-#, fuzzy
-#| msgid ""
-#| "lists defined log domains (only the ones containing B<filter> if used) "
-#| "and exits"
 msgid ""
 "lists defined log domains (only the ones containing I<filter> if used) and "
 "exits"
 msgstr ""
 "vypíše definované logovací domény (pouze ty obsahující B<filtr>, pokud je "
-"udán) a skončí."
+"udán) a skončí"
 
 # type: TP
 #. type: TP
@@ -1193,7 +1177,7 @@ msgstr "B<--ignore-map-settings>"
 #. type: Plain text
 #: doc/man/wesnoth.6:373
 msgid "do not use map settings, use default values instead."
-msgstr "použít výchozí hodnoty nastavení namísto nastavení mapy"
+msgstr "použít výchozí hodnoty nastavení namísto nastavení mapy."
 
 # type: TP
 #. type: TP
@@ -1266,7 +1250,7 @@ msgid ""
 "an id. Factions are described in the data/multiplayer.cfg file."
 msgstr ""
 "vybírá frakci současné éry pro vybranou stranu. Frakce je vybrána na základě "
-"ID. Frakce jsou popsány v souboru data/multiplayer.cfg"
+"ID. Frakce jsou popsány v souboru data/multiplayer.cfg ."
 
 # type: TP
 #. type: TP
@@ -1353,7 +1337,8 @@ msgid ""
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Tuto manovou stránku původně vytvořil Cyril Bouthors E<lt>cyril@bouthors."
-"orgE<gt>. Překlad Oto 'tapik' Buchta E<lt>tapik@buchtovi.czE<gt>"
+"orgE<gt>. Překlad Oto 'tapik' Buchta E<lt>tapik@buchtovi.czE<gt> a korekce "
+"Martin Hrubý (hrubymar10)."
 
 # type: Plain text
 #. type: Plain text
@@ -1441,7 +1426,7 @@ msgstr "Bitva o Wesnoth - síťový server pro hru více hráčů"
 #. type: Plain text
 #: doc/man/wesnothd.6:23
 msgid "wesnothd - Battle for B<Wesnoth> multiplayer network daemon"
-msgstr "Bitva o B<Wesnoth> - síťový server pro hru více hráčů"
+msgstr "wesnothd - Bitva o B<Wesnoth> - síťový server pro hru více hráčů"
 
 # type: Plain text
 #. type: Plain text

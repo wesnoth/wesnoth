@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2017-09-22 19:01+0200\n"
+"PO-Revision-Date: 2018-03-20 09:03+0100\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -1510,10 +1510,8 @@ msgstr ""
 
 #. [else]
 #: data/core/macros/deprecated-utils.cfg:43
-#, fuzzy
-#| msgid "This unit has no usable weapons."
 msgid "This unit has been renamed to: "
-msgstr "Tato jednotka nemá žádné použitelné zbraně."
+msgstr "Tato jednotka byla přejmenována na: "
 
 #: data/core/macros/deprecated-utils.cfg:95
 msgid "<small>(early finish bonus)</small>"
@@ -3459,7 +3457,7 @@ msgstr ""
 #. [language]
 #: data/english.cfg:6
 msgid "Nightmare"
-msgstr "Noční můra"
+msgstr "Nehratelná"
 
 #. [language]
 #: data/english.cfg:8
@@ -5097,7 +5095,7 @@ msgstr ""
 
 #: src/addon/client.cpp:321
 msgid "The server responded with an error:"
-msgstr "Server odpověděl chybou: "
+msgstr "Server odpověděl chybou:"
 
 #: src/addon/client.cpp:371
 msgid ""
@@ -5842,28 +5840,22 @@ msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "Nebylo možné zjistit pohlaví pro neplatného velitele $leader"
 
 #: src/game_initialization/lobby_data.cpp:237
-#, fuzzy
-#| msgid "Missing addon: $id"
 msgid "Missing addon: $name"
-msgstr "Chybí rozšíření: $id"
+msgstr "Chybí rozšíření: $name"
 
 #: src/game_initialization/lobby_data.cpp:239
 msgid "Missing addon: $id"
 msgstr "Chybí rozšíření: $id"
 
 #: src/game_initialization/lobby_data.cpp:264
-#, fuzzy
-#| msgid " (missing)"
 msgid "$era_name (missing)"
-msgstr "(chybí)"
+msgstr "$era_name (chybí)"
 
 #: src/game_initialization/lobby_data.cpp:271
 msgid "Unknown era"
 msgstr "Neznámý věk"
 
 #: src/game_initialization/lobby_data.cpp:288
-#, fuzzy
-#| msgid " (missing)"
 msgid "(missing)"
 msgstr "(chybí)"
 
@@ -6438,7 +6430,7 @@ msgstr "Rušení: "
 
 #: src/help/help_topic_generators.cpp:490
 msgid "Cost: "
-msgstr "Cena:"
+msgstr "Cena: "
 
 #: src/help/help_topic_generators.cpp:495
 msgid "Required XP: "
@@ -7848,7 +7840,7 @@ msgstr "Hodnota „border_size“ by měla ležet mezi 0,0 a 0,5."
 
 #: src/theme.cpp:552 src/theme.cpp:557
 msgid "Hotkey(s): "
-msgstr "Zkratka(y):"
+msgstr "Zkratka(y): "
 
 #: src/time_of_day.cpp:45
 msgid "Stub Time of Day"
@@ -7953,8 +7945,6 @@ msgid "chaotic"
 msgstr "chaotická"
 
 #: src/units/types.cpp:545 src/units/types.hpp:179
-#, fuzzy
-#| msgid "female^lawful"
 msgid "lawful"
 msgstr "zákonná"
 
@@ -8094,24 +8084,6 @@ msgstr "Nastavení plánovacího módu"
 #~ msgid "Connected Players"
 #~ msgstr "Počítačový hráč"
 
-#, fuzzy
-#~| msgid "Size: "
-#~ msgid "Size:"
-#~ msgstr "Velikost: "
-
-#, fuzzy
-#~| msgid "Screenshot"
-#~ msgid "Screenshots..."
-#~ msgstr "Screenshot"
-
-#, fuzzy
-#~| msgid "Saved"
-#~ msgid "Save"
-#~ msgstr "Uloženo"
-
-#~ msgid "Close"
-#~ msgstr "Zavřít"
-
 #~ msgid ""
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
@@ -8123,9 +8095,24 @@ msgstr "Nastavení plánovacího módu"
 #~ msgstr "Odkaz na neznámé téma: "
 
 #, fuzzy
-#~| msgid "Wesnoth"
+#~| msgid "Unknown era"
+#~ msgid "(unknown player)"
+#~ msgstr "Neznámý věk"
+
+#~ msgid "Size:"
+#~ msgstr "Velikost:"
+
+#~ msgid "Screenshots..."
+#~ msgstr "Screenshoty…"
+
+#~ msgid "Save"
+#~ msgstr "Uložit"
+
+#~ msgid "Close"
+#~ msgstr "Zavřít"
+
 #~ msgid "wesnoth"
-#~ msgstr "Wesnoth"
+#~ msgstr "wesnoth"
 
 #, fuzzy
 #~| msgid "$elem has been deprecated and will be removed in the next version."

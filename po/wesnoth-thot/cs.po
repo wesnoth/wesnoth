@@ -17,15 +17,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 17:02 UTC\n"
-"PO-Revision-Date: 2014-08-20 05:24+0200\n"
-"Last-Translator: Honza <Honza-mistic@seznam.cz>\n"
+"PO-Revision-Date: 2018-03-20 09:11+0100\n"
+"Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Poedit 2.0.6\n"
 
 # Název tažení
 #. [campaign]: id=The_Hammer_of_Thursagan
@@ -42,10 +42,8 @@ msgstr "TK"
 # Volba obtížnosti
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:19
-#, fuzzy
-#| msgid "(Easy)"
 msgid "Easy"
-msgstr "(snadná)"
+msgstr "Lehká"
 
 # Volba obtížnosti
 #. [campaign]: id=The_Hammer_of_Thursagan
@@ -56,10 +54,8 @@ msgstr "Bojovník"
 # Volba obtížnosti
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:20
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(normální)"
+msgstr "Normální"
 
 # Volba obtížnosti
 #. [campaign]: id=The_Hammer_of_Thursagan
@@ -70,10 +66,8 @@ msgstr "Těžkooděnec"
 # Volba obtížnosti
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:21
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(nelehká)"
+msgstr "Nelehká"
 
 # Volba obtížnosti
 #. [campaign]: id=The_Hammer_of_Thursagan
@@ -125,7 +119,7 @@ msgstr "Nápady, testování a družná podpora"
 #. [about]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:60
 msgid "Campaign Maintenance"
-msgstr ""
+msgstr "Údržba tažení"
 
 #. [scenario]: id=01_At_the_East_Gate
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:5
@@ -403,7 +397,7 @@ msgid ""
 msgstr ""
 "To je to, co se říkalo, můj pane, a skutečně to platí. Ovšem s jednou "
 "výjimkou: Obřadní Bratrstvo mi dovolilo odhalit vám, že ona tajemná umění "
-"nejsou již tak ztracená, jak se soudilo. "
+"nejsou již tak ztracená, jak se soudilo."
 
 #. [message]: speaker=Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:138
@@ -588,7 +582,7 @@ msgstr "Gothras"
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:142
 msgid "Help Marth-Tak defeat Gothras"
-msgstr "Pomoz Marth-Takovi porazit Gothrase "
+msgstr "Pomoz Marth-Takovi porazit Gothrase"
 
 # Návěští scénáře
 #. [objective]: condition=lose
@@ -864,7 +858,7 @@ msgstr ""
 #. [message]: speaker=Tan-Grolak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:246
 msgid "Yeah, boss. Anything to get away from those masked ones..."
-msgstr "Jasně šéfe. Cokoli, co nás dostane pryč od těch maskovanců ... "
+msgstr "Jasně šéfe. Cokoli, co nás dostane pryč od těch maskovanců ..."
 
 # říká Tan-Malgar (skřet)
 #. [message]: speaker=Tan-Malgar
@@ -915,10 +909,8 @@ msgstr "Doprav Aiglondura k ukazateli na východním konci průsmyku"
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:117
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:128
-#, fuzzy
-#| msgid "Death of Angarthing"
 msgid "Death of Ratheln"
-msgstr "Angarthing zemře"
+msgstr "Ratheln zemře"
 
 # říká Angarthing (trpaslík)
 #. [message]: speaker=Angarthing
@@ -993,7 +985,7 @@ msgid ""
 "for an instructor, and they’re expecting me."
 msgstr ""
 "Blízko východního konce průsmyku je kouzelnická škola. Mají volné místo "
-"učitele a očekávají mě. "
+"učitele a očekávají mě."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:296
@@ -1431,7 +1423,7 @@ msgstr ""
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:273
 msgid "He is here. How has he wronged your master, that you seek his death?"
-msgstr "Je tady u nás. Čím rozhněval vašeho pána, že mu usilujete o život? "
+msgstr "Je tady u nás. Čím rozhněval vašeho pána, že mu usilujete o život?"
 
 # říká maskovaný (trpaslík)
 #. [message]: speaker=Masked Dwarf Leader
@@ -1498,7 +1490,7 @@ msgstr "Do zbraně!"
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:315
 msgid "Defeat the Masked Dwarf"
-msgstr "Poraz maskované trpaslíky "
+msgstr "Poraz maskované trpaslíky"
 
 #. [message]: speaker=Ollin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:345
@@ -1507,10 +1499,8 @@ msgstr "To máš za mou rodinu, vrahu!"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:354
-#, fuzzy
-#| msgid "They are defeated"
 msgid "They are defeated!"
-msgstr "Jsou poraženi."
+msgstr "Jsou poraženi!"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:359
@@ -1677,10 +1667,8 @@ msgstr "Tan-Wagran"
 
 #. [label]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:210
-#, fuzzy
-#| msgid "East Gate"
 msgid "West Gate"
-msgstr "Východní brána"
+msgstr "Západní brána"
 
 # Návěští scénáře
 #. [objective]: condition=lose
@@ -1739,7 +1727,7 @@ msgid ""
 msgstr ""
 "Dobře jste bojovali, děkujeme vám. Byli jsme pod velkým tlakem. Buďte našimi "
 "čestnými hosty; poskytnu vám své nejlepší pokoje. Náš pán, mistr run Karrag, "
-"by chtěl s vámi zítra mluvit. "
+"by chtěl s vámi zítra mluvit."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:330
@@ -1893,7 +1881,7 @@ msgid ""
 msgstr ""
 "Ano! A v Kladivu jsou uchovány duše trpaslíků pravé rasy!\n"
 "Spolu můžeme pochodovat k velkolepějším vítězstvím. Přidáte se ke mně i vy z "
-"Knalgy? "
+"Knalgy?"
 
 # říká Angarthing (trpaslík)
 #. [message]: speaker=Angarthing
@@ -1933,7 +1921,7 @@ msgid ""
 "much less one who holds the very soul of the dwarves in his hand."
 msgstr ""
 "Drzý blázne! Ty nejsi ten, kdo by měl poroučet lordu v jeho vlastním hradě, "
-"tím méně tomu, kdo vlastní Duši všech trpaslíků! "
+"tím méně tomu, kdo vlastní Duši všech trpaslíků!"
 
 # říká Angarthing (trpaslík)
 #. [message]: speaker=Angarthing
@@ -2026,7 +2014,7 @@ msgstr "Podzemí"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:244
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:263
 msgid "Undead"
-msgstr ""
+msgstr "Nemrtví"
 
 # Jméno
 #. [side]: type=Lich, id=Fleleen
@@ -2242,7 +2230,7 @@ msgid ""
 "he keep you, a dwarf captive?"
 msgstr ""
 "Myslel jsem, že Karrag bojoval proti takzvaným „pozemským červům“. Proč teda "
-"měl mezi vězni trpaslíky? "
+"měl mezi vězni trpaslíky?"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:861
@@ -2453,7 +2441,7 @@ msgid ""
 "another uneasily. None stepped forward."
 msgstr ""
 "Trpaslíci z Kal Karthy si mezi sebou cosi bručeli a znepokojivě se po sobě "
-"dívali. Nikdo z nich však nepředstoupil. "
+"dívali. Nikdo z nich však nepředstoupil."
 
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:138
@@ -2471,7 +2459,7 @@ msgid ""
 "the Lord Protector of the Alliance."
 msgstr ""
 "Bylo mi řečeno, že tady najdu Aiglondura z Knalgy. Nesu zprávu od Lorda "
-"Tallina, Protektora Aliance. "
+"Tallina, Protektora Aliance."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:168
@@ -2554,7 +2542,7 @@ msgstr ""
 "Trpasličí letopisci jsou dějepravci této starodávné a hrdé rasy. Není jich "
 "mnoho a jejich existence je netrpasličím obyvatelům Velkého kontinentu "
 "všeobecně neznámá. Ke schopnostem dohlížitelů se u nich, díky studiu rostlin "
-"a minerálů, přidává schopnost uzdravovat otravu. "
+"a minerálů, přidává schopnost uzdravovat otravu."
 
 #. [attack]: type=impact
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:61
@@ -2700,8 +2688,6 @@ msgstr "inspirující"
 
 #. [leadership]: id=inspire
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:14
-#, fuzzy
-#| msgid "inspire"
 msgid "female^inspire"
 msgstr "inspirující"
 
