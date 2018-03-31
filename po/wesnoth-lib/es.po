@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-03-27 13:07+0200\n"
+"PO-Revision-Date: 2018-03-27 19:48+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -5440,42 +5440,42 @@ msgstr "El texto contiene marcado inválido: "
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:251
 msgid "conjunct pair^$first and $second"
-msgstr "conjunct pair^$first y $second"
+msgstr "$first y $second"
 
 #. TRANSLATORS: Formats the first two elements of a conjunctive list.
 #: src/formula/string_utils.cpp:254
 msgid "conjunct start^$first, $second"
-msgstr "conjunct start^$first, $second"
+msgstr "$first, $second"
 
 #. TRANSLATORS: Formats successive elements of a conjunctive list.
 #: src/formula/string_utils.cpp:258
 msgid "conjunct mid^$prefix, $next"
-msgstr "conjunct mid^$prefix, $next"
+msgstr "$prefix, $next"
 
 #. TRANSLATORS: Formats the final element of a conjunctive list.
 #: src/formula/string_utils.cpp:261
 msgid "conjunct end^$prefix, and $last"
-msgstr "conjunct end^$prefix, y $last"
+msgstr "$prefix, y $last"
 
 #. TRANSLATORS: Formats a two-element disjunctive list.
 #: src/formula/string_utils.cpp:269
 msgid "disjunct pair^$first or $second"
-msgstr "disjunct pair^$first o $second"
+msgstr "$first o $second"
 
 #. TRANSLATORS: Formats the first two elements of a disjunctive list.
 #: src/formula/string_utils.cpp:272
 msgid "disjunct start^$first, $second"
-msgstr "disjunct start^$first, $second"
+msgstr "$first, $second"
 
 #. TRANSLATORS: Formats successive elements of a disjunctive list.
 #: src/formula/string_utils.cpp:276
 msgid "disjunct mid^$prefix, $next"
-msgstr "disjunct mid^$prefix, $next"
+msgstr "$prefix, $next"
 
 #. TRANSLATORS: Formats the final element of a disjunctive list.
 #: src/formula/string_utils.cpp:279
 msgid "disjunct end^$prefix, or $last"
-msgstr "disjunct end^$prefix, o $last"
+msgstr "$prefix, o $last"
 
 #: src/gui/core/canvas.cpp:605
 msgid "Line doesn't fit on canvas."
@@ -5678,11 +5678,11 @@ msgstr "Publicado ($local_version| instalado), sin actualizar en el servidor"
 
 #: src/gui/dialogs/addon/manager.cpp:291 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
-msgstr "addon_state^Instalado, no está listo para publicar"
+msgstr "Instalado, no está listo para publicar"
 
 #: src/gui/dialogs/addon/manager.cpp:292 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
-msgstr "addon_state^Listo para publicar"
+msgstr "Listo para publicar"
 
 #: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
@@ -6583,7 +6583,7 @@ msgstr "Seleccionar todos"
 #: src/gui/widgets/multimenu_button.cpp:179
 msgid "multimenu^$excess other"
 msgid_plural "$excess others"
-msgstr[0] "multimenu^$excess otro"
+msgstr[0] "$excess otro"
 msgstr[1] "$excess otros"
 
 #: src/gui/widgets/multimenu_button.cpp:181
