@@ -1,15 +1,32 @@
 local helper = wesnoth.require "helper"
+local utils = wesnoth.require "wml-utils"
+
+local function path_locs(path)
+	if path.location_id then
+		-- Index is 1 for x, 2 for y
+		local function special_locations(index)
+			return function()
+				for loc in utils.split(path.location_id) do
+					loc = wesnoth.special_locations[loc]
+					if loc then coroutine.yield(loc[index]) end
+				end
+			end
+		end
+		return coroutine.wrap(special_locations(1)), coroutine.wrap(special_locations(2))
+	else
+		return utils.split(path.to_x), utils.split(path.to_y)
+	end
+end
 
 function wesnoth.wml_actions.move_unit(cfg)
 	local coordinate_error = "invalid location in [move_unit]"
-	local to_x, to_y
-	if cfg.to_location and wesnoth.special_locations[cfg.to_location] then
-		to_x, to_y = table.unpack(wesnoth.special_locations[cfg.to_location])
+	local path
+	if cfg.to_location then
+		path = {location_id = cfg.to_location}
 	else
-		to_x = cfg.to_x
-		to_y = cfg.to_y
+		path = {to_x = cfg.to_x, to_y = cfg.to_y}
 	end
-	if not to_x or not to_y then
+	if not path then
 		helper.wml_error(coordinate_error)
 	end
 	local fire_event = cfg.fire_event
@@ -20,10 +37,9 @@ function wesnoth.wml_actions.move_unit(cfg)
 	cfg.to_location, cfg.to_x, cfg.to_y, cfg.fire_event = nil
 	local units = wesnoth.get_units(cfg)
 
-	local pattern = "[^%s,]+"
 	for current_unit_index, current_unit in ipairs(units) do
 		if not fire_event or current_unit.valid then
-			local xs, ys = string.gmatch(to_x, pattern), string.gmatch(to_y, pattern)
+			local xs, ys = path_locs(path)
 			local move_string_x = current_unit.x
 			local move_string_y = current_unit.y
 			local pass_check = nil
