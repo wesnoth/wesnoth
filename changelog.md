@@ -2,6 +2,8 @@
  ### Campaigns
    * Eastern Invasion
      * Fixed some Lua errors in S05.
+   * The Hammer of Thursagan
+     * Fixed a misplaced door image in S12.
    * Under the Burning Suns
      * Hide technical terrains in the Help browser (Human Ship, Lava overlay).
  ### Language and i18n
