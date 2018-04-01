@@ -1589,11 +1589,11 @@ bool unit::resistance_filter_matches(const config& cfg, bool attacker, const std
 	return true;
 }
 
-int unit::resistance_against(const std::string& damage_name,bool attacker,const map_location& loc, const_attack_ptr weapon) const
+int unit::resistance_against(const std::string& damage_name,bool attacker,const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
 {
 	int res = movement_type_.resistance_against(damage_name);
 
-	unit_ability_list resistance_abilities = get_abilities("resistance",loc, weapon);
+	unit_ability_list resistance_abilities = get_abilities("resistance",loc, weapon, opp_weapon);
 	for(unit_ability_list::iterator i = resistance_abilities.begin(); i != resistance_abilities.end();) {
 		if(!resistance_filter_matches(*i->first, attacker, damage_name, 100-res)) {
 			i = resistance_abilities.erase(i);

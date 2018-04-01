@@ -177,14 +177,15 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 	return false;
 }
 
-unit_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon) const
+unit_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
 {
 	unit_ability_list res(loc_);
 
 	for (const config &i : this->abilities_.child_range(tag_name)) {
 		if (ability_active(tag_name, i, loc) &&
 			ability_affects_self(tag_name, i, loc) &&
-			ability_affects_weapon(tag_name, i, loc, weapon))
+			ability_affects_weapon(i, weapon, false) &&
+			ability_affects_weapon(i, opp_weapon, true))
 		{
 			res.push_back(unit_ability(&i, loc));
 		}
@@ -210,7 +211,8 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 			if (affects_side(j, resources::gameboard->teams(), side(), it->side()) &&
 			    it->ability_active(tag_name, j, adjacent[i]) &&
 			    ability_affects_adjacent(tag_name, j, i, loc, *it) &&
-			    ability_affects_weapon(tag_name, j, adjacent[i], weapon))
+			    ability_affects_weapon(j, weapon, false) &&
+			    ability_affects_weapon(j, opp_weapon, true))
 			{
 				res.push_back(unit_ability(&j, adjacent[i]));
 			}
@@ -412,20 +414,18 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 	return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc);
 }
 
-bool unit::ability_affects_weapon(const std::string&, const config& cfg, const map_location&, const_attack_ptr weapon) const
+bool unit::ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bool is_opp) const
 {
-	if(!cfg.has_child("filter_weapon")) {
+	const std::string filter_tag_name = is_opp ? "filter_second_weapon" : "filter_weapon";
+	if(!cfg.has_child(filter_tag_name)) {
 		return true;
 	}
-	const config& filter = cfg.child("filter_weapon");
+	const config& filter = cfg.child(filter_tag_name);
 	if(!weapon) {
-		// Not sure if this is the correct behaviour here
 		return false;
 	}
-
 	return weapon->matches_filter(filter);
 }
-
 
 bool unit::has_ability_type(const std::string& ability) const
 {

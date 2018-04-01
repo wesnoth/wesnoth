@@ -183,7 +183,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 			resources::gameboard->units(), resources::gameboard->map(), u_loc, u.alignment(), u.is_fearless());
 
 	// Leadership bonus.
-	int leader_bonus = under_leadership(units, u_loc, weapon).first;
+	int leader_bonus = under_leadership(units, u_loc, weapon, opp_weapon).first;
 	if(leader_bonus != 0) {
 		damage_multiplier += leader_bonus;
 	}
@@ -1589,14 +1589,14 @@ void attack_unit_and_advance(const map_location& attacker,
 	}
 }
 
-std::pair<int, map_location> under_leadership(const unit_map& units, const map_location& loc, const_attack_ptr weapon)
+std::pair<int, map_location> under_leadership(const unit_map& units, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
 	const unit_map::const_iterator un = units.find(loc);
 	if(un == units.end()) {
 		return {0, map_location::null_location()};
 	}
 
-	unit_ability_list abil = un->get_abilities("leadership", weapon);
+	unit_ability_list abil = un->get_abilities("leadership", weapon, opp_weapon);
 	return abil.highest("value");
 }
 
