@@ -2,6 +2,8 @@
  ### Campaigns
    * Eastern Invasion
      * Fixed some Lua errors in S05.
+   * The Hammer of Thursagan
+     * Fixed a misplaced door image in S12.
    * Under the Burning Suns
      * Changed Sun Singer movetype from float to foot.
      * Added some Quenoth elf unit animations.
