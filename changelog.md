@@ -1,4 +1,4 @@
-## Version 1.13.12+dev
+## Version 1.13.13
  ### Campaigns
    * Eastern Invasion
      * Fixed some Lua errors in S05.
