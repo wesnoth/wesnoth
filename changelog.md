@@ -4,6 +4,8 @@
      * Fixed some Lua errors in S05.
    * The Hammer of Thursagan
      * Fixed a misplaced door image in S12.
+     * S12 Fixed enemies from ai6 (south-east lich) going to the book (spider) room
+     * S12 Fixed north treasure chest disappearing
    * Under the Burning Suns
      * Hide technical terrains in the Help browser (Human Ship, Lava overlay).
  ### Language and i18n
