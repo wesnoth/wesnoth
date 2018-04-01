@@ -3,6 +3,9 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 
 ## Version 1.13.13+dev
+ ### Campaigns
+   * The Hammer of Thursagan
+     * S12 Fixed enemies from ai6 going to the book room
  ### Language and i18n
    * Updated translations: Polish.
 
