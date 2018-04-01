@@ -866,6 +866,10 @@ wml_actions.teleport = function(cfg)
 		-- No error if no unit matches.
 		return
 	end
+	local x,y = cfg.x, cfg.y
+	if not x or not y then
+		x,y = wesnoth.special_locations[cfg.location_id]
+	end
 	wesnoth.teleport(unit, cfg.x, cfg.y, cfg.check_passability == false, cfg.clear_shroud ~= false, cfg.animate)
 end
 
