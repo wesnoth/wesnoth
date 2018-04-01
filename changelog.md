@@ -37,6 +37,7 @@
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a location ID
    * Support location_id in [teleport] for the target location
+   * Suppor dir in [move_unit] to perform relative movements
    * Support [filter_weapon] in leadership and resistance abilities,
      which activates the ability only when the affected unit is using
      a matching weapon.
