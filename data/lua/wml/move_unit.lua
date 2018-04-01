@@ -13,6 +13,27 @@ local function path_locs(path)
 			end
 		end
 		return coroutine.wrap(special_locations(1)), coroutine.wrap(special_locations(2))
+	elseif path.dir then
+		local coord = {'x', 'y'}
+		-- Index is 1 for x, 2 for y
+		local function relative_locations(index)
+			return function(u)
+				local last = {x = u.x, y = u.y}
+				for dir in utils.split(cfg.dir) do
+					local count = 1
+					if dir:find(":") then
+						local error_dir = dir
+						dir, count = dir:match("([a-z]+):(%d+)")
+						if not dir or not count then
+							wml.error("Invalid direction:count in move_unit: " .. error_dir)
+						end
+					end
+					next_loc = wesnoth.map.get_direction(last.x, last.y, dir, count)
+					coroutine.yield(next_loc[index])
+					last.x, last.y = next_loc[1], next_loc[2]
+				end
+			end
+		end
 	else
 		return utils.split(path.to_x), utils.split(path.to_y)
 	end
@@ -23,6 +44,8 @@ function wesnoth.wml_actions.move_unit(cfg)
 	local path
 	if cfg.to_location then
 		path = {location_id = cfg.to_location}
+	elseif cfg.dir then
+		path = {dir = cfg.dir}
 	else
 		path = {to_x = cfg.to_x, to_y = cfg.to_y}
 	end
@@ -45,7 +68,7 @@ function wesnoth.wml_actions.move_unit(cfg)
 			local pass_check = nil
 			if check_passability then pass_check = current_unit end
 
-			local x, y = xs(), ys()
+			local x, y = xs(current_unit), ys(current_unit)
 			local prevX, prevY = tonumber(current_unit.x), tonumber(current_unit.y)
 			while true do
 				x = tonumber(x) or helper.wml_error(coordinate_error)
@@ -54,7 +77,7 @@ function wesnoth.wml_actions.move_unit(cfg)
 				if not x or not y then helper.wml_error("Could not find a suitable hex near to one of the target hexes in [move_unit].") end
 				move_string_x = string.format("%s,%u", move_string_x, x)
 				move_string_y = string.format("%s,%u", move_string_y, y)
-				local next_x, next_y = xs(), ys()
+				local next_x, next_y = xs(current_unit), ys(current_unit)
 				if not next_x and not next_y then break end
 				prevX, prevY = x, y
 				x, y = next_x, next_y
