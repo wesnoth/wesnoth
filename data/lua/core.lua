@@ -409,7 +409,8 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		local warned_tags = {}
 		for i = 1, #cfg do
 			local name = cfg[i][1]
-			local tag = wesnoth.persistent_tags[name]
+			-- Use rawget so as not to trigger the auto-adding mechanism
+			local tag = rawget(wesnoth.persistent_tags, name)
 			if type(tag) == 'table' and type(tag.read) == 'function' then
 				tag.read(cfg[i][2])
 			elseif tag ~= nil and not warned_tags[name] then
