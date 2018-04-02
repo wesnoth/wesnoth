@@ -9,7 +9,6 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
  ### Language and i18n
    * Updated translations: Polish.
 
-
 ## Version 1.13.13
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Czech, French,
