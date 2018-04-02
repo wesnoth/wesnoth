@@ -524,7 +524,7 @@ config map_context::to_config()
 		side["user_team_name"].write_if_not_empty(t->user_team_name());
 
 		// TODO
-		// side["allow_player"] = "yes";
+		// side["allow_player"] = true;
 
 		side["fog"] = t->uses_fog();
 		side["shroud"] = t->uses_shroud();
