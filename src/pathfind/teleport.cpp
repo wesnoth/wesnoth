@@ -151,8 +151,8 @@ bool teleport_group::allow_vision() const {
 
 config teleport_group::to_config() const {
 	config retval = cfg_;
-	retval["saved"] = "yes";
-	retval["reversed"] = reversed_ ? "yes" : "no";
+	retval["saved"] = true;
+	retval["reversed"] = reversed_;
 	retval["id"] = id_;
 	return retval;
 }
