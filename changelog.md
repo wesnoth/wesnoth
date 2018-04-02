@@ -3,6 +3,8 @@
    * The Hammer of Thursagan
      * S12 Fixed enemies from ai6 (south-east lich) going to the book (spider) room
      * S12 Fixed north treasure chest disappearing
+ ### Language and i18n
+   * Updated translations: Polish
 
 ## Version 1.13.13
  ### Campaigns
