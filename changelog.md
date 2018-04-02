@@ -19,7 +19,7 @@
    * Fixed "Search" placeholder text in dialog item filters not being
      translatable (bug #2709, bug #2732).
    * Updated translations: British English, Chinese (Simplified), Czech, French,
-     Scottish Gaelic, Spanish, Ukrainian
+     Polish, Scottish Gaelic, Spanish, Ukrainian
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a location ID

@@ -5,7 +5,7 @@ changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog.md
 ## Version 1.15.0-dev
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Czech, French,
-     Scottish Gaelic, Spanish, Ukrainian.
+     Polish, Scottish Gaelic, Spanish, Ukrainian.
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
 
