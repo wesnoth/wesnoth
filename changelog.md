@@ -1,4 +1,6 @@
 ## Version 1.13.13+dev
+ ### Language and i18n
+   * Updated translations: Polish
 
 ## Version 1.13.13
  ### Campaigns
