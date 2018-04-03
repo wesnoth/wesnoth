@@ -60,12 +60,11 @@ private:
 	/** Returns true if we need to regenerate the toplevel and hidden sections. */
 	bool content_update_needed() const;
 
-	void update_config_pointers();
+	void update_config_pointer();
 
 	/** Fills in both toplevel_section_ and hidden_sections_. */
 	void build_topic_tree();
 
-	const config* game_cfg_;
 	const config* help_cfg_;
 
 	/** The default toplevel section node. */
