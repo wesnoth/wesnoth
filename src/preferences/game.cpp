@@ -93,6 +93,9 @@ manager::manager() :
 	preferences::erase("password");
 	preferences::erase("password_is_wrapped");
 
+	// TODO: remove when we re-enable font scaling configuration.
+	preferences::erase("font_scale");
+
 	/*
 	completed_campaigns = "A,B,C"
 	[completed_campaigns]

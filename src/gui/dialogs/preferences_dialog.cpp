@@ -479,11 +479,11 @@ void preferences_dialog::post_build(window& window)
 
 	register_integer("idle_anim_frequency", true,
 		idle_anim_rate, set_idle_anim_rate);
-
+#if 0
 	/* FONT SCALING */
 	register_integer("scaling_slider", true,
 		font_scaling, set_font_scaling);
-
+#endif
 	/* SELECT THEME */
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "choose_theme", false),
@@ -1006,11 +1006,11 @@ void preferences_dialog::pre_show(window& window)
 	});
 
 	gui2::bind_status_label<slider>(&window, "turbo_slider");
-
+#if 0
 	gui2::bind_status_label<slider>(&window, "scaling_slider",   [](slider& s)->std::string {
 		return s.get_value_label() + "%";
 	});
-
+#endif
 	listbox& selector = find_widget<listbox>(&window, "selector", false);
 	stacked_widget& pager = find_widget<stacked_widget>(&window, "pager", false);
 

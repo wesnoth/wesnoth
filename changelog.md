@@ -5,6 +5,8 @@
      * S12 Fixed north treasure chest disappearing
  ### Language and i18n
    * Updated translations: Polish
+ ### Miscellaneous and bug fixes
+   * Removed the Font Scaling preference. It was too buggy (issues #2792 and #1624).
 
 ## Version 1.13.13
  ### Campaigns
