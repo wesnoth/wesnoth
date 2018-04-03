@@ -22,6 +22,8 @@
      translatable (bug #2709, bug #2732).
    * Updated translations: British English, Chinese (Simplified), Czech, French,
      Polish, Scottish Gaelic, Spanish, Ukrainian
+ ### User Interface
+   * Swapped the position and formatting of game names and titles in the MP lobby.
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a location ID
