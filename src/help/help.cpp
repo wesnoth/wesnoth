@@ -17,33 +17,35 @@
  * Routines for showing the help-dialog.
  */
 
-#define GETTEXT_DOMAIN "wesnoth-help"
-
 #include "help/help.hpp"
 
-#include "config.hpp"         // for config, etc
-#include "gettext.hpp"        // for _
-#include "gui/dialogs/help_browser.hpp"
-#include "help/help_impl.hpp"
-#include "preferences/game.hpp"
-#include "terrain/terrain.hpp" // for terrain_type
-#include "units/types.hpp"     // for unit_type, unit_type_data, etc
-#include "units/unit.hpp"      // for unit
+#include "help/constants.hpp"
+#include "help/manager.hpp"
+#include "help/utils.hpp"
+#include "terrain/terrain.hpp"
+#include "units/types.hpp"
+#include "units/unit.hpp"
 
-#include <cassert>   // for assert
-#include <ostream>   // for basic_ostream, operator<<, etc
-#include <vector>    // for vector, vector<>::iterator
+#include <cassert>
 
 namespace help
 {
-void show_unit_description(const unit& u)
+/** The help manager. What else would it be? */
+static help_manager manager;
+
+void show_help(const std::string& show_topic)
 {
-	help::show_unit_description(u.type());
+	manager.open_help_browser_to(show_topic);
 }
 
-void show_terrain_description(const terrain_type& t)
+void reset()
 {
-	help::show_terrain_help(t.id(), t.hide_in_editor() || t.is_combined());
+	manager.reset_contents();
+}
+
+void show_unit_description(const unit& u)
+{
+	show_unit_description(u.type());
 }
 
 void show_unit_description(const unit_type& t)
@@ -68,54 +70,30 @@ void show_unit_description(const unit_type& t)
 	}
 
 	if(use_variation) {
-		help::show_variation_help(t.id(), var_id, hide_help);
+		show_variation_help(t.id(), var_id, hide_help);
 	} else {
-		help::show_unit_help(t.id(), t.show_variations_in_help(), hide_help);
+		show_unit_help(t.id(), t.show_variations_in_help(), hide_help);
 	}
-}
-
-void show_help(const std::string& show_topic)
-{
-	show_help(default_toplevel, show_topic);
 }
 
 void show_unit_help(const std::string& show_topic, bool has_variations, bool hidden)
 {
-	show_help(default_toplevel, hidden_symbol(hidden) + (has_variations ? ".." : "") + unit_prefix + show_topic);
-}
-
-void show_terrain_help(const std::string& show_topic, bool hidden)
-{
-	show_help(default_toplevel, hidden_symbol(hidden) + terrain_prefix + show_topic);
+	show_help(hidden_symbol(hidden) + (has_variations ? ".." : "") + unit_prefix + show_topic);
 }
 
 void show_variation_help(const std::string& unit, const std::string& variation, bool hidden)
 {
-	show_help(default_toplevel, hidden_symbol(hidden) + variation_prefix + unit + "_" + variation);
+	show_help(hidden_symbol(hidden) + variation_prefix + unit + "_" + variation);
 }
 
-void init_help()
+void show_terrain_description(const terrain_type& t)
 {
-	// Find all unit_types that have not been constructed yet and fill in the information
-	// needed to create the help topics
-	unit_types.build_all(unit_type::HELP_INDEXED);
-
-	if(preferences::encountered_units().size() != std::size_t(last_num_encountered_units) ||
-	   preferences::encountered_terrains().size() != std::size_t(last_num_encountered_terrains) ||
-	   last_debug_state != game_config::debug || last_num_encountered_units < 0)
-	{
-		// More units or terrains encountered, update the contents.
-		last_num_encountered_units = preferences::encountered_units().size();
-		last_num_encountered_terrains = preferences::encountered_terrains().size();
-		last_debug_state = game_config::debug;
-
-		generate_contents();
-	}
+	show_terrain_help(t.id(), t.hide_in_editor() || t.is_combined());
 }
 
-void show_help(const section& toplevel_sec, const std::string& show_topic)
+void show_terrain_help(const std::string& show_topic, bool hidden)
 {
-	gui2::dialogs::help_browser::display(toplevel_sec, show_topic);
+	show_help(hidden_symbol(hidden) + terrain_prefix + show_topic);
 }
 
 } // End namespace help.

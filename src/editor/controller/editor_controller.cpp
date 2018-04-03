@@ -159,6 +159,8 @@ void editor_controller::init_music(const config& game_config)
 
 editor_controller::~editor_controller()
 {
+	help::reset();
+
 	resources::tod_manager = nullptr;
 	resources::filter_con = nullptr;
 

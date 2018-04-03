@@ -16,24 +16,14 @@
 
 #include <string>
 
-class config;
 class terrain_type;
 class unit;
 class unit_type;
 
 namespace help
 {
-struct section;
-
-void init_help();
-
-/**
- * Open a help dialog using a toplevel other than the default.
- *
- * This allows for complete customization of the contents, although not in a
- * very easy way.
- */
-void show_help(const section& toplevel, const std::string& show_topic = "");
+/** Flags the help manager's contents for regeneration. */
+void reset();
 
 /**
  * Open the help browser, show topic with id show_topic.

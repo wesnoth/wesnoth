@@ -1295,12 +1295,6 @@
     <ClCompile Include="..\..\src\help\help.cpp">
       <Filter>Help</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\help\help_impl.cpp">
-      <Filter>Help</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\help\help_topic_generators.cpp">
-      <Filter>Help</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\formula\callable_objects.cpp">
       <Filter>Formula</Filter>
     </ClCompile>
@@ -1535,6 +1529,30 @@
     </ClCompile>
     <ClCompile Include="..\..\src\preferences\lobby.cpp">
       <Filter>Preferences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\help\constants.cpp">
+      <Filter>Help</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\help\section.cpp">
+      <Filter>Help</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\help\section_generators.cpp">
+      <Filter>Help</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\help\topic.cpp">
+      <Filter>Help</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\help\topic_generators.cpp">
+      <Filter>Help</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\help\topic_text_generators.cpp">
+      <Filter>Help</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\help\utils.cpp">
+      <Filter>Help</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\help\manager.cpp">
+      <Filter>Help</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2684,12 +2702,6 @@
     <ClInclude Include="..\..\src\help\help.hpp">
       <Filter>Help</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\help\help_impl.hpp">
-      <Filter>Help</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\help\help_topic_generators.hpp">
-      <Filter>Help</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\formula\callable.hpp">
       <Filter>Formula</Filter>
     </ClInclude>
@@ -2978,6 +2990,30 @@
     </ClInclude>
     <ClInclude Include="..\..\src\map\hex_rect.hpp">
       <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\help\constants.hpp">
+      <Filter>Help</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\help\section.hpp">
+      <Filter>Help</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\help\section_generators.hpp">
+      <Filter>Help</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\help\topic.hpp">
+      <Filter>Help</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\help\topic_generators.hpp">
+      <Filter>Help</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\help\topic_text_generators.hpp">
+      <Filter>Help</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\help\utils.hpp">
+      <Filter>Help</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\help\manager.hpp">
+      <Filter>Help</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
