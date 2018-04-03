@@ -167,10 +167,6 @@ display::display(const display_context* dc,
 	image::set_zoom(zoom_);
 
 	init_flags();
-
-	rebuild_all();
-	assert(builder_);
-	// builder_->rebuild_cache_all();
 }
 
 display::~display()
