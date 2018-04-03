@@ -63,10 +63,6 @@ void section::initialize(const config& section_cfg)
 		throw max_recursion_reached("Maximum section depth has been reached. Possible circular dependency?");
 	}
 
-	if(recursion_level_ > 0 && !is_valid_id(id)) {
-		throw parse_error(formatter() << "Invalid ID, used for internal purpose: '" << id << "'");
-	}
-
 	if(section_cfg.empty()) {
 		return; // TODO: throw something?
 	}
@@ -74,12 +70,16 @@ void section::initialize(const config& section_cfg)
 	//
 	// Parse static sub-sections.
 	//
-	for(const std::string& child_section : utils::quoted_split(section_cfg["sections"])) {
-		if(const config& child_cfg = manager_->get_section_config(child_section)) {
+	for(const std::string& section_id : utils::quoted_split(section_cfg["sections"])) {
+		if(const config& child_cfg = manager_->get_section_config(section_id)) {
+			if(!is_valid_id(section_id)) {
+				throw parse_error(formatter() << "Invalid ID, used for internal purposes: '" << id << "'");
+			}
+
 			add_section(child_cfg);
 		} else {
 			throw parse_error(formatter()
-				<< "Help section '" << child_section << "' referenced from '" << id << "' but could not be found.");
+				<< "Help section '" << section_id << "' referenced from '" << id << "' but could not be found.");
 		}
 	}
 
@@ -117,13 +117,13 @@ void section::initialize(const config& section_cfg)
 	//
 	for(const std::string& topic_id : utils::quoted_split(section_cfg["topics"])) {
 		if(const config& topic_cfg = manager_->get_topic_config(topic_id)) {
+			if(!is_valid_id(topic_id)) {
+				throw parse_error(formatter() << "Invalid ID, used for internal purposes: '" << id << "'");
+			}
+
 			std::ostringstream text;
 			text << topic_cfg["text"];
 			text << generate_table_of_contents(topic_cfg["generator"]);
-
-			if(!is_valid_id(topic_id)) {
-				throw parse_error(formatter() << "Invalid ID, used for internal purpose: '" << id << "'");
-			}
 
 			// We don't need to use add_topic here since we don't need a special text generator.
 			topics_.emplace_back(topic_id, topic_cfg["title"], text.str());
