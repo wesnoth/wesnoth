@@ -366,14 +366,6 @@ battle_context::battle_context(const unit_map& units,
 	const unit& defender = *units.find(defender_loc);
 	const double harm_weight = 1.0 - aggression;
 
-	if(attacker_weapon == -1 &&
-	   attacker.attacks().size() == 1 &&
-	   attacker.attacks()[0].attack_weight() > 0 &&
-	  !attacker.attacks()[0].get_special_bool("disable", true)
-	) {
-		attacker_weapon = 0;
-	}
-
 	if(attacker_weapon == -1) {
 		attacker_weapon = choose_attacker_weapon(
 			attacker, defender, units, attacker_loc, defender_loc, harm_weight, &defender_weapon, prev_def
