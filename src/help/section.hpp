@@ -133,7 +133,7 @@ private:
 
 	std::string print_table_of_contents() const;
 
-	std::string section::print_table_of_contents_for(const std::string& section_id) const;
+	std::string print_table_of_contents_for(const std::string& section_id) const;
 
 	/** All topics this section owns. */
 	topic_list topics_;
