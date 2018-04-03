@@ -171,6 +171,11 @@ bool synced_context::is_synced()
 	return get_synced_state() == SYNCED;
 }
 
+bool synced_context::is_unsynced()
+{
+	return get_synced_state() == UNSYNCED;
+}
+
 void synced_context::set_synced_state(synced_state newstate)
 {
 	state_ = newstate;
