@@ -25,8 +25,7 @@
 namespace help
 {
 help_manager::help_manager()
-	: game_cfg_(nullptr)
-	, help_cfg_(nullptr)
+	: help_cfg_(nullptr)
 	, toplevel_section_(nullptr)
 	, hidden_sections_(nullptr)
 	, num_last_encountered_units_(-1)
@@ -104,12 +103,9 @@ void help_manager::reset_contents()
 	num_last_encountered_terrains_ = -1;
 }
 
-void help_manager::update_config_pointers()
+void help_manager::update_config_pointer()
 {
-	game_cfg_ = &game_config_manager::get()->game_config();
-	assert(game_cfg_);
-
-	help_cfg_ = &game_cfg_->child_or_empty("help");
+	help_cfg_ = &game_config_manager::get()->game_config().child_or_empty("help");
 	assert(help_cfg_);
 }
 
@@ -117,7 +113,7 @@ void help_manager::build_topic_tree()
 {
 	// We probaby don't need to update the pointers every time, but it's the
 	// simplest way to ensure these are always valid.
-	update_config_pointers();
+	update_config_pointer();
 
 	try {
 		// Start by parsing [toplevel]. It cascades down and parses all referenced sections and topics.
