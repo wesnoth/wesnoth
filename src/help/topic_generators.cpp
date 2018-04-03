@@ -230,7 +230,7 @@ topic_list generate_trait_topics(const bool sort_generated)
 
 			if(const unit_race* r = unit_types.find_race(type.race_id())) {
 				for(const config& trait : r->additional_traits()) {
-					trait_list.emplace(trait["id"],t_str(), &trait);
+					trait_list.emplace(trait["id"].t_str(), &trait);
 				}
 			}
 		}
