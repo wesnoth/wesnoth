@@ -425,10 +425,10 @@ std::map<std::string, string_map> mp_lobby::make_game_row_data(const mp::game_in
 		color_string = (game.reloaded || game.started) ? "yellow" : "green";
 	}
 
-	item["label"] = colorize("<i>" + game.name + "</i>", font::GRAY_COLOR.to_hex_string());
+	item["label"] = game.name;
 	data.emplace("name", item);
 
-	item["label"] = game.scenario;
+	item["label"] = colorize("<i>" + game.scenario + "</i>", font::GRAY_COLOR.to_hex_string());
 	data.emplace("scenario", item);
 
 	item["label"] = colorize(game.status, color_string);
