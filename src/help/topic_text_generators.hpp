@@ -76,6 +76,7 @@ public:
 		: type_(t)
 		, variation_(variation)
 	{
+		UNUSED(type_);
 	}
 
 	/** Inherited from @ref topic_text_generator. */
