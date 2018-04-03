@@ -78,7 +78,9 @@ void help_browser::add_topics_for_section(const help::section& parent_section, t
 	}
 
 	for(const help::topic& topic : parent_section.topics()) {
-		if(topic.id.compare(0, 2, "..") != 0) {
+		// TODO: we do actually need to generate nodes for hidden topics somewhere
+		// so they can be displayed...
+		if(topic.id.compare(0, 2, "..") != 0 && help::is_visible_id(topic.id)) {
 			add_topic(topic.id, topic.title, false, parent_node);
 		}
 	}
@@ -115,7 +117,7 @@ static std::string format_help_text(const config& cfg)
 				throw help::parse_error(msg.str());
 			};
 			// TODO: Get the proper link shade from somewhere
-			ss << font::format_as_link(font::escape_text(item.cfg["text"]), color_t::from_hex_string("ffff00"));
+			ss << font::format_as_link(font::escape_text(item.cfg["text"]), color_t::from_hex_string("ffe100"));
 		} else if(item.key == "img") {
 			if(item.cfg["src"].empty()) {
 				throw help::parse_error("Img markup must have src attribute.");
