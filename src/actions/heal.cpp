@@ -29,6 +29,7 @@
 #include "units/abilities.hpp"
 #include "units/udisplay.hpp"
 #include "units/map.hpp"
+#include "units/unit.hpp"
 
 #include <list>
 #include <vector>
