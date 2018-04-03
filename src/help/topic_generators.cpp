@@ -37,6 +37,57 @@ static lg::log_domain log_help("help");
 
 namespace help
 {
+namespace
+{
+std::string make_unit_link(const std::string& type_id)
+{
+	std::string link;
+	const unit_type* type = unit_types.find(type_id, unit_type::HELP_INDEXED);
+
+	if(!type) {
+		std::cerr << "Unknown unit type : " << type_id << "\n";
+
+		// Don't return a hyperlink (no page). Instead show the id (as hint)
+		link = type_id;
+	} else if(!type->hide_help()) {
+		std::string name = type->type_name();
+		std::string ref_id;
+
+		if(description_type(*type) == FULL_DESCRIPTION) {
+			const std::string section_prefix = type->show_variations_in_help() ? ".." : "";
+			ref_id = section_prefix + unit_prefix + type->id();
+		} else {
+			ref_id = unknown_unit_topic;
+			name += " (?)";
+		}
+
+		link = make_link(name, ref_id);
+	} // if hide_help then link is an empty string
+
+	return link;
+}
+
+std::vector<std::string> make_unit_links_list(const std::vector<std::string>& type_id_list, bool ordered)
+{
+	std::vector<std::string> links_list;
+
+	for(const std::string& type_id : type_id_list) {
+		std::string unit_link = make_unit_link(type_id);
+
+		if(!unit_link.empty()) {
+			links_list.push_back(std::move(unit_link));
+		}
+	}
+
+	if(ordered) {
+		std::sort(links_list.begin(), links_list.end());
+	}
+
+	return links_list;
+}
+
+} // end anon namespace
+
 topic_list generate_ability_topics(const bool sort_generated)
 {
 	topic_list topics;
