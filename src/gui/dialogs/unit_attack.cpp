@@ -122,7 +122,7 @@ void unit_attack::pre_show(window& window)
 			*defender.weapon : *no_weapon;
 
 		// Don't show if the atacker's weapon has at least one active "disable" special.
-		if(attacker_weapon.get_special_bool("disable")) {
+		if(attacker_weapon.disable) {
 			continue;
 		}
 
