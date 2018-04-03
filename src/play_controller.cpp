@@ -35,6 +35,7 @@
 #include "gui/dialogs/game_ui.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "help/help.hpp"
 #include "hotkey/command_executor.hpp"
 #include "hotkey/hotkey_handler.hpp"
 #include "hotkey/hotkey_item.hpp"
@@ -190,6 +191,7 @@ play_controller::play_controller(const config& level,
 
 play_controller::~play_controller()
 {
+	help::reset();
 	hotkey::delete_all_wml_hotkeys();
 	clear_resources();
 }

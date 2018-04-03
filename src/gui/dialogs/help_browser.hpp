@@ -22,7 +22,7 @@
 class config;
 
 namespace help {
-	struct section;
+	class section;
 }
 
 namespace gui2

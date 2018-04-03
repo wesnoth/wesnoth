@@ -33,7 +33,7 @@
 #include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
-#include "help/help_impl.hpp"
+#include "help/utils.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
