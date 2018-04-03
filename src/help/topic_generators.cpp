@@ -212,10 +212,10 @@ topic_list generate_time_of_day_topics(const bool /*sort_generated*/)
 topic_list generate_trait_topics(const bool sort_generated)
 {
 	topic_list topics;
-	std::map<t_string, const config> trait_list;
+	std::map<t_string, const config*> trait_list;
 
 	for(const config& trait : unit_types.traits()) {
-		trait_list.emplace(trait["id"], trait);
+		trait_list.emplace(trait["id"].t_str(), &trait);
 	}
 
 	for(const auto& i : unit_types.types()) {
@@ -224,13 +224,13 @@ topic_list generate_trait_topics(const bool sort_generated)
 		if(description_type(type) == FULL_DESCRIPTION) {
 			if(auto traits = type.possible_traits()) {
 				for(const config& trait : traits) {
-					trait_list.emplace(trait["id"], trait);
+					trait_list.emplace(trait["id"].t_str(), &trait);
 				}
 			}
 
 			if(const unit_race* r = unit_types.find_race(type.race_id())) {
 				for(const config& trait : r->additional_traits()) {
-					trait_list.emplace(trait["id"], trait);
+					trait_list.emplace(trait["id"],t_str(), &trait);
 				}
 			}
 		}
@@ -238,7 +238,7 @@ topic_list generate_trait_topics(const bool sort_generated)
 
 	for(auto& a : trait_list) {
 		const std::string id = trait_prefix + a.first;
-		const config& trait = a.second;
+		const config& trait = *a.second;
 
 		std::string name = trait["male_name"].str();
 		if(name.empty()) {
