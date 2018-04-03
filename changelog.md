@@ -56,6 +56,8 @@
    * Removed the Password Reminder option from the Login screen.
    * Removed (optional) requirement of libpng from SCons and CMake and the
      associated options as Wesnoth now uses SDL_image to write PNG files.
+   * Fixed regression where unit filters in [disable] weapon specials would not
+     match the attacking unit.
 
 ## Version 1.13.12
  ### Security fixes
