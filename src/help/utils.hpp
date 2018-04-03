@@ -76,8 +76,6 @@ inline std::string jump(const unsigned amount)
     return formatter() << "<jump>amount=" << amount << "</jump>";
 }
 
-std::vector<std::string> make_unit_links_list(const std::vector<std::string>& type_id_list, bool ordered);
-
 using ter_data_cache = std::shared_ptr<terrain_type_data>;
 
 /// Load the appropriate terrain types data to use
