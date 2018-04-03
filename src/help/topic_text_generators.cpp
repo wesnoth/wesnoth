@@ -242,7 +242,6 @@ std::string terrain_topic_generator::generate() const
 
 		ss << "Overlay: " << yes_no_str(type_.is_overlay()) << "\n";
 		ss << "Combined: " << yes_no_str(type_.is_combined()) << "\n";
-		ss << "Nonnull: " << yes_no_str(type_.is_nonnull()) << "\n";
 
 		ss << "Terrain string: " << type_.number() << "\n";
 
