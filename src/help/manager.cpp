@@ -34,26 +34,6 @@ help_manager::help_manager()
 {
 }
 
-#if 0
-void init_help()
-{
-	// Find all unit_types that have not been constructed yet and fill in the information
-	// needed to create the help topics
-	//unit_types.build_all(unit_type::HELP_INDEXED);
-
-	if(preferences::encountered_units().size() != std::size_t(last_num_encountered_units) ||
-	   preferences::encountered_terrains().size() != std::size_t(last_num_encountered_terrains) ||
-	   last_debug_state != game_config::debug || last_num_encountered_units < 0)
-	{
-		// More units or terrains encountered, update the contents.
-		last_num_encountered_units = preferences::encountered_units().size();
-		last_num_encountered_terrains = preferences::encountered_terrains().size();
-		last_debug_state = game_config::debug;
-
-		generate_contents();
-	}
-}
-#endif
 void help_manager::open_help_browser_to(std::string show_topic)
 {
 	// Find all unit_types that have not been constructed yet and fill in the information
