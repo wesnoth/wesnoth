@@ -77,6 +77,10 @@ public:
 		@return whether we are currently executing a synced action like recruit, start, recall, disband, movement, attack, init_side, end_turn, fire_event, lua_ai, auto_shroud or similar.
 	*/
 	static bool is_synced();
+	/**
+		@return whether we are not currently executing a synced action like recruit, start, recall, disband, movement, attack, init_side, end_turn, fire_event, lua_ai, auto_shroud or similar. and not doing a local choice.
+	*/
+	static bool is_unsynced();
 	/*
 		should only be called form set_scontext_synced, set_scontext_local_choice
 	*/

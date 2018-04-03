@@ -33,6 +33,7 @@
 #include "replay.hpp"                   // for replay, recorder, do_replay, etc
 #include "resources.hpp"                // for gameboard, screen, etc
 #include "serialization/string_utils.hpp"  // for string_map
+#include "synced_context.hpp"
 #include "team.hpp"                     // for team, team::CONTROLLER::AI, etc
 #include "wesnothd_connection_error.hpp"
 #include "whiteboard/manager.hpp"       // for manager
@@ -78,7 +79,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::sync_network()
 
 void turn_info::send_data()
 {
-	if ( resources::undo_stack->can_undo() ) {
+	const bool send_everything = synced_context::is_unsynced() ? !resources::undo_stack->can_undo() : synced_context::is_simultaneously();
+	if ( !send_everything ) {
 		replay_sender_.sync_non_undoable();
 	} else {
 		replay_sender_.commit_and_sync();
