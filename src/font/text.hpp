@@ -18,7 +18,6 @@
 #include "color.hpp"
 #include "sdl/surface.hpp"
 #include "serialization/string_utils.hpp"
-#include "serialization/unicode_types.hpp"
 
 #include <pango/pango.h>
 #include <pango/pangocairo.h>
@@ -119,7 +118,7 @@ public:
 	 *
 	 * @returns                   True upon success, false otherwise.
 	 */
-	bool insert_unicode(const unsigned offset, ucs4::char_t unicode);
+	bool insert_unicode(const unsigned offset, char32_t unicode);
 
 	/**
 	 * Inserts unicode text.
@@ -130,7 +129,7 @@ public:
 	 * @returns                   The number of characters inserted.
 	 */
 	unsigned insert_unicode(
-		const unsigned offset, const ucs4::string& unicode);
+		const unsigned offset, const std::u32string& unicode);
 
 	/***** ***** ***** ***** Font flags ***** ***** ***** *****/
 

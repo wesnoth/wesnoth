@@ -224,7 +224,7 @@ bool is_format_char(char c)
 	}
 }
 
-bool is_cjk_char(const ucs4::char_t ch)
+bool is_cjk_char(const char32_t ch)
 {
 	/**
 	 * You can check these range at http://unicode.org/charts/
@@ -320,7 +320,7 @@ namespace {
  *   CJK 标点符号 (CJK punctuations)
  *   http://www.unicode.org/charts/PDF/U3000.pdf
  */
-inline bool no_break_after(const ucs4::char_t ch)
+inline bool no_break_after(const char32_t ch)
 {
 	return
 		/**
@@ -341,7 +341,7 @@ inline bool no_break_after(const ucs4::char_t ch)
 		ch == 0x3016 || ch == 0x301a || ch == 0x301d;
 }
 
-inline bool no_break_before(const ucs4::char_t ch)
+inline bool no_break_before(const char32_t ch)
 {
 	return
 		/**
@@ -378,7 +378,7 @@ inline bool no_break_before(const ucs4::char_t ch)
 		ch == 0x301b || ch == 0x301e;
 }
 
-inline bool break_before(const ucs4::char_t ch)
+inline bool break_before(const char32_t ch)
 {
 	if(no_break_before(ch))
 		return false;
@@ -386,7 +386,7 @@ inline bool break_before(const ucs4::char_t ch)
 	return is_cjk_char(ch);
 }
 
-inline bool break_after(const ucs4::char_t ch)
+inline bool break_after(const char32_t ch)
 {
 	if(no_break_after(ch))
 		return false;
@@ -420,7 +420,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 		if(start_of_line) {
 			line_width = 0;
 			format_string.clear();
-			while(ch != end && *ch < static_cast<ucs4::char_t>(0x100)
+			while(ch != end && *ch < static_cast<char32_t>(0x100)
 					&& is_format_char(*ch) && !ch.next_is_end()) {
 
 				format_string.append(ch.substr().first, ch.substr().second);
@@ -443,7 +443,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 				current_word = *ch;
 				++ch;
 			} else {
-				ucs4::char_t previous = 0;
+				char32_t previous = 0;
 				for(;ch != utf8::iterator::end(unwrapped_text) &&
 						*ch != ' ' && *ch != '\n'; ++ch) {
 

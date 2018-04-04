@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "unicode_types.hpp"
+#include "utf8_exception.hpp"
 #include "utils/math.hpp"
 #include <cassert>
 
@@ -23,7 +23,7 @@ namespace ucs4_convert_impl
 	struct utf8_impl
 	{
 		static const char* get_name()  { return "utf8"; }
-		static std::size_t byte_size_from_ucs4_codepoint(ucs4::char_t ch)
+		static std::size_t byte_size_from_ucs4_codepoint(char32_t ch)
 		{
 			if(ch < (1u << 7))
 				return 1;
@@ -41,7 +41,7 @@ namespace ucs4_convert_impl
 				throw utf8::invalid_utf8_exception(); // Invalid UCS-4
 		}
 
-		static int byte_size_from_utf8_first(utf8::char_t ch)
+		static int byte_size_from_utf8_first(char ch)
 		{
 			if (!(ch & 0x80)) {
 				return 1;  // US-ASCII character, 1 byte
@@ -59,19 +59,19 @@ namespace ucs4_convert_impl
 		/**
 		 * Writes a UCS-4 character to a UTF-8 stream.
 		 *
-		 * @param out  An object to write utf8::char_t. Required operations:
-		 *             1) push(utf8::char_t) to write a single character
+		 * @param out  An object to write char. Required operations:
+		 *             1) push(char) to write a single character
 		 *             2) can_push(std::size_t n) to check whether there is still
 		 *                enough space for n characters.
 		 * @param ch   The UCS-4 character to write to the stream.
 		 */
 		template<typename writer>
-		static inline void write(writer out, ucs4::char_t ch)
+		static inline void write(writer out, char32_t ch)
 		{
 			std::size_t count = byte_size_from_ucs4_codepoint(ch);
 			assert(out.can_push(count));
 			if(count == 1) {
-				out.push(static_cast<utf8::char_t>(ch));
+				out.push(static_cast<char>(ch));
 			} else {
 				for(int j = static_cast<int>(count) - 1; j >= 0; --j) {
 					unsigned char c = (ch >> (6 * j)) & 0x3f;
@@ -92,12 +92,12 @@ namespace ucs4_convert_impl
 		 *               to read.
 		 */
 		template<typename iitor_t>
-		static inline ucs4::char_t read(iitor_t& input, const iitor_t& end)
+		static inline char32_t read(iitor_t& input, const iitor_t& end)
 		{
 			assert(input != end);
 			std::size_t size = byte_size_from_utf8_first(*input);
 
-			ucs4::char_t current_char = static_cast<unsigned char>(*input);
+			char32_t current_char = static_cast<unsigned char>(*input);
 
 			// Convert the first character
 			if(size != 1) {
@@ -131,41 +131,41 @@ namespace ucs4_convert_impl
 	{
 		static const char* get_name()  { return "utf16"; }
 		template<typename writer>
-		static inline void write(writer out, ucs4::char_t ch)
+		static inline void write(writer out, char32_t ch)
 		{
-			const ucs4::char_t bit17 = 0x10000;
+			const char32_t bit17 = 0x10000;
 
 			if(ch < bit17)
 			{
 				assert(out.can_push(1));
-				out.push(static_cast<utf16::char_t>(ch));
+				out.push(static_cast<char16_t>(ch));
 			}
 			else
 			{
 				assert(out.can_push(2));
-				const ucs4::char_t char20 = ch - bit17;
+				const char32_t char20 = ch - bit17;
 				assert(char20 < (1 << 20));
-				const ucs4::char_t lead = 0xD800 + (char20 >> 10);
-				const ucs4::char_t trail = 0xDC00 + (char20 & 0x3FF);
+				const char32_t lead = 0xD800 + (char20 >> 10);
+				const char32_t trail = 0xDC00 + (char20 & 0x3FF);
 				assert(lead < bit17);
 				assert(trail < bit17);
-				out.push(static_cast<utf16::char_t>(lead));
-				out.push(static_cast<utf16::char_t>(trail));
+				out.push(static_cast<char16_t>(lead));
+				out.push(static_cast<char16_t>(trail));
 			}
 		}
 
 		template<typename iitor_t>
-		static inline ucs4::char_t read(iitor_t& input, const iitor_t& end)
+		static inline char32_t read(iitor_t& input, const iitor_t& end)
 		{
-			const ucs4::char_t last10 = 0x3FF;
-			const ucs4::char_t type_filter = 0xFC00;
-			const ucs4::char_t type_lead = 0xD800;
-			const ucs4::char_t type_trail = 0xDC00;
+			const char32_t last10 = 0x3FF;
+			const char32_t type_filter = 0xFC00;
+			const char32_t type_lead = 0xD800;
+			const char32_t type_trail = 0xDC00;
 
 			assert(input != end);
-			ucs4::char_t current_char = static_cast<utf16::char_t>(*input);
+			char32_t current_char = static_cast<char16_t>(*input);
 			++input;
-			ucs4::char_t type = current_char & type_filter;
+			char32_t type = current_char & type_filter;
 			if(type == type_trail)
 			{
 				//found trail without head
@@ -196,17 +196,17 @@ namespace ucs4_convert_impl
 	{
 		static const char* get_name()  { return "UCS4"; }
 		template<typename writer>
-		static inline void write(writer out, ucs4::char_t ch)
+		static inline void write(writer out, char32_t ch)
 		{
 			assert(out.can_push(1));
 			out.push(ch);
 		}
 
 		template<typename iitor_t>
-		static inline ucs4::char_t read(iitor_t& input, const iitor_t& end)
+		static inline char32_t read(iitor_t& input, const iitor_t& end)
 		{
 			assert(input != end);
-			ucs4::char_t current_char = *input;
+			char32_t current_char = *input;
 			++input;
 			return current_char;
 		}
@@ -216,19 +216,25 @@ namespace ucs4_convert_impl
 	struct convert_impl {};
 
 	template<>
-	struct convert_impl<utf8::char_t>
+	struct convert_impl<char>
 	{
 		typedef utf8_impl type;
 	};
 
 	template<>
-	struct convert_impl<utf16::char_t>
+	struct convert_impl<char16_t>
 	{
 		typedef utf16_impl type;
 	};
 
 	template<>
-	struct convert_impl<ucs4::char_t>
+	struct convert_impl<wchar_t>
+	{
+		typedef utf16_impl type;
+	};
+
+	template<>
+	struct convert_impl<char32_t>
 	{
 		typedef utf32_impl type;
 	};

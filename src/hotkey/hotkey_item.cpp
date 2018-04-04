@@ -305,7 +305,7 @@ bool hotkey_keyboard::matches_helper(const SDL_Event &event) const
 		if(text == ":" || text == "`") {
 			mods = mods & ~KMOD_SHIFT;
 		}
-		return text_ == text && utf8::size(utf8::string(event.text.text)) == 1 && mods == mod_;
+		return text_ == text && utf8::size(std::string(event.text.text)) == 1 && mods == mod_;
 	}
 
 	return false;

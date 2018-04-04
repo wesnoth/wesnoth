@@ -55,13 +55,13 @@ protected:
 	virtual void scroll(unsigned int pos);
 
 private:
-	virtual void handle_text_changed(const ucs4::string&) {}
+	virtual void handle_text_changed(const std::u32string&) {}
 
 	std::size_t max_size_;
 
 	int font_size_;
 
-	ucs4::string text_;
+	std::u32string text_;
 
 	// mutable unsigned int firstOnScreen_;
 	int cursor_;
@@ -106,7 +106,7 @@ private:
 
 	void draw_cursor(int pos) const;
 	void update_text_cache(bool reset = false, const color_t& color =font::NORMAL_COLOR);
-	surface add_text_line(const ucs4::string& text, const color_t& color =font::NORMAL_COLOR);
+	surface add_text_line(const std::u32string& text, const color_t& color =font::NORMAL_COLOR);
 	bool is_selection();
 	void erase_selection();
 

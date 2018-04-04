@@ -18,8 +18,6 @@
 #include <cstddef>   //ptrdiff_t
 #include <cassert>   //assert
 
-#include "unicode_types.hpp"
-
 namespace ucs4
 {
 	template<typename string_type, typename update_implementation>
@@ -27,10 +25,10 @@ namespace ucs4
 	{
 	public:
 		typedef std::input_iterator_tag iterator_category;
-		typedef ucs4::char_t value_type;
+		typedef char32_t value_type;
 		typedef ptrdiff_t difference_type;
-		typedef ucs4::char_t* pointer;
-		typedef ucs4::char_t& reference;
+		typedef char32_t* pointer;
+		typedef char32_t& reference;
 
 		iterator_base(const string_type& str)
 			: current_char(0)
@@ -75,7 +73,7 @@ namespace ucs4
 			return *this;
 		}
 
-		ucs4::char_t operator*() const
+		char32_t operator*() const
 		{
 			return current_char;
 		}
@@ -100,7 +98,7 @@ namespace ucs4
 			current_char = update_implementation::read(current_substr.second, string_end);
 		}
 
-		ucs4::char_t current_char;
+		char32_t current_char;
 		typename string_type::const_iterator string_end;
 		std::pair<typename string_type::const_iterator, typename string_type::const_iterator> current_substr;
 	};

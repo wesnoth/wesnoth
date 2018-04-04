@@ -198,7 +198,7 @@ void windows_tray_notification::switch_to_wesnoth_window()
 
 std::wstring windows_tray_notification::string_to_wstring(const std::string& string, std::size_t maxlength)
 {
-	utf16::string u16_string = unicode_cast<utf16::string>(string);
+	std::u16string u16_string = unicode_cast<std::u16string>(string);
 	if(u16_string.size() > maxlength) {
 		if((u16_string[maxlength-1] & 0xDC00) == 0xD800)
 			u16_string.resize(maxlength - 1);

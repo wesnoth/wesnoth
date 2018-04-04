@@ -25,6 +25,7 @@
 #include "serialization/string_utils.hpp"
 #include "color.hpp"
 #include "preferences/credentials.hpp"
+#include "serialization/utf8_exception.hpp"
 
 #include <SDL_timer.h>
 

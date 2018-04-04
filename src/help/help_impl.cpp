@@ -34,7 +34,7 @@
 #include "sdl/surface.hpp"                // for surface
 #include "serialization/string_utils.hpp"  // for split, quoted_split, etc
 #include "serialization/unicode_cast.hpp"  // for unicode_cast
-#include "serialization/unicode_types.hpp"  // for char_t, etc
+#include "serialization/utf8_exception.hpp"  // for char_t, etc
 #include "terrain/terrain.hpp"          // for terrain_type
 #include "terrain/translation.hpp"      // for operator==, ter_list, etc
 #include "terrain/type_data.hpp"        // for terrain_type_data, etc
@@ -1361,9 +1361,9 @@ std::string get_first_word(const std::string &s)
 	if (ch == utf8::iterator::end(re))
 		return re;
 
-	ucs4::char_t firstchar = *ch;
+	char32_t firstchar = *ch;
 	if (font::is_cjk_char(firstchar)) {
-		re = unicode_cast<utf8::string>(firstchar);
+		re = unicode_cast<std::string>(firstchar);
 	}
 	return re;
 }

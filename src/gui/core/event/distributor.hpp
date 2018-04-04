@@ -40,7 +40,6 @@
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/core/event/handler.hpp"
 #include "sdl/point.hpp"
-#include "serialization/unicode_types.hpp"
 #include "video.hpp"
 
 #include <string>
@@ -354,10 +353,10 @@ private:
 
 	void signal_handler_sdl_key_down(const SDL_Keycode key,
 									 const SDL_Keymod modifier,
-									 const utf8::string& unicode);
+									 const std::string& unicode);
 
-	void signal_handler_sdl_text_input(const utf8::string& unicode, int32_t start, int32_t len);
-	void signal_handler_sdl_text_editing(const utf8::string& unicode, int32_t start, int32_t len);
+	void signal_handler_sdl_text_input(const std::string& unicode, int32_t start, int32_t len);
+	void signal_handler_sdl_text_editing(const std::string& unicode, int32_t start, int32_t len);
 
 	template<typename Fcn, typename P1, typename P2, typename P3>
 	void signal_handler_keyboard_internal(event::ui_event evt, P1&& p1, P2&& p2, P3&& p3);

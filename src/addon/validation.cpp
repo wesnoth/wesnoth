@@ -60,7 +60,7 @@ namespace {
 
 	struct addon_filename_ucs4char_illegal
 	{
-		inline bool operator()(ucs4::char_t c) const
+		inline bool operator()(char32_t c) const
 		{
 			switch(c){
 			case ' ':
@@ -118,8 +118,8 @@ bool addon_filename_legal(const std::string& name)
 			return false;
 		}
 
-		const ucs4::string name_ucs4 = unicode_cast<ucs4::string>(name);
-		const std::string name_utf8 = unicode_cast<utf8::string>(name_ucs4);
+		const std::u32string name_ucs4 = unicode_cast<std::u32string>(name);
+		const std::string name_utf8 = unicode_cast<std::string>(name_ucs4);
 		if(name != name_utf8){ // name is invalid UTF-8
 			return false;
 		}

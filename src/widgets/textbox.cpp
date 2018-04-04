@@ -30,7 +30,7 @@ static lg::log_domain log_display("display");
 namespace gui {
 
 textbox::textbox(CVideo &video, int width, const std::string& text, bool editable, std::size_t max_size, int font_size, double alpha, double alpha_focus, const bool auto_join)
-	   : scrollarea(video, auto_join), max_size_(max_size), font_size_(font_size), text_(unicode_cast<ucs4::string>(text)),
+	   : scrollarea(video, auto_join), max_size_(max_size), font_size_(font_size), text_(unicode_cast<std::u32string>(text)),
 	     cursor_(text_.size()), selstart_(-1), selend_(-1),
 	     grabmouse_(false), text_pos_(0), editable_(editable),
 	     show_cursor_(true), show_cursor_at_(0), text_image_(nullptr),
@@ -67,14 +67,14 @@ void textbox::set_inner_location(const SDL_Rect& rect)
 
 const std::string textbox::text() const
 {
-	const std::string &ret = unicode_cast<utf8::string>(text_);
+	const std::string &ret = unicode_cast<std::string>(text_);
 	return ret;
 }
 
 // set_text does not respect max_size_
 void textbox::set_text(const std::string& text, const color_t& color)
 {
-	text_ = unicode_cast<ucs4::string>(text);
+	text_ = unicode_cast<std::u32string>(text);
 	cursor_ = text_.size();
 	text_pos_ = 0;
 	selstart_ = -1;
@@ -96,7 +96,7 @@ void textbox::append_text(const std::string& text, bool auto_scroll, const color
 		return;
 	}
 	const bool is_at_bottom = get_position() == get_max_position();
-	const ucs4::string& wtext = unicode_cast<ucs4::string>(text);
+	const std::u32string& wtext = unicode_cast<std::u32string>(text);
 
 	surface new_text = add_text_line(wtext, color);
 	surface new_surface = create_compatible_surface(text_image_,std::max<std::size_t>(text_image_->w,new_text->w),text_image_->h+new_text->h);
@@ -295,7 +295,7 @@ void textbox::scroll(unsigned int pos)
 	set_dirty(true);
 }
 
-surface textbox::add_text_line(const ucs4::string& text, const color_t& color)
+surface textbox::add_text_line(const std::u32string& text, const color_t& color)
 {
 	line_height_ = font::get_max_height(font_size_);
 
@@ -312,17 +312,17 @@ surface textbox::add_text_line(const ucs4::string& text, const color_t& color)
 	// some more complex scripts (that is, RTL languages). This part of the work should
 	// actually be done by the font-rendering system.
 	std::string visible_string;
-	ucs4::string wrapped_text;
+	std::u32string wrapped_text;
 
-	ucs4::string::const_iterator backup_itor = text.end();
+	std::u32string::const_iterator backup_itor = text.end();
 
-	ucs4::string::const_iterator itor = text.begin();
+	std::u32string::const_iterator itor = text.begin();
 	while(itor != text.end()) {
 		//If this is a space, save copies of the current state so we can roll back
 		if(char(*itor) == ' ') {
 			backup_itor = itor;
 		}
-		visible_string.append(unicode_cast<utf8::string>(*itor));
+		visible_string.append(unicode_cast<std::string>(*itor));
 
 		if(char(*itor) == '\n') {
 			backup_itor = text.end();
@@ -341,12 +341,12 @@ surface textbox::add_text_line(const ucs4::string& text, const color_t& color)
 					wrapped_text.erase(wrapped_text.end()-backup, wrapped_text.end());
 				}
 			} else {
-				if (visible_string == std::string("").append(unicode_cast<utf8::string>(*itor))) {
+				if (visible_string == std::string("").append(unicode_cast<std::string>(*itor))) {
 					break;	//breaks infinite loop where when running with a fake display, we word wrap a single character infinitely.
 				}
 			}
 			backup_itor = text.end();
-			wrapped_text.push_back(ucs4::char_t('\n'));
+			wrapped_text.push_back(char32_t('\n'));
 			char_x_.push_back(0);
 			char_y_.push_back(char_y_.back() + line_height_);
 			visible_string = "";
@@ -358,7 +358,7 @@ surface textbox::add_text_line(const ucs4::string& text, const color_t& color)
 		}
 	}
 
-	const std::string s = unicode_cast<utf8::string>(wrapped_text);
+	const std::string s = unicode_cast<std::string>(wrapped_text);
 	const surface res(font::get_rendered_text(s, font_size_, color));
 
 	return res;
@@ -399,7 +399,7 @@ void textbox::erase_selection()
 	if(!is_selection())
 		return;
 
-	ucs4::string::iterator itor = text_.begin() + std::min(selstart_, selend_);
+	std::u32string::iterator itor = text_.begin() + std::min(selstart_, selend_);
 	text_.erase(itor, itor + std::abs(selend_ - selstart_));
 	cursor_ = std::min(selstart_, selend_);
 	selstart_ = selend_ = -1;
@@ -452,8 +452,8 @@ void textbox::handle_event(const SDL_Event& event)
 bool textbox::handle_text_input(const SDL_Event& event)
 {
 	bool changed = false;
-	utf8::string str = event.text.text;
-	ucs4::string s = unicode_cast<ucs4::string>(str);
+	std::string str = event.text.text;
+	std::u32string s = unicode_cast<std::u32string>(str);
 
 	DBG_G << "Char: " << str << "\n";
 
@@ -567,7 +567,7 @@ bool textbox::handle_key_down(const SDL_Event &event)
 				//cut off anything after the first newline
 				str.erase(std::find_if(str.begin(),str.end(),utils::isnewline),str.end());
 
-				ucs4::string s = unicode_cast<ucs4::string>(str);
+				std::u32string s = unicode_cast<std::u32string>(str);
 
 				if(text_.size() < max_size_) {
 					if(s.size() + text_.size() > max_size_) {
@@ -588,8 +588,8 @@ bool textbox::handle_key_down(const SDL_Event &event)
 					const std::size_t beg = std::min<std::size_t>(std::size_t(selstart_),std::size_t(selend_));
 					const std::size_t end = std::max<std::size_t>(std::size_t(selstart_),std::size_t(selend_));
 
-					ucs4::string ws(text_.begin() + beg, text_.begin() + end);
-					std::string s = unicode_cast<utf8::string>(ws);
+					std::u32string ws(text_.begin() + beg, text_.begin() + end);
+					std::string s = unicode_cast<std::string>(ws);
 					desktop::clipboard::copy_to_clipboard(s, false);
 				}
 			}
