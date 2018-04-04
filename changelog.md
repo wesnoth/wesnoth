@@ -11,6 +11,7 @@
    * Removed the Font Scaling preference. It was too buggy (issues #2792 and #1624).
    * Fixed regression where unit filters in [disable] weapon specials would not
      match the attacking unit.
+   * Fixed images with no alpha channel rendering incorrectly.
 
 ## Version 1.13.13
  ### Campaigns
