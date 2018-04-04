@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include "gui/core/window_builder.hpp"
+
 #include <memory>
 #include <string>
 
@@ -86,7 +88,7 @@ public:
 
 protected:
 	/** The window, used in show. */
-	std::unique_ptr<window> window_;
+	window_ptr_t window_;
 
 private:
 	/** The id of the window to build. */
@@ -95,12 +97,10 @@ private:
 	/**
 	 * Builds the window.
 	 *
-	 * Every dialog shows it's own kind of window, this function should return
-	 * the window to show.
-	 *
-	 * @returns                   The window to show.
+	 * Every dialog shows its own kind of window. This function handles the building
+	 * of said window. @ref window_ should be non-null after this is called.
 	 */
-	window* build_window() const;
+	void build_window();
 
 	/**
 	 * Actions to be taken directly after the window is build.

@@ -41,7 +41,7 @@ void modeless_dialog::show(const bool allow_interaction, const unsigned /*auto_c
 
 	hide();
 
-	window_.reset(build_window());
+	build_window();
 
 	post_build(*window_);
 
@@ -66,9 +66,10 @@ void modeless_dialog::hide()
 		window_.reset(nullptr);	}
 }
 
-window* modeless_dialog::build_window() const
+void modeless_dialog::build_window()
 {
-	return build(window_id());
+	window_ = build_window_impl(window_id());
+	assert(window_);
 }
 
 void modeless_dialog::post_build(window& /*window*/)

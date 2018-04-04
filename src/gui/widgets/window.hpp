@@ -63,7 +63,7 @@ class distributor;
 class window : public panel, public cursor::setter
 {
 	friend class debug_layout_graph;
-	friend window* build(const builder_window::window_resolution*);
+	friend window_ptr_t build_window_impl(const builder_window::window_resolution*);
 	friend struct window_implementation;
 	friend class invalidate_layout_blocker;
 	friend class pane;

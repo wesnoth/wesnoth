@@ -46,11 +46,11 @@ namespace gui2
  * be tuned. This page will describe what can be tuned.
  *
  */
-window* build(const builder_window::window_resolution* definition)
+window_ptr_t build_window_impl(const builder_window::window_resolution* definition)
 {
 	// We set the values from the definition since we can only determine the
 	// best size (if needed) after all widgets have been placed.
-	window* win = new window(definition);
+	window_ptr_t win = std::make_unique<window>(definition);
 	assert(win);
 
 	for(const auto& lg : definition->linked_groups) {
@@ -75,15 +75,15 @@ window* build(const builder_window::window_resolution* definition)
 		win->init_grid(definition->grid);
 	}
 
-	win->add_to_keyboard_chain(win);
+	win->add_to_keyboard_chain(win.get());
 
 	return win;
 }
 
-window* build(const std::string& type)
+window_ptr_t build_window_impl(const std::string& type)
 {
 	const builder_window::window_resolution& definition = get_window_builder(type);
-	window* window = build(&definition);
+	window_ptr_t window = build_window_impl(&definition);
 	window->set_id(type);
 	return window;
 }

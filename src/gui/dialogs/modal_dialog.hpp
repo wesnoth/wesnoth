@@ -322,7 +322,7 @@ protected:
 
 protected:
 	/** The window object build for this dialog. */
-	std::unique_ptr<window> window_;
+	window_ptr_t window_;
 
 private:
 	/** Returns the window exit status, 0 means not shown. */
@@ -373,12 +373,10 @@ private:
 	/**
 	 * Builds the window.
 	 *
-	 * Every dialog shows it's own kind of window, this function should return
-	 * the window to show.
-	 *
-	 * @returns                   The window to show.
+	 * Every dialog shows its own kind of window. This function handles the building
+	 * of said window. @ref window_ should be non-null after this is called.
 	 */
-	window* build_window() const;
+	void build_window();
 
 	/**
 	 * Actions to be taken directly after the window is build.

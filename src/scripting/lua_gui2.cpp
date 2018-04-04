@@ -79,11 +79,11 @@ namespace {
 		lua_State* L;
 		scoped_dialog* prev;
 		static scoped_dialog* current;
-		std::unique_ptr<gui2::window> window;
+		gui2::window_ptr_t window;
 		typedef std::map<gui2::widget*, int> callback_map;
 		callback_map callbacks;
 
-		scoped_dialog(lua_State* l, gui2::window* w);
+		scoped_dialog(lua_State* l, gui2::window_ptr_t w);
 		~scoped_dialog();
 	private:
 		scoped_dialog(const scoped_dialog&) = delete;
@@ -91,8 +91,8 @@ namespace {
 
 	scoped_dialog* scoped_dialog::current = nullptr;
 
-	scoped_dialog::scoped_dialog(lua_State* l, gui2::window* w)
-		: L(l), prev(current), window(w), callbacks()
+	scoped_dialog::scoped_dialog(lua_State* l, gui2::window_ptr_t w)
+		: L(l), prev(current), window(std::move(w)), callbacks()
 	{
 		lua_pushstring(L, dlgclbkKey);
 		lua_createtable(L, 1, 0);
@@ -245,7 +245,7 @@ int show_dialog(lua_State* L)
 	config def_cfg = luaW_checkconfig(L, 1);
 
 	gui2::builder_window::window_resolution def(def_cfg);
-	scoped_dialog w(L, gui2::build(&def));
+	scoped_dialog w(L, gui2::build_window_impl(&def));
 
 	if(!lua_isnoneornil(L, 2)) {
 		lua_pushvalue(L, 2);

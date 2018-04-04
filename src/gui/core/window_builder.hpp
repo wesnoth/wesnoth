@@ -14,27 +14,19 @@
 
 #pragma once
 
+#include "color.hpp"
 #include "gui/auxiliary/typed_formula.hpp"
 #include "gui/core/linked_group_definition.hpp"
 #include "gui/widgets/grid.hpp"
-#include "color.hpp"
-
 #include "utils/functional.hpp"
+
+#include <memory>
 
 class config;
 
 namespace gui2
 {
-
 class window;
-
-/**
- * Builds a window.
- *
- * @param type                    The type id string of the window, this window
- *                                must be registered at startup.
- */
-window* build(const std::string& type);
 
 /** Contains the info needed to instantiate a widget. */
 struct builder_widget
@@ -211,9 +203,19 @@ private:
 	std::string description_;
 };
 
+using window_ptr_t = std::unique_ptr<window>;
+
 /**
  * Builds a window.
  */
-window* build(const builder_window::window_resolution* res);
+window_ptr_t build_window_impl(const builder_window::window_resolution* res);
+
+/**
+ * Builds a window.
+ *
+ * @param type                    The type id string of the window, this window
+ *                                must be registered at startup.
+ */
+window_ptr_t build_window_impl(const std::string& type);
 
 } // namespace gui2
