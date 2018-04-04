@@ -58,6 +58,7 @@
      associated options as Wesnoth now uses SDL_image to write PNG files.
    * Fixed regression where unit filters in [disable] weapon specials would not
      match the attacking unit.
+   * Fixed images with no alpha channel rendering incorrectly.
 
 ## Version 1.13.12
  ### Security fixes
