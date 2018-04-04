@@ -40,9 +40,11 @@ version_info sdl_get_version()
 
 bool is_neutral(const surface& surf)
 {
-	return (surf->format->BytesPerPixel == 4 &&
-			surf->format->Rmask == SDL_RED_MASK &&
-			(surf->format->Amask | SDL_ALPHA_MASK) == SDL_ALPHA_MASK);
+	return
+		SDL_ISPIXELFORMAT_INDEXED(surf->format->format) == SDL_FALSE &&
+		surf->format->BytesPerPixel == 4 &&
+		surf->format->Rmask == SDL_RED_MASK &&
+		(surf->format->Amask | SDL_ALPHA_MASK) == SDL_ALPHA_MASK;
 }
 
 static SDL_PixelFormat& get_neutral_pixel_format()
