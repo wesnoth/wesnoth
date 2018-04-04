@@ -14,20 +14,9 @@
 
 #pragma once
 
-#include <string>
-#include <vector>
 #include <exception>
-#include <cstdint>
-
-namespace ucs4 {
-	typedef uint32_t char_t;
-	typedef std::vector<char_t> string;
-}
 
 namespace utf8 {
-	typedef char char_t;
-	typedef std::string string;
-
 	/**
 	 * Thrown by operations encountering invalid UTF-8 data.
 	 *
@@ -36,15 +25,4 @@ namespace utf8 {
 	 * @todo FIXME: This clearly needs a better name for that reason.
 	 */
 	class invalid_utf8_exception : public std::exception {};
-}
-
-/**
- * For Win32 API.
- *
- * On windows, wchar_t is defined as uint16_t.
- * Wide strings are expected to be UTF-16.
- */
-namespace utf16 {
-	typedef wchar_t char_t;
-	typedef std::vector<char_t> string;
 }

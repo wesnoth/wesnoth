@@ -146,7 +146,7 @@ void text_box_base::set_cursor(const std::size_t offset, const bool select)
 	}
 }
 
-void text_box_base::insert_char(const utf8::string& unicode)
+void text_box_base::insert_char(const std::string& unicode)
 {
 	delete_selection();
 
@@ -188,7 +188,7 @@ void text_box_base::copy_selection(const bool mouse)
 	}
 
 	unsigned end, start = selection_start_;
-	const utf8::string txt = text_.text();
+	const std::string txt = text_.text();
 
 	if(selection_length_ > 0) {
 		end = utf8::index(txt, start + selection_length_);
@@ -411,7 +411,7 @@ void text_box_base::handle_key_delete(SDL_Keymod /*modifier*/, bool& handled)
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
-void text_box_base::handle_commit(bool& handled, const utf8::string& unicode)
+void text_box_base::handle_commit(bool& handled, const std::string& unicode)
 {
 	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
@@ -431,7 +431,7 @@ void text_box_base::handle_commit(bool& handled, const utf8::string& unicode)
 	}
 }
 
-void text_box_base::handle_editing(bool& handled, const utf8::string& unicode, int32_t start)
+void text_box_base::handle_editing(bool& handled, const std::string& unicode, int32_t start)
 {
 	if(unicode.size() > 1 || unicode[0] != 0) {
 		handled = true;

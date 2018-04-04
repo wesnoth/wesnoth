@@ -124,7 +124,7 @@ bool dispatcher::fire(const ui_event event,
 		widget& target,
 		const SDL_Keycode key,
 		const SDL_Keymod modifier,
-		const utf8::string& unicode)
+		const std::string& unicode)
 {
 	assert(is_keyboard_event(event));
 	return fire_event<signal_keyboard_function>(event, this, &target, key, modifier, unicode);

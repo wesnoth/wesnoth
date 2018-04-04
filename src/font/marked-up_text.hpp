@@ -16,15 +16,13 @@
 
 #pragma once
 
-#include "serialization/unicode_types.hpp"
-
 namespace font {
 /**
- * Determine if a ucs4::char_t is a CJK character
+ * Determine if a char32_t is a CJK character
  *
  * @retval true                   Input-char is a CJK char
  * @retval false                  Input-char is a not CJK char.
  */
-bool is_cjk_char(const ucs4::char_t ch);
+bool is_cjk_char(const char32_t ch);
 
 } // end namespace font

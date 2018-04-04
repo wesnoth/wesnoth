@@ -28,6 +28,7 @@
 #include "random.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/utf8_exception.hpp"
 
 #include <stdexcept>
 
