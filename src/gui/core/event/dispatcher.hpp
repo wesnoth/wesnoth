@@ -16,7 +16,6 @@
 
 #include "gui/core/event/handler.hpp"
 #include "hotkey/hotkey_command.hpp"
-#include "serialization/unicode_types.hpp"
 #include "utils/functional.hpp"
 
 #include <SDL_events.h>
@@ -199,7 +198,7 @@ typedef std::function<void(widget& dispatcher,
 							 bool& halt,
 							 const SDL_Keycode key,
 							 const SDL_Keymod modifier,
-							 const utf8::string& unicode)> signal_keyboard_function;
+							 const std::string& unicode)> signal_keyboard_function;
 
 /**
  * Callback function signature.
@@ -347,7 +346,7 @@ public:
 			  widget& target,
 			  const SDL_Keycode key,
 			  const SDL_Keymod modifier,
-			  const utf8::string& unicode);
+			  const std::string& unicode);
 
 	/**
 	 * Fires an event which takes touch parameters.

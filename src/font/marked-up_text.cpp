@@ -22,7 +22,7 @@
 
 namespace font
 {
-bool is_cjk_char(const ucs4::char_t ch)
+bool is_cjk_char(const char32_t ch)
 {
 	/**
 	 * You can check these range at http://unicode.org/charts/
@@ -96,7 +96,7 @@ namespace {
  *   CJK 标点符号 (CJK punctuations)
  *   http://www.unicode.org/charts/PDF/U3000.pdf
  */
-inline bool no_break_after(const ucs4::char_t ch)
+inline bool no_break_after(const char32_t ch)
 {
 	return
 		/**
@@ -117,7 +117,7 @@ inline bool no_break_after(const ucs4::char_t ch)
 		ch == 0x3016 || ch == 0x301a || ch == 0x301d;
 }
 
-inline bool no_break_before(const ucs4::char_t ch)
+inline bool no_break_before(const char32_t ch)
 {
 	return
 		/**
@@ -154,7 +154,7 @@ inline bool no_break_before(const ucs4::char_t ch)
 		ch == 0x301b || ch == 0x301e;
 }
 
-inline bool break_before(const ucs4::char_t ch)
+inline bool break_before(const char32_t ch)
 {
 	if(no_break_before(ch))
 		return false;
@@ -162,7 +162,7 @@ inline bool break_before(const ucs4::char_t ch)
 	return is_cjk_char(ch);
 }
 
-inline bool break_after(const ucs4::char_t ch)
+inline bool break_after(const char32_t ch)
 {
 	if(no_break_after(ch))
 		return false;

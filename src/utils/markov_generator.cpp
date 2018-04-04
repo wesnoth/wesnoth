@@ -22,12 +22,12 @@
 #include "serialization/unicode_cast.hpp"
 #include "random.hpp"
 
-static void add_prefixes(const ucs4::string& str, std::size_t length, markov_prefix_map& res)
+static void add_prefixes(const std::u32string& str, std::size_t length, markov_prefix_map& res)
 {
 	for(std::size_t i = 0; i <= str.size(); ++i) {
 		const std::size_t start = i > length ? i - length : 0;
-		const ucs4::string key(str.begin() + start, str.begin() + i);
-		const ucs4::char_t c = i != str.size() ? str[i] : 0;
+		const std::u32string key(str.begin() + start, str.begin() + i);
+		const char32_t c = i != str.size() ? str[i] : 0;
 		res[key].push_back(c);
 	}
 }
@@ -37,20 +37,20 @@ static markov_prefix_map markov_prefixes(const std::vector<std::string>& items, 
 	markov_prefix_map res;
 
 	for(std::vector<std::string>::const_iterator i = items.begin(); i != items.end(); ++i) {
-		add_prefixes(unicode_cast<ucs4::string>(*i),length,res);
+		add_prefixes(unicode_cast<std::u32string>(*i),length,res);
 	}
 
 	return res;
 }
 
-static ucs4::string markov_generate_name(const markov_prefix_map& prefixes,
+static std::u32string markov_generate_name(const markov_prefix_map& prefixes,
 	std::size_t chain_size, std::size_t max_len)
 {
 	if(prefixes.empty() || chain_size == 0) {
-		return ucs4::string();
+		return std::u32string();
 	}
 
-	ucs4::string prefix, res;
+	std::u32string prefix, res;
 
 	// Since this function is called in the name description in a MP game it
 	// uses the local locale. The locale between players can be different and
@@ -75,7 +75,7 @@ static ucs4::string markov_generate_name(const markov_prefix_map& prefixes,
 			return res;
 		}
 
-		const ucs4::char_t c = i->second[random[j++]%i->second.size()];
+		const char32_t c = i->second[random[j++]%i->second.size()];
 		if(c == 0) {
 			return res;
 		}
@@ -98,16 +98,16 @@ static ucs4::string markov_generate_name(const markov_prefix_map& prefixes,
 	// name has end-of-string as a possible next character in the
 	// markov prefix map. If no valid ending is found, use the
 	// originally generated name.
-	ucs4::string originalRes = res;
+	std::u32string originalRes = res;
 	while(!res.empty()) {
 		const int prefixLen = chain_size < res.size() ? chain_size : res.size();
-		prefix = ucs4::string(res.end() - prefixLen, res.end());
+		prefix = std::u32string(res.end() - prefixLen, res.end());
 
 		const markov_prefix_map::const_iterator i = prefixes.find(prefix);
 		if (i == prefixes.end() || i->second.empty()) {
 			return res;
 		}
-		if (std::find(i->second.begin(), i->second.end(), static_cast<ucs4::char_t>(0))
+		if (std::find(i->second.begin(), i->second.end(), static_cast<char32_t>(0))
 				!= i->second.end()) {
 			// This ending is valid.
 			return res;
@@ -132,6 +132,6 @@ markov_generator::markov_generator(const std::vector<std::string>& items, std::s
 
 std::string markov_generator::generate() const
 {
-	ucs4::string name = markov_generate_name(prefixes_, chain_size_, max_len_);
-	return unicode_cast<utf8::string>(name);
+	std::u32string name = markov_generate_name(prefixes_, chain_size_, max_len_);
+	return unicode_cast<std::string>(name);
 }

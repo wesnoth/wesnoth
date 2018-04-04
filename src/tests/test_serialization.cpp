@@ -41,7 +41,7 @@ BOOST_AUTO_TEST_CASE( utils_join_test )
 
 BOOST_AUTO_TEST_CASE( utils_unicode_test )
 {
-	utf8::string unicode = "ünicod€ check";
+	std::string unicode = "ünicod€ check";
 	BOOST_CHECK( utf8::size(unicode) == 13 );
 
 	int euro = utf8::index(unicode,6);
@@ -49,23 +49,23 @@ BOOST_AUTO_TEST_CASE( utils_unicode_test )
 
 	BOOST_CHECK( utf8::truncate(unicode,3) == "üni");
 
-	utf8::string apple_u8("apple");
-	ucs4::string apple_u4 = unicode_cast<ucs4::string>(apple_u8);
-	utf16::string apple_u16 = unicode_cast<utf16::string>(apple_u4);
+	std::string apple_u8("apple");
+	std::u32string apple_u4 = unicode_cast<std::u32string>(apple_u8);
+	std::u16string apple_u16 = unicode_cast<std::u16string>(apple_u4);
 
 	BOOST_CHECK( apple_u4.size() == 5 );
-	BOOST_CHECK_EQUAL( apple_u8, unicode_cast<utf8::string>(apple_u4) );
-	BOOST_CHECK_EQUAL( apple_u8, unicode_cast<utf8::string>(apple_u16) );
-	BOOST_CHECK( apple_u4 == unicode_cast<ucs4::string>(apple_u16) );
-	BOOST_CHECK( apple_u16 == unicode_cast<utf16::string>(apple_u4) );
+	BOOST_CHECK_EQUAL( apple_u8, unicode_cast<std::string>(apple_u4) );
+	BOOST_CHECK_EQUAL( apple_u8, unicode_cast<std::string>(apple_u16) );
+	BOOST_CHECK( apple_u4 == unicode_cast<std::u32string>(apple_u16) );
+	BOOST_CHECK( apple_u16 == unicode_cast<std::u16string>(apple_u4) );
 	BOOST_CHECK_EQUAL( apple_u8.size(), apple_u16.size() );
 
-	ucs4::string water_u4;
+	std::u32string water_u4;
 	water_u4.push_back(0x6C34);
-	utf8::string water_u8 = unicode_cast<utf8::string>(water_u4);
-	utf16::string water_u16 = unicode_cast<utf16::string>(water_u4);
+	std::string water_u8 = unicode_cast<std::string>(water_u4);
+	std::u16string water_u16 = unicode_cast<std::u16string>(water_u4);
 
-	BOOST_CHECK_EQUAL(water_u4[0], static_cast<ucs4::char_t>(water_u16[0]));
+	BOOST_CHECK_EQUAL(water_u4[0], static_cast<char32_t>(water_u16[0]));
 #if defined(_WIN32) || defined(_WIN64)
 	// Windows complains it can't be represented in the currentl code-page.
 	// So instead, check directly for its UTF-8 representation.
@@ -76,21 +76,21 @@ BOOST_AUTO_TEST_CASE( utils_unicode_test )
 
 #if defined(_WIN32) || defined(_WIN64)
 	// Same as above.
-	utf8::string nonbmp_u8("\xF0\x90\x80\x80");
+	std::string nonbmp_u8("\xF0\x90\x80\x80");
 #else
-	utf8::string nonbmp_u8("\U00010000");
+	std::string nonbmp_u8("\U00010000");
 #endif
-	ucs4::string nonbmp_u4 = unicode_cast<ucs4::string>(nonbmp_u8);
-	utf16::string nonbmp_u16 = unicode_cast<utf16::string>(nonbmp_u4);
+	std::u32string nonbmp_u4 = unicode_cast<std::u32string>(nonbmp_u8);
+	std::u16string nonbmp_u16 = unicode_cast<std::u16string>(nonbmp_u4);
 
 	BOOST_CHECK_EQUAL(nonbmp_u8.size(), 4u);
 	BOOST_CHECK_EQUAL(nonbmp_u4[0], 0x10000u);
 	BOOST_CHECK_EQUAL(nonbmp_u16[0], 0xD800);
 	BOOST_CHECK_EQUAL(nonbmp_u16[1], 0xDC00);
-	BOOST_CHECK_EQUAL(nonbmp_u8, unicode_cast<utf8::string>(nonbmp_u4));
-	BOOST_CHECK_EQUAL(nonbmp_u8, unicode_cast<utf8::string>(nonbmp_u16));
-	BOOST_CHECK(nonbmp_u16 == unicode_cast<utf16::string>(nonbmp_u4));
-	BOOST_CHECK(nonbmp_u4 == unicode_cast<ucs4::string>(nonbmp_u16));
+	BOOST_CHECK_EQUAL(nonbmp_u8, unicode_cast<std::string>(nonbmp_u4));
+	BOOST_CHECK_EQUAL(nonbmp_u8, unicode_cast<std::string>(nonbmp_u16));
+	BOOST_CHECK(nonbmp_u16 == unicode_cast<std::u16string>(nonbmp_u4));
+	BOOST_CHECK(nonbmp_u4 == unicode_cast<std::u32string>(nonbmp_u16));
 }
 
 BOOST_AUTO_TEST_CASE( test_lowercase )

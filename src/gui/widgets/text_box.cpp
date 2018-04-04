@@ -241,7 +241,7 @@ void text_box::delete_selection()
 		start -= len;
 	}
 
-	utf8::string tmp = get_value();
+	std::string tmp = get_value();
 	set_value(utf8::erase(tmp, start, len));
 	set_cursor(start, false);
 }

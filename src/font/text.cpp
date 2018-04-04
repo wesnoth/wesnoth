@@ -139,21 +139,21 @@ unsigned pango_text::insert_text(const unsigned offset, const std::string& text)
 	if (length_ + len > maximum_length_) {
 		len = maximum_length_ - length_;
 	}
-	const utf8::string insert = text.substr(0, utf8::index(text, len));
-	utf8::string tmp = text_;
+	const std::string insert = text.substr(0, utf8::index(text, len));
+	std::string tmp = text_;
 	this->set_text(utf8::insert(tmp, offset, insert), false);
 	// report back how many characters were actually inserted (e.g. to move the cursor selection)
 	return len;
 }
 
-bool pango_text::insert_unicode(const unsigned offset, ucs4::char_t unicode)
+bool pango_text::insert_unicode(const unsigned offset, char32_t unicode)
 {
-	return this->insert_unicode(offset, ucs4::string(1, unicode)) == 1;
+	return this->insert_unicode(offset, std::u32string(1, unicode)) == 1;
 }
 
-unsigned pango_text::insert_unicode(const unsigned offset, const ucs4::string& unicode)
+unsigned pango_text::insert_unicode(const unsigned offset, const std::u32string& unicode)
 {
-	const utf8::string insert = unicode_cast<utf8::string>(unicode);
+	const std::string insert = unicode_cast<std::string>(unicode);
 	return this->insert_text(offset, insert);
 }
 
@@ -296,8 +296,8 @@ bool pango_text::set_text(const std::string& text, const bool markedup)
 			layout_.reset(pango_layout_new(context_.get()));
 		}
 
-		const ucs4::string wide = unicode_cast<ucs4::string>(text);
-		const std::string narrow = unicode_cast<utf8::string>(wide);
+		const std::u32string wide = unicode_cast<std::u32string>(text);
+		const std::string narrow = unicode_cast<std::string>(wide);
 		if(text != narrow) {
 			ERR_GUI_L << "pango_text::" << __func__
 					<< " text '" << text
@@ -446,7 +446,7 @@ pango_text& pango_text::set_maximum_length(const std::size_t maximum_length)
 	if(maximum_length != maximum_length_) {
 		maximum_length_ = maximum_length;
 		if(length_ > maximum_length_) {
-			utf8::string tmp = text_;
+			std::string tmp = text_;
 			this->set_text(utf8::truncate(tmp, maximum_length_), false);
 		}
 	}

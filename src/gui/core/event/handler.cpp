@@ -240,7 +240,7 @@ private:
 	 */
 	void key_down(const SDL_Keycode key,
 				  const SDL_Keymod modifier,
-				  const utf8::string& unicode);
+				  const std::string& unicode);
 
 	/**
 	 * Fires a text input event.
@@ -696,7 +696,7 @@ bool sdl_event_handler::hotkey_pressed(const hotkey::hotkey_ptr key)
 
 void sdl_event_handler::key_down(const SDL_Keycode key,
 						const SDL_Keymod modifier,
-						const utf8::string& unicode)
+						const std::string& unicode)
 {
 	DBG_GUI_E << "Firing: " << SDL_KEY_DOWN << ".\n";
 

@@ -90,11 +90,11 @@ typename ucs4_convert_impl::enableif<TD, typename TS::value_type>::type unicode_
  * @return An instance of TD.
  */
 template<typename TD>
-TD unicode_cast(ucs4::char_t onechar)
+TD unicode_cast(char32_t onechar)
 {
 	using namespace ucs4_convert_impl;
 	typedef typename convert_impl<typename TD::value_type>::type impl_writer;
-	typedef convert_impl<ucs4::char_t>::type impl_reader;
+	typedef convert_impl<char32_t>::type impl_reader;
 	typedef typename std::back_insert_iterator<TD> output_itor;
 
 	TD res;

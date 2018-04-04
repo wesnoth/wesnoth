@@ -185,7 +185,7 @@ protected:
 	 *
 	 * @param unicode             The unicode value of the character to insert.
 	 */
-	virtual void insert_char(const utf8::string& unicode);
+	virtual void insert_char(const std::string& unicode);
 
 	/**
 	 * Deletes the character.
@@ -481,9 +481,9 @@ private:
 
 protected:
 	virtual void handle_commit(bool& handled,
-									const utf8::string& unicode);
+									const std::string& unicode);
 	virtual void handle_editing(bool& handled,
-								const utf8::string& unicode,
+								const std::string& unicode,
 								int32_t start);
 
 private:
@@ -510,7 +510,7 @@ private:
 
 	void signal_handler_sdl_text_input(const event::ui_event event,
 									   bool& handled,
-									   const utf8::string& unicode,
+									   const std::string& unicode,
 									   int32_t start,
 									   int32_t len);
 

@@ -49,7 +49,7 @@ public:
 
 
 protected:
-	void insert_char(const utf8::string& unicode) override;
+	void insert_char(const std::string& unicode) override;
 	void paste_selection(const bool mouse) override;
 	void delete_selection() override;
 

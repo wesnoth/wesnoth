@@ -708,17 +708,17 @@ void distributor::signal_handler_keyboard_internal(event::ui_event evt, P1&& p1,
 	}
 }
 
-void distributor::signal_handler_sdl_key_down(const SDL_Keycode key, const SDL_Keymod modifier, const utf8::string& unicode)
+void distributor::signal_handler_sdl_key_down(const SDL_Keycode key, const SDL_Keymod modifier, const std::string& unicode)
 {
 	signal_handler_keyboard_internal<signal_keyboard_function>(event::SDL_KEY_DOWN, key, modifier, unicode);
 }
 
-void distributor::signal_handler_sdl_text_input(const utf8::string& unicode, int32_t start, int32_t end)
+void distributor::signal_handler_sdl_text_input(const std::string& unicode, int32_t start, int32_t end)
 {
 	signal_handler_keyboard_internal<signal_text_input_function>(event::SDL_TEXT_INPUT, unicode, start, end);
 }
 
-void distributor::signal_handler_sdl_text_editing(const utf8::string& unicode, int32_t start, int32_t end)
+void distributor::signal_handler_sdl_text_editing(const std::string& unicode, int32_t start, int32_t end)
 {
 	signal_handler_keyboard_internal<signal_text_input_function>(event::SDL_TEXT_EDITING, unicode, start, end);
 }

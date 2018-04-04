@@ -41,6 +41,7 @@
 #include "saved_game.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
+#include "serialization/utf8_exception.hpp"
 #include "statistics.hpp"
 #include "version.hpp"
 #include "video.hpp"
