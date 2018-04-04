@@ -15,11 +15,11 @@
 
 #include "config.hpp"
 #include "formula/string_utils.hpp"
-#include "game_config.hpp"
 #include "game_config_manager.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "saved_game.hpp"
+#include "version.hpp"
 #include "wesnothd_connection_error.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -123,7 +123,7 @@ config initial_level_config(saved_game& state)
 	}
 
 	// This will force connecting clients to be using the same version number as us.
-	level["version"] = game_config::version;
+	level["version"] = game_config::wesnoth_version.str();
 	return level;
 }
 

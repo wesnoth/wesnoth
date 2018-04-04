@@ -51,6 +51,7 @@ namespace wb {
 #include "animated.hpp"
 #include "display_context.hpp"
 #include "font/standard_colors.hpp"
+#include "game_config.hpp"
 #include "image.hpp" //only needed for enums (!)
 #include "key.hpp"
 #include "time_of_day.hpp"

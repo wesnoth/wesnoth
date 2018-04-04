@@ -13,14 +13,36 @@
 */
 
 #include "version.hpp"
+
 #include "lexical_cast.hpp"
 #include "serialization/string_utils.hpp"
+#include "wesconfig.h"
+
+#ifdef LOAD_REVISION
+#include "revision.h"
+#endif
 
 #include <cassert>
 #include <functional>
 #include <locale>
 
 #include <boost/algorithm/string.hpp>
+
+namespace game_config
+{
+const version_info wesnoth_version(VERSION);
+const version_info min_savegame_version(MIN_SAVEGAME_VERSION);
+const version_info test_version("test");
+
+#ifdef REVISION
+const std::string revision = VERSION " (" REVISION ")";
+#elif defined(VCS_SHORT_HASH) && defined(VCS_WC_MODIFIED)
+const std::string revision = std::string(VERSION) + " (" + VCS_SHORT_HASH + (VCS_WC_MODIFIED ? "-Modified" : "-Clean") + ")";
+#else
+const std::string revision = VERSION;
+#endif
+
+} // namespace game_config
 
 version_info::version_info()
 	: nums_(3,0), special_(""), special_separator_('\0')

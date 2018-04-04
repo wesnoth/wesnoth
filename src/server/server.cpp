@@ -445,7 +445,7 @@ void server::load_config() {
 	if (versions.empty() == false) {
 		accepted_versions_ = utils::split(versions);
 	} else {
-		accepted_versions_.push_back(game_config::version);
+		accepted_versions_.push_back(game_config::wesnoth_version.str());
 		accepted_versions_.push_back("test");
 	}
 
@@ -2801,7 +2801,7 @@ int main(int argc, char** argv) {
 					  << "  -V, --version              Returns the server version.\n";
 			return 0;
 		} else if (val == "--version" || val == "-V") {
-			std::cout << "Battle for Wesnoth server " << game_config::version
+			std::cout << "Battle for Wesnoth server " << game_config::wesnoth_version.str()
 					  << "\n";
 			return 0;
 		} else if (val == "--daemon" || val == "-d") {

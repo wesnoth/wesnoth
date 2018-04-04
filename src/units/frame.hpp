@@ -21,6 +21,7 @@
 
 #include "units/frame_private.hpp"
 
+#include "color.hpp"
 #include "halo.hpp"
 #include "image.hpp"
 

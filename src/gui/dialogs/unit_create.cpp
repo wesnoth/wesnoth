@@ -33,7 +33,6 @@
 #include "gui/widgets/unit_preview_pane.hpp"
 #include "gui/widgets/window.hpp"
 #include "help/help.hpp"
-#include "game_config.hpp"
 #include "gettext.hpp"
 #include "play_controller.hpp"
 #include "units/types.hpp"

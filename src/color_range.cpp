@@ -20,7 +20,6 @@
 
 #include "color_range.hpp"
 
-#include "game_config.hpp"
 #include "map/map.hpp"
 
 #include <iomanip>

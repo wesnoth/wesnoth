@@ -204,3 +204,13 @@ enum VERSION_COMP_OP {
 
 VERSION_COMP_OP parse_version_op(const std::string& op_str);
 bool do_version_check(const version_info& a, VERSION_COMP_OP op, const version_info& b);
+
+namespace game_config
+{
+extern const version_info wesnoth_version;
+extern const version_info min_savegame_version;
+extern const version_info test_version;
+
+extern const std::string revision;
+
+} // namespace game_config

@@ -16,7 +16,6 @@
 
 #include "map/location.hpp"
 #include "terrain/translation.hpp"
-#include "game_config.hpp"
 
 #include <SDL.h>
 #include <unordered_map>

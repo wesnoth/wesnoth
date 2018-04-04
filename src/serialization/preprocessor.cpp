@@ -23,7 +23,6 @@
 #include "buffered_istream.hpp"
 #include "config.hpp"
 #include "filesystem.hpp"
-#include "game_config.hpp"
 #include "log.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"

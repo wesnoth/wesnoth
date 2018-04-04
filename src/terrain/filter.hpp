@@ -14,7 +14,6 @@
 
 #pragma once
 
-#include "game_config.hpp"
 #include "pathutils.hpp"
 #include "terrain/translation.hpp"
 #include "variable.hpp"

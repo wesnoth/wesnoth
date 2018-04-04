@@ -15,6 +15,7 @@
 #pragma once
 
 #include "animated.hpp"
+#include "color.hpp"
 #include "config.hpp"
 #include "halo.hpp"
 #include "units/frame.hpp"

@@ -25,6 +25,7 @@
 #include "team.hpp"
 #include "units/unit.hpp"
 #include "tod_manager.hpp"
+#include "version.hpp"
 
 static lg::log_domain log_ai_testing("ai/testing");
 #define DBG_AI_TESTING LOG_STREAM(debug, log_ai_testing)
