@@ -22,17 +22,16 @@
 
 #include "buffered_istream.hpp"
 #include "config.hpp"
+#include "deprecation.hpp"
 #include "filesystem.hpp"
 #include "log.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
-#include "version.hpp"
 #include "wesconfig.h"
-#include "deprecation.hpp"
 
-#include <stdexcept>
 #include <deque>
+#include <stdexcept>
 
 static lg::log_domain log_preprocessor("preprocessor");
 #define ERR_PREPROC LOG_STREAM(err, log_preprocessor)

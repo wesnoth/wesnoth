@@ -17,18 +17,20 @@
 
 #pragma once
 
+#include "exceptions.hpp"
 #include "filesystem.hpp"
+#include "version.hpp"
+
+#include <boost/optional.hpp>
+
 #include <iosfwd>
 #include <map>
 #include <vector>
-#include <boost/optional.hpp>
-
-#include "exceptions.hpp"
-#include "version.hpp"
-#include "deprecation.hpp"
 
 class config_writer;
 class config;
+
+enum class DEP_LEVEL;
 
 typedef std::map<std::string, struct preproc_define> preproc_map;
 
