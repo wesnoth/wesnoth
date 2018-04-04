@@ -17,7 +17,6 @@
 #include "addon/manager.hpp"
 #include "config.hpp"
 #include "font/pango/escape.hpp"
-#include "game_config.hpp"
 #include "gettext.hpp"
 #include "image.hpp"
 #include "log.hpp"

@@ -119,7 +119,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 
 			utils::string_map i18n_symbols;
 			i18n_symbols["required_version"] = version;
-			i18n_symbols["your_version"] = game_config::version;
+			i18n_symbols["your_version"] = game_config::wesnoth_version.str();
 
 			const std::string errorstring = VGETTEXT("The server accepts versions '$required_version', but you are using version '$your_version'", i18n_symbols);
 			throw wesnothd_error(errorstring);
@@ -155,7 +155,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 		if(data.has_child("version")) {
 			config cfg;
 			config res;
-			cfg["version"] = game_config::version;
+			cfg["version"] = game_config::wesnoth_version.str();
 			res.add_child("version", std::move(cfg));
 			sock->send_data(res);
 		}

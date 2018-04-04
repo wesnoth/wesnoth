@@ -21,6 +21,7 @@
 #include "filesystem.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
+#include "version.hpp"
 
 #include <algorithm>
 

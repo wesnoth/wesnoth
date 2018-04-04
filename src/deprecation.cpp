@@ -14,7 +14,6 @@
 #include "deprecation.hpp"
 
 #include "formula/string_utils.hpp"
-#include "game_config.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "preferences/general.hpp"

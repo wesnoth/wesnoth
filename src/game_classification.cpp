@@ -15,9 +15,9 @@
 #include "game_classification.hpp"
 
 #include "config.hpp"
-#include "game_config.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+#include "version.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -96,7 +96,7 @@ config game_classification::to_config() const
 {
 	config cfg;
 	cfg["label"] = label;
-	cfg["version"] = game_config::version;
+	cfg["version"] = game_config::wesnoth_version.str();
 	cfg["campaign_type"] = campaign_type.to_string();
 	cfg["campaign_define"] = campaign_define;
 	cfg["campaign_extra_defines"] = utils::join(campaign_xtra_defines);

@@ -16,7 +16,6 @@
 #include "game_end_exceptions.hpp"
 
 #include "config.hpp"
-#include "game_config.hpp"
 
 transient_end_level::transient_end_level()
 	: carryover_report(true)

@@ -23,9 +23,6 @@
 #include "version.hpp"
 #include "wesconfig.h"
 #include "serialization/string_utils.hpp"
-#ifdef LOAD_REVISION
-#include "revision.h"
-#endif
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -33,24 +30,9 @@ static lg::log_domain log_engine("engine");
 
 namespace game_config
 {
-
 //
-// Path and revision info
+// Path info
 //
-const std::string version = VERSION;
-
-const version_info wesnoth_version(VERSION);
-const version_info min_savegame_version(MIN_SAVEGAME_VERSION);
-const version_info test_version("test");
-
-#ifdef REVISION
-const std::string revision = VERSION " (" REVISION ")";
-#elif defined(VCS_SHORT_HASH) && defined(VCS_WC_MODIFIED)
-const std::string revision = std::string(VERSION) + " (" + VCS_SHORT_HASH + (VCS_WC_MODIFIED ? "-Modified" : "-Clean") + ")";
-#else
-const std::string revision = VERSION;
-#endif
-
 #ifdef WESNOTH_PATH
 std::string path = WESNOTH_PATH;
 #else

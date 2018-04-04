@@ -217,7 +217,7 @@ bool loadgame::check_version_compatibility()
 
 bool loadgame::check_version_compatibility(const version_info & save_version)
 {
-	if (save_version == game_config::version) {
+	if (save_version == game_config::wesnoth_version) {
 		return true;
 	}
 
@@ -504,7 +504,7 @@ void savegame::write_game(config_writer &out)
 {
 	log_scope("write_game");
 
-	out.write_key_val("version", game_config::version);
+	out.write_key_val("version", game_config::wesnoth_version.str());
 
 	gamestate_.write_general_info(out);
 	out.open_child("statistics");

@@ -15,7 +15,6 @@
 #pragma once
 
 class config;
-class version_info;
 class color_range;
 
 #include "color.hpp"
@@ -38,8 +37,6 @@ namespace game_config
 	extern unsigned int tile_size;
 	extern unsigned lobby_network_timer;
 	extern unsigned lobby_refresh;
-	extern const std::string version;
-	extern const std::string revision;
 	extern const std::string default_title_string;
 	extern std::string default_terrain;
 
@@ -188,10 +185,6 @@ namespace game_config
 
 	color_t red_to_green(int val, bool for_text = true);
 	color_t blue_to_white(int val, bool for_text = true);
-
-	extern const version_info wesnoth_version;
-	extern const version_info min_savegame_version;
-	extern const version_info test_version;
 
 	std::string get_default_title_string();
 }

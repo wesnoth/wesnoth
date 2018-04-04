@@ -287,7 +287,7 @@ static int intf_deprecated_message(lua_State* L) {
 	const DEP_LEVEL level = DEP_LEVEL(luaL_checkinteger(L, 2));
 	const std::string ver_str = lua_isnoneornil(L, 3) ? "" : luaL_checkstring(L, 3);
 	const std::string detail = luaW_checktstring(L, 4);
-	const version_info ver = ver_str.empty() ? game_config::version : ver_str;
+	const version_info ver = ver_str.empty() ? game_config::wesnoth_version.str() : ver_str;
 	const std::string msg = deprecated_message(elem, level, ver, detail);
 	if(level < DEP_LEVEL::INDEFINITE || level >= DEP_LEVEL::REMOVED) {
 		// Invalid deprecation level or level 4 deprecation should raise an interpreter error
@@ -834,7 +834,7 @@ int lua_kernel_base::impl_game_config_get(lua_State* L)
 	return_int_attrib("rest_heal_amount", game_config::rest_heal_amount);
 	return_int_attrib("recall_cost", game_config::recall_cost);
 	return_int_attrib("kill_experience", game_config::kill_experience);
-	return_string_attrib("version", game_config::version);
+	return_string_attrib("version", game_config::wesnoth_version.str());
 	return_bool_attrib("debug", game_config::debug);
 	return_bool_attrib("debug_lua", game_config::debug_lua);
 	return_bool_attrib("mp_debug", game_config::mp_debug);
