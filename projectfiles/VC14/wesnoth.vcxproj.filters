@@ -1549,6 +1549,9 @@
     <ClCompile Include="..\..\src\ogl\texture.cpp">
       <Filter>OGL</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\ogl\sprite.cpp">
+      <Filter>OGL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -3009,6 +3012,15 @@
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\ogl\texture.hpp">
+      <Filter>OGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ogl\vertex.hpp">
+      <Filter>OGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ogl\draw_op.hpp">
+      <Filter>OGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ogl\sprite.hpp">
       <Filter>OGL</Filter>
     </ClInclude>
   </ItemGroup>
