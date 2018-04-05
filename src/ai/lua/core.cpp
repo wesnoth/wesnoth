@@ -271,20 +271,23 @@ static int cfun_ai_check_stopunit(lua_State *L)
 	return ai_stopunit_select(L, false, true, true);
 }
 
-static int ai_synced_command(lua_State* /*L*/, bool /*exec*/)
-{
-	ERR_LUA << "synced_command was removed. Use wesnoth.wml_actions.do_command with [custom_command] instead\n";
-	return 0;
-}
-
 static int cfun_ai_execute_synced_command(lua_State *L)
 {
-	return ai_synced_command(L, true);
+	luaW_getglobal(L, "wesnoth", "deprecated_message");
+	lua_pushstring(L, "ai.synced_command");
+	lua_pushinteger(L, 4);
+	lua_pushstring(L, "1.14");
+	lua_pushstring(L, "Instead, you must register a custom synced command in wesnoth.custom_synced_commands, and invoke it with wesnoth.invoke_synced_command.");
+	luaW_pcall(L, 4, 0);
+	return 0; // Unreachable, as luaW_pcall throws an exception
 }
 
 static int cfun_ai_check_synced_command(lua_State *L)
 {
-	return ai_synced_command(L, false);
+	// This is basically the same as above but returns false instead of raising an error.
+	deprecated_message("ai.check_synced_command", DEP_LEVEL::REMOVED, "1.14", "Instead, you must register a custom synced command in wesnoth.custom_synced_commands, and invoke it with wesnoth.invoke_synced_command.");
+	lua_pushboolean(L, false);
+	return 1;
 }
 
 static int ai_recruit(lua_State *L, bool exec)
