@@ -271,22 +271,6 @@ static int cfun_ai_check_stopunit(lua_State *L)
 	return ai_stopunit_select(L, false, true, true);
 }
 
-static int ai_synced_command(lua_State* /*L*/, bool /*exec*/)
-{
-	ERR_LUA << "synced_command was removed. Use wesnoth.wml_actions.do_command with [custom_command] instead\n";
-	return 0;
-}
-
-static int cfun_ai_execute_synced_command(lua_State *L)
-{
-	return ai_synced_command(L, true);
-}
-
-static int cfun_ai_check_synced_command(lua_State *L)
-{
-	return ai_synced_command(L, false);
-}
-
 static int ai_recruit(lua_State *L, bool exec)
 {
 	const char *unit_name = luaL_checkstring(L, 1);
@@ -940,7 +924,6 @@ static int impl_ai_get(lua_State* L)
 			{ "check_recall", &cfun_ai_check_recall },
 			{ "check_move", &cfun_ai_check_move },
 			{ "check_stopunit", &cfun_ai_check_stopunit },
-			{ "check_synced_command", &cfun_ai_check_synced_command },
 			{ "check_attack", &cfun_ai_check_attack },
 			{ "check_recruit", &cfun_ai_check_recruit },
 			//{ "",},
@@ -973,7 +956,6 @@ static int impl_ai_get(lua_State* L)
 			{ "stopunit_all", &cfun_ai_execute_stopunit_all },
 			{ "stopunit_attacks", &cfun_ai_execute_stopunit_attacks },
 			{ "stopunit_moves", &cfun_ai_execute_stopunit_moves },
-			{ "synced_command", &cfun_ai_execute_synced_command },
 			{ "fallback_human", &cfun_ai_fallback_human},
 			{ nullptr, nullptr } };
 	for (const luaL_Reg* p = mutating_callbacks; p->name; ++p) {
