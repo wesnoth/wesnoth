@@ -120,7 +120,7 @@ void game_stats::pre_show(window& window)
 				}
 			}
 
-			leader_name = "<span color='" + team::get_side_highlight_pango(team.side() - 1) + "'>" + leader_name + "</span>";
+			leader_name = "<span color='" + team::get_side_color_pango(team.side()) + "'>" + leader_name + "</span>";
 		}
 
 		//

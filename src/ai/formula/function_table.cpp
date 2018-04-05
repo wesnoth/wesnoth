@@ -928,7 +928,7 @@ DEFINE_FAI_FUNCTION(debug_label, 2, 2)
 	display* gui = display::get_singleton();
 	std::string team_name;
 
-	color_t color = team::get_side_rgb(ai_.get_side());
+	color_t color = team::get_side_color(ai_.get_side());
 
 	const terrain_label *res;
 	res = gui->labels().set_label(location, text, ai_.get_side() - 1, team_name, color);

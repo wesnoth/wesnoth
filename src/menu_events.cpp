@@ -790,7 +790,7 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 		if(team_only) {
 			team_name = gui_->labels().team_name();
 		} else {
-			color = team::get_side_rgb(gui_->viewing_side());
+			color = team::get_side_color(gui_->viewing_side());
 		}
 		const terrain_label* res = gui_->labels().set_label(loc, label, gui_->viewing_team(), team_name, color);
 		if(res) {

@@ -107,7 +107,7 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 	}
 	color_t speaker_color {255,255,255,SDL_ALPHA_OPAQUE};
 	if(side >= 1) {
-		speaker_color = team::get_side_color_range(side).mid();
+		speaker_color = team::get_side_color(side);
 	}
 
 	color_t message_color = chat_message_color;

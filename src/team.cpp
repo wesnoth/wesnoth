@@ -930,6 +930,16 @@ color_t team::get_side_color(int side)
 	return get_side_color_range(side).mid();
 }
 
+color_t team::get_side_color_min(int side)
+{
+	return get_side_color_range(side).min();
+}
+
+color_t team::get_side_color_max(int side)
+{
+	return get_side_color_range(side).max();
+}
+
 color_t team::get_minimap_color(int side)
 {
 	// Note: use mid() instead of rep() unless
@@ -984,9 +994,9 @@ std::string team::get_side_color_id_from_config(const config& cfg)
 	return c.str();
 }
 
-std::string team::get_side_highlight_pango(int side)
+std::string team::get_side_color_pango(int side)
 {
-	return get_side_color_range(side + 1).mid().to_hex_string();
+	return get_side_color(side).to_hex_string();
 }
 
 void team::log_recruitable() const
