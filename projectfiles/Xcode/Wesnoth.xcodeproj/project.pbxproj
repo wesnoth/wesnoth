@@ -144,6 +144,8 @@
 		46EEFB762087434300E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB742087434200E1E75A /* chat_log.cpp */; };
 		46EEFB772087434300E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB742087434200E1E75A /* chat_log.cpp */; };
 		46F54C27211DFB7200374A1C /* apple_version.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46F54C26211DFB7200374A1C /* apple_version.mm */; };
+		46D7D24820769333004CA602 /* sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D7D24720769332004CA602 /* sprite.cpp */; };
+		46D7D24920769333004CA602 /* sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D7D24720769332004CA602 /* sprite.cpp */; };
 		46F57084205FCE34007031BF /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
 		46F57085205FCE48007031BF /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46F57086205FCE79007031BF /* hash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8AD121359A600CFBDAB /* hash.cpp */; };
@@ -1471,6 +1473,10 @@
 		46D7D23420736F1D004CA602 /* topic_text_generators.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = topic_text_generators.cpp; sourceTree = "<group>"; };
 		46D7D23520736F1D004CA602 /* topic_generators.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = topic_generators.cpp; sourceTree = "<group>"; };
 		46D7D23620736F1E004CA602 /* topic_text_generators.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = topic_text_generators.hpp; sourceTree = "<group>"; };
+		46D7D24520769332004CA602 /* sprite.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sprite.hpp; sourceTree = "<group>"; };
+		46D7D24620769332004CA602 /* draw_op.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = draw_op.hpp; sourceTree = "<group>"; };
+		46D7D24720769332004CA602 /* sprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sprite.cpp; sourceTree = "<group>"; };
+		46D7D24A20769346004CA602 /* vertex.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vertex.hpp; sourceTree = "<group>"; };
 		46DF5BCB1F46173700BE6D24 /* irdya_datetime.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = irdya_datetime.hpp; sourceTree = "<group>"; };
 		46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = irdya_datetime.cpp; sourceTree = "<group>"; };
 		46EEFB742087434200E1E75A /* chat_log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chat_log.cpp; sourceTree = "<group>"; };
@@ -3242,10 +3248,14 @@
 		466CE458206B8D4500FD3994 /* ogl */ = {
 			isa = PBXGroup;
 			children = (
-				466CE459206B8D4500FD3994 /* utils.cpp */,
 				466CE45A206B8D4500FD3994 /* context.cpp */,
 				466CE45B206B8D4500FD3994 /* context.hpp */,
+				46D7D24620769332004CA602 /* draw_op.hpp */,
+				46D7D24720769332004CA602 /* sprite.cpp */,
+				46D7D24520769332004CA602 /* sprite.hpp */,
+				466CE459206B8D4500FD3994 /* utils.cpp */,
 				466CE45C206B8D4500FD3994 /* utils.hpp */,
+				46D7D24A20769346004CA602 /* vertex.hpp */,
 			);
 			path = ogl;
 			sourceTree = "<group>";
@@ -5356,6 +5366,7 @@
 				91ECD5D21BA11A5200B25CF1 /* unit_creator.cpp in Sources */,
 				911F2DAD1BA086A400E3102E /* window.cpp in Sources */,
 				919B37F81BAF789E00E0094C /* synced_user_choice.cpp in Sources */,
+				46D7D24820769333004CA602 /* sprite.cpp in Sources */,
 				919B37FC1BAF7A9D00E0094C /* synced_choice_wait.cpp in Sources */,
 				91F462841C71139C0050A9C9 /* preferences_dialog.cpp in Sources */,
 				91F462881C7115C50050A9C9 /* menu_button.cpp in Sources */,
@@ -5699,6 +5710,7 @@
 				91E356F21CACC95100774252 /* variant.cpp in Sources */,
 				91E356F31CACC97400774252 /* action_wml.cpp in Sources */,
 				91E356F41CACC97400774252 /* conditional_wml.cpp in Sources */,
+				46D7D24920769333004CA602 /* sprite.cpp in Sources */,
 				91E356F51CACC97400774252 /* entity_location.cpp in Sources */,
 				91E356F61CACC97400774252 /* handlers.cpp in Sources */,
 				91E356F71CACC97400774252 /* manager.cpp in Sources */,
