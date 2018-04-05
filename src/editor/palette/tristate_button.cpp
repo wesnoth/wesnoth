@@ -16,7 +16,6 @@
 
 #include "editor/palette/tristate_button.hpp"
 
-#include "game_config.hpp"
 #include "image.hpp"
 #include "log.hpp"
 #include "sdl/rect.hpp"
@@ -369,8 +368,8 @@ void tristate_button::mouse_up(const SDL_MouseButtonEvent& event) {
 		}
 	}
 
-	if (pressed_)
-		sound::play_UI_sound(game_config::sounds::checkbox_release);
+	//if (pressed_)
+		//sound::play_UI_sound(game_config::sounds::checkbox_release);
 }
 
 void tristate_button::handle_event(const SDL_Event& event) {

@@ -162,8 +162,6 @@ namespace game_config
 				server_message, player_joins, player_leaves,
 				game_user_arrive, game_user_leave, ready_for_start,
 				game_has_begun;
-		extern const std::string button_press, checkbox_release, slider_adjust,
-				menu_expand, menu_contract, menu_select;
 		namespace status {
 			extern std::string poisoned, slowed, petrified;
 		}

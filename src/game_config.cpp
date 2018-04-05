@@ -243,14 +243,6 @@ std::string
 	ready_for_start  = "bell.wav",
 	game_has_begun   = "gamestart.ogg";
 
-const std::string
-	button_press     = "button.wav",
-	checkbox_release = "checkbox.wav",
-	slider_adjust    = "slider.wav",
-	menu_expand      = "expand.wav",
-	menu_contract    = "contract.wav",
-	menu_select      = "select.wav";
-
 namespace status {
 
 std::string
