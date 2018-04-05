@@ -823,41 +823,6 @@ manager::~manager()
 	flush_cache();
 }
 
-static SDL_PixelFormat last_pixel_format;
-
-void set_pixel_format(SDL_PixelFormat* format)
-{
-	assert(format != nullptr);
-
-	SDL_PixelFormat& f = *format;
-	SDL_PixelFormat& l = last_pixel_format;
-	// if the pixel format change, we clear the cache,
-	// because some images are now optimized for the wrong display format
-	// FIXME: 8 bpp use palette, need to compare them. For now assume a change
-	if(format->BitsPerPixel == 8
-			|| f.BitsPerPixel != l.BitsPerPixel
-			|| f.BytesPerPixel != l.BytesPerPixel
-			|| f.Rmask != l.Rmask
-			|| f.Gmask != l.Gmask
-			|| f.Bmask != l.Bmask
-//			|| f.Amask != l.Amask This field in not checked, not sure why.
-			|| f.Rloss != l.Rloss
-			|| f.Gloss != l.Gloss
-			|| f.Bloss != l.Bloss
-//			|| f.Aloss != l.Aloss This field in not checked, not sure why.
-			|| f.Rshift != l.Rshift
-			|| f.Gshift != l.Gshift
-			|| f.Bshift != l.Bshift
-//			|| f.Ashift != l.Ashift This field in not checked, not sure why.
-			)
-	{
-		LOG_DP << "detected a new display format\n";
-		flush_cache();
-	}
-
-	last_pixel_format = *format;
-}
-
 void set_color_adjustment(int r, int g, int b)
 {
 	if(r != red_adjust || g != green_adjust || b != blue_adjust) {

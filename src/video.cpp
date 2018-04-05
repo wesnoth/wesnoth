@@ -17,7 +17,6 @@
 #include "display.hpp"
 #include "floating_label.hpp"
 #include "font/constants.hpp"
-#include "image.hpp"
 #include "log.hpp"
 #include "ogl/utils.hpp"
 #include "preferences/general.hpp"
