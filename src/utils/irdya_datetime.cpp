@@ -64,7 +64,7 @@ std::string irdya_date::to_string() const
 		// TRANSLATORS: "Before the Fall" -  format for years prior to the fall of Wesnoth
 		return VGETTEXT("$year BF", args);
 	case EPOCH::AFTER_FALL:
-		// TRANSLATORS: "After the Fall"   - format for years after the fall of Wesonth
+		// TRANSLATORS: "After the Fall"   - format for years after the fall of Wesnoth
 		return VGETTEXT("$year AF", args);
 	}
 
