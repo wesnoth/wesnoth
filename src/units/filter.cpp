@@ -493,6 +493,19 @@ void unit_filter_compound::fill(vconfig cfg)
 			}
 		);
 
+		create_attribute(literal["usage"],
+			[](const config::attribute_value& c) { return utils::split(c.str()); },
+			[](const std::vector<std::string>& usages, const unit_filter_args& args)
+			{
+				for(const std::string& usage : usages) {
+					if(args.u.usage() == usage) {
+						return true;
+					}
+				}
+				return false;
+			}
+		);
+
 		create_attribute(literal["canrecruit"],
 			[](const config::attribute_value& c) { return c.to_bool(); },
 			[](bool canrecruit, const unit_filter_args& args)
