@@ -20,6 +20,7 @@
      (bug #2732)
    * Fixed "Search" placeholder text in dialog item filters not being
      translatable (bug #2709, bug #2732).
+   * Fixed Logging Options tooltips not being translatable (bug #2837).
    * Updated translations: British English, Chinese (Simplified), Czech, French,
      Polish, Scottish Gaelic, Spanish, Ukrainian
  ### User Interface
