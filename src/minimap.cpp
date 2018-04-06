@@ -29,6 +29,8 @@
 #include "sdl/surface.hpp"
 #include "team.hpp"
 #include "terrain/type_data.hpp"
+#include "units/map.hpp"
+#include "units/unit.hpp"
 
 static lg::log_domain log_display("display");
 #define DBG_DP LOG_STREAM(debug, log_display)
@@ -287,13 +289,16 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 	return minimap;
 }
 
-void render_minimap(texture& tex, const gamemap& map, const team* vw, const std::map<map_location, unsigned int>* reach_map, bool ignore_terrain_disabled)
+void render_minimap(texture& tex, const gamemap& map, const team* vw, const unit_map* units, const std::map<map_location, unsigned int>* reach_map, bool ignore_terrain_disabled)
 {
 	if(tex.null()) {
 		return;
 	}
 
 	CVideo& video = CVideo::get_singleton();
+	display* disp = display::get_singleton();
+
+	const bool is_blindfolded = disp && disp->is_blindfolded();
 
 	// Validate that the passed texture is the current render target.
 	// TODO: if it's not, maybe set it here?
@@ -305,6 +310,7 @@ void render_minimap(texture& tex, const gamemap& map, const team* vw, const std:
 	const bool preferences_minimap_draw_terrain   = preferences::minimap_draw_terrain() || ignore_terrain_disabled;
 	const bool preferences_minimap_terrain_coding = preferences::minimap_terrain_coding();
 	const bool preferences_minimap_draw_villages  = preferences::minimap_draw_villages();
+	const bool preferences_minimap_draw_units     = preferences::minimap_draw_units();
 	const bool preferences_minimap_unit_coding    = preferences::minimap_movement_coding();
 
 	const int scale = (preferences_minimap_draw_terrain && preferences_minimap_terrain_coding) ? 24 : 4;
@@ -313,6 +319,18 @@ void render_minimap(texture& tex, const gamemap& map, const team* vw, const std:
 
 	const std::size_t map_width  = map.w() * scale * 3 / 4;
 	const std::size_t map_height = map.h() * scale;
+
+	// Gets a destination rect for drawing at the given coordinates.
+	// We need a balanced shift up and down of the hexes.
+	// If not, only the bottom half-hexes are clipped and it looks asymmetrical.
+	auto get_dst_rect = [scale](int x, int y) ->SDL_Rect {
+		return {
+			x * scale             * 3 / 4                - (scale / 4),
+			y * scale + scale / 4 * (is_odd(x) ? 1 : -1) - (scale / 4),
+			scale,
+			scale
+		};
+	};
 
 	// No map!
 	if(map_width == 0 || map_height == 0) {
@@ -338,6 +356,9 @@ void render_minimap(texture& tex, const gamemap& map, const team* vw, const std:
 		// Point rendering to the temp minimap texture.
 		render_target_setter target_setter(minimap);
 
+		//
+		// Terrain
+		//
 		for(int y = 0; y <= map.total_height(); ++y) {
 			for(int x = 0; x <= map.total_width(); ++x) {
 				const map_location loc(x, y);
@@ -346,9 +367,7 @@ void render_minimap(texture& tex, const gamemap& map, const team* vw, const std:
 					continue;
 				}
 
-				const bool shrouded =
-					(display::get_singleton() != nullptr && display::get_singleton()->is_blindfolded()) ||
-					(vw != nullptr && vw->shrouded(loc));
+				const bool shrouded = is_blindfolded || (vw && vw->shrouded(loc));
 
 				// Shrouded hex are not considered fogged (no need to fog a black image)
 				const bool fogged = (vw != nullptr && !shrouded && vw->fogged(loc));
@@ -359,14 +378,7 @@ void render_minimap(texture& tex, const gamemap& map, const team* vw, const std:
 				const terrain_type& terrain_info = tdata.get_terrain_info(terrain);
 
 				// Destination rect for drawing the current hex.
-				// We need a balanced shift up and down of the hexes.
-				// If not, only the bottom half-hexes are clipped and it looks asymmetrical.
-				SDL_Rect map_dst_rect {
-					x * scale * 3 / 4 - (scale / 4),
-					y * scale + scale / 4 * (is_odd(x) ? 1 : -1) - (scale / 4),
-					scale,
-					scale
-				};
+				SDL_Rect map_dst_rect = get_dst_rect(x, y);
 
 				//
 				// Draw map terrain...
@@ -508,6 +520,47 @@ void render_minimap(texture& tex, const gamemap& map, const team* vw, const std:
 					SDL_Rect fillrect {map_dst_rect.x, map_dst_rect.y, scale * 3 / 4, scale};
 					sdl::fill_rectangle(fillrect, col);
 				}
+			}
+		}
+
+		//
+		// Units
+		//
+		if(units && preferences_minimap_draw_units && !is_blindfolded) {
+			for(const auto& u : *units) {
+				const map_location& u_loc = u.get_location();
+				const int side = u.side();
+				const bool is_enemy = vw && vw->is_enemy(side);
+
+				if((vw && vw->fogged(u_loc)) || (is_enemy && disp && u.invisible(u_loc, disp->get_disp_context())) || u.get_hidden()) {
+					continue;
+				}
+
+				color_t col = team::get_minimap_color(side);
+
+				if(!preferences_minimap_unit_coding) {
+					if(is_enemy) {
+						col = game_config::color_info(preferences::enemy_color()).rep();
+					} else {
+						if(vw && vw->side() == side) {
+							if(u.movement_left() == u.total_movement()) {
+								col = game_config::color_info(preferences::unmoved_color()).rep();
+							} else if (u.movement_left() == 0) {
+								col = game_config::color_info(preferences::moved_color()).rep();
+							} else {
+								col = game_config::color_info(preferences::partial_color()).rep();
+							}
+						} else {
+							col = game_config::color_info(preferences::allied_color()).rep();
+						}
+					}
+				}
+
+
+				SDL_Rect fillrect = get_dst_rect(u_loc.x, u_loc.y);
+				fillrect.w = scale * 3 / 4; // TODO: needed?
+
+				sdl::fill_rectangle(fillrect, col);
 			}
 		}
 	}

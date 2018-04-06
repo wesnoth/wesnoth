@@ -23,6 +23,7 @@ class gamemap;
 class surface;
 class team;
 class texture;
+class unit_map;
 struct map_location;
 class gamemap;
 
@@ -43,6 +44,7 @@ surface getMinimap(int w,
 void render_minimap(texture& tex,
 		const gamemap& map,
 		const team* vw = nullptr,
+		const unit_map* units = nullptr,
 		const std::map<map_location, unsigned int>* reach_map = nullptr,
-        bool ignore_terrain_disabled = false);
+		bool ignore_terrain_disabled = false);
 }

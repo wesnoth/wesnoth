@@ -99,7 +99,7 @@ void minimap::set_map_data(const std::string& map_data)
 void minimap::canvas_draw_background(texture& tex)
 {
 	if(map_) {
-		image::render_minimap(tex, *map_, nullptr, nullptr, true);
+		image::render_minimap(tex, *map_, nullptr, nullptr, nullptr, true);
 	}
 }
 
