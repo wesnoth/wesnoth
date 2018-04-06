@@ -53,11 +53,12 @@ function wesnoth.wml_actions.move_unit(cfg)
 		helper.wml_error(coordinate_error)
 	end
 	local fire_event = cfg.fire_event
+	local unshroud = cfg.clear_shroud
 	local muf_force_scroll = cfg.force_scroll
 	local check_passability = cfg.check_passability
 	if check_passability == nil then check_passability = true end
 	cfg = wml.literal(cfg)
-	cfg.to_location, cfg.to_x, cfg.to_y, cfg.fire_event = nil
+	cfg.to_location, cfg.to_x, cfg.to_y, cfg.fire_event, cfg.clear_shroud = nil
 	local units = wesnoth.get_units(cfg)
 
 	for current_unit_index, current_unit in ipairs(units) do
@@ -102,6 +103,10 @@ function wesnoth.wml_actions.move_unit(cfg)
 			local x2, y2 = current_unit.x, current_unit.y
 			current_unit.x, current_unit.y = x, y
 			wesnoth.put_unit(current_unit)
+			
+			if unshroud then
+				wesnoth.wml_actions.redraw {clear_shroud=true}
+			end
 
 			if fire_event then
 				wesnoth.fire_event("moveto", x, y, x2, y2)
