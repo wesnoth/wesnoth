@@ -208,14 +208,14 @@ void pane::child_populate_dirty_list(window& caller,
 	}
 }
 
-void pane::sort(const tcompare_functor& compare_functor)
+void pane::sort(const compare_functor_t& compare_functor)
 {
 	items_.sort(compare_functor);
 
 	set_origin_children();
 }
 
-void pane::filter(const tfilter_functor& filter_functor)
+void pane::filter(const filter_functor_t& filter_functor)
 {
 	for(auto & item : items_)
 	{
