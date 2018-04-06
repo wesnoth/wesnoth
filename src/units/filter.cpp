@@ -485,6 +485,14 @@ void unit_filter_compound::fill(vconfig cfg)
 			}
 		);
 
+		create_attribute(literal["alignment"],
+			[](const config::attribute_value& c) { return c.str(); },
+			[](const std::string& alignment, const unit_filter_args& args)
+			{
+				return args.u.alignment().to_string() == alignment;
+			}
+		);
+
 		create_attribute(literal["ai_special"],
 			[](const config::attribute_value& c) { return c.str(); },
 			[](const std::string& ai_special, const unit_filter_args& args)
