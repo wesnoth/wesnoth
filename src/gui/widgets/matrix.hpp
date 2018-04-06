@@ -150,7 +150,7 @@ public:
 	 *
 	 * @param compare_functor     The functor to use to sort the items.
 	 */
-	void sort(const pane::tcompare_functor& compare_functor)
+	void sort(const pane::compare_functor_t& compare_functor)
 	{
 		/********************** OUTLINE *******************/
 		pane_->sort(compare_functor);
@@ -165,7 +165,7 @@ public:
 	 * @param filter_functor      The functor to determine whether an item
 	 *                            should be shown or hidden.
 	 */
-	void filter(const pane::tfilter_functor& filter_functor)
+	void filter(const pane::filter_functor_t& filter_functor)
 	{
 		/********************** OUTLINE *******************/
 		pane_->filter(filter_functor);

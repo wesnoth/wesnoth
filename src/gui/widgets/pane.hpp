@@ -48,9 +48,9 @@ public:
 		grid* item_grid;
 	};
 
-	typedef std::function<bool(const item&, const item&)> tcompare_functor;
+	typedef std::function<bool(const item&, const item&)> compare_functor_t;
 
-	typedef std::function<bool(const item&)> tfilter_functor;
+	typedef std::function<bool(const item&)> filter_functor_t;
 
 	/** @deprecated Use the second overload. */
 	explicit pane(const builder_grid_ptr item_builder);
@@ -92,7 +92,7 @@ public:
 	 *
 	 * @param compare_functor     The functor to use to sort the items.
 	 */
-	void sort(const tcompare_functor& compare_functor);
+	void sort(const compare_functor_t& compare_functor);
 
 	/**
 	 * Filters the contents of the pane.
@@ -103,7 +103,7 @@ public:
 	 * @param filter_functor      The functor to determine whether an item
 	 *                            should be shown or hidden.
 	 */
-	void filter(const tfilter_functor& filter_functor);
+	void filter(const filter_functor_t& filter_functor);
 
 private:
 	/** See @ref widget::calculate_best_size. */
