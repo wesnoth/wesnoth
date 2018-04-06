@@ -34,7 +34,6 @@
 #include "log.hpp"
 #include "map/label.hpp"
 #include "map/map.hpp"
-#include "minimap.hpp"
 #include "overlay.hpp"
 #include "preferences/game.hpp"
 #include "resources.hpp"
@@ -106,7 +105,6 @@ display::display(const display_context* dc,
 	, zoom_index_(0)
 	, fake_unit_man_(new fake_unit_manager(*this))
 	, builder_(new terrain_builder(level, (dc_ ? &dc_->map() : nullptr), theme_.border().tile_image, theme_.border().show_border))
-	, minimap_(nullptr)
 	, minimap_location_(sdl::empty_rect)
 	, redrawMinimap_(false)
 	, grid_(false)
@@ -968,120 +966,6 @@ void display::announce(const std::string& message, const color_t& color, const a
 	flabel.set_clip_rect(map_outside_area());
 
 	prevLabel = font::add_floating_label(flabel);
-}
-
-void display::draw_minimap()
-{
-	const SDL_Rect& area = minimap_area();
-
-	if(area.w == 0 || area.h == 0) {
-		return;
-	}
-
-	if(minimap_ == nullptr || minimap_->w > area.w || minimap_->h > area.h) {
-		minimap_ = image::getMinimap(area.w, area.h, get_map(),
-			dc_->teams().empty() ? nullptr : &dc_->teams()[currentTeam_],
-			(selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : nullptr);
-		if(minimap_ == nullptr) {
-			return;
-		}
-	}
-
-	color_t back_color {31,31,23,SDL_ALPHA_OPAQUE};
-	draw_centered_on_background(minimap_, area, back_color);
-
-	//update the minimap location for mouse and units functions
-	minimap_location_.x = area.x + (area.w - minimap_->w) / 2;
-	minimap_location_.y = area.y + (area.h - minimap_->h) / 2;
-	minimap_location_.w = minimap_->w;
-	minimap_location_.h = minimap_->h;
-
-	draw_minimap_units();
-
-	// calculate the visible portion of the map:
-	// scaling between minimap and full map images
-	double xscaling = 1.0 * minimap_->w / (get_map().w() * hex_width());
-	double yscaling = 1.0  *minimap_->h / (get_map().h() * hex_size());
-
-	// we need to shift with the border size
-	// and the 0.25 from the minimap balanced drawing
-	// and the possible difference between real map and outside off-map
-	SDL_Rect map_rect = map_area();
-	SDL_Rect map_out_rect = map_outside_area();
-
-	double border = theme_.border().size;
-
-	double shift_x = -  border         * hex_width() - (map_out_rect.w - map_rect.w) / 2;
-	double shift_y = - (border + 0.25) * hex_size()  - (map_out_rect.h - map_rect.h) / 2;
-
-	int view_x = static_cast<int>((xpos_ + shift_x) * xscaling);
-	int view_y = static_cast<int>((ypos_ + shift_y) * yscaling);
-	int view_w = static_cast<int>(map_out_rect.w * xscaling);
-	int view_h = static_cast<int>(map_out_rect.h * yscaling);
-
-	SDL_Rect outline_rect {
-		minimap_location_.x + view_x - 1,
-		minimap_location_.y + view_y - 1,
-		view_w + 2,
-		view_h + 2
-	};
-
-	sdl::draw_rectangle(outline_rect, {255, 255, 255, 255});
-}
-
-void display::draw_minimap_units()
-{
-	if (!preferences::minimap_draw_units() || is_blindfolded()) return;
-
-	double xscaling = 1.0 * minimap_location_.w / get_map().w();
-	double yscaling = 1.0 * minimap_location_.h / get_map().h();
-
-	for(const auto& u : dc_->units()) {
-		if (fogged(u.get_location()) ||
-		    (dc_->teams()[currentTeam_].is_enemy(u.side()) &&
-		     u.invisible(u.get_location(), *dc_)) ||
-			 u.get_hidden()) {
-			continue;
-		}
-
-		int side = u.side();
-		color_t col = team::get_minimap_color(side);
-
-		if (!preferences::minimap_movement_coding()) {
-
-			if (dc_->teams()[currentTeam_].is_enemy(side)) {
-				col = game_config::color_info(preferences::enemy_color()).rep();
-			} else {
-
-				if (currentTeam_ +1 == static_cast<unsigned>(side)) {
-
-					if (u.movement_left() == u.total_movement())
-						col = game_config::color_info(preferences::unmoved_color()).rep();
-					else if (u.movement_left() == 0)
-						col = game_config::color_info(preferences::moved_color()).rep();
-					else
-						col = game_config::color_info(preferences::partial_color()).rep();
-
-				} else
-					col = game_config::color_info(preferences::allied_color()).rep();
-			}
-		}
-
-		double u_x = u.get_location().x * xscaling;
-		double u_y = (u.get_location().y + (is_odd(u.get_location().x) ? 1 : -1)/4.0) * yscaling;
-		// use 4/3 to compensate the horizontal hexes imbrication
-		double u_w = 4.0 / 3.0 * xscaling;
-		double u_h = yscaling;
-
-		SDL_Rect r {
-				  minimap_location_.x + round_double(u_x)
-				, minimap_location_.y + round_double(u_y)
-				, round_double(u_w)
-				, round_double(u_h)
-		};
-
-		sdl::fill_rectangle(r, col);
-	}
 }
 
 bool display::scroll(int xmove, int ymove, bool force)
@@ -2090,8 +1974,6 @@ void display::draw()
 
 	// Progress animations.
 	invalidate_animations();
-
-	// draw_minimap();
 
 	// Draw the gamemap and its contents (units, etc)
 	{

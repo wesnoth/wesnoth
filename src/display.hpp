@@ -443,8 +443,6 @@ public:
 
 	void set_theme(config theme_cfg);
 
-	void draw_minimap_units();
-
 	/**
 	 * Function to invalidate animated terrains and units which may have changed.
 	 */
@@ -648,7 +646,6 @@ public:
 	 */
 	void recalculate_minimap()
 	{
-		minimap_ = nullptr;
 		redrawMinimap_ = true;
 	}
 
@@ -732,9 +729,6 @@ protected:
 	virtual void post_draw()
 	{
 	}
-
-	/** Draws the minimap. */
-	void draw_minimap();
 
 private:
 	enum TERRAIN_TYPE { FOREGROUND, BACKGROUND };
@@ -874,7 +868,6 @@ protected:
 	static unsigned int last_zoom_;
 	const std::unique_ptr<fake_unit_manager> fake_unit_man_;
 	const std::unique_ptr<terrain_builder> builder_;
-	surface minimap_;
 	SDL_Rect minimap_location_;
 	bool redrawMinimap_;
 	bool grid_;
