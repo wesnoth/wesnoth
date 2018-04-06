@@ -23,7 +23,6 @@
 #include "log.hpp"
 #include "map/exception.hpp"
 #include "map/map.hpp"
-#include "minimap.hpp"
 #include "saved_game.hpp"
 #include "wml_exception.hpp"
 
