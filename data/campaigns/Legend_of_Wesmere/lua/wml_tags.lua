@@ -94,7 +94,7 @@ function wesnoth.wml_actions.persistent_carryover_store(cfg)
 end
 
 function wesnoth.wml_actions.persistent_carryover_unstore(cfg)
-	if V.side_number then
+	if vars.side_number then
 		-- Only do this if we begin from this chapter.
 		return
 	end
