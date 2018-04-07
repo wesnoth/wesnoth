@@ -95,6 +95,7 @@
 		4649B8D42028916600827CFB /* widget_helpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC66897F1ED3289900D9433A /* widget_helpers.cpp */; };
 		4649B8D52028923500827CFB /* variant_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC179B871E91475300B4178C /* variant_value.cpp */; };
 		4649B8D62028927A00827CFB /* function_gamestate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468C1B951F09245E002DF652 /* function_gamestate.cpp */; };
+		465410A02078BC77002BCD13 /* l10n-track in Resources */ = {isa = PBXBuildFile; fileRef = 4654109E2078BC02002BCD13 /* l10n-track */; };
 		4664B9441F462ED9009E4881 /* irdya_datetime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */; };
 		467D9DEE205EC39300FA2FC4 /* command_console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 467D9DED205EC39300FA2FC4 /* command_console.cpp */; };
 		467D9DEF205EC39300FA2FC4 /* command_console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 467D9DED205EC39300FA2FC4 /* command_console.cpp */; };
@@ -1435,6 +1436,7 @@
 		467F3CEF20605A3900CE0CE5 /* ingame_ui_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ingame_ui_base.cpp; sourceTree = "<group>"; };
 		468A2EA52060F68A00B61D24 /* game_ui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_ui.cpp; sourceTree = "<group>"; };
 		468A2EA62060F68B00B61D24 /* game_ui.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_ui.hpp; sourceTree = "<group>"; };
+		4654109E2078BC02002BCD13 /* l10n-track */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "l10n-track"; path = "../../l10n-track"; sourceTree = "<group>"; };
 		468C1B951F09245E002DF652 /* function_gamestate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = function_gamestate.cpp; sourceTree = "<group>"; };
 		468C1B961F09245E002DF652 /* function_gamestate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = function_gamestate.hpp; sourceTree = "<group>"; };
 		469BDB53205C357400DBF748 /* base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = base64.cpp; sourceTree = "<group>"; };
@@ -3182,6 +3184,7 @@
 				B5A9B0780ECA4074002BE442 /* images */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				B5F9C5930F93BB0B00C02205 /* InfoPlist.strings */,
+				4654109E2078BC02002BCD13 /* l10n-track */,
 				B5BB6EFD0F93B83500444FBF /* SDLMain.nib */,
 				B5A9B2140ECA4074002BE442 /* sounds */,
 			);
@@ -4836,6 +4839,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				465410A02078BC77002BCD13 /* l10n-track in Resources */,
 				B5A9B2290ECA4074002BE442 /* fonts in Resources */,
 				EC1D88DF18EF448400E66AC1 /* fonts.conf in Resources */,
 				B5A9BE2A0ECE927C002BE442 /* icon.icns in Resources */,
