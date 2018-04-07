@@ -195,7 +195,7 @@ void schema_validator::open_tag(const std::string& name, const config& parent, i
 		const class_tag* tag = nullptr;
 
 		if(stack_.top()) {
-			tag = stack_.top()->find_tag(name, root_, parent);
+			tag = active_tag().find_tag(name, root_, parent);
 
 			if(!tag) {
 				wrong_tag_error(file, start_line, name, stack_.top()->get_name(), create_exceptions_);
@@ -242,27 +242,25 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 
 	// Please note that validating unknown tag keys the result will be false
 	// Checking all elements counters.
-	if(!stack_.empty() && stack_.top() && config_read_) {
-		for(const auto& tag : stack_.top()->tags(cfg)) {
+	if(have_active_tag() && is_valid()) {
+		for(const auto& tag : active_tag().tags(cfg)) {
 			int cnt = counter_.top()[tag.first].cnt;
 
 			if(tag.second.get_min() > cnt) {
-				cache_.top()[&cfg].emplace_back(
-					MISSING_TAG, file, start_line, tag.second.get_min(), tag.first, "", name);
+				queue_message(cfg, MISSING_TAG, file, start_line, tag.second.get_min(), tag.first, "", name);
 				continue;
 			}
 
 			if(tag.second.get_max() < cnt) {
-				cache_.top()[&cfg].emplace_back(
-					EXTRA_TAG, file, start_line, tag.second.get_max(), tag.first, "", name);
+				queue_message(cfg, EXTRA_TAG, file, start_line, tag.second.get_max(), tag.first, "", name);
 			}
 		}
 
 		// Checking if all mandatory keys are present
-		for(const auto& key : stack_.top()->keys(cfg)) {
+		for(const auto& key : active_tag().keys(cfg)) {
 			if(key.second.is_mandatory()) {
 				if(cfg.get(key.first) == nullptr) {
-					cache_.top()[&cfg].emplace_back(MISSING_KEY, file, start_line, 0, name, key.first);
+					queue_message(cfg, MISSING_KEY, file, start_line, 0, name, key.first);
 				}
 			}
 		}
@@ -272,32 +270,51 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 void schema_validator::validate_key(
 		const config& cfg, const std::string& name, const std::string& value, int start_line, const std::string& file)
 {
-	if(!stack_.empty() && stack_.top() && !stack_.top()->get_name().empty() && config_read_) {
+	if(have_active_tag() && !active_tag().get_name().empty() && is_valid()) {
 		// checking existing keys
-		const class_key* key = stack_.top()->find_key(name, cfg);
+		const class_key* key = active_tag().find_key(name, cfg);
 		if(key) {
 			bool matched = false;
 			for(auto& possible_type : utils::split(key->get_type())) {
-				auto itt = types_.find(possible_type);
-				if(itt == types_.end()) {
-					// TODO: This may not be a good place since it causes log spam when there's an invalid type
-					// Instead it should be checked when the schema is loaded!
-					cache_.top()[&cfg].emplace_back(
-						WRONG_TYPE, file, start_line, 0, stack_.top()->get_name(), name, key->get_type());
-					continue;
-				} else if(itt->second->matches(value, types_)) {
-					matched = true;
-					break;
+				if(auto type = find_type(possible_type)) {
+					if(type->matches(value, types_)) {
+						matched = true;
+						break;
+					}
 				}
 			}
 			if(!matched) {
-				cache_.top()[&cfg].emplace_back(
-					WRONG_VALUE, file, start_line, 0, stack_.top()->get_name(), name, value);
+				queue_message(cfg, WRONG_VALUE, file, start_line, 0, active_tag().get_name(), name, value);
 			}
 		} else {
-			cache_.top()[&cfg].emplace_back(EXTRA_KEY, file, start_line, 0, stack_.top()->get_name(), name);
+			queue_message(cfg, EXTRA_KEY, file, start_line, 0, active_tag().get_name(), name);
 		}
 	}
+}
+
+void schema_validator::queue_message(const config& cfg, message_type t, const std::string& file, int line, int n, const std::string& tag, const std::string& key, const std::string& value)
+{
+	cache_.top()[&cfg].emplace_back(t, file, line, n, tag, key, value);
+}
+
+const class_tag& schema_validator::active_tag() const
+{
+	assert(have_active_tag() && "Tried to get active tag name when there was none");
+	return *stack_.top();
+}
+
+class_type::ptr schema_validator::find_type(const std::string& type) const
+{
+	auto it = types_.find(type);
+	if(it == types_.end()) {
+		return nullptr;
+	}
+	return it->second;
+}
+
+bool schema_validator::have_active_tag() const
+{
+	return !stack_.empty() && stack_.top();
 }
 
 void schema_validator::print(message_info& el)

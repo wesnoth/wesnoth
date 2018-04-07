@@ -51,15 +51,10 @@ public:
 		create_exceptions_ = value;
 	}
 
-	virtual void open_tag(
-			const std::string& name, const config& parent, int start_line = 0, const std::string& file = "", bool addittion = false);
-	virtual void close_tag();
-	virtual void validate(const config& cfg, const std::string& name, int start_line, const std::string& file);
-	virtual void validate_key(const config& cfg,
-			const std::string& name,
-			const std::string& value,
-			int start_line,
-			const std::string& file);
+	virtual void open_tag(const std::string& name, const config& parent, int start_line = 0, const std::string& file = "", bool addition = false) override;
+	virtual void close_tag() override;
+	virtual void validate(const config& cfg, const std::string& name, int start_line, const std::string& file) override;
+	virtual void validate_key(const config& cfg, const std::string& name, const std::string& value, int start_line, const std::string& file) override;
 
 private:
 	// types section
@@ -79,7 +74,9 @@ private:
 	/** And counter maps are organize in stack. */
 	typedef std::stack<cnt_map> cnt_stack;
 
+protected:
 	enum message_type{ WRONG_TAG, EXTRA_TAG, MISSING_TAG, EXTRA_KEY, MISSING_KEY, WRONG_VALUE, WRONG_TYPE };
+private:
 	// error_cache
 
 	/**
@@ -101,13 +98,7 @@ private:
 		std::string key;
 		std::string value;
 
-		message_info(message_type t,
-				const std::string& file,
-				int line = 0,
-				int n = 0,
-				const std::string& tag = "",
-				const std::string& key = "",
-				const std::string& value = "")
+		message_info(message_type t, const std::string& file, int line = 0, int n = 0, const std::string& tag = "", const std::string& key = "", const std::string& value = "")
 			: type(t)
 			, file(file)
 			, line(line)
@@ -146,5 +137,11 @@ private:
 
 	/** Type validators. */
 	class_type::map types_;
+protected:
+	void queue_message(const config& cfg, message_type t, const std::string& file, int line = 0, int n = 0, const std::string& tag = "", const std::string& key = "", const std::string& value = "");
+	const class_tag& active_tag() const;
+	bool have_active_tag() const;
+	bool is_valid() const {return config_read_;}
+	class_type::ptr find_type(const std::string& type) const;
 };
 } // namespace schema_validation{

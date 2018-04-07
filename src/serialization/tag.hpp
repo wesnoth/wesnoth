@@ -46,7 +46,8 @@ protected:
 public:
 	class_type() = delete;
 	explicit class_type(const std::string& name) : name_(name) {}
-	using map = std::map<std::string, std::shared_ptr<class_type>>;
+	using ptr = std::shared_ptr<class_type>;
+	using map = std::map<std::string, ptr>;
 	virtual bool matches(const std::string& value, const map& type_map) const = 0;
 	static std::shared_ptr<class_type> from_config(const config& cfg);
 };
