@@ -317,6 +317,19 @@ bool schema_validator::have_active_tag() const
 	return !stack_.empty() && stack_.top();
 }
 
+std::string schema_validator::active_tag_path() const {
+	std::stack<const class_tag*> temp = stack_;
+	std::deque<std::string> path;
+	while(!temp.empty()) {
+		path.push_front(temp.top()->get_name());
+		temp.pop();
+	}
+	if(path.front() == "root") {
+		path.pop_front();
+	}
+	return utils::join(path, "/");
+}
+
 void schema_validator::print(message_info& el)
 {
 	switch(el.type) {

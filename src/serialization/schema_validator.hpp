@@ -140,6 +140,7 @@ private:
 protected:
 	void queue_message(const config& cfg, message_type t, const std::string& file, int line = 0, int n = 0, const std::string& tag = "", const std::string& key = "", const std::string& value = "");
 	const class_tag& active_tag() const;
+	std::string active_tag_path() const;
 	bool have_active_tag() const;
 	bool is_valid() const {return config_read_;}
 	class_type::ptr find_type(const std::string& type) const;
