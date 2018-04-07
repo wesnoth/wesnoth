@@ -476,6 +476,12 @@ static bool localized_file_uptodate(const std::string& loc_file)
 		// First call, parse track index to collect fuzzy files by path.
 		std::string fsep = "\xC2\xA6"; // UTF-8 for "broken bar"
 		std::string trackpath = filesystem::get_binary_file_location("", "l10n-track");
+
+		// l10n-track file not present. Assume image is up-to-date.
+		if(trackpath.empty()) {
+			return true;
+		}
+
 		std::string contents = filesystem::read_file(trackpath);
 
 		for(const std::string& line : utils::split(contents, '\n')) {
