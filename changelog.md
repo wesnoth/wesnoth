@@ -4,7 +4,7 @@
      * S12 Fixed enemies from ai6 (south-east lich) going to the book (spider) room
      * S12 Fixed north treasure chest disappearing
  ### Language and i18n
-   * Updated translations: Polish
+   * Updated translations: French, Polish
  ### User Interface
    * Swapped the position and formatting of game names and titles in the MP lobby.
  ### Miscellaneous and bug fixes

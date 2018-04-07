@@ -7,7 +7,7 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
    * The Hammer of Thursagan
      * S12 Fixed enemies from ai6 going to the book room
  ### Language and i18n
-   * Updated translations: Polish.
+   * Updated translations: French, Polish.
 
 
 ## Version 1.13.13
