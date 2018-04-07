@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-03-31 11:38+0200\n"
+"PO-Revision-Date: 2018-04-05 22:42+0200\n"
 "Last-Translator: Mathieu Guilbaud <mathieu@guim.info>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -360,7 +360,7 @@ msgstr "Feu de camp"
 #. [terrain_type]: id=wallfire
 #: data/core/terrain.cfg:437
 msgid "Sconce"
-msgstr ""
+msgstr "Bougeoir"
 
 #. [terrain_type]: id=brazier
 #: data/core/terrain.cfg:446
@@ -2050,10 +2050,12 @@ msgstr ""
 
 #. [label]: id=no_options_notice
 #: data/gui/macros/custom_options_tree.cfg:26
+#, fuzzy
 msgid ""
 "There are no custom options available for the selected era, game, or "
 "modification."
 msgstr ""
+"Configure les paramètres pour les modifications personnalisées sélectionnées."
 
 #. [button]: id=reset_option_values
 #. [button]: id=btn_reset_hotkeys
@@ -2539,7 +2541,7 @@ msgstr "Probabilité de toucher"
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:95
 msgid "Chance of being unscathed"
-msgstr ""
+msgstr "Probabilité d'en sortir indemne"
 
 #. [label]
 #: data/gui/window/attack_predictions.cfg:185
@@ -3372,7 +3374,7 @@ msgstr "Unités"
 #. [toggle_button]: id=sort_5
 #: data/gui/window/game_stats.cfg:104
 msgid "Upkeep"
-msgstr ""
+msgstr "Entretien"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_6
@@ -3556,7 +3558,6 @@ msgstr "Copier ce rapport dans le presse-papier"
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:348
 #: data/gui/window/lua_interpreter.cfg:38
-#, fuzzy
 msgid "Lua Console"
 msgstr "Console Lua"
 
@@ -3843,8 +3844,9 @@ msgstr "Vider la console"
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:118
+#, fuzzy
 msgid "Clear the log area"
-msgstr ""
+msgstr "Effacer la zone de journalisation"
 
 #. [label]: id=title
 #: data/gui/window/mp_alerts_options.cfg:95
@@ -4178,8 +4180,9 @@ msgstr "Paramètres du jeu"
 
 #. [slider]: id=num_players
 #: data/gui/window/mp_create_game.cfg:702
+#, fuzzy
 msgid "Any"
-msgstr ""
+msgstr "Qu'importe"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:835
@@ -4268,7 +4271,7 @@ msgstr "Genre :"
 #: data/gui/window/mp_faction_select.cfg:167
 #: src/gui/dialogs/multiplayer/faction_select.cpp:151
 msgid "Random"
-msgstr ""
+msgstr "Aléatoire"
 
 #. [row]
 #. [toggle_button]: id=male_toggle
@@ -4319,8 +4322,9 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/mp_join_game.cfg:143 data/gui/window/mp_staging.cfg:157
+#, fuzzy
 msgid "<b>Faction:</b>"
-msgstr ""
+msgstr "<b>Faction :</b>"
 
 #. [label]
 #: data/gui/window/mp_join_game.cfg:175 data/gui/window/mp_staging.cfg:190
@@ -4329,8 +4333,9 @@ msgstr "<b>Genre : </b>"
 
 #. [button]: id=cancel
 #: data/gui/window/mp_join_game.cfg:347
+#, fuzzy
 msgid "Leave"
-msgstr ""
+msgstr "Quitter"
 
 #. [label]: id=title
 #: data/gui/window/mp_join_game.cfg:410 data/gui/window/mp_staging.cfg:552
@@ -4343,8 +4348,9 @@ msgstr "Vestibule"
 #: data/gui/window/mp_join_game.cfg:479 data/gui/window/mp_staging.cfg:614
 #: data/gui/window/mp_staging.cfg:806
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:463
+#, fuzzy
 msgid "Waiting for players to join..."
-msgstr ""
+msgstr "En attente de joueurs..."
 
 #. [label]: id=title
 #: data/gui/window/mp_join_game_password_prompt.cfg:42
@@ -4451,8 +4457,9 @@ msgstr "Sélectionner"
 
 #. [button]: id=select_leader
 #: data/gui/window/mp_staging.cfg:70
+#, fuzzy
 msgid "Select the faction and leader for this side"
-msgstr ""
+msgstr "Choisir la faction et le chef pour ce camp"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
@@ -4466,8 +4473,9 @@ msgstr "Changer le comportement de l'IA"
 
 #. [menu_button]: id=side_team
 #: data/gui/window/mp_staging.cfg:288
+#, fuzzy
 msgid "Which team this side belongs to"
-msgstr ""
+msgstr "À quelle équipe ce camp appartient-il"
 
 #. [menu_button]: id=side_color
 #: data/gui/window/mp_staging.cfg:304
@@ -4476,8 +4484,9 @@ msgstr "Couleur de l'équipe"
 
 #. [button]: id=ok
 #: data/gui/window/mp_staging.cfg:422
+#, fuzzy
 msgid "I’m Ready"
-msgstr ""
+msgstr "Je suis prêt"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:310
@@ -4632,8 +4641,9 @@ msgstr "Gérer le cache WML du jeu"
 
 #. [label]
 #: data/gui/window/preferences/02_hotkeys.cfg:25
+#, fuzzy
 msgid "Categories:"
-msgstr ""
+msgstr "Catégories :"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/preferences/02_hotkeys.cfg:81
@@ -4648,32 +4658,35 @@ msgstr "Raccourcis clavier"
 #. [toggle_button]: id=sort_2
 #: data/gui/window/preferences/02_hotkeys.cfg:104
 msgid "game_hotkeys^G"
-msgstr ""
+msgstr "G"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/window/preferences/02_hotkeys.cfg:105
+#, fuzzy
 msgid "Available in game"
-msgstr ""
+msgstr "Disponible en jeu"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/preferences/02_hotkeys.cfg:116
 msgid "editor_hotkeys^E"
-msgstr ""
+msgstr "E"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/preferences/02_hotkeys.cfg:117
+#, fuzzy
 msgid "Available in editor"
-msgstr ""
+msgstr "Disponible dans l'éditeur"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:128
 msgid "titlescreen_hotkeys^T"
-msgstr ""
+msgstr "T"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:129
+#, fuzzy
 msgid "Available at titlescreen"
-msgstr ""
+msgstr "Disponible dans l'écran d’accueil"
 
 #. [button]: id=btn_add_hotkey
 #: data/gui/window/preferences/02_hotkeys.cfg:241
@@ -4950,8 +4963,9 @@ msgstr "Signaler toute arrivée de joueur au vestibule"
 
 #. [button]: id=mp_alerts
 #: data/gui/window/preferences/05_multiplayer.cfg:149
+#, fuzzy
 msgid "Alerts"
-msgstr ""
+msgstr "Alertes"
 
 #. [button]: id=mp_alerts
 #: data/gui/window/preferences/05_multiplayer.cfg:150
@@ -4995,8 +5009,10 @@ msgstr "Enlever cet utilisateur de votre liste"
 
 #. [label]: id=no_friends_notice
 #: data/gui/window/preferences/05_multiplayer.cfg:311
+#, fuzzy
 msgid "You have not befriended or ignored any other players."
 msgstr ""
+"Vous n'avez pas ajouter de joueur à vos listes d'amis ou de joueurs ignorés"
 
 #. [button]: id=open
 #: data/gui/window/screenshot_notification.cfg:49
@@ -5027,43 +5043,39 @@ msgstr "Sauvegarder"
 
 #. [label]
 #: data/gui/window/select_orb_colors.cfg:80
+#, fuzzy
 msgid "Choose Orb/Minimap Colors"
-msgstr ""
+msgstr "Choisir le couleurs des Orbes/minicarte"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:84
 #, fuzzy
-#| msgid "Show Enemy Moves"
 msgid "Show unmoved orb"
-msgstr "Afficher les déplacements ennemis"
+msgstr "Affiche les orbes immobiles"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:85
 #, fuzzy
-#| msgid "Show team colors"
 msgid "Show partial moved orb"
-msgstr "Mettre en couleur les équipes"
+msgstr "Affiche les orbes partiellement déplacées"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:86
 #, fuzzy
-#| msgid "Show team colors"
 msgid "Show moved orb"
-msgstr "Mettre en couleur les équipes"
+msgstr "Affiche les orbes déplacées"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:87
 #, fuzzy
-#| msgid "Show all lobby joins"
 msgid "Show ally orb"
-msgstr "Afficher toutes les arrivées au vestibule"
+msgstr "Affiche les orbes alliées"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:88
 #, fuzzy
-#| msgid "Show Enemy Moves"
 msgid "Show enemy orb"
-msgstr "Afficher les déplacements ennemis"
+msgstr "Affiche les orbes ennemies"
 
 #. [label]
 #: data/gui/window/sp_options_configure.cfg:44
@@ -5072,8 +5084,10 @@ msgstr "Options de configuration"
 
 #. [label]
 #: data/gui/window/sp_options_configure.cfg:62
+#, fuzzy
 msgid "Configure settings for the selected custom modifications."
 msgstr ""
+"Configure les paramètres pour les modifications personnalisées sélectionnées."
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:129
@@ -5082,8 +5096,9 @@ msgstr "Dégât"
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:141
+#, fuzzy
 msgid "Overall"
-msgstr ""
+msgstr "Au global"
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:153
@@ -5108,8 +5123,9 @@ msgstr "Campagne"
 
 #. [button]: id=cancel
 #: data/gui/window/story_viewer.cfg:131
+#, fuzzy
 msgid "Skip"
-msgstr ""
+msgstr "Sauter"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -5124,18 +5140,21 @@ msgstr "Voulez-vous réellement vous rendre et quitter la partie ?"
 
 #. [button]: id=quit_and_surrender
 #: data/gui/window/surrender_quit.cfg:85
+#, fuzzy
 msgid "Surrender & Quit"
-msgstr ""
+msgstr "Se rendre et quitter"
 
 #. [label]: id=lblTitle
 #: data/gui/window/synced_choice_wait.cfg:40
+#, fuzzy
 msgid "Waiting..."
-msgstr ""
+msgstr "En attente..."
 
 #. [label]: id=lblMessage
 #: data/gui/window/synced_choice_wait.cfg:60
+#, fuzzy
 msgid "Waiting for remote input"
-msgstr ""
+msgstr "En attente d'information distante"
 
 #. [button]: id=btn_quit_game
 #: data/gui/window/synced_choice_wait.cfg:96
@@ -5145,7 +5164,7 @@ msgstr "Quitter la partie"
 #. [label]
 #: data/gui/window/terrain_layers.cfg:21
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:33
@@ -5166,12 +5185,12 @@ msgstr "Strate"
 #. [label]
 #: data/gui/window/terrain_layers.cfg:81
 msgid "Base.x"
-msgstr ""
+msgstr "Base.x"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:93
 msgid "Base.y"
-msgstr ""
+msgstr "Base.y"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:105
@@ -5186,8 +5205,9 @@ msgstr "Strates de terrain"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:384
+#, fuzzy
 msgid "Flags"
-msgstr ""
+msgstr "Drapeaux"
 
 #. [label]
 #: data/gui/window/theme_list.cfg:51
@@ -5433,64 +5453,79 @@ msgid "Details:"
 msgstr "Détails :"
 
 #: src/build_info.cpp:244
+#, fuzzy
 msgid "feature^Experimental OpenMP support"
-msgstr ""
+msgstr "Support OpenMP expérimental"
 
 #: src/build_info.cpp:249
+#, fuzzy
 msgid "feature^JPG screenshots"
-msgstr ""
+msgstr "Capture d'écran au format PNG"
 
 #: src/build_info.cpp:256
+#, fuzzy
 msgid "feature^Lua console completion"
-msgstr ""
+msgstr "Complétion de la console Lua"
 
 #: src/build_info.cpp:261
+#, fuzzy
 msgid "feature^Legacy bidirectional rendering"
-msgstr ""
+msgstr "Ancien rendu bidirectionnel"
 
 #: src/build_info.cpp:268
+#, fuzzy
 msgid "feature^D-Bus notifications back end"
-msgstr ""
+msgstr "Notification via le back-end D-Bus"
 
 #: src/build_info.cpp:277
+#, fuzzy
 msgid "feature^Win32 notifications back end"
-msgstr ""
+msgstr "Notification via le back-end Win32"
 
 #: src/build_info.cpp:283
+#, fuzzy
 msgid "feature^Cocoa notifications back end"
-msgstr ""
+msgstr "Notification via le back-end Cocoa"
 
 #: src/desktop/paths.cpp:96
+#, fuzzy
 msgid "filesystem_path_system^Volumes"
-msgstr ""
+msgstr "Volumes"
 
 #: src/desktop/paths.cpp:200
+#, fuzzy
 msgid "filesystem_path_game^Game executables"
-msgstr ""
+msgstr "Exécutables du jeu"
 
 #: src/desktop/paths.cpp:204
+#, fuzzy
 msgid "filesystem_path_game^Game data"
-msgstr ""
+msgstr "Données du jeu"
 
 #: src/desktop/paths.cpp:208
+#, fuzzy
 msgid "filesystem_path_game^User data"
-msgstr ""
+msgstr "Données utilisateur"
 
 #: src/desktop/paths.cpp:212
+#, fuzzy
 msgid "filesystem_path_game^User preferences"
-msgstr ""
+msgstr "Préférences utilisateur"
 
 #: src/desktop/paths.cpp:225
+#, fuzzy
 msgid "filesystem_path_system^Home"
-msgstr ""
+msgstr "Répertoire personnel"
 
 #: src/desktop/paths.cpp:234
+#, fuzzy
 msgid "filesystem_path_system^Root"
-msgstr ""
+msgstr "Racine"
 
 #: src/desktop/version.cpp:292
+#, fuzzy
 msgid "operating_system^<unknown>"
-msgstr ""
+msgstr "<inconnu>"
 
 #: src/font/text.cpp:789
 msgid "The text contains invalid markup: "
@@ -5498,43 +5533,51 @@ msgstr "Le texte contient une balise invalide : "
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:251
+#, fuzzy
 msgid "conjunct pair^$first and $second"
-msgstr ""
+msgstr "$first et $second"
 
 #. TRANSLATORS: Formats the first two elements of a conjunctive list.
 #: src/formula/string_utils.cpp:254
+#, fuzzy
 msgid "conjunct start^$first, $second"
-msgstr ""
+msgstr "$first, $second"
 
 #. TRANSLATORS: Formats successive elements of a conjunctive list.
 #: src/formula/string_utils.cpp:258
+#, fuzzy
 msgid "conjunct mid^$prefix, $next"
-msgstr ""
+msgstr "$prefix, $next"
 
 #. TRANSLATORS: Formats the final element of a conjunctive list.
 #: src/formula/string_utils.cpp:261
+#, fuzzy
 msgid "conjunct end^$prefix, and $last"
-msgstr ""
+msgstr "$prefix, et $last"
 
 #. TRANSLATORS: Formats a two-element disjunctive list.
 #: src/formula/string_utils.cpp:269
+#, fuzzy
 msgid "disjunct pair^$first or $second"
-msgstr ""
+msgstr "$first ou $second"
 
 #. TRANSLATORS: Formats the first two elements of a disjunctive list.
 #: src/formula/string_utils.cpp:272
+#, fuzzy
 msgid "disjunct start^$first, $second"
-msgstr ""
+msgstr "$first, $second"
 
 #. TRANSLATORS: Formats successive elements of a disjunctive list.
 #: src/formula/string_utils.cpp:276
+#, fuzzy
 msgid "disjunct mid^$prefix, $next"
-msgstr ""
+msgstr "$prefix, $next"
 
 #. TRANSLATORS: Formats the final element of a disjunctive list.
 #: src/formula/string_utils.cpp:279
+#, fuzzy
 msgid "disjunct end^$prefix, or $last"
-msgstr ""
+msgstr "$prefix, ou $last"
 
 #: src/gui/core/canvas.cpp:605
 msgid "Line doesn't fit on canvas."
@@ -5773,8 +5816,10 @@ msgstr "desc"
 #: src/gui/dialogs/lua_interpreter.cpp:488
 #: src/gui/dialogs/screenshot_notification.cpp:101
 #: src/gui/dialogs/wml_error.cpp:227
+#, fuzzy
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
+"Le support du presse-papier n'a pas été trouvé, contactez votre empaqueteur"
 
 #: src/gui/dialogs/addon/manager.cpp:448
 msgid "addons^Back to List"
@@ -5791,37 +5836,49 @@ msgid "No Add-ons Available"
 msgstr "Aucune extension disponible"
 
 #: src/gui/dialogs/addon/manager.cpp:496
+#, fuzzy
 msgid "There are no add-ons available for download from this server."
-msgstr ""
+msgstr "Il n'y a aucune extension disponible au téléchargement sur ce serveur."
 
 #: src/gui/dialogs/addon/manager.cpp:671
+#, fuzzy
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr ""
+"Les extensions suivantes semble avoir des informations de publication ou de "
+"contrôle de version stockées en local et ne seront pas supprimées :"
 
 #: src/gui/dialogs/addon/manager.cpp:679
+#, fuzzy
 msgid "The following add-on could not be deleted properly:"
-msgstr ""
+msgstr "Les extensions suivantes ne peuvent pas être supprimées proprement :"
 
 #: src/gui/dialogs/addon/manager.cpp:725
 msgid "Warning"
 msgstr "Avertissement"
 
 #: src/gui/dialogs/addon/manager.cpp:726
+#, fuzzy
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 msgstr ""
+"La version distante de cette extension est supérieure ou égale à la version "
+"en cours d'envoi.Voulez-vous continuer ?"
 
 #: src/gui/dialogs/addon/manager.cpp:735
+#, fuzzy
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
+"Chemin pour les icônes invalide. Vérifier que le chemin pointe vers une "
+"image valide."
 
 #: src/gui/dialogs/addon/manager.cpp:738 src/gui/dialogs/addon/manager.cpp:741
 #: src/gui/dialogs/addon/manager.cpp:780
+#, fuzzy
 msgid "The server responded with an error:"
-msgstr ""
+msgstr "Le serveur a répondu avec une erreur :"
 
 #: src/gui/dialogs/addon/manager.cpp:739
 msgid "Terms"
@@ -5833,10 +5890,14 @@ msgid "Response"
 msgstr "Réponse"
 
 #: src/gui/dialogs/addon/manager.cpp:768
+#, fuzzy
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
+"Supprimer '$addon|', effacera de façon permanente son comptage de "
+"téléchargement et d'envoi sur le serveur d'extension. Voulez-vous vraiment "
+"continuer ?"
 
 #: src/gui/dialogs/addon/manager.cpp:800
 msgid "Do you want to uninstall '$addon|'?"
@@ -6677,15 +6738,16 @@ msgstr "Identifiant du constructeur inconnu pour un nœud de l'arborescence."
 
 #: src/gui/widgets/unit_preview_pane.cpp:134
 msgid "Resistances: "
-msgstr ""
+msgstr "Résistances :"
 
 #: src/gui/widgets/unit_preview_pane.cpp:136
 msgid "(Att / Def)"
-msgstr ""
+msgstr "(Att / Def)"
 
 #: src/gui/widgets/unit_preview_pane.cpp:149
+#, fuzzy
 msgid "Movement Costs:"
-msgstr ""
+msgstr "Coût des mouvements :"
 
 #: src/gui/widgets/unit_preview_pane.cpp:212
 msgid "Attacks"
@@ -7648,6 +7710,10 @@ msgstr ""
 
 #~ msgid "Choose weapon:"
 #~ msgstr "Choix de l'arme :"
+
+#, fuzzy
+#~ msgid "feature^Growl notifications back end"
+#~ msgstr "Notification via le back-end Growl"
 
 #~ msgid "The maximum text width is less than 1."
 #~ msgstr "La largeur maximum du texte est inférieure à 1."
