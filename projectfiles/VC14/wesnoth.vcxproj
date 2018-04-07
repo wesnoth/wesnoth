@@ -2530,7 +2530,20 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)OGL\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)OGL\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\ogl\sprite.cpp" />
+    <ClCompile Include="..\..\src\ogl\shader.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)OGL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)OGL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)OGL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)OGL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)OGL\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ogl\sprite.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)OGL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)OGL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)OGL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)OGL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)OGL\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\ogl\texture.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)OGL\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)OGL\</ObjectFileName>
@@ -3887,6 +3900,7 @@
     <ClInclude Include="..\..\src\network_asio.hpp" />
     <ClInclude Include="..\..\src\ogl\context.hpp" />
     <ClInclude Include="..\..\src\ogl\draw_op.hpp" />
+    <ClInclude Include="..\..\src\ogl\shader.hpp" />
     <ClInclude Include="..\..\src\ogl\sprite.hpp" />
     <ClInclude Include="..\..\src\ogl\texture.hpp" />
     <ClInclude Include="..\..\src\ogl\utils.hpp" />
