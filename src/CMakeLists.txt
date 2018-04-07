@@ -277,6 +277,7 @@ if(ENABLE_GAME)
 	add_executable(wesnoth WIN32 wesnoth.cpp)
 
 	target_link_libraries(wesnoth
+		-Wl,--start-group
 		wesnoth-client
 		lua
 		wesnoth-core
@@ -284,6 +285,7 @@ if(ENABLE_GAME)
 		wesnoth-sdl
 		${WIDGETS_LIB}
 		wesnoth-client
+		-Wl,--end-group
 		${game-external-libs}
 	)
 	set_target_properties(wesnoth
@@ -357,6 +359,7 @@ if(ENABLE_TESTS)
 	add_executable(boost_unit_tests ${test_SRC})
 
 	target_link_libraries(boost_unit_tests
+		-Wl,--start-group
 		wesnoth-client
 		lua
 		wesnoth-core
@@ -364,6 +367,7 @@ if(ENABLE_TESTS)
 		wesnoth-sdl
 		${WIDGETS_LIB}
 		wesnoth-client
+		-Wl,--end-group
 		${game-external-libs}
 		boost_unit_test_framework
 	)
