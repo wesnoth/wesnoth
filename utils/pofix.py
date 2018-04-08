@@ -145,6 +145,7 @@ game_stringfixes = {
 # fixes added in 1.13.13+dev
 "wesnoth-sota" : (
 ("Gwillyn", "Gwyllin"),
+("Tarynth", "Tarrynth"),
 ),
 
 "wesnoth-sotbe" : (
