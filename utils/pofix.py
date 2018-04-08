@@ -181,6 +181,11 @@ game_stringfixes = {
 ("others.... An altar serves", "others... An altar serves"),
 ),
 
+# fixes added in 1.13.13+dev
+"wesnoth-sota" : (
+("Gwillyn", "Gwyllin"),
+),
+
 "wesnoth-sotbe" : (
 # fixes added in 1.12.0+dev
 ("Easier said then done, Chief. There are many humans in that city.", "Easier said than done, Chief. There are many humans in that city."),
