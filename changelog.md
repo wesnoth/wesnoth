@@ -12,6 +12,7 @@
    * Fixed regression where unit filters in [disable] weapon specials would not
      match the attacking unit.
    * Fixed images with no alpha channel rendering incorrectly.
+   * Fixed unit selection not persisting between uses of Create Unit.
 
 ## Version 1.13.13
  ### Campaigns
