@@ -49,6 +49,7 @@
    * Support lists for special and special_active in SWF
    * Support usage and alignment in SUF
    * Deprecate [replace_map]map= in favor of map_data=
+   * Add u and v variables in ~ADJUST_ALPHA() and ~CHAN()
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
    * Fixed events with an id but no name being rejected
