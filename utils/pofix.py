@@ -185,6 +185,7 @@ game_stringfixes = {
 "wesnoth-sota" : (
 ("Gwillyn", "Gwyllin"),
 ("Tarynth", "Tarrynth"),
+("Vash Gorn", "Vash-Gorn"),
 ),
 
 "wesnoth-sotbe" : (
