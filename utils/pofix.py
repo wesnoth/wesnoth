@@ -115,7 +115,7 @@ game_stringfixes = {
 ("What secret Delfador?", "What secret, Delfador?"),
 ("I High Provost", "I, High Provost"),
 ("both a great combatant and leader", "both a great combatant and a leader"),
-("You must lead your men to the city and help defend it. Or recapture it if it falls before you arrive.", "You must lead your men to the city. Help defend it, or recapture it if it falls before you arrive!")
+("You must lead your men to the city and help defend it. Or recapture it if it falls before you arrive.", "You must lead your men to the city. Help defend it, or recapture it if it falls before you arrive!"),
 # fix added in 1.13.11+dev
 ("with the greatest generals, and battle tactics", "with the greatest generals and battle tactics"),
 ),
@@ -144,9 +144,7 @@ game_stringfixes = {
 
 # fixes added in 1.13.13+dev
 "wesnoth-sota" : (
-("Gwillyn", "Gwyllin"),
-("Tarynth", "Tarrynth"),
-("Vash Gorn", "Vash-Gorn"),
+("Welcome to my laboratory, Ardonna of Tarynth", "Welcome to my laboratory, Ardonna of Tarrynth"),
 ),
 
 "wesnoth-sotbe" : (
