@@ -183,9 +183,7 @@ game_stringfixes = {
 
 # fixes added in 1.13.13+dev
 "wesnoth-sota" : (
-("Gwillyn", "Gwyllin"),
-("Tarynth", "Tarrynth"),
-("Vash Gorn", "Vash-Gorn"),
+("Welcome to my laboratory, Ardonna of Tarynth", "Welcome to my laboratory, Ardonna of Tarrynth"),
 ),
 
 "wesnoth-sotbe" : (
