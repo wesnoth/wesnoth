@@ -2,6 +2,8 @@
  ### Campaigns
    * Eastern Invasion
      * Fixed some Lua errors in S05.
+   * Secrets of the Ancients
+     * Fixed several inconsistently spelled names.
    * The Hammer of Thursagan
      * Fixed a misplaced door image in S12.
      * S12 Fixed enemies from ai6 (south-east lich) going to the book (spider) room
