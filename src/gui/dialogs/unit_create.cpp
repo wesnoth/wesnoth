@@ -137,7 +137,7 @@ void unit_create::pre_show(window& window)
 		list.add_row(row_data);
 
 		// Select the previous choice, if any.
-		if(choice_.empty() != true && choice_ == i.first) {
+		if(!choice_.empty() && choice_ == i.first) {
 			list.select_last_row();
 		}
 	}
@@ -150,7 +150,8 @@ void unit_create::pre_show(window& window)
 	list.register_translatable_sorting_option(0, [this](const int i) { return (*units_[i]).race()->plural_name().str(); });
 	list.register_translatable_sorting_option(1, [this](const int i) { return (*units_[i]).type_name().str(); });
 
-	list.set_active_sorting_option({0, listbox::SORT_ASCENDING}, true);
+	// Select the first entry on sort if no previous selection was provided.
+	list.set_active_sorting_option({0, listbox::SORT_ASCENDING}, choice_.empty());
 
 	list_item_clicked(window);
 }
