@@ -232,6 +232,8 @@ public:
 	{
 		add_input(inputs, "x");
 		add_input(inputs, "y");
+		add_input(inputs, "u");
+		add_input(inputs, "v");
 		add_input(inputs, "red");
 		add_input(inputs, "green");
 		add_input(inputs, "blue");
@@ -259,6 +261,10 @@ public:
 			return variant(w);
 		} else if(key == "height") {
 			return variant(h);
+		} else if(key == "u") {
+			return variant(p.x / float(w));
+		} else if(key == "v") {
+			return variant(p.y / float(h));
 		}
 
 		return variant();
