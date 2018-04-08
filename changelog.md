@@ -7,6 +7,7 @@
    * Updated translations: French, Polish
  ### User Interface
    * Swapped the position and formatting of game names and titles in the MP lobby.
+   * Made Faction Select button's purpose more clear in MP Staging.
  ### Miscellaneous and bug fixes
    * Removed the Font Scaling preference. It was too buggy (issues #2792 and #1624).
    * Fixed regression where unit filters in [disable] weapon specials would not
