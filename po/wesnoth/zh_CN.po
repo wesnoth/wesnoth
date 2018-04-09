@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2017 Wesnoth development team
+# Copyright (C) 2005-2018 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # jan2xue <75jan@163.com>, 2005.
 # Huang Huan <unicon221@gmail.com>, 2005.
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-04-01 02:37+0300\n"
-"PO-Revision-Date: 2018-03-27 21:48+0800\n"
+"PO-Revision-Date: 2018-04-08 18:59+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -8271,14 +8271,14 @@ msgstr[1] "$number|伤害"
 #: src/units/attack_type.cpp:374
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span> 次打击"
-msgstr[1] "<span color=\"$color\">$number_or_percent</span> 次打击"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span>打击数"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span>打击次数"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:383
 msgid "$number strike"
 msgid_plural "$number strikes"
-msgstr[0] "$number|次打击"
+msgstr[0] "$number|打击数"
 msgstr[1] "$number|次打击"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
@@ -8305,14 +8305,14 @@ msgstr "<span color=\"$color\">$number_or_percent</span>格挡"
 #: src/units/attack_type.cpp:420
 msgid "$number movement point"
 msgid_plural "$number movement points"
-msgstr[0] "$number|点移动力"
+msgstr[0] "$number|移动力"
 msgstr[1] "$number|点移动力"
 
 #. TRANSLATORS: Current value for WML code increase_movement, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:429
 msgid "<span color=\"$color\">$number_or_percent movement</span> point"
 msgid_plural "<span color=\"$color\">$number_or_percent movement</span> points"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span>点移动力"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span>移动力"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span>点移动力"
 
 #: src/units/types.cpp:545 src/units/types.hpp:181
@@ -8358,8 +8358,8 @@ msgstr "<span color=\"$color\">$number_or_percent</span>生命"
 #: src/units/unit.cpp:1801
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span>次行动"
-msgstr[1] "<span color=\"$color\">$number_or_percent</span>次行动"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span>行动数"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span>行动数"
 
 #: src/units/unit.cpp:1807
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
@@ -8371,14 +8371,14 @@ msgstr "<span color=\"$color\">$number_or_percent</span>干扰"
 
 #: src/units/unit.cpp:1816
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
-msgstr "<span color=\"$color\">$number_or_percent</span>点经验以升级"
+msgstr "<span color=\"$color\">$number_or_percent</span>升级所需经验"
 
 #: src/units/unit.cpp:1820
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span>次攻击/回合"
-msgstr[1] "<span color=\"$color\">$number_or_percent</span>次攻击/回合"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span>每回合攻击数"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span>每回合攻击数"
 
 #: src/units/unit.cpp:1827
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
