@@ -100,7 +100,6 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 
 	// Set the team name lists and modify the original level sides if necessary.
 	std::vector<std::string> original_team_names;
-	std::string team_prefix(_("Team") + " ");
 
 	int side_count = 1;
 	for(config& side : sides) {
@@ -140,7 +139,7 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 				team_name = "Team " + std::to_string(std::distance(original_team_names.begin(), name_itor) + 1);
 			}
 
-			user_team_name = team_prefix + side_str;
+			user_team_name = VGETTEXT("Team $num", {{"num", side_str}});
 		}
 
 		// Write the serialized translatable team name back to the config. Without this,
