@@ -34,6 +34,7 @@
 #include "gui/widgets/listbox.hpp"
 #endif
 #include "formatter.hpp"
+#include "formula/string_utils.hpp"
 #include "game_config.hpp"
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/settings.hpp"
@@ -727,14 +728,15 @@ void mp_create_game::update_details(window& win)
 			find_widget<stacked_widget>(&win, "minimap_stack", false).select_layer(1);
 			find_widget<image>(&win, "campaign_image", false).set_image(img);
 
-			std::stringstream players_str;
-			players_str << current_campaign->min_players();
+			const int p_min = current_campaign->min_players();
+			const int p_max = current_campaign->max_players();
 
-			if(current_campaign->max_players() != current_campaign->min_players()) {
-				players_str << " to " << current_campaign->max_players();
+			if(p_max > p_min) {
+				players.set_label(VGETTEXT("$min to $max", {{"min", std::to_string(p_min)}, {"max", std::to_string(p_max)}}));
+			} else {
+				players.set_label(std::to_string(p_min));
 			}
 
-			players.set_label(players_str.str());
 			map_size.set_label(font::unicode_em_dash);
 
 			break;
