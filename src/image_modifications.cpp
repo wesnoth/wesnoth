@@ -21,6 +21,7 @@
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+#include "team.hpp"
 
 #include "formula/formula.hpp"
 #include "formula/callable.hpp"
@@ -642,23 +643,10 @@ REGISTER_MOD_PARSER(TC, args)
 		return nullptr;
 	}
 
-	int side_n = lexical_cast_default<int>(params[0], -1);
-	std::string team_color;
+	const int side_n = lexical_cast_default<int>(params[0], -1);
 	if(side_n < 1) {
-		ERR_DP << "invalid team (" << side_n
-		       << ") passed to the ~TC() function\n";
+		ERR_DP << "Invalid side (" << side_n << ") passed to the ~TC() function\n";
 		return nullptr;
-	} else if(side_n <= static_cast<int>(image::get_team_colors().size())) {
-		team_color = image::get_team_colors()[side_n - 1];
-	} else {
-		// This side is not initialized; use default "n"
-		try {
-			team_color = std::to_string(side_n);
-		} catch(const bad_lexical_cast&) {
-			ERR_DP << "bad things happen" << std::endl;
-
-			return nullptr;
-		}
 	}
 
 	//
@@ -674,7 +662,7 @@ REGISTER_MOD_PARSER(TC, args)
 
 	color_range_map rc_map;
 	try {
-		const color_range& new_color = game_config::color_info(team_color);
+		const color_range& new_color = team::get_side_color_range(side_n);
 		const std::vector<color_t>& old_color = game_config::tc_info(params[1]);
 
 		rc_map = recolor_range(new_color,old_color);
