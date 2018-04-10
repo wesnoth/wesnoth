@@ -47,7 +47,9 @@
 # define GETTEXT_DOMAIN ""
 #endif
 
-#if defined(__GNUCC__) || defined(__clang__) || defined(__MINGW32__)
+#ifdef HAVE_CXX17
+#define UNUSEDNOWARN [[maybe_unused]]
+#elif defined(__GNUCC__) || defined(__clang__) || defined(__MINGW32__)
 #define UNUSEDNOWARN __attribute__((unused))
 #else
 #define UNUSEDNOWARN
