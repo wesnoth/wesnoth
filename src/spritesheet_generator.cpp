@@ -85,8 +85,8 @@ void build_sheet_from_images(const std::vector<std::string>& file_paths)
 	std::vector<sheet_elment_data> packaged_data;
 	packaged_data.reserve(surf_path_map.size());
 
-	std::vector<unsigned> max_row_heights;
 	unsigned current_row_max_height = 0;
+	unsigned total_height = 0;
 
 	point origin(0, 0);
 
@@ -107,7 +107,7 @@ void build_sheet_from_images(const std::vector<std::string>& file_paths)
 			origin.y += current_row_max_height;
 
 			// Save this row's max height.
-			max_row_heights.push_back(current_row_max_height);
+			total_height += current_row_max_height;
 			current_row_max_height = 0;
 		}
 
@@ -121,16 +121,10 @@ void build_sheet_from_images(const std::vector<std::string>& file_paths)
 		origin.x += r.w;
 	}
 
-	// If we never reached max width during rect placement, max_row_heights will be empty.
-	// In that case, that forces res_h below to be 0. Add the current max height to compensate.
-	// TODO: maybe we should just handle a 0 value in res_h's calculation?
-	if(max_row_heights.empty()) {
-		max_row_heights.push_back(current_row_max_height);
-	}
-
+	// If we never reached max width during rect placement, total_height will be empty.
+	// In that case, fall back to the row's max height.
 	const unsigned res_w = side_length;
-	const unsigned res_h = std::min<unsigned>(side_length, std::accumulate(max_row_heights.begin(), max_row_heights.end(), 0,
-		[](const int val, const unsigned h) { return val + h; }));
+	const unsigned res_h = total_height > 0 ? std::min<unsigned>(side_length, total_height) : current_row_max_height;
 
 	// Check that we won't exceed max texture size and that neither dimension is 0. TODO: handle?
 	assert(res_w > 0 && res_w <= 8192 && res_h > 0 && res_h <= 8192);
