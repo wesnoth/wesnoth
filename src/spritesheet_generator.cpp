@@ -25,6 +25,8 @@
 #include <algorithm>
 #include <iostream>
 #include <map>
+#include <mutex>
+#include <thread>
 
 namespace image
 {
@@ -35,7 +37,7 @@ struct sheet_elment_data
 	/**
 	 * The spritesheet.
 	 *
-	 * Do note The texture class is really a "texture reference" class; it only
+	 * Do note the texture class is really a "texture reference" class; it only
 	 * owns a shared pointer to the actual texture in memory. Therefor, having
 	 * this object does not mean we're keeping multiple copies of each sheet.
 	 */
@@ -63,13 +65,37 @@ void build_sheet_from_images(const std::vector<std::string>& file_paths)
 	std::vector<sheet_build_helper> surfs;
 	surfs.reserve(file_paths.size());
 
-	// Load all the images.
-	for(const auto& f : file_paths) {
-		surface temp = image::get_image(f);
+	std::vector<std::thread> loader_threads;
+	loader_threads.reserve(surfs.size());
 
-		if(!temp.null()) {
-			surfs.push_back({ std::move(temp), f});
-		}
+	std::mutex surf_list_lock;
+
+	// Load each image in a separate thread.
+	for(const auto& f : file_paths) {
+		// TODO: image::load_from_disk isn't fully thread-safe since it creates a
+		// temportary locator object. locator::init_index modifies a global state map,
+		// which forces the thread into an endless loop. We should cache management
+		// from the locator class, but for now we need to create the locator in the
+		// main thread. The captured f parameter should replace this once the treading
+		// issues are sorted.
+		const image::locator loc(f);
+
+		loader_threads.emplace_back([&surf_list_lock, &surfs, f, loc]() {
+			// Load image directly. We don't need it added to the surface cache.
+			surface temp = image::load_from_disk(loc);
+
+			// Lock AFTER image loading. That can happen concurrently but the vector access can't.
+			std::lock_guard<std::mutex> lock(surf_list_lock);
+
+			if(!temp.null()) {
+				surfs.push_back({ std::move(temp), f});
+			}
+		});
+	}
+
+	// Wait for all loader theads to finish.
+	for(auto& thread : loader_threads) {
+		thread.join();
 	}
 
 	if(surfs.empty()) {
@@ -195,6 +221,7 @@ void build_spritesheet_from_impl(const std::string& dir, const std::string& subd
 }
 
 } // end anon namespace
+
 void build_spritesheet_from(const std::string& subdir)
 {
 #ifdef DEBUG_SPRITESHEET_OUTPUT
