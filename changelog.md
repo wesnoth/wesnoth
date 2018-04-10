@@ -52,6 +52,7 @@
    * Add u and v variables in ~ADJUST_ALPHA() and ~CHAN()
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
+   * Fixed some hotkeys triggering multiple commands on GNU/Linux (bug #1736)
    * Fixed events with an id but no name being rejected
    * Fixed assertion when using [inspect]
    * Fixed inability to deselect modifications in single-player
