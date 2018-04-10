@@ -8,6 +8,8 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
      * S12 Fixed enemies from ai6 going to the book room
  ### Language and i18n
    * Updated translations: Chinese (Simplified), French, Polish.
+ ### Miscellaneous and bug fixes
+   * Fixed some hotkeys triggering multiple commands on GNU/Linux (bug #1736).
 
 
 ## Version 1.13.13
