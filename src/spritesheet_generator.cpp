@@ -45,13 +45,14 @@ struct sheet_elment_data
 	SDL_Rect rect;
 };
 
-/** Helper sorting struct for build_sheet_from_images to use. */
-struct surf_area_sort
+/** Intermediate helper struct to manage surfaces while the sheet is being assembled. */
+struct sheet_build_helper
 {
-	bool operator()(const surface& lhs, const surface& rhs) const
-	{
-		return lhs->w * lhs->h < rhs->w * rhs->h;
-	}
+	/** Image. */
+	surface surf;
+
+	/** File path. */
+	std::string path;
 };
 
 /** Map of path to rect. */
@@ -59,31 +60,34 @@ std::map<std::string, sheet_elment_data> path_sheet_mapping;
 
 void build_sheet_from_images(const std::vector<std::string>& file_paths)
 {
-	// Surface -> [path, sheet element data] map, sorted by surface area (largest last).
-	// TODO: simplify
-	std::multimap<surface, std::pair<std::string, sheet_elment_data>, surf_area_sort> surf_path_map;
+	std::vector<sheet_build_helper> surfs;
+	surfs.reserve(file_paths.size());
 
 	// Load all the images.
 	for(const auto& f : file_paths) {
 		surface temp = image::get_image(f);
 
 		if(!temp.null()) {
-			std::pair<std::string, sheet_elment_data> another_temp(f, {});
-			surf_path_map.emplace(std::move(temp), another_temp);
+			surfs.push_back({ std::move(temp), f});
 		}
 	}
 
-	if(surf_path_map.empty()) {
+	if(surfs.empty()) {
 		return;
 	}
 
-	const unsigned total_area = std::accumulate(surf_path_map.begin(), surf_path_map.end(), 0,
-		[](const int val, const auto& s) { return val + (s.first->w * s.first->h); });
+	// Sort the surfaces by area, largest last.
+	// TODO: should we use plain sort? Output sheet seems ever so slightly smaller when sort is not stable.
+	std::stable_sort(surfs.begin(), surfs.end(),
+		[](const auto& lhs, const auto& rhs) { return lhs.surf->w * lhs.surf->h < rhs.surf->w * rhs.surf->h; });
+
+	const unsigned total_area = std::accumulate(surfs.begin(), surfs.end(), 0,
+		[](const int val, const auto& s) { return val + (s.surf->w * s.surf->h); });
 
 	const unsigned side_length = static_cast<unsigned>(std::sqrt(total_area) * 1.3);
 
 	std::vector<sheet_elment_data> packaged_data;
-	packaged_data.reserve(surf_path_map.size());
+	packaged_data.reserve(surfs.size());
 
 	unsigned current_row_max_height = 0;
 	unsigned total_height = 0;
@@ -95,8 +99,8 @@ void build_sheet_from_images(const std::vector<std::string>& file_paths)
 	// This uses the Shelf Next Fit algorithm as described here: http://clb.demon.fi/files/RectangleBinPack.pdf
 	// Our method forgoes the orientation consideration and works top-down instead of bottom-up, however.
 	//
-	for(auto& iter : surf_path_map) {
-		SDL_Rect r = get_non_transparent_portion(iter.first);
+	for(const auto& s : surfs) {
+		SDL_Rect r = get_non_transparent_portion(s.surf);
 
 		current_row_max_height = std::max<unsigned>(current_row_max_height, r.h);
 
@@ -115,11 +119,13 @@ void build_sheet_from_images(const std::vector<std::string>& file_paths)
 		r.y = origin.y;
 
 		// Save this element's rect.
-		iter.second.second.rect = r;
+		packaged_data.push_back({ { /* Texture will be added later.*/ }, r });
 
 		// Shift the rect origin for the next element.
 		origin.x += r.w;
 	}
+
+	assert(surfs.size() == packaged_data.size());
 
 	// If we never reached max width during rect placement, total_height will be empty.
 	// In that case, fall back to the row's max height.
@@ -133,12 +139,11 @@ void build_sheet_from_images(const std::vector<std::string>& file_paths)
 	surface res = create_neutral_surface(res_w, res_h);
 	assert(!res.null() && "Spritesheet surface is null!");
 
-	for(auto& iter : surf_path_map) {
-		const surface& s = iter.first;
-		sheet_elment_data& data = iter.second.second;
+	for(unsigned i = 0; i < surfs.size(); ++i) {
+		const surface& s = surfs[i].surf;
 
 		SDL_Rect src_rect = get_non_transparent_portion(s);
-		sdl_blit(s, &src_rect, res, &data.rect);
+		sdl_blit(s, &src_rect, res, &packaged_data[i].rect);
 	}
 
 #ifdef DEBUG_SPRITESHEET_OUTPUT
@@ -150,16 +155,12 @@ void build_sheet_from_images(const std::vector<std::string>& file_paths)
 	texture sheet_tex(res);
 
 	// Add path mappings.
-	for(auto& iter : surf_path_map) {
+	for(unsigned i = 0; i < packaged_data.size(); ++i) {
 		// Copy a texture reference;
-		sheet_elment_data& data = iter.second.second;
+		sheet_elment_data& data = packaged_data[i];
 		data.sheet = sheet_tex;
 
-#ifdef HAVE_CXX17
-		path_sheet_mapping.insert(std::exchange(iter->second, {}));
-#else
-		path_sheet_mapping.emplace(iter.second.first, data);
-#endif
+		path_sheet_mapping.emplace(surfs[i].path, data);
 	}
 }
 
