@@ -750,10 +750,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 	plugins.set_callback("exit", [](const config& cfg) { safe_exit(cfg["code"].to_int(0)); }, false);
 
 	for(;;) {
-		// reset the TC, since a game can modify it, and it may be used
-		// by images in add-ons or campaigns dialogs
-		image::set_team_colors();
-
 		statistics::fresh_stats();
 
 		if(!game->is_loading()) {

@@ -168,13 +168,6 @@ namespace image {
 	///for representing day/night. Invalidates all scaled images.
 	void set_color_adjustment(int r, int g, int b);
 
-	///set the team colors used by the TC image modification
-	///use a vector with one string for each team
-	///using nullptr will reset to default TC
-	void set_team_colors(const std::vector<std::string>* colors = nullptr);
-
-	const std::vector<std::string>& get_team_colors();
-
 	///sets the amount scaled images should be scaled. Invalidates all
 	///scaled images.
 	void set_zoom(unsigned int zoom);

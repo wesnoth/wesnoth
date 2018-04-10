@@ -188,17 +188,9 @@ void display::init_flags()
 
 	flags_.resize(dc_->teams().size());
 
-	std::vector<std::string> side_colors;
-	side_colors.reserve(dc_->teams().size());
-
 	for(const team& t : dc_->teams()) {
-		std::string side_color = t.color();
-		side_colors.push_back(side_color);
-
-		init_flags_for_side_internal(t.side() - 1, side_color);
+		init_flags_for_side_internal(t.side() - 1, t.color());
 	}
-
-	image::set_team_colors(&side_colors);
 }
 
 void display::reinit_flags_for_side(std::size_t side)

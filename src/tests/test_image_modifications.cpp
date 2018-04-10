@@ -40,7 +40,6 @@ public:
 		, paths_manager_()
 	{
 		set_up_color_info();
-		set_up_team_colors();
 		set_up_image_paths();
 	}
 
@@ -62,20 +61,6 @@ private:
 						  "Blue"));
 
 		game_config::add_color_info(cfg);
-	}
-
-	/** Sets up team color mapping
-	 *
-	 * This is required by TC modification
-	 */
-	static void set_up_team_colors()
-	{
-		std::vector<std::string> tc;
-
-		tc.push_back("red");
-		tc.push_back("blue");
-
-		image::set_team_colors(&tc);
 	}
 
 	/** Sets up the paths later used to load images
