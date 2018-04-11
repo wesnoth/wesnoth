@@ -5,15 +5,15 @@
 #
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2012, 2013, 2014, 2016.
+# Adrian Chaves <adrian@chaves.io>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-31 23:37 UTC\n"
-"PO-Revision-Date: 2016-02-06 20:02+0100\n"
-"Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
-"com>\n"
-"Language-Team: Galician <proxecto@trasno.gal>\n"
+"PO-Revision-Date: 2018-04-10 22:24+0100\n"
+"Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
+"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,10 +54,8 @@ msgstr "Nivel experto, 10 escenarios."
 # loitador do deserto FIXADO
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
-#, fuzzy
-#| msgid "Desert Fighter"
 msgid "Fighter"
-msgstr "Loitador do deserto"
+msgstr "Loitador"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
@@ -73,18 +71,14 @@ msgstr "Esixente"
 #. [advancement]: id=warrior_1
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:33
-#, fuzzy
-#| msgid "Arisen Warrior"
 msgid "Warrior"
-msgstr "Guerreiro erguido"
+msgstr "Guerreiro"
 
 # campión do deserto
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:28
-#, fuzzy
-#| msgid "Desert Champion"
 msgid "Champion"
-msgstr "Campión do deserto"
+msgstr "Campión"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:28
@@ -125,7 +119,7 @@ msgid ""
 "\n"
 "Units cannot be killed or deal no damage as a result of dehydration."
 msgstr ""
-"deshidratada: Esta unidade está deshidratada. Perderá 4 puntos de vida e 1 "
+"Deshidratada: Esta unidade está deshidratada. Perderá 4 puntos de vida e 1 "
 "punto de dao cada rolda durante o día, a menos que o evite unha sandadora ou "
 "que pase a rolda na auga dun oasis.\n"
 "\n"
@@ -136,7 +130,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:20
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
 msgstr ""
-"Atordado: esta unidade está atordada, e non pode exercer a súa zona de "
+"Atordada: esta unidade está atordada, e non pode exercer a súa zona de "
 "control."
 
 #. [lua]: wesnoth.theme_items.unit_status
@@ -145,6 +139,9 @@ msgid ""
 "dazed: This unit is dazed. It suffers a -10% penalty to both its defense and "
 "chance to hit (except for magical attacks)."
 msgstr ""
+"Confusa: A unidade está perplexa. Sofre unha penalización de -10% tanto á "
+"súa defensa como á súa probabilidade de atinar (salvo no caso de ataques "
+"máxicos)."
 
 #. [scenario]: id=01_The_Morning_After
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:5
@@ -250,8 +247,6 @@ msgstr "Obxectivos iniciais:"
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:104
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1098
-#, fuzzy
-#| msgid "Rescue Surviving Elves"
 msgid "Rescue surviving elves"
 msgstr "Rescata aos elfos superviventes."
 
@@ -1460,8 +1455,6 @@ msgstr "Non mortos"
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:184
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1426
-#, fuzzy
-#| msgid "Kaleh Must Reach the Northern Edge of the Desert"
 msgid "Kaleh must reach the northern edge of the desert"
 msgstr "Leva a Cälé ao límite norte."
 
@@ -2187,8 +2180,6 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1430
-#, fuzzy
-#| msgid "Defeat Outlaw Leader"
 msgid "Defeat outlaw leader"
 msgstr "Derrota ao líder dos proscritos."
 
@@ -2538,15 +2529,11 @@ msgstr "Derrotar a Histara."
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:228
-#, fuzzy
-#| msgid "Survive Until Dawn (or)"
 msgid "Survive until dawn"
-msgstr "Sobrevivir ata o amencer, ou"
+msgstr "Sobrevivir ata o amencer."
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:234
-#, fuzzy
-#| msgid "Defeat all Undead Leaders"
 msgid "Defeat all undead leaders"
 msgstr "Derrotar a todos os líderes non mortos."
 
@@ -3049,10 +3036,8 @@ msgstr "Si, acabemos con isto dunha vez por todas."
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1093
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1218
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1347
-#, fuzzy
-#| msgid "Defeat Possessed Garak (or)"
 msgid "Defeat Possessed Garak"
-msgstr "Derrota ao Garan posuído, ou"
+msgstr "Derrota ao Garan posuído."
 
 #. [message]: speaker=Azkotep
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1041
@@ -4033,6 +4018,8 @@ msgid ""
 "Remember, Kaleh, it’s nasty fighting underground. We will be at a "
 "disadvantage against orcs and other things that prefer the darkness."
 msgstr ""
+"Lembra, Cälé, loitar baixo terra non é bonito. Estaremos en desvantaxe "
+"contra orcos e outras cousas que prefiren a escuridade."
 
 #. [message]: speaker=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:746
@@ -4315,15 +4302,11 @@ msgstr "Ananos"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:308
-#, fuzzy
-#| msgid "Explore Underground"
 msgid "Explore underground"
 msgstr "Explorar as covas."
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:312
-#, fuzzy
-#| msgid "Defeat troll leaders"
 msgid "Defeat enemy leaders"
 msgstr "Derrota aos líderes dos trolles."
 
@@ -5682,8 +5665,6 @@ msgstr "Anano aliado"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:187
-#, fuzzy
-#| msgid "Kill Troll Leader"
 msgid "Kill troll leader"
 msgstr "Matar ao líder dos trolles."
 
@@ -5994,16 +5975,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:974
-#, fuzzy
-#| msgid ""
-#| "Any unit that ends its turn on a lava hex, except the Desert Shyde and "
-#| "Star who can fly over the lava, will take 25 damage at the beginning of "
-#| "the next turn. This lava damage can kill units. Desert Shydes and Stars "
-#| "will just take $heat_damage damage per turn when flying over lava, though "
-#| "they too can die if they spend too much time over lava. Also because of "
-#| "the heat in the cavern, all units on cave floor hexes will take "
-#| "$heat_damage damage at the start of each turn. This heat damage can "
-#| "reduce a unit to 1 hit point, but it can’t kill it."
 msgid ""
 "Any unit that ends its turn on a lava hex, except those who can fly over the "
 "lava, will take 25 damage at the beginning of the next turn. This lava "
@@ -6014,14 +5985,13 @@ msgid ""
 "heat damage can reduce a unit to 1 hit point, but it can’t kill it."
 msgstr ""
 "Calquera unidade que remate a quenda nun hexágono de lava, coas excepcións "
-"das fuxidía ou a estrela do deserto —que poden voar—, sufrirá 25 puntos de "
-"dano ao comezo da seguinte rolda. Este dano poderá matar unidades. As "
-"fuxidías e as estrelas do deserto só sufrirán $heat_damage puntos de dano "
-"por rolda ao voar sobre lava, aínda que o dano tamén poderá acabar coa súa "
-"vida. Ademais, debido á calor que vai na caverna, todas as unidades nela "
-"pero fóra da lava sufrirán $heat_damage puntos de dano ao comezo de cada "
-"rolda. O dano pola calor pode reducir a vida das unidades a 1, pero non "
-"matalas."
+"de quen poden voar, sufrirá 25 puntos de dano ao comezo da seguinte rolda. "
+"Este dano poderá matar unidades. As unidades voadoras só sufrirán "
+"$heat_damage puntos de dano por rolda ao voar sobre lava, aínda que o dano "
+"tamén poderá acabar coa súa vida. Ademais, debido á calor que vai na "
+"caverna, todas as unidades nela pero fóra da lava sufrirán $heat_damage "
+"puntos de dano ao comezo de cada rolda. O dano pola calor pode reducir a "
+"vida das unidades a 1, pero non matalas."
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1002
@@ -6425,16 +6395,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1903
-#, fuzzy
-#| msgid ""
-#| "For a troll this is quite an ornate tomb. The coffin itself is quite "
-#| "impressive. Inside, the skeleton has crumbled to dust and there are a few "
-#| "colored stones and trinkets, but what really sticks out is this emerald "
-#| "wand. I don’t have much experience with magical items, but the asp with "
-#| "emerald eyes and large fangs carved around its shaft leave little doubt "
-#| "as to its power. We don’t normally tolerate using poison, but extreme "
-#| "circumstances call for extreme measures and I have a feeling we may find "
-#| "this useful before our journey is over."
 msgid ""
 "For a troll this is quite an ornate tomb. The coffin itself is quite "
 "impressive. Inside, the skeleton has crumbled to dust and there are a few "
@@ -6448,9 +6408,8 @@ msgstr ""
 "cores, pero salienta sobre todo unha vara de cor esmeralda. Non teño moita "
 "experiencia en obxectos máxicos, pero a serpe con ollos de esmeralda e "
 "enormes cairos que hai tallada arredor da súa caixa non deixa dúbidas sobre "
-"o seu poder. Non adoitamos permitir o uso de veleno, pero a circunstancias "
-"extremas, medidas extremas, e teño o sentimento de que nos será de grande "
-"utilidade na nosa viaxe."
+"o seu poder. Teño a sensación de que nos será de grande utilidade na nosa "
+"viaxe."
 
 #. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1905
@@ -6534,8 +6493,6 @@ msgstr "Anano xefe"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:235
-#, fuzzy
-#| msgid "Kill Dwarf Chieftain"
 msgid "Kill dwarf chieftain"
 msgstr "Matar ao xefe dos ananos."
 
@@ -7314,8 +7271,6 @@ msgstr "Rei Dúrongar"
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:72
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:72
-#, fuzzy
-#| msgid "Choose a Unit to Take the Fire Blade"
 msgid "Choose a unit to take the Fire Blade"
 msgstr "Escolle unha unidade para portar a folla de lume."
 
@@ -8138,8 +8093,6 @@ msgstr "Aliado humano"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:392
-#, fuzzy
-#| msgid "Escape the Caves"
 msgid "Escape the caves"
 msgstr "Foxe das covas."
 
@@ -9857,8 +9810,6 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2684
-#, fuzzy
-#| msgid "Explore Outside"
 msgid "Explore outside"
 msgstr "Explorar o exterior."
 
@@ -10755,10 +10706,8 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3596
-#, fuzzy
-#| msgid "If a human messenger escapes the valley"
 msgid "A human messenger escapes the valley"
-msgstr "Que un mensaxeiro humano escape do val."
+msgstr "Un mensaxeiro humano escapa do val."
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3618
@@ -18143,6 +18092,10 @@ msgid ""
 "that is known is that they can spell trouble for those who go poking around "
 "in caverns and ruins."
 msgstr ""
+"Son estes monstros bestas soldados dunha era pasada? Ou son espíritos doutro "
+"plano de existencia? O coñecemento sobre a súa orixe perdeuse no tempo, o "
+"único que se sabe a día de hoxe é que son unha ameaza para quen ousa "
+"explorar cavernas e ruínas."
 
 # espada flamexante FIXADO
 #. [attack]: type=fire
@@ -18240,10 +18193,8 @@ msgstr "dardos"
 # arqueiro do deserto FIXADO
 #. [unit_type]: id=Quenoth Archer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:5
-#, fuzzy
-#| msgid "Desert Archer"
 msgid "Quenoth Archer"
-msgstr "Arqueiro do deserto"
+msgstr "Arqueiro de Quénor"
 
 #. [unit_type]: id=Quenoth Archer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:20
@@ -18255,14 +18206,18 @@ msgid ""
 "their ancestors practise the art from the saddle, easily avoiding the perils "
 "of melee combat."
 msgstr ""
+"Agora que as areas abertas non ofrecen máis que unha fracción da protección "
+"que ofrecían os seus antigos bosques, os numerosos rangos de arqueiros que "
+"no pasado podían frear os pes a unha horda enteira de orcos agora están case "
+"extintos. Os poucos que aínda elixen adicarse á arma tradicional dos seus "
+"ancestros practican a arte montados, para poder evitar facilmente os perigos "
+"do combate corpo a corpo."
 
 # campión do deserto
 #. [unit_type]: id=Quenoth Champion, race=elf, description=
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:5
-#, fuzzy
-#| msgid "Desert Champion"
 msgid "Quenoth Champion"
-msgstr "Campión do deserto"
+msgstr "Campión de Quénor"
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -18271,33 +18226,27 @@ msgstr "Campión do deserto"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:24
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:36
 msgid "glaive"
-msgstr ""
+msgstr "archa"
 
 # Desert Druid=druida do deserto FIXADO
 #. [unit_type]: id=Quenoth Druid, race=elf, description=
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:5
-#, fuzzy
-#| msgid "female^Desert Druid"
 msgid "female^Quenoth Druid"
-msgstr "Druída do deserto"
+msgstr "Druída de Quénor"
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:37
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:37
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:37
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shyde.cfg:38
-#, fuzzy
-#| msgid "Melusand"
 msgid "sand"
-msgstr "Mélusan"
+msgstr "area"
 
 # loitador do deserto FIXADO
 #. [unit_type]: id=Quenoth Fighter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:5
-#, fuzzy
-#| msgid "Desert Fighter"
 msgid "Quenoth Fighter"
-msgstr "Loitador do deserto"
+msgstr "Loitador de Quénor"
 
 #. [unit_type]: id=Quenoth Fighter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:22
@@ -18306,13 +18255,14 @@ msgid ""
 "proficient in the use of the spear, they are remarkably skilled in working "
 "together and coordinating defense."
 msgstr ""
+"Os loitadores conforman o groso dos guerreiros de Quénor. Ademais de ser "
+"destros no uso da lanza, son especialmente hábiles traballando xuntos e "
+"coordinando a defensa."
 
 #. [unit_type]: id=Tauroch Flagbearer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flagbearer.cfg:5
-#, fuzzy
-#| msgid "Troll Flamecaster"
 msgid "Tauroch Flagbearer"
-msgstr "Troll lanzachamas"
+msgstr "Abandeirado de tauro"
 
 #. [unit_type]: id=Tauroch Flagbearer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flagbearer.cfg:23
@@ -18322,11 +18272,15 @@ msgid ""
 "besting them on the battlefield must invariably possess vastly superior "
 "numbers."
 msgstr ""
+"Portadores dos estandartes dos elfos de Quénor na batalla, os prestixiosos "
+"abandeirados son tamén mestres da estratexia. Calquera inimigo que queira "
+"superalos en combate non ten máis opción que contar con números moi "
+"superiores."
 
 #. [unit_type]: id=Quenoth Flanker, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:5
 msgid "Quenoth Flanker"
-msgstr ""
+msgstr "Flanqueador de Quénor"
 
 #. [unit_type]: id=Quenoth Flanker, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:17
@@ -18336,20 +18290,22 @@ msgid ""
 "and nimble, these elves can take advantage of the smallest weaknesses in "
 "enemy formations."
 msgstr ""
+"Algúns loitadores descubren que os seus verdadeiros talentos non están "
+"dentro de filas pechadas de lanzas, senón fóra, nas areas, atacando os "
+"flancos e a retagarda das forzas inimigas. Veloces e lixeiros, estes elfos "
+"poden aproveitar as debilidades máis minúsculas das formacións inimigas."
 
 #. [attack]: type=pierce
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:35
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:36
 msgid "blowgun"
-msgstr ""
+msgstr "estoque"
 
 # batedor do deserto FIXADO
 #. [unit_type]: id=Quenoth Pathfinder, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Horseman.cfg:5
-#, fuzzy
-#| msgid "Desert Outrider"
 msgid "Quenoth Pathfinder"
-msgstr "Batedor do deserto"
+msgstr "Rastreador de Quénor"
 
 #. [unit_type]: id=Quenoth Pathfinder, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Horseman.cfg:20
@@ -18358,14 +18314,16 @@ msgid ""
 "These elusive Pathfinders, however, are masters of weakening an enemy while "
 "at the same time provoking them to give chase — often into a trap."
 msgstr ""
+"Na meirande parte dos casos, dar media volta e fuxir dun encontro é unha "
+"táctica arriscada. Porén, estes escorregadizos rastreadores son mestres de "
+"debilitar ao inimigo ao tempo que os provocan para que os sigan, a miúdo ata "
+"unha trampa."
 
 # tirador do deserto FIXADO
 #. [unit_type]: id=Quenoth Marksman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:5
-#, fuzzy
-#| msgid "Desert Marksman"
 msgid "Quenoth Marksman"
-msgstr "Tirador do deserto"
+msgstr "Tirador de Quénor"
 
 #. [unit_type]: id=Quenoth Marksman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:21
@@ -18373,38 +18331,30 @@ msgid ""
 "A marksman can loose volleys of arrows at their enemies with deadly "
 "accuracy, even at full gallop."
 msgstr ""
+"Un tirador pode soltar descargas de proxectís aos seus inimigos cunha "
+"precisión mortal, incluso a galope."
 
 # arqueira do deserto FIXADO
 #. [unit_type]: id=Quenoth Moon Shyde, race=elf, description=
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Moon_Shyde.cfg:5
-#, fuzzy
-#| msgid "female^Desert Shyde"
 msgid "female^Quenoth Moon Shyde"
-msgstr "Fuxidía do deserto"
+msgstr "Fuxidía luar de Quénor"
 
-# onda de frialdade FIXADO
 #. [attack]: type=cold
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Moon_Shyde.cfg:69
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Moon_Singer.cfg:36
-#, fuzzy
-#| msgid "chill wave"
 msgid "chill gale"
-msgstr "onda de frialdade"
+msgstr "vendaval frío"
 
-# silvana do deserto FIXADO
 #. [unit_type]: id=Quenoth Moon Singer, race=elf, description=
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Moon_Singer.cfg:5
-#, fuzzy
-#| msgid "female^Desert Ranger"
 msgid "female^Quenoth Moon Singer"
-msgstr "Silvana do deserto"
+msgstr "Cantante luar de Quénor"
 
 #. [unit_type]: id=Quenoth Mystic, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:5
-#, fuzzy
-#| msgid "team_name^Quenoth Elves"
 msgid "female^Quenoth Mystic"
-msgstr "Elfos de Quénor"
+msgstr "Mística de Quénor"
 
 #. [unit_type]: id=Quenoth Mystic, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:21
@@ -18414,36 +18364,31 @@ msgid ""
 "are able to accomplish this in a world devoid of the vast forests from which "
 "their forebears drew much of their strength from."
 msgstr ""
+"Como os seus ancestros, as místicas de Quénor teñen o potencial de "
+"converterse en grandes portadoras de maxia. É unha proba da resistencia dos "
+"elfos que poidan conseguilo nun mundo desprovisto dos extensos bosques dos "
+"que os seus antepasados obtiñan gran parte da súa forza."
 
 # batedor do deserto FIXADO
 #. [unit_type]: id=Quenoth Outrider, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Outrider.cfg:5
-#, fuzzy
-#| msgid "Desert Outrider"
 msgid "Quenoth Outrider"
-msgstr "Batedor do deserto"
+msgstr "Batedor de Quénor"
 
 #. [unit_type]: id=Quenoth Outrider, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Outrider.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Riding like the wind, Desert Outriders breeze across the sands to strike "
-#| "at weaker units and exposed flanks. Skilled in the sword, and trained in "
-#| "the bow, they strike hard before flying off into the sands to evade "
-#| "response."
 msgid ""
 "Riding like the wind, Outriders breeze across the sands to strike at weaker "
 "units and exposed flanks, before flying off into the sands to evade response."
 msgstr ""
-"Os batedores do deserto atacan coma o vento, esparexéndose polas areas e "
-"atacando ás unidades máis débiles e os flancos expostos. Hábiles coa espada, "
-"e adestrados no uso do arco, atacan duro antes de retirarse ás areas para "
-"evitar o contraataque."
+"Os batedores atacan coma o vento, esparexéndose polas areas e atacando ás "
+"unidades máis débiles e os flancos expostos, antes de retirarse ás areas "
+"para evitar o contraataque."
 
 #. [unit_type]: id=Tauroch Protector, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Protector.cfg:5
 msgid "Tauroch Protector"
-msgstr ""
+msgstr "Protector de tauro"
 
 #. [unit_type]: id=Tauroch Protector, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Protector.cfg:28
@@ -18459,27 +18404,33 @@ msgid ""
 "Whether the story is true is unknown, but the loyalty and resolve of these "
 "mounts and riders both is undeniable."
 msgstr ""
+"Disque unha vez, unha elfa que fuxía dun grupo de caza de orcos se cruzou "
+"cun tauro novo e perdido nun pequeno oasis. Ententendo que ningún resultaba "
+"unha ameaza para o outro, cóntase que loitaron man a man toda a noite, e "
+"conseguiron derrotar aos orcos chegado o amencer. Despois, cando a elfa "
+"rematara de sandar as feridas do tauro e caera ao chan de esgotamento, a "
+"besta recolléraa coa súa cornamenta e leváraa de volta á súa vila.\n"
+"\n"
+"Non se sabe que hai de certo nesa historia, pero ninguén pode negar a "
+"lealdade e resolución entre estas monturas e os seus xinetes."
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Protector.cfg:37
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Rider.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Stalwart.cfg:34
 msgid "trample"
-msgstr ""
+msgstr "choque"
 
 # silvano do deserto FIXADO
 #. [unit_type]: id=Quenoth Ranger, race=elf, description=
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:5
-#, fuzzy
-#| msgid "Desert Ranger"
 msgid "Quenoth Ranger"
-msgstr "Silvano do deserto"
+msgstr "Silvano de Quénor"
 
 #. [unit_type]: id=Tauroch Rider, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Rider.cfg:5
-#, fuzzy
 msgid "Tauroch Rider"
-msgstr "Guerra de Orcos"
+msgstr "Xinete de tauro"
 
 #. [unit_type]: id=Tauroch Rider, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Rider.cfg:26
@@ -18491,35 +18442,34 @@ msgid ""
 "formidable mounts in battle. A tauroch guided by a skilled rider can hold "
 "off multiple enemies long enough for assistance to arrive."
 msgstr ""
+"Os tauros son bestas do deserto, enormes e fortes, consideradas indomábeis "
+"pola maior parte das especies superviventes. Porén, a conexión entre os "
+"elfos e a natureza permitiunos formar un vínculo inesperado con elas. Se ben "
+"os tauros poden portar ou arrastrar facilmente cargas pesadas, a súa grosa "
+"pel e a súa temeridade convérteos en monturas excelentes para o combate. Un "
+"tauro guiado por un bo xinete pode resistir o ataque de varios inimigos o "
+"tempo necesario para que cheguen reforzos."
 
 #. [unit_type]: id=Quenoth Scout, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:5
-#, fuzzy
-#| msgid "Human Scout"
 msgid "Quenoth Scout"
-msgstr "Humano explorador"
+msgstr "Explorador de Quénor"
 
 #. [unit_type]: id=Quenoth Scout, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Desert Scouts move swiftly across the sands. Their skill on horseback is "
-#| "virtually unmatched, although they do lack power in combat."
 msgid ""
 "The Quenoth Scouts move swiftly across the sands. Their riding skill are "
 "unmatched, and these they use to harry and incapacitate enemies."
 msgstr ""
-"Os exploradores do deserto móvense sen dificultade polas areas. A súa "
-"habilidade sobre unha montura non ten case rival, aínda que no combate non "
-"son excesivamente fortes."
+"Os exploradores de Quénor móvense sen dificultade polas areas. A súas "
+"habilidades como xinetes non teñen rival, e as aproveitan para fustrigar e "
+"incapacitar aos seus inimigos."
 
 # tiradora do deserto FIXADO
 #. [unit_type]: id=Quenoth Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:5
-#, fuzzy
-#| msgid "female^Desert Shaman"
 msgid "female^Quenoth Shaman"
-msgstr "Xamán do deserto"
+msgstr "Xamán de Quénor"
 
 #. [unit_type]: id=Quenoth Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:21
@@ -18529,19 +18479,21 @@ msgid ""
 "their magical abilities to bolster crops, they serve an invaluable role "
 "among the Quenoth elves."
 msgstr ""
+"As xamáns buscan manter a conexión tradicional entre os elfos e a natureza. "
+"Usan o seu basto coñecemento sobre plantas do deserto para sandar aliados e "
+"as súas habilidades máxicas para potenciar os cultivos, o que converte en "
+"esencial o seu rol entre os elfos de Quénor."
 
 # arqueira do deserto FIXADO
 #. [unit_type]: id=Quenoth Shyde, race=elf, description=
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shyde.cfg:5
-#, fuzzy
-#| msgid "female^Desert Shyde"
 msgid "female^Quenoth Shyde"
-msgstr "Fuxidía do deserto"
+msgstr "Fuxidía de Quénor"
 
 #. [unit_type]: id=Tauroch Stalwart, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Stalwart.cfg:5
 msgid "Tauroch Stalwart"
-msgstr ""
+msgstr "Fiel de tauro"
 
 #. [unit_type]: id=Tauroch Stalwart, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Stalwart.cfg:27
@@ -18550,14 +18502,15 @@ msgid ""
 "made common cause with a skilled javelineer on its back, however, it is "
 "wiser to seek another path."
 msgstr ""
+"Xa é difícil evitar un tauro salvaxe e testudo. Pero se ademais está aliado "
+"cun mestre da xavelina, instalado ás súas costas, máis vale buscar outro "
+"camiño."
 
 # arqueira do deserto FIXADO
 #. [unit_type]: id=Quenoth Sun Sylph, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Shyde.cfg:5
-#, fuzzy
-#| msgid "female^Desert Shyde"
 msgid "female^Quenoth Sun Sylph"
-msgstr "Fuxidía do deserto"
+msgstr "Sílfida solar de Quénor"
 
 #. [unit_type]: id=Quenoth Sun Sylph, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Shyde.cfg:24
@@ -18568,14 +18521,17 @@ msgid ""
 "ancestors did, it is unknown what may yet be achieved by elvenkind in the "
 "new world."
 msgstr ""
+"Estas elfas atravesaron o que quizais noutro tempo se considerasen os "
+"límites do mundo das fadas, e transformáronse en seres de luz e lume. Dado "
+"que non tiveron séculos para explorar e perfeccionar as súas habilidades "
+"como si puideron facer os seus ancestros, non se sabe o que os elfos "
+"poderían lograr no novo mundo."
 
 # sentinela do deserto FIXADO
 #. [unit_type]: id=Quenoth Sun Singer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:5
-#, fuzzy
-#| msgid "female^Desert Sentinel"
 msgid "female^Quenoth Sun Singer"
-msgstr "Sentinela do deserto"
+msgstr "Cantante solar de Quénor"
 
 #. [unit_type]: id=Quenoth Sun Singer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:21
@@ -18585,11 +18541,15 @@ msgid ""
 "the woodlands, these elves have found their spiritual home in the light of "
 "the twin suns."
 msgstr ""
+"Os elfos poderían ser máis lentos que moitas outras especies á hora de "
+"adaptarse, pero cando o fan, os resultados poden ser sorprendentes. Mentres "
+"que os elfos antigos entoaban a canción dos bosques, estes elfos descubriron "
+"o seu fogar espiritual na luz dos soles xemelgos."
 
 #. [unit_type]: id=Tauroch Vanguard, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Vanguard.cfg:5
 msgid "Tauroch Vanguard"
-msgstr ""
+msgstr "Vangarda de tauro"
 
 #. [unit_type]: id=Tauroch Vanguard, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Vanguard.cfg:22
@@ -18599,58 +18559,57 @@ msgid ""
 "inspiring infantry behind them, these commanders can survive the thick of "
 "battle better than those on foot or on more slender mounts."
 msgstr ""
+"Os tauros, enormes e temerarios, adoitan usarse non só para manter "
+"posicións, senón tamén para liderar cargas que rompan as formacións "
+"inimigas. Estes comandantes, que protexen e inspiran á infantería que os "
+"segue, poden sobrevivir o fragor da batalla mellor que os que van a pe ou "
+"sobre monturas menos corpulentas."
 
 #. [unit_type]: id=Quenoth Warrior, race=elf, description=
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:5
-#, fuzzy
-#| msgid "Arisen Warrior"
 msgid "Quenoth Warrior"
-msgstr "Guerreiro erguido"
+msgstr "Guerreiro de Quénor"
 
 # naga cazador FIXADO
 #. [advancement]: id=hunter_1
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:65
-#, fuzzy
-#| msgid "Naga Hunter"
 msgid "Hunter"
-msgstr "Naga cazador"
+msgstr "Cazador"
 
 #. [advancement]: id=leader_1
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:103
-#, fuzzy
-#| msgid "Naga Leader"
 msgid "Leader"
-msgstr "Naga líder"
+msgstr "Líder"
 
 #. [advancement]: id=warrior_2_1
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:142
 msgid "Warrior (choose only one): specialize in melee combat"
-msgstr ""
+msgstr "Guerreiro (selecciona só un): especializarse en combate corpo a corpo."
 
 #. [advancement]: id=warrior_2_2
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:164
 msgid "Warrior (choose only one): specialize in archery"
-msgstr ""
+msgstr "Guerreiro (selecciona só un): especializarse en tiro con arco."
 
 #. [advancement]: id=hunter_2_1
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:188
 msgid "Hunter (choose only one): specialize in surprise attacks"
-msgstr ""
+msgstr "Guerreiro (selecciona só un): especializarse en ataques sorpresa."
 
 #. [advancement]: id=hunter_2_2
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:217
 msgid "Hunter (choose only one): specialize in skirmishing"
-msgstr ""
+msgstr "Guerreiro (selecciona só un): especializarse en escaramuzas."
 
 #. [advancement]: id=leader_2_1
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:245
 msgid "Leader (choose only one): specialize in supporting allies"
-msgstr ""
+msgstr "Líder (selecciona só un): especializarse en apoiar a aliados."
 
 #. [advancement]: id=leader_2_2
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:277
 msgid "Leader (choose only one): specialize in distracting enemies"
-msgstr ""
+msgstr "Líder (selecciona só un): especializarse en distraer aos inimigos."
 
 # Desert Youth=Xove do deserto FIXADO
 #. [unit_type]: id=Quenoth Youth, race=elf
@@ -18659,38 +18618,27 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:407
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:459
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:513
-#, fuzzy
-#| msgid "Desert Youth"
 msgid "Quenoth Youth"
-msgstr "Xove do deserto"
+msgstr "Mozo de Quénor"
 
 #. [female]
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:444
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:498
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:552
-#, fuzzy
-#| msgid "team_name^Quenoth Elves"
 msgid "female^Quenoth Youth"
-msgstr "Elfos de Quénor"
+msgstr "Moza de Quénor"
 
 #. [female]
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:447
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:501
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:555
-#, fuzzy
-#| msgid ""
-#| "Nym is Kaleh’s childhood friend who follows the tradition of a family of "
-#| "Desert Hunters, as much as that can be said about a young, rebellious "
-#| "lady with quick wits and strong will. Her high spirits are a great boon "
-#| "in dark times."
 msgid ""
 "Nym is Kaleh’s childhood friend, a young, rebellious lady with quick wits "
 "and strong will. Her high spirits are a great boon in dark times."
 msgstr ""
-"Nima é a amiga da infancia de Cälé, e segue a tradición dunha familia de "
-"cazadoras do deserto, tanto como a pode seguir unha persoa nova e rebelde "
-"que fala polos cóbados e ten unha grande vontade. O seu espírito é un gran "
-"alivio nos tempos escuros."
+"Nima é a amiga da infancia de Cälé, unha persoa nova e rebelde que fala "
+"polos cóbados e ten unha grande vontade. O seu espírito é un gran alivio nos "
+"tempos escuros."
 
 # fantasma etéreo FIXADO
 #. [unit_type]: id=EGhost
@@ -18868,11 +18816,6 @@ msgstr "Liche araña"
 
 #. [unit_type]: id=Spider Lich, race=undead
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:18
-#, fuzzy
-#| msgid ""
-#| "No one is quite sure how spider liches are created, but they are horrific "
-#| "sight to behold. Crawling around on huge skeletal legs, and wielding huge "
-#| "magical staves, these abominations are fearsome undead foes. "
 msgid ""
 "No one is quite sure how spider liches are created, but they are a horrific "
 "sight to behold. Crawling around on huge skeletal legs, and wielding huge "
@@ -18934,7 +18877,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:85
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:86
 msgid "shock"
-msgstr ""
+msgstr "atordar"
 
 #. [attacks]: id=shock
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:87
@@ -18943,11 +18886,14 @@ msgid ""
 "When this attack is used on offense, the opponent will retaliate with one "
 "less strike than normally, to a minimum of one strike."
 msgstr ""
+"Cando se emprega este ataque na ofensiva, o contrincante contará cunha "
+"oportunidade de ataque menos durante o contraataque, sen reducirse nunca, "
+"iso si, por debaixo dunha oportunidade."
 
 #. [dummy]: id=formation
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:101
 msgid "formation"
-msgstr ""
+msgstr "formación"
 
 #. [dummy]: id=formation
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:102
@@ -18956,11 +18902,14 @@ msgid ""
 "ability is adjacent to it. However, this cannot raise the unit’s defense "
 "above 70%."
 msgstr ""
+"Esta unidade gaña unha bonificación do 10% para a súa defensa cando outra "
+"unidade coa mesma habilidade está canda ela. Porén, isto non pode aumentar a "
+"defensa da unidade por riba do 70%."
 
 #. [dummy]: id=disengage
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:109
 msgid "disengage"
-msgstr ""
+msgstr "desconexión"
 
 #. [dummy]: id=disengage
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:110
@@ -18968,11 +18917,13 @@ msgid ""
 "If this unit doesn’t move before attacking, it will retain its movement "
 "points after the attack."
 msgstr ""
+"Se esta unidade non se move antes de atacar, conservará os seus puntos de "
+"movemento tras o ataque."
 
 #. [dummy]: id=daze
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:117
 msgid "daze"
-msgstr ""
+msgstr "confundir"
 
 #. [dummy]: id=daze
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:118
@@ -18980,11 +18931,14 @@ msgid ""
 "When hit with this attack, an enemy suffers a 10% penalty both to their "
 "defense and chance to hit for one turn, except for magical attacks."
 msgstr ""
+"Os inimigos aos que atinen con este ataque sofren unha penalización do 10% "
+"tanto na súa defensa como na súa probabilidade de atinar durante a rolda, "
+"salvo no caso de ataques máxicos."
 
 #. [skirmisher]: id=distract
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:125
 msgid "distract"
-msgstr ""
+msgstr "distraer"
 
 #. [skirmisher]: id=distract
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:126
@@ -18992,47 +18946,57 @@ msgid ""
 "This unit negates enemy Zones of Control around itself for allied units (but "
 "not for itself)."
 msgstr ""
+"Esta unidade contrarresta as zonas de control ao seu arredor para as "
+"unidades aliadas (pero non para ela mesma)."
 
 #. [dummy]: id=support
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:137
 msgid "support"
-msgstr ""
+msgstr "apoiar"
 
 #. [dummy]: id=support
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:138
 msgid "The upkeep costs of adjacent friendly units are lowered by 1."
-msgstr ""
+msgstr "O custo de mantemento das unidades adxacentes redúcese en 1."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:143
 msgid ""
 " This unit’s melee attack can overwhelm the defenses of enemies, preventing "
 "them from retaliating as effectively."
 msgstr ""
+"O ataque corpo a corpo desta unidade pode superar as defensas dos inimigos, "
+"evitando que respondan coa mesma efectividade."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:146
 msgid " Groups of units of this type are able to shield each other in combat."
 msgstr ""
+"Os grupos de unidades deste tipo poden protexerse os uns aos outros en "
+"combate."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:149
 msgid " This unit can move either before or after attacking."
-msgstr ""
+msgstr "Esta unidade pode moverse ou antes de atacar ou despois."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:152
 msgid ""
 " This unit can daze its enemies, reducing their accuracy and defense until "
 "they end a turn."
 msgstr ""
+"Esta unidade pode confundir aos seus inimigos, reducindo a súa precisión e a "
+"súa defensa ata o final da rolda."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:155
 msgid ""
 "This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
 msgstr ""
+"Esta unidade pode distraer aos opoñentes, permitindo ás unidades aliadas "
+"atravesar as súas zonas de control e moverse sen impedimentos ao seu arredor."
 
 #. [unstore_unit]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:362
 msgid "dazed"
-msgstr ""
+msgstr "confusa"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg:7
 #: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg:72

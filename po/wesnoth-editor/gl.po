@@ -8,15 +8,15 @@
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008, 2010.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2010.
 # Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail.com>, 2011, 2012, 2013, 2014, 2015, 2016.
+# Adrian Chaves <adrian@chaves.io>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 21:29+0300\n"
-"PO-Revision-Date: 2016-05-13 06:32+0100\n"
-"Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
-"com>\n"
-"Language-Team: Galician <proxecto@trasno.gal>\n"
+"PO-Revision-Date: 2018-04-08 18:10+0100\n"
+"Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
+"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -327,7 +327,7 @@ msgstr "Nome:"
 
 #: src/editor/map/context_manager.cpp:191
 msgid "Load Map"
-msgstr ""
+msgstr "Cargar un mapa"
 
 #: src/editor/map/context_manager.cpp:259 src/editor/map/map_context.cpp:831
 msgid "New Map"
@@ -342,20 +342,16 @@ msgid "No Recent Files"
 msgstr "Non hai ficheiros recentes"
 
 #: src/editor/map/context_manager.cpp:366
-#, fuzzy
-#| msgid "(Unnamed Area)"
 msgid "Unnamed Area"
-msgstr "(Zona sen nome)"
+msgstr "Zona sen nome"
 
 #: src/editor/map/context_manager.cpp:397
-#, fuzzy
-#| msgid "(New Side)"
 msgid "New Side"
-msgstr "(Bando novo)"
+msgstr "Novo bando"
 
 #: src/editor/map/context_manager.cpp:453
 msgid "Apply Mask"
-msgstr ""
+msgstr "Aplicar a máscara"
 
 #: src/editor/map/context_manager.cpp:462
 msgid "Error loading mask"
@@ -379,14 +375,10 @@ msgid "Error loading map"
 msgstr "Houbo un erro ao cargar o mapa"
 
 #: src/editor/map/context_manager.cpp:631
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Gardar o mapa como"
 
 #: src/editor/map/context_manager.cpp:652
-#, fuzzy
-#| msgid "Save the Scenario As"
 msgid "Save Scenario As"
 msgstr "Gardar o escenario como"
 
@@ -445,10 +437,8 @@ msgstr ""
 
 #: src/editor/map/editor_map.cpp:148
 #: src/editor/palette/location_palette.cpp:111
-#, fuzzy
-#| msgid "Player $player_number"
 msgid "Player $side_num"
-msgstr "Xogador $player_number"
+msgstr "Xogador $side_num"
 
 #: src/editor/map/editor_map.cpp:283
 msgid "The size of the target map is different from the current map"
@@ -496,19 +486,19 @@ msgstr "Só funcionará na partida se se ten sumo coidado."
 
 #: src/editor/palette/location_palette.cpp:248
 msgid "Go To"
-msgstr ""
+msgstr "Ir a"
 
 #: src/editor/palette/location_palette.cpp:255
 msgid "Add"
-msgstr ""
+msgstr "Engadir"
 
 #: src/editor/palette/location_palette.cpp:257
 msgid "New Location Identifier"
-msgstr ""
+msgstr "Novo identificador de lugar"
 
 #: src/editor/palette/location_palette.cpp:261
 msgid "Delete"
-msgstr ""
+msgstr "Eliminar"
 
 #: src/editor/palette/terrain_palettes.cpp:231
 msgid "FG: "
@@ -521,6 +511,7 @@ msgstr "2P: "
 #: src/gui/dialogs/editor/custom_tod.cpp:137
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
+"Non se atopou a integración co portapapeis, contacte con seu empaquetador."
 
 #: src/gui/dialogs/editor/custom_tod.cpp:201
 msgid "Choose File"
@@ -528,7 +519,7 @@ msgstr "Escoller un ficheiro"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:202
 msgid "Select"
-msgstr ""
+msgstr "Seleccionar"
 
 #: src/gui/dialogs/editor/set_starting_position.cpp:88
 msgid "player^None"

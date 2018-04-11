@@ -8,16 +8,15 @@
 # Fran Diéguez <fran dot dieguez at glug dot es>, 2008.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2010.
 # Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail.com>, 2011.
-# Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail.com>, 2011, 2012, 2013, 2015, 2016.
+# Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail.com>, 2011, 2012, 2013, 2015, 2016, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: gl_ES\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 01:20 UTC\n"
-"PO-Revision-Date: 2016-02-06 20:47+0100\n"
-"Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
-"com>\n"
-"Language-Team: Galician <proxecto@trasno.gal>\n"
+"PO-Revision-Date: 2018-04-08 16:24+0100\n"
+"Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
+"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -989,16 +988,12 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:202
-#, fuzzy
-#| msgid ""
-#| "With the might of the undead at my command, many orcs will die this day. "
-#| "They shall pay for getting me banished from Parthyn."
 msgid ""
 "With the might of the undead at my command, many orcs will die this day. "
 "They shall pay for attacking Parthyn."
 msgstr ""
 "Co poder dos non mortos ás miñas ordes, moitos orcos han morrer hoxe. "
-"Pagarán por facer que me desterrasen de Parcin."
+"Pagarán por atacar Parcin."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:220
@@ -1604,7 +1599,7 @@ msgstr "Que Malin e Vol “O escuro” entren na casa do cabaleiro mago."
 #. [note]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:287
 msgid "This scenario takes place entirely at night."
-msgstr ""
+msgstr "Todo o escenario transcurre pola noite."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:314
@@ -1645,14 +1640,8 @@ msgstr "Homes, ás armas!"
 
 #. [message]: speaker=Taylor
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:354
-#, fuzzy
-#| msgid ""
-#| "Sir! Undead creatures are coming out of the forest! Wake the guard "
-#| "immediately!"
 msgid "Undead creatures are coming out of the forest! To arms, men!"
-msgstr ""
-"Señor! Hai criaturas non mortas saíndo do bosque! Esperte á garda de "
-"inmediato!"
+msgstr "Hai criaturas non mortas saíndo do bosque! Homes, ás armas!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:375
@@ -2372,24 +2361,18 @@ msgstr "Derrota ao heroe estúpido."
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:80
-#, fuzzy
-#| msgid "Defeat the foolish hero"
 msgid "Defeat another foolish hero"
-msgstr "Derrota ao heroe estúpido."
+msgstr "Derrota a outro dos heroes estúpidos."
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:88
-#, fuzzy
-#| msgid "Defeat the foolish hero"
 msgid "Defeat yet another foolish hero"
-msgstr "Derrota ao heroe estúpido."
+msgstr "Derrota a outro máis dos heroes estúpidos."
 
 #. [note]: description=<b>
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:116
-#, fuzzy
-#| msgid "Endless Night"
 msgid "Endless Night $timesForever"
-msgstr "A eterna noite"
+msgstr "A eterna noite $timesForever"
 
 #. [unit]: type=Royal Guard, id=Foolish Hero
 #. [unit]: type=Assassin, id=Foolish Hero
@@ -2407,22 +2390,22 @@ msgstr "Heroe estúpido"
 #. [modify_side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:172
 msgid "Humans"
-msgstr ""
+msgstr "Humanos"
 
 #. [modify_side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:199
 msgid "Bandits"
-msgstr ""
+msgstr "Bandidos"
 
 #. [modify_side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:222
 msgid "Elves"
-msgstr ""
+msgstr "Elfos"
 
 #. [modify_side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:249
 msgid "Dwarves"
-msgstr ""
+msgstr "Ananos"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:328
@@ -2537,12 +2520,12 @@ msgstr ""
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:411
 msgid "I will destroy you like the last foolish hero."
-msgstr ""
+msgstr "Destruireite como destruín ao último dos heroes estúpidos."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:418
 msgid "Another foolish hero? Seriously?"
-msgstr ""
+msgstr "Outro heroe estúpido? En serio?"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:425
@@ -2556,22 +2539,23 @@ msgstr ""
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:437
 msgid "Am I doomed to fight foolish heroes forever?"
-msgstr ""
+msgstr "Estou condenado a loitar contra heroes estúpidos para sempre?"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:444
 msgid "Is this going to keep happening?"
-msgstr ""
+msgstr "Isto vai seguir ocorrendo?"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:495
 msgid "His evil deeds have come to an end, and he has meet his doom."
-msgstr ""
+msgstr "Se acabaron as súas infamias, chegoulle a súa hora."
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:500
 msgid "Who do you think he was before starting down the path of darkness?"
 msgstr ""
+"Como pensas que sería antes de deixarse levar polos camiños da escuridade?"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:505
@@ -2579,33 +2563,31 @@ msgid ""
 "It matters not who the lich was. He embraced death over life, and we have "
 "done our duty to defend life."
 msgstr ""
+"Non importa quen era. Á hora de escoller entre a vida e a morte, preferiu a "
+"morte, e nós cumprimos co noso deber de defender a vida."
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:510
-#, fuzzy
-#| msgid "Yes, master."
 msgid "Yes, sir."
-msgstr "Claro, mestre."
+msgstr "Si, señor."
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:518
 msgid "It is done. He will trouble us no more."
-msgstr ""
+msgstr "Listo. Non nos volverá molestar."
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:523
 msgid "Who do you think he was before becoming a lich?"
-msgstr ""
+msgstr "Como pensas que sería antes de converterse nun liche?"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:528
 msgid "Probably an outlaw like us. Does it matter?"
-msgstr ""
+msgstr "Probabelmente un proscrito coma nós. Acaso importa?"
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:533
-#, fuzzy
-#| msgid "No, I suppose it does not."
 msgid "No, I guess not."
 msgstr "Non, supoño que non."
 
@@ -2640,14 +2622,17 @@ msgstr "Non, supoño que non."
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:564
 msgid "Hearing the crack of his bones was satisfying."
-msgstr ""
+msgstr "Escoitar os seus ósos romper tivo o seu aquel."
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:569
 msgid ""
 "Who do you think he was before becoming the bones crushed by our hammers?"
 msgstr ""
+"Quen pensas que foi antes de converterse nos ósos quebrados polas nosas "
+"mazas?"
 
+# Gheada propia dos ananos.
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:574
 msgid ""
@@ -2655,26 +2640,29 @@ msgid ""
 "those humans have. And when he did dark magic and got outlawed from Wesnoth, "
 "he came to hide in these caves."
 msgstr ""
+"Probabelmente alghún magho anghustiado que botaron da academia de maghos esa "
+"dos humanos. E cando se pasou á maxia escura e o botaron do Noroeste, viu "
+"aquí a aghocharse nestas covas."
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:579
 msgid "I guess we'll never know for sure."
-msgstr ""
+msgstr "Supoño que nunca o saberemos con seghuranza."
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:587
 msgid "Finally, my father and my people are avenged!"
-msgstr ""
+msgstr "Por fin vinguei a meu pai e ao meu pobo!"
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:592
 msgid "Who you think he was, boss?"
-msgstr ""
+msgstr "Ti quen pensas que sería, xefe?"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:597
 msgid "Who cares!"
-msgstr ""
+msgstr "A quen lle importa!"
 
 #. [unit_type]: id=Apprentice Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:4

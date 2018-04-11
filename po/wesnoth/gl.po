@@ -9,15 +9,15 @@
 # Jacobo Abel Fernández García <xakobe_gz@hotmail.com>, 2007.
 # Fran Diéguez <fran dot dieguez at glug dot es>, 2008.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2009-2012, 2013, 2014, 2015, 2016.
+# Adrian Chaves <adrian@chaves.io>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-04-01 02:37+0300\n"
-"PO-Revision-Date: 2016-05-13 06:58+0100\n"
-"Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
-"com>\n"
-"Language-Team: Galician <proxecto@trasno.gal>\n"
+"PO-Revision-Date: 2018-04-08 12:58+0100\n"
+"Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
+"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,67 +33,67 @@ msgstr "Personalizado"
 #. [advanced_preference]: type=combo
 #: data/advanced_preferences.cfg:4
 msgid "Compress saved games"
-msgstr "Comprimir as partidas."
+msgstr "Compresión das partidas:"
 
 #. [option]: id=gzip
 #: data/advanced_preferences.cfg:9
 msgid "save_compression^Gzip"
-msgstr "Gzip"
+msgstr "gzip"
 
 #. [option]: id=gzip
 #: data/advanced_preferences.cfg:10
 msgid "save_compression_desc^Default compression, faster"
-msgstr "Compresión predeterminada, rápida"
+msgstr "Compresión predeterminada, rápida."
 
 #. [option]: id=bzip2
 #: data/advanced_preferences.cfg:14
 msgid "save_compression^Bzip2"
-msgstr "Bzip2"
+msgstr "bzip2"
 
 #. [option]: id=bzip2
 #: data/advanced_preferences.cfg:15
 msgid "save_compression_desc^Best compression, slower"
-msgstr "Compresión eficiente, lenta"
+msgstr "Compresión eficiente, lenta."
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:19
 msgid "save_compression^No"
-msgstr "Non"
+msgstr "Ningunha"
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:20
 msgid "save_compression_desc^Large plain text files"
-msgstr "Grandes ficheiro de texto sen formato"
+msgstr "Ficheiros grandes de texto sen formato."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:26
 msgid "Confirm deleting saves"
-msgstr "Confirmación antes de eliminar partidas."
+msgstr "Pedir confirmación antes de eliminar partidas:"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:33
 msgid "Mouse scrolling"
-msgstr "Desprazamento co rato."
+msgstr "Desprazamento co rato:"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:40
 msgid "Middle-click scrolling"
-msgstr "Desprazamento co botón central."
+msgstr "Desprazamento co botón central:"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
 msgid "Keep scrolling when mouse leaves window"
-msgstr "Desprazamento aínda que o rato saia da xanela."
+msgstr "Continuar o desprazamento aínda que o rato saia da xanela:"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:54
 msgid "Show combat"
-msgstr "Mostrar os combates."
+msgstr "Mostrar os combates:"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:61
 msgid "Ping timeout"
-msgstr "Tempo ata dar por imposíbel unha conexión."
+msgstr "Tempo límite de resposta:"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:62
@@ -101,23 +101,23 @@ msgid ""
 "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
 "disable"
 msgstr ""
-"Cantidade de segundos a agardar por unha resposta antes de renderse. "
+"Número de segundos para agardar por unha resposta antes de renderse. "
 "Desactívase co valor «0»."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:72
 msgid "Auto-open whisper windows in lobby"
-msgstr "Abrir a xanela de bisbar na sala de espera."
+msgstr "Abrir a xanela de bisbar na sala de espera:"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
 msgid "Group players in lobby"
-msgstr "Agrupar os xogadores da sala de espera."
+msgstr "Agrupar os xogadores da sala de espera:"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
 msgid "Follow unit actions"
-msgstr "Seguir ás unidades cando se movan."
+msgstr "Seguir as unidades cando se movan:"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:87
@@ -131,7 +131,7 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:103
 msgid "Chat message aging"
-msgstr "Tempo de caducidade das mensaxes."
+msgstr "Tempo de caducidade das mensaxes:"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:104
@@ -139,23 +139,23 @@ msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable"
 msgstr ""
-"Cantidade de minutos que se manteñen as mensaxes de conversa das partidas. "
+"Número de minutos que se manteñen as mensaxes de conversa das partidas. "
 "Desactívase co valor «0»."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:114
 msgid "Use 12-hour clock format"
-msgstr "Empregar o formato de 12 horas para o reloxo."
+msgstr "Usar o formato de 12 horas para o reloxo:"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:121
 msgid "Confirm loading saves from a different version"
-msgstr "Avisar ao cargar partidas doutras versións."
+msgstr "Avisar ao cargar partidas doutras versións:"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:128
 msgid "Show all unit types in help"
-msgstr "Listar todos os tipos de unidade na axuda."
+msgstr "Mostrar todos os tipos de unidade na axuda:"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:129
@@ -163,13 +163,13 @@ msgid ""
 "Show all unit types in the help (requires restart). This does not alter the "
 "list of encountered units"
 msgstr ""
-"Listar todos os tipos de unidade na axuda. Fai falla reiniciar o xogo para "
+"Mostrar todos os tipos de unidade na axuda. Fai falla reiniciar o xogo para "
 "que se aplique o cambio. A lista de unidades descubertas non cambiará."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:136
 msgid "Editor recent files limit"
-msgstr "Límite de ficheiros recentes do editor"
+msgstr "Límite de ficheiros recentes do editor:"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:137
@@ -182,32 +182,32 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:147
 msgid "Show color cursors"
-msgstr "Usar punteiros de cores."
+msgstr "Usar punteiros de cores:"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:148
 msgid "Use colored mouse cursors"
-msgstr "Usar punteiros de cores."
+msgstr "Usar punteiros de rato de cores."
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:155
 msgid "Graphics scaling options"
-msgstr "Opcións de cambio de dimensións dos gráficos"
+msgstr "Opcións de cambio de dimensións dos gráficos:"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:161
 msgid "Customize orb colors"
-msgstr "Personalizar as cores das esferas"
+msgstr "Personalizar as cores das esferas:"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:167
 msgid "Logging"
-msgstr ""
+msgstr "Rexistro:"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:173
 msgid "Allow damage calculation with Monte Carlo simulation"
-msgstr ""
+msgstr "Permitir o cálculo de danos con simulación de Montecarlo:"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:174
@@ -215,114 +215,114 @@ msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
 msgstr ""
+"Permitir que a xanela de cálculo de danos simule as batallas en vez de usar "
+"cálculos de probabilidade exactos."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:181
-#, fuzzy
-#| msgid "Sound Effects"
 msgid "Show haloing effects"
-msgstr "Efectos de son"
+msgstr "Mostrar efectos de auréola:"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:182
 msgid "Show special unit graphical effects"
-msgstr ""
+msgstr "Mostrar efectos gráficos especiais de unidades."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:199
 msgid "Joystick support"
-msgstr "Permitir o uso de mandos."
+msgstr "Compatibilidade con mandos:"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:206
 msgid "Joystick: number of the scroll X-axis joystick"
-msgstr "Mando para o desprazamento vertical."
+msgstr "Mando: mando para o desprazamento vertical:"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:216
 msgid "Joystick: number of the scroll X-axis"
-msgstr "Mando: control para o desprazamento vertical."
+msgstr "Mando: control para o desprazamento vertical:"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:226
 msgid "Joystick: number of the scroll Y-axis joystick"
-msgstr "Mando para o desprazamento horizontal."
+msgstr "Mando: mando para o desprazamento horizontal:"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:236
 msgid "Joystick: number of the scroll Y-axis"
-msgstr "Mando: control para o desprazamento horizontal."
+msgstr "Mando: control para o desprazamento horizontal:"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:246
 msgid "Joystick: deadzone of the scrolling stick"
-msgstr "Mando: límite do control do desprazamento."
+msgstr "Mando: límite do control do desprazamento:"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:256
 msgid "Joystick: number of the cursor X-axis joystick"
-msgstr "Mando para o movemento vertical do punteiro."
+msgstr "Mando: mando para o movemento vertical do punteiro:"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:266
 msgid "Joystick: number of the cursor X-axis"
-msgstr "Mando: control para o movemento vertical do punteiro."
+msgstr "Mando: control para o movemento vertical do punteiro:"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:276
 msgid "Joystick: number of the cursor Y-axis joystick"
-msgstr "Mando para o movemento horizontal do punteiro."
+msgstr "Mando: mando para o movemento horizontal do punteiro:"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:286
 msgid "Joystick: number of the cursor Y-axis"
-msgstr "Mando: control para o movemento horizontal do punteiro."
+msgstr "Mando: control para o movemento horizontal do punteiro:"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:296
 msgid "Joystick: deadzone of the cursor stick"
-msgstr "Mando: límite do control do punteiro."
+msgstr "Mando: límite do control do punteiro:"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:306
 msgid "Joystick: number of the mouse X-axis joystick"
-msgstr "Mando para o movemento vertical do rato."
+msgstr "Mando: mando para o movemento vertical do rato:"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:316
 msgid "Joystick: number of the mouse X-axis"
-msgstr "Mando: control para o rato vertical."
+msgstr "Mando: control para o rato vertical:"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:326
 msgid "Joystick: number of the mouse Y-axis joystick"
-msgstr "Mando para o movemento horizontal do rato."
+msgstr "Mando: mando para o movemento horizontal do rato:"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:336
 msgid "Joystick: number of the mouse Y-axis"
-msgstr "Mando: control para o rato horizontal."
+msgstr "Mando: control para o rato horizontal:"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:346
 msgid "Joystick: deadzone of the mouse stick"
-msgstr "Mando: límite do control do rato."
+msgstr "Mando: límite do control do rato:"
 
 # Cando saiba o que é o “Thrust Axis” —que sospeito que é o mando que ten un pao, pero non me acaba de encaixar no contexto— terei que revisar a tradución.
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:356
 msgid "Joystick: number of the thrust axis joystick"
-msgstr "Mando para o eixo de empurre."
+msgstr "Mando: mando para o eixo de empurre:"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:366
 msgid "Joystick: number of the thrust axis"
-msgstr "Mando: control para o eixo de empurre"
+msgstr "Mando: control para o eixo de empurre:"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:376
 msgid "Joystick: deadzone of the thruster"
-msgstr "Mando: límite do empurre"
+msgstr "Mando: límite do empurre:"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -1500,13 +1500,10 @@ msgstr ""
 "Especial: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
 
-# Situación do defensor cando o atacante utiliza un tipo de ataque do que non dispón o defensor.
 #. [else]
 #: data/core/macros/deprecated-utils.cfg:43
-#, fuzzy
-#| msgid "This unit has no usable weapons."
 msgid "This unit has been renamed to: "
-msgstr "Esta unidade non ten armas que poida usar."
+msgstr "Esta unidade renomeouse como:"
 
 #: data/core/macros/deprecated-utils.cfg:95
 msgid "<small>(early finish bonus)</small>"
@@ -1634,10 +1631,8 @@ msgstr "Deixala"
 
 # Procurei que a mensaxe fose unisex.
 #: data/core/macros/items.cfg:276
-#, fuzzy
-#| msgid "I am not suited to the use of this item! Let another take it."
 msgid "$unit.name has no need for this Holy Water! Let another take it."
-msgstr "Non debería ser eu quen use isto! Que o colla outro."
+msgstr "$unit.name non necesita desta auga bendita! Que a colla outra unidade."
 
 #. [object]
 #: data/core/macros/items.cfg:281
@@ -1720,6 +1715,8 @@ msgid ""
 "$unit.name cannot use this Storm Trident! Let one of the merfolk who can "
 "wield it have it."
 msgstr ""
+"$unit.name non pode usar este tridente da tormenta! Deixa que o colla un "
+"sirénido, que saberá usalo."
 
 #. [object]
 #: data/core/macros/items.cfg:521
@@ -1781,6 +1778,13 @@ msgid ""
 "suffix=ash|kré|lsh|lin|rutin|shinar|rushi|ka|ash|ag|all|ash|slar|li|dian|"
 "ritos|rusté|shitt|nick|rath|ditt|kon|mad|tick|nir\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}’{suffix}|{prefix}{suffix} {short_name}\n"
+"short_name=On|In|Ca|Mur|Con|Elche|Co|Gret|Egar\n"
+"prefix=Ga|Gue|Guel|Gui|Go|Gra|Gri|Ca|Co|Cla|Mar|Di|Mer|Mor|Oma|Re|Vel|Vax|"
+"Ver|Vla\n"
+"suffix=ax|cré|les|lin|rutin|xinar|ruxi|ca|ax|ague|al|eslar|li|dian|ritos|"
+"rusté|xit|nic|raz|dit|con|mad|tic|nir\n"
 
 #. Generator for female drake names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:28
@@ -1791,6 +1795,11 @@ msgid ""
 "suffix=en|nash|irt|glann|ll|ge|lin|nitt|tin|tar|lisk|rida|grra|sill|la|mell\n"
 "short_name=Mal|Ka|Emth|Dar|Eshi\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{suffix} {short_name}\n"
+"prefix=Al|Ali|Ax|Augu|Da|De|Den|Din|Ol|Oma|Orri|Oxi|Val|Ver|Vel|Vux\n"
+"suffix=en|ax|ir|glan|l|gue|lin|nit|tin|tar|lis|rida|gra|sil|la|mel\n"
+"short_name=Mal|Ca|Emez|Dar|Exi\n"
 
 # Véxase o ficheiro de «Nomes». Estes son os de ananos.
 #: data/core/macros/names.cfg:37
@@ -1892,6 +1901,15 @@ msgid ""
 "til|til|tol|los|rol|sol|ril|sil|as|us|lil|fur|mur|fur\n"
 "centre=lal|mal|ra|dur|thal|thas|ma|gal|thau|ga|ith|ma|cat|la|ral|dur|bur\n"
 msgstr ""
+"\n"
+"main={long_name}\n"
+"long_name={prefix}{centre}{suffix}|{prefix}{centre}{centre}{suffix}\n"
+"short_name={prefix}{suffix}\n"
+"prefix=Ai|Al|A|Du|Glan|Dul|Gom|Nar|Pel|Tri|Dun|Do|Bar|Er|Tim|Al|Du|Bu|Bur|"
+"Nor|Der|Ur|Gar\n"
+"suffix=sil|fur|bor|bus|bur|bor|gos|dor|rin|dur|in|ras|dis|tis|rol|sol|las|"
+"til|til|tol|los|rol|sol|ril|sil|as|us|lil|fur|mur|fur\n"
+"centre=lal|mal|ra|dur|dal|das|ma|gal|dau|ga|is|ma|ca|la|ral|dur|bur\n"
 
 # Véxase o ficheiro de «Nomes». Estes son os de elfos.
 #: data/core/macros/names.cfg:50
@@ -2154,6 +2172,20 @@ msgid ""
 "short_centre=lol|febr|tom|lith|nal|lor|wón|rad|rien|mar|reb|riel|mal|ram|nil|"
 "nim|nol|bris|lad|rier|ra|fil|thran|man\n"
 msgstr ""
+"\n"
+"main={generated_prefix}{consonnant}{suffix}|{prefix}{centre}{suffix}\n"
+"generated_prefix={starting_consonnant}{vowel}\n"
+"starting_consonnant=C|D|F|L|M|N|P|R|S|T|V\n"
+"vowel=a|e|i|o|ae|é\n"
+"consonnant=n|l|r|m|s|v|d|n\n"
+"prefix={prefix_vc}{vowel}|{prefix_cv}\n"
+"prefix_vc=Lon|Eon|Ad|Sar|Al|Tal|Tin|El|Le|Or|Tir|Ol|Cál|Cán|El|Fan|Fad|Fis|"
+"Fil|Gal|Gla|Le|Glar|Gli|Hár|Ta|Sór|Pir\n"
+"prefix_cv=Ama|Ami|Be|Ca|Ga|Isi|Ha|He|Le|Ló|Ni|Ma|Du|Dri|Ti|Unu|Ve|Va\n"
+"suffix=or|im|ian|in|ar|iel|as|eon|as|or|ion|al|and|ér|as|ir|el|al|ad|ael\n"
+"centre={short_centre}|{short_centre}|-{short_centre}|{short_centre}-\n"
+"short_centre=lol|fer|tom|lis|nal|lor|guón|ra|rien|mar|re|riel|mal|ran|nil|"
+"nin|nol|bris|lar|rier|ra|fil|dran|man\n"
 
 #. Generator for female elf names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:67
@@ -2179,6 +2211,25 @@ msgid ""
 "short_centre_c=enn|all|an|ith|el|il|am|ol|arth|ól|ár|ir|if|im|ion|iw|én|un|"
 "iw\n"
 msgstr ""
+"\n"
+"main={generated_prefix_v}{centre_v}{suffix_v}|{generated_prefix_c}{centre_c}"
+"{suffix_c}\n"
+"generated_prefix_v={starting_consonnant}{vowel}\n"
+"generated_prefix_c={starting_consonnant}{vowel}{consonnant}\n"
+"starting_consonnant=C|D|F|L|M|N|P|R|S|T|V\n"
+"vowel=a|e|i|o|ae|é\n"
+"consonnant=n|l|r|m|s|v|p|d|f|t\n"
+"prefix_c=Val|Ol|An|El|Fa|El|Glo|Hu|Le|Mil|Nil|Pin|Por|Mot|Mor|Dral|Ler|Nan|"
+"Nin|Sin|Len|Is|Dal\n"
+"prefix_v=La|Va|Da|Ne|Ai|Ce|Fa|Fe|Ia|Que|Ma|Mi|Pa|Ri|Siu|Ga|Ca|De|Ea|Eo|No|Pó|"
+"Le|Ló|Isá|Pa|Sa|Ni|Ti|Uno|Uni|Vó|Xio\n"
+"suffix_v=dea|nia|lia|quea|ni|is|niel|güiel|ra|de|lia|diel|na|ne\n"
+"suffix_c=iel|ien|ia|a|e|i|ia|ea\n"
+"centre_v=|{short_centre_v}\n"
+"short_centre_v=na|lla|na|di|saie|li|ma|lo|dra|ló|rá|bri|fi|mi|nio|güi|né|nu|"
+"güi\n"
+"centre_c=|{short_centre_c}\n"
+"short_centre_c=en|all|an|ith|el|il|an|ol|ar|ól|ár|ir|if|in|ion|iu|én|un|iu\n"
 
 # Véxase o ficheiro de «Nomes». Estes son os de grifón macho.
 #: data/core/macros/names.cfg:87
@@ -2200,6 +2251,10 @@ msgid ""
 "suffix=aa|eaa|ee|aaa|ssshh|rro|uu|uuu\n"
 "centre=arr|aash|eez|ozz\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}\n"
+"prefix=Gra|Gre|Gri|Gro|Gru|Ca|Que|Qui|Co|Cu\n"
+"suffix=co|so|io|nio|án\n"
 
 #. Generator for female gryphon names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:97
@@ -2210,6 +2265,10 @@ msgid ""
 "suffix=sa|yya|ra|rra\n"
 "centre=err|aash|eez|azz\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}\n"
+"prefix=Gra|Gre|Gri|Gro|Gru|Ca|Que|Qui|Co|Cu\n"
+"suffix=ca|sa|ia|nia|á\n"
 
 # Véxase o ficheiro de «Nomes». Estes son os de humano.
 #: data/core/macros/names.cfg:106
@@ -2349,6 +2408,23 @@ msgid ""
 "centre_c=redd|reor|og|thyn\n"
 "centre_v=rae|ra|thar|gwy\n"
 msgstr ""
+"\n"
+"main={generated_prefix_c}{suffix_c}|{generated_prefix_v}{suffix_v}|{prefix_c}"
+"{centre_c}{suffix_c}|{prefix_v}{centre_v}{suffix_v}\n"
+"generated_prefix_c={starting_consonnant}{vowel}{consonnant}|{starting_vowel}"
+"{consonnant}\n"
+"generated_prefix_v={starting_consonnant}{vowel}|{starting_vowel}\n"
+"starting_consonnant=B|C|D|H|L|M|R|S|T|V\n"
+"starting_vowel=A|E|I|Ae\n"
+"vowel=a|e|i|o|u|eo|ae\n"
+"consonnant=u|l|d|n|r|ll|ñ|d|c\n"
+"prefix_c=A|Den|Der|Gun|Ma|Mar|Ou|Te|T{vowel}n|Var|Vin|Vo|Vu|Ir|Rir\n"
+"prefix_v=Ae|Bl{vowel}|C{vowel}|D{vowel}|Gl{vowel}|U{vowel}|Ha|L{vowel}|"
+"M{vowel}|R{vowel}|S{vowel}|S{vowel}|T{vowel}|V{vowel}\n"
+"suffix_c=in|er|is|es|os|ir|in|aen\n"
+"suffix_v=ri|rin|ran|lin|van|nis\n"
+"centre_c=rer|reor|or|din\n"
+"centre_v=rae|ra|dar|ui\n"
 
 #. Generator for female Wesnothian human names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:125
@@ -2371,6 +2447,23 @@ msgid ""
 "centre_c=il|ing|ol|ur|ung|ean|eal|ong|al|iv\n"
 "centre_v=na|lla|na|ry|li|ni|ri|rae|bry\n"
 msgstr ""
+"\n"
+"main={generated_prefix_c}{suffix_c}|{generated_prefix_v}{suffix_v}|{prefix_c}"
+"{centre_c}{suffix_c}|{prefix_v}{centre_v}{suffix_v}\n"
+"generated_prefix_c={starting_consonnant}{vowel}{consonnant}|{starting_vowel}"
+"{consonnant}\n"
+"generated_prefix_v={starting_consonnant}{vowel}|{starting_vowel}\n"
+"starting_consonnant=B|C|D|H|L|M|R|S|T|V\n"
+"starting_vowel=A|E|I|Ae\n"
+"vowel=a|e|i|o|u|eo|ae\n"
+"consonnant=u|l|d|n|r|ll|ñ|d|c\n"
+"prefix_c=Al|El|Mer|Mil|Re|Is|M{vowel}r|M{vowel}l\n"
+"prefix_v=A|Br{vowel}|Cl{vowel}|C{vowel}|D{vowel}|U{vowel}|He|I{vowel}|"
+"L{vowel}|M{vowel}|N{vowel}|R{vowel}|S{vowel}\n"
+"suffix_c=ian|ois|el|il\n"
+"suffix_v=uin|ña|lla|ra|la|uian|xa|ca|ven\n"
+"centre_c=il|in|ol|ur|un|ean|eal|on|al|ir\n"
+"centre_v=na|lla|na|ri|li|ni|rae|bri\n"
 
 #: data/core/macros/names.cfg:143
 msgid ""
@@ -2537,6 +2630,18 @@ msgid ""
 "connector= al-| bin | ibn\n"
 "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 msgstr ""
+"\n"
+"main={name_long}|{prefix}{suffix}|{name_mid}{connector}{name_mid}\n"
+"name_mid={prefix}{suffix}|{name_short}\n"
+"name_long={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"name_short=Din|Si|Din|Ta|Su|Ali|Lu|Nu|Cais|Nimer|Ian|Bus|Lur|Mar|Nur|Fal\n"
+"prefix=A|Bas|Fa|Ga|Al|Ba|Ia|Ha|Mu|Ra|Ras|Abi|An|La|ʿAl|Ala|ʿA|Fa|Du|In|Iu|"
+"Mun|Ma|Ni|Lli|Mu|La|Lu|Mi|Cu|Tal|Ta|Za|Ci|Ias|Ua|Su|ʿIcri|Lu|Su|Osa|Ra|Sa|Da|"
+"Fa|Ni|Nas\n"
+"suffix=af|al|li|bair|sur|bi|la|ate|sin|ma|i|il|ique|raj|man|ia|sid|ria|ail|"
+"air|a|en|in|aid|ud|ra|uá|nan|as|ir|ba|ni|iad|rás|suc|ide|mal|quibe\n"
+"connector= al-| bin | ibin\n"
+"centre=ʿ|ʾ|i|sa|car|da|na|ia|tai|qui|ai|sau\n"
 
 #. Generator for female dunefolk human names
 #: data/core/macros/names.cfg:156
@@ -2568,6 +2673,29 @@ msgid ""
 "riya|ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|mal|"
 "kib\n"
 msgstr ""
+"\n"
+"main={name_long}|{prefix}{suffix}|{name_mid}{connector}{surname}\n"
+"name_mid={prefix}{suffix}|{name_short}\n"
+"surname={name_mid_male}|{name_mid}|{name_mid_male}\n"
+"name_long={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"name_short=Afa|Aida|Alia|Ari|Arua|Asma|Asra|Dua|Fair|Hala|Hana|Hiba|Inas|"
+"Isra|Lina|Mona|Muna|Nida|Nima|Nur|Rana|Rim|Ruba|Ruia|Rua|Sana|Sara|Sua|Tuba|"
+"Usma|Zara\n"
+"prefix=Aba|Bas|Fati|Ga|Al|Ba|Ia|Ha|Mu|Ra|Ras|Abi|Ama|La|ʿAi|Ala|ʿA|Fa|Du|In|"
+"Iu|Mun|Ma|Ni|Lli|Mu|La|Lu|Mi|Cu|Tal|Ta|Za|Ci|Ias|Ua|Su|Cua|ʿIcri|Lu|Su|Osa|"
+"Ra|Sa|Da|Fai|Ni|Nas\n"
+"suffix=a|aba|ada|a|afa|aïa|al|an|ar|as|ata|ai|az|da|in|ia|is|in|ir|la|ma|mas|"
+"n|na|naba|ni|r|ra|ran|rata|ul|ur|uz|ua|ia|ian|za|ci\n"
+"connector= al-| ina | bin\n"
+"centre=ʿ|ʾ|i|sa|car|da|na|ia|tai|qui|ai|sau\n"
+"name_mid_male={prefix_male}{suffix_male}|{name_short_male}\n"
+"name_short_male=Din|Si|Din|Ta|Su|Ali|Lu|Nu|Cais|Nimer|Ian|Bus|Lur|Mar|Nur|"
+"Fal\n"
+"prefix_male=A|Bas|Fa|Ga|Al|Ba|Ia|Ha|Mu|Ra|Ras|Abi|An|La|ʿAl|Ala|ʿA|Fa|Du|In|"
+"Iu|Mun|Ma|Ni|Lli|Mu|La|Lu|Mi|Cu|Tal|Ta|Za|Ci|Ias|Ua|Su|ʿIcri|Lu|Su|Osa|Ra|Sa|"
+"Da|Fa|Ni|Nas\n"
+"suffix_male=af|al|li|bair|sur|bi|la|ate|sin|ma|i|il|ique|raj|man|ia|sid|ria|"
+"ail|air|a|en|in|aid|ud|ra|uá|nan|as|ir|ba|ni|iad|rás|suc|ide|mal|quibe\n"
 
 # Véxase o ficheiro de «Nomes». Estes son os de saurio.
 #: data/core/macros/names.cfg:176
@@ -2605,6 +2733,13 @@ msgid ""
 "suffix=ta|ir|az|ix|za|trax|il|le|esz|izs|ezz|irr|asch|ez|is|iss|azz\n"
 "centre=ix|’Kza|tra|na|an|ex|ssa|zzi|’Usz\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"prefix=An|Ar|Bis|Cha|Cli|Fa|Fi|Fli|Fri|Ha|He|In|Ir|In|Ca|Que|Ies|Lli|Ca|Que|"
+"Lo|Ma|Os|Po|Sa|Se|Li|Me|Na|Pre|Esca|Xe|Xi|Esto|Este|Esci|Esza|Ti|Ve|Vri|Xa|"
+"Xe|Xi|San|Sil|Su\n"
+"suffix=ta|ir|as|is|sa|tras|il|le|es|is|es|ir|as|es|is|as\n"
+"centre=is|sa|tra|na|an|es|sa|si|us\n"
 
 # Véxase o ficheiro de «Nomes». Estes son os de sirénido.
 #: data/core/macros/names.cfg:187
@@ -2651,6 +2786,13 @@ msgid ""
 "lau|nik|sa|loa|roa\n"
 "centre=la|ma|ri|sei|te|ka|li|cer|tu|ni|ki|na|ga|si\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"prefix=A|Ai|Apa|Bar|Atla|Da|El|Fa|Ia|La|Cu|Li|Ma|Me|Mi|Na|Ne|Nio|Nua|Nu|Oce|"
+"Ocre|For|Po|Pro|Ra|Ro|Riu|Esci|Si|Ta|Zau|Ti|Vi|Tri|Vo|Vou\n"
+"suffix=su|ion|la|ta|ua|mar|re|lau|lu|na|ir|ra|tes|nus|teus|tes|tan|mas|qui|"
+"ni|lau|nin|sa|loa|roa\n"
+"centre=la|ma|ri|sei|te|ca|li|cer|tu|ni|qui|na|ga|si\n"
 
 #. Generator for mermaid names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:197
@@ -2662,6 +2804,12 @@ msgid ""
 "suffix=me|pe|gia|noe|dna|la|ris|ta|tea|va|mo|pe|riam|riel|na|ra|tea\n"
 "centre=ophe|phri|tri|phro|di|si|xie|ce|ty|la|me|ro|co|mar|ran|then|la|ga\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"prefix=Agla|Amfi|A|Ca|Del|Der|Di|El|Ga|Ie|Leu|Li|Lo|Ma|Ua|Ma|Mi|Mo|Par|Pel|"
+"Pi|Se|Este|Ma|Ce|Ti|Va|Ve\n"
+"suffix=me|pe|xia|noe|na|la|ris|ta|tea|va|mo|pe|rian|riel|na|ra|tea\n"
+"centre=ofe|fri|tri|fro|di|si|xie|ce|ti|la|me|ro|co|mar|ran|den|la|ga\n"
 
 # Véxase o ficheiro de «Nomes». Estes son os de naga macho.
 #: data/core/macros/names.cfg:206
@@ -2709,6 +2857,12 @@ msgid ""
 "suffix=iss|ail|nal|eii|mol|loss|noss|xos|sal|zel|kps|pek|ness|or|sol|peii|"
 "iaz|on|sal|ol|kil|oz|ail|al|nis|rak|lel|nas|kon|ekp\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}\n"
+"prefix=Abra|Ale|Ama|As|Bla|Ble|Bre|Bri|Gri|Hai|Har|Hu|Ine|Cle|Cres|Lan|Lin|"
+"Lo|Mai|Lal|Nil|Pon|Se|Sa|Se|Esle|So|Sor|Tri|Vi|Vla|Xa|Xi|Na|Za|Ce|Se\n"
+"suffix=is|ail|nal|ei|mol|los|nos|xos|sal|sel|ques|pe|nes|or|sol|pei|ias|on|"
+"sal|ol|quil|os|ail|al|nis|raque|lel|nas|con|eque\n"
 
 #. Generator for female naga names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:215
@@ -2721,6 +2875,13 @@ msgid ""
 "suffix=asse|mailia|ilis|ana|ama|ssa|ssilai|zi|xias|lai|maissa|bra|lin|lina|"
 "na|bra|aa|lia|lai|laila|na|pkne|alsp|ekp\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}\n"
+"prefix=Ali|Ama|As|Bla|Bli|Bra|Bri|Gas|Gri|Hai|Har|Hu|Ina|Is|Cres|Sa|Lan|Les|"
+"Li|Lin|Mai|Mu|Nil|Os|Pon|Sa|Ri|Sal|Sas|Seque|Esnel|Ra|Tris|Vil|Vis|Blan|Xa|"
+"Xan|Xi|Nan|Xo|Zal|Cle|Se\n"
+"suffix=axe|mailia|ilis|ana|ama|sa|silai|si|xias|lai|maixa|bra|lin|lina|na|"
+"bra|a|lia|lai|laila|na|quene|alsa|epe\n"
 
 # Véxase o ficheiro de «Nomes». Estes son os de ogro.
 #: data/core/macros/names.cfg:223
@@ -2748,6 +2909,11 @@ msgid ""
 "Ker|Kil|King|Kor|Kru|Kur|Mar|Mer|Nal|Trak|Urk\n"
 "suffix=ark|ort|alk|arm|kuk|kak|ukk|nak|ta|k|rok|rar|kon|gak|nik\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}\n"
+"prefix=A|Ar|Bar|Blo|Bor|Bul|Cor|Del|Gar|Nu|Gra|Gru|Gu|Cal|Car|Cai|Quel|Quer|"
+"Quil|Quin|Cor|Cru|Cur|Mar|Mer|Nal|Tra|Ur\n"
+"suffix=ar|or|al|arme|cuco|caque|uco|naque|ta|que|roque|rar|con|gaque|nique\n"
 
 # Véxase o ficheiro de «Nomes». Estes son os de orco.
 #: data/core/macros/names.cfg:233
@@ -2833,6 +2999,17 @@ msgid ""
 "ending_consonnant=b|g|r|sh|k\n"
 "ending_vowel=o|u\n"
 msgstr ""
+"\n"
+"main={starting_consonnant}{vowel}{consonnant}{vowel}{ending_consonnant}|"
+"{starting_consonnant}{vowel}{consonnant}{ending_vowel}|{starting_vowel}"
+"{consonnant}{vowel}{ending_consonnant}|{starting_consonnant}{vowel}"
+"{ending_consonnant}|{starting_vowel}{consonnant}{ending_vowel}\n"
+"starting_consonnant=B|Br|D|Dr|G|Gr|H|C|M|N|P|Pr|R|S|X|T|V\n"
+"starting_vowel=A|I|O|U\n"
+"consonnant=b|br|d|dr|gr|c|m|n|p|pr|r|s|x|t|v|s|gu|br|dr|br|cr\n"
+"vowel=a|i|o|u\n"
+"ending_consonnant=l|n|r|s|ns\n"
+"ending_vowel=o|u\n"
 
 # Véxase o ficheiro de «Nomes». Estes son os de troll.
 #: data/core/macros/names.cfg:247
@@ -2859,6 +3036,14 @@ msgid ""
 "beginning=Ä|Ü|A|U\n"
 "suffix=rb|g|gh|k|rf|kk|r|g|th|h|rg\n"
 msgstr ""
+"\n"
+"main={short_name}|{short_name}|{short_name}|{short_name} {short_name}\n"
+"short_name={prefix}{middle}{suffix}|{prefix}{middle}{suffix}|{prefix}{middle}"
+"{suffix}|{beginning}{suffix}\n"
+"prefix=B|Br|D|G|H|C|Cr|L|N|P|R|S|X|T|V|Z\n"
+"middle=a|o|u\n"
+"beginning=A|U\n"
+"suffix=r|que|refe|ca|ga|ce|rego\n"
 
 # Véxase o ficheiro de «Nomes». Estes son os de wose.
 #: data/core/macros/names.cfg:260
@@ -2903,6 +3088,18 @@ msgid ""
 "suffix=men|drum|tor|num|lad|de|ak|lol|dum|tam|nur|dium|deum|bil|rook|relm|"
 "dium|numm|dan|doom|tum|din\n"
 msgstr ""
+"\n"
+"main={prefix}{centre}{centre}{suffix}|{prefix}{centre}{centre}{centre}"
+"{suffix}\n"
+"prefix=Blu|Bo|Bre|Bro|Bru|Bu|Car|Da|Da|De|Di|Dol|Dro|Dul|Dun|El|Gre|Gul|Gun|"
+"La|Lan|Las|Le|Li|Lol|Mon|Mul|Mun|Nan|Nun|Or|Pan|Pon|Ris|Tan|Ten|Ton|Trun|Tun|"
+"Guon|Gun\n"
+"centre=de|bal|drun|gul|del|ben|pon|gon|tan|bon|quen|tan|ton|man|ten|dron|"
+"dube|na|da|ni|mi|lul|mon|duel|lene|nune|nobe|mande|rume|lade|roame|be|lome|"
+"seme|nube|di|uime|din|bleme|nande|dul|dil|ofe|tame|con|ton|tun|ten|run|mal|"
+"do\n"
+"suffix=men|drume|tor|nume|lade|de|aque|lol|dume|tame|nur|diume|deume|bil|"
+"ruque|relme|diume|nume|dan|dume|tume|din\n"
 
 # Véxase o ficheiro de «Topónimos».
 #: data/core/macros/names.cfg:271
@@ -2935,6 +3132,7 @@ msgstr ""
 "Vilán,Vilanova,Vilaperre,Vilar,Vilas,Vilavedra,Vileira,Xacobe,Xesteira,Xocín,"
 "Xondo,Xunqueira,Zas"
 
+# Nomes base
 #. Generator for the base names of features assigned by the random map generator; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:273
 msgid ""
@@ -2944,6 +3142,83 @@ msgid ""
 "middle=a|e|o|u|i\n"
 "suffix=l|m|rn|x|w|ld|ck|k|rk\n"
 msgstr ""
+"\n"
+"main={palabras}\n"
+"\n"
+"# Calquera cambio a partir de aquí debe copiarse a outras cadeas.\n"
+"\n"
+"palabras={base}|{base}|{base}|{base}|{base}|{base}|{base}|{base}|{base}|"
+"{composicion}\n"
+"\n"
+"composicion={base} de {palabra}|{base} de {palabra}|{base} de {palabra}|"
+"{base} de {palabra}|{base} de {palabra}|{base} de {palabra}|{base} da "
+"{palabra_fs}|{base} das {palabra_fp}|{base} do {palabra_ms}|{base} dos "
+"{palabra_mp}\n"
+"\n"
+"base={palabra}|{palabra}|{palabra}|{palabra}|{palabra}|{palabra}|{palabra}|"
+"{palabra}|{palabra}|{palabra_con_artigo}\n"
+"\n"
+"palabra_con_artigo=A {palabra_fs}|A {palabra_fs}|A {palabra_fs}|A "
+"{palabra_fs}|As {palabra_fp}|O {palabra_ms}|O {palabra_ms}|O {palabra_ms}|O "
+"{palabra_ms}|Os {palabra_mp}\n"
+"\n"
+"palabra={palabra4}|{palabra3}|{palabra3}|{palabra3}|{palabra2}|{palabra2}|"
+"{palabra2}|{palabra2}|{palabra2}|{palabra2}|{palabra2}|{palabra2}|"
+"{palabra2}\n"
+"palabra4={inicio}{centro}{centro}{final}\n"
+"palabra3={inicio}{centro}{final}\n"
+"palabra2={inicio}{final}\n"
+"palabra_fs={palabra4_fs}|{palabra3_fs}|{palabra3_fs}|{palabra3_fs}|"
+"{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|"
+"{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}\n"
+"palabra4_fs={inicio}{centro}{centro}{final_fs}\n"
+"palabra3_fs={inicio}{centro}{final_fs}\n"
+"palabra2_fs={inicio}{final_fs}\n"
+"palabra_fp={palabra4_fp}|{palabra3_fp}|{palabra3_fp}|{palabra3_fp}|"
+"{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|"
+"{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}\n"
+"palabra4_fp={inicio}{centro}{centro}{final_fp}\n"
+"palabra3_fp={inicio}{centro}{final_fp}\n"
+"palabra2_fp={inicio}{final_fp}\n"
+"palabra_ms={palabra4_ms}|{palabra3_ms}|{palabra3_ms}|{palabra3_ms}|"
+"{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|"
+"{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}\n"
+"palabra4_ms={inicio}{centro}{centro}{final_ms}\n"
+"palabra3_ms={inicio}{centro}{final_ms}\n"
+"palabra2_ms={inicio}{final_ms}\n"
+"palabra_mp={palabra4_mp}|{palabra3_mp}|{palabra3_mp}|{palabra3_mp}|"
+"{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|"
+"{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}\n"
+"palabra4_mp={inicio}{centro}{centro}{final_mp}\n"
+"palabra3_mp={inicio}{centro}{final_mp}\n"
+"palabra2_mp={inicio}{final_mp}\n"
+"\n"
+"# Capaz de xerar todos os nomes de municipios galegos (segundo nivel da "
+"árbore\n"
+"# de http://www.ige.eu/igebdt/esq.jsp?paxina=002001&c=-1&ruta=nomenclator/"
+"nomenarbol.jsp),\n"
+"# excluíndo referencias relixiosas (san, santo, santa, santiago, etc.) e\n"
+"# xeográficas (mon-, ponte-, porto-, riba-, rio-, riveira-) evidentes.\n"
+"inicio=A|Ba|Bai|Be|Bla|Bo|Boi|Bri|Bro|Bu|Ca|Ce|Cha|Co|Coi|Cou|Cre|Cu|Deu|Do|"
+"Du|E|Fe|Fi|Fo|Fra|Fri|Go|Gro|Gu|Gui|I|La|Le|Lei|Li|Lo|Lou|Lu|Ma|Me|Mei|Mi|Mo|"
+"Mu|Na|Ne|Ni|No|Noi|O|Oi|Ou|Pa|Pe|Pi|Po|Poi|Quei|Qui|Ra|Rai|Re|Rei|Ri|Roi|Ru|"
+"Sa|Si|So|Su|Ta|Te|To|Tou|Tra|Tri|Tui|U|Va|Ve|Vi|Xe|Xi|Xo|Za\n"
+"centro=a|ba|be|bei|bi|bo|bra|brei|ce|da|de|dei|di|do|dra|dre|du|e|ei|fi|ga|"
+"guei|go|la|lde|le|lei|lgo|li|lla|lle|lpi|ma|mba|me|mi|mo|mpo|nca|ndo|ndre|ne|"
+"nfe|nfo|nde|no|nta|nte|nti|ntri|nza|ña|ñe|ñi|o|pe|quei|ra|rba|rca|rce|rcu|"
+"rde|rdi|rdoi|re|rga|rgo|ri|rma|rne|rni|rno|rnoi|ro|rou|rquei|rre|rrei|rri|"
+"rro|rte|rtei|rti|ru|rva|sa|se|si|spa|spei|sta|ste|sto|su|ta|ti|toi|ve|vei|vi|"
+"xo|za\n"
+"final=|ber|che|de|dás|e|gais|is|l|les|mbre|me|mes|n|nde|ne|nlle|nse|nte|ntes|"
+"ntis|ques|rás|rdes|res|rne|riz|rtis|s|tes|us|ve|ves|xe|z\n"
+"final_fs=a|á|bra|ca|cha|da|dra|ga|la|lba|lga|lla|ma|mba|mbía|mbra|mbría|mia|"
+"na|nda|nga|ntar|nzá|ña|ra|rca|rda|rna|rria|rzúa|sía|ta|va|via|xa|xía|za\n"
+"final_fp=las|lgas|nas|ngas|ñas|ras|rras|zas\n"
+"final_ms=co|dín|do|dro|drón|eu|go|grán|lfoz|lín|llo|llón|lo|lón|ltar|mo|muín|"
+"ncio|nco|ndín|ndo|ntín|ntón|nxín|nxo|nzo|ñal|ñiz|ño|ñón|o|ol|ón|quín|rás|"
+"rbén|rbo|rei|rel|rgo|riz|ro|rol|rón|ros|rós|rra|rral|rro|rrol|rte|rto|rvo|"
+"sal|so|tín|to|ve|xo|xón|zo|zón\n"
+"final_mp=cos|dos|los|mos|ncos|nos|nzos|ños|os|rdos|ros|sgos\n"
 
 #. [objective]: condition=lose
 #: data/core/macros/objective-utils.cfg:6
@@ -2963,10 +3238,8 @@ msgid "Bonus objective:"
 msgstr "Obxectivo con bonificación:"
 
 #: data/core/macros/objective-utils.cfg:30
-#, fuzzy
-#| msgid "Bonus objective:"
 msgid "Optional objective:"
-msgstr "Obxectivo con bonificación:"
+msgstr "Obxectivo opcional:"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:52
@@ -2976,7 +3249,7 @@ msgstr "Este é o último escenario."
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:58
 msgid "No turn limit"
-msgstr ""
+msgstr "Non hai límite de quendas."
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:58
@@ -2990,159 +3263,147 @@ msgstr ""
 #. [music]
 #: data/core/macros/sound-utils.cfg:282
 msgid "Battle Epic"
-msgstr ""
+msgstr "Épica de batalla"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:288
 msgid "Battle Music"
-msgstr ""
+msgstr "Música de batalla"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:294
 msgid "Breaking the Chains"
-msgstr ""
+msgstr "Rompendo as cadeas"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:300
 msgid "Casualties of War"
-msgstr ""
+msgstr "Baixas da guerra"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:306
 msgid "Elf Land"
-msgstr ""
+msgstr "Terra de elfos"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:312
 msgid "Elvish theme"
-msgstr ""
+msgstr "Tema élfico"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:318
 msgid "Frantic"
-msgstr ""
+msgstr "Frenético"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:324
 msgid "Heroes Rite"
-msgstr ""
+msgstr "O rito dos heroes"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:330
 msgid "Into the Shadows"
-msgstr ""
+msgstr "Nas sombras"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:336
 msgid "Journey’s End"
-msgstr ""
+msgstr "A fin da viaxe"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:342
 msgid "Knalgan Theme"
-msgstr ""
+msgstr "Tema de Neilga"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:348
 msgid "The Knolls of Doldesh"
-msgstr ""
+msgstr "Os outeiros de Doldes"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:354
 msgid "Legends of the North"
-msgstr ""
+msgstr "Lendas do norte"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:360
 msgid "Love Theme"
-msgstr ""
+msgstr "Tema de amor"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:366
-#, fuzzy
-#| msgid "Loyal"
 msgid "Loyalists"
-msgstr "Lealdade"
+msgstr "Leais"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:372
 msgid "Over the Northern Mountains"
-msgstr ""
+msgstr "Sobre as montañas do norte"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:378
-#, fuzzy
-#| msgid "North West"
 msgid "Northerners"
-msgstr "Noroeste"
+msgstr "Nórdicos"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:384
 msgid "Nunc Dimittis"
-msgstr ""
+msgstr "Nunc Dimittis"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:390
-#, fuzzy
-#| msgid "Rotate Selection"
 msgid "Revelation"
-msgstr "Rotar a selección"
+msgstr "Revelación"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:396
-#, fuzzy
-#| msgid "Sand"
 msgid "Sad"
-msgstr "Area"
+msgstr "Triste"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:402
 msgid "Siege of Laurelmor"
-msgstr ""
+msgstr "O sitio de Laurelmor"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:408
 msgid "Silvan Sanctuary"
-msgstr ""
+msgstr "O santuario silvano"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:414
 msgid "Suspense"
-msgstr ""
+msgstr "Suspenso"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:420
 msgid "The City Falls"
-msgstr ""
+msgstr "A caída da cidade"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:426
 msgid "The Dangerous Symphony"
-msgstr ""
+msgstr "A sinfonía perigosa"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:432
-#, fuzzy
-#| msgid "Deep water"
 msgid "The Deep Path"
-msgstr "Auga profunda"
+msgstr "O longo camiño"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:438
-#, fuzzy
-#| msgid "The game is over."
 msgid "The King is Dead"
-msgstr "Rematou a partida."
+msgstr "A morte do rei"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:444
 msgid "Transience"
-msgstr ""
+msgstr "Brevidade"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:450
 msgid "Traveling Minstrels"
-msgstr ""
+msgstr "Os trobadores deambulantes"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:456
@@ -3152,19 +3413,17 @@ msgstr "Baixo a terra"
 #. [music]
 #: data/core/macros/sound-utils.cfg:462
 msgid "Vengeful Pursuit"
-msgstr ""
+msgstr "A persecución vengativa"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:468
 msgid "Still Another Wanderer"
-msgstr ""
+msgstr "Outro errante máis"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:474
-#, fuzzy
-#| msgid "Bright orange"
 msgid "Weight of Revenge"
-msgstr "Laranxa claro"
+msgstr "O peso da vinganza"
 
 #. [message]: speaker=narrator
 #: data/core/macros/utils.cfg:697
@@ -3503,6 +3762,7 @@ msgstr "frío"
 msgid "arcane"
 msgstr "arcano"
 
+# Nomes de ponte
 #. [naming]
 #: data/english.cfg:37
 msgid ""
@@ -3511,7 +3771,90 @@ msgid ""
 "\t\tmain=$base {bridge_type}|$base{!}’s {bridge_type}\n"
 "\t"
 msgstr ""
+"\n"
+"main={lugar} de {palabra}|{lugar} de {palabra}|{lugar} de {palabra}|{lugar} "
+"de {palabra}|{lugar} de {palabra}|{lugar} de {palabra}|{lugar} da "
+"{palabra_fs}|{lugar} das {palabra_fp}|{lugar} do {palabra_ms}|{lugar} dos "
+"{palabra_mp}\n"
+"lugar=Ponte\n"
+"\n"
+"# Calquera cambio a partir de aquí debe copiarse a outras cadeas.\n"
+"\n"
+"palabras={base}|{base}|{base}|{base}|{base}|{base}|{base}|{base}|{base}|"
+"{composicion}\n"
+"\n"
+"composicion={base} de {palabra}|{base} de {palabra}|{base} de {palabra}|"
+"{base} de {palabra}|{base} de {palabra}|{base} de {palabra}|{base} da "
+"{palabra_fs}|{base} das {palabra_fp}|{base} do {palabra_ms}|{base} dos "
+"{palabra_mp}\n"
+"\n"
+"base={palabra}|{palabra}|{palabra}|{palabra}|{palabra}|{palabra}|{palabra}|"
+"{palabra}|{palabra}|{palabra_con_artigo}\n"
+"\n"
+"palabra_con_artigo=A {palabra_fs}|A {palabra_fs}|A {palabra_fs}|A "
+"{palabra_fs}|As {palabra_fp}|O {palabra_ms}|O {palabra_ms}|O {palabra_ms}|O "
+"{palabra_ms}|Os {palabra_mp}\n"
+"\n"
+"palabra={palabra4}|{palabra3}|{palabra3}|{palabra3}|{palabra2}|{palabra2}|"
+"{palabra2}|{palabra2}|{palabra2}|{palabra2}|{palabra2}|{palabra2}|"
+"{palabra2}\n"
+"palabra4={inicio}{centro}{centro}{final}\n"
+"palabra3={inicio}{centro}{final}\n"
+"palabra2={inicio}{final}\n"
+"palabra_fs={palabra4_fs}|{palabra3_fs}|{palabra3_fs}|{palabra3_fs}|"
+"{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|"
+"{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}\n"
+"palabra4_fs={inicio}{centro}{centro}{final_fs}\n"
+"palabra3_fs={inicio}{centro}{final_fs}\n"
+"palabra2_fs={inicio}{final_fs}\n"
+"palabra_fp={palabra4_fp}|{palabra3_fp}|{palabra3_fp}|{palabra3_fp}|"
+"{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|"
+"{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}\n"
+"palabra4_fp={inicio}{centro}{centro}{final_fp}\n"
+"palabra3_fp={inicio}{centro}{final_fp}\n"
+"palabra2_fp={inicio}{final_fp}\n"
+"palabra_ms={palabra4_ms}|{palabra3_ms}|{palabra3_ms}|{palabra3_ms}|"
+"{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|"
+"{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}\n"
+"palabra4_ms={inicio}{centro}{centro}{final_ms}\n"
+"palabra3_ms={inicio}{centro}{final_ms}\n"
+"palabra2_ms={inicio}{final_ms}\n"
+"palabra_mp={palabra4_mp}|{palabra3_mp}|{palabra3_mp}|{palabra3_mp}|"
+"{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|"
+"{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}\n"
+"palabra4_mp={inicio}{centro}{centro}{final_mp}\n"
+"palabra3_mp={inicio}{centro}{final_mp}\n"
+"palabra2_mp={inicio}{final_mp}\n"
+"\n"
+"# Capaz de xerar todos os nomes de municipios galegos (segundo nivel da "
+"árbore\n"
+"# de http://www.ige.eu/igebdt/esq.jsp?paxina=002001&c=-1&ruta=nomenclator/"
+"nomenarbol.jsp),\n"
+"# excluíndo referencias relixiosas (san, santo, santa, santiago, etc.) e\n"
+"# xeográficas (mon-, ponte-, porto-, riba-, rio-, riveira-) evidentes.\n"
+"inicio=A|Ba|Bai|Be|Bla|Bo|Boi|Bri|Bro|Bu|Ca|Ce|Cha|Co|Coi|Cou|Cre|Cu|Deu|Do|"
+"Du|E|Fe|Fi|Fo|Fra|Fri|Go|Gro|Gu|Gui|I|La|Le|Lei|Li|Lo|Lou|Lu|Ma|Me|Mei|Mi|Mo|"
+"Mu|Na|Ne|Ni|No|Noi|O|Oi|Ou|Pa|Pe|Pi|Po|Poi|Quei|Qui|Ra|Rai|Re|Rei|Ri|Roi|Ru|"
+"Sa|Si|So|Su|Ta|Te|To|Tou|Tra|Tri|Tui|U|Va|Ve|Vi|Xe|Xi|Xo|Za\n"
+"centro=a|ba|be|bei|bi|bo|bra|brei|ce|da|de|dei|di|do|dra|dre|du|e|ei|fi|ga|"
+"guei|go|la|lde|le|lei|lgo|li|lla|lle|lpi|ma|mba|me|mi|mo|mpo|nca|ndo|ndre|ne|"
+"nfe|nfo|nde|no|nta|nte|nti|ntri|nza|ña|ñe|ñi|o|pe|quei|ra|rba|rca|rce|rcu|"
+"rde|rdi|rdoi|re|rga|rgo|ri|rma|rne|rni|rno|rnoi|ro|rou|rquei|rre|rrei|rri|"
+"rro|rte|rtei|rti|ru|rva|sa|se|si|spa|spei|sta|ste|sto|su|ta|ti|toi|ve|vei|vi|"
+"xo|za\n"
+"final=|ber|che|de|dás|e|gais|is|l|les|mbre|me|mes|n|nde|ne|nlle|nse|nte|ntes|"
+"ntis|ques|rás|rdes|res|rne|riz|rtis|s|tes|us|ve|ves|xe|z\n"
+"final_fs=a|á|bra|ca|cha|da|dra|ga|la|lba|lga|lla|ma|mba|mbía|mbra|mbría|mia|"
+"na|nda|nga|ntar|nzá|ña|ra|rca|rda|rna|rria|rzúa|sía|ta|va|via|xa|xía|za\n"
+"final_fp=las|lgas|nas|ngas|ñas|ras|rras|zas\n"
+"final_ms=co|dín|do|dro|drón|eu|go|grán|lfoz|lín|llo|llón|lo|lón|ltar|mo|muín|"
+"ncio|nco|ndín|ndo|ntín|ntón|nxín|nxo|nzo|ñal|ñiz|ño|ñón|o|ol|ón|quín|rás|"
+"rbén|rbo|rei|rel|rgo|riz|ro|rol|rón|ros|rós|rra|rral|rro|rrol|rte|rto|rvo|"
+"sal|so|tín|to|ve|xo|xón|zo|zón\n"
+"final_mp=cos|dos|los|mos|ncos|nos|nzos|ños|os|rdos|ros|sgos\n"
+"\t"
 
+# Nomes de camiño
 #. [naming]
 #: data/english.cfg:41
 msgid ""
@@ -3520,7 +3863,92 @@ msgid ""
 "\t\tmain=$base{!}’s {road_type}|{road_type} of $base\n"
 "\t"
 msgstr ""
+"\n"
+"main={lugar} de {palabra}|{lugar} de {palabra}|{lugar} de {palabra}|{lugar} "
+"de {palabra}|{lugar} de {palabra}|{lugar} de {palabra}|{lugar} da "
+"{palabra_fs}|{lugar} das {palabra_fp}|{lugar} do {palabra_ms}|{lugar} dos "
+"{palabra_mp}\n"
+"lugar=Camiño|Camiño|Camiño|{outros_lugares}\n"
+"outros_lugares=Carreteira|Estrada|Paso|Carreira|Carreiro|Corredoira|"
+"Corredoiro|Sendeiro|Verea|Vieiro|Rúa|Vía\n"
+"\n"
+"# Calquera cambio a partir de aquí debe copiarse a outras cadeas.\n"
+"\n"
+"palabras={base}|{base}|{base}|{base}|{base}|{base}|{base}|{base}|{base}|"
+"{composicion}\n"
+"\n"
+"composicion={base} de {palabra}|{base} de {palabra}|{base} de {palabra}|"
+"{base} de {palabra}|{base} de {palabra}|{base} de {palabra}|{base} da "
+"{palabra_fs}|{base} das {palabra_fp}|{base} do {palabra_ms}|{base} dos "
+"{palabra_mp}\n"
+"\n"
+"base={palabra}|{palabra}|{palabra}|{palabra}|{palabra}|{palabra}|{palabra}|"
+"{palabra}|{palabra}|{palabra_con_artigo}\n"
+"\n"
+"palabra_con_artigo=A {palabra_fs}|A {palabra_fs}|A {palabra_fs}|A "
+"{palabra_fs}|As {palabra_fp}|O {palabra_ms}|O {palabra_ms}|O {palabra_ms}|O "
+"{palabra_ms}|Os {palabra_mp}\n"
+"\n"
+"palabra={palabra4}|{palabra3}|{palabra3}|{palabra3}|{palabra2}|{palabra2}|"
+"{palabra2}|{palabra2}|{palabra2}|{palabra2}|{palabra2}|{palabra2}|"
+"{palabra2}\n"
+"palabra4={inicio}{centro}{centro}{final}\n"
+"palabra3={inicio}{centro}{final}\n"
+"palabra2={inicio}{final}\n"
+"palabra_fs={palabra4_fs}|{palabra3_fs}|{palabra3_fs}|{palabra3_fs}|"
+"{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|"
+"{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}\n"
+"palabra4_fs={inicio}{centro}{centro}{final_fs}\n"
+"palabra3_fs={inicio}{centro}{final_fs}\n"
+"palabra2_fs={inicio}{final_fs}\n"
+"palabra_fp={palabra4_fp}|{palabra3_fp}|{palabra3_fp}|{palabra3_fp}|"
+"{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|"
+"{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}\n"
+"palabra4_fp={inicio}{centro}{centro}{final_fp}\n"
+"palabra3_fp={inicio}{centro}{final_fp}\n"
+"palabra2_fp={inicio}{final_fp}\n"
+"palabra_ms={palabra4_ms}|{palabra3_ms}|{palabra3_ms}|{palabra3_ms}|"
+"{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|"
+"{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}\n"
+"palabra4_ms={inicio}{centro}{centro}{final_ms}\n"
+"palabra3_ms={inicio}{centro}{final_ms}\n"
+"palabra2_ms={inicio}{final_ms}\n"
+"palabra_mp={palabra4_mp}|{palabra3_mp}|{palabra3_mp}|{palabra3_mp}|"
+"{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|"
+"{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}\n"
+"palabra4_mp={inicio}{centro}{centro}{final_mp}\n"
+"palabra3_mp={inicio}{centro}{final_mp}\n"
+"palabra2_mp={inicio}{final_mp}\n"
+"\n"
+"# Capaz de xerar todos os nomes de municipios galegos (segundo nivel da "
+"árbore\n"
+"# de http://www.ige.eu/igebdt/esq.jsp?paxina=002001&c=-1&ruta=nomenclator/"
+"nomenarbol.jsp),\n"
+"# excluíndo referencias relixiosas (san, santo, santa, santiago, etc.) e\n"
+"# xeográficas (mon-, ponte-, porto-, riba-, rio-, riveira-) evidentes.\n"
+"inicio=A|Ba|Bai|Be|Bla|Bo|Boi|Bri|Bro|Bu|Ca|Ce|Cha|Co|Coi|Cou|Cre|Cu|Deu|Do|"
+"Du|E|Fe|Fi|Fo|Fra|Fri|Go|Gro|Gu|Gui|I|La|Le|Lei|Li|Lo|Lou|Lu|Ma|Me|Mei|Mi|Mo|"
+"Mu|Na|Ne|Ni|No|Noi|O|Oi|Ou|Pa|Pe|Pi|Po|Poi|Quei|Qui|Ra|Rai|Re|Rei|Ri|Roi|Ru|"
+"Sa|Si|So|Su|Ta|Te|To|Tou|Tra|Tri|Tui|U|Va|Ve|Vi|Xe|Xi|Xo|Za\n"
+"centro=a|ba|be|bei|bi|bo|bra|brei|ce|da|de|dei|di|do|dra|dre|du|e|ei|fi|ga|"
+"guei|go|la|lde|le|lei|lgo|li|lla|lle|lpi|ma|mba|me|mi|mo|mpo|nca|ndo|ndre|ne|"
+"nfe|nfo|nde|no|nta|nte|nti|ntri|nza|ña|ñe|ñi|o|pe|quei|ra|rba|rca|rce|rcu|"
+"rde|rdi|rdoi|re|rga|rgo|ri|rma|rne|rni|rno|rnoi|ro|rou|rquei|rre|rrei|rri|"
+"rro|rte|rtei|rti|ru|rva|sa|se|si|spa|spei|sta|ste|sto|su|ta|ti|toi|ve|vei|vi|"
+"xo|za\n"
+"final=|ber|che|de|dás|e|gais|is|l|les|mbre|me|mes|n|nde|ne|nlle|nse|nte|ntes|"
+"ntis|ques|rás|rdes|res|rne|riz|rtis|s|tes|us|ve|ves|xe|z\n"
+"final_fs=a|á|bra|ca|cha|da|dra|ga|la|lba|lga|lla|ma|mba|mbía|mbra|mbría|mia|"
+"na|nda|nga|ntar|nzá|ña|ra|rca|rda|rna|rria|rzúa|sía|ta|va|via|xa|xía|za\n"
+"final_fp=las|lgas|nas|ngas|ñas|ras|rras|zas\n"
+"final_ms=co|dín|do|dro|drón|eu|go|grán|lfoz|lín|llo|llón|lo|lón|ltar|mo|muín|"
+"ncio|nco|ndín|ndo|ntín|ntón|nxín|nxo|nzo|ñal|ñiz|ño|ñón|o|ol|ón|quín|rás|"
+"rbén|rbo|rei|rel|rgo|riz|ro|rol|rón|ros|rós|rra|rral|rro|rrol|rte|rto|rvo|"
+"sal|so|tín|to|ve|xo|xón|zo|zón\n"
+"final_mp=cos|dos|los|mos|ncos|nos|nzos|ños|os|rdos|ros|sgos\n"
+"\t"
 
+# Nomes de río
 #. [naming]
 #: data/english.cfg:45
 msgid ""
@@ -3529,7 +3957,91 @@ msgid ""
 "\t\tmain=$base {river_type}|{river_type} $base\n"
 "\t"
 msgstr ""
+"\n"
+"main={lugar} de {palabra}|{lugar} de {palabra}|{lugar} de {palabra}|{lugar} "
+"de {palabra}|{lugar} de {palabra}|{lugar} de {palabra}|{lugar} da "
+"{palabra_fs}|{lugar} das {palabra_fp}|{lugar} do {palabra_ms}|{lugar} dos "
+"{palabra_mp}\n"
+"lugar=Río|Río|Río|Río|{outros_lugares}\n"
+"outros_lugares=Rego|Regato|Regacho\n"
+"\n"
+"# Calquera cambio a partir de aquí debe copiarse a outras cadeas.\n"
+"\n"
+"palabras={base}|{base}|{base}|{base}|{base}|{base}|{base}|{base}|{base}|"
+"{composicion}\n"
+"\n"
+"composicion={base} de {palabra}|{base} de {palabra}|{base} de {palabra}|"
+"{base} de {palabra}|{base} de {palabra}|{base} de {palabra}|{base} da "
+"{palabra_fs}|{base} das {palabra_fp}|{base} do {palabra_ms}|{base} dos "
+"{palabra_mp}\n"
+"\n"
+"base={palabra}|{palabra}|{palabra}|{palabra}|{palabra}|{palabra}|{palabra}|"
+"{palabra}|{palabra}|{palabra_con_artigo}\n"
+"\n"
+"palabra_con_artigo=A {palabra_fs}|A {palabra_fs}|A {palabra_fs}|A "
+"{palabra_fs}|As {palabra_fp}|O {palabra_ms}|O {palabra_ms}|O {palabra_ms}|O "
+"{palabra_ms}|Os {palabra_mp}\n"
+"\n"
+"palabra={palabra4}|{palabra3}|{palabra3}|{palabra3}|{palabra2}|{palabra2}|"
+"{palabra2}|{palabra2}|{palabra2}|{palabra2}|{palabra2}|{palabra2}|"
+"{palabra2}\n"
+"palabra4={inicio}{centro}{centro}{final}\n"
+"palabra3={inicio}{centro}{final}\n"
+"palabra2={inicio}{final}\n"
+"palabra_fs={palabra4_fs}|{palabra3_fs}|{palabra3_fs}|{palabra3_fs}|"
+"{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|"
+"{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}\n"
+"palabra4_fs={inicio}{centro}{centro}{final_fs}\n"
+"palabra3_fs={inicio}{centro}{final_fs}\n"
+"palabra2_fs={inicio}{final_fs}\n"
+"palabra_fp={palabra4_fp}|{palabra3_fp}|{palabra3_fp}|{palabra3_fp}|"
+"{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|"
+"{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}\n"
+"palabra4_fp={inicio}{centro}{centro}{final_fp}\n"
+"palabra3_fp={inicio}{centro}{final_fp}\n"
+"palabra2_fp={inicio}{final_fp}\n"
+"palabra_ms={palabra4_ms}|{palabra3_ms}|{palabra3_ms}|{palabra3_ms}|"
+"{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|"
+"{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}\n"
+"palabra4_ms={inicio}{centro}{centro}{final_ms}\n"
+"palabra3_ms={inicio}{centro}{final_ms}\n"
+"palabra2_ms={inicio}{final_ms}\n"
+"palabra_mp={palabra4_mp}|{palabra3_mp}|{palabra3_mp}|{palabra3_mp}|"
+"{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|"
+"{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}\n"
+"palabra4_mp={inicio}{centro}{centro}{final_mp}\n"
+"palabra3_mp={inicio}{centro}{final_mp}\n"
+"palabra2_mp={inicio}{final_mp}\n"
+"\n"
+"# Capaz de xerar todos os nomes de municipios galegos (segundo nivel da "
+"árbore\n"
+"# de http://www.ige.eu/igebdt/esq.jsp?paxina=002001&c=-1&ruta=nomenclator/"
+"nomenarbol.jsp),\n"
+"# excluíndo referencias relixiosas (san, santo, santa, santiago, etc.) e\n"
+"# xeográficas (mon-, ponte-, porto-, riba-, rio-, riveira-) evidentes.\n"
+"inicio=A|Ba|Bai|Be|Bla|Bo|Boi|Bri|Bro|Bu|Ca|Ce|Cha|Co|Coi|Cou|Cre|Cu|Deu|Do|"
+"Du|E|Fe|Fi|Fo|Fra|Fri|Go|Gro|Gu|Gui|I|La|Le|Lei|Li|Lo|Lou|Lu|Ma|Me|Mei|Mi|Mo|"
+"Mu|Na|Ne|Ni|No|Noi|O|Oi|Ou|Pa|Pe|Pi|Po|Poi|Quei|Qui|Ra|Rai|Re|Rei|Ri|Roi|Ru|"
+"Sa|Si|So|Su|Ta|Te|To|Tou|Tra|Tri|Tui|U|Va|Ve|Vi|Xe|Xi|Xo|Za\n"
+"centro=a|ba|be|bei|bi|bo|bra|brei|ce|da|de|dei|di|do|dra|dre|du|e|ei|fi|ga|"
+"guei|go|la|lde|le|lei|lgo|li|lla|lle|lpi|ma|mba|me|mi|mo|mpo|nca|ndo|ndre|ne|"
+"nfe|nfo|nde|no|nta|nte|nti|ntri|nza|ña|ñe|ñi|o|pe|quei|ra|rba|rca|rce|rcu|"
+"rde|rdi|rdoi|re|rga|rgo|ri|rma|rne|rni|rno|rnoi|ro|rou|rquei|rre|rrei|rri|"
+"rro|rte|rtei|rti|ru|rva|sa|se|si|spa|spei|sta|ste|sto|su|ta|ti|toi|ve|vei|vi|"
+"xo|za\n"
+"final=|ber|che|de|dás|e|gais|is|l|les|mbre|me|mes|n|nde|ne|nlle|nse|nte|ntes|"
+"ntis|ques|rás|rdes|res|rne|riz|rtis|s|tes|us|ve|ves|xe|z\n"
+"final_fs=a|á|bra|ca|cha|da|dra|ga|la|lba|lga|lla|ma|mba|mbía|mbra|mbría|mia|"
+"na|nda|nga|ntar|nzá|ña|ra|rca|rda|rna|rria|rzúa|sía|ta|va|via|xa|xía|za\n"
+"final_fp=las|lgas|nas|ngas|ñas|ras|rras|zas\n"
+"final_ms=co|dín|do|dro|drón|eu|go|grán|lfoz|lín|llo|llón|lo|lón|ltar|mo|muín|"
+"ncio|nco|ndín|ndo|ntín|ntón|nxín|nxo|nzo|ñal|ñiz|ño|ñón|o|ol|ón|quín|rás|"
+"rbén|rbo|rei|rel|rgo|riz|ro|rol|rón|ros|rós|rra|rral|rro|rrol|rte|rto|rvo|"
+"sal|so|tín|to|ve|xo|xón|zo|zón\n"
+"final_mp=cos|dos|los|mos|ncos|nos|nzos|ños|os|rdos|ros|sgos\n"
+"\t"
 
+# Nomes de bosque
 #. [naming]
 #: data/english.cfg:49
 msgid ""
@@ -3538,7 +4050,91 @@ msgid ""
 "\t\tmain=$base {forest_type}|$base{!}’s {forest_type}|{forest_type} $base\n"
 "\t"
 msgstr ""
+"\n"
+"main={lugar} de {palabra}|{lugar} de {palabra}|{lugar} de {palabra}|{lugar} "
+"de {palabra}|{lugar} de {palabra}|{lugar} de {palabra}|{lugar} da "
+"{palabra_fs}|{lugar} das {palabra_fp}|{lugar} do {palabra_ms}|{lugar} dos "
+"{palabra_mp}\n"
+"lugar=Bosque|Bosque|Bosque|Fraga|{outros_lugares}\n"
+"outros_lugares=Foresta|Boscaxe\n"
+"\n"
+"# Calquera cambio a partir de aquí debe copiarse a outras cadeas.\n"
+"\n"
+"palabras={base}|{base}|{base}|{base}|{base}|{base}|{base}|{base}|{base}|"
+"{composicion}\n"
+"\n"
+"composicion={base} de {palabra}|{base} de {palabra}|{base} de {palabra}|"
+"{base} de {palabra}|{base} de {palabra}|{base} de {palabra}|{base} da "
+"{palabra_fs}|{base} das {palabra_fp}|{base} do {palabra_ms}|{base} dos "
+"{palabra_mp}\n"
+"\n"
+"base={palabra}|{palabra}|{palabra}|{palabra}|{palabra}|{palabra}|{palabra}|"
+"{palabra}|{palabra}|{palabra_con_artigo}\n"
+"\n"
+"palabra_con_artigo=A {palabra_fs}|A {palabra_fs}|A {palabra_fs}|A "
+"{palabra_fs}|As {palabra_fp}|O {palabra_ms}|O {palabra_ms}|O {palabra_ms}|O "
+"{palabra_ms}|Os {palabra_mp}\n"
+"\n"
+"palabra={palabra4}|{palabra3}|{palabra3}|{palabra3}|{palabra2}|{palabra2}|"
+"{palabra2}|{palabra2}|{palabra2}|{palabra2}|{palabra2}|{palabra2}|"
+"{palabra2}\n"
+"palabra4={inicio}{centro}{centro}{final}\n"
+"palabra3={inicio}{centro}{final}\n"
+"palabra2={inicio}{final}\n"
+"palabra_fs={palabra4_fs}|{palabra3_fs}|{palabra3_fs}|{palabra3_fs}|"
+"{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|"
+"{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}\n"
+"palabra4_fs={inicio}{centro}{centro}{final_fs}\n"
+"palabra3_fs={inicio}{centro}{final_fs}\n"
+"palabra2_fs={inicio}{final_fs}\n"
+"palabra_fp={palabra4_fp}|{palabra3_fp}|{palabra3_fp}|{palabra3_fp}|"
+"{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|"
+"{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}\n"
+"palabra4_fp={inicio}{centro}{centro}{final_fp}\n"
+"palabra3_fp={inicio}{centro}{final_fp}\n"
+"palabra2_fp={inicio}{final_fp}\n"
+"palabra_ms={palabra4_ms}|{palabra3_ms}|{palabra3_ms}|{palabra3_ms}|"
+"{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|"
+"{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}\n"
+"palabra4_ms={inicio}{centro}{centro}{final_ms}\n"
+"palabra3_ms={inicio}{centro}{final_ms}\n"
+"palabra2_ms={inicio}{final_ms}\n"
+"palabra_mp={palabra4_mp}|{palabra3_mp}|{palabra3_mp}|{palabra3_mp}|"
+"{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|"
+"{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}\n"
+"palabra4_mp={inicio}{centro}{centro}{final_mp}\n"
+"palabra3_mp={inicio}{centro}{final_mp}\n"
+"palabra2_mp={inicio}{final_mp}\n"
+"\n"
+"# Capaz de xerar todos os nomes de municipios galegos (segundo nivel da "
+"árbore\n"
+"# de http://www.ige.eu/igebdt/esq.jsp?paxina=002001&c=-1&ruta=nomenclator/"
+"nomenarbol.jsp),\n"
+"# excluíndo referencias relixiosas (san, santo, santa, santiago, etc.) e\n"
+"# xeográficas (mon-, ponte-, porto-, riba-, rio-, riveira-) evidentes.\n"
+"inicio=A|Ba|Bai|Be|Bla|Bo|Boi|Bri|Bro|Bu|Ca|Ce|Cha|Co|Coi|Cou|Cre|Cu|Deu|Do|"
+"Du|E|Fe|Fi|Fo|Fra|Fri|Go|Gro|Gu|Gui|I|La|Le|Lei|Li|Lo|Lou|Lu|Ma|Me|Mei|Mi|Mo|"
+"Mu|Na|Ne|Ni|No|Noi|O|Oi|Ou|Pa|Pe|Pi|Po|Poi|Quei|Qui|Ra|Rai|Re|Rei|Ri|Roi|Ru|"
+"Sa|Si|So|Su|Ta|Te|To|Tou|Tra|Tri|Tui|U|Va|Ve|Vi|Xe|Xi|Xo|Za\n"
+"centro=a|ba|be|bei|bi|bo|bra|brei|ce|da|de|dei|di|do|dra|dre|du|e|ei|fi|ga|"
+"guei|go|la|lde|le|lei|lgo|li|lla|lle|lpi|ma|mba|me|mi|mo|mpo|nca|ndo|ndre|ne|"
+"nfe|nfo|nde|no|nta|nte|nti|ntri|nza|ña|ñe|ñi|o|pe|quei|ra|rba|rca|rce|rcu|"
+"rde|rdi|rdoi|re|rga|rgo|ri|rma|rne|rni|rno|rnoi|ro|rou|rquei|rre|rrei|rri|"
+"rro|rte|rtei|rti|ru|rva|sa|se|si|spa|spei|sta|ste|sto|su|ta|ti|toi|ve|vei|vi|"
+"xo|za\n"
+"final=|ber|che|de|dás|e|gais|is|l|les|mbre|me|mes|n|nde|ne|nlle|nse|nte|ntes|"
+"ntis|ques|rás|rdes|res|rne|riz|rtis|s|tes|us|ve|ves|xe|z\n"
+"final_fs=a|á|bra|ca|cha|da|dra|ga|la|lba|lga|lla|ma|mba|mbía|mbra|mbría|mia|"
+"na|nda|nga|ntar|nzá|ña|ra|rca|rda|rna|rria|rzúa|sía|ta|va|via|xa|xía|za\n"
+"final_fp=las|lgas|nas|ngas|ñas|ras|rras|zas\n"
+"final_ms=co|dín|do|dro|drón|eu|go|grán|lfoz|lín|llo|llón|lo|lón|ltar|mo|muín|"
+"ncio|nco|ndín|ndo|ntín|ntón|nxín|nxo|nzo|ñal|ñiz|ño|ñón|o|ol|ón|quín|rás|"
+"rbén|rbo|rei|rel|rgo|riz|ro|rol|rón|ros|rós|rra|rral|rro|rrol|rte|rto|rvo|"
+"sal|so|tín|to|ve|xo|xón|zo|zón\n"
+"final_mp=cos|dos|los|mos|ncos|nos|nzos|ños|os|rdos|ros|sgos\n"
+"\t"
 
+# Nomes de lago
 #. [naming]
 #: data/english.cfg:53
 msgid ""
@@ -3547,28 +4143,183 @@ msgid ""
 "\t\tmain=$base {lake_type}|{lake_type} $base\n"
 "\t"
 msgstr ""
+"\n"
+"main={lugar} de {palabra}|{lugar} de {palabra}|{lugar} de {palabra}|{lugar} "
+"de {palabra}|{lugar} de {palabra}|{lugar} de {palabra}|{lugar} da "
+"{palabra_fs}|{lugar} das {palabra_fp}|{lugar} do {palabra_ms}|{lugar} dos "
+"{palabra_mp}\n"
+"lugar=Lago|Lago|Lago|Lago|{outros_lugares}\n"
+"outros_lugares=Lagoa|Lagoa|Pantano|Mar\n"
+"\n"
+"# Calquera cambio a partir de aquí debe copiarse a outras cadeas.\n"
+"\n"
+"palabras={base}|{base}|{base}|{base}|{base}|{base}|{base}|{base}|{base}|"
+"{composicion}\n"
+"\n"
+"composicion={base} de {palabra}|{base} de {palabra}|{base} de {palabra}|"
+"{base} de {palabra}|{base} de {palabra}|{base} de {palabra}|{base} da "
+"{palabra_fs}|{base} das {palabra_fp}|{base} do {palabra_ms}|{base} dos "
+"{palabra_mp}\n"
+"\n"
+"base={palabra}|{palabra}|{palabra}|{palabra}|{palabra}|{palabra}|{palabra}|"
+"{palabra}|{palabra}|{palabra_con_artigo}\n"
+"\n"
+"palabra_con_artigo=A {palabra_fs}|A {palabra_fs}|A {palabra_fs}|A "
+"{palabra_fs}|As {palabra_fp}|O {palabra_ms}|O {palabra_ms}|O {palabra_ms}|O "
+"{palabra_ms}|Os {palabra_mp}\n"
+"\n"
+"palabra={palabra4}|{palabra3}|{palabra3}|{palabra3}|{palabra2}|{palabra2}|"
+"{palabra2}|{palabra2}|{palabra2}|{palabra2}|{palabra2}|{palabra2}|"
+"{palabra2}\n"
+"palabra4={inicio}{centro}{centro}{final}\n"
+"palabra3={inicio}{centro}{final}\n"
+"palabra2={inicio}{final}\n"
+"palabra_fs={palabra4_fs}|{palabra3_fs}|{palabra3_fs}|{palabra3_fs}|"
+"{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|"
+"{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}\n"
+"palabra4_fs={inicio}{centro}{centro}{final_fs}\n"
+"palabra3_fs={inicio}{centro}{final_fs}\n"
+"palabra2_fs={inicio}{final_fs}\n"
+"palabra_fp={palabra4_fp}|{palabra3_fp}|{palabra3_fp}|{palabra3_fp}|"
+"{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|"
+"{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}\n"
+"palabra4_fp={inicio}{centro}{centro}{final_fp}\n"
+"palabra3_fp={inicio}{centro}{final_fp}\n"
+"palabra2_fp={inicio}{final_fp}\n"
+"palabra_ms={palabra4_ms}|{palabra3_ms}|{palabra3_ms}|{palabra3_ms}|"
+"{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|"
+"{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}\n"
+"palabra4_ms={inicio}{centro}{centro}{final_ms}\n"
+"palabra3_ms={inicio}{centro}{final_ms}\n"
+"palabra2_ms={inicio}{final_ms}\n"
+"palabra_mp={palabra4_mp}|{palabra3_mp}|{palabra3_mp}|{palabra3_mp}|"
+"{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|"
+"{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}\n"
+"palabra4_mp={inicio}{centro}{centro}{final_mp}\n"
+"palabra3_mp={inicio}{centro}{final_mp}\n"
+"palabra2_mp={inicio}{final_mp}\n"
+"\n"
+"# Capaz de xerar todos os nomes de municipios galegos (segundo nivel da "
+"árbore\n"
+"# de http://www.ige.eu/igebdt/esq.jsp?paxina=002001&c=-1&ruta=nomenclator/"
+"nomenarbol.jsp),\n"
+"# excluíndo referencias relixiosas (san, santo, santa, santiago, etc.) e\n"
+"# xeográficas (mon-, ponte-, porto-, riba-, rio-, riveira-) evidentes.\n"
+"inicio=A|Ba|Bai|Be|Bla|Bo|Boi|Bri|Bro|Bu|Ca|Ce|Cha|Co|Coi|Cou|Cre|Cu|Deu|Do|"
+"Du|E|Fe|Fi|Fo|Fra|Fri|Go|Gro|Gu|Gui|I|La|Le|Lei|Li|Lo|Lou|Lu|Ma|Me|Mei|Mi|Mo|"
+"Mu|Na|Ne|Ni|No|Noi|O|Oi|Ou|Pa|Pe|Pi|Po|Poi|Quei|Qui|Ra|Rai|Re|Rei|Ri|Roi|Ru|"
+"Sa|Si|So|Su|Ta|Te|To|Tou|Tra|Tri|Tui|U|Va|Ve|Vi|Xe|Xi|Xo|Za\n"
+"centro=a|ba|be|bei|bi|bo|bra|brei|ce|da|de|dei|di|do|dra|dre|du|e|ei|fi|ga|"
+"guei|go|la|lde|le|lei|lgo|li|lla|lle|lpi|ma|mba|me|mi|mo|mpo|nca|ndo|ndre|ne|"
+"nfe|nfo|nde|no|nta|nte|nti|ntri|nza|ña|ñe|ñi|o|pe|quei|ra|rba|rca|rce|rcu|"
+"rde|rdi|rdoi|re|rga|rgo|ri|rma|rne|rni|rno|rnoi|ro|rou|rquei|rre|rrei|rri|"
+"rro|rte|rtei|rti|ru|rva|sa|se|si|spa|spei|sta|ste|sto|su|ta|ti|toi|ve|vei|vi|"
+"xo|za\n"
+"final=|ber|che|de|dás|e|gais|is|l|les|mbre|me|mes|n|nde|ne|nlle|nse|nte|ntes|"
+"ntis|ques|rás|rdes|res|rne|riz|rtis|s|tes|us|ve|ves|xe|z\n"
+"final_fs=a|á|bra|ca|cha|da|dra|ga|la|lba|lga|lla|ma|mba|mbía|mbra|mbría|mia|"
+"na|nda|nga|ntar|nzá|ña|ra|rca|rda|rna|rria|rzúa|sía|ta|va|via|xa|xía|za\n"
+"final_fp=las|lgas|nas|ngas|ñas|ras|rras|zas\n"
+"final_ms=co|dín|do|dro|drón|eu|go|grán|lfoz|lín|llo|llón|lo|lón|ltar|mo|muín|"
+"ncio|nco|ndín|ndo|ntín|ntón|nxín|nxo|nzo|ñal|ñiz|ño|ñón|o|ol|ón|quín|rás|"
+"rbén|rbo|rei|rel|rgo|riz|ro|rol|rón|ros|rós|rra|rral|rro|rrol|rte|rto|rvo|"
+"sal|so|tín|to|ve|xo|xón|zo|zón\n"
+"final_mp=cos|dos|los|mos|ncos|nos|nzos|ños|os|rdos|ros|sgos\n"
+"\t"
 
-# ignore-interpolations: $name
-# Véxase o ficheiro de «Topónimos».
+# Nomes de monte
 #. [naming]
 #: data/english.cfg:57
-#, fuzzy
-#| msgid "$name|’s Peak,Mount $name"
 msgid ""
 "\n"
 "\t\tmain=$base{!}’s Peak|$base Peak|Mount $base|Mount $base\n"
 "\t"
 msgstr ""
-"A Curota,Alto da Veneira,Cerro de Pereira,Covallo,Mioteira,Moncai,Monte Alba,"
-"Monte Aloia,Monte Borneiro,Monte Bubela,Monte Campelo,Monte Caxado,Monte "
-"Couso,Monte da Aguia,Monte da Cidá,Monte da Peneda,Monte de Nenos,Monte de "
-"Paradanta,Monte de Santa Tegra,Monte do Castelo,Monte do Castro,Monte do "
-"Gontón,Monte Galiñeiro,Monte Iroite,Monte Lourido,Monte Louro,Monte Mondigo,"
-"Monte Pedroso,Monte Penalonga,Monte Penol,Monte Pindo,Monte Seixo,Monte "
-"Siradella,Monte Vilariño,Monte Xalo,Monte Xiabre,Montefurado,Montes de "
-"Valongo,Montes do Xalo,Pena Grande,Penedo dos Tres Reinos,Serra da Cova da "
-"Serpe,Serra de Meira,Serra do Candán,Serra do Galiñeiro,Tralomoredo"
+"\n"
+"main={lugar} de {palabra}|{lugar} de {palabra}|{lugar} de {palabra}|{lugar} "
+"de {palabra}|{lugar} de {palabra}|{lugar} de {palabra}|{lugar} da "
+"{palabra_fs}|{lugar} das {palabra_fp}|{lugar} do {palabra_ms}|{lugar} dos "
+"{palabra_mp}\n"
+"lugar=Monte|Monte|Monte|Pena|{outros_lugares}\n"
+"outros_lugares=Alto|Cabeza\n"
+"\n"
+"# Calquera cambio a partir de aquí debe copiarse a outras cadeas.\n"
+"\n"
+"palabras={base}|{base}|{base}|{base}|{base}|{base}|{base}|{base}|{base}|"
+"{composicion}\n"
+"\n"
+"composicion={base} de {palabra}|{base} de {palabra}|{base} de {palabra}|"
+"{base} de {palabra}|{base} de {palabra}|{base} de {palabra}|{base} da "
+"{palabra_fs}|{base} das {palabra_fp}|{base} do {palabra_ms}|{base} dos "
+"{palabra_mp}\n"
+"\n"
+"base={palabra}|{palabra}|{palabra}|{palabra}|{palabra}|{palabra}|{palabra}|"
+"{palabra}|{palabra}|{palabra_con_artigo}\n"
+"\n"
+"palabra_con_artigo=A {palabra_fs}|A {palabra_fs}|A {palabra_fs}|A "
+"{palabra_fs}|As {palabra_fp}|O {palabra_ms}|O {palabra_ms}|O {palabra_ms}|O "
+"{palabra_ms}|Os {palabra_mp}\n"
+"\n"
+"palabra={palabra4}|{palabra3}|{palabra3}|{palabra3}|{palabra2}|{palabra2}|"
+"{palabra2}|{palabra2}|{palabra2}|{palabra2}|{palabra2}|{palabra2}|"
+"{palabra2}\n"
+"palabra4={inicio}{centro}{centro}{final}\n"
+"palabra3={inicio}{centro}{final}\n"
+"palabra2={inicio}{final}\n"
+"palabra_fs={palabra4_fs}|{palabra3_fs}|{palabra3_fs}|{palabra3_fs}|"
+"{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|"
+"{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}\n"
+"palabra4_fs={inicio}{centro}{centro}{final_fs}\n"
+"palabra3_fs={inicio}{centro}{final_fs}\n"
+"palabra2_fs={inicio}{final_fs}\n"
+"palabra_fp={palabra4_fp}|{palabra3_fp}|{palabra3_fp}|{palabra3_fp}|"
+"{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|"
+"{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}\n"
+"palabra4_fp={inicio}{centro}{centro}{final_fp}\n"
+"palabra3_fp={inicio}{centro}{final_fp}\n"
+"palabra2_fp={inicio}{final_fp}\n"
+"palabra_ms={palabra4_ms}|{palabra3_ms}|{palabra3_ms}|{palabra3_ms}|"
+"{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|"
+"{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}\n"
+"palabra4_ms={inicio}{centro}{centro}{final_ms}\n"
+"palabra3_ms={inicio}{centro}{final_ms}\n"
+"palabra2_ms={inicio}{final_ms}\n"
+"palabra_mp={palabra4_mp}|{palabra3_mp}|{palabra3_mp}|{palabra3_mp}|"
+"{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|"
+"{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}\n"
+"palabra4_mp={inicio}{centro}{centro}{final_mp}\n"
+"palabra3_mp={inicio}{centro}{final_mp}\n"
+"palabra2_mp={inicio}{final_mp}\n"
+"\n"
+"# Capaz de xerar todos os nomes de municipios galegos (segundo nivel da "
+"árbore\n"
+"# de http://www.ige.eu/igebdt/esq.jsp?paxina=002001&c=-1&ruta=nomenclator/"
+"nomenarbol.jsp),\n"
+"# excluíndo referencias relixiosas (san, santo, santa, santiago, etc.) e\n"
+"# xeográficas (mon-, ponte-, porto-, riba-, rio-, riveira-) evidentes.\n"
+"inicio=A|Ba|Bai|Be|Bla|Bo|Boi|Bri|Bro|Bu|Ca|Ce|Cha|Co|Coi|Cou|Cre|Cu|Deu|Do|"
+"Du|E|Fe|Fi|Fo|Fra|Fri|Go|Gro|Gu|Gui|I|La|Le|Lei|Li|Lo|Lou|Lu|Ma|Me|Mei|Mi|Mo|"
+"Mu|Na|Ne|Ni|No|Noi|O|Oi|Ou|Pa|Pe|Pi|Po|Poi|Quei|Qui|Ra|Rai|Re|Rei|Ri|Roi|Ru|"
+"Sa|Si|So|Su|Ta|Te|To|Tou|Tra|Tri|Tui|U|Va|Ve|Vi|Xe|Xi|Xo|Za\n"
+"centro=a|ba|be|bei|bi|bo|bra|brei|ce|da|de|dei|di|do|dra|dre|du|e|ei|fi|ga|"
+"guei|go|la|lde|le|lei|lgo|li|lla|lle|lpi|ma|mba|me|mi|mo|mpo|nca|ndo|ndre|ne|"
+"nfe|nfo|nde|no|nta|nte|nti|ntri|nza|ña|ñe|ñi|o|pe|quei|ra|rba|rca|rce|rcu|"
+"rde|rdi|rdoi|re|rga|rgo|ri|rma|rne|rni|rno|rnoi|ro|rou|rquei|rre|rrei|rri|"
+"rro|rte|rtei|rti|ru|rva|sa|se|si|spa|spei|sta|ste|sto|su|ta|ti|toi|ve|vei|vi|"
+"xo|za\n"
+"final=|ber|che|de|dás|e|gais|is|l|les|mbre|me|mes|n|nde|ne|nlle|nse|nte|ntes|"
+"ntis|ques|rás|rdes|res|rne|riz|rtis|s|tes|us|ve|ves|xe|z\n"
+"final_fs=a|á|bra|ca|cha|da|dra|ga|la|lba|lga|lla|ma|mba|mbía|mbra|mbría|mia|"
+"na|nda|nga|ntar|nzá|ña|ra|rca|rda|rna|rria|rzúa|sía|ta|va|via|xa|xía|za\n"
+"final_fp=las|lgas|nas|ngas|ñas|ras|rras|zas\n"
+"final_ms=co|dín|do|dro|drón|eu|go|grán|lfoz|lín|llo|llón|lo|lón|ltar|mo|muín|"
+"ncio|nco|ndín|ndo|ntín|ntón|nxín|nxo|nzo|ñal|ñiz|ño|ñón|o|ol|ón|quín|rás|"
+"rbén|rbo|rei|rel|rgo|riz|ro|rol|rón|ros|rós|rra|rral|rro|rrol|rte|rto|rvo|"
+"sal|so|tín|to|ve|xo|xón|zo|zón\n"
+"final_mp=cos|dos|los|mos|ncos|nos|nzos|ños|os|rdos|ros|sgos\n"
+"\t"
 
+# Nome de lameiro
 #. [naming]
 #: data/english.cfg:60
 msgid ""
@@ -3577,7 +4328,92 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"main={lugar} de {palabra}|{lugar} de {palabra}|{lugar} de {palabra}|{lugar} "
+"de {palabra}|{lugar} de {palabra}|{lugar} de {palabra}|{lugar} da "
+"{palabra_fs}|{lugar} das {palabra_fp}|{lugar} do {palabra_ms}|{lugar} dos "
+"{palabra_mp}\n"
+"lugar=Lameiro|Lameiro|Lameiro|Lameiro|{outros_lugares}\n"
+"outros_lugares=Braña|Brañal|Brañeira|Tremedal|Trollo|Tremedeira|Tremesiña|"
+"Trema|Tremo|Trémbora\n"
+"\n"
+"# Calquera cambio a partir de aquí debe copiarse a outras cadeas.\n"
+"\n"
+"palabras={base}|{base}|{base}|{base}|{base}|{base}|{base}|{base}|{base}|"
+"{composicion}\n"
+"\n"
+"composicion={base} de {palabra}|{base} de {palabra}|{base} de {palabra}|"
+"{base} de {palabra}|{base} de {palabra}|{base} de {palabra}|{base} da "
+"{palabra_fs}|{base} das {palabra_fp}|{base} do {palabra_ms}|{base} dos "
+"{palabra_mp}\n"
+"\n"
+"base={palabra}|{palabra}|{palabra}|{palabra}|{palabra}|{palabra}|{palabra}|"
+"{palabra}|{palabra}|{palabra_con_artigo}\n"
+"\n"
+"palabra_con_artigo=A {palabra_fs}|A {palabra_fs}|A {palabra_fs}|A "
+"{palabra_fs}|As {palabra_fp}|O {palabra_ms}|O {palabra_ms}|O {palabra_ms}|O "
+"{palabra_ms}|Os {palabra_mp}\n"
+"\n"
+"palabra={palabra4}|{palabra3}|{palabra3}|{palabra3}|{palabra2}|{palabra2}|"
+"{palabra2}|{palabra2}|{palabra2}|{palabra2}|{palabra2}|{palabra2}|"
+"{palabra2}\n"
+"palabra4={inicio}{centro}{centro}{final}\n"
+"palabra3={inicio}{centro}{final}\n"
+"palabra2={inicio}{final}\n"
+"palabra_fs={palabra4_fs}|{palabra3_fs}|{palabra3_fs}|{palabra3_fs}|"
+"{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|"
+"{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}\n"
+"palabra4_fs={inicio}{centro}{centro}{final_fs}\n"
+"palabra3_fs={inicio}{centro}{final_fs}\n"
+"palabra2_fs={inicio}{final_fs}\n"
+"palabra_fp={palabra4_fp}|{palabra3_fp}|{palabra3_fp}|{palabra3_fp}|"
+"{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|"
+"{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}\n"
+"palabra4_fp={inicio}{centro}{centro}{final_fp}\n"
+"palabra3_fp={inicio}{centro}{final_fp}\n"
+"palabra2_fp={inicio}{final_fp}\n"
+"palabra_ms={palabra4_ms}|{palabra3_ms}|{palabra3_ms}|{palabra3_ms}|"
+"{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|"
+"{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}\n"
+"palabra4_ms={inicio}{centro}{centro}{final_ms}\n"
+"palabra3_ms={inicio}{centro}{final_ms}\n"
+"palabra2_ms={inicio}{final_ms}\n"
+"palabra_mp={palabra4_mp}|{palabra3_mp}|{palabra3_mp}|{palabra3_mp}|"
+"{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|"
+"{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}\n"
+"palabra4_mp={inicio}{centro}{centro}{final_mp}\n"
+"palabra3_mp={inicio}{centro}{final_mp}\n"
+"palabra2_mp={inicio}{final_mp}\n"
+"\n"
+"# Capaz de xerar todos os nomes de municipios galegos (segundo nivel da "
+"árbore\n"
+"# de http://www.ige.eu/igebdt/esq.jsp?paxina=002001&c=-1&ruta=nomenclator/"
+"nomenarbol.jsp),\n"
+"# excluíndo referencias relixiosas (san, santo, santa, santiago, etc.) e\n"
+"# xeográficas (mon-, ponte-, porto-, riba-, rio-, riveira-) evidentes.\n"
+"inicio=A|Ba|Bai|Be|Bla|Bo|Boi|Bri|Bro|Bu|Ca|Ce|Cha|Co|Coi|Cou|Cre|Cu|Deu|Do|"
+"Du|E|Fe|Fi|Fo|Fra|Fri|Go|Gro|Gu|Gui|I|La|Le|Lei|Li|Lo|Lou|Lu|Ma|Me|Mei|Mi|Mo|"
+"Mu|Na|Ne|Ni|No|Noi|O|Oi|Ou|Pa|Pe|Pi|Po|Poi|Quei|Qui|Ra|Rai|Re|Rei|Ri|Roi|Ru|"
+"Sa|Si|So|Su|Ta|Te|To|Tou|Tra|Tri|Tui|U|Va|Ve|Vi|Xe|Xi|Xo|Za\n"
+"centro=a|ba|be|bei|bi|bo|bra|brei|ce|da|de|dei|di|do|dra|dre|du|e|ei|fi|ga|"
+"guei|go|la|lde|le|lei|lgo|li|lla|lle|lpi|ma|mba|me|mi|mo|mpo|nca|ndo|ndre|ne|"
+"nfe|nfo|nde|no|nta|nte|nti|ntri|nza|ña|ñe|ñi|o|pe|quei|ra|rba|rca|rce|rcu|"
+"rde|rdi|rdoi|re|rga|rgo|ri|rma|rne|rni|rno|rnoi|ro|rou|rquei|rre|rrei|rri|"
+"rro|rte|rtei|rti|ru|rva|sa|se|si|spa|spei|sta|ste|sto|su|ta|ti|toi|ve|vei|vi|"
+"xo|za\n"
+"final=|ber|che|de|dás|e|gais|is|l|les|mbre|me|mes|n|nde|ne|nlle|nse|nte|ntes|"
+"ntis|ques|rás|rdes|res|rne|riz|rtis|s|tes|us|ve|ves|xe|z\n"
+"final_fs=a|á|bra|ca|cha|da|dra|ga|la|lba|lga|lla|ma|mba|mbía|mbra|mbría|mia|"
+"na|nda|nga|ntar|nzá|ña|ra|rca|rda|rna|rria|rzúa|sía|ta|va|via|xa|xía|za\n"
+"final_fp=las|lgas|nas|ngas|ñas|ras|rras|zas\n"
+"final_ms=co|dín|do|dro|drón|eu|go|grán|lfoz|lín|llo|llón|lo|lón|ltar|mo|muín|"
+"ncio|nco|ndín|ndo|ntín|ntón|nxín|nxo|nzo|ñal|ñiz|ño|ñón|o|ol|ón|quín|rás|"
+"rbén|rbo|rei|rel|rgo|riz|ro|rol|rón|ros|rós|rra|rral|rro|rrol|rte|rto|rvo|"
+"sal|so|tín|to|ve|xo|xón|zo|zón\n"
+"final_mp=cos|dos|los|mos|ncos|nos|nzos|ños|os|rdos|ros|sgos\n"
+"\t"
 
+# Vilas sen accidentes
 #. [village_naming]
 #: data/english.cfg:67
 msgid ""
@@ -3586,7 +4422,90 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"main=$base|$base|$base|$base|{outros}\n"
+"outros=Vila{centro}{final}|Vila{centro}{final_fs}|Vila{centro}{final_fp}|"
+"Vila{centro}{final_ms}|Vila{centro}{final_mp}|{outros_outros}\n"
+"outros_outros=Vilar de {palabra}|Vilar da {palabra_fs}|Vilar das "
+"{palabra_fp}|Vilar do {palabra_ms}|Vilar dos {palabra_mp}\n"
+"\n"
+"# Calquera cambio a partir de aquí debe copiarse a outras cadeas.\n"
+"\n"
+"palabras={base}|{base}|{base}|{base}|{base}|{base}|{base}|{base}|{base}|"
+"{composicion}\n"
+"\n"
+"composicion={base} de {palabra}|{base} de {palabra}|{base} de {palabra}|"
+"{base} de {palabra}|{base} de {palabra}|{base} de {palabra}|{base} da "
+"{palabra_fs}|{base} das {palabra_fp}|{base} do {palabra_ms}|{base} dos "
+"{palabra_mp}\n"
+"\n"
+"base={palabra}|{palabra}|{palabra}|{palabra}|{palabra}|{palabra}|{palabra}|"
+"{palabra}|{palabra}|{palabra_con_artigo}\n"
+"\n"
+"palabra_con_artigo=A {palabra_fs}|A {palabra_fs}|A {palabra_fs}|A "
+"{palabra_fs}|As {palabra_fp}|O {palabra_ms}|O {palabra_ms}|O {palabra_ms}|O "
+"{palabra_ms}|Os {palabra_mp}\n"
+"\n"
+"palabra={palabra4}|{palabra3}|{palabra3}|{palabra3}|{palabra2}|{palabra2}|"
+"{palabra2}|{palabra2}|{palabra2}|{palabra2}|{palabra2}|{palabra2}|"
+"{palabra2}\n"
+"palabra4={inicio}{centro}{centro}{final}\n"
+"palabra3={inicio}{centro}{final}\n"
+"palabra2={inicio}{final}\n"
+"palabra_fs={palabra4_fs}|{palabra3_fs}|{palabra3_fs}|{palabra3_fs}|"
+"{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|"
+"{palabra2_fs}|{palabra2_fs}|{palabra2_fs}|{palabra2_fs}\n"
+"palabra4_fs={inicio}{centro}{centro}{final_fs}\n"
+"palabra3_fs={inicio}{centro}{final_fs}\n"
+"palabra2_fs={inicio}{final_fs}\n"
+"palabra_fp={palabra4_fp}|{palabra3_fp}|{palabra3_fp}|{palabra3_fp}|"
+"{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|"
+"{palabra2_fp}|{palabra2_fp}|{palabra2_fp}|{palabra2_fp}\n"
+"palabra4_fp={inicio}{centro}{centro}{final_fp}\n"
+"palabra3_fp={inicio}{centro}{final_fp}\n"
+"palabra2_fp={inicio}{final_fp}\n"
+"palabra_ms={palabra4_ms}|{palabra3_ms}|{palabra3_ms}|{palabra3_ms}|"
+"{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|"
+"{palabra2_ms}|{palabra2_ms}|{palabra2_ms}|{palabra2_ms}\n"
+"palabra4_ms={inicio}{centro}{centro}{final_ms}\n"
+"palabra3_ms={inicio}{centro}{final_ms}\n"
+"palabra2_ms={inicio}{final_ms}\n"
+"palabra_mp={palabra4_mp}|{palabra3_mp}|{palabra3_mp}|{palabra3_mp}|"
+"{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|"
+"{palabra2_mp}|{palabra2_mp}|{palabra2_mp}|{palabra2_mp}\n"
+"palabra4_mp={inicio}{centro}{centro}{final_mp}\n"
+"palabra3_mp={inicio}{centro}{final_mp}\n"
+"palabra2_mp={inicio}{final_mp}\n"
+"\n"
+"# Capaz de xerar todos os nomes de municipios galegos (segundo nivel da "
+"árbore\n"
+"# de http://www.ige.eu/igebdt/esq.jsp?paxina=002001&c=-1&ruta=nomenclator/"
+"nomenarbol.jsp),\n"
+"# excluíndo referencias relixiosas (san, santo, santa, santiago, etc.) e\n"
+"# xeográficas (mon-, ponte-, porto-, riba-, rio-, riveira-) evidentes.\n"
+"inicio=A|Ba|Bai|Be|Bla|Bo|Boi|Bri|Bro|Bu|Ca|Ce|Cha|Co|Coi|Cou|Cre|Cu|Deu|Do|"
+"Du|E|Fe|Fi|Fo|Fra|Fri|Go|Gro|Gu|Gui|I|La|Le|Lei|Li|Lo|Lou|Lu|Ma|Me|Mei|Mi|Mo|"
+"Mu|Na|Ne|Ni|No|Noi|O|Oi|Ou|Pa|Pe|Pi|Po|Poi|Quei|Qui|Ra|Rai|Re|Rei|Ri|Roi|Ru|"
+"Sa|Si|So|Su|Ta|Te|To|Tou|Tra|Tri|Tui|U|Va|Ve|Vi|Xe|Xi|Xo|Za\n"
+"centro=a|ba|be|bei|bi|bo|bra|brei|ce|da|de|dei|di|do|dra|dre|du|e|ei|fi|ga|"
+"guei|go|la|lde|le|lei|lgo|li|lla|lle|lpi|ma|mba|me|mi|mo|mpo|nca|ndo|ndre|ne|"
+"nfe|nfo|nde|no|nta|nte|nti|ntri|nza|ña|ñe|ñi|o|pe|quei|ra|rba|rca|rce|rcu|"
+"rde|rdi|rdoi|re|rga|rgo|ri|rma|rne|rni|rno|rnoi|ro|rou|rquei|rre|rrei|rri|"
+"rro|rte|rtei|rti|ru|rva|sa|se|si|spa|spei|sta|ste|sto|su|ta|ti|toi|ve|vei|vi|"
+"xo|za\n"
+"final=|ber|che|de|dás|e|gais|is|l|les|mbre|me|mes|n|nde|ne|nlle|nse|nte|ntes|"
+"ntis|ques|rás|rdes|res|rne|riz|rtis|s|tes|us|ve|ves|xe|z\n"
+"final_fs=a|á|bra|ca|cha|da|dra|ga|la|lba|lga|lla|ma|mba|mbía|mbra|mbría|mia|"
+"na|nda|nga|ntar|nzá|ña|ra|rca|rda|rna|rria|rzúa|sía|ta|va|via|xa|xía|za\n"
+"final_fp=las|lgas|nas|ngas|ñas|ras|rras|zas\n"
+"final_ms=co|dín|do|dro|drón|eu|go|grán|lfoz|lín|llo|llón|lo|lón|ltar|mo|muín|"
+"ncio|nco|ndín|ndo|ntín|ntón|nxín|nxo|nzo|ñal|ñiz|ño|ñón|o|ol|ón|quín|rás|"
+"rbén|rbo|rei|rel|rgo|riz|ro|rol|rón|ros|rós|rra|rral|rro|rrol|rte|rto|rvo|"
+"sal|so|tín|to|ve|xo|xón|zo|zón\n"
+"final_mp=cos|dos|los|mos|ncos|nos|nzos|ños|os|rdos|ros|sgos\n"
+"\t"
 
+# Vilas canda lagos
 #. [village_naming]
 #: data/english.cfg:71
 msgid ""
@@ -3596,7 +4515,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tmain=$base\n"
+"\t"
 
+# Vlias canda ríos
 #. [village_naming]
 #: data/english.cfg:76
 msgid ""
@@ -3607,7 +4530,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tmain=$base\n"
+"\t"
 
+# Vilas canda pontes
 #. [village_naming]
 #: data/english.cfg:82
 msgid ""
@@ -3617,7 +4544,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tmain=$base\n"
+"\t"
 
+# Vilas canda chairas
 #. [village_naming]
 #: data/english.cfg:87
 msgid ""
@@ -3626,7 +4557,11 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tmain=$base\n"
+"\t"
 
+# Vilas canda bosques
 #. [village_naming]
 #: data/english.cfg:91
 msgid ""
@@ -3636,7 +4571,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tmain=$base\n"
+"\t"
 
+# Vilas canda picos
 #. [village_naming]
 #: data/english.cfg:96
 msgid ""
@@ -3645,7 +4584,11 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tmain=$base\n"
+"\t"
 
+# Vilas canda montañas
 #. [village_naming]
 #: data/english.cfg:100
 msgid ""
@@ -3655,7 +4598,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tmain=$base\n"
+"\t"
 
+# Vilas canda montañas sen nome
 #. [village_naming]
 #: data/english.cfg:105
 msgid ""
@@ -3664,7 +4611,11 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tmain=$base\n"
+"\t"
 
+# Vilas canda camiños
 #. [village_naming]
 #: data/english.cfg:109
 msgid ""
@@ -3674,7 +4625,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tmain=$base\n"
+"\t"
 
+# Vilas canda lameiros
 #. [village_naming]
 #: data/english.cfg:114
 msgid ""
@@ -3684,6 +4639,9 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tmain=$base\n"
+"\t"
 
 #. [server]
 #: data/game_config.cfg:4
@@ -3701,6 +4659,8 @@ msgid ""
 "There are no custom options available for the selected era, game, or "
 "modification."
 msgstr ""
+"Non hai opcións personalizadas dispoñíbeis para a era, partida ou "
+"modificación seleccionadas."
 
 #. [button]: id=reset_option_values
 #: data/gui/macros/custom_options_tree.cfg:249
@@ -3709,10 +4669,8 @@ msgstr "Valores predeterminados"
 
 #. [label]
 #: data/gui/macros/player_list_panel.cfg:29
-#, fuzzy
-#| msgid "Computer Player"
 msgid "Connected Players"
-msgstr "Computador"
+msgstr "Xogadores conectados"
 
 #. [label]: id=title
 #: data/gui/window/install_dependencies.cfg:37
@@ -3721,17 +4679,13 @@ msgstr "Instalar as dependencias"
 
 #. [button]: id=ok
 #: data/gui/window/install_dependencies.cfg:85
-#, fuzzy
-#| msgid "yes"
 msgid "Yes"
-msgstr "si"
+msgstr "Si"
 
 #. [button]: id=cancel
 #: data/gui/window/install_dependencies.cfg:96
-#, fuzzy
-#| msgid "Nov"
 msgid "No"
-msgstr "Nov"
+msgstr "Non"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -3753,41 +4707,37 @@ msgstr "DejaVu Sans Mono"
 #. [fonts]
 #: data/hardwired/fonts.cfg:30
 msgid "Lato Light"
-msgstr ""
+msgstr "Lato Clara"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:31
 msgid "Oldania ADF Std"
-msgstr ""
+msgstr "Oldania ADF Estándar"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:36
-#, fuzzy
-#| msgid ""
-#| "DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull."
-#| "ttf,Junicode-Regular.ttf"
 msgid ""
 "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 msgstr ""
-"DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull.ttf,"
-"Junicode-Regular.ttf"
+"Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
+"DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:187
 msgid "(Note: You should use $replacement instead in new code)"
-msgstr ""
+msgstr "(Nota: debería usar «$replacement» no seu lugar en código novo)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:194 src/deprecation.cpp:69
 msgid "Invalid deprecation level $level (should be 1-4)"
-msgstr ""
+msgstr "Nivel de caducidade $level incorrecto (debería estar entre 1 e 4)."
 
 #. [lua]: wml_actions.deprecated_message
 #: data/lua/wml-tags.lua:883
 msgid "Invalid deprecation level (should be 1-4)"
-msgstr ""
+msgstr "Nivel de caducidade incorrecto (debería estar entre 1 e 4)."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
@@ -3850,12 +4800,10 @@ msgstr "Derrota:"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:57
-#, fuzzy
-#| msgid "(this turn left)"
 msgid "(this turn left)"
 msgid_plural "(%d turns left)"
-msgstr[0] "(é a última rolda)"
-msgstr[1] "(é a última rolda)"
+msgstr[0] "(queda esta rolda)"
+msgstr[1] "(quedan %d roldas)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
@@ -3897,7 +4845,7 @@ msgstr "Reproducir"
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:448 data/themes/_initial.cfg:608
 msgid "continuous replay"
-msgstr "Repetición continua"
+msgstr "Repetición continua."
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:462 data/themes/_initial.cfg:621
@@ -3907,7 +4855,7 @@ msgstr "Deter"
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:463
 msgid "pause after current move"
-msgstr "Deter despois do movemento actual"
+msgstr "Deter despois do movemento actual."
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:478 data/themes/_initial.cfg:635
@@ -3917,7 +4865,7 @@ msgstr "Restablecer"
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:479 data/themes/_initial.cfg:636
 msgid "reset to beginning"
-msgstr "Volver ao comezo"
+msgstr "Volver ao comezo."
 
 #. [action]: id=button-nextturn, type=image
 #: data/themes/_initial.cfg:494 data/themes/_initial.cfg:649
@@ -3927,7 +4875,7 @@ msgstr "Seguinte quenda"
 #. [action]: id=button-nextturn, type=image
 #: data/themes/_initial.cfg:495 data/themes/_initial.cfg:650
 msgid "play turn"
-msgstr "Xogar a rolda"
+msgstr "Xogar a rolda."
 
 #. [action]: id=button-nextside, type=image
 #: data/themes/_initial.cfg:510 data/themes/_initial.cfg:663
@@ -3937,7 +4885,7 @@ msgstr "Seguinte bando"
 #. [action]: id=button-nextside, type=image
 #: data/themes/_initial.cfg:511 data/themes/_initial.cfg:664
 msgid "play side turn"
-msgstr "Xogar a quenda"
+msgstr "Xogar a quenda."
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:525 data/themes/_initial.cfg:677
@@ -3947,17 +4895,20 @@ msgstr "Seguinte movemento"
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:526 data/themes/_initial.cfg:678
 msgid "play single move"
-msgstr "Xogar un movemento"
+msgstr "Xogar un movemento."
 
 #. [menu]: id=show-what
 #: data/themes/_initial.cfg:538 data/themes/_initial.cfg:690
 msgid "Point of view"
 msgstr "Punto de vista"
 
+# Non usar máis caracteres que a cadea orixinal.
+#
+# Botón que aparece ao ver repeticións de partidas.
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:549
 msgid "Continue Play"
-msgstr "Continuar xogando"
+msgstr "Seguir xogando"
 
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:550
@@ -3967,7 +4918,7 @@ msgstr "Saír do modo de repetición e continuar xogando a partida."
 #. [action]: id=skip-animation, type=checkbox
 #: data/themes/_initial.cfg:562 data/themes/_initial.cfg:702
 msgid "Skip animation"
-msgstr "Saltar a animación"
+msgstr "Saltar a animación."
 
 #. [label]: id=replay-label
 #: data/themes/_initial.cfg:592
@@ -3977,7 +4928,7 @@ msgstr "Repetición"
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:622
 msgid "pause"
-msgstr ""
+msgstr "Deter."
 
 #. [theme]: id=Classic
 #: data/themes/classic.cfg:11
@@ -3987,7 +4938,7 @@ msgstr "Clásico"
 #. [theme]: id=Classic
 #: data/themes/classic.cfg:13
 msgid "The classic, pre-1.12 theme"
-msgstr "Tema clásico anterior á versión 1.12"
+msgstr "Tema clásico anterior á versión 1.12."
 
 #. [menu]: id=menu-main
 #: data/themes/classic.cfg:86 data/themes/cutscene.cfg:37
@@ -4026,7 +4977,7 @@ msgstr "Exp."
 #. [label]: id=gold-icon
 #: data/themes/classic.cfg:214 data/themes/default.cfg:177
 msgid "gold"
-msgstr "moedas"
+msgstr "Ouro"
 
 #. [label]: id=villages-icon
 #: data/themes/classic.cfg:223 data/themes/default.cfg:186
@@ -4051,7 +5002,7 @@ msgstr "Ingresos"
 #. [unit_level]: id=unit-level
 #: data/themes/classic.cfg:412
 msgid "statuspanel^level"
-msgstr "Nivel"
+msgstr "Niv."
 
 #. [unit_moves]: id=unit-moves
 #: data/themes/classic.cfg:442
@@ -4071,18 +5022,20 @@ msgstr "Predeterminado"
 #. [theme]: id=Default
 #: data/themes/default.cfg:33
 msgid "The default theme"
-msgstr "Tema predeterminado"
+msgstr "Tema predeterminado."
 
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:90
 msgid "Back to..."
 msgstr "Volver a…"
 
-# Nin idea do que é.
+# Non usar máis de 10 caracteres.
+#
+# Significa «puntos de movemento», aparece na barra vertical dereita durante as partidas, canda «Vida» e «Exp.».
 #. [label]: id=label-mp
 #: data/themes/default.cfg:160
 msgid "MP"
-msgstr "Para varios xogadores"
+msgstr "Pun. Mov."
 
 #. [label]: id=label-def
 #: data/themes/default.cfg:168
@@ -4092,7 +5045,7 @@ msgstr "Defensa"
 #. [unit_level]: id=unit-level
 #: data/themes/default.cfg:394
 msgid "statuspanel^lvl"
-msgstr "Nivel"
+msgstr "N."
 
 #. [tip]
 #: data/tips.cfg:4
@@ -4603,13 +5556,16 @@ msgid ""
 "villages unoccupied, but keep in mind that an enemy unit becomes much harder "
 "to dislodge from a village! Plan your movements accordingly."
 msgstr ""
+"Para calquera xogador, controlar vilas adoita ser a chave para obter a "
+"vitoria nun escenario. Podes aproveitarte disto para atraer aos teus "
+"opoñentes a unha trampa deixando algunhas vilas sen ocupar, pero ten en "
+"conta que as unidades inimigas són máis difíciles de someter desde unha "
+"vila. Planifica ben os teus movementos."
 
 #. [tip]
 #: data/tips.cfg:153
-#, fuzzy
-#| msgid "<i>― King Konrad, 536YW</i>"
 msgid "<i>― Kai Laudiss, 623YW</i>"
-msgstr "<i>— Rei Conrad, 536 d.N.</i>"
+msgstr "<i>— Cai Laudis, 623 d.N.</i>"
 
 #. [tip]
 #: data/tips.cfg:156
@@ -4906,6 +5862,9 @@ msgid ""
 "of 20 gold. In a campaign, always check if recalling a unit of the same type "
 "may be cheaper."
 msgstr ""
+"O custo de recrutamento dalgunhas unidades podería superar o custo habitual "
+"de reincorporar, 20 de ouro. Nunha campaña, asegúrate sempre de se é máis "
+"barato recrutar unha unidade do mesmo tipo."
 
 #. [tip]
 #: data/tips.cfg:257
@@ -4913,13 +5872,14 @@ msgid ""
 "You must accept some losses in battle. It is not uncommon for beginners to "
 "lose sight of victory as they attempt to keep every unit alive."
 msgstr ""
+"En batalla debes aceptar algunhas perdas. Máis dun principiante perde de "
+"vista o obxecitvo real, a vitoria, no seu intento por manter con vida todas "
+"as unidades."
 
 #. [tip]
 #: data/tips.cfg:258
-#, fuzzy
-#| msgid "<i>― Queen Li’sar, 528YW</i>"
 msgid "<i>― Queen Asheviere, 503YW</i>"
-msgstr "<i>— Raíña Li’sar, 528 d.N.</i>"
+msgstr "<i>— Raíña Axevier, 503 d.N.</i>"
 
 #. [tip]
 #: data/tips.cfg:262
@@ -5039,28 +5999,20 @@ msgid "Requesting distribution terms..."
 msgstr "Solicitando as condicións de distribución…"
 
 #: src/addon/client.cpp:127
-#, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
-#| "cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
 msgstr ""
-"A ruta ao complemento «<i>$addon_title</i>» contén caracteres incorrectos, "
-"así que non é posíbel instalalo."
+"O complemento «$addon_title» ten un identificador incorrecto, «$addon_id», e "
+"non pode publicarse."
 
 #: src/addon/client.cpp:153
-#, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
-#| "cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
 msgstr ""
-"A ruta ao complemento «<i>$addon_title</i>» contén caracteres incorrectos, "
-"así que non é posíbel instalalo."
+"O complemento «$addon_title» ten un ficheiro ou cartafol que contén "
+"caracteres incorrectos e non pode publicarse."
 
 #: src/addon/client.cpp:161
 msgid ""
@@ -5071,19 +6023,24 @@ msgid ""
 "\n"
 "&quot; * / : &lt; &gt; ? \\ | ~"
 msgstr ""
+"O complemento «$addon_title» ten un nome incorrecto de ficheiro ou de "
+"cartafol e non pode publicarse. Os nomes de ficheiros ou cartafoles non "
+"poden conter «..», rematar en «.» ou ter máis de 255 caracteres. Tampouco "
+"poden conter espazos en branco, caracteres de control, ou calquera dos "
+"seguintes caracteres:\n"
+"\n"
+"&quot; * / : &lt; &gt; ? \\ | ~"
 
 #: src/addon/client.cpp:172
-#, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
-#| "cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
 "the same string."
 msgstr ""
-"A ruta ao complemento «<i>$addon_title</i>» contén caracteres incorrectos, "
-"así que non é posíbel instalalo."
+"O complemento «$addon_title» contén ficheiros ou cartafoles con conflictos "
+"de maiúsculas e minúsculas. Non pode haber dous nomes de ficheiro ou "
+"cartafol nun mesmo cartafol que sexan idénticos salvo polo uso de maiúsculas "
+"e minúsculas."
 
 # Facilita máis a visualización que «Decargando o complemento: BlaBlaBla...»·
 #: src/addon/client.cpp:184
@@ -5109,16 +6066,12 @@ msgstr ""
 "así que non é posíbel instalalo."
 
 #: src/addon/client.cpp:264
-#, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
-#| "cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
 msgstr ""
-"A ruta ao complemento «<i>$addon_title</i>» contén caracteres incorrectos, "
-"así que non é posíbel instalalo."
+"O complemento «$addon_title» ten nomes de ficheiro ou de cartafol con "
+"conflictos de maiúsculas e minúsculas. Isto pode causar problemas."
 
 #: src/addon/client.cpp:321
 msgid "The server responded with an error:"
@@ -5226,10 +6179,8 @@ msgstr "Campaña mult."
 
 # Optimizado para baixas resolucións.
 #: src/addon/info.cpp:173
-#, fuzzy
-#| msgid "addon_type^MP modification"
 msgid "addon_type^Modification"
-msgstr "Modificación mult."
+msgstr "Modificación"
 
 #: src/addon/info.cpp:175
 msgid "addon_type^Core"
@@ -5512,10 +6463,8 @@ msgid "<password> <email (optional)>"
 msgstr "<contrasinal> <correo electrónico (opcional)>"
 
 #: src/chat_command_handler.hpp:131
-#, fuzzy
-#| msgid "Drop your nickname."
 msgid "Register your nickname"
-msgstr "Borrar o teu alcume."
+msgstr "Rexistrar o teu alcume."
 
 #: src/chat_command_handler.hpp:133
 msgid "Drop your nickname."
@@ -5604,23 +6553,28 @@ msgstr "bisba: $sender"
 
 #: src/deprecation.cpp:40
 msgid "$elem has been deprecated indefinitely."
-msgstr ""
+msgstr "O uso de $elem marcouse como obsoleto indefinidamente."
 
 #: src/deprecation.cpp:47
 msgid "$elem has been deprecated and may be removed in version $version."
 msgstr ""
+"O uso de $elem marcouse como obsoleto, e podería retirarse na versión "
+"$version."
 
 #: src/deprecation.cpp:49
 msgid "$elem has been deprecated and may be removed at any time."
 msgstr ""
+"O uso de $elem marcouse como obsoleto e podería retirarse en calquera "
+"momento."
 
 #: src/deprecation.cpp:56
 msgid "$elem has been deprecated and will be removed in version $version."
 msgstr ""
+"O uso de $elem marcouse como obsoleto, e retirarase na versión $version."
 
 #: src/deprecation.cpp:61
 msgid "$elem has been deprecated and removed."
-msgstr ""
+msgstr "O uso de $elem marcouse como obsoleto e retirouse."
 
 #: src/desktop/notifications.cpp:82
 msgid "Chat message"
@@ -5660,10 +6614,8 @@ msgid "%b %d %Y"
 msgstr "%d/%m/%y"
 
 #: src/game_config.cpp:530
-#, fuzzy
-#| msgid "Invalid color range: "
 msgid "Invalid color in range: "
-msgstr "Rango de cores incorrecto: "
+msgstr "Cor incorrecta no intervalo:"
 
 #: src/game_config_manager.cpp:198 src/game_config_manager.cpp:207
 #: src/game_config_manager.cpp:219
@@ -5819,10 +6771,8 @@ msgid "not available."
 msgstr "non dispoñíbel."
 
 #: src/game_initialization/create_engine.cpp:149
-#, fuzzy
-#| msgid "Custom"
 msgid "Custom map."
-msgstr "Personalizado"
+msgstr "Mapa personalizado."
 
 #: src/game_initialization/depcheck.cpp:491
 msgid "Failed to resolve dependencies"
@@ -5873,44 +6823,40 @@ msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "Non é posíbel obter o sexo co líder $leader. O líder non é valido."
 
 #: src/game_initialization/lobby_data.cpp:237
-#, fuzzy
-#| msgid "Missing addon: $id"
 msgid "Missing addon: $name"
-msgstr "Falta o complemento «$id»."
+msgstr "Falta o complemento «$name»."
 
 #: src/game_initialization/lobby_data.cpp:239
 msgid "Missing addon: $id"
 msgstr "Falta o complemento «$id»."
 
 #: src/game_initialization/lobby_data.cpp:264
-#, fuzzy
-#| msgid " (missing)"
 msgid "$era_name (missing)"
-msgstr " (non dispoñíbel)"
+msgstr "$era_name (falta)"
 
 #: src/game_initialization/lobby_data.cpp:271
 msgid "Unknown era"
 msgstr "Era descoñecida"
 
 #: src/game_initialization/lobby_data.cpp:288
-#, fuzzy
-#| msgid " (missing)"
 msgid "(missing)"
-msgstr " (non dispoñíbel)"
+msgstr " (falta)"
 
+# Inicial de «escenario».
 #: src/game_initialization/lobby_data.cpp:334
 #: src/game_initialization/lobby_data.cpp:364
 msgid "S"
-msgstr ""
+msgstr "E"
 
 #: src/game_initialization/lobby_data.cpp:353
 msgid "Remote scenario"
 msgstr "Escenario remoto"
 
+# Inicial de «campaña».
 #: src/game_initialization/lobby_data.cpp:372
 #: src/game_initialization/lobby_data.cpp:395
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #: src/game_initialization/lobby_data.cpp:400
 msgid "Unknown scenario"
@@ -5938,28 +6884,20 @@ msgid "none"
 msgstr "ningún"
 
 #: src/game_initialization/lobby_data.cpp:495
-#, fuzzy
-#| msgid ""
-#| "Host's version of $addon is too old: host's version $host_ver < your "
-#| "version $local_ver."
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
-"A versión do complemento $addon que ten o anfitrión é demasiado vella: "
-"$host_ver (anfitrión) < $local_ver (ti)."
+"A versión de <i>$addon</i> que ten o anfitrión é incompatíbel. O anfitrión "
+"ten a versión <b>$host_ver</b>, ti tes a <b>$local_ver</b>."
 
 #: src/game_initialization/lobby_data.cpp:509
-#, fuzzy
-#| msgid ""
-#| "Your version of $addon is out of date: host's version $host_ver > your "
-#| "version $local_ver."
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
-"A túa versión de $addon está obsoleta: $host_ver (anfitrión) > $local_ver "
-"(ti)."
+"A túa versión de <i>$addon</i> é incompatíbel. Tes a versión <b>$local_ver</"
+"b>, o anfitrión ten a <b>$host_ver</b>."
 
 #: src/game_initialization/mp_game_utils.cpp:101
 msgid "Cannot find era $era"
@@ -5970,16 +6908,12 @@ msgid "Connection timed out"
 msgstr "A conexión caducou."
 
 #: src/game_initialization/multiplayer.cpp:124
-#, fuzzy
-#| msgid ""
-#| "The server accepts versions '$version1' while you are using version "
-#| "'$version2'"
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
 msgstr ""
-"O servidor acepta as seguintes versións: $version1|. A versión que estás "
-"usando, «$version2|», non é compatíbel co servidor."
+"O servidor acepta as versións «$required_version», pero ti estás a usar a "
+"versión «$your_version»."
 
 #: src/game_initialization/multiplayer.cpp:134
 msgid "Server-side redirect loop"
@@ -6017,16 +6951,13 @@ msgid "The nickname ‘$nick’ is already taken."
 msgstr "O alcume «$nick|» xa está collido."
 
 #: src/game_initialization/multiplayer.cpp:321
-#, fuzzy
-#| msgid ""
-#| "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
-#| "characters, underscores and hyphens are allowed."
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
 msgstr ""
-"O alcume «$nick|» contén caracteres non válidos. Só se permiten caracteres "
-"alfanuméricos latinos (nin tiles nin eñes), guións e guións baixos."
+"O alcume «$nick» contén caracteres non válidos. Só se permiten caracteres "
+"alfanuméricos latinos (nin tiles nin eñes), guións e guións baixos. "
+"Requírese polo menos un carácter."
 
 #: src/game_initialization/multiplayer.cpp:325
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
@@ -6084,7 +7015,7 @@ msgstr "Roldas rematadas cedo: "
 
 #: src/game_initialization/playcampaign.cpp:67
 msgid " per turn"
-msgstr "por rolda"
+msgstr " por rolda"
 
 #: src/game_initialization/playcampaign.cpp:67
 msgid "Early finish bonus: "
@@ -6200,10 +7131,8 @@ msgid "Unknown scenario: '$scenario|'"
 msgstr "Escenario descoñecido: «$scenario|»."
 
 #: src/game_initialization/singleplayer.cpp:42
-#, fuzzy
-#| msgid "No campaigns are available.\n"
 msgid "No campaigns are available."
-msgstr "Non hai campañas dispoñíbeis.\n"
+msgstr "Non hai campañas dispoñíbeis."
 
 #: src/game_launcher.cpp:644 src/game_launcher.cpp:662
 msgid "The file you have tried to load is corrupt"
@@ -6228,10 +7157,8 @@ msgid "Error while starting server: "
 msgstr "Houbo un erro ao iniciar o servidor: "
 
 #: src/generators/default_map_generator_job.cpp:691
-#, fuzzy
-#| msgid "Random maps with an odd width aren't supported."
 msgid "Random maps with an odd width aren't supported."
-msgstr "Non se poden xerar mapas ao chou cun ancho non estándar."
+msgstr "Non se poden xerar mapas ao chou cun ancho impar."
 
 #: src/generators/default_map_generator_job.cpp:954
 msgid ""
@@ -6244,15 +7171,9 @@ msgstr ""
 #: src/gui/core/linked_group_definition.cpp:39
 msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
+"O grupo ligado «$id» necesita unha clave «fixed_width» ou «fixed_height»."
 
 #: src/gui/dialogs/addon/install_dependencies.cpp:38
-#, fuzzy
-#| msgid ""
-#| "The selected add-on has the following dependency, which is not currently "
-#| "installed. Do you wish to install it before continuing?"
-#| msgid_plural ""
-#| "The selected add-on has the following dependencies, which are not "
-#| "currently installed. Do you wish to install them before continuing?"
 msgid ""
 "The selected add-on has the following dependency, which is outdated or not "
 "currently installed. Do you wish to install it before continuing?"
@@ -6260,11 +7181,11 @@ msgid_plural ""
 "The selected add-on has the following dependencies, which are outdated or "
 "not currently installed. Do you wish to install them before continuing?"
 msgstr[0] ""
-"O complemento escollido ten as seguintes dependencias, que non están "
-"actualmente instaladas. Queres instalalas antes de continuar?"
+"O complemento escollido ten a seguinte dependencia, que está obsoleta ou non "
+"está actualmente instalada. Queres instalala antes de continuar?"
 msgstr[1] ""
-"O complemento escollido ten a seguinte dependencia, que non está actualmente "
-"instalada. Queres instalala antes de continuar?"
+"O complemento escollido ten as seguintes dependencias, que están obsoletas "
+"ou non están actualmente instaladas. Queres instalalas antes de continuar?"
 
 # É o título dunha xanela.
 #: src/gui/dialogs/game_load.hpp:40
@@ -6276,10 +7197,8 @@ msgid "There are no save files to load"
 msgstr "Non hai partidas para cargar."
 
 #: src/gui/dialogs/game_stats.hpp:43
-#, fuzzy
-#| msgid "No multiplayer sides found"
 msgid "No visible sides found."
-msgstr "No se atoparon bandos para varios xogadores."
+msgstr "No se atoparon bandos visíbeis."
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:104
 msgid "In game:"
@@ -6319,10 +7238,8 @@ msgid "Error"
 msgstr "Houbo un erro"
 
 #: src/gui/dialogs/unit_list.hpp:45
-#, fuzzy
-#| msgid "No eras found."
 msgid "No units found."
-msgstr "Non se atoparon eras."
+msgstr "Non se atoparon unidades."
 
 #: src/gui/widgets/status_label_helper.hpp:34
 msgid "no"
@@ -6381,20 +7298,16 @@ msgid "No description available."
 msgstr "Sen descrición."
 
 #: src/help/help_impl.cpp:729 src/help/help_impl.cpp:731
-#, fuzzy
-#| msgid "Ability: "
 msgid "Availability: "
-msgstr "Habilidades: "
+msgstr "Dispoñibilidade: "
 
 #: src/help/help_impl.cpp:729
 msgid "Must-have"
-msgstr ""
+msgstr "Obrigatoria."
 
 #: src/help/help_impl.cpp:731
-#, fuzzy
-#| msgid "not available."
 msgid "Unavailable"
-msgstr "non dispoñíbel."
+msgstr "Non dispoñíbel."
 
 #: src/help/help_impl.cpp:811 src/help/help_impl.cpp:986
 #: src/help/help_topic_generators.cpp:384
@@ -6435,10 +7348,8 @@ msgid "Defense properties: "
 msgstr "Propiedades de defensa: "
 
 #: src/help/help_topic_generators.cpp:245
-#, fuzzy
-#| msgid "Level: "
 msgid "Level"
-msgstr "Nivel: "
+msgstr "Nivel"
 
 #: src/help/help_topic_generators.cpp:306
 msgid "Advances from: "
@@ -6566,14 +7477,12 @@ msgid "Jamming Cost"
 msgstr "Custo de interferencia"
 
 #: src/hotkey/command_executor.cpp:387
-#, fuzzy
-#| msgid "Do you really want to delete this game?"
 msgid "Do you really want to surrender the game?"
-msgstr "Seguro que queres borrar esta partida?"
+msgstr "Seguro que queres renderte?"
 
 #: src/hotkey/command_executor.cpp:387
 msgid "Surrender"
-msgstr ""
+msgstr "Renderme"
 
 #: src/hotkey/command_executor.cpp:741
 msgid "Map-Screenshot"
@@ -6788,12 +7697,8 @@ msgid "Clear Labels"
 msgstr "Quitar as etiquetas"
 
 #: src/menu_events.cpp:802
-#, fuzzy
-#| msgid "Are you sure you want to remove the following installed add-on?"
-#| msgid_plural ""
-#| "Are you sure you want to remove the following installed add-ons?"
 msgid "Are you sure you want to clear map labels?"
-msgstr "Seguro que queres eliminar este complemento?"
+msgstr "Seguro que queres retirar as etiquetas do mapa?"
 
 #: src/menu_events.cpp:997
 msgid "Search"
@@ -7020,10 +7925,8 @@ msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Cambiar a superposición dos códigos de terreo nos hexágonos."
 
 #: src/menu_events.cpp:1249
-#, fuzzy
-#| msgid "Toggle overlaying of terrain codes on hexes."
 msgid "Toggle overlaying of number of bitmaps on hexes."
-msgstr "Cambiar a superposición dos códigos de terreo nos hexágonos."
+msgstr "Cambiar a superposición do número de imaxes nos hexágonos."
 
 #: src/menu_events.cpp:1251
 msgid "Toggle planning mode."
@@ -7118,7 +8021,7 @@ msgstr "Desactivouse o modo de depuración!"
 
 #: src/menu_events.cpp:1744
 msgid "WARNING! Unsafe Lua Mode"
-msgstr ""
+msgstr "AVISO! Modo inseguro de Lua"
 
 #: src/menu_events.cpp:1745
 msgid ""
@@ -7128,6 +8031,11 @@ msgid ""
 "\n"
 "Do not continue unless you really know what you are doing."
 msgstr ""
+"Executar código en Lua deste xeito expón o teu computador a potenciais "
+"violacións de seguranza por parte de complementos maliciosos ou de outros "
+"programas que teña instalados.\n"
+"\n"
+"Non continúe salvo que saiba o que está a facer."
 
 #: src/menu_events.cpp:1750
 msgid "Unsafe mode enabled!"
@@ -7176,15 +8084,15 @@ msgstr "Esta unidade non ten armas que poida usar."
 
 #: src/mp_game_settings.hpp:70
 msgid "Independent"
-msgstr ""
+msgstr "Independente"
 
 #: src/mp_game_settings.hpp:71
 msgid "No Mirror"
-msgstr ""
+msgstr "Non repetir"
 
 #: src/mp_game_settings.hpp:72
 msgid "No Ally Mirror"
-msgstr ""
+msgstr "Non repetir aliados"
 
 #: src/mp_ui_alerts.cpp:66
 msgid "A player has joined"
@@ -7304,16 +8212,12 @@ msgid "It is now $name|’s turn"
 msgstr "Tócalle mover a $name|."
 
 #: src/playturn.cpp:273
-#, fuzzy
-#| msgid "Give gold to the current player."
 msgid "Give control to their ally $player"
-msgstr "Darlle ouro ao xogador actual."
+msgstr "Darlle o control ao seu aliado «$player»."
 
 #: src/playturn.cpp:282
-#, fuzzy
-#| msgid "Give gold to the current player."
 msgid "Give control to observer $player"
-msgstr "Darlle ouro ao xogador actual."
+msgstr "Darlle o control ao observador «$player»."
 
 #: src/playturn.cpp:287
 msgid "Replace with AI"
@@ -7548,12 +8452,10 @@ msgid "Total damage"
 msgstr "Dano total:"
 
 #: src/reports.cpp:984
-#, fuzzy
-#| msgid "Attacker"
 msgid "Attack"
 msgid_plural "Attacks"
-msgstr[0] "Atacante"
-msgstr[1] "Atacante"
+msgstr[0] "Ataque"
+msgstr[1] "Ataques"
 
 #: src/reports.cpp:1120 src/reports.cpp:1172
 msgid "Lawful units: "
@@ -7573,25 +8475,27 @@ msgstr "Unidades crepusculares: "
 
 # Refírese á cantidade de roldas xogadas nas partidas de varios xogadores que se están xogando.
 #: src/reports.cpp:1236
-#, fuzzy
-#| msgid "Turn "
 msgid "Turn Number"
-msgstr "Rolda "
+msgstr "Número de roldas."
 
 #: src/reports.cpp:1238
 msgid ""
 "When the game reaches the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
+"A partida rematará cando chegue ao número de roldas que indica o segundo "
+"número."
 
 #: src/reports.cpp:1263
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
+"A cantidade de ouro dispoñíbel actualmente para recrutar unidades e manter o "
+"exército."
 
 #: src/reports.cpp:1282
 msgid "The fraction of known villages that your side has captured."
-msgstr ""
+msgstr "A fracción de vilas coñecidas baixo o teu control."
 
 #: src/reports.cpp:1282
 msgid "Villages"
@@ -7599,7 +8503,7 @@ msgstr "Vilas"
 
 #: src/reports.cpp:1287
 msgid "The total number of units on your side."
-msgstr ""
+msgstr "O número total de unidades baixo o teu control."
 
 #: src/reports.cpp:1287
 msgid "Units"
@@ -7612,6 +8516,10 @@ msgid ""
 "total cost of upkeep, including that covered by villages — in other words, "
 "the amount of gold that would be deducted if you lost all villages."
 msgstr ""
+"Os gastos que se teñen ao final de cada rolda para manter o exército. O "
+"primeiro número é a cantidade de ouro que se deducirá. O segundo é o custo "
+"total de mantemento, incluíndo o que cubren as vilas; é dicir, o que se "
+"deduciría se perdeses todas as vilas."
 
 #: src/reports.cpp:1297
 msgid "Upkeep"
@@ -7626,6 +8534,8 @@ msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
 msgstr ""
+"A cantidade de ouro que gañas cada rolda grazas ás vilas que controlas, ou a "
+"cantidade de ouro que perderás cada rolda polo mantemento das unidades."
 
 #: src/reports.cpp:1502
 msgid "Observers:"
@@ -7633,15 +8543,15 @@ msgstr "Observadores:"
 
 #: src/reports.cpp:1542
 msgid "Clock"
-msgstr ""
+msgstr "Reloxo."
 
 #: src/reports.cpp:1568
 msgid "Countdown until your turn automatically ends."
-msgstr ""
+msgstr "Conta atrás ata que a túa quenda remate automaticamente."
 
 #: src/reports.cpp:1568
 msgid "Turn Countdown"
-msgstr ""
+msgstr "Conta atrás da quenda"
 
 # Aparece ao cargar partidas.
 #: src/save_index.cpp:218
@@ -7748,7 +8658,7 @@ msgstr "Gardar a partida"
 
 #: src/savegame.cpp:638
 msgid "Game state is corrupted"
-msgstr ""
+msgstr "A partida está corrompida."
 
 #: src/serialization/parser.cpp:153
 msgid "Unexpected characters at line start"
@@ -7895,20 +8805,20 @@ msgid "infix_binary^i"
 msgstr "i"
 
 #: src/synced_commands.cpp:403
-#, fuzzy
-#| msgid "Unknown era"
 msgid "(unknown player)"
-msgstr "Era descoñecida"
+msgstr "(xogador descoñecido)"
 
 #: src/synced_commands.cpp:408
 msgid "The :$command debug command was used during $player’s turn"
-msgstr ""
+msgstr "Usouse a orde de depuración :$command durante a quenda de $player."
 
 #: src/synced_commands.cpp:416
 msgid ""
 "A player used a debug command during the game. If this is unexpected, it is "
 "possible the player in question is cheating."
 msgstr ""
+"Un xogador usou unha orde de depuración durante a partida. Isto non é "
+"normal, é posíbel que o xogador en cuestión estea a facer trampas."
 
 #: src/synced_commands.cpp:418
 msgid "Details:"
@@ -7916,23 +8826,20 @@ msgstr "Detalles:"
 
 #: src/synced_commands.cpp:421
 msgid "Do you wish to save the game before continuing?"
-msgstr ""
+msgstr "Queres gardar a partida antes de continuar?"
 
 #: src/synced_commands.cpp:423
-#, fuzzy
-#| msgid "Debug mode commands"
 msgid "Debug Command Used"
-msgstr "Ordes do modo de depuración"
+msgstr "Orde de depuración usada"
 
 #: src/synced_commands.cpp:509
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
+"Creouse unha unidade usando o modo de depuración durante a quenda de $player."
 
 #: src/synced_user_choice.cpp:326
-#, fuzzy
-#| msgid "waiting for $desc from side(s)$sides"
 msgid "waiting for $desc from side(s) $sides"
-msgstr "agardando por $desc dos bandos$sides"
+msgstr "agardando por $desc dos bandos $sides"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -7964,95 +8871,71 @@ msgstr "Este momento do día é só unha proba!"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:356
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
-msgstr[0] "ataque por rolda"
-msgstr[1] "ataque por rolda"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> de dano"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> de dano"
 
 #: src/units/attack_type.cpp:365
-#, fuzzy
-#| msgid "damage"
-#| msgid_plural "damage"
 msgid "$number damage"
 msgid_plural "$number damage"
-msgstr[0] "de dano"
-msgstr[1] "de dano"
+msgstr[0] "$number de dano"
+msgstr[1] "$number de dano"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:374
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
-msgstr[0] "ataque por rolda"
-msgstr[1] "ataque por rolda"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> golpe"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> golpes"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:383
-#, fuzzy
-#| msgid "strike"
-#| msgid_plural "strikes"
 msgid "$number strike"
 msgid_plural "$number strikes"
-msgstr[0] "golpe"
-msgstr[1] "golpes"
+msgstr[0] "$number golpe"
+msgstr[1] "$number golpes"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:392
-#, fuzzy
-#| msgid " parry"
 msgid "$number| accuracy"
-msgstr " de defensa"
+msgstr "$number| de precisión"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:399
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
-msgstr "ataque por rolda"
+msgstr "<span color=\"$color\">$number_or_percent|%</span> de precisión"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:406
-#, fuzzy
-#| msgid " parry"
 msgid "$number parry"
-msgstr " de defensa"
+msgstr "$number de esquivar"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:413
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
-msgstr "ataque por rolda"
+msgstr "<span color=\"$color\">$number_or_percent</span> de esquivar"
 
 #. TRANSLATORS: Current value for WML code set_movement, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:420
-#, fuzzy
-#| msgid "movement point"
-#| msgid_plural "movement points"
 msgid "$number movement point"
 msgid_plural "$number movement points"
-msgstr[0] "punto de movemento"
-msgstr[1] "puntos de movemento"
+msgstr[0] "$number punto de movemento"
+msgstr[1] "$number puntos de movemento"
 
 #. TRANSLATORS: Current value for WML code increase_movement, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:429
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent movement</span> point"
 msgid_plural "<span color=\"$color\">$number_or_percent movement</span> points"
-msgstr[0] "ataque por rolda"
-msgstr[1] "ataque por rolda"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> punto de movemento"
+msgstr[1] ""
+"<span color=\"$color\">$number_or_percent</span> puntos de movemento"
 
 #: src/units/types.cpp:545 src/units/types.hpp:181
 msgid "chaotic"
 msgstr "caótico"
 
 #: src/units/types.cpp:545 src/units/types.hpp:179
-#, fuzzy
-#| msgid "female^lawful"
 msgid "lawful"
 msgstr "legal"
 
@@ -8085,51 +8968,38 @@ msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description|."
 
 #: src/units/unit.cpp:1791
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
-msgstr "ataque por rolda"
+msgstr "<span color=\"$color\">$number_or_percent</span> de vida"
 
 #: src/units/unit.cpp:1801
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
-msgstr[0] "ataque por rolda"
-msgstr[1] "ataque por rolda"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> movemento"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span>  movementos"
 
 #: src/units/unit.cpp:1807
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
-msgstr "ataque por rolda"
+msgstr "<span color=\"$color\">$number_or_percent</span> de visión"
 
 #: src/units/unit.cpp:1811
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
-msgstr "ataque por rolda"
+msgstr "<span color=\"$color\">$number_or_percent</span> de atranco"
 
 #: src/units/unit.cpp:1816
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
-msgstr "ataque por rolda"
+msgstr "<span color=\"$color\">$number_or_percent</span> de exp. para avanzar"
 
 #: src/units/unit.cpp:1820
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
-msgstr[0] "ataque por rolda"
-msgstr[1] "ataque por rolda"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> ataque por quenda"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> ataques por quenda"
 
 #: src/units/unit.cpp:1827
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
-msgstr "ataque por rolda"
+msgstr ""
+"<span color=\"$color\">$number_or_percent</span> de custo de reincorporación"
 
 #: src/units/unit.cpp:2232
 msgid "$effect_description per level"
@@ -8138,22 +9008,22 @@ msgstr "$effect_description por nivel."
 #. TRANSLATORS: "Before Wesnoth"   - format for years prior to the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:59
 msgid "$year BW"
-msgstr ""
+msgstr "$year a.N."
 
 #. TRANSLATORS: "Year of Wesnoth"  - format for years after the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:62
 msgid "$year YW"
-msgstr ""
+msgstr "$year d.N."
 
 #. TRANSLATORS: "Before the Fall" -  format for years prior to the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:65
 msgid "$year BF"
-msgstr ""
+msgstr "$year a.C."
 
 #. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesonth
 #: src/utils/irdya_datetime.cpp:68
 msgid "$year AF"
-msgstr ""
+msgstr "$year d.C."
 
 #: src/whiteboard/manager.cpp:1094
 msgid "SHOW ALL allies’ plans"

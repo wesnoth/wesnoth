@@ -6,7 +6,7 @@
      * S12 Fixed enemies from ai6 (south-east lich) going to the book (spider) room
      * S12 Fixed north treasure chest disappearing
  ### Language and i18n
-   * Updated translations: Chinese (Simplified), French, Polish
+   * Updated translations: Chinese (Simplified), French, Galician, Polish
  ### User Interface
    * Swapped the position and formatting of game names and titles in the MP lobby.
    * Made Faction Select button's purpose more clear in MP Staging.
