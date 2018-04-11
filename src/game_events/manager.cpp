@@ -144,7 +144,7 @@ void manager::write_events(config& cfg) const
 		// error occurs in MP. If the event in question is first-time-only, it will already
 		// have been flagged as disabled by this point (such events are disabled before their
 		// actions are run). If a disabled event is encountered outside an event context,
-		// however, assert. That means something when wrong with event list cleanup.
+		// however, assert. That means something went wrong with event list cleanup.
 		if(eh->disabled() && is_event_running()) {
 			continue;
 		} else {
