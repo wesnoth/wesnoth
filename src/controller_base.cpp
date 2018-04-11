@@ -25,6 +25,7 @@
 #include "preferences/game.hpp"
 #include "scripting/plugins/context.hpp"
 #include "show_dialog.hpp" //gui::in_dialog
+#include "gui/core/event/handler.hpp" // gui2::is_in_dialog
 #include "soundsource.hpp"
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -140,6 +141,15 @@ void controller_base::handle_event(const SDL_Event& event)
 	default:
 		break;
 	}
+}
+
+void controller_base::process(events::pump_info&)
+{
+	if(gui2::is_in_dialog()) {
+		return;
+	}
+
+	hotkey::run_events(get_hotkey_command_executor());
 }
 
 void controller_base::keyup_listener::handle_event(const SDL_Event& event)
