@@ -12,7 +12,6 @@
    * Made Faction Select button's purpose more clear in MP Staging.
  ### Miscellaneous and bug fixes
    * Removed the Font Scaling preference. It was too buggy (issues #2792 and #1624).
-   * Fixed some hotkeys triggering multiple commands on GNU/Linux (bug #1736).
    * Fixed regression where unit filters in [disable] weapon specials would not
      match the attacking unit.
    * Fixed images with no alpha channel rendering incorrectly.
