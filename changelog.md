@@ -5,6 +5,8 @@
    * The Hammer of Thursagan
      * S12 Fixed enemies from ai6 (south-east lich) going to the book (spider) room
      * S12 Fixed north treasure chest disappearing
+   * The Rise of Wesnoth
+     * New set of story art.
  ### Language and i18n
    * Updated translations: Chinese (Simplified), French, Galician, Polish
  ### User Interface
