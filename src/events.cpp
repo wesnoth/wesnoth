@@ -487,15 +487,6 @@ void pump()
 		events.erase(first_draw_event + 1, events.end());
 	}
 
-	if(SDL_GetModState() & KMOD_ALT) {
-		// Remove text input events, to match the behavior on Windows
-		// See https://github.com/wesnoth/wesnoth/issues/1736
-		events.erase(
-			std::remove_if(events.begin(), events.end(), [](const SDL_Event& e) { return e.type == SDL_TEXTINPUT; }),
-			events.end()
-		);
-	}
-
 	ev_end = events.end();
 
 	for(ev_it = events.begin(); ev_it != ev_end; ++ev_it) {
