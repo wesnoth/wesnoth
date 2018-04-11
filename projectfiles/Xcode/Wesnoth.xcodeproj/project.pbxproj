@@ -11,6 +11,8 @@
 		460CA6D52143362800B89741 /* apple_version.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46F54C26211DFB7200374A1C /* apple_version.mm */; };
 		4601124C206E59F50037E23F /* libGLEW.2.1.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 466CE461206B8FDC00FD3994 /* libGLEW.2.1.0.dylib */; };
 		4601124D206E5A590037E23F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466CE465206B911900FD3994 /* OpenGL.framework */; };
+		4619EBD5207DDCDF0082EF4F /* shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4619EBD3207DDCDF0082EF4F /* shader.cpp */; };
+		4619EBD6207DDCDF0082EF4F /* shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4619EBD3207DDCDF0082EF4F /* shader.cpp */; };
 		461CE967205C3A8700E6E98F /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
 		463896712034180900075E54 /* deprecation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 463896702034180900075E54 /* deprecation.cpp */; };
 		463896722034180900075E54 /* deprecation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 463896702034180900075E54 /* deprecation.cpp */; };
@@ -1425,6 +1427,8 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1EF6CE8014D9846D00ECBE58 /* mp_host_game_prompt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_host_game_prompt.cpp; sourceTree = "<group>"; };
 		1EF6CE8114D9846D00ECBE58 /* mp_host_game_prompt.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_host_game_prompt.hpp; sourceTree = "<group>"; };
+		4619EBD3207DDCDF0082EF4F /* shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shader.cpp; sourceTree = "<group>"; };
+		4619EBD4207DDCDF0082EF4F /* shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = shader.hpp; sourceTree = "<group>"; };
 		4638966F2034180800075E54 /* deprecation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = deprecation.hpp; sourceTree = "<group>"; };
 		463896702034180900075E54 /* deprecation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = deprecation.cpp; sourceTree = "<group>"; };
 		4649B879202886F000827CFB /* test_irdya_date.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_irdya_date.cpp; sourceTree = "<group>"; };
@@ -3251,6 +3255,8 @@
 				466CE45A206B8D4500FD3994 /* context.cpp */,
 				466CE45B206B8D4500FD3994 /* context.hpp */,
 				46D7D24620769332004CA602 /* draw_op.hpp */,
+				4619EBD3207DDCDF0082EF4F /* shader.cpp */,
+				4619EBD4207DDCDF0082EF4F /* shader.hpp */,
 				46D7D24720769332004CA602 /* sprite.cpp */,
 				46D7D24520769332004CA602 /* sprite.hpp */,
 				466CE459206B8D4500FD3994 /* utils.cpp */,
@@ -5108,6 +5114,7 @@
 				B5A9BD380ECA805A002BE442 /* language_selection.cpp in Sources */,
 				B5599B330EC62181008DD061 /* language.cpp in Sources */,
 				EC67F7F01DB3144A0038337E /* constants.cpp in Sources */,
+				4619EBD5207DDCDF0082EF4F /* shader.cpp in Sources */,
 				B5A9BD650ECA805A002BE442 /* listbox.cpp in Sources */,
 				B55BE04B11234B1A00154E6C /* lobby_data.cpp in Sources */,
 				B55BE04C11234B1A00154E6C /* lobby_info.cpp in Sources */,
@@ -5537,6 +5544,7 @@
 				91E356581CACC67C00774252 /* display_chat_manager.cpp in Sources */,
 				91E356591CACC67C00774252 /* fake_unit_manager.cpp in Sources */,
 				91E3565A1CACC67C00774252 /* fake_unit_ptr.cpp in Sources */,
+				4619EBD6207DDCDF0082EF4F /* shader.cpp in Sources */,
 				4649B88720288E3E00827CFB /* parser.cpp in Sources */,
 				91E3565D1CACC67C00774252 /* game_board.cpp in Sources */,
 				91E3565E1CACC67C00774252 /* game_classification.cpp in Sources */,
