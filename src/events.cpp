@@ -477,15 +477,6 @@ void pump()
 		last_resize_event_used = true;
 	}
 
-	if(SDL_GetModState() & KMOD_ALT) {
-		// Remove text input events, to match the behavior on Windows
-		// See https://github.com/wesnoth/wesnoth/issues/1736
-		events.erase(
-			std::remove_if(events.begin(), events.end(), [](const SDL_Event& e) { return e.type == SDL_TEXTINPUT; }),
-			events.end()
-		);
-	}
-
 	// Move all draw events to the end of the queue
 	auto first_draw_event = std::stable_partition(events.begin(), events.end(),
 		[](const SDL_Event& e) { return e.type != DRAW_EVENT; }
