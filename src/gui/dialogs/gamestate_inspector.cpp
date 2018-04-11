@@ -509,7 +509,7 @@ const display_context& single_mode_controller::dc() const {
 event_mode_controller::event_mode_controller(gamestate_inspector::controller& c)
 	: single_mode_controller(c)
 {
-	single_mode_controller::events().write_events(events, false);
+	single_mode_controller::events().write_events(events);
 }
 
 void variable_mode_controller::show_list(tree_view_node& node)

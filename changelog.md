@@ -64,6 +64,7 @@
    * Removed the Password Reminder option from the Login screen.
    * Removed (optional) requirement of libpng from SCons and CMake and the
      associated options as Wesnoth now uses SDL_image to write PNG files.
+   * Fixed assertion when saving game events mid-event.
 
 ## Version 1.13.12
  ### Security fixes
