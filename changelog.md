@@ -18,6 +18,8 @@
    * Fixed images with no alpha channel rendering incorrectly.
    * Fixed unit selection not persisting between uses of Create Unit.
    * Fixed assertion when undoing actions in a synced context.
+   * [filter_wml] no longer accepts [and] and [or] in addition to [not] since
+     the implementation was non-functional.
 
 ## Version 1.13.13
  ### Campaigns
