@@ -3,6 +3,9 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog.md
 
 ## Version 1.15.0-dev
+ ### Campaigns
+   * The Rise of Wesnoth
+     * New set of story art.
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Czech, French,
      Galician, Polish, Scottish Gaelic, Spanish, Ukrainian.
