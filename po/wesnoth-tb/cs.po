@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:31 UTC\n"
-"PO-Revision-Date: 2018-03-20 20:46+0100\n"
+"PO-Revision-Date: 2018-04-07 12:36+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -304,6 +304,8 @@ msgid ""
 "Use footpads as fodder to protect your loyal units and attack during the day "
 "to minimize the damage your forces take."
 msgstr ""
+"Použij lapky jako obranu pro tvé věrné jednotky. Útoč během dne, aby jsi "
+"minimalizoval poškození, které při útoku utržíš."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:186
@@ -327,12 +329,6 @@ msgstr "Dal jsi znamení, přišel jsem. To ti musí stačit. Co sužuje Maghre?
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:206
-#, fuzzy
-#| msgid ""
-#| "A dark mage has come upon us; his creatures call him Mordak. They have "
-#| "been terrorizing outlying farms, and we fear they may soon attack the "
-#| "village itself! The villagers of Maghre have taken up weapons but they "
-#| "are not trained fighters; but we need your men, and you to lead them."
 msgid ""
 "A dark mage has come upon us; his creatures call him Mordak. They have been "
 "terrorizing outlying farms, and we fear they may soon attack the village "
@@ -555,10 +551,8 @@ msgstr "Nil-Galion"
 
 #. [side]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:170
-#, fuzzy
-#| msgid "Catch the kidnappers"
 msgid "Kidnappers"
-msgstr "Chyť únosce"
+msgstr "Únosci"
 
 #. [side]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:174
@@ -586,6 +580,8 @@ msgid ""
 "The Elvish forces are spread out. Seek to fight them one at a time with "
 "several of your units."
 msgstr ""
+"Elfské síly jsou rozloženy. Snaž se bojovat s jedením po druhém s několika "
+"tvými jednotkami naráz."
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:317
@@ -593,12 +589,16 @@ msgid ""
 "Use horsemen or footpads to quickly explore the shrouded woods to locate the "
 "kidnappers."
 msgstr ""
+"Použij jezdce na koních nebo lapky, aby jsi rychle prozkoumal zahalené lesy "
+"a našel únosce."
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:332
 msgid ""
 "Separate the Dark Adept from his guards and attack in force for an easy kill."
 msgstr ""
+"Odděl temného učně od jeho stráží a zaútoč na něj v přesile, aby jsi ho "
+"snadno zabil."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:375
@@ -738,19 +738,13 @@ msgstr "Katklagad"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:492
-#, fuzzy
-#| msgid ""
-#| "Three days ride to the northeast, in a deserted castle. The passwords to "
-#| "the guards are $first_password_$first_password_number and "
-#| "$second_password_$second_password_number|."
 msgid ""
 "Three days ride to the northeast, in a deserted castle. The passwords to the "
 "guards are $first_password_$first_password and $second_password_"
 "$second_password|."
 msgstr ""
 "V opuštěném hradu tři dny jízdy na severovýchod. Hesla pro průchod hlídkami "
-"jsou $first_password_$first_password_number a $second_password_"
-"$second_password_number|."
+"jsou $first_password_$first_password a $second_password_$second_password|."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:500
@@ -878,26 +872,6 @@ msgstr "Střežený hrad"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:26
-#, fuzzy
-#| msgid ""
-#| "19 IV, 363 YW\n"
-#| "Excerpt from the journal of Rotharik the Clanless\n"
-#| "\n"
-#| "The last of Mordak’s servants arrived this morning bearing the news of "
-#| "his death, as well as a bundle so well-bound it was barely recognizable "
-#| "as a man. Mordak was always reckless. This whole desperate scheme was "
-#| "his, and I suppose I could blame him for everything that we have suffered "
-#| "through if it still mattered. It was he who brought the wrath of the orcs "
-#| "down on us, too. But all the same, he managed to accomplish what he set "
-#| "out to do. I still cannot believe the finality of what has happened; "
-#| "until now we had always managed to make it through somehow.\n"
-#| "\n"
-#| "We had hoped to deliver the mage to Tairach in return for our lives. I do "
-#| "not know what the warlord wants with this man, but he matches the "
-#| "description. I suppose that Mordak’s plan would have worked perfectly if "
-#| "not for the appearance of the horse warriors. Now they are coming here, "
-#| "led by a man rumored to be this mage’s brother. If that is true, he will "
-#| "stop at nothing, no more than would I if they held Mordak."
 msgid ""
 "19 V, 363 YW\n"
 "Excerpt from the journal of Rotharik the Clanless\n"
@@ -918,7 +892,7 @@ msgid ""
 "man rumored to be this mage’s brother. If that is true, he will stop at "
 "nothing, no more than would I if they held Mordak."
 msgstr ""
-"19.IV. 363 YW\n"
+"19.V. 363 YW\n"
 "Záznam v deníku Rotharika Vyhnance\n"
 "\n"
 "Poslední z Mordakových služebníků dorazili toto ráno s novinou, že Mordak je "
@@ -938,21 +912,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:34
-#, fuzzy
-#| msgid ""
-#| "19 IV, 363 YW\n"
-#| "Excerpt from the journal of Rotharik the Clanless\n"
-#| "\n"
-#| "I have done what I can to fortify this dilapidated castle. The orcs who "
-#| "came with us stand guard at the gates, and I am gathering all of my "
-#| "servants to me in the inner sanctum. But ill fate awaits. Whether I "
-#| "defeat this horse-warrior or no, the orcs will still come for me; they "
-#| "have been scouring the borderlands and raiding the northern farm country "
-#| "in search of us.\n"
-#| "\n"
-#| "Yet for some reason I fear these brothers more. If Mordak were here it "
-#| "would be different, but we are broken... and these two men are whole. In "
-#| "each other, in the ties that bind them, they have strength."
 msgid ""
 "19 V, 363 YW\n"
 "Excerpt from the journal of Rotharik the Clanless\n"
@@ -967,7 +926,7 @@ msgid ""
 "be different, but we are broken... and these two men are whole. In each "
 "other, in the ties that bind them, they have strength."
 msgstr ""
-"19.IV. 363 YW\n"
+"19.V. 363 YW\n"
 "Záznam v deníku Rotharika Vyhnance\n"
 "\n"
 "Dělal jsem, co bylo v mých silách, abych opevnil tento rozpadlý hrad. "
@@ -1042,6 +1001,8 @@ msgid ""
 "When facing an unknown situation, take into account details from story and "
 "dialog to inform your strategy."
 msgstr ""
+"Když se setkáš s neznámou situací, tak se pokus zohlednit podrobnosti "
+"příběhu a dialogy k volbě správné strategie."
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:337
@@ -1049,6 +1010,8 @@ msgid ""
 "The dark sorcerer is a strong unit; attack him with multiple units at once "
 "and try to force him off his keep."
 msgstr ""
+"Temný čaroděj je silná jednotka; zaútoč na něj s více jednotkami naráz a "
+"pokus se ho dostat z jeho tvrze."
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:347
@@ -1056,6 +1019,8 @@ msgid ""
 "Markings or decorations on hexes may indicate something to be found. If you "
 "can, it is usually a good idea to investigate."
 msgstr ""
+"Značky nebo ornamenty na políčkách mohou znamenat něco, co se zde nachází. "
+"Pokud je to možné, je obvykle dobré tyto políčka prozkoumat."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:384
@@ -1277,7 +1242,7 @@ msgstr ""
 msgid ""
 "I have already met, and killed, the sorcerer. Is this the key to which you "
 "referred?"
-msgstr ""
+msgstr "Už jsem toho mága našel a i zabil. Myslíš tento klíč?"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:835
@@ -1285,6 +1250,7 @@ msgid ""
 "Yes, it is. Come, unlock this cell door, and let us depart this place, "
 "brother!"
 msgstr ""
+"Ano, to je určitě on. Otevři tu celu a společně opustíme toto místo, bratře!"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:889
@@ -1332,7 +1298,7 @@ msgstr "Děkuji ti, žes mne přišel zachránit. Vraťme se nyní do vesnice."
 #. [unit]: id=Rotharik, type=Orcish Assassin
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:948
 msgid "Minion of Tairach"
-msgstr ""
+msgstr "Tairachov služebník"
 
 #. [message]: speaker=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:960
@@ -1444,6 +1410,8 @@ msgid ""
 "Recruit or Recall some high-move units to be able to see as far as possible "
 "through the fog for approaching units."
 msgstr ""
+"Naverbuj nebo přivolej rychlé jednotky, aby jsi v mlze viděl co nejdál a "
+"viděl blížící se jednotky."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:171
@@ -1551,6 +1519,8 @@ msgstr "Poraz skřetího vojevůdce, abys osvobodil vesnici"
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:300
 msgid "You can use Reeve Hoban’s keep to recruit or recall additional units."
 msgstr ""
+"Můžeš použít Reeve Hobanovu tvrz k naverbování nebo přivolání dalších "
+"jednotek."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:310

@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-03-21 10:09+0100\n"
+"PO-Revision-Date: 2018-04-05 14:26+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -584,17 +584,13 @@ msgstr "Pouštní hory"
 
 #. [terrain_type]: id=regular_stone_floor
 #: data/core/terrain.cfg:821
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Stone Floor"
-msgstr "Dřevěná podlaha"
+msgstr "Kamenná podlaha"
 
 #. [terrain_type]: id=regular_stone_floor
 #: data/core/terrain.cfg:824
-#, fuzzy
-#| msgid "Basic Wooden Floor"
 msgid "Basic Stone Floor"
-msgstr "Základní dřevěná podlaha"
+msgstr "Základní kamenná podlaha"
 
 #. [terrain_type]: id=rug_floor
 #. [terrain_type]: id=rug2_floor
@@ -1690,7 +1686,7 @@ msgstr ""
 "Výjimečně jsou podzemní cesty osvětlené světlem z povrchu. Taková místa "
 "poskytují bonusy zákonným jednotkám a naopak ruší bonusy pro jednotky "
 "chaotické. Ve všech ostatních ohledech je osvětlená jeskyně shodná s "
-"normální jeskyní.  Většina jednotek zde získá 20 až 40% obranný bonus, "
+"normální jeskyní. Většina jednotek zde získá 20 až 40% obranný bonus, "
 "zatímco trpaslíci 50%."
 
 #. [terrain_type]: id=sand
@@ -2011,7 +2007,7 @@ msgstr ""
 
 #: data/gui/macros/_initial.cfg:348
 msgid "Search"
-msgstr ""
+msgstr "Vyhledat"
 
 #. [label]: id=no_options_notice
 #: data/gui/macros/custom_options_tree.cfg:26
@@ -2068,7 +2064,7 @@ msgstr "Velikost"
 #. [toggle_button]: id=sort_3
 #: data/gui/widget/addon_list.cfg:135
 msgid "Downloads"
-msgstr "Ke stažení"
+msgstr "Staženo"
 
 #. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_0
@@ -2082,7 +2078,7 @@ msgstr "Typ"
 #. [button]: id=install
 #: data/gui/widget/addon_list.cfg:366 data/gui/window/addon_manager.cfg:203
 msgid "Install add-on"
-msgstr ""
+msgstr "Nainstalovat rozšíření"
 
 #. [button]: id=single_update
 #. [button]: id=update
@@ -2222,7 +2218,7 @@ msgstr "Zrušit"
 #. [label]: id=byline
 #: data/gui/window/addon_manager.cfg:84
 msgid "By:"
-msgstr ""
+msgstr "Od:"
 
 #. [label]: id=version_string
 #: data/gui/window/addon_manager.cfg:120
@@ -2336,7 +2332,7 @@ msgstr "Stav:"
 #. [label]
 #: data/gui/window/addon_manager.cfg:760
 msgid "Order:"
-msgstr "Příkaz:"
+msgstr "Řazení:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:846 data/gui/window/addon_manager.cfg:1021
@@ -2494,7 +2490,7 @@ msgstr ""
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:90
 msgid "Total damage"
-msgstr ""
+msgstr "Celkové poškození"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:94
@@ -3070,12 +3066,12 @@ msgstr "Který hráč zde má začínat?"
 #. [label]
 #: data/gui/window/end_credits.cfg:118
 msgid "↑ ↓ to adjust speed"
-msgstr ""
+msgstr "↑ ↓ pro nastavení rychlosti"
 
 #. [label]
 #: data/gui/window/file_dialog.cfg:103
 msgid "Places"
-msgstr ""
+msgstr "Místa"
 
 #. [button]: id=add_bookmark
 #: data/gui/window/file_dialog.cfg:299
@@ -3344,7 +3340,7 @@ msgstr "Jednotky"
 #. [toggle_button]: id=sort_5
 #: data/gui/window/game_stats.cfg:104
 msgid "Upkeep"
-msgstr ""
+msgstr "Výdaje"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_6
@@ -4205,7 +4201,7 @@ msgstr "Nastavení"
 #. [slider]: id=num_players
 #: data/gui/window/mp_create_game.cfg:702
 msgid "Any"
-msgstr ""
+msgstr "Jakýkoliv"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:835
@@ -4225,7 +4221,7 @@ msgstr "Přiřadí hráčům strany náhodně"
 
 #: data/gui/window/mp_create_game.cfg:929
 msgid "Shuffle Sides"
-msgstr ""
+msgstr "Zamíchat strany"
 
 #: data/gui/window/mp_create_game.cfg:933
 msgid "Allow users who are not playing to watch the game"
@@ -4522,7 +4518,7 @@ msgstr "Zobrazuj barvy týmů"
 #. [button]: id=ok
 #: data/gui/window/mp_staging.cfg:422
 msgid "I’m Ready"
-msgstr ""
+msgstr "Jsem připraven"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:310
@@ -5454,7 +5450,7 @@ msgstr "Přivolat"
 #. [button]: id=dismiss
 #: data/gui/window/unit_recall.cfg:385
 msgid "Dismiss"
-msgstr ""
+msgstr "Zrušit"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -5828,12 +5824,12 @@ msgstr "Neznámý"
 #. TRANSLATORS: ascending
 #: src/gui/dialogs/addon/manager.cpp:360
 msgid "asc"
-msgstr ""
+msgstr "vzestupně"
 
 #. TRANSLATORS: descending
 #: src/gui/dialogs/addon/manager.cpp:364
 msgid "desc"
-msgstr ""
+msgstr "sestupně"
 
 #: src/gui/dialogs/addon/manager.cpp:380 src/gui/dialogs/chat_log.cpp:420
 #: src/gui/dialogs/game_cache_options.cpp:105
@@ -6622,7 +6618,7 @@ msgstr "Reset klávesových zkratek"
 
 #: src/gui/dialogs/preferences_dialog.cpp:1005
 msgid "∞"
-msgstr ""
+msgstr "∞"
 
 #: src/gui/dialogs/statistics_dialog.cpp:184
 msgid "Recruits"
@@ -7238,7 +7234,7 @@ msgstr "Informace o mapě"
 
 #: src/hotkey/hotkey_command.cpp:162
 msgid "Clear Selected Item Set"
-msgstr "Zruš  vybranou sadu"
+msgstr "Zruš vybranou sadu"
 
 #: src/hotkey/hotkey_command.cpp:163
 msgid "Swap Foreground/Background Palette Item"
@@ -7790,8 +7786,8 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
-"Klíč '$deprecated_key'  byl přejmenován na '$key' a ve verzi "
-"$removal_version bude odstraněna podpora původního tvaru."
+"Klíč '$deprecated_key' byl přejmenován na '$key' a ve verzi $removal_version "
+"bude odstraněna podpora původního tvaru."
 
 #~ msgid "The maximum text width is less than 1."
 #~ msgstr "Maximální šířka textu je menší než 1."
