@@ -8,7 +8,7 @@
    * The Rise of Wesnoth
      * New set of story art.
  ### Language and i18n
-   * Updated translations: Chinese (Simplified), French, Galician, Polish
+   * Updated translations: Chinese (Simplified), Czech, French, Galician, Polish
  ### User Interface
    * Swapped the position and formatting of game names and titles in the MP lobby.
    * Made Faction Select button's purpose more clear in MP Staging.

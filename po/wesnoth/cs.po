@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-04-01 02:37+0300\n"
-"PO-Revision-Date: 2018-03-20 09:03+0100\n"
+"PO-Revision-Date: 2018-04-09 23:22+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -216,6 +216,8 @@ msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
 msgstr ""
+"Povolit oknu výpočtu poškození, aby simulovalo boje místo použití přesných "
+"výpočtů pravděpodobnosti"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:181
@@ -669,7 +671,7 @@ msgstr "Turecký překlad"
 #. [about]
 #: data/core/about_i18n.cfg:1645
 msgid "Ukrainian Translation"
-msgstr "Ukrajinský  překlad"
+msgstr "Ukrajinský překlad"
 
 #. [about]
 #: data/core/about_i18n.cfg:1658
@@ -1699,7 +1701,7 @@ msgstr "Jen magická bytost dokáže používat tento předmět."
 
 #: data/core/macros/items.cfg:513
 msgid "Should $unit.name pick up the trident?"
-msgstr "Má $unit.name sebrat trojzubec?"
+msgstr "Má $unit.name vzít trojzubec?"
 
 #: data/core/macros/items.cfg:514
 msgid "storm trident^Take it"
@@ -1714,6 +1716,8 @@ msgid ""
 "$unit.name cannot use this Storm Trident! Let one of the merfolk who can "
 "wield it have it."
 msgstr ""
+"$unit.name neumí použít Trojzubec bouře! Nech ho někomu z vodních lidí, "
+"kteří ho umí ovládat."
 
 #. [object]
 #: data/core/macros/items.cfg:521
@@ -1775,6 +1779,13 @@ msgid ""
 "suffix=ash|kré|lsh|lin|rutin|shinar|rushi|ka|ash|ag|all|ash|slar|li|dian|"
 "ritos|rusté|shitt|nick|rath|ditt|kon|mad|tick|nir\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}’{suffix}|{prefix}{suffix} {short_name}\n"
+"short_name=Ohm|Ihn|Ohn|Ka|Murr|Kon|Elch|Ko|Græt|Egar\n"
+"prefix=Ga|Ge|Gel|Gi|Go|Gra|Gri|Ka|Ko|Kla|Mar|Di|Mer|Mor|Oma|Re|Vel|Vash|Ver|"
+"Vla\n"
+"suffix=ash|kré|lsh|lin|rutin|shinar|rushi|ka|ash|ag|all|ash|slar|li|dian|"
+"ritos|rusté|shitt|nick|rath|ditt|kon|mad|tick|nir\n"
 
 #. Generator for female drake names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:28
@@ -1785,6 +1796,11 @@ msgid ""
 "suffix=en|nash|irt|glann|ll|ge|lin|nitt|tin|tar|lisk|rida|grra|sill|la|mell\n"
 "short_name=Mal|Ka|Emth|Dar|Eshi\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{suffix} {short_name}\n"
+"prefix=Al|Ali|Ash|Aug|Auug|Da|De|Dem|Din|Ol|Oma|Orri|Oshi|Val|Ver|Vel|Vush\n"
+"suffix=en|nash|irt|glann|ll|ge|lin|nitt|tin|tar|lisk|rida|grra|sill|la|mell\n"
+"short_name=Mal|Ka|Emth|Dar|Eshi\n"
 
 #: data/core/macros/names.cfg:37
 msgid ""
@@ -1889,6 +1905,15 @@ msgid ""
 "til|til|tol|los|rol|sol|ril|sil|as|us|lil|fur|mur|fur\n"
 "centre=lal|mal|ra|dur|thal|thas|ma|gal|thau|ga|ith|ma|cat|la|ral|dur|bur\n"
 msgstr ""
+"\n"
+"main={long_name}\n"
+"long_name={prefix}{centre}{suffix}|{prefix}{centre}{centre}{suffix}\n"
+"short_name={prefix}{suffix}\n"
+"prefix=Ai|Al|A|Du|Glam|Dul|Gom|Nar|Pel|Tri|Dun|Do|Bar|Er|Tim|Al|Du|Bu|Bur|"
+"Nor|Der|Ur|Gar\n"
+"suffix=sil|fur|bor|bus|bur|bor|gos|dor|rin|dur|ing|ras|this|tis|rol|sol|las|"
+"til|til|tol|los|rol|sol|ril|sil|as|us|lil|fur|mur|fur\n"
+"centre=lal|mal|ra|dur|thal|thas|ma|gal|thau|ga|ith|ma|cat|la|ral|dur|bur\n"
 
 #: data/core/macros/names.cfg:50
 msgid ""
@@ -2158,6 +2183,20 @@ msgid ""
 "short_centre=lol|febr|tom|lith|nal|lor|wón|rad|rien|mar|reb|riel|mal|ram|nil|"
 "nim|nol|bris|lad|rier|ra|fil|thran|man\n"
 msgstr ""
+"\n"
+"main={generated_prefix}{consonnant}{suffix}|{prefix}{centre}{suffix}\n"
+"generated_prefix={starting_consonnant}{vowel}\n"
+"starting_consonnant=C|D|F|L|M|N|P|Qu|R|S|T|V\n"
+"vowel=a|e|i|o|ae|é|ë\n"
+"consonnant=n|l|r|m|s|v|th|nn\n"
+"prefix={prefix_vc}{vowel}|{prefix_cv}\n"
+"prefix_vc=Lon|Eon|Ad|Sar|Al|Tal|Tin|El|Leg|Or|Tir|Ol|Cál|Cán|Elv|Fan|Fad|"
+"Fith|Fil|Gal|Glad|Leg|Glar|Gli|Hár|Tad|Sór|Pyr\n"
+"prefix_cv=Ama|Ami|Be|Ca|Ga|Isi|Ha|He|Le|Ló|Ny|Ni|Ma|Thu|Thri|Ti|Unu|Ve|Va\n"
+"suffix=or|im|ian|in|ar|iel|as|eon|as|or|ion|al|and|ér|as|ir|el|al|ad|ael\n"
+"centre={short_centre}|{short_centre}|-{short_centre}|{short_centre}-\n"
+"short_centre=lol|febr|tom|lith|nal|lor|wón|rad|rien|mar|reb|riel|mal|ram|nil|"
+"nim|nol|bris|lad|rier|ra|fil|thran|man\n"
 
 #. Generator for female elf names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:67
@@ -2183,6 +2222,26 @@ msgid ""
 "short_centre_c=enn|all|an|ith|el|il|am|ol|arth|ól|ár|ir|if|im|ion|iw|én|un|"
 "iw\n"
 msgstr ""
+"\n"
+"main={generated_prefix_v}{centre_v}{suffix_v}|{generated_prefix_c}{centre_c}"
+"{suffix_c}\n"
+"generated_prefix_v={starting_consonnant}{vowel}\n"
+"generated_prefix_c={starting_consonnant}{vowel}{consonnant}\n"
+"starting_consonnant=C|D|F|L|M|N|P|Qu|R|S|T|V\n"
+"vowel=a|e|i|o|ae|é|ë\n"
+"consonnant=n|l|r|m|s|v|th|p|d|f|t\n"
+"prefix_c=Val|Ol|Am|An|El|Fa|El|Glo|Hu|Le|Mil|Nil|Pin|Por|Mot|Mor|Thral|Leg|"
+"Nam|Nym|Sim|Len|Is|Thal\n"
+"prefix_v=La|Va|Tha|Ne|Ay|Ce|Fa|Phe|Ja|Que|Ma|Mi|Pa|Ri|Siu|Ga|Ca|De|Eä|Eo|No|"
+"Pó|Le|Ló|Isá|Pa|Sa|Ni|Ti|Uno|Uni|Vó|Gio\n"
+"suffix_v=thea|nia|lia|kea|ni|ith|niel|wiel|ra|dë|lya|thiel|nna|nne\n"
+"suffix_c=iel|ien|ya|a|ë|i|ia|ea\n"
+"centre_v=|{short_centre_v}\n"
+"short_centre_v=nna|lla|na|thi|saie|li|ma|lo|thra|ló|rá|bri|fi|mi|nio|wi|né|"
+"nu|wi\n"
+"centre_c=|{short_centre_c}\n"
+"short_centre_c=enn|all|an|ith|el|il|am|ol|arth|ól|ár|ir|if|im|ion|iw|én|un|"
+"iw\n"
 
 #: data/core/macros/names.cfg:87
 msgid "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
@@ -2201,6 +2260,11 @@ msgid ""
 "suffix=aa|eaa|ee|aaa|ssshh|rro|uu|uuu\n"
 "centre=arr|aash|eez|ozz\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"prefix=Gr|Ka|Ke|Ko|Kr|Kz\n"
+"suffix=aa|eaa|ee|aaa|ssshh|rro|uu|uuu\n"
+"centre=arr|aash|eez|ozz\n"
 
 #. Generator for female gryphon names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:97
@@ -2211,6 +2275,11 @@ msgid ""
 "suffix=sa|yya|ra|rra\n"
 "centre=err|aash|eez|azz\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"prefix=Kaa|Ka|Ke|Kuu|Ko\n"
+"suffix=sa|yya|ra|rra\n"
+"centre=err|aash|eez|azz\n"
 
 #: data/core/macros/names.cfg:106
 msgid ""
@@ -2425,6 +2494,23 @@ msgid ""
 "centre_c=redd|reor|og|thyn\n"
 "centre_v=rae|ra|thar|gwy\n"
 msgstr ""
+"\n"
+"main={generated_prefix_c}{suffix_c}|{generated_prefix_v}{suffix_v}|{prefix_c}"
+"{centre_c}{suffix_c}|{prefix_v}{centre_v}{suffix_v}\n"
+"generated_prefix_c={starting_consonnant}{vowel}{consonnant}|{starting_vowel}"
+"{consonnant}\n"
+"generated_prefix_v={starting_consonnant}{vowel}|{starting_vowel}\n"
+"starting_consonnant=B|C|D|G|H|L|M|R|Rh|S|T|V\n"
+"starting_vowel=A|E|I|Y|Ae\n"
+"vowel=a|e|i|o|u|y|eo|ae\n"
+"consonnant=w|l|d|n|r|rc|ll|nn|dd|th\n"
+"prefix_c=Add|Den|Derr|Gum|Mad|Mar|Ow|Tedd|T{vowel}n|Var|Vin|Vob|Vug|Yr|Rhyr\n"
+"prefix_v=Ae|Bl{vowel}|C{vowel}|D{vowel}|Gl{vowel}|G{vowel}|Gw{vowel}|Ha|"
+"L{vowel}|M{vowel}|R{vowel}|Rh{vowel}|S{vowel}|S{vowel}|T{vowel}|V{vowel}\n"
+"suffix_c=yn|er|yc|ec|oc|yr|in|aent\n"
+"suffix_v=ry|ryn|ran|lyn|van|nyc\n"
+"centre_c=redd|reor|og|thyn\n"
+"centre_v=rae|ra|thar|gwy\n"
 
 #. Generator for female Wesnothian human names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:125
@@ -2447,6 +2533,23 @@ msgid ""
 "centre_c=il|ing|ol|ur|ung|ean|eal|ong|al|iv\n"
 "centre_v=na|lla|na|ry|li|ni|ri|rae|bry\n"
 msgstr ""
+"\n"
+"main={generated_prefix_c}{suffix_c}|{generated_prefix_v}{suffix_v}|{prefix_c}"
+"{centre_c}{suffix_c}|{prefix_v}{centre_v}{suffix_v}\n"
+"generated_prefix_c={starting_consonnant}{vowel}{consonnant}|{starting_vowel}"
+"{consonnant}\n"
+"generated_prefix_v={starting_consonnant}{vowel}|{starting_vowel}\n"
+"starting_consonnant=B|C|D|G|H|L|M|R|Rh|S|T|V\n"
+"starting_vowel=A|E|I|Y|Ae\n"
+"vowel=a|e|i|o|u|y|eo|ae\n"
+"consonnant=w|l|d|n|r|rc|ll|nn|dd|th\n"
+"prefix_c=Al|El|Mer|Mil|Rer|Ys|M{vowel}r|M{vowel}l\n"
+"prefix_v=A|Br{vowel}|Cl{vowel}|C{vowel}|D{vowel}|Gw{vowel}|He|J{vowel}|"
+"L{vowel}|M{vowel}|N{vowel}|R{vowel}|S{vowel}\n"
+"suffix_c=yan|oic|ell|yll\n"
+"suffix_v=wyn|nna|lla|ra|la|wyan|ssa|ka|ven\n"
+"centre_c=il|ing|ol|ur|ung|ean|eal|ong|al|iv\n"
+"centre_v=na|lla|na|ry|li|ni|ri|rae|bry\n"
 
 #: data/core/macros/names.cfg:143
 msgid ""
@@ -2617,6 +2720,19 @@ msgid ""
 "connector= al-| bin | ibn\n"
 "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 msgstr ""
+"\n"
+"main={name_long}|{prefix}{suffix}|{name_mid}{connector}{name_mid}\n"
+"name_mid={prefix}{suffix}|{name_short}\n"
+"name_long={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"name_short=Din|Sif|Din|Taj|Sud|Ali|Lut|Nuh|Qays|Nimr|Jad|Bushr|Lut|Maʿd|Nur|"
+"Fadl\n"
+"prefix=Ab|Bas|Fat|Gha|Al|Ba|Ja|Ha|Mu|Ra|Raz|Abi|Am|La|ʿAj|Ala|ʿAk|Fa|Du|Im|"
+"Ju|Mun|Ma|Ni|Ji|Mu|Lab|Luf|Mih|Mi|Qu|Tal|Ta|Tha|Za|Zi|Yas|Wa|Su|Qa|ʿIkri|Lu|"
+"Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
+"suffix=af|al|lih|bair|sur|bi|lah|at|sim|ma|ih|yl|iq|raj|mam|man|ya|zid|riya|"
+"ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|mal|kib\n"
+"connector= al-| bin | ibn\n"
+"centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 
 #. Generator for female dunefolk human names
 #: data/core/macros/names.cfg:156
@@ -2648,6 +2764,32 @@ msgid ""
 "riya|ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|mal|"
 "kib\n"
 msgstr ""
+"\n"
+"main={name_long}|{prefix}{suffix}|{name_mid}{connector}{surname}\n"
+"name_mid={prefix}{suffix}|{name_short}\n"
+"surname={name_mid_male}|{name_mid}|{name_mid_male}\n"
+"name_long={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"name_short=Afaf|Aida|Alya|Arij|Arwa|Asma|Asra|Azra|Dua|Fajr|Hala|Hana|Hiba|"
+"Inas|Isra|Lina|Mona|Muna|Nida|Nima|Nur|Rana|Rim|Ruba|Ruya|Ruwa|Sana|Sara|"
+"Suha|Tuba|Uzma|Zara\n"
+"prefix=Ab|Bas|Fat|Gha|Al|Ba|Ja|Ha|Mu|Ra|Raz|Abi|Am|La|ʿAj|Ala|ʿAk|Fa|Du|Im|"
+"Ju|Mun|Ma|Ni|Ji|Mu|Lab|Luf|Mih|Mi|Qu|Tal|Ta|Tha|Za|Zi|Yas|Wa|Su|Qa|ʿIkri|Lu|"
+"Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
+"suffix=a|ab|ad|ah|af|aj|al|am|an|ar|as|at|ay|az|da|een|ia|ij|in|ir|la|ma|mas|"
+"n|na|nab|ni|r|ra|raa|ran|rat|ul|ur|uz|wa|ya|yah|yam|za|zi\n"
+"connector= al-| ibna | bint\n"
+"centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
+"\n"
+"These nonterminals are literally copied from the male names.\n"
+"name_mid_male={prefix_male}{suffix_male}|{name_short_male}\n"
+"name_short_male=Din|Sif|Din|Taj|Sud|Ali|Lut|Nuh|Qays|Nimr|Jad|Bushr|Lut|Maʿd|"
+"Nur|Fadl\n"
+"prefix_male=Ab|Bas|Fat|Gha|Al|Ba|Ja|Ha|Mu|Ra|Raz|Abi|Am|La|ʿAj|Ala|ʿAk|Fa|Du|"
+"Im|Ju|Mun|Ma|Ni|Ji|Mu|Lab|Luf|Mih|Mi|Qu|Tal|Ta|Tha|Za|Zi|Yas|Wa|Su|Qa|ʿIkri|"
+"Lu|Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
+"suffix_male=af|al|lih|bair|sur|bi|lah|at|sim|ma|ih|yl|iq|raj|mam|man|ya|zid|"
+"riya|ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|mal|"
+"kib\n"
 
 #: data/core/macros/names.cfg:176
 msgid ""
@@ -2684,6 +2826,13 @@ msgid ""
 "suffix=ta|ir|az|ix|za|trax|il|le|esz|izs|ezz|irr|asch|ez|is|iss|azz\n"
 "centre=ix|’Kza|tra|na|an|ex|ssa|zzi|’Usz\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"prefix=Am|An|Ar|Bzz|Cha|Clee|Fa|Fi|Fli|Fri|Ha|He|In|Ir|In|Ka|Ke|Jezz|Ji|Ka|"
+"Ke|Lo|Ma|Ox|Po|Sa|Se|Li|Me|Na|Pre|Ska|Sse|Ssi|Sto|Ste|Szi|Sza|Ti|Ve|Vri|Xa|"
+"Xe|Xi|Zan|Zil|Zzu\n"
+"suffix=ta|ir|az|ix|za|trax|il|le|esz|izs|ezz|irr|asch|ez|is|iss|azz\n"
+"centre=ix|’Kza|tra|na|an|ex|ssa|zzi|’Usz\n"
 
 #: data/core/macros/names.cfg:187
 msgid ""
@@ -2726,6 +2875,13 @@ msgid ""
 "lau|nik|sa|loa|roa\n"
 "centre=la|ma|ri|sei|te|ka|li|cer|tu|ni|ki|na|ga|si\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"prefix=A|Ai|Apa|Bar|Atla|Dha|El|Fa|Ja|La|Ku|Li|Ma|Me|Mi|Na|Ne|Njo|Nua|Nu|Oce|"
+"Okre|Phor|Po|Pro|Ra|Ro|Ryu|Scy|Si|Ta|Thau|Ti|Vi|Tri|Vo|Vou\n"
+"suffix=su|ion|la|ta|ua|mar|re|lau|lu|na|yr|ra|tes|nus|teus|tes|tan|mas|ki|ni|"
+"lau|nik|sa|loa|roa\n"
+"centre=la|ma|ri|sei|te|ka|li|cer|tu|ni|ki|na|ga|si\n"
 
 #. Generator for mermaid names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:197
@@ -2737,6 +2893,12 @@ msgid ""
 "suffix=me|pe|gia|noe|dna|la|ris|ta|tea|va|mo|pe|riam|riel|na|ra|tea\n"
 "centre=ophe|phri|tri|phro|di|si|xie|ce|ty|la|me|ro|co|mar|ran|then|la|ga\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"prefix=Agla|Amphi|A|Ca|Del|Der|Di|El|Ga|Je|Leu|Li|Lo|Ma|Wa|Ma|Mi|Mo|Par|Pel|"
+"Pi|Se|Ste|Ma|The|Ti|Va|Ve\n"
+"suffix=me|pe|gia|noe|dna|la|ris|ta|tea|va|mo|pe|riam|riel|na|ra|tea\n"
+"centre=ophe|phri|tri|phro|di|si|xie|ce|ty|la|me|ro|co|mar|ran|then|la|ga\n"
 
 #: data/core/macros/names.cfg:206
 msgid ""
@@ -2772,6 +2934,7 @@ msgstr ""
 "Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
 "Zsekp"
 
+# teoreticky by se dalo přidat více syčení pomocí ššš
 #. Generator for male naga names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:209
 msgid ""
@@ -2783,7 +2946,15 @@ msgid ""
 "suffix=iss|ail|nal|eii|mol|loss|noss|xos|sal|zel|kps|pek|ness|or|sol|peii|"
 "iaz|on|sal|ol|kil|oz|ail|al|nis|rak|lel|nas|kon|ekp\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}\n"
+"prefix=Abra|Ale|Ama|Ax|Bla|Ble|Bre|Bri|Gri|Hai|Har|Hu|Ine|Kle|Krez|Lam|Lin|"
+"Lob|Mai|Lal|Nild|Pon|Pse|Pza|Sa|Se|Sle|So|Sor|Tri|Vi|Vla|Xa|Xi|Xna|Za|Zle|"
+"Zse\n"
+"suffix=iss|ail|nal|eii|mol|loss|noss|xos|sal|zel|kps|pek|ness|or|sol|peii|"
+"iaz|on|sal|ol|kil|oz|ail|al|nis|rak|lel|nas|kon|ekp\n"
 
+# teoreticky by se dalo přidat více syčení pomocí ššš
 #. Generator for female naga names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:215
 msgid ""
@@ -2795,6 +2966,13 @@ msgid ""
 "suffix=asse|mailia|ilis|ana|ama|ssa|ssilai|zi|xias|lai|maissa|bra|lin|lina|"
 "na|bra|aa|lia|lai|laila|na|pkne|alsp|ekp\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}\n"
+"prefix=Ali|Ama|Ax|Bla|Bli|Bra|Bri|Gax|Gri|Hai|Har|Hu|Ina|Iss|Krez|Kzap|Lam|"
+"Lex|Li|Lin|Mai|Mu|Nil|Ox|Pon|Pza|Ri|Sal|Sax|Sek|Snel|Sra|Trix|Vil|Vis|Blan|"
+"Xab|Xam|Xi|Xnam|Xop|Zal|Zle|Zse\n"
+"suffix=asse|mailia|ilis|ana|ama|ssa|ssilai|zi|xias|lai|maissa|bra|lin|lina|"
+"na|bra|aa|lia|lai|laila|na|pkne|alsp|ekp\n"
 
 #: data/core/macros/names.cfg:223
 msgid ""
@@ -2821,6 +2999,11 @@ msgid ""
 "Ker|Kil|King|Kor|Kru|Kur|Mar|Mer|Nal|Trak|Urk\n"
 "suffix=ark|ort|alk|arm|kuk|kak|ukk|nak|ta|k|rok|rar|kon|gak|nik\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}\n"
+"prefix=Ak|Ar|Bar|Blok|Bor|Bul|Cork|Del|Gar|Gnu|Gra|Gru|Gu|Kal|Kar|Kay|Kel|"
+"Ker|Kil|King|Kor|Kru|Kur|Mar|Mer|Nal|Trak|Urk\n"
+"suffix=ark|ort|alk|arm|kuk|kak|ukk|nak|ta|k|rok|rar|kon|gak|nik\n"
 
 #: data/core/macros/names.cfg:233
 msgid ""
@@ -2906,6 +3089,18 @@ msgid ""
 "ending_consonnant=b|g|r|sh|k\n"
 "ending_vowel=o|u\n"
 msgstr ""
+"\n"
+"main={starting_consonnant}{vowel}{consonnant}{vowel}{ending_consonnant}|"
+"{starting_consonnant}{vowel}{consonnant}{ending_vowel}|{starting_vowel}"
+"{consonnant}{vowel}{ending_consonnant}|{starting_consonnant}{vowel}"
+"{ending_consonnant}|{starting_vowel}{consonnant}{ending_vowel}\n"
+"starting_consonnant=B|Br|D|Dr|G|Gr|Gh|H|Kh|M|N|P|Pr|R|S|Sh|T|V\n"
+"starting_vowel=A|I|O|U\n"
+"consonnant=b|br|d|dr|g|gr|gh|kh|m|n|p|pr|r|s|sh|t|v|gz|zg|rb|br|dr|vr|khr|gd|"
+"shn\n"
+"vowel=a|i|o|u\n"
+"ending_consonnant=b|g|r|sh|k\n"
+"ending_vowel=o|u\n"
 
 #: data/core/macros/names.cfg:247
 msgid ""
@@ -2931,6 +3126,14 @@ msgid ""
 "beginning=Ä|Ü|A|U\n"
 "suffix=rb|g|gh|k|rf|kk|r|g|th|h|rg\n"
 msgstr ""
+"\n"
+"main={short_name}|{short_name}|{short_name}|{short_name} {short_name}\n"
+"short_name={prefix}{middle}{suffix}|{prefix}{middle}{suffix}|{prefix}{middle}"
+"{suffix}|{beginning}{suffix}\n"
+"prefix=B|Br|D|G|Gn|H|K|Kr|L|N|K|P|R|S|Sh|St|Th|Ts|T|V|Z\n"
+"middle=a|o|u|uu|ä|ü\n"
+"beginning=Ä|Ü|A|U\n"
+"suffix=rb|g|gh|k|rf|kk|r|g|th|h|rg\n"
 
 #: data/core/macros/names.cfg:260
 msgid ""
@@ -2975,6 +3178,17 @@ msgid ""
 "suffix=men|drum|tor|num|lad|de|ak|lol|dum|tam|nur|dium|deum|bil|rook|relm|"
 "dium|numm|dan|doom|tum|din\n"
 msgstr ""
+"\n"
+"main={prefix}{centre}{centre}{suffix}|{prefix}{centre}{centre}{centre}"
+"{suffix}\n"
+"prefix=Blu|Bo|Bre|Bro|Bru|Bu|Car|Da|Da|De|Dib|Dol|Dro|Dul|Dum|El|Gre|Gul|Gum|"
+"Laf|Lan|Las|Lef|Lib|Lol|Mon|Mul|Mun|Nan|Nun|Or|Pam|Pom|Rith|Tan|Tem|Ton|"
+"Troom|Tun|Tum|Won|Wun\n"
+"centre=de|bal|drum|wul|del|bem|pom|gon|tan|bom|ken|tan|ton|man|ten|dron|dub|"
+"na|da|ni|mi|lul|mon|duel|lem|num|nob|mand|room|lad|roam|be|lom|sem|nub|di|"
+"wim|din|blem|nand|dul|dil|of|tam|kon|ton|tun|kon|ten|run|mal|do\n"
+"suffix=men|drum|tor|num|lad|de|ak|lol|dum|tam|nur|dium|deum|bil|rook|relm|"
+"dium|numm|dan|doom|tum|din\n"
 
 #: data/core/macros/names.cfg:271
 msgid ""
@@ -2993,6 +3207,11 @@ msgid ""
 "middle=a|e|o|u|i\n"
 "suffix=l|m|rn|x|w|ld|ck|k|rk\n"
 msgstr ""
+"\n"
+"main={prefix}{middle}{suffix}\n"
+"prefix=B|C|D|E|F|Fr|Wat|G|H|K|N|O|R|S|T|W|Y|Ro\n"
+"middle=a|e|o|u|i\n"
+"suffix=l|m|rn|x|w|ld|ck|k|rk\n"
 
 #. [objective]: condition=lose
 #: data/core/macros/objective-utils.cfg:6
@@ -3012,10 +3231,8 @@ msgid "Bonus objective:"
 msgstr "Bonusový cíl:"
 
 #: data/core/macros/objective-utils.cfg:30
-#, fuzzy
-#| msgid "Bonus objective:"
 msgid "Optional objective:"
-msgstr "Bonusový cíl:"
+msgstr "Volitelný cíl:"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:52
@@ -3730,10 +3947,8 @@ msgstr "Výchozí"
 
 #. [label]
 #: data/gui/macros/player_list_panel.cfg:29
-#, fuzzy
-#| msgid "Computer Player"
 msgid "Connected Players"
-msgstr "Počítačový hráč"
+msgstr "Připojených hráčů"
 
 #. [label]: id=title
 #: data/gui/window/install_dependencies.cfg:37
@@ -3770,12 +3985,12 @@ msgstr "DejaVu Sans Mono"
 #. [fonts]
 #: data/hardwired/fonts.cfg:30
 msgid "Lato Light"
-msgstr ""
+msgstr "Lato Light"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:31
 msgid "Oldania ADF Std"
-msgstr ""
+msgstr "Oldania ADF Std"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:36
@@ -4027,12 +4242,12 @@ msgstr "Ukončit scénář"
 #. [label]: id=label-hp
 #: data/themes/classic.cfg:195 data/themes/default.cfg:143
 msgid "HP"
-msgstr "Životů"
+msgstr "Životy"
 
 #. [label]: id=label-xp
 #: data/themes/classic.cfg:204 data/themes/default.cfg:152
 msgid "XP"
-msgstr "Zkušenost"
+msgstr "Zkušenosti"
 
 #. [label]: id=gold-icon
 #: data/themes/classic.cfg:214 data/themes/default.cfg:177
@@ -4079,7 +4294,6 @@ msgstr "obrana (terén)"
 msgid "theme^Default"
 msgstr "Výchozí"
 
-# | msgid "Defeat enemy leader(s)"
 #. [theme]: id=Default
 #: data/themes/default.cfg:33
 msgid "The default theme"
@@ -4093,7 +4307,7 @@ msgstr "Zpět na kolo..."
 #. [label]: id=label-mp
 #: data/themes/default.cfg:160
 msgid "MP"
-msgstr "Kroků"
+msgstr "Kroky"
 
 #. [label]: id=label-def
 #: data/themes/default.cfg:168
@@ -4112,7 +4326,7 @@ msgid ""
 "event or ai coding."
 msgstr ""
 "Použijte <i>Oblasti</i> v editoru map pro nastavení oblastí, které později "
-"použije něaká událost nebo umělá inteligence."
+"použije nějaká událost nebo umělá inteligence."
 
 #. [tip]
 #: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
@@ -4604,10 +4818,8 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:153
-#, fuzzy
-#| msgid "<i>― King Konrad, 536YW</i>"
 msgid "<i>― Kai Laudiss, 623YW</i>"
-msgstr "<i>― Král Konrád, 536 YW</i>"
+msgstr "<i>― Kai Laudiss, 623 YW</i>"
 
 #. [tip]
 #: data/tips.cfg:156
@@ -4648,8 +4860,7 @@ msgid ""
 "Use healers to support your attacks — they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
-"Ber s sebou do útoků i léčitele -- vyhrají tvé bitvy, aniž musí sami "
-"zaútočit."
+"Ber s sebou do útoků i léčitele — vyhrají tvé bitvy, aniž musí sami zaútočit."
 
 #. [tip]
 #: data/tips.cfg:173 data/tips.cfg:222
@@ -4904,10 +5115,8 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:258
-#, fuzzy
-#| msgid "<i>― Queen Li’sar, 528YW</i>"
 msgid "<i>― Queen Asheviere, 503YW</i>"
-msgstr "<i>― královna Lisar, 528 YW</i>"
+msgstr "<i>― královna Ašvíra, 503 YW</i>"
 
 #. [tip]
 #: data/tips.cfg:262
@@ -5157,7 +5366,7 @@ msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
-"Rozšíření  '$addon|' už je nainstalovaný a obsahuje dodatečné informace, "
+"Rozšíření '$addon|' už je nainstalované a obsahuje dodatečné informace, "
 "které budou navždy ztraceny, jestli budete pokračovat:"
 
 #: src/addon/client.cpp:453
@@ -5214,10 +5423,8 @@ msgid "addon_type^MP campaign"
 msgstr "Tažení MP"
 
 #: src/addon/info.cpp:173
-#, fuzzy
-#| msgid "addon_type^MP modification"
 msgid "addon_type^Modification"
-msgstr "Frakce MP"
+msgstr "Modifikace"
 
 #: src/addon/info.cpp:175
 msgid "addon_type^Core"
@@ -5587,7 +5794,7 @@ msgstr "soukromá zpráva: $sender"
 
 #: src/deprecation.cpp:40
 msgid "$elem has been deprecated indefinitely."
-msgstr ""
+msgstr "$elem byl označen jako zastaralý a může být kdykoliv odstraněn."
 
 #: src/deprecation.cpp:47
 msgid "$elem has been deprecated and may be removed in version $version."
@@ -5805,10 +6012,8 @@ msgid "not available."
 msgstr "není k dispozici."
 
 #: src/game_initialization/create_engine.cpp:149
-#, fuzzy
-#| msgid "Custom"
 msgid "Custom map."
-msgstr "Volitelný"
+msgstr "Vlastní mapa."
 
 #: src/game_initialization/depcheck.cpp:491
 msgid "Failed to resolve dependencies"
@@ -5842,7 +6047,7 @@ msgstr ""
 #: src/game_initialization/depcheck.hpp:312
 #: src/game_initialization/depcheck.hpp:324
 msgid "A component"
-msgstr ""
+msgstr "Komponenta"
 
 #: src/game_initialization/flg_manager.cpp:195
 msgid "Only random sides in the current era."
@@ -5879,7 +6084,7 @@ msgstr "(chybí)"
 #: src/game_initialization/lobby_data.cpp:334
 #: src/game_initialization/lobby_data.cpp:364
 msgid "S"
-msgstr ""
+msgstr "S"
 
 #: src/game_initialization/lobby_data.cpp:353
 msgid "Remote scenario"
@@ -5888,7 +6093,7 @@ msgstr "Vzdálený scénář"
 #: src/game_initialization/lobby_data.cpp:372
 #: src/game_initialization/lobby_data.cpp:395
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #: src/game_initialization/lobby_data.cpp:400
 msgid "Unknown scenario"
@@ -6391,10 +6596,8 @@ msgid "Defense properties: "
 msgstr "Obranné vlastnosti: "
 
 #: src/help/help_topic_generators.cpp:245
-#, fuzzy
-#| msgid "Level: "
 msgid "Level"
-msgstr "Úroveň: "
+msgstr "Úroveň"
 
 #: src/help/help_topic_generators.cpp:306
 msgid "Advances from: "
@@ -6529,7 +6732,7 @@ msgstr "Opravdu chcete spustit server?"
 
 #: src/hotkey/command_executor.cpp:387
 msgid "Surrender"
-msgstr ""
+msgstr "Vzdát se"
 
 #: src/hotkey/command_executor.cpp:741
 msgid "Map-Screenshot"
@@ -6740,10 +6943,8 @@ msgid "Name:"
 msgstr "Jméno:"
 
 #: src/menu_events.cpp:801
-#, fuzzy
-#| msgid "Clear all orders"
 msgid "Clear Labels"
-msgstr "Zrušit všechny příkazy"
+msgstr "Vymazat popisky"
 
 #: src/menu_events.cpp:802
 #, fuzzy
@@ -7110,11 +7311,11 @@ msgstr "Nezávislí"
 
 #: src/mp_game_settings.hpp:71
 msgid "No Mirror"
-msgstr ""
+msgstr "Nezrcadlit"
 
 #: src/mp_game_settings.hpp:72
 msgid "No Ally Mirror"
-msgstr ""
+msgstr "Nezrcadlit spojence"
 
 #: src/mp_ui_alerts.cpp:66
 msgid "A player has joined"
@@ -7810,10 +8011,8 @@ msgid "infix_binary^i"
 msgstr "i"
 
 #: src/synced_commands.cpp:403
-#, fuzzy
-#| msgid "Unknown era"
 msgid "(unknown player)"
-msgstr "Neznámý věk"
+msgstr "(neznámý hráč)"
 
 #: src/synced_commands.cpp:408
 msgid "The :$command debug command was used during $player’s turn"
@@ -7834,10 +8033,8 @@ msgid "Do you wish to save the game before continuing?"
 msgstr ""
 
 #: src/synced_commands.cpp:423
-#, fuzzy
-#| msgid "(debug command)"
 msgid "Debug Command Used"
-msgstr "(ladící příkaz)"
+msgstr "Ladící příkaz použit"
 
 #: src/synced_commands.cpp:509
 msgid "A unit was created using debug mode during $player’s turn"
@@ -7888,14 +8085,11 @@ msgstr[1] "útok za kolo"
 msgstr[2] "útok za kolo"
 
 #: src/units/attack_type.cpp:365
-#, fuzzy
-#| msgid "damage"
-#| msgid_plural "damage"
 msgid "$number damage"
 msgid_plural "$number damage"
-msgstr[0] "poškození"
-msgstr[1] "poškození"
-msgstr[2] "poškození"
+msgstr[0] "$number poškození"
+msgstr[1] "$number poškození"
+msgstr[2] "$number poškození"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:374
@@ -7909,21 +8103,16 @@ msgstr[2] "útok za kolo"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:383
-#, fuzzy
-#| msgid "strike"
-#| msgid_plural "strikes"
 msgid "$number strike"
 msgid_plural "$number strikes"
-msgstr[0] "úder"
-msgstr[1] "údery"
-msgstr[2] "úderů"
+msgstr[0] "$number úder"
+msgstr[1] "$number údery"
+msgstr[2] "$number úderů"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:392
-#, fuzzy
-#| msgid " parry"
 msgid "$number| accuracy"
-msgstr "vykrývání"
+msgstr "$number| přesnost"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:399
@@ -7934,10 +8123,8 @@ msgstr "útok za kolo"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:406
-#, fuzzy
-#| msgid " parry"
 msgid "$number parry"
-msgstr "vykrývání"
+msgstr "$number vykrývání"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:413
@@ -7948,14 +8135,11 @@ msgstr "útok za kolo"
 
 #. TRANSLATORS: Current value for WML code set_movement, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:420
-#, fuzzy
-#| msgid "movement point"
-#| msgid_plural "movement points"
 msgid "$number movement point"
 msgid_plural "$number movement points"
-msgstr[0] "bod pohybu"
-msgstr[1] "Body pohybu"
-msgstr[2] "Bodů pohybu"
+msgstr[0] "$number bod pohybu"
+msgstr[1] "$number body pohybu"
+msgstr[2] "$number bodů pohybu"
 
 #. TRANSLATORS: Current value for WML code increase_movement, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:429
