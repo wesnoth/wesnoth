@@ -277,7 +277,11 @@ secure_buffer encrypt(const secure_buffer& text, const secure_buffer& key)
 
 secure_buffer decrypt(const secure_buffer& text, const secure_buffer& key)
 {
-	return rc4_crypt(text, key);
+	auto buf = rc4_crypt(text, key);
+	while(buf.back() == 0) {
+		buf.pop_back();
+	}
+	return buf;
 }
 
 secure_buffer unescape(const secure_buffer& text)
