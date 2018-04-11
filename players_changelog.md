@@ -8,7 +8,6 @@ changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog.md
      Polish, Scottish Gaelic, Spanish, Ukrainian.
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
-   * Fixed some hotkeys triggering multiple commands on GNU/Linux (bug #1736)
 
 
 ## Version 1.13.12
