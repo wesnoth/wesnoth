@@ -154,6 +154,15 @@ void controller_base::handle_event(const SDL_Event& event)
 	}
 }
 
+void controller_base::process(events::pump_info&)
+{
+	if(gui2::is_in_dialog()) {
+		return;
+	}
+
+	hotkey::run_events(get_hotkey_command_executor());
+}
+
 void controller_base::keyup_listener::handle_event(const SDL_Event& event)
 {
 	if(event.type == SDL_KEYUP) {
