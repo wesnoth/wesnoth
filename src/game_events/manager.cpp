@@ -132,16 +132,26 @@ void manager::add_events(const config::const_child_itors& cfgs, const std::strin
 	}
 }
 
-void manager::write_events(config& cfg, bool strict) const
+void manager::write_events(config& cfg) const
 {
 	for(const handler_ptr& eh : event_handlers_->get_active()) {
-		if(eh && !eh->is_menu_item()) {
-			if(strict) {
-				assert(!eh->disabled());
-			}
-
-			cfg.add_child("event", eh->get_config());;
+		if(!eh || eh->is_menu_item()) {
+			continue;
 		}
+
+		// This function may be invoked mid-event, such as via [inspect] (the inspector writes
+		// the events to a local config) or if an out-of-sync error happens in MP. In that case,
+		// it's possible for the currently running event is already disabled. That would happen
+		// if it's a first-time-only event; those are disabled before their actions are run. In
+		// that case, skip disabled events. If invoked from outside an event, however, there
+		// should be no disabled events in the list, so assert if one is found.
+		if(eh->disabled() && is_event_running()) {
+			continue;
+		} else {
+			assert(!eh->disabled());
+		}
+
+		cfg.add_child("event", eh->get_config());;
 	}
 
 	cfg["unit_wml_ids"] = utils::join(unit_wml_ids_);

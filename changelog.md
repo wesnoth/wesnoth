@@ -71,6 +71,7 @@
    * Fixed images with no alpha channel rendering incorrectly.
    * Fixed unit selection not persisting between uses of Create Unit.
    * Fixed assertion when undoing actions in a synced context.
+   * Fixed assertion when saving game events mid-event.
 
 ## Version 1.13.12
  ### Security fixes
