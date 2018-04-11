@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 17:02 UTC\n"
-"PO-Revision-Date: 2018-03-20 09:07+0100\n"
+"PO-Revision-Date: 2018-04-05 14:51+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -59,47 +59,35 @@ msgstr "(Obtížnost: expert, 10 scénářů.)"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
-#, fuzzy
-#| msgid "Desert Fighter"
 msgid "Fighter"
-msgstr "Pouštní bojovník"
+msgstr "Bojovník"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(normální)"
+msgstr "Normální"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(nelehká)"
+msgstr "Nelehká"
 
 #. [advancement]: id=warrior_1
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:33
-#, fuzzy
-#| msgid "Arisen Warrior"
 msgid "Warrior"
-msgstr "Povstalý válečník"
+msgstr "Válečník"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:28
-#, fuzzy
-#| msgid "Desert Champion"
 msgid "Champion"
-msgstr "Pouštní šampión"
+msgstr "Šampión"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:28
-#, fuzzy
-#| msgid "(Nightmare)"
 msgid "Nightmare"
-msgstr "(nehratelná)"
+msgstr "Nehratelná"
 
 #. [about]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:32
@@ -195,7 +183,7 @@ msgstr "Ráno poté"
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/12_The_Final_Confrontation.cfg:44
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:31
 msgid "team_name^Quenoth Elves"
-msgstr "Elfové z Quenoth"
+msgstr "Elfové z Quenothu"
 
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:53
@@ -259,8 +247,6 @@ msgstr "Počáteční úkoly:"
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:104
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1098
-#, fuzzy
-#| msgid "Rescue Surviving Elves"
 msgid "Rescue surviving elves"
 msgstr "Zachraň přeživší elfy"
 
@@ -1454,8 +1440,6 @@ msgstr "Nemrtví"
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:184
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1426
-#, fuzzy
-#| msgid "Kaleh Must Reach the Northern Edge of the Desert"
 msgid "Kaleh must reach the northern edge of the desert"
 msgstr "Kaleh musí dojít na severní okraj pouště"
 
@@ -2166,8 +2150,6 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1430
-#, fuzzy
-#| msgid "Defeat Outlaw Leader"
 msgid "Defeat outlaw leader"
 msgstr "Poraz vůdce banditů"
 
@@ -2511,15 +2493,11 @@ msgstr "Poraz Ystaru"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:228
-#, fuzzy
-#| msgid "Survive Until Dawn (or)"
 msgid "Survive until dawn"
-msgstr "Přežij do svítání (nebo)"
+msgstr "Přežij do svítání"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:234
-#, fuzzy
-#| msgid "Defeat all Undead Leaders"
 msgid "Defeat all undead leaders"
 msgstr "Poraz všechny vůdce nemrtvých"
 
@@ -3024,10 +3002,8 @@ msgstr "Ano, skončeme to pro jednou a provždy."
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1093
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1218
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1347
-#, fuzzy
-#| msgid "Defeat Possessed Garak (or)"
 msgid "Defeat Possessed Garak"
-msgstr "Zabij ovládnutého Garaka (nebo)"
+msgstr "Zabij ovládnutého Garaka"
 
 #. [message]: speaker=Azkotep
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1041
@@ -4275,17 +4251,13 @@ msgstr "Trpaslíci"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:308
-#, fuzzy
-#| msgid "Explore Underground"
 msgid "Explore underground"
 msgstr "Prozkoumej podzemí"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:312
-#, fuzzy
-#| msgid "Defeat troll leaders"
 msgid "Defeat enemy leaders"
-msgstr "Poraz trollí vůdce"
+msgstr "Poraz nepřátelské vůdce"
 
 #. [unit]: type=Quenoth Fighter
 #. [unit]: type=Desert Fighter
@@ -5623,8 +5595,6 @@ msgstr "Trpasličí spojenec"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:187
-#, fuzzy
-#| msgid "Kill Troll Leader"
 msgid "Kill troll leader"
 msgstr "Zabij vůdce trollů"
 
@@ -5929,16 +5899,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:974
-#, fuzzy
-#| msgid ""
-#| "Any unit that ends its turn on a lava hex, except the Desert Shyde and "
-#| "Star who can fly over the lava, will take 25 damage at the beginning of "
-#| "the next turn. This lava damage can kill units. Desert Shydes and Stars "
-#| "will just take $heat_damage damage per turn when flying over lava, though "
-#| "they too can die if they spend too much time over lava. Also because of "
-#| "the heat in the cavern, all units on cave floor hexes will take "
-#| "$heat_damage damage at the start of each turn. This heat damage can "
-#| "reduce a unit to 1 hit point, but it can’t kill it."
 msgid ""
 "Any unit that ends its turn on a lava hex, except those who can fly over the "
 "lava, will take 25 damage at the beginning of the next turn. This lava "
@@ -5948,14 +5908,14 @@ msgid ""
 "floor hexes will take $heat_damage damage at the start of each turn. This "
 "heat damage can reduce a unit to 1 hit point, but it can’t kill it."
 msgstr ""
-"Jakákoliv jednotka končící svůj tah na lávě (s výjimkou pouštních víl a "
-"hvězd, které mohou nad lávou přeletět) bude na začátku dalšího kola zraněna "
-"o 25 hp. Toto zranění může jednotky zabít. Pouštní víly a hvězdy budou "
-"zraněny jen o $temp_damage hp za kolo, ale i ony mohou zemřít, pokud nad "
-"lávou stráví příliš dlouhý čas. Kvůli strašlivému horku v jeskyni budou na "
-"začátku každého kola jednotky stojící na jeskynních políčkách zraněny o "
-"$temp_damage hp. Toto zranění horkem jednotky nemůže zabít, pouze sníží "
-"jejich životy až na 1 hp."
+"Jakákoliv jednotka končící svůj tah na lávě (s výjimkou těch, kteří mohou "
+"nad lávou přeletět) bude na začátku dalšího kola zraněna o 25 hp. Toto "
+"zranění může jednotky zabít. Létající jednotky budou zraněny jen o "
+"$temp_damage hp za kolo, ale i ony mohou zemřít, pokud nad lávou stráví "
+"příliš mnoho času. Kvůli strašlivému horku v jeskyni budou na začátku "
+"každého kola jednotky stojící na jeskynních políčkách zraněny o $temp_damage "
+"hp. Toto zranění horkem jednotky nemůže zabít, pouze sníží jejich životy až "
+"na 1 hp."
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1002
@@ -6356,16 +6316,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1903
-#, fuzzy
-#| msgid ""
-#| "For a troll this is quite an ornate tomb. The coffin itself is quite "
-#| "impressive. Inside, the skeleton has crumbled to dust and there are a few "
-#| "colored stones and trinkets, but what really sticks out is this emerald "
-#| "wand. I don’t have much experience with magical items, but the asp with "
-#| "emerald eyes and large fangs carved around its shaft leave little doubt "
-#| "as to its power. We don’t normally tolerate using poison, but extreme "
-#| "circumstances call for extreme measures and I have a feeling we may find "
-#| "this useful before our journey is over."
 msgid ""
 "For a troll this is quite an ornate tomb. The coffin itself is quite "
 "impressive. Inside, the skeleton has crumbled to dust and there are a few "
@@ -6378,10 +6328,8 @@ msgstr ""
 "působivá. Kostlivec uvnitř se rozpadl v prach a je tam jen pár nabarvených "
 "kamenů a ozdob, ale mezi tím vším opravdu vyniká tato smaragdová hůlka. "
 "Nemám s kouzelnými předměty mnoho zkušeností, ale brejlovec se smaragdovýma "
-"očima a velkými tesáky nenechává nikoho na pochybách ohledně její síly. "
-"Normálně netolerujeme používání jedu, ale výjimečné okolnosti volají po "
-"výjimečných opatřeních; navíc mám pocit, že se nám ještě může hodit, než "
-"tato cesta skončí."
+"očima a velkými tesáky nenechává nikoho na pochybách ohledně její síly. Mám "
+"pocit, že se nám ještě může hodit, než tato cesta skončí."
 
 #. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1905
@@ -6461,8 +6409,6 @@ msgstr "Náčelník trpaslíků"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:235
-#, fuzzy
-#| msgid "Kill Dwarf Chieftain"
 msgid "Kill dwarf chieftain"
 msgstr "Zabij náčelníka trpaslíků"
 
@@ -7230,8 +7176,6 @@ msgstr "Král Turongar"
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:72
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:72
-#, fuzzy
-#| msgid "Choose a Unit to Take the Fire Blade"
 msgid "Choose a unit to take the Fire Blade"
 msgstr "Vyber jednotku, která sebere Ohnivou čepel"
 
@@ -7608,11 +7552,6 @@ msgstr ""
 #. [message]: speaker=King Thurongar
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:556
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/07a_Dealing_with_Dwarves.cfg:556
-#, fuzzy
-#| msgid ""
-#| "And now I think you should be off as soon as possible. The trolls have "
-#| "retreated back into their holes for the present, but who knows when they "
-#| "will strike again."
 msgid ""
 "And now I think you should be off as soon as possible. The trolls have "
 "retreated into their holes for the present, but who knows when they will "
@@ -8042,8 +7981,6 @@ msgstr "Lidský spojenec"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:392
-#, fuzzy
-#| msgid "Escape the Caves"
 msgid "Escape the caves"
 msgstr "Unikni z jeskyní"
 
@@ -8458,7 +8395,7 @@ msgstr "Musí být nějaká další cesta ven. Musí!"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1041
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/08_Out_of_the_Frying_Pan.cfg:1039
 msgid "There might be, but I don’t—"
-msgstr "Možná, ano, ale nevím--"
+msgstr "Možná, ano, ale nevím—"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1046
@@ -9492,7 +9429,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2527
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/08_Out_of_the_Frying_Pan.cfg:2525
 msgid "You idiot—"
-msgstr "Idiote--"
+msgstr "Idiote—"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2532
@@ -9724,8 +9661,6 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2684
-#, fuzzy
-#| msgid "Explore Outside"
 msgid "Explore outside"
 msgstr "Prozkoumej vnějšek"
 
@@ -10277,7 +10212,7 @@ msgid ""
 "unfortunately we found your men dead—"
 msgstr ""
 "Mé jméno je Kaleh, a to je můj lid. Přicházíme z jihu a naneštěstí jsme "
-"našli vaše muže mrtvé--"
+"našli vaše muže mrtvé—"
 
 # pův.: jestli vás nevezmu za slovo
 #. [message]: speaker=Sergeant Durstrag
@@ -10297,7 +10232,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3279
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/08_Out_of_the_Frying_Pan.cfg:3277
 msgid "Well, actually they were fleeing from—"
-msgstr "No, vlastně utíkali před--"
+msgstr "No, vlastně utíkali před—"
 
 #. [message]: speaker=Sergeant Durstrag
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3291
@@ -10329,7 +10264,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3305
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/08_Out_of_the_Frying_Pan.cfg:3303
 msgid "Look, if you’ll just let me explain—"
-msgstr "Podívej, kdybys mě prostě nechal vysvětlit--"
+msgstr "Podívej, kdybys mě prostě nechal vysvětlit—"
 
 #. [message]: speaker=Sergeant Durstrag
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3317
@@ -10608,10 +10543,8 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3596
-#, fuzzy
-#| msgid "If a human messenger escapes the valley"
 msgid "A human messenger escapes the valley"
-msgstr "Pokud lidský posel unikne z údolí"
+msgstr "Lidský posel unikne z údolí"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3618
@@ -12968,15 +12901,11 @@ msgstr "Zatraceně, zrovna když se zdálo, že bude chvíli klid."
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2325
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/09_Blood_is_Thicker_Than_Water.cfg:2316
-#, fuzzy
-#| msgid ""
-#| "Our people are scattered and exhausted, where will we go now Kaleh? Shall "
-#| "we retreat back into the dunes?"
 msgid ""
 "Our people are scattered and exhausted, where will we go now Kaleh? Shall we "
 "retreat into the dunes?"
 msgstr ""
-"Naši lidé jsou rozptýlení a vyčerpaní, co teď, Kalehu? Ustoupíme zpátky do "
+"Naši lidé jsou rozptýlení a vyčerpaní, co teď, Kalehu? Ustoupíme do "
 "pouštních dun?"
 
 #. [message]: speaker=Kaleh
@@ -13434,7 +13363,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:166
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:165
 msgid "This is—"
-msgstr "Toto je--"
+msgstr "Toto je—"
 
 # pův.: A musím říct, že $intl_ally_name mě svými činy přesvědčil, že ???.
 #. [message]: speaker=Melusand
@@ -14085,7 +14014,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:470
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:469
 msgid "This entire journey has been based on a lie—"
-msgstr "Celá tahle cesta byla založená na lži--"
+msgstr "Celá tahle cesta byla založená na lži—"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:475
@@ -17699,10 +17628,8 @@ msgstr ""
 
 #. [unit_type]: id=Crab Man, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:4
-#, fuzzy
-#| msgid "Monsters"
 msgid "Monster Crab"
-msgstr "Monstra"
+msgstr "Monstrózní krab"
 
 #. [unit_type]: id=Crab Man, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:18
@@ -17912,10 +17839,8 @@ msgstr "šipky"
 
 #. [unit_type]: id=Quenoth Archer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:5
-#, fuzzy
-#| msgid "Desert Archer"
 msgid "Quenoth Archer"
-msgstr "Pouštní lučištník"
+msgstr "Quenothský lučištník"
 
 #. [unit_type]: id=Quenoth Archer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:20
@@ -17930,10 +17855,8 @@ msgstr ""
 
 #. [unit_type]: id=Quenoth Champion, race=elf, description=
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:5
-#, fuzzy
-#| msgid "Desert Champion"
 msgid "Quenoth Champion"
-msgstr "Pouštní šampión"
+msgstr "Quenothský šampión"
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -17942,14 +17865,12 @@ msgstr "Pouštní šampión"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:24
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:36
 msgid "glaive"
-msgstr ""
+msgstr "kosa"
 
 #. [unit_type]: id=Quenoth Druid, race=elf, description=
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:5
-#, fuzzy
-#| msgid "female^Desert Druid"
 msgid "female^Quenoth Druid"
-msgstr "Pouštní druidka"
+msgstr "Quenothská druidka"
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:37
@@ -17961,10 +17882,8 @@ msgstr "písek"
 
 #. [unit_type]: id=Quenoth Fighter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:5
-#, fuzzy
-#| msgid "Desert Fighter"
 msgid "Quenoth Fighter"
-msgstr "Pouštní bojovník"
+msgstr "Quenothský bojovník"
 
 #. [unit_type]: id=Quenoth Fighter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:22
@@ -17976,10 +17895,8 @@ msgstr ""
 
 #. [unit_type]: id=Tauroch Flagbearer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flagbearer.cfg:5
-#, fuzzy
-#| msgid "Troll Flamecaster"
 msgid "Tauroch Flagbearer"
-msgstr "Troll ohňostrůjce"
+msgstr "Býčí vlajkonoš"
 
 #. [unit_type]: id=Tauroch Flagbearer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flagbearer.cfg:23
@@ -18012,10 +17929,8 @@ msgstr ""
 
 #. [unit_type]: id=Quenoth Pathfinder, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Horseman.cfg:5
-#, fuzzy
-#| msgid "Desert Outrider"
 msgid "Quenoth Pathfinder"
-msgstr "Pouštní kavalérie"
+msgstr "Quenothský zvěd"
 
 #. [unit_type]: id=Quenoth Pathfinder, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Horseman.cfg:20
@@ -18027,10 +17942,8 @@ msgstr ""
 
 #. [unit_type]: id=Quenoth Marksman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:5
-#, fuzzy
-#| msgid "Desert Marksman"
 msgid "Quenoth Marksman"
-msgstr "Pouštní střelec"
+msgstr "Quenothský střelec"
 
 #. [unit_type]: id=Quenoth Marksman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:21
@@ -18041,32 +17954,24 @@ msgstr ""
 
 #. [unit_type]: id=Quenoth Moon Shyde, race=elf, description=
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Moon_Shyde.cfg:5
-#, fuzzy
-#| msgid "female^Desert Shyde"
 msgid "female^Quenoth Moon Shyde"
-msgstr "Pouštní víla"
+msgstr "Quenothská měsíční víla"
 
 #. [attack]: type=cold
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Moon_Shyde.cfg:69
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Moon_Singer.cfg:36
-#, fuzzy
-#| msgid "chill wave"
 msgid "chill gale"
-msgstr "vlna chladu"
+msgstr "vlna mrazu"
 
 #. [unit_type]: id=Quenoth Moon Singer, race=elf, description=
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Moon_Singer.cfg:5
-#, fuzzy
-#| msgid "female^Desert Ranger"
 msgid "female^Quenoth Moon Singer"
-msgstr "Pouštní hraničářka"
+msgstr "Quenothská měsíční pěvkyně"
 
 #. [unit_type]: id=Quenoth Mystic, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:5
-#, fuzzy
-#| msgid "team_name^Quenoth Elves"
 msgid "female^Quenoth Mystic"
-msgstr "Elfové z Quenoth"
+msgstr "Quenothská mystička"
 
 #. [unit_type]: id=Quenoth Mystic, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:21
@@ -18079,10 +17984,8 @@ msgstr ""
 
 #. [unit_type]: id=Quenoth Outrider, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Outrider.cfg:5
-#, fuzzy
-#| msgid "Desert Outrider"
 msgid "Quenoth Outrider"
-msgstr "Pouštní kavalérie"
+msgstr "Quenothská kavalérie"
 
 #. [unit_type]: id=Quenoth Outrider, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Outrider.cfg:21
@@ -18104,7 +18007,7 @@ msgstr ""
 #. [unit_type]: id=Tauroch Protector, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Protector.cfg:5
 msgid "Tauroch Protector"
-msgstr ""
+msgstr "Býčí ochránce"
 
 #. [unit_type]: id=Tauroch Protector, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Protector.cfg:28
@@ -18126,19 +18029,17 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Rider.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Stalwart.cfg:34
 msgid "trample"
-msgstr ""
+msgstr "dupot"
 
 #. [unit_type]: id=Quenoth Ranger, race=elf, description=
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:5
-#, fuzzy
-#| msgid "Desert Ranger"
 msgid "Quenoth Ranger"
-msgstr "Pouštní hraničář"
+msgstr "Quenothský hraničář"
 
 #. [unit_type]: id=Tauroch Rider, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Rider.cfg:5
 msgid "Tauroch Rider"
-msgstr ""
+msgstr "Býčí jezdec"
 
 #. [unit_type]: id=Tauroch Rider, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Rider.cfg:26
@@ -18153,30 +18054,22 @@ msgstr ""
 
 #. [unit_type]: id=Quenoth Scout, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:5
-#, fuzzy
-#| msgid "Human Scout"
 msgid "Quenoth Scout"
-msgstr "Lidský průzkumník"
+msgstr "Quenothský průzkumník"
 
 #. [unit_type]: id=Quenoth Scout, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Desert Scouts move swiftly across the sands. Their skill on horseback is "
-#| "virtually unmatched, although they do lack power in combat."
 msgid ""
 "The Quenoth Scouts move swiftly across the sands. Their riding skill are "
 "unmatched, and these they use to harry and incapacitate enemies."
 msgstr ""
-"Pouštní průzkumníci se hbitě pohybují po píscích. Jejich dovednost v jízdě "
-"je téměř neměřitelná, i když poněkud zaostávají v boji nablízko."
+"Quenothští průzkumníci se hbitě pohybují po píscích. Jejich jezdecké "
+"dovednosti jsou neuvěřitelné a používají je k oslabení nepřátel."
 
 #. [unit_type]: id=Quenoth Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:5
-#, fuzzy
-#| msgid "female^Desert Shaman"
 msgid "female^Quenoth Shaman"
-msgstr "Pouštní šamanka"
+msgstr "Quenothská šamanka"
 
 #. [unit_type]: id=Quenoth Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:21
@@ -18189,15 +18082,13 @@ msgstr ""
 
 #. [unit_type]: id=Quenoth Shyde, race=elf, description=
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shyde.cfg:5
-#, fuzzy
-#| msgid "female^Desert Shyde"
 msgid "female^Quenoth Shyde"
-msgstr "Pouštní víla"
+msgstr "Quenothská víla"
 
 #. [unit_type]: id=Tauroch Stalwart, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Stalwart.cfg:5
 msgid "Tauroch Stalwart"
-msgstr ""
+msgstr "Býčí odvážlivec"
 
 #. [unit_type]: id=Tauroch Stalwart, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Stalwart.cfg:27
@@ -18209,10 +18100,8 @@ msgstr ""
 
 #. [unit_type]: id=Quenoth Sun Sylph, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Shyde.cfg:5
-#, fuzzy
-#| msgid "female^Desert Shyde"
 msgid "female^Quenoth Sun Sylph"
-msgstr "Pouštní víla"
+msgstr "Quenothská sluneční sylfa"
 
 #. [unit_type]: id=Quenoth Sun Sylph, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Shyde.cfg:24
@@ -18226,10 +18115,8 @@ msgstr ""
 
 #. [unit_type]: id=Quenoth Sun Singer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:5
-#, fuzzy
-#| msgid "female^Desert Sentinel"
 msgid "female^Quenoth Sun Singer"
-msgstr "Pouštní hlídka"
+msgstr "Quenothská sluneční pěvkyně"
 
 #. [unit_type]: id=Quenoth Sun Singer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:21
@@ -18243,7 +18130,7 @@ msgstr ""
 #. [unit_type]: id=Tauroch Vanguard, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Vanguard.cfg:5
 msgid "Tauroch Vanguard"
-msgstr ""
+msgstr "Býčí předvoj"
 
 #. [unit_type]: id=Tauroch Vanguard, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Vanguard.cfg:22
@@ -18256,24 +18143,18 @@ msgstr ""
 
 #. [unit_type]: id=Quenoth Warrior, race=elf, description=
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:5
-#, fuzzy
-#| msgid "Arisen Warrior"
 msgid "Quenoth Warrior"
-msgstr "Povstalý válečník"
+msgstr "Quenothský válečník"
 
 #. [advancement]: id=hunter_1
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:65
-#, fuzzy
-#| msgid "Naga Hunter"
 msgid "Hunter"
-msgstr "Naga lovec"
+msgstr "Lovec"
 
 #. [advancement]: id=leader_1
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:103
-#, fuzzy
-#| msgid "Naga Leader"
 msgid "Leader"
-msgstr "Vůdce nág"
+msgstr "Vůdce"
 
 #. [advancement]: id=warrior_2_1
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:142
@@ -18311,38 +18192,27 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:407
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:459
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:513
-#, fuzzy
-#| msgid "Desert Youth"
 msgid "Quenoth Youth"
-msgstr "Pouštní mladík"
+msgstr "Quenothský mladík"
 
 #. [female]
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:444
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:498
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:552
-#, fuzzy
-#| msgid "team_name^Quenoth Elves"
 msgid "female^Quenoth Youth"
-msgstr "Elfové z Quenoth"
+msgstr "Quenothské děvče"
 
 #. [female]
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:447
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:501
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:555
-#, fuzzy
-#| msgid ""
-#| "Nym is Kaleh’s childhood friend who follows the tradition of a family of "
-#| "Desert Hunters, as much as that can be said about a young, rebellious "
-#| "lady with quick wits and strong will. Her high spirits are a great boon "
-#| "in dark times."
 msgid ""
 "Nym is Kaleh’s childhood friend, a young, rebellious lady with quick wits "
 "and strong will. Her high spirits are a great boon in dark times."
 msgstr ""
-"Nym je už od dětství Kalehova přítelkyně. Následuje tradice pouštních lovců, "
-"pokud ovšem lze v souvislosti s mladou rebelkou mluvit o nějakých tradicích. "
-"Mezi její zbraně patří ostrovtip, silná vůle a dobrá nálada, neocenitelná v "
-"těžkých časech."
+"Nym je už od dětství Kalehova přítelkyně. Je to mladá, vzpurná dáma s "
+"bystrým důvtipem a silnou vůlí. Její vznešená nálada je v temných časech "
+"velkým požehnáním."
 
 #. [unit_type]: id=EGhost
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Ghost.cfg:7
@@ -18547,7 +18417,7 @@ msgstr ""
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:75
 msgid "teaching"
-msgstr ""
+msgstr "učenlivý"
 
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:76
@@ -18561,20 +18431,23 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:85
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:86
 msgid "shock"
-msgstr ""
+msgstr "šok"
 
 #. [attacks]: id=shock
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:87
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:88
+#, fuzzy
 msgid ""
 "When this attack is used on offense, the opponent will retaliate with one "
 "less strike than normally, to a minimum of one strike."
 msgstr ""
+"Když je tento útok využitý při obraně, protivník bude mít o jeden úder méně "
+"než normálně, až do minima jednoho zásahu."
 
 #. [dummy]: id=formation
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:101
 msgid "formation"
-msgstr ""
+msgstr "formace"
 
 #. [dummy]: id=formation
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:102
@@ -18587,7 +18460,7 @@ msgstr ""
 #. [dummy]: id=disengage
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:109
 msgid "disengage"
-msgstr ""
+msgstr "uvolnění"
 
 #. [dummy]: id=disengage
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:110
@@ -18599,7 +18472,7 @@ msgstr ""
 #. [dummy]: id=daze
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:117
 msgid "daze"
-msgstr ""
+msgstr "omámení"
 
 #. [dummy]: id=daze
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:118
@@ -18611,7 +18484,7 @@ msgstr ""
 #. [skirmisher]: id=distract
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:125
 msgid "distract"
-msgstr ""
+msgstr "rozptýlený"
 
 #. [skirmisher]: id=distract
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:126
@@ -18623,7 +18496,7 @@ msgstr ""
 #. [dummy]: id=support
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:137
 msgid "support"
-msgstr ""
+msgstr "podpořený"
 
 #. [dummy]: id=support
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:138
@@ -18659,7 +18532,7 @@ msgstr ""
 #. [unstore_unit]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:362
 msgid "dazed"
-msgstr ""
+msgstr "omámený"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg:7
 #: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg:72
@@ -18771,7 +18644,7 @@ msgstr "osvěžený"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/garak-abilities.cfg:57
 msgid "+%d XP"
-msgstr ""
+msgstr "+%d XP"
 
 #. [unstore_unit]
 #: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg:28

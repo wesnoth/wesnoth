@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-03-21 10:20+0100\n"
+"PO-Revision-Date: 2018-04-03 14:24+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -50,10 +50,8 @@ msgstr "Linie hexů SZ-JV"
 
 #. [brush]: id=brush-sw-ne
 #: data/core/editor/brushes.cfg:63
-#, fuzzy
-#| msgid "Hex Line SE-NW"
 msgid "Hex Line SW-NE"
-msgstr "Linie šestiúhelníků SZ-JV"
+msgstr "Linie šestiúhelníků JZ-SV"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -203,7 +201,7 @@ msgstr "Mapa"
 #. [menu]: id=menu-unit-facing
 #: data/themes/editor.cfg:98
 msgid "Unit Facing"
-msgstr ""
+msgstr "Překryv jednotek"
 
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:104
@@ -293,10 +291,6 @@ msgid "Do you really want to quit?"
 msgstr "Opravdu si přejete skončit?"
 
 #: src/editor/controller/editor_controller.cpp:208
-#, fuzzy
-#| msgid ""
-#| "Do you really want to quit? Changes in the map since the last save will "
-#| "be lost."
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -345,7 +339,7 @@ msgstr "Nový scénář"
 
 #: src/editor/map/context_manager.cpp:326
 msgid "No Recent Files"
-msgstr ""
+msgstr "Žádné předchozí soubory"
 
 #: src/editor/map/context_manager.cpp:364
 msgid "Unnamed Area"
@@ -498,7 +492,7 @@ msgstr "Přidat"
 
 #: src/editor/palette/location_palette.cpp:239
 msgid "New Location Identifier"
-msgstr ""
+msgstr "Nový identifikátor lokace"
 
 #: src/editor/palette/location_palette.cpp:243
 msgid "Delete"
