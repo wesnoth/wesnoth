@@ -24,7 +24,7 @@
      translatable (bug #2709, bug #2732).
    * Fixed Logging Options tooltips not being translatable (bug #2837).
    * Updated translations: British English, Chinese (Simplified), Czech, French,
-     Polish, Scottish Gaelic, Spanish, Ukrainian
+     Galician, Polish, Scottish Gaelic, Spanish, Ukrainian
  ### User Interface
    * Swapped the position and formatting of game names and titles in the MP lobby.
    * Made Faction Select button's purpose more clear in MP Staging.
