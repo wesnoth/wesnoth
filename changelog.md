@@ -70,6 +70,7 @@
      match the attacking unit.
    * Fixed images with no alpha channel rendering incorrectly.
    * Fixed unit selection not persisting between uses of Create Unit.
+   * Fixed assertion when undoing actions in a synced context.
 
 ## Version 1.13.12
  ### Security fixes
