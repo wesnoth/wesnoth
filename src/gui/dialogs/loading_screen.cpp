@@ -32,8 +32,6 @@
 #include "utils/functional.hpp"
 #include "video.hpp"
 
-#include <boost/thread.hpp>
-
 #include <cstdlib>
 
 #if defined(_MSC_VER) && _MSC_VER <= 1800
@@ -109,7 +107,7 @@ loading_screen::loading_screen(std::function<void()> f)
 void loading_screen::pre_show(window& window)
 {
 	if(work_) {
-		worker_.reset(new boost::thread([this]() {
+		worker_.reset(new std::thread([this]() {
 			is_worker_running_ = true;
 
 			try {
@@ -154,12 +152,13 @@ loading_screen* loading_screen::current_load = nullptr;
 
 void loading_screen::timer_callback(window& window)
 {
-	if(!work_ || !worker_ || worker_->timed_join(boost::posix_time::milliseconds(0))) {
+	if(!work_ || !worker_ || !is_worker_running_) {
 		if(exception_) {
 			clear_timer();
 			std::rethrow_exception(exception_);
 		}
 
+		worker_->detach();
 		window.close();
 	}
 

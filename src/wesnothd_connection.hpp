@@ -41,12 +41,8 @@
 
 #include <deque>
 #include <list>
+#include <thread>
 #include <mutex>
-
-namespace boost
-{
-class thread;
-}
 
 class config;
 class wesnothd_connection_ptr;
@@ -139,7 +135,7 @@ public:
 	}
 
 private:
-	std::unique_ptr<boost::thread> worker_thread_;
+	std::unique_ptr<std::thread> worker_thread_;
 
 	boost::asio::io_service io_service_;
 

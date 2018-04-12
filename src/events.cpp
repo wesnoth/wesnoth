@@ -31,11 +31,11 @@
 #include <iterator>
 #include <utility>
 #include <vector>
+#include <thread>
 
 #include <SDL.h>
 
 #include <boost/range/adaptor/reversed.hpp>
-#include <boost/thread.hpp>
 
 #define ERR_GEN LOG_STREAM(err, lg::general)
 
@@ -415,11 +415,11 @@ void finalize()
 }
 
 // TODO: I'm uncertain if this is always safe to call at static init; maybe set in main() instead?
-static const boost::thread::id main_thread = boost::this_thread::get_id();
+static const std::thread::id main_thread = std::this_thread::get_id();
 
 void run_event_loop()
 {
-	if(boost::this_thread::get_id() != main_thread) {
+	if(std::this_thread::get_id() != main_thread) {
 		// Can only call this on the main thread!
 		return;
 	}
@@ -746,7 +746,7 @@ void peek_for_resize()
 
 void call_in_main_thread(const std::function<void(void)>& f)
 {
-	if(boost::this_thread::get_id() == main_thread) {
+	if(std::this_thread::get_id() == main_thread) {
 		// nothing special to do if called from the main thread.
 		f();
 		return;
