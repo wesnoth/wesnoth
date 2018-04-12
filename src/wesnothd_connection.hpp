@@ -49,7 +49,6 @@ class thread;
 }
 
 class config;
-class wesnothd_connection_ptr;
 enum class loading_stage;
 
 union data_union {
@@ -58,7 +57,7 @@ union data_union {
 };
 
 /** A class that represents a TCP/IP connection to the wesnothd server. */
-class wesnothd_connection : public std::enable_shared_from_this<wesnothd_connection>
+class wesnothd_connection
 {
 public:
 	using error = wesnothd_connection_error;
@@ -68,19 +67,14 @@ public:
 
 	~wesnothd_connection();
 
-private:
+public:
 	/**
 	 * Constructor.
-	 *
-	 * May only be called via wesnothd_connection_ptr
 	 *
 	 * @param host    Name of the host to connect to
 	 * @param service Service identifier such as "80" or "http"
 	 */
 	wesnothd_connection(const std::string& host, const std::string& service);
-
-public:
-	static wesnothd_connection_ptr create(const std::string& host, const std::string& service);
 
 	bool fetch_data_with_loading_screen(config& cfg, loading_stage stage);
 
@@ -190,64 +184,4 @@ private:
 	std::size_t bytes_read_;
 };
 
-/**
- * This class acts like a unique_ptr<wesnothd_connection>, wesnothd_connection objects may only be owned though this
- * pointer. The reason why we need this is that wesnothd_connection runs a workerthread so we use a shared_ptr to make
- * sure the wesnothd_connection isn't destroyed before the worker thread has finished. When this object is destroyed, it
- * calls wesnothd_connection::stop() which stops the worker thread which will then destroy the other
- * shared_ptr<wesnothd_connection> which destroys the wesnothd_connection object.
- */
-class wesnothd_connection_ptr
-{
-private:
-	friend class wesnothd_connection;
-
-	wesnothd_connection_ptr(std::shared_ptr<wesnothd_connection>&& ptr)
-		: ptr_(std::move(ptr))
-	{
-	}
-
-public:
-	wesnothd_connection_ptr() = default;
-
-	wesnothd_connection_ptr(const wesnothd_connection_ptr&) = delete;
-	wesnothd_connection_ptr& operator=(const wesnothd_connection_ptr&) = delete;
-
-	wesnothd_connection_ptr(wesnothd_connection_ptr&&) = default;
-	wesnothd_connection_ptr& operator=(wesnothd_connection_ptr&&);
-
-	~wesnothd_connection_ptr();
-
-	explicit operator bool() const
-	{
-		return !!ptr_;
-	}
-
-	wesnothd_connection& operator*()
-	{
-		return *ptr_;
-	}
-
-	const wesnothd_connection& operator*() const
-	{
-		return *ptr_;
-	}
-
-	wesnothd_connection* operator->()
-	{
-		return ptr_.get();
-	}
-
-	const wesnothd_connection* operator->() const
-	{
-		return ptr_.get();
-	}
-
-	wesnothd_connection* get() const
-	{
-		return ptr_.get();
-	}
-
-private:
-	std::shared_ptr<wesnothd_connection> ptr_;
-};
+using wesnothd_connection_ptr = std::unique_ptr<wesnothd_connection>;

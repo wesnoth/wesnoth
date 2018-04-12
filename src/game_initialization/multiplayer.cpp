@@ -54,7 +54,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 {
 	DBG_MP << "opening connection" << std::endl;
 
-	wesnothd_connection_ptr sock;
+	wesnothd_connection_ptr sock(nullptr);
 	if(host.empty()) {
 		return std::make_pair(std::move(sock), config());
 	}
@@ -76,7 +76,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 	shown_hosts.emplace(host, port);
 
 	// Initializes the connection to the server.
-	sock = wesnothd_connection::create(host, std::to_string(port));
+	sock = std::make_unique<wesnothd_connection>(host, std::to_string(port));
 	if(!sock) {
 		return std::make_pair(std::move(sock), config());
 	}
@@ -139,8 +139,8 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 			gui2::dialogs::loading_screen::progress(loading_stage::redirect);
 
 			// Open a new connection with the new host and port.
-			sock = wesnothd_connection_ptr();
-			sock = wesnothd_connection::create(host, std::to_string(port));
+			sock.reset();
+			sock = std::make_unique<wesnothd_connection>(host, std::to_string(port));
 
 			// Wait for new handshake.
 			while(!sock->handshake_finished()) {
