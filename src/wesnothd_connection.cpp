@@ -80,8 +80,11 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 
 wesnothd_connection::~wesnothd_connection()
 {
-	worker_thread_->detach();
 	MPTEST_LOG;
+
+	// Stop the io_service and wait for the worker thread to terminate.
+	stop();
+	worker_thread_->join();
 }
 
 // main thread
@@ -150,9 +153,6 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 	recv();
 
 	worker_thread_.reset(new std::thread([this]() {
-		// worker thread
-		std::shared_ptr<wesnothd_connection> this_ptr = this->shared_from_this();
-
 		io_service_.run();
 		LOG_NW << "wesnothd_connection::io_service::run() returned\n";
 	}));
@@ -421,32 +421,4 @@ bool wesnothd_connection::fetch_data_with_loading_screen(config& cfg, loading_st
 	});
 
 	return res;
-}
-
-//  wesnothd_connection_ptr
-
-wesnothd_connection_ptr& wesnothd_connection_ptr::operator=(wesnothd_connection_ptr&& other)
-{
-	MPTEST_LOG;
-	if(ptr_) {
-		ptr_->stop();
-		ptr_.reset();
-	}
-
-	ptr_ = std::move(other.ptr_);
-	return *this;
-}
-
-wesnothd_connection_ptr wesnothd_connection::create(const std::string& host, const std::string& service)
-{
-	// Can't use make_shared because the ctor is private
-	return wesnothd_connection_ptr(std::shared_ptr<wesnothd_connection>(new wesnothd_connection(host, service)));
-}
-
-wesnothd_connection_ptr::~wesnothd_connection_ptr()
-{
-	MPTEST_LOG;
-	if(ptr_) {
-		ptr_->stop();
-	}
 }
