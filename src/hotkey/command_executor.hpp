@@ -134,7 +134,8 @@ public:
 	void execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
 
 	virtual bool can_execute_command(const hotkey_command& command, int index=-1) const = 0;
-	void execute_command(const SDL_Event& event, int index = -1);
+	void queue_command(const SDL_Event& event, int index = -1);
+	void run_queued_commands();
 	void execute_quit_command()
 	{
 		const hotkey_command& quit_hotkey = hotkey_command::get_command_by_command(hotkey::HOTKEY_QUIT_GAME);
@@ -150,7 +151,23 @@ protected:
 	virtual bool do_execute_command(const hotkey_command& command, int index=-1, bool press=true, bool release=false);
 
 private:
+	struct queued_command
+	{
+		queued_command(const hotkey_command& command_, int index_, bool press_, bool release_)
+			: command(&command_), index(index_), press(press_), release(release_)
+		{}
+
+		const hotkey_command* command;
+		int index;
+		bool press;
+		bool release;
+	};
+
+	void execute_command_wrap(const queued_command& command);
+	std::vector<queued_command> filter_command_queue();
+
 	bool press_event_sent_ = false;
+	std::vector<queued_command> command_queue_;
 };
 class command_executor_default : public command_executor
 {
@@ -176,5 +193,7 @@ void jhat_event(const SDL_Event& event, command_executor* executor);
 void key_event(const SDL_Event& event, command_executor* executor);
 void keyup_event(const SDL_Event& event, command_executor* executor);
 void mbutton_event(const SDL_Event& event, command_executor* executor);
+// Function to call to process the events.
+void run_events(command_executor* executor);
 
 }
