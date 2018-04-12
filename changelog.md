@@ -30,6 +30,8 @@
    * Fixed Logging Options tooltips not being translatable (bug #2837).
    * Updated translations: British English, Chinese (Simplified), Czech, French,
      Galician, Polish, Scottish Gaelic, Spanish, Ukrainian
+ ### Multiplayer
+   * Added team color to a few background units missing in Aethermaw.
  ### User Interface
    * Swapped the position and formatting of game names and titles in the MP lobby.
    * Made Faction Select button's purpose more clear in MP Staging.
