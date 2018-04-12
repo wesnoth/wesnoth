@@ -499,7 +499,11 @@ double recruitment::recall_unit_value(const unit_const_ptr & recall_unit) const 
 	double xp_quantity = static_cast<double>(recall_unit->experience()) /
 			recall_unit->max_experience();
 	double recall_value = recall_unit->cost() + xp_quantity * average_cost_of_advanced_unit;
-	if (recall_value < current_team().recall_cost()) {
+	int cost = current_team().recall_cost();
+	if (recall_unit->recall_cost() > -1) {
+		cost=recall_unit->recall_cost();
+	}
+	if (recall_value < cost) {
 		recall_value = -1;  // Unit is not worth to get recalled.
 	}
 	return recall_value;
