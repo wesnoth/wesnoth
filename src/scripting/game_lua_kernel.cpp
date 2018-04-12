@@ -1662,25 +1662,33 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 			else see_all = true;
 		}
 		lua_pop(L, 1);
+
+		lua_pushstring(L, "calculate");
+		lua_rawget(L, arg);
+		if(lua_isfunction(L, -1)) {
+			calc.reset(new lua_pathfind_cost_calculator(L, lua_gettop(L)));
+		}
+		// Don't pop, the lua_pathfind_cost_calculator requires it to stay on the stack.
 	}
 	else if (lua_isfunction(L, arg))
 	{
 		calc.reset(new lua_pathfind_cost_calculator(L, arg));
+		ignore_teleport = lua_isnoneornil(L, arg + 1) || luaW_toboolean(L, arg + 1);
 	}
 
+	const team& viewing_team = viewing_side
+		? board().get_team(viewing_side)
+		: board().get_team(u->side());
+
 	pathfind::teleport_map teleport_locations;
+
+	if(!ignore_teleport) {
+		teleport_locations = pathfind::get_teleport_locations(*u, viewing_team, see_all, ignore_units);
+	}
 
 	if (!calc) {
 		if (!u) return luaL_argerror(L, 1, "unit not found");
 
-		const team& viewing_team = viewing_side
-			? board().get_team(viewing_side)
-			: board().get_team(u->side());
-
-		if (!ignore_teleport) {
-			teleport_locations = pathfind::get_teleport_locations(
-				*u, viewing_team, see_all, ignore_units);
-		}
 		calc.reset(new pathfind::shortest_path_calculator(*u, viewing_team,
 			teams(), map, ignore_units, false, see_all));
 	}
