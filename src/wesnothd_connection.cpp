@@ -81,7 +81,6 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 
 wesnothd_connection::~wesnothd_connection()
 {
-	worker_thread_->detach();
 	MPTEST_LOG;
 
 	// Stop the io_service and wait for the worker thread to terminate.
