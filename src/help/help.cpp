@@ -235,9 +235,12 @@ void show_help(const section &toplevel_sec,
 		}
 	}
 	catch (parse_error& e) {
+		// Disabled due to issue #2587
+#if 0
 		std::stringstream msg;
 		msg << _("Parse error when parsing help text: ") << "'" << e.message << "'";
 		gui2::show_transient_message("", msg.str());
+#endif
 	}
 }
 
