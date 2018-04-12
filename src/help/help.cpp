@@ -234,7 +234,7 @@ void show_help(const section &toplevel_sec,
 			CVideo::delay(10);
 		}
 	}
-	catch (parse_error& e) {
+	catch (parse_error& /*e*/) {
 		// Disabled due to issue #2587
 #if 0
 		std::stringstream msg;
