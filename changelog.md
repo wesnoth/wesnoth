@@ -7,6 +7,9 @@
      * S12 Fixed north treasure chest disappearing
    * The Rise of Wesnoth
      * New set of story art.
+ ### Help browser
+   * Unit descriptions use the new multiplication sign format for attack lists
+     now (issue #2873).
  ### Language and i18n
    * Updated translations: Chinese (Simplified), Czech, French, Galician, Polish
  ### User Interface

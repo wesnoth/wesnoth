@@ -524,7 +524,7 @@ std::string unit_topic_generator::operator()() const {
 			push_tab_pair(row, lang_weapon);
 			push_tab_pair(row, lang_type);
 			attack_ss.str(clear_stringstream);
-			attack_ss << attack.damage() << font::unicode_en_dash << attack.num_attacks()
+			attack_ss << attack.damage() << font::weapon_numbers_sep << attack.num_attacks()
 				<< " " << attack.accuracy_parry_description();
 			push_tab_pair(row, attack_ss.str());
 			attack_ss.str(clear_stringstream);
