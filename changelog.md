@@ -12,6 +12,8 @@
      now (issue #2873).
  ### Language and i18n
    * Updated translations: Chinese (Simplified), Czech, French, Galician, Polish
+ ### Multiplayer
+   * Added team color to a few background units missing in Aethermaw.
  ### User Interface
    * Swapped the position and formatting of game names and titles in the MP lobby.
    * Made Faction Select button's purpose more clear in MP Staging.
