@@ -2836,7 +2836,12 @@ int main(int argc, char** argv) {
 		}
 	}
 
-	wesnothd::server(port, keep_alive, config_file, min_threads, max_threads).run();
+	try {
+		wesnothd::server(port, keep_alive, config_file, min_threads, max_threads).run();
+	} catch(std::exception& e) {
+		ERR_SERVER << "terminated by C++ exception: " << e.what() << std::endl;
+		return 1;
+	}
 
 	return 0;
 }
