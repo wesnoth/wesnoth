@@ -19,11 +19,8 @@
 #include <map>
 #include <vector>
 #include <atomic>
+#include <thread>
 
-namespace boost
-{
-	class thread;
-}
 namespace cursor
 {
 	struct setter;
@@ -86,7 +83,7 @@ private:
 	std::size_t timer_id_;
 	int animation_counter_;
 	std::function<void()> work_;
-	std::unique_ptr<boost::thread> worker_;
+	std::unique_ptr<std::thread> worker_;
 	std::unique_ptr<cursor::setter> cursor_setter_;
 	std::exception_ptr exception_;
 	void clear_timer();

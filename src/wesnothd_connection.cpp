@@ -22,8 +22,6 @@
 
 #include <SDL_timer.h>
 
-#include <boost/thread.hpp>
-
 #include <cstdint>
 #include <deque>
 
@@ -83,6 +81,7 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 
 wesnothd_connection::~wesnothd_connection()
 {
+	worker_thread_->detach();
 	MPTEST_LOG;
 
 	// Stop the io_service and wait for the worker thread to terminate.
@@ -155,7 +154,7 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 	handshake_finished_ = true;
 	recv();
 
-	worker_thread_.reset(new boost::thread([this]() {
+	worker_thread_.reset(new std::thread([this]() {
 		io_service_.run();
 		LOG_NW << "wesnothd_connection::io_service::run() returned\n";
 	}));
