@@ -10,6 +10,9 @@
      * S12 Fixed north treasure chest disappearing
    * Under the Burning Suns
      * Hide technical terrains in the Help browser (Human Ship, Lava overlay).
+ ### Help browser
+   * Unit descriptions use the new multiplication sign format for attack lists
+     now (issue #2873).
  ### Language and i18n
    * Fixed many cases of interpolated strings in the engine possibly having
      their translations retrieved from the wrong textdomain and falling back
