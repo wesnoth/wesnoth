@@ -24,6 +24,7 @@
    * Fixed assertion when undoing actions in a synced context.
    * [filter_wml] no longer accepts [and] and [or] in addition to [not] since
      the implementation was non-functional.
+   * Fix MP password save error (issue #2745)
 
 ## Version 1.13.13
  ### Campaigns
