@@ -41,6 +41,9 @@
    * Support [filter_weapon] in leadership and resistance abilities,
      which activates the ability only when the affected unit is using
      a matching weapon.
+   * Support [filter_second_weapon] in leadership and resistance abilities,
+     which activates the ability only when the affected unit's opponent
+     is using a matching weapon.
    * Support WFL and percentages in [random_placement]num_items=
    * Support [or] in [filter_wml] and similar places
    * Support globbing in [filter_wml] via glob_on_* keys
@@ -56,6 +59,9 @@
    * Support usage and alignment in SUF
    * Deprecate [replace_map]map= in favor of map_data=
    * Add u and v variables in ~ADJUST_ALPHA() and ~CHAN()
+   * Add to_location in [move_unit], allowing use of special locations
+   * Add dir in [move_unit], allowing relative movements
+   * Add clear_shroud in [move_unit] to clear shroud as the unit moves
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
    * Fixed events with an id but no name being rejected
@@ -77,6 +83,7 @@
    * Fixed unit selection not persisting between uses of Create Unit.
    * Fixed assertion when undoing actions in a synced context.
    * Fixed assertion when saving game events mid-event.
+   * Fix MP password save error (#2745)
 
 ## Version 1.13.12
  ### Security fixes
