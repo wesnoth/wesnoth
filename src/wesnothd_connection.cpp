@@ -83,8 +83,10 @@ wesnothd_connection::~wesnothd_connection()
 	MPTEST_LOG;
 
 	// Stop the io_service and wait for the worker thread to terminate.
-	stop();
-	worker_thread_->join();
+	if(worker_thread_) {
+		stop();
+		worker_thread_->join();
+	}
 }
 
 // main thread
