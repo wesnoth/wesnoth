@@ -9,7 +9,8 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
    * The Rise of Wesnoth
      * New set of story art.
  ### Language and i18n
-   * Updated translations: Chinese (Simplified), Czech, French, Galician, Polish.
+   * Updated translations: Chinese (Simplified), Czech, French, Galician,
+     Italian, Polish.
  ### Miscellaneous and bug fixes
    * Fixed some hotkeys triggering multiple commands on GNU/Linux (bug #1736).
 

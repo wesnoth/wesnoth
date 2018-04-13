@@ -4,12 +4,12 @@
 #
 # Automatically generated, 2006.
 # Luciano Montanaro <mikelima@cirulla.net>, 2007, 2008, 2009, 2011.
-# Antonio 'Antro' Rosella <arosella@yahoo.com> 2012-2017
+# Antonio 'Antro' Rosella <arosella@yahoo.com> 2012-2018
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
-"POT-Creation-Date: 2018-02-12 20:02+0300\n"
-"PO-Revision-Date: 2017-11-06 14:22+0300\n"
+"POT-Creation-Date: 2018-03-27 04:20+0300\n"
+"PO-Revision-Date: 2018-04-11 12:31+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 # type: TH
 #. type: TH
@@ -30,7 +30,7 @@ msgstr "WESNOTH"
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2018"
-msgstr ""
+msgstr "2018"
 
 # type: TH
 #. type: TH
@@ -102,7 +102,7 @@ msgid ""
 "Wesnoth's large community of online players. Create your own custom units, "
 "scenarios or campaigns, and share them with others."
 msgstr ""
-"Sconfiggi tutti i condottieri nemici usando un'oculata scelta di unità di "
+"Sconfiggi tutti i condottieri nemici usando un’oculata scelta di unità di "
 "combattimento, avendo cura di gestire le tue risorse di oro e villaggi. Ogni "
 "unità ha punti di forza e debolezze: per vincere, schiera le tue forze nel "
 "modo più vantaggioso impedendo al nemico di fare altrettanto. Le unità, con "
@@ -165,8 +165,8 @@ msgid ""
 "goes directly to the campaign with id I<id_campaign>.  A selection menu will "
 "appear if no id was specified."
 msgstr ""
-"salta direttamente alla campagna con identificatore I<id_campagna>. "
-"Apparirà' un menu selezione se non si specifica alcun identificatore."
+"salta direttamente alla campagna con identificatore I<id_campagna>. Apparirà "
+"un menu selezione se non si specifica alcun identificatore."
 
 #. type: TP
 #: doc/man/wesnoth.6:62
@@ -210,7 +210,7 @@ msgstr "B<--core>I<\\ identificatore>"
 msgid "overrides the loaded core with the one whose id is specified."
 msgstr ""
 "sostituisce la directory base caricata con quella specificata "
-"nell'identificatore."
+"nell’identificatore."
 
 #. type: TP
 #: doc/man/wesnoth.6:72
@@ -554,10 +554,6 @@ msgstr "B<--nogui>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:186
-#, fuzzy
-#| msgid ""
-#| "runs the game without the GUI. Only availaible in combination with B<--"
-#| "multiplayer> or B<--screenshot> or B<--plugin>."
 msgid ""
 "runs the game without the GUI. Only available in combination with B<--"
 "multiplayer> or B<--screenshot> or B<--plugin>."
@@ -643,16 +639,6 @@ msgstr "B<-p,\\ --preprocess>I<\\ file/cartella sorgente>B<\\ >I<cartella destin
 
 #. type: Plain text
 #: doc/man/wesnoth.6:214
-#, fuzzy
-#| msgid ""
-#| "preprocesses a specified file/folder. For each file(s) a plain .cfg file "
-#| "and a processed .cfg file will be written in specified target directory. "
-#| "If a folder is specified, it will be preprocessed recursively based on "
-#| "the known preprocessor rules. The common macroses from the \"data/core/"
-#| "macros\" directory will be preprocessed before the specified resources.  "
-#| "Example: B<-p ~/wesnoth/data/campaigns/tutorial ~/result.> For details "
-#| "regarding the preprocessor visit: https://wiki.wesnoth.org/"
-#| "PreprocessorRef#Command-line_preprocessor"
 msgid ""
 "preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
 "a processed .cfg file will be written in specified target directory. If a "
@@ -663,8 +649,8 @@ msgid ""
 "preprocessor visit: https://wiki.wesnoth.org/PreprocessorRef#Command-"
 "line_preprocessor"
 msgstr ""
-"pre-processa uno specificato file/cartella. Il/I file saranno riscritti "
-"nella directory destinazione specificata: un file .cfg piatto e un file .cfg "
+"pre-processa uno specifico file/cartella. Per ogni file, saranno scritti "
+"nella directory destinazione specificata un file .cfg piatto e un file .cfg "
 "processato. Se viene specificata una cartella, sarà pre-processata "
 "ricorsivamente in base alle regole di pre-processing note. Le macro comuni "
 "della directory \"data/core/macros\" saranno pre-processate prima delle "
@@ -747,12 +733,6 @@ msgstr "B<--render-image>I<\\ immagine>B<\\ >I<output>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:246
-#, fuzzy
-#| msgid ""
-#| "takes a valid wesnoth 'image path string' with image path functions, and "
-#| "outputs to a .png file. Outputs to a windows .bmp file if the filename "
-#| "ends with .bmp or if libpng is not availaible. Image path functions are "
-#| "documented at https://wiki.wesnoth.org/ImagePathFunctionWML."
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
 "outputs to a .png file. Outputs to a windows .bmp file if the filename ends "
@@ -760,10 +740,10 @@ msgid ""
 "at https://wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 "prenda una stringa valida 'image path string' con funzioni immagine per "
-"wesnoth e restituisce un file in formato .png, L’uscita sarà in ua finestra ."
-"bmp se il nome del file termina con .bmp o se la libreria libpng non è "
-"disponibile. Le funzione per cartella immagini sono documentate in https://"
-"wiki.wesnoth.org/ImagePathFunctionWML."
+"wesnoth e restituisce un file in formato .png, L’uscita sarà in una "
+"finestra .bmp se il nome del file termina con .bmp o se la libreria libpng "
+"non è disponibile. Le funzione per cartella immagini sono documentate in "
+"https://wiki.wesnoth.org/ImagePathFunctionWML."
 
 # type: TP
 #. type: TP
@@ -977,8 +957,7 @@ msgstr "B<--userdata-path>"
 #. type: Plain text
 #: doc/man/wesnoth.6:318
 msgid "prints the path of the userdata directory and exits."
-msgstr ""
-"stampa il percorso della cartella di configurazione dell’utente ed esce."
+msgstr "stampa il percorso della cartella di configurazione utente ed esce."
 
 # type: TP
 #. type: TP
@@ -1121,7 +1100,7 @@ msgid ""
 "eras.cfg> file."
 msgstr ""
 "usa questa opzione per giocare nell’era selezionata invece che in quella "
-"B<Default>. L'era è scelta per ID. Le ere sono descritte nel file data/"
+"B<Default>. L’era è scelta per ID. Le ere sono descritte nel file data/"
 "multiplayer.cfg."
 
 # type: TP
@@ -1620,7 +1599,7 @@ msgid ""
 msgstr ""
 "Se impostato su B<no> (default), le richieste di spegnimento e ripartenza "
 "vengono ignorate a meno che non provengano dal socket. Impostalo a B<yes> "
-"per poter spengere remotamente il server con una /query di un amministratore."
+"per poter spegnere remotamente il server con una /query di un amministratore."
 
 # type: TP
 #. type: TP
@@ -1640,7 +1619,7 @@ msgstr ""
 "possa scrivere e leggere. L’elenco degli utenti messi al bando sarà "
 "conservato in questo file e letto a tutti gli avvii del server.Percorso "
 "completo o relativo ad un file (compresso con gzip) che il server possa "
-"scrivere e leggere. L'elenco degli utenti messi al bando sarà conservato in "
+"scrivere e leggere. L’elenco degli utenti messi al bando sarà conservato in "
 "questo file e letto a tutti gli avvii del server."
 
 # type: TP
@@ -1835,7 +1814,7 @@ msgid ""
 "B<allow_remote_shutdown> setting.)"
 msgstr ""
 "Il comando che il server utilizza per lanciare un muovo processo server "
-"tramite il comando B<restart>. Può essere inviato soltanto tramite la fifo. "
+"cramite il comando B<restart>. Può essere inviato soltanto tramite la fifo. "
 "Per dettagli, vedi i setaggi di B<allow_remote_shutdown>."
 
 # type: TP
@@ -2268,8 +2247,8 @@ msgid ""
 "Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Scritto David White E<lt>davidnwhite@verizon.netE<gt>.  Modificato da Nils "
-"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> e "
-"Soliton E<lt>soliton.de@gmail.comE<gt> w Thomas Bauhauer E<lt>thomas."
+"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
+"Soliton E<lt>soliton.de@gmail.comE<gt> e Thomas Baumhauer E<lt>thomas."
 "baumhauer@gmailcomE<gt>. Questo manuale è stato scritto in origine da Cyril "
 "Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
