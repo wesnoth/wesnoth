@@ -494,7 +494,6 @@
 		91A215DE1CAD99E000927AEA /* libboost_filesystem-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF9D43F19F4026D00E6C9D9 /* libboost_filesystem-mt.dylib */; };
 		91A215DF1CAD99E000927AEA /* libboost_iostreams-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D4B13AD4D53003C701D /* libboost_iostreams-mt.dylib */; };
 		91A215E01CAD99E000927AEA /* libboost_system-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5413AD4E35003C701D /* libboost_system-mt.dylib */; };
-		91A215E11CAD99E000927AEA /* libboost_thread-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5B13AD4E6D003C701D /* libboost_thread-mt.dylib */; };
 		91A215E21CAD9B9000927AEA /* libpango-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242E18EF07B4001FA499 /* libpango-1.0.0.dylib */; };
 		91A215E31CAD9B9000927AEA /* libpangocairo-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242F18EF07B4001FA499 /* libpangocairo-1.0.0.dylib */; };
 		91A215E41CAD9D4300927AEA /* button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCEA0ECA805A002BE442 /* button.cpp */; };
@@ -549,7 +548,6 @@
 		91B622051B76C0A600B00E0F /* libboost_random-mt.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = EC64D75C1A085C990092EF75 /* libboost_random-mt.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		91B622061B76C0A600B00E0F /* libboost_regex-mt.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5313AD4E35003C701D /* libboost_regex-mt.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		91B622071B76C0A600B00E0F /* libboost_system-mt.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5413AD4E35003C701D /* libboost_system-mt.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		91B622081B76C0A600B00E0F /* libboost_thread-mt.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5B13AD4E6D003C701D /* libboost_thread-mt.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		91B6220A1B76C0A600B00E0F /* libcairo.2.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = B513B2270ED36BFB0006E551 /* libcairo.2.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		91B6220C1B76C0A600B00E0F /* libffi.6.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242418EF07B4001FA499 /* libffi.6.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		91B6220D1B76C0A600B00E0F /* libfontconfig.1.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242518EF07B4001FA499 /* libfontconfig.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -572,7 +570,6 @@
 		91B622211B76C0F400B00E0F /* libboost_random-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC64D75C1A085C990092EF75 /* libboost_random-mt.dylib */; };
 		91B622221B76C0F400B00E0F /* libboost_regex-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5313AD4E35003C701D /* libboost_regex-mt.dylib */; };
 		91B622231B76C0F400B00E0F /* libboost_system-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5413AD4E35003C701D /* libboost_system-mt.dylib */; };
-		91B622241B76C0F400B00E0F /* libboost_thread-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5B13AD4E6D003C701D /* libboost_thread-mt.dylib */; };
 		91C548C31D8866ED00FE6A7B /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; };
 		91C548D21D886AF000FE6A7B /* server_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C548D01D886AF000FE6A7B /* server_base.cpp */; };
 		91C548DE1D886E0A00FE6A7B /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599AA80EC62181008DD061 /* config.cpp */; };
@@ -1380,7 +1377,6 @@
 				91B622051B76C0A600B00E0F /* libboost_random-mt.dylib in Copy Frameworks */,
 				91B622061B76C0A600B00E0F /* libboost_regex-mt.dylib in Copy Frameworks */,
 				91B622071B76C0A600B00E0F /* libboost_system-mt.dylib in Copy Frameworks */,
-				91B622081B76C0A600B00E0F /* libboost_thread-mt.dylib in Copy Frameworks */,
 				91B6220A1B76C0A600B00E0F /* libcairo.2.dylib in Copy Frameworks */,
 				91B6220C1B76C0A600B00E0F /* libffi.6.dylib in Copy Frameworks */,
 				91B6220D1B76C0A600B00E0F /* libfontconfig.1.dylib in Copy Frameworks */,
@@ -1426,6 +1422,7 @@
 		4638966F2034180800075E54 /* deprecation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = deprecation.hpp; sourceTree = "<group>"; };
 		463896702034180900075E54 /* deprecation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = deprecation.cpp; sourceTree = "<group>"; };
 		4649B879202886F000827CFB /* test_irdya_date.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_irdya_date.cpp; sourceTree = "<group>"; };
+		4654109E2078BC02002BCD13 /* l10n-track */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "l10n-track"; path = "../../l10n-track"; sourceTree = "<group>"; };
 		467D9DEC205EC39200FA2FC4 /* command_console.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = command_console.hpp; sourceTree = "<group>"; };
 		467D9DED205EC39300FA2FC4 /* command_console.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = command_console.cpp; sourceTree = "<group>"; };
 		467D9DF0205EC3D200FA2FC4 /* userevent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = userevent.hpp; sourceTree = "<group>"; };
@@ -1436,7 +1433,6 @@
 		467F3CEF20605A3900CE0CE5 /* ingame_ui_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ingame_ui_base.cpp; sourceTree = "<group>"; };
 		468A2EA52060F68A00B61D24 /* game_ui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_ui.cpp; sourceTree = "<group>"; };
 		468A2EA62060F68B00B61D24 /* game_ui.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_ui.hpp; sourceTree = "<group>"; };
-		4654109E2078BC02002BCD13 /* l10n-track */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "l10n-track"; path = "../../l10n-track"; sourceTree = "<group>"; };
 		468C1B951F09245E002DF652 /* function_gamestate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = function_gamestate.cpp; sourceTree = "<group>"; };
 		468C1B961F09245E002DF652 /* function_gamestate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = function_gamestate.hpp; sourceTree = "<group>"; };
 		469BDB53205C357400DBF748 /* base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = base64.cpp; sourceTree = "<group>"; };
@@ -2729,7 +2725,6 @@
 		F4EF0D5213AD4E35003C701D /* libboost_program_options-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_program_options-mt.dylib"; path = "lib/libboost_program_options-mt.dylib"; sourceTree = "<group>"; };
 		F4EF0D5313AD4E35003C701D /* libboost_regex-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_regex-mt.dylib"; path = "lib/libboost_regex-mt.dylib"; sourceTree = "<group>"; };
 		F4EF0D5413AD4E35003C701D /* libboost_system-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_system-mt.dylib"; path = "lib/libboost_system-mt.dylib"; sourceTree = "<group>"; };
-		F4EF0D5B13AD4E6D003C701D /* libboost_thread-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_thread-mt.dylib"; path = "lib/libboost_thread-mt.dylib"; sourceTree = "<group>"; };
 		F4EF0D7213AD52EA003C701D /* network_transmission.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = network_transmission.hpp; sourceTree = "<group>"; };
 		F4EF0D7313AD52EA003C701D /* network_transmission.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = network_transmission.cpp; sourceTree = "<group>"; };
 		F4FBD769145D93370083CA67 /* uninstall_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = uninstall_list.cpp; sourceTree = "<group>"; };
@@ -2750,7 +2745,6 @@
 				91B622211B76C0F400B00E0F /* libboost_random-mt.dylib in Frameworks */,
 				91B622221B76C0F400B00E0F /* libboost_regex-mt.dylib in Frameworks */,
 				91B622231B76C0F400B00E0F /* libboost_system-mt.dylib in Frameworks */,
-				91B622241B76C0F400B00E0F /* libboost_thread-mt.dylib in Frameworks */,
 				90BC845B1EDBD7B600A6630D /* libcrypto.1.1.dylib in Frameworks */,
 				EC5C243B18EF07B4001FA499 /* libbz2.1.0.dylib in Frameworks */,
 				B513B2290ED36BFB0006E551 /* libcairo.2.dylib in Frameworks */,
@@ -2821,7 +2815,6 @@
 				46BAF785206672250004711F /* libboost_chrono-mt.dylib in Frameworks */,
 				91A215DF1CAD99E000927AEA /* libboost_iostreams-mt.dylib in Frameworks */,
 				91A215E01CAD99E000927AEA /* libboost_system-mt.dylib in Frameworks */,
-				91A215E11CAD99E000927AEA /* libboost_thread-mt.dylib in Frameworks */,
 				90BC845D1EDBD7B600A6630D /* libcrypto.1.1.dylib in Frameworks */,
 				91A215E21CAD9B9000927AEA /* libpango-1.0.0.dylib in Frameworks */,
 				91A215E31CAD9B9000927AEA /* libpangocairo-1.0.0.dylib in Frameworks */,
@@ -2873,7 +2866,6 @@
 		1058C7A2FEA54F0111CA2CBB /* Included Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				46BAF784206672240004711F /* libboost_chrono-mt.dylib */,
 				B55999220EC61F59008DD061 /* SDL2_image.framework */,
 				B55999240EC61F59008DD061 /* SDL2_mixer.framework */,
 				B55998F70EC61EA5008DD061 /* SDL2.framework */,
@@ -3195,6 +3187,7 @@
 			isa = PBXGroup;
 			children = (
 				1058C7A2FEA54F0111CA2CBB /* Included Frameworks */,
+				46BAF784206672240004711F /* libboost_chrono-mt.dylib */,
 				ECF9D43F19F4026D00E6C9D9 /* libboost_filesystem-mt.dylib */,
 				F4EF0D4B13AD4D53003C701D /* libboost_iostreams-mt.dylib */,
 				EC4DF45919FEA838000EC086 /* libboost_locale-mt.dylib */,
@@ -3202,7 +3195,6 @@
 				EC64D75C1A085C990092EF75 /* libboost_random-mt.dylib */,
 				F4EF0D5313AD4E35003C701D /* libboost_regex-mt.dylib */,
 				F4EF0D5413AD4E35003C701D /* libboost_system-mt.dylib */,
-				F4EF0D5B13AD4E6D003C701D /* libboost_thread-mt.dylib */,
 				46BAF786206672300004711F /* libboost_timer-mt.dylib */,
 				91E355621CACA1CE00774252 /* libboost_unit_test_framework-mt.dylib */,
 				EC5C242218EF07B4001FA499 /* libbz2.1.0.dylib */,
