@@ -21,6 +21,7 @@
  ### Miscellaneous and bug fixes
    * Removed the Font Scaling preference. It was too buggy (issues #2792 and #1624).
    * Fixed some hotkeys triggering multiple commands on GNU/Linux (bug #1736).
+   * Fixed [modify_side] share_vision=yes not doing anything (bug #2850).
    * Fixed regression where unit filters in [disable] weapon specials would not
      match the attacking unit.
    * Fixed images with no alpha channel rendering incorrectly.
