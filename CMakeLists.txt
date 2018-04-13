@@ -1,4 +1,4 @@
-
+﻿
 # set minimum version
 cmake_minimum_required(VERSION 2.8.5)
 
@@ -79,7 +79,7 @@ endif()
 
 find_package(SDL2 2.0.4 REQUIRED)
 find_package(Crypto 1.0 REQUIRED)
-find_package(Boost 1.56 REQUIRED COMPONENTS iostreams program_options regex system thread random)
+find_package(Boost 1.56 REQUIRED COMPONENTS iostreams program_options regex system random)
 
 # no, gettext executables are not required when NLS is deactivated
 find_package(Gettext)
