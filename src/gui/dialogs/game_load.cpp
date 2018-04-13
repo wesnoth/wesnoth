@@ -150,7 +150,7 @@ void game_load::pre_show(window& window)
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "browse_saves_folder", false),
-		std::bind(&desktop::open_object, filesystem::get_saves_dir()));
+		bind_void(&desktop::open_object, filesystem::get_saves_dir()));
 
 	display_savegame(window);
 }
