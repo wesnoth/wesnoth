@@ -23,8 +23,6 @@
 #include <locale>
 #include <mutex>
 #include <boost/locale.hpp>
-// including boost/thread fixes linking of boost locale for msvc on boost 1.60
-#include <boost/thread.hpp>
 #include <set>
 
 #if defined(__GNUC__)
