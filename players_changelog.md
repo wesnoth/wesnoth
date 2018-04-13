@@ -8,7 +8,7 @@ changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog.md
      * New set of story art.
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Czech, French,
-     Galician, Polish, Scottish Gaelic, Spanish, Ukrainian.
+     Galician, Italian, Polish, Scottish Gaelic, Spanish, Ukrainian.
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
    * Fixed some hotkeys triggering multiple commands on GNU/Linux (bug #1736)

@@ -29,7 +29,7 @@
      translatable (bug #2709, bug #2732).
    * Fixed Logging Options tooltips not being translatable (bug #2837).
    * Updated translations: British English, Chinese (Simplified), Czech, French,
-     Galician, Polish, Scottish Gaelic, Spanish, Ukrainian
+     Galician, Italian, Polish, Scottish Gaelic, Spanish, Ukrainian
  ### Multiplayer
    * Added team color to a few background units missing in Aethermaw.
  ### Packaging
