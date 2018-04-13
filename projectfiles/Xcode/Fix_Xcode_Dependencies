@@ -201,7 +201,7 @@ if [ -d "lib" ]; then
 fi
 mkdir lib
 cd lib
-cp /usr/local/opt/boost/lib/libboost_chrono-mt.dylib /usr/local/opt/boost/lib/libboost_filesystem-mt.dylib /usr/local/opt/boost/lib/libboost_iostreams-mt.dylib /usr/local/opt/boost/lib/libboost_locale-mt.dylib /usr/local/opt/boost/lib/libboost_program_options-mt.dylib /usr/local/opt/boost/lib/libboost_random-mt.dylib /usr/local/opt/boost/lib/libboost_regex-mt.dylib /usr/local/opt/boost/lib/libboost_system-mt.dylib /usr/local/opt/boost/lib/libboost_timer-mt.dylib /usr/local/opt/boost/lib/libboost_thread-mt.dylib /usr/local/opt/boost/lib/libboost_unit_test_framework-mt.dylib ./
+cp /usr/local/opt/boost/lib/libboost_chrono-mt.dylib /usr/local/opt/boost/lib/libboost_filesystem-mt.dylib /usr/local/opt/boost/lib/libboost_iostreams-mt.dylib /usr/local/opt/boost/lib/libboost_locale-mt.dylib /usr/local/opt/boost/lib/libboost_program_options-mt.dylib /usr/local/opt/boost/lib/libboost_random-mt.dylib /usr/local/opt/boost/lib/libboost_regex-mt.dylib /usr/local/opt/boost/lib/libboost_system-mt.dylib /usr/local/opt/boost/lib/libboost_timer-mt.dylib /usr/local/opt/boost/lib/libboost_unit_test_framework-mt.dylib ./
 cp /usr/local/opt/cairo/lib/libcairo.2.dylib ./
 cp /usr/local/opt/openssl@1.1/lib/libcrypto.1.1.dylib ./
 cp /usr/local/opt/libffi/lib/libffi.6.dylib ./
