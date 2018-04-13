@@ -391,9 +391,13 @@ public:
 	void set_share_vision(const std::string& vision_status) {
 		info_.share_vision = SHARE_VISION::ALL;
 		info_.share_vision.parse(vision_status);
+		clear_caches();
 	}
 
-	void set_share_vision(SHARE_VISION vision_status) { info_.share_vision = vision_status; }
+	void set_share_vision(SHARE_VISION vision_status) {
+		info_.share_vision = vision_status;
+		clear_caches();
+	}
 
 	void handle_legacy_share_vision(const config& cfg)
 	{
