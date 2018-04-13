@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 01:21 UTC\n"
-"PO-Revision-Date: 2016-01-07 12:02+0100\n"
-"Last-Translator: Liam Tailor <liado@wp.pl>\n"
+"PO-Revision-Date: 2018-04-08 22:13+0200\n"
+"Last-Translator: Karol Nowak <grywacz@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pl_PL\n"
 "MIME-Version: 1.0\n"
@@ -17,9 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Poedit-Basepath: /usr/local/share/wesnoth/\n"
-"X-Generator: Poedit 1.5.7\n"
-"X-Poedit-SearchPath-0: /usr/local/share/wesnoth\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #. [attack]: type=impact
 #. [attack]: type=arcane
@@ -844,7 +844,7 @@ msgstr "taran"
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Horseman.cfg:40
 msgid "bolas"
-msgstr ""
+msgstr "bola"
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Shyde.cfg:38
@@ -1422,7 +1422,7 @@ msgstr ""
 #. [unit_type]: id=Dune Apothecary, race=dunefolk
 #: data/core/units/dunefolk/Apothecary.cfg:4
 msgid "Dune Apothecary"
-msgstr ""
+msgstr "Wydmowy aptekarz"
 
 #. [unit_type]: id=Dune Apothecary, race=dunefolk
 #: data/core/units/dunefolk/Apothecary.cfg:22
@@ -1448,10 +1448,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Blademaster, race=dunefolk
 #: data/core/units/dunefolk/Blademaster.cfg:4
-#, fuzzy
-#| msgid "Drake Blademaster"
 msgid "Dune Blademaster"
-msgstr "Smoczy mistrz ostrza"
+msgstr "Wydmowy mistrz ostrza"
 
 #. [unit_type]: id=Dune Blademaster, race=dunefolk
 #: data/core/units/dunefolk/Blademaster.cfg:20
@@ -1476,10 +1474,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Burner, race=dunefolk
 #: data/core/units/dunefolk/Burner.cfg:4
-#, fuzzy
-#| msgid "Drake Burner"
 msgid "Dune Burner"
-msgstr "Smoczy spalacz"
+msgstr "Wydmowy spalacz"
 
 #. [unit_type]: id=Dune Burner, race=dunefolk
 #: data/core/units/dunefolk/Burner.cfg:23
@@ -1489,6 +1485,11 @@ msgid ""
 "carrying this dangerous mixture into battle. While the use of fire in "
 "warfare is not a novel concept, the effectiveness of their work is."
 msgstr ""
+"Z różnych składników dostępnych w krainie Ludzi Wydm można sporządzić "
+"łatwopalną substancję. Obowiązkiem spalaczów jest przygotowanie tej "
+"niebezpiecznej mikstury i używanie jej na polu bitwy. Użycie ognia w wojnie "
+"nie jest nowością, nie można jednak tego powiedzieć o skuteczności ich "
+"wyrobów."
 
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Burner.cfg:28
@@ -1507,7 +1508,7 @@ msgstr "ognista strzała"
 #. [unit_type]: id=Dune Cataphract, race=dunefolk
 #: data/core/units/dunefolk/Cataphract.cfg:4
 msgid "Dune Cataphract"
-msgstr ""
+msgstr "Wydmowy katafrakt"
 
 #. [unit_type]: id=Dune Cataphract, race=dunefolk
 #: data/core/units/dunefolk/Cataphract.cfg:18
@@ -1562,10 +1563,8 @@ msgstr "dziób"
 
 #. [unit_type]: id=Dune Explorer, race=dunefolk
 #: data/core/units/dunefolk/Explorer.cfg:4
-#, fuzzy
-#| msgid "Dwarvish Explorer"
 msgid "Dune Explorer"
-msgstr "Krasnoludzki odkrywca"
+msgstr "Wydmowy odkrywca"
 
 #. [unit_type]: id=Dune Explorer, race=dunefolk
 #: data/core/units/dunefolk/Explorer.cfg:16
@@ -1605,22 +1604,15 @@ msgstr "Jastrząb"
 
 #. [unit_type]: id=Falcon, race=falcon
 #: data/core/units/dunefolk/Falcon.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Seen as status symbols of the nobles, falcons are precious possessions "
-#| "normally used for sport. The same techniques are employed to rend and "
-#| "tear the enemies of the Khalifate, and their great speed is a boon to "
-#| "scouting out the land."
 msgid ""
 "Seen as status symbols of the nobles, falcons are precious possessions "
 "normally used for sport. The same techniques are employed to rend and tear "
 "foes on the battlefield, and their great speed is a boon to scouting out the "
 "land."
 msgstr ""
-"Jastrzębie, zazwyczaj wykorzystywane dla sportu, są bardzo cenne i uznawane "
-"jako symbol wysokiego statusu pośród szlachty. Szkolone aby okaleczać i "
-"rozrywać przeciwników Kalifatu na strzępy. Ich ogromna prędkość jest "
-"kluczowa przy misjach zwiadowczych."
+"Jastrzębie, zwyczajowo wykorzystywane dla sportu, są bardzo cenne i stanowią "
+"symbol wysokiego statusu szlachty. Są szkolone aby okaleczać i rozrywać "
+"przeciwników na strzępy, a ich wspaniała prędkość jest kluczowa w zwiadzie."
 
 #. [unit_type]: id=Dune Firetrooper, race=dunefolk
 #: data/core/units/dunefolk/Firetrooper.cfg:4
@@ -1651,10 +1643,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Harrier, race=dunefolk
 #: data/core/units/dunefolk/Harrier.cfg:4
-#, fuzzy
-#| msgid "Drake Warrior"
 msgid "Dune Harrier"
-msgstr "Smoczy żołnierz"
+msgstr "Wydmowy sokół"
 
 #. [unit_type]: id=Dune Harrier, race=dunefolk
 #: data/core/units/dunefolk/Harrier.cfg:20
@@ -1690,22 +1680,11 @@ msgstr "długi miecz"
 
 #. [unit_type]: id=Dune Herbalist, race=dunefolk
 #: data/core/units/dunefolk/Herbalist.cfg:4
-#, fuzzy
-#| msgid "Duelist"
 msgid "Dune Herbalist"
-msgstr "Szpadzista"
+msgstr "Wydmowy zielarz"
 
 #. [unit_type]: id=Dune Herbalist, race=dunefolk
 #: data/core/units/dunefolk/Herbalist.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Hakim are learned individuals who have given up their urban life in order "
-#| "to assist the Khalifate armies in their travels. Their motivations are "
-#| "many; some look to it as an adventure or as a steady source of pay, while "
-#| "others feel it to be a requirement of their faith. Regardless, Hakims are "
-#| "highly respected by all. They are trained with the advanced medical "
-#| "techniques and possess a potent clutch of medicines and herbs, which "
-#| "allows them to quickly heal even the most gravely wounded allies."
 msgid ""
 "Herbalists are learned individuals who have given up their urban life in "
 "order to assist the Dunefolk armies in their travels. Their motivations are "
@@ -1715,18 +1694,18 @@ msgid ""
 "techniques and possess a potent clutch of medicines and herbs, which allows "
 "them to quickly heal even the most gravely wounded allies."
 msgstr ""
-"Hakimowie to uczeni, którzy porzucili życie w miastach na rzecz pomagania "
-"potrzebującym w wyprawach armii Kalifatu. Robią to z wielu powodów; "
-"niektórzy z nich uważają to za pewną przygodę lub stałe źródło dochodu, "
-"podczas gdy inni uważają to za obowiązek wiary. Pomimo tego, Hakimowie "
-"cieszą się wielkim poważaniem w szeregach. Są oni ćwiczeni w różnych "
-"zaawansowanych technikach medycznych i posiadają potężny zbiór leków i ziół, "
-"które umożliwają im szybko uleczyć nawet najpoważniej rannych sojuszników."
+"Zielarze to uczeni, którzy porzucili życie w miastach by pomagać armiom "
+"ludzi z wydm w ich wyprawach. Robią to z wielu powodów; niektórzy z nich "
+"uważają to za pewną przygodę lub stałe źródło dochodu, podczas gdy inni "
+"czują patriotyczny obowiązek. Bez względu na to, zielarze cieszą się wielkim "
+"poważaniem. Są oni ćwiczeni w różnych zaawansowanych technikach medycznych i "
+"posiadają potężny zbiór leków i ziół, które umożliwiają im szybko wyleczyć "
+"nawet najpoważniej rannych sojuszników."
 
 #. [unit_type]: id=Dune Marauder, race=dunefolk
 #: data/core/units/dunefolk/Marauder.cfg:4
 msgid "Dune Marauder"
-msgstr ""
+msgstr "Wydmowy maruder"
 
 #. [unit_type]: id=Dune Marauder, race=dunefolk
 #: data/core/units/dunefolk/Marauder.cfg:26
@@ -1782,10 +1761,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Raider, race=dunefolk
 #: data/core/units/dunefolk/Raider.cfg:4
-#, fuzzy
-#| msgid "Direwolf Rider"
 msgid "Dune Raider"
-msgstr "Jeździec wargów"
+msgstr "Wydmowy łupieżca"
 
 #. [unit_type]: id=Dune Raider, race=dunefolk
 #: data/core/units/dunefolk/Raider.cfg:22
@@ -1814,21 +1791,11 @@ msgstr ""
 
 #. [unit_type]: id=Dune Ranger, race=dunefolk
 #: data/core/units/dunefolk/Ranger.cfg:4
-#, fuzzy
-#| msgid "Ranger"
 msgid "Dune Ranger"
-msgstr "Łowca"
+msgstr "Wydmowy łowca"
 
 #. [unit_type]: id=Dune Ranger, race=dunefolk
 #: data/core/units/dunefolk/Ranger.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Batal are the elite of the Muharib, engaging in constant hit and run "
-#| "attacks against an enemy army. Nimble as a goat and strong as a ram, they "
-#| "prefer to coordinate multiple attacks at the same time, sending foes "
-#| "running from their arrows only to be cut down by their axes. Given their "
-#| "penchant for taking on only the most daring missions, Batal are often "
-#| "heroes to the common troopers, an image they do not try to dissuade."
 msgid ""
 "Rangers are the elite of the Explorers, engaging in constant hit and run "
 "attacks against an enemy army. Nimble as a goat and strong as a ram, they "
@@ -1837,19 +1804,18 @@ msgid ""
 "for taking on only the most daring missions, Rangers are often heroes to the "
 "common troopers, an image they do not try to dissuade."
 msgstr ""
-"Batal to elitarna jednostka Muharibów która stosuje taktykę szybkiego ataku "
-"i ucieczki. Zwinny jak koza i silny jak baran, ceni sobie skoordynowane, "
-"zaciekłe ataki. Zmusza przeciwnika do ruchu zasypując go strzałami, po czym "
-"przystępuje do ataku straszliwym toporem. Biorąc pod uwagę ich zamiłowanie "
-"do podejmowania się tylko najtrudniejszych misji, Batal często są odbierani "
-"jako bohatrowie pośród zwykłych żołdaków."
+"Łowcy to elitarna wśród odkrywców, która stosuje taktykę szybkiego ataku i "
+"ucieczki. Zwinni jak kozy i silni jak barany, lubią przeprowadzać "
+"jednocześnie wiele skoordynowanych ataków. Zmuszają wrogów do ucieczki "
+"zasypując ich strzałami, by po chwili ściąć ich swoimi toporami. Biorąc pod "
+"uwagę ich zamiłowanie do podejmowania się tylko najtrudniejszych misji, "
+"zwykli żołnierze często widzą w nich bohaterów, a łowcy nie walczą z tą "
+"opinią."
 
 #. [unit_type]: id=Dune Rider, race=dunefolk
 #: data/core/units/dunefolk/Rider.cfg:4
-#, fuzzy
-#| msgid "Direwolf Rider"
 msgid "Dune Rider"
-msgstr "Jeździec wargów"
+msgstr "Wydmowy jeździec"
 
 #. [unit_type]: id=Dune Rider, race=dunefolk
 #: data/core/units/dunefolk/Rider.cfg:17
@@ -1873,7 +1839,7 @@ msgstr ""
 #. [unit_type]: id=Dune Rover, race=dunefolk
 #: data/core/units/dunefolk/Rover.cfg:4
 msgid "Dune Rover"
-msgstr ""
+msgstr "Wydmowy wędrowiec"
 
 #. [unit_type]: id=Dune Rover, race=dunefolk
 #: data/core/units/dunefolk/Rover.cfg:16
@@ -1903,7 +1869,7 @@ msgstr ""
 #. [unit_type]: id=Dune Scorcher, race=dunefolk
 #: data/core/units/dunefolk/Scorcher.cfg:5
 msgid "Dune Scorcher"
-msgstr ""
+msgstr "Wydmowy spopielacz"
 
 #. [unit_type]: id=Dune Scorcher, race=dunefolk
 #: data/core/units/dunefolk/Scorcher.cfg:24
@@ -1928,10 +1894,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Skirmisher, race=dunefolk
 #: data/core/units/dunefolk/Skirmisher.cfg:4
-#, fuzzy
-#| msgid "Saurian Skirmisher"
 msgid "Dune Skirmisher"
-msgstr "Jaszczurzy harcownik"
+msgstr "Wydmowy harcownik"
 
 #. [unit_type]: id=Dune Skirmisher, race=dunefolk
 #: data/core/units/dunefolk/Skirmisher.cfg:19
@@ -1958,18 +1922,11 @@ msgstr ""
 #. [unit_type]: id=Dune Soldier, race=dunefolk
 #: data/core/units/dunefolk/Soldier.cfg:4
 msgid "Dune Soldier"
-msgstr ""
+msgstr "Wydmowy żołnierz"
 
 #. [unit_type]: id=Dune Soldier, race=dunefolk
 #: data/core/units/dunefolk/Soldier.cfg:19
 #, fuzzy
-#| msgid ""
-#| "The Arif form the backbone of any Khalifate foot advance. Many come from "
-#| "noble or military families, and have spent most of their lives training "
-#| "their craft. Given their intense focus on swordplay, they are often sent "
-#| "against fortified enemy positions to create a breach for the remaining "
-#| "troops to exploit. The sight of Arif on the march, shields high, has "
-#| "caused many a defender to worry about the strength of their walls."
 msgid ""
 "The Soldier forms the backbone of any Dunefolk foot advance. Many come from "
 "noble or military families, and have spent most of their lives training "
@@ -1978,18 +1935,18 @@ msgid ""
 "troops to exploit. The sight of Soldiers on the march, shields high, has "
 "caused many a defender to worry about the strength of their walls."
 msgstr ""
-"Arifowie tworzą podstawę piechoty Kalifatu. Wielu z nich wywodzi się spośród "
-"szlachty lub rodzin z wojskowymi tradycjami i spędziło większość życia na "
-"ćwiczeniu swego fachu. Biorąc pod uwagę ich intensywny nacisk na szermierkę, "
-"są oni często wysyłani przeciwko ufortyfikowanym pozycjom wroga, aby "
-"stworzyć tam wyłom dla pozostałych żołnierzy. Widok maszerujących Arifów z "
-"uniesionymi wysoko tarczami niejednokrotnie przyprawiał obrońców o "
+"Żołnierze tworzą podstawę piechoty Kalifatu. Wielu z nich wywodzi się "
+"spośród szlachty lub rodzin z wojskowymi tradycjami i spędziło większość "
+"życia na ćwiczeniu swego fachu. Biorąc pod uwagę ich intensywny nacisk na "
+"szermierkę, są oni często wysyłani przeciwko ufortyfikowanym pozycjom wroga, "
+"aby stworzyć tam wyłom dla pozostałych żołnierzy. Widok maszerujących Arifów "
+"z uniesionymi wysoko tarczami niejednokrotnie przyprawiał obrońców o "
 "zmartwienie co do wytrzymałości ich murów."
 
 #. [unit_type]: id=Dune Spearguard, race=dunefolk
 #: data/core/units/dunefolk/Spearguard.cfg:4
 msgid "Dune Spearguard"
-msgstr ""
+msgstr "Wydmowy strażnik"
 
 #. [unit_type]: id=Dune Spearguard, race=dunefolk
 #: data/core/units/dunefolk/Spearguard.cfg:19
@@ -2015,10 +1972,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Spearmaster, race=dunefolk
 #: data/core/units/dunefolk/Spearmaster.cfg:4
-#, fuzzy
-#| msgid "Drake Blademaster"
 msgid "Dune Spearmaster"
-msgstr "Smoczy mistrz ostrza"
+msgstr "Wydmowy mistrz włóczni"
 
 #. [unit_type]: id=Dune Spearmaster, race=dunefolk
 #: data/core/units/dunefolk/Spearmaster.cfg:20
@@ -2101,20 +2056,11 @@ msgstr ""
 
 #. [unit_type]: id=Dune Swordsman, race=dunefolk
 #: data/core/units/dunefolk/Swordsman.cfg:4
-#, fuzzy
-#| msgid "Swordsman"
 msgid "Dune Swordsman"
-msgstr "Fechmistrz"
+msgstr "Pustynny fechmistrz"
 
 #. [unit_type]: id=Dune Swordsman, race=dunefolk
 #: data/core/units/dunefolk/Swordsman.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Armed with their sword, shield and faith, Ghazi are warriors of some "
-#| "renown among the Khalifate armies. They have further refined their combat "
-#| "arts, adding a powerful shield bash to knock back unsuspecting enemies. "
-#| "Though few in number, their presence can be decisive in dislodging even "
-#| "the most hardened redoubt."
 msgid ""
 "Armed with their sword and shield, Swordsman are warriors of some renown "
 "among the Dunefolk armies. They have further refined their combat arts, "
@@ -2122,30 +2068,20 @@ msgid ""
 "in number, their presence can be decisive in dislodging even the most "
 "hardened redoubt."
 msgstr ""
-"Uzbrojeni w miecze, tarcze i wiarę. Ghazi to poważani wojownicy w szeregach "
-"armii Kalifatu. Rozwijają i doskonalą sztukę walki poprzez stosowanie wielu "
-"technik, takich jak potężne uderzenia tarczą, które zwalają z nóg "
-"niespodziewających się takiego ataku przeciwników. Mimo że jest ich "
+"Uzbrojeni w miecze i tarcze, fechmistrzowie to poważani wojownicy w "
+"szeregach armii ludzi z wydm. Rozwijają i doskonalą sztukę walki poprzez "
+"stosowanie wielu technik, takich jak potężne uderzenia tarczą, które zwalają "
+"z nóg niespodziewających się takiego ataku przeciwników. Mimo że jest ich "
 "niewielu, ich obecność na polu bitwy może być decydującym czynnikiem w "
 "rozbiciu wrogiej obrony."
 
 #. [unit_type]: id=Dune Warmaster, race=dunefolk
 #: data/core/units/dunefolk/Warmaster.cfg:4
-#, fuzzy
-#| msgid "Drake Blademaster"
 msgid "Dune Warmaster"
-msgstr "Smoczy mistrz ostrza"
+msgstr "Wydmowy Wojmistrz"
 
 #. [unit_type]: id=Dune Warmaster, race=dunefolk
 #: data/core/units/dunefolk/Warmaster.cfg:26
-#, fuzzy
-#| msgid ""
-#| "Among every generation, a warrior elevates himself above his peers and "
-#| "foes; They seem to be able to alter the destiny of the world themselves. "
-#| "Often given the name Khalid, after a legendary leader of old, these "
-#| "individuals are celebrated for the piety and skill. Their travels and "
-#| "travails are told endlessly around the campfire with the reverent tones "
-#| "of those that speak of living legends."
 msgid ""
 "Among every generation, a warrior elevates himself above his peers and foes; "
 "They seem to be able to alter the destiny of the world themselves. Often "
@@ -2153,21 +2089,21 @@ msgid ""
 "strength and skill. Their travels and travails are told endlessly around the "
 "campfire with the reverent tones of those that speak of living legends."
 msgstr ""
-"W każdym pokoleniu rodzi się wojownik, który wznosi sie ponad swoich rodaków "
-"i wrogów; Wydaje się że potrafi on nawet zmienić losy całego świata. Często, "
-"przyjmuje on imię Khalid, po legendarnym wojowniku z dawnych czasów, a naród "
-"wielbi go za wyjątkowe umiejętności i oddanie. O jego czynach opowiada się z "
+"W każdym pokoleniu rodzi się wojownik, który wznosi się ponad swoich rodaków "
+"i wrogów. Wydaje się że potrafi on nawet zmienić losy całego świata. Często "
+"nadaje mu się imię Wojmistrza i jest wielbiony za wyjątkową siłę i "
+"umiejętności. O jego podróżach i czynach opowiada się przy ogniskach z "
 "wielką czcią i podziwem godnym żywej legendy. "
 
 #. [attack]: type=impact
 #: data/core/units/dunefolk/Warmaster.cfg:44
 msgid "pommel strike"
-msgstr ""
+msgstr "uderzenie głowicą"
 
 #. [unit_type]: id=Dune Windrider, race=dunefolk
 #: data/core/units/dunefolk/Windrider.cfg:4
 msgid "Dune Windrider"
-msgstr ""
+msgstr "Wydmowy jeździec wiatru"
 
 #. [unit_type]: id=Dune Windrider, race=dunefolk
 #: data/core/units/dunefolk/Windrider.cfg:18
@@ -2362,14 +2298,6 @@ msgstr "Krasnoludzki wartownik"
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Champions among their fellow troops, the dwarven sentinels form the "
-#| "bulwark of their battle lines. Leading a direct assault against a line "
-#| "that they fortify, is often out of the question; it tends toward being "
-#| "suicidal, rather than merely ineffectual. These dwarves are masters of "
-#| "the melee, and can hold a patch of earth with the singleminded tenacity "
-#| "of an oak."
 msgid ""
 "Champions among their fellow troops, the dwarven sentinels form the bulwark "
 "of their battle lines. Leading a direct assault against a line that they "
@@ -2401,6 +2329,10 @@ msgid ""
 "in the heat of battle, and their mastery of both battleaxe and warhammer "
 "make them imposing foes indeed."
 msgstr ""
+"Pancerne krasnoludy, okute w najmocniejsze zbroje i kolczugi jakie produkują "
+"huty Knalgi, stanowią awangardę krasnoludzkich armii. Słyną z "
+"nieustępliwości w ogniu walki, a mistrzowskie posługiwanie się toporami i "
+"młotami wojennymi czyni z nich strasznych przeciwników."
 
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:4
@@ -2728,17 +2660,6 @@ msgstr "Elficki foryś"
 
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Elvish Outriders are trained as the royal couriers of the elven kingdoms. "
-#| "Despite the peaceful nature of their people, their experience makes them "
-#| "quite deadly in combat. No human has ever come close to their skill in "
-#| "using a bow on horseback — in fact, most would be hard pressed to equal "
-#| "it standing on solid ground.\n"
-#| "\n"
-#| "The speed of these soldiers allows the elves to strike when and where "
-#| "they choose when fighting on their home ground, a fact that has saved "
-#| "many of their number from death."
 msgid ""
 "Elvish Outriders are trained as the royal couriers of the elven kingdoms. "
 "Despite the peaceful nature of their people, their experience makes them "
@@ -2752,12 +2673,12 @@ msgid ""
 msgstr ""
 "Elficcy forysie są ćwiczeni do służby kuriera w królestwach elfów. Pomimo "
 "pokojowego charakteru ich ludu, ich doświadczenie czyni ich groźnymi w "
-"walce. Żaden człowiek nie dorównał im w umiejętności posługiwania się łukiem "
-"na koniu - w zasadzie większość musiałaby się mocno postarać, by uczynić to "
-"stojąc na twardej ziemi.\n"
+"walce. Tylko najwytrwalsi mogą dorównać im w umiejętności posługiwania się "
+"łukiem na koniu, a w zasadzie, większość musiałaby się mocno postarać, by "
+"uczynić to stojąc na twardej ziemi.\n"
 "\n"
-"Szybkość tych elfów pozwala im wybierać czas i miejsce ataku w czasie walki "
-"w ich rodzinnych stronach, co niejednemu z nich uratowało życie."
+"Szybkość tych żołnierzy pozwala elfom wybierać czas i miejsce ataku tak, by "
+"walczyć w znanym terenie, co niejednemu z nich uratowało życie."
 
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:3
@@ -3511,6 +3432,13 @@ msgid ""
 "in ornate plate armor and granted some of the finest weaponry that human "
 "craftsmen can offer."
 msgstr ""
+"Dowodzący całymi armiami generałowie są odpowiedzialni za ochronę dużych lub "
+"istotnych części królestw, którym przyrzekli służyć. Generałowie są tak "
+"biegli w sztuce wojennej, że nawet mając do dyspozycji tylko świeżych "
+"rekrutów potrafią przeprowadzić strategiczny atak przeciwko przeważającym "
+"siłom przeciwnika i wyjść z takiego starcia zwycięsko. Noszą zdobione zbroje "
+"płytowe i posługują się najlepszymi brońmi jakie wychodzą z rąk ludzkich "
+"rzemieślników, a szacunkiem darzą ich wszyscy, od wielmoży po chłopa."
 
 #. [unit_type]: id=Grand Marshal, race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:4
@@ -4468,12 +4396,6 @@ msgstr "Chłop"
 
 #. [unit_type]: id=Peasant, race=human
 #: data/core/units/humans/Peasant.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Peasants are the backbone of the rural economy, and the soldiers of last "
-#| "resort. While not warlike by nature, they will stubbornly defend their "
-#| "homes. However, if you’re hurling peasants at your foes, you’re clearly "
-#| "out of superior forces."
 msgid ""
 "Peasants are the backbone of the rural economy, and the soldiers of last "
 "resort. While not warlike by nature, they will stubbornly defend their "
@@ -4481,10 +4403,12 @@ msgid ""
 "line, though; their reliance on farming tools as weaponry means they are "
 "only on the field of battle under the most desperate situations."
 msgstr ""
-"Chłopi są podstawą wiejskiej gospodarki i za broń chwytają dopiero w "
-"ostateczności. Choć z natury są spokojni, będą wytrwale bronić swych domów. "
-"Jeśli jednak musisz rzucać chłopów do walki, to najwyraźniej brakuje ci "
-"lepszych jednostek."
+"Chłopi są podstawą wiejskiej gospodarki, a za broń chwytają dopiero w "
+"ostateczności. Choć pokojowi z natury, będą wytrwale bronić swych domów. "
+"Brak treningu i dyscypliny szybko daje się jednak poznać, bo nie potrafią w "
+"walce utrzymać szyku. Z uwagi na uzbrojenie, które stanowią narzędzia "
+"rolnicza oznacza, powinno się rzucać chłopów do walki tylko jeśli nie ma "
+"innego wyjścia."
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Peasant.cfg:23 data/core/units/humans/Peasant.cfg:32
@@ -4506,6 +4430,13 @@ msgid ""
 "of moving in heavy armor, and can maneuver across the battlefield much "
 "faster than their gilded plate would suggest."
 msgstr ""
+"Pochodzący ze szlachetnych ludzkich rodów królowie i książęta często "
+"otrzymują rygorystyczny trening w sztukach walki, a tradycja ta pochodzi z "
+"czasów, gdy ich przodkowie dorabiali się bogactw na wojaczce. Noszą oni "
+"zbroje tak umiejętnie dopasowane, że budzą zazdrość nawet u krasnoludzkich "
+"kowali. Ci szlachetni wojownicy przeszli długi trening poruszania się w "
+"ciężkiej zbroi i mogą poruszać się po polu bitwy znacznie szybciej, niż "
+"sugeruje to widok okrywającego ich pozłacanego pancerza."
 
 #. [unit_type]: id=Woodsman, race=human
 #: data/core/units/humans/Woodsman.cfg:4
@@ -4704,19 +4635,6 @@ msgstr "Mermen oplątywacz"
 
 #. [unit_type]: id=Merman Entangler, race=merman
 #: data/core/units/merfolk/Entangler.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Merfolk tend to use a combination of both nets and clubs in fishing; nets "
-#| "to collect the fish, and clubs to finish the kill. Both of these tools "
-#| "have seen adaptation for warfare, and are valuable enough that "
-#| "auxilliaries who specialize in using them are deliberately brought to "
-#| "battle.\n"
-#| "\n"
-#| "Mermen often find themselves in a standoff with land-based enemies; the "
-#| "merfolk are too strong in the water, and are too weak to make any offense "
-#| "on land. Nets are a key bit of leverage; without nets, mermen can’t give "
-#| "any effective chase over land, and are at a great disadvantage in hand-to-"
-#| "hand combat."
 msgid ""
 "Merfolk tend to use a combination of both nets and clubs in fishing; nets to "
 "collect the fish, and clubs to finish the kill. Both of these tools have "
@@ -4739,8 +4657,8 @@ msgstr ""
 "walki - w wodzie mermeni są zbyt silnym przeciwnikiem dla wojsk lądowych, "
 "lecz po wyjściu na ląd sami stają się za słabi, by przypuścić skuteczny "
 "atak. Sieci stanowią w tej sytuacji kluczowy atut, gdyż bez nich mermeni "
-"mają trudności z dogonieniem jednostek lądowych, a w dodatkowo są narażeni "
-"na dotkliwe straty w walce wręcz."
+"mają trudności z dogonieniem jednostek lądowych, a dodatkowo są narażeni na "
+"dotkliwe straty w walce wręcz."
 
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:4
@@ -4756,6 +4674,12 @@ msgid ""
 "iconic tridents make them mighty foes to try to combat in the seas, but they "
 "lose almost all their mobility if forced to fight on land."
 msgstr ""
+"Społeczności mermenów poświęcają wiele uwagi treningowi swoich "
+"sił zbrojnych, dzięki czego pokoju w ich królestwie strzegą najlepsi "
+"żołnierze jakich mogła wydać ich wodna ojczyzna. Choć tracą całą mobilność "
+"po wyjściu na ląd, to każdy, kto spróbuje walczyć z nimi w morzach, znajdzie "
+"w nich potężnych i nieustępliwych przeciwników, walczących przy pomocy "
+"charakterystycznych trójzębów."
 
 #. [unit_type]: id=Merman Hoplite, race=merman
 #: data/core/units/merfolk/Hoplite.cfg:4
@@ -4993,6 +4917,10 @@ msgid ""
 "of other races, but doubly so considering the difficulties of fighting "
 "underwater, as any who try to match them in their homes can attest."
 msgstr ""
+"Mermeńscy wojownicy stanowią trzon armii mermenów. Posługują się trójzębami "
+"z niespotykanymi wśród innych ras umiejętnościami i finezją, a powinno robić "
+"to nawet większe wrażenie zważywszy na trudności związane z walką pod wodą. "
+"Zgodzi się z tym każdy, kto próbował stawić im czoła w ich krainach."
 
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
@@ -5127,10 +5055,8 @@ msgstr "kleszcze"
 
 #. [unit_type]: id=Giant Scorpling, race=monster
 #: data/core/units/monsters/Giant_Scorpling.cfg:4
-#, fuzzy
-#| msgid "Giant Scorpion"
 msgid "Giant Scorpling"
-msgstr "Gigantyczny skorpion"
+msgstr "Gigantyczne skorpioniątko"
 
 #. [unit_type]: id=Giant Scorpling, race=monster
 #: data/core/units/monsters/Giant_Scorpling.cfg:18
@@ -5302,6 +5228,13 @@ msgid ""
 "encounter with their bare fists. This is enough to keep even the doubtful "
 "from venturing too far onto the mountains they are said to inhabit."
 msgstr ""
+"Niewiele wiadomo o Yetich - małpokształtnych stworzeniach, które wedle "
+"opowieści żyją w odległych, pokrytych śniegiem górach. Niewielu twierdzi, że "
+"jakiegoś widziało, a wielu wątpi w ich istnienie. Jednak większość doniesień "
+"zgadza się pod względem kilku faktów - choć powolne i o prostym umyśle, yeti "
+"są ekstremalnie odporne i potrafią zabić każdą napotkaną osobę przy pomocy "
+"gołych pięści. To wystarcza, by nawet wątpiący w ich istnieje nie "
+"zapuszczali się zbyt daleko w góry, których zamieszkiwanie się im przypisuje."
 
 #. [unit_type]: id=Naga Fighter, race=naga
 #: data/core/units/nagas/Fighter.cfg:4
@@ -5521,6 +5454,12 @@ msgid ""
 "falling. What makes an orcish horde most threatening, however, is the sheer "
 "numbers in which these fighters can be fielded."
 msgstr ""
+"Siepacze stanową rdzeń sił orków, a do ich szeregów dostają się najwięksi i "
+"najsilniejsi orkowie z każdego klanu, którzy po otrzymaniu podstawowego "
+"wyposażenia wysyłani są do boju. Nawet najmniej doświadczeni rekruci "
+"potrafią być niebezpieczni ponieważ duzi orkowie wykazują się wrodzoną siłą "
+"i mogą odnieść wiele ran nim padną. To, co czyni hordę orków wyjątkowo "
+"niebezpieczną, to liczba takich wojowników trafiających do walki."
 
 #. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:4
@@ -5544,10 +5483,8 @@ msgstr ""
 
 #. [unit_type]: id=Orcish Nightblade, race=orc
 #: data/core/units/orcs/Nightblade.cfg:4
-#, fuzzy
-#| msgid "Orcish Leader"
 msgid "Orcish Nightblade"
-msgstr "Przywódca orków"
+msgstr ""
 
 #. [unit_type]: id=Orcish Nightblade, race=orc
 #: data/core/units/orcs/Nightblade.cfg:27
@@ -5562,15 +5499,13 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Nightblade.cfg:31
-#, fuzzy
-#| msgid "war blade"
 msgid "blade"
-msgstr "ostrze wojenne"
+msgstr "ostrze"
 
 #. [attack]: type=impact
 #: data/core/units/orcs/Nightblade.cfg:40
 msgid "kick"
-msgstr ""
+msgstr "kopnięcie"
 
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:4
@@ -6072,67 +6007,67 @@ msgstr ""
 #: data/core/units/undead/Corpse_Soulless.cfg:100
 #: data/core/units/undead/Corpse_Walking.cfg:99
 msgid "wc_variation^Drake"
-msgstr ""
+msgstr "Smok"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:115
 #: data/core/units/undead/Corpse_Walking.cfg:114
 msgid "wc_variation^Dwarf"
-msgstr ""
+msgstr "Krasnolud"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:127
 #: data/core/units/undead/Corpse_Walking.cfg:126
 msgid "wc_variation^Goblin"
-msgstr ""
+msgstr "Goblin"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:136
 #: data/core/units/undead/Corpse_Walking.cfg:151
 msgid "wc_variation^Mounted"
-msgstr ""
+msgstr "Jeździec"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:146
 #: data/core/units/undead/Corpse_Walking.cfg:135
 msgid "wc_variation^Gryphon"
-msgstr ""
+msgstr "Gryfon"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:162
 #: data/core/units/undead/Corpse_Walking.cfg:161
 msgid "wc_variation^Saurian"
-msgstr ""
+msgstr "Saurian"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:171
 #: data/core/units/undead/Corpse_Walking.cfg:170
 msgid "wc_variation^Swimmer"
-msgstr ""
+msgstr "Pływak"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:188
 #: data/core/units/undead/Corpse_Walking.cfg:187
 msgid "wc_variation^Troll"
-msgstr ""
+msgstr "Troll"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:197
 #: data/core/units/undead/Corpse_Walking.cfg:196
 msgid "wc_variation^Wose"
-msgstr ""
+msgstr "Drzewiec"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:209
 #: data/core/units/undead/Corpse_Walking.cfg:208
 msgid "wc_variation^Wolf"
-msgstr ""
+msgstr "Wilk"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:221
 #: data/core/units/undead/Corpse_Walking.cfg:220
 msgid "wc_variation^Bat"
-msgstr ""
+msgstr "Nietoperz"
 
 #. [unit_type]: id=Ancient Lich, race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:4

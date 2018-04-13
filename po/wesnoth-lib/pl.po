@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:20+0300\n"
-"PO-Revision-Date: 2018-04-04 15:02+0200\n"
+"PO-Revision-Date: 2018-04-11 21:10+0200\n"
 "Last-Translator: Karol Nowak <grywacz@gmail.com>\n"
 "Language-Team: z.banach@wsisiz.edu.pl\n"
 "Language: pl_PL\n"
@@ -91,6 +91,12 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
+"Gdy rzeka jest w jakimś miejscu bardzo płytka, to jej przekroczenie nie "
+"nastręcza jednostkom lądowym żadnych trudności. Co więcej, stworzenia "
+"najlepiej przystosowane do pływania również są w takich miejscach w pełni "
+"mobilne. Jeśli chodzi o zasady gry, to bród rzeczny traktowany jest jako "
+"trawiasta równina lub płytka woda, w zależności od tego, która z tych opcji "
+"daje jednostce najlepsze premie do obrony i ruchu."
 
 #. [terrain_type]: id=gray_reef
 #. [terrain_type]: id=medium_reef
@@ -209,6 +215,9 @@ msgid ""
 "travelers passing over them. As far as gameplay is concerned, roads behave "
 "as flat terrain."
 msgstr ""
+"<italic>text='Drogi'</italic> to wydeptane ścieżki, uformowane przez "
+"przemieszczających się nimi podróżników. Na potrzeby zasad gry traktowane są "
+"jak płaski teren."
 
 #. [terrain_type]: id=road_clean
 #: data/core/terrain.cfg:248
@@ -247,6 +256,9 @@ msgid ""
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgstr ""
+"<italic>text='Pustynie'</italic> mają inną budowę niż małe łachy piasku czy "
+"plaże, ale na potrzeby gry zachowują się identycznie. Patrz "
+"<ref>dst='terrain_sand' text='piasek'</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -270,6 +282,12 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in sand."
 msgstr ""
+"Niestabilność <italic>text='piasku'</italic> powoduje, że większość "
+"jednostek ma problemy z poruszaniem się po nim, co czynie je podatnymi na "
+"atak. W przeciwieństwie do nich, wężowate ciała jaszczurzych ras pozwalają "
+"dużo łatwiej się po nim przemieszczać.\n"
+"\n"
+"Większość jednostek ma na piasku obronę w zakresie od 20% do 40%."
 
 #. [terrain_type]: id=oasis
 #: data/core/terrain.cfg:317
@@ -282,6 +300,9 @@ msgid ""
 "A welcome sight to any traveler, an oasis allows units to heal as if "
 "stationed in a village, but provides no income or defensive advantage."
 msgstr ""
+"Każdy podróżnik cieszy się na widok oazy. Pozawala ona jednostkom leczyć się "
+"tak, jakby stacjonowały w wiosce, ale nie zapewnia dochodu ani premii "
+"obronnej."
 
 #. [terrain_type]: id=sand_rubble
 #: data/core/terrain.cfg:332
@@ -733,6 +754,13 @@ msgid ""
 "immediately above it. This provides an attack bonus for lawful units and "
 "removes the attack bonus from chaotic units."
 msgstr ""
+"Zagrożenia wynikające z prób chodzenia po <italic>text='lawie'</italic> są "
+"dość oczywiste. Jeśli chodzi o możliwości ruchu, lawa traktowana jest jak "
+"<ref>dst='terrain_unwalkable' text='teren nie do przebycia'</ref> i może "
+"zostać przekroczona tylko przez jednostki mogące wznieść się ponad nią na "
+"bezpieczną wysokość. Stopiona skała świeci się, oświetlając przestrzeń nad "
+"nią, co zapewnia praworządnym jednostkom premię do ataku, a chaotycznym taką "
+"premię odbiera."
 
 #. [terrain_type]: id=volcano
 #: data/core/terrain.cfg:1082
@@ -1115,6 +1143,8 @@ msgid ""
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
+"Mermeni i nagi zamieszkują <italic>text='zatopione wioski'</italic>. "
+"Stworzenia mieszkające w wodzie czują się tu jak w domu, ale "
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1907
@@ -1591,6 +1621,15 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
+"<italic>text='Wzgórza'</italic> reprezentują mocno nierówny teren,\n"
+"którego obniżenia i wzniesienia dają pewne możliwości ukrycia się. "
+"Większość żołnierzy ma trudności w poruszaniu się po nich. Krasnoludy, "
+"trolle i orkowie znają ten teren wystarczająco dobrze, by przekraczać go bez "
+"spowolnienia. Kawaleria ma trudności w poruszaniu się po wzgórzach, tak że "
+"nie pomaga jej on w obronie.\n"
+"\n"
+"Większość jednostek ma na wzgórzach 50% obrony, choć kawaleria jest "
+"ograniczona do 40%. Krasnoludy cieszą się w nich 60% obrony."
 
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:2853
@@ -1605,6 +1644,14 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
 "all generally enjoy 60%."
 msgstr ""
+"<italic>text='Bagna'</italic> reprezentują dowolne mokradła.\n"
+"Bagna spowalniają prawie każdego i utrudniają bronienie się. Wyjątek stanowi "
+"tu każda rasa, której ciała dostosowane są do poruszania w wodzie - "
+"poruszają się w nich bez przeszkód i otrzymują premię do obrony. Ci, którzy "
+"żyją w mokradłach, potrafią też dobrze kryć się w tym terenie.\n"
+"\n"
+"Większość jednostek ma w bagnach 30% obrony. Mermeni, nagi i jaszczury "
+"zasadniczo cieszą się 60% obrony."
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:2866
@@ -1620,6 +1667,16 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "naga and mermen enjoy 60%."
 msgstr ""
+"<italic>text='Płytka woda'</italic> reprezentuje zbiorniki wodne na tyle "
+"głębokie, by sięgnąć człowiekowi do pasa. Wystarczy to, by spowolnić prawie "
+"każdego i wystawić go na ataki. Krasnoludy, zaważywszy na to, że woda sięga "
+"im prawie do samej głowy, mają tu szczególnie ciężką przeprawę. Wyjątek "
+"stanowią rasy, których ciała są w naturalny sposób przystosowane do "
+"pływania, dzięki czemu otrzymują pokaźną premię do obrony i pełne możliwości "
+"ruchu.\n"
+"\n"
+"Większość jednostek ma w płytkiej wodzie obronę na poziomie od 20% do 30%, "
+"podczas gdy nagi i mermeni cieszą się 60% obrony."
 
 #. [terrain_type]: id=castle
 #: data/core/terrain.cfg:2881
@@ -1633,6 +1690,15 @@ msgid ""
 "\n"
 "Most units have about 60% defense in a castle."
 msgstr ""
+"<italic>text='Zamki'</italic> to dowolne trwałe fortyfikacje.\n"
+"Prawie wszystkie jednostki stacjonujące w zamkach otrzymują pokaźną premię "
+"do obrony, a większość jednostek może się w nich poruszać bez przeszkód. "
+"Wypełnienie zamku jednostkami przesądza o jego potencjale obronnym. Jeśli "
+"każde pole nie jest zajęte przez jednostkę, wróg może po prostu wśliznąć się "
+"do zamku i otrzymać taką samą premię do obrony jak wszyscy inni w jego "
+"wnętrzu.\n"
+"\n"
+"Większość jednostek ma w zamku 60% obrony."
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:2895
@@ -1647,6 +1713,15 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
+"<italic>text='Góry'</italic> są na tyle strome, że jednostki muszą często "
+"wspinać się na przeszkody, by się przemieścić.\n"
+"Ze swojej natury zapewniają większości żołnierzy pokaźną premię do obrony, "
+"ale jednocześnie stanowią trudną do przebycia przeszkodę. Większość typów "
+"kawalerii nie może wjechać w górski teren, jednakże jazda elfów jest tu "
+"wyjątkiem, podobnie jak dosiadające wilków gobliny. Góry to dom krasnoludów "
+"i trolli, więc nie dziwi, że poruszają się w nich one z łatwością.\n"
+"\n"
+"Większość jednostek ma w górach 60% obrony, a krasnoludy cieszą się aż 70%."
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:2907
@@ -1658,6 +1733,12 @@ msgid ""
 "\n"
 "Mermen and naga both receive 50% defense in deep water, with full movement."
 msgstr ""
+"<italic>text='Głęboka woda'</italic> reprezentuje zbiorniki wodne na tyle "
+"głębokie, że woda sięga w nich powyżej ludzkiej głowy.\n"
+"Większość jednostek nie może wejść do głębokiej wody, pozostaje więc ona "
+"domeną jednostek latających, lub bardzo dobrze pływających.\n"
+"\n"
+"Mermeni i nagi mają w głębokiej wodzie 50% obrony i pełne możliwości ruchu."
 
 #. [terrain_type]: id=flat
 #: data/core/terrain.cfg:2918 data/core/terrain.cfg:2919
@@ -1676,6 +1757,14 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
+"<italic>text='Trawa'</italic> oznacza otwarte równiny, uprawne, przeznaczone "
+"pod wypas bydła lub dzikie.\n"
+"Ponieważ stanowią otwartą przestrzeń, to przemierzanie ich jest bardzo "
+"łatwe, ale trudno się w nich bronić. Jednostkami najlepiej radzącymi sobie "
+"na trawie jest albo kawaleria, albo bardzo szybkie jednostki, które mogą "
+"dobrze wykorzystać otwartą przestrzeń.\n"
+"\n"
+"Większość jednostek ma na trawie obronę w zakresie od 30% do 40%."
 
 #. [terrain_type]: id=forest
 #: data/core/terrain.cfg:2933
@@ -1695,6 +1784,21 @@ msgid ""
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
+"<italic>text='Lasy'</italic> reprezentują zadrzewione tereny z mocno "
+"rozrośniętym runem, które utrudnia przejście. Choć spowalniają praktycznie "
+"wszystkich, to lasy oferują większości jednostek lepszą obronę niż otwarty "
+"teren. Jednak kawaleria ma takie trudności w przemieszczaniu się po nich, że "
+"niweluje to całkowicie zysk związany z możliwością ukrycia się. Elfy "
+"stanowią wyjątek od tych ogólnych zasad rządzących lasami. Nie tylko "
+"przemieszają się po nich bez przeszkód, to jeszcze otrzymują pokaźną premię "
+"do obrony. Krasnoludy stanowią kolejny wyjątek: choć są w stanie "
+"kroczyć lasami bez utraty szybkości, to jest to dla nich teren tak obcy, że "
+"nie otrzymują w nim premii do obrony.\n"
+"\n"
+"Większość jednostek ma w lasach 50% obrony, ale kawaleria jest ograniczona "
+"do 30%. Z drugiej strony elfy otrzymują w lasach obronę z zakresu od 60% do "
+"70%, włączając w to ich jazdę. Krasnoludy generalnie mają w lasach 30% "
+"obrony."
 
 #. [terrain_type]: id=frozen
 #: data/core/terrain.cfg:2943 data/core/terrain.cfg:2944
@@ -1712,6 +1816,14 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
+"<italic>text='Zamarznięty'</italic> teraz reprezentuje dowolną płaską "
+"przestrzeń pokrytą przez śnieg lub lód.\n"
+"Większość jednostek zostaje spowolniona w tym terenie i ma problemy z "
+"obroną. Warto zauważyć, z jednostki pływające, włączając w to umiejące "
+"oddychać pod wodą, nie mogą pływać pod lodem.\n"
+"\n"
+"Większość jednostek ma na zamarzniętym terenie obronę w zakresie od 20% do "
+"40%."
 
 #. [terrain_type]: id=village
 #: data/core/terrain.cfg:2959
@@ -1727,6 +1839,16 @@ msgid ""
 "Most units have 50 to 60% defense in villages, whereas cavalry receive only "
 "40%."
 msgstr ""
+"<italic>text='Wioski'</italic> reprezentują dowolną grupę budynków, ludzkich "
+"lub innych ras.\n"
+"Prawie wszystkie jednostki, nawet kawaleria, dobrze poruszają się w "
+"wioskach, a większość jednostek stacjonując w wiosce otrzymuje premię do "
+"obrony. Wioski zapewniają jednostkom materiały potrzebne do oczyszczenia i "
+"opatrzenia ran, co pozwala stacjonującym w nich jednostkom odzyskać co turę "
+"osiem punktów życia, albo wyleczyć zatrucie.\n"
+"\n"
+"Większość jednostek ma w wioskach obronę w zakresie od 50% do 60%, za to "
+"kawaleria otrzymuje tylko 40%."
 
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:2969 data/core/terrain.cfg:2970
@@ -1742,6 +1864,12 @@ msgid ""
 "jagged peaks at such rarefied heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
+"Istnieją przeszkody nie do przebycia nawet dla najbardziej zdeterminowanych "
+"podróżników, a zaliczają się do nich kamienne ściany oraz góry tak wysokie i "
+"strome, że przez cały czas spowijają je chmury. Nawet latające stworzenia "
+"nie mogą przemieszczać się między poszarpanymi szczytami wznoszącymi się w "
+"rozrzedzonym powietrzu, tak jak nawet najgwałtowniejszy troll nie przebije "
+"kamiennej ściany."
 
 #. [terrain_type]: id=unwalkable
 #: data/core/terrain.cfg:2979 data/core/terrain.cfg:2980
@@ -1756,6 +1884,11 @@ msgid ""
 "for sheer walls which would take days to traverse. As far as gameplay is "
 "concerned, only units capable of flying can cross this terrain."
 msgstr ""
+"<italic>text='Nieprzebyty teren'</italic> określa dowolną przepaść lub "
+"wąwóz, które, jak nazwa wskazuje, nie mogą zostać przekroczone piechotą. "
+"Przepaść charakteryzują strome ściany, których pokonanie zajęłoby dni. Jeśli "
+"chodzi o rozgrywkę, to tylko latające jednostki mogą przemieszczać się w tym "
+"terenie."
 
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:2989 data/core/terrain.cfg:2990
@@ -1767,6 +1900,8 @@ msgstr "Tory"
 msgid ""
 "<italic>text='Rails'</italic> are used to transport ore, mostly by dwarves."
 msgstr ""
+"<italic>text='Tory'</italic> używane są do transportu urobku, głównie przez "
+"krasnoludy."
 
 #. [settings]
 #: data/gui/default.cfg:23
@@ -1961,7 +2096,7 @@ msgstr "Anuluj"
 #. [label]: id=byline
 #: data/gui/window/addon_manager.cfg:84
 msgid "By:"
-msgstr ""
+msgstr "Autor:"
 
 #. [label]: id=version_string
 #: data/gui/window/addon_manager.cfg:120
@@ -2040,12 +2175,12 @@ msgstr "Strona:"
 #. [label]: id=url_none
 #: data/gui/window/addon_manager.cfg:598
 msgid "url^None"
-msgstr "url^Brak"
+msgstr "Brak"
 
 #. [button]: id=url_copy
 #: data/gui/window/addon_manager.cfg:633
 msgid "url^Copy"
-msgstr "url^Kopiuj"
+msgstr "Skopiuj"
 
 #. [button]: id=url_copy
 #: data/gui/window/addon_manager.cfg:634
@@ -2276,7 +2411,7 @@ msgstr "Sortuj na podstawie pełnej nazwie kampanii w kolejności alfabetycznej"
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:239
 msgid "Dates"
-msgstr "Daty"
+msgstr "Chronologia"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:240
@@ -3853,7 +3988,7 @@ msgstr "Premia za każdy atak, rekrutację i przejęcie"
 #: data/gui/window/preferences/05_multiplayer.cfg:402
 #: src/gui/dialogs/preferences_dialog.cpp:139
 msgid "General"
-msgstr "Generał"
+msgstr "Ogólne"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_create_game.cfg:546
@@ -4000,6 +4135,9 @@ msgid ""
 "The server will run as a background process until all users have "
 "disconnected. Do you wish to continue?"
 msgstr ""
+"Lokalna instancja serwera musi zostać uruchomiona żeby móc założyć grę "
+"sieciową. Serwer będzie działał jako proces w tle do czasu, aż wszyscy "
+"użytkownicy rozłączą się. Czy chcesz kontynuować?"
 
 #. [label]
 #: data/gui/window/mp_join_game.cfg:143 data/gui/window/mp_staging.cfg:157
@@ -4073,14 +4211,6 @@ msgstr "Gra wieloosobowa"
 
 #. [text_box]: id=user_name
 #: data/gui/window/mp_method_selection.cfg:92
-#, fuzzy
-#| msgid ""
-#| "You may login to the official multiplayer server with your forum username "
-#| "and password.\n"
-#| "Note that registration is not required to join the server: you need to "
-#| "supply a password only if you wish to use a registered username.\n"
-#| "\n"
-#| "The Battle for Wesnoth forum can be found at http://forums.wesnoth.org/"
 msgid ""
 "You may login to the official multiplayer server with your forum username "
 "and password.\n"
@@ -4094,7 +4224,7 @@ msgstr ""
 "Rejestracja nie jest wymagana do połączenia się z serwerem — hasło jest "
 "niezbędne tylko wtedy, gdy chcesz użyć zarejestrowanej nazwy użytkownika.\n"
 "\n"
-"Forum Bitwy o Wesnoth znajduje się pod adresem http://forums.wesnoth.org/"
+"Forum Bitwy o Wesnoth znajduje się pod adresem https://forums.wesnoth.org/"
 
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:183
@@ -4281,10 +4411,10 @@ msgstr "Zapisuj powtórki pod koniec scenariusza"
 
 #. [toggle_button]: id=save_replays
 #: data/gui/window/preferences/01_general.cfg:177
-#, fuzzy
-#| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid "Save replays of games on victory in all modes and defeat in multiplayer"
-msgstr "Usuń autozapisy po zwycięstwie 1-os./wieloos. lub porażce wieloos."
+msgstr ""
+"Zapisuj powtórki po wygranej we wszystkich trybach i po porażce w grze "
+"wieloosobowej"
 
 #. [toggle_button]: id=delete_saves
 #: data/gui/window/preferences/01_general.cfg:190
@@ -4293,11 +4423,11 @@ msgstr "Automatycznie kasuj zapisane stany gry pod koniec scenariuszy"
 
 #. [toggle_button]: id=delete_saves
 #: data/gui/window/preferences/01_general.cfg:191
-#, fuzzy
-#| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid ""
 "Delete previous auto-saves on victory in all modes and defeat in multiplayer"
-msgstr "Usuń autozapisy po zwycięstwie 1-os./wieloos. lub porażce wieloos."
+msgstr ""
+"Usuń automatycznie zapisane stany gry po zwycięstwie we wszystkich trybach i "
+"po porażce w grze wieloosobowej"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:201
@@ -4485,7 +4615,7 @@ msgstr "Skalowanie czcionek:"
 #. [slider]: id=scaling_slider
 #: data/gui/window/preferences/03_display.cfg:244
 msgid "Set the scaling factor of fonts"
-msgstr ""
+msgstr "Wybierz współczynnik skalowania czcionek"
 
 #. [button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:274
@@ -4671,6 +4801,8 @@ msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "'player_name notes on friend')"
 msgstr ""
+"Dodaj tę nazwę użytkownika do twojej listy przyjaciół (opcjonalnie podaj "
+"powód, n.p. \"nazwa_gracza dodałem do przyjaciół bo\")"
 
 #. [button]: id=add_ignored
 #: data/gui/window/preferences/05_multiplayer.cfg:277
@@ -4678,6 +4810,8 @@ msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
 "'player_name reason ignored')"
 msgstr ""
+"Dodaj tę nazwę użytkownika do twojej listy ignorowanych (opcjonalnie podaj "
+"powód, n.p. \"nazwa_gracza powód ignorowania\")"
 
 #. [button]: id=remove
 #: data/gui/window/preferences/05_multiplayer.cfg:290
@@ -4687,7 +4821,7 @@ msgstr "Usuń tę nazwę użytkownika z listy"
 #. [label]: id=no_friends_notice
 #: data/gui/window/preferences/05_multiplayer.cfg:311
 msgid "You have not befriended or ignored any other players."
-msgstr ""
+msgstr "Nie dodałeś żadnych graczy do list przyjaciół lub ignorowanych."
 
 #. [button]: id=open
 #: data/gui/window/screenshot_notification.cfg:49
@@ -4754,7 +4888,7 @@ msgstr "Ustaw opcje"
 #. [label]
 #: data/gui/window/sp_options_configure.cfg:62
 msgid "Configure settings for the selected custom modifications."
-msgstr ""
+msgstr "Skonfiguruj wybrane modyfikacje niestandardowe."
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:129
@@ -4826,7 +4960,7 @@ msgstr "Opuść grę"
 #. [label]
 #: data/gui/window/terrain_layers.cfg:21
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:33
@@ -5043,7 +5177,7 @@ msgstr "PŻ"
 #. [toggle_button]: id=sort_2
 #: data/gui/window/unit_list.cfg:149 data/gui/window/unit_recall.cfg:61
 msgid "Lvl"
-msgstr "Poz"
+msgstr "Poz."
 
 #. [toggle_button]: id=sort_5
 #. [toggle_button]: id=sort_3
@@ -5122,7 +5256,7 @@ msgstr "Uzupełnianie składni w konsoli Lua"
 
 #: src/build_info.cpp:276
 msgid "feature^Legacy bidirectional rendering"
-msgstr ""
+msgstr "Dawny sposób rysowania tekstu czytanego od prawej strony"
 
 #: src/build_info.cpp:283
 msgid "feature^D-Bus notifications back end"
@@ -5179,42 +5313,42 @@ msgstr "Tekst zawiera nieprawidłowe tagi: "
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:251
 msgid "conjunct pair^$first and $second"
-msgstr ""
+msgstr "$first i $second"
 
 #. TRANSLATORS: Formats the first two elements of a conjunctive list.
 #: src/formula/string_utils.cpp:254
 msgid "conjunct start^$first, $second"
-msgstr ""
+msgstr "$first, $second"
 
 #. TRANSLATORS: Formats successive elements of a conjunctive list.
 #: src/formula/string_utils.cpp:258
 msgid "conjunct mid^$prefix, $next"
-msgstr ""
+msgstr "$prefix, $next"
 
 #. TRANSLATORS: Formats the final element of a conjunctive list.
 #: src/formula/string_utils.cpp:261
 msgid "conjunct end^$prefix, and $last"
-msgstr ""
+msgstr "$prefix i $last"
 
 #. TRANSLATORS: Formats a two-element disjunctive list.
 #: src/formula/string_utils.cpp:269
 msgid "disjunct pair^$first or $second"
-msgstr ""
+msgstr "$first lub $second"
 
 #. TRANSLATORS: Formats the first two elements of a disjunctive list.
 #: src/formula/string_utils.cpp:272
 msgid "disjunct start^$first, $second"
-msgstr ""
+msgstr "$first, $second"
 
 #. TRANSLATORS: Formats successive elements of a disjunctive list.
 #: src/formula/string_utils.cpp:276
 msgid "disjunct mid^$prefix, $next"
-msgstr ""
+msgstr "$prefix, $next"
 
 #. TRANSLATORS: Formats the final element of a disjunctive list.
 #: src/formula/string_utils.cpp:279
 msgid "disjunct end^$prefix, or $last"
-msgstr ""
+msgstr "$prefix lub $last"
 
 #: src/gui/core/canvas.cpp:612
 msgid "Line doesn't fit on canvas."
@@ -5281,7 +5415,7 @@ msgstr "Wszystkie dodatki"
 
 #: src/gui/dialogs/addon/manager.cpp:190
 msgid "addons_view^Installed"
-msgstr "Zainstalowany"
+msgstr "Zainstalowane"
 
 #: src/gui/dialogs/addon/manager.cpp:191
 msgid "addons_view^Upgradable"
@@ -5293,7 +5427,7 @@ msgstr "Możliwe do publikacji"
 
 #: src/gui/dialogs/addon/manager.cpp:193
 msgid "addons_view^Not Installed"
-msgstr "Nie zainstalowany"
+msgstr "Nie zainstalowane"
 
 #: src/gui/dialogs/addon/manager.cpp:197
 msgid "addons_of_type^Campaigns"
@@ -5305,7 +5439,7 @@ msgstr "Scenariusze"
 
 #: src/gui/dialogs/addon/manager.cpp:199
 msgid "addons_of_type^SP/MP campaigns"
-msgstr "Wszystkie kampanie"
+msgstr "Kampanie jedno/wieloosobowe"
 
 #: src/gui/dialogs/addon/manager.cpp:200
 msgid "addons_of_type^MP campaigns"
@@ -5393,31 +5527,31 @@ msgstr "Opublikowany"
 
 #: src/gui/dialogs/addon/manager.cpp:271
 msgid "addon_state^Installed, not tracking local version"
-msgstr ""
+msgstr "Zainstalowany, nie śledzi wersji lokalnej"
 
 #: src/gui/dialogs/addon/manager.cpp:274
 msgid "addon_state^Published, not tracking local version"
-msgstr ""
+msgstr "Opublikowany, nie śledzi wersji lokalnej"
 
 #: src/gui/dialogs/addon/manager.cpp:278
 msgid "addon_state^Installed ($local_version|), upgradable"
-msgstr ""
+msgstr "Zainstalowany ($local_version|), możliwa aktualizacja"
 
 #: src/gui/dialogs/addon/manager.cpp:279
 msgid "addon_state^Published ($local_version| installed), upgradable"
-msgstr ""
+msgstr "Opublikowany ($local_version| zainstalowana), możliwa aktualizacja"
 
 #: src/gui/dialogs/addon/manager.cpp:285
 msgid "addon_state^Installed ($local_version|), outdated on server"
-msgstr ""
+msgstr "Zainstalowany ($local_version|), stara wersja na serwerze"
 
 #: src/gui/dialogs/addon/manager.cpp:286
 msgid "addon_state^Published ($local_version| installed), outdated on server"
-msgstr ""
+msgstr "Opublikowany ($local_version| zainstalowana), stara wersja na serwerze"
 
 #: src/gui/dialogs/addon/manager.cpp:292 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
-msgstr ""
+msgstr "Zainstalowany, nie gotowy do publikacji"
 
 #: src/gui/dialogs/addon/manager.cpp:293 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
@@ -5463,7 +5597,7 @@ msgstr "Powrót do listy"
 
 #: src/gui/dialogs/addon/manager.cpp:461
 msgid "An error occurred while downloading the add-ons list from the server."
-msgstr ""
+msgstr "Wystąpił błąd podczas pobierania listy dodatków z serwera."
 
 #: src/gui/dialogs/addon/manager.cpp:497
 msgid "No Add-ons Available"
@@ -5471,13 +5605,15 @@ msgstr "Brak dostępnych dodatków"
 
 #: src/gui/dialogs/addon/manager.cpp:497
 msgid "There are no add-ons available for download from this server."
-msgstr ""
+msgstr "Nie ma dodatków możliwych do pobrania z tego serwera."
 
 #: src/gui/dialogs/addon/manager.cpp:672
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr ""
+"Następujący dodatek zdaje się posiadać lokalnie zapisaną informację o "
+"publikacji lub wersji i nie zostanie usunięty:"
 
 #: src/gui/dialogs/addon/manager.cpp:680
 msgid "The following add-on could not be deleted properly:"
@@ -5492,10 +5628,14 @@ msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 msgstr ""
+"Zdalna wersja tego dodatku jest większa lub równa od wersji, którą próbujesz "
+"opublikować. Czy naprawdę chcesz kontynuować?"
 
 #: src/gui/dialogs/addon/manager.cpp:736
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
+"Niewłaściwa ścieżka do ikon. Upewnij się, że ścieżka wskazuje prawidłowy "
+"obrazek."
 
 #: src/gui/dialogs/addon/manager.cpp:739 src/gui/dialogs/addon/manager.cpp:742
 #: src/gui/dialogs/addon/manager.cpp:781
@@ -5516,6 +5656,8 @@ msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
+"Skasowanie „$addon” trwale usunie jego statystyki pobrać i aktualizacji z "
+"serwera dodatków. Czy naprawdę chcesz kontynuować?"
 
 #: src/gui/dialogs/addon/manager.cpp:801
 msgid "Do you want to uninstall '$addon|'?"
@@ -5529,7 +5671,7 @@ msgstr "Brak"
 
 #: src/gui/dialogs/advanced_graphics_options.cpp:75
 msgid "No matching widget found for scaling option"
-msgstr ""
+msgstr "Nie znaleziono widgeta dla tej opcji skalowania"
 
 #: src/gui/dialogs/attack_predictions.cpp:116
 msgid "No usable weapon"
@@ -5545,29 +5687,35 @@ msgstr "Wrażliwość atakującego na"
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:66
 msgid "$requester requires the following modifications to be enabled:"
-msgstr ""
+msgstr "$requester wymaga, by następujące modyfikacje zostały włączone:"
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:70
 msgid "$requester requires the following modifications to be disabled:"
-msgstr ""
+msgstr "$requester wymaga wyłączenia następujących modyfikacji:"
 
 #: src/gui/dialogs/depcheck_select_new.cpp:73
 msgid ""
 "The currently chosen scenario is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"Wybrany scenariusz nie jest kompatybilny z twoją konfiguracją.\n"
+"Proszę wybrać inny."
 
 #: src/gui/dialogs/depcheck_select_new.cpp:78
 msgid ""
 "The currently chosen era is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"Wybrana era nie jest kompatybilne z twoją konfiguracją.\n"
+"Proszę wybrać inną."
 
 #: src/gui/dialogs/depcheck_select_new.cpp:84
 msgid ""
 "The currently chosen modification is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"Wybrana modyfikacja nie jest kompatybilna z twoją konfiguracją.\n"
+"Proszę wybrać inną."
 
 #: src/gui/dialogs/editor/generator_settings.cpp:71
 msgid "/1000 tiles"
@@ -5610,6 +5758,8 @@ msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
 msgstr ""
+"Nie udało się stworzyć nowego katalogu w $path|. Upewnij się, że masz "
+"uprawnienia do zapisu w tej lokalizacji."
 
 #: src/gui/dialogs/file_dialog.cpp:729
 msgid "The following folder and its contents will be permanently deleted:"
@@ -5628,6 +5778,8 @@ msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
 msgstr ""
+"Nie udało się skasować $path|. Upewnij się, że masz uprawienia do zapisu w "
+"tej lokalizacji."
 
 #: src/gui/dialogs/folder_create.cpp:60
 msgid "New Bookmark"
@@ -5860,6 +6012,9 @@ msgid ""
 "incompatible with your version. You might wish to suggest that the host's "
 "add-ons be updated."
 msgstr ""
+"Nie można dołączyć do tej gry ponieważ osoba, która ją założyła, ma "
+"przestarzałe wersje dodatków, które nie są kompatybilne z twoimi. Możesz "
+"chcieć jej zasugerować, żeby je zaktualizowała."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:240
 msgid "Missing User-made Content."
@@ -5871,6 +6026,9 @@ msgid ""
 "in order to join.\n"
 "Do you want to try to install them?"
 msgstr ""
+"Dołączenie do tej gry wymaga instalacji lub aktualizacji co najmniej jednego "
+"dodatku stworzonego przez użytkowników.\n"
+"Czy chcesz spróbować je zainstalować?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:407
 msgid "Games: showing $num_shown out of $num_total"
@@ -5913,6 +6071,8 @@ msgid ""
 "One or more items need to be installed\n"
 "in order to join this game."
 msgstr ""
+"Jeden lub więcej elementów musi zostać\n"
+"zainstalowanych, żeby dołączyć do tej gry."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:511
 msgid "Observers allowed"
@@ -5927,12 +6087,16 @@ msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at http://bugs.wesnoth.org."
 msgstr ""
+"Coś jest nie w porządku z bazą wersji dodatków używaną przez poczekalnię "
+"gier wieloosobowych. Proszę zgłosić to na https://bugs.wesnoth.org."
 
 #: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:131
 msgid ""
 "This build of wesnoth does not include support for desktop notifications, "
 "contact your package manager"
 msgstr ""
+"Ta wersja Wesnoth nie wspiera powiadomień systemowych, skontaktuj się z "
+"osobą, która przygotowała grę dla twojego systemu"
 
 #: src/gui/dialogs/multiplayer/mp_change_control.cpp:108
 msgid "Side $side"
@@ -5977,15 +6141,18 @@ msgstr "Nie znaleziono er"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:280
 msgid "Independent: Random factions assigned independently"
-msgstr ""
+msgstr "Niezależne: frakcje są losowane niezależnie"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:281
 msgid "No Mirror: No two players will get the same faction"
 msgstr ""
+"Bez lustrzanego odbicia: żadnych para graczy nie dostanie tej samej frakcji"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:282
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr ""
+"Bez odbicia lustrzanego wśród sojuszników: żadna para sojuszników nie "
+"dostanie tej samej frakcji"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:536
 msgid "No eras available for this game."
@@ -6118,6 +6285,8 @@ msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
+"„<b>$hotkey_sequence|</b>” jest używana przez „<b>$old_hotkey_action|</b>”.\n"
+"Czy chcesz teraz przypisać ją do „<b>$new_hotkey_action|</b>”?"
 
 #: src/gui/dialogs/preferences_dialog.cpp:880
 msgid "Reassign Hotkey"
@@ -6199,19 +6368,19 @@ msgstr "Nie zdefiniowano domyślnego interfejsu."
 
 #: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Installed, upgradable"
-msgstr ""
+msgstr "Zainstalowany, możliwa aktualizacja"
 
 #: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Published, upgradable"
-msgstr ""
+msgstr "Opublikowany, możliwa aktualizacja"
 
 #: src/gui/widgets/addon_list.cpp:122
 msgid "addon_state^Installed, outdated on server"
-msgstr ""
+msgstr "Zainstalowany, starsza wersja na serwerze"
 
 #: src/gui/widgets/addon_list.cpp:122
 msgid "addon_state^Published, outdated on server"
-msgstr ""
+msgstr "Opublikowany, starsza wersja na serwerze"
 
 #: src/gui/widgets/addon_list.cpp:285
 msgid "Delete add-on from server"
@@ -6222,17 +6391,13 @@ msgid "whisper to $receiver"
 msgstr "szepnij do $receiver"
 
 #: src/gui/widgets/chatbox.cpp:396
-#, fuzzy
-#| msgid ""
-#| "Whisper session with $name started. If you do not want to receive "
-#| "messages from this user, type /ignore $name\n"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>\n"
 msgstr ""
-"Nawiązano sesję wiadomości szeptanych z użytkownikiem $name. Jeśli nie "
-"chcesz otrzymywać wiadomości od tego użytkownika, wpis polecenie /ignore "
-"$name\n"
+"Nawiązano sesję wiadomości szeptanych z użytkownikiem <i>„$name”</i>. Jeśli "
+"nie chcesz otrzymywać wiadomości od tego użytkownika, wpis polecenie <i>/"
+"ignore $name</i>\n"
 
 #: src/gui/widgets/chatbox.cpp:400
 msgid "Room <i>“$name”</i> joined"
@@ -6297,7 +6462,7 @@ msgstr[2] "$excess innych"
 #: src/gui/widgets/multimenu_button.cpp:182
 #: src/gui/widgets/multimenu_button.cpp:239
 msgid "multimenu^None Selected"
-msgstr "Żadne wybrane"
+msgstr "Nie wybrano"
 
 #: src/gui/widgets/pane.cpp:429
 msgid "Need at least 1 parallel item."
@@ -6362,21 +6527,21 @@ msgstr "Ataki"
 #: src/gui/widgets/unit_preview_pane.cpp:416
 #: src/gui/widgets/unit_preview_pane.cpp:447
 msgid "Lvl $lvl"
-msgstr "Poz $lvl"
+msgstr "Poz. $lvl"
 
 #: src/gui/widgets/unit_preview_pane.cpp:302
 #: src/gui/widgets/unit_preview_pane.cpp:315
 #: src/gui/widgets/unit_preview_pane.cpp:455
 #: src/gui/widgets/unit_preview_pane.cpp:468
 msgid "HP: "
-msgstr "PŻ:"
+msgstr "PŻ: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:304
 #: src/gui/widgets/unit_preview_pane.cpp:320
 #: src/gui/widgets/unit_preview_pane.cpp:458
 #: src/gui/widgets/unit_preview_pane.cpp:473
 msgid "XP: "
-msgstr "PD:"
+msgstr "PD: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:322
 #: src/gui/widgets/unit_preview_pane.cpp:475
@@ -6386,7 +6551,7 @@ msgstr "Modyfikator doświadczenia: "
 #: src/gui/widgets/unit_preview_pane.cpp:325
 #: src/gui/widgets/unit_preview_pane.cpp:478
 msgid "MP: "
-msgstr "PR:"
+msgstr "PR: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:363
 #: src/gui/widgets/unit_preview_pane.cpp:506
@@ -6629,7 +6794,7 @@ msgstr "Cała mapa"
 
 #: src/hotkey/hotkey_command.cpp:120
 msgid "Each Team"
-msgstr "Każda drużyna"
+msgstr "Drużyna"
 
 #: src/hotkey/hotkey_command.cpp:121
 msgid "Human Team"
@@ -6777,6 +6942,9 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
+"Użyj lewego/prawego przycisku myszy żeby malować teren na pierwszym/drugim "
+"planie. Trzymaj wciśnięty Shift żeby malować tylko po warstwie podstawowej. "
+"Ctrl+klik żeby pobrać konfigurację terenu spod kursora."
 
 #: src/hotkey/hotkey_command.cpp:174
 msgid "Fill Tool"
@@ -6787,6 +6955,9 @@ msgid ""
 "Left mouse button selects or deselects with Ctrl, right brings up a context "
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
+"Lewy przycisk myszy zaznacza lub usuwa zaznaczenie z Ctrl, prawy wyświetla "
+"menu kontekstowe. Trzymaj wciśnięty Shift, aby skorzystać z narzędzia "
+"magicznej różdżki, które zaznacza wszystkie pola takiego samego terenu."
 
 #: src/hotkey/hotkey_command.cpp:175
 msgid "Selection Tool"
@@ -6798,6 +6969,9 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"Lewy przycisk myszy wyświetla wybór gracza, prawy czyści. Cyfry na "
+"klawiaturze przesuwają do pozycji startowych, alt+liczba ustawiają "
+"odpowiednią pozycję startową na pole pod kursorem, delete czyści."
 
 #: src/hotkey/hotkey_command.cpp:176
 msgid "Starting Positions Tool"
@@ -6809,13 +6983,15 @@ msgstr "Etykiety"
 
 #: src/hotkey/hotkey_command.cpp:177
 msgid "Left mouse button sets or drags a label, right clears."
-msgstr ""
+msgstr "Lewy przycisk myszy ustawia lub przesuwa etykietę, prawy usuwa."
 
 #: src/hotkey/hotkey_command.cpp:178
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
 msgstr ""
+"Lewy przycisk myszy ustawia nową jednostkę lub umożliwia przeciągnięcie, "
+"prawy otwiera menu kontekstowe. Wymaga zdefiniowanej strony."
 
 #: src/hotkey/hotkey_command.cpp:178
 msgid "Unit Tool"
@@ -6830,12 +7006,16 @@ msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
+"Lewy przycisk myszy ustawia nowy przedmiot albo umożliwia przeciągnięcie, "
+"prawy czyści. Jeszcze nie zaimplementowane."
 
 #: src/hotkey/hotkey_command.cpp:180
 msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
 msgstr ""
+"Lewy przycisk myszy ustawia lub przesuwa źródło dźwięku, prawy czyści. "
+"Jeszcze nie zaimplementowane."
 
 #: src/hotkey/hotkey_command.cpp:180
 msgid "Sound Source Tool"
@@ -6846,6 +7026,8 @@ msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
 msgstr ""
+"Lewy przycisk myszy daje obecnej stronie kontrolę nad wioską, prawy czyści. "
+"Wymaga zdefiniowanej strony."
 
 #: src/hotkey/hotkey_command.cpp:181
 msgid "Village Tool"
@@ -6869,11 +7051,12 @@ msgstr "Przełącz możliwość zmiany nazwy tej jednostki."
 
 #: src/hotkey/hotkey_command.cpp:185
 msgid "Assign Recruit List"
-msgstr ""
+msgstr "Przypisz listę rekrutów"
 
 #: src/hotkey/hotkey_command.cpp:185
 msgid "Assign the selected unit set as recruit list to the unit."
 msgstr ""
+"Przypisz wybrany zestaw jednostek do listy rekrutacji wybranej jednostki."
 
 #: src/hotkey/hotkey_command.cpp:187
 msgid "Change Unit ID"
@@ -6942,7 +7125,7 @@ msgstr "Kopiuj"
 #: src/hotkey/hotkey_command.cpp:208
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
-msgstr ""
+msgstr "Lewy przycisk myszy wkleja ze schowka, prawy otwiera menu kontekstowe."
 
 #: src/hotkey/hotkey_command.cpp:208
 msgid "Paste"
@@ -7210,10 +7393,13 @@ msgid ""
 "functionality and is required for hosting local network games. It will "
 "normally be found in the same folder as the game executable."
 msgstr ""
+"Plik wykonywalny serwera <b>$filename</b> zapewnia funkcjonalność serwera "
+"gier wieloosobowych i jest wymagany, by zakładać lokalne gry sieciowe. "
+"Zazwyczaj można go znaleźć w tym samym katalogu, co plik wykonywalny gry."
 
 #: src/preferences/display.cpp:170
 msgid "Find Server Application"
-msgstr ""
+msgstr "Znajdź plik wykonywalny serwera"
 
 #: src/preferences/game.cpp:379
 msgid "No server has been defined."
