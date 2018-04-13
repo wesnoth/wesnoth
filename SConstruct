@@ -372,7 +372,6 @@ if env["prereqs"]:
         conf.CheckBoost("smart_ptr", header_only = True) & \
         conf.CheckBoost("locale") & \
         CheckAsio(conf) & \
-        conf.CheckBoost("thread", require_version = boost_version) & \
         conf.CheckBoost("filesystem") \
             and Info("Base prerequisites are met")) \
             or Warning("Base prerequisites are not met")
