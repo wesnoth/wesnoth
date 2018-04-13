@@ -67,6 +67,7 @@
    * Add to_location in [move_unit], allowing use of special locations
    * Add dir in [move_unit], allowing relative movements
    * Add clear_shroud in [move_unit] to clear shroud as the unit moves
+   * Fixed [modify_side] share_vision=yes not doing anything (bug #2850).
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
    * Fixed some hotkeys triggering multiple commands on GNU/Linux (bug #1736)
