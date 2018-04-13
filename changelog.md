@@ -17,6 +17,7 @@
  ### User Interface
    * Swapped the position and formatting of game names and titles in the MP lobby.
    * Made Faction Select button's purpose more clear in MP Staging.
+   * Added a convenient button in Load Game to open your saves folder.
  ### Miscellaneous and bug fixes
    * Removed the Font Scaling preference. It was too buggy (issues #2792 and #1624).
    * Fixed some hotkeys triggering multiple commands on GNU/Linux (bug #1736).

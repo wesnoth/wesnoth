@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/game_load.hpp"
 
+#include "desktop/open.hpp"
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
@@ -146,6 +147,10 @@ void game_load::pre_show(window& window)
 			find_widget<button>(&window, "delete", false),
 			std::bind(&game_load::delete_button_callback,
 					this, std::ref(window)));
+
+	connect_signal_mouse_left_click(
+		find_widget<button>(&window, "browse_saves_folder", false),
+		std::bind(&desktop::open_object, filesystem::get_saves_dir()));
 
 	display_savegame(window);
 }
