@@ -19,6 +19,8 @@
 
 #if defined(_X11) || defined(__APPLE__)
 
+#include <thread>
+
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h> // fork(), exec family
@@ -74,8 +76,8 @@ bool open_object(const std::string& path_or_url)
 		_exit(1); // This shouldn't happen.
 	}
 
-	// Waiting for the child process to exit is unnecessary because we ignore SIGCHLD.
-	// See the manpage for wait(2).
+	std::thread t { [child](){ int status; waitpid(child, &status, 0); } };
+	t.detach();
 
 	return true;
 
