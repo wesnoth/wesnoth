@@ -8,14 +8,14 @@
 # Automatically generated, 2004.
 # Alessio D'Ascanio <otaku@fastwebnet.it>, 2004, 2005.
 # Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2009, 2011.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2016.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:31 UTC\n"
-"PO-Revision-Date: 2017-07-29 15:21+0300\n"
+"PO-Revision-Date: 2018-04-11 12:00+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [generic_multiplayer]: id=user_map
@@ -69,18 +69,10 @@ msgstr ""
 #. [era]: id=era_dunefolk
 #: data/multiplayer/eras.cfg:83
 msgid "Default + Dunefolk"
-msgstr ""
+msgstr "Default + Califfato"
 
 #. [era]: id=era_dunefolk
 #: data/multiplayer/eras.cfg:84
-#, fuzzy
-#| msgid ""
-#| "An era featuring an additional faction besides the six factions from "
-#| "Default Era. Khalifate units use no magic, but instead rely on careful "
-#| "use of terrain and coordinated strikes around dusk or dawn.\n"
-#| "\n"
-#| "This era is still under development, so please be sure to report any "
-#| "problems that arise."
 msgid ""
 "An era featuring an additional faction besides the six factions from Default "
 "Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
@@ -89,31 +81,21 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
-"Un’era che propone una fazione aggiuntiva rispetto a quelle dell’era "
-"predefinita. Le unità  del Califfato non usano la magia, piuttosto si "
-"affidano ad un uso accorto del terreno e di attacchi coordinati, sferrati "
-"preferibilmente all’alba o al tramonto.\n"
+"Un’era che propone una fazione aggiuntiva rispetto alle sei dell’era "
+"predefinita. Le unità  del Califfato preferiscono fare affidamento ad un uso "
+"accorto del terreno e di attacchi coordinati, sferrati preferibilmente "
+"all’alba o al tramonto.\n"
 "\n"
 "Quest’era è ancora in fase di sviluppo, siete quindi pregati di riportare "
 "qualsiasi problema possiate incontrare."
 
 #. [era]: id=era_dunefolk_heroes
 #: data/multiplayer/eras.cfg:94
-#, fuzzy
-#| msgid "Age of Heroes"
 msgid "Age of Heroes + Dunefolk"
-msgstr "Era degli eroi"
+msgstr "Era degli eroi + Califfato"
 
 #. [era]: id=era_dunefolk_heroes
 #: data/multiplayer/eras.cfg:95
-#, fuzzy
-#| msgid ""
-#| "An era featuring an additional faction besides the six factions from Age "
-#| "of Heroes Era. Khalifate units use no magic, but instead rely on careful "
-#| "use of terrain and coordinated strikes around dusk or dawn.\n"
-#| "\n"
-#| "This era is still under development, so please be sure to report any "
-#| "problems that arise."
 msgid ""
 "An era featuring an additional faction besides the six factions from Age of "
 "Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
@@ -122,10 +104,10 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
-"Un’era che propone una fazione aggiuntiva rispetto a quelle dell’era degli "
-"eroi. Le unità  del Califfato non usano la magia, piuttosto si affidano ad "
-"un uso accorto del terreno e di attacchi coordinati, sferrati "
-"preferibilmente all’alba o al tramonto.\n"
+"Un’era che propone una fazione aggiuntiva rispetto alle sei dell’Era degli "
+"Eroi. Le unità del Califfato preferiscono fare affidamento ad un uso accorto "
+"del terreno e di attacchi coordinati, sferrati preferibilmente all’alba o al "
+"tramonto.\n"
 "\n"
 "Quest’era è ancora in fase di sviluppo, siete quindi pregati di riportare "
 "qualsiasi problema possiate incontrare."
@@ -186,21 +168,11 @@ msgstr ""
 #: data/multiplayer/factions/dunefolk-aoh.cfg:4
 #: data/multiplayer/factions/dunefolk-default.cfg:4
 msgid "Dunefolk"
-msgstr ""
+msgstr "Califfato"
 
 #. [multiplayer_side]: id=Dunefolk, type=random
 #: data/multiplayer/factions/dunefolk-aoh.cfg:14
 #: data/multiplayer/factions/dunefolk-default.cfg:14
-#, fuzzy
-#| msgid ""
-#| "The <bold>text='Khalifate'</bold> are a faction of humans from the "
-#| "deserts and hills of the southern lands. Lacking magic users, the "
-#| "Khalifate instead specialize in using terrain features to coordinate "
-#| "attacks at dawn or dusk. Their ranks boast lawful and liminal units, "
-#| "healers, high-accuracy melee fighters, and fearsome horse-mounted "
-#| "archers. While Khalifate units tend to be more expensive than those of "
-#| "the Loyalist faction, they make up for this with high mobility — "
-#| "especially on hilly terrains."
 msgid ""
 "The <bold>text='Dunefolk'</bold> are a faction of humans from the deserts "
 "and hills of the southern lands. The Dunefolk specialize in using terrain "
@@ -211,13 +183,13 @@ msgid ""
 "especially on hilly terrains."
 msgstr ""
 "Il <bold>text='Califfato'</bold> è una fazione composta da uomini "
-"provenienti dal deserto e dalle colline meridionali. Non avendo maghi, il "
-"Califfato ha preferito specializzarsi nell’utilizzo del terreno per "
-"coordinare attacchi all’alba e al tramonto. ‎‎‎Trai i loro ranghi trovano posto "
-"unità legali e liminali, curatori, combattenti di mischia infallibili e "
-"terribili arcieri a cavallo. Sebbene le unità del califfato tendano ad "
-"essere più costose di quelle della fazione Lealista, compensano il costo con "
-"la loro alta mobilità, specialmente su terreni collinosi."
+"provenienti dal deserto e dalle colline meridionali. Il Califfato ha "
+"preferito specializzarsi nell’utilizzo del terreno per coordinare attacchi "
+"all’alba e al tramonto. ‎‎‎Trai i loro ranghi trovano posto unità legali e "
+"liminali, curatori, combattenti di mischia infallibili e terribili arcieri a "
+"cavallo. Sebbene le unità del califfato tendano ad essere più costose di "
+"quelle della fazione Lealista, compensano il costo con la loro alta "
+"mobilità, specialmente su terreni collinosi."
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
@@ -652,10 +624,8 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:89
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:95
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:91
-#, fuzzy
-#| msgid "teamname^Southwest"
 msgid "teamname^Statues"
-msgstr "Sud-ovest"
+msgstr "Statue"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:94
@@ -1500,7 +1470,7 @@ msgstr "Vilhelm Viskitynnyri"
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:684
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:695
 msgid "Clockwork Boy"
-msgstr "Ragazzo Meccanico"
+msgstr "Ragazzo meccanico"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brutal
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:302
@@ -1654,15 +1624,13 @@ msgstr ""
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:38
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Shapeshifter"
-msgstr "Centro"
+msgstr "Mutaforma"
 
 #. [unit]: type=Tentacle of the Deep
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:52
 msgid "Nani the Shapeshifter"
-msgstr ""
+msgstr "Nani il Mutaforma"
 
 #. [effect]: type=arcane
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:82

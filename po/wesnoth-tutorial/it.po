@@ -1,13 +1,13 @@
 # translation of it.po to Italian
 # Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2008, 2009, 2010, 2011.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2017.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:31 UTC\n"
-"PO-Revision-Date: 2017-11-04 16:37+0300\n"
+"PO-Revision-Date: 2018-04-11 14:46+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #. [lua]: wml_actions.select_character
 #: data/campaigns/tutorial/lua/character_selection.lua:26
@@ -101,6 +101,10 @@ msgid ""
 "Part 1 will teach you the basics about movement, attacking, healing, and "
 "recruiting. Firstly, you’ll choose a hero (both heroes play the same)."
 msgstr ""
+"Questa è una esercitazione divisa in due parti ed è pensata per in neofiti "
+"del gioco. La prima parte insegnerà le basi del movimento, dell’attacco, "
+"della cura e del reclutamento. Come prima cosa, dovrai scegliere un eroe "
+"(entrambi gli eroi giocano nello stesso modo)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:159
@@ -146,15 +150,6 @@ msgstr "Movimento"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:211
-#, fuzzy
-#| msgid ""
-#| "When you select a unit, in this case Konrad, the places he can move to "
-#| "are highlighted. All units have a certain number of <i>movement points</"
-#| "i>, which dictate how many hexes that unit can move per turn. Normally, "
-#| "moving one hex uses one movement point, but moving across different types "
-#| "of hexes, or <i>terrains</i>, can use up more. You will learn more about "
-#| "that later. To move, simply click on your destination. You can press "
-#| "<b>u</b> to undo a move if you move to the wrong place."
 msgid ""
 "When you select a unit, in this case Konrad, the places he can move to are "
 "highlighted. All units have a certain number of <i>movement points</i>, "
@@ -165,24 +160,14 @@ msgid ""
 msgstr ""
 "Quando selezioni una unità, in questo caso Konrad, le caselle dove può "
 "muoversi vengono evidenziate. Tutte le unità hanno dei <i>punti movimento</"
-"i>, che limitano il numero di esagoni percorribili da una unità in un turno "
-"di gioco. Normalmente, muoversi di un esagono consuma un punto movimento, ma "
-"attraversare diversi tipi di esagoni, o <i>territori</i> può portare ad un "
-"maggiore utilizzo di tali punti. Per muovere una unità, clicca semplicemente "
-"sulla destinazione desiderata. Puoi sempre premere il tasto <b>u</b> per "
-"annullare una mossa se pensi di esserti mosso in un posto sbagliato."
+"i> che limitano il numero di esagoni percorribili da una unità in un turno "
+"di gioco. Normalmente, muoversi di un esagono consuma un punto movimento. "
+"Per muovere una unità, clicca semplicemente sulla destinazione desiderata. "
+"(Puoi sempre premere il tasto <b>u</b> per annullare una mossa se pensi di "
+"esserti mosso in un posto sbagliato.)"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:219
-#, fuzzy
-#| msgid ""
-#| "When you select a unit, in this case Li’sar, the places she can move to "
-#| "are highlighted. All units have a certain number of <i>movement points</"
-#| "i>, which dictate how many hexes that unit can move per turn. Normally, "
-#| "moving one hex uses one movement point, but moving across different types "
-#| "of hexes, or <i>terrains</i>, can use up more. You will learn more about "
-#| "that later. To move, simply click on your destination. You can press "
-#| "<b>u</b> to undo a move if you move to the wrong place."
 msgid ""
 "When you select a unit, in this case Li’sar, the places she can move to are "
 "highlighted. All units have a certain number of <i>movement points</i>, "
@@ -194,11 +179,10 @@ msgstr ""
 "Quando selezioni una unità, in questo caso Li’sar, le caselle dove può "
 "muoversi vengono evidenziate. Tutte le unità hanno dei <i>punti movimento</"
 "i>, che limitano il numero di esagoni percorribili da una unità in un turno "
-"di gioco. Normalmente, muoversi di un esagono consuma un punto movimento, ma "
-"attraversare diversi tipi di esagoni, o <i>territori</i> può portare ad un "
-"maggiore utilizzo di tali punti. Per muovere una unità, clicca semplicemente "
-"sulla destinazione desiderata. Puoi sempre premere il tasto <b>u</b> per "
-"annullare una mossa se pensi di esserti mosso in un posto sbagliato."
+"di gioco. Normalmente, muoversi di un esagono consuma un punto movimento. "
+"Per muovere una unità, clicca semplicemente sulla destinazione desiderata. "
+"(Puoi sempre premere il tasto <b>u</b> per annullare una mossa se pensi di "
+"esserti mosso in un posto sbagliato.)"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:230
@@ -281,11 +265,6 @@ msgstr "Attacco"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:340
-#, fuzzy
-#| msgid ""
-#| "To attack the quintain, first select the attacker (Konrad) then the "
-#| "target (the quintain). You will see an attack description. When you click "
-#| "<b>OK</b>, Konrad will attack."
 msgid ""
 "To attack the quintain, first select the attacker (Konrad), then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
@@ -297,11 +276,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:347
-#, fuzzy
-#| msgid ""
-#| "To attack the quintain, first select the attacker (Li’sar) then the "
-#| "target (the quintain). You will see an attack description. When you click "
-#| "<b>OK</b>, Li’sar will attack."
 msgid ""
 "To attack the quintain, first select the attacker (Li’sar), then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
@@ -384,11 +358,6 @@ msgstr "Cosa? Quel <i>fantoccio</i> ha il suo turno?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:413
-#, fuzzy
-#| msgid ""
-#| "Yes. It’s a magical quintain! It gets 5 chances to hit you for 3 damage "
-#| "each. If it hits every time, you’ll drop from $student_hp to "
-#| "$($student_hp-15) hitpoints. Brace yourself!"
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
 "chances. If it hits every time, you’ll drop from $student_hp to "
@@ -470,13 +439,6 @@ msgstr "Villaggi"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:469
-#, fuzzy
-#| msgid ""
-#| "You have captured a village! It now flies your colors and has been added "
-#| "to your total village count (the house icon at the top of the screen "
-#| "shows how many villages you currently control). Villages provide the gold "
-#| "needed to recruit units. Each turn, you gain two gold plus one for every "
-#| "village you own."
 msgid ""
 "You have captured a village! It now flies your colors and has been added to "
 "your total village count (the house icon at the top of the screen shows how "
@@ -572,14 +534,6 @@ msgstr "Caratteristiche"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:557
-#, fuzzy
-#| msgid ""
-#| "Be sure to examine the <i>traits</i> of your new recruits. They are "
-#| "listed under its race in the sidebar. Traits can subtly affect how you "
-#| "use your troops. For example, units with the <i>quick</i> trait can move "
-#| "a extra hex each turn, or units with the <i>intelligent</i> trait require "
-#| "20% less experience to level up. A full list of all possible traits may "
-#| "be found in help."
 msgid ""
 "Be sure to examine the <i>traits</i> of your new recruits. They are listed "
 "under its race in the sidebar. Traits can subtly affect how you use your "
@@ -588,13 +542,12 @@ msgid ""
 "experience to level up."
 msgstr ""
 "Sii certo di esaminare accuratamente le <i>caratteristiche</i> delle tue "
-"nuove reclute. Sono elencate sotto la razza, nella barra laterale. Le i "
-"tratti caratteristici possono possono alterare subdolamente l’utilizzo delle "
-"tue truppe. Ad esempio, le unità con la caratteristica <i>velocità</i> "
-"possono muoversi per un esagono aggiuntivo ad ogni turno, oppure quelle con "
+"nuove reclute. Sono elencate sotto la razza, nella barra laterale. I tratti "
+"caratteristici possono possono alterare subdolamente l’utilizzo delle tue "
+"truppe. Ad esempio, le unità con la caratteristica <i>velocità</i> possono "
+"muoversi per un esagono aggiuntivo ad ogni turno, oppure quelle con "
 "<i>intelligenza</i> richiedono il 20% in meno di esperienza per avanzare di "
-"livello. Una lista completa di tutte le possibili caratteristiche si trova "
-"nel manuale di aiuto."
+"livello."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:593
@@ -640,22 +593,20 @@ msgstr "Ordinerò loro di usare l’attacco che provoca più danni!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:615
-#, fuzzy
-#| msgid ""
-#| "And which would that be? The sword (5×4) or the bow (3×3)? I suppose "
-#| "you’ll find out..."
 msgid ""
 "And which would that be? The sword (5×4; or 5 damage on each hit, with 4 "
 "attacks) or the bow (3×3; or 3 damage on each hit, with 3 attacks)? I "
 "suppose you’ll find out..."
 msgstr ""
-"E quale sarebbe? La spada (5×4) o l’arco (3×3)? Credo proprio che lo "
-"scoprirai da te..."
+"E quale sarebbe? La spada (5×4, ovvero 5 punti di danno potenziale per ogni "
+"colpo a segno, per un totale di 4 attacchi) o l’arco (3×3, ovvero 3 punti di "
+"danno potenziale per ogni colpo a segno, per un totale di 3 attacchi)? Credo "
+"proprio che lo scoprirai da te..."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:618
 msgid "Attack the quintain with your fighters"
-msgstr "Attacca l’orco con i tuoi combrattenti"
+msgstr "Attacca l’orco con i tuoi combattenti"
 
 # La frase vale sia per Konrad, sia per Li’sar: per questo rendo "yourself" con "senza farti aiutare"
 #. [message]: speaker=Delfador
@@ -672,11 +623,6 @@ msgstr ""
 # Dopo questa stringa non dovrebbe comparire quella precedente? In realtà non lo fa neanche in inglese...
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:660
-#, fuzzy
-#| msgid ""
-#| "Your elf used a sword (5×4; or 5 damage, 4 attacks), which is a <i>melee</"
-#| "i> attack. The quintain defended with its melee attack (3×5). The ranged "
-#| "attack (the bow) would have been safer."
 msgid ""
 "Your elf used a sword (5×4; or 5 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
@@ -685,16 +631,11 @@ msgid ""
 msgstr ""
 "Il tuo elfo ha usato una spada (5×4, cioè 5 punti di danno per 4 attacchi), "
 "sferrando un <i>attacco ravvicinato</i>. La quintana si è difesa con il suo "
-"attacco ravvicinato (3×5). Un attacco a distanza (con l’arco) sarebbe stato "
-"più sicuro."
+"attacco ravvicinato (3×5 cioè 3 punti di danno per 5 attacchi). Un attacco a "
+"distanza (con l’arco) sarebbe stato più sicuro."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:672
-#, fuzzy
-#| msgid ""
-#| "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage, 3 "
-#| "attacks). The quintain has no ranged attack, only a melee attack, so it "
-#| "could not defend itself."
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
@@ -794,15 +735,6 @@ msgstr "Valori di difesa"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:773
-#, fuzzy
-#| msgid ""
-#| "Whenever one of your units is selected, you’ll see varying percentages as "
-#| "you move the mouse over the map. The higher the percentage, the more "
-#| "<i>defense</i> that unit has in that kind of terrain. For example, most "
-#| "units have good defenses in castles and villages but poor defenses in "
-#| "rivers. However, these quintains use a <i>magical</i> attack, which "
-#| "always has a 70% chance of hitting no matter what terrain its target "
-#| "occupies."
 msgid ""
 "Whenever one of your units is selected, you’ll see varying percentages as "
 "you move the mouse over the map. The higher the percentage, the more "
@@ -1011,6 +943,11 @@ msgid ""
 "teach you about recalling units, abilities and weapon specials, income and "
 "upkeep, long-distance movement, zone of control, and time of day."
 msgstr ""
+"Bentornato! In questa è la seconda parte della nostra esercitazione. Qui ti "
+"insegneremo a richiamare i veterani, parleremo delle abilità e delle armi "
+"speciali, della raccolta dell’oro e delle spese di mantenimento dei tuoi "
+"possedimenti, della zona di controllo e del trascorrere del tempo durante la "
+"giornata."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:169
@@ -1124,10 +1061,6 @@ msgstr "Andiamo! All’attacco!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:208
-#, fuzzy
-#| msgid ""
-#| "Hang on! You need to gather your forces. Or do you intend to fight the "
-#| "orcs singlehandedly?"
 msgid ""
 "Hang on! You need to gather your forces. Or do you intend to fight the orcs "
 "single-handedly?"
@@ -1191,7 +1124,7 @@ msgstr ""
 "<i>richiamare</i> i tuoi veterani più esperti, provenienti dagli scenari "
 "precedenti, al costo di 20 pezzi d’oro cadauno. Man mano che avanzi negli "
 "scenari, ciò ti permetterà di costruire un’armata formidabile, richiamando "
-"le truppe con i livelli piu alti o quelle con la migliore combinazione di "
+"le truppe con i livelli più alti o quelle con la migliore combinazione di "
 "caratteristiche ed abilità. Per richiamare una unità, clicca col bottone "
 "destro su una casella del castello mentre il tuo condottiero lo occupa e "
 "seleziona l’opzione <i>Richiama</i>. Ricorda anche che di reclutare nuove "
@@ -1239,26 +1172,6 @@ msgstr "Abilità e armi speciali"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:281
-#, fuzzy
-#| msgid ""
-#| "Certain unit types have special <i>abilities</i>. Unlike traits, which "
-#| "usually provide small buffs or debuffs, abilities give units special "
-#| "behaviors that normal units do not have. In this case, the Elvish Shaman "
-#| "has the Heal ability, which allows her to heal allied adjacent units 4 "
-#| "hitpoints at the start of each turn. Unit types with abilities, "
-#| "especially ones like Heal, can be very useful, so be careful when sending "
-#| "them into battle.\n"
-#| "\n"
-#| "Weapon specials are special attack modifiers that make certain attacks "
-#| "more powerful. Once again, in this case, the Shaman has the Slows special "
-#| "on her entangle attack. When this attack is used on an enemy, it will "
-#| "halve the damage they do for one turn. Other weapon specials include "
-#| "First Strike, which allows that attack to always hit first no matter who "
-#| "attacks first, and Magical, which gives that attack a constant 70% chance "
-#| "to hit.\n"
-#| "\n"
-#| "A full list of abilities and weapons specials, along with traits, may be "
-#| "found in help."
 msgid ""
 "Certain unit types have special <i>abilities</i>. Unlike traits, which "
 "usually provide small buffs or debuffs, abilities give units special "
@@ -1273,42 +1186,10 @@ msgstr ""
 "specifico caso, le sciamane hanno l’abilità di curare, che permette loro ad "
 "inizio turno di guarire 4 punti ferita alle unità ad essa adiacenti. Unità "
 "con queste abilità, specialmente quelle guaritrici, posso essere molto "
-"utili, quindi sii cauto nel mandarle in battaglia.\n"
-"\n"
-"Le armi speciali sono dei modificatori speciali in attacco che ne potenziano "
-"gli effetti. Ancora una volta, in questo caso, le sciamane hanno la "
-"specialità Rallentamento nel loro attacco intrappolante. Quando viene "
-"utilizzato contro un nemico, dimezza i danni che questo può infliggere per "
-"un turno. Altri esempi di armi speciali sono l’attacco improvviso, che "
-"permette ad una unità di attaccare sempre per prima, senza rispettare le "
-"usuali convenzioni, e quello magico, che da un attacco il 70% fisso di "
-"probabilità di colpire.\n"
-"\n"
-"Nell Aiuto del gioco puoi trovare un elenco completo di tutte le abilità e "
-"armi speciali,insieme a tutte le caratteristiche. "
+"utili, quindi sii cauto nel mandarle in battaglia."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:288
-#, fuzzy
-#| msgid ""
-#| "Certain unit types have special <i>abilities</i>. Unlike traits, which "
-#| "usually provide small buffs or debuffs, abilities give units special "
-#| "behaviors that normal units do not have. In this case, the Elvish Shaman "
-#| "has the Heal ability, which allows her to heal allied adjacent units 4 "
-#| "hitpoints at the start of each turn. Unit types with abilities, "
-#| "especially ones like Heal, can be very useful, so be careful when sending "
-#| "them into battle.\n"
-#| "\n"
-#| "Weapon specials are special attack modifiers that make certain attacks "
-#| "more powerful. Once again, in this case, the Shaman has the Slows special "
-#| "on her entangle attack. When this attack is used on an enemy, it will "
-#| "halve the damage they do for one turn. Other weapon specials include "
-#| "First Strike, which allows that attack to always hit first no matter who "
-#| "attacks first, and Magical, which gives that attack a constant 70% chance "
-#| "to hit.\n"
-#| "\n"
-#| "A full list of abilities and weapons specials, along with traits, may be "
-#| "found in help."
 msgid ""
 "Weapon specials are special attack modifiers that make certain attacks more "
 "powerful. Once again, in this case, the Shaman has the Slows special on her "
@@ -1320,14 +1201,6 @@ msgid ""
 "A full list of abilities and weapons specials, along with traits, may be "
 "found in help."
 msgstr ""
-"Alcuni tipi di unità hanno <i>abilità</i> speciali. A differenza delle "
-"caratteristiche, che di solito forniscono piccoli vantaggi o svantaggi, le "
-"abilità conferiscono attitudini speciali che le unità non hanno. In questo "
-"specifico caso, le sciamane hanno l’abilità di curare, che permette loro ad "
-"inizio turno di guarire 4 punti ferita alle unità ad essa adiacenti. Unità "
-"con queste abilità, specialmente quelle guaritrici, posso essere molto "
-"utili, quindi sii cauto nel mandarle in battaglia.\n"
-"\n"
 "Le armi speciali sono dei modificatori speciali in attacco che ne potenziano "
 "gli effetti. Ancora una volta, in questo caso, le sciamane hanno la "
 "specialità Rallentamento nel loro attacco intrappolante. Quando viene "
@@ -1418,7 +1291,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:374
 msgid "Status Table"
-msgstr ""
+msgstr "Tabella di stato"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:376
@@ -1428,6 +1301,11 @@ msgid ""
 "a side may be hidden. It is useful to check this table when a scenario "
 "begins."
 msgstr ""
+"La Tabella di stato descrive dettagliatamente che condizioni attuali e "
+"quelle iniziali della tua squadra. La nebbia di guerra e l’oscurità "
+"condizioneranno ciò che puoi vedere in questa tabella, e occasionalmente una "
+"intera squadra può essere nascosta. È utile dare un’occhiata a questa "
+"tabella quando inizia un nuovo scenario."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:394
@@ -1794,8 +1672,8 @@ msgid ""
 "the current time of day and who has the advantage."
 msgstr ""
 "Durante uno scenario, il periodo della giornata avanza man mano che i turni "
-"si susseguono. Una unita puo appartenere ad uno dei quattro possibili "
-"<i>allineamenti</i>: legale, neutrale, caotico o liminale. Ogni allineament "
+"si susseguono. Una unità può appartenere ad uno dei quattro possibili "
+"<i>allineamenti</i>: legale, neutrale, caotico o liminale. Ogni allineamento "
 "ottiene dei bonus o malus a seconda del periodo del giorno. Punta il mouse "
 "sull’immagine panoramica sotto la minimappa sulla destra per vedere quale "
 "sia il periodo della giornata al momento e chi ha dei vantaggi."
