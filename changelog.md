@@ -35,6 +35,7 @@
  ### User Interface
    * Swapped the position and formatting of game names and titles in the MP lobby.
    * Made Faction Select button's purpose more clear in MP Staging.
+   * Added a convenient button in Load Game to open your saves folder.
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a location ID
