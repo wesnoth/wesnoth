@@ -143,7 +143,6 @@ location_palette::location_palette(editor_display &gui, const config& /*cfg*/,
 		//, button_add_()
 		//, button_delete_()
 		//, button_goto_()
-		, help_handle_(-1)
 		, disp_(gui)
 	{
 		for (int i = 1; i < 10; ++i) {
@@ -169,8 +168,6 @@ sdl_handler_vector location_palette::handler_members()
 void location_palette::hide(bool hidden)
 {
 	widget::hide(hidden);
-
-	disp_.video().clear_help_string(help_handle_);
 
 #if 0
 	std::shared_ptr<gui::button> palette_menu_button = disp_.find_menu_button("menu-editor-terrain");
@@ -259,8 +256,6 @@ void location_palette::adjust_size(const SDL_Rect& target)
 
 	set_location(target);
 	set_dirty(true);
-	disp_.video().clear_help_string(help_handle_);
-	help_handle_ = disp_.video().set_help_string(get_help_string());
 }
 
 void location_palette::select_item(const std::string& item_id)
@@ -269,8 +264,6 @@ void location_palette::select_item(const std::string& item_id)
 		selected_item_ = item_id;
 		set_dirty();
 	}
-	disp_.video().clear_help_string(help_handle_);
-	help_handle_ = disp_.video().set_help_string(get_help_string());
 }
 
 int location_palette::num_items()

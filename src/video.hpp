@@ -185,24 +185,6 @@ public:
 
 	void lock_flips(bool);
 
-	/***** ***** ***** ***** Help string functions ***** ***** ****** *****/
-
-	/**
-	 * Displays a help string with the given text. A 'help string' is like a tooltip,
-	 * but appears at the bottom of the screen so as to not be intrusive.
-	 *
-	 * @param str                 The text to display.
-	 *
-	 * @returns                   The handle id of the new help string.
-	 */
-	int set_help_string(const std::string& str);
-
-	/** Removes the help string with the given handle. */
-	void clear_help_string(int handle);
-
-	/** Removes all help strings. */
-	void clear_all_help_strings();
-
 	/***** ***** ***** ***** General utils ***** ***** ****** *****/
 
 	/** Waits a given number of milliseconds before returning. */
@@ -265,9 +247,6 @@ private:
 	};
 
 	video_event_handler event_handler_;
-
-	/** Curent ID of the help string. */
-	int help_string_;
 
 	int updated_locked_;
 	int flip_locked_;

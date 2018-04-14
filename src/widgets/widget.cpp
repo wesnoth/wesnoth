@@ -298,10 +298,8 @@ void widget::process_help_string(int mousex, int mousey)
 	if (!hidden() && sdl::point_in_rect(mousex, mousey, rect_)) {
 		if(help_string_ == 0 && !help_text_.empty()) {
 			//std::cerr << "setting help string to '" << help_text_ << "'\n";
-			help_string_ = video().set_help_string(help_text_);
 		}
 	} else if(help_string_ > 0) {
-		video().clear_help_string(help_string_);
 		help_string_ = 0;
 	}
 }

@@ -14,9 +14,6 @@
 
 #include "video.hpp"
 
-#include "display.hpp"
-#include "floating_label.hpp"
-#include "font/constants.hpp"
 #include "log.hpp"
 #include "ogl/utils.hpp"
 #include "preferences/general.hpp"
@@ -419,53 +416,6 @@ point CVideo::current_resolution()
 bool CVideo::is_fullscreen() const
 {
 	return (window->get_flags() & SDL_WINDOW_FULLSCREEN_DESKTOP) != 0;
-}
-
-int CVideo::set_help_string(const std::string& str)
-{
-	font::remove_floating_label(help_string_);
-
-	const color_t color{0, 0, 0, 0xbb};
-
-	int size = font::SIZE_LARGE;
-
-#if 0
-	while(size > 0) {
-		if(font::line_width(str, size) > get_width()) {
-			size--;
-		} else {
-			break;
-		}
-	}
-#endif
-
-	const int border = 5;
-
-	font::floating_label flabel(str);
-	flabel.set_font_size(size);
-	flabel.set_position(get_width() / 2, get_height());
-	flabel.set_bg_color(color);
-	flabel.set_border_size(border);
-
-	help_string_ = font::add_floating_label(flabel);
-
-	const SDL_Rect& rect = font::get_floating_label_rect(help_string_);
-	font::move_floating_label(help_string_, 0.0, -double(rect.h));
-
-	return help_string_;
-}
-
-void CVideo::clear_help_string(int handle)
-{
-	if(handle == help_string_) {
-		font::remove_floating_label(handle);
-		help_string_ = 0;
-	}
-}
-
-void CVideo::clear_all_help_strings()
-{
-	clear_help_string(help_string_);
 }
 
 void CVideo::set_fullscreen(bool ison)
