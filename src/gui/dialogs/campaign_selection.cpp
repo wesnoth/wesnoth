@@ -271,7 +271,7 @@ void campaign_selection::pre_show(window& window)
 		connect_signal_notify_modified(mods_menu, std::bind(&campaign_selection::mod_toggled, this, std::ref(window)));
 	} else {
 		mods_menu.set_active(false);
-		mods_menu.set_label(_("None"));
+		mods_menu.set_label(_("active_modifications^None"));
 	}
 
 	campaign_selected(window);
