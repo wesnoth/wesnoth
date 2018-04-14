@@ -103,13 +103,13 @@ void screenshot_notification::pre_show(window& window)
 
 	button& open_b = find_widget<button>(&window, "open", false);
 	connect_signal_mouse_left_click(
-		open_b, bind_void(&desktop::open_object, std::ref(path_)));
+		open_b, std::bind(&desktop::open_object, std::ref(path_)));
 	open_b.set_active(false);
 
 	button& bdir_b = find_widget<button>(&window, "browse_dir", false);
 	connect_signal_mouse_left_click(
 		bdir_b,
-		bind_void(&desktop::open_object,
+		std::bind(&desktop::open_object,
 			std::ref(screenshots_dir_path_)));
 
 	button& save_b = find_widget<button>(&window, "save", false);
