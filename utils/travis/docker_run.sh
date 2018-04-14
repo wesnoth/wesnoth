@@ -17,6 +17,7 @@ PLAY_TEST="$9"
 MP_TEST="${10}"
 BOOST_TEST="${11}"
 LTO="${12}"
+SAN="${13}"
 
 # only enable strict builds when no optimizations are done
 if [ "$EXTRA_FLAGS_RELEASE" == "-O0" ]; then
@@ -38,6 +39,7 @@ echo "PLAY_TEST: $PLAY_TEST"
 echo "MP_TEST: $MP_TEST"
 echo "BOOST_TEST: $BOOST_TEST"
 echo "LTO: $LTO"
+echo "SAN: $SAN"
 
 $CXX --version
 
@@ -64,7 +66,7 @@ else
         scons wesnoth wesnothd campaignd boost_unit_tests build=release \
               ctool=$CC cxxtool=$CXX cxx_std=$CXXSTD \
               extra_flags_config="-pipe" extra_flags_release="$EXTRA_FLAGS_RELEASE" strict="$STRICT" \
-              nls=false enable_lto="$LTO" jobs=2 --debug=time
+              nls=false enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time
         BUILD_RET=$?
     fi
 
