@@ -1578,6 +1578,14 @@ void canvas::clear_shapes(const bool force)
 	drawn_shapes_.erase(iter, drawn_shapes_.end());
 }
 
+void canvas::set_size(unsigned w, unsigned h)
+{
+	update_size(w_, w);
+	update_size(h_, h);
+
+	invalidate_cache();
+}
+
 void canvas::update_size(unsigned int& value, unsigned int new_value)
 {
 	if(value != new_value) {

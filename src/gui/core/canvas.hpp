@@ -144,21 +144,11 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_width(const unsigned width)
-	{
-		update_size(w_, width);
-		invalidate_cache();
-	}
+	void set_size(unsigned w, unsigned h);
 
 	unsigned get_width() const
 	{
 		return w_;
-	}
-
-	void set_height(const unsigned height)
-	{
-		update_size(h_, height);
-		invalidate_cache();
 	}
 
 	unsigned get_height() const

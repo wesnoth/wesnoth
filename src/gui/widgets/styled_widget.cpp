@@ -267,8 +267,7 @@ void styled_widget::place(const point& origin, const point& size)
 	// resize canvasses
 	for(auto & canvas : canvases_)
 	{
-		canvas.set_width(size.x);
-		canvas.set_height(size.y);
+		canvas.set_size(size.x, size.y);
 	}
 
 	// Note we assume that the best size has been queried but otherwise it
