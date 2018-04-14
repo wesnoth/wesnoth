@@ -80,7 +80,7 @@
  *  @param function     The function in which the test failed.
  *  @param message      The translated message to show the user.
  */
-NORETURN void throw_wml_exception(
+[[noreturn]] void throw_wml_exception(
 		  const char* cond
 		, const char* file
 		, int line

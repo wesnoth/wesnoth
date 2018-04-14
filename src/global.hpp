@@ -16,10 +16,8 @@
 
 #ifdef _MSC_VER
 
-// Enable C99 support for VC14
-#if _MSC_VER>=1900
+// Enable C99 support
 #define STDC99
-#endif
 
 #endif //_MSC_VER
 
@@ -42,12 +40,6 @@
 
 // Some C++11 features are not available on all supported platforms
 #if defined(_MSC_VER)
-// MSVC supports these starting in MSVC 2015
-#if _MSC_VER >= 1900
-#define NORETURN [[noreturn]]
-#else
-#define NORETURN __declspec(noreturn)
-#endif
 // MSVC supports these starting in 2017?
 // Some sources claim MSVC 2015 supports them, but let's be safe...
 #if _MSC_VER >= 1910
@@ -67,7 +59,6 @@
 #include <ciso646> // To ensure standard library version macros are defined
 
 // All supported versions of clang have these
-#define NORETURN [[noreturn]]
 #define FALLTHROUGH [[clang::fallthrough]]
 // Use GCC-style attribute because the __has_cpp_attribute feature-checking macro doesn't exist in clang 3.5
 #define DEPRECATED(reason) __attribute__((deprecated(reason)))
@@ -75,8 +66,6 @@
 #endif
 
 #if defined(__GNUC__) && !defined(__clang__)
-// GCC supports these from 4.8 up
-#define NORETURN [[noreturn]]
 
 // Deprecated is supported from 4.9 up
 #if __GNUC__ >= 5 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 9)

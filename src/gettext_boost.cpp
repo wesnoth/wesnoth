@@ -142,7 +142,7 @@ namespace
 			}
 		}
 
-		NORETURN static void throw_po_error(const std::string& lang, const std::string& dom, const std::string& detail) {
+		[[noreturn]] static void throw_po_error(const std::string& lang, const std::string& dom, const std::string& detail) {
 			std::ostringstream err;
 			err << "Error opening language file for " << lang << ", textdomain " << dom
 				<< ":\n  " << detail << '\n';
