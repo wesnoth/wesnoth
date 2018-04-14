@@ -25,6 +25,11 @@
 #include "gui/dialogs/edit_text.hpp"
 
 #include "formula/string_utils.hpp"
+
+static bool is_positive_integer(const std::string& str) {
+	return str != "0" && std::find_if(str.begin(), str.end(), [](char c) { return !std::isdigit(c); }) == str.end();
+}
+
 class location_palette_item : public gui::widget
 {
 public:
@@ -106,8 +111,7 @@ public:
 	void set_item_id(const std::string& id)
 	{
 		id_ = id;
-		bool is_number = std::find_if(id.begin(), id.end(), [](char c) { return !std::isdigit(c); }) == id.end();
-		if (is_number) {
+		if (is_positive_integer(id)) {
 			desc_ = VGETTEXT("Player $side_num", utils::string_map{ {"side_num", id} });
 		}
 		else {
@@ -268,7 +272,10 @@ void location_palette::adjust_size(const SDL_Rect& target)
 
 	const int space_for_items = bottom - target.y;
 	const int items_fitting = space_for_items / item_space_;
-	if (num_visible_items() != items_fitting) {
+	// This might be called while the palette is not visible onscreen.
+	// If that happens, no items will fit and we'll have a negative number here.
+	// Just skip it in that case.
+	if(items_fitting > 0 && num_visible_items() != items_fitting) {
 		location_palette_item lpi(disp_.video(), *this);
 		//Why does this need a pointer to a non-const as second paraeter?
 		//TODO: we should write our own ptr_vector class, boost::ptr_vector has a lot of flaws.
@@ -375,20 +382,39 @@ location_palette::~location_palette()
 {
 }
 
+// Sort numbers before all other strings.
+static bool loc_id_comp(const std::string& lhs, const std::string& rhs) {
+	if(is_positive_integer(lhs)) {
+		if(is_positive_integer(rhs)) {
+			return std::stoi(lhs) < std::stoi(rhs);
+		} else {
+			return true;
+		}
+	}
+	if(is_positive_integer(rhs)) {
+		return false;
+	}
+	return lhs < rhs;
+}
+
 void location_palette::add_item(const std::string& id)
 {
 	int pos;
-	const auto itor = std::find(items_.begin(), items_.end(), id);
-	if (itor == items_.end()) {
-		items_.push_back(id);
-		pos = items_.size() - 1;
+	// Insert the new ID at the sorted location, unless it's already in the list
+	const auto itor = std::upper_bound(items_.begin(), items_.end(), id, loc_id_comp);
+	if(itor == items_.begin() || *(itor - 1) != id) {
+		pos = std::distance(items_.begin(), items_.insert(itor, id));
 	}
 	else {
 		pos = std::distance(items_.begin(), itor);
 	}
 	selected_item_ = id;
-	items_start_ = std::max(pos - num_visible_items() + 1, items_start_);
-	items_start_ = std::min(pos, items_start_);
+	if(num_visible_items() == 0) {
+		items_start_ = 0;
+	} else {
+		items_start_ = std::max(pos - num_visible_items() + 1, items_start_);
+		items_start_ = std::min(pos, items_start_);
+	}
 	adjust_size(location());
 }
 

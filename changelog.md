@@ -37,6 +37,7 @@
    * Fixed AI not recruiting in some circumstances when there are only cheap
      units on the recall list.
    * Fixed sometimes being unable to join MP games with non-required eras.
+   * Fixed locations not being added to the palette when loading a map (#1023)
 
 ## Version 1.13.13
  ### Campaigns
