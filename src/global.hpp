@@ -16,10 +16,8 @@
 
 #ifdef _MSC_VER
 
-// Enable C99 support for VC14
-#if _MSC_VER>=1900
+// Enable C99 support
 #define STDC99
-#endif
 
 #endif //_MSC_VER
 
@@ -49,9 +47,7 @@
 #if _MSC_VER >= 1900
 #define HAVE_REF_QUALIFIERS 1
 #define HAVE_INHERITING_CTORS 1
-#define NORETURN [[noreturn]]
 #else
-#define NORETURN __declspec(noreturn)
 #endif
 // MSVC supports these starting in 2017?
 // Some sources claim MSVC 2015 supports them, but let's be safe...
@@ -75,7 +71,6 @@
 #define HAVE_REF_QUALIFIERS __has_feature(cxx_reference_qualified_functions)
 #define HAVE_INHERITING_CTORS __has_feature(cxx_inheriting_constructors)
 // All supported versions of clang have these
-#define NORETURN [[noreturn]]
 #define FALLTHROUGH [[clang::fallthrough]]
 // Use GCC-style attribute because the __has_cpp_attribute feature-checking macro doesn't exist in clang 3.5
 #define DEPRECATED(reason) __attribute__((deprecated(reason)))
@@ -84,7 +79,6 @@
 
 #if defined(__GNUC__) && !defined(__clang__)
 // GCC supports these from 4.8 up
-#define NORETURN [[noreturn]]
 #define HAVE_REF_QUALIFIERS 1
 #define HAVE_INHERITING_CTORS 1
 
