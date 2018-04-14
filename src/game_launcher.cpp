@@ -285,29 +285,6 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	}
 }
 
-bool game_launcher::init_joystick()
-{
-	if (!preferences::joystick_support_enabled())
-		return false;
-
-	if(SDL_WasInit(SDL_INIT_JOYSTICK) == 0)
-		if(SDL_InitSubSystem(SDL_INIT_JOYSTICK) == -1)
-			return false;
-
-	int joysticks = SDL_NumJoysticks();
-	if (joysticks == 0) return false;
-
-	SDL_JoystickEventState(SDL_ENABLE);
-
-	bool joystick_found = false;
-	for (int i = 0; i<joysticks; i++)  {
-
-		if (SDL_JoystickOpen(i))
-			joystick_found = true;
-	}
-	return joystick_found;
-}
-
 bool game_launcher::init_language()
 {
 	if(!::load_language_list())

@@ -193,34 +193,6 @@ namespace preferences {
 	bool use_color_cursors();
 	void _set_color_cursors(bool value);
 
-	bool joystick_support_enabled();
-	int joystick_mouse_deadzone();
-	int joystick_num_mouse_xaxis();
-	int joystick_num_mouse_yaxis();
-	int joystick_mouse_xaxis_num();
-	int joystick_mouse_yaxis_num();
-
-	int joystick_scroll_deadzone();
-	int joystick_num_scroll_xaxis();
-	int joystick_num_scroll_yaxis();
-	int joystick_scroll_xaxis_num();
-	int joystick_scroll_yaxis_num();
-
-	int joystick_cursor_deadzone();
-	int joystick_num_cursor_xaxis();
-	int joystick_num_cursor_yaxis();
-	int joystick_cursor_xaxis_num();
-	int joystick_cursor_yaxis_num();
-	int joystick_cursor_threshold();
-
-	int joystick_thrusta_deadzone();
-	int joystick_num_thrusta_axis();
-	int joystick_thrusta_axis_num();
-
-	int joystick_thrustb_deadzone();
-	int joystick_num_thrustb_axis();
-	int joystick_thrustb_axis_num();
-
 	int scroll_speed();
 	void set_scroll_speed(const int scroll);
 
