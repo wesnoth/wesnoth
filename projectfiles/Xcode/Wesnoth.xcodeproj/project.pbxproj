@@ -374,7 +374,6 @@
 		91A214FA1CAD66B900927AEA /* hotkey_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFA82E0184E59F3006782FB /* hotkey_manager.cpp */; };
 		91A214FB1CAD66CC00927AEA /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A0F0EC62181008DD061 /* image.cpp */; };
 		91A214FC1CAD66CC00927AEA /* image_modifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E4E0B21367244F001C7528 /* image_modifications.cpp */; };
-		91A214FD1CAD66CC00927AEA /* joystick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F444907513C5483E003B6442 /* joystick.cpp */; };
 		91A214FE1CAD66CC00927AEA /* key.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A0B0EC62181008DD061 /* key.cpp */; };
 		91A214FF1CAD66CC00927AEA /* language.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A090EC62181008DD061 /* language.cpp */; };
 		91A215001CAD66D000927AEA /* label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999FB0EC62181008DD061 /* label.cpp */; };
@@ -1264,7 +1263,6 @@
 		F419A1F414E21246002F9ADC /* game_end_exceptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419A1F314E21246002F9ADC /* game_end_exceptions.cpp */; };
 		F419A2C314F5BCFE002F9ADC /* info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419A2C114F5BCFE002F9ADC /* info.cpp */; };
 		F419A31214F8868A002F9ADC /* manager_ui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419A31014F8868A002F9ADC /* manager_ui.cpp */; };
-		F444914013C5483F003B6442 /* joystick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F444907513C5483E003B6442 /* joystick.cpp */; };
 		F444916613C5483F003B6442 /* network_asio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F44490B413C5483F003B6442 /* network_asio.cpp */; };
 		F444917713C5562C003B6442 /* folder_create.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F444917513C5562C003B6442 /* folder_create.cpp */; };
 		F449349C13FF652800DF01D5 /* validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F449349913FF652800DF01D5 /* validator.cpp */; };
@@ -2684,8 +2682,6 @@
 		F419E44313354E620031448A /* lua_jailbreak_exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_jailbreak_exception.hpp; sourceTree = "<group>"; };
 		F419E44413354E620031448A /* lua_jailbreak_exception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_jailbreak_exception.cpp; sourceTree = "<group>"; };
 		F419E485133550FB0031448A /* drawing.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = drawing.hpp; sourceTree = "<group>"; };
-		F444907513C5483E003B6442 /* joystick.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = joystick.cpp; sourceTree = "<group>"; };
-		F444907613C5483E003B6442 /* joystick.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = joystick.hpp; sourceTree = "<group>"; };
 		F44490B413C5483F003B6442 /* network_asio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = network_asio.cpp; sourceTree = "<group>"; };
 		F44490B513C5483F003B6442 /* network_asio.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = network_asio.hpp; sourceTree = "<group>"; };
 		F444917513C5562C003B6442 /* folder_create.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = folder_create.cpp; sourceTree = "<group>"; };
@@ -3013,8 +3009,6 @@
 				B5599A0E0EC62181008DD061 /* image.hpp */,
 				F4E4E0B21367244F001C7528 /* image_modifications.cpp */,
 				F4E4E0B31367244F001C7528 /* image_modifications.hpp */,
-				F444907513C5483E003B6442 /* joystick.cpp */,
-				F444907613C5483E003B6442 /* joystick.hpp */,
 				B5599A0B0EC62181008DD061 /* key.cpp */,
 				B5599A0A0EC62181008DD061 /* key.hpp */,
 				B5599A090EC62181008DD061 /* language.cpp */,
@@ -5077,7 +5071,6 @@
 				EC0341E11ECF46FE000F2E2B /* config_attribute_value.cpp in Sources */,
 				62114CC91750B9AF00CA42C7 /* item_palette.cpp in Sources */,
 				49DA0D2E13550E9B000AFEBD /* iterator.cpp in Sources */,
-				F444914013C5483F003B6442 /* joystick.cpp in Sources */,
 				ECB107D81E84B52600379898 /* story_viewer.cpp in Sources */,
 				B5599B340EC62181008DD061 /* key.cpp in Sources */,
 				91B6217C1B74E6D200B00E0F /* label_settings.cpp in Sources */,
@@ -5753,7 +5746,6 @@
 				91A214FB1CAD66CC00927AEA /* image.cpp in Sources */,
 				91A214FC1CAD66CC00927AEA /* image_modifications.cpp in Sources */,
 				4649B88420288DFB00827CFB /* game.cpp in Sources */,
-				91A214FD1CAD66CC00927AEA /* joystick.cpp in Sources */,
 				91A214FE1CAD66CC00927AEA /* key.cpp in Sources */,
 				91A214FF1CAD66CC00927AEA /* language.cpp in Sources */,
 				91A215001CAD66D000927AEA /* label.cpp in Sources */,
