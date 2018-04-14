@@ -198,23 +198,6 @@ hotkey_ptr load_from_config(const config& cfg)
 		base = std::dynamic_pointer_cast<hotkey_base>(mouse);
 		mouse->set_button(cfg["button"].to_int());
 	}
-	// TODO: add joystick support back
-#if 0
-	const std::string& joystick_cfg = cfg["joystick"];
-	if (!joystick_cfg.empty()) {
-		joystick_ = cfg["joystick"].to_int();
-	}
-	const std::string& hat = cfg["hat"];
-	if (!hat.empty()) {
-		hat_ = cfg["hat"].to_int();
-		value_ = cfg["value"].to_int();
-	}
-
-	const std::string& button = cfg["button"];
-	if (!button.empty()) {
-		button_ = cfg["button"].to_int();
-	}
-#endif
 
 	const std::string& key_cfg = cfg["key"];
 	if (!key_cfg.empty()) {
