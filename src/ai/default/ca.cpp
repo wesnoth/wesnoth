@@ -302,8 +302,9 @@ double move_leader_to_goals_phase::evaluate()
 	}
 
 	pathfind::shortest_path_calculator calc(*leader, current_team(), resources::gameboard->teams(), resources::gameboard->map());
+	const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*leader, current_team());
 	pathfind::plain_route route = a_star_search(leader->get_location(), dst_, 1000.0, calc,
-			resources::gameboard->map().w(), resources::gameboard->map().h());
+			resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
 	if(route.steps.empty()) {
 		LOG_AI_TESTING_AI_DEFAULT << "route empty";
 		return BAD_SCORE;
