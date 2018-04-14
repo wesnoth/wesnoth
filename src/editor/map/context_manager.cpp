@@ -64,7 +64,8 @@ static const std::string get_menu_marker(const bool changed)
 }
 
 context_manager::context_manager(editor_display& gui, const config& game_config)
-	: gui_(gui)
+	: locs_(nullptr)
+	, gui_(gui)
 	, game_config_(game_config)
 	, default_dir_(preferences::editor::default_dir())
 	, map_generators_()
@@ -121,6 +122,19 @@ void context_manager::refresh_all()
 	gui_.invalidate_all();
 	get_map_context().clear_changed_locations();
 	gui_.recalculate_minimap();
+	if(locs_) {
+		for(const auto& loc : get_map_context().map().special_locations().left) {
+			locs_->add_item(loc.first);
+		}
+		if(!get_map_context().is_pure_map()) {
+			// If the scenario has more than 9 teams, add locations for them
+			// (First 9 teams are always in the list)
+			size_t n_teams = get_map_context().teams().size();
+			for(size_t i = 10; i <= n_teams; i++) {
+				locs_->add_item(std::to_string(i));
+			}
+		}
+	}
 }
 
 void context_manager::reload_map()

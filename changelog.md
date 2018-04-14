@@ -92,6 +92,7 @@
    * Fixed assertion when saving game events mid-event.
    * Fix MP password save error (#2745)
    * Fixed sometimes being unable to join MP games with non-required eras.
+   * Fixed locations not being added to the palette when loading a map (#1023)
 
 ## Version 1.13.12
  ### Security fixes
