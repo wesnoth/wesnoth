@@ -188,6 +188,12 @@ run_test()
   fi
   $command 2> error.log
   error_code="$?"
+  # workaround to fix issue in travis+18.04
+  while grep -q 'Could not initialize SDL_video' error.log; do
+    echo "Could not initialize SDL_video error, retrying..."
+    $command 2> error.log
+    error_code="$?"
+  done
   if check_errs $2 $error_code $1; then
     FirstTest=0 #Only start using validcache flag when at least one test has passed without error
     handle_error_log 0
@@ -376,3 +382,4 @@ else
   echo "All tests gave the correct result."
   exit 0
 fi
+
