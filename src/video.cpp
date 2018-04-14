@@ -14,6 +14,7 @@
 
 #include "video.hpp"
 
+#include "game_config.hpp"
 #include "log.hpp"
 #include "ogl/utils.hpp"
 #include "preferences/general.hpp"
@@ -47,7 +48,6 @@ CVideo::CVideo(FAKE_TYPES type)
 #endif
 	, fake_screen_(false)
 	, fake_size_(0u, 0u)
-	, help_string_(0)
 	, updated_locked_(0)
 	, flip_locked_(0)
 {
