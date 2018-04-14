@@ -2481,7 +2481,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\image.cpp" />
     <ClCompile Include="..\..\src\image_modifications.cpp" />
-    <ClCompile Include="..\..\src\joystick.cpp" />
     <ClCompile Include="..\..\src\key.cpp" />
     <ClCompile Include="..\..\src\language.cpp" />
     <ClCompile Include="..\..\src\lua_jailbreak_exception.cpp" />
@@ -2826,6 +2825,7 @@
     <ClCompile Include="..\..\src\sound.cpp" />
     <ClCompile Include="..\..\src\soundsource.cpp" />
     <ClCompile Include="..\..\src\sound_music_track.cpp" />
+    <ClCompile Include="..\..\src\spritesheet_generator.cpp" />
     <ClCompile Include="..\..\src\statistics.cpp" />
     <ClCompile Include="..\..\src\storyscreen\controller.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Storyscreen\</ObjectFileName>
@@ -3853,7 +3853,6 @@
     <ClInclude Include="..\..\src\hotkey\hotkey_manager.hpp" />
     <ClInclude Include="..\..\src\image.hpp" />
     <ClInclude Include="..\..\src\image_modifications.hpp" />
-    <ClInclude Include="..\..\src\joystick.hpp" />
     <ClInclude Include="..\..\src\key.hpp" />
     <ClInclude Include="..\..\src\language.hpp" />
     <ClInclude Include="..\..\src\lua_jailbreak_exception.hpp" />
@@ -3946,6 +3945,7 @@
     <ClInclude Include="..\..\src\sound.hpp" />
     <ClInclude Include="..\..\src\soundsource.hpp" />
     <ClInclude Include="..\..\src\sound_music_track.hpp" />
+    <ClInclude Include="..\..\src\spritesheet_generator.hpp" />
     <ClInclude Include="..\..\src\statistics.hpp" />
     <ClInclude Include="..\..\src\storyscreen\controller.hpp" />
     <ClInclude Include="..\..\src\storyscreen\parser.hpp" />
