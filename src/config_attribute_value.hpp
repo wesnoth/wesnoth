@@ -47,14 +47,6 @@
 
 #include "tstring.hpp"
 
-#if BOOST_VERSION > 106100
-#include <boost/utility/string_view.hpp>
-using config_key_type = boost::string_view;
-#else
-#include <boost/utility/string_ref.hpp>
-using config_key_type = boost::string_ref;
-#endif
-
 class enum_tag;
 
 /**
