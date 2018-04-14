@@ -40,7 +40,6 @@ controller_base::controller_base(const config& game_config)
 	, scroll_down_(false)
 	, scroll_left_(false)
 	, scroll_right_(false)
-	, joystick_manager_()
 	, key_release_listener_(*this)
 {
 }
@@ -175,7 +174,7 @@ bool controller_base::have_keyboard_focus()
 	return !gui2::is_in_dialog();
 }
 
-bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, double x_axis, double y_axis)
+bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 {
 	const bool mouse_in_window =
 		CVideo::get_singleton().window_has_flags(SDL_WINDOW_MOUSE_FOCUS)
@@ -231,7 +230,7 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, dou
 			if(sdl::point_in_rect(mousex, mousey, rect) && mh_base.scroll_started()) {
 				// Scroll speed is proportional from the distance from the first
 				// middle click and scrolling speed preference.
-				const double speed = 0.04 * sqrt(static_cast<double>(scroll_speed));
+				const double speed = 0.04 * std::sqrt(static_cast<double>(scroll_speed));
 				const double snap_dist = 16; // Snap to horizontal/vertical scrolling
 				const double x_diff = (mousex - original_loc.x);
 				const double y_diff = (mousey - original_loc.y);
@@ -248,10 +247,6 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, dou
 			mh_base.set_scroll_start(mousex, mousey);
 		}
 	}
-
-	// scroll with joystick
-	dx += round_double(x_axis * scroll_speed);
-	dy += round_double(y_axis * scroll_speed);
 
 	return get_display().scroll(dx, dy);
 }
@@ -298,43 +293,12 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 	bool was_scrolling = scrolling_;
 
-	std::pair<double, double> values = joystick_manager_.get_scroll_axis_pair();
-	const double joystickx = values.first;
-	const double joysticky = values.second;
-
 	int mousex, mousey;
 	uint8_t mouse_flags = SDL_GetMouseState(&mousex, &mousey);
 
-	// TODO enable after an axis choosing mechanism is implemented
-#if 0
-	std::pair<double, double> values = joystick_manager_.get_mouse_axis_pair();
-	mousex += values.first * 10;
-	mousey += values.second * 10;
-	SDL_WarpMouse(mousex, mousey);
-#endif
-
-	scrolling_ = handle_scroll(mousex, mousey, mouse_flags, joystickx, joysticky);
+	scrolling_ = handle_scroll(mousex, mousey, mouse_flags);
 
 	map_location highlighted_hex = get_display().mouseover_hex();
-
-	// TODO: enable when the relative cursor movement is implemented well enough
-#if 0
-	const map_location& selected_hex = get_display().selected_hex();
-
-	if (selected_hex != map_location::null_location()) {
-		if (joystick_manager_.next_highlighted_hex(highlighted_hex, selected_hex)) {
-			get_mouse_handler_base().mouse_motion(0,0, true, true, highlighted_hex);
-			get_display().scroll_to_tile(highlighted_hex, display::ONSCREEN_WARP, false, true);
-			scrolling_ = true;
-		}
-	} else
-#endif
-
-	if(joystick_manager_.update_highlighted_hex(highlighted_hex) && get_display().get_map().on_board(highlighted_hex)) {
-		get_mouse_handler_base().mouse_motion(0, 0, true, true, highlighted_hex);
-		get_display().scroll_to_tile(highlighted_hex, display::ONSCREEN_WARP, false, true);
-		scrolling_ = true;
-	}
 
 	// be nice when window is not visible
 	// NOTE should be handled by display instead, to only disable drawing

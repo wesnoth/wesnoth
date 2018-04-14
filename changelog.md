@@ -91,6 +91,7 @@
    * Fixed assertion when undoing actions in a synced context.
    * Fixed assertion when saving game events mid-event.
    * Fix MP password save error (#2745)
+   * Removed incomplete joystick support.
 
 ## Version 1.13.12
  ### Security fixes

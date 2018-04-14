@@ -37,7 +37,6 @@
 
 #include "events.hpp"
 #include "hotkey/hotkey_command.hpp"
-#include "joystick.hpp"
 #include "key.hpp"
 #include "quit_confirmation.hpp"
 
@@ -142,7 +141,7 @@ protected:
 	 * @see scrolling_, which is set if the display is being scrolled
 	 * @return true when there was any scrolling, false otherwise
 	 */
-	bool handle_scroll(int mousex, int mousey, int mouse_flags, double joystickx, double joysticky);
+	bool handle_scroll(int mousex, int mousey, int mouse_flags);
 
 	/**
 	 * Process mouse- and keypress-events from SDL.
@@ -184,8 +183,6 @@ protected:
 	bool scroll_down_;
 	bool scroll_left_;
 	bool scroll_right_;
-
-	joystick_manager joystick_manager_;
 
 private:
 	/* A separate class for listening key-up events.
