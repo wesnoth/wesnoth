@@ -478,7 +478,7 @@ variant variant::operator^(const variant& v) const
 		return variant(res, DECIMAL_VARIANT);
 	}
 
-	return variant(static_cast<int>(round_portable(std::pow(static_cast<double>(as_int()), v.as_int()))));
+	return variant(static_cast<int>(std::round(std::pow(static_cast<double>(as_int()), v.as_int()))));
 }
 
 variant variant::operator-() const

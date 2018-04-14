@@ -744,7 +744,7 @@ void recruitment::update_average_lawful_bonus() {
 		++counter;
 	}
 	if (counter > 0) {
-		average_lawful_bonus_ = round_double(static_cast<double>(sum) / counter);
+		average_lawful_bonus_ = std::round(static_cast<double>(sum) / counter);
 	}
 }
 
@@ -1069,9 +1069,9 @@ struct attack_simulation {
 			attacker_type(attacker),
 			defender_type(defender),
 			attacker_stats(attacker, att_weapon, true, defender, def_weapon,
-					round_double(defender_defense), average_lawful_bonus),
+					std::round(defender_defense), average_lawful_bonus),
 			defender_stats(defender, def_weapon, false, attacker, att_weapon,
-					round_double(attacker_defense), average_lawful_bonus),
+					std::round(attacker_defense), average_lawful_bonus),
 			attacker_combatant(attacker_stats),
 			defender_combatant(defender_stats)
 	{
@@ -1728,7 +1728,7 @@ void recruitment::update_scouts_wanted() {
 	// making us get twice as many scouts.
 	double villages_per_scout = (VILLAGE_PER_SCOUT_MULTIPLICATOR * get_villages_per_scout()) / 2;
 
-	scouts_wanted_ = (villages_per_scout > 0) ? round_double(our_share / villages_per_scout) : 0;
+	scouts_wanted_ = (villages_per_scout > 0) ? std::round(our_share / villages_per_scout) : 0;
 
 	if (scouts_wanted_ == 0) {
 		return;

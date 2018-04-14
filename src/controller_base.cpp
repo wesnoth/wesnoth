@@ -239,8 +239,8 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, dou
 	}
 
 	// scroll with joystick
-	dx += round_double(x_axis * scroll_speed);
-	dy += round_double(y_axis * scroll_speed);
+	dx += std::round(x_axis * scroll_speed);
+	dy += std::round(y_axis * scroll_speed);
 
 	return get_display().scroll(dx, dy);
 }

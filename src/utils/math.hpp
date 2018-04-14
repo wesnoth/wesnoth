@@ -24,7 +24,6 @@
 #include <cstdint>
 #include <cstdlib>
 #include <limits>
-#include <math.h> // cmath may not provide round()
 #include <vector>
 #include <algorithm>
 
@@ -61,20 +60,6 @@ inline int round_damage(int base_damage, int bonus, int divisor) {
 	if (base_damage==0) return 0;
 	const int rounding = divisor / 2 - (bonus < divisor || divisor==1 ? 0 : 1);
 	return std::max<int>(1, (base_damage * bonus + rounding) / divisor);
-}
-
-// not guaranteed to have exactly the same result on different platforms
-inline int round_double(double d) {
-#ifdef HAVE_ROUND
-	return static_cast<int>(round(d)); //surprisingly, not implemented everywhere
-#else
-	return static_cast<int>((d >= 0.0)? std::floor(d + 0.5) : std::ceil(d - 0.5));
-#endif
-}
-
-// Guaranteed to have portable results across different platforms
-inline double round_portable(double d) {
-	return (d >= 0.0) ? std::floor(d + 0.5) : std::ceil(d - 0.5);
 }
 
 template<typename Cmp>
