@@ -882,7 +882,7 @@ void addon_manager::on_addon_select(window& window)
 
 	find_widget<styled_widget>(parent, "dependencies", false).set_label(!info->depends.empty()
 		? make_display_dependencies(info->id, addons_, tracking_info_)
-		: _("None"));
+		: _("addon_dependencies^None"));
 
 	std::string languages;
 
@@ -896,7 +896,7 @@ void addon_manager::on_addon_select(window& window)
 		}
 	}
 
-	find_widget<styled_widget>(parent, "translations", false).set_label(!languages.empty() ? languages : _("None"));
+	find_widget<styled_widget>(parent, "translations", false).set_label(!languages.empty() ? languages : _("translations^None"));
 
 	const std::string& feedback_url = info->feedback_url;
 

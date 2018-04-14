@@ -450,7 +450,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 	} else if(shroud) {
 		vision = _("Shroud");
 	} else {
-		vision = _("none");
+		vision = _("vision^none");
 	}
 
 	if(game["mp_countdown"].to_bool()) {
@@ -459,7 +459,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			<< game["mp_countdown_turn_bonus"].str() << "/"
 			<< game["mp_countdown_action_bonus"].str();
 	} else {
-		time_limit = _("none");
+		time_limit = _("time limit^none");
 	}
 
 	map_info = info_stream.str();
