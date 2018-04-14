@@ -16,8 +16,10 @@
 
 #include "gui/auxiliary/iterator/walker_widget.hpp"
 
-#include <cassert>
+#include "global.hpp"
 #include "gui/widgets/widget.hpp"
+
+#include <cassert>
 
 namespace gui2
 {

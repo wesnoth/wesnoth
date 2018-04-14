@@ -336,7 +336,7 @@ void preferences_dialog::initialize_sound_option_group(const std::string& id_suf
 	// the callback the setter callback is duplicated in the on-change callback. The field
 	// class could possibly use some reworking to make this less redundant, but for now it
 	// works well enough.
-	register_bool(toggle_widget_id, true, toggle_getter, bind_void(toggle_setter, _1),
+	register_bool(toggle_widget_id, true, toggle_getter, std::bind(toggle_setter, _1),
 		std::bind(sound_toggle_on_change<toggle_setter>, std::ref(window), volume_widget_id, _1), true);
 
 	// Set up the volume slider. integer_field doesn't have a callback-on-changed mechanism.
@@ -487,7 +487,7 @@ void preferences_dialog::post_build(window& window)
 	/* SELECT THEME */
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "choose_theme", false),
-			bind_void(&show_theme_dialog));
+			std::bind(&show_theme_dialog));
 
 	//
 	// SOUND PANEL

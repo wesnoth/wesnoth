@@ -16,6 +16,8 @@
 
 #include "gui/auxiliary/iterator/walker_grid.hpp"
 
+#include "global.hpp"
+
 #include <cassert>
 
 namespace gui2
