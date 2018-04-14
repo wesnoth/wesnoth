@@ -135,7 +135,7 @@ public:
 
 	virtual bool can_execute_command(const hotkey_command& command, int index=-1) const = 0;
 	void queue_command(const SDL_Event& event, int index = -1);
-	void run_queued_commands();
+	bool run_queued_commands();
 	void execute_quit_command()
 	{
 		const hotkey_command& quit_hotkey = hotkey_command::get_command_by_command(hotkey::HOTKEY_QUIT_GAME);
