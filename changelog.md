@@ -89,6 +89,7 @@
    * Fix maps with scenario_generation= were unavailable in the editor.
    * Passing relative paths to --user-data-dir is deprecated (part of PR#4449),
      * On windows, relative paths that start with `.\` are not deprecated
+   * Removed incomplete joystick support.
 
 ## Version 1.15.1
  ### Editor
@@ -1029,6 +1030,7 @@
    * Removed (optional) requirement of libpng from SCons and CMake and the
      associated options as Wesnoth now uses SDL_image to write PNG files.
    * Fixed assertion when saving game events mid-event.
+
 
 ## Version 1.13.12
  ### Security fixes

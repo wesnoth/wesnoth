@@ -747,13 +747,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 		return 1;
 	}
 
-	if(preferences::joystick_support_enabled()) {
-		res = game->init_joystick();
-		if(res == false) {
-			std::cerr << "could not initialize joystick\n";
-		}
-	}
-
 	check_fpu();
 	const cursor::manager cursor_manager;
 	cursor::set(cursor::WAIT);
