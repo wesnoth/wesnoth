@@ -265,7 +265,9 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			era_short = make_short_name(era);
 			verified = false;
 
-			addons_outcome = NEED_DOWNLOAD;
+			if(!have_era) {
+				addons_outcome = NEED_DOWNLOAD;
+			}
 		}
 	} else {
 		era = _("Unknown era");
