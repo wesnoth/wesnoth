@@ -2,7 +2,7 @@
 
 date
 
-export EXTRA_FLAGS_RELEASE=""
+export EXTRA_FLAGS_RELEASE="$OPT"
 export WML_TESTS=true
 export PLAY_TEST=true
 export MP_TEST=true
@@ -10,7 +10,6 @@ export WML_TEST_TIME=15
 export BOOST_TEST=true
 
 if [ "$OPT" = "-O0" ]; then
-    export EXTRA_FLAGS_RELEASE="-O0"
     export PLAY_TEST=false
     export MP_TEST=false
     export WML_TEST_TIME=20
