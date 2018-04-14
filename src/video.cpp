@@ -196,7 +196,8 @@ SDL_Rect CVideo::screen_area(bool as_pixels) const
 	if(!window) {
 		return {0, 0,
 			static_cast<int>(fake_size_.first),
-			static_cast<int>(fake_size_.second)};
+			static_cast<int>(fake_size_.second)
+		};
 	}
 
 	// First, get the renderer size in pixels.
@@ -204,11 +205,15 @@ SDL_Rect CVideo::screen_area(bool as_pixels) const
 
 	// Then convert the dimensions into screen coordinates, if applicable.
 	if(!as_pixels) {
+#ifdef __APPLE__
+		size = window->get_size();
+#else
 		float scale_x, scale_y;
 		std::tie(scale_x, scale_y) = get_dpi_scale_factor();
 
 		size.x /= scale_x;
 		size.y /= scale_y;
+#endif
 	}
 
 	return {0, 0, size.x, size.y};
