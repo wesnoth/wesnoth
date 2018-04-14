@@ -456,7 +456,7 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	std::vector<std::string> mods = utils::split(game.mod_info);
 
 	if(mods.empty()) {
-		ss << _("None") << "\n";
+		ss << _("active_modifications^None") << "\n";
 	} else {
 		for(const std::string& mod : mods) {
 			ss << mod << "\n";
