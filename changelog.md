@@ -3,7 +3,8 @@
    * Secrets of the Ancients
      * Fixed several inconsistently spelled names.
    * The Hammer of Thursagan
-     * S12 Fixed enemies from ai6 (south-east lich) going to the book (spider) room
+     * S12 Fixed enemies from ai6 (south-east lich) going to the book (spider)
+       room
      * S12 Fixed north treasure chest disappearing
    * The Rise of Wesnoth
      * New set of story art.
@@ -16,11 +17,13 @@
  ### Multiplayer
    * Added team color to a few background units missing in Aethermaw.
  ### User Interface
-   * Swapped the position and formatting of game names and titles in the MP lobby.
+   * Swapped the position and formatting of game names and titles in the MP
+     lobby.
    * Made Faction Select button's purpose more clear in MP Staging.
    * Added a convenient button in Load Game to open your saves folder.
  ### Miscellaneous and bug fixes
-   * Removed the Font Scaling preference. It was too buggy (issues #2792 and #1624).
+   * Removed the Font Scaling preference. It was too buggy (issues #2792 and
+     #1624).
    * Fixed some hotkeys triggering multiple commands on GNU/Linux (bug #1736).
    * Fixed [modify_side] share_vision=yes not doing anything (bug #2850).
    * Fixed regression where unit filters in [disable] weapon specials would not
@@ -30,7 +33,9 @@
    * Fixed assertion when undoing actions in a synced context.
    * [filter_wml] no longer accepts [and] and [or] in addition to [not] since
      the implementation was non-functional.
-   * Fix MP password save error (issue #2745)
+   * Fixed MP password save error (issue #2745)
+   * Fixed AI not recruiting in some circumstances when there are only cheap
+     units on the recall list.
 
 ## Version 1.13.13
  ### Campaigns
