@@ -19,11 +19,12 @@ BOOST_TEST="${11}"
 LTO="${12}"
 SAN="${13}"
 
-# only enable strict builds when no optimizations are done
 if [ "$EXTRA_FLAGS_RELEASE" == "-O0" ]; then
     STRICT="true"
+    build_timeout=35
 else
     STRICT="false"
+    build_timeout=40
 fi
 
 echo "Using configuration:"
@@ -50,6 +51,8 @@ if [ "$NLS" == "true" ]; then
         scons translations build=release --debug=time nls=true jobs=2
     fi
 else
+    build_start=$(date +%s)
+
     if [ "$TOOL" == "cmake" ]; then
         echo "max_size = 200M" > $HOME/.ccache/ccache.conf
         echo "compiler_check = content" >> $HOME/.ccache/ccache.conf
@@ -73,6 +76,12 @@ else
     if [ $BUILD_RET != 0 ]; then
         exit $BUILD_RET
     fi
+
+     build_end=$(date +%s)
+     if (( build_end-build_start > 60*build_timeout )); then
+         echo "Insufficient time remaining to execute unit tests. Exiting now to allow caching to occur. Please restart the job."
+         exit 1
+     fi
 
 # needed since docker returns the exit code of the final command executed, so a failure needs to be returned if any unit tests fail
     EXIT_VAL=0
