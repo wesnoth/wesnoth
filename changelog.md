@@ -11,6 +11,8 @@
    * The Rise of Wesnoth
      * New set of story art.
    * Under the Burning Suns
+     * Changed Sun Singer movetype from float to foot.
+     * Added some Quenoth elf unit animations.
      * Hide technical terrains in the Help browser (Human Ship, Lava overlay).
  ### Help browser
    * Unit descriptions use the new multiplication sign format for attack lists
@@ -31,6 +33,7 @@
    * Updated translations: British English, Chinese (Simplified), Czech, French,
      Galician, Italian, Polish, Scottish Gaelic, Spanish, Ukrainian
  ### Multiplayer
+   * A New Land: Fixed the scenario being broken.
    * Added team color to a few background units missing in Aethermaw.
  ### Packaging
    * Boost Thread is no longer a build-time dependency.
