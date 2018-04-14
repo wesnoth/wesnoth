@@ -1064,8 +1064,8 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 	// Turn the zoom factor to a double in order to avoid rounding errors.
 	double zoom_factor = double(new_zoom) / double(zoom_);
 
-	xpos_ = round_double(((xpos_ + area.w / 2) * zoom_factor) - (area.w / 2));
-	ypos_ = round_double(((ypos_ + area.h / 2) * zoom_factor) - (area.h / 2));
+	xpos_ = std::round(((xpos_ + area.w / 2) * zoom_factor) - (area.w / 2));
+	ypos_ = std::round(((ypos_ + area.h / 2) * zoom_factor) - (area.h / 2));
 
 	zoom_ = new_zoom;
 	bounds_check_position(xpos_, ypos_);
@@ -1189,8 +1189,8 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 			dist_moved = dist_total;
 		}
 
-		int x_new = round_double(xmove * dist_moved / dist_total);
-		int y_new = round_double(ymove * dist_moved / dist_total);
+		int x_new = std::round(xmove * dist_moved / dist_total);
+		int y_new = std::round(ymove * dist_moved / dist_total);
 
 		int dx = x_new - x_old;
 		int dy = y_new - y_old;
@@ -1292,7 +1292,7 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator& b
 
 	if(scroll_type == ONSCREEN || scroll_type == ONSCREEN_WARP) {
 		SDL_Rect r = map_area();
-		int spacing = round_double(add_spacing * hex_size());
+		int spacing = std::round(add_spacing * hex_size());
 		r.x += spacing;
 		r.y += spacing;
 		r.w -= 2 * spacing;
