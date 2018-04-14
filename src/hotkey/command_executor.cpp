@@ -525,6 +525,19 @@ void command_executor::get_menu_images(display& disp, std::vector<config>& items
 void mbutton_event(const SDL_Event& event, command_executor* executor)
 {
 	event_queue(event, executor);
+
+	/* Run mouse events immediately.
+
+	This is necessary because the sidebar doesn't allow set_button_state() to be called after a
+	button has received the mouse press event but before it has received the mouse release event.
+	When https://github.com/wesnoth/wesnoth/pull/2872 delayed the processing of input events,
+	set_button_state() ended up being called at such a time. However, if we run the event handlers
+	now, the button (if any) hasn't received the press event yet and we can call set_button_state()
+	safely.
+
+	See https://github.com/wesnoth/wesnoth/issues/2884 */
+
+	run_events(executor);
 }
 
 void jbutton_event(const SDL_Event& event, command_executor* executor)
@@ -552,8 +565,10 @@ void keyup_event(const SDL_Event&, command_executor* executor)
 void run_events(command_executor* executor)
 {
 	if(!executor) return;
-	executor->run_queued_commands();
-	executor->set_button_state();
+	bool commands_ran = executor->run_queued_commands();
+	if(commands_ran) {
+		executor->set_button_state();
+	}
 }
 
 static void event_queue(const SDL_Event& event, command_executor* executor)
@@ -664,12 +679,14 @@ std::vector<command_executor::queued_command> command_executor::filter_command_q
 	return filtered_commands;
 }
 
-void command_executor::run_queued_commands()
+bool command_executor::run_queued_commands()
 {
 	std::vector<queued_command> commands = filter_command_queue();
 	for(const queued_command& cmd : commands) {
 		execute_command_wrap(cmd);
 	}
+
+	return !commands.empty();
 }
 
 void command_executor_default::set_button_state()
