@@ -36,6 +36,7 @@
    * Fixed MP password save error (issue #2745)
    * Fixed AI not recruiting in some circumstances when there are only cheap
      units on the recall list.
+   * Fixed sometimes being unable to join MP games with non-required eras.
 
 ## Version 1.13.13
  ### Campaigns
