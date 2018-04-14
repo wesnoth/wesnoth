@@ -551,8 +551,8 @@ const char* game_info::display_status_string() const
 
 bool game_info::match_string_filter(const std::string& filter) const
 {
-	const std::string& s1 = map_info;
-	const std::string& s2 = name;
+	const std::string& s1 = name;
+	const std::string& s2 = map_info;
 	return std::search(s1.begin(), s1.end(), filter.begin(), filter.end(),
 			chars_equal_insensitive) != s1.end()
 	    || std::search(s2.begin(), s2.end(), filter.begin(), filter.end(),
