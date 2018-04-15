@@ -35,6 +35,9 @@
    * Fixed Logging Options tooltips not being translatable (bug #2837).
    * Updated translations: British English, Chinese (Simplified), Czech, French,
      Galician, Italian, Polish, Scottish Gaelic, Spanish, Ukrainian
+ ### Lua API
+   * Fix wesnoth.show_popup_dialog and wesnoth.show_message_box not accepting
+     translatable strings
  ### Multiplayer
    * A New Land: Fixed the scenario being broken.
    * Added team color to a few background units missing in Aethermaw.
