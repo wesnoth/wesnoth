@@ -4,12 +4,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Automatically generated, 2013.
 #
+# Mathieu Guilbaud <mathieu@guim.info>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:29 UTC\n"
-"PO-Revision-Date: 2015-01-21 21:17+0100\n"
+"PO-Revision-Date: 2018-04-15 18:00+0200\n"
 "Last-Translator: Émile Enguehard <zerbugug@gmail.com>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -36,10 +37,8 @@ msgstr "Dév : IA passive"
 
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
-#, fuzzy
-#| msgid "Multiplayer_AI^Dev AI: Default + Old Recruitment"
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
-msgstr "Dév : IA par défaut + ancien recrutement"
+msgstr "Dév IA : IA par défaut (RCA) avec recrutement alternatif"
 
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/dev/formula_ai.cfg:10
@@ -53,7 +52,7 @@ msgstr "Dév : IA par défaut + poison (Formula AI)"
 
 #: data/ai/lua/patrol.lua:4
 msgid "Use the Patrols Micro AI instead of patrol.lua."
-msgstr ""
+msgstr "Utiliser l'IA Patrols Micro à la place de patrol.lua"
 
 #. [test]: id=The_Elves_Besieged
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:5
@@ -135,19 +134,6 @@ msgstr ""
 
 #. [event]
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:216
-#, fuzzy
-#| msgid ""
-#| "In this scenario, the AI playing the humans in the east (Langzhar) is "
-#| "instructed to protect the wizard Rossauba, while moving him safely to the "
-#| "signpost. On the other side, Koorzhar's units (in the west) will "
-#| "primarily attack Rossauba, even if a better target is available. Do you "
-#| "want to play either of the sides or let the AIs battle it out among "
-#| "themselves?\n"
-#| "\n"
-#| "Note: The Protect Unit AI is coded as a Micro AI. A Micro AI can be added "
-#| "and adapted to the need of a scenario easily using only WML and the "
-#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
-#| "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "This is a reenactment of scenario The Elves Besieged of the mainline "
 "campaign Heir to the Throne, just that the AI is playing Konrad's side here. "
@@ -160,11 +146,11 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
-"Dans ce scénario, l'IA qui contrôle les humains à l'est (Langzhar) doit "
-"protéger le sorciez Rossauba, tout en l'amenant juqu'au panneau. De l'autre "
-"côté, les unités de Koorzhar (à l'est), vont concentrer leurs attaques sur "
-"Rossauba, même si des cibles plus faciles sont à portée. Voulez-vous "
-"controller l'un des deux camps ou laissez les IA se battre entre elles ?\n"
+"Ceci est une reprise du scénario « Les Elfes assiégés » de la campagne "
+"principale « L'Héritier du trône », à la différence que l'IA joue le camp de "
+"Konrad. Le but est de déplacer Konrad jusqu'au panneau au nord-ouest, tout "
+"en gardant Konrad et Delfador en vie. La même IA que le scénario « Protéger "
+"l'unité » est utilisée.\n"
 "\n"
 "Note : l'IA de protection est codée comme une micro-IA. Les micro-IA peuvent "
 "être ajoutées et adaptées au besoin à un scénario grâce à WML et au tag "
@@ -730,7 +716,7 @@ msgstr "Moi, je m'en vais."
 #. [test]: id=fast
 #: data/ai/micro_ais/scenarios/fast.cfg:5
 msgid "Fast"
-msgstr ""
+msgstr "Rapide"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/fast.cfg:64
@@ -744,6 +730,14 @@ msgid ""
 "There is nothing to do here, just watch or use this scenario as a template "
 "or for your own tests."
 msgstr ""
+"Ce scénario présente une situation avec beaucoup d'unités sur la carte, de "
+"ce fait il y a un délai remarquable (quelques secondes ou plus) avant chaque "
+"déplacement de l'IA par défaut. Au contraire, l'IA Fast Micro a un délai "
+"beaucoup plus court. Pour démontrer la différence, le camp 1 est joué par "
+"l'IA Fast Micro et le camp 2 par l'IA par défaut (RCA).\n"
+"\n"
+"Il n'y a rien à faire ici, juste regarder ou bien utiliser ce scénario comme "
+"base de vos propres tests."
 
 #. [test]: id=goto
 #. [event]
@@ -1162,7 +1156,6 @@ msgstr "Portier"
 
 #. [unit]: type=Dwarvish Guardsman, id=zone2
 #: data/ai/micro_ais/scenarios/guardians.cfg:354
-#, fuzzy
 msgid "Home Keeper"
 msgstr "Maître de maison"
 
@@ -1805,10 +1798,8 @@ msgstr "Messager"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:121
-#, fuzzy
-#| msgid "Messenger Waypoint 2"
 msgid "Messenger Waypoint 1"
-msgstr "Étape du messager 2"
+msgstr "Étape du messager 1"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:123
@@ -2293,21 +2284,6 @@ msgstr ""
 
 #. [event]
 #: data/ai/micro_ais/scenarios/recruiting.cfg:90
-#, fuzzy
-#| msgid ""
-#| "If you have not changed anything in the scenario code, Side 1 uses the "
-#| "Random Recruitment Micro AI, with swordsmen and peasants having been "
-#| "given higher probability than the other units. This is not meant as a "
-#| "good recruitment pattern, it simply serves as a demonstration how to use "
-#| "the AI.\n"
-#| "\n"
-#| "Side 2 uses the Rush Recruitment Micro AI (which is also used in the "
-#| "Experimental AI).\n"
-#| "\n"
-#| "A Micro AI can be added and adapted to the need of a scenario easily "
-#| "using only WML and the [micro_ai] tag. Check out the <span "
-#| "color='#00A000'>Micro AI wiki page</span> at http://wiki.wesnoth.org/"
-#| "Micro_AIs for more information."
 msgid ""
 "If you have not changed anything in the scenario code, Side 1 uses the "
 "Random Recruitment Micro AI, with swordsmen and peasants having been given "
@@ -2323,8 +2299,9 @@ msgid ""
 "AI wiki page</span> at http://wiki.wesnoth.org/Micro_AIs for more "
 "information."
 msgstr ""
-"Si vous n'avez rien changé au code du scénario, le camp 1 recrute au hasard, "
-"en attribuant une plus grande probabilité aux paysans et aux spadassins. Ce "
+"Si vous n'avez rien changé au code du scénario, le camp 1 recrute au hasard "
+"(Random Recuitement Micro AI), en attribuant une plus grande probabilité aux "
+"paysans et aux spadassins, et une probabilité moyenne pour les mages. Ce "
 "n'est pas censé être une bonne technique de recrutement, mais simplement "
 "montrer comment se servir de l'IA.\n"
 "\n"
@@ -2393,7 +2370,7 @@ msgstr "Attaque simple"
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:93
 msgid "Fast AI"
-msgstr ""
+msgstr "IA rapide"
 
 #. [set_menu_item]: id=m01_menu_bottleneck_defense
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:100
@@ -2703,10 +2680,8 @@ msgstr ""
 #. [set_menu_item]: id=m16_fast
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:341
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:350
-#, fuzzy
-#| msgid "Patrol Micro AI demo"
 msgid "Fast Micro AI demo"
-msgstr "Démo de micro-IA : patrouilles"
+msgstr "Démo de l'IA Fast Micro"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:350
@@ -2714,6 +2689,8 @@ msgid ""
 "A simple demonstration of the calculation time advantage of the Fast Micro "
 "AI over the default AI in scenarios with many units."
 msgstr ""
+"Une simple démonstration des avantages en temps de calcul de l'IA Fast Micro "
+"par rapport l'IA par défaut dans les scénarios avec beaucoup d'unités."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:360
@@ -3166,7 +3143,7 @@ msgstr "L'IA de l'équipe 2, [$test_path_to_ai] me va."
 #. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:181
 msgid "My AI is the RCA AI (the current default)."
-msgstr ""
+msgstr "Mon IA est l'IA RCA (l'actuelle valeur par défaut)"
 
 #. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:190
@@ -3191,11 +3168,9 @@ msgstr "Je suis venu avec ma propre IA, et je suis prêt à tester sa force"
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:213
-#, fuzzy
-#| msgid "and where is it located (path follows the usual WML convention)"
 msgid "And where is it located (path follows the usual WML convention)"
 msgstr ""
-"et voilà où elle se trouve (le chemin suit la convention WML habituelle)"
+"Et voilà où elle se trouve (le chemin suit la convention WML habituelle)"
 
 #. [text_input]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:215
@@ -3204,23 +3179,20 @@ msgstr "Emplacement de l'IA :"
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:316
-#, fuzzy
-#| msgid ""
-#| "and so, the AI for team 2 was redeployed from file '$test_path_to_ai'"
 msgid "And so, the AI for team 2 was redeployed from file '$test_path_to_ai'"
 msgstr ""
-"et donc, l'IA de l'équipe 2 a été redéployée depuis le fichier "
+"Et donc, l'IA de l'équipe 2 a été redéployée depuis le fichier "
 "'$test_path_to_ai'"
 
 #. [test]: id=lua_ai
 #: data/ai/scenarios/scenario-lua_ai.cfg:4
 msgid "Lua AI Test scenario"
-msgstr ""
+msgstr "Scénario de test pour l'IA Lua"
 
 #. [test]: id=lua_ai_old_syntax
 #: data/ai/scenarios/scenario-lua_ai_old_syntax.cfg:5
 msgid "Lua AI Test scenario (old syntax)"
-msgstr ""
+msgstr "Scénario de test pour l'IA Lua (ancienne syntaxe)"
 
 #. [unit]: type=Skeletal Dragon, id=Kiressh
 #: data/ai/scenarios/scenario-lua_ai_old_syntax.cfg:87

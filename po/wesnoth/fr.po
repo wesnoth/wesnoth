@@ -9,12 +9,13 @@
 # Guillaume Melquiond <guillaume.melquiond@gmail.com>, 2009.
 # Guillaume Pascal <guillaume.pascal43@laposte.net>, 2011, 2013.
 # Guigou Guillaume <guillaume.guigou@orange.fr>, 2013.
+# Mathieu Guilbaud <mathieu@guim.info>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-04-05 22:16+0200\n"
+"PO-Revision-Date: 2018-04-15 17:38+0200\n"
 "Last-Translator: Mathieu Guilbaud <mathieu@guim.info>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -195,7 +196,6 @@ msgstr "Options graphiques de redimensionnement"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:161
-#, fuzzy
 msgid "Customize orb colors"
 msgstr "Personnaliser les couleurs des orbes"
 
@@ -225,7 +225,6 @@ msgstr "Afficher les effets de halo"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:182
-#, fuzzy
 msgid "Show special unit graphical effects"
 msgstr "Afficher les effets graphiques spéciaux des unités"
 
@@ -1516,10 +1515,8 @@ msgstr ""
 
 #. [else]
 #: data/core/macros/deprecated-utils.cfg:43
-#, fuzzy
-#| msgid "This unit has been renamed to: {NEW_NAME}"
 msgid "This unit has been renamed to: "
-msgstr "Cette unité a été renommé : {NEW_NAME}"
+msgstr "Cette unité a été renommé :"
 
 #: data/core/macros/deprecated-utils.cfg:95
 msgid "<small>(early finish bonus)</small>"
@@ -1731,13 +1728,12 @@ msgid "storm trident^Leave it"
 msgstr "Le laisser"
 
 #: data/core/macros/items.cfg:516
-#, fuzzy
 msgid ""
 "$unit.name cannot use this Storm Trident! Let one of the merfolk who can "
 "wield it have it."
 msgstr ""
-"$unit.name ne peut pas utilisé le Trident du Tonnerre ! Un autre Ondin "
-"pouvant le porter devrai le prendre."
+"$unit.name ne peut pas utiliser le Trident du Tonnerre ! Un autre Ondin "
+"pouvant le porter devrait le prendre."
 
 #. [object]
 #: data/core/macros/items.cfg:521
@@ -2723,22 +2719,6 @@ msgstr ""
 
 #. Generator for male dunefolk human names
 #: data/core/macros/names.cfg:145
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{name_mid}\n"
-#| "name_mid={prefix}{suffix}|{name_short}\n"
-#| "name_long={prefix}{suffix}|{prefix}{centre}{suffix}\n"
-#| "name_short=Din|Sif|Din|Taj|Sud|Ali|Lut|Nuh|Qays|Nimr|Jad|Bushr|Lut|Maʿd|"
-#| "Nur|Fadl\n"
-#| "prefix=Ab|Bas|Fat|Gha|Al|Ba|Ja|Ha|Mu|Ra|Raz|Abi|Am|La|ʿAj|Ala|ʿAk|Fa|Du|"
-#| "Im|Ju|Mun|Ma|Ni|Ji|Mu|Lab|Luf|Mih|Mi|Qu|Tal|Ta|Tha|Za|Zi|Yas|Wa|Su|Qa|"
-#| "ʿIkri|Lu|Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
-#| "suffix=af|al|lih|bair|sur|bi|lah|at|sim|ma|ih|yl|iq|raj|mam|man|ya|zid|"
-#| "riya|ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|mal|"
-#| "kib\n"
-#| "connector= al-| bin | ibn \n"
-#| "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 msgid ""
 "\n"
 "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{name_mid}\n"
@@ -2765,39 +2745,11 @@ msgstr ""
 "Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
 "suffix=af|al|lih|bair|sur|bi|lah|at|sim|ma|ih|yl|iq|raj|mam|man|ya|zid|riya|"
 "ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|mal|kib\n"
-"connector= al-| bin | ibn \n"
+"connector= al-| bin | ibn\n"
 "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 
 #. Generator for female dunefolk human names
 #: data/core/macros/names.cfg:156
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{surname}\n"
-#| "name_mid={prefix}{suffix}|{name_short}\n"
-#| "surname={name_mid_male}|{name_mid}|{name_mid_male}\n"
-#| "name_long={prefix}{suffix}|{prefix}{centre}{suffix}\n"
-#| "name_short=Afaf|Aida|Alya|Arij|Arwa|Asma|Asra|Azra|Dua|Fajr|Hala|Hana|"
-#| "Hiba|Inas|Isra|Lina|Mona|Muna|Nida|Nima|Nur|Rana|Rim|Ruba|Ruya|Ruwa|Sana|"
-#| "Sara|Suha|Tuba|Uzma|Zara\n"
-#| "prefix=Ab|Bas|Fat|Gha|Al|Ba|Ja|Ha|Mu|Ra|Raz|Abi|Am|La|ʿAj|Ala|ʿAk|Fa|Du|"
-#| "Im|Ju|Mun|Ma|Ni|Ji|Mu|Lab|Luf|Mih|Mi|Qu|Tal|Ta|Tha|Za|Zi|Yas|Wa|Su|Qa|"
-#| "ʿIkri|Lu|Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
-#| "suffix=a|ab|ad|ah|af|aj|al|am|an|ar|as|at|ay|az|da|een|ia|ij|in|ir|la|ma|"
-#| "mas|n|na|nab|ni|r|ra|raa|ran|rat|ul|ur|uz|wa|ya|yah|yam|za|zi\n"
-#| "connector= al-| ibna | bint \n"
-#| "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
-#| "\n"
-#| "These nonterminals are literally copied from the male names.\n"
-#| "name_mid_male={prefix_male}{suffix_male}|{name_short_male}\n"
-#| "name_short_male=Din|Sif|Din|Taj|Sud|Ali|Lut|Nuh|Qays|Nimr|Jad|Bushr|Lut|"
-#| "Maʿd|Nur|Fadl\n"
-#| "prefix_male=Ab|Bas|Fat|Gha|Al|Ba|Ja|Ha|Mu|Ra|Raz|Abi|Am|La|ʿAj|Ala|ʿAk|Fa|"
-#| "Du|Im|Ju|Mun|Ma|Ni|Ji|Mu|Lab|Luf|Mih|Mi|Qu|Tal|Ta|Tha|Za|Zi|Yas|Wa|Su|Qa|"
-#| "ʿIkri|Lu|Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
-#| "suffix_male=af|al|lih|bair|sur|bi|lah|at|sim|ma|ih|yl|iq|raj|mam|man|ya|"
-#| "zid|riya|ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|"
-#| "mal|kib\n"
 msgid ""
 "\n"
 "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{surname}\n"
@@ -2839,7 +2791,7 @@ msgstr ""
 "Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
 "suffix=a|ab|ad|ah|af|aj|al|am|an|ar|as|at|ay|az|da|een|ia|ij|in|ir|la|ma|mas|"
 "n|na|nab|ni|r|ra|raa|ran|rat|ul|ur|uz|wa|ya|yah|yam|za|zi\n"
-"connector= al-| ibna | bint \n"
+"connector= al-| ibna | bint\n"
 "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 "\n"
 "These nonterminals are literally copied from the male names.\n"
@@ -3335,7 +3287,6 @@ msgstr "Briser les chaînes"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:300
-#, fuzzy
 msgid "Casualties of War"
 msgstr "Les pertes de la guerre"
 
@@ -3352,12 +3303,12 @@ msgstr "Thême elfique"
 #. [music]
 #: data/core/macros/sound-utils.cfg:318
 msgid "Frantic"
-msgstr ""
+msgstr "Frénétique"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:324
 msgid "Heroes Rite"
-msgstr ""
+msgstr "Le rite du héro"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:330
@@ -3371,13 +3322,15 @@ msgstr "La fin de l'aventure"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:342
+#, fuzzy
 msgid "Knalgan Theme"
-msgstr ""
+msgstr "Thème Knalgan"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:348
+#, fuzzy
 msgid "The Knolls of Doldesh"
-msgstr ""
+msgstr "Les montagnes de Doldesh"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:354
@@ -3386,8 +3339,9 @@ msgstr "Les légendes du Nord"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:360
+#, fuzzy
 msgid "Love Theme"
-msgstr ""
+msgstr "Thème de l'maour"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:366
@@ -3401,13 +3355,15 @@ msgstr "Au delà des montagnes septentrionales"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:378
+#, fuzzy
 msgid "Northerners"
-msgstr ""
+msgstr "Nordiens"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:384
+#, fuzzy
 msgid "Nunc Dimittis"
-msgstr ""
+msgstr "Nunc Dimittis"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:390
@@ -3427,57 +3383,61 @@ msgstr "Le siège de Laurelmor"
 #. [music]
 #: data/core/macros/sound-utils.cfg:408
 msgid "Silvan Sanctuary"
-msgstr ""
+msgstr "Sanctuaire silvain"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:414
 msgid "Suspense"
-msgstr ""
+msgstr "Suspense"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:420
 msgid "The City Falls"
-msgstr ""
+msgstr "La chute de la cité"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:426
 msgid "The Dangerous Symphony"
-msgstr ""
+msgstr "La dangereuse symphonie"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:432
 msgid "The Deep Path"
-msgstr ""
+msgstr "Le voie profonde"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:438
 msgid "The King is Dead"
-msgstr ""
+msgstr "Le roi est mort"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:444
+#, fuzzy
 msgid "Transience"
-msgstr ""
+msgstr "Transience"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:450
 msgid "Traveling Minstrels"
-msgstr ""
+msgstr "Ménestrel en balade"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:456
+#, fuzzy
 msgid "Underground"
-msgstr ""
+msgstr "Souterrain"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:462
+#, fuzzy
 msgid "Vengeful Pursuit"
-msgstr ""
+msgstr "Poursuite vengeresse"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:468
+#, fuzzy
 msgid "Still Another Wanderer"
-msgstr ""
+msgstr "Encore un errant"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:474
@@ -3939,14 +3899,6 @@ msgstr ""
 
 #. [village_naming]
 #: data/english.cfg:76
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\t\tprefix=$base{!}|$river{!}\n"
-#| "\t\triver=$river{!}|River\n"
-#| "\t\tsuffix=ham|ford|cross| on {river} \n"
-#| "\t\tmain={prefix}{suffix}\n"
-#| "\t"
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$river{!}\n"
@@ -3958,7 +3910,7 @@ msgstr ""
 "\n"
 "\t\tprefix=$base{!}|$river{!}\n"
 "\t\triver=$river{!}|River\n"
-"\t\tsuffix=ham|ford|cross| on {river} \n"
+"\t\tsuffix=ham|ford|cross| on {river}\n"
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 
@@ -4120,13 +4072,14 @@ msgstr "DejaVu Sans Mono"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:30
+#, fuzzy
 msgid "Lato Light"
-msgstr ""
+msgstr "La lumière de Lato"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:31
 msgid "Oldania ADF Std"
-msgstr ""
+msgstr "Oldania ADF Std"
 
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:187
@@ -4190,7 +4143,7 @@ msgstr "insoignable"
 #: data/lua/wml/message.lua:390 src/scripting/game_lua_kernel.cpp:2774
 #: src/scripting/game_lua_kernel.cpp:2809
 msgid "input"
-msgstr ""
+msgstr "entrée"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
@@ -4257,7 +4210,6 @@ msgstr "Arrêter"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:463
-#, fuzzy
 msgid "pause after current move"
 msgstr "pause après le déplacement en cours"
 
@@ -4313,7 +4265,6 @@ msgstr "Continuer à jouer"
 
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:550
-#, fuzzy
 msgid "Exit the replay mode and continue playing normally."
 msgstr "Sortir du mode « replay » et continuer à joueur normalement."
 
@@ -4958,7 +4909,6 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:152
-#, fuzzy
 msgid ""
 "For any player, controlling villages is often key to winning a scenario. You "
 "may use this knowledge to lure your opponents into a trap by leaving some "
@@ -5972,8 +5922,6 @@ msgid "$elem has been deprecated and may be removed at any time."
 msgstr "$elem a été déprécié et pourra être supprimé à tout moment."
 
 #: src/deprecation.cpp:56
-#, fuzzy
-#| msgid "$elem has been deprecated and may be removed in version $version."
 msgid "$elem has been deprecated and will be removed in version $version."
 msgstr "$elem a été déprécié et pourra être supprimé à la version $version."
 
@@ -6026,55 +5974,52 @@ msgstr "Plage de couleur non valide : "
 
 #: src/game_config_manager.cpp:198 src/game_config_manager.cpp:207
 #: src/game_config_manager.cpp:219
-#, fuzzy
 msgid "Error validating data core."
-msgstr "Erreur de validation des données de base."
+msgstr "Erreur de validation des données."
 
+# core > module principal, pas trouvé mieux
 #: src/game_config_manager.cpp:199
 msgid "Found a core without id attribute."
-msgstr ""
+msgstr "Un module principal sans attribut id a été trouvé"
 
 #: src/game_config_manager.cpp:200 src/game_config_manager.cpp:210
 #: src/game_config_manager.cpp:223
 msgid "Skipping the core."
-msgstr ""
+msgstr "Module principal évité"
 
 #: src/game_config_manager.cpp:208 src/game_config_manager.cpp:220
 #: src/game_config_manager.cpp:243
 msgid "Core ID: "
-msgstr ""
+msgstr "ID du module principal :"
 
 #: src/game_config_manager.cpp:209
 msgid "The ID is already in use."
 msgstr "L'identifiant est déjà utilisé."
 
 #: src/game_config_manager.cpp:221
-#, fuzzy
 msgid "Core Path: "
-msgstr "Chemin des données de base :"
+msgstr "Chemin du module principal :"
 
 #: src/game_config_manager.cpp:222
 msgid "File not found."
 msgstr "Fichier non trouvé."
 
 #: src/game_config_manager.cpp:242 src/game_config_manager.cpp:254
-#, fuzzy
 msgid "Error loading core data."
-msgstr "Erreur de chargement des données de base."
+msgstr "Erreur de chargement des données."
 
 #: src/game_config_manager.cpp:244
+#, fuzzy
 msgid "Error loading the core with named id."
-msgstr ""
+msgstr "Erreur de chargement du module principale."
 
 #: src/game_config_manager.cpp:245
-#, fuzzy
 msgid "Falling back to the default core."
-msgstr "Utilisation des valeur par défaut des données de base."
+msgstr "Utilisation des valeurs par défaut des données."
 
 #: src/game_config_manager.cpp:255
-#, fuzzy
 msgid "Can't locate the default core."
-msgstr "Ne peut trouver les données de base"
+msgstr "Ne peut trouver le module principal par défaut."
 
 #: src/game_config_manager.cpp:256
 msgid "The game will now exit."
@@ -6593,7 +6538,6 @@ msgstr ""
 "colline »)"
 
 #: src/gui/core/linked_group_definition.cpp:39
-#, fuzzy
 msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 "Le groupe lié '$id' nécessite un attribut 'fixed_width' ou 'fixed_height'"
@@ -6679,7 +6623,6 @@ msgid "Only available during a scenario."
 msgstr "Seulement disponible pendant un scénario."
 
 #: src/help/help_impl.cpp:384
-#, fuzzy
 msgid "Schedule"
 msgstr "Planification"
 
@@ -6725,7 +6668,7 @@ msgstr "Disponibilité :"
 
 #: src/help/help_impl.cpp:714
 msgid "Must-have"
-msgstr ""
+msgstr "Incontournable"
 
 #: src/help/help_impl.cpp:716
 msgid "Unavailable"
@@ -6751,11 +6694,11 @@ msgstr "fichier original corrompu"
 
 #: src/help/help_topic_generators.cpp:45
 msgid "Best of"
-msgstr ""
+msgstr "Le meilleur"
 
 #: src/help/help_topic_generators.cpp:45
 msgid "Worst of"
-msgstr ""
+msgstr "Le pire"
 
 #: src/help/help_topic_generators.cpp:141
 msgid "Base Terrain: "
@@ -6770,8 +6713,6 @@ msgid "Defense properties: "
 msgstr "Caractéristique défensive : "
 
 #: src/help/help_topic_generators.cpp:246
-#, fuzzy
-#| msgid "Level: "
 msgid "Level"
 msgstr "Niveau : "
 
@@ -6898,7 +6839,7 @@ msgstr "Coût de la vision"
 
 #: src/help/help_topic_generators.cpp:630
 msgid "Jamming Cost"
-msgstr ""
+msgstr "Coût du brouillage"
 
 #: src/hotkey/command_executor.cpp:386
 msgid "Do you really want to surrender the game?"
@@ -7599,7 +7540,6 @@ msgid "Game Error"
 msgstr "Erreur du jeu"
 
 #: src/playsingle_controller.cpp:154
-#, fuzzy
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
@@ -7923,7 +7863,6 @@ msgid "Units"
 msgstr "Unités"
 
 #: src/reports.cpp:1296
-#, fuzzy
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. The second is the "
@@ -7944,7 +7883,6 @@ msgid "Income"
 msgstr "Revenu"
 
 #: src/reports.cpp:1333
-#, fuzzy
 msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
@@ -8216,32 +8154,34 @@ msgstr "i"
 #: src/synced_commands.cpp:404
 msgid "The :$command debug command was used during $player’s turn"
 msgstr ""
+"La commande de débogage :$command a été utilisé lors du tour du joueur "
+"$player"
 
 #: src/synced_commands.cpp:412
 msgid ""
 "A player used a debug command during the game. If this is unexpected, it is "
 "possible the player in question is cheating."
 msgstr ""
+"Un joueur a utilise un commande de débogage pendant la partie. Si ce n'était "
+"pas prévu, il est possible que le joueur en question triche."
 
 #: src/synced_commands.cpp:414
-#, fuzzy
-#| msgid "Details"
 msgid "Details:"
 msgstr "Détails"
 
 #: src/synced_commands.cpp:417
 msgid "Do you wish to save the game before continuing?"
-msgstr ""
+msgstr "Voulez-vous sauvegarder la partie avant de continuer ?"
 
 #: src/synced_commands.cpp:419
-#, fuzzy
-#| msgid "Debug mode commands"
 msgid "Debug Command Used"
-msgstr "Commandes du mode débug"
+msgstr "Commandes de débogage utilisées"
 
 #: src/synced_commands.cpp:503
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
+"Une unité a été créée en utilise le mode débogue, pendant le tour du joueur "
+"$player"
 
 #: src/synced_user_choice.cpp:326
 msgid "waiting for $desc from side(s) $sides"
@@ -8273,8 +8213,9 @@ msgid "Stub Time of Day"
 msgstr "Moment de la journée"
 
 #: src/time_of_day.cpp:46
+#, fuzzy
 msgid "This Time of Day is only a Stub!"
-msgstr ""
+msgstr "Ce moment de la journée est seulement un Stub !"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:356
@@ -8375,11 +8316,8 @@ msgid "$attack_list|: $effect_description"
 msgstr "$attack_list| : $effect_description"
 
 #: src/units/unit.cpp:1791
-#, fuzzy
-#| msgid "<span color=\"$color\">$number_or_percent</span> move"
-#| msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
-msgstr "<span color=\"$color\">$number_or_percent</span> déplacement"
+msgstr "<span color=\"$color\">$number_or_percent</span> HP"
 
 #: src/units/unit.cpp:1801
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8483,15 +8421,18 @@ msgstr "Options de planification"
 #~ "DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull."
 #~ "ttf,Junicode-Regular.ttf"
 
+#~ msgid "Reference to unknown topic: "
+#~ msgstr "Référence à un sujet inconnu :"
+
+#~ msgid "(unknown player)"
+#~ msgstr "(joueur inconnu)"
+
 #~ msgid ""
 #~ "$elem has been deprecated and will be removed in the next version "
 #~ "($version)."
 #~ msgstr ""
 #~ "$elem a été déprécié et sera supprimé lors de la prochaine version "
 #~ "($version)."
-
-#~ msgid "Reference to unknown topic: "
-#~ msgstr "Référence à un sujet inconnu :"
 
 #~ msgid ""
 #~ "Screenshot creation failed.\n"
@@ -15052,9 +14993,6 @@ msgstr "Options de planification"
 
 #~ msgid "connect"
 #~ msgstr "se connecter"
-
-#~ msgid "#(unknown campaign)"
-#~ msgstr "#(Campagne inconnue)"
 
 #~ msgid ""
 #~ "Commands: msg/whisper <nick> <message>, list <subcommand> [<argument>], "
