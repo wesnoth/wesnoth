@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-27 04:20+0300\n"
+"POT-Creation-Date: 2018-04-15 01:34-0300\n"
 "PO-Revision-Date: 2018-03-29 12:27+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -1968,10 +1968,10 @@ msgid "Search"
 msgstr "Search"
 
 #. [toggle_button]: id=sort_0
-#. [toggle_button]: id=sort_name
-#. [label]: id=name
-#. [label]
 #. [toggle_button]: id=sort_1
+#. [toggle_button]: id=sort_name
+#. [label]
+#. [label]: id=name
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:226
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_server_list.cfg:107
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -2125,7 +2125,7 @@ msgstr "Connect"
 #: data/gui/window/editor_resize_map.cfg:284
 #: data/gui/window/editor_set_starting_position.cfg:175
 #: data/gui/window/file_dialog.cfg:450 data/gui/window/folder_create.cfg:133
-#: data/gui/window/game_load.cfg:579 data/gui/window/game_save.cfg:134
+#: data/gui/window/game_load.cfg:594 data/gui/window/game_save.cfg:134
 #: data/gui/window/label_settings.cfg:149
 #: data/gui/window/language_selection.cfg:162 data/gui/window/logging.cfg:169
 #: data/gui/window/message.cfg:149 data/gui/window/mp_change_control.cfg:216
@@ -2376,7 +2376,7 @@ msgstr "Scaled to hex"
 #: data/gui/window/editor_edit_side.cfg:443
 #: data/gui/window/editor_set_starting_position.cfg:162
 #: data/gui/window/file_dialog.cfg:437 data/gui/window/folder_create.cfg:119
-#: data/gui/window/game_load.cfg:566 data/gui/window/game_save.cfg:120
+#: data/gui/window/game_load.cfg:581 data/gui/window/game_save.cfg:120
 #: data/gui/window/label_settings.cfg:137
 #: data/gui/window/language_selection.cfg:148 data/gui/window/logging.cfg:159
 #: data/gui/window/mp_change_control.cfg:203
@@ -2517,8 +2517,8 @@ msgstr "Page:"
 msgid "Last"
 msgstr "Last"
 
-#. [button]: id=previous_tip
 #. [button]: id=previous_page
+#. [button]: id=previous_tip
 #: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:190
 msgid "Previous"
 msgstr "Previous"
@@ -2528,8 +2528,8 @@ msgstr "Previous"
 msgid "Previous page"
 msgstr "Previous page"
 
-#. [button]: id=next_tip
 #. [button]: id=next_page
+#. [button]: id=next_tip
 #: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:205
 msgid "Next"
 msgstr "Next"
@@ -2654,7 +2654,7 @@ msgstr "Delete ToD"
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
 #: src/gui/dialogs/addon/manager.cpp:773 src/gui/dialogs/file_dialog.cpp:307
-#: src/gui/dialogs/file_dialog.cpp:733 src/gui/widgets/label.cpp:172
+#: src/gui/dialogs/file_dialog.cpp:733
 msgid "Confirm"
 msgstr "Confirm"
 
@@ -2886,8 +2886,8 @@ msgstr "Generate Map"
 msgid "Choose a map generator:"
 msgstr "Choose a map generator:"
 
-#. [button]: id=settings
 #. [button]: id=random_map_settings
+#. [button]: id=settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
 msgid "Settings"
@@ -2909,15 +2909,15 @@ msgstr "Generate"
 msgid "New Map"
 msgstr "New Map"
 
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
 msgstr "Width:"
 
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
@@ -3129,8 +3129,8 @@ msgstr "Delete Save"
 msgid "Do you really want to delete this game?"
 msgstr "Do you really want to delete this game?"
 
-#. [toggle_button]: id=dont_ask_again
 #. [toggle_button]: id=do_not_show_again
+#. [toggle_button]: id=dont_ask_again
 #: data/gui/window/game_delete.cfg:80
 #: data/gui/window/mp_host_game_prompt.cfg:79
 msgid "Do not show again"
@@ -3560,8 +3560,8 @@ msgstr "Friends first, ignored people last"
 msgid "Alphabetically"
 msgstr "Alphabetically"
 
-#. [widget]: id=tab_label
 #. [toggle_button]: id=filter_with_friends
+#. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:420
 #: data/gui/window/preferences/05_multiplayer.cfg:415
 msgid "Friends"
@@ -3592,9 +3592,9 @@ msgstr "Log Out"
 msgid "Refresh"
 msgstr "Refresh"
 
+#. [button]: id=create
 #. [label]
 #. [button]: id=ok
-#. [button]: id=create
 #: data/gui/window/lobby_main.cfg:498 data/gui/window/lobby_main.cfg:676
 #: data/gui/window/mp_create_game/default_resolution.cfg:45
 #: data/gui/window/mp_create_game/default_resolution.cfg:446
@@ -3606,9 +3606,9 @@ msgid "Create Game"
 msgstr "Create Game"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=show_preferences
 #. [label]: id=title
 #. [grid]
-#. [button]: id=show_preferences
 #: data/gui/window/lobby_main.cfg:508 data/gui/window/lobby_main.cfg:664
 #: data/gui/window/preferences.cfg:212 data/gui/window/title_screen.cfg:259
 #: src/hotkey/hotkey_command.cpp:99
@@ -3740,8 +3740,8 @@ msgstr ""
 msgid "Event"
 msgstr "Event"
 
-#. [label]
 #. [widget]: id=label
+#. [label]
 #: data/gui/window/mp_alerts_options.cfg:154
 #: data/gui/window/preferences.cfg:346
 msgid "Sound"
@@ -3847,9 +3847,9 @@ msgstr "Turn changed:"
 msgid "When a new turn has begun"
 msgstr "When a new turn has begun"
 
+#. [button]: id=orb_defaults
 #. [button]: id=revert_to_defaults
 #. [button]: id=btn_reset_hotkeys
-#. [button]: id=orb_defaults
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:263
 #: data/gui/window/select_orb_colors.cfg:102
@@ -4145,15 +4145,15 @@ msgstr "Gender:"
 msgid "Random"
 msgstr "Random"
 
-#. [row]
 #. [toggle_button]: id=male_toggle
+#. [row]
 #: data/gui/window/mp_faction_select.cfg:169
 #: data/gui/window/unit_create.cfg:217
 msgid "Male"
 msgstr "Male"
 
-#. [row]
 #. [toggle_button]: id=female_toggle
+#. [row]
 #: data/gui/window/mp_faction_select.cfg:171
 #: data/gui/window/unit_create.cfg:229
 msgid "Female"
@@ -4174,8 +4174,8 @@ msgstr "Choose Your Faction"
 msgid "Starting position:"
 msgstr "Starting position:"
 
-#. [label]
 #. [widget]: id=name
+#. [label]
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:230
 msgid "Host Networked Game"
@@ -4253,12 +4253,12 @@ msgid "Save password locally (encrypted)"
 msgstr "Save password locally (encrypted)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]
 #. [widget]: id=label
+#. [label]
 #. [grid]
 #: data/gui/window/mp_method_selection.cfg:44
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:253
-#: src/gui/dialogs/game_load.cpp:332
+#: src/gui/dialogs/game_load.cpp:337
 msgid "Multiplayer"
 msgstr "Multiplayer"
 
@@ -4668,12 +4668,12 @@ msgid "Set the scaling factor of fonts"
 msgstr "Set the scaling factor of fonts"
 
 #. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:274
+#: data/gui/window/preferences/03_display.cfg:275
 msgid "Theme"
 msgstr "Theme"
 
 #. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:275
+#: data/gui/window/preferences/03_display.cfg:276
 msgid "Change the in-game theme"
 msgstr "Change the in-game theme"
 
@@ -5071,7 +5071,7 @@ msgstr "Start a tutorial to familiarize yourself with the game"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/window/title_screen.cfg:251 src/gui/dialogs/game_load.cpp:335
+#: data/gui/window/title_screen.cfg:251 src/gui/dialogs/game_load.cpp:340
 msgid "Tutorial"
 msgstr "Tutorial"
 
@@ -5215,21 +5215,21 @@ msgstr "Status"
 msgid "HP"
 msgstr "HP"
 
-#. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_2
+#. [toggle_button]: id=sort_4
 #: data/gui/window/unit_list.cfg:149 data/gui/window/unit_recall.cfg:61
 msgid "Lvl"
 msgstr "Lvl"
 
-#. [toggle_button]: id=sort_5
 #. [toggle_button]: id=sort_3
+#. [toggle_button]: id=sort_5
 #: data/gui/window/unit_list.cfg:163 data/gui/window/unit_recall.cfg:75
 msgid "XP"
 msgstr "XP"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [toggle_button]: id=sort_6
 #. [toggle_button]: id=sort_4
+#. [toggle_button]: id=sort_6
 #: data/gui/window/unit_list.cfg:177 data/gui/window/unit_recall.cfg:89
 #: src/gui/widgets/unit_preview_pane.cpp:345
 #: src/gui/widgets/unit_preview_pane.cpp:488
@@ -5858,35 +5858,35 @@ msgstr "The game data cache has been purged."
 msgid "The game data cache could not be purged."
 msgstr "The game data cache could not be purged."
 
-#: src/gui/dialogs/game_load.cpp:296
+#: src/gui/dialogs/game_load.cpp:301
 msgid "(Invalid)"
 msgstr "(Invalid)"
 
-#: src/gui/dialogs/game_load.cpp:323
+#: src/gui/dialogs/game_load.cpp:328
 msgid "Campaign: $campaign_name"
 msgstr "Campaign: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:338
+#: src/gui/dialogs/game_load.cpp:343
 msgid "Test scenario"
 msgstr "Test scenario"
 
-#: src/gui/dialogs/game_load.cpp:348
+#: src/gui/dialogs/game_load.cpp:353
 msgid "Replay"
 msgstr "Replay"
 
-#: src/gui/dialogs/game_load.cpp:350
+#: src/gui/dialogs/game_load.cpp:355
 msgid "Turn"
 msgstr "Turn"
 
-#: src/gui/dialogs/game_load.cpp:352
+#: src/gui/dialogs/game_load.cpp:357
 msgid "Scenario start"
 msgstr "Scenario start"
 
-#: src/gui/dialogs/game_load.cpp:355
+#: src/gui/dialogs/game_load.cpp:360
 msgid "Difficulty: "
 msgstr "Difficulty: "
 
-#: src/gui/dialogs/game_load.cpp:359
+#: src/gui/dialogs/game_load.cpp:364
 msgid "Version: "
 msgstr "Version: "
 
@@ -7402,7 +7402,7 @@ msgstr "Unrecognized Command"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:532
+#: src/image.cpp:538
 msgid "language code for localized resources^en_US"
 msgstr "en_GB"
 
@@ -7424,15 +7424,15 @@ msgstr ""
 msgid "Find Server Application"
 msgstr "Find Server Application"
 
-#: src/preferences/game.cpp:379
+#: src/preferences/game.cpp:382
 msgid "No server has been defined."
 msgstr "No server has been defined."
 
-#: src/preferences/game.cpp:902
+#: src/preferences/game.cpp:905
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/game.cpp:905
+#: src/preferences/game.cpp:908
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 

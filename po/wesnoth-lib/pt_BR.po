@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-27 04:20+0300\n"
+"POT-Creation-Date: 2018-04-15 01:34-0300\n"
 "PO-Revision-Date: 2013-03-10 03:55-0300\n"
 "Last-Translator: Gilberto dos Santos Alves <gsavix@gmail.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -3225,10 +3225,10 @@ msgstr ""
 # File: data/gui/default/window/game_load.cfg, line: 265
 # File: data/gui/default/window/mp_server_list.cfg, line: 107
 #. [toggle_button]: id=sort_0
-#. [toggle_button]: id=sort_name
-#. [label]: id=name
-#. [label]
 #. [toggle_button]: id=sort_1
+#. [toggle_button]: id=sort_name
+#. [label]
+#. [label]: id=name
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:226
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_server_list.cfg:107
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -3609,7 +3609,7 @@ msgstr "Conectar"
 #: data/gui/window/editor_resize_map.cfg:284
 #: data/gui/window/editor_set_starting_position.cfg:175
 #: data/gui/window/file_dialog.cfg:450 data/gui/window/folder_create.cfg:133
-#: data/gui/window/game_load.cfg:579 data/gui/window/game_save.cfg:134
+#: data/gui/window/game_load.cfg:594 data/gui/window/game_save.cfg:134
 #: data/gui/window/label_settings.cfg:149
 #: data/gui/window/language_selection.cfg:162 data/gui/window/logging.cfg:169
 #: data/gui/window/message.cfg:149 data/gui/window/mp_change_control.cfg:216
@@ -4055,7 +4055,7 @@ msgstr ""
 #: data/gui/window/editor_edit_side.cfg:443
 #: data/gui/window/editor_set_starting_position.cfg:162
 #: data/gui/window/file_dialog.cfg:437 data/gui/window/folder_create.cfg:119
-#: data/gui/window/game_load.cfg:566 data/gui/window/game_save.cfg:120
+#: data/gui/window/game_load.cfg:581 data/gui/window/game_save.cfg:120
 #: data/gui/window/label_settings.cfg:137
 #: data/gui/window/language_selection.cfg:148 data/gui/window/logging.cfg:159
 #: data/gui/window/mp_change_control.cfg:203
@@ -4269,8 +4269,8 @@ msgstr "Último"
 # File: data/gui/default/window/title_screen.cfg, line: 195
 # File: data/gui/default/window/chat_log.cfg, line: 79
 # File: data/gui/default/window/title_screen.cfg, line: 195
-#. [button]: id=previous_tip
 #. [button]: id=previous_page
+#. [button]: id=previous_tip
 #: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:190
 msgid "Previous"
 msgstr "Anterior"
@@ -4302,8 +4302,8 @@ msgstr "Anterior"
 # File: data/gui/default/window/editor_settings.cfg, line: 79
 # File: data/gui/default/window/editor_settings.cfg, line: 80
 # File: data/gui/default/window/title_screen.cfg, line: 210
-#. [button]: id=next_tip
 #. [button]: id=next_page
+#. [button]: id=next_tip
 #: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:205
 msgid "Next"
 msgstr "Próxima"
@@ -4504,7 +4504,7 @@ msgstr "Apagar"
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
 #: src/gui/dialogs/addon/manager.cpp:773 src/gui/dialogs/file_dialog.cpp:307
-#: src/gui/dialogs/file_dialog.cpp:733 src/gui/widgets/label.cpp:172
+#: src/gui/dialogs/file_dialog.cpp:733
 msgid "Confirm"
 msgstr ""
 
@@ -4961,8 +4961,8 @@ msgstr "Gerador de mapa"
 # File: data/gui/default/window/editor_generate_map.cfg, line: 87
 # File: data/gui/default/window/editor_generate_map.cfg, line: 86
 # File: data/gui/default/window/editor_generate_map.cfg, line: 87
-#. [button]: id=settings
 #. [button]: id=random_map_settings
+#. [button]: id=settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
 msgid "Settings"
@@ -5002,8 +5002,8 @@ msgstr "Novo Mapa"
 # File: src/mapgen_dialog.cpp, line: 121
 # File: data/gui/default/window/editor_new_map.cfg, line: 54
 # File: src/mapgen_dialog.cpp, line: 121
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
@@ -5016,8 +5016,8 @@ msgstr "Largura:"
 # File: src/mapgen_dialog.cpp, line: 122
 # File: data/gui/default/window/editor_new_map.cfg, line: 81
 # File: src/mapgen_dialog.cpp, line: 122
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
@@ -5365,8 +5365,8 @@ msgstr "Você realmente quer apagar este jogo?"
 # File: data/gui/default/window/mp_host_game_prompt.cfg, line: 79
 # File: data/gui/default/window/game_delete.cfg, line: 80
 # File: data/gui/default/window/mp_host_game_prompt.cfg, line: 79
-#. [toggle_button]: id=dont_ask_again
 #. [toggle_button]: id=do_not_show_again
+#. [toggle_button]: id=dont_ask_again
 #: data/gui/window/game_delete.cfg:80
 #: data/gui/window/mp_host_game_prompt.cfg:79
 #, fuzzy
@@ -6121,8 +6121,8 @@ msgstr "Alfabeticamente"
 # File: data/gui/default/window/lobby_main.cfg, line: 586
 # File: data/gui/default/window/lobby_main.cfg, line: 586
 # File: data/gui/default/window/lobby_main.cfg, line: 586
-#. [widget]: id=tab_label
 #. [toggle_button]: id=filter_with_friends
+#. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:420
 #: data/gui/window/preferences/05_multiplayer.cfg:415
 msgid "Friends"
@@ -6182,9 +6182,9 @@ msgstr "Atualizar"
 # File: data/gui/default/window/mp_create_game.cfg, line: 41
 # File: data/gui/default/window/lobby_main.cfg, line: 686
 # File: data/gui/default/window/mp_create_game.cfg, line: 41
+#. [button]: id=create
 #. [label]
 #. [button]: id=ok
-#. [button]: id=create
 #: data/gui/window/lobby_main.cfg:498 data/gui/window/lobby_main.cfg:676
 #: data/gui/window/mp_create_game/default_resolution.cfg:45
 #: data/gui/window/mp_create_game/default_resolution.cfg:446
@@ -6209,9 +6209,9 @@ msgstr "Criar Jogo"
 # File: src/game_preferences_display.cpp, line: 63
 # File: src/hotkeys.cpp, line: 106
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=show_preferences
 #. [label]: id=title
 #. [grid]
-#. [button]: id=show_preferences
 #: data/gui/window/lobby_main.cfg:508 data/gui/window/lobby_main.cfg:664
 #: data/gui/window/preferences.cfg:212 data/gui/window/title_screen.cfg:259
 #: src/hotkey/hotkey_command.cpp:99
@@ -6432,8 +6432,8 @@ msgstr ""
 msgid "Event"
 msgstr ""
 
-#. [label]
 #. [widget]: id=label
+#. [label]
 #: data/gui/window/mp_alerts_options.cfg:154
 #: data/gui/window/preferences.cfg:346
 msgid "Sound"
@@ -6596,9 +6596,9 @@ msgstr ""
 # File: src/hotkey_preferences_display.cpp, line: 169
 # File: src/hotkey_preferences_display.cpp, line: 169
 # File: src/hotkey_preferences_display.cpp, line: 169
+#. [button]: id=orb_defaults
 #. [button]: id=revert_to_defaults
 #. [button]: id=btn_reset_hotkeys
-#. [button]: id=orb_defaults
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:263
 #: data/gui/window/select_orb_colors.cfg:102
@@ -7090,8 +7090,8 @@ msgstr ""
 # File: data/gui/default/window/unit_create.cfg, line: 77
 # File: data/gui/default/window/unit_create.cfg, line: 77
 # File: data/gui/default/window/unit_create.cfg, line: 77
-#. [row]
 #. [toggle_button]: id=male_toggle
+#. [row]
 #: data/gui/window/mp_faction_select.cfg:169
 #: data/gui/window/unit_create.cfg:217
 msgid "Male"
@@ -7101,8 +7101,8 @@ msgstr "Masc."
 # File: data/gui/default/window/unit_create.cfg, line: 87
 # File: data/gui/default/window/unit_create.cfg, line: 87
 # File: data/gui/default/window/unit_create.cfg, line: 87
-#. [row]
 #. [toggle_button]: id=female_toggle
+#. [row]
 #: data/gui/window/mp_faction_select.cfg:171
 #: data/gui/window/unit_create.cfg:229
 msgid "Female"
@@ -7147,8 +7147,8 @@ msgstr "Colocar Posições Iniciais"
 # File: data/gui/default/window/mp_method_selection.cfg, line: 166
 # File: data/gui/default/window/mp_host_game_prompt.cfg, line: 40
 # File: data/gui/default/window/mp_method_selection.cfg, line: 166
-#. [label]
 #. [widget]: id=name
+#. [label]
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:230
 msgid "Host Networked Game"
@@ -7278,12 +7278,12 @@ msgstr "Salvar senha para preferências (texto limpo)"
 # File: data/gui/default/window/title_screen.cfg, line: 258
 # File: src/gui/dialogs/game_load.cpp, line: 296
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]
 #. [widget]: id=label
+#. [label]
 #. [grid]
 #: data/gui/window/mp_method_selection.cfg:44
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:253
-#: src/gui/dialogs/game_load.cpp:332
+#: src/gui/dialogs/game_load.cpp:337
 msgid "Multiplayer"
 msgstr "Multijogador"
 
@@ -7991,7 +7991,7 @@ msgstr ""
 # File: src/game_preferences_display.cpp, line: 199
 # File: src/game_preferences_display.cpp, line: 199
 #. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:274
+#: data/gui/window/preferences/03_display.cfg:275
 msgid "Theme"
 msgstr "Tema"
 
@@ -8000,7 +8000,7 @@ msgstr "Tema"
 # File: src/game_preferences_display.cpp, line: 273
 # File: src/game_preferences_display.cpp, line: 273
 #. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:275
+#: data/gui/window/preferences/03_display.cfg:276
 #, fuzzy
 #| msgid "Change the sample rate"
 msgid "Change the in-game theme"
@@ -8684,7 +8684,7 @@ msgstr "Iniciar um tutorial para familiarizar-se com o jogo"
 # File: src/gui/dialogs/game_load.cpp, line: 298
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/window/title_screen.cfg:251 src/gui/dialogs/game_load.cpp:335
+#: data/gui/window/title_screen.cfg:251 src/gui/dialogs/game_load.cpp:340
 msgid "Tutorial"
 msgstr "Tutorial"
 
@@ -8972,21 +8972,21 @@ msgstr "Status"
 msgid "HP"
 msgstr ""
 
-#. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_2
+#. [toggle_button]: id=sort_4
 #: data/gui/window/unit_list.cfg:149 data/gui/window/unit_recall.cfg:61
 msgid "Lvl"
 msgstr ""
 
-#. [toggle_button]: id=sort_5
 #. [toggle_button]: id=sort_3
+#. [toggle_button]: id=sort_5
 #: data/gui/window/unit_list.cfg:163 data/gui/window/unit_recall.cfg:75
 msgid "XP"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [toggle_button]: id=sort_6
 #. [toggle_button]: id=sort_4
+#. [toggle_button]: id=sort_6
 #: data/gui/window/unit_list.cfg:177 data/gui/window/unit_recall.cfg:89
 #: src/gui/widgets/unit_preview_pane.cpp:345
 #: src/gui/widgets/unit_preview_pane.cpp:488
@@ -9948,7 +9948,7 @@ msgstr ""
 # File: src/gui/dialogs/game_load.cpp, line: 269
 # File: src/gui/dialogs/game_load.cpp, line: 269
 # File: src/gui/dialogs/game_load.cpp, line: 269
-#: src/gui/dialogs/game_load.cpp:296
+#: src/gui/dialogs/game_load.cpp:301
 #, fuzzy
 #| msgid "#(Invalid)"
 msgid "(Invalid)"
@@ -9958,7 +9958,7 @@ msgstr "#(Invalido)"
 # File: src/gui/dialogs/game_load.cpp, line: 289
 # File: src/gui/dialogs/game_load.cpp, line: 289
 # File: src/gui/dialogs/game_load.cpp, line: 289
-#: src/gui/dialogs/game_load.cpp:323
+#: src/gui/dialogs/game_load.cpp:328
 msgid "Campaign: $campaign_name"
 msgstr "Campanha: $campaign_name"
 
@@ -9966,7 +9966,7 @@ msgstr "Campanha: $campaign_name"
 # File: src/gui/dialogs/game_load.cpp, line: 300
 # File: src/gui/dialogs/game_load.cpp, line: 300
 # File: src/gui/dialogs/game_load.cpp, line: 300
-#: src/gui/dialogs/game_load.cpp:338
+#: src/gui/dialogs/game_load.cpp:343
 msgid "Test scenario"
 msgstr "Cenário de teste"
 
@@ -9974,7 +9974,7 @@ msgstr "Cenário de teste"
 # File: src/gui/dialogs/game_load.cpp, line: 308
 # File: src/gui/dialogs/game_load.cpp, line: 308
 # File: src/gui/dialogs/game_load.cpp, line: 308
-#: src/gui/dialogs/game_load.cpp:348
+#: src/gui/dialogs/game_load.cpp:353
 msgid "Replay"
 msgstr "Replay"
 
@@ -9982,7 +9982,7 @@ msgstr "Replay"
 # File: src/gui/dialogs/game_load.cpp, line: 310
 # File: src/gui/dialogs/game_load.cpp, line: 310
 # File: src/gui/dialogs/game_load.cpp, line: 310
-#: src/gui/dialogs/game_load.cpp:350
+#: src/gui/dialogs/game_load.cpp:355
 msgid "Turn"
 msgstr "Turno"
 
@@ -9990,7 +9990,7 @@ msgstr "Turno"
 # File: src/gui/dialogs/game_load.cpp, line: 312
 # File: src/gui/dialogs/game_load.cpp, line: 312
 # File: src/gui/dialogs/game_load.cpp, line: 312
-#: src/gui/dialogs/game_load.cpp:352
+#: src/gui/dialogs/game_load.cpp:357
 msgid "Scenario start"
 msgstr "Início de Cenário"
 
@@ -9998,7 +9998,7 @@ msgstr "Início de Cenário"
 # File: src/gui/dialogs/game_load.cpp, line: 315
 # File: src/gui/dialogs/game_load.cpp, line: 315
 # File: src/gui/dialogs/game_load.cpp, line: 315
-#: src/gui/dialogs/game_load.cpp:355
+#: src/gui/dialogs/game_load.cpp:360
 msgid "Difficulty: "
 msgstr "Dificuldade: "
 
@@ -10006,7 +10006,7 @@ msgstr "Dificuldade: "
 # File: src/gui/dialogs/game_load.cpp, line: 319
 # File: src/gui/dialogs/game_load.cpp, line: 319
 # File: src/gui/dialogs/game_load.cpp, line: 319
-#: src/gui/dialogs/game_load.cpp:359
+#: src/gui/dialogs/game_load.cpp:364
 msgid "Version: "
 msgstr "Versão:"
 
@@ -12907,7 +12907,7 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:532
+#: src/image.cpp:538
 msgid "language code for localized resources^en_US"
 msgstr "pt_BR,pt"
 
@@ -12934,7 +12934,7 @@ msgstr ""
 # File: src/game_preferences.cpp, line: 323
 # File: src/game_preferences.cpp, line: 349
 # File: src/game_preferences.cpp, line: 349
-#: src/preferences/game.cpp:379
+#: src/preferences/game.cpp:382
 msgid "No server has been defined."
 msgstr "Nenhum servidor foi definido."
 
@@ -12942,7 +12942,7 @@ msgstr "Nenhum servidor foi definido."
 # File: src/game_preferences.cpp, line: 895
 # File: src/game_preferences.cpp, line: 921
 # File: src/game_preferences.cpp, line: 921
-#: src/preferences/game.cpp:902
+#: src/preferences/game.cpp:905
 #, fuzzy
 #| msgid "%H:%M"
 msgid "[%H:%M]"
@@ -12952,7 +12952,7 @@ msgstr "%H:%M"
 # File: src/game_preferences.cpp, line: 898
 # File: src/game_preferences.cpp, line: 924
 # File: src/game_preferences.cpp, line: 924
-#: src/preferences/game.cpp:905
+#: src/preferences/game.cpp:908
 #, fuzzy
 #| msgid "%I:%M %p"
 msgid "[%I:%M %p]"

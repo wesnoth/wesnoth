@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-04-01 02:37+0300\n"
+"POT-Creation-Date: 2018-04-15 01:34-0300\n"
 "PO-Revision-Date: 2015-11-07 11:03+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -319,7 +319,7 @@ msgstr "Joystick: mŕtva zóna pre ovládač tlaku"
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:358
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1093
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1085
 msgid "poisoned"
 msgstr "otrávený"
 
@@ -336,21 +336,6 @@ msgstr "Prenos zlata:"
 #: data/lua/wml/objectives.lua:39
 msgid "Notes:"
 msgstr "Poznámky:"
-
-#. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:153 data/english.cfg:3
-msgid "Easy"
-msgstr "Ľahká"
-
-#. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:154 data/english.cfg:4
-msgid "Medium"
-msgstr "Stredná"
-
-#. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:155 data/english.cfg:5
-msgid "Hard"
-msgstr "Ťažká"
 
 #. [about]
 #: data/core/about.cfg:4
@@ -398,12 +383,12 @@ msgid "Packagers"
 msgstr "Výrobcovia balíkov"
 
 #. [about]
-#: data/core/about.cfg:1001
+#: data/core/about.cfg:1007
 msgid "Miscellaneous Contributors"
 msgstr "Rôzni prispievatelia"
 
 #. [about]
-#: data/core/about.cfg:1653
+#: data/core/about.cfg:1661
 msgid "Bots"
 msgstr "Roboti"
 
@@ -1260,14 +1245,14 @@ msgid "Ask $ai_controller_unit.name to move here"
 msgstr "Požiadať $ai_controller_unit.name presunúť sa sem"
 
 #. [set_menu_item]: id=ai_controller_leader_control_{CONTROLLED_SIDE}
-#: data/core/macros/ai_controller.cfg:72
+#: data/core/macros/ai_controller.cfg:75
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
 "Požiadaj $ally_leader.name (veliteľ strany $ally_leader.side), aby sa "
 "presunul sem"
 
 #. [note]
-#: data/core/macros/ai_controller.cfg:102
+#: data/core/macros/ai_controller.cfg:108
 msgid ""
 "In this scenario, you may issue instructions to an allied side by right-"
 "clicking on a unit that belongs to it."
@@ -1278,21 +1263,21 @@ msgstr ""
 #. [overview_message_has_instructions]: speaker=narrator
 #. [overview_message_no_instructions]: speaker=narrator
 #. [literal]
-#: data/core/macros/ai_controller.cfg:117
-#: data/core/macros/ai_controller.cfg:124
-#: data/core/macros/ai_controller.cfg:131
+#: data/core/macros/ai_controller.cfg:123
+#: data/core/macros/ai_controller.cfg:130
+#: data/core/macros/ai_controller.cfg:137
 msgid "Instruct ally"
 msgstr "Povedz spojencovi inštrukcie"
 
 #. [overview_message_has_instructions]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:125
+#: data/core/macros/ai_controller.cfg:131
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
 msgstr "$ally_leader.name (strana $ally_side|) vykonáva nasledovné inštrukcie:"
 
 #. [overview_message_no_instructions]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:132
+#: data/core/macros/ai_controller.cfg:138
 msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
@@ -1301,32 +1286,32 @@ msgstr ""
 "sa normálne."
 
 #. [aggression]
-#: data/core/macros/ai_controller.cfg:139
+#: data/core/macros/ai_controller.cfg:145
 msgid "Be more aggressive"
 msgstr "Buď viac agresívny"
 
 #. [aggression]
-#: data/core/macros/ai_controller.cfg:140
+#: data/core/macros/ai_controller.cfg:146
 msgid "aggressive."
 msgstr "agresívny."
 
 #. [caution]
-#: data/core/macros/ai_controller.cfg:157
+#: data/core/macros/ai_controller.cfg:163
 msgid "Be more defensive"
 msgstr "Buď viac defenzívny"
 
 #. [caution]
-#: data/core/macros/ai_controller.cfg:158
+#: data/core/macros/ai_controller.cfg:164
 msgid "defensive."
 msgstr "defenzívny."
 
 #. [focus_on_enemy]
-#: data/core/macros/ai_controller.cfg:169
+#: data/core/macros/ai_controller.cfg:175
 msgid "Focus on defeating..."
 msgstr "Sústreď sa na porazenie..."
 
 #. [focus_on_enemy]
-#: data/core/macros/ai_controller.cfg:170
+#: data/core/macros/ai_controller.cfg:176
 msgid ""
 "focusing on defeating $ai_controller.side_$ally_side|_current_settings."
 "focus_on_enemy.side_description|."
@@ -1336,40 +1321,40 @@ msgstr ""
 
 #. [then]
 #. [else]
-#: data/core/macros/ai_controller.cfg:237
 #: data/core/macros/ai_controller.cfg:243
-#: data/core/macros/ai_controller.cfg:378
+#: data/core/macros/ai_controller.cfg:249
 #: data/core/macros/ai_controller.cfg:384
+#: data/core/macros/ai_controller.cfg:390
 msgid "Side $temp_i"
 msgstr "Strana $temp_i"
 
 #. [else]
-#: data/core/macros/ai_controller.cfg:245
-#: data/core/macros/ai_controller.cfg:386
+#: data/core/macros/ai_controller.cfg:251
+#: data/core/macros/ai_controller.cfg:392
 msgid "side $temp_i"
 msgstr "strana $temp_i"
 
 #. [command]
-#: data/core/macros/ai_controller.cfg:260
-#: data/core/macros/ai_controller.cfg:401
+#: data/core/macros/ai_controller.cfg:266
+#: data/core/macros/ai_controller.cfg:407
 msgid "side $temp_i ($side_i_leader.name|)"
 msgstr "strana $temp_i ($side_i_leader.name|)"
 
 #. [value]
-#: data/core/macros/ai_controller.cfg:286
-#: data/core/macros/ai_controller.cfg:428
-#: data/core/macros/ai_controller.cfg:830
-#: data/core/macros/ai_controller.cfg:921
+#: data/core/macros/ai_controller.cfg:292
+#: data/core/macros/ai_controller.cfg:434
+#: data/core/macros/ai_controller.cfg:836
+#: data/core/macros/ai_controller.cfg:927
 msgid "Back"
 msgstr "Naspäť"
 
 #. [protect]
-#: data/core/macros/ai_controller.cfg:305
+#: data/core/macros/ai_controller.cfg:311
 msgid "Focus on protecting..."
 msgstr "Sústreď sa na ochranu..."
 
 #. [protect]
-#: data/core/macros/ai_controller.cfg:306
+#: data/core/macros/ai_controller.cfg:312
 msgid ""
 "focusing on protecting $ai_controller.side_$ally_side|_current_settings."
 "protect.side_description|."
@@ -1378,57 +1363,57 @@ msgstr ""
 "_current_settings.protect.side_description|."
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:463
+#: data/core/macros/ai_controller.cfg:469
 msgid "Defend a location..."
 msgstr "Bráň pozíciu"
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:479
+#: data/core/macros/ai_controller.cfg:485
 msgid "Right-click to select a location to defend"
 msgstr "Klikni pravým tlačidlom na označenie bránenej pozície"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
-#: data/core/macros/ai_controller.cfg:486
+#: data/core/macros/ai_controller.cfg:492
 msgid "Defend this location"
 msgstr "Brániť túto pozíciu"
 
 #. [command]
-#: data/core/macros/ai_controller.cfg:503
+#: data/core/macros/ai_controller.cfg:509
 msgid "focusing on defending the area around $x1|,$y1|."
 msgstr "sústreďujem sa na obranu oblasti okolo $x1|,$y1|."
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:545
+#: data/core/macros/ai_controller.cfg:551
 msgid "Location selection canceled"
 msgstr "Výber pozície zrušený"
 
 #. [revoke_objective_orders]
-#: data/core/macros/ai_controller.cfg:560
+#: data/core/macros/ai_controller.cfg:566
 msgid "Clear objective orders"
 msgstr "Vymaž rozkazy o cieľoch"
 
 #. [revoke_objective_orders]
 #. [revoke_behavior_orders]
 #. [then]
-#: data/core/macros/ai_controller.cfg:561
-#: data/core/macros/ai_controller.cfg:574
-#: data/core/macros/ai_controller.cfg:704
-#: data/core/macros/ai_controller.cfg:715
+#: data/core/macros/ai_controller.cfg:567
+#: data/core/macros/ai_controller.cfg:580
+#: data/core/macros/ai_controller.cfg:710
+#: data/core/macros/ai_controller.cfg:721
 msgid "none set."
 msgstr "nič nenastavené."
 
 #. [revoke_behavior_orders]
-#: data/core/macros/ai_controller.cfg:573
+#: data/core/macros/ai_controller.cfg:579
 msgid "Clear behavior orders"
 msgstr "Vymaž rozkazy správania"
 
 #. [revoke_all_orders]
-#: data/core/macros/ai_controller.cfg:587
+#: data/core/macros/ai_controller.cfg:593
 msgid "Clear all orders"
 msgstr "Vymaž všetky rozkazy"
 
 #. [do]
-#: data/core/macros/ai_controller.cfg:756
+#: data/core/macros/ai_controller.cfg:762
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -1441,45 +1426,45 @@ msgstr ""
 "currently_doing_behaviour_description"
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:773
+#: data/core/macros/ai_controller.cfg:779
 msgid "Set objective..."
 msgstr "Nastav cieľ..."
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:864
+#: data/core/macros/ai_controller.cfg:870
 msgid "Set behavior..."
 msgstr "Nastav správanie..."
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:969
+#: data/core/macros/ai_controller.cfg:975
 msgid "Exit"
 msgstr "Koniec"
 
-#: data/core/macros/ai_controller.cfg:1102
+#: data/core/macros/ai_controller.cfg:1108
 msgid "Set special orders..."
 msgstr "Nastav špeciálne rozkazy..."
 
-#: data/core/macros/ai_controller.cfg:1103
+#: data/core/macros/ai_controller.cfg:1109
 msgid "Move leader to..."
 msgstr "Presunúť veliteľa na..."
 
-#: data/core/macros/ai_controller.cfg:1104
+#: data/core/macros/ai_controller.cfg:1110
 msgid "Right-click to select a location to move leader to"
 msgstr "Klikni pravým tlačidlom na určenie pozície kam sa má presunúť veliteľ"
 
-#: data/core/macros/ai_controller.cfg:1105
+#: data/core/macros/ai_controller.cfg:1111
 msgid "Move leader here"
 msgstr "Presunúť veliteľa sem"
 
-#: data/core/macros/ai_controller.cfg:1106
+#: data/core/macros/ai_controller.cfg:1112
 msgid "moving leader to $x1|,$y1|."
 msgstr "presúvam veliteľa na $x1|,$y1|."
 
-#: data/core/macros/ai_controller.cfg:1107
+#: data/core/macros/ai_controller.cfg:1113
 msgid "Clear special orders"
 msgstr "Vymaž špeciálne rozkazy"
 
-#: data/core/macros/ai_controller.cfg:1108
+#: data/core/macros/ai_controller.cfg:1114
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
@@ -3385,14 +3370,14 @@ msgstr "Neprekonateľné"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:445
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:447
 msgid "Fog"
 msgstr "Hmla"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:448
-#: src/game_initialization/lobby_data.cpp:451
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:450
+#: src/game_initialization/lobby_data.cpp:453
 msgid "Shroud"
 msgstr "Odkrývanie mapy"
 
@@ -3428,6 +3413,21 @@ msgid ""
 "7 Factions battling on 46 Multiplayer Maps/Scenarios,\n"
 "500+ Add-ons.)"
 msgstr ""
+
+#. [language]
+#: data/english.cfg:3
+msgid "Easy"
+msgstr "Ľahká"
+
+#. [language]
+#: data/english.cfg:4
+msgid "Medium"
+msgstr "Stredná"
+
+#. [language]
+#: data/english.cfg:5
+msgid "Hard"
+msgstr "Ťažká"
 
 #. [language]
 #: data/english.cfg:6
@@ -3745,7 +3745,7 @@ msgstr "Nov"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:598
+#: src/hotkey/command_executor.cpp:625
 msgid "Screenshot"
 msgstr "Záber obrazovky"
 
@@ -3800,31 +3800,31 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1093
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1085
 msgid "female^poisoned"
 msgstr "otrávená"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1100
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1092
 msgid "female^slowed"
 msgstr "spomalená"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1100
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1092
 msgid "slowed"
 msgstr "spomalený"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1106
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1098
 msgid "female^petrified"
 msgstr "skamenená"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1106
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1098
 msgid "petrified"
 msgstr "skamenený"
 
@@ -3878,21 +3878,21 @@ msgstr "%d%% zlata sa prenáša do ďalšej scény."
 msgid "Defeat enemy leader(s)"
 msgstr "Porazíš ostatných veliteľov"
 
-#: data/scenario-test.cfg:1030 src/game_initialization/depcheck.cpp:491
+#: data/scenario-test.cfg:1031 src/game_initialization/depcheck.cpp:491
 msgid "OK"
 msgstr "OK"
 
-#: data/scenario-test.cfg:1031
+#: data/scenario-test.cfg:1032
 msgid "Cancel"
 msgstr "Storno"
 
 #. [language]
-#: data/scenario-test.cfg:4065
+#: data/scenario-test.cfg:4066
 msgid "very long"
 msgstr "veľmi dlhé"
 
 #. [language]
-#: data/scenario-test.cfg:4066
+#: data/scenario-test.cfg:4067
 msgid "electrical"
 msgstr "elektrický"
 
@@ -4910,12 +4910,12 @@ msgstr ""
 "Aj keď sú umiestnené v dedine, nezískavajú z nej obrannú výhodu, len sa "
 "liečia."
 
-#: src/actions/attack.cpp:394 src/actions/attack.cpp:663
-#: src/actions/attack.cpp:1376
+#: src/actions/attack.cpp:386 src/actions/attack.cpp:655
+#: src/actions/attack.cpp:1368
 msgid "An invalid attacker weapon got selected."
 msgstr "Vybraná neplatná útočná zbraň."
 
-#: src/actions/attack.cpp:401
+#: src/actions/attack.cpp:393
 msgid "An invalid defender weapon got selected."
 msgstr "Vybraná neplatná obranná zbraň."
 
@@ -5870,62 +5870,62 @@ msgstr "Chýbajúci parameter $arg_id"
 msgid "$era_name (missing)"
 msgstr " (chýba)"
 
-#: src/game_initialization/lobby_data.cpp:271
+#: src/game_initialization/lobby_data.cpp:273
 msgid "Unknown era"
 msgstr "Neznáma éra"
 
-#: src/game_initialization/lobby_data.cpp:288
+#: src/game_initialization/lobby_data.cpp:290
 #, fuzzy
 #| msgid " (missing)"
 msgid "(missing)"
 msgstr " (chýba)"
 
-#: src/game_initialization/lobby_data.cpp:334
-#: src/game_initialization/lobby_data.cpp:364
+#: src/game_initialization/lobby_data.cpp:336
+#: src/game_initialization/lobby_data.cpp:366
 msgid "S"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:353
+#: src/game_initialization/lobby_data.cpp:355
 msgid "Remote scenario"
 msgstr "Scéna z iného počítača"
 
-#: src/game_initialization/lobby_data.cpp:372
-#: src/game_initialization/lobby_data.cpp:395
+#: src/game_initialization/lobby_data.cpp:374
+#: src/game_initialization/lobby_data.cpp:397
 msgid "C"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:400
+#: src/game_initialization/lobby_data.cpp:402
 msgid "Unknown scenario"
 msgstr "Neznáma scéna"
 
-#: src/game_initialization/lobby_data.cpp:410
+#: src/game_initialization/lobby_data.cpp:412
 msgid "Reloaded game"
 msgstr "Znovunačítaná hra"
 
-#: src/game_initialization/lobby_data.cpp:425
+#: src/game_initialization/lobby_data.cpp:427
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Voľných miest:"
 msgstr[1] "Voľné miesto:"
 msgstr[2] "Voľné miesta:"
 
-#: src/game_initialization/lobby_data.cpp:438
-#: src/game_initialization/lobby_data.cpp:440 src/savegame.cpp:631
+#: src/game_initialization/lobby_data.cpp:440
+#: src/game_initialization/lobby_data.cpp:442 src/savegame.cpp:631
 msgid "Turn"
 msgstr "Kolo"
 
-#: src/game_initialization/lobby_data.cpp:453
-#: src/game_initialization/lobby_data.cpp:462
+#: src/game_initialization/lobby_data.cpp:455
+#: src/game_initialization/lobby_data.cpp:464
 msgid "none"
 msgstr "nič"
 
-#: src/game_initialization/lobby_data.cpp:495
+#: src/game_initialization/lobby_data.cpp:497
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:509
+#: src/game_initialization/lobby_data.cpp:511
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -6589,17 +6589,17 @@ msgstr "dohľadnosť: "
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:387
+#: src/hotkey/command_executor.cpp:388
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you really want to surrender the game?"
 msgstr "Naozaj chceš vymazať túto uloženú hru?"
 
-#: src/hotkey/command_executor.cpp:387
+#: src/hotkey/command_executor.cpp:388
 msgid "Surrender"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:741
+#: src/hotkey/command_executor.cpp:797
 msgid "Map-Screenshot"
 msgstr "Snímka mapy"
 
@@ -7313,35 +7313,35 @@ msgstr ""
 msgid "It is now $name|’s turn"
 msgstr "Na ťahu je $name"
 
-#: src/playturn.cpp:273
+#: src/playturn.cpp:275
 #, fuzzy
 #| msgid "Give gold to the current player."
 msgid "Give control to their ally $player"
 msgstr "Odovzdať zlato aktívnemu hráčovi."
 
-#: src/playturn.cpp:282
+#: src/playturn.cpp:284
 #, fuzzy
 #| msgid "Give gold to the current player."
 msgid "Give control to observer $player"
 msgstr "Odovzdať zlato aktívnemu hráčovi."
 
-#: src/playturn.cpp:287
+#: src/playturn.cpp:289
 msgid "Replace with AI"
 msgstr "Nahraď počítačom"
 
-#: src/playturn.cpp:288
+#: src/playturn.cpp:290
 msgid "Replace with local player"
 msgstr "Nahraď iným hráčom"
 
-#: src/playturn.cpp:289
+#: src/playturn.cpp:291
 msgid "Set side to idle"
 msgstr "Nastaviť stranu ako nečinnú"
 
-#: src/playturn.cpp:290
+#: src/playturn.cpp:292
 msgid "Save and abort game"
 msgstr "Uložiť a zrušiť hru"
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:295
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player opustil hru. Čo chceš urobiť?"
 
@@ -8155,7 +8155,7 @@ msgstr ""
 msgid "$year BF"
 msgstr ""
 
-#. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesonth
+#. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:68
 msgid "$year AF"
 msgstr ""

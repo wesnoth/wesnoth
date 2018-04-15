@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-04-01 02:37+0300\n"
+"POT-Creation-Date: 2018-04-15 01:34-0300\n"
 "PO-Revision-Date: 2013-10-25 16:21+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -320,7 +320,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:358
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1093
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1085
 msgid "poisoned"
 msgstr "중독"
 
@@ -337,21 +337,6 @@ msgstr "자금 이월:"
 #: data/lua/wml/objectives.lua:39
 msgid "Notes:"
 msgstr ""
-
-#. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:153 data/english.cfg:3
-msgid "Easy"
-msgstr "쉬움"
-
-#. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:154 data/english.cfg:4
-msgid "Medium"
-msgstr "보통"
-
-#. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:155 data/english.cfg:5
-msgid "Hard"
-msgstr "어려움"
 
 #. [about]
 #: data/core/about.cfg:4
@@ -399,12 +384,12 @@ msgid "Packagers"
 msgstr "각 플랫폼 적용"
 
 #. [about]
-#: data/core/about.cfg:1001
+#: data/core/about.cfg:1007
 msgid "Miscellaneous Contributors"
 msgstr "기타 기여한 사람들"
 
 #. [about]
-#: data/core/about.cfg:1653
+#: data/core/about.cfg:1661
 msgid "Bots"
 msgstr "IRC 봇"
 
@@ -1288,13 +1273,13 @@ msgid "Ask $ai_controller_unit.name to move here"
 msgstr ""
 
 #. [set_menu_item]: id=ai_controller_leader_control_{CONTROLLED_SIDE}
-#: data/core/macros/ai_controller.cfg:72
+#: data/core/macros/ai_controller.cfg:75
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
 "$ally_leader.name ($ally_leader.side|의 지휘관)이 이곳으로 오도록 요구한다"
 
 #. [note]
-#: data/core/macros/ai_controller.cfg:102
+#: data/core/macros/ai_controller.cfg:108
 msgid ""
 "In this scenario, you may issue instructions to an allied side by right-"
 "clicking on a unit that belongs to it."
@@ -1305,14 +1290,14 @@ msgstr ""
 #. [overview_message_has_instructions]: speaker=narrator
 #. [overview_message_no_instructions]: speaker=narrator
 #. [literal]
-#: data/core/macros/ai_controller.cfg:117
-#: data/core/macros/ai_controller.cfg:124
-#: data/core/macros/ai_controller.cfg:131
+#: data/core/macros/ai_controller.cfg:123
+#: data/core/macros/ai_controller.cfg:130
+#: data/core/macros/ai_controller.cfg:137
 msgid "Instruct ally"
 msgstr "동맹군에 지령을 내린다"
 
 #. [overview_message_has_instructions]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:125
+#: data/core/macros/ai_controller.cfg:131
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
@@ -1320,7 +1305,7 @@ msgstr ""
 "$ally_leader.name (side $ally_side|) 는 다음의 지령을 수행하고 있습니다:"
 
 #. [overview_message_no_instructions]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:132
+#: data/core/macros/ai_controller.cfg:138
 msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
@@ -1329,32 +1314,32 @@ msgstr ""
 "하고 있습니다."
 
 #. [aggression]
-#: data/core/macros/ai_controller.cfg:139
+#: data/core/macros/ai_controller.cfg:145
 msgid "Be more aggressive"
 msgstr "좀더 공격적으로"
 
 #. [aggression]
-#: data/core/macros/ai_controller.cfg:140
+#: data/core/macros/ai_controller.cfg:146
 msgid "aggressive."
 msgstr "공격적."
 
 #. [caution]
-#: data/core/macros/ai_controller.cfg:157
+#: data/core/macros/ai_controller.cfg:163
 msgid "Be more defensive"
 msgstr "좀더 방어적으로"
 
 #. [caution]
-#: data/core/macros/ai_controller.cfg:158
+#: data/core/macros/ai_controller.cfg:164
 msgid "defensive."
 msgstr "방어적."
 
 #. [focus_on_enemy]
-#: data/core/macros/ai_controller.cfg:169
+#: data/core/macros/ai_controller.cfg:175
 msgid "Focus on defeating..."
 msgstr "격파에 집중한다..."
 
 #. [focus_on_enemy]
-#: data/core/macros/ai_controller.cfg:170
+#: data/core/macros/ai_controller.cfg:176
 msgid ""
 "focusing on defeating $ai_controller.side_$ally_side|_current_settings."
 "focus_on_enemy.side_description|."
@@ -1364,44 +1349,44 @@ msgstr ""
 
 #. [then]
 #. [else]
-#: data/core/macros/ai_controller.cfg:237
 #: data/core/macros/ai_controller.cfg:243
-#: data/core/macros/ai_controller.cfg:378
+#: data/core/macros/ai_controller.cfg:249
 #: data/core/macros/ai_controller.cfg:384
+#: data/core/macros/ai_controller.cfg:390
 #, fuzzy
 #| msgid "side $temp_i"
 msgid "Side $temp_i"
 msgstr "$temp_i 진영"
 
 #. [else]
-#: data/core/macros/ai_controller.cfg:245
-#: data/core/macros/ai_controller.cfg:386
+#: data/core/macros/ai_controller.cfg:251
+#: data/core/macros/ai_controller.cfg:392
 msgid "side $temp_i"
 msgstr "$temp_i 진영"
 
 #. [command]
-#: data/core/macros/ai_controller.cfg:260
-#: data/core/macros/ai_controller.cfg:401
+#: data/core/macros/ai_controller.cfg:266
+#: data/core/macros/ai_controller.cfg:407
 #, fuzzy
 #| msgid "$side_i_leader.name (side $temp_i|)"
 msgid "side $temp_i ($side_i_leader.name|)"
 msgstr "$side_i_leader.name ($temp_i| 진영)"
 
 #. [value]
-#: data/core/macros/ai_controller.cfg:286
-#: data/core/macros/ai_controller.cfg:428
-#: data/core/macros/ai_controller.cfg:830
-#: data/core/macros/ai_controller.cfg:921
+#: data/core/macros/ai_controller.cfg:292
+#: data/core/macros/ai_controller.cfg:434
+#: data/core/macros/ai_controller.cfg:836
+#: data/core/macros/ai_controller.cfg:927
 msgid "Back"
 msgstr "뒤로"
 
 #. [protect]
-#: data/core/macros/ai_controller.cfg:305
+#: data/core/macros/ai_controller.cfg:311
 msgid "Focus on protecting..."
 msgstr "호위에 집중한다..."
 
 #. [protect]
-#: data/core/macros/ai_controller.cfg:306
+#: data/core/macros/ai_controller.cfg:312
 msgid ""
 "focusing on protecting $ai_controller.side_$ally_side|_current_settings."
 "protect.side_description|."
@@ -1410,57 +1395,57 @@ msgstr ""
 "위에 주력한다."
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:463
+#: data/core/macros/ai_controller.cfg:469
 msgid "Defend a location..."
 msgstr "특정 지점을 지킨다..."
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:479
+#: data/core/macros/ai_controller.cfg:485
 msgid "Right-click to select a location to defend"
 msgstr "방어할 지점을 오른쪽 클릭하세요"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
-#: data/core/macros/ai_controller.cfg:486
+#: data/core/macros/ai_controller.cfg:492
 msgid "Defend this location"
 msgstr "이 지점을 방어한다"
 
 #. [command]
-#: data/core/macros/ai_controller.cfg:503
+#: data/core/macros/ai_controller.cfg:509
 msgid "focusing on defending the area around $x1|,$y1|."
 msgstr "$x1|,$y1| 주변을 방어하는데 주력한다."
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:545
+#: data/core/macros/ai_controller.cfg:551
 msgid "Location selection canceled"
 msgstr "지역 설정 취소"
 
 #. [revoke_objective_orders]
-#: data/core/macros/ai_controller.cfg:560
+#: data/core/macros/ai_controller.cfg:566
 msgid "Clear objective orders"
 msgstr "목표 지령 소거"
 
 #. [revoke_objective_orders]
 #. [revoke_behavior_orders]
 #. [then]
-#: data/core/macros/ai_controller.cfg:561
-#: data/core/macros/ai_controller.cfg:574
-#: data/core/macros/ai_controller.cfg:704
-#: data/core/macros/ai_controller.cfg:715
+#: data/core/macros/ai_controller.cfg:567
+#: data/core/macros/ai_controller.cfg:580
+#: data/core/macros/ai_controller.cfg:710
+#: data/core/macros/ai_controller.cfg:721
 msgid "none set."
 msgstr "지령 없음."
 
 #. [revoke_behavior_orders]
-#: data/core/macros/ai_controller.cfg:573
+#: data/core/macros/ai_controller.cfg:579
 msgid "Clear behavior orders"
 msgstr "행동 지령 소거"
 
 #. [revoke_all_orders]
-#: data/core/macros/ai_controller.cfg:587
+#: data/core/macros/ai_controller.cfg:593
 msgid "Clear all orders"
 msgstr "모든 지령 소거"
 
 #. [do]
-#: data/core/macros/ai_controller.cfg:756
+#: data/core/macros/ai_controller.cfg:762
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -1473,45 +1458,45 @@ msgstr ""
 "currently_doing_behavior_description"
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:773
+#: data/core/macros/ai_controller.cfg:779
 msgid "Set objective..."
 msgstr "목표 설정..."
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:864
+#: data/core/macros/ai_controller.cfg:870
 msgid "Set behavior..."
 msgstr "행동 설정..."
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:969
+#: data/core/macros/ai_controller.cfg:975
 msgid "Exit"
 msgstr "나가기"
 
-#: data/core/macros/ai_controller.cfg:1102
+#: data/core/macros/ai_controller.cfg:1108
 msgid "Set special orders..."
 msgstr ""
 
-#: data/core/macros/ai_controller.cfg:1103
+#: data/core/macros/ai_controller.cfg:1109
 msgid "Move leader to..."
 msgstr ""
 
-#: data/core/macros/ai_controller.cfg:1104
+#: data/core/macros/ai_controller.cfg:1110
 msgid "Right-click to select a location to move leader to"
 msgstr ""
 
-#: data/core/macros/ai_controller.cfg:1105
+#: data/core/macros/ai_controller.cfg:1111
 msgid "Move leader here"
 msgstr ""
 
-#: data/core/macros/ai_controller.cfg:1106
+#: data/core/macros/ai_controller.cfg:1112
 msgid "moving leader to $x1|,$y1|."
 msgstr ""
 
-#: data/core/macros/ai_controller.cfg:1107
+#: data/core/macros/ai_controller.cfg:1113
 msgid "Clear special orders"
 msgstr ""
 
-#: data/core/macros/ai_controller.cfg:1108
+#: data/core/macros/ai_controller.cfg:1114
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
@@ -3409,14 +3394,14 @@ msgstr "통과불능"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:445
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:447
 msgid "Fog"
 msgstr "안개"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:448
-#: src/game_initialization/lobby_data.cpp:451
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:450
+#: src/game_initialization/lobby_data.cpp:453
 msgid "Shroud"
 msgstr "장막"
 
@@ -3450,6 +3435,21 @@ msgid ""
 "7 Factions battling on 46 Multiplayer Maps/Scenarios,\n"
 "500+ Add-ons.)"
 msgstr ""
+
+#. [language]
+#: data/english.cfg:3
+msgid "Easy"
+msgstr "쉬움"
+
+#. [language]
+#: data/english.cfg:4
+msgid "Medium"
+msgstr "보통"
+
+#. [language]
+#: data/english.cfg:5
+msgid "Hard"
+msgstr "어려움"
 
 #. [language]
 #: data/english.cfg:6
@@ -3773,7 +3773,7 @@ msgstr "없음"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:598
+#: src/hotkey/command_executor.cpp:625
 msgid "Screenshot"
 msgstr ""
 
@@ -3828,31 +3828,31 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1093
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1085
 msgid "female^poisoned"
 msgstr "중독"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1100
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1092
 msgid "female^slowed"
 msgstr "둔화"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1100
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1092
 msgid "slowed"
 msgstr "둔화"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1106
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1098
 msgid "female^petrified"
 msgstr "석화"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1106
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1098
 msgid "petrified"
 msgstr "석화"
 
@@ -3905,21 +3905,21 @@ msgstr "총 자금의 %d%% 가 다음 시나리오로 이월됩니다."
 msgid "Defeat enemy leader(s)"
 msgstr "적 지휘관(들)을 격파하라"
 
-#: data/scenario-test.cfg:1030 src/game_initialization/depcheck.cpp:491
+#: data/scenario-test.cfg:1031 src/game_initialization/depcheck.cpp:491
 msgid "OK"
 msgstr "확인"
 
-#: data/scenario-test.cfg:1031
+#: data/scenario-test.cfg:1032
 msgid "Cancel"
 msgstr "취소"
 
 #. [language]
-#: data/scenario-test.cfg:4065
+#: data/scenario-test.cfg:4066
 msgid "very long"
 msgstr ""
 
 #. [language]
-#: data/scenario-test.cfg:4066
+#: data/scenario-test.cfg:4067
 #, fuzzy
 msgid "electrical"
 msgstr "기계"
@@ -4806,12 +4806,12 @@ msgid ""
 "the village, although they will still be healed."
 msgstr ""
 
-#: src/actions/attack.cpp:394 src/actions/attack.cpp:663
-#: src/actions/attack.cpp:1376
+#: src/actions/attack.cpp:386 src/actions/attack.cpp:655
+#: src/actions/attack.cpp:1368
 msgid "An invalid attacker weapon got selected."
 msgstr ""
 
-#: src/actions/attack.cpp:401
+#: src/actions/attack.cpp:393
 msgid "An invalid defender weapon got selected."
 msgstr ""
 
@@ -5717,60 +5717,60 @@ msgstr ""
 msgid "$era_name (missing)"
 msgstr "(관전중)"
 
-#: src/game_initialization/lobby_data.cpp:271
+#: src/game_initialization/lobby_data.cpp:273
 msgid "Unknown era"
 msgstr "알 수 없는 시대"
 
-#: src/game_initialization/lobby_data.cpp:288
+#: src/game_initialization/lobby_data.cpp:290
 #, fuzzy
 #| msgid "(observing)"
 msgid "(missing)"
 msgstr "(관전중)"
 
-#: src/game_initialization/lobby_data.cpp:334
-#: src/game_initialization/lobby_data.cpp:364
+#: src/game_initialization/lobby_data.cpp:336
+#: src/game_initialization/lobby_data.cpp:366
 msgid "S"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:353
+#: src/game_initialization/lobby_data.cpp:355
 msgid "Remote scenario"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:372
-#: src/game_initialization/lobby_data.cpp:395
+#: src/game_initialization/lobby_data.cpp:374
+#: src/game_initialization/lobby_data.cpp:397
 msgid "C"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:400
+#: src/game_initialization/lobby_data.cpp:402
 msgid "Unknown scenario"
 msgstr "알 수 없는 시나리오"
 
-#: src/game_initialization/lobby_data.cpp:410
+#: src/game_initialization/lobby_data.cpp:412
 msgid "Reloaded game"
 msgstr "불러온 게임"
 
-#: src/game_initialization/lobby_data.cpp:425
+#: src/game_initialization/lobby_data.cpp:427
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "빈 슬롯 수:"
 
-#: src/game_initialization/lobby_data.cpp:438
-#: src/game_initialization/lobby_data.cpp:440 src/savegame.cpp:631
+#: src/game_initialization/lobby_data.cpp:440
+#: src/game_initialization/lobby_data.cpp:442 src/savegame.cpp:631
 msgid "Turn"
 msgstr "턴 수"
 
-#: src/game_initialization/lobby_data.cpp:453
-#: src/game_initialization/lobby_data.cpp:462
+#: src/game_initialization/lobby_data.cpp:455
+#: src/game_initialization/lobby_data.cpp:464
 msgid "none"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:495
+#: src/game_initialization/lobby_data.cpp:497
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:509
+#: src/game_initialization/lobby_data.cpp:511
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -6400,17 +6400,17 @@ msgstr "저장 파일 버전:"
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:387
+#: src/hotkey/command_executor.cpp:388
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you really want to surrender the game?"
 msgstr "정말로 세이브 파일을 삭제하시겠습니까?"
 
-#: src/hotkey/command_executor.cpp:387
+#: src/hotkey/command_executor.cpp:388
 msgid "Surrender"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:741
+#: src/hotkey/command_executor.cpp:797
 msgid "Map-Screenshot"
 msgstr ""
 
@@ -7105,35 +7105,35 @@ msgstr "연결이 끊어져서 게임을 더 이상 진행할 수 없습니다. 
 msgid "It is now $name|’s turn"
 msgstr ""
 
-#: src/playturn.cpp:273
+#: src/playturn.cpp:275
 msgid "Give control to their ally $player"
 msgstr ""
 
-#: src/playturn.cpp:282
+#: src/playturn.cpp:284
 #, fuzzy
 #| msgid "Send to observers only"
 msgid "Give control to observer $player"
 msgstr "관전자만이 볼 수 있음"
 
-#: src/playturn.cpp:287
+#: src/playturn.cpp:289
 msgid "Replace with AI"
 msgstr "인공지능으로 교체"
 
-#: src/playturn.cpp:288
+#: src/playturn.cpp:290
 msgid "Replace with local player"
 msgstr "로컬 플레이어로 교체"
 
-#: src/playturn.cpp:289
+#: src/playturn.cpp:291
 msgid "Set side to idle"
 msgstr ""
 
-#: src/playturn.cpp:290
+#: src/playturn.cpp:292
 #, fuzzy
 #| msgid "Abort game"
 msgid "Save and abort game"
 msgstr "게임 나가기"
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:295
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player 가 방을 나갔습니다. 어떻게 하시겠습니까? "
 
@@ -7940,7 +7940,7 @@ msgstr ""
 msgid "$year BF"
 msgstr ""
 
-#. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesonth
+#. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:68
 msgid "$year AF"
 msgstr ""

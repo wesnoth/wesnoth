@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ga\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-04-01 02:37+0300\n"
+"POT-Creation-Date: 2018-04-15 01:34-0300\n"
 "PO-Revision-Date: 2012-02-20 16:40-0800\n"
 "Last-Translator: Carson Callis aka Mountian_King <tree_rings@rocketmail."
 "com>\n"
@@ -336,7 +336,7 @@ msgstr "Luamhán stiúrtha: marbhchrios an cheartaitheoir"
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:358
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1093
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1085
 msgid "poisoned"
 msgstr "nimhithe"
 
@@ -353,21 +353,6 @@ msgstr "Réamhíoctha óir:"
 #: data/lua/wml/objectives.lua:39
 msgid "Notes:"
 msgstr "Nótaí:"
-
-#. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:153 data/english.cfg:3
-msgid "Easy"
-msgstr "Socair"
-
-#. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:154 data/english.cfg:4
-msgid "Medium"
-msgstr "Méanach"
-
-#. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:155 data/english.cfg:5
-msgid "Hard"
-msgstr "Deacair"
 
 #. [about]
 #: data/core/about.cfg:4
@@ -415,12 +400,12 @@ msgid "Packagers"
 msgstr "Pacáisteoirí"
 
 #. [about]
-#: data/core/about.cfg:1001
+#: data/core/about.cfg:1007
 msgid "Miscellaneous Contributors"
 msgstr "Rannpháirtithe Ilghnéitheach"
 
 #. [about]
-#: data/core/about.cfg:1653
+#: data/core/about.cfg:1661
 msgid "Bots"
 msgstr "Róbait"
 
@@ -1317,12 +1302,12 @@ msgid "Ask $ai_controller_unit.name to move here"
 msgstr ""
 
 #. [set_menu_item]: id=ai_controller_leader_control_{CONTROLLED_SIDE}
-#: data/core/macros/ai_controller.cfg:72
+#: data/core/macros/ai_controller.cfg:75
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
 
 #. [note]
-#: data/core/macros/ai_controller.cfg:102
+#: data/core/macros/ai_controller.cfg:108
 msgid ""
 "In this scenario, you may issue instructions to an allied side by right-"
 "clicking on a unit that belongs to it."
@@ -1331,53 +1316,53 @@ msgstr ""
 #. [overview_message_has_instructions]: speaker=narrator
 #. [overview_message_no_instructions]: speaker=narrator
 #. [literal]
-#: data/core/macros/ai_controller.cfg:117
-#: data/core/macros/ai_controller.cfg:124
-#: data/core/macros/ai_controller.cfg:131
+#: data/core/macros/ai_controller.cfg:123
+#: data/core/macros/ai_controller.cfg:130
+#: data/core/macros/ai_controller.cfg:137
 msgid "Instruct ally"
 msgstr "Treoraigh do chomhghuaillí"
 
 #. [overview_message_has_instructions]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:125
+#: data/core/macros/ai_controller.cfg:131
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
 msgstr ""
 
 #. [overview_message_no_instructions]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:132
+#: data/core/macros/ai_controller.cfg:138
 msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
 msgstr ""
 
 #. [aggression]
-#: data/core/macros/ai_controller.cfg:139
+#: data/core/macros/ai_controller.cfg:145
 msgid "Be more aggressive"
 msgstr "Bí níos ionsaithí"
 
 #. [aggression]
-#: data/core/macros/ai_controller.cfg:140
+#: data/core/macros/ai_controller.cfg:146
 msgid "aggressive."
 msgstr "ionsaitheach."
 
 #. [caution]
-#: data/core/macros/ai_controller.cfg:157
+#: data/core/macros/ai_controller.cfg:163
 msgid "Be more defensive"
 msgstr "Bí níos cosantaí"
 
 #. [caution]
-#: data/core/macros/ai_controller.cfg:158
+#: data/core/macros/ai_controller.cfg:164
 msgid "defensive."
 msgstr "cosantach"
 
 #. [focus_on_enemy]
-#: data/core/macros/ai_controller.cfg:169
+#: data/core/macros/ai_controller.cfg:175
 msgid "Focus on defeating..."
 msgstr "Dírigh ar bristeacha..."
 
 #. [focus_on_enemy]
-#: data/core/macros/ai_controller.cfg:170
+#: data/core/macros/ai_controller.cfg:176
 msgid ""
 "focusing on defeating $ai_controller.side_$ally_side|_current_settings."
 "focus_on_enemy.side_description|."
@@ -1385,103 +1370,103 @@ msgstr ""
 
 #. [then]
 #. [else]
-#: data/core/macros/ai_controller.cfg:237
 #: data/core/macros/ai_controller.cfg:243
-#: data/core/macros/ai_controller.cfg:378
+#: data/core/macros/ai_controller.cfg:249
 #: data/core/macros/ai_controller.cfg:384
+#: data/core/macros/ai_controller.cfg:390
 #, fuzzy
 #| msgid "side $temp_i"
 msgid "Side $temp_i"
 msgstr "foireann $temp_i"
 
 #. [else]
-#: data/core/macros/ai_controller.cfg:245
-#: data/core/macros/ai_controller.cfg:386
+#: data/core/macros/ai_controller.cfg:251
+#: data/core/macros/ai_controller.cfg:392
 msgid "side $temp_i"
 msgstr "foireann $temp_i"
 
 #. [command]
-#: data/core/macros/ai_controller.cfg:260
-#: data/core/macros/ai_controller.cfg:401
+#: data/core/macros/ai_controller.cfg:266
+#: data/core/macros/ai_controller.cfg:407
 #, fuzzy
 #| msgid "$side_i_leader.name (side $temp_i|)"
 msgid "side $temp_i ($side_i_leader.name|)"
 msgstr "$side_i_leader.name (foireann $temp_i|)"
 
 #. [value]
-#: data/core/macros/ai_controller.cfg:286
-#: data/core/macros/ai_controller.cfg:428
-#: data/core/macros/ai_controller.cfg:830
-#: data/core/macros/ai_controller.cfg:921
+#: data/core/macros/ai_controller.cfg:292
+#: data/core/macros/ai_controller.cfg:434
+#: data/core/macros/ai_controller.cfg:836
+#: data/core/macros/ai_controller.cfg:927
 msgid "Back"
 msgstr "Siar"
 
 #. [protect]
-#: data/core/macros/ai_controller.cfg:305
+#: data/core/macros/ai_controller.cfg:311
 msgid "Focus on protecting..."
 msgstr "Dírigh ar cosanta..."
 
 #. [protect]
-#: data/core/macros/ai_controller.cfg:306
+#: data/core/macros/ai_controller.cfg:312
 msgid ""
 "focusing on protecting $ai_controller.side_$ally_side|_current_settings."
 "protect.side_description|."
 msgstr ""
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:463
+#: data/core/macros/ai_controller.cfg:469
 msgid "Defend a location..."
 msgstr "Cosain láthair..."
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:479
+#: data/core/macros/ai_controller.cfg:485
 msgid "Right-click to select a location to defend"
 msgstr ""
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
-#: data/core/macros/ai_controller.cfg:486
+#: data/core/macros/ai_controller.cfg:492
 msgid "Defend this location"
 msgstr "Cosain an láthair seo"
 
 #. [command]
-#: data/core/macros/ai_controller.cfg:503
+#: data/core/macros/ai_controller.cfg:509
 msgid "focusing on defending the area around $x1|,$y1|."
 msgstr ""
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:545
+#: data/core/macros/ai_controller.cfg:551
 #, fuzzy
 msgid "Location selection canceled"
 msgstr "Cosain an láthair seo"
 
 #. [revoke_objective_orders]
-#: data/core/macros/ai_controller.cfg:560
+#: data/core/macros/ai_controller.cfg:566
 msgid "Clear objective orders"
 msgstr "Glan orduithe aidhme"
 
 #. [revoke_objective_orders]
 #. [revoke_behavior_orders]
 #. [then]
-#: data/core/macros/ai_controller.cfg:561
-#: data/core/macros/ai_controller.cfg:574
-#: data/core/macros/ai_controller.cfg:704
-#: data/core/macros/ai_controller.cfg:715
+#: data/core/macros/ai_controller.cfg:567
+#: data/core/macros/ai_controller.cfg:580
+#: data/core/macros/ai_controller.cfg:710
+#: data/core/macros/ai_controller.cfg:721
 #, fuzzy
 msgid "none set."
 msgstr "Suigh Lipéad"
 
 #. [revoke_behavior_orders]
-#: data/core/macros/ai_controller.cfg:573
+#: data/core/macros/ai_controller.cfg:579
 msgid "Clear behavior orders"
 msgstr "Glan orduithe iompraíochta"
 
 #. [revoke_all_orders]
-#: data/core/macros/ai_controller.cfg:587
+#: data/core/macros/ai_controller.cfg:593
 msgid "Clear all orders"
 msgstr "Glan orduithe uile"
 
 #. [do]
-#: data/core/macros/ai_controller.cfg:756
+#: data/core/macros/ai_controller.cfg:762
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -1494,45 +1479,45 @@ msgstr ""
 "currently_doing_behavior_description"
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:773
+#: data/core/macros/ai_controller.cfg:779
 msgid "Set objective..."
 msgstr "Socraigh aidhm..."
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:864
+#: data/core/macros/ai_controller.cfg:870
 msgid "Set behavior..."
 msgstr "Socraigh iompar..."
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:969
+#: data/core/macros/ai_controller.cfg:975
 msgid "Exit"
 msgstr "Dún"
 
-#: data/core/macros/ai_controller.cfg:1102
+#: data/core/macros/ai_controller.cfg:1108
 msgid "Set special orders..."
 msgstr "Socraigh orduithe speisialta"
 
-#: data/core/macros/ai_controller.cfg:1103
+#: data/core/macros/ai_controller.cfg:1109
 msgid "Move leader to..."
 msgstr "Bog ceannfort go..."
 
-#: data/core/macros/ai_controller.cfg:1104
+#: data/core/macros/ai_controller.cfg:1110
 msgid "Right-click to select a location to move leader to"
 msgstr ""
 
-#: data/core/macros/ai_controller.cfg:1105
+#: data/core/macros/ai_controller.cfg:1111
 msgid "Move leader here"
 msgstr "Bog do cheannfort anseo"
 
-#: data/core/macros/ai_controller.cfg:1106
+#: data/core/macros/ai_controller.cfg:1112
 msgid "moving leader to $x1|,$y1|."
 msgstr "treoraí a bogadh chuig $x1|,$y1|."
 
-#: data/core/macros/ai_controller.cfg:1107
+#: data/core/macros/ai_controller.cfg:1113
 msgid "Clear special orders"
 msgstr "Glan orduithe speisialta"
 
-#: data/core/macros/ai_controller.cfg:1108
+#: data/core/macros/ai_controller.cfg:1114
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
@@ -3422,14 +3407,14 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:445
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:447
 msgid "Fog"
 msgstr "Ceo"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:448
-#: src/game_initialization/lobby_data.cpp:451
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:450
+#: src/game_initialization/lobby_data.cpp:453
 msgid "Shroud"
 msgstr "Dorcha"
 
@@ -3463,6 +3448,21 @@ msgid ""
 "7 Factions battling on 46 Multiplayer Maps/Scenarios,\n"
 "500+ Add-ons.)"
 msgstr ""
+
+#. [language]
+#: data/english.cfg:3
+msgid "Easy"
+msgstr "Socair"
+
+#. [language]
+#: data/english.cfg:4
+msgid "Medium"
+msgstr "Méanach"
+
+#. [language]
+#: data/english.cfg:5
+msgid "Hard"
+msgstr "Deacair"
 
 #. [language]
 #: data/english.cfg:6
@@ -3788,7 +3788,7 @@ msgstr "Dada"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:598
+#: src/hotkey/command_executor.cpp:625
 msgid "Screenshot"
 msgstr ""
 
@@ -3843,31 +3843,31 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1093
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1085
 msgid "female^poisoned"
 msgstr "nimhithe"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1100
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1092
 msgid "female^slowed"
 msgstr "moillithe"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1100
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1092
 msgid "slowed"
 msgstr "moillithe"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1106
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1098
 msgid "female^petrified"
 msgstr "clochraithe"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1106
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1098
 msgid "petrified"
 msgstr "clochraithe"
 
@@ -3923,21 +3923,21 @@ msgstr ""
 msgid "Defeat enemy leader(s)"
 msgstr "Buaigh ar (an/na) ceannfo(i)rt naimhdeach(a)"
 
-#: data/scenario-test.cfg:1030 src/game_initialization/depcheck.cpp:491
+#: data/scenario-test.cfg:1031 src/game_initialization/depcheck.cpp:491
 msgid "OK"
 msgstr "Tá go maith"
 
-#: data/scenario-test.cfg:1031
+#: data/scenario-test.cfg:1032
 msgid "Cancel"
 msgstr "Cealaigh"
 
 #. [language]
-#: data/scenario-test.cfg:4065
+#: data/scenario-test.cfg:4066
 msgid "very long"
 msgstr "an-fhada"
 
 #. [language]
-#: data/scenario-test.cfg:4066
+#: data/scenario-test.cfg:4067
 msgid "electrical"
 msgstr "leictreach"
 
@@ -4808,12 +4808,12 @@ msgid ""
 "the village, although they will still be healed."
 msgstr ""
 
-#: src/actions/attack.cpp:394 src/actions/attack.cpp:663
-#: src/actions/attack.cpp:1376
+#: src/actions/attack.cpp:386 src/actions/attack.cpp:655
+#: src/actions/attack.cpp:1368
 msgid "An invalid attacker weapon got selected."
 msgstr ""
 
-#: src/actions/attack.cpp:401
+#: src/actions/attack.cpp:393
 msgid "An invalid defender weapon got selected."
 msgstr ""
 
@@ -5763,39 +5763,39 @@ msgstr "Argóint ar iarraidh $arg_id"
 msgid "$era_name (missing)"
 msgstr "(ag breathnú)"
 
-#: src/game_initialization/lobby_data.cpp:271
+#: src/game_initialization/lobby_data.cpp:273
 msgid "Unknown era"
 msgstr "Aois anaithnid"
 
-#: src/game_initialization/lobby_data.cpp:288
+#: src/game_initialization/lobby_data.cpp:290
 #, fuzzy
 #| msgid "(observing)"
 msgid "(missing)"
 msgstr "(ag breathnú)"
 
-#: src/game_initialization/lobby_data.cpp:334
-#: src/game_initialization/lobby_data.cpp:364
+#: src/game_initialization/lobby_data.cpp:336
+#: src/game_initialization/lobby_data.cpp:366
 msgid "S"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:353
+#: src/game_initialization/lobby_data.cpp:355
 msgid "Remote scenario"
 msgstr "Cianmhisean"
 
-#: src/game_initialization/lobby_data.cpp:372
-#: src/game_initialization/lobby_data.cpp:395
+#: src/game_initialization/lobby_data.cpp:374
+#: src/game_initialization/lobby_data.cpp:397
 msgid "C"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:400
+#: src/game_initialization/lobby_data.cpp:402
 msgid "Unknown scenario"
 msgstr "Misean anaithnid"
 
-#: src/game_initialization/lobby_data.cpp:410
+#: src/game_initialization/lobby_data.cpp:412
 msgid "Reloaded game"
 msgstr "Cluiche athlódáilte"
 
-#: src/game_initialization/lobby_data.cpp:425
+#: src/game_initialization/lobby_data.cpp:427
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Sliotán Folamh:"
@@ -5804,23 +5804,23 @@ msgstr[2] "Sliotáin Fholamha:"
 msgstr[3] "Sliotáin Fholamha:"
 msgstr[4] "Sliotáin Fholamha:"
 
-#: src/game_initialization/lobby_data.cpp:438
-#: src/game_initialization/lobby_data.cpp:440 src/savegame.cpp:631
+#: src/game_initialization/lobby_data.cpp:440
+#: src/game_initialization/lobby_data.cpp:442 src/savegame.cpp:631
 msgid "Turn"
 msgstr "Seal"
 
-#: src/game_initialization/lobby_data.cpp:453
-#: src/game_initialization/lobby_data.cpp:462
+#: src/game_initialization/lobby_data.cpp:455
+#: src/game_initialization/lobby_data.cpp:464
 msgid "none"
 msgstr "dada"
 
-#: src/game_initialization/lobby_data.cpp:495
+#: src/game_initialization/lobby_data.cpp:497
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:509
+#: src/game_initialization/lobby_data.cpp:511
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -6460,17 +6460,17 @@ msgstr "Leagan: "
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:387
+#: src/hotkey/command_executor.cpp:388
 #, fuzzy
 #| msgid "Do you really want to start the server?"
 msgid "Do you really want to surrender the game?"
 msgstr "An dteastaíonn uait an friothálaí a tosú?"
 
-#: src/hotkey/command_executor.cpp:387
+#: src/hotkey/command_executor.cpp:388
 msgid "Surrender"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:741
+#: src/hotkey/command_executor.cpp:797
 msgid "Map-Screenshot"
 msgstr ""
 
@@ -7153,37 +7153,37 @@ msgstr ""
 msgid "It is now $name|’s turn"
 msgstr "Tá seala $name| anois"
 
-#: src/playturn.cpp:273
+#: src/playturn.cpp:275
 #, fuzzy
 #| msgid "Give gold to the current player."
 msgid "Give control to their ally $player"
 msgstr "Tabhair ór don imreoir reatha."
 
-#: src/playturn.cpp:282
+#: src/playturn.cpp:284
 #, fuzzy
 #| msgid "Give gold to the current player."
 msgid "Give control to observer $player"
 msgstr "Tabhair ór don imreoir reatha."
 
-#: src/playturn.cpp:287
+#: src/playturn.cpp:289
 msgid "Replace with AI"
 msgstr "Athsholáthair le IS"
 
-#: src/playturn.cpp:288
+#: src/playturn.cpp:290
 msgid "Replace with local player"
 msgstr "Athsholáthair le imreoir logánta"
 
-#: src/playturn.cpp:289
+#: src/playturn.cpp:291
 msgid "Set side to idle"
 msgstr ""
 
-#: src/playturn.cpp:290
+#: src/playturn.cpp:292
 #, fuzzy
 #| msgid "Abort game"
 msgid "Save and abort game"
 msgstr "Tobscoir cluiche"
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:295
 msgid "$player has left the game. What do you want to do?"
 msgstr ""
 
@@ -8024,7 +8024,7 @@ msgstr ""
 msgid "$year BF"
 msgstr ""
 
-#. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesonth
+#. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:68
 msgid "$year AF"
 msgstr ""

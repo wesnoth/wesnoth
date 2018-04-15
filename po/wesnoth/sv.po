@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-04-01 02:37+0300\n"
+"POT-Creation-Date: 2018-04-15 01:34-0300\n"
 "PO-Revision-Date: 2016-01-10 14:11+0100\n"
 "Last-Translator: Susanna Björverud <susanna.bjorverud@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -323,7 +323,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:358
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1093
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1085
 msgid "poisoned"
 msgstr "förgiftad"
 
@@ -340,21 +340,6 @@ msgstr "Överfört guld:"
 #: data/lua/wml/objectives.lua:39
 msgid "Notes:"
 msgstr "Anmärkningar:"
-
-#. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:153 data/english.cfg:3
-msgid "Easy"
-msgstr "Lätt"
-
-#. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:154 data/english.cfg:4
-msgid "Medium"
-msgstr "Mellan"
-
-#. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:155 data/english.cfg:5
-msgid "Hard"
-msgstr "Svårt"
 
 #. [about]
 #: data/core/about.cfg:4
@@ -402,12 +387,12 @@ msgid "Packagers"
 msgstr "Paketerare"
 
 #. [about]
-#: data/core/about.cfg:1001
+#: data/core/about.cfg:1007
 msgid "Miscellaneous Contributors"
 msgstr "Diverse medarbetare"
 
 #. [about]
-#: data/core/about.cfg:1653
+#: data/core/about.cfg:1661
 msgid "Bots"
 msgstr "Bots"
 
@@ -1264,14 +1249,14 @@ msgid "Ask $ai_controller_unit.name to move here"
 msgstr "Be $ai_controller_unit.name att förflytta sig hit"
 
 #. [set_menu_item]: id=ai_controller_leader_control_{CONTROLLED_SIDE}
-#: data/core/macros/ai_controller.cfg:72
+#: data/core/macros/ai_controller.cfg:75
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
 "Be $ally_leader.name (ledaren för side $ally_leader.side) att förflytta sig "
 "hit"
 
 #. [note]
-#: data/core/macros/ai_controller.cfg:102
+#: data/core/macros/ai_controller.cfg:108
 msgid ""
 "In this scenario, you may issue instructions to an allied side by right-"
 "clicking on a unit that belongs to it."
@@ -1283,21 +1268,21 @@ msgstr ""
 #. [overview_message_has_instructions]: speaker=narrator
 #. [overview_message_no_instructions]: speaker=narrator
 #. [literal]
-#: data/core/macros/ai_controller.cfg:117
-#: data/core/macros/ai_controller.cfg:124
-#: data/core/macros/ai_controller.cfg:131
+#: data/core/macros/ai_controller.cfg:123
+#: data/core/macros/ai_controller.cfg:130
+#: data/core/macros/ai_controller.cfg:137
 msgid "Instruct ally"
 msgstr "Instruera allierade"
 
 #. [overview_message_has_instructions]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:125
+#: data/core/macros/ai_controller.cfg:131
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
 msgstr "$ally_leader.name (sida $ally_side|) utför följande instruktioner:"
 
 #. [overview_message_no_instructions]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:132
+#: data/core/macros/ai_controller.cfg:138
 msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
@@ -1306,32 +1291,32 @@ msgstr ""
 "agerar normalt."
 
 #. [aggression]
-#: data/core/macros/ai_controller.cfg:139
+#: data/core/macros/ai_controller.cfg:145
 msgid "Be more aggressive"
 msgstr "Var mer aggressiv"
 
 #. [aggression]
-#: data/core/macros/ai_controller.cfg:140
+#: data/core/macros/ai_controller.cfg:146
 msgid "aggressive."
 msgstr "aggressiv."
 
 #. [caution]
-#: data/core/macros/ai_controller.cfg:157
+#: data/core/macros/ai_controller.cfg:163
 msgid "Be more defensive"
 msgstr "Var mer defensiv"
 
 #. [caution]
-#: data/core/macros/ai_controller.cfg:158
+#: data/core/macros/ai_controller.cfg:164
 msgid "defensive."
 msgstr "defensiv."
 
 #. [focus_on_enemy]
-#: data/core/macros/ai_controller.cfg:169
+#: data/core/macros/ai_controller.cfg:175
 msgid "Focus on defeating..."
 msgstr "Fokusera på att förgöra..."
 
 #. [focus_on_enemy]
-#: data/core/macros/ai_controller.cfg:170
+#: data/core/macros/ai_controller.cfg:176
 msgid ""
 "focusing on defeating $ai_controller.side_$ally_side|_current_settings."
 "focus_on_enemy.side_description|."
@@ -1341,40 +1326,40 @@ msgstr ""
 
 #. [then]
 #. [else]
-#: data/core/macros/ai_controller.cfg:237
 #: data/core/macros/ai_controller.cfg:243
-#: data/core/macros/ai_controller.cfg:378
+#: data/core/macros/ai_controller.cfg:249
 #: data/core/macros/ai_controller.cfg:384
+#: data/core/macros/ai_controller.cfg:390
 msgid "Side $temp_i"
 msgstr "Sida $temp_i"
 
 #. [else]
-#: data/core/macros/ai_controller.cfg:245
-#: data/core/macros/ai_controller.cfg:386
+#: data/core/macros/ai_controller.cfg:251
+#: data/core/macros/ai_controller.cfg:392
 msgid "side $temp_i"
 msgstr "sida $temp_i"
 
 #. [command]
-#: data/core/macros/ai_controller.cfg:260
-#: data/core/macros/ai_controller.cfg:401
+#: data/core/macros/ai_controller.cfg:266
+#: data/core/macros/ai_controller.cfg:407
 msgid "side $temp_i ($side_i_leader.name|)"
 msgstr "sida $temp_i ($side_i_leader.name|)"
 
 #. [value]
-#: data/core/macros/ai_controller.cfg:286
-#: data/core/macros/ai_controller.cfg:428
-#: data/core/macros/ai_controller.cfg:830
-#: data/core/macros/ai_controller.cfg:921
+#: data/core/macros/ai_controller.cfg:292
+#: data/core/macros/ai_controller.cfg:434
+#: data/core/macros/ai_controller.cfg:836
+#: data/core/macros/ai_controller.cfg:927
 msgid "Back"
 msgstr "Tillbaka"
 
 #. [protect]
-#: data/core/macros/ai_controller.cfg:305
+#: data/core/macros/ai_controller.cfg:311
 msgid "Focus on protecting..."
 msgstr "Fokuserar på att beskydda..."
 
 #. [protect]
-#: data/core/macros/ai_controller.cfg:306
+#: data/core/macros/ai_controller.cfg:312
 msgid ""
 "focusing on protecting $ai_controller.side_$ally_side|_current_settings."
 "protect.side_description|."
@@ -1383,57 +1368,57 @@ msgstr ""
 "protect.side_description|."
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:463
+#: data/core/macros/ai_controller.cfg:469
 msgid "Defend a location..."
 msgstr "Försvara en plats..."
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:479
+#: data/core/macros/ai_controller.cfg:485
 msgid "Right-click to select a location to defend"
 msgstr "Högerklicka för att välja en plats att försvara"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
-#: data/core/macros/ai_controller.cfg:486
+#: data/core/macros/ai_controller.cfg:492
 msgid "Defend this location"
 msgstr "Försvara denna plats"
 
 #. [command]
-#: data/core/macros/ai_controller.cfg:503
+#: data/core/macros/ai_controller.cfg:509
 msgid "focusing on defending the area around $x1|,$y1|."
 msgstr "fokuserar på att försvara området kring $x1|,$y1|."
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:545
+#: data/core/macros/ai_controller.cfg:551
 msgid "Location selection canceled"
 msgstr "Områdesval avbröts"
 
 #. [revoke_objective_orders]
-#: data/core/macros/ai_controller.cfg:560
+#: data/core/macros/ai_controller.cfg:566
 msgid "Clear objective orders"
 msgstr "Avbryt målorder"
 
 #. [revoke_objective_orders]
 #. [revoke_behavior_orders]
 #. [then]
-#: data/core/macros/ai_controller.cfg:561
-#: data/core/macros/ai_controller.cfg:574
-#: data/core/macros/ai_controller.cfg:704
-#: data/core/macros/ai_controller.cfg:715
+#: data/core/macros/ai_controller.cfg:567
+#: data/core/macros/ai_controller.cfg:580
+#: data/core/macros/ai_controller.cfg:710
+#: data/core/macros/ai_controller.cfg:721
 msgid "none set."
 msgstr "ingen satt."
 
 #. [revoke_behavior_orders]
-#: data/core/macros/ai_controller.cfg:573
+#: data/core/macros/ai_controller.cfg:579
 msgid "Clear behavior orders"
 msgstr "Avbryt beteendeorder"
 
 #. [revoke_all_orders]
-#: data/core/macros/ai_controller.cfg:587
+#: data/core/macros/ai_controller.cfg:593
 msgid "Clear all orders"
 msgstr "Avbryt alla order"
 
 #. [do]
-#: data/core/macros/ai_controller.cfg:756
+#: data/core/macros/ai_controller.cfg:762
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -1446,45 +1431,45 @@ msgstr ""
 "currently_doing_behaviour_description"
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:773
+#: data/core/macros/ai_controller.cfg:779
 msgid "Set objective..."
 msgstr "Välj mål..."
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:864
+#: data/core/macros/ai_controller.cfg:870
 msgid "Set behavior..."
 msgstr "Välj beteende..."
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:969
+#: data/core/macros/ai_controller.cfg:975
 msgid "Exit"
 msgstr "Avsluta"
 
-#: data/core/macros/ai_controller.cfg:1102
+#: data/core/macros/ai_controller.cfg:1108
 msgid "Set special orders..."
 msgstr "Ange speciella order..."
 
-#: data/core/macros/ai_controller.cfg:1103
+#: data/core/macros/ai_controller.cfg:1109
 msgid "Move leader to..."
 msgstr "Flytta ledare till..."
 
-#: data/core/macros/ai_controller.cfg:1104
+#: data/core/macros/ai_controller.cfg:1110
 msgid "Right-click to select a location to move leader to"
 msgstr "Högerklicka för att välja en plats att flytta ledaren till"
 
-#: data/core/macros/ai_controller.cfg:1105
+#: data/core/macros/ai_controller.cfg:1111
 msgid "Move leader here"
 msgstr "Flytta ledaren hit"
 
-#: data/core/macros/ai_controller.cfg:1106
+#: data/core/macros/ai_controller.cfg:1112
 msgid "moving leader to $x1|,$y1|."
 msgstr "flyttar ledaren till $x1|,$y1|."
 
-#: data/core/macros/ai_controller.cfg:1107
+#: data/core/macros/ai_controller.cfg:1113
 msgid "Clear special orders"
 msgstr "Avbryt alla speciella ordrar"
 
-#: data/core/macros/ai_controller.cfg:1108
+#: data/core/macros/ai_controller.cfg:1114
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
@@ -3392,14 +3377,14 @@ msgstr "Oframkomlig"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:445
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:447
 msgid "Fog"
 msgstr "Dimma"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:448
-#: src/game_initialization/lobby_data.cpp:451
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:450
+#: src/game_initialization/lobby_data.cpp:453
 msgid "Shroud"
 msgstr "Slöja"
 
@@ -3449,6 +3434,21 @@ msgstr ""
 "en gruppspelskampanj med 14 scenarion,\n"
 "7 fraktioner strider 46 gruppspelskartor/-scenarion,\n"
 "500+ extramaterial.)"
+
+#. [language]
+#: data/english.cfg:3
+msgid "Easy"
+msgstr "Lätt"
+
+#. [language]
+#: data/english.cfg:4
+msgid "Medium"
+msgstr "Mellan"
+
+#. [language]
+#: data/english.cfg:5
+msgid "Hard"
+msgstr "Svårt"
 
 #. [language]
 #: data/english.cfg:6
@@ -3763,7 +3763,7 @@ msgstr "Nov"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:598
+#: src/hotkey/command_executor.cpp:625
 msgid "Screenshot"
 msgstr "Skärmdump"
 
@@ -3818,31 +3818,31 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1093
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1085
 msgid "female^poisoned"
 msgstr "förgiftad"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1100
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1092
 msgid "female^slowed"
 msgstr "nersaktad"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1100
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1092
 msgid "slowed"
 msgstr "nersaktad"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1106
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1098
 msgid "female^petrified"
 msgstr "förstenad"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1106
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1098
 msgid "petrified"
 msgstr "förstenad"
 
@@ -3895,21 +3895,21 @@ msgstr "%d%% guld fördes över till nästa scenario."
 msgid "Defeat enemy leader(s)"
 msgstr "Besegra fiendens ledare"
 
-#: data/scenario-test.cfg:1030 src/game_initialization/depcheck.cpp:491
+#: data/scenario-test.cfg:1031 src/game_initialization/depcheck.cpp:491
 msgid "OK"
 msgstr "OK"
 
-#: data/scenario-test.cfg:1031
+#: data/scenario-test.cfg:1032
 msgid "Cancel"
 msgstr "Avbryt"
 
 #. [language]
-#: data/scenario-test.cfg:4065
+#: data/scenario-test.cfg:4066
 msgid "very long"
 msgstr "väldigt långt"
 
 #. [language]
-#: data/scenario-test.cfg:4066
+#: data/scenario-test.cfg:4067
 msgid "electrical"
 msgstr "elektrisk"
 
@@ -4939,12 +4939,12 @@ msgstr ""
 "byar. Även om de står på en by-ruta får de inga försvarsfördelar. De blir "
 "dock fortfarande helade."
 
-#: src/actions/attack.cpp:394 src/actions/attack.cpp:663
-#: src/actions/attack.cpp:1376
+#: src/actions/attack.cpp:386 src/actions/attack.cpp:655
+#: src/actions/attack.cpp:1368
 msgid "An invalid attacker weapon got selected."
 msgstr "Ogiltigt attackvapen valt"
 
-#: src/actions/attack.cpp:401
+#: src/actions/attack.cpp:393
 msgid "An invalid defender weapon got selected."
 msgstr "Ogiltigt försvarsvapen valt"
 
@@ -5882,55 +5882,55 @@ msgstr "Saknar extramaterial: $id"
 msgid "$era_name (missing)"
 msgstr "(saknas)"
 
-#: src/game_initialization/lobby_data.cpp:271
+#: src/game_initialization/lobby_data.cpp:273
 msgid "Unknown era"
 msgstr "Okänd era"
 
-#: src/game_initialization/lobby_data.cpp:288
+#: src/game_initialization/lobby_data.cpp:290
 #, fuzzy
 #| msgid " (missing)"
 msgid "(missing)"
 msgstr "(saknas)"
 
-#: src/game_initialization/lobby_data.cpp:334
-#: src/game_initialization/lobby_data.cpp:364
+#: src/game_initialization/lobby_data.cpp:336
+#: src/game_initialization/lobby_data.cpp:366
 msgid "S"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:353
+#: src/game_initialization/lobby_data.cpp:355
 msgid "Remote scenario"
 msgstr "Nätverksscenario"
 
-#: src/game_initialization/lobby_data.cpp:372
-#: src/game_initialization/lobby_data.cpp:395
+#: src/game_initialization/lobby_data.cpp:374
+#: src/game_initialization/lobby_data.cpp:397
 msgid "C"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:400
+#: src/game_initialization/lobby_data.cpp:402
 msgid "Unknown scenario"
 msgstr "Okänt scenario"
 
-#: src/game_initialization/lobby_data.cpp:410
+#: src/game_initialization/lobby_data.cpp:412
 msgid "Reloaded game"
 msgstr "Öppna spel igen"
 
-#: src/game_initialization/lobby_data.cpp:425
+#: src/game_initialization/lobby_data.cpp:427
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Ledig plats:"
 msgstr[1] "Lediga platser:"
 
-#: src/game_initialization/lobby_data.cpp:438
-#: src/game_initialization/lobby_data.cpp:440 src/savegame.cpp:631
+#: src/game_initialization/lobby_data.cpp:440
+#: src/game_initialization/lobby_data.cpp:442 src/savegame.cpp:631
 msgid "Turn"
 msgstr "Drag"
 
-#: src/game_initialization/lobby_data.cpp:453
-#: src/game_initialization/lobby_data.cpp:462
+#: src/game_initialization/lobby_data.cpp:455
+#: src/game_initialization/lobby_data.cpp:464
 msgid "none"
 msgstr "inget"
 
-#: src/game_initialization/lobby_data.cpp:495
+#: src/game_initialization/lobby_data.cpp:497
 #, fuzzy
 #| msgid ""
 #| "Host's version of $addon is too old: host's version $host_ver < your "
@@ -5942,7 +5942,7 @@ msgstr ""
 "Värdens version av $addon är för gammal: värdens version $host_ver < din "
 "version $local_ver."
 
-#: src/game_initialization/lobby_data.cpp:509
+#: src/game_initialization/lobby_data.cpp:511
 #, fuzzy
 #| msgid ""
 #| "Your version of $addon is out of date: host's version $host_ver > your "
@@ -6557,17 +6557,17 @@ msgstr "Version: "
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:387
+#: src/hotkey/command_executor.cpp:388
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you really want to surrender the game?"
 msgstr "Vill du verkligen radera detta spel?"
 
-#: src/hotkey/command_executor.cpp:387
+#: src/hotkey/command_executor.cpp:388
 msgid "Surrender"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:741
+#: src/hotkey/command_executor.cpp:797
 msgid "Map-Screenshot"
 msgstr "Kartskärmdump"
 
@@ -7276,35 +7276,35 @@ msgstr ""
 msgid "It is now $name|’s turn"
 msgstr "Nu är det $name|s drag"
 
-#: src/playturn.cpp:273
+#: src/playturn.cpp:275
 #, fuzzy
 #| msgid "Give gold to the current player."
 msgid "Give control to their ally $player"
 msgstr "Ge guld till aktuell spelare."
 
-#: src/playturn.cpp:282
+#: src/playturn.cpp:284
 #, fuzzy
 #| msgid "Give gold to the current player."
 msgid "Give control to observer $player"
 msgstr "Ge guld till aktuell spelare."
 
-#: src/playturn.cpp:287
+#: src/playturn.cpp:289
 msgid "Replace with AI"
 msgstr "Ersätt spelare med datorn"
 
-#: src/playturn.cpp:288
+#: src/playturn.cpp:290
 msgid "Replace with local player"
 msgstr "Ersätt med lokal spelare"
 
-#: src/playturn.cpp:289
+#: src/playturn.cpp:291
 msgid "Set side to idle"
 msgstr "Ange att sidan saknar spelare"
 
-#: src/playturn.cpp:290
+#: src/playturn.cpp:292
 msgid "Save and abort game"
 msgstr "Spara och avbryt spelet"
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:295
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player har lämnat spelet. Vad vill du göra?"
 
@@ -8127,7 +8127,7 @@ msgstr ""
 msgid "$year BF"
 msgstr ""
 
-#. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesonth
+#. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:68
 msgid "$year AF"
 msgstr ""

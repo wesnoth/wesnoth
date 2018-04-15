@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-04-01 02:37+0300\n"
+"POT-Creation-Date: 2018-04-15 01:34-0300\n"
 "PO-Revision-Date: 2018-04-08 10:56+0200\n"
 "Last-Translator: Karol Nowak <grywacz@gmail.com>\n"
 "Language-Team: none\n"
@@ -322,7 +322,7 @@ msgstr "Joystick: martwa strefa przepustnicy"
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:358
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1093
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1085
 msgid "poisoned"
 msgstr "zatruty"
 
@@ -339,21 +339,6 @@ msgstr "Przenoszone złoto:"
 #: data/lua/wml/objectives.lua:39
 msgid "Notes:"
 msgstr "Uwagi:"
-
-#. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:153 data/english.cfg:3
-msgid "Easy"
-msgstr "Łatwy"
-
-#. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:154 data/english.cfg:4
-msgid "Medium"
-msgstr "Średni"
-
-#. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:155 data/english.cfg:5
-msgid "Hard"
-msgstr "Trudny"
 
 #. [about]
 #: data/core/about.cfg:4
@@ -401,12 +386,12 @@ msgid "Packagers"
 msgstr "Pakujący"
 
 #. [about]
-#: data/core/about.cfg:1001
+#: data/core/about.cfg:1007
 msgid "Miscellaneous Contributors"
 msgstr "Różności"
 
 #. [about]
-#: data/core/about.cfg:1653
+#: data/core/about.cfg:1661
 msgid "Bots"
 msgstr "Boty"
 
@@ -1261,14 +1246,14 @@ msgid "Ask $ai_controller_unit.name to move here"
 msgstr "Poproś $ai_controller_unit.name żeby się tutaj ruszył"
 
 #. [set_menu_item]: id=ai_controller_leader_control_{CONTROLLED_SIDE}
-#: data/core/macros/ai_controller.cfg:72
+#: data/core/macros/ai_controller.cfg:75
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
 "Poproś $ally_leader.name, przywódcę strony $ally_leader.side, by się tutaj "
 "ruszył"
 
 #. [note]
-#: data/core/macros/ai_controller.cfg:102
+#: data/core/macros/ai_controller.cfg:108
 msgid ""
 "In this scenario, you may issue instructions to an allied side by right-"
 "clicking on a unit that belongs to it."
@@ -1279,21 +1264,21 @@ msgstr ""
 #. [overview_message_has_instructions]: speaker=narrator
 #. [overview_message_no_instructions]: speaker=narrator
 #. [literal]
-#: data/core/macros/ai_controller.cfg:117
-#: data/core/macros/ai_controller.cfg:124
-#: data/core/macros/ai_controller.cfg:131
+#: data/core/macros/ai_controller.cfg:123
+#: data/core/macros/ai_controller.cfg:130
+#: data/core/macros/ai_controller.cfg:137
 msgid "Instruct ally"
 msgstr "Przekaż instrukcje sojusznikowi"
 
 #. [overview_message_has_instructions]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:125
+#: data/core/macros/ai_controller.cfg:131
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
 msgstr "$ally_leader.name (strona $ally_side|) wykonuje następujące rozkazy:"
 
 #. [overview_message_no_instructions]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:132
+#: data/core/macros/ai_controller.cfg:138
 msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
@@ -1302,32 +1287,32 @@ msgstr ""
 "działa normalnie."
 
 #. [aggression]
-#: data/core/macros/ai_controller.cfg:139
+#: data/core/macros/ai_controller.cfg:145
 msgid "Be more aggressive"
 msgstr "Graj bardziej agresywnie"
 
 #. [aggression]
-#: data/core/macros/ai_controller.cfg:140
+#: data/core/macros/ai_controller.cfg:146
 msgid "aggressive."
 msgstr "atakujący."
 
 #. [caution]
-#: data/core/macros/ai_controller.cfg:157
+#: data/core/macros/ai_controller.cfg:163
 msgid "Be more defensive"
 msgstr "Graj bardziej defensywnie"
 
 #. [caution]
-#: data/core/macros/ai_controller.cfg:158
+#: data/core/macros/ai_controller.cfg:164
 msgid "defensive."
 msgstr "defensywny."
 
 #. [focus_on_enemy]
-#: data/core/macros/ai_controller.cfg:169
+#: data/core/macros/ai_controller.cfg:175
 msgid "Focus on defeating..."
 msgstr "Skup się na pokonaniu..."
 
 #. [focus_on_enemy]
-#: data/core/macros/ai_controller.cfg:170
+#: data/core/macros/ai_controller.cfg:176
 msgid ""
 "focusing on defeating $ai_controller.side_$ally_side|_current_settings."
 "focus_on_enemy.side_description|."
@@ -1337,40 +1322,40 @@ msgstr ""
 
 #. [then]
 #. [else]
-#: data/core/macros/ai_controller.cfg:237
 #: data/core/macros/ai_controller.cfg:243
-#: data/core/macros/ai_controller.cfg:378
+#: data/core/macros/ai_controller.cfg:249
 #: data/core/macros/ai_controller.cfg:384
+#: data/core/macros/ai_controller.cfg:390
 msgid "Side $temp_i"
 msgstr "strona $temp_i"
 
 #. [else]
-#: data/core/macros/ai_controller.cfg:245
-#: data/core/macros/ai_controller.cfg:386
+#: data/core/macros/ai_controller.cfg:251
+#: data/core/macros/ai_controller.cfg:392
 msgid "side $temp_i"
 msgstr "strona $temp_i"
 
 #. [command]
-#: data/core/macros/ai_controller.cfg:260
-#: data/core/macros/ai_controller.cfg:401
+#: data/core/macros/ai_controller.cfg:266
+#: data/core/macros/ai_controller.cfg:407
 msgid "side $temp_i ($side_i_leader.name|)"
 msgstr "strona $temp_i ($side_i_leader.name|)"
 
 #. [value]
-#: data/core/macros/ai_controller.cfg:286
-#: data/core/macros/ai_controller.cfg:428
-#: data/core/macros/ai_controller.cfg:830
-#: data/core/macros/ai_controller.cfg:921
+#: data/core/macros/ai_controller.cfg:292
+#: data/core/macros/ai_controller.cfg:434
+#: data/core/macros/ai_controller.cfg:836
+#: data/core/macros/ai_controller.cfg:927
 msgid "Back"
 msgstr "Wróć"
 
 #. [protect]
-#: data/core/macros/ai_controller.cfg:305
+#: data/core/macros/ai_controller.cfg:311
 msgid "Focus on protecting..."
 msgstr "Skoncentruj się na chronieniu..."
 
 #. [protect]
-#: data/core/macros/ai_controller.cfg:306
+#: data/core/macros/ai_controller.cfg:312
 msgid ""
 "focusing on protecting $ai_controller.side_$ally_side|_current_settings."
 "protect.side_description|."
@@ -1379,57 +1364,57 @@ msgstr ""
 "side_description|."
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:463
+#: data/core/macros/ai_controller.cfg:469
 msgid "Defend a location..."
 msgstr "Broń miejsce..."
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:479
+#: data/core/macros/ai_controller.cfg:485
 msgid "Right-click to select a location to defend"
 msgstr "Kliknij prawym przyciskiem myszy miejsce, które ma być bronione"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
-#: data/core/macros/ai_controller.cfg:486
+#: data/core/macros/ai_controller.cfg:492
 msgid "Defend this location"
 msgstr "Broń tego miejsca"
 
 #. [command]
-#: data/core/macros/ai_controller.cfg:503
+#: data/core/macros/ai_controller.cfg:509
 msgid "focusing on defending the area around $x1|,$y1|."
 msgstr "koncentruje się na obronie terenu wokół $x1|,$y1|."
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:545
+#: data/core/macros/ai_controller.cfg:551
 msgid "Location selection canceled"
 msgstr "Anulowano wybór miejsca"
 
 #. [revoke_objective_orders]
-#: data/core/macros/ai_controller.cfg:560
+#: data/core/macros/ai_controller.cfg:566
 msgid "Clear objective orders"
 msgstr "Wyczyść cele"
 
 #. [revoke_objective_orders]
 #. [revoke_behavior_orders]
 #. [then]
-#: data/core/macros/ai_controller.cfg:561
-#: data/core/macros/ai_controller.cfg:574
-#: data/core/macros/ai_controller.cfg:704
-#: data/core/macros/ai_controller.cfg:715
+#: data/core/macros/ai_controller.cfg:567
+#: data/core/macros/ai_controller.cfg:580
+#: data/core/macros/ai_controller.cfg:710
+#: data/core/macros/ai_controller.cfg:721
 msgid "none set."
 msgstr "nie ustawiono."
 
 #. [revoke_behavior_orders]
-#: data/core/macros/ai_controller.cfg:573
+#: data/core/macros/ai_controller.cfg:579
 msgid "Clear behavior orders"
 msgstr "Wyczyść zachowanie"
 
 #. [revoke_all_orders]
-#: data/core/macros/ai_controller.cfg:587
+#: data/core/macros/ai_controller.cfg:593
 msgid "Clear all orders"
 msgstr "Usuń wszystkie rozkazy"
 
 #. [do]
-#: data/core/macros/ai_controller.cfg:756
+#: data/core/macros/ai_controller.cfg:762
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -1442,47 +1427,47 @@ msgstr ""
 "currently_doing_behavior_description"
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:773
+#: data/core/macros/ai_controller.cfg:779
 msgid "Set objective..."
 msgstr "Ustaw cel..."
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:864
+#: data/core/macros/ai_controller.cfg:870
 msgid "Set behavior..."
 msgstr "Ustaw zachowanie..."
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:969
+#: data/core/macros/ai_controller.cfg:975
 msgid "Exit"
 msgstr "Wyjdź"
 
-#: data/core/macros/ai_controller.cfg:1102
+#: data/core/macros/ai_controller.cfg:1108
 msgid "Set special orders..."
 msgstr "Ustaw rozkazy specjalne..."
 
-#: data/core/macros/ai_controller.cfg:1103
+#: data/core/macros/ai_controller.cfg:1109
 msgid "Move leader to..."
 msgstr "Przesuń przywódcę do..."
 
-#: data/core/macros/ai_controller.cfg:1104
+#: data/core/macros/ai_controller.cfg:1110
 msgid "Right-click to select a location to move leader to"
 msgstr ""
 "Kliknij prawym przyciskiem myszy, aby wybrać miejsce, gdzie ma się ruszyć "
 "przywódca"
 
-#: data/core/macros/ai_controller.cfg:1105
+#: data/core/macros/ai_controller.cfg:1111
 msgid "Move leader here"
 msgstr "Przesuń przywódcę tutaj"
 
-#: data/core/macros/ai_controller.cfg:1106
+#: data/core/macros/ai_controller.cfg:1112
 msgid "moving leader to $x1|,$y1|."
 msgstr "przesuwanie przywódcy do $x1|,$y1|."
 
-#: data/core/macros/ai_controller.cfg:1107
+#: data/core/macros/ai_controller.cfg:1113
 msgid "Clear special orders"
 msgstr "Usuń rozkazy specjalne"
 
-#: data/core/macros/ai_controller.cfg:1108
+#: data/core/macros/ai_controller.cfg:1114
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
@@ -3584,14 +3569,14 @@ msgstr "Nie do przebycia"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:445
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:447
 msgid "Fog"
 msgstr "Mgła"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:448
-#: src/game_initialization/lobby_data.cpp:451
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:450
+#: src/game_initialization/lobby_data.cpp:453
 msgid "Shroud"
 msgstr "Całun"
 
@@ -3641,6 +3626,21 @@ msgstr ""
 "Jedna kampania wieloosobowa z 14 scenariuszami,\n"
 "7 frakcji ścierających się na 46 mapach/scenariuszach wieloosobowych,\n"
 "Ponad 500 dodatków.)"
+
+#. [language]
+#: data/english.cfg:3
+msgid "Easy"
+msgstr "Łatwy"
+
+#. [language]
+#: data/english.cfg:4
+msgid "Medium"
+msgstr "Średni"
+
+#. [language]
+#: data/english.cfg:5
+msgid "Hard"
+msgstr "Trudny"
 
 #. [language]
 #: data/english.cfg:6
@@ -3952,7 +3952,7 @@ msgstr "Nie"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:598
+#: src/hotkey/command_executor.cpp:625
 msgid "Screenshot"
 msgstr "Zrzut ekranu"
 
@@ -4005,31 +4005,31 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1093
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1085
 msgid "female^poisoned"
 msgstr "zatruta"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1100
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1092
 msgid "female^slowed"
 msgstr "spowolniona"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1100
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1092
 msgid "slowed"
 msgstr "spowolniony"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1106
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1098
 msgid "female^petrified"
 msgstr "skamieniała"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1106
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1098
 msgid "petrified"
 msgstr "skamieniały"
 
@@ -4081,21 +4081,21 @@ msgstr "%d%% złota zostanie przeniesione do następnego scenariusza."
 msgid "Defeat enemy leader(s)"
 msgstr "Pokonaj przywódców wroga"
 
-#: data/scenario-test.cfg:1030 src/game_initialization/depcheck.cpp:491
+#: data/scenario-test.cfg:1031 src/game_initialization/depcheck.cpp:491
 msgid "OK"
 msgstr "OK"
 
-#: data/scenario-test.cfg:1031
+#: data/scenario-test.cfg:1032
 msgid "Cancel"
 msgstr "Anuluj"
 
 #. [language]
-#: data/scenario-test.cfg:4065
+#: data/scenario-test.cfg:4066
 msgid "very long"
 msgstr "bardzo długa"
 
 #. [language]
-#: data/scenario-test.cfg:4066
+#: data/scenario-test.cfg:4067
 msgid "electrical"
 msgstr "elektryczna"
 
@@ -5142,12 +5142,12 @@ msgstr ""
 "zazwyczaj unikają wiosek. Nawet jeśli zajmą pole wioski, nie zyskują żadnych "
 "korzyści obronnych, choć będą korzystać z leczenia."
 
-#: src/actions/attack.cpp:394 src/actions/attack.cpp:663
-#: src/actions/attack.cpp:1376
+#: src/actions/attack.cpp:386 src/actions/attack.cpp:655
+#: src/actions/attack.cpp:1368
 msgid "An invalid attacker weapon got selected."
 msgstr "Wybrano niepoprawną broń atakującego."
 
-#: src/actions/attack.cpp:401
+#: src/actions/attack.cpp:393
 msgid "An invalid defender weapon got selected."
 msgstr "Wybrano niepoprawną broń obrońcy."
 
@@ -6086,54 +6086,54 @@ msgstr "Brakujący dodatek: $id"
 msgid "$era_name (missing)"
 msgstr "era (nie znalezione)"
 
-#: src/game_initialization/lobby_data.cpp:271
+#: src/game_initialization/lobby_data.cpp:273
 msgid "Unknown era"
 msgstr "Nieznana era"
 
-#: src/game_initialization/lobby_data.cpp:288
+#: src/game_initialization/lobby_data.cpp:290
 msgid "(missing)"
 msgstr "(nieznalezione)"
 
-#: src/game_initialization/lobby_data.cpp:334
-#: src/game_initialization/lobby_data.cpp:364
+#: src/game_initialization/lobby_data.cpp:336
+#: src/game_initialization/lobby_data.cpp:366
 msgid "S"
 msgstr "S"
 
-#: src/game_initialization/lobby_data.cpp:353
+#: src/game_initialization/lobby_data.cpp:355
 msgid "Remote scenario"
 msgstr "Zdalny scenariusz"
 
-#: src/game_initialization/lobby_data.cpp:372
-#: src/game_initialization/lobby_data.cpp:395
+#: src/game_initialization/lobby_data.cpp:374
+#: src/game_initialization/lobby_data.cpp:397
 msgid "C"
 msgstr "K"
 
-#: src/game_initialization/lobby_data.cpp:400
+#: src/game_initialization/lobby_data.cpp:402
 msgid "Unknown scenario"
 msgstr "Nieznany scenariusz"
 
-#: src/game_initialization/lobby_data.cpp:410
+#: src/game_initialization/lobby_data.cpp:412
 msgid "Reloaded game"
 msgstr "Gra wczytana ponownie"
 
-#: src/game_initialization/lobby_data.cpp:425
+#: src/game_initialization/lobby_data.cpp:427
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Wolne miejsce:"
 msgstr[1] "Wolne miejsca:"
 msgstr[2] "Wolnych miejsc:"
 
-#: src/game_initialization/lobby_data.cpp:438
-#: src/game_initialization/lobby_data.cpp:440 src/savegame.cpp:631
+#: src/game_initialization/lobby_data.cpp:440
+#: src/game_initialization/lobby_data.cpp:442 src/savegame.cpp:631
 msgid "Turn"
 msgstr "Tura"
 
-#: src/game_initialization/lobby_data.cpp:453
-#: src/game_initialization/lobby_data.cpp:462
+#: src/game_initialization/lobby_data.cpp:455
+#: src/game_initialization/lobby_data.cpp:464
 msgid "none"
 msgstr "brak"
 
-#: src/game_initialization/lobby_data.cpp:495
+#: src/game_initialization/lobby_data.cpp:497
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
@@ -6141,7 +6141,7 @@ msgstr ""
 "Gospodarz ma dodatek w niewłaściwej wersji <i>$addon</i>. Ich wersja to <b>"
 "$host_ver</b>, a twoja to <b>$local_ver</b>."
 
-#: src/game_initialization/lobby_data.cpp:509
+#: src/game_initialization/lobby_data.cpp:511
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -6740,15 +6740,15 @@ msgstr "Koszt patrzenia:"
 msgid "Jamming Cost"
 msgstr "Koszt zasłaniania"
 
-#: src/hotkey/command_executor.cpp:387
+#: src/hotkey/command_executor.cpp:388
 msgid "Do you really want to surrender the game?"
 msgstr "Czy na pewno poddać tę grę?"
 
-#: src/hotkey/command_executor.cpp:387
+#: src/hotkey/command_executor.cpp:388
 msgid "Surrender"
 msgstr "Poddanie się"
 
-#: src/hotkey/command_executor.cpp:741
+#: src/hotkey/command_executor.cpp:797
 msgid "Map-Screenshot"
 msgstr "Zrzut ekranu"
 
@@ -7455,31 +7455,31 @@ msgstr ""
 msgid "It is now $name|’s turn"
 msgstr "Tura gracza $name|"
 
-#: src/playturn.cpp:273
+#: src/playturn.cpp:275
 msgid "Give control to their ally $player"
 msgstr "Przekaż kontrolę ich sojusznikowi $player"
 
-#: src/playturn.cpp:282
+#: src/playturn.cpp:284
 msgid "Give control to observer $player"
 msgstr "Przekaż kontrolę obserwatorowi $player"
 
-#: src/playturn.cpp:287
+#: src/playturn.cpp:289
 msgid "Replace with AI"
 msgstr "Zastąp przez komputer"
 
-#: src/playturn.cpp:288
+#: src/playturn.cpp:290
 msgid "Replace with local player"
 msgstr "Zastąp lokalnym graczem"
 
-#: src/playturn.cpp:289
+#: src/playturn.cpp:291
 msgid "Set side to idle"
 msgstr "Ustaw stronę jako bezczynną"
 
-#: src/playturn.cpp:290
+#: src/playturn.cpp:292
 msgid "Save and abort game"
 msgstr "Zapisz i opuść grę"
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:295
 msgid "$player has left the game. What do you want to do?"
 msgstr "Gracz $player opuścił grę. Co chcesz zrobić?"
 
@@ -8261,7 +8261,7 @@ msgstr "$year Rok Wesnoth"
 msgid "$year BF"
 msgstr "$year Przed Updatkiem"
 
-#. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesonth
+#. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:68
 msgid "$year AF"
 msgstr "$year Po Upadku"

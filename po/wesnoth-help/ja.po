@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-Dev Japanese\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-27 04:20+0300\n"
+"POT-Creation-Date: 2018-04-15 01:34-0300\n"
 "PO-Revision-Date: 2016-04-17 12:35+0000\n"
 "Last-Translator: SUTO Shigeyoshi <suto3suto3@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
@@ -33,14 +33,12 @@ msgstr "地下"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:659
-#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:657
 #: data/core/macros/abilities.cfg:274
 msgid "berserk"
 msgstr "狂戦"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:661
-#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:659
 #: data/core/macros/abilities.cfg:275
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -51,33 +49,18 @@ msgstr ""
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:670
-#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:668
 #: data/core/macros/abilities.cfg:359
 msgid "magical"
 msgstr "魔法"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:672
-#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:670
 #: data/core/macros/abilities.cfg:360
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
 "この攻撃は攻撃されるユニットの地形防御を無視して常に命中率が 70% となります。"
-
-#. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:679
-#: data/core/macros/abilities.cfg:404
-msgid "first strike"
-msgstr "先制"
-
-#. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:681
-#: data/core/macros/abilities.cfg:405
-msgid ""
-"This unit always strikes first with this attack, even if they are defending."
-msgstr "このユニットは、防御時であってもこの武器で先に攻撃します。"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -1211,66 +1194,66 @@ msgstr "時刻スケジュール"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
-#: data/core/help.cfg:17 data/core/help.cfg:96
+#: data/core/help.cfg:17 data/core/help.cfg:95
 msgid "Introduction"
 msgstr "はじめに"
 
 #. [section]: id=gameplay
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:23 data/core/help.cfg:168
+#: data/core/help.cfg:23 data/core/help.cfg:167
 msgid "Gameplay"
 msgstr "ゲームの遊び方"
 
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:29 data/core/help.cfg:391
+#: data/core/help.cfg:29 data/core/help.cfg:390
 msgid "Traits"
 msgstr "特性"
 
 #. [section]: id=units
 #. [topic]: id=..units
-#: data/core/help.cfg:37 data/core/help.cfg:119
+#: data/core/help.cfg:37 data/core/help.cfg:118
 msgid "Units"
 msgstr "ユニット"
 
 #. [section]: id=abilities_section
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:46 data/core/help.cfg:139
+#: data/core/help.cfg:46 data/core/help.cfg:138
 msgid "Abilities"
 msgstr "能力"
 
 #. [section]: id=weapon_specials
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:54 data/core/help.cfg:148
+#: data/core/help.cfg:54 data/core/help.cfg:147
 msgid "Weapon Specials"
 msgstr "特殊武器"
 
 #. [section]: id=eras_section
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:62 data/core/help.cfg:128
+#: data/core/help.cfg:62 data/core/help.cfg:127
 msgid "Eras"
 msgstr "時代"
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:71 data/core/help.cfg:406
+#: data/core/help.cfg:70 data/core/help.cfg:405
 msgid "Terrains"
 msgstr "地形"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:79 data/core/help.cfg:459
+#: data/core/help.cfg:78 data/core/help.cfg:458
 msgid "Add-ons"
 msgstr "アドオン"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:85 data/core/help.cfg:526
+#: data/core/help.cfg:84 data/core/help.cfg:525
 msgid "Commands"
 msgstr "コマンド"
 
 #. [topic]: id=..introduction
-#: data/core/help.cfg:97
+#: data/core/help.cfg:96
 msgid ""
 "\n"
 "\n"
@@ -1302,12 +1285,12 @@ msgstr ""
 "ると良いでしょう。"
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:107
+#: data/core/help.cfg:106
 msgid "About the Game"
 msgstr "ゲームについて"
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:108
+#: data/core/help.cfg:107
 msgid ""
 "The game takes place on a hex-based game field, where your units battle "
 "against those controlled by the computer, friends who each take turns on the "
@@ -1352,7 +1335,7 @@ msgstr ""
 "ンティアの人々によって支えられてきました。"
 
 #. [topic]: id=..units
-#: data/core/help.cfg:120
+#: data/core/help.cfg:119
 msgid ""
 "This section will list all the units you discover as you explore the world "
 "of Wesnoth. When you see a new unit during a campaign or multiplayer "
@@ -1369,7 +1352,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:129
+#: data/core/help.cfg:128
 msgid ""
 "A faction is a collection of units and leaders. Factions are assigned to "
 "sides in multiplayer games.\n"
@@ -1380,7 +1363,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:131
+#: data/core/help.cfg:130
 msgid ""
 "An era is a collection of factions, intended to be played against one "
 "another. Besides the mainline eras that come with the game, many user-made "
@@ -1393,7 +1376,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:140
+#: data/core/help.cfg:139
 msgid ""
 "Certain units have abilities that either directly affect other units or have "
 "an impact on how the unit interacts with other units. These abilities will "
@@ -1408,7 +1391,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:149
+#: data/core/help.cfg:148
 msgid ""
 "Some weapons have special features that increase the effectiveness of "
 "attacking with them. When you see a new weapon special during a campaign or "
@@ -1424,12 +1407,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:158
+#: data/core/help.cfg:157
 msgid "Unknown Unit"
 msgstr "不明なユニット"
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:159
+#: data/core/help.cfg:158
 msgid ""
 "\n"
 "\n"
@@ -1442,7 +1425,7 @@ msgstr ""
 "の中で見つけなければなりません。"
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:169
+#: data/core/help.cfg:168
 msgid ""
 "Wesnoth is comprised of a series of battles, called "
 "<italic>text='scenarios'</italic>, that pit your troops against the troops "
@@ -1483,7 +1466,7 @@ msgstr ""
 "になるでしょう。"
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:176
+#: data/core/help.cfg:175
 msgid ""
 "\n"
 "\n"
@@ -1496,7 +1479,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:176
+#: data/core/help.cfg:175
 msgid ""
 "While playing, keep in mind that you can mouse-over many items in the game, "
 "such as the information displayed in the status pane, to see a brief "
@@ -1510,12 +1493,12 @@ msgstr ""
 "を見つけた時にこの機能が役に立つでしょう。"
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:188
+#: data/core/help.cfg:187
 msgid "Victory and Defeat"
 msgstr "勝利と敗北"
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:189
+#: data/core/help.cfg:188
 msgid ""
 "\n"
 "\n"
@@ -1532,7 +1515,7 @@ msgstr ""
 "の場合には）ほかのプレイヤーとチャットしたりといったことができます。"
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:189
+#: data/core/help.cfg:188
 msgid ""
 "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
 "the beginning of each scenario. In most scenarios, you will achieve victory "
@@ -1549,12 +1532,12 @@ msgstr ""
 "る、パズルを解く、指定のターン数耐える、といったものがあります。"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:198
+#: data/core/help.cfg:197
 msgid "Recruiting and Recalling"
 msgstr "雇用と召還"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:199
+#: data/core/help.cfg:198
 msgid ""
 "\n"
 "\n"
@@ -1571,7 +1554,7 @@ msgstr ""
 "くのゴールドを消費することはできません。"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:199
+#: data/core/help.cfg:198
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1595,7 +1578,7 @@ msgstr ""
 "トをクリックし、OKボタンを押すとそのユニットが雇用されます。"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:201
+#: data/core/help.cfg:200
 msgid ""
 "\n"
 "\n"
@@ -1608,7 +1591,7 @@ msgstr ""
 "traits_section' text='特性'</ref>を持ちます。"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:203
+#: data/core/help.cfg:202
 msgid ""
 "\n"
 "\n"
@@ -1622,7 +1605,7 @@ msgstr ""
 "ゴールドかかり、前のシナリオからの全生存ユニットの一覧を示します。"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:205
+#: data/core/help.cfg:204
 msgid ""
 "\n"
 "\n"
@@ -1637,12 +1620,12 @@ msgstr ""
 "てください。"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:214
+#: data/core/help.cfg:213
 msgid "Income and Upkeep"
 msgstr "収入と維持費"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:215
+#: data/core/help.cfg:214
 msgid ""
 "\n"
 "\n"
@@ -1661,7 +1644,7 @@ msgstr ""
 "次に説明する維持費が引かれます。"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:215
+#: data/core/help.cfg:214
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1673,7 +1656,7 @@ msgstr ""
 "れには収入と維持費という二つの側面があります。"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:217
+#: data/core/help.cfg:216
 msgid ""
 "\n"
 "\n"
@@ -1694,7 +1677,7 @@ msgstr ""
 "に 2 ゴールド払うことになります。"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:219
+#: data/core/help.cfg:218
 msgid ""
 "\n"
 "\n"
@@ -1708,7 +1691,7 @@ msgstr ""
 "合には、差し引き合計の収入は毎ターン 10 ゴールドとなります。"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:221
+#: data/core/help.cfg:220
 msgid ""
 "\n"
 "\n"
@@ -1728,12 +1711,12 @@ msgstr ""
 "（ Konrad など）はほとんどの場合リーダーでしょう。"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:230
+#: data/core/help.cfg:229
 msgid "Hitpoints and Experience"
 msgstr "ヒットポイントと経験値"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:231
+#: data/core/help.cfg:230
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
 "the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
@@ -1747,7 +1730,7 @@ msgstr ""
 "んが、敵と戦うことで経験を得ます。"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:235
+#: data/core/help.cfg:234
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -1757,7 +1740,7 @@ msgstr ""
 "値と、ユニットがもつ最大値）を使って表示されます。"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:237
+#: data/core/help.cfg:236
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -1770,12 +1753,12 @@ msgstr ""
 "<ref>dst='advancement' text='レベルアップ'</ref>できます。"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:244
+#: data/core/help.cfg:243
 msgid "Advancement"
 msgstr "レベルアップ"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:245
+#: data/core/help.cfg:244
 msgid ""
 "\n"
 "\n"
@@ -1792,7 +1775,7 @@ msgstr ""
 "ラスチェンジ先の選択を行います。"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:245
+#: data/core/help.cfg:244
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they’re fighting. If a unit kills another in "
@@ -1805,7 +1788,7 @@ msgstr ""
 "レベル 3 なら 24 となります。以降も同様です。"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:247
+#: data/core/help.cfg:246
 msgid ""
 "\n"
 "\n"
@@ -1834,12 +1817,12 @@ msgstr ""
 "る場合が多いでしょう。"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:256
+#: data/core/help.cfg:255
 msgid "Movement"
 msgstr "移動"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:257
+#: data/core/help.cfg:256
 msgid ""
 "\n"
 "\n"
@@ -1864,7 +1847,7 @@ msgstr ""
 "を選択して<italic>text='地形修正'</italic>を見てください。"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:257
+#: data/core/help.cfg:256
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -1894,7 +1877,7 @@ msgstr ""
 "す。"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:259
+#: data/core/help.cfg:258
 msgid ""
 "\n"
 "\n"
@@ -1916,7 +1899,7 @@ msgstr ""
 "することができます。"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:261
+#: data/core/help.cfg:260
 msgid ""
 "\n"
 "\n"
@@ -1931,12 +1914,12 @@ msgstr ""
 "いとしたら、どこまで動けるかを示します。"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:270
+#: data/core/help.cfg:269
 msgid "Shroud and Fog of War"
 msgstr "幕と戦雲（霧）"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:271
+#: data/core/help.cfg:270
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The "
@@ -1978,12 +1961,12 @@ msgstr ""
 "を行うことができます。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:280
+#: data/core/help.cfg:279
 msgid "Combat"
 msgstr "戦闘"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:281
+#: data/core/help.cfg:280
 msgid ""
 "\n"
 "\n"
@@ -1994,7 +1977,7 @@ msgstr ""
 "<header>text='順序と攻撃回数'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:281
+#: data/core/help.cfg:280
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -2016,7 +1999,7 @@ msgstr ""
 "う近接と、弓からの矢や槍や火の玉を飛ばす遠隔があります。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:283
+#: data/core/help.cfg:282
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2049,7 +2032,7 @@ msgstr ""
 "できません（一振り 9 ダメージですが）。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:285
+#: data/core/help.cfg:284
 msgid ""
 "\n"
 "\n"
@@ -2060,7 +2043,7 @@ msgstr ""
 "<header>text='命中率'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:287
+#: data/core/help.cfg:286
 msgid ""
 "\n"
 "\n"
@@ -2082,7 +2065,7 @@ msgstr ""
 "反撃するときの命中率は、攻撃ユニットのいる地形に依存します。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:289
+#: data/core/help.cfg:288
 msgid ""
 "\n"
 "\n"
@@ -2100,7 +2083,7 @@ msgstr ""
 "り、地形に関わらず常に最低でも 60% の命中率になります。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:291
+#: data/core/help.cfg:290
 msgid ""
 "\n"
 "\n"
@@ -2111,7 +2094,7 @@ msgstr ""
 "<header>text='ダメージ'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:293
+#: data/core/help.cfg:292
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2144,7 +2127,7 @@ msgstr ""
 "<italic>text='ダメージ計算'</italic>を選択して下さい。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:295
+#: data/core/help.cfg:294
 msgid ""
 "\n"
 "\n"
@@ -2161,12 +2144,12 @@ msgstr ""
 "ユニットが攻撃すると、攻撃側と防御側の両方のダメージ量が倍となります。"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:303
+#: data/core/help.cfg:302
 msgid "Damage Types and Resistance"
 msgstr "ダメージ型と耐性"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:304
+#: data/core/help.cfg:303
 msgid ""
 "\n"
 "\n"
@@ -2185,7 +2168,7 @@ msgstr ""
 "します。"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:304
+#: data/core/help.cfg:303
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -2199,7 +2182,7 @@ msgstr ""
 "す。それぞれのユニットはダメージ型によって、異なる耐性を持ちます。"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:306
+#: data/core/help.cfg:305
 msgid ""
 "\n"
 "\n"
@@ -2213,7 +2196,7 @@ msgstr ""
 "炎には弱く、さらに秘術に対しては非常に脆弱です。"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:308
+#: data/core/help.cfg:307
 msgid ""
 "\n"
 "\n"
@@ -2228,12 +2211,12 @@ msgstr ""
 "です。"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:316
+#: data/core/help.cfg:315
 msgid "Orbs"
 msgstr "宝珠"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:317
+#: data/core/help.cfg:316
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -2242,38 +2225,38 @@ msgstr ""
 "について、宝珠は、"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:319
+#: data/core/help.cfg:318
 msgid " green if it hasn’t moved this turn,"
 msgstr "このターンにまだ動いていないなら緑色、"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:320
+#: data/core/help.cfg:319
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr "移動したがまだ動いたり攻撃したりできるなら黄色、"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:321
+#: data/core/help.cfg:320
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr "赤ならこのターン中はこれ以上の移動・攻撃はできません。"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:322
+#: data/core/help.cfg:321
 msgid " blue if the unit is an ally you do not control."
 msgstr "あなたが操作できない同盟のユニットなら、宝珠は青色です。"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:323
+#: data/core/help.cfg:322
 msgid " Enemy units have no orb on top of their energy bar."
 msgstr "敵ユニットのHPバー上には宝珠は表示されません。"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:330
+#: data/core/help.cfg:329
 msgid "Time of Day"
 msgstr "時刻"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:331
+#: data/core/help.cfg:330
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 "\n"
@@ -2296,7 +2279,7 @@ msgstr ""
 "す。"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:336
+#: data/core/help.cfg:335
 msgid ""
 "\n"
 "\n"
@@ -2315,21 +2298,21 @@ msgstr ""
 #. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
-#: data/core/help.cfg:340 data/core/macros/schedules.cfg:14
+#: data/core/help.cfg:339 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "夜明け"
 
 #. [topic]: id=time_of_day
 #. [time]: id=morning
-#: data/core/help.cfg:341 data/core/macros/schedules.cfg:26
+#: data/core/help.cfg:340 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "朝"
 
 #. [topic]: id=time_of_day
 #. [time]: id=afternoon
-#: data/core/help.cfg:342 data/core/macros/schedules.cfg:44
+#: data/core/help.cfg:341 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "午後"
@@ -2337,27 +2320,27 @@ msgstr "午後"
 #. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
-#: data/core/help.cfg:343 data/core/macros/schedules.cfg:53
+#: data/core/help.cfg:342 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "夕方"
 
 #. [topic]: id=time_of_day
 #. [time]: id=first_watch
-#: data/core/help.cfg:344 data/core/macros/schedules.cfg:65
+#: data/core/help.cfg:343 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "夜"
 
 #. [topic]: id=time_of_day
 #. [time]: id=second_watch
-#: data/core/help.cfg:345 data/core/macros/schedules.cfg:89
+#: data/core/help.cfg:344 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
 msgstr "深夜"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:347
+#: data/core/help.cfg:346
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!\n"
@@ -2366,7 +2349,7 @@ msgstr ""
 "で注意しましょう！\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:349
+#: data/core/help.cfg:348
 msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night.\n"
@@ -2375,7 +2358,7 @@ msgstr ""
 "じように扱われます。\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:351
+#: data/core/help.cfg:350
 msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate."
@@ -2384,12 +2367,12 @@ msgstr ""
 "夕暮れや夜明けと同じように扱われます。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:358
+#: data/core/help.cfg:357
 msgid "Healing"
 msgstr "回復"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:359
+#: data/core/help.cfg:358
 msgid ""
 "\n"
 "\n"
@@ -2402,7 +2385,7 @@ msgstr ""
 "が2回復します。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:359
+#: data/core/help.cfg:358
 msgid ""
 "In combat, your units will inevitably take damage. There are several ways to "
 "heal your units. However, with the exception of resting, these do not stack; "
@@ -2413,7 +2396,7 @@ msgstr ""
 "の回復手段と併用できます。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:361
+#: data/core/help.cfg:360
 msgid ""
 "\n"
 "• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
@@ -2425,7 +2408,7 @@ msgstr ""
 "復します。もしユニットが毒を受けていれば、回復の代わりに解毒されます。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:362
+#: data/core/help.cfg:361
 msgid ""
 "\n"
 "• <ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
@@ -2438,7 +2421,7 @@ msgstr ""
 "されていれば、回復する代わりに解毒されます。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:363
+#: data/core/help.cfg:362
 msgid ""
 "\n"
 "• <bold>text='Healing units'</bold>: Units with the <ref>dst='ability_heals "
@@ -2454,7 +2437,7 @@ msgstr ""
 "に毒によるダメージを防ぎます（解毒する訳ではありません）。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:364
+#: data/core/help.cfg:363
 msgid ""
 "\n"
 "• <bold>text='Curing units'</bold>: Units with the <ref>dst='ability_cures' "
@@ -2467,7 +2450,7 @@ msgstr ""
 "し回復能力も持っていれば、回復よりも治療が優先されます）。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:365
+#: data/core/help.cfg:364
 msgid ""
 "\n"
 "• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
@@ -2480,7 +2463,7 @@ msgstr ""
 "と、十分なXPが溜まっていればレベルアップによって回復できます。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:366
+#: data/core/help.cfg:365
 msgid ""
 "\n"
 "\n"
@@ -2495,7 +2478,7 @@ msgstr ""
 "ユニットは完全に回復します。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:368
+#: data/core/help.cfg:367
 msgid ""
 "\n"
 "\n"
@@ -2506,7 +2489,7 @@ msgstr ""
 "<bold>text='上級編'</bold>"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:370
+#: data/core/help.cfg:369
 msgid ""
 "\n"
 "\n"
@@ -2527,12 +2510,12 @@ msgstr ""
 "軍のターンにそれぞれ傷ついたユニットを回復することができます。"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:378
+#: data/core/help.cfg:377
 msgid "Wrap Up"
 msgstr "まとめ"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:379
+#: data/core/help.cfg:378
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -2547,12 +2530,12 @@ msgstr ""
 "必要な知識をすべて得ました。楽しんで下さい、そして幸運を！"
 
 #. [topic]: id=license
-#: data/core/help.cfg:384
+#: data/core/help.cfg:383
 msgid "License"
 msgstr "ライセンス"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:393
+#: data/core/help.cfg:392
 msgid ""
 "\n"
 "\n"
@@ -2569,7 +2552,7 @@ msgstr ""
 "ちます）。また、ウーズは特性を持ちません。"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:393
+#: data/core/help.cfg:392
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
@@ -2581,7 +2564,7 @@ msgstr ""
 "<italic>text='種族'</italic>ごとに決まっています。"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:395
+#: data/core/help.cfg:394
 msgid ""
 "\n"
 "\n"
@@ -2598,7 +2581,7 @@ msgstr ""
 "<ref>dst='traits_strong' text='強力'</ref>です。"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:397
+#: data/core/help.cfg:396
 msgid ""
 "\n"
 "\n"
@@ -2621,7 +2604,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:407
+#: data/core/help.cfg:406
 msgid ""
 "\n"
 "\n"
@@ -2634,7 +2617,7 @@ msgstr ""
 "<italic>text='複合地形'</italic>です。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:407
+#: data/core/help.cfg:406
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
@@ -2643,7 +2626,7 @@ msgstr ""
 "ニットの移動と戦闘におけるユニットの防御能力の双方に影響します。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:409
+#: data/core/help.cfg:408
 msgid ""
 "\n"
 "\n"
@@ -2654,7 +2637,7 @@ msgstr ""
 "<header>text='基本地形'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:411
+#: data/core/help.cfg:410
 msgid ""
 "\n"
 "\n"
@@ -2671,7 +2654,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:415
+#: data/core/help.cfg:414
 msgid ""
 "\n"
 "\n"
@@ -2687,7 +2670,7 @@ msgstr ""
 "は、照らされた場所のように固有の特性を持つ場合があります。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:417
+#: data/core/help.cfg:416
 msgid ""
 "\n"
 "\n"
@@ -2698,7 +2681,7 @@ msgstr ""
 "<header>text='複合地形'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:419
+#: data/core/help.cfg:418
 msgid ""
 "\n"
 "\n"
@@ -2720,7 +2703,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:423
+#: data/core/help.cfg:422
 msgid ""
 "\n"
 "\n"
@@ -2743,7 +2726,7 @@ msgstr ""
 "ニットでも通過することができます。\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:427
+#: data/core/help.cfg:426
 msgid ""
 "\n"
 "\n"
@@ -2760,7 +2743,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:431
+#: data/core/help.cfg:430
 msgid ""
 "\n"
 "\n"
@@ -2778,7 +2761,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:435
+#: data/core/help.cfg:434
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2799,7 +2782,7 @@ msgstr ""
 "ことで、（標準のテーマでは）画面の右上の地形アイコンから確認できます。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:437
+#: data/core/help.cfg:436
 msgid ""
 "\n"
 "\n"
@@ -2814,7 +2797,7 @@ msgstr ""
 "<italic>text='地形情報'</italic>をホットキーか右クリックから開いてください。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:439
+#: data/core/help.cfg:438
 msgid ""
 "\n"
 "\n"
@@ -2825,7 +2808,7 @@ msgstr ""
 "<header>text='上限回避率'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:441
+#: data/core/help.cfg:440
 msgid ""
 "\n"
 "\n"
@@ -2840,7 +2823,7 @@ msgstr ""
 "ことはありません。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:443
+#: data/core/help.cfg:442
 msgid ""
 "\n"
 "\n"
@@ -2856,7 +2839,7 @@ msgstr ""
 "30%が回避率として適用されます。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:445
+#: data/core/help.cfg:444
 msgid ""
 "\n"
 "\n"
@@ -2869,7 +2852,7 @@ msgstr ""
 "その値となります（上限回避率より高くなることはありません）。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:447
+#: data/core/help.cfg:446
 msgid ""
 "\n"
 "\n"
@@ -2882,7 +2865,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:460
+#: data/core/help.cfg:459
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -2894,12 +2877,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:470
+#: data/core/help.cfg:469
 msgid "Using Add-ons"
 msgstr "アドオンの使い方"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:471
+#: data/core/help.cfg:470
 msgid ""
 "\n"
 "\n"
@@ -2910,7 +2893,7 @@ msgstr ""
 "<header>text='キャンペーンとシナリオ'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:471
+#: data/core/help.cfg:470
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
@@ -2919,7 +2902,7 @@ msgstr ""
 "のアドオンを有効にできるゲームモードも異なります。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:473
+#: data/core/help.cfg:472
 msgid ""
 "\n"
 "\n"
@@ -2935,7 +2918,7 @@ msgstr ""
 "<italic>text='キャンペーン'</italic>メニューから遊ぶことができます。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:475
+#: data/core/help.cfg:474
 msgid ""
 "\n"
 "\n"
@@ -2946,7 +2929,7 @@ msgstr ""
 "<header>text='MP(マルチプレイヤー) キャンペーン、シナリオ、マップ集'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:477
+#: data/core/help.cfg:476
 msgid ""
 "\n"
 "\n"
@@ -2961,7 +2944,7 @@ msgstr ""
 "できます。別々のMPシナリオをまとめたセットも存在します。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:479
+#: data/core/help.cfg:478
 msgid ""
 "\n"
 "\n"
@@ -2972,7 +2955,7 @@ msgstr ""
 "<header>text='MPの時代(MP Era)、党派(MP Faction)'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:481
+#: data/core/help.cfg:480
 msgid ""
 "\n"
 "\n"
@@ -2996,7 +2979,7 @@ msgstr ""
 "とができます。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:485
+#: data/core/help.cfg:484
 msgid ""
 "\n"
 "\n"
@@ -3009,7 +2992,7 @@ msgstr ""
 "eras_section'</ref>から確認できます。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:487
+#: data/core/help.cfg:486
 msgid ""
 "\n"
 "\n"
@@ -3020,7 +3003,7 @@ msgstr ""
 "<header>text='MP Mod(Multiplayer Modifications)'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:489
+#: data/core/help.cfg:488
 msgid ""
 "\n"
 "\n"
@@ -3036,7 +3019,7 @@ msgstr ""
 "定することができます。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:491
+#: data/core/help.cfg:490
 msgid ""
 "\n"
 "\n"
@@ -3047,7 +3030,7 @@ msgstr ""
 "<header>text='クリエイター用の素材集'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:493
+#: data/core/help.cfg:492
 msgid ""
 "\n"
 "\n"
@@ -3065,12 +3048,12 @@ msgstr ""
 "のインストール時に素材集も必要とされることがあります。"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:502
+#: data/core/help.cfg:501
 msgid "Installing Add-ons"
 msgstr "アドオンのインストール"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:503
+#: data/core/help.cfg:502
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -3117,12 +3100,12 @@ msgstr ""
 "トール状況、利用できる言語) を詳しく見ることができます。"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:516
+#: data/core/help.cfg:515
 msgid "Removing Add-ons"
 msgstr "アドオンの削除"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:517
+#: data/core/help.cfg:516
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -3144,14 +3127,14 @@ msgstr ""
 "イルマネージャで削除しなければなりません。"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:532
+#: data/core/help.cfg:531
 msgid "General Commands"
 msgstr "一般的なコマンド"
 
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:534 data/core/help.cfg:577 data/core/help.cfg:615
+#: data/core/help.cfg:533 data/core/help.cfg:576 data/core/help.cfg:614
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3162,7 +3145,7 @@ msgstr ""
 "つことで実行できます (チャット欄は「m」で開けます) 。\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:536
+#: data/core/help.cfg:535
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3173,7 +3156,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:539
+#: data/core/help.cfg:538
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3190,7 +3173,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:543
+#: data/core/help.cfg:542
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3219,7 +3202,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:546
+#: data/core/help.cfg:545
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -3230,7 +3213,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:549
+#: data/core/help.cfg:548
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3241,7 +3224,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:552
+#: data/core/help.cfg:551
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3252,7 +3235,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:555
+#: data/core/help.cfg:554
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3263,7 +3246,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:558
+#: data/core/help.cfg:557
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3274,7 +3257,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:561
+#: data/core/help.cfg:560
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3285,7 +3268,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:564
+#: data/core/help.cfg:563
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3296,7 +3279,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:567
+#: data/core/help.cfg:566
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3305,12 +3288,12 @@ msgstr ""
 "ゲームを保存してシナリオを終了します（確認なし）。"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:576
+#: data/core/help.cfg:575
 msgid "Multiplayer Commands"
 msgstr "マルチプレイヤーコマンド"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:579
+#: data/core/help.cfg:578
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3325,7 +3308,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:582
+#: data/core/help.cfg:581
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3345,7 +3328,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:585
+#: data/core/help.cfg:584
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -3357,7 +3340,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:588
+#: data/core/help.cfg:587
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -3370,7 +3353,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:591
+#: data/core/help.cfg:590
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -3385,7 +3368,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:594
+#: data/core/help.cfg:593
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3399,7 +3382,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:597
+#: data/core/help.cfg:596
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3412,7 +3395,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:600
+#: data/core/help.cfg:599
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -3423,7 +3406,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:603
+#: data/core/help.cfg:602
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3437,7 +3420,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:606
+#: data/core/help.cfg:605
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -3448,12 +3431,12 @@ msgstr ""
 "禁止ユーザーの一覧が消去されます。"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:614
+#: data/core/help.cfg:613
 msgid "Debug Mode Commands"
 msgstr "デバッグモードコマンド"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:617
+#: data/core/help.cfg:616
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3465,7 +3448,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:620
+#: data/core/help.cfg:619
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3476,7 +3459,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:623
+#: data/core/help.cfg:622
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3487,7 +3470,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:626
+#: data/core/help.cfg:625
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3498,7 +3481,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:629
+#: data/core/help.cfg:628
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3509,7 +3492,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:632
+#: data/core/help.cfg:631
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3520,7 +3503,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:635
+#: data/core/help.cfg:634
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3531,7 +3514,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:638
+#: data/core/help.cfg:637
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3542,7 +3525,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:641
+#: data/core/help.cfg:640
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3555,7 +3538,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:644
+#: data/core/help.cfg:643
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -4024,6 +4007,17 @@ msgid ""
 msgstr ""
 "このユニットは生者から生命力を奪って、与えたダメージの半分（切り下げ）だけ自"
 "分の HP を回復させます。"
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/abilities.cfg:404
+msgid "first strike"
+msgstr "先制"
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/abilities.cfg:405
+msgid ""
+"This unit always strikes first with this attack, even if they are defending."
+msgstr "このユニットは、防御時であってもこの武器で先に攻撃します。"
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:414
@@ -6342,7 +6336,7 @@ msgstr "閉じる"
 msgid "The Battle for Wesnoth Help"
 msgstr "The Battle for Wesnoth ヘルプ"
 
-#: src/help/help.cpp:239
+#: src/help/help.cpp:241
 msgid "Parse error when parsing help text: "
 msgstr "ヘルプ文書を解析中にエラー: "
 
