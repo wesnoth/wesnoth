@@ -33,7 +33,7 @@
    * Fixed assertion when undoing actions in a synced context.
    * [filter_wml] no longer accepts [and] and [or] in addition to [not] since
      the implementation was non-functional.
-   * Fixed MP password save error (issue #2745)
+   * Fixed some MP passwords being saved incorrectly (issue #2745)
    * Fixed AI not recruiting in some circumstances when there are only cheap
      units on the recall list.
    * Fixed sometimes being unable to join MP games with non-required eras.
