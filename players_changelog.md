@@ -3,6 +3,8 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 
 ## Version 1.13.14+dev
+ ### Language and i18n
+   * Updated translations: Galician.
 
 
 ## Version 1.13.14

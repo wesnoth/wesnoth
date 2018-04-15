@@ -1,4 +1,6 @@
 ## Version 1.13.14+dev
+ ### Language and i18n
+   * Updated translations: Galician
 
 ## Version 1.13.14
  ### Security fixes
