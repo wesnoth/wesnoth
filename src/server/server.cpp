@@ -886,6 +886,8 @@ void server::handle_whisper(socket_ptr socket, simple_wml::node& whisper)
 		return;
 	}
 
+	whisper.set_attr_dup("sender", player_connections_.find(socket)->name().c_str());
+
 	auto receiver_iter = player_connections_.get<name_t>().find(whisper["receiver"].to_string());
 	if(receiver_iter == player_connections_.get<name_t>().end()) {
 		send_server_message(socket, "Can't find '" + whisper["receiver"].to_string() + "'.");
