@@ -562,7 +562,7 @@ void server::read_version(socket_ptr socket, std::shared_ptr<simple_wml::documen
 						   << ":" << redirect_version.second["port"] << "\n";
 				simple_wml::node& redirect = response.root().add_child("redirect");
 				for(const auto& attr : redirect_version.second.attribute_range()) {
-					redirect.set_attr(attr.first.c_str(), attr.second.str().c_str());
+					redirect.set_attr_dup(attr.first.c_str(), attr.second.str().c_str());
 				}
 				send_to_player(socket, response);
 				return;
