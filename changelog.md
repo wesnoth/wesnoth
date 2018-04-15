@@ -1,4 +1,7 @@
 ## Version 1.15.0-dev
+ ### Security fixes
+   * Fixed an issue allowing MP lobby and whisper message origins to be spoofed
+     by clients.
  ### Campaigns
    * Eastern Invasion
      * Fixed some Lua errors in S05.
