@@ -1,7 +1,5 @@
 ## Version 1.13.13+dev
  ### Campaigns
-   * Secrets of the Ancients
-     * Fixed several inconsistently spelled names.
    * The Hammer of Thursagan
      * S12 Fixed enemies from ai6 (south-east lich) going to the book (spider)
        room
