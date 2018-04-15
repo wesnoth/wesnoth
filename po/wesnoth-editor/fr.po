@@ -6,13 +6,14 @@
 # French Wesnoth translation team <wesnoth@ml.free.fr>, 2004.
 # Benoît Timbert <benoit.timbert@free.fr>, 2011.
 # Rémi BERTHO <remi.bertho@gmail.com>, 2014.
+# Mathieu Guilbaud <mathieu@guim.info>, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Editor-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-04-15 01:34-0300\n"
-"PO-Revision-Date: 2014-03-13 10:55+0100\n"
+"PO-Revision-Date: 2018-04-15 17:43+0200\n"
 "Last-Translator: Émile Enguehard <zerbugug@gmail.com>\n"
 "Language-Team: français <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -188,7 +189,7 @@ msgstr "Fichier"
 #. [menu]: id=menu-editor-recent
 #: data/themes/editor.cfg:72
 msgid "Load Recent"
-msgstr ""
+msgstr "Ouvrir un fichier récent"
 
 #. [menu]: id=menu-editor-map
 #: data/themes/editor.cfg:90
@@ -290,10 +291,6 @@ msgid "Do you really want to quit?"
 msgstr "Voulez-vous vraiment quitter ?"
 
 #: src/editor/controller/editor_controller.cpp:210
-#, fuzzy
-#| msgid ""
-#| "Do you really want to quit? Changes in the map since the last save will "
-#| "be lost."
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -332,39 +329,31 @@ msgstr "Nom : "
 
 #: src/editor/map/context_manager.cpp:205
 msgid "Load Map"
-msgstr ""
+msgstr "Charger une carte"
 
 #: src/editor/map/context_manager.cpp:273 src/editor/map/map_context.cpp:831
-#, fuzzy
-#| msgid "(New Map)"
 msgid "New Map"
-msgstr "(Nouvelle carte)"
+msgstr "Nouvelle carte"
 
 #: src/editor/map/context_manager.cpp:286 src/editor/map/map_context.cpp:831
-#, fuzzy
-#| msgid "(New Scenario)"
 msgid "New Scenario"
-msgstr "(Nouveau scénario)"
+msgstr "Nouveau scénario"
 
 #: src/editor/map/context_manager.cpp:342
 msgid "No Recent Files"
-msgstr ""
+msgstr "Aucun fichier récent"
 
 #: src/editor/map/context_manager.cpp:380
-#, fuzzy
-#| msgid "(Unnamed Area)"
 msgid "Unnamed Area"
-msgstr "(Zone sans nom)"
+msgstr "Zone sans nom"
 
 #: src/editor/map/context_manager.cpp:411
-#, fuzzy
-#| msgid "(New Side)"
 msgid "New Side"
-msgstr "(Nouveau camp)"
+msgstr "Nouveau camp"
 
 #: src/editor/map/context_manager.cpp:467
 msgid "Apply Mask"
-msgstr ""
+msgstr "Appliquer le masque"
 
 #: src/editor/map/context_manager.cpp:476
 msgid "Error loading mask"
@@ -388,14 +377,10 @@ msgid "Error loading map"
 msgstr "Erreur lors du chargement de la carte"
 
 #: src/editor/map/context_manager.cpp:645
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Enregistrer la carte sous"
 
 #: src/editor/map/context_manager.cpp:666
-#, fuzzy
-#| msgid "Save the Scenario As"
 msgid "Save Scenario As"
 msgstr "Sauvegarder le scénario sous"
 
@@ -413,10 +398,6 @@ msgid "Unsaved Changes"
 msgstr "Modifications non sauvegardées"
 
 #: src/editor/map/context_manager.cpp:733
-#, fuzzy
-#| msgid ""
-#| "Do you want to discard all changes you made to the map since the last "
-#| "save?"
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "Voulez-vous annuler toutes les modifications de la carte depuis la dernière "
@@ -458,10 +439,8 @@ msgstr ""
 
 #: src/editor/map/editor_map.cpp:148
 #: src/editor/palette/location_palette.cpp:115
-#, fuzzy
-#| msgid "Player $player_number"
 msgid "Player $side_num"
-msgstr "Joueur $player_number"
+msgstr "Joueur $side_num"
 
 #: src/editor/map/editor_map.cpp:283
 msgid "The size of the target map is different from the current map"
@@ -511,19 +490,19 @@ msgstr "Ne fonctionnera pas dans le jeu sans travail supplémentaire."
 
 #: src/editor/palette/location_palette.cpp:252
 msgid "Go To"
-msgstr ""
+msgstr "Aller à"
 
 #: src/editor/palette/location_palette.cpp:259
 msgid "Add"
-msgstr ""
+msgstr "Ajouter"
 
 #: src/editor/palette/location_palette.cpp:261
 msgid "New Location Identifier"
-msgstr ""
+msgstr "Nouvel identifiant d'emplacement"
 
 #: src/editor/palette/location_palette.cpp:265
 msgid "Delete"
-msgstr ""
+msgstr "Effacer"
 
 #: src/editor/palette/terrain_palettes.cpp:231
 msgid "FG: "
@@ -535,7 +514,7 @@ msgstr "AP : "
 
 #: src/gui/dialogs/editor/custom_tod.cpp:137
 msgid "Clipboard support not found, contact your packager"
-msgstr ""
+msgstr "Pas de prise en charge du presse-papier, contacter votre empaqueteur"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:201
 msgid "Choose File"
@@ -543,7 +522,7 @@ msgstr "Sélectionner un fichier"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:202
 msgid "Select"
-msgstr ""
+msgstr "Sélectionner"
 
 #: src/gui/dialogs/editor/set_starting_position.cpp:88
 msgid "player^None"

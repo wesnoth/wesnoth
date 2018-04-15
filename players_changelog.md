@@ -4,7 +4,7 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 
 ## Version 1.13.14+dev
  ### Language and i18n
-   * Updated translations: Galician.
+   * Updated translations: French, Galician.
 
 
 ## Version 1.13.14
