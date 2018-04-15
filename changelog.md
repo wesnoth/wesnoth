@@ -1,4 +1,7 @@
 ## Version 1.13.13+dev
+ ### Security fixes
+   * Fixed an issue allowing MP lobby and whisper message origins to be spoofed
+     by clients.
  ### Campaigns
    * The Hammer of Thursagan
      * S12 Fixed enemies from ai6 (south-east lich) going to the book (spider)
