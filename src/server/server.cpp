@@ -1091,9 +1091,6 @@ void server::handle_nickserv(socket_ptr socket, simple_wml::node& nickserv)
 
 void server::handle_message(socket_ptr socket, simple_wml::node& message)
 {
-	simple_wml::document relay_message;
-	message.copy_into(relay_message.root().add_child("message"));
-
 	auto user = player_connections_.find(socket);
 	if(user->info().is_message_flooding()) {
 		send_server_message(socket,
@@ -1101,6 +1098,10 @@ void server::handle_message(socket_ptr socket, simple_wml::node& message)
 				"Your message has not been relayed.");
 		return;
 	}
+
+	simple_wml::document relay_message;
+	message.set_attr_dup("sender", user->name().c_str());
+	message.copy_into(relay_message.root().add_child("message"));
 
 	const simple_wml::string_span& msg = message["message"];
 	chat_message::truncate_message(msg, message);
