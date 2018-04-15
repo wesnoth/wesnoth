@@ -370,8 +370,8 @@ int show_message_dialog(lua_State* L)
  * - Arg 3: Image (optional)
  */
 int show_popup_dialog(lua_State *L) {
-	std::string title = luaL_checkstring(L, 1);
-	std::string msg = luaL_checkstring(L, 2);
+	t_string title = luaW_checktstring(L, 1);
+	t_string msg = luaW_checktstring(L, 2);
 	std::string image = lua_isnoneornil(L, 3) ? "" : luaL_checkstring(L, 3);
 
 	gui2::show_transient_message(title, msg, image, true, true);
@@ -423,7 +423,7 @@ int show_menu(lua_State* L) {
  * Displays a simple message box.
  */
 int show_message_box(lua_State* L) {
-	const std::string title = luaL_checkstring(L, 1), message = luaL_checkstring(L, 2);
+	const t_string title = luaW_checktstring(L, 1), message = luaW_checktstring(L, 2);
 	std::string button = luaL_optstring(L, 3, "ok"), btn_style;
 	std::transform(button.begin(), button.end(), std::inserter(btn_style, btn_style.begin()), [](char c) { return std::tolower(c); });
 	bool markup = lua_isnoneornil(L, 3) ? luaW_toboolean(L, 3) : luaW_toboolean(L, 4);

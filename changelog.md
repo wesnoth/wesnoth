@@ -15,6 +15,9 @@
  ### Language and i18n
    * Updated translations: Chinese (Simplified), Czech, French, Galician,
      Italian, Polish
+ ### Lua API
+   * Fix wesnoth.show_popup_dialog and wesnoth.show_message_box not accepting
+     translatable strings
  ### Multiplayer
    * Added team color to a few background units missing in Aethermaw.
  ### User Interface
