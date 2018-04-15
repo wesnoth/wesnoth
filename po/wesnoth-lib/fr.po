@@ -5,12 +5,13 @@
 # Automatically generated, 2004.
 # Guillaume Pascal <guillaume.pascal43@laposte.net>, 2012, 2013.
 # Guigou Guillaume <guillaume.guigou@orange.fr>, 2013.
+# Mathieu Guilbaud <mathieu@guim.info>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-04-05 22:42+0200\n"
+"PO-Revision-Date: 2018-04-15 18:40+0200\n"
 "Last-Translator: Mathieu Guilbaud <mathieu@guim.info>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -595,26 +596,22 @@ msgstr "Sol en pierre basique"
 #: data/core/terrain.cfg:831 data/core/terrain.cfg:841
 #: data/core/terrain.cfg:851
 msgid "Rug"
-msgstr ""
+msgstr "Rocaille"
 
 #. [terrain_type]: id=rug_floor
 #: data/core/terrain.cfg:834
 msgid "Royal Rug"
-msgstr ""
+msgstr "Rocaille royale"
 
 #. [terrain_type]: id=rug2_floor
 #: data/core/terrain.cfg:844
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Normal Rug"
-msgstr "Sauvegarder le film"
+msgstr "Rocaille normale"
 
 #. [terrain_type]: id=rug3_floor
 #: data/core/terrain.cfg:854
-#, fuzzy
-#| msgid "Cave"
 msgid "Cave Rug"
-msgstr "Caverne"
+msgstr "Rocaille caverneuse"
 
 #. [terrain_type]: id=wood_floor
 #: data/core/terrain.cfg:861
@@ -2046,7 +2043,7 @@ msgstr "(Appuyez sur « $hotkey » pour plus d'informations)"
 
 #: data/gui/macros/_initial.cfg:348
 msgid "Search"
-msgstr ""
+msgstr "Rechercher"
 
 #. [label]: id=no_options_notice
 #: data/gui/macros/custom_options_tree.cfg:26
@@ -4064,7 +4061,7 @@ msgstr "Or par village"
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:336
 msgid "The number of unit levels each village can support"
-msgstr ""
+msgstr "Le nombre de niveau d'unité que chaque village peut prendre en charge"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:336
@@ -5140,7 +5137,6 @@ msgstr "Voulez-vous réellement vous rendre et quitter la partie ?"
 
 #. [button]: id=quit_and_surrender
 #: data/gui/window/surrender_quit.cfg:85
-#, fuzzy
 msgid "Surrender & Quit"
 msgstr "Se rendre et quitter"
 
@@ -5205,7 +5201,6 @@ msgstr "Strates de terrain"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:384
-#, fuzzy
 msgid "Flags"
 msgstr "Drapeaux"
 
@@ -5288,9 +5283,8 @@ msgstr "Noyau"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:256
-#, fuzzy
 msgid "Select the game core data"
-msgstr "Sélectionnez les données du noyau"
+msgstr "Sélectionnez les données du module principale"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:257
@@ -5882,7 +5876,7 @@ msgstr "Le serveur a répondu avec une erreur :"
 
 #: src/gui/dialogs/addon/manager.cpp:739
 msgid "Terms"
-msgstr ""
+msgstr "Conditions"
 
 #: src/gui/dialogs/addon/manager.cpp:756 src/gui/dialogs/addon/manager.cpp:783
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:439
@@ -5919,11 +5913,11 @@ msgstr "Aucune arme utilisable"
 
 #: src/gui/dialogs/attack_predictions.cpp:193
 msgid "Defender resistance vs"
-msgstr ""
+msgstr "Résistance du défenseur vs"
 
 #: src/gui/dialogs/attack_predictions.cpp:195
 msgid "Attacker vulnerability vs"
-msgstr ""
+msgstr "Vulnérabilité de l'attaquant vs"
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:66
 msgid "$requester requires the following modifications to be enabled:"
@@ -5991,25 +5985,28 @@ msgstr "Le fichier existe déjà. Voulez-vous le remplacer ?"
 
 #: src/gui/dialogs/file_dialog.cpp:329
 msgid "The file or folder $path cannot be created."
-msgstr ""
+msgstr "Le fichier ou le répertoire $path ne peut pas être créé."
 
 #: src/gui/dialogs/file_dialog.cpp:335
 msgid "The file or folder $path does not exist."
-msgstr ""
+msgstr "Le fichier ou le répertoire n'existe pas."
 
 #: src/gui/dialogs/file_dialog.cpp:710
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
 msgstr ""
+"Ne peut pas créer un nouveau répertoire dans $path|. Vérifiez que vous avez "
+"la permission d'écrire à cet emplacement."
 
 #: src/gui/dialogs/file_dialog.cpp:728
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr ""
+"Le répertoire suivant et son contenu seront effacés de façon permanente :"
 
 #: src/gui/dialogs/file_dialog.cpp:729
 msgid "The following file will be permanently deleted:"
-msgstr ""
+msgstr "Le fichier suivant sera effacé de façon permanente :"
 
 #: src/gui/dialogs/file_dialog.cpp:730
 msgid "Do you wish to continue?"
@@ -6020,10 +6017,12 @@ msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
 msgstr ""
+"Ne peut supprimer $path|. Vérifiez que vous avez la permissions décrire à "
+"cet emplacement."
 
 #: src/gui/dialogs/folder_create.cpp:60
 msgid "New Bookmark"
-msgstr ""
+msgstr "Nouveau signet"
 
 #: src/gui/dialogs/game_cache_options.cpp:137
 msgid "dir_size^Unknown"
@@ -6039,27 +6038,27 @@ msgstr "Ko"
 
 #: src/gui/dialogs/game_cache_options.cpp:162
 msgid "Cache Cleaned"
-msgstr ""
+msgstr "Cache néttoyé"
 
 #: src/gui/dialogs/game_cache_options.cpp:163
 msgid "The game data cache has been cleaned."
-msgstr ""
+msgstr "Le cache des données du jeu a été nettoyé."
 
 #: src/gui/dialogs/game_cache_options.cpp:165
 msgid "The game data cache could not be completely cleaned."
-msgstr ""
+msgstr "Le cache des données du jeu ne peut être nettoyé complètement."
 
 #: src/gui/dialogs/game_cache_options.cpp:181
 msgid "Cache Purged"
-msgstr ""
+msgstr "Cache purgé"
 
 #: src/gui/dialogs/game_cache_options.cpp:182
 msgid "The game data cache has been purged."
-msgstr ""
+msgstr "Le cache des données du jeu a été purgé."
 
 #: src/gui/dialogs/game_cache_options.cpp:184
 msgid "The game data cache could not be purged."
-msgstr ""
+msgstr "Le cache des données du jeu ne peut être purgé."
 
 #: src/gui/dialogs/game_load.cpp:296
 msgid "(Invalid)"
@@ -6121,7 +6120,7 @@ msgstr "Version $version"
 
 #: src/gui/dialogs/game_version.cpp:141
 msgid "Running on $os"
-msgstr ""
+msgstr "Exécuté sous $os"
 
 #: src/gui/dialogs/game_version.cpp:226
 msgid "version^N/A"
@@ -6133,27 +6132,27 @@ msgstr "Notes de l'équipe"
 
 #: src/gui/dialogs/label_settings.cpp:76
 msgid "Side $side_number ($name)"
-msgstr ""
+msgstr "Camp $side_number ($name)"
 
 #: src/gui/dialogs/loading_screen.cpp:50
 msgid "Building terrain rules"
-msgstr ""
+msgstr "construction des règles du terrain"
 
 #: src/gui/dialogs/loading_screen.cpp:51
 msgid "Reading files and creating cache"
-msgstr ""
+msgstr "Lecture des fichiers et création du cache"
 
 #: src/gui/dialogs/loading_screen.cpp:52 src/gui/dialogs/loading_screen.cpp:55
 msgid "Initializing display"
-msgstr ""
+msgstr "Initialisation de l'affichage"
 
 #: src/gui/dialogs/loading_screen.cpp:53
 msgid "Reinitialize fonts for the current language"
-msgstr ""
+msgstr "Réinitialisation des polices pour le langage en cours"
 
 #: src/gui/dialogs/loading_screen.cpp:54
 msgid "Initializing teams"
-msgstr ""
+msgstr "Initialisation des équipes"
 
 #: src/gui/dialogs/loading_screen.cpp:56
 msgid "Loading game configuration"
@@ -6165,11 +6164,11 @@ msgstr "Chargement des fichiers de données"
 
 #: src/gui/dialogs/loading_screen.cpp:58
 msgid "Loading level"
-msgstr ""
+msgstr "Chargement du niveau"
 
 #: src/gui/dialogs/loading_screen.cpp:59
 msgid "Initializing scripting engine"
-msgstr ""
+msgstr "Initialisation du moteur de script"
 
 #: src/gui/dialogs/loading_screen.cpp:60
 msgid "Initializing planning mode"
@@ -6177,11 +6176,11 @@ msgstr "Initialisation du mode de planification"
 
 #: src/gui/dialogs/loading_screen.cpp:61
 msgid "Reading unit files"
-msgstr ""
+msgstr "Lecture des fichiers des unités"
 
 #: src/gui/dialogs/loading_screen.cpp:62
 msgid "Loading units"
-msgstr ""
+msgstr "Chargement des unités"
 
 #: src/gui/dialogs/loading_screen.cpp:63
 msgid "Searching for installed add-ons"
@@ -6193,7 +6192,7 @@ msgstr "Démarrage de la partie"
 
 #: src/gui/dialogs/loading_screen.cpp:65
 msgid "Verifying cache"
-msgstr ""
+msgstr "Vérification du cache"
 
 #: src/gui/dialogs/loading_screen.cpp:66
 msgid "Connecting to server"
@@ -6205,7 +6204,7 @@ msgstr "Connexion"
 
 #: src/gui/dialogs/loading_screen.cpp:68
 msgid "Waiting for server"
-msgstr ""
+msgstr "en attente du serveur"
 
 #: src/gui/dialogs/loading_screen.cpp:69
 msgid "Connecting to redirected server"
@@ -6213,7 +6212,7 @@ msgstr "Connexion vers un autre serveur"
 
 #: src/gui/dialogs/loading_screen.cpp:70
 msgid "Waiting for next scenario"
-msgstr ""
+msgstr "en attente du prochain scénario"
 
 #: src/gui/dialogs/loading_screen.cpp:71
 msgid "Getting game data"
@@ -6253,17 +6252,24 @@ msgid ""
 "incompatible with your version. You might wish to suggest that the host's "
 "add-ons be updated."
 msgstr ""
+"La partie de peut pas être rejointe car l'hôte utilise une version périmée "
+"d'une extension, incompatible avec la votre. Vous devriez suggérer à l'hôte "
+"de mettre à jour ses extensions."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:240
 msgid "Missing User-made Content."
 msgstr ""
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:241
+#, fuzzy
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
 "Do you want to try to install them?"
 msgstr ""
+"Cette partie nécessite l'installation ou la mise à jour d'une ou plusieurs "
+"user-made extensions avant de pouvoir la rejoindre.\n"
+"Voulez vous essayer de les installer ?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:407
 msgid "Games: showing $num_shown out of $num_total"
@@ -6279,7 +6285,7 @@ msgstr "Paramètres :"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:473
 msgid "Registered users only:"
-msgstr ""
+msgstr "Utilisateurs enregistrés seulement :"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:474
 msgid "Reloaded:"
@@ -6291,7 +6297,7 @@ msgstr "Vue partagée :"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:476
 msgid "Shuffle sides:"
-msgstr ""
+msgstr "Mélange des camps :"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:477
 msgid "Time limit:"
@@ -6306,6 +6312,8 @@ msgid ""
 "One or more items need to be installed\n"
 "in order to join this game."
 msgstr ""
+"Un ou plusieurs éléments doivent être installés\n"
+"pour rejoindre cette partie."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:511
 msgid "Observers allowed"
@@ -6358,15 +6366,15 @@ msgstr "Cartes aléatoires"
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:187
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:188
 msgid "No games found."
-msgstr ""
+msgstr "Aucune partie trouvée."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:253
 msgid "No eras found."
-msgstr ""
+msgstr "Aucune ère trouvée."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:254
 msgid "No eras found"
-msgstr ""
+msgstr "Aucune ère trouvée."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:280
 msgid "Independent: Random factions assigned independently"
@@ -6382,19 +6390,19 @@ msgstr ""
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:536
 msgid "No eras available for this game."
-msgstr ""
+msgstr "Aucune ère disponible pour cette partie."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:830
 msgid "The selected game has no sides!"
-msgstr ""
+msgstr "Le jeu sélectionné n'a pas de camp !"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:896
 msgid "Choose Starting Scenario"
-msgstr ""
+msgstr "Choisissez le scénario de départ"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:896
 msgid "Select at which point to begin this campaign."
-msgstr ""
+msgstr "Sélectionnez l'endroit où commencer la campagne."
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:193
 #, fuzzy
@@ -6413,7 +6421,7 @@ msgstr "(liste vide)"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:252
 msgid "Reserved for $playername"
-msgstr ""
+msgstr "Réservé à $playername"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:254
 msgid "Vacant slot"
@@ -6421,7 +6429,7 @@ msgstr "Places restantes"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:258
 msgid "empty"
-msgstr ""
+msgstr "vide"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:332
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:154
@@ -6430,11 +6438,11 @@ msgstr "Équipe :"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:464
 msgid "Waiting for players to choose factions..."
-msgstr ""
+msgstr "En attente du choix de faction des joueurs..."
 
 #: src/gui/dialogs/outro.cpp:42
 msgid "The End"
-msgstr ""
+msgstr "La Fin"
 
 #: src/gui/dialogs/preferences_dialog.cpp:140
 msgid "Saved Games"
@@ -6495,7 +6503,7 @@ msgstr "ignoré"
 #: src/gui/dialogs/preferences_dialog.cpp:249
 #: src/gui/dialogs/preferences_dialog.cpp:309
 msgid "No username specified"
-msgstr ""
+msgstr "Aucun nom d'utilisateur indiqué"
 
 #: src/gui/dialogs/preferences_dialog.cpp:267
 msgid "Invalid username"
@@ -6507,7 +6515,7 @@ msgstr "Absent de la liste des amis ou des ignorés"
 
 #: src/gui/dialogs/preferences_dialog.cpp:814
 msgid "&#9679;"
-msgstr ""
+msgstr "&#9679;"
 
 #: src/gui/dialogs/preferences_dialog.cpp:874
 msgid ""
@@ -6533,7 +6541,7 @@ msgstr "Raccourcis clavier réinitialisés"
 
 #: src/gui/dialogs/preferences_dialog.cpp:1005
 msgid "∞"
-msgstr ""
+msgstr "∞"
 
 #: src/gui/dialogs/statistics_dialog.cpp:184
 msgid "Recruits"
@@ -6557,7 +6565,7 @@ msgstr "Tués"
 
 #: src/gui/dialogs/statistics_dialog.cpp:202
 msgid "Inflicted"
-msgstr ""
+msgstr "Infligé"
 
 #: src/gui/dialogs/statistics_dialog.cpp:210
 msgid "Taken"
@@ -6615,7 +6623,7 @@ msgstr "Publiée, obsolète sur le serveur"
 
 #: src/gui/widgets/addon_list.cpp:285
 msgid "Delete add-on from server"
-msgstr ""
+msgstr "Supprimer l'extension du serveur"
 
 #: src/gui/widgets/chatbox.cpp:263
 msgid "whisper to $receiver"
@@ -6648,6 +6656,7 @@ msgstr "Le widget obligatoire « $id » n'a pas été défini."
 #: src/gui/widgets/label.cpp:148
 msgid "Opening links is not supported, contact your packager"
 msgstr ""
+"L'ouverture des liens n'est pas prise en charge, contacter votre empaqueteur"
 
 #: src/gui/widgets/label.cpp:167
 msgid "Do you want to open this link?"
@@ -6655,7 +6664,7 @@ msgstr "Voulez-vous ouvrir ce lien ?"
 
 #: src/gui/widgets/label.cpp:198
 msgid "Copied link!"
-msgstr ""
+msgstr "Lien copié !"
 
 #: src/gui/widgets/listbox.cpp:910 src/gui/widgets/multi_page.cpp:278
 msgid ""
@@ -6758,21 +6767,21 @@ msgstr "Attaquer"
 #: src/gui/widgets/unit_preview_pane.cpp:416
 #: src/gui/widgets/unit_preview_pane.cpp:447
 msgid "Lvl $lvl"
-msgstr ""
+msgstr "Lvl $lvl"
 
 #: src/gui/widgets/unit_preview_pane.cpp:302
 #: src/gui/widgets/unit_preview_pane.cpp:315
 #: src/gui/widgets/unit_preview_pane.cpp:455
 #: src/gui/widgets/unit_preview_pane.cpp:468
 msgid "HP: "
-msgstr ""
+msgstr "HP: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:304
 #: src/gui/widgets/unit_preview_pane.cpp:320
 #: src/gui/widgets/unit_preview_pane.cpp:458
 #: src/gui/widgets/unit_preview_pane.cpp:473
 msgid "XP: "
-msgstr ""
+msgstr "XP: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:322
 #: src/gui/widgets/unit_preview_pane.cpp:475
@@ -6782,7 +6791,7 @@ msgstr "Modificateur d'expérience :"
 #: src/gui/widgets/unit_preview_pane.cpp:325
 #: src/gui/widgets/unit_preview_pane.cpp:478
 msgid "MP: "
-msgstr ""
+msgstr "MP: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:363
 #: src/gui/widgets/unit_preview_pane.cpp:506
@@ -7699,6 +7708,9 @@ msgstr ""
 "La clef « $deprecated_key » a été remplacée par « $key ». « $deprecated_key "
 "» ne sera plus maintenue à partir de la version $removal_version."
 
+#~ msgid "The maximum text width is less than 1."
+#~ msgstr "La largeur maximum du texte est inférieure à 1."
+
 #~ msgid "Rooms"
 #~ msgstr "Salles de discussions"
 
@@ -7714,9 +7726,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "feature^Growl notifications back end"
 #~ msgstr "Notification via le back-end Growl"
-
-#~ msgid "The maximum text width is less than 1."
-#~ msgstr "La largeur maximum du texte est inférieure à 1."
 
 #~ msgid "file_size^Unknown"
 #~ msgstr "Inconnu"
