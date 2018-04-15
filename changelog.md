@@ -93,7 +93,7 @@
    * Fixed unit selection not persisting between uses of Create Unit.
    * Fixed assertion when undoing actions in a synced context.
    * Fixed assertion when saving game events mid-event.
-   * Fix MP password save error (#2745)
+   * Fixed some MP passwords being saved incorrectly (issue #2745)
    * Removed incomplete joystick support.
    * Fixed sometimes being unable to join MP games with non-required eras.
    * Fixed locations not being added to the palette when loading a map (#1023)
