@@ -1,4 +1,4 @@
-## Version 1.13.13+dev
+## Version 1.13.14
  ### Security fixes
    * Fixed an issue allowing MP lobby and whisper message origins to be spoofed
      by clients.
