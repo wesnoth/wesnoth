@@ -103,6 +103,7 @@
    * Removed incomplete joystick support.
    * Fixed sometimes being unable to join MP games with non-required eras.
    * Fixed locations not being added to the palette when loading a map (#1023)
+   * Utilized 2x xBRZ scaling for portraitless units in game dialog.
 
 ## Version 1.13.12
  ### Security fixes
