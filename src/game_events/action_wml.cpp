@@ -468,6 +468,7 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 	 */
 	temp_config["x"] = "recall";
 	temp_config["y"] = "recall";
+	temp_config.remove_attribute("location_id");
 	vconfig unit_filter_cfg(temp_config);
 	const vconfig & leader_filter = cfg.child("secondary_unit");
 
@@ -494,7 +495,9 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 				const unit_ptr to_recruit = *u;
 				const unit* pass_check = to_recruit.get();
 				if(!cfg["check_passability"].to_bool(true)) pass_check = nullptr;
-				const map_location cfg_loc = cfg_to_loc(cfg);
+				const map_location cfg_loc = cfg.has_attribute("location_id")
+					? resources::gameboard->map().special_locations().left[cfg["location_id"]]
+					: cfg_to_loc(cfg);
 
 				/// @todo fendrin: comment this monster
 				for (unit_map::const_unit_iterator leader : leaders) {
