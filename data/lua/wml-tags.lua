@@ -831,6 +831,9 @@ wml_actions.unstore_unit = function(cfg)
 	local check_passability = cfg.check_passability ~= false or nil
 	local x = cfg.x or unit.x or -1
 	local y = cfg.y or unit.y or -1
+	if cfg.location_id then
+		x, y = wesnoth.special_locations[cfg.location_id]
+	end
 	wesnoth.add_known_unit(unit.type)
 	if on_board(x, y) then
 		if cfg.find_vacant then
