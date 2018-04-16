@@ -495,9 +495,14 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 				const unit_ptr to_recruit = *u;
 				const unit* pass_check = to_recruit.get();
 				if(!cfg["check_passability"].to_bool(true)) pass_check = nullptr;
-				const map_location cfg_loc = cfg.has_attribute("location_id")
-					? resources::gameboard->map().special_locations().left[cfg["location_id"]]
-					: cfg_to_loc(cfg);
+				map_location cfg_loc = cfg_to_loc(cfg);
+				if(cfg.has_attribute("location_id")) {
+					const auto& special_locs = resources::gameboard->map().special_locations().left;
+					auto& iter = special_locs.find(cfg["location_id"])
+					if(iter != special_locs.end()) {
+						cfg_loc = iter->second;
+					}
+				}
 
 				/// @todo fendrin: comment this monster
 				for (unit_map::const_unit_iterator leader : leaders) {
