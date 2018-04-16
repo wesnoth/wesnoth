@@ -498,7 +498,7 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 				map_location cfg_loc = cfg_to_loc(cfg);
 				if(cfg.has_attribute("location_id")) {
 					const auto& special_locs = resources::gameboard->map().special_locations().left;
-					auto& iter = special_locs.find(cfg["location_id"])
+					const auto& iter = special_locs.find(cfg["location_id"]);
 					if(iter != special_locs.end()) {
 						cfg_loc = iter->second;
 					}
