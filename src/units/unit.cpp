@@ -1015,7 +1015,7 @@ std::string unit::big_profile() const
 		return profile_;
 	}
 
-	return absolute_image();
+	return absolute_image() + "~XBRZ(2)";
 }
 
 std::string unit::small_profile() const
