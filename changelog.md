@@ -46,6 +46,7 @@
  ### User Interface
    * Swapped the position and formatting of game names and titles in the MP lobby.
    * Made Faction Select button's purpose more clear in MP Staging.
+   * Implemented MP chat message history saving (issue #1194, issue #2802).
    * Added a convenient button in Load Game to open your saves folder.
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
