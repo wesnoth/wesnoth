@@ -41,6 +41,7 @@
 #include "gui/widgets/tree_view_node.hpp"
 
 #include "addon/manager_ui.hpp"
+#include "chat_log.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "preferences/game.hpp"
@@ -745,6 +746,7 @@ void mp_lobby::pre_show(window& window)
 	chatbox_->set_lobby_info(lobby_info_);
 	chatbox_->set_wesnothd_connection(network_connection_);
 	chatbox_->set_active_window_changed_callback([this]() { player_list_dirty_ = true; });
+	chatbox_->load_log(default_chat_log);
 
 	find_widget<button>(&window, "create", false).set_retval(CREATE);
 

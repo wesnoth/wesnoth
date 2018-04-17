@@ -63,6 +63,7 @@ chatbox::chatbox(const implementation::builder_chatbox& builder)
 	, active_window_changed_callback_()
 	, lobby_info_(nullptr)
 	, wesnothd_connection_(nullptr)
+	, log_(nullptr)
 {
 	// We only implement a RECEIVE_KEYBOARD_FOCUS handler; LOSE_KEYBOARD_FOCUS
 	// isn't needed. This handler forwards focus to the input textbox, meaning
@@ -89,6 +90,15 @@ void chatbox::finalize_setup()
 
 	connect_signal_pre_key_press(*chat_input_,
 		std::bind(&chatbox::chat_input_keypress_callback, this, _5));
+}
+
+void chatbox::load_log(std::map<std::string, chatroom_log>& log)
+{
+	for(const auto& l : log) {
+		find_or_create_window(l.first, l.second.whisper, true, true, l.second.log);
+	}
+
+	log_ = &log;
 }
 
 void chatbox::active_window_changed()
@@ -207,6 +217,11 @@ void chatbox::append_to_chatbox(const std::string& text, size_t id, const bool f
 
 	log.set_use_markup(true);
 	log.set_label(new_text);
+
+	if(log_ != nullptr) {
+		const std::string& room_name = open_windows_[id].name;
+		log_->at(room_name).log = new_text;
+	}
 
 	const unsigned chatbox_position = log.get_vertical_scrollbar_item_position();
 
@@ -359,18 +374,22 @@ bool chatbox::room_window_active(const std::string& room)
 
 lobby_chat_window* chatbox::room_window_open(const std::string& room, const bool open_new, const bool allow_close)
 {
-	return find_or_create_window(room, false, open_new, allow_close);
+	return find_or_create_window(room, false, open_new, allow_close,
+		VGETTEXT("Room <i>“$name”</i> joined", { { "name", room } }));
 }
 
 lobby_chat_window* chatbox::whisper_window_open(const std::string& name, bool open_new)
 {
-	return find_or_create_window(name, true, open_new, true);
+	return find_or_create_window(name, true, open_new, true,
+		VGETTEXT("Whisper session with <i>“$name”</i> started. "
+		"If you do not want to receive messages from this user, type <i>/ignore $name</i>\n", { { "name", name } }));
 }
 
 lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 	const bool whisper,
 	const bool open_new,
-	const bool allow_close)
+	const bool allow_close,
+	const std::string& initial_text)
 {
 	for(auto& t : open_windows_) {
 		if(t.name == name && t.whisper == whisper) {
@@ -387,20 +406,17 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 	//
 	// Add a new chat log page.
 	//
-	std::map<std::string, string_map> data;
 	string_map item;
-
 	item["use_markup"] = "true";
+	item["label"] = initial_text;
+	std::map<std::string, string_map> data{{"log_text", item}};
 
-	if(whisper) {
-		item["label"] = VGETTEXT("Whisper session with <i>“$name”</i> started. "
-			"If you do not want to receive messages from this user, type <i>/ignore $name</i>\n", {{"name", name}});
-		data.emplace("log_text", item);
-	} else {
-		item["label"] = VGETTEXT("Room <i>“$name”</i> joined", {{"name", name}});
-		data.emplace("log_text", item);
-
+	if(!whisper) {
 		lobby_info_->open_room(name);
+	}
+
+	if(log_ != nullptr) {
+		log_->emplace(name, chatroom_log{item["label"], whisper});
 	}
 
 	chat_log_container_->add_page(data);
@@ -530,6 +546,10 @@ void chatbox::close_window(size_t idx)
 		lobby_info_->get_whisper_log(t.name).clear();
 	} else {
 		lobby_info_->close_room(t.name);
+	}
+
+	if(log_ != nullptr) {
+		log_->erase(t.name);
 	}
 
 	open_windows_.erase(open_windows_.begin() + idx);

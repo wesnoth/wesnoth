@@ -14,10 +14,12 @@
 #pragma once
 
 #include "chat_events.hpp"
+#include "chat_log.hpp"
 #include "game_initialization/lobby_data.hpp"
 #include "game_initialization/lobby_info.hpp"
 #include "gui/widgets/container_base.hpp"
 
+#include <map>
 #include <string>
 
 class config;
@@ -92,6 +94,8 @@ public:
 		wesnothd_connection_ = &c;
 	}
 
+	void load_log(std::map<std::string, chatroom_log>& log);
+
 protected:
 	/**
 	 * Initializes the internal sub-widget pointers.
@@ -143,6 +147,8 @@ private:
 	mp::lobby_info* lobby_info_;
 
 	wesnothd_connection* wesnothd_connection_;
+
+	std::map<std::string, chatroom_log>* log_;
 
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
@@ -233,7 +239,7 @@ public:
 	/**
 	 * Helper function to find and open a new window, used by *_window_open
 	 */
-	lobby_chat_window* find_or_create_window(const std::string& name, const bool whisper, const bool open_new, const bool allow_close);
+	lobby_chat_window* find_or_create_window(const std::string& name, const bool whisper, const bool open_new, const bool allow_close, const std::string& initial_text);
 
 	void close_window_button_callback(std::string room_name, bool& handled, bool& halt);
 
