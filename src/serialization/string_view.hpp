@@ -27,8 +27,6 @@ that class. */
 /** Use the standard library string_view if building with C++17. */
 #ifdef HAVE_CXX17
 
-#include <string_view>
-
 namespace utils {
 using string_view = std::string_view;
 typedef std::basic_string_view<uint8_t, std::char_traits<uint8_t>> byte_string_view;
