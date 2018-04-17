@@ -102,7 +102,6 @@
    * Fixed some MP passwords being saved incorrectly (issue #2745)
    * Fixed sometimes being unable to join MP games with non-required eras.
    * Fixed locations not being added to the palette when loading a map (#1023)
-   * Utilized 2x xBRZ scaling for portraitless units in game dialog.
    * Fixed context menus not dismissing on right click.
 
 ## Version 1.13.12
