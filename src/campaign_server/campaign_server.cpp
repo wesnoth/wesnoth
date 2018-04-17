@@ -306,6 +306,21 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 			LOG_CS << "deleting add-on '" << addon_id << "' requested from control FIFO\n";
 			delete_campaign(addon_id);
 		}
+	} else if(ctl == "hide" || ctl == "unhide") {
+		if(ctl.args_count() != 1) {
+			ERR_CS << "Incorrect number of arguments for '" << ctl.cmd() << "'\n";
+		} else {
+			const std::string& addon_id = ctl[1];
+			config& campaign = get_campaign(addon_id);
+
+			if(!campaign) {
+				ERR_CS << "Add-on '" << addon_id << "' not found, cannot " << ctl.cmd() << "\n";
+			} else {
+				campaign["hidden"] = ctl.cmd() == "hide";
+				write_config();
+				LOG_CS << "Add-on '" << addon_id << "' is now " << (ctl.cmd() == "hide" ? "hidden" : "unhidden") << '\n';
+			}
+		}
 	} else if(ctl == "setpass") {
 		if(ctl.args_count() != 2) {
 			ERR_CS << "Incorrect number of arguments for 'setpass'\n";
@@ -592,6 +607,10 @@ void server::handle_request_campaign_list(const server::request& req)
 			continue;
 		}
 
+		if(i["hidden"].to_bool()) {
+			continue;
+		}
+
 		const std::string& tm = i["timestamp"];
 
 		if(before_flag && (tm.empty() || lexical_cast_default<time_t>(tm, 0) >= before)) {
@@ -658,7 +677,7 @@ void server::handle_request_campaign(const server::request& req)
 
 	config& campaign = get_campaign(req.cfg["name"]);
 
-	if(!campaign) {
+	if(!campaign || campaign["hidden"].to_bool()) {
 		send_error("Add-on '" + req.cfg["name"].str() + "' not found.", req.sock);
 	} else {
 		const int size = filesystem::file_size(campaign["filename"]);
@@ -802,6 +821,9 @@ void server::handle_upload(const server::request& req)
 	} else if(campaign && !authenticate(*campaign, upload["passphrase"])) {
 		LOG_CS << "Upload aborted - incorrect passphrase.\n";
 		send_error("Add-on rejected: The add-on already exists, and your passphrase was incorrect.", req.sock);
+	} else if(campaign && (*campaign)["hidden"].to_bool()) {
+		LOG_CS << "Upload denied - hidden add-on.\n";
+		send_error("Add-on upload denied. Please contact the server administration for assistance.", req.sock);
 	} else {
 		const time_t upload_ts = time(nullptr);
 
@@ -935,6 +957,12 @@ void server::handle_delete(const server::request& req)
 		return;
 	}
 
+	if(campaign["hidden"].to_bool()) {
+		LOG_CS << "Add-on removal denied - hidden add-on.\n";
+		send_error("Add-on deletion denied. Please contact the server administration for assistance.", req.sock);
+		return;
+	}
+
 	delete_campaign(id);
 
 	send_message("Add-on deleted.", req.sock);
@@ -956,6 +984,9 @@ void server::handle_change_passphrase(const server::request& req)
 		send_error("No add-on with that name exists.", req.sock);
 	} else if(!authenticate(campaign, cpass["passphrase"])) {
 		send_error("Your old passphrase was incorrect.", req.sock);
+	} else if(campaign["hidden"].to_bool()) {
+		LOG_CS << "Passphrase change denied - hidden add-on.\n";
+		send_error("Add-on passphrase change denied. Please contact the server administration for assistance.", req.sock);
 	} else if(cpass["new_passphrase"].empty()) {
 		send_error("No new passphrase was supplied.", req.sock);
 	} else {
