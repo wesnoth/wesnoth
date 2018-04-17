@@ -297,6 +297,15 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 			load_config();
 			LOG_CS << "Reloaded configuration\n";
 		}
+	} else if(ctl == "delete") {
+		if(ctl.args_count() != 1) {
+			ERR_CS << "Incorrect number of arguments for 'delete'\n";
+		} else {
+			const std::string& addon_id = ctl[1];
+
+			LOG_CS << "deleting add-on '" << addon_id << "' requested from control FIFO\n";
+			delete_campaign(addon_id);
+		}
 	} else if(ctl == "setpass") {
 		if(ctl.args_count() != 2) {
 			ERR_CS << "Incorrect number of arguments for 'setpass'\n";
@@ -530,6 +539,8 @@ void server::delete_campaign(const std::string& id)
 	write_config();
 
 	fire("hook_post_erase", id);
+
+	LOG_CS << "Deleted add-on '" << id << "'\n";
 }
 
 #define REGISTER_CAMPAIGND_HANDLER(req_id) \
