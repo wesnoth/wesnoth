@@ -949,10 +949,7 @@ void server::handle_delete(const server::request& req)
 		return;
 	}
 
-	if(!authenticate(campaign, pass)
-		&& (campaigns()["master_password"].empty()
-		|| campaigns()["master_password"] != pass))
-	{
+	if(!authenticate(campaign, pass)) {
 		send_error("The passphrase is incorrect.", req.sock);
 		return;
 	}
