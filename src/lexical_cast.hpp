@@ -193,7 +193,7 @@ struct lexical_caster<
 	  long long
 	, From
 	, void
-	, std::enable_if_t<std::is_same<char*, std::remove_const_t<From>>::value>
+	, std::enable_if_t<std::is_same<char, std::remove_const_t<std::remove_pointer_t<From>>>::value>
 	>
 {
 	long long operator()(From value, boost::optional<long long> fallback) const
@@ -249,7 +249,7 @@ struct lexical_caster<
 	  To
 	, From
 	, std::enable_if_t<std::is_integral<To>::value && std::is_signed<To>::value && !std::is_same<To, long long>::value>
-	, std::enable_if_t<std::is_same<char*, std::remove_const_t<From>>::value>
+	, std::enable_if_t<std::is_same<char, std::remove_const_t<std::remove_pointer_t<From>>>::value>
 	>
 {
 	To operator()(From value, boost::optional<To> fallback) const
@@ -307,7 +307,7 @@ struct lexical_caster<
 	  To
 	, From
 	, std::enable_if_t<std::is_floating_point<To>::value>
-	, std::enable_if_t<std::is_same<char*, std::remove_const_t<From>>::value>
+	, std::enable_if_t<std::is_same<char, std::remove_const_t<std::remove_pointer_t<From>>>::value>
 	>
 {
 	To operator()(From value, boost::optional<To> fallback) const
@@ -376,7 +376,7 @@ struct lexical_caster<
 	  unsigned long long
 	, From
 	, void
-	, std::enable_if_t<std::is_same<char*, std::remove_const_t<From>>::value>
+	, std::enable_if_t<std::is_same<char, std::remove_const_t<std::remove_pointer_t<From>>>::value>
 	>
 {
 	unsigned long long operator()(From value, boost::optional<unsigned long long> fallback) const
@@ -433,7 +433,7 @@ struct lexical_caster<
 	  To
 	, From
 	, std::enable_if_t<std::is_unsigned<To>::value && !std::is_same<To, unsigned long long>::value>
-	, std::enable_if_t<std::is_same<char*, std::remove_const_t<From>>::value>
+	, std::enable_if_t<std::is_same<char, std::remove_const_t<std::remove_pointer_t<From>>>::value>
 	>
 {
 	To operator()(From value, boost::optional<To> fallback) const
