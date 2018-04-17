@@ -27,6 +27,10 @@ else
     build_timeout=40
 fi
 
+if [ "$CXXSTD" == "17" ]; then
+    STRICT="true"
+fi
+
 echo "Using configuration:"
 echo "NLS: $NLS"
 echo "TOOL: $TOOL"
