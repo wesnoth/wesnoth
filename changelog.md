@@ -2,7 +2,6 @@
  ### Language and i18n
    * Updated translations: French, Galician
  ### Miscellaneous and bug fixes
-   * Utilized 2x xBRZ scaling for portraitless units in game dialog.
    * Fixed context menus not dismissing on right click.
 
 ## Version 1.13.14
