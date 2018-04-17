@@ -1554,6 +1554,8 @@
       <Filter>Help</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\spritesheet_generator.cpp" />
+    <ClCompile Include="..\..\src\deprecation.cpp" />
+    <ClCompile Include="..\..\src\chat_log.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -3014,6 +3016,7 @@
       <Filter>Help</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\spritesheet_generator.hpp" />
+    <ClInclude Include="..\..\src\chat_log.hpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\src\tests\test_sdl_utils.hpp">
