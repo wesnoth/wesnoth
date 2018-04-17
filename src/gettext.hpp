@@ -63,11 +63,11 @@ namespace translation
 	//const char* sngettext(const char *singular, const char *plural, int n);
 	std::string dsngettext(const char * domainname, const char *singular, const char *plural, int n);
 
-	inline UNUSEDNOWARN static std::string gettext(const char* str)
+	UNUSEDNOWARN inline static std::string gettext(const char* str)
 	{ return translation::dgettext(GETTEXT_DOMAIN, str); }
-	inline UNUSEDNOWARN static std::string sgettext(const char* str)
+	UNUSEDNOWARN inline static std::string sgettext(const char* str)
 	{ return translation::dsgettext(GETTEXT_DOMAIN, str); }
-	inline UNUSEDNOWARN static std::string sngettext(const char* str1, const char* str2, int n)
+	UNUSEDNOWARN inline static std::string sngettext(const char* str1, const char* str2, int n)
 	{ return translation::dsngettext(GETTEXT_DOMAIN, str1, str2 , n); }
 
 
@@ -86,11 +86,11 @@ namespace translation
 }
 
 //#define _(String) translation::dsgettext(GETTEXT_DOMAIN,String)
-inline static UNUSEDNOWARN std::string _(const char* str)
+UNUSEDNOWARN inline static std::string _(const char* str)
 { return translation::dsgettext(GETTEXT_DOMAIN, str); }
 
 //#define _n(String1, String2, Int) translation::dsngettext(GETTEXT_DOMAIN, String1,String2,Int)
-inline UNUSEDNOWARN static std::string _n(const char* str1, const char* str2, int n)
+UNUSEDNOWARN inline static std::string _n(const char* str1, const char* str2, int n)
 { return translation::dsngettext(GETTEXT_DOMAIN, str1, str2, n); }
 
 #define gettext_noop(String) String
