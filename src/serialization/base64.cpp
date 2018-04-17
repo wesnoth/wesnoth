@@ -15,6 +15,7 @@
 #include "serialization/base64.hpp"
 
 #include <vector>
+#include <string>
 
 namespace {
 const std::string base64_itoa_map = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
