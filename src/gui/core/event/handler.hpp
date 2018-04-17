@@ -14,14 +14,6 @@
 
 #pragma once
 
-#ifdef BOOST_MPL_LIMIT_SET_SIZE
-#undef BOOST_MPL_LIMIT_SET_SIZE
-#endif
-#define BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
-#define BOOST_MPL_LIMIT_SET_SIZE 30
-
-#include <boost/mpl/set.hpp>
-
 #include <iosfwd>
 #include <vector>
 
@@ -119,119 +111,6 @@ enum ui_event {
 
 	SDL_RAW_EVENT					/**< Raw SDL event. */
 };
-
-/**
- * Helper for catching use error of dispatcher::connect_signal.
- *
- * This helper is needed as a user can't supply the wrong kind of callback
- * functions to dispatcher::connect_signal. If a wrong callback would be send
- * it will never get called.
- *
- * This version is for callbacks without extra parameters.
- * NOTE some mouse functions like MOUSE_ENTER don't send the mouse coordinates
- * to the callback function so they are also in this category.
- */
-typedef boost::mpl::set<boost::mpl::int_<DRAW>,
-						boost::mpl::int_<CLOSE_WINDOW>,
-						boost::mpl::int_<MOUSE_ENTER>,
-						boost::mpl::int_<MOUSE_LEAVE>,
-						boost::mpl::int_<LEFT_BUTTON_DOWN>,
-						boost::mpl::int_<LEFT_BUTTON_UP>,
-						boost::mpl::int_<LEFT_BUTTON_CLICK>,
-						boost::mpl::int_<LEFT_BUTTON_DOUBLE_CLICK>,
-						boost::mpl::int_<MIDDLE_BUTTON_DOWN>,
-						boost::mpl::int_<MIDDLE_BUTTON_UP>,
-						boost::mpl::int_<MIDDLE_BUTTON_CLICK>,
-						boost::mpl::int_<MIDDLE_BUTTON_DOUBLE_CLICK>,
-						boost::mpl::int_<RIGHT_BUTTON_DOWN>,
-						boost::mpl::int_<RIGHT_BUTTON_UP>,
-						boost::mpl::int_<RIGHT_BUTTON_CLICK>,
-						boost::mpl::int_<RIGHT_BUTTON_DOUBLE_CLICK>>
-set_event;
-
-/**
- * Helper for catching use error of dispatcher::connect_signal.
- *
- * This version is for callbacks with a coordinate as extra parameter.
- */
-typedef boost::mpl::set<boost::mpl::int_<SDL_VIDEO_RESIZE>,
-						boost::mpl::int_<SDL_MOUSE_MOTION>,
-						boost::mpl::int_<MOUSE_MOTION>,
-						boost::mpl::int_<SDL_LEFT_BUTTON_DOWN>,
-						boost::mpl::int_<SDL_LEFT_BUTTON_UP>,
-						boost::mpl::int_<SDL_MIDDLE_BUTTON_DOWN>,
-						boost::mpl::int_<SDL_MIDDLE_BUTTON_UP>,
-						boost::mpl::int_<SDL_RIGHT_BUTTON_DOWN>,
-						boost::mpl::int_<SDL_RIGHT_BUTTON_UP>,
-						boost::mpl::int_<SHOW_TOOLTIP>,
-						boost::mpl::int_<SHOW_HELPTIP>,
-						boost::mpl::int_<SDL_WHEEL_UP>,
-						boost::mpl::int_<SDL_WHEEL_DOWN>,
-						boost::mpl::int_<SDL_WHEEL_LEFT>,
-						boost::mpl::int_<SDL_WHEEL_RIGHT>> set_event_mouse;
-
-/**
- * Helper for catching use error of dispatcher::connect_signal.
- *
- * This version is for callbacks with the keyboard values (these haven't been
- * determined yet).
- */
-typedef boost::mpl::set<boost::mpl::int_<SDL_KEY_DOWN>> set_event_keyboard;
-
-/**
- * Helper for catching use error of dispatcher::connect_signal.
- *
- * This version is for callbacks of touch events.
- */
-typedef boost::mpl::set<boost::mpl::int_<SDL_TOUCH_MOTION>,
-						boost::mpl::int_<SDL_TOUCH_UP>,
-						boost::mpl::int_<SDL_TOUCH_DOWN>>
-set_event_touch;
-
-/**
- * Helper for catching use error of dispatcher::connect_signal.
- *
- * This version is for callbacks with a sender aka notification messages. Like
- *the
- * ones in set_event it has no extra parameters, but this version is only
- * send to the target and not using the pre and post queue.
- */
-typedef boost::mpl::set<boost::mpl::int_<NOTIFY_REMOVAL>,
-						boost::mpl::int_<NOTIFY_MODIFIED>,
-						boost::mpl::int_<RECEIVE_KEYBOARD_FOCUS>,
-						boost::mpl::int_<LOSE_KEYBOARD_FOCUS>,
-						boost::mpl::int_<NOTIFY_REMOVE_TOOLTIP>,
-						boost::mpl::int_<SDL_ACTIVATE>>
-set_event_notification;
-
-/**
- * Helper for catching use error of dispatcher::connect_signal.
- *
- * This version is for callbacks with a sender aka notification messages.
- * Unlike the notifications this message is send through the chain. The event
- * is send from a widget all the way up to the window, who always is the
- * receiver of the message (unless somebody grabbed it before).
- */
-typedef boost::mpl::set<boost::mpl::int_<MESSAGE_SHOW_TOOLTIP>,
-						boost::mpl::int_<MESSAGE_SHOW_HELPTIP>,
-						boost::mpl::int_<REQUEST_PLACEMENT>>
-set_event_message;
-
-/**
- * Helper for catching use error of dispatcher::connect_signal.
- *
- * This version is for callbacks of raw events.
- */
-typedef boost::mpl::set<boost::mpl::int_<SDL_RAW_EVENT>> set_event_raw_event;
-
-/**
- * Helper for catching use error of dispatcher::connect_signal.
- *
- * This version is for callbacks of text input events.
- */
-typedef boost::mpl::set<boost::mpl::int_<SDL_TEXT_INPUT>,
-                        boost::mpl::int_<SDL_TEXT_EDITING>>
-set_event_text_input;
 
 /**
  * Connects a dispatcher to the event handler.

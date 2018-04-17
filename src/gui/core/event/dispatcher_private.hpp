@@ -20,7 +20,6 @@
 
 #include <SDL_events.h>
 
-#include <boost/mpl/for_each.hpp>
 #include <boost/range/adaptor/reversed.hpp>
 
 namespace gui2
@@ -65,27 +64,6 @@ struct dispatcher_implementation
 	{                                                                          \
 		return dispatcher.QUEUE.queue[event];                                  \
 	}                                                                          \
-                                                                               \
-	/**                                                                        \
-	 * Returns the signal structure for a key in SET.                          \
-	 *                                                                         \
-	 * There are several functions that only overload the return value, in     \
-	 * order to do so they use SFINAE.                                         \
-	 *                                                                         \
-	 * @tparam K                  A key in set_event.                          \
-	 * @param dispatcher          The dispatcher whose signal queue is used.   \
-	 * @param event               The event to get the signal for.             \
-	 *                                                                         \
-	 * @returns                   The signal of the type                       \
-	 *                            dispatcher::signal_type<FUNCTION>            \
-	 */                                                                        \
-	template<typename K>                                                       \
-	static std::enable_if_t<boost::mpl::has_key<SET, K>::value, dispatcher::signal_type<FUNCTION>>& \
-	event_signal(dispatcher& dispatcher, const ui_event event)                 \
-	{                                                                          \
-		return dispatcher.QUEUE.queue[event];                                  \
-	}
-
 
 	IMPLEMENT_EVENT_SIGNAL(set_event, signal_function, signal_queue_)
 
@@ -114,136 +92,43 @@ struct dispatcher_implementation
 #undef IMPLEMENT_EVENT_SIGNAL_WRAPPER
 #undef IMPLEMENT_EVENT_SIGNAL
 
+#define IMPLEMENT_RUNTIME_EVENT_SIGNAL_CHECK(TYPE)                                                                     \
+	else if(is_##TYPE##_event(event)) {                                                                                \
+		return queue_check(dispatcher.signal_##TYPE##_queue_);                                                         \
+	}
+
 	/**
-	 * A helper class to find out whether dispatcher has an handler for a
-	 * certain event.
+	 * A helper to test whether dispatcher has an handler for a certain event.
+	 *
+	 * @param dispatcher      The dispatcher whose signal queue is used.
+	 * @param queue_type      The type of event to look for.
+	 * @param event           The event to get the signal for.
+	 *
+	 * @returns               Whether or not the handler is found.
 	 */
-	class has_handler
+	static bool has_handler(dispatcher& dispatcher, const dispatcher::event_queue_type queue_type, ui_event event)
 	{
-	public:
-		/**
-		 * Constructor.
-		 *
-		 * @param event_type      The type of event to look for.
-		 * @param dispatcher      The dispatcher whose signal queue is used.
-		 */
-		has_handler(const dispatcher::event_queue_type event_type, dispatcher& dispatcher)
-			: event_type_(event_type), dispatcher_(dispatcher)
-		{
+		const auto queue_check = [&](auto& queue_set) {
+			return !queue_set.queue[event].empty(queue_type);
+		};
+
+		if(is_general_event(event)) {
+			return queue_check(dispatcher.signal_queue_);
 		}
 
-		/**
-		 * Tests whether a handler for an event is available.
-		 *
-		 * It tests for both the event and the event_type send in the
-		 * constructor.
-		 *
-		 * @tparam T              A key from an event set used to instantiate
-		 *                        the proper @p event_signal function.
-		 * @param event           The event to get the signal for.
-		 *
-		 * @returns               Whether or not the handler is found.
-		 */
-		// not called operator() to work around a problem in MSVC
-		// (known to affect all versions up to 2015)
-		template<typename T>
-		bool oper(ui_event event)
-		{
-			if((event_type_ & dispatcher::pre)
-			   && !event_signal<T>(dispatcher_, event).pre_child.empty()) {
-				return true;
-			}
+		IMPLEMENT_RUNTIME_EVENT_SIGNAL_CHECK(mouse)
+		IMPLEMENT_RUNTIME_EVENT_SIGNAL_CHECK(keyboard)
+		IMPLEMENT_RUNTIME_EVENT_SIGNAL_CHECK(touch)
+		IMPLEMENT_RUNTIME_EVENT_SIGNAL_CHECK(notification)
+		IMPLEMENT_RUNTIME_EVENT_SIGNAL_CHECK(message)
+		IMPLEMENT_RUNTIME_EVENT_SIGNAL_CHECK(raw_event)
+		IMPLEMENT_RUNTIME_EVENT_SIGNAL_CHECK(text_input)
 
-			if((event_type_ & dispatcher::child)
-			   && !event_signal<T>(dispatcher_, event).child.empty()) {
-				return true;
-			}
-
-			if((event_type_ & dispatcher::post)
-			   && !event_signal<T>(dispatcher_, event).post_child.empty()) {
-				return true;
-			}
-
-			return false;
-		}
-
-	private:
-		dispatcher::event_queue_type event_type_;
-		dispatcher& dispatcher_;
-	};
-};
-
-/** Contains the implementation details of the find function. */
-namespace implementation
-{
-
-/** Specialized class when itor == end */
-template<bool done = true>
-struct find
-{
-	template<typename itor, typename end, typename E, typename F>
-	static bool execute(itor*, end*, E, F)
-	{
 		return false;
 	}
+
+#undef IMPLEMENT_RUNTIME_EVENT_SIGNAL_CHECK
 };
-
-/** Specialized class when itor != end */
-template<>
-struct find<false>
-{
-	template<typename itor, typename end, typename E, typename F>
-	static bool execute(itor*, end*, E event, F functor)
-	{
-		typedef typename boost::mpl::deref<itor>::type item;
-		typedef typename boost::mpl::apply1<boost::mpl::identity<>, item>::type arg;
-
-		boost::value_initialized<arg> x;
-
-		if(boost::get(x) == event) {
-			return functor.template oper<item>(event);
-		} else {
-			typedef typename boost::mpl::next<itor>::type itor_t;
-			return find<std::is_same<itor_t, end>::value>::execute(
-					static_cast<itor_t*>(nullptr),
-					static_cast<end*>(nullptr),
-					event,
-					functor);
-		}
-	}
-};
-
-} // namespace implementation
-
-/**
- * Tests whether an event handler is available.
- *
- * The code is based on boost::mpl_for_each, which doesn't allow to call a
- * template function with the dereferred iterator as template parameter.
- *
- * The function first tries to match whether the value in the sequence matches
- * event, once that matched it will execute the functor with the key found as
- * template parameter and the event as parameter.
- *
- * @tparam sequence               The sequence to test upon.
- * @tparam E                      The value type of the item in the sequence
- * @tparam F                      Type of the functor.
- *
- * @param event                   The event to look for.
- * @param functor                 The predicate which should is executed if the
- *                                event is matched.
- *
- * @returns                       Whether or not the function found a result.
- */
-template<typename sequence, typename E, typename F>
-inline bool find(E event, F functor)
-{
-	typedef typename boost::mpl::begin<sequence>::type begin;
-	typedef typename boost::mpl::end<sequence>::type end;
-
-	return implementation::find<std::is_same<begin, end>::value>::execute(
-		static_cast<begin*>(nullptr), static_cast<end*>(nullptr), event, functor);
-}
 
 namespace implementation
 {

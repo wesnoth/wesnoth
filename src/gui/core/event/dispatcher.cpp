@@ -55,42 +55,12 @@ void dispatcher::connect()
 bool dispatcher::has_event(const ui_event event, const event_queue_type event_type)
 {
 #if 0
-	// Debug code to test whether the event is in the right queue.
-	std::cerr << "Event '" << event
-			<< "' event "
-			<< find<set_event>(event, dispatcher_implementation
-				::has_handler(event_type, *this))
-			<< " mouse "
-			<< find<set_event_mouse>(event, dispatcher_implementation
-				::has_handler(event_type, *this))
-			<< " keyboard "
-			<< find<set_event_keyboard>(event, dispatcher_implementation
-				::has_handler(event_type, *this))
-			<< " notification "
-			<< find<set_event_notification>(event, dispatcher_implementation
-				::has_handler(event_type, *this))
-			<< " message "
-			<< find<set_event_message>(event, dispatcher_implementation
-				::has_handler(event_type, *this))
-			<< ".\n";
+	const bool res = dispatcher_implementation::has_handler(*this, event_type, event);
+	std::cerr << "Event '" << event << " '" << (res ? "found" : "not found") << "in queue\n";
+	return res;
+#else
+	return dispatcher_implementation::has_handler(*this, event_type, event);
 #endif
-
-	return find<set_event>(
-			event, dispatcher_implementation::has_handler(event_type, *this))
-	    || find<set_event_mouse>(
-			event, dispatcher_implementation::has_handler(event_type, *this))
-	    || find<set_event_keyboard>(
-			event, dispatcher_implementation::has_handler(event_type, *this))
-	    || find<set_event_text_input>(
-			event, dispatcher_implementation::has_handler(event_type, *this))
-	    || find<set_event_touch>(
-			event, dispatcher_implementation::has_handler(event_type, *this))
-	    || find<set_event_notification>(
-			event, dispatcher_implementation::has_handler(event_type, *this))
-	    || find<set_event_message>(
-			event, dispatcher_implementation::has_handler(event_type, *this))
-	    || find<set_event_raw_event>(
-			event, dispatcher_implementation::has_handler(event_type, *this));
 }
 
 bool dispatcher::fire(const ui_event event, widget& target)
@@ -132,7 +102,7 @@ bool dispatcher::fire(const ui_event event,
 
 bool dispatcher::fire(const ui_event event, widget& target, const SDL_Event& sdlevent)
 {
-	assert(is_raw_event(event));
+	assert(is_raw_event_event(event));
 	return fire_event<signal_raw_event_function>(event, this, &target, sdlevent);
 }
 

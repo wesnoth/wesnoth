@@ -147,7 +147,7 @@ constexpr bool is_message_event(const ui_event event)
  *
  * This version is for callbacks of raw events.
  */
-constexpr bool is_raw_event(const ui_event event)
+constexpr bool is_raw_event_event(const ui_event event)
 {
 	return event == SDL_RAW_EVENT;
 }
@@ -681,7 +681,7 @@ public:
 	 * @param position               The position to place the callback.
 	 */
 	template<ui_event E>
-	std::enable_if_t<is_raw_event(E)>
+	std::enable_if_t<is_raw_event_event(E)>
 	connect_signal(const signal_raw_event_function& signal, const queue_position position = back_child)
 	{
 		signal_raw_event_queue_.connect_signal(E, position, signal);
@@ -698,7 +698,7 @@ public:
 	 *                               was added in front or back.)
 	 */
 	template<ui_event E>
-	std::enable_if_t<is_raw_event(E)>
+	std::enable_if_t<is_raw_event_event(E)>
 	disconnect_signal(const signal_raw_event_function& signal, const queue_position position = back_child)
 	{
 		signal_raw_event_queue_.disconnect_signal(E, position, signal);
@@ -803,6 +803,32 @@ public:
 		std::list<T> pre_child;
 		std::list<T> child;
 		std::list<T> post_child;
+
+		/**
+		 * Checks whether the queue of a given type is empty.
+		 *
+		 * @param queue_type    The queue to check. This may be one or more types
+		 *                      OR'd together (event_queue_type is bit-unique).
+		 *
+		 * @returns             True if ALL the matching queues are empty, or false
+		 *                      if any of the matching queues is NOT empty.
+		 */
+		bool empty(const dispatcher::event_queue_type queue_type) const
+		{
+			if((queue_type & dispatcher::pre) && !pre_child.empty()) {
+				return false;
+			}
+
+			if((queue_type & dispatcher::child) && !child.empty()) {
+				return false;
+			}
+
+			if((queue_type & dispatcher::post) && !post_child.empty()) {
+				return false;
+			}
+
+			return true;
+		}
 	};
 
 	/** Helper struct to generate the various event queues. */
