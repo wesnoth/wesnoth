@@ -19,20 +19,10 @@ that class. */
 
 #pragma once
 
-#include "global.hpp"
-
 #include <boost/version.hpp>
 #include <cstdint>
 
-/** Use the standard library string_view if building with C++17. */
-#ifdef HAVE_CXX17
-
-namespace utils {
-using string_view = std::string_view;
-typedef std::basic_string_view<uint8_t, std::char_traits<uint8_t>> byte_string_view;
-}
-
-#elif BOOST_VERSION > 106100
+#if BOOST_VERSION > 106100
 
 /* Boost string_view is available, so we can just use it. */
 #include <boost/utility/string_view.hpp>
