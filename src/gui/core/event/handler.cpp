@@ -16,7 +16,6 @@
 
 #include "gui/core/event/handler.hpp"
 
-#include "events.hpp"
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/core/timer.hpp"
 #include "gui/core/log.hpp"
@@ -34,8 +33,6 @@
 
 #include <SDL.h>
 
-#include <memory>
-
 /**
  * @todo The items below are not implemented yet.
  *
@@ -52,15 +49,9 @@ namespace gui2
 
 namespace event
 {
-static bool is_modal_window(dispatcher* dispatcher)
-{
-	window* w = dynamic_cast<window*>(dispatcher);
-	return w && w->dialog() != nullptr;
-}
 
 /***** Static data. *****/
 static std::unique_ptr<class sdl_event_handler> handler_ = nullptr;
-static std::unique_ptr<events::event_context> event_context_ = nullptr;
 
 // TODO: note sure if this is useful for something so I'm leaving it here.
 #if 0
@@ -442,21 +433,12 @@ void sdl_event_handler::handle_window_event(const SDL_Event& event)
 
 void sdl_event_handler::connect(dispatcher* dispatcher)
 {
-	assert(std::find(dispatchers_.begin(), dispatchers_.end(), dispatcher) == dispatchers_.end());
+	assert(std::find(dispatchers_.begin(), dispatchers_.end(), dispatcher)
+		   == dispatchers_.end());
 
-	if(event_context_ == nullptr && is_modal_window(dispatcher)) {
-		std::cerr << "joining modal event context" << std::endl;
-		event_context_.reset(new events::event_context());
+	if(dispatchers_.empty()) {
 		join();
 	}
-
-	if(!has_joined()) {
-		join();
-	}
-
-	//if(dispatchers_.empty()) {
-	//	join();
-	//}
 
 	dispatchers_.push_back(dispatcher);
 }
@@ -473,7 +455,6 @@ void sdl_event_handler::disconnect(dispatcher* disp)
 	if(disp == mouse_focus) {
 		mouse_focus = nullptr;
 	}
-
 	if(disp == keyboard_focus_) {
 		keyboard_focus_ = nullptr;
 	}
@@ -481,27 +462,11 @@ void sdl_event_handler::disconnect(dispatcher* disp)
 	activate();
 
 	/***** Validate post conditions. *****/
-	assert(std::find(dispatchers_.begin(), dispatchers_.end(), disp) == dispatchers_.end());
-
-	// If this dispatcher is a modal window...
-	if(event_context_ && is_modal_window(disp)) {
-		itor = std::find_if(dispatchers_.begin(), dispatchers_.end(), is_modal_window);
-
-		// ... and there are no other modal window in the stack, close the modal contex.
-		if(itor == dispatchers_.end()) {
-			std::cerr << "Leaving modal event context" << std::endl;
-			leave();
-			event_context_.reset(nullptr);
-		}
-	}
-
-	if(!has_joined()) {
-		join();
-	}
+	assert(std::find(dispatchers_.begin(), dispatchers_.end(), disp)
+		   == dispatchers_.end());
 
 	if(dispatchers_.empty()) {
 		leave();
-		event_context_.reset(nullptr);
 	}
 }
 
