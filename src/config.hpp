@@ -49,10 +49,7 @@
 #include "config_attribute_value.hpp"
 #include "exceptions.hpp"
 
-#ifdef HAVE_CXX17
-#include <string_view>
-using config_key_type = std::string_view;
-#elif BOOST_VERSION > 106100
+#if BOOST_VERSION > 106100
 #include <boost/utility/string_view.hpp>
 using config_key_type = boost::string_view;
 #else
