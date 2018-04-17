@@ -1,6 +1,8 @@
 ## Version 1.13.14+dev
  ### Language and i18n
    * Updated translations: French, Galician
+ ### User Interface
+   * Implemented MP chat message history saving (issue #1194, issue #2802).
  ### Miscellaneous and bug fixes
    * Fixed context menus not dismissing on right click.
 
