@@ -493,6 +493,45 @@ void server::send_error(const std::string& msg, const std::string& extra_data, s
 	async_send_doc(sock, doc, std::bind(&server::handle_new_client, this, _1), null_handler);
 }
 
+void server::delete_campaign(const std::string& id)
+{
+	config::child_itors itors = campaigns().child_range("campaign");
+
+	size_t pos = 0;
+	bool found = false;
+	std::string fn;
+
+	for(config& cfg : itors) {
+		if(cfg["name"] == id) {
+			fn = cfg["filename"].str();
+			found = true;
+			break;
+		}
+
+		++pos;
+	}
+
+	if(!found) {
+		ERR_CS << "Cannot delete unrecognized add-on '" << id << "'\n";
+		return;
+	}
+
+	if(fn.empty()) {
+		ERR_CS << "Add-on '" << id << "' does not have an associated filename, cannot delete\n";
+	}
+
+	filesystem::write_file(fn, {});
+	if(std::remove(fn.c_str()) != 0) {
+		ERR_CS << "Could not delete archive for campaign '" << id
+		       << "' (" << fn << "): " << strerror(errno) << '\n';
+	}
+
+	campaigns().remove_child("campaign", pos);
+	write_config();
+
+	fire("hook_post_erase", id);
+}
+
 #define REGISTER_CAMPAIGND_HANDLER(req_id) \
 	handlers_[#req_id] = std::bind(&server::handle_##req_id, \
 		std::placeholders::_1, std::placeholders::_2)
@@ -853,16 +892,17 @@ void server::handle_upload(const server::request& req)
 void server::handle_delete(const server::request& req)
 {
 	const config& erase = req.cfg;
+	const std::string& id = erase["name"].str();
 
 	if(read_only_) {
-		LOG_CS << "in read-only mode, request to delete '" << erase["name"] << "' from " << req.addr << " denied\n";
+		LOG_CS << "in read-only mode, request to delete '" << id << "' from " << req.addr << " denied\n";
 		send_error("Cannot delete add-on: The server is currently in read-only mode.", req.sock);
 		return;
 	}
 
-	LOG_CS << "deleting campaign '" << erase["name"] << "' requested from " << req.addr << "\n";
+	LOG_CS << "deleting campaign '" << id << "' requested from " << req.addr << "\n";
 
-	config& campaign = get_campaign(erase["name"]);
+	config& campaign = get_campaign(id);
 
 	if(!campaign) {
 		send_error("The add-on does not exist.", req.sock);
@@ -884,29 +924,9 @@ void server::handle_delete(const server::request& req)
 		return;
 	}
 
-	// Erase the campaign.
-	filesystem::write_file(campaign["filename"], std::string());
-	if(remove(campaign["filename"].str().c_str()) != 0) {
-		ERR_CS << "failed to delete archive for campaign '" << erase["name"]
-			   << "' (" << campaign["filename"] << "): " << strerror(errno)
-			   << '\n';
-	}
-
-	config::child_itors itors = campaigns().child_range("campaign");
-	for(size_t index = 0; !itors.empty(); ++index, itors.pop_front())
-	{
-		if(&campaign == &itors.front()) {
-			campaigns().remove_child("campaign", index);
-			break;
-		}
-	}
-
-	write_config();
+	delete_campaign(id);
 
 	send_message("Add-on deleted.", req.sock);
-
-	fire("hook_post_erase", erase["name"]);
-
 }
 
 void server::handle_change_passphrase(const server::request& req)

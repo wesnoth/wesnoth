@@ -143,6 +143,8 @@ private:
 	/** Retrieves a campaign by id if found, or a null config otherwise. */
 	config& get_campaign(const std::string& id) { return campaigns().find_child("campaign", "name", id); }
 
+	void delete_campaign(const std::string& id);
+
 	/** Retrieves the contents of the [server_info] WML node. */
 	const config& server_info() const { return cfg_.child("server_info"); }
 
