@@ -370,8 +370,9 @@ if env["prereqs"]:
         conf.CheckBoostIostreamsBZip2() & \
         conf.CheckBoost("random", require_version = boost_version) & \
         conf.CheckBoost("smart_ptr", header_only = True) & \
+	CheckAsio(conf) & \
+	conf.CheckBoost("thread") & \
         conf.CheckBoost("locale") & \
-        CheckAsio(conf) & \
         conf.CheckBoost("filesystem") \
             and Info("Base prerequisites are met")) \
             or Warning("Base prerequisites are not met")
