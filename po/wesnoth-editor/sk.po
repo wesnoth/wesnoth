@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2015-11-07 11:04+0100\n"
+"PO-Revision-Date: 2018-04-14 01:31+0200\n"
 "Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sk_SK\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural= (n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Poedit 1.6.4\n"
+"X-Generator: Poedit 2.0.4\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -40,10 +40,8 @@ msgstr "Čiara severovýchod-juhozápad"
 
 #. [brush]: id=brush-sw-ne
 #: data/core/editor/brushes.cfg:63
-#, fuzzy
-#| msgid "Hex Line SE-NW"
 msgid "Hex Line SW-NE"
-msgstr "Čiara severovýchod-juhozápad"
+msgstr "Čiara juhozápad-severovýchod"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -193,7 +191,7 @@ msgstr "Mapa"
 #. [menu]: id=menu-unit-facing
 #: data/themes/editor.cfg:98
 msgid "Unit Facing"
-msgstr ""
+msgstr "Smerovanie jednotky"
 
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:104
@@ -252,27 +250,27 @@ msgstr "Priraď časový rozvrh"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:54
 msgid "Identifier: "
-msgstr "Identifikátor:"
+msgstr "Identifikátor: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:55
 msgid "Name: "
-msgstr "Meno:"
+msgstr "Meno: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:56
 msgid "Type: "
-msgstr "Typ"
+msgstr "Typ: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:57
 msgid "Level: "
-msgstr "Úroveň:"
+msgstr "Úroveň: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:58
 msgid "Cost: "
-msgstr "Cena:"
+msgstr "Cena: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:59
 msgid "Recruit: "
-msgstr "Verbovanie:"
+msgstr "Verbovanie: "
 
 #: src/editor/controller/editor_controller.cpp:176
 msgid "Fatal error"
@@ -283,14 +281,11 @@ msgid "Do you really want to quit?"
 msgstr "Naozaj chcete skončiť?"
 
 #: src/editor/controller/editor_controller.cpp:208
-#, fuzzy
-#| msgid ""
-#| "Do you really want to quit? Changes in the map since the last save will "
-#| "be lost."
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
-msgstr "Naozaj chcete skončiť? Stratíte zmeny od posledného uloženia mapy."
+msgstr ""
+"Naozaj chcete skončiť? Stratíte zmeny tejto mapy od posledného uloženia."
 
 #: src/editor/controller/editor_controller.cpp:210
 msgid ""
@@ -322,39 +317,31 @@ msgstr "Meno:"
 
 #: src/editor/map/context_manager.cpp:189
 msgid "Load Map"
-msgstr ""
+msgstr "Načítať mapu"
 
 #: src/editor/map/context_manager.cpp:257 src/editor/map/map_context.cpp:831
-#, fuzzy
-#| msgid "(New Map)"
 msgid "New Map"
-msgstr "(Nová mapa)"
+msgstr "Nová mapa"
 
 #: src/editor/map/context_manager.cpp:270 src/editor/map/map_context.cpp:831
-#, fuzzy
-#| msgid "(New Scenario)"
 msgid "New Scenario"
-msgstr "(Nová mapa)"
+msgstr "Nová scéna"
 
 #: src/editor/map/context_manager.cpp:326
 msgid "No Recent Files"
 msgstr "Žiadne naposledy použité súbory"
 
 #: src/editor/map/context_manager.cpp:364
-#, fuzzy
-#| msgid "(Unnamed Area)"
 msgid "Unnamed Area"
-msgstr "(Nepomenovaná plocha)"
+msgstr "Nepomenovaná plocha"
 
 #: src/editor/map/context_manager.cpp:395
-#, fuzzy
-#| msgid "(New Side)"
 msgid "New Side"
-msgstr "(Nová strana)"
+msgstr "Nová strana"
 
 #: src/editor/map/context_manager.cpp:451
 msgid "Apply Mask"
-msgstr ""
+msgstr "Aplikovať masku"
 
 #: src/editor/map/context_manager.cpp:460
 msgid "Error loading mask"
@@ -362,7 +349,7 @@ msgstr "Chyba pri čítaní masky"
 
 #: src/editor/map/context_manager.cpp:480
 msgid "Identifier:"
-msgstr "Identifikátor"
+msgstr "Identifikátor:"
 
 #: src/editor/map/context_manager.cpp:480
 msgid "Rename Area"
@@ -378,16 +365,12 @@ msgid "Error loading map"
 msgstr "Chyba pri načítavaní mapy"
 
 #: src/editor/map/context_manager.cpp:621
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Ulož mapu ako"
 
 #: src/editor/map/context_manager.cpp:642
-#, fuzzy
-#| msgid "Save the Scenario As"
 msgid "Save Scenario As"
-msgstr "Ulož mapu ako"
+msgstr "Ulož scénu ako"
 
 #: src/editor/map/context_manager.cpp:674
 msgid "No random map generators found."
@@ -403,12 +386,8 @@ msgid "Unsaved Changes"
 msgstr "Neuložené zmeny"
 
 #: src/editor/map/context_manager.cpp:709
-#, fuzzy
-#| msgid ""
-#| "Do you want to discard all changes you made to the map since the last "
-#| "save?"
 msgid "Do you want to discard all changes made to the map since the last save?"
-msgstr "Chcete zrušiť všetky zmeny v mape od posledného uloženia?"
+msgstr "Chcete zrušiť všetky zmeny urobené v mape od posledného uloženia?"
 
 #: src/editor/map/context_manager.cpp:765
 msgid "This scenario is already open."
@@ -446,10 +425,8 @@ msgstr ""
 
 #: src/editor/map/editor_map.cpp:148
 #: src/editor/palette/location_palette.cpp:111
-#, fuzzy
-#| msgid "Player $player_number"
 msgid "Player $side_num"
-msgstr "Hráč $player_number"
+msgstr "Hráč $side_num"
 
 #: src/editor/map/editor_map.cpp:283
 msgid "The size of the target map is different from the current map"
@@ -497,19 +474,19 @@ msgstr "Nebude fungovať v hre bez ďalšej práce."
 
 #: src/editor/palette/location_palette.cpp:230
 msgid "Go To"
-msgstr ""
+msgstr "Ísť na"
 
 #: src/editor/palette/location_palette.cpp:237
 msgid "Add"
-msgstr ""
+msgstr "Pridať"
 
 #: src/editor/palette/location_palette.cpp:239
 msgid "New Location Identifier"
-msgstr ""
+msgstr "Nový identifikátor polohy"
 
 #: src/editor/palette/location_palette.cpp:243
 msgid "Delete"
-msgstr ""
+msgstr "Vymazať"
 
 #: src/editor/palette/terrain_palettes.cpp:231
 msgid "FG: "
@@ -521,7 +498,7 @@ msgstr "Za: "
 
 #: src/gui/dialogs/editor/custom_tod.cpp:137
 msgid "Clipboard support not found, contact your packager"
-msgstr ""
+msgstr "Podpora schránky sa nenašla, kontaktujte autora balíka programu"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:201
 msgid "Choose File"
@@ -529,7 +506,7 @@ msgstr "Vyberte súbor s mapou"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:202
 msgid "Select"
-msgstr ""
+msgstr "Vybrať"
 
 #: src/gui/dialogs/editor/set_starting_position.cpp:88
 msgid "player^None"
