@@ -19,11 +19,11 @@
  */
 
 #include "serialization/binary_or_text.hpp"
+
 #include "config.hpp"
 #include "log.hpp"
-#include "wesconfig.h"
 #include "serialization/parser.hpp"
-
+#include "wesconfig.h"
 
 #include <boost/iostreams/filter/bzip2.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
@@ -31,38 +31,37 @@
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
-config_writer::config_writer(
-	std::ostream &out, compression::format compress) :
-		filter_(),
-		out_ptr_(compress ? &filter_ : &out), //ternary indirection creates a temporary
-		out_(*out_ptr_), //now MSVC will allow binding to the reference member
-		compress_(compress),
-		level_(0),
-		textdomain_(PACKAGE)
+config_writer::config_writer(std::ostream& out, compression::format compress)
+	: filter_()
+	, out_ptr_(compress ? &filter_ : &out) // ternary indirection creates a temporary
+	, out_(*out_ptr_) // now MSVC will allow binding to the reference member
+	, compress_(compress)
+	, level_(0)
+	, textdomain_(PACKAGE)
 {
 	if(compress_ == compression::GZIP) {
 		filter_.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params(9)));
 		filter_.push(out);
-
 	} else if(compress_ == compression::BZIP2) {
 		filter_.push(boost::iostreams::bzip2_compressor(boost::iostreams::bzip2_params()));
 		filter_.push(out);
 	}
 }
-config_writer::config_writer(
-	std::ostream &out, bool compress, int level) :
-		filter_(),
-		out_ptr_(compress ? &filter_ : &out), //ternary indirection creates a temporary
-		out_(*out_ptr_), //now MSVC will allow binding to the reference member
-		compress_(compress ? compression::GZIP : compression::NONE),
-		level_(0),
-		textdomain_(PACKAGE)
+
+config_writer::config_writer(std::ostream& out, bool compress, int level)
+	: filter_()
+	, out_ptr_(compress ? &filter_ : &out) // ternary indirection creates a temporary
+	, out_(*out_ptr_) // now MSVC will allow binding to the reference member
+	, compress_(compress ? compression::GZIP : compression::NONE)
+	, level_(0)
+	, textdomain_(PACKAGE)
 {
 	if(compress_) {
-		if (level >=0)
+		if(level >= 0) {
 			filter_.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params(level)));
-		else
+		} else {
 			filter_.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params()));
+		}
 
 		filter_.push(out);
 	}
@@ -70,32 +69,31 @@ config_writer::config_writer(
 
 config_writer::~config_writer()
 {
-	//we only need this for gzip but we also do it for bz2 for unification.
-	if(compress_ == compression::GZIP || compress_ == compression::BZIP2)
-	{
+	// we only need this for gzip but we also do it for bz2 for unification.
+	if(compress_ == compression::GZIP || compress_ == compression::BZIP2) {
 		// prevent empty gz files because of https://svn.boost.org/trac/boost/ticket/5237
 		out_ << "\n";
 	}
 }
 
-void config_writer::write(const config &cfg)
+void config_writer::write(const config& cfg)
 {
 	::write(out_, cfg, level_);
 }
 
-void config_writer::write_child(const std::string &key, const config &cfg)
+void config_writer::write_child(const std::string& key, const config& cfg)
 {
 	open_child(key);
 	::write(out_, cfg, level_);
 	close_child(key);
 }
 
-void config_writer::open_child(const std::string &key)
+void config_writer::open_child(const std::string& key)
 {
 	::write_open_child(out_, key, level_++);
 }
 
-void config_writer::close_child(const std::string &key)
+void config_writer::close_child(const std::string& key)
 {
 	::write_close_child(out_, key, --level_);
 }
