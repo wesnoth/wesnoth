@@ -1,6 +1,10 @@
 ## Version 1.13.14+dev
  ### Language and i18n
    * Updated translations: French, Galician
+ ### Multiplayer
+   * Fixed regression causing a crash-to-desktop when trying to log into the
+     server using a registered and active account without specifying a
+     password.
  ### User Interface
    * Implemented MP chat message history saving (issue #1194, issue #2802).
  ### Miscellaneous and bug fixes
