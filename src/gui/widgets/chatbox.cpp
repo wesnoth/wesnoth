@@ -219,8 +219,11 @@ void chatbox::append_to_chatbox(const std::string& text, size_t id, const bool f
 	log.set_label(new_text);
 
 	if(log_ != nullptr) {
-		const std::string& room_name = open_windows_[id].name;
-		log_->at(room_name).log = new_text;
+		try {
+			const std::string& room_name = open_windows_[id].name;
+			log_->at(room_name).log = new_text;
+		} catch(const std::out_of_range&) {
+		}
 	}
 
 	const unsigned chatbox_position = log.get_vertical_scrollbar_item_position();
