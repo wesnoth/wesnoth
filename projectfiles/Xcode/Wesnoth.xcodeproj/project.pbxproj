@@ -108,6 +108,8 @@
 		46BED4D4205060EA00842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46BED4D52050611600842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46BED4DA2050711600842FA5 /* scenario-story.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 46BED4D92050710800842FA5 /* scenario-story.cfg */; };
+		46EEFB7220872C5E00E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB7020872C5D00E1E75A /* chat_log.cpp */; };
+		46EEFB7320872C5E00E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB7020872C5D00E1E75A /* chat_log.cpp */; };
 		46F57084205FCE34007031BF /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
 		46F57085205FCE48007031BF /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46F57086205FCE79007031BF /* hash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8AD121359A600CFBDAB /* hash.cpp */; };
@@ -1452,6 +1454,8 @@
 		46BED4D92050710800842FA5 /* scenario-story.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "scenario-story.cfg"; sourceTree = "<group>"; };
 		46DF5BCB1F46173700BE6D24 /* irdya_datetime.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = irdya_datetime.hpp; sourceTree = "<group>"; };
 		46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = irdya_datetime.cpp; sourceTree = "<group>"; };
+		46EEFB7020872C5D00E1E75A /* chat_log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chat_log.cpp; sourceTree = "<group>"; };
+		46EEFB7120872C5D00E1E75A /* chat_log.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = chat_log.hpp; sourceTree = "<group>"; };
 		46F5709D205FF856007031BF /* fs_commit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fs_commit.hpp; sourceTree = "<group>"; };
 		46F5709E205FF856007031BF /* addon_utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = addon_utils.cpp; sourceTree = "<group>"; };
 		46F5709F205FF856007031BF /* blacklist.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = blacklist.hpp; sourceTree = "<group>"; };
@@ -2958,6 +2962,8 @@
 				918C8A171D05F9AA009744A0 /* chat_command_handler.hpp */,
 				918C8A181D05F9AA009744A0 /* chat_events.cpp */,
 				B5951A811013BB0800C10B66 /* chat_events.hpp */,
+				46EEFB7020872C5D00E1E75A /* chat_log.cpp */,
+				46EEFB7120872C5D00E1E75A /* chat_log.hpp */,
 				915C68E81DF1DCB000594B07 /* color.cpp */,
 				915C68E91DF1DCB000594B07 /* color.hpp */,
 				B5599AAA0EC62181008DD061 /* color_range.cpp */,
@@ -5110,6 +5116,7 @@
 				ECA5638A1A47BA36006278A5 /* hotkey_handler.cpp in Sources */,
 				ECFA82E5184E59F3006782FB /* hotkey_item.cpp in Sources */,
 				ECFA82E6184E59F3006782FB /* hotkey_manager.cpp in Sources */,
+				46EEFB7220872C5E00E1E75A /* chat_log.cpp in Sources */,
 				F4E4E0B41367244F001C7528 /* image_modifications.cpp in Sources */,
 				B5599B360EC62181008DD061 /* image.cpp in Sources */,
 				ECA556331E7B5EB3006E907D /* hotkey_bind.cpp in Sources */,
@@ -5781,6 +5788,7 @@
 				91A214F31CAD669D00927AEA /* lua_map_generator.cpp in Sources */,
 				91A214F41CAD669D00927AEA /* map_create.cpp in Sources */,
 				91A214F51CAD669D00927AEA /* map_generator.cpp in Sources */,
+				46EEFB7320872C5E00E1E75A /* chat_log.cpp in Sources */,
 				46BED4D4205060EA00842FA5 /* crypt_blowfish.c in Sources */,
 				91A214F61CAD669D00927AEA /* generic_event.cpp in Sources */,
 				91A214F71CAD66B900927AEA /* command_executor.cpp in Sources */,
