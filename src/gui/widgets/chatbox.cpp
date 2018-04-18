@@ -138,7 +138,7 @@ void chatbox::switch_to_window(std::size_t id)
 void chatbox::chat_input_keypress_callback(const SDL_Keycode key)
 {
 	std::string input = chat_input_->get_value();
-	if(input.empty()) {
+	if(input.empty() || chat_input_->is_composing()) {
 		return;
 	}
 

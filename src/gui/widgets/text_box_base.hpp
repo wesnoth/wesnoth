@@ -484,7 +484,8 @@ protected:
 									const std::string& unicode);
 	virtual void handle_editing(bool& handled,
 								const std::string& unicode,
-								int32_t start);
+								int32_t start,
+								int32_t length);
 
 private:
 	/**
