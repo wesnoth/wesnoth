@@ -123,6 +123,7 @@ void loading_screen::pre_show(window& window)
 			});
 		} catch(const std::system_error& e) {
 			ERR_LS << "Failed to create worker thread: " << e.what() << "\n";
+			throw;
 		}
 	}
 
