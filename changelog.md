@@ -1,6 +1,6 @@
 ## Version 1.13.14+dev
  ### Language and i18n
-   * Updated translations: French, Galician
+   * Updated translations: French, Galician, Slovak
  ### Multiplayer
    * Fixed regression causing a crash-to-desktop when trying to log into the
      server using a registered and active account without specifying a
