@@ -14,12 +14,14 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
+
+#include "events.hpp"
 #include "tstring.hpp"
 
+#include <atomic>
+#include <future>
 #include <map>
 #include <vector>
-#include <atomic>
-#include <thread>
 
 namespace cursor
 {
@@ -61,13 +63,12 @@ enum class loading_stage
 
 namespace gui2
 {
-
 class label;
 class window;
 
 namespace dialogs
 {
-class loading_screen : public modal_dialog
+class loading_screen : public modal_dialog, public events::pump_monitor
 {
 public:
 	loading_screen(std::function<void()> f);
@@ -80,17 +81,8 @@ public:
 	static void progress(loading_stage stage = loading_stage::none);
 
 private:
-	std::size_t timer_id_;
-	int animation_counter_;
-	std::function<void()> work_;
-	std::unique_ptr<std::thread> worker_;
-	std::unique_ptr<cursor::setter> cursor_setter_;
-	std::exception_ptr exception_;
-	void clear_timer();
-
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
-
-	void timer_callback(window& window);
 
 	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
@@ -98,19 +90,38 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
+	/** Inherited from events::pump_monitor. */
+	virtual void process(events::pump_info&) override;
+
+	/** Checks whether the worker thread has returned and loading is complete. */
+	bool loading_complete() const;
+
+	/** Callback to handle drawing the progress animation. */
+	void draw_callback();
+
+	void set_next_animation_time();
+
+	int animation_counter_;
+	uint32_t next_animation_time_;
+
+	std::function<void()> load_func_;
+	std::future<void> worker_result_;
+	std::unique_ptr<cursor::setter> cursor_setter_;
+
+	std::exception_ptr exception_;
+
 	label* progress_stage_label_;
 	label* animation_label_;
+
 	static loading_screen* current_load;
 
 	std::atomic<loading_stage> current_stage_;
 
 	using stage_map = std::map<loading_stage, t_string>;
-
 	stage_map visible_stages_;
+
 	std::vector<t_string> animation_stages_;
 	stage_map::const_iterator current_visible_stage_;
-
-	bool is_worker_running_;
 };
 
 } // namespace dialogs
