@@ -132,6 +132,8 @@
 		46D7D24220736F1E004CA602 /* topic_text_generators.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D7D23420736F1D004CA602 /* topic_text_generators.cpp */; };
 		46D7D24320736F1E004CA602 /* topic_generators.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D7D23520736F1D004CA602 /* topic_generators.cpp */; };
 		46D7D24420736F1E004CA602 /* topic_generators.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D7D23520736F1D004CA602 /* topic_generators.cpp */; };
+		46EEFB762087434300E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB742087434200E1E75A /* chat_log.cpp */; };
+		46EEFB772087434300E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB742087434200E1E75A /* chat_log.cpp */; };
 		46F57084205FCE34007031BF /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
 		46F57085205FCE48007031BF /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46F57086205FCE79007031BF /* hash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8AD121359A600CFBDAB /* hash.cpp */; };
@@ -1461,6 +1463,8 @@
 		46D7D23620736F1E004CA602 /* topic_text_generators.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = topic_text_generators.hpp; sourceTree = "<group>"; };
 		46DF5BCB1F46173700BE6D24 /* irdya_datetime.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = irdya_datetime.hpp; sourceTree = "<group>"; };
 		46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = irdya_datetime.cpp; sourceTree = "<group>"; };
+		46EEFB742087434200E1E75A /* chat_log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chat_log.cpp; sourceTree = "<group>"; };
+		46EEFB752087434200E1E75A /* chat_log.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = chat_log.hpp; sourceTree = "<group>"; };
 		46F5709D205FF856007031BF /* fs_commit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fs_commit.hpp; sourceTree = "<group>"; };
 		46F5709E205FF856007031BF /* addon_utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = addon_utils.cpp; sourceTree = "<group>"; };
 		46F5709F205FF856007031BF /* blacklist.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = blacklist.hpp; sourceTree = "<group>"; };
@@ -2922,6 +2926,8 @@
 				918C8A171D05F9AA009744A0 /* chat_command_handler.hpp */,
 				918C8A181D05F9AA009744A0 /* chat_events.cpp */,
 				B5951A811013BB0800C10B66 /* chat_events.hpp */,
+				46EEFB742087434200E1E75A /* chat_log.cpp */,
+				46EEFB752087434200E1E75A /* chat_log.hpp */,
 				915C68E81DF1DCB000594B07 /* color.cpp */,
 				915C68E91DF1DCB000594B07 /* color.hpp */,
 				B5599AAA0EC62181008DD061 /* color_range.cpp */,
@@ -5132,6 +5138,7 @@
 				469BDB55205C357500DBF748 /* base64.cpp in Sources */,
 				B5A9BD390ECA805A002BE442 /* message.cpp in Sources */,
 				B5599B250EC62181008DD061 /* minimap.cpp in Sources */,
+				46EEFB762087434300E1E75A /* chat_log.cpp in Sources */,
 				B5A9BD670ECA805A002BE442 /* minimap.cpp in Sources */,
 				46D7D23F20736F1E004CA602 /* section.cpp in Sources */,
 				62114CC61750B99800CA42C7 /* mouse_action_item.cpp in Sources */,
@@ -5780,6 +5787,7 @@
 				91A215251CAD698900927AEA /* rect.cpp in Sources */,
 				91A215261CAD698900927AEA /* utils.cpp in Sources */,
 				91A215271CAD698900927AEA /* window.cpp in Sources */,
+				46EEFB772087434300E1E75A /* chat_log.cpp in Sources */,
 				91A215621CAD6DA400927AEA /* application_lua_kernel.cpp in Sources */,
 				91A215631CAD6DA400927AEA /* game_lua_kernel.cpp in Sources */,
 				91A215651CAD6DA400927AEA /* lua_common.cpp in Sources */,
