@@ -174,16 +174,16 @@ void loading_screen::draw_callback()
 		progress_stage_label_->set_label(iter->second);
 	}
 
-	if(SDL_GetTicks() < next_animation_time_) {
-		return;
-	}
+	//if(SDL_GetTicks() < next_animation_time_) {
+	//	return;
+	//}
 
 	++animation_counter_;
 	if(animation_counter_ % 2 == 0) {
 		animation_label_->set_label(animation_stages_[(animation_counter_ / 2) % animation_stages_.size()]);
 	}
 
-	set_next_animation_time();
+	//set_next_animation_time();
 }
 
 loading_screen::~loading_screen()
