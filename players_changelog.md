@@ -8,7 +8,7 @@ changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog.md
      * New set of story art.
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Czech, French,
-     Galician, Italian, Polish, Scottish Gaelic, Spanish, Ukrainian.
+     Galician, Italian, Polish, Scottish Gaelic, Slovak, Spanish, Ukrainian.
  ### User Interface
    * Implemented MP chat message history saving (issue #1194, issue #2802).
  ### Miscellaneous and bug fixes

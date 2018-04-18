@@ -34,7 +34,7 @@
      translatable (bug #2709, bug #2732).
    * Fixed Logging Options tooltips not being translatable (bug #2837).
    * Updated translations: British English, Chinese (Simplified), Czech, French,
-     Galician, Italian, Polish, Scottish Gaelic, Spanish, Ukrainian
+     Galician, Italian, Polish, Scottish Gaelic, Slovak, Spanish, Ukrainian
  ### Lua API
    * Fix wesnoth.show_popup_dialog and wesnoth.show_message_box not accepting
      translatable strings
