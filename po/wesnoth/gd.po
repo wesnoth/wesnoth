@@ -2,24 +2,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Wesnoth development team
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# GunChleoc <fios@foramnagaidhlig.net>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: GunChleoc, 2017\n"
-"Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
-"teams/12769/gd/)\n"
+"PO-Revision-Date: 2018-04-19 10:50+0100\n"
+"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
+"Language-Team: Fòram na Gàidhlig\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -228,7 +226,6 @@ msgstr "Seall èifeachdan grafaigeachd nan aonadan sònraichte"
 #: data/advanced_preferences.cfg:189
 msgid "Show deprecation messages in-game"
 msgstr ""
-"Seall teachdaireachdan mu nithean nach molar tuilleadh am broinn a’ gheama"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:190
@@ -237,11 +234,6 @@ msgid ""
 "will still be shown in the log, even if this is disabled. In addition, the "
 "deprecation log-domain controls how many messages are printed."
 msgstr ""
-"Seall rabhaidhean mu API nach molar tuilleadh air raon na cabadaich am "
-"broinn a’ gheama. Thèid na teachdaireachdan sin a shealltainn san loga "
-"fhathast ma chuireas tu seo dheth. Cuideachd, stiùirichidh àrainn an loga "
-"air nithean nach molar tuilleadh co mheud teachdaireachdan a thèid a "
-"shealltainn. "
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:198
@@ -4867,8 +4859,8 @@ msgid ""
 "its next turn."
 msgstr ""
 "Na gluais aonad leònta mura h-eil feum air – leig leis fois a ghabhail. Mura "
-"gluais aonad is mura toir e ionnsaigh, gheibh e dà phuing-bheatha air ais "
-"aig toiseach na h-ath-chuairte. "
+"gluais aonad is mura doir e ionnsaigh, gheibh e dà phuing-bheatha air ais "
+"aig toiseach na h-ath-chuairte aige. "
 
 #. [tip]
 #: data/tips.cfg:100
@@ -8638,3 +8630,29 @@ msgstr "Falaich na planaichean aig $player"
 #: src/whiteboard/manager.cpp:1103
 msgid "Whiteboard Options"
 msgstr "Roghainnean a’ bhùird-ghil"
+
+#~ msgid ""
+#~ "There are no custom options available for the selected era, game, or "
+#~ "modification."
+#~ msgstr ""
+#~ "Chan eil roghainn gnàthaichte ri fhaighinn airson an linn, a’ gheama no "
+#~ "an tuilleadain."
+
+#~ msgid "Defaults"
+#~ msgstr "Bun-roghainnean"
+
+#~ msgid "Connected Players"
+#~ msgstr "Cluicheadairean ceangailte"
+
+#~ msgid ""
+#~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
+#~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
+#~ msgstr ""
+#~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
+#~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
+
+#~ msgid "Reference to unknown topic: "
+#~ msgstr "Iomradh dha chuspair nach aithne dhuinn: "
+
+#~ msgid "(unknown player)"
+#~ msgstr "(cluicheadair nach aithne dhuinn)"
