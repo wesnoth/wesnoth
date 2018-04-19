@@ -94,7 +94,7 @@ void display::parse_team_overlays()
 	const team& prev_team = playing_team() == 0
 		? dc_->teams().back()
 		: dc_->get_team(playing_team());
-	for (const game_display::overlay_map::value_type i : *overlays_) {
+	for (const game_display::overlay_map::value_type i : get_overlays()) {
 		const overlay& ov = i.second;
 		if (!ov.team_name.empty() &&
 			((ov.team_name.find(curr_team.team_name()) + 1) != 0) !=
@@ -115,7 +115,7 @@ void display::add_overlay(const map_location& loc, const std::string& img, const
 				get_location_y(loc) + hex_size() / 2, halo, loc);
 		}
 
-		overlays_->emplace(loc, overlay(img, halo, halo_handle, team_name, item_id, visible_under_fog));
+		get_overlays().emplace(loc, overlay(img, halo, halo_handle, team_name, item_id, visible_under_fog));
 	}
 }
 
@@ -124,7 +124,7 @@ void display::remove_overlay(const map_location& loc)
 	/* This code no longer needed because of RAII in halo::handles
 	if (halo_man_) {
 		typedef overlay_map::const_iterator Itor;
-		std::pair<Itor,Itor> itors = overlays_->equal_range(loc);
+		std::pair<Itor,Itor> itors = get_overlays().equal_range(loc);
 		while(itors.first != itors.second) {
 			halo_man_->remove(itors.first->second.halo_handle);
 			++itors.first;
@@ -132,7 +132,7 @@ void display::remove_overlay(const map_location& loc)
 	}
 	*/
 
-	overlays_->erase(loc);
+	get_overlays().erase(loc);
 }
 
 void display::remove_single_overlay(const map_location& loc, const std::string& toDelete)
@@ -140,14 +140,14 @@ void display::remove_single_overlay(const map_location& loc, const std::string& 
 	//Iterate through the values with key of loc
 	typedef overlay_map::iterator Itor;
 	overlay_map::iterator iteratorCopy;
-	std::pair<Itor,Itor> itors = overlays_->equal_range(loc);
+	std::pair<Itor,Itor> itors = get_overlays().equal_range(loc);
 	while(itors.first != itors.second) {
 		//If image or halo of overlay struct matches toDelete, remove the overlay
 		if(itors.first->second.image == toDelete || itors.first->second.halo == toDelete || itors.first->second.id == toDelete) {
 			iteratorCopy = itors.first;
 			++itors.first;
 			//Not needed because of RAII --> halo_man_->remove(iteratorCopy->second.halo_handle);
-			overlays_->erase(iteratorCopy);
+			get_overlays().erase(iteratorCopy);
 		}
 		else {
 			++itors.first;
@@ -213,7 +213,6 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 	reach_map_(),
 	reach_map_old_(),
 	reach_map_changed_(true),
-	overlays_(nullptr),
 	fps_handle_(0),
 	invalidated_hexes_(0),
 	drawn_hexes_(0),
@@ -2591,7 +2590,7 @@ void display::draw_hex(const map_location& loc) {
 
 	if(!shrouded(loc)) {
 		typedef overlay_map::const_iterator Itor;
-		std::pair<Itor,Itor> overlays = overlays_->equal_range(loc);
+		std::pair<Itor,Itor> overlays = get_overlays().equal_range(loc);
 		const bool have_overlays = overlays.first != overlays.second;
 
 		if(have_overlays) {

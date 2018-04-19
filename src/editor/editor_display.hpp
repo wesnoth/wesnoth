@@ -50,6 +50,9 @@ protected:
 
 	void draw_hex(const map_location& loc) override;
 
+	/** Inherited from display. */
+	virtual overlay_map& get_overlays() override;
+
 	const SDL_Rect& get_clip_rect() override;
 	void draw_sidebar() override;
 

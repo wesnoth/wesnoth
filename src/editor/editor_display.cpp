@@ -16,6 +16,7 @@
 #include "editor/controller/editor_controller.hpp"
 #include "editor/editor_display.hpp"
 #include "lexical_cast.hpp"
+#include "overlay.hpp"
 #include "reports.hpp"
 #include "team.hpp"
 #include "terrain/builder.hpp"
@@ -125,6 +126,11 @@ void editor_display::draw_sidebar()
 const time_of_day& editor_display::get_time_of_day(const map_location& /*loc*/) const
 {
 	return controller_.get_current_map_context().get_time_manager()->get_time_of_day();
+}
+
+display::overlay_map& editor_display::get_overlays()
+{
+	return controller_.get_current_map_context().get_overlays();
 }
 
 } //end namespace editor

@@ -43,6 +43,7 @@
 #include "units/unit.hpp"
 #include "units/drawer.hpp"
 #include "whiteboard/manager.hpp"
+#include "overlay.hpp"
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -79,7 +80,6 @@ game_display::game_display(game_board& board, std::weak_ptr<wb::manager> wb,
 		mode_(RUNNING),
 		needs_rebuild_(false)
 {
-	replace_overlay_map(&overlay_map_);
 	video().clear_screen();
 }
 
@@ -670,4 +670,9 @@ bool game_display::maybe_rebuild() {
 		return true;
 	}
 	return false;
+}
+
+display::overlay_map& game_display::get_overlays()
+{
+	return overlay_map_;
 }

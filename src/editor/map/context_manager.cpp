@@ -99,9 +99,6 @@ void context_manager::refresh_on_context_change()
 
 	// TODO register the tod_manager with the gui?
 	resources::tod_manager = get_map_context().get_time_manager();
-
-	gui().replace_overlay_map(&get_map_context().get_overlays());
-
 	resources::classification = &get_map_context().get_classification();
 
 	gui().init_flags();

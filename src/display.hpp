@@ -39,6 +39,7 @@ class map_labels;
 class arrow;
 class reports;
 class team;
+struct overlay;
 
 namespace halo {
 	class manager;
@@ -60,8 +61,6 @@ namespace wb {
 #include "theme.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
-
-#include "overlay.hpp"
 
 #include <boost/circular_buffer.hpp>
 
@@ -1026,11 +1025,9 @@ protected:
 
 	typedef std::multimap<map_location, overlay> overlay_map;
 
+	virtual overlay_map& get_overlays() = 0;
+
 private:
-
-
-	overlay_map* overlays_;
-
 	/** Handle for the label which displays frames per second. */
 	int fps_handle_;
 	/** Count work done for the debug info displayed under fps */
@@ -1059,9 +1056,6 @@ private:
 	tod_color color_adjust_;
 
 	bool dirty_;
-
-public:
-	void replace_overlay_map(overlay_map* overlays) { overlays_ = overlays; }
 
 protected:
 	static display * singleton_;
