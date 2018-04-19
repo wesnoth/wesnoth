@@ -25,6 +25,7 @@ order to build Wesnoth:
    * Regex
    * Program Options
    * System
+   * Thread
  * SDL2 libraries:
    * SDL2                      >= 2.0.4
    * SDL2_image                >= 2.0.0 (with PNG and JPEG support)
