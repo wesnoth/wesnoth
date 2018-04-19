@@ -1,7 +1,7 @@
 ## Version 1.13.14+dev
  ### Language and i18n
    * Fixed Version label on the title screen not being translatable (issue #2914).
-   * Updated translations: French, Galician, German, Slovak
+   * Updated translations: French, Galician, German, Scottish Gaelic, Slovak
  ### Multiplayer
    * Fixed regression causing a crash-to-desktop when trying to log into the
      server using a registered and active account without specifying a

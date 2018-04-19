@@ -2,24 +2,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Wesnoth development team
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# GunChleoc <fios@foramnagaidhlig.net>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-04-15 01:34-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: GunChleoc, 2017\n"
-"Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
-"teams/12769/gd/)\n"
+"PO-Revision-Date: 2018-04-19 10:50+0100\n"
+"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
+"Language-Team: Fòram na Gàidhlig\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -4145,20 +4143,18 @@ msgid ""
 "There are no custom options available for the selected era, game, or "
 "modification."
 msgstr ""
+"Chan eil roghainn gnàthaichte ri fhaighinn airson an linn, a’ gheama no an "
+"tuilleadain."
 
 #. [button]: id=reset_option_values
 #: data/gui/macros/custom_options_tree.cfg:249
-#, fuzzy
-#| msgid "theme^Default"
 msgid "Defaults"
-msgstr "Tùsail"
+msgstr "Bun-roghainnean"
 
 #. [label]
 #: data/gui/macros/player_list_panel.cfg:29
-#, fuzzy
-#| msgid "Computer Player"
 msgid "Connected Players"
-msgstr "Coimpiutair"
+msgstr "Cluicheadairean ceangailte"
 
 #. [label]: id=title
 #: data/gui/window/install_dependencies.cfg:37
@@ -4208,6 +4204,8 @@ msgid ""
 "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 msgstr ""
+"Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
+"DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:187
@@ -4876,8 +4874,8 @@ msgid ""
 "its next turn."
 msgstr ""
 "Na gluais aonad leònta mura h-eil feum air – leig leis fois a ghabhail. Mura "
-"gluais aonad is mura toir e ionnsaigh, gheibh e dà phuing-bheatha air ais "
-"aig toiseach na h-ath-chuairte. "
+"gluais aonad is mura doir e ionnsaigh, gheibh e dà phuing-bheatha air ais "
+"aig toiseach na h-ath-chuairte aige. "
 
 #. [tip]
 #: data/tips.cfg:100
@@ -6838,7 +6836,7 @@ msgstr "air"
 
 #: src/help/help_browser.cpp:160
 msgid "Reference to unknown topic: "
-msgstr ""
+msgstr "Iomradh dha chuspair nach aithne dhuinn: "
 
 #: src/help/help_impl.cpp:374
 msgid "Only available during a scenario."
@@ -8395,10 +8393,8 @@ msgid "infix_binary^i"
 msgstr "i"
 
 #: src/synced_commands.cpp:403
-#, fuzzy
-#| msgid "Unknown era"
 msgid "(unknown player)"
-msgstr "Linn nach aithne dhuinn"
+msgstr "(cluicheadair nach aithne dhuinn)"
 
 #: src/synced_commands.cpp:408
 msgid "The :$command debug command was used during $player’s turn"
@@ -8657,19 +8653,3 @@ msgstr "Falaich na planaichean aig $player"
 #: src/whiteboard/manager.cpp:1114
 msgid "Whiteboard Options"
 msgstr "Roghainnean a’ bhùird-ghil"
-
-#~ msgid "Show deprecation messages in-game"
-#~ msgstr ""
-#~ "Seall teachdaireachdan mu nithean nach molar tuilleadh am broinn a’ gheama"
-
-#~ msgid ""
-#~ "Show warnings about deprecated API in the in-game chat area. These "
-#~ "messages will still be shown in the log, even if this is disabled. In "
-#~ "addition, the deprecation log-domain controls how many messages are "
-#~ "printed."
-#~ msgstr ""
-#~ "Seall rabhaidhean mu API nach molar tuilleadh air raon na cabadaich am "
-#~ "broinn a’ gheama. Thèid na teachdaireachdan sin a shealltainn san loga "
-#~ "fhathast ma chuireas tu seo dheth. Cuideachd, stiùirichidh àrainn an loga "
-#~ "air nithean nach molar tuilleadh co mheud teachdaireachdan a thèid a "
-#~ "shealltainn. "
