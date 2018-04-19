@@ -416,7 +416,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 		if(!set_movement.empty()) {
 			desc.emplace_back(VNGETTEXT(
-				// TRANSLATORS: Current value for WML code set_movement, documented in https://wiki.wesnoth.org/EffectWML
+				// TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 				"$number movement point",
 				"$number movement points",
 				std::stoi(set_movement),
@@ -425,9 +425,9 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 		if(!increase_movement.empty()) {
 			desc.emplace_back(VNGETTEXT(
-				// TRANSLATORS: Current value for WML code increase_movement, documented in https://wiki.wesnoth.org/EffectWML
-				"<span color=\"$color\">$number_or_percent movement</span> point",
-				"<span color=\"$color\">$number_or_percent movement</span> points",
+				// TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
+				"<span color=\"$color\">$number_or_percent</span> movement point",
+				"<span color=\"$color\">$number_or_percent</span> movement points",
 				std::stoi(increase_movement),
 				{{"number_or_percent", utils::print_modifier(increase_movement)}, {"color", increase_movement[0] == '-' ? "red" : "green"}}));
 		}
