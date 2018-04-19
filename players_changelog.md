@@ -7,6 +7,8 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
    * Updated translations: French, Galician, German, Slovak.
  ### User Interface
    * Implemented MP chat message history saving (issue #1194, issue #2802).
+ ### Miscellaneous and bug fixes
+   * macOS user data directory is now ~/Library/Application Support/Wesnoth_1.14
 
 
 ## Version 1.13.14
