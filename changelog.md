@@ -33,6 +33,7 @@
    * Fixed "Search" placeholder text in dialog item filters not being
      translatable (bug #2709, bug #2732).
    * Fixed Logging Options tooltips not being translatable (bug #2837).
+   * Fixed Version label on the title screen not being translatable (issue #2914).
    * Updated translations: British English, Chinese (Simplified), Czech, French,
      Galician, Italian, Polish, Scottish Gaelic, Slovak, Spanish, Ukrainian
  ### Lua API
