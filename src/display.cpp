@@ -131,7 +131,6 @@ display::display(const display_context* dc,
 	, activeTeam_(0)
 	, map_screenshot_(false)
 	, reach_map_()
-	, overlays_(nullptr)
 	, fps_handle_(0)
 	, drawn_hexes_(0)
 	, idle_anim_(preferences::idle_anim())
@@ -295,25 +294,25 @@ void display::add_overlay(const map_location& loc,
 			get_location_y(loc) + hex_size() / 2, halo, loc
 		);
 
-		overlays_->emplace(loc, overlay(img, halo, halo_handle, team_name, item_id, visible_under_fog));
+		get_overlays().emplace(loc, overlay(img, halo, halo_handle, team_name, item_id, visible_under_fog));
 	}
 }
 
 void display::remove_overlay(const map_location& loc)
 {
-	overlays_->erase(loc);
+	get_overlays().erase(loc);
 }
 
 void display::remove_single_overlay(const map_location& loc, const std::string& toDelete)
 {
 	// Iterate through the values with key of loc
-	auto itors = overlays_->equal_range(loc);
+	auto itors = get_overlays().equal_range(loc);
 
 	while(itors.first != itors.second) {
 		const overlay& o = itors.first->second;
 
 		if(o.image == toDelete || o.halo == toDelete || o.id == toDelete) {
-			overlays_->erase(itors.first++);
+			get_overlays().erase(itors.first++);
 		} else {
 			++itors.first;
 		}
@@ -1695,7 +1694,7 @@ void display::draw_gamemap()
 	//
 	// On-map overlays, such as [item]s.
 	//
-	for(const auto& overlay_record : *overlays_) {
+	for(const auto& overlay_record : get_overlays()) {
 		const map_location& o_loc = overlay_record.first;
 
 		if(shrouded(o_loc)) {

@@ -51,6 +51,9 @@ protected:
 	virtual void draw_hex_cursor(const map_location& loc) override;
 	virtual void draw_hex_overlays() override;
 
+	/** Inherited from display. */
+	virtual overlay_map& get_overlays() override;
+
 	const SDL_Rect get_clip_rect() override;
 
 	std::set<map_location> brush_locations_;

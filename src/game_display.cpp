@@ -33,6 +33,7 @@
 #include "map/label.hpp"
 #include "map/map.hpp"
 #include "ogl/utils.hpp"
+#include "overlay.hpp"
 #include "preferences/game.hpp"
 #include "reports.hpp"
 #include "resources.hpp"
@@ -70,7 +71,6 @@ game_display::game_display(game_board& board, std::weak_ptr<wb::manager> wb,
 	, mode_(RUNNING)
 	, needs_rebuild_(false)
 {
-	replace_overlay_map(&overlay_map_);
 #ifdef USE_GL_RENDERING
 	gl::clear_screen();
 #else
@@ -691,4 +691,9 @@ bool game_display::maybe_rebuild()
 		return true;
 	}
 	return false;
+}
+
+display::overlay_map& game_display::get_overlays()
+{
+	return overlay_map_;
 }

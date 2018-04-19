@@ -39,6 +39,7 @@ class map_labels;
 class arrow;
 class reports;
 class team;
+struct overlay;
 
 namespace halo
 {
@@ -59,7 +60,6 @@ class manager;
 #include "image.hpp" //only needed for enums (!)
 #include "key.hpp"
 #include "map/hex_rect.hpp"
-#include "overlay.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/surface.hpp"
 #include "sdl/texture.hpp"
@@ -935,9 +935,9 @@ protected:
 
 	typedef std::multimap<map_location, overlay> overlay_map;
 
-private:
-	overlay_map* overlays_;
+	virtual overlay_map& get_overlays() = 0;
 
+private:
 	/** Handle for the label which displays frames per second. */
 	int fps_handle_;
 	/** Count work done for the debug info displayed under fps */
@@ -961,12 +961,6 @@ private:
 	arrows_map_t arrows_map_;
 
 	tod_color color_adjust_;
-
-public:
-	void replace_overlay_map(overlay_map* overlays)
-	{
-		overlays_ = overlays;
-	}
 
 protected:
 	static display* singleton_;
