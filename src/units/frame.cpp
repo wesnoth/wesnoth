@@ -737,10 +737,6 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time, const
 	} else {
 		int w = 0, h = 0;
 
-#ifdef _OPENMP
-#pragma omp critical(frame_surface) // with the way surfaces work it's hard to lock the refcount within sdl_utils
-#endif //_OPENMP
-
 		{
 			surface image;
 			if(!image_loc.is_void() && !image_loc.get_filename().empty()) { // invalid diag image, or not diagonal

@@ -56,7 +56,6 @@ option(ENABLE_SERVER "Enable compilation of MP server" ON)
 option(ENABLE_MYSQL "Enable building MP/add-ons servers with mysql support" OFF)
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ${ENABLE_GAME})
-option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
 option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
 
 # set what std version to use
@@ -446,12 +445,6 @@ if(DEFAULT_PREFS_FILE)
 		add_definitions(-DHAS_RELATIVE_DEFPREF)
 	endif(NOT DEFAULT_PREFS_FILE MATCHES "^/")
 endif(DEFAULT_PREFS_FILE)
-
-if(ENABLE_OMP)
-	find_package(OpenMP REQUIRED)
-	set(CMAKE_C_FLAGS "${OpenMP_C_FLAGS} ${CMAKE_C_FLAGS}")
-	set(CMAKE_CXX_FLAGS "${OpenMP_CXX_FLAGS} ${CMAKE_C_FLAGS}")
-endif(ENABLE_OMP)
 
 if(ENABLE_DEBUG_WINDOW_LAYOUT)
 	add_definitions(-DDEBUG_WINDOW_LAYOUT_GRAPHS)

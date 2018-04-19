@@ -108,7 +108,6 @@ opts.AddVariables(
     ('ctool', 'Set c compiler command if not using standard compiler.'),
     ('cxxtool', 'Set c++ compiler command if not using standard compiler.'),
     EnumVariable('cxx_std', 'Target c++ std version', '14', ['14', '17']),
-    BoolVariable('openmp', 'Enable openmp use.', False),
     ('sanitize', 'Enable clang and GCC sanitizer functionality. A comma separated list of sanitize suboptions must be passed as value.', ''),
     BoolVariable("fast", "Make scons faster at cost of less precise dependency tracking.", False),
     BoolVariable("lockfile", "Create a lockfile to prevent multiple instances of scons from being run at the same time on this working copy.", False),
@@ -470,9 +469,6 @@ for env in [test_env, client_env, env]:
             env.AppendUnique(CXXFLAGS = Split("-Wdocumentation -Wno-documentation-deprecated-sync"))
 
     if "gcc" in env["TOOLS"]:
-        if env['openmp']:
-            env.AppendUnique(CXXFLAGS = ["-fopenmp"], LIBS = ["gomp"])
-
         env.AppendUnique(CCFLAGS = Split("-Wno-unused-local-typedefs -Wno-maybe-uninitialized"))
         env.AppendUnique(CXXFLAGS = Split("-Wold-style-cast"))
 

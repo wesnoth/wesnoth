@@ -249,9 +249,6 @@ static int last_index_ = 0;
 
 void flush_cache()
 {
-#ifdef _OPENMP
-#pragma omp critical(image_cache)
-#endif //_OPENMP
 	{
 		images_.flush();
 		hexed_images_.flush();
@@ -1023,18 +1020,10 @@ surface get_image(const image::locator& i_locator, TYPE type)
 	}
 
 	// return the image if already cached
-	bool tmp;
-#ifdef _OPENMP
-#pragma omp critical(image_cache)
-#endif //_OPENMP
-	tmp = i_locator.in_cache(*imap);
+	bool tmp = i_locator.in_cache(*imap);
 
 	if(tmp) {
-		surface result;
-#ifdef _OPENMP
-#pragma omp critical(image_cache)
-#endif //_OPENMP
-		result = i_locator.locate_in_cache(*imap);
+		surface result = i_locator.locate_in_cache(*imap);
 		return result;
 	}
 
@@ -1063,9 +1052,6 @@ surface get_image(const image::locator& i_locator, TYPE type)
 		return res;
 	}
 
-#ifdef _OPENMP
-#pragma omp critical(image_cache)
-#endif //_OPENMP
 	i_locator.add_to_cache(*imap, res);
 
 	return res;
@@ -1132,9 +1118,6 @@ surface get_hexmask()
 bool is_in_hex(const locator& i_locator)
 {
 	bool result;
-#ifdef _OPENMP
-#pragma omp critical(in_hex_info_)
-#endif //_OPENMP
 	{
 		if(i_locator.in_cache(in_hex_info_)) {
 			result = i_locator.locate_in_cache(in_hex_info_);
@@ -1527,17 +1510,9 @@ texture get_texture(const image::locator& i_locator, SCALE_QUALITY quality, TYPE
 	//
 	// Now attempt to find a cached texture. If found, return it.
 	//
-	bool in_cache = false;
-
-#ifdef _OPENMP
-#pragma omp critical(texture_cache)
-#endif
-	in_cache = i_locator.in_cache(*cache);
+	bool in_cache = i_locator.in_cache(*cache);
 
 	if(in_cache) {
-#ifdef _OPENMP
-#pragma omp critical(texture_cache)
-#endif
 		res = i_locator.locate_in_cache(*cache);
 		return res;
 	}
@@ -1586,9 +1561,6 @@ texture get_texture(const image::locator& i_locator, SCALE_QUALITY quality, TYPE
 	//
 	// And finally add the texture to the cache.
 	//
-#ifdef _OPENMP
-#pragma omp critical(texture_cache)
-#endif
 	i_locator.add_to_cache(*cache, res);
 
 	return res;

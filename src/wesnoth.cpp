@@ -115,10 +115,6 @@
 
 #include <windows.h>
 
-#if defined(_OPENMP) && _MSC_VER >= 1600
-#include <process.h>
-#endif
-
 #endif // _WIN32
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
@@ -955,42 +951,6 @@ static void wesnoth_terminate_handler(int)
 }
 #endif
 
-#if defined(_OPENMP) && _MSC_VER >= 1600
-static void restart_process()
-{
-	wchar_t process_path[MAX_PATH];
-	SetLastError(ERROR_SUCCESS);
-	GetModuleFileNameW(nullptr, process_path, MAX_PATH);
-
-	if(GetLastError() != ERROR_SUCCESS) {
-		throw std::runtime_error("Failed to retrieve the process path");
-	}
-
-	std::wstring commandline_str(GetCommandLineW());
-
-	// CreateProcessW is allowed to modify the passed command line.
-	// Therefore we need to copy it.
-	wchar_t* commandline_c_str = new wchar_t[commandline_str.length() + 1];
-	commandline_str.copy(commandline_c_str, commandline_str.length());
-	commandline_c_str[commandline_str.length()] = L'\0';
-
-	STARTUPINFOW startup_info;
-	ZeroMemory(&startup_info, sizeof(startup_info));
-	startup_info.cb = sizeof(startup_info);
-
-	PROCESS_INFORMATION process_info;
-	ZeroMemory(&process_info, sizeof(process_info));
-
-	CreateProcessW(
-		process_path, commandline_c_str, nullptr, nullptr, false, 0u, nullptr, nullptr, &startup_info, &process_info);
-
-	CloseHandle(process_info.hProcess);
-	CloseHandle(process_info.hThread);
-
-	std::exit(EXIT_SUCCESS);
-}
-#endif
-
 #ifdef _WIN32
 #define error_exit(res)                                                                                                \
 	do {                                                                                                               \
@@ -1051,32 +1011,6 @@ int main(int argc, char** argv)
 #endif
 
 	assert(!args.empty());
-
-#ifdef _OPENMP
-	// Wesnoth is a special case for OMP
-	// OMP wait strategy is to have threads busy-loop for 100ms
-	// if there is nothing to do, they then go to sleep.
-	// this avoids the scheduler putting the thread to sleep when work
-	// is about to be available
-	//
-	// However Wesnoth has a lot of very small jobs that need to be done
-	// at each redraw => 50fps every 2ms.
-	// All the threads are thus busy-waiting all the time, hogging the CPU
-	// To avoid that problem, we need to set the OMP_WAIT_POLICY env var
-	// but that var is read by OMP at library loading time (before main)
-	// thus the relaunching of ourselves after setting the variable.
-#if !defined(_WIN32) && !defined(__APPLE__)
-	if(!getenv("OMP_WAIT_POLICY")) {
-		setenv("OMP_WAIT_POLICY", "PASSIVE", 1);
-		execv(argv[0], argv);
-	}
-#elif _MSC_VER >= 1600
-	if(!getenv("OMP_WAIT_POLICY")) {
-		_putenv_s("OMP_WAIT_POLICY", "PASSIVE");
-		restart_process();
-	}
-#endif
-#endif //_OPENMP
 
 	filesystem::init();
 
