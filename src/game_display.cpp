@@ -64,7 +64,6 @@ game_display::game_display(game_board& board, std::weak_ptr<wb::manager> wb,
 	, hex_def_fl_labels_()
 	, route_()
 	, displayedUnitHex_()
-	, sidebarScaling_(1.0)
 	, first_turn_(true)
 	, in_game_(false)
 	, chat_man_(new display_chat_manager(*this))
