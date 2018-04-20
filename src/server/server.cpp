@@ -742,7 +742,7 @@ void server::handle_login(socket_ptr socket, std::shared_ptr<simple_wml::documen
 		async_send_doc(socket, join_lobby_response_,
 			std::bind(&server::add_player, this, _1,
 				wesnothd::player(username, player_cfg, registered,
-				default_max_messages_, default_time_period_, false/*selective_ping*/,
+				default_max_messages_, default_time_period_,
 				user_handler_ && user_handler_->user_is_moderator(username))
 			)
 		);
