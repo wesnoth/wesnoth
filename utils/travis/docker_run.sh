@@ -46,6 +46,9 @@ echo "BOOST_TEST: $BOOST_TEST"
 echo "LTO: $LTO"
 echo "SAN: $SAN"
 
+echo "STRICT: $STRICT"
+echo "build_timeout(mins): $build_timeout"
+
 $CXX --version
 
 if [ "$NLS" == "true" ]; then

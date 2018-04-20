@@ -484,7 +484,7 @@ for env in [test_env, client_env, env]:
 # #
 # Determine optimization level
 # #
-        
+
         if not env["opt"]:
             if env["build"] == "release":
                 env["opt"] = "-O3 "
@@ -493,9 +493,8 @@ for env in [test_env, client_env, env]:
             else:
                 env["opt"] = "-O0 "
         else:
-            env["opt"] = env["opt"]+" "
-                
-        
+            env["opt"] = env["opt"]+" " 
+
 # #
 # Start determining options for debug build
 # #
