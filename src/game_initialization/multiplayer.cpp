@@ -189,19 +189,6 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 			config& sp = response.add_child("login") ;
 			sp["username"] = login ;
 
-			// Login and enable selective pings -- saves server bandwidth
-			// If ping_timeout has a non-zero value, do not enable
-			// selective pings as this will cause clients to falsely
-			// believe the server has died and disconnect.
-			if(preferences::get_ping_timeout()) {
-				// Pings required so disable selective pings
-				sp["selective_ping"] = false;
-			} else {
-				// Client is bandwidth friendly so allow
-				// server to optimize ping frequency as needed.
-				sp["selective_ping"] = true;
-			}
-
 			sock->send_data(response);
 			sock->wait_and_receive_data(data);
 
