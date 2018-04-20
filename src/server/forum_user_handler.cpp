@@ -174,6 +174,11 @@ void fuh::set_is_moderator(const std::string& name, const bool& is_moderator) {
 
 fuh::BAN_TYPE fuh::user_is_banned(const std::string& name, const std::string& addr)
 {
+	if(!addr.empty() && prepared_statement<bool>("SELECT 1 FROM `" + db_banlist_table_ + "` WHERE UPPER(ban_ip) = UPPER(?) AND ban_exclude = 0", addr)) {
+		LOG_UH << "User '" << name << "' ip " << addr << " banned by IP address\n";
+		return BAN_IP;
+	}
+
 	if(!user_exists(name)) {
 		throw error("No user with the name '" + name + "' exists.");
 	}
@@ -186,11 +191,6 @@ fuh::BAN_TYPE fuh::user_is_banned(const std::string& name, const std::string& ad
 		} else if(prepared_statement<bool>("SELECT 1 FROM `" + db_banlist_table_ + "` WHERE ban_userid = ? AND ban_exclude = 0", uid)) {
 			LOG_UH << "User '" << name << "' uid " << uid << " banned by uid\n";
 			return BAN_USER;
-		}
-
-		if(!addr.empty() && prepared_statement<bool>("SELECT 1 FROM `" + db_banlist_table_ + "` WHERE UPPER(ban_ip) = UPPER(?) AND ban_exclude = 0", addr)) {
-			LOG_UH << "User '" << name << "' ip " << addr << " banned by IP address\n";
-			return BAN_IP;
 		}
 
 		auto email = get_detail_for_user<std::string>(name, "user_email");
