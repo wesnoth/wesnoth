@@ -5,20 +5,22 @@
 #  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2012
 #  Gerfried Fuchs <rhonda@deb.at>, 2005, 2006, 2010
 #  Marcel Miebach <marcel_miebach@gmx.de>, 2012
+#  Aaron Winter <winter.aaron93@gmail.com>, 2018.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.12\n"
+"Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2015-01-15 16:27-0000\n"
-"Last-Translator: German translation team <irc://irc.freenode.net/#wesnoth-"
-"de>\n"
+"PO-Revision-Date: 2018-04-19 13:14+0200\n"
+"Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
@@ -152,12 +154,12 @@ msgstr ""
 #. [section]: id=editor
 #: data/core/editor/help.cfg:5
 msgid "Map and Scenario Editor"
-msgstr ""
+msgstr "Karten- und Szenarieneditor"
 
 #. [topic]: id=editor_brush
 #: data/core/editor/help.cfg:13
 msgid "Editor Brush"
-msgstr ""
+msgstr "Editor Pinsel"
 
 #. [topic]: id=editor_brush
 #. [topic]: id=editor_clipboard
@@ -172,17 +174,17 @@ msgstr ""
 #: data/core/editor/help.cfg:104 data/core/editor/help.cfg:112
 #: data/core/editor/help.cfg:251 data/core/editor/help.cfg:289
 msgid "TODO"
-msgstr ""
+msgstr "TODO"
 
 #. [topic]: id=editor_clipboard
 #: data/core/editor/help.cfg:21
 msgid "Terrain Clipboard"
-msgstr ""
+msgstr "Gelände Zwischenablage"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:29
 msgid "Paint Tool"
-msgstr ""
+msgstr "Zeichenwerkzeug"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:30
@@ -191,11 +193,14 @@ msgid ""
 "\n"
 "The paint tool utilizes the brushes and the terrain palette."
 msgstr ""
+"Zeichnet Geländefelder auf die Karte.\n"
+"\n"
+"Das Zeichenwerkzeug nutzt Pinsel und die Geländepalette."
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:39
 msgid "Fill Tool"
-msgstr ""
+msgstr "Füllen-Werkzeug"
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:40
@@ -204,11 +209,14 @@ msgid ""
 "\n"
 "The fill tool utilizes the terrain palette."
 msgstr ""
+"Fülle zusammenhängende Regionen von Gelände mit einem anderen Geländetyp!\n"
+"\n"
+"Das Füllen-Werkzeug nutzt die Geländepalette."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:49
 msgid "Select Tool"
-msgstr ""
+msgstr "Auswahl-Werkzeug"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:50
@@ -217,21 +225,24 @@ msgid ""
 "\n"
 "This tool utilizes the brushes."
 msgstr ""
+"Wählt eine Anzahl von Hex Feldern aus. Das beste Werkzeug überhaupt!\n"
+"\n"
+"Dieses Werkzeug nutzt die Pinsel."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:59
 msgid "Paste Tool"
-msgstr ""
+msgstr "Kopieren-Werkzeug"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:60
 msgid "Paste the terrain in the clipboard"
-msgstr ""
+msgstr "Kopiert das Gelände aus der Zwischenablage."
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:67
 msgid "Starting Tool"
-msgstr ""
+msgstr "Startpunkt-Werkzeug"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:68
@@ -241,21 +252,25 @@ msgid ""
 "This tool sets the side leaders' default starting locations, and named "
 "special locations."
 msgstr ""
+"Definiert den Startpunkt des Anführers einer Seite.\n"
+"\n"
+"Dieses Werkzeug bestimmt die Startposition spezielle benannte positionen der "
+"Anführer aller Seiten."
 
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:77
 msgid "Label Tool"
-msgstr ""
+msgstr "Beschriftungswerkzeug"
 
 #. [topic]: id=editor_tool_item
 #: data/core/editor/help.cfg:85
 msgid "Item Tool"
-msgstr ""
+msgstr "Gegenstandstool"
 
 #. [topic]: id=editor_tool_soundsource
 #: data/core/editor/help.cfg:93
 msgid "Soundsource Tool"
-msgstr ""
+msgstr "Tonquellenwerkzeug"
 
 #. [topic]: id=editor_tool_soundsource
 #: data/core/editor/help.cfg:94
@@ -264,24 +279,27 @@ msgid ""
 "\n"
 "This tool has not been implemented yet."
 msgstr ""
+"Platziere Soundquellen auf deiner Karte! Dieses Werkzeug wurde noch nicht "
+"implementiert."
 
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:103
 msgid "Village Ownership Tool"
-msgstr ""
+msgstr "Dorf-Besitzer-Werkzeug"
 
 #. [topic]: id=editor_tool_unit
 #: data/core/editor/help.cfg:111
 msgid "Unit Tool"
-msgstr ""
+msgstr "Einheitenwerkzeug"
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:119
 msgid "Named Areas"
-msgstr ""
+msgstr "Benannte Areale"
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:120
+#, fuzzy
 msgid ""
 "Named Areas are sets of gamefields which can be addressed during scenario "
 "scripting by a given name.\n"
@@ -291,11 +309,13 @@ msgid ""
 "This is a very powerful mechanism since it allows generic scenario codings "
 "working with different maps providing the needed named locations."
 msgstr ""
+"Benannte Areale sind eine Anzahl von Geländefeldern, welche während eines "
+"Szenarios für Skrips genutzt werden kann.\n"
 
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:130
 msgid "Playlist Manager"
-msgstr ""
+msgstr "Wiedergabeliste-Verwalter"
 
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:131
@@ -308,7 +328,7 @@ msgstr ""
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:140
 msgid "Map/Scenario Editor"
-msgstr ""
+msgstr "Karten-/Szenarieneditor"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:142
@@ -396,7 +416,7 @@ msgstr ""
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:184
 msgid "Editing Modes"
-msgstr ""
+msgstr "Bearbeitungsmodi"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
@@ -417,7 +437,7 @@ msgstr ""
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
 msgid "The editor features two separate modes of operation:"
-msgstr ""
+msgstr "Der Editor beinhaltet zwei separate Modi für Operationen:"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:187
@@ -491,7 +511,7 @@ msgstr ""
 #. [topic]: id=editor_toolkit
 #: data/core/editor/help.cfg:211
 msgid "Editor Tools"
-msgstr ""
+msgstr "Editor Werkzeuge"
 
 #. [topic]: id=editor_toolkit
 #: data/core/editor/help.cfg:212
@@ -517,10 +537,8 @@ msgstr ""
 
 #. [topic]: id=editor_terrain
 #: data/core/editor/help.cfg:234
-#, fuzzy
-#| msgid "Terrain Modifiers"
 msgid "Terrain Editor"
-msgstr "Geländemodifikatoren"
+msgstr "Gelände Editor"
 
 #. [topic]: id=editor_terrain
 #: data/core/editor/help.cfg:235
@@ -533,7 +551,7 @@ msgstr ""
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:242
 msgid "Editor Mask Usage"
-msgstr ""
+msgstr "Editor Maskenverwendung"
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:243
@@ -545,12 +563,12 @@ msgstr ""
 #. [topic]: id=editor_time_schedule
 #: data/core/editor/help.cfg:250
 msgid "Time Schedule Editor"
-msgstr ""
+msgstr "Tagesablauf Editor"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:258
 msgid "Editor Palette"
-msgstr ""
+msgstr "Editorpalette"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:259
@@ -564,7 +582,7 @@ msgstr ""
 #. [topic]: id=map_format
 #: data/core/editor/help.cfg:266
 msgid "Wesnoth Map Format"
-msgstr ""
+msgstr "Wesnoth Kartenformat"
 
 #. [topic]: id=map_format
 #: data/core/editor/help.cfg:267
@@ -584,12 +602,12 @@ msgstr ""
 #. [topic]: id=scenario_format
 #: data/core/editor/help.cfg:280
 msgid "Scenario Format"
-msgstr ""
+msgstr "Szenarioformat"
 
 #. [topic]: id=editor_starting_positions_in_general
 #: data/core/editor/help.cfg:288
 msgid "Starting Positions Howto"
-msgstr ""
+msgstr "Startposition Kurzanleitung"
 
 # vorher:
 # Enzyklopädie
@@ -1454,6 +1472,9 @@ msgid ""
 "sides in multiplayer games.\n"
 "\n"
 msgstr ""
+"Eine Fraktion ist eine Anzahl von Einheiten und Anführern. Fraktionen werden "
+"den Seiten in einer Multiplayer Partie zugewiesen.\n"
+"\n"
 
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:131
@@ -1463,6 +1484,11 @@ msgid ""
 "factions are available from add-ons.\n"
 "\n"
 msgstr ""
+"Eine Epoche ist eine Anzahl von Fraktionen, aus denen die Spieler in einer "
+"Partie wählen können. Neben den Hauptfraktionen, welche mit dem Spiel "
+"kommen, gibt es viele von Nutzern erstellte Fraktionen und Epochen auf dem "
+"Erweiterungsserver.\n"
+"\n"
 
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:140
@@ -1914,10 +1940,8 @@ msgstr ""
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:244
-#, fuzzy
-#| msgid "Advances to: "
 msgid "Advancement"
-msgstr "Nächste Stufe: "
+msgstr "Nächste Stufe"
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:245
@@ -2680,14 +2704,11 @@ msgstr "Zweite Wache"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:347
-#, fuzzy
-#| msgid ""
-#| "Keep in mind that some scenarios take place underground, where it is "
-#| "perpetually night!"
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!\n"
-msgstr "Bedenke dass unter Tage die ewige Dunkelheit herrscht, wie des Nachts!"
+msgstr ""
+"Bedenke dass unter Tage die ewige Dunkelheit herrscht, wie des Nachts!\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:349
@@ -2695,6 +2716,8 @@ msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night.\n"
 msgstr ""
+"Einige Untergrundfelder sind erleuchtet. Auf diesen Feldern sind die "
+"Lichtverhältnisse, als sei Sonnenaufgang, oder Sonnenuntergang.\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:351
@@ -2702,6 +2725,7 @@ msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate."
 msgstr ""
+"Einige Rollenspiel Szenarien spielen in Räumen. Diese sind ähnlich neutral"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:358
@@ -2714,7 +2738,7 @@ msgstr "Heilung"
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<italic>text='Resting'</italic>: A unit which neither moves, attacks, nor "
+#| "• <bold>text='Resting'</bold>: A unit which neither moves, attacks, nor "
 #| "is attacked will heal 2 HP in its next turn."
 msgid ""
 "\n"
@@ -2724,8 +2748,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Rasten: eine Einheit, die sich nicht bewegt oder angreift, erhält 2 LP zum "
-"nächsten Rundenstart"
+"• <bold>text='Resting'</bold>: Eine Einheit, die sich nicht bewegt oder "
+"angreift, erhält 2 LP zum nächsten Rundenstart"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:359
@@ -6350,24 +6374,18 @@ msgstr ""
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:207
-#, fuzzy
-#| msgid "race^Human"
 msgid "race^Dunefolk Human"
-msgstr "Mensch (Wesnoth)"
+msgstr "Mensch (Dünenvolk)"
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:208
-#, fuzzy
-#| msgid "race+female^Human"
 msgid "race+female^Dunefolk Human"
-msgstr "Mensch (Wesnoth)"
+msgstr "Mensch (Dünenvolk)"
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:209
-#, fuzzy
-#| msgid "race+plural^Undead"
 msgid "race+plural^Dunefolk"
-msgstr "Untote"
+msgstr "Menschen (Dünenvolk)"
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:210
@@ -6668,66 +6686,6 @@ msgstr "Orks"
 
 #. [race]: id=orc
 #: data/core/units.cfg:301
-#, fuzzy
-#| msgid ""
-#| "In appearance, orcs are half men and half beasts. They are taller, "
-#| "sturdier and stronger than humans. They are warlike, savage, and cruel by "
-#| "nature. Their blood is darker and thicker than that of normal humans and "
-#| "they have little care for personal hygiene or their personal appearance. "
-#| "Although Orcs are violent even among themselves creatures, they are pack-"
-#| "oriented; an orc never travels long or lives alone in groups smaller than "
-#| "half a dozen.\n"
-#| "\n"
-#| "<header>text='Society'</header>\n"
-#| "Almost every orc are a member of a tribe or a clan. Relations between "
-#| "neighboring tribes are usually violent, except in cases of a mutual enemy "
-#| "threatens their existence or prospects of great plunder override mutual "
-#| "animosity. Occasionally, a single strong chieftain may emerge to lead "
-#| "multiple tribes from time to time, usually through intimidation of "
-#| "followers. An orc tribe in times of peace tends to focus almost solely on "
-#| "strengthening itself in preparation for the next armed conflict. Orcs are "
-#| "known to possess a crude system of writing — usually in blood — although "
-#| "it’s most commonly used to trade insults or threats among tribal "
-#| "leaders.\n"
-#| "\n"
-#| "Orc societies are based on little else but strength; might makes right, "
-#| "and a leader leads and survives only as long as no one manages to wrest "
-#| "the title from him. A constant struggle for power simmers among potential "
-#| "tribal chiefs. An orcish leader rarely lives more than a handful of years "
-#| "to enjoy his absolute authority before being killed for his position — "
-#| "although history knows some notable exceptions. Orcs hold no particular "
-#| "honor code and while indisputable raw strength is usually the preferred "
-#| "method of displaying power, assassination, poisoning and backstabbing are "
-#| "completely viable means to further one’s own goals.\n"
-#| "\n"
-#| "Orcs mostly live in rural areas, often in foothills or mountainous "
-#| "regions, sometimes in caves. They grow no crops nor keep livestock, but "
-#| "are competent hunters as a result of their physical stature and "
-#| "brutality. Due to their large numbers they are capable of hunting an area "
-#| "virtually clean of anything larger than rodents in relatively short "
-#| "period of time. Due to this and their unstable leadership, orcish tribes "
-#| "tend to lead a semi-nomadic lifestyle, never settling in one region for "
-#| "too long. The larger tribes may establish themselves firmly in an area "
-#| "for years or even decades and build large encampments almost resembling "
-#| "cities, but even these are easily dismantled and abandoned if there is a "
-#| "need to relocate the horde.\n"
-#| "\n"
-#| "The oldest known orcs have been around 50 to 60 years of age, but very "
-#| "few individuals ever live to see over two or three decades before meeting "
-#| "their end either in war or by the hand of one of their kin. The oldest "
-#| "orcs are often shamans, which are perhaps the only ones most of their "
-#| "kind sees as being trustworthy and neutral. The origins of this custom "
-#| "are unknown, as the shamans do not directly contribute much to orcish "
-#| "societies but only act as advisors — not something orcs tend to otherwise "
-#| "tolerate. Shamans are in many ways the opposite of most other orcs: they "
-#| "are often physically withered and frail in comparison and lack skill in "
-#| "battle. Despite their reliance on raw strength, not nearly all orcs are "
-#| "destined to grow to possess any. Many orcs are born smaller and weaker "
-#| "than the rest, and already almost as newborns are put in their place by "
-#| "their stronger siblings. The stronger ones will routinely grab most of "
-#| "the food and thus grow stronger still, while their weaker siblings do "
-#| "not. Many of these individuals tend to specialize in other skills, like "
-#| "archery or assassination."
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -6840,7 +6798,7 @@ msgstr ""
 "hat – dafür sorgen die stärkeren Geschwister, die das Meiste von der Nahrung "
 "fordern und Kleinere gleich in ihre Schranken weisen. Viele der Schwächlinge "
 "geben den Traum vom Schwert also früh auf und spezialisieren sich auf andere "
-"Dinge, wie Bogenschießen oder die »Kunst« der Meuchelei."
+"Dinge, wie Bogenschießen oder die »Kunst« der Meuchelei.\n"
 
 #. [race]: id=orc
 #: data/core/units.cfg:312
@@ -7169,14 +7127,16 @@ msgstr ""
 msgid "+1 max HP"
 msgstr "+1 max LP"
 
-#, fuzzy
-#~| msgid "<header>text='Units of this race'</header>"
 #~ msgid ""
 #~ "\n"
 #~ "\n"
 #~ "<header>text='Fundamentals of Gameplay'</header>\n"
 #~ "\n"
-#~ msgstr "<header>text='Einheiten dieser Rasse'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Grundlagen des Spiels'</header>\n"
+#~ "\n"
 
 #~ msgid "This race does not have a description yet."
 #~ msgstr "Eine Beschreibung dieser Ethnie ist derzeit noch in Bearbeitung."
