@@ -158,7 +158,7 @@ bool side_filter::match_internal(const team &t) const
 		const std::vector<int>& teams = enemy_filter_->get_teams();
 		if(teams.empty()) return false;
 		for(const int side : teams) {
-			if(!(fc_->get_disp_context().teams())[side - 1].is_enemy(t.side()))
+			if(!fc_->get_disp_context().get_team(side).is_enemy(t.side()))
 				return false;
 		}
 	}
@@ -170,7 +170,7 @@ bool side_filter::match_internal(const team &t) const
 		const std::vector<int>& teams = allied_filter_->get_teams();
 		if(teams.empty()) return false;
 		for(const int side : teams) {
-			if((fc_->get_disp_context().teams())[side - 1].is_enemy(t.side()))
+			if(fc_->get_disp_context().get_team(side).is_enemy(t.side()))
 				return false;
 		}
 	}
@@ -182,7 +182,7 @@ bool side_filter::match_internal(const team &t) const
 		const std::vector<int>& teams = has_enemy_filter_->get_teams();
 		bool found = false;
 		for(const int side : teams) {
-			if((fc_->get_disp_context().teams())[side - 1].is_enemy(t.side()))
+			if(fc_->get_disp_context().get_team(side).is_enemy(t.side()))
 			{
 				found = true;
 				break;
@@ -198,7 +198,7 @@ bool side_filter::match_internal(const team &t) const
 		const std::vector<int>& teams = has_ally_filter_->get_teams();
 		bool found = false;
 		for(const int side : teams) {
-			if(!(fc_->get_disp_context().teams())[side - 1].is_enemy(t.side()))
+			if(!fc_->get_disp_context().get_team(side).is_enemy(t.side()))
 			{
 				found = true;
 				break;
