@@ -2,7 +2,6 @@
 
 date
 
-export EXTRA_FLAGS_RELEASE="$OPT"
 export WML_TESTS=true
 export PLAY_TEST=true
 export MP_TEST=true

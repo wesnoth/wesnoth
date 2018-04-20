@@ -28,12 +28,12 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
         "$CXX" --version
         scons wesnoth wesnothd campaignd boost_unit_tests build=release \
               ctool="$CC" cxxtool="$CXX" cxx_std="$CXXSTD" \
-              extra_flags_config="-pipe" extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=true \
+              extra_flags_config="-pipe" opt="$OPT" strict=true \
               nls="$NLS" enable_lto="$LTO" jobs=2 --debug=time
     fi
 else
     docker run -v "$HOME"/build-cache:/home/wesnoth-travis/build \
                -v "$HOME"/.ccache:/root/.ccache wesnoth-repo:"$LTS"-"$BRANCH" \
                bash -c './utils/travis/docker_run.sh "$@"' \
-               bash "$NLS" "$TOOL" "$CC" "$CXX" "$CXXSTD" "$EXTRA_FLAGS_RELEASE" "$WML_TESTS" "$WML_TEST_TIME" "$PLAY_TEST" "$MP_TEST" "$BOOST_TEST" "$LTO" "$SAN"
+               bash "$NLS" "$TOOL" "$CC" "$CXX" "$CXXSTD" "$OPT" "$WML_TESTS" "$WML_TEST_TIME" "$PLAY_TEST" "$MP_TEST" "$BOOST_TEST" "$LTO" "$SAN"
 fi
