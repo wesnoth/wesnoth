@@ -35,12 +35,16 @@
 #define LOG_DP LOG_STREAM(info, display)
 
 
+namespace unit_display
+{
+namespace
+{
 /**
  * Returns a string whose first line is @a number, centered over a second line,
  * which consists of @a text.
  * If the number is 0, the first line is suppressed.
  */
-static std::string number_and_text(int number, const std::string & text)
+std::string number_and_text(int number, const std::string& text)
 {
 	// Simple case.
 	if ( number == 0 )
@@ -65,8 +69,7 @@ static std::string number_and_text(int number, const std::string & text)
  * @param temp_unit  The unit to animate (historically, a temporary unit).
  * @param disp       The game display. Assumed neither locked nor faked.
  */
-static void teleport_unit_between(const map_location& a, const map_location& b,
-                                  unit& temp_unit, display& disp)
+void teleport_unit_between(const map_location& a, const map_location& b, unit& temp_unit, display& disp)
 {
 	if ( disp.fogged(a) && disp.fogged(b) ) {
 		return;
@@ -115,10 +118,13 @@ static void teleport_unit_between(const map_location& a, const map_location& b,
  * @returns  The animation potential until this animation will finish.
  *           INT_MIN indicates that no animation is pending.
  */
-static int move_unit_between(const map_location& a, const map_location& b,
-                             unit_ptr temp_unit, unsigned int step_num,
-                             unsigned int step_left, unit_animator & animator,
-                             display& disp)
+int move_unit_between(const map_location& a,
+		const map_location& b,
+		unit_ptr temp_unit,
+		unsigned int step_num,
+		unsigned int step_left,
+		unit_animator& animator,
+		display& disp)
 {
 	if ( disp.fogged(a) && disp.fogged(b) ) {
 		return INT_MIN;
@@ -147,8 +153,13 @@ static int move_unit_between(const map_location& a, const map_location& b,
 	return target_time;
 }
 
-namespace unit_display
+bool do_not_show_anims(display* disp)
 {
+
+	return !disp || disp->video().update_locked() || disp->video().faked();
+}
+
+} // end anon namespace
 
 /**
  * The path must remain unchanged for the life of this object.
@@ -441,8 +452,7 @@ void unit_mover::finish(unit_ptr u, map_location::DIRECTION dir)
 		u->set_hidden(was_hidden_);
 		temp_unit_ptr_->set_hidden(true);
 
-		events::mouse_handler* mousehandler = events::mouse_handler::get_singleton();
-		if ( mousehandler ) {
+		if(events::mouse_handler* mousehandler = events::mouse_handler::get_singleton()) {
 			mousehandler->invalidate_reachmap();
 		}
 	}
@@ -496,7 +506,7 @@ void unit_draw_weapon(const map_location& loc, unit& attacker,
 		const_attack_ptr attack,const_attack_ptr secondary_attack, const map_location& defender_loc,unit* defender)
 {
 	display* disp = display::get_singleton();
-	if(!disp ||disp->video().update_locked() || disp->video().faked() || disp->fogged(loc) || preferences::show_combat() == false) {
+	if(do_not_show_anims(disp) || disp->fogged(loc) || !preferences::show_combat()) {
 		return;
 	}
 	unit_animator animator;
@@ -514,7 +524,7 @@ void unit_sheath_weapon(const map_location& primary_loc, unit* primary_unit,
 		const_attack_ptr primary_attack,const_attack_ptr secondary_attack, const map_location& secondary_loc,unit* secondary_unit)
 {
 	display* disp = display::get_singleton();
-	if(!disp ||disp->video().update_locked() || disp->video().faked() || disp->fogged(primary_loc) || preferences::show_combat() == false) {
+	if(do_not_show_anims(disp) || disp->fogged(primary_loc) || !preferences::show_combat()) {
 		return;
 	}
 	unit_animator animator;
@@ -544,7 +554,7 @@ void unit_die(const map_location& loc, unit& loser,
 		const_attack_ptr attack,const_attack_ptr secondary_attack, const map_location& winner_loc,unit* winner)
 {
 	display* disp = display::get_singleton();
-	if(!disp ||disp->video().update_locked() || disp->video().faked() || disp->fogged(loc) || preferences::show_combat() == false) {
+	if(do_not_show_anims(disp) || disp->fogged(loc) || !preferences::show_combat()) {
 		return;
 	}
 	unit_animator animator;
@@ -556,9 +566,9 @@ void unit_die(const map_location& loc, unit& loser,
 	animator.start_animations();
 	animator.wait_for_end();
 
-	reset_helpers(winner,&loser);
-	events::mouse_handler* mousehandler = events::mouse_handler::get_singleton();
-	if (mousehandler) {
+	reset_helpers(winner, &loser);
+
+	if(events::mouse_handler* mousehandler = events::mouse_handler::get_singleton()) {
 		mousehandler->invalidate_reachmap();
 	}
 }
@@ -569,8 +579,7 @@ void unit_attack(display * disp, game_board & board,
                  const attack_type& attack, const_attack_ptr secondary_attack,
                  int swing,const std::string& hit_text,int drain_amount,const std::string& att_text, const std::vector<std::string>* extra_hit_sounds)
 {
-	if(!disp ||disp->video().update_locked() || disp->video().faked() ||
-			(disp->fogged(a) && disp->fogged(b)) || preferences::show_combat() == false) {
+	if(do_not_show_anims(disp) || (disp->fogged(a) && disp->fogged(b)) || !preferences::show_combat()) {
 		return;
 	}
 	//const unit_map& units = disp->get_units();
@@ -594,12 +603,7 @@ void unit_attack(display * disp, game_board & board,
 	def->set_facing(b.get_relative_dir(a));
 	defender.set_facing(b.get_relative_dir(a));
 
-
-	unit_animator animator;
-	unit_ability_list leaders = attacker.get_abilities("leadership");
-	unit_ability_list helpers = defender.get_abilities("resistance");
-
-	std::string text   = number_and_text(damage, hit_text);
+	std::string text = number_and_text(damage, hit_text);
 	std::string text_2 = number_and_text(std::abs(drain_amount), att_text);
 
 	unit_animation::hit_type hit_type;
@@ -610,21 +614,28 @@ void unit_attack(display * disp, game_board & board,
 	}else {
 		hit_type = unit_animation::hit_type::MISS;
 	}
-	animator.add_animation(&attacker, "attack", att->get_location(),
-		def->get_location(), damage, true,  text_2,
-		(drain_amount >= 0) ? color_t(0,255,0) : color_t(255,0,0),
-		hit_type, attack.shared_from_this(), secondary_attack, swing);
+
+	unit_animator animator;
+
+	animator.add_animation(&attacker, "attack", att->get_location(), def->get_location(), damage, true, text_2,
+		(drain_amount >= 0) ? color_t(0, 255, 0) : color_t(255, 0, 0), hit_type, attack.shared_from_this(),
+		secondary_attack, swing);
 
 	// note that we take an anim from the real unit, we'll use it later
-	const unit_animation *defender_anim = def->anim_comp().choose_animation(*disp,
-		def->get_location(), "defend", att->get_location(), damage,
-		hit_type, attack.shared_from_this(), secondary_attack, swing);
-	animator.add_animation(&defender, defender_anim, def->get_location(),
-		true,  text , {255,0,0});
+	const unit_animation* defender_anim = def->anim_comp().choose_animation(*disp, def->get_location(), "defend",
+		att->get_location(), damage, hit_type, attack.shared_from_this(), secondary_attack, swing);
 
-	for (const unit_ability & ability : leaders) {
-		if(ability.second == a) continue;
-		if(ability.second == b) continue;
+	animator.add_animation(&defender, defender_anim, def->get_location(), true, text, {255, 0, 0});
+
+	for(const unit_ability& ability : attacker.get_abilities("leadership")) {
+		if(ability.second == a) {
+			continue;
+		}
+
+		if(ability.second == b) {
+			continue;
+		}
+
 		unit_map::const_iterator leader = board.units().find(ability.second);
 		assert(leader.valid());
 		leader->set_facing(ability.second.get_relative_dir(a));
@@ -632,9 +643,16 @@ void unit_attack(display * disp, game_board & board,
 			att->get_location(), damage, true,  "", {0,0,0},
 			hit_type, attack.shared_from_this(), secondary_attack, swing);
 	}
-	for (const unit_ability & ability : helpers) {
-		if(ability.second == a) continue;
-		if(ability.second == b) continue;
+
+	for(const unit_ability& ability : defender.get_abilities("resistance")) {
+		if(ability.second == a) {
+			continue;
+		}
+
+		if(ability.second == b) {
+			continue;
+		}
+
 		unit_map::const_iterator helper = board.units().find(ability.second);
 		assert(helper.valid());
 		helper->set_facing(ability.second.get_relative_dir(b));
@@ -677,8 +695,7 @@ void reset_helpers(const unit *attacker,const unit *defender)
 	display* disp = display::get_singleton();
 	const unit_map& units = disp->get_units();
 	if(attacker) {
-		unit_ability_list leaders = attacker->get_abilities("leadership");
-		for (const unit_ability & ability : leaders) {
+		for(const unit_ability& ability : attacker->get_abilities("leadership")) {
 			unit_map::const_iterator leader = units.find(ability.second);
 			assert(leader != units.end());
 			leader->anim_comp().set_standing();
@@ -686,8 +703,7 @@ void reset_helpers(const unit *attacker,const unit *defender)
 	}
 
 	if(defender) {
-		unit_ability_list helpers = defender->get_abilities("resistance");
-		for (const unit_ability & ability : helpers) {
+		for(const unit_ability& ability : defender->get_abilities("resistance")) {
 			unit_map::const_iterator helper = units.find(ability.second);
 			assert(helper != units.end());
 			helper->anim_comp().set_standing();
@@ -698,7 +714,10 @@ void reset_helpers(const unit *attacker,const unit *defender)
 void unit_recruited(const map_location& loc,const map_location& leader_loc)
 {
 	game_display* disp = game_display::get_singleton();
-	if(!disp || disp->video().update_locked() || disp->video().faked() ||disp->fogged(loc)) return;
+	if(do_not_show_anims(disp) || disp->fogged(loc)) {
+		return;
+	}
+
 	unit_map::const_iterator u = disp->get_units().find(loc);
 	if(u == disp->get_units().end()) return;
 	u->set_hidden(true);
@@ -727,8 +746,11 @@ void unit_healing(unit &healed, const std::vector<unit *> &healers, int healing,
                   const std::string & extra_text)
 {
 	game_display* disp = game_display::get_singleton();
-	const map_location &healed_loc = healed.get_location();
-	if(!disp || disp->video().update_locked() || disp->video().faked() || disp->fogged(healed_loc)) return;
+	const map_location& healed_loc = healed.get_location();
+
+	if(do_not_show_anims(disp) || disp->fogged(healed_loc)) {
+		return;
+	}
 
 	// This is all the pretty stuff.
 	disp->scroll_to_tile(healed_loc, game_display::ONSCREEN,true,false);
