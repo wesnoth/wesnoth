@@ -43,6 +43,8 @@ class suh : public user_handler {
 		bool user_is_moderator(const std::string& name);
 		void set_is_moderator(const std::string& name, const bool& is_moderator);
 
+		bool user_is_banned(const std::string& name, const std::string&);
+
 		std::string user_info(const std::string& name);
 
 		struct user {

@@ -108,6 +108,15 @@ class user_handler {
 		/** Mark this user as a moderator */
 		virtual void set_is_moderator(const std::string& name, const bool& is_moderator) =0;
 
+		/**
+		 * Returns true if this user account or IP address is banned.
+		 *
+		 * @note The IP address is only used by the @a forum_user_handler
+		 *       subclass. Regular IP ban checks are done by @a server_base
+		 *       instead.
+		 */
+		virtual bool user_is_banned(const std::string& name, const std::string& addr="") = 0;
+
 		struct error : public game::error {
 			error(const std::string& message) : game::error(message) {}
 		};
