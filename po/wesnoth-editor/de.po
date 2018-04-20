@@ -2,19 +2,22 @@
 #  Jan Heiner Laberenz <jan-heiner@arcor.de>, 2004
 #  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2007 - 2010
 #  Nils Kneuper <crazy-ivanovic@gmx.net>, 2009 - 2010
+#  Aaron Winter <winter.aaron93@gmail.com>, 2018
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.12\n"
+"Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-04-15 01:34-0300\n"
-"PO-Revision-Date: 2011-11-30 13:52+0100\n"
-"Last-Translator: daMark <daMark@arcor.de>\n"
+"PO-Revision-Date: 2018-04-19 13:25+0200\n"
+"Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -189,7 +192,7 @@ msgstr "Karte"
 #. [menu]: id=menu-unit-facing
 #: data/themes/editor.cfg:98
 msgid "Unit Facing"
-msgstr ""
+msgstr "Einheitenblickrichtung"
 
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:104
@@ -316,7 +319,7 @@ msgstr "Name: "
 
 #: src/editor/map/context_manager.cpp:205
 msgid "Load Map"
-msgstr ""
+msgstr "Lade Karte"
 
 #: src/editor/map/context_manager.cpp:273 src/editor/map/map_context.cpp:831
 msgid "New Map"
@@ -331,16 +334,12 @@ msgid "No Recent Files"
 msgstr "Keine vorherigen Dateien"
 
 #: src/editor/map/context_manager.cpp:380
-#, fuzzy
-#| msgid "(Unnamed Area)"
 msgid "Unnamed Area"
-msgstr "(Unbenanntes Gebiet)"
+msgstr "Unbenanntes Gebiet"
 
 #: src/editor/map/context_manager.cpp:411
-#, fuzzy
-#| msgid "(New Side)"
 msgid "New Side"
-msgstr "(Neue Fraktion)"
+msgstr "Neue Fraktion"
 
 #: src/editor/map/context_manager.cpp:467
 msgid "Apply Mask"
@@ -372,8 +371,6 @@ msgid "Save Map As"
 msgstr "Karte speichern unter"
 
 #: src/editor/map/context_manager.cpp:666
-#, fuzzy
-#| msgid "Save the Scenario As"
 msgid "Save Scenario As"
 msgstr "Szenario speichern als"
 
@@ -490,8 +487,6 @@ msgid "Add"
 msgstr "Hinzufügen"
 
 #: src/editor/palette/location_palette.cpp:261
-#, fuzzy
-#| msgid "New Location Identifer"
 msgid "New Location Identifier"
 msgstr "Neue Ortbezeichnung"
 
@@ -510,6 +505,7 @@ msgstr "HG: "
 #: src/gui/dialogs/editor/custom_tod.cpp:137
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
+"Zwischenablage-Unterstützung nicht gefunden, wenden Sie sich an Ihren Manager"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:201
 msgid "Choose File"
