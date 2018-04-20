@@ -55,6 +55,7 @@ opts.AddVariables(
     ('extra_flags_profile', 'Extra compiler and linker flags to use for profile builds', ""),
     BoolVariable('enable_lto', 'Whether to enable Link Time Optimization for build=release', False),
     ('arch', 'What -march option to use for build=release, will default to pentiumpro on Windows', ""),
+    ('opt', 'override for the build\'s optimization level', ""),
     BoolVariable('glibcxx_debug', 'Whether to define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC for build=debug', False),
     EnumVariable('profiler', 'profiler to be used for build=profile', "gprof", ["gprof", "gcov", "gperftools", "perf"]),
     EnumVariable('pgo_data', 'whether to generate profiling data for PGO, or use existing profiling data', "", ["", "generate", "use"]),
@@ -479,12 +480,27 @@ for env in [test_env, client_env, env]:
             env.AppendUnique(CXXFLAGS = Split("-Wctor-dtor-privacy -Wuseless-cast -Wnoexcept"))
         if env['sanitize']:
             env.AppendUnique(CCFLAGS = ["-fsanitize=" + env["sanitize"]], LINKFLAGS = ["-fsanitize=" + env["sanitize"]])
-
+    
+# #
+# Determine optimization level
+# #
+        
+        if not env["opt"]:
+            if env["build"] == "release":
+                env["opt"] = "-O3 "
+            elif env["build"] == "profile" and env["profiler"] == "perf":
+                env["opt"] = "-Og "
+            else:
+                env["opt"] = "-O0 "
+        else:
+            env["opt"] = env["opt"]+" "
+                
+        
 # #
 # Start determining options for debug build
 # #
 
-        debug_flags = "-O0 -DDEBUG -ggdb3"
+        debug_flags = env["opt"]+"-DDEBUG -ggdb3"
 
         if env["glibcxx_debug"] == True:
             glibcxx_debug_flags = "_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC"
@@ -497,7 +513,7 @@ for env in [test_env, client_env, env]:
 # #
 
 # default compiler flags
-        rel_comp_flags = "-O3"
+        rel_comp_flags = env["opt"]
         rel_link_flags = ""
 
 # use the arch if provided, or if on Windows and no arch was passed in then default to pentiumpro
@@ -542,19 +558,19 @@ for env in [test_env, client_env, env]:
 # #
 
         if env["profiler"] == "gprof":
-            prof_comp_flags = "-pg"
+            prof_comp_flags = env["opt"]+"-pg"
             prof_link_flags = "-pg"
 
         if env["profiler"] == "gcov":
-            prof_comp_flags = "-fprofile-arcs -ftest-coverage"
+            prof_comp_flags = env["opt"]+"-fprofile-arcs -ftest-coverage"
             prof_link_flags = "-fprofile-arcs"
 
         if env["profiler"] == "gperftools":
-            prof_comp_flags = ""
+            prof_comp_flags = env["opt"]
             prof_link_flags = "-Wl,--no-as-needed,-lprofiler"
 
         if env["profiler"] == "perf":
-            prof_comp_flags = "-ggdb -Og"
+            prof_comp_flags = env["opt"]+"-ggdb"
             prof_link_flags = ""
 
 # #

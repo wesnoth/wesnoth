@@ -10,7 +10,7 @@ TOOL="$2"
 CC="$3"
 CXX="$4"
 CXXSTD="$5"
-EXTRA_FLAGS_RELEASE="$6"
+OPT="$6"
 WML_TESTS="$7"
 WML_TEST_TIME="$8"
 PLAY_TEST="$9"
@@ -19,7 +19,7 @@ BOOST_TEST="${11}"
 LTO="${12}"
 SAN="${13}"
 
-if [ "$EXTRA_FLAGS_RELEASE" == "-O0" ]; then
+if [ "$OPT" == "-O0" ]; then
     STRICT="true"
     build_timeout=35
 else
@@ -37,7 +37,7 @@ echo "TOOL: $TOOL"
 echo "CC: $CC"
 echo "CXX: $CXX"
 echo "CXXSTD: $CXXSTD"
-echo "EXTRA_FLAGS_RELEASE: $EXTRA_FLAGS_RELEASE"
+echo "OPT: $OPT"
 echo "WML_TESTS: $WML_TESTS"
 echo "WML_TEST_TIME: $WML_TEST_TIME"
 echo "PLAY_TEST: $PLAY_TEST"
@@ -62,7 +62,7 @@ else
         echo "compiler_check = content" >> $HOME/.ccache/ccache.conf
 
         cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_NLS=false \
-              -DEXTRA_FLAGS_CONFIG="-pipe" -DEXTRA_FLAGS_RELEASE="$EXTRA_FLAGS_RELEASE" -DENABLE_STRICT_COMPILATION="$STRICT" -DENABLE_LTO="$LTO" -DLTO_JOBS=2 \
+              -DEXTRA_FLAGS_CONFIG="-pipe" -DOPT="$OPT" -DENABLE_STRICT_COMPILATION="$STRICT" -DENABLE_LTO="$LTO" -DLTO_JOBS=2 \
               -DCXX_STD="$CXXSTD" -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache && \
               make VERBOSE=1 -j2
         BUILD_RET=$?
@@ -72,7 +72,7 @@ else
     else
         scons wesnoth wesnothd campaignd boost_unit_tests build=release \
               ctool=$CC cxxtool=$CXX cxx_std=$CXXSTD \
-              extra_flags_config="-pipe" extra_flags_release="$EXTRA_FLAGS_RELEASE" strict="$STRICT" \
+              extra_flags_config="-pipe" opt="$OPT" strict="$STRICT" \
               nls=false enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time
         BUILD_RET=$?
     fi
