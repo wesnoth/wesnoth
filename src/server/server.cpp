@@ -724,6 +724,7 @@ void server::handle_login(socket_ptr socket, std::shared_ptr<simple_wml::documen
 		if(user_handler_ && !registered && deny_unregistered_login_) {
 			async_send_error(socket, "The nickname '" + username + "' is not registered. "
 									 "This server disallows unregistered nicknames.", MP_NAME_UNREGISTERED_ERROR);
+			server::login(socket);
 			return;
 		}
 
