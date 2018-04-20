@@ -788,7 +788,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 
 		for(unit_map::iterator u = pc_.gamestate().board_.units_.begin(); u != pc_.gamestate().board_.units_.end();
 				++u) {
-			bool invisible = u->invisible(u->get_location(), gui_->get_disp_context());
+			bool invisible = u->invisible(u->get_location());
 
 			if(!gui_->fogged(u->get_location()) && !u->incapacitated() && !invisible) {
 				const pathfind::paths& path =
@@ -1120,7 +1120,7 @@ void mouse_handler::show_attack_options(const unit_map::const_iterator& u)
 		}
 
 		unit_map::const_iterator i = pc_.gamestate().board_.units().find(loc);
-		if(!i || !i->is_visible_to_team(cur_team, gui_->get_disp_context(), false)) {
+		if(!i || !i->is_visible_to_team(cur_team, false)) {
 			continue;
 		}
 
@@ -1145,7 +1145,7 @@ bool mouse_handler::unit_in_cycle(unit_map::const_iterator it)
 		return false;
 	}
 
-	if(current_team().is_enemy(int(gui().viewing_team() + 1)) && it->invisible(it->get_location(), gui().get_disp_context())) {
+	if(current_team().is_enemy(int(gui().viewing_team() + 1)) && it->invisible(it->get_location())) {
 		return false;
 	}
 

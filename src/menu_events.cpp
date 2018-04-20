@@ -446,7 +446,7 @@ void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 
 	// Compute enemy movement positions
 	for(auto& u : units()) {
-		bool invisible = u.invisible(u.get_location(), gui_->get_disp_context());
+		bool invisible = u.invisible(u.get_location());
 
 		if(board().get_team(side_num).is_enemy(u.side()) && !gui_->fogged(u.get_location()) && !u.incapacitated()
 				&& !invisible) {
@@ -1352,7 +1352,7 @@ void menu_handler::do_search(const std::string& new_search)
 						   name.begin(), name.end(), last_search_.begin(), last_search_.end(), chars_equal_insensitive)
 						!= name.end()) {
 					if(!teams()[gui_->viewing_team()].is_enemy(ui->side())
-							|| !ui->invisible(ui->get_location(), gui_->get_disp_context())) {
+							|| !ui->invisible(ui->get_location())) {
 						found = true;
 					}
 				}

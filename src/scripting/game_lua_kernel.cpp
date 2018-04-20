@@ -2405,7 +2405,7 @@ int game_lua_kernel::intf_unit_ability(lua_State *L)
 {
 	const unit& u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
-	lua_pushboolean(L, u.get_ability_bool(m, board()));
+	lua_pushboolean(L, u.get_ability_bool(m));
 	return 1;
 }
 

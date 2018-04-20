@@ -21,7 +21,7 @@
 
 #include "color.hpp"
 #include "deprecation.hpp"
-#include "display_context.hpp"
+#include "display.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp" // for VGETTEXT
 #include "game_board.hpp"			// for game_board
@@ -2322,7 +2322,7 @@ void unit::apply_modifications()
 	max_experience_ = std::max<int>(1, (max_experience_ * exp_accel + 50)/100);
 }
 
-bool unit::invisible(const map_location& loc, const display_context& dc, bool see_all) const
+bool unit::invisible(const map_location& loc, bool see_all) const
 {
 	if(loc != get_location()) {
 		DBG_UT << "unit::invisible called: id = " << id() << " loc = " << loc << " get_loc = " << get_location() << std::endl;
@@ -2348,7 +2348,7 @@ bool unit::invisible(const map_location& loc, const display_context& dc, bool se
 
 	// Test hidden status
 	static const std::string hides("hides");
-	bool is_inv = get_ability_bool(hides, loc, dc);
+	bool is_inv = get_ability_bool(hides, loc);
 	if(is_inv){
 		is_inv = (resources::gameboard ? !resources::gameboard->would_be_discovered(loc, side_,see_all) : true);
 	}
@@ -2365,10 +2365,10 @@ bool unit::invisible(const map_location& loc, const display_context& dc, bool se
 	return is_inv;
 }
 
-bool unit::is_visible_to_team(const team& team,const  display_context& dc, bool const see_all) const
+bool unit::is_visible_to_team(const team& team, bool const see_all) const
 {
 	const map_location& loc = get_location();
-	if(!dc.map().on_board(loc)) {
+	if(!display::get_singleton()->get_map().on_board(loc)) {
 		return false;
 	}
 
@@ -2376,7 +2376,7 @@ bool unit::is_visible_to_team(const team& team,const  display_context& dc, bool 
 		return true;
 	}
 
-	if(team.is_enemy(side()) && invisible(loc, dc)) {
+	if(team.is_enemy(side()) && invisible(loc)) {
 		return false;
 	}
 

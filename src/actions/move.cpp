@@ -425,7 +425,7 @@ namespace { // Private helpers for move_unit()
 
 			if ( neighbor_it != units.end()  &&
 			     current_team_->is_enemy(neighbor_it->side())  &&
-			     neighbor_it->invisible(adjacent[i], *resources::gameboard) )
+			     neighbor_it->invisible(adjacent[i]) )
 			{
 				// Ambushed!
 				ambushed_ = true;
@@ -744,7 +744,7 @@ namespace { // Private helpers for move_unit()
 
 		if ( start != begin_ ) {
 			// Check for being unable to leave the current hex.
-			if ( !move_it_->get_ability_bool("skirmisher", *start, *resources::gameboard) &&
+			if ( !move_it_->get_ability_bool("skirmisher", *start) &&
 			      pathfind::enemy_zoc(*current_team_, *start, *current_team_) )
 				zoc_stop_ = *start;
 		}
@@ -767,7 +767,7 @@ namespace { // Private helpers for move_unit()
 			moves_left_.push_back(remaining_moves);
 
 			// Check for being unable to leave this hex.
-			if (!move_it_->get_ability_bool("skirmisher", *end, *resources::gameboard) &&
+			if (!move_it_->get_ability_bool("skirmisher", *end) &&
 				pathfind::enemy_zoc(*current_team_, *end, *current_team_))
 			{
 				zoc_stop_ = *end;

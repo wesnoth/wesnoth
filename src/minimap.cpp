@@ -280,7 +280,7 @@ void render_minimap(texture& tex, const gamemap& map, const team* vw, const unit
 				const int side = u.side();
 				const bool is_enemy = vw && vw->is_enemy(side);
 
-				if((vw && vw->fogged(u_loc)) || (is_enemy && disp && u.invisible(u_loc, disp->get_disp_context())) || u.get_hidden()) {
+				if((vw && vw->fogged(u_loc)) || (is_enemy && disp && u.invisible(u_loc)) || u.get_hidden()) {
 					continue;
 				}
 

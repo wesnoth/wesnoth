@@ -1332,7 +1332,7 @@ double get_healing_phase::evaluate()
 		if(u.side() == get_side() &&
 		   (u.max_hitpoints() - u.hitpoints() >= game_config::poison_amount/2
 		   || u.get_state(unit::STATE_POISONED)) &&
-		    !u.get_ability_bool("regenerate", *resources::gameboard))
+		    !u.get_ability_bool("regenerate"))
 		{
 			// Look for the village which is the least vulnerable to enemy attack.
 			typedef std::multimap<map_location,map_location>::const_iterator Itor;

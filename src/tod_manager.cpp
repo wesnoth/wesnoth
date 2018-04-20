@@ -239,7 +239,7 @@ const time_of_day tod_manager::get_illuminated_time_of_day(const unit_map & unit
 		for ( std::size_t i = 0; i < locs.size(); ++i ) {
 			const unit_map::const_iterator itor = units.find(locs[i]);
 			if (itor != units.end() &&
-			    itor->get_ability_bool("illuminates", *resources::gameboard) &&
+			    itor->get_ability_bool("illuminates") &&
 			    !itor->incapacitated())
 			{
 				unit_ability_list illum = itor->get_abilities("illuminates");

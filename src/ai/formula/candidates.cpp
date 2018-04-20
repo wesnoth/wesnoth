@@ -21,7 +21,6 @@
 #include "ai/formula/candidates.hpp"
 #include "game_board.hpp"
 #include "log.hpp"
-#include "resources.hpp"
 #include "units/unit.hpp"
 
 static lg::log_domain log_formula_ai("ai/engine/fai");
@@ -166,7 +165,7 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 			}
 		} else
 		{
-			if (ai->current_team().is_enemy(i->side()) && !i->incapacitated() && !i->invisible(i->get_location(), *resources::gameboard)) {
+			if (ai->current_team().is_enemy(i->side()) && !i->incapacitated() && !i->invisible(i->get_location())) {
 				enemy_res.emplace_back(std::make_shared<unit_callable>(*i));
 			}
 		}

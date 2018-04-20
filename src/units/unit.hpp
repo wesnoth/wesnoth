@@ -24,7 +24,6 @@
 #include <boost/variant.hpp>
 
 class display;
-class display_context;
 class team;
 class unit_animation_component;
 class unit_formula_manager;
@@ -1442,9 +1441,8 @@ public:
 	 * @param tag_name            The name of the ability to check for.
 	 * @param loc                 The location around which to check for affected units. This may or
 	 *                            may not be the location of this unit.
-	 * @param dc                  A display_context object, used in calculations.
 	 */
-	bool get_ability_bool(const std::string& tag_name, const map_location& loc, const display_context& dc) const;
+	bool get_ability_bool(const std::string& tag_name, const map_location& loc) const;
 
 	/**
 	 * Checks whether this unit currently possesses or is affected by a given ability.
@@ -1455,11 +1453,10 @@ public:
 	 * This overload uses the location of this unit for calculations.
 	 *
 	 * @param tag_name            The name of the ability to check for.
-	 * @param dc                  A display_context object, used in calculations.
 	 */
-	bool get_ability_bool(const std::string& tag_name, const display_context& dc) const
+	bool get_ability_bool(const std::string& tag_name) const
 	{
-		return get_ability_bool(tag_name, loc_, dc);
+		return get_ability_bool(tag_name, loc_);
 	}
 
 	/**
@@ -1556,9 +1553,9 @@ public:
 	void generate_name();
 
 	// Only see_all = true use caching
-	bool invisible(const map_location& loc, const display_context& dc, bool see_all = true) const;
+	bool invisible(const map_location& loc, bool see_all = true) const;
 
-	bool is_visible_to_team(const team& team, const display_context& dc, bool const see_all = true) const;
+	bool is_visible_to_team(const team& team, bool const see_all = true) const;
 
 	/**
 	 * Serializes the current unit metadata values.

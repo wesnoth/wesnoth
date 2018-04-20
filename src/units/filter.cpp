@@ -702,7 +702,7 @@ void unit_filter_compound::fill(vconfig cfg)
 
 					for (const int viewer : viewers) {
 						bool fogged = args.fc->get_disp_context().get_team(viewer).fogged(args.loc);
-						bool hiding = args.u.invisible(args.loc, args.fc->get_disp_context()) && args.fc->get_disp_context().get_team(viewer).is_enemy(args.u.side());
+						bool hiding = args.u.invisible(args.loc) && args.fc->get_disp_context().get_team(viewer).is_enemy(args.u.side());
 						bool unit_hidden = fogged || hiding;
 						if (c["visible"].to_bool(true) != unit_hidden) {
 							return true;
