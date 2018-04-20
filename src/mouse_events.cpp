@@ -20,7 +20,6 @@
 #include "actions/undo.hpp"                  // for undo_list
 #include "config.hpp"                        // for config
 #include "cursor.hpp"                        // for set, CURSOR_TYPE::NORMAL, etc
-#include "game_board.hpp"                    // for game_board, etc
 #include "game_events/pump.hpp"              // for fire
 #include "gettext.hpp"                       // for _
 #include "gui/dialogs/transient_message.hpp" // for show_transient_message

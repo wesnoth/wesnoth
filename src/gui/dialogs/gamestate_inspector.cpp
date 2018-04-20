@@ -31,7 +31,6 @@
 #include "game_events/manager.hpp"
 #include "serialization/parser.hpp" // for write()
 
-#include "game_board.hpp"
 #include "game_data.hpp"
 #include "recall_list_manager.hpp"
 #include "team.hpp"

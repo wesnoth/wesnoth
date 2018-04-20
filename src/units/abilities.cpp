@@ -26,7 +26,6 @@
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "formula/function_gamestate.hpp"
-#include "game_board.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "resources.hpp"

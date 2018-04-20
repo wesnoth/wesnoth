@@ -42,7 +42,6 @@
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
 #include "floating_label.hpp"
-#include "game_board.hpp"
 #include "help/help.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"

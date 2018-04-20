@@ -19,7 +19,6 @@
 #include "editor/action/action.hpp"
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
-#include "game_board.hpp"
 #include "gettext.hpp"
 #include "map/exception.hpp"
 #include "map/label.hpp"

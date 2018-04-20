@@ -19,8 +19,8 @@
 
 #include "ai/formula/ai.hpp"
 #include "ai/formula/candidates.hpp"
-#include "game_board.hpp"
 #include "log.hpp"
+#include "team.hpp"
 #include "units/unit.hpp"
 
 static lg::log_domain log_formula_ai("ai/engine/fai");

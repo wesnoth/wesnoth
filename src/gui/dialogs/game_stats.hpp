@@ -13,7 +13,7 @@
 
 #pragma once
 
-#include "game_board.hpp"
+#include "display_context.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -23,7 +23,6 @@
 #include <string>
 #include <vector>
 
-class display;
 class team;
 struct team_data;
 
@@ -37,9 +36,9 @@ class game_stats : public modal_dialog
 public:
 	game_stats(const display_context& board, const int viewing_team, int& selected_index);
 
-	static bool execute(game_board& board, const int viewing_team, int& selected_index)
+	static bool execute(const display_context& board, const int viewing_team, int& selected_index)
 	{
-		if(std::all_of(board.teams().begin(), board.teams().end(), [](team& team) { return team.hidden(); })) {
+		if(std::all_of(board.teams().begin(), board.teams().end(), [](const team& team) { return team.hidden(); })) {
 			show_transient_message("", _("No visible sides found."));
 			return false;
 		}
