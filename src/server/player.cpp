@@ -17,11 +17,10 @@
 
 wesnothd::player::player(const std::string& n, simple_wml::node& cfg,
                          bool registered, const std::size_t max_messages,
-                         const std::size_t time_period, const bool sp,
+                         const std::size_t time_period,
                          const bool moderator)
   : name_(n)
   , cfg_(cfg)
-  , selective_ping_(sp)
   , registered_(registered)
   , flood_start_(0)
   , messages_since_flood_start_(0)
