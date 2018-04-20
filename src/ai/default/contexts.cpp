@@ -81,7 +81,7 @@ int default_ai_context_impl::count_free_hexes_in_castle(const map_location &loc,
 			ret += count_free_hexes_in_castle(adj[n], checked_hexes);
 			if (u == units_.end()
 				|| (current_team().is_enemy(u->side())
-					&& u->invisible(adj[n], *resources::gameboard))
+					&& u->invisible(adj[n]))
 				|| ((&resources::gameboard->get_team(u->side()) == &current_team())
 					&& u->movement_left() > 0)) {
 				ret += 1;
@@ -109,7 +109,7 @@ int default_ai_context_impl::rate_terrain(const unit& u, const map_location& loc
 	const int neutral_village_value = 10;
 	const int enemy_village_value = 15;
 
-	if(map_.gives_healing(terrain) && u.get_ability_bool("regenerate", loc, *resources::gameboard) == false) {
+	if(map_.gives_healing(terrain) && u.get_ability_bool("regenerate", loc) == false) {
 		rating += healing_value;
 	}
 
@@ -228,7 +228,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 		for(u = units_.begin(); u != units_.end(); ++u) {
 			//is a visible enemy leader
 			if (u->can_recruit() && current_team().is_enemy(u->side())
-			    && !u->invisible(u->get_location(), *resources::gameboard)) {
+			    && !u->invisible(u->get_location())) {
 				assert(map_.on_board(u->get_location()));
 				LOG_AI << "found enemy leader (side: " << u->side() << ") target... " << u->get_location() << " with value: " << get_leader_value() << "\n";
 				targets.emplace_back(u->get_location(), get_leader_value(), target::TYPE::LEADER);

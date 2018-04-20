@@ -124,20 +124,21 @@ A poisoned unit cannot be cured of its poison by a healer, and must seek the car
 
 namespace {
 
-bool affects_side(const config& cfg, const std::vector<team>& teams, std::size_t side, std::size_t other_side)
+bool affects_side(const config& cfg, std::size_t side, std::size_t other_side)
 {
-	if (side == other_side)
+	// display::get_singleton() has already been confirmed valid by both callers.
+	const team& side_team = display::get_singleton()->get_disp_context().get_team(side);
+
+	if(side == other_side || !side_team.is_enemy(other_side)) {
 		return cfg["affect_allies"].to_bool(true);
-	if (teams[side - 1].is_enemy(other_side))
+	} else {
 		return cfg["affect_enemies"].to_bool();
-	else
-		return cfg["affect_allies"].to_bool();
+	}
 }
 
 }
 
-
-bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc, const display_context& dc) const
+bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc) const
 {
 	for (const config &i : this->abilities_.child_range(tag_name)) {
 		if (ability_active(tag_name, i, loc) &&
@@ -164,7 +165,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 		if ( &*it == this )
 			continue;
 		for (const config &j : it->abilities_.child_range(tag_name)) {
-			if (affects_side(j, dc.teams(), side(), it->side()) &&
+			if (affects_side(j, side(), it->side()) &&
 			    it->ability_active(tag_name, j, adjacent[i]) &&
 			    ability_affects_adjacent(tag_name,  j, i, loc, *it))
 			{
@@ -208,7 +209,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		if ( &*it == this )
 			continue;
 		for (const config &j : it->abilities_.child_range(tag_name)) {
-			if (affects_side(j, resources::gameboard->teams(), side(), it->side()) &&
+			if (affects_side(j, side(), it->side()) &&
 			    it->ability_active(tag_name, j, adjacent[i]) &&
 			    ability_affects_adjacent(tag_name, j, i, loc, *it) &&
 			    ability_affects_weapon(j, weapon, false) &&

@@ -104,7 +104,7 @@ std::shared_ptr<attacks_vector> aspect_attacks_base::analyze_targets() const
 			// Attack anyone who is on the enemy side,
 			// and who is not invisible or petrified.
 			if (current_team().is_enemy(j->side()) && !j->incapacitated() &&
-			    !j->invisible(j->get_location(), *resources::gameboard))
+			    !j->invisible(j->get_location()))
 			{
 				if (!is_allowed_enemy(*j)) {
 					continue;
@@ -288,7 +288,7 @@ void aspect_attacks_base::do_attack_analysis(
 					}
 
 					// No surround bonus if target is skirmisher
-					if (!itor->get_ability_bool("skirmisher", *resources::gameboard))
+					if (!itor->get_ability_bool("skirmisher"))
 						surround_bonus = 1.2;
 				}
 
@@ -360,7 +360,7 @@ int aspect_attacks_base::rate_terrain(const unit& u, const map_location& loc)
 	const int neutral_village_value = 10;
 	const int enemy_village_value = 15;
 
-	if(map_.gives_healing(terrain) && u.get_ability_bool("regenerate", loc, *resources::gameboard) == false) {
+	if(map_.gives_healing(terrain) && u.get_ability_bool("regenerate", loc) == false) {
 		rating += healing_value;
 	}
 

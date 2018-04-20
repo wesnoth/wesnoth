@@ -280,7 +280,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target >>
 		{
 			int distance = distance_between(u.get_location(), loc);
 			if (current_team().is_enemy(u.side()) && distance < radius_ &&
-			    !u.invisible(u.get_location(), *resources::gameboard))
+			    !u.invisible(u.get_location()))
 			{
 				DBG_AI_GOAL << "side " << get_side() << ": in " << goal_type << ": found threat target. " << u.get_location() << " is a threat to "<< loc << '\n';
 				*target_list = target(u.get_location(),

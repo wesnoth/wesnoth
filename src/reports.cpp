@@ -297,7 +297,7 @@ static config unit_status(reports::context & rc, const unit* u)
 	if (!u) return config();
 	config res;
 	map_location displayed_unit_hex = rc.screen().displayed_unit_hex();
-	if (rc.map().on_board(displayed_unit_hex) && u->invisible(displayed_unit_hex, rc.dc())) {
+	if (rc.map().on_board(displayed_unit_hex) && u->invisible(displayed_unit_hex)) {
 		add_status(res, "misc/invisible.png", N_("invisible: "),
 			N_("This unit is invisible. It cannot be seen or attacked by enemy units."));
 	}
@@ -772,7 +772,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 				continue;
 			const map_location &loc = enemy.get_location();
 			if (viewing_team.fogged(loc) ||
-				(viewing_team.is_enemy(enemy.side()) && enemy.invisible(loc, rc.dc())))
+				(viewing_team.is_enemy(enemy.side()) && enemy.invisible(loc)))
 				continue;
 			bool new_type = seen_types.insert(enemy.type_id()).second;
 			if (new_type) {

@@ -1845,7 +1845,7 @@ void display::draw_minimap_units()
 	for(const auto& u : dc_->units()) {
 		if (fogged(u.get_location()) ||
 		    (dc_->teams()[currentTeam_].is_enemy(u.side()) &&
-		     u.invisible(u.get_location(), *dc_)) ||
+		     u.invisible(u.get_location())) ||
 			 u.get_hidden()) {
 			continue;
 		}

@@ -83,7 +83,7 @@ const std::set<std::string> get_recruits(int side, const map_location &recruit_l
 			local_result.insert(find_it->recruits().begin(),
 			                    find_it->recruits().end());
 		}
-		else if ( find_it->is_visible_to_team(current_team, *resources::gameboard, false) )
+		else if ( find_it->is_visible_to_team(current_team, false) )
 		{
 			// This hex is visibly occupied, so we cannot recruit here.
 			allow_local = false;
@@ -184,7 +184,7 @@ std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_lo
 			add_leader_filtered_recalls(find_it.get_shared_ptr(), result);
 			return result;
 		}
-		else if ( find_it->is_visible_to_team(resources::gameboard->get_team(side), *resources::gameboard, false) )
+		else if ( find_it->is_visible_to_team(resources::gameboard->get_team(side), false) )
 		{
 			// This hex is visibly occupied, so we cannot recall here.
 			allow_local = false;
@@ -585,7 +585,7 @@ namespace { // Helpers for place_recruit()
 
 		for ( unit_itor = units.begin(); unit_itor != units.end(); ++unit_itor ) {
 			if (resources::gameboard->get_team(unit_itor->side()).is_enemy(new_unit.side()) &&
-				unit_itor->is_visible_to_team(resources::gameboard->get_team(new_unit.side()), *resources::gameboard, false)) {
+				unit_itor->is_visible_to_team(resources::gameboard->get_team(new_unit.side()), false)) {
 				int dist = distance_between(unit_itor->get_location(),recruit_loc) - unit_itor->level();
 				if (dist < min_dist) {
 					min_dist = dist;

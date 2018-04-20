@@ -33,8 +33,6 @@
 #include "display.hpp"
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
-#include "game_board.hpp"
-#include "resources.hpp"
 #include "units/map.hpp"
 #include "units/ptr.hpp"
 #include "units/unit.hpp"
@@ -155,7 +153,7 @@ void unit_list::pre_show(window& window)
 			find_widget<image>(row_grid, "unit_status_slowed", false).set_visible(widget::visibility::invisible);
 		}
 
-		if(!unit->invisible(unit->get_location(), *resources::gameboard, false)) {
+		if(!unit->invisible(unit->get_location(), false)) {
 			find_widget<image>(row_grid, "unit_status_invisible", false).set_visible(widget::visibility::invisible);
 		}
 	}

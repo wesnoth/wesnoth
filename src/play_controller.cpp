@@ -626,7 +626,7 @@ void play_controller::tab()
 		for (const unit& u : gamestate().board_.units()){
 			const map_location& loc = u.get_location();
 			if(!gui_->fogged(loc) &&
-					!(gamestate().board_.teams()[gui_->viewing_team()].is_enemy(u.side()) && u.invisible(loc, gui_->get_disp_context())))
+					!(gamestate().board_.teams()[gui_->viewing_team()].is_enemy(u.side()) && u.invisible(loc)))
 				dictionary.insert(u.name());
 		}
 		//TODO List map labels

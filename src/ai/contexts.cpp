@@ -376,7 +376,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 		}
 
 		// We can't see where invisible enemy units might move.
-		if (enemy && un_it->invisible(un_it->get_location(), *resources::gameboard) && !see_all) {
+		if (enemy && un_it->invisible(un_it->get_location()) && !see_all) {
 			continue;
 		}
 		// If it's an enemy unit, reset its moves while we do the calculations.
