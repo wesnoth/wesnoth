@@ -135,8 +135,6 @@ manager::manager() :
 			}
 		}
 	}
-
-	//network::ping_timeout = get_ping_timeout();
 }
 
 manager::~manager()
@@ -401,11 +399,6 @@ std::string network_host()
 void set_network_host(const std::string& host)
 {
 	preferences::set("host", host);
-}
-
-unsigned int get_ping_timeout()
-{
-	return lexical_cast_default<unsigned>(preferences::get("ping_timeout"), 0);
 }
 
 std::string campaign_server()
