@@ -1056,10 +1056,6 @@ config side_engine::new_config() const
 		res.add_child_at("ai", config {"ai_algorithm", ai_algorithm_}, 0);
 	}
 
-	if(controller_ == CNTR_EMPTY) {
-		res["no_leader"] = true;
-	}
-
 	// A side's "current_player" is the player which has currently taken that side or the one for which it is reserved.
 	// The "player_id" is the id of the client who controls that side. It's always the host for Local and AI players and
 	// always empty for free/reserved sides or null controlled sides. You can use !res["player_id"].empty() to check

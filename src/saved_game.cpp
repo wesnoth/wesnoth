@@ -188,6 +188,12 @@ void saved_game::set_defaults()
 	for(config& side : starting_pos_.child_range("side")) {
 		// Set save_id default value directly after loading to its default to prevent different default behaviour in
 		// mp_connect code and sp code.
+		
+		if(side["no_leader"].to_bool()) {
+			side["leader_lock"] = true;
+			side.remove_attribute("type");
+		}
+
 		if(side["save_id"].empty()) {
 			side["save_id"] = side["id"];
 		}
