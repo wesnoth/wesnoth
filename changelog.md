@@ -17,6 +17,7 @@
      * Changed Sun Singer movetype from float to foot.
      * Added some Quenoth elf unit animations.
      * Hide technical terrains in the Help browser (Human Ship, Lava overlay).
+     * New set of Quenoth faction portraits by LordBob.
  ### Help browser
    * Unit descriptions use the new multiplication sign format for attack lists
      now (issue #2873).
