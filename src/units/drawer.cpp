@@ -32,10 +32,10 @@
 
 unit_drawer::unit_drawer(display& thedisp)
 	: disp(thedisp)
-	, dc(disp.get_disp_context())
+	, dc(disp.current_display_context())
 	, map(dc.map())
 	, teams(dc.teams())
-	, halo_man(thedisp.get_halo_manager())
+	, halo_man(disp.get_halo_manager())
 	, viewing_team(disp.viewing_team())
 	, playing_team(disp.playing_team())
 	, viewing_team_ref(teams[viewing_team])

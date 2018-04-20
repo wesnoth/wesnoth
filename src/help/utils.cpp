@@ -99,7 +99,7 @@ std::string escape(const std::string& s)
 ter_data_cache load_terrain_types_data()
 {
 	if(display* d = display::get_singleton()) {
-		return d->get_disp_context().map().tdata();
+		return d->get_map().tdata();
 	} else if(game_config_manager* g = game_config_manager::get()) {
 		return g->terrain_types();
 	} else {

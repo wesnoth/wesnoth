@@ -578,7 +578,7 @@ bool terrain_label::hidden() const
 	// Respect user's label preferences
 	std::string category = "cat:" + category_;
 	std::string creator = "side:" + std::to_string(creator_ + 1);
-	const std::vector<std::string>& hidden_categories = disp->get_disp_context().hidden_label_categories();
+	const std::vector<std::string>& hidden_categories = disp->current_display_context().hidden_label_categories();
 
 	if(std::find(hidden_categories.begin(), hidden_categories.end(), category) != hidden_categories.end()) {
 		return true;
@@ -626,7 +626,7 @@ bool terrain_label::viewable(const display& disp) const
 	}
 
 	// Observers are not privvy to team labels.
-	const bool can_see_team_labels = !disp.get_disp_context().is_observer();
+	const bool can_see_team_labels = !disp.current_display_context().is_observer();
 
 	// Global labels are shown unless covered by a team label.
 	if(team_name_.empty()) {

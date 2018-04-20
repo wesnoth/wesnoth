@@ -69,7 +69,7 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 	bool is_observer = false;
 	{ //TODO: Clean this block up somehow
 
-		const game_board * board = dynamic_cast<const game_board*>(&my_disp_.get_disp_context());
+		const game_board * board = dynamic_cast<const game_board*>(&my_disp_.current_display_context());
 
 		if (board) {
 			is_observer = board->is_observer();

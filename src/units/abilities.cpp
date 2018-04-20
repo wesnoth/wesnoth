@@ -129,7 +129,7 @@ namespace
 bool affects_side(const config& cfg, std::size_t side, std::size_t other_side)
 {
 	// display::get_singleton() has already been confirmed valid by both callers.
-	const team& side_team = display::get_singleton()->get_disp_context().get_team(side);
+	const team& side_team = display::get_singleton()->current_display_context().get_team(side);
 
 	if(side == other_side || !side_team.is_enemy(other_side)) {
 		return cfg["affect_allies"].to_bool(true);
