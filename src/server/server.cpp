@@ -650,17 +650,46 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 	}
 
 	const bool is_moderator = user_handler_ && user_handler_->user_is_moderator(username);
-	const bool is_auth_banned = user_handler_ && user_handler_->user_is_banned(username, client_address(socket));
+	const user_handler::BAN_TYPE auth_ban = user_handler_
+		                                    ? user_handler_->user_is_banned(username, client_address(socket))
+		                                    : user_handler::BAN_NONE;
 
-	if(is_auth_banned) {
+	if(auth_ban) {
+		std::string ban_type_desc;
+		std::string ban_reason;
+		const char* msg_numeric;
+
+		switch(auth_ban) {
+			case user_handler::BAN_USER:
+				ban_type_desc = "account";
+				msg_numeric = MP_NAME_AUTH_BAN_USER_ERROR;
+				ban_reason = "a ban has been issued on your user account.";
+				break;
+			case user_handler::BAN_IP:
+				ban_type_desc = "IP address";
+				msg_numeric = MP_NAME_AUTH_BAN_IP_ERROR;
+				ban_reason = "a ban has been issued on your IP address.";
+				break;
+			case user_handler::BAN_EMAIL:
+				ban_type_desc = "email address";
+				msg_numeric = MP_NAME_AUTH_BAN_EMAIL_ERROR;
+				ban_reason = "a ban has been issued on your email address.";
+				break;
+			default:
+				ban_type_desc = "<unknown ban type>";
+				msg_numeric = "";
+				ban_reason = ban_type_desc;
+		}
+
 		if(!is_moderator) {
 			LOG_SERVER << client_address(socket) << "\t" << username
-			           << "\tis banned by user_handler\n";
-			async_send_error(socket, "The nickname '" + username + "' is banned on this server.", MP_NAME_AUTH_BAN_ERROR);
+			           << "\tis banned by user_handler (" << ban_type_desc << ")\n";
+			async_send_error(socket, "You are banned from this server: " + ban_reason, msg_numeric);
 			return false;
 		} else {
 			LOG_SERVER << client_address(socket) << "\t" << username
-			           << "\tis banned by user_handler, ignoring due to moderator flag\n";
+			           << "\tis banned by user_handler (" << ban_type_desc << "), "
+			           << "ignoring due to moderator flag\n";
 		}
 	}
 
@@ -694,7 +723,7 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 									"If you no longer want to be automatically authenticated use '/query signout'.");
 	}
 
-	if(is_auth_banned) {
+	if(auth_ban) {
 		send_server_message(socket, "You are currently banned by the forum administration.");
 	}
 

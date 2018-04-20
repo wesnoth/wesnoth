@@ -69,7 +69,7 @@ class fuh : public user_handler {
 		bool user_is_moderator(const std::string& name);
 		void set_is_moderator(const std::string& name, const bool& is_moderator);
 
-		bool user_is_banned(const std::string& name, const std::string& addr);
+		BAN_TYPE user_is_banned(const std::string& name, const std::string& addr);
 
 		// Throws user_handler::error
 		std::string user_info(const std::string& name);
