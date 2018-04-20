@@ -40,6 +40,7 @@ fuh::fuh(const config& c)
 	, db_user_(c["db_user"].str())
 	, db_password_(c["db_password"].str())
 	, db_users_table_(c["db_users_table"].str())
+	, db_banlist_table_(c["db_banlist_table"].str())
 	, db_extra_table_(c["db_extra_table"].str())
 	, conn(mysql_init(nullptr))
 {
@@ -169,6 +170,41 @@ void fuh::set_is_moderator(const std::string& name, const bool& is_moderator) {
 	} catch (sql_error& e) {
 		ERR_UH << "Could not set is_moderator for user '" << name << "' :" << e.message << std::endl;
 	}
+}
+
+bool fuh::user_is_banned(const std::string& name, const std::string& addr)
+{
+	if(!user_exists(name)) {
+		throw error("No user with the name '" + name + "' exists.");
+	}
+
+	try {
+		auto uid = get_detail_for_user<unsigned int>(name, "user_id");
+
+		if(uid == 0) {
+			ERR_UH << "Invalid user id for user '" << name << "'\n";
+		} else if(prepared_statement<bool>("SELECT 1 FROM `" + db_banlist_table_ + "` WHERE ban_userid = ? AND ban_exclude = 0", uid)) {
+			LOG_UH << "User '" << name << "' uid " << uid << " banned by uid\n";
+			return true;
+		}
+
+		if(!addr.empty() && prepared_statement<bool>("SELECT 1 FROM `" + db_banlist_table_ + "` WHERE UPPER(ban_ip) = UPPER(?) AND ban_exclude = 0", addr)) {
+			LOG_UH << "User '" << name << "' ip " << addr << " banned by IP address\n";
+			return true;
+		}
+
+		auto email = get_detail_for_user<std::string>(name, "user_email");
+
+		if(!email.empty() && prepared_statement<bool>("SELECT 1 FROM `" + db_banlist_table_ + "` WHERE UPPER(ban_email) = UPPER(?) AND ban_exclude = 0", email)) {
+			LOG_UH << "User '" << name << "' email " << email << " banned by email address\n";
+			return true;
+		}
+
+	} catch(sql_error& e) {
+		ERR_UH << "Could not check forum bans on user '" << name << "' :" << e.message << '\n';
+	}
+
+	return false;
 }
 
 std::string fuh::user_info(const std::string& name) {

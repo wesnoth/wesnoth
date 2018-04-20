@@ -76,6 +76,17 @@ static MYSQL_BIND make_bind(int& i, my_bool* is_null = 0)
 	return result;
 }
 
+static MYSQL_BIND make_bind(unsigned int& i, my_bool* is_null = 0)
+{
+	MYSQL_BIND result;
+	memset(&result, 0, sizeof (MYSQL_BIND));
+	result.buffer_type = MYSQL_TYPE_LONG;
+	result.buffer = static_cast<void*>(&i);
+	result.is_unsigned = 1;
+	result.is_null = is_null;
+	return result;
+}
+
 template<typename... Args> constexpr auto make_binds(Args&&... args)
 	-> std::array<MYSQL_BIND, sizeof...(Args)>
 {
@@ -122,9 +133,9 @@ template<> std::string fetch_result<std::string>(MYSQL_STMT* stmt, const std::st
 	return result;
 }
 
-template<> int fetch_result<int>(MYSQL_STMT* stmt, const std::string& sql)
+template<typename T> T fetch_result_long_internal_(MYSQL_STMT* stmt, const std::string& sql)
 {
-	int result;
+	T result;
 	my_bool is_null;
 	MYSQL_BIND result_bind[1] = { make_bind(result, &is_null) };
 
@@ -143,6 +154,16 @@ template<> int fetch_result<int>(MYSQL_STMT* stmt, const std::string& sql)
 	if(res != 0)
 		throw sql_error(mysql_stmt_error(stmt), sql);
 	return result;
+}
+
+template<> int fetch_result<int>(MYSQL_STMT* stmt, const std::string& sql)
+{
+	return fetch_result_long_internal_<int>(stmt, sql);
+}
+
+template<> unsigned int fetch_result<unsigned int>(MYSQL_STMT* stmt, const std::string& sql)
+{
+	return fetch_result_long_internal_<unsigned int>(stmt, sql);
 }
 
 template<> bool fetch_result<bool>(MYSQL_STMT* stmt, const std::string& sql)

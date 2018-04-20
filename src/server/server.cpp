@@ -649,6 +649,21 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 		return false;
 	}
 
+	const bool is_moderator = user_handler_ && user_handler_->user_is_moderator(username);
+	const bool is_auth_banned = user_handler_ && user_handler_->user_is_banned(username, client_address(socket));
+
+	if(is_auth_banned) {
+		if(!is_moderator) {
+			LOG_SERVER << client_address(socket) << "\t" << username
+			           << "\tis banned by user_handler\n";
+			async_send_error(socket, "The nickname '" + username + "' is banned on this server.", MP_NAME_AUTH_BAN_ERROR);
+			return false;
+		} else {
+			LOG_SERVER << client_address(socket) << "\t" << username
+			           << "\tis banned by user_handler, ignoring due to moderator flag\n";
+		}
+	}
+
 	if(name_taken) {
 		if(registered) {
 			// If there is already a client using this username kick it
@@ -670,13 +685,17 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 	LOG_SERVER << client_address(socket) << "\t" << username
 			   << "\thas logged on" << (registered ? " to a registered account" : "") << "\n";
 
-	if(user_handler_ && user_handler_->user_is_moderator(username)) {
+	if(is_moderator) {
 		LOG_SERVER << "Admin automatically recognized: IP: "
 				   << client_address(socket) << "\tnick: "
 				   << username << std::endl;
 		// This string is parsed by the client!
 		send_server_message(socket, "You are now recognized as an administrator. "
 									"If you no longer want to be automatically authenticated use '/query signout'.");
+	}
+
+	if(is_auth_banned) {
+		send_server_message(socket, "You are currently banned by the forum administration.");
 	}
 
 	// Log the IP
