@@ -186,7 +186,7 @@ void wesnothd_connection::send_data(const configr_of& request)
 void wesnothd_connection::cancel()
 {
 	MPTEST_LOG;
-	if(socket_open()) {
+	if(socket_.is_open()) {
 		boost::system::error_code ec;
 
 #ifdef _MSC_VER
