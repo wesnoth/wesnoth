@@ -406,6 +406,10 @@ bool wesnothd_connection::wait_and_receive_data(config& data)
 {
 	while(!has_data_received()) {
 		SDL_Delay(1);
+		std::lock_guard<std::mutex> lock(last_error_mutex_);
+		if(last_error_) {
+			break;
+		}
 	}
 
 	return receive_data(data);
