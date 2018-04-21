@@ -92,7 +92,7 @@ void send(const std::string& owner, const std::string& message, type t)
 	windows_tray_notification::show(notification_title, notification_message);
 #endif
 }
-#endif //end #else (defined(HAVE_LIBDBUS) || defined(HAVE_GROWL) || defined(_WIN32))
+#endif //end #else (defined(HAVE_LIBDBUS) || defined(_WIN32))
 
 } //end namespace notifications
 
