@@ -595,179 +595,193 @@ void server::login(socket_ptr socket)
 void server::handle_login(socket_ptr socket, std::shared_ptr<simple_wml::document> doc)
 {
 	if(const simple_wml::node* const login = doc->child("login")) {
-		// Check if the username is valid (all alpha-numeric plus underscore and hyphen)
-		std::string username = (*login)["username"].to_string();
-		if (!utils::isvalid_username(username)) {
-			async_send_error(socket, "The nickname '" + username + "' contains invalid "
-									 "characters. Only alpha-numeric characters, underscores and hyphens"
-									 "are allowed.", MP_INVALID_CHARS_IN_NAME_ERROR);
-			server::login(socket);
-			return;
-		}
-		if (username.size() > 20) {
-			async_send_error(socket, "The nickname '" + username + "' is too long. Nicks must be 20 characters or less.",
-							 MP_NAME_TOO_LONG_ERROR);
-			server::login(socket);
-			return;
-		}
-		// Check if the username is allowed.
-		for (std::vector<std::string>::const_iterator d_it = disallowed_names_.begin();
-			 d_it != disallowed_names_.end(); ++d_it)
-		{
-			if (utils::wildcard_string_match(utf8::lowercase(username),
-											 utf8::lowercase(*d_it)))
-			{
-				async_send_error(socket, "The nickname '" + username + "' is reserved and cannot be used by players",
-								 MP_NAME_RESERVED_ERROR);
-				server::login(socket);
-				return;
-			}
-		}
-
-		// Check the username isn't already taken
-		auto p = player_connections_.get<name_t>().find(username);
-		bool name_taken = p != player_connections_.get<name_t>().end();
-
-		// Check for password
-
-		// Current login procedure  for registered nicks is:
-		// - Client asks to log in with a particular nick
-		// - Server sends client random nonce plus some info
-		// 	generated from the original hash that is required to
-		// 	regenerate the hash
-		// - Client generates hash for the user provided password
-		// 	and mixes it with the received random nonce
-		// - Server received password hash hashed with the nonce,
-		// applies the nonce to the valid hash and compares the results
-
-		bool registered = false;
-		if(user_handler_) {
-			std::string password = (*login)["password"].to_string();
-			const bool exists = user_handler_->user_exists(username);
-			// This name is registered but the account is not active
-			if(exists && !user_handler_->user_is_active(username)) {
-				async_send_warning(socket, "The nickname '" + username + "' is inactive. You cannot claim ownership of this "
-																		 "nickname until you activate your account via email or ask an administrator to do it for you.", MP_NAME_INACTIVE_WARNING);
-				//registered = false;
-			}
-			else if(exists) {
-				// This name is registered and no password provided
-				if(password.empty()) {
-					if(!name_taken) {
-						send_password_request(socket, "The nickname '" + username +"' is registered on this server.",
-											  username, MP_PASSWORD_REQUEST);
-					} else {
-						send_password_request(socket, "The nickname '" + username + "' is registered on this server."
-													  "\n\nWARNING: There is already a client using this username, "
-													  "logging in will cause that client to be kicked!",
-											  username, MP_PASSWORD_REQUEST_FOR_LOGGED_IN_NAME, true);
-					}
-					return;
-				}
-
-				// A password (or hashed password) was provided, however
-				// there is no seed
-				if(seeds_[reinterpret_cast<long int>(socket.get())].empty()) {
-					send_password_request(socket, "Please try again.", username, MP_NO_SEED_ERROR);
-					return;
-				}
-				// This name is registered and an incorrect password provided
-				else if(!(user_handler_->login(username, password, seeds_[reinterpret_cast<unsigned long>(socket.get())]))) {
-					const time_t now = time(nullptr);
-
-					// Reset the random seed
-					seeds_.erase(reinterpret_cast<unsigned long>(socket.get()));
-
-					login_log login_ip = login_log(client_address(socket), 0, now);
-					std::deque<login_log>::iterator i = std::find(failed_logins_.begin(), failed_logins_.end(), login_ip);
-					if(i == failed_logins_.end()) {
-						failed_logins_.push_back(login_ip);
-						i = --failed_logins_.end();
-
-						// Remove oldest entry if maximum size is exceeded
-						if(failed_logins_.size() > failed_login_buffer_size_)
-							failed_logins_.pop_front();
-
-					}
-
-					if (i->first_attempt + failed_login_ban_ < now) {
-						// Clear and move to the beginning
-						failed_logins_.erase(i);
-						failed_logins_.push_back(login_ip);
-						i = --failed_logins_.end();
-					}
-
-					i->attempts++;
-
-					if (i->attempts > failed_login_limit_) {
-						LOG_SERVER << ban_manager_.ban(login_ip.ip, now + failed_login_ban_, "Maximum login attempts exceeded", "automatic", "", username);
-						async_send_error(socket, "You have made too many failed login attempts.", MP_TOO_MANY_ATTEMPTS_ERROR);
-					} else {
-						send_password_request(socket, "The password you provided for the nickname '" + username +
-											  "' was incorrect.", username, MP_INCORRECT_PASSWORD_ERROR);
-					}
-
-					// Log the failure
-					LOG_SERVER << client_address(socket) << "\t"
-							   << "Login attempt with incorrect password for nickname '" << username << "'.\n";
-					return;
-				}
-				// This name exists and the password was neither empty nor incorrect
-				registered = true;
-				// Reset the random seed
-				seeds_.erase(reinterpret_cast<long int>(socket.get()));
-				user_handler_->user_logged_in(username);
-			}
-		}
-
-		// If we disallow unregistered users and this user is not registered send an error
-		if(user_handler_ && !registered && deny_unregistered_login_) {
-			async_send_error(socket, "The nickname '" + username + "' is not registered. "
-									 "This server disallows unregistered nicknames.", MP_NAME_UNREGISTERED_ERROR);
-			return;
-		}
-
-		if(name_taken) {
-			if(registered) {
-				// If there is already a client using this username kick it
-				process_command("kick " + p->info().name() + " autokick by registered user", username);
-			} else {
-				async_send_error(socket, "The nickname '" + username + "' is already taken.", MP_NAME_TAKEN_ERROR);
-				server::login(socket);
-				return;
-			}
-		}
-
-		simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
-		async_send_doc(socket, join_lobby_response_,
-			std::bind(&server::add_player, this, _1,
-				wesnothd::player(username, player_cfg, registered,
-				default_max_messages_, default_time_period_,
-				user_handler_ && user_handler_->user_is_moderator(username))
-			)
-		);
-		LOG_SERVER << client_address(socket) << "\t" << username
-				   << "\thas logged on" << (registered ? " to a registered account" : "") << "\n";
-
-		if(user_handler_ && user_handler_->user_is_moderator(username)) {
-			LOG_SERVER << "Admin automatically recognized: IP: "
-					   << client_address(socket) << "\tnick: "
-					   << username << std::endl;
-			// This string is parsed by the client!
-			send_server_message(socket, "You are now recognized as an administrator. "
-										"If you no longer want to be automatically authenticated use '/query signout'.");
-		}
-
-		// Log the IP
-		connection_log ip_name = connection_log(username, client_address(socket), 0);
-		if (std::find(ip_log_.begin(), ip_log_.end(), ip_name) == ip_log_.end()) {
-			ip_log_.push_back(ip_name);
-			// Remove the oldest entry if the size of the IP log exceeds the maximum size
-			if(ip_log_.size() > max_ip_log_size_) ip_log_.pop_front();
+		if(!is_login_allowed(socket, login)) {
+			server::login(socket); // keep reading logins from client until we get a successful one
 		}
 	} else {
 		async_send_error(socket, "You must login first.", MP_MUST_LOGIN);
 	}
+}
+
+bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const login)
+{
+	// Check if the username is valid (all alpha-numeric plus underscore and hyphen)
+	std::string username = (*login)["username"].to_string();
+	if (!utils::isvalid_username(username)) {
+		async_send_error(socket, "The nickname '" + username + "' contains invalid "
+								 "characters. Only alpha-numeric characters, underscores and hyphens"
+								 "are allowed.", MP_INVALID_CHARS_IN_NAME_ERROR);
+		return false;
+	}
+	if (username.size() > 20) {
+		async_send_error(socket, "The nickname '" + username + "' is too long. Nicks must be 20 characters or less.",
+						 MP_NAME_TOO_LONG_ERROR);
+		return false;
+	}
+	// Check if the username is allowed.
+	for (std::vector<std::string>::const_iterator d_it = disallowed_names_.begin();
+		 d_it != disallowed_names_.end(); ++d_it)
+	{
+		if (utils::wildcard_string_match(utf8::lowercase(username),
+										 utf8::lowercase(*d_it)))
+		{
+			async_send_error(socket, "The nickname '" + username + "' is reserved and cannot be used by players",
+							 MP_NAME_RESERVED_ERROR);
+			return false;
+		}
+	}
+
+	// Check the username isn't already taken
+	auto p = player_connections_.get<name_t>().find(username);
+	bool name_taken = p != player_connections_.get<name_t>().end();
+
+	// Check for password
+
+	bool registered;
+	if(!authenticate(socket, username, (*login)["password"].to_string(), name_taken, registered))
+		return true; // it's a failed login but we don't want to call server::login again
+					 // because send_password_request() will handle the next network write and read instead
+
+	// If we disallow unregistered users and this user is not registered send an error
+	if(user_handler_ && !registered && deny_unregistered_login_) {
+		async_send_error(socket, "The nickname '" + username + "' is not registered. "
+								 "This server disallows unregistered nicknames.", MP_NAME_UNREGISTERED_ERROR);
+		return false;
+	}
+
+	if(name_taken) {
+		if(registered) {
+			// If there is already a client using this username kick it
+			process_command("kick " + p->info().name() + " autokick by registered user", username);
+		} else {
+			async_send_error(socket, "The nickname '" + username + "' is already taken.", MP_NAME_TAKEN_ERROR);
+			return false;
+		}
+	}
+
+	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
+	async_send_doc(socket, join_lobby_response_,
+		std::bind(&server::add_player, this, _1,
+			wesnothd::player(username, player_cfg, registered,
+			default_max_messages_, default_time_period_,
+			user_handler_ && user_handler_->user_is_moderator(username))
+		)
+	);
+	LOG_SERVER << client_address(socket) << "\t" << username
+			   << "\thas logged on" << (registered ? " to a registered account" : "") << "\n";
+
+	if(user_handler_ && user_handler_->user_is_moderator(username)) {
+		LOG_SERVER << "Admin automatically recognized: IP: "
+				   << client_address(socket) << "\tnick: "
+				   << username << std::endl;
+		// This string is parsed by the client!
+		send_server_message(socket, "You are now recognized as an administrator. "
+									"If you no longer want to be automatically authenticated use '/query signout'.");
+	}
+
+	// Log the IP
+	connection_log ip_name = connection_log(username, client_address(socket), 0);
+	if (std::find(ip_log_.begin(), ip_log_.end(), ip_name) == ip_log_.end()) {
+		ip_log_.push_back(ip_name);
+		// Remove the oldest entry if the size of the IP log exceeds the maximum size
+		if(ip_log_.size() > max_ip_log_size_) ip_log_.pop_front();
+	}
+
+	return true;
+}
+
+bool server::authenticate(socket_ptr socket, const std::string& username, const std::string& password, bool name_taken, bool& registered)
+{
+	// Current login procedure  for registered nicks is:
+	// - Client asks to log in with a particular nick
+	// - Server sends client random nonce plus some info
+	// 	generated from the original hash that is required to
+	// 	regenerate the hash
+	// - Client generates hash for the user provided password
+	// 	and mixes it with the received random nonce
+	// - Server received password hash hashed with the nonce,
+	// applies the nonce to the valid hash and compares the results
+
+	registered = false;
+	if(user_handler_) {
+		const bool exists = user_handler_->user_exists(username);
+		// This name is registered but the account is not active
+		if(exists && !user_handler_->user_is_active(username)) {
+			async_send_warning(socket, "The nickname '" + username + "' is inactive. You cannot claim ownership of this "
+																	 "nickname until you activate your account via email or ask an administrator to do it for you.", MP_NAME_INACTIVE_WARNING);
+			//registered = false;
+		}
+		else if(exists) {
+			// This name is registered and no password provided
+			if(password.empty()) {
+				if(!name_taken) {
+					send_password_request(socket, "The nickname '" + username +"' is registered on this server.",
+										  username, MP_PASSWORD_REQUEST);
+				} else {
+					send_password_request(socket, "The nickname '" + username + "' is registered on this server."
+												  "\n\nWARNING: There is already a client using this username, "
+												  "logging in will cause that client to be kicked!",
+										  username, MP_PASSWORD_REQUEST_FOR_LOGGED_IN_NAME, true);
+				}
+				return false;
+			}
+
+			// A password (or hashed password) was provided, however
+			// there is no seed
+			if(seeds_[reinterpret_cast<long int>(socket.get())].empty()) {
+				send_password_request(socket, "Please try again.", username, MP_NO_SEED_ERROR);
+				return false;
+			}
+			// This name is registered and an incorrect password provided
+			else if(!(user_handler_->login(username, password, seeds_[reinterpret_cast<unsigned long>(socket.get())]))) {
+				const time_t now = time(nullptr);
+
+				// Reset the random seed
+				seeds_.erase(reinterpret_cast<unsigned long>(socket.get()));
+
+				login_log login_ip = login_log(client_address(socket), 0, now);
+				std::deque<login_log>::iterator i = std::find(failed_logins_.begin(), failed_logins_.end(), login_ip);
+				if(i == failed_logins_.end()) {
+					failed_logins_.push_back(login_ip);
+					i = --failed_logins_.end();
+
+					// Remove oldest entry if maximum size is exceeded
+					if(failed_logins_.size() > failed_login_buffer_size_)
+						failed_logins_.pop_front();
+
+				}
+
+				if (i->first_attempt + failed_login_ban_ < now) {
+					// Clear and move to the beginning
+					failed_logins_.erase(i);
+					failed_logins_.push_back(login_ip);
+					i = --failed_logins_.end();
+				}
+
+				i->attempts++;
+
+				if (i->attempts > failed_login_limit_) {
+					LOG_SERVER << ban_manager_.ban(login_ip.ip, now + failed_login_ban_, "Maximum login attempts exceeded", "automatic", "", username);
+					async_send_error(socket, "You have made too many failed login attempts.", MP_TOO_MANY_ATTEMPTS_ERROR);
+				} else {
+					send_password_request(socket, "The password you provided for the nickname '" + username +
+										  "' was incorrect.", username, MP_INCORRECT_PASSWORD_ERROR);
+				}
+
+				// Log the failure
+				LOG_SERVER << client_address(socket) << "\t"
+						   << "Login attempt with incorrect password for nickname '" << username << "'.\n";
+				return false;
+			}
+			// This name exists and the password was neither empty nor incorrect
+			registered = true;
+			// Reset the random seed
+			seeds_.erase(reinterpret_cast<long int>(socket.get()));
+			user_handler_->user_logged_in(username);
+		}
+	}
+
+	return true;
 }
 
 void server::send_password_request(socket_ptr socket, const std::string& msg,

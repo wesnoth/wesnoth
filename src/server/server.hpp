@@ -43,6 +43,8 @@ private:
 
 	void login(socket_ptr socket);
 	void handle_login(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
+	bool is_login_allowed(socket_ptr socket, const simple_wml::node* const login);
+	bool authenticate(socket_ptr socket, const std::string& username, const std::string& password, bool name_taken, bool& registered);
 	void send_password_request(socket_ptr socket, const std::string& msg,
 		const std::string& user, const char* error_code = "", bool force_confirmation = false);
 	bool accepting_connections() const { return !graceful_restart; }
