@@ -25,10 +25,6 @@ bool available() {
 	if(notificationClass) {
 		return true;
 	}
-	notificationClass = NSClassFromString(@"GrowlApplicationBridge");
-	if(notificationClass) {
-		return true;
-	}
 	return false;
 }
 
