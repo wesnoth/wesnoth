@@ -349,7 +349,8 @@ const std::set<map_location>& tod_manager::get_area_by_id(const std::string& id)
 		if (area.id == id)
 			return area.hexes;
 	}
-	return areas_[0].hexes;
+	static const std::set<map_location> res;
+	return res;
 }
 
 const std::set<map_location>& tod_manager::get_area_by_index(int index) const
