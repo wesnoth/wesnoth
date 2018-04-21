@@ -46,7 +46,6 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
-#include "serialization/string_utils.hpp"
 #include "formula/string_utils.hpp"
 #include "image.hpp"
 #include "language.hpp"

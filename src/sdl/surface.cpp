@@ -15,7 +15,6 @@
 
 #include "sdl/rect.hpp"
 #include "sdl/utils.hpp"
-#include "video.hpp"
 
 void surface::free_surface()
 {

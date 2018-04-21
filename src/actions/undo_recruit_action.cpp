@@ -23,7 +23,6 @@
 #include "units/unit.hpp"
 #include "statistics.hpp"
 #include "log.hpp"
-#include "game_display.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)

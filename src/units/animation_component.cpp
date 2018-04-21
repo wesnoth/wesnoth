@@ -16,7 +16,6 @@
 
 #include "config.hpp"
 #include "display.hpp"
-#include "map/map.hpp"
 #include "preferences/display.hpp"
 #include "random.hpp"
 #include "units/unit.hpp"

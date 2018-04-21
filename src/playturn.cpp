@@ -32,7 +32,6 @@
 #include "preferences/general.hpp"              // for message_bell
 #include "replay.hpp"                   // for replay, recorder, do_replay, etc
 #include "resources.hpp"                // for gameboard, screen, etc
-#include "serialization/string_utils.hpp"  // for string_map
 #include "synced_context.hpp"
 #include "team.hpp"                     // for team, team::CONTROLLER::AI, etc
 #include "wesnothd_connection_error.hpp"

@@ -20,7 +20,6 @@
 #include "map/map.hpp"
 
 #include "config.hpp"
-#include "formula/string_utils.hpp"
 #include "log.hpp"
 #include "map/exception.hpp"
 #include "serialization/parser.hpp"

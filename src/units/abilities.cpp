@@ -29,7 +29,6 @@
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "resources.hpp"
-#include "serialization/string_view.hpp"
 #include "team.hpp"
 #include "terrain/filter.hpp"
 #include "units/filter.hpp"

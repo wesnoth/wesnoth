@@ -21,7 +21,6 @@
 #include "serialization/string_utils.hpp"
 #include "game_config_manager.hpp"
 #include "gettext.hpp"
-#include "language.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "generators/map_generator.hpp" // mapgen_exception

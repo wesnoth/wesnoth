@@ -28,7 +28,6 @@
 #include "units/ptr.hpp"
 #include "utils/make_enum.hpp"
 
-#include "display_context.hpp"
 #include "filter_context.hpp"
 #include "units/map.hpp"
 #include "variable.hpp"

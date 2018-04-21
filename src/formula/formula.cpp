@@ -18,7 +18,6 @@
 #include "formula/function.hpp"
 #include "formula/string_utils.hpp"
 #include "random.hpp"
-#include "serialization/string_utils.hpp"
 #include "log.hpp"
 
 #include <cassert>

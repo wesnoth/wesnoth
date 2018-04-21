@@ -29,7 +29,6 @@
 #include "ai/lua/lua_object.hpp" // (Nephro)
 
 #include "attack_prediction.hpp"
-#include "game_display.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "pathfind/pathfind.hpp"
