@@ -92,6 +92,11 @@ public:
 	// Destroys this object.
 	void stop();
 
+	bool socket_open() const
+	{
+		return socket_.is_open();
+	}
+
 	/** True if connected and no high-level operation is in progress */
 	bool handshake_finished() const
 	{
