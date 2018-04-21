@@ -31,9 +31,9 @@ namespace notifications
  * be issued. If there is no support for notifications, this fcn is a no-op.
  *
  * @note Currently we have support for dbus (linux), windows tray notifications,
- * and growl (Apple). To enable one of these, the corresponding compilation unit
- * dbus_notification.cpp, growl_notification.cpp, windows_tray_notification.cpp,
- * must be compiled, and the corresponding C++ symbol HAVE_LIBDBUS, HAVE_GROWL,
+ * and NSUserNotification (Apple). To enable one of these, the corresponding compilation unit
+ * dbus_notification.cpp, apple_notification.cpp, windows_tray_notification.cpp,
+ * must be compiled, and the corresponding C++ symbol HAVE_LIBDBUS,
  * _WIN32 must be defined for that compilation unit _and for this one_.
  */
 	void send(const std::string& owner, const std::string& message, type t);
