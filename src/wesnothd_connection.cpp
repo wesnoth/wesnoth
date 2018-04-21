@@ -319,7 +319,7 @@ void wesnothd_connection::handle_read(const boost::system::error_code& ec, std::
 	std::istream is(&read_buf_);
 	config data;
 	read_gz(data, is);
-	if(!data.empty()) DBG_NW << "Received:\n" << data;
+	if(!data.empty()) { DBG_NW << "Received:\n" << data; }
 
 	{
 		std::lock_guard<std::mutex> lock(recv_queue_mutex_);
