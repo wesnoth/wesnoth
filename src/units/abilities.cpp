@@ -409,6 +409,19 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 	return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc);
 }
 
+bool unit::ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bool is_opp) const
+{
+	const std::string filter_tag_name = is_opp ? "filter_second_weapon" : "filter_weapon";
+	if(!cfg.has_child(filter_tag_name)) {
+		return true;
+	}
+	const config& filter = cfg.child(filter_tag_name);
+	if(!weapon) {
+		return false;
+	}
+	return weapon->matches_filter(filter);
+}
+
 bool unit::has_ability_type(const std::string& ability) const
 {
 	return !abilities_.child_range(ability).empty();
