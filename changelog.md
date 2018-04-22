@@ -46,6 +46,8 @@
    * Added team color to a few background units missing in Aethermaw.
  ### Packaging
    * OpenMP support has been removed. It is no longer an optional build-time dependency.
+ ### Units
+   * Changed the plural name for the merfolk race from Mermen to Merfolk (issue #2940).
  ### User Interface
    * Swapped the position and formatting of game names and titles in the MP lobby.
    * Made Faction Select button's purpose more clear in MP Staging.
