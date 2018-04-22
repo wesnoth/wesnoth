@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-04-19 23:13+0200\n"
+"PO-Revision-Date: 2018-04-19 23:52+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -2252,7 +2252,7 @@ msgstr "Velikost:"
 #. [label]
 #: data/gui/window/addon_manager.cfg:463
 msgid "Downloads:"
-msgstr "Ke stažení:"
+msgstr "Počet stažení:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:509
@@ -2862,7 +2862,7 @@ msgstr "Bez vůdce"
 #. [toggle_button]: id=fog
 #: data/gui/window/editor_edit_side.cfg:208
 msgid "Fog of war"
-msgstr "Mlha pro skrytí nepřátelských pohybů"
+msgstr "Zahalení mlhou"
 
 #. [toggle_button]: id=hidden
 #: data/gui/window/editor_edit_side.cfg:220
@@ -3947,7 +3947,7 @@ msgstr "Éry:"
 #. [label]
 #: data/gui/window/mp_create_game.cfg:155
 msgid "Random Faction Matchups:"
-msgstr ""
+msgstr "Náhodné rozdělování frakcí:"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:156
@@ -4058,7 +4058,7 @@ msgstr "Časový limit"
 #. [toggle_button]: id=time_limit
 #: data/gui/window/mp_create_game.cfg:435
 msgid "Enable custom time limits"
-msgstr ""
+msgstr "Povolit vlastní časové limity"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:451
@@ -4154,19 +4154,19 @@ msgstr "Pozorovatelé"
 
 #: data/gui/window/mp_create_game.cfg:937
 msgid "Allow only registered users to join the game"
-msgstr ""
+msgstr "Pouze registrovaní uživatelé se budou moct připojit do této hry"
 
 #: data/gui/window/mp_create_game.cfg:937
 msgid "Registered Users Only"
-msgstr ""
+msgstr "Pouze registrovaní uživatelé"
 
 #: data/gui/window/mp_create_game.cfg:941
 msgid "Strict Synchronization"
-msgstr ""
+msgstr "Striktní synchronizace"
 
 #: data/gui/window/mp_create_game.cfg:941
 msgid "Stricter checks for out-of-sync errors"
-msgstr ""
+msgstr "Striktnější kontroly toho, jestli není hra mimo synchronizaci"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:957
@@ -4400,7 +4400,7 @@ msgstr "Vybrat"
 #. [button]: id=select_leader
 #: data/gui/window/mp_staging.cfg:70
 msgid "Select the faction and leader for this side"
-msgstr ""
+msgstr "Vyber frakci a vůdce pro tuto stranu"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
@@ -4419,7 +4419,7 @@ msgstr "Změna hlasitosti hudebního doprovodu"
 #. [menu_button]: id=side_team
 #: data/gui/window/mp_staging.cfg:288
 msgid "Which team this side belongs to"
-msgstr ""
+msgstr "Jakému týmu náleží tato strana"
 
 #. [menu_button]: id=side_color
 #: data/gui/window/mp_staging.cfg:304
@@ -4769,12 +4769,12 @@ msgstr "Hlasitost:"
 #. [toggle_button]: id=sound_toggle_stop_music_in_background
 #: data/gui/window/preferences/04_sound.cfg:82
 msgid "Pause music on focus loss"
-msgstr ""
+msgstr "Pozastavit hudbu, když běží na pozadí"
 
 #. [toggle_button]: id=sound_toggle_stop_music_in_background
 #: data/gui/window/preferences/04_sound.cfg:83
 msgid "Pause the music when you switch to any other window"
-msgstr ""
+msgstr "Pozastavit hudbu, když se přepnete do jiného okna"
 
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:104
@@ -5076,7 +5076,7 @@ msgstr "Skutečně se chceš vzdát a opustit hru?"
 #. [button]: id=quit_and_surrender
 #: data/gui/window/surrender_quit.cfg:85
 msgid "Surrender & Quit"
-msgstr ""
+msgstr "Vzdát se & Ukončit"
 
 #. [label]: id=lblTitle
 #: data/gui/window/synced_choice_wait.cfg:40
