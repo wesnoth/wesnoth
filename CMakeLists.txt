@@ -228,6 +228,12 @@ if(ENABLE_PEDANTIC_COMPILATION)
 
 endif(ENABLE_PEDANTIC_COMPILATION)
 
+# check for sanitizer options
+if(SANITIZE)
+	set(COMPILER_FLAGS "${COMPILER_FLAGS} -fsanitize=${SANITIZE}")
+	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=${SANITIZE}")
+endif(SANITIZE)
+
 ### Set the final compiler flags.
 
 set(COMPILER_FLAGS "${COMPILER_FLAGS} ${CXX_FLAGS_USER}")
