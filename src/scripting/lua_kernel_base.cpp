@@ -40,7 +40,6 @@
 #include "image.hpp"
 
 #include "formula/string_utils.hpp"
-#include "serialization/string_utils.hpp"
 #include "utils/functional.hpp"
 #include "utils/name_generator.hpp"
 #include "utils/markov_generator.hpp"

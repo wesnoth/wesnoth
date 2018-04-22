@@ -15,7 +15,6 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "config.hpp"
-#include "display_context.hpp"
 #include "filter_context.hpp"
 #include "log.hpp"
 #include "recall_list_manager.hpp"

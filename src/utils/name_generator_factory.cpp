@@ -12,7 +12,6 @@
 */
 
 #include "log.hpp"
-#include "serialization/string_utils.hpp"
 #include "utils/name_generator_factory.hpp"
 #include "utils/name_generator.hpp"
 #include "utils/context_free_grammar_generator.hpp"

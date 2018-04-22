@@ -186,7 +186,7 @@ void wesnothd_connection::send_data(const configr_of& request)
 void wesnothd_connection::cancel()
 {
 	MPTEST_LOG;
-	if(socket_open()) {
+	if(socket_.is_open()) {
 		boost::system::error_code ec;
 
 #ifdef _MSC_VER
@@ -320,12 +320,13 @@ void wesnothd_connection::handle_read(const boost::system::error_code& ec, std::
 	std::istream is(&read_buf_);
 	config data;
 	read_gz(data, is);
+	if(!data.empty()) { DBG_NW << "Received:\n" << data; }
+
 	{
 		std::lock_guard<std::mutex> lock(recv_queue_mutex_);
 		recv_queue_.emplace_back(std::move(data));
 	}
 
-	DBG_NW << "Received " << recv_queue_.back() << " bytes.\n";
 	recv();
 }
 
@@ -406,6 +407,10 @@ bool wesnothd_connection::wait_and_receive_data(config& data)
 {
 	while(!has_data_received()) {
 		SDL_Delay(1);
+		std::lock_guard<std::mutex> lock(last_error_mutex_);
+		if(last_error_) {
+			break;
+		}
 	}
 
 	return receive_data(data);

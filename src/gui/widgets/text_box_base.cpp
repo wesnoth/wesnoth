@@ -54,7 +54,7 @@ text_box_base::text_box_base(const implementation::builder_styled_widget& builde
 	connect_signal<event::SDL_KEY_DOWN>(std::bind(
 			&text_box_base::signal_handler_sdl_key_down, this, _2, _3, _5, _6));
 	connect_signal<event::SDL_TEXT_INPUT>(std::bind(&text_box_base::handle_commit, this, _3, _5));
-	connect_signal<event::SDL_TEXT_EDITING>(std::bind(&text_box_base::handle_editing, this, _3, _5, _6));
+	connect_signal<event::SDL_TEXT_EDITING>(std::bind(&text_box_base::handle_editing, this, _3, _5, _6, _7));
 
 	connect_signal<event::RECEIVE_KEYBOARD_FOCUS>(std::bind(
 			&text_box_base::signal_handler_receive_keyboard_focus, this, _2));
@@ -418,11 +418,10 @@ void text_box_base::handle_commit(bool& handled, const std::string& unicode)
 	if(unicode.size() > 1 || unicode[0] != 0) {
 		handled = true;
 		if(is_composing()) {
-			set_selection(ime_start_point_ + get_composition_length(), 0);
+			set_selection(ime_start_point_, get_composition_length());
 			ime_composing_ = false;
-		} else {
-			insert_char(unicode);
 		}
+		insert_char(unicode);
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 
 		if(text_changed_callback_) {
@@ -431,7 +430,14 @@ void text_box_base::handle_commit(bool& handled, const std::string& unicode)
 	}
 }
 
-void text_box_base::handle_editing(bool& handled, const std::string& unicode, int32_t start)
+/**
+ * SDL_TEXTEDITING handler. See example at https://wiki.libsdl.org/Tutorials/TextInput
+ * @param handled
+ * @param unicode event.text.text, in SDL_TEXTEDITING is't the "composition" piece.
+ * @param start event.edit.start
+ * @param length event.edit.length
+ */
+void text_box_base::handle_editing(bool& handled, const std::string& unicode, int32_t start, int32_t len)
 {
 	if(unicode.size() > 1 || unicode[0] != 0) {
 		handled = true;
@@ -452,21 +458,28 @@ void text_box_base::handle_editing(bool& handled, const std::string& unicode, in
 			SDL_SetTextInputRect(&rect);
 		}
 
+#ifdef __unix__
 		// In SDL_TextEditingEvent, size of editing_text is limited
-		// If length of composition text is more than the limit, it is separated to multiple SDL_TextEditingEvent
+		// If length of composition text is more than the limit,
+		// Linux (ibus) implementation of SDL separates it into multiple
+		// SDL_TextEditingEvent.
 		// start is start position of the separated event in entire composition text
 		if(start == 0) {
 			text_.set_text(text_cached_, false);
 		}
 		text_.insert_text(ime_start_point_ + start, unicode);
+#else
+		std::string new_text(text_cached_);
+		utf8::insert(new_text, ime_start_point_, unicode);
+		text_.set_text(new_text, false);
+
+#endif
+		int maximum_length = text_.get_length();
 
 		// Update status
-		set_cursor(ime_start_point_, false);
-		int ime_length = get_composition_length();
-		if(ime_length > 0) {
-			int maximum_length = text_.get_maximum_length();
-			int cursor_end = std::min(maximum_length, ime_start_point_ + ime_length);
-			set_cursor(cursor_end, true);
+		set_cursor(std::min(maximum_length, ime_start_point_ + start), false);
+		if(len > 0) {
+			set_cursor(std::min(maximum_length, ime_start_point_ + start + len), true);
 		}
 		update_canvas();
 	}

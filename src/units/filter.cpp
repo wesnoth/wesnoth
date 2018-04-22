@@ -17,6 +17,7 @@
 #include "log.hpp"
 
 #include "config.hpp"
+#include "display_context.hpp"
 #include "game_data.hpp"
 #include "map/map.hpp"
 #include "map/location.hpp"
@@ -24,7 +25,6 @@
 #include "side_filter.hpp"
 #include "team.hpp"
 #include "terrain/filter.hpp"
-#include "tod_manager.hpp"
 #include "units/unit.hpp"
 #include "units/formula_manager.hpp"
 #include "units/types.hpp"

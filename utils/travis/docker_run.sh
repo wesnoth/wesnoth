@@ -65,7 +65,7 @@ else
         echo "compiler_check = content" >> $HOME/.ccache/ccache.conf
 
         cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_NLS=false \
-              -DEXTRA_FLAGS_CONFIG="-pipe" -DOPT="$OPT" -DENABLE_STRICT_COMPILATION="$STRICT" -DENABLE_LTO="$LTO" -DLTO_JOBS=2 -DSANITIZE="$SAN" \
+              -DEXTRA_FLAGS_CONFIG="-pipe" -DOPT="$OPT" -DENABLE_STRICT_COMPILATION="$STRICT" -DENABLE_LTO="$LTO" -DLTO_JOBS=2 -DSANITIZE="$SAN" -DSANITIZE="$SAN" \
               -DCXX_STD="$CXXSTD" -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache && \
               make VERBOSE=1 -j2
         BUILD_RET=$?
@@ -75,7 +75,7 @@ else
     else
         scons wesnoth wesnothd campaignd boost_unit_tests build=release \
               ctool=$CC cxxtool=$CXX cxx_std=$CXXSTD \
-              extra_flags_config="-pipe" opt="$OPT" strict="$STRICT" \
+              extra_flags_config="-pipe" opt="$OPT" strict="$STRICT" forum_user_handler=true \
               nls=false enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time
         BUILD_RET=$?
     fi

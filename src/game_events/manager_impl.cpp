@@ -17,7 +17,6 @@
 #include "game_events/handlers.hpp"
 #include "formula/string_utils.hpp"
 #include "log.hpp"
-#include "serialization/string_utils.hpp"
 
 #include <boost/algorithm/string.hpp>
 

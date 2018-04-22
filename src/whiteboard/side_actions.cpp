@@ -38,7 +38,6 @@
 #include "display.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_state.hpp"
-#include "map/map.hpp"
 #include "resources.hpp"
 #include "units/unit.hpp"
 #include "utils/iterable_pair.hpp"

@@ -676,12 +676,12 @@ void sdl_event_handler::text_input(const std::string& unicode)
 	}
 }
 
-void sdl_event_handler::text_editing(const std::string& unicode, int32_t start, int32_t end)
+void sdl_event_handler::text_editing(const std::string& unicode, int32_t start, int32_t len)
 {
 	if(dispatcher* dispatcher = keyboard_dispatcher()) {
 		dispatcher->fire(SDL_TEXT_EDITING,
 			dynamic_cast<widget&>(*dispatcher),
-			unicode, start, end);
+			unicode, start, len);
 	}
 }
 

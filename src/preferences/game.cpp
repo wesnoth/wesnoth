@@ -15,7 +15,6 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "game_board.hpp"
-#include "game_display.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "lexical_cast.hpp"
@@ -26,6 +25,8 @@
 #include "settings.hpp"
 #include "units/unit.hpp"
 #include "units/map.hpp"
+#include "utils/general.hpp"
+#include "video.hpp"
 #include "wml_exception.hpp"
 
 #include <cassert>

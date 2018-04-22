@@ -25,7 +25,6 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "team.hpp"
-#include "tod_manager.hpp"
 #include "resources.hpp"
 #include "units/unit.hpp"
 #include "pathfind/pathfind.hpp"

@@ -15,7 +15,6 @@ See the COPYING file for more details.
 
 #pragma once
 #include "config.hpp"
-#include "serialization/string_utils.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 

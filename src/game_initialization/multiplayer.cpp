@@ -104,10 +104,6 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 			return std::make_pair(std::move(sock), config());
 		}
 
-		if(!sock->socket_open()) {
-			throw wesnothd_error("The server has shut down or restarted.");
-		}
-
 		data.clear();
 		sock->wait_and_receive_data(data);
 

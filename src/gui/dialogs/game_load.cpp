@@ -41,7 +41,6 @@
 #include "gui/widgets/window.hpp"
 #include "image.hpp"
 #include "language.hpp"
-#include "serialization/string_utils.hpp"
 #include "utils/general.hpp"
 
 #include <cctype>

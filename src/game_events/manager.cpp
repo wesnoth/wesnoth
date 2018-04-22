@@ -23,7 +23,6 @@
 #include "game_data.hpp"
 #include "log.hpp"
 #include "resources.hpp"
-#include "serialization/string_utils.hpp"
 
 #include <iostream>
 

@@ -23,7 +23,6 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "mt_rng.hpp"
-#include "tod_manager.hpp"
 #include "wesnothd_connection.hpp"
 
 #include <cstdlib>
