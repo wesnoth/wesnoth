@@ -663,9 +663,10 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 		int base_damage = at.damage();
 		int specials_damage = at.modified_damage(false);
 		int damage_multiplier = 100;
+		const_attack_ptr weapon  = at.shared_from_this();
 		int tod_bonus = combat_modifier(rc.units(), rc.map(), displayed_unit_hex, u.alignment(), u.is_fearless());
 		damage_multiplier += tod_bonus;
-		int leader_bonus = under_leadership(rc.units(), displayed_unit_hex).first;
+		int leader_bonus = under_leadership(rc.units(), displayed_unit_hex, weapon).first;
 		if (leader_bonus != 0)
 			damage_multiplier += leader_bonus;
 
