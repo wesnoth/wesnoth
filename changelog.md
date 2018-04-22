@@ -1,6 +1,9 @@
 ## Version 1.14.0+dev
  ### Language and i18n
    * Updated translations: French, Italian, Slovak, Spanish
+ ### Units
+   * Changed the plural name for the merfolk race from Mermen to Merfolk (issue #2940)
+     and replaced a few instances in core unit or terrain descriptions accordingly.
 
 ## Version 1.14.0
  ### Campaigns
