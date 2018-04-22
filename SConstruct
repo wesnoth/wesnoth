@@ -480,7 +480,8 @@ for env in [test_env, client_env, env]:
             env.AppendUnique(CXXFLAGS = Split("-Wctor-dtor-privacy -Wuseless-cast -Wnoexcept"))
         if env['sanitize']:
             env.AppendUnique(CCFLAGS = ["-fsanitize=" + env["sanitize"]], LINKFLAGS = ["-fsanitize=" + env["sanitize"]])
-    
+            env.AppendUnique(CCFLAGS = Split("-fno-omit-frame-pointer -fno-optimize-sibling-calls"))
+
 # #
 # Determine optimization level
 # #
@@ -493,7 +494,7 @@ for env in [test_env, client_env, env]:
             else:
                 env["opt"] = "-O0 "
         else:
-            env["opt"] = env["opt"]+" " 
+            env["opt"] = env["opt"]+" "
 
 # #
 # Start determining options for debug build
