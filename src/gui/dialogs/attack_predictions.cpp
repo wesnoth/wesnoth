@@ -126,8 +126,13 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	ss.str("");
 
 	// Set specials context (for safety, it should not have changed normally).
-	const_attack_ptr weapon = attacker.stats_.weapon;
-	auto ctx = weapon->specials_context(&attacker.unit_, &defender.unit_, attacker.unit_.get_location(), defender.unit_.get_location(), attacker.stats_.is_attacker, defender.stats_.weapon);
+	const_attack_ptr weapon = attacker.stats_.weapon, opp_weapon = defender.stats_.weapon;
+	auto ctx = weapon->specials_context(&attacker.unit_, &defender.unit_, attacker.unit_.get_location(), defender.unit_.get_location(), attacker.stats_.is_attacker, opp_weapon);
+	boost::optional<decltype(ctx)> opp_ctx;
+
+	if(opp_weapon) {
+		opp_ctx.emplace(opp_weapon->specials_context(&defender.unit_, &attacker.unit_, defender.unit_.get_location(), attacker.unit_.get_location(), defender.stats_.is_attacker, weapon));
+	}
 
 	// Get damage modifiers.
 	unit_ability_list dmg_specials = weapon->get_specials("damage");
@@ -182,7 +187,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	ss.str("");
 
 	// Resistance modifier.
-	const int resistance_modifier = defender.unit_.damage_from(*weapon, !attacker.stats_.is_attacker, defender.unit_.get_location());
+	const int resistance_modifier = defender.unit_.damage_from(*weapon, !attacker.stats_.is_attacker, defender.unit_.get_location(), opp_weapon);
 	if(resistance_modifier != 100) {
 		if(attacker.stats_.is_attacker) {
 			ss << _("Defender resistance vs") << " ";
@@ -217,7 +222,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	}
 
 	// Leadership bonus.
-	const int leadership_bonus = under_leadership(resources::gameboard->units(), attacker.unit_.get_location()).first;
+	const int leadership_bonus = under_leadership(resources::gameboard->units(), attacker.unit_.get_location(), weapon, opp_weapon).first;
 
 	if(leadership_bonus != 0) {
 		set_label_helper("leadership_modifier", utils::signed_percent(leadership_bonus));
