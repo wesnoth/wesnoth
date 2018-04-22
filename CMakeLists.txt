@@ -232,6 +232,8 @@ endif(ENABLE_PEDANTIC_COMPILATION)
 if(SANITIZE)
 	set(COMPILER_FLAGS "${COMPILER_FLAGS} -fsanitize=${SANITIZE}")
 	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=${SANITIZE}")
+# manually disable some optimizations to get better stacktraces if sanitizers are used
+	set(COMPILER_FLAGS "${COMPILER_FLAGS} -fno-omit-frame-pointer -fno-optimize-sibling-calls")
 endif(SANITIZE)
 
 ### Set the final compiler flags.
