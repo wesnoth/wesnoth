@@ -14,7 +14,14 @@
    * Implemented MP chat message history saving (issue #1194, issue #2802).
  ### Miscellaneous and bug fixes
    * Fixed context menus not dismissing on right click.
-
+ ### WML engine
+   * Support [filter_weapon] in leadership and resistance abilities,
+     which activates the ability only when the affected unit is using
+     a matching weapon.
+   * Support [filter_second_weapon] in leadership and resistance abilities,
+     which activates the ability only when the affected unit's opponent
+     is using a matching weapon.
+     
 ## Version 1.13.14
  ### Security fixes
    * Fixed an issue allowing MP lobby and whisper message origins to be spoofed
