@@ -190,7 +190,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 
 	// Resistance modifier.
 	damage_multiplier *= opp.damage_from(*weapon, !attacking, opp_loc, opp_weapon);
-		
+
 	// Compute both the normal and slowed damage.
 	damage = round_damage(base_damage, damage_multiplier, 10000);
 	slow_damage = round_damage(base_damage, damage_multiplier, 20000);
