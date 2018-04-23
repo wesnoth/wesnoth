@@ -8,13 +8,16 @@
 # <P2295417919104729@hotmail.co.jp>, 2010
 # RatArmy <broadbarredfirefish@gmail.com>, 2016
 # sahara <le.sahara@gmail.com>, 2010
+# S.Suto, 2016
+# suto3, 2016
 # yma <yma9yma@gmail.com>, 2011
+# 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-Dev Japanese\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 17:02 UTC\n"
-"PO-Revision-Date: 2016-04-17 02:20+0000\n"
+"PO-Revision-Date: 2017-09-22 20:48+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
 "japanese/language/ja/)\n"
@@ -266,9 +269,9 @@ msgid ""
 "Alliance. Beside the dais stood a stranger in the robes of the Order of "
 "Loremasters..."
 msgstr ""
-"オーク族に勝利した後、Aiglondur は Knalga の君主にして北部同盟の上級世話役で"
-"もある Hamel の謁見の間に呼び出されました。高座の傍らには伝承家組合のローブを"
-"まとった見知らぬ人物が立っておりました……"
+"オーク族に勝利した後、Aiglondur は Knalga の君主にして北部同盟の護民官でもあ"
+"る Hamel の謁見の間に呼び出されました。高座の傍らには伝承家組合のローブをま"
+"とった見知らぬ人物が立っておりました……"
 
 #. [side]: type=Dwarvish Lord, id=Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:53
@@ -329,10 +332,10 @@ msgid ""
 "wield it, and our oldest histories hint that this very hammer was used to "
 "forge the dwarves themselves in the heart of the earth."
 msgstr ""
-"えぇ。最も偉大なルーン工が炎の笏を製作する際に使用したまさにその道具です。で"
-"すがそれは Thursagan よりも遥かに昔の、古代のものなのです。彼は最後にそれを所"
-"有していたというだけに過ぎず、我々の最古の史書によれば、大地の中心からドワー"
-"フ族自身を造り出すのに使われた槌であるとされています。"
+"えぇ。最も偉大なルーンスミスが炎の笏を製作する際に使用したまさにその道具で"
+"す。ですがそれは Thursagan よりも遥かに昔の、古代のものなのです。彼は最後にそ"
+"れを所有していたというだけに過ぎず、我々の最古の史書によれば、大地の中心から"
+"ドワーフ族自身を造り出すのに使われた槌であるとされています。"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:123
@@ -356,8 +359,8 @@ msgstr ""
 "Thursagan が槌を手にしたまま焼け死んだ際に、その時生きていた全てのルーンマス"
 "ターと秘法師――工芸術に、そして自らを槌の力と一つになる事を宣誓したもの――が同"
 "時に倒れ、残す間も無く死んでしまったからじゃ。工芸術の秘密は彼らと共に失われ"
-"た。これが今日ドワーフ族にルーン工が一人もいない理由なのだよ。大変寂しい話だ"
-"がの。"
+"た。これが今日ドワーフ族にルーンスミスが一人もいない理由なのだよ。大変寂しい"
+"話だがの。"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:133
@@ -403,7 +406,7 @@ msgstr ""
 "書物です。ルーンの助けを借りずに彼自身の手で天然石を掘り抜いたのでしょう、秘"
 "密の閉鎖された区画に Thursagan の書がありました。崩落で破けており、暗号を解き"
 "明かすのには大変な労力を要しました。ですが、その書とその槌があれば、今一度"
-"ルーン工を手解きし養成できるかもしれません。"
+"ルーンスミスを手解きし養成できるかもしれません。"
 
 #. [message]: speaker=Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:158
@@ -419,8 +422,8 @@ msgid ""
 "would be... delicate."
 msgstr ""
 "陛下、発見はごく最近のものです。まだ書を解読しているところなのです。それに、"
-"Kal Kartha にある槌とここにある書のどちらで新しいルーン工を養成するのかという"
-"問題が……微妙なのです。"
+"Kal Kartha にある槌とここにある書のどちらで新しいルーンスミスを養成するのかと"
+"いう問題が……微妙なのです。"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:168
@@ -835,10 +838,8 @@ msgstr "Aiglondur を道の東端にある道標まで動かす"
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:117
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:128
-#, fuzzy
-#| msgid "Death of Angarthing"
 msgid "Death of Ratheln"
-msgstr "Angarthing の死"
+msgstr "Ratheln の死"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:146
@@ -1098,22 +1099,14 @@ msgstr "Darchas"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:243
-#, fuzzy
-#| msgid ""
-#| "The presence of Master Perrin’s journeymen gives you the ability to "
-#| "recruit mages."
 msgid ""
 "The presence of Lorinne and Darchas gives you the ability to recruit mages."
-msgstr "Perrin 学長の学院の魔術師がいる限り、魔術師を雇用することができます。"
+msgstr "Lorinne と Darchas が居るので、魔術師を雇用することができます。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:249
-#, fuzzy
-#| msgid ""
-#| "The presence of Master Perrin’s journeymen gives you the ability to "
-#| "recruit mages."
 msgid "The presence of Darchas gives you the ability to recruit mages."
-msgstr "Perrin 学長の学院の魔術師がいる限り、魔術師を雇用することができます。"
+msgstr "Darchas が居るので、魔術師を雇用することができます。"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:256
@@ -1536,10 +1529,8 @@ msgstr "Tan-Wagran"
 
 #. [label]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:210
-#, fuzzy
-#| msgid "East Gate"
 msgid "West Gate"
-msgstr "東の門"
+msgstr "西の門"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:231
@@ -2285,7 +2276,7 @@ msgid ""
 "I was told I’d find Aiglondur of Knalga here. I bear a message from Tallin, "
 "the Lord Protector of the Alliance."
 msgstr ""
-"ここに Knalga の Aiglondur がいると聞きました。同盟の庇護者たる Tallin より伝"
+"ここに Knalga の Aiglondur がいると聞きました。同盟の護民長たる Tallin より伝"
 "言を預かっています。"
 
 #. [message]: speaker=Aiglondur
@@ -2313,13 +2304,13 @@ msgid ""
 "Aiglondur, the Protector dubs you a Lord Companion of the Alliance. He bids "
 "you return to Knalga as soon as convenient, for your investiture."
 msgstr ""
-"Aiglondur 、庇護者はあなたを同盟の上級世話役に叙します。叙任式のため、可及的"
-"速やかに Knalga へ帰還せよとの命です。"
+"Aiglondur 、護民長はあなたを同盟の護民官に叙します。叙任式のため、可及的速や"
+"かに Knalga へ帰還せよとの命です。"
 
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:184
 msgid "(<i>Wonderingly</i>) A Lord Companion? And kin of ours..."
-msgstr "(驚嘆して) 上級世話役？ しかも我らの一族から……"
+msgstr "(驚嘆して) 護民官？ しかも我らの一族から……"
 
 #. [message]: speaker=Narithil
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:189
@@ -2327,8 +2318,8 @@ msgid ""
 "It would be no shame for a Lord Companion to rule this holding, as Hamel "
 "does at Knalga."
 msgstr ""
-"上級世話役がこの土地を統べるのなら面子も立つだろう。Hamel が Knalga を統べて"
-"いるようにな。"
+"護民官がこの土地を統べるのなら面子も立つだろう。Hamel が Knalga を統べている"
+"ようにな。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:194
@@ -2349,7 +2340,7 @@ msgid ""
 "Pelias, my thanks to the Lord Protector; I will attend him in the spring. "
 "But it seems that I have some work to do here first."
 msgstr ""
-"Pelias、庇護者へ感謝を。春には彼のところへ顔を出そう。だがまず始めにここです"
+"Pelias、護民長へ感謝を。春には彼のところへ顔を出そう。だがまず始めにここです"
 "るべき仕事があるようだからな。"
 
 #. [unit_type]: id=Dwarvish Annalist, race=dwarf
@@ -2580,7 +2571,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:67
 msgid "There an altar in this temple, and a staff lies upon it."
-msgstr ""
+msgstr "この神殿には祭壇があり、その上には杖が横たわっている。"
 
 #. [object]: id=sorf	# Prevent it from being picked up more than once.
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:81
@@ -2605,12 +2596,3 @@ msgid ""
 "Aaarrgh! Though I die, the flame of righteousness shall send you down to "
 "darkness!"
 msgstr "アァァァァグゥ！ 私が死んでも、正義の炎がお前達を闇に堕とす！"
-
-#~ msgid "morningstar"
-#~ msgstr "モーニングスター"
-
-#~ msgid "No bandits in this village."
-#~ msgstr "この村にならず者はいない。"
-
-#~ msgid "Death of West Gate commander"
-#~ msgstr "西の門の指揮官の死"
