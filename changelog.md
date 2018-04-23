@@ -4,7 +4,7 @@
      * New set of Quenoth faction portraits by LordBob.
  ### Language and i18n
    * Fixed Version label on the title screen not being translatable (issue #2914).
-   * Updated translations: Czech, French, Galician, German, Polish,
+   * Updated translations: Czech, French, Galician, German, Japanese, Polish,
      Scottish Gaelic, Slovak, Spanish
  ### Multiplayer
    * Fixed regression causing a crash-to-desktop when trying to log into the

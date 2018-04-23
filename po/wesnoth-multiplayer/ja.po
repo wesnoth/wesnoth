@@ -6,13 +6,16 @@
 # Translators:
 # Automatically generated, 2005
 # MATSUMOTO Yuji <matumoto@marron.cias.osakafu-u.ac.jp>, 2005
-# RatArmy <broadbarredfirefish@gmail.com>, 2015-2016
+# RatArmy <broadbarredfirefish@gmail.com>, 2015-2018
+# S.Suto, 2016
+# suto3, 2016
+# 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-Dev Japanese\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-04-15 04:34 UTC\n"
-"PO-Revision-Date: 2016-04-17 01:45+0000\n"
+"PO-Revision-Date: 2018-04-23 00:30+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
 "japanese/language/ja/)\n"
@@ -35,7 +38,7 @@ msgstr "ランダム"
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:53
 msgid "Default"
-msgstr "デフォルト"
+msgstr "標準"
 
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:54
@@ -63,18 +66,10 @@ msgstr ""
 #. [era]: id=era_dunefolk
 #: data/multiplayer/eras.cfg:83
 msgid "Default + Dunefolk"
-msgstr ""
+msgstr "標準＋デューンフォーク"
 
 #. [era]: id=era_dunefolk
 #: data/multiplayer/eras.cfg:84
-#, fuzzy
-#| msgid ""
-#| "An era featuring an additional faction besides the six factions from "
-#| "Default Era. Khalifate units use no magic, but instead rely on careful "
-#| "use of terrain and coordinated strikes around dusk or dawn.\n"
-#| "\n"
-#| "This era is still under development, so please be sure to report any "
-#| "problems that arise."
 msgid ""
 "An era featuring an additional faction besides the six factions from Default "
 "Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
@@ -84,28 +79,18 @@ msgid ""
 "problems that arise."
 msgstr ""
 "標準の時代（Default Era）の6つの党派に、さらにもう1つの党派を付け加えたもので"
-"す。カリフェイトは魔法を持ちませんが、地形や、夕暮れと夜明けを生かして戦いま"
-"す。\n"
+"す。デューンフォークは魔法を持ちませんが、地形や、夕暮れと夜明けを生かして戦"
+"います。\n"
 "\n"
 "この時代はまだ開発中であり、何か問題があれば報告してください。"
 
 #. [era]: id=era_dunefolk_heroes
 #: data/multiplayer/eras.cfg:94
-#, fuzzy
-#| msgid "Age of Heroes"
 msgid "Age of Heroes + Dunefolk"
-msgstr "英雄の時代"
+msgstr "英雄の時代＋デューンフォーク"
 
 #. [era]: id=era_dunefolk_heroes
 #: data/multiplayer/eras.cfg:95
-#, fuzzy
-#| msgid ""
-#| "An era featuring an additional faction besides the six factions from Age "
-#| "of Heroes Era. Khalifate units use no magic, but instead rely on careful "
-#| "use of terrain and coordinated strikes around dusk or dawn.\n"
-#| "\n"
-#| "This era is still under development, so please be sure to report any "
-#| "problems that arise."
 msgid ""
 "An era featuring an additional faction besides the six factions from Age of "
 "Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
@@ -114,8 +99,9 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
-"英雄の時代の6つの党派に、さらにもう1つの党派を付け加えたものです。カリフェイ"
-"トは魔法を持ちませんが、地形や、夕暮れと夜明けを生かして戦います。\n"
+"英雄の時代（Age of Heroes Era）の6つの党派に、さらにもう1つの党派を付け加えた"
+"ものです。デューンフォークは魔法を持ちませんが、地形や、夕暮れと夜明けを生か"
+"して戦います。\n"
 "\n"
 "この時代はまだ開発中であり、何か問題があれば報告してください。"
 
@@ -172,21 +158,11 @@ msgstr ""
 #: data/multiplayer/factions/dunefolk-aoh.cfg:4
 #: data/multiplayer/factions/dunefolk-default.cfg:4
 msgid "Dunefolk"
-msgstr ""
+msgstr "デューンフォーク"
 
 #. [multiplayer_side]: id=Dunefolk, type=random
 #: data/multiplayer/factions/dunefolk-aoh.cfg:14
 #: data/multiplayer/factions/dunefolk-default.cfg:14
-#, fuzzy
-#| msgid ""
-#| "The <bold>text='Khalifate'</bold> are a faction of humans from the "
-#| "deserts and hills of the southern lands. Lacking magic users, the "
-#| "Khalifate instead specialize in using terrain features to coordinate "
-#| "attacks at dawn or dusk. Their ranks boast lawful and liminal units, "
-#| "healers, high-accuracy melee fighters, and fearsome horse-mounted "
-#| "archers. While Khalifate units tend to be more expensive than those of "
-#| "the Loyalist faction, they make up for this with high mobility — "
-#| "especially on hilly terrains."
 msgid ""
 "The <bold>text='Dunefolk'</bold> are a faction of humans from the deserts "
 "and hills of the southern lands. The Dunefolk specialize in using terrain "
@@ -196,11 +172,11 @@ msgid ""
 "of the Loyalist faction, they make up for this with high mobility — "
 "especially on hilly terrains."
 msgstr ""
-"<bold>text='カリフェイト'</bold>は南の砂漠や丘から来た人間の党派です。魔法は"
-"持ちませんが、地形の特徴を活かし、夕暮れや夜明けでの攻撃に適しています。秩序"
-"と薄明ユニットに分かれており、回復ユニットや精密な近接攻撃、馬上弓兵などを有"
-"しています。カリフェイトのユニットは忠誠軍よりも効果ですが、高い機動力を持"
-"ち、特に丘地形に適しています。"
+"<bold>text='デューンフォーク'</bold>は南の砂漠や丘から来た人間の党派です。魔"
+"法は持ちませんが、地形の特徴を活かし、夕暮れや夜明けでの攻撃に適しています。"
+"秩序と薄明ユニットに分かれており、回復ユニットや精密な近接攻撃、馬上弓兵など"
+"を有しています。デューンフォークのユニットは忠誠軍よりも高価ですが、高い機動"
+"力を持ち、特に丘地形に適しています。"
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
@@ -441,10 +417,8 @@ msgstr "南軍"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:289
-#, fuzzy
-#| msgid "Death of your team leaders"
 msgid "Defeat enemy leader(s)"
-msgstr "チームリーダーの死。"
+msgstr "全ての敵のリーダーを倒す"
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:293
@@ -452,6 +426,8 @@ msgid ""
 "The Great Mage Sulla has transported your armies to this bizarre nexus, and "
 "demands that you amuse her by doing battle."
 msgstr ""
+"大魔術師 Sulla によって、あなたの軍は特異地点に転送されてしまいました。戦いに"
+"よって、Sulla を楽しませなければなりません。"
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:296
@@ -459,6 +435,8 @@ msgid ""
 "Units may not move into a hex with a rock cairn. They may, however, be "
 "recruited to, and move from, such hexes."
 msgstr ""
+"ユニットは、石塚が設置されているヘクスには移動できません。しかし、石塚のヘク"
+"スにユニットを雇用し、そこから石塚の外のヘクスに移動させることは可能です。"
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:299
@@ -466,6 +444,8 @@ msgid ""
 "Beginning on turn 4, the Great Mage Sulla will begin to unite the two halves "
 "of the battlefield. The process will be complete by the end of turn 6."
 msgstr ""
+"ターン 4 の始めに、大魔術師 Sulla が半分に分かれた戦場の連結を開始します。連"
+"結の過程はターン 6 には完了します。"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:312
@@ -508,7 +488,7 @@ msgstr ""
 "によって強力な大地の精霊（何故かはわからないが、Dauntlessに借りがあったよう"
 "だ）を呼び出した。精霊は巨大な岩石を大地の底から持ち上げ、変形させ、一瞬の内"
 "に巨大な要塞となった。何千ものKah Ruukがアーケンクレーブの要塞を越えようとし"
-"て倒れ、Dauntlessの軍勢は勝利した。その千年以上後、戦士の女王Cynsaun一世が降"
+"て倒れ、Dauntlessの軍勢は勝利した。その千年以上後、戦士の女王Cynsaun I世が降"
 "霊術士の一団をアーケンクレーブの廃墟から追い払い、その後数年かけて軍事要塞へ"
 "と改装した。ここには大魔術師Dauntlessの勢力が遺したアーティファクトや遺物があ"
 "ると噂されており、それらは花崗岩や黒曜石の壁の中に隠されているらしい。 "
@@ -602,10 +582,8 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:89
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:95
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:91
-#, fuzzy
-#| msgid "teamname^Southwest"
 msgid "teamname^Statues"
-msgstr "南西軍"
+msgstr "石像"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:94
@@ -984,7 +962,7 @@ msgstr ""
 "の湿った洞窟で失われたと言われている。その財宝というのは、その先端が "
 "Chak'kso Ney'yksの 歯で作られたと言われている槍だ。それはエルフのヒーロー、"
 "Eloralduil に殺されたバジリスクの長老である。伝説によれば、その武器はまさにこ"
-"の湖（Ruaskkolin 湖。ここを本拠地にしていた有名なシーサーパントの名前からとら"
+"の湖（Ruaskkolin 湖。ここを本拠地にしていた有名なシーサーペントの名前からとら"
 "れた）の底のどこかにあると言われている。彼がサーペントとの 戦いの準備をしてい"
 "たとき、Rilhon に 2 つのより大きな驚くべきことが起こった。ひとつはサーペント "
 "Ruaskkolin が石化していたことだった。もうひとつはまさに生きている Chak'kso "
@@ -1028,10 +1006,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Clearing_Gushes
 #: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:7
-#, fuzzy
-#| msgid "4p — Clash"
 msgid "2p — Clearing Gushes"
-msgstr "4p — 衝突"
+msgstr "2p — 氾濫の後片付け"
 
 #. [multiplayer]: id=multiplayer_Clearing_Gushes
 #: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:8
@@ -1044,6 +1020,11 @@ msgid ""
 "rigorous discipline and organization of Wesnoth's armies are in no small "
 "part driven by a constant need to patrol and defend these prosperous lands."
 msgstr ""
+"最も肥沃な土地の 1 つは、大いなる川の岸辺に存在する。春と夏には、沿岸全体に起"
+"こる洪水によって、土が肥やされる。そして、秋ごとに豊かな収穫がもたらされる。"
+"Wesnoth王国は、この地を王国の富と繁栄の源として発展させてきた。同時に、この地"
+"は数えきれないほどの侵略と襲撃の標的となってきた。この繁栄の地を常に警護する"
+"必要に迫られるなかで、Wesnoth軍の厳しい訓練と体制は大きな役割を担っている。"
 
 #. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:6
@@ -1226,7 +1207,7 @@ msgstr ""
 #. [slider]: id=enemey_gold_factor
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:251
 msgid "Changes the gold worth of the enemy spawns by a certain percentage"
-msgstr ""
+msgstr "指定した%分、出現する敵軍が増減します"
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:313
@@ -1234,6 +1215,8 @@ msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
 msgstr ""
+"最後にして最強の生物たちが迫っている。時間内に奴らを倒せば、我々の勝利となる"
+"だろう。"
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:341
@@ -1242,31 +1225,34 @@ msgid ""
 "blood soaked blade from the last of the rebels. There will be no more "
 "resistance from the local scum. Your reign has finally earned stability."
 msgstr ""
+"最後の反逆者から血のしたたる剣を抜くと、叫び声と慈悲を求める嘆願が止み、静寂"
+"が訪れた。この地方のくずどもにはもう抵抗する者はいないだろう。あなたの治世は"
+"ようやく安定したのだ。"
 
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:462
 msgid "Clear Weather"
-msgstr ""
+msgstr "晴天"
 
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:468
 msgid "Drought"
-msgstr ""
+msgstr "干ばつ"
 
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:480
 msgid "Heavy Rains"
-msgstr ""
+msgstr "大雨"
 
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:486
 msgid "Snowfall"
-msgstr ""
+msgstr "雪"
 
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:492
 msgid "Heavy Snowfall"
-msgstr ""
+msgstr "豪雪"
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
@@ -1336,10 +1322,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Hellhole
 #: data/multiplayer/scenarios/2p_Hellhole.cfg:7
-#, fuzzy
-#| msgid "2p — Hamlets"
 msgid "2p — Hellhole"
-msgstr "2p — 小集落"
+msgstr "2p — 地獄"
 
 #. [multiplayer]: id=multiplayer_Hellhole
 #: data/multiplayer/scenarios/2p_Hellhole.cfg:8
@@ -1352,6 +1336,12 @@ msgid ""
 "eternal scar on the land that to this day summons forth legions of wandering "
 "undead."
 msgstr ""
+"かつて、Myrilelの町は人類の版図の東端にある静かな村だった。だが、リッチ将軍"
+"Mal-Ravanalの出現によって状況は永遠に変化してしまった。Mal-Ravanalは名状しが"
+"たい闇の魔法の門を町の中心に裂き開き、彼の死の軍勢が集まり生ずる地点とした。"
+"Mal-Ravanalは破られたが、Myrilelは見放され、滅びた地として残っている。また門"
+"は永遠の傷跡としてこの地に残り、さまよえるアンデッドの軍勢を今日に至るまで迎"
+"え続けている。"
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:26
@@ -1480,7 +1470,7 @@ msgstr "かつて豊かな鉱山街であった面影もなく、今では略奪
 #. [multiplayer]: id=multiplayer_Ruined_Passage
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:7
 msgid "2p — Ruined Passage"
-msgstr ""
+msgstr "2p — 滅びた通路"
 
 #. [multiplayer]: id=multiplayer_Ruined_Passage
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:8
@@ -1494,11 +1484,18 @@ msgid ""
 "molten brimstone lies land kept pristine and untouched — yet mysteriously "
 "abandoned nonetheless."
 msgstr ""
+"遠く西の方は、おびただしい噴火が起こるまでの間は全ての生き物の故郷であったと"
+"語り継がれてきた。伝説には、最後の時間の苦境において、いかに古代の者たちが火"
+"と灰の苛烈な嵐に抗ったかということが語られている。遂に、この地への秘密の遠征"
+"が行われ、これらの物語の真相が明らかにされた。 — 最も衝撃的だったのは、魔法が"
+"かけられた長大な壁に囲まれた経路が存在したことである。活発な火山島と溶けた大"
+"量の硫黄にひたすら囲まれた地が、もとのまま侵されずに保たれていたのだ。 — しか"
+"しそれにもかかわらず、不思議なことに放棄されているのだ。"
 
 #. [multiplayer]: id=multiplayer_Ruphus_Isle
 #: data/multiplayer/scenarios/2p_Ruphus_Isle.cfg:7
 msgid "2p — Ruphus Isle"
-msgstr ""
+msgstr "2p — Ruphus 島"
 
 #. [multiplayer]: id=multiplayer_Ruphus_Isle
 #: data/multiplayer/scenarios/2p_Ruphus_Isle.cfg:8
@@ -1506,6 +1503,7 @@ msgid ""
 "Players must navigate the dispersive terrain of this small but "
 "topographically dense island."
 msgstr ""
+"小さいながらもさまざまな地形が密集したこの群島を、うまく通り抜けるのだ。"
 
 #. [multiplayer]: id=multiplayer_Sablestone_Delta
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:5
@@ -1537,15 +1535,13 @@ msgstr ""
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:38
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Shapeshifter"
-msgstr "中央軍"
+msgstr "シェイプシフター"
 
 #. [unit]: type=Tentacle of the Deep
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:52
 msgid "Nani the Shapeshifter"
-msgstr ""
+msgstr "シェイプシフターの Nani"
 
 #. [effect]: type=arcane
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:82
@@ -1634,10 +1630,8 @@ msgstr "Sulla の家来、Lo-bsang に似せた石像である。"
 
 #. [multiplayer]: id=multiplayer_Swamp_of_Dread
 #: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:7
-#, fuzzy
-#| msgid "2p — Sablestone Delta"
 msgid "2p — Swamp of Dread"
-msgstr "2p — セーブルストーンの三角州"
+msgstr "2p — 恐怖の沼地"
 
 #. [multiplayer]: id=multiplayer_Swamp_of_Dread
 #: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:8
@@ -1653,6 +1647,14 @@ msgid ""
 "great strategic value means it is fiercely contested by all with military "
 "aims in the Great Continent's heart."
 msgstr ""
+"大いなる川の北には、恐怖の沼地があり、汚い魔術によって呪われた不快なぬかるみ"
+"がただ広がっている。そこにある道のうち、罠や死を避けることができるものは数少"
+"ない。それでもなお、そういった数少ない道は南の平原と北の山岳地帯を結ぶ有益な"
+"ものとしてよく利用されており、勇敢な探検家たちは交易拠点を築くのに有利な地を"
+"探して危険な沼を横切る。これらの道のなかで最大のものである Areth の道は、ド"
+"ワーフとエルフが古代初めて戦って以来、長く領有を争われてきた有名な道である。"
+"土地はやせ、資源は限られているにもかかわらず、その大きな戦略的価値から、全て"
+"の勢力によって軍事目標として大陸中心部で激しく争われることとなるのだ。"
 
 #. [multiplayer]: id=multiplayer_The_Freelands
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:6
@@ -1677,10 +1679,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_The_Walls_of_Pyrennis
 #: data/multiplayer/scenarios/2p_The_Walls_of_Pyrennis.cfg:7
-#, fuzzy
-#| msgid "2p — Den of Onis"
 msgid "2p — The Walls of Pyrennis"
-msgstr "2p — 鬼の巣窟"
+msgstr "2p — Pyrennis の城壁"
 
 #. [multiplayer]: id=multiplayer_The_Walls_of_Pyrennis
 #: data/multiplayer/scenarios/2p_The_Walls_of_Pyrennis.cfg:8
@@ -1696,6 +1696,14 @@ msgid ""
 "Pyrennis have proved astoundingly indestructible both to time and war — that "
 "is, what scattered segments of it were actually completed."
 msgstr ""
+"オークの流民が群れをなして大陸に到達しはじめたとき、 鉄の王 Olgor と呼ばれる"
+"一人の勇敢な支配者が、争うオークの集団をまとめあげはじめた。彼は大陸全土を"
+"オークの支配下に置こうと試み、彼の力の記念として Pyrennis の巨大要塞の建築を"
+"指揮した。しかし、彼の破滅はまさにこの城であった。 — 家臣たちは予定の征服を終"
+"えていないなかで建築を完了させることを好まず、彼に突如反抗し、殺害した。その"
+"結果、集まったオークの領主たちは数世紀にわたって四散することとなったのだ。 "
+"Pyrennis の壁は驚愕の堅牢さを発揮し、長い時間が経っても、戦争が起こっても破壊"
+"されなかった。 — 分断をもたらした壁は、実は完成していたのだ。"
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:37
@@ -1779,10 +1787,8 @@ msgstr "像"
 
 #. [multiplayer]: id=multiplayer_Tombs_of_Kesorak
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:7
-#, fuzzy
-#| msgid "5p — Forest of Fear"
 msgid "2p — Tombs of Kesorak"
-msgstr "5p — 畏敬の森"
+msgstr "2p — Kesorak の墓"
 
 #. [multiplayer]: id=multiplayer_Tombs_of_Kesorak
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:8
@@ -1793,6 +1799,10 @@ msgid ""
 "whispering amongst the withered trees of this barren landscape. Unconcerned "
 "by their gloomy surroundings, your leaders have chosen this place to clash."
 msgstr ""
+"数百年前、敗北した魔術師 Kesorak が、何名かの従者と並べられ、ここに埋葬され"
+"た。邪な冷気が今、墓を包む。さらに、多くの人々が Kesorak の声を耳にしたとい"
+"う。この不毛の地に立つ枯木に混じってささやく声を。陰気な周囲の無関心のなか、"
+"あなたのリーダーはこの地を争いの騒乱に巻き込むことを選んだ。"
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:118
@@ -1800,6 +1810,8 @@ msgid ""
 "The map contains mausoleums and campfires that shift the time of the day by "
 "one step toward night and day, respectively."
 msgstr ""
+"マップ上の霊廟とキャンプファイアでは、時刻がそれぞれ夜間および日中に一段階ず"
+"れます。"
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:121
@@ -1807,6 +1819,8 @@ msgid ""
 "The tile in the centre, which contains the casket of the titular "
 "necromancer, is always covered in pitch black fog."
 msgstr ""
+"中央のタイルには、名ばかりのネクロマンサーの棺がありますが、常に黒々とした霧"
+"に包まれています。"
 
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
@@ -1867,16 +1881,12 @@ msgstr "3p — Horatii の島"
 
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
-#, fuzzy
-#| msgid ""
-#| "Controlling the central island is often the key to victory in this "
-#| "21x21hex 3 player free for all map."
 msgid ""
 "Controlling the central island is often the key to victory in this 3 player "
 "free for all map."
 msgstr ""
-"中央の島を統制することが、この 21x21 ヘクスの 3 人プレイ用フリーマップでの勝"
-"利の鍵となる。"
+"3 人のプレイヤーが自由に戦うこのマップでは、中央の島を支配することが勝利への"
+"鍵となる。"
 
 #. [multiplayer]: id=multiplayer_3p_Morituri
 #: data/multiplayer/scenarios/3p_Morituri.cfg:5
@@ -1894,10 +1904,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Bath_of_Glory
 #: data/multiplayer/scenarios/4p_Bath_of_Glory.cfg:7
-#, fuzzy
-#| msgid "4p — Paths of Daggers"
 msgid "4p — Bath of Glory"
-msgstr "4p — 敵意の通り道"
+msgstr "4p — 栄光の浴場"
 
 #. [multiplayer]: id=multiplayer_Bath_of_Glory
 #: data/multiplayer/scenarios/4p_Bath_of_Glory.cfg:9
@@ -1911,6 +1919,13 @@ msgid ""
 "wealthy nobles can turn into veritable battlegrounds — but even this has "
 "become a form of entertainment woven into the allure of the Bath."
 msgstr ""
+"はるか遠くにあったとされる伝説の町 Malisat は、いくつもの偉大な事業で知られ"
+"る。栄光の浴場として知られるとても複雑な町を形成するに至った諸事業だ。浴場"
+"は、疲れた帰還兵たちを癒やすための天国として作られており、以前は砂しか無かっ"
+"た地に設けられたすてきなオアシスだ。そのうち、周囲に町が形成された。風呂を中"
+"心としたすばらしい文化をめぐって、美術と音楽が栄えた。この複雑な町は広いの"
+"で、裕福な貴族たちの間で燃え上がった怒りによって本当の戦場に変わってしまうこ"
+"ともある。しかしこれさえも娯楽のひとつとして浴場の魅力を作り上げていた。"
 
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:5
@@ -1977,10 +1992,8 @@ msgstr "2 対 2 のための小さなマップ。"
 
 #. [multiplayer]: id=multiplayer_Geothermal
 #: data/multiplayer/scenarios/4p_Geothermal.cfg:7
-#, fuzzy
-#| msgid "2p — Aethermaw"
 msgid "4p — Geothermal"
-msgstr "2p — エーテルの奈落"
+msgstr "4p — 地は熱く"
 
 #. [multiplayer]: id=multiplayer_Geothermal
 #: data/multiplayer/scenarios/4p_Geothermal.cfg:9
@@ -1991,6 +2004,11 @@ msgid ""
 "perilous and unstable, is nonetheless rich thanks to numerous foundries "
 "using the heat of volcanoes and hot springs to fuel their forges."
 msgstr ""
+"中心山脈の西の地形は、くっきりとした対照を為している。――煮え立つ火山の釜があ"
+"る一方で、白雪に彩られた頑丈な山々があり、そこには新緑が点々とし、深く青い川"
+"が山々の間にうねっている。この地は、時には危険で不安定であるけれども、豊かで"
+"あった。炉の燃料とするために火山と温泉の熱を用いるたくさんの鋳造所があるから"
+"だ。"
 
 #. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:5
@@ -2011,22 +2029,16 @@ msgstr "4p — Isar の十字"
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
-#, fuzzy
-#| msgid ""
-#| "A very small 2 vs. 2 map. Close quarters fighting means the successful "
-#| "rotation of units and planning of moves is important. Teams set for "
-#| "players 1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting "
-#| "gold, 20 villages."
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
 "1+4 vs. 2+3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
 "villages."
 msgstr ""
-"とても小さな 2 対 2 のマップ。非常に接近した戦いになるため、うまくユニットを"
-"交代させ、移動の計画を立てることが重要になる。チームはプレイヤー 1 と 4 対 2 "
-"と 3 （北東 対 南西）に設定されている。所持金 75 ゴールドでプレイするようにデ"
-"ザインされており、20 の村がある。"
+"非常に狭い 2 対 2 のマップだ。 4 つの軍が密集して戦闘を行うため、ユニットの"
+"ローテーションと移動計画が非常に重要となる。 陣営 1 と 4（北東）、2 と 3（南"
+"西）がそれぞれチームを組むことになる。 推奨される初期ゴールドは 75。 20 の村"
+"が存在する。"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:20
@@ -2070,16 +2082,12 @@ msgstr " 150 ゴールドでの開始と村あたり 2 ゴールドの設定を�
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
-#, fuzzy
-#| msgid ""
-#| "Controlling the area around the central keep is very lucrative in this "
-#| "36X36 4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 4 "
 "player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgstr ""
-"中央の主塔の周辺を統制することが、この 36x36 の 4 人プレイ用フリーマップでは"
-"非常に有益となる。2 対 2 でも同様に楽しめる。36 の村がある。"
+"4 人のプレイヤーがそれぞれ敵対するマップ。 中央の主塔を支配することで、大きく"
+"優位に立つことができるだろう。  村は全部で 36 個。"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:32
@@ -2110,16 +2118,13 @@ msgstr "4p — Loris 川"
 
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
-#, fuzzy
-#| msgid ""
-#| "A 25x25 2 vs. 2 map centered around a river with keeps in opposite "
-#| "corners. Designed for players 1&4 vs. 2&3. There are 28 villages."
 msgid ""
 "2 vs. 2 map centered around a river with keeps in opposite corners. Designed "
 "for players 1+4 vs. 2+3. There are 28 villages."
 msgstr ""
-"25x25 の 2 対 2 のマップで中央に川があり、反対側の角に主塔がある。1 と 4 対 "
-"2 と 3 でプレイするようデザインされている。28 個の村がある。"
+"対角線上に主塔が向かい合う、川を中心とした 2 vs 2 のマップ。プレイヤー 1 & プ"
+"レイヤー 4 vs プレイヤー 2 & プレイヤー 3 となるようにデザインされている。村"
+"の数は 28。"
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
@@ -2143,17 +2148,13 @@ msgstr " 村あたり 2 ゴールドの設定を推奨。28 の村がある。"
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
-#, fuzzy
-#| msgid ""
-#| "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
-#| "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
 msgid ""
 "A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
 "east vs. west (1+4 vs. 2+3), but works well with any teams or FFA."
 msgstr ""
-"35x27 で 2 対 2 のマップ。交戦には 5 つの別々の通り道がある。東軍 対 西軍（1 "
-"と 4 対 2 と 3）でプレイするように調整されているが、どんなチーム戦でもフリー"
-"でも楽しめる。"
+"5 つの進軍用の道が存在する、2 vs 2 マップ。東軍（プレイヤー 1 とプレイヤー"
+"4） vs 西軍（プレイヤー2 と プレイヤー 3）を想定したバランス調整がされている"
+"が、異なるチームの組み合わせやバトルロイヤルでもプレイできる。"
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:6
@@ -2162,16 +2163,12 @@ msgstr "4p — 地に棲まうものの遺跡"
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:7
-#, fuzzy
-#| msgid ""
-#| "Battle over the legendary treasures of the ancient ruins of Terra-Dwelve. "
-#| "Large multi-fronted 2vs2 set in a vast underground complex."
 msgid ""
 "Battle over the legendary treasures of the ancient ruins of Terra-Dwelve. "
 "Large multi-fronted 2 vs. 2 set in a vast underground complex."
 msgstr ""
-"地に棲まうものの古代遺跡の伝説的な秘宝を巡って戦う。広大な地底の建築物での広"
-"い多面的な 2 対 2。"
+"地に住まう者が残した古代の遺跡で、財宝を賭けて戦うのだ。広大な地下迷宮内で、"
+"複数の戦線から成る大規模な 2 vs 2 が行われるだろう。"
 
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:7
@@ -2180,17 +2177,12 @@ msgstr "4p — 城壁包囲"
 
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
-#, fuzzy
-#| msgid ""
-#| "36X36 4 player map where 4 mighty castles face off at the convergence of "
-#| "two rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 "
-#| "villages."
 msgid ""
 "A 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
 msgstr ""
-"36x36 の 4 プレイヤー用マップ。4 つの巨大な城が 2 つの川の合流点で向かい合っ"
-"ている。2 対 2 あるいはフリー対戦に使うとよい。およそ 45 の村がある。"
+"4 プレイヤー用マップ。4 つの巨大な城が 2 つの川の合流点で向かい合っている。2 "
+"対 2 あるいはフリー対戦に使うとよい。およそ 45 の村がある。"
 
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:5
@@ -2209,16 +2201,11 @@ msgstr "4p — 混沌のガンシ"
 
 #. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:9
-#, fuzzy
-#| msgid ""
-#| "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
-#| "center common."
 msgid ""
 "A 2 vs. 2 map with auxiliary keeps, and a large messy battle in the center "
 "common."
 msgstr ""
-"24x28、2 対 2 用のマップ。予備の主塔があり、中央部の広場で大きく厄介な戦いが"
-"起こる。"
+"2 対 2 のマップ。予備の主塔があり、中央部の広場で大きく厄介な戦いが起こる。"
 
 #. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:5
@@ -2227,13 +2214,6 @@ msgstr "5p — オークション-X"
 
 #. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:7
-#, fuzzy
-#| msgid ""
-#| "4 players surround a central keep, play vs the AI survival style, or as a "
-#| "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or "
-#| "FFA, and the best way to determine how much is an auction, LOWEST bid "
-#| "wins. It is a very small map so 75 gold is recommended for the other "
-#| "players."
 msgid ""
 "4 players surround a central keep, play vs. the AI survival style, or as a "
 "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or FFA, "
@@ -2393,7 +2373,7 @@ msgstr "妖精"
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
 "impossible!"
-msgstr ""
+msgstr "おめでとうございます。不可能に近いマップを生き延びました！"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:538
@@ -2416,22 +2396,16 @@ msgstr "6p — Manzivan の罠"
 
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:10
-#, fuzzy
-#| msgid ""
-#| "A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult "
-#| "and confusing area of terrain where it is easy to end up out of position "
-#| "or over extended. Teams set for players 145 vs. 236 (east vs west). "
-#| "Designed for 100 starting gold, has 33 villages."
 msgid ""
 "A 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and "
 "confusing area of terrain where it is easy to end up out of position or over "
 "extended. Teams set for players 145 vs. 236 (east vs. west). Designed for "
 "100 starting gold, has 33 villages."
 msgstr ""
-"40x20 の 3 対 3 のマップ。Manzivan の罠は地形が難しく紛らわしい領域として広く"
-"知られている。このため、すぐに適所を外れてしまったり陣形が広がりすぎてしま"
-"う。チームは 145 対 236 （東軍 対 西軍） に設定されている。開始時 100 ゴール"
-"ドにデザインされており、33 の村がある。"
+"3 対 3 のマップ。Manzivan の罠は地形が難しく紛らわしい領域として広く知られて"
+"いる。このため、すぐに適所を外れてしまったり陣形が広がりすぎてしまう。チーム"
+"は 145 対 236 （東軍 対 西軍） に設定されている。開始時 100 ゴールドにデザイ"
+"ンされており、33 の村がある。"
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:7
@@ -2440,16 +2414,12 @@ msgstr "6p — 火山"
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:9
-#, fuzzy
-#| msgid ""
-#| "A 3vs3 battle to control the ashes of a kingdom long ago collapsed from a "
-#| "volcanic eruption. It has 36 villages."
 msgid ""
 "A 3 vs. 3 battle to control the ashes of a kingdom long ago collapsed from a "
 "volcanic eruption. It has 36 villages."
 msgstr ""
-"遠い昔に火山の噴火によって滅びた王国の遺跡を支配するために、3対3で戦うのだ。"
-"36の村が存在している。"
+"遠い昔に火山の噴火によって滅びた王国の遺跡を支配するために、3 対 3 で戦うの"
+"だ。36 の村が存在している。"
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7
@@ -2458,22 +2428,16 @@ msgstr "6p — ワーテルローの日没"
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:9
-#, fuzzy
-#| msgid ""
-#| "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required "
-#| "to avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
-#| "south), but having players 146 or 136 as a team is also interesting. "
-#| "Designed for 150 starting gold, has 44 villages."
 msgid ""
 "A 3 vs. 3 map. Flexible coordination of your alliance is required to avoid "
 "being outnumbered. Teams set for players 145 vs. 236 (north vs. south), but "
 "having players 146 or 136 as a team is also interesting. Designed for 150 "
 "starting gold, has 44 villages."
 msgstr ""
-"40x30 で 3 対 3 のマップ。数で圧倒されないようにするため、同盟軍との柔軟な調"
-"整が要求される。チームはプレイヤー 145 対 236 （北軍 対 南軍）に設定されてい"
-"るが、プレイヤー 146 対 136 でもおもしろい。所持金 150 ゴールドにデザインされ"
-"ており、44 の村がある。"
+"3 対 3 のマップ。数で圧倒されないようにするため、同盟軍との柔軟な調整が要求さ"
+"れる。チームはプレイヤー 145 対 236 （北軍 対 南軍）に設定されているが、プレ"
+"イヤー 146 対 136 でもおもしろい。所持金 150 ゴールドにデザインされており、"
+"44 の村がある。"
 
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:5
@@ -2630,69 +2594,3 @@ msgid ""
 msgstr ""
 "Wesnoth のベンチマークです。以下のオプションを使用します。--no-delay --"
 "multiplayer --scenario=wesbench_shroud_walk --exit-at-end"
-
-#~ msgid "Default + Khalifate"
-#~ msgstr "デフォルト + カリフェイト"
-
-#~ msgid "Age of Heroes + Khalifate"
-#~ msgstr "英雄の時代 + カリフェイト"
-
-#~ msgid "Khalifate"
-#~ msgstr "カリフェイト"
-
-#~ msgid "Aethermaw — Created by Doc Paterson"
-#~ msgstr "エーテルの奈落 — Doc Paterson作"
-
-#, fuzzy
-#~| msgid ""
-#~| "The Great Mage Sulla has transported your armies to this bizarre nexus, "
-#~| "and demands that you amuse her by doing battle.\n"
-#~| "\n"
-#~| "\n"
-#~| "\n"
-#~| "\n"
-#~| "<span color='red'>Note:</span>\n"
-#~| "\n"
-#~| "<span color='green'>Units may not move into a hex with a rock cairn. "
-#~| "They may, however, be recruited to, and move from, such hexes.</span>\n"
-#~| "\n"
-#~| "<span color='green'>Beginning on turn 4, the Great Mage Sulla will begin "
-#~| "to unite the two halves of the battlefield. The process will be complete "
-#~| "by the end of turn 6.</span>\n"
-#~ msgid ""
-#~ "The Great Mage Sulla has transported your armies to this bizarre nexus, "
-#~ "and demands that you amuse her by doing battle.\n"
-#~ "\n"
-#~ "<span color='red'>Note:</span>\n"
-#~ "\n"
-#~ "<span color='green'>Units may not move into a hex with a rock cairn. They "
-#~ "may, however, be recruited to, and move from, such hexes.</span>\n"
-#~ "\n"
-#~ "<span color='green'>Beginning on turn 4, the Great Mage Sulla will begin "
-#~ "to unite the two halves of the battlefield. The process will be complete "
-#~ "by the end of turn 6.</span>\n"
-#~ msgstr ""
-#~ "大魔術師Sullaによってあなたの軍勢は奇怪な場所に転送されました。彼女を戦い"
-#~ "によって楽しませなければなりません。\n"
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "<span color='red'>メモ:</span>\n"
-#~ "\n"
-#~ "<span color='green'>石塚のあるヘクスにユニットを移動させることはできないで"
-#~ "しょう。しかし、ヘクスにユニットを雇い、そこから移動させることは可能です。"
-#~ "</span>\n"
-#~ "\n"
-#~ "<span color='green'>ターン4から、大魔術師Sullaが2つに分かれた戦場を結合さ"
-#~ "せます。結合は、ターン6の終わりに完了します。</span>\n"
-
-#~ msgid ""
-#~ "Congratulations for surviving the map that so many people claim is "
-#~ "impossible. Frankly, I haven’t got a clue as to how you did it, so send "
-#~ "me the replay by mail to: roze@roze.mine.nu. Thank You!"
-#~ msgstr ""
-#~ "おめでとうございます。多くの人々に不可能だと言われたこのマップに生き残るこ"
-#~ "とができました。率直に言って、あなたがどのようにして生き残ったのか、その手"
-#~ "がかりをつかんでいません。ですから、メールでリプレイデータを送ってくださ"
-#~ "い。roze@roze.mine.nu まで。ありがとう！"

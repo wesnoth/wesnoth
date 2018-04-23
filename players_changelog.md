@@ -4,7 +4,7 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 
 ## Version 1.13.14+dev
  ### Language and i18n
-   * Updated translations: Czech, French, Galician, German, Polish,
+   * Updated translations: Czech, French, Galician, German, Japanese, Polish,
      Scottish Gaelic, Slovak, Spanish.
  ### User Interface
    * Implemented MP chat message history saving (issue #1194, issue #2802).
