@@ -16,10 +16,11 @@
 #pragma once
 
 #include "config.hpp"
-#include "preferences/game.hpp"
-#include "utils/make_enum.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
+#include "hotkey/hotkey_command.hpp"
+#include "preferences/game.hpp"
+#include "utils/make_enum.hpp"
 
 #include <boost/dynamic_bitset.hpp>
 
@@ -79,7 +80,7 @@ public:
 		preferences_dialog(game_cfg, initial_view).show();
 	}
 
-	typedef std::vector<const hotkey::hotkey_command*> t_visible_hotkeys;
+	typedef std::vector<const hotkey::hotkey_command*> visible_hotkeys_t;
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
@@ -136,9 +137,9 @@ private:
 	int last_selected_item_;
 
 	std::vector<double> accl_speeds_;
-	t_visible_hotkeys visible_hotkeys_;
+	visible_hotkeys_t visible_hotkeys_;
 
-	std::vector<t_string> cat_names_;
+	std::map<hotkey::HOTKEY_CATEGORY, t_string> cat_names_;
 
 	// The page/tab index pairs for setting visible pages
 	const std::pair<int, int>& initial_index_;
