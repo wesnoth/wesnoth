@@ -563,6 +563,7 @@ int battle_context::choose_attacker_weapon(const unit& attacker,
 				attacker, attacker_loc, choices[0], true, defender, defender_loc, def_weapon, units));
 
 		if(attacker_stats_->disable) {
+			attacker_stats_.reset();
 			return -1;
 		}
 
