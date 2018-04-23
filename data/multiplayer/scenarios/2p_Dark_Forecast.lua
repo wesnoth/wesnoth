@@ -446,6 +446,9 @@ end
 on_event("side 3 turn", function()
 	-- get next weather event
 	local weather_event = wesnoth.get_variable("weather_event[0]")
+	if weather_event == nil then
+		return
+	end
 	if wesnoth.current.turn ~= weather_event.turn then
 		return
 	end
