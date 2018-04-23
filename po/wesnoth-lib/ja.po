@@ -5,15 +5,16 @@
 #
 # Translators:
 # Automatically generated, 2005
-# Masaharu IWAI <iwaim.sub@gmail.com>, 2010
+# IWAI, Masaharu <iwaim.sub@gmail.com>, 2010
 # MATSUMOTO Yuji <matumoto@marron.cias.osakafu-u.ac.jp>, 2005
-# RatArmy <broadbarredfirefish@gmail.com>, 2015-2016
+# RatArmy <broadbarredfirefish@gmail.com>, 2015-2018
+# 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2017-2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-Dev Japanese\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2016-04-09 22:52+0000\n"
+"PO-Revision-Date: 2018-04-22 13:04+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
 "japanese/language/ja/)\n"
@@ -93,10 +94,10 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
-"川が極端に浅い場合、陸上のユニットでさえも楽に渡ることができます。さらに、水"
-"中に適応した生物ならばその機動力をフルに発揮することができます。ゲームプレイ"
-"に関して言えば、川の浅瀬は草原としても、浅瀬としても扱われます。ユニットはそ"
-"のどちらかのうちより高い方の防御力・移動力を得ることになります。"
+"川が極端に浅い場合、陸上のユニットでも楽に渡ることができます。さらに、水中に"
+"適応した生物ならばその機動力をフルに発揮することができます。ゲームプレイに関"
+"して言えば、川瀬は草原としても、浅瀬としても扱われます。ユニットはそのどちら"
+"かのうちより高い方の回避率・移動力を得ることになります。"
 
 #. [terrain_type]: id=gray_reef
 #. [terrain_type]: id=medium_reef
@@ -255,9 +256,9 @@ msgid ""
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgstr ""
-"<italic>text='砂漠'</italic>は砂場やビーチとはいくらか異なる成分で構成されて"
-"います。しかしながら、ゲームプレイにおけるそれらの扱いは全く同じです。"
-"<ref>dst='terrain_sand' text='砂地'</ref>を参照して下さい。"
+"<italic>text='砂漠'</italic>は砂地やビーチとはいくらか異なる成分で構成されて"
+"います。しかし、ゲーム中での特性は全く同じです。<ref>dst='terrain_sand' "
+"text='砂地'</ref>を参照して下さい。"
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -281,11 +282,11 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in sand."
 msgstr ""
-"<italic>text='砂地'</italic>は不安定なために、多くのユニットは移動が困難にな"
-"ります。それとは対象的に、足が大きいものや蛇のような体を持つ爬虫類の種族たち"
-"は砂地を楽に移動することができます。\n"
+"<italic>text='砂地'</italic>では多くのユニットが足を取られてしまうため、移動"
+"が困難になります。しかし、爬虫類は大きな足や蛇のような体を持つものが多いた"
+"め、砂地を楽に移動することができます。\n"
 "\n"
-"砂地においては、多くのユニットの回避率は20〜40%となります。"
+"砂地では、ほとんどのユニットの回避率は20〜40%となります。"
 
 #. [terrain_type]: id=oasis
 #: data/core/terrain.cfg:317
@@ -298,6 +299,9 @@ msgid ""
 "A welcome sight to any traveler, an oasis allows units to heal as if "
 "stationed in a village, but provides no income or defensive advantage."
 msgstr ""
+"オアシスは旅人にはありがたい地形です。オアシスでは、村に滞在しているときと同"
+"様にユニットは回復できます。しかし、村と違って収入は増えませんし、防御面での"
+"アドバンテージを得ることもできません。"
 
 #. [terrain_type]: id=sand_rubble
 #: data/core/terrain.cfg:332
@@ -312,7 +316,7 @@ msgstr "クレーター"
 #. [terrain_type]: id=flowers_mixed
 #: data/core/terrain.cfg:356
 msgid "Mixed Flowers"
-msgstr "花々"
+msgstr "花"
 
 #. [terrain_type]: id=farm
 #: data/core/terrain.cfg:365
@@ -342,7 +346,7 @@ msgstr "砂漠の植物"
 #. [terrain_type]: id=desert_plants_sans_bones
 #: data/core/terrain.cfg:410
 msgid "Desert Plants without Bones"
-msgstr "骨の無い砂漠の植物"
+msgstr "砂漠の植物（動物の骨無し）"
 
 #. [terrain_type]: id=windmill
 #: data/core/terrain.cfg:419
@@ -357,7 +361,7 @@ msgstr "キャンプファイア"
 #. [terrain_type]: id=wallfire
 #: data/core/terrain.cfg:437
 msgid "Sconce"
-msgstr ""
+msgstr "燭台"
 
 #. [terrain_type]: id=brazier
 #: data/core/terrain.cfg:446
@@ -367,12 +371,12 @@ msgstr "火鉢"
 #. [terrain_type]: id=brazier-lit
 #: data/core/terrain.cfg:455
 msgid "Lit Brazier"
-msgstr "明るい火鉢"
+msgstr "燃える火鉢"
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:473
 msgid "Stones with Sand Drifts"
-msgstr "漂砂と砂"
+msgstr "漂砂と石"
 
 #. [terrain_type]: id=water-lilies
 #: data/core/terrain.cfg:482
@@ -442,7 +446,7 @@ msgstr "熱帯林"
 #. [terrain_type]: id=rainforest
 #: data/core/terrain.cfg:562
 msgid "Rainforest"
-msgstr "熱帯雨林"
+msgstr "雨林"
 
 #. [terrain_type]: id=palm_desert_forest
 #: data/core/terrain.cfg:574
@@ -578,17 +582,13 @@ msgstr "砂漠の山"
 
 #. [terrain_type]: id=regular_stone_floor
 #: data/core/terrain.cfg:821
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Stone Floor"
-msgstr "木の床"
+msgstr "石の床"
 
 #. [terrain_type]: id=regular_stone_floor
 #: data/core/terrain.cfg:824
-#, fuzzy
-#| msgid "Basic Wooden Floor"
 msgid "Basic Stone Floor"
-msgstr "普通の木の床"
+msgstr "普通の石の床"
 
 #. [terrain_type]: id=rug_floor
 #. [terrain_type]: id=rug2_floor
@@ -596,26 +596,22 @@ msgstr "普通の木の床"
 #: data/core/terrain.cfg:831 data/core/terrain.cfg:841
 #: data/core/terrain.cfg:851
 msgid "Rug"
-msgstr ""
+msgstr "敷物"
 
 #. [terrain_type]: id=rug_floor
 #: data/core/terrain.cfg:834
 msgid "Royal Rug"
-msgstr ""
+msgstr "高貴な敷物"
 
 #. [terrain_type]: id=rug2_floor
 #: data/core/terrain.cfg:844
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Normal Rug"
-msgstr "リプレイを保存"
+msgstr "普通の敷物"
 
 #. [terrain_type]: id=rug3_floor
 #: data/core/terrain.cfg:854
-#, fuzzy
-#| msgid "Cave"
 msgid "Cave Rug"
-msgstr "洞窟"
+msgstr "洞窟の敷物"
 
 #. [terrain_type]: id=wood_floor
 #: data/core/terrain.cfg:861
@@ -629,10 +625,8 @@ msgstr "普通の木の床"
 
 #. [terrain_type]: id=old_wood_floor
 #: data/core/terrain.cfg:871 data/core/terrain.cfg:874
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Old Wooden Floor"
-msgstr "木の床"
+msgstr "古い木の床"
 
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:887
@@ -642,7 +636,7 @@ msgstr "光"
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:888
 msgid "Beam of Light"
-msgstr "射し込む光"
+msgstr "差し込む光"
 
 #. [terrain_type]: id=cave_floor
 #. [terrain_type]: id=cave_earthy
@@ -682,7 +676,7 @@ msgstr "キノコの森"
 #. [terrain_type]: id=fungus_beam
 #: data/core/terrain.cfg:950
 msgid "Lit Mushroom Grove"
-msgstr "光さすキノコの森"
+msgstr "光り差すキノコの森"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:961 data/core/terrain.cfg:962
@@ -691,19 +685,6 @@ msgstr "岩に囲まれた洞窟"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:967
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
-#| "water and wind, carrying erosive particles that carve the rock. It "
-#| "resembles a scraggy underground cavern which reduces efficiency of most "
-#| "units, but shoulders defense. Dwarves and trolls, who are main settlers "
-#| "of caves, have a relatively easy time navigating this terrain. Dwarves, "
-#| "who by dint of their small size have the full advantage of navigation in "
-#| "such topography. Occasionally caves are "
-#| "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>\n"
-#| "\n"
-#| "Most units have about 50% defense in rocky caves, whereas cavalry are "
-#| "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -719,15 +700,16 @@ msgid ""
 "text='illuminated'</ref>."
 msgstr ""
 "<italic>text='岩に囲まれた洞窟'</italic>は、風雨の働きによって岩石が侵食され"
-"て形作られました。でこぼこの地下洞窟に似ており、多くのユニットは能力を制限さ"
-"れますが、守備力は上がります。ドワーフとトロルは洞窟の住人であり、比較的楽に"
-"この地形を移動することができます。その小さな体によって、ドワーフは機動力のア"
-"ドバンテージを十分に得ることができます。時折、洞窟の中には"
-"<ref>dst='terrain_illuminated_cave' text='照らされている場所'</ref>場所があり"
+"て形作られました。でこぼこの地下洞窟に似ており、多くのユニットにとって、回避"
+"率は上がるものの、通過するのは困難な地形です。ドワーフとトロルのような洞窟の"
+"住人のみ、この地形をうまく通過する十分な能力を有しています。\n"
+"\n"
+"岩に囲まれた洞窟において、多くのユニットの回避率は50%となり、騎兵は40%に制限"
+"されます。しかし、ドワーフはその短身により、60%の回避率の恩恵に与ることができ"
 "ます。\n"
 "\n"
-"多くのユニットは50%の回避率となり、騎兵は40%に限られます。ドワーフは60%の回避"
-"率を得ることができます。"
+"時折、洞窟の中には<ref>dst='terrain_illuminated_cave' text='照らされている場"
+"所'</ref>があります。"
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -782,11 +764,10 @@ msgid ""
 "immediately above it. This provides an attack bonus for lawful units and "
 "removes the attack bonus from chaotic units."
 msgstr ""
-"<italic>text='溶岩'</italic>を渡る際の危険性については明白でしょう。移動に関"
-"しては、溶岩は<ref>dst='terrain_unwalkable' text='歩行不能'</ref>地形として扱"
-"われ、飛行ユニットだけが通行することができます。また、溶解したマグマは周囲を"
-"照らします。これによって、秩序ユニットには攻撃ボーナスが与えられ、混沌ユニッ"
-"トの攻撃ボーナスは奪われるでしょう。"
+"<italic>text='溶岩'</italic>を渡る際の危険性については明白でしょう。溶岩は"
+"<ref>dst='terrain_unwalkable' text='歩行不能'</ref>地形として扱われ、飛行ユ"
+"ニットだけが通行することができます。また、溶解したマグマは周囲を照らします。"
+"従って、秩序ユニットの攻撃力は上昇し、混沌ユニットの攻撃力は低下します。"
 
 #. [terrain_type]: id=volcano
 #: data/core/terrain.cfg:1082
@@ -830,10 +811,8 @@ msgstr "自然な洞窟の壁"
 #. [terrain_type]: id=wall_stone_mine
 #: data/core/terrain.cfg:1150 data/core/terrain.cfg:1151
 #: data/core/terrain.cfg:1208
-#, fuzzy
-#| msgid "Mine Rail"
 msgid "Mine Wall"
-msgstr "鉱山のレール"
+msgstr "鉱山の壁"
 
 #. [terrain_type]: id=cavewall_earthy
 #: data/core/terrain.cfg:1162
@@ -855,31 +834,23 @@ msgstr "照らされた石壁"
 
 #. [terrain_type]: id=wall_stone_mine
 #: data/core/terrain.cfg:1209
-#, fuzzy
-#| msgid "Mine Rail"
 msgid "Straight Mine Wall"
-msgstr "鉱山のレール"
+msgstr "まっすぐな鉱山の壁"
 
 #. [terrain_type]: id=wall_stone_white
 #: data/core/terrain.cfg:1219
-#, fuzzy
-#| msgid "Mine Rail"
 msgid "Interior Wall"
-msgstr "鉱山のレール"
+msgstr "屋内の壁"
 
 #. [terrain_type]: id=wall_stone_white
 #: data/core/terrain.cfg:1220
-#, fuzzy
-#| msgid "Lit Stone Wall"
 msgid "Straight White Wall"
-msgstr "照らされた石壁"
+msgstr "まっすぐな白い壁"
 
 #. [terrain_type]: id=wall_stone_clean
 #: data/core/terrain.cfg:1231
-#, fuzzy
-#| msgid "Stone Wall"
 msgid "Clean Stone Wall"
-msgstr "石壁"
+msgstr "綺麗な石壁"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -894,7 +865,7 @@ msgstr "石壁"
 #: data/core/terrain.cfg:1343 data/core/terrain.cfg:1356
 #: data/core/terrain.cfg:1412 data/core/terrain.cfg:1442
 msgid "Gate"
-msgstr ""
+msgstr "門"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -903,7 +874,7 @@ msgstr ""
 #: data/core/terrain.cfg:1248 data/core/terrain.cfg:1261
 #: data/core/terrain.cfg:1275 data/core/terrain.cfg:1413
 msgid "Rusty Gate"
-msgstr ""
+msgstr "錆びた門"
 
 #. [terrain_type]: id=portal_door_wooden_sw
 #. [terrain_type]: id=portal_door_wooden_se
@@ -918,7 +889,7 @@ msgstr ""
 #: data/core/terrain.cfg:1381 data/core/terrain.cfg:1394
 #: data/core/terrain.cfg:1427 data/core/terrain.cfg:1456
 msgid "Door"
-msgstr ""
+msgstr "扉"
 
 #. [terrain_type]: id=portal_door_wooden_sw
 #. [terrain_type]: id=portal_door_wooden_se
@@ -926,10 +897,8 @@ msgstr ""
 #. [terrain_type]: id=portal_door_wooden
 #: data/core/terrain.cfg:1289 data/core/terrain.cfg:1302
 #: data/core/terrain.cfg:1316 data/core/terrain.cfg:1428
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Wooden Door"
-msgstr "木の床"
+msgstr "木の扉"
 
 #. [terrain_type]: id=portal_gate_rusty_open_sw
 #. [terrain_type]: id=portal_gate_rusty_open_se
@@ -937,29 +906,25 @@ msgstr "木の床"
 #: data/core/terrain.cfg:1332 data/core/terrain.cfg:1344
 #: data/core/terrain.cfg:1357
 msgid "Open Rusty Gate"
-msgstr ""
+msgstr "開いている錆びた門"
 
 #. [terrain_type]: id=portal_door_wooden_open_sw
 #. [terrain_type]: id=portal_door_wooden_open_se
 #. [terrain_type]: id=portal_door_wooden_open_n
 #: data/core/terrain.cfg:1370 data/core/terrain.cfg:1382
 #: data/core/terrain.cfg:1395
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Open Wooden Door"
-msgstr "木の床"
+msgstr "開いている木の扉"
 
 #. [terrain_type]: id=p_open_rusty
 #: data/core/terrain.cfg:1443
 msgid "Rusty Open Gate"
-msgstr ""
+msgstr "開いた錆びた門"
 
 #. [terrain_type]: id=p_open_wooden
 #: data/core/terrain.cfg:1457
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Wooden Open Door"
-msgstr "木の床"
+msgstr "開いた木の扉"
 
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:1473
@@ -975,7 +940,7 @@ msgstr "歩行不能のオーバーレイ"
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:1498 data/core/terrain.cfg:2718
 msgid "Void"
-msgstr "空洞"
+msgstr "虚無"
 
 #. [terrain_type]: id=desert_village
 #. [terrain_type]: id=desert_village_ruin
@@ -1035,7 +1000,7 @@ msgstr "煉瓦の村"
 #. [terrain_type]: id=desert_village_ruin
 #: data/core/terrain.cfg:1528
 msgid "Ruined Adobe Village"
-msgstr "廃れた煉瓦の村"
+msgstr "煉瓦の廃村"
 
 #. [terrain_type]: id=desert_village_tent
 #: data/core/terrain.cfg:1541
@@ -1080,7 +1045,7 @@ msgstr "雪のコテージ"
 #. [terrain_type]: id=human_village_ruin
 #: data/core/terrain.cfg:1651
 msgid "Ruined Cottage"
-msgstr "荒れ果てたコテージ"
+msgstr "廃コテージ"
 
 #. [terrain_type]: id=city_village
 #: data/core/terrain.cfg:1664
@@ -1100,7 +1065,7 @@ msgstr "雪の人間の都市"
 #. [terrain_type]: id=city_village_ruin
 #: data/core/terrain.cfg:1703
 msgid "Ruined Human City"
-msgstr "荒れ果てた人間の都市"
+msgstr "人間の廃都市"
 
 #. [terrain_type]: id=hill_village
 #: data/core/terrain.cfg:1716
@@ -1186,9 +1151,9 @@ msgid ""
 "units usually have a low defense."
 msgstr ""
 "<italic>text='水没した村'</italic>はマーフォークの住居です。水棲生物にとって"
-"は住居となりますが、陸棲生物にとっては移動・防御が困難になるでしょう。しか"
-"し、他の村と同様に、全ての生物の傷を癒やす設備はあります。村に滞在しているユ"
-"ニットは毎ターン8回復するか、毒が治療されます。\n"
+"は住居となりますが、陸棲生物にとっては移動・回避が困難になるでしょう。しか"
+"し、他の村と同様に傷を癒やす設備はあります。村に滞在しているユニットは毎ター"
+"ン8回復するか、毒が治療されます。\n"
 "\n"
 "マーフォークとナーガはこの地形では60%の回避率となりますが、陸棲のユニットは回"
 "避率が低下します。"
@@ -1211,10 +1176,8 @@ msgstr "野営地"
 
 #. [terrain_type]: id=encampment_ruin
 #: data/core/terrain.cfg:1936
-#, fuzzy
-#| msgid "Encampment"
 msgid "Ruined Encampment"
-msgstr "野営地"
+msgstr "野営地の廃墟"
 
 #. [terrain_type]: id=encampment_snow
 #: data/core/terrain.cfg:1948
@@ -1268,10 +1231,8 @@ msgstr "エルフの城"
 
 #. [terrain_type]: id=elven_castle_ruin
 #: data/core/terrain.cfg:2019
-#, fuzzy
-#| msgid "Elven Castle"
 msgid "Elven Castle Ruin"
-msgstr "エルフの城"
+msgstr "エルフの荒城"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:2031
@@ -1314,24 +1275,18 @@ msgstr "砂漠の荒城"
 
 #. [terrain_type]: id=troll_encampment
 #: data/core/terrain.cfg:2105
-#, fuzzy
-#| msgid "Tall Encampment Keep"
 msgid "Troll Encampment"
-msgstr "野営地の高主塔"
+msgstr "トロルの野営地"
 
 #. [terrain_type]: id=aquatic_camp
 #: data/core/terrain.cfg:2117
-#, fuzzy
-#| msgid "Encampment"
 msgid "Aquatic Encampment"
-msgstr "野営地"
+msgstr "水の野営地"
 
 #. [terrain_type]: id=aquatic_castle
 #: data/core/terrain.cfg:2130
-#, fuzzy
-#| msgid "Human Castle"
 msgid "Aquatic Castle"
-msgstr "人間の城"
+msgstr "水の城"
 
 #. [terrain_type]: id=encampment_keep
 #. [terrain_type]: id=encampment_keep_tall
@@ -1346,10 +1301,8 @@ msgstr "野営地の主塔"
 
 #. [terrain_type]: id=encampment_ruin_keep
 #: data/core/terrain.cfg:2158
-#, fuzzy
-#| msgid "Encampment Keep"
 msgid "Ruined Encampment Keep"
-msgstr "野営地の主塔"
+msgstr "野営地の主塔の廃墟"
 
 #. [terrain_type]: id=encampment_keep_tall
 #: data/core/terrain.cfg:2171
@@ -1406,10 +1359,8 @@ msgstr "エルフの城の主塔"
 
 #. [terrain_type]: id=elven_keep_ruin
 #: data/core/terrain.cfg:2262
-#, fuzzy
-#| msgid "Elven Castle Keep"
 msgid "Elven Keep Ruin"
-msgstr "エルフの城の主塔"
+msgstr "エルフの廃墟の主塔"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:2275
@@ -1452,24 +1403,18 @@ msgstr "砂漠の廃墟の主塔"
 
 #. [terrain_type]: id=merman_campkeep
 #: data/core/terrain.cfg:2353
-#, fuzzy
-#| msgid "Tall Encampment Keep"
 msgid "Aquatic Encampment Keep"
-msgstr "野営地の高主塔"
+msgstr "水の野営地の主塔"
 
 #. [terrain_type]: id=troll_campkeep
 #: data/core/terrain.cfg:2366
-#, fuzzy
-#| msgid "Tall Encampment Keep"
 msgid "Troll Encampment Keep"
-msgstr "野営地の高主塔"
+msgstr "トロルの野営地の主塔"
 
 #. [terrain_type]: id=merman_castlekeep
 #: data/core/terrain.cfg:2379
-#, fuzzy
-#| msgid "Ruined Keep"
 msgid "Aquatic Keep"
-msgstr "廃墟の主塔"
+msgstr "水の主塔"
 
 #. [terrain_type]: id=castle_overlay
 #: data/core/terrain.cfg:2394
@@ -1539,14 +1484,14 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
-"自然の水路は気まぐれであり、浅瀬の喫水線は上がったり下がったりします。"
-"<italic>text='橋'</italic>はそのような川の性質から私達を解き放ってくれます。"
-"足の濡れないことは非常に重要であり、寒期においては言うまでもありません。\n"
+"自然の水路は気まぐれであり、浅瀬の喫水線は上下します。<italic>text='橋'</"
+"italic>はそのような川の性質から私達を解き放ってくれます。足の濡れないことは非"
+"常に重要であり、寒期においては言うまでもありません。\n"
 "\n"
-"陸または海を通る者にとって、橋は素晴らしい存在です。ゲームプレイに関して言え"
-"ば、橋は草原としてもその下を通る水路としても扱われます。ユニットはそのどちら"
-"かの内より良い方の回避率と移動力のボーナスを得ることができます。なお、橋と言"
-"えど同じヘクス上に水中ユニットと陸上ユニットが存在することはできません。"
+"陸または海を通る者にとって、橋は素晴らしい存在です。ゲーム中では、橋は草原と"
+"してもその下を通る水路としても扱われます。ユニットはそのどちらかの内より良い"
+"方の回避率と移動力のボーナスを得ることができます。なお、橋と言えど同じヘクス"
+"上に水中ユニットと陸上ユニットが存在することはできません。"
 
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
@@ -1604,7 +1549,7 @@ msgstr "オフマップ"
 #. [terrain_type]: id=off_map2
 #: data/core/terrain.cfg:2730
 msgid "Fake Map Border"
-msgstr ""
+msgstr "フェイクマップボーダー"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=sort_7
@@ -1616,10 +1561,8 @@ msgstr "幕"
 
 #. [terrain_type]: id=fake_shroud_overlay
 #: data/core/terrain.cfg:2752
-#, fuzzy
-#| msgid "Shroud"
 msgid "Fake Shroud"
-msgstr "幕"
+msgstr "フェイクの幕"
 
 #. [terrain_type]: id=fog
 #. [toggle_button]: id=sort_6
@@ -1709,8 +1652,9 @@ msgid ""
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
 "<italic>text='岩礁'</italic>は石やサンゴ、砂で形作られた浅瀬です。\n"
-"多くの陸上ユニットは通常の浅瀬よりはしっかりとした足場と防御姿勢を得ることが"
-"でき、水中に適応した種族ならば高い回避率を得ることができます。\n"
+"岩礁には通常の浅瀬よりも良い足場と身を守る遮蔽物が存在するので、陸上ユニット"
+"にとっては浅瀬よりは良い地形です。また、水中に適応した種族ならばさらに高い回"
+"避率を得ることができます。\n"
 "\n"
 "マーマンとナーガは70%の回避率を得ます。"
 
@@ -1728,9 +1672,9 @@ msgid ""
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
 "<italic>text='丘'</italic>はでこぼこの地形を表しています。身を隠すのに十分な"
-"起伏があり、多くの軍隊は進行するのが困難となります。ドワーフとトロル、オーク"
-"はこの地形に慣れており、移動力が落ちることはありません。騎兵はこの地形を進行"
-"するのが困難であり、防御におけるメリットも無効となってしまいます。\n"
+"起伏があり、多くの軍隊にとっては進み辛い地形です。ドワーフとトロル、オークは"
+"この地形に慣れており、移動力が落ちることはありません。騎兵はこの地形を進行す"
+"るのが困難であり、起伏に身を隠すことも難しいので回避率は上昇しません。\n"
 "\n"
 "殆どのユニットは50%の回避率となり、騎兵は40%に限られます。ドワーフは60%の回避"
 "を楽しむことができるでしょう。"
@@ -1749,12 +1693,12 @@ msgid ""
 "all generally enjoy 60%."
 msgstr ""
 "<italic>text='沼地'</italic>は湿地を意味しています。\n"
-"沼地ではほとんどの者が移動力を削がれ、防御力も制限されます。例外として、水中"
-"に適した体を持つ者たちは、その移動力と防御力をフルに発揮できます。湿地で暮ら"
+"沼地ではほとんどの者が移動力を削がれ、回避率も制限されます。例外として、水中"
+"に適した体を持つ者たちは、その移動力と回避率をフルに発揮できます。湿地で暮ら"
 "す生物たちも、この地形に適応し身を隠すことができます。\n"
 "\n"
-"ほとんどのユニットは30%の回避率となりますが、マーマンとナーガ、トカゲ族は60%"
-"の回避を楽しむことができます。"
+"ほとんどのユニットは30%の回避率となりますが、マーフォークとナーガ、トカゲは"
+"60%の回避率を発揮することができます。"
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:2866
@@ -1772,11 +1716,11 @@ msgid ""
 msgstr ""
 "<italic>text='浅瀬'</italic>は人間の腰が浸かるほど深い水を表しています。ほと"
 "んどの者は動きが鈍くなり、攻撃を受けやすくなります。水はドワーフの頭近くまで"
-"達するため、彼らは非常に苦しむことになるでしょう。例外として、水中に適合した"
-"種族は十分な機動力を発揮し、回避ボーナスを得ることができるでしょう。\n"
+"達するため、彼らは非常に苦しむことになります。例外として、水中に適合した種族"
+"は十分な移動力を発揮し、回避ボーナスを得ることができます。\n"
 "\n"
-"ほとんどのユニットは20〜30%の回避率となりますが、ナーガとマーマンは60%となり"
-"ます。"
+"ほとんどのユニットは20〜30%の回避率となりますが、ナーガとマーフォークは60%と"
+"なります。"
 
 #. [terrain_type]: id=castle
 #: data/core/terrain.cfg:2881
@@ -1791,12 +1735,13 @@ msgid ""
 "Most units have about 60% defense in a castle."
 msgstr ""
 "<italic>text='城'</italic>は要塞の類いを表してます。\n"
-"ほとんどのユニットは城の中では高い防御ボーナスを得ることができ、移動力をフル"
-"に発揮できます。つまり、城の中にいるユニットは強固なものとなります。しかし、"
-"すべての城壁のヘクスがユニットで埋められていなければ、敵が入り込むこともでき"
-"ます。城の防御ボーナスは中にいるもの全員に与えられます。\n"
+"ほとんどのユニットは城の中では高い回避率を得ることができ、移動力をフルに発揮"
+"できます。つまり、城の中にいるユニットは守りにおいてはアドバンテージを得るこ"
+"とができます。しかし、すべての城壁のヘクスがユニットで埋められていなければ、"
+"敵が侵入する可能性もあります。城の回避ボーナスは中にいるもの全員に与えられる"
+"ため、注意が必要です。\n"
 "\n"
-"ほとんどのユニットは60%の回避率を得るでしょう。"
+"城内では、ほとんどのユニットは60%の回避率を得るでしょう。"
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:2895
@@ -1812,10 +1757,10 @@ msgid ""
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
 "<italic>text='山'</italic> はユニットが移動するのが難しいほどの急勾配です。\n"
-"多くの兵には回避ボーナスが与えられますが、通路を通るのは非常に困難になりま"
-"す。多くの騎兵は山に立ち入ることすらできません。しかしながら、エルフの騎兵と"
-"ゴブリンのウルフライダーたちは例外です。ドワーフとトロルのすみかでもあり、彼"
-"らは簡単に山を乗り越えることができます。\n"
+"多くの兵は回避率は向上しますが、通行するのは困難です。多くの騎兵は山に立ち入"
+"ることすらできません。しかしながら、エルフの騎兵とゴブリンのウルフライダーは"
+"例外です。ドワーフとトロルのすみかでもあり、彼らは簡単に山を乗り越えることが"
+"できます。\n"
 "\n"
 "ほとんどのユニットは60%の回避率を得ることができ、ドワーフは70%にもなります。"
 
@@ -1831,7 +1776,7 @@ msgid ""
 msgstr ""
 "<italic>text='深水'</italic>は人間の頭を覆い隠すほどの深い水を表していま"
 "す。\n"
-"ほとんどのユニットは深水に立ち入ることができませんが、飛行ユニットや泳ぎの達"
+"ほとんどのユニットは深水に立ち入ることはできませんが、飛行ユニットや泳ぎの達"
 "人ならば可能です。\n"
 "\n"
 "マーマンとナーガは50%の回避率と、十分な移動力を発揮できます。"
@@ -1855,9 +1800,9 @@ msgid ""
 msgstr ""
 "<italic>text='草原'</italic>は耕された畑や、放牧地、自然のままの土地などの開"
 "けた平地を表します。\n"
-"開けた大地のため、草原は簡単に横断することができますが、防御には向いていませ"
-"ん。一般に、騎兵や開けた土地が得意な非常に機敏なユニットは草原で最高のパ"
-"フォーマンスを発揮します。\n"
+"広く平坦なため、草原は簡単に横断することができますが、防御には向いていませ"
+"ん。一般に、騎兵や平地を得意とする機敏なユニットは草原で最高のパフォーマンス"
+"を発揮します。\n"
 "\n"
 "多くのユニットは30〜40%の回避率を得ます。"
 
@@ -1879,12 +1824,12 @@ msgid ""
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
-"<italic>text='Forests'</italic>は通行を妨げるほど深いやぶを持つ林地を表してい"
-"ます。森では多くの者の動きが鈍くなりますが、平地よりも良い回避率を得ることが"
-"できます。しかし、騎兵は移動を阻害され、森の隠密性すらも無駄になります。ただ"
-"し、エルフたちは例外です。移動力をフルに発揮できるだけではなく、高い回避ボー"
-"ナスを得ることができます。ドワーフもまた例外であり、ほとんどスピードを落とさ"
-"ずに進める代わりに、森に不慣れなために防御ボーナスを得ることができません。\n"
+"<italic>text='森'</italic>は通行を妨げるほど深いやぶを持つ林地を表していま"
+"す。森では多くの者の動きが鈍くなりますが、平地よりも良い回避率を得ることがで"
+"きます。しかし、騎兵は移動を阻害され、森に身を隠すことすらできません。ただ"
+"し、エルフたちは例外です。移動力をフルに発揮できるだけではなく、高い回避率を"
+"得ることができます。ドワーフもまた例外であり、ほとんどスピードを落とさずに進"
+"める代わりに、森に不慣れなために回避率は上昇しません。\n"
 "\n"
 "ほとんどのユニットは50%の回避率となりますが、騎兵は30%に限られます。一方、エ"
 "ルフは騎兵でさえも60〜70%の回避率となります。ドワーフは一般的に30%となりま"
@@ -1906,9 +1851,9 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
-"<italic>text='凍土'</italic>地形は雪や氷で覆われた平らな場所を意味していま"
+"<italic>text='凍土'</italic>地形は雪や氷で覆われた平らな場所を表していま"
 "す。\n"
-"多くのユニットは動きが鈍くなり、守備力も低下します。水中ユニットは、たとえ水"
+"多くのユニットは動きが鈍くなり、回避率も低下します。水中ユニットは、たとえ水"
 "中で呼吸できる者であっても、氷の下を泳ぐことはできません。\n"
 "\n"
 "ほとんどのユニットは20〜40%の回避率を得ます。"
@@ -1928,9 +1873,9 @@ msgid ""
 "40%."
 msgstr ""
 "<italic>text='村'</italic>は人間などの建物の集落を表しています。\n"
-"騎兵を含むほとんど全てのユニットは村の間を簡単に移動でき、回避ボーナスを得る"
-"ことができます。村にはユニットの傷を癒やす資源があり、毎ターン8HPを回復するか"
-"毒を治療する効果があります。\n"
+"騎兵を含むほとんど全てのユニットは村の間を簡単に移動でき、多くのユニットは高"
+"い回避率を得ることができます。村にはユニットの傷を癒やす資源があり、毎ターン"
+"HPを8回復するか解毒することができます。\n"
 "\n"
 "ほとんどのユニットは50〜60%の回避率となり、騎兵は40%となります。"
 
@@ -1948,9 +1893,9 @@ msgid ""
 "jagged peaks at such rarefied heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
-"非常に決意の固い旅行者でさえも超えられない障害物が存在しており、石の壁や雲が"
-"覆うほど高い山々などがまさにそうです。飛行生物でさえもギザギザの山の頂点には"
-"辿りつけず、最も激しいトロルでさえも厚い石の壁は破壊できません。"
+"石の絶壁や雲が掛かるほど高い山々などは、どんな旅人であっても越えることはでき"
+"ません。飛行生物でさえも切り立った山の頂点には辿りつけず、獰猛なトロルでさえ"
+"も厚い石の壁は破壊できません。"
 
 #. [terrain_type]: id=unwalkable
 #: data/core/terrain.cfg:2979 data/core/terrain.cfg:2980
@@ -1965,10 +1910,9 @@ msgid ""
 "for sheer walls which would take days to traverse. As far as gameplay is "
 "concerned, only units capable of flying can cross this terrain."
 msgstr ""
-"<italic>text='歩行不能地形'</italic>は裂け目や峡谷など、その名の通り通行でき"
-"ない場所を示しています。裂け目とは渡るのに何日もかかる切り立った崖のことで"
-"す。ゲームプレイに関して言えば、飛行できるユニットだけがこの地形を渡ることが"
-"できます。"
+"<italic>text='歩行不能地形'</italic>は裂け目や峡谷など、その名の通り徒歩で通"
+"行できない場所を示しています。裂け目を渡ろうとすれば何日もかかってしまうで"
+"しょう。ゲーム中では、飛行できるユニットだけがこの地形を渡ることができます。"
 
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:2989 data/core/terrain.cfg:2990
@@ -1977,31 +1921,29 @@ msgstr "レール"
 
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:2992
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Rails'</italic> are used to transport ore. By Dwarfs. "
-#| "Mostly."
 msgid ""
 "<italic>text='Rails'</italic> are used to transport ore, mostly by dwarves."
 msgstr ""
-"<italic>text='レール'</italic>は交通に使われます。大抵の場合、ドワーフによっ"
-"て作られています。"
+"<italic>text='レール'</italic>は鉱石を輸送するためのものです。大抵の場合、ド"
+"ワーフによって利用されています。"
 
 #. [settings]
 #: data/gui/default.cfg:23
 msgid " (Press '$hotkey' for more information)"
-msgstr ""
+msgstr "（詳しくは「 $hotkey 」を押してください）"
 
 #: data/gui/macros/_initial.cfg:348
 msgid "Search"
-msgstr ""
+msgstr "検索"
 
 #. [label]: id=no_options_notice
 #: data/gui/macros/custom_options_tree.cfg:26
+#, fuzzy
+#| msgid "Configure settings for the selected custom modifications."
 msgid ""
 "There are no custom options available for the selected era, game, or "
 "modification."
-msgstr ""
+msgstr "カスタムModの設定を変更することができます。"
 
 #. [button]: id=reset_option_values
 #. [button]: id=btn_reset_hotkeys
@@ -2017,9 +1959,9 @@ msgstr "デフォルト"
 #. [label]
 #: data/gui/macros/player_list_panel.cfg:30
 #, fuzzy
-#| msgid "Choose Player"
+#| msgid "Computer Player"
 msgid "Connected Players"
-msgstr "プレイヤー選択"
+msgstr "コンピュータープレイヤー"
 
 #. [toggle_button]: id=sort_0
 #. [label]
@@ -2059,21 +2001,19 @@ msgstr "ダウンロード数"
 #: data/gui/widget/addon_list.cfg:151 data/gui/window/unit_create.cfg:137
 #: data/gui/window/unit_list.cfg:79 data/gui/window/unit_recall.cfg:33
 msgid "Type"
-msgstr "タイプ"
+msgstr "種類"
 
 #. [button]: id=single_install
 #. [button]: id=install
 #: data/gui/widget/addon_list.cfg:366 data/gui/window/addon_manager.cfg:203
 msgid "Install add-on"
-msgstr ""
+msgstr "アドオンのインストール"
 
 #. [button]: id=single_update
 #. [button]: id=update
 #: data/gui/widget/addon_list.cfg:389 data/gui/window/addon_manager.cfg:225
-#, fuzzy
-#| msgid "Speak to All"
 msgid "Update add-on"
-msgstr "全員に話す"
+msgstr "アドオンのアップデート"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=single_publish
@@ -2081,7 +2021,7 @@ msgstr "全員に話す"
 #: data/gui/widget/addon_list.cfg:412 data/gui/window/addon_manager.cfg:270
 #: src/gui/widgets/addon_list.cpp:254
 msgid "Publish add-on"
-msgstr ""
+msgstr "アドオンの公開"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=single_uninstall
@@ -2089,12 +2029,12 @@ msgstr ""
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:247
 #: src/gui/dialogs/addon/manager.cpp:799
 msgid "Uninstall add-on"
-msgstr ""
+msgstr "アドオンのアンインストール"
 
 #. [image]: id=pending_messages
 #: data/gui/widget/chatbox.cfg:40
 msgid "Messages waiting"
-msgstr "メッセージ待機"
+msgstr "メッセージ待機中"
 
 #. [button]: id=close_window
 #. [button]: id=click_dismiss
@@ -2141,7 +2081,7 @@ msgstr "アドオンをダウンロードするためにサーバーに接続し
 #. [label]
 #: data/gui/window/addon_connect.cfg:89 data/gui/window/mp_connect.cfg:90
 msgid "Server:"
-msgstr "サーバー:"
+msgstr "サーバー："
 
 #. [button]: id=remove_addons
 #. [label]
@@ -2207,12 +2147,12 @@ msgstr "キャンセル"
 #. [label]: id=byline
 #: data/gui/window/addon_manager.cfg:84
 msgid "By:"
-msgstr ""
+msgstr "作者："
 
 #. [label]: id=version_string
 #: data/gui/window/addon_manager.cfg:120
 msgid "Version:"
-msgstr "バージョン: "
+msgstr "バージョン："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
@@ -2223,34 +2163,28 @@ msgstr "解説はありません。"
 
 #. [button]: id=delete
 #: data/gui/window/addon_manager.cfg:284
-#, fuzzy
-#| msgid "Delete ToD"
 msgid "Delete add-on"
-msgstr "時刻帯の削除"
+msgstr "アドオンの削除"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:318 data/gui/window/addon_manager.cfg:733
 msgid "Type:"
-msgstr "タイプ："
+msgstr "種類："
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:344
-#, fuzzy
-#| msgid "date^First uploaded:"
 msgid "date^Uploaded:"
-msgstr "初アップロード："
+msgstr "アップロード時刻："
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:377
 msgid "Status:"
-msgstr "ステータス："
+msgstr "状態："
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:407
-#, fuzzy
-#| msgid "date^Last updated:"
 msgid "date^Updated:"
-msgstr "最終更新："
+msgstr "アップデート時刻"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:437
@@ -2262,7 +2196,7 @@ msgstr "サイズ："
 #. [label]
 #: data/gui/window/addon_manager.cfg:463
 msgid "Downloads:"
-msgstr "ダウンロード："
+msgstr "ダウンロード数："
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:509
@@ -2302,7 +2236,7 @@ msgstr "コピー"
 #. [button]: id=url_copy
 #: data/gui/window/addon_manager.cfg:634
 msgid "Copy this URL to clipboard"
-msgstr "URLをクリップボードにコピー"
+msgstr "URLをクリップボードにコピーします"
 
 #. [button]: id=url_go
 #: data/gui/window/addon_manager.cfg:647
@@ -2312,54 +2246,44 @@ msgstr "アクセス"
 #. [button]: id=url_go
 #: data/gui/window/addon_manager.cfg:648
 msgid "Visit this URL with a web browser"
-msgstr "WebブラウザでこのURLにアクセスする"
+msgstr "WebブラウザでURLにアクセスします"
 
 #. [text_box]: id=filter
 #: data/gui/window/addon_manager.cfg:694
 msgid "Filters on addon description, version, type or author."
-msgstr ""
+msgstr "アドオンの説明、バージョン、種類、作者名で検索を行います。"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:707
-#, fuzzy
-#| msgid "Status:"
 msgid "State:"
-msgstr "ステータス："
+msgstr "状態："
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:760
-#, fuzzy
-#| msgid "Leader"
 msgid "Order:"
-msgstr "リーダー"
+msgstr "指示："
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:846 data/gui/window/addon_manager.cfg:1021
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-ons Manager"
-msgstr "アドオン"
+msgstr "アドオンマネージャー"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
 #: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:451
 #: src/gui/dialogs/addon/manager.cpp:638
-#, fuzzy
-#| msgid "Details:"
 msgid "Addon Details"
-msgstr "情報:"
+msgstr "アドオンの詳細"
 
 #. [button]: id=update_all
 #: data/gui/window/addon_manager.cfg:960 data/gui/window/addon_manager.cfg:1124
-#, fuzzy
-#| msgid "Speak to All"
 msgid "Update All"
-msgstr "全員に話す"
+msgstr "全てアップデート"
 
 #. [button]: id=cancel
 #: data/gui/window/addon_manager.cfg:974 data/gui/window/addon_manager.cfg:1138
 msgid "Exit"
-msgstr ""
+msgstr "終了"
 
 #. [scroll_label]
 #: data/gui/window/addon_uninstall_list.cfg:70
@@ -2413,22 +2337,22 @@ msgstr "上級グラフィックオプション"
 #. [label]
 #: data/gui/window/advanced_graphics_options.cfg:107
 msgid "Images will be scaled using the following algorithms:"
-msgstr "画像は次のアルゴリズムを使用して縮小・拡大されます："
+msgstr "画像は選択したアルゴリズムを使用して縮小・拡大されます。"
 
 #. [column]
 #: data/gui/window/advanced_graphics_options.cfg:128
 msgid "All units, haloes, border hexes"
-msgstr "全てのユニット、ヘイロー（Halo）、ボーダーヘクス"
+msgstr "全てのユニット、ヘイロー、ボーダーヘクス"
 
 #. [column]
 #: data/gui/window/advanced_graphics_options.cfg:128
 msgid "Scaled to zoom"
-msgstr "拡大・縮小"
+msgstr "ズーム時の拡大・縮小"
 
 #. [column]
 #: data/gui/window/advanced_graphics_options.cfg:139
 msgid "Everything else"
-msgstr "それ以外のもの"
+msgstr "その他"
 
 #. [column]
 #: data/gui/window/advanced_graphics_options.cfg:139
@@ -2468,67 +2392,57 @@ msgstr "OK"
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:82
 msgid "Base damage"
-msgstr ""
+msgstr "基本ダメージ"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:84
-#, fuzzy
-#| msgid "Switch Time of Day"
 msgid "Time of day modifier"
-msgstr "時刻帯を切り替える"
+msgstr "時刻の影響"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:85
-#, fuzzy
-#| msgid "Leader"
 msgid "Leadership bonus"
-msgstr "リーダー"
+msgstr "統率ボーナス"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:86
 msgid "Slowed penalty"
-msgstr ""
+msgstr "遅化によるペナルティ"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:90
 msgid "Total damage"
-msgstr ""
+msgstr "総ダメージ"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:94
 msgid "Chance to hit"
-msgstr ""
+msgstr "命中率"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:95
 msgid "Chance of being unscathed"
-msgstr ""
+msgstr "無傷の可能性"
 
 #. [label]
 #: data/gui/window/attack_predictions.cfg:185
 msgid "Expected Battle Result (HP)"
-msgstr ""
+msgstr "予想される戦闘結果（HP）"
 
 #. [label]: id=title
 #: data/gui/window/attack_predictions.cfg:249
-#, fuzzy
-#| msgid "Damage Calculation"
 msgid "Damage Calculations"
 msgstr "ダメージ計算"
 
 #. [column]
 #: data/gui/window/attack_predictions.cfg:272
-#, fuzzy
-#| msgid "Attack"
 msgid "Attacker"
-msgstr "攻撃"
+msgstr "攻撃側"
 
 #. [column]
 #: data/gui/window/attack_predictions.cfg:282
-#, fuzzy
-#| msgid "Gender:"
 msgid "Defender"
-msgstr "性別:"
+msgstr "防御側"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:174
@@ -2537,34 +2451,28 @@ msgstr "キャンペーンをプレイ"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:214
-#, fuzzy
-#| msgid "Sort players:"
 msgid "Sort by:"
-msgstr "プレイヤーの並び替え:"
+msgstr "並び順："
 
 #. [toggle_button]: id=sort_name
 #: data/gui/window/campaign_dialog.cfg:227
 msgid "Sort by full campaign name in alphabetical order"
-msgstr ""
+msgstr "キャンペーン正式名のアルファベット順"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:239
-#, fuzzy
-#| msgid "Date"
 msgid "Dates"
 msgstr "日付"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:240
 msgid "Sort in approximate chronological order of story events"
-msgstr ""
+msgstr "概ねストーリー上のイベントの順"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:276
-#, fuzzy
-#| msgid "Modifications:"
 msgid "Modifications"
-msgstr "Mod:"
+msgstr "Mod"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:409
@@ -2576,7 +2484,7 @@ msgstr "決定論モード"
 msgid ""
 "Makes the random number generator yield the same results even after "
 "reloading a game"
-msgstr "ゲームを再開した場合でも乱数生成の値が同じになるようにします。"
+msgstr "ゲームを再開した場合でも、乱数生成器が同じ値を出すようになります。"
 
 #. [label]: id=title
 #: data/gui/window/campaign_difficulty.cfg:63
@@ -2612,7 +2520,7 @@ msgstr "前"
 #. [button]: id=previous_page
 #: data/gui/window/chat_log.cfg:106
 msgid "Previous page"
-msgstr "前のページ"
+msgstr "前のページへ"
 
 #. [button]: id=next_tip
 #. [button]: id=next_page
@@ -2623,7 +2531,7 @@ msgstr "次"
 #. [button]: id=next_page
 #: data/gui/window/chat_log.cfg:115
 msgid "Next page"
-msgstr "次のページ"
+msgstr "次のページへ"
 
 #. [button]: id=copy
 #: data/gui/window/chat_log.cfg:186 data/gui/window/gamestate_inspector.cfg:335
@@ -2633,15 +2541,13 @@ msgstr "コピー"
 
 #. [button]: id=copy
 #: data/gui/window/chat_log.cfg:187 data/gui/window/lua_interpreter.cfg:106
-#, fuzzy
-#| msgid "Copy this URL to clipboard"
 msgid "Copy this log to clipboard"
-msgstr "URLをクリップボードにコピー"
+msgstr "ログをクリップボードにコピーします"
 
 #. [label]
 #: data/gui/window/core_dialog.cfg:44
 msgid "Load Core"
-msgstr "Coreの読み込み"
+msgstr "コアの読み込み"
 
 #. [button]: id=copy_
 #. [button]: id=copy
@@ -2657,7 +2563,7 @@ msgstr "コピー"
 #: data/gui/window/game_version.cfg:47
 #: data/gui/window/screenshot_notification.cfg:34
 msgid "Copy this path to clipboard"
-msgstr "パスをクリップボードにコピーする"
+msgstr "パスをクリップボードにコピーします"
 
 #. [button]: id=browse_
 #. [button]: id=browse
@@ -2671,14 +2577,12 @@ msgstr "ブラウズ"
 #: data/gui/window/custom_tod.cfg:67 data/gui/window/game_cache_options.cfg:127
 #: data/gui/window/game_version.cfg:63
 msgid "Browse this location using a file manager"
-msgstr "ファイルマネージャでこの場所をブラウズする"
+msgstr "ファイルマネージャでこの場所を開きます"
 
 #. [label]
 #: data/gui/window/custom_tod.cfg:147
-#, fuzzy
-#| msgid "Custom Time Schedule"
 msgid "Edit Time Schedule"
-msgstr "タイムスケジュールの変更"
+msgstr "タイムスケジュールの編集"
 
 #. [label]
 #: data/gui/window/custom_tod.cfg:177
@@ -2688,63 +2592,57 @@ msgstr "タイムスケジュールの変更"
 #: data/gui/window/game_save_oos.cfg:90
 #: data/gui/window/screenshot_notification.cfg:120
 msgid "Name:"
-msgstr "名前:"
+msgstr "名前："
 
 #. [label]
 #: data/gui/window/custom_tod.cfg:204
 msgid "ID:"
-msgstr "ID:"
+msgstr "ID："
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:285
-#, fuzzy
-#| msgid "Image"
 msgid "Image:"
-msgstr "画像"
+msgstr "画像："
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:286
-#, fuzzy
-#| msgid "Mask"
 msgid "Mask:"
-msgstr "マスク"
+msgstr "マスク："
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:287
-#, fuzzy
-#| msgid "Sound"
 msgid "Sound:"
-msgstr "サウンド"
+msgstr "サウンド："
 
 #. [label]
 #: data/gui/window/custom_tod.cfg:316
 msgid "Lawful Bonus:"
-msgstr "秩序ボーナス:"
+msgstr "秩序ボーナス："
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:339
 msgid "Red:"
-msgstr "赤:"
+msgstr "赤："
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:340
 msgid "Green:"
-msgstr "緑:"
+msgstr "緑："
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:341
 msgid "Blue:"
-msgstr "青:"
+msgstr "青："
 
 #. [button]: id=new
 #: data/gui/window/custom_tod.cfg:405
 msgid "New ToD"
-msgstr "新しい時刻帯"
+msgstr "新しい時刻"
 
 #. [button]: id=delete
 #: data/gui/window/custom_tod.cfg:418
 msgid "Delete ToD"
-msgstr "時刻帯の削除"
+msgstr "時刻の削除"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -2784,12 +2682,12 @@ msgstr "いいえ"
 #. [label]
 #: data/gui/window/depcheck_select_new.cfg:40
 msgid "User Interaction Required"
-msgstr "ユーザ間の対話要求"
+msgstr "ユーザへの操作要求"
 
 #. [label]: id=message
 #: data/gui/window/depcheck_select_new.cfg:59
 msgid "User interaction required"
-msgstr "ユーザ間の対話要求"
+msgstr "ユーザの操作が必要です"
 
 #. [label]: id=title
 #: data/gui/window/edit_label.cfg:42 data/gui/window/editor_edit_label.cfg:42
@@ -2799,12 +2697,12 @@ msgstr "ラベルの設置"
 #. [label]
 #: data/gui/window/edit_label.cfg:72 data/gui/window/editor_edit_label.cfg:72
 msgid "Label:"
-msgstr "ラベル:"
+msgstr "ラベル："
 
 #. [toggle_button]: id=team_only_toggle
 #: data/gui/window/edit_label.cfg:111
 msgid "Team only"
-msgstr "チームオンリー"
+msgstr "同盟軍だけに表示"
 
 #. [label]
 #: data/gui/window/editor_edit_label.cfg:106
@@ -2824,7 +2722,7 @@ msgstr "色"
 #. [toggle_button]: id=immutable_toggle
 #: data/gui/window/editor_edit_label.cfg:181
 msgid "Immutable"
-msgstr "不変"
+msgstr "変更不可"
 
 #. [toggle_button]: id=visible_fog_toggle
 #: data/gui/window/editor_edit_label.cfg:216
@@ -2844,7 +2742,7 @@ msgstr "シナリオ設定の編集"
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:72
 msgid "Identifier:"
-msgstr "ID:"
+msgstr "ID："
 
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:140
@@ -2856,17 +2754,17 @@ msgstr "解説："
 #: data/gui/window/editor_edit_scenario.cfg:170
 #: src/gui/dialogs/multiplayer/lobby.cpp:470
 msgid "Experience modifier:"
-msgstr "経験値の修正:"
+msgstr "必要経験値の変更（％）："
 
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:201
 msgid "Turns:"
-msgstr "ターン:"
+msgstr "ターン数："
 
 #. [toggle_button]: id=victory_when_enemies_defeated
 #: data/gui/window/editor_edit_scenario.cfg:241
 msgid "Declare victory once all enemies are defeated"
-msgstr "全ての敵が倒された場合に勝利を宣言する"
+msgstr "全ての敵が倒された場合に勝利とする"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/window/editor_edit_scenario.cfg:259
@@ -2881,17 +2779,17 @@ msgstr "陣営設定"
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:83
 msgid "Number:"
-msgstr "ナンバー:"
+msgstr "ナンバー："
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:111
 msgid "Team identifier:"
-msgstr "チームID:"
+msgstr "チームID："
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:138
 msgid "Team name:"
-msgstr "チーム名:"
+msgstr "チーム名："
 
 #. [toggle_button]: id=no_leader
 #: data/gui/window/editor_edit_side.cfg:192
@@ -2901,7 +2799,7 @@ msgstr "リーダー無し"
 #. [toggle_button]: id=fog
 #: data/gui/window/editor_edit_side.cfg:208
 msgid "Fog of war"
-msgstr "戦争の霧"
+msgstr "霧"
 
 #. [toggle_button]: id=hidden
 #: data/gui/window/editor_edit_side.cfg:220
@@ -2913,22 +2811,22 @@ msgstr "ステータステーブルに表示しない"
 #: data/gui/window/editor_edit_side.cfg:249 data/gui/window/mp_staging.cfg:330
 #: src/gui/dialogs/multiplayer/lobby.cpp:471
 msgid "Gold:"
-msgstr "ゴールド:"
+msgstr "ゴールド："
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
 msgid "Gold per village:"
-msgstr "村あたりのゴールド"
+msgstr "村あたりのゴールド："
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:305 data/gui/window/mp_staging.cfg:362
 msgid "Income:"
-msgstr "収入:"
+msgstr "収入："
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:333
 msgid "Support per village:"
-msgstr "村あたりの維持費の補助:"
+msgstr "村あたりの維持費の補助："
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:363
@@ -2975,7 +2873,7 @@ msgstr "なし"
 #. [label]
 #: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:224
 msgid "Generate Map"
-msgstr "マップを生成"
+msgstr "マップ生成"
 
 #. [label]
 #: data/gui/window/editor_generate_map.cfg:58
@@ -2992,7 +2890,7 @@ msgstr "設定"
 #. [label]
 #: data/gui/window/editor_generate_map.cfg:161
 msgid "Numerical seed:"
-msgstr ""
+msgstr "乱数の種："
 
 #. [button]: id=ok
 #: data/gui/window/editor_generate_map.cfg:202
@@ -3010,14 +2908,14 @@ msgstr "新規マップ"
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
-msgstr "幅:"
+msgstr "幅："
 
 #. [label]
 #. [grid]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
-msgstr "高さ:"
+msgstr "高さ："
 
 #. [button]: id=ok
 #: data/gui/window/editor_new_map.cfg:116
@@ -3028,32 +2926,32 @@ msgstr "作成"
 #. [label]
 #: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:222
 msgid "Resize Map"
-msgstr "マップのサイズを変更する"
+msgstr "マップのリサイズ"
 
 #. [label]
 #: data/gui/window/editor_resize_map.cfg:54
 msgid "New width:"
-msgstr "新しい幅:"
+msgstr "新しい幅："
 
 #. [label]
 #: data/gui/window/editor_resize_map.cfg:78
 msgid "Old width:"
-msgstr "以前の幅:"
+msgstr "以前の幅："
 
 #. [label]
 #: data/gui/window/editor_resize_map.cfg:102
 msgid "New height:"
-msgstr "新しい高さ:"
+msgstr "新しい高さ："
 
 #. [label]
 #: data/gui/window/editor_resize_map.cfg:126
 msgid "Old height:"
-msgstr "以前の高さ:"
+msgstr "以前の高さ："
 
 #. [label]
 #: data/gui/window/editor_resize_map.cfg:154
 msgid "Expand/shrink direction:"
-msgstr "拡大/収縮する向き:"
+msgstr "拡大/収縮する向き："
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/window/editor_resize_map.cfg:253
@@ -3078,22 +2976,22 @@ msgstr "どのプレイヤーをここからスタートさせますか？"
 #. [label]
 #: data/gui/window/end_credits.cfg:118
 msgid "↑ ↓ to adjust speed"
-msgstr ""
+msgstr "↑ ↓：スクロールスピードの調節"
 
 #. [label]
 #: data/gui/window/file_dialog.cfg:103
 msgid "Places"
-msgstr ""
+msgstr "ブックマーク"
 
 #. [button]: id=add_bookmark
 #: data/gui/window/file_dialog.cfg:299
 msgid "Bookmarks the current folder"
-msgstr ""
+msgstr "現在のフォルダをブックマークに追加します"
 
 #. [button]: id=remove_bookmark
 #: data/gui/window/file_dialog.cfg:312
 msgid "Removes the current bookmark"
-msgstr ""
+msgstr "選択中のブックマークを削除します"
 
 #. [button]: id=delete_file
 #. [button]: id=delete
@@ -3109,15 +3007,13 @@ msgstr "新しいフォルダ"
 
 #. [label]
 #: data/gui/window/file_dialog.cfg:391
-#, fuzzy
-#| msgid "File: "
 msgid "File:"
-msgstr "ファイル:"
+msgstr "ファイル："
 
 #. [label]
 #: data/gui/window/formula_debugger.cfg:36
 msgid "Formula debugger"
-msgstr "構文デバッガ"
+msgstr "フォーミュラデバッガ"
 
 #. [label]
 #: data/gui/window/formula_debugger.cfg:59
@@ -3137,17 +3033,17 @@ msgstr "コールスタック"
 #. [label]
 #: data/gui/window/formula_debugger.cfg:94
 msgid "Actions"
-msgstr "行動"
+msgstr "アクション"
 
 #. [button]: id=step
 #: data/gui/window/formula_debugger.cfg:128
 msgid "Step operation"
-msgstr "ステップ操作"
+msgstr "ステップオペレーション"
 
 #. [button]: id=next
 #: data/gui/window/formula_debugger.cfg:139
 msgid "Next operation"
-msgstr "次の操作"
+msgstr "次のオペレーション"
 
 #. [button]: id=stepout
 #: data/gui/window/formula_debugger.cfg:150
@@ -3157,7 +3053,7 @@ msgstr "ステップアウト"
 #. [button]: id=continue
 #: data/gui/window/formula_debugger.cfg:161
 msgid "Continue"
-msgstr "続ける"
+msgstr "続行"
 
 #. [label]
 #: data/gui/window/formula_debugger.cfg:178
@@ -3205,7 +3101,7 @@ msgstr "クリーン"
 #. [button]: id=clean
 #: data/gui/window/game_cache_options.cfg:195
 msgid "Clear stale and unused cache files"
-msgstr "不要な、または使われていないキャッシュをクリアする"
+msgstr "不要な、使われていないキャッシュをクリアします"
 
 #. [button]: id=purge
 #: data/gui/window/game_cache_options.cfg:207
@@ -3215,7 +3111,7 @@ msgstr "削除"
 #. [button]: id=purge
 #: data/gui/window/game_cache_options.cfg:208
 msgid "Purge the entire contents of the cache"
-msgstr "全てのキャッシュを削除する"
+msgstr "全てのキャッシュを削除します"
 
 #. [label]: id=lblTitle
 #: data/gui/window/game_delete.cfg:40
@@ -3236,20 +3132,18 @@ msgstr "二度と表示しない"
 
 #. [grid]
 #: data/gui/window/game_load.cfg:92
-#, fuzzy
-#| msgid "Scroll Palette Left"
 msgid "Gold Left:"
-msgstr "パレットを左にスクロール"
+msgstr "所持ゴールド："
 
 #. [grid]
 #: data/gui/window/game_load.cfg:95
 msgid "Active Troops:"
-msgstr ""
+msgstr "マップ上の自軍ユニット："
 
 #. [grid]
 #: data/gui/window/game_load.cfg:98
 msgid "Reserve Troops:"
-msgstr ""
+msgstr "召還可能ユニット："
 
 #. [toggle_button]: id=sort_1
 #: data/gui/window/game_load.cfg:171
@@ -3272,7 +3166,7 @@ msgstr "難易度変更"
 #. [toggle_button]: id=change_difficulty
 #: data/gui/window/game_load.cfg:464
 msgid "Change campaign difficulty before loading"
-msgstr "読み込む前にキャンペーンの難易度を変更する"
+msgstr "読み込む前にキャンペーンの難易度を変更します"
 
 #. [toggle_button]: id=show_replay
 #: data/gui/window/game_load.cfg:505
@@ -3282,7 +3176,7 @@ msgstr "リプレイを見る"
 #. [toggle_button]: id=show_replay
 #: data/gui/window/game_load.cfg:506
 msgid "Play the embedded replay from the saved game if applicable"
-msgstr "可能ならば、セーブデータの中のリプレイを再生する"
+msgstr "セーブデータの中のリプレイを再生します"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/window/game_load.cfg:525
@@ -3292,7 +3186,7 @@ msgstr "命令の取り消し"
 #. [toggle_button]: id=cancel_orders
 #: data/gui/window/game_load.cfg:526
 msgid "Cancel any pending unit movements in the saved game"
-msgstr "未解決のユニットの動きを取り消す"
+msgstr "セーブデータ中の、まだ未解決のユニットの移動命令を取り消します"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -3314,12 +3208,12 @@ msgstr "ゲームを終了"
 #. [label]: id=lblTitle
 #: data/gui/window/game_save_overwrite.cfg:40
 msgid "Overwrite?"
-msgstr "上書きしますか？"
+msgstr "セーブデータの上書き"
 
 #. [label]: id=lblMessage
 #: data/gui/window/game_save_overwrite.cfg:60
 msgid "Save already exists. Do you want to overwrite it?"
-msgstr "セーブデータは既に存在しています。上書きしますか？"
+msgstr "同じ名前のセーブデータが既に存在しています。上書きしますか？"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_0
@@ -3330,38 +3224,30 @@ msgstr "リーダー"
 
 #. [toggle_button]: id=sort_1
 #: data/gui/window/game_stats.cfg:49
-#, fuzzy
-#| msgid "Team only"
 msgid "Team"
-msgstr "チームオンリー"
+msgstr "チーム"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:399
-#, fuzzy
-#| msgid "Gold:"
 msgid "Gold"
-msgstr "ゴールド:"
+msgstr "ゴールド"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/game_stats.cfg:76
-#, fuzzy
-#| msgid "Villages:"
 msgid "Villages"
-msgstr "村:"
+msgstr "村の数"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/game_stats.cfg:90
-#, fuzzy
-#| msgid "Unit List"
 msgid "Units"
-msgstr "ユニット一覧"
+msgstr "ユニット数"
 
 #. [toggle_button]: id=sort_5
 #: data/gui/window/game_stats.cfg:104
 msgid "Upkeep"
-msgstr ""
+msgstr "維持費"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_6
@@ -3370,10 +3256,8 @@ msgstr ""
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:261
 #: data/gui/window/mp_join_game.cfg:274
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:405
-#, fuzzy
-#| msgid "Income:"
 msgid "Income"
-msgstr "収入:"
+msgstr "収入"
 
 #. [label]: id=side_title
 #. [toggle_button]: id=sort_1
@@ -3383,84 +3267,76 @@ msgstr "陣営"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:311
-#, fuzzy
-#| msgid "Random starting time"
 msgid ""
 "Starting\n"
 "Gold"
-msgstr "開始時刻のランダム化"
+msgstr ""
+"開始時の\n"
+"ゴールド"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/game_stats.cfg:325
-#, fuzzy
-#| msgid "Income:"
 msgid ""
 "Base\n"
 "Income"
-msgstr "収入:"
+msgstr ""
+"基準\n"
+"収入"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/game_stats.cfg:340
-#, fuzzy
-#| msgid "Gold per village"
 msgid ""
 "Gold Per\n"
 "Village"
-msgstr "村あたりのゴールド"
+msgstr ""
+"村あたりの\n"
+"ゴールド"
 
 #. [toggle_button]: id=sort_5
 #: data/gui/window/game_stats.cfg:355
-#, fuzzy
-#| msgid "Support per village:"
 msgid ""
 "Support Per\n"
 "Village"
-msgstr "村あたりの維持費の補助:"
+msgstr ""
+"村あたりの\n"
+"補助"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:255
-#, fuzzy
-#| msgid "Current room"
 msgid "Current Status"
-msgstr "現在の部屋"
+msgstr "現在の状況"
 
 #. [widget]: id=tab_label
 #: data/gui/window/game_stats.cfg:780
-#, fuzzy
-#| msgid "Game data:"
 msgid "Game Stats"
-msgstr "ゲームデータ:"
+msgstr "ゲームの状況"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:255
-#, fuzzy
-#| msgid "Edit Scenario Settings"
 msgid "Scenario Settings"
-msgstr "シナリオ設定の編集"
+msgstr "シナリオ設定"
 
 #. [button]: id=ok
 #: data/gui/window/game_stats.cfg:832 data/gui/window/unit_list.cfg:436
-#, fuzzy
-#| msgid "Scroll speed:"
 msgid "Scroll To"
-msgstr "スクロール速度:"
+msgstr "スクロール"
 
 #. [grid]
 #: data/gui/window/game_version.cfg:126
 msgid "Game data:"
-msgstr "ゲームデータ:"
+msgstr "ゲームデータ："
 
 #. [grid]
 #: data/gui/window/game_version.cfg:128
 msgid "Configuration:"
-msgstr "設定:"
+msgstr "設定："
 
 #. [grid]
 #: data/gui/window/game_version.cfg:130
 msgid "User data:"
-msgstr "ユーザデータ:"
+msgstr "ユーザデータ："
 
 #. [grid]
 #: data/gui/window/game_version.cfg:132
@@ -3470,12 +3346,12 @@ msgstr "セーブデータ："
 #. [grid]
 #: data/gui/window/game_version.cfg:134
 msgid "Add-ons:"
-msgstr "アドオン:"
+msgstr "アドオン："
 
 #. [grid]
 #: data/gui/window/game_version.cfg:136
 msgid "Cache:"
-msgstr "キャッシュ:"
+msgstr "キャッシュ："
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:161
@@ -3485,7 +3361,7 @@ msgstr "ログファイルを開く"
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:162
 msgid "Opens the log file, which may contain useful debug information"
-msgstr "有用なデバッグ情報を含むと思われるログファイルを開く"
+msgstr "ログファイルを開きます。デバッグ情報が役に立つかもしれません。"
 
 #. [label]
 #: data/gui/window/game_version.cfg:195
@@ -3506,7 +3382,7 @@ msgstr "ランタイムバージョン"
 #: data/gui/window/game_version.cfg:293
 msgid ""
 "The following features were selected when building this version of Wesnoth:"
-msgstr "このバージョンのWesnothのビルド時に選択された機能："
+msgstr "Wesnothのビルド時に選択された機能："
 
 #. [label]
 #: data/gui/window/game_version.cfg:447
@@ -3526,7 +3402,7 @@ msgstr "ライブラリ"
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:554
 msgid "Features"
-msgstr "特徴"
+msgstr "機能"
 
 #. [button]: id=copy_all
 #: data/gui/window/game_version.cfg:629
@@ -3536,18 +3412,18 @@ msgstr "コピー"
 #. [button]: id=copy_all
 #: data/gui/window/game_version.cfg:630
 msgid "Copy the full report to clipboard"
-msgstr "リポートの全てをクリップボードにコピーする"
+msgstr "リポートを全てクリップボードにコピーします"
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:94
 msgid "Gamestate Inspector"
-msgstr "ゲーム状態のインスペクタ"
+msgstr "ゲーム状態インスペクタ"
 
 #. [button]: id=copy
 #: data/gui/window/gamestate_inspector.cfg:336
 #: data/gui/window/wml_error.cfg:125
 msgid "Copy this report to clipboard"
-msgstr "このリポートをクリップボードにコピーする"
+msgstr "このリポートをクリップボードにコピーします"
 
 #. [button]: id=lua
 #. [label]
@@ -3558,10 +3434,8 @@ msgstr "Luaコンソール"
 
 #. [label]
 #: data/gui/window/generator_settings.cfg:89
-#, fuzzy
-#| msgid "Map Generator"
 msgid "Map Generator Settings"
-msgstr "マップ生成"
+msgstr "マップジェネレーターの設定"
 
 #. [grid]
 #. [label]
@@ -3571,64 +3445,52 @@ msgstr "マップ生成"
 #: data/gui/window/mp_create_game/small_resolution.cfg:147
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:137
 msgid "Players:"
-msgstr "プレイヤー数:"
+msgstr "プレイヤー数："
 
 #. [grid]
 #: data/gui/window/generator_settings.cfg:111
-#, fuzzy
-#| msgid "Number of hills:"
 msgid "Number of Hills:"
-msgstr "丘の数:"
+msgstr "丘の数："
 
 #. [grid]
 #: data/gui/window/generator_settings.cfg:113
-#, fuzzy
-#| msgid "Max hill size:"
 msgid "Max Hill Size:"
-msgstr "最大の丘の大きさ:"
+msgstr "丘の最大サイズ："
 
 #. [grid]
 #: data/gui/window/generator_settings.cfg:115
 msgid "Villages:"
-msgstr "村:"
+msgstr "村："
 
 #. [grid]
 #: data/gui/window/generator_settings.cfg:117
-#, fuzzy
-#| msgid "Castle size:"
 msgid "Castle Size:"
-msgstr "城の大きさ:"
+msgstr "城のサイズ："
 
 #. [grid]
 #: data/gui/window/generator_settings.cfg:119
 msgid "Landform:"
-msgstr "地形:"
+msgstr "地形："
 
 #. [toggle_button]: id=connect_castles
 #: data/gui/window/generator_settings.cfg:135
-#, fuzzy
-#| msgid "Roads between castles"
 msgid "Roads Between Castles"
-msgstr "城の間の道"
+msgstr "城どうしの間に道を設置する"
 
 #. [toggle_button]: id=show_labels
 #: data/gui/window/generator_settings.cfg:157
-#, fuzzy
-#| msgid "Show labels"
 msgid "Show Labels"
-msgstr "ラベルの表示"
+msgstr "ラベルを表示する"
 
 #. [label]
 #: data/gui/window/help_browser.cfg:127
-#, fuzzy
-#| msgid "Show Battle for Wesnoth help"
 msgid "Battle For Wesnoth Help"
-msgstr "Battle for Wesnoth のヘルプを表示します"
+msgstr "Battle For Wesnoth ヘルプ"
 
 #. [label]
 #: data/gui/window/hotkey_bind.cfg:35
 msgid "Press desired hotkey (Esc cancels)"
-msgstr "希望のホットキーを押して下さい (Esc でキャンセル)"
+msgstr "希望のホットキーを押して下さい （Escでキャンセル）"
 
 #. [label]: id=title
 #: data/gui/window/label_settings.cfg:42
@@ -3645,14 +3507,12 @@ msgstr "言語"
 #. [label]
 #: data/gui/window/language_selection.cfg:60
 msgid "Choose your preferred language:"
-msgstr "言語を選択:"
+msgstr "言語を選択："
 
 #. [label]: id=status
 #: data/gui/window/loadscreen.cfg:150
-#, fuzzy
-#| msgid "Waiting..."
 msgid "Loading..."
-msgstr "待機中..."
+msgstr "読み込み中..."
 
 #. [label]: id=map
 #: data/gui/window/lobby_main.cfg:27
@@ -3662,7 +3522,7 @@ msgstr "ゲーム"
 #. [image]: id=needs_password
 #: data/gui/window/lobby_main.cfg:145
 msgid "Requires a password to join"
-msgstr "パスワードの要求"
+msgstr "参加するにはパスワードが必要です"
 
 #. [button]: id=join
 #. [button]: id=join_global
@@ -3681,7 +3541,7 @@ msgstr "観戦"
 #. [label]
 #: data/gui/window/lobby_main.cfg:223
 msgid "Sort players:"
-msgstr "プレイヤーの並び替え:"
+msgstr "プレイヤーの並び替え："
 
 #. [toggle_button]: id=player_list_sort_relation
 #: data/gui/window/lobby_main.cfg:236
@@ -3703,7 +3563,7 @@ msgstr "友人"
 #. [toggle_button]: id=filter_without_ignored
 #: data/gui/window/lobby_main.cfg:432
 msgid "No ignored"
-msgstr "無視していない"
+msgstr "無視リストのプレイヤーを除外"
 
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/window/lobby_main.cfg:444
@@ -3717,10 +3577,8 @@ msgstr "フィルターを反転"
 
 #. [button]: id=quit
 #: data/gui/window/lobby_main.cfg:475 data/gui/window/lobby_main.cfg:638
-#, fuzzy
-#| msgid "Zoom Out"
 msgid "Log Out"
-msgstr "ズームアウト"
+msgstr "ログアウト"
 
 #. [button]: id=refresh
 #: data/gui/window/lobby_main.cfg:485 data/gui/window/lobby_main.cfg:626
@@ -3752,32 +3610,28 @@ msgstr "設定"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:550 data/gui/window/lobby_main.cfg:715
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Normal Replays"
-msgstr "リプレイを保存"
+msgstr "通常リプレイ"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:554 data/gui/window/lobby_main.cfg:719
-#, fuzzy
-#| msgid "Quick replay"
 msgid "Quick Replays"
 msgstr "高速リプレイ"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:555 data/gui/window/lobby_main.cfg:720
 msgid "Skip quickly to the active turn when observing"
-msgstr ""
+msgstr "観戦を始めたとき、現在のターンまで高速でリプレイを行います"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:559 data/gui/window/lobby_main.cfg:724
 msgid "Enter Blindfolded"
-msgstr ""
+msgstr "目隠しで入る"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:560 data/gui/window/lobby_main.cfg:725
 msgid "Do not show the map until given control of a side"
-msgstr ""
+msgstr "陣営のコントロールを得るまで、マップを表示しません"
 
 #. [label]
 #: data/gui/window/lobby_main.cfg:614 data/gui/window/lobby_main.cfg:834
@@ -3787,7 +3641,7 @@ msgstr "マルチプレイヤーロビー"
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:38
 msgid "Player Info — "
-msgstr "プレイヤー情報 —"
+msgstr "プレイヤー情報："
 
 #. [button]: id=add_friend
 #. [button]: id=add_to_friends
@@ -3801,7 +3655,7 @@ msgstr "友人に追加"
 #: data/gui/window/lobby_player_info.cfg:105
 #: data/gui/window/preferences/05_multiplayer.cfg:276
 msgid "Block"
-msgstr ""
+msgstr "ブロック"
 
 #. [button]: id=remove_from_list
 #: data/gui/window/lobby_player_info.cfg:118
@@ -3811,31 +3665,27 @@ msgstr "リストから消去"
 #. [button]: id=start_whisper
 #: data/gui/window/lobby_player_info.cfg:129
 msgid "Send Private Message"
-msgstr "プライベートメッセージを送る"
+msgstr "プライベートメッセージを送信"
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:153
-#, fuzzy
-#| msgid "Moderation"
 msgid "Moderator Controls"
-msgstr "節度"
+msgstr "管理者の操作"
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:173
 msgid "Kick / ban reason:"
-msgstr "キックまたはバンの理由:"
+msgstr "キック / バンの理由："
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:198
 msgid "Ban time:"
-msgstr "バンの時間:"
+msgstr "バンの時間："
 
 #. [button]: id=check_status
 #: data/gui/window/lobby_player_info.cfg:238
-#, fuzzy
-#| msgid "Check status"
 msgid "Check Status"
-msgstr "状況確認"
+msgstr "ステータスのチェック"
 
 #. [button]: id=kick
 #: data/gui/window/lobby_player_info.cfg:250
@@ -3844,34 +3694,28 @@ msgstr "キック"
 
 #. [button]: id=kick_ban
 #: data/gui/window/lobby_player_info.cfg:262
-#, fuzzy
-#| msgid "Kick/ban"
 msgid "Kick + Ban"
-msgstr "キック/バン"
+msgstr "キック + バン"
 
 #. [label]
 #: data/gui/window/logging.cfg:86
-#, fuzzy
-#| msgid "Options"
 msgid "Logging Options"
-msgstr "オプション"
+msgstr "ログ出力オプション"
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:117
-#, fuzzy
-#| msgid "Lua Console"
 msgid "Clear Console"
-msgstr "Luaコンソール"
+msgstr "コンソールのクリア"
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:118
 msgid "Clear the log area"
-msgstr ""
+msgstr "ログを消去します"
 
 #. [label]: id=title
 #: data/gui/window/mp_alerts_options.cfg:95
 msgid "Multiplayer Alerts"
-msgstr "マルチプレイヤーアラート"
+msgstr "マルチプレイヤー通知"
 
 #. [label]
 #: data/gui/window/mp_alerts_options.cfg:113
@@ -3882,7 +3726,7 @@ msgid ""
 msgstr ""
 "マルチプレイヤーロビー内や、マルチプレイヤーゲーム中のイベント通知方法を選択"
 "できます。アラート音を鳴らしたり、（ウィンドウが最小化されているかアクティブ"
-"になっていない時は）デスクトップ通知を表示したりできます。"
+"になっていない時は）デスクトップ通知を表示できます。"
 
 #. [label]
 #: data/gui/window/mp_alerts_options.cfg:139
@@ -3974,7 +3818,7 @@ msgstr "開始準備完了："
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:197
 msgid "When the game you are hosting is ready to start"
-msgstr "ホスティングするゲームを開始できるようになった時"
+msgstr "ホストゲームを開始できるようになった時"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:198
@@ -3999,7 +3843,7 @@ msgstr "新しいターンが始まった時"
 #. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:235
 msgid "Reset all options to their default values"
-msgstr "全てのオプションをデフォルトの値にリセッ卜する"
+msgstr "全てのオプションをデフォルトの値にリセッ卜します"
 
 #. [label]: id=nick_title
 #: data/gui/window/mp_change_control.cfg:75
@@ -4019,185 +3863,160 @@ msgstr "マルチプレイヤーサーバーに接続します。"
 #. [button]: id=list
 #: data/gui/window/mp_connect.cfg:131
 msgid "View List"
-msgstr "リストを閲覧"
+msgstr "リストを表示"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:119
 msgid "Eras:"
-msgstr ""
+msgstr "時代："
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:155
 msgid "Random Faction Matchups:"
-msgstr ""
+msgstr "ランダム党派の組み合わせ："
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:156
 msgid "Allow for mirror matchups when random factions are chosen."
-msgstr ""
+msgstr "党派にランダムを選択した際に、ミラーマッチを防止することもできます"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=mods_header
 #: data/gui/window/mp_create_game.cfg:203
 #: src/gui/dialogs/multiplayer/lobby.cpp:454
 msgid "Modifications:"
-msgstr "Mod:"
+msgstr "Mod："
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/window/mp_create_game.cfg:313
-#, fuzzy
-#| msgid "Use map settings"
 msgid "Use Map Settings"
-msgstr "マップの設定を使用"
+msgstr "マップ設定を使用"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/window/mp_create_game.cfg:314
-#, fuzzy
-#| msgid "Use map settings"
 msgid "Use scenario specific settings"
-msgstr "マップの設定を使用"
+msgstr "シナリオのデフォルト設定を使用します"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:330
-#, fuzzy
-#| msgid "Number of turns"
 msgid "Number of Turns"
-msgstr "ターン数:"
+msgstr "ターン数"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:330
 msgid "The maximum number of turns the game can last"
-msgstr ""
+msgstr "ゲームの最大ターン数です"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:331
-#, fuzzy
-#| msgid "Unlimited"
 msgid "unlimited"
 msgstr "無制限"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:334
 msgid "The amount of income each village yields per turn"
-msgstr ""
+msgstr "村１つあたりの収入です"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:334
-#, fuzzy
-#| msgid "Village gold"
 msgid "Village Gold"
-msgstr "村の収入"
+msgstr "村のゴールド"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:336
 msgid "The number of unit levels each village can support"
-msgstr ""
+msgstr "村１つにつき免除される、ユニットの維持費です"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:336
-#, fuzzy
-#| msgid "Village gold"
 msgid "Village Support"
-msgstr "村の収入"
+msgstr "村による維持費の補助"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:338
-#, fuzzy
-#| msgid "Experience modifier"
 msgid "Experience Modifier"
-msgstr "経験値の修正"
+msgstr "必要経験値の変更（%）"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:338
 msgid "The amount of experience a unit needs to advance"
-msgstr ""
+msgstr "ユニットがレベルアップする際に必要な経験値の量を変更します"
 
 #. [toggle_button]: id=fog
 #: data/gui/window/mp_create_game.cfg:372
-#, fuzzy
-#| msgid "Fog of war"
 msgid "Fog of War"
-msgstr "戦争の霧"
+msgstr "戦雲（霧）"
 
 #. [toggle_button]: id=fog
 #: data/gui/window/mp_create_game.cfg:373
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
+"自軍のユニットの移動範囲に入るまで、敵ユニットはマップ上に表示されません"
 
 #. [toggle_button]: id=shroud
 #: data/gui/window/mp_create_game.cfg:389
 msgid "The map is unknown until your units explore it"
-msgstr ""
+msgstr "自軍ユニットが探索するまで、マップが不明な状態となります。"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/window/mp_create_game.cfg:405
-#, fuzzy
-#| msgid "Random start time"
 msgid "Random Start Time"
-msgstr "開始時間をランダムにする"
+msgstr "開始時刻をランダムに"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/window/mp_create_game.cfg:406
-#, fuzzy
-#| msgid "Random starting time"
 msgid "Randomize the starting time of day"
-msgstr "開始時刻のランダム化"
+msgstr "開始時刻をランダムに設定します"
 
 #. [toggle_button]: id=time_limit
 #: data/gui/window/mp_create_game.cfg:434
-#, fuzzy
-#| msgid "Time limit"
 msgid "Time Limit"
-msgstr "時間制限"
+msgstr "持ち時間"
 
 #. [toggle_button]: id=time_limit
 #: data/gui/window/mp_create_game.cfg:435
 msgid "Enable custom time limits"
-msgstr ""
+msgstr "ターンごとに持ち時間（時間制限）を設けます"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:451
 msgid "Initial Limit"
-msgstr ""
+msgstr "初期値"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:451
 msgid "Longest time allowed for first turn (seconds)"
-msgstr ""
+msgstr "初ターン時の最大持ち時間（秒）です"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:453
 msgid "Time for general tasks each turn (seconds)"
-msgstr ""
+msgstr "毎ターンごとに追加される持ち時間（秒）です"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:453
-#, fuzzy
-#| msgid "Turns:"
 msgid "Turn Bonus"
-msgstr "ターン:"
+msgstr "ターンボーナス"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:455
 msgid "Longest time possible for any turn (seconds)"
-msgstr ""
+msgstr "持ち時間の上限値（秒）です"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:455
 msgid "Reservoir"
-msgstr ""
+msgstr "上限値"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:457
-#, fuzzy
-#| msgid "Actions"
 msgid "Action Bonus"
-msgstr "行動"
+msgstr "行動ボーナス"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:457
 msgid "Time for each attack, recruit, and capture"
-msgstr ""
+msgstr "攻撃、雇用、村確保を行うごとに追加される持ち時間（秒）です"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
@@ -4205,89 +4024,77 @@ msgstr ""
 #: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:291
 #: data/gui/window/preferences/05_multiplayer.cfg:402
 #: src/gui/dialogs/preferences_dialog.cpp:139
-#, fuzzy
-#| msgid "Generate"
 msgid "General"
-msgstr "生成"
+msgstr "一般"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_create_game.cfg:546
-#, fuzzy
-#| msgid "Options"
 msgid "Custom Options"
-msgstr "オプション"
+msgstr "カスタムオプション"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_create_game.cfg:559
-#, fuzzy
-#| msgid "Settings"
 msgid "Game Settings"
-msgstr "設定"
+msgstr "ゲーム設定"
 
 #. [slider]: id=num_players
 #: data/gui/window/mp_create_game.cfg:702
 msgid "Any"
-msgstr ""
+msgstr "全て"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:835
-#, fuzzy
-#| msgid "Random starting time"
 msgid "Random map options: "
-msgstr "開始時刻のランダム化"
+msgstr "ランダムマップオプション："
 
 #. [button]: id=random_map_regenerate
 #: data/gui/window/mp_create_game.cfg:856
-#, fuzzy
-#| msgid "Generate"
 msgid "Regenerate"
-msgstr "生成"
+msgstr "再生成"
 
 #: data/gui/window/mp_create_game.cfg:929
 msgid "Assign sides to players at random"
-msgstr "プレイヤーへの陣営の割り当てをランダムにする"
+msgstr "プレイヤーへの陣営の割り当てがランダムに行われます"
 
 #: data/gui/window/mp_create_game.cfg:929
 msgid "Shuffle Sides"
-msgstr ""
+msgstr "陣営をシャッフル"
 
 #: data/gui/window/mp_create_game.cfg:933
 msgid "Allow users who are not playing to watch the game"
-msgstr ""
+msgstr "プレイヤー以外のユーザがゲームを観戦することを許可します"
 
 #: data/gui/window/mp_create_game.cfg:933
-#, fuzzy
-#| msgid "Observe"
 msgid "Observers"
-msgstr "観戦"
+msgstr "観戦者"
 
 #: data/gui/window/mp_create_game.cfg:937
 msgid "Allow only registered users to join the game"
-msgstr ""
+msgstr "フォーラムに登録済みのユーザーのみがゲームに参加できるようにします"
 
 #: data/gui/window/mp_create_game.cfg:937
 msgid "Registered Users Only"
-msgstr ""
+msgstr "登録済みユーザー限定"
 
 #: data/gui/window/mp_create_game.cfg:941
 msgid "Strict Synchronization"
-msgstr ""
+msgstr "厳格な同期チェック"
 
 #: data/gui/window/mp_create_game.cfg:941
 msgid "Stricter checks for out-of-sync errors"
-msgstr ""
+msgstr "out-of-sync（同期失敗）エラーを厳格にチェックします"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:957
 msgid "Name of game:"
-msgstr "ゲーム名:"
+msgstr "ゲーム名："
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:989
 #: data/gui/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/window/mp_login.cfg:143
 msgid "Password:"
-msgstr "パスワード"
+msgstr "パスワード："
 
 #. [text_box]: id=game_password
 #: data/gui/window/mp_create_game.cfg:1003
@@ -4301,17 +4108,13 @@ msgstr "このゲームの参加時に必要となるパスワードを設定し
 #: data/gui/window/mp_create_game/small_resolution.cfg:177
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
 #: src/gui/dialogs/multiplayer/lobby.cpp:472
-#, fuzzy
-#| msgid "Map size: "
 msgid "Map size:"
-msgstr "マップの大きさ: "
+msgstr "マップサイズ："
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:116
-#, fuzzy
-#| msgid "Leader"
 msgid "Leader:"
-msgstr "リーダー"
+msgstr "リーダー："
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:161
@@ -4324,7 +4127,7 @@ msgstr "性別:"
 #: data/gui/window/mp_faction_select.cfg:167
 #: src/gui/dialogs/multiplayer/faction_select.cpp:151
 msgid "Random"
-msgstr ""
+msgstr "ランダム"
 
 #. [row]
 #. [toggle_button]: id=male_toggle
@@ -4342,24 +4145,18 @@ msgstr "女性"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:201
-#, fuzzy
-#| msgid "Recruit"
 msgid "Recruits:"
-msgstr "雇用する"
+msgstr "雇用："
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:280
-#, fuzzy
-#| msgid "Choose Modifications"
 msgid "Choose Your Faction"
-msgstr "Modの選択"
+msgstr "党派を選択してください"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:305
-#, fuzzy
-#| msgid "Starting Positions Tool"
 msgid "Starting position:"
-msgstr "開始地点ツール"
+msgstr "開始地点："
 
 #. [label]
 #. [widget]: id=name
@@ -4375,49 +4172,43 @@ msgid ""
 "The server will run as a background process until all users have "
 "disconnected. Do you wish to continue?"
 msgstr ""
-"ネットワークゲームを立てるにはローカルサーバの開始が必要です。サーバーは全て"
-"のユーザが切断するまで、バックグラウンドプロセスとして動作します。続けます"
-"か？"
+"ネットワークゲームを立てるにはローカルサーバーを起動する必要があります。サー"
+"バーは全てのユーザが切断するまで、バックグラウンドプロセスとして動作します。"
+"ローカルサーバーを起動しますか？"
 
 #. [label]
 #: data/gui/window/mp_join_game.cfg:143 data/gui/window/mp_staging.cfg:157
 msgid "<b>Faction:</b>"
-msgstr ""
+msgstr "<b>党派：</b>"
 
 #. [label]
 #: data/gui/window/mp_join_game.cfg:175 data/gui/window/mp_staging.cfg:190
-#, fuzzy
-#| msgid "Gender:"
 msgid "<b>Gender:</b>"
-msgstr "性別:"
+msgstr "<b>性別：</b>"
 
 #. [button]: id=cancel
 #: data/gui/window/mp_join_game.cfg:347
 msgid "Leave"
-msgstr ""
+msgstr "退室"
 
 #. [label]: id=title
 #: data/gui/window/mp_join_game.cfg:410 data/gui/window/mp_staging.cfg:552
 #: data/gui/window/mp_staging.cfg:737
-#, fuzzy
-#| msgid "In Lobby"
 msgid "Game Lobby"
-msgstr "ロビー内"
+msgstr "ゲームロビー"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:479 data/gui/window/mp_staging.cfg:614
 #: data/gui/window/mp_staging.cfg:806
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:463
-#, fuzzy
-#| msgid "Waiting for remote input"
 msgid "Waiting for players to join..."
-msgstr "リモート入力を待機中"
+msgstr "プレイヤーの参加を待っています..."
 
 #. [label]: id=title
 #: data/gui/window/mp_join_game_password_prompt.cfg:42
 msgid "Password Required"
-msgstr "パスワードが必要です"
+msgstr "パスワードの要求"
 
 #. [scroll_label]: id=message
 #: data/gui/window/mp_join_game_password_prompt.cfg:61
@@ -4427,7 +4218,7 @@ msgstr "このゲームに参加するにはパスワードが必要です。"
 #. [window]: id=mp_login
 #: data/gui/window/mp_login.cfg:8
 msgid "Multiplayer server login dialog"
-msgstr "マルチプレイヤーサーバーのログインダイアログ"
+msgstr "マルチプレイヤーサーバーログインダイアログ"
 
 #. [label]
 #: data/gui/window/mp_login.cfg:41
@@ -4437,15 +4228,13 @@ msgstr "ログイン"
 #. [label]
 #: data/gui/window/mp_login.cfg:91 data/gui/window/mp_method_selection.cfg:74
 msgid "Login:"
-msgstr "ログイン:"
+msgstr "ログイン："
 
 #. [toggle_button]: id=remember_password
 #: data/gui/window/mp_login.cfg:199
 #: data/gui/window/preferences/05_multiplayer.cfg:68
-#, fuzzy
-#| msgid "Save password to preferences (clear text)"
 msgid "Save password locally (encrypted)"
-msgstr "パスワードを保存する(平文)"
+msgstr "パスワードを暗号化して保存する"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=label
@@ -4459,14 +4248,6 @@ msgstr "マルチプレイヤー"
 
 #. [text_box]: id=user_name
 #: data/gui/window/mp_method_selection.cfg:92
-#, fuzzy
-#| msgid ""
-#| "You may login to the official multiplayer server with your forum username "
-#| "and password.\n"
-#| "Note that registration is not required to join the server: you need to "
-#| "supply a password only if you wish to use a registered username.\n"
-#| "\n"
-#| "The Battle for Wesnoth forum can be found at http://forums.wesnoth.org/"
 msgid ""
 "You may login to the official multiplayer server with your forum username "
 "and password.\n"
@@ -4475,16 +4256,18 @@ msgid ""
 "\n"
 "The Battle for Wesnoth forum can be found at https://forums.wesnoth.org/"
 msgstr ""
-"フォーラムのユーザ名とパスワードを使って公式マルチプレイヤーサーバーにログイ"
-"ンします。(サーバーに接続する場合、ユーザ登録は必須ではありません。フォーラム"
-"に登録済みのユーザ名を使う場合に、パスワードが必要となります。)\n"
+"フォーラムで用いているユーザー名とパスワードを用いてマルチプレイヤーサーバー"
+"にログインすることができます。ただし、サーバーに参加するにあたって登録は不要"
+"です。登録済みのユーザー名を使用したい場合のみ、パスワードを入力する必要があ"
+"ります。\n"
 "\n"
-"Battle for Wesnothフォーラムは http://forums.wesnoth.org/ にあります。"
+"The Battle for Wesnoth のフォーラムは https://forums.wesnoth.org/ にありま"
+"す。"
 
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:183
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr "公式Wesnothマルチプレイヤーサーバーにログオンします"
+msgstr "公式Wesnothマルチプレイヤーサーバーに接続します"
 
 #. [widget]: id=name
 #: data/gui/window/mp_method_selection.cfg:192
@@ -4494,19 +4277,17 @@ msgstr "公式サーバーに接続"
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:202
 msgid "Join a different server"
-msgstr "別のサーバーに参加"
+msgstr "別のサーバーに接続します"
 
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:221
-#, fuzzy
-#| msgid "Host a game using dedicated server ‘wesnothd’"
 msgid "Host a game using a dedicated server"
-msgstr "専用のサーバー「wesnothd」を使ってゲームを立てます"
+msgstr "専用のサーバーを使ってゲームを立てます"
 
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:240
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
-msgstr "AI または人間とこのマシン上でマルチプレイヤーゲームをプレイします"
+msgstr "AIや人間と１台のPCでマルチプレイヤーゲームをプレイします"
 
 #. [widget]: id=name
 #: data/gui/window/mp_method_selection.cfg:249
@@ -4527,69 +4308,57 @@ msgstr "選択"
 #. [button]: id=select_leader
 #: data/gui/window/mp_staging.cfg:70
 msgid "Select the faction and leader for this side"
-msgstr ""
+msgstr "陣営の党派とリーダーを選択します"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
-#, fuzzy
-#| msgid "Change the music volume"
 msgid "Change the side's controller"
-msgstr "BGMの音量を変更します"
+msgstr "陣営のコントローラを変更します"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:261
-#, fuzzy
-#| msgid "Change the music volume"
 msgid "Change the AI side's behaviour"
-msgstr "BGMの音量を変更します"
+msgstr "AI の挙動を変更します"
 
 #. [menu_button]: id=side_team
 #: data/gui/window/mp_staging.cfg:288
 msgid "Which team this side belongs to"
-msgstr ""
+msgstr "陣営が属するチームを変更します"
 
 #. [menu_button]: id=side_color
 #: data/gui/window/mp_staging.cfg:304
-#, fuzzy
-#| msgid "Show team colors"
 msgid "The team color"
-msgstr "チームカラー"
+msgstr "チームカラーを選択します"
 
 #. [button]: id=ok
 #: data/gui/window/mp_staging.cfg:422
 msgid "I’m Ready"
-msgstr ""
+msgstr "準備OK"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:310
-#, fuzzy
-#| msgid "Hotkey"
 msgid "Hotkeys"
 msgstr "ホットキー"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:328
-#, fuzzy
-#| msgid "Refresh Display"
 msgid "Display"
-msgstr "画面を再描画"
+msgstr "表示"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:382
-#, fuzzy
-#| msgid "Advanced Settings"
 msgid "Advanced"
-msgstr "上級設定"
+msgstr "上級"
 
 #. [label]
 #: data/gui/window/preferences/01_general.cfg:20
 msgid "Scroll speed:"
-msgstr "スクロール速度:"
+msgstr "スクロール速度："
 
 #. [slider]: id=scroll_speed
 #: data/gui/window/preferences/01_general.cfg:36
 msgid "Change the speed of scrolling around the map"
-msgstr "画面のスクロール速度を変更します"
+msgstr "マップのスクロール速度を変更します"
 
 #. [toggle_button]: id=turbo_toggle
 #: data/gui/window/preferences/01_general.cfg:57
@@ -4609,7 +4378,7 @@ msgstr "AI 移動スキップ"
 #. [toggle_button]: id=skip_ai_moves
 #: data/gui/window/preferences/01_general.cfg:70
 msgid "Do not animate AI units moving"
-msgstr "AI ユニットの移動時にアニメーションを行わないようにします"
+msgstr "AIが操作するユニットの移動時にアニメーションを行わないようにします"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:83
@@ -4629,12 +4398,12 @@ msgstr "自動移動を無効にする"
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:105
 msgid "Do not allow automatic movements at the beginning of a turn"
-msgstr "ターン開始時の自動移動を無効にする"
+msgstr "ターン開始時の自動移動を無効にします"
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/window/preferences/01_general.cfg:118
 msgid "Turn dialog"
-msgstr "ターンダイアログ"
+msgstr "ターンダイアログを表示する"
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/window/preferences/01_general.cfg:119
@@ -4649,27 +4418,29 @@ msgstr "開始時に計画モードを有効にする"
 #. [toggle_button]: id=whiteboard_on_start
 #: data/gui/window/preferences/01_general.cfg:133
 msgid "Activates Planning Mode on game start"
-msgstr "計画モードを開始時に有効にします"
+msgstr "計画モードをゲーム開始時に有効にします"
 
 #. [toggle_button]: id=whiteboard_hide_allies
 #: data/gui/window/preferences/01_general.cfg:146
 msgid "Hide allies’ plans by default"
-msgstr "同盟軍の計画の非表示をデフォルトにする"
+msgstr "同盟軍の計画を非表示にする"
 
 #. [toggle_button]: id=whiteboard_hide_allies
 #: data/gui/window/preferences/01_general.cfg:147
 msgid "Hide allies’ Planning Mode plans in multiplayer games"
-msgstr "マルチプレイヤー時に同盟軍の計画モードの計画を非表示にする"
+msgstr ""
+"マルチプレイヤーゲームで同盟軍が計画モードを使用している時、その計画を非表示"
+"にします"
 
 #. [toggle_button]: id=interrupt_move_when_ally_sighted
 #: data/gui/window/preferences/01_general.cfg:160
 msgid "Interrupt move when an ally is sighted"
-msgstr "同盟軍を見つけた場合に移動を中断する"
+msgstr "同盟軍を見つけた時、移動を中断する"
 
 #. [toggle_button]: id=interrupt_move_when_ally_sighted
 #: data/gui/window/preferences/01_general.cfg:161
 msgid "Sighting an allied unit interrupts your unit’s movement"
-msgstr "同盟軍ユニットを見つけたときにユニットの移動を中断します"
+msgstr "同盟軍ユニットを見つけた時に、ユニットの移動を中断します"
 
 #. [toggle_button]: id=save_replays
 #: data/gui/window/preferences/01_general.cfg:176
@@ -4680,8 +4451,8 @@ msgstr "シナリオ終了時にリプレイを保存する"
 #: data/gui/window/preferences/01_general.cfg:177
 msgid "Save replays of games on victory in all modes and defeat in multiplayer"
 msgstr ""
-"全てのモードでの勝利時と、マルチプレイヤーモードでの敗北時にリプレイを保存す"
-"る"
+"全てのモードでの勝利時と、マルチプレイヤーモードでの敗北時にリプレイを保存し"
+"ます"
 
 #. [toggle_button]: id=delete_saves
 #: data/gui/window/preferences/01_general.cfg:190
@@ -4694,7 +4465,7 @@ msgid ""
 "Delete previous auto-saves on victory in all modes and defeat in multiplayer"
 msgstr ""
 "全てのモードでの勝利時とマルチプレイヤーモードでの敗北時に、以前の自動保存を"
-"削除する"
+"削除します"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:201
@@ -4714,12 +4485,10 @@ msgstr "キャッシュ"
 #. [button]: id=cachemg
 #: data/gui/window/preferences/01_general.cfg:222
 msgid "Manage the game WML cache"
-msgstr "WMLキャッシュを管理する"
+msgstr "WMLキャッシュを管理します"
 
 #. [label]
 #: data/gui/window/preferences/02_hotkeys.cfg:25
-#, fuzzy
-#| msgid "Category:"
 msgid "Categories:"
 msgstr "カテゴリ："
 
@@ -4736,7 +4505,7 @@ msgstr "ホットキー"
 #. [toggle_button]: id=sort_2
 #: data/gui/window/preferences/02_hotkeys.cfg:104
 msgid "game_hotkeys^G"
-msgstr "G"
+msgstr "ゲ"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/window/preferences/02_hotkeys.cfg:105
@@ -4746,22 +4515,20 @@ msgstr "ゲーム中"
 #. [toggle_button]: id=sort_3
 #: data/gui/window/preferences/02_hotkeys.cfg:116
 msgid "editor_hotkeys^E"
-msgstr "E"
+msgstr "エ"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/preferences/02_hotkeys.cfg:117
 msgid "Available in editor"
-msgstr "エディタ上"
+msgstr "エディタ"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:128
 msgid "titlescreen_hotkeys^T"
-msgstr "T"
+msgstr "タ"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:129
-#, fuzzy
-#| msgid "Available in titlescreen"
 msgid "Available at titlescreen"
 msgstr "タイトルスクリーン"
 
@@ -4783,7 +4550,7 @@ msgstr "解像度："
 #. [menu_button]: id=resolution_set
 #: data/gui/window/preferences/03_display.cfg:32
 msgid "Change the game resolution"
-msgstr "解像度の変更"
+msgstr "解像度を変更します"
 
 #. [toggle_button]: id=fullscreen
 #: data/gui/window/preferences/03_display.cfg:48
@@ -4793,39 +4560,39 @@ msgstr "フルスクリーン"
 #. [toggle_button]: id=fullscreen
 #: data/gui/window/preferences/03_display.cfg:49
 msgid "Toggle between fullscreen and window mode"
-msgstr "フルスクリーン・ウィンドウモードの切り替え"
+msgstr "フルスクリーンモード/ウィンドウモードを切り替えます"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:68
 msgid "Show floating labels"
-msgstr "ラベルの表示"
+msgstr "フローティングラベルの表示"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:69
 msgid "Show damage and healing amounts above a unit"
-msgstr "ユニット上にダメージ・回復量を表示する"
+msgstr "ユニット上にダメージ・回復量を表示します"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:82
 msgid "Show team colors"
-msgstr "チームカラー"
+msgstr "チームカラーの表示"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:83
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
-msgstr "陣営ごとに色付きのサークルをユニットの下に表示する"
+msgstr "ユニットの下に陣営ごとに異なる色付きの円を表示します"
 
 #. [toggle_button]: id=show_grid
 #: data/gui/window/preferences/03_display.cfg:98
 msgid "Show grid"
-msgstr "グリッド表示"
+msgstr "グリッドの表示"
 
 #. [toggle_button]: id=show_grid
 #: data/gui/window/preferences/03_display.cfg:99
 msgid "Overlay a grid over the map"
-msgstr "マップ上にグリッドを表示する"
+msgstr "マップ上にグリッドを表示します"
 
 #. [toggle_button]: id=animate_terrains
 #: data/gui/window/preferences/03_display.cfg:114
@@ -4835,7 +4602,7 @@ msgstr "マップのアニメーション"
 #. [toggle_button]: id=animate_terrains
 #: data/gui/window/preferences/03_display.cfg:115
 msgid "Display animated terrain graphics"
-msgstr "地形のグラフィックをアニメーションする"
+msgstr "地形グラフィックをアニメーションします"
 
 #. [toggle_button]: id=animate_water
 #: data/gui/window/preferences/03_display.cfg:128
@@ -4845,7 +4612,7 @@ msgstr "水のアニメーション"
 #. [toggle_button]: id=animate_water
 #: data/gui/window/preferences/03_display.cfg:129
 msgid "Display animated water graphics (can be slow)"
-msgstr "水域のグラフィックをアニメーションする（遅くなるかも）"
+msgstr "水のグラフィックをアニメーションします（遅くなる可能性あり）"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:142
@@ -4854,30 +4621,28 @@ msgstr "ユニットのスタンディングアニメーション"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:143
-#, fuzzy
-#| msgid "Continuously animate standing units in the battlefield"
 msgid "Continuously animate standing units on the battlefield"
-msgstr "戦場のユニットをアニメーションし続ける"
+msgstr "戦場にいるユニットを常にアニメーションします"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/window/preferences/03_display.cfg:161
 msgid "Show unit idle animations"
-msgstr "アイドル時のユニットアニメーション"
+msgstr "待機中ユニットのアニメーション"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/window/preferences/03_display.cfg:162
 msgid "Play short random animations for idle units"
-msgstr "待機中のユニットをランダムにアニメーションする"
+msgstr "待機中のユニットをランダムにアニメーションします"
 
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:185
 msgid "Frequency:"
-msgstr "頻度:"
+msgstr "頻度："
 
 #. [slider]: id=idle_anim_frequency
 #: data/gui/window/preferences/03_display.cfg:201
 msgid "Set the frequency of unit idle animations"
-msgstr "ユニットが何もしていないときのアニメーションの頻度を設定します"
+msgstr "待機中ユニットのアニメーション頻度を設定します"
 
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:229
@@ -4887,7 +4652,7 @@ msgstr "フォントスケーリング："
 #. [slider]: id=scaling_slider
 #: data/gui/window/preferences/03_display.cfg:244
 msgid "Set the scaling factor of fonts"
-msgstr "フォントを拡大・縮小する"
+msgstr "フォントを拡大・縮小します"
 
 #. [button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:274
@@ -4897,22 +4662,22 @@ msgstr "テーマ"
 #. [button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:275
 msgid "Change the in-game theme"
-msgstr "ゲーム時のテーマを変更する"
+msgstr "ゲーム時のテーマを変更します"
 
 #. [label]
 #: data/gui/window/preferences/04_sound.cfg:38
 msgid "Volume:"
-msgstr "音量:"
+msgstr "音量："
 
 #. [toggle_button]: id=sound_toggle_stop_music_in_background
 #: data/gui/window/preferences/04_sound.cfg:82
 msgid "Pause music on focus loss"
-msgstr ""
+msgstr "フォーカスが無いときにはBGMを一時停止する"
 
 #. [toggle_button]: id=sound_toggle_stop_music_in_background
 #: data/gui/window/preferences/04_sound.cfg:83
 msgid "Pause the music when you switch to any other window"
-msgstr ""
+msgstr "他のウィンドウにフォーカスが移っている場合、BGMを一時停止します"
 
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:104
@@ -4922,12 +4687,12 @@ msgstr "効果音"
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:104
 msgid "Sound effects on/off"
-msgstr "効果音のオンとオフ"
+msgstr "効果音のオン/オフを切り替えます"
 
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:105
 msgid "Change the sound effects volume"
-msgstr "効果音の音の大きさを変更します"
+msgstr "効果音の音量を変更します"
 
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:115
@@ -4937,7 +4702,7 @@ msgstr "BGM"
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:115
 msgid "Music on/off"
-msgstr "BGMのオンとオフ"
+msgstr "BGMのオン/オフを切り替えます"
 
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:116
@@ -4957,12 +4722,12 @@ msgstr "ターンベル"
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:128
 msgid "Change the bell volume"
-msgstr "ベルの音の大きさを変更します"
+msgstr "ベルの音量を変更します"
 
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:137
 msgid "Turn menu and button sounds on/off"
-msgstr "メニューとボタンの効果音のON・OFF"
+msgstr "メニューとボタンの効果音のオン/オフを切り替えます"
 
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:137
@@ -4972,7 +4737,7 @@ msgstr "ユーザーインターフェースサウンド"
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:138
 msgid "Change the sound volume for button clicks, etc."
-msgstr "ボタンを押した時などに鳴る、効果音の音量変更"
+msgstr "ボタンを押した時などに鳴る、効果音の音量を変更します"
 
 #. [label]
 #: data/gui/window/preferences/05_multiplayer.cfg:20
@@ -4982,22 +4747,22 @@ msgstr "チャットの行数："
 #. [slider]: id=chat_lines
 #: data/gui/window/preferences/05_multiplayer.cfg:36
 msgid "Set the number of chat lines shown"
-msgstr "表示されるチャットの行数を指定する"
+msgstr "表示されるチャットの行数を指定します"
 
 #. [toggle_button]: id=chat_timestamps
 #: data/gui/window/preferences/05_multiplayer.cfg:52
 msgid "Chat timestamping"
-msgstr "チャットの時刻を表示"
+msgstr "チャットメッセージの送信時刻を表示する"
 
 #. [toggle_button]: id=chat_timestamps
 #: data/gui/window/preferences/05_multiplayer.cfg:53
 msgid "Add a timestamp to chat messages"
-msgstr "チャットメッセージに時刻を表示する"
+msgstr "チャットメッセージに時刻を表示します"
 
 #. [toggle_button]: id=remember_password
 #: data/gui/window/preferences/05_multiplayer.cfg:69
 msgid "Uncheck to delete the saved password (on exit)"
-msgstr "終了時に、保存されたパスワードの削除をチェックしない"
+msgstr "チェックをはずすと、終了時に保存されたパスワードを削除します"
 
 #. [toggle_button]: id=lobby_whisper_friends_only
 #: data/gui/window/preferences/05_multiplayer.cfg:84
@@ -5007,50 +4772,51 @@ msgstr "友人からのささやきのみを受け入れる"
 #. [toggle_button]: id=lobby_whisper_friends_only
 #: data/gui/window/preferences/05_multiplayer.cfg:85
 msgid "Only accept whisper messages from people on your friends list"
-msgstr "友人リストに含まれている人からだけささやきを受け入れる"
+msgstr "友人リストに含まれているプレイヤーからのささやきだけを受け入れます"
 
 #. [toggle_button]: id=lobby_joins_none
 #: data/gui/window/preferences/05_multiplayer.cfg:101
 msgid "Do not show lobby joins"
-msgstr "ロビーへの参加を表示しない"
+msgstr "ロビーへの参加者を通知しない"
 
 #. [toggle_button]: id=lobby_joins_none
 #: data/gui/window/preferences/05_multiplayer.cfg:102
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr ""
-"マルチプレイヤーロビーに参加したプレイヤーについてのメッセージを表示しません"
+"マルチプレイヤーロビーに他のプレイヤーが参加した時に、通知メッセージを表示し"
+"ません"
 
 #. [toggle_button]: id=lobby_joins_friends
 #: data/gui/window/preferences/05_multiplayer.cfg:116
 msgid "Show lobby joins of friends only"
-msgstr "ロビーへの参加を友人のみ表示"
+msgstr "ロビーへの参加者を友人のみ通知する"
 
 #. [toggle_button]: id=lobby_joins_friends
 #: data/gui/window/preferences/05_multiplayer.cfg:117
 msgid "Show messages about your friends joining the multiplayer lobby"
-msgstr "マルチプレイヤーロビーに参加した友人についてのメッセージを表示します"
+msgstr "マルチプレイヤーロビーに友人が参加した時に、通知メッセージを表示します"
 
 #. [toggle_button]: id=lobby_joins_all
 #: data/gui/window/preferences/05_multiplayer.cfg:131
 msgid "Show all lobby joins"
-msgstr "ロビーへの参加をすべて表示"
+msgstr "ロビーへの参加者を全て通知する"
 
 #. [toggle_button]: id=lobby_joins_all
 #: data/gui/window/preferences/05_multiplayer.cfg:132
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr ""
-"マルチプレイヤーロビーに参加したすべてのプレイヤーについてのメッセージを表示"
-"します"
+"マルチプレイヤーロビーに他のプレイヤーが参加した時に、通知メッセージを表示し"
+"ます"
 
 #. [button]: id=mp_alerts
 #: data/gui/window/preferences/05_multiplayer.cfg:149
 msgid "Alerts"
-msgstr "アラート"
+msgstr "通知"
 
 #. [button]: id=mp_alerts
 #: data/gui/window/preferences/05_multiplayer.cfg:150
 msgid "Configure multiplayer notification settings"
-msgstr "マルチプレイヤー時の通知設定"
+msgstr "マルチプレイヤー時の通知を設定します"
 
 #. [button]: id=mp_wesnothd
 #: data/gui/window/preferences/05_multiplayer.cfg:162
@@ -5060,7 +4826,8 @@ msgstr "サーバーのパス"
 #. [button]: id=mp_wesnothd
 #: data/gui/window/preferences/05_multiplayer.cfg:163
 msgid "Find and set path to MP server to host LAN games"
-msgstr "ホストLANゲーム時に使用する、マルチプレイヤーサーバーのパスを指定する"
+msgstr ""
+"ホストLANゲーム時に使用する、マルチプレイヤーサーバーのパスを指定します"
 
 #. [button]: id=add_friend
 #: data/gui/window/preferences/05_multiplayer.cfg:264
@@ -5068,8 +4835,8 @@ msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "'player_name notes on friend')"
 msgstr ""
-"このユーザー名を友人リストに追加します (次の様に入力するとオプションとしてメ"
-"モを追加することもできます。「ユーザー名 メモ」)"
+"このユーザー名を友人リストに追加します（次のように入力するとオプションとして"
+"メモを追加することもできます。「ユーザー名 メモ」）"
 
 #. [button]: id=add_ignored
 #: data/gui/window/preferences/05_multiplayer.cfg:277
@@ -5077,8 +4844,8 @@ msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
 "'player_name reason ignored')"
 msgstr ""
-"このユーザを無視リストに追加する（理由も付加可能。例：player_name reason "
-"ignored）"
+"このユーザを無視リストに追加します（オプションとして理由も付加可能です。例："
+"player_name reason ignored）"
 
 #. [button]: id=remove
 #: data/gui/window/preferences/05_multiplayer.cfg:290
@@ -5088,7 +4855,7 @@ msgstr "ユーザ名をリストから削除します"
 #. [label]: id=no_friends_notice
 #: data/gui/window/preferences/05_multiplayer.cfg:311
 msgid "You have not befriended or ignored any other players."
-msgstr ""
+msgstr "友人/無視リストに追加されたプレイヤーはいません。"
 
 #. [button]: id=open
 #: data/gui/window/screenshot_notification.cfg:49
@@ -5103,90 +4870,74 @@ msgstr "このファイルを外部アプリケーションで開きます"
 #. [button]: id=browse_dir
 #: data/gui/window/screenshot_notification.cfg:187
 msgid "Screenshots..."
-msgstr "スクリーンショット…"
+msgstr "保存フォルダを開く"
 
 #. [button]: id=browse_dir
 #: data/gui/window/screenshot_notification.cfg:189
 msgid "Browse the screenshots folder using a file manager"
-msgstr "ファイルマネージャでスクリーンショットフォルダをブラウズする"
+msgstr "ファイルマネージャでスクリーンショットフォルダをブラウズします"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=save
 #: data/gui/window/screenshot_notification.cfg:203
 #: src/gui/dialogs/file_dialog.cpp:184
-#, fuzzy
-#| msgid "Save Map"
 msgid "Save"
-msgstr "マップを保存"
+msgstr "保存"
 
 #. [label]
 #: data/gui/window/select_orb_colors.cfg:80
 msgid "Choose Orb/Minimap Colors"
-msgstr ""
+msgstr "宝珠とミニマップの色を変更"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:84
-#, fuzzy
-#| msgid "Show Enemy Moves"
 msgid "Show unmoved orb"
-msgstr "敵の移動を見る"
+msgstr "移動前のユニットに宝珠を表示"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:85
 msgid "Show partial moved orb"
-msgstr ""
+msgstr "移動途中のユニットに宝珠を表示"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:86
-#, fuzzy
-#| msgid "Show team colors"
 msgid "Show moved orb"
-msgstr "チームカラー"
+msgstr "移動済みユニットに宝珠を表示"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:87
-#, fuzzy
-#| msgid "Show all lobby joins"
 msgid "Show ally orb"
-msgstr "ロビーへの参加をすべて表示"
+msgstr "同盟軍のユニットに宝珠を表示"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:88
-#, fuzzy
-#| msgid "Show Enemy Moves"
 msgid "Show enemy orb"
-msgstr "敵の移動を見る"
+msgstr "敵ユニットに宝珠を表示"
 
 #. [label]
 #: data/gui/window/sp_options_configure.cfg:44
-#, fuzzy
-#| msgid "Configuration:"
 msgid "Configure Options"
-msgstr "設定:"
+msgstr "オプション設定"
 
 #. [label]
 #: data/gui/window/sp_options_configure.cfg:62
 msgid "Configure settings for the selected custom modifications."
-msgstr ""
+msgstr "カスタムModの設定を変更することができます。"
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:129
-#, fuzzy
-#| msgid "Image"
 msgid "Damage"
-msgstr "画像"
+msgstr "ダメージ"
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:141
 msgid "Overall"
-msgstr ""
+msgstr "総計"
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:153
-#, fuzzy
-#| msgid "Turn"
 msgid "This Turn"
-msgstr "ターン"
+msgstr "このターン"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -5196,42 +4947,34 @@ msgstr "統計情報"
 
 #. [widget]: id=tab_label
 #: data/gui/window/statistics_dialog.cfg:485
-#, fuzzy
-#| msgid "Scenario start"
 msgid "Scenario"
-msgstr "シナリオ開始"
+msgstr "シナリオ"
 
 #. [widget]: id=tab_label
 #: data/gui/window/statistics_dialog.cfg:498
-#, fuzzy
-#| msgid "Campaigns"
 msgid "Campaign"
 msgstr "キャンペーン"
 
 #. [button]: id=cancel
 #: data/gui/window/story_viewer.cfg:131
 msgid "Skip"
-msgstr ""
+msgstr "スキップ"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/window/surrender_quit.cfg:40 src/hotkey/hotkey_command.cpp:105
-#, fuzzy
-#| msgid "Create Game"
 msgid "Surrender Game"
-msgstr "ゲームを作成"
+msgstr "ゲームの負けを認める"
 
 #. [label]: id=lblMessage
 #: data/gui/window/surrender_quit.cfg:60
-#, fuzzy
-#| msgid "Do you really want to delete this game?"
 msgid "Do you really want to surrender and quit the game?"
-msgstr "本当にこのゲームを削除しますか？"
+msgstr "負けを認めて退出します。本当によろしいですか？"
 
 #. [button]: id=quit_and_surrender
 #: data/gui/window/surrender_quit.cfg:85
 msgid "Surrender & Quit"
-msgstr ""
+msgstr "負けを認めて退出する"
 
 #. [label]: id=lblTitle
 #: data/gui/window/synced_choice_wait.cfg:40
@@ -5241,7 +4984,7 @@ msgstr "待機中..."
 #. [label]: id=lblMessage
 #: data/gui/window/synced_choice_wait.cfg:60
 msgid "Waiting for remote input"
-msgstr "リモート入力を待機中"
+msgstr "リモートの入力を待機しています"
 
 #. [button]: id=btn_quit_game
 #: data/gui/window/synced_choice_wait.cfg:96
@@ -5251,7 +4994,7 @@ msgstr "ゲーム終了"
 #. [label]
 #: data/gui/window/terrain_layers.cfg:21
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:33
@@ -5261,41 +5004,37 @@ msgstr "画像"
 #. [label]
 #: data/gui/window/terrain_layers.cfg:57
 msgid "Loc"
-msgstr ""
+msgstr "場所"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:69
-#, fuzzy
-#| msgid "player"
 msgid "Layer"
-msgstr "プレイヤー"
+msgstr "レイヤー"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:81
 msgid "Base.x"
-msgstr ""
+msgstr "Base.x"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:93
 msgid "Base.y"
-msgstr ""
+msgstr "Base.y"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:105
 msgid "Center"
-msgstr ""
+msgstr "中央"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:339
-#, fuzzy
-#| msgid "Draw Terrain Codes"
 msgid "Terrain Layers"
-msgstr "地形コードを描画"
+msgstr "地形レイヤー"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:384
 msgid "Flags"
-msgstr ""
+msgstr "フラグ"
 
 #. [label]
 #: data/gui/window/theme_list.cfg:51
@@ -5305,7 +5044,7 @@ msgstr "テーマ選択"
 #. [button]: id=help
 #: data/gui/window/title_screen.cfg:175
 msgid "Show Battle for Wesnoth help"
-msgstr "Battle for Wesnoth のヘルプを表示します"
+msgstr "Battle for Wesnothのヘルプを表示します"
 
 #. [button]: id=previous_tip
 #: data/gui/window/title_screen.cfg:191
@@ -5320,7 +5059,7 @@ msgstr "次のヒントを表示します"
 #. [grid]
 #: data/gui/window/title_screen.cfg:251
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr "ゲームに慣れるためのチュートリアルを開始します"
+msgstr "チュートリアルを開始し、ゲームの基本を学びます"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -5336,16 +5075,14 @@ msgstr "キャンペーン"
 #. [grid]
 #: data/gui/window/title_screen.cfg:252
 msgid "Start a new single player campaign"
-msgstr "新たに一人用キャンペーンを開始します"
+msgstr "一人プレイ用のキャンペーン（物語）を開始します"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:253
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
-msgstr ""
-"マルチプレイヤーゲーム（交互に一台か、LAN、あるいはインターネット）、または "
-"AI との対戦で単一シナリオをプレイします"
+msgstr "他のプレイヤーやAIと対戦します"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:254
@@ -5355,7 +5092,7 @@ msgstr "再開"
 #. [grid]
 #: data/gui/window/title_screen.cfg:254
 msgid "Load a saved game"
-msgstr "セーブデータを読み込む"
+msgstr "セーブデータを読み込みます"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:255
@@ -5365,7 +5102,8 @@ msgstr "アドオン"
 #. [grid]
 #: data/gui/window/title_screen.cfg:255
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr "ユーザーが作成したキャンペーン、時代、マップパックをダウンロードします"
+msgstr ""
+"ユーザーが作成したキャンペーン、時代、マップパックなどをダウンロードします"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:256
@@ -5375,7 +5113,7 @@ msgstr "コア"
 #. [grid]
 #: data/gui/window/title_screen.cfg:256
 msgid "Select the game core data"
-msgstr "ゲームのコアデータを選択する"
+msgstr "ゲームのコアデータ（中核機能）を選択します"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:257
@@ -5419,15 +5157,13 @@ msgstr "ゲームバージョンとビルド情報を表示する"
 
 #. [label]
 #: data/gui/window/unit_advance.cfg:99
-#, fuzzy
-#| msgid "Advanced Settings"
 msgid "Advance Unit"
-msgstr "上級設定"
+msgstr "ユニットのレベルアップ"
 
 #. [label]
 #: data/gui/window/unit_advance.cfg:143
 msgid "What should our victorious unit become?"
-msgstr ""
+msgstr "勝者はどの道を歩むのでしょうか？"
 
 #. [button]: id=damage_calculation
 #: data/gui/window/unit_attack.cfg:192
@@ -5448,7 +5184,7 @@ msgstr "敵を攻撃"
 #. [label]
 #: data/gui/window/unit_create.cfg:47 src/hotkey/hotkey_command.cpp:96
 msgid "Create Unit (Debug!)"
-msgstr "ユニット作成（デバッグ用）"
+msgstr "ユニット作成（デバッグモード）"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/unit_create.cfg:124
@@ -5458,7 +5194,7 @@ msgstr "種族"
 #. [toggle_button]: id=sort_2
 #: data/gui/window/unit_list.cfg:107
 msgid "Moves"
-msgstr ""
+msgstr "移動力"
 
 #. [label]
 #: data/gui/window/unit_list.cfg:121
@@ -5467,24 +5203,20 @@ msgstr "ステータス"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/unit_list.cfg:135
-#, fuzzy
-#| msgid "HP: "
 msgid "HP"
-msgstr "HP: "
+msgstr "HP"
 
 #. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_2
 #: data/gui/window/unit_list.cfg:149 data/gui/window/unit_recall.cfg:61
 msgid "Lvl"
-msgstr ""
+msgstr "Lv"
 
 #. [toggle_button]: id=sort_5
 #. [toggle_button]: id=sort_3
 #: data/gui/window/unit_list.cfg:163 data/gui/window/unit_recall.cfg:75
-#, fuzzy
-#| msgid "XP: "
 msgid "XP"
-msgstr "XP: "
+msgstr "XP"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_6
@@ -5493,7 +5225,7 @@ msgstr "XP: "
 #: src/gui/widgets/unit_preview_pane.cpp:345
 #: src/gui/widgets/unit_preview_pane.cpp:488
 msgid "Traits"
-msgstr ""
+msgstr "特性"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -5503,34 +5235,30 @@ msgstr "ユニット一覧"
 
 #. [label]: id=title
 #: data/gui/window/unit_recall.cfg:291
-#, fuzzy
-#| msgid "Rename Unit"
 msgid "Recall Unit"
-msgstr "ユニット名を変更"
+msgstr "ユニットの召還"
 
 #. [button]: id=dismiss
 #: data/gui/window/unit_recall.cfg:385
 msgid "Dismiss"
-msgstr ""
+msgstr "解雇"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/unit_recall.cfg:419 src/hotkey/hotkey_command.cpp:86
 msgid "Recall"
-msgstr "召還する"
+msgstr "召還"
 
 #. [label]
 #: data/gui/window/unit_recruit.cfg:146
-#, fuzzy
-#| msgid "Recruit"
 msgid "Recruit Unit"
-msgstr "雇用する"
+msgstr "ユニットの雇用"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/unit_recruit.cfg:219 src/hotkey/hotkey_command.cpp:84
 msgid "Recruit"
-msgstr "雇用する"
+msgstr "雇用"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -5545,17 +5273,15 @@ msgstr "エラー"
 #: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:228
 #: src/gui/dialogs/multiplayer/lobby.cpp:244 src/gui/dialogs/wml_error.cpp:195
 msgid "Details:"
-msgstr "情報:"
+msgstr "情報："
 
 #: src/build_info.cpp:244
 msgid "feature^Experimental OpenMP support"
 msgstr "実験的なOpenMPのサポート"
 
 #: src/build_info.cpp:249
-#, fuzzy
-#| msgid "feature^PNG screenshots"
 msgid "feature^JPG screenshots"
-msgstr "PNGスクリーンショット"
+msgstr "JPG スクリーンショット"
 
 #: src/build_info.cpp:256
 msgid "feature^Lua console completion"
@@ -5563,7 +5289,7 @@ msgstr "Luaコンソールでの補完機能"
 
 #: src/build_info.cpp:261
 msgid "feature^Legacy bidirectional rendering"
-msgstr "旧式の双方向レンダリング"
+msgstr "レガシーな双方向レンダリング"
 
 #: src/build_info.cpp:268
 msgid "feature^D-Bus notifications back end"
@@ -5579,79 +5305,79 @@ msgstr "Cocoa通知バックエンド"
 
 #: src/desktop/paths.cpp:96
 msgid "filesystem_path_system^Volumes"
-msgstr ""
+msgstr "ボリューム"
 
 #: src/desktop/paths.cpp:200
 msgid "filesystem_path_game^Game executables"
-msgstr ""
+msgstr "ゲームプログラム"
 
 #: src/desktop/paths.cpp:204
 msgid "filesystem_path_game^Game data"
-msgstr ""
+msgstr "ゲームデータ"
 
 #: src/desktop/paths.cpp:208
 msgid "filesystem_path_game^User data"
-msgstr ""
+msgstr "ユーザーデータ"
 
 #: src/desktop/paths.cpp:212
 msgid "filesystem_path_game^User preferences"
-msgstr ""
+msgstr "ユーザ設定"
 
 #: src/desktop/paths.cpp:225
 msgid "filesystem_path_system^Home"
-msgstr ""
+msgstr "ホーム"
 
 #: src/desktop/paths.cpp:234
 msgid "filesystem_path_system^Root"
-msgstr ""
+msgstr "ルート"
 
 #: src/desktop/version.cpp:292
 msgid "operating_system^<unknown>"
-msgstr "<unknown>"
+msgstr "<不明>"
 
 #: src/font/text.cpp:789
 msgid "The text contains invalid markup: "
-msgstr "テキストに無効なマークアップが含まれています: "
+msgstr "テキストに無効なマークアップが含まれています："
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:251
 msgid "conjunct pair^$first and $second"
-msgstr ""
+msgstr "$first および $second"
 
 #. TRANSLATORS: Formats the first two elements of a conjunctive list.
 #: src/formula/string_utils.cpp:254
 msgid "conjunct start^$first, $second"
-msgstr ""
+msgstr "$first、$second"
 
 #. TRANSLATORS: Formats successive elements of a conjunctive list.
 #: src/formula/string_utils.cpp:258
 msgid "conjunct mid^$prefix, $next"
-msgstr ""
+msgstr "$prefix、$next"
 
 #. TRANSLATORS: Formats the final element of a conjunctive list.
 #: src/formula/string_utils.cpp:261
 msgid "conjunct end^$prefix, and $last"
-msgstr ""
+msgstr "$prefix および $last"
 
 #. TRANSLATORS: Formats a two-element disjunctive list.
 #: src/formula/string_utils.cpp:269
 msgid "disjunct pair^$first or $second"
-msgstr ""
+msgstr "$first または $second"
 
 #. TRANSLATORS: Formats the first two elements of a disjunctive list.
 #: src/formula/string_utils.cpp:272
 msgid "disjunct start^$first, $second"
-msgstr ""
+msgstr "$first、$second"
 
 #. TRANSLATORS: Formats successive elements of a disjunctive list.
 #: src/formula/string_utils.cpp:276
 msgid "disjunct mid^$prefix, $next"
-msgstr ""
+msgstr "$prefix、$next"
 
 #. TRANSLATORS: Formats the final element of a disjunctive list.
 #: src/formula/string_utils.cpp:279
 msgid "disjunct end^$prefix, or $last"
-msgstr ""
+msgstr "$prefix または $last"
 
 #: src/gui/core/canvas.cpp:605
 msgid "Line doesn't fit on canvas."
@@ -5662,10 +5388,8 @@ msgid "Rectangle doesn't fit on canvas."
 msgstr "長方形がキャンバスに合いません。"
 
 #: src/gui/core/canvas.cpp:806
-#, fuzzy
-#| msgid "Rectangle doesn't fit on canvas."
 msgid "Rounded Rectangle doesn't fit on canvas."
-msgstr "長方形がキャンバスに合いません。"
+msgstr "角が丸い長方形はこのキャンバスに合いません。"
 
 #: src/gui/core/canvas.cpp:915 src/gui/core/canvas.cpp:920
 #: src/gui/core/canvas.cpp:925 src/gui/core/canvas.cpp:931
@@ -5682,15 +5406,15 @@ msgstr "テキストのフォントサイズが 0 です。"
 
 #: src/gui/core/canvas.cpp:1335
 msgid "Text doesn't start on canvas."
-msgstr "テキストがキャンバスから始まっていません。"
+msgstr "テキストがキャンバス上から始まっていません。"
 
 #: src/gui/core/widget_definition.cpp:49
 msgid "No state or draw section defined."
-msgstr "状態もしくは描画セクションがひとつも設定されていません。"
+msgstr "stateもしくはdraw sectionがひとつも設定されていません。"
 
 #: src/gui/core/widget_definition.cpp:176 src/gui/core/window_builder.cpp:176
 msgid "No resolution defined."
-msgstr "解像度がひとつも設定されていません。"
+msgstr "解像度（resolution）が1つも定義されていません。"
 
 #: src/gui/core/window_builder.cpp:58
 msgid "Linked '$id' group has multiple definitions."
@@ -5704,15 +5428,15 @@ msgstr "「 $id 」に結び付けられたグループに重複する定義が�
 #: src/gui/widgets/toggle_panel.cpp:396 src/gui/widgets/tree_view.cpp:297
 #: src/gui/widgets/unit_preview_pane.cpp:574
 msgid "No grid defined."
-msgstr "グリッドがひとつも設定されていません。"
+msgstr "グリッド（grid）が定義されていません。"
 
 #: src/gui/core/window_builder.cpp:433
 msgid "A row must have a column."
-msgstr "一つの行には一つの列がなければなりません。"
+msgstr "一つの行（row）には一つの列（column）がなければなりません。"
 
 #: src/gui/core/window_builder.cpp:434
 msgid "Number of columns differ."
-msgstr "列の数が違います。"
+msgstr "列（column）の数が違います。"
 
 #: src/gui/dialogs/addon/manager.cpp:188
 msgid "addons_view^All Add-ons"
@@ -5727,10 +5451,8 @@ msgid "addons_view^Upgradable"
 msgstr "アップデート有り"
 
 #: src/gui/dialogs/addon/manager.cpp:191
-#, fuzzy
-#| msgid "addons_view^Installed"
 msgid "addons_view^Publishable"
-msgstr "インストール済み"
+msgstr "公開済み"
 
 #: src/gui/dialogs/addon/manager.cpp:192
 msgid "addons_view^Not Installed"
@@ -5769,10 +5491,8 @@ msgid "addons_of_type^MP factions"
 msgstr "MP 党派"
 
 #: src/gui/dialogs/addon/manager.cpp:204
-#, fuzzy
-#| msgid "addons_of_type^MP modifications"
 msgid "addons_of_type^Modifications"
-msgstr "MP Mod"
+msgstr "Mod"
 
 #: src/gui/dialogs/addon/manager.cpp:205
 msgid "addons_of_type^Cores"
@@ -5792,33 +5512,31 @@ msgstr "不明"
 
 #: src/gui/dialogs/addon/manager.cpp:213
 msgid "addons_order^Name ($order)"
-msgstr ""
+msgstr "名前（$order）"
 
 #: src/gui/dialogs/addon/manager.cpp:216
 msgid "addons_order^Author ($order)"
-msgstr ""
+msgstr "作者（$order）"
 
 #: src/gui/dialogs/addon/manager.cpp:219
 msgid "addons_order^Size ($order)"
-msgstr ""
+msgstr "サイズ（$order）"
 
 #: src/gui/dialogs/addon/manager.cpp:222
 msgid "addons_order^Downloads ($order)"
-msgstr ""
+msgstr "ダウンロード数（$order）"
 
 #: src/gui/dialogs/addon/manager.cpp:225
-#, fuzzy
-#| msgid "addons_of_type^Cores"
 msgid "addons_order^Type ($order)"
-msgstr "コア"
+msgstr "タイプ（$order）"
 
 #: src/gui/dialogs/addon/manager.cpp:228
 msgid "addons_order^Last updated ($order)"
-msgstr ""
+msgstr "最終更新（$order）"
 
 #: src/gui/dialogs/addon/manager.cpp:231
 msgid "addons_order^First uploaded ($order)"
-msgstr ""
+msgstr "初アップロード（$order）"
 
 #: src/gui/dialogs/addon/manager.cpp:260 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -5846,32 +5564,28 @@ msgstr "公開済み、トラッキングされていないローカルバージ
 
 #: src/gui/dialogs/addon/manager.cpp:277
 msgid "addon_state^Installed ($local_version|), upgradable"
-msgstr "インストール済み ($local_version|)、アップデート有り"
+msgstr "インストール済み（ $local_version| ）、アップデート有り"
 
 #: src/gui/dialogs/addon/manager.cpp:278
 msgid "addon_state^Published ($local_version| installed), upgradable"
-msgstr "公開済み ($local_version| インストール済み)、アップデート有り"
+msgstr "公開済み（ $local_version| インストール済み）、アップデート有り"
 
 #: src/gui/dialogs/addon/manager.cpp:284
 msgid "addon_state^Installed ($local_version|), outdated on server"
-msgstr "インストール済み ($local_version|)、サーバ上に旧バージョン有り"
+msgstr "インストール済み（ $local_version| ）、サーバー上に旧バージョン有り"
 
 #: src/gui/dialogs/addon/manager.cpp:285
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr ""
-"公開済み ($local_version| インストール済み)、サーバ上に旧バージョン有り"
+"公開済み（$local_version| インストール済み）、サーバー上に旧バージョン有り"
 
 #: src/gui/dialogs/addon/manager.cpp:291 src/gui/widgets/addon_list.cpp:114
-#, fuzzy
-#| msgid "addon_state^Installed ($local_version|), outdated on server"
 msgid "addon_state^Installed, not ready to publish"
-msgstr "インストール済み ($local_version|)、サーバ上に旧バージョン有り"
+msgstr "インストール済み、公開準備未了"
 
 #: src/gui/dialogs/addon/manager.cpp:292 src/gui/widgets/addon_list.cpp:114
-#, fuzzy
-#| msgid "addon_state^Published"
 msgid "addon_state^Ready to publish"
-msgstr "公開済み"
+msgstr "公開準備完了"
 
 #: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
@@ -5888,12 +5602,12 @@ msgstr "不明"
 #. TRANSLATORS: ascending
 #: src/gui/dialogs/addon/manager.cpp:360
 msgid "asc"
-msgstr ""
+msgstr "昇順"
 
 #. TRANSLATORS: descending
 #: src/gui/dialogs/addon/manager.cpp:364
 msgid "desc"
-msgstr ""
+msgstr "降順"
 
 #: src/gui/dialogs/addon/manager.cpp:380 src/gui/dialogs/chat_log.cpp:420
 #: src/gui/dialogs/game_cache_options.cpp:105
@@ -5903,109 +5617,111 @@ msgstr ""
 #: src/gui/dialogs/screenshot_notification.cpp:101
 #: src/gui/dialogs/wml_error.cpp:227
 msgid "Clipboard support not found, contact your packager"
-msgstr "クリップボードサポートがありません、パッケージャーに連絡してください"
+msgstr ""
+"クリップボードサポートが無効となっています。パッケージャーに連絡してくださ"
+"い。"
 
 #: src/gui/dialogs/addon/manager.cpp:448
 msgid "addons^Back to List"
-msgstr ""
+msgstr "リストに"
 
 #: src/gui/dialogs/addon/manager.cpp:460
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
+"サーバーからアドオン一覧をダウンロードしている間にエラーが発生しました。"
 
 #: src/gui/dialogs/addon/manager.cpp:496
-#, fuzzy
-#| msgid "No description available."
 msgid "No Add-ons Available"
-msgstr "解説はありません。"
+msgstr "アドオンはありません"
 
 #: src/gui/dialogs/addon/manager.cpp:496
 msgid "There are no add-ons available for download from this server."
-msgstr ""
+msgstr "このサーバーからダウンロード可能なアドオンはありません。"
 
 #: src/gui/dialogs/addon/manager.cpp:671
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr ""
+"以下のアドオンは、アドオンの公開情報やバージョン情報をローカルに保存していま"
+"す。これらのアドオンはアンインストールされません。"
 
 #: src/gui/dialogs/addon/manager.cpp:679
 msgid "The following add-on could not be deleted properly:"
-msgstr ""
+msgstr "以下のアドオンを正常に削除できませんでした。"
 
 #: src/gui/dialogs/addon/manager.cpp:725
 msgid "Warning"
-msgstr ""
+msgstr "警告"
 
 #: src/gui/dialogs/addon/manager.cpp:726
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 msgstr ""
+"アップロードされるアドオンのバージョンは、リモートにあるアドオンのバージョン"
+"以下の値となっています。 それでも続けますか？"
 
 #: src/gui/dialogs/addon/manager.cpp:735
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
+"アイコンのパスが無効です。 有効な画像が存在するパスを指定してください。"
 
 #: src/gui/dialogs/addon/manager.cpp:738 src/gui/dialogs/addon/manager.cpp:741
 #: src/gui/dialogs/addon/manager.cpp:780
 msgid "The server responded with an error:"
-msgstr ""
+msgstr "サーバーが返したエラー："
 
 #: src/gui/dialogs/addon/manager.cpp:739
 msgid "Terms"
-msgstr ""
+msgstr "条項"
 
 #: src/gui/dialogs/addon/manager.cpp:756 src/gui/dialogs/addon/manager.cpp:783
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:439
 msgid "Response"
-msgstr ""
+msgstr "応答"
 
 #: src/gui/dialogs/addon/manager.cpp:768
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
+"「$addon|」 を削除するとアドオンサーバー上のダウンロード・アップロード回数も"
+"完全に消去されます。 続行しますか？"
 
 #: src/gui/dialogs/addon/manager.cpp:800
-#, fuzzy
-#| msgid "Do you want to open this link?"
 msgid "Do you want to uninstall '$addon|'?"
-msgstr "このリンクを開きますか？"
+msgstr "「$addon|」をアンインストールしますか？"
 
 #: src/gui/dialogs/addon/manager.cpp:884 src/gui/dialogs/addon/manager.cpp:898
 #: src/gui/dialogs/campaign_selection.cpp:274
 #: src/gui/dialogs/multiplayer/lobby.cpp:459
-#, fuzzy
-#| msgid "url^None"
 msgid "None"
 msgstr "なし"
 
 #: src/gui/dialogs/advanced_graphics_options.cpp:75
 msgid "No matching widget found for scaling option"
-msgstr ""
+msgstr "scaling option にマッチする widget が見つかりません"
 
 #: src/gui/dialogs/attack_predictions.cpp:116
-#, fuzzy
-#| msgid "Choose weapon:"
 msgid "No usable weapon"
-msgstr "武器選択："
+msgstr "使用できる武器：無し"
 
 #: src/gui/dialogs/attack_predictions.cpp:193
 msgid "Defender resistance vs"
-msgstr ""
+msgstr "防御側の耐性："
 
 #: src/gui/dialogs/attack_predictions.cpp:195
 msgid "Attacker vulnerability vs"
-msgstr ""
+msgstr "攻撃側の弱点："
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:66
 msgid "$requester requires the following modifications to be enabled:"
-msgstr "$requester は以下のModの有効化を要求しています:"
+msgstr "$requester は以下のModの有効化を要求しています："
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:70
 msgid "$requester requires the following modifications to be disabled:"
-msgstr "$requester は以下のModの無効化を要求しています:"
+msgstr "$requester は以下のModの無効化を要求しています："
 
 #: src/gui/dialogs/depcheck_select_new.cpp:73
 msgid ""
@@ -6049,55 +5765,55 @@ msgstr "島"
 
 #: src/gui/dialogs/file_dialog.cpp:109
 msgid "Find File"
-msgstr ""
+msgstr "ファイル探索"
 
 #: src/gui/dialogs/file_dialog.cpp:184
 msgid "Open"
-msgstr ""
+msgstr "開く"
 
 #: src/gui/dialogs/file_dialog.cpp:305
-#, fuzzy
-#| msgid "Save already exists. Do you want to overwrite it?"
 msgid "The file already exists. Do you wish to overwrite it?"
-msgstr "セーブデータは既に存在しています。上書きしますか？"
+msgstr "ファイルがすでに存在しています。上書きしますか？"
 
 #: src/gui/dialogs/file_dialog.cpp:329
 msgid "The file or folder $path cannot be created."
-msgstr ""
+msgstr "ファイル/フォルダ「 $path 」を作成できません。"
 
 #: src/gui/dialogs/file_dialog.cpp:335
 msgid "The file or folder $path does not exist."
-msgstr ""
+msgstr "「 $path 」というファイル/フォルダは存在しません。"
 
 #: src/gui/dialogs/file_dialog.cpp:710
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
 msgstr ""
+"フォルダ「$path|」を作成できません。その場所への書き込み権限があるか確認して"
+"ください。"
 
 #: src/gui/dialogs/file_dialog.cpp:728
 msgid "The following folder and its contents will be permanently deleted:"
-msgstr ""
+msgstr "以下のフォルダとその中身は完全に削除されます。"
 
 #: src/gui/dialogs/file_dialog.cpp:729
 msgid "The following file will be permanently deleted:"
-msgstr ""
+msgstr "以下のファイルは完全に削除されます。"
 
 #: src/gui/dialogs/file_dialog.cpp:730
-#, fuzzy
-#| msgid "Do you want to open this link?"
 msgid "Do you wish to continue?"
-msgstr "このリンクを開きますか？"
+msgstr "削除しますか？"
 
 #: src/gui/dialogs/file_dialog.cpp:742
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
 msgstr ""
+"「 $path| 」を削除できません。その場所への書き込み権限を所持しているか確認し"
+"てください。"
 
 #: src/gui/dialogs/folder_create.cpp:60
 msgid "New Bookmark"
-msgstr ""
+msgstr "ブックマークの追加"
 
 #: src/gui/dialogs/game_cache_options.cpp:137
 msgid "dir_size^Unknown"
@@ -6116,7 +5832,7 @@ msgstr "キャッシュのクリーン完了"
 
 #: src/gui/dialogs/game_cache_options.cpp:163
 msgid "The game data cache has been cleaned."
-msgstr "ゲームデータのキャッシュはクリーンされました。"
+msgstr "ゲームデータのキャッシュをクリーンしました。"
 
 #: src/gui/dialogs/game_cache_options.cpp:165
 msgid "The game data cache could not be completely cleaned."
@@ -6128,21 +5844,19 @@ msgstr "キャッシュの削除完了"
 
 #: src/gui/dialogs/game_cache_options.cpp:182
 msgid "The game data cache has been purged."
-msgstr "ゲームデータのキャッシュは削除されました。"
+msgstr "ゲームデータのキャッシュを削除しました。"
 
 #: src/gui/dialogs/game_cache_options.cpp:184
 msgid "The game data cache could not be purged."
 msgstr "ゲームデータのキャッシュを削除できませんでした。"
 
 #: src/gui/dialogs/game_load.cpp:296
-#, fuzzy
-#| msgid "#(Invalid)"
 msgid "(Invalid)"
-msgstr "#(無効)"
+msgstr "（無効）"
 
 #: src/gui/dialogs/game_load.cpp:323
 msgid "Campaign: $campaign_name"
-msgstr "キャンペーン: $campaign_name"
+msgstr "キャンペーン：$campaign_name"
 
 #: src/gui/dialogs/game_load.cpp:338
 msgid "Test scenario"
@@ -6158,27 +5872,23 @@ msgstr "ターン"
 
 #: src/gui/dialogs/game_load.cpp:352
 msgid "Scenario start"
-msgstr "シナリオ開始"
+msgstr "シナリオの開始"
 
 #: src/gui/dialogs/game_load.cpp:355
 msgid "Difficulty: "
-msgstr "難易度: "
+msgstr "難易度："
 
 #: src/gui/dialogs/game_load.cpp:359
 msgid "Version: "
-msgstr "バージョン: "
+msgstr "バージョン："
 
 #: src/gui/dialogs/game_stats.cpp:78
-#, fuzzy
-#| msgid "controller^None"
 msgid "controller^AI"
-msgstr "無し"
+msgstr "AI"
 
 #: src/gui/dialogs/game_stats.cpp:78
-#, fuzzy
-#| msgid "controller^None"
 msgid "controller^Idle"
-msgstr "無し"
+msgstr "待機"
 
 #: src/gui/dialogs/game_stats.cpp:114 src/gui/dialogs/label_settings.cpp:71
 msgid "Unknown"
@@ -6200,11 +5910,11 @@ msgstr "バージョン $version"
 
 #: src/gui/dialogs/game_version.cpp:141
 msgid "Running on $os"
-msgstr "$os上で動作中"
+msgstr "$os 上で動作中"
 
 #: src/gui/dialogs/game_version.cpp:226
 msgid "version^N/A"
-msgstr "該当無し"
+msgstr "N/A"
 
 #: src/gui/dialogs/label_settings.cpp:53
 msgid "Team Labels"
@@ -6212,131 +5922,105 @@ msgstr "チームラベル"
 
 #: src/gui/dialogs/label_settings.cpp:76
 msgid "Side $side_number ($name)"
-msgstr "陣営 $side_number（$name）"
+msgstr "陣営 $side_number （ $name ）"
 
 #: src/gui/dialogs/loading_screen.cpp:50
 msgid "Building terrain rules"
-msgstr ""
+msgstr "地形ルールの構築"
 
 #: src/gui/dialogs/loading_screen.cpp:51
 msgid "Reading files and creating cache"
-msgstr ""
+msgstr "ファイルの読込み、キャッシュの作成"
 
 #: src/gui/dialogs/loading_screen.cpp:52 src/gui/dialogs/loading_screen.cpp:55
 msgid "Initializing display"
-msgstr ""
+msgstr "表示の初期化"
 
 #: src/gui/dialogs/loading_screen.cpp:53
 msgid "Reinitialize fonts for the current language"
-msgstr ""
+msgstr "現在の言語向けにフォントを再初期化"
 
 #: src/gui/dialogs/loading_screen.cpp:54
 msgid "Initializing teams"
-msgstr ""
+msgstr "チームの初期化"
 
 #: src/gui/dialogs/loading_screen.cpp:56
-#, fuzzy
-#| msgid "Configuration:"
 msgid "Loading game configuration"
-msgstr "設定:"
+msgstr "ゲーム設定の読込み"
 
 #: src/gui/dialogs/loading_screen.cpp:57
-#, fuzzy
-#| msgid "Flowering Water Lilies"
 msgid "Loading data files"
-msgstr "花咲く睡蓮"
+msgstr "データファイルの読込み"
 
 #: src/gui/dialogs/loading_screen.cpp:58
 msgid "Loading level"
-msgstr ""
+msgstr "レベルの読込み"
 
 #: src/gui/dialogs/loading_screen.cpp:59
 msgid "Initializing scripting engine"
-msgstr ""
+msgstr "スクリプトエンジンの初期化"
 
 #: src/gui/dialogs/loading_screen.cpp:60
-#, fuzzy
-#| msgid "Enable planning mode on start"
 msgid "Initializing planning mode"
-msgstr "開始時に計画モードを有効にする"
+msgstr "計画モードの初期化"
 
 #: src/gui/dialogs/loading_screen.cpp:61
 msgid "Reading unit files"
-msgstr ""
+msgstr "ユニットのファイルを読込み"
 
 #: src/gui/dialogs/loading_screen.cpp:62
 msgid "Loading units"
-msgstr ""
+msgstr "ユニットの読込み"
 
 #: src/gui/dialogs/loading_screen.cpp:63
 msgid "Searching for installed add-ons"
-msgstr ""
+msgstr "インストール済みアドオンを検索中"
 
 #: src/gui/dialogs/loading_screen.cpp:64
-#, fuzzy
-#| msgid "Random starting time"
 msgid "Starting game"
-msgstr "開始時刻のランダム化"
+msgstr "ゲーム開始"
 
 #: src/gui/dialogs/loading_screen.cpp:65
 msgid "Verifying cache"
-msgstr ""
+msgstr "キャッシュの検証"
 
 #: src/gui/dialogs/loading_screen.cpp:66
-#, fuzzy
-#| msgid "Connect to Server"
 msgid "Connecting to server"
-msgstr "サーバーに接続"
+msgstr "サーバーへ接続中"
 
 #: src/gui/dialogs/loading_screen.cpp:67
-#, fuzzy
-#| msgid "Options"
 msgid "Logging in"
-msgstr "オプション"
+msgstr "ログイン中"
 
 #: src/gui/dialogs/loading_screen.cpp:68
-#, fuzzy
-#| msgid "Waiting for remote input"
 msgid "Waiting for server"
-msgstr "リモート入力を待機中"
+msgstr "サーバーを待機中"
 
 #: src/gui/dialogs/loading_screen.cpp:69
-#, fuzzy
-#| msgid "Connect to Server"
 msgid "Connecting to redirected server"
-msgstr "サーバーに接続"
+msgstr "リダイレクトされたサーバーへ接続中"
 
 #: src/gui/dialogs/loading_screen.cpp:70
-#, fuzzy
-#| msgid "Waiting for remote input"
 msgid "Waiting for next scenario"
-msgstr "リモート入力を待機中"
+msgstr "次のシナリオを待機中"
 
 #: src/gui/dialogs/loading_screen.cpp:71
-#, fuzzy
-#| msgid "Random starting time"
 msgid "Getting game data"
-msgstr "開始時刻のランダム化"
+msgstr "ゲームデータの取得中"
 
 #: src/gui/dialogs/loading_screen.cpp:72
 msgid "Downloading lobby data"
-msgstr ""
+msgstr "ロビーデータをダウンロード中"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:104
-#, fuzzy
-#| msgid "Selected game"
 msgid "Selected Game"
-msgstr "選択したゲーム"
+msgstr "選択中のゲーム"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:105
-#, fuzzy
-#| msgid "Other games"
 msgid "Other Games"
 msgstr "他のゲーム"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:107
-#, fuzzy
-#| msgid "Current room"
 msgid "Current Room"
 msgstr "現在の部屋"
 
@@ -6345,14 +6029,12 @@ msgid "Lobby"
 msgstr "ロビー"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:125
-#, fuzzy
-#| msgid "Do you really want to delete this game?"
 msgid "Do you really want to log out?"
-msgstr "本当にこのゲームを削除しますか？"
+msgstr "ログアウトしますか？"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:224
 msgid "Incompatible User-made Content."
-msgstr ""
+msgstr "非互換のユーザーメイドコンテンツ（UMC）があります。"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:225
 msgid ""
@@ -6360,10 +6042,13 @@ msgid ""
 "incompatible with your version. You might wish to suggest that the host's "
 "add-ons be updated."
 msgstr ""
+"ホストが互換性の無い古いバージョンのアドオンを使用しており、このゲームに参加"
+"することはできません。ホストにアドオンをアップデートするよう促した方が良いか"
+"もしれません。"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:240
 msgid "Missing User-made Content."
-msgstr ""
+msgstr "未所持のユーザーメイドコンテンツ（UMC）があります。"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:241
 msgid ""
@@ -6371,58 +6056,52 @@ msgid ""
 "in order to join.\n"
 "Do you want to try to install them?"
 msgstr ""
+"このゲームをプレイするには、いくつかのアドオンをインストールまたはアップデー"
+"トする必要があります。それらのアドオンをインストールしますか？"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:407
 msgid "Games: showing $num_shown out of $num_total"
-msgstr "ゲーム: $num_total 中の $num_shown を表示"
+msgstr "ゲーム： $num_total 中の $num_shown を表示"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:452
 msgid "Era:"
-msgstr "時代:"
+msgstr "時代："
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:469
-#, fuzzy
-#| msgid "Settings"
 msgid "Settings:"
-msgstr "設定"
+msgstr "設定："
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:473
 msgid "Registered users only:"
-msgstr ""
+msgstr "登録ユーザーのみ："
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:474
-#, fuzzy
-#| msgid "Reloaded game"
 msgid "Reloaded:"
-msgstr "再開されたゲーム"
+msgstr "再開："
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:475
-#, fuzzy
-#| msgid "Share Vision:"
 msgid "Shared vision:"
-msgstr "視界の共有："
+msgstr "共有された視界："
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:476
 msgid "Shuffle sides:"
-msgstr ""
+msgstr "陣営をシャッフル："
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:477
-#, fuzzy
-#| msgid "Time limit"
 msgid "Time limit:"
-msgstr "時間制限"
+msgstr "制限時間："
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:478
-#, fuzzy
-#| msgid "Use map settings"
 msgid "Use map settings:"
-msgstr "マップの設定を使用"
+msgstr "マップ設定を使用："
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:486
 msgid ""
 "One or more items need to be installed\n"
 "in order to join this game."
 msgstr ""
+"このゲームに参加するには、１つあるいは複数のアイテムをインストールする必要が"
+"あります。"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:511
 msgid "Observers allowed"
@@ -6437,6 +6116,8 @@ msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at http://bugs.wesnoth.org."
 msgstr ""
+"マルチプレイヤーロビーのアドオンバージョンチェックデータベースに何らかの不具"
+"合があったようです。bugs.wesnoth.orgにバグ報告をお願いします。"
 
 #: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:131
 msgid ""
@@ -6451,198 +6132,158 @@ msgid "Side $side"
 msgstr "陣営 $side"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:108
-#, fuzzy
-#| msgid "Scenario start"
 msgid "Scenarios"
-msgstr "シナリオ開始"
+msgstr "シナリオ"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:109
-#, fuzzy
-#| msgid "Multiplayer"
 msgid "Multiplayer Campaigns"
-msgstr "マルチプレイヤー"
+msgstr "マルチプレイヤーキャンペーン"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:110
-#, fuzzy
-#| msgid "Start a new single player campaign"
 msgid "Singleplayer Campaigns"
-msgstr "新たに一人用キャンペーンを開始します"
+msgstr "１人用キャンペーン"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:111
-#, fuzzy
-#| msgid "Options"
 msgid "Custom Maps"
-msgstr "オプション"
+msgstr "カスタムマップ"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:112
-#, fuzzy
-#| msgid "New Scenario"
 msgid "Custom Scenarios"
-msgstr "新しいシナリオ"
+msgstr "カスタムシナリオ"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:113
-#, fuzzy
-#| msgid "Load Map"
 msgid "Random Maps"
-msgstr "マップ読み込み"
+msgstr "ランダムマップ"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:187
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:188
 msgid "No games found."
-msgstr ""
+msgstr "ゲームが存在しません。"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:253
 msgid "No eras found."
-msgstr ""
+msgstr "時代が存在しません。"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:254
 msgid "No eras found"
-msgstr ""
+msgstr "時代が存在しません"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:280
 msgid "Independent: Random factions assigned independently"
 msgstr ""
+"完全ランダム：陣営の党派をランダムに決定します。ミラーマッチが起こる可能性も"
+"あります。"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:281
 msgid "No Mirror: No two players will get the same faction"
 msgstr ""
+"ミラーマッチ防止：ミラーマッチ（2人以上のプレイヤーが同じ党派）にならないよう"
+"にします。"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:282
 msgid "No Ally Mirror: No two allied players will get the same faction"
-msgstr ""
+msgstr "同名ミラー防止：同盟関係にある陣営の党派が被らないようにします。"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:536
-#, fuzzy
-#| msgid "Available in game"
 msgid "No eras available for this game."
-msgstr "ゲーム中"
+msgstr "このゲームには時代を適用できません。"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:830
 msgid "The selected game has no sides!"
-msgstr ""
+msgstr "選択したゲームには陣営がありません！"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:896
 msgid "Choose Starting Scenario"
-msgstr ""
+msgstr "開始シナリオの選択"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:896
 msgid "Select at which point to begin this campaign."
-msgstr ""
+msgstr "どこからキャンペーンを開始しますか？"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:193
-#, fuzzy
-#| msgid "Map Information"
 msgid "No era information found."
-msgstr "マップ情報"
+msgstr "時代の情報が見つかりません。"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:248
-#, fuzzy
-#| msgid "Choose Player"
 msgid "Computer Player"
-msgstr "プレイヤー選択"
+msgstr "コンピュータープレイヤー"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:250
-#, fuzzy
-#| msgid "Empty list"
 msgid "Empty slot"
-msgstr "空のリスト"
+msgstr "空席"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:252
 msgid "Reserved for $playername"
-msgstr ""
+msgstr "（ $playername が予約済み）"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:254
-#, fuzzy
-#| msgid "Vacant slots"
 msgid "Vacant slot"
-msgstr "空きスロット"
+msgstr "空席"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:258
 msgid "empty"
-msgstr ""
+msgstr "空"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:332
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:154
-#, fuzzy
-#| msgid "Team name:"
 msgid "Team:"
-msgstr "チーム名:"
+msgstr "チーム："
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:464
 msgid "Waiting for players to choose factions..."
-msgstr ""
+msgstr "プレイヤーが党派を選択中..."
 
 #: src/gui/dialogs/outro.cpp:42
 msgid "The End"
-msgstr ""
+msgstr "完"
 
 #: src/gui/dialogs/preferences_dialog.cpp:140
-#, fuzzy
-#| msgid "Save Game"
 msgid "Saved Games"
-msgstr "ゲームを保存"
+msgstr "ゲームの保存"
 
 #: src/gui/dialogs/preferences_dialog.cpp:141
-#, fuzzy
-#| msgid "Custom Command"
 msgid "Map Commands"
-msgstr "カスタムコマンド"
+msgstr "マップコマンド"
 
 #: src/gui/dialogs/preferences_dialog.cpp:142
-#, fuzzy
-#| msgid "Custom Command"
 msgid "Unit Commands"
-msgstr "カスタムコマンド"
+msgstr "ユニットコマンド"
 
 #: src/gui/dialogs/preferences_dialog.cpp:143
-#, fuzzy
-#| msgid "Players: "
 msgid "Player Chat"
-msgstr "プレイヤー:"
+msgstr "プレイヤーチャット"
 
 #: src/gui/dialogs/preferences_dialog.cpp:144
-#, fuzzy
-#| msgid "Change Control"
 msgid "Replay Control"
-msgstr "コントロールの変更"
+msgstr "リプレイコントロール"
 
 #: src/gui/dialogs/preferences_dialog.cpp:145
-#, fuzzy
-#| msgid "whiteboard^Planning Mode"
 msgid "Planning Mode"
 msgstr "計画モード"
 
 #: src/gui/dialogs/preferences_dialog.cpp:146
-#, fuzzy
-#| msgid "Scenario start"
 msgid "Scenario Editor"
-msgstr "シナリオ開始"
+msgstr "シナリオエディタ"
 
 #: src/gui/dialogs/preferences_dialog.cpp:147
 msgid "Editor Palettes"
-msgstr ""
+msgstr "エディタのパレット"
 
 #: src/gui/dialogs/preferences_dialog.cpp:148
-#, fuzzy
-#| msgid "Unit Tool"
 msgid "Editor Tools"
-msgstr "ユニットツール"
+msgstr "エディタのツール"
 
 #: src/gui/dialogs/preferences_dialog.cpp:149
 msgid "Editor Clipboard"
-msgstr ""
+msgstr "エディタのクリップボード"
 
 #: src/gui/dialogs/preferences_dialog.cpp:150
-#, fuzzy
-#| msgid "Custom Command"
 msgid "Debug Commands"
-msgstr "カスタムコマンド"
+msgstr "デバッグコマンド"
 
 #: src/gui/dialogs/preferences_dialog.cpp:151
-#, fuzzy
-#| msgid "Custom Command"
 msgid "Custom WML Commands"
-msgstr "カスタムコマンド"
+msgstr "カスタムWMLコマンド"
 
 #: src/gui/dialogs/preferences_dialog.cpp:190
 msgid "friend"
@@ -6655,11 +6296,11 @@ msgstr "無視"
 #: src/gui/dialogs/preferences_dialog.cpp:249
 #: src/gui/dialogs/preferences_dialog.cpp:309
 msgid "No username specified"
-msgstr ""
+msgstr "ユーザー名が指定されていません"
 
 #: src/gui/dialogs/preferences_dialog.cpp:267
 msgid "Invalid username"
-msgstr "無効なユーザ名"
+msgstr "無効なユーザ名です。"
 
 #: src/gui/dialogs/preferences_dialog.cpp:314
 msgid "Not on friends or ignore lists"
@@ -6667,7 +6308,7 @@ msgstr "友人・無視リストに含まれていません"
 
 #: src/gui/dialogs/preferences_dialog.cpp:814
 msgid "&#9679;"
-msgstr ""
+msgstr "&#9679;"
 
 #: src/gui/dialogs/preferences_dialog.cpp:874
 msgid ""
@@ -6692,145 +6333,117 @@ msgstr "ホットキーのリセット"
 
 #: src/gui/dialogs/preferences_dialog.cpp:1005
 msgid "∞"
-msgstr ""
+msgstr "無限"
 
 #: src/gui/dialogs/statistics_dialog.cpp:184
-#, fuzzy
-#| msgid "Recruit"
 msgid "Recruits"
-msgstr "雇用する"
+msgstr "雇用"
 
 #: src/gui/dialogs/statistics_dialog.cpp:185
-#, fuzzy
-#| msgid "Recall"
 msgid "Recalls"
-msgstr "召還する"
+msgstr "召還"
 
 #: src/gui/dialogs/statistics_dialog.cpp:186
-#, fuzzy
-#| msgid "Advanced Settings"
 msgid "Advancements"
-msgstr "上級設定"
+msgstr "レベルアップ"
 
 #: src/gui/dialogs/statistics_dialog.cpp:187
 msgid "Losses"
-msgstr ""
+msgstr "損失"
 
 #: src/gui/dialogs/statistics_dialog.cpp:188
-#, fuzzy
-#| msgid "Hills"
 msgid "Kills"
-msgstr "丘"
+msgstr "撃破"
 
 #: src/gui/dialogs/statistics_dialog.cpp:202
 msgid "Inflicted"
-msgstr ""
+msgstr "与ダメージ"
 
 #: src/gui/dialogs/statistics_dialog.cpp:210
 msgid "Taken"
-msgstr ""
+msgstr "被ダメージ"
 
 #: src/gui/dialogs/title_screen.cpp:452
-#, fuzzy
-#| msgid "Choose Theme"
 msgid "Choose Test"
-msgstr "テーマ選択"
+msgstr "テストの選択"
 
 #: src/gui/dialogs/unit_recall.cpp:265
 msgid "This unit is loyal and requires no upkeep."
-msgstr ""
+msgstr "忠義ユニットには維持費が必要ありません。"
 
 #: src/gui/dialogs/unit_recall.cpp:266 src/gui/dialogs/unit_recall.cpp:271
 #: src/gui/dialogs/unit_recall.cpp:276
-#, fuzzy
-#| msgid "Do you really want to delete this game?"
 msgid "Do you really want to dismiss him?"
-msgstr "本当にこのゲームを削除しますか？"
+msgstr "本当に彼を解雇しますか？"
 
 #: src/gui/dialogs/unit_recall.cpp:267 src/gui/dialogs/unit_recall.cpp:272
 #: src/gui/dialogs/unit_recall.cpp:277
-#, fuzzy
-#| msgid "Do you really want to delete this game?"
 msgid "Do you really want to dismiss her?"
-msgstr "本当にこのゲームを削除しますか？"
+msgstr "本当に彼女を解雇しますか？"
 
 #: src/gui/dialogs/unit_recall.cpp:270
 msgid "This unit is an experienced one, having advanced levels."
-msgstr ""
+msgstr "このユニットは熟練しており、高レベルです。"
 
 #: src/gui/dialogs/unit_recall.cpp:275
 msgid "This unit is close to advancing a level."
-msgstr ""
+msgstr "レベルアップが近いユニットです。"
 
 #: src/gui/dialogs/unit_recall.cpp:281
 msgid "Dismiss Unit"
-msgstr ""
+msgstr "ユニットの解雇"
 
 #: src/gui/gui.cpp:84
 msgid "No default gui defined."
-msgstr "デフォルトの GUI がひとつも設定されていません。"
+msgstr "デフォルトの GUI が定義されていません。"
 
 #: src/gui/widgets/addon_list.cpp:118
-#, fuzzy
-#| msgid "addon_state^Installed, broken"
 msgid "addon_state^Installed, upgradable"
-msgstr "インストール済み、破損"
+msgstr "インストール済み、アップデート有り"
 
 #: src/gui/widgets/addon_list.cpp:118
-#, fuzzy
-#| msgid "addon_state^Published, broken"
 msgid "addon_state^Published, upgradable"
-msgstr "公開済み、破損"
+msgstr "公開済み、アップデート有り"
 
 #: src/gui/widgets/addon_list.cpp:122
-#, fuzzy
-#| msgid "addon_state^Installed ($local_version|), outdated on server"
 msgid "addon_state^Installed, outdated on server"
-msgstr "インストール済み ($local_version|)、サーバ上に旧バージョン有り"
+msgstr "インストール済み、サーバー上に旧バージョン有り"
 
 #: src/gui/widgets/addon_list.cpp:122
-#, fuzzy
-#| msgid "addon_state^Published, not installed"
 msgid "addon_state^Published, outdated on server"
-msgstr "公開済み、未インストール"
+msgstr "公開済み、サーバー上に旧バージョン有り"
 
 #: src/gui/widgets/addon_list.cpp:285
 msgid "Delete add-on from server"
-msgstr ""
+msgstr "サーバーからアドオンを削除します"
 
 #: src/gui/widgets/chatbox.cpp:263
 msgid "whisper to $receiver"
 msgstr "$receiver にささやく"
 
 #: src/gui/widgets/chatbox.cpp:396
-#, fuzzy
-#| msgid ""
-#| "Whisper session with $name started. If you do not want to receive "
-#| "messages from this user, type /ignore $name\n"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>\n"
 msgstr ""
-"$name とのささやきセッションが開始されました。もしこのユーザーからのメッセー"
-"ジを受け取りたくない場合は、/ignore $name と入力してください。\n"
+"<i>「 $name 」</i>とのささやきが開始されました。このユーザーからのメッセージ"
+"を受けとりたくなければ、<i>/ignore $name</i>と入力してください。\n"
 
 #: src/gui/widgets/chatbox.cpp:400
-#, fuzzy
-#| msgid "Room $name joined"
 msgid "Room <i>“$name”</i> joined"
-msgstr "部屋 $name に参加しました"
+msgstr "部屋「 $name 」に参加しました。"
 
 #: src/gui/widgets/chatbox.cpp:597
 msgid "$player has entered the room"
-msgstr "$player は部屋に入りました"
+msgstr "$player が入室しました"
 
 #: src/gui/widgets/chatbox.cpp:639
 msgid "$player has left the room"
-msgstr "$player は部屋から離れました"
+msgstr "$player が退室しました"
 
 #: src/gui/widgets/helper.cpp:96
 msgid "Mandatory widget '$id' hasn't been defined."
-msgstr "必須ウィジェット「 $id 」がひとつも設定されていません。"
+msgstr "必須widget 「 $id 」が定義されていません。"
 
 #: src/gui/widgets/label.cpp:148
 msgid "Opening links is not supported, contact your packager"
@@ -6849,69 +6462,64 @@ msgstr "リンクをコピーしました！"
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
-"「 list_data 」には「 list_definition 」と同じ数の列がなければなりません。"
+"「 list_data 」には「 list_definition 」と同じ数のcolumnがなければなりませ"
+"ん。"
 
 #: src/gui/widgets/listbox.cpp:954 src/gui/widgets/listbox.cpp:1071
 #: src/gui/widgets/listbox.cpp:1188 src/gui/widgets/scrollbar_panel.cpp:147
 msgid "No list defined."
-msgstr "リストがひとつも設定されていません。"
+msgstr "listが定義されていません。"
 
 #: src/gui/widgets/listbox.cpp:959 src/gui/widgets/listbox.cpp:1076
 #: src/gui/widgets/listbox.cpp:1193
 msgid "A 'list_definition' should contain one row."
-msgstr "「 list_definition 」には単一の行のみ含まれるべきです。"
+msgstr "「 list_definition 」には単一のrowを含む必要があります。"
 
 #: src/gui/widgets/multi_page.cpp:254
 msgid "No page defined."
-msgstr "ページが定義されていません。"
+msgstr "pageが定義されていません。"
 
 #: src/gui/widgets/multimenu_button.cpp:174
 msgid "multimenu^All Selected"
-msgstr ""
+msgstr "全て選択済み"
 
 #: src/gui/widgets/multimenu_button.cpp:179
 msgid "multimenu^$excess other"
 msgid_plural "$excess others"
-msgstr[0] ""
+msgstr[0] "他 $excess"
 
 #: src/gui/widgets/multimenu_button.cpp:181
 #: src/gui/widgets/multimenu_button.cpp:236
 msgid "multimenu^None Selected"
-msgstr ""
+msgstr "未選択"
 
 #: src/gui/widgets/pane.cpp:419
 msgid "Need at least 1 parallel item."
-msgstr "少なくとも1つの並列アイテムが必要です。"
+msgstr "少なくとも1つのparallel itemが必要です。"
 
 #: src/gui/widgets/size_lock.cpp:154
-#, fuzzy
-#| msgid "No list defined."
 msgid "No widget defined."
-msgstr "リストがひとつも設定されていません。"
+msgstr "widget が定義されていません。"
 
 #: src/gui/widgets/size_lock.cpp:175
-#, fuzzy
-#| msgid "Invalid username"
 msgid "Invalid size."
-msgstr "無効なユーザ名"
+msgstr "無効なサイズです。"
 
 #: src/gui/widgets/slider.cpp:453
 msgid "The number of value_labels and values don't match."
 msgstr "value_labels と values の数が合いません。"
 
 #: src/gui/widgets/stacked_widget.cpp:278
-#, fuzzy
-#| msgid "No stack defined."
 msgid "No stack layers defined."
-msgstr "スタックが定義されていません。"
+msgstr "stack layerが定義されていません。"
 
 #: src/gui/widgets/styled_widget.cpp:656
 msgid "Found a widget with a helptip and without a tooltip."
-msgstr "ヘルプチップがあるのにツールチップの無いウィジェットが見つかりました。"
+msgstr "helptipがあるのにtooltipの無いwidgetが見つかりました。"
 
 #: src/gui/widgets/tree_view.cpp:375
 msgid "No nodes defined for a tree view."
-msgstr "ツリービューのためのノードが定義されていません。"
+msgstr "tree viewのためのnodeが定義されていません。"
 
 #: src/gui/widgets/tree_view.cpp:411
 msgid "[node]id 'root' is reserved for the implementation."
@@ -6919,27 +6527,25 @@ msgstr "[node]id「root」は実装のために予約されています。"
 
 #: src/gui/widgets/tree_view.cpp:415
 msgid "No node defined."
-msgstr "ノードが定義されていません。"
+msgstr "nodeが定義されていません。"
 
 #: src/gui/widgets/tree_view_node.cpp:112
 msgid "Unknown builder id for tree view node."
-msgstr "ツリービューノードのビルダーIDが不明です。"
+msgstr "tree view nodeのbuilder idが不明です。"
 
 #: src/gui/widgets/unit_preview_pane.cpp:134
 msgid "Resistances: "
-msgstr ""
+msgstr "耐性："
 
 #: src/gui/widgets/unit_preview_pane.cpp:136
 msgid "(Att / Def)"
-msgstr ""
+msgstr "（攻撃時 / 防御時）"
 
 #: src/gui/widgets/unit_preview_pane.cpp:149
 msgid "Movement Costs:"
-msgstr ""
+msgstr "移動コスト："
 
 #: src/gui/widgets/unit_preview_pane.cpp:212
-#, fuzzy
-#| msgid "Attack"
 msgid "Attacks"
 msgstr "攻撃"
 
@@ -6948,28 +6554,26 @@ msgstr "攻撃"
 #: src/gui/widgets/unit_preview_pane.cpp:416
 #: src/gui/widgets/unit_preview_pane.cpp:447
 msgid "Lvl $lvl"
-msgstr ""
+msgstr "レベル $lvl"
 
 #: src/gui/widgets/unit_preview_pane.cpp:302
 #: src/gui/widgets/unit_preview_pane.cpp:315
 #: src/gui/widgets/unit_preview_pane.cpp:455
 #: src/gui/widgets/unit_preview_pane.cpp:468
 msgid "HP: "
-msgstr "HP: "
+msgstr "HP："
 
 #: src/gui/widgets/unit_preview_pane.cpp:304
 #: src/gui/widgets/unit_preview_pane.cpp:320
 #: src/gui/widgets/unit_preview_pane.cpp:458
 #: src/gui/widgets/unit_preview_pane.cpp:473
 msgid "XP: "
-msgstr "XP: "
+msgstr "XP："
 
 #: src/gui/widgets/unit_preview_pane.cpp:322
 #: src/gui/widgets/unit_preview_pane.cpp:475
-#, fuzzy
-#| msgid "Experience modifier"
 msgid "Experience Modifier: "
-msgstr "経験値の修正"
+msgstr "必要経験値の変更（%）："
 
 #: src/gui/widgets/unit_preview_pane.cpp:325
 #: src/gui/widgets/unit_preview_pane.cpp:478
@@ -6979,11 +6583,11 @@ msgstr "MP："
 #: src/gui/widgets/unit_preview_pane.cpp:363
 #: src/gui/widgets/unit_preview_pane.cpp:506
 msgid "Abilities"
-msgstr ""
+msgstr "能力"
 
 #: src/gui/widgets/window.cpp:743
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
-msgstr "クリック解雇には「 click_dismiss 」または「 ok 」ボタンが必要です。"
+msgstr "Click dismissには「 click_dismiss 」または「 ok 」ボタンが必要です。"
 
 #: src/gui/widgets/window.cpp:768 src/gui/widgets/window.cpp:805
 #: src/tests/gui/test_gui2.cpp:575
@@ -6991,26 +6595,20 @@ msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "画面に合わないため、ダイアログの表示に失敗しました。"
 
 #: src/hotkey/hotkey_command.cpp:50
-#, fuzzy
-#| msgid "Scroll speed:"
 msgid "Scroll Up"
-msgstr "スクロール速度:"
+msgstr "上にスクロール"
 
 #: src/hotkey/hotkey_command.cpp:51
 msgid "Scroll Down"
-msgstr ""
+msgstr "下にスクロール"
 
 #: src/hotkey/hotkey_command.cpp:52
-#, fuzzy
-#| msgid "Scroll Palette Left"
 msgid "Scroll Left"
-msgstr "パレットを左にスクロール"
+msgstr "左にスクロール"
 
 #: src/hotkey/hotkey_command.cpp:53
-#, fuzzy
-#| msgid "Scroll Palette Right"
 msgid "Scroll Right"
-msgstr "パレットを右にスクロール"
+msgstr "右にスクロール"
 
 #: src/hotkey/hotkey_command.cpp:55
 msgid "cancel"
@@ -7094,7 +6692,7 @@ msgstr "地形情報"
 
 #: src/hotkey/hotkey_command.cpp:76
 msgid "Unit Description"
-msgstr "ユニットの解説"
+msgstr "ユニット解説"
 
 #: src/hotkey/hotkey_command.cpp:77
 msgid "Rename Unit"
@@ -7102,7 +6700,7 @@ msgstr "ユニット名を変更"
 
 #: src/hotkey/hotkey_command.cpp:78
 msgid "Delete Unit"
-msgstr "ユニット削除"
+msgstr "ユニットを削除"
 
 #: src/hotkey/hotkey_command.cpp:81
 msgid "Save Replay"
@@ -7122,15 +6720,15 @@ msgstr "ラベルの表示・非表示"
 
 #: src/hotkey/hotkey_command.cpp:88
 msgid "End Turn"
-msgstr "ターンを終了"
+msgstr "ターン終了"
 
 #: src/hotkey/hotkey_command.cpp:90
 msgid "Toggle Ellipses"
-msgstr "楕円切り替え"
+msgstr "ユニット足元の楕円表示の切り替え"
 
 #: src/hotkey/hotkey_command.cpp:91
 msgid "Toggle Grid"
-msgstr "グリッド表示切り替え"
+msgstr "グリッド表示の切り替え"
 
 #: src/hotkey/hotkey_command.cpp:92
 msgid "Mouse Scrolling"
@@ -7142,31 +6740,31 @@ msgstr "ステータステーブル"
 
 #: src/hotkey/hotkey_command.cpp:94
 msgid "Mute"
-msgstr "無音"
+msgstr "ミュート"
 
 #: src/hotkey/hotkey_command.cpp:95
 msgid "Speak"
-msgstr "話す"
+msgstr "チャット"
 
 #: src/hotkey/hotkey_command.cpp:97
 msgid "Change Side (Debug!)"
-msgstr "陣営変更 (デバッグ用)"
+msgstr "陣営変更（デバッグモード）"
 
 #: src/hotkey/hotkey_command.cpp:98
 msgid "Kill Unit (Debug!)"
-msgstr "ユニットを殺す (デバッグ)"
+msgstr "ユニットを殺す（デバッグモード）"
 
 #: src/hotkey/hotkey_command.cpp:100
 msgid "Scenario Objectives"
-msgstr "シナリオの目標"
+msgstr "シナリオ目標"
 
 #: src/hotkey/hotkey_command.cpp:103
 msgid "Pause Network Game"
-msgstr "ネットワークゲームの一時停止"
+msgstr "通信対戦の一時停止"
 
 #: src/hotkey/hotkey_command.cpp:104
 msgid "Continue Network Game"
-msgstr "ネットワークゲームの再開"
+msgstr "通信対戦の再開"
 
 #: src/hotkey/hotkey_command.cpp:106
 msgid "Quit to Titlescreen"
@@ -7174,11 +6772,11 @@ msgstr "タイトルスクリーンに戻る"
 
 #: src/hotkey/hotkey_command.cpp:107
 msgid "Set Team Label"
-msgstr "チームラベルを付ける"
+msgstr "チームラベルの設置"
 
 #: src/hotkey/hotkey_command.cpp:108
 msgid "Set Label"
-msgstr "ラベルを付ける"
+msgstr "ラベルの設置"
 
 #: src/hotkey/hotkey_command.cpp:109
 msgid "Clear Labels"
@@ -7186,7 +6784,7 @@ msgstr "ラベルを消去"
 
 #: src/hotkey/hotkey_command.cpp:110
 msgid "Show Enemy Moves"
-msgstr "敵の移動を見る"
+msgstr "敵の移動可能範囲の表示"
 
 #: src/hotkey/hotkey_command.cpp:111
 msgid "Best Possible Enemy Moves"
@@ -7194,7 +6792,7 @@ msgstr "最も可能性のある敵の動き"
 
 #: src/hotkey/hotkey_command.cpp:113
 msgid "Play Replay"
-msgstr "リプレイを再生"
+msgstr "リプレイを開始"
 
 #: src/hotkey/hotkey_command.cpp:114
 msgid "Reset Replay"
@@ -7206,45 +6804,45 @@ msgstr "リプレイの停止"
 
 #: src/hotkey/hotkey_command.cpp:116
 msgid "Next Turn"
-msgstr "次のターン"
+msgstr "次のターンをリプレイ"
 
 #: src/hotkey/hotkey_command.cpp:117
 msgid "Next Side"
-msgstr "次の陣営"
+msgstr "次の陣営をリプレイ"
 
 #: src/hotkey/hotkey_command.cpp:118
 msgid "Next Move"
-msgstr "次の動き"
+msgstr "次の動きをリプレイ"
 
 #: src/hotkey/hotkey_command.cpp:119
 msgid "Full Map"
-msgstr "マップ全体"
+msgstr "視点変更：マップ全体（リプレイ）"
 
 #: src/hotkey/hotkey_command.cpp:120
 msgid "Each Team"
-msgstr "チームごと"
+msgstr "視点変更：チームごと（リプレイ）"
 
 #: src/hotkey/hotkey_command.cpp:121
 msgid "Human Team"
-msgstr "人間チーム"
+msgstr "視点変更：プレイヤー（リプレイ）"
 
 #: src/hotkey/hotkey_command.cpp:122
 msgid "Skip Animation"
-msgstr "アニメーションをスキップ"
+msgstr "アニメーションをスキップ（リプレイ）"
 
 #: src/hotkey/hotkey_command.cpp:123
 msgid "End Replay"
-msgstr "リプレイを終える"
+msgstr "リプレイ終了"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkey/hotkey_command.cpp:126
 msgid "whiteboard^Planning Mode"
-msgstr "計画モード"
+msgstr "計画モードの切り替え"
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
 #: src/hotkey/hotkey_command.cpp:128
 msgid "whiteboard^Execute Action"
-msgstr "アクションの実行"
+msgstr "アクションを実行"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkey/hotkey_command.cpp:130
@@ -7259,17 +6857,17 @@ msgstr "アクションを削除"
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkey/hotkey_command.cpp:134
 msgid "whiteboard^Move Action Up"
-msgstr "アクションの順序を上げる"
+msgstr "アクションの順番を早める"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
 #: src/hotkey/hotkey_command.cpp:136
 msgid "whiteboard^Move Action Down"
-msgstr "アクションの順序を下げる"
+msgstr "アクションの順番を遅くする"
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
 #: src/hotkey/hotkey_command.cpp:138
 msgid "whiteboard^Suppose Dead"
-msgstr "死亡を仮定"
+msgstr "死亡を仮定（計画モード）"
 
 #: src/hotkey/hotkey_command.cpp:140
 msgid "Quit to Desktop"
@@ -7297,11 +6895,11 @@ msgstr "タイムスケジュールエディタ"
 
 #: src/hotkey/hotkey_command.cpp:151
 msgid "Partial Undo"
-msgstr "一部をアンドゥ"
+msgstr "アンドゥ"
 
 #: src/hotkey/hotkey_command.cpp:153
 msgid "New Scenario"
-msgstr "新しいシナリオ"
+msgstr "新規シナリオ"
 
 #: src/hotkey/hotkey_command.cpp:154
 msgid "Load Map"
@@ -7333,7 +6931,7 @@ msgstr "選択したアイテムセットの消去"
 
 #: src/hotkey/hotkey_command.cpp:163
 msgid "Swap Foreground/Background Palette Item"
-msgstr "パレットの前景/背景の切り替え"
+msgstr "パレットのメイン/サブの切り替え"
 
 #: src/hotkey/hotkey_command.cpp:164
 msgid "Change Palette Group"
@@ -7341,17 +6939,15 @@ msgstr "パレットグループの変更"
 
 #: src/hotkey/hotkey_command.cpp:165
 msgid "Scroll Palette Left"
-msgstr "パレットを左にスクロール"
+msgstr "パレットを下にスクロール"
 
 #: src/hotkey/hotkey_command.cpp:166
 msgid "Scroll Palette Right"
-msgstr "パレットを右にスクロール"
+msgstr "パレットを上にスクロール"
 
 #: src/hotkey/hotkey_command.cpp:167
-#, fuzzy
-#| msgid "Remove Add-ons"
 msgid "Remove Location"
-msgstr "アドオンの削除"
+msgstr "開始位置の削除"
 
 #: src/hotkey/hotkey_command.cpp:169
 msgid "Add New Side"
@@ -7370,9 +6966,9 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
-"マウスの左 / 右クリックを使って前景 / 背景地形を描きます。Shiftを押しっぱなし"
-"にすることで、ベースレイヤのみに描くことができます。Ctrl+クリックでカーソル下"
-"の地形のサンプルを取ります。"
+"マウスの左 / 右クリックを使ってメイン / サブパレットの地形を描きます。Shiftを"
+"押しっぱなしにすることで、ベースレイヤのみに描くことができます。Ctrl+クリック"
+"でカーソル下の地形のサンプルを取ります。"
 
 #: src/hotkey/hotkey_command.cpp:174
 msgid "Fill Tool"
@@ -7397,8 +6993,10 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
-"左クリックでプレイヤーの選択、右クリックで消去します。数字キーで各開始地点に"
-"スクロールし、alt+数字キーで開始地点をカーソル下にセットすることができます。"
+"左クリックでプレイヤーの開始位置をセットし、右クリックで消去します。数字キー"
+"で各開始地点にスクロールし、alt+数字キーで開始地点をカーソル下にセットするこ"
+"とができます。また、deleteキーでカーソル下の開始地点を消去することもできま"
+"す。"
 
 #: src/hotkey/hotkey_command.cpp:176
 msgid "Starting Positions Tool"
@@ -7410,7 +7008,8 @@ msgstr "ラベルツール"
 
 #: src/hotkey/hotkey_command.cpp:177
 msgid "Left mouse button sets or drags a label, right clears."
-msgstr "左クリックでラベルのセット / ドラッグ、右クリックで消去します。"
+msgstr ""
+"左クリックでラベルのセット / ドラッグ、右クリックでラベルの消去を行えます。"
 
 #: src/hotkey/hotkey_command.cpp:178
 msgid ""
@@ -7418,8 +7017,8 @@ msgid ""
 "brings up a context menu. Needs a defined side."
 msgstr ""
 "左クリックで新しいユニットの設置、ドラッグアンドドロップでユニットを移動しま"
-"す。右クリックでコンテキストメニューが開きます。陣営を定義しておく必要があり"
-"ます。"
+"す。右クリックでコンテキストメニューが開きます。使用の前に陣営を定義しておく"
+"必要があります。"
 
 #: src/hotkey/hotkey_command.cpp:178
 msgid "Unit Tool"
@@ -7463,7 +7062,7 @@ msgstr "村ツール"
 
 #: src/hotkey/hotkey_command.cpp:183
 msgid "Can Recruit"
-msgstr "雇用可能"
+msgstr "雇用の可否の切り替え"
 
 #: src/hotkey/hotkey_command.cpp:183
 msgid "Toggle the recruit attribute of a unit."
@@ -7471,7 +7070,7 @@ msgstr "ユニットの雇用属性を切り替えます。"
 
 #: src/hotkey/hotkey_command.cpp:184
 msgid "Can be Renamed"
-msgstr "リネーム可能"
+msgstr "リネームの可否の切り替え"
 
 #: src/hotkey/hotkey_command.cpp:184
 msgid "Toggle the unit being renameable."
@@ -7491,47 +7090,47 @@ msgstr "ユニットIDの変更"
 
 #: src/hotkey/hotkey_command.cpp:188
 msgid "Loyal"
-msgstr "忠義"
+msgstr "忠義の切り替え"
 
 #: src/hotkey/hotkey_command.cpp:191
 msgid "Toggle Minimap Unit Coding"
-msgstr "ミニマップのユニットコーディングの切り替え"
+msgstr "ミニマップ上のユニット表示色の切り替え"
 
 #: src/hotkey/hotkey_command.cpp:192
 msgid "Toggle Minimap Terrain Coding"
-msgstr "ミニマップの地形コーディングの切り替え"
+msgstr "ミニマップ上の地形表示形式の切り替え"
 
 #: src/hotkey/hotkey_command.cpp:194
 msgid "Toggle Minimap Unit Drawing"
-msgstr "ミニマップのユニット表示の切り替え"
+msgstr "ミニマップ上でのユニットの表示/非表示"
 
 #: src/hotkey/hotkey_command.cpp:195
 msgid "Toggle Minimap Village Drawing"
-msgstr "ミニマップの村表示の切り替え"
+msgstr "ミニマップ上での村の表示/非表示"
 
 #: src/hotkey/hotkey_command.cpp:196
 msgid "Toggle Minimap Terrain Drawing"
-msgstr "ミニマップの地形表示の切り替え"
+msgstr "ミニマップ上での地形の表示/非表示"
 
 #: src/hotkey/hotkey_command.cpp:198
 msgid "Next Brush"
-msgstr "次の筆"
+msgstr "次のブラシ"
 
 #: src/hotkey/hotkey_command.cpp:199
 msgid "Default Brush"
-msgstr "デフォルトの筆"
+msgstr "デフォルトブラシ"
 
 #: src/hotkey/hotkey_command.cpp:200
 msgid "Single Tile"
-msgstr "シングルタイル"
+msgstr "シングルヘクスブラシ"
 
 #: src/hotkey/hotkey_command.cpp:201
 msgid "Radius One"
-msgstr "半径1ヘクス"
+msgstr "半径1ヘクスブラシ"
 
 #: src/hotkey/hotkey_command.cpp:202
 msgid "Radius Two"
-msgstr "半径2ヘクス"
+msgstr "半径2ヘクスブラシ"
 
 #: src/hotkey/hotkey_command.cpp:203
 msgid "Brush NW-SE"
@@ -7570,47 +7169,47 @@ msgstr "全て選択"
 
 #: src/hotkey/hotkey_command.cpp:211
 msgid "Select Inverse"
-msgstr "選択領域を反転"
+msgstr "選択部分を反転"
 
 #: src/hotkey/hotkey_command.cpp:212
 msgid "Select None"
-msgstr "選択領域を解除"
+msgstr "選択解除"
 
 #: src/hotkey/hotkey_command.cpp:213
 msgid "Rotate Clipboard Clockwise"
-msgstr "クリップボードを時計回りに回転"
+msgstr "クリップボードの内容を時計回りに回転"
 
 #: src/hotkey/hotkey_command.cpp:214
 msgid "Rotate Clipboard Counter-Clockwise"
-msgstr "クリップボードを反時計回りに回転"
+msgstr "クリップボードの内容を反時計回りに回転"
 
 #: src/hotkey/hotkey_command.cpp:215
 msgid "Flip Clipboard Horizontally"
-msgstr "クリップボードを水平反転"
+msgstr "クリップボードの内容を水平反転"
 
 #: src/hotkey/hotkey_command.cpp:216
 msgid "Flip Clipboard Vertically"
-msgstr "クリップボードを垂直反転"
+msgstr "クリップボードの内容を垂直反転"
 
 #: src/hotkey/hotkey_command.cpp:217
 msgid "Rotate Selection"
-msgstr "選択領域を反転させる"
+msgstr "選択部分を回転"
 
 #: src/hotkey/hotkey_command.cpp:218
 msgid "Flip Selection"
-msgstr "選択領域を反転する"
+msgstr "選択部分を反転する"
 
 #: src/hotkey/hotkey_command.cpp:219
 msgid "Fill Selection"
-msgstr "選択領域を塗りつぶす"
+msgstr "選択部分を塗りつぶす"
 
 #: src/hotkey/hotkey_command.cpp:220
 msgid "Generate Tiles in Selection"
-msgstr "選択領域にタイルを生成する"
+msgstr "選択部分にタイルを生成する"
 
 #: src/hotkey/hotkey_command.cpp:221
 msgid "Randomize Tiles in Selection"
-msgstr "選択領域のタイルをランダム化"
+msgstr "選択部分のタイルをランダム化"
 
 #: src/hotkey/hotkey_command.cpp:223
 msgid "Rotate Map"
@@ -7630,23 +7229,23 @@ msgstr "画面を再描画"
 
 #: src/hotkey/hotkey_command.cpp:229
 msgid "Update Terrain Transitions"
-msgstr "地形のつながりを更新"
+msgstr "地形の繋ぎ目を更新"
 
 #: src/hotkey/hotkey_command.cpp:232
 msgid "Toggle Terrain Transition Update"
-msgstr "地形のつながりを切り替え"
+msgstr "地形の繋ぎ目の自動更新の切り替え"
 
 #: src/hotkey/hotkey_command.cpp:234
 msgid "Auto-update Terrain Transitions"
-msgstr "地形のつながりの自動更新"
+msgstr "地形の繋ぎ目の自動更新"
 
 #: src/hotkey/hotkey_command.cpp:235
 msgid "Auto-update Terrain Transitions: No"
-msgstr "地形のつながりの自動更新: OFF"
+msgstr "地形の繋ぎ目の自動更新：OFF"
 
 #: src/hotkey/hotkey_command.cpp:236
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr "地形のつながりの自動更新: 一部"
+msgstr "地形の繋ぎ目の自動更新：一部"
 
 #: src/hotkey/hotkey_command.cpp:238
 msgid "Refresh Image Cache"
@@ -7661,14 +7260,12 @@ msgid "Draw Terrain Codes"
 msgstr "地形コードを描画"
 
 #: src/hotkey/hotkey_command.cpp:241
-#, fuzzy
-#| msgid "Number of turns"
 msgid "Draw Number of Bitmaps"
-msgstr "ターン数:"
+msgstr "ビットマップの数を表示"
 
 #: src/hotkey/hotkey_command.cpp:243
 msgid "Save Selection to Area"
-msgstr "選択領域の保存"
+msgstr "選択部分を領域として保存"
 
 #: src/hotkey/hotkey_command.cpp:244
 msgid "Rename Selected Area"
@@ -7684,7 +7281,7 @@ msgstr "新たな領域の追加"
 
 #: src/hotkey/hotkey_command.cpp:248
 msgid "Edit Scenario"
-msgstr "シナリオ編集"
+msgstr "シナリオの編集"
 
 #: src/hotkey/hotkey_command.cpp:249
 msgid "Edit Side"
@@ -7708,15 +7305,15 @@ msgstr "移動を続ける"
 
 #: src/hotkey/hotkey_command.cpp:255
 msgid "Find Label or Unit"
-msgstr "ラベルとユニットの検索"
+msgstr "ラベルまたはユニットの検索"
 
 #: src/hotkey/hotkey_command.cpp:256
 msgid "Speak to Ally"
-msgstr "同盟軍に話す"
+msgstr "同盟軍とチャット"
 
 #: src/hotkey/hotkey_command.cpp:257
 msgid "Speak to All"
-msgstr "全員に話す"
+msgstr "全員とチャット"
 
 #: src/hotkey/hotkey_command.cpp:259
 msgid "View Chat Log"
@@ -7732,11 +7329,11 @@ msgstr "カスタムコマンド"
 
 #: src/hotkey/hotkey_command.cpp:262
 msgid "Run Formula"
-msgstr "式の実行"
+msgstr "フォーミュラの実行"
 
 #: src/hotkey/hotkey_command.cpp:263
 msgid "Clear Messages"
-msgstr "メッセージを消去"
+msgstr "チャットメッセージを消去"
 
 #: src/hotkey/hotkey_command.cpp:265
 msgid "Change Language"
@@ -7748,11 +7345,11 @@ msgstr "WMLのリフレッシュ"
 
 #: src/hotkey/hotkey_command.cpp:267
 msgid "Next Tip of the Day"
-msgstr "本日の次のヒント"
+msgstr "次のヒント"
 
 #: src/hotkey/hotkey_command.cpp:268
 msgid "Previous Tip of the Day"
-msgstr "本日の前のヒント"
+msgstr "前のヒント"
 
 #: src/hotkey/hotkey_command.cpp:269
 msgid "Start Tutorial"
@@ -7772,7 +7369,7 @@ msgstr "アドオンの管理"
 
 #: src/hotkey/hotkey_command.cpp:273
 msgid "Manage Cores"
-msgstr "コアを管理する"
+msgstr "コアの管理"
 
 #: src/hotkey/hotkey_command.cpp:274
 msgid "Start Editor"
@@ -7783,10 +7380,8 @@ msgid "Show Credits"
 msgstr "クレジットの表示"
 
 #: src/hotkey/hotkey_command.cpp:276
-#, fuzzy
-#| msgid "Test scenario"
 msgid "Start Test Scenario"
-msgstr "テストシナリオ"
+msgstr "テストシナリオの開始"
 
 #: src/hotkey/hotkey_command.cpp:278
 msgid "Show Helptip"
@@ -7794,7 +7389,7 @@ msgstr "ヘルプチップの表示"
 
 #: src/hotkey/hotkey_command.cpp:280
 msgid "Show Lua Console"
-msgstr "Luaコンソールを表示する"
+msgstr "Luaコンソールの表示"
 
 #: src/hotkey/hotkey_command.cpp:283
 msgid "Unrecognized Command"
@@ -7812,7 +7407,7 @@ msgstr "認識できないコマンド"
 #. translate this message as "sv,da", while Danish as "da,sv".
 #: src/image.cpp:551
 msgid "language code for localized resources^en_US"
-msgstr "ja_JP"
+msgstr "ja"
 
 #: src/preferences/display.cpp:124
 msgid "No known themes. Try changing from within an existing game."
@@ -7824,44 +7419,43 @@ msgid ""
 "functionality and is required for hosting local network games. It will "
 "normally be found in the same folder as the game executable."
 msgstr ""
+"<b>$filename</b> サーバーはマルチプレイヤー用のサーバーであり、ローカルネット"
+"ワークゲームを立てるために必要です。通常は、ゲームの実行ファイルと同じフォル"
+"ダに置かれています。"
 
 #: src/preferences/display.cpp:170
 msgid "Find Server Application"
-msgstr ""
+msgstr "サーバープログラムの探索"
 
 #: src/preferences/game.cpp:379
 msgid "No server has been defined."
-msgstr "サーバーがひとつも設定されていません。"
+msgstr "サーバーが1つも設定されていません。"
 
 #: src/preferences/game.cpp:902
-#, fuzzy
-#| msgid "%H:%M"
 msgid "[%H:%M]"
-msgstr "%H:%M"
+msgstr "[%H:%M]"
 
 #: src/preferences/game.cpp:905
-#, fuzzy
-#| msgid "%I:%M %p"
 msgid "[%I:%M %p]"
-msgstr "%I:%M %p"
+msgstr "[%I:%M %p]"
 
 #: src/terrain/translation.cpp:710
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
-msgstr "4 文字以上の文字列の地形が見つかりました。影響される地形は :"
+msgstr "4文字以上の文字列の地形が見つかりました。影響される地形："
 
 #: src/wml_exception.cpp:62
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
 msgstr ""
-"無効な WML が原因だと思われるエラーが起こりました\n"
-"エラーメッセージは :"
+"無効なWMLが原因だと思われるエラーが起こりました。\n"
+"エラーメッセージ："
 
 #: src/wml_exception.cpp:64
 msgid "When reporting the bug please include the following error message :"
-msgstr "バグを報告する際には以下のエラーメッセージを含めてください :"
+msgstr "バグを報告する際には以下のエラーメッセージを含めてください："
 
 #: src/wml_exception.cpp:94
 msgid ""
@@ -7893,308 +7487,5 @@ msgstr ""
 "キー「$deprecated_key」は「$key」に名前が変更されました。「$deprecated_key」"
 "のサポートはバージョン$removal_versionで削除されます。"
 
-#~ msgid "Password Reminder"
-#~ msgstr "パスワードのリマインダ"
-
-#~ msgid "feature^Growl notifications back end"
-#~ msgstr "Growl通知バックエンド"
-
 #~ msgid "The maximum text width is less than 1."
-#~ msgstr "最大のテキスト幅が 1 より小さいです。"
-
-#~ msgid "Rooms"
-#~ msgstr "部屋"
-
-#~ msgid "Screenshot Saved"
-#~ msgstr "スクリーンショットの保存完了"
-
-#~ msgid "Choose weapon:"
-#~ msgstr "武器選択："
-
-#~ msgid "file_size^Unknown"
-#~ msgstr "不明"
-
-#, fuzzy
-#~| msgid "Add-ons"
-#~ msgid "Get Add-ons"
-#~ msgstr "アドオン"
-
-#, fuzzy
-#~| msgid "Connect to Server"
-#~ msgid "Send new version to server"
-#~ msgstr "サーバーに接続"
-
-#~ msgid "Unknown era"
-#~ msgstr "不明な時代"
-
-#~ msgid "Gold per village"
-#~ msgstr "村あたりのゴールド"
-
-#~ msgid "Experience modifier"
-#~ msgstr "経験値の修正"
-
-#~ msgid "Multiplayer command dialog"
-#~ msgstr "マルチプレイヤーコマンドダイアログ"
-
-#~ msgid "Messaging"
-#~ msgstr "メッセージング"
-
-#~ msgid "Message:"
-#~ msgstr "メッセージ:"
-
-#~ msgid "Send"
-#~ msgstr "送信"
-
-#~ msgid "Friends/Ignored List"
-#~ msgstr "友人/無視リスト"
-
-#~ msgid "Add as Friend"
-#~ msgstr "友人に追加"
-
-#~ msgid "Add as Ignore"
-#~ msgstr "無視リストに追加"
-
-#~ msgid "Moderating"
-#~ msgstr "適度にする"
-
-#~ msgid "Reason:"
-#~ msgstr "理由:"
-
-#~ msgid "Time:"
-#~ msgstr "時間:"
-
-#~ msgid "Ban"
-#~ msgstr "バン"
-
-#~ msgid "Sort lobby list"
-#~ msgstr "ロビーリストを並び替える"
-
-#~ msgid "Sort the player list in the lobby by player groups"
-#~ msgstr "ロビーのプレイヤーリストをプレイヤーのグループで並び替えます"
-
-#~ msgid "Iconize lobby list"
-#~ msgstr "ロビーリストにアイコンを表示"
-
-#~ msgid "Show icons in front of the player names in the lobby"
-#~ msgstr "ロビーでプレイヤー名の前にアイコンを表示します"
-
-#, fuzzy
-#~| msgid "controller^None"
-#~ msgid "controller^Computer"
-#~ msgstr "無し"
-
-#, fuzzy
-#~| msgid "Close Map"
-#~ msgid "User Maps"
-#~ msgstr "マップを閉じる"
-
-#, fuzzy
-#~| msgid "Campaigns"
-#~ msgid "SP Campaigns"
-#~ msgstr "キャンペーン"
-
-#, fuzzy
-#~| msgid "No description available."
-#~ msgid "No description available"
-#~ msgstr "解説はありません。"
-
-#~ msgid ""
-#~ "Widget definition '$definition' doesn't contain the definition for '$id'."
-#~ msgstr ""
-#~ "ウィジェット定義「 $definition 」が「 $id 」の定義を含んでいません。"
-
-#~ msgid "Save password to preferences (plain text)"
-#~ msgstr "パスワードを保存する (プレインテキスト)"
-
-#~ msgid "player"
-#~ msgstr "プレイヤー"
-
-#~ msgid "Advanced Settings"
-#~ msgstr "上級設定"
-
-#~ msgid "Additional dialogs:"
-#~ msgstr "追加のダイアログ："
-
-#~ msgid "Configure sides"
-#~ msgstr "陣営の設定"
-
-#~ msgid "Metadata:"
-#~ msgstr "メタデータ:"
-
-#~ msgid "The new theme will take effect after loading or starting a new game."
-#~ msgstr "新しいテーマは次に読み込まれたゲームから適用されます。"
-
-#~ msgid ""
-#~ "Era:\n"
-#~ "\n"
-#~ "Not allowed."
-#~ msgstr ""
-#~ "時代：\n"
-#~ "\n"
-#~ "許可されていません。"
-
-#~ msgid ""
-#~ "Modifications:\n"
-#~ "\n"
-#~ "None found."
-#~ msgstr ""
-#~ "Mod：\n"
-#~ "\n"
-#~ "見つかりません。"
-
-#, fuzzy
-#~| msgid "Modifications:"
-#~ msgid "Modifiers"
-#~ msgstr "Mod:"
-
-#~ msgid "Experimental Fake Map Edge"
-#~ msgstr "試験的な偽のマップ端"
-
-#~ msgid "Author:"
-#~ msgstr "作者："
-
-#~ msgid "Options"
-#~ msgstr "オプション"
-
-#~ msgid "Add-ons matching the following criteria will be displayed."
-#~ msgstr "以下の条件にマッチしたアドオンが表示されます。"
-
-#~ msgid "Installation status:"
-#~ msgstr "インストール状況："
-
-#~ msgid "Add-on types:"
-#~ msgstr "アドオンの種類："
-
-#~ msgid "Toggle All"
-#~ msgstr "すべて反転"
-
-#~ msgid "Add-ons will be sorted as follows when no column is selected:"
-#~ msgstr "列が選択されていない場合、以下の条件でアドオンを並び替えます。"
-
-#~ msgid "sort^By name"
-#~ msgstr "名前"
-
-#~ msgid "sort^By last updated"
-#~ msgstr "更新日"
-
-#~ msgid "sort^By first upload"
-#~ msgstr "初アップロード日"
-
-#~ msgid "sort^Ascending"
-#~ msgstr "昇順"
-
-#~ msgid "sort^Descending"
-#~ msgstr "降順"
-
-#~ msgid "Filter:"
-#~ msgstr "フィルター："
-
-#~ msgid "Seed:"
-#~ msgstr "シード："
-
-#~ msgid "Filter"
-#~ msgstr "フィルター"
-
-#~ msgid "Set Password"
-#~ msgstr "パスワードの設定"
-
-#~ msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
-#~ msgstr ""
-#~ "「 $id 」に結び付けられたグループには「 fixed_width 」または"
-#~ "「 fixed_height 」キーが必要です。"
-
-#~ msgid "Items"
-#~ msgstr "アイテム"
-
-#~ msgid "Contents"
-#~ msgstr "コンテンツ"
-
-#~ msgid "Add to Friends"
-#~ msgstr "友人に追加"
-
-#~ msgid "Add to Ignores"
-#~ msgstr "無視リストに追加"
-
-#~ msgid "Default"
-#~ msgstr "デフォルト"
-
-#~ msgid "Map to play:"
-#~ msgstr "プレイするマップ:"
-
-#~ msgid "Enable the modifications you want to be active during the game."
-#~ msgstr "このゲーム中で選択したModを有効にします。"
-
-#~ msgid "Show haloing effects"
-#~ msgstr "特殊効果表示"
-
-#~ msgid "Show special unit graphical effects"
-#~ msgstr "ユニットの特殊視覚効果を表示する"
-
-#~ msgid "Add Ignored"
-#~ msgstr "無視リストに追加"
-
-#~ msgid "Delete File"
-#~ msgstr "ファイルの削除"
-
-#~ msgid "Deletion of the file failed."
-#~ msgstr "ファイルを削除できませんでした。"
-
-#~ msgid "Creation of the directory failed."
-#~ msgstr "ディレクトリを作成できませんでした。"
-
-#~ msgid "Load Game..."
-#~ msgstr "ゲームの読み込み中…"
-
-#~ msgid "infinite"
-#~ msgstr "無限"
-
-#~ msgid "Prefs tab^General"
-#~ msgstr "一般"
-
-#~ msgid "Prefs tab^Friends"
-#~ msgstr "友人"
-
-#~ msgid "Prefs section^General"
-#~ msgstr "一般"
-
-#~ msgid "Prefs section^Hotkeys"
-#~ msgstr "ホットキー"
-
-#~ msgid "Prefs section^Display"
-#~ msgstr "表示"
-
-#~ msgid "Prefs section^Sound"
-#~ msgstr "音楽"
-
-#~ msgid "Prefs section^Multiplayer"
-#~ msgstr "マルチプレイヤー"
-
-#~ msgid "Prefs section^Advanced"
-#~ msgstr "上級"
-
-#~ msgid "Version "
-#~ msgstr "バージョン "
-
-#~ msgid "Find $filename server binary"
-#~ msgstr "$filenameサーバーバイナリを探す"
-
-#~ msgid "Hewn Cave Wall"
-#~ msgstr "荒削りな洞窟の壁"
-
-#~ msgid "Reinforced Earthy Cave Wall"
-#~ msgstr "補強された土色の洞窟の壁"
-
-#~ msgid "Manage Data"
-#~ msgstr "データの管理"
-
-#~ msgid "Choose the game to load"
-#~ msgstr "読み込むゲームを選択"
-
-#~ msgid "Clear"
-#~ msgstr "クリア"
-
-#~ msgid "Restore"
-#~ msgstr "リストア"
-
-#~ msgid "Backup"
-#~ msgstr "バックアップ"
+#~ msgstr "最大テキスト幅が1より小さいです。"
