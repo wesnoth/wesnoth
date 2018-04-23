@@ -910,7 +910,7 @@ void preferences_dialog::hotkey_type_filter_callback(window& window) const
 
 	if(!toggle_states.none()) {
 		for(std::size_t h = 0; h < visible_hotkeys_.size(); ++h) {
-			int index = 0;
+			unsigned index = 0;
 
 			for(const auto& name : cat_names_) {
 				if(visible_hotkeys_[h]->category == name.first) {
