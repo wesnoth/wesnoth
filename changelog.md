@@ -36,8 +36,8 @@
    * Fixed Logging Options tooltips not being translatable (bug #2837).
    * Fixed Version label on the title screen not being translatable (issue #2914).
    * Updated translations: British English, Chinese (Simplified), Czech, French,
-     Galician, German, Italian, Polish, Scottish Gaelic, Slovak, Spanish,
-     Ukrainian.
+     Galician, German, Italian, Japanese, Polish, Scottish Gaelic, Slovak,
+     Spanish, Ukrainian.
  ### Lua API
    * Fix wesnoth.show_popup_dialog and wesnoth.show_message_box not accepting
      translatable strings
