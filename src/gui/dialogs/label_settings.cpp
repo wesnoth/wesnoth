@@ -18,6 +18,7 @@
 
 #include "display.hpp"
 #include "font/text_formatting.hpp"
+#include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
@@ -49,25 +50,24 @@ label_settings::label_settings(display_context& dc)
 	const std::vector<std::string>& all_categories = display::get_singleton()->labels().all_categories();
 	const std::vector<std::string>& hidden_categories = viewer.hidden_label_categories();
 
-	for(std::size_t i = 0; i < all_categories.size(); i++) {
-		all_labels[all_categories[i]] = true;
+	for(const std::string& cat : all_categories) {
+		all_labels[cat] = true;
 
-		if(all_categories[i].substr(0, 4) == "cat:") {
-			labels_display[all_categories[i]] = all_categories[i].substr(4);
-		} else if(all_categories[i] == "team") {
-			labels_display[all_categories[i]] = _("Team Labels");
+		if(cat.substr(0, 4) == "cat:") {
+			labels_display[cat] = cat.substr(4);
+		} else if(cat == "team") {
+			labels_display[cat] = _("Team Labels");
 		}
 
 		// TODO: Translatable names for categories?
 	}
 
-	for(std::size_t i = 0; i < hidden_categories.size(); i++) {
-		all_labels[hidden_categories[i]] = false;
+	for(const std::string& hidden_cat : hidden_categories) {
+		all_labels[hidden_cat] = false;
 	}
 
-	for(std::size_t i = 0; i < dc.teams().size(); i++) {
-		const team& team = dc.teams()[i];
-		const std::string label_cat_key = "side:" + std::to_string(i + 1);
+	for(const team& team : dc.teams()) {
+		const std::string label_cat_key = "side:" + std::to_string(team.side());
 
 		if(team.hidden()) {
 			labels_display[label_cat_key] = "";
@@ -84,7 +84,7 @@ label_settings::label_settings(display_context& dc)
 		}
 
 		string_map subst;
-		subst["side_number"] = std::to_string(i + 1);
+		subst["side_number"] = std::to_string(team.side());
 		subst["name"] = team_name;
 
 		labels_display[label_cat_key] = VGETTEXT("Side $side_number ($name)", subst);
@@ -106,13 +106,11 @@ void label_settings::pre_show(window& window)
 			if(name.empty()) {
 				continue;
 			}
-		
+
 			int team = std::stoi(category.substr(5)) - 1;
 			color_t which_color = game_config::tc_info(viewer.teams()[team].color())[0];
 
-			std::ostringstream sout;
-			sout << font::span_color(which_color) << name << "</span>";
-			name = sout.str();
+			name = formatter() << font::span_color(which_color) << name << "</span>";
 		}
 
 		list_data["cat_name"]["label"] = name;
@@ -150,7 +148,7 @@ bool label_settings::execute(display_context& dc)
 
 void label_settings::toggle_category(widget& box, std::string category)
 {
-	all_labels[category] = (static_cast<toggle_button&>(box).get_value() != 0);
+	all_labels[category] = static_cast<toggle_button&>(box).get_value_bool();
 }
 } // namespace dialogs
 } // namespace gui2
