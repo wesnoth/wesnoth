@@ -905,12 +905,18 @@ void server::handle_whisper(socket_ptr socket, simple_wml::node& whisper)
 	auto receiver_iter = player_connections_.get<name_t>().find(whisper["receiver"].to_string());
 	if(receiver_iter == player_connections_.get<name_t>().end()) {
 		send_server_message(socket, "Can't find '" + whisper["receiver"].to_string() + "'.");
-	} else {
-		simple_wml::document cwhisper;
-		whisper.copy_into(cwhisper.root().add_child("whisper"));
-		send_to_player(receiver_iter->socket(), cwhisper);
-		// TODO: Refuse to send from an observer to a game he observes
+		return;
 	}
+
+	auto g = player_connections_.find(socket)->get_game();
+	if(g && g->started() && g->is_player(receiver_iter->socket()) && g->is_member(socket)) {
+		send_server_message(socket, "You cannot send private messages to players in a running game you observe.");
+		return;
+	}
+
+	simple_wml::document cwhisper;
+	whisper.copy_into(cwhisper.root().add_child("whisper"));
+	send_to_player(receiver_iter->socket(), cwhisper);
 }
 
 void server::handle_query(socket_ptr socket, simple_wml::node& query)
