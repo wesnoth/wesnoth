@@ -18,15 +18,15 @@
  */
 
 #include "units/attack_type.hpp"
+
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
-#include "formula/string_utils.hpp"
 #include "formula/function_gamestate.hpp"
-
+#include "formula/string_utils.hpp"
+#include "gettext.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
-#include "gettext.hpp"
 #include "utils/math.hpp"
 
 #include <cassert>
@@ -41,35 +41,37 @@ static lg::log_domain log_unit("unit");
 #define DBG_UT LOG_STREAM(debug, log_unit)
 #define ERR_UT LOG_STREAM(err, log_unit)
 
-attack_type::attack_type(const config& cfg) :
-	self_loc_(),
-	other_loc_(),
-	is_attacker_(false),
-	other_attack_(nullptr),
-	description_(cfg["description"].t_str()),
-	id_(cfg["name"]),
-	type_(cfg["type"]),
-	icon_(cfg["icon"]),
-	range_(cfg["range"]),
-	min_range_(cfg["min_range"].to_int(1)),
-	max_range_(cfg["max_range"].to_int(1)),
-	damage_(cfg["damage"]),
-	num_attacks_(cfg["number"]),
-	attack_weight_(cfg["attack_weight"].to_double(1.0)),
-	defense_weight_(cfg["defense_weight"].to_double(1.0)),
-	accuracy_(cfg["accuracy"]),
-	movement_used_(cfg["movement_used"].to_int(100000)),
-	parry_(cfg["parry"]),
-	specials_(cfg.child_or_empty("specials"))
+attack_type::attack_type(const config& cfg)
+	: self_loc_()
+	, other_loc_()
+	, is_attacker_(false)
+	, other_attack_(nullptr)
+	, description_(cfg["description"].t_str())
+	, id_(cfg["name"])
+	, type_(cfg["type"])
+	, icon_(cfg["icon"])
+	, range_(cfg["range"])
+	, min_range_(cfg["min_range"].to_int(1))
+	, max_range_(cfg["max_range"].to_int(1))
+	, damage_(cfg["damage"])
+	, num_attacks_(cfg["number"])
+	, attack_weight_(cfg["attack_weight"].to_double(1.0))
+	, defense_weight_(cfg["defense_weight"].to_double(1.0))
+	, accuracy_(cfg["accuracy"])
+	, movement_used_(cfg["movement_used"].to_int(100000))
+	, parry_(cfg["parry"])
+	, specials_(cfg.child_or_empty("specials"))
 {
-	if (description_.empty())
+	if(description_.empty()) {
 		description_ = translation::egettext(id_.c_str());
+	}
 
-	if(icon_.empty()){
-		if (!id_.empty())
+	if(icon_.empty()) {
+		if(!id_.empty()) {
 			icon_ = "attacks/" + id_ + ".png";
-		else
+		} else {
 			icon_ = "attacks/blank-attack.png";
+		}
 	}
 }
 
@@ -93,7 +95,7 @@ std::string attack_type::accuracy_parry_description() const
  * Returns whether or not *this matches the given @a filter, ignoring the
  * complexities introduced by [and], [or], and [not].
  */
-static bool matches_simple_filter(const attack_type & attack, const config & filter)
+static bool matches_simple_filter(const attack_type& attack, const config& filter)
 {
 	const std::vector<std::string>& filter_range = utils::split(filter["range"]);
 	const std::string& filter_damage = filter["damage"];
@@ -107,29 +109,37 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	const std::vector<std::string> filter_special_active = utils::split(filter["special_active"]);
 	const std::string filter_formula = filter["formula"];
 
-	if ( !filter_range.empty() && std::find(filter_range.begin(), filter_range.end(), attack.range()) == filter_range.end() )
+	if(!filter_range.empty() && std::find(filter_range.begin(), filter_range.end(), attack.range()) == filter_range.end()) {
 		return false;
+	}
 
-	if ( !filter_damage.empty() && !in_ranges(attack.damage(), utils::parse_ranges(filter_damage)) )
+	if(!filter_damage.empty() && !in_ranges(attack.damage(), utils::parse_ranges(filter_damage))) {
 		return false;
+	}
 
-	if (!filter_attacks.empty() && !in_ranges(attack.num_attacks(), utils::parse_ranges(filter_attacks)))
+	if(!filter_attacks.empty() && !in_ranges(attack.num_attacks(), utils::parse_ranges(filter_attacks))) {
 		return false;
+	}
 
-	if (!filter_accuracy.empty() && !in_ranges(attack.accuracy(), utils::parse_ranges(filter_accuracy)))
+	if(!filter_accuracy.empty() && !in_ranges(attack.accuracy(), utils::parse_ranges(filter_accuracy))) {
 		return false;
+	}
 
-	if (!filter_parry.empty() && !in_ranges(attack.parry(), utils::parse_ranges(filter_parry)))
+	if(!filter_parry.empty() && !in_ranges(attack.parry(), utils::parse_ranges(filter_parry))) {
 		return false;
+	}
 
-	if (!filter_movement.empty() && !in_ranges(attack.movement_used(), utils::parse_ranges(filter_movement)))
+	if(!filter_movement.empty() && !in_ranges(attack.movement_used(), utils::parse_ranges(filter_movement))) {
 		return false;
+	}
 
-	if ( !filter_name.empty() && std::find(filter_name.begin(), filter_name.end(), attack.id()) == filter_name.end() )
+	if(!filter_name.empty() && std::find(filter_name.begin(), filter_name.end(), attack.id()) == filter_name.end()) {
 		return false;
+	}
 
-	if ( !filter_type.empty() && std::find(filter_type.begin(), filter_type.end(), attack.type()) == filter_type.end() )
+	if(!filter_type.empty() && std::find(filter_type.begin(), filter_type.end(), attack.type()) == filter_type.end()) {
 		return false;
+	}
 
 	if(!filter_special.empty()) {
 		bool found = false;
@@ -139,6 +149,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 				break;
 			}
 		}
+
 		if(!found) {
 			return false;
 		}
@@ -152,15 +163,17 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 				break;
 			}
 		}
+
 		if(!found) {
 			return false;
 		}
 	}
 
-	if (!filter_formula.empty()) {
+	if(!filter_formula.empty()) {
 		try {
 			const wfl::attack_type_callable callable(attack);
 			const wfl::formula form(filter_formula, new wfl::gamestate_function_symbol_table);
+
 			if(!form.evaluate(callable).as_bool()) {
 				return false;
 			}
@@ -184,19 +197,19 @@ bool attack_type::matches_filter(const config& filter) const
 	bool matches = matches_simple_filter(*this, filter);
 
 	// Handle [and], [or], and [not] with in-order precedence
-	for (const config::any_child &condition : filter.all_children_range() )
-	{
+	for(const config::any_child& condition : filter.all_children_range()) {
 		// Handle [and]
-		if ( condition.key == "and" )
+		if(condition.key == "and") {
 			matches = matches && matches_filter(condition.cfg);
 
 		// Handle [or]
-		else if ( condition.key == "or" )
+		} else if(condition.key == "or") {
 			matches = matches || matches_filter(condition.cfg);
 
 		// Handle [not]
-		else if ( condition.key == "not" )
+		} else if(condition.key == "not") {
 			matches = matches && !matches_filter(condition.cfg);
+		}
 	}
 
 	return matches;
@@ -210,8 +223,9 @@ bool attack_type::matches_filter(const config& filter) const
  */
 bool attack_type::apply_modification(const config& cfg)
 {
-	if( !matches_filter(cfg) )
+	if(!matches_filter(cfg)) {
 		return false;
+	}
 
 	const std::string& set_name = cfg["set_name"];
 	const t_string& set_desc = cfg["set_description"];
@@ -219,7 +233,7 @@ bool attack_type::apply_modification(const config& cfg)
 	const std::string& set_range = cfg["set_range"];
 	const std::string& set_icon = cfg["set_icon"];
 	const std::string& del_specials = cfg["remove_specials"];
-	const config &set_specials = cfg.child("set_specials");
+	const config& set_specials = cfg.child("set_specials");
 	const std::string& increase_damage = cfg["increase_damage"];
 	const std::string& set_damage = cfg["set_damage"];
 	const std::string& increase_attacks = cfg["increase_attacks"];
@@ -258,46 +272,47 @@ bool attack_type::apply_modification(const config& cfg)
 	if(del_specials.empty() == false) {
 		const std::vector<std::string>& dsl = utils::split(del_specials);
 		config new_specials;
-		for (const config::any_child &vp : specials_.all_children_range()) {
-			std::vector<std::string>::const_iterator found_id =
-				std::find(dsl.begin(), dsl.end(), vp.cfg["id"].str());
-			if (found_id == dsl.end()) {
+
+		for(const config::any_child& vp : specials_.all_children_range()) {
+			std::vector<std::string>::const_iterator found_id = std::find(dsl.begin(), dsl.end(), vp.cfg["id"].str());
+			if(found_id == dsl.end()) {
 				new_specials.add_child(vp.key, vp.cfg);
 			}
 		}
+
 		specials_ = new_specials;
 	}
 
-	if (set_specials) {
-		const std::string &mode = set_specials["mode"];
-		if (mode != "append") {
+	if(set_specials) {
+		const std::string& mode = set_specials["mode"];
+		if(mode != "append") {
 			specials_.clear();
 		}
-		for (const config::any_child &value : set_specials.all_children_range()) {
+
+		for(const config::any_child& value : set_specials.all_children_range()) {
 			specials_.add_child(value.key, value.cfg);
 		}
 	}
 
 	if(set_damage.empty() == false) {
 		damage_ = std::stoi(set_damage);
-		if (damage_ < 0) {
+		if(damage_ < 0) {
 			damage_ = 0;
 		}
 	}
 
 	if(increase_damage.empty() == false) {
 		damage_ = utils::apply_modifier(damage_, increase_damage, 0);
-		if (damage_ < 0) {
+		if(damage_ < 0) {
 			damage_ = 0;
 		}
 	}
 
 	if(set_attacks.empty() == false) {
 		num_attacks_ = std::stoi(set_attacks);
-		if (num_attacks_ < 0) {
+		if(num_attacks_ < 0) {
 			num_attacks_ = 0;
 		}
-
 	}
 
 	if(increase_attacks.empty() == false) {
@@ -329,11 +344,11 @@ bool attack_type::apply_modification(const config& cfg)
 	}
 
 	if(set_attack_weight.empty() == false) {
-		attack_weight_ = lexical_cast_default<double>(set_attack_weight,1.0);
+		attack_weight_ = lexical_cast_default<double>(set_attack_weight, 1.0);
 	}
 
 	if(set_defense_weight.empty() == false) {
-		defense_weight_ = lexical_cast_default<double>(set_defense_weight,1.0);
+		defense_weight_ = lexical_cast_default<double>(set_defense_weight, 1.0);
 	}
 
 	return true;
@@ -350,9 +365,9 @@ bool attack_type::apply_modification(const config& cfg)
  *
  * @returns whether or not @c this matched the @a cfg as a filter.
  */
-bool attack_type::describe_modification(const config& cfg,std::string* description)
+bool attack_type::describe_modification(const config& cfg, std::string* description)
 {
-	if( !matches_filter(cfg) )
+	if(!matches_filter(cfg))
 		return false;
 
 	// Did the caller want the description?
