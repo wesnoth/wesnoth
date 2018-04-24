@@ -17,7 +17,7 @@
      * Changed Sun Singer movetype from float to foot.
      * Added some Quenoth elf unit animations.
      * Hide technical terrains in the Help browser (Human Ship, Lava overlay).
-     * New set of Quenoth faction portraits by LordBob.
+     * New set of Quenoth faction and character portraits by LordBob.
  ### Help browser
    * Unit descriptions use the new multiplication sign format for attack lists
      now (issue #2873).
@@ -44,6 +44,10 @@
  ### Multiplayer
    * A New Land: Fixed the scenario being broken.
    * Added team color to a few background units missing in Aethermaw.
+   * Fixed an infinite loading screen if the server shut down or restarted
+     mid-login.
+   * Fixed an infinite loading screen when attempting to login with an
+     unregistered nickname followed by a registered one.
  ### Packaging
    * OpenMP support has been removed. It is no longer an optional build-time dependency.
  ### Units
@@ -111,6 +115,8 @@
    * Fixed sometimes being unable to join MP games with non-required eras.
    * Fixed locations not being added to the palette when loading a map (#1023)
    * Fixed context menus not dismissing on right click.
+   * Fixed an AI assertion when a unit with one disabled attack attacked a unit
+     with no attacks or a single disabled attack.
 
 ## Version 1.13.12
  ### Security fixes
