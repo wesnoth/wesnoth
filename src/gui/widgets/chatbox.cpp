@@ -92,9 +92,13 @@ void chatbox::finalize_setup()
 		std::bind(&chatbox::chat_input_keypress_callback, this, _5));
 }
 
-void chatbox::load_log(std::map<std::string, chatroom_log>& log)
+void chatbox::load_log(std::map<std::string, chatroom_log>& log, bool show_lobby)
 {
 	for(const auto& l : log) {
+		if(!show_lobby && l.first == "lobby" && !l.second.whisper) {
+			continue;
+		}
+
 		find_or_create_window(l.first, l.second.whisper, true, true, l.second.log);
 	}
 

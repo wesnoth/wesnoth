@@ -94,7 +94,7 @@ public:
 		wesnothd_connection_ = &c;
 	}
 
-	void load_log(std::map<std::string, chatroom_log>& log);
+	void load_log(std::map<std::string, chatroom_log>& log, bool show_lobby);
 
 protected:
 	/**
