@@ -82,7 +82,9 @@ public:
 	const unit_ability& back()  const  { return cfgs_.back();  }
 
 	iterator erase(const iterator& erase_it)  { return cfgs_.erase(erase_it); }
-	void push_back(const unit_ability& ability)  { cfgs_.push_back(ability); }
+
+	template<typename... T>
+	void emplace_back(T&&... args) { cfgs_.emplace_back(args...); }
 
 	const map_location& loc() const { return loc_; }
 private:

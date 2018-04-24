@@ -182,13 +182,13 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 {
 	unit_ability_list res(loc_);
 
-	for (const config &i : this->abilities_.child_range(tag_name)) {
-		if (ability_active(tag_name, i, loc) &&
-			ability_affects_self(tag_name, i, loc) &&
-			ability_affects_weapon(i, weapon, false) &&
-			ability_affects_weapon(i, opp_weapon, true))
-		{
-			res.push_back(unit_ability(&i, loc));
+	for(const config& i : this->abilities_.child_range(tag_name)) {
+		if(ability_active(tag_name, i, loc)
+			&& ability_affects_self(tag_name, i, loc)
+			&& ability_affects_weapon(i, weapon, false)
+			&& ability_affects_weapon(i, opp_weapon, true)
+		) {
+			res.emplace_back(&i, loc);
 		}
 	}
 
@@ -208,14 +208,13 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		// ourself.
 		if ( &*it == this )
 			continue;
-		for (const config &j : it->abilities_.child_range(tag_name)) {
-			if (affects_side(j, side(), it->side()) &&
-			    it->ability_active(tag_name, j, adjacent[i]) &&
-			    ability_affects_adjacent(tag_name, j, i, loc, *it) &&
-			    ability_affects_weapon(j, weapon, false) &&
-			    ability_affects_weapon(j, opp_weapon, true))
-			{
-				res.push_back(unit_ability(&j, adjacent[i]));
+		for(const config& j : it->abilities_.child_range(tag_name)) {
+			if(affects_side(j, side(), it->side())
+				&& it->ability_active(tag_name, j, adjacent[i])
+				&& ability_affects_adjacent(tag_name, j, i, loc, *it) && ability_affects_weapon(j, weapon, false)
+				&& ability_affects_weapon(j, opp_weapon, true)
+			) {
+				res.emplace_back(&j, adjacent[i]);
 			}
 		}
 	}
@@ -635,14 +634,21 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 {
 	//log_scope("get_specials");
 	unit_ability_list res(self_loc_);
-	for (const config &i : specials_.child_range(special)) {
-		if ( special_active(i, AFFECT_SELF) )
-			res.push_back(unit_ability(&i, self_loc_));
+
+	for(const config& i : specials_.child_range(special)) {
+		if(special_active(i, AFFECT_SELF)) {
+			res.emplace_back(&i, self_loc_);
+		}
 	}
-	if (!other_attack_) return res;
-	for (const config &i : other_attack_->specials_.child_range(special)) {
-		if ( other_attack_->special_active(i, AFFECT_OTHER) )
-			res.push_back(unit_ability(&i, other_loc_));
+
+	if(!other_attack_) {
+		return res;
+	}
+
+	for(const config& i : other_attack_->specials_.child_range(special)) {
+		if(other_attack_->special_active(i, AFFECT_OTHER)) {
+			res.emplace_back(&i, other_loc_);
+		}
 	}
 	return res;
 }
