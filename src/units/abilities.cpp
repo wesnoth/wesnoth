@@ -190,7 +190,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name,
 			&& ability_affects_weapon(i, weapon, false)
 			&& ability_affects_weapon(i, opp_weapon, true)
 		) {
-			res.push_back(unit_ability(&i, loc));
+			res.emplace_back(&i, loc);
 		}
 	}
 
@@ -221,7 +221,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name,
 				&& ability_affects_adjacent(tag_name, j, i, loc, *it) && ability_affects_weapon(j, weapon, false)
 				&& ability_affects_weapon(j, opp_weapon, true)
 			) {
-				res.push_back(unit_ability(&j, adjacent[i]));
+				res.emplace_back(&j, adjacent[i]);
 			}
 		}
 	}
@@ -685,7 +685,7 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 
 	for(const config& i : specials_.child_range(special)) {
 		if(special_active(i, AFFECT_SELF)) {
-			res.push_back(unit_ability(&i, self_loc_));
+			res.emplace_back(&i, self_loc_);
 		}
 	}
 
@@ -695,7 +695,7 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 
 	for(const config& i : other_attack_->specials_.child_range(special)) {
 		if(other_attack_->special_active(i, AFFECT_OTHER)) {
-			res.push_back(unit_ability(&i, other_loc_));
+			res.emplace_back(&i, other_loc_);
 		}
 	}
 
