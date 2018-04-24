@@ -183,6 +183,9 @@ game_stringfixes = {
 ("On the tallest peak was build", "On the tallest peak was built"),
 ("He killed himself rather then surrender to us!", "He killed himself rather than surrender to us!"),
 ("bigger distraction then they were expecting.", "bigger distraction than they were expecting."),
+
+# added in 1.13.14+dev
+("the one thing she not will be anticipating.", "the one thing she will not be anticipating."),
 ),
 
 "wesnoth-multiplayer" : (
