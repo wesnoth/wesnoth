@@ -16,6 +16,8 @@
 
 #include "config.hpp"
 #include "utils/name_generator.hpp"
+
+#include <array>
 #include <memory>
 
 class unit_race
@@ -71,11 +73,11 @@ private:
 
 	std::string id_;
 	std::string icon_;
-	t_string name_[NUM_GENDERS];
+	std::array<t_string, NUM_GENDERS> name_;
 	t_string plural_name_;
 	t_string description_;
 	unsigned int ntraits_;
-	std::shared_ptr<name_generator> name_generator_[NUM_GENDERS];
+	std::array<std::shared_ptr<name_generator>, NUM_GENDERS> name_generator_;
 
 	config::const_child_itors traits_;
 	config::const_child_itors topics_;
