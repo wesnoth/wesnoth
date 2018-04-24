@@ -28,32 +28,35 @@
 
 /// Dummy race used when a race is not yet known.
 const unit_race unit_race::null_race;
+
 /// Standard string id (not translatable) for FEMALE
 const std::string unit_race::s_female("female");
+
 /// Standard string id (not translatable) for MALE
 const std::string unit_race::s_male("male");
 
-
-static const config &empty_traits() {
-		static config cfg;
-		return cfg;
+static const config& empty_traits()
+{
+	static config cfg;
+	return cfg;
 }
 
-static const config &empty_topics() {
-		static config cfg;
-		return cfg;
+static const config& empty_topics()
+{
+	static config cfg;
+	return cfg;
 }
 
-unit_race::unit_race() :
-		cfg_(),
-		id_(),
-		plural_name_(),
-		description_(),
-		ntraits_(0),
-		traits_(empty_traits().child_range("trait")),
-		topics_(empty_topics().child_range("topic")),
-		global_traits_(true),
-		undead_variation_()
+unit_race::unit_race()
+	: cfg_()
+	, id_()
+	, plural_name_()
+	, description_()
+	, ntraits_(0)
+	, traits_(empty_traits().child_range("trait"))
+	, topics_(empty_topics().child_range("topic"))
+	, global_traits_(true)
+	, undead_variation_()
 {
 	name_[MALE] = "";
 	name_[FEMALE] = "";
@@ -61,23 +64,24 @@ unit_race::unit_race() :
 	name_generator_[FEMALE].reset(new name_generator());
 }
 
-unit_race::unit_race(const config& cfg) :
-		cfg_(cfg),
-		id_(cfg["id"]),
-		icon_(cfg["editor_icon"]),
-		plural_name_(cfg["plural_name"].t_str()),
-		description_(cfg["description"].t_str()),
-		ntraits_(cfg["num_traits"]),
-		traits_(cfg.child_range("trait")),
-		topics_(cfg.child_range("topic")),
-		global_traits_(!cfg["ignore_global_traits"].to_bool()),
-		undead_variation_(cfg["undead_variation"])
+unit_race::unit_race(const config& cfg)
+	: cfg_(cfg)
+	, id_(cfg["id"])
+	, icon_(cfg["editor_icon"])
+	, plural_name_(cfg["plural_name"].t_str())
+	, description_(cfg["description"].t_str())
+	, ntraits_(cfg["num_traits"])
+	, traits_(cfg.child_range("trait"))
+	, topics_(cfg.child_range("topic"))
+	, global_traits_(!cfg["ignore_global_traits"].to_bool())
+	, undead_variation_(cfg["undead_variation"])
 
 {
-	if (id_.empty()) {
+	if(id_.empty()) {
 		lg::wml_error() << "[race] '" << cfg["name"] << "' is missing an id field.";
 	}
-	if (plural_name_.empty()) {
+
+	if(plural_name_.empty()) {
 		lg::wml_error() << "[race] '" << cfg["name"] << "' is missing a plural_name field.";
 		plural_name_ = (cfg["name"]);
 	}
@@ -87,6 +91,7 @@ unit_race::unit_race(const config& cfg) :
 	if(name_[MALE].empty()) {
 		name_[MALE] = (cfg["name"]);
 	}
+
 	name_[FEMALE] = cfg["female_name"];
 	if(name_[FEMALE].empty()) {
 		name_[FEMALE] = (cfg["name"]);
@@ -94,7 +99,7 @@ unit_race::unit_race(const config& cfg) :
 
 	name_generator_factory generator_factory = name_generator_factory(cfg, {"male", "female"});
 
-	for(int i=MALE; i<NUM_GENDERS; i++) {
+	for(int i = MALE; i < NUM_GENDERS; i++) {
 		GENDER gender = static_cast<GENDER>(i);
 		name_generator_[i] = generator_factory.get_name_generator(gender_string(gender));
 	}
@@ -102,7 +107,7 @@ unit_race::unit_race(const config& cfg) :
 
 std::string unit_race::generate_name(unit_race::GENDER gender) const
 {
-    return name_generator_[gender]->generate();
+	return name_generator_[gender]->generate();
 }
 
 const name_generator& unit_race::generator(unit_race::GENDER gender) const
@@ -115,20 +120,23 @@ bool unit_race::uses_global_traits() const
 	return global_traits_;
 }
 
-const config::const_child_itors &unit_race::additional_traits() const
+const config::const_child_itors& unit_race::additional_traits() const
 {
 	return traits_;
 }
 
-const config::const_child_itors &unit_race::additional_topics() const
+const config::const_child_itors& unit_race::additional_topics() const
 {
-  return topics_;
+	return topics_;
 }
 
-unsigned int unit_race::num_traits() const { return ntraits_; }
+unsigned int unit_race::num_traits() const
+{
+	return ntraits_;
+}
 
-
-const std::string& gender_string(unit_race::GENDER gender) {
+const std::string& gender_string(unit_race::GENDER gender)
+{
 	switch(gender) {
 	case unit_race::FEMALE:
 		return unit_race::s_female;
@@ -138,12 +146,14 @@ const std::string& gender_string(unit_race::GENDER gender) {
 	}
 }
 
-unit_race::GENDER string_gender(const std::string& str, unit_race::GENDER def) {
-	if ( str == unit_race::s_male ) {
+unit_race::GENDER string_gender(const std::string& str, unit_race::GENDER def)
+{
+	if(str == unit_race::s_male) {
 		return unit_race::MALE;
-	} else if ( str == unit_race::s_female ) {
+	} else if(str == unit_race::s_female) {
 		return unit_race::FEMALE;
 	}
+
 	return def;
 }
 
