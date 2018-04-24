@@ -1,7 +1,7 @@
 ## Version 1.13.14+dev
  ### Campaigns
    * Under the Burning Suns
-     * New set of Quenoth faction portraits by LordBob.
+     * New set of Quenoth faction and character portraits by LordBob.
  ### Language and i18n
    * Fixed Version label on the title screen not being translatable (issue #2914).
    * Updated translations: Czech, French, Galician, German, Japanese, Polish,
@@ -10,10 +10,16 @@
    * Fixed regression causing a crash-to-desktop when trying to log into the
      server using a registered and active account without specifying a
      password.
+   * Fixed an infinite loading screen if the server shut down or restarted
+     mid-login.
+   * Fixed an infinite loading screen when attempting to login with an
+     unregistered nickname followed by a registered one.
  ### User Interface
    * Implemented MP chat message history saving (issue #1194, issue #2802).
  ### Miscellaneous and bug fixes
    * Fixed context menus not dismissing on right click.
+   * Fixed an AI assertion when a unit with one disabled attack attacked a unit
+     with no attacks or a single disabled attack.
 
 ## Version 1.13.14
  ### Security fixes
