@@ -50,6 +50,7 @@ static const config& empty_topics()
 unit_race::unit_race()
 	: cfg_()
 	, id_()
+	, name_()
 	, plural_name_()
 	, description_()
 	, ntraits_(0)
@@ -58,10 +59,9 @@ unit_race::unit_race()
 	, global_traits_(true)
 	, undead_variation_()
 {
-	name_[MALE] = "";
-	name_[FEMALE] = "";
-	name_generator_[MALE].reset(new name_generator());
-	name_generator_[FEMALE].reset(new name_generator());
+	for(auto& generator : name_generator_) {
+		generator.reset(new name_generator());
+	}
 }
 
 unit_race::unit_race(const config& cfg)
