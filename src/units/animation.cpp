@@ -183,7 +183,7 @@ static void prepare_single_animation(const config& anim_cfg, animation_branches&
 	 * etc. individually (so 2 instances of 'frame' would be stored as 2 children).
 	 */
 	std::list<animation_cursor> anim_cursors;
-	anim_cursors.push_back(animation_cursor(anim_cfg));
+	anim_cursors.emplace_back(anim_cfg);
 
 	while(!anim_cursors.empty()) {
 		animation_cursor& ac = anim_cursors.back();
@@ -212,7 +212,7 @@ static void prepare_single_animation(const config& anim_cfg, animation_branches&
 		do {
 			// Copies the current branches to each cursor created for the conditional clauses.
 			// Merge attributes of the clause into them.
-			anim_cursors.push_back(animation_cursor(ac.itors.front().cfg, &ac));
+			anim_cursors.emplace_back(ac.itors.front().cfg, &ac);
 			ac.itors.pop_front();
 			++count;
 		} while (!ac.itors.empty() && ac.itors.front().key == "else");
@@ -559,14 +559,12 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 		animations.push_back(base);
 		animations.back().event_ = { "attack" };
 		animations.back().unit_anim_.override(-150, 300, particle::NO_CYCLE, "", "", {0,0,0}, "0~0.6:150,0.6~0:150", std::to_string(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST));
-		animations.back().primary_attack_filter_.push_back(config());
-		animations.back().primary_attack_filter_.back()["range"] = "melee";
+		animations.back().primary_attack_filter_.emplace_back("range", "melee");
 
 		animations.push_back(base);
 		animations.back().event_ = { "attack" };
 		animations.back().unit_anim_.override(-150, 150, particle::NO_CYCLE);
-		animations.back().primary_attack_filter_.push_back(config());
-		animations.back().primary_attack_filter_.back()["range"] = "ranged";
+		animations.back().primary_attack_filter_.emplace_back("range", "ranged");
 
 		animations.push_back(base);
 		animations.back().event_ = { "death" };
@@ -622,14 +620,14 @@ static void add_simple_anim(std::vector<unit_animation>& animations,
 		config::attribute_value& v = anim["layer"];
 		if(v.empty()) v = layer - display::LAYER_UNIT_FIRST;
 
-		animations.push_back(unit_animation(anim));
+		animations.emplace_back(anim);
 	}
 }
 
 void unit_animation::add_anims( std::vector<unit_animation> & animations, const config & cfg)
 {
 	for(const animation_branch& ab : prepare_animation(cfg, "animation")) {
-		animations.push_back(unit_animation(ab.merge()));
+		animations.emplace_back(ab.merge());
 	}
 
 	const int default_layer = display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST;
@@ -666,7 +664,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			anim["offscreen"] = false;
 		}
 
-		animations.push_back(unit_animation(anim));
+		animations.emplace_back(anim);
 	}
 
 	// Standing animations are also used as default animations
@@ -691,7 +689,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			anim["offscreen"] = false;
 		}
 
-		animations.push_back(unit_animation(anim));
+		animations.emplace_back(anim);
 	}
 
 	for(const animation_branch& ab : prepare_animation(cfg, "healing_anim")) {
@@ -703,7 +701,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			anim["layer"] = default_layer;
 		}
 
-		animations.push_back(unit_animation(anim));
+		animations.emplace_back(anim);
 	}
 
 	for(const animation_branch& ab : prepare_animation(cfg, "healed_anim")) {
@@ -715,7 +713,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			anim["layer"] = default_layer;
 		}
 
-		animations.push_back(unit_animation(anim));
+		animations.emplace_back(anim);
 		animations.back().sub_anims_["_healed_sound"] = particle();
 
 		const std::string healed_sound = get_heal_sound(cfg);
@@ -731,7 +729,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			anim["layer"] = default_layer;
 		}
 
-		animations.push_back(unit_animation(anim));
+		animations.emplace_back(anim);
 		animations.back().sub_anims_["_poison_sound"] = particle();
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder().sound(game_config::sounds::status::poisoned),true);
 	}
@@ -750,7 +748,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			anim["layer"] = move_layer;
 		}
 
-		animations.push_back(unit_animation(anim));
+		animations.emplace_back(anim);
 	}
 
 	add_simple_anim(animations, cfg, "post_movement_anim", "post_movement", display::LAYER_UNIT_MOVE_DEFAULT);
@@ -769,11 +767,11 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 		if(anim["hits"].empty()) {
 			anim["hits"] = false;
-			animations.push_back(unit_animation(anim));
-			animations.back().base_score_--; //so default doesn't interefere with 'if' block
+			animations.emplace_back(anim);
+			animations.back().base_score_--; //so default doesn't interfere with 'if' block
 
 			anim["hits"] = true;
-			animations.push_back(unit_animation(anim));
+			animations.emplace_back(anim);
 			animations.back().base_score_--;
 
 			image::locator image_loc = animations.back().get_last_frame().end_parameters().image;
@@ -786,7 +784,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 				config tmp = anim;
 				tmp["hits"] = hit_type;
 
-				animations.push_back(unit_animation(tmp));
+				animations.emplace_back(tmp);
 
 				image::locator image_loc = animations.back().get_last_frame().end_parameters().image;
 				if(hit_type == "yes" || hit_type == "hit" || hit_type=="kill") {
@@ -831,7 +829,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			anim.add_child_at("missile_frame", tmp, 0);
 		}
 
-		animations.push_back(unit_animation(anim));
+		animations.emplace_back(anim);
 	}
 
 	for(const animation_branch& ab : prepare_animation(cfg, "death")) {
@@ -842,7 +840,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			anim["layer"] = default_layer;
 		}
 
-		animations.push_back(unit_animation(anim));
+		animations.emplace_back(anim);
 		image::locator image_loc = animations.back().get_last_frame().end_parameters().image;
 
 		animations.back().add_frame(600, frame_builder()
@@ -866,7 +864,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			anim["layer"] = default_layer;
 		}
 
-		animations.push_back(unit_animation(anim));
+		animations.emplace_back(anim);
 	}
 
 	for(const animation_branch& ab : prepare_animation(cfg, "teleport_anim")) {
@@ -876,11 +874,11 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		}
 
 		anim["apply_to"] = "pre_teleport";
-		animations.push_back(unit_animation(anim));
+		animations.emplace_back(anim);
 		animations.back().unit_anim_.set_end_time(0);
 
 		anim["apply_to"] ="post_teleport";
-		animations.push_back(unit_animation(anim));
+		animations.emplace_back(anim);
 		animations.back().unit_anim_.remove_frames_until(0);
 	}
 }
@@ -1376,7 +1374,7 @@ void unit_animator::replace_anim_if_invalid(const unit* animated_unit
 		tmp.with_bars= with_bars;
 		tmp.animation = nullptr;
 
-		animated_units_.push_back(tmp);
+		animated_units_.push_back(std::move(tmp));
 	} else {
 		add_animation(animated_unit,event,src,dst,value,with_bars,text,text_color,hit_type,attack,second_attack,value2);
 	}
