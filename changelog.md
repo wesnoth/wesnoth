@@ -2,6 +2,7 @@
  ### Campaigns
    * Under the Burning Suns
      * New set of Quenoth faction and character portraits by LordBob.
+     * Updated sprites for several Quenoth units.
  ### Language and i18n
    * Fixed Version label on the title screen not being translatable (issue #2914).
    * Updated translations: Czech, French, Galician, German, Japanese, Polish,
@@ -17,8 +18,8 @@
    * Dark Forecast: Fixed possible Lua error when the weather changes.
  ### User Interface
    * Implemented MP chat message history saving (issue #1194, issue #2802).
- ### Miscellaneous and bug fixes
    * Fixed context menus not dismissing on right click.
+ ### Miscellaneous and bug fixes
    * Fixed an AI assertion when a unit with one disabled attack attacked a unit
      with no attacks or a single disabled attack.
 
