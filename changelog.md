@@ -18,6 +18,7 @@
      * Added some Quenoth elf unit animations.
      * Hide technical terrains in the Help browser (Human Ship, Lava overlay).
      * New set of Quenoth faction and character portraits by LordBob.
+     * Updated sprites for several Quenoth units.
  ### Help browser
    * Unit descriptions use the new multiplication sign format for attack lists
      now (issue #2873).
@@ -59,6 +60,7 @@
    * Made Faction Select button's purpose more clear in MP Staging.
    * Implemented MP chat message history saving (issue #1194, issue #2802).
    * Added a convenient button in Load Game to open your saves folder.
+   * Fixed context menus not dismissing on right click.
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a location ID
@@ -115,7 +117,6 @@
    * Removed incomplete joystick support.
    * Fixed sometimes being unable to join MP games with non-required eras.
    * Fixed locations not being added to the palette when loading a map (#1023)
-   * Fixed context menus not dismissing on right click.
    * Fixed an AI assertion when a unit with one disabled attack attacked a unit
      with no attacks or a single disabled attack.
 
