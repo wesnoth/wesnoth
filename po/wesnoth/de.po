@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-04-15 01:34-0300\n"
-"PO-Revision-Date: 2018-04-20 01:03+0200\n"
+"PO-Revision-Date: 2018-04-23 14:19+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -25,7 +25,7 @@ msgstr ""
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
 msgid "Custom"
-msgstr "Benutzerdefiniert"
+msgstr "Vorgegeben"
 
 #. [advanced_preference]: type=combo
 #: data/advanced_preferences.cfg:4
@@ -193,7 +193,7 @@ msgstr "Skalierungsoptionen"
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:161
 msgid "Customize orb colors"
-msgstr "Benutzerdefinierte Kugeln verwenden"
+msgstr "Benutzerdefinierte Sphären verwenden"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:167
@@ -319,7 +319,6 @@ msgstr "Joystick: Achsen-Nummer des Schubhebels"
 msgid "Joystick: deadzone of the thruster"
 msgstr "Joystick: Totbereich des Schubhebels"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:358
@@ -1339,19 +1338,19 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:384
 #: data/core/macros/ai_controller.cfg:390
 msgid "Side $temp_i"
-msgstr "Team $temp_i"
+msgstr "Partei $temp_i"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:251
 #: data/core/macros/ai_controller.cfg:392
 msgid "side $temp_i"
-msgstr "Team $temp_i"
+msgstr "Partei $temp_i"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:266
 #: data/core/macros/ai_controller.cfg:407
 msgid "side $temp_i ($side_i_leader.name|)"
-msgstr "Team $temp_i ($side_i_leader.name|)"
+msgstr "Partei $temp_i ($side_i_leader.name|)"
 
 #. [value]
 #: data/core/macros/ai_controller.cfg:292
@@ -3235,7 +3234,7 @@ msgstr "Bonusziel:"
 
 #: data/core/macros/objective-utils.cfg:30
 msgid "Optional objective:"
-msgstr "Optional:"
+msgstr "Optionales Ziel:"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:52
@@ -3253,7 +3252,7 @@ msgid ""
 "The computer player might not be able to play side $side_number properly in "
 "this scenario. Side $side_number is intended to be played by a human player."
 msgstr ""
-"Möglichweise kann der Computer in diesem Szenario die Seite $side_number "
+"Möglichweise kann der Computer in diesem Szenario die Partei $side_number "
 "nicht richtig ausspielen. Sie ist für einen menschlichen Spieler vorgesehen."
 
 #. [music]
@@ -3338,6 +3337,7 @@ msgstr "Over the Northern Mountains"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:378
+#| msgid "North West"
 msgid "Northerners"
 msgstr "Northerners"
 
@@ -3348,11 +3348,13 @@ msgstr "Nunc Dimittis"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:390
+#| msgid "Red Potion"
 msgid "Revelation"
 msgstr "Revelation"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:396
+#| msgid "Sand"
 msgid "Sad"
 msgstr "Sad"
 
@@ -3383,11 +3385,13 @@ msgstr "The Dangerous Symphony"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:432
+#| msgid "Deep water"
 msgid "The Deep Path"
 msgstr "The Deep Path"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:438
+#| msgid "The game is over."
 msgid "The King is Dead"
 msgstr "The King is Dead"
 
@@ -3505,7 +3509,6 @@ msgstr "Weiß"
 msgid "Teal"
 msgstr "Türkis"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=gold
 #: data/core/team-colors.cfg:107 src/reports.cpp:1263
 msgid "Gold"
@@ -3571,7 +3574,6 @@ msgstr "Höhle"
 msgid "Fungus"
 msgstr "Pilze"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=village
 #: data/core/team-colors.cfg:188 src/terrain/terrain.cpp:176
 msgid "Village"
@@ -3602,13 +3604,11 @@ msgstr "Unbegehbar"
 msgid "Impassable"
 msgstr "Unpassierbar"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
 #: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:447
 msgid "Fog"
 msgstr "Nebel"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
 #: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:450
 #: src/game_initialization/lobby_data.cpp:453
@@ -3796,7 +3796,7 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tbridge_type=Brücke|Überquerung\n"
-"\t\tmain=$base {bridge_type}|$base{!}’s {bridge_type}\n"
+"\t\tmain=$base {bridge_type}|$base{!}s {bridge_type}\n"
 "\t"
 
 #. [naming]
@@ -3809,7 +3809,7 @@ msgid ""
 msgstr ""
 "\n"
 "\t\troad_type=Allee|Pass|Pfad|Straße|Weg|Schleppe\n"
-"\t\tmain=$base{!}’s {road_type}|{road_type} of $base\n"
+"\t\tmain=$base{!}s {road_type}|{road_type} of $base\n"
 "\t"
 
 #. [naming]
@@ -3835,7 +3835,7 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tforest_type=Wald|Wald|Forst\n"
-"\t\tmain=$base {forest_type}|$base{!}’s {forest_type}|{forest_type} $base\n"
+"\t\tmain=$base {forest_type}|$base{!}s {forest_type}|{forest_type} $base\n"
 "\t"
 
 #. [naming]
@@ -3859,7 +3859,7 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tmain=$base{!}’s Gipfel|$base Gipfel|Berg $base|Berg $base\n"
+"\t\tmain=$base{!}s Gipfel|$base Gipfel|Berg $base|Berg $base\n"
 "\t"
 
 #. [naming]
@@ -3871,7 +3871,7 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tsuffix=’s Sumpf|marschen|fen\n"
+"\t\tsuffix=s Sumpf|marschen|fen\n"
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 
@@ -3916,7 +3916,7 @@ msgstr ""
 "\n"
 "\t\tprefix=$base{!}|$river{!}\n"
 "\t\triver=$river{!}|River\n"
-"\t\tsuffix=furt||kreuz|bach on {river}\n"
+"\t\tsuffix=furt|bach on {river}\n"
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 
@@ -4050,8 +4050,8 @@ msgid ""
 "There are no custom options available for the selected era, game, or "
 "modification."
 msgstr ""
-"Es stehen keine benutzerdefinierten Optionen für die Ära, das Spiel, oder "
-"die Modifikation zur Verfügung."
+"Es stehen keine erweiterten Optionen für die Epoche, Partie, oder "
+"Modifikation zur Verfügung."
 
 #. [button]: id=reset_option_values
 #: data/gui/macros/custom_options_tree.cfg:249
@@ -4078,7 +4078,6 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nein"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
 #: src/hotkey/command_executor.cpp:625
@@ -4107,6 +4106,9 @@ msgstr "Oldania ADF Std"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:36
+#| msgid ""
+#| "DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull."
+#| "ttf,Junicode-Regular.ttf"
 msgid ""
 "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
@@ -4119,7 +4121,6 @@ msgstr ""
 msgid "(Note: You should use $replacement instead in new code)"
 msgstr "(Anmerkung: Sie sollten stattdessen $replacement in Ihrem Code nutzen)"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:194 src/deprecation.cpp:69
 msgid "Invalid deprecation level $level (should be 1-4)"
@@ -4130,31 +4131,26 @@ msgstr "Ungültige Deprekationsstufe $level (nur 1-4 erlaubt)"
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "Ungültige Deprekationsstufe (nur 1-4 erlaubt)"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1085
 msgid "female^poisoned"
 msgstr "vergiftet"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1092
 msgid "female^slowed"
 msgstr "verlangsamt"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1092
 msgid "slowed"
 msgstr "verlangsamt"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1098
 msgid "female^petrified"
 msgstr "versteinert"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1098
 msgid "petrified"
@@ -4170,14 +4166,12 @@ msgstr "unheilbar"
 msgid "unhealable"
 msgstr "unheilbar"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
 #: data/lua/wml/message.lua:390 src/scripting/game_lua_kernel.cpp:2779
 #: src/scripting/game_lua_kernel.cpp:2814
 msgid "input"
 msgstr "Eingabe"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:74
 msgid "Victory:"
@@ -4200,7 +4194,6 @@ msgstr[1] "(diese Runde verbleibt)"
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% Goldstücke werden ins nächste Szenario übernommen."
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:113
 #: src/game_initialization/mp_game_utils.cpp:76
@@ -4268,7 +4261,7 @@ msgstr "Komplette Runde anzeigen"
 #. [action]: id=button-nextside, type=image
 #: data/themes/_initial.cfg:510 data/themes/_initial.cfg:663
 msgid "Next Side"
-msgstr "Nächste Seite"
+msgstr "Nächste Partei"
 
 #. [action]: id=button-nextside, type=image
 #: data/themes/_initial.cfg:511 data/themes/_initial.cfg:664
@@ -4456,7 +4449,7 @@ msgid ""
 "Use the map editor's <i>Areas</i> menu to define regions later addressed by "
 "event or ai coding."
 msgstr ""
-"Nutzt im Karteneditor das Menü »Bereiche«, um Gebiete abzustecken, in denen "
+"Nutzt im Karteneditor das Menü »Zonen«, um Gebiete abzustecken, in denen "
 "sich später Ereignisse oder computergeteuerte Abläufe abspielen sollen."
 
 # Der "Design Guide" soll vermutlich Tipps zur Verwendung vom "Map/Scenario Editor" geben.
@@ -4727,7 +4720,7 @@ msgstr ""
 "Das Gelände, in dem sich Eure Einheiten aufhalten, entscheidet maßgeblich "
 "über die Wahrscheinlichkeit, bei Angriffen zum Ziel des Gegners und "
 "getroffen zu werden. Der Verteidigungswert (V) einer ausgewählten Einheit "
-"wird für den aktuellen Standort rechts über der Flagge des Teams gezeigt, "
+"wird für den aktuellen Standort rechts über der Flagge der Partei gezeigt, "
 "für jedes andere Terrain unter der Minikarte beim Überfahren eines Feldes "
 "mit dem Mauszeiger."
 
@@ -4997,6 +4990,7 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:153
+#| msgid "<i>― King Konrad, 536YW</i>"
 msgid "<i>― Kai Laudiss, 623YW</i>"
 msgstr "<i>― Kai Laudiss, 623JW</i>"
 
@@ -5479,6 +5473,9 @@ msgstr ""
 "&quot; * / : &lt; &gt; ? \\ | ~"
 
 #: src/addon/client.cpp:172
+#| msgid ""
+#| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
+#| "cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
@@ -5510,6 +5507,9 @@ msgstr ""
 "Verzeichnisnamen und kann nicht installiert werden."
 
 #: src/addon/client.cpp:264
+#| msgid ""
+#| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
+#| "cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -6176,7 +6176,7 @@ msgstr "$login|s Partie"
 
 #: src/game_initialization/connect_engine.cpp:103
 msgid "Team"
-msgstr "Team"
+msgstr "Allianz"
 
 #: src/game_initialization/connect_engine.cpp:995
 msgid "Anonymous player"
@@ -6263,7 +6263,7 @@ msgstr "Eine Komponente"
 
 #: src/game_initialization/flg_manager.cpp:195
 msgid "Only random sides in the current era."
-msgstr "Nur zufallsbasierte Fraktionen in der gewählten Epoche."
+msgstr "Nur zufallsbasierte Parteien in der gewählten Epoche."
 
 #: src/game_initialization/flg_manager.cpp:217
 msgid "Unable to find a leader type for faction $faction"
@@ -6654,7 +6654,7 @@ msgstr "Es gibt keine gespeicherten Spielstände, die geladen werden können"
 
 #: src/gui/dialogs/game_stats.hpp:43
 msgid "No visible sides found."
-msgstr "Keine sichtbaren Seiten gefunden."
+msgstr "Keine sichtbaren Parteien gefunden."
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:104
 msgid "In game:"
@@ -6746,7 +6746,7 @@ msgstr "Heerführer"
 
 #: src/help/help_impl.cpp:664
 msgid "Recruits"
-msgstr "Ausgebildet"
+msgstr "Rekruten"
 
 #: src/help/help_impl.cpp:725 src/units/types.cpp:479
 msgid "No description available."
@@ -6795,14 +6795,17 @@ msgid "Base Terrain: "
 msgstr "Zugrunde liegendes Gelände: "
 
 #: src/help/help_topic_generators.cpp:161
+#| msgid "Movement Costs:"
 msgid "Movement properties: "
 msgstr "Bewegungseigenschaften: "
 
 #: src/help/help_topic_generators.cpp:165
+#| msgid "Defense: "
 msgid "Defense properties: "
 msgstr "Verteidigungseigenschaften: "
 
 #: src/help/help_topic_generators.cpp:245
+#| msgid "Level: "
 msgid "Level"
 msgstr "Stufe"
 
@@ -7193,34 +7196,34 @@ msgstr "Zeichnet die Benutzeroberfläche neu."
 #: src/menu_events.cpp:1176
 msgid "Switch a side to/from AI control."
 msgstr ""
-"Wechselt die Kontrolle über eine Fraktion zwischen Computer- und Spieler-"
+"Wechselt die Kontrolle über eine Partei zwischen Computer- und Spieler-"
 "Steuerung."
 
 #: src/menu_events.cpp:1177 src/menu_events.cpp:1179
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr "[<Fraktion> [on/off]]"
+msgstr "[<Partei> [on/off]]"
 
 #: src/menu_events.cpp:1178
 msgid "Switch a side to/from idle state."
-msgstr "Ruhezustand für Team aktivieren/deaktivieren."
+msgstr "Ruhezustand für Partei aktivieren/deaktivieren."
 
 #: src/menu_events.cpp:1182
 msgid "<side> <nickname>"
-msgstr "<Fraktion> <Spieler>"
+msgstr "<Partei> <Spieler>"
 
 #: src/menu_events.cpp:1182
 msgid "Assign control of a side to a different player or observer."
 msgstr ""
-"Übergibt die Kontrolle über eine Fraktion an einen anderen Spieler oder "
+"Übergibt die Kontrolle über eine Partei an einen anderen Spieler oder "
 "Beobachter."
 
 #: src/menu_events.cpp:1183
 msgid "Query the controller status of a side."
-msgstr "Aktuelle Kontrolle einer Fraktion abfragen."
+msgstr "Aktuelle Kontrolle einer Partei abfragen."
 
 #: src/menu_events.cpp:1184
 msgid "<side>"
-msgstr "<Fraktion>"
+msgstr "<Partei>"
 
 #: src/menu_events.cpp:1185
 msgid "Clear chat history."
@@ -7322,7 +7325,8 @@ msgstr "Weist dem Tastaturkürzel »Benutzerdefinierter Befehl« einen Befehl zu
 
 #: src/menu_events.cpp:1220
 msgid "Invoke a dialog allowing changing control of MP sides."
-msgstr "Ruft einen Dialog zur Veränderung der Mehrspielerfraktionen auf."
+msgstr ""
+"Ruft einen Dialog zur Veränderung der Parteien im Mehrspielermodus auf."
 
 #: src/menu_events.cpp:1221
 msgid "Launch the gamestate inspector"
@@ -7417,15 +7421,14 @@ msgstr ""
 # Kontrolle der ungültigen Seite »$side« kann nicht gewechselt werden.
 #: src/menu_events.cpp:1417
 msgid "Can't droid invalid side: '$side'."
-msgstr ""
-"Kontrolle der ungültigen Fraktion »$side« kann nicht gewechselt werden."
+msgstr "Kontrolle der ungültigen Partei »$side« kann nicht gewechselt werden."
 
 # Im Original wird nicht "fraction" benutzt – m.E. sind "Fraktion" und "Seite" nicht unbedingt dasselbe, bin aber kein MP
 # Kontrolle der per Netzwerk gesteuerten / netzwerkgesteuerten Fraktion »$side« kann nicht gewechselt werden.
 #: src/menu_events.cpp:1422
 msgid "Can't droid networked side: '$side'."
 msgstr ""
-"Kontrolle der netzwerkgesteuerten Fraktion »$side« kann nicht gewechselt "
+"Kontrolle der netzwerkgesteuerten Partei »$side« kann nicht gewechselt "
 "werden."
 
 # Im Original wird nicht "fraction" benutzt – m.E. sind "Fraktion" und "Seite" nicht unbedingt dasselbe, bin aber kein MP
@@ -7433,47 +7436,46 @@ msgstr ""
 #: src/menu_events.cpp:1440
 msgid "Can't droid a local ai side: '$side'."
 msgstr ""
-"Kontrolle der lokalen Computer gesteuerten Fraktion »$side« kann nicht "
+"Kontrolle der lokalen Computer gesteuerten Partei »$side« kann nicht "
 "gewechselt werden."
 
 #: src/menu_events.cpp:1456
 msgid "Can't idle invalid side: '$side'."
-msgstr "Ruhezustand für ungültige Fraktion »$side« nicht aktivierbar."
+msgstr "Ruhezustand für ungültige Partei »$side« nicht aktivierbar."
 
 # Im Original wird nicht "fraction" benutzt – m.E. sind "Fraktion" und "Seite" nicht unbedingt dasselbe, bin aber kein MP
 # Kontrolle der per Netzwerk gesteuerten / netzwerkgesteuerten Fraktion »$side« kann nicht gewechselt werden.
 #: src/menu_events.cpp:1461
 msgid "Can't idle networked side: '$side'."
 msgstr ""
-"Kontrolle der netzwerkgesteuerten Fraktion »$side« kann nicht gewechselt "
+"Kontrolle der netzwerkgesteuerten Partei »$side« kann nicht gewechselt "
 "werden."
 
 #: src/menu_events.cpp:1466
 msgid "Can't idle local ai side: '$side'."
 msgstr ""
-"Kontrolle der lokalen KI gesteuerten Fraktion »$side« kann nicht gewechselt "
+"Kontrolle der lokalen KI gesteuerten Partei »$side« kann nicht gewechselt "
 "werden."
 
 #: src/menu_events.cpp:1526
 msgid "Can't change control of invalid side: '$side'."
 msgstr ""
-"Die Kontrolle der ungültigen Fraktion »$side« kann nicht geändert werden."
+"Die Kontrolle der ungültigen Partei »$side« kann nicht geändert werden."
 
 #: src/menu_events.cpp:1536
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
-"Die Kontrolle der unerreichbaren Fraktion »$side« kann nicht geändert werden."
+"Die Kontrolle der unerreichbaren Partei »$side« kann nicht geändert werden."
 
 #: src/menu_events.cpp:1553
 msgid "Can't query control of invalid side: '$side'."
 msgstr ""
-"Kontrollstatus der ungültigen Fraktion »$side« kann nicht abgefragt werden."
+"Kontrollstatus der ungültigen Partei »$side« kann nicht abgefragt werden."
 
 #: src/menu_events.cpp:1560
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr ""
-"Kontrollstatus der unerreichbaren Fraktion »$side« kann nicht abgefragt "
-"werden."
+"Kontrollstatus der unerreichbaren Partei »$side« kann nicht abgefragt werden."
 
 #: src/menu_events.cpp:1678
 msgid "Choose Scenario (Debug!)"
@@ -7654,8 +7656,8 @@ msgid ""
 "to another controller. You may use :droid, :control or :give_control for "
 "example."
 msgstr ""
-"Diese Seite ist inaktiv. Um mit dem Spiel fortzufahren muss ein Spieler oder "
-"eine KI sie übernehmen. Sie können zum Beispiel :droid, :control oder :"
+"Diese Partei ist inaktiv. Um mit dem Spiel fortzufahren muss ein Spieler "
+"oder eine KI sie übernehmen. Sie können zum Beispiel :droid, :control oder :"
 "give_control verwenden."
 
 #: src/playsingle_controller.cpp:154
@@ -7706,7 +7708,7 @@ msgstr "Durch lokalen Spieler ersetzen"
 
 #: src/playturn.cpp:291
 msgid "Set side to idle"
-msgstr "Fraktion in Ruhezustand versetzen"
+msgstr "Partei in Ruhezustand versetzen"
 
 #: src/playturn.cpp:292
 msgid "Save and abort game"
@@ -7995,7 +7997,7 @@ msgstr ""
 #: src/reports.cpp:1282
 msgid "The fraction of known villages that your side has captured."
 msgstr ""
-"Die Fraktion von bekannten Dörfern, welche von Eurer Seite erobert wurden."
+"Der Anteil von bekannten Dörfern, welche von Eurer Partei erobert wurden."
 
 #: src/reports.cpp:1282
 msgid "Villages"
@@ -8003,7 +8005,7 @@ msgstr "Dörfer"
 
 #: src/reports.cpp:1287
 msgid "The total number of units on your side."
-msgstr "Die Gesamtanzahl der Einheiten auf Ihrer Seite."
+msgstr "Die Gesamtanzahl der Einheiten Eurer Partei."
 
 #: src/reports.cpp:1287
 msgid "Units"
@@ -8088,7 +8090,7 @@ msgid ""
 "This save is from a different version of the game ($version_number|). Do you "
 "wish to try to load it?"
 msgstr ""
-"Der Spielstand stammt aus einer anderen Version ($version_number|). Möchtet "
+"Der Spielstand stammt aus einer alten Version ($version_number|). Möchtet "
 "Ihr versuchen, ihn zu laden?"
 
 #: src/savegame.cpp:253 src/savegame.cpp:297
@@ -8333,7 +8335,7 @@ msgstr ""
 
 #: src/synced_user_choice.cpp:326
 msgid "waiting for $desc from side(s) $sides"
-msgstr "warte auf $desc von Seite(n) $sides"
+msgstr "warte auf $desc von Partei(en) $sides"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8369,12 +8371,15 @@ msgstr "Diese Tageszeit ist nur ein Platzhalter!"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:356
+#| msgid " per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> Schaden"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> damage"
 
 #: src/units/attack_type.cpp:365
+#| msgid "damage"
+#| msgid_plural "damage"
 msgid "$number damage"
 msgid_plural "$number damage"
 msgstr[0] "$number Schaden"
@@ -8382,6 +8387,7 @@ msgstr[1] "$number Schaden"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:374
+#| msgid " per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> Treffer"
@@ -8389,6 +8395,8 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> Treffer"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:383
+#| msgid "strike"
+#| msgid_plural "strikes"
 msgid "$number strike"
 msgid_plural "$number strikes"
 msgstr[0] "$number Treffer"
@@ -8396,26 +8404,31 @@ msgstr[1] "$number Treffer"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:392
+#| msgid "% parry"
 msgid "$number| accuracy"
 msgstr "$number| Treffsicherheit"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:399
+#| msgid " per turn"
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "<span color=\"$color\">$number_or_percent|%</span> Treffsicherheit"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:406
+#| msgid "% parry"
 msgid "$number parry"
 msgstr "$number Parade"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:413
+#| msgid " per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "<span color=\"$color\">$number_or_percent</span> Parade"
 
 #. TRANSLATORS: Current value for WML code set_movement, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:420
+#| msgid "Movement Cost"
 msgid "$number movement point"
 msgid_plural "$number movement points"
 msgstr[0] "$number Bewegungspunkt"
@@ -8423,6 +8436,7 @@ msgstr[1] "$number Bewegungspunkte"
 
 #. TRANSLATORS: Current value for WML code increase_movement, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:429
+#| msgid " per turn"
 msgid "<span color=\"$color\">$number_or_percent movement</span> point"
 msgid_plural "<span color=\"$color\">$number_or_percent movement</span> points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> Bewegungspunkt"
@@ -8465,28 +8479,34 @@ msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
 #: src/units/unit.cpp:1791
+#| msgid " per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> LP"
 
 #: src/units/unit.cpp:1801
+#| msgid " per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> Bewegungspunkt"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> Bewegungspunkte"
 
 #: src/units/unit.cpp:1807
+#| msgid " per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> Sichtweite"
 
 #: src/units/unit.cpp:1811
+#| msgid " per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> Störung"
 
 #: src/units/unit.cpp:1816
+#| msgid " per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> EP zur nächsten Stufe"
 
 #: src/units/unit.cpp:1820
+#| msgid " per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -8494,6 +8514,7 @@ msgstr[0] "<span color=\"$color\">$number_or_percent</span> Angriff pro Runde"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> Angriffe pro Runde"
 
 #: src/units/unit.cpp:1827
+#| msgid " per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr ""
 "<span color=\"$color\">$number_or_percent</span> Kosten zur Einberufung"

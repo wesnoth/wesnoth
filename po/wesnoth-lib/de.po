@@ -4,13 +4,14 @@
 #  HaJo Gurt <gurt@gmx.de>, 2007
 #  Gerfried Fuchs <rhonda@deb.at>, 2010
 #  Oliver 'Crommy' Lange <oli-lange@web.de>, 2010 - 2012
+#  Aaron Winter <winter.aaron93@gmail.com>, 2018
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.12\n"
+"Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-04-15 01:34-0300\n"
-"PO-Revision-Date: 2018-04-19 02:39+0200\n"
-"Last-Translator: daMark <daMark@arcor.de>\n"
+"PO-Revision-Date: 2018-04-26 00:46+0200\n"
+"Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
@@ -685,19 +686,6 @@ msgstr "Unwegsame Höhle"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:967
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
-#| "water and wind, carrying erosive particles that carve the rock. It "
-#| "resembles a scraggy underground cavern which reduces efficiency of most "
-#| "units, but shoulders defense. Dwarves and trolls, who are main settlers "
-#| "of caves, have a relatively easy time navigating this terrain. Dwarves, "
-#| "who by dint of their small size have the full advantage of navigation in "
-#| "such topography. Occasionally caves are "
-#| "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>\n"
-#| "\n"
-#| "Most units have about 50% defense in rocky caves, whereas cavalry are "
-#| "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -1612,6 +1600,17 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
+"<italic>text='Pilzhaine'</italic> sind große Untergrundwälder bestehend aus "
+"riesigen Pilzen, \n"
+"welche in der feuchten Dunkelheit gut wachsen. Die meisten Einheiten sind "
+"durch den weichen, schwammartigen Boden in ihrer Bewegung eingeschränkt, "
+"doch haben sie gute Deckung hinter größeren Pilzen. Berittene Einheiten "
+"jedoch büßen ihren Bewegungsfreiraum im Kampf vollständig ein. Untote "
+"Einheiten haben eine natürliche Neigung zum Zerfall und finden sich in den "
+"Pilzhainen bestens zurecht.\n"
+"\n"
+"Die meisten Einheiten erhalten 50% bis 60% Verteidigung in Pilzhainen, "
+"wohingegen Reiter nur 20% erhalten."
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2794
@@ -1633,6 +1632,22 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgstr ""
+"<italic>text='Höhlen'</italic> Geländefelder repräsentieren Untergrundhöhlen "
+"mit genug Raum um Einheiten passieren lassen zu können.\n"
+"Die meisten Einheiten sind nicht vertraut mit diesem Gelände und sind "
+"dadurch verlangsamt und finden schlecht Deckung. Zwerge und Trolle leben in "
+"Höhlen und haben dadurch leichtes Spiel, sich auf diesem Gelände zurecht zu "
+"finden. Besonders Zwerge, da sie durch ihre Größe leicht Hindernisse umgehen "
+"können, die andere Völker aufhalten wurden. Gelegentlich sind Höhlen auch "
+"<ref>dst='terrain_illuminated_cave' text='erhellt'</ref>.\n"
+"\n"
+"Selten sind teile des Untergrunds durch etwas Licht erhellt. Dies gibt "
+"redlichen Einheiten einen Angriffsbonus und entfernt den Angriffsbonus von "
+"lichtscheuen Einheiten. Abgesehen davon fungiert dieses Gelände wie jedes "
+"andere Höhlengelände.\n"
+"\n"
+"Die meisten Einheiten erhalten 20% bis 40% Verteidigung in Höhlen, "
+"wohingegen Zwerge 50% erhalten."
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:2807
@@ -1650,6 +1665,13 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
+"ic>text='Küstenriffe'</italic>sind sichte Gewässer, geprägt durch Steine, "
+"Korallen und Sand.\n"
+"Das ermöglicht den meisten Landeinheiten sicheren Tritt und gute "
+"Verteidigungspositionen. Einheiten die im Wasser heimisch sind erhalten "
+"dennoch exzellente Verteidigung in Küstenriffen.\n"
+"\n"
+"Das Meervolk und Naga erhalten beide 70% Verteidigung in Küstenriffen."
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:2838
@@ -1664,6 +1686,16 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
+"<italic>text=Hügel'</italic> repräsentieren hügeliges Gelände, \n"
+"mit genug Erhöhungen und Einbuchtungen, um etwas Deckung zu gewährleisten. "
+"Für die meisten Truppen ist es schwierig, auf hügeligem Gelände zu "
+"navigieren. Zwerge, Trolle und Orks sind zur Genüge mit dem Gelände "
+"vertraut, um sie ohne Komplikationen bereisen zu können. Reiter haben jedoch "
+"Schwierigkeiten, dieses Gelände zu bereisen, wodurch sie jegliche Deckung "
+"verlieren.\n"
+"\n"
+"Die meisten Einheiten haben etwa 50% Verteidigung. Reiter sind auf maximal "
+"40% beschränkt. Zwerge freuen sich über gute 60% Verteidigung im Hügelland."
 
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:2853
@@ -1678,6 +1710,15 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
 "all generally enjoy 60%."
 msgstr ""
+"<italic>text='Sümpfe'</italic> repräsentieren jede Art von Feuchtgebieten.\n"
+"Sümpfe verlangsamen nahezu alle Einheiten und berauben sie ihrer Defensive. "
+"Ausnahmen sind Rassen, die im Wasser beheimatet sind. Diese erhalten gute "
+"Verteidigung und volle Mobilität. Jene, die in Sumpfgebieten leben, haben "
+"sich etwas angepasst und wissen, wo sie in diesem Gelände Deckung finden "
+"können.\n"
+"\n"
+"Die meisten Einheiten erhalten 30%, das Meervolk, Naga und Saurianer "
+"erhalten üblicherweise 60% Verteidigung."
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:2866
@@ -1715,6 +1756,14 @@ msgid ""
 "\n"
 "Most units have about 60% defense in a castle."
 msgstr ""
+"<italic>text='Burgen'</italic> sind jede Art von befestigter Anlage.\n"
+"Fast alle Einheiten erhalten einen beachtlichen Bonus auf ihre "
+"Verteidigungswerte und hohe Mobilität, wenn sie in einer Burg stationiert "
+"sind. Wenn Einheiten jedoch nicht jedes Feld einer Befestigung besetzen, ist "
+"es dem Gegner ein Leichtes, ebenfalls in die Burg zu schleichen und von der "
+"gleichen hohen Defensive zu profitieren.\n"
+"\n"
+"Die meisten Einheiten haben etwa 60% Verteidigung in einer Burg."
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:2895
@@ -1729,6 +1778,15 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
+"<italic>text='Berge'</italic> sind steiles, bergiges Gelände, welche "
+"Einheiten, da sie oft klettern müssen, stark verlangsamt.\n"
+"Durch ihre Beschaffenheit bieten Berge beachtliche Deckung für die meisten "
+"Truppen, wofür sie jedoch stark an Mobilität einbüßen. Die meisten Reiter "
+"können gar nicht durch Berge reisen; mit Ausnahme der elfischen und der "
+"Kobold-Wolfsreiter. Da Zwerge und Trolle in Bergen beheimatet sind, haben "
+"sie leichtes Spiel sich durch die Berge zu bewegen.\n"
+"\n"
+"Die meisten Einheiten erhalten etwa 60% Verteidigung, Zwerge sogar 70%."
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:2907
@@ -1740,6 +1798,14 @@ msgid ""
 "\n"
 "Mermen and naga both receive 50% defense in deep water, with full movement."
 msgstr ""
+"<italic>text='Tiefes Wasser'</italic> repräsentiert alles Wasser, welches "
+"Tief genug ist um einen Mann bis einschließlich Kopf darin versinken zu "
+"lassen.\n"
+"Die meisten Einheiten können sich in tiefem Wasser nicht bewegen: es ist der "
+"Zuständigkeitsbereich für Einheiten, die fliegen oder schwimmen können.\n"
+"\n"
+"Das Meervolk und Naga erhalten 50% Verteidigung und volle Mobilität in "
+"tiefem Wasser."
 
 #. [terrain_type]: id=flat
 #: data/core/terrain.cfg:2918 data/core/terrain.cfg:2919
@@ -1758,6 +1824,14 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
+"<italic>text='Wiesen'</italic> repräsentieren weite, flache Ebenen, sei sie "
+"beackert, verwildern, oder für Tiere zum grasen.\n"
+"Durch die Offenheit dieses Geländes ist es leicht sich auf diesem Terrain zu "
+"bewegen, doch bieten es auch wenig Deckung. Üblicherweise sind die "
+"Einheiten, die auf den Ebenen am besten kämpfen Reiter oder sehr bewegliche "
+"Einheiten, welche die Bewegungsfreiheit zu ihrem Vorteil nutzen.\n"
+"\n"
+"Die meisten Einheiten erhalten 30 bis 40% Verteidigung auf Wiesen."
 
 #. [terrain_type]: id=forest
 #: data/core/terrain.cfg:2933
@@ -1777,6 +1851,21 @@ msgid ""
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
+"<italic>text='Wälder'</italic> repräsentieren jede Art von Waldland mit "
+"genug Wildwuchs, um Passanten die Durchreise zu erschweren. Obwohl Wälder "
+"fast jede Einheiten in ihrer Bewegungsfreiheit einschränken, bieten sie "
+"bessere Verteidigungswerte als auf freie Ebene für die meisten "
+"Landeinheiten. Reiter jedoch haben starke Probleme in Wäldern und verlieren "
+"dadurch jegliche Vorteile des Schleichens, mit Ausnahme der elfischen "
+"Reiter. Diese können nicht nur bestens durch das Gehölz manövrieren, sondern "
+"erhalten auch einen beachtlichen Verteidigungsbonus. Zwerge sind ebenfalls "
+"eine Ausnahme. Sie sind zwar in der Lage, ohne große Bewegungseinschränkung "
+"durch Wälder zu marschieren, doch erhalten sie keinen Verteidigungsbonus, da "
+"sie nicht sonderlich mit diesem Gelände vertraut sind.\n"
+"\n"
+"Die meisten Einheiten erhalten 50% Verteidigung in Wäldern. Reiter erhalten "
+"30%, ebenso wie Zwerge. Elfen hingegen, inklusive deren Reiter, freuen sich "
+"über 60 bis 70% Verteidigung, selbst die elfischen Reiter"
 
 #. [terrain_type]: id=frozen
 #: data/core/terrain.cfg:2943 data/core/terrain.cfg:2944
@@ -1794,6 +1883,14 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
+"<italic>text='Gefrorenes'</italic> Terrain repräsentiert schnee- oder "
+"eisbedecktes Flachland.\n"
+"Die meisten Einheiten werden durch Schnee und Eis verlangsamt und haben es "
+"schwerer, Deckung zu finden. Beachtet, dass schwimmende Einheiten, auch jene "
+"die unter Wasser atmen können (oder es nicht müssen) nicht unter dem Eis "
+"hindurchtauchen können.\n"
+"\n"
+"Üblich sind für die Mehrzahl der Einheiten 20 bis 40% auf gefrorenem Terrain."
 
 #. [terrain_type]: id=village
 #: data/core/terrain.cfg:2959
@@ -1809,6 +1906,16 @@ msgid ""
 "Most units have 50 to 60% defense in villages, whereas cavalry receive only "
 "40%."
 msgstr ""
+"ic>text='Dörfer'</italic> repräsentieren eine Gruppe von Häusern, erbaut von "
+"Menschen oder anderen.\n"
+"Fast alle Einheiten, auch Reiter, haben leichtes Spiel sich durch die Reihen "
+"der Häuser zu bewegen und erhalten einen Defensivbonus, wenn sie in einem "
+"Dorf stationiert sind. Dörfer erlauben Einheiten, ihre Wunden zu säubern und "
+"zu versorgen, wodurch sie 8 Lebenspunkte pro Runde wiedererlangen, oder von "
+"Vergiftungen kuriert werden.\n"
+"\n"
+"Die meisten Einheiten haben 50 bis 60% Verteidigung in Dörfern, Reiter "
+"jedoch nur 40%."
 
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:2969 data/core/terrain.cfg:2970
@@ -1824,6 +1931,11 @@ msgid ""
 "jagged peaks at such rarefied heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
+"Hindernisse, die nicht einmal der entschlossenste Reisende überwinden kann, "
+"sind solide Wände aus Stein, und Berge, die so hoch und steil sind, dass sie "
+"ständig in Wolken gehüllt sind. Selbst fliegende Kreaturen können die "
+"zerklüfteten Gipfel nicht in solch dünnen Höhen bezwingen, und selbst der "
+"wildeste Troll kann nicht durch dicke Steinwände schlagen."
 
 #. [terrain_type]: id=unwalkable
 #: data/core/terrain.cfg:2979 data/core/terrain.cfg:2980
@@ -1919,7 +2031,6 @@ msgstr "Erweiterung installieren"
 msgid "Update add-on"
 msgstr "Erweiterung aktualisieren"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=single_publish
 #. [button]: id=publish
 #: data/gui/widget/addon_list.cfg:412 data/gui/window/addon_manager.cfg:270
@@ -1927,7 +2038,6 @@ msgstr "Erweiterung aktualisieren"
 msgid "Publish add-on"
 msgstr "Erweiterung veröffentlichen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:247
@@ -1994,7 +2104,6 @@ msgstr "Server:"
 msgid "Remove Add-ons"
 msgstr "Erweiterungen entfernen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_help
 #. [button]: id=help
 #: data/gui/window/addon_connect.cfg:184 data/gui/window/title_screen.cfg:174
@@ -2007,7 +2116,6 @@ msgstr "Hilfe"
 msgid "Connect"
 msgstr "Verbinden"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/window/addon_connect.cfg:212
 #: data/gui/window/addon_uninstall_list.cfg:174
@@ -2058,7 +2166,6 @@ msgstr "Von:"
 msgid "Version:"
 msgstr "Version:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:160
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:590
@@ -2172,7 +2279,6 @@ msgstr "Reihenfolge:"
 msgid "Add-ons Manager"
 msgstr "Erweiterungen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
 #: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:452
 #: src/gui/dialogs/addon/manager.cpp:639
@@ -2263,7 +2369,6 @@ msgstr "Alles andere"
 msgid "Scaled to hex"
 msgstr "Zu Hex skalieren"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/advanced_graphics_options.cfg:165
 #: data/gui/window/campaign_dialog.cfg:426
@@ -2371,7 +2476,7 @@ msgstr "Datum"
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:240
 msgid "Sort in approximate chronological order of story events"
-msgstr ""
+msgstr "Sortiert nach den Geschehnissen in chronologischer Reihenfolge"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:276
@@ -2549,7 +2654,6 @@ msgstr "Neuer Tagesablauf"
 msgid "Delete ToD"
 msgstr "Lösche Tagesablauf"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
 #: src/gui/dialogs/addon/manager.cpp:773 src/gui/dialogs/file_dialog.cpp:307
@@ -2562,7 +2666,6 @@ msgstr "Bestätigen"
 msgid "Would you like to apply the changes?"
 msgstr "Möchtet Ihr die Änderungen übernehmen?"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/depcheck_confirm_change.cfg:130
 #: data/gui/window/game_delete.cfg:107
@@ -2573,7 +2676,6 @@ msgstr "Möchtet Ihr die Änderungen übernehmen?"
 msgid "Yes"
 msgstr "Ja"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/window/depcheck_confirm_change.cfg:144
 #: data/gui/window/game_delete.cfg:121
@@ -2607,7 +2709,7 @@ msgstr "Beschriftung:"
 #. [toggle_button]: id=team_only_toggle
 #: data/gui/window/edit_label.cfg:111
 msgid "Team only"
-msgstr "Nur für Verbündete"
+msgstr "Nur für Allianzen"
 
 #. [label]
 #: data/gui/window/editor_edit_label.cfg:106
@@ -2637,7 +2739,7 @@ msgstr "Sichtbar im Nebel"
 #. [toggle_button]: id=visible_shroud_toggle
 #: data/gui/window/editor_edit_label.cfg:251
 msgid "Visible in shroud"
-msgstr "Sichtbar durch Schleier"
+msgstr "Sichtbar durch Schleier der Finsternis"
 
 #. [label]: id=title
 #: data/gui/window/editor_edit_scenario.cfg:42
@@ -2654,7 +2756,6 @@ msgstr "Kennung:"
 msgid "Description:"
 msgstr "Beschreibung:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
 #: src/gui/dialogs/multiplayer/lobby.cpp:470
@@ -2679,7 +2780,7 @@ msgstr "Zufällige Startzeit"
 #. [label]: id=title
 #: data/gui/window/editor_edit_side.cfg:60
 msgid "Side Setup"
-msgstr "Fraktionseinstellungen"
+msgstr "Parteiseinstellungen"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:83
@@ -2689,12 +2790,12 @@ msgstr "Nummer:"
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:111
 msgid "Team identifier:"
-msgstr "Fraktionskennung:"
+msgstr "Allianzkennung:"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:138
 msgid "Team name:"
-msgstr "Fraktionsname:"
+msgstr "Allianzname:"
 
 #. [toggle_button]: id=no_leader
 #: data/gui/window/editor_edit_side.cfg:192
@@ -2711,7 +2812,6 @@ msgstr "Nebel des Krieges"
 msgid "Hide in status table"
 msgstr "In Spielübersicht ausblenden"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:249 data/gui/window/mp_staging.cfg:330
 #: src/gui/dialogs/multiplayer/lobby.cpp:471
@@ -2738,7 +2838,6 @@ msgstr "Steuereinnahmen pro Dorf:"
 msgid "Controller:"
 msgstr "Spielertyp:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:373 src/gui/dialogs/game_stats.cpp:78
 msgid "controller^Human"
@@ -2774,7 +2873,6 @@ msgstr "Schleier der Finsternis"
 msgid "vision^None"
 msgstr "Keine"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:224
 msgid "Generate Map"
@@ -2802,7 +2900,6 @@ msgstr "Numerischer Startwert:"
 msgid "Generate"
 msgstr "Erzeugen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/editor_new_map.cfg:36 src/hotkey/hotkey_command.cpp:152
 msgid "New Map"
@@ -2827,7 +2924,6 @@ msgstr "Höhe:"
 msgid "Create"
 msgstr "Erstellen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:222
 msgid "Resize Map"
@@ -2987,6 +3083,11 @@ msgid ""
 "files generated by older versions; or you may purge its entire contents if "
 "you are experiencing issues when loading the game data."
 msgstr ""
+"Wesnoth verwaltet einen Cache mit vorkompilierten WML Daten für Kampagnen, "
+"Szenarios und anderen Erweiterungen, um die Ladegeschwindigkeit zu "
+"beschleunigen. Der Cache kann gelöscht werden, beispielsweise um wieder "
+"etwas mehr Speicherplatz zu schaffen. Den Cache komplett zu säubern kann bei "
+"Ladekomplikationen helfen."
 
 #. [label]
 #: data/gui/window/game_cache_options.cfg:81
@@ -3001,7 +3102,7 @@ msgstr "Leeren"
 #. [button]: id=clean
 #: data/gui/window/game_cache_options.cfg:195
 msgid "Clear stale and unused cache files"
-msgstr ""
+msgstr "Säubere veraltete und ungenutze Cachedateien"
 
 #. [button]: id=purge
 #: data/gui/window/game_cache_options.cfg:207
@@ -3011,7 +3112,7 @@ msgstr "Säubern"
 #. [button]: id=purge
 #: data/gui/window/game_cache_options.cfg:208
 msgid "Purge the entire contents of the cache"
-msgstr ""
+msgstr "Säubere den kompletten Inhalt des Cache"
 
 #. [label]: id=lblTitle
 #: data/gui/window/game_delete.cfg:40
@@ -3050,7 +3151,6 @@ msgstr "Truppen in Reserve:"
 msgid "Date"
 msgstr "Datum"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #. [button]: id=load_game
 #: data/gui/window/game_load.cfg:286 data/gui/window/mp_create_game.cfg:898
@@ -3066,7 +3166,7 @@ msgstr "Schwierigkeitsgrad ändern"
 #. [toggle_button]: id=change_difficulty
 #: data/gui/window/game_load.cfg:464
 msgid "Change campaign difficulty before loading"
-msgstr ""
+msgstr "Ändere den Schwierigkeitsgrad vor dem Laden"
 
 #. [toggle_button]: id=show_replay
 #: data/gui/window/game_load.cfg:505
@@ -3076,7 +3176,7 @@ msgstr "Spielverlauf anzeigen"
 #. [toggle_button]: id=show_replay
 #: data/gui/window/game_load.cfg:506
 msgid "Play the embedded replay from the saved game if applicable"
-msgstr ""
+msgstr "Spiele die Aufzeichnung der gespeicherten Partie ab, falls vorhanden."
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/window/game_load.cfg:525
@@ -3087,8 +3187,9 @@ msgstr "Befehle verwerfen"
 #: data/gui/window/game_load.cfg:526
 msgid "Cancel any pending unit movements in the saved game"
 msgstr ""
+"Breche alle ausstehenden Bewegungen von Einheiten in einer gespeicherten "
+"Partie ab."
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/window/game_save.cfg:42 data/gui/window/game_save_message.cfg:42
 #: data/gui/window/game_save_oos.cfg:42 src/hotkey/hotkey_command.cpp:80
@@ -3115,7 +3216,6 @@ msgstr "Überschreiben?"
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Der Spielstand existiert bereits. Möchtet Ihr ihn überschreiben?"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_0
 #: data/gui/window/game_stats.cfg:35 data/gui/window/game_stats.cfg:283
 #: src/hotkey/hotkey_command.cpp:65
@@ -3125,9 +3225,8 @@ msgstr "Heerführer"
 #. [toggle_button]: id=sort_1
 #: data/gui/window/game_stats.cfg:49
 msgid "Team"
-msgstr "Fraktion"
+msgstr "Allianz"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:399
@@ -3149,7 +3248,6 @@ msgstr "Einheiten"
 msgid "Upkeep"
 msgstr "Unterhaltskosten"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_6
 #. [image]: id=income_icon
 #. [label]: id=side_income
@@ -3163,7 +3261,7 @@ msgstr "Einkommen"
 #. [label]: id=side_title
 #: data/gui/window/game_stats.cfg:297 data/gui/window/mp_change_control.cfg:22
 msgid "Side"
-msgstr "Fraktion"
+msgstr "Partei"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:311
@@ -3193,22 +3291,20 @@ msgid ""
 "Village"
 msgstr "Unterstützung pro Dorf"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:255
 msgid "Current Status"
-msgstr "Derzeitiger Status"
+msgstr "Übersicht (Parteien)"
 
 #. [widget]: id=tab_label
 #: data/gui/window/game_stats.cfg:780
 msgid "Game Stats"
-msgstr "Statistiken"
+msgstr "Übersicht (Parteien)"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:255
 msgid "Scenario Settings"
-msgstr "Szenarioeinstellungen"
+msgstr "Übersicht (Szenario)"
 
 #. [button]: id=ok
 #: data/gui/window/game_stats.cfg:832 data/gui/window/unit_list.cfg:436
@@ -3254,6 +3350,8 @@ msgstr "Öffne Log-Datei"
 #: data/gui/window/game_version.cfg:162
 msgid "Opens the log file, which may contain useful debug information"
 msgstr ""
+"Öffnet die Protokoll-Datei, welche möglicherweise nützliche Debug-"
+"Informationen enthält"
 
 #. [label]
 #: data/gui/window/game_version.cfg:195
@@ -3275,6 +3373,8 @@ msgstr "Laufzeit-Version"
 msgid ""
 "The following features were selected when building this version of Wesnoth:"
 msgstr ""
+"Die folgenden Funktionalitäten wurden beim Kompilieren dieser Version von "
+"Wesnoth gewählt:"
 
 #. [label]
 #: data/gui/window/game_version.cfg:447
@@ -3289,24 +3389,20 @@ msgstr "Verzeichnisse"
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:541
 msgid "Libraries"
-msgstr ""
+msgstr "Bibliotheken"
 
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:554
 msgid "Features"
-msgstr ""
+msgstr "Eigenschaften"
 
 #. [button]: id=copy_all
 #: data/gui/window/game_version.cfg:629
-#, fuzzy
-#| msgid "Copy"
 msgid "page^Copy"
 msgstr "Kopieren"
 
 #. [button]: id=copy_all
 #: data/gui/window/game_version.cfg:630
-#, fuzzy
-#| msgid "Copy this report to clipboard"
 msgid "Copy the full report to clipboard"
 msgstr "Bericht in Zwischenablage kopieren"
 
@@ -3326,7 +3422,7 @@ msgstr "Bericht in Zwischenablage kopieren"
 #: data/gui/window/gamestate_inspector.cfg:348
 #: data/gui/window/lua_interpreter.cfg:38
 msgid "Lua Console"
-msgstr ""
+msgstr "Lua Konsole"
 
 #. [label]
 #: data/gui/window/generator_settings.cfg:89
@@ -3380,10 +3476,8 @@ msgstr "Beschriftungen anzeigen"
 
 #. [label]
 #: data/gui/window/help_browser.cfg:116
-#, fuzzy
-#| msgid "Show Battle for Wesnoth help"
 msgid "Battle For Wesnoth Help"
-msgstr "Hilfe zu Battle for Wesnoth anzeigen"
+msgstr "Hilfe zu Battle for Wesnoth"
 
 #. [label]
 #: data/gui/window/hotkey_bind.cfg:35
@@ -3392,17 +3486,15 @@ msgstr "Drückt das gewünschte Tastenkürzel (Esc zum Abbrechen)"
 
 #. [label]: id=title
 #: data/gui/window/label_settings.cfg:42
-#, fuzzy
-#| msgid "Show floating labels"
 msgid "Show or Hide Labels"
-msgstr "Schwebende Meldungen anzeigen"
+msgstr "Beschriftungen Ein-/Ausblenden"
 
 #. [label]
 #. [grid]
 #: data/gui/window/language_selection.cfg:41
 #: data/gui/window/title_screen.cfg:258
 msgid "Language"
-msgstr "Spracheinstellungen"
+msgstr "Sprache"
 
 #. [label]
 #: data/gui/window/language_selection.cfg:60
@@ -3498,7 +3590,6 @@ msgstr "Aktualisieren"
 msgid "Create Game"
 msgstr "Partie eröffnen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [label]: id=title
 #. [grid]
@@ -3521,17 +3612,17 @@ msgstr "Aufzeichnung Schnell"
 #. [option]
 #: data/gui/window/lobby_main.cfg:555 data/gui/window/lobby_main.cfg:720
 msgid "Skip quickly to the active turn when observing"
-msgstr ""
+msgstr "Überspringe schnell zum aktiven Zug, wenn Sie das Spiel beobachten"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:559 data/gui/window/lobby_main.cfg:724
 msgid "Enter Blindfolded"
-msgstr ""
+msgstr "Blind betreten"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:560 data/gui/window/lobby_main.cfg:725
 msgid "Do not show the map until given control of a side"
-msgstr ""
+msgstr "Zeige die Karte nicht an, bevor eine Partei an der Reihe ist."
 
 #. [label]
 #: data/gui/window/lobby_main.cfg:614 data/gui/window/lobby_main.cfg:834
@@ -3555,7 +3646,7 @@ msgstr "Als Freund hinzufügen"
 #: data/gui/window/lobby_player_info.cfg:105
 #: data/gui/window/preferences/05_multiplayer.cfg:276
 msgid "Block"
-msgstr ""
+msgstr "Block"
 
 #. [button]: id=remove_from_list
 #: data/gui/window/lobby_player_info.cfg:118
@@ -3570,7 +3661,7 @@ msgstr "Private Nachricht senden"
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:153
 msgid "Moderator Controls"
-msgstr ""
+msgstr "Moderator Steuerung"
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:173
@@ -3599,29 +3690,23 @@ msgstr "Rauswerfen + Blockieren"
 
 #. [label]
 #: data/gui/window/logging.cfg:86
-#, fuzzy
-#| msgid "Options"
 msgid "Logging Options"
-msgstr "Einstellungen"
+msgstr "Protokoll-Einstellungen"
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:117
-#, fuzzy
-#| msgid "Clean Gray Cobbles"
 msgid "Clear Console"
-msgstr "Pflasterstraße"
+msgstr "Leere Konsole"
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:118
 msgid "Clear the log area"
-msgstr ""
+msgstr "Leere die Logfläche"
 
 #. [label]: id=title
 #: data/gui/window/mp_alerts_options.cfg:95
-#, fuzzy
-#| msgid "Multiplayer"
 msgid "Multiplayer Alerts"
-msgstr "Mehrspieler"
+msgstr "Mehrspieler Signaltöne"
 
 #. [label]
 #: data/gui/window/mp_alerts_options.cfg:113
@@ -3630,44 +3715,41 @@ msgid ""
 "multiplayer lobby; either by playing sound alerts or (if the game window is "
 "inactive or minimized) displaying desktop notifications."
 msgstr ""
+"Wählt, wie Ihr über Events in Multiplayer Partien oder der Multiplayer Lobby "
+"informiert werden möchtet; durch Töne oder (falls das Spielfenster minimiert "
+"oder inaktiv ist) durch Anzeigen von Desktop-Benachrichtigungen."
 
 #. [label]
 #: data/gui/window/mp_alerts_options.cfg:139
 msgid "Event"
-msgstr ""
+msgstr "Event"
 
 #. [widget]: id=label
 #. [label]
 #: data/gui/window/mp_alerts_options.cfg:154
 #: data/gui/window/preferences.cfg:346
 msgid "Sound"
-msgstr ""
+msgstr "Ton"
 
 #. [label]: id=notification_label
 #: data/gui/window/mp_alerts_options.cfg:170
-#, fuzzy
-#| msgid "Choose Modifications"
 msgid "Desktop Notification"
-msgstr "Modifikationen auswählen"
+msgstr "Desktop Benachrichtigungen"
 
 #. [label]
 #: data/gui/window/mp_alerts_options.cfg:185
-#, fuzzy
-#| msgid "Lobby"
 msgid "In Lobby"
-msgstr "Lobby"
+msgstr "In der Lobby"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
-#, fuzzy
-#| msgid "Players:"
 msgid "Player joins:"
-msgstr "Spieler:"
+msgstr "Spieler beigetreten:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
 msgid "When a player joins the lobby or game"
-msgstr ""
+msgstr "Wenn ein Spieler die Lobby oder das Spiel betritt"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:192
@@ -3677,7 +3759,7 @@ msgstr "Spieler verlässt:"
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:192
 msgid "When a player leaves the lobby or game"
-msgstr ""
+msgstr "Wenn ein Spieler die Lobby oder das Spiel verlässt"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
@@ -3697,7 +3779,7 @@ msgstr "Private Nachricht:"
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:194
 msgid "When a message from a friend is received"
-msgstr ""
+msgstr "Wenn eine Nachricht von einem Freund erhalten wurde"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:195
@@ -3707,7 +3789,7 @@ msgstr "Öffentliche Nachricht:"
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:195
 msgid "When a public message is received"
-msgstr ""
+msgstr "Wenn eine öffentliche Nachricht erhalten wurde"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:196
@@ -3717,7 +3799,7 @@ msgstr "Server Nachricht:"
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:196
 msgid "When a server message is received"
-msgstr ""
+msgstr "Wenn eine Nachricht von einem Server erhalten wurde"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:197
@@ -3727,7 +3809,7 @@ msgstr "Bereit zum Spielen:"
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:197
 msgid "When the game you are hosting is ready to start"
-msgstr ""
+msgstr "Wenn das Spiel, welches du bereitstellst, gestartet werden kann"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:198
@@ -3742,7 +3824,7 @@ msgstr "Wenn der Host (nicht Ihr) die Partie gestartet hat"
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:199
 msgid "Turn changed:"
-msgstr ""
+msgstr "Zug gewechselt:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:199
@@ -3796,9 +3878,8 @@ msgstr "Zufällige Fraktionen:"
 #. [label]
 #: data/gui/window/mp_create_game.cfg:156
 msgid "Allow for mirror matchups when random factions are chosen."
-msgstr ""
+msgstr "Erlaubt gespiegelte Parteien wenn zufällige Fraktionen gewählt wurden"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=mods_header
 #: data/gui/window/mp_create_game.cfg:203
 #: src/gui/dialogs/multiplayer/lobby.cpp:454
@@ -3937,19 +4018,18 @@ msgstr "Aktionsbonus"
 msgid "Time for each attack, recruit, and capture"
 msgstr "Zeit für jeden Angriff, jede Ausbildung und Einnahme"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=label
 #. [widget]: id=tab_label
 #: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:291
 #: data/gui/window/preferences/05_multiplayer.cfg:402
 #: src/gui/dialogs/preferences_dialog.cpp:139
 msgid "General"
-msgstr "General"
+msgstr "Allgemein"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_create_game.cfg:546
 msgid "Custom Options"
-msgstr "Benutzerdefinierte Optionen"
+msgstr "Erweiterte Optionen"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_create_game.cfg:559
@@ -3973,11 +4053,11 @@ msgstr "Neu erzeugen"
 
 #: data/gui/window/mp_create_game.cfg:929
 msgid "Assign sides to players at random"
-msgstr "Fraktionen zufällig an Spieler verteilen"
+msgstr "Parteien zufällig an Spieler verteilen"
 
 #: data/gui/window/mp_create_game.cfg:929
 msgid "Shuffle Sides"
-msgstr "Zufällige Teams"
+msgstr "Zufällige Parteien"
 
 #: data/gui/window/mp_create_game.cfg:933
 msgid "Allow users who are not playing to watch the game"
@@ -4023,7 +4103,6 @@ msgstr ""
 "Legt das Passwort fest, welches Spieler benötigen, um Eurer Partie "
 "beizutreten."
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:177
@@ -4043,7 +4122,6 @@ msgstr "Anführer:"
 msgid "Gender:"
 msgstr "Geschlecht:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
 #: data/gui/window/mp_faction_select.cfg:167
 #: src/gui/dialogs/multiplayer/faction_select.cpp:151
@@ -4118,7 +4196,6 @@ msgstr "Verlassen"
 msgid "Game Lobby"
 msgstr "Spiel Lobby"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:479 data/gui/window/mp_staging.cfg:614
 #: data/gui/window/mp_staging.cfg:806
@@ -4157,7 +4234,6 @@ msgstr "Euer Name:"
 msgid "Save password locally (encrypted)"
 msgstr "Speichert das Passwort in der Konfigurationsdatei (verschlüsselt)"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=label
 #. [label]
 #. [grid]
@@ -4220,7 +4296,6 @@ msgstr "Lokales Spiel"
 msgid "Address"
 msgstr "Adresse"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/mp_server_list.cfg:217 src/preferences/display.cpp:172
 msgid "Select"
@@ -4229,27 +4304,28 @@ msgstr "Auswählen"
 #. [button]: id=select_leader
 #: data/gui/window/mp_staging.cfg:70
 msgid "Select the faction and leader for this side"
-msgstr "Wählen Sie die Fraktion und Anführer für diese Seite"
+msgstr "Wählen Sie die Fraktion und den Heerführer für diese Partei"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
 msgid "Change the side's controller"
-msgstr ""
+msgstr "Ändere, wer die Kontrolle über diese Partei hat"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:261
+#| msgid "Change the music volume"
 msgid "Change the AI side's behaviour"
-msgstr ""
+msgstr "Ändere das Verhalten dieser KI gesteuerten Partei"
 
 #. [menu_button]: id=side_team
 #: data/gui/window/mp_staging.cfg:288
 msgid "Which team this side belongs to"
-msgstr ""
+msgstr "Zu welcher Allianz eine Partei gehört"
 
 #. [menu_button]: id=side_color
 #: data/gui/window/mp_staging.cfg:304
 msgid "The team color"
-msgstr "Farbe des Teams"
+msgstr "Farbe der Allianz"
 
 #. [button]: id=ok
 #: data/gui/window/mp_staging.cfg:422
@@ -4337,7 +4413,7 @@ msgstr "Zeigt ein Hinweisfenster zu Rundenbeginn des Spielers"
 #. [toggle_button]: id=whiteboard_on_start
 #: data/gui/window/preferences/01_general.cfg:132
 msgid "Enable planning mode on start"
-msgstr "Planungsmodus bei Start aktiviren"
+msgstr "Planungsmodus bei Start aktivieiren"
 
 #. [toggle_button]: id=whiteboard_on_start
 #: data/gui/window/preferences/01_general.cfg:133
@@ -4498,7 +4574,7 @@ msgstr "Zeige die Schadens- und Heilzahlen über den Einheiten an"
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:82
 msgid "Show team colors"
-msgstr "Teammarkierungen anzeigen"
+msgstr "Allianzmarkierungen anzeigen"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:83
@@ -4506,7 +4582,7 @@ msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
-"Ein farbiger Kreis markiert die Einheiten, um zu zeigen, welcher Seite sie "
+"Ein farbiger Kreis markiert die Einheiten, um zu zeigen, welcher Partei sie "
 "angehören"
 
 #. [toggle_button]: id=show_grid
@@ -4696,10 +4772,8 @@ msgstr "Akzeptiere noch Flüster-Nachrichten von Freunden"
 
 #. [toggle_button]: id=lobby_whisper_friends_only
 #: data/gui/window/preferences/05_multiplayer.cfg:85
-#, fuzzy
-#| msgid "Add this username to your friends list"
 msgid "Only accept whisper messages from people on your friends list"
-msgstr "Diesen Spieler zu Eurer Freundesliste hinzufügen"
+msgstr "Flüster-Nachrichten nur von Leuten auf deiner Freundesliste zulassen"
 
 #. [toggle_button]: id=lobby_joins_none
 #: data/gui/window/preferences/05_multiplayer.cfg:101
@@ -4745,7 +4819,7 @@ msgstr "Konfiguriere Multiplayer-Nachrichten-Einstellungen"
 #. [button]: id=mp_wesnothd
 #: data/gui/window/preferences/05_multiplayer.cfg:162
 msgid "Server Executable"
-msgstr ""
+msgstr "Server Programmdatei"
 
 #. [button]: id=mp_wesnothd
 #: data/gui/window/preferences/05_multiplayer.cfg:163
@@ -4763,16 +4837,12 @@ msgstr ""
 
 #. [button]: id=add_ignored
 #: data/gui/window/preferences/05_multiplayer.cfg:277
-#, fuzzy
-#| msgid ""
-#| "Add this username to your ignores list (add optional reason, e.g., "
-#| "'player_name reason ignored')"
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
 "'player_name reason ignored')"
 msgstr ""
-"Fügt den Benutzer zu Eurer Sperrliste hinzu (mit optionalen Anmerkungen, "
-"bsp. 'spieler_name Freundesnotiz')"
+"Fügt den Benutzer zu Eurer Sperrliste hinzu (mit optionalen Anmerkungen. "
+"Beispiel: 'spieler_name Begründung')"
 
 #. [button]: id=remove
 #: data/gui/window/preferences/05_multiplayer.cfg:290
@@ -4805,7 +4875,6 @@ msgstr "Bildschirmfotos…"
 msgid "Browse the screenshots folder using a file manager"
 msgstr "Bildschirmfotoverzeichnis im Dateimanager öffnen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=save
 #: data/gui/window/screenshot_notification.cfg:203
 #: src/gui/dialogs/file_dialog.cpp:185
@@ -4815,32 +4884,32 @@ msgstr "Speichern"
 #. [label]
 #: data/gui/window/select_orb_colors.cfg:80
 msgid "Choose Orb/Minimap Colors"
-msgstr "Wähle Kugel/Minimap Farben"
+msgstr "Wähle Sphäre/Minimap Farben"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:84
 msgid "Show unmoved orb"
-msgstr "Zeige unbewegte Kugel"
+msgstr "Zeige unbewegte Sphäre"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:85
 msgid "Show partial moved orb"
-msgstr "Zeige teilweise bewegte Kugel"
+msgstr "Zeige teilweise bewegte Sphäre"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:86
 msgid "Show moved orb"
-msgstr "Zeige bewegte Kugel"
+msgstr "Zeige bewegte Sphäre"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:87
 msgid "Show ally orb"
-msgstr "Zeige Kugeln Verbündeter"
+msgstr "Zeige Sphären Verbündeter"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:88
 msgid "Show enemy orb"
-msgstr "Zeige Kugeln der Gegner"
+msgstr "Zeige Sphären der Gegner"
 
 #. [label]
 #: data/gui/window/sp_options_configure.cfg:44
@@ -4869,7 +4938,6 @@ msgstr "Insgesamt"
 msgid "This Turn"
 msgstr "Diese Runde"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/statistics_dialog.cfg:432 src/hotkey/hotkey_command.cpp:102
 msgid "Statistics"
@@ -4890,7 +4958,6 @@ msgstr "Kampagne"
 msgid "Skip"
 msgstr "Überspringen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/window/surrender_quit.cfg:40 src/hotkey/hotkey_command.cpp:105
 msgid "Surrender Game"
@@ -4935,7 +5002,7 @@ msgstr "Bild"
 #. [label]
 #: data/gui/window/terrain_layers.cfg:57
 msgid "Loc"
-msgstr ""
+msgstr "Loc"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:69
@@ -4945,12 +5012,12 @@ msgstr "Ebene"
 #. [label]
 #: data/gui/window/terrain_layers.cfg:81
 msgid "Base.x"
-msgstr ""
+msgstr "Base.x"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:93
 msgid "Base.y"
-msgstr ""
+msgstr "Base.y"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:105
@@ -4992,7 +5059,6 @@ msgstr "Nächsten Tipp des Tages anzeigen"
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Führt in die Grundzüge des Spieles ein"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/window/title_screen.cfg:251 src/gui/dialogs/game_load.cpp:340
 msgid "Tutorial"
@@ -5109,12 +5175,9 @@ msgstr "Angreifen"
 
 #. [label]
 #: data/gui/window/unit_attack.cfg:305
-#, fuzzy
-#| msgid "Attack enemy"
 msgid "Attack Enemy"
 msgstr "Gegner angreifen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/unit_create.cfg:47 src/hotkey/hotkey_command.cpp:96
 msgid "Create Unit (Debug!)"
@@ -5152,7 +5215,6 @@ msgstr "S"
 msgid "XP"
 msgstr "EP"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_6
 #: data/gui/window/unit_list.cfg:177 data/gui/window/unit_recall.cfg:89
@@ -5161,7 +5223,6 @@ msgstr "EP"
 msgid "Traits"
 msgstr "Charakteristiken"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/unit_list.cfg:368 src/hotkey/hotkey_command.cpp:101
 msgid "Unit List"
@@ -5177,7 +5238,6 @@ msgstr "Einheit einberufen"
 msgid "Dismiss"
 msgstr "Entlassen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/unit_recall.cfg:419 src/hotkey/hotkey_command.cpp:86
 msgid "Recall"
@@ -5188,13 +5248,11 @@ msgstr "Einberufen"
 msgid "Recruit Unit"
 msgstr "Einheit ausbilden"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/unit_recruit.cfg:219 src/hotkey/hotkey_command.cpp:84
 msgid "Recruit"
 msgstr "Ausbilden"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:210
 #: src/gui/dialogs/preferences_dialog.cpp:267
@@ -5202,7 +5260,6 @@ msgstr "Ausbilden"
 msgid "Error"
 msgstr "Fehler"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
 #: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:228
 #: src/gui/dialogs/multiplayer/lobby.cpp:244 src/gui/dialogs/wml_error.cpp:197
@@ -5210,79 +5267,64 @@ msgid "Details:"
 msgstr "Details:"
 
 #: src/build_info.cpp:259
-#, fuzzy
 msgid "feature^Experimental OpenMP support"
-msgstr "feature^Experimental OpenMP support"
+msgstr "feature^Experimentelle OpenMP Unterstützung"
 
 #: src/build_info.cpp:264
-#, fuzzy
 msgid "feature^JPG screenshots"
-msgstr "feature^JPG screenshots"
+msgstr "feature^JPG Bildschirmfotos"
 
 #: src/build_info.cpp:271
-#, fuzzy
 msgid "feature^Lua console completion"
-msgstr "feature^Lua console completion"
+msgstr "feature^Lua Konsole completion"
 
 #: src/build_info.cpp:276
-#, fuzzy
 msgid "feature^Legacy bidirectional rendering"
 msgstr "feature^Legacy bidirectional rendering"
 
 #: src/build_info.cpp:283
-#, fuzzy
 msgid "feature^D-Bus notifications back end"
 msgstr "feature^D-Bus notifications back end"
 
 #: src/build_info.cpp:292
-#, fuzzy
 msgid "feature^Win32 notifications back end"
 msgstr "feature^Win32 notifications back end"
 
 #: src/build_info.cpp:298
-#, fuzzy
 msgid "feature^Cocoa notifications back end"
 msgstr "feature^Cocoa notifications back end"
 
 #: src/desktop/paths.cpp:96
-#, fuzzy
 msgid "filesystem_path_system^Volumes"
 msgstr "filesystem_path_system^Volumes"
 
 #: src/desktop/paths.cpp:200
-#, fuzzy
 msgid "filesystem_path_game^Game executables"
 msgstr "filesystem_path_game^Game executables"
 
 #: src/desktop/paths.cpp:204
-#, fuzzy
 msgid "filesystem_path_game^Game data"
 msgstr "filesystem_path_game^Game data"
 
 #: src/desktop/paths.cpp:208
-#, fuzzy
 msgid "filesystem_path_game^User data"
 msgstr "filesystem_path_game^User data"
 
 #: src/desktop/paths.cpp:212
-#, fuzzy
 msgid "filesystem_path_game^User preferences"
 msgstr "filesystem_path_game^User preferences"
 
 #: src/desktop/paths.cpp:225
-#, fuzzy
 msgid "filesystem_path_system^Home"
 msgstr "filesystem_path_system^Home"
 
 #: src/desktop/paths.cpp:234
-#, fuzzy
 msgid "filesystem_path_system^Root"
 msgstr "filesystem_path_system^Root"
 
 #: src/desktop/version.cpp:292
-#, fuzzy
 msgid "operating_system^<unknown>"
-msgstr "<unbekannt>"
+msgstr "operating_system^<unknown>"
 
 #: src/font/marked-up_text.cpp:402
 msgid "The maximum text width is less than 1."
@@ -5295,42 +5337,42 @@ msgstr "Der Text enthält ungültige Auszeichnungen: "
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:251
 msgid "conjunct pair^$first and $second"
-msgstr ""
+msgstr "conjunct pair^$first und $second"
 
 #. TRANSLATORS: Formats the first two elements of a conjunctive list.
 #: src/formula/string_utils.cpp:254
 msgid "conjunct start^$first, $second"
-msgstr ""
+msgstr "conjunct start^$first, $second"
 
 #. TRANSLATORS: Formats successive elements of a conjunctive list.
 #: src/formula/string_utils.cpp:258
 msgid "conjunct mid^$prefix, $next"
-msgstr ""
+msgstr "conjunct mid^$prefix, $next"
 
 #. TRANSLATORS: Formats the final element of a conjunctive list.
 #: src/formula/string_utils.cpp:261
 msgid "conjunct end^$prefix, and $last"
-msgstr ""
+msgstr "conjunct end^$prefix, und $last"
 
 #. TRANSLATORS: Formats a two-element disjunctive list.
 #: src/formula/string_utils.cpp:269
 msgid "disjunct pair^$first or $second"
-msgstr ""
+msgstr "disjunct pair^$first oder $second"
 
 #. TRANSLATORS: Formats the first two elements of a disjunctive list.
 #: src/formula/string_utils.cpp:272
 msgid "disjunct start^$first, $second"
-msgstr ""
+msgstr "disjunct start^$first, $second"
 
 #. TRANSLATORS: Formats successive elements of a disjunctive list.
 #: src/formula/string_utils.cpp:276
 msgid "disjunct mid^$prefix, $next"
-msgstr ""
+msgstr "disjunct mid^$prefix, $next"
 
 #. TRANSLATORS: Formats the final element of a disjunctive list.
 #: src/formula/string_utils.cpp:279
 msgid "disjunct end^$prefix, or $last"
-msgstr ""
+msgstr "disjunct end^$prefix, oder $last"
 
 #: src/gui/core/canvas.cpp:612
 msgid "Line doesn't fit on canvas."
@@ -5597,6 +5639,9 @@ msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr ""
+"Die folgenden Erweiterungen scheinen Veröffentlichungs- oder "
+"Versionskontrollinformationen lokal gespeichert zu haben, und werden nicht "
+"entfernt:"
 
 #: src/gui/dialogs/addon/manager.cpp:680
 msgid "The following add-on could not be deleted properly:"
@@ -5617,6 +5662,8 @@ msgstr ""
 #: src/gui/dialogs/addon/manager.cpp:736
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
+"Ungültiger Icon-Pfad. Stellen Sie sicher, dass der Pfad zu einem gültigen "
+"Bild führt."
 
 #: src/gui/dialogs/addon/manager.cpp:739 src/gui/dialogs/addon/manager.cpp:742
 #: src/gui/dialogs/addon/manager.cpp:781
@@ -5637,6 +5684,8 @@ msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
+"Das Entfernen von '$addon|' wird dauerhaft alle Hoch- und Runterladezahlen "
+"löschen. Möchten Sie wirklich fortfahren?"
 
 #: src/gui/dialogs/addon/manager.cpp:801
 msgid "Do you want to uninstall '$addon|'?"
@@ -5677,6 +5726,8 @@ msgid ""
 "The currently chosen scenario is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"Das momentan gewählte Szenario ist nicht mit ihren Einstellungen kompatibel. "
+"Bitte wählen sie ein kompatibles aus."
 
 #: src/gui/dialogs/depcheck_select_new.cpp:78
 msgid ""
@@ -5830,10 +5881,12 @@ msgid "Version: "
 msgstr "Version: "
 
 #: src/gui/dialogs/game_stats.cpp:78
+#| msgid "controller^None"
 msgid "controller^AI"
 msgstr "KI"
 
 #: src/gui/dialogs/game_stats.cpp:78
+#| msgid "controller^None"
 msgid "controller^Idle"
 msgstr "Leer"
 
@@ -5865,11 +5918,11 @@ msgstr "Nicht verfügbar"
 
 #: src/gui/dialogs/label_settings.cpp:53
 msgid "Team Labels"
-msgstr "Team Beschriftungen"
+msgstr "Allianz Beschriftungen"
 
 #: src/gui/dialogs/label_settings.cpp:76
 msgid "Side $side_number ($name)"
-msgstr "Seite $side_number ($name)"
+msgstr "Partei $side_number ($name)"
 
 #: src/gui/dialogs/loading_screen.cpp:50
 msgid "Building terrain rules"
@@ -5877,7 +5930,7 @@ msgstr "Bilde Terrainregeln"
 
 #: src/gui/dialogs/loading_screen.cpp:51
 msgid "Reading files and creating cache"
-msgstr "Lese Daten und erschaffe Cache"
+msgstr "Lese Daten und erstelle Cache"
 
 #: src/gui/dialogs/loading_screen.cpp:52 src/gui/dialogs/loading_screen.cpp:55
 msgid "Initializing display"
@@ -5889,7 +5942,7 @@ msgstr "Initialisiere Schriftart für aktuelle Sprache"
 
 #: src/gui/dialogs/loading_screen.cpp:54
 msgid "Initializing teams"
-msgstr "Initialisiere Fraktionen"
+msgstr "Initialisiere Allianzen"
 
 #: src/gui/dialogs/loading_screen.cpp:56
 msgid "Loading game configuration"
@@ -5904,7 +5957,6 @@ msgid "Loading level"
 msgstr "Lade Level"
 
 #: src/gui/dialogs/loading_screen.cpp:59
-#, fuzzy
 msgid "Initializing scripting engine"
 msgstr "Initialisiere Scripting Engine"
 
@@ -5982,7 +6034,7 @@ msgstr "Möchtet Ihr das Spiel wirklich beenden?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:224
 msgid "Incompatible User-made Content."
-msgstr ""
+msgstr "Inkompatibler von Nutzern erstellter Inhalt."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:225
 msgid ""
@@ -5990,10 +6042,13 @@ msgid ""
 "incompatible with your version. You might wish to suggest that the host's "
 "add-ons be updated."
 msgstr ""
+"Der Partie kann nicht beigetreten werden, da der Host veraltete Versionen "
+"von Erweiterungen hat, die nicht mit Ihrer kompatibel sind. Sie könnten dem "
+"Host vorschlagen, seine Erweiterungen zu aktualisieren."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:240
 msgid "Missing User-made Content."
-msgstr ""
+msgstr "Fehlernder von Nutzern erstellter Inhalt"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:241
 msgid ""
@@ -6001,6 +6056,9 @@ msgid ""
 "in order to join.\n"
 "Do you want to try to install them?"
 msgstr ""
+"Diese Partie benötigt die Installation weiterer Erweiterungen, um beitreten "
+"zu können.\n"
+"Möchten Sie diese installieren?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:407
 msgid "Games: showing $num_shown out of $num_total"
@@ -6043,6 +6101,8 @@ msgid ""
 "One or more items need to be installed\n"
 "in order to join this game."
 msgstr ""
+"Eine oder mehrere Artikel müssen installiert werden, um dieser Partie "
+"beitreten zu können."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:511
 msgid "Observers allowed"
@@ -6057,16 +6117,21 @@ msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at http://bugs.wesnoth.org."
 msgstr ""
+"Etwas stimmt nicht mit der Version der Erweiterung, überprüfe Datenbank "
+"welche die Multiplayer Lobby unterstützt. Bitte melden Sie dies hier: http://"
+"bugs.wesnoth.org."
 
 #: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:131
 msgid ""
 "This build of wesnoth does not include support for desktop notifications, "
 "contact your package manager"
 msgstr ""
+"Diese Version von Wesnoth beinhaltet keine Unterstützung von Desktop-"
+"Benachrichtigungen. Bitte kontaktieren Sie ihren Packer"
 
 #: src/gui/dialogs/multiplayer/mp_change_control.cpp:108
 msgid "Side $side"
-msgstr "Fraktion $side"
+msgstr "Partei $side"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:108
 msgid "Scenarios"
@@ -6125,7 +6190,7 @@ msgstr "Keine Epochen für diese Partie verfügbar."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:830
 msgid "The selected game has no sides!"
-msgstr "Die gewählte Partie hat keine Fraktionen!"
+msgstr "Die gewählte Partie hat keine Parteien!"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:896
 msgid "Choose Starting Scenario"
@@ -6162,7 +6227,7 @@ msgstr "Leer"
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:332
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:154
 msgid "Team:"
-msgstr "Team:"
+msgstr "Allianz:"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:464
 msgid "Waiting for players to choose factions..."
@@ -6218,7 +6283,7 @@ msgstr "Debug Befehl"
 
 #: src/gui/dialogs/preferences_dialog.cpp:151
 msgid "Custom WML Commands"
-msgstr "Benutzerdefinierter WML Befehl"
+msgstr "Benutzerdefinierte WML Befehle"
 
 #: src/gui/dialogs/preferences_dialog.cpp:190
 msgid "friend"
@@ -6238,26 +6303,21 @@ msgid "Invalid username"
 msgstr "Ungültiger Spielername"
 
 #: src/gui/dialogs/preferences_dialog.cpp:314
-#, fuzzy
-#| msgid "View and edit your friends and ignores list"
 msgid "Not on friends or ignore lists"
-msgstr "Anzeigen und Editieren der Freundes- oder Ignorierliste"
+msgstr "Nicht auf der Freundes- oder Ignoriert-Liste."
 
 #: src/gui/dialogs/preferences_dialog.cpp:814
 msgid "&#9679;"
-msgstr ""
+msgstr "&#9679;"
 
 #: src/gui/dialogs/preferences_dialog.cpp:874
-#, fuzzy
-#| msgid ""
-#| "\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\". Do you wish "
-#| "to reassign it to \"$new_hotkey_action|\"?"
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
-"\"$hotkey_sequence|\" wird bereits von \"$old_hotkey_action|\" verwendet. "
-"Möchtet Ihr diese Kombination \"$new_hotkey_action|\" zuweisen?"
+"“<b>$hotkey_sequence|</b>” wird bereits von “<b>$old_hotkey_action|</b>” "
+"verwendet. Möchtet Ihr diese Kombination “<b>$new_hotkey_action|</b>\" "
+"zuweisen?"
 
 #: src/gui/dialogs/preferences_dialog.cpp:880
 msgid "Reassign Hotkey"
@@ -6388,6 +6448,8 @@ msgstr "Benötigtes Steuerelement ’$id’ wurde nicht definiert."
 #: src/gui/widgets/label.cpp:153
 msgid "Opening links is not supported, contact your packager"
 msgstr ""
+"Das Öffnen von Links wird nicht unterstützt. Bitte kontaktieren sie ihren "
+"Packer."
 
 #: src/gui/widgets/label.cpp:172
 msgid "Do you want to open this link?"
@@ -6435,7 +6497,7 @@ msgstr "Keine ausgewählt"
 
 #: src/gui/widgets/pane.cpp:429
 msgid "Need at least 1 parallel item."
-msgstr ""
+msgstr "Mindestens ein paralleler Gegenstand benötigt."
 
 #: src/gui/widgets/size_lock.cpp:154
 msgid "No widget defined."
@@ -6668,7 +6730,7 @@ msgstr "Zug beenden"
 
 #: src/hotkey/hotkey_command.cpp:90
 msgid "Toggle Ellipses"
-msgstr "Teammarkierungen anzeigen"
+msgstr "Allianzmarkierungen anzeigen"
 
 #: src/hotkey/hotkey_command.cpp:91
 msgid "Toggle Grid"
@@ -6680,7 +6742,7 @@ msgstr "Mit der Maus scrollen"
 
 #: src/hotkey/hotkey_command.cpp:93
 msgid "Status Table"
-msgstr "Spielübersicht anzeigen"
+msgstr "Spielübersicht"
 
 #: src/hotkey/hotkey_command.cpp:94
 msgid "Mute"
@@ -6716,7 +6778,7 @@ msgstr "Zurück zum Hauptmenü"
 
 #: src/hotkey/hotkey_command.cpp:107
 msgid "Set Team Label"
-msgstr "Teamspezifische Beschriftung erstellen"
+msgstr "Allianzspezifische Beschriftung erstellen"
 
 #: src/hotkey/hotkey_command.cpp:108
 msgid "Set Label"
@@ -6752,7 +6814,7 @@ msgstr "Nächste Runde"
 
 #: src/hotkey/hotkey_command.cpp:117
 msgid "Next Side"
-msgstr "Nächste Fraktion"
+msgstr "Nächste Partei"
 
 #: src/hotkey/hotkey_command.cpp:118
 msgid "Next Move"
@@ -6764,13 +6826,11 @@ msgstr "Ganze Karte"
 
 #: src/hotkey/hotkey_command.cpp:120
 msgid "Each Team"
-msgstr "Jedes Team"
+msgstr "Jede Allianz"
 
 #: src/hotkey/hotkey_command.cpp:121
-#, fuzzy
-#| msgid "Human Castle"
 msgid "Human Team"
-msgstr "Burg"
+msgstr "Allianz (Spieler)"
 
 #: src/hotkey/hotkey_command.cpp:122
 msgid "Skip Animation"
@@ -6817,7 +6877,7 @@ msgstr "Als Tod annehmen"
 
 #: src/hotkey/hotkey_command.cpp:140
 msgid "Quit to Desktop"
-msgstr "Beenden und zum Desktop zurückkehren"
+msgstr "Zurück zum Desktop"
 
 #: src/hotkey/hotkey_command.cpp:141
 msgid "Close Map"
@@ -6872,12 +6932,10 @@ msgid "Map Information"
 msgstr "Karteninformationen"
 
 #: src/hotkey/hotkey_command.cpp:162
-#, fuzzy
 msgid "Clear Selected Item Set"
-msgstr "Ausgewähltes Spiel"
+msgstr "Itemauswahl löschen"
 
 #: src/hotkey/hotkey_command.cpp:163
-#, fuzzy
 msgid "Swap Foreground/Background Palette Item"
 msgstr "Vorder- und Hintergrundgelände tauschen"
 
@@ -6899,7 +6957,7 @@ msgstr "Standort entfernen"
 
 #: src/hotkey/hotkey_command.cpp:169
 msgid "Add New Side"
-msgstr "Fraktion hinzufügen"
+msgstr "Partei hinzufügen"
 
 #: src/hotkey/hotkey_command.cpp:171
 msgid "Next Tool"
@@ -6966,7 +7024,7 @@ msgid ""
 "brings up a context menu. Needs a defined side."
 msgstr ""
 "Die linke Maustaste platziert oder verschiebt eine Einheit, die Rechte ruft "
-"ein Kontextmenü auf. Benötigt eine definierte Fraktion."
+"ein Kontextmenü auf. Benötigt eine definierte Partei."
 
 #: src/hotkey/hotkey_command.cpp:178
 msgid "Unit Tool"
@@ -7002,7 +7060,7 @@ msgid ""
 "clears. Needs a defined side."
 msgstr ""
 "Die linke Maustaste weißt dieses Dorf der aktuellen Fraktion zu, die Rechte "
-"entfernt den Besitzer. Benötigt eine definierte Fraktion."
+"entfernt den Besitzer. Benötigt eine definierte Partei."
 
 #: src/hotkey/hotkey_command.cpp:181
 msgid "Village Tool"
@@ -7014,7 +7072,7 @@ msgstr "Kann ausbilden"
 
 #: src/hotkey/hotkey_command.cpp:183
 msgid "Toggle the recruit attribute of a unit."
-msgstr ""
+msgstr "Schalte den Ausbildungswert der Einheit ein/aus."
 
 #: src/hotkey/hotkey_command.cpp:184
 msgid "Can be Renamed"
@@ -7022,7 +7080,7 @@ msgstr "Kann umbenannt werden"
 
 #: src/hotkey/hotkey_command.cpp:184
 msgid "Toggle the unit being renameable."
-msgstr ""
+msgstr "Erlaube Umbennenung der Einheit."
 
 #: src/hotkey/hotkey_command.cpp:185
 msgid "Assign Recruit List"
@@ -7031,6 +7089,7 @@ msgstr "Rekrutierungsliste zuweisen"
 #: src/hotkey/hotkey_command.cpp:185
 msgid "Assign the selected unit set as recruit list to the unit."
 msgstr ""
+"Erstelle aus den ausgewählten Einheiten die Ausbildungsliste der Einheit."
 
 #: src/hotkey/hotkey_command.cpp:187
 msgid "Change Unit ID"
@@ -7042,22 +7101,21 @@ msgstr "Loyal"
 
 #: src/hotkey/hotkey_command.cpp:191
 msgid "Toggle Minimap Unit Coding"
-msgstr ""
+msgstr "Einheitenkodierung auf Minikarte umschalten"
 
 #: src/hotkey/hotkey_command.cpp:192
 msgid "Toggle Minimap Terrain Coding"
-msgstr ""
+msgstr "Geländekodierung auf Minikarte umschalten"
 
 #: src/hotkey/hotkey_command.cpp:194
 msgid "Toggle Minimap Unit Drawing"
-msgstr ""
+msgstr "Zeichne Einheiten auf die Minikarte"
 
 #: src/hotkey/hotkey_command.cpp:195
 msgid "Toggle Minimap Village Drawing"
-msgstr ""
+msgstr "Zeichne Dörfer auf die Minikarte"
 
 #: src/hotkey/hotkey_command.cpp:196
-#, fuzzy
 msgid "Toggle Minimap Terrain Drawing"
 msgstr "Geländeübergänge aktualisieren"
 
@@ -7101,6 +7159,8 @@ msgstr "Kopieren"
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
+"Die linke Maustaste kopiert aus der Zwischenablage, die rechte Maustaste "
+"öffnet das Kontextmenü."
 
 #: src/hotkey/hotkey_command.cpp:208
 msgid "Paste"
@@ -7151,14 +7211,12 @@ msgid "Fill Selection"
 msgstr "Ausgewählten Bereich füllen"
 
 #: src/hotkey/hotkey_command.cpp:220
-#, fuzzy
 msgid "Generate Tiles in Selection"
 msgstr "Felder in Auswahl generieren"
 
 #: src/hotkey/hotkey_command.cpp:221
-#, fuzzy
 msgid "Randomize Tiles in Selection"
-msgstr "Felder in Auswahl randomisieren"
+msgstr "Felder in Auswahl zufällig anordnen"
 
 #: src/hotkey/hotkey_command.cpp:223
 msgid "Rotate Map"
@@ -7181,7 +7239,6 @@ msgid "Update Terrain Transitions"
 msgstr "Geländeübergänge aktualisieren"
 
 #: src/hotkey/hotkey_command.cpp:232
-#, fuzzy
 msgid "Toggle Terrain Transition Update"
 msgstr "Geländeübergänge aktualisieren"
 
@@ -7214,17 +7271,16 @@ msgid "Draw Number of Bitmaps"
 msgstr "Zeichne Anzahl der Bitmaps"
 
 #: src/hotkey/hotkey_command.cpp:243
-#, fuzzy
 msgid "Save Selection to Area"
-msgstr "Auswahl rotieren"
+msgstr "Auswahl zu Zone speichern"
 
 #: src/hotkey/hotkey_command.cpp:244
 msgid "Rename Selected Area"
-msgstr "Ausgewähltes Gebiet umbenennen"
+msgstr "Ausgewählte Zone umbenennen"
 
 #: src/hotkey/hotkey_command.cpp:245
 msgid "Remove Selected Area"
-msgstr "Ausgewähltes Gebiet entfernen"
+msgstr "Ausgewählte Zone entfernen"
 
 #: src/hotkey/hotkey_command.cpp:246
 msgid "Add New Area"
@@ -7236,11 +7292,11 @@ msgstr "Szenario bearbeiten"
 
 #: src/hotkey/hotkey_command.cpp:249
 msgid "Edit Side"
-msgstr "Fraktion bearbeiten"
+msgstr "Partei bearbeiten"
 
 #: src/hotkey/hotkey_command.cpp:250
 msgid "Remove Side"
-msgstr "Fraktion entfernen"
+msgstr "Partei entfernen"
 
 #: src/hotkey/hotkey_command.cpp:252
 msgid "Delay Shroud Updates"
@@ -7372,6 +7428,9 @@ msgid ""
 "functionality and is required for hosting local network games. It will "
 "normally be found in the same folder as the game executable."
 msgstr ""
+"Das <b>$filename</b> Serverprogramm verfügt über eine Multiplayer-Server "
+"Funktionalität und wird zum Hosten einer Netzwerkpartie benötigt. Es ist "
+"normalerweise im Hauptverzeichnis des Spiels zu finden."
 
 #: src/preferences/display.cpp:170
 msgid "Find Server Application"

@@ -5,20 +5,22 @@
 # Alexander Laux <alexander.laux@kabelbw.de>, 2010
 # Drakefriend, 2012.
 # Bernhard M. Wiedemann <bernhard+wesnoth@lsmod.de>, 2013
+# Aaron Winter <winter.aaron93@gmail.com>, 2018
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.12\n"
+"Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-04-15 04:34 UTC\n"
-"PO-Revision-Date: 2014-11-09 16:14+0100\n"
-"Last-Translator: Christoph Berg <christoph.berg@kpm-sport.de>\n"
+"PO-Revision-Date: 2018-04-23 13:32+0200\n"
+"Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:49
@@ -50,10 +52,8 @@ msgstr "(Einstufung: Mittel, 18 Szenarien)"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:55
-#, fuzzy
-#| msgid "(Easy)"
 msgid "Easy"
-msgstr "(Einfach)"
+msgstr "Einfach"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:55
@@ -67,15 +67,13 @@ msgstr "Baron"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:56
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(Normal)"
+msgstr "Normal"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:57
 msgid "Challenging"
-msgstr ""
+msgstr "Herausfordernd"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:57
@@ -274,28 +272,20 @@ msgstr "Kapitel Eins: Flucht nach vorne"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:30
-#, fuzzy
-#| msgid ""
-#| "<i>The Legend of Wesmere</i>,\n"
-#| "Chapter One"
 msgid ""
 "<i>The Legend of Wesmere</i>\n"
 "Chapter One"
 msgstr ""
-"<i>Die Legende von Wesmere</i>.\n"
+"<i>Die Legende von Wesmere</i>\n"
 "Erstes Kapitel"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:34
-#, fuzzy
-#| msgid ""
-#| "Chapter One,\n"
-#| "<i>Flight and Fight</i>"
 msgid ""
 "Chapter One\n"
 "<i>Flight and Fight</i>"
 msgstr ""
-"Kapitel Eins,\n"
+"Kapitel Eins\n"
 "<i>Flucht nach vorne</i>"
 
 #. [part]
@@ -1170,10 +1160,6 @@ msgstr "Zweites Kapitel: Die Schatzkammer"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:42
-#, fuzzy
-#| msgid ""
-#| "<i>The Legend of Wesmere</i>,\n"
-#| "Chapter Two"
 msgid ""
 "<i>The Legend of Wesmere</i>\n"
 "Chapter Two"
@@ -1183,10 +1169,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:47
-#, fuzzy
-#| msgid ""
-#| "Chapter Two,\n"
-#| "<i>The Treasury</i>"
 msgid ""
 "Chapter Two\n"
 "<i>The Treasury</i>"
@@ -1410,10 +1392,9 @@ msgstr "Spahr"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:205
-#, fuzzy
-#| msgid "Enter the Saurian Treasury and leave with the gold"
 msgid "Enter the Saurian Treasury with a horse and leave with the gold"
-msgstr "Betretet die saurianische Schatzkammer und verlasst sie mit dem Gold"
+msgstr ""
+"Betretet die saurianische Schatzkammer zu Pferd und verlasst sie mit dem Gold"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:272
@@ -1591,7 +1572,7 @@ msgstr "Traur"
 #. [note]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:251
 msgid "Try to save leveled dwarf units"
-msgstr ""
+msgstr "Versucht, höherstufige Zwerge am Leben zu erhalten."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:261
@@ -1755,10 +1736,6 @@ msgstr "Truugl"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:294
-#, fuzzy
-#| msgid ""
-#| "You must own the field and be capable of overwhelming your opponents. "
-#| "(Player(s) own more than 25 units while the foes’ numbers fell below 15)"
 msgid ""
 "You must own the field and be capable of overwhelming your opponents. "
 "(Player(s) own more than 25 units while the foes’ numbers fall below 15.)"
@@ -1790,10 +1767,6 @@ msgstr ""
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:384
-#, fuzzy
-#| msgid ""
-#| "She is right. Don’t let them lure you away from the Ka’lian, preparations "
-#| "for when more of them arrive return must be made."
 msgid ""
 "She is right. Don’t let them lure you away from the Ka’lian, preparations "
 "for when more of them arrive must be made."
@@ -1966,18 +1939,13 @@ msgstr ""
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:567
-#, fuzzy
-#| msgid "Perhaps the gold will our word weight with the council."
 msgid "Perhaps the gold will give our words more weight with the council."
-msgstr "Vielleicht wird das Gold unserem Wort beim Konzil Gewicht verleihen."
+msgstr ""
+"Vielleicht wird das Gold unserem Wort beim Konzil mehr Gewicht verleihen."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:573
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:579
-#, fuzzy
-#| msgid ""
-#| " has left the recovered gold into the elvish treasury. You will start the "
-#| "next scenario with a preset amount."
 msgid ""
 " has returned any remaining gold into the elvish treasury. You will start "
 "the next scenario with a preset amount."
@@ -2355,10 +2323,6 @@ msgstr "Drittes Kapitel: Das Buch Crelanus"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:28
-#, fuzzy
-#| msgid ""
-#| "<i>The Legend of Wesmere</i>,\n"
-#| "Chapter Three"
 msgid ""
 "<i>The Legend of Wesmere</i>\n"
 "Chapter Three"
@@ -2368,15 +2332,11 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:35
-#, fuzzy
-#| msgid ""
-#| "Chapter Three,\n"
-#| "<i>The Book of Crelanu</i>"
 msgid ""
 "Chapter Three\n"
 "<i>The Book of Crelanu</i>"
 msgstr ""
-"Drittes Kapitel,\n"
+"Drittes Kapitel\n"
 "<i>Das Buch Crelanus</i>"
 
 #. [part]
@@ -2485,11 +2445,6 @@ msgstr ""
 
 #. [message]: id=Cleodil
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:361
-#, fuzzy
-#| msgid ""
-#| "Indeed, this river is, I believe, Arkan-Thoria. There are fell legends "
-#| "about it. May be they are but children’s tales... Still, be very careful "
-#| "when you cross it."
 msgid ""
 "Indeed, this river is, I believe, Arkan-Thoria. There are fell legends about "
 "it. Maybe they are but children’s tales... Still, be very careful when you "
@@ -3467,28 +3422,20 @@ msgstr "Allianz mit den Menschen"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:42
-#, fuzzy
-#| msgid ""
-#| "<i>The Legend of Wesmere</i>,\n"
-#| "Chapter Four"
 msgid ""
 "<i>The Legend of Wesmere</i>\n"
 "Chapter Four"
 msgstr ""
-"<i>Die Legende von Wesmere</i>,\n"
+"<i>Die Legende von Wesmere</i>\n"
 "Viertes Kapitel"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:47
-#, fuzzy
-#| msgid ""
-#| "Chapter Four,\n"
-#| "<i>The Alliance</i>"
 msgid ""
 "Chapter Four\n"
 "<i>The Alliance</i>"
 msgstr ""
-"Viertes Kapitel,\n"
+"Viertes Kapitel\n"
 "<i>Die Allianz</i>"
 
 #. [part]
@@ -3803,14 +3750,6 @@ msgstr "Ruhe! Wie kannst du dich erdreisten so mit dem König zu sprechen!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/15_The_Treaty.cfg:42
-#, fuzzy
-#| msgid ""
-#| "Calm down, Aldar! The elf is right to reproach us. My father did not help "
-#| "when the orcs attacked you. But my father is dead. There are a lot of "
-#| "things my father did that I can not understand; he grew suspicious and "
-#| "strange in his last days. But <i>I</i> am the King of Wesnoth now, not my "
-#| "father! And it is my intention to renew our alliance by signing a new "
-#| "treaty here, with you."
 msgid ""
 "Calm down, Aldar! The elf is right to reproach us. My father did not help "
 "when the orcs attacked you. But my father is dead. There are a lot of things "
@@ -4490,28 +4429,20 @@ msgstr "Fünftes Kapitel: Bürgerkrieg"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:35
-#, fuzzy
-#| msgid ""
-#| "<i>The Legend of Wesmere</i>,\n"
-#| "Chapter Five"
 msgid ""
 "<i>The Legend of Wesmere</i>\n"
 "Chapter Five"
 msgstr ""
-"<i>Die Legende von Wesmere</i>,\n"
+"<i>Die Legende von Wesmere</i>\n"
 "Fünftes Kapitel"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:40
-#, fuzzy
-#| msgid ""
-#| "Chapter Five,\n"
-#| "<i>Civil War</i>"
 msgid ""
 "Chapter Five\n"
 "<i>Civil War</i>"
 msgstr ""
-"Fünftes Kapitel,\n"
+"Fünftes Kapitel\n"
 "<i>Bürgerkrieg</i>"
 
 #. [part]
@@ -4588,15 +4519,11 @@ msgstr "Besiegt alle gegnerischen Anführer und zerstört alle Dörfer"
 
 #. [message]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:243
-#, fuzzy
-#| msgid ""
-#| "We have finally reached Saurgrath, their capitol. Remember whose side "
-#| "they have taken in the war against us."
 msgid ""
 "We have finally reached Saurgrath, their capital. Remember whose side they "
 "have taken in the war against us."
 msgstr ""
-"Wir haben endlich ihr Kapitol, Saurgrath, erreicht. Erinnere dich, auf "
+"Wir haben endlich ihre Kapitol, Saurgrath, erreicht. Erinnere dich, auf "
 "welcher Seite sie im Krieg zu uns standen."
 
 #. [message]: id=Landar
@@ -4687,8 +4614,6 @@ msgstr "Ihre Rache ist furchtbar! Ich fürchte um unsere Art."
 
 #. [message]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:388
-#, fuzzy
-#| msgid "Don’t flee. We cannot abandon our capitol."
 msgid "Don’t flee. We cannot abandon our capital."
 msgstr "Flieht nicht. Wir können unser Kapitol nicht aufgeben."
 
@@ -5029,16 +4954,16 @@ msgstr "Haltet die Stellung für sechs Tage"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:319
-#, fuzzy
-#| msgid "Survive for six days"
 msgid "Kalenz survives for six days"
-msgstr "Haltet die Stellung für sechs Tage"
+msgstr "Kalenz überlebt für sechs Tage"
 
 #. [note]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:330
 msgid ""
 "If you lose you still have a chance to defeat Kalenz in the next scenario."
 msgstr ""
+"Falls Ihr verliert, hab Ihr im nächsten Szenario noch einmal die Chance, "
+"Kalenz zu bezwingen."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:339
@@ -5290,10 +5215,8 @@ msgstr ""
 
 #. [unit_type]: id=Great Ogre, race=ogre
 #: data/campaigns/Legend_of_Wesmere/units/ogres/Great_Ogre.cfg:6
-#, fuzzy
-#| msgid "Creatures"
 msgid "Great Ogre"
-msgstr "Kreaturen"
+msgstr "Großer Oger"
 
 #. [unit_type]: id=Great Ogre, race=ogre
 #: data/campaigns/Legend_of_Wesmere/units/ogres/Great_Ogre.cfg:34
@@ -5303,6 +5226,10 @@ msgid ""
 "can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
+"Großer Oger sind gigantische Kreaturen die üblicherweise vereinzelt in der "
+"Wildnis leben. Sie ist den Menschen in ihrer Form recht ähnlich, doch sind "
+"sie wesentlich größer und entstellt. Auch wenn sie sich leicht austricksen "
+"oder abhängen lassen, sollte man ihre Stärke nicht unterschätzen."
 
 #. [leadership]: id=elates_kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:10
