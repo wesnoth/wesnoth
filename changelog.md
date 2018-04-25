@@ -48,6 +48,7 @@
      mid-login.
    * Fixed an infinite loading screen when attempting to login with an
      unregistered nickname followed by a registered one.
+   * Dark Forecast: Fixed possible Lua error when the weather changes.
  ### Packaging
    * OpenMP support has been removed. It is no longer an optional build-time dependency.
  ### Units
