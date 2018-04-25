@@ -39,14 +39,11 @@ extern "C" int _putenv(const char*);
 #define WRN_G LOG_STREAM(warn, lg::general())
 #define ERR_G LOG_STREAM(err, lg::general())
 
-#ifndef MIN_TRANSLATION_PERCENT
-#define MIN_TRANSLATION_PERCENT 80
-#endif
-
 namespace {
 	language_def current_language;
 	std::vector<config> languages_;
 	utils::string_map strings_;
+	const unsigned MIN_TRANSLATION_PERCENT = 80;
 }
 
 static language_list known_languages;
@@ -120,15 +117,12 @@ language_list get_languages()
 	// We sort every time, the local might have changed which can modify the
 	// sort order.
 	std::sort(known_languages.begin(), known_languages.end());
-	// FIXME! The translation percent complete script is giving results that don't
-	// match with gettext.wesnoth.org... need to figure out what the hell is wrong :(
-#if 0
+
 	language_list result;
 	std::copy_if(known_languages.begin(), known_languages.end(), std::back_inserter(result),
-						[](language_def lang) { return lang.percent >= MIN_TRANSLATION_PERCENT; });
+		[](const language_def& lang) { return lang.percent >= MIN_TRANSLATION_PERCENT; });
+
 	return result;
-#endif
-	return known_languages;
 }
 
 static void wesnoth_setlocale(int category, const std::string& slocale,
