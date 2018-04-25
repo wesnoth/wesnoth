@@ -3,6 +3,10 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 
 ## Version 1.13.14+dev
+ ### Campaigns
+   * Under the Burning Suns
+     * New set of Quenoth faction and character portraits by LordBob.
+     * Updated sprites for several Quenoth units.
  ### Language and i18n
    * Updated translations: Czech, French, Galician, German, Japanese, Polish,
      Scottish Gaelic, Slovak, Spanish.

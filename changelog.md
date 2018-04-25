@@ -3,6 +3,8 @@
    * Under the Burning Suns
      * New set of Quenoth faction and character portraits by LordBob.
      * Updated sprites for several Quenoth units.
+     * Fixed "Invalid WML found" error that can be caused by the Quenoth Youth
+       support ability.
  ### Language and i18n
    * Fixed Version label on the title screen not being translatable (issue #2914).
    * Updated translations: Czech, French, Galician, German, Japanese, Polish,
