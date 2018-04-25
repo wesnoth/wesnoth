@@ -43,7 +43,7 @@ namespace {
 	language_def current_language;
 	std::vector<config> languages_;
 	utils::string_map strings_;
-	const unsigned MIN_TRANSLATION_PERCENT = 80;
+	const int MIN_TRANSLATION_PERCENT = 80;
 }
 
 static language_list known_languages;
