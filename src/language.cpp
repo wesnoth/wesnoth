@@ -43,7 +43,11 @@ namespace {
 	language_def current_language;
 	std::vector<config> languages_;
 	utils::string_map strings_;
+
+	// This should be enabled for stable releases.
+#ifdef ENABLE_TRANSLATION_COMPLETION_FILTERING
 	const int MIN_TRANSLATION_PERCENT = 80;
+#endif
 }
 
 static language_list known_languages;
@@ -117,7 +121,7 @@ language_list get_languages()
 	// We sort every time, the local might have changed which can modify the
 	// sort order.
 	std::sort(known_languages.begin(), known_languages.end());
-#if 0
+#ifdef ENABLE_TRANSLATION_COMPLETION_FILTERING
 	language_list result;
 	std::copy_if(known_languages.begin(), known_languages.end(), std::back_inserter(result),
 		[](const language_def& lang) { return lang.percent >= MIN_TRANSLATION_PERCENT; });
