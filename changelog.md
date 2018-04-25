@@ -14,6 +14,7 @@
      mid-login.
    * Fixed an infinite loading screen when attempting to login with an
      unregistered nickname followed by a registered one.
+   * Dark Forecast: Fixed possible Lua error when the weather changes.
  ### User Interface
    * Implemented MP chat message history saving (issue #1194, issue #2802).
  ### Miscellaneous and bug fixes
