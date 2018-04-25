@@ -870,8 +870,7 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 	for (unsigned int i = 0; i < attacker->attacks().size(); i++) {
 		// skip weapons with attack_weight=0
 		if (attacker->attacks()[i].attack_weight() > 0) {
-			battle_context weapon(rc.units(), attacker_pos, defender->get_location(), i, -1, 0.0, nullptr, attacker);
-			weapons.push_back(weapon);
+			weapons.emplace_back(rc.units(), attacker_pos, defender->get_location(), i, -1, 0.0, nullptr, attacker);
 		}
 	}
 

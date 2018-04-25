@@ -955,7 +955,7 @@ int mouse_handler::fill_weapon_choices(
 				best = bc_vector.size();
 			}
 
-			bc_vector.push_back(bc);
+			bc_vector.push_back(std::move(bc));
 		}
 	}
 

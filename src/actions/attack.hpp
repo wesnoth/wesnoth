@@ -189,8 +189,10 @@ public:
 	battle_context(const battle_context_unit_stats& att, const battle_context_unit_stats& def);
 
 	battle_context(const battle_context& other);
+	battle_context(battle_context&& other) = default;
 
 	battle_context& operator=(const battle_context& other);
+	battle_context& operator=(battle_context&& other) = default;
 
 	/** This method returns the statistics of the attacker. */
 	const battle_context_unit_stats& get_attacker_stats() const
