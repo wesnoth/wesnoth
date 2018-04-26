@@ -76,7 +76,10 @@ void controller_base::long_touch_callback(int x, int y)
 		int threshold = get_mouse_handler_base().drag_threshold();
 		bool yes_actually_dragging = dx * dx + dy * dy >= threshold * threshold;
 
-		if(!yes_actually_dragging && (mouse_state & SDL_BUTTON(SDL_BUTTON_LEFT)) != 0) {
+		if(!yes_actually_dragging
+		   && (mouse_state & SDL_BUTTON(SDL_BUTTON_LEFT)) != 0
+		   && sdl::point_in_rect(x_now, y_now, get_display().map_area()))
+		{
 			const theme::menu* const m = get_mouse_handler_base().gui().get_theme().context_menu();
 			if(m != nullptr) {
 				show_menu(get_display().get_theme().context_menu()->items(), x_now, y_now, true, get_display());
@@ -198,6 +201,23 @@ void controller_base::handle_event(const SDL_Event& event)
 		if(mh_base.get_show_menu()) {
 			show_menu(get_display().get_theme().context_menu()->items(), event.button.x, event.button.y, true,
 					get_display());
+		}
+		break;
+	case DOUBLE_CLICK_EVENT:
+		{
+			int x = static_cast<int>(reinterpret_cast<std::intptr_t>(event.user.data1));
+			int y = static_cast<int>(reinterpret_cast<std::intptr_t>(event.user.data2));
+			if(event.user.code == static_cast<int>(SDL_TOUCH_MOUSEID)
+			   // TODO: Move to right_click_show_menu?
+			   && sdl::point_in_rect(x, y, get_display().map_area())
+			   // TODO: This chain repeats in several places, move to a method.
+			   && get_display().get_theme().context_menu() != nullptr) {
+				show_menu(get_display().get_theme().context_menu()->items(),
+						  x,
+						  y,
+						  true,
+						  get_display());
+			}
 		}
 		break;
 
