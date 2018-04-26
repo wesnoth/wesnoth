@@ -1,4 +1,4 @@
-## Version 1.13.14+dev
+## Version 1.14.0
  ### Campaigns
    * Under the Burning Suns
      * New set of Quenoth faction and character portraits by LordBob.
