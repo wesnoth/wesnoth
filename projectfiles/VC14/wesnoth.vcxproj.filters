@@ -1310,6 +1310,9 @@
     <ClCompile Include="..\..\src\desktop\windows_tray_notification.cpp">
       <Filter>Desktop</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\help\constants.cpp">
+      <Filter>Help</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\help\help.cpp">
       <Filter>Help</Filter>
     </ClCompile>
@@ -1427,6 +1430,7 @@
     <ClCompile Include="..\..\src\carryover.cpp" />
     <ClCompile Include="..\..\src\chat_command_handler.cpp" />
     <ClCompile Include="..\..\src\chat_events.cpp" />
+    <ClCompile Include="..\..\src\chat_log.cpp" />
     <ClCompile Include="..\..\src\commandline_options.cpp" />
     <ClCompile Include="..\..\src\config_cache.cpp" />
     <ClCompile Include="..\..\src\controller_base.cpp" />
@@ -1500,6 +1504,7 @@
     <ClCompile Include="..\..\src\sound.cpp" />
     <ClCompile Include="..\..\src\sound_music_track.cpp" />
     <ClCompile Include="..\..\src\soundsource.cpp" />
+    <ClCompile Include="..\..\src\spritesheet_generator.cpp" />
     <ClCompile Include="..\..\src\statistics.cpp" />
     <ClCompile Include="..\..\src\synced_checkup.cpp" />
     <ClCompile Include="..\..\src\synced_commands.cpp" />
@@ -1566,8 +1571,6 @@
     <ClCompile Include="..\..\src\preferences\lobby.cpp">
       <Filter>Preferences</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\deprecation.cpp" />
-    <ClCompile Include="..\..\src\chat_log.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -2728,6 +2731,9 @@
     <ClInclude Include="..\..\src\desktop\windows_tray_notification.hpp">
       <Filter>Desktop</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\help\constants.hpp">
+      <Filter>Help</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\help\help.hpp">
       <Filter>Help</Filter>
     </ClInclude>
@@ -2845,6 +2851,9 @@
     <ClInclude Include="..\..\src\map\exception.hpp">
       <Filter>Map</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\map\hex_rect.hpp">
+      <Filter>Map</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\map\label.hpp">
       <Filter>Map</Filter>
     </ClInclude>
@@ -2863,6 +2872,7 @@
     <ClInclude Include="..\..\src\carryover.hpp" />
     <ClInclude Include="..\..\src\chat_command_handler.hpp" />
     <ClInclude Include="..\..\src\chat_events.hpp" />
+    <ClInclude Include="..\..\src\chat_log.hpp" />
     <ClInclude Include="..\..\src\commandline_options.hpp" />
     <ClInclude Include="..\..\src\config.hpp" />
     <ClInclude Include="..\..\src\config_cache.hpp" />
@@ -2945,6 +2955,7 @@
     <ClInclude Include="..\..\src\sound.hpp" />
     <ClInclude Include="..\..\src\sound_music_track.hpp" />
     <ClInclude Include="..\..\src\soundsource.hpp" />
+    <ClInclude Include="..\..\src\spritesheet_generator.hpp" />
     <ClInclude Include="..\..\src\statistics.hpp" />
     <ClInclude Include="..\..\src\synced_checkup.hpp" />
     <ClInclude Include="..\..\src\synced_commands.hpp" />
@@ -3040,7 +3051,6 @@
     <ClInclude Include="..\..\src\preferences\lobby.hpp">
       <Filter>Preferences</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\chat_log.hpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\src\tests\test_sdl_utils.hpp">
