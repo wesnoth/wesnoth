@@ -617,15 +617,19 @@ void pump()
 		case SDL_MOUSEBUTTONDOWN: {
 			// Always make sure a cursor is displayed if the mouse moves or if the user clicks
 			cursor::set_focus(true);
-			if(event.button.button == SDL_BUTTON_LEFT) {
+			if(event.button.button == SDL_BUTTON_LEFT || event.button.which == SDL_TOUCH_MOUSEID) {
 				static const int DoubleClickTime = 500;
+#ifdef __IPHONEOS__
+				static const int DoubleClickMaxMove = 15;
+#else
 				static const int DoubleClickMaxMove = 3;
+#endif
 
 				if(last_mouse_down >= 0 && info.ticks() - last_mouse_down < DoubleClickTime
 						&& std::abs(event.button.x - last_click_x) < DoubleClickMaxMove
 						&& std::abs(event.button.y - last_click_y) < DoubleClickMaxMove
 				) {
-					sdl::UserEvent user_event(DOUBLE_CLICK_EVENT, event.button.x, event.button.y);
+					sdl::UserEvent user_event(DOUBLE_CLICK_EVENT, event.button.which, event.button.x, event.button.y);
 					::SDL_PushEvent(reinterpret_cast<SDL_Event*>(&user_event));
 				}
 
