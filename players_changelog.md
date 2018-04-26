@@ -3,6 +3,8 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 
 ## Version 1.14.0+dev
+ ### Language and i18n
+   * Updated translations: Italian.
 
 
 ## Version 1.14.0

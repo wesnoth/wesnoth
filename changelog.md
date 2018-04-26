@@ -1,4 +1,6 @@
 ## Version 1.14.0+dev
+ ### Language and i18n
+   * Updated translations: Italian
 
 ## Version 1.14.0
  ### Campaigns
