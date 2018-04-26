@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-04-15 01:34-0300\n"
+"POT-Creation-Date: 2018-04-26 03:28+0300\n"
 "PO-Revision-Date: 2018-04-14 23:12+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -90,37 +90,23 @@ msgstr "Continuar o desprazamento aínda que o rato saia da xanela:"
 msgid "Show combat"
 msgstr "Mostrar os combates:"
 
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:61
-msgid "Ping timeout"
-msgstr "Tempo límite de resposta:"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:62
-msgid ""
-"Number of seconds to wait for a ping reply before timing out. Set to 0 to "
-"disable"
-msgstr ""
-"Número de segundos para agardar por unha resposta antes de renderse. "
-"Desactívase co valor «0»."
-
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:72
+#: data/advanced_preferences.cfg:61
 msgid "Auto-open whisper windows in lobby"
 msgstr "Abrir a xanela de bisbar na sala de espera:"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:79
+#: data/advanced_preferences.cfg:68
 msgid "Group players in lobby"
 msgstr "Agrupar os xogadores da sala de espera:"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:86
+#: data/advanced_preferences.cfg:75
 msgid "Follow unit actions"
 msgstr "Seguir as unidades cando se movan:"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:87
+#: data/advanced_preferences.cfg:76
 msgid ""
 "Choose whether the map view should scroll to a unit when an action or move "
 "is animated"
@@ -129,12 +115,12 @@ msgstr ""
 "animado."
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:103
+#: data/advanced_preferences.cfg:92
 msgid "Chat message aging"
 msgstr "Tempo de caducidade das mensaxes:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:104
+#: data/advanced_preferences.cfg:93
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable"
@@ -143,22 +129,22 @@ msgstr ""
 "Desactívase co valor «0»."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:114
+#: data/advanced_preferences.cfg:103
 msgid "Use 12-hour clock format"
 msgstr "Usar o formato de 12 horas para o reloxo:"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:121
+#: data/advanced_preferences.cfg:110
 msgid "Confirm loading saves from a different version"
 msgstr "Avisar ao cargar partidas doutras versións:"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:128
+#: data/advanced_preferences.cfg:117
 msgid "Show all unit types in help"
 msgstr "Mostrar todos os tipos de unidade na axuda:"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:129
+#: data/advanced_preferences.cfg:118
 msgid ""
 "Show all unit types in the help (requires restart). This does not alter the "
 "list of encountered units"
@@ -167,12 +153,12 @@ msgstr ""
 "que se aplique o cambio. A lista de unidades descubertas non cambiará."
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:136
+#: data/advanced_preferences.cfg:125
 msgid "Editor recent files limit"
 msgstr "Límite de ficheiros recentes do editor:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:137
+#: data/advanced_preferences.cfg:126
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
 msgstr ""
@@ -180,37 +166,37 @@ msgstr ""
 "editor."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:147
+#: data/advanced_preferences.cfg:136
 msgid "Show color cursors"
 msgstr "Usar punteiros de cores:"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:148
+#: data/advanced_preferences.cfg:137
 msgid "Use colored mouse cursors"
 msgstr "Usar punteiros de rato de cores."
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:155
+#: data/advanced_preferences.cfg:144
 msgid "Graphics scaling options"
 msgstr "Opcións de cambio de dimensións dos gráficos:"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:161
+#: data/advanced_preferences.cfg:150
 msgid "Customize orb colors"
 msgstr "Personalizar as cores das esferas:"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:167
+#: data/advanced_preferences.cfg:156
 msgid "Logging"
 msgstr "Rexistro:"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:173
+#: data/advanced_preferences.cfg:162
 msgid "Allow damage calculation with Monte Carlo simulation"
 msgstr "Permitir o cálculo de danos con simulación de Montecarlo:"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:174
+#: data/advanced_preferences.cfg:163
 msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
@@ -219,108 +205,108 @@ msgstr ""
 "cálculos de probabilidade exactos."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:181
+#: data/advanced_preferences.cfg:170
 msgid "Show haloing effects"
 msgstr "Mostrar efectos de auréola:"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:182
+#: data/advanced_preferences.cfg:171
 msgid "Show special unit graphical effects"
 msgstr "Mostrar efectos gráficos especiais de unidades."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:199
+#: data/advanced_preferences.cfg:188
 msgid "Joystick support"
 msgstr "Compatibilidade con mandos:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:206
+#: data/advanced_preferences.cfg:195
 msgid "Joystick: number of the scroll X-axis joystick"
 msgstr "Mando: mando para o desprazamento vertical:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:216
+#: data/advanced_preferences.cfg:205
 msgid "Joystick: number of the scroll X-axis"
 msgstr "Mando: control para o desprazamento vertical:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:226
+#: data/advanced_preferences.cfg:215
 msgid "Joystick: number of the scroll Y-axis joystick"
 msgstr "Mando: mando para o desprazamento horizontal:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:236
+#: data/advanced_preferences.cfg:225
 msgid "Joystick: number of the scroll Y-axis"
 msgstr "Mando: control para o desprazamento horizontal:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:246
+#: data/advanced_preferences.cfg:235
 msgid "Joystick: deadzone of the scrolling stick"
 msgstr "Mando: límite do control do desprazamento:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:256
+#: data/advanced_preferences.cfg:245
 msgid "Joystick: number of the cursor X-axis joystick"
 msgstr "Mando: mando para o movemento vertical do punteiro:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:266
+#: data/advanced_preferences.cfg:255
 msgid "Joystick: number of the cursor X-axis"
 msgstr "Mando: control para o movemento vertical do punteiro:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:276
+#: data/advanced_preferences.cfg:265
 msgid "Joystick: number of the cursor Y-axis joystick"
 msgstr "Mando: mando para o movemento horizontal do punteiro:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:286
+#: data/advanced_preferences.cfg:275
 msgid "Joystick: number of the cursor Y-axis"
 msgstr "Mando: control para o movemento horizontal do punteiro:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:296
+#: data/advanced_preferences.cfg:285
 msgid "Joystick: deadzone of the cursor stick"
 msgstr "Mando: límite do control do punteiro:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:306
+#: data/advanced_preferences.cfg:295
 msgid "Joystick: number of the mouse X-axis joystick"
 msgstr "Mando: mando para o movemento vertical do rato:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:316
+#: data/advanced_preferences.cfg:305
 msgid "Joystick: number of the mouse X-axis"
 msgstr "Mando: control para o rato vertical:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:326
+#: data/advanced_preferences.cfg:315
 msgid "Joystick: number of the mouse Y-axis joystick"
 msgstr "Mando: mando para o movemento horizontal do rato:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:336
+#: data/advanced_preferences.cfg:325
 msgid "Joystick: number of the mouse Y-axis"
 msgstr "Mando: control para o rato horizontal:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:346
+#: data/advanced_preferences.cfg:335
 msgid "Joystick: deadzone of the mouse stick"
 msgstr "Mando: límite do control do rato:"
 
 # Cando saiba o que é o “Thrust Axis” —que sospeito que é o mando que ten un pao, pero non me acaba de encaixar no contexto— terei que revisar a tradución.
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:356
+#: data/advanced_preferences.cfg:345
 msgid "Joystick: number of the thrust axis joystick"
 msgstr "Mando: mando para o eixo de empurre:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:366
+#: data/advanced_preferences.cfg:355
 msgid "Joystick: number of the thrust axis"
 msgstr "Mando: control para o eixo de empurre:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:376
+#: data/advanced_preferences.cfg:365
 msgid "Joystick: deadzone of the thruster"
 msgstr "Mando: límite do empurre:"
 
@@ -328,7 +314,7 @@ msgstr "Mando: límite do empurre:"
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:358
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1085
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1086
 msgid "poisoned"
 msgstr "Envelenado"
 
@@ -345,6 +331,24 @@ msgstr "Ouro retido:"
 #: data/lua/wml/objectives.lua:39
 msgid "Notes:"
 msgstr "Notas:"
+
+# A minúsucula é a propósito, aparece tras dous puntos (:) na carga de partidas.
+#. [language]
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:155 data/english.cfg:3
+msgid "Easy"
+msgstr "fácil"
+
+# A minúsucula é a propósito, aparece tras dous puntos (:) na carga de partidas. En feminino porque se corresponde á «dificultade». Exemplo: «Dificultade: media.».
+#. [language]
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:156 data/english.cfg:4
+msgid "Medium"
+msgstr "media"
+
+# A minúsucula é a propósito, aparece tras dous puntos (:) na carga de partidas.
+#. [language]
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:157 data/english.cfg:5
+msgid "Hard"
+msgstr "difícil"
 
 #. [about]
 #: data/core/about.cfg:4
@@ -512,162 +516,162 @@ msgid "German Translation"
 msgstr "Tradución ao alemán"
 
 #. [about]
-#: data/core/about_i18n.cfg:795
+#: data/core/about_i18n.cfg:817
 msgid "Greek Translation"
 msgstr "Tradución ao grego"
 
 #. [about]
-#: data/core/about_i18n.cfg:838
+#: data/core/about_i18n.cfg:860
 msgid "Hebrew Translation"
 msgstr "Tradución ao hebreo"
 
 #. [about]
-#: data/core/about_i18n.cfg:851
+#: data/core/about_i18n.cfg:873
 msgid "Hungarian Translation"
 msgstr "Tradución ao húngaro"
 
 #. [about]
-#: data/core/about_i18n.cfg:912
+#: data/core/about_i18n.cfg:934
 msgid "Icelandic Translation"
 msgstr "Tradución ao islandés"
 
 #. [about]
-#: data/core/about_i18n.cfg:922
+#: data/core/about_i18n.cfg:944
 msgid "Indonesian Translation"
 msgstr "Tradución ao indonesio"
 
 #. [about]
-#: data/core/about_i18n.cfg:945
+#: data/core/about_i18n.cfg:967
 msgid "Irish Translation"
 msgstr "Tradución ao irlandés"
 
 #. [about]
-#: data/core/about_i18n.cfg:952
+#: data/core/about_i18n.cfg:974
 msgid "Italian Translation"
 msgstr "Tradución ao italiano"
 
 #. [about]
-#: data/core/about_i18n.cfg:999
+#: data/core/about_i18n.cfg:1021
 msgid "Japanese Translation"
 msgstr "Tradución ao xaponés"
 
 #. [about]
-#: data/core/about_i18n.cfg:1078
+#: data/core/about_i18n.cfg:1108
 msgid "Korean Translation"
 msgstr "Tradución ao coreano"
 
 #. [about]
-#: data/core/about_i18n.cfg:1086
+#: data/core/about_i18n.cfg:1116
 msgid "Latin Translation"
 msgstr "Tradución ao latín"
 
 #. [about]
-#: data/core/about_i18n.cfg:1112
+#: data/core/about_i18n.cfg:1142
 msgid "Latvian Translation"
 msgstr "Tradución ao letón"
 
 #. [about]
-#: data/core/about_i18n.cfg:1127
+#: data/core/about_i18n.cfg:1157
 msgid "Lithuanian Translation"
 msgstr "Tradución ao lituano"
 
 #. [about]
-#: data/core/about_i18n.cfg:1152
+#: data/core/about_i18n.cfg:1182
 msgid "Macedonian Translation"
 msgstr "Tradución ao macedonio"
 
 #. [about]
-#: data/core/about_i18n.cfg:1159
+#: data/core/about_i18n.cfg:1189
 msgid "Marathi Translation"
 msgstr "Tradución ao marathi"
 
 #. [about]
-#: data/core/about_i18n.cfg:1168
+#: data/core/about_i18n.cfg:1198
 msgid "Norwegian Translation"
 msgstr "Tradución ao noruegués"
 
 #. [about]
-#: data/core/about_i18n.cfg:1193
+#: data/core/about_i18n.cfg:1223
 msgid "Old English Translation"
 msgstr "Tradución ao anglosaxón"
 
 #. [about]
-#: data/core/about_i18n.cfg:1211
+#: data/core/about_i18n.cfg:1241
 msgid "Polish Translation"
 msgstr "Tradución ao polaco"
 
 #. [about]
-#: data/core/about_i18n.cfg:1259
+#: data/core/about_i18n.cfg:1289
 msgid "Portuguese Translation"
 msgstr "Tradución ao portugués"
 
 #. [about]
-#: data/core/about_i18n.cfg:1273
+#: data/core/about_i18n.cfg:1303
 msgid "Portuguese (Brazil) Translation"
 msgstr "Tradución ao brasileiro"
 
 #. [about]
-#: data/core/about_i18n.cfg:1327
+#: data/core/about_i18n.cfg:1357
 msgid "Romanian Translation"
 msgstr "Tradución ao romanés"
 
 #. [about]
-#: data/core/about_i18n.cfg:1335
+#: data/core/about_i18n.cfg:1365
 msgid "Russian Translation"
 msgstr "Tradución ao ruso"
 
 #. [about]
-#: data/core/about_i18n.cfg:1427
+#: data/core/about_i18n.cfg:1457
 msgid "Scottish Gaelic Translation"
 msgstr "Tradución ao gaélico escocés"
 
 #. [about]
-#: data/core/about_i18n.cfg:1436
+#: data/core/about_i18n.cfg:1466
 msgid "Serbian Translation"
 msgstr "Tradución ao serbio"
 
 #. [about]
-#: data/core/about_i18n.cfg:1455
+#: data/core/about_i18n.cfg:1485
 msgid "Slovak Translation"
 msgstr "Tradución ao eslovaco"
 
 #. [about]
-#: data/core/about_i18n.cfg:1484
+#: data/core/about_i18n.cfg:1514
 msgid "Slovenian Translation"
 msgstr "Tradución ao esloveno"
 
 #. [about]
-#: data/core/about_i18n.cfg:1500
+#: data/core/about_i18n.cfg:1530
 msgid "Spanish Translation"
 msgstr "Tradución ao castelán"
 
 #. [about]
-#: data/core/about_i18n.cfg:1582
+#: data/core/about_i18n.cfg:1612
 msgid "Swedish Translation"
 msgstr "Tradución ao sueco"
 
 #. [about]
-#: data/core/about_i18n.cfg:1623
+#: data/core/about_i18n.cfg:1653
 msgid "Turkish Translation"
 msgstr "Tradución ao turco"
 
 #. [about]
-#: data/core/about_i18n.cfg:1645
+#: data/core/about_i18n.cfg:1675
 msgid "Ukrainian Translation"
 msgstr "Tradución ao ucraíno"
 
 #. [about]
-#: data/core/about_i18n.cfg:1658
+#: data/core/about_i18n.cfg:1688
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Tradución ao valenciano"
 
 #. [about]
-#: data/core/about_i18n.cfg:1671
+#: data/core/about_i18n.cfg:1701
 msgid "Vietnamese Translation"
 msgstr "Tradución ao vietnamita"
 
 #. [about]
-#: data/core/about_i18n.cfg:1690
+#: data/core/about_i18n.cfg:1720
 msgid "RACV’s Translation"
 msgstr "Tradución ao valenciano (RACV)"
 
@@ -3652,24 +3656,6 @@ msgstr ""
 
 # A minúsucula é a propósito, aparece tras dous puntos (:) na carga de partidas.
 #. [language]
-#: data/english.cfg:3
-msgid "Easy"
-msgstr "fácil"
-
-# A minúsucula é a propósito, aparece tras dous puntos (:) na carga de partidas. En feminino porque se corresponde á «dificultade». Exemplo: «Dificultade: media.».
-#. [language]
-#: data/english.cfg:4
-msgid "Medium"
-msgstr "media"
-
-# A minúsucula é a propósito, aparece tras dous puntos (:) na carga de partidas.
-#. [language]
-#: data/english.cfg:5
-msgid "Hard"
-msgstr "difícil"
-
-# A minúsucula é a propósito, aparece tras dous puntos (:) na carga de partidas.
-#. [language]
 #: data/english.cfg:6
 msgid "Nightmare"
 msgstr "pesadelo"
@@ -3764,7 +3750,8 @@ msgstr "arcano"
 
 # Nomes de ponte
 #. [naming]
-#: data/english.cfg:37
+#. Generator for bridge labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:38
 msgid ""
 "\n"
 "\t\tbridge_type=Bridge|Crossing\n"
@@ -3856,7 +3843,8 @@ msgstr ""
 
 # Nomes de camiño
 #. [naming]
-#: data/english.cfg:41
+#. Generator for road labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:43
 msgid ""
 "\n"
 "\t\troad_type=Highway|Pass|Path|Road|Way|Trail\n"
@@ -3950,7 +3938,8 @@ msgstr ""
 
 # Nomes de río
 #. [naming]
-#: data/english.cfg:45
+#. Generator for river labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:48
 msgid ""
 "\n"
 "\t\triver_type=River|River|River|Creek|Creek|Stream|Canal\n"
@@ -4043,7 +4032,8 @@ msgstr ""
 
 # Nomes de bosque
 #. [naming]
-#: data/english.cfg:49
+#. Generator for forest labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:53
 msgid ""
 "\n"
 "\t\tforest_type=Forest|Forest|Wood\n"
@@ -4136,7 +4126,8 @@ msgstr ""
 
 # Nomes de lago
 #. [naming]
-#: data/english.cfg:53
+#. Generator for lake labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:58
 msgid ""
 "\n"
 "\t\tlake_type=Lake|Lake|Lake|Loch|Sea\n"
@@ -4229,7 +4220,8 @@ msgstr ""
 
 # Nomes de monte
 #. [naming]
-#: data/english.cfg:57
+#. Generator for mountain labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:63
 msgid ""
 "\n"
 "\t\tmain=$base{!}’s Peak|$base Peak|Mount $base|Mount $base\n"
@@ -4321,7 +4313,8 @@ msgstr ""
 
 # Nome de lameiro
 #. [naming]
-#: data/english.cfg:60
+#. Generator for swamp labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:67
 msgid ""
 "\n"
 "\t\tsuffix=’s Swamp|marsh|fen\n"
@@ -4415,7 +4408,8 @@ msgstr ""
 
 # Vilas sen accidentes
 #. [village_naming]
-#: data/english.cfg:67
+#. Generator for generic village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:75
 msgid ""
 "\n"
 "\t\tsuffix=bury|bury|ham|ton|ville\n"
@@ -4507,7 +4501,8 @@ msgstr ""
 
 # Vilas canda lagos
 #. [village_naming]
-#: data/english.cfg:71
+#. Generator for lakeside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:80
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$lake{!}\n"
@@ -4521,7 +4516,8 @@ msgstr ""
 
 # Vlias canda ríos
 #. [village_naming]
-#: data/english.cfg:76
+#. Generator for riverside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:86
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$river{!}\n"
@@ -4536,7 +4532,8 @@ msgstr ""
 
 # Vilas canda pontes
 #. [village_naming]
-#: data/english.cfg:82
+#. Generator for bridge village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:93
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$river{!}|$bridge{!}\n"
@@ -4550,7 +4547,8 @@ msgstr ""
 
 # Vilas canda chairas
 #. [village_naming]
-#: data/english.cfg:87
+#. Generator for grassland village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:99
 msgid ""
 "\n"
 "\t\tsuffix=ham|ton|field\n"
@@ -4563,7 +4561,8 @@ msgstr ""
 
 # Vilas canda bosques
 #. [village_naming]
-#: data/english.cfg:91
+#. Generator for forest village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:104
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$forest{!}\n"
@@ -4577,7 +4576,8 @@ msgstr ""
 
 # Vilas canda picos
 #. [village_naming]
-#: data/english.cfg:96
+#. Generator for hill village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:110
 msgid ""
 "\n"
 "\t\tsuffix=ham|bury|ton|hill|crest\n"
@@ -4590,7 +4590,8 @@ msgstr ""
 
 # Vilas canda montañas
 #. [village_naming]
-#: data/english.cfg:100
+#. Generator for mountain village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:115
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$mountain{!}\n"
@@ -4604,7 +4605,8 @@ msgstr ""
 
 # Vilas canda montañas sen nome
 #. [village_naming]
-#: data/english.cfg:105
+#. Generator for mountain labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:121
 msgid ""
 "\n"
 "\t\tsuffix=ham|bury|ton|mont|mont|cliff|cliff\n"
@@ -4617,7 +4619,8 @@ msgstr ""
 
 # Vilas canda camiños
 #. [village_naming]
-#: data/english.cfg:109
+#. Generator for roadside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:126
 msgid ""
 "\n"
 "\t\tprefix=$road{!}|$road{!}|$base{!}\n"
@@ -4631,7 +4634,8 @@ msgstr ""
 
 # Vilas canda lameiros
 #. [village_naming]
-#: data/english.cfg:114
+#. Generator for swamp village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:132
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$swamp{!}\n"
@@ -4741,32 +4745,32 @@ msgstr "Nivel de caducidade incorrecto (debería estar entre 1 e 4)."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1085
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1086
 msgid "female^poisoned"
 msgstr "Envelenada"
 
 # “ralentizada” non é unha palabra normativa, pero dada a súa popularidade (por efecto do castelán?) e maila falta de boas alternativas (frear, refrear, entorpecer, desacelerar...) paréceme a mellor escolla.
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1092
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1093
 msgid "female^slowed"
 msgstr "Ralentizada"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1092
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1093
 msgid "slowed"
 msgstr "Ralentizado"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1098
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1099
 msgid "female^petrified"
 msgstr "Petrificada"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1098
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1099
 msgid "petrified"
 msgstr "Petrificado"
 
@@ -4817,23 +4821,23 @@ msgstr "Conservarase un %d%% do ouro para o seguinte escenario."
 msgid "Defeat enemy leader(s)"
 msgstr "Derrota aos líderes inimigos."
 
-#: data/scenario-test.cfg:1031 src/game_initialization/depcheck.cpp:491
+#: data/scenario-test.cfg:1030 src/game_initialization/depcheck.cpp:491
 msgid "OK"
 msgstr "Aceptar"
 
-#: data/scenario-test.cfg:1032
+#: data/scenario-test.cfg:1031
 msgid "Cancel"
 msgstr "Cancelar"
 
 # Fai referencia á distancia de alcance.
 #. [language]
-#: data/scenario-test.cfg:4066
+#: data/scenario-test.cfg:4065
 msgid "very long"
 msgstr "grande"
 
 # Supoño que se refire a un tipo de dano.
 #. [language]
-#: data/scenario-test.cfg:4067
+#: data/scenario-test.cfg:4066
 msgid "electrical"
 msgstr "eléctrico"
 
@@ -5892,8 +5896,8 @@ msgstr ""
 "evitarán as vilas. Aínda no caso de que ocupen un hexágono de vila, non "
 "obteñen dela ningunha vantaxe defensiva, aínda que si recuperan vida e curan."
 
-#: src/actions/attack.cpp:386 src/actions/attack.cpp:655
-#: src/actions/attack.cpp:1368
+#: src/actions/attack.cpp:386 src/actions/attack.cpp:656
+#: src/actions/attack.cpp:1369
 msgid "An invalid attacker weapon got selected."
 msgstr "Seleccionouse un ataque incorrecto como atacante."
 
@@ -6131,7 +6135,7 @@ msgid "Do you really wish to continue?"
 msgstr "Queres continuar?"
 
 #: src/addon/client.cpp:463 src/addon/manager_ui.cpp:174
-#: src/game_initialization/multiplayer.cpp:243
+#: src/game_initialization/multiplayer.cpp:230
 msgid "Confirm"
 msgstr "Confirmar"
 
@@ -6919,7 +6923,7 @@ msgstr ""
 msgid "Server-side redirect loop"
 msgstr "Bucle de ligazón no servidor."
 
-#: src/game_initialization/multiplayer.cpp:216
+#: src/game_initialization/multiplayer.cpp:203
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6928,29 +6932,29 @@ msgstr ""
 "O alcume «$nick|» está inactivo. Non podes reclamalo ata que actives a conta "
 "por correo electrónico, ou llo pidas a un dos administradores."
 
-#: src/game_initialization/multiplayer.cpp:225
+#: src/game_initialization/multiplayer.cpp:212
 msgid "Do you want to continue?"
 msgstr "Queres continuar?"
 
-#: src/game_initialization/multiplayer.cpp:227
+#: src/game_initialization/multiplayer.cpp:214
 msgid "Warning"
 msgstr "Advertencia"
 
-#: src/game_initialization/multiplayer.cpp:270
-#: src/game_initialization/multiplayer.cpp:286
-#: src/game_initialization/multiplayer.cpp:289
+#: src/game_initialization/multiplayer.cpp:257
+#: src/game_initialization/multiplayer.cpp:273
+#: src/game_initialization/multiplayer.cpp:276
 msgid "Bad data received from server"
 msgstr "Recibíronse datos incorrectos do servidor."
 
-#: src/game_initialization/multiplayer.cpp:317
+#: src/game_initialization/multiplayer.cpp:304
 msgid "You must login first."
 msgstr "Antes debes identificarte."
 
-#: src/game_initialization/multiplayer.cpp:319
+#: src/game_initialization/multiplayer.cpp:306
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "O alcume «$nick|» xa está collido."
 
-#: src/game_initialization/multiplayer.cpp:321
+#: src/game_initialization/multiplayer.cpp:308
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -6959,31 +6963,31 @@ msgstr ""
 "alfanuméricos latinos (nin tiles nin eñes), guións e guións baixos. "
 "Requírese polo menos un carácter."
 
-#: src/game_initialization/multiplayer.cpp:325
+#: src/game_initialization/multiplayer.cpp:312
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "O alcume «$nick|» é longo de máis. Os alcumes non poden ter máis de vinte "
 "caracteres."
 
-#: src/game_initialization/multiplayer.cpp:328
+#: src/game_initialization/multiplayer.cpp:315
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "O alcume «$nick|» está reservado e ningún xogador pode usalo."
 
-#: src/game_initialization/multiplayer.cpp:330
+#: src/game_initialization/multiplayer.cpp:317
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "O alcume «$nick|» non está rexistrado neste servidor."
 
-#: src/game_initialization/multiplayer.cpp:331
+#: src/game_initialization/multiplayer.cpp:318
 msgid " This server disallows unregistered nicknames."
 msgstr ""
 " Este servidor non permite empregar alcumes sen rexistralos previamente."
 
-#: src/game_initialization/multiplayer.cpp:333
-#: src/game_initialization/multiplayer.cpp:335
+#: src/game_initialization/multiplayer.cpp:320
+#: src/game_initialization/multiplayer.cpp:322
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "O alcume «$nick|» xa está rexistrado neste servidor."
 
-#: src/game_initialization/multiplayer.cpp:336
+#: src/game_initialization/multiplayer.cpp:323
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -6991,17 +6995,17 @@ msgstr ""
 "ADVERTENCIA: xa hai un usuario empregando ese alcume, se te identificas con "
 "el botarase ao usuario do servidor!"
 
-#: src/game_initialization/multiplayer.cpp:339
+#: src/game_initialization/multiplayer.cpp:326
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 "Houbo un erro ao identificarse (o servidor non tiña semente para a conexión)."
 
-#: src/game_initialization/multiplayer.cpp:342
+#: src/game_initialization/multiplayer.cpp:329
 msgid "The password you provided was incorrect."
 msgstr "O contrasinal é incorrecto."
 
-#: src/game_initialization/multiplayer.cpp:344
+#: src/game_initialization/multiplayer.cpp:331
 msgid "You have made too many login attempts."
 msgstr "Intentou identificarse demasiadas veces sen conseguilo."
 
@@ -7520,7 +7524,7 @@ msgstr "Activouse o modo de planificación!"
 msgid "Planning mode deactivated!"
 msgstr "Desactivouse o modo de planificación!"
 
-#: src/language.cpp:106
+#: src/language.cpp:103
 msgid "System default language"
 msgstr "Lingua do sistema"
 
@@ -9044,6 +9048,16 @@ msgstr "Agochar os plans de $player"
 #: src/whiteboard/manager.cpp:1114
 msgid "Whiteboard Options"
 msgstr "Opcións de planificación"
+
+#~ msgid "Ping timeout"
+#~ msgstr "Tempo límite de resposta:"
+
+#~ msgid ""
+#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
+#~ "disable"
+#~ msgstr ""
+#~ "Número de segundos para agardar por unha resposta antes de renderse. "
+#~ "Desactívase co valor «0»."
 
 #, fuzzy
 #~| msgid "Size: "

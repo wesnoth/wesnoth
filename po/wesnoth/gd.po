@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-04-15 01:34-0300\n"
+"POT-Creation-Date: 2018-04-26 03:28+0300\n"
 "PO-Revision-Date: 2018-04-23 11:02+0100\n"
 "Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig\n"
@@ -84,37 +84,23 @@ msgstr "Sgrolaich leis an luchag taobh a-muigh na h-uinneige"
 msgid "Show combat"
 msgstr "Seall sabaid"
 
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:61
-msgid "Ping timeout"
-msgstr "Crìoch-ùine ping"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:62
-msgid ""
-"Number of seconds to wait for a ping reply before timing out. Set to 0 to "
-"disable"
-msgstr ""
-"An àireamh dhe dhiogan a thèid a’ feitheamh airson freagairt ping mus "
-"tachair crìoch-ùine. Tagh 0 gus a chur à comas."
-
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:72
+#: data/advanced_preferences.cfg:61
 msgid "Auto-open whisper windows in lobby"
 msgstr "Fèin-fhosgail uinneagan cagair sa lobaidh"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:79
+#: data/advanced_preferences.cfg:68
 msgid "Group players in lobby"
 msgstr "Buidhnich cluicheadairean sa lobaidh"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:86
+#: data/advanced_preferences.cfg:75
 msgid "Follow unit actions"
 msgstr "Lean gnìomhan nan aonadan"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:87
+#: data/advanced_preferences.cfg:76
 msgid ""
 "Choose whether the map view should scroll to a unit when an action or move "
 "is animated"
@@ -123,12 +109,12 @@ msgstr ""
 "gnìomh no gluasad ann."
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:103
+#: data/advanced_preferences.cfg:92
 msgid "Chat message aging"
 msgstr "Aois teachdaireachdan cabadaich"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:104
+#: data/advanced_preferences.cfg:93
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable"
@@ -137,22 +123,22 @@ msgstr ""
 "Tagh 0 gus a chur à comas."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:114
+#: data/advanced_preferences.cfg:103
 msgid "Use 12-hour clock format"
 msgstr "Cleachd fòrmat uaireadair 12-uairean"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:121
+#: data/advanced_preferences.cfg:110
 msgid "Confirm loading saves from a different version"
 msgstr "Dearbhaich luchdadh aig sàbhaladh bho tionndadh eile"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:128
+#: data/advanced_preferences.cfg:117
 msgid "Show all unit types in help"
 msgstr "Seall a h-uile aonad sa chobhair"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:129
+#: data/advanced_preferences.cfg:118
 msgid ""
 "Show all unit types in the help (requires restart). This does not alter the "
 "list of encountered units"
@@ -161,12 +147,12 @@ msgstr ""
 "seo liosta nan aonadan ris an do thachair thu."
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:136
+#: data/advanced_preferences.cfg:125
 msgid "Editor recent files limit"
 msgstr "Crìoch nam faidhlichean o chionn goirid san deasaiche"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:137
+#: data/advanced_preferences.cfg:126
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
 msgstr ""
@@ -174,37 +160,37 @@ msgstr ""
 "faidhlichean o chionn goirid san deasaiche"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:147
+#: data/advanced_preferences.cfg:136
 msgid "Show color cursors"
 msgstr "Seall cùrsairean dathte"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:148
+#: data/advanced_preferences.cfg:137
 msgid "Use colored mouse cursors"
 msgstr "Seall cùrsairean luchaige dathte"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:155
+#: data/advanced_preferences.cfg:144
 msgid "Graphics scaling options"
 msgstr "Roghainnean sgèilidh na grafaigeachd"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:161
+#: data/advanced_preferences.cfg:150
 msgid "Customize orb colors"
 msgstr "Gnàthaich dathan nan cruinnichean"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:167
+#: data/advanced_preferences.cfg:156
 msgid "Logging"
 msgstr "Logadh"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:173
+#: data/advanced_preferences.cfg:162
 msgid "Allow damage calculation with Monte Carlo simulation"
 msgstr "Ceadaich àireamhachadh mas-fhìor an dochainn air dòigh Monte Carlo"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:174
+#: data/advanced_preferences.cfg:163
 msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
@@ -213,107 +199,107 @@ msgstr ""
 "cleachdadh àireamhachadh na coltachd"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:181
+#: data/advanced_preferences.cfg:170
 msgid "Show haloing effects"
 msgstr "Seall èifeachdan riombaill"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:182
+#: data/advanced_preferences.cfg:171
 msgid "Show special unit graphical effects"
 msgstr "Seall èifeachdan grafaigeachd nan aonadan sònraichte"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:199
+#: data/advanced_preferences.cfg:188
 msgid "Joystick support"
 msgstr "Taic ri joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:206
+#: data/advanced_preferences.cfg:195
 msgid "Joystick: number of the scroll X-axis joystick"
 msgstr "Joystick: àireamh an joystick sgrolaidh aiseal-X"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:216
+#: data/advanced_preferences.cfg:205
 msgid "Joystick: number of the scroll X-axis"
 msgstr "Joystick: àireamh aiseal-X an sgrolaidh"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:226
+#: data/advanced_preferences.cfg:215
 msgid "Joystick: number of the scroll Y-axis joystick"
 msgstr "Joystick: àireamh an joystick sgrolaidh aiseal-Y"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:236
+#: data/advanced_preferences.cfg:225
 msgid "Joystick: number of the scroll Y-axis"
 msgstr "Joystick: àireamh aiseal-Y an sgrolaidh"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:246
+#: data/advanced_preferences.cfg:235
 msgid "Joystick: deadzone of the scrolling stick"
 msgstr "Joystick: raon-marbh aig a’ bhata sgrolaidh"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:256
+#: data/advanced_preferences.cfg:245
 msgid "Joystick: number of the cursor X-axis joystick"
 msgstr "Joystick: àireamh an joystick cùrsair aiseal-X"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:266
+#: data/advanced_preferences.cfg:255
 msgid "Joystick: number of the cursor X-axis"
 msgstr "Joystick: àireamh aiseal-X a’ chùrsair"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:276
+#: data/advanced_preferences.cfg:265
 msgid "Joystick: number of the cursor Y-axis joystick"
 msgstr "Joystick: àireamh an joystick cùrsair aiseal-Y"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:286
+#: data/advanced_preferences.cfg:275
 msgid "Joystick: number of the cursor Y-axis"
 msgstr "Joystick: àireamh aiseal-Y a’ chùrsair"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:296
+#: data/advanced_preferences.cfg:285
 msgid "Joystick: deadzone of the cursor stick"
 msgstr "Joystick: raon-marbh aig a’ bhata cùrsair"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:306
+#: data/advanced_preferences.cfg:295
 msgid "Joystick: number of the mouse X-axis joystick"
 msgstr "Joystick: àireamh an joystick luchaige aiseal-X"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:316
+#: data/advanced_preferences.cfg:305
 msgid "Joystick: number of the mouse X-axis"
 msgstr "Joystick: àireamh aiseal-X na luchaige"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:326
+#: data/advanced_preferences.cfg:315
 msgid "Joystick: number of the mouse Y-axis joystick"
 msgstr "Joystick: àireamh an joystick luchaige aiseal-Y"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:336
+#: data/advanced_preferences.cfg:325
 msgid "Joystick: number of the mouse Y-axis"
 msgstr "Joystick: àireamh aiseal-X na luchaige"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:346
+#: data/advanced_preferences.cfg:335
 msgid "Joystick: deadzone of the mouse stick"
 msgstr "Joystick: raon-marbh aig a’ bhata luchaige"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:356
+#: data/advanced_preferences.cfg:345
 msgid "Joystick: number of the thrust axis joystick"
 msgstr "Joystick: àireamh an joystick aiseil-shàthaidh"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:366
+#: data/advanced_preferences.cfg:355
 msgid "Joystick: number of the thrust axis"
 msgstr "Joystick: àireamh an aiseil-shàthaidh"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:376
+#: data/advanced_preferences.cfg:365
 msgid "Joystick: deadzone of the thruster"
 msgstr "Joysiick: raon-marbh aig an t-sàthadh"
 
@@ -321,7 +307,7 @@ msgstr "Joysiick: raon-marbh aig an t-sàthadh"
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:358
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1085
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1086
 msgid "poisoned"
 msgstr "puinseanaichte"
 
@@ -338,6 +324,21 @@ msgstr "Òr a bheir thu leat:"
 #: data/lua/wml/objectives.lua:39
 msgid "Notes:"
 msgstr "An aire:"
+
+#. [language]
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:155 data/english.cfg:3
+msgid "Easy"
+msgstr "Furasta"
+
+#. [language]
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:156 data/english.cfg:4
+msgid "Medium"
+msgstr "Meadhanach"
+
+#. [language]
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:157 data/english.cfg:5
+msgid "Hard"
+msgstr "Doirbh"
 
 #. [about]
 #: data/core/about.cfg:4
@@ -505,162 +506,162 @@ msgid "German Translation"
 msgstr "Eadar-theangachadh dhan Ghearmailtis"
 
 #. [about]
-#: data/core/about_i18n.cfg:795
+#: data/core/about_i18n.cfg:817
 msgid "Greek Translation"
 msgstr "Eadar-theangachadh dhan Ghreugais"
 
 #. [about]
-#: data/core/about_i18n.cfg:838
+#: data/core/about_i18n.cfg:860
 msgid "Hebrew Translation"
 msgstr "Eadar-theangachadh dhan Eubhra"
 
 #. [about]
-#: data/core/about_i18n.cfg:851
+#: data/core/about_i18n.cfg:873
 msgid "Hungarian Translation"
 msgstr "Eadar-theangachadh dhan Ungairis"
 
 #. [about]
-#: data/core/about_i18n.cfg:912
+#: data/core/about_i18n.cfg:934
 msgid "Icelandic Translation"
 msgstr "Eadar-theangachadh dhan Tìlis"
 
 #. [about]
-#: data/core/about_i18n.cfg:922
+#: data/core/about_i18n.cfg:944
 msgid "Indonesian Translation"
 msgstr "Eadar-theangachadh dhan Innd-Innsis"
 
 #. [about]
-#: data/core/about_i18n.cfg:945
+#: data/core/about_i18n.cfg:967
 msgid "Irish Translation"
 msgstr "Eadar-theangachadh dha Ghàidhlig na h-Èireann"
 
 #. [about]
-#: data/core/about_i18n.cfg:952
+#: data/core/about_i18n.cfg:974
 msgid "Italian Translation"
 msgstr "Eadar-theangachadh dhan Eadailtis"
 
 #. [about]
-#: data/core/about_i18n.cfg:999
+#: data/core/about_i18n.cfg:1021
 msgid "Japanese Translation"
 msgstr "Eadar-theangachadh dhan Seapanais"
 
 #. [about]
-#: data/core/about_i18n.cfg:1078
+#: data/core/about_i18n.cfg:1108
 msgid "Korean Translation"
 msgstr "Eadar-theangachadh dhan Choirèanais"
 
 #. [about]
-#: data/core/about_i18n.cfg:1086
+#: data/core/about_i18n.cfg:1116
 msgid "Latin Translation"
 msgstr "Eadar-theangachadh dhan Laideann"
 
 #. [about]
-#: data/core/about_i18n.cfg:1112
+#: data/core/about_i18n.cfg:1142
 msgid "Latvian Translation"
 msgstr "Eadar-theangachadh dhan Laitbheis"
 
 #. [about]
-#: data/core/about_i18n.cfg:1127
+#: data/core/about_i18n.cfg:1157
 msgid "Lithuanian Translation"
 msgstr "Eadar-theangachadh dhan Liotuainis"
 
 #. [about]
-#: data/core/about_i18n.cfg:1152
+#: data/core/about_i18n.cfg:1182
 msgid "Macedonian Translation"
 msgstr "Eadar-theangachadh dhan Mhasadonais"
 
 #. [about]
-#: data/core/about_i18n.cfg:1159
+#: data/core/about_i18n.cfg:1189
 msgid "Marathi Translation"
 msgstr "Eadar-theangachadh dhan Mharathi"
 
 #. [about]
-#: data/core/about_i18n.cfg:1168
+#: data/core/about_i18n.cfg:1198
 msgid "Norwegian Translation"
 msgstr "Eadar-theangachadh dhan Nirribhis"
 
 #. [about]
-#: data/core/about_i18n.cfg:1193
+#: data/core/about_i18n.cfg:1223
 msgid "Old English Translation"
 msgstr "Eadar-theangachadh dhan t-Seann Bheurla"
 
 #. [about]
-#: data/core/about_i18n.cfg:1211
+#: data/core/about_i18n.cfg:1241
 msgid "Polish Translation"
 msgstr "Eadar-theangachadh dhan Phòlainnis"
 
 #. [about]
-#: data/core/about_i18n.cfg:1259
+#: data/core/about_i18n.cfg:1289
 msgid "Portuguese Translation"
 msgstr "Eadar-theangachadh dhan Phortagailis"
 
 #. [about]
-#: data/core/about_i18n.cfg:1273
+#: data/core/about_i18n.cfg:1303
 msgid "Portuguese (Brazil) Translation"
 msgstr "Eadar-theangachadh dhan Phortagailis (Braisil)"
 
 #. [about]
-#: data/core/about_i18n.cfg:1327
+#: data/core/about_i18n.cfg:1357
 msgid "Romanian Translation"
 msgstr "Eadar-theangachadh dhan Romàinis"
 
 #. [about]
-#: data/core/about_i18n.cfg:1335
+#: data/core/about_i18n.cfg:1365
 msgid "Russian Translation"
 msgstr "Eadar-theangachadh dhan Ruisis"
 
 #. [about]
-#: data/core/about_i18n.cfg:1427
+#: data/core/about_i18n.cfg:1457
 msgid "Scottish Gaelic Translation"
 msgstr "Eadar-theangachadh dha Ghàidhlig na h-Alba"
 
 #. [about]
-#: data/core/about_i18n.cfg:1436
+#: data/core/about_i18n.cfg:1466
 msgid "Serbian Translation"
 msgstr "Eadar-theangachadh dhan t-Sèirbis"
 
 #. [about]
-#: data/core/about_i18n.cfg:1455
+#: data/core/about_i18n.cfg:1485
 msgid "Slovak Translation"
 msgstr "Eadar-theangachadh dhan t-Slòbhacais"
 
 #. [about]
-#: data/core/about_i18n.cfg:1484
+#: data/core/about_i18n.cfg:1514
 msgid "Slovenian Translation"
 msgstr "Eadar-theangachadh dhan t-Slòbhainis"
 
 #. [about]
-#: data/core/about_i18n.cfg:1500
+#: data/core/about_i18n.cfg:1530
 msgid "Spanish Translation"
 msgstr "Eadar-theangachadh dhan Spàinntis"
 
 #. [about]
-#: data/core/about_i18n.cfg:1582
+#: data/core/about_i18n.cfg:1612
 msgid "Swedish Translation"
 msgstr "Eadar-theangachadh dhan t-Suainis"
 
 #. [about]
-#: data/core/about_i18n.cfg:1623
+#: data/core/about_i18n.cfg:1653
 msgid "Turkish Translation"
 msgstr "Eadar-theangachadh dhan Turcais"
 
 #. [about]
-#: data/core/about_i18n.cfg:1645
+#: data/core/about_i18n.cfg:1675
 msgid "Ukrainian Translation"
 msgstr "Eadar-theangachadh dhan Ucràinis"
 
 #. [about]
-#: data/core/about_i18n.cfg:1658
+#: data/core/about_i18n.cfg:1688
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Eadar-theangachadh dhan Bhaileinsianais (Catalanais deasach)"
 
 #. [about]
-#: data/core/about_i18n.cfg:1671
+#: data/core/about_i18n.cfg:1701
 msgid "Vietnamese Translation"
 msgstr "Eadar-theangachadh dhan Bhiet-Namais"
 
 #. [about]
-#: data/core/about_i18n.cfg:1690
+#: data/core/about_i18n.cfg:1720
 msgid "RACV’s Translation"
 msgstr "Eadar-theangachadh aig RACV"
 
@@ -3776,21 +3777,6 @@ msgstr ""
 "500+ tuilleadan.)"
 
 #. [language]
-#: data/english.cfg:3
-msgid "Easy"
-msgstr "Furasta"
-
-#. [language]
-#: data/english.cfg:4
-msgid "Medium"
-msgstr "Meadhanach"
-
-#. [language]
-#: data/english.cfg:5
-msgid "Hard"
-msgstr "Doirbh"
-
-#. [language]
 #: data/english.cfg:6
 msgid "Nightmare"
 msgstr "Trom-laighe"
@@ -3887,7 +3873,8 @@ msgid "arcane"
 msgstr "dìomhair"
 
 #. [naming]
-#: data/english.cfg:37
+#. Generator for bridge labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:38
 msgid ""
 "\n"
 "\t\tbridge_type=Bridge|Crossing\n"
@@ -3900,7 +3887,8 @@ msgstr ""
 "\t"
 
 #. [naming]
-#: data/english.cfg:41
+#. Generator for road labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:43
 msgid ""
 "\n"
 "\t\troad_type=Highway|Pass|Path|Road|Way|Trail\n"
@@ -3913,7 +3901,8 @@ msgstr ""
 "\t"
 
 #. [naming]
-#: data/english.cfg:45
+#. Generator for river labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:48
 msgid ""
 "\n"
 "\t\triver_type=River|River|River|Creek|Creek|Stream|Canal\n"
@@ -3926,7 +3915,8 @@ msgstr ""
 "\t"
 
 #. [naming]
-#: data/english.cfg:49
+#. Generator for forest labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:53
 msgid ""
 "\n"
 "\t\tforest_type=Forest|Forest|Wood\n"
@@ -3939,7 +3929,8 @@ msgstr ""
 "\t"
 
 #. [naming]
-#: data/english.cfg:53
+#. Generator for lake labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:58
 msgid ""
 "\n"
 "\t\tlake_type=Lake|Lake|Lake|Loch|Sea\n"
@@ -3952,7 +3943,8 @@ msgstr ""
 "\t"
 
 #. [naming]
-#: data/english.cfg:57
+#. Generator for mountain labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:63
 msgid ""
 "\n"
 "\t\tmain=$base{!}’s Peak|$base Peak|Mount $base|Mount $base\n"
@@ -3964,7 +3956,8 @@ msgstr ""
 "\t"
 
 #. [naming]
-#: data/english.cfg:60
+#. Generator for swamp labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:67
 msgid ""
 "\n"
 "\t\tsuffix=’s Swamp|marsh|fen\n"
@@ -3977,7 +3970,8 @@ msgstr ""
 "\t"
 
 #. [village_naming]
-#: data/english.cfg:67
+#. Generator for generic village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:75
 msgid ""
 "\n"
 "\t\tsuffix=bury|bury|ham|ton|ville\n"
@@ -3989,7 +3983,8 @@ msgstr ""
 "\t\tmain={prefix} $base{!}"
 
 #. [village_naming]
-#: data/english.cfg:71
+#. Generator for lakeside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:80
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$lake{!}\n"
@@ -4003,7 +3998,8 @@ msgstr ""
 "\t"
 
 #. [village_naming]
-#: data/english.cfg:76
+#. Generator for riverside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:86
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$river{!}\n"
@@ -4018,7 +4014,8 @@ msgstr ""
 "\t"
 
 #. [village_naming]
-#: data/english.cfg:82
+#. Generator for bridge village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:93
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$river{!}|$bridge{!}\n"
@@ -4032,7 +4029,8 @@ msgstr ""
 "\t"
 
 #. [village_naming]
-#: data/english.cfg:87
+#. Generator for grassland village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:99
 msgid ""
 "\n"
 "\t\tsuffix=ham|ton|field\n"
@@ -4045,7 +4043,8 @@ msgstr ""
 "\t"
 
 #. [village_naming]
-#: data/english.cfg:91
+#. Generator for forest village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:104
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$forest{!}\n"
@@ -4060,7 +4059,8 @@ msgstr ""
 "\t"
 
 #. [village_naming]
-#: data/english.cfg:96
+#. Generator for hill village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:110
 msgid ""
 "\n"
 "\t\tsuffix=ham|bury|ton|hill|crest\n"
@@ -4073,7 +4073,8 @@ msgstr ""
 "\t"
 
 #. [village_naming]
-#: data/english.cfg:100
+#. Generator for mountain village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:115
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$mountain{!}\n"
@@ -4087,7 +4088,8 @@ msgstr ""
 "\t"
 
 #. [village_naming]
-#: data/english.cfg:105
+#. Generator for mountain labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:121
 msgid ""
 "\n"
 "\t\tsuffix=ham|bury|ton|mont|mont|cliff|cliff\n"
@@ -4100,7 +4102,8 @@ msgstr ""
 "\t"
 
 #. [village_naming]
-#: data/english.cfg:109
+#. Generator for roadside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:126
 msgid ""
 "\n"
 "\t\tprefix=$road{!}|$road{!}|$base{!}\n"
@@ -4114,7 +4117,8 @@ msgstr ""
 "\t"
 
 #. [village_naming]
-#: data/english.cfg:114
+#. Generator for swamp village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:132
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$swamp{!}\n"
@@ -4229,31 +4233,31 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1085
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1086
 msgid "female^poisoned"
 msgstr "puinseanaichte"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1092
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1093
 msgid "female^slowed"
 msgstr "maille oirre"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1092
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1093
 msgid "slowed"
 msgstr "maille air"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1098
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1099
 msgid "female^petrified"
 msgstr "na clach"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1098
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1099
 msgid "petrified"
 msgstr "na chlach"
 
@@ -4306,21 +4310,21 @@ msgstr "Bheir thu %d%% dhen òr leat dhan ath chnàmh-sgeul."
 msgid "Defeat enemy leader(s)"
 msgstr "Thoir buaidh air ceannard(an) nàmhad"
 
-#: data/scenario-test.cfg:1031 src/game_initialization/depcheck.cpp:491
+#: data/scenario-test.cfg:1030 src/game_initialization/depcheck.cpp:491
 msgid "OK"
 msgstr "Ceart ma-thà"
 
-#: data/scenario-test.cfg:1032
+#: data/scenario-test.cfg:1031
 msgid "Cancel"
 msgstr "Sguir dheth"
 
 #. [language]
-#: data/scenario-test.cfg:4066
+#: data/scenario-test.cfg:4065
 msgid "very long"
 msgstr "glè fhada"
 
 #. [language]
-#: data/scenario-test.cfg:4067
+#: data/scenario-test.cfg:4066
 msgid "electrical"
 msgstr "dealanach"
 
@@ -5388,8 +5392,8 @@ msgstr ""
 "fiadhaich na bailtean. Fiù ’s ma bhios iad air sia-cheàrnach baile, chan "
 "fhaigh iad buannachd dìona às ged a thèid an slànachadh fhathast."
 
-#: src/actions/attack.cpp:386 src/actions/attack.cpp:655
-#: src/actions/attack.cpp:1368
+#: src/actions/attack.cpp:386 src/actions/attack.cpp:656
+#: src/actions/attack.cpp:1369
 msgid "An invalid attacker weapon got selected."
 msgstr "Chaidh airm ionnsaighe mì-dhligheach a thaghadh."
 
@@ -5657,7 +5661,7 @@ msgid "Do you really wish to continue?"
 msgstr "A bheil thu airson leantainn air adhart?"
 
 #: src/addon/client.cpp:463 src/addon/manager_ui.cpp:174
-#: src/game_initialization/multiplayer.cpp:243
+#: src/game_initialization/multiplayer.cpp:230
 msgid "Confirm"
 msgstr "Dearbhaich"
 
@@ -6470,7 +6474,7 @@ msgstr ""
 msgid "Server-side redirect loop"
 msgstr "Lùb ath-stiùiridh bho thaobh an fhrithealaiche"
 
-#: src/game_initialization/multiplayer.cpp:216
+#: src/game_initialization/multiplayer.cpp:203
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6480,29 +6484,29 @@ msgstr ""
 "ghabhail ort mus cuir thu an cunntas agad an gnìomh le post-d no mus "
 "fhaighnich thu air rianaire an dèan e seo dhut."
 
-#: src/game_initialization/multiplayer.cpp:225
+#: src/game_initialization/multiplayer.cpp:212
 msgid "Do you want to continue?"
 msgstr "A bheil thu airson leantainn air adhart?"
 
-#: src/game_initialization/multiplayer.cpp:227
+#: src/game_initialization/multiplayer.cpp:214
 msgid "Warning"
 msgstr "Rabhadh"
 
-#: src/game_initialization/multiplayer.cpp:270
-#: src/game_initialization/multiplayer.cpp:286
-#: src/game_initialization/multiplayer.cpp:289
+#: src/game_initialization/multiplayer.cpp:257
+#: src/game_initialization/multiplayer.cpp:273
+#: src/game_initialization/multiplayer.cpp:276
 msgid "Bad data received from server"
 msgstr "Fhuaradh droch dhàta bhon fhrithealaiche"
 
-#: src/game_initialization/multiplayer.cpp:317
+#: src/game_initialization/multiplayer.cpp:304
 msgid "You must login first."
 msgstr "Feumaidh tu logadh a-steach an toiseach."
 
-#: src/game_initialization/multiplayer.cpp:319
+#: src/game_initialization/multiplayer.cpp:306
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Tha am far-ainm “$nick” ’ga chleachdadh mu thràth."
 
-#: src/game_initialization/multiplayer.cpp:321
+#: src/game_initialization/multiplayer.cpp:308
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -6511,32 +6515,32 @@ msgstr ""
 "(aonan air a char as lugha), àireamhan, fo-loidhnichean is tàthanan "
 "ceadaichte."
 
-#: src/game_initialization/multiplayer.cpp:325
+#: src/game_initialization/multiplayer.cpp:312
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "Tha am far-ainm “$nick” ro fhada. Chan eil ach suas gu 20 caractaran "
 "ceadaichte."
 
-#: src/game_initialization/multiplayer.cpp:328
+#: src/game_initialization/multiplayer.cpp:315
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr ""
 "Tha am far-ainm “$nick” glèidhte is chan fhaod cluicheadairean a chleachdadh."
 
-#: src/game_initialization/multiplayer.cpp:330
+#: src/game_initialization/multiplayer.cpp:317
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Chan eil am far-ainm “$nick” clàraichte air an fhrithealaiche seo."
 
-#: src/game_initialization/multiplayer.cpp:331
+#: src/game_initialization/multiplayer.cpp:318
 msgid " This server disallows unregistered nicknames."
 msgstr ""
 "Chan eil far-ainmean gun chlàradh ceadaichte air an fhrithealaiche seo."
 
-#: src/game_initialization/multiplayer.cpp:333
-#: src/game_initialization/multiplayer.cpp:335
+#: src/game_initialization/multiplayer.cpp:320
+#: src/game_initialization/multiplayer.cpp:322
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Tha am far-ainm “$nick” clàraichte air an fhrithealaiche seo."
 
-#: src/game_initialization/multiplayer.cpp:336
+#: src/game_initialization/multiplayer.cpp:323
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -6544,18 +6548,18 @@ msgstr ""
 "RABHADH: Tha cliant a’ chleachdadh am far-ainm seo mu thràth, gheibh e a’ "
 "bhròg ma logas tu a-steach!"
 
-#: src/game_initialization/multiplayer.cpp:339
+#: src/game_initialization/multiplayer.cpp:326
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 "Mearachd sa ghnìomh logaidh a-steach (cha robh sìol aig an fhrithealaiche "
 "airson an ceangal agad)."
 
-#: src/game_initialization/multiplayer.cpp:342
+#: src/game_initialization/multiplayer.cpp:329
 msgid "The password you provided was incorrect."
 msgstr "Tha am facal-faire a chur thu ann cearr."
 
-#: src/game_initialization/multiplayer.cpp:344
+#: src/game_initialization/multiplayer.cpp:331
 msgid "You have made too many login attempts."
 msgstr "Dh’fheuch thu ri logadh a-steach ro thric."
 
@@ -7106,7 +7110,7 @@ msgstr "Chaidh am modh planaidh air a chur air!"
 msgid "Planning mode deactivated!"
 msgstr "Chaidh am modh planaidh air a chur dheth!"
 
-#: src/language.cpp:106
+#: src/language.cpp:103
 msgid "System default language"
 msgstr "Cànan tùsail an t-siostaim"
 
@@ -8653,3 +8657,13 @@ msgstr "Falaich na planaichean aig $player"
 #: src/whiteboard/manager.cpp:1114
 msgid "Whiteboard Options"
 msgstr "Roghainnean a’ bhùird-ghil"
+
+#~ msgid "Ping timeout"
+#~ msgstr "Crìoch-ùine ping"
+
+#~ msgid ""
+#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
+#~ "disable"
+#~ msgstr ""
+#~ "An àireamh dhe dhiogan a thèid a’ feitheamh airson freagairt ping mus "
+#~ "tachair crìoch-ùine. Tagh 0 gus a chur à comas."

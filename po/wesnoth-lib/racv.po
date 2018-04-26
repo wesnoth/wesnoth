@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-04-15 01:34-0300\n"
+"POT-Creation-Date: 2018-04-26 03:28+0300\n"
 "PO-Revision-Date: 2008-09-21 19:29+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -1916,10 +1916,10 @@ msgid "Search"
 msgstr ""
 
 #. [toggle_button]: id=sort_0
-#. [toggle_button]: id=sort_1
 #. [toggle_button]: id=sort_name
-#. [label]
 #. [label]: id=name
+#. [label]
+#. [toggle_button]: id=sort_1
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:226
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_server_list.cfg:107
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -2471,7 +2471,9 @@ msgid ""
 msgstr ""
 
 #. [label]: id=title
+#. [slider]: id=enemey_gold_factor
 #: data/gui/window/campaign_difficulty.cfg:63
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:251
 msgid "Difficulty"
 msgstr ""
 
@@ -2497,8 +2499,8 @@ msgstr ""
 msgid "Last"
 msgstr ""
 
-#. [button]: id=previous_page
 #. [button]: id=previous_tip
+#. [button]: id=previous_page
 #: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:190
 #, fuzzy
 msgid "Previous"
@@ -2510,8 +2512,8 @@ msgstr "Unitat anterior"
 msgid "Previous page"
 msgstr "Unitat anterior"
 
-#. [button]: id=next_page
 #. [button]: id=next_tip
+#. [button]: id=next_page
 #: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:205
 #, fuzzy
 msgid "Next"
@@ -2759,7 +2761,7 @@ msgstr "Descriure la unitat"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:470
+#: src/gui/dialogs/multiplayer/lobby.cpp:471
 msgid "Experience modifier:"
 msgstr ""
 
@@ -2824,7 +2826,7 @@ msgstr "Taula d'estat"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:249 data/gui/window/mp_staging.cfg:330
-#: src/gui/dialogs/multiplayer/lobby.cpp:471
+#: src/gui/dialogs/multiplayer/lobby.cpp:472
 msgid "Gold:"
 msgstr ""
 
@@ -2902,8 +2904,8 @@ msgstr "Generar nou mapa"
 msgid "Choose a map generator:"
 msgstr "Generador de mapes"
 
-#. [button]: id=random_map_settings
 #. [button]: id=settings
+#. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
 #, fuzzy
@@ -2927,15 +2929,15 @@ msgstr "Generar nou mapa"
 msgid "New Map"
 msgstr "Nou mapa"
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
 msgstr "Amplària:"
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
@@ -3159,8 +3161,8 @@ msgstr "Suprimir archiu"
 msgid "Do you really want to delete this game?"
 msgstr "¿Segur que vols eixir?"
 
-#. [toggle_button]: id=do_not_show_again
 #. [toggle_button]: id=dont_ask_again
+#. [toggle_button]: id=do_not_show_again
 #: data/gui/window/game_delete.cfg:80
 #: data/gui/window/mp_host_game_prompt.cfg:79
 #, fuzzy
@@ -3192,8 +3194,8 @@ msgid "Date"
 msgstr "Apegar"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]: id=lblTitle
 #. [button]: id=load_game
+#. [label]: id=lblTitle
 #: data/gui/window/game_load.cfg:286 data/gui/window/mp_create_game.cfg:898
 #: src/hotkey/hotkey_command.cpp:83
 msgid "Load Game"
@@ -3279,7 +3281,7 @@ msgstr "Equip 1"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:399
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:401
 msgid "Gold"
 msgstr ""
 
@@ -3308,7 +3310,7 @@ msgstr ""
 #. [label]: id=side_income
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:261
 #: data/gui/window/mp_join_game.cfg:274
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:405
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:407
 msgid "Income"
 msgstr ""
 
@@ -3630,8 +3632,8 @@ msgstr ""
 msgid "Alphabetically"
 msgstr ""
 
-#. [toggle_button]: id=filter_with_friends
 #. [widget]: id=tab_label
+#. [toggle_button]: id=filter_with_friends
 #: data/gui/window/lobby_main.cfg:420
 #: data/gui/window/preferences/05_multiplayer.cfg:415
 #, fuzzy
@@ -3666,9 +3668,9 @@ msgstr "Alluntar"
 msgid "Refresh"
 msgstr "Visualisació"
 
-#. [button]: id=create
 #. [label]
 #. [button]: id=ok
+#. [button]: id=create
 #: data/gui/window/lobby_main.cfg:498 data/gui/window/lobby_main.cfg:676
 #: data/gui/window/mp_create_game/default_resolution.cfg:45
 #: data/gui/window/mp_create_game/default_resolution.cfg:446
@@ -3681,9 +3683,9 @@ msgid "Create Game"
 msgstr "Guardar la partida"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=show_preferences
 #. [label]: id=title
 #. [grid]
+#. [button]: id=show_preferences
 #: data/gui/window/lobby_main.cfg:508 data/gui/window/lobby_main.cfg:664
 #: data/gui/window/preferences.cfg:212 data/gui/window/title_screen.cfg:259
 #: src/hotkey/hotkey_command.cpp:99
@@ -3826,8 +3828,8 @@ msgstr ""
 msgid "Event"
 msgstr ""
 
-#. [widget]: id=label
 #. [label]
+#. [widget]: id=label
 #: data/gui/window/mp_alerts_options.cfg:154
 #: data/gui/window/preferences.cfg:346
 msgid "Sound"
@@ -3946,9 +3948,9 @@ msgstr ""
 msgid "When a new turn has begun"
 msgstr ""
 
-#. [button]: id=orb_defaults
 #. [button]: id=revert_to_defaults
 #. [button]: id=btn_reset_hotkeys
+#. [button]: id=orb_defaults
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:263
 #: data/gui/window/select_orb_colors.cfg:102
@@ -4002,7 +4004,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=mods_header
 #: data/gui/window/mp_create_game.cfg:203
-#: src/gui/dialogs/multiplayer/lobby.cpp:454
+#: src/gui/dialogs/multiplayer/lobby.cpp:455
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Modifications:"
@@ -4238,7 +4240,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:177
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:472
+#: src/gui/dialogs/multiplayer/lobby.cpp:473
 #, fuzzy
 #| msgid "Max hill size:"
 msgid "Map size:"
@@ -4265,16 +4267,16 @@ msgstr "Generar nou mapa"
 msgid "Random"
 msgstr ""
 
-#. [toggle_button]: id=male_toggle
 #. [row]
+#. [toggle_button]: id=male_toggle
 #: data/gui/window/mp_faction_select.cfg:169
 #: data/gui/window/unit_create.cfg:217
 #, fuzzy
 msgid "Male"
 msgstr "Castell"
 
-#. [toggle_button]: id=female_toggle
 #. [row]
+#. [toggle_button]: id=female_toggle
 #: data/gui/window/mp_faction_select.cfg:171
 #: data/gui/window/unit_create.cfg:229
 msgid "Female"
@@ -4300,8 +4302,8 @@ msgstr "Triar la resolució"
 msgid "Starting position:"
 msgstr "Eixir de l'editor"
 
-#. [widget]: id=name
 #. [label]
+#. [widget]: id=name
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:230
 msgid "Host Networked Game"
@@ -4341,7 +4343,7 @@ msgstr ""
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:479 data/gui/window/mp_staging.cfg:614
 #: data/gui/window/mp_staging.cfg:806
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:463
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:465
 msgid "Waiting for players to join..."
 msgstr ""
 
@@ -4377,8 +4379,8 @@ msgid "Save password locally (encrypted)"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [widget]: id=label
 #. [label]
+#. [widget]: id=label
 #. [grid]
 #: data/gui/window/mp_method_selection.cfg:44
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:253
@@ -5423,21 +5425,21 @@ msgstr "Taula d'estat"
 msgid "HP"
 msgstr ""
 
-#. [toggle_button]: id=sort_2
 #. [toggle_button]: id=sort_4
+#. [toggle_button]: id=sort_2
 #: data/gui/window/unit_list.cfg:149 data/gui/window/unit_recall.cfg:61
 msgid "Lvl"
 msgstr ""
 
-#. [toggle_button]: id=sort_3
 #. [toggle_button]: id=sort_5
+#. [toggle_button]: id=sort_3
 #: data/gui/window/unit_list.cfg:163 data/gui/window/unit_recall.cfg:75
 msgid "XP"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_6
+#. [toggle_button]: id=sort_4
 #: data/gui/window/unit_list.cfg:177 data/gui/window/unit_recall.cfg:89
 #: src/gui/widgets/unit_preview_pane.cpp:345
 #: src/gui/widgets/unit_preview_pane.cpp:488
@@ -5491,8 +5493,8 @@ msgstr "Erro"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:228
-#: src/gui/dialogs/multiplayer/lobby.cpp:244 src/gui/dialogs/wml_error.cpp:197
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:229
+#: src/gui/dialogs/multiplayer/lobby.cpp:245 src/gui/dialogs/wml_error.cpp:197
 msgid "Details:"
 msgstr ""
 
@@ -5648,7 +5650,7 @@ msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
 #: src/gui/core/window_builder.cpp:314 src/gui/widgets/addon_list.cpp:429
-#: src/gui/widgets/chatbox.cpp:762 src/gui/widgets/listbox.cpp:819
+#: src/gui/widgets/chatbox.cpp:789 src/gui/widgets/listbox.cpp:819
 #: src/gui/widgets/multi_page.cpp:196 src/gui/widgets/panel.cpp:194
 #: src/gui/widgets/scroll_label.cpp:220 src/gui/widgets/scrollbar_panel.cpp:98
 #: src/gui/widgets/size_lock.cpp:119 src/gui/widgets/stacked_widget.cpp:241
@@ -5900,7 +5902,7 @@ msgid "Terms"
 msgstr ""
 
 #: src/gui/dialogs/addon/manager.cpp:757 src/gui/dialogs/addon/manager.cpp:784
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:439
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:441
 msgid "Response"
 msgstr ""
 
@@ -5917,7 +5919,7 @@ msgstr "¿Segur que vols eixir?"
 
 #: src/gui/dialogs/addon/manager.cpp:885 src/gui/dialogs/addon/manager.cpp:899
 #: src/gui/dialogs/campaign_selection.cpp:274
-#: src/gui/dialogs/multiplayer/lobby.cpp:459
+#: src/gui/dialogs/multiplayer/lobby.cpp:460
 #, fuzzy
 #| msgid "None"
 msgid "None"
@@ -6117,16 +6119,16 @@ msgid "Unknown"
 msgstr ""
 
 #: src/gui/dialogs/game_stats.cpp:200 src/gui/dialogs/game_stats.cpp:203
-#: src/gui/dialogs/multiplayer/lobby.cpp:467
+#: src/gui/dialogs/multiplayer/lobby.cpp:468
 msgid "no"
 msgstr "no"
 
 #: src/gui/dialogs/game_stats.cpp:200 src/gui/dialogs/game_stats.cpp:203
-#: src/gui/dialogs/multiplayer/lobby.cpp:467
+#: src/gui/dialogs/multiplayer/lobby.cpp:468
 msgid "yes"
 msgstr "sí"
 
-#: src/gui/dialogs/game_version.cpp:137
+#: src/gui/dialogs/game_version.cpp:137 src/gui/dialogs/title_screen.cpp:241
 msgid "Version $version"
 msgstr ""
 
@@ -6241,107 +6243,107 @@ msgstr "Suprimir archiu"
 msgid "Downloading lobby data"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:104
+#: src/gui/dialogs/multiplayer/lobby.cpp:105
 #, fuzzy
 msgid "Selected Game"
 msgstr "Suprimir archiu"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:105
+#: src/gui/dialogs/multiplayer/lobby.cpp:106
 #, fuzzy
 msgid "Other Games"
 msgstr "Nou mapa"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:107
+#: src/gui/dialogs/multiplayer/lobby.cpp:108
 msgid "Current Room"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:109
+#: src/gui/dialogs/multiplayer/lobby.cpp:110
 msgid "Lobby"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:125
+#: src/gui/dialogs/multiplayer/lobby.cpp:126
 #, fuzzy
 #| msgid "Do you really want to quit?"
 msgid "Do you really want to log out?"
 msgstr "¿Segur que vols eixir?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:224
+#: src/gui/dialogs/multiplayer/lobby.cpp:225
 msgid "Incompatible User-made Content."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:225
+#: src/gui/dialogs/multiplayer/lobby.cpp:226
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
 "add-ons be updated."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:240
+#: src/gui/dialogs/multiplayer/lobby.cpp:241
 msgid "Missing User-made Content."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:241
+#: src/gui/dialogs/multiplayer/lobby.cpp:242
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
 "Do you want to try to install them?"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:407
+#: src/gui/dialogs/multiplayer/lobby.cpp:408
 msgid "Games: showing $num_shown out of $num_total"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:452
+#: src/gui/dialogs/multiplayer/lobby.cpp:453
 msgid "Era:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:469
+#: src/gui/dialogs/multiplayer/lobby.cpp:470
 #, fuzzy
 msgid "Settings:"
 msgstr "Atalls de teclat"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:473
+#: src/gui/dialogs/multiplayer/lobby.cpp:474
 msgid "Registered users only:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:474
+#: src/gui/dialogs/multiplayer/lobby.cpp:475
 #, fuzzy
 msgid "Reloaded:"
 msgstr "Nou mapa"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:475
+#: src/gui/dialogs/multiplayer/lobby.cpp:476
 msgid "Shared vision:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:476
+#: src/gui/dialogs/multiplayer/lobby.cpp:477
 msgid "Shuffle sides:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:477
+#: src/gui/dialogs/multiplayer/lobby.cpp:478
 #, fuzzy
 msgid "Time limit:"
 msgstr "Tema"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:478
+#: src/gui/dialogs/multiplayer/lobby.cpp:479
 #, fuzzy
 msgid "Use map settings:"
 msgstr "Atalls de teclat"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:486
+#: src/gui/dialogs/multiplayer/lobby.cpp:487
 msgid ""
 "One or more items need to be installed\n"
 "in order to join this game."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:511
+#: src/gui/dialogs/multiplayer/lobby.cpp:512
 msgid "Observers allowed"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:514
+#: src/gui/dialogs/multiplayer/lobby.cpp:515
 msgid "Observers not allowed"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:957
+#: src/gui/dialogs/multiplayer/lobby.cpp:959
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at http://bugs.wesnoth.org."
@@ -6431,41 +6433,41 @@ msgstr ""
 msgid "Select at which point to begin this campaign."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:193
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:194
 #, fuzzy
 msgid "No era information found."
 msgstr "Generador de mapes"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:248
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:249
 msgid "Computer Player"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:250
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:251
 #, fuzzy
 #| msgid "(empty list)"
 msgid "Empty slot"
 msgstr "(llista buida)"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:252
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:253
 msgid "Reserved for $playername"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:254
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:255
 msgid "Vacant slot"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:258
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:259
 msgid "empty"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:332
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:154
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:334
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:156
 #, fuzzy
 #| msgid "Team 1"
 msgid "Team:"
 msgstr "Equip 1"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:464
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:466
 msgid "Waiting for players to choose factions..."
 msgstr ""
 
@@ -6621,7 +6623,7 @@ msgstr ""
 msgid "Taken"
 msgstr ""
 
-#: src/gui/dialogs/title_screen.cpp:468
+#: src/gui/dialogs/title_screen.cpp:467
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Choose Test"
@@ -6682,25 +6684,25 @@ msgstr ""
 msgid "Delete add-on from server"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:263
+#: src/gui/widgets/chatbox.cpp:285
 msgid "whisper to $receiver"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:396
+#: src/gui/widgets/chatbox.cpp:385
+msgid "Room <i>“$name”</i> joined"
+msgstr ""
+
+#: src/gui/widgets/chatbox.cpp:391
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>\n"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:400
-msgid "Room <i>“$name”</i> joined"
-msgstr ""
-
-#: src/gui/widgets/chatbox.cpp:597
+#: src/gui/widgets/chatbox.cpp:624
 msgid "$player has entered the room"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:639
+#: src/gui/widgets/chatbox.cpp:666
 msgid "$player has left the room"
 msgstr ""
 
@@ -7786,15 +7788,15 @@ msgstr ""
 msgid "Find Server Application"
 msgstr ""
 
-#: src/preferences/game.cpp:382
+#: src/preferences/game.cpp:380
 msgid "No server has been defined."
 msgstr "No s'ha definit cap servidor"
 
-#: src/preferences/game.cpp:905
+#: src/preferences/game.cpp:898
 msgid "[%H:%M]"
 msgstr ""
 
-#: src/preferences/game.cpp:908
+#: src/preferences/game.cpp:901
 msgid "[%I:%M %p]"
 msgstr ""
 

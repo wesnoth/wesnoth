@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-04-15 04:34 UTC\n"
+"POT-Creation-Date: 2018-04-26 00:27 UTC\n"
 "PO-Revision-Date: 2018-04-23 16:17-0000\n"
 "Last-Translator: German translation team <irc://irc.freenode.net/#wesnoth-"
 "de>\n"
@@ -46,7 +46,6 @@ msgstr "(Einstufung: Einfach, 7 Szenarien)"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:22
-#| msgid "(Beginner)"
 msgid "Beginner"
 msgstr "Sehr einfach"
 
@@ -62,13 +61,11 @@ msgstr "Baron"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:23
-#| msgid "(Normal)"
 msgid "Normal"
 msgstr "Normal"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:24
-#| msgid "(Challenging)"
 msgid "Challenging"
 msgstr "Herausfordernd"
 
@@ -184,10 +181,10 @@ msgstr "Elfen"
 msgid "Lomarfel"
 msgstr "Lomarfel"
 
-#. [side]: type=Orcish Sovereign, id=Rualsha
+#. [side]: type=Orcish Warrior, id=Urugha
 #. [side]: type=Orcish Warlord, id=Gnargha
 #. [side]: type=Orcish Warlord, id=Krughnar
-#. [side]: type=Orcish Warrior, id=Urugha
+#. [side]: type=Orcish Sovereign, id=Rualsha
 #. [side]: type=Orcish Slayer, id=Gharlsa
 #: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:88
 #: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:59
@@ -220,10 +217,6 @@ msgstr "Erlornas fällt in der Schlacht"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:129
-#| msgid ""
-#| "Hint:\n"
-#| "Elves can move quickly and safely among the trees. Pick off the enemy "
-#| "grunts with your archers from the safety of the forest."
 msgid ""
 "Elves can move quickly and safely among the trees. Pick off the enemy grunts "
 "with your archers from the safety of the forest."
@@ -427,11 +420,6 @@ msgstr "Besiegt Gharlsa"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:114
-#| msgid ""
-#| "Hint:\n"
-#| "Assassins are hard to hit, and their poison is insidious. Stay close to "
-#| "the villages, where poisoning can be cured, and force your enemies to "
-#| "attack you from the river."
 msgid ""
 "Assassins are hard to hit, and their poison is insidious. Stay close to the "
 "villages, where poisoning can be cured, and force your enemies to attack you "
@@ -589,10 +577,6 @@ msgstr "Besiegt Gnargha"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:103
-#| msgid ""
-#| "Hint:\n"
-#| "There are no villages in this scenario — you must use healers instead. "
-#| "Use hit-and-run tactics to weaken enemy units who cannot heal themselves."
 msgid ""
 "There are no villages in this scenario — you must use healers instead. Use "
 "hit-and-run tactics to weaken enemy units who cannot heal themselves."
@@ -861,10 +845,6 @@ msgstr "Besiegt alle gegnerischen Anführer"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:170
-#| msgid ""
-#| "Hint:\n"
-#| "Trolls are poor fighters when not on rugged terrain and fare even worse "
-#| "during the daytime. Lure them out of the hills and attack in the sunlight."
 msgid ""
 "Trolls are poor fighters when not on rugged terrain and fare even worse "
 "during the daytime. Lure them out of the hills and attack in the sunlight."
@@ -1143,10 +1123,6 @@ msgstr "Als Anführer kann Linaera auf einem Burgfried Magier rekrutieren."
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:129
-#| msgid ""
-#| "Hint:\n"
-#| "Use Elven Scouts and Linaera’s power of teleportation to mount hit-and-"
-#| "run attacks."
 msgid ""
 "Use Elven Scouts and Linaera’s power of teleportation to mount hit-and-run "
 "attacks."
@@ -1373,10 +1349,6 @@ msgstr "Besiegt Keremal"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:90
-#| msgid ""
-#| "Hint:\n"
-#| "Undead are resistant to physical attack. Use mages to attack the undead, "
-#| "and elves to protect and support the mages."
 msgid ""
 "Undead are resistant to physical attack. Use mages to attack the undead, and "
 "elves to protect and support the mages."
@@ -1437,10 +1409,6 @@ msgstr "Besiegt Rualsha"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:102
-#| msgid ""
-#| "Hint:\n"
-#| "Your enemy is well-defended against attacks from the south. Use rangers "
-#| "to sneak through the forest and mount a surprise attack from the north."
 msgid ""
 "Your enemy is well-defended against attacks from the south. Use rangers to "
 "sneak through the forest and mount a surprise attack from the north."
@@ -1574,9 +1542,6 @@ msgstr "Ich habe dich enttäusch, Erlornas…"
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/utils/deaths.cfg:49
-#| msgid ""
-#| "All is lost! Without Linaera’s help, I cannot hope to defeat these "
-#| "horrifying apparitions!"
 msgid ""
 "All is lost! Without Linaera’s help, I cannot hope to defeat these "
 "abominations!"

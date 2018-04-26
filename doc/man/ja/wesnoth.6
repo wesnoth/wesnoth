@@ -1,0 +1,309 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2018 wesnoth "Battle for Wesnoth"
+.
+.SH 名前
+wesnoth \- Battle for Wesnoth ターン制ファンタジー戦略ゲーム
+.
+.SH 書式
+.
+\fBwesnoth\fP [\fIOPTIONS\fP] [\fIPATH_TO_DATA\fP]
+.
+.SH 説明
+.
+Battle for \fBWesnoth\fPはターン制のファンタジー戦略ゲームです。
+
+生え抜きの中核の軍隊を使用して、資金と村の資源の管理に注意しながら、全ての敵のリーダーを倒しましょう。全てのユニットは固有の強みと弱点を持つため、勝利するためには、敵の同様の好機を阻みながら、自軍の長所を最大限に引き出せるように配備する必要があります。自分の言語でプレイ可能で、賢いコンピューターを相手に力を試したり、Wesnoth
+の巨大なオンラインプレイヤーのコミュニティに参加したりすることができます。自分でカスタムユニットや、シナリオやキャンペーンを作成して、それを他の人達と共有することもできます。
+.
+.SH オプション
+.
+.TP 
+\fB\-\-bunzip\fP\fI\ infile.bz2\fP
+bzip2 フォーマットのファイルを展開して .bz2 という拡張子を除いたファイルに保存する。 \fIinfile.bz2\fP は削除される。
+.TP 
+\fB\-\-bzip\fP\fI\ infile\fP
+ファイルを bzip2 フォーマットで圧縮して \fIinfile\fP.bz2 に保存し、\fIinfile\fP を削除する。
+.TP 
+\fB\-c[\fP\fIid_campaign\fP\fB],\ \-\-campaign[\fP\fI=id_campaign\fP\fB]\fP
+キャンペーンをID \fIid_campaign\fP で直接指定する。IDを指定しないと選択メニューが表示される。
+.TP 
+\fB\-\-campaign\-difficulty[\fP\fI=difficulty\fP\fB]\fP
+キャンペーンの難易度を指定（ 1 から最大値まで）。指定が無い場合、キャンペーンの難易度選択ウィジェットが表示される。
+.TP 
+\fB\-\-campaign\-scenario\fP\fI\ id_scenario\fP
+指定されたキャンペーンのシナリオのID。デフォルトでは最初のシナリオ。
+.TP 
+\fB\-\-core\fP\fI\ id_core\fP
+読み込んだコアを指定の ID のものに置き換える。
+.TP 
+\fB\-\-data\-dir\fP\fI\ directory\fP
+データディレクトリを指定のものに置き換える。
+.TP 
+\fB\-\-data\-path\fP
+データディレクリへのパスを表示し終了する。
+.TP 
+\fB\-d, \-\-debug\fP
+ゲーム内での追加コマンドモードオプションを有効にする。
+（ https://www.wesnoth.org/wiki/CommandMode にはより多くのコマンドモードの説明があります。）有効化する
+.TP 
+\fB\-e[\fP\fIfile\fP\fB],\ \-\-editor[\fP\fI=file\fP\fB]\fP
+ゲーム内のマップエディタを直接起動する。 もし、 \fIfile\fP が指定されていた場合は \fB\-l \-\-load\fPと同じになる。
+.TP 
+\fB\-\-fps\fP
+ゲーム実行時の秒当たりのフレーム数(FPS)をスクリーンの隅に表示する。
+.TP 
+\fB\-f, \-\-fullscreen\fP
+フルスクリーンモードでゲームを実行する。
+.TP 
+\fB\-\-gunzip\fP\fI\ infile.gz\fP
+gzip フォーマットのファイルを展開して .gz という拡張子を除いたファイルに保存する。 \fIinfile.gz\fP は削除される。
+.TP 
+\fB\-\-gzip\fP\fI\ infile\fP
+ファイルを gzip フォーマットで圧縮して \fIinfile\fP.gz に保存し、\fIinfile\fP を削除する。
+.TP 
+\fB\-h, \-\-help\fP
+標準出力にコマンドラインオプションの要約を表示して、終了する。
+.TP 
+\fB\-l,\ \-\-load\fP\fI\ file\fP
+標準のセーブデータディレクトリからセーブデータ \fIfile\fP を再開する。もし同様に \fB\-e\fP または \fB\-\-editor\fP
+オプションが使われた場合は、エディタを開始して  \fIfile\fP
+からマップを開く。もしディレクトリなら、マップ読み込みダイアログでその場所を表示した状態からエディタを開始する。
+.TP 
+\fB\-L,\ \-\-language\fP\fI\ lang\fP
+このセッションで使用する言語 \fIlang\fP 例: \fB\-\-language ang_GB@latin\fP
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+ログ領域(domain)の厳密さのレベルを設定する。 \fBall\fP は、どのログ領域にも対応させるために利用される。有効なレベルは以下の通り。
+\fBerror\fP、\ \fBwarning\fP、\ \fBinfo\fP、\ \fBdebug\fP。既定値では \fBerror\fP レベルが使用される。
+.TP 
+\fB\-\-log\-precise\fP
+より正確なログファイルの時刻を表示する。
+.TP 
+\fB\-\-log\-strict\fP
+ログ出力の厳密なレベルを設定する。このレベル以上に深刻なメッセージがログ領域に送られると、ユニットテストは勝利の結果にかかわらず失敗する。 \fB\-u\fP
+と併せて利用しなければ不適切である。
+.TP 
+\fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
+定義済のログ領域のリストを表示して終了する。(\fIfilter\fPが指定されたら反映される)
+.TP 
+\fB\-\-max\-fps\fP\fI\ fps\fP
+FPSを設定する。 \fI1\fP から \fI1000\fP の範囲。デフォルトではディスプレイのリフレッシュレートを指定。
+.TP 
+\fB\-m, \-\-multiplayer\fP
+マルチプレイヤーゲームを実行する。 \fB\-\-multiplayer\fP と共に利用できる追加のオプションは後述。
+.TP 
+\fB\-\-mp\-test\fP
+テスト用のMPシナリオを読み込む。
+.TP 
+\fB\-\-no\-delay\fP
+グラフィックベンチマーク用にディレイなしでゲームを実行する。これは \fB\-\-nogui\fP では自動的に有効になる。
+.TP 
+\fB\-\-noaddons\fP
+ユーザーのアドオンを読み込まない。
+.TP 
+\fB\-\-nocache\fP
+ゲームデータのキャッシュを使用しない。
+.TP 
+\fB\-\-nogui\fP
+GUI でない状態でゲームを起動する。 \fB\-\-multiplayer\fP、 \fB\-\-screenshot\fP、 \fB\-\-plugin\fP
+と組み合わせた場合のみ利用可能である。
+.TP 
+\fB\-\-nomusic\fP
+BGMなしでゲームを実行する。
+.TP 
+\fB\-\-noreplaycheck\fP
+ユニットテストにおいてリプレイの検証を行わない。 \fB\-u\fPオプション指定時にのみ関係がある。
+.TP 
+\fB\-\-nosound\fP
+効果音やBGMなしでゲームを実行する。
+.TP 
+\fB\-\-password\fP\fI\ password\fP
+サーバーへ接続時、他の設定を無視して、 \fIpassword\fP を使用する。危険。
+.TP 
+\fB\-\-path\fP
+ゲームデータディレクトリの名前を表示して、終了する。
+.TP 
+\fB\-p,\ \-\-preprocess\fP\fI\ source\-file/folder\fP\fB\ \fP\fItarget\-directory\fP
+指定されたファイルまたはフォルダを前処理する。各ファイル（またはファイル群）ごとに、プレイン .cfg ファイルおよび処理された .cfg
+ファイルがターゲットとして指定されたディレクトリに書き出される。フォルダが指定された場合、フォルダは既知の前処理ルールに基づいて再帰的に前処理される。指定されたリソースの前に、「data/core/macros」ディレクトリ内の共通マクロが前処理される。例：\fB\-p
+~/wesnoth/data/campaigns/tutorial ~/result.\fP
+前処理プログラムに関する詳細：https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor
+.TP 
+\fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
+カンマで区切られた、\fB\-\-preprocess\fP コマンドで使用される定義のリスト。\fBSKIP_CORE\fP
+がリスト内にある場合、「data/core」ディレクトリ内は前処理されない。
+.TP 
+\fB\-\-preprocess\-input\-macros\fP\fI\ source\-file\fP
+\fB\-\-preprocess\fP コマンドによっのみ使用される。 前処理の前に組み込まれるべき \fB[preproc_define]\fP
+を含むファイルを指定する。
+.TP 
+\fB\-\-preprocess\-output\-macros[\fP\fI=target\-file\fP\fB]\fP
+\fB\-\-preprocess\fP コマンドによってのみ使用される。
+ターゲットのファイル内の前処理されたマクロを出力する。ファイルが指定されない場合、出力は前処理コマンド内のターゲットのディレクトリ内の「_MACROS_.cfg」ファイルとなる。出力ファイルは
+\fB\-\-preprocess\-input\-macros\fP に渡すこともできる。この切り替えは \fB\-\-preprocess\fP
+コマンドより前に記述されるべきである。
+.TP 
+\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
+画面解像度を設定する。例: \fB\-r 800x600\fP
+.TP 
+\fB\-\-render\-image\fP\fI\ image\fP\fB\ \fP\fIoutput\fP
+画像パス関数により、wesnoth の確かな「画像パス文字列」を取得し、.png ファイルに出力する。ファイル名が .bmp で終了した場合あるいは
+libpng が利用可能でない場合は、 windows の .bmp
+ファイルに出力する。画像パス関数については、https://wiki.wesnoth.org/ImagePathFunctionWML
+に文書化されている。
+.TP 
+\fB\-R,\ \-\-report\fP
+ゲームディレクトリを初期化し、バグレポートでの使用に適したビルド情報を表示して、終了する。
+.TP 
+\fB\-\-rng\-seed\fP\fI\ seed\fP
+乱数のシード値を数値で指定する <arg>. 例: \fB\-\-rng\-seed 0\fP
+.TP 
+\fB\-\-screenshot\fP\fI\ map\fP\fB\ \fP\fIoutput\fP
+画面の初期化なしに \fImap\fP のスクリーンショットを \fIoutput\fP に保存する
+.TP 
+\fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
+ホストが指定されていれば、そのホストへ接続する。あるいは選択の最初のサーバーに接続する。例: \fB\-\-server
+server.wesnoth.org\fP
+.TP 
+\fB\-\-showgui\fP
+GUI 付きでゲームを実行する、暗黙的に \fB\-\-nogui\fP を置き換える。
+.TP 
+\fB\-\-strict\-validation\fP
+検証エラーは致命的なエラーとして扱う。
+.TP 
+\fB\-t[\fP\fIscenario_id\fP\fB],\ \-\-test[\fP\fI=scenario_id\fP\fB]\fP
+テストシナリオを実行する。テストシナリオでは\fB[test]\fP
+WML\ タグが定義されるべきである。デフォルトでは\fBtest\fPである。\fB[micro_ai]\fP\ 機能のデモンストレーションでは\fBmicro_ai_test\fPと共に開始可能である。暗黙的に
+\fB\-\-nogui\fPが指定される。
+.TP 
+\fB\-u,\ \-\-unit\fP\fI\ scenario\-id\fP
+指定されたテストシナリオをユニットテストとして実行する。 \fB\-\-nogui\fP を伴う。
+.TP 
+\fB\-\-userconfig\-dir\fP\fI\ name\fP
+ユーザー設定ディレクトリを $HOME 下または Windows の「My Documents\eMy Games」下の \fIname\fP
+に設定する。設定ディレクトリのパスを$HOME や 「My Documents\eMy Games」の外に絶対パスで指定することもできる。Windows
+では 「.\e」あるいは「..\e」を用いることで、ワーキングディレクトリーからの相対パスで指定することもできる。X11 下では、このパスはデフォルトで
+$XDG_CONFIG_HOME または $HOME/.config/wesnoth
+であり、他のシステムでユーザーデータパスがデフォルトであるのとは異なる。
+.TP 
+\fB\-\-userconfig\-path\fP
+ユーザー設定ディレクトリの名前を表示して、終了する。
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ name\fP
+ユーザーデータディレクトリを $HOME 下または Windows の「My Documents\eMy Games」下の \fIname\fP
+に設定する。ユーザーデータディレクトリのパスを $HOME や 「My Documents\eMy
+Games」の外に絶対パスで指定することもできる。Windows では
+「.\e」あるいは「..\e」を用いることで、ワーキングディレクトリーからの相対パスで指定することもできる。
+.TP 
+\fB\-\-username\fP\fI\ username\fP
+サーバーへの接続時、他の設定を無視して、 \fIusername\fP を使用する。
+.TP 
+\fB\-\-userdata\-path\fP
+ユーザーデータディレクトリへのパスを表示して、終了する。
+.TP 
+\fB\-\-validcache\fP
+キャッシュが正しいものと想定する。(危険)
+.TP 
+\fB\-v, \-\-version\fP
+バージョン番号を表示して、終了する。
+.TP 
+\fB\-w, \-\-windowed\fP
+ウインドウモードでゲームを実行する。
+.TP 
+\fB\-\-with\-replay\fP
+\fB\-\-load\fP オプションで読み込まれたゲームのリプレイを実行する。
+.
+.SH "\-\-multiplayer 用のオプション"
+.
+陣営指定のマルチプレイヤーオプションが \fInumber\fP によって示される。 \fInumber\fP は陣営のナンバーに置き換えられる必要がある。通常は
+1 か 2 だが、選択されたシナリオでの可能なプレイヤー数に依存する。
+.TP 
+\fB\-\-ai_config\fP\fI\ number\fP\fB:\fP\fIvalue\fP
+この陣営のAIコントローラーに読み込む設定ファイルを選択する。
+.TP 
+\fB\-\-algorithm\fP\fI\ number\fP\fB:\fP\fIvalue\fP
+この陣営のAIコントローラーによって用いられる非標準アルゴリズムを選択する。アルゴリズムは \fB[ai]\fP
+タグによって定義されるが、「data/ai/ais」や「data/ai/dev」内のコアのアルゴリズムや、アドオンにより定義されたアルゴリズムを利用することもできる。利用可能な値は
+\fBidle_ai\fP と \fBexperimental_ai\fP を含む。
+.TP 
+\fB\-\-controller\fP\fI\ number\fP\fB:\fP\fIvalue\fP
+この陣営のコントローラーを選択する。設定可能な値(value)は、\fBhuman\fP と \fBai\fP。
+.TP 
+\fB\-\-era\fP\fI\ value\fP
+\fBDefault\fP の代わりの時代を選択してプレイするためにこのオプションを使用する。時代は ID によって選択される。時代はファイル
+\fBdata/multiplayer/eras.cfg\fP の中に記述されている。
+.TP 
+\fB\-\-exit\-at\-end\fP
+シナリオが終わると、ユーザーが OK
+をクリックする必要のある勝利／敗北のダイアログを表示せずに終了する。これはスクリプト化可能なベンチマークにも利用される。
+.TP 
+\fB\-\-ignore\-map\-settings\fP
+マップの設定を使わず、代わりにデフォルト値を使用する。
+.TP 
+\fB\-\-multiplayer\-repeat\fP\fI\ value\fP
+マルチプレイヤーのゲームを \fIvalue\fP の回数繰り返す。 \fB\-\-nogui\fP を指定した、スクリプトによるベンチマークに適する。
+.TP 
+\fB\-\-parm\fP\fI\ number\fP\fB:\fP\fIname\fP\fB:\fP\fIvalue\fP
+この陣営の追加的なパラメータを設定する。このパラメータは、\fB\-\-controller\fP と \fB\-\-algorithm\fP
+とともに使用されるオプションに依存する。自作の AI 設計者にのみ有用と思われる。(まだ完全には文書化されていない)
+.TP 
+\fB\-\-scenario\fP\fI\ value\fP
+マルチプレイヤーのシナリオを ID で選択する。既定のシナリオ ID は \fBmultiplayer_The_Freelands\fP。
+.TP 
+\fB\-\-side\fP\fI\ number\fP\fB:\fP\fIvalue\fP
+この陣営の現在の時代の党派を選択する。党派は ID によって選択される。党派はファイル data/multiplayer.cfg の中に記述されている。
+.TP 
+\fB\-\-turns\fP\fI\ value\fP
+選択されたシナリオのターン数を設定する。デフォルトでは無制限となる。
+.
+.SH 終了ステータス
+.
+通常は 0。（SDL、画面、フォントなどの）初期化エラーの場合は1を返す。コマンドラインオプションのエラーの場合は2を返す。
+.br
+ユニットテストを（\fB\ \-u\fP
+によって）実行する際は、終了ステータスが異なる。終了ステータス0は、テストが成功したことを示し、1は失敗したことを示す。終了ステータス3はテストが成功したものの無効なリプレイファイルを出力したことを示す。終了ステータス4は、テストが成功したもののリプレイでエラーが発生したことを示す。後ろの２つは、\fB\-\-noreplaycheck\fP
+が成功しなかった場合のみ返される。終了ステータス2はテストがタイムアウトしたことを示し、非推奨の \fB\-\-timeout\fP
+オプションとともに用いられた場合に返される。
+.
+.SH 著者
+.
+David White <davidnwhite@verizon.net> によって書かれた。
+.br
+Nils Kneuper <crazy\-ivanovic@gmx.net> と ott <ott@gaon.net> と
+Soliton <soliton.de@gmail.com> によって編集された。
+.br
+このマニュアルページは Cyril Bouthors <cyril@bouthors.org> によって最初に書かれた。岡田信人
+<okyada@gmail.com> によって日本語に翻訳された。
+.br
+公式サイト: https://www.wesnoth.org/
+.
+.SH 著作権
+.
+Copyright \(co 2003\-2018 David White <davidnwhite@verizon.net>
+.br
+This is Free Software; this software is licensed under the GPL version 2, as
+published by the Free Software Foundation.  There is NO warranty; not even
+for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+.
+.SH 関連項目
+.
+\fBwesnothd\fP(6).

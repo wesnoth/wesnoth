@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-04-15 01:34-0300\n"
+"POT-Creation-Date: 2018-04-26 03:28+0300\n"
 "PO-Revision-Date: 2012-10-29 18:41-0300\n"
 "Last-Translator: gilberto dos santos alves <gsavix@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -121,34 +121,11 @@ msgid "Show combat"
 msgstr "Mostrar Combate"
 
 #
-# File: data/advanced_preferences.cfg, line: 60
-# File: data/advanced_preferences.cfg, line: 60
-# File: data/advanced_preferences.cfg, line: 60
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:61
-msgid "Ping timeout"
-msgstr "Tempo Limite de Ping"
-
-#
-# File: data/advanced_preferences.cfg, line: 61
-# File: data/advanced_preferences.cfg, line: 61
-# File: data/advanced_preferences.cfg, line: 61
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:62
-#, fuzzy
-msgid ""
-"Number of seconds to wait for a ping reply before timing out. Set to 0 to "
-"disable"
-msgstr ""
-"Número de segundos aguardando a resposta de um ping antes de acabar o tempo. "
-"0 para Desabilitado."
-
-#
 # File: data/advanced_preferences.cfg, line: 78
 # File: data/advanced_preferences.cfg, line: 78
 # File: data/advanced_preferences.cfg, line: 78
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:72
+#: data/advanced_preferences.cfg:61
 #, fuzzy
 msgid "Auto-open whisper windows in lobby"
 msgstr "Abrir automaticamente janelas de sussuros na sala de espera"
@@ -158,7 +135,7 @@ msgstr "Abrir automaticamente janelas de sussuros na sala de espera"
 # File: data/advanced_preferences.cfg, line: 85
 # File: data/advanced_preferences.cfg, line: 85
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:79
+#: data/advanced_preferences.cfg:68
 #, fuzzy
 msgid "Group players in lobby"
 msgstr "Agrupar jogadores na sala de espera"
@@ -168,7 +145,7 @@ msgstr "Agrupar jogadores na sala de espera"
 # File: data/advanced_preferences.cfg, line: 114
 # File: data/advanced_preferences.cfg, line: 114
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:86
+#: data/advanced_preferences.cfg:75
 msgid "Follow unit actions"
 msgstr "Acompanhar Ações de Unidade"
 
@@ -177,7 +154,7 @@ msgstr "Acompanhar Ações de Unidade"
 # File: data/advanced_preferences.cfg, line: 115
 # File: data/advanced_preferences.cfg, line: 115
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:87
+#: data/advanced_preferences.cfg:76
 msgid ""
 "Choose whether the map view should scroll to a unit when an action or move "
 "is animated"
@@ -190,7 +167,7 @@ msgstr ""
 # File: data/advanced_preferences.cfg, line: 131
 # File: data/advanced_preferences.cfg, line: 131
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:103
+#: data/advanced_preferences.cfg:92
 #, fuzzy
 msgid "Chat message aging"
 msgstr "Tempo máximo de mensagem no chat"
@@ -200,7 +177,7 @@ msgstr "Tempo máximo de mensagem no chat"
 # File: data/advanced_preferences.cfg, line: 132
 # File: data/advanced_preferences.cfg, line: 132
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:104
+#: data/advanced_preferences.cfg:93
 #, fuzzy
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
@@ -214,7 +191,7 @@ msgstr ""
 # File: data/advanced_preferences.cfg, line: 142
 # File: data/advanced_preferences.cfg, line: 142
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:114
+#: data/advanced_preferences.cfg:103
 #, fuzzy
 msgid "Use 12-hour clock format"
 msgstr "Usar formato horário de 12 horas"
@@ -224,7 +201,7 @@ msgstr "Usar formato horário de 12 horas"
 # File: data/advanced_preferences.cfg, line: 149
 # File: data/advanced_preferences.cfg, line: 149
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:121
+#: data/advanced_preferences.cfg:110
 #, fuzzy
 msgid "Confirm loading saves from a different version"
 msgstr "Confirmar ao carregar jogos salvos de outra versão"
@@ -235,7 +212,7 @@ msgstr "Confirmar ao carregar jogos salvos de outra versão"
 # File: data/advanced_preferences.cfg, line: 156
 # File: data/advanced_preferences.cfg, line: 156
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:128
+#: data/advanced_preferences.cfg:117
 msgid "Show all unit types in help"
 msgstr "Exibir todos tipos de unidades na ajuda"
 
@@ -245,7 +222,7 @@ msgstr "Exibir todos tipos de unidades na ajuda"
 # File: data/advanced_preferences.cfg, line: 157
 # File: data/advanced_preferences.cfg, line: 157
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:129
+#: data/advanced_preferences.cfg:118
 #, fuzzy
 msgid ""
 "Show all unit types in the help (requires restart). This does not alter the "
@@ -255,48 +232,48 @@ msgstr ""
 "a lista de unidades econtradas"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:136
+#: data/advanced_preferences.cfg:125
 msgid "Editor recent files limit"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:137
+#: data/advanced_preferences.cfg:126
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:147
+#: data/advanced_preferences.cfg:136
 msgid "Show color cursors"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:148
+#: data/advanced_preferences.cfg:137
 msgid "Use colored mouse cursors"
 msgstr ""
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:155
+#: data/advanced_preferences.cfg:144
 msgid "Graphics scaling options"
 msgstr ""
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:161
+#: data/advanced_preferences.cfg:150
 msgid "Customize orb colors"
 msgstr ""
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:167
+#: data/advanced_preferences.cfg:156
 msgid "Logging"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:173
+#: data/advanced_preferences.cfg:162
 msgid "Allow damage calculation with Monte Carlo simulation"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:174
+#: data/advanced_preferences.cfg:163
 msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
@@ -307,14 +284,14 @@ msgstr ""
 # File: data/core/about.cfg, line: 679
 # File: data/core/about.cfg, line: 679
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:181
+#: data/advanced_preferences.cfg:170
 #, fuzzy
 #| msgid "Sound Effects"
 msgid "Show haloing effects"
 msgstr "Efeitos Sonoros"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:182
+#: data/advanced_preferences.cfg:171
 msgid "Show special unit graphical effects"
 msgstr ""
 
@@ -323,7 +300,7 @@ msgstr ""
 # File: data/advanced_preferences.cfg, line: 180
 # File: data/advanced_preferences.cfg, line: 180
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:199
+#: data/advanced_preferences.cfg:188
 msgid "Joystick support"
 msgstr "Suporte a Controle (Joystick)"
 
@@ -332,7 +309,7 @@ msgstr "Suporte a Controle (Joystick)"
 # File: data/advanced_preferences.cfg, line: 187
 # File: data/advanced_preferences.cfg, line: 187
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:206
+#: data/advanced_preferences.cfg:195
 msgid "Joystick: number of the scroll X-axis joystick"
 msgstr "Controle: Número do Controle da Rolagem Horizontal (Scroll X)"
 
@@ -341,7 +318,7 @@ msgstr "Controle: Número do Controle da Rolagem Horizontal (Scroll X)"
 # File: data/advanced_preferences.cfg, line: 197
 # File: data/advanced_preferences.cfg, line: 197
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:216
+#: data/advanced_preferences.cfg:205
 msgid "Joystick: number of the scroll X-axis"
 msgstr "Controle: Número do Eixo da Rolagem Horizontal (Scroll X)"
 
@@ -350,7 +327,7 @@ msgstr "Controle: Número do Eixo da Rolagem Horizontal (Scroll X)"
 # File: data/advanced_preferences.cfg, line: 207
 # File: data/advanced_preferences.cfg, line: 207
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:226
+#: data/advanced_preferences.cfg:215
 msgid "Joystick: number of the scroll Y-axis joystick"
 msgstr "Controle: Número do Controle da Rolagem Horizontal (Scroll Y)"
 
@@ -359,7 +336,7 @@ msgstr "Controle: Número do Controle da Rolagem Horizontal (Scroll Y)"
 # File: data/advanced_preferences.cfg, line: 217
 # File: data/advanced_preferences.cfg, line: 217
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:236
+#: data/advanced_preferences.cfg:225
 msgid "Joystick: number of the scroll Y-axis"
 msgstr "Controle: Número do Eixo da Rolagem Horizontal (Scroll X)"
 
@@ -368,7 +345,7 @@ msgstr "Controle: Número do Eixo da Rolagem Horizontal (Scroll X)"
 # File: data/advanced_preferences.cfg, line: 227
 # File: data/advanced_preferences.cfg, line: 227
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:246
+#: data/advanced_preferences.cfg:235
 msgid "Joystick: deadzone of the scrolling stick"
 msgstr "Controle: Deadzone do controle da Rolagem (Scroll)"
 
@@ -377,7 +354,7 @@ msgstr "Controle: Deadzone do controle da Rolagem (Scroll)"
 # File: data/advanced_preferences.cfg, line: 237
 # File: data/advanced_preferences.cfg, line: 237
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:256
+#: data/advanced_preferences.cfg:245
 #, fuzzy
 msgid "Joystick: number of the cursor X-axis joystick"
 msgstr "Controle: Número do Controle do Cursor Horizontal (X)"
@@ -387,7 +364,7 @@ msgstr "Controle: Número do Controle do Cursor Horizontal (X)"
 # File: data/advanced_preferences.cfg, line: 247
 # File: data/advanced_preferences.cfg, line: 247
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:266
+#: data/advanced_preferences.cfg:255
 msgid "Joystick: number of the cursor X-axis"
 msgstr "Controle: Número do Eixo do Cursor Horizontal (X)"
 
@@ -396,7 +373,7 @@ msgstr "Controle: Número do Eixo do Cursor Horizontal (X)"
 # File: data/advanced_preferences.cfg, line: 257
 # File: data/advanced_preferences.cfg, line: 257
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:276
+#: data/advanced_preferences.cfg:265
 msgid "Joystick: number of the cursor Y-axis joystick"
 msgstr "Controle: Número do Controle do Cursor Vertical (Y)"
 
@@ -405,7 +382,7 @@ msgstr "Controle: Número do Controle do Cursor Vertical (Y)"
 # File: data/advanced_preferences.cfg, line: 267
 # File: data/advanced_preferences.cfg, line: 267
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:286
+#: data/advanced_preferences.cfg:275
 msgid "Joystick: number of the cursor Y-axis"
 msgstr "Controle: Número do Eixo do Cursor Horizontal (Y)"
 
@@ -414,7 +391,7 @@ msgstr "Controle: Número do Eixo do Cursor Horizontal (Y)"
 # File: data/advanced_preferences.cfg, line: 277
 # File: data/advanced_preferences.cfg, line: 277
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:296
+#: data/advanced_preferences.cfg:285
 msgid "Joystick: deadzone of the cursor stick"
 msgstr "Controle: Deadzone do controle do Cursor"
 
@@ -423,7 +400,7 @@ msgstr "Controle: Deadzone do controle do Cursor"
 # File: data/advanced_preferences.cfg, line: 287
 # File: data/advanced_preferences.cfg, line: 287
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:306
+#: data/advanced_preferences.cfg:295
 msgid "Joystick: number of the mouse X-axis joystick"
 msgstr "Controle: Número do Controle do Movimento X do Mouse"
 
@@ -432,7 +409,7 @@ msgstr "Controle: Número do Controle do Movimento X do Mouse"
 # File: data/advanced_preferences.cfg, line: 297
 # File: data/advanced_preferences.cfg, line: 297
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:316
+#: data/advanced_preferences.cfg:305
 msgid "Joystick: number of the mouse X-axis"
 msgstr "Controle: Número do Eixo do Movimento X do Mouse"
 
@@ -441,7 +418,7 @@ msgstr "Controle: Número do Eixo do Movimento X do Mouse"
 # File: data/advanced_preferences.cfg, line: 307
 # File: data/advanced_preferences.cfg, line: 307
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:326
+#: data/advanced_preferences.cfg:315
 msgid "Joystick: number of the mouse Y-axis joystick"
 msgstr "Controle: Número do Controle do Movimento Y do Mouse"
 
@@ -450,7 +427,7 @@ msgstr "Controle: Número do Controle do Movimento Y do Mouse"
 # File: data/advanced_preferences.cfg, line: 317
 # File: data/advanced_preferences.cfg, line: 317
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:336
+#: data/advanced_preferences.cfg:325
 msgid "Joystick: number of the mouse Y-axis"
 msgstr "Controle: Número do Eixo do Movimento Y do Mouse"
 
@@ -459,7 +436,7 @@ msgstr "Controle: Número do Eixo do Movimento Y do Mouse"
 # File: data/advanced_preferences.cfg, line: 327
 # File: data/advanced_preferences.cfg, line: 327
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:346
+#: data/advanced_preferences.cfg:335
 msgid "Joystick: deadzone of the mouse stick"
 msgstr "Controle: Deadzone dos Eixos de Controle do Mouse"
 
@@ -468,7 +445,7 @@ msgstr "Controle: Deadzone dos Eixos de Controle do Mouse"
 # File: data/advanced_preferences.cfg, line: 337
 # File: data/advanced_preferences.cfg, line: 337
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:356
+#: data/advanced_preferences.cfg:345
 msgid "Joystick: number of the thrust axis joystick"
 msgstr "Controle: Número do Controle do Eixo Acelerador (Thrust Axis)"
 
@@ -477,7 +454,7 @@ msgstr "Controle: Número do Controle do Eixo Acelerador (Thrust Axis)"
 # File: data/advanced_preferences.cfg, line: 347
 # File: data/advanced_preferences.cfg, line: 347
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:366
+#: data/advanced_preferences.cfg:355
 msgid "Joystick: number of the thrust axis"
 msgstr "Controle: Número do Eixo Acelerador (Thrust Axix)"
 
@@ -486,7 +463,7 @@ msgstr "Controle: Número do Eixo Acelerador (Thrust Axix)"
 # File: data/advanced_preferences.cfg, line: 357
 # File: data/advanced_preferences.cfg, line: 357
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:376
+#: data/advanced_preferences.cfg:365
 msgid "Joystick: deadzone of the thruster"
 msgstr "Controle: Deadzone do Acelerador (Thruster)"
 
@@ -504,7 +481,7 @@ msgstr "Controle: Deadzone do Acelerador (Thruster)"
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:358
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1085
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1086
 msgid "poisoned"
 msgstr "envenenado"
 
@@ -529,6 +506,33 @@ msgstr "Transferência de ouro:"
 #: data/lua/wml/objectives.lua:39
 msgid "Notes:"
 msgstr "Notas:"
+
+#
+# File: data/english.cfg, line: 3
+# File: data/english.cfg, line: 3
+# File: data/english.cfg, line: 3
+#. [language]
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:155 data/english.cfg:3
+msgid "Easy"
+msgstr "Fácil"
+
+#
+# File: data/english.cfg, line: 4
+# File: data/english.cfg, line: 4
+# File: data/english.cfg, line: 4
+#. [language]
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:156 data/english.cfg:4
+msgid "Medium"
+msgstr "Médio"
+
+#
+# File: data/english.cfg, line: 5
+# File: data/english.cfg, line: 5
+# File: data/english.cfg, line: 5
+#. [language]
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:157 data/english.cfg:5
+msgid "Hard"
+msgstr "Difícil"
 
 #
 # File: data/core/about.cfg, line: 7
@@ -834,7 +838,7 @@ msgstr "Tradução para o Alemão"
 # File: data/core/about.cfg, line: 2071
 # File: data/core/about.cfg, line: 2071
 #. [about]
-#: data/core/about_i18n.cfg:795
+#: data/core/about_i18n.cfg:817
 msgid "Greek Translation"
 msgstr "Tradução para o Grego"
 
@@ -843,7 +847,7 @@ msgstr "Tradução para o Grego"
 # File: data/core/about.cfg, line: 2111
 # File: data/core/about.cfg, line: 2111
 #. [about]
-#: data/core/about_i18n.cfg:838
+#: data/core/about_i18n.cfg:860
 msgid "Hebrew Translation"
 msgstr "Tradução para o Hebreu"
 
@@ -852,7 +856,7 @@ msgstr "Tradução para o Hebreu"
 # File: data/core/about.cfg, line: 2124
 # File: data/core/about.cfg, line: 2124
 #. [about]
-#: data/core/about_i18n.cfg:851
+#: data/core/about_i18n.cfg:873
 msgid "Hungarian Translation"
 msgstr "Tradução para o Húngaro"
 
@@ -861,7 +865,7 @@ msgstr "Tradução para o Húngaro"
 # File: data/core/about.cfg, line: 2185
 # File: data/core/about.cfg, line: 2185
 #. [about]
-#: data/core/about_i18n.cfg:912
+#: data/core/about_i18n.cfg:934
 msgid "Icelandic Translation"
 msgstr "Tradução para o Islandês"
 
@@ -870,7 +874,7 @@ msgstr "Tradução para o Islandês"
 # File: data/core/about.cfg, line: 2195
 # File: data/core/about.cfg, line: 2195
 #. [about]
-#: data/core/about_i18n.cfg:922
+#: data/core/about_i18n.cfg:944
 msgid "Indonesian Translation"
 msgstr "Tradução para o Indonésio"
 
@@ -879,7 +883,7 @@ msgstr "Tradução para o Indonésio"
 # File: data/core/about.cfg, line: 2218
 # File: data/core/about.cfg, line: 2218
 #. [about]
-#: data/core/about_i18n.cfg:945
+#: data/core/about_i18n.cfg:967
 msgid "Irish Translation"
 msgstr "Tradução para o Irlandês"
 
@@ -888,7 +892,7 @@ msgstr "Tradução para o Irlandês"
 # File: data/core/about.cfg, line: 2225
 # File: data/core/about.cfg, line: 2225
 #. [about]
-#: data/core/about_i18n.cfg:952
+#: data/core/about_i18n.cfg:974
 msgid "Italian Translation"
 msgstr "Tradução para o Italiano"
 
@@ -897,7 +901,7 @@ msgstr "Tradução para o Italiano"
 # File: data/core/about.cfg, line: 2272
 # File: data/core/about.cfg, line: 2272
 #. [about]
-#: data/core/about_i18n.cfg:999
+#: data/core/about_i18n.cfg:1021
 msgid "Japanese Translation"
 msgstr "Tradução para o Japonês"
 
@@ -906,7 +910,7 @@ msgstr "Tradução para o Japonês"
 # File: data/core/about.cfg, line: 2340
 # File: data/core/about.cfg, line: 2340
 #. [about]
-#: data/core/about_i18n.cfg:1078
+#: data/core/about_i18n.cfg:1108
 msgid "Korean Translation"
 msgstr "Tradução para o Coreano"
 
@@ -915,7 +919,7 @@ msgstr "Tradução para o Coreano"
 # File: data/core/about.cfg, line: 2348
 # File: data/core/about.cfg, line: 2348
 #. [about]
-#: data/core/about_i18n.cfg:1086
+#: data/core/about_i18n.cfg:1116
 msgid "Latin Translation"
 msgstr "Tradução para o Latin"
 
@@ -924,7 +928,7 @@ msgstr "Tradução para o Latin"
 # File: data/core/about.cfg, line: 2374
 # File: data/core/about.cfg, line: 2374
 #. [about]
-#: data/core/about_i18n.cfg:1112
+#: data/core/about_i18n.cfg:1142
 msgid "Latvian Translation"
 msgstr "Tradução para o Latin"
 
@@ -933,7 +937,7 @@ msgstr "Tradução para o Latin"
 # File: data/core/about.cfg, line: 2385
 # File: data/core/about.cfg, line: 2385
 #. [about]
-#: data/core/about_i18n.cfg:1127
+#: data/core/about_i18n.cfg:1157
 msgid "Lithuanian Translation"
 msgstr "Tradução para o Lituanês"
 
@@ -942,7 +946,7 @@ msgstr "Tradução para o Lituanês"
 # File: data/core/about.cfg, line: 2407
 # File: data/core/about.cfg, line: 2407
 #. [about]
-#: data/core/about_i18n.cfg:1152
+#: data/core/about_i18n.cfg:1182
 msgid "Macedonian Translation"
 msgstr "Tradução para o Macedônio"
 
@@ -951,7 +955,7 @@ msgstr "Tradução para o Macedônio"
 # File: data/core/about.cfg, line: 2414
 # File: data/core/about.cfg, line: 2414
 #. [about]
-#: data/core/about_i18n.cfg:1159
+#: data/core/about_i18n.cfg:1189
 msgid "Marathi Translation"
 msgstr "Tradução para o Marathi"
 
@@ -960,7 +964,7 @@ msgstr "Tradução para o Marathi"
 # File: data/core/about.cfg, line: 2423
 # File: data/core/about.cfg, line: 2423
 #. [about]
-#: data/core/about_i18n.cfg:1168
+#: data/core/about_i18n.cfg:1198
 msgid "Norwegian Translation"
 msgstr "Tradução para o Norueguês"
 
@@ -969,7 +973,7 @@ msgstr "Tradução para o Norueguês"
 # File: data/core/about.cfg, line: 2448
 # File: data/core/about.cfg, line: 2448
 #. [about]
-#: data/core/about_i18n.cfg:1193
+#: data/core/about_i18n.cfg:1223
 msgid "Old English Translation"
 msgstr "Tradução para o Inglês Antigo"
 
@@ -978,7 +982,7 @@ msgstr "Tradução para o Inglês Antigo"
 # File: data/core/about.cfg, line: 2466
 # File: data/core/about.cfg, line: 2466
 #. [about]
-#: data/core/about_i18n.cfg:1211
+#: data/core/about_i18n.cfg:1241
 msgid "Polish Translation"
 msgstr "Tradução para o Polonês"
 
@@ -987,7 +991,7 @@ msgstr "Tradução para o Polonês"
 # File: data/core/about.cfg, line: 2510
 # File: data/core/about.cfg, line: 2510
 #. [about]
-#: data/core/about_i18n.cfg:1259
+#: data/core/about_i18n.cfg:1289
 msgid "Portuguese Translation"
 msgstr "Tradução para o Português"
 
@@ -996,7 +1000,7 @@ msgstr "Tradução para o Português"
 # File: data/core/about.cfg, line: 2524
 # File: data/core/about.cfg, line: 2524
 #. [about]
-#: data/core/about_i18n.cfg:1273
+#: data/core/about_i18n.cfg:1303
 msgid "Portuguese (Brazil) Translation"
 msgstr "Tradução para o Português do Brasil"
 
@@ -1005,7 +1009,7 @@ msgstr "Tradução para o Português do Brasil"
 # File: data/core/about.cfg, line: 2578
 # File: data/core/about.cfg, line: 2578
 #. [about]
-#: data/core/about_i18n.cfg:1327
+#: data/core/about_i18n.cfg:1357
 msgid "Romanian Translation"
 msgstr "Tradução para o Romano"
 
@@ -1014,7 +1018,7 @@ msgstr "Tradução para o Romano"
 # File: data/core/about.cfg, line: 2586
 # File: data/core/about.cfg, line: 2586
 #. [about]
-#: data/core/about_i18n.cfg:1335
+#: data/core/about_i18n.cfg:1365
 msgid "Russian Translation"
 msgstr "Tradução para o Russo"
 
@@ -1023,7 +1027,7 @@ msgstr "Tradução para o Russo"
 # File: data/core/about.cfg, line: 2675
 # File: data/core/about.cfg, line: 2675
 #. [about]
-#: data/core/about_i18n.cfg:1427
+#: data/core/about_i18n.cfg:1457
 #, fuzzy
 msgid "Scottish Gaelic Translation"
 msgstr "Tradução para o Galício"
@@ -1033,7 +1037,7 @@ msgstr "Tradução para o Galício"
 # File: data/core/about.cfg, line: 2684
 # File: data/core/about.cfg, line: 2684
 #. [about]
-#: data/core/about_i18n.cfg:1436
+#: data/core/about_i18n.cfg:1466
 msgid "Serbian Translation"
 msgstr "Tradução para o Sérvio"
 
@@ -1042,7 +1046,7 @@ msgstr "Tradução para o Sérvio"
 # File: data/core/about.cfg, line: 2703
 # File: data/core/about.cfg, line: 2703
 #. [about]
-#: data/core/about_i18n.cfg:1455
+#: data/core/about_i18n.cfg:1485
 msgid "Slovak Translation"
 msgstr "Tradução para o Eslovaco"
 
@@ -1051,7 +1055,7 @@ msgstr "Tradução para o Eslovaco"
 # File: data/core/about.cfg, line: 2732
 # File: data/core/about.cfg, line: 2732
 #. [about]
-#: data/core/about_i18n.cfg:1484
+#: data/core/about_i18n.cfg:1514
 msgid "Slovenian Translation"
 msgstr "Tradução para o Eslovênio"
 
@@ -1060,7 +1064,7 @@ msgstr "Tradução para o Eslovênio"
 # File: data/core/about.cfg, line: 2748
 # File: data/core/about.cfg, line: 2748
 #. [about]
-#: data/core/about_i18n.cfg:1500
+#: data/core/about_i18n.cfg:1530
 msgid "Spanish Translation"
 msgstr "Tradução para o Espanhol"
 
@@ -1069,7 +1073,7 @@ msgstr "Tradução para o Espanhol"
 # File: data/core/about.cfg, line: 2832
 # File: data/core/about.cfg, line: 2832
 #. [about]
-#: data/core/about_i18n.cfg:1582
+#: data/core/about_i18n.cfg:1612
 msgid "Swedish Translation"
 msgstr "Tradução para o Sueco"
 
@@ -1078,7 +1082,7 @@ msgstr "Tradução para o Sueco"
 # File: data/core/about.cfg, line: 2873
 # File: data/core/about.cfg, line: 2873
 #. [about]
-#: data/core/about_i18n.cfg:1623
+#: data/core/about_i18n.cfg:1653
 msgid "Turkish Translation"
 msgstr "Tradução para o Turco"
 
@@ -1087,7 +1091,7 @@ msgstr "Tradução para o Turco"
 # File: data/core/about.cfg, line: 2895
 # File: data/core/about.cfg, line: 2895
 #. [about]
-#: data/core/about_i18n.cfg:1645
+#: data/core/about_i18n.cfg:1675
 #, fuzzy
 msgid "Ukrainian Translation"
 msgstr "Tradução para o Romano"
@@ -1097,7 +1101,7 @@ msgstr "Tradução para o Romano"
 # File: data/core/about.cfg, line: 2908
 # File: data/core/about.cfg, line: 2908
 #. [about]
-#: data/core/about_i18n.cfg:1658
+#: data/core/about_i18n.cfg:1688
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Tradução para o Valenciano (Catalão do sul)"
 
@@ -1106,7 +1110,7 @@ msgstr "Tradução para o Valenciano (Catalão do sul)"
 # File: data/core/about.cfg, line: 2921
 # File: data/core/about.cfg, line: 2921
 #. [about]
-#: data/core/about_i18n.cfg:1671
+#: data/core/about_i18n.cfg:1701
 msgid "Vietnamese Translation"
 msgstr "Tradução para o Vietnamita"
 
@@ -1115,7 +1119,7 @@ msgstr "Tradução para o Vietnamita"
 # File: data/core/about.cfg, line: 2940
 # File: data/core/about.cfg, line: 2940
 #. [about]
-#: data/core/about_i18n.cfg:1690
+#: data/core/about_i18n.cfg:1720
 msgid "RACV’s Translation"
 msgstr "Tradução para o RACV (Valenciano)"
 
@@ -4534,33 +4538,6 @@ msgid ""
 msgstr ""
 
 #
-# File: data/english.cfg, line: 3
-# File: data/english.cfg, line: 3
-# File: data/english.cfg, line: 3
-#. [language]
-#: data/english.cfg:3
-msgid "Easy"
-msgstr "Fácil"
-
-#
-# File: data/english.cfg, line: 4
-# File: data/english.cfg, line: 4
-# File: data/english.cfg, line: 4
-#. [language]
-#: data/english.cfg:4
-msgid "Medium"
-msgstr "Médio"
-
-#
-# File: data/english.cfg, line: 5
-# File: data/english.cfg, line: 5
-# File: data/english.cfg, line: 5
-#. [language]
-#: data/english.cfg:5
-msgid "Hard"
-msgstr "Difícil"
-
-#
 # File: data/english.cfg, line: 6
 # File: data/english.cfg, line: 6
 # File: data/english.cfg, line: 6
@@ -4707,7 +4684,8 @@ msgid "arcane"
 msgstr "arcano"
 
 #. [naming]
-#: data/english.cfg:37
+#. Generator for bridge labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:38
 msgid ""
 "\n"
 "\t\tbridge_type=Bridge|Crossing\n"
@@ -4716,7 +4694,8 @@ msgid ""
 msgstr ""
 
 #. [naming]
-#: data/english.cfg:41
+#. Generator for road labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:43
 msgid ""
 "\n"
 "\t\troad_type=Highway|Pass|Path|Road|Way|Trail\n"
@@ -4725,7 +4704,8 @@ msgid ""
 msgstr ""
 
 #. [naming]
-#: data/english.cfg:45
+#. Generator for river labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:48
 msgid ""
 "\n"
 "\t\triver_type=River|River|River|Creek|Creek|Stream|Canal\n"
@@ -4734,7 +4714,8 @@ msgid ""
 msgstr ""
 
 #. [naming]
-#: data/english.cfg:49
+#. Generator for forest labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:53
 msgid ""
 "\n"
 "\t\tforest_type=Forest|Forest|Wood\n"
@@ -4743,7 +4724,8 @@ msgid ""
 msgstr ""
 
 #. [naming]
-#: data/english.cfg:53
+#. Generator for lake labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:58
 msgid ""
 "\n"
 "\t\tlake_type=Lake|Lake|Lake|Loch|Sea\n"
@@ -4756,7 +4738,8 @@ msgstr ""
 # File: data/english.cfg, line: 28
 # File: data/english.cfg, line: 28
 #. [naming]
-#: data/english.cfg:57
+#. Generator for mountain labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:63
 #, fuzzy
 #| msgid "$name|’s Peak,Mount $name"
 msgid ""
@@ -4766,7 +4749,8 @@ msgid ""
 msgstr "Pico de $name,Monte $name"
 
 #. [naming]
-#: data/english.cfg:60
+#. Generator for swamp labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:67
 msgid ""
 "\n"
 "\t\tsuffix=’s Swamp|marsh|fen\n"
@@ -4775,7 +4759,8 @@ msgid ""
 msgstr ""
 
 #. [village_naming]
-#: data/english.cfg:67
+#. Generator for generic village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:75
 msgid ""
 "\n"
 "\t\tsuffix=bury|bury|ham|ton|ville\n"
@@ -4784,7 +4769,8 @@ msgid ""
 msgstr ""
 
 #. [village_naming]
-#: data/english.cfg:71
+#. Generator for lakeside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:80
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$lake{!}\n"
@@ -4794,7 +4780,8 @@ msgid ""
 msgstr ""
 
 #. [village_naming]
-#: data/english.cfg:76
+#. Generator for riverside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:86
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$river{!}\n"
@@ -4805,7 +4792,8 @@ msgid ""
 msgstr ""
 
 #. [village_naming]
-#: data/english.cfg:82
+#. Generator for bridge village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:93
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$river{!}|$bridge{!}\n"
@@ -4815,7 +4803,8 @@ msgid ""
 msgstr ""
 
 #. [village_naming]
-#: data/english.cfg:87
+#. Generator for grassland village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:99
 msgid ""
 "\n"
 "\t\tsuffix=ham|ton|field\n"
@@ -4824,7 +4813,8 @@ msgid ""
 msgstr ""
 
 #. [village_naming]
-#: data/english.cfg:91
+#. Generator for forest village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:104
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$forest{!}\n"
@@ -4834,7 +4824,8 @@ msgid ""
 msgstr ""
 
 #. [village_naming]
-#: data/english.cfg:96
+#. Generator for hill village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:110
 msgid ""
 "\n"
 "\t\tsuffix=ham|bury|ton|hill|crest\n"
@@ -4843,7 +4834,8 @@ msgid ""
 msgstr ""
 
 #. [village_naming]
-#: data/english.cfg:100
+#. Generator for mountain village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:115
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$mountain{!}\n"
@@ -4853,7 +4845,8 @@ msgid ""
 msgstr ""
 
 #. [village_naming]
-#: data/english.cfg:105
+#. Generator for mountain labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:121
 msgid ""
 "\n"
 "\t\tsuffix=ham|bury|ton|mont|mont|cliff|cliff\n"
@@ -4862,7 +4855,8 @@ msgid ""
 msgstr ""
 
 #. [village_naming]
-#: data/english.cfg:109
+#. Generator for roadside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:126
 msgid ""
 "\n"
 "\t\tprefix=$road{!}|$road{!}|$base{!}\n"
@@ -4872,7 +4866,8 @@ msgid ""
 msgstr ""
 
 #. [village_naming]
-#: data/english.cfg:114
+#. Generator for swamp village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
+#: data/english.cfg:132
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$swamp{!}\n"
@@ -5038,7 +5033,7 @@ msgstr ""
 # File: src/actions/attack.cpp, line: 800
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1085
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1086
 msgid "female^poisoned"
 msgstr "envenenada"
 
@@ -5051,7 +5046,7 @@ msgstr "envenenada"
 # File: src/actions/attack.cpp, line: 805
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1092
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1093
 msgid "female^slowed"
 msgstr "lenta"
 
@@ -5064,7 +5059,7 @@ msgstr "lenta"
 # File: src/actions/attack.cpp, line: 805
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1092
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1093
 msgid "slowed"
 msgstr "lento"
 
@@ -5077,7 +5072,7 @@ msgstr "lento"
 # File: src/actions/attack.cpp, line: 810
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1098
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1099
 msgid "female^petrified"
 msgstr "petrificada"
 
@@ -5090,7 +5085,7 @@ msgstr "petrificada"
 # File: src/actions/attack.cpp, line: 810
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1098
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1099
 msgid "petrified"
 msgstr "petrificado"
 
@@ -5190,7 +5185,7 @@ msgstr "Derrote o(s) lídere(s) inimigo(s)"
 # File: src/mp_depcheck.cpp, line: 458
 # File: src/mp_options.cpp, line: 227
 # File: src/multiplayer_create.cpp, line: 101
-#: data/scenario-test.cfg:1031 src/game_initialization/depcheck.cpp:491
+#: data/scenario-test.cfg:1030 src/game_initialization/depcheck.cpp:491
 msgid "OK"
 msgstr "OK"
 
@@ -5219,7 +5214,7 @@ msgstr "OK"
 # File: src/multiplayer_connect.cpp, line: 1073
 # File: src/multiplayer_create.cpp, line: 100
 # File: src/multiplayer_wait.cpp, line: 179
-#: data/scenario-test.cfg:1032
+#: data/scenario-test.cfg:1031
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -5228,7 +5223,7 @@ msgstr "Cancelar"
 # File: data/scenario-test.cfg, line: 3670
 # File: data/scenario-test.cfg, line: 3670
 #. [language]
-#: data/scenario-test.cfg:4066
+#: data/scenario-test.cfg:4065
 msgid "very long"
 msgstr "muito longe"
 
@@ -5237,7 +5232,7 @@ msgstr "muito longe"
 # File: data/scenario-test.cfg, line: 3671
 # File: data/scenario-test.cfg, line: 3671
 #. [language]
-#: data/scenario-test.cfg:4067
+#: data/scenario-test.cfg:4066
 msgid "electrical"
 msgstr "elétrico"
 
@@ -7122,8 +7117,8 @@ msgstr ""
 # File: src/actions/attack.cpp, line: 217
 # File: src/actions/attack.cpp, line: 419
 # File: src/actions/attack.cpp, line: 1049
-#: src/actions/attack.cpp:386 src/actions/attack.cpp:655
-#: src/actions/attack.cpp:1368
+#: src/actions/attack.cpp:386 src/actions/attack.cpp:656
+#: src/actions/attack.cpp:1369
 msgid "An invalid attacker weapon got selected."
 msgstr "O atacante selecionou uma arma inválida."
 
@@ -7553,7 +7548,7 @@ msgstr "Você quer continuar?"
 # File: src/addon/manager_ui.cpp, line: 970
 # File: src/multiplayer.cpp, line: 272
 #: src/addon/client.cpp:463 src/addon/manager_ui.cpp:174
-#: src/game_initialization/multiplayer.cpp:243
+#: src/game_initialization/multiplayer.cpp:230
 msgid "Confirm"
 msgstr "Confirmar"
 
@@ -9081,7 +9076,7 @@ msgstr "Redirecionamento em loop do servidor"
 # File: src/multiplayer.cpp, line: 247
 # File: src/multiplayer.cpp, line: 247
 # File: src/multiplayer.cpp, line: 247
-#: src/game_initialization/multiplayer.cpp:216
+#: src/game_initialization/multiplayer.cpp:203
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -9094,7 +9089,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 256
 # File: src/multiplayer.cpp, line: 256
 # File: src/multiplayer.cpp, line: 256
-#: src/game_initialization/multiplayer.cpp:225
+#: src/game_initialization/multiplayer.cpp:212
 msgid "Do you want to continue?"
 msgstr "Você quer continuar?"
 
@@ -9102,7 +9097,7 @@ msgstr "Você quer continuar?"
 # File: src/multiplayer.cpp, line: 258
 # File: src/multiplayer.cpp, line: 258
 # File: src/multiplayer.cpp, line: 258
-#: src/game_initialization/multiplayer.cpp:227
+#: src/game_initialization/multiplayer.cpp:214
 msgid "Warning"
 msgstr "Atenção"
 
@@ -9110,9 +9105,9 @@ msgstr "Atenção"
 # File: src/multiplayer.cpp, line: 302
 # File: src/multiplayer.cpp, line: 302
 # File: src/multiplayer.cpp, line: 302
-#: src/game_initialization/multiplayer.cpp:270
-#: src/game_initialization/multiplayer.cpp:286
-#: src/game_initialization/multiplayer.cpp:289
+#: src/game_initialization/multiplayer.cpp:257
+#: src/game_initialization/multiplayer.cpp:273
+#: src/game_initialization/multiplayer.cpp:276
 msgid "Bad data received from server"
 msgstr "Dados corrompidos recebido do servidor"
 
@@ -9120,7 +9115,7 @@ msgstr "Dados corrompidos recebido do servidor"
 # File: src/multiplayer.cpp, line: 343
 # File: src/multiplayer.cpp, line: 343
 # File: src/multiplayer.cpp, line: 343
-#: src/game_initialization/multiplayer.cpp:317
+#: src/game_initialization/multiplayer.cpp:304
 msgid "You must login first."
 msgstr "Você deve fazer o login primeiro."
 
@@ -9128,7 +9123,7 @@ msgstr "Você deve fazer o login primeiro."
 # File: src/multiplayer.cpp, line: 345
 # File: src/multiplayer.cpp, line: 345
 # File: src/multiplayer.cpp, line: 345
-#: src/game_initialization/multiplayer.cpp:319
+#: src/game_initialization/multiplayer.cpp:306
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "O apelido '$nick' já está sendo usado."
 
@@ -9136,7 +9131,7 @@ msgstr "O apelido '$nick' já está sendo usado."
 # File: src/multiplayer.cpp, line: 347
 # File: src/multiplayer.cpp, line: 347
 # File: src/multiplayer.cpp, line: 347
-#: src/game_initialization/multiplayer.cpp:321
+#: src/game_initialization/multiplayer.cpp:308
 #, fuzzy
 #| msgid ""
 #| "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
@@ -9152,7 +9147,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 351
 # File: src/multiplayer.cpp, line: 351
 # File: src/multiplayer.cpp, line: 351
-#: src/game_initialization/multiplayer.cpp:325
+#: src/game_initialization/multiplayer.cpp:312
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "O apelido '$nick' é muito grande. Nicks devem conter 20 caracteres ou menos."
@@ -9161,7 +9156,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 354
 # File: src/multiplayer.cpp, line: 354
 # File: src/multiplayer.cpp, line: 354
-#: src/game_initialization/multiplayer.cpp:328
+#: src/game_initialization/multiplayer.cpp:315
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "O apelido '$nick' é reservado e não pode ser usado por jogadores."
 
@@ -9169,7 +9164,7 @@ msgstr "O apelido '$nick' é reservado e não pode ser usado por jogadores."
 # File: src/multiplayer.cpp, line: 356
 # File: src/multiplayer.cpp, line: 356
 # File: src/multiplayer.cpp, line: 356
-#: src/game_initialization/multiplayer.cpp:330
+#: src/game_initialization/multiplayer.cpp:317
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "O apelido '$nick' não está registrado neste servidor."
 
@@ -9177,7 +9172,7 @@ msgstr "O apelido '$nick' não está registrado neste servidor."
 # File: src/multiplayer.cpp, line: 357
 # File: src/multiplayer.cpp, line: 357
 # File: src/multiplayer.cpp, line: 357
-#: src/game_initialization/multiplayer.cpp:331
+#: src/game_initialization/multiplayer.cpp:318
 msgid " This server disallows unregistered nicknames."
 msgstr "Este servidor não permite apelidos não registrados."
 
@@ -9188,8 +9183,8 @@ msgstr "Este servidor não permite apelidos não registrados."
 # File: src/multiplayer.cpp, line: 361
 # File: src/multiplayer.cpp, line: 359
 # File: src/multiplayer.cpp, line: 361
-#: src/game_initialization/multiplayer.cpp:333
-#: src/game_initialization/multiplayer.cpp:335
+#: src/game_initialization/multiplayer.cpp:320
+#: src/game_initialization/multiplayer.cpp:322
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "O nick '$nick' está registrado neste servidor."
 
@@ -9197,7 +9192,7 @@ msgstr "O nick '$nick' está registrado neste servidor."
 # File: src/multiplayer.cpp, line: 362
 # File: src/multiplayer.cpp, line: 362
 # File: src/multiplayer.cpp, line: 362
-#: src/game_initialization/multiplayer.cpp:336
+#: src/game_initialization/multiplayer.cpp:323
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -9209,7 +9204,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 365
 # File: src/multiplayer.cpp, line: 365
 # File: src/multiplayer.cpp, line: 365
-#: src/game_initialization/multiplayer.cpp:339
+#: src/game_initialization/multiplayer.cpp:326
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
@@ -9220,7 +9215,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 368
 # File: src/multiplayer.cpp, line: 368
 # File: src/multiplayer.cpp, line: 368
-#: src/game_initialization/multiplayer.cpp:342
+#: src/game_initialization/multiplayer.cpp:329
 msgid "The password you provided was incorrect."
 msgstr "Você forneceu um password incorreto."
 
@@ -9229,7 +9224,7 @@ msgstr "Você forneceu um password incorreto."
 # File: src/multiplayer.cpp, line: 370
 # File: src/multiplayer.cpp, line: 370
 # File: src/multiplayer.cpp, line: 370
-#: src/game_initialization/multiplayer.cpp:344
+#: src/game_initialization/multiplayer.cpp:331
 #, fuzzy
 msgid "You have made too many login attempts."
 msgstr "Você fez muitas tentativas de login."
@@ -10318,7 +10313,7 @@ msgstr "Modo de planejamento desativado!"
 # File: src/language.cpp, line: 101
 # File: src/language.cpp, line: 101
 # File: src/language.cpp, line: 101
-#: src/language.cpp:106
+#: src/language.cpp:103
 msgid "System default language"
 msgstr "Idioma padrão do sistema"
 
@@ -13183,6 +13178,25 @@ msgstr "Esconder planos de $player"
 #: src/whiteboard/manager.cpp:1114
 msgid "Whiteboard Options"
 msgstr "Opções do Quadro-Branco"
+
+#
+# File: data/advanced_preferences.cfg, line: 60
+# File: data/advanced_preferences.cfg, line: 60
+# File: data/advanced_preferences.cfg, line: 60
+#~ msgid "Ping timeout"
+#~ msgstr "Tempo Limite de Ping"
+
+#
+# File: data/advanced_preferences.cfg, line: 61
+# File: data/advanced_preferences.cfg, line: 61
+# File: data/advanced_preferences.cfg, line: 61
+#, fuzzy
+#~ msgid ""
+#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
+#~ "disable"
+#~ msgstr ""
+#~ "Número de segundos aguardando a resposta de um ping antes de acabar o "
+#~ "tempo. 0 para Desabilitado."
 
 #
 # File: src/multiplayer_create.cpp, line: 664

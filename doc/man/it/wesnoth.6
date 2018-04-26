@@ -33,7 +33,7 @@ fantasy
 Battle for \fBWesnoth\fP è un gioco strategico a turni con ambientazione
 fantasy.
 
-Sconfiggi tutti i condottieri nemici usando un'oculata scelta di unità di
+Sconfiggi tutti i condottieri nemici usando un’oculata scelta di unità di
 combattimento, avendo cura di gestire le tue risorse di oro e villaggi. Ogni
 unità ha punti di forza e debolezze: per vincere, schiera le tue forze nel
 modo più vantaggioso impedendo al nemico di fare altrettanto. Le unità, con
@@ -55,9 +55,8 @@ comprime un file in formato bzip2, lo memorizza come \fIinfile\fP.bz2 e rimuove
 \fIinfile\fP.
 .TP 
 \fB\-c[\fP\fIid_campaign\fP\fB],\ \-\-campaign[\fP\fI=id_campagna\fP\fB]\fP
-salta direttamente alla campagna con identificatore
-\fIid_campagna\fP. Apparirà' un menu selezione se non si specifica alcun
-identificatore.
+salta direttamente alla campagna con identificatore \fIid_campagna\fP. Apparirà
+un menu selezione se non si specifica alcun identificatore.
 .TP 
 \fB\-\-campaign\-difficulty[\fP\fI=difficoltà\fP\fB]\fP
 La difficoltà di una specifica campagna (da 1 a max). Se non specificato,
@@ -69,7 +68,7 @@ primo scenario.
 .TP 
 \fB\-\-core\fP\fI\ identificatore\fP
 sostituisce la directory base caricata con quella specificata
-nell'identificatore.
+nell’identificatore.
 .TP 
 \fB\-\-data\-dir\fP\fI\ directory\fP
 sostituisce la directory dei dati con quella specificata
@@ -155,8 +154,8 @@ disabilita il caricamento delle estensioni utente.
 disabilita la cache dei dati di gioco.
 .TP 
 \fB\-\-nogui\fP
-runs the game without the GUI. Only available in combination with
-\fB\-\-multiplayer\fP or \fB\-\-screenshot\fP or \fB\-\-plugin\fP.
+esegue il gioco senza Interfaccia grafica. Disponibile soltanto in
+combinazione con le opzioni \fB\-\-multiplayer\fP, \fB\-\-screenshot\fP o \fB\-\-plugin\fP.
 .TP 
 \fB\-\-nomusic\fP
 esegue il gioco senza musica.
@@ -176,13 +175,14 @@ scelte. Opzione non sicura.
 stampa il nome della cartella contenente i dati del gioco ed esce.
 .TP 
 \fB\-p,\ \-\-preprocess\fP\fI\ file/cartella sorgente\fP\fB\ \fP\fIcartella destinazione\fP
-preprocesses a specified file/folder. For each file(s) a plain .cfg file and
-a processed .cfg file will be written in specified target directory. If a
-folder is specified, it will be preprocessed recursively based on the known
-preprocessor rules. The common macros from the "data/core/macros" directory
-will be preprocessed before the specified resources.  Example: \fB\-p
-~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
-preprocessor visit:
+pre\-processa uno specifico file/cartella. Per ogni file, saranno scritti
+nella directory destinazione specificata un file .cfg piatto e un file .cfg
+processato. Se viene specificata una cartella, sarà pre\-processata
+ricorsivamente in base alle regole di pre\-processing note. Le macro comuni
+della directory "data/core/macros" saranno pre\-processate prima delle
+risorse specificate. Esempio: \fB\-p ~/wesnoth/data/campaigns/tutorial
+~/result\fP. Per ulteriori dettagli a riguardo de pre\-processore puoi
+consultare
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor
 .TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
@@ -207,10 +207,11 @@ comando \fB\-preprocess\fP.
 imposta la risoluzione dello schermo. Esempio: \fB\-r 800x600\fP
 .TP 
 \fB\-\-render\-image\fP\fI\ immagine\fP\fB\ \fP\fIoutput\fP
-takes a valid wesnoth 'image path string' with image path functions, and
-outputs to a .png file. Outputs to a windows .bmp file if the filename ends
-with .bmp or if libpng is not available. Image path functions are documented
-at https://wiki.wesnoth.org/ImagePathFunctionWML.
+prenda una stringa valida 'image path string' con funzioni immagine per
+wesnoth e restituisce un file in formato .png, L’uscita sarà in una finestra
+\&.bmp se il nome del file termina con .bmp o se la libreria libpng non è
+disponibile. Le funzione per cartella immagini sono documentate in
+https://wiki.wesnoth.org/ImagePathFunctionWML.
 .TP 
 \fB\-R,\ \-\-report\fP
 inizializza le cartelle di gioco, stampa le informazioni di compilazione
@@ -272,7 +273,7 @@ utilizza \fIusername\fP per la connessione ad un server, ignorando le altre
 scelte.
 .TP 
 \fB\-\-userdata\-path\fP
-stampa il percorso della cartella di configurazione dell’utente ed esce.
+stampa il percorso della cartella di configurazione utente ed esce.
 .TP 
 \fB\-\-validcache\fP
 assume che la cache sia valida (pericoloso).
@@ -310,7 +311,7 @@ seleziona il tipo di controllo per questa fazione. Valori disponibili:
 .TP 
 \fB\-\-era\fP\fI\ valore\fP
 usa questa opzione per giocare nell’era selezionata invece che in quella
-\fBDefault\fP. L'era è scelta per ID. Le ere sono descritte nel file
+\fBDefault\fP. L’era è scelta per ID. Le ere sono descritte nel file
 data/multiplayer.cfg.
 .TP 
 \fB\-\-exit\-at\-end\fP

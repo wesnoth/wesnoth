@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-04-15 04:34 UTC\n"
+"POT-Creation-Date: 2018-04-26 00:27 UTC\n"
 "PO-Revision-Date: 2018-04-26 01:20+0200\n"
 "Last-Translator: German translation team <irc://irc.freenode.net/#wesnoth-"
 "de>\n"
@@ -28,7 +28,6 @@ msgstr "SW"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:18
-#| msgid "(Beginner)"
 msgid "Beginner"
 msgstr "Sehr einfach"
 
@@ -44,13 +43,11 @@ msgstr "Kämpfer"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:19
-#| msgid "(Normal)"
 msgid "Normal"
 msgstr "Normal"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:20
-#| msgid "(Challenging)"
 msgid "Challenging"
 msgstr "Herausfordernd"
 
@@ -61,7 +58,6 @@ msgstr "Krieger"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:21
-#| msgid "(Difficult)"
 msgid "Difficult"
 msgstr "Schwierig"
 
@@ -229,8 +225,8 @@ msgstr ""
 msgid "Undead Forces"
 msgstr "Heer der Untoten"
 
-#. [side]: type=Lich, id=Mal-Kevek
 #. [side]: type=Dark Sorcerer, id=Mal-Kevek
+#. [side]: type=Lich, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:116
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
@@ -742,8 +738,8 @@ msgstr ""
 msgid "I would feel bad about that. It is, uh, licking my hand."
 msgstr "Das könnte ich nicht. Schaut, er leckt mir die Hand."
 
-#. [message]: speaker=unit
 #. [message]: speaker=Friendly Bat
+#. [message]: speaker=unit
 #. This should just be "translated" to whatever noise a bat makes in your language.
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:607
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:641
@@ -760,7 +756,6 @@ msgstr "Offenbar hast du nun eine Fledermaus."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:629
-#| msgid "Look! There is a massive bat back here."
 msgid "Look! There is a bat."
 msgstr "Guckt mal! Da ist so’n Fledervieh ..."
 
@@ -778,7 +773,6 @@ msgstr "Schaut! Hier in der Ecke versteckt sich eine Fledermaus."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:656
-#| msgid "Well, kill it, and lets keep moving."
 msgid "Well, kill it, and let’s keep moving."
 msgstr "Mach’ sie platt und weiter."
 
@@ -804,9 +798,6 @@ msgstr "Untote Fledermaus"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:742
-#| msgid ""
-#| "Look! There is a bat in the corner here. It is moving, but it looks half "
-#| "dead."
 msgid "Look! There is a bat. It is moving, but it looks half dead."
 msgstr ""
 "Seht euch die Fledermaus da an … Bewegt sich, obwohl sie doch halbtot "
@@ -982,7 +973,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:299
-#| msgid "The trident is 14-2, magical, ranged, with <i>fire</i> damage."
 msgid "The trident is 14×2, magical, ranged, with <i>fire</i> damage."
 msgstr ""
 "Der Dreizack ist eine Fernkampfwaffe, die 14x2 an Schaden zufügt und "
@@ -2226,8 +2216,8 @@ msgstr ""
 "Für mich sieht das wie die perfekte Bruthöhle aus, da kommen bestimmt noch "
 "mehr."
 
-#. [side]: id=Caladon
 #. [unit]: type=Silver Mage, id=Caladon
+#. [side]: id=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:383
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:96
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:98
@@ -2689,7 +2679,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:987
-#| msgid "This sword is 8-4, magical, with <i>fire</i> damage."
 msgid "This sword is 8×4, magical, with <i>fire</i> damage."
 msgstr ""
 "Dieses magische Schwert fügt 8x4 an Schaden zu und verursacht auch "
@@ -3050,13 +3039,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:39
-#| msgid ""
-#| "Not everything was as before, of course. Many good merfolk had been lost "
-#| "in the first attacks and on the journey. The visiting priestesses did "
-#| "much to console the families of the dead, and as it always does, life "
-#| "continued. In a few months, the giggles of children could be heard "
-#| "echoing through shallows. Many of those children were named after Kai "
-#| "Krellis, Gwabbo, Cylanna, and the other heroes."
 msgid ""
 "Not everything was as before, of course. Many good merfolk had been lost in "
 "the first attacks and on the journey. The visiting priestesses did much to "
@@ -3366,7 +3348,6 @@ msgstr "Lasst den Ring ruhig Fledi. Er wird dadurch nur noch nützlicher."
 
 #. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:219
-#| msgid "Someone take that off of him before he hurts himself."
 msgid "Someone take that off him before he hurts himself."
 msgstr "Nimm jemand das weg, bevor er sich selbst verletzt."
 

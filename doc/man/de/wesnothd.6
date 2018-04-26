@@ -33,18 +33,18 @@ wesnothd \- Battle for \fBWesnoth\fP Mehrspielernetzwerkdaemon
 .
 .SH BESCHREIBUNG
 .
-Manages Battle for Wesnoth multiplayer games. See
-https://www.wesnoth.org/wiki/ServerAdministration on what commands the
-server accepts via the wesnoth client (/query ...) or the fifo.
+Verwaltet Battle for Wesnoth Mehrspieler Partien. Siehe
+https://www.wesnoth.org/wiki/ServerAdministration für die Befehle, die der
+Server von Wesnoth (/query ...) oder über die FIFO entgegennimmt.
 .
 .SH KOMMANDOZEILENOPTIONEN
 .
 .TP 
 \fB\-c\ \fP\fIPfad\fP\fB,\ \-\-config\fP\fI\ Pfad\fP
-sagt wesnothd wo er die zu benutzende Konfigurationsdatei findet. Siehe im
-Abschnitt \fBSERVER KONFIGURATION\fP unterhalb für den genauen Syntax. Sie
+sagt wesnothd wo es die zu benutzende Konfigurationsdatei findet. Siehe den
+Abschnitt \fBSERVER KONFIGURATION\fP unterhalb für die genaue Syntax. Sie
 können die Konfigurationsdatei durch senden eines SIGHUP an den
-Serverprozess neuladen.
+Serverprozess neu laden.
 .TP 
 \fB\-d, \-\-daemon\fP
 startet wesnothd als Dämon.
@@ -65,7 +65,7 @@ wird Port \fB15000\fP genommen.
 Legt die maximale Anzahl an Arbeiterprozessen für Netzwerk I/O
 fest. (Standard: \fB5\fP,\ Maximum:\ \fB30\fP)
 .TP 
-\fB\-t,\ \-\-max\-threads\fP\fI\ Wert\fP
+\fB\-T,\ \-\-max\-threads\fP\fI\ Wert\fP
 Legt die maximal zu erzeugende Anzahl an Arbeiterprozessen fest. Bei einem
 Wert von \fB0\fP gibt es keine Beschränkung. (Standard: \fB0\fP)
 .TP 
@@ -117,9 +117,10 @@ Platzhalter unterstützt. Siehe \fBglob\fP(7) für mehr Details. Standardwerte
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time path
-(default: \fB/var/run/wesnothd/socket\fP).
+Der Pfad zur FIFO\-Datei, in die Befehle für den Server geschrieben werden
+können (das gleiche wie mit /query ... in Wesnoth selbst). Falls nicht
+angegeben, wird die einkompilierte Voreinstellung verwendet (Standard:
+\fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 Die Anzahl der erlaubten Nachrichten in \fBmessages_time_period\fP. (Standard:
@@ -203,7 +204,7 @@ temporary ban time lengths.
 .RS
 .TP 
 \fBname\fP
-Der Name, um die Ban\-Zeit zu referenzieren.
+Der Name, um die Bann\-Zeit zu referenzieren.
 .TP 
 \fBtime\fP
 Die Zeitlängen\-Definition. Das Format lautet: %d[%s[%d%s[...]]] wobei %s für
@@ -262,7 +263,7 @@ Nutzerverwaltung »sample« verwendet.
 .RS
 .TP 
 \fBserver\fP
-Der Hostname des Mail\-Servers.
+Der Hostname des Mail\-Servers
 .TP 
 \fBusername\fP
 Der Nutzername mit welchem man sich beim Mail\-Server anmeldet.
@@ -294,7 +295,7 @@ Laberenz <Jan\-Heiner@arcor.de>, Nils Kneuper
 Diese Beschreibung stammt im Original von Cyril Bouthors
 <cyril@bouthors.org>.
 .br
-Visit the official homepage: https://www.wesnoth.org/
+Besuchen Sie auch die offizielle Webseite: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
