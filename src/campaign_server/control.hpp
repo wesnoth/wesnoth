@@ -54,8 +54,6 @@ public:
 
 	/**
 	 * Returns the control command.
-	 *
-	 * Equivalent to calling arg(0).
 	 */
 	operator const std::string&() const
 	{
@@ -64,8 +62,6 @@ public:
 
 	/**
 	 * Returns the control command.
-	 *
-	 * Equivalent to calling arg(0).
 	 */
 	const std::string& cmd() const
 	{
@@ -87,21 +83,7 @@ public:
 	 */
 	const std::string& operator[](std::size_t n) const
 	{
-		return arg(n);
-	}
-
-	/**
-	 * Returns the nth argument.
-	 *
-	 * @throws std::out_of_range @a n exceeds args_count().
-	 */
-	const std::string& arg(std::size_t n) const
-	{
-		if(n > args_count()) {
-			throw std::out_of_range("control line argument range exceeded");
-		}
-
-		return args_[n];
+		return args_.at(n);
 	}
 
 	/**
