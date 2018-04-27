@@ -28,6 +28,10 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
         export LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS"
     fi
 else
+    if [ "$NLS" != "true" ]; then
+        echo "po/" >> .dockerignore
+    fi
+
     echo "FROM wesnoth/wesnoth:$LTS-$BRANCH" > docker/Dockerfile-travis-"$LTS"-"$BRANCH"
     echo "COPY ./ /home/wesnoth-travis/" >> docker/Dockerfile-travis-"$LTS"-"$BRANCH"
     echo "WORKDIR /home/wesnoth-travis" >> docker/Dockerfile-travis-"$LTS"-"$BRANCH"
