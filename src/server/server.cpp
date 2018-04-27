@@ -405,7 +405,7 @@ void server::load_config() {
 
 	admin_passwd_ = cfg_["passwd"].str();
 	motd_ = cfg_["motd"].str();
-	lan_server_ = lexical_cast_default<time_t>(cfg_["lan_server"], 0);
+	lan_server_ = cfg_["lan_server"].to_time_t(0);
 	uh_name_ = cfg_["user_handler"].str();
 
 	deny_unregistered_login_ = cfg_["deny_unregistered_login"].to_bool();
