@@ -481,6 +481,10 @@ config map_context::to_config()
 
 	scenario.append(tod_manager_->to_config());
 	scenario.remove_attribute("turn_at");
+	scenario.remove_attribute("it_is_a_new_turn");
+	if(scenario["turns"].to_int() == -1) {
+		scenario.remove_attribute("turns");
+	}
 
 	scenario["map_data"] = map_.write();
 
