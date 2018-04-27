@@ -34,6 +34,7 @@ REGISTER_DIALOG(log_settings)
 log_settings::log_settings()
 {
 	//list of names must match those in logging.cfg
+	widget_id_.push_back("none");
 	widget_id_.push_back("err");
 	widget_id_.push_back("warn");
 	widget_id_.push_back("info");
@@ -75,9 +76,11 @@ void log_settings::pre_show(window& window)
 				group.add_member(button, this_id);
 			}
 		}
-		int current_sev, max_sev = widget_id_.size() - 1;
-		if (lg::get_log_domain_severity(this_domain, current_sev) && current_sev >= 0 && current_sev <= max_sev){
-			group.set_member_states(widget_id_[current_sev]);
+		int current_sev, max_sev = widget_id_.size();
+		if (lg::get_log_domain_severity(this_domain, current_sev)) {
+			if (current_sev <= max_sev) {
+				group.set_member_states(widget_id_[current_sev + 1]);
+			}
 		}
 	}
 }
@@ -93,14 +96,16 @@ void log_settings::set_logger(const std::string log_domain)
 {
 	std::string active_value = groups_[log_domain].get_active_member_value();
 
-	if(active_value == widget_id_[1]){ //default value, level1: warning
+	if(active_value == widget_id_[2]){ //default value, level1: warning
 		lg::set_log_domain_severity(log_domain, lg::warn());
-	} else if(active_value == widget_id_[3]){ //level3: debug
+	} else if(active_value == widget_id_[4]){ //level3: debug
 		lg::set_log_domain_severity(log_domain, lg::debug());
-	} else if(active_value == widget_id_[2]){ //level2: info
+	} else if(active_value == widget_id_[3]){ //level2: info
 		lg::set_log_domain_severity(log_domain, lg::info());
-	} else if(active_value == widget_id_[0]){ //level0: error
+	} else if(active_value == widget_id_[1]){ //level0: error
 		lg::set_log_domain_severity(log_domain, lg::err());
+	} else if(active_value == widget_id_[0]){ //level-1: disable
+		lg::set_log_domain_severity(log_domain, -1);
 	}
 }
 
