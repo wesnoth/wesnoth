@@ -32,8 +32,9 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
               nls="$NLS" enable_lto="$LTO" jobs=2 --debug=time
     fi
 else
-    docker run -v "$HOME"/build-cache:/home/wesnoth-travis/build \
-               -v "$HOME"/.ccache:/root/.ccache wesnoth-repo:"$LTS"-"$BRANCH" \
+    docker run --volume "$HOME"/build-cache:/home/wesnoth-travis/build \
+               --volume "$HOME"/.ccache:/root/.ccache \
+               wesnoth-repo:"$LTS"-"$BRANCH" \
                bash -c './utils/travis/docker_run.sh "$@"' \
                bash "$NLS" "$TOOL" "$CC" "$CXX" "$CXXSTD" "$OPT" "$WML_TESTS" "$WML_TEST_TIME" "$PLAY_TEST" "$MP_TEST" "$BOOST_TEST" "$LTO" "$SAN"
 fi
