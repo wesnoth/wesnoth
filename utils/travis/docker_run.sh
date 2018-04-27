@@ -52,11 +52,11 @@ echo "build_timeout(mins): $build_timeout"
 $CXX --version
 
 if [ "$NLS" == "true" ]; then
-    if [ "$TOOL" == "cmake" ]; then
-        cmake -DENABLE_NLS=true -DENABLE_GAME=false -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=false && make VERBOSE=1 -j2
-    else
-        scons translations build=release --debug=time nls=true jobs=2
-    fi
+    cmake -DENABLE_NLS=true -DENABLE_GAME=false -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=false
+    make VERBOSE=1 -j2 || exit 1
+    make clean
+
+    scons translations build=release --debug=time nls=true jobs=2
 else
     build_start=$(date +%s)
 
