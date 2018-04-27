@@ -11,6 +11,7 @@
  ### Miscellaneous and bug fixes
    * Removed misleading tooltip text stating registered nicknames are optional for
      the official MP server.
+   * It is now possible to disable logdomains in the Logging Options dialog.
 
 ## Version 1.14.0
  ### Campaigns
