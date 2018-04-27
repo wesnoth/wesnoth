@@ -12,7 +12,7 @@ cache:
 matrix:
   include:
     - compiler: gcc
-      env: TOOL=scons CXXSTD=14 NLS=true LTS=1604 BRANCH=master
+      env: CXXSTD=14 NLS=true LTS=1604 BRANCH=master
 
     - compiler: gcc
       env: TOOL=scons CXXSTD=17 NLS=false LTS=1804 BRANCH=master
