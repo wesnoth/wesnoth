@@ -119,6 +119,7 @@
    * Fixed locations not being added to the palette when loading a map (#1023)
    * Fixed an AI assertion when a unit with one disabled attack attacked a unit
      with no attacks or a single disabled attack.
+   * It is now possible to disable logdomains in the Logging Options dialog.
 
 ## Version 1.13.12
  ### Security fixes
