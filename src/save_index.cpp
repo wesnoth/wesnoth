@@ -85,7 +85,7 @@ config& save_index_class::get(const std::string& name)
 	time_t m = modified_[name];
 
 	config::attribute_value& mod_time = result["mod_time"];
-	if(mod_time.empty() || static_cast<time_t>(mod_time.to_int()) != m) {
+	if(mod_time.empty() || mod_time.to_time_t() != m) {
 		rebuild(name, m);
 	}
 

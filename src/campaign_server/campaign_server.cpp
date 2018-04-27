@@ -587,14 +587,14 @@ void server::handle_request_campaign_list(const server::request& req)
 	bool before_flag = false;
 	time_t before = epoch;
 	try {
-		before = before + lexical_cast<time_t>(req.cfg["before"]);
+		before += req.cfg["before"].to_time_t();
 		before_flag = true;
 	} catch(bad_lexical_cast) {}
 
 	bool after_flag = false;
 	time_t after = epoch;
 	try {
-		after = after + lexical_cast<time_t>(req.cfg["after"]);
+		after += req.cfg["after"].to_time_t();
 		after_flag = true;
 	} catch(bad_lexical_cast) {}
 
@@ -611,12 +611,12 @@ void server::handle_request_campaign_list(const server::request& req)
 			continue;
 		}
 
-		const std::string& tm = i["timestamp"];
+		const auto& tm = i["timestamp"];
 
-		if(before_flag && (tm.empty() || lexical_cast_default<time_t>(tm, 0) >= before)) {
+		if(before_flag && (tm.empty() || tm.to_time_t(0) >= before)) {
 			continue;
 		}
-		if(after_flag && (tm.empty() || lexical_cast_default<time_t>(tm, 0) <= after)) {
+		if(after_flag && (tm.empty() || tm.to_time_t(0) <= after)) {
 			continue;
 		}
 

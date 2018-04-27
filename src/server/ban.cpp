@@ -174,9 +174,9 @@ static lg::log_domain log_server("server");
 		}
 		nick_ = cfg["nick"].str();
 		if (cfg.has_attribute("end_time"))
-			end_time_ = lexical_cast_default<time_t>(cfg["end_time"], 0);
+			end_time_ = cfg["end_time"].to_time_t(0);
 		if (cfg.has_attribute("start_time"))
-			start_time_ = lexical_cast_default<time_t>(cfg["start_time"], 0);
+			start_time_ = cfg["start_time"].to_time_t(0);
 		reason_ = cfg["reason"].str();
 
 		// only overwrite defaults if exists
