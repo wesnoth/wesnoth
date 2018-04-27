@@ -546,9 +546,11 @@ if(ENABLE_POT_UPDATE_TARGET)
 endif(ENABLE_POT_UPDATE_TARGET)
 
 # get languages
-file(READ po/LINGUAS LINGUAS)
-string(REPLACE "\n" "" LINGUAS ${LINGUAS})
-separate_arguments(LINGUAS)
+if(NLS)
+	file(READ po/LINGUAS LINGUAS)
+	string(REPLACE "\n" "" LINGUAS ${LINGUAS})
+	separate_arguments(LINGUAS)
+endif(NLS)
 
 #
 # Include subdirectories
