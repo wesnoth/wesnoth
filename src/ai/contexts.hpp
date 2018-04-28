@@ -20,7 +20,7 @@
 
 #pragma once
 
-#include "ai/game_info.hpp"                // for move_map, aspect_type, etc
+#include "ai/game_info.hpp"                // for move_map, typesafe_aspect_ptr, etc
 
 #include "config.hpp"                // for config
 #include "game_errors.hpp"
@@ -1500,50 +1500,48 @@ private:
 
 	known_aspect_map known_aspects_;
 
-	aspect_type< unit_advancements_aspect >::typesafe_ptr advancements_;
-	aspect_type<double>::typesafe_ptr aggression_;
-	aspect_type<int>::typesafe_ptr attack_depth_;
+	typesafe_aspect_ptr<unit_advancements_aspect> advancements_;
+	typesafe_aspect_ptr<double> aggression_;
+	typesafe_aspect_ptr<int> attack_depth_;
 	aspect_map aspects_;
-	aspect_type< attacks_vector >::typesafe_ptr attacks_;
-	mutable aspect_type<terrain_filter>::typesafe_ptr avoid_;
-	aspect_type<double>::typesafe_ptr caution_;
+	typesafe_aspect_ptr<attacks_vector> attacks_;
+	mutable typesafe_aspect_ptr<terrain_filter> avoid_;
+	typesafe_aspect_ptr<double> caution_;
 	mutable std::map<map_location,defensive_position> defensive_position_cache_;
 	mutable move_map dstsrc_;
 	mutable move_map enemy_dstsrc_;
 	mutable moves_map enemy_possible_moves_;
 	mutable move_map enemy_srcdst_;
-	aspect_type< std::string >::typesafe_ptr grouping_;
+	typesafe_aspect_ptr<std::string> grouping_;
 	std::vector< goal_ptr > goals_;
 	mutable keeps_cache keeps_;
-	aspect_type<double>::typesafe_ptr leader_aggression_;
-	aspect_type< config >::typesafe_ptr leader_goal_;
-	aspect_type<bool>::typesafe_ptr leader_ignores_keep_;
-	aspect_type< double >::typesafe_ptr leader_value_;
+	typesafe_aspect_ptr<double> leader_aggression_;
+	typesafe_aspect_ptr<config> leader_goal_;
+	typesafe_aspect_ptr<bool> leader_ignores_keep_;
+	typesafe_aspect_ptr<double> leader_value_;
 	mutable bool move_maps_enemy_valid_;
 	mutable bool move_maps_valid_;
 	mutable bool dst_src_valid_lua_;
 	mutable bool dst_src_enemy_valid_lua_;
 	mutable bool src_dst_valid_lua_;
 	mutable bool src_dst_enemy_valid_lua_;
-	aspect_type<bool>::typesafe_ptr passive_leader_;
-	aspect_type<bool>::typesafe_ptr passive_leader_shares_keep_;
+	typesafe_aspect_ptr<bool> passive_leader_;
+	typesafe_aspect_ptr<bool> passive_leader_shares_keep_;
 	mutable moves_map possible_moves_;
-	aspect_type< double >::typesafe_ptr recruitment_diversity_;
-	aspect_type< config >::typesafe_ptr recruitment_instructions_;
-	aspect_type< std::vector<std::string>>::typesafe_ptr recruitment_more_;
-	aspect_type< std::vector<std::string>>::typesafe_ptr recruitment_pattern_;
-	aspect_type< int >::typesafe_ptr recruitment_randomness_;
-	aspect_type< config >::typesafe_ptr recruitment_save_gold_;
+	typesafe_aspect_ptr<double> recruitment_diversity_;
+	typesafe_aspect_ptr<config> recruitment_instructions_;
+	typesafe_aspect_ptr<std::vector<std::string>> recruitment_more_;
+	typesafe_aspect_ptr<std::vector<std::string>> recruitment_pattern_;
+	typesafe_aspect_ptr<int> recruitment_randomness_;
+	typesafe_aspect_ptr<config> recruitment_save_gold_;
 	recursion_counter recursion_counter_;
-	aspect_type< double >::typesafe_ptr scout_village_targeting_;
-	aspect_type< bool >::typesafe_ptr simple_targeting_;
+	typesafe_aspect_ptr<double> scout_village_targeting_;
+	typesafe_aspect_ptr<bool> simple_targeting_;
 	mutable move_map srcdst_;
-	aspect_type< bool >::typesafe_ptr support_villages_;
+	typesafe_aspect_ptr<bool> support_villages_;
 	mutable unit_stats_cache_t unit_stats_cache_;
-	aspect_type< double >::typesafe_ptr village_value_;
-	aspect_type< int >::typesafe_ptr villages_per_scout_;
-
-
+	typesafe_aspect_ptr<double> village_value_;
+	typesafe_aspect_ptr<int> villages_per_scout_;
 };
 
 class readwrite_context_impl : public virtual readonly_context_proxy, public readwrite_context {
