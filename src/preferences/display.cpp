@@ -39,8 +39,6 @@
 #include "game_config_manager.hpp"
 #include "resources.hpp"
 
-#include <boost/math/common_factor_rt.hpp>
-
 namespace preferences {
 
 void set_preference_display_settings()
