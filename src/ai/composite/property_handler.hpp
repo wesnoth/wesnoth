@@ -290,24 +290,24 @@ template<typename X>
 static inline void register_vector_property(property_handler_map& property_handlers, const std::string& property,
 	std::vector<std::shared_ptr<X>>& values, std::function<void(std::vector<std::shared_ptr<X>>&, const config&)> construction_factory)
 {
-	property_handler_ptr handler_ptr(new vector_property_handler<X>(property, values, construction_factory));
-	property_handlers.emplace(property, handler_ptr);
+	property_handlers.emplace(property,
+		std::make_shared<vector_property_handler<X>>(property, values, construction_factory));
 }
 
 template<typename X>
 static inline void register_facets_property(property_handler_map& property_handlers, const std::string& property,
 	std::vector<std::shared_ptr<X>>& values, std::shared_ptr<X>& def, std::function<void(std::vector<std::shared_ptr<X>>&, const config&)> construction_factory)
 {
-	property_handler_ptr handler_ptr(new facets_property_handler<X>(property, values, def, construction_factory));
-	property_handlers.emplace(property, handler_ptr);
+	property_handlers.emplace(property,
+		std::make_shared<facets_property_handler<X>>(property, values, def, construction_factory));
 }
 
 template<typename X>
 static inline void register_aspect_property(property_handler_map& property_handlers, const std::string& property,
 	std::map<std::string, std::shared_ptr<X>>& aspects, std::function<void(std::map<std::string, std::shared_ptr<X>>&, const config&, std::string)> construction_factory)
 {
-	property_handler_ptr handler_ptr(new aspect_property_handler<X>(property, aspects, construction_factory));
-	property_handlers.emplace(property, handler_ptr);
+	property_handlers.emplace(property,
+		std::make_shared<aspect_property_handler<X>>(property, aspects, construction_factory));
 }
 
 } //of namespace ai

@@ -380,8 +380,7 @@ public:
 		: typesafe_aspect<T>(context, cfg, id)
 	{
 		this->name_ = "standard_aspect";
-		std::shared_ptr<T> value(new T(config_value_translator<T>::cfg_to_value(this->cfg_)));
-		this->value_= value;
+		this->value_ = std::make_shared<T>(config_value_translator<T>::cfg_to_value(this->cfg_));
 		LOG_STREAM(debug, aspect::log()) << "standard aspect has value: "<< std::endl << config_value_translator<T>::value_to_cfg(this->get()) << std::endl;
 	}
 
@@ -503,8 +502,7 @@ public:
 
 	aspect_ptr get_new_instance( readonly_context &context, const config &cfg, const std::string &id)
 	{
-		std::shared_ptr<ASPECT> _a(new ASPECT(context,cfg,id));
-		aspect_ptr a = _a;
+		aspect_ptr a = std::make_shared<ASPECT>(context, cfg, id);
 		a->on_create();
 		return a;
 	}
@@ -545,8 +543,7 @@ public:
 
 	aspect_ptr get_new_instance( readonly_context &context, const config &cfg, const std::string &id, std::shared_ptr<lua_ai_context>& l_ctx)
 	{
-		std::shared_ptr<ASPECT> _a(new ASPECT(context,cfg,id,l_ctx));
-		aspect_ptr a = _a;
+		aspect_ptr a = std::make_shared<ASPECT>(context, cfg, id, l_ctx);
 		a->on_create();
 		return a;
 	}
