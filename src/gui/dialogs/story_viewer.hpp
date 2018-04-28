@@ -20,8 +20,6 @@
 #include "storyscreen/controller.hpp"
 #include "storyscreen/part.hpp"
 
-class CVideo;
-
 namespace gui2
 {
 namespace dialogs

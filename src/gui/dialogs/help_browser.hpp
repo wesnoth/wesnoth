@@ -19,8 +19,6 @@
 #include <map>
 #include <list>
 
-class config;
-
 namespace help {
 	class section;
 }
