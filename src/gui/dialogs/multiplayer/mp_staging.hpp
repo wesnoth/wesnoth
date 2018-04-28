@@ -13,7 +13,6 @@
 
 #pragma once
 
-#include "ai/configuration.hpp"
 #include "game_initialization/connect_engine.hpp"
 #include "game_initialization/lobby_info.hpp"
 #include "game_initialization/multiplayer.hpp"
@@ -23,6 +22,11 @@
 #include "mp_game_settings.hpp"
 
 class config;
+
+namespace ai
+{
+	struct description;
+}
 
 namespace gui2
 {
