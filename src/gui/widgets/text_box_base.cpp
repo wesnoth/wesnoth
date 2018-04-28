@@ -443,10 +443,6 @@ void text_box_base::handle_commit(bool& handled, const utf8::string& unicode)
 
 /**
  * SDL_TEXTEDITING handler. See example at https://wiki.libsdl.org/Tutorials/TextInput
- * @param handled
- * @param unicode event.text.text, in SDL_TEXTEDITING is't the "composition" piece.
- * @param start event.edit.start
- * @param length event.edit.length
  */
 void text_box_base::handle_editing(bool& handled, const utf8::string& unicode, int32_t start, int32_t len)
 {
