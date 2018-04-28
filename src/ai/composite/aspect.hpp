@@ -212,14 +212,14 @@ class composite_aspect;
 template<typename T>
 class typesafe_known_aspect : public known_aspect {
 public:
-	typesafe_known_aspect(const std::string &name, std::shared_ptr< typesafe_aspect<T>> &where, aspect_map &aspects)
+	typesafe_known_aspect(const std::string &name, typesafe_aspect_ptr<T>& where, aspect_map &aspects)
 	: known_aspect(name), where_(where), aspects_(aspects)
 	{
 	}
 
 	void set(aspect_ptr a)
 	{
-		std::shared_ptr< typesafe_aspect <T>> c = std::dynamic_pointer_cast< typesafe_aspect<T>>(a);
+		typesafe_aspect_ptr<T> c = std::dynamic_pointer_cast<typesafe_aspect<T>>(a);
 		if (c) {
 			assert (c->get_id()== this->get_name());
 			where_ = c;
@@ -242,9 +242,8 @@ public:
 	}
 
 protected:
-	std::shared_ptr<typesafe_aspect <T>> &where_;
+	typesafe_aspect_ptr<T>& where_;
 	aspect_map &aspects_;
-
 };
 
 
