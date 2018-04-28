@@ -181,7 +181,7 @@ public:
 	}
 
 	virtual candidate_action_ptr get_new_instance( rca_context &ai, const config &cfg ){
-		return candidate_action_ptr(new CANDIDATE_ACTION(ai,cfg));
+		return std::make_shared<CANDIDATE_ACTION>(ai, cfg);
 	}
 };
 

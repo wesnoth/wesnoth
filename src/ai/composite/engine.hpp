@@ -165,7 +165,7 @@ public:
 		config cfg;
 		cfg["name"] = name;
 		cfg["engine"] = "cpp"; // @Crab: what is the purpose of this line(neph)
-		return engine_ptr(new ENGINE(ai,cfg));
+		return std::make_shared<ENGINE>(ai, cfg);
 	}
 };
 

@@ -1092,7 +1092,7 @@ protected:
 public:
 	ai_formula_function(const std::string& name, ai::formula_ai& ai) : formula_function(name), ai_(ai) {}
 	function_expression_ptr generate_function_expression(const std::vector<expression_ptr>& args) const {
-		return function_expression_ptr(new T(args, ai_));
+		return std::make_shared<T>(args, ai_);
 	}
 };
 
