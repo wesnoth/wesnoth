@@ -63,7 +63,11 @@
 #include "gui/widgets/window.hpp"
 #include "lexical_cast.hpp"
 
+#if BOOST_VERSION >= 106700
+#include <boost/integer/common_factor_rt.hpp>
+#else
 #include <boost/math/common_factor_rt.hpp>
+#endif
 
 namespace gui2
 {
@@ -150,7 +154,11 @@ void preferences_dialog::set_resolution_list(menu_button& res_list, CVideo& vide
 		config option;
 		option["label"] = formatter() << res.x << font::unicode_multiplication_sign << res.y;
 
+#if BOOST_VERSION >= 106700
+		const int div = boost::integer::gcd(res.x, res.y);
+#else
 		const int div = boost::math::gcd(res.x, res.y);
+#endif
 
 		const int x_ratio = res.x / div;
 		const int y_ratio = res.y / div;
