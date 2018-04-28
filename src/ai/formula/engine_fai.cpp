@@ -105,9 +105,9 @@ void engine_fai::do_parse_stage_from_config( ai_context &context, const config &
 	//	st_ptr = stage_ptr(new stage_rca_formulas(context,cfg,formula_ai_));
 
 	if (name=="side_formulas") {
-		st_ptr = stage_ptr(new stage_side_formulas(context,cfg,*formula_ai_));
+		st_ptr = std::make_shared<stage_side_formulas>(context, cfg, *formula_ai_);
 	} else if (name=="unit_formulas") {
-		st_ptr = stage_ptr(new stage_unit_formulas(context,cfg,*formula_ai_));
+		st_ptr = std::make_shared<stage_unit_formulas>(context, cfg, *formula_ai_);
 	} else {
 		ERR_AI_ENGINE_FAI << "unknown type of formula_ai stage: ["<< name <<"]"<<std::endl;
 	}
