@@ -54,21 +54,19 @@ template<typename T>
 class typesafe_aspect;
 
 template<typename T>
-struct aspect_type
-{
-	typedef std::shared_ptr<typesafe_aspect<T>> typesafe_ptr;
-	typedef std::vector<typesafe_ptr> typesafe_ptr_vector;
-};
+using typesafe_aspect_ptr = std::shared_ptr<typesafe_aspect<T>>;
+
+template<typename T>
+using typesafe_aspect_vector = std::vector<typesafe_aspect_ptr<T>>;
 
 template<typename T>
 class typesafe_known_aspect;
 
 template<typename T>
-struct known_aspect_type
-{
-	typedef std::shared_ptr<typesafe_known_aspect<T>> typesafe_ptr;
-	typedef std::vector<typesafe_ptr> typesafe_ptr_vector;
-};
+using typesafe_known_aspect_ptr = std::shared_ptr<typesafe_known_aspect<T>>;
+
+template<typename T>
+using typesafe_known_aspect_vector = std::vector<typesafe_known_aspect_ptr<T>>;
 
 class action_result;
 class attack_result;
