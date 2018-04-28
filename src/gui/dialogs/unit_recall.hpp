@@ -23,7 +23,6 @@
 #include <vector>
 
 class team;
-class unit_type;
 
 namespace gui2
 {

@@ -61,10 +61,8 @@ namespace gui2
 
 class listbox;
 class menu_button;
-class styled_widget;
 class slider;
 class text_box;
-class toggle_button;
 
 namespace dialogs
 {

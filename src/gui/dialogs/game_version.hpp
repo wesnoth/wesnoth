@@ -30,7 +30,6 @@ class list_view;
 #else
 class listbox;
 #endif
-class stacked_widget;
 
 namespace dialogs
 {
