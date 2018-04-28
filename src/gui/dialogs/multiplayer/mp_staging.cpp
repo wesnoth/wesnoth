@@ -15,6 +15,7 @@
 
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
 
+#include "ai/configuration.hpp"
 #include "chat_log.hpp"
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"

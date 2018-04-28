@@ -15,7 +15,6 @@
 #include "synced_commands.hpp"
 
 #include "actions/undo.hpp"
-#include "ai/manager.hpp"
 #include "config.hpp"
 #include "game_classification.hpp"
 #include "replay.hpp"
