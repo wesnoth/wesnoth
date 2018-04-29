@@ -646,11 +646,15 @@ void command_executor::execute_command_wrap(const command_executor::queued_comma
 std::vector<command_executor::queued_command> command_executor::filter_command_queue()
 {
 	std::vector<queued_command> filtered_commands;
-	std::set<const hotkey_command*> seen_commands;
+
+	/** A command plus "key released" flag. Otherwise, we will filter out key releases that are preceded by a keypress. */
+	using command_with_keyrelease = std::pair<const hotkey_command*, bool>;
+	std::set<command_with_keyrelease> seen_commands;
 
 	for(const queued_command& cmd : command_queue_) {
-		if(seen_commands.find(cmd.command) == seen_commands.end()) {
-			seen_commands.insert(cmd.command);
+		command_with_keyrelease command_key(cmd.command, cmd.release);
+		if(seen_commands.find(command_key) == seen_commands.end()) {
+			seen_commands.insert(command_key);
 			filtered_commands.push_back(cmd);
 		}
 	}
