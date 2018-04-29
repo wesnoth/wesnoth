@@ -1327,8 +1327,7 @@ Do you want to overwrite it?""".format(output_file))
 
 wmlxgettext won't be run""")
             return
-        else:
-            wmlxgettext_command_string.extend(["-o",self.wmlxgettext_tab.output_variable.get()])
+        wmlxgettext_command_string.extend(["-o",self.wmlxgettext_tab.output_variable.get()])
         if self.wmlxgettext_tab.warnall_variable.get():
             wmlxgettext_command_string.append("--warnall")
         if self.wmlxgettext_tab.fuzzy_variable.get():
