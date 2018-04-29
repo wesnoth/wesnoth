@@ -227,7 +227,7 @@ local function get_speaker(cfg)
 	return speaker
 end
 
-local function message_user_choice(cfg, speaker, options, text_input, sound, voice)
+local function message_user_choice(cfg, speaker, options, text_input, sound)
 	local image, left_side = get_image(cfg, speaker)
 	local caption = get_caption(cfg, speaker)
 
@@ -241,11 +241,17 @@ local function message_user_choice(cfg, speaker, options, text_input, sound, voi
 		second_mirror = cfg.second_mirror,
 	}
 
+	local voice = cfg.voice
 	if speaker ~= nil then
 		if cfg.male_message ~= nil and speaker.gender == "male" then
 			msg_cfg.message = cfg.male_message
 		elseif cfg.female_message ~= nil and speaker.gender == "female" then
 			msg_cfg.message = cfg.female_message
+		end
+		if cfg.male_voice ~= nil and speaker.gender == "male" then
+			voice = cfg.male_voice
+		elseif cfg.female_voice ~= nil and speaker.gender == "female" then
+			voice = cfg.female_voice
 		end
 	end
 
@@ -417,7 +423,7 @@ function wesnoth.wml_actions.message(cfg)
 		wesnoth.fire("redraw")
 	end
 
-	local msg_dlg = message_user_choice(cfg, speaker, options, text_input, cfg.sound, cfg.voice)
+	local msg_dlg = message_user_choice(cfg, speaker, options, text_input, cfg.sound)
 
 	local option_chosen
 	if not has_input then
