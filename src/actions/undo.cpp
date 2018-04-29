@@ -107,6 +107,8 @@ undo_action_base * undo_list::create_action(const config & cfg)
 
 	else if ( str == "update_shroud" )
 		res =  new undo::update_shroud_action();
+	else if ( str == "dummy" )
+		res =  new undo::undo_dummy_action(cfg);
 	else
 	{
 		// Unrecognized type.
