@@ -101,6 +101,7 @@ namespace actions {
 		/// Undoes this action.
 		virtual bool undo(int)
 		{
+			execute_undo_umc_wml();
 			return true;
 		}
 	};
