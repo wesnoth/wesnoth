@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-04-26 03:28+0300\n"
-"PO-Revision-Date: 2018-04-25 10:48-0700\n"
+"PO-Revision-Date: 2018-04-28 10:48+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 2.0.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -1619,7 +1619,7 @@ msgstr "Prendila"
 
 #: data/core/macros/items.cfg:275
 msgid "holy water^Leave it"
-msgstr "Lasciala"
+msgstr "Lasciala lì"
 
 #: data/core/macros/items.cfg:276
 msgid "$unit.name has no need for this Holy Water! Let another take it."
@@ -4041,10 +4041,8 @@ msgstr "Impostazioni predefinite"
 
 #. [label]
 #: data/gui/macros/player_list_panel.cfg:29
-#, fuzzy
-#| msgid "Computer Player"
 msgid "Connected Players"
-msgstr "Computer"
+msgstr "Giocatori Connessi"
 
 #. [label]: id=title
 #: data/gui/window/install_dependencies.cfg:37
@@ -5789,7 +5787,7 @@ msgstr ""
 
 #: src/chat_command_handler.hpp:104
 msgid "Mute/Unmute all observers. (toggles)"
-msgstr "Togli/dai la parola a tutti gli osservatori (in modo alterno)."
+msgstr "Togli/dai la parola a tutti gli osservatori (in modo alterno)"
 
 #: src/chat_command_handler.hpp:108
 msgid ""
@@ -8195,10 +8193,8 @@ msgid "infix_binary^i"
 msgstr "i"
 
 #: src/synced_commands.cpp:403
-#, fuzzy
-#| msgid "Unknown era"
 msgid "(unknown player)"
-msgstr "Era sconosciuta"
+msgstr "(giocatore sconosciuto)"
 
 #: src/synced_commands.cpp:408
 msgid "The :$command debug command was used during $player’s turn"
