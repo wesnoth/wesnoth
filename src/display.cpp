@@ -192,10 +192,7 @@ void display::init_flags()
 
 void display::init_flags(std::size_t side_index)
 {
-	const std::size_t num_teams = get_teams().size();
-	assert(flags_.size() == num_teams);
-
-	if(!dc_ || side_index >= num_teams) {
+	if(!dc_ || side_index >= dc_->teams().size()) {
 		ERR_DP << "Cannot build flag for nonexistent or unconfigured side " << (side_index + 1) << '\n';
 		return;
 	}
