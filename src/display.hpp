@@ -678,15 +678,13 @@ private:
 	void read(const config& cfg);
 
 public:
-	/** Init the flag list and the team colors used by ~TC */
+	/** Initialize the flag list for all sides. */
 	void init_flags();
 
-	/** Rebuild the flag list (not team colors) for a single side. */
-	void reinit_flags_for_side(std::size_t side);
+	/** Initialize the flag list for a single side. */
+	void init_flags(std::size_t side_index);
 
 private:
-	void init_flags_for_side_internal(std::size_t side, const std::string& side_color);
-
 	int blindfold_ctr_;
 
 protected:
@@ -699,7 +697,7 @@ protected:
 
 	// =====================================================================================
 	// DRAWING CODE
-	//=====================================================================================
+	// =====================================================================================
 
 	/**
 	 * Main drawing function.

@@ -102,7 +102,7 @@ display::display(const display_context* dc,
 	, theme_(theme_cfg, video().screen_area())
 	, zoom_index_(0)
 	, fake_unit_man_(new fake_unit_manager(*this))
-	, builder_(new terrain_builder(level, (dc_ ? &dc_->map() : nullptr), theme_.border().tile_image, theme_.border().show_border))
+	, builder_(new terrain_builder(level, (dc_ ? &get_map() : nullptr), theme_.border().tile_image, theme_.border().show_border))
 	, minimap_location_(sdl::empty_rect)
 	, redrawMinimap_(false)
 	, grid_(false)
@@ -183,38 +183,34 @@ void display::init_flags()
 		return;
 	}
 
-	flags_.resize(dc_->teams().size());
+	flags_.resize(get_teams().size());
 
-	for(const team& t : dc_->teams()) {
-		init_flags_for_side_internal(t.side() - 1, t.color());
+	for(std::size_t i = 0; i < get_teams().size(); ++i) {
+		init_flags(i);
 	}
 }
 
-void display::reinit_flags_for_side(std::size_t side)
+void display::init_flags(std::size_t side_index)
 {
-	if(!dc_ || side >= dc_->teams().size()) {
-		ERR_DP << "Cannot rebuild flags for nonexistent or unconfigured side " << side << '\n';
+	const std::size_t num_teams = get_teams().size();
+	assert(flags_.size() == num_teams);
+
+	if(!dc_ || side_index >= num_teams) {
+		ERR_DP << "Cannot build flag for nonexistent or unconfigured side " << (side_index + 1) << '\n';
 		return;
 	}
 
-	init_flags_for_side_internal(side, dc_->teams()[side].color());
-}
+	const team& t = get_teams()[side_index];
 
-void display::init_flags_for_side_internal(std::size_t n, const std::string& side_color)
-{
-	assert(dc_ != nullptr);
-	assert(n < dc_->teams().size());
-	assert(n < flags_.size());
-
-	std::string flag = dc_->teams()[n].flag();
+	std::string flag = t.flag();
 	std::string old_rgb = game_config::flag_rgb;
-	std::string new_rgb = side_color;
+	std::string new_rgb = t.color();
 
 	if(flag.empty()) {
 		flag = game_config::images::flag;
 	}
 
-	LOG_DP << "Adding flag for team " << n << " from animation " << flag << "\n";
+	LOG_DP << "Adding flag for team " << t.side() << " from animation " << flag << "\n";
 
 	// Must recolor flag image
 	animated<image::locator> temp_anim;
@@ -228,10 +224,11 @@ void display::init_flags_for_side_internal(std::size_t n, const std::string& sid
 
 		if(sub_items.size() > 1) {
 			str = sub_items.front();
+
 			try {
 				time = std::max<int>(1, std::stoi(sub_items.back()));
 			} catch(std::invalid_argument&) {
-				ERR_DP << "Invalid time value found when constructing flag for side " << n << ": " << sub_items.back() << "\n";
+				ERR_DP << "Invalid time value found when constructing flag for side " << t.side() << ": " << sub_items.back() << "\n";
 			}
 		}
 
@@ -242,24 +239,25 @@ void display::init_flags_for_side_internal(std::size_t n, const std::string& sid
 		temp_anim.add_frame(time, flag_image);
 	}
 
-	animated<image::locator>& f = flags_[n];
+	animated<image::locator>& f = flags_[side_index];
 	f = temp_anim;
+
 	auto time = f.get_end_time();
 	if(time > 0) {
 		f.start_animation(randomness::rng::default_instance().get_random_int(0, time - 1), true);
 	} else {
 		// this can happen if both flag and game_config::images::flag are empty.
-		ERR_DP << "missing flag for team" << n << "\n";
+		ERR_DP << "Missing flag for team" << t.side() << "\n";
 	}
 }
 
 void display::set_team(std::size_t teamindex, bool show_everything)
 {
-	assert(teamindex < dc_->teams().size());
+	assert(teamindex < get_teams().size());
 	currentTeam_ = teamindex;
 
 	if(!show_everything) {
-		labels().set_team(&dc_->teams()[teamindex]);
+		labels().set_team(&get_teams()[teamindex]);
 		dont_show_all_ = true;
 	} else {
 		labels().set_team(nullptr);
@@ -275,7 +273,7 @@ void display::set_team(std::size_t teamindex, bool show_everything)
 
 void display::set_playing_team(std::size_t teamindex)
 {
-	assert(teamindex < dc_->teams().size());
+	assert(teamindex < get_teams().size());
 	activeTeam_ = teamindex;
 }
 
@@ -410,7 +408,7 @@ void display::reload_map()
 void display::change_display_context(const display_context* dc)
 {
 	dc_ = dc;
-	builder_->change_map(&dc_->map()); // TODO: Should display_context own and initialize the builder object?
+	builder_->change_map(&get_map()); // TODO: Should display_context own and initialize the builder object?
 }
 
 void display::reset_halo_manager()
@@ -610,17 +608,17 @@ const rect_of_hexes display::get_visible_hexes() const
 
 bool display::team_valid() const
 {
-	return currentTeam_ < dc_->teams().size();
+	return currentTeam_ < get_teams().size();
 }
 
 bool display::shrouded(const map_location& loc) const
 {
-	return is_blindfolded() || (dont_show_all_ && dc_->teams()[currentTeam_].shrouded(loc));
+	return is_blindfolded() || (dont_show_all_ && get_teams()[currentTeam_].shrouded(loc));
 }
 
 bool display::fogged(const map_location& loc) const
 {
-	return is_blindfolded() || (dont_show_all_ && dc_->teams()[currentTeam_].fogged(loc));
+	return is_blindfolded() || (dont_show_all_ && get_teams()[currentTeam_].fogged(loc));
 }
 
 int display::get_location_x(const map_location& loc) const
@@ -1444,7 +1442,7 @@ void display::invalidate_animations()
 		}
 	}
 
-	for(const unit& u : dc_->units()) {
+	for(const unit& u : get_units()) {
 		u.anim_comp().refresh();
 	}
 
@@ -1455,7 +1453,7 @@ void display::invalidate_animations()
 
 void display::reset_standing_animations()
 {
-	for(const unit& u : dc_->units()) {
+	for(const unit& u : get_units()) {
 		u.anim_comp().set_standing();
 	}
 }
@@ -1700,7 +1698,7 @@ void display::draw_gamemap()
 		}
 
 		const overlay& item = overlay_record.second;
-		const std::string& current_team_name = dc_->teams()[viewing_team()].team_name();
+		const std::string& current_team_name = get_teams()[viewing_team()].team_name();
 
 		if((item.team_name.empty() || item.team_name.find(current_team_name) != std::string::npos) &&
 			(!fogged(o_loc) || item.visible_in_fog))
@@ -1717,7 +1715,7 @@ void display::draw_gamemap()
 	//
 	// Village flags
 	//
-	for(const team& t : dc_->teams()) {
+	for(const team& t : get_teams()) {
 		auto& flag = flags_[t.side() - 1];
 		flag.update_last_draw_time();
 
@@ -1755,10 +1753,10 @@ void display::draw_gamemap()
 	//
 	// Real (standing) units
 	//
-	if(!dc_->teams().empty()) {
+	if(!get_teams().empty()) {
 		unit_drawer drawer = unit_drawer(*this);
 
-		for(const unit& real_unit : dc_->units()) {
+		for(const unit& real_unit : get_units()) {
 			drawer.redraw_unit(real_unit);
 		}
 
@@ -1777,7 +1775,7 @@ void display::draw_gamemap()
 	//
 	// Fake (moving) units
 	//
-	if(!dc_->teams().empty()) {
+	if(!get_teams().empty()) {
 		unit_drawer drawer = unit_drawer(*this); // TODO: don't create this twice per cycle.
 
 		for(const unit* temp_unit : *fake_unit_man_) {

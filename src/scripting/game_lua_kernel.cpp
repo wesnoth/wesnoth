@@ -2985,7 +2985,7 @@ int game_lua_kernel::intf_set_side_id(lua_State *L)
 		side.set_flag(flag);
 	}
 
-	game_display_->reinit_flags_for_side(team_i);
+	game_display_->init_flags(team_i);
 	return 0;
 }
 
