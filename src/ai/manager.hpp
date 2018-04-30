@@ -21,29 +21,28 @@
 
 #pragma once
 
-#include "ai/game_info.hpp"       // for side_number, ai_ptr
-#include "config.hpp"             // for config, etc
-#include "generic_event.hpp"      // for generic_event, etc
+#include "ai/game_info.hpp"  // for side_number, ai_ptr
+#include "config.hpp"        // for config, etc
+#include "generic_event.hpp" // for generic_event, etc
 
-#include <deque>                        // for deque
-#include <map>                          // for map, map<>::value_compare
-#include <stack>                        // for stack
-#include <string>                       // for string
+#include <deque>  // for deque
+#include <map>    // for map, map<>::value_compare
+#include <stack>  // for stack
+#include <string> // for string
 
 class game_launcher;
-namespace ai { class ai_composite; }  // lines 45-45
-namespace ai { class ai_context; }  // lines 42-42
-namespace ai { class component; }  // lines 43-43
-namespace ai { class default_ai_context; }  // lines 41-41
-namespace ai { class readonly_context; }  // lines 39-39
-namespace ai { class readwrite_context; }  // lines 40-40
-namespace ai { class side_context; }  // lines 38-38
+namespace ai { class ai_composite; }
+namespace ai { class ai_context; }
+namespace ai { class component; }
+namespace ai { class default_ai_context; }
+namespace ai { class readonly_context; }
+namespace ai { class readwrite_context; }
+namespace ai { class side_context; }
 namespace events { class generic_event; }
 namespace events { class observer; }
 
-
-namespace ai {
-
+namespace ai
+{
 typedef std::shared_ptr<ai_composite> composite_ai_ptr;
 
 /**
@@ -51,9 +50,10 @@ typedef std::shared_ptr<ai_composite> composite_ai_ptr;
  * It is an implementation detail.
  * @todo 1.9 move it out of public view
  */
-class holder{
+class holder
+{
 public:
-	holder(side_number side, const config &cfg);
+	holder(side_number side, const config& cfg);
 
 	virtual ~holder();
 
@@ -65,23 +65,18 @@ public:
 
 	void modify_ai(const config& cfg);
 
-
 	void append_ai(const config& cfg);
-
 
 	const std::string get_ai_overview();
 
-
 	const std::string get_ai_structure();
-
 
 	const std::string get_ai_identifier() const;
 
-	component* get_component(component *root, const std::string &path); // Ai debug method
+	component* get_component(component* root, const std::string& path); // Ai debug method
 
 private:
-	void init( side_number side );
-
+	void init(side_number side);
 
 	composite_ai_ptr ai_;
 	std::unique_ptr<side_context> side_context_;
@@ -95,21 +90,28 @@ private:
 /**
  * AI Command History Item. It is an implementation detail
  */
-class command_history_item{
+class command_history_item
+{
 public:
+	command_history_item(int number, const std::string& command)
+		: number_(number)
+		, command_(command)
+	{
+	}
 
-	command_history_item(int number, const std::string &command)
-		: number_(number), command_(command)
-	{}
+	int get_number() const
+	{
+		return number_;
+	}
 
-	int get_number() const { return number_; }
-
-	const std::string& get_command() const { return command_; }
+	const std::string& get_command() const
+	{
+		return command_;
+	}
 
 private:
 	int number_;
 	std::string command_;
-
 };
 
 /**
@@ -119,7 +121,6 @@ private:
 class manager
 {
 public:
-
 	// =======================================================================
 	// CONSTANTS
 	// =======================================================================
@@ -134,15 +135,16 @@ public:
 	static const std::string AI_TYPE_AI2;
 	static const std::string AI_TYPE_DEFAULT;
 
-
 	// =======================================================================
 	// CONSTRUCTORS AND DESTRUCTORS
 	// =======================================================================
 
 	manager();
 
-	/* The singleton can't be set to null in the destructor because member objects
-	(which access the singleton) are destroyed *after* the destructor has been run. */
+	/**
+	 * The singleton can't be set to null in the destructor because member objects
+	 * (which access the singleton) are destroyed *after* the destructor has been run.
+	 */
 	~manager() = default;
 
 	// =======================================================================
@@ -164,32 +166,27 @@ public:
 	// LIFECYCLE
 	// =======================================================================
 
-
 	/**
 	 * Adds observer of game events.
 	 * Should be called in playsingle_controller 's constructor.
 	 */
-	void add_observer( events::observer* event_observer);
-
+	void add_observer(events::observer* event_observer);
 
 	/**
 	 * Removes an observer of game events.
 	 * Should be called in playsingle_controller 's destructor.
 	 */
-	void remove_observer( events::observer* event_observer );
-
+	void remove_observer(events::observer* event_observer);
 
 	/**
 	 * Adds observer of game events except ai_user_interact event and ai_sync_network event
 	 */
-	void add_gamestate_observer( events::observer* event_observer);
-
+	void add_gamestate_observer(events::observer* event_observer);
 
 	/**
 	 * Removes an observer of game events except ai_user_interact event and ai_sync_network event
 	 */
-	void remove_gamestate_observer( events::observer* event_observer );
-
+	void remove_gamestate_observer(events::observer* event_observer);
 
 	/**
 	 * Notifies all observers of 'ai_user_interact' event.
@@ -206,88 +203,72 @@ public:
 	 */
 	void raise_sync_network();
 
-
 	/**
 	 * Notifies all observers of 'ai_gamestate_changed' event.
 	 */
 	void raise_gamestate_changed();
-
 
 	/**
 	 * Notifies all observers of 'ai_tod_changed' event.
 	 */
 	void raise_tod_changed();
 
-
 	/**
 	 * Notifies all observers of 'ai_recruit_list_changed' event.
 	 */
 	void raise_recruit_list_changed();
-
 
 	/**
 	 * Notifies all observers of 'ai_turn_started' event.
 	 */
 	void raise_turn_started();
 
-
 	/**
 	 * Notifies all observers of 'ai_map_changed' event.
 	 */
 	void raise_map_changed();
 
-
 	/**
 	 * Adds an observer of 'ai_map_changed' event.
 	 */
-	void add_map_changed_observer( events::observer* event_observer );
-
+	void add_map_changed_observer(events::observer* event_observer);
 
 	/**
 	 * Adds an observer of 'ai_recruit_list_changed' event.
 	 */
-	void add_recruit_list_changed_observer( events::observer* event_observer );
-
+	void add_recruit_list_changed_observer(events::observer* event_observer);
 
 	/**
 	 * Adds an observer of 'ai_turn_started' event.
 	 */
-	void add_turn_started_observer( events::observer* event_observer );
-
+	void add_turn_started_observer(events::observer* event_observer);
 
 	/**
 	 * Adds an observer of 'ai_tod_changed' event.
 	 */
-	void add_tod_changed_observer( events::observer* event_observer );
-
+	void add_tod_changed_observer(events::observer* event_observer);
 
 	/**
 	 * Deletes an observer of 'ai_map_changed' event.
 	 */
-	void remove_map_changed_observer( events::observer* event_observer );
-
-
+	void remove_map_changed_observer(events::observer* event_observer);
 
 	/**
 	 * Deletes an observer of 'ai_recruit_list_changed' event.
 	 */
-	void remove_recruit_list_changed_observer( events::observer* event_observer );
-
+	void remove_recruit_list_changed_observer(events::observer* event_observer);
 
 	/**
 	 * Deletes an observer of 'ai_turn_started' event.
 	 */
-	void remove_turn_started_observer( events::observer* event_observer );
-
+	void remove_turn_started_observer(events::observer* event_observer);
 
 	/**
 	 * Deletes an observer of 'ai_tod_changed' event.
 	 */
-	void remove_tod_changed_observer( events::observer* event_observer );
-
+	void remove_tod_changed_observer(events::observer* event_observer);
 
 public:
-
 	// =======================================================================
 	// EVALUATION
 	// =======================================================================
@@ -301,8 +282,7 @@ public:
 	 * @param str string to evaluate.
 	 * @return string result of evaluation.
 	 */
-	const std::string evaluate_command( side_number side, const std::string& str );
-
+	const std::string evaluate_command(side_number side, const std::string& str);
 
 	// =======================================================================
 	// ADD, CREATE AIs, OR LIST AI TYPES
@@ -317,8 +297,7 @@ public:
 	 * @param replace should new ai replace the current ai or 'be placed on top of it'.
 	 * @return true if successful.
 	 */
-	bool add_ai_for_side_from_file( side_number side, const std::string& file, bool replace = true );
-
+	bool add_ai_for_side_from_file(side_number side, const std::string& file, bool replace = true);
 
 	/**
 	 * Adds active AI for specified @a side from @a cfg.
@@ -329,8 +308,7 @@ public:
 	 * @param replace should new ai replace the current ai or 'be placed on top of it'.
 	 * @return true if successful.
 	 */
-	bool add_ai_for_side_from_config(side_number side, const config &cfg, bool replace = true);
-
+	bool add_ai_for_side_from_config(side_number side, const config& cfg, bool replace = true);
 
 	/**
 	 * Adds active AI for specified @a side from parameters.
@@ -341,8 +319,7 @@ public:
 	 * @param replace should new ai replace the current ai or 'be placed on top of it'.
 	 * @return true if successful.
 	 */
-	bool add_ai_for_side( side_number side, const std::string& ai_algorithm_type, bool replace = true);
-
+	bool add_ai_for_side(side_number side, const std::string& ai_algorithm_type, bool replace = true);
 
 	// =======================================================================
 	// REMOVE
@@ -354,8 +331,7 @@ public:
 	 *       by manager.
 	 * @param side side number (1-based, as in game_info).
 	 */
-	void remove_ai_for_side( side_number side );
-
+	void remove_ai_for_side(side_number side);
 
 	/**
 	 * Removes all AIs from @a side.
@@ -363,8 +339,7 @@ public:
 	 *       by manager.
 	 * @param side side number (1-based, as in game_info).
 	 */
-	void remove_all_ais_for_side( side_number side );
-
+	void remove_all_ais_for_side(side_number side);
 
 	/**
 	 * Clears all the AIs.
@@ -379,36 +354,33 @@ public:
 	// GET active AI parameters
 	// =======================================================================
 
-
 	/**
 	 * Gets AI info for active AI of the given @a side.
 	 * @param side side number (1-based).
 	 * @return a reference to active AI info.
 	 */
-	game_info& get_active_ai_info_for_side( side_number side );
-
+	game_info& get_active_ai_info_for_side(side_number side);
 
 	/**
 	 * Gets AI Overview for active AI of the given @a side
 	 * @param side side number (1-based)
 	 * @return an ai overview
 	 */
-	std::string get_active_ai_overview_for_side( side_number side );
-
+	std::string get_active_ai_overview_for_side(side_number side);
 
 	/**
 	 * Gets AI Structure for active AI of the given @a side
 	 * @param side side number (1-based)
 	 * @return an ai structure
 	 */
-	std::string get_active_ai_structure_for_side( side_number side );
+	std::string get_active_ai_structure_for_side(side_number side);
 
 	/**
 	 * Gets AI algorithm identifier for active AI of the given @a side.
 	 * @param side side number (1-based).
 	 * @return ai identifier for the active AI
 	 */
-	std::string get_active_ai_identifier_for_side( side_number side );
+	std::string get_active_ai_identifier_for_side(side_number side);
 
 	/**
 	 * Gets the active AI holder for debug purposes.
@@ -423,15 +395,13 @@ public:
 	 * @param side side number (1-based).
 	 * @return a config object for the active AI
 	 */
-	config to_config( side_number side );
-
+	config to_config(side_number side);
 
 	/**
 	 * Gets global AI-game info
 	 * @return a reference to the AI-game info.
 	 */
 	game_info& get_ai_info();
-
 
 	// =======================================================================
 	// SET active AI parameters
@@ -444,7 +414,7 @@ public:
 	 * @param cfg - content of [modify_ai] tag
 	 */
 
-	void modify_active_ai_for_side( ai::side_number side, const config &cfg );
+	void modify_active_ai_for_side(ai::side_number side, const config& cfg);
 
 	/**
 	 * Appends AI parameters to active AI of the given @a side.
@@ -453,7 +423,7 @@ public:
 	 * @param cfg - content of [modify_side][ai] tag
 	 */
 
-	void append_active_ai_for_side( ai::side_number side, const config &cfg );
+	void append_active_ai_for_side(ai::side_number side, const config& cfg);
 
 	// =======================================================================
 	// PROXY
@@ -465,12 +435,10 @@ public:
 	 */
 	void play_turn(side_number side);
 
-
 private:
+	typedef std::map<side_number, std::stack<holder>> AI_map_of_stacks;
 
-	typedef std::map< side_number, std::stack< holder >> AI_map_of_stacks;
-
-	std::deque< command_history_item > history_;
+	std::deque<command_history_item> history_;
 	long history_item_counter_;
 	game_info ai_info_;
 
@@ -488,7 +456,6 @@ private:
 
 	static manager* singleton_;
 
-
 	// =======================================================================
 	// EVALUATION
 	// =======================================================================
@@ -500,34 +467,32 @@ private:
 	 * @return string result of evaluation.
 	 * @todo 1.9 rewrite this function to use a fai or lua parser.
 	 */
-	const std::string internal_evaluate_command( side_number side, const std::string& str );
+	const std::string internal_evaluate_command(side_number side, const std::string& str);
 
 	/**
 	 * Determines if the command should be intercepted and evaluated as internal command.
 	 * @param str command string to check.
 	 * @return true if the command should be intercepted and evaluated.
 	 */
-	bool should_intercept( const std::string& str ) const;
+	bool should_intercept(const std::string& str) const;
 
 	// =======================================================================
 	// AI STACKS
 	// =======================================================================
 
-
 	/**
 	 * Gets the AI stack for the specified side, create it if it doesn't exist.
 	 */
-	std::stack< holder >& get_or_create_ai_stack_for_side(side_number side);
+	std::stack<holder>& get_or_create_ai_stack_for_side(side_number side);
 
 	// =======================================================================
 	// AI HOLDERS
 	// =======================================================================
 
-
 	/**
 	 * Gets active holder for specified @a side.
 	 */
-	holder& get_active_ai_holder_for_side( side_number side );
+	holder& get_active_ai_holder_for_side(side_number side);
 
 	// =======================================================================
 	// AI POINTERS
@@ -541,10 +506,9 @@ private:
 	 * @return a reference to the active AI.
 	 * @note This reference may become invalid after specific manager operations.
 	 */
-	ai_composite& get_active_ai_for_side( side_number side );
-
+	ai_composite& get_active_ai_for_side(side_number side);
 
 	friend class ::game_launcher;
 };
 
-} //end of namespace ai
+} // end of namespace ai
