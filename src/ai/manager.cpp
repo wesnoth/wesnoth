@@ -20,6 +20,7 @@
 #include "ai/manager.hpp"
 
 #include "config.hpp" // for config, etc
+#include "formatter.hpp"
 #include "game_events/pump.hpp"
 #include "log.hpp"
 #include "map/location.hpp" // for map_location
@@ -236,10 +237,9 @@ const std::string holder::describe_ai()
 	std::string sidestr = std::to_string(this->side_);
 
 	if(this->ai_ != nullptr) {
-		return this->ai_->describe_self() + std::string(" for side ") + sidestr + std::string(" : ");
+		return formatter() << this->ai_->describe_self() << " for side " << sidestr << " : ";
 	} else {
-		return std::string("not initialized ai with id=[") + cfg_["id"] + std::string("] for side ") + sidestr
-			   + std::string(" : ");
+		return formatter() << "not initialized ai with id=[" <<  cfg_["id"] << "] for side " << sidestr << " : ";
 	}
 }
 
@@ -552,11 +552,11 @@ const std::string manager::internal_evaluate_command(side_number side, const std
 			std::string file = cmd.at(2);
 
 			if(add_ai_for_side_from_file(side, file, false)) {
-				return std::string("AI MANAGER: added [") + manager::get_active_ai_identifier_for_side(side)
-					   + std::string("] AI for side ") + std::to_string(side) + std::string(" from file ") + file;
+				return formatter()
+					<< "AI MANAGER: added [" << manager::get_active_ai_identifier_for_side(side)
+					<< "] AI for side " << side << " from file " << file;
 			} else {
-				return std::string("AI MANAGER: failed attempt to add AI for side ") + std::to_string(side)
-					   + std::string(" from file ") + file;
+				return formatter() << "AI MANAGER: failed attempt to add AI for side " << side << " from file " << file;
 			}
 		}
 
@@ -565,11 +565,11 @@ const std::string manager::internal_evaluate_command(side_number side, const std
 			side = std::stoi(cmd.at(1));
 			std::string file = cmd.at(2);
 			if(add_ai_for_side_from_file(side, file, true)) {
-				return std::string("AI MANAGER: added [") + manager::get_active_ai_identifier_for_side(side)
-					   + std::string("] AI for side ") + std::to_string(side) + std::string(" from file ") + file;
+				return formatter()
+					<< "AI MANAGER: added [" << manager::get_active_ai_identifier_for_side(side)
+					<< "] AI for side " << side << " from file " << file;
 			} else {
-				return std::string("AI MANAGER: failed attempt to add AI for side ") + std::to_string(side)
-					   + std::string(" from file ") + file;
+				return formatter() << "AI MANAGER: failed attempt to add AI for side " << side << " from file " << file;
 			}
 		}
 	} else if(cmd.size() == 2) {
@@ -577,7 +577,7 @@ const std::string manager::internal_evaluate_command(side_number side, const std
 		if(cmd.at(0) == "!remove_ai") {
 			side = std::stoi(cmd.at(1));
 			remove_ai_for_side(side);
-			return std::string("AI MANAGER: made an attempt to remove AI for side ") + std::to_string(side);
+			return formatter() << "AI MANAGER: made an attempt to remove AI for side " << side;
 		}
 
 		if(cmd.at(0) == "!") {
