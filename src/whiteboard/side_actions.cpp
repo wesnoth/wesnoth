@@ -83,10 +83,8 @@ std::size_t side_actions_container::get_turn_impl(std::size_t begin, std::size_t
 	std::size_t mid = (begin+end) / 2;
 	if(it < turn_beginnings_[mid]) {
 		return get_turn_impl(begin, mid, it);
-	} else if(it > turn_beginnings_[mid]) {
-		return get_turn_impl(mid, end, it);
 	} else {
-		return mid;
+		return get_turn_impl(mid, end, it);
 	}
 }
 
