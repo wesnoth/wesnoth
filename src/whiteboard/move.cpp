@@ -57,8 +57,13 @@ std::ostream& operator<<(std::ostream &s, move_const_ptr move)
 
 std::ostream& move::print(std::ostream &s) const
 {
-	s << "Move for unit " << get_unit()->name() << " [" << get_unit()->id() << "] "
+	if(!get_unit()) {
+		s << "Move for unknown unit [" << unit_underlying_id_ << "] " << "from (" << get_source_hex() << ") to (" << get_dest_hex() << ")";
+	}
+	else {
+		s << "Move for unit " << get_unit()->name() << " [" << get_unit()->id() << "] "
 			<< "from (" << get_source_hex() << ") to (" << get_dest_hex() << ")";
+	}
 	return s;
 }
 
