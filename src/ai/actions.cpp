@@ -39,24 +39,24 @@
 #include "actions/attack.hpp"
 #include "actions/create.hpp"
 #include "attack_prediction.hpp"
-#include "preferences/game.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "mouse_handler_base.hpp"
 #include "pathfind/teleport.hpp"
 #include "play_controller.hpp"
 #include "playsingle_controller.hpp"
+#include "preferences/game.hpp"
 #include "recall_list_manager.hpp"
 #include "replay_helper.hpp"
 #include "resources.hpp"
 #include "synced_context.hpp"
 #include "team.hpp"
-#include "units/unit.hpp"
 #include "units/ptr.hpp"
+#include "units/unit.hpp"
 #include "whiteboard/manager.hpp"
 
-namespace ai {
-
+namespace ai
+{
 static lg::log_domain log_ai_actions("ai/actions");
 #define DBG_AI_ACTIONS LOG_STREAM(debug, log_ai_actions)
 #define LOG_AI_ACTIONS LOG_STREAM(info, log_ai_actions)
@@ -66,15 +66,20 @@ static lg::log_domain log_ai_actions("ai/actions");
 // =======================================================================
 // AI ACTIONS
 // =======================================================================
-action_result::action_result( side_number side )
-	: return_value_checked_(true),side_(side),status_(AI_ACTION_SUCCESS),is_execution_(false),is_gamestate_changed_(false)
+action_result::action_result(side_number side)
+	: return_value_checked_(true)
+	, side_(side)
+	, status_(AI_ACTION_SUCCESS)
+	, is_execution_(false)
+	, is_gamestate_changed_(false)
 {
 }
 
 action_result::~action_result()
 {
-	if (!return_value_checked_) {
-		DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; //Demotes to DBG "unchecked result" warning
+	if(!return_value_checked_) {
+		// Demotes to DBG "unchecked result" warning
+		DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl;
 	}
 }
 
@@ -93,17 +98,23 @@ void action_result::execute()
 	is_execution_ = true;
 	init_for_execution();
 	check_before();
-	if (is_success()){
+
+	if(is_success()) {
 		try {
 			do_execute();
-		} catch (return_to_play_side_exception&) {
-			if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
+		} catch(return_to_play_side_exception&) {
+			if(!is_ok()) {
+				DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl;
+			} // Demotes to DBG "unchecked result" warning
+
 			throw;
 		}
 	}
-	if (is_success()){
+
+	if(is_success()) {
 		check_after();
 	}
+
 	is_execution_ = false;
 }
 
@@ -111,7 +122,7 @@ void action_result::init_for_execution()
 {
 	return_value_checked_ = false;
 	is_gamestate_changed_ = false;
-	status_ =  action_result::AI_ACTION_SUCCESS;
+	status_ = action_result::AI_ACTION_SUCCESS;
 	do_init_for_execution();
 }
 
@@ -126,16 +137,17 @@ bool action_result::is_ok()
 	return is_success();
 }
 
-void action_result::set_error(int error_code, bool log_as_error){
+void action_result::set_error(int error_code, bool log_as_error)
+{
 	status_ = error_code;
-	if (is_execution()) {
-		if (log_as_error) {
-			ERR_AI_ACTIONS << "Error #"<<error_code<<" ("<<actions::get_error_name(error_code)<<") in "<< do_describe();
+	if(is_execution()) {
+		if(log_as_error) {
+			ERR_AI_ACTIONS << "Error #" << error_code << " (" << actions::get_error_name(error_code) << ") in " << do_describe();
 		} else {
-			LOG_AI_ACTIONS << "Error #"<<error_code<<" ("<<actions::get_error_name(error_code)<<") in "<< do_describe();
+			LOG_AI_ACTIONS << "Error #" << error_code << " (" << actions::get_error_name(error_code) << ") in " << do_describe();
 		}
 	} else {
-		LOG_AI_ACTIONS << "Error #"<<error_code<<" ("<<actions::get_error_name(error_code)<<") when checking "<< do_describe();
+		LOG_AI_ACTIONS << "Error #" << error_code << " (" << actions::get_error_name(error_code) << ") when checking " << do_describe();
 	}
 }
 
@@ -169,10 +181,20 @@ team& action_result::get_my_team() const
 	return resources::gameboard->get_team(side_);
 }
 
-
 // attack_result
-attack_result::attack_result( side_number side, const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon, double aggression, const unit_advancements_aspect& advancements)
-	: action_result(side), attacker_loc_(attacker_loc), defender_loc_(defender_loc), attacker_weapon_(attacker_weapon), aggression_(aggression), advancements_(advancements){
+attack_result::attack_result(side_number side,
+		const map_location& attacker_loc,
+		const map_location& defender_loc,
+		int attacker_weapon,
+		double aggression,
+		const unit_advancements_aspect& advancements)
+	: action_result(side)
+	, attacker_loc_(attacker_loc)
+	, defender_loc_(defender_loc)
+	, attacker_weapon_(attacker_weapon)
+	, aggression_(aggression)
+	, advancements_(advancements)
+{
 }
 
 void attack_result::do_check_before()
@@ -181,15 +203,13 @@ void attack_result::do_check_before()
 	const unit_map::const_iterator attacker = resources::gameboard->units().find(attacker_loc_);
 	const unit_map::const_iterator defender = resources::gameboard->units().find(defender_loc_);
 
-	if(attacker==resources::gameboard->units().end())
-	{
+	if(attacker == resources::gameboard->units().end()) {
 		LOG_AI_ACTIONS << "attempt to attack without attacker\n";
 		set_error(E_EMPTY_ATTACKER);
 		return;
 	}
 
-	if (defender==resources::gameboard->units().end())
-	{
+	if(defender == resources::gameboard->units().end()) {
 		LOG_AI_ACTIONS << "attempt to attack without defender\n";
 		set_error(E_EMPTY_DEFENDER);
 		return;
@@ -213,7 +233,7 @@ void attack_result::do_check_before()
 		return;
 	}
 
-	if(attacker->side()!=get_side()) {
+	if(attacker->side() != get_side()) {
 		LOG_AI_ACTIONS << "attempt to attack with not own unit\n";
 		set_error(E_NOT_OWN_ATTACKER);
 		return;
@@ -225,15 +245,15 @@ void attack_result::do_check_before()
 		return;
 	}
 
-	if (attacker_weapon_!=-1) {
-		if ((attacker_weapon_<0)||(attacker_weapon_ >= static_cast<int>(attacker->attacks().size()))) {
+	if(attacker_weapon_ != -1) {
+		if((attacker_weapon_ < 0) || (attacker_weapon_ >= static_cast<int>(attacker->attacks().size()))) {
 			LOG_AI_ACTIONS << "invalid weapon selection for the attacker\n";
 			set_error(E_WRONG_ATTACKER_WEAPON);
 			return;
 		}
 	}
 
-	if (!tiles_adjacent(attacker_loc_,defender_loc_)) {
+	if(!tiles_adjacent(attacker_loc_, defender_loc_)) {
 		LOG_AI_ACTIONS << "attacker and defender not adjacent\n";
 		set_error(E_ATTACKER_AND_DEFENDER_NOT_ADJACENT);
 		return;
@@ -249,22 +269,25 @@ std::string attack_result::do_describe() const
 	std::stringstream s;
 	s << "attack by side ";
 	s << get_side();
-	s << " from location "<<attacker_loc_;
-	s << " to location "<<defender_loc_;
-	s << " using weapon "<< attacker_weapon_;
-	s << " with aggression "<< aggression_;
-	s <<std::endl;
+	s << " from location " << attacker_loc_;
+	s << " to location " << defender_loc_;
+	s << " using weapon " << attacker_weapon_;
+	s << " with aggression " << aggression_;
+	s << std::endl;
 	return s.str();
 }
 
 void attack_result::do_execute()
 {
-	LOG_AI_ACTIONS << "start of execution of: "<< *this << std::endl;
+	LOG_AI_ACTIONS << "start of execution of: " << *this << std::endl;
+
 	// Stop the user from issuing any commands while the unit is attacking
 	const events::command_disabler disable_commands;
-	//@note: yes, this is a decision done here. It's that way because we want to allow a simpler attack 'with whatever weapon is considered best', and because we want to allow the defender to pick it's weapon. That's why aggression is needed. a cleaner solution is needed.
-	battle_context bc(resources::gameboard->units(), attacker_loc_,
-		defender_loc_, attacker_weapon_, -1, aggression_);
+
+	// @note: yes, this is a decision done here. It's that way because we want to allow a simpler attack 'with whatever
+	// weapon is considered best', and because we want to allow the defender to pick it's weapon. That's why aggression
+	// is needed. a cleaner solution is needed.
+	battle_context bc(resources::gameboard->units(), attacker_loc_, defender_loc_, attacker_weapon_, -1, aggression_);
 
 	int attacker_weapon = bc.get_attacker_stats().attack_num;
 	int defender_weapon = bc.get_defender_stats().attack_num;
@@ -277,43 +300,63 @@ void attack_result::do_execute()
 	const unit_map::const_iterator a_ = resources::gameboard->units().find(attacker_loc_);
 	const unit_map::const_iterator d_ = resources::gameboard->units().find(defender_loc_);
 
-	if(resources::simulation_){
-		bool gamestate_changed = simulated_attack(attacker_loc_, defender_loc_, bc.get_attacker_combatant().average_hp(), bc.get_defender_combatant().average_hp());
+	if(resources::simulation_) {
+		bool gamestate_changed = simulated_attack(
+			attacker_loc_,
+			defender_loc_,
+			bc.get_attacker_combatant().average_hp(),
+			bc.get_defender_combatant().average_hp()
+		);
 
 		sim_gamestate_changed(this, gamestate_changed);
 
 		return;
 	}
 
-	//FIXME: find a way to 'ask' the ai which advancement should be chosen from synced_commands.cpp .
-	if(!synced_context::is_synced()) //RAII block for set_scontext_synced
+	// FIXME: find a way to 'ask' the ai which advancement should be chosen from synced_commands.cpp .
+	if(!synced_context::is_synced()) // RAII block for set_scontext_synced
 	{
 		wb::real_map rm;
-		//we don't use synced_context::run_in_synced_context because that wouldn't allow us to pass advancements_
-		resources::recorder->add_synced_command("attack", replay_helper::get_attack(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, a_->type_id(),
-			d_->type_id(), a_->level(), d_->level(), resources::tod_manager->turn(),
-			resources::tod_manager->get_time_of_day()));
+		// we don't use synced_context::run_in_synced_context because that wouldn't allow us to pass advancements_
+		resources::recorder->add_synced_command("attack",
+			replay_helper::get_attack(
+				attacker_loc_,
+				defender_loc_,
+				attacker_weapon,
+				defender_weapon,
+				a_->type_id(),
+				d_->type_id(),
+				a_->level(),
+				d_->level(),
+				resources::tod_manager->turn(),
+				resources::tod_manager->get_time_of_day()
+			)
+		);
+
 		set_scontext_synced sync;
 		attack_unit_and_advance(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, true, advancements_);
+
 		resources::controller->check_victory();
 		resources::controller->maybe_throw_return_to_play_side();
+
 		sync.do_final_checkup();
-	}
-	else
-	{
+	} else {
 		attack_unit_and_advance(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, true, advancements_);
 	}
 
-
 	set_gamestate_changed();
-	//start of ugly hack. @todo 1.9 rework that via extended event system
-	//until event system is reworked, we note the attack this way
+
+	// start of ugly hack. @todo 1.9 rework that via extended event system
+	// until event system is reworked, we note the attack this way
 	get_info().recent_attacks.insert(defender_loc_);
-	//end of ugly hack
+	// end of ugly hack
+
 	try {
 		manager::get_singleton().raise_gamestate_changed();
-	} catch (...) {
-		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
+	} catch(...) {
+		if(!is_ok()) {
+			DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl;
+		} // Demotes to DBG "unchecked result" warning
 		throw;
 	}
 }
@@ -322,10 +365,9 @@ void attack_result::do_init_for_execution()
 {
 }
 
-
 // move_result
-move_result::move_result(side_number side, const map_location& from,
-			 const map_location& to, bool remove_movement, bool unreach_is_ok)
+move_result::move_result(
+		side_number side, const map_location& from, const map_location& to, bool remove_movement, bool unreach_is_ok)
 	: action_result(side)
 	, from_(from)
 	, to_(to)
@@ -338,68 +380,77 @@ move_result::move_result(side_number side, const map_location& from,
 {
 }
 
-const unit *move_result::get_unit()
+const unit* move_result::get_unit()
 {
 	unit_map::const_iterator un = resources::gameboard->units().find(from_);
-	if (un==resources::gameboard->units().end()){
+	if(un == resources::gameboard->units().end()) {
 		set_error(E_NO_UNIT);
 		return nullptr;
 	}
-	const unit *u = &*un;
-	if (u->side() != get_side()) {
+
+	const unit* u = &*un;
+	if(u->side() != get_side()) {
 		set_error(E_NOT_OWN_UNIT);
 		return nullptr;
 	}
-	if (u->incapacitated()) {
+
+	if(u->incapacitated()) {
 		set_error(E_INCAPACITATED_UNIT);
 		return nullptr;
 	}
+
 	return u;
 }
 
-bool move_result::test_route(const unit &un)
+bool move_result::test_route(const unit& un)
 {
-	if (from_== to_) {
-		if (!remove_movement_ || (un.movement_left() == 0) ) {
+	if(from_ == to_) {
+		if(!remove_movement_ || (un.movement_left() == 0)) {
 			set_error(E_EMPTY_MOVE);
 			return false;
 		}
+
 		return true;
 	}
 
-	if (un.movement_left() == 0 ) {
+	if(un.movement_left() == 0) {
 		set_error(E_EMPTY_MOVE);
 		return false;
 	}
 
-	if (!to_.valid()) {
+	if(!to_.valid()) {
 		set_error(E_NO_ROUTE);
 		return false;
 	}
 
-	team &my_team = get_my_team();
+	team& my_team = get_my_team();
 	const pathfind::shortest_path_calculator calc(un, my_team, resources::gameboard->teams(), resources::gameboard->map());
 
-	//allowed teleports
-	pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(un, my_team, true);///@todo 1.9: see_all -> false
+	// allowed teleports
+	pathfind::teleport_map allowed_teleports =
+		pathfind::get_teleport_locations(un, my_team, true); ///@todo 1.9: see_all -> false
 
-	//do an A*-search
-	route_.reset(new pathfind::plain_route(pathfind::a_star_search(un.get_location(), to_, 10000.0, calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports)));
-	if (route_->steps.empty()) {
+	// do an A*-search
+	route_.reset(new pathfind::plain_route(
+		pathfind::a_star_search(un.get_location(), to_, 10000.0, calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports)));
+
+	if(route_->steps.empty()) {
 		set_error(E_NO_ROUTE);
 		return false;
 	}
+
 	return true;
 }
 
 void move_result::do_check_before()
 {
 	LOG_AI_ACTIONS << " check_before " << *this << std::endl;
-	const unit *u = get_unit();
-	if (!u) {
+	const unit* u = get_unit();
+	if(!u) {
 		return;
 	}
-	if (!test_route(*u)) {
+
+	if(!test_route(*u)) {
 		return;
 	}
 }
@@ -411,17 +462,18 @@ const map_location& move_result::get_unit_location() const
 
 void move_result::do_check_after()
 {
-	if (has_ambusher_) {
-		set_error(E_AMBUSHED,false);
+	if(has_ambusher_) {
+		set_error(E_AMBUSHED, false);
 		return;
 	}
-	if (has_interrupted_teleport_) {
+
+	if(has_interrupted_teleport_) {
 		set_error(E_FAILED_TELEPORT);
 		return;
 	}
 	///@todo 1.9 add 'new units spotted' failure mode
 
-	if (!unreach_is_ok_ && unit_location_!=to_) {
+	if(!unreach_is_ok_ && unit_location_ != to_) {
 		set_error(E_NOT_REACHED_DESTINATION);
 		return;
 	}
@@ -430,26 +482,27 @@ void move_result::do_check_after()
 std::string move_result::do_describe() const
 {
 	std::stringstream s;
-	if (remove_movement_){
+	if(remove_movement_) {
 		s << "full move by side ";
 	} else {
 		s << "partial move by side ";
 	}
+
 	s << get_side();
-	s << " from location "<<from_;
-	s << " to location "<<to_;
-	s <<std::endl;
+	s << " from location " << from_;
+	s << " to location " << to_;
+	s << std::endl;
 	return s.str();
 }
 
 void move_result::do_execute()
 {
-	LOG_AI_ACTIONS << "start of execution of: "<< *this << std::endl;
+	LOG_AI_ACTIONS << "start of execution of: " << *this << std::endl;
 	assert(is_success());
 
-	if(resources::simulation_){
+	if(resources::simulation_) {
 		bool gamestate_changed = false;
-		if(from_ != to_){
+		if(from_ != to_) {
 			int step = route_->steps.size();
 			gamestate_changed = simulated_move(get_side(), from_, to_, step, unit_location_);
 		} else {
@@ -457,7 +510,7 @@ void move_result::do_execute()
 		}
 
 		unit_map::const_iterator un = resources::gameboard->units().find(unit_location_);
-		if(remove_movement_ && un->movement_left() > 0 && unit_location_ == to_){
+		if(remove_movement_ && un->movement_left() > 0 && unit_location_ == to_) {
 			gamestate_changed = simulated_stopunit(unit_location_, true, false);
 		}
 
@@ -469,18 +522,18 @@ void move_result::do_execute()
 	::actions::move_unit_spectator move_spectator(resources::gameboard->units());
 	move_spectator.set_unit(resources::gameboard->units().find(from_));
 
-	if (from_ != to_) {
+	if(from_ != to_) {
 		std::size_t num_steps = ::actions::move_unit_and_record(
-			/*std::vector<map_location> steps*/ route_->steps,
-			/*::actions::undo_list* undo_stack*/ nullptr,
-			/*bool continue_move*/ true, ///@todo 1.9 set to false after implementing interrupt awareness
-			/*bool show_move*/ !preferences::skip_ai_moves(),
-			/*bool* interrupted*/ nullptr,
-			/*::actions::move_unit_spectator* move_spectator*/ &move_spectator);
+				/*std::vector<map_location> steps*/ route_->steps,
+				/*::actions::undo_list* undo_stack*/ nullptr,
+				/*bool continue_move*/ true, ///@todo 1.9 set to false after implementing interrupt awareness
+				/*bool show_move*/ !preferences::skip_ai_moves(),
+				/*bool* interrupted*/ nullptr,
+				/*::actions::move_unit_spectator* move_spectator*/ &move_spectator);
 
-		if ( num_steps > 0 ) {
+		if(num_steps > 0) {
 			set_gamestate_changed();
-		} else if ( move_spectator.get_ambusher().valid() ) {
+		} else if(move_spectator.get_ambusher().valid()) {
 			// Unlikely, but some types of strange WML (or bad pathfinding)
 			// could cause an ambusher to be found without moving.
 			set_gamestate_changed();
@@ -489,15 +542,17 @@ void move_result::do_execute()
 		assert(remove_movement_);
 	}
 
-	if (move_spectator.get_unit().valid()){
+	if(move_spectator.get_unit().valid()) {
 		unit_location_ = move_spectator.get_unit()->get_location();
-		if (remove_movement_ && move_spectator.get_unit()->movement_left() > 0 && unit_location_ == to_)
-		{
-			stopunit_result_ptr stopunit_res = actions::execute_stopunit_action(get_side(),true,unit_location_,true,false);
-			if (!stopunit_res->is_ok()) {
+		if(remove_movement_ && move_spectator.get_unit()->movement_left() > 0 && unit_location_ == to_) {
+			stopunit_result_ptr stopunit_res =
+				actions::execute_stopunit_action(get_side(), true, unit_location_, true, false);
+
+			if(!stopunit_res->is_ok()) {
 				set_error(stopunit_res->get_status());
 			}
-			if (stopunit_res->is_gamestate_changed()) {
+
+			if(stopunit_res->is_gamestate_changed()) {
 				set_gamestate_changed();
 			}
 		}
@@ -508,11 +563,14 @@ void move_result::do_execute()
 	has_ambusher_ = move_spectator.get_ambusher().valid();
 	has_interrupted_teleport_ = move_spectator.get_failed_teleport().valid();
 
-	if (is_gamestate_changed()) {
+	if(is_gamestate_changed()) {
 		try {
 			manager::get_singleton().raise_gamestate_changed();
-		} catch (...) {
-			if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
+		} catch(...) {
+			if(!is_ok()) {
+				DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl;
+			} // Demotes to DBG "unchecked result" warning
+
 			throw;
 		}
 	}
@@ -522,10 +580,9 @@ void move_result::do_init_for_execution()
 {
 }
 
-
 // recall_result
-recall_result::recall_result(side_number side,
-		const std::string& unit_id, const map_location& where, const map_location& from)
+recall_result::recall_result(
+		side_number side, const std::string& unit_id, const map_location& where, const map_location& from)
 	: action_result(side)
 	, unit_id_(unit_id)
 	, where_(where)
@@ -535,21 +592,23 @@ recall_result::recall_result(side_number side,
 {
 }
 
-unit_const_ptr recall_result::get_recall_unit(const team &my_team)
+unit_const_ptr recall_result::get_recall_unit(const team& my_team)
 {
 	unit_const_ptr rec = my_team.recall_list().find_if_matches_id(unit_id_);
-	if (!rec) {
+	if(!rec) {
 		set_error(E_NOT_AVAILABLE_FOR_RECALLING);
 	}
+
 	return rec;
 }
 
-bool recall_result::test_enough_gold(const team &my_team)
+bool recall_result::test_enough_gold(const team& my_team)
 {
-	if (my_team.gold() < my_team.recall_cost() ) {
+	if(my_team.gold() < my_team.recall_cost()) {
 		set_error(E_NO_GOLD);
 		return false;
 	}
+
 	return true;
 }
 
@@ -559,14 +618,14 @@ void recall_result::do_check_before()
 	const team& my_team = get_my_team();
 	const bool location_specified = recall_location_.valid();
 
-	//Enough gold?
-	if (!test_enough_gold(my_team)) {
+	// Enough gold?
+	if(!test_enough_gold(my_team)) {
 		return;
 	}
 
-	//Unit available for recalling?
-	const unit_const_ptr & to_recall = get_recall_unit(my_team);
-	if ( !to_recall ) {
+	// Unit available for recalling?
+	const unit_const_ptr& to_recall = get_recall_unit(my_team);
+	if(!to_recall) {
 		return;
 	}
 
@@ -598,17 +657,18 @@ void recall_result::do_check_before()
 
 void recall_result::do_check_after()
 {
-	if (!resources::gameboard->map().on_board(recall_location_)){
+	if(!resources::gameboard->map().on_board(recall_location_)) {
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
 
 	unit_map::const_iterator unit = resources::gameboard->units().find(recall_location_);
-	if (unit==resources::gameboard->units().end()){
+	if(unit == resources::gameboard->units().end()) {
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
-	if (unit->side() != get_side()){
+
+	if(unit->side() != get_side()) {
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
@@ -619,13 +679,15 @@ std::string recall_result::do_describe() const
 	std::stringstream s;
 	s << "recall by side ";
 	s << get_side();
-	s << " of unit id ["<<unit_id_;
-	if (where_ != map_location::null_location()){
-		s << "] on location "<<where_;
+	s << " of unit id [" << unit_id_;
+
+	if(where_ != map_location::null_location()) {
+		s << "] on location " << where_;
 	} else {
 		s << "] on any suitable location";
 	}
-	s <<std::endl;
+
+	s << std::endl;
 	return s.str();
 }
 
@@ -641,7 +703,7 @@ void recall_result::do_execute()
 	// called, so this is a guard against future breakage.
 	assert(location_checked_);
 
-	if(resources::simulation_){
+	if(resources::simulation_) {
 		bool gamestate_changed = simulated_recall(get_side(), unit_id_, recall_location_);
 
 		sim_gamestate_changed(this, gamestate_changed);
@@ -653,16 +715,17 @@ void recall_result::do_execute()
 	// We ignore possible errors (=unit doesn't exist on the recall list)
 	// because that was the previous behavior.
 	synced_context::run_in_synced_context_if_not_already("recall",
-		replay_helper::get_recall(unit_id_, recall_location_, recall_from_),
-		false,
-		!preferences::skip_ai_moves(),
-		synced_context::ignore_error_function);
+		replay_helper::get_recall(unit_id_, recall_location_, recall_from_), false, !preferences::skip_ai_moves(),
+			synced_context::ignore_error_function);
 
 	set_gamestate_changed();
 	try {
 		manager::get_singleton().raise_gamestate_changed();
-	} catch (...) {
-		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
+	} catch(...) {
+		if(!is_ok()) {
+			DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl;
+		} // Demotes to DBG "unchecked result" warning
+
 		throw;
 	}
 }
@@ -671,10 +734,9 @@ void recall_result::do_init_for_execution()
 {
 }
 
-
 // recruit_result
-recruit_result::recruit_result(side_number side,
-		const std::string& unit_name, const map_location& where, const map_location& from)
+recruit_result::recruit_result(
+		side_number side, const std::string& unit_name, const map_location& where, const map_location& from)
 	: action_result(side)
 	, unit_name_(unit_name)
 	, where_(where)
@@ -684,22 +746,24 @@ recruit_result::recruit_result(side_number side,
 {
 }
 
-const unit_type *recruit_result::get_unit_type_known(const std::string &recruit)
+const unit_type* recruit_result::get_unit_type_known(const std::string& recruit)
 {
-	const unit_type *type = unit_types.find(recruit);
-	if (!type) {
+	const unit_type* type = unit_types.find(recruit);
+	if(!type) {
 		set_error(E_UNKNOWN_OR_DUMMY_UNIT_TYPE);
 		return nullptr;
 	}
+
 	return type;
 }
 
-bool recruit_result::test_enough_gold(const team &my_team, const unit_type &type)
+bool recruit_result::test_enough_gold(const team& my_team, const unit_type& type)
 {
-	if (my_team.gold() < type.cost()) {
+	if(my_team.gold() < type.cost()) {
 		set_error(E_NO_GOLD);
 		return false;
 	}
+
 	return true;
 }
 
@@ -709,14 +773,14 @@ void recruit_result::do_check_before()
 	const team& my_team = get_my_team();
 	const bool location_specified = recruit_location_.valid();
 
-	//Unit type known ?
-	const unit_type *s_type = get_unit_type_known(unit_name_);
-	if (!s_type) {
+	// Unit type known ?
+	const unit_type* s_type = get_unit_type_known(unit_name_);
+	if(!s_type) {
 		return;
 	}
 
-	//Enough gold?
-	if (!test_enough_gold(my_team, *s_type)) {
+	// Enough gold?
+	if(!test_enough_gold(my_team, *s_type)) {
 		return;
 	}
 
@@ -748,17 +812,18 @@ void recruit_result::do_check_before()
 
 void recruit_result::do_check_after()
 {
-	if (!resources::gameboard->map().on_board(recruit_location_)) {
+	if(!resources::gameboard->map().on_board(recruit_location_)) {
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
 
 	unit_map::const_iterator unit = resources::gameboard->units().find(recruit_location_);
-	if (unit==resources::gameboard->units().end()) {
+	if(unit == resources::gameboard->units().end()) {
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
-	if (unit->side() != get_side()) {
+
+	if(unit->side() != get_side()) {
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
@@ -769,13 +834,15 @@ std::string recruit_result::do_describe() const
 	std::stringstream s;
 	s << "recruitment by side ";
 	s << get_side();
-	s << " of unit type ["<<unit_name_;
-	if (where_ != map_location::null_location()){
-		s << "] on location "<<where_;
+	s << " of unit type [" << unit_name_;
+
+	if(where_ != map_location::null_location()) {
+		s << "] on location " << where_;
 	} else {
 		s << "] on any suitable location";
 	}
-	s <<std::endl;
+
+	s << std::endl;
 	return s.str();
 }
 
@@ -784,15 +851,15 @@ void recruit_result::do_execute()
 	LOG_AI_ACTIONS << "start of execution of: " << *this << std::endl;
 	assert(is_success());
 
-	const unit_type *u = unit_types.find(unit_name_);
+	const unit_type* u = unit_types.find(unit_name_);
 	const events::command_disabler disable_commands;
 
 	// Assert that recruit_location_ has been validated.
 	// This should be implied by is_success() once check_before() has been
 	// called, so this is a guard against future breakage.
-	assert(location_checked_  &&  u != nullptr);
+	assert(location_checked_ && u != nullptr);
 
-	if(resources::simulation_){
+	if(resources::simulation_) {
 		bool gamestate_changed = simulated_recruit(get_side(), u, recruit_location_);
 
 		sim_gamestate_changed(this, gamestate_changed);
@@ -800,16 +867,22 @@ void recruit_result::do_execute()
 		return;
 	}
 
-	synced_context::run_in_synced_context_if_not_already("recruit", replay_helper::get_recruit(u->id(), recruit_location_, recruit_from_), false, !preferences::skip_ai_moves());
-	//TODO: should we do something to pass use_undo = false in replays and ai moves ?
+	synced_context::run_in_synced_context_if_not_already("recruit",
+		replay_helper::get_recruit(u->id(), recruit_location_, recruit_from_), false, !preferences::skip_ai_moves());
+
+	// TODO: should we do something to pass use_undo = false in replays and ai moves ?
 	//::actions::recruit_unit(*u, get_side(), recruit_location_, recruit_from_,
 	//                        !preferences::skip_ai_moves(), false);
 
 	set_gamestate_changed();
+
 	try {
 		manager::get_singleton().raise_gamestate_changed();
-	} catch (...) {
-		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
+	} catch(...) {
+		if(!is_ok()) {
+			DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl;
+		} // Demotes to DBG "unchecked result" warning
+
 		throw;
 	}
 }
@@ -818,29 +891,35 @@ void recruit_result::do_init_for_execution()
 {
 }
 
-
 // stopunit_result
-stopunit_result::stopunit_result( side_number side, const map_location& unit_location, bool remove_movement, bool remove_attacks)
-	: action_result(side), unit_location_(unit_location), remove_movement_(remove_movement), remove_attacks_(remove_attacks)
+stopunit_result::stopunit_result(
+		side_number side, const map_location& unit_location, bool remove_movement, bool remove_attacks)
+	: action_result(side)
+	, unit_location_(unit_location)
+	, remove_movement_(remove_movement)
+	, remove_attacks_(remove_attacks)
 {
 }
 
-const unit *stopunit_result::get_unit()
+const unit* stopunit_result::get_unit()
 {
 	unit_map::const_iterator un = resources::gameboard->units().find(unit_location_);
-	if (un==resources::gameboard->units().end()){
+	if(un == resources::gameboard->units().end()) {
 		set_error(E_NO_UNIT);
 		return nullptr;
 	}
-	const unit *u = &*un;
-	if (u->side() != get_side()) {
+
+	const unit* u = &*un;
+	if(u->side() != get_side()) {
 		set_error(E_NOT_OWN_UNIT);
 		return nullptr;
 	}
-	if (u->incapacitated()) {
+
+	if(u->incapacitated()) {
 		set_error(E_INCAPACITATED_UNIT);
 		return nullptr;
 	}
+
 	return u;
 }
 
@@ -848,7 +927,7 @@ void stopunit_result::do_check_before()
 {
 	LOG_AI_ACTIONS << " check_before " << *this << std::endl;
 
-	if (!get_unit()) {
+	if(!get_unit()) {
 		return;
 	}
 }
@@ -856,15 +935,17 @@ void stopunit_result::do_check_before()
 void stopunit_result::do_check_after()
 {
 	unit_map::const_iterator un = resources::gameboard->units().find(unit_location_);
-	if (un==resources::gameboard->units().end()){
+	if(un == resources::gameboard->units().end()) {
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
-	if (remove_movement_ && un->movement_left() != 0) {
+
+	if(remove_movement_ && un->movement_left() != 0) {
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
-	if (remove_attacks_ && un->attacks_left() != 0) {
+
+	if(remove_attacks_ && un->attacks_left() != 0) {
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
@@ -873,19 +954,23 @@ void stopunit_result::do_check_after()
 std::string stopunit_result::do_describe() const
 {
 	std::stringstream s;
-	s <<" stopunit by side ";
+	s << " stopunit by side ";
 	s << get_side();
-	if (remove_movement_){
+
+	if(remove_movement_) {
 		s << " : remove movement ";
 	}
-	if (remove_movement_ && remove_attacks_){
+
+	if(remove_movement_ && remove_attacks_) {
 		s << "and ";
 	}
-	if (remove_attacks_){
+
+	if(remove_attacks_) {
 		s << " remove attacks ";
 	}
-	s << "from unit on location "<<unit_location_;
-	s <<std::endl;
+
+	s << "from unit on location " << unit_location_;
+	s << std::endl;
 	return s.str();
 }
 
@@ -895,7 +980,7 @@ void stopunit_result::do_execute()
 	assert(is_success());
 	unit_map::iterator un = resources::gameboard->units().find(unit_location_);
 
-	if(resources::simulation_){
+	if(resources::simulation_) {
 		bool gamestate_changed = simulated_stopunit(unit_location_, remove_movement_, remove_attacks_);
 
 		sim_gamestate_changed(this, gamestate_changed);
@@ -904,18 +989,22 @@ void stopunit_result::do_execute()
 	}
 
 	try {
-		if (remove_movement_){
+		if(remove_movement_) {
 			un->remove_movement_ai();
 			set_gamestate_changed();
 			manager::get_singleton().raise_gamestate_changed();
 		}
-		if (remove_attacks_){
+
+		if(remove_attacks_) {
 			un->remove_attacks_ai();
 			set_gamestate_changed();
-			manager::get_singleton().raise_gamestate_changed();//to be on the safe side
+			manager::get_singleton().raise_gamestate_changed(); // to be on the safe side
 		}
-	} catch (...) {
-		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
+	} catch(...) {
+		if(!is_ok()) {
+			DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl;
+		} // Demotes to DBG "unchecked result" warning
+
 		throw;
 	}
 }
@@ -924,10 +1013,12 @@ void stopunit_result::do_init_for_execution()
 {
 }
 
-
 // synced_command_result
-synced_command_result::synced_command_result( side_number side, const std::string& lua_code, const map_location& location )
-	: action_result(side), lua_code_(lua_code), location_(location)
+synced_command_result::synced_command_result(
+		side_number side, const std::string& lua_code, const map_location& location)
+	: action_result(side)
+	, lua_code_(lua_code)
+	, location_(location)
 {
 }
 
@@ -943,15 +1034,15 @@ void synced_command_result::do_check_after()
 std::string synced_command_result::do_describe() const
 {
 	std::stringstream s;
-	s <<" synced_command by side ";
+	s << " synced_command by side ";
 	s << get_side();
-	s <<std::endl;
+	s << std::endl;
 	return s.str();
 }
 
 void synced_command_result::do_execute()
 {
-	if(resources::simulation_){
+	if(resources::simulation_) {
 		bool gamestate_changed = simulated_synced_command();
 
 		sim_gamestate_changed(this, gamestate_changed);
@@ -963,16 +1054,20 @@ void synced_command_result::do_execute()
 	assert(is_success());
 
 	std::stringstream s;
-	if (location_ != map_location::null_location()){
+	if(location_ != map_location::null_location()) {
 		s << "local x1 = " << location_.wml_x() << " local y1 = " << location_.wml_y() << " ";
 	}
+
 	s << lua_code_;
 
 	try {
 		set_gamestate_changed();
 		manager::get_singleton().raise_gamestate_changed();
-	} catch (...) {
-		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
+	} catch(...) {
+		if(!is_ok()) {
+			DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl;
+		} // Demotes to DBG "unchecked result" warning
+
 		throw;
 	}
 }
@@ -981,75 +1076,66 @@ void synced_command_result::do_init_for_execution()
 {
 }
 
-
 // =======================================================================
 // STATELESS INTERFACE TO AI ACTIONS
 // =======================================================================
 
-attack_result_ptr actions::execute_attack_action( side_number side,
-	bool execute,
-	const map_location& attacker_loc,
-	const map_location& defender_loc,
-	int attacker_weapon,
-	double aggression,
-	const unit_advancements_aspect& advancements)
+attack_result_ptr actions::execute_attack_action(side_number side,
+		bool execute,
+		const map_location& attacker_loc,
+		const map_location& defender_loc,
+		int attacker_weapon,
+		double aggression,
+		const unit_advancements_aspect& advancements)
 {
-	attack_result_ptr action(new attack_result(side,attacker_loc,defender_loc,attacker_weapon,aggression,advancements));
+	attack_result_ptr action(new attack_result(side, attacker_loc, defender_loc, attacker_weapon, aggression, advancements));
 	execute ? action->execute() : action->check_before();
 	return action;
 }
 
-move_result_ptr actions::execute_move_action( side_number side,
-	bool execute,
-	const map_location& from,
-	const map_location& to,
-	bool remove_movement,
-	bool unreach_is_ok)
+move_result_ptr actions::execute_move_action(side_number side,
+		bool execute,
+		const map_location& from,
+		const map_location& to,
+		bool remove_movement,
+		bool unreach_is_ok)
 {
-	move_result_ptr action(new move_result(side,from,to,remove_movement,unreach_is_ok));
+	move_result_ptr action(new move_result(side, from, to, remove_movement, unreach_is_ok));
 	execute ? action->execute() : action->check_before();
 	return action;
 }
 
-recall_result_ptr actions::execute_recall_action( side_number side,
-	bool execute,
-	const std::string& unit_id,
-	const map_location& where,
-	const map_location& from)
+recall_result_ptr actions::execute_recall_action(
+		side_number side, bool execute, const std::string& unit_id, const map_location& where, const map_location& from)
 {
-	recall_result_ptr action(new recall_result(side,unit_id,where,from));
+	recall_result_ptr action(new recall_result(side, unit_id, where, from));
 	execute ? action->execute() : action->check_before();
 	return action;
 }
 
-recruit_result_ptr actions::execute_recruit_action( side_number side,
-	bool execute,
-	const std::string& unit_name,
-	const map_location& where,
-	const map_location& from)
+recruit_result_ptr actions::execute_recruit_action(side_number side,
+		bool execute,
+		const std::string& unit_name,
+		const map_location& where,
+		const map_location& from)
 {
-	recruit_result_ptr action(new recruit_result(side,unit_name,where,from));
+	recruit_result_ptr action(new recruit_result(side, unit_name, where, from));
 	execute ? action->execute() : action->check_before();
 	return action;
 }
 
-stopunit_result_ptr actions::execute_stopunit_action( side_number side,
-	bool execute,
-	const map_location& unit_location,
-	bool remove_movement,
-	bool remove_attacks)
+stopunit_result_ptr actions::execute_stopunit_action(
+		side_number side, bool execute, const map_location& unit_location, bool remove_movement, bool remove_attacks)
 {
-	stopunit_result_ptr action(new stopunit_result(side,unit_location,remove_movement,remove_attacks));
+	stopunit_result_ptr action(new stopunit_result(side, unit_location, remove_movement, remove_attacks));
 	execute ? action->execute() : action->check_before();
 	return action;
 }
 
-synced_command_result_ptr actions::execute_synced_command_action( side_number side,
-	bool execute,
-	const std::string& lua_code,
-	const map_location& location)
+synced_command_result_ptr actions::execute_synced_command_action(
+		side_number side, bool execute, const std::string& lua_code, const map_location& location)
 {
-	synced_command_result_ptr action(new synced_command_result(side,lua_code,location));
+	synced_command_result_ptr action(new synced_command_result(side, lua_code, location));
 	execute ? action->execute() : action->check_before();
 	return action;
 }
@@ -1094,51 +1180,58 @@ std::map<int, std::string> actions::error_names_ {
 
 const std::string& actions::get_error_name(int error_code)
 {
-	std::map<int,std::string>::iterator i = error_names_.find(error_code);
-	if (i==error_names_.end()){
-		ERR_AI_ACTIONS << "error name not available for error #"<<error_code << std::endl;
+	std::map<int, std::string>::iterator i = error_names_.find(error_code);
+	if(i == error_names_.end()) {
+		ERR_AI_ACTIONS << "error name not available for error #" << error_code << std::endl;
 		i = error_names_.find(-1);
 		assert(i != error_names_.end());
 	}
+
 	return i->second;
 }
 
-void sim_gamestate_changed(action_result *result, bool gamestate_changed){
-	if(gamestate_changed){
+void sim_gamestate_changed(action_result* result, bool gamestate_changed)
+{
+	if(gamestate_changed) {
 		result->set_gamestate_changed();
 		manager::get_singleton().raise_gamestate_changed();
 	}
 }
 
-} //end of namespace ai
+} // end of namespace ai
 
-
-std::ostream &operator<<(std::ostream &s, const ai::attack_result& r) {
+std::ostream& operator<<(std::ostream& s, const ai::attack_result& r)
+{
 	s << r.do_describe();
 	return s;
 }
 
-std::ostream &operator<<(std::ostream &s, const ai::move_result& r) {
+std::ostream& operator<<(std::ostream& s, const ai::move_result& r)
+{
 	s << r.do_describe();
 	return s;
 }
 
-std::ostream &operator<<(std::ostream &s, const ai::recall_result& r) {
+std::ostream& operator<<(std::ostream& s, const ai::recall_result& r)
+{
 	s << r.do_describe();
 	return s;
 }
 
-std::ostream &operator<<(std::ostream &s, const ai::recruit_result& r) {
+std::ostream& operator<<(std::ostream& s, const ai::recruit_result& r)
+{
 	s << r.do_describe();
 	return s;
 }
 
-std::ostream &operator<<(std::ostream &s, const ai::stopunit_result& r) {
+std::ostream& operator<<(std::ostream& s, const ai::stopunit_result& r)
+{
 	s << r.do_describe();
 	return s;
 }
 
-std::ostream &operator<<(std::ostream &s, const ai::synced_command_result& r) {
+std::ostream& operator<<(std::ostream& s, const ai::synced_command_result& r)
+{
 	s << r.do_describe();
 	return s;
 }

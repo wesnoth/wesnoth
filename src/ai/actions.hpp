@@ -19,13 +19,13 @@
 
 #pragma once
 
-#include "ai/game_info.hpp"
-
 #include "actions/move.hpp"
+#include "ai/game_info.hpp"
 #include "ai/lua/aspect_advancements.hpp"
 #include "units/ptr.hpp"
 
-namespace pathfind {
+namespace pathfind
+{
 struct plain_route;
 } // of namespace pathfind
 
@@ -33,13 +33,14 @@ class unit;
 class unit_type;
 class team;
 
-namespace ai {
-
-class action_result {
-friend void sim_gamestate_changed(action_result *result, bool gamestate_changed);	// Manage gamestate changed in simulated actions.
+namespace ai
+{
+class action_result
+{
+	 // Manage gamestate changed in simulated actions.
+	friend void sim_gamestate_changed(action_result* result, bool gamestate_changed);
 
 public:
-
 	enum result {
 		AI_ACTION_SUCCESS = 0,
 		AI_ACTION_STARTED = 1,
@@ -64,9 +65,10 @@ public:
 	int get_status() const;
 
 	/* describe the action */
-	virtual std::string do_describe() const =0;
+	virtual std::string do_describe() const = 0;
+
 protected:
-	action_result( side_number side );
+	action_result(side_number side);
 
 	/* do check before execution or just check. setting status_ via set_error to != cancels the execution.*/
 	virtual void do_check_before() = 0;
@@ -84,7 +86,10 @@ protected:
 	bool is_execution() const;
 
 	/* return the side number */
-	int get_side() const { return side_; }
+	int get_side() const
+	{
+		return side_;
+	}
 
 	/* return real information about the game state */
 	game_info& get_info() const;
@@ -99,8 +104,8 @@ protected:
 
 	/* note that the game state has been changed */
 	void set_gamestate_changed();
-private:
 
+private:
 	/* Check after the execution */
 	void check_after();
 
@@ -123,17 +128,17 @@ private:
 	bool is_execution_;
 
 	bool is_gamestate_changed_;
-
 };
 
-class attack_result : public action_result {
+class attack_result : public action_result
+{
 public:
-	attack_result( side_number side,
-		const map_location& attacker_loc,
-		const map_location& defender_loc,
-		int attacker_weapon,
-		double aggression,
-		const unit_advancements_aspect& advancements = unit_advancements_aspect());
+	attack_result(side_number side,
+			const map_location& attacker_loc,
+			const map_location& defender_loc,
+			int attacker_weapon,
+			double aggression,
+			const unit_advancements_aspect& advancements = unit_advancements_aspect());
 
 	enum result {
 		E_EMPTY_ATTACKER = 1001,
@@ -149,11 +154,13 @@ public:
 	};
 
 	virtual std::string do_describe() const;
+
 protected:
 	virtual void do_check_before();
 	virtual void do_check_after();
 	virtual void do_execute();
 	virtual void do_init_for_execution();
+
 private:
 	const map_location& attacker_loc_;
 	const map_location& defender_loc_;
@@ -162,13 +169,14 @@ private:
 	const unit_advancements_aspect& advancements_;
 };
 
-class move_result : public action_result {
+class move_result : public action_result
+{
 public:
-	move_result( side_number side,
-		const map_location& from,
-		const map_location& to,
-		bool remove_movement,
-		bool unreach_is_ok);
+	move_result(side_number side,
+			const map_location& from,
+			const map_location& to,
+			bool remove_movement,
+			bool unreach_is_ok);
 
 	enum result {
 		E_EMPTY_MOVE = 2001,
@@ -183,14 +191,16 @@ public:
 
 	virtual std::string do_describe() const;
 	virtual const map_location& get_unit_location() const;
+
 protected:
 	virtual void do_check_before();
 	virtual void do_check_after();
 	virtual void do_execute();
 	virtual void do_init_for_execution();
+
 private:
-	const unit *get_unit();
-	bool test_route(const unit &un);
+	const unit* get_unit();
+	bool test_route(const unit& un);
 	const map_location from_;
 	const map_location to_;
 	bool remove_movement_;
@@ -201,10 +211,10 @@ private:
 	bool has_interrupted_teleport_;
 };
 
-
-class recall_result : public action_result {
+class recall_result : public action_result
+{
 public:
-	recall_result (side_number side, const std::string &unit_id, const map_location& where, const map_location& from);
+	recall_result(side_number side, const std::string& unit_id, const map_location& where, const map_location& from);
 
 	enum result {
 		E_NOT_AVAILABLE_FOR_RECALLING = 6001,
@@ -215,16 +225,16 @@ public:
 	};
 
 	virtual std::string do_describe() const;
+
 protected:
 	virtual void do_check_before();
 	virtual void do_check_after();
 	virtual void do_execute();
 	virtual void do_init_for_execution();
+
 private:
-	unit_const_ptr get_recall_unit(
-		const team& my_team);
-	bool test_enough_gold(
-		const team& my_team);
+	unit_const_ptr get_recall_unit(const team& my_team);
+	bool test_enough_gold(const team& my_team);
 
 	const std::string& unit_id_;
 	const map_location where_;
@@ -233,9 +243,10 @@ private:
 	bool location_checked_;
 };
 
-class recruit_result : public action_result {
+class recruit_result : public action_result
+{
 public:
-	recruit_result( side_number side, const std::string& unit_name, const map_location& where, const map_location& from);
+	recruit_result(side_number side, const std::string& unit_name, const map_location& where, const map_location& from);
 
 	enum result {
 		E_NOT_AVAILABLE_FOR_RECRUITING = 3001,
@@ -247,17 +258,16 @@ public:
 	};
 
 	virtual std::string do_describe() const;
+
 protected:
 	virtual void do_check_before();
 	virtual void do_check_after();
 	virtual void do_execute();
 	virtual void do_init_for_execution();
+
 private:
-	const unit_type *get_unit_type_known(
-		const std::string &recruit);
-	bool test_enough_gold(
-		const team& my_team,
-		const unit_type &type );
+	const unit_type* get_unit_type_known(const std::string& recruit);
+	bool test_enough_gold(const team& my_team, const unit_type& type);
 
 	const std::string& unit_name_;
 	const map_location& where_;
@@ -266,12 +276,10 @@ private:
 	bool location_checked_;
 };
 
-class stopunit_result : public action_result {
+class stopunit_result : public action_result
+{
 public:
-	stopunit_result( side_number side,
-		const map_location& unit_location,
-		bool remove_movement,
-		bool remove_attacks );
+	stopunit_result(side_number side, const map_location& unit_location, bool remove_movement, bool remove_attacks);
 
 	enum result {
 		E_NO_UNIT = 4002,
@@ -280,182 +288,170 @@ public:
 	};
 
 	virtual std::string do_describe() const;
+
 protected:
 	virtual void do_check_before();
 	virtual void do_check_after();
 	virtual void do_execute();
 	virtual void do_init_for_execution();
+
 private:
-	const unit *get_unit();
+	const unit* get_unit();
 	const map_location& unit_location_;
 	const bool remove_movement_;
 	const bool remove_attacks_;
 };
 
-class synced_command_result : public action_result {
+class synced_command_result : public action_result
+{
 public:
-	synced_command_result( side_number side,
-		const std::string& lua_code,
-		const map_location& location );
+	synced_command_result(side_number side, const std::string& lua_code, const map_location& location);
 
 	virtual std::string do_describe() const;
+
 protected:
 	virtual void do_check_before();
 	virtual void do_check_after();
 	virtual void do_execute();
 	virtual void do_init_for_execution();
+
 private:
 	const std::string& lua_code_;
 	const map_location& location_;
 };
 
-
-class actions {
-
+class actions
+{
 public:
-// =======================================================================
-// Stateless interface to actions
-// =======================================================================
+	// =======================================================================
+	// Stateless interface to actions
+	// =======================================================================
 
+	/**
+	 * Ask the game to attack an enemy defender using our unit attacker from attackers current location,
+	 * @param side the side which tries to execute the move
+	 * @param execute should move be actually executed or not
+	 * @param attacker_loc location of attacker
+	 * @param defender_loc location of defender
+	 * @param attacker_weapon weapon of attacker
+	 * @param aggression aggression of attacker, is used to determine attacker's weapon if it is not specified
+	 * @retval possible result: ok
+	 * @retval possible result: something wrong
+	 * @retval possible result: attacker and/or defender are invalid
+	 * @retval possible result: attacker doesn't have the specified weapon
+	 */
+	static attack_result_ptr execute_attack_action(side_number side,
+			bool execute,
+			const map_location& attacker_loc,
+			const map_location& defender_loc,
+			int attacker_weapon,
+			double aggression,
+			const unit_advancements_aspect& advancements = unit_advancements_aspect());
 
-/**
- * Ask the game to attack an enemy defender using our unit attacker from attackers current location,
- * @param side the side which tries to execute the move
- * @param execute should move be actually executed or not
- * @param attacker_loc location of attacker
- * @param defender_loc location of defender
- * @param attacker_weapon weapon of attacker
- * @param aggression aggression of attacker, is used to determine attacker's weapon if it is not specified
- * @retval possible result: ok
- * @retval possible result: something wrong
- * @retval possible result: attacker and/or defender are invalid
- * @retval possible result: attacker doesn't have the specified weapon
- */
-static attack_result_ptr execute_attack_action( side_number side,
-	bool execute,
-	const map_location& attacker_loc,
-	const map_location& defender_loc,
-	int attacker_weapon,
-	double aggression,
-	const unit_advancements_aspect& advancements = unit_advancements_aspect());
+	/**
+	 * Ask the game to move our unit from location 'from' to location 'to', optionally - doing a partial move
+	 * @param side the side which tries to execute the move
+	 * @param execute should move be actually executed or not
+	 * @param from location of our unit
+	 * @param to where to move
+	 * @param remove_movement set unit movement to 0 in case of successful move
+	 * @retval possible result: ok
+	 * @retval possible result: something wrong
+	 * @retval possible result: move is interrupted
+	 * @retval possible result: move is impossible
+	 */
+	static move_result_ptr execute_move_action(side_number side,
+			bool execute,
+			const map_location& from,
+			const map_location& to,
+			bool remove_movement,
+			bool unreach_is_ok = false);
 
+	/**
+	 * Ask the game to recall a unit for us on specified location
+	 * @param side the side which tries to execute the move
+	 * @param execute should move be actually executed or not
+	 * @param unit_id the id of the unit to be recalled.
+	 * @param where location where the unit is to be recalled.
+	 * @retval possible result: ok
+	 * @retval possible_result: something wrong
+	 * @retval possible_result: leader not on keep
+	 * @retval possible_result: no free space on keep
+	 * @retval possible_result: not enough gold
+	 */
+	static recall_result_ptr execute_recall_action(side_number side,
+			bool execute,
+			const std::string& unit_id,
+			const map_location& where,
+			const map_location& from);
 
-/**
- * Ask the game to move our unit from location 'from' to location 'to', optionally - doing a partial move
- * @param side the side which tries to execute the move
- * @param execute should move be actually executed or not
- * @param from location of our unit
- * @param to where to move
- * @param remove_movement set unit movement to 0 in case of successful move
- * @retval possible result: ok
- * @retval possible result: something wrong
- * @retval possible result: move is interrupted
- * @retval possible result: move is impossible
- */
-static move_result_ptr execute_move_action( side_number side,
-	bool execute,
-	const map_location& from,
-	const map_location& to,
-	bool remove_movement,
-	bool unreach_is_ok = false);
+	/**
+	 * Ask the game to recruit a unit for us on specified location
+	 * @param side the side which tries to execute the move
+	 * @param execute should move be actually executed or not
+	 * @param unit_name the name of the unit to be recruited.
+	 * @param where location where the unit is to be recruited.
+	 * @retval possible result: ok
+	 * @retval possible_result: something wrong
+	 * @retval possible_result: leader not on keep
+	 * @retval possible_result: no free space on keep
+	 * @retval possible_result: not enough gold
+	 */
+	static recruit_result_ptr execute_recruit_action(side_number side,
+			bool execute,
+			const std::string& unit_name,
+			const map_location& where,
+			const map_location& from);
 
+	/**
+	 * Ask the game to remove unit movements and/or attack
+	 * @param side the side which tries to execute the move
+	 * @param execute should move be actually executed or not
+	 * @param unit_location the location of our unit
+	 * @param remove_movement set remaining movements to 0
+	 * @param remove_attacks set remaining attacks to 0
+	 * @retval possible result: ok
+	 * @retval possible_result: something wrong
+	 * @retval possible_result: nothing to do
+	 */
+	static stopunit_result_ptr execute_stopunit_action(side_number side,
+			bool execute,
+			const map_location& unit_location,
+			bool remove_movement,
+			bool remove_attacks);
 
+	/**
+	 * Ask the game to run Lua code
+	 * @param side the side which tries to execute the move
+	 * @param execute should move be actually executed or not
+	 * @param lua_code the code to be run
+	 * @param location location to be passed to the code as x1/y1
+	 * @retval possible result: ok
+	 * @retval possible_result: something wrong
+	 * @retval possible_result: nothing to do
+	 */
+	static synced_command_result_ptr execute_synced_command_action(
+			side_number side, bool execute, const std::string& lua_code, const map_location& location);
 
-/**
- * Ask the game to recall a unit for us on specified location
- * @param side the side which tries to execute the move
- * @param execute should move be actually executed or not
- * @param unit_id the id of the unit to be recalled.
- * @param where location where the unit is to be recalled.
- * @retval possible result: ok
- * @retval possible_result: something wrong
- * @retval possible_result: leader not on keep
- * @retval possible_result: no free space on keep
- * @retval possible_result: not enough gold
- */
-static recall_result_ptr execute_recall_action( side_number side,
-	bool execute,
-	const std::string& unit_id,
-	const map_location& where,
-	const map_location& from);
-
-
-
-/**
- * Ask the game to recruit a unit for us on specified location
- * @param side the side which tries to execute the move
- * @param execute should move be actually executed or not
- * @param unit_name the name of the unit to be recruited.
- * @param where location where the unit is to be recruited.
- * @retval possible result: ok
- * @retval possible_result: something wrong
- * @retval possible_result: leader not on keep
- * @retval possible_result: no free space on keep
- * @retval possible_result: not enough gold
- */
-static recruit_result_ptr execute_recruit_action( side_number side,
-	bool execute,
-	const std::string& unit_name,
-	const map_location& where,
-	const map_location& from);
-
-
-/**
- * Ask the game to remove unit movements and/or attack
- * @param side the side which tries to execute the move
- * @param execute should move be actually executed or not
- * @param unit_location the location of our unit
- * @param remove_movement set remaining movements to 0
- * @param remove_attacks set remaining attacks to 0
- * @retval possible result: ok
- * @retval possible_result: something wrong
- * @retval possible_result: nothing to do
- */
-static stopunit_result_ptr execute_stopunit_action( side_number side,
-	bool execute,
-	const map_location& unit_location,
-	bool remove_movement,
-	bool remove_attacks );
-
-
-/**
- * Ask the game to run Lua code
- * @param side the side which tries to execute the move
- * @param execute should move be actually executed or not
- * @param lua_code the code to be run
- * @param location location to be passed to the code as x1/y1
- * @retval possible result: ok
- * @retval possible_result: something wrong
- * @retval possible_result: nothing to do
- */
-static synced_command_result_ptr execute_synced_command_action( side_number side,
-	bool execute,
-	const std::string& lua_code,
-	const map_location& location );
-
-
-/**
- * get human-readable name of the error by code.
- * @param error_code error code.
- * @retval result the name of the error.
- */
-const static std::string& get_error_name(int error_code);
+	/**
+	 * get human-readable name of the error by code.
+	 * @param error_code error code.
+	 * @retval result the name of the error.
+	 */
+	const static std::string& get_error_name(int error_code);
 
 private:
-
-static std::map<int,std::string> error_names_;
-
+	static std::map<int, std::string> error_names_;
 };
-
 
 ///@todo 1.7.11 important! Add an ai action (and fai function) to set a goto on a unit
 ///@todo 1.7.11 important! Add an ai action (and fai function) to send a chat message to a player
 
-} //end of namespace ai
+} // end of namespace ai
 
-std::ostream &operator<<(std::ostream &s, const ai::attack_result& r);
-std::ostream &operator<<(std::ostream &s, const ai::move_result& r);
-std::ostream &operator<<(std::ostream &s, const ai::recall_result& r);
-std::ostream &operator<<(std::ostream &s, const ai::recruit_result& r);
-std::ostream &operator<<(std::ostream &s, const ai::stopunit_result& r);
-std::ostream &operator<<(std::ostream &s, const ai::synced_command_result& r);
+std::ostream& operator<<(std::ostream& s, const ai::attack_result& r);
+std::ostream& operator<<(std::ostream& s, const ai::move_result& r);
+std::ostream& operator<<(std::ostream& s, const ai::recall_result& r);
+std::ostream& operator<<(std::ostream& s, const ai::recruit_result& r);
+std::ostream& operator<<(std::ostream& s, const ai::stopunit_result& r);
+std::ostream& operator<<(std::ostream& s, const ai::synced_command_result& r);
