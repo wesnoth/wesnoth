@@ -782,7 +782,6 @@ void manager::save_temp_move()
 				continue;
 
 			size_t turn = first_turn + i;
-			fake_unit_ptr fake_unit = fake_units_[i];
 
 			//@todo Using a marked_route here is wrong, since right now it's not marked
 			//either switch over to a plain route for planned moves, or mark it correctly
@@ -790,7 +789,7 @@ void manager::save_temp_move()
 			route.steps = move_arrow->get_path();
 			route.move_cost = path_cost(route.steps,*u);
 
-			sa.queue_move(turn,*u,route,move_arrow,fake_unit);
+			sa.queue_move(turn, *u, route, move_arrow, std::move(fake_units_[i]));
 		}
 		erase_temp_move();
 
@@ -811,7 +810,7 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 		assert(weapon_choice >= 0);
 
 		arrow_ptr move_arrow;
-		fake_unit_ptr fake_unit;
+		fake_unit_ptr* fake_unit = nullptr;
 		map_location source_hex;
 
 		if (route_ && !route_->steps.empty())
@@ -820,12 +819,12 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 			assert(move_arrows_.size() == 1);
 			assert(fake_units_.size() == 1);
 			move_arrow = move_arrows_.front();
-			fake_unit = fake_units_.front();
+			fake_unit = &fake_units_.front();
 
 			assert(route_->steps.back() == attacker_loc);
 			source_hex = route_->steps.front();
 
-			fake_unit->anim_comp().set_disabled_ghosted(true);
+			(**fake_unit).anim_comp().set_disabled_ghosted(true);
 		}
 		else
 		{
@@ -843,7 +842,7 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 		validate_viewer_actions();
 
 		side_actions& sa = *viewer_actions();
-		sa.queue_attack(sa.get_turn_num_of(*attacking_unit),*attacking_unit,defender_loc,weapon_choice,*route_,move_arrow,fake_unit);
+		sa.queue_attack(sa.get_turn_num_of(*attacking_unit), *attacking_unit, defender_loc, weapon_choice, *route_, move_arrow, fake_unit ? std::move(*fake_unit) : fake_unit_ptr());
 
 		print_help_once();
 

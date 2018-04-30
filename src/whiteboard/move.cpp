@@ -71,7 +71,7 @@ move::move(size_t team_index, bool hidden, unit& u, const pathfind::marked_route
   movement_cost_(0),
   turn_number_(0),
   arrow_(arrow),
-  fake_unit_(fake_unit),
+  fake_unit_(std::move(fake_unit)),
   arrow_brightness_(),
   arrow_texture_(),
   mover_(),

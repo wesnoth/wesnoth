@@ -674,13 +674,13 @@ side_actions::iterator side_actions::safe_erase(const iterator& itor)
 }
 side_actions::iterator side_actions::queue_move(size_t turn, unit& mover, const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
-	move_ptr new_move(std::make_shared<move>(team_index(), hidden_, std::ref(mover), route, arrow, fake_unit));
+	move_ptr new_move(std::make_shared<move>(team_index(), hidden_, std::ref(mover), route, arrow, std::move(fake_unit)));
 	return queue_action(turn, new_move);
 }
 
 side_actions::iterator side_actions::queue_attack(size_t turn, unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
-	attack_ptr new_attack(std::make_shared<attack>(team_index(), hidden_, std::ref(mover), target_hex, weapon_choice, route, arrow, fake_unit));
+	attack_ptr new_attack(std::make_shared<attack>(team_index(), hidden_, std::ref(mover), target_hex, weapon_choice, route, arrow, std::move(fake_unit)));
 	return queue_action(turn, new_attack);
 }
 
