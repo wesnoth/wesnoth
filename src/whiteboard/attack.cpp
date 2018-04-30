@@ -54,7 +54,7 @@ std::ostream& attack::print(std::ostream& s) const
 
 attack::attack(std::size_t team_index, bool hidden, unit& u, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
-	: move(team_index, hidden, u, route, arrow, fake_unit),
+	: move(team_index, hidden, u, route, arrow, std::move(fake_unit)),
 	target_hex_(target_hex),
 	weapon_choice_(weapon_choice),
 	attack_movement_cost_(get_unit()->attacks()[weapon_choice_].movement_used()),

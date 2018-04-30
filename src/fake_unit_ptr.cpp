@@ -26,7 +26,17 @@ fake_unit_ptr::fake_unit_ptr(const internal_ptr & u, fake_unit_manager * mgr) : 
 {
 	place_on_fake_unit_manager(mgr);
 }
-fake_unit_ptr::fake_unit_ptr(const fake_unit_ptr & ptr) : unit_(ptr.unit_), my_manager_(nullptr) {}
+fake_unit_ptr::fake_unit_ptr(const fake_unit_ptr & ptr)
+	: unit_(ptr.unit_)
+	, my_manager_(nullptr)
+{}
+
+fake_unit_ptr::fake_unit_ptr(fake_unit_ptr && ptr)
+	: unit_(std::move(ptr.unit_))
+	, my_manager_(ptr.my_manager_)
+{
+	ptr.my_manager_ = nullptr;
+}
 
 void fake_unit_ptr::swap (fake_unit_ptr & o) {
 	boost::swap(unit_, o.unit_);
