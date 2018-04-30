@@ -79,6 +79,12 @@ side_actions_container::side_actions_container()
 size_t side_actions_container::get_turn_impl(size_t begin, size_t end, const_iterator it) const
 {
 	if(begin+1 >= end) {
+		if(begin+1 != end) {
+			ERR_WB << "get_turn: begin >= end\n";
+		}
+		else if(it < turn_beginnings_[begin]) {
+			ERR_WB << "get_turn failed\n";			
+		}
 		return begin;
 	}
 	size_t mid = (begin+end) / 2;
@@ -219,6 +225,13 @@ side_actions_container::iterator side_actions_container::erase(iterator position
 				turn_beginnings_.pop_back();
 			}
 		} else {
+#if 1
+			for(auto& it : turn_beginnings_) {
+				if (it == position) {
+					it = next;
+				}
+			}
+#else
 			size_t turn_of_position = std::distance(turn_beginnings_.begin(), beginning);
 			// If we still have action this turn
 			if(get_turn(next) == turn_of_position) {
@@ -227,6 +240,7 @@ side_actions_container::iterator side_actions_container::erase(iterator position
 				assert(turn_of_position == 0);
 				*beginning = turn_end(0); // Otherwise, we are emptying the current turn.
 			}
+#endif
 		}
 	}
 
