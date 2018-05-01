@@ -254,7 +254,8 @@ public:
 	/** Get the underlying action container */
 	const action_set& actions() const { return actions_; }
 
-
+	template<typename Modifier>
+	bool modify(iterator position, Modifier mod) { return actions_.modify(position, mod); }
 private:
 	/**
 	 * Binary search to find the occurring turn of the action pointed by an iterator.
@@ -505,6 +506,8 @@ public:
 	void change_gold_spent_by(int difference);
 	/** Set gold spent back to zero */
 	void reset_gold_spent();
+	/** After a recruit action was executed the id of the unit was changed so we need to update the unitid of all following actions on that unit*/
+	void update_recruited_unit(std::size_t old_id, unit& new_unit);
 
 	void raw_turn_shift();
 	void synced_turn_shift();

@@ -672,6 +672,20 @@ void side_actions::reset_gold_spent()
 	gold_spent_ = 0;
 }
 
+void side_actions::update_recruited_unit(std::size_t old_id, unit& new_unit)
+{
+	for(const_iterator it = begin(); it != end(); ++it) {
+		if(move_ptr mp = std::dynamic_pointer_cast<move>(*it)) {
+			if(mp->raw_uid() == old_id) {
+				actions_.modify(it, [&](action_ptr& p) {
+					static_cast<move&>(*p).modify_unit(new_unit);
+				});
+			}
+		}
+	}
+}
+
+	
 side_actions::iterator side_actions::safe_insert(size_t turn, size_t pos, action_ptr act)
 {
 	assert(act);
