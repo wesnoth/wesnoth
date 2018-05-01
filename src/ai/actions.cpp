@@ -986,16 +986,25 @@ void synced_command_result::do_init_for_execution()
 // STATELESS INTERFACE TO AI ACTIONS
 // =======================================================================
 
-attack_result_ptr actions::execute_attack_action( side_number side,
-	bool execute,
-	const map_location& attacker_loc,
-	const map_location& defender_loc,
-	int attacker_weapon,
-	double aggression,
-	const unit_advancements_aspect& advancements)
+static void execute_or_check(action_result& action, bool execute)
 {
-	attack_result_ptr action(new attack_result(side,attacker_loc,defender_loc,attacker_weapon,aggression,advancements));
-	execute ? action->execute() : action->check_before();
+	if(execute) {
+		action.execute();
+	} else {
+		action.check_before();
+	}
+}
+
+attack_result_ptr actions::execute_attack_action(side_number side,
+		bool execute,
+		const map_location& attacker_loc,
+		const map_location& defender_loc,
+		int attacker_weapon,
+		double aggression,
+		const unit_advancements_aspect& advancements)
+{
+	attack_result_ptr action(new attack_result(side, attacker_loc, defender_loc, attacker_weapon, aggression, advancements));
+	execute_or_check(*action, execute);
 	return action;
 }
 
@@ -1006,8 +1015,8 @@ move_result_ptr actions::execute_move_action( side_number side,
 	bool remove_movement,
 	bool unreach_is_ok)
 {
-	move_result_ptr action(new move_result(side,from,to,remove_movement,unreach_is_ok));
-	execute ? action->execute() : action->check_before();
+	move_result_ptr action(new move_result(side, from, to, remove_movement, unreach_is_ok));
+	execute_or_check(*action, execute);
 	return action;
 }
 
@@ -1017,8 +1026,8 @@ recall_result_ptr actions::execute_recall_action( side_number side,
 	const map_location& where,
 	const map_location& from)
 {
-	recall_result_ptr action(new recall_result(side,unit_id,where,from));
-	execute ? action->execute() : action->check_before();
+	recall_result_ptr action(new recall_result(side, unit_id, where, from));
+	execute_or_check(*action, execute);
 	return action;
 }
 
@@ -1028,8 +1037,8 @@ recruit_result_ptr actions::execute_recruit_action( side_number side,
 	const map_location& where,
 	const map_location& from)
 {
-	recruit_result_ptr action(new recruit_result(side,unit_name,where,from));
-	execute ? action->execute() : action->check_before();
+	recruit_result_ptr action(new recruit_result(side, unit_name, where, from));
+	execute_or_check(*action, execute);
 	return action;
 }
 
@@ -1039,8 +1048,8 @@ stopunit_result_ptr actions::execute_stopunit_action( side_number side,
 	bool remove_movement,
 	bool remove_attacks)
 {
-	stopunit_result_ptr action(new stopunit_result(side,unit_location,remove_movement,remove_attacks));
-	execute ? action->execute() : action->check_before();
+	stopunit_result_ptr action(new stopunit_result(side, unit_location, remove_movement, remove_attacks));
+	execute_or_check(*action, execute);
 	return action;
 }
 
@@ -1049,8 +1058,8 @@ synced_command_result_ptr actions::execute_synced_command_action( side_number si
 	const std::string& lua_code,
 	const map_location& location)
 {
-	synced_command_result_ptr action(new synced_command_result(side,lua_code,location));
-	execute ? action->execute() : action->check_before();
+	synced_command_result_ptr action(new synced_command_result(side, lua_code, location));
+	execute_or_check(*action, execute);
 	return action;
 }
 
