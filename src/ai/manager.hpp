@@ -43,8 +43,6 @@ namespace events { class observer; }
 
 namespace ai
 {
-typedef std::shared_ptr<ai_composite> composite_ai_ptr;
-
 /**
  * Base class that holds the AI and current AI parameters.
  * It is an implementation detail.

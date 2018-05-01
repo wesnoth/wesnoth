@@ -45,7 +45,7 @@ typedef std::multimap<map_location, map_location> move_map;
 typedef std::map<map_location, pathfind::paths> moves_map;
 
 class ai_composite;
-typedef std::shared_ptr<ai_composite> ai_ptr;
+typedef std::unique_ptr<ai_composite> composite_ai_ptr;
 
 class attack_analysis;
 typedef std::vector<attack_analysis> attacks_vector;
