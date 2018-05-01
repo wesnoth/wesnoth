@@ -448,7 +448,7 @@ action_result_ptr recruitment::execute_recall(const std::string& id, data& leade
 		recall_result->execute();
 		++leader_data.recruit_count;
 	}
-	return recall_result;
+	return action_result_ptr(recall_result.release());
 }
 
 /**
@@ -464,7 +464,7 @@ action_result_ptr recruitment::execute_recruit(const std::string& type, data& le
 		LOG_AI_RECRUITMENT << "Recruited " << type << "\n";
 		++leader_data.recruit_count;
 	}
-	return recruit_result;
+	return action_result_ptr(recruit_result.release());
 }
 
 /**
