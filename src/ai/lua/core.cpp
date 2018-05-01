@@ -188,7 +188,7 @@ static int ai_move(lua_State* L, bool exec, bool remove_movement)
 	ai::move_result_ptr move_result =
 		ai::actions::execute_move_action(side, exec, from, to, remove_movement, unreach_is_ok);
 
-	return transform_ai_action(L, move_result);
+	return transform_ai_action(L, std::move(move_result));
 }
 
 static int cfun_ai_execute_move_full(lua_State* L)
@@ -236,7 +236,7 @@ static int ai_attack(lua_State* L, bool exec)
 	ai::attack_result_ptr attack_result =
 		ai::actions::execute_attack_action(side, exec, attacker, defender, attacker_weapon, aggression, advancements);
 
-	return transform_ai_action(L, attack_result);
+	return transform_ai_action(L, std::move(attack_result));
 }
 
 static int cfun_ai_execute_attack(lua_State* L)
@@ -257,7 +257,7 @@ static int ai_stopunit_select(lua_State* L, bool exec, bool remove_movement, boo
 	ai::stopunit_result_ptr stopunit_result =
 		ai::actions::execute_stopunit_action(side, exec, loc, remove_movement, remove_attacks);
 
-	return transform_ai_action(L, stopunit_result);
+	return transform_ai_action(L, std::move(stopunit_result));
 }
 
 static int cfun_ai_execute_stopunit_moves(lua_State* L)
@@ -295,7 +295,7 @@ static int ai_recruit(lua_State* L, bool exec)
 	ai::recruit_result_ptr recruit_result =
 		ai::actions::execute_recruit_action(side, exec, std::string(unit_name), where, from);
 
-	return transform_ai_action(L, recruit_result);
+	return transform_ai_action(L, std::move(recruit_result));
 }
 
 static int cfun_ai_execute_recruit(lua_State* L)
@@ -323,7 +323,7 @@ static int ai_recall(lua_State* L, bool exec)
 	ai::recall_result_ptr recall_result =
 		ai::actions::execute_recall_action(side, exec, std::string(unit_id), where, from);
 
-	return transform_ai_action(L, recall_result);
+	return transform_ai_action(L, std::move(recall_result));
 }
 
 static int cfun_ai_execute_recall(lua_State* L)

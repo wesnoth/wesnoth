@@ -77,14 +77,14 @@ class move_and_attack_result;
 class stopunit_result;
 class synced_command_result;
 
-typedef std::shared_ptr<action_result> action_result_ptr;
-typedef std::shared_ptr<attack_result> attack_result_ptr;
-typedef std::shared_ptr<recall_result> recall_result_ptr;
-typedef std::shared_ptr<recruit_result> recruit_result_ptr;
-typedef std::shared_ptr<move_result> move_result_ptr;
-typedef std::shared_ptr<move_and_attack_result> move_and_attack_result_ptr;
-typedef std::shared_ptr<stopunit_result> stopunit_result_ptr;
-typedef std::shared_ptr<synced_command_result> synced_command_result_ptr;
+typedef std::unique_ptr<action_result> action_result_ptr;
+typedef std::unique_ptr<attack_result> attack_result_ptr;
+typedef std::unique_ptr<recall_result> recall_result_ptr;
+typedef std::unique_ptr<recruit_result> recruit_result_ptr;
+typedef std::unique_ptr<move_result> move_result_ptr;
+typedef std::unique_ptr<move_and_attack_result> move_and_attack_result_ptr;
+typedef std::unique_ptr<stopunit_result> stopunit_result_ptr;
+typedef std::unique_ptr<synced_command_result> synced_command_result_ptr;
 
 class aspect;
 class candidate_action;

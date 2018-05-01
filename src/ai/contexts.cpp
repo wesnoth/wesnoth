@@ -70,6 +70,98 @@ static lg::log_domain log_ai("ai/general");
 // =======================================================================
 namespace ai
 {
+// =======================================================================
+// READ-WRITE CONTEXT PROXY
+// =======================================================================
+
+attack_result_ptr readwrite_context_proxy::execute_attack_action(
+		const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon)
+{
+	return target_->execute_attack_action(attacker_loc, defender_loc, attacker_weapon);
+}
+
+recall_result_ptr readwrite_context_proxy::execute_recall_action(const std::string& id,
+		const map_location& where,
+		const map_location& from)
+{
+	return target_->execute_recall_action(id, where, from);
+}
+
+recruit_result_ptr readwrite_context_proxy::execute_recruit_action(const std::string& unit_name,
+		const map_location& where ,
+		const map_location& from)
+{
+	return target_->execute_recruit_action(unit_name, where, from);
+}
+
+move_result_ptr readwrite_context_proxy::execute_move_action(const map_location& from,
+		const map_location& to,
+		bool remove_movement,
+		bool unreach_is_ok)
+{
+	return target_->execute_move_action(from, to, remove_movement, unreach_is_ok);
+}
+
+stopunit_result_ptr readwrite_context_proxy::execute_stopunit_action(
+		const map_location& unit_location, bool remove_movement, bool remove_attacks)
+{
+	return target_->execute_stopunit_action(unit_location, remove_movement, remove_attacks);
+}
+
+synced_command_result_ptr readwrite_context_proxy::execute_synced_command_action(
+		const std::string& lua_code, const map_location& location)
+{
+	return target_->execute_synced_command_action(lua_code, location);
+}
+
+// =======================================================================
+// READ-ONLY CONTEXT PROXY
+// =======================================================================
+
+attack_result_ptr readonly_context_proxy::check_attack_action(
+		const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon)
+{
+	return target_->check_attack_action(attacker_loc, defender_loc, attacker_weapon);
+}
+
+recall_result_ptr readonly_context_proxy::check_recall_action(const std::string& id,
+		const map_location& where,
+		const map_location& from)
+{
+	return target_->check_recall_action(id, where, from);
+}
+
+recruit_result_ptr readonly_context_proxy::check_recruit_action(const std::string& unit_name,
+		const map_location& where,
+		const map_location& from)
+{
+	return target_->check_recruit_action(unit_name, where, from);
+}
+
+move_result_ptr readonly_context_proxy::check_move_action(const map_location& from,
+		const map_location& to,
+		bool remove_movement,
+		bool unreach_is_ok)
+{
+	return target_->check_move_action(from, to, remove_movement, unreach_is_ok);
+}
+
+stopunit_result_ptr readonly_context_proxy::check_stopunit_action(
+		const map_location& unit_location, bool remove_movement, bool remove_attacks)
+{
+	return target_->check_stopunit_action(unit_location, remove_movement, remove_attacks);
+}
+
+synced_command_result_ptr readonly_context_proxy::check_synced_command_action(
+		const std::string& lua_code, const map_location& location)
+{
+	return target_->check_synced_command_action(lua_code, location);
+}
+
+// =======================================================================
+// IMPLEMENTATIONS
+// =======================================================================
+
 int side_context_impl::get_recursion_count() const
 {
 	return recursion_counter_.get_count();
