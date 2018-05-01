@@ -281,7 +281,8 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 	dlg.show();
 
 	if(dlg.get_retval() == gui2::retval::OK) {
-		do_recruit(sample_units[dlg.get_selected_index()]->id(), side_num, last_hex);
+		map_location recruit_hex = last_hex;
+		do_recruit(sample_units[dlg.get_selected_index()]->id(), side_num, recruit_hex);
 	}
 }
 
@@ -289,16 +290,17 @@ void menu_handler::repeat_recruit(int side_num, const map_location& last_hex)
 {
 	const std::string& last_recruit = board().get_team(side_num).last_recruit();
 	if(last_recruit.empty() == false) {
-		do_recruit(last_recruit, side_num, last_hex);
+		map_location recruit_hex = last_hex;
+		do_recruit(last_recruit, side_num, recruit_hex);
 	}
 }
 
-bool menu_handler::do_recruit(const std::string& name, int side_num, const map_location& last_hex)
+bool menu_handler::do_recruit(const std::string& name, int side_num, map_location& loc)
 {
 	team& current_team = board().get_team(side_num);
 
 	// search for the unit to be recruited in recruits
-	if(!utils::contains(actions::get_recruits(side_num, last_hex), name)) {
+	if(!utils::contains(actions::get_recruits(side_num, loc), name)) {
 		return false;
 	}
 
@@ -316,7 +318,6 @@ bool menu_handler::do_recruit(const std::string& name, int side_num, const map_l
 	current_team.last_recruit(name);
 	const events::command_disabler disable_commands;
 
-	map_location loc = last_hex;
 	map_location recruited_from = map_location::null_location();
 
 	std::string msg;

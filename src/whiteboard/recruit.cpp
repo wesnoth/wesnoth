@@ -107,13 +107,22 @@ void recruit::execute(bool& success, bool& complete)
 {
 	assert(valid());
 	temporary_unit_hider const raii(*fake_unit_);
+	const std::size_t old_id = fake_unit_->underlying_id();
+	map_location loc = recruit_hex_;
 	const int side_num = team_index() + 1;
 	//Give back the spent gold so we don't get "not enough gold" message
 	resources::gameboard->teams().at(team_index()).get_side_actions()->change_gold_spent_by(-cost_);
-	bool const result = resources::controller->get_menu_handler().do_recruit(unit_name_, side_num, recruit_hex_);
+	bool const result = resources::controller->get_menu_handler().do_recruit(unit_name_, side_num, loc);
 	//If it failed, take back the gold
 	if (!result) {
 		resources::gameboard->teams().at(team_index()).get_side_actions()->change_gold_spent_by(cost_);
+	}
+	else {
+		auto mit = resources::gameboard->units().find(loc);
+		if(mit != resources::gameboard->units().end()) {
+			viewer_actions()->update_recruited_unit(old_id, *mit);
+		}
+
 	}
 	success = complete = result;
 }

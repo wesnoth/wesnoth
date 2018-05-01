@@ -59,6 +59,9 @@ public:
 	virtual map_location get_source_hex() const;
 	virtual map_location get_dest_hex() const;
 
+	std::size_t raw_uid() const { return unit_underlying_id_; }
+
+	void modify_unit(unit& new_unit);
 	virtual void set_route(const pathfind::marked_route& route);
 	virtual const pathfind::marked_route& get_route() const { assert(route_); return *route_; }
 	/// attempts to pathfind a new marked route for this path between these two hexes;
