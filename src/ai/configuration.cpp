@@ -153,12 +153,12 @@ std::vector<description*> configuration::get_available_ais()
 
 const config& configuration::get_ai_config_for(const std::string& id)
 {
-	description_map::iterator cfg_it = ai_configurations_.find(id);
+	auto cfg_it = ai_configurations_.find(id);
 	if(cfg_it == ai_configurations_.end()) {
-		description_map::iterator era_cfg_it = era_ai_configurations_.find(id);
+		auto era_cfg_it = era_ai_configurations_.find(id);
 
 		if(era_cfg_it == era_ai_configurations_.end()) {
-			description_map::iterator mod_cfg_it = mod_ai_configurations_.find(id);
+			auto mod_cfg_it = mod_ai_configurations_.find(id);
 
 			if(mod_cfg_it == mod_ai_configurations_.end()) {
 				return default_config_;
@@ -173,10 +173,10 @@ const config& configuration::get_ai_config_for(const std::string& id)
 	return cfg_it->second.cfg;
 }
 
-configuration::description_map configuration::ai_configurations_ = configuration::description_map();
-configuration::description_map configuration::era_ai_configurations_ = configuration::description_map();
-configuration::description_map configuration::mod_ai_configurations_ = configuration::description_map();
-config configuration::default_config_ = config();
+configuration::description_map configuration::ai_configurations_ {};
+configuration::description_map configuration::era_ai_configurations_ {};
+configuration::description_map configuration::mod_ai_configurations_ {};
+config configuration::default_config_;
 
 bool configuration::get_side_config_from_file(const std::string& file, config& cfg)
 {
@@ -230,7 +230,7 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 
 	// construct new-style integrated config
 	LOG_AI_CONFIGURATION << "side " << side << ": doing final operations on AI config" << std::endl;
-	config parsed_cfg = config();
+	config parsed_cfg;
 
 	LOG_AI_CONFIGURATION << "side " << side << ": merging AI configurations" << std::endl;
 	for(const config& aiparam : cfg.child_range("ai")) {
@@ -267,7 +267,7 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 	DBG_AI_CONFIGURATION << "side " << side << ": done parsing side config, it contains:" << std::endl << parsed_cfg << std::endl;
 	LOG_AI_CONFIGURATION << "side " << side << ": done parsing side config" << std::endl;
 
-	cfg = parsed_cfg;
+	cfg = std::move(parsed_cfg);
 	return true;
 }
 
@@ -319,7 +319,7 @@ void configuration::expand_simplified_aspects(side_number side, config& cfg)
 			facet_config["turns"] = turns;
 			facet_config["time_of_day"] = time_of_day;
 			facet_config["value"] = attr.second;
-			facet_configs.emplace_back(attr.first, facet_config);
+			facet_configs.emplace_back(attr.first, std::move(facet_config));
 		}
 
 		for(const config::any_child& child : aiparam.all_children_range()) {
@@ -369,7 +369,7 @@ void configuration::expand_simplified_aspects(side_number side, config& cfg)
 					}
 				}
 
-				facet_configs.emplace_back(child.key, facet_config);
+				facet_configs.emplace_back(child.key, std::move(facet_config));
 			}
 		}
 
@@ -377,15 +377,14 @@ void configuration::expand_simplified_aspects(side_number side, config& cfg)
 
 		while(!facet_configs.empty()) {
 			const std::string& aspect = facet_configs.front().first;
-			const config& facet_config = facet_configs.front().second;
+			config& facet_config = facet_configs.front().second;
 			aspect_configs[aspect]["id"] = aspect; // Will sometimes be redundant assignment
 			aspect_configs[aspect]["name"] = "composite_aspect";
-			aspect_configs[aspect].add_child("facet", facet_config);
+			aspect_configs[aspect].add_child("facet", std::move(facet_config)); // Safe since we pop immediately after
 			facet_configs.pop_front();
 		}
 
-		typedef std::map<std::string, config>::value_type aspect_pair;
-		for(const aspect_pair& p : aspect_configs) {
+		for(const auto& p : aspect_configs) {
 			parsed_config.add_child("aspect", p.second);
 		}
 	}
