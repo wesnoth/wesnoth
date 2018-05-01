@@ -19,11 +19,11 @@
 
 #pragma once
 
-#include "config.hpp"
 #include "ai/game_info.hpp"
+#include "config.hpp"
 
-namespace ai {
-
+namespace ai
+{
 /**
  * AI parameters. class to deal with AI parameters. It is an implementation detail.
  * We need implementation which will allow easy access to all the parameters
@@ -41,7 +41,8 @@ namespace ai {
  * use any and loudly complain.
  */
 
-struct description {
+struct description
+{
 public:
 	description()
 		: text()
@@ -55,17 +56,16 @@ public:
 	config cfg;
 };
 
-class configuration {
+class configuration
+{
 public:
-
 	/**
 	 * Init the parameters of ai configuration parser
 	 * @param game_config game config
 	 */
-	static void init(const config &game_config);
-	static void add_era_ai_from_config(const config &game_config);
+	static void init(const config& game_config);
+	static void add_era_ai_from_config(const config& game_config);
 	static void add_mod_ai_from_config(config::const_child_itors configs);
-
 
 	/**
 	 * get default AI parameters
@@ -73,19 +73,16 @@ public:
 	 */
 	static const config& get_default_ai_parameters();
 
-
 	/**
 	 * Return the config for a specified ai
 	 */
-	static const config& get_ai_config_for(const std::string &id);
-
+	static const config& get_ai_config_for(const std::string& id);
 
 	/**
 	 * Returns a list of available AIs.
 	 * @return the list of available AIs.
 	 */
 	static std::vector<description*> get_available_ais();
-
 
 	/**
 	 * get side config from file
@@ -95,8 +92,7 @@ public:
 	 * @retval true success
 	 * @retval false failure
 	 */
-	static bool get_side_config_from_file( const std::string& file, config& cfg );
-
+	static bool get_side_config_from_file(const std::string& file, config& cfg);
 
 	/**
 	 * @param[in] original_cfg the config to be read
@@ -105,22 +101,20 @@ public:
 	 * @retval true success
 	 * @retval false failure
 	 */
-	static bool parse_side_config(side_number side, const config& original_cfg, config &cfg);
-
+	static bool parse_side_config(side_number side, const config& original_cfg, config& cfg);
 
 	/**
 	 * Expand simplified aspects, similar to the change from 1.7.2 to 1.7.3
 	 * but with some additional syntax options.
 	 */
-	static void expand_simplified_aspects(side_number side, config &cfg);
-private:
+	static void expand_simplified_aspects(side_number side, config& cfg);
 
+private:
 	typedef std::map<std::string, description> description_map;
 	static description_map ai_configurations_;
 	static description_map era_ai_configurations_;
 	static description_map mod_ai_configurations_;
 	static config default_config_;
-
 };
 
-} //end of namespace ai
+} // end of namespace ai
