@@ -1,6 +1,6 @@
 ## Version 1.14.0+dev
  ### Language and i18n
-   * Updated translations: French, Italian, Slovak
+   * Updated translations: French, Italian, Slovak, Spanish
 
 ## Version 1.14.0
  ### Campaigns
