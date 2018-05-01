@@ -277,8 +277,7 @@ synced_command_result_ptr readonly_context_impl::check_synced_command_action(
 template<typename T>
 void readonly_context_impl::add_known_aspect(const std::string& name, typesafe_aspect_ptr<T>& where)
 {
-	std::shared_ptr<typesafe_known_aspect<T>> ka_ptr(new typesafe_known_aspect<T>(name, where, aspects_));
-	known_aspects_.emplace(name, ka_ptr);
+	known_aspects_.emplace(name, std::make_shared<typesafe_known_aspect<T>>(name, where, aspects_));
 }
 
 readonly_context_impl::readonly_context_impl(side_context& context, const config& cfg)
