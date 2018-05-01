@@ -21,12 +21,76 @@ sdl2_mixer_dmg_sha256="174a371e2acdfa7ae26be71134b9925f46e5257c8c8d608f09a6726a0
 sdl2_net_dmg_sha256="3a126e31b323d832be0ef4b9941fc3113b931e42a26e9bcc989487fd5348f858"
 ###/Sha256
 
+###Pango and Cairo
+cairo_headers_path=""
+pango_headers_path=""
+libcairo_path=""
+libpango_path=""
+libpangocairo_path=""
+libpangoft2_path=""
+###/Pango and Cairo
+
 ###Functions
 brew_install() {
         local PACKAGE=$1
         if ! brew ls --versions ${PACKAGE} > /dev/null; then
                 echo "==> Installing ${PACKAGE}"
                 brew install ${PACKAGE}
+        fi
+}
+
+pango_and_cairo_download() {
+        local REQUIRED_VERSION=$1
+
+        if ! [ -d "$MY_PATH/temp/MacCompileStuff-$REQUIRED_VERSION" ]; then
+                echo "==> Downloading MacCompileStuff for $REQUIRED_VERSION branch"
+                wget "https://github.com/hrubymar10/MacCompileStuff/archive/$REQUIRED_VERSION.zip" -q --show-progress
+                unzip -q "$REQUIRED_VERSION.zip"
+                rm "$REQUIRED_VERSION.zip"
+        else
+                echo "==> Using MacCompileStuff for $REQUIRED_VERSION branch from temp"
+        fi
+
+        if [ -d "$MY_PATH/temp/MacCompileStuff-$REQUIRED_VERSION/Headers/cairo" ]; then
+                cairo_headers_path="$MY_PATH/temp/MacCompileStuff-$REQUIRED_VERSION/Headers/cairo"
+        else
+                echo "Error: Can't find Cairo's headers! Please report this here: https://github.com/hrubymar10/MacCompileStuff/issues/new" >&2
+                exit 1
+        fi
+
+        if [ -d "$MY_PATH/temp/MacCompileStuff-$REQUIRED_VERSION/Headers/pango" ]; then
+                pango_headers_path="$MY_PATH/temp/MacCompileStuff-$REQUIRED_VERSION/Headers/pango"
+        else
+                echo "Error: Can't find Pango's headers! Please report this here: https://github.com/hrubymar10/MacCompileStuff/issues/new" >&2
+                exit 1
+        fi
+
+        if [ -f "$MY_PATH/temp/MacCompileStuff-$REQUIRED_VERSION/lib/libcairo.2.dylib" ]; then
+                libcairo_path="$MY_PATH/temp/MacCompileStuff-$REQUIRED_VERSION/lib/libcairo.2.dylib"
+        else
+                echo "Error: Can't find libcairo.2.dylib! Please report this here: https://github.com/hrubymar10/MacCompileStuff/issues/new" >&2
+                exit 1
+        fi
+
+        if [ -f "$MY_PATH/temp/MacCompileStuff-$REQUIRED_VERSION/lib/libpango-1.0.0.dylib" ]; then
+                libpango_path="$MY_PATH/temp/MacCompileStuff-$REQUIRED_VERSION/lib/libpango-1.0.0.dylib"
+        else
+                echo "Error: Can't find libpango-1.0.0.dylib! Please report this here: https://github.com/hrubymar10/MacCompileStuff/issues/new" >&2
+                exit 1
+        fi
+
+        if [ -f "$MY_PATH/temp/MacCompileStuff-$REQUIRED_VERSION/lib/libpangocairo-1.0.0.dylib" ]; then
+                libpangocairo_path="$MY_PATH/temp/MacCompileStuff-$REQUIRED_VERSION/lib/libpangocairo-1.0.0.dylib"
+        else
+                echo "Error: Can't find libpangocairo-1.0.0.dylib! Please report this here: https://github.com/hrubymar10/MacCompileStuff/issues/new" >&2
+                exit 1
+        fi
+
+        if [ -f "$MY_PATH/temp/MacCompileStuff-$REQUIRED_VERSION/lib/libpangoft2-1.0.0.dylib" ]; then
+                libpangoft2_path="$MY_PATH/temp/MacCompileStuff-$REQUIRED_VERSION/lib/libpangoft2-1.0.0.dylib"
+        else
+                echo "Error: Can't find libpangoft2-1.0.0.dylib! Please report this here: https://github.com/hrubymar10/MacCompileStuff/issues/new" >&2
+                exit 1
         fi
 }
 
@@ -150,24 +214,31 @@ if ! [ -x "$(command -v brew)" ]; then
         exit 1
 fi
 
-BREW_PACKAGES="boost cairo fontconfig freetype gettext glib graphite2 harfbuzz libffi libpng openssl@1.1 pango pcre pixman readline wget"
+BREW_PACKAGES="boost fontconfig freetype gettext glib graphite2 harfbuzz libffi libpng openssl@1.1 pcre pixman readline wget"
 for PACKAGE in ${BREW_PACKAGES}; do
         brew_install ${PACKAGE}
 done
+
+if ! [ -d temp ]; then
+        mkdir temp
+fi
+cd temp
+pango_and_cairo_download "master"
+cd ..
 
 if [ -d "Headers" ]; then
         rm -rf Headers
 fi
 mkdir Headers
 cd Headers
+ln -s "$cairo_headers_path"
+ln -s "$pango_headers_path"
 ln -s /usr/local/opt/boost/include/boost
-ln -s /usr/local/opt/cairo/include/cairo
 ln -s /usr/local/opt/fontconfig/include/fontconfig
 ln -s /usr/local/opt/glib/include/glib-2.0
 ln -s /usr/local/opt/glib/lib/glib-2.0/include/glibconfig.h
 ln -s /usr/local/opt/gettext/include/libintl.h
 ln -s /usr/local/opt/openssl@1.1/include/openssl
-ln -s /usr/local/opt/pango/include/pango-1.0/pango
 ln -s /usr/local/opt/readline/include/readline
 cd ..
 
@@ -201,8 +272,9 @@ if [ -d "lib" ]; then
 fi
 mkdir lib
 cd lib
+cp "$libcairo_path" ./
+cp "$libpango_path" "$libpangocairo_path" "$libpangoft2_path" ./
 cp /usr/local/opt/boost/lib/libboost_chrono-mt.dylib /usr/local/opt/boost/lib/libboost_filesystem-mt.dylib /usr/local/opt/boost/lib/libboost_iostreams-mt.dylib /usr/local/opt/boost/lib/libboost_locale-mt.dylib /usr/local/opt/boost/lib/libboost_program_options-mt.dylib /usr/local/opt/boost/lib/libboost_random-mt.dylib /usr/local/opt/boost/lib/libboost_regex-mt.dylib /usr/local/opt/boost/lib/libboost_system-mt.dylib /usr/local/opt/boost/lib/libboost_timer-mt.dylib /usr/local/opt/boost/lib/libboost_unit_test_framework-mt.dylib ./
-cp /usr/local/opt/cairo/lib/libcairo.2.dylib ./
 cp /usr/local/opt/openssl@1.1/lib/libcrypto.1.1.dylib ./
 cp /usr/local/opt/libffi/lib/libffi.6.dylib ./
 cp /usr/local/opt/fontconfig/lib/libfontconfig.1.dylib ./
@@ -211,7 +283,6 @@ cp /usr/local/opt/glib/lib/libglib-2.0.0.dylib /usr/local/opt/glib/lib/libgmodul
 cp /usr/local/opt/graphite2/lib/libgraphite2.3.0.1.dylib ./libgraphite2.3.dylib
 cp /usr/local/opt/harfbuzz/lib/libharfbuzz.0.dylib ./
 cp /usr/local/opt/gettext/lib/libintl.8.dylib ./
-cp /usr/local/opt/pango/lib/libpango-1.0.0.dylib /usr/local/opt/pango/lib/libpangocairo-1.0.0.dylib /usr/local/opt/pango/lib/libpangoft2-1.0.0.dylib ./
 cp /usr/local/opt/pcre/lib/libpcre.1.dylib ./
 cp /usr/local/opt/pixman/lib/libpixman-1.0.dylib ./
 cp /usr/local/opt/libpng/lib/libpng16.16.dylib ./
