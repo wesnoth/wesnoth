@@ -1387,17 +1387,8 @@ bool readonly_context_impl::is_active(const std::string& time_of_day, const std:
 		}
 	}
 
-	if(turns.empty() == false) {
-		int turn = resources::tod_manager->turn();
-		const std::vector<std::string>& turns_list = utils::split(turns);
-		for(std::vector<std::string>::const_iterator j = turns_list.begin(); j != turns_list.end(); ++j) {
-			const std::pair<int, int> range = utils::parse_range(*j);
-			if(turn >= range.first && turn <= range.second) {
-				return true;
-			}
-		}
-
-		return false;
+	if(!turns.empty()) {
+		return in_ranges(resources::tod_manager->turn(), utils::parse_ranges(turns));
 	}
 
 	return true;
