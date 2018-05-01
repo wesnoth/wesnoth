@@ -21,6 +21,7 @@
 #include "action.hpp"
 
 struct temporary_unit_mover;
+class unit;
 
 namespace wb {
 
@@ -95,7 +96,7 @@ protected:
 		return std::static_pointer_cast<move>(action::shared_from_this());
 	}
 
-	void calculate_move_cost();
+	int calculate_moves_left(unit& u);
 
 	size_t unit_underlying_id_;
 	std::string unit_id_;
@@ -117,7 +118,7 @@ private:
 	void hide_fake_unit();
 	void show_fake_unit();
 
-	void init();
+	void init(unit* u = nullptr);
 	void update_arrow_style();
 	std::unique_ptr<temporary_unit_mover> mover_;
 	bool fake_unit_hidden_;

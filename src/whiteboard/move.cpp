@@ -147,18 +147,14 @@ move::move(const config& cfg, bool hidden)
 	this->init();
 }
 
-void move::init()
+void move::init(unit* u)
 {
-	// If a unit is invalid, return immediately to avoid crashes such as trying to plan a move for a planned recruit.
-	// As per Bug #18637, this should be fixed so that planning moves on planned recruits work properly.
-	// The alternative is to disable movement on planned recruits altogether,
-	// possibly in select_or_action() where the fake unit is selected in the first place.
-	if (get_unit() == nullptr)
-		return;
-
-	assert(get_unit());
-	unit_id_ = get_unit()->id();
-
+	if(get_unit()) {
+		unit_id_ = get_unit()->id();
+	}
+	else if(u) {
+		unit_id_ = u->id();
+	}
 	//This action defines the future position of the unit, make its fake unit more visible
 	//than previous actions' fake units
 	if (fake_unit_)
@@ -166,7 +162,7 @@ void move::init()
 		fake_unit_->anim_comp().set_ghosted(true);
 	}
 	side_actions_ptr side_actions = resources::gameboard->teams().at(team_index()).get_side_actions();
-	side_actions::iterator action = side_actions->find_last_action_of(*(get_unit()));
+	side_actions::iterator action = side_actions->find_last_action_of(unit_underlying_id_);
 	if (action != side_actions->end())
 	{
 		if (move_ptr move = std::dynamic_pointer_cast<class move>(*action))
@@ -175,8 +171,6 @@ void move::init()
 				move->fake_unit_->anim_comp().set_disabled_ghosted(true);
 		}
 	}
-
-	this->calculate_move_cost();
 
 	// Initialize arrow_brightness_ and arrow_texture_ using arrow_->style_
 	std::string arrow_style = arrow_->get_style();
@@ -250,7 +244,7 @@ void move::execute(bool& success, bool& complete)
 		success = false;
 		complete = true;
 	}
-	else if ( unit_it == resources::gameboard->units().end()  ||  unit_it->id() != unit_id_ )
+	else if ( unit_it == resources::gameboard->units().end()  ||  (unit_id_.empty() && ( unit_it->id() != unit_id_ )))
 	{
 		WRN_WB << "Unit disappeared from map during move execution." << std::endl;
 		success = false;
@@ -313,7 +307,6 @@ map_location move::get_dest_hex() const
 void move::set_route(const pathfind::marked_route& route)
 {
 	route_.reset(new pathfind::marked_route(route));
-	this->calculate_move_cost();
 	arrow_->set_path(route_->steps);
 }
 
@@ -327,7 +320,6 @@ bool move::calculate_new_route(const map_location& source_hex, const map_locatio
 						dest_hex, 10000, path_calc, resources::gameboard->map().w(), resources::gameboard->map().h());
 	if (new_plain_route.move_cost >= path_calc.getNoPathValue()) return false;
 	route_.reset(new pathfind::marked_route(pathfind::mark_route(new_plain_route)));
-	calculate_move_cost();
 	return true;
 }
 
@@ -354,12 +346,11 @@ void move::apply_temp_modifier(unit_map& unit_map)
 	//Modify movement points
 	DBG_WB <<"Move: Changing movement points for unit " << unit->name() << " [" << unit->id()
 			<< "] from " << unit->movement_left() << " to "
-			<< unit->movement_left() - movement_cost_ << ".\n";
+			<< calculate_moves_left(*unit) << ".\n";
 	// Move the unit
 	DBG_WB << "Move: Temporarily moving unit " << unit->name() << " [" << unit->id()
 			<< "] from (" << get_source_hex() << ") to (" << get_dest_hex() <<")\n";
-	mover_.reset(new temporary_unit_mover(unit_map, get_source_hex(), get_dest_hex(),
-	                                      unit->movement_left() - movement_cost_));
+	mover_.reset(new temporary_unit_mover(unit_map, get_source_hex(), get_dest_hex(), calculate_moves_left(*unit)));
 
 	//Update status of fake unit (not undone by remove_temp_modifiers)
 	//@todo this contradicts the name "temp_modifiers"
@@ -382,7 +373,7 @@ void move::remove_temp_modifier(unit_map&)
 		}
 		DBG_WB << "Move: Movement points for unit " << unit->name() << " [" << unit->id()
 					<< "] should get changed from " << unit->movement_left() << " to "
-					<< unit->movement_left() + movement_cost_ << ".\n";
+					<< calculate_moves_left(*unit) << ".\n";
 	}
 
 	// Restore the unit to its original position and movement.
@@ -471,7 +462,7 @@ action::error move::check_validity() const
 
 	//check if the unit in the source hex has the same unit id as before,
 	//i.e. that it's the same unit
-	if(unit_id_ != unit_it->id() || unit_underlying_id_ != unit_it->underlying_id()) {
+	if((!unit_id_.empty() && unit_id_ != unit_it->id()) || unit_underlying_id_ != unit_it->underlying_id()) {
 		return UNIT_CHANGED;
 	}
 
@@ -533,15 +524,14 @@ config move::to_config() const
 	return final_cfg;
 }
 
-void move::calculate_move_cost()
+int move::calculate_moves_left(unit& u)
 {
-	assert(get_unit());
 	assert(route_);
 	if (get_source_hex().valid() && get_dest_hex().valid() && get_source_hex() != get_dest_hex())
 	{
 
 		// @todo: find a better treatment of movement points when defining moves out-of-turn
-		if(get_unit()->movement_left() - route_->move_cost < 0
+		if(u.movement_left() - route_->move_cost < 0
 				&& resources::controller->current_side() == display::get_singleton()->viewing_side()) {
 			WRN_WB << "Move defined with insufficient movement left." << std::endl;
 		}
@@ -549,13 +539,14 @@ void move::calculate_move_cost()
 		// If unit finishes move in a village it captures, set the move cost to unit's movement_left()
 		 if (route_->marks[get_dest_hex()].capture)
 		 {
-			 movement_cost_ = get_unit()->movement_left();
+			 return 0;
 		 }
 		 else
 		 {
-			 movement_cost_ = route_->move_cost;
+			 return u.movement_left() - route_->move_cost;
 		 }
 	}
+	return 0;
 }
 
 void move::redraw()

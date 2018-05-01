@@ -465,20 +465,26 @@ public:
 	 * @return The position, or end() if not found.
 	 */
 	iterator find_first_action_of(const unit& unit, iterator start_position);
+	iterator find_first_action_of(size_t unit_id, iterator start_position);
 	/** Variant of this method that always start searching at the beginning of the queue */
 	iterator find_first_action_of(const unit& unit){ return find_first_action_of(unit, begin()); }
+	iterator find_first_action_of(size_t unit_id){ return find_first_action_of(unit_id, begin()); }
 
 	/**
 	 * Finds the last action that belongs to this unit, starting the search backwards from the specified position.
 	 * @return The position, or end() if not found.
 	 */
 	iterator find_last_action_of(const unit& unit, iterator start_position);
+	iterator find_last_action_of(size_t unit_id, iterator start_position);
 	/** const variant of the previous function */
 	const_iterator find_last_action_of(const unit& unit, const_iterator start_position) const;
+	const_iterator find_last_action_of(size_t unit_id, iterator start_position) const;
 	/** Variant of the previous method that always start searching at the end of the queue */
 	iterator find_last_action_of(const unit& unit);
+	iterator find_last_action_of(size_t unit_id);
 	/** const variant of the previous function */
 	const_iterator find_last_action_of(const unit& unit) const;
+	const_iterator find_last_action_of(size_t unit_id) const;
 
 	bool unit_has_actions(const unit& unit);
 	size_t count_actions_of(const unit& unit);
