@@ -310,6 +310,12 @@ void move::set_route(const pathfind::marked_route& route)
 	arrow_->set_path(route_->steps);
 }
 
+void move::modify_unit(unit& new_unit)
+{
+	unit_underlying_id_ = new_unit.underlying_id();
+	unit_id_ = new_unit.id();
+}
+
 bool move::calculate_new_route(const map_location& source_hex, const map_location& dest_hex)
 {
 	pathfind::plain_route new_plain_route;
