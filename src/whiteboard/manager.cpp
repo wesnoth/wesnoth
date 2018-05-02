@@ -535,8 +535,9 @@ void manager::pre_draw()
 
 		for (size_t unit_id : units_owning_moves_) {
 			unit_map::iterator unit_iter = resources::gameboard->units().find(unit_id);
-			assert(unit_iter.valid());
-			ghost_owner_unit(&*unit_iter);
+			if(unit_iter.valid()) {
+				ghost_owner_unit(&*unit_iter);
+			}
 		}
 	}
 }

@@ -53,6 +53,7 @@ public:
 
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */
 	virtual unit_ptr get_unit() const;
+	virtual size_t get_unit_id() const { return unit_underlying_id_; }
 	/** @return pointer to the fake unit used only for visuals */
 	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
 
