@@ -120,6 +120,8 @@
    * Fixed an AI assertion when a unit with one disabled attack attacked a unit
      with no attacks or a single disabled attack.
    * It is now possible to disable logdomains in the Logging Options dialog.
+   * Removed misleading tooltip text stating registered nicknames are optional for
+     the official MP server.
 
 ## Version 1.13.12
  ### Security fixes
