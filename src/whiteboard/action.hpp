@@ -73,7 +73,7 @@ public:
 	 * Returns the id of the unit targeted by this action.
 	 * @retval 0 no unit is targeted.
 	 */
-	std::size_t get_unit_id() const;
+	virtual std::size_t get_unit_id() const;
 
 	/** @return pointer to the fake unit used only for visuals */
 	virtual fake_unit_ptr get_fake_unit() = 0;
