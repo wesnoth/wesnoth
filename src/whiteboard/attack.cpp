@@ -79,6 +79,7 @@ attack::attack(const config& cfg, bool hidden)
 		throw action::ctor_err("attack: Invalid weapon_choice_");
 
 	// Construct attack_movement_cost_
+	assert(get_unit());
 	attack_movement_cost_ = get_unit()->attacks()[weapon_choice_].movement_used();
 
 	this->init();
