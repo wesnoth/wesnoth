@@ -394,7 +394,7 @@ void manager::on_change_controller(int side, const team& t)
 	if(t.is_local_human()) // we own this side now
 	{
 		//tell everyone to clear this side's actions -- we're starting anew
-		resources::whiteboard->queue_net_cmd(sa.team_index(),sa.make_net_cmd_clear());
+		queue_net_cmd(sa.team_index(),sa.make_net_cmd_clear());
 		sa.clear();
 		//refresh the hidden_ attribute of every team's side_actions
 		update_plan_hiding();
@@ -412,7 +412,7 @@ void manager::on_change_controller(int side, const team& t)
 		{
 			team& local_team = resources::gameboard->teams().at(i);
 			if(local_team.is_local_human() && !local_team.is_enemy(side))
-				resources::whiteboard->queue_net_cmd(i,local_team.get_side_actions()->make_net_cmd_refresh());
+				queue_net_cmd(i,local_team.get_side_actions()->make_net_cmd_refresh());
 		}
 	}
 }
@@ -965,6 +965,10 @@ bool manager::allow_end_turn()
 
 bool manager::execute_all_actions()
 {
+	if (has_planned_unit_map())
+	{
+		ERR_WB << "Modifying action queue while temp modifiers are applied1!!!" << std::endl;
+	}
 	//exception-safety: finalizers set variables to false on destruction
 	//i.e. when method exits naturally or exception is thrown
 	variable_finalizer<bool> finalize_executing_actions(executing_actions_, false);
@@ -991,7 +995,7 @@ bool manager::execute_all_actions()
 
 	side_actions_ptr sa = viewer_actions();
 
-	if (resources::whiteboard->has_planned_unit_map())
+	if (has_planned_unit_map())
 	{
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!" << std::endl;
 	}
