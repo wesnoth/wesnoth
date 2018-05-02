@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-04-26 03:27+0300\n"
-"PO-Revision-Date: 2018-04-26 00:32+0200\n"
+"PO-Revision-Date: 2018-05-02 03:15+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -495,9 +495,9 @@ msgstr ""
 "\n"
 "Eine neue Karte oder Datei beinhaltet nur Parameter zum map_data Wert.\n"
 "\n"
-"Die erstellte Karte kann beim erstellen einer Multiplayer Partie unter "
-"\"Benutzerdefinierte Karten\" gefunden werden, sofern sie im "
-"Standardverzeichnis gespeichert wurde.\n"
+"Die erstellte Karte kann beim erstellen einer Mehrspieler Partie unter "
+"\"Eigene Karten\" gefunden werden, sofern sie im Standardverzeichnis "
+"gespeichert wurde.\n"
 "\n"
 "<bold>text='Eingebettet'</bold>"
 
@@ -676,8 +676,8 @@ msgstr ""
 "Die einzige zusätzliche Information die durch die Karten-Syntax gespeichert "
 "wird, ist die Startposition der spielbaren Parteien des Szenarios.\n"
 "\n"
-"Zusätzliche Informationen wie Fraktionseinstellungen oder benutzerdefinierte "
-"Events müssen manuell in WML geschrieben werden."
+"Zusätzliche Informationen wie Fraktionseinstellungen oder Events müssen "
+"manuell in WML geschrieben werden."
 
 #. [topic]: id=scenario_format
 #: data/core/editor/help.cfg:280
@@ -821,7 +821,7 @@ msgstr ""
 "\n"
 "Die Bezeichnung »Irdya« wird allerdings in der Epoche, in der die "
 "Haupthandlungen stattfinden, kaum verwendet. Die Bewohner nennen sie "
-"gewöhnlich »die Welt« oder - poetisch ausgedrückt - »die weite grüne Welt«."
+"gewöhnlich »die Welt« oder – poetisch ausgedrückt – »die weite grüne Welt«."
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:70
@@ -899,7 +899,7 @@ msgstr ""
 "    • Aldril: Stadt an der Perlenbucht.\n"
 "    • Schwarzwasser Hafen: Stadt südlich der Perlenbucht.\n"
 "    • Carcyn: zwischen den Grauen Wäldern und dem Großen Fluss.\n"
-"    • Dan’Tonk: größte Stadt Wesnoths - im Zentrum des Landes, nordwestlich "
+"    • Dan’Tonk: größte Stadt Wesnoths – im Zentrum des Landes, nordwestlich "
 "von Weldyn.\n"
 "    • Soradoc: nordöstlichster Außenposten des Königreichs, kontrolliert den "
 "Bereich der Vereinigung des Weldynflusses mit dem Großen Fluss.\n"
@@ -973,7 +973,7 @@ msgstr ""
 "    • Carcyn: Stadt an der Wesnoth/Elensefar-Grenze. Die Zugehörigkeit zu "
 "einem der beiden Reiche ist umstritten.\n"
 "\n"
-"<header>text='Erwähnenswerte Städte'</header>\n"
+"<header>text='Markane Landschaftspunkte'</header>\n"
 "    • <ref>dst='great_river' text='Großer Fluss'</ref>: wegen seiner Breite "
 "an dieser Stelle nur mit Schiffen überquerbar."
 
@@ -1327,9 +1327,9 @@ msgid ""
 "The <italic>text='Battle for Wesnoth'</italic> project was begun in 2003, "
 "and has been worked on by a multitude of volunteers ever since."
 msgstr ""
-"Das Spiel findet auf einem Hex-Feld basierten Spielfeld statt, auf dem eure "
+"Das Spiel findet auf einem Hexfeld basierten Spielfeld statt, auf dem eure "
 "Einheiten gegen einen Gegner kämpfen, der von einem Computer, einem anderen "
-"Spieler am selben Computer (hotseat), im selben Netzwerk oder im Multiplayer "
+"Spieler am selben Computer (hotseat), im selben Netzwerk oder im Mehrspieler "
 "Modus weltweit über das Internet gespielt werden kann.\n"
 "\n"
 "Jede dieser Schlachten wird als <italic>text='Szenario'</italic> bezeichnet. "
@@ -1361,7 +1361,7 @@ msgid ""
 msgstr ""
 "Dieses Kapitel listet alle Einheiten auf, denen Ihr im Laufe der Erforschung "
 "der Welt von Wesnoth begegnet. Jede in einer Kampagne oder einem Mehrspieler-"
-"Szenarium neu entdeckte Einheit wird dem für ihre Rasse vorgesehenen Ordner "
+"Szenario neu entdeckte Einheit wird dem für ihr Volk vorgesehenen Ordner "
 "zugefügt.\n"
 "Die entsprechende Seite mit der Beschreibung könnt Ihr Euch jederzeit wieder "
 "ansehen: Ihr findet dort alle Basisdaten, Details zur Angriffsweise, die "
@@ -1376,7 +1376,7 @@ msgid ""
 "\n"
 msgstr ""
 "Eine Fraktion ist eine Anzahl von Einheiten und Anführern. Fraktionen werden "
-"den Parteien in einer Multiplayer Partie zugewiesen.\n"
+"den Parteien in einer Mehrspieler Partie zugewiesen.\n"
 "\n"
 
 #. [topic]: id=..eras_section
@@ -1423,9 +1423,9 @@ msgid ""
 msgstr ""
 "Einige Waffen sind mit besonderen Eigenheiten ausgestattet, welche die "
 "Wirksamkeit bei einem Angriff steigern. Jede in einer Kampagne oder einem "
-"Mehrspielerszenarium neu entdeckte Art von Waffe wird dieser Liste zugefügt. "
+"Mehrspielerszenario neu entdeckte Art von Waffe wird dieser Liste zugefügt. "
 "Ihr könnt die Seiten mit der Beschreibung jederzeit konsultieren und prüfen, "
-"welche (bisher bekannte) Einheit den jeweiligen Spezialangriff verwenden "
+"welche (bisher bekannte) Einheit die jeweilige Waffenfähigkeit verwenden "
 "kann.\n"
 "\n"
 
@@ -1768,8 +1768,7 @@ msgid ""
 msgstr ""
 "Jede Einheit hat eine vordefinierte Anzahl an <italic>text='Lebenspunkten'</"
 "italic> (<bold>text='LP'</bold>) und sie stirbt, wenn der Wert unter 1 "
-"fällt.\n"
-"Ebenso ist eine bestimmte Menge von <italic>text='Erfahrungspunkten'</"
+"fällt. Ebenso ist eine bestimmte Menge von <italic>text='Erfahrungspunkten'</"
 "italic> (<bold>text='EP'</bold>) festgelegt. Frischen Rekruten fehlt die "
 "Übung, sie sammeln erst im Kampf Erfahrung."
 
@@ -2176,7 +2175,7 @@ msgstr ""
 "\n"
 "\n"
 "Treffer fügen dem Gegner mehr oder weniger schwere Verwundungen zu. Ein "
-"Elfenkrieger etwa mit 5-4 Schwertattacken verursacht einen Mindestschaden "
+"Elfenkrieger etwa mit 5x4 Schwertattacken verursacht einen Mindestschaden "
 "von 5 Punkten. Normalerweise wird dieser Wert von zwei Faktoren beeinflusst: "
 "<ref>dst='damage_types_and_resistance' text='Resistenzen'</ref> und "
 "<ref>dst='time_of_day' text='Tageszeit'</ref>. Um herauszufinden, wie sich "
@@ -2450,7 +2449,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"• <bold>text='Resting'</bold>: Eine Einheit, die sich nicht bewegt oder "
+"• <bold>text='Rasten'</bold>: Eine Einheit, die sich nicht bewegt oder "
 "angreift, erhält 2 LP zum nächsten Rundenstart."
 
 #. [topic]: id=healing
@@ -2475,7 +2474,8 @@ msgid ""
 msgstr ""
 "\n"
 "• <bold>text='Dörfer'</bold>: befindet sich eine Einheit zu Beginn ihres "
-"Zuges in einem Dorf, erhält sie 8 LP zurück."
+"Zuges in einem Dorf, erhält sie 8 LP zurück. Falls sie vergiftet ist wird "
+"dies stattdessen kuriert."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:365
@@ -2558,7 +2558,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<bold> text = 'Aufgestiegen' </bold>"
+"<bold>text='Aufgestiegen'</bold>"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:373
@@ -2597,7 +2597,7 @@ msgstr ""
 "Die wichtigsten Spielregeln von <italic>text='Battle for Wesnoth'</italic> "
 "sind Euch nun bekannt.\n"
 "\n"
-"Empfehlenswert wäre noch, sich mit den Tipps »Grundlegende Strategien« im "
+"Empfehlenswert wäre noch, sich mit den Tipps »Grundsätzliche Strategien« im "
 "Wesnoth-Manual oder den <ref>dst='..traits_section' text='Charakteristiken'</"
 "ref> und <ref>dst='..abilities_section' text='Fertigkeiten'</ref> der "
 "verschiedenen Einheiten vertraut zu machen.\n"
@@ -2640,7 +2640,7 @@ msgstr ""
 "Charakteristiken verändern die Eigenschaften einer Einheit leicht. "
 "Üblicherweise werden sie zufällig generiert, wenn eine Einheit ausgebildet "
 "wird. Charakteristiken die eine Einheit haben kann sind unter anderem durch "
-"die <italic>text='Rasse'</italic> der Einheit bestimmt."
+"das <italic>text='Volk'</italic> der Einheit bestimmt."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:398
@@ -2654,8 +2654,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Charakteristiken, die allen Einheiten außer Untoten zugewiesen werden können "
-"sind:\n"
+"Charakteristiken, die fast allen Einheiten außer Untoten und Kobolden "
+"zugewiesen werden können sind:\n"
 "<ref>dst='traits_intelligent' text='intelligent'</ref>, "
 "<ref>dst='traits_quick' text='schnell'</ref>, <ref>dst='traits_resilient' "
 "text='robust'</ref> und <ref>dst='traits_strong' text='kräftig'</ref>."
@@ -2676,9 +2676,9 @@ msgstr ""
 "\n"
 "\n"
 "Elfen können außerdem <ref>dst='traits_dextrous' text='geschickt'</ref> "
-"erhalten, sowie Zwerge <ref>dst='traits_healthy' text='gesund'</ref> und "
+"erhalten, sowie Zwerge <ref>dst='traits_healthy' text='vital'</ref> und "
 "Trolle und bestimmte Menschen <ref>dst='traits_fearless' text='furchtlos'</"
-"ref>.Andere Charakteristiken, die auftreten können sind "
+"ref>. Andere Charakteristiken, die auftreten können sind "
 "<ref>dst='traits_loyal' text='loyal'</ref>, <ref>dst='traits_feral' "
 "text='wild'</ref> und <ref>dst='traits_undead' text='untot'</ref>.\n"
 "\n"
@@ -2747,7 +2747,7 @@ msgstr ""
 "\n"
 "Jede Einheit hat einen Verteidigungswert und Bewegungskosten für jedes "
 "Geländefeld. Diese Werte sind in der Hilfe-Seite der entsprechenden Einheit "
-"zu finden. Gelände typen können einzigartige Eigenschaften wie etwa "
+"zu finden. Geländetypen können einzigartige Eigenschaften wie etwa "
 "Beleuchtungseffekte haben."
 
 #. [topic]: id=..terrains_section
@@ -3078,8 +3078,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Ihr könnt die installierten Epochen in dem Abschnitt <ref>text='eras' dst='.."
-"eras_section'</ref> im Hilfe-Menü einsehen."
+"Ihr könnt die installierten Epochen in dem Abschnitt <ref>text='Epochen' "
+"dst='..eras_section'</ref> im Hilfe-Menü einsehen."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:490
@@ -3780,7 +3780,7 @@ msgstr ""
 "Diese Einheit steht wie ein Fels im Schlachtgetümmel, denn ihre Resistenz "
 "ist verdoppelt, wenn sie sich verteidigt; allerdings steigt ihre Resistenz "
 "nur bis maximal 50%.\n"
-"Bei Anfälligkeiten gegen Schadensarten wirkt sich diese Fertigkeit nicht aus."
+"Auf Anfälligkeiten gegen Schadensarten hat diese Fertigkeit keinen Einfluss."
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:106
@@ -3817,8 +3817,6 @@ msgstr ""
 msgid "skirmisher"
 msgstr "Plänkler"
 
-# vorher:
-# Plänkler
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:126
 msgid "female^skirmisher"
@@ -4046,11 +4044,10 @@ msgid ""
 "Undead or units in villages."
 msgstr ""
 "Findet eine Einheit den Tod durch einen Angriff mit der Waffenart »Untote "
-"Plage«, erhebt sie sich sofort wieder als wandelnde Leiche zu einem "
-"fürderhin Untotendasein. Mit der Verwandlung zieht sie gegen ehemalige "
-"Gefährten und Verbündete in den Kampf. Diese Waffe ist wirkungslos bei "
-"Einheiten, die sich in einem Dorf aufhalten – auch bei Untoten erübrigt sich "
-"solch eine Attacke."
+"Plage«, erhebt sie sich sofort wieder und kämpft fortan auf der gegnerischen "
+"Seite. Mit der Verwandlung zieht sie gegen ehemalige Gefährten und "
+"Verbündete in den Kampf. Diese Waffe ist wirkungslos bei Einheiten, die sich "
+"in einem Dorf aufhalten – auch bei Untoten erübrigt sich diese Wirkung."
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:316
@@ -4064,7 +4061,7 @@ msgstr ""
 "fürderhin Untotendasein. Mit der Verwandlung zieht sie gegen ehemalige "
 "Gefährten und Verbündete in den Kampf. Diese Waffe ist wirkungslos bei "
 "Einheiten, die sich in einem Dorf aufhalten – auch bei Untoten erübrigt sich "
-"solch eine Attacke."
+"diese Wirkung."
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:326
@@ -4150,12 +4147,11 @@ msgid ""
 "also causes this unit to take double damage from the target’s counterattack."
 msgstr ""
 "Diese Attacke wird mit solcher Wucht geführt, dass sie doppelten Schaden "
-"verursacht.\n"
-"Da der Angreifer dabei seine eigene Deckung vollkommen vernachlässigt, "
-"ergeht es ihm bei einem Gegentreffer genauso: er nimmt den Verlust von "
-"zweimal so vielen Lebenspunkten in Kauf.\n"
-"Wird er im Unterschied dazu selbst angegriffen, bleibt ihm die Möglichkeit "
-"für einen Sturmangriff verwehrt."
+"verursacht. Da der Angreifer dabei seine eigene Deckung vollkommen "
+"vernachlässigt, ergeht es ihm bei einem Gegentreffer genauso: er nimmt den "
+"Verlust von zweimal so vielen Lebenspunkten in Kauf. Wird er im Unterschied "
+"dazu selbst angegriffen, bleibt ihm die Möglichkeit für einen Sturmangriff "
+"verwehrt."
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:394
@@ -4202,11 +4198,9 @@ msgid ""
 "a unit."
 msgstr ""
 "Angriffe mit Gift oder vergiftete Waffen wirken bei allen lebenden "
-"Einheiten.\n"
-"Giftopfer verlieren zu Beginn jeder Runde 8 LP bis nur noch einer übrig "
-"bleibt, es sei denn sie werden von dem Gift kuriert oder schaffen es, ein "
-"Dorf zu erreichen.\n"
-"Es sei betont: Gift alleine wirkt niemals tödlich."
+"Einheiten. Giftopfer verlieren zu Beginn jeder Runde 8 LP bis nur noch einer "
+"übrig bleibt, es sei denn sie werden von dem Gift kuriert oder schaffen es, "
+"ein Dorf zu erreichen. Es sei betont: Gift alleine wirkt niemals tödlich."
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -4348,12 +4342,12 @@ msgstr "Zweites Morgengrauen"
 #. [time]: id=morning1
 #: data/core/macros/schedules.cfg:520
 msgid "First Morning"
-msgstr "Erster Morgen"
+msgstr "Erster Vormittag"
 
 #. [time]: id=morning2
 #: data/core/macros/schedules.cfg:532
 msgid "Second Morning"
-msgstr "Zweiter Morgen"
+msgstr "Zweiter Vormittag"
 
 #. [time]: id=midday1
 #: data/core/macros/schedules.cfg:544
@@ -4368,12 +4362,12 @@ msgstr "Zweiter Mittag"
 #. [time]: id=afternoon1
 #: data/core/macros/schedules.cfg:568
 msgid "First Afternoon"
-msgstr "Erster Abend"
+msgstr "Erster Nachmittag"
 
 #. [time]: id=afternoon2
 #: data/core/macros/schedules.cfg:580
 msgid "Second Afternoon"
-msgstr "Zweiter Abend"
+msgstr "Zweiter Nachmittag"
 
 #. [time]: id=dusk1
 #: data/core/macros/schedules.cfg:592
@@ -4466,7 +4460,7 @@ msgid ""
 "in a village."
 msgstr ""
 " Diese Einheit kann sich regenerieren. Durch Selbstheilung gesundet sie auf "
-"gleiche Weise wie bei einem Aufenthalt in einem Dorf."
+"die gleiche Weise wie bei einem Aufenthalt in einem Dorf."
 
 #: data/core/macros/special-notes.cfg:29
 msgid ""
@@ -4707,9 +4701,9 @@ msgid ""
 "upkeep cost at the end of every turn, which is equal to their level. Loyal "
 "units do not incur this cost."
 msgstr ""
-"»Loyale« Truppen fordern keinen Unterhalt. Die meisten anderen Einheiten "
-"verlangen in jeder Runde einen Unterhalt in Höhe ihrer Stufe, getreue "
-"Mitstreiter verursachen die Kosten nicht."
+"<italic>text='Loyale'</italic> Truppen fordern keinen Unterhalt. Die meisten "
+"anderen Einheiten verlangen in jeder Runde einen Unterhalt in Höhe ihrer "
+"Stufe, getreue Mitstreiter verursachen die Kosten nicht."
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:25
@@ -4751,8 +4745,9 @@ msgstr ""
 msgid ""
 "<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
 msgstr ""
-"»Untote« Einheiten sind gegen Gift immun, auch die speziellen Angriffe "
-"»Lebensentzug« und »Untote Plage« zeigen bei diesen Wesen keine Wirkung."
+"<italic>text='Untote'</italic> Einheiten sind gegen Gift immun, auch die "
+"speziellen Angriffe mit den Fähigkeiten Lebensentzug und Untote Plage zeigen "
+"bei diesen Wesen keine Wirkung."
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:51
@@ -4775,17 +4770,19 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Künstlich erschaffene Objekte (bspw. Schiffe), Kriegsgeräte oder Maschinen "
-"haben normal keine weitere Eigenschaft und sind natürlich gegen die meisten "
-"Angriffsarten resistent  – Waffen wie Gift, Plagen oder Lebensentzug kommen "
-"hier nicht in Frage."
+"Künstlich erschaffene Objekte wie z.B. Schiffe, Kriegsgeräte oder Maschinen "
+"haben normalerweise keine weitere Eigenschaft und sind natürlich gegen die "
+"meisten Angriffsarten resistent – Effekte wie Gift, Untote Plage oder "
+"Lebensentzug kommen hier nicht zum Tragen."
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:54
 msgid ""
 "<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
 "plague."
-msgstr "Kriegsgerät oder Maschinen erhalten das Merkmal »mechanisch«."
+msgstr ""
+"Kriegsgerät oder Maschinen erhalten das Merkmal <italic>text='mechanisch'</"
+"italic>."
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:77
@@ -4808,9 +4805,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Diese Einheiten bestehen aus Energie oder Urstoffen (Wasser, Feuer, Stein "
-"etc.), zusätzliche Charakteristika haben sie in aller Regel nicht und die "
-"meisten Schadensarten zeigen keine Wirkung."
+"Diese Einheiten bestehen aus Energie oder Urstoffen (Wasser, Feuer, "
+"Stein ...), zusätzliche Charakteristiken haben sie in aller Regel nicht und "
+"Gift, Lebensentzug oder Untote Plage zeigen keine Wirkung."
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:80
@@ -4818,8 +4815,8 @@ msgid ""
 "<italic>text='Elemental'</italic> units are immune to poison, drain, and "
 "plague."
 msgstr ""
-"Einheiten vom Typ »elementar« werden durch Gift, Lebensentzug und Untote "
-"Plage nicht beeinflusst."
+"Einheiten vom Typ <italic>text='elementar'</italic> werden durch Gift, "
+"Lebensentzug und Untote Plage nicht beeinflusst."
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:102
@@ -4891,8 +4888,8 @@ msgid ""
 "<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
 "strike in ranged combat."
 msgstr ""
-"»Geschickte« Einheiten richten mit Fernkampfwaffen einen Punkt mehr Schaden "
-"an."
+"<italic>text='Geschickte'</italic> Einheiten richten mit Fernkampfwaffen "
+"einen Punkt mehr Schaden an."
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:140
@@ -4957,17 +4954,18 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Intelligente Einheiten sind vor allem zu Beginn einer Kampagne nützlich, sie "
-"steigen rascher als andere im Rang auf. Später ist diese Qualität nicht mehr "
-"so vorteilhaft: eine Einheit hat auf ihrer höchsten Stufe genug Erfahrung. "
-"Wenn Ihr schon über mehrere hochrangige Einheiten verfügt, ist es "
-"zweckmäßiger, Truppen mit anderen Charakteristika einzuberufen."
+"<italic>text='Intelligente'</italic> Einheiten sind vor allem zu Beginn "
+"einer Kampagne nützlich, sie steigen rascher als andere im Rang auf. Später "
+"ist diese Qualität nicht mehr so vorteilhaft: eine Einheit hat auf ihrer "
+"höchsten Stufe genug Erfahrung. Wenn Ihr schon über mehrere hochrangige "
+"Einheiten verfügt, ist es zweckmäßiger, Truppen mit anderen Charakteristiken "
+"einzuberufen."
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:162
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
-"Einheiten mit dem Attribut »intelligent« benötigen 20% weniger Erfahrung für "
+"Einheiten mit dem Attribut intelligent« benötigen 20% weniger Erfahrung für "
 "eine Beförderung."
 
 #. [trait]: id=resilient
@@ -5034,7 +5032,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<italic>text='Gesunde'</italic> Einheiten haben einen zusätzlichen "
+"<italic>text='Vitale'</italic> Einheiten haben einen zusätzlichen "
 "Lebenspunkt und bekommen noch einen pro Stufe. Sie werden außerdem um 2 "
 "Lebenspunkte pro Runde geheilt, egal ob sie im vorherigen Zug aktiv waren "
 "oder nicht."
@@ -5062,7 +5060,9 @@ msgstr "furchtlos"
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:224 data/core/macros/traits.cfg:241
 msgid "Fights normally during unfavorable times of day/night"
-msgstr "Tag/Nacht haben keinen Einfluß"
+msgstr ""
+"Tag/Nacht haben keinen negativen Einfluss, der positive Bonus bleibt "
+"erhalten."
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:225 data/core/macros/traits.cfg:242
@@ -5150,8 +5150,8 @@ msgid ""
 "<italic>text='Slow'</italic> units have 1 less movement point but 5% more "
 "hitpoints."
 msgstr ""
-"<italic>text='Lahme'</italic> Einheiten sind um einen BP weniger beweglich, "
-"verfügen dafür aber über 5% mehr LP."
+"<italic>text='Behäbige'</italic> Einheiten sind um einen BP weniger "
+"beweglich, verfügen dafür aber über 5% mehr LP."
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:313
@@ -5173,10 +5173,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"»Tumb« ist eine Schwäche, die unter Kobolden nur allzu oft feststellbar ist, "
-"aber auch bei anderen niederen Arten. Es hat schon seine Gründe, dass einige "
-"Spezies in Rangordnungen weiter unten stehen – ein weniger stark "
-"entwickelter Intellekt ist einer davon."
+"<italic>text='Tumb'<italic> ist eine Schwäche, die unter Kobolden nur allzu "
+"oft feststellbar ist, aber auch bei anderen niederen Arten. Es hat schon "
+"seine Gründe, dass einige Spezies in Rangordnungen weiter unten stehen – ein "
+"weniger stark entwickelter Intellekt ist einer davon."
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:315
@@ -5184,8 +5184,8 @@ msgid ""
 "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
 "experience required to advance."
 msgstr ""
-"»Tumbe« Einheiten benötigen 20% mehr Erfahrung als andere, um eine Stufe "
-"aufzusteigen."
+"<italic>text='Tumbe'</italic> Einheiten benötigen 20% mehr Erfahrung als "
+"andere, um eine Stufe aufzusteigen."
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:329
@@ -5203,11 +5203,12 @@ msgid ""
 "Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
 "suffer from a 1 point decrease in movement and melee damage."
 msgstr ""
-"Einheiten, die in Wesnoth auf natürliche Weise »gealtert« sind, kämpfen zwar "
-"immer noch, aber das Alter fordert seinen Tribut: ihre Angriffe verursachen "
-"im Nahkampf einen Schadenspunkt weniger als die der Jüngeren und bei der "
-"Fortbewegung hängen sie um einen BP hinterher. Am deutlichsten wirken sich "
-"die Jahre natürlich auf die Lebenserwartung aus: 8 LP werden abgezogen."
+"Einheiten, die in Wesnoth auf natürliche Weise italic>text='gealtert'</"
+"italic> sind, kämpfen zwar immer noch, aber das Alter fordert seinen Tribut: "
+"ihre Angriffe verursachen im Nahkampf einen Schadenspunkt weniger als die "
+"der Jüngeren und bei der Fortbewegung hängen sie um einen BP hinterher. Am "
+"deutlichsten wirken sich die Jahre natürlich auf die Lebenserwartung aus: 8 "
+"LP werden abgezogen."
 
 #: data/core/units.cfg:11
 msgid ""
@@ -5909,11 +5910,12 @@ msgid ""
 "intelligent being. Most mechanical things neither move nor think on their "
 "own, but some do so as a result of magical enchantment."
 msgstr ""
-"»Kriegsgerät« beschreibt ein weder auf natürliche Weise noch durch "
-"nekromantische Einflüsse animiertes Artefakt, das von einem intelligenten "
-"Lebewesen erschaffen wurde. Die meisten Objekte und Gebilde können sich "
-"nicht selbstständig bewegen, noch sind sie mit Denkvermögen ausgestattet. –  "
-"Einigen ist dies hingegen als Ergebnis einer magische Verzauberung möglich."
+"<italic>text='Kriegsgerät'</italic> beschreibt ein weder auf natürliche "
+"Weise noch durch nekromantische Einflüsse animiertes Artefakt, das von einem "
+"intelligenten Lebewesen erschaffen wurde. Die meisten Objekte und Gebilde "
+"können sich nicht selbstständig bewegen, noch sind sie mit Denkvermögen "
+"ausgestattet. – Einigen ist dies hingegen als Ergebnis einer magische "
+"Verzauberung möglich."
 
 #. [race]: id=merman
 #: data/core/units.cfg:260
@@ -5943,10 +5945,10 @@ msgid ""
 "ocean. They are typically wary of dry land, as they are awkward and clumsy "
 "there and they struggle greatly to move over rough or forested terrain."
 msgstr ""
-"Als bizarre Wesen, teils Mensch, teils  Fisch, stellt das Meervolk eine "
+"Als bizarre Wesen, teils Mensch, teils Fisch, stellt das Meervolk eine "
 "rätselhafte Rasse dar, die sowohl amphibische wie auch menschliche "
 "Eigenschaften in sich vereint. Kräftige, mit Schuppen bedeckte Fischschwänze "
-"ermöglichen eine  erstaunlich schnelle Fortbewegung in allen Arten von "
+"ermöglichen eine erstaunlich schnelle Fortbewegung in allen Arten von "
 "Gewässern. Extrem geschickte Hände und nicht zu verachtende Intelligenz "
 "kommen ihnen bei der Erschaffung von Werkzeugen und selbst feinerem Handwerk "
 "sehr entgegen.\n"
@@ -6186,7 +6188,7 @@ msgstr ""
 "Nachahmer. In den seltenen Friedensperioden sind die Klans einzig und allein "
 "damit beschäftigt, sich für die nächste Schlacht zu stärken. Orks führen "
 "eine gar grobe Schrift, um Drohungen oder Beleidigungen an Häuptlinge "
-"anderer Stämme zu verfassen - üblicherweise in Blut.\n"
+"anderer Stämme zu verfassen – üblicherweise in Blut.\n"
 "\n"
 "Die Orkgesellschaft basiert auf dem Recht des Stärkeren, ein Häuptling "
 "herrscht nur solange, wie er sich gegen Konkurrenten behaupten kann. "
@@ -6393,7 +6395,7 @@ msgstr ""
 " \n"
 "Der Grund für diese abscheuliche, ja, pervertierte Treue liegt im Dunkel. "
 "Was treibt ein des Willens beraubtes Wesen, selbständig und unabhängig den "
-"Befehl seines Meisters auszuführen? Nur eines weiß man - Nekromanten müssen "
+"Befehl seines Meisters auszuführen? Nur eines weiß man – Nekromanten müssen "
 "sich nur sehr selten – ein einziges Mal vielleicht nach Ablauf mehrerer "
 "Monde – des Gehorsams ihrer Sklaven rückversichern...\n"
 " \n"
