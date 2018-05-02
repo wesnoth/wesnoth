@@ -189,7 +189,7 @@ void editor_controller::do_screenshot(const std::string& screenshot_filename /* 
 {
 	try {
 		surface screenshot = gui().screenshot(true);
-		if(screenshot.null() || !image::save_image(screenshot, screenshot_filename)) {
+		if(screenshot.null() || image::save_image(screenshot, screenshot_filename) != image::save_result::success) {
 			ERR_ED << "Screenshot creation failed!\n";
 		}
 	} catch (wml_exception& e) {
