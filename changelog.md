@@ -8,6 +8,10 @@
  ### Units
    * Changed the plural name for the merfolk race from Mermen to Merfolk (issue #2940)
      and replaced a few instances in core unit or terrain descriptions accordingly.
+ ### User Interface
+   * Added a preference in order to allow disabling confirmations when leaving
+     up to the title screen or to desktop, only if the player changes the
+     default configuration ex profeso.
  ### Miscellaneous and bug fixes
    * Removed misleading tooltip text stating registered nicknames are optional for
      the official MP server.
