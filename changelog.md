@@ -1,6 +1,6 @@
 ## Version 1.14.0+dev
  ### Campaigns
-   * Secrets of the Ancients:
+   * Secrets of the Ancients
      * Fixed minor unit naming inconsistencies (issues #2844 and #2846).
  ### Language and i18n
    * Updated translations: French, Italian, Slovak, Spanish
