@@ -158,7 +158,7 @@ void gamemap::read(const std::string& data, const bool allow_invalid)
 			if(tdata_->map().count(t) == 0) {
 				if(!tdata_->try_merge_terrains(t)) {
 					std::stringstream ss;
-					ss << "Illegal tile in map: (" << t_translation::write_terrain_code(t)
+					ss << "Unknown tile in map: (" << t_translation::write_terrain_code(t)
 						   << ") '" << t << "'";
 					throw incorrect_map_format_error(ss.str().c_str());
 				}
