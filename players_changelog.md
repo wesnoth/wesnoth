@@ -15,6 +15,8 @@ changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog.md
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
    * Fixed some hotkeys triggering multiple commands on GNU/Linux (bug #1736)
+   * Attempting to save a screenshot with an unsupported format now shows an error
+     message, instead of saving the screenshot as BMP with the requested extension.
 
 
 ## Version 1.13.12

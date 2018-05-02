@@ -122,6 +122,8 @@
    * It is now possible to disable logdomains in the Logging Options dialog.
    * Removed misleading tooltip text stating registered nicknames are optional for
      the official MP server.
+   * Attempting to save a screenshot with an unsupported format now shows an error
+     message, instead of saving the screenshot as BMP with the requested extension.
 
 ## Version 1.13.12
  ### Security fixes
