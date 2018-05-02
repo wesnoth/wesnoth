@@ -35,6 +35,7 @@
 #include "gettext.hpp"
 
 #include <boost/filesystem.hpp>
+#include <stdexcept>
 
 namespace gui2
 {
@@ -124,11 +125,16 @@ void screenshot_notification::save_screenshot()
 	boost::filesystem::path path(screenshots_dir_path_);
 	path /= filename;
 
-	const bool res = image::save_image(screenshot_, path.string());
-	if(!res) {
+	image::save_result res = image::save_image(screenshot_, path.string());
+	if(res == image::save_result::unsupported_format) {
+		gui2::show_error_message(_("Unsupported image format.\n\n"
+			"Try to save the screenshot as PNG instead."));
+	} else if(res == image::save_result::save_failed) {
 		gui2::show_error_message(
 			translation::dsgettext("wesnoth", "Screenshot creation failed.\n\n"
-				"Make sure there is enough space on the drive holding Wesnoth’s player resource files and that file permissions are set up correctly."));
+			"Make sure there is enough space on the drive holding Wesnoth’s player resource files and that file permissions are set up correctly."));
+	} else if(res != image::save_result::success) {
+		throw std::logic_error("Unexpected error while trying to save a screenshot");
 	} else {
 		path_box.set_active(false);
 		find_widget<button>(&window, "open", false).set_active(true);
