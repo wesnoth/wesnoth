@@ -190,6 +190,9 @@ void highlighter::last_action_redraw(move_ptr move)
 	if(move->get_fake_unit()) {
 		side_actions& sa = *resources::gameboard->teams().at(move->team_index()).get_side_actions().get();
 
+#if 0
+		// Disabled this since for moves of planned recruits get_unit() returns nullptr, een tough they are still valid.
+
 		// Units with planned actions may have been killed in the previous turn before all actions were completed.
 		// In these cases, remove these planned actions for any invalid units and do not redraw anything.
 		if (move->get_unit() == nullptr)
@@ -204,8 +207,8 @@ void highlighter::last_action_redraw(move_ptr move)
 
 			return;
 		}
-
-		side_actions::iterator last_action = sa.find_last_action_of(*(move->get_unit()));
+#endif
+		side_actions::iterator last_action = sa.find_last_action_of(move->get_unit_id());
 		side_actions::iterator second_to_last_action = last_action != sa.end() && last_action != sa.begin() ? last_action - 1 : sa.end();
 
 		bool this_is_last_action = last_action != sa.end() && move == *last_action;
@@ -256,7 +259,7 @@ void highlighter::find_secondary_highlights()
 action_ptr highlighter::get_execute_target()
 {
 	if(action_ptr locked = selected_action_.lock()) {
-		return *side_actions_->find_first_action_of(*(locked->get_unit()));
+		return *side_actions_->find_first_action_of(locked->get_unit_id());
 	} else {
 		return action_ptr();
 	}
@@ -264,7 +267,7 @@ action_ptr highlighter::get_execute_target()
 action_ptr highlighter::get_delete_target()
 {
 	if(action_ptr locked = selected_action_.lock()) {
-		return *side_actions_->find_last_action_of(*(locked->get_unit()));
+		return *side_actions_->find_last_action_of(locked->get_unit_id());
 	} else {
 		return action_ptr();
 	}
