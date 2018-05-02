@@ -43,7 +43,9 @@
 #include "key.hpp"
 #include "pathfind/pathfind.hpp"
 #include "play_controller.hpp"
+#include "replay_helper.hpp"
 #include "resources.hpp"
+#include "synced_context.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
@@ -181,8 +183,13 @@ void manager::set_active(bool active)
 
 		if (active_)
 		{
-			if(should_clear_undo())
+			if(should_clear_undo()) {
+				if(!resources::controller->current_team().auto_shroud_updates()) {
+					synced_context::run_and_throw("update_shroud", replay_helper::get_update_shroud());
+					synced_context::run_and_throw("auto_shroud", replay_helper::get_auto_shroud(true));
+				}
 				resources::undo_stack->clear();
+			}
 			validate_viewer_actions();
 			LOG_WB << "Whiteboard activated! " << *viewer_actions() << "\n";
 			create_temp_move();
@@ -1077,7 +1084,7 @@ int manager::get_spent_gold_for(int side)
 
 bool manager::should_clear_undo() const
 {
-	return resources::controller->is_networked_mp();
+	return resources::controller->is_networked_mp() && resources::controller->current_team().is_local();
 }
 
 void manager::options_dlg()
