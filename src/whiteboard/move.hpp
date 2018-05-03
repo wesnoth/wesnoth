@@ -21,6 +21,7 @@
 #include "action.hpp"
 
 struct temporary_unit_mover;
+class unit;
 
 namespace wb {
 
@@ -52,12 +53,16 @@ public:
 
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */
 	virtual unit_ptr get_unit() const;
+	virtual size_t get_unit_id() const { return unit_underlying_id_; }
 	/** @return pointer to the fake unit used only for visuals */
 	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
 
 	virtual map_location get_source_hex() const;
 	virtual map_location get_dest_hex() const;
 
+	std::size_t raw_uid() const { return unit_underlying_id_; }
+
+	void modify_unit(unit& new_unit);
 	virtual void set_route(const pathfind::marked_route& route);
 	virtual const pathfind::marked_route& get_route() const { assert(route_); return *route_; }
 	/// attempts to pathfind a new marked route for this path between these two hexes;
@@ -95,7 +100,7 @@ protected:
 		return std::static_pointer_cast<move>(action::shared_from_this());
 	}
 
-	void calculate_move_cost();
+	int calculate_moves_left(unit& u);
 
 	size_t unit_underlying_id_;
 	std::string unit_id_;
@@ -117,7 +122,7 @@ private:
 	void hide_fake_unit();
 	void show_fake_unit();
 
-	void init();
+	void init(unit* u = nullptr);
 	void update_arrow_style();
 	std::unique_ptr<temporary_unit_mover> mover_;
 	bool fake_unit_hidden_;

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-04-26 03:28+0300\n"
-"PO-Revision-Date: 2018-05-02 06:47+0200\n"
+"PO-Revision-Date: 2018-05-03 16:50+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -4334,7 +4334,7 @@ msgstr "Zu welcher Allianz eine Partei gehört"
 #. [menu_button]: id=side_color
 #: data/gui/window/mp_staging.cfg:304
 msgid "The team color"
-msgstr "Farbe der Allianz"
+msgstr "Farbe der Partei"
 
 #. [button]: id=ok
 #: data/gui/window/mp_staging.cfg:422
@@ -4672,7 +4672,7 @@ msgstr "Grafikthema"
 #. [button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:276
 msgid "Change the in-game theme"
-msgstr "Ändere das Graphik-Thema im Spiel"
+msgstr "Ändere das Grafik-Thema im Spiel"
 
 #. [label]
 #: data/gui/window/preferences/04_sound.cfg:38
@@ -5919,7 +5919,7 @@ msgstr "Version $version"
 
 #: src/gui/dialogs/game_version.cpp:141
 msgid "Running on $os"
-msgstr "Läuft auf $os"
+msgstr "Läuft unter $os"
 
 #: src/gui/dialogs/game_version.cpp:226
 msgid "version^N/A"
@@ -5951,7 +5951,7 @@ msgstr "Initialisiere Schriftart für aktuelle Sprache"
 
 #: src/gui/dialogs/loading_screen.cpp:54
 msgid "Initializing teams"
-msgstr "Initialisiere Allianzen"
+msgstr "Initialisiere Parteien"
 
 #: src/gui/dialogs/loading_screen.cpp:56
 msgid "Loading game configuration"
@@ -6056,7 +6056,6 @@ msgstr ""
 "Host vorschlagen, seine Erweiterungen zu aktualisieren."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:241
-#, fuzzy
 msgid "Missing User-made Content."
 msgstr "Fehlende Erweiterungen"
 
@@ -6112,8 +6111,8 @@ msgid ""
 "One or more items need to be installed\n"
 "in order to join this game."
 msgstr ""
-"Eine oder mehrere Erweiterungen müssen installiert werden,\n"
-"um dieser Partie beitreten zu können."
+"Eine oder mehrere Erweiterungen müssen installiert\n"
+"werden, um dieser Partie beitreten zu können."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:512
 msgid "Observers allowed"
@@ -6197,7 +6196,7 @@ msgstr ""
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:536
 msgid "No eras available for this game."
-msgstr "Keine Epochen für diese Partie verfügbar."
+msgstr "Keine Epochen für diese Partie verfügbar"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:830
 msgid "The selected game has no sides!"
