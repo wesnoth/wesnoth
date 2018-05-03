@@ -14,6 +14,8 @@
    * Attempting to save a screenshot with an unsupported format now shows an error
      message, instead of saving the screenshot as BMP with the requested extension.
    * It is now possible to disable logdomains in the Logging Options dialog.
+   * Fixed the wesnoth(6) manpage claiming the default log level is 'error' when it
+     has been 'warning' since version 1.9.0.
 
 ## Version 1.14.0
  ### Campaigns
