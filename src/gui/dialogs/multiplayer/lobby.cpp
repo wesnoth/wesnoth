@@ -466,7 +466,7 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 
 	ss << "\n<big>" << _("Settings:") << "</big>\n";
 	ss << _("Experience modifier:")   << " " << game.xp << "\n";
-	ss << _("Gold:")                  << " " << game.gold << "\n";
+	ss << _("Gold per village:")      << " " << game.gold << "\n";
 	ss << _("Map size:")              << " " << game.map_size_info << "\n";
 	ss << _("Registered users only:") << " " << yes_or_no(game.registered_users_only) << "\n";
 	ss << _("Reloaded:")              << " " << yes_or_no(game.reloaded) << "\n";
