@@ -90,7 +90,7 @@ WESMERE_HEADER = '''\
 <div id="content">
     <h1>Wesnoth %(server_name)s Add-ons List</h1>
 
-    <p>To install add-ons using the in-game client, choose “Add-ons” from the main menu, and click “Connect” to connect to the add-ons server. Pick the add-on you want to install from the list and click “OK” — the download will commence immediately and the add-on will be automatically installed once finished. Bear in mind that not all add-ons are singleplayer campaigns!</p>
+    <p>To install add-ons using the in-game client, choose “Add-ons” from the main menu, and click “Connect” to connect to the add-ons server. Pick the add-on you want to install from the list and click the “+” icon — the download will commence immediately and the add-on will be automatically installed once finished. Bear in mind that not all add-ons are singleplayer campaigns!</p>
 '''
 
 WESMERE_DOWNLOAD_HELP = '''\
