@@ -1292,6 +1292,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 	auto p = player_connections_.find(socket);
 	wesnothd::player& player = p->info();
 	game& g = *(p->get_game());
+	std::weak_ptr<game> g_ptr { p->get_game() };
 
 	simple_wml::document& data = *doc;
 
@@ -1478,14 +1479,16 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			// ones so he gets the updated gamelist.
 			delete_game(g.id());
 		} else {
+			auto description = g.description();
 			g.remove_player(socket);
 			player_connections_.modify(player_connections_.find(socket), player_record::enter_lobby);
-			g.describe_slots();
+			if(!g_ptr.expired())
+				g.describe_slots();
 
 			// Send all other players in the lobby the update to the gamelist.
 			simple_wml::document diff;
 			bool diff1 = make_change_diff(*games_and_users_list_.child("gamelist"),
-										  "gamelist", "game", g.description(), diff);
+										  "gamelist", "game", description, diff);
 			bool diff2 = make_change_diff(games_and_users_list_.root(), nullptr,
 										  "user", player.config_address(), diff);
 			if (diff1 || diff2) {
