@@ -43,7 +43,9 @@
 #include "key.hpp"
 #include "pathfind/pathfind.hpp"
 #include "play_controller.hpp"
+#include "replay_helper.hpp"
 #include "resources.hpp"
+#include "synced_context.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
@@ -181,8 +183,13 @@ void manager::set_active(bool active)
 
 		if (active_)
 		{
-			if(should_clear_undo())
+			if(should_clear_undo()) {
+				if(!resources::controller->current_team().auto_shroud_updates()) {
+					synced_context::run_and_throw("update_shroud", replay_helper::get_update_shroud());
+					synced_context::run_and_throw("auto_shroud", replay_helper::get_auto_shroud(true));
+				}
 				resources::undo_stack->clear();
+			}
 			validate_viewer_actions();
 			LOG_WB << "Whiteboard activated! " << *viewer_actions() << "\n";
 			create_temp_move();
@@ -387,7 +394,7 @@ void manager::on_change_controller(int side, const team& t)
 	if(t.is_local_human()) // we own this side now
 	{
 		//tell everyone to clear this side's actions -- we're starting anew
-		resources::whiteboard->queue_net_cmd(sa.team_index(),sa.make_net_cmd_clear());
+		queue_net_cmd(sa.team_index(),sa.make_net_cmd_clear());
 		sa.clear();
 		//refresh the hidden_ attribute of every team's side_actions
 		update_plan_hiding();
@@ -405,7 +412,7 @@ void manager::on_change_controller(int side, const team& t)
 		{
 			team& local_team = resources::gameboard->teams().at(i);
 			if(local_team.is_local_human() && !local_team.is_enemy(side))
-				resources::whiteboard->queue_net_cmd(i,local_team.get_side_actions()->make_net_cmd_refresh());
+				queue_net_cmd(i,local_team.get_side_actions()->make_net_cmd_refresh());
 		}
 	}
 }
@@ -528,8 +535,9 @@ void manager::pre_draw()
 
 		for (size_t unit_id : units_owning_moves_) {
 			unit_map::iterator unit_iter = resources::gameboard->units().find(unit_id);
-			assert(unit_iter.valid());
-			ghost_owner_unit(&*unit_iter);
+			if(unit_iter.valid()) {
+				ghost_owner_unit(&*unit_iter);
+			}
 		}
 	}
 }
@@ -958,6 +966,10 @@ bool manager::allow_end_turn()
 
 bool manager::execute_all_actions()
 {
+	if (has_planned_unit_map())
+	{
+		ERR_WB << "Modifying action queue while temp modifiers are applied1!!!" << std::endl;
+	}
 	//exception-safety: finalizers set variables to false on destruction
 	//i.e. when method exits naturally or exception is thrown
 	variable_finalizer<bool> finalize_executing_actions(executing_actions_, false);
@@ -984,7 +996,7 @@ bool manager::execute_all_actions()
 
 	side_actions_ptr sa = viewer_actions();
 
-	if (resources::whiteboard->has_planned_unit_map())
+	if (has_planned_unit_map())
 	{
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!" << std::endl;
 	}
@@ -1077,7 +1089,7 @@ int manager::get_spent_gold_for(int side)
 
 bool manager::should_clear_undo() const
 {
-	return resources::controller->is_networked_mp();
+	return resources::controller->is_networked_mp() && resources::controller->current_team().is_local();
 }
 
 void manager::options_dlg()

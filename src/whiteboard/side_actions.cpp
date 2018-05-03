@@ -571,6 +571,36 @@ side_actions::iterator side_actions::find_first_action_at(map_location hex)
 	return find_first_action_of(actions_.get<container::by_hex>().equal_range(hex), begin(), std::less<iterator>());
 }
 
+side_actions::iterator side_actions::find_first_action_of(size_t unit_id, side_actions::iterator start_position)
+{
+	return find_first_action_of(actions_.get<container::by_unit>().equal_range(unit_id), start_position, std::less<iterator>());
+}
+
+side_actions::const_iterator side_actions::find_last_action_of(size_t unit_id, side_actions::const_iterator start_position) const {
+	return find_first_action_of(actions_.get<container::by_unit>().equal_range(unit_id), start_position, std::greater<iterator>());
+}
+
+side_actions::iterator side_actions::find_last_action_of(size_t unit_id, side_actions::iterator start_position)
+{
+	return find_first_action_of(actions_.get<container::by_unit>().equal_range(unit_id), start_position, std::greater<iterator>());
+}
+
+side_actions::const_iterator side_actions::find_last_action_of(size_t unit_id) const
+{
+	if(end() == begin()) {
+		return end();
+	}
+	return find_last_action_of(unit_id, end() - 1);
+}
+
+side_actions::iterator side_actions::find_last_action_of(size_t unit_id)
+{
+	if(end() == begin()) {
+		return end();
+	}
+	return find_last_action_of(unit_id, end() - 1);
+}
+
 side_actions::iterator side_actions::find_first_action_of(const unit& unit, side_actions::iterator start_position)
 {
 	return find_first_action_of(actions_.get<container::by_unit>().equal_range(unit.underlying_id()), start_position, std::less<iterator>());
@@ -642,6 +672,20 @@ void side_actions::reset_gold_spent()
 	gold_spent_ = 0;
 }
 
+void side_actions::update_recruited_unit(std::size_t old_id, unit& new_unit)
+{
+	for(const_iterator it = begin(); it != end(); ++it) {
+		if(move_ptr mp = std::dynamic_pointer_cast<move>(*it)) {
+			if(mp->raw_uid() == old_id) {
+				actions_.modify(it, [&](action_ptr& p) {
+					static_cast<move&>(*p).modify_unit(new_unit);
+				});
+			}
+		}
+	}
+}
+
+	
 side_actions::iterator side_actions::safe_insert(size_t turn, size_t pos, action_ptr act)
 {
 	assert(act);

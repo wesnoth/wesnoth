@@ -254,7 +254,8 @@ public:
 	/** Get the underlying action container */
 	const action_set& actions() const { return actions_; }
 
-
+	template<typename Modifier>
+	bool modify(iterator position, Modifier mod) { return actions_.modify(position, mod); }
 private:
 	/**
 	 * Binary search to find the occurring turn of the action pointed by an iterator.
@@ -465,20 +466,26 @@ public:
 	 * @return The position, or end() if not found.
 	 */
 	iterator find_first_action_of(const unit& unit, iterator start_position);
+	iterator find_first_action_of(size_t unit_id, iterator start_position);
 	/** Variant of this method that always start searching at the beginning of the queue */
 	iterator find_first_action_of(const unit& unit){ return find_first_action_of(unit, begin()); }
+	iterator find_first_action_of(size_t unit_id){ return find_first_action_of(unit_id, begin()); }
 
 	/**
 	 * Finds the last action that belongs to this unit, starting the search backwards from the specified position.
 	 * @return The position, or end() if not found.
 	 */
 	iterator find_last_action_of(const unit& unit, iterator start_position);
+	iterator find_last_action_of(size_t unit_id, iterator start_position);
 	/** const variant of the previous function */
 	const_iterator find_last_action_of(const unit& unit, const_iterator start_position) const;
+	const_iterator find_last_action_of(size_t unit_id, iterator start_position) const;
 	/** Variant of the previous method that always start searching at the end of the queue */
 	iterator find_last_action_of(const unit& unit);
+	iterator find_last_action_of(size_t unit_id);
 	/** const variant of the previous function */
 	const_iterator find_last_action_of(const unit& unit) const;
+	const_iterator find_last_action_of(size_t unit_id) const;
 
 	bool unit_has_actions(const unit& unit);
 	size_t count_actions_of(const unit& unit);
@@ -499,6 +506,8 @@ public:
 	void change_gold_spent_by(int difference);
 	/** Set gold spent back to zero */
 	void reset_gold_spent();
+	/** After a recruit action was executed the id of the unit was changed so we need to update the unitid of all following actions on that unit*/
+	void update_recruited_unit(std::size_t old_id, unit& new_unit);
 
 	void raw_turn_shift();
 	void synced_turn_shift();

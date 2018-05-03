@@ -3,7 +3,7 @@
    * Secrets of the Ancients
      * Fixed minor unit naming inconsistencies (issues #2844 and #2846).
  ### Language and i18n
-   * Updated translations: French, Italian, Slovak, Spanish
+   * Updated translations: French, Galician, German, Italian, Slovak, Spanish
    * Fixed Logging Options tooltips not being translatable (issue #2837).
  ### Units
    * Changed the plural name for the merfolk race from Mermen to Merfolk (issue #2940)
@@ -18,6 +18,9 @@
    * Attempting to save a screenshot with an unsupported format now shows an error
      message, instead of saving the screenshot as BMP with the requested extension.
    * It is now possible to disable logdomains in the Logging Options dialog.
+   * Fixed the wesnoth(6) manpage claiming the default log level is 'error' when it
+     has been 'warning' since version 1.9.0.
+   * Document --log-none in the wesnoth(6) manpage.
 
 ## Version 1.14.0
  ### Campaigns

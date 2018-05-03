@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-04-26 00:28 UTC\n"
-"PO-Revision-Date: 2014-11-09 16:57+0100\n"
+"PO-Revision-Date: 2018-05-03 17:31+0200\n"
 "Last-Translator: Christoph Berg <christoph.berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -802,8 +802,8 @@ msgid ""
 "Oh good, some elves have survived in this outer settlement. They’ve agreed "
 "to help us search for other survivors."
 msgstr ""
-"Oh, wie gut, einige Elfen haben in dieser Außensiedlung überlebt. Sie haben "
-"zugestimmt, uns bei der Suche nach Überlebenden zu helfen."
+"Oh, wie gut, einige Elfen haben in dieser Außensiedlung überlebt. Sie helfen "
+"uns bei der Suche nach Überlebenden."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:987
@@ -1465,7 +1465,7 @@ msgstr "Soll ich diesen Ring an mich nehmen?"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:594
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:587
 msgid "Yes, I’ll take it."
-msgstr "Ja, nimm es."
+msgstr "Ja, nimm ihn."
 
 #. [object]: id=Travelring
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:491
@@ -1656,13 +1656,14 @@ msgstr "Elyssa"
 msgid "Go’hag"
 msgstr "Go’hag"
 
+# Die Übersetzung muss knapp genug sein um bei maximaler Bildschirmauflösung noch in die Seitenleiste zu passen.
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1087
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1088
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1089
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1090
 msgid "Undead Raider"
-msgstr "Plünderer der Untoten"
+msgstr "Plünderer"
 
 #. [message]: speaker=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1102
@@ -1766,10 +1767,11 @@ msgstr ""
 "Die Untoten sind besiegt, aber wir haben auch sie im Kampf verloren. Ach, "
 "verflucht, wenn wir sie nur hätten retten können!"
 
+# Die Übersetzung muss knapp genug sein um bei maximaler Bildschirmauflösung noch in die Seitenleiste zu passen.
 #. [unit]: type=Wraith, id=Vengeful Lord
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1240
 msgid "Vengeful Lord"
-msgstr "Rachsüchtiger Herrscher"
+msgstr "Alter Herrscher"
 
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1249
@@ -5744,6 +5746,7 @@ msgstr "Tötet den Zwergenhäuptling"
 msgid "Dwarf Sergeant"
 msgstr "Zwergenhauptmann"
 
+# Die Übersetzung muss knapp genug sein um bei maximaler Bildschirmauflösung noch in die Seitenleiste zu passen.
 #. [unit]: type=Dwarvish Fighter, id=Vengeful Dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:310
 msgid "Vengeful Dwarf"
