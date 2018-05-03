@@ -4,7 +4,7 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 
 ## Version 1.14.0+dev
  ### Language and i18n
-   * Updated translations: French, Italian, Slovak, Spanish.
+   * Updated translations: Galician, French, Italian, Slovak, Spanish.
  ### Miscellaneous and bug fixes
    * Attempting to save a screenshot with an unsupported format now shows an error
      message, instead of saving the screenshot as BMP with the requested extension.
