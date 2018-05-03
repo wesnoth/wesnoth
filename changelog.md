@@ -124,6 +124,8 @@
      the official MP server.
    * Attempting to save a screenshot with an unsupported format now shows an error
      message, instead of saving the screenshot as BMP with the requested extension.
+   * Fixed the wesnoth(6) manpage claiming the default log level is 'error' when it
+     has been 'warning' since version 1.9.0.
 
 ## Version 1.13.12
  ### Security fixes
