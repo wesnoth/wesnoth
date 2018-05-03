@@ -16,6 +16,7 @@
    * It is now possible to disable logdomains in the Logging Options dialog.
    * Fixed the wesnoth(6) manpage claiming the default log level is 'error' when it
      has been 'warning' since version 1.9.0.
+   * Document --log-none in the wesnoth(6) manpage.
 
 ## Version 1.14.0
  ### Campaigns
