@@ -92,7 +92,7 @@ bool quit_confirmation::default_prompt()
 			return false;
 		}
 	} else {
-		if (preferences::confirm_when_leaving()) {
+		if(preferences::confirm_when_leaving()) {
 			return show_prompt(_("Do you really want to quit?"));
 		} else {
 			return true;
