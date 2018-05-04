@@ -85,6 +85,9 @@ recruit::recruit(const config& cfg, bool hidden)
 
 void recruit::init()
 {
+	temp_unit_->set_movement(0, true);
+	temp_unit_->set_attacks(0);
+	
 	fake_unit_->set_location(recruit_hex_);
 	fake_unit_->set_movement(0, true);
 	fake_unit_->set_attacks(0);
