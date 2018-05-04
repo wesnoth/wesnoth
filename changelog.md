@@ -1,5 +1,7 @@
 ## Version 1.14.0+dev
  ### Campaigns
+   * Eastern Invasion:
+     * In 'Captured', fixed units incorrectly costing upkeep after leveling up.
    * Secrets of the Ancients
      * Fixed minor unit naming inconsistencies (issues #2844 and #2846).
  ### Language and i18n
@@ -8,6 +10,7 @@
  ### User Interface
    * Removed individual Join/Observe buttons for each game in the MP Lobby.
    * Highlight the titles of MP games with vacant slots.
+   * Improved MP Lobby layout on low resolutions.
    * Added a preference in order to allow disabling confirmations when leaving
      up to the title screen or to desktop, only if the player changes the
      default configuration ex profeso.

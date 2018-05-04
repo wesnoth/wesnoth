@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-04-26 00:28 UTC\n"
-"PO-Revision-Date: 2018-05-03 17:31+0200\n"
+"PO-Revision-Date: 2018-05-04 06:49+0200\n"
 "Last-Translator: Christoph Berg <christoph.berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -51,47 +51,38 @@ msgstr "(Einstufung: Schwierig, 10 Szenarien)"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
-#, fuzzy
 #| msgid "Desert Fighter"
 msgid "Fighter"
-msgstr "Wüstenkämpfer"
+msgstr "Kämpfer"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(Normal)"
+msgstr "Normal"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(Herausfordernd)"
+msgstr "Herausfordernd"
 
 #. [advancement]: id=warrior_1
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:44
-#, fuzzy
 #| msgid "Arisen Warrior"
 msgid "Warrior"
-msgstr "Auferstandener Krieger"
+msgstr "Krieger"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:28
-#, fuzzy
 #| msgid "Desert Champion"
 msgid "Champion"
-msgstr "Wüstenschwertmeister"
+msgstr "Meister"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:28
-#, fuzzy
-#| msgid "(Nightmare)"
 msgid "Nightmare"
-msgstr "(Alptraum)"
+msgstr "Alptraum"
 
 #. [about]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:32
@@ -213,10 +204,8 @@ msgstr "Anfangsziele:"
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:104
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1102
-#, fuzzy
-#| msgid "Rescue Surviving Elves"
 msgid "Rescue surviving elves"
-msgstr "Rette die überlebenden Elfen"
+msgstr "Rettet überlebende Elfen"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:108
@@ -1239,8 +1228,6 @@ msgstr "Untote"
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:184
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1418
-#, fuzzy
-#| msgid "Kaleh Must Reach the Northern Edge of the Desert"
 msgid "Kaleh must reach the northern edge of the desert"
 msgstr "Kaleh muss das nördliche Ende der Wüste erreichen"
 
@@ -1896,10 +1883,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1422
-#, fuzzy
-#| msgid "Defeat Outlaw Leader"
 msgid "Defeat outlaw leader"
-msgstr "Besiegt den Anführer der Gesetzlosen"
+msgstr "Besiegt den Anführer der Schwarzen Hand"
 
 #. [unit]: id=Thorn, type=Outlaw
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1451
@@ -2214,15 +2199,11 @@ msgstr "Besiegt Ystara"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:228
-#, fuzzy
-#| msgid "Survive Until Dawn (or)"
 msgid "Survive until dawn"
-msgstr "Überlebt bis zum Morgengrauen (oder)"
+msgstr "Überlebt bis zum Morgengrauen"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:234
-#, fuzzy
-#| msgid "Defeat all Undead Leaders"
 msgid "Defeat all undead leaders"
 msgstr "Besiegt alle Herrscher der Untoten"
 
@@ -2667,10 +2648,8 @@ msgstr "Ja, lasst uns dem hier ein für alle Mal ein Ende bereiten."
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1097
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1224
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1355
-#, fuzzy
-#| msgid "Defeat Possessed Garak (or)"
 msgid "Defeat Possessed Garak"
-msgstr "Tötet den besessenen Garak (oder)"
+msgstr "Tötet den besessenen Garak"
 
 #. [message]: speaker=Azkotep
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1044
@@ -3814,10 +3793,8 @@ msgstr "Erforscht die Unterwelt"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:312
-#, fuzzy
-#| msgid "Defeat troll leaders"
 msgid "Defeat enemy leaders"
-msgstr "Besiegt die Anführer der Trolle"
+msgstr "Besiegt die feindlichen Anführer"
 
 #. [unit]: type=Quenoth Fighter
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:363
@@ -4990,8 +4967,6 @@ msgstr "Verbündete Zwerge"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:187
-#, fuzzy
-#| msgid "Kill Troll Leader"
 msgid "Kill troll leader"
 msgstr "Tötet den Anführer der Trolle"
 
@@ -15628,10 +15603,9 @@ msgstr ""
 
 #. [unit_type]: id=Crab Man, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:4
-#, fuzzy
 #| msgid "Monsters"
 msgid "Monster Crab"
-msgstr "Monster"
+msgstr ""
 
 #. [unit_type]: id=Crab Man, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:18
@@ -15876,7 +15850,7 @@ msgstr "Wüstenschwertmeister"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:42
 msgid "glaive"
-msgstr ""
+msgstr "Glefe"
 
 #. [unit_type]: id=Corrupted Quenoth Elf, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Corrupted_Elf.cfg:5
@@ -15945,10 +15919,9 @@ msgstr "Wüstendruidin"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shyde.cfg:39
-#, fuzzy
 #| msgid "Melusand"
 msgid "sand"
-msgstr "Melusand"
+msgstr "Sand"
 
 #. [unit_type]: id=Quenoth Fighter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:5
@@ -15967,10 +15940,9 @@ msgstr ""
 
 #. [unit_type]: id=Tauroch Flagbearer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flagbearer.cfg:5
-#, fuzzy
 #| msgid "Troll Flamecaster"
 msgid "Tauroch Flagbearer"
-msgstr "Troll-Flammenwerfer"
+msgstr ""
 
 #. [unit_type]: id=Tauroch Flagbearer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flagbearer.cfg:32
@@ -15999,7 +15971,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:41
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:42
 msgid "blowgun"
-msgstr ""
+msgstr "Blasrohr"
 
 #. [unit_type]: id=Quenoth Marksman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:5
@@ -16102,7 +16074,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Rider.cfg:31
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Stalwart.cfg:43
 msgid "trample"
-msgstr ""
+msgstr "Niedertrampeln"
 
 #. [unit_type]: id=Quenoth Ranger, race=elf, description=
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:5
@@ -16232,10 +16204,9 @@ msgstr ""
 
 #. [unit_type]: id=Quenoth Warrior, race=elf, description=
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:5
-#, fuzzy
 #| msgid "Arisen Warrior"
 msgid "Quenoth Warrior"
-msgstr "Auferstandener Krieger"
+msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:4
 msgid ""
@@ -16273,47 +16244,45 @@ msgstr ""
 
 #. [advancement]: id=hunter_1
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:76
-#, fuzzy
 #| msgid "Naga Hunter"
 msgid "Hunter"
-msgstr "Naga-Jäger"
+msgstr "Jäger"
 
 #. [advancement]: id=leader_1
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:114
-#, fuzzy
 #| msgid "Naga Leader"
 msgid "Leader"
-msgstr "Anführer der Naga"
+msgstr "Anführer"
 
 #. [advancement]: id=warrior_2_1
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:153
 msgid "Warrior (choose only one): specialize in melee combat"
-msgstr ""
+msgstr "Krieger (wählt nur eines): Spezialisierung auf Schwertkampf"
 
 #. [advancement]: id=warrior_2_2
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:175
 msgid "Warrior (choose only one): specialize in archery"
-msgstr ""
+msgstr "Krieger (wählt nur eines): Spezialisierung auf Bogenschießen"
 
 #. [advancement]: id=hunter_2_1
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:199
 msgid "Hunter (choose only one): specialize in surprise attacks"
-msgstr ""
+msgstr "Jäger (wählt nur eines): Spezialisierung auf Überraschungsangriffe"
 
 #. [advancement]: id=hunter_2_2
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:228
 msgid "Hunter (choose only one): specialize in skirmishing"
-msgstr ""
+msgstr "Jäger (wählt nur eines): Spezialisierung auf Geplänkel"
 
 #. [advancement]: id=leader_2_1
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:256
 msgid "Leader (choose only one): specialize in supporting allies"
-msgstr ""
+msgstr "Anführer (wählt nur eines): Spezialisierung auf Finanzen"
 
 #. [advancement]: id=leader_2_2
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:288
 msgid "Leader (choose only one): specialize in distracting enemies"
-msgstr ""
+msgstr "Anführer (wählt nur eines): Spezialisierung auf Ablenkung"
 
 #. [unit_type]: id=Quenoth Youth, race=elf, description={QUENOTH_YOUTH_DESCRIPTION}
 #. [unit_type]: id=Quenoth Youth 2, race=elf, description={QUENOTH_YOUTH_DESCRIPTION}
@@ -16511,11 +16480,6 @@ msgstr "Spinnenlich"
 
 #. [unit_type]: id=Spider Lich, race=undead
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:18
-#, fuzzy
-#| msgid ""
-#| "No one is quite sure how spider liches are created, but they are horrific "
-#| "sight to behold. Crawling around on huge skeletal legs, and wielding huge "
-#| "magical staves, these abominations are fearsome undead foes. "
 msgid ""
 "No one is quite sure how spider liches are created, but they are a horrific "
 "sight to behold. Crawling around on huge skeletal legs, and wielding huge "
@@ -16567,12 +16531,15 @@ msgid ""
 "all the units of the same side adjacent to it. If no suitable unit is "
 "adjacent, its experience just goes back to zero."
 msgstr ""
+"Zum Rundenbeginn verteilt diese Einheit ihre Erfahrungspunkte gleichmäßig "
+"auf benachbarte Einheiten derselben Partei. Falls keine Einheit neben ihr "
+"steht verliert sie ihre Erfahrungspunkte ohne sie zu verteilen."
 
 #. [attacks]: id=shock
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:85
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:86
 msgid "shock"
-msgstr ""
+msgstr "Blitzangriff"
 
 #. [attacks]: id=shock
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:87
@@ -16581,11 +16548,14 @@ msgid ""
 "When this attack is used on offense, the opponent will retaliate with one "
 "less strike than normally, to a minimum of one strike."
 msgstr ""
+"Wird dieser Angriff offensiv eingesetzt, dann ist der Gegner einen Moment "
+"lang vor Überraschung wie gelähmt. Dadurch kontert er ein Mal weniger als "
+"normal. Ein einziger Gegenschlag verbleibt dem Opfer aber mindestens."
 
 #. [dummy]: id=formation
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:101
 msgid "formation"
-msgstr ""
+msgstr "Formation"
 
 #. [dummy]: id=formation
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:102
@@ -16594,6 +16564,9 @@ msgid ""
 "ability is adjacent to it. However, this cannot raise the unit’s defense "
 "above 70%."
 msgstr ""
+"Diese Einheit erhält einen Bonus von +10% auf ihre Verteidigung sofern eine "
+"andere Einheit mit derselben Fertigkeit neben ihr ist. Dies wird die "
+"Verteidigung aber nicht über 70% steigern."
 
 #. [dummy]: id=disengage
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:109
@@ -16606,6 +16579,8 @@ msgid ""
 "If this unit doesn’t move before attacking, it will retain its movement "
 "points after the attack."
 msgstr ""
+"Wenn sich diese Einheit vor einem Angriff noch nicht bewegt hat kann sie "
+"nach dem Kampf flüchten."
 
 #. [dummy]: id=daze
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:117
@@ -16618,11 +16593,14 @@ msgid ""
 "When hit with this attack, an enemy suffers a 10% penalty both to their "
 "defense and chance to hit for one turn, except for magical attacks."
 msgstr ""
+"Gegner die von diesem Angriff getroffen werden erhalten für eine Runde einen "
+"10% Malus auf ihre Verteidigung und ihre Trefferchance (magische Angriffe "
+"ausgenommen)."
 
 #. [skirmisher]: id=distract
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:125
 msgid "distract"
-msgstr ""
+msgstr "Ablenken"
 
 #. [skirmisher]: id=distract
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:126
@@ -16630,30 +16608,37 @@ msgid ""
 "This unit negates enemy Zones of Control around itself for allied units (but "
 "not for itself)."
 msgstr ""
+"Ermöglicht befreundeten Einheiten, feindliche Kontrollzonen in ihrer Nähe zu "
+"durchdringen, ohne dies selbst zu können (gilt nicht für sich selbst)."
 
 #. [dummy]: id=support
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:137
 msgid "support"
-msgstr ""
+msgstr "Finanzen"
 
 #. [dummy]: id=support
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:138
 msgid "The upkeep costs of adjacent friendly units are lowered by 1."
 msgstr ""
+"Die Unterhaltskosten für benachbarte Einheiten sind um 1 Gold niedriger."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:143
+#, fuzzy
 msgid ""
 " This unit’s melee attack can overwhelm the defenses of enemies, preventing "
 "them from retaliating as effectively."
 msgstr ""
+"Der Nahkampfangriff dieser Einheit kann Gegner überrumpeln und daran hinder "
+"sich mit voller Kampfkraft zu wehren."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:146
 msgid " Groups of units of this type are able to shield each other in combat."
 msgstr ""
+" Gruppierungen dieser Einheiten können sich im Kampf gegenseitig schützen."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:149
 msgid " This unit can move either before or after attacking."
-msgstr ""
+msgstr " Diese Einheit kann sich entweder vor oder nach dem Angreifen bewegen."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:152
 msgid ""
@@ -16666,6 +16651,9 @@ msgid ""
 "This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
 msgstr ""
+" Diese Einheit lenkt Feinde ab, so dass befreundete Einheiten feindliche "
+"Kontrollzonen durchdringen und sich ungehindert um eben diesen Feind bewegen "
+"können."
 
 #. [unstore_unit]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:362
@@ -16778,7 +16766,7 @@ msgstr "erfrischt"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/garak-abilities.cfg:57
 msgid "+%d XP"
-msgstr ""
+msgstr "+%d EP"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:6
