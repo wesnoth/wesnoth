@@ -56,7 +56,7 @@
  ### Units
    * Changed the plural name for the merfolk race from Mermen to Merfolk (issue #2940)
      and replaced a few instances in core unit or terrain descriptions accordingly.
- ### User Interface
+ ### User interface
    * Swapped the position and formatting of game names and titles in the MP lobby.
    * Made Faction Select button's purpose more clear in MP Staging.
    * Implemented MP chat message history saving (issue #1194, issue #2802).

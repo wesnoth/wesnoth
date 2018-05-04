@@ -4,18 +4,34 @@ changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog.md
 
 ## Version 1.15.0-dev
  ### Campaigns
+   * Eastern Invasion
+     * In 'Captured', fixed units incorrectly costing upkeep after leveling up.
+   * The Hammer of Thursagan
+     * Fixed a misplaced door image in S12.
+     * S12 Fixed enemies from ai6 (south-east lich) going to the book (spider) room
+     * S12 Fixed north treasure chest disappearing
    * The Rise of Wesnoth
      * New set of story art.
+   * Under the Burning Suns
+     * Changed Sun Singer movetype from float to foot.
+     * Added some Quenoth elf unit animations.
+     * New set of Quenoth faction and character portraits by LordBob.
+     * Updated sprites for several Quenoth units.
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Czech, French,
      Galician, German, Italian, Japanese, Polish, Scottish Gaelic, Slovak,
      Spanish, Ukrainian.
- ### User Interface
+ ### User interface
    * Implemented MP chat message history saving (issue #1194, issue #2802).
+   * Removed individual Join/Observe buttons for each game in the MP Lobby.
+   * Highlight the titles of MP games with vacant slots.
+   * Improved MP Lobby layout on low resolutions.
    * Improved reporting of network errors in the MP lobby (issue #3005).
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
    * Fixed some hotkeys triggering multiple commands on GNU/Linux (bug #1736)
+   * Removed misleading tooltip text stating registered nicknames are optional for
+     the official MP server.
    * Attempting to save a screenshot with an unsupported format now shows an error
      message, instead of saving the screenshot as BMP with the requested extension.
 
