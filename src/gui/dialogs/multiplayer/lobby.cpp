@@ -42,6 +42,7 @@
 
 #include "addon/manager_ui.hpp"
 #include "chat_log.hpp"
+#include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "preferences/game.hpp"
@@ -214,13 +215,9 @@ void modify_grid_with_data(grid* grid, const std::map<std::string, string_map>& 
 	}
 }
 
-std::string colorize(const std::string& str, const std::string& color)
+std::string colorize(const std::string& str, const color_t& color)
 {
-	if(color.empty()) {
-		return str;
-	}
-
-	return (formatter() << "<span color=\"" << color << "\">" << str << "</span>").str();
+	return (formatter() << font::span_color(color) << str << "</span>").str();
 }
 
 bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_addon>& reqs, mp::game_info::ADDON_REQ addon_outcome)
@@ -425,15 +422,15 @@ std::map<std::string, string_map> mp_lobby::make_game_row_data(const mp::game_in
 
 	item["use_markup"] = "true";
 
-	std::string color_string;
+	color_t color_string;
 	if(game.vacant_slots > 0) {
-		color_string = (game.reloaded || game.started) ? "yellow" : "green";
+		color_string = (game.reloaded || game.started) ? font::YELLOW_COLOR : font::GOOD_COLOR;
 	}
 
-	item["label"] = game.name;
+	item["label"] = game.vacant_slots > 0 ? colorize(game.name, font::GOOD_COLOR) : game.name;
 	data.emplace("name", item);
 
-	item["label"] = colorize("<i>" + game.scenario + "</i>", font::GRAY_COLOR.to_hex_string());
+	item["label"] = colorize("<i>" + game.scenario + "</i>", font::GRAY_COLOR);
 	data.emplace("scenario", item);
 
 	item["label"] = colorize(game.status, color_string);
@@ -527,24 +524,12 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	map.set_config(&game_config_);
 	map.set_map_data(game.map_data);
 
-	button& join_button = find_widget<button>(grid, "join", false);
-	button& observe_button = find_widget<button>(grid, "observe", false);
-
-	join_button.set_active(game.can_join());
-	observe_button.set_active(game.can_observe());
-
 	if(!add_callbacks) {
 		return;
 	}
 
 	connect_signal_mouse_left_double_click(row_panel,
 		std::bind(&mp_lobby::enter_game_by_id, this, game.id, DO_EITHER));
-
-	connect_signal_mouse_left_click(join_button,
-		std::bind(&mp_lobby::enter_game_by_id, this, game.id, DO_JOIN));
-
-	connect_signal_mouse_left_click(observe_button,
-		std::bind(&mp_lobby::enter_game_by_id, this, game.id, DO_OBSERVE));
 }
 
 void mp_lobby::update_gamelist_filter()
@@ -617,12 +602,12 @@ void mp_lobby::update_playerlist()
 				target_list = &player_list_.other_rooms;
 				break;
 			case mp::user_info::SEL_GAME:
-				name = colorize(name, "cyan");
+				name = colorize(name, {0, 255, 255});
 				icon_ss << (user.observing ? "-obs" : "-playing");
 				target_list = &player_list_.active_game;
 				break;
 			case mp::user_info::GAME:
-				name = colorize(name, "red");
+				name = colorize(name, font::BAD_COLOR);
 				icon_ss << (user.observing ? "-obs" : "-playing");
 				target_list = &player_list_.other_games;
 				break;

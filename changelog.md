@@ -5,13 +5,15 @@
  ### Language and i18n
    * Updated translations: French, Galician, German, Italian, Slovak, Spanish
    * Fixed Logging Options tooltips not being translatable (issue #2837).
- ### Units
-   * Changed the plural name for the merfolk race from Mermen to Merfolk (issue #2940)
-     and replaced a few instances in core unit or terrain descriptions accordingly.
  ### User Interface
+   * Removed individual Join/Observe buttons for each game in the MP Lobby.
+   * Highlight the titles of MP games with vacant slots.
    * Added a preference in order to allow disabling confirmations when leaving
      up to the title screen or to desktop, only if the player changes the
      default configuration ex profeso.
+ ### Units
+   * Changed the plural name for the merfolk race from Mermen to Merfolk (issue #2940)
+     and replaced a few instances in core unit or terrain descriptions accordingly.
  ### Miscellaneous and bug fixes
    * Removed misleading tooltip text stating registered nicknames are optional for
      the official MP server.
