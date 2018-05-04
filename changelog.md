@@ -63,6 +63,7 @@
    * Fixed context menus not dismissing on right click.
    * Removed individual Join/Observe buttons for each game in the MP Lobby.
    * Highlight the titles of MP games with vacant slots.
+   * Improved MP Lobby layout on low resolutions.
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a location ID
