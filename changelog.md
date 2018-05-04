@@ -61,6 +61,7 @@
    * Implemented MP chat message history saving (issue #1194, issue #2802).
    * Added a convenient button in Load Game to open your saves folder.
    * Fixed context menus not dismissing on right click.
+   * Removed individual Join/Observe buttons for each game in the MP Lobby.
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a location ID

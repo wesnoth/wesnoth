@@ -523,24 +523,12 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	map.set_config(&game_config_);
 	map.set_map_data(game.map_data);
 
-	button& join_button = find_widget<button>(grid, "join", false);
-	button& observe_button = find_widget<button>(grid, "observe", false);
-
-	join_button.set_active(game.can_join());
-	observe_button.set_active(game.can_observe());
-
 	if(!add_callbacks) {
 		return;
 	}
 
 	connect_signal_mouse_left_double_click(row_panel,
 		std::bind(&mp_lobby::enter_game_by_id, this, game.id, DO_EITHER));
-
-	connect_signal_mouse_left_click(join_button,
-		std::bind(&mp_lobby::enter_game_by_id, this, game.id, DO_JOIN));
-
-	connect_signal_mouse_left_click(observe_button,
-		std::bind(&mp_lobby::enter_game_by_id, this, game.id, DO_OBSERVE));
 }
 
 void mp_lobby::update_gamelist_filter()
