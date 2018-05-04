@@ -66,6 +66,7 @@
    * Highlight the titles of MP games with vacant slots.
    * Improved MP Lobby layout on low resolutions.
    * Improved reporting of network errors in the MP lobby (issue #3005).
+   * Ensure the chat widget remains the correct size even after a window resize.
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a location ID
