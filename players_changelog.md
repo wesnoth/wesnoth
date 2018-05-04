@@ -12,6 +12,7 @@ changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog.md
      Spanish, Ukrainian.
  ### User Interface
    * Implemented MP chat message history saving (issue #1194, issue #2802).
+   * Improved reporting of network errors in the MP lobby (issue #3005).
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
    * Fixed some hotkeys triggering multiple commands on GNU/Linux (bug #1736)

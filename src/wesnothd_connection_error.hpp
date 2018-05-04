@@ -46,6 +46,13 @@ struct ingame_wesnothd_error : public wesnothd_error ,public lua_jailbreak_excep
 ///TODO: find a short name
 struct wesnothd_connection_error : public wesnothd_error ,public lua_jailbreak_exception
 {
-	wesnothd_connection_error(const boost::system::error_code& error) : wesnothd_error(error.message()) {}
+	wesnothd_connection_error(const boost::system::error_code& error, const std::string& msg = "")
+		: wesnothd_error(error.message())
+		, user_message(msg)
+	{}
+
+	/** User-friendly and potentially translated message for use in the UI. */
+	std::string user_message;
+
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(wesnothd_connection_error)
 };

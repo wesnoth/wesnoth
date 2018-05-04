@@ -867,7 +867,26 @@ bool game_launcher::play_multiplayer(mp_selection res)
 	} catch(wesnothd_error& e) {
 		if(!e.message.empty()) {
 			ERR_NET << "caught network error: " << e.message << std::endl;
-			gui2::show_transient_message("", translation::gettext(e.message.c_str()));
+
+			std::string user_msg;
+			auto conn_err = dynamic_cast<wesnothd_connection_error*>(&e);
+
+			if(conn_err) {
+				// The wesnothd_connection_error subclass is only thrown with messages
+				// from boost::system::error_code which we can't translate ourselves.
+				// It's also the originator of the infamous EOF error that happens when
+				// the server dies. <https://github.com/wesnoth/wesnoth/issues/3005>. It
+				// will provide a translated string instead of that when it happens.
+				user_msg = !conn_err->user_message.empty()
+				           ? conn_err->user_message
+				           : _("Connection failed: ") + e.message;
+			} else {
+				// This will be a message from the server itself, which we can
+				// probably translate.
+				user_msg = translation::gettext(e.message.c_str());
+			}
+
+			gui2::show_error_message(user_msg);
 		} else {
 			ERR_NET << "caught network error" << std::endl;
 		}

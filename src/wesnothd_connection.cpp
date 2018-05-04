@@ -15,6 +15,7 @@
 #include "wesnothd_connection.hpp"
 
 #include "gui/dialogs/loading_screen.hpp"
+#include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "utils/functional.hpp"
@@ -396,7 +397,13 @@ bool wesnothd_connection::receive_data(config& result)
 	{
 		std::lock_guard<std::mutex> lock(last_error_mutex_);
 		if(last_error_) {
-			throw error(last_error_);
+			std::string user_msg;
+
+			if(last_error_ == boost::asio::error::eof) {
+				user_msg = _("Disconnected from server.");
+			}
+
+			throw error(last_error_, user_msg);
 		}
 	}
 
