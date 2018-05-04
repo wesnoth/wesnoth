@@ -707,7 +707,9 @@ static surface load_image_data_uri(const image::locator& loc)
 		const std::vector<uint8_t> image_data = base64::decode(parsed.data);
 		filesystem::rwops_ptr rwops{SDL_RWFromConstMem(image_data.data(), image_data.size()), &SDL_FreeRW};
 
-		if(parsed.mime == "image/png") {
+		if(image_data.empty()) {
+			ERR_DP << "Invalid encoding in data URI" << std::endl;
+		} else if(parsed.mime == "image/png") {
 			surf = IMG_LoadTyped_RW(rwops.release(), true, "PNG");
 		} else if(parsed.mime == "image/jpeg") {
 			surf = IMG_LoadTyped_RW(rwops.release(), true, "JPG");
