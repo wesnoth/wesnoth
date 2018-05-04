@@ -5,6 +5,7 @@
  ### Campaigns
    * Eastern Invasion
      * Fixed some Lua errors in S05.
+     * In 'Captured', fixed units incorrectly costing upkeep after leveling up.
    * Secrets of the Ancients
      * Fixed several inconsistently spelled names.
    * The Hammer of Thursagan
