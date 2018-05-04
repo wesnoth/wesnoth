@@ -11,6 +11,7 @@
    * Removed individual Join/Observe buttons for each game in the MP Lobby.
    * Highlight the titles of MP games with vacant slots.
    * Improved MP Lobby layout on low resolutions.
+   * Improved reporting of network errors in the MP lobby (issue #3005).
  ### Units
    * Changed the plural name for the merfolk race from Mermen to Merfolk (issue #2940)
      and replaced a few instances in core unit or terrain descriptions accordingly.
