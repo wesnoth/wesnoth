@@ -15,6 +15,7 @@
    * Highlight the titles of MP games with vacant slots.
    * Improved MP Lobby layout on low resolutions.
    * Improved reporting of network errors in the MP lobby (issue #3005).
+   * Ensure the chat widget remains the correct size even after a window resize.
  ### Miscellaneous and bug fixes
    * Removed misleading tooltip text stating registered nicknames are optional for
      the official MP server.
