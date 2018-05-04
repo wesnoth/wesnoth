@@ -1550,7 +1550,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 				(ban ? g.ban_user(*data.child("ban"), socket)
 					 : g.kick_member(*data.child("kick"), socket));
 		if (user) {
-			player_connections_.modify(player_connections_.find(socket), player_record::enter_lobby);
+			player_connections_.modify(player_connections_.find(user), player_record::enter_lobby);
 			if (g.describe_slots()) {
 				update_game_in_lobby(g, user);
 			}
