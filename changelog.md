@@ -1,5 +1,7 @@
 ## Version 1.14.0+dev
  ### Campaigns
+   * Eastern Invasion:
+     * In 'Captured', fixed units incorrectly costing upkeep after leveling up.
    * Secrets of the Ancients
      * Fixed minor unit naming inconsistencies (issues #2844 and #2846).
  ### Language and i18n
