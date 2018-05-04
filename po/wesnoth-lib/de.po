@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-04-26 03:28+0300\n"
-"PO-Revision-Date: 2018-05-03 16:50+0200\n"
+"PO-Revision-Date: 2018-05-04 05:41+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -2818,7 +2818,7 @@ msgstr "In Spielübersicht ausblenden"
 #: data/gui/window/editor_edit_side.cfg:249 data/gui/window/mp_staging.cfg:330
 #: src/gui/dialogs/multiplayer/lobby.cpp:472
 msgid "Gold:"
-msgstr "Gold:"
+msgstr "Gold pro Dorf:"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
@@ -4314,12 +4314,12 @@ msgstr "Auswählen"
 #. [button]: id=select_leader
 #: data/gui/window/mp_staging.cfg:70
 msgid "Select the faction and leader for this side"
-msgstr "Wählen Sie die Fraktion und den Heerführer für diese Partei"
+msgstr "Wählet die Fraktion und den Heerführer für diese Partei"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
 msgid "Change the side's controller"
-msgstr "Ändere, wer die Kontrolle über diese Partei hat"
+msgstr "Ändert, wer die Kontrolle über diese Partei hat"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:261
@@ -4329,7 +4329,7 @@ msgstr "Ändere das Verhalten dieser KI gesteuerten Partei"
 #. [menu_button]: id=side_team
 #: data/gui/window/mp_staging.cfg:288
 msgid "Which team this side belongs to"
-msgstr "Zu welcher Allianz eine Partei gehört"
+msgstr "Zu welcher Allianz diese Partei gehört"
 
 #. [menu_button]: id=side_color
 #: data/gui/window/mp_staging.cfg:304
@@ -5624,7 +5624,8 @@ msgstr "Absteigend"
 #: src/gui/dialogs/wml_error.cpp:229
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
-"Zwischenablage-Unterstützung nicht gefunden, wenden Sie sich an Ihren Manager"
+"Zwischenablage-Unterstützung nicht gefunden, wenden Sie sich an Ihren "
+"Paketbetreuer"
 
 #: src/gui/dialogs/addon/manager.cpp:449
 msgid "addons^Back to List"
@@ -5738,7 +5739,7 @@ msgid ""
 "Please select a compatible one."
 msgstr ""
 "Das momentan gewählte Szenario ist nicht mit ihren Einstellungen kompatibel. "
-"Bitte wählen sie ein kompatibles aus."
+"Bitte wählen Sie ein kompatibles aus."
 
 #: src/gui/dialogs/depcheck_select_new.cpp:78
 msgid ""
@@ -6128,8 +6129,8 @@ msgid ""
 "multiplayer lobby. Please report this at http://bugs.wesnoth.org."
 msgstr ""
 "Etwas stimmt nicht mit der Version der Erweiterung, überprüfe Datenbank "
-"welche die Multiplayer Lobby unterstützt. Bitte melden Sie dies hier: http://"
-"bugs.wesnoth.org."
+"welche die Multiplayer Lobby unterstützt. Bitte melden Sie dies hier: "
+"https://bugs.wesnoth.org."
 
 #: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:131
 msgid ""
@@ -6137,7 +6138,7 @@ msgid ""
 "contact your package manager"
 msgstr ""
 "Diese Version von Wesnoth beinhaltet keine Unterstützung von Desktop-"
-"Benachrichtigungen. Bitte kontaktieren Sie ihren Packer"
+"Benachrichtigungen. Bitte kontaktieren Sie ihren Paketbetreuer"
 
 #: src/gui/dialogs/multiplayer/mp_change_control.cpp:108
 msgid "Side $side"
