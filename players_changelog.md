@@ -8,6 +8,8 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
      * In 'Captured', fixed units incorrectly costing upkeep after leveling up.
  ### Language and i18n
    * Updated translations: French, Galician, German, Italian, Slovak, Spanish.
+ ### Performance
+   * Added an option to disable the FPS limiter for a slight performance boost.
  ### User interface
    * Removed individual Join/Observe buttons for each game in the MP Lobby.
    * Highlight the titles of MP games with vacant slots.

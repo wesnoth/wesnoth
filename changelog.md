@@ -10,6 +10,8 @@
  ### Language and i18n
    * Updated translations: French, Galician, German, Italian, Slovak, Spanish
    * Fixed Logging Options tooltips not being translatable (issue #2837).
+ ### Performance
+   * Added an option to disable the FPS limiter for a slight performance boost.
  ### Units
    * Changed the plural name for the merfolk race from Mermen to Merfolk (issue #2940)
      and replaced a few instances in core unit or terrain descriptions accordingly.
