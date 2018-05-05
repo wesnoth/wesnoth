@@ -356,6 +356,7 @@ bool side_actions::execute(side_actions::iterator position)
 	}
 
 	if(resources::whiteboard->should_clear_undo()) {
+		//FIXME: clearing the undo stack in a unsynced context can casue oos/assertion failures.
 		resources::undo_stack->clear();
 	}
 
