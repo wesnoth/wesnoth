@@ -648,7 +648,7 @@ jamming_path::~jamming_path()
 {
 }
 
-marked_route mark_route(const plain_route &rt)
+marked_route mark_route(const plain_route &rt, bool update_move_cost)
 {
 	marked_route res;
 
@@ -660,6 +660,7 @@ marked_route mark_route(const plain_route &rt)
 	const unit& u = *it;
 
 	int turns = 0;
+	int total_costs = 0;
 	int movement = u.movement_left();
 	const team& unit_team = resources::gameboard->get_team(u.side());
 	bool zoc = false;
@@ -691,6 +692,7 @@ marked_route mark_route(const plain_route &rt)
 
 			if (last_step) break; // finished and we used dummy move_cost
 
+			total_costs += movement;
 			movement = u.total_movement();
 			if(move_cost > movement) {
 				return res; //we can't reach destination
@@ -701,12 +703,17 @@ marked_route mark_route(const plain_route &rt)
 					&& !u.get_ability_bool("skirmisher", *(i+1));
 
 		if (zoc) {
+			total_costs += movement;
 			movement = 0;
 		} else {
 			movement -= move_cost;
+			total_costs += move_cost;
 		}
 	}
 
+	if(update_move_cost) {
+		res.move_cost = total_costs;
+	}
 	return res;
 }
 
