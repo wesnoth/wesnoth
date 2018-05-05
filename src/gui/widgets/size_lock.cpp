@@ -155,9 +155,9 @@ namespace implementation
 {
 builder_size_lock::builder_size_lock(const config& cfg)
 	: builder_styled_widget(cfg)
-	, content_(nullptr)
 	, width_(cfg["width"])
 	, height_(cfg["height"])
+	, content_(nullptr)
 {
 	VALIDATE(cfg.has_child("widget"), _("No widget defined."));
 	content_ = create_widget_builder(cfg.child("widget"));
