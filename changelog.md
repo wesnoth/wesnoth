@@ -69,6 +69,7 @@
    * Improved reporting of network errors in the MP lobby (issue #3005).
    * Ensure the chat widget remains the correct size even after a window resize.
    * Custom MP game names are now capped at 50 characters.
+   * Restored Era info to main MP game display.
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a location ID
