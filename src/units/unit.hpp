@@ -1106,9 +1106,9 @@ public:
 	/**
 	 * Gets how far a unit can move.
 	 *
-	 * @param base_value          If true, consider the `incapacitated` flag.
+	 * @param base_value          If false, consider the `incapacitated` flag.
 	 *
-	 * @returns                   If @a base_value is false, the raw value is returned.
+	 * @returns                   If @a base_value is true, the raw value is returned.
 	 */
 	int movement_left(bool base_value) const
 	{
