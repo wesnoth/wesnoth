@@ -581,7 +581,6 @@ void play_controller::finish_side_turn()
 	}
 
 	mouse_handler_.deselect_hex();
-	resources::gameboard->unit_id_manager().reset_fake();
 	gamestate_->init_side_done() = false;
 }
 
