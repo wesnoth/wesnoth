@@ -87,6 +87,7 @@ private:
 	
 	int original_mp_;
 	int original_ap_;
+	int original_recall_pos_;
 };
 
 std::ostream& operator<<(std::ostream& s, recall_ptr recall);

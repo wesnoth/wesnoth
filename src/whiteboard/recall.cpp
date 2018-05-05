@@ -64,6 +64,7 @@ recall::recall(std::size_t team_index, bool hidden, const unit& u, const map_loc
 	, fake_unit_(u.clone())
 	, original_mp_(0)
 	, original_ap_(0)
+	, original_recall_pos_(0)
 {
 	this->init();
 }
@@ -75,6 +76,7 @@ recall::recall(const config& cfg, bool hidden)
 	, fake_unit_()
 	, original_mp_(0)
 	, original_ap_(0)
+	, original_recall_pos_(0)
 {
 	// Construct and validate temp_unit_
 	std::size_t underlying_id = cfg["temp_unit_"];
@@ -147,7 +149,7 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 			<< "] at position " << temp_unit_->get_location() << ".\n";
 
 	//temporarily remove unit from recall list
-	unit_ptr it = resources::gameboard->teams().at(team_index()).recall_list().extract_if_matches_id(temp_unit_->id());
+	unit_ptr it = resources::gameboard->teams().at(team_index()).recall_list().extract_if_matches_id(temp_unit_->id(), &original_recall_pos_);
 	assert(it);
 
 	//Usually (temp_unit_ == it) is true here, but wml might have changed the original unit in which case not doing 'temp_unit_ = it' would result in a gamestate change.
@@ -183,8 +185,7 @@ void recall::remove_temp_modifier(unit_map& unit_map)
 	original_mp_ = 0;
 	original_ap_ = 0;
 	//Put unit back into recall list
-	//fixme: check whether this can casue OOS (it probably changes the order of unit in the recall list).
-	resources::gameboard->teams().at(team_index()).recall_list().add(temp_unit_);
+	resources::gameboard->teams().at(team_index()).recall_list().add(temp_unit_, original_recall_pos_);
 }
 
 void recall::draw_hex(const map_location& hex)
