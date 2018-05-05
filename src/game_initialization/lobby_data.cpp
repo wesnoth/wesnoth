@@ -426,7 +426,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 		if(vacant_slots > 0) {
 			status = formatter() << _n("Vacant Slot:", "Vacant Slots:", vacant_slots) << " " << vacant_slots << "/" << s["max"];
 		} else {
-			// TODO: status message for no vacant sides!
+			status = _("mp_game_available_slots^Full");
 		}
 	}
 
