@@ -428,7 +428,7 @@ std::map<std::string, string_map> mp_lobby::make_game_row_data(const mp::game_in
 		{"era_name", game.era}
 	});
 
-	item["label"] = game.vacant_slots > 0 ? colorize(game.name, font::GOOD_COLOR) : game.name;
+	item["label"] = game.vacant_slots > 0 ? colorize(game.name, color_string) : game.name;
 	data.emplace("name", item);
 
 	item["label"] = colorize("<i>" + scenario_text + "</i>", font::GRAY_COLOR);
