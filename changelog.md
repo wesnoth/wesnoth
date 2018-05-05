@@ -4,19 +4,29 @@
      * In 'Captured', fixed units incorrectly costing upkeep after leveling up.
    * Secrets of the Ancients
      * Fixed minor unit naming inconsistencies (issues #2844 and #2846).
+   * Under the Burning Suns
+     * Added a custom terrain for the broken tree in S1.
+     * Various sprite and image updates.
  ### Language and i18n
    * Updated translations: French, Galician, German, Italian, Slovak, Spanish
    * Fixed Logging Options tooltips not being translatable (issue #2837).
- ### User Interface
-   * Removed individual Join/Observe buttons for each game in the MP Lobby.
-   * Highlight the titles of MP games with vacant slots.
-   * Improved MP Lobby layout on low resolutions.
-   * Added a preference in order to allow disabling confirmations when leaving
-     up to the title screen or to desktop, only if the player changes the
-     default configuration ex profeso.
+ ### Performance
+   * Added an option to disable the FPS limiter for a slight performance boost.
  ### Units
    * Changed the plural name for the merfolk race from Mermen to Merfolk (issue #2940)
      and replaced a few instances in core unit or terrain descriptions accordingly.
+ ### User interface
+   * Removed individual Join/Observe buttons for each game in the MP Lobby.
+   * Highlight the titles of MP games with vacant slots.
+   * Improved MP Lobby layout on low resolutions.
+   * Improved reporting of network errors in the MP lobby (issue #3005).
+   * Ensure the chat widget remains the correct size even after a window resize.
+   * Custom MP game names are now capped at 50 characters.
+   * Restored Era info to main MP game display.
+   * Improved the resolution selection criteria for the MP Lobby.
+   * Added a preference in order to allow disabling confirmations when leaving
+     up to the title screen or to desktop, only if the player changes the
+     default configuration ex profeso.
  ### Miscellaneous and bug fixes
    * Removed misleading tooltip text stating registered nicknames are optional for
      the official MP server.

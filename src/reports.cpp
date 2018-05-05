@@ -890,7 +890,7 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 		int base_damage = 0;
 		int num_blows = 0;
 		int chance_to_hit = 0;
-		t_string weapon_name = _("None");
+		t_string weapon_name = _("weapon^None");
 
 		color_t dmg_color = font::weapon_color;
 		if (context_unit_stats.weapon) {

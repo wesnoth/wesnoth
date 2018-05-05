@@ -25,11 +25,12 @@
 
 namespace gui2
 {
-
 REGISTER_WIDGET(size_lock)
 
 size_lock::size_lock(const implementation::builder_size_lock& builder)
 	: container_base(builder, get_control_type())
+	, width_(builder.width_)
+	, height_(builder.height_)
 	, widget_(nullptr)
 {
 }
@@ -38,27 +39,21 @@ void size_lock::place(const point& origin, const point& size)
 {
 	point content_size = widget_->get_best_size();
 
-	if (content_size.x > size.x)
-	{
+	if(content_size.x > size.x) {
 		reduce_width(size.x);
 		content_size = widget_->get_best_size();
 	}
 
-	if (content_size.y > size.y)
-	{
-		try
-		{
+	if(content_size.y > size.y) {
+		try {
 			reduce_height(size.y);
-		}
-		catch(layout_exception_width_modified&)
-		{
+		} catch(layout_exception_width_modified&) {
 		}
 
 		content_size = widget_->get_best_size();
 	}
 
-	if (content_size.x > size.x)
-	{
+	if(content_size.x > size.x) {
 		reduce_width(size.x);
 		content_size = widget_->get_best_size();
 	}
@@ -78,13 +73,23 @@ void size_lock::finalize(builder_widget_const_ptr widget_builder)
 	set_rows_cols(1u, 1u);
 
 	widget_ = widget_builder->build();
-	set_child(widget_, 0u, 0u,
-		grid::VERTICAL_GROW_SEND_TO_CLIENT | grid::HORIZONTAL_GROW_SEND_TO_CLIENT,
-		0u);
+	set_child(widget_, 0u, 0u, grid::VERTICAL_GROW_SEND_TO_CLIENT | grid::HORIZONTAL_GROW_SEND_TO_CLIENT, 0u);
 }
 
-size_lock_definition::size_lock_definition(const config& cfg) :
-	styled_widget_definition(cfg)
+point size_lock::calculate_best_size() const
+{
+	const wfl::map_formula_callable& size = get_screen_size_variables();
+
+	unsigned width = width_(size);
+	unsigned height = height_(size);
+
+	VALIDATE(width > 0 || height > 0, _("Invalid size."));
+
+	return point(width, height);
+}
+
+size_lock_definition::size_lock_definition(const config& cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing fixed size widget " << id << '\n';
 
@@ -108,8 +113,9 @@ size_lock_definition::size_lock_definition(const config& cfg) :
  * @end{tag}{name="size_lock_definition"}
  * @end{tag}{name="gui/"}
  */
-size_lock_definition::resolution::resolution(const config& cfg) :
-	resolution_definition(cfg), grid(nullptr)
+size_lock_definition::resolution::resolution(const config& cfg)
+	: resolution_definition(cfg)
+	, grid(nullptr)
 {
 	// Add a dummy state since every widget needs a state.
 	static config dummy("draw");
@@ -147,9 +153,11 @@ size_lock_definition::resolution::resolution(const config& cfg) :
 
 namespace implementation
 {
-
-builder_size_lock::builder_size_lock(const config& cfg) :
-	builder_styled_widget(cfg), content_(nullptr), width_(cfg["width"]), height_(cfg["height"])
+builder_size_lock::builder_size_lock(const config& cfg)
+	: builder_styled_widget(cfg)
+	, width_(cfg["width"])
+	, height_(cfg["height"])
+	, content_(nullptr)
 {
 	VALIDATE(cfg.has_child("widget"), _("No widget defined."));
 	content_ = create_widget_builder(cfg.child("widget"));
@@ -159,28 +167,15 @@ widget* builder_size_lock::build() const
 {
 	size_lock* widget = new size_lock(*this);
 
-	DBG_GUI_G << "Window builder: placed fixed size widget '" << id <<
-		"' with definition '" << definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed fixed size widget '" << id << "' with definition '" << definition << "'.\n";
 
 	const auto conf = widget->cast_config_to<size_lock_definition>();
 	assert(conf != nullptr);
 
 	widget->init_grid(conf->grid);
-
-	wfl::map_formula_callable size = get_screen_size_variables();
-
-	const unsigned width = width_(size);
-	const unsigned height = height_(size);
-
-	VALIDATE(width > 0 || height > 0, _("Invalid size."));
-
-	widget->set_target_size(point(width, height));
-
 	widget->finalize(content_);
 
 	return widget;
 }
-
 }
-
 }

@@ -855,16 +855,20 @@ void server::handle_read_from_player(socket_ptr socket, std::shared_ptr<simple_w
 	//DBG_SERVER << client_address(socket) << "\tWML received:\n" << doc->output() << std::endl;
 	if(doc->child("refresh_lobby")) {
 		send_to_player(socket, games_and_users_list_);
+		return;
 	}
 
 	if(simple_wml::node* whisper = doc->child("whisper")) {
 		handle_whisper(socket, *whisper);
+		return;
 	}
 	if(simple_wml::node* query = doc->child("query")) {
 		handle_query(socket, *query);
+		return;
 	}
 	if(simple_wml::node* nickserv = doc->child("nickserv")) {
 		handle_nickserv(socket, *nickserv);
+		return;
 	}
 
 	if(!player_is_in_game(socket))
@@ -877,14 +881,17 @@ void server::handle_read_from_player(socket_ptr socket, std::shared_ptr<simple_w
 void server::handle_player_in_lobby(socket_ptr socket, std::shared_ptr<simple_wml::document> doc) {
 	if(simple_wml::node* message = doc->child("message")) {
 		handle_message(socket, *message);
+		return;
 	}
 
 	if(simple_wml::node* create_game = doc->child("create_game")) {
 		handle_create_game(socket, *create_game);
+		return;
 	}
 
 	if(simple_wml::node* join = doc->child("join")) {
 		handle_join_game(socket, *join);
+		return;
 	}
 }
 
@@ -1550,7 +1557,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 				(ban ? g.ban_user(*data.child("ban"), socket)
 					 : g.kick_member(*data.child("kick"), socket));
 		if (user) {
-			player_connections_.modify(player_connections_.find(socket), player_record::enter_lobby);
+			player_connections_.modify(player_connections_.find(user), player_record::enter_lobby);
 			if (g.describe_slots()) {
 				update_game_in_lobby(g, user);
 			}

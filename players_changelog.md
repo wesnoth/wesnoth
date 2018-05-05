@@ -3,13 +3,24 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 
 ## Version 1.14.0+dev
+ ### Campaigns
+   * Eastern Invasion:
+     * In 'Captured', fixed units incorrectly costing upkeep after leveling up.
  ### Language and i18n
    * Updated translations: French, Galician, German, Italian, Slovak, Spanish.
- ### User Interface
+ ### Performance
+   * Added an option to disable the FPS limiter for a slight performance boost.
+ ### User interface
+   * Removed individual Join/Observe buttons for each game in the MP Lobby.
+   * Highlight the titles of MP games with vacant slots.
+   * Improved MP Lobby layout on low resolutions.
+   * Improved reporting of network errors in the MP lobby (issue #3005).
    * Added a preference in order to allow disabling confirmations when leaving
      up to the title screen or to desktop, only if the player changes the
      default configuration ex profeso.
  ### Miscellaneous and bug fixes
+   * Removed misleading tooltip text stating registered nicknames are optional for
+     the official MP server.
    * Attempting to save a screenshot with an unsupported format now shows an error
      message, instead of saving the screenshot as BMP with the requested extension.
 

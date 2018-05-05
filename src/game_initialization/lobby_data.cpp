@@ -261,7 +261,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 		} else {
 			have_era = !game["require_era"].to_bool(true);
-			era = VGETTEXT("$era_name (missing)", {{"era_name", game["mp_era_name"].str()}});
+			era = game["mp_era_name"].str();
 			era_short = make_short_name(era);
 			verified = false;
 
@@ -426,7 +426,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 		if(vacant_slots > 0) {
 			status = formatter() << _n("Vacant Slot:", "Vacant Slots:", vacant_slots) << " " << vacant_slots << "/" << s["max"];
 		} else {
-			// TODO: status message for no vacant sides!
+			status = _("mp_game_available_slots^Full");
 		}
 	}
 
@@ -452,7 +452,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 	} else if(shroud) {
 		vision = _("Shroud");
 	} else {
-		vision = _("none");
+		vision = _("vision^none");
 	}
 
 	if(game["mp_countdown"].to_bool()) {
@@ -461,7 +461,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			<< game["mp_countdown_turn_bonus"].str() << "/"
 			<< game["mp_countdown_action_bonus"].str();
 	} else {
-		time_limit = _("none");
+		time_limit = _("time limit^none");
 	}
 
 	map_info = info_stream.str();

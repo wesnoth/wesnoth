@@ -427,10 +427,15 @@ std::map<std::string, string_map> mp_lobby::make_game_row_data(const mp::game_in
 		color_string = (game.reloaded || game.started) ? font::YELLOW_COLOR : font::GOOD_COLOR;
 	}
 
-	item["label"] = game.vacant_slots > 0 ? colorize(game.name, font::GOOD_COLOR) : game.name;
+	const std::string scenario_text = VGETTEXT("$game_name (Era: $era_name)", {
+		{"game_name", game.scenario},
+		{"era_name", game.era}
+	});
+
+	item["label"] = game.vacant_slots > 0 ? colorize(game.name, color_string) : game.name;
 	data.emplace("name", item);
 
-	item["label"] = colorize("<i>" + game.scenario + "</i>", font::GRAY_COLOR);
+	item["label"] = colorize("<i>" + scenario_text + "</i>", font::GRAY_COLOR);
 	data.emplace("scenario", item);
 
 	item["label"] = colorize(game.status, color_string);
@@ -451,14 +456,18 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	//
 	std::ostringstream ss;
 
-	ss << "<big>" << _("Era:") << "</big>\n" << game.era << "\n";
+	ss << "<big>" << _("Era:") << "</big>\n" << game.era;
 
-	ss << "\n<big>" << _("Modifications:") << "</big>\n";
+	if(!game.have_era) {
+		ss << " (" << _("era^missing") << ")";
+	}
+
+	ss << "\n\n<big>" << _("Modifications:") << "</big>\n";
 
 	std::vector<std::string> mods = utils::split(game.mod_info);
 
 	if(mods.empty()) {
-		ss << _("None") << "\n";
+		ss << _("active_modifications^None") << "\n";
 	} else {
 		for(const std::string& mod : mods) {
 			ss << mod << "\n";
@@ -635,9 +644,15 @@ void mp_lobby::update_playerlist()
 					   << "\n";
 		}
 
+		// TODO: on the official server this results in every name being bold since we
+		// require a registered account. Leaving this commented out in case we ever
+		// walk that back and want to have such an indication again (it's useless for
+		// custom servers since registered logins aren't supported there).
+#if 0
 		if(user.registered) {
 			name = "<b>" + name + "</b>";
 		}
+#endif
 
 		icon_ss << ".png";
 
