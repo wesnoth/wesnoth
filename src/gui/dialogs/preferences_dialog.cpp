@@ -479,6 +479,10 @@ void preferences_dialog::post_build(window& window)
 	register_integer("scaling_slider", true,
 		font_scaling, set_font_scaling);
 #endif
+	/* FPS LIMITER */
+	register_bool("fps_limiter", true,
+		[]() { return draw_delay() != 0; }, [](bool v) { set_draw_delay(v ? -1 : 0); });
+
 	/* SELECT THEME */
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "choose_theme", false),
