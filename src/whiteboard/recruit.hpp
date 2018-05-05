@@ -65,6 +65,7 @@ public:
 
 	/** @return pointer to a fake unit representing the one that will eventually be recruited. */
 	virtual unit_ptr get_unit() const { return temp_unit_; }
+	virtual bool places_new_unit() const { return true; }
 	/** @return pointer to the fake unit used only for visuals */
 	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
 
