@@ -423,10 +423,15 @@ std::map<std::string, string_map> mp_lobby::make_game_row_data(const mp::game_in
 		color_string = (game.reloaded || game.started) ? font::YELLOW_COLOR : font::GOOD_COLOR;
 	}
 
+	const std::string scenario_text = VGETTEXT("$game_name (Era: $era_name)", {
+		{"game_name", game.scenario},
+		{"era_name", game.era}
+	});
+
 	item["label"] = game.vacant_slots > 0 ? colorize(game.name, font::GOOD_COLOR) : game.name;
 	data.emplace("name", item);
 
-	item["label"] = colorize("<i>" + game.scenario + "</i>", font::GRAY_COLOR);
+	item["label"] = colorize("<i>" + scenario_text + "</i>", font::GRAY_COLOR);
 	data.emplace("scenario", item);
 
 	item["label"] = colorize(game.status, color_string);
@@ -447,9 +452,13 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	//
 	std::ostringstream ss;
 
-	ss << "<big>" << _("Era:") << "</big>\n" << game.era << "\n";
+	ss << "<big>" << _("Era:") << "</big>\n" << game.era;
 
-	ss << "\n<big>" << _("Modifications:") << "</big>\n";
+	if(!game.have_era) {
+		ss << " (" << _("era^missing") << ")";
+	}
+
+	ss << "\n\n<big>" << _("Modifications:") << "</big>\n";
 
 	std::vector<std::string> mods = utils::split(game.mod_info);
 
