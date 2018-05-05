@@ -869,6 +869,18 @@ public:
 	}
 
 	/**
+	 * Gets the remaining number of attacks this unit can perform this turn.
+	 *
+	 * @param base_value          If false, consider the `incapacitated` flag.
+	 *
+	 * @returns                   If @a base_value is true, the raw value is returned.
+	 */
+	int attacks_left(bool base_value) const
+	{
+		return base_value ? attacks_left_ : attacks_left();
+	}
+
+	/**
 	 * Sets the number of attacks this unit has left this turn.
 	 * @param left The number of attacks left
 	 */

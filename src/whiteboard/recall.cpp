@@ -57,11 +57,13 @@ std::ostream& recall::print(std::ostream &s) const
 	return s;
 }
 
-recall::recall(size_t team_index, bool hidden, const unit& u, const map_location& recall_hex):
-		action(team_index,hidden),
-		temp_unit_(u.clone()),
-		recall_hex_(recall_hex),
-		fake_unit_(u.clone())
+recall::recall(size_t team_index, bool hidden, const unit& u, const map_location& recall_hex)
+	: action(team_index,hidden)
+	, temp_unit_(u.clone())
+	, recall_hex_(recall_hex)
+	, fake_unit_(u.clone())
+	, original_mp_(0)
+	, original_ap_(0)
 {
 	this->init();
 }
@@ -71,14 +73,16 @@ recall::recall(const config& cfg, bool hidden)
 	, temp_unit_()
 	, recall_hex_(cfg.child("recall_hex_")["x"],cfg.child("recall_hex_")["y"], wml_loc())
 	, fake_unit_()
+	, original_mp_(0)
+	, original_ap_(0)
 {
 	// Construct and validate temp_unit_
 	size_t underlying_id = cfg["temp_unit_"];
-	for(const unit_const_ptr & recall_unit : resources::gameboard->teams().at(team_index()).recall_list())
+	for(const unit_ptr & recall_unit : resources::gameboard->teams().at(team_index()).recall_list())
 	{
 		if(recall_unit->underlying_id()==underlying_id)
 		{
-			temp_unit_ = recall_unit->clone(); //TODO: is it necessary to make a copy?
+			temp_unit_ = recall_unit;
 			break;
 		}
 	}
@@ -93,9 +97,6 @@ recall::recall(const config& cfg, bool hidden)
 
 void recall::init()
 {
-	temp_unit_->set_movement(0, true);
-	temp_unit_->set_attacks(0);
-
 	fake_unit_->set_location(recall_hex_);
 	fake_unit_->set_movement(0, true);
 	fake_unit_->set_attacks(0);
@@ -140,7 +141,7 @@ void recall::execute(bool& success, bool& complete)
 void recall::apply_temp_modifier(unit_map& unit_map)
 {
 	assert(valid());
-	temp_unit_->set_location(recall_hex_);
+
 
 	DBG_WB << "Inserting future recall " << temp_unit_->name() << " [" << temp_unit_->id()
 			<< "] at position " << temp_unit_->get_location() << ".\n";
@@ -148,6 +149,15 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 	//temporarily remove unit from recall list
 	unit_ptr it = resources::gameboard->teams().at(team_index()).recall_list().extract_if_matches_id(temp_unit_->id());
 	assert(it);
+
+	//Usually (temp_unit_ == it) is true here, but wml might have changed the original unit in which case not doing 'temp_unit_ = it' would result in a gamestate change.
+	temp_unit_ = it;
+	original_mp_ = temp_unit_->movement_left(true);
+	original_ap_ = temp_unit_->attacks_left(true);
+
+	temp_unit_->set_movement(0, true);
+	temp_unit_->set_attacks(0);
+	temp_unit_->set_location(recall_hex_);
 
 	//Add cost to money spent on recruits.
 	int cost = resources::gameboard->teams().at(team_index()).recall_cost();
@@ -169,10 +179,13 @@ void recall::remove_temp_modifier(unit_map& unit_map)
 	temp_unit_ = unit_map.extract(recall_hex_);
 	assert(temp_unit_.get());
 
-	temp_unit_->set_movement(0, true);
-	temp_unit_->set_attacks(0);
+	temp_unit_->set_movement(original_mp_, true);
+	temp_unit_->set_attacks(original_ap_);
 
+	original_mp_ = 0;
+	original_ap_ = 0;
 	//Put unit back into recall list
+	//fixme: check whether this can casue OOS (it probably changes the order of unit in the recall list).
 	resources::gameboard->teams().at(team_index()).recall_list().add(temp_unit_);
 }
 
