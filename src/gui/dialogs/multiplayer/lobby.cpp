@@ -640,9 +640,15 @@ void mp_lobby::update_playerlist()
 					   << "\n";
 		}
 
+		// TODO: on the official server this results in every name being bold since we
+		// require a registered account. Leaving this commented out in case we ever
+		// walk that back and want to have such an indication again (it's useless for
+		// custom servers since registered logins aren't supported there).
+#if 0
 		if(user.registered) {
 			name = "<b>" + name + "</b>";
 		}
+#endif
 
 		icon_ss << ".png";
 
