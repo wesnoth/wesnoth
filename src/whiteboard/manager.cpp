@@ -272,7 +272,17 @@ bool manager::allow_leader_to_move(const unit& leader) const
 
 	//Look for another leader on another keep in the same castle
 	{ wb::future_map future; // start planned unit map scope
-		if(!has_planned_unit_map()) {
+	
+		// TODO: when the game executes all whiteboard moves at turn end applying the future map
+		//       will fail because we are currently executing actions, and if one of those actions
+		//       was a movement of the leader this function will be called, resulting the the error
+		//       mesage below, we silence that message for now by adding (!executing_actions_)
+		//
+		//       Also this check is generally flawed, for example it could happen that the leader found
+		//       by find_backup_leader would be moved to that location _after_ the unit would be recruited
+		//       It could also happen that the original leader can be moved back to that location before
+		//       the unit is recruited.
+		if(!has_planned_unit_map() && !executing_actions_) {
 			WRN_WB << "Unable to build future map to determine whether leader's allowed to move." << std::endl;
 		}
 		if(find_backup_leader(leader))
