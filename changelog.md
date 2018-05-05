@@ -3,6 +3,8 @@
    * Fixed an issue allowing MP lobby and whisper message origins to be spoofed
      by clients.
  ### Campaigns
+   * A Tale of Two Brothers
+     * S2 'Chase': improved behavior of undead side leader with custom AI
    * Eastern Invasion
      * Fixed some Lua errors in S05.
      * In 'Captured', fixed units incorrectly costing upkeep after leveling up.
