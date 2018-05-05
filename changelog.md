@@ -21,6 +21,7 @@
    * Ensure the chat widget remains the correct size even after a window resize.
    * Custom MP game names are now capped at 50 characters.
    * Restored Era info to main MP game display.
+   * Improved the resolution selection criteria for the MP Lobby.
  ### Miscellaneous and bug fixes
    * Removed misleading tooltip text stating registered nicknames are optional for
      the official MP server.
