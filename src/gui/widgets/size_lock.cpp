@@ -29,9 +29,9 @@ REGISTER_WIDGET(size_lock)
 
 size_lock::size_lock(const implementation::builder_size_lock& builder)
 	: container_base(builder, get_control_type())
-	, widget_(nullptr)
 	, width_(builder.width_)
 	, height_(builder.height_)
+	, widget_(nullptr)
 {
 }
 
