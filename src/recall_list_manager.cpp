@@ -60,9 +60,14 @@ void recall_list_manager::erase_if_matches_id(const std::string &unit_id)
 	                       recall_list_.end());
 }
 
-void recall_list_manager::add (const unit_ptr & ptr)
+void recall_list_manager::add(const unit_ptr & ptr, int pos)
 {
-	recall_list_.push_back(ptr);
+	if (pos < 0 || pos >= static_cast<int>(recall_list_.size())) {
+		recall_list_.push_back(ptr);
+	}
+	else {
+		recall_list_.insert(recall_list_.begin() + pos, ptr);
+	}
 }
 
 std::size_t recall_list_manager::find_index(const std::string & unit_id) const
@@ -73,12 +78,15 @@ std::size_t recall_list_manager::find_index(const std::string & unit_id) const
 	return std::distance(recall_list_.begin(), it);
 }
 
-unit_ptr recall_list_manager::extract_if_matches_id(const std::string &unit_id)
+unit_ptr recall_list_manager::extract_if_matches_id(const std::string &unit_id, int * pos)
 {
 	std::vector<unit_ptr >::iterator it = std::find_if(recall_list_.begin(), recall_list_.end(),
 		[&unit_id](const unit_ptr & ptr) { return ptr->id() == unit_id; });
 	if (it != recall_list_.end()) {
 		unit_ptr ret = *it;
+		if(pos) {
+			*pos = it - recall_list_.begin();
+		}
 		recall_list_.erase(it);
 		return ret;
 	} else {

@@ -40,7 +40,9 @@ public:
 	unit_const_ptr operator[](std::size_t index) const { return recall_list_[index]; } //!< vector style dereference
 
 	unit_ptr find_if_matches_id(const std::string & unit_id); //!< Find a unit by id. Null pointer if not found.
-	unit_ptr extract_if_matches_id(const std::string & unit_id); //!< Find a unit by id, and extract from this object if found. Null if not found.
+	/// Find a unit by id, and extract from this object if found. Null if not found.
+	/// @a pos an output paramter, to know in which position the unit was.
+	unit_ptr extract_if_matches_id(const std::string & unit_id, int * pos = nullptr);
 	unit_const_ptr find_if_matches_id(const std::string & unit_id) const; //!< Const find by id.
 	void erase_if_matches_id(const std::string & unit_id); //!< Erase any unit with this id.
 
@@ -56,7 +58,9 @@ public:
 	std::size_t size() const { return recall_list_.size(); } //!< Get the number of units on the list.
 	bool empty() const { return recall_list_.empty(); } //!< Is it empty?
 
-	void add(const unit_ptr & ptr); //!< Add a unit to the list.
+	/// Add a unit to the list.
+	/// @a pos the location where to insert the unit, -1 for 'at end'
+	void add(const unit_ptr & ptr, int pos = -1);
 
 private:
 	std::vector<unit_ptr > recall_list_; //!< The underlying data struture. TODO: Should this be a map based on underlying id instead?
