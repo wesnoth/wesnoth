@@ -80,9 +80,13 @@ private:
 	virtual void do_hide();
 	virtual void do_show();
 
+	// This is the pointer to the real recall unit.
 	unit_ptr temp_unit_;
 	map_location recall_hex_;
 	fake_unit_ptr fake_unit_;
+	
+	int original_mp_;
+	int original_ap_;
 };
 
 std::ostream& operator<<(std::ostream& s, recall_ptr recall);
