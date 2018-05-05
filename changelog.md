@@ -4,6 +4,9 @@
      * In 'Captured', fixed units incorrectly costing upkeep after leveling up.
    * Secrets of the Ancients
      * Fixed minor unit naming inconsistencies (issues #2844 and #2846).
+   * Under the Burning Suns
+     * Added a custom terrain for the broken tree in S1.
+     * Various sprite and image updates.
  ### Language and i18n
    * Updated translations: French, Galician, German, Italian, Slovak, Spanish
    * Fixed Logging Options tooltips not being translatable (issue #2837).
