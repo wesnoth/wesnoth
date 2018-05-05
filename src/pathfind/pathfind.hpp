@@ -198,7 +198,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
  * Add marks on a route @a rt assuming that the unit located at the first hex of
  * rt travels along it.
  */
-marked_route mark_route(const plain_route &rt);
+marked_route mark_route(const plain_route &rt, bool update_move_cost = false);
 
 struct shortest_path_calculator : cost_calculator
 {
