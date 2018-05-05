@@ -977,6 +977,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 	std::vector<battle_context> bc_vector;
 	const int best = fill_weapon_choices(bc_vector, attacker, defender);
 
+	//TODO: this "disable" check has no attack context.
 	const bool all_disabled = std::all_of(bc_vector.begin(), bc_vector.end(),
 		[](battle_context& context) { return (*context.get_attacker_stats().weapon).get_special_bool("disable"); }
 	);
