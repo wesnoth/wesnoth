@@ -169,6 +169,9 @@ void recall::remove_temp_modifier(unit_map& unit_map)
 	temp_unit_ = unit_map.extract(recall_hex_);
 	assert(temp_unit_.get());
 
+	temp_unit_->set_movement(0, true);
+	temp_unit_->set_attacks(0);
+
 	//Put unit back into recall list
 	resources::gameboard->teams().at(team_index()).recall_list().add(temp_unit_);
 }

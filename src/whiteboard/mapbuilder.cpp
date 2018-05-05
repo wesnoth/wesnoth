@@ -122,7 +122,8 @@ void mapbuilder::process(side_actions &sa, side_actions::iterator action_it)
 		return;
 	}
 
-	if(acted_this_turn_.find(unit.get()) == acted_this_turn_.end()) {
+
+	if(acted_this_turn_.find(unit.get()) == acted_this_turn_.end() && !action->places_new_unit()) {
 		//reset MP
 		unit->set_movement(unit->total_movement());
 		acted=true;
@@ -162,7 +163,7 @@ void mapbuilder::process(side_actions &sa, side_actions::iterator action_it)
 		has_invalid_actions_.erase(invalid_it);
 	}
 
-	if(acted) {
+	if(acted || action->places_new_unit()) {
 		acted_this_turn_.insert(unit.get());
 	}
 
