@@ -20,6 +20,7 @@
      * Hide technical terrains in the Help browser (Human Ship, Lava overlay).
      * New set of Quenoth faction and character portraits by LordBob.
      * Updated sprites for several Quenoth units.
+     * Added a custom terrain for the broken tree in S1.
  ### Help browser
    * Unit descriptions use the new multiplication sign format for attack lists
      now (issue #2873).
