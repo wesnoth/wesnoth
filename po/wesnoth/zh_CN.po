@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-04-10 21:49+0800\n"
+"PO-Revision-Date: 2018-05-06 20:41+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -91,15 +91,21 @@ msgstr "显示战斗"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:61
+#, fuzzy
+#| msgid "Connection timed out"
 msgid "Ping timeout"
-msgstr "Ping超时"
+msgstr "连接超时"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:62
+#, fuzzy
+#| msgid ""
+#| "Number of minutes to wait before clearing an ingame chat message. Set to "
+#| "0 to disable"
 msgid ""
 "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
 "disable"
-msgstr "在收到ping回复之前，等待的秒数，超过则超时。设为0则禁用此功能"
+msgstr "在清除游戏中的某条聊天信息之前，等待的分钟数。设为0则禁用此功能"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:72
@@ -219,7 +225,7 @@ msgstr "显示特殊的单位图像效果"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:189
 msgid "Show deprecation messages in-game"
-msgstr ""
+msgstr "在游戏中显示API废弃信息"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:190
@@ -228,6 +234,8 @@ msgid ""
 "will still be shown in the log, even if this is disabled. In addition, the "
 "deprecation log-domain controls how many messages are printed."
 msgstr ""
+"在游戏的对话区域内显示关于废弃API的警告消息。即使禁用此功能，这些消息也仍然会"
+"显示在日志中。以及，废弃信息日志域控制着所显示的消息的数量。"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:198
@@ -3936,13 +3944,6 @@ msgid ""
 "factions, and hundreds of years of history.\n"
 "\n"
 msgstr ""
-"韦诺拥有诸多传奇，等你探索。作为合法的继承人，为了夺回韦诺王座而战……化身年轻"
-"的军官，派守不那么无聊的边疆哨所……领导一场统一兽人部落的野蛮战争……消灭恰巧把"
-"你的兄弟掳为人质的丑恶死灵法师，和他释放出来的亡灵大军……引导一群精灵幸存者，"
-"走上寻找新家园的壮阔旅程……使用丑恶的死灵秘术，向兽人复仇……\n"
-"\n"
-"游戏中，有至少两百种单位，十六个种族，七大派系，以及数百年的历史。\n"
-"\n"
 
 #. [core]: id=default
 #: data/cores.cfg:12
@@ -3952,10 +3953,6 @@ msgid ""
 "7 Factions battling on 46 Multiplayer Maps/Scenarios,\n"
 "500+ Add-ons.)"
 msgstr ""
-"（17个单人战役，包括211个场景，\n"
-"一个多人战役，包括14个场景，\n"
-"七大派系，在46幅多人地图/场景之上征战，\n"
-"500个以上的附加组件。）"
 
 #. [language]
 #: data/english.cfg:6
@@ -4041,7 +4038,7 @@ msgstr "火焰"
 #. [language]
 #: data/english.cfg:31
 msgid "cold"
-msgstr "寒冰"
+msgstr "冰寒"
 
 #. [language]
 #: data/english.cfg:32
@@ -4738,7 +4735,7 @@ msgid ""
 "you can get some high-level troops sooner."
 msgstr ""
 "拥有<b>聪慧</b>特质的单位升级需要的经验比一般单位少。在战役早期，尝试把最后一"
-"击留给这些单位，那么你就可以更快拥有一些高等级部队了。"
+"击留给这些单位，这样你就可以更快地获得一些高等级部队。"
 
 #. [tip]
 #: data/tips.cfg:25
@@ -4754,8 +4751,8 @@ msgid ""
 "must completely surround skirmishers to immobilize them."
 msgstr ""
 "包围战术是非常有效的，特别是在对抗迅捷的对手之时。只要把两个单位放置在一个敌"
-"方单位相对的两侧，他们的控制区域就能将敌方单位的移动在所有方向上都限制在一"
-"格。不幸的是，你必须完全包围住散兵才能让他们无法动弹。"
+"方单位相对的两侧，他们的控制区域就能将敌方单位的移动距离限制在一格，不论在任"
+"何方向上均是如此。不幸的是，你必须把散兵完全包围住，才能让他们无法动弹。"
 
 #. [tip]
 #: data/tips.cfg:29 data/tips.cfg:141
@@ -4816,8 +4813,8 @@ msgid ""
 "level units that are about to level up than with those same units at a "
 "higher level."
 msgstr ""
-"通常来说，在开始战役中的下一个场景时，最好能使用即将升级的低等级单位，而不是"
-"使用高等级的相同单位。"
+"通常来说，在战役中最好把即将升级的低等级单位留到下一个场景开始时使用，而不是"
+"在当前场景中先升级后，再到下一场景开始时使用。"
 
 #. [tip]
 #: data/tips.cfg:52
@@ -4825,7 +4822,7 @@ msgid ""
 "On www.wesnoth.org you can find strategy guides, technical support, the "
 "history of Wesnoth, and much more."
 msgstr ""
-"你可以在www.wesnoth.org找到战略指导，技术支持，韦诺的历史，以及更多其他的信"
+"你可以在www.wesnoth.org找到战略指导、技术支持、韦诺的历史，以及更多其他的信"
 "息。"
 
 #. [tip]
@@ -4853,7 +4850,9 @@ msgstr "<b>——《皇家战斗术语纲要：第二卷》（韦元221年重印
 #: data/tips.cfg:60
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
-msgstr "如果在错误的时段进攻，那么哪怕是其他方面都可靠的作战计划也可能失败。"
+msgstr ""
+"如果在错误的时段进攻，那么就算是除了这一点以外都可靠的作战计划，也是会失败"
+"的。"
 
 #. [tip]
 #: data/tips.cfg:61 data/tips.cfg:85 data/tips.cfg:137 data/tips.cfg:145
@@ -4870,8 +4869,8 @@ msgid ""
 "terrain, because units can only see as far as they can move in one turn."
 msgstr ""
 "如果游戏时开启了<b>战场黑幕</b>和<b>战争迷雾</b>，你将不知道自己面对的是什"
-"么。在这种情况下，远距离侦察单位就值回票价了。尝试选择可以很容易穿越周围地形"
-"的侦察单位，因为单位只能看到他们在一回合内可以移动到的范围。"
+"么。在这种情况下，对长距离侦察单位投入的成本就值得了。尝试选择可以很容易穿越"
+"周围地形的侦察单位，因为单位的视野只有他们在一回合内可以移动到的范围那么大。"
 
 #. [tip]
 #: data/tips.cfg:68
@@ -4882,10 +4881,10 @@ msgid ""
 "Description</b> to see which attacks it is resistant to, and which will "
 "affect it the most."
 msgstr ""
-"有六种攻击类型：<b>穿刺</b>，<b>刃器</b>，<b>冲击</b>，<b>火焰</b>，<b>寒冰</"
-"b>和<b>奥术</b>。不同的单位面对不同的攻击时会暴露弱点。鼠标右击一个单位，再选"
-"择<b>单位描述</b>，就可以查看它对哪些攻击有很高的抗性，又是哪些攻击对它的伤害"
-"最大。"
+"有六种攻击类型：<b>穿刺</b>，<b>刃器</b>，<b>冲击</b>，<b>火焰</b>，<b>冰寒</"
+"b>和<b>奥术</b>。不同的单位面对不同的攻击时会暴露弱点。右击一个单位，再选择"
+"<b>单位描述</b>，就可以查看它对哪些攻击有很高的抗性，又是哪些攻击对它的伤害最"
+"大。"
 
 #. [tip]
 #: data/tips.cfg:72
@@ -4959,7 +4958,7 @@ msgid ""
 "Units stationed in villages will either heal eight hitpoints at the "
 "beginning of their turn, or will recover from poisoning."
 msgstr ""
-"驻扎在村庄里的单位在自己的回合开始时要么恢复8点生命，要么从中毒状态中恢复过"
+"驻扎在村庄里的单位在自己的回合开始时要么恢复八点生命，要么从中毒状态中恢复过"
 "来。"
 
 #. [tip]
@@ -4970,7 +4969,7 @@ msgid ""
 "its next turn."
 msgstr ""
 "除非必要，否则不要移动负伤的单位——让它休息。如果一个单位既不移动也不攻击，它"
-"将在下回合开始时恢复2点生命。"
+"将在下回合开始时恢复两点生命。"
 
 #. [tip]
 #: data/tips.cfg:100
@@ -5023,7 +5022,7 @@ msgid ""
 "level opponent."
 msgstr ""
 "对敌人打出致命一击是获取经验的最好方式。单位在击杀敌人后会根据所杀敌人的等级"
-"获得经验，每一级8点，如果击杀0级对手则获得4点经验。"
+"获得经验，每一级八点，如果击杀零级对手则获得四点经验。"
 
 #. [tip]
 #: data/tips.cfg:116
@@ -5091,7 +5090,7 @@ msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
-"骷髅对穿刺、刃器和寒冰攻击具有较强的抗性，但却易受冲击、火焰和奥术攻击的伤"
+"骷髅对穿刺、刃器和冰寒攻击具有较强的抗性，但却易受冲击、火焰和奥术攻击的伤"
 "害。"
 
 #. [tip]
@@ -5506,8 +5505,8 @@ msgstr[1] "发现$enemies|个敌方单位！"
 #: src/actions/move.cpp:1153
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
-msgstr[0] "发现友方单位！"
-msgstr[1] "发现$friends|个友方单位！"
+msgstr[0] "发现友方单位"
+msgstr[1] "发现$friends|个友方单位"
 
 #: src/actions/move.cpp:1168
 msgid "(press $hotkey to keep moving)"
@@ -5952,7 +5951,7 @@ msgstr "<密码> <电子邮件（可选）>"
 
 #: src/chat_command_handler.hpp:131
 msgid "Register your nickname"
-msgstr "注册你的昵称。"
+msgstr "注册你的昵称"
 
 #: src/chat_command_handler.hpp:133
 msgid "Drop your nickname."
@@ -6301,8 +6300,10 @@ msgid "Missing addon: $id"
 msgstr "缺少附加组件：$id"
 
 #: src/game_initialization/lobby_data.cpp:264
+#, fuzzy
+#| msgid "(missing)"
 msgid "$era_name (missing)"
-msgstr "$era_name（丢失）"
+msgstr "（丢失）"
 
 #: src/game_initialization/lobby_data.cpp:271
 msgid "Unknown era"
@@ -6347,8 +6348,10 @@ msgstr "回合"
 
 #: src/game_initialization/lobby_data.cpp:453
 #: src/game_initialization/lobby_data.cpp:462
+#, fuzzy
+#| msgid "none set."
 msgid "none"
-msgstr "无"
+msgstr "命令已清除。"
 
 #: src/game_initialization/lobby_data.cpp:495
 msgid ""
@@ -6378,7 +6381,7 @@ msgstr "连接超时"
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
-msgstr "本服务器接受版本‘$required_version|’，而你使用的版本是‘$your_version|’"
+msgstr "此服务器接受版本‘$required_version|’，而你使用的版本是‘$your_version|’"
 
 #: src/game_initialization/multiplayer.cpp:134
 msgid "Server-side redirect loop"
@@ -6413,36 +6416,36 @@ msgstr "你必须先登录。"
 
 #: src/game_initialization/multiplayer.cpp:319
 msgid "The nickname ‘$nick’ is already taken."
-msgstr "昵称‘$nick|’已被使用了。"
+msgstr "昵称“$nick|”已被使用了。"
 
 #: src/game_initialization/multiplayer.cpp:321
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
 msgstr ""
-"昵称‘$nick|’包含无效字符。只允许使用字母或数字（至少要有一个字母或数字），下"
+"昵称“$nick|”包含无效字符。只允许使用字母或数字（至少要有一个字母或数字），下"
 "划线和连字符。"
 
 #: src/game_initialization/multiplayer.cpp:325
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
-msgstr "昵称‘$nick|’太长了。昵称长度不得超过20个字符。"
+msgstr "昵称“$nick|”太长了。昵称长度不得超过20个字符。"
 
 #: src/game_initialization/multiplayer.cpp:328
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
-msgstr "昵称‘$nick|’是被保留的，无法由玩家使用。"
+msgstr "昵称“$nick|”是被保留的，无法由玩家使用。"
 
 #: src/game_initialization/multiplayer.cpp:330
 msgid "The nickname ‘$nick’ is not registered on this server."
-msgstr "昵称‘$nick|’未在本服务器上注册。"
+msgstr "昵称“$nick|”未在此服务器上注册。"
 
 #: src/game_initialization/multiplayer.cpp:331
 msgid " This server disallows unregistered nicknames."
-msgstr " 本服务器不允许使用没有注册的昵称。"
+msgstr " 此服务器不允许使用没有注册的昵称。"
 
 #: src/game_initialization/multiplayer.cpp:333
 #: src/game_initialization/multiplayer.cpp:335
 msgid "The nickname ‘$nick’ is registered on this server."
-msgstr "昵称‘$nick|’已在本服务器上注册。"
+msgstr "昵称“$nick|”已在此服务器上注册过了。"
 
 #: src/game_initialization/multiplayer.cpp:336
 msgid ""
@@ -7333,7 +7336,7 @@ msgstr "从帮助中清除所有已发现的单位。"
 
 #: src/menu_events.cpp:1237
 msgid "Create a unit."
-msgstr "创建一个单位"
+msgstr "创建一个单位。"
 
 #: src/menu_events.cpp:1238
 msgid "Toggle fog for the current player."
@@ -7637,8 +7640,12 @@ msgid "Save and abort game"
 msgstr "保存并中止游戏"
 
 #: src/playturn.cpp:283
+#, fuzzy
+#| msgid ""
+#| "$player who controlled side $side_drop has left the game. What do you "
+#| "want to do?"
 msgid "$player has left the game. What do you want to do?"
-msgstr "$player|已经离开游戏。你要如何应对？"
+msgstr "控制阵营$side_drop|的$player|已经离开游戏。你要如何应对？"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -7838,7 +7845,7 @@ msgstr "武器特攻："
 
 #: src/reports.cpp:892
 msgid "None"
-msgstr "无"
+msgstr ""
 
 #: src/reports.cpp:921
 msgid "Total damage"
@@ -8202,6 +8209,9 @@ msgid "A unit was created using debug mode during $player’s turn"
 msgstr "在$player|的回合中，使用调试模式创建了一个单位"
 
 #: src/synced_user_choice.cpp:326
+#, fuzzy
+#| msgid "waiting for $desc from side $sides"
+#| msgid_plural "waiting for $desc from sides $sides"
 msgid "waiting for $desc from side(s) $sides"
 msgstr "等待$sides|阵营的$desc"
 
@@ -8289,6 +8299,10 @@ msgstr[1] "$number|移动力"
 
 #. TRANSLATORS: Current value for WML code increase_movement, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:429
+#, fuzzy
+#| msgid "<span color=\"$color\">$number_or_percent</span> movement point"
+#| msgid_plural ""
+#| "<span color=\"$color\">$number_or_percent</span> movement points"
 msgid "<span color=\"$color\">$number_or_percent movement</span> point"
 msgid_plural "<span color=\"$color\">$number_or_percent movement</span> points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span>移动力"
@@ -8407,6 +8421,12 @@ msgstr "隐藏$player的计划"
 msgid "Whiteboard Options"
 msgstr "白板选项"
 
+#~ msgid "Trailers"
+#~ msgstr "预告片"
+
+#~ msgid "The standard Wesnoth core."
+#~ msgstr "标准韦诺核心。"
+
 #~ msgid ""
 #~ "There are no custom options available for the selected era, game, or "
 #~ "modification."
@@ -8425,8 +8445,37 @@ msgstr "白板选项"
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansFallbackFull.ttf,"
 #~ "DroidSansJapanese.ttf,Junicode-Regular.ttf"
 
+#~ msgid "mp_game_available_slots^Full"
+#~ msgstr "已满"
+
+#~ msgid "vision^none"
+#~ msgstr "无"
+
+#~ msgid "time limit^none"
+#~ msgstr "无"
+
+#~ msgid "The nickname ‘$nick’ is banned on this server’s forums."
+#~ msgstr "昵称“$nick|”在此服务器的论坛上被封禁了。"
+
+#~ msgid "Your IP address is banned on this server’s forums."
+#~ msgstr "你的IP地址在此服务器的论坛上被封禁了。"
+
+#~ msgid ""
+#~ "The email address for the nickname ‘$nick’ is banned on this server’s "
+#~ "forums."
+#~ msgstr "昵称“$nick|”对应的电子邮件地址在此服务器的论坛上被封禁了。"
+
+#~ msgid "Connection failed: "
+#~ msgstr "连接失败："
+
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "引用了未知主题："
 
+#~ msgid "weapon^None"
+#~ msgstr "无"
+
 #~ msgid "(unknown player)"
 #~ msgstr "（未知玩家）"
+
+#~ msgid "Disconnected from server."
+#~ msgstr "已与服务器断开链接。"
