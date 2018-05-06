@@ -143,7 +143,7 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 	const SDL_Rect rect = my_disp_.map_outside_area();
 
 	font::floating_label spk_flabel(message_complete.str());
-	spk_flabel.set_font_size(font::SIZE_NORMAL);
+	spk_flabel.set_font_size(font::SIZE_15);
 	spk_flabel.set_color(speaker_color);
 	spk_flabel.set_position(rect.x + chat_message_x, rect.y + ypos);
 	spk_flabel.set_clip_rect(rect);
@@ -155,7 +155,7 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 	int speaker_handle = font::add_floating_label(spk_flabel);
 
 	font::floating_label msg_flabel(message_str.str());
-	msg_flabel.set_font_size(font::SIZE_NORMAL);
+	msg_flabel.set_font_size(font::SIZE_15);
 	msg_flabel.set_color(message_color);
 	msg_flabel.set_position(rect.x + chat_message_x + font::get_floating_label_rect(speaker_handle).w,
 	rect.y + ypos);
