@@ -452,13 +452,14 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	//
 	std::ostringstream ss;
 
-	ss << "<big>" << _("Era:") << "</big>\n" << game.era;
+	ss << "<big>" << colorize(_("Era"), font::TITLE_COLOR) << "</big>\n" << game.era;
 
 	if(!game.have_era) {
-		ss << " (" << _("era^missing") << ")";
+		// NOTE: not using colorize() here deliberately to avoid awkward string concatenation.
+		ss << " " << font::span_color(font::BAD_COLOR) << "(" << _("era^missing") << ")</span>";
 	}
 
-	ss << "\n\n<big>" << _("Modifications:") << "</big>\n";
+	ss << "\n\n<big>" << colorize(_("Modifications"), font::TITLE_COLOR) << "</big>\n";
 
 	std::vector<std::string> mods = utils::split(game.mod_info);
 
@@ -473,7 +474,7 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	// TODO: move to some general are of the code.
 	const auto yes_or_no = [](bool val) { return val ? _("yes") : _("no"); };
 
-	ss << "\n<big>" << _("Settings:") << "</big>\n";
+	ss << "\n<big>" << colorize(_("Settings"), font::TITLE_COLOR) << "</big>\n";
 	ss << _("Experience modifier:")   << " " << game.xp << "\n";
 	ss << _("Gold per village:")      << " " << game.gold << "\n";
 	ss << _("Map size:")              << " " << game.map_size_info << "\n";
@@ -489,8 +490,8 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	if(!game.have_era || !game.have_all_mods || !game.required_addons.empty()) {
 		info_icon.set_label("icons/icon-info-error.png");
 
-		ss << "\n\n<big><span color='#f00'>! </span></big>";
-		ss << _("One or more items need to be installed\nin order to join this game.");
+		ss << "\n\n<span color='#f00' size='x-large'>! </span>";
+		ss << _("One or more add-ons need to be installed\nin order to join this game.");
 	} else {
 		info_icon.set_label("icons/icon-info.png");
 	}
