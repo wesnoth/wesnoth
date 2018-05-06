@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: secrets_of_the_ancients\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-04-26 00:28 UTC\n"
+"POT-Creation-Date: 2018-05-06 08:31 UTC\n"
 "PO-Revision-Date: 2015-08-05 22:24+0100\n"
 "Last-Translator: Kadlecsik Ármin <wellington2277@gmail.com>\n"
 "Language-Team: WhiteWolf <wellington2277@gmail.com>\n"
@@ -466,8 +466,10 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:279
-msgid "Gwillyn"
-msgstr "Gwillyn"
+#, fuzzy
+#| msgid "Syrillin"
+msgid "Gwyllin"
+msgstr "Syrillin"
 
 #. [event]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:280
@@ -1488,7 +1490,7 @@ msgstr "És még viccelődik is! Na gyerünk."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:603
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:604
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:592
 msgid "You have no more time."
 msgstr "Nincs több időd."
 
@@ -1754,7 +1756,7 @@ msgstr ""
 
 #. [unit]: type=Shadow
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:92
-msgid "Vash Gorn"
+msgid "Vash-Gorn"
 msgstr ""
 
 #. [unit]: type=Mage, id=Wynran
@@ -1974,7 +1976,7 @@ msgstr "Most már toborozhatsz Árnyak tanítványait!"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:462
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:424
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:420
 msgid ""
 "This has taken too long. We will surely miss our meeting with Ardonna now."
 msgstr "Túl sokáig húzódik ez el. Le fogjuk késni a találkozót Ardonnával."
@@ -2058,8 +2060,10 @@ msgstr ""
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:366
-msgid "You kids may watch."
-msgstr "Ti gyerekek figyeljetek."
+#, fuzzy
+#| msgid "You may watch."
+msgid "plural^You may watch."
+msgstr "Te figyelhetsz."
 
 #. [message]: speaker=Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:370
@@ -2068,8 +2072,9 @@ msgstr "Segíthetünk?"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:374
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:397
-msgid "As you wish. (<i>Cough, cough</i>)"
+#, fuzzy
+#| msgid "As you wish. (<i>Cough, cough</i>)"
+msgid "plural^As you wish. (<i>Cough, cough</i>)"
 msgstr "Ahogy akarod. (<i>köhög, köhög</i>)"
 
 #. [message]: speaker=Ras-Tabahn
@@ -2077,15 +2082,25 @@ msgstr "Ahogy akarod. (<i>köhög, köhög</i>)"
 msgid "You may watch."
 msgstr "Te figyelhetsz."
 
-#. [message]: speaker=Carcyn
-#. [message]: speaker=Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:389
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:393
+#. [message]: id=Carcyn,Shynal
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:388
 msgid "Can I help?"
 msgstr "Segíthetek?"
 
+#. [message]: id=Carcyn,Shynal
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:389
+#, fuzzy
+#| msgid "Can I help?"
+msgid "self_female^Can I help?"
+msgstr "Segíthetek?"
+
+#. [message]: speaker=Ras-Tabahn
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:393
+msgid "As you wish. (<i>Cough, cough</i>)"
+msgstr "Ahogy akarod. (<i>köhög, köhög</i>)"
+
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:405
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:401
 msgid ""
 "You can recruit from in front of each dark adept during the first turn only."
 msgstr "Csak az első körben toborozhatsz, minden egyes tanítvány elől."
@@ -2109,8 +2124,8 @@ msgstr ""
 "Ras-Tabahn bandája elérte a tünde út végét a Nagy Folyóhoz közel. Ahogy "
 "megérkeztek, már volt ott valaki."
 
-#. [side]: type=Merman Triton, id=Okean
 #. [side]
+#. [side]: type=Merman Triton, id=Okean
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:45
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:124
 msgid "Merfolk"
@@ -2167,8 +2182,8 @@ msgid ""
 "I wonder what are they from. A large flightless bird perhaps? Let us see."
 msgstr "Vajon kihez tartoztak...egy griffé talán?"
 
-#. [message]: speaker=$other_human
 #. [message]: speaker=Ardonna
+#. [message]: speaker=$other_human
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:261
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:242
 msgid "Oh, you were right!"
@@ -2245,9 +2260,9 @@ msgstr "Legalább követitek őket a földbe."
 #| "emergencies — I think 50 is about right. You kids help me collect some. "
 #| "(<i>Cough, cough, cough</i>)"
 msgid ""
-"This is going to cost us, but I want to keep some gold around for "
-"emergencies — I think 50 is about right. You kids help me collect some. "
-"(<i>Cough, cough</i>)"
+"addressed_plural^This is going to cost us, but I want to keep some gold "
+"around for emergencies — I think 50 is about right. You help me collect "
+"some. (<i>Cough, cough</i>)"
 msgstr ""
 "Ez költséges lesz, de muszáj megtartanom valamennyi aranyat végszükség "
 "esetére - 50 elég lesz. Gyerekek, segíthettek keresni! (<i>köhög,köhög,"
@@ -2265,36 +2280,34 @@ msgstr "Jól érzi magát?"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:519
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:558
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:553
 msgid "Yes, yes. I’m quite all right."
 msgstr "Igen, persze."
 
 #. [message]: speaker=Shynal
-#. [message]: speaker=Carcyn
+#. [message]: id=Carcyn,Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:523
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:562
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:566
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:557
 msgid "I don’t fancy wading in the water to fight these things."
 msgstr ""
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:527
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:570
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:562
 msgid "No problem. We can lure them onto land."
 msgstr ""
 
 #. [message]: speaker=Shynal
-#. [message]: speaker=Carcyn
+#. [message]: id=Carcyn,Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:531
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:574
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:578
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:566
 msgid "How?"
 msgstr ""
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:535
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:582
-msgid "Have you never been fishing before? With bait of course."
+msgid ""
+"addressed_plural^Have you never been fishing before? With bait of course."
 msgstr ""
 
 #. [message]: speaker=Ras-Tabahn
@@ -2313,15 +2326,23 @@ msgstr ""
 "esetére - 50 elég lesz. Gyerekek, segíthettek keresni! (<i>köhög,köhög,"
 "köhög</i>)"
 
-#. [message]: speaker=Carcyn
-#. [message]: speaker=Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:550
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:554
+#. [message]: id=Carcyn,Shynal
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:549
 msgid "Right away sir. Are you feeling well?"
 msgstr "Igenis, uram. Jól érzi magát?"
 
+#. [message]: id=Carcyn,Shynal
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:558
+msgid "self_female^I don’t fancy wading in the water to fight these things."
+msgstr ""
+
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:592
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:570
+msgid "Have you never been fishing before? With bait of course."
+msgstr ""
+
+#. [message]: speaker=Ras-Tabahn
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:580
 #, fuzzy
 #| msgid ""
 #| "This is going to cost me, but I want to keep some gold around for "
@@ -2408,8 +2429,8 @@ msgstr ""
 "Nos, a katonák most kapnak egy második esélyt a dicsőségre. Az erősebbek "
 "akár még emlékezhetnek is rá, hogy egykoron is azt akarták."
 
-#. [side]: type=Saurian Soothsayer, id=Krissaz
 #. [side]
+#. [side]: type=Saurian Soothsayer, id=Krissaz
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:66
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:74
 msgid "Saurians"
@@ -2420,8 +2441,8 @@ msgstr "Gyíkok"
 msgid "Krissaz"
 msgstr "Krissaz"
 
-#. [side]: type=Naga Myrmidon, id=Blianxkep
 #. [side]
+#. [side]: type=Naga Myrmidon, id=Blianxkep
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:79
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:148
 msgid "Nagas"
@@ -3857,8 +3878,8 @@ msgstr ""
 "Elhagytuk a hegy tüzét, és újra sötétbe burkolóztunk. Hosszú gyalogút után "
 "zsákutcába futottunk...de a fal nem volt se természetes, se erős."
 
-#. [side]: type=Dwarvish Lord, id=Golbanduth
 #. [side]
+#. [side]: type=Dwarvish Lord, id=Golbanduth
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:38
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:86
 msgid "Dwarves"
@@ -4774,6 +4795,12 @@ msgstr "Üresség maszk"
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:344
 msgid "Half Void"
 msgstr "Fél-üresség"
+
+#~ msgid "Gwillyn"
+#~ msgstr "Gwillyn"
+
+#~ msgid "You kids may watch."
+#~ msgstr "Ti gyerekek figyeljetek."
 
 #~ msgid "Khalif"
 #~ msgstr "Khalif"

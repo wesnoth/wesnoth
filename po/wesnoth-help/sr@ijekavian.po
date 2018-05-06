@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-help\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-04-26 03:27+0300\n"
+"POT-Creation-Date: 2018-05-06 05:31-0300\n"
 "PO-Revision-Date: 2012-04-01 16:53+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -28,13 +28,13 @@ msgid "Underground"
 msgstr "подземље"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:660
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:659
 #: data/core/macros/abilities.cfg:274
 msgid "berserk"
 msgstr "безглавост"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:662
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:661
 #: data/core/macros/abilities.cfg:275
 #, fuzzy
 #| msgid ""
@@ -51,13 +51,13 @@ msgstr ""
 "упетљана јединица не настрада, или прође 30 рунди напада."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:671
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:670
 #: data/core/macros/abilities.cfg:359
 msgid "magical"
 msgstr "магичност"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:673
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:672
 #: data/core/macros/abilities.cfg:360
 #, fuzzy
 #| msgid ""
@@ -2395,45 +2395,45 @@ msgstr ""
 "уобичајеном циклусу смјене дана и ноћи, јутро и поподне се рачунају као дан, "
 "а прва и друга четврт као ноћ:\n"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:343 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "зора"
 
-#. [time]: id=morning
 #. [topic]: id=time_of_day
+#. [time]: id=morning
 #: data/core/help.cfg:344 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "јутро"
 
-#. [time]: id=afternoon
 #. [topic]: id=time_of_day
+#. [time]: id=afternoon
 #: data/core/help.cfg:345 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "поподне"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:346 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "сумрак"
 
-#. [time]: id=first_watch
 #. [topic]: id=time_of_day
+#. [time]: id=first_watch
 #: data/core/help.cfg:347 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "прва стража"
 
-#. [time]: id=second_watch
 #. [topic]: id=time_of_day
+#. [time]: id=second_watch
 #: data/core/help.cfg:348 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
@@ -6013,8 +6013,10 @@ msgstr "морејка"
 
 #. [race]: id=merman
 #: data/core/units.cfg:262
-msgid "race^Mermen"
-msgstr "морејци"
+#, fuzzy
+#| msgid "race^Troll"
+msgid "race^Merfolk"
+msgstr "трол"
 
 #. [race]: id=merman
 #: data/core/units.cfg:264
@@ -6539,8 +6541,8 @@ msgid ""
 "need to maintain his creation.\n"
 "\n"
 "Necromancy is almost solely limited to humans. Even the legends of magically "
-"apt races like elves and mermen tell of very few of their kind who have ever "
-"delved in the dark arts. It is surmised that necromantic magic requires "
+"apt races like elves and merfolk tell of very few of their kind who have "
+"ever delved in the dark arts. It is surmised that necromantic magic requires "
 "great adaptability and a flexible mind, extremes of which are most commonly "
 "found in humans. The ultimate goal of most necromancers is to turn the same "
 "art of preserving and imbuing life upon themselves, to alter themselves at "
@@ -6658,6 +6660,9 @@ msgstr "Помоћ „Боја за Веснот“"
 #: src/help/help.cpp:241
 msgid "Parse error when parsing help text: "
 msgstr "Грешка при рашчлањивању текста помоћи: "
+
+#~ msgid "race^Mermen"
+#~ msgstr "морејци"
 
 #~ msgid "ingame_help_item^Contributors"
 #~ msgstr "Доприносиоци"

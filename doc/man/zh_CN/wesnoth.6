@@ -89,7 +89,9 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一个回合制奇幻策略游
 在本次游戏期间使用语言 \fIlang\fP （符号）。例如： \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
-设置日志域的严重度级别。\fBall\fP可以用来匹配任意日志域。可选的级别有：\fBerror\fP，\ \fBwarning\fP，\ \fBinfo\fP，\ \fBdebug\fP。默认的级别是\fBerror\fP。
+sets the severity level of the log domains.  \fBall\fP can be used to match any
+log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default the \fBwarning\fP level is used for most domains, but
+\fBdeprecation\fP defaults to none.
 .TP 
 \fB\-\-log\-precise\fP
 在日志文件中显示更高精度的时间戳。

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.9+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-04-15 01:34-0300\n"
+"POT-Creation-Date: 2018-05-06 05:31-0300\n"
 "PO-Revision-Date: 2009-01-30 20:58+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -118,52 +118,53 @@ msgid "special"
 msgstr ""
 
 #. [editor_times]: id=empty
-#: data/core/editor/time-of-day.cfg:5
-msgid "None"
+#. Describes a scenario in the editor that has not set a time of day schedule
+#: data/core/editor/time-of-day.cfg:6
+msgid "time of day^None"
 msgstr ""
 
 #. [editor_times]: id=test
-#: data/core/editor/time-of-day.cfg:10
+#: data/core/editor/time-of-day.cfg:11
 msgid "Test"
 msgstr ""
 
 #. [editor_times]: id=default
-#: data/core/editor/time-of-day.cfg:21
+#: data/core/editor/time-of-day.cfg:22
 msgid "Default"
 msgstr ""
 
 #. [editor_times]: id=summer
-#: data/core/editor/time-of-day.cfg:27
+#: data/core/editor/time-of-day.cfg:28
 msgid "Summer"
 msgstr ""
 
 #. [editor_times]: id=winter
-#: data/core/editor/time-of-day.cfg:33
+#: data/core/editor/time-of-day.cfg:34
 msgid "Winter"
 msgstr ""
 
 #. [editor_times]: id=underground
-#: data/core/editor/time-of-day.cfg:39
+#: data/core/editor/time-of-day.cfg:40
 msgid "Underground"
 msgstr ""
 
 #. [editor_times]: id=deep_underground
-#: data/core/editor/time-of-day.cfg:45
+#: data/core/editor/time-of-day.cfg:46
 msgid "Deep Underground"
 msgstr ""
 
 #. [editor_times]: id=indoors
-#: data/core/editor/time-of-day.cfg:51
+#: data/core/editor/time-of-day.cfg:52
 msgid "Indoors"
 msgstr ""
 
 #. [editor_times]: id=24
-#: data/core/editor/time-of-day.cfg:57
+#: data/core/editor/time-of-day.cfg:58
 msgid "24 Hour Schedule"
 msgstr ""
 
 #. [editor_times]: id=after_the_fall
-#: data/core/editor/time-of-day.cfg:63
+#: data/core/editor/time-of-day.cfg:64
 msgid "After the Fall"
 msgstr ""
 
@@ -315,11 +316,11 @@ msgstr ""
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:273 src/editor/map/map_context.cpp:831
+#: src/editor/map/context_manager.cpp:273 src/editor/map/map_context.cpp:835
 msgid "New Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:286 src/editor/map/map_context.cpp:831
+#: src/editor/map/context_manager.cpp:286 src/editor/map/map_context.cpp:835
 msgid "New Scenario"
 msgstr ""
 
@@ -440,15 +441,15 @@ msgid ""
 "an existing file"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:600
+#: src/editor/map/map_context.cpp:604
 msgid "Could not save the scenario: $msg"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:632
+#: src/editor/map/map_context.cpp:636
 msgid "Could not save into scenario"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:642
+#: src/editor/map/map_context.cpp:646
 msgid "Could not save the map: $msg"
 msgstr ""
 

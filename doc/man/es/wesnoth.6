@@ -114,10 +114,9 @@ editor mostrará un diálogo de selección de archivos apuntando a éste.
 usa el idioma \fIlang\fP en esta sesión.  Ejemplo: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fInivel\fP\fB=\fP\fIdominio1\fP\fB,\fP\fIdominio2\fP\fB,\fP\fI...\fP
-establece el nivel de gravedad de los dominios de registro. \fBall\fP puede
-utilizarse para seleccionar todos los dominios. Los niveles disponibles son:
-\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Por defecto se utiliza el nivel
-\fBerror\fP.
+sets the severity level of the log domains.  \fBall\fP can be used to match any
+log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default the \fBwarning\fP level is used for most domains, but
+\fBdeprecation\fP defaults to none.
 .TP 
 \fB\-\-log\-precise\fP
 muestra los marcadores de tiempo del archivo de registro con mayor precisión
