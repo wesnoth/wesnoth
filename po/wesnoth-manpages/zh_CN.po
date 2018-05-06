@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
-"POT-Creation-Date: 2018-03-27 04:20+0300\n"
-"PO-Revision-Date: 2018-03-27 20:53+0800\n"
+"POT-Creation-Date: 2018-02-12 20:02+0300\n"
+"PO-Revision-Date: 2018-05-06 21:15+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -335,13 +335,20 @@ msgstr "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:138
+#, fuzzy
+#| msgid ""
+#| "sets the severity level of the log domains.  B<all> can be used to match "
+#| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+#| "B<debug>.  By default the B<error> level is used and the B<info> level "
+#| "for the B<server> domain."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
 "B<debug>.  By default the B<error> level is used."
 msgstr ""
-"设置日志域的严重度级别。B<all>可以用来匹配任意日志域。可选的级别有："
-"B<error>，\\ B<warning>，\\ B<info>，\\ B<debug>。默认的级别是B<error>。"
+"设置日志域的严重度级别。B<all>可以用来匹配任意日志域。可选的级别有：B<error>,"
+"\\ B<warning>,\\ B<info>,\\ B<debug>。默认的级别是B<error>，对B<server>域而"
+"言，默认级别是B<info>。"
 
 #. type: TP
 #: doc/man/wesnoth.6:138
@@ -1899,3 +1906,13 @@ msgstr ""
 #: doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
+
+#~ msgid ""
+#~ "sets the severity level of the log domains.  B<all> can be used to match "
+#~ "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+#~ "B<debug>,\\ B<none>.  By default the B<warning> level is used for most "
+#~ "domains, but B<deprecation> defaults to none."
+#~ msgstr ""
+#~ "设置日志域的严重度级别。B<all>可以用来匹配任意日志域。可选的级别有："
+#~ "B<error>，\\ B<warning>，\\ B<info>，\\ B<debug>, \\ B<none>。对绝大多数日"
+#~ "志域而言，默认日志级别是B<warning>，但B<deprecation>的默认级别是B<none>。"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:31 UTC\n"
-"PO-Revision-Date: 2018-03-27 21:32+0800\n"
+"PO-Revision-Date: 2018-05-06 21:22+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #. [campaign]: id=Secrets of the Ancients
 #. [editor_group]: id=sota
@@ -393,7 +393,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:279
 msgid "Gwillyn"
-msgstr "格威林"
+msgstr ""
 
 #. [event]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:280
@@ -1330,7 +1330,7 @@ msgstr "哦，喔哦。"
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:164
 msgid "I am Ras-Tabahn. Welcome to my laboratory, Ardonna of Tarrynth!"
-msgstr "我是拉斯-塔班。欢迎来到我的实验室，塔林斯的阿冬娜！"
+msgstr "我是拉斯-塔班。欢迎来到我的研究室，塔林斯的阿冬娜！"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:168
@@ -1516,8 +1516,10 @@ msgstr "占领每一座村庄"
 
 #. [unit]: type=Shadow
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:92
+#, fuzzy
+#| msgid "Vash-Gorn"
 msgid "Vash Gorn"
-msgstr "瓦希·戈恩"
+msgstr "瓦希-戈恩"
 
 #. [unit]: type=Mage, id=Wynran
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:114
@@ -1791,8 +1793,10 @@ msgstr ""
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:366
+#, fuzzy
+#| msgid "You may watch."
 msgid "You kids may watch."
-msgstr "孩子们你们就看着吧。"
+msgstr "你就看着吧。"
 
 #. [message]: speaker=Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:370
@@ -1952,13 +1956,18 @@ msgstr "实际上，如果你们要伤害我们，那我只能期望你们和他
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:507
+#, fuzzy
+#| msgid ""
+#| "This is going to cost us, but I want to keep some gold around for "
+#| "emergencies — I think 50 is about right. Help me collect some. (<i>Cough, "
+#| "cough</i>)"
 msgid ""
 "This is going to cost us, but I want to keep some gold around for "
 "emergencies — I think 50 is about right. You kids help me collect some. "
 "(<i>Cough, cough</i>)"
 msgstr ""
-"这会花掉我们很多钱，不过我想要留点儿金币以备急用——我觉得50枚就差不多了。孩子"
-"们帮我收集些金币吧。（<b>咳</b>）"
+"这会花掉我们很多钱，不过我想要留点儿金币以备急用——我觉得50枚就差不多了。帮我"
+"收集些金币吧。（<b>咳</b>）"
 
 #. [message]: speaker=Carcyn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:511
@@ -1982,7 +1991,7 @@ msgstr "是，是。我觉得很不错。"
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:562
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:566
 msgid "I don’t fancy wading in the water to fight these things."
-msgstr "我可不喜欢在水里和这些东西作战。"
+msgstr "我可不想到水里去和这些东西作战。"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:527
@@ -2002,7 +2011,7 @@ msgstr "怎么做？"
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:535
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:582
 msgid "Have you never been fishing before? With bait of course."
-msgstr "你从来没有钓过鱼吗？当然是用鱼饵了。"
+msgstr "你从来都没有钓过鱼吗？当然是用鱼饵了。"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:545
@@ -4147,3 +4156,30 @@ msgstr "虚空覆盖层"
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:344
 msgid "Half Void"
 msgstr "半虚空"
+
+#~ msgid "Gwyllin"
+#~ msgstr "格威尔林"
+
+#~ msgid "plural^You may watch."
+#~ msgstr "你们就看着吧。"
+
+#~ msgid "plural^As you wish. (<i>Cough, cough</i>)"
+#~ msgstr "如你们所愿。（<b>咳，咳</b>）"
+
+#~ msgid "self_female^Can I help?"
+#~ msgstr "我能帮什么忙吗？"
+
+#~ msgid ""
+#~ "addressed_plural^This is going to cost us, but I want to keep some gold "
+#~ "around for emergencies — I think 50 is about right. You help me collect "
+#~ "some. (<i>Cough, cough</i>)"
+#~ msgstr ""
+#~ "这会花掉我们很多钱，不过我想要留点儿金币以备急用——我觉得50枚就差不多了。你"
+#~ "们帮我收集些金币吧。（<b>咳</b>）"
+
+#~ msgid ""
+#~ "addressed_plural^Have you never been fishing before? With bait of course."
+#~ msgstr "你们从来都没有钓过鱼吗？当然是用鱼饵了。"
+
+#~ msgid "self_female^I don’t fancy wading in the water to fight these things."
+#~ msgstr "我可不想到水里去和这些东西作战。"
