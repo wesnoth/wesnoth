@@ -142,7 +142,7 @@ mp_lobby::mp_lobby(const config& game_config, mp::lobby_info& info, wesnothd_con
 	, player_list_()
 	, player_list_dirty_(true)
 	, gamelist_dirty_(true)
-	, last_gamelist_update_(0)
+	, last_lobby_update_(0)
 	, gamelist_diff_update_(true)
 	, network_connection_(connection)
 	, lobby_update_timer_(0)
@@ -292,7 +292,7 @@ void mp_lobby::update_gamelist()
 
 	update_selected_game();
 	gamelist_dirty_ = false;
-	last_gamelist_update_ = SDL_GetTicks();
+	last_lobby_update_ = SDL_GetTicks();
 	lobby_info_.sync_games_display_status();
 	lobby_info_.apply_game_filter();
 	update_gamelist_header();
@@ -392,7 +392,7 @@ void mp_lobby::update_gamelist_diff()
 
 	update_selected_game();
 	gamelist_dirty_ = false;
-	last_gamelist_update_ = SDL_GetTicks();
+	last_lobby_update_ = SDL_GetTicks();
 	lobby_info_.sync_games_display_status();
 	lobby_info_.apply_game_filter();
 	update_gamelist_header();
@@ -551,10 +551,6 @@ void mp_lobby::update_gamelist_filter()
 
 void mp_lobby::update_playerlist()
 {
-	if(delay_playerlist_update_) {
-		return;
-	}
-
 	SCOPE_LB;
 	DBG_LB << "Playerlist update: " << lobby_info_.users().size() << "\n";
 	lobby_info_.update_user_statuses(selected_game_id_, chatbox_->active_window_room());
@@ -683,6 +679,7 @@ void mp_lobby::update_playerlist()
 	player_list_.other_games.update_player_count_label();
 
 	player_list_dirty_ = false;
+	last_lobby_update_ = SDL_GetTicks();
 }
 
 void mp_lobby::update_selected_game()
@@ -858,7 +855,11 @@ void mp_lobby::network_handler()
 		throw;
 	}
 
-	if(gamelist_dirty_ && !delay_gamelist_update_ && (SDL_GetTicks() - last_gamelist_update_ > game_config::lobby_refresh)) {
+	if ((SDL_GetTicks() - last_lobby_update_ < game_config::lobby_refresh)) {
+		return;
+	}
+
+	if(gamelist_dirty_ && !delay_gamelist_update_) {
 		if(gamelist_diff_update_) {
 			update_gamelist_diff();
 		} else {
@@ -867,7 +868,7 @@ void mp_lobby::network_handler()
 		}
 	}
 
-	if(player_list_dirty_) {
+	if(player_list_dirty_ && !delay_playerlist_update_) {
 		update_gamelist_filter();
 		update_playerlist();
 	}
