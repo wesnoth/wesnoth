@@ -12,6 +12,11 @@
  ### Language and i18n
    * Updated translations: French, Galician, German, Italian, Slovak, Spanish
    * Fixed Logging Options tooltips not being translatable (issue #2837).
+ ### Multiplayer server
+   * Added support for matching user, IP, and email bans from a forums board
+     when the forum_user_handler is enabled and active. (IP and email bans with
+     wildcards are not supported yet.)
+   * Fixed various instances of the server crashing under certain conditions.
  ### Performance
    * Added an option to disable the FPS limiter for a slight performance boost.
  ### Units
