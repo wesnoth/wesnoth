@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-05-06 05:31-0300\n"
-"PO-Revision-Date: 2018-03-29 12:24+1100\n"
+"PO-Revision-Date: 2018-05-06 21:22+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -211,7 +211,7 @@ msgstr "Show special unit graphical effects"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:178
 msgid "Show deprecation messages in-game"
-msgstr ""
+msgstr "Show deprecation messages in-game"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:179
@@ -220,6 +220,9 @@ msgid ""
 "will still be shown in the log, even if this is disabled. In addition, the "
 "deprecation log-domain controls how many messages are printed."
 msgstr ""
+"Show warnings about deprecated API in the in-game chat area. These messages "
+"will still be shown in the log, even if this is disabled. In addition, the "
+"deprecation log-domain controls how many messages are printed."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:187
@@ -370,10 +373,8 @@ msgstr "Internationalization Managers"
 
 #. [about]
 #: data/core/about.cfg:323
-#, fuzzy
-#| msgid "Traits"
 msgid "Trailers"
-msgstr "Traits"
+msgstr "Trailers"
 
 #. [about]
 #: data/core/about.cfg:335
@@ -3606,7 +3607,7 @@ msgstr "Wesnoth (Default)"
 #. [core]: id=default
 #: data/cores.cfg:8
 msgid "The standard Wesnoth core."
-msgstr ""
+msgstr "The standard Wesnoth core."
 
 #. [language]
 #: data/english.cfg:6
@@ -6121,7 +6122,7 @@ msgstr[1] "Vacant Slots:"
 
 #: src/game_initialization/lobby_data.cpp:429
 msgid "mp_game_available_slots^Full"
-msgstr ""
+msgstr "Full"
 
 #: src/game_initialization/lobby_data.cpp:440
 #: src/game_initialization/lobby_data.cpp:442 src/savegame.cpp:631
@@ -6129,16 +6130,12 @@ msgid "Turn"
 msgstr "Turn"
 
 #: src/game_initialization/lobby_data.cpp:455
-#, fuzzy
-#| msgid "vision"
 msgid "vision^none"
-msgstr "vision"
+msgstr "none"
 
 #: src/game_initialization/lobby_data.cpp:464
-#, fuzzy
-#| msgid "Time limit"
 msgid "time limit^none"
-msgstr "Time limit"
+msgstr "none"
 
 #: src/game_initialization/lobby_data.cpp:497
 msgid ""
@@ -6233,21 +6230,18 @@ msgid " This server disallows unregistered nicknames."
 msgstr " This server disallows unregistered nicknames."
 
 #: src/game_initialization/multiplayer.cpp:320
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
-msgstr "The nickname ‘$nick’ is registered on this server."
+msgstr "The nickname ‘$nick’ is banned on this server’s forums."
 
 #: src/game_initialization/multiplayer.cpp:322
 msgid "Your IP address is banned on this server’s forums."
-msgstr ""
+msgstr "Your IP address is banned on this server’s forums."
 
 #: src/game_initialization/multiplayer.cpp:324
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
-msgstr "The nickname ‘$nick’ is registered on this server."
+msgstr ""
+"The email address for the nickname ‘$nick’ is banned on this server’s forums."
 
 #: src/game_initialization/multiplayer.cpp:326
 #: src/game_initialization/multiplayer.cpp:328
@@ -6431,10 +6425,8 @@ msgid "Error while starting server: "
 msgstr "Error while starting server: "
 
 #: src/game_launcher.cpp:882
-#, fuzzy
-#| msgid "Connection timed out"
 msgid "Connection failed: "
-msgstr "Connection timed out"
+msgstr "Connection failed: "
 
 #: src/generators/default_map_generator_job.cpp:691
 msgid "Random maps with an odd width aren't supported."
@@ -7482,12 +7474,12 @@ msgid "Save and abort game"
 msgstr "Save and abort game"
 
 #: src/playturn.cpp:296
-#, fuzzy
-#| msgid "$player has left the game. What do you want to do?"
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
-msgstr "$player has left the game. What do you want to do?"
+msgstr ""
+"$player who controlled side $side_drop has left the game. What do you want "
+"to do?"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -7691,7 +7683,7 @@ msgstr "Weapon special: "
 
 #: src/reports.cpp:893
 msgid "weapon^None"
-msgstr ""
+msgstr "None"
 
 #: src/reports.cpp:922
 msgid "Total damage"
@@ -8069,12 +8061,10 @@ msgid "A unit was created using debug mode during $player’s turn"
 msgstr "A unit was created using debug mode during $player’s turn"
 
 #: src/synced_user_choice.cpp:327
-#, fuzzy
-#| msgid "waiting for $desc from side(s) $sides"
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
-msgstr[0] "waiting for $desc from side(s) $sides"
-msgstr[1] "waiting for $desc from side(s) $sides"
+msgstr[0] "waiting for $desc from side $sides"
+msgstr[1] "waiting for $desc from sides $sides"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8160,13 +8150,10 @@ msgstr[1] "$number movement points"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:429
-#, fuzzy
-#| msgid "<span color=\"$color\">$number_or_percent</span> move"
-#| msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span> move"
-msgstr[1] "<span color=\"$color\">$number_or_percent</span> moves"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> movement point"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> movement points"
 
 #: src/units/types.cpp:545 src/units/types.hpp:181
 msgid "chaotic"
@@ -8262,10 +8249,8 @@ msgid "$year AF"
 msgstr "$year AF"
 
 #: src/wesnothd_connection.cpp:402
-#, fuzzy
-#| msgid "Connecting to Server..."
 msgid "Disconnected from server."
-msgstr "Connecting to Server..."
+msgstr "Disconnected from server."
 
 #: src/whiteboard/manager.cpp:1115
 msgid "SHOW ALL allies’ plans"
