@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-27 04:20+0300\n"
+"POT-Creation-Date: 2018-02-12 20:02+0300\n"
 "PO-Revision-Date: 2018-03-21 09:49+0100\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
@@ -410,6 +410,12 @@ msgstr "B<--log->I<level>B<=>I<kategorie1>B<,>I<kategorie2>B<,>I<...>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:138
+#, fuzzy
+#| msgid ""
+#| "sets the severity level of the log domains.  B<all> can be used to match "
+#| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+#| "B<debug>.  By default the B<error> level is used and the B<info> level "
+#| "for the B<server> domain."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
@@ -417,8 +423,8 @@ msgid ""
 msgstr ""
 "nastavuje úroveň závažnosti pro jednotlivé kategorie. B<all> znamená, že "
 "budou vypisovány všechny kategorie. Dostupné kategorie: B<error>,\\ "
-"B<warning>,\\ B<info>,\\ B<debug>. Implicitně je aktivována kategorie "
-"B<error>."
+"B<warning>,\\ B<info>,\\ B<debug>.\\ Implicitně je aktivována kategorie "
+"B<error> a pro kategorii B<server> také B<info>."
 
 # type: TP
 #. type: TP
@@ -2301,6 +2307,23 @@ msgstr ""
 #: doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
+
+# type: Plain text
+#, fuzzy
+#~| msgid ""
+#~| "sets the severity level of the log domains.  B<all> can be used to match "
+#~| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+#~| "B<debug>.  By default the B<error> level is used."
+#~ msgid ""
+#~ "sets the severity level of the log domains.  B<all> can be used to match "
+#~ "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+#~ "B<debug>,\\ B<none>.  By default the B<warning> level is used for most "
+#~ "domains, but B<deprecation> defaults to none."
+#~ msgstr ""
+#~ "nastavuje úroveň závažnosti pro jednotlivé kategorie. B<all> znamená, že "
+#~ "budou vypisovány všechny kategorie. Dostupné kategorie: B<error>,\\ "
+#~ "B<warning>,\\ B<info>,\\ B<debug>. Implicitně je aktivována kategorie "
+#~ "B<error>."
 
 #~ msgid "2013"
 #~ msgstr "2013"

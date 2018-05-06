@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 17:02 UTC\n"
-"PO-Revision-Date: 2018-04-05 14:51+0200\n"
+"PO-Revision-Date: 2018-05-06 12:25+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -677,6 +677,8 @@ msgstr "Eloshi"
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:408
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/01_The_Morning_After.cfg:413
+#, fuzzy
+#| msgid "Illuvia"
 msgid "Illuvia"
 msgstr "Illuvia"
 
@@ -703,6 +705,8 @@ msgstr "Jorazan"
 #. [event]: role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:519
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/01_The_Morning_After.cfg:524
+#, fuzzy
+#| msgid "Zyara"
 msgid "Zyara"
 msgstr "Zyara"
 
@@ -949,6 +953,8 @@ msgstr "No, doufejme, že se lovci vrátí brzy."
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:849
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/01_The_Morning_After.cfg:854
+#, fuzzy
+#| msgid "Hey, Nisa, the rocks have stopped falling. You can come out now!"
 msgid "Hey, Nisa, the rocks have stopped falling. You can come out now!"
 msgstr "Hej, Niso, kamení už přestalo padat. Můžeš vyjít ven!"
 
@@ -1035,6 +1041,11 @@ msgstr ""
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1080
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/01_The_Morning_After.cfg:1084
+#, fuzzy
+#| msgid ""
+#| "Bah, I’ve fought these dark cultists before. They can be killed just like "
+#| "anyone else, and our elvish hunters can easily defeat their skeleton "
+#| "armies."
 msgid ""
 "Bah, I’ve fought these dark cultists before. They can be killed just like "
 "anyone else, and our elvish hunters can easily defeat their skeleton armies."
@@ -2743,6 +2754,11 @@ msgstr ""
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:634
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:632
+#, fuzzy
+#| msgid ""
+#| "I bless you champion with the light that will come, I bless you with the "
+#| "memory and the promise. Lay down your bow, champion, and let your sword "
+#| "shine in the dark."
 msgid ""
 "I bless you champion with the light that will come, I bless you with the "
 "memory and the promise. Lay down your bow, champion, and let your sword "
@@ -5007,6 +5023,8 @@ msgstr "Jaké jména mých předků by to mohla být?"
 #. [message]: speaker=first_dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1266
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/05_A_Subterranean_Struggle.cfg:1265
+#, fuzzy
+#| msgid "Wait a minute... Blond hair, pointy ears — they must be elves."
 msgid "Wait a minute... Blond hair, pointy ears — they must be elves."
 msgstr "Počkat... světlé vlasy, špičaté uši, musí to být elfové."
 
@@ -8330,6 +8348,11 @@ msgstr "Cože? Elfové?"
 #. [message]: speaker=Bellerin
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:953
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/08_Out_of_the_Frying_Pan.cfg:951
+#, fuzzy
+#| msgid ""
+#| "Yeah, just like my old grandmam used to tell us: pointy ears, pale hair, "
+#| "those shifty eyes, hearts as hard as a hermit crab’s shell. It must be an "
+#| "invasion! They must have started the flood!"
 msgid ""
 "Yeah, just like my old grandmam used to tell us: pointy ears, pale hair, "
 "those shifty eyes, hearts as hard as a hermit crab’s shell. It must be an "
@@ -18653,8 +18676,10 @@ msgstr "omráčený"
 
 #. [unstore_unit]
 #: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg:29
+#, fuzzy
+#| msgid "female^Desert Hunter"
 msgid "female^stunned"
-msgstr "omráčená"
+msgstr "Pouštní lovkyně"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:6
@@ -19593,6 +19618,9 @@ msgstr "Hrad duchů"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:48
 msgid "Phantom Keep"
 msgstr "Tvrz duchů"
+
+#~ msgid "female^dazed"
+#~ msgstr "omámená"
 
 #~ msgid ""
 #~ "Very few people who have ever faced an Ixthala Demon have survived to "
