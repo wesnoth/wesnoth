@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-04-19 23:35+0200\n"
+"PO-Revision-Date: 2018-05-06 12:14+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -3810,13 +3810,11 @@ msgstr ""
 
 #. [naming]
 #: data/english.cfg:57
-#, fuzzy
-#| msgid " main=$base{!}’s Peak|Mount $base "
 msgid ""
 "\n"
 "\t\tmain=$base{!}’s Peak|$base Peak|Mount $base|Mount $base\n"
 "\t"
-msgstr "$name|’s Peak,Mount $name "
+msgstr ""
 
 #. [naming]
 #: data/english.cfg:60
@@ -5790,10 +5788,8 @@ msgid "$elem has been deprecated and may be removed at any time."
 msgstr "$elem byl označen za zastaralý a může být kdykoliv odstraněn."
 
 #: src/deprecation.cpp:56
-#, fuzzy
-#| msgid "$elem has been deprecated and may be removed in version $version."
 msgid "$elem has been deprecated and will be removed in version $version."
-msgstr "$elem byl označen za zastaralý a může být odstraněn ve verzi $version."
+msgstr "$elem byl označen za zastaralý a bude odstraněn ve verzi $version."
 
 #: src/deprecation.cpp:61
 msgid "$elem has been deprecated and removed."
@@ -6174,16 +6170,12 @@ msgid "The nickname ‘$nick’ is already taken."
 msgstr "Přezdívka „$nick“ již je registrována někým jiným."
 
 #: src/game_initialization/multiplayer.cpp:321
-#, fuzzy
-#| msgid ""
-#| "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
-#| "characters, underscores and hyphens are allowed."
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
 msgstr ""
-"Přezdívka '$nick' obsahuje neplatné znaky. Povolena jsou pouze písmena, "
-"čísla, podtržítka a pomlčky."
+"Přezdívka '$nick' obsahuje neplatné znaky. Povolena jsou pouze písmena "
+"(alespoň jedno), čísla, podtržítka a pomlčky."
 
 #: src/game_initialization/multiplayer.cpp:325
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
@@ -6706,10 +6698,8 @@ msgid "Jamming Cost"
 msgstr "Cena za rušení"
 
 #: src/hotkey/command_executor.cpp:386
-#, fuzzy
-#| msgid "Do you really want to start the server?"
 msgid "Do you really want to surrender the game?"
-msgstr "Opravdu chcete spustit server?"
+msgstr "Opravdu se chcete v této hře vzdát?"
 
 #: src/hotkey/command_executor.cpp:386
 msgid "Surrender"
@@ -6928,12 +6918,8 @@ msgid "Clear Labels"
 msgstr "Vymazat popisky"
 
 #: src/menu_events.cpp:807
-#, fuzzy
-#| msgid "Are you sure you want to remove the following installed add-on?"
-#| msgid_plural ""
-#| "Are you sure you want to remove the following installed add-ons?"
 msgid "Are you sure you want to clear map labels?"
-msgstr "Opravdu si přejete odstranit následující rozšíření?"
+msgstr "Opravdu chcete odstranit popisky z mapy?"
 
 #: src/menu_events.cpp:996
 msgid "Search"
@@ -7438,6 +7424,8 @@ msgid "Save and abort game"
 msgstr "Ulož a ukonči hru"
 
 #: src/playturn.cpp:283
+#, fuzzy
+#| msgid "$player has left the game. What do you want to do?"
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player opustil(a) hru. Co s tím chceš dělat?"
 
@@ -8257,6 +8245,12 @@ msgstr "Skryj plány pro hráče $player"
 msgid "Whiteboard Options"
 msgstr "Nastavení plánovacího módu"
 
+#~ msgid "Trailers"
+#~ msgstr "Upoutávky"
+
+#~ msgid "The standard Wesnoth core."
+#~ msgstr "Standartní jádro Wesnothu."
+
 #~ msgid ""
 #~ "There are no custom options available for the selected era, game, or "
 #~ "modification."
@@ -8277,11 +8271,53 @@ msgstr "Nastavení plánovacího módu"
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
+#~ msgid "mp_game_available_slots^Full"
+#~ msgstr "Plný"
+
+#, fuzzy
+#~| msgid "vision"
+#~ msgid "vision^none"
+#~ msgstr "vidění"
+
+#~ msgid "time limit^none"
+#~ msgstr "žádný"
+
+#~ msgid "The nickname ‘$nick’ is banned on this server’s forums."
+#~ msgstr "Přezdívka '$nick' je na fórum tohoto serveru serveru zablokována."
+
+#~ msgid "Your IP address is banned on this server’s forums."
+#~ msgstr "Tvoje IP adresa je zablokovaná na fórum tohoto serveru."
+
+#~ msgid ""
+#~ "The email address for the nickname ‘$nick’ is banned on this server’s "
+#~ "forums."
+#~ msgstr ""
+#~ "Emailová adresa pro přezdívku '$nick' je na fórum tohoto serveru serveru "
+#~ "zablokována."
+
+#~ msgid "Connection failed: "
+#~ msgstr "Připojení selhalo: "
+
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "Odkaz na neznámé téma: "
 
+#~ msgid "weapon^None"
+#~ msgstr "Žádná"
+
 #~ msgid "(unknown player)"
 #~ msgstr "(neznámý hráč)"
+
+#, fuzzy
+#~| msgid "attack per turn"
+#~ msgid "<span color=\"$color\">$number_or_percent</span> movement point"
+#~ msgid_plural ""
+#~ "<span color=\"$color\">$number_or_percent</span> movement points"
+#~ msgstr[0] "útok za kolo"
+#~ msgstr[1] "útok za kolo"
+#~ msgstr[2] "útok za kolo"
+
+#~ msgid "Disconnected from server."
+#~ msgstr "Odpojen od serveru."
 
 #~ msgid "Size:"
 #~ msgstr "Velikost:"
@@ -8609,9 +8645,6 @@ msgstr "Nastavení plánovacího módu"
 
 #~ msgid "Configure Game"
 #~ msgstr "Nastavit hru"
-
-#~ msgid "Time limit"
-#~ msgstr "Časový limit"
 
 #~ msgid "Name of game:"
 #~ msgstr "Název hry:"
@@ -9217,9 +9250,6 @@ msgstr "Nastavení plánovacího módu"
 #~ msgstr[1] "kroků"
 #~ msgstr[2] "kroků"
 
-#~ msgid "vision"
-#~ msgstr "vidění"
-
 #~ msgid "jamming"
 #~ msgstr "rušení"
 
@@ -9404,9 +9434,6 @@ msgstr "Nastavení plánovacího módu"
 
 #~ msgid "Connecting"
 #~ msgstr "Připojuji se"
-
-#~ msgid "Connecting to Server..."
-#~ msgstr "Připojuji se na server...."
 
 #~ msgid "Leader: "
 #~ msgstr "Vůdce: "
