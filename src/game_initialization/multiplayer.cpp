@@ -316,6 +316,12 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 				} else if((*error)["error_code"] == MP_NAME_UNREGISTERED_ERROR) {
 					error_message = VGETTEXT("The nickname ‘$nick’ is not registered on this server.", i18n_symbols)
 							+ _(" This server disallows unregistered nicknames.");
+				} else if((*error)["error_code"] == MP_NAME_AUTH_BAN_USER_ERROR) {
+					error_message = VGETTEXT("The nickname ‘$nick’ is banned on this server’s forums.", i18n_symbols);
+				} else if((*error)["error_code"] == MP_NAME_AUTH_BAN_IP_ERROR) {
+					error_message = _("Your IP address is banned on this server’s forums.");
+				} else if((*error)["error_code"] == MP_NAME_AUTH_BAN_EMAIL_ERROR) {
+					error_message = VGETTEXT("The email address for the nickname ‘$nick’ is banned on this server’s forums.", i18n_symbols);
 				} else if((*error)["error_code"] == MP_PASSWORD_REQUEST) {
 					error_message = VGETTEXT("The nickname ‘$nick’ is registered on this server.", i18n_symbols);
 				} else if((*error)["error_code"] == MP_PASSWORD_REQUEST_FOR_LOGGED_IN_NAME) {
