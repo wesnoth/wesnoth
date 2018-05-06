@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-03-29 11:38+1100\n"
+"PO-Revision-Date: 2018-05-06 21:22+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -7449,8 +7449,14 @@ msgid "Save and abort game"
 msgstr "Save and abort game"
 
 #: src/playturn.cpp:283
+#, fuzzy
+#| msgid ""
+#| "$player who controlled side $side_drop has left the game. What do you "
+#| "want to do?"
 msgid "$player has left the game. What do you want to do?"
-msgstr "$player has left the game. What do you want to do?"
+msgstr ""
+"$player who controlled side $side_drop has left the game. What do you want "
+"to do?"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -8028,8 +8034,11 @@ msgid "A unit was created using debug mode during $player’s turn"
 msgstr "A unit was created using debug mode during $player’s turn"
 
 #: src/synced_user_choice.cpp:326
+#, fuzzy
+#| msgid "waiting for $desc from side $sides"
+#| msgid_plural "waiting for $desc from sides $sides"
 msgid "waiting for $desc from side(s) $sides"
-msgstr "waiting for $desc from side(s) $sides"
+msgstr "waiting for $desc from side $sides"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8233,6 +8242,12 @@ msgstr "Hide plans for $player"
 msgid "Whiteboard Options"
 msgstr "Whiteboard Options"
 
+#~ msgid "Trailers"
+#~ msgstr "Trailers"
+
+#~ msgid "The standard Wesnoth core."
+#~ msgstr "The standard Wesnoth core."
+
 #~ msgid ""
 #~ "There are no custom options available for the selected era, game, or "
 #~ "modification."
@@ -8245,6 +8260,64 @@ msgstr "Whiteboard Options"
 
 #~ msgid "Connected Players"
 #~ msgstr "Connected Players"
+
+#~ msgid ""
+#~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
+#~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
+#~ msgstr ""
+#~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
+#~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
+
+#~ msgid "mp_game_available_slots^Full"
+#~ msgstr "Full"
+
+#~| msgid "vision"
+#~ msgid "vision^none"
+#~ msgstr "none"
+
+#~| msgid "Time limit"
+#~ msgid "time limit^none"
+#~ msgstr "none"
+
+#~| msgid "The nickname ‘$nick’ is registered on this server."
+#~ msgid "The nickname ‘$nick’ is banned on this server’s forums."
+#~ msgstr "The nickname ‘$nick’ is banned on this server’s forums."
+
+#~ msgid "Your IP address is banned on this server’s forums."
+#~ msgstr "Your IP address is banned on this server’s forums."
+
+#~| msgid "The nickname ‘$nick’ is registered on this server."
+#~ msgid ""
+#~ "The email address for the nickname ‘$nick’ is banned on this server’s "
+#~ "forums."
+#~ msgstr ""
+#~ "The email address for the nickname ‘$nick’ is banned on this server’s "
+#~ "forums."
+
+#~| msgid "Connection timed out"
+#~ msgid "Connection failed: "
+#~ msgstr "Connection failed: "
+
+#~ msgid "Reference to unknown topic: "
+#~ msgstr "Reference to unknown topic: "
+
+#~ msgid "weapon^None"
+#~ msgstr "None"
+
+#~ msgid "(unknown player)"
+#~ msgstr "(unknown player)"
+
+#~| msgid "<span color=\"$color\">$number_or_percent</span> move"
+#~| msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
+#~ msgid "<span color=\"$color\">$number_or_percent</span> movement point"
+#~ msgid_plural ""
+#~ "<span color=\"$color\">$number_or_percent</span> movement points"
+#~ msgstr[0] "<span color=\"$color\">$number_or_percent</span> movement point"
+#~ msgstr[1] "<span color=\"$color\">$number_or_percent</span> movement points"
+
+#~| msgid "Connecting to Server..."
+#~ msgid "Disconnected from server."
+#~ msgstr "Disconnected from server."
 
 #, fuzzy
 #~| msgid "Size: "
@@ -8263,16 +8336,6 @@ msgstr "Whiteboard Options"
 
 #~ msgid "Close"
 #~ msgstr "Close"
-
-#~ msgid ""
-#~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
-#~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
-#~ msgstr ""
-#~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
-#~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
-
-#~ msgid "Reference to unknown topic: "
-#~ msgstr "Reference to unknown topic: "
 
 #~ msgid "wesnoth"
 #~ msgstr "wesnoth"
@@ -8583,9 +8646,6 @@ msgstr "Whiteboard Options"
 
 #~ msgid "Configure Game"
 #~ msgstr "Configure Game"
-
-#~ msgid "Time limit"
-#~ msgstr "Time limit"
 
 #~ msgid "Name of game:"
 #~ msgstr "Name of game:"
@@ -9183,9 +9243,6 @@ msgstr "Whiteboard Options"
 #~ msgstr[0] "move"
 #~ msgstr[1] "moves"
 
-#~ msgid "vision"
-#~ msgstr "vision"
-
 #~ msgid "jamming"
 #~ msgstr "jamming"
 
@@ -9397,9 +9454,6 @@ msgstr "Whiteboard Options"
 
 #~ msgid "Connecting"
 #~ msgstr "Connecting"
-
-#~ msgid "Connecting to Server..."
-#~ msgstr "Connecting to Server..."
 
 #~ msgid "Leader: "
 #~ msgstr "Leader: "
