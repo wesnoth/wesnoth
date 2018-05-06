@@ -204,7 +204,7 @@ if(NOT DEFINED CXX_FLAGS_USER)
 
 endif(NOT DEFINED CXX_FLAGS_USER)
 
-set(COMPILER_FLAGS "-std=c++${CXX_STD} -Wall -Wextra -Werror=non-virtual-dtor -Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wold-style-cast")
+set(COMPILER_FLAGS "-std=c++${CXX_STD} -Wall -Wextra -Werror=non-virtual-dtor -Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wold-style-cast -Wtrampolines")
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 	set(COMPILER_FLAGS "${COMPILER_FLAGS} -Qunused-arguments -Wno-unknown-warning-option -Wmismatched-tags -Wno-conditional-uninitialized")
