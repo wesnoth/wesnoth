@@ -423,7 +423,19 @@ void set_language(const std::string& language, const std::vector<std::string>* /
 int compare(const std::string& s1, const std::string& s2)
 {
 	std::lock_guard<std::mutex> lock(get_mutex());
-	return std::use_facet<std::collate<char>>(get_manager().get_locale()).compare(s1.c_str(), s1.c_str() + s1.size(), s2.c_str(), s2.c_str() + s2.size());
+
+	try {
+		return std::use_facet<std::collate<char>>(get_manager().get_locale()).compare(s1.c_str(), s1.c_str() + s1.size(), s2.c_str(), s2.c_str() + s2.size());
+	} catch(const std::bad_cast&) {
+		static bool bad_cast_once = false;
+
+		if(!bad_cast_once) {
+			ERR_G << "locale set-up for compare() is broken, falling back to std::string::compare()\n";
+			bad_cast_once = true;
+		}
+
+		return s1.compare(s2);
+	}
 }
 
 int icompare(const std::string& s1, const std::string& s2)
@@ -433,8 +445,21 @@ int icompare(const std::string& s1, const std::string& s2)
 	return compare(s1, s2);
 #else
 	std::lock_guard<std::mutex> lock(get_mutex());
-	return std::use_facet<bl::collator<char>>(get_manager().get_locale()).compare(
+
+	try {
+		return std::use_facet<bl::collator<char>>(get_manager().get_locale()).compare(
 			bl::collator_base::secondary, s1, s2);
+	} catch(const std::bad_cast&) {
+		static bool bad_cast_once = false;
+
+		if(!bad_cast_once) {
+			ERR_G << "locale set-up for icompare() is broken, falling back to std::string::compare()\n";
+			bad_cast_once = true;
+		}
+
+		// FIXME: not even lazily case-insensitive
+		return s1.compare(s2);
+	}
 #endif
 }
 
