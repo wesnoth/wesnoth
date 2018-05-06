@@ -751,10 +751,6 @@ void mp_lobby::pre_show(window& window)
 	find_widget<button>(&window, "create", false).set_retval(CREATE);
 
 	connect_signal_mouse_left_click(
-		find_widget<button>(&window, "refresh", false),
-		std::bind(&mp_lobby::refresh_lobby, this));
-
-	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "show_preferences", false),
 		std::bind(&mp_lobby::show_preferences_button_callback, this, std::ref(window)));
 
