@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-05-06 05:32-0300\n"
-"PO-Revision-Date: 2018-04-19 23:52+0200\n"
+"PO-Revision-Date: 2018-05-06 12:19+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -4388,11 +4388,13 @@ msgid ""
 "A registered account on the Wesnoth forums is required to join the official "
 "server."
 msgstr ""
+"K připojení k oficiálnímu serveru je vyžadován zaregistrovaný účet na fórum "
+"Wesnothu."
 
 #. [button]: id=register
 #: data/gui/window/mp_method_selection.cfg:136
 msgid "Sign Up"
-msgstr ""
+msgstr "Registrovat"
 
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:226
@@ -4794,10 +4796,8 @@ msgstr "Nastavit poměr škálování pro písma"
 
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:273
-#, fuzzy
-#| msgid "unlimited"
 msgid "FPS limiter"
-msgstr "neomezeně"
+msgstr "Limitování FPS"
 
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:274
@@ -6218,7 +6218,7 @@ msgstr "Hry: zobrazeno $num_shown ze $num_total"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:426
 msgid "$game_name (Era: $era_name)"
-msgstr ""
+msgstr "$game_name (Éra: $era_name)"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Era:"
@@ -6348,7 +6348,7 @@ msgstr ""
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:832
 msgid "The selected game has no sides!"
-msgstr ""
+msgstr "Vybraná hra nemá žádné strany!"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:898
 msgid "Choose Starting Scenario"

@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-05-06 05:31-0300\n"
-"PO-Revision-Date: 2018-04-19 23:35+0200\n"
+"PO-Revision-Date: 2018-05-06 12:14+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -378,10 +378,8 @@ msgstr "Správa internacionalizace"
 
 #. [about]
 #: data/core/about.cfg:323
-#, fuzzy
-#| msgid "Traits"
 msgid "Trailers"
-msgstr "Vlastnosti"
+msgstr "Upoutávky"
 
 #. [about]
 #: data/core/about.cfg:335
@@ -3626,7 +3624,7 @@ msgstr "Wesnoth (Výchozí)"
 #. [core]: id=default
 #: data/cores.cfg:8
 msgid "The standard Wesnoth core."
-msgstr ""
+msgstr "Standartní jádro Wesnothu."
 
 #. [language]
 #: data/english.cfg:6
@@ -3773,13 +3771,11 @@ msgstr ""
 #. [naming]
 #. Generator for mountain labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
 #: data/english.cfg:63
-#, fuzzy
-#| msgid " main=$base{!}’s Peak|Mount $base "
 msgid ""
 "\n"
 "\t\tmain=$base{!}’s Peak|$base Peak|Mount $base|Mount $base\n"
 "\t"
-msgstr "$name|’s Peak,Mount $name "
+msgstr ""
 
 #. [naming]
 #. Generator for swamp labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -5793,10 +5789,8 @@ msgid "$elem has been deprecated and may be removed at any time."
 msgstr "$elem byl označen za zastaralý a může být kdykoliv odstraněn."
 
 #: src/deprecation.cpp:56
-#, fuzzy
-#| msgid "$elem has been deprecated and may be removed in version $version."
 msgid "$elem has been deprecated and will be removed in version $version."
-msgstr "$elem byl označen za zastaralý a může být odstraněn ve verzi $version."
+msgstr "$elem byl označen za zastaralý a bude odstraněn ve verzi $version."
 
 #: src/deprecation.cpp:61
 msgid "$elem has been deprecated and removed."
@@ -6097,7 +6091,7 @@ msgstr[2] "Prázdných pozic:"
 
 #: src/game_initialization/lobby_data.cpp:429
 msgid "mp_game_available_slots^Full"
-msgstr ""
+msgstr "Plný"
 
 #: src/game_initialization/lobby_data.cpp:440
 #: src/game_initialization/lobby_data.cpp:442 src/savegame.cpp:631
@@ -6111,10 +6105,8 @@ msgid "vision^none"
 msgstr "vidění"
 
 #: src/game_initialization/lobby_data.cpp:464
-#, fuzzy
-#| msgid "Time limit"
 msgid "time limit^none"
-msgstr "Časový limit"
+msgstr "žádný"
 
 #: src/game_initialization/lobby_data.cpp:497
 msgid ""
@@ -6184,16 +6176,12 @@ msgid "The nickname ‘$nick’ is already taken."
 msgstr "Přezdívka „$nick“ již je registrována někým jiným."
 
 #: src/game_initialization/multiplayer.cpp:308
-#, fuzzy
-#| msgid ""
-#| "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
-#| "characters, underscores and hyphens are allowed."
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
 msgstr ""
-"Přezdívka '$nick' obsahuje neplatné znaky. Povolena jsou pouze písmena, "
-"čísla, podtržítka a pomlčky."
+"Přezdívka '$nick' obsahuje neplatné znaky. Povolena jsou pouze písmena "
+"(alespoň jedno), čísla, podtržítka a pomlčky."
 
 #: src/game_initialization/multiplayer.cpp:312
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
@@ -6212,21 +6200,19 @@ msgid " This server disallows unregistered nicknames."
 msgstr " Tento server nepovoluje použití neregistrovaných přezdívek."
 
 #: src/game_initialization/multiplayer.cpp:320
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
-msgstr "Přezdívka '$nick' je na tomto serveru registrovaná."
+msgstr "Přezdívka '$nick' je na fórum tohoto serveru serveru zablokována."
 
 #: src/game_initialization/multiplayer.cpp:322
 msgid "Your IP address is banned on this server’s forums."
-msgstr ""
+msgstr "Tvoje IP adresa je zablokovaná na fórum tohoto serveru."
 
 #: src/game_initialization/multiplayer.cpp:324
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
-msgstr "Přezdívka '$nick' je na tomto serveru registrovaná."
+msgstr ""
+"Emailová adresa pro přezdívku '$nick' je na fórum tohoto serveru serveru "
+"zablokována."
 
 #: src/game_initialization/multiplayer.cpp:326
 #: src/game_initialization/multiplayer.cpp:328
@@ -6408,10 +6394,8 @@ msgid "Error while starting server: "
 msgstr "Při spouštění serveru se vyskytla chyba: "
 
 #: src/game_launcher.cpp:882
-#, fuzzy
-#| msgid "Connection timed out"
 msgid "Connection failed: "
-msgstr "Časový limit pro připojení vypršel"
+msgstr "Připojení selhalo: "
 
 # alt.: "nelze použít?"
 #: src/generators/default_map_generator_job.cpp:691
@@ -6743,10 +6727,8 @@ msgid "Jamming Cost"
 msgstr "Cena za rušení"
 
 #: src/hotkey/command_executor.cpp:388
-#, fuzzy
-#| msgid "Do you really want to start the server?"
 msgid "Do you really want to surrender the game?"
-msgstr "Opravdu chcete spustit server?"
+msgstr "Opravdu se chcete v této hře vzdát?"
 
 #: src/hotkey/command_executor.cpp:388
 msgid "Surrender"
@@ -6965,12 +6947,8 @@ msgid "Clear Labels"
 msgstr "Vymazat popisky"
 
 #: src/menu_events.cpp:803
-#, fuzzy
-#| msgid "Are you sure you want to remove the following installed add-on?"
-#| msgid_plural ""
-#| "Are you sure you want to remove the following installed add-ons?"
 msgid "Are you sure you want to clear map labels?"
-msgstr "Opravdu si přejete odstranit následující rozšíření?"
+msgstr "Opravdu chcete odstranit popisky z mapy?"
 
 #: src/menu_events.cpp:998
 msgid "Search"
@@ -7689,7 +7667,7 @@ msgstr "Zvláštnosti zbraně: "
 
 #: src/reports.cpp:893
 msgid "weapon^None"
-msgstr ""
+msgstr "Žádná"
 
 #: src/reports.cpp:922
 msgid "Total damage"
@@ -8286,10 +8264,8 @@ msgid "$year AF"
 msgstr ""
 
 #: src/wesnothd_connection.cpp:402
-#, fuzzy
-#| msgid "Connecting to Server..."
 msgid "Disconnected from server."
-msgstr "Připojuji se na server...."
+msgstr "Odpojen od serveru."
 
 #: src/whiteboard/manager.cpp:1115
 msgid "SHOW ALL allies’ plans"
