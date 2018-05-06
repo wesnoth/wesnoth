@@ -103,12 +103,12 @@ void sub_player_list::update_player_count_label()
 
 void player_list::init(window& w)
 {
-	active_game.init(w, _("Selected Game"));
-	other_games.init(w, _("Other Games"));
+	active_game.init(w, _("Selected Game"), true);
+	other_rooms.init(w, _("Lobby"), true);
 #ifdef ENABLE_ROOM_MEMBER_TREE
 	active_room.init(w, _("Current Room"));
 #endif
-	other_rooms.init(w, _("Lobby"), true);
+	other_games.init(w, _("Other Games"));
 
 	sort_by_name = find_widget<toggle_button>(&w, "player_list_sort_name", false, true);
 	sort_by_relation = find_widget<toggle_button>(&w, "player_list_sort_relation", false, true);
