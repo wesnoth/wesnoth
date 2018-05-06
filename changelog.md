@@ -54,6 +54,11 @@
    * Fixed an infinite loading screen when attempting to login with an
      unregistered nickname followed by a registered one.
    * Dark Forecast: Fixed possible Lua error when the weather changes.
+ ### Multiplayer server
+   * Added support for matching user, IP, and email bans from a forums board
+     when the forum_user_handler is enabled and active. (IP and email bans with
+     wildcards are not supported yet.)
+   * Fixed various instances of the server crashing under certain conditions.
  ### Packaging
    * OpenMP support has been removed. It is no longer an optional build-time dependency.
  ### Units
