@@ -473,7 +473,7 @@ for env in [test_env, client_env, env]:
             env.AppendUnique(CXXFLAGS = Split("-Wdocumentation -Wno-documentation-deprecated-sync"))
 
     if "gcc" in env["TOOLS"]:
-        env.AppendUnique(CCFLAGS = Split("-Wno-unused-local-typedefs -Wno-maybe-uninitialized"))
+        env.AppendUnique(CCFLAGS = Split("-Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wtrampolines"))
         env.AppendUnique(CXXFLAGS = Split("-Wold-style-cast"))
 
         if env['strict']:
