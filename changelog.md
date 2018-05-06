@@ -145,6 +145,7 @@
      message, instead of saving the screenshot as BMP with the requested extension.
    * Fixed the wesnoth(6) manpage claiming the default log level is 'error' when it
      has been 'warning' since version 1.9.0.
+   * Avoid trying to load invalid base64-encoded data URIs.
 
 ## Version 1.13.12
  ### Security fixes
