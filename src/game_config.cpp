@@ -83,7 +83,7 @@ double hex_brightening = 1.25;
 //
 int cache_compression_level = 6;
 
-unsigned lobby_network_timer  = 100;
+unsigned lobby_network_timer  = 1000;
 unsigned lobby_refresh        = 4000;
 
 const std::string observer_team_name = "observer";
