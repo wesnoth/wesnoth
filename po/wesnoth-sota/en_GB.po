@@ -10,7 +10,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #. [campaign]: id=Secrets of the Ancients
 #. [editor_group]: id=sota
@@ -1592,8 +1592,10 @@ msgstr "Capture every village"
 
 #. [unit]: type=Shadow
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:92
+#, fuzzy
+#| msgid "Vash-Gorn"
 msgid "Vash Gorn"
-msgstr "Vash Gorn"
+msgstr "Vash-Gorn"
 
 #. [unit]: type=Mage, id=Wynran
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:114
@@ -2052,14 +2054,19 @@ msgstr ""
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:507
+#, fuzzy
+#| msgid ""
+#| "This is going to cost us, but I want to keep some gold around for "
+#| "emergencies — I think 50 is about right. Help me collect some. (<i>Cough, "
+#| "cough</i>)"
 msgid ""
 "This is going to cost us, but I want to keep some gold around for "
 "emergencies — I think 50 is about right. You kids help me collect some. "
 "(<i>Cough, cough</i>)"
 msgstr ""
 "This is going to cost us, but I want to keep some gold around for "
-"emergencies — I think 50 is about right. You kids help me collect some. "
-"(<i>Cough, cough</i>)"
+"emergencies — I think 50 is about right. Help me collect some. (<i>Cough, "
+"cough</i>)"
 
 #. [message]: speaker=Carcyn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:511
@@ -4381,6 +4388,44 @@ msgstr "Void Overlay"
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:344
 msgid "Half Void"
 msgstr "Half Void"
+
+#~| msgid "Syrillin"
+#~ msgid "Gwyllin"
+#~ msgstr "Gwyllin"
+
+#~| msgid "You may watch."
+#~ msgid "plural^You may watch."
+#~ msgstr "You may watch."
+
+#~| msgid "As you wish. (<i>Cough, cough</i>)"
+#~ msgid "plural^As you wish. (<i>Cough, cough</i>)"
+#~ msgstr "As you wish. (<i>Cough, cough</i>)"
+
+#~| msgid "Can I help?"
+#~ msgid "self_female^Can I help?"
+#~ msgstr "Can I help?"
+
+#~| msgid ""
+#~| "This is going to cost us, but I want to keep some gold around for "
+#~| "emergencies — I think 50 is about right. You kids help me collect some. "
+#~| "(<i>Cough, cough</i>)"
+#~ msgid ""
+#~ "addressed_plural^This is going to cost us, but I want to keep some gold "
+#~ "around for emergencies — I think 50 is about right. You help me collect "
+#~ "some. (<i>Cough, cough</i>)"
+#~ msgstr ""
+#~ "This is going to cost us, but I want to keep some gold around for "
+#~ "emergencies — I think 50 is about right. You help me collect some. "
+#~ "(<i>Cough, cough</i>)"
+
+#~| msgid "Have you never been fishing before? With bait of course."
+#~ msgid ""
+#~ "addressed_plural^Have you never been fishing before? With bait of course."
+#~ msgstr "Have you never been fishing before? With bait of course."
+
+#~| msgid "I don’t fancy wading in the water to fight these things."
+#~ msgid "self_female^I don’t fancy wading in the water to fight these things."
+#~ msgstr "I don’t fancy wading in the water to fight these things."
 
 #~ msgid "Khalif"
 #~ msgstr "Khalif"
