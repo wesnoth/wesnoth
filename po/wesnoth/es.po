@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-03-27 19:49+0200\n"
+"PO-Revision-Date: 2018-05-07 11:34+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth Spanish translation\n"
 "Language: es\n"
@@ -236,7 +236,7 @@ msgstr "Muestra efectos gráficos de unidad especial"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:189
 msgid "Show deprecation messages in-game"
-msgstr ""
+msgstr "Mostrar mensajes sobre exclusiones durante la partida"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:190
@@ -245,6 +245,10 @@ msgid ""
 "will still be shown in the log, even if this is disabled. In addition, the "
 "deprecation log-domain controls how many messages are printed."
 msgstr ""
+"Muestra avisos acerca de API excluida en el área de chat durante la partida. "
+"Estos mensajes aún se mostrarán en el registro, incluso si esto está "
+"deshabilitado. Además, el registro de dominio de exclusión controla cuantos "
+"mensajes se imprimen."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:198
@@ -7609,8 +7613,14 @@ msgid "Save and abort game"
 msgstr "Guardar y abortar la partida"
 
 #: src/playturn.cpp:283
+#, fuzzy
+#| msgid ""
+#| "$player who controlled side $side_drop has left the game. What do you "
+#| "want to do?"
 msgid "$player has left the game. What do you want to do?"
-msgstr "$player ha dejado la partida. ¿Qué quiere hacer?"
+msgstr ""
+"El jugador $player que controlaba el bando $side_drop ha dejado la partida. "
+"¿Qué es lo que desea hacer?"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -8208,8 +8218,11 @@ msgstr ""
 "$player"
 
 #: src/synced_user_choice.cpp:326
+#, fuzzy
+#| msgid "waiting for $desc from side $sides"
+#| msgid_plural "waiting for $desc from sides $sides"
 msgid "waiting for $desc from side(s) $sides"
-msgstr "esperando a $desc del bando o bandos $sides"
+msgstr "esperando a $desc del bando $sides"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8418,6 +8431,12 @@ msgstr "Ocultar planes de $player"
 msgid "Whiteboard Options"
 msgstr "Opciones del modo pizarra"
 
+#~ msgid "Trailers"
+#~ msgstr "Anuncios"
+
+#~ msgid "The standard Wesnoth core."
+#~ msgstr "El núcleo común de Wesnoth."
+
 #~ msgid ""
 #~ "There are no custom options available for the selected era, game, or "
 #~ "modification."
@@ -8438,11 +8457,49 @@ msgstr "Opciones del modo pizarra"
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
+#~ msgid "mp_game_available_slots^Full"
+#~ msgstr "Completo"
+
+#~ msgid "vision^none"
+#~ msgstr "ninguna"
+
+#~ msgid "time limit^none"
+#~ msgstr "ninguno"
+
+#~ msgid "The nickname ‘$nick’ is banned on this server’s forums."
+#~ msgstr ""
+#~ "El nombre de usuario «$nick|» ha sido expulsado del foro de este servidor."
+
+#~ msgid "Your IP address is banned on this server’s forums."
+#~ msgstr "Su dirección IP ha sido expulsada del foro de este servidor."
+
+#~ msgid ""
+#~ "The email address for the nickname ‘$nick’ is banned on this server’s "
+#~ "forums."
+#~ msgstr ""
+#~ "La dirección de correo para el nombre de usuario «$nick|» ha sido "
+#~ "expulsada del foro de este servidor."
+
+#~ msgid "Connection failed: "
+#~ msgstr "Conexión fallida: "
+
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "Referencia a tema desconocido: "
 
+#~ msgid "weapon^None"
+#~ msgstr "Ninguna"
+
 #~ msgid "(unknown player)"
 #~ msgstr "(jugador desconocido)"
+
+#~ msgid "<span color=\"$color\">$number_or_percent</span> movement point"
+#~ msgid_plural ""
+#~ "<span color=\"$color\">$number_or_percent</span> movement points"
+#~ msgstr[0] "<span color=\"$color\">$number_or_percent</span> movimiento"
+#~ msgstr[1] "<span color=\"$color\">$number_or_percent</span> movimientos"
+
+#~ msgid "Disconnected from server."
+#~ msgstr "Desconectado del servidor."
 
 #~ msgid "Size:"
 #~ msgstr "Tamaño:"
@@ -8763,9 +8820,6 @@ msgstr "Opciones del modo pizarra"
 
 #~ msgid "Configure Game"
 #~ msgstr "Configurar juego"
-
-#~ msgid "Time limit"
-#~ msgstr "Límite de tiempo"
 
 #~ msgid "Name of game:"
 #~ msgstr "Nombre de la partida:"
@@ -9300,9 +9354,6 @@ msgstr "Opciones del modo pizarra"
 #~ msgstr[0] "movimiento"
 #~ msgstr[1] "movimientos"
 
-#~ msgid "vision"
-#~ msgstr "visión"
-
 #~ msgid "jamming"
 #~ msgstr "interferencia"
 
@@ -9452,9 +9503,6 @@ msgstr "Opciones del modo pizarra"
 
 #~ msgid "Connecting"
 #~ msgstr "Conectando"
-
-#~ msgid "Connecting to Server..."
-#~ msgstr "Conectando al servidor..."
 
 #~ msgid "Leader: "
 #~ msgstr "Líder: "
