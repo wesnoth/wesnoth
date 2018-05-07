@@ -4,15 +4,15 @@
 #  Nils Kneuper <crazy-ivanovic@gmx.net>, 2005, 2006
 #  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2011
 #  Gerfried Fuchs <rhonda@deb.at>, 2005, 2006, 2010
-# Elias Pschernig <allefant@allefant.com>, 2012.
-# Aaron WInter <winter.aaron93@gmail.com>, 2018
+#  Elias Pschernig <allefant@allefant.com>, 2012.
+#  Aaron WInter <winter.aaron93@gmail.com>, 2018
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-05-06 05:31-0300\n"
-"PO-Revision-Date: 2018-05-04 05:34+0200\n"
+"PO-Revision-Date: 2018-05-06 19:30+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -213,7 +213,7 @@ msgstr "Zeige spezielle grafische Effekte für Einheiten an"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:178
 msgid "Show deprecation messages in-game"
-msgstr ""
+msgstr "Zeige Nachrichten über veraltete Funktionen im Spiel"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:179
@@ -222,6 +222,10 @@ msgid ""
 "will still be shown in the log, even if this is disabled. In addition, the "
 "deprecation log-domain controls how many messages are printed."
 msgstr ""
+"Zeige Warnungen über veraltete APO im im-spiel Chat. Diese Nachrichten "
+"werden immer ins Protokoll geschrieben, auch wenn diese Option deaktiviert "
+"ist. Zusätzlich kontrolliert der Protokoll-Bereich über veralteten Code, wie "
+"viele Nachrichten angezeigt werden."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:187
@@ -372,10 +376,8 @@ msgstr "Internationalisierungsleitung"
 
 #. [about]
 #: data/core/about.cfg:323
-#, fuzzy
-#| msgid "Traits"
 msgid "Trailers"
-msgstr "Charakteristiken"
+msgstr "Trailer"
 
 #. [about]
 #: data/core/about.cfg:335
@@ -3644,7 +3646,7 @@ msgstr "Standard"
 #. [core]: id=default
 #: data/cores.cfg:8
 msgid "The standard Wesnoth core."
-msgstr ""
+msgstr "Der Standard Wesnoth-Kern"
 
 #. [language]
 #: data/english.cfg:6
@@ -6304,7 +6306,7 @@ msgstr[1] "Verfügbare Plätze:"
 
 #: src/game_initialization/lobby_data.cpp:429
 msgid "mp_game_available_slots^Full"
-msgstr ""
+msgstr "Voll"
 
 #: src/game_initialization/lobby_data.cpp:440
 #: src/game_initialization/lobby_data.cpp:442 src/savegame.cpp:631
@@ -6312,16 +6314,12 @@ msgid "Turn"
 msgstr "Runde"
 
 #: src/game_initialization/lobby_data.cpp:455
-#, fuzzy
-#| msgid "vision: "
 msgid "vision^none"
-msgstr "Sichtbarkeit:"
+msgstr "keine"
 
 #: src/game_initialization/lobby_data.cpp:464
-#, fuzzy
-#| msgid "Time limit"
 msgid "time limit^none"
-msgstr "Zeitbegrenzung"
+msgstr "keine"
 
 #: src/game_initialization/lobby_data.cpp:497
 msgid ""
@@ -6420,21 +6418,19 @@ msgid " This server disallows unregistered nicknames."
 msgstr " Der Server erlaubt keine unregistrierten Benutzernamen."
 
 #: src/game_initialization/multiplayer.cpp:320
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
-msgstr "Der Benutzername »$nick« ist auf diesem Server registriert."
+msgstr "Der Benutzername »$nick« ist von den Foren dieses Servers verbannt."
 
 #: src/game_initialization/multiplayer.cpp:322
 msgid "Your IP address is banned on this server’s forums."
-msgstr ""
+msgstr "Eure IP Adresse ist von den Foren dieses Servers verbannt."
 
 #: src/game_initialization/multiplayer.cpp:324
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
-msgstr "Der Benutzername »$nick« ist auf diesem Server registriert."
+msgstr ""
+"Der E-Mail Adresse für den Benutzernamen »$nick« ist von den Foren dieses "
+"Servers verbannt."
 
 #: src/game_initialization/multiplayer.cpp:326
 #: src/game_initialization/multiplayer.cpp:328
@@ -6622,10 +6618,8 @@ msgid "Error while starting server: "
 msgstr "Fehler beim Starten des Servers: "
 
 #: src/game_launcher.cpp:882
-#, fuzzy
-#| msgid "Connection timed out"
 msgid "Connection failed: "
-msgstr "Verbindung nach vorgegebener Wartezeit abgebrochen"
+msgstr "Verbindung fehlgeschlagen: "
 
 #: src/generators/default_map_generator_job.cpp:691
 msgid "Random maps with an odd width aren't supported."
@@ -7727,12 +7721,11 @@ msgid "Save and abort game"
 msgstr "Spiel speichern und abbrechen"
 
 #: src/playturn.cpp:296
-#, fuzzy
-#| msgid "$player has left the game. What do you want to do?"
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
-msgstr "$player hat das Spiel verlassen. Was möchtet Ihr tun?"
+msgstr ""
+"$player (Partei: $side_drop) hat das Spiel verlassen. Was möchtet Ihr tun?"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -7963,7 +7956,7 @@ msgstr "Waffenfähigkeiten: "
 
 #: src/reports.cpp:893
 msgid "weapon^None"
-msgstr ""
+msgstr "Keine"
 
 #: src/reports.cpp:922
 msgid "Total damage"
@@ -8350,12 +8343,10 @@ msgstr ""
 "$player)"
 
 #: src/synced_user_choice.cpp:327
-#, fuzzy
-#| msgid "waiting for $desc from side(s) $sides"
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
-msgstr[0] "warte auf $desc von Partei(en) $sides"
-msgstr[1] "warte auf $desc von Partei(en) $sides"
+msgstr[0] "warte auf $desc von Partei $sides"
+msgstr[1] "warte auf $desc von Parteien $sides"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8445,9 +8436,6 @@ msgstr[1] "$number Bewegungspunkte"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:429
-#, fuzzy
-#| msgid "<span color=\"$color\">$number_or_percent</span> move"
-#| msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> Bewegungspunkt"
@@ -8550,10 +8538,8 @@ msgid "$year AF"
 msgstr "$year NF"
 
 #: src/wesnothd_connection.cpp:402
-#, fuzzy
-#| msgid "Connecting to Server..."
 msgid "Disconnected from server."
-msgstr "Mit dem Server verbinden..."
+msgstr "Verbindung zum Server getrennt."
 
 #: src/whiteboard/manager.cpp:1115
 msgid "SHOW ALL allies’ plans"
