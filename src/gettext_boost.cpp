@@ -346,7 +346,7 @@ namespace
 			 	     << "'),";
 			}
 			if(std::has_facet<bl::collator<char>>(current_locale_)) {
-				res << "has bl::collator<char> facet,"
+				res << "has bl::collator<char> facet, ";
 			}
 			res << "generator categories='" << g_mgr.categories() << "'";
 			return res.str();
