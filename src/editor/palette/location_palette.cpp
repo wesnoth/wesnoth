@@ -21,10 +21,13 @@
 #include "font/standard_colors.hpp"
 #include "tooltips.hpp"
 
+#include "editor/editor_common.hpp"
 #include "editor/toolkit/editor_toolkit.hpp"
 #include "gui/dialogs/edit_text.hpp"
 
 #include "formula/string_utils.hpp"
+
+#include <boost/regex.hpp>
 
 static bool is_positive_integer(const std::string& str) {
 	return str != "0" && std::find_if(str.begin(), str.end(), [](char c) { return !std::isdigit(c); }) == str.end();
@@ -259,7 +262,14 @@ void location_palette::adjust_size(const SDL_Rect& target)
 		button_add_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Add"), [this]() {
 			std::string newid;
 			if (gui2::dialogs::edit_text::execute(_("New Location Identifier"), "", newid)) {
-				add_item(newid);
+				static const boost::regex valid_id("[a-zA-Z_]+");
+				if(boost::regex_match(newid, valid_id)) {
+					add_item(newid);
+				}
+				else {
+					//TODO: a user visible messae would be nice.
+					ERR_ED  << "entered invalid location id\n";
+				}
 			}
 		}));
 		button_delete_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Delete"), nullptr));
