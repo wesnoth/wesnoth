@@ -17,8 +17,10 @@
 #include "log.hpp"
 #include "filesystem.hpp"
 
+#include <algorithm>
 #include <iomanip>
 #include <iostream>
+#include <iterator>
 #include <fstream>
 #include <locale>
 #include <mutex>
@@ -348,6 +350,17 @@ namespace
 		return *mng;
 	}
 
+	// Converts ASCII letters to lowercase. Ignores Unicode letters.
+	std::string ascii_to_lowercase(const std::string& str)
+	{
+		std::string result;
+		result.reserve(str.length());
+		std::transform(str.begin(), str.end(), std::back_inserter(result), [](char c)
+		{
+			return c >= 'A' && c <= 'Z' ? c | 0x20 : c;
+		});
+		return result;
+	}
 }
 
 namespace translation
@@ -440,7 +453,7 @@ int icompare(const std::string& s1, const std::string& s2)
 {
 #ifdef __APPLE__
 	// https://github.com/wesnoth/wesnoth/issues/2094
-	return compare(s1, s2);
+	return compare(ascii_to_lowercase(s1), ascii_to_lowercase(s2));
 #else
 	std::lock_guard<std::mutex> lock(get_mutex());
 
@@ -455,8 +468,8 @@ int icompare(const std::string& s1, const std::string& s2)
 			bad_cast_once = true;
 		}
 
-		// FIXME: not even lazily case-insensitive
-		return s1.compare(s2);
+		// Let's convert at least ASCII letters to lowercase to get a somewhat case-insensitive comparison.
+		return ascii_to_lowercase(s1).compare(ascii_to_lowercase(s2));
 	}
 #endif
 }
