@@ -23,6 +23,8 @@
      * New set of Quenoth faction and character portraits by LordBob.
      * Updated sprites for several Quenoth units.
      * Added a custom terrain for the broken tree in S1.
+     * Fixed a bug in the formation ability causing defense bonuses not being
+       received in some cases.
  ### Help browser
    * Unit descriptions use the new multiplication sign format for attack lists
      now (issue #2873).
