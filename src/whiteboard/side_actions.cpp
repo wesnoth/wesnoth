@@ -39,6 +39,7 @@
 #include "game_end_exceptions.hpp"
 #include "game_state.hpp"
 #include "map/map.hpp"
+#include "play_controller.hpp"
 #include "resources.hpp"
 #include "units/unit.hpp"
 #include "utils/iterable_pair.hpp"
@@ -356,8 +357,12 @@ bool side_actions::execute(side_actions::iterator position)
 	}
 
 	if(resources::whiteboard->should_clear_undo()) {
-		//FIXME: clearing the undo stack in a unsynced context can casue oos/assertion failures.
-		resources::undo_stack->clear();
+		if(resources::controller->current_team().auto_shroud_updates()) {
+			resources::undo_stack->clear();
+		}
+		else {
+			WRN_WB << "not clearing undo stack because dsu is active\n";
+		}
 	}
 
 	std::stringstream ss;
