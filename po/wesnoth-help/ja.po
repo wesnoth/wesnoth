@@ -2,28 +2,18 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Wesnoth development team
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-# Translators:
-# Automatically generated, 2005
-# MATSUMOTO Yuji <matumoto@marron.cias.osakafu-u.ac.jp>, 2005
-# OOTA, Masato <ooyooxei+tr@gmail.com>, 2015
-# RatArmy <broadbarredfirefish@gmail.com>, 2015-2018
-# S.Suto, 2016
-# suto3, 2016
-# suto3, 2017
-# suto3, 2016
-# tamanegi, 2017
-# yma <yma9yma@gmail.com>, 2011
-# 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2017
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth-Dev Japanese\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-04-22 14:06+0000\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
-"Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
-"japanese/language/ja/)\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2018\n"
+"Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
+"ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -6094,6 +6084,8 @@ msgstr "マーフォーク"
 
 #. [race]: id=merman
 #: data/core/units.cfg:256
+#, fuzzy
+#| msgid "race^Merman"
 msgid "race^Mermen"
 msgstr "マーフォーク"
 
@@ -6460,6 +6452,32 @@ msgstr "アンデッド"
 
 #. [race]: id=undead
 #: data/core/units.cfg:347
+#, fuzzy
+#| msgid ""
+#| "Undead are not really a single race of creatures, although often treated "
+#| "as such. Almost any dead creature can, by a sufficiently skilled "
+#| "necromancer, be reanimated and rise again in undeath. Undead are for the "
+#| "most part unnatural but mindless constructs, obeying whoever created them "
+#| "without question nor thought. A greater mystery of necromancy is in how "
+#| "constructs are sustained without continuous effort from the necromancer. "
+#| "An undead creature does not require the constant attention of the "
+#| "necromancer to command and sustain, but can work autonomously according "
+#| "to the commands of its master. Only rarely, perhaps once every few "
+#| "months, does the necromancer need to maintain his creation.\n"
+#| "\n"
+#| "Necromancy is almost solely limited to humans. Even the legends of "
+#| "magically apt races like elves and merfolk tell of very few of their kind "
+#| "who have ever delved in the dark arts. It is surmised that necromantic "
+#| "magic requires great adaptability and a flexible mind, extremes of which "
+#| "are most commonly found in humans. The ultimate goal of most necromancers "
+#| "is to turn the same art of preserving and imbuing life upon themselves, "
+#| "to alter themselves at whatever cost, to ultimately escape death by "
+#| "preserving their own mind and spirit.\n"
+#| "\n"
+#| "<header>text='Geography'</header>\n"
+#| "While undead lords arrived on the Great Continent in considerable numbers "
+#| "only in the wake of Haldric I, they were not completely unheard of by "
+#| "elves and dwarves before that."
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -6488,18 +6506,19 @@ msgid ""
 msgstr ""
 "アンデッドは本来1つの種族ではありませんが、しばしばそのように扱われます。ほと"
 "んど全ての生物の死体が、熟練したネクロマンサーの手により、動き出して不死とな"
-"ります。アンデッドの不自然で意思の無い構造物であり、何の疑問も無く生み出した"
-"者に従います。降霊術の大きな謎の1つは、ネクロマンサーは手を加えてないのにも関"
-"わらず、その構造物が維持されることです。アンデッドはネクロマンサーの継続的な"
-"命令や支えを必要とせず、主の命にしたがって自動的に動き続けます。ごく稀に、数"
-"カ月に一度、ネクロマンサーは創造物のメンテナンスを必要とするようです。\n"
+"ります。アンデッドは自然界には存在しない、意思の無い構造物であり、何の疑問も"
+"無く製作者に従います。降霊術の大きな謎の1つは、ネクロマンサーは手を加えてない"
+"のにも関わらず、その構造物が維持されることです。アンデッドはネクロマンサーの"
+"継続的な命令や支えを必要とせず、主の命にしたがって自動的に動き続けます。ごく"
+"稀に、数カ月に一度、ネクロマンサーは創造物のメンテナンスを必要とするようで"
+"す。\n"
 "\n"
-"降霊術を行うのはほとんどが人間です。魔術の才のあるエルフやマーマンの伝説にさ"
-"え、闇の魔術を探求した者についてはほとんど伝えられていません。それは、降霊術"
-"を行うには相当な適応力と柔軟な精神が必要になるためだと言われています。それら"
-"の性質は一般的に人間に見られるものなのです。ほとんどのネクロマンサーにとって"
-"の最終的な目標は、生命を保ちつつ吹き込む魔法を自身に掛けて、どんな代償を払っ"
-"てでも自身の魂と心を保ち、死を逃れることです。\n"
+"降霊術を行うのはほとんどが人間です。魔術の才のあるエルフやマーフォークの伝説"
+"にさえ、闇の魔術を探求した者についてはほとんど伝えられていません。それは、降"
+"霊術を行うには相当な適応力と柔軟な精神が必要になるためだと言われています。そ"
+"れらの性質は一般的に人間に見られるものなのです。ほとんどのネクロマンサーに"
+"とっての最終的な目標は、生命を保ちつつ吹き込む魔法を自身に掛けて、どんな代償"
+"を払ってでも自身の魂と心を保ち、死を逃れることです。\n"
 "\n"
 "<header>text='地理'</header> 多くのアンデッドの支配者たちが大陸に到着したの"
 "は Haldric I 世の後であり、それ以前にはエルフ族もドワーフ族もアンデッドについ"
@@ -6613,6 +6632,9 @@ msgstr "最大 HP +1"
 
 #~ msgid "This race does not have a description yet."
 #~ msgstr "この一団の説明はまだありません。"
+
+#~ msgid "race^Merfolk"
+#~ msgstr "マーフォーク"
 
 #~ msgid "Close"
 #~ msgstr "閉じる"
