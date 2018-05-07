@@ -7,6 +7,8 @@
    * Under the Burning Suns
      * Added a custom terrain for the broken tree in S1.
      * Various sprite and image updates.
+     * Fixed a bug in the formation ability causing defense bonuses not being
+       received in some cases.
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Czech, French,
      Galician, German, Italian, Japanese, Scottish Gaelic, Slovak, Spanish
