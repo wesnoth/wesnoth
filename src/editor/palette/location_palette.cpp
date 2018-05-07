@@ -24,6 +24,7 @@
 #include "editor/editor_common.hpp"
 #include "editor/toolkit/editor_toolkit.hpp"
 #include "gui/dialogs/edit_text.hpp"
+#include "gui/dialogs/transient_message.hpp"
 
 #include "formula/string_utils.hpp"
 
@@ -267,6 +268,10 @@ void location_palette::adjust_size(const SDL_Rect& target)
 					add_item(newid);
 				}
 				else {
+					gui2::show_transient_message(
+						_("Error"),
+						_("Invalid location id")
+					);
 					//TODO: a user visible messae would be nice.
 					ERR_ED  << "entered invalid location id\n";
 				}
