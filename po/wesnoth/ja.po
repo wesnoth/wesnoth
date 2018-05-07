@@ -2,24 +2,18 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Wesnoth development team
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-# Translators:
-# Automatically generated, 2005
-# MATSUMOTO Yuji <matumoto@marron.cias.osakafu-u.ac.jp>, 2005
-# RatArmy <broadbarredfirefish@gmail.com>, 2015-2018
-# suto3, 2017
-# tamanegi, 2017
-# yma <yma9yma@gmail.com>, 2011
-# 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth-Dev Japanese\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-05-06 05:31-0300\n"
-"PO-Revision-Date: 2018-04-22 23:36+0000\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
-"Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
-"japanese/language/ja/)\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2018\n"
+"Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
+"ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -216,7 +210,7 @@ msgstr "ユニットに対する特殊なグラフィカルエフェクトを表
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:178
 msgid "Show deprecation messages in-game"
-msgstr ""
+msgstr "非推奨のメッセージを表示する"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:179
@@ -225,6 +219,9 @@ msgid ""
 "will still be shown in the log, even if this is disabled. In addition, the "
 "deprecation log-domain controls how many messages are printed."
 msgstr ""
+"チャット領域に、非推奨APIの警告を表示します。これらのメッセージは、このオプ"
+"ションの有効・無効を問わずログにも表示されます。それに加えて、deprecation ロ"
+"グ領域によってどれだけ多くのメッセージを表示するか調整できます。"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:187
@@ -375,10 +372,8 @@ msgstr "国際化責任者"
 
 #. [about]
 #: data/core/about.cfg:323
-#, fuzzy
-#| msgid "Traits"
 msgid "Trailers"
-msgstr "特性"
+msgstr "トレーラー"
 
 #. [about]
 #: data/core/about.cfg:335
@@ -3611,7 +3606,7 @@ msgstr "Wesnoth（デフォルト）"
 #. [core]: id=default
 #: data/cores.cfg:8
 msgid "The standard Wesnoth core."
-msgstr ""
+msgstr "標準の Wesnoth コアです。"
 
 #. [language]
 #: data/english.cfg:6
@@ -4036,7 +4031,7 @@ msgstr "Lato Light"
 #. [fonts]
 #: data/hardwired/fonts.cfg:31
 msgid "Oldania ADF Std"
-msgstr "Oldania ADF Std"
+msgstr "Oldania ADF Std,Droid Sans Japanese,Droid Sans Fallback"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:36
@@ -6101,7 +6096,7 @@ msgstr[0] "空席："
 
 #: src/game_initialization/lobby_data.cpp:429
 msgid "mp_game_available_slots^Full"
-msgstr ""
+msgstr "満席"
 
 #: src/game_initialization/lobby_data.cpp:440
 #: src/game_initialization/lobby_data.cpp:442 src/savegame.cpp:631
@@ -6109,14 +6104,12 @@ msgid "Turn"
 msgstr "ターン"
 
 #: src/game_initialization/lobby_data.cpp:455
-#, fuzzy
-#| msgid "vision: "
 msgid "vision^none"
-msgstr "視界："
+msgstr "なし"
 
 #: src/game_initialization/lobby_data.cpp:464
 msgid "time limit^none"
-msgstr ""
+msgstr "なし"
 
 #: src/game_initialization/lobby_data.cpp:497
 msgid ""
@@ -6216,21 +6209,18 @@ msgid " This server disallows unregistered nicknames."
 msgstr " このサーバーは登録されていないニックネームを受け入れません。"
 
 #: src/game_initialization/multiplayer.cpp:320
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
-msgstr "ニックネーム「 $nick 」はこのサーバーに登録されています。"
+msgstr "ニックネーム「$nick」は、フォーラム上でバンされています。"
 
 #: src/game_initialization/multiplayer.cpp:322
 msgid "Your IP address is banned on this server’s forums."
-msgstr ""
+msgstr "あなたの IP アドレスはフォーラム上でバンされています。"
 
 #: src/game_initialization/multiplayer.cpp:324
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
-msgstr "ニックネーム「 $nick 」はこのサーバーに登録されています。"
+msgstr ""
+"ニックネーム「$nick」のメールアドレスは、フォーラム上でバンされています。"
 
 #: src/game_initialization/multiplayer.cpp:326
 #: src/game_initialization/multiplayer.cpp:328
@@ -6405,10 +6395,8 @@ msgid "Error while starting server: "
 msgstr "サーバー開始中のエラー："
 
 #: src/game_launcher.cpp:882
-#, fuzzy
-#| msgid "Connection timed out"
 msgid "Connection failed: "
-msgstr "接続がタイムアウトしました"
+msgstr "接続失敗："
 
 #: src/generators/default_map_generator_job.cpp:691
 msgid "Random maps with an odd width aren't supported."
@@ -6429,13 +6417,6 @@ msgstr ""
 "のキーが必要です。"
 
 #: src/gui/dialogs/addon/install_dependencies.cpp:38
-#, fuzzy
-#| msgid ""
-#| "The selected add-on has the following dependency, which is not currently "
-#| "installed or available from the server. Do you wish to continue?"
-#| msgid_plural ""
-#| "The selected add-on has the following dependencies, which are not "
-#| "currently installed or available from the server. Do you wish to continue?"
 msgid ""
 "The selected add-on has the following dependency, which is outdated or not "
 "currently installed. Do you wish to install it before continuing?"
@@ -6443,8 +6424,9 @@ msgid_plural ""
 "The selected add-on has the following dependencies, which are outdated or "
 "not currently installed. Do you wish to install them before continuing?"
 msgstr[0] ""
-"選択されたアドオンは下記のアドオンに依存しています。 しかし、それらはインス"
-"トールされていないか、サーバー上に存在しません。 それでも続けますか？"
+"選択したアドオンは以下のアドオンに依存していますが、それらはバージョンが古す"
+"ぎるかインストールされていません。依存するアドオンを先にインストールします"
+"か？"
 
 #: src/gui/dialogs/game_load.hpp:40
 msgid "No Saved Games"
@@ -7464,12 +7446,11 @@ msgid "Save and abort game"
 msgstr "ゲームを保存してから中断する"
 
 #: src/playturn.cpp:296
-#, fuzzy
-#| msgid "$player has left the game. What do you want to do?"
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
-msgstr "$player はゲームを去りました。どうしますか？"
+msgstr ""
+"陣営 $side_drop を操作していた $player がゲームから離れました。どうしますか？"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -7673,7 +7654,7 @@ msgstr "武器の特殊効果："
 
 #: src/reports.cpp:893
 msgid "weapon^None"
-msgstr ""
+msgstr "なし"
 
 #: src/reports.cpp:922
 msgid "Total damage"
@@ -8049,11 +8030,9 @@ msgid "A unit was created using debug mode during $player’s turn"
 msgstr "デバッグモードにより、 $player のターンにユニットが作成されました"
 
 #: src/synced_user_choice.cpp:327
-#, fuzzy
-#| msgid "waiting for $desc from side(s) $sides"
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
-msgstr[0] "陣営 $sides からの $desc のために待機しています"
+msgstr[0] "$desc のため、陣営 $sides を待機中"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8134,12 +8113,9 @@ msgstr[0] "$number 移動力"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:429
-#, fuzzy
-#| msgid "<span color=\"$color\">$number_or_percent</span> move"
-#| msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
-msgstr[0] "移動力 <span color=\"$color\">$number_or_percent</span>"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> 移動力"
 
 #: src/units/types.cpp:545 src/units/types.hpp:181
 msgid "chaotic"
@@ -8235,7 +8211,7 @@ msgstr "$year AF"
 
 #: src/wesnothd_connection.cpp:402
 msgid "Disconnected from server."
-msgstr ""
+msgstr "サーバから切断されました。"
 
 #: src/whiteboard/manager.cpp:1115
 msgid "SHOW ALL allies’ plans"
@@ -8256,66 +8232,3 @@ msgstr "$player の計画を非表示"
 #: src/whiteboard/manager.cpp:1135
 msgid "Whiteboard Options"
 msgstr "行動予定オプション"
-
-#~ msgid ""
-#~ "Wesnoth has many different sagas waiting to be played. Fight to regain "
-#~ "the throne of Wesnoth, of which you are the legitimate heir... step into "
-#~ "the boots of a young officer sent to guard a not-so-sleepy frontier "
-#~ "outpost... lead a brutal quest to unite the orcish tribes... vanquish a "
-#~ "horde of undead warriors unleashed by a foul necromancer, who also "
-#~ "happens to have taken your brother hostage... guide a band of elvish "
-#~ "survivors in an epic quest to find a new home... get revenge on the orcs "
-#~ "by using the foul art of necromancy...\n"
-#~ "\n"
-#~ "There are at least two hundred unit types, sixteen races, seven major "
-#~ "factions, and hundreds of years of history.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Wesnothではいくつもの物語があなたを待っています。Wesnothの王位継承のために"
-#~ "戦い...眠ることすら許されぬ前哨基地の衛兵...オーク族をまとめあげるための慈"
-#~ "悲無き冒険...兄弟を取り返すための、愚かな降霊術士のアンデッド軍との戦い..."
-#~ "新たな住処を求めるエルフ族の旅...降霊術を用いたオークへの愚かな復讐...\n"
-#~ "\n"
-#~ "少なくとも100種類のユニットや、16の種族、７つの党派、何百年にも渡る歴史が"
-#~ "存在します。\n"
-
-#~ msgid ""
-#~ "(17 Single Player Campaigns with 211 Scenarios,\n"
-#~ "One Multiplayer Campaign with 14 Scenarios,\n"
-#~ "7 Factions battling on 46 Multiplayer Maps/Scenarios,\n"
-#~ "500+ Add-ons.)"
-#~ msgstr ""
-#~ "（211 個のシナリオを含む、17 個のシングルプレイヤーキャンペーン。 14 個の"
-#~ "シナリオを含む、１つのマルチプレイヤーキャンペーン。 ７ つの党派。マルチプ"
-#~ "レイヤーマップ・シナリオが合わせて46 個。 さらに、500 個以上のアドオンがあ"
-#~ "ります。）"
-
-#~ msgid "$era_name (missing)"
-#~ msgstr "$era_name （不明）"
-
-#~ msgid "none"
-#~ msgstr "なし"
-
-#~ msgid "None"
-#~ msgstr "なし"
-
-#~ msgid "<span color=\"$color\">$number_or_percent movement</span> point"
-#~ msgid_plural ""
-#~ "<span color=\"$color\">$number_or_percent movement</span> points"
-#~ msgstr[0] "<span color=\"$color\">$number_or_percent</span> 移動力"
-
-#, fuzzy
-#~| msgid "Connection timed out"
-#~ msgid "Ping timeout"
-#~ msgstr "接続がタイムアウトしました"
-
-#, fuzzy
-#~| msgid ""
-#~| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#~| "0 to disable"
-#~ msgid ""
-#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
-#~ "disable"
-#~ msgstr ""
-#~ "チャットメッセージを消去するまでの時間（分）です。0で時間経過による消去を"
-#~ "無効化します。"

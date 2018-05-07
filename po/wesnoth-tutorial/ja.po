@@ -1,24 +1,14 @@
-# #-#-#-#-#  wesnoth-tutorial.cpp.pot (PACKAGE VERSION)  #-#-#-#-#
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Wesnoth development team
-# This file is distributed under the same license as the PACKAGE package.
-#
 # Translators:
-# Automatically generated, 2005
-# IWAI, Masaharu <iwaim.sub@gmail.com>, 2013
-# Nobuhito Okada <okyada@gmail.com>, 2006
-# RatArmy <broadbarredfirefish@gmail.com>, 2015-2017
-# suto3, 2017
-# 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018
+# RatArmy <broadbarredfirefish@gmail.com>, 2018
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth-Dev Japanese\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-05-06 08:31 UTC\n"
-"PO-Revision-Date: 2018-03-05 14:21+0000\n"
-"Last-Translator: 家庭的の人 <kateitekino_hito@yahoo.co.jp>\n"
-"Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
-"japanese/language/ja/)\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2018\n"
+"Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
+"ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -194,17 +184,13 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:229
-#, fuzzy
-#| msgid "Move Konrad next to Delfador."
 msgid "Move Konrad next to Delfador"
-msgstr "KonradをDelfadorの隣に移動させましょう。"
+msgstr "KonradをDelfadorの隣に移動させましょう"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:231
-#, fuzzy
-#| msgid "Move Li’sar next to Delfador."
 msgid "Move Li’sar next to Delfador"
-msgstr "Li’sarをDelfadorの隣に移動させましょう。"
+msgstr "Li’sarをDelfadorの隣に移動させましょう"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:248
@@ -275,35 +261,25 @@ msgstr "攻撃"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:339
-#, fuzzy
-#| msgid ""
-#| "To attack the quintain, first select the attacker (Konrad), then the "
-#| "target (the quintain). You will see an attack description. When you click "
-#| "<b>OK</b>, Konrad will attack."
 msgid ""
 "To attack the quintain, first select the attacker (Konrad), then the target "
 "(the quintain). You will see an attack description. Click <b>Attack</b> when "
 "you’re ready."
 msgstr ""
 "攻撃を行うには、まず攻撃者（Konrad）を選択し、次に目標（クィンティン）を選択"
-"します。すると攻撃ダイアログが表示されるでしょう。<b>「OK」</b>をクリックすれ"
-"ば、攻撃を開始します。"
+"します。すると攻撃ダイアログが表示されるでしょう。<b>「攻撃」</b>をクリックす"
+"ることで、攻撃を開始します。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:346
-#, fuzzy
-#| msgid ""
-#| "To attack the quintain, first select the attacker (Li’sar), then the "
-#| "target (the quintain). You will see an attack description. When you click "
-#| "<b>OK</b>, Li’sar will attack."
 msgid ""
 "To attack the quintain, first select the attacker (Li’sar), then the target "
 "(the quintain). You will see an attack description. Click <b>Attack</b> when "
 "you’re ready."
 msgstr ""
 "クィンティンに攻撃するためには、まず攻撃者（Li’sar）を選択し、次に目標（クィ"
-"ンティン）を選択します。すると攻撃ダイアログが表示されるでしょう。<b>「OK」</"
-"b>をクリックすれば攻撃を開始します。"
+"ンティン）を選択します。すると攻撃ダイアログが表示されるでしょう。<b>「攻撃」"
+"</b>をクリックすれば攻撃を開始します。"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:361
@@ -1038,10 +1014,6 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #. Addressing Li'sar
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:216
-#, fuzzy
-#| msgid ""
-#| "Hang on! You need to gather your forces. Or do you intend to fight the "
-#| "orcs single-handedly?"
 msgid ""
 "female^Hang on! You need to gather your forces. Or do you intend to fight "
 "the orcs single-handedly?"
@@ -1652,18 +1624,13 @@ msgstr "勝利条件"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:712
-#, fuzzy
-#| msgid ""
-#| "In this scenario, you only need to defeat the orc leader to win. Victory "
-#| "conditions for a scenario are given under <b>Scenario Objectives</b> in  "
-#| "<b>Menu</b>)."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. Victory "
 "conditions for a scenario are given under <b>Scenario Objectives</b> in "
 "<b>Menu</b>."
 msgstr ""
 "このシナリオでは、オークのリーダーを倒すことで勝利できます。シナリオの勝利条"
-"件は<b>メニュー</b>の<b>シナリオの目標</b>から確認できます。"
+"件は<b>メニュー</b>の<b>シナリオ目標</b>から確認できます。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:721

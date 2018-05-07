@@ -1,28 +1,22 @@
 # SOME DESCRIPTIVE TITLE
 # Copyright (C) YEAR Free Software Foundation, Inc.
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-# Translators:
-# Automatically generated, 2006
-# Naoki IIMURA <amatubu@gmail.com>, 2008
-# Nobuhito Okada <okyada@gmail.com>, 2006
-# RatArmy <broadbarredfirefish@gmail.com>, 2016
-# suto3, 2017-2018
-# 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth-Dev Japanese\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2018-05-06 05:31-0300\n"
-"PO-Revision-Date: 2018-04-25 01:33+0200\n"
-"Last-Translator: 家庭的の人 <kateitekino_hito@yahoo.co.jp>\n"
-"Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
-"japanese/language/ja/)\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2018\n"
+"Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
+"ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.0.6\n"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -351,11 +345,6 @@ msgstr "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:140
-#, fuzzy
-#| msgid ""
-#| "sets the severity level of the log domains.  B<all> can be used to match "
-#| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>.  By default the B<error> level is used."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
@@ -364,7 +353,8 @@ msgid ""
 msgstr ""
 "ログ領域(domain)の厳密さのレベルを設定する。 B<all> は、どのログ領域にも対応"
 "させるために利用される。有効なレベルは以下の通り。 B<error>、\\ "
-"B<warning>、\\ B<info>、\\ B<debug>。既定値では B<error> レベルが使用される。"
+"B<warning>、\\ B<info>、\\ B<debug>。既定値では B<warning> レベルがほとんどの"
+"ログ領域に使用されるが、B<deprecation>は無効である。"
 
 #. type: TP
 #: doc/man/wesnoth.6:140
