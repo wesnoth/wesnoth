@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2018-05-06 05:31-0300\n"
-"PO-Revision-Date: 2018-04-11 12:31+0200\n"
+"PO-Revision-Date: 2018-05-07 18:47+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.7\n"
 
 # type: TH
 #. type: TH
@@ -196,7 +196,7 @@ msgid ""
 "scenario."
 msgstr ""
 "L’identificatore dello scenario della campagna specificata. Il default è il "
-"primo scenario. "
+"primo scenario."
 
 # type: TP
 #. type: TP
@@ -371,7 +371,7 @@ msgstr ""
 "carica il salvataggio I<file> dalla directory standard dei salvataggi. Se "
 "usato insieme alle opzioni B<-e> o B<--editor>, lancia l’editor con aperta "
 "la mappa del I<file>. Se è una directory, l’editor lancerà una finestra di "
-"dialogo con un elenco di mappe caricabili. "
+"dialogo con un elenco di mappe caricabili."
 
 # type: TP
 #. type: TP
@@ -399,20 +399,17 @@ msgstr "B<--log->I<livello>B<=>I<dominio1>B<,>I<dominio2>B<,>I<...>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:140
-#, fuzzy
-#| msgid ""
-#| "sets the severity level of the log domains.  B<all> can be used to match "
-#| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>.  By default the B<error> level is used."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
 "\\ B<none>.  By default the B<warning> level is used for most domains, but "
 "B<deprecation> defaults to none."
 msgstr ""
-"imposta il livello di severità dei domini di debug. Puoi usare B<all> per "
-"selezionare tutti i domini di debug. Livelli disponibili: B<error>,\\ "
-"B<warning>,\\ B<info>,\\ B<debug>. Normalmente è usato il livello B<error>."
+"imposta il livello di dettaglio dei log dei domini di debug. Puoi usare "
+"B<all> per selezionare tutti i domini di debug. Livelli disponibili: "
+"B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,\\ B<none>. Normalmente è "
+"usato il livello B<warning> per la maggior parte dei domini, ma il livello "
+"B<deprecation> corrisponde al livello none."
 
 # type: TP
 #. type: TP
@@ -459,7 +456,7 @@ msgid ""
 "exits"
 msgstr ""
 "fornisce un elenco dei log domains definiti ( soltanto quelli contenenti "
-"I<filter>, se usata) e termina."
+"I<filter>, se usata) e termina"
 
 # type: TP
 #. type: TP
@@ -826,7 +823,7 @@ msgstr "B<--showgui>"
 msgid "runs the game with the GUI, overriding any implicit B<--nogui>."
 msgstr ""
 "esegue il gioco con l’interfaccia grafica, sovrascrivendo ogni implicito B<--"
-"nogui.>"
+"nogui>."
 
 #. type: TP
 #: doc/man/wesnoth.6:270
@@ -856,7 +853,7 @@ msgstr ""
 "esegue il gioco in un piccolo scenario di test. Lo scenario dovrebbe essere "
 "uno di quelli definiti con un tag WML B<[test]>. Una dimostrazione delle "
 "caratteristiche delle B<[micro_ai]> può essere avviata con B<micro_ai_test>. "
-"Implica B<--nogui.>"
+"Implica B<--nogui>."
 
 # type: TP
 #. type: TP
@@ -869,8 +866,8 @@ msgstr "B<-u,\\ --unit>I<\\ id_scenario>"
 #: doc/man/wesnoth.6:289
 msgid "runs the specified test scenario as a unit test. Implies B<--nogui>."
 msgstr ""
-"esegue lo scenario di test specificato come un test unità. Implica B<--nogui."
-">"
+"esegue lo scenario di test specificato come un test unità. Implica B<--"
+"nogui>."
 
 # type: TP
 #. type: TP
@@ -1022,7 +1019,7 @@ msgstr "esegue il replay della partita caricata con l’opzione B<--load>."
 #: doc/man/wesnoth.6:335
 #, no-wrap
 msgid "Options for --multiplayer"
-msgstr "opzioni per --multiplayer"
+msgstr "Opzioni per --multiplayer"
 
 # type: Plain text
 #. type: Plain text
@@ -1935,7 +1932,7 @@ msgstr "B<host>"
 #. type: Plain text
 #: doc/man/wesnothd.6:183
 msgid "The address of the server to redirect to."
-msgstr "Indirizzo del server a cui reindirizzare i collegamenti"
+msgstr "Indirizzo del server a cui reindirizzare i collegamenti."
 
 # type: TP
 #. type: TP
@@ -1948,7 +1945,7 @@ msgstr "B<port>"
 #. type: Plain text
 #: doc/man/wesnothd.6:186
 msgid "The port to connect to."
-msgstr "Porta su cui connettersi"
+msgstr "Porta su cui connettersi."
 
 # type: TP
 #. type: TP

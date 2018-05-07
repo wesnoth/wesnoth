@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-05-06 08:31 UTC\n"
-"PO-Revision-Date: 2018-04-11 14:46+0200\n"
+"PO-Revision-Date: 2018-05-07 18:54+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #. [lua]: wml_actions.select_character
 #: data/campaigns/tutorial/lua/character_selection.lua:26
@@ -189,17 +189,13 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:229
-#, fuzzy
-#| msgid "Move Konrad next to Delfador."
 msgid "Move Konrad next to Delfador"
-msgstr "Sposta Konrad vicino a Delfador."
+msgstr "Sposta Konrad vicino a Delfador"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:231
-#, fuzzy
-#| msgid "Move Li’sar next to Delfador."
 msgid "Move Li’sar next to Delfador"
-msgstr "Sposta Li’sar vicino a Delfador."
+msgstr "Sposta Li’sar vicino a Delfador"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:248
@@ -272,11 +268,6 @@ msgstr "Attacco"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:339
-#, fuzzy
-#| msgid ""
-#| "To attack the quintain, first select the attacker (Konrad), then the "
-#| "target (the quintain). You will see an attack description. When you click "
-#| "<b>OK</b>, Konrad will attack."
 msgid ""
 "To attack the quintain, first select the attacker (Konrad), then the target "
 "(the quintain). You will see an attack description. Click <b>Attack</b> when "
@@ -284,15 +275,10 @@ msgid ""
 msgstr ""
 "Per attaccare la quintana, seleziona prima l’attaccante (Konrad) e poi il "
 "bersaglio (la quintana). Vedrai una descrizione relativa all’attacco. "
-"Facendo clic su <b>OK</b>, Konrad attaccherà."
+"Facendo clic su <b>Attacca</b>, Konrad attaccherà."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:346
-#, fuzzy
-#| msgid ""
-#| "To attack the quintain, first select the attacker (Li’sar), then the "
-#| "target (the quintain). You will see an attack description. When you click "
-#| "<b>OK</b>, Li’sar will attack."
 msgid ""
 "To attack the quintain, first select the attacker (Li’sar), then the target "
 "(the quintain). You will see an attack description. Click <b>Attack</b> when "
@@ -300,7 +286,7 @@ msgid ""
 msgstr ""
 "Per attaccare la quintana, seleziona prima l’attaccante (Li’sar ) e poi il "
 "bersaglio (la quintana). Vedrai una descrizione relativa all’attacco. "
-"Facendo clic su <b>OK</b>, Li’sar attaccherà."
+"Facendo clic su <b>Attacca</b>, Li’sar attaccherà."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:361
@@ -1089,10 +1075,6 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #. Addressing Li'sar
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:216
-#, fuzzy
-#| msgid ""
-#| "Hang on! You need to gather your forces. Or do you intend to fight the "
-#| "orcs single-handedly?"
 msgid ""
 "female^Hang on! You need to gather your forces. Or do you intend to fight "
 "the orcs single-handedly?"
@@ -1243,7 +1225,7 @@ msgstr ""
 "probabilità di colpire.\n"
 "\n"
 "Nell Aiuto del gioco puoi trovare un elenco completo di tutte le abilità e "
-"armi speciali,insieme a tutte le caratteristiche. "
+"armi speciali,insieme a tutte le caratteristiche."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:314
@@ -1492,7 +1474,7 @@ msgid ""
 "battle can turn quickly, and you don’t want to find yourself cut off from "
 "recruiting reinforcements."
 msgstr ""
-" Stai imparando bene, Li’sar. È comunque una buona idea quella di tenere in "
+"Stai imparando bene, Li’sar. È comunque una buona idea quella di tenere in "
 "un luogo sicuro e protetto il tuo condottiero ed anche nelle vicinanze della "
 "fortezza, specie all’inizio di una partita. L’inerzia della battaglia può "
 "cambiare rapidamente, e non vorresti mai trovarti tagliato fuori dalla "
@@ -1757,11 +1739,6 @@ msgstr "Condizioni di vittoria"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:712
-#, fuzzy
-#| msgid ""
-#| "In this scenario, you only need to defeat the orc leader to win. Victory "
-#| "conditions for a scenario are given under <b>Scenario Objectives</b> in  "
-#| "<b>Menu</b>)."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. Victory "
 "conditions for a scenario are given under <b>Scenario Objectives</b> in "
@@ -2006,7 +1983,7 @@ msgstr ""
 "abile sia con l’arco che con la spada e ho acquisito un’abilità speciale: il "
 "<i>comando</i>. Infliggo meno danni di un Eroe degli Elfi, ma la mia abilità "
 "permette ai miei alleati di combattere meglio. Le unità di livello 1 intorno "
-"a me causano il 25% di danni in più, quindi piazzami con attenzione."
+"a me causano il 25% di danni in più, quindi piazzami con attenzione!"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1061
