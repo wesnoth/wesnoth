@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-05-06 08:31 UTC\n"
-"PO-Revision-Date: 2018-04-10 23:06+0100\n"
+"PO-Revision-Date: 2018-05-07 13:27+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
 "Language: gl\n"
@@ -403,10 +403,8 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:279
-#, fuzzy
-#| msgid "Syrillin"
 msgid "Gwyllin"
-msgstr "Sírilin"
+msgstr "Güilin"
 
 #. [event]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:280
@@ -1587,8 +1585,6 @@ msgstr "Captura todas as vilas."
 
 #. [unit]: type=Shadow
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:92
-#, fuzzy
-#| msgid "Vash Gorn"
 msgid "Vash-Gorn"
 msgstr "Vasgor"
 
@@ -1878,26 +1874,20 @@ msgstr ""
 "vós. Aí acabarase a miña axuda. A miña intención é que a maioría "
 "sobrevivades a esta batalla, así que procurade non morrerme."
 
-# Úsase no caso no que só sobrevivu un de Corsin e Xinal.
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:366
-#, fuzzy
-#| msgid "You may watch."
 msgid "plural^You may watch."
-msgstr "Ti podes mirar."
+msgstr "Vós podedes mirar."
 
 #. [message]: speaker=Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:370
 msgid "Can we help?"
 msgstr "Podemos axudar?"
 
-# Traducido de xeito que non importe se se está falando con unha ou dúas persoas, debido a https://github.com/wesnoth/wesnoth/issues/2848
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:374
-#, fuzzy
-#| msgid "As you wish. (<i>Cough, cough</i>)"
 msgid "plural^As you wish. (<i>Cough, cough</i>)"
-msgstr "Dáme igual. (<i>tose sonoramente</i>)"
+msgstr "Como queirades. (<i>tose sonoramente</i>)"
 
 # Úsase no caso no que só sobrevivu un de Corsin e Xinal.
 #. [message]: speaker=Ras-Tabahn
@@ -1912,16 +1902,13 @@ msgstr "Podo axudar?"
 
 #. [message]: id=Carcyn,Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:389
-#, fuzzy
-#| msgid "Can I help?"
 msgid "self_female^Can I help?"
 msgstr "Podo axudar?"
 
-# Traducido de xeito que non importe se se está falando con unha ou dúas persoas, debido a https://github.com/wesnoth/wesnoth/issues/2848
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:393
 msgid "As you wish. (<i>Cough, cough</i>)"
-msgstr "Dáme igual. (<i>tose sonoramente</i>)"
+msgstr "Como queiras. (<i>tose sonoramente</i>)"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:401
@@ -2061,18 +2048,13 @@ msgstr "O que faredes é seguilos ao subsolo como intentedes facernos mal."
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:507
-#, fuzzy
-#| msgid ""
-#| "This is going to cost us, but I want to keep some gold around for "
-#| "emergencies — I think 50 is about right. You kids help me collect some. "
-#| "(<i>Cough, cough</i>)"
 msgid ""
 "addressed_plural^This is going to cost us, but I want to keep some gold "
 "around for emergencies — I think 50 is about right. You help me collect "
 "some. (<i>Cough, cough</i>)"
 msgstr ""
 "Isto vainos custar, pero quero conservar ouro para emerxencias. Creo que con "
-"50 abonda. Rapaces, axudádeme a recaudar. (<i>tose sonoramente</i>)"
+"50 abonda. Rapaces, axudádeme a recadar. (<i>tose sonoramente</i>)"
 
 #. [message]: speaker=Carcyn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:511
@@ -2110,14 +2092,11 @@ msgstr "Sen problemas. Podemos atraelos a terra."
 msgid "How?"
 msgstr "Como?"
 
-# Evitouse a pregunta inicial porque pode ser a unha ou dúas persoas. Está pendente ter dúas mensaxes distintas en cada caso. Véxase https://github.com/wesnoth/wesnoth/issues/2848
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:535
-#, fuzzy
-#| msgid "Have you never been fishing before? With bait of course."
 msgid ""
 "addressed_plural^Have you never been fishing before? With bait of course."
-msgstr "É obvio, usaremos cebo."
+msgstr "É que nunca fostes pescar? É obvio, usaremos cebo."
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:545
@@ -2127,7 +2106,7 @@ msgid ""
 "cough</i>)"
 msgstr ""
 "Isto vainos custar, pero quero conservar ouro para emerxencias. Creo que con "
-"50 abonda. Axúdame a recaudar. (<i>tose sonoramente</i>)"
+"50 abonda. Axúdame a recadar. (<i>tose sonoramente</i>)"
 
 #. [message]: id=Carcyn,Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:549
@@ -2136,16 +2115,13 @@ msgstr "Decontado, señor. Está ben?"
 
 #. [message]: id=Carcyn,Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:558
-#, fuzzy
-#| msgid "I don’t fancy wading in the water to fight these things."
 msgid "self_female^I don’t fancy wading in the water to fight these things."
 msgstr "Non me fai graza meterme na auga para loitar contra estas cousas."
 
-# Evitouse a pregunta inicial porque pode ser a unha ou dúas persoas. Está pendente ter dúas mensaxes distintas en cada caso. Véxase https://github.com/wesnoth/wesnoth/issues/2848
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:570
 msgid "Have you never been fishing before? With bait of course."
-msgstr "É obvio, usaremos cebo."
+msgstr "É que nunca fuches pescar? É obvio, usaremos cebo."
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:580
@@ -2156,8 +2132,8 @@ msgid ""
 "should recruit some bait."
 msgstr ""
 "Isto vaime custar, pero quero conservar ouro para emerxencias. Creo que con "
-"50 abonda. Será mellor que envíe a alguén a recaudar. (<i>tose sonoramente</"
-"i>) Espero poder atraer aos peixes estes a terra. Quizáis debería recrutar "
+"50 abonda. Será mellor que envíe a alguén a recadar. (<i>tose sonoramente</"
+"i>) Espero poder atraer aos peixes estes a terra. Quizais debería recrutar "
 "cebo."
 
 #. [scenario]: id=11_Battleground

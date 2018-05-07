@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "POT-Creation-Date: 2018-05-06 05:31-0300\n"
-"PO-Revision-Date: 2018-04-09 13:53+0100\n"
+"PO-Revision-Date: 2018-05-07 07:25+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
 "Language: gl\n"
@@ -404,11 +404,6 @@ msgstr "B<--log->I<nivel>B<=>I<dominio_1>B<,>I<dominio_2>B<,>I<…>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:140
-#, fuzzy
-#| msgid ""
-#| "sets the severity level of the log domains.  B<all> can be used to match "
-#| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>.  By default the B<error> level is used."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
@@ -418,7 +413,9 @@ msgstr ""
 "Establece o nivel de severidade dos dominios do rexistro.  Pódese usar "
 "B<all> para referirse a calquera dominio do rexistro. Os niveis dispoñíbeis "
 "son os seguintes: B<error> (erro),\\ B<warning> (aviso),\\ B<info> "
-"(información) e \\ B<debug> (depuración). B<error> é o nivel predeterminado."
+"(información), \\ B<debug> (depuración) e \\ B<none> (ningún). B<warning> é "
+"o nivel predeterminado da meirande parte dos dominios, pero o nivel "
+"predeterminado de B<deprecation> é B<ningún>."
 
 # type: TP
 #. type: TP
