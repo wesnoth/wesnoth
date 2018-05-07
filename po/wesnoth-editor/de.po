@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-04-19 13:25+0200\n"
+"PO-Revision-Date: 2018-05-06 17:00+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -207,7 +207,7 @@ msgstr "Fenster"
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:120
 msgid "Areas"
-msgstr "Gebiete"
+msgstr "Zonen"
 
 #. [menu]: id=menu-editor-local-time
 #: data/themes/editor.cfg:128
@@ -222,7 +222,7 @@ msgstr "Lokalen Zeitplan zuweisen"
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:142
 msgid "Side"
-msgstr "Fraktion"
+msgstr "Partei"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:159
@@ -335,11 +335,11 @@ msgstr "Keine vorherigen Dateien"
 
 #: src/editor/map/context_manager.cpp:364
 msgid "Unnamed Area"
-msgstr "Unbenanntes Gebiet"
+msgstr "Unbenannte Zone"
 
 #: src/editor/map/context_manager.cpp:395
 msgid "New Side"
-msgstr "Neue Fraktion"
+msgstr "Neue Partei"
 
 #: src/editor/map/context_manager.cpp:451
 msgid "Apply Mask"
@@ -355,7 +355,7 @@ msgstr "Kennung:"
 
 #: src/editor/map/context_manager.cpp:480
 msgid "Rename Area"
-msgstr "Das Gebiet umbenennen"
+msgstr "Die Zone umbenennen"
 
 #: src/editor/map/context_manager.cpp:494
 msgid "Choose Target Map"
@@ -522,6 +522,9 @@ msgstr "Keiner"
 #: src/gui/dialogs/editor/set_starting_position.cpp:101
 msgid "Player $player_number"
 msgstr "Spieler $player_number"
+
+#~ msgid "time of day^None"
+#~ msgstr "Keine"
 
 #~ msgid "(New Map)"
 #~ msgstr "(Neue Karte)"
