@@ -1531,11 +1531,12 @@ bool game::remove_player(const socket_ptr& player, const bool disconnect, const 
 			auto owner_iter = player_connections_.find(owner_);
 			if(owner_iter == player_connections_.end())
 				ERR_GAME << "game owner " << client_address(owner_) << "is not in player_connections_\n";
-			else
+			else {
 				owner_iter->info().set_status(player::PLAYING);
-			observers_.erase(std::remove(observers_.begin(), observers_.end(), owner_), observers_.end());
-			players_.push_back(owner_);
-			send_observerquit(owner_);
+				observers_.erase(std::remove(observers_.begin(), observers_.end(), owner_), observers_.end());
+				players_.push_back(owner_);
+				send_observerquit(owner_);
+			}
 		}
 
 		// send the host a notification of removal of this side
