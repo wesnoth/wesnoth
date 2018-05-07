@@ -4,15 +4,15 @@
 #  Nils Kneuper <crazy-ivanovic@gmx.net>, 2005, 2006
 #  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2011
 #  Gerfried Fuchs <rhonda@deb.at>, 2005, 2006, 2010
-# Elias Pschernig <allefant@allefant.com>, 2012.
-# Aaron WInter <winter.aaron93@gmail.com>, 2018
+#  Elias Pschernig <allefant@allefant.com>, 2012.
+#  Aaron WInter <winter.aaron93@gmail.com>, 2018
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-04-20 01:03+0200\n"
+"PO-Revision-Date: 2018-05-06 19:30+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -20,12 +20,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
 msgid "Custom"
-msgstr "Benutzerdefiniert"
+msgstr "Vorgegeben"
 
 #. [advanced_preference]: type=combo
 #: data/advanced_preferences.cfg:4
@@ -55,7 +55,7 @@ msgstr "Beste Kompressionsrate, langsamer"
 #. [option]: id=none
 #: data/advanced_preferences.cfg:19
 msgid "save_compression^No"
-msgstr "Keine"
+msgstr "Nein"
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:20
@@ -65,7 +65,7 @@ msgstr "Große Textdateien"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:26
 msgid "Confirm deleting saves"
-msgstr "Löschen der Spielstände bestätigen"
+msgstr "Löschen von Spielständen bestätigen"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:33
@@ -193,7 +193,7 @@ msgstr "Skalierungsoptionen"
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:161
 msgid "Customize orb colors"
-msgstr "Benutzerdefinierte Kugeln verwenden"
+msgstr "Benutzerdefinierte Sphären verwenden"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:167
@@ -227,7 +227,7 @@ msgstr "Zeige spezielle grafische Effekte für Einheiten an"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:189
 msgid "Show deprecation messages in-game"
-msgstr ""
+msgstr "Zeige Nachrichten über veraltete Funktionen im Spiel"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:190
@@ -236,6 +236,10 @@ msgid ""
 "will still be shown in the log, even if this is disabled. In addition, the "
 "deprecation log-domain controls how many messages are printed."
 msgstr ""
+"Zeige Warnungen über veraltete APO im im-spiel Chat. Diese Nachrichten "
+"werden immer ins Protokoll geschrieben, auch wenn diese Option deaktiviert "
+"ist. Zusätzlich kontrolliert der Protokoll-Bereich über veralteten Code, wie "
+"viele Nachrichten angezeigt werden."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:198
@@ -1367,19 +1371,19 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:378
 #: data/core/macros/ai_controller.cfg:384
 msgid "Side $temp_i"
-msgstr "Team $temp_i"
+msgstr "Partei $temp_i"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:245
 #: data/core/macros/ai_controller.cfg:386
 msgid "side $temp_i"
-msgstr "Team $temp_i"
+msgstr "Partei $temp_i"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:260
 #: data/core/macros/ai_controller.cfg:401
 msgid "side $temp_i ($side_i_leader.name|)"
-msgstr "Team $temp_i ($side_i_leader.name|)"
+msgstr "Partei $temp_i ($side_i_leader.name|)"
 
 #. [value]
 #: data/core/macros/ai_controller.cfg:286
@@ -3263,7 +3267,7 @@ msgstr "Bonusziel:"
 
 #: data/core/macros/objective-utils.cfg:30
 msgid "Optional objective:"
-msgstr "Optional:"
+msgstr "Optionales Ziel:"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:52
@@ -3281,7 +3285,7 @@ msgid ""
 "The computer player might not be able to play side $side_number properly in "
 "this scenario. Side $side_number is intended to be played by a human player."
 msgstr ""
-"Möglichweise kann der Computer in diesem Szenario die Seite $side_number "
+"Möglichweise kann der Computer in diesem Szenario die Partei $side_number "
 "nicht richtig ausspielen. Sie ist für einen menschlichen Spieler vorgesehen."
 
 #. [music]
@@ -3809,7 +3813,7 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tbridge_type=Brücke|Überquerung\n"
-"\t\tmain=$base {bridge_type}|$base{!}’s {bridge_type}\n"
+"\t\tmain=$base {bridge_type}|$base{!}s {bridge_type}\n"
 "\t"
 
 #. [naming]
@@ -3822,7 +3826,7 @@ msgid ""
 msgstr ""
 "\n"
 "\t\troad_type=Allee|Pass|Pfad|Straße|Weg|Schleppe\n"
-"\t\tmain=$base{!}’s {road_type}|{road_type} of $base\n"
+"\t\tmain=$base{!}s {road_type}|{road_type} of $base\n"
 "\t"
 
 #. [naming]
@@ -3848,7 +3852,7 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tforest_type=Wald|Wald|Forst\n"
-"\t\tmain=$base {forest_type}|$base{!}’s {forest_type}|{forest_type} $base\n"
+"\t\tmain=$base {forest_type}|$base{!}s {forest_type}|{forest_type} $base\n"
 "\t"
 
 #. [naming]
@@ -3872,7 +3876,7 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tmain=$base{!}’s Gipfel|$base Gipfel|Berg $base|Berg $base\n"
+"\t\tmain=$base{!}s Gipfel|$base Gipfel|Berg $base|Berg $base\n"
 "\t"
 
 #. [naming]
@@ -3884,7 +3888,7 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tsuffix=’s Sumpf|marschen|fen\n"
+"\t\tsuffix=s Sumpf|marschen|fen\n"
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 
@@ -3929,7 +3933,7 @@ msgstr ""
 "\n"
 "\t\tprefix=$base{!}|$river{!}\n"
 "\t\triver=$river{!}|River\n"
-"\t\tsuffix=furt||kreuz|bach on {river}\n"
+"\t\tsuffix=furt|bach on {river}\n"
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 
@@ -4178,7 +4182,7 @@ msgstr "Niederlage:"
 msgid "(this turn left)"
 msgid_plural "(%d turns left)"
 msgstr[0] "(diese Runde verbleibt)"
-msgstr[1] "(diese Runde verbleibt)"
+msgstr[1] "(%d Runden verbleiben)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
@@ -4253,7 +4257,7 @@ msgstr "Komplette Runde anzeigen"
 #. [action]: id=button-nextside, type=image
 #: data/themes/_initial.cfg:510 data/themes/_initial.cfg:663
 msgid "Next Side"
-msgstr "Nächste Seite"
+msgstr "Nächste Partei"
 
 #. [action]: id=button-nextside, type=image
 #: data/themes/_initial.cfg:511 data/themes/_initial.cfg:664
@@ -4441,7 +4445,7 @@ msgid ""
 "Use the map editor's <i>Areas</i> menu to define regions later addressed by "
 "event or ai coding."
 msgstr ""
-"Nutzt im Karteneditor das Menü »Bereiche«, um Gebiete abzustecken, in denen "
+"Nutzt im Karteneditor das Menü »Zonen«, um Gebiete abzustecken, in denen "
 "sich später Ereignisse oder computergeteuerte Abläufe abspielen sollen."
 
 # Der "Design Guide" soll vermutlich Tipps zur Verwendung vom "Map/Scenario Editor" geben.
@@ -4712,7 +4716,7 @@ msgstr ""
 "Das Gelände, in dem sich Eure Einheiten aufhalten, entscheidet maßgeblich "
 "über die Wahrscheinlichkeit, bei Angriffen zum Ziel des Gegners und "
 "getroffen zu werden. Der Verteidigungswert (V) einer ausgewählten Einheit "
-"wird für den aktuellen Standort rechts über der Flagge des Teams gezeigt, "
+"wird für den aktuellen Standort rechts über der Flagge der Partei gezeigt, "
 "für jedes andere Terrain unter der Minikarte beim Überfahren eines Feldes "
 "mit dem Mauszeiger."
 
@@ -5131,8 +5135,8 @@ msgstr ""
 "Ein Zug, der den <b>Schleier der Finsternis</b> lüftet oder den <b>Nebel des "
 "Krieges</b> verweht, kann nicht rückgängig gemacht werden. Wenn Ihr die "
 "Möglichkeit der Annullierung beibehalten möchtet, könnt Ihr die Einstellung "
-"<b>Schleier verspätet aktualisieren</b> aktivieren oder das neue »Reißbrett« "
-"als Planungshilfe verwenden."
+"<b>Schleier verspätet aktualisieren</b> aktivieren oder den »Planungsmodus« "
+"als Hilfe verwenden."
 
 #. [tip]
 #: data/tips.cfg:209
@@ -6161,7 +6165,7 @@ msgstr "$login|s Partie"
 
 #: src/game_initialization/connect_engine.cpp:103
 msgid "Team"
-msgstr "Team"
+msgstr "Allianz"
 
 #: src/game_initialization/connect_engine.cpp:995
 msgid "Anonymous player"
@@ -6248,7 +6252,7 @@ msgstr "Eine Komponente"
 
 #: src/game_initialization/flg_manager.cpp:195
 msgid "Only random sides in the current era."
-msgstr "Nur zufallsbasierte Fraktionen in der gewählten Epoche."
+msgstr "Nur zufallsbasierte Parteien in der gewählten Epoche."
 
 #: src/game_initialization/flg_manager.cpp:217
 msgid "Unable to find a leader type for faction $faction"
@@ -6639,7 +6643,7 @@ msgstr "Es gibt keine gespeicherten Spielstände, die geladen werden können"
 
 #: src/gui/dialogs/game_stats.hpp:43
 msgid "No visible sides found."
-msgstr "Keine sichtbaren Seiten gefunden."
+msgstr "Keine sichtbaren Parteien gefunden."
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:104
 msgid "In game:"
@@ -6727,7 +6731,7 @@ msgstr "Heerführer"
 
 #: src/help/help_impl.cpp:649
 msgid "Recruits"
-msgstr "Ausgebildet"
+msgstr "Rekruten"
 
 #: src/help/help_impl.cpp:710 src/units/types.cpp:479
 msgid "No description available."
@@ -7174,34 +7178,34 @@ msgstr "Zeichnet die Benutzeroberfläche neu."
 #: src/menu_events.cpp:1177
 msgid "Switch a side to/from AI control."
 msgstr ""
-"Wechselt die Kontrolle über eine Fraktion zwischen Computer- und Spieler-"
+"Wechselt die Kontrolle über eine Partei zwischen Computer- und Spieler-"
 "Steuerung."
 
 #: src/menu_events.cpp:1178 src/menu_events.cpp:1180
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr "[<Fraktion> [on/off]]"
+msgstr "[<Partei> [on/off]]"
 
 #: src/menu_events.cpp:1179
 msgid "Switch a side to/from idle state."
-msgstr "Ruhezustand für Team aktivieren/deaktivieren."
+msgstr "Ruhezustand für Partei aktivieren/deaktivieren."
 
 #: src/menu_events.cpp:1183
 msgid "<side> <nickname>"
-msgstr "<Fraktion> <Spieler>"
+msgstr "<Partei> <Spieler>"
 
 #: src/menu_events.cpp:1183
 msgid "Assign control of a side to a different player or observer."
 msgstr ""
-"Übergibt die Kontrolle über eine Fraktion an einen anderen Spieler oder "
+"Übergibt die Kontrolle über eine Partei an einen anderen Spieler oder "
 "Beobachter."
 
 #: src/menu_events.cpp:1184
 msgid "Query the controller status of a side."
-msgstr "Aktuelle Kontrolle einer Fraktion abfragen."
+msgstr "Aktuelle Kontrolle einer Partei abfragen."
 
 #: src/menu_events.cpp:1185
 msgid "<side>"
-msgstr "<Fraktion>"
+msgstr "<Partei>"
 
 #: src/menu_events.cpp:1186
 msgid "Clear chat history."
@@ -7303,7 +7307,8 @@ msgstr "Weist dem Tastaturkürzel »Benutzerdefinierter Befehl« einen Befehl zu
 
 #: src/menu_events.cpp:1221
 msgid "Invoke a dialog allowing changing control of MP sides."
-msgstr "Ruft einen Dialog zur Veränderung der Mehrspielerfraktionen auf."
+msgstr ""
+"Ruft einen Dialog zur Veränderung der Parteien im Mehrspielermodus auf."
 
 #: src/menu_events.cpp:1222
 msgid "Launch the gamestate inspector"
@@ -7386,7 +7391,7 @@ msgstr "Planungsmodus umschalten."
 
 #: src/menu_events.cpp:1255
 msgid "Access whiteboard options dialog."
-msgstr "Zugriff auf den Optionendialog für das Reißbrett."
+msgstr "Zugriff auf den Optionendialog für den Planungsmodus."
 
 #: src/menu_events.cpp:1375
 msgid "Could not find label or unit containing the string ‘$search’."
@@ -7398,15 +7403,14 @@ msgstr ""
 # Kontrolle der ungültigen Seite »$side« kann nicht gewechselt werden.
 #: src/menu_events.cpp:1415
 msgid "Can't droid invalid side: '$side'."
-msgstr ""
-"Kontrolle der ungültigen Fraktion »$side« kann nicht gewechselt werden."
+msgstr "Kontrolle der ungültigen Partei »$side« kann nicht gewechselt werden."
 
 # Im Original wird nicht "fraction" benutzt – m.E. sind "Fraktion" und "Seite" nicht unbedingt dasselbe, bin aber kein MP
 # Kontrolle der per Netzwerk gesteuerten / netzwerkgesteuerten Fraktion »$side« kann nicht gewechselt werden.
 #: src/menu_events.cpp:1420
 msgid "Can't droid networked side: '$side'."
 msgstr ""
-"Kontrolle der netzwerkgesteuerten Fraktion »$side« kann nicht gewechselt "
+"Kontrolle der netzwerkgesteuerten Partei »$side« kann nicht gewechselt "
 "werden."
 
 # Im Original wird nicht "fraction" benutzt – m.E. sind "Fraktion" und "Seite" nicht unbedingt dasselbe, bin aber kein MP
@@ -7414,47 +7418,46 @@ msgstr ""
 #: src/menu_events.cpp:1438
 msgid "Can't droid a local ai side: '$side'."
 msgstr ""
-"Kontrolle der lokalen Computer gesteuerten Fraktion »$side« kann nicht "
+"Kontrolle der lokalen Computer gesteuerten Partei »$side« kann nicht "
 "gewechselt werden."
 
 #: src/menu_events.cpp:1453
 msgid "Can't idle invalid side: '$side'."
-msgstr "Ruhezustand für ungültige Fraktion »$side« nicht aktivierbar."
+msgstr "Ruhezustand für ungültige Partei »$side« nicht aktivierbar."
 
 # Im Original wird nicht "fraction" benutzt – m.E. sind "Fraktion" und "Seite" nicht unbedingt dasselbe, bin aber kein MP
 # Kontrolle der per Netzwerk gesteuerten / netzwerkgesteuerten Fraktion »$side« kann nicht gewechselt werden.
 #: src/menu_events.cpp:1458
 msgid "Can't idle networked side: '$side'."
 msgstr ""
-"Kontrolle der netzwerkgesteuerten Fraktion »$side« kann nicht gewechselt "
+"Kontrolle der netzwerkgesteuerten Partei »$side« kann nicht gewechselt "
 "werden."
 
 #: src/menu_events.cpp:1463
 msgid "Can't idle local ai side: '$side'."
 msgstr ""
-"Kontrolle der lokalen KI gesteuerten Fraktion »$side« kann nicht gewechselt "
+"Kontrolle der lokalen KI gesteuerten Partei »$side« kann nicht gewechselt "
 "werden."
 
 #: src/menu_events.cpp:1522
 msgid "Can't change control of invalid side: '$side'."
 msgstr ""
-"Die Kontrolle der ungültigen Fraktion »$side« kann nicht geändert werden."
+"Die Kontrolle der ungültigen Partei »$side« kann nicht geändert werden."
 
 #: src/menu_events.cpp:1532
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
-"Die Kontrolle der unerreichbaren Fraktion »$side« kann nicht geändert werden."
+"Die Kontrolle der unerreichbaren Partei »$side« kann nicht geändert werden."
 
 #: src/menu_events.cpp:1548
 msgid "Can't query control of invalid side: '$side'."
 msgstr ""
-"Kontrollstatus der ungültigen Fraktion »$side« kann nicht abgefragt werden."
+"Kontrollstatus der ungültigen Partei »$side« kann nicht abgefragt werden."
 
 #: src/menu_events.cpp:1555
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr ""
-"Kontrollstatus der unerreichbaren Fraktion »$side« kann nicht abgefragt "
-"werden."
+"Kontrollstatus der unerreichbaren Partei »$side« kann nicht abgefragt werden."
 
 #: src/menu_events.cpp:1673
 msgid "Choose Scenario (Debug!)"
@@ -7635,8 +7638,8 @@ msgid ""
 "to another controller. You may use :droid, :control or :give_control for "
 "example."
 msgstr ""
-"Diese Seite ist inaktiv. Um mit dem Spiel fortzufahren muss ein Spieler oder "
-"eine KI sie übernehmen. Sie können zum Beispiel :droid, :control oder :"
+"Diese Partei ist inaktiv. Um mit dem Spiel fortzufahren muss ein Spieler "
+"oder eine KI sie übernehmen. Sie können zum Beispiel :droid, :control oder :"
 "give_control verwenden."
 
 #: src/playsingle_controller.cpp:153
@@ -7687,15 +7690,20 @@ msgstr "Durch lokalen Spieler ersetzen"
 
 #: src/playturn.cpp:279
 msgid "Set side to idle"
-msgstr "Fraktion in Ruhezustand versetzen"
+msgstr "Partei in Ruhezustand versetzen"
 
 #: src/playturn.cpp:280
 msgid "Save and abort game"
 msgstr "Spiel speichern und abbrechen"
 
 #: src/playturn.cpp:283
+#, fuzzy
+#| msgid ""
+#| "$player who controlled side $side_drop has left the game. What do you "
+#| "want to do?"
 msgid "$player has left the game. What do you want to do?"
-msgstr "$player hat das Spiel verlassen. Was möchtet Ihr tun?"
+msgstr ""
+"$player (Partei: $side_drop) hat das Spiel verlassen. Was möchtet Ihr tun?"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -7976,7 +7984,7 @@ msgstr ""
 #: src/reports.cpp:1281
 msgid "The fraction of known villages that your side has captured."
 msgstr ""
-"Die Fraktion von bekannten Dörfern, welche von Eurer Seite erobert wurden."
+"Der Anteil von bekannten Dörfern, welche von Eurer Partei erobert wurden."
 
 #: src/reports.cpp:1281
 msgid "Villages"
@@ -7984,7 +7992,7 @@ msgstr "Dörfer"
 
 #: src/reports.cpp:1286
 msgid "The total number of units on your side."
-msgstr "Die Gesamtanzahl der Einheiten auf Ihrer Seite."
+msgstr "Die Gesamtanzahl der Einheiten Eurer Partei."
 
 #: src/reports.cpp:1286
 msgid "Units"
@@ -8069,7 +8077,7 @@ msgid ""
 "This save is from a different version of the game ($version_number|). Do you "
 "wish to try to load it?"
 msgstr ""
-"Der Spielstand stammt aus einer anderen Version ($version_number|). Möchtet "
+"Der Spielstand stammt aus einer alten Version ($version_number|). Möchtet "
 "Ihr versuchen, ihn zu laden?"
 
 #: src/savegame.cpp:253 src/savegame.cpp:297
@@ -8309,8 +8317,11 @@ msgstr ""
 "$player)"
 
 #: src/synced_user_choice.cpp:326
+#, fuzzy
+#| msgid "waiting for $desc from side $sides"
+#| msgid_plural "waiting for $desc from sides $sides"
 msgid "waiting for $desc from side(s) $sides"
-msgstr "warte auf $desc von Seite(n) $sides"
+msgstr "warte auf $desc von Partei $sides"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8519,14 +8530,20 @@ msgstr "Pläne für Spieler $player verbergen"
 
 #: src/whiteboard/manager.cpp:1103
 msgid "Whiteboard Options"
-msgstr "Reißbrett Optionen"
+msgstr "Planungsmodus Optionen"
+
+#~ msgid "Trailers"
+#~ msgstr "Trailer"
+
+#~ msgid "The standard Wesnoth core."
+#~ msgstr "Der Standard Wesnoth-Kern"
 
 #~ msgid ""
 #~ "There are no custom options available for the selected era, game, or "
 #~ "modification."
 #~ msgstr ""
-#~ "Es stehen keine benutzerdefinierten Optionen für die Ära, das Spiel, oder "
-#~ "die Modifikation zur Verfügung."
+#~ "Es stehen keine erweiterten Optionen für die Epoche, Partie, oder "
+#~ "Modifikation zur Verfügung."
 
 #~ msgid "Defaults"
 #~ msgstr "Standard"
@@ -8534,9 +8551,6 @@ msgstr "Reißbrett Optionen"
 #~ msgid "Connected Players"
 #~ msgstr "Verbundene Spieler"
 
-#~| msgid ""
-#~| "DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull."
-#~| "ttf,Junicode-Regular.ttf"
 #~ msgid ""
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
@@ -8544,11 +8558,48 @@ msgstr "Reißbrett Optionen"
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
+#~ msgid "mp_game_available_slots^Full"
+#~ msgstr "Voll"
+
+#~ msgid "vision^none"
+#~ msgstr "keine"
+
+#~ msgid "time limit^none"
+#~ msgstr "keine"
+
+#~ msgid "The nickname ‘$nick’ is banned on this server’s forums."
+#~ msgstr "Der Benutzername »$nick« ist von den Foren dieses Servers verbannt."
+
+#~ msgid "Your IP address is banned on this server’s forums."
+#~ msgstr "Eure IP Adresse ist von den Foren dieses Servers verbannt."
+
+#~ msgid ""
+#~ "The email address for the nickname ‘$nick’ is banned on this server’s "
+#~ "forums."
+#~ msgstr ""
+#~ "Der E-Mail Adresse für den Benutzernamen »$nick« ist von den Foren dieses "
+#~ "Servers verbannt."
+
+#~ msgid "Connection failed: "
+#~ msgstr "Verbindung fehlgeschlagen: "
+
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "Referenz zu unbekanntem Thema: "
 
+#~ msgid "weapon^None"
+#~ msgstr "Keine"
+
 #~ msgid "(unknown player)"
 #~ msgstr "(Unbekannter Spieler)"
+
+#~ msgid "<span color=\"$color\">$number_or_percent</span> movement point"
+#~ msgid_plural ""
+#~ "<span color=\"$color\">$number_or_percent</span> movement points"
+#~ msgstr[0] "<span color=\"$color\">$number_or_percent</span> Bewegungspunkt"
+#~ msgstr[1] "<span color=\"$color\">$number_or_percent</span> Bewegungspunkte"
+
+#~ msgid "Disconnected from server."
+#~ msgstr "Verbindung zum Server getrennt."
 
 #, fuzzy
 #~| msgid "Size: "
@@ -8831,9 +8882,6 @@ msgstr "Reißbrett Optionen"
 
 #~ msgid "Configure Game"
 #~ msgstr "Spiel konfigurieren"
-
-#~ msgid "Time limit"
-#~ msgstr "Zeitbegrenzung"
 
 #~ msgid "Name of game:"
 #~ msgstr "Name der Partie:"
@@ -9389,11 +9437,6 @@ msgstr "Reißbrett Optionen"
 #~ msgstr[1] "BP"
 
 #, fuzzy
-#~| msgid "vision: "
-#~ msgid "vision"
-#~ msgstr "Sichtbarkeit:"
-
-#, fuzzy
 #~| msgid "Programming"
 #~ msgid "jamming"
 #~ msgstr "Programmierung"
@@ -9571,9 +9614,6 @@ msgstr "Reißbrett Optionen"
 #, fuzzy
 #~| msgid "Connecting to Server..."
 #~ msgid "Connecting"
-#~ msgstr "Mit dem Server verbinden..."
-
-#~ msgid "Connecting to Server..."
 #~ msgstr "Mit dem Server verbinden..."
 
 #~ msgid "Leader: "
