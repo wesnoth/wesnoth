@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-04-23 11:02+0100\n"
+"PO-Revision-Date: 2018-05-07 10:56+0100\n"
 "Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig\n"
 "Language: gd\n"
@@ -86,17 +86,23 @@ msgstr "Seall sabaid"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:61
+#, fuzzy
+#| msgid "Connection timed out"
 msgid "Ping timeout"
-msgstr "Crìoch-ùine ping"
+msgstr "Dh’fhalbh an ùine air a’ cheangal"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:62
+#, fuzzy
+#| msgid ""
+#| "Number of minutes to wait before clearing an ingame chat message. Set to "
+#| "0 to disable"
 msgid ""
 "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
 "disable"
 msgstr ""
-"An àireamh dhe dhiogan a thèid a’ feitheamh airson freagairt ping mus "
-"tachair crìoch-ùine. Tagh 0 gus a chur à comas."
+"An àireamh dhe mhionaidean a mhaireas teachdaireachd cabadaich sa gheama. "
+"Tagh 0 gus a chur à comas."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:72
@@ -3776,19 +3782,6 @@ msgid ""
 "factions, and hundreds of years of history.\n"
 "\n"
 msgstr ""
-"Tha iomadh mòr-sgeul aig Beasnad as urrainn chut cluiche. Dèan strì gus "
-"cathair Bheasnaid fhaighinn air ais agus tusa an oighre dligheach… rach ’nad "
-"oifigear òg a chaidh a chur gus gearastan crìche a dhìon nach eil cho "
-"sàmhach ’s a shaoileadh tu… rach air turas brùideil gus treubhan nan deamhan "
-"aonachadh…  cuir ruaig air sluagh closach a chaidh a chur ma sgaoil le marbh-"
-"dhraoidh olc a ghlac do bhràthair mar bhràigh cuideachd… stiùirich còmhlann "
-"dhe luchd-tàrsainn sìthiche air turas fada gus dachaigh ùr a lorg… cleachd "
-"droch-ghnìomhan na marbh-dhraoidheachd gus dìoghaltas fhaighinn air na "
-"deamhain…\n"
-"\n"
-"Tha corr is dà cheud sheòrsa de dh’aonad, sia cinnidhean deug, seachd mòr-"
-"bhuidnean agus linntean dhe dh’eachdraidh ann.\n"
-"\n"
 
 #. [core]: id=default
 #: data/cores.cfg:12
@@ -3798,10 +3791,6 @@ msgid ""
 "7 Factions battling on 46 Multiplayer Maps/Scenarios,\n"
 "500+ Add-ons.)"
 msgstr ""
-"(17 iomairtean aon-chluicheadair le 211 cnàmh-sgeul,\n"
-"iomairt ioma-chluicheadair le 14 cnàmh-sgeulan,\n"
-"7 buidhnean a’ cogadh air 46 mapa/cnàmh-sgeul ioma-chluicheadair,\n"
-"500+ tuilleadan.)"
 
 #. [language]
 #: data/english.cfg:6
@@ -5033,7 +5022,7 @@ msgid ""
 msgstr ""
 "Bidh e cudromach do chluicheadair sam bith gum faigh e smachd air na "
 "bailtean ach am buannaich e an cnàmh-sgeul. ’S urrainn dhut an eòlas seo a "
-"chleachdadh feuch an rib thu an co-fharpaisiche ’s tu a’ fàgail cuir a "
+"chleachdadh feuch an rib thu an co-fharpaisiche ’s tu a’ fàgail cuid a "
 "bhailtean saor, ach thoir an aire gu bheil e doirbh cuidhteas fhaighinn de "
 "dh’aonad nàmhad nuair a bhios e ann am baile! Planaig na gluasadan agad gu "
 "cùramach."
@@ -6122,7 +6111,7 @@ msgstr "%H:%M"
 
 #: src/format_time_summary.cpp:49
 msgid "%I:%M %p"
-msgstr "%I:%M %p"
+msgstr "%I:%M%p"
 
 #: src/format_time_summary.cpp:54
 msgid "%A, %H:%M"
@@ -6130,15 +6119,15 @@ msgstr "%A, %H:%M"
 
 #: src/format_time_summary.cpp:57
 msgid "%A, %I:%M %p"
-msgstr "%A, %I:%M %p"
+msgstr "%A, %I:%M%p"
 
 #: src/format_time_summary.cpp:61
 msgid "%b %d"
-msgstr "%b %d"
+msgstr "%d %b"
 
 #: src/format_time_summary.cpp:65
 msgid "%b %d %Y"
-msgstr "%b %d %Y"
+msgstr "%d %b %Y"
 
 #: src/game_config.cpp:530
 msgid "Invalid color in range: "
@@ -6368,8 +6357,10 @@ msgid "Missing addon: $id"
 msgstr "Tha tuilleadan a dhìth: $id"
 
 #: src/game_initialization/lobby_data.cpp:264
+#, fuzzy
+#| msgid "(missing)"
 msgid "$era_name (missing)"
-msgstr "$era_name (a dhìth)"
+msgstr "(a dhìth)"
 
 #: src/game_initialization/lobby_data.cpp:271
 msgid "Unknown era"
@@ -6416,8 +6407,10 @@ msgstr "Cuairt"
 
 #: src/game_initialization/lobby_data.cpp:453
 #: src/game_initialization/lobby_data.cpp:462
+#, fuzzy
+#| msgid "none set."
 msgid "none"
-msgstr "gin"
+msgstr "gin air shuidheachadh."
 
 #: src/game_initialization/lobby_data.cpp:495
 msgid ""
@@ -7809,7 +7802,7 @@ msgstr "Sàbhail is sgur dhen gheama"
 
 #: src/playturn.cpp:283
 msgid "$player has left the game. What do you want to do?"
-msgstr "Dh’fhàg $player an geama. Dè a tha thu airson dèanamh?"
+msgstr ""
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -8016,7 +8009,7 @@ msgstr "Ionnsaigh shònraichte: "
 
 #: src/reports.cpp:892
 msgid "None"
-msgstr "Gin"
+msgstr ""
 
 #: src/reports.cpp:921
 msgid "Total damage"
@@ -8129,11 +8122,11 @@ msgstr "Cunntas sìos cuairte"
 
 #: src/save_index.cpp:218
 msgid "%a %b %d %I:%M %p %Y"
-msgstr "%a %b %d %I:%M %p %Y"
+msgstr "%a %d %b %I:%M%p %Y"
 
 #: src/save_index.cpp:219
 msgid "%a %b %d %H:%M %Y"
-msgstr "%a %b %d %H:%M %Y"
+msgstr "%a %d %b %H:%M %Y"
 
 #: src/save_index.cpp:240 src/save_index.cpp:247
 msgid " replay"
@@ -8407,7 +8400,7 @@ msgstr ""
 
 #: src/synced_user_choice.cpp:326
 msgid "waiting for $desc from side(s) $sides"
-msgstr "a’ feitheamh air $desc o thaobh(an) $sides"
+msgstr ""
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8503,12 +8496,14 @@ msgstr[3] "$number puing-gluasaid"
 
 #. TRANSLATORS: Current value for WML code increase_movement, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:429
+#, fuzzy
+#| msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgid "<span color=\"$color\">$number_or_percent movement</span> point"
 msgid_plural "<span color=\"$color\">$number_or_percent movement</span> points"
-msgstr[0] "<span color=\"$color”>$number_or_percent</span> phuing-gluasaid"
-msgstr[1] "<span color=\"$color”>$number_or_percent</span> phuing-gluasaid"
-msgstr[2] "<span color=\"$color”>$number_or_percent</span> puingean-gluasaid"
-msgstr[3] "<span color=\"$color”>$number_or_percent</span> puing-gluasaid"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> a lèirsinn"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> a lèirsinn"
+msgstr[2] "<span color=\"$color\">$number_or_percent</span> a lèirsinn"
+msgstr[3] "<span color=\"$color\">$number_or_percent</span> a lèirsinn"
 
 #: src/units/types.cpp:545 src/units/types.hpp:181
 msgid "chaotic"
@@ -8650,6 +8645,9 @@ msgstr "Roghainnean a’ bhùird-ghil"
 #~ msgstr ""
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
+
+#~ msgid "Connection failed: "
+#~ msgstr " "
 
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "Iomradh dha chuspair nach aithne dhuinn: "
