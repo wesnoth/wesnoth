@@ -328,6 +328,30 @@ namespace
 			is_dirty_ = false;
 		}
 
+		std::string debug_description()
+		{
+			std::stringstream res;
+			const bl::localization_backend_manager& g_mgr = bl::localization_backend_manager::global();
+			for(const std::string& name : g_mgr.get_all_backends())
+			{
+				res << "has backend: '" << name << "',";
+			}
+			if(std::has_facet<bl::info>(current_locale_)) {
+				const bl::info& info = std::use_facet<bl::info>(current_locale_);
+				res << " locale: (name='" << info.name()
+			 	     << "' country='" << info.country()
+			 	     << "' language='" << info.language()
+			 	     << "' encoding='" << info.encoding()
+			 	     << "' variant='" << info.variant()
+			 	     << "'),";
+			}
+			if(std::has_facet<bl::collator<char>>(current_locale_)) {
+				res << "has bl::collator<char> facet,"
+			}
+			res << "generator categories='" << g_mgr.categories() << "'";
+			return res.str();
+		}
+
 		const std::locale& get_locale()
 		{
 			if(is_dirty_)
@@ -453,6 +477,7 @@ int compare(const std::string& s1, const std::string& s2)
 
 int icompare(const std::string& s1, const std::string& s2)
 {
+	// todo: maybe we should replace this preprocessor check with a std::has_facet<bl::collator<char>> check?
 #ifdef __APPLE__
 	// https://github.com/wesnoth/wesnoth/issues/2094
 	return compare(ascii_to_lowercase(s1), ascii_to_lowercase(s2));
@@ -467,6 +492,12 @@ int icompare(const std::string& s1, const std::string& s2)
 
 		if(!bad_cast_once) {
 			ERR_G << "locale set-up for icompare() is broken, falling back to std::string::compare()\n";
+			
+			try { //just to be safe.
+				ERR_G << get_manager().debug_description() << "\n";
+			} catch (const std::exception& e) {
+				ERR_G << e.what() << "\n";
+			}
 			bad_cast_once = true;
 		}
 
