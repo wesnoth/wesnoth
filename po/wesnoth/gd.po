@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-05-06 05:31-0300\n"
-"PO-Revision-Date: 2018-04-23 11:02+0100\n"
+"PO-Revision-Date: 2018-05-07 10:56+0100\n"
 "Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig\n"
 "Language: gd\n"
@@ -370,10 +370,8 @@ msgstr "Stiùirichean eadar-theangachaidh"
 
 #. [about]
 #: data/core/about.cfg:323
-#, fuzzy
-#| msgid "Traits"
 msgid "Trailers"
-msgstr "Feartan"
+msgstr ""
 
 #. [about]
 #: data/core/about.cfg:335
@@ -5034,7 +5032,7 @@ msgid ""
 msgstr ""
 "Bidh e cudromach do chluicheadair sam bith gum faigh e smachd air na "
 "bailtean ach am buannaich e an cnàmh-sgeul. ’S urrainn dhut an eòlas seo a "
-"chleachdadh feuch an rib thu an co-fharpaisiche ’s tu a’ fàgail cuir a "
+"chleachdadh feuch an rib thu an co-fharpaisiche ’s tu a’ fàgail cuid a "
 "bhailtean saor, ach thoir an aire gu bheil e doirbh cuidhteas fhaighinn de "
 "dh’aonad nàmhad nuair a bhios e ann am baile! Planaig na gluasadan agad gu "
 "cùramach."
@@ -6123,7 +6121,7 @@ msgstr "%H:%M"
 
 #: src/format_time_summary.cpp:49
 msgid "%I:%M %p"
-msgstr "%I:%M %p"
+msgstr "%I:%M%p"
 
 #: src/format_time_summary.cpp:54
 msgid "%A, %H:%M"
@@ -6131,15 +6129,15 @@ msgstr "%A, %H:%M"
 
 #: src/format_time_summary.cpp:57
 msgid "%A, %I:%M %p"
-msgstr "%A, %I:%M %p"
+msgstr "%A, %I:%M%p"
 
 #: src/format_time_summary.cpp:61
 msgid "%b %d"
-msgstr "%b %d"
+msgstr "%d %b"
 
 #: src/format_time_summary.cpp:65
 msgid "%b %d %Y"
-msgstr "%b %d %Y"
+msgstr "%d %b %Y"
 
 #: src/game_config.cpp:530
 msgid "Invalid color in range: "
@@ -6416,10 +6414,8 @@ msgid "Turn"
 msgstr "Cuairt"
 
 #: src/game_initialization/lobby_data.cpp:455
-#, fuzzy
-#| msgid "vision: "
 msgid "vision^none"
-msgstr "tionndadh: "
+msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:464
 msgid "time limit^none"
@@ -6523,21 +6519,17 @@ msgstr ""
 "Chan eil far-ainmean gun chlàradh ceadaichte air an fhrithealaiche seo."
 
 #: src/game_initialization/multiplayer.cpp:320
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
-msgstr "Tha am far-ainm “$nick” clàraichte air an fhrithealaiche seo."
+msgstr ""
 
 #: src/game_initialization/multiplayer.cpp:322
 msgid "Your IP address is banned on this server’s forums."
 msgstr ""
 
 #: src/game_initialization/multiplayer.cpp:324
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
-msgstr "Tha am far-ainm “$nick” clàraichte air an fhrithealaiche seo."
+msgstr ""
 
 #: src/game_initialization/multiplayer.cpp:326
 #: src/game_initialization/multiplayer.cpp:328
@@ -6740,10 +6732,8 @@ msgid "Error while starting server: "
 msgstr "Mearachd ann an tòiseachadh an fhrithealaiche: "
 
 #: src/game_launcher.cpp:882
-#, fuzzy
-#| msgid "Connection timed out"
 msgid "Connection failed: "
-msgstr "Dh’fhalbh an ùine air a’ cheangal"
+msgstr " "
 
 #: src/generators/default_map_generator_job.cpp:691
 msgid "Random maps with an odd width aren't supported."
@@ -7841,12 +7831,10 @@ msgid "Save and abort game"
 msgstr "Sàbhail is sgur dhen gheama"
 
 #: src/playturn.cpp:296
-#, fuzzy
-#| msgid "$player has left the game. What do you want to do?"
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
-msgstr "Dh’fhàg $player an geama. Dè a tha thu airson dèanamh?"
+msgstr ""
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -8166,11 +8154,11 @@ msgstr "Cunntas sìos cuairte"
 
 #: src/save_index.cpp:218
 msgid "%a %b %d %I:%M %p %Y"
-msgstr "%a %b %d %I:%M %p %Y"
+msgstr "%a %d %b %I:%M%p %Y"
 
 #: src/save_index.cpp:219
 msgid "%a %b %d %H:%M %Y"
-msgstr "%a %b %d %H:%M %Y"
+msgstr "%a %d %b %H:%M %Y"
 
 #: src/save_index.cpp:240 src/save_index.cpp:247
 msgid " replay"
@@ -8447,14 +8435,12 @@ msgstr ""
 "chluicheadair $player"
 
 #: src/synced_user_choice.cpp:327
-#, fuzzy
-#| msgid "waiting for $desc from side(s) $sides"
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
-msgstr[0] "a’ feitheamh air $desc o thaobh(an) $sides"
-msgstr[1] "a’ feitheamh air $desc o thaobh(an) $sides"
-msgstr[2] "a’ feitheamh air $desc o thaobh(an) $sides"
-msgstr[3] "a’ feitheamh air $desc o thaobh(an) $sides"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8550,15 +8536,12 @@ msgstr[3] "$number puing-gluasaid"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:429
-#, fuzzy
-#| msgid "<span color=\"$color\">$number_or_percent</span> move"
-#| msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span> ghluasad"
-msgstr[1] "<span color=\"$color\">$number_or_percent</span> ghluasad"
-msgstr[2] "<span color=\"$color\">$number_or_percent</span> gluasadan"
-msgstr[3] "<span color=\"$color\">$number_or_percent</span> gluasad"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: src/units/types.cpp:545 src/units/types.hpp:181
 msgid "chaotic"
@@ -8684,70 +8667,3 @@ msgstr "Falaich na planaichean aig $player"
 #: src/whiteboard/manager.cpp:1135
 msgid "Whiteboard Options"
 msgstr "Roghainnean a’ bhùird-ghil"
-
-#~ msgid ""
-#~ "Wesnoth has many different sagas waiting to be played. Fight to regain "
-#~ "the throne of Wesnoth, of which you are the legitimate heir... step into "
-#~ "the boots of a young officer sent to guard a not-so-sleepy frontier "
-#~ "outpost... lead a brutal quest to unite the orcish tribes... vanquish a "
-#~ "horde of undead warriors unleashed by a foul necromancer, who also "
-#~ "happens to have taken your brother hostage... guide a band of elvish "
-#~ "survivors in an epic quest to find a new home... get revenge on the orcs "
-#~ "by using the foul art of necromancy...\n"
-#~ "\n"
-#~ "There are at least two hundred unit types, sixteen races, seven major "
-#~ "factions, and hundreds of years of history.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Tha iomadh mòr-sgeul aig Beasnad as urrainn chut cluiche. Dèan strì gus "
-#~ "cathair Bheasnaid fhaighinn air ais agus tusa an oighre dligheach… rach "
-#~ "’nad oifigear òg a chaidh a chur gus gearastan crìche a dhìon nach eil "
-#~ "cho sàmhach ’s a shaoileadh tu… rach air turas brùideil gus treubhan nan "
-#~ "deamhan aonachadh…  cuir ruaig air sluagh closach a chaidh a chur ma "
-#~ "sgaoil le marbh-dhraoidh olc a ghlac do bhràthair mar bhràigh cuideachd… "
-#~ "stiùirich còmhlann dhe luchd-tàrsainn sìthiche air turas fada gus "
-#~ "dachaigh ùr a lorg… cleachd droch-ghnìomhan na marbh-dhraoidheachd gus "
-#~ "dìoghaltas fhaighinn air na deamhain…\n"
-#~ "\n"
-#~ "Tha corr is dà cheud sheòrsa de dh’aonad, sia cinnidhean deug, seachd mòr-"
-#~ "bhuidnean agus linntean dhe dh’eachdraidh ann.\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "(17 Single Player Campaigns with 211 Scenarios,\n"
-#~ "One Multiplayer Campaign with 14 Scenarios,\n"
-#~ "7 Factions battling on 46 Multiplayer Maps/Scenarios,\n"
-#~ "500+ Add-ons.)"
-#~ msgstr ""
-#~ "(17 iomairtean aon-chluicheadair le 211 cnàmh-sgeul,\n"
-#~ "iomairt ioma-chluicheadair le 14 cnàmh-sgeulan,\n"
-#~ "7 buidhnean a’ cogadh air 46 mapa/cnàmh-sgeul ioma-chluicheadair,\n"
-#~ "500+ tuilleadan.)"
-
-#~ msgid "$era_name (missing)"
-#~ msgstr "$era_name (a dhìth)"
-
-#~ msgid "none"
-#~ msgstr "gin"
-
-#~ msgid "None"
-#~ msgstr "Gin"
-
-#~ msgid "<span color=\"$color\">$number_or_percent movement</span> point"
-#~ msgid_plural ""
-#~ "<span color=\"$color\">$number_or_percent movement</span> points"
-#~ msgstr[0] "<span color=\"$color”>$number_or_percent</span> phuing-gluasaid"
-#~ msgstr[1] "<span color=\"$color”>$number_or_percent</span> phuing-gluasaid"
-#~ msgstr[2] ""
-#~ "<span color=\"$color”>$number_or_percent</span> puingean-gluasaid"
-#~ msgstr[3] "<span color=\"$color”>$number_or_percent</span> puing-gluasaid"
-
-#~ msgid "Ping timeout"
-#~ msgstr "Crìoch-ùine ping"
-
-#~ msgid ""
-#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
-#~ "disable"
-#~ msgstr ""
-#~ "An àireamh dhe dhiogan a thèid a’ feitheamh airson freagairt ping mus "
-#~ "tachair crìoch-ùine. Tagh 0 gus a chur à comas."

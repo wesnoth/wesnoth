@@ -8,7 +8,7 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
      * In 'Captured', fixed units incorrectly costing upkeep after leveling up.
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Czech, French,
-     Galician, German, Italian, Slovak, Spanish.
+     Galician, German, Italian, Scottish Gaelic, Slovak, Spanish.
  ### Performance
    * Added an option to disable the FPS limiter for a slight performance boost.
  ### User interface

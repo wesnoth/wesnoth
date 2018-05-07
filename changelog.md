@@ -9,7 +9,7 @@
      * Various sprite and image updates.
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Czech, French,
-     Galician, German, Italian, Slovak, Spanish
+     Galician, German, Italian, Scottish Gaelic, Slovak, Spanish
    * Fixed Logging Options tooltips not being translatable (issue #2837).
  ### Multiplayer server
    * Added support for matching user, IP, and email bans from a forums board
