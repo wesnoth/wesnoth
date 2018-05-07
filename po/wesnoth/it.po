@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-04-28 10:48+0200\n"
+"PO-Revision-Date: 2018-05-07 18:23+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.1\n"
+"X-Generator: Poedit 2.0.7\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -7609,8 +7609,14 @@ msgid "Save and abort game"
 msgstr "Abbandona il gioco"
 
 #: src/playturn.cpp:283
+#, fuzzy
+#| msgid ""
+#| "$player who controlled side $side_drop has left the game. What do you "
+#| "want to do?"
 msgid "$player has left the game. What do you want to do?"
-msgstr "$player ha abbandonato la partita. Che cosa vuoi fare?"
+msgstr ""
+"$player che controllava la squadra $side_drop ha abbandonato la partita. Che "
+"cosa vuoi fare?"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -8206,8 +8212,11 @@ msgstr ""
 "debug"
 
 #: src/synced_user_choice.cpp:326
+#, fuzzy
+#| msgid "waiting for $desc from side $sides"
+#| msgid_plural "waiting for $desc from sides $sides"
 msgid "waiting for $desc from side(s) $sides"
-msgstr "in attesa di $desc dalla squadra/e $sides"
+msgstr "in attesa di $desc dalla squadra $sides"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8412,6 +8421,12 @@ msgstr "Nascondi i piani di $player"
 msgid "Whiteboard Options"
 msgstr "Opzioni della lavagna"
 
+#~ msgid "Trailers"
+#~ msgstr "Introduzioni"
+
+#~ msgid "The standard Wesnoth core."
+#~ msgstr "Era standard principale di Wesnoth."
+
 #~ msgid ""
 #~ "There are no custom options available for the selected era, game, or "
 #~ "modification."
@@ -8432,11 +8447,48 @@ msgstr "Opzioni della lavagna"
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
+#~ msgid "mp_game_available_slots^Full"
+#~ msgstr "Pieni"
+
+#~ msgid "vision^none"
+#~ msgstr "nessuna"
+
+#~ msgid "time limit^none"
+#~ msgstr "nessuno"
+
+#~ msgid "The nickname ‘$nick’ is banned on this server’s forums."
+#~ msgstr "Il nickname «$nick» è bandito sui forum di questo server."
+
+#~ msgid "Your IP address is banned on this server’s forums."
+#~ msgstr "Il tuo indirizzo IP è stato bandito sui forum di questo server."
+
+#~ msgid ""
+#~ "The email address for the nickname ‘$nick’ is banned on this server’s "
+#~ "forums."
+#~ msgstr ""
+#~ "L'indirizzo e-mail associato al nickname «$nick» è bandito su forum di "
+#~ "questo server."
+
+#~ msgid "Connection failed: "
+#~ msgstr "Connessione fallita: "
+
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "Riferimento a un argomento sconosciuto: "
 
+#~ msgid "weapon^None"
+#~ msgstr "Nessuna"
+
 #~ msgid "(unknown player)"
 #~ msgstr "(giocatore sconosciuto)"
+
+#~ msgid "<span color=\"$color\">$number_or_percent</span> movement point"
+#~ msgid_plural ""
+#~ "<span color=\"$color\">$number_or_percent</span> movement points"
+#~ msgstr[0] "<span color=\"$color\">$number_or_percent</span> punto movimento"
+#~ msgstr[1] "<span color=\"$color\">$number_or_percent</span> punti movimento"
+
+#~ msgid "Disconnected from server."
+#~ msgstr "Disconnesso dal server."
 
 #, fuzzy
 #~| msgid "Screenshot"
