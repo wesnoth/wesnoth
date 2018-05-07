@@ -1,7 +1,5 @@
 ## Version 1.14.0+dev
  ### Campaigns
-   * A Tale of Two Brothers
-     * S2 'Chase': improved behavior of undead side leader with custom AI
    * Eastern Invasion:
      * In 'Captured', fixed units incorrectly costing upkeep after leveling up.
    * Secrets of the Ancients
