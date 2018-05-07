@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "POT-Creation-Date: 2018-05-06 05:31-0300\n"
-"PO-Revision-Date: 2018-02-26 12:14+0100\n"
+"PO-Revision-Date: 2018-05-07 09:12+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -361,21 +361,17 @@ msgstr "B<--log->I<nivel>B<=>I<dominio1>B<,>I<dominio2>B<,>I<...>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:140
-#, fuzzy
-#| msgid ""
-#| "sets the severity level of the log domains.  B<all> can be used to match "
-#| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>.  By default the B<error> level is used."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
 "\\ B<none>.  By default the B<warning> level is used for most domains, but "
 "B<deprecation> defaults to none."
 msgstr ""
-"establece el nivel de gravedad de los dominios de registro. B<all> puede "
-"utilizarse para seleccionar todos los dominios. Los niveles disponibles son: "
-"B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>. Por defecto se utiliza el "
-"nivel B<error>."
+"establece el nivel de gravedad del registro en los dominios. B<all> puede "
+"utilizarse para coincidir con cualquier registro en un dominio. Los niveles "
+"disponibles son: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,\\ B<none>. "
+"Por omisión se utiliza el nivel B<warning> para la mayoría de los dominios, "
+"pero B<deprecation> no determina ninguno."
 
 #. type: TP
 #: doc/man/wesnoth.6:140

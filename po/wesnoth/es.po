@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-05-06 05:31-0300\n"
-"PO-Revision-Date: 2018-03-27 19:49+0200\n"
+"PO-Revision-Date: 2018-05-07 11:34+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth Spanish translation\n"
 "Language: es\n"
@@ -224,7 +224,7 @@ msgstr "Muestra efectos gráficos de unidad especial"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:178
 msgid "Show deprecation messages in-game"
-msgstr ""
+msgstr "Mostrar mensajes sobre exclusiones durante la partida"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:179
@@ -233,6 +233,10 @@ msgid ""
 "will still be shown in the log, even if this is disabled. In addition, the "
 "deprecation log-domain controls how many messages are printed."
 msgstr ""
+"Muestra avisos acerca de API excluida en el área de chat durante la partida. "
+"Estos mensajes aún se mostrarán en el registro, incluso si esto está "
+"deshabilitado. Además, el registro de dominio de exclusión controla cuantos "
+"mensajes se imprimen."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:187
@@ -383,10 +387,8 @@ msgstr "Responsables de internacionalización"
 
 #. [about]
 #: data/core/about.cfg:323
-#, fuzzy
-#| msgid "Traits"
 msgid "Trailers"
-msgstr "Rasgos"
+msgstr "Anuncios"
 
 #. [about]
 #: data/core/about.cfg:335
@@ -3646,7 +3648,7 @@ msgstr "Wesnoth (Predeteminado)"
 #. [core]: id=default
 #: data/cores.cfg:8
 msgid "The standard Wesnoth core."
-msgstr ""
+msgstr "El núcleo común de Wesnoth."
 
 #. [language]
 #: data/english.cfg:6
@@ -6252,7 +6254,7 @@ msgstr[1] "Puestos vacantes:"
 
 #: src/game_initialization/lobby_data.cpp:429
 msgid "mp_game_available_slots^Full"
-msgstr ""
+msgstr "Completo"
 
 #: src/game_initialization/lobby_data.cpp:440
 #: src/game_initialization/lobby_data.cpp:442 src/savegame.cpp:631
@@ -6260,16 +6262,12 @@ msgid "Turn"
 msgstr "Turno"
 
 #: src/game_initialization/lobby_data.cpp:455
-#, fuzzy
-#| msgid "vision"
 msgid "vision^none"
-msgstr "visión"
+msgstr "ninguna"
 
 #: src/game_initialization/lobby_data.cpp:464
-#, fuzzy
-#| msgid "Time limit"
 msgid "time limit^none"
-msgstr "Límite de tiempo"
+msgstr "ninguno"
 
 #: src/game_initialization/lobby_data.cpp:497
 msgid ""
@@ -6369,21 +6367,20 @@ msgid " This server disallows unregistered nicknames."
 msgstr " Este servidor no permite nombres de usuario no registrados."
 
 #: src/game_initialization/multiplayer.cpp:320
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
-msgstr "El nombre de usuario «$nick|» está registrado en este servidor."
+msgstr ""
+"El nombre de usuario «$nick|» ha sido expulsado del foro de este servidor."
 
 #: src/game_initialization/multiplayer.cpp:322
 msgid "Your IP address is banned on this server’s forums."
-msgstr ""
+msgstr "Su dirección IP ha sido expulsada del foro de este servidor."
 
 #: src/game_initialization/multiplayer.cpp:324
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
-msgstr "El nombre de usuario «$nick|» está registrado en este servidor."
+msgstr ""
+"La dirección de correo para el nombre de usuario «$nick|» ha sido expulsada "
+"del foro de este servidor."
 
 #: src/game_initialization/multiplayer.cpp:326
 #: src/game_initialization/multiplayer.cpp:328
@@ -6568,10 +6565,8 @@ msgid "Error while starting server: "
 msgstr "Error al iniciar el servidor: "
 
 #: src/game_launcher.cpp:882
-#, fuzzy
-#| msgid "Connection timed out"
 msgid "Connection failed: "
-msgstr "Tiempo excedido en la conexión"
+msgstr "Conexión fallida: "
 
 #: src/generators/default_map_generator_job.cpp:691
 msgid "Random maps with an odd width aren't supported."
@@ -7645,12 +7640,12 @@ msgid "Save and abort game"
 msgstr "Guardar y abortar la partida"
 
 #: src/playturn.cpp:296
-#, fuzzy
-#| msgid "$player has left the game. What do you want to do?"
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
-msgstr "$player ha dejado la partida. ¿Qué quiere hacer?"
+msgstr ""
+"El jugador $player que controlaba el bando $side_drop ha dejado la partida. "
+"¿Qué es lo que desea hacer?"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -7859,7 +7854,7 @@ msgstr "Especial de arma: "
 
 #: src/reports.cpp:893
 msgid "weapon^None"
-msgstr ""
+msgstr "Ninguna"
 
 #: src/reports.cpp:922
 msgid "Total damage"
@@ -8252,12 +8247,10 @@ msgstr ""
 "$player"
 
 #: src/synced_user_choice.cpp:327
-#, fuzzy
-#| msgid "waiting for $desc from side(s) $sides"
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
-msgstr[0] "esperando a $desc del bando o bandos $sides"
-msgstr[1] "esperando a $desc del bando o bandos $sides"
+msgstr[0] "esperando a $desc del bando $sides"
+msgstr[1] "esperando a $desc de los bandos $sides"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8344,9 +8337,6 @@ msgstr[1] "$number puntos de movimiento"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:429
-#, fuzzy
-#| msgid "<span color=\"$color\">$number_or_percent</span> move"
-#| msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> movimiento"
@@ -8447,10 +8437,8 @@ msgid "$year AF"
 msgstr "$year AñC"
 
 #: src/wesnothd_connection.cpp:402
-#, fuzzy
-#| msgid "Connecting to Server..."
 msgid "Disconnected from server."
-msgstr "Conectando al servidor..."
+msgstr "Desconectado del servidor."
 
 #: src/whiteboard/manager.cpp:1115
 msgid "SHOW ALL allies’ plans"
