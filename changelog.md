@@ -148,6 +148,7 @@
    * Fixed the wesnoth(6) manpage claiming the default log level is 'error' when it
      has been 'warning' since version 1.9.0.
    * Avoid trying to load invalid base64-encoded data URIs.
+   * wesnoth_addon_manager and the addons.wesnoth.org web index can now use data URIs.
 
 ## Version 1.13.12
  ### Security fixes
