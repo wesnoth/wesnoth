@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-04-15 01:34-0300\n"
-"PO-Revision-Date: 2018-02-22 12:09+0100\n"
+"POT-Creation-Date: 2018-05-06 05:31-0300\n"
+"PO-Revision-Date: 2018-05-07 10:29+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -124,54 +124,55 @@ msgid "special"
 msgstr "especial"
 
 #. [editor_times]: id=empty
-#: data/core/editor/time-of-day.cfg:5
-msgid "None"
-msgstr "Ninguno"
+#. Describes a scenario in the editor that has not set a time of day schedule
+#: data/core/editor/time-of-day.cfg:6
+msgid "time of day^None"
+msgstr "Ninguna"
 
 # Espreon: Creo que traducir este «Test» con «Probar» no es correcto; se refiere a un «Test ToD» y no a una acción de probar algo.
 #. [editor_times]: id=test
-#: data/core/editor/time-of-day.cfg:10
+#: data/core/editor/time-of-day.cfg:11
 msgid "Test"
 msgstr "Experimental"
 
 #. [editor_times]: id=default
-#: data/core/editor/time-of-day.cfg:21
+#: data/core/editor/time-of-day.cfg:22
 msgid "Default"
 msgstr "Predeterminado"
 
 #. [editor_times]: id=summer
-#: data/core/editor/time-of-day.cfg:27
+#: data/core/editor/time-of-day.cfg:28
 msgid "Summer"
 msgstr "Verano"
 
 #. [editor_times]: id=winter
-#: data/core/editor/time-of-day.cfg:33
+#: data/core/editor/time-of-day.cfg:34
 msgid "Winter"
 msgstr "Invierno"
 
 #. [editor_times]: id=underground
-#: data/core/editor/time-of-day.cfg:39
+#: data/core/editor/time-of-day.cfg:40
 msgid "Underground"
 msgstr "Bajo tierra"
 
 #. [editor_times]: id=deep_underground
-#: data/core/editor/time-of-day.cfg:45
+#: data/core/editor/time-of-day.cfg:46
 msgid "Deep Underground"
 msgstr "Profundidades terrestres"
 
 #. [editor_times]: id=indoors
-#: data/core/editor/time-of-day.cfg:51
+#: data/core/editor/time-of-day.cfg:52
 msgid "Indoors"
 msgstr "Interior"
 
 #. [editor_times]: id=24
-#: data/core/editor/time-of-day.cfg:57
+#: data/core/editor/time-of-day.cfg:58
 msgid "24 Hour Schedule"
 msgstr "Horario de 24 horas"
 
 # Espreon: Mmm, quizás deberíamos respetar la capitalización de «the Fall» porque «the Fall» es un evento muy importante
 #. [editor_times]: id=after_the_fall
-#: data/core/editor/time-of-day.cfg:63
+#: data/core/editor/time-of-day.cfg:64
 msgid "After the Fall"
 msgstr "Después de la Caída"
 
@@ -327,11 +328,11 @@ msgstr "Nombre:"
 msgid "Load Map"
 msgstr "Cargar mapa"
 
-#: src/editor/map/context_manager.cpp:273 src/editor/map/map_context.cpp:831
+#: src/editor/map/context_manager.cpp:273 src/editor/map/map_context.cpp:835
 msgid "New Map"
 msgstr "Nuevo mapa"
 
-#: src/editor/map/context_manager.cpp:286 src/editor/map/map_context.cpp:831
+#: src/editor/map/context_manager.cpp:286 src/editor/map/map_context.cpp:835
 msgid "New Scenario"
 msgstr "Nuevo escenario"
 
@@ -458,15 +459,15 @@ msgstr ""
 "El mapa parece un escenario, pero el valor de map_data no apunta a un "
 "archivo existente"
 
-#: src/editor/map/map_context.cpp:600
+#: src/editor/map/map_context.cpp:604
 msgid "Could not save the scenario: $msg"
 msgstr "No se pudo guardar el escenario: $msg"
 
-#: src/editor/map/map_context.cpp:632
+#: src/editor/map/map_context.cpp:636
 msgid "Could not save into scenario"
 msgstr "No se pudo guardar en el escenario"
 
-#: src/editor/map/map_context.cpp:642
+#: src/editor/map/map_context.cpp:646
 msgid "Could not save the map: $msg"
 msgstr "No se pudo guardar el mapa: $msg"
 
@@ -526,6 +527,9 @@ msgstr "Ninguno"
 #: src/gui/dialogs/editor/set_starting_position.cpp:101
 msgid "Player $player_number"
 msgstr "Jugador $player_number"
+
+#~ msgid "None"
+#~ msgstr "Ninguno"
 
 #~ msgid "(New Map)"
 #~ msgstr "(Nuevo mapa)"

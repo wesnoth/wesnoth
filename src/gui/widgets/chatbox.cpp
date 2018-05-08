@@ -736,6 +736,14 @@ void chatbox::process_message(const ::config& data, bool whisper /*= false*/)
 		add_whisper_received(sender, message);
 	} else {
 		std::string room = data["room"];
+
+		// Attempt to send to the currently active room first.
+		if(room.empty()) {
+			LOG_LB << "Message without a room from " << sender << ", falling back to active window\n";
+			room = open_windows_[active_window_].name;
+		}
+
+		// If we still don't have a name, fall back to lobby.
 		if(room.empty()) {
 			LOG_LB << "Message without a room from " << sender << ", assuming lobby\n";
 			room = "lobby";

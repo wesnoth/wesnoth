@@ -271,6 +271,9 @@ void move::execute(bool& success, bool& complete)
 				//FIXME: probably better to use the new calculate_new_route() instead of the above:
 				//calculate_new_route(final_location, steps.back());
 				// Of course, "better" would need to be verified.
+
+				//Update route_->move_cost
+				route_.reset(new pathfind::marked_route(mark_route(route_->route, true)));
 				arrow_->set_path(route_->steps);
 			}
 		}
@@ -479,8 +482,10 @@ action::error move::check_validity() const
 
 	//check that the path is good
 	if(get_source_hex() != get_dest_hex()) { //skip zero-hex move used by attack subclass
+
 		// Mark the plain route to see if the move can still be done in one turn,
 		// which is always the case for planned moves
+		// TODO: this check is rather slow, skip it if the gamestat has not changed.
 		pathfind::marked_route checked_route = pathfind::mark_route(get_route().route);
 
 		if(checked_route.marks[checked_route.steps.back()].turns != 1) {
@@ -539,7 +544,7 @@ int move::calculate_moves_left(unit& u)
 		// @todo: find a better treatment of movement points when defining moves out-of-turn
 		if(u.movement_left() - route_->move_cost < 0
 				&& resources::controller->current_side() == display::get_singleton()->viewing_side()) {
-			WRN_WB << "Move defined with insufficient movement left." << std::endl;
+			WRN_WB << shared_from_this() << " defined with insufficient movement left." << std::endl;
 		}
 
 		// If unit finishes move in a village it captures, set the move cost to unit's movement_left()

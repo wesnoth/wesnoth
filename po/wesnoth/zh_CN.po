@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-04-26 03:28+0300\n"
-"PO-Revision-Date: 2018-04-10 21:49+0800\n"
+"POT-Creation-Date: 2018-05-06 05:31-0300\n"
+"PO-Revision-Date: 2018-05-06 20:41+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -205,97 +205,112 @@ msgid "Show special unit graphical effects"
 msgstr "显示特殊的单位图像效果"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:188
+#: data/advanced_preferences.cfg:178
+msgid "Show deprecation messages in-game"
+msgstr "在游戏中显示API废弃信息"
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:179
+msgid ""
+"Show warnings about deprecated API in the in-game chat area. These messages "
+"will still be shown in the log, even if this is disabled. In addition, the "
+"deprecation log-domain controls how many messages are printed."
+msgstr ""
+"在游戏的对话区域内显示关于废弃API的警告消息。即使禁用此功能，这些消息也仍然会"
+"显示在日志中。以及，废弃信息日志域控制着所显示的消息的数量。"
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:187
 msgid "Joystick support"
 msgstr "手柄支持"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:195
+#: data/advanced_preferences.cfg:194
 msgid "Joystick: number of the scroll X-axis joystick"
 msgstr "手柄：用于横向卷屏的手柄编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:205
+#: data/advanced_preferences.cfg:204
 msgid "Joystick: number of the scroll X-axis"
 msgstr "手柄：用于横向卷屏的摇杆编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:215
+#: data/advanced_preferences.cfg:214
 msgid "Joystick: number of the scroll Y-axis joystick"
 msgstr "手柄：用于纵向卷屏的手柄编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:225
+#: data/advanced_preferences.cfg:224
 msgid "Joystick: number of the scroll Y-axis"
 msgstr "手柄：用于纵向卷屏的摇杆编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:235
+#: data/advanced_preferences.cfg:234
 msgid "Joystick: deadzone of the scrolling stick"
 msgstr "手柄：用于卷屏的摇杆的死区大小"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:245
+#: data/advanced_preferences.cfg:244
 msgid "Joystick: number of the cursor X-axis joystick"
 msgstr "手柄：用于横向移动光标的手柄编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:255
+#: data/advanced_preferences.cfg:254
 msgid "Joystick: number of the cursor X-axis"
 msgstr "手柄：用于横向移动光标的摇杆编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:265
+#: data/advanced_preferences.cfg:264
 msgid "Joystick: number of the cursor Y-axis joystick"
 msgstr "手柄：用于纵向移动光标的手柄编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:275
+#: data/advanced_preferences.cfg:274
 msgid "Joystick: number of the cursor Y-axis"
 msgstr "手柄：用于纵向移动光标的摇杆编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:285
+#: data/advanced_preferences.cfg:284
 msgid "Joystick: deadzone of the cursor stick"
 msgstr "手柄：用于移动光标的摇杆的死区大小"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:295
+#: data/advanced_preferences.cfg:294
 msgid "Joystick: number of the mouse X-axis joystick"
 msgstr "手柄：用于横向移动鼠标箭头的手柄编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:305
+#: data/advanced_preferences.cfg:304
 msgid "Joystick: number of the mouse X-axis"
 msgstr "手柄：用于横向移动鼠标箭头的摇杆编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:315
+#: data/advanced_preferences.cfg:314
 msgid "Joystick: number of the mouse Y-axis joystick"
 msgstr "手柄：用于纵向移动鼠标箭头的手柄编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:325
+#: data/advanced_preferences.cfg:324
 msgid "Joystick: number of the mouse Y-axis"
 msgstr "手柄：用于纵向移动鼠标箭头的摇杆编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:335
+#: data/advanced_preferences.cfg:334
 msgid "Joystick: deadzone of the mouse stick"
 msgstr "手柄：用于移动鼠标箭头的摇杆的死区大小"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:345
+#: data/advanced_preferences.cfg:344
 msgid "Joystick: number of the thrust axis joystick"
 msgstr "手柄：用于加速的手柄编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:355
+#: data/advanced_preferences.cfg:354
 msgid "Joystick: number of the thrust axis"
 msgstr "手柄：用于加速的摇杆编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:365
+#: data/advanced_preferences.cfg:364
 msgid "Joystick: deadzone of the thruster"
 msgstr "手柄：用于加速的摇杆的死区大小"
 
@@ -342,52 +357,57 @@ msgid "Programming"
 msgstr "程序设计"
 
 #. [about]
-#: data/core/about.cfg:247
+#: data/core/about.cfg:262
 msgid "General Purpose Administration and Coordination"
 msgstr "总体管理与协调"
 
 #. [about]
-#: data/core/about.cfg:280
+#: data/core/about.cfg:298
 msgid "Internationalization Managers"
 msgstr "国际化经理"
 
 #. [about]
-#: data/core/about.cfg:305
+#: data/core/about.cfg:323
+msgid "Trailers"
+msgstr "预告片"
+
+#. [about]
+#: data/core/about.cfg:335
 msgid "Artwork and Graphics"
 msgstr "美工与图像"
 
 #. [about]
-#: data/core/about.cfg:715
+#: data/core/about.cfg:749
 msgid "Music"
 msgstr "音乐"
 
 #. [about]
-#: data/core/about.cfg:752
+#: data/core/about.cfg:786
 msgid "Sound Effects"
 msgstr "音效"
 
 #. [about]
-#: data/core/about.cfg:776
+#: data/core/about.cfg:810
 msgid "Campaign Design"
 msgstr "战役设计"
 
 #. [about]
-#: data/core/about.cfg:859
+#: data/core/about.cfg:896
 msgid "Multiplayer Maps and Balancing"
 msgstr "多人地图与平衡性调整"
 
 #. [about]
-#: data/core/about.cfg:904
+#: data/core/about.cfg:941
 msgid "Packagers"
 msgstr "打包人员"
 
 #. [about]
-#: data/core/about.cfg:1007
+#: data/core/about.cfg:1048
 msgid "Miscellaneous Contributors"
 msgstr "其他贡献者"
 
 #. [about]
-#: data/core/about.cfg:1661
+#: data/core/about.cfg:1689
 msgid "Bots"
 msgstr "机器人"
 
@@ -502,162 +522,162 @@ msgid "German Translation"
 msgstr "德文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:817
+#: data/core/about_i18n.cfg:820
 msgid "Greek Translation"
 msgstr "希腊文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:860
+#: data/core/about_i18n.cfg:863
 msgid "Hebrew Translation"
 msgstr "希伯来文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:873
+#: data/core/about_i18n.cfg:876
 msgid "Hungarian Translation"
 msgstr "匈牙利文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:934
+#: data/core/about_i18n.cfg:937
 msgid "Icelandic Translation"
 msgstr "冰岛文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:944
+#: data/core/about_i18n.cfg:947
 msgid "Indonesian Translation"
 msgstr "印度尼西亚文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:967
+#: data/core/about_i18n.cfg:970
 msgid "Irish Translation"
 msgstr "爱尔兰文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:974
+#: data/core/about_i18n.cfg:977
 msgid "Italian Translation"
 msgstr "意大利文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1021
+#: data/core/about_i18n.cfg:1024
 msgid "Japanese Translation"
 msgstr "日文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1108
+#: data/core/about_i18n.cfg:1111
 msgid "Korean Translation"
 msgstr "韩文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1116
+#: data/core/about_i18n.cfg:1119
 msgid "Latin Translation"
 msgstr "拉丁文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1142
+#: data/core/about_i18n.cfg:1145
 msgid "Latvian Translation"
 msgstr "拉脱维亚文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1157
+#: data/core/about_i18n.cfg:1160
 msgid "Lithuanian Translation"
 msgstr "立陶宛文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1182
+#: data/core/about_i18n.cfg:1185
 msgid "Macedonian Translation"
 msgstr "马其顿文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1189
+#: data/core/about_i18n.cfg:1192
 msgid "Marathi Translation"
 msgstr "马拉地文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1198
+#: data/core/about_i18n.cfg:1201
 msgid "Norwegian Translation"
 msgstr "挪威文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1223
+#: data/core/about_i18n.cfg:1226
 msgid "Old English Translation"
 msgstr "古英文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1241
+#: data/core/about_i18n.cfg:1244
 msgid "Polish Translation"
 msgstr "波兰文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1289
+#: data/core/about_i18n.cfg:1292
 msgid "Portuguese Translation"
 msgstr "葡萄牙文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1303
+#: data/core/about_i18n.cfg:1306
 msgid "Portuguese (Brazil) Translation"
 msgstr "葡萄牙文（巴西）翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1357
+#: data/core/about_i18n.cfg:1360
 msgid "Romanian Translation"
 msgstr "罗马尼亚文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1365
+#: data/core/about_i18n.cfg:1368
 msgid "Russian Translation"
 msgstr "俄文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1457
+#: data/core/about_i18n.cfg:1460
 msgid "Scottish Gaelic Translation"
 msgstr "苏格兰盖尔文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1466
+#: data/core/about_i18n.cfg:1469
 msgid "Serbian Translation"
 msgstr "塞尔维亚文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1485
+#: data/core/about_i18n.cfg:1488
 msgid "Slovak Translation"
 msgstr "斯洛伐克文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1514
+#: data/core/about_i18n.cfg:1517
 msgid "Slovenian Translation"
 msgstr "斯洛文尼亚文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1530
+#: data/core/about_i18n.cfg:1533
 msgid "Spanish Translation"
 msgstr "西班牙文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1612
+#: data/core/about_i18n.cfg:1615
 msgid "Swedish Translation"
 msgstr "瑞典文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1653
+#: data/core/about_i18n.cfg:1656
 msgid "Turkish Translation"
 msgstr "土耳其文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1675
+#: data/core/about_i18n.cfg:1678
 msgid "Ukrainian Translation"
 msgstr "乌克兰文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1688
+#: data/core/about_i18n.cfg:1691
 msgid "Valencian (southern Catalan) Translation"
 msgstr "瓦伦西亚文（南加泰罗尼亚）翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1701
+#: data/core/about_i18n.cfg:1704
 msgid "Vietnamese Translation"
 msgstr "越南文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1720
+#: data/core/about_i18n.cfg:1723
 msgid "RACV’s Translation"
 msgstr "RACV的翻译"
 
@@ -3897,40 +3917,8 @@ msgstr "韦诺（默认）"
 
 #. [core]: id=default
 #: data/cores.cfg:8
-msgid ""
-"Wesnoth has many different sagas waiting to be played. Fight to regain the "
-"throne of Wesnoth, of which you are the legitimate heir... step into the "
-"boots of a young officer sent to guard a not-so-sleepy frontier outpost... "
-"lead a brutal quest to unite the orcish tribes... vanquish a horde of undead "
-"warriors unleashed by a foul necromancer, who also happens to have taken "
-"your brother hostage... guide a band of elvish survivors in an epic quest to "
-"find a new home... get revenge on the orcs by using the foul art of "
-"necromancy...\n"
-"\n"
-"There are at least two hundred unit types, sixteen races, seven major "
-"factions, and hundreds of years of history.\n"
-"\n"
-msgstr ""
-"韦诺拥有诸多传奇，等你探索。作为合法的继承人，为了夺回韦诺王座而战……化身年轻"
-"的军官，派守不那么无聊的边疆哨所……领导一场统一兽人部落的野蛮战争……消灭恰巧把"
-"你的兄弟掳为人质的丑恶死灵法师，和他释放出来的亡灵大军……引导一群精灵幸存者，"
-"走上寻找新家园的壮阔旅程……使用丑恶的死灵秘术，向兽人复仇……\n"
-"\n"
-"游戏中，有至少两百种单位，十六个种族，七大派系，以及数百年的历史。\n"
-"\n"
-
-#. [core]: id=default
-#: data/cores.cfg:12
-msgid ""
-"(17 Single Player Campaigns with 211 Scenarios,\n"
-"One Multiplayer Campaign with 14 Scenarios,\n"
-"7 Factions battling on 46 Multiplayer Maps/Scenarios,\n"
-"500+ Add-ons.)"
-msgstr ""
-"（17个单人战役，包括211个场景，\n"
-"一个多人战役，包括14个场景，\n"
-"七大派系，在46幅多人地图/场景之上征战，\n"
-"500个以上的附加组件。）"
+msgid "The standard Wesnoth core."
+msgstr "标准韦诺核心。"
 
 #. [language]
 #: data/english.cfg:6
@@ -4016,7 +4004,7 @@ msgstr "火焰"
 #. [language]
 #: data/english.cfg:31
 msgid "cold"
-msgstr "寒冰"
+msgstr "冰寒"
 
 #. [language]
 #: data/english.cfg:32
@@ -4757,7 +4745,7 @@ msgid ""
 "you can get some high-level troops sooner."
 msgstr ""
 "拥有<b>聪慧</b>特质的单位升级需要的经验比一般单位少。在战役早期，尝试把最后一"
-"击留给这些单位，那么你就可以更快拥有一些高等级部队了。"
+"击留给这些单位，这样你就可以更快地获得一些高等级部队。"
 
 #. [tip]
 #: data/tips.cfg:25
@@ -4773,8 +4761,8 @@ msgid ""
 "must completely surround skirmishers to immobilize them."
 msgstr ""
 "包围战术是非常有效的，特别是在对抗迅捷的对手之时。只要把两个单位放置在一个敌"
-"方单位相对的两侧，他们的控制区域就能将敌方单位的移动在所有方向上都限制在一"
-"格。不幸的是，你必须完全包围住散兵才能让他们无法动弹。"
+"方单位相对的两侧，他们的控制区域就能将敌方单位的移动距离限制在一格，不论在任"
+"何方向上均是如此。不幸的是，你必须把散兵完全包围住，才能让他们无法动弹。"
 
 #. [tip]
 #: data/tips.cfg:29 data/tips.cfg:141
@@ -4835,8 +4823,8 @@ msgid ""
 "level units that are about to level up than with those same units at a "
 "higher level."
 msgstr ""
-"通常来说，在开始战役中的下一个场景时，最好能使用即将升级的低等级单位，而不是"
-"使用高等级的相同单位。"
+"通常来说，在战役中最好把即将升级的低等级单位留到下一个场景开始时使用，而不是"
+"在当前场景中先升级后，再到下一场景开始时使用。"
 
 #. [tip]
 #: data/tips.cfg:52
@@ -4844,7 +4832,7 @@ msgid ""
 "On www.wesnoth.org you can find strategy guides, technical support, the "
 "history of Wesnoth, and much more."
 msgstr ""
-"你可以在www.wesnoth.org找到战略指导，技术支持，韦诺的历史，以及更多其他的信"
+"你可以在www.wesnoth.org找到战略指导、技术支持、韦诺的历史，以及更多其他的信"
 "息。"
 
 #. [tip]
@@ -4872,7 +4860,9 @@ msgstr "<b>——《皇家战斗术语纲要：第二卷》（韦元221年重印
 #: data/tips.cfg:60
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
-msgstr "如果在错误的时段进攻，那么哪怕是其他方面都可靠的作战计划也可能失败。"
+msgstr ""
+"如果在错误的时段进攻，那么就算是除了这一点以外都可靠的作战计划，也是会失败"
+"的。"
 
 #. [tip]
 #: data/tips.cfg:61 data/tips.cfg:85 data/tips.cfg:137 data/tips.cfg:145
@@ -4889,8 +4879,8 @@ msgid ""
 "terrain, because units can only see as far as they can move in one turn."
 msgstr ""
 "如果游戏时开启了<b>战场黑幕</b>和<b>战争迷雾</b>，你将不知道自己面对的是什"
-"么。在这种情况下，远距离侦察单位就值回票价了。尝试选择可以很容易穿越周围地形"
-"的侦察单位，因为单位只能看到他们在一回合内可以移动到的范围。"
+"么。在这种情况下，对长距离侦察单位投入的成本就值得了。尝试选择可以很容易穿越"
+"周围地形的侦察单位，因为单位的视野只有他们在一回合内可以移动到的范围那么大。"
 
 #. [tip]
 #: data/tips.cfg:68
@@ -4901,10 +4891,10 @@ msgid ""
 "Description</b> to see which attacks it is resistant to, and which will "
 "affect it the most."
 msgstr ""
-"有六种攻击类型：<b>穿刺</b>，<b>刃器</b>，<b>冲击</b>，<b>火焰</b>，<b>寒冰</"
-"b>和<b>奥术</b>。不同的单位面对不同的攻击时会暴露弱点。鼠标右击一个单位，再选"
-"择<b>单位描述</b>，就可以查看它对哪些攻击有很高的抗性，又是哪些攻击对它的伤害"
-"最大。"
+"有六种攻击类型：<b>穿刺</b>，<b>刃器</b>，<b>冲击</b>，<b>火焰</b>，<b>冰寒</"
+"b>和<b>奥术</b>。不同的单位面对不同的攻击时会暴露弱点。右击一个单位，再选择"
+"<b>单位描述</b>，就可以查看它对哪些攻击有很高的抗性，又是哪些攻击对它的伤害最"
+"大。"
 
 #. [tip]
 #: data/tips.cfg:72
@@ -4978,7 +4968,7 @@ msgid ""
 "Units stationed in villages will either heal eight hitpoints at the "
 "beginning of their turn, or will recover from poisoning."
 msgstr ""
-"驻扎在村庄里的单位在自己的回合开始时要么恢复8点生命，要么从中毒状态中恢复过"
+"驻扎在村庄里的单位在自己的回合开始时要么恢复八点生命，要么从中毒状态中恢复过"
 "来。"
 
 #. [tip]
@@ -4989,7 +4979,7 @@ msgid ""
 "its next turn."
 msgstr ""
 "除非必要，否则不要移动负伤的单位——让它休息。如果一个单位既不移动也不攻击，它"
-"将在下回合开始时恢复2点生命。"
+"将在下回合开始时恢复两点生命。"
 
 #. [tip]
 #: data/tips.cfg:100
@@ -5042,7 +5032,7 @@ msgid ""
 "level opponent."
 msgstr ""
 "对敌人打出致命一击是获取经验的最好方式。单位在击杀敌人后会根据所杀敌人的等级"
-"获得经验，每一级8点，如果击杀0级对手则获得4点经验。"
+"获得经验，每一级八点，如果击杀零级对手则获得四点经验。"
 
 #. [tip]
 #: data/tips.cfg:116
@@ -5110,7 +5100,7 @@ msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
-"骷髅对穿刺、刃器和寒冰攻击具有较强的抗性，但却易受冲击、火焰和奥术攻击的伤"
+"骷髅对穿刺、刃器和冰寒攻击具有较强的抗性，但却易受冲击、火焰和奥术攻击的伤"
 "害。"
 
 #. [tip]
@@ -5525,8 +5515,8 @@ msgstr[1] "发现$enemies|个敌方单位！"
 #: src/actions/move.cpp:1162
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
-msgstr[0] "发现友方单位！"
-msgstr[1] "发现$friends|个友方单位！"
+msgstr[0] "发现友方单位"
+msgstr[1] "发现$friends|个友方单位"
 
 #: src/actions/move.cpp:1177
 msgid "(press $hotkey to keep moving)"
@@ -5868,7 +5858,7 @@ msgstr "正在请求用户$nick|的信息"
 msgid "(A) — admin command"
 msgstr "(A) — 管理员命令"
 
-#: src/chat_command_handler.hpp:73 src/menu_events.cpp:1145
+#: src/chat_command_handler.hpp:73 src/menu_events.cpp:1146
 msgid "(admin only)"
 msgstr "（管理员专用）"
 
@@ -5971,7 +5961,7 @@ msgstr "<密码> <电子邮件（可选）>"
 
 #: src/chat_command_handler.hpp:131
 msgid "Register your nickname"
-msgstr "注册你的昵称。"
+msgstr "注册你的昵称"
 
 #: src/chat_command_handler.hpp:133
 msgid "Drop your nickname."
@@ -6166,37 +6156,37 @@ msgstr "无法定位默认核心。"
 msgid "The game will now exit."
 msgstr "游戏将退出。"
 
-#: src/game_config_manager.cpp:316
+#: src/game_config_manager.cpp:312
 msgid ""
 "Error loading custom game configuration files. The game will try without "
 "loading add-ons."
 msgstr "载入自定义游戏配置文件时出错。游戏将尝试继续而不载入附加组件。"
 
-#: src/game_config_manager.cpp:323
+#: src/game_config_manager.cpp:319
 msgid ""
 "Error loading custom game configuration files. The game will fallback to the "
 "default core files."
 msgstr "载入自定义游戏配置文件时出错。游戏将回退到使用默认核心文件。"
 
-#: src/game_config_manager.cpp:332
+#: src/game_config_manager.cpp:328
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr "载入默认核心游戏配置文件时出错。现在游戏将退出。"
 
-#: src/game_config_manager.cpp:478
+#: src/game_config_manager.cpp:474
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "下列附加组件有错误，无法载入："
 msgstr[1] "下列附加组件有错误，无法载入："
 
-#: src/game_config_manager.cpp:482
+#: src/game_config_manager.cpp:478
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
 msgstr[0] "请将此问题报告给此附加组件的作者或维护者。"
 msgstr[1] "请将此问题报告给这些附加组件各自的作者或维护者。"
 
-#: src/game_events/pump.cpp:481 src/game_launcher.cpp:890
+#: src/game_events/pump.cpp:481 src/game_launcher.cpp:909
 msgid "Error: "
 msgstr "错误："
 
@@ -6225,7 +6215,7 @@ msgid "Anonymous player"
 msgstr "匿名玩家"
 
 #: src/game_initialization/connect_engine.cpp:1000
-#: src/game_initialization/connect_engine.cpp:1298
+#: src/game_initialization/connect_engine.cpp:1294
 msgid "Computer Player"
 msgstr "电脑玩家"
 
@@ -6233,19 +6223,19 @@ msgstr "电脑玩家"
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1294
+#: src/game_initialization/connect_engine.cpp:1290
 msgid "Network Player"
 msgstr "网络玩家"
 
-#: src/game_initialization/connect_engine.cpp:1297
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "Local Player"
 msgstr "本地玩家"
 
-#: src/game_initialization/connect_engine.cpp:1299
+#: src/game_initialization/connect_engine.cpp:1295
 msgid "Empty"
 msgstr "空置"
 
-#: src/game_initialization/connect_engine.cpp:1302
+#: src/game_initialization/connect_engine.cpp:1298
 msgid "Reserved"
 msgstr "保留"
 
@@ -6319,10 +6309,6 @@ msgstr "缺少附加组件：$name"
 msgid "Missing addon: $id"
 msgstr "缺少附加组件：$id"
 
-#: src/game_initialization/lobby_data.cpp:264
-msgid "$era_name (missing)"
-msgstr "$era_name（丢失）"
-
 #: src/game_initialization/lobby_data.cpp:273
 msgid "Unknown era"
 msgstr "未知时代"
@@ -6359,14 +6345,21 @@ msgid_plural "Vacant Slots:"
 msgstr[0] "空闲槽位："
 msgstr[1] "空闲槽位："
 
+#: src/game_initialization/lobby_data.cpp:429
+msgid "mp_game_available_slots^Full"
+msgstr "已满"
+
 #: src/game_initialization/lobby_data.cpp:440
 #: src/game_initialization/lobby_data.cpp:442 src/savegame.cpp:631
 msgid "Turn"
 msgstr "回合"
 
 #: src/game_initialization/lobby_data.cpp:455
+msgid "vision^none"
+msgstr "无"
+
 #: src/game_initialization/lobby_data.cpp:464
-msgid "none"
+msgid "time limit^none"
 msgstr "无"
 
 #: src/game_initialization/lobby_data.cpp:497
@@ -6397,7 +6390,7 @@ msgstr "连接超时"
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
-msgstr "本服务器接受版本‘$required_version|’，而你使用的版本是‘$your_version|’"
+msgstr "此服务器接受版本‘$required_version|’，而你使用的版本是‘$your_version|’"
 
 #: src/game_initialization/multiplayer.cpp:134
 msgid "Server-side redirect loop"
@@ -6432,54 +6425,67 @@ msgstr "你必须先登录。"
 
 #: src/game_initialization/multiplayer.cpp:306
 msgid "The nickname ‘$nick’ is already taken."
-msgstr "昵称‘$nick|’已被使用了。"
+msgstr "昵称“$nick|”已被使用了。"
 
 #: src/game_initialization/multiplayer.cpp:308
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
 msgstr ""
-"昵称‘$nick|’包含无效字符。只允许使用字母或数字（至少要有一个字母或数字），下"
+"昵称“$nick|”包含无效字符。只允许使用字母或数字（至少要有一个字母或数字），下"
 "划线和连字符。"
 
 #: src/game_initialization/multiplayer.cpp:312
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
-msgstr "昵称‘$nick|’太长了。昵称长度不得超过20个字符。"
+msgstr "昵称“$nick|”太长了。昵称长度不得超过20个字符。"
 
 #: src/game_initialization/multiplayer.cpp:315
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
-msgstr "昵称‘$nick|’是被保留的，无法由玩家使用。"
+msgstr "昵称“$nick|”是被保留的，无法由玩家使用。"
 
 #: src/game_initialization/multiplayer.cpp:317
 msgid "The nickname ‘$nick’ is not registered on this server."
-msgstr "昵称‘$nick|’未在本服务器上注册。"
+msgstr "昵称“$nick|”未在此服务器上注册。"
 
 #: src/game_initialization/multiplayer.cpp:318
 msgid " This server disallows unregistered nicknames."
-msgstr " 本服务器不允许使用没有注册的昵称。"
+msgstr " 此服务器不允许使用没有注册的昵称。"
 
 #: src/game_initialization/multiplayer.cpp:320
-#: src/game_initialization/multiplayer.cpp:322
-msgid "The nickname ‘$nick’ is registered on this server."
-msgstr "昵称‘$nick|’已在本服务器上注册。"
+msgid "The nickname ‘$nick’ is banned on this server’s forums."
+msgstr "昵称“$nick|”在此服务器的论坛上被封禁了。"
 
-#: src/game_initialization/multiplayer.cpp:323
+#: src/game_initialization/multiplayer.cpp:322
+msgid "Your IP address is banned on this server’s forums."
+msgstr "你的IP地址在此服务器的论坛上被封禁了。"
+
+#: src/game_initialization/multiplayer.cpp:324
+msgid ""
+"The email address for the nickname ‘$nick’ is banned on this server’s forums."
+msgstr "昵称“$nick|”对应的电子邮件地址在此服务器的论坛上被封禁了。"
+
+#: src/game_initialization/multiplayer.cpp:326
+#: src/game_initialization/multiplayer.cpp:328
+msgid "The nickname ‘$nick’ is registered on this server."
+msgstr "昵称“$nick|”已在此服务器上注册过了。"
+
+#: src/game_initialization/multiplayer.cpp:329
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
 msgstr ""
 "<b>警告</b>：已经有客户端使用这个昵称登录。如果继续登录将踢走那个客户端！"
 
-#: src/game_initialization/multiplayer.cpp:326
+#: src/game_initialization/multiplayer.cpp:332
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "登录过程中发生错误（服务器没有可用的种子，无法与你连接）。"
 
-#: src/game_initialization/multiplayer.cpp:329
+#: src/game_initialization/multiplayer.cpp:335
 msgid "The password you provided was incorrect."
 msgstr "你提供的密码是不正确的。"
 
-#: src/game_initialization/multiplayer.cpp:331
+#: src/game_initialization/multiplayer.cpp:337
 msgid "You have made too many login attempts."
 msgstr "你尝试登录的次数太多了。"
 
@@ -6579,12 +6585,12 @@ msgstr "无法载入游戏： "
 msgid "Error while playing the game: "
 msgstr "进行游戏时发生错误："
 
-#: src/game_initialization/playcampaign.cpp:300 src/game_launcher.cpp:882
+#: src/game_initialization/playcampaign.cpp:300 src/game_launcher.cpp:901
 msgid "The game map could not be loaded: "
 msgstr "无法载入游戏地图： "
 
 #: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:866
-#: src/game_launcher.cpp:981
+#: src/game_launcher.cpp:1000
 msgid "Map generator error: "
 msgstr "地图生成器错误："
 
@@ -6630,6 +6636,10 @@ msgstr "读取游戏时发生文件I/O错误：’"
 #: src/game_launcher.cpp:860
 msgid "Error while starting server: "
 msgstr "启动服务器时发生错误： "
+
+#: src/game_launcher.cpp:882
+msgid "Connection failed: "
+msgstr "连接失败："
 
 #: src/generators/default_map_generator_job.cpp:691
 msgid "Random maps with an odd width aren't supported."
@@ -6956,7 +6966,7 @@ msgstr "你真的想要投降吗？"
 msgid "Surrender"
 msgstr "投降"
 
-#: src/hotkey/command_executor.cpp:797
+#: src/hotkey/command_executor.cpp:801
 msgid "Map-Screenshot"
 msgstr "地图-截屏"
 
@@ -6984,11 +6994,11 @@ msgstr "回到开头"
 msgid "(press $hotkey to deactivate)"
 msgstr "（按$hotkey键关闭）"
 
-#: src/hotkey/hotkey_handler_sp.cpp:144 src/menu_events.cpp:1940
+#: src/hotkey/hotkey_handler_sp.cpp:144 src/menu_events.cpp:1941
 msgid "Planning mode activated!"
 msgstr "计划模式激活！"
 
-#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:1943
+#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:1944
 msgid "Planning mode deactivated!"
 msgstr "计划模式关闭！"
 
@@ -7107,15 +7117,15 @@ msgstr "仅发送给盟友"
 msgid "You have no units available to recruit."
 msgstr "你没有可供征募的单位。"
 
-#: src/menu_events.cpp:312
+#: src/menu_events.cpp:314
 msgid "You do not have enough gold to recruit that unit"
 msgstr "你没有足够的金币，不能征募该单位"
 
-#: src/menu_events.cpp:349
+#: src/menu_events.cpp:350
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "你与你的士兵分开了，因此不能召回他们"
 
-#: src/menu_events.cpp:368
+#: src/menu_events.cpp:369
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -7123,342 +7133,342 @@ msgstr ""
 "没有可供召回的部队\n"
 "（你在上一个场景中必须有生还的老兵）"
 
-#: src/menu_events.cpp:372
+#: src/menu_events.cpp:373
 msgid "You currently can't recall at the highlighted location"
 msgstr "你目前不能在高亮位置进行召回"
 
-#: src/menu_events.cpp:399
+#: src/menu_events.cpp:400
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgstr[0] "要召回此单位，你至少需要拥有1枚金币"
 msgstr[1] "要召回此单位，你至少需要拥有$cost|枚金币"
 
-#: src/menu_events.cpp:539
+#: src/menu_events.cpp:540
 msgid "You cannot end your turn yet!"
 msgstr "你还不可以结束自己的回合！"
 
-#: src/menu_events.cpp:552
+#: src/menu_events.cpp:553
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "你还没有开始自己的回合。你真的要结束自己的回合吗？"
 
-#: src/menu_events.cpp:561
+#: src/menu_events.cpp:562
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "有些单位还可以移动。你真的要结束自己的回合吗？"
 
-#: src/menu_events.cpp:570
+#: src/menu_events.cpp:571
 msgid "Some units have not moved. Do you really want to end your turn?"
 msgstr "有些单位还没有移动。你真的要结束自己的回合吗？"
 
-#: src/menu_events.cpp:626
+#: src/menu_events.cpp:627
 msgid "Rename Unit"
 msgstr "重命名单位"
 
-#: src/menu_events.cpp:627
+#: src/menu_events.cpp:628
 msgid "Name:"
 msgstr "名称："
 
-#: src/menu_events.cpp:801
+#: src/menu_events.cpp:802
 msgid "Clear Labels"
 msgstr "清除标签"
 
-#: src/menu_events.cpp:802
+#: src/menu_events.cpp:803
 msgid "Are you sure you want to clear map labels?"
 msgstr "你确定要清除地图标签吗？"
 
-#: src/menu_events.cpp:997
+#: src/menu_events.cpp:998
 msgid "Search"
 msgstr "搜索"
 
-#: src/menu_events.cpp:1136
+#: src/menu_events.cpp:1137
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr "(D) — 调试专用，(N) — 联机专用，(A) — 管理员专用"
 
-#: src/menu_events.cpp:1143
+#: src/menu_events.cpp:1144
 msgid "(debug command)"
 msgstr "（调试命令）"
 
-#: src/menu_events.cpp:1144
+#: src/menu_events.cpp:1145
 msgid "(network only)"
 msgstr "（联机专用）"
 
-#: src/menu_events.cpp:1146
+#: src/menu_events.cpp:1147
 msgid "(not during other events)"
 msgstr "（在其他事件发生期间不可用）"
 
-#: src/menu_events.cpp:1175
+#: src/menu_events.cpp:1176
 msgid "Refresh gui."
 msgstr "刷新图形界面。"
 
-#: src/menu_events.cpp:1176
+#: src/menu_events.cpp:1177
 msgid "Switch a side to/from AI control."
 msgstr "对某一阵营开启/关闭AI控制。"
 
-#: src/menu_events.cpp:1177 src/menu_events.cpp:1179
+#: src/menu_events.cpp:1178 src/menu_events.cpp:1180
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<阵营> [on/off]]"
 
-#: src/menu_events.cpp:1178
+#: src/menu_events.cpp:1179
 msgid "Switch a side to/from idle state."
 msgstr "对某一阵营开启/关闭空闲状态。"
 
-#: src/menu_events.cpp:1182
+#: src/menu_events.cpp:1183
 msgid "<side> <nickname>"
 msgstr "<阵营> <昵称>"
 
-#: src/menu_events.cpp:1182
+#: src/menu_events.cpp:1183
 msgid "Assign control of a side to a different player or observer."
 msgstr "将某一阵营的控制权指定给另一玩家或观察者。"
 
-#: src/menu_events.cpp:1183
+#: src/menu_events.cpp:1184
 msgid "Query the controller status of a side."
 msgstr "查询某一阵营的控制状态。"
 
-#: src/menu_events.cpp:1184
+#: src/menu_events.cpp:1185
 msgid "<side>"
 msgstr "<阵营>"
 
-#: src/menu_events.cpp:1185
+#: src/menu_events.cpp:1186
 msgid "Clear chat history."
 msgstr "清除聊天历史。"
 
-#: src/menu_events.cpp:1186
+#: src/menu_events.cpp:1187
 msgid "Debug foreground terrain."
 msgstr "调试前景地形。"
 
-#: src/menu_events.cpp:1188
+#: src/menu_events.cpp:1189
 msgid "Debug layers from terrain under the mouse."
 msgstr "调试鼠标所指向的地形中的各层。"
 
-#: src/menu_events.cpp:1189
+#: src/menu_events.cpp:1190
 msgid "Show fps."
 msgstr "显示FPS。"
 
-#: src/menu_events.cpp:1191
+#: src/menu_events.cpp:1192
 msgid "Save game."
 msgstr "保存游戏。"
 
-#: src/menu_events.cpp:1193
+#: src/menu_events.cpp:1194
 msgid "Quit game."
 msgstr "退出游戏。"
 
-#: src/menu_events.cpp:1196
+#: src/menu_events.cpp:1197
 msgid "Save and quit."
 msgstr "保存并退出。"
 
-#: src/menu_events.cpp:1198
+#: src/menu_events.cpp:1199
 msgid "Ignore replay errors."
 msgstr "忽略录像错误。"
 
-#: src/menu_events.cpp:1199
+#: src/menu_events.cpp:1200
 msgid "Disable autosaves."
 msgstr "禁止自动存档。"
 
-#: src/menu_events.cpp:1201
+#: src/menu_events.cpp:1202
 msgid "<id>"
 msgstr "<ID>"
 
-#: src/menu_events.cpp:1201
+#: src/menu_events.cpp:1202
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "进入下一个场景，或ID为“ID”的场景"
 
-#: src/menu_events.cpp:1203
+#: src/menu_events.cpp:1204
 msgid "Choose next scenario"
 msgstr "选择下一个场景"
 
-#: src/menu_events.cpp:1206
+#: src/menu_events.cpp:1207
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr "改变当前回合数（以及时段），如果不指定回合数，则当前回合数加一。"
 
-#: src/menu_events.cpp:1206
+#: src/menu_events.cpp:1207
 msgid "[turn]"
 msgstr "[回合]"
 
-#: src/menu_events.cpp:1209
+#: src/menu_events.cpp:1210
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr "改变回合数上限，如果不指定数字，或指定的数字为-1，则取消上限。"
 
-#: src/menu_events.cpp:1209
+#: src/menu_events.cpp:1210
 msgid "[limit]"
 msgstr "[时限]"
 
-#: src/menu_events.cpp:1211
+#: src/menu_events.cpp:1212
 msgid "Turn debug mode on."
 msgstr "打开调试模式。"
 
-#: src/menu_events.cpp:1212
+#: src/menu_events.cpp:1213
 msgid "Turn debug mode off."
 msgstr "关闭调试模式。"
 
-#: src/menu_events.cpp:1214 src/menu_events.cpp:1218
+#: src/menu_events.cpp:1215 src/menu_events.cpp:1219
 msgid "<command>[;<command>...]"
 msgstr "<命令>[;<命令>...]"
 
-#: src/menu_events.cpp:1214
+#: src/menu_events.cpp:1215
 msgid "Execute a Lua statement."
 msgstr "执行Lua语句。"
 
-#: src/menu_events.cpp:1216
+#: src/menu_events.cpp:1217
 msgid "Grant higher privileges to Lua scripts."
 msgstr "赋予Lua脚本更高的权限。"
 
-#: src/menu_events.cpp:1217
+#: src/menu_events.cpp:1218
 msgid "Set the command used by the custom command hotkey"
 msgstr "为自定义命令热键设置命令"
 
-#: src/menu_events.cpp:1220
+#: src/menu_events.cpp:1221
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr "弹出对话框，用于改变多人游戏阵营的控制方。"
 
-#: src/menu_events.cpp:1221
+#: src/menu_events.cpp:1222
 msgid "Launch the gamestate inspector"
 msgstr "启动游戏状态检查器"
 
-#: src/menu_events.cpp:1223
+#: src/menu_events.cpp:1224
 msgid "<name>[=<command>]"
 msgstr "<名字>[=<命令>]"
 
-#: src/menu_events.cpp:1223
+#: src/menu_events.cpp:1224
 msgid "Set or show alias to a command"
 msgstr "设置或者显示一条命令的别名"
 
-#: src/menu_events.cpp:1225
+#: src/menu_events.cpp:1226
 msgid "<var>=<value>"
 msgstr "<变量>=<值>"
 
-#: src/menu_events.cpp:1225
+#: src/menu_events.cpp:1226
 msgid "Set a scenario variable."
 msgstr "设置一个场景变量。"
 
-#: src/menu_events.cpp:1226
+#: src/menu_events.cpp:1227
 msgid "<var>"
 msgstr "<变量>"
 
-#: src/menu_events.cpp:1226
+#: src/menu_events.cpp:1227
 msgid "Show a scenario variable."
 msgstr "显示一个场景变量。"
 
-#: src/menu_events.cpp:1228
+#: src/menu_events.cpp:1229
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr "修改一个单位变量。（只支持顶层的键值。）"
 
-#: src/menu_events.cpp:1234
+#: src/menu_events.cpp:1235
 msgid "Discover all units in help."
 msgstr "在帮助中显示所有单位。"
 
-#: src/menu_events.cpp:1235
+#: src/menu_events.cpp:1236
 msgid "'Undiscover' all units in help."
 msgstr "从帮助中清除所有已发现的单位。"
 
-#: src/menu_events.cpp:1236
-msgid "Create a unit."
-msgstr "创建一个单位"
-
 #: src/menu_events.cpp:1237
+msgid "Create a unit."
+msgstr "创建一个单位。"
+
+#: src/menu_events.cpp:1238
 msgid "Toggle fog for the current player."
 msgstr "为当前玩家开/关战争迷雾。"
 
-#: src/menu_events.cpp:1238
+#: src/menu_events.cpp:1239
 msgid "Toggle shroud for the current player."
 msgstr "为当前玩家开/关战场黑幕。"
 
-#: src/menu_events.cpp:1239
+#: src/menu_events.cpp:1240
 msgid "Give gold to the current player."
 msgstr "给当前玩家金币。"
 
-#: src/menu_events.cpp:1240
+#: src/menu_events.cpp:1241
 msgid "Fire a game event."
 msgstr "触发游戏事件。"
 
-#: src/menu_events.cpp:1243
+#: src/menu_events.cpp:1244
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "开/关格上x,y坐标显示。"
 
-#: src/menu_events.cpp:1246
+#: src/menu_events.cpp:1247
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "开/关格上地形编码显示。"
 
-#: src/menu_events.cpp:1249
+#: src/menu_events.cpp:1250
 msgid "Toggle overlaying of number of bitmaps on hexes."
 msgstr "开/关格上位图数量显示。"
 
-#: src/menu_events.cpp:1251
+#: src/menu_events.cpp:1252
 msgid "Toggle planning mode."
 msgstr "开关计划模式。"
 
-#: src/menu_events.cpp:1254
+#: src/menu_events.cpp:1255
 msgid "Access whiteboard options dialog."
 msgstr "访问白板选项对话框。"
 
-#: src/menu_events.cpp:1374
+#: src/menu_events.cpp:1375
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "无法找到含有字符串“$search|”的标签或单位。"
 
-#: src/menu_events.cpp:1417
+#: src/menu_events.cpp:1418
 msgid "Can't droid invalid side: '$side'."
 msgstr "无法托管无效阵营：“$side|”。"
 
-#: src/menu_events.cpp:1422
+#: src/menu_events.cpp:1423
 msgid "Can't droid networked side: '$side'."
 msgstr "无法托管联机阵营：“$side|”。"
 
-#: src/menu_events.cpp:1440
+#: src/menu_events.cpp:1441
 msgid "Can't droid a local ai side: '$side'."
 msgstr "无法托管本地AI阵营：“$side|”。"
 
-#: src/menu_events.cpp:1456
+#: src/menu_events.cpp:1457
 msgid "Can't idle invalid side: '$side'."
 msgstr "无法将无效阵营设为空闲状态：“$side|”。"
 
-#: src/menu_events.cpp:1461
+#: src/menu_events.cpp:1462
 msgid "Can't idle networked side: '$side'."
 msgstr "无法将联机阵营设为空闲状态：“$side|”。"
 
-#: src/menu_events.cpp:1466
+#: src/menu_events.cpp:1467
 msgid "Can't idle local ai side: '$side'."
 msgstr "无法将本地AI阵营设为空闲状态：“$side|”。"
 
-#: src/menu_events.cpp:1526
+#: src/menu_events.cpp:1527
 msgid "Can't change control of invalid side: '$side'."
 msgstr "无法改变无效阵营的控制权：“$side|”。"
 
-#: src/menu_events.cpp:1536
+#: src/menu_events.cpp:1537
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "无法改变超出范围的阵营的控制权：“$side|”。"
 
-#: src/menu_events.cpp:1553
+#: src/menu_events.cpp:1554
 msgid "Can't query control of invalid side: '$side'."
 msgstr "无法查询无效阵营的控制状态：“$side|”。"
 
-#: src/menu_events.cpp:1560
+#: src/menu_events.cpp:1561
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr "无法查询超出范围的阵营的控制状态：“$side|”。"
 
-#: src/menu_events.cpp:1678
+#: src/menu_events.cpp:1679
 msgid "Choose Scenario (Debug!)"
 msgstr "选择场景（调试！）"
 
-#: src/menu_events.cpp:1714
+#: src/menu_events.cpp:1715
 msgid "Debug mode activated!"
 msgstr "调试模式激活！"
 
-#: src/menu_events.cpp:1717
+#: src/menu_events.cpp:1718
 msgid "Debug mode not available in network games"
 msgstr "调试模式在联机游戏中不可用"
 
-#: src/menu_events.cpp:1724
+#: src/menu_events.cpp:1725
 msgid "Debug mode deactivated!"
 msgstr "调试模式关闭！"
 
-#: src/menu_events.cpp:1744
+#: src/menu_events.cpp:1745
 msgid "WARNING! Unsafe Lua Mode"
 msgstr "警告！不安全Lua模式"
 
-#: src/menu_events.cpp:1745
+#: src/menu_events.cpp:1746
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -7471,15 +7481,15 @@ msgstr ""
 "\n"
 "除非你确实知道自己在做什么，请不要继续。"
 
-#: src/menu_events.cpp:1750
+#: src/menu_events.cpp:1751
 msgid "Unsafe mode enabled!"
 msgstr "不安全模式已启用！"
 
-#: src/menu_events.cpp:1799
+#: src/menu_events.cpp:1800
 msgid "Variable not found"
 msgstr "未找到变量"
 
-#: src/menu_events.cpp:1847
+#: src/menu_events.cpp:1848
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
@@ -7487,19 +7497,19 @@ msgstr ""
 "无效立场：“$alignment|”，应是lawful（守序），neutral（中立），chaotic（混沌）"
 "或liminal（边缘）之一。"
 
-#: src/menu_events.cpp:1873
+#: src/menu_events.cpp:1874
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "你希望从帮助里清除已发现的所有单位吗？"
 
-#: src/menu_events.cpp:1887
+#: src/menu_events.cpp:1888
 msgid "Invalid unit type"
 msgstr "无效单位类型"
 
-#: src/menu_events.cpp:1894
+#: src/menu_events.cpp:1895
 msgid "Invalid location"
 msgstr "无效位置"
 
-#: src/menu_events.cpp:1967 src/menu_events.cpp:1993
+#: src/menu_events.cpp:1968 src/menu_events.cpp:1994
 msgid "prompt^Command:"
 msgstr "命令："
 
@@ -7509,7 +7519,7 @@ msgid ""
 "recalls left."
 msgstr "在有剩余的征募或者召回计划时，你不能将首领移动到主楼之外。"
 
-#: src/mouse_events.cpp:993
+#: src/mouse_events.cpp:994
 msgid "This unit has no usable weapons."
 msgstr "此单位没有可用的武器。"
 
@@ -7554,7 +7564,7 @@ msgstr "$name|接管了控制权"
 msgid "Turn changed"
 msgstr "回合改变了"
 
-#: src/pathfind/pathfind.cpp:735
+#: src/pathfind/pathfind.cpp:742
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "遇到了移动消耗小于1的地形。"
 
@@ -7566,17 +7576,17 @@ msgstr "本回合剩余时间"
 msgid "current local time"
 msgstr "当前本地时间"
 
-#: src/play_controller.cpp:985
+#: src/play_controller.cpp:984
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr "游戏失去了同步。继续游戏似乎没有多少意义了。你要保存你的游戏吗？"
 
-#: src/play_controller.cpp:986
+#: src/play_controller.cpp:985
 msgid "Error details:"
 msgstr "错误细节："
 
-#: src/play_controller.cpp:1275
+#: src/play_controller.cpp:1274
 msgid "No objectives available"
 msgstr "没有可用的任务目标"
 
@@ -7659,9 +7669,11 @@ msgstr "将阵营设为空闲"
 msgid "Save and abort game"
 msgstr "保存并中止游戏"
 
-#: src/playturn.cpp:295
-msgid "$player has left the game. What do you want to do?"
-msgstr "$player|已经离开游戏。你要如何应对？"
+#: src/playturn.cpp:296
+msgid ""
+"$player who controlled side $side_drop has left the game. What do you want "
+"to do?"
+msgstr "控制阵营$side_drop|的$player|已经离开游戏。你要如何应对？"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -7860,7 +7872,7 @@ msgid "Weapon special: "
 msgstr "武器特攻："
 
 #: src/reports.cpp:893
-msgid "None"
+msgid "weapon^None"
 msgstr "无"
 
 #: src/reports.cpp:922
@@ -8197,40 +8209,42 @@ msgstr "Y"
 msgid "infix_binary^i"
 msgstr "i"
 
-#: src/synced_commands.cpp:403
+#: src/synced_commands.cpp:410
 msgid "(unknown player)"
 msgstr "（未知玩家）"
 
-#: src/synced_commands.cpp:408
+#: src/synced_commands.cpp:415
 msgid "The :$command debug command was used during $player’s turn"
 msgstr "在$player|的回合中，使用了$command|调试命令"
 
-#: src/synced_commands.cpp:416
+#: src/synced_commands.cpp:423
 msgid ""
 "A player used a debug command during the game. If this is unexpected, it is "
 "possible the player in question is cheating."
 msgstr ""
 "一位玩家在游戏中使用了调试指令。如果这不在预期之内，那么这位玩家可能在作弊。"
 
-#: src/synced_commands.cpp:418
+#: src/synced_commands.cpp:425
 msgid "Details:"
 msgstr "细节："
 
-#: src/synced_commands.cpp:421
+#: src/synced_commands.cpp:428
 msgid "Do you wish to save the game before continuing?"
 msgstr "想要在继续之前保存游戏吗？"
 
-#: src/synced_commands.cpp:423
+#: src/synced_commands.cpp:430
 msgid "Debug Command Used"
 msgstr "使用了调试命令"
 
-#: src/synced_commands.cpp:509
+#: src/synced_commands.cpp:516
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr "在$player|的回合中，使用调试模式创建了一个单位"
 
-#: src/synced_user_choice.cpp:326
-msgid "waiting for $desc from side(s) $sides"
-msgstr "等待$sides|阵营的$desc"
+#: src/synced_user_choice.cpp:327
+msgid "waiting for $desc from side $sides"
+msgid_plural "waiting for $desc from sides $sides"
+msgstr[0] "等待$sides|阵营的$desc"
+msgstr[1] "等待$sides|阵营的$desc"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8307,17 +8321,17 @@ msgstr "$number|格挡"
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "<span color=\"$color\">$number_or_percent</span>格挡"
 
-#. TRANSLATORS: Current value for WML code set_movement, documented in https://wiki.wesnoth.org/EffectWML
+#. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:420
 msgid "$number movement point"
 msgid_plural "$number movement points"
 msgstr[0] "$number|移动力"
 msgstr[1] "$number|移动力"
 
-#. TRANSLATORS: Current value for WML code increase_movement, documented in https://wiki.wesnoth.org/EffectWML
+#. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:429
-msgid "<span color=\"$color\">$number_or_percent movement</span> point"
-msgid_plural "<span color=\"$color\">$number_or_percent movement</span> points"
+msgid "<span color=\"$color\">$number_or_percent</span> movement point"
+msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span>移动力"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span>移动力"
 
@@ -8353,44 +8367,44 @@ msgstr "中立"
 msgid "female^liminal"
 msgstr "边缘"
 
-#: src/units/unit.cpp:1785
+#: src/units/unit.cpp:1783
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|：$effect_description"
 
-#: src/units/unit.cpp:1791
+#: src/units/unit.cpp:1789
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span>生命"
 
-#: src/units/unit.cpp:1801
+#: src/units/unit.cpp:1799
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span>行动数"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span>行动数"
 
-#: src/units/unit.cpp:1807
+#: src/units/unit.cpp:1805
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span>视野"
 
-#: src/units/unit.cpp:1811
+#: src/units/unit.cpp:1809
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span>干扰"
 
-#: src/units/unit.cpp:1816
+#: src/units/unit.cpp:1814
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span>升级所需经验"
 
-#: src/units/unit.cpp:1820
+#: src/units/unit.cpp:1818
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span>每回合攻击数"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span>每回合攻击数"
 
-#: src/units/unit.cpp:1827
+#: src/units/unit.cpp:1825
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span>召回费用"
 
-#: src/units/unit.cpp:2232
+#: src/units/unit.cpp:2230
 msgid "$effect_description per level"
 msgstr "每一等级$effect_description"
 
@@ -8414,30 +8428,26 @@ msgstr "崩前$year|年"
 msgid "$year AF"
 msgstr "崩后$year|年"
 
-#: src/whiteboard/manager.cpp:1094
+#: src/wesnothd_connection.cpp:402
+msgid "Disconnected from server."
+msgstr "已与服务器断开链接。"
+
+#: src/whiteboard/manager.cpp:1115
 msgid "SHOW ALL allies’ plans"
 msgstr "显示全部友方计划"
 
-#: src/whiteboard/manager.cpp:1095
+#: src/whiteboard/manager.cpp:1116
 msgid "HIDE ALL allies’ plans"
 msgstr "隐藏全部友方计划"
 
-#: src/whiteboard/manager.cpp:1109
+#: src/whiteboard/manager.cpp:1130
 msgid "Show plans for $player"
 msgstr "显示$player的计划"
 
-#: src/whiteboard/manager.cpp:1111
+#: src/whiteboard/manager.cpp:1132
 msgid "Hide plans for $player"
 msgstr "隐藏$player的计划"
 
-#: src/whiteboard/manager.cpp:1114
+#: src/whiteboard/manager.cpp:1135
 msgid "Whiteboard Options"
 msgstr "白板选项"
-
-#~ msgid "Ping timeout"
-#~ msgstr "Ping超时"
-
-#~ msgid ""
-#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
-#~ "disable"
-#~ msgstr "在收到ping回复之前，等待的秒数，超过则超时。设为0则禁用此功能"

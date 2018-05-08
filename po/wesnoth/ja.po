@@ -2,24 +2,18 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Wesnoth development team
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-# Translators:
-# Automatically generated, 2005
-# MATSUMOTO Yuji <matumoto@marron.cias.osakafu-u.ac.jp>, 2005
-# RatArmy <broadbarredfirefish@gmail.com>, 2015-2018
-# suto3, 2017
-# tamanegi, 2017
-# yma <yma9yma@gmail.com>, 2011
-# 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth-Dev Japanese\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-04-26 03:28+0300\n"
-"PO-Revision-Date: 2018-04-22 23:36+0000\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
-"Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
-"japanese/language/ja/)\n"
+"POT-Creation-Date: 2018-05-06 05:31-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2018\n"
+"Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
+"ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -214,97 +208,113 @@ msgid "Show special unit graphical effects"
 msgstr "ユニットに対する特殊なグラフィカルエフェクトを表示します。"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:188
+#: data/advanced_preferences.cfg:178
+msgid "Show deprecation messages in-game"
+msgstr "非推奨のメッセージを表示する"
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:179
+msgid ""
+"Show warnings about deprecated API in the in-game chat area. These messages "
+"will still be shown in the log, even if this is disabled. In addition, the "
+"deprecation log-domain controls how many messages are printed."
+msgstr ""
+"チャット領域に、非推奨APIの警告を表示します。これらのメッセージは、このオプ"
+"ションの有効・無効を問わずログにも表示されます。それに加えて、deprecation ロ"
+"グ領域によってどれだけ多くのメッセージを表示するか調整できます。"
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:187
 msgid "Joystick support"
 msgstr "ジョイスティックのサポート"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:195
+#: data/advanced_preferences.cfg:194
 msgid "Joystick: number of the scroll X-axis joystick"
 msgstr "ジョイスティック：Ｘ軸ジョイスティックのスクロール量"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:205
+#: data/advanced_preferences.cfg:204
 msgid "Joystick: number of the scroll X-axis"
 msgstr "ジョイスティック：Ｘ軸のスクロール量"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:215
+#: data/advanced_preferences.cfg:214
 msgid "Joystick: number of the scroll Y-axis joystick"
 msgstr "ジョイスティック：Ｙ軸ジョイスティックのスクロール量"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:225
+#: data/advanced_preferences.cfg:224
 msgid "Joystick: number of the scroll Y-axis"
 msgstr "ジョイスティック：Ｙ軸のスクロール量"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:235
+#: data/advanced_preferences.cfg:234
 msgid "Joystick: deadzone of the scrolling stick"
 msgstr "ジョイスティック：スクロールスティックのデッドゾーン"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:245
+#: data/advanced_preferences.cfg:244
 msgid "Joystick: number of the cursor X-axis joystick"
 msgstr "ジョイスティック：Ｘ軸ジョイスティックのカーソル量"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:255
+#: data/advanced_preferences.cfg:254
 msgid "Joystick: number of the cursor X-axis"
 msgstr "ジョイスティック：Ｘ軸のカーソル量"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:265
+#: data/advanced_preferences.cfg:264
 msgid "Joystick: number of the cursor Y-axis joystick"
 msgstr "ジョイスティック：Ｙ軸ジョイスティックのカーソル量"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:275
+#: data/advanced_preferences.cfg:274
 msgid "Joystick: number of the cursor Y-axis"
 msgstr "ジョイスティック：Ｙ軸のカーソル量"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:285
+#: data/advanced_preferences.cfg:284
 msgid "Joystick: deadzone of the cursor stick"
 msgstr "ジョイスティック：カーソルスティックのデッドゾーン"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:295
+#: data/advanced_preferences.cfg:294
 msgid "Joystick: number of the mouse X-axis joystick"
 msgstr "ジョイスティック：Ｘ軸ジョイスティックのマウス量"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:305
+#: data/advanced_preferences.cfg:304
 msgid "Joystick: number of the mouse X-axis"
 msgstr "ジョイスティック：Ｘ軸のマウス量"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:315
+#: data/advanced_preferences.cfg:314
 msgid "Joystick: number of the mouse Y-axis joystick"
 msgstr "ジョイスティック：Ｙ軸ジョイスティックのマウス量"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:325
+#: data/advanced_preferences.cfg:324
 msgid "Joystick: number of the mouse Y-axis"
 msgstr "ジョイスティック：Ｙ軸のマウス量"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:335
+#: data/advanced_preferences.cfg:334
 msgid "Joystick: deadzone of the mouse stick"
 msgstr "ジョイスティック：マウススティックのデッドゾーン"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:345
+#: data/advanced_preferences.cfg:344
 msgid "Joystick: number of the thrust axis joystick"
 msgstr "ジョイスティック：スラスト軸ジョイスティックの量"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:355
+#: data/advanced_preferences.cfg:354
 msgid "Joystick: number of the thrust axis"
 msgstr "ジョイスティック：スラスト軸の量"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:365
+#: data/advanced_preferences.cfg:364
 msgid "Joystick: deadzone of the thruster"
 msgstr "ジョイスティック：スラスターのデッドゾーン"
 
@@ -351,52 +361,57 @@ msgid "Programming"
 msgstr "プログラミング"
 
 #. [about]
-#: data/core/about.cfg:247
+#: data/core/about.cfg:262
 msgid "General Purpose Administration and Coordination"
 msgstr "全般の管理と調整"
 
 #. [about]
-#: data/core/about.cfg:280
+#: data/core/about.cfg:298
 msgid "Internationalization Managers"
 msgstr "国際化責任者"
 
 #. [about]
-#: data/core/about.cfg:305
+#: data/core/about.cfg:323
+msgid "Trailers"
+msgstr "トレーラー"
+
+#. [about]
+#: data/core/about.cfg:335
 msgid "Artwork and Graphics"
 msgstr "アートワークとグラフィック"
 
 #. [about]
-#: data/core/about.cfg:715
+#: data/core/about.cfg:749
 msgid "Music"
 msgstr "ミュージック"
 
 #. [about]
-#: data/core/about.cfg:752
+#: data/core/about.cfg:786
 msgid "Sound Effects"
 msgstr "サウンドエフェクト"
 
 #. [about]
-#: data/core/about.cfg:776
+#: data/core/about.cfg:810
 msgid "Campaign Design"
 msgstr "キャンペーンデザイン"
 
 #. [about]
-#: data/core/about.cfg:859
+#: data/core/about.cfg:896
 msgid "Multiplayer Maps and Balancing"
 msgstr "マルチプレイヤーマップとバランス調整"
 
 #. [about]
-#: data/core/about.cfg:904
+#: data/core/about.cfg:941
 msgid "Packagers"
 msgstr "パッケージ作成"
 
 #. [about]
-#: data/core/about.cfg:1007
+#: data/core/about.cfg:1048
 msgid "Miscellaneous Contributors"
 msgstr "その他の貢献者"
 
 #. [about]
-#: data/core/about.cfg:1661
+#: data/core/about.cfg:1689
 msgid "Bots"
 msgstr "ボット"
 
@@ -511,162 +526,162 @@ msgid "German Translation"
 msgstr "ドイツ語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:817
+#: data/core/about_i18n.cfg:820
 msgid "Greek Translation"
 msgstr "ギリシャ語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:860
+#: data/core/about_i18n.cfg:863
 msgid "Hebrew Translation"
 msgstr "ヘブライ語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:873
+#: data/core/about_i18n.cfg:876
 msgid "Hungarian Translation"
 msgstr "ハンガリー語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:934
+#: data/core/about_i18n.cfg:937
 msgid "Icelandic Translation"
 msgstr "アイスランド語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:944
+#: data/core/about_i18n.cfg:947
 msgid "Indonesian Translation"
 msgstr "インドネシア語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:967
+#: data/core/about_i18n.cfg:970
 msgid "Irish Translation"
 msgstr "アイルランド語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:974
+#: data/core/about_i18n.cfg:977
 msgid "Italian Translation"
 msgstr "イタリア語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1021
+#: data/core/about_i18n.cfg:1024
 msgid "Japanese Translation"
 msgstr "日本語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1108
+#: data/core/about_i18n.cfg:1111
 msgid "Korean Translation"
 msgstr "韓国語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1116
+#: data/core/about_i18n.cfg:1119
 msgid "Latin Translation"
 msgstr "ラテン語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1142
+#: data/core/about_i18n.cfg:1145
 msgid "Latvian Translation"
 msgstr "ラトビア語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1157
+#: data/core/about_i18n.cfg:1160
 msgid "Lithuanian Translation"
 msgstr "リトアニア語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1182
+#: data/core/about_i18n.cfg:1185
 msgid "Macedonian Translation"
 msgstr "マケドニア語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1189
+#: data/core/about_i18n.cfg:1192
 msgid "Marathi Translation"
 msgstr "マラーティー語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1198
+#: data/core/about_i18n.cfg:1201
 msgid "Norwegian Translation"
 msgstr "ノルウェー語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1223
+#: data/core/about_i18n.cfg:1226
 msgid "Old English Translation"
 msgstr "古英語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1241
+#: data/core/about_i18n.cfg:1244
 msgid "Polish Translation"
 msgstr "ポーランド語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1289
+#: data/core/about_i18n.cfg:1292
 msgid "Portuguese Translation"
 msgstr "ポルトガル語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1303
+#: data/core/about_i18n.cfg:1306
 msgid "Portuguese (Brazil) Translation"
 msgstr "ポルトガル語（ブラジル）翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1357
+#: data/core/about_i18n.cfg:1360
 msgid "Romanian Translation"
 msgstr "ルーマニア語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1365
+#: data/core/about_i18n.cfg:1368
 msgid "Russian Translation"
 msgstr "ロシア語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1457
+#: data/core/about_i18n.cfg:1460
 msgid "Scottish Gaelic Translation"
 msgstr "ゲール語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1466
+#: data/core/about_i18n.cfg:1469
 msgid "Serbian Translation"
 msgstr "セルビア語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1485
+#: data/core/about_i18n.cfg:1488
 msgid "Slovak Translation"
 msgstr "スロバキア語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1514
+#: data/core/about_i18n.cfg:1517
 msgid "Slovenian Translation"
 msgstr "スロベニア語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1530
+#: data/core/about_i18n.cfg:1533
 msgid "Spanish Translation"
 msgstr "スペイン語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1612
+#: data/core/about_i18n.cfg:1615
 msgid "Swedish Translation"
 msgstr "スウェーデン語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1653
+#: data/core/about_i18n.cfg:1656
 msgid "Turkish Translation"
 msgstr "トルコ語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1675
+#: data/core/about_i18n.cfg:1678
 msgid "Ukrainian Translation"
 msgstr "ウクライナ語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1688
+#: data/core/about_i18n.cfg:1691
 msgid "Valencian (southern Catalan) Translation"
 msgstr "バレンシア語（カタロニア南部）翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1701
+#: data/core/about_i18n.cfg:1704
 msgid "Vietnamese Translation"
 msgstr "ベトナム語翻訳"
 
 #. [about]
-#: data/core/about_i18n.cfg:1720
+#: data/core/about_i18n.cfg:1723
 msgid "RACV’s Translation"
 msgstr "RACV 翻訳"
 
@@ -3590,40 +3605,8 @@ msgstr "Wesnoth（デフォルト）"
 
 #. [core]: id=default
 #: data/cores.cfg:8
-msgid ""
-"Wesnoth has many different sagas waiting to be played. Fight to regain the "
-"throne of Wesnoth, of which you are the legitimate heir... step into the "
-"boots of a young officer sent to guard a not-so-sleepy frontier outpost... "
-"lead a brutal quest to unite the orcish tribes... vanquish a horde of undead "
-"warriors unleashed by a foul necromancer, who also happens to have taken "
-"your brother hostage... guide a band of elvish survivors in an epic quest to "
-"find a new home... get revenge on the orcs by using the foul art of "
-"necromancy...\n"
-"\n"
-"There are at least two hundred unit types, sixteen races, seven major "
-"factions, and hundreds of years of history.\n"
-"\n"
-msgstr ""
-"Wesnothではいくつもの物語があなたを待っています。Wesnothの王位継承のために戦"
-"い...眠ることすら許されぬ前哨基地の衛兵...オーク族をまとめあげるための慈悲無"
-"き冒険...兄弟を取り返すための、愚かな降霊術士のアンデッド軍との戦い...新たな"
-"住処を求めるエルフ族の旅...降霊術を用いたオークへの愚かな復讐...\n"
-"\n"
-"少なくとも100種類のユニットや、16の種族、７つの党派、何百年にも渡る歴史が存在"
-"します。\n"
-
-#. [core]: id=default
-#: data/cores.cfg:12
-msgid ""
-"(17 Single Player Campaigns with 211 Scenarios,\n"
-"One Multiplayer Campaign with 14 Scenarios,\n"
-"7 Factions battling on 46 Multiplayer Maps/Scenarios,\n"
-"500+ Add-ons.)"
-msgstr ""
-"（211 個のシナリオを含む、17 個のシングルプレイヤーキャンペーン。 14 個のシナ"
-"リオを含む、１つのマルチプレイヤーキャンペーン。 ７ つの党派。マルチプレイ"
-"ヤーマップ・シナリオが合わせて46 個。 さらに、500 個以上のアドオンがありま"
-"す。）"
+msgid "The standard Wesnoth core."
+msgstr "標準の Wesnoth コアです。"
 
 #. [language]
 #: data/english.cfg:6
@@ -4048,7 +4031,7 @@ msgstr "Lato Light"
 #. [fonts]
 #: data/hardwired/fonts.cfg:31
 msgid "Oldania ADF Std"
-msgstr "Oldania ADF Std"
+msgstr "Oldania ADF Std,Droid Sans Japanese,Droid Sans Fallback"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:36
@@ -5610,7 +5593,7 @@ msgstr "ユーザー $nick の情報を要求しています…"
 msgid "(A) — admin command"
 msgstr "(A) — 管理者コマンド"
 
-#: src/chat_command_handler.hpp:73 src/menu_events.cpp:1145
+#: src/chat_command_handler.hpp:73 src/menu_events.cpp:1146
 msgid "(admin only)"
 msgstr "（管理者のみ）"
 
@@ -5919,7 +5902,7 @@ msgstr "デフォルトのコアが見つかりません。"
 msgid "The game will now exit."
 msgstr "ゲームを終了します。"
 
-#: src/game_config_manager.cpp:316
+#: src/game_config_manager.cpp:312
 msgid ""
 "Error loading custom game configuration files. The game will try without "
 "loading add-ons."
@@ -5927,7 +5910,7 @@ msgstr ""
 "カスタムゲーム設定ファイルを読み込む際にエラーが発生しました。アドオンを読み"
 "込まずにゲームを起動します。"
 
-#: src/game_config_manager.cpp:323
+#: src/game_config_manager.cpp:319
 msgid ""
 "Error loading custom game configuration files. The game will fallback to the "
 "default core files."
@@ -5935,25 +5918,25 @@ msgstr ""
 "カスタムゲーム設定ファイルを読み込む際にエラーが発生しました。デフォルトのコ"
 "アファイルにフォールバックしてゲームを起動します。"
 
-#: src/game_config_manager.cpp:332
+#: src/game_config_manager.cpp:328
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr ""
 "デフォルトのコアのゲーム設定ファイルを読み込む際にエラーが発生しました。ゲー"
 "ムを終了します。"
 
-#: src/game_config_manager.cpp:478
+#: src/game_config_manager.cpp:474
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "以下のアドオンには問題があり、読み込みに失敗しました："
 
-#: src/game_config_manager.cpp:482
+#: src/game_config_manager.cpp:478
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
 msgstr[0] "このアドオンの製作者かメンテナに報告して下さい。"
 
-#: src/game_events/pump.cpp:481 src/game_launcher.cpp:890
+#: src/game_events/pump.cpp:481 src/game_launcher.cpp:909
 msgid "Error: "
 msgstr "エラー："
 
@@ -5982,7 +5965,7 @@ msgid "Anonymous player"
 msgstr "匿名プレイヤー"
 
 #: src/game_initialization/connect_engine.cpp:1000
-#: src/game_initialization/connect_engine.cpp:1298
+#: src/game_initialization/connect_engine.cpp:1294
 msgid "Computer Player"
 msgstr "コンピュータープレイヤー"
 
@@ -5990,19 +5973,19 @@ msgstr "コンピュータープレイヤー"
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1294
+#: src/game_initialization/connect_engine.cpp:1290
 msgid "Network Player"
 msgstr "ネットプレイヤー"
 
-#: src/game_initialization/connect_engine.cpp:1297
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "Local Player"
 msgstr "ローカルプレイヤー"
 
-#: src/game_initialization/connect_engine.cpp:1299
+#: src/game_initialization/connect_engine.cpp:1295
 msgid "Empty"
 msgstr "なし"
 
-#: src/game_initialization/connect_engine.cpp:1302
+#: src/game_initialization/connect_engine.cpp:1298
 msgid "Reserved"
 msgstr "予約済み"
 
@@ -6076,10 +6059,6 @@ msgstr "不明なアドオン： $name"
 msgid "Missing addon: $id"
 msgstr "未所持のアドオン： $id"
 
-#: src/game_initialization/lobby_data.cpp:264
-msgid "$era_name (missing)"
-msgstr "$era_name （不明）"
-
 #: src/game_initialization/lobby_data.cpp:273
 msgid "Unknown era"
 msgstr "不明な時代"
@@ -6115,14 +6094,21 @@ msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "空席："
 
+#: src/game_initialization/lobby_data.cpp:429
+msgid "mp_game_available_slots^Full"
+msgstr "満席"
+
 #: src/game_initialization/lobby_data.cpp:440
 #: src/game_initialization/lobby_data.cpp:442 src/savegame.cpp:631
 msgid "Turn"
 msgstr "ターン"
 
 #: src/game_initialization/lobby_data.cpp:455
+msgid "vision^none"
+msgstr "なし"
+
 #: src/game_initialization/lobby_data.cpp:464
-msgid "none"
+msgid "time limit^none"
 msgstr "なし"
 
 #: src/game_initialization/lobby_data.cpp:497
@@ -6223,11 +6209,25 @@ msgid " This server disallows unregistered nicknames."
 msgstr " このサーバーは登録されていないニックネームを受け入れません。"
 
 #: src/game_initialization/multiplayer.cpp:320
+msgid "The nickname ‘$nick’ is banned on this server’s forums."
+msgstr "ニックネーム「$nick」は、フォーラム上でバンされています。"
+
 #: src/game_initialization/multiplayer.cpp:322
+msgid "Your IP address is banned on this server’s forums."
+msgstr "あなたの IP アドレスはフォーラム上でバンされています。"
+
+#: src/game_initialization/multiplayer.cpp:324
+msgid ""
+"The email address for the nickname ‘$nick’ is banned on this server’s forums."
+msgstr ""
+"ニックネーム「$nick」のメールアドレスは、フォーラム上でバンされています。"
+
+#: src/game_initialization/multiplayer.cpp:326
+#: src/game_initialization/multiplayer.cpp:328
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "ニックネーム「 $nick 」はこのサーバーに登録されています。"
 
-#: src/game_initialization/multiplayer.cpp:323
+#: src/game_initialization/multiplayer.cpp:329
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -6235,16 +6235,16 @@ msgstr ""
 "警告：このニックネームを使用している端末が既に存在しています。このままログイ"
 "ンすると、その端末は切断されます！"
 
-#: src/game_initialization/multiplayer.cpp:326
+#: src/game_initialization/multiplayer.cpp:332
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "ログイン処理中のエラー（サーバーに接続のシードがありません）"
 
-#: src/game_initialization/multiplayer.cpp:329
+#: src/game_initialization/multiplayer.cpp:335
 msgid "The password you provided was incorrect."
 msgstr "入力したパスワードが間違っています。"
 
-#: src/game_initialization/multiplayer.cpp:331
+#: src/game_initialization/multiplayer.cpp:337
 msgid "You have made too many login attempts."
 msgstr "許容されているログイン試行回数をオーバーしました。"
 
@@ -6342,12 +6342,12 @@ msgstr "ゲームを読み込めませんでした："
 msgid "Error while playing the game: "
 msgstr "ゲームプレイ中のエラー："
 
-#: src/game_initialization/playcampaign.cpp:300 src/game_launcher.cpp:882
+#: src/game_initialization/playcampaign.cpp:300 src/game_launcher.cpp:901
 msgid "The game map could not be loaded: "
 msgstr "ゲームマップを読み込めませんでした："
 
 #: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:866
-#: src/game_launcher.cpp:981
+#: src/game_launcher.cpp:1000
 msgid "Map generator error: "
 msgstr "マップジェネレーターエラー："
 
@@ -6394,6 +6394,10 @@ msgstr "ゲーム読み込み中のファイル入出力エラー：'"
 msgid "Error while starting server: "
 msgstr "サーバー開始中のエラー："
 
+#: src/game_launcher.cpp:882
+msgid "Connection failed: "
+msgstr "接続失敗："
+
 #: src/generators/default_map_generator_job.cpp:691
 msgid "Random maps with an odd width aren't supported."
 msgstr "奇数幅のランダムマップはサポートされていません。"
@@ -6413,13 +6417,6 @@ msgstr ""
 "のキーが必要です。"
 
 #: src/gui/dialogs/addon/install_dependencies.cpp:38
-#, fuzzy
-#| msgid ""
-#| "The selected add-on has the following dependency, which is not currently "
-#| "installed or available from the server. Do you wish to continue?"
-#| msgid_plural ""
-#| "The selected add-on has the following dependencies, which are not "
-#| "currently installed or available from the server. Do you wish to continue?"
 msgid ""
 "The selected add-on has the following dependency, which is outdated or not "
 "currently installed. Do you wish to install it before continuing?"
@@ -6427,8 +6424,9 @@ msgid_plural ""
 "The selected add-on has the following dependencies, which are outdated or "
 "not currently installed. Do you wish to install them before continuing?"
 msgstr[0] ""
-"選択されたアドオンは下記のアドオンに依存しています。 しかし、それらはインス"
-"トールされていないか、サーバー上に存在しません。 それでも続けますか？"
+"選択したアドオンは以下のアドオンに依存していますが、それらはバージョンが古す"
+"ぎるかインストールされていません。依存するアドオンを先にインストールします"
+"か？"
 
 #: src/gui/dialogs/game_load.hpp:40
 msgid "No Saved Games"
@@ -6725,7 +6723,7 @@ msgstr "降参しますか？"
 msgid "Surrender"
 msgstr "降参"
 
-#: src/hotkey/command_executor.cpp:797
+#: src/hotkey/command_executor.cpp:801
 msgid "Map-Screenshot"
 msgstr "マップのスクリーンショット"
 
@@ -6753,11 +6751,11 @@ msgstr "初ターンに戻る"
 msgid "(press $hotkey to deactivate)"
 msgstr "（$hotkey で無効化）"
 
-#: src/hotkey/hotkey_handler_sp.cpp:144 src/menu_events.cpp:1940
+#: src/hotkey/hotkey_handler_sp.cpp:144 src/menu_events.cpp:1941
 msgid "Planning mode activated!"
 msgstr "計画モード オン！"
 
-#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:1943
+#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:1944
 msgid "Planning mode deactivated!"
 msgstr "計画モード オフ！"
 
@@ -6878,15 +6876,15 @@ msgstr "同盟軍にのみ送る"
 msgid "You have no units available to recruit."
 msgstr "雇用できるユニットがいません。"
 
-#: src/menu_events.cpp:312
+#: src/menu_events.cpp:314
 msgid "You do not have enough gold to recruit that unit"
 msgstr "そのユニットを雇用するにはゴールドが足りません"
 
-#: src/menu_events.cpp:349
+#: src/menu_events.cpp:350
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "戦士達は遠くにいるため、召還することはできません。"
 
-#: src/menu_events.cpp:368
+#: src/menu_events.cpp:369
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -6894,151 +6892,151 @@ msgstr ""
 "召還可能な部隊がありません\n"
 "（以前のシナリオを生き延びた、熟練ユニットがいるはずです）"
 
-#: src/menu_events.cpp:372
+#: src/menu_events.cpp:373
 msgid "You currently can't recall at the highlighted location"
 msgstr "現在ハイライトされている位置では召還できません。"
 
-#: src/menu_events.cpp:399
+#: src/menu_events.cpp:400
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgstr[0] "ユニットを召還するためには、少なくとも $cost ゴールド必要です。"
 
-#: src/menu_events.cpp:539
+#: src/menu_events.cpp:540
 msgid "You cannot end your turn yet!"
 msgstr "まだターンを終了できません！"
 
-#: src/menu_events.cpp:552
+#: src/menu_events.cpp:553
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "まだ何も行動を開始していません。本当にターンを終了しますか？"
 
-#: src/menu_events.cpp:561
+#: src/menu_events.cpp:562
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "まだ移動可能なユニットが残っています。本当にターンを終了しますか？"
 
-#: src/menu_events.cpp:570
+#: src/menu_events.cpp:571
 msgid "Some units have not moved. Do you really want to end your turn?"
 msgstr "移動していないユニットがいます。本当にターンを終了しますか？"
 
-#: src/menu_events.cpp:626
+#: src/menu_events.cpp:627
 msgid "Rename Unit"
 msgstr "ユニット名を変更"
 
-#: src/menu_events.cpp:627
+#: src/menu_events.cpp:628
 msgid "Name:"
 msgstr "名前："
 
-#: src/menu_events.cpp:801
+#: src/menu_events.cpp:802
 msgid "Clear Labels"
 msgstr "ラベルの消去"
 
-#: src/menu_events.cpp:802
+#: src/menu_events.cpp:803
 msgid "Are you sure you want to clear map labels?"
 msgstr "マップラベルを消去しますか？"
 
-#: src/menu_events.cpp:997
+#: src/menu_events.cpp:998
 msgid "Search"
 msgstr "検索"
 
-#: src/menu_events.cpp:1136
+#: src/menu_events.cpp:1137
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr ""
 "（D） - デバッグモードのみ、（N） - ネットワークゲームのみ、（A） - 管理者の"
 "み"
 
-#: src/menu_events.cpp:1143
+#: src/menu_events.cpp:1144
 msgid "(debug command)"
 msgstr "（デバッグコマンド）"
 
-#: src/menu_events.cpp:1144
+#: src/menu_events.cpp:1145
 msgid "(network only)"
 msgstr "（ネットワークのみ）"
 
-#: src/menu_events.cpp:1146
+#: src/menu_events.cpp:1147
 msgid "(not during other events)"
 msgstr "（他のイベント中ではない場合）"
 
-#: src/menu_events.cpp:1175
+#: src/menu_events.cpp:1176
 msgid "Refresh gui."
 msgstr "GUI をリフレッシュします。"
 
-#: src/menu_events.cpp:1176
+#: src/menu_events.cpp:1177
 msgid "Switch a side to/from AI control."
 msgstr "陣営の操作を AI または手動に切り替えます。"
 
-#: src/menu_events.cpp:1177 src/menu_events.cpp:1179
+#: src/menu_events.cpp:1178 src/menu_events.cpp:1180
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<陣営> [on/off]]"
 
-#: src/menu_events.cpp:1178
+#: src/menu_events.cpp:1179
 msgid "Switch a side to/from idle state."
 msgstr "陣営の待機状態を切り替えます。"
 
-#: src/menu_events.cpp:1182
+#: src/menu_events.cpp:1183
 msgid "<side> <nickname>"
 msgstr "<陣営> <ニックネーム>"
 
-#: src/menu_events.cpp:1182
+#: src/menu_events.cpp:1183
 msgid "Assign control of a side to a different player or observer."
 msgstr "陣営の操作権を他のプレイヤーまたは観戦者に割り当てます。"
 
-#: src/menu_events.cpp:1183
+#: src/menu_events.cpp:1184
 msgid "Query the controller status of a side."
 msgstr "陣営のコントローラーの状態を問い合わせます。"
 
-#: src/menu_events.cpp:1184
+#: src/menu_events.cpp:1185
 msgid "<side>"
 msgstr "<陣営>"
 
-#: src/menu_events.cpp:1185
+#: src/menu_events.cpp:1186
 msgid "Clear chat history."
 msgstr "チャット履歴を消去します。"
 
-#: src/menu_events.cpp:1186
+#: src/menu_events.cpp:1187
 msgid "Debug foreground terrain."
 msgstr "メイン地形をデバッグします。"
 
-#: src/menu_events.cpp:1188
+#: src/menu_events.cpp:1189
 msgid "Debug layers from terrain under the mouse."
 msgstr "マウス下の地形レイヤーをデバッグします。"
 
-#: src/menu_events.cpp:1189
+#: src/menu_events.cpp:1190
 msgid "Show fps."
 msgstr "FPSを表示します。"
 
-#: src/menu_events.cpp:1191
+#: src/menu_events.cpp:1192
 msgid "Save game."
 msgstr "ゲームを保存します。"
 
-#: src/menu_events.cpp:1193
+#: src/menu_events.cpp:1194
 msgid "Quit game."
 msgstr "ゲームを終了します。"
 
-#: src/menu_events.cpp:1196
+#: src/menu_events.cpp:1197
 msgid "Save and quit."
 msgstr "ゲームを保存して終了します。"
 
-#: src/menu_events.cpp:1198
+#: src/menu_events.cpp:1199
 msgid "Ignore replay errors."
 msgstr "リプレイのエラーを無視します。"
 
-#: src/menu_events.cpp:1199
+#: src/menu_events.cpp:1200
 msgid "Disable autosaves."
 msgstr "自動保存を無効にします。"
 
-#: src/menu_events.cpp:1201
+#: src/menu_events.cpp:1202
 msgid "<id>"
 msgstr "<id>"
 
-#: src/menu_events.cpp:1201
+#: src/menu_events.cpp:1202
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "次のシナリオ、または「 id 」で識別されるシナリオに進みます。"
 
-#: src/menu_events.cpp:1203
+#: src/menu_events.cpp:1204
 msgid "Choose next scenario"
 msgstr "次のシナリオを選択します。"
 
-#: src/menu_events.cpp:1206
+#: src/menu_events.cpp:1207
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
@@ -7046,11 +7044,11 @@ msgstr ""
 "ターン数（とゲーム内時刻）を変更します。もし値が指定されなければ 1 ターンずつ"
 "進めます。"
 
-#: src/menu_events.cpp:1206
+#: src/menu_events.cpp:1207
 msgid "[turn]"
 msgstr "[ターン数]"
 
-#: src/menu_events.cpp:1209
+#: src/menu_events.cpp:1210
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
@@ -7058,186 +7056,186 @@ msgstr ""
 "ターン制限を変更します。もしターン数が指定されていないか -1 が指定されていれ"
 "ば、ターン制限を無効にします。"
 
-#: src/menu_events.cpp:1209
+#: src/menu_events.cpp:1210
 msgid "[limit]"
 msgstr "[最大ターン数]"
 
-#: src/menu_events.cpp:1211
+#: src/menu_events.cpp:1212
 msgid "Turn debug mode on."
 msgstr "デバッグモードを有効にします。"
 
-#: src/menu_events.cpp:1212
+#: src/menu_events.cpp:1213
 msgid "Turn debug mode off."
 msgstr "デバッグモードをオフにします。"
 
-#: src/menu_events.cpp:1214 src/menu_events.cpp:1218
+#: src/menu_events.cpp:1215 src/menu_events.cpp:1219
 msgid "<command>[;<command>...]"
 msgstr "<コマンド>[;<コマンド>...]"
 
-#: src/menu_events.cpp:1214
+#: src/menu_events.cpp:1215
 msgid "Execute a Lua statement."
 msgstr "Lua の命令文を実行します。"
 
-#: src/menu_events.cpp:1216
+#: src/menu_events.cpp:1217
 msgid "Grant higher privileges to Lua scripts."
 msgstr "実行に特権が必要な Lua スクリプトを許可します。"
 
-#: src/menu_events.cpp:1217
+#: src/menu_events.cpp:1218
 msgid "Set the command used by the custom command hotkey"
 msgstr "カスタムコマンドホットキーから呼び出すコマンドを設定します。"
 
-#: src/menu_events.cpp:1220
+#: src/menu_events.cpp:1221
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr ""
 "マルチプレイヤーゲームにおいて、陣営を変更するためのダイアログを起動します。"
 
-#: src/menu_events.cpp:1221
+#: src/menu_events.cpp:1222
 msgid "Launch the gamestate inspector"
 msgstr "ゲーム状態インスペクタを起動します。"
 
-#: src/menu_events.cpp:1223
+#: src/menu_events.cpp:1224
 msgid "<name>[=<command>]"
 msgstr "<エイリアス名> [コマンド名]"
 
-#: src/menu_events.cpp:1223
+#: src/menu_events.cpp:1224
 msgid "Set or show alias to a command"
 msgstr "コマンドのエイリアスを設定または表示します。"
 
-#: src/menu_events.cpp:1225
+#: src/menu_events.cpp:1226
 msgid "<var>=<value>"
 msgstr "<変数>=<値>"
 
-#: src/menu_events.cpp:1225
+#: src/menu_events.cpp:1226
 msgid "Set a scenario variable."
 msgstr "シナリオ変数を設定します。"
 
-#: src/menu_events.cpp:1226
+#: src/menu_events.cpp:1227
 msgid "<var>"
 msgstr "<変数>"
 
-#: src/menu_events.cpp:1226
+#: src/menu_events.cpp:1227
 msgid "Show a scenario variable."
 msgstr "シナリオ変数を表示します。"
 
-#: src/menu_events.cpp:1228
+#: src/menu_events.cpp:1229
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 "ユニット変数を変更します（サポートされるのはトップレベルキーのみです）。"
 
-#: src/menu_events.cpp:1234
+#: src/menu_events.cpp:1235
 msgid "Discover all units in help."
 msgstr "ヘルプで全てのユニットを発見済みにします。"
 
-#: src/menu_events.cpp:1235
+#: src/menu_events.cpp:1236
 msgid "'Undiscover' all units in help."
 msgstr "ヘルプで全てのユニットを未発見に戻します。"
 
-#: src/menu_events.cpp:1236
+#: src/menu_events.cpp:1237
 msgid "Create a unit."
 msgstr "ユニットを作成します。"
 
-#: src/menu_events.cpp:1237
+#: src/menu_events.cpp:1238
 msgid "Toggle fog for the current player."
 msgstr "現在のプレイヤーの霧を切り換えます。"
 
-#: src/menu_events.cpp:1238
+#: src/menu_events.cpp:1239
 msgid "Toggle shroud for the current player."
 msgstr "現在のプレイヤーの幕を切り換えます。"
 
-#: src/menu_events.cpp:1239
+#: src/menu_events.cpp:1240
 msgid "Give gold to the current player."
 msgstr "現在のプレイヤーにゴールドを与えます。"
 
-#: src/menu_events.cpp:1240
+#: src/menu_events.cpp:1241
 msgid "Fire a game event."
 msgstr "ゲームイベントを起こします。"
 
-#: src/menu_events.cpp:1243
+#: src/menu_events.cpp:1244
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "ヘクス上の x,y 座標表示を切り替えます。"
 
-#: src/menu_events.cpp:1246
+#: src/menu_events.cpp:1247
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "ヘクス上の地形コード表示を切り替えます。"
 
-#: src/menu_events.cpp:1249
+#: src/menu_events.cpp:1250
 msgid "Toggle overlaying of number of bitmaps on hexes."
 msgstr "ヘクス上のビットマップ数の表示を切り替えます。"
 
-#: src/menu_events.cpp:1251
+#: src/menu_events.cpp:1252
 msgid "Toggle planning mode."
 msgstr "計画モードを切り替えます。"
 
-#: src/menu_events.cpp:1254
+#: src/menu_events.cpp:1255
 msgid "Access whiteboard options dialog."
 msgstr "行動予定設定ダイアログを開きます。"
 
-#: src/menu_events.cpp:1374
+#: src/menu_events.cpp:1375
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "文字列「 $search 」を含むラベルやユニットは見つかりませんでした。"
 
-#: src/menu_events.cpp:1417
+#: src/menu_events.cpp:1418
 msgid "Can't droid invalid side: '$side'."
 msgstr "無効な陣営「 $side 」をコンピューターに操作させることはできません。"
 
-#: src/menu_events.cpp:1422
+#: src/menu_events.cpp:1423
 msgid "Can't droid networked side: '$side'."
 msgstr ""
 "ネットワークの陣営「 $side 」をコンピューターに操作させることはできません。"
 
-#: src/menu_events.cpp:1440
+#: src/menu_events.cpp:1441
 msgid "Can't droid a local ai side: '$side'."
 msgstr "ローカルのAI陣営「$side」をコンピュータに操作させることはできません。"
 
-#: src/menu_events.cpp:1456
+#: src/menu_events.cpp:1457
 msgid "Can't idle invalid side: '$side'."
 msgstr "無効な陣営「 $side 」を待機状態にはできません。"
 
-#: src/menu_events.cpp:1461
+#: src/menu_events.cpp:1462
 msgid "Can't idle networked side: '$side'."
 msgstr "ネットワーク上の陣営「$side」は待機状態にできません。"
 
-#: src/menu_events.cpp:1466
+#: src/menu_events.cpp:1467
 msgid "Can't idle local ai side: '$side'."
 msgstr "ローカルのAI陣営「$side」は待機状態にできません。"
 
-#: src/menu_events.cpp:1526
+#: src/menu_events.cpp:1527
 msgid "Can't change control of invalid side: '$side'."
 msgstr "無効な陣営「 $side 」のコントロールを変更することはできません。"
 
-#: src/menu_events.cpp:1536
+#: src/menu_events.cpp:1537
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "規定外の陣営「 $side 」のコントロールを変更することはできません。"
 
-#: src/menu_events.cpp:1553
+#: src/menu_events.cpp:1554
 msgid "Can't query control of invalid side: '$side'."
 msgstr "無効な陣営「 $side 」のコントロールを確認することはできません。"
 
-#: src/menu_events.cpp:1560
+#: src/menu_events.cpp:1561
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr "規定外の陣営「 $side 」のコントロールを確認することはできません。"
 
-#: src/menu_events.cpp:1678
+#: src/menu_events.cpp:1679
 msgid "Choose Scenario (Debug!)"
 msgstr "シナリオ選択（デバッグモード）"
 
-#: src/menu_events.cpp:1714
+#: src/menu_events.cpp:1715
 msgid "Debug mode activated!"
 msgstr "デバッグモード オン！"
 
-#: src/menu_events.cpp:1717
+#: src/menu_events.cpp:1718
 msgid "Debug mode not available in network games"
 msgstr "ネットワークゲームではデバッグモードは利用できません。"
 
-#: src/menu_events.cpp:1724
+#: src/menu_events.cpp:1725
 msgid "Debug mode deactivated!"
 msgstr "デバッグモード オフ！"
 
-#: src/menu_events.cpp:1744
+#: src/menu_events.cpp:1745
 msgid "WARNING! Unsafe Lua Mode"
 msgstr "警告！アンセーフ Lua モード"
 
-#: src/menu_events.cpp:1745
+#: src/menu_events.cpp:1746
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -7250,15 +7248,15 @@ msgstr ""
 "\n"
 "今から行おうとしていることの意味を理解していなければ、続行しないでください。"
 
-#: src/menu_events.cpp:1750
+#: src/menu_events.cpp:1751
 msgid "Unsafe mode enabled!"
 msgstr "アンセーフ・モード オン！"
 
-#: src/menu_events.cpp:1799
+#: src/menu_events.cpp:1800
 msgid "Variable not found"
 msgstr "変数が見つかりません。"
 
-#: src/menu_events.cpp:1847
+#: src/menu_events.cpp:1848
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
@@ -7266,21 +7264,21 @@ msgstr ""
 "無効なアラインメント：「 $alignment 」は秩序、中立、混沌、薄明の内のどれかで"
 "あるべきです。"
 
-#: src/menu_events.cpp:1873
+#: src/menu_events.cpp:1874
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr ""
 "ユニットが発見済みかどうかの情報を削除しますか？ヘルプ中のユニットリストが未"
 "発見に戻り、ユニット情報が非表示になります。"
 
-#: src/menu_events.cpp:1887
+#: src/menu_events.cpp:1888
 msgid "Invalid unit type"
 msgstr "無効なユニットタイプ"
 
-#: src/menu_events.cpp:1894
+#: src/menu_events.cpp:1895
 msgid "Invalid location"
 msgstr "無効な場所"
 
-#: src/menu_events.cpp:1967 src/menu_events.cpp:1993
+#: src/menu_events.cpp:1968 src/menu_events.cpp:1994
 msgid "prompt^Command:"
 msgstr "コマンド："
 
@@ -7290,7 +7288,7 @@ msgid ""
 "recalls left."
 msgstr "雇用、召還の計画が残っており、リーダーを主塔から動かせません。"
 
-#: src/mouse_events.cpp:993
+#: src/mouse_events.cpp:994
 msgid "This unit has no usable weapons."
 msgstr "このユニットは使用できる武器を持っていません。"
 
@@ -7335,7 +7333,7 @@ msgstr "$name は操作権を取得しました"
 msgid "Turn changed"
 msgstr "ターンが進みました"
 
-#: src/pathfind/pathfind.cpp:735
+#: src/pathfind/pathfind.cpp:742
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "移動コストが 1 未満の土地が見つかりました。"
 
@@ -7347,7 +7345,7 @@ msgstr "このターンの残り時間"
 msgid "current local time"
 msgstr "現在のローカル時間"
 
-#: src/play_controller.cpp:985
+#: src/play_controller.cpp:984
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7355,11 +7353,11 @@ msgstr ""
 "このゲームは同期が取れなくなり、続行不能だと思われます。このゲームを保存しま"
 "すか？"
 
-#: src/play_controller.cpp:986
+#: src/play_controller.cpp:985
 msgid "Error details:"
 msgstr "エラーの詳細："
 
-#: src/play_controller.cpp:1275
+#: src/play_controller.cpp:1274
 msgid "No objectives available"
 msgstr "目標がありません"
 
@@ -7447,9 +7445,12 @@ msgstr "陣営を待機状態にする"
 msgid "Save and abort game"
 msgstr "ゲームを保存してから中断する"
 
-#: src/playturn.cpp:295
-msgid "$player has left the game. What do you want to do?"
-msgstr "$player はゲームを去りました。どうしますか？"
+#: src/playturn.cpp:296
+msgid ""
+"$player who controlled side $side_drop has left the game. What do you want "
+"to do?"
+msgstr ""
+"陣営 $side_drop を操作していた $player がゲームから離れました。どうしますか？"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -7652,7 +7653,7 @@ msgid "Weapon special: "
 msgstr "武器の特殊効果："
 
 #: src/reports.cpp:893
-msgid "None"
+msgid "weapon^None"
 msgstr "なし"
 
 #: src/reports.cpp:922
@@ -7996,15 +7997,15 @@ msgstr "Y"
 msgid "infix_binary^i"
 msgstr "i"
 
-#: src/synced_commands.cpp:403
+#: src/synced_commands.cpp:410
 msgid "(unknown player)"
 msgstr "（不明なプレイヤー）"
 
-#: src/synced_commands.cpp:408
+#: src/synced_commands.cpp:415
 msgid "The :$command debug command was used during $player’s turn"
 msgstr "デバッグコマンド： $command が $player のターンに使用されました"
 
-#: src/synced_commands.cpp:416
+#: src/synced_commands.cpp:423
 msgid ""
 "A player used a debug command during the game. If this is unexpected, it is "
 "possible the player in question is cheating."
@@ -8012,25 +8013,26 @@ msgstr ""
 "ゲーム中にデバッグコマンドが使用されました。これが意図的なものではない場合、"
 "デバッグコマンドを使用しているプレイヤーによるチートの可能性があります。"
 
-#: src/synced_commands.cpp:418
+#: src/synced_commands.cpp:425
 msgid "Details:"
 msgstr "詳細："
 
-#: src/synced_commands.cpp:421
+#: src/synced_commands.cpp:428
 msgid "Do you wish to save the game before continuing?"
 msgstr "ゲームを続行する前に、保存しますか？"
 
-#: src/synced_commands.cpp:423
+#: src/synced_commands.cpp:430
 msgid "Debug Command Used"
 msgstr "デバッグコマンドが使用されました"
 
-#: src/synced_commands.cpp:509
+#: src/synced_commands.cpp:516
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr "デバッグモードにより、 $player のターンにユニットが作成されました"
 
-#: src/synced_user_choice.cpp:326
-msgid "waiting for $desc from side(s) $sides"
-msgstr "陣営 $sides からの $desc のために待機しています"
+#: src/synced_user_choice.cpp:327
+msgid "waiting for $desc from side $sides"
+msgid_plural "waiting for $desc from sides $sides"
+msgstr[0] "$desc のため、陣営 $sides を待機中"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8103,16 +8105,16 @@ msgstr "$number 回避"
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "<span color=\"$color\">$number_or_percent</span> 回避"
 
-#. TRANSLATORS: Current value for WML code set_movement, documented in https://wiki.wesnoth.org/EffectWML
+#. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:420
 msgid "$number movement point"
 msgid_plural "$number movement points"
 msgstr[0] "$number 移動力"
 
-#. TRANSLATORS: Current value for WML code increase_movement, documented in https://wiki.wesnoth.org/EffectWML
+#. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:429
-msgid "<span color=\"$color\">$number_or_percent movement</span> point"
-msgid_plural "<span color=\"$color\">$number_or_percent movement</span> points"
+msgid "<span color=\"$color\">$number_or_percent</span> movement point"
+msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> 移動力"
 
 #: src/units/types.cpp:545 src/units/types.hpp:181
@@ -8147,43 +8149,43 @@ msgstr "中立"
 msgid "female^liminal"
 msgstr "薄明"
 
-#: src/units/unit.cpp:1785
+#: src/units/unit.cpp:1783
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|： $effect_description"
 
-#: src/units/unit.cpp:1791
+#: src/units/unit.cpp:1789
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> HP"
 
-#: src/units/unit.cpp:1801
+#: src/units/unit.cpp:1799
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "移動力 <span color=\"$color\">$number_or_percent</span>"
 
-#: src/units/unit.cpp:1807
+#: src/units/unit.cpp:1805
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "視界 <span color=\"$color\">$number_or_percent</span>"
 
-#: src/units/unit.cpp:1811
+#: src/units/unit.cpp:1809
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "ジャミング <span color=\"$color\">$number_or_percent</span>"
 
-#: src/units/unit.cpp:1816
+#: src/units/unit.cpp:1814
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr ""
 "レベルアップに必要な XP <span color=\"$color\">$number_or_percent</span>"
 
-#: src/units/unit.cpp:1820
+#: src/units/unit.cpp:1818
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "攻撃回数 <span color=\"$color\">$number_or_percent</span>"
 
-#: src/units/unit.cpp:1827
+#: src/units/unit.cpp:1825
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "召喚コスト <span color=\"$color\">$number_or_percent</span>"
 
-#: src/units/unit.cpp:2232
+#: src/units/unit.cpp:2230
 msgid "$effect_description per level"
 msgstr "レベルにつき $effect_description"
 
@@ -8207,38 +8209,26 @@ msgstr "$year BF"
 msgid "$year AF"
 msgstr "$year AF"
 
-#: src/whiteboard/manager.cpp:1094
+#: src/wesnothd_connection.cpp:402
+msgid "Disconnected from server."
+msgstr "サーバから切断されました。"
+
+#: src/whiteboard/manager.cpp:1115
 msgid "SHOW ALL allies’ plans"
 msgstr "全ての同盟軍の計画を表示"
 
-#: src/whiteboard/manager.cpp:1095
+#: src/whiteboard/manager.cpp:1116
 msgid "HIDE ALL allies’ plans"
 msgstr "全ての同盟軍の計画を非表示"
 
-#: src/whiteboard/manager.cpp:1109
+#: src/whiteboard/manager.cpp:1130
 msgid "Show plans for $player"
 msgstr "$player の計画を表示"
 
-#: src/whiteboard/manager.cpp:1111
+#: src/whiteboard/manager.cpp:1132
 msgid "Hide plans for $player"
 msgstr "$player の計画を非表示"
 
-#: src/whiteboard/manager.cpp:1114
+#: src/whiteboard/manager.cpp:1135
 msgid "Whiteboard Options"
 msgstr "行動予定オプション"
-
-#, fuzzy
-#~| msgid "Connection timed out"
-#~ msgid "Ping timeout"
-#~ msgstr "接続がタイムアウトしました"
-
-#, fuzzy
-#~| msgid ""
-#~| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#~| "0 to disable"
-#~ msgid ""
-#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
-#~ "disable"
-#~ msgstr ""
-#~ "チャットメッセージを消去するまでの時間（分）です。0で時間経過による消去を"
-#~ "無効化します。"

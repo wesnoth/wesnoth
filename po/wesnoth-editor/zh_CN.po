@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-04-15 01:34-0300\n"
-"PO-Revision-Date: 2018-03-27 20:46+0800\n"
+"POT-Creation-Date: 2018-05-06 05:31-0300\n"
+"PO-Revision-Date: 2018-05-06 20:42+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -121,52 +121,53 @@ msgid "special"
 msgstr "特殊"
 
 #. [editor_times]: id=empty
-#: data/core/editor/time-of-day.cfg:5
-msgid "None"
+#. Describes a scenario in the editor that has not set a time of day schedule
+#: data/core/editor/time-of-day.cfg:6
+msgid "time of day^None"
 msgstr "无"
 
 #. [editor_times]: id=test
-#: data/core/editor/time-of-day.cfg:10
+#: data/core/editor/time-of-day.cfg:11
 msgid "Test"
 msgstr "测试"
 
 #. [editor_times]: id=default
-#: data/core/editor/time-of-day.cfg:21
+#: data/core/editor/time-of-day.cfg:22
 msgid "Default"
 msgstr "默认"
 
 #. [editor_times]: id=summer
-#: data/core/editor/time-of-day.cfg:27
+#: data/core/editor/time-of-day.cfg:28
 msgid "Summer"
 msgstr "夏季"
 
 #. [editor_times]: id=winter
-#: data/core/editor/time-of-day.cfg:33
+#: data/core/editor/time-of-day.cfg:34
 msgid "Winter"
 msgstr "冬季"
 
 #. [editor_times]: id=underground
-#: data/core/editor/time-of-day.cfg:39
+#: data/core/editor/time-of-day.cfg:40
 msgid "Underground"
 msgstr "地下"
 
 #. [editor_times]: id=deep_underground
-#: data/core/editor/time-of-day.cfg:45
+#: data/core/editor/time-of-day.cfg:46
 msgid "Deep Underground"
 msgstr "地下深处"
 
 #. [editor_times]: id=indoors
-#: data/core/editor/time-of-day.cfg:51
+#: data/core/editor/time-of-day.cfg:52
 msgid "Indoors"
 msgstr "室内"
 
 #. [editor_times]: id=24
-#: data/core/editor/time-of-day.cfg:57
+#: data/core/editor/time-of-day.cfg:58
 msgid "24 Hour Schedule"
 msgstr "24小时日程表"
 
 #. [editor_times]: id=after_the_fall
-#: data/core/editor/time-of-day.cfg:63
+#: data/core/editor/time-of-day.cfg:64
 msgid "After the Fall"
 msgstr "崩坏之后"
 
@@ -318,11 +319,11 @@ msgstr "名字："
 msgid "Load Map"
 msgstr "载入地图"
 
-#: src/editor/map/context_manager.cpp:273 src/editor/map/map_context.cpp:831
+#: src/editor/map/context_manager.cpp:273 src/editor/map/map_context.cpp:835
 msgid "New Map"
 msgstr "新建地图"
 
-#: src/editor/map/context_manager.cpp:286 src/editor/map/map_context.cpp:831
+#: src/editor/map/context_manager.cpp:286 src/editor/map/map_context.cpp:835
 msgid "New Scenario"
 msgstr "新建场景"
 
@@ -445,15 +446,15 @@ msgid ""
 "an existing file"
 msgstr "此地图文件看起来像是一个场景，但是map_data的值指向了一个不存在的文件"
 
-#: src/editor/map/map_context.cpp:600
+#: src/editor/map/map_context.cpp:604
 msgid "Could not save the scenario: $msg"
 msgstr "无法保存场景：$msg"
 
-#: src/editor/map/map_context.cpp:632
+#: src/editor/map/map_context.cpp:636
 msgid "Could not save into scenario"
 msgstr "无法保存到场景"
 
-#: src/editor/map/map_context.cpp:642
+#: src/editor/map/map_context.cpp:646
 msgid "Could not save the map: $msg"
 msgstr "无法保存地图：$msg"
 

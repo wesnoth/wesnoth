@@ -17,8 +17,10 @@
 #include "log.hpp"
 #include "filesystem.hpp"
 
+#include <algorithm>
 #include <iomanip>
 #include <iostream>
+#include <iterator>
 #include <fstream>
 #include <locale>
 #include <mutex>
@@ -326,6 +328,30 @@ namespace
 			is_dirty_ = false;
 		}
 
+		std::string debug_description()
+		{
+			std::stringstream res;
+			const bl::localization_backend_manager& g_mgr = bl::localization_backend_manager::global();
+			for(const std::string& name : g_mgr.get_all_backends())
+			{
+				res << "has backend: '" << name << "',";
+			}
+			if(std::has_facet<bl::info>(current_locale_)) {
+				const bl::info& info = std::use_facet<bl::info>(current_locale_);
+				res << " locale: (name='" << info.name()
+			 	     << "' country='" << info.country()
+			 	     << "' language='" << info.language()
+			 	     << "' encoding='" << info.encoding()
+			 	     << "' variant='" << info.variant()
+			 	     << "'),";
+			}
+			if(std::has_facet<bl::collator<char>>(current_locale_)) {
+				res << "has bl::collator<char> facet, ";
+			}
+			res << "generator categories='" << generator_.categories() << "'";
+			return res.str();
+		}
+
 		const std::locale& get_locale()
 		{
 			if(is_dirty_)
@@ -350,6 +376,17 @@ namespace
 		return *mng;
 	}
 
+	// Converts ASCII letters to lowercase. Ignores Unicode letters.
+	std::string ascii_to_lowercase(const std::string& str)
+	{
+		std::string result;
+		result.reserve(str.length());
+		std::transform(str.begin(), str.end(), std::back_inserter(result), [](char c)
+		{
+			return c >= 'A' && c <= 'Z' ? c | 0x20 : c;
+		});
+		return result;
+	}
 }
 
 namespace translation
@@ -423,18 +460,50 @@ void set_language(const std::string& language, const std::vector<std::string>* /
 int compare(const std::string& s1, const std::string& s2)
 {
 	std::lock_guard<std::mutex> lock(get_mutex());
-	return std::use_facet<std::collate<char>>(get_manager().get_locale()).compare(s1.c_str(), s1.c_str() + s1.size(), s2.c_str(), s2.c_str() + s2.size());
+
+	try {
+		return std::use_facet<std::collate<char>>(get_manager().get_locale()).compare(s1.c_str(), s1.c_str() + s1.size(), s2.c_str(), s2.c_str() + s2.size());
+	} catch(const std::bad_cast&) {
+		static bool bad_cast_once = false;
+
+		if(!bad_cast_once) {
+			ERR_G << "locale set-up for compare() is broken, falling back to std::string::compare()\n";
+			bad_cast_once = true;
+		}
+
+		return s1.compare(s2);
+	}
 }
 
 int icompare(const std::string& s1, const std::string& s2)
 {
+	// todo: maybe we should replace this preprocessor check with a std::has_facet<bl::collator<char>> check?
 #ifdef __APPLE__
 	// https://github.com/wesnoth/wesnoth/issues/2094
-	return compare(s1, s2);
+	return compare(ascii_to_lowercase(s1), ascii_to_lowercase(s2));
 #else
 	std::lock_guard<std::mutex> lock(get_mutex());
-	return std::use_facet<bl::collator<char>>(get_manager().get_locale()).compare(
+
+	try {
+		return std::use_facet<bl::collator<char>>(get_manager().get_locale()).compare(
 			bl::collator_base::secondary, s1, s2);
+	} catch(const std::bad_cast&) {
+		static bool bad_cast_once = false;
+
+		if(!bad_cast_once) {
+			ERR_G << "locale set-up for icompare() is broken, falling back to std::string::compare()\n";
+			
+			try { //just to be safe.
+				ERR_G << get_manager().debug_description() << "\n";
+			} catch (const std::exception& e) {
+				ERR_G << e.what() << "\n";
+			}
+			bad_cast_once = true;
+		}
+
+		// Let's convert at least ASCII letters to lowercase to get a somewhat case-insensitive comparison.
+		return ascii_to_lowercase(s1).compare(ascii_to_lowercase(s2));
+	}
 #endif
 }
 

@@ -39,6 +39,7 @@
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
+#define WRN_CF LOG_STREAM(warn, log_config)
 #define DBG_CF LOG_STREAM(debug, log_config)
 
 using namespace unit_filter_impl;
@@ -448,7 +449,11 @@ void unit_filter_compound::fill(vconfig cfg)
 			{
 				std::vector<int> res;
 				for(const std::string& s : utils::split(c.str())) {
-					res.push_back(std::stoi(s));
+					try {
+						res.push_back(std::stoi(s));
+					} catch(std::invalid_argument&) {
+						WRN_CF << "ignored invalid side='" << s << "' in filter\n";
+					}
 				}
 				return res;
 			},

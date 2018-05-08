@@ -2383,6 +2383,15 @@ bool unit::is_visible_to_team(const team& team,const  display_context& dc, bool 
 		return true;
 	}
 
+	// when the whiteboard planned unit map is applied, it uses moved the _real_ unit so
+	// underlying_id_.is_fake() will be false and the check above will not apply.
+	// TODO: improve this check so that is also works for allied planned units but without
+	//       breaking sp campaigns with allies under fog. We probably need an explicit flag
+	//       is_planned_ in unit that is set by the whiteboard.
+	if(team.side() == side()) {
+		return true;
+	}
+
 	if(team.fogged(loc)) {
 		return false;
 	}

@@ -153,6 +153,11 @@ void recruit::remove_temp_modifier(unit_map& unit_map)
 {
 	//Unit map gives back ownership of temp_unit_
 	temp_unit_ = unit_map.extract(recruit_hex_);
+
+	//remove simulated unit refresh on new turn done by mapbuilder.
+	temp_unit_->set_movement(0, true);
+	temp_unit_->set_attacks(0);
+
 	assert(temp_unit_.get());
 }
 

@@ -60,9 +60,9 @@ Datei \fIDateiname\fP.
 Startet die Kampagne mit der ID \fIKampagnen\-ID\fP.  Ein Auswahlmenü wird
 angezeigt falls keine ID angegeben wurde.
 .TP 
-\fB\-\-campaign\-difficulty[\fP\fI=Einstufung\fP\fB]\fP
-Die Einstufung der gewünschten Kampagne (1 bis Max). Falls nicht angegeben,
-wird ein Dialog zur Auswahl der Kampagnen\-Einstufung angezeigt.
+\fB\-\-campaign\-difficulty[\fP\fI=Schwierigkeitsgrad\fP\fB]\fP
+Der \fISchwierigkeitsgrad\fP der gewünschten Kampagne (1 bis Max). Falls nicht
+angegeben, wird ein Dialog zur Auswahl der Kampagnen\-Einstufung angezeigt.
 .TP 
 \fB\-\-campaign\-scenario\fP\fI\ Szenario\-ID\fP
 Die ID des Szenarios der gewünschten Kampagne. Falls diese Option nicht
@@ -72,7 +72,7 @@ angegeben ist wird das erste Szenario gestartet.
 Ersetzt den Core mit dem angegebenen.
 .TP 
 \fB\-\-data\-dir\fP\fI\ Verzeichnis\fP
-Das angegebene Verzeichnis als Daten\-Verzeichnis verwenden
+Das angegebene Verzeichnis als Daten\-Verzeichnis verwenden.
 .TP 
 \fB\-\-data\-path\fP
 Zeigt an, wo sich das Verzeichnis für die Nutzerdaten (Spielstände, Add\-ons,
@@ -85,7 +85,7 @@ Informationen hierzu verfügbar).
 .TP 
 \fB\-e[\fP\fIDatei\fP\fB],\ \-\-editor[\fP\fI=Datei\fP\fB]\fP
 Den im Spiel integrierten Karteneditor direkt starten. Falls \fIDatei\fP
-angegeben wurde, verhält es sich äquivalent zu \fB\-l \-\-load\fP
+angegeben wurde, verhält es sich äquivalent zu \fB\-l \-\-load\fP.
 .TP 
 \fB\-\-fps\fP
 Aktiviert die Anzeige der Bilder pro Sekunde im Spiel.
@@ -114,24 +114,25 @@ der Editor mit einem Dialog zum Laden einer Karte aus eben diesem
 Verzeichnis gestartet.
 .TP 
 \fB\-L,\ \-\-language\fP\fI\ Sprache\fP
-benutzt für diese Sitzung die \fISprache\fP (Symbol). Beispiel: \fB\-\-language
+Benutzt für diese Sitzung die \fISprache\fP (Symbol). Beispiel: \fB\-\-language
 ang_GB@latin\fP
 .TP 
-\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIDomäne1\fP\fB,\fP\fIDomäne2\fP\fB,\fP\fI...\fP
-Setzt die Stufe der Debugausgabe. Verwenden Sie \fBall\fP, um sämtliche Domänen
-zu verwenden. Verfügbare Stufen: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Standardmäßig wird die Stufe \fBerror\fP verwendet.
+\fB\-\-log\-\fP\fIstufe\fP\fB=\fP\fIDomäne1\fP\fB,\fP\fIDomäne2\fP\fB,\fP\fI...\fP
+sets the severity level of the log domains.  \fBall\fP can be used to match any
+log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default the \fBwarning\fP level is used for most domains, but
+\fBdeprecation\fP defaults to none.
 .TP 
 \fB\-\-log\-precise\fP
 Zeigt die timestamps in der Logdatei mit höherer Genauigkeit.
 .TP 
-\fB\-\-log\-strict\fP\fI\ Level\fP
+\fB\-\-log\-strict\fP\fI\ Stufe\fP
 Sorgt dafür dass die Unit Tests scheitern falls irgendeine Log\-Domäne einen
-Meldung auf dem entsprechenden Level erhält. Wird nur zusammen mit \fB\-u\fP
+Meldung auf dee entsprechenden \fIStufe\fP erhält. Wird nur zusammen mit \fB\-u\fP
 benutzt.
 .TP 
 \fB\-\-logdomains[\fP\fI=Filter\fP\fB]\fP
 Gibt die definierten Log\-Domänen aus (nur jene, die \fIFilter\fP enthalten,
-falls angegeben)
+falls angegeben).
 .TP 
 \fB\-\-max\-fps\fP\fI\ FPS\fP
 Setzt die Anzahl der gezeichneten Bilder pro Sekunde, die vom Spiel
@@ -220,7 +221,7 @@ https://wiki.wesnoth.org/ImagePathFunctionWML einsehbar.
 Erzeugt die Spielverzeichnisse und gibt Informationen für Bugreports aus.
 .TP 
 \fB\-\-rng\-seed\fP\fI\ Seed\fP
-Füttert den Zufallszahlengenerator mit der Zahl <arg>. Beispiel:
+Füttert den Zufallszahlengenerator mit der Zahl \fISeed\fP. Beispiel:
 \fB\-\-rng\-seed 0\fP
 .TP 
 \fB\-\-screenshot\fP\fI\ Karte\fP\fB\ \fP\fIAusgabe\fP
@@ -243,7 +244,7 @@ Prüfungsfehler werden als schwerwiegende Fehler angesehen.
 Startet das Spiel in einem kleinen Testszenario. Dies sollte ein Szenario
 sein welches mit einem \fB[test]\fP WML Tag definiert wurde. Standard ist
 \fBtest\fP.  Eine Demonstration des \fB[micro_ai]\fP Features kann mit
-\fBmicro_ai_test\fP gestartet werden. Impliziert \fB\-\-nogui\-\-\fP.
+\fBmicro_ai_test\fP gestartet werden. Impliziert \fB\-\-nogui\fP.
 .TP 
 \fB\-u,\ \-\-unit\fP\fI\ Szenario\-ID\fP
 Startet das angegebene Testszenario als Unit Test. Impliziert \fB\-\-nogui\fP.
@@ -269,7 +270,7 @@ ein absoluter Pfad zum Nutzerdatenverzeichnis außerhalb von $HOME oder
 möglich ein Verzeichnis relativ zum Installationsverzeichnis mit ".\e" oder
 "..\e" anzugeben.
 .TP 
-\fB\-\-username\fP\fI\ username\fP
+\fB\-\-username\fP\fI\ Benutzername\fP
 Benutzt den angegebene \fIBenutzernamen\fP um sich zu einem Server zu
 verbinden, andere Einstellungen werden ignoriert.
 .TP 

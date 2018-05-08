@@ -103,12 +103,12 @@ void sub_player_list::update_player_count_label()
 
 void player_list::init(window& w)
 {
-	active_game.init(w, _("Selected Game"));
-	other_games.init(w, _("Other Games"));
+	active_game.init(w, _("Selected Game"), true);
+	other_rooms.init(w, _("Lobby"), true);
 #ifdef ENABLE_ROOM_MEMBER_TREE
 	active_room.init(w, _("Current Room"));
 #endif
-	other_rooms.init(w, _("Lobby"), true);
+	other_games.init(w, _("Other Games"));
 
 	sort_by_name = find_widget<toggle_button>(&w, "player_list_sort_name", false, true);
 	sort_by_relation = find_widget<toggle_button>(&w, "player_list_sort_relation", false, true);
@@ -146,7 +146,7 @@ mp_lobby::mp_lobby(const config& game_config, mp::lobby_info& info, wesnothd_con
 	, player_list_()
 	, player_list_dirty_(true)
 	, gamelist_dirty_(true)
-	, last_gamelist_update_(0)
+	, last_lobby_update_(0)
 	, gamelist_diff_update_(true)
 	, network_connection_(connection)
 	, lobby_update_timer_(0)
@@ -296,7 +296,7 @@ void mp_lobby::update_gamelist()
 
 	update_selected_game();
 	gamelist_dirty_ = false;
-	last_gamelist_update_ = SDL_GetTicks();
+	last_lobby_update_ = SDL_GetTicks();
 	lobby_info_.sync_games_display_status();
 	lobby_info_.apply_game_filter();
 	update_gamelist_header();
@@ -396,7 +396,7 @@ void mp_lobby::update_gamelist_diff()
 
 	update_selected_game();
 	gamelist_dirty_ = false;
-	last_gamelist_update_ = SDL_GetTicks();
+	last_lobby_update_ = SDL_GetTicks();
 	lobby_info_.sync_games_display_status();
 	lobby_info_.apply_game_filter();
 	update_gamelist_header();
@@ -456,13 +456,14 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	//
 	std::ostringstream ss;
 
-	ss << "<big>" << _("Era:") << "</big>\n" << game.era;
+	ss << "<big>" << colorize(_("Era"), font::TITLE_COLOR) << "</big>\n" << game.era;
 
 	if(!game.have_era) {
-		ss << " (" << _("era^missing") << ")";
+		// NOTE: not using colorize() here deliberately to avoid awkward string concatenation.
+		ss << " " << font::span_color(font::BAD_COLOR) << "(" << _("era^missing") << ")</span>";
 	}
 
-	ss << "\n\n<big>" << _("Modifications:") << "</big>\n";
+	ss << "\n\n<big>" << colorize(_("Modifications"), font::TITLE_COLOR) << "</big>\n";
 
 	std::vector<std::string> mods = utils::split(game.mod_info);
 
@@ -477,7 +478,7 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	// TODO: move to some general are of the code.
 	const auto yes_or_no = [](bool val) { return val ? _("yes") : _("no"); };
 
-	ss << "\n<big>" << _("Settings:") << "</big>\n";
+	ss << "\n<big>" << colorize(_("Settings"), font::TITLE_COLOR) << "</big>\n";
 	ss << _("Experience modifier:")   << " " << game.xp << "\n";
 	ss << _("Gold per village:")      << " " << game.gold << "\n";
 	ss << _("Map size:")              << " " << game.map_size_info << "\n";
@@ -493,8 +494,8 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	if(!game.have_era || !game.have_all_mods || !game.required_addons.empty()) {
 		info_icon.set_label("icons/icon-info-error.png");
 
-		ss << "\n\n<big><span color='#f00'>! </span></big>";
-		ss << _("One or more items need to be installed\nin order to join this game.");
+		ss << "\n\n<span color='#f00' size='x-large'>! </span>";
+		ss << _("One or more add-ons need to be installed\nin order to join this game.");
 	} else {
 		info_icon.set_label("icons/icon-info.png");
 	}
@@ -555,10 +556,6 @@ void mp_lobby::update_gamelist_filter()
 
 void mp_lobby::update_playerlist()
 {
-	if(delay_playerlist_update_) {
-		return;
-	}
-
 	SCOPE_LB;
 	DBG_LB << "Playerlist update: " << lobby_info_.users().size() << "\n";
 	lobby_info_.update_user_statuses(selected_game_id_, chatbox_->active_window_room());
@@ -687,6 +684,7 @@ void mp_lobby::update_playerlist()
 	player_list_.other_games.update_player_count_label();
 
 	player_list_dirty_ = false;
+	last_lobby_update_ = SDL_GetTicks();
 }
 
 void mp_lobby::update_selected_game()
@@ -753,10 +751,6 @@ void mp_lobby::pre_show(window& window)
 	chatbox_->load_log(default_chat_log, true);
 
 	find_widget<button>(&window, "create", false).set_retval(CREATE);
-
-	connect_signal_mouse_left_click(
-		find_widget<button>(&window, "refresh", false),
-		std::bind(&mp_lobby::refresh_lobby, this));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "show_preferences", false),
@@ -866,7 +860,11 @@ void mp_lobby::network_handler()
 		throw;
 	}
 
-	if(gamelist_dirty_ && !delay_gamelist_update_ && (SDL_GetTicks() - last_gamelist_update_ > game_config::lobby_refresh)) {
+	if ((SDL_GetTicks() - last_lobby_update_ < game_config::lobby_refresh)) {
+		return;
+	}
+
+	if(gamelist_dirty_ && !delay_gamelist_update_) {
 		if(gamelist_diff_update_) {
 			update_gamelist_diff();
 		} else {
@@ -875,7 +873,7 @@ void mp_lobby::network_handler()
 		}
 	}
 
-	if(player_list_dirty_) {
+	if(player_list_dirty_ && !delay_playerlist_update_) {
 		update_gamelist_filter();
 		update_playerlist();
 	}

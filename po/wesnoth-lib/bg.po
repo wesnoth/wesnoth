@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-04-26 03:28+0300\n"
+"POT-Creation-Date: 2018-05-06 05:32-0300\n"
 "PO-Revision-Date: 2007-05-02 22:38+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -1714,7 +1714,7 @@ msgid ""
 "positions than wading in shallow water normally would and also grants most "
 "water-dwelling races an exceptionally high defense.\n"
 "\n"
-"Mermen and Naga both receive 70% defense on coastal reefs."
+"Merfolk and Naga both receive 70% defense on coastal reefs."
 msgstr ""
 
 #. [terrain_type]: id=hills
@@ -1741,7 +1741,7 @@ msgid ""
 "make their living in the wetlands are also adept at using this terrain for "
 "cover.\n"
 "\n"
-"Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
+"Most units make do with 30% defense in swamps. Merfolk, naga, and saurians "
 "all generally enjoy 60%."
 msgstr ""
 
@@ -1757,7 +1757,7 @@ msgid ""
 "movement.\n"
 "\n"
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
-"naga and mermen enjoy 60%."
+"naga and merfolk enjoy 60%."
 msgstr ""
 
 #. [terrain_type]: id=castle
@@ -1795,7 +1795,7 @@ msgid ""
 "Most units cannot enter deep water: it is the domain of units which can "
 "either fly, or are exceptionally strong swimmers.\n"
 "\n"
-"Mermen and naga both receive 50% defense in deep water, with full movement."
+"Merfolk and naga both receive 50% defense in deep water, with full movement."
 msgstr ""
 
 #. [terrain_type]: id=flat
@@ -1913,15 +1913,15 @@ msgstr ""
 msgid " (Press '$hotkey' for more information)"
 msgstr ""
 
-#: data/gui/macros/_initial.cfg:348
+#: data/gui/macros/_initial.cfg:338
 msgid "Search"
 msgstr ""
 
 #. [toggle_button]: id=sort_0
-#. [toggle_button]: id=sort_name
-#. [label]: id=name
-#. [label]
 #. [toggle_button]: id=sort_1
+#. [toggle_button]: id=sort_name
+#. [label]
+#. [label]: id=name
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:226
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_server_list.cfg:107
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -2025,7 +2025,7 @@ msgstr ""
 #. [label]
 #. [widget]: id=name
 #: data/gui/window/addon_connect.cfg:40 data/gui/window/mp_connect.cfg:41
-#: data/gui/window/mp_method_selection.cfg:211
+#: data/gui/window/mp_method_selection.cfg:254
 #: data/gui/window/mp_server_list.cfg:49
 #, fuzzy
 msgid "Connect to Server"
@@ -2053,7 +2053,7 @@ msgstr "Премахване"
 #. [button]: id=show_help
 #. [button]: id=help
 #: data/gui/window/addon_connect.cfg:184 data/gui/window/title_screen.cfg:174
-#: src/hotkey/hotkey_command.cpp:258
+#: src/hotkey/hotkey_command.cpp:276
 msgid "Help"
 msgstr "Помощ"
 
@@ -2082,7 +2082,7 @@ msgstr ""
 #: data/gui/window/file_dialog.cfg:450 data/gui/window/folder_create.cfg:133
 #: data/gui/window/game_load.cfg:594 data/gui/window/game_save.cfg:134
 #: data/gui/window/label_settings.cfg:149
-#: data/gui/window/language_selection.cfg:162 data/gui/window/logging.cfg:169
+#: data/gui/window/language_selection.cfg:162 data/gui/window/logging.cfg:177
 #: data/gui/window/message.cfg:149 data/gui/window/mp_change_control.cfg:216
 #: data/gui/window/mp_connect.cfg:173
 #: data/gui/window/mp_create_game/default_resolution.cfg:461
@@ -2090,7 +2090,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:334
 #: data/gui/window/mp_faction_select.cfg:391
 #: data/gui/window/mp_join_game_password_prompt.cfg:149
-#: data/gui/window/mp_login.cfg:257 data/gui/window/mp_method_selection.cfg:298
+#: data/gui/window/mp_login.cfg:257 data/gui/window/mp_method_selection.cfg:341
 #: data/gui/window/mp_server_list.cfg:231 data/gui/window/mp_staging.cfg:433
 #: data/gui/window/network_transmission.cfg:114
 #: data/gui/window/select_orb_colors.cfg:124
@@ -2099,7 +2099,7 @@ msgstr ""
 #: data/gui/window/surrender_quit.cfg:114 data/gui/window/theme_list.cfg:155
 #: data/gui/window/unit_attack.cfg:233 data/gui/window/unit_create.cfg:280
 #: data/gui/window/unit_recall.cfg:431 data/gui/window/unit_recruit.cfg:231
-#: src/hotkey/hotkey_command.cpp:55
+#: src/hotkey/hotkey_command.cpp:73
 msgid "Cancel"
 msgstr "Отказ"
 
@@ -2116,7 +2116,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:160
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:590
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:591
 msgid "No description available."
 msgstr ""
 
@@ -2165,8 +2165,9 @@ msgstr ""
 msgid "Dependencies:"
 msgstr ""
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:523
+#: data/gui/window/addon_manager.cfg:523 src/gui/dialogs/addon/manager.cpp:885
 msgid "addon_dependencies^None"
 msgstr ""
 
@@ -2175,8 +2176,9 @@ msgstr ""
 msgid "Translations:"
 msgstr ""
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:557
+#: data/gui/window/addon_manager.cfg:557 src/gui/dialogs/addon/manager.cpp:899
 msgid "translations^None"
 msgstr ""
 
@@ -2345,11 +2347,11 @@ msgstr ""
 #: data/gui/window/file_dialog.cfg:437 data/gui/window/folder_create.cfg:119
 #: data/gui/window/game_load.cfg:581 data/gui/window/game_save.cfg:120
 #: data/gui/window/label_settings.cfg:137
-#: data/gui/window/language_selection.cfg:148 data/gui/window/logging.cfg:159
+#: data/gui/window/language_selection.cfg:148 data/gui/window/logging.cfg:167
 #: data/gui/window/mp_change_control.cfg:203
 #: data/gui/window/mp_faction_select.cfg:379
 #: data/gui/window/mp_join_game_password_prompt.cfg:136
-#: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:284
+#: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:327
 #: data/gui/window/select_orb_colors.cfg:113
 #: data/gui/window/simple_item_selector.cfg:145
 #: data/gui/window/sp_options_configure.cfg:105
@@ -2468,8 +2470,8 @@ msgid ""
 "reloading a game"
 msgstr ""
 
-#. [label]: id=title
 #. [slider]: id=enemey_gold_factor
+#. [label]: id=title
 #: data/gui/window/campaign_difficulty.cfg:63
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:251
 msgid "Difficulty"
@@ -2497,8 +2499,8 @@ msgstr ""
 msgid "Last"
 msgstr ""
 
-#. [button]: id=previous_tip
 #. [button]: id=previous_page
+#. [button]: id=previous_tip
 #: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:190
 #, fuzzy
 msgid "Previous"
@@ -2510,8 +2512,8 @@ msgstr "Предишна единица"
 msgid "Previous page"
 msgstr "Предишна единица"
 
-#. [button]: id=next_tip
 #. [button]: id=next_page
+#. [button]: id=next_tip
 #: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:205
 #, fuzzy
 msgid "Next"
@@ -2757,7 +2759,7 @@ msgstr "Описание на единицата"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:471
+#: src/gui/dialogs/multiplayer/lobby.cpp:477
 msgid "Experience modifier:"
 msgstr ""
 
@@ -2819,15 +2821,15 @@ msgstr ""
 msgid "Hide in status table"
 msgstr "Състояние"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:249 data/gui/window/mp_staging.cfg:330
-#: src/gui/dialogs/multiplayer/lobby.cpp:472
 msgid "Gold:"
 msgstr ""
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
+#: src/gui/dialogs/multiplayer/lobby.cpp:478
 #, fuzzy
 msgid "Gold per village:"
 msgstr "Селище"
@@ -2888,7 +2890,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:224
+#: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:242
 #, fuzzy
 msgid "Generate Map"
 msgstr "Генериране на нова карта"
@@ -2900,8 +2902,8 @@ msgstr "Генериране на нова карта"
 msgid "Choose a map generator:"
 msgstr "Генератор на карти"
 
-#. [button]: id=settings
 #. [button]: id=random_map_settings
+#. [button]: id=settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
 #, fuzzy
@@ -2921,19 +2923,19 @@ msgstr "Генериране на нова карта"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/window/editor_new_map.cfg:36 src/hotkey/hotkey_command.cpp:152
+#: data/gui/window/editor_new_map.cfg:36 src/hotkey/hotkey_command.cpp:170
 msgid "New Map"
 msgstr "Нова карта"
 
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
 msgstr "Ширина:"
 
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
@@ -2947,7 +2949,7 @@ msgstr "Запис"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:222
+#: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:240
 msgid "Resize Map"
 msgstr "Размер на картата"
 
@@ -3157,8 +3159,8 @@ msgstr "Изтриване"
 msgid "Do you really want to delete this game?"
 msgstr "Наистина ли искате да излезете от играта?"
 
-#. [toggle_button]: id=dont_ask_again
 #. [toggle_button]: id=do_not_show_again
+#. [toggle_button]: id=dont_ask_again
 #: data/gui/window/game_delete.cfg:80
 #: data/gui/window/mp_host_game_prompt.cfg:79
 #, fuzzy
@@ -3190,10 +3192,10 @@ msgid "Date"
 msgstr "Поставяне"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=load_game
 #. [label]: id=lblTitle
+#. [button]: id=load_game
 #: data/gui/window/game_load.cfg:286 data/gui/window/mp_create_game.cfg:898
-#: src/hotkey/hotkey_command.cpp:83
+#: src/hotkey/hotkey_command.cpp:101
 msgid "Load Game"
 msgstr "Зареждане"
 
@@ -3231,10 +3233,15 @@ msgstr "Отказ"
 msgid "Cancel any pending unit movements in the saved game"
 msgstr ""
 
+#. [button]: id=browse_saves_folder
+#: data/gui/window/game_load.cfg:566
+msgid "Open saves folder"
+msgstr ""
+
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/window/game_save.cfg:42 data/gui/window/game_save_message.cfg:42
-#: data/gui/window/game_save_oos.cfg:42 src/hotkey/hotkey_command.cpp:80
+#: data/gui/window/game_save_oos.cfg:42 src/hotkey/hotkey_command.cpp:98
 msgid "Save Game"
 msgstr "Запис"
 
@@ -3261,7 +3268,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_0
 #: data/gui/window/game_stats.cfg:35 data/gui/window/game_stats.cfg:283
-#: src/hotkey/hotkey_command.cpp:65
+#: src/hotkey/hotkey_command.cpp:83
 #, fuzzy
 #| msgid "Leader"
 msgid "Leader"
@@ -3593,81 +3600,61 @@ msgid "Games"
 msgstr "Име: "
 
 #. [image]: id=needs_password
-#: data/gui/window/lobby_main.cfg:145
+#: data/gui/window/lobby_main.cfg:146
 msgid "Requires a password to join"
 msgstr ""
 
-#. [button]: id=join
-#. [button]: id=join_global
-#: data/gui/window/lobby_main.cfg:158 data/gui/window/lobby_main.cfg:521
-#: data/gui/window/lobby_main.cfg:688
-msgid "Join"
-msgstr ""
-
-#. [button]: id=observe
-#. [button]: id=observe_global
-#: data/gui/window/lobby_main.cfg:187 data/gui/window/lobby_main.cfg:531
-#: data/gui/window/lobby_main.cfg:700
-msgid "Observe"
-msgstr ""
-
 #. [label]
-#: data/gui/window/lobby_main.cfg:223
+#: data/gui/window/lobby_main.cfg:199
 #, fuzzy
 msgid "Sort players:"
 msgstr "Играчи:"
 
 #. [toggle_button]: id=player_list_sort_relation
-#: data/gui/window/lobby_main.cfg:236
+#: data/gui/window/lobby_main.cfg:212
 msgid "Friends first, ignored people last"
 msgstr ""
 
 #. [toggle_button]: id=player_list_sort_name
-#: data/gui/window/lobby_main.cfg:249
+#: data/gui/window/lobby_main.cfg:225
 msgid "Alphabetically"
 msgstr ""
 
-#. [widget]: id=tab_label
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/window/lobby_main.cfg:420
+#. [widget]: id=tab_label
+#: data/gui/window/lobby_main.cfg:396
 #: data/gui/window/preferences/05_multiplayer.cfg:415
 #, fuzzy
 msgid "Friends"
 msgstr "Списък с приятели"
 
 #. [toggle_button]: id=filter_without_ignored
-#: data/gui/window/lobby_main.cfg:432
+#: data/gui/window/lobby_main.cfg:408
 msgid "No ignored"
 msgstr ""
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/window/lobby_main.cfg:444
+#: data/gui/window/lobby_main.cfg:420
 msgid "Vacant slots"
 msgstr ""
 
 #. [toggle_button]: id=filter_invert
-#: data/gui/window/lobby_main.cfg:455
+#: data/gui/window/lobby_main.cfg:431
 #, fuzzy
 msgid "Invert filter"
 msgstr "Запълване на селекцията"
 
 #. [button]: id=quit
-#: data/gui/window/lobby_main.cfg:475 data/gui/window/lobby_main.cfg:638
+#: data/gui/window/lobby_main.cfg:448 data/gui/window/lobby_main.cfg:593
 #, fuzzy
 #| msgid "Zoom Out"
 msgid "Log Out"
 msgstr "Отдалечаване на изгледа"
 
-#. [button]: id=refresh
-#: data/gui/window/lobby_main.cfg:485 data/gui/window/lobby_main.cfg:626
-#, fuzzy
-msgid "Refresh"
-msgstr "Графика"
-
+#. [button]: id=create
 #. [label]
 #. [button]: id=ok
-#. [button]: id=create
-#: data/gui/window/lobby_main.cfg:498 data/gui/window/lobby_main.cfg:676
+#: data/gui/window/lobby_main.cfg:465 data/gui/window/lobby_main.cfg:631
 #: data/gui/window/mp_create_game/default_resolution.cfg:45
 #: data/gui/window/mp_create_game/default_resolution.cfg:446
 #: data/gui/window/mp_create_game/small_resolution.cfg:44
@@ -3679,44 +3666,54 @@ msgid "Create Game"
 msgstr "Запис"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=show_preferences
 #. [label]: id=title
 #. [grid]
-#. [button]: id=show_preferences
-#: data/gui/window/lobby_main.cfg:508 data/gui/window/lobby_main.cfg:664
+#: data/gui/window/lobby_main.cfg:475 data/gui/window/lobby_main.cfg:619
 #: data/gui/window/preferences.cfg:212 data/gui/window/title_screen.cfg:259
-#: src/hotkey/hotkey_command.cpp:99
+#: src/hotkey/hotkey_command.cpp:117
 msgid "Preferences"
 msgstr "Настройки"
 
+#. [button]: id=join_global
+#: data/gui/window/lobby_main.cfg:488 data/gui/window/lobby_main.cfg:643
+msgid "Join"
+msgstr ""
+
+#. [button]: id=observe_global
+#: data/gui/window/lobby_main.cfg:498 data/gui/window/lobby_main.cfg:655
+msgid "Observe"
+msgstr ""
+
 #. [option]
-#: data/gui/window/lobby_main.cfg:550 data/gui/window/lobby_main.cfg:715
+#: data/gui/window/lobby_main.cfg:517 data/gui/window/lobby_main.cfg:670
 #, fuzzy
 msgid "Normal Replays"
 msgstr "Запис"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:554 data/gui/window/lobby_main.cfg:719
+#: data/gui/window/lobby_main.cfg:521 data/gui/window/lobby_main.cfg:674
 #, fuzzy
 msgid "Quick Replays"
 msgstr "играч"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:555 data/gui/window/lobby_main.cfg:720
+#: data/gui/window/lobby_main.cfg:522 data/gui/window/lobby_main.cfg:675
 msgid "Skip quickly to the active turn when observing"
 msgstr ""
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:559 data/gui/window/lobby_main.cfg:724
+#: data/gui/window/lobby_main.cfg:526 data/gui/window/lobby_main.cfg:679
 msgid "Enter Blindfolded"
 msgstr ""
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:560 data/gui/window/lobby_main.cfg:725
+#: data/gui/window/lobby_main.cfg:527 data/gui/window/lobby_main.cfg:680
 msgid "Do not show the map until given control of a side"
 msgstr ""
 
 #. [label]
-#: data/gui/window/lobby_main.cfg:614 data/gui/window/lobby_main.cfg:834
+#: data/gui/window/lobby_main.cfg:581 data/gui/window/lobby_main.cfg:787
 #, fuzzy
 msgid "Multiplayer Lobby"
 msgstr "Настройки на мрежовата игра"
@@ -3788,10 +3785,35 @@ msgid "Kick + Ban"
 msgstr ""
 
 #. [label]
-#: data/gui/window/logging.cfg:86
+#: data/gui/window/logging.cfg:93
 #, fuzzy
 msgid "Logging Options"
 msgstr "Действие"
+
+#. [row]
+#: data/gui/window/logging.cfg:136
+msgid "Debug level logging: maximum information"
+msgstr ""
+
+#. [row]
+#: data/gui/window/logging.cfg:137
+msgid "Info level logging: more information"
+msgstr ""
+
+#. [row]
+#: data/gui/window/logging.cfg:138
+msgid "Warning level logging: less information"
+msgstr ""
+
+#. [row]
+#: data/gui/window/logging.cfg:139
+msgid "Error level logging: minimum information"
+msgstr ""
+
+#. [row]
+#: data/gui/window/logging.cfg:140
+msgid "Disable logging"
+msgstr ""
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:117
@@ -3823,8 +3845,8 @@ msgstr ""
 msgid "Event"
 msgstr ""
 
-#. [label]
 #. [widget]: id=label
+#. [label]
 #: data/gui/window/mp_alerts_options.cfg:154
 #: data/gui/window/preferences.cfg:346
 msgid "Sound"
@@ -3943,9 +3965,9 @@ msgstr ""
 msgid "When a new turn has begun"
 msgstr ""
 
+#. [button]: id=orb_defaults
 #. [button]: id=revert_to_defaults
 #. [button]: id=btn_reset_hotkeys
-#. [button]: id=orb_defaults
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:263
 #: data/gui/window/select_orb_colors.cfg:102
@@ -3999,7 +4021,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=mods_header
 #: data/gui/window/mp_create_game.cfg:203
-#: src/gui/dialogs/multiplayer/lobby.cpp:455
+#: src/gui/dialogs/multiplayer/lobby.cpp:461
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Modifications:"
@@ -4147,7 +4169,7 @@ msgstr ""
 #. [widget]: id=tab_label
 #: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:291
 #: data/gui/window/preferences/05_multiplayer.cfg:402
-#: src/gui/dialogs/preferences_dialog.cpp:139
+#: src/hotkey/hotkey_command.cpp:38
 #, fuzzy
 msgid "General"
 msgstr "Генериране на нова карта"
@@ -4218,14 +4240,14 @@ msgid "Name of game:"
 msgstr ""
 
 #. [label]
-#: data/gui/window/mp_create_game.cfg:989
+#: data/gui/window/mp_create_game.cfg:990
 #: data/gui/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/window/mp_login.cfg:143
 msgid "Password:"
 msgstr ""
 
 #. [text_box]: id=game_password
-#: data/gui/window/mp_create_game.cfg:1003
+#: data/gui/window/mp_create_game.cfg:1004
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
 msgstr ""
@@ -4235,7 +4257,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:177
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:473
+#: src/gui/dialogs/multiplayer/lobby.cpp:479
 #, fuzzy
 #| msgid "Max hill size:"
 msgid "Map size:"
@@ -4262,16 +4284,16 @@ msgstr "Генериране на нова карта"
 msgid "Random"
 msgstr ""
 
-#. [row]
 #. [toggle_button]: id=male_toggle
+#. [row]
 #: data/gui/window/mp_faction_select.cfg:169
 #: data/gui/window/unit_create.cfg:217
 #, fuzzy
 msgid "Male"
 msgstr "Замък"
 
-#. [row]
 #. [toggle_button]: id=female_toggle
+#. [row]
 #: data/gui/window/mp_faction_select.cfg:171
 #: data/gui/window/unit_create.cfg:229
 msgid "Female"
@@ -4297,10 +4319,10 @@ msgstr "Избор на резолюция"
 msgid "Starting position:"
 msgstr "Изход от редактора"
 
-#. [label]
 #. [widget]: id=name
+#. [label]
 #: data/gui/window/mp_host_game_prompt.cfg:40
-#: data/gui/window/mp_method_selection.cfg:230
+#: data/gui/window/mp_method_selection.cfg:273
 msgid "Host Networked Game"
 msgstr ""
 
@@ -4363,7 +4385,7 @@ msgid "Login"
 msgstr ""
 
 #. [label]
-#: data/gui/window/mp_login.cfg:91 data/gui/window/mp_method_selection.cfg:74
+#: data/gui/window/mp_login.cfg:91 data/gui/window/mp_method_selection.cfg:76
 msgid "Login:"
 msgstr ""
 
@@ -4374,54 +4396,55 @@ msgid "Save password locally (encrypted)"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]
 #. [widget]: id=label
+#. [label]
 #. [grid]
-#: data/gui/window/mp_method_selection.cfg:44
+#: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:253
 #: src/gui/dialogs/game_load.cpp:337
 #, fuzzy
 msgid "Multiplayer"
 msgstr "Настройки на мрежовата игра"
 
-#. [text_box]: id=user_name
-#: data/gui/window/mp_method_selection.cfg:92
+#. [label]
+#: data/gui/window/mp_method_selection.cfg:121
 msgid ""
-"You may login to the official multiplayer server with your forum username "
-"and password.\n"
-"Note that registration is not required to join the server: you need to "
-"supply a password only if you wish to use a registered username.\n"
-"\n"
-"The Battle for Wesnoth forum can be found at https://forums.wesnoth.org/"
+"A registered account on the Wesnoth forums is required to join the official "
+"server."
+msgstr ""
+
+#. [button]: id=register
+#: data/gui/window/mp_method_selection.cfg:136
+msgid "Sign Up"
 msgstr ""
 
 #. [column]
-#: data/gui/window/mp_method_selection.cfg:183
+#: data/gui/window/mp_method_selection.cfg:226
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr ""
 
 #. [widget]: id=name
-#: data/gui/window/mp_method_selection.cfg:192
+#: data/gui/window/mp_method_selection.cfg:235
 msgid "Join Official Server"
 msgstr ""
 
 #. [column]
-#: data/gui/window/mp_method_selection.cfg:202
+#: data/gui/window/mp_method_selection.cfg:245
 msgid "Join a different server"
 msgstr ""
 
 #. [column]
-#: data/gui/window/mp_method_selection.cfg:221
+#: data/gui/window/mp_method_selection.cfg:264
 msgid "Host a game using a dedicated server"
 msgstr ""
 
 #. [column]
-#: data/gui/window/mp_method_selection.cfg:240
+#: data/gui/window/mp_method_selection.cfg:283
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 
 #. [widget]: id=name
-#: data/gui/window/mp_method_selection.cfg:249
+#: data/gui/window/mp_method_selection.cfg:292
 #, fuzzy
 msgid "Local Game"
 msgstr "Зареждане"
@@ -4433,7 +4456,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/mp_server_list.cfg:217 src/preferences/display.cpp:172
+#: data/gui/window/mp_server_list.cfg:217 src/preferences/display.cpp:170
 #, fuzzy
 msgid "Select"
 msgstr "Избор на всичко"
@@ -4675,7 +4698,7 @@ msgstr ""
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:129
-msgid "Available at titlescreen"
+msgid "Available at main menu"
 msgstr ""
 
 #. [button]: id=btn_add_hotkey
@@ -4815,13 +4838,25 @@ msgstr ""
 msgid "Set the scaling factor of fonts"
 msgstr ""
 
+#. [toggle_button]: id=fps_limiter
+#: data/gui/window/preferences/03_display.cfg:273
+msgid "FPS limiter"
+msgstr ""
+
+#. [toggle_button]: id=fps_limiter
+#: data/gui/window/preferences/03_display.cfg:274
+msgid ""
+"Disabling this increases CPU usage to 100 % but may slightly improve "
+"performance at high resolutions"
+msgstr ""
+
 #. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:275
+#: data/gui/window/preferences/03_display.cfg:289
 msgid "Theme"
 msgstr "Тема"
 
 #. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:276
+#: data/gui/window/preferences/03_display.cfg:290
 #, fuzzy
 #| msgid "Change the sample rate"
 msgid "Change the in-game theme"
@@ -5126,7 +5161,7 @@ msgstr "Край на хода"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/window/statistics_dialog.cfg:432 src/hotkey/hotkey_command.cpp:102
+#: data/gui/window/statistics_dialog.cfg:432 src/hotkey/hotkey_command.cpp:120
 msgid "Statistics"
 msgstr "Статистика"
 
@@ -5148,7 +5183,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
-#: data/gui/window/surrender_quit.cfg:40 src/hotkey/hotkey_command.cpp:105
+#: data/gui/window/surrender_quit.cfg:40 src/hotkey/hotkey_command.cpp:123
 #, fuzzy
 msgid "Surrender Game"
 msgstr "Запис"
@@ -5384,7 +5419,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/unit_create.cfg:47 src/hotkey/hotkey_command.cpp:96
+#: data/gui/window/unit_create.cfg:47 src/hotkey/hotkey_command.cpp:114
 msgid "Create Unit (Debug!)"
 msgstr "Създаване на единица(Debug!)"
 
@@ -5410,21 +5445,21 @@ msgstr "Състояние"
 msgid "HP"
 msgstr ""
 
-#. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_2
+#. [toggle_button]: id=sort_4
 #: data/gui/window/unit_list.cfg:149 data/gui/window/unit_recall.cfg:61
 msgid "Lvl"
 msgstr ""
 
-#. [toggle_button]: id=sort_5
 #. [toggle_button]: id=sort_3
+#. [toggle_button]: id=sort_5
 #: data/gui/window/unit_list.cfg:163 data/gui/window/unit_recall.cfg:75
 msgid "XP"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [toggle_button]: id=sort_6
 #. [toggle_button]: id=sort_4
+#. [toggle_button]: id=sort_6
 #: data/gui/window/unit_list.cfg:177 data/gui/window/unit_recall.cfg:89
 #: src/gui/widgets/unit_preview_pane.cpp:345
 #: src/gui/widgets/unit_preview_pane.cpp:488
@@ -5433,7 +5468,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/unit_list.cfg:368 src/hotkey/hotkey_command.cpp:101
+#: data/gui/window/unit_list.cfg:368 src/hotkey/hotkey_command.cpp:119
 msgid "Unit List"
 msgstr "Списък с единици"
 
@@ -5451,7 +5486,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/unit_recall.cfg:419 src/hotkey/hotkey_command.cpp:86
+#: data/gui/window/unit_recall.cfg:419 src/hotkey/hotkey_command.cpp:104
 msgid "Recall"
 msgstr "Привикване"
 
@@ -5464,22 +5499,22 @@ msgstr "Набор"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/unit_recruit.cfg:219 src/hotkey/hotkey_command.cpp:84
+#: data/gui/window/unit_recruit.cfg:219 src/hotkey/hotkey_command.cpp:102
 msgid "Recruit"
 msgstr "Набор"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:210
-#: src/gui/dialogs/preferences_dialog.cpp:267
+#: src/gui/dialogs/preferences_dialog.cpp:262
 #: src/gui/dialogs/transient_message.cpp:78
 msgid "Error"
 msgstr "Грешка"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:229
-#: src/gui/dialogs/multiplayer/lobby.cpp:245 src/gui/dialogs/wml_error.cpp:197
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:226
+#: src/gui/dialogs/multiplayer/lobby.cpp:242 src/gui/dialogs/wml_error.cpp:197
 msgid "Details:"
 msgstr ""
 
@@ -5634,10 +5669,10 @@ msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
 #: src/gui/core/window_builder.cpp:314 src/gui/widgets/addon_list.cpp:429
-#: src/gui/widgets/chatbox.cpp:789 src/gui/widgets/listbox.cpp:819
+#: src/gui/widgets/chatbox.cpp:799 src/gui/widgets/listbox.cpp:819
 #: src/gui/widgets/multi_page.cpp:196 src/gui/widgets/panel.cpp:194
 #: src/gui/widgets/scroll_label.cpp:220 src/gui/widgets/scrollbar_panel.cpp:98
-#: src/gui/widgets/size_lock.cpp:119 src/gui/widgets/stacked_widget.cpp:241
+#: src/gui/widgets/size_lock.cpp:125 src/gui/widgets/stacked_widget.cpp:241
 #: src/gui/widgets/toggle_panel.cpp:402 src/gui/widgets/tree_view.cpp:311
 #: src/gui/widgets/unit_preview_pane.cpp:574
 msgid "No grid defined."
@@ -5830,7 +5865,7 @@ msgstr ""
 #: src/gui/dialogs/game_version.cpp:186
 #: src/gui/dialogs/gamestate_inspector.cpp:428
 #: src/gui/dialogs/lua_interpreter.cpp:490
-#: src/gui/dialogs/screenshot_notification.cpp:101
+#: src/gui/dialogs/screenshot_notification.cpp:102
 #: src/gui/dialogs/wml_error.cpp:229
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
@@ -5900,14 +5935,6 @@ msgstr ""
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Наистина ли искате да излезете от играта?"
 
-#: src/gui/dialogs/addon/manager.cpp:885 src/gui/dialogs/addon/manager.cpp:899
-#: src/gui/dialogs/campaign_selection.cpp:274
-#: src/gui/dialogs/multiplayer/lobby.cpp:460
-#, fuzzy
-#| msgid "None"
-msgid "None"
-msgstr "Няма"
-
 #: src/gui/dialogs/advanced_graphics_options.cpp:75
 msgid "No matching widget found for scaling option"
 msgstr ""
@@ -5925,6 +5952,13 @@ msgstr ""
 #: src/gui/dialogs/attack_predictions.cpp:190
 msgid "Attacker vulnerability vs"
 msgstr ""
+
+#: src/gui/dialogs/campaign_selection.cpp:274
+#: src/gui/dialogs/multiplayer/lobby.cpp:466
+#, fuzzy
+#| msgid "Choose Resolution"
+msgid "active_modifications^None"
+msgstr "Избор на резолюция"
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:66
 msgid "$requester requires the following modifications to be enabled:"
@@ -6026,7 +6060,7 @@ msgstr ""
 #: src/gui/dialogs/game_cache_options.cpp:139
 #: src/gui/dialogs/network_transmission.cpp:53
 #: src/gui/dialogs/network_transmission.cpp:54
-#: src/gui/dialogs/screenshot_notification.cpp:142
+#: src/gui/dialogs/screenshot_notification.cpp:148
 msgid "unit_byte^B"
 msgstr ""
 
@@ -6102,12 +6136,12 @@ msgid "Unknown"
 msgstr ""
 
 #: src/gui/dialogs/game_stats.cpp:200 src/gui/dialogs/game_stats.cpp:203
-#: src/gui/dialogs/multiplayer/lobby.cpp:468
+#: src/gui/dialogs/multiplayer/lobby.cpp:474
 msgid "no"
 msgstr "не"
 
 #: src/gui/dialogs/game_stats.cpp:200 src/gui/dialogs/game_stats.cpp:203
-#: src/gui/dialogs/multiplayer/lobby.cpp:468
+#: src/gui/dialogs/multiplayer/lobby.cpp:474
 msgid "yes"
 msgstr "да"
 
@@ -6226,107 +6260,115 @@ msgstr "Изтриване"
 msgid "Downloading lobby data"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:105
+#: src/gui/dialogs/multiplayer/lobby.cpp:106
 #, fuzzy
 msgid "Selected Game"
 msgstr "Изтриване"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:106
+#: src/gui/dialogs/multiplayer/lobby.cpp:107
+msgid "Lobby"
+msgstr ""
+
+#: src/gui/dialogs/multiplayer/lobby.cpp:109
+msgid "Current Room"
+msgstr ""
+
+#: src/gui/dialogs/multiplayer/lobby.cpp:111
 #, fuzzy
 msgid "Other Games"
 msgstr "Създаване на нова карта"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:108
-msgid "Current Room"
-msgstr ""
-
-#: src/gui/dialogs/multiplayer/lobby.cpp:110
-msgid "Lobby"
-msgstr ""
-
-#: src/gui/dialogs/multiplayer/lobby.cpp:126
+#: src/gui/dialogs/multiplayer/lobby.cpp:127
 #, fuzzy
 #| msgid "Do you really want to quit?"
 msgid "Do you really want to log out?"
 msgstr "Наистина ли искате да излезете от играта?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:225
+#: src/gui/dialogs/multiplayer/lobby.cpp:222
 msgid "Incompatible User-made Content."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:226
+#: src/gui/dialogs/multiplayer/lobby.cpp:223
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
 "add-ons be updated."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:241
+#: src/gui/dialogs/multiplayer/lobby.cpp:238
 msgid "Missing User-made Content."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:242
+#: src/gui/dialogs/multiplayer/lobby.cpp:239
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
 "Do you want to try to install them?"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:408
+#: src/gui/dialogs/multiplayer/lobby.cpp:405
 msgid "Games: showing $num_shown out of $num_total"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:453
+#: src/gui/dialogs/multiplayer/lobby.cpp:426
+msgid "$game_name (Era: $era_name)"
+msgstr ""
+
+#: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Era:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:470
+#: src/gui/dialogs/multiplayer/lobby.cpp:458
+msgid "era^missing"
+msgstr ""
+
+#: src/gui/dialogs/multiplayer/lobby.cpp:476
 #, fuzzy
 msgid "Settings:"
 msgstr "Настройка на горещите клавиши"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:474
+#: src/gui/dialogs/multiplayer/lobby.cpp:480
 msgid "Registered users only:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:475
+#: src/gui/dialogs/multiplayer/lobby.cpp:481
 #, fuzzy
 msgid "Reloaded:"
 msgstr "Създаване на нова карта"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:476
+#: src/gui/dialogs/multiplayer/lobby.cpp:482
 msgid "Shared vision:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:477
+#: src/gui/dialogs/multiplayer/lobby.cpp:483
 msgid "Shuffle sides:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:478
+#: src/gui/dialogs/multiplayer/lobby.cpp:484
 #, fuzzy
 msgid "Time limit:"
 msgstr "Тема"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:479
+#: src/gui/dialogs/multiplayer/lobby.cpp:485
 #, fuzzy
 msgid "Use map settings:"
 msgstr "Настройка на горещите клавиши"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:487
+#: src/gui/dialogs/multiplayer/lobby.cpp:493
 msgid ""
 "One or more items need to be installed\n"
 "in order to join this game."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:512
+#: src/gui/dialogs/multiplayer/lobby.cpp:518
 msgid "Observers allowed"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:515
+#: src/gui/dialogs/multiplayer/lobby.cpp:521
 msgid "Observers not allowed"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:959
+#: src/gui/dialogs/multiplayer/lobby.cpp:955
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at http://bugs.wesnoth.org."
@@ -6342,75 +6384,79 @@ msgstr ""
 msgid "Side $side"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:108
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:109
 #, fuzzy
 msgid "Scenarios"
 msgstr "Цел на мисията"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:109
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:110
 #, fuzzy
 #| msgid "Multiplayer Options"
 msgid "Multiplayer Campaigns"
 msgstr "Настройки на мрежовата игра"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:110
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:111
 msgid "Singleplayer Campaigns"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:111
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:112
 #, fuzzy
 msgid "Custom Maps"
 msgstr "Действие"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:112
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:113
 #, fuzzy
 msgid "Custom Scenarios"
 msgstr "Цел на мисията"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:113
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:114
 #, fuzzy
 #| msgid "Generate Random Map"
 msgid "Random Maps"
 msgstr "Генериране на произволна карта"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:187
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:188
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:189
 msgid "No games found."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:253
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:254
 msgid "No eras found."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:254
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:255
 msgid "No eras found"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:280
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:281
 msgid "Independent: Random factions assigned independently"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:281
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:282
 msgid "No Mirror: No two players will get the same faction"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:282
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:283
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:536
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:537
 msgid "No eras available for this game."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:830
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:735
+msgid "$min to $max"
+msgstr ""
+
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:832
 msgid "The selected game has no sides!"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:896
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:898
 msgid "Choose Starting Scenario"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:896
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:898
 msgid "Select at which point to begin this campaign."
 msgstr ""
 
@@ -6453,118 +6499,66 @@ msgstr ""
 msgid "The End"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:140
-#, fuzzy
-#| msgid "Save Game"
-msgid "Saved Games"
-msgstr "Запис"
-
-#: src/gui/dialogs/preferences_dialog.cpp:141
-#, fuzzy
-msgid "Map Commands"
-msgstr "Въведете потребителска команда"
-
-#: src/gui/dialogs/preferences_dialog.cpp:142
-#, fuzzy
-msgid "Unit Commands"
-msgstr "Въведете потребителска команда"
-
-#: src/gui/dialogs/preferences_dialog.cpp:143
-#, fuzzy
-msgid "Player Chat"
-msgstr "Играчи:"
-
-#: src/gui/dialogs/preferences_dialog.cpp:144
-#, fuzzy
-#| msgid "Change Hotkey"
-msgid "Replay Control"
-msgstr "Смяна на горещия клавиш"
-
-#: src/gui/dialogs/preferences_dialog.cpp:145
-msgid "Planning Mode"
-msgstr ""
-
-#: src/gui/dialogs/preferences_dialog.cpp:146
-#, fuzzy
-msgid "Scenario Editor"
-msgstr "Цел на мисията"
-
-#: src/gui/dialogs/preferences_dialog.cpp:147
-msgid "Editor Palettes"
-msgstr ""
-
-#: src/gui/dialogs/preferences_dialog.cpp:148
-#, fuzzy
-msgid "Editor Tools"
-msgstr "Следващ ход"
-
-#: src/gui/dialogs/preferences_dialog.cpp:149
-msgid "Editor Clipboard"
-msgstr ""
-
-#: src/gui/dialogs/preferences_dialog.cpp:150
-#, fuzzy
-msgid "Debug Commands"
-msgstr "Въведете потребителска команда"
-
-#: src/gui/dialogs/preferences_dialog.cpp:151
-#, fuzzy
-msgid "Custom WML Commands"
-msgstr "Въведете потребителска команда"
-
-#: src/gui/dialogs/preferences_dialog.cpp:190
+#: src/gui/dialogs/preferences_dialog.cpp:185
 #, fuzzy
 msgid "friend"
 msgstr "Списък с приятели"
 
-#: src/gui/dialogs/preferences_dialog.cpp:195
+#: src/gui/dialogs/preferences_dialog.cpp:190
 msgid "ignored"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:249
-#: src/gui/dialogs/preferences_dialog.cpp:309
+#: src/gui/dialogs/preferences_dialog.cpp:244
+#: src/gui/dialogs/preferences_dialog.cpp:304
 msgid "No username specified"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:267
+#: src/gui/dialogs/preferences_dialog.cpp:262
 #, fuzzy
 msgid "Invalid username"
 msgstr "Добавяне на потребител"
 
-#: src/gui/dialogs/preferences_dialog.cpp:314
+#: src/gui/dialogs/preferences_dialog.cpp:309
 #, fuzzy
 #| msgid "View and edit your friends and ignores list"
 msgid "Not on friends or ignore lists"
 msgstr "Преглед и редакция на списъка с приятелите и черният списък"
 
-#: src/gui/dialogs/preferences_dialog.cpp:814
+#: src/gui/dialogs/preferences_dialog.cpp:813
 msgid "&#9679;"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:874
+#: src/gui/dialogs/preferences_dialog.cpp:873
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:880
+#: src/gui/dialogs/preferences_dialog.cpp:879
 #, fuzzy
 #| msgid "Save Hotkeys"
 msgid "Reassign Hotkey"
 msgstr "Запис"
 
-#: src/gui/dialogs/preferences_dialog.cpp:897
+#: src/gui/dialogs/preferences_dialog.cpp:896
 msgid "All hotkeys have been reset to their default values."
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:897
+#: src/gui/dialogs/preferences_dialog.cpp:896
 #, fuzzy
 #| msgid "Hotkeys"
 msgid "Hotkeys Reset"
 msgstr "Горещи клавиши"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1005
+#: src/gui/dialogs/preferences_dialog.cpp:1007
 msgid "∞"
+msgstr ""
+
+#: src/gui/dialogs/screenshot_notification.cpp:130
+msgid ""
+"Unsupported image format.\n"
+"\n"
+"Try to save the screenshot as PNG instead."
 msgstr ""
 
 #: src/gui/dialogs/statistics_dialog.cpp:185
@@ -6663,25 +6657,25 @@ msgstr ""
 msgid "Delete add-on from server"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:285
+#: src/gui/widgets/chatbox.cpp:287
 msgid "whisper to $receiver"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:385
+#: src/gui/widgets/chatbox.cpp:387
 msgid "Room <i>“$name”</i> joined"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:391
+#: src/gui/widgets/chatbox.cpp:393
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>\n"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:624
+#: src/gui/widgets/chatbox.cpp:626
 msgid "$player has entered the room"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:666
+#: src/gui/widgets/chatbox.cpp:668
 msgid "$player has left the room"
 msgstr ""
 
@@ -6742,17 +6736,17 @@ msgstr ""
 msgid "Need at least 1 parallel item."
 msgstr ""
 
-#: src/gui/widgets/size_lock.cpp:154
-#, fuzzy
-msgid "No widget defined."
-msgstr "Създаването на картата се провали."
-
-#: src/gui/widgets/size_lock.cpp:175
+#: src/gui/widgets/size_lock.cpp:86
 #, fuzzy
 msgid "Invalid size."
 msgstr "Добавяне на потребител"
 
-#: src/gui/widgets/slider.cpp:453
+#: src/gui/widgets/size_lock.cpp:162
+#, fuzzy
+msgid "No widget defined."
+msgstr "Създаването на картата се провали."
+
+#: src/gui/widgets/slider.cpp:466
 msgid "The number of value_labels and values don't match."
 msgstr ""
 
@@ -6843,894 +6837,954 @@ msgstr ""
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
 
+#: src/hotkey/hotkey_command.cpp:39
+#, fuzzy
+#| msgid "Save Game"
+msgid "Saved Games"
+msgstr "Запис"
+
+#: src/hotkey/hotkey_command.cpp:40
+#, fuzzy
+msgid "Map Commands"
+msgstr "Въведете потребителска команда"
+
+#: src/hotkey/hotkey_command.cpp:41
+#, fuzzy
+msgid "Unit Commands"
+msgstr "Въведете потребителска команда"
+
+#: src/hotkey/hotkey_command.cpp:42
+#, fuzzy
+msgid "Player Chat"
+msgstr "Играчи:"
+
+#: src/hotkey/hotkey_command.cpp:43
+#, fuzzy
+#| msgid "Change Hotkey"
+msgid "Replay Control"
+msgstr "Смяна на горещия клавиш"
+
+#: src/hotkey/hotkey_command.cpp:44
+msgid "Planning Mode"
+msgstr ""
+
+#: src/hotkey/hotkey_command.cpp:45
+#, fuzzy
+msgid "Scenario Editor"
+msgstr "Цел на мисията"
+
+#: src/hotkey/hotkey_command.cpp:46
+msgid "Editor Palettes"
+msgstr ""
+
+#: src/hotkey/hotkey_command.cpp:47
+#, fuzzy
+msgid "Editor Tools"
+msgstr "Следващ ход"
+
+#: src/hotkey/hotkey_command.cpp:48
+msgid "Editor Clipboard"
+msgstr ""
+
+#: src/hotkey/hotkey_command.cpp:49
+#, fuzzy
+msgid "Debug Commands"
+msgstr "Въведете потребителска команда"
+
 #: src/hotkey/hotkey_command.cpp:50
+#, fuzzy
+msgid "Custom WML Commands"
+msgstr "Въведете потребителска команда"
+
+#: src/hotkey/hotkey_command.cpp:68
 #, fuzzy
 #| msgid "Scroll speed:"
 msgid "Scroll Up"
 msgstr "Скорост на местене на изгледа:"
 
-#: src/hotkey/hotkey_command.cpp:51
+#: src/hotkey/hotkey_command.cpp:69
 msgid "Scroll Down"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:52
+#: src/hotkey/hotkey_command.cpp:70
 #, fuzzy
 #| msgid "Scroll speed:"
 msgid "Scroll Left"
 msgstr "Скорост на местене на изгледа:"
 
-#: src/hotkey/hotkey_command.cpp:53
+#: src/hotkey/hotkey_command.cpp:71
 msgid "Scroll Right"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:55
+#: src/hotkey/hotkey_command.cpp:73
 #, fuzzy
 #| msgid "Cancel"
 msgid "cancel"
 msgstr "Отказ"
 
-#: src/hotkey/hotkey_command.cpp:56
+#: src/hotkey/hotkey_command.cpp:74
 #, fuzzy
 msgid "Select Hex"
 msgstr "Избор на всичко"
 
-#: src/hotkey/hotkey_command.cpp:57
+#: src/hotkey/hotkey_command.cpp:75
 #, fuzzy
 msgid "Deselect Hex"
 msgstr "Избор на всичко"
 
-#: src/hotkey/hotkey_command.cpp:58
+#: src/hotkey/hotkey_command.cpp:76
 msgid "Move/Attack"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:59
+#: src/hotkey/hotkey_command.cpp:77
 msgid "Select/Move/Attack"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:60
+#: src/hotkey/hotkey_command.cpp:78
 #, fuzzy
 msgid "Animate Map"
 msgstr "Генериране на нова карта"
 
-#: src/hotkey/hotkey_command.cpp:61
+#: src/hotkey/hotkey_command.cpp:79
 msgid "Next Unit"
 msgstr "Следваща единица"
 
-#: src/hotkey/hotkey_command.cpp:62
+#: src/hotkey/hotkey_command.cpp:80
 msgid "Previous Unit"
 msgstr "Предишна единица"
 
-#: src/hotkey/hotkey_command.cpp:63
+#: src/hotkey/hotkey_command.cpp:81
 msgid "Hold Position"
 msgstr "Задържане на позицията"
 
-#: src/hotkey/hotkey_command.cpp:64
+#: src/hotkey/hotkey_command.cpp:82
 msgid "End Unit Turn"
 msgstr "Край на хода на единицата"
 
-#: src/hotkey/hotkey_command.cpp:66
+#: src/hotkey/hotkey_command.cpp:84
 msgid "Undo"
 msgstr "Отмяна"
 
-#: src/hotkey/hotkey_command.cpp:67
+#: src/hotkey/hotkey_command.cpp:85
 msgid "Redo"
 msgstr "Възстановяване"
 
-#: src/hotkey/hotkey_command.cpp:68
+#: src/hotkey/hotkey_command.cpp:86
 msgid "Zoom In"
 msgstr "Приближаване на изгледа"
 
-#: src/hotkey/hotkey_command.cpp:69
+#: src/hotkey/hotkey_command.cpp:87
 msgid "Zoom Out"
 msgstr "Отдалечаване на изгледа"
 
-#: src/hotkey/hotkey_command.cpp:70
+#: src/hotkey/hotkey_command.cpp:88
 msgid "Default Zoom"
 msgstr "Стандартен изглед"
 
-#: src/hotkey/hotkey_command.cpp:71
+#: src/hotkey/hotkey_command.cpp:89
 #, fuzzy
 #| msgid "Toggle Full screen"
 msgid "Toggle Full Screen"
 msgstr "Цял екран"
 
-#: src/hotkey/hotkey_command.cpp:72
+#: src/hotkey/hotkey_command.cpp:90
 msgid "Screenshot"
 msgstr "Снимка на екрана"
 
-#: src/hotkey/hotkey_command.cpp:73
+#: src/hotkey/hotkey_command.cpp:91
 #, fuzzy
 msgid "Map Screenshot"
 msgstr "Снимка на екрана"
 
-#: src/hotkey/hotkey_command.cpp:74
+#: src/hotkey/hotkey_command.cpp:92
 msgid "Accelerated"
 msgstr "Ускорено"
 
-#: src/hotkey/hotkey_command.cpp:75
+#: src/hotkey/hotkey_command.cpp:93
 #, fuzzy
 #| msgid "Unit Description"
 msgid "Terrain Description"
 msgstr "Описание на единицата"
 
-#: src/hotkey/hotkey_command.cpp:76
+#: src/hotkey/hotkey_command.cpp:94
 msgid "Unit Description"
 msgstr "Описание на единицата"
 
-#: src/hotkey/hotkey_command.cpp:77
+#: src/hotkey/hotkey_command.cpp:95
 msgid "Rename Unit"
 msgstr "Преименуване на единица"
 
-#: src/hotkey/hotkey_command.cpp:78
+#: src/hotkey/hotkey_command.cpp:96
 #, fuzzy
 #| msgid "Delete File"
 msgid "Delete Unit"
 msgstr "Изтриване"
 
-#: src/hotkey/hotkey_command.cpp:81
+#: src/hotkey/hotkey_command.cpp:99
 #, fuzzy
 msgid "Save Replay"
 msgstr "Запис"
 
-#: src/hotkey/hotkey_command.cpp:82 src/hotkey/hotkey_command.cpp:155
+#: src/hotkey/hotkey_command.cpp:100 src/hotkey/hotkey_command.cpp:173
 msgid "Save Map"
 msgstr "Запис на карта"
 
-#: src/hotkey/hotkey_command.cpp:85
+#: src/hotkey/hotkey_command.cpp:103
 msgid "Repeat Recruit"
 msgstr "Повтаряне на набора"
 
-#: src/hotkey/hotkey_command.cpp:87
+#: src/hotkey/hotkey_command.cpp:105
 #, fuzzy
 #| msgid "Show floating labels"
 msgid "Show/Hide Labels"
 msgstr "Показване на летящи надписи"
 
-#: src/hotkey/hotkey_command.cpp:88
+#: src/hotkey/hotkey_command.cpp:106
 msgid "End Turn"
 msgstr "Край на хода"
 
-#: src/hotkey/hotkey_command.cpp:90
+#: src/hotkey/hotkey_command.cpp:108
 #, fuzzy
 msgid "Toggle Ellipses"
 msgstr "Мрежа"
 
-#: src/hotkey/hotkey_command.cpp:91
+#: src/hotkey/hotkey_command.cpp:109
 msgid "Toggle Grid"
 msgstr "Мрежа"
 
-#: src/hotkey/hotkey_command.cpp:92
+#: src/hotkey/hotkey_command.cpp:110
 #, fuzzy
 #| msgid "Mouse scrolling"
 msgid "Mouse Scrolling"
 msgstr "Местене на изгледа с мишката"
 
-#: src/hotkey/hotkey_command.cpp:93
+#: src/hotkey/hotkey_command.cpp:111
 #, fuzzy
 msgid "Status Table"
 msgstr "Състояние"
 
-#: src/hotkey/hotkey_command.cpp:94
+#: src/hotkey/hotkey_command.cpp:112
 msgid "Mute"
 msgstr "Без звук"
 
-#: src/hotkey/hotkey_command.cpp:95
+#: src/hotkey/hotkey_command.cpp:113
 msgid "Speak"
 msgstr "Говор"
 
-#: src/hotkey/hotkey_command.cpp:97
+#: src/hotkey/hotkey_command.cpp:115
 #, fuzzy
 msgid "Change Side (Debug!)"
 msgstr "Смяна страната на единица(Debug!)"
 
-#: src/hotkey/hotkey_command.cpp:98
+#: src/hotkey/hotkey_command.cpp:116
 #, fuzzy
 #| msgid "Create Unit (Debug!)"
 msgid "Kill Unit (Debug!)"
 msgstr "Създаване на единица(Debug!)"
 
-#: src/hotkey/hotkey_command.cpp:100
+#: src/hotkey/hotkey_command.cpp:118
 msgid "Scenario Objectives"
 msgstr "Цел на мисията"
 
-#: src/hotkey/hotkey_command.cpp:103
+#: src/hotkey/hotkey_command.cpp:121
 #, fuzzy
 #| msgid "Continue Move"
 msgid "Pause Network Game"
 msgstr "Продължаване на хода"
 
-#: src/hotkey/hotkey_command.cpp:104
+#: src/hotkey/hotkey_command.cpp:122
 #, fuzzy
 #| msgid "Continue Move"
 msgid "Continue Network Game"
 msgstr "Продължаване на хода"
 
-#: src/hotkey/hotkey_command.cpp:106
-msgid "Quit to Titlescreen"
-msgstr ""
+#: src/hotkey/hotkey_command.cpp:124
+#, fuzzy
+msgid "Quit to Main Menu"
+msgstr "Изход от играта"
 
-#: src/hotkey/hotkey_command.cpp:107
+#: src/hotkey/hotkey_command.cpp:125
 msgid "Set Team Label"
 msgstr "Надпис на отбор"
 
-#: src/hotkey/hotkey_command.cpp:108
+#: src/hotkey/hotkey_command.cpp:126
 msgid "Set Label"
 msgstr "Слагане на надпис"
 
-#: src/hotkey/hotkey_command.cpp:109
+#: src/hotkey/hotkey_command.cpp:127
 msgid "Clear Labels"
 msgstr "Изчистване на надписите"
 
-#: src/hotkey/hotkey_command.cpp:110
+#: src/hotkey/hotkey_command.cpp:128
 msgid "Show Enemy Moves"
 msgstr "Ходове на противника"
 
-#: src/hotkey/hotkey_command.cpp:111
+#: src/hotkey/hotkey_command.cpp:129
 msgid "Best Possible Enemy Moves"
 msgstr "Най-добри възможни ходове на противника"
 
-#: src/hotkey/hotkey_command.cpp:113
+#: src/hotkey/hotkey_command.cpp:131
 #, fuzzy
 msgid "Play Replay"
 msgstr "Запис"
 
-#: src/hotkey/hotkey_command.cpp:114
+#: src/hotkey/hotkey_command.cpp:132
 #, fuzzy
 msgid "Reset Replay"
 msgstr "Запис"
 
-#: src/hotkey/hotkey_command.cpp:115
+#: src/hotkey/hotkey_command.cpp:133
 #, fuzzy
 msgid "Stop Replay"
 msgstr "Запис"
 
-#: src/hotkey/hotkey_command.cpp:116
+#: src/hotkey/hotkey_command.cpp:134
 msgid "Next Turn"
 msgstr "Следващ ход"
 
-#: src/hotkey/hotkey_command.cpp:117
+#: src/hotkey/hotkey_command.cpp:135
 msgid "Next Side"
 msgstr "Следваща страна"
 
-#: src/hotkey/hotkey_command.cpp:118
+#: src/hotkey/hotkey_command.cpp:136
 #, fuzzy
 #| msgid "Next Side"
 msgid "Next Move"
 msgstr "Следваща страна"
 
-#: src/hotkey/hotkey_command.cpp:119
+#: src/hotkey/hotkey_command.cpp:137
 #, fuzzy
 msgid "Full Map"
 msgstr "Завъртане на картата"
 
-#: src/hotkey/hotkey_command.cpp:120
+#: src/hotkey/hotkey_command.cpp:138
 msgid "Each Team"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:121
+#: src/hotkey/hotkey_command.cpp:139
 #, fuzzy
 msgid "Human Team"
 msgstr "Джуджешки замък"
 
-#: src/hotkey/hotkey_command.cpp:122
+#: src/hotkey/hotkey_command.cpp:140
 msgid "Skip Animation"
 msgstr "Прескачане на анимацията"
 
-#: src/hotkey/hotkey_command.cpp:123
+#: src/hotkey/hotkey_command.cpp:141
 #, fuzzy
 msgid "End Replay"
 msgstr "играч"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
-#: src/hotkey/hotkey_command.cpp:126
+#: src/hotkey/hotkey_command.cpp:144
 msgid "whiteboard^Planning Mode"
 msgstr ""
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
-#: src/hotkey/hotkey_command.cpp:128
+#: src/hotkey/hotkey_command.cpp:146
 msgid "whiteboard^Execute Action"
 msgstr ""
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
-#: src/hotkey/hotkey_command.cpp:130
+#: src/hotkey/hotkey_command.cpp:148
 msgid "whiteboard^Execute All Actions"
 msgstr ""
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
-#: src/hotkey/hotkey_command.cpp:132
+#: src/hotkey/hotkey_command.cpp:150
 msgid "whiteboard^Delete Action"
 msgstr ""
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
-#: src/hotkey/hotkey_command.cpp:134
+#: src/hotkey/hotkey_command.cpp:152
 msgid "whiteboard^Move Action Up"
 msgstr ""
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
-#: src/hotkey/hotkey_command.cpp:136
+#: src/hotkey/hotkey_command.cpp:154
 msgid "whiteboard^Move Action Down"
 msgstr ""
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
-#: src/hotkey/hotkey_command.cpp:138
+#: src/hotkey/hotkey_command.cpp:156
 msgid "whiteboard^Suppose Dead"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:140
+#: src/hotkey/hotkey_command.cpp:158
 msgid "Quit to Desktop"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:141
+#: src/hotkey/hotkey_command.cpp:159
 #, fuzzy
 msgid "Close Map"
 msgstr "Затваряне"
 
-#: src/hotkey/hotkey_command.cpp:145
+#: src/hotkey/hotkey_command.cpp:163
 #, fuzzy
 #| msgid "Next Side"
 msgid "Switch Time of Day"
 msgstr "Следваща страна"
 
-#: src/hotkey/hotkey_command.cpp:147
+#: src/hotkey/hotkey_command.cpp:165
 #, fuzzy
 #| msgid "Next Side"
 msgid "Switch Map"
 msgstr "Следваща страна"
 
-#: src/hotkey/hotkey_command.cpp:148
+#: src/hotkey/hotkey_command.cpp:166
 msgid "Assign Local Time"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:150
+#: src/hotkey/hotkey_command.cpp:168
 msgid "Time Schedule Editor"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:151
+#: src/hotkey/hotkey_command.cpp:169
 msgid "Partial Undo"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:153
+#: src/hotkey/hotkey_command.cpp:171
 #, fuzzy
 msgid "New Scenario"
 msgstr "Цел на мисията"
 
-#: src/hotkey/hotkey_command.cpp:154
+#: src/hotkey/hotkey_command.cpp:172
 msgid "Load Map"
 msgstr "Зареждане на карта"
 
-#: src/hotkey/hotkey_command.cpp:156
+#: src/hotkey/hotkey_command.cpp:174
 #, fuzzy
 msgid "Save Map As"
 msgstr "Запис на карта"
 
-#: src/hotkey/hotkey_command.cpp:157
+#: src/hotkey/hotkey_command.cpp:175
 #, fuzzy
 msgid "Save Scenario As"
 msgstr "Цел на мисията"
 
-#: src/hotkey/hotkey_command.cpp:158
+#: src/hotkey/hotkey_command.cpp:176
 #, fuzzy
 msgid "Save All Maps"
 msgstr "Запис на карта"
 
-#: src/hotkey/hotkey_command.cpp:159
+#: src/hotkey/hotkey_command.cpp:177
 msgid "Revert All Changes"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:160
+#: src/hotkey/hotkey_command.cpp:178
 #, fuzzy
 msgid "Map Information"
 msgstr "Генератор на карти"
 
-#: src/hotkey/hotkey_command.cpp:162
+#: src/hotkey/hotkey_command.cpp:180
 #, fuzzy
 msgid "Clear Selected Item Set"
 msgstr "Изтриване"
 
-#: src/hotkey/hotkey_command.cpp:163
+#: src/hotkey/hotkey_command.cpp:181
 msgid "Swap Foreground/Background Palette Item"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:164
+#: src/hotkey/hotkey_command.cpp:182
 msgid "Change Palette Group"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:165
+#: src/hotkey/hotkey_command.cpp:183
 msgid "Scroll Palette Left"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:166
+#: src/hotkey/hotkey_command.cpp:184
 msgid "Scroll Palette Right"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:167
+#: src/hotkey/hotkey_command.cpp:185
 #, fuzzy
 msgid "Remove Location"
 msgstr "Действие"
 
-#: src/hotkey/hotkey_command.cpp:169
+#: src/hotkey/hotkey_command.cpp:187
 #, fuzzy
 #| msgid "Next Side"
 msgid "Add New Side"
 msgstr "Следваща страна"
 
-#: src/hotkey/hotkey_command.cpp:171
+#: src/hotkey/hotkey_command.cpp:189
 #, fuzzy
 msgid "Next Tool"
 msgstr "Следващ ход"
 
-#: src/hotkey/hotkey_command.cpp:173
+#: src/hotkey/hotkey_command.cpp:191
 #, fuzzy
 msgid "Paint Tool"
 msgstr "Следващ ход"
 
-#: src/hotkey/hotkey_command.cpp:173 src/hotkey/hotkey_command.cpp:174
+#: src/hotkey/hotkey_command.cpp:191 src/hotkey/hotkey_command.cpp:192
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:174
+#: src/hotkey/hotkey_command.cpp:192
 #, fuzzy
 msgid "Fill Tool"
 msgstr "Селище"
 
-#: src/hotkey/hotkey_command.cpp:175
+#: src/hotkey/hotkey_command.cpp:193
 msgid ""
 "Left mouse button selects or deselects with Ctrl, right brings up a context "
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:175
+#: src/hotkey/hotkey_command.cpp:193
 #, fuzzy
 msgid "Selection Tool"
 msgstr "Избор на всичко"
 
-#: src/hotkey/hotkey_command.cpp:176
+#: src/hotkey/hotkey_command.cpp:194
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:176
+#: src/hotkey/hotkey_command.cpp:194
 msgid "Starting Positions Tool"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:177
+#: src/hotkey/hotkey_command.cpp:195
 #, fuzzy
 msgid "Label Tool"
 msgstr "Следващ ход"
 
-#: src/hotkey/hotkey_command.cpp:177
+#: src/hotkey/hotkey_command.cpp:195
 msgid "Left mouse button sets or drags a label, right clears."
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:178
+#: src/hotkey/hotkey_command.cpp:196
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:178
+#: src/hotkey/hotkey_command.cpp:196
 #, fuzzy
 msgid "Unit Tool"
 msgstr "Следващ ход"
 
-#: src/hotkey/hotkey_command.cpp:179
+#: src/hotkey/hotkey_command.cpp:197
 #, fuzzy
 msgid "Item Tool"
 msgstr "Следващ ход"
 
-#: src/hotkey/hotkey_command.cpp:179
+#: src/hotkey/hotkey_command.cpp:197
 msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:180
+#: src/hotkey/hotkey_command.cpp:198
 msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:180
+#: src/hotkey/hotkey_command.cpp:198
 msgid "Sound Source Tool"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:181
+#: src/hotkey/hotkey_command.cpp:199
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:181
+#: src/hotkey/hotkey_command.cpp:199
 #, fuzzy
 msgid "Village Tool"
 msgstr "Селище"
 
-#: src/hotkey/hotkey_command.cpp:183
+#: src/hotkey/hotkey_command.cpp:201
 #, fuzzy
 #| msgid "Recruit"
 msgid "Can Recruit"
 msgstr "Набор"
 
-#: src/hotkey/hotkey_command.cpp:183
+#: src/hotkey/hotkey_command.cpp:201
 msgid "Toggle the recruit attribute of a unit."
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:184
+#: src/hotkey/hotkey_command.cpp:202
 #, fuzzy
 msgid "Can be Renamed"
 msgstr "Добавяне на потребител"
 
-#: src/hotkey/hotkey_command.cpp:184
+#: src/hotkey/hotkey_command.cpp:202
 msgid "Toggle the unit being renameable."
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:185
+#: src/hotkey/hotkey_command.cpp:203
 msgid "Assign Recruit List"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:185
+#: src/hotkey/hotkey_command.cpp:203
 msgid "Assign the selected unit set as recruit list to the unit."
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:187
+#: src/hotkey/hotkey_command.cpp:205
 #, fuzzy
 #| msgid "Change Hotkey"
 msgid "Change Unit ID"
 msgstr "Смяна на горещия клавиш"
 
-#: src/hotkey/hotkey_command.cpp:188
+#: src/hotkey/hotkey_command.cpp:206
 msgid "Loyal"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:191
+#: src/hotkey/hotkey_command.cpp:209
 msgid "Toggle Minimap Unit Coding"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:192
+#: src/hotkey/hotkey_command.cpp:210
 msgid "Toggle Minimap Terrain Coding"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:194
+#: src/hotkey/hotkey_command.cpp:212
 msgid "Toggle Minimap Unit Drawing"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:195
+#: src/hotkey/hotkey_command.cpp:213
 msgid "Toggle Minimap Village Drawing"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:196
+#: src/hotkey/hotkey_command.cpp:214
 #, fuzzy
 msgid "Toggle Minimap Terrain Drawing"
 msgstr "Обновяване на преходите"
 
-#: src/hotkey/hotkey_command.cpp:198
+#: src/hotkey/hotkey_command.cpp:216
 #, fuzzy
 msgid "Next Brush"
 msgstr "Следващ ход"
 
-#: src/hotkey/hotkey_command.cpp:199
+#: src/hotkey/hotkey_command.cpp:217
 #, fuzzy
 msgid "Default Brush"
 msgstr "Стандартен изглед"
 
-#: src/hotkey/hotkey_command.cpp:200
+#: src/hotkey/hotkey_command.cpp:218
 msgid "Single Tile"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:201
+#: src/hotkey/hotkey_command.cpp:219
 msgid "Radius One"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:202
+#: src/hotkey/hotkey_command.cpp:220
 msgid "Radius Two"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:203
+#: src/hotkey/hotkey_command.cpp:221
 msgid "Brush NW-SE"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:204
+#: src/hotkey/hotkey_command.cpp:222
 msgid "Brush SW-NE"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:206
+#: src/hotkey/hotkey_command.cpp:224
 msgid "Cut"
 msgstr "Отрязване"
 
-#: src/hotkey/hotkey_command.cpp:207
+#: src/hotkey/hotkey_command.cpp:225
 #, fuzzy
 #| msgid "Copy"
 msgid "Copy"
 msgstr "Копиране"
 
-#: src/hotkey/hotkey_command.cpp:208
+#: src/hotkey/hotkey_command.cpp:226
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:208
+#: src/hotkey/hotkey_command.cpp:226
 msgid "Paste"
 msgstr "Поставяне"
 
-#: src/hotkey/hotkey_command.cpp:209
+#: src/hotkey/hotkey_command.cpp:227
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:210
+#: src/hotkey/hotkey_command.cpp:228
 msgid "Select All"
 msgstr "Избор на всичко"
 
-#: src/hotkey/hotkey_command.cpp:211
+#: src/hotkey/hotkey_command.cpp:229
 #, fuzzy
 msgid "Select Inverse"
 msgstr "Избор на всичко"
 
-#: src/hotkey/hotkey_command.cpp:212
+#: src/hotkey/hotkey_command.cpp:230
 #, fuzzy
 msgid "Select None"
 msgstr "Избор на всичко"
 
-#: src/hotkey/hotkey_command.cpp:213
+#: src/hotkey/hotkey_command.cpp:231
 msgid "Rotate Clipboard Clockwise"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:214
+#: src/hotkey/hotkey_command.cpp:232
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:215
+#: src/hotkey/hotkey_command.cpp:233
 msgid "Flip Clipboard Horizontally"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:216
+#: src/hotkey/hotkey_command.cpp:234
 msgid "Flip Clipboard Vertically"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:217
+#: src/hotkey/hotkey_command.cpp:235
 #, fuzzy
 msgid "Rotate Selection"
 msgstr "Запълване на селекцията"
 
-#: src/hotkey/hotkey_command.cpp:218
+#: src/hotkey/hotkey_command.cpp:236
 #, fuzzy
 msgid "Flip Selection"
 msgstr "Запълване на селекцията"
 
-#: src/hotkey/hotkey_command.cpp:219
+#: src/hotkey/hotkey_command.cpp:237
 msgid "Fill Selection"
 msgstr "Запълване на селекцията"
 
-#: src/hotkey/hotkey_command.cpp:220
+#: src/hotkey/hotkey_command.cpp:238
 #, fuzzy
 msgid "Generate Tiles in Selection"
 msgstr "Запълване на селекцията"
 
-#: src/hotkey/hotkey_command.cpp:221
+#: src/hotkey/hotkey_command.cpp:239
 #, fuzzy
 msgid "Randomize Tiles in Selection"
 msgstr "Запълване на селекцията"
 
-#: src/hotkey/hotkey_command.cpp:223
+#: src/hotkey/hotkey_command.cpp:241
 #, fuzzy
 msgid "Rotate Map"
 msgstr "Зареждане на карта"
 
-#: src/hotkey/hotkey_command.cpp:225
+#: src/hotkey/hotkey_command.cpp:243
 msgid "Apply a Mask"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:226
+#: src/hotkey/hotkey_command.cpp:244
 #, fuzzy
 msgid "Create Mask"
 msgstr "Запис"
 
-#: src/hotkey/hotkey_command.cpp:227
+#: src/hotkey/hotkey_command.cpp:245
 #, fuzzy
 msgid "Refresh Display"
 msgstr "Графика"
 
-#: src/hotkey/hotkey_command.cpp:229
+#: src/hotkey/hotkey_command.cpp:247
 #, fuzzy
 msgid "Update Terrain Transitions"
 msgstr "Обновяване на преходите"
 
-#: src/hotkey/hotkey_command.cpp:232
+#: src/hotkey/hotkey_command.cpp:250
 #, fuzzy
 msgid "Toggle Terrain Transition Update"
 msgstr "Обновяване на преходите"
 
-#: src/hotkey/hotkey_command.cpp:234
+#: src/hotkey/hotkey_command.cpp:252
 #, fuzzy
 msgid "Auto-update Terrain Transitions"
 msgstr "Обновяване на преходите"
 
-#: src/hotkey/hotkey_command.cpp:235
+#: src/hotkey/hotkey_command.cpp:253
 #, fuzzy
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Обновяване на преходите"
 
-#: src/hotkey/hotkey_command.cpp:236
+#: src/hotkey/hotkey_command.cpp:254
 #, fuzzy
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Обновяване на преходите"
 
-#: src/hotkey/hotkey_command.cpp:238
+#: src/hotkey/hotkey_command.cpp:256
 msgid "Refresh Image Cache"
 msgstr "Обновяване кеша на картинките"
 
-#: src/hotkey/hotkey_command.cpp:239
+#: src/hotkey/hotkey_command.cpp:257
 #, fuzzy
 msgid "Draw Hex Coordinates"
 msgstr "Начертаване на терена"
 
-#: src/hotkey/hotkey_command.cpp:240
+#: src/hotkey/hotkey_command.cpp:258
 #, fuzzy
 msgid "Draw Terrain Codes"
 msgstr "Начертаване на терена"
 
-#: src/hotkey/hotkey_command.cpp:241
+#: src/hotkey/hotkey_command.cpp:259
 #, fuzzy
 msgid "Draw Number of Bitmaps"
 msgstr "Брой хълмове:"
 
-#: src/hotkey/hotkey_command.cpp:243
+#: src/hotkey/hotkey_command.cpp:261
 #, fuzzy
 msgid "Save Selection to Area"
 msgstr "Запълване на селекцията"
 
-#: src/hotkey/hotkey_command.cpp:244
+#: src/hotkey/hotkey_command.cpp:262
 #, fuzzy
 msgid "Rename Selected Area"
 msgstr "Изтриване"
 
-#: src/hotkey/hotkey_command.cpp:245
+#: src/hotkey/hotkey_command.cpp:263
 #, fuzzy
 msgid "Remove Selected Area"
 msgstr "Изтриване"
 
-#: src/hotkey/hotkey_command.cpp:246
+#: src/hotkey/hotkey_command.cpp:264
 #, fuzzy
 #| msgid "Next Side"
 msgid "Add New Area"
 msgstr "Следваща страна"
 
-#: src/hotkey/hotkey_command.cpp:248
+#: src/hotkey/hotkey_command.cpp:266
 #, fuzzy
 msgid "Edit Scenario"
 msgstr "Настройка на горещите клавиши"
 
-#: src/hotkey/hotkey_command.cpp:249
+#: src/hotkey/hotkey_command.cpp:267
 #, fuzzy
 #| msgid "Next Side"
 msgid "Edit Side"
 msgstr "Следваща страна"
 
-#: src/hotkey/hotkey_command.cpp:250
+#: src/hotkey/hotkey_command.cpp:268
 #, fuzzy
 #| msgid "Remove"
 msgid "Remove Side"
 msgstr "Премахване"
 
-#: src/hotkey/hotkey_command.cpp:252
+#: src/hotkey/hotkey_command.cpp:270
 msgid "Delay Shroud Updates"
 msgstr "Забавяне на промените във видимостта "
 
-#: src/hotkey/hotkey_command.cpp:253
+#: src/hotkey/hotkey_command.cpp:271
 msgid "Update Shroud Now"
 msgstr "Обновяване на видимостта"
 
-#: src/hotkey/hotkey_command.cpp:254
+#: src/hotkey/hotkey_command.cpp:272
 msgid "Continue Move"
 msgstr "Продължаване на хода"
 
-#: src/hotkey/hotkey_command.cpp:255
+#: src/hotkey/hotkey_command.cpp:273
 msgid "Find Label or Unit"
 msgstr "Търсене на надпис или единица"
 
-#: src/hotkey/hotkey_command.cpp:256
+#: src/hotkey/hotkey_command.cpp:274
 msgid "Speak to Ally"
 msgstr "Говорене със съюзник"
 
-#: src/hotkey/hotkey_command.cpp:257
+#: src/hotkey/hotkey_command.cpp:275
 msgid "Speak to All"
 msgstr "Говорене на всички"
 
-#: src/hotkey/hotkey_command.cpp:259
+#: src/hotkey/hotkey_command.cpp:277
 msgid "View Chat Log"
 msgstr "Преглед на дневника на разговорите"
 
-#: src/hotkey/hotkey_command.cpp:260
+#: src/hotkey/hotkey_command.cpp:278
 msgid "Enter User Command"
 msgstr "Въведете потребителска команда"
 
-#: src/hotkey/hotkey_command.cpp:261
+#: src/hotkey/hotkey_command.cpp:279
 #, fuzzy
 msgid "Custom Command"
 msgstr "Въведете потребителска команда"
 
-#: src/hotkey/hotkey_command.cpp:262
+#: src/hotkey/hotkey_command.cpp:280
 msgid "Run Formula"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:263
+#: src/hotkey/hotkey_command.cpp:281
 #, fuzzy
 msgid "Clear Messages"
 msgstr "Изчистване на надписите"
 
-#: src/hotkey/hotkey_command.cpp:265
+#: src/hotkey/hotkey_command.cpp:283
 #, fuzzy
 msgid "Change Language"
 msgstr "Смяна на езика"
 
-#: src/hotkey/hotkey_command.cpp:266
+#: src/hotkey/hotkey_command.cpp:284
 #, fuzzy
 msgid "Refresh WML"
 msgstr "Графика"
 
-#: src/hotkey/hotkey_command.cpp:267
+#: src/hotkey/hotkey_command.cpp:285
 #, fuzzy
 msgid "Next Tip of the Day"
 msgstr "Предишна единица"
 
-#: src/hotkey/hotkey_command.cpp:268
+#: src/hotkey/hotkey_command.cpp:286
 #, fuzzy
 msgid "Previous Tip of the Day"
 msgstr "Предишна единица"
 
-#: src/hotkey/hotkey_command.cpp:269
+#: src/hotkey/hotkey_command.cpp:287
 #, fuzzy
 msgid "Start Tutorial"
 msgstr "Диалог в началото на ход"
 
-#: src/hotkey/hotkey_command.cpp:270
+#: src/hotkey/hotkey_command.cpp:288
 msgid "Start Campaign"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:271
+#: src/hotkey/hotkey_command.cpp:289
 #, fuzzy
 msgid "Start Multiplayer Game"
 msgstr "Настройки на мрежовата игра"
 
-#: src/hotkey/hotkey_command.cpp:272
+#: src/hotkey/hotkey_command.cpp:290
 #, fuzzy
 msgid "Manage Add-ons"
 msgstr "Обновяване на преходите"
 
-#: src/hotkey/hotkey_command.cpp:273
+#: src/hotkey/hotkey_command.cpp:291
 #, fuzzy
 msgid "Manage Cores"
 msgstr "Обновяване на преходите"
 
-#: src/hotkey/hotkey_command.cpp:274
+#: src/hotkey/hotkey_command.cpp:292
 #, fuzzy
 msgid "Start Editor"
 msgstr "Изход от редактора"
 
-#: src/hotkey/hotkey_command.cpp:275
+#: src/hotkey/hotkey_command.cpp:293
 #, fuzzy
 #| msgid "Show grid"
 msgid "Show Credits"
 msgstr "Мрежа"
 
-#: src/hotkey/hotkey_command.cpp:276
+#: src/hotkey/hotkey_command.cpp:294
 #, fuzzy
 msgid "Start Test Scenario"
 msgstr "Цел на мисията"
 
-#: src/hotkey/hotkey_command.cpp:278
+#: src/hotkey/hotkey_command.cpp:296
 #, fuzzy
 msgid "Show Helptip"
 msgstr "играч"
 
-#: src/hotkey/hotkey_command.cpp:280
+#: src/hotkey/hotkey_command.cpp:298
 msgid "Show Lua Console"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:283
+#: src/hotkey/hotkey_command.cpp:301
 msgid "Unrecognized Command"
 msgstr ""
 
@@ -7748,19 +7802,19 @@ msgstr ""
 msgid "language code for localized resources^en_US"
 msgstr "bg"
 
-#: src/preferences/display.cpp:124
+#: src/preferences/display.cpp:122
 #, fuzzy
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Няма намерени теми. Пробвайте да смените тема в съществуваща игра."
 
-#: src/preferences/display.cpp:166
+#: src/preferences/display.cpp:164
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
 "normally be found in the same folder as the game executable."
 msgstr ""
 
-#: src/preferences/display.cpp:170
+#: src/preferences/display.cpp:168
 msgid "Find Server Application"
 msgstr ""
 
@@ -7813,6 +7867,15 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
+
+#, fuzzy
+#~ msgid "Refresh"
+#~ msgstr "Графика"
+
+#, fuzzy
+#~| msgid "None"
+#~ msgid "None"
+#~ msgstr "Няма"
 
 #, fuzzy
 #~ msgid "Screenshot Saved"

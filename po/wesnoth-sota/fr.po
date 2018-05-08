@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-04-26 00:28 UTC\n"
+"POT-Creation-Date: 2018-05-06 08:31 UTC\n"
 "PO-Revision-Date: 2018-03-20 15:36+0100\n"
 "Last-Translator: Alan Jullien (SMB64)\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
@@ -423,8 +423,10 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:279
-msgid "Gwillyn"
-msgstr "Gwillyn"
+#, fuzzy
+#| msgid "Syrillin"
+msgid "Gwyllin"
+msgstr "Syrillin"
 
 #. [event]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:280
@@ -1395,7 +1397,7 @@ msgstr "Oh, c'est également un mage avec de l'humour ! Allons-y."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:603
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:604
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:592
 msgid "You have no more time."
 msgstr "Vous n'avez plus de temps."
 
@@ -1646,7 +1648,9 @@ msgstr "Caputrez tous les villages"
 
 #. [unit]: type=Shadow
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:92
-msgid "Vash Gorn"
+#, fuzzy
+#| msgid "Vash Gorn"
+msgid "Vash-Gorn"
 msgstr "Vash Gorn"
 
 #. [unit]: type=Mage, id=Wynran
@@ -1858,7 +1862,7 @@ msgstr "Vous pouvez désormais recrutez des adeptes des ténèbres !"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:462
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:424
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:420
 msgid ""
 "This has taken too long. We will surely miss our meeting with Ardonna now."
 msgstr ""
@@ -1940,10 +1944,12 @@ msgstr ""
 "l'appellerai pour vous. Ensuite, je n'aiderai plus. J'ai besoin que la "
 "plupart d'entre vous survive à cette bataille, donc essayez de ne pas mourir."
 
+# NDT : Tu ou vous ?
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:366
-msgid "You kids may watch."
-msgstr "Vous, les enfants, vous observez."
+#, fuzzy
+msgid "plural^You may watch."
+msgstr "Tu peux observer."
 
 #. [message]: speaker=Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:370
@@ -1952,8 +1958,9 @@ msgstr "Pouvons-nous aider?"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:374
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:397
-msgid "As you wish. (<i>Cough, cough</i>)"
+#, fuzzy
+#| msgid "As you wish. (<i>Cough, cough</i>)"
+msgid "plural^As you wish. (<i>Cough, cough</i>)"
 msgstr "Si vous voulez. (<i>Kof, kof</i>)"
 
 # NDT : Tu ou vous ?
@@ -1964,15 +1971,26 @@ msgid "You may watch."
 msgstr "Tu peux observer."
 
 # NDT : je ou nous ?
-#. [message]: speaker=Carcyn
-#. [message]: speaker=Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:389
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:393
+#. [message]: id=Carcyn,Shynal
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:388
 msgid "Can I help?"
 msgstr "Puis-je aider?"
 
+# NDT : je ou nous ?
+#. [message]: id=Carcyn,Shynal
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:389
+#, fuzzy
+#| msgid "Can I help?"
+msgid "self_female^Can I help?"
+msgstr "Puis-je aider?"
+
+#. [message]: speaker=Ras-Tabahn
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:393
+msgid "As you wish. (<i>Cough, cough</i>)"
+msgstr "Si vous voulez. (<i>Kof, kof</i>)"
+
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:405
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:401
 msgid ""
 "You can recruit from in front of each dark adept during the first turn only."
 msgstr ""
@@ -1995,8 +2013,8 @@ msgstr ""
 "Fleuve où ils devaient attendre Ardonna. Alors qu'ils arrivaient, un autre "
 "groupe fit de même."
 
-#. [side]: type=Merman Triton, id=Okean
 #. [side]
+#. [side]: type=Merman Triton, id=Okean
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:45
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:124
 msgid "Merfolk"
@@ -2049,8 +2067,8 @@ msgstr ""
 "Je me demande quelle est leur provenance. Un large oiseau incapable de "
 "voler, peut-être ? Voyons voir."
 
-#. [message]: speaker=$other_human
 #. [message]: speaker=Ardonna
+#. [message]: speaker=$other_human
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:261
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:242
 msgid "Oh, you were right!"
@@ -2121,10 +2139,15 @@ msgstr ""
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:507
+#, fuzzy
+#| msgid ""
+#| "This is going to cost us, but I want to keep some gold around for "
+#| "emergencies — I think 50 is about right. You kids help me collect some. "
+#| "(<i>Cough, cough</i>)"
 msgid ""
-"This is going to cost us, but I want to keep some gold around for "
-"emergencies — I think 50 is about right. You kids help me collect some. "
-"(<i>Cough, cough</i>)"
+"addressed_plural^This is going to cost us, but I want to keep some gold "
+"around for emergencies — I think 50 is about right. You help me collect "
+"some. (<i>Cough, cough</i>)"
 msgstr ""
 "Ca va nous coûter, mais je veux garder un peu d'or en cas d'urgence — je "
 "dirais que 50 suffira. Aidez-moi à en collecter un peu, les enfants. (<i> "
@@ -2142,36 +2165,36 @@ msgstr "Vous allez bien ?"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:519
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:558
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:553
 msgid "Yes, yes. I’m quite all right."
 msgstr "Oui, oui. Je vais plutôt bien."
 
 #. [message]: speaker=Shynal
-#. [message]: speaker=Carcyn
+#. [message]: id=Carcyn,Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:523
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:562
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:566
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:557
 msgid "I don’t fancy wading in the water to fight these things."
 msgstr "J'ai pas trop envie de barboter dans l'eau pour affronter ces choses."
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:527
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:570
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:562
 msgid "No problem. We can lure them onto land."
 msgstr "Aucun problème. Je peux les attirer sur la terre ferme."
 
 #. [message]: speaker=Shynal
-#. [message]: speaker=Carcyn
+#. [message]: id=Carcyn,Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:531
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:574
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:578
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:566
 msgid "How?"
 msgstr "Comment ?"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:535
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:582
-msgid "Have you never been fishing before? With bait of course."
+#, fuzzy
+#| msgid "Have you never been fishing before? With bait of course."
+msgid ""
+"addressed_plural^Have you never been fishing before? With bait of course."
 msgstr "N'as tu donc jamais pêché auparavant ? Avec un appât, bien sûr."
 
 #. [message]: speaker=Ras-Tabahn
@@ -2184,15 +2207,25 @@ msgstr ""
 "Ca va nous coûter, mais je veux garder un peu d'or en cas d'urgence — je "
 "dirais que 50 suffira. Aide-moi à en collecter un peu. (<i> Kof, kof</i>)"
 
-#. [message]: speaker=Carcyn
-#. [message]: speaker=Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:550
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:554
+#. [message]: id=Carcyn,Shynal
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:549
 msgid "Right away sir. Are you feeling well?"
 msgstr "Tout de suite, monsieur. Vous allez bien?"
 
+#. [message]: id=Carcyn,Shynal
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:558
+#, fuzzy
+#| msgid "I don’t fancy wading in the water to fight these things."
+msgid "self_female^I don’t fancy wading in the water to fight these things."
+msgstr "J'ai pas trop envie de barboter dans l'eau pour affronter ces choses."
+
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:592
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:570
+msgid "Have you never been fishing before? With bait of course."
+msgstr "N'as tu donc jamais pêché auparavant ? Avec un appât, bien sûr."
+
+#. [message]: speaker=Ras-Tabahn
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:580
 #, fuzzy
 msgid ""
 "This is going to cost me, but I want to keep some gold around for "
@@ -2283,8 +2316,8 @@ msgstr ""
 "en se battant pour mon compte. Les plus vaillants d'entre eux pourraient "
 "même se souvenir vouloir la gloire."
 
-#. [side]: type=Saurian Soothsayer, id=Krissaz
 #. [side]
+#. [side]: type=Saurian Soothsayer, id=Krissaz
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:66
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:74
 msgid "Saurians"
@@ -2295,8 +2328,8 @@ msgstr "Sauriens"
 msgid "Krissaz"
 msgstr "Krissaz"
 
-#. [side]: type=Naga Myrmidon, id=Blianxkep
 #. [side]
+#. [side]: type=Naga Myrmidon, id=Blianxkep
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:79
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:148
 msgid "Nagas"
@@ -3639,8 +3672,8 @@ msgstr ""
 "profond dans les ténèbres. Après une longue randonnée, nous fûmes pris de "
 "court par une impasse dans le tunnel... Mais la paroi n'était pas solide."
 
-#. [side]: type=Dwarvish Lord, id=Golbanduth
 #. [side]
+#. [side]: type=Dwarvish Lord, id=Golbanduth
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:38
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:86
 msgid "Dwarves"
@@ -4505,6 +4538,12 @@ msgstr "Revêtement de Vide"
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:344
 msgid "Half Void"
 msgstr "Demi Vide"
+
+#~ msgid "Gwillyn"
+#~ msgstr "Gwillyn"
+
+#~ msgid "You kids may watch."
+#~ msgstr "Vous, les enfants, vous observez."
 
 #~ msgid "Translations"
 #~ msgstr "Traductions"

@@ -95,6 +95,11 @@ void suh::set_is_moderator(const std::string& name, const bool& is_moderator) {
 	users_[name].is_moderator = is_moderator;
 }
 
+suh::BAN_TYPE suh::user_is_banned(const std::string&, const std::string&) {
+	// FIXME: stub
+	return BAN_NONE;
+}
+
 void suh::set_mail(const std::string& user, const std::string& mail) {
 	check_mail(mail);
 	users_[user].mail = mail;

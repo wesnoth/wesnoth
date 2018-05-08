@@ -7,9 +7,17 @@
    * Under the Burning Suns
      * Added a custom terrain for the broken tree in S1.
      * Various sprite and image updates.
+     * Fixed a bug in the formation ability causing defense bonuses not being
+       received in some cases.
  ### Language and i18n
-   * Updated translations: French, Galician, German, Italian, Slovak, Spanish
+   * Updated translations: British English, Chinese (Simplified), Czech, French,
+     Galician, German, Italian, Japanese, Scottish Gaelic, Slovak, Spanish
    * Fixed Logging Options tooltips not being translatable (issue #2837).
+ ### Multiplayer server
+   * Added support for matching user, IP, and email bans from a forums board
+     when the forum_user_handler is enabled and active. (IP and email bans with
+     wildcards are not supported yet.)
+   * Fixed various instances of the server crashing under certain conditions.
  ### Performance
    * Added an option to disable the FPS limiter for a slight performance boost.
  ### Units
@@ -24,6 +32,8 @@
    * Custom MP game names are now capped at 50 characters.
    * Restored Era info to main MP game display.
    * Improved the resolution selection criteria for the MP Lobby.
+   * Fixed inactive weapon specials being displayed in the Unit Attack dialog
+     unlike in 1.12 (issue #3033).
    * Added a preference in order to allow disabling confirmations when leaving
      up to the title screen or to desktop, only if the player changes the
      default configuration ex profeso.
@@ -36,6 +46,8 @@
    * Fixed the wesnoth(6) manpage claiming the default log level is 'error' when it
      has been 'warning' since version 1.9.0.
    * Document --log-none in the wesnoth(6) manpage.
+   * Avoid trying to load invalid base64-encoded data URIs.
+   * wesnoth_addon_manager and the addons.wesnoth.org web index can now use data URIs.
 
 ## Version 1.14.0
  ### Campaigns

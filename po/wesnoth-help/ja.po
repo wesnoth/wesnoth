@@ -2,28 +2,18 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Wesnoth development team
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-# Translators:
-# Automatically generated, 2005
-# MATSUMOTO Yuji <matumoto@marron.cias.osakafu-u.ac.jp>, 2005
-# OOTA, Masato <ooyooxei+tr@gmail.com>, 2015
-# RatArmy <broadbarredfirefish@gmail.com>, 2015-2018
-# S.Suto, 2016
-# suto3, 2016
-# suto3, 2017
-# suto3, 2016
-# tamanegi, 2017
-# yma <yma9yma@gmail.com>, 2011
-# 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2017
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth-Dev Japanese\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-04-26 03:27+0300\n"
-"PO-Revision-Date: 2018-04-22 14:06+0000\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
-"Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
-"japanese/language/ja/)\n"
+"POT-Creation-Date: 2018-05-06 05:31-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2018\n"
+"Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
+"ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,13 +27,13 @@ msgid "Underground"
 msgstr "地下"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:660
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:659
 #: data/core/macros/abilities.cfg:274
 msgid "berserk"
 msgstr "狂戦"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:662
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:661
 #: data/core/macros/abilities.cfg:275
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -53,13 +43,13 @@ msgstr ""
 "戦い続けます。ただし、30 回分の戦いが行われた場合は終了します。"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:671
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:670
 #: data/core/macros/abilities.cfg:359
 msgid "magical"
 msgstr "魔法"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:673
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:672
 #: data/core/macros/abilities.cfg:360
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
@@ -2262,45 +2252,45 @@ msgstr ""
 "して扱われます。\n"
 "\n"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:343 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "夜明け"
 
-#. [time]: id=morning
 #. [topic]: id=time_of_day
+#. [time]: id=morning
 #: data/core/help.cfg:344 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "朝"
 
-#. [time]: id=afternoon
 #. [topic]: id=time_of_day
+#. [time]: id=afternoon
 #: data/core/help.cfg:345 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "午後"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:346 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "夕暮れ"
 
-#. [time]: id=first_watch
 #. [topic]: id=time_of_day
+#. [time]: id=first_watch
 #: data/core/help.cfg:347 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "夜"
 
-#. [time]: id=second_watch
 #. [topic]: id=time_of_day
+#. [time]: id=second_watch
 #: data/core/help.cfg:348 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
@@ -5542,7 +5532,7 @@ msgstr "マーフォーク"
 
 #. [race]: id=merman
 #: data/core/units.cfg:262
-msgid "race^Mermen"
+msgid "race^Merfolk"
 msgstr "マーフォーク"
 
 #. [race]: id=merman
@@ -5921,8 +5911,8 @@ msgid ""
 "need to maintain his creation.\n"
 "\n"
 "Necromancy is almost solely limited to humans. Even the legends of magically "
-"apt races like elves and mermen tell of very few of their kind who have ever "
-"delved in the dark arts. It is surmised that necromantic magic requires "
+"apt races like elves and merfolk tell of very few of their kind who have "
+"ever delved in the dark arts. It is surmised that necromantic magic requires "
 "great adaptability and a flexible mind, extremes of which are most commonly "
 "found in humans. The ultimate goal of most necromancers is to turn the same "
 "art of preserving and imbuing life upon themselves, to alter themselves at "
@@ -5936,18 +5926,19 @@ msgid ""
 msgstr ""
 "アンデッドは本来1つの種族ではありませんが、しばしばそのように扱われます。ほと"
 "んど全ての生物の死体が、熟練したネクロマンサーの手により、動き出して不死とな"
-"ります。アンデッドの不自然で意思の無い構造物であり、何の疑問も無く生み出した"
-"者に従います。降霊術の大きな謎の1つは、ネクロマンサーは手を加えてないのにも関"
-"わらず、その構造物が維持されることです。アンデッドはネクロマンサーの継続的な"
-"命令や支えを必要とせず、主の命にしたがって自動的に動き続けます。ごく稀に、数"
-"カ月に一度、ネクロマンサーは創造物のメンテナンスを必要とするようです。\n"
+"ります。アンデッドは自然界には存在しない、意思の無い構造物であり、何の疑問も"
+"無く製作者に従います。降霊術の大きな謎の1つは、ネクロマンサーは手を加えてない"
+"のにも関わらず、その構造物が維持されることです。アンデッドはネクロマンサーの"
+"継続的な命令や支えを必要とせず、主の命にしたがって自動的に動き続けます。ごく"
+"稀に、数カ月に一度、ネクロマンサーは創造物のメンテナンスを必要とするようで"
+"す。\n"
 "\n"
-"降霊術を行うのはほとんどが人間です。魔術の才のあるエルフやマーマンの伝説にさ"
-"え、闇の魔術を探求した者についてはほとんど伝えられていません。それは、降霊術"
-"を行うには相当な適応力と柔軟な精神が必要になるためだと言われています。それら"
-"の性質は一般的に人間に見られるものなのです。ほとんどのネクロマンサーにとって"
-"の最終的な目標は、生命を保ちつつ吹き込む魔法を自身に掛けて、どんな代償を払っ"
-"てでも自身の魂と心を保ち、死を逃れることです。\n"
+"降霊術を行うのはほとんどが人間です。魔術の才のあるエルフやマーフォークの伝説"
+"にさえ、闇の魔術を探求した者についてはほとんど伝えられていません。それは、降"
+"霊術を行うには相当な適応力と柔軟な精神が必要になるためだと言われています。そ"
+"れらの性質は一般的に人間に見られるものなのです。ほとんどのネクロマンサーに"
+"とっての最終的な目標は、生命を保ちつつ吹き込む魔法を自身に掛けて、どんな代償"
+"を払ってでも自身の魂と心を保ち、死を逃れることです。\n"
 "\n"
 "<header>text='地理'</header> 多くのアンデッドの支配者たちが大陸に到着したの"
 "は Haldric I 世の後であり、それ以前にはエルフ族もドワーフ族もアンデッドについ"
