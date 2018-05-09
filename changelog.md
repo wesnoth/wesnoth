@@ -149,6 +149,9 @@
      has been 'warning' since version 1.9.0.
    * Avoid trying to load invalid base64-encoded data URIs.
    * wesnoth_addon_manager and the addons.wesnoth.org web index can now use data URIs.
+   * Implemented a workaround for an unhandled std::bad_cast from string comparison
+     functions that caused a crash-to-desktop when opening Preferences among others
+     (issue #3050).
 
 ## Version 1.13.12
  ### Security fixes
