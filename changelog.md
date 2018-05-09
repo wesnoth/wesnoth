@@ -48,6 +48,9 @@
    * Avoid trying to load invalid base64-encoded data URIs.
    * wesnoth_addon_manager and the addons.wesnoth.org web index can now use data URIs.
    * Fixed a crash when using certain invalid color= values.
+   * Implemented a workaround for an unhandled std::bad_cast from string comparison
+     functions that caused a crash-to-desktop when opening Preferences among others
+     (issue #3050).
 
 ## Version 1.14.0
  ### Campaigns

@@ -24,6 +24,9 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
      the official MP server.
    * Attempting to save a screenshot with an unsupported format now shows an error
      message, instead of saving the screenshot as BMP with the requested extension.
+   * Implemented a workaround for an unhandled std::bad_cast from string comparison
+     functions that caused a crash-to-desktop when opening Preferences among others
+     (issue #3050).
 
 
 ## Version 1.14.0
