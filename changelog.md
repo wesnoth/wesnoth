@@ -152,6 +152,7 @@
    * Implemented a workaround for an unhandled std::bad_cast from string comparison
      functions that caused a crash-to-desktop when opening Preferences among others
      (issue #3050).
+   * Fixed a crash when using certain invalid color= values.
 
 ## Version 1.13.12
  ### Security fixes

@@ -23,6 +23,7 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "mt_rng.hpp"
+#include "team.hpp"
 #include "wesnothd_connection.hpp"
 
 #include <cstdlib>
@@ -959,24 +960,21 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 		team_ = team_name_index;
 	}
 
-	if(!cfg["color"].empty()) {
-		if(cfg["color"].to_int()) {
-			color_ = cfg["color"].to_int() - 1;
-			color_id_ = color_options_[color_];
+	// Check the value of the config's color= key.
+	const std::string given_color = team::get_side_color_id_from_config(cfg_);
+
+	if(!given_color.empty()) {
+		// If it's valid, save the color...
+		color_id_ = given_color;
+
+		// ... and find the appropriate index for it.
+		const auto iter = std::find(color_options_.begin(), color_options_.end(), color_id_);
+
+		if(iter != color_options_.end()) {
+			color_ = std::distance(color_options_.begin(), iter);
 		} else {
-			const std::string custom_color = cfg["color"].str();
-
-			const auto iter = std::find(color_options_.begin(), color_options_.end(), custom_color);
-
-			if(iter != color_options_.end()) {
-				color_id_ = *iter;
-				color_ = std::distance(color_options_.begin(), iter);
-			} else {
-				color_options_.push_back(custom_color);
-
-				color_id_ = custom_color;
-				color_ = color_options_.size() - 1;
-			}
+			color_options_.push_back(color_id_);
+			color_ = color_options_.size() - 1;
 		}
 	}
 
