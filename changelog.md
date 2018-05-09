@@ -45,6 +45,7 @@
    * Document --log-none in the wesnoth(6) manpage.
    * Avoid trying to load invalid base64-encoded data URIs.
    * wesnoth_addon_manager and the addons.wesnoth.org web index can now use data URIs.
+   * Fixed a crash when using certain invalid color= values.
 
 ## Version 1.14.0
  ### Campaigns
