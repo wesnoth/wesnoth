@@ -1,4 +1,4 @@
-## Version 1.14.0+dev
+## Version 1.14.1
  ### Campaigns
    * Eastern Invasion:
      * In 'Captured', fixed units incorrectly costing upkeep after leveling up.
