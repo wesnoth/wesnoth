@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-06 05:31-0300\n"
+"POT-Creation-Date: 2018-05-09 03:49-0300\n"
 "PO-Revision-Date: 2016-01-10 14:34+0100\n"
 "Last-Translator: Susanna Björverud <susanna.bjorverud@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -443,7 +443,7 @@ msgstr ""
 "$new"
 
 #: src/editor/map/editor_map.cpp:148
-#: src/editor/palette/location_palette.cpp:115
+#: src/editor/palette/location_palette.cpp:119
 #, fuzzy
 #| msgid "Player $player_number"
 msgid "Player $side_num"
@@ -493,19 +493,27 @@ msgstr "(ej standard)"
 msgid "Will not work in game without extra care."
 msgstr "Kommer inte fungera i spelet utan speciell hänsyn."
 
-#: src/editor/palette/location_palette.cpp:252
+#: src/editor/palette/location_palette.cpp:256
 msgid "Go To"
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:259
+#: src/editor/palette/location_palette.cpp:263
 msgid "Add"
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:261
+#: src/editor/palette/location_palette.cpp:265
 msgid "New Location Identifier"
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:265
+#: src/editor/palette/location_palette.cpp:272
+msgid "Error"
+msgstr "Fel"
+
+#: src/editor/palette/location_palette.cpp:273
+msgid "Invalid location id"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:280
 msgid "Delete"
 msgstr ""
 
@@ -650,9 +658,6 @@ msgstr "Spelare $player_number"
 
 #~ msgid "Error creating action object"
 #~ msgstr "Fel vid skapande av händelseobjekt"
-
-#~ msgid "Error"
-#~ msgstr "Fel"
 
 #~ msgid ""
 #~ "Which player should start here? You can also use the 1-9 and delete keys "

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-06 05:32-0300\n"
+"POT-Creation-Date: 2018-05-09 03:49-0300\n"
 "PO-Revision-Date: 2018-05-06 21:07+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -2420,8 +2420,10 @@ msgstr "日期"
 msgid "Sort in approximate chronological order of story events"
 msgstr "按照故事事件的大略时间顺序排序"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:276
+#: src/gui/dialogs/multiplayer/lobby.cpp:462
 msgid "Modifications"
 msgstr "模组"
 
@@ -2705,7 +2707,7 @@ msgstr "描述："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:477
+#: src/gui/dialogs/multiplayer/lobby.cpp:478
 msgid "Experience modifier:"
 msgstr "经验值修正："
 
@@ -2767,7 +2769,7 @@ msgstr "金币："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#: src/gui/dialogs/multiplayer/lobby.cpp:478
+#: src/gui/dialogs/multiplayer/lobby.cpp:479
 msgid "Gold per village:"
 msgstr "每村庄产出金币："
 
@@ -2833,10 +2835,12 @@ msgstr "生成地图"
 msgid "Choose a map generator:"
 msgstr "选择地图生成器："
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=random_map_settings
 #. [button]: id=settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
+#: src/gui/dialogs/multiplayer/lobby.cpp:477
 msgid "Settings"
 msgstr "设置"
 
@@ -3861,10 +3865,8 @@ msgstr "随机派系分配："
 msgid "Allow for mirror matchups when random factions are chosen."
 msgstr "当选择随机派系时，允许镜像分配。"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=mods_header
 #: data/gui/window/mp_create_game.cfg:203
-#: src/gui/dialogs/multiplayer/lobby.cpp:461
 msgid "Modifications:"
 msgstr "模组："
 
@@ -4087,7 +4089,7 @@ msgstr "设置密码，这是想加入你的游戏的玩家所必需输入的。
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:177
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:479
+#: src/gui/dialogs/multiplayer/lobby.cpp:480
 msgid "Map size:"
 msgstr "地图尺寸："
 
@@ -5676,7 +5678,7 @@ msgid "Attacker vulnerability vs"
 msgstr "进攻方弱点"
 
 #: src/gui/dialogs/campaign_selection.cpp:274
-#: src/gui/dialogs/multiplayer/lobby.cpp:466
+#: src/gui/dialogs/multiplayer/lobby.cpp:467
 msgid "active_modifications^None"
 msgstr "无"
 
@@ -5856,12 +5858,12 @@ msgid "Unknown"
 msgstr "未知"
 
 #: src/gui/dialogs/game_stats.cpp:200 src/gui/dialogs/game_stats.cpp:203
-#: src/gui/dialogs/multiplayer/lobby.cpp:474
+#: src/gui/dialogs/multiplayer/lobby.cpp:475
 msgid "no"
 msgstr "否"
 
 #: src/gui/dialogs/game_stats.cpp:200 src/gui/dialogs/game_stats.cpp:203
-#: src/gui/dialogs/multiplayer/lobby.cpp:474
+#: src/gui/dialogs/multiplayer/lobby.cpp:475
 msgid "yes"
 msgstr "是"
 
@@ -6028,58 +6030,60 @@ msgid "$game_name (Era: $era_name)"
 msgstr "$game_name|（时代：$era_name|）"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:455
-msgid "Era:"
+#, fuzzy
+#| msgid "Era:"
+msgid "Era"
 msgstr "时代："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:458
+#: src/gui/dialogs/multiplayer/lobby.cpp:459
 msgid "era^missing"
 msgstr "丢失"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:476
-msgid "Settings:"
-msgstr "设置："
-
-#: src/gui/dialogs/multiplayer/lobby.cpp:480
+#: src/gui/dialogs/multiplayer/lobby.cpp:481
 msgid "Registered users only:"
 msgstr "仅注册用户："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:481
+#: src/gui/dialogs/multiplayer/lobby.cpp:482
 msgid "Reloaded:"
 msgstr "重新载入："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:482
+#: src/gui/dialogs/multiplayer/lobby.cpp:483
 msgid "Shared vision:"
 msgstr "共享视野："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:483
+#: src/gui/dialogs/multiplayer/lobby.cpp:484
 msgid "Shuffle sides:"
 msgstr "阵营洗牌："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:484
+#: src/gui/dialogs/multiplayer/lobby.cpp:485
 msgid "Time limit:"
 msgstr "时间限制："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:485
+#: src/gui/dialogs/multiplayer/lobby.cpp:486
 msgid "Use map settings:"
 msgstr "使用地图设置："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:493
+#: src/gui/dialogs/multiplayer/lobby.cpp:494
+#, fuzzy
+#| msgid ""
+#| "One or more items need to be installed\n"
+#| "in order to join this game."
 msgid ""
-"One or more items need to be installed\n"
+"One or more add-ons need to be installed\n"
 "in order to join this game."
 msgstr ""
 "为加入此游戏\n"
 "需要安装一个或多个项目"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:518
+#: src/gui/dialogs/multiplayer/lobby.cpp:519
 msgid "Observers allowed"
 msgstr "允许观察"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:521
+#: src/gui/dialogs/multiplayer/lobby.cpp:522
 msgid "Observers not allowed"
 msgstr "不允许观察"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:955
+#: src/gui/dialogs/multiplayer/lobby.cpp:957
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at http://bugs.wesnoth.org."
@@ -7443,3 +7447,6 @@ msgid ""
 msgstr ""
 "主键‘$deprecated_key|’已重命名为‘$key’。对‘$deprecated_key|’的支持将在版本"
 "$removal_version|中移除。"
+
+#~ msgid "Settings:"
+#~ msgstr "设置："

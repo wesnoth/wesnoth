@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-06 05:31-0300\n"
+"POT-Creation-Date: 2018-05-09 03:49-0300\n"
 "PO-Revision-Date: 2018-05-06 20:42+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -424,7 +424,7 @@ msgstr ""
 "$new"
 
 #: src/editor/map/editor_map.cpp:148
-#: src/editor/palette/location_palette.cpp:115
+#: src/editor/palette/location_palette.cpp:119
 msgid "Player $side_num"
 msgstr "玩家$side_num"
 
@@ -470,19 +470,27 @@ msgstr "（非核心）"
 msgid "Will not work in game without extra care."
 msgstr "除非特别注意，否则不会在游戏中正常工作。"
 
-#: src/editor/palette/location_palette.cpp:252
+#: src/editor/palette/location_palette.cpp:256
 msgid "Go To"
 msgstr "前往"
 
-#: src/editor/palette/location_palette.cpp:259
+#: src/editor/palette/location_palette.cpp:263
 msgid "Add"
 msgstr "添加"
 
-#: src/editor/palette/location_palette.cpp:261
+#: src/editor/palette/location_palette.cpp:265
 msgid "New Location Identifier"
 msgstr "新建位置标识符"
 
-#: src/editor/palette/location_palette.cpp:265
+#: src/editor/palette/location_palette.cpp:272
+msgid "Error"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:273
+msgid "Invalid location id"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:280
 msgid "Delete"
 msgstr "删除"
 

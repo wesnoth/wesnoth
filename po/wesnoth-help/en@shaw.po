@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-06 05:31-0300\n"
+"POT-Creation-Date: 2018-05-09 03:48-0300\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -1245,7 +1245,7 @@ msgid ""
 "from the menu or right-clicking on a hex and selecting <bold>text='Recruit'</"
 "bold>. This brings up the recruit menu, which lists units available for "
 "recruitment, along with their gold cost. Click on a unit to see its "
-"statistics, then press the OK button to recruit it."
+"statistics, then press the <bold>text='Recruit'</bold> button to recruit it."
 msgstr ""
 "𐑰𐑗 𐑕𐑲𐑛 𐑚𐑩𐑜𐑦𐑯𐑟 𐑢𐑦𐑞 𐑢𐑳𐑯 𐑤𐑰𐑛𐑻 𐑦𐑯 𐑞𐑺 𐑒𐑰𐑐. 𐑨𐑑 𐑞 𐑕𐑑𐑸𐑑 𐑝 𐑧𐑯𐑦 𐑚𐑨𐑑𐑩𐑤, 𐑯 𐑨𐑑 𐑑𐑲𐑥𐑟 "
 "𐑛𐑘𐑫𐑼𐑦𐑙 𐑦𐑑, 𐑿 𐑢𐑦𐑤 𐑯𐑰𐑛 𐑑 𐑮𐑩𐑒𐑮𐑵𐑑 <ref>dst='..units' text='𐑿𐑯𐑦𐑑𐑕'</ref> 𐑦𐑯𐑑𐑫 𐑿𐑼 "
@@ -2631,8 +2631,8 @@ msgid ""
 "choose to only display add-ons of specific categories by clicking on the "
 "<bold>text='Options'</bold> button in the top-right corner.\n"
 "\n"
-"To install an add-on, select it from the list and click <bold>text='OK'</"
-"bold>, or simply double-click on the add-on’s title. The "
+"To install an add-on, select it from the list and click the <bold>text='+'</"
+"bold> icon, or simply double-click on the add-on’s title. The "
 "<bold>text='Description'</bold> button provides you with additional details "
 "about the add-on, such as its full description, installation status, and "
 "available languages."
@@ -4927,26 +4927,39 @@ msgid ""
 "having existed for over a millennium."
 msgstr ""
 
-#. [race]: id=falcon, description=
+#. [race]: id=falcon
 #: data/core/units.cfg:135
 #, fuzzy
 #| msgid "race^Human"
 msgid "race^Falcon"
 msgstr "𐑣𐑿𐑥𐑩𐑯"
 
-#. [race]: id=falcon, description=
+#. [race]: id=falcon
 #: data/core/units.cfg:136
 #, fuzzy
 #| msgid "race+female^Human"
 msgid "race+female^Falcon"
 msgstr "𐑣𐑿𐑥𐑩𐑯"
 
-#. [race]: id=falcon, description=
+#. [race]: id=falcon
 #: data/core/units.cfg:137
 #, fuzzy
 #| msgid "race^Humans"
 msgid "race^Falcons"
 msgstr "𐑣𐑿𐑥𐑩𐑯𐑟"
+
+#. [race]: id=falcon
+#: data/core/units.cfg:138
+msgid ""
+"Falcons are birds of prey, noted for their exceptional speed and agility. "
+"Lighter and with less powerful talons than other raptors, falcons instead "
+"favor the use of their beak to kill their targets. Their keen eye and "
+"capacity for domestication makes them a populous and well-known creature, "
+"used both by nobles in sport, and by nomads or tribes who find them useful "
+"in hunting for food. Falcons occasionally find a role on the field of war as "
+"well, with certain falconers training their birds to distinguish between "
+"friend and foe, making them a useful asset to aid in an army's charge."
+msgstr ""
 
 #. [race]: id=goblin
 #: data/core/units.cfg:148
@@ -5681,22 +5694,34 @@ msgid ""
 "and dwarves before that."
 msgstr ""
 
-#. [race]: id=wolf, description=
+#. [race]: id=wolf
 #: data/core/units.cfg:366
 msgid "race^Wolf"
 msgstr "𐑢𐑫𐑤𐑓"
 
-#. [race]: id=wolf, description=
+#. [race]: id=wolf
 #: data/core/units.cfg:367
 #, fuzzy
 #| msgid "race+female^Elf"
 msgid "race+female^Wolf"
 msgstr "𐑧𐑤𐑓"
 
-#. [race]: id=wolf, description=
+#. [race]: id=wolf
 #: data/core/units.cfg:368
 msgid "race^Wolves"
 msgstr "𐑢𐑫𐑤𐑝𐑟"
+
+#. [race]: id=wolf
+#: data/core/units.cfg:369
+msgid ""
+"Wolves are predatory canines encountered frequently in the wilderness. "
+"Quick, tough, and durable, a solitary wolf suffices to maim or kill "
+"civilians and untrained soldiers with ease, but it is their tendency to "
+"travel in packs and attack in an organized manner that makes them "
+"particularly fearsome to travelers. They tend to stay away from "
+"civilization, though, only occasionally venturing close to prey upon "
+"livestock."
+msgstr ""
 
 #. [race]: id=wose
 #: data/core/units.cfg:378

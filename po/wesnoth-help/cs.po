@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-06 05:31-0300\n"
+"POT-Creation-Date: 2018-05-09 03:48-0300\n"
 "PO-Revision-Date: 2018-05-06 12:27+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
@@ -1564,6 +1564,19 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:202
+#, fuzzy
+#| msgid ""
+#| "Each side begins with one leader in their keep. At the start of any "
+#| "battle, and at times during it, you will need to recruit <ref>dst='.."
+#| "units' text='units'</ref> into your army. To recruit, you must have your "
+#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
+#| "italic> campaign) on the keep hex of a <ref>dst='terrain_castle' "
+#| "text='castle'</ref>. Then you may recruit by either choosing "
+#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
+#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
+#| "which lists units available for recruitment, along with their gold cost. "
+#| "Click on a unit to see its statistics, then press the OK button to "
+#| "recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1574,7 +1587,7 @@ msgid ""
 "from the menu or right-clicking on a hex and selecting <bold>text='Recruit'</"
 "bold>. This brings up the recruit menu, which lists units available for "
 "recruitment, along with their gold cost. Click on a unit to see its "
-"statistics, then press the OK button to recruit it."
+"statistics, then press the <bold>text='Recruit'</bold> button to recruit it."
 msgstr ""
 "Každá ze stran začíná hrát s jedním vůdcem umístěným na hradě. Na začátku "
 "každé bitvy i během ní budete verbovat <ref>dst='..units' text='jednotky'</"
@@ -3100,6 +3113,31 @@ msgstr "Instalace rozšíření"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:506
+#, fuzzy
+#| msgid ""
+#| "User-made add-ons can be obtained and updated through the "
+#| "<italic>text='Add-ons'</italic> option in the main menu. After connecting "
+#| "to the add-ons server (by default <italic>text='add-ons.wesnoth.org'</"
+#| "italic>), you will be presented with a list of add-ons available on the "
+#| "server for downloading.\n"
+#| "\n"
+#| "The installation status for each add-on is shown below each entry. For "
+#| "add-ons that are <italic>text='upgradable'</italic> or "
+#| "<italic>text='outdated'</italic> on the server, their installed and "
+#| "published versions will be shown in the <italic>text='Version'</italic> "
+#| "column.\n"
+#| "\n"
+#| "To search for add-ons by keywords, type any relevant terms in any order "
+#| "in the <bold>text='Filter'</bold> box, separated by spaces. You can also "
+#| "sort the add-on list by clicking the column headers. It is also possible "
+#| "to choose to only display add-ons of specific categories by clicking on "
+#| "the <bold>text='Options'</bold> button in the top-right corner.\n"
+#| "\n"
+#| "To install an add-on, select it from the list and click <bold>text='OK'</"
+#| "bold>, or simply double-click on the add-on’s title. The "
+#| "<bold>text='Description'</bold> button provides you with additional "
+#| "details about the add-on, such as its full description, installation "
+#| "status, and available languages."
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -3117,8 +3155,8 @@ msgid ""
 "choose to only display add-ons of specific categories by clicking on the "
 "<bold>text='Options'</bold> button in the top-right corner.\n"
 "\n"
-"To install an add-on, select it from the list and click <bold>text='OK'</"
-"bold>, or simply double-click on the add-on’s title. The "
+"To install an add-on, select it from the list and click the <bold>text='+'</"
+"bold> icon, or simply double-click on the add-on’s title. The "
 "<bold>text='Description'</bold> button provides you with additional details "
 "about the add-on, such as its full description, installation status, and "
 "available languages."
@@ -5516,20 +5554,33 @@ msgstr ""
 "Elfové jsou nejstarší rasou na kontinentu, snad jen s vyjímkou trollů. Mnoho "
 "z nich nelze ani přesně časově zařadit, nepochybně existují už tisíce let."
 
-#. [race]: id=falcon, description=
+#. [race]: id=falcon
 #: data/core/units.cfg:135
 msgid "race^Falcon"
 msgstr "Sokol"
 
-#. [race]: id=falcon, description=
+#. [race]: id=falcon
 #: data/core/units.cfg:136
 msgid "race+female^Falcon"
 msgstr "Sokol"
 
-#. [race]: id=falcon, description=
+#. [race]: id=falcon
 #: data/core/units.cfg:137
 msgid "race^Falcons"
 msgstr "Sokoli"
+
+#. [race]: id=falcon
+#: data/core/units.cfg:138
+msgid ""
+"Falcons are birds of prey, noted for their exceptional speed and agility. "
+"Lighter and with less powerful talons than other raptors, falcons instead "
+"favor the use of their beak to kill their targets. Their keen eye and "
+"capacity for domestication makes them a populous and well-known creature, "
+"used both by nobles in sport, and by nomads or tribes who find them useful "
+"in hunting for food. Falcons occasionally find a role on the field of war as "
+"well, with certain falconers training their birds to distinguish between "
+"friend and foe, making them a useful asset to aid in an army's charge."
+msgstr ""
 
 #. [race]: id=goblin
 #: data/core/units.cfg:148
@@ -6375,20 +6426,32 @@ msgstr ""
 "Ačkoli se Pánové nemrtvých na Velkém kontinentě objevili ve větších počtech "
 "až s příchodem Haldrika I., nebyli už předtím elfům a trpaslíkům neznámí."
 
-#. [race]: id=wolf, description=
+#. [race]: id=wolf
 #: data/core/units.cfg:366
 msgid "race^Wolf"
 msgstr "Vlk"
 
-#. [race]: id=wolf, description=
+#. [race]: id=wolf
 #: data/core/units.cfg:367
 msgid "race+female^Wolf"
 msgstr "Vlčice"
 
-#. [race]: id=wolf, description=
+#. [race]: id=wolf
 #: data/core/units.cfg:368
 msgid "race^Wolves"
 msgstr "Vlci"
+
+#. [race]: id=wolf
+#: data/core/units.cfg:369
+msgid ""
+"Wolves are predatory canines encountered frequently in the wilderness. "
+"Quick, tough, and durable, a solitary wolf suffices to maim or kill "
+"civilians and untrained soldiers with ease, but it is their tendency to "
+"travel in packs and attack in an organized manner that makes them "
+"particularly fearsome to travelers. They tend to stay away from "
+"civilization, though, only occasionally venturing close to prey upon "
+"livestock."
+msgstr ""
 
 #. [race]: id=wose
 #: data/core/units.cfg:378

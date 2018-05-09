@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-06 05:31-0300\n"
+"POT-Creation-Date: 2018-05-09 03:49-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2018\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -426,7 +426,7 @@ msgstr ""
 "$new"
 
 #: src/editor/map/editor_map.cpp:148
-#: src/editor/palette/location_palette.cpp:115
+#: src/editor/palette/location_palette.cpp:119
 msgid "Player $side_num"
 msgstr "プレイヤー $side_num"
 
@@ -474,19 +474,27 @@ msgstr "（コア以外）"
 msgid "Will not work in game without extra care."
 msgstr "更に手を入れなければゲームで動作しません。"
 
-#: src/editor/palette/location_palette.cpp:252
+#: src/editor/palette/location_palette.cpp:256
 msgid "Go To"
 msgstr "地点へ向かう"
 
-#: src/editor/palette/location_palette.cpp:259
+#: src/editor/palette/location_palette.cpp:263
 msgid "Add"
 msgstr "追加"
 
-#: src/editor/palette/location_palette.cpp:261
+#: src/editor/palette/location_palette.cpp:265
 msgid "New Location Identifier"
 msgstr "新しい地点の識別子"
 
-#: src/editor/palette/location_palette.cpp:265
+#: src/editor/palette/location_palette.cpp:272
+msgid "Error"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:273
+msgid "Invalid location id"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:280
 msgid "Delete"
 msgstr "削除"
 

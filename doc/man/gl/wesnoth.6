@@ -114,9 +114,12 @@ Usa o idioma \fIidioma\fP (código) durante esta sesión. Por exemplo:
 \fB\-\-language gl\fP.
 .TP 
 \fB\-\-log\-\fP\fInivel\fP\fB=\fP\fIdominio_1\fP\fB,\fP\fIdominio_2\fP\fB,\fP\fI…\fP
-sets the severity level of the log domains.  \fBall\fP can be used to match any
-log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default the \fBwarning\fP level is used for most domains, but
-\fBdeprecation\fP defaults to none.
+Establece o nivel de severidade dos dominios do rexistro.  Pódese usar
+\fBall\fP para referirse a calquera dominio do rexistro. Os niveis dispoñíbeis
+son os seguintes: \fBerror\fP (erro),\ \fBwarning\fP (aviso),\ \fBinfo\fP
+(información), \ \fBdebug\fP (depuración) e \ \fBnone\fP (ningún). \fBwarning\fP é o
+nivel predeterminado da meirande parte dos dominios, pero o nivel
+predeterminado de \fBdeprecation\fP é \fBningún\fP.
 .TP 
 \fB\-\-log\-precise\fP
 Mostra as marcas de tempo no ficheiro do historial con máis precisión.
@@ -309,9 +312,9 @@ predeterminada (\fBDefault\fP). A era elíxese mediante un identificador. As
 eras descríbense no ficheiro \fBdata/multiplayer/eras.cfg\fP.
 .TP 
 \fB\-\-exit\-at\-end\fP
-Sae do xogo unha vez se remate o escenario, sen mostrar un diálogo de
-vitoria ou derrota que requira que o usuario prema «Aceptar». Isto tamén se
-emprega para probas de rendemento automatizadas mediante scripts.
+exits once the scenario is over, without displaying victory/defeat dialog
+which normally requires the user to click End Scenario.  This is also used
+for scriptable benchmarking.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
 Non usar a configuración do mapa, senón os valores predeterminados.

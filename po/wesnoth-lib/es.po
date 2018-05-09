@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-06 05:32-0300\n"
+"POT-Creation-Date: 2018-05-09 03:49-0300\n"
 "PO-Revision-Date: 2018-05-07 11:10+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -2512,8 +2512,10 @@ msgstr "Fechas"
 msgid "Sort in approximate chronological order of story events"
 msgstr "Ordenar por el orden cronológico aproximado de los eventos históricos"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:276
+#: src/gui/dialogs/multiplayer/lobby.cpp:462
 msgid "Modifications"
 msgstr "Modificaciones"
 
@@ -2799,7 +2801,7 @@ msgstr "Descripción:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:477
+#: src/gui/dialogs/multiplayer/lobby.cpp:478
 msgid "Experience modifier:"
 msgstr "Modificador de experiencia:"
 
@@ -2862,7 +2864,7 @@ msgstr "Oro:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#: src/gui/dialogs/multiplayer/lobby.cpp:478
+#: src/gui/dialogs/multiplayer/lobby.cpp:479
 msgid "Gold per village:"
 msgstr "Oro por aldea:"
 
@@ -2928,10 +2930,12 @@ msgstr "Generar mapa"
 msgid "Choose a map generator:"
 msgstr "Seleccione un generador de mapas:"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=random_map_settings
 #. [button]: id=settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
+#: src/gui/dialogs/multiplayer/lobby.cpp:477
 msgid "Settings"
 msgstr "Ajustes"
 
@@ -3968,10 +3972,8 @@ msgstr "Enfrentamientos con facciones aleatorias:"
 msgid "Allow for mirror matchups when random factions are chosen."
 msgstr "Permitir enfrentamientos espejo cuando se eligen facciones aleatorias."
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=mods_header
 #: data/gui/window/mp_create_game.cfg:203
-#: src/gui/dialogs/multiplayer/lobby.cpp:461
 msgid "Modifications:"
 msgstr "Modificaciones:"
 
@@ -4200,7 +4202,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:177
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:479
+#: src/gui/dialogs/multiplayer/lobby.cpp:480
 msgid "Map size:"
 msgstr "Tamaño del mapa:"
 
@@ -5829,7 +5831,7 @@ msgid "Attacker vulnerability vs"
 msgstr "Vulnerabilidad del atacante contra"
 
 #: src/gui/dialogs/campaign_selection.cpp:274
-#: src/gui/dialogs/multiplayer/lobby.cpp:466
+#: src/gui/dialogs/multiplayer/lobby.cpp:467
 msgid "active_modifications^None"
 msgstr "Ninguna"
 
@@ -6014,12 +6016,12 @@ msgid "Unknown"
 msgstr "Desconocido"
 
 #: src/gui/dialogs/game_stats.cpp:200 src/gui/dialogs/game_stats.cpp:203
-#: src/gui/dialogs/multiplayer/lobby.cpp:474
+#: src/gui/dialogs/multiplayer/lobby.cpp:475
 msgid "no"
 msgstr "no"
 
 #: src/gui/dialogs/game_stats.cpp:200 src/gui/dialogs/game_stats.cpp:203
-#: src/gui/dialogs/multiplayer/lobby.cpp:474
+#: src/gui/dialogs/multiplayer/lobby.cpp:475
 msgid "yes"
 msgstr "sí"
 
@@ -6188,58 +6190,60 @@ msgid "$game_name (Era: $era_name)"
 msgstr "$game_name (Era: $era_name)"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:455
-msgid "Era:"
+#, fuzzy
+#| msgid "Era:"
+msgid "Era"
 msgstr "Era:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:458
+#: src/gui/dialogs/multiplayer/lobby.cpp:459
 msgid "era^missing"
 msgstr "desconocida"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:476
-msgid "Settings:"
-msgstr "Ajustes:"
-
-#: src/gui/dialogs/multiplayer/lobby.cpp:480
+#: src/gui/dialogs/multiplayer/lobby.cpp:481
 msgid "Registered users only:"
 msgstr "Solo usuarios registrados:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:481
+#: src/gui/dialogs/multiplayer/lobby.cpp:482
 msgid "Reloaded:"
 msgstr "Recargada:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:482
+#: src/gui/dialogs/multiplayer/lobby.cpp:483
 msgid "Shared vision:"
 msgstr "Vista compartida:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:483
+#: src/gui/dialogs/multiplayer/lobby.cpp:484
 msgid "Shuffle sides:"
 msgstr "Bandos mezclados:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:484
+#: src/gui/dialogs/multiplayer/lobby.cpp:485
 msgid "Time limit:"
 msgstr "Límite de tiempo:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:485
+#: src/gui/dialogs/multiplayer/lobby.cpp:486
 msgid "Use map settings:"
 msgstr "Usar ajustes del mapa:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:493
+#: src/gui/dialogs/multiplayer/lobby.cpp:494
+#, fuzzy
+#| msgid ""
+#| "One or more items need to be installed\n"
+#| "in order to join this game."
 msgid ""
-"One or more items need to be installed\n"
+"One or more add-ons need to be installed\n"
 "in order to join this game."
 msgstr ""
 "Uno o más elementos han de ser instalados\n"
 "para poder unirse a esta partida."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:518
+#: src/gui/dialogs/multiplayer/lobby.cpp:519
 msgid "Observers allowed"
 msgstr "Se permiten observadores"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:521
+#: src/gui/dialogs/multiplayer/lobby.cpp:522
 msgid "Observers not allowed"
 msgstr "No se permiten observadores"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:955
+#: src/gui/dialogs/multiplayer/lobby.cpp:957
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at http://bugs.wesnoth.org."
@@ -7638,6 +7642,9 @@ msgstr ""
 "El nombre del atributo «$deprecated_key|» ha cambiado a «$key|». "
 "«$deprecated_key|» dejará de tener mantenimiento en la versión "
 "$removal_version."
+
+#~ msgid "Settings:"
+#~ msgstr "Ajustes:"
 
 #~ msgid "Refresh"
 #~ msgstr "Actualizar"

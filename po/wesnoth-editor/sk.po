@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-06 05:31-0300\n"
+"POT-Creation-Date: 2018-05-09 03:49-0300\n"
 "PO-Revision-Date: 2018-04-14 01:31+0200\n"
 "Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
@@ -425,7 +425,7 @@ msgstr ""
 "$new"
 
 #: src/editor/map/editor_map.cpp:148
-#: src/editor/palette/location_palette.cpp:115
+#: src/editor/palette/location_palette.cpp:119
 msgid "Player $side_num"
 msgstr "Hráč $side_num"
 
@@ -473,19 +473,27 @@ msgstr "(nie je súčasťou jadra)"
 msgid "Will not work in game without extra care."
 msgstr "Nebude fungovať v hre bez ďalšej práce."
 
-#: src/editor/palette/location_palette.cpp:252
+#: src/editor/palette/location_palette.cpp:256
 msgid "Go To"
 msgstr "Ísť na"
 
-#: src/editor/palette/location_palette.cpp:259
+#: src/editor/palette/location_palette.cpp:263
 msgid "Add"
 msgstr "Pridať"
 
-#: src/editor/palette/location_palette.cpp:261
+#: src/editor/palette/location_palette.cpp:265
 msgid "New Location Identifier"
 msgstr "Nový identifikátor polohy"
 
-#: src/editor/palette/location_palette.cpp:265
+#: src/editor/palette/location_palette.cpp:272
+msgid "Error"
+msgstr "Chyba"
+
+#: src/editor/palette/location_palette.cpp:273
+msgid "Invalid location id"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:280
 msgid "Delete"
 msgstr "Vymazať"
 
@@ -631,9 +639,6 @@ msgstr "Hráč $player_number"
 
 #~ msgid "Error creating action object"
 #~ msgstr "Chyba pri vytváraní objektu akcie"
-
-#~ msgid "Error"
-#~ msgstr "Chyba"
 
 #, fuzzy
 #~ msgid ""

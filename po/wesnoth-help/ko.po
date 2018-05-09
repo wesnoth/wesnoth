@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-06 05:31-0300\n"
+"POT-Creation-Date: 2018-05-09 03:48-0300\n"
 "PO-Revision-Date: 2013-10-25 16:24+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -1263,7 +1263,7 @@ msgid ""
 "from the menu or right-clicking on a hex and selecting <bold>text='Recruit'</"
 "bold>. This brings up the recruit menu, which lists units available for "
 "recruitment, along with their gold cost. Click on a unit to see its "
-"statistics, then press the OK button to recruit it."
+"statistics, then press the <bold>text='Recruit'</bold> button to recruit it."
 msgstr ""
 "각 팀은 그들의 본성과 그곳에 있는 대장 한명을 갖고 게임을 시작합니다. 어떤 전"
 "투든 처음 시작할때와 전투가 이어지는 동안 당신은 당신의 군단에 <ref>dst='.."
@@ -2755,8 +2755,8 @@ msgid ""
 "choose to only display add-ons of specific categories by clicking on the "
 "<bold>text='Options'</bold> button in the top-right corner.\n"
 "\n"
-"To install an add-on, select it from the list and click <bold>text='OK'</"
-"bold>, or simply double-click on the add-on’s title. The "
+"To install an add-on, select it from the list and click the <bold>text='+'</"
+"bold> icon, or simply double-click on the add-on’s title. The "
 "<bold>text='Description'</bold> button provides you with additional details "
 "about the add-on, such as its full description, installation status, and "
 "available languages."
@@ -4816,20 +4816,33 @@ msgid ""
 "having existed for over a millennium."
 msgstr ""
 
-#. [race]: id=falcon, description=
+#. [race]: id=falcon
 #: data/core/units.cfg:135
 msgid "race^Falcon"
 msgstr "인간"
 
-#. [race]: id=falcon, description=
+#. [race]: id=falcon
 #: data/core/units.cfg:136
 msgid "race+female^Falcon"
 msgstr "인간"
 
-#. [race]: id=falcon, description=
+#. [race]: id=falcon
 #: data/core/units.cfg:137
 msgid "race^Falcons"
 msgstr "인간족"
+
+#. [race]: id=falcon
+#: data/core/units.cfg:138
+msgid ""
+"Falcons are birds of prey, noted for their exceptional speed and agility. "
+"Lighter and with less powerful talons than other raptors, falcons instead "
+"favor the use of their beak to kill their targets. Their keen eye and "
+"capacity for domestication makes them a populous and well-known creature, "
+"used both by nobles in sport, and by nomads or tribes who find them useful "
+"in hunting for food. Falcons occasionally find a role on the field of war as "
+"well, with certain falconers training their birds to distinguish between "
+"friend and foe, making them a useful asset to aid in an army's charge."
+msgstr ""
 
 #. [race]: id=goblin
 #: data/core/units.cfg:148
@@ -5398,20 +5411,32 @@ msgstr ""
 "언데드 군주들은 Haldric 1세를 쫓아 다수의 군세를 이끌고 처음 대륙에 도달했던 "
 "시점 이전에는 엘프나 드워프들에 대해 한번도 들어본 적이 없었다."
 
-#. [race]: id=wolf, description=
+#. [race]: id=wolf
 #: data/core/units.cfg:366
 msgid "race^Wolf"
 msgstr "늑대"
 
-#. [race]: id=wolf, description=
+#. [race]: id=wolf
 #: data/core/units.cfg:367
 msgid "race+female^Wolf"
 msgstr "늑대과"
 
-#. [race]: id=wolf, description=
+#. [race]: id=wolf
 #: data/core/units.cfg:368
 msgid "race^Wolves"
 msgstr "늑대과"
+
+#. [race]: id=wolf
+#: data/core/units.cfg:369
+msgid ""
+"Wolves are predatory canines encountered frequently in the wilderness. "
+"Quick, tough, and durable, a solitary wolf suffices to maim or kill "
+"civilians and untrained soldiers with ease, but it is their tendency to "
+"travel in packs and attack in an organized manner that makes them "
+"particularly fearsome to travelers. They tend to stay away from "
+"civilization, though, only occasionally venturing close to prey upon "
+"livestock."
+msgstr ""
 
 #. [race]: id=wose
 #: data/core/units.cfg:378
