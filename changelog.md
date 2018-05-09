@@ -22,7 +22,7 @@
      * Hide technical terrains in the Help browser (Human Ship, Lava overlay).
      * New set of Quenoth faction and character portraits by LordBob.
      * Updated sprites for several Quenoth units.
-     * Added a custom terrain for the broken tree in S1.
+     * Added custom graphics for the broken tree in S1.
      * Fixed a bug in the formation ability causing defense bonuses not being
        received in some cases.
  ### Help browser
