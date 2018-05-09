@@ -199,6 +199,10 @@ website_stringfixes = {
 
 "1.14-announcement" : (
 ("better ingrate them", "better integrate them"),
+
+("wesnoth-1.14.0/wesnoth-1.14.0.tar.bz2", "wesnoth-1.14.1/wesnoth-1.14.1.tar.bz2"),
+("wesnoth-1.14.0/wesnoth-1.14.0-win32.exe", "wesnoth-1.14.1/wesnoth-1.14.1-win32.exe"),
+("wesnoth-1.14.0/Wesnoth_1.14.0.dmg", "wesnoth-1.14.1/Wesnoth_1.14.1a.dmg"),
 ),
 
 }
