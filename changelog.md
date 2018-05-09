@@ -5,7 +5,7 @@
    * Secrets of the Ancients
      * Fixed minor unit naming inconsistencies (issues #2844 and #2846).
    * Under the Burning Suns
-     * Added a custom terrain for the broken tree in S1.
+     * Added custom graphics for the broken tree in S1.
      * Various sprite and image updates.
      * Fixed a bug in the formation ability causing defense bonuses not being
        received in some cases.
