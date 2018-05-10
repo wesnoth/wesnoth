@@ -280,8 +280,8 @@ add_library(wesnoth-game ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${libwesnoth-game_STAT
 if(ENABLE_GAME)
 	add_executable(wesnoth WIN32 wesnoth.cpp)
 
-	target_link_libraries(wesnoth
-		-Wl,--start-group
+	if(NOT APPLE)
+		set(static-libs -Wl,--start-group
 		wesnoth-client
 		lua
 		wesnoth-core
@@ -289,7 +289,19 @@ if(ENABLE_GAME)
 		wesnoth-sdl
 		${WIDGETS_LIB}
 		wesnoth-client
-		-Wl,--end-group
+		-Wl,--end-group)
+	else()
+		set(static-libs wesnoth-client
+		lua
+		wesnoth-core
+		wesnoth-game
+		wesnoth-sdl
+		${WIDGETS_LIB}
+		wesnoth-client)
+	endif(NOT APPLE)
+
+	target_link_libraries(wesnoth
+		${static-libs}
 		${game-external-libs}
 	)
 	set_target_properties(wesnoth
@@ -362,8 +374,8 @@ if(ENABLE_TESTS)
 
 	add_executable(boost_unit_tests ${test_SRC})
 
-	target_link_libraries(boost_unit_tests
-		-Wl,--start-group
+	if(NOT APPLE)
+		set(static-libs -Wl,--start-group
 		wesnoth-client
 		lua
 		wesnoth-core
@@ -371,7 +383,19 @@ if(ENABLE_TESTS)
 		wesnoth-sdl
 		${WIDGETS_LIB}
 		wesnoth-client
-		-Wl,--end-group
+		-Wl,--end-group)
+	else()
+		set(static-libs wesnoth-client
+		lua
+		wesnoth-core
+		wesnoth-game
+		wesnoth-sdl
+		${WIDGETS_LIB}
+		wesnoth-client)
+	endif(NOT APPLE)
+
+	target_link_libraries(boost_unit_tests
+		${static-libs}
 		${game-external-libs}
 		boost_unit_test_framework
 	)
