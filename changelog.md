@@ -1,4 +1,6 @@
 ## Version 1.14.1+dev
+ ### Miscellaneous and bug fixes
+   * Fixed: unit halo remained after undoing a recall (issue #3065)
 
 ## Version 1.14.1
  ### Campaigns
