@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-06 05:31-0300\n"
+"POT-Creation-Date: 2018-05-09 03:49-0300\n"
 "PO-Revision-Date: 2009-02-23 19:16+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -455,7 +455,7 @@ msgid ""
 msgstr ""
 
 #: src/editor/map/editor_map.cpp:148
-#: src/editor/palette/location_palette.cpp:115
+#: src/editor/palette/location_palette.cpp:119
 msgid "Player $side_num"
 msgstr ""
 
@@ -505,19 +505,27 @@ msgstr ""
 msgid "Will not work in game without extra care."
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:252
+#: src/editor/palette/location_palette.cpp:256
 msgid "Go To"
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:259
+#: src/editor/palette/location_palette.cpp:263
 msgid "Add"
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:261
+#: src/editor/palette/location_palette.cpp:265
 msgid "New Location Identifier"
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:265
+#: src/editor/palette/location_palette.cpp:272
+msgid "Error"
+msgstr "Hata"
+
+#: src/editor/palette/location_palette.cpp:273
+msgid "Invalid location id"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:280
 msgid "Delete"
 msgstr ""
 
@@ -657,6 +665,3 @@ msgstr ""
 
 #~ msgid "Error creating action object"
 #~ msgstr "Eylem nesnesi oluşturulurken hata"
-
-#~ msgid "Error"
-#~ msgstr "Hata"

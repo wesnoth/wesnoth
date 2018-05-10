@@ -1,11 +1,13 @@
-## Version 1.14.0+dev
+## Version 1.14.1+dev
+
+## Version 1.14.1
  ### Campaigns
    * Eastern Invasion:
      * In 'Captured', fixed units incorrectly costing upkeep after leveling up.
    * Secrets of the Ancients
      * Fixed minor unit naming inconsistencies (issues #2844 and #2846).
    * Under the Burning Suns
-     * Added a custom terrain for the broken tree in S1.
+     * Added custom graphics for the broken tree in S1.
      * Various sprite and image updates.
      * Fixed a bug in the formation ability causing defense bonuses not being
        received in some cases.
@@ -45,6 +47,10 @@
    * Document --log-none in the wesnoth(6) manpage.
    * Avoid trying to load invalid base64-encoded data URIs.
    * wesnoth_addon_manager and the addons.wesnoth.org web index can now use data URIs.
+   * Fixed a crash when using certain invalid color= values.
+   * Implemented a workaround for an unhandled std::bad_cast from string comparison
+     functions that caused a crash-to-desktop when opening Preferences among others
+     (issue #3050).
 
 ## Version 1.14.0
  ### Campaigns

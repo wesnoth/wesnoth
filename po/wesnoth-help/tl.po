@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-06 05:31-0300\n"
+"POT-Creation-Date: 2018-05-09 03:48-0300\n"
 "PO-Revision-Date: 2008-02-21 10:21+0800\n"
 "Last-Translator: eve <eve_eso@yahoo.com>\n"
 "Language-Team: \n"
@@ -1168,7 +1168,7 @@ msgid ""
 "from the menu or right-clicking on a hex and selecting <bold>text='Recruit'</"
 "bold>. This brings up the recruit menu, which lists units available for "
 "recruitment, along with their gold cost. Click on a unit to see its "
-"statistics, then press the OK button to recruit it."
+"statistics, then press the <bold>text='Recruit'</bold> button to recruit it."
 msgstr ""
 "Lahat ng panig ay pamumunuan ng isang pinuno. Sa simula ng laban, at habang "
 "lumalaban, kailangan mong maghikayat <ref>dst=unitstext=units</ref> sa iyong "
@@ -2230,8 +2230,8 @@ msgid ""
 "choose to only display add-ons of specific categories by clicking on the "
 "<bold>text='Options'</bold> button in the top-right corner.\n"
 "\n"
-"To install an add-on, select it from the list and click <bold>text='OK'</"
-"bold>, or simply double-click on the add-on’s title. The "
+"To install an add-on, select it from the list and click the <bold>text='+'</"
+"bold> icon, or simply double-click on the add-on’s title. The "
 "<bold>text='Description'</bold> button provides you with additional details "
 "about the add-on, such as its full description, installation status, and "
 "available languages."
@@ -4059,26 +4059,39 @@ msgid ""
 "having existed for over a millennium."
 msgstr ""
 
-#. [race]: id=falcon, description=
+#. [race]: id=falcon
 #: data/core/units.cfg:135
 #, fuzzy
 #| msgid "race^Human"
 msgid "race^Falcon"
 msgstr "Tao"
 
-#. [race]: id=falcon, description=
+#. [race]: id=falcon
 #: data/core/units.cfg:136
 #, fuzzy
 #| msgid "race+female^Human"
 msgid "race+female^Falcon"
 msgstr "Tao"
 
-#. [race]: id=falcon, description=
+#. [race]: id=falcon
 #: data/core/units.cfg:137
 #, fuzzy
 #| msgid "race^Humans"
 msgid "race^Falcons"
 msgstr "Tao"
+
+#. [race]: id=falcon
+#: data/core/units.cfg:138
+msgid ""
+"Falcons are birds of prey, noted for their exceptional speed and agility. "
+"Lighter and with less powerful talons than other raptors, falcons instead "
+"favor the use of their beak to kill their targets. Their keen eye and "
+"capacity for domestication makes them a populous and well-known creature, "
+"used both by nobles in sport, and by nomads or tribes who find them useful "
+"in hunting for food. Falcons occasionally find a role on the field of war as "
+"well, with certain falconers training their birds to distinguish between "
+"friend and foe, making them a useful asset to aid in an army's charge."
+msgstr ""
 
 #. [race]: id=goblin
 #: data/core/units.cfg:148
@@ -4570,21 +4583,33 @@ msgid ""
 "and dwarves before that."
 msgstr ""
 
-#. [race]: id=wolf, description=
+#. [race]: id=wolf
 #: data/core/units.cfg:366
 msgid "race^Wolf"
 msgstr ""
 
-#. [race]: id=wolf, description=
+#. [race]: id=wolf
 #: data/core/units.cfg:367
 #, fuzzy
 #| msgid "race+female^Elf"
 msgid "race+female^Wolf"
 msgstr "Unano"
 
-#. [race]: id=wolf, description=
+#. [race]: id=wolf
 #: data/core/units.cfg:368
 msgid "race^Wolves"
+msgstr ""
+
+#. [race]: id=wolf
+#: data/core/units.cfg:369
+msgid ""
+"Wolves are predatory canines encountered frequently in the wilderness. "
+"Quick, tough, and durable, a solitary wolf suffices to maim or kill "
+"civilians and untrained soldiers with ease, but it is their tendency to "
+"travel in packs and attack in an organized manner that makes them "
+"particularly fearsome to travelers. They tend to stay away from "
+"civilization, though, only occasionally venturing close to prey upon "
+"livestock."
 msgstr ""
 
 #. [race]: id=wose

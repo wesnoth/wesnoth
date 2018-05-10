@@ -92,9 +92,9 @@ gzip フォーマットのファイルを展開して .gz という拡張子を�
 このセッションで使用する言語 \fIlang\fP 例: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
-sets the severity level of the log domains.  \fBall\fP can be used to match any
-log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default the \fBwarning\fP level is used for most domains, but
-\fBdeprecation\fP defaults to none.
+ログ領域(domain)の厳密さのレベルを設定する。 \fBall\fP は、どのログ領域にも対応させるために利用される。有効なレベルは以下の通り。
+\fBerror\fP、\ \fBwarning\fP、\ \fBinfo\fP、\ \fBdebug\fP。既定値では \fBwarning\fP
+レベルがほとんどのログ領域に使用されるが、\fBdeprecation\fPは無効である。
 .TP 
 \fB\-\-log\-precise\fP
 より正確なログファイルの時刻を表示する。
@@ -254,8 +254,9 @@ Games」の外に絶対パスで指定することもできる。Windows では
 \fBdata/multiplayer/eras.cfg\fP の中に記述されている。
 .TP 
 \fB\-\-exit\-at\-end\fP
-シナリオが終わると、ユーザーが OK
-をクリックする必要のある勝利／敗北のダイアログを表示せずに終了する。これはスクリプト化可能なベンチマークにも利用される。
+exits once the scenario is over, without displaying victory/defeat dialog
+which normally requires the user to click End Scenario.  This is also used
+for scriptable benchmarking.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
 マップの設定を使わず、代わりにデフォルト値を使用する。
