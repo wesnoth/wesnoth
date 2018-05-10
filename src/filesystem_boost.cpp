@@ -554,12 +554,9 @@ void set_user_data_dir(std::string newprefdir)
 			newprefdir = "Wesnoth" + get_version_path_suffix();
 		}
 
-		wchar_t docs_path[MAX_PATH];
+		PWSTR docs_path = nullptr;
+		HRESULT res = SHGetKnownFolderPath(FOLDERID_Documents, KF_FLAG_CREATE, nullptr, &docs_path);
 
-		HRESULT res = SHGetFolderPathW(nullptr,
-									   CSIDL_PERSONAL | CSIDL_FLAG_CREATE, nullptr,
-									   SHGFP_TYPE_CURRENT,
-									   docs_path);
 		if(res != S_OK) {
 			//
 			// Crummy fallback path full of pain and suffering.
