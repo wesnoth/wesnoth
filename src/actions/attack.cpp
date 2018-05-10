@@ -847,6 +847,11 @@ private:
 
 	bool update_display_;
 	bool OOS_error_;
+
+	bool use_prng_;
+
+	std::vector<bool> prng_attacker_;
+	std::vector<bool> prng_defender_;
 };
 
 attack::unit_info::unit_info(const map_location& loc, int weapon, unit_map& units)
@@ -908,7 +913,13 @@ attack::attack(const map_location& attacker,
 	, errbuf_()
 	, update_display_(update_display)
 	, OOS_error_(false)
+
+	//new experimental prng mode.
+	, use_prng_(preferences::get("use_prng") == "yes" && randomness::generator->is_networked() == false)
 {
+	if(use_prng_) {
+		std::cerr << "Using experimental PRNG for combat\n";
+	}
 }
 
 void attack::fire_event(const std::string& n)
@@ -1032,7 +1043,39 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 	int& abs_n = attacker_turn ? abs_n_attack_ : abs_n_defend_;
 	bool& update_fog = attacker_turn ? update_def_fog_ : update_att_fog_;
 
-	int ran_num = randomness::generator->get_random_int(0, 99);
+	int ran_num;
+        
+	if(use_prng_) {
+
+		std::vector<bool>& prng_seq = attacker_turn ? prng_attacker_ : prng_defender_;
+
+		if(prng_seq.empty()) {
+			const int ntotal = attacker.cth_*attacker.n_attacks_;
+			int num_hits = ntotal/100;
+			const int additional_hit_chance = ntotal%100;
+			if(additional_hit_chance > 0 && randomness::generator->get_random_int(0, 99) < additional_hit_chance) {
+				++num_hits;
+			}
+
+			std::vector<int> indexes;
+			for(int i = 0; i != attacker.n_attacks_; ++i) {
+				prng_seq.push_back(false);
+				indexes.push_back(i);
+			}
+
+			for(int i = 0; i != num_hits; ++i) {
+				int n = randomness::generator->get_random_int(0, static_cast<int>(indexes.size())-1);
+				prng_seq[indexes[n]] = true;
+				indexes.erase(indexes.begin() + n);
+			}
+		}
+
+		bool does_hit = prng_seq.back();
+		prng_seq.pop_back();
+		ran_num = does_hit ? 0 : 99;
+	} else {
+		ran_num = randomness::generator->get_random_int(0, 99);
+	}
 	bool hits = (ran_num < attacker.cth_);
 
 	int damage = 0;
