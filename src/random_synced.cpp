@@ -50,4 +50,9 @@ namespace randomness
 	{
 
 	}
+
+	bool synced_rng::is_networked() const
+	{
+		return true;
+	}
 }
