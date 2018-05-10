@@ -16,10 +16,6 @@
 
 #ifdef _WIN32
 
-#if _WIN32_WINNT < _WIN32_WINNT_VISTA
-#define BOOST_ASIO_DISABLE_IOCP
-#endif
-
 #ifdef INADDR_ANY
 #undef INADDR_ANY
 #endif

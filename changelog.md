@@ -25,6 +25,8 @@
      * Added custom graphics for the broken tree in S1.
      * Fixed a bug in the formation ability causing defense bonuses not being
        received in some cases.
+ ### Engine
+   * Windows 7 is now the minimum supported Windows version.
  ### Help browser
    * Unit descriptions use the new multiplication sign format for attack lists
      now (issue #2873).

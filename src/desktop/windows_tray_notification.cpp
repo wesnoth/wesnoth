@@ -135,9 +135,7 @@ bool windows_tray_notification::create_tray_icon()
 	nid->uCallbackMessage = WM_TRAYNOTIFY;
 	nid->uID = ICON_ID;
 	nid->hIcon = icon;
-#if _WIN32_WINNT >= 0x600
 	nid->hBalloonIcon = icon;
-#endif
 	lstrcpyW(nid->szTip, wtip.c_str());
 
 	// creating icon notification
