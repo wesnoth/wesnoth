@@ -205,7 +205,7 @@ end
 local function maybe_parsed(cfg)
 	if cfg == nil then return nil end
 	if cfg.delayed_variable_substitution == true then
-		return wesnoth.tovconfig(cfg)
+		return wml.tovconfig(cfg)
 	end
 	return cfg
 end
