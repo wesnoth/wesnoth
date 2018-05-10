@@ -44,7 +44,7 @@ function helper.modify_unit(filter, vars)
 		variable = "LUA_modify_unit",
 		kill = true
 	})
-	for i = 0, wesnoth.get_variable("LUA_modify_unit.length") - 1 do
+	for i = 0, wml.variables["LUA_modify_unit.length"] - 1 do
 		local u = string.format("LUA_modify_unit[%d]", i)
 		for k, v in pairs(vars) do
 			wesnoth.set_variable(u .. '.' .. k, v)
@@ -65,8 +65,8 @@ function helper.move_unit_fake(filter, to_x, to_y)
 		variable = "LUA_move_unit",
 		kill = false
 	})
-	local from_x = wesnoth.get_variable("LUA_move_unit.x")
-	local from_y = wesnoth.get_variable("LUA_move_unit.y")
+	local from_x = wml.variables["LUA_move_unit.x"]
+	local from_y = wml.variables["LUA_move_unit.y"]
 
 	wml_actions.scroll_to({ x=from_x, y=from_y })
 

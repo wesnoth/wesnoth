@@ -85,7 +85,7 @@ wesnoth.wml_actions["for"] = function(cfg)
 	local first
 	if cfg.array ~= nil then
 		if cfg.reverse then
-			first = wesnoth.get_variable(cfg.array .. ".length") - 1
+			first = wml.variables[cfg.array .. ".length"] - 1
 			loop_lim.last = 0
 			loop_lim.step = -1
 		else
@@ -119,16 +119,16 @@ wesnoth.wml_actions["for"] = function(cfg)
 		if loop_lim.step then
 			sentinel = sentinel + loop_lim.step
 			if loop_lim.step > 0 then
-				return wesnoth.get_variable(i_var) < sentinel
+				return wml.variables[i_var] < sentinel
 			else
-				return wesnoth.get_variable(i_var) > sentinel
+				return wml.variables[i_var] > sentinel
 			end
 		elseif loop_lim.last < first then
 			sentinel = sentinel - 1
-			return wesnoth.get_variable(i_var) > sentinel
+			return wml.variables[i_var] > sentinel
 		else
 			sentinel = sentinel + 1
-			return wesnoth.get_variable(i_var) < sentinel
+			return wml.variables[i_var] < sentinel
 		end
 	end
 	while loop_condition() do
@@ -144,7 +144,7 @@ wesnoth.wml_actions["for"] = function(cfg)
 				goto exit
 			end
 		end
-		wesnoth.set_variable(i_var, wesnoth.get_variable(i_var) + loop_lim.step)
+		wesnoth.set_variable(i_var, wml.variables[i_var] + loop_lim.step)
 	end
 	::exit::
 	utils.end_var_scope(i_var, save_i)
@@ -184,12 +184,12 @@ function wml_actions.foreach(cfg)
 	local this_item = utils.start_var_scope(item_name) -- if this_item is already set
 	local i_name = cfg.index_var or "i"
 	local i = utils.start_var_scope(i_name) -- if i is already set
-	local array_length = wesnoth.get_variable(array_name .. ".length")
+	local array_length = wml.variables[array_name .. ".length"]
 
 	for index, value in ipairs(array) do
 		-- Some protection against external modification
 		-- It's not perfect, though - it'd be nice if *any* change could be detected
-		if array_length ~= wesnoth.get_variable(array_name .. ".length") then
+		if array_length ~= wml.variables[array_name .. ".length"] then
 			helper.wml_error("WML array length changed during [foreach] iteration")
 		end
 		wesnoth.set_variable(item_name, value)
@@ -210,7 +210,7 @@ function wml_actions.foreach(cfg)
 		end
 		-- set back the content, in case the author made some modifications
 		if not cfg.readonly then
-			array[index] = wesnoth.get_variable(item_name)
+			array[index] = wml.variables[item_name]
 		end
 	end
 	::exit::
@@ -236,7 +236,7 @@ function wml_actions.foreach(cfg)
 end
 
 function wml_actions.switch(cfg)
-	local var_value = wesnoth.get_variable(cfg.variable)
+	local var_value = wml.variables[cfg.variable]
 	local found = false
 
 	-- Execute all the [case]s where the value matches.

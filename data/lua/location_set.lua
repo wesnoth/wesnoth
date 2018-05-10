@@ -145,8 +145,8 @@ end
 
 function methods:of_wml_var(name)
 	local values = self.values
-	for i = 0, wesnoth.get_variable(name .. ".length") - 1 do
-		local t = wesnoth.get_variable(string.format("%s[%d]", name, i))
+	for i = 0, wml.variables[name .. ".length"] - 1 do
+		local t = wml.variables[string.format("%s[%d]", name, i)]
 		local x, y = t.x, t.y
 		t.x, t.y = nil, nil
 		values[index(x, y)] = next(t) and t or true

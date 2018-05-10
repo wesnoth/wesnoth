@@ -12,59 +12,59 @@ function wesnoth.wml_actions.set_variable(cfg)
 	end
 
 	if cfg.to_variable then
-		wesnoth.set_variable(name, wesnoth.get_variable(cfg.to_variable))
+		wesnoth.set_variable(name, wml.variables[cfg.to_variable])
 	end
 
 	if cfg.suffix then
-		wesnoth.set_variable(name, (wesnoth.get_variable(name) or '') .. (cfg.suffix or ''))
+		wesnoth.set_variable(name, (wml.variables[name] or '') .. (cfg.suffix or ''))
 	end
 
 	if cfg.prefix then
-		wesnoth.set_variable(name, (cfg.prefix or '') .. (wesnoth.get_variable(name) or ''))
+		wesnoth.set_variable(name, (cfg.prefix or '') .. (wml.variables[name] or ''))
 	end
 
 	if cfg.add then
-		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) + (tonumber(cfg.add) or 0))
+		wesnoth.set_variable(name, (tonumber(wml.variables[name]) or 0) + (tonumber(cfg.add) or 0))
 	end
 
 	if cfg.sub then
-		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) - (tonumber(cfg.sub) or 0))
+		wesnoth.set_variable(name, (tonumber(wml.variables[name]) or 0) - (tonumber(cfg.sub) or 0))
 	end
 
 	if cfg.multiply then
-		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) * (tonumber(cfg.multiply) or 0))
+		wesnoth.set_variable(name, (tonumber(wml.variables[name]) or 0) * (tonumber(cfg.multiply) or 0))
 	end
 
 	if cfg.divide then
 		local divide = tonumber(cfg.divide) or 0
 		if divide == 0 then helper.wml_error("division by zero on variable " .. name) end
-		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) / divide)
+		wesnoth.set_variable(name, (tonumber(wml.variables[name]) or 0) / divide)
 	end
 
 	if cfg.modulo then
 		local modulo = tonumber(cfg.modulo) or 0
 		if modulo == 0 then helper.wml_error("division by zero on variable " .. name) end
-		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) % modulo)
+		wesnoth.set_variable(name, (tonumber(wml.variables[name]) or 0) % modulo)
 	end
 
 	if cfg.abs then
-		wesnoth.set_variable(name, math.abs(tonumber(wesnoth.get_variable(name)) or 0))
+		wesnoth.set_variable(name, math.abs(tonumber(wml.variables[name]) or 0))
 	end
 
 	if cfg.root then
 		if cfg.root == "square" then
-			local radicand = tonumber(wesnoth.get_variable(name)) or 0
+			local radicand = tonumber(wml.variables[name]) or 0
 			if radicand < 0 then helper.wml_error("square root of negative number on variable " .. name) end
 			wesnoth.set_variable(name, math.sqrt(radicand))
 		end
 	end
 
 	if cfg.power then
-		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) ^ (tonumber(cfg.power) or 0))
+		wesnoth.set_variable(name, (tonumber(wml.variables[name]) or 0) ^ (tonumber(cfg.power) or 0))
 	end
 
 	if cfg.round then
-		local var = tonumber(wesnoth.get_variable(name) or 0)
+		local var = tonumber(wml.variables[name] or 0)
 		local round_val = cfg.round
 		if round_val == "ceil" then
 			wesnoth.set_variable(name, math.ceil(var))
@@ -108,7 +108,7 @@ function wesnoth.wml_actions.set_variable(cfg)
 
 	if cfg.formula then
 		local fcn = wesnoth.compile_formula(cfg.formula)
-		wesnoth.set_variable(name, fcn(wesnoth.get_variable(name)))
+		wesnoth.set_variable(name, fcn(wml.variables[name]))
 	end
 
 	local join_child = wml.get_child(cfg, "join")
