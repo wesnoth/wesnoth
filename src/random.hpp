@@ -81,6 +81,13 @@ namespace randomness
 		uint32_t operator()() { return next_random(); }
 
 		static rng& default_instance();
+
+		/**
+		 * Is this random source networked? If it is it's very important we do actually use
+		 * this random source to stay in-sync.
+		 */
+		virtual bool is_networked() const { return false; }
+
 	protected:
 		virtual uint32_t next_random_impl() = 0;
 		unsigned int random_calls_;

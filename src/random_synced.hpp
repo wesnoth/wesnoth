@@ -30,6 +30,8 @@ namespace randomness
 		synced_rng(std::function<std::string()> seed_generator);
 		virtual ~synced_rng();
 
+		virtual bool is_networked() const;
+
 	protected:
 		virtual uint32_t next_random_impl();
 	private:
