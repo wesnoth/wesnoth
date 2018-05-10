@@ -101,7 +101,7 @@ wesnoth.wml_actions["for"] = function(cfg)
 		loop_lim.last = cfg_lit["end"] or first
 		loop_lim.step = cfg_lit.step or 1
 	end
-	loop_lim = wesnoth.tovconfig(loop_lim)
+	loop_lim = wml.tovconfig(loop_lim)
 	if loop_lim.step == 0 then -- Sanity check
 		helper.wml_error("[for] has a step of 0!")
 	end

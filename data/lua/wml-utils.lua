@@ -127,7 +127,7 @@ function utils.handle_event_commands(cfg, scope_type)
 			elseif string.sub(from, -1) ~= ']' then
 				insert_from = from
 			end
-			arg = wesnoth.tovconfig(arg)
+			arg = wml.tovconfig(arg)
 		end
 		if not string.find(cmd, "^filter") then
 			cmd = wesnoth.wml_actions[cmd] or
@@ -139,7 +139,7 @@ function utils.handle_event_commands(cfg, scope_type)
 					if current_exit ~= "none" then break end
 					j = j + 1
 					if j >= wesnoth.get_variable(insert_from .. ".length") then break end
-					arg = wesnoth.tovconfig(wesnoth.get_variable(string.format("%s[%d]", insert_from, j)))
+					arg = wml.tovconfig(wesnoth.get_variable(string.format("%s[%d]", insert_from, j)))
 				until false
 			else
 				cmd(arg)
