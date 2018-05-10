@@ -3,7 +3,7 @@ local T = wml.tag
 local res = {}
 
 res.quick_4mp_leaders = function(args)
-	local make_4mp_leaders_quick = wesnoth.get_variable("make_4mp_leaders_quick")
+	local make_4mp_leaders_quick = wml.variables["make_4mp_leaders_quick"]
 	if make_4mp_leaders_quick == nil then
 		make_4mp_leaders_quick = wesnoth.game_config.mp_settings and (wesnoth.game_config.mp_settings.mp_campaign == "")
 	end
@@ -22,7 +22,7 @@ res.quick_4mp_leaders = function(args)
 end
 
 res.turns_over_advantage = function()
-	local show_turns_over_advantage = wesnoth.get_variable("show_turns_over_advantage")
+	local show_turns_over_advantage = wml.variables["show_turns_over_advantage"]
 	if show_turns_over_advantage == nil then
 		show_turns_over_advantage = wesnoth.game_config.mp_settings and (wesnoth.game_config.mp_settings.mp_campaign == "")
 	end
@@ -67,7 +67,7 @@ res.turns_over_advantage = function()
 				for i, unit in ipairs( wesnoth.get_units { side = side } ) do
 					if not unit.__cfg.canrecruit then
 						wesnoth.fire("unit_worth", { id = unit.id })
-						units = units + wesnoth.get_variable("unit_worth")
+						units = units + wml.variables["unit_worth"]
 					end
 				end
 				-- Up to here
