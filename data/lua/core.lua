@@ -253,14 +253,18 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		end
 	})
 
+	-- So that definition of wml.variables does not cause deprecation warnings:
+	local get_variable_local = wesnoth.get_variable
+	local set_variable_local = wesnoth.set_variable
+
 	-- Get and set variables via wml.variables[variable_path]
 	wml.variables = setmetatable({}, {
 		__metatable = "WML variables",
 		__index = function(_, key)
-			return wesnoth.get_variable(key)
+			return get_variable_local(key)
 		end,
 		__newindex = function(_, key, value)
-			wesnoth.set_variable(key, value)
+			set_variable_local(key, value)
 		end
 	})
 
@@ -325,7 +329,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 
 	local function resolve_variable_context(ctx, err_hint)
 		if ctx == nil then
-			return {get = wesnoth.get_variable, set = wesnoth.set_variable}
+			return {get = get_variable_local, set = set_variable_local}
 		elseif type(ctx) == 'number' and ctx > 0 and ctx <= #wesnoth.sides then
 			return resolve_variable_context(wesnoth.sides[ctx])
 		elseif type(ctx) == 'string' then
