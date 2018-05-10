@@ -153,6 +153,7 @@
      functions that caused a crash-to-desktop when opening Preferences among others
      (issue #3050).
    * Fixed a crash when using certain invalid color= values.
+   * Fixed: unit halo remained after undoing a recall (issue #3065).
 
 ## Version 1.13.12
  ### Security fixes
