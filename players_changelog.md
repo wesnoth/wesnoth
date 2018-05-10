@@ -37,6 +37,7 @@ changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog.md
    * Implemented a workaround for an unhandled std::bad_cast from string comparison
      functions that caused a crash-to-desktop when opening Preferences among others
      (issue #3050).
+   * Fixed: unit halo remained after undoing a recall (issue #3065).
 
 
 ## Version 1.13.12
