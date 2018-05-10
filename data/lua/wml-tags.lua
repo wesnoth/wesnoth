@@ -26,17 +26,17 @@ function wml_actions.sync_variable(cfg)
 			local res = {}
 			for name_raw in utils.split(names) do
 				local name = utils.trim(name_raw)
-				local variable_type = string.sub(name, string.len(name)) == "]" and "indexed" or ( wesnoth.get_variable(name .. ".length") > 0 and "array" or "attribute")
+				local variable_type = string.sub(name, string.len(name)) == "]" and "indexed" or ( wml.variables[name .. ".length"] > 0 and "array" or "attribute")
 				local variable_info = { name = name, type = variable_type }
 				table.insert(res, { "variable", variable_info })
 				if variable_type == "indexed" then
-					table.insert(variable_info, { "value", wesnoth.get_variable(name) } )
+					table.insert(variable_info, { "value", wml.variables[name] } )
 				elseif variable_type == "array" then
-					for i = 1, wesnoth.get_variable(name .. ".length") do
-						table.insert(variable_info, { "value",  wesnoth.get_variable(string.format("%s[%d]", name, i - 1)) } )
+					for i = 1, wml.variables[name .. ".length"] do
+						table.insert(variable_info, { "value",  wml.variables[string.format("%s[%d]", name, i - 1)] } )
 					end
 				else
-					variable_info.value = wesnoth.get_variable(name)
+					variable_info.value = wml.variables[name]
 				end
 			end
 			return res
@@ -821,7 +821,7 @@ end
 
 wml_actions.unstore_unit = function(cfg)
 	local variable = cfg.variable or helper.wml_error("[unstore_unit] missing required 'variable' attribute")
-	local unit_cfg = wesnoth.get_variable(variable) or helper.wml_error("[unstore_unit]: variable '" .. variable .. "' doesn't exist")
+	local unit_cfg = wml.variables[variable] or helper.wml_error("[unstore_unit]: variable '" .. variable .. "' doesn't exist")
 	if type(unit_cfg) ~= "table" or unit_cfg.type == nil then
 		helper.wml_error("[unstore_unit]: variable '" .. variable .. "' doesn't contain unit data")
 	end

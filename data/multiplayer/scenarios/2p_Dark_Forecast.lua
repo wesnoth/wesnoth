@@ -160,7 +160,7 @@ end
 -- @a base_gold_amount, gold_increment: used to cauculate the amount of gold available for each timed spawn
 -- @a units_amount, gold_per_unit_amount: used to cauculate the number of units spawned in each timed spawn
 local function create_timed_spaws(interval, num_spawns, base_gold_amount, gold_increment, units_amount, gold_per_unit_amount)
-	local configure_gold_factor = ((wesnoth.get_variable("enemey_gold_factor") or 0) + 100)/100
+	local configure_gold_factor = ((wml.variables["enemey_gold_factor"] or 0) + 100)/100
 	local random_spawn_numbers = {}
 	for i = 1, #random_spawns do
 		table.insert(random_spawn_numbers, i)
@@ -243,12 +243,12 @@ local function place_units(unittypes, x, y)
 end
 
 local function final_spawn()
-	local spawns_left = wesnoth.get_variable("fixed_spawn.length")
+	local spawns_left = wml.variables["fixed_spawn.length"]
 	if spawns_left == 0 then
 		return
 	end
 	local spawn_index = wesnoth.random(spawns_left) - 1
-	local spawn = wesnoth.get_variable(string.format("fixed_spawn[%d]", spawn_index))
+	local spawn = wml.variables[string.format("fixed_spawn[%d]", spawn_index)]
 	wesnoth.set_variable(string.format("fixed_spawn[%d]", spawn_index))
 	local types = {}
 	for tag in helper.child_range(spawn, "type") do
@@ -278,7 +278,7 @@ end)
 --   when they appear is defined in the 'timed_spawn' wml array. which is created at prestart
 --   which unit types get spawned is defined in the 'main_spawn' wml array which is also spawned at prestart
 on_event("new turn", function()
-	local next_spawn = wesnoth.get_variable("timed_spawn[0]")
+	local next_spawn = wml.variables["timed_spawn[0]"]
 	if wesnoth.current.turn ~= next_spawn.turn then
 		return
 	end
@@ -293,7 +293,7 @@ end)
 
 -- on turn 'final_turn' the first 'final spawn' appears
 on_event("new turn", function()
-	if wesnoth.current.turn ~= wesnoth.get_variable("final_turn") then
+	if wesnoth.current.turn ~= wml.variables["final_turn"] then
 		return
 	end
 	wesnoth.wml_actions.music {
@@ -313,7 +313,7 @@ end)
 
 -- after the first final spawn, spawn a new final spawn every 1 or 2 turns.
 on_event("new turn", function()
-	if wesnoth.current.turn ~= wesnoth.get_variable("next_final_spawn") then
+	if wesnoth.current.turn ~= wml.variables["next_final_spawn"] then
 		return
 	end
 	final_spawn()
@@ -322,7 +322,7 @@ end)
 
 -- The victory condition: win when there are no enemy unit after the first final spawn appeared.
 on_event("die", function()
-	if wesnoth.current.turn < wesnoth.get_variable("final_turn") then
+	if wesnoth.current.turn < wml.variables["final_turn"] then
 		return
 	end
 	if wesnoth.wml_conditionals.have_unit { side = "1,2"} then
@@ -445,7 +445,7 @@ end
 -- change weather at side 3 turns, TODO: consider the case that side 3 is empty.
 on_event("side 3 turn", function()
 	-- get next weather event
-	local weather_event = wesnoth.get_variable("weather_event[0]")
+	local weather_event = wml.variables["weather_event[0]"]
 	if weather_event == nil then
 		return
 	end

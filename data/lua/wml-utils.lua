@@ -30,7 +30,7 @@ function utils.vwriter.init(cfg, default_variable)
 	if is_explicit_index then
 		-- explicit indexes behave always like "replace"
 	elseif mode == "append" then
-		index = wesnoth.get_variable(variable .. ".length")
+		index = wml.variables[variable .. ".length"]
 	elseif mode ~= "replace" then
 		wesnoth.set_variable(variable)
 	end
@@ -119,7 +119,7 @@ function utils.handle_event_commands(cfg, scope_type)
 			local from = arg.variable or
 				helper.wml_error("[insert_tag] found with no variable= field")
 
-			arg = wesnoth.get_variable(from)
+			arg = wml.variables[from]
 			if type(arg) ~= "table" then
 				-- Corner case: A missing variable is replaced
 				-- by an empty container rather than being ignored.
@@ -138,8 +138,8 @@ function utils.handle_event_commands(cfg, scope_type)
 					cmd(arg)
 					if current_exit ~= "none" then break end
 					j = j + 1
-					if j >= wesnoth.get_variable(insert_from .. ".length") then break end
-					arg = wml.tovconfig(wesnoth.get_variable(string.format("%s[%d]", insert_from, j)))
+					if j >= wml.variables[insert_from .. ".length"] then break end
+					arg = wml.tovconfig(wml.variables[string.format("%s[%d]", insert_from, j)])
 				until false
 			else
 				cmd(arg)
@@ -193,7 +193,7 @@ end
 --note: when using these, make sure that nothing can throw over the call to end_var_scope
 function utils.start_var_scope(name)
 	local var = wml.array_access.get(name) --containers and arrays
-	if #var == 0 then var = wesnoth.get_variable(name) end --scalars (and nil/empty)
+	if #var == 0 then var = wml.variables[name] end --scalars (and nil/empty)
 	wesnoth.set_variable(name)
 	return var
 end

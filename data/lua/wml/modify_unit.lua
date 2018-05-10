@@ -33,7 +33,7 @@ function wml_actions.modify_unit(cfg)
 	local function handle_unit(unit_num)
 		local children_handled = {}
 		local unit_path = string.format("%s[%u]", unit_variable, unit_num)
-		local this_unit = wesnoth.get_variable(unit_path)
+		local this_unit = wml.variables[unit_path]
 		wesnoth.set_variable("this_unit", this_unit)
 		handle_attributes(cfg, unit_path, true)
 
@@ -48,7 +48,7 @@ function wml_actions.modify_unit(cfg)
 				else
 					mod = wml.parsed(mod)
 				end
-				local unit = wesnoth.get_variable(unit_path)
+				local unit = wml.variables[unit_path]
 				unit = wesnoth.create_unit(unit)
 				wesnoth.add_modification(unit, current_tag, mod)
 				unit = unit.__cfg;
@@ -57,7 +57,7 @@ function wml_actions.modify_unit(cfg)
 				local mod = current_table[2]
 				local apply_to = mod.apply_to
 				if wesnoth.effects[apply_to] then
-					local unit = wesnoth.get_variable(unit_path)
+					local unit = wml.variables[unit_path]
 					unit = wesnoth.create_unit(unit)
 					wesnoth.effects[apply_to](unit, mod)
 					unit = unit.__cfg;
@@ -78,14 +78,14 @@ function wml_actions.modify_unit(cfg)
 
 		if cfg.type then
 			if cfg.type ~= "" then wesnoth.set_variable(unit_path .. ".advances_to", cfg.type) end
-			wesnoth.set_variable(unit_path .. ".experience", wesnoth.get_variable(unit_path .. ".max_experience"))
+			wesnoth.set_variable(unit_path .. ".experience", wml.variables[unit_path .. ".max_experience"])
 		end
 		wml_actions.kill({ id = this_unit.id, animate = false })
 		wml_actions.unstore_unit { variable = unit_path }
 	end
 
 	wml_actions.store_unit { {"filter", filter}, variable = unit_variable }
-	local max_index = wesnoth.get_variable(unit_variable .. ".length") - 1
+	local max_index = wml.variables[unit_variable .. ".length"] - 1
 
 	local this_unit = utils.start_var_scope("this_unit")
 	for current_unit = 0, max_index do

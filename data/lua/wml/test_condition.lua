@@ -34,7 +34,7 @@ local function explain(current_cfg, expect, logger)
 			end
 			explanation = string.format("%s\n\t[/%s]", explanation, tag)
 			if tag == "variable" then
-				explanation = string.format("%s\n\tNote: The variable %s currently has the value %q.", explanation, this_cfg.name, tostring(wesnoth.get_variable(this_cfg.name)))
+				explanation = string.format("%s\n\tNote: The variable %s currently has the value %q.", explanation, this_cfg.name, tostring(wml.variables[this_cfg.name]))
 			end
 			wesnoth.log(logger, explanation, true)
 			return true

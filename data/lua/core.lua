@@ -271,7 +271,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	}
 
 	local function get_variable_proxy(k)
-		local v = wesnoth.get_variable(k)
+		local v = wml.variables[k]
 		if type(v) == "table" then
 			v = setmetatable({ __varname = k }, variable_mt)
 		end
@@ -280,7 +280,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 
 	local function set_variable_proxy(k, v)
 		if getmetatable(v) == "WML variable proxy" then
-			v = wesnoth.get_variable(v.__varname)
+			v = wml.variables[v.__varname]
 		end
 		wesnoth.set_variable(k, v)
 	end
@@ -378,7 +378,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	--! @returns a table containing all the variable proxies (starting at index 1).
 	function wml.array_access.get_proxy(var)
 		local result = {}
-		for i = 1, wesnoth.get_variable(var .. ".length") do
+		for i = 1, wml.variables[var .. ".length"] do
 			result[i] = get_variable_proxy(string.format("%s[%d]", var, i - 1))
 		end
 		return result
