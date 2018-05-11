@@ -32,7 +32,7 @@ function utils.vwriter.init(cfg, default_variable)
 	elseif mode == "append" then
 		index = wml.variables[variable .. ".length"]
 	elseif mode ~= "replace" then
-		wesnoth.set_variable(variable)
+		wml.variables[variable] = nil
 	end
 	return {
 		variable = variable,
@@ -43,9 +43,9 @@ end
 
 function utils.vwriter.write(self, container)
 	if self.is_explicit_index then
-		wesnoth.set_variable(self.variable, container)
+		wml.variables[self.variable] = container
 	else
-		wesnoth.set_variable(string.format("%s[%u]", self.variable, self.index), container)
+		wml.variables[string.format("%s[%u]", self.variable, self.index)] = container
 	end
 	self.index = self.index + 1
 end
@@ -194,16 +194,16 @@ end
 function utils.start_var_scope(name)
 	local var = wml.array_access.get(name) --containers and arrays
 	if #var == 0 then var = wml.variables[name] end --scalars (and nil/empty)
-	wesnoth.set_variable(name)
+	wml.variables[name] = nil
 	return var
 end
 
 function utils.end_var_scope(name, var)
-	wesnoth.set_variable(name)
+	wml.variables[name] = nil
 	if type(var) == "table" then
 		wml.array_access.set(name, var)
 	else
-		wesnoth.set_variable(name, var)
+		wml.variables[name] = var
 	end
 end
 
