@@ -1092,9 +1092,9 @@ end
 function ai_helper.has_ability(unit, ability)
     -- Returns true/false depending on whether unit has the given ability
     local has_ability = false
-    local abilities = H.get_child(unit.__cfg, "abilities")
+    local abilities = wml.get_child(unit.__cfg, "abilities")
     if abilities then
-        if H.get_child(abilities, ability) then has_ability = true end
+        if wml.get_child(abilities, ability) then has_ability = true end
     end
     return has_ability
 end

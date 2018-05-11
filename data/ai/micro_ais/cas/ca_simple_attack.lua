@@ -8,13 +8,13 @@ local ca_simple_attack, best_attack = {}
 function ca_simple_attack:evaluation(cfg)
     local units = AH.get_units_with_attacks {
         side = wesnoth.current.side,
-        { "and", H.get_child(cfg, "filter") }
+        { "and", wml.get_child(cfg, "filter") }
     }
     if (not units[1]) then return 0 end
 
     -- If cfg.filter_second is set, set up a map (location set)
     -- of enemies that it is okay to attack
-    local enemy_filter = H.get_child(cfg, "filter_second")
+    local enemy_filter = wml.get_child(cfg, "filter_second")
     local enemy_map
     if enemy_filter then
         local enemies = AH.get_attackable_enemies(enemy_filter)

@@ -18,8 +18,8 @@ function ca_fast_combat_leader:evaluation(cfg, data)
     data.move_cache = { turn = wesnoth.current.turn }
     data.gamedata = FAU.gamedata_setup()
 
-    local filter_own = H.get_child(cfg, "filter")
-    local filter_enemy = H.get_child(cfg, "filter_second")
+    local filter_own = wml.get_child(cfg, "filter")
+    local filter_enemy = wml.get_child(cfg, "filter_second")
 
     local enemies, leader
     if (not filter_own) and (not filter_enemy) then

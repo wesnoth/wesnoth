@@ -6,8 +6,8 @@ local M = wesnoth.map
 local function get_dog(cfg)
     local dogs = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", H.get_child(cfg, "filter") },
-        { "not", { { "filter_adjacent", { side = wesnoth.current.side, { "and", H.get_child(cfg, "filter_second") } } } } }
+        { "and", wml.get_child(cfg, "filter") },
+        { "not", { { "filter_adjacent", { side = wesnoth.current.side, { "and", wml.get_child(cfg, "filter_second") } } } } }
     }
     return dogs[1]
 end
@@ -23,7 +23,7 @@ end
 function ca_herding_dog_move:execution(cfg)
     -- We simply move the first dog first, order does not matter
     local dog = get_dog(cfg)
-    local herding_perimeter = LS.of_pairs(wesnoth.get_locations(H.get_child(cfg, "filter_location")))
+    local herding_perimeter = LS.of_pairs(wesnoth.get_locations(wml.get_child(cfg, "filter_location")))
 
     -- Find average distance of herding_perimeter from center
     local av_dist = 0
