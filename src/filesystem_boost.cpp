@@ -572,6 +572,8 @@ void set_user_data_dir(std::string newprefdir)
 
 			user_data_dir = games_path / newprefdir;
 		}
+
+		CoTaskMemFree(docs_path);
 	}
 
 #else /*_WIN32*/
