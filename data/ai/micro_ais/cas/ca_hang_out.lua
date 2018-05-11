@@ -66,7 +66,7 @@ function ca_hang_out:execution(cfg)
         avoid_map = LS.of_pairs(wesnoth.get_locations(avoid_tag))
     else
         local ai_tag = wml.get_child(wesnoth.sides[wesnoth.current.side].__cfg, 'ai')
-        for aspect in H.child_range(ai_tag, 'aspect') do
+        for aspect in wml.child_range(ai_tag, 'aspect') do
             if (aspect.id == 'avoid') then
                 local facet = wml.get_child(aspect, 'facet')
                 if facet or aspect.name ~= "composite_aspect" then
