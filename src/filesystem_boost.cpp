@@ -1453,7 +1453,7 @@ std::string sanitize_path(const std::string& path)
 #endif
 
 	std::string canonicalized = filesystem::normalize_path(path, true, false);
-	if(user_name != nullptr) {
+	if(user_name == nullptr) {
 		boost::replace_all(canonicalized, user_name, "USER");
 	}
 
