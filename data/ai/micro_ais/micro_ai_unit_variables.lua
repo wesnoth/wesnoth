@@ -70,7 +70,7 @@ function micro_ai_unit_variables.get_mai_unit_variables(unit, ai_id, key)
     --     table of key=value pairs (including the ai_id key)
     --   - If no such tag is found: nil (if @key is set), otherwise empty table
 
-    for mai in H.child_range(unit.variables.__cfg, "micro_ai") do
+    for mai in wml.child_range(unit.variables.__cfg, "micro_ai") do
         if (mai.ai_id == ai_id) then
             if key then
                 return mai[key]

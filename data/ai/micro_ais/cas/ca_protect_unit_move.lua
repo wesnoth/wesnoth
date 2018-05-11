@@ -5,7 +5,7 @@ local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 
 local function get_protected_units(cfg)
     local units = {}
-    for u in H.child_range(cfg, "unit") do
+    for u in wml.child_range(cfg, "unit") do
         table.insert(units, AH.get_units_with_moves { id = u.id }[1])
     end
     return units
@@ -38,7 +38,7 @@ function ca_protect_unit_move:execution(cfg, data)
     -- We move the weakest (fewest HP unit) first
     local unit = AH.choose(protected_units, function(u) return - u.hitpoints end)
     local goal = {}
-    for u in H.child_range(cfg, "unit") do
+    for u in wml.child_range(cfg, "unit") do
         if (unit.id == u.id) then goal = { u.goal_x, u.goal_y } end
     end
 

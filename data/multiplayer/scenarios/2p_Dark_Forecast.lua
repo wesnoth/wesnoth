@@ -251,7 +251,7 @@ local function final_spawn()
 	local spawn = wml.variables[string.format("fixed_spawn[%d]", spawn_index)]
 	wml.variables[string.format("fixed_spawn[%d]", spawn_index)] = nil
 	local types = {}
-	for tag in helper.child_range(spawn, "type") do
+	for tag in wml.child_range(spawn, "type") do
 		table.insert(types, tag.type)
 	end
 	place_units(types, spawn.x, spawn.y)

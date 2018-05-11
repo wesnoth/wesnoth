@@ -85,7 +85,7 @@ function retreat_functions.get_healing_locations()
             local heal_amount = 0
             local cure = 0
             local abilities = wml.get_child(u.__cfg, "abilities") or {}
-            for ability in H.child_range(abilities, "heals") do
+            for ability in wml.child_range(abilities, "heals") do
                 heal_amount = ability.value
                 if ability.poison == "slowed" then
                     cure = 1

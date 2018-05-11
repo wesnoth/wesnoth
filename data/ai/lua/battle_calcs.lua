@@ -38,11 +38,11 @@ function battle_calcs.unit_attack_info(unit, cache)
         resist_mod = {},
         alignment = unit_cfg.alignment
     }
-    for attack in H.child_range(unit_cfg, 'attack') do
+    for attack in wml.child_range(unit_cfg, 'attack') do
         -- Extract information for specials; we do this first because some
         -- custom special might have the same name as one of the default scalar fields
         local a = {}
-        for special in H.child_range(attack, 'specials') do
+        for special in wml.child_range(attack, 'specials') do
             for _,sp in ipairs(special) do
                 if (sp[1] == 'damage') then  -- this is 'backstab'
                     if (sp[2].id == 'backstab') then
