@@ -163,7 +163,7 @@ bool manager::can_modify_game_state() const
 bool manager::can_activate() const
 {
 	//any more than one reference means a lock on whiteboard state was requested
-	if(!activation_state_lock_.unique())
+	if(activation_state_lock_.use_count() != 1)
 		return false;
 
 	return can_modify_game_state();
@@ -202,7 +202,7 @@ void manager::set_active(bool active)
 void manager::set_invert_behavior(bool invert)
 {
 	//any more than one reference means a lock on whiteboard state was requested
-	if(!activation_state_lock_.unique())
+	if(activation_state_lock_.use_count() != 1)
 		return;
 
 	bool block_whiteboard_activation = false;
@@ -272,7 +272,7 @@ bool manager::allow_leader_to_move(const unit& leader) const
 
 	//Look for another leader on another keep in the same castle
 	{ wb::future_map future; // start planned unit map scope
-	
+
 		// TODO: when the game executes all whiteboard moves at turn end applying the future map
 		//       will fail because we are currently executing actions, and if one of those actions
 		//       was a movement of the leader this function will be called, resulting the the error
@@ -537,7 +537,7 @@ namespace
 
 void manager::pre_draw()
 {
-	if (can_modify_game_state() && has_actions() && unit_map_lock_.unique()) {
+	if (can_modify_game_state() && has_actions() && unit_map_lock_.use_count() == 1) {
 		move_owners_finder move_finder;
 		for_each_action(std::ref(move_finder));
 		units_owning_moves_ = move_finder.get_units_owning_moves();
@@ -1160,7 +1160,7 @@ void manager::set_planned_unit_map()
 		return;
 	}
 	//any more than one reference means a lock on unit map was requested
-	if(!unit_map_lock_.unique()) {
+	if(unit_map_lock_.use_count() != 1) {
 		LOG_WB << "Not building planned unit map: unit map locked.\n";
 		return;
 	}

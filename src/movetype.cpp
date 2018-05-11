@@ -514,7 +514,7 @@ void movetype::terrain_info::merge(const config & new_values, bool overwrite)
 	merged_data_.reset();
 
 	// Copy-on-write.
-	if ( !data_.unique() ) {
+	if(data_.use_count() != 1) {
 		data_.reset(new data(*data_));
 		// We also need to make copies of our fallback and cascade.
 		// This is to keep the caching manageable, as this means each
@@ -593,7 +593,7 @@ const std::shared_ptr<movetype::terrain_info::data> &
  */
 void movetype::terrain_info::make_unique_cascade() const
 {
-	if ( !data_.unique() )
+	if(data_.use_count() != 1)
 		// Const hack because this is not really changing the data.
 		const_cast<terrain_info *>(this)->data_.reset(new data(*data_));
 
@@ -607,7 +607,7 @@ void movetype::terrain_info::make_unique_cascade() const
  */
 void movetype::terrain_info::make_unique_fallback() const
 {
-	if ( !data_.unique() )
+	if(data_.use_count() != 1)
 		// Const hack because this is not really changing the data.
 		const_cast<terrain_info *>(this)->data_.reset(new data(*data_));
 
