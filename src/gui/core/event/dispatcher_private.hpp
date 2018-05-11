@@ -291,8 +291,7 @@ inline bool fire_event(const ui_event event,
 
 	/***** ***** ***** Pre ***** ***** *****/
 	for(auto& ritor_widget : boost::adaptors::reverse(event_chain)) {
-		dispatcher::signal_type<T>& signal =
-			dispatcher_implementation::event_signal<T>(*ritor_widget.first, ritor_widget.second);
+		auto& signal = dispatcher_implementation::event_signal<T>(*ritor_widget.first, ritor_widget.second);
 
 		for(auto& pre_func : signal.pre_child) {
 			pre_func(*dispatcher, ritor_widget.second, handled, halt, std::forward<F>(params)...);
@@ -310,8 +309,7 @@ inline bool fire_event(const ui_event event,
 
 	/***** ***** ***** Child ***** ***** *****/
 	if(w->has_event(event, dispatcher::child)) {
-		dispatcher::signal_type<T>& signal =
-			dispatcher_implementation::event_signal<T>(*w, event);
+		auto& signal = dispatcher_implementation::event_signal<T>(*w, event);
 
 		for(auto& func : signal.child) {
 			func(*dispatcher, event, handled, halt, std::forward<F>(params)...);
@@ -329,8 +327,7 @@ inline bool fire_event(const ui_event event,
 
 	/***** ***** ***** Post ***** ***** *****/
 	for(auto& itor_widget : event_chain) {
-		dispatcher::signal_type<T>& signal =
-			dispatcher_implementation::event_signal<T>(*itor_widget.first, itor_widget.second);
+		auto& signal = dispatcher_implementation::event_signal<T>(*itor_widget.first, itor_widget.second);
 
 		for(auto& post_func : signal.post_child) {
 			post_func(*dispatcher, itor_widget.second, handled, halt, std::forward<F>(params)...);
