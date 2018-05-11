@@ -815,20 +815,20 @@ bool delete_directory(const std::string& dirname, const bool keep_pbl)
 	get_files_in_dir(dirname, &files, &dirs, ENTIRE_FILE_PATH, keep_pbl ? SKIP_PBL_FILES : NO_FILTER);
 
 	if(!files.empty()) {
-		for(std::vector<std::string>::const_iterator i = files.begin(); i != files.end(); ++i) {
-			bfs::remove(path(*i), ec);
+		for(const std::string& f : files) {
+			bfs::remove(path(f), ec);
 			if(ec) {
-				LOG_FS << "remove(" << (*i) << "): " << ec.message() << '\n';
+				LOG_FS << "remove(" << f << "): " << ec.message() << '\n';
 				ret = false;
 			}
 		}
 	}
 
 	if(!dirs.empty()) {
-		for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
+		for(const std::string& d : dirs) {
 			// TODO: this does not preserve any other PBL files
 			// filesystem.cpp does this too, so this might be intentional
-			if(!delete_directory(*j))
+			if(!delete_directory(d))
 				ret = false;
 		}
 	}
@@ -1197,8 +1197,8 @@ void binary_paths_manager::cleanup()
 {
 	binary_paths_cache.clear();
 
-	for(std::vector<std::string>::const_iterator i = paths_.begin(); i != paths_.end(); ++i) {
-		binary_paths.erase(*i);
+	for(const std::string& p : paths_) {
+		binary_paths.erase(p);
 	}
 }
 
