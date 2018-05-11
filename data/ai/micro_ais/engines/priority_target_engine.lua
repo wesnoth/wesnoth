@@ -33,7 +33,7 @@ return {
                     moves = "current",
                     variable = "tmp_locs"
                 }
-                attack_locs = H.get_variable_array("tmp_locs")
+                attack_locs = wml.array_access.get("tmp_locs")
                 W.clear_variable { name = "tmp_locs" }
                 if (#attack_locs > 0) then break end
             end
