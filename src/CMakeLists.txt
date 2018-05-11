@@ -278,9 +278,9 @@ add_library(wesnoth-game ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${libwesnoth-game_STAT
 ########### Wesnoth ###############
 
 if(ENABLE_GAME)
-	add_executable(wesnoth WIN32 wesnoth.cpp)
-
 	if(NOT APPLE)
+		add_executable(wesnoth WIN32 wesnoth.cpp)
+
 		set(static-libs -Wl,--start-group
 		wesnoth-client
 		lua
@@ -291,6 +291,8 @@ if(ENABLE_GAME)
 		wesnoth-client
 		-Wl,--end-group)
 	else()
+		add_executable(wesnoth WIN32 wesnoth.cpp macosx/SDLMain.mm)
+
 		set(static-libs wesnoth-client
 		lua
 		wesnoth-core
