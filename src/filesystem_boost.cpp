@@ -889,8 +889,7 @@ filesystem::scoped_istream istream_file(const std::string& fname, bool treat_fai
 			return s;
 		}
 
-		return filesystem::scoped_istream(
-				new boost::iostreams::stream<boost::iostreams::file_descriptor_source>(fd, 4096, 0));
+		return std::make_unique<boost::iostreams::stream<boost::iostreams::file_descriptor_source>>(fd, 4096, 0);
 	} catch(const std::exception&) {
 		if(treat_failure_as_error) {
 			ERR_FS << "Could not open '" << fname << "' for reading.\n";
@@ -908,8 +907,7 @@ filesystem::scoped_ostream ostream_file(const std::string& fname, bool create_di
 #if 1
 	try {
 		boost::iostreams::file_descriptor_sink fd(bfs::path(fname), std::ios_base::binary);
-		return filesystem::scoped_ostream(
-				new boost::iostreams::stream<boost::iostreams::file_descriptor_sink>(fd, 4096, 0));
+		return std::make_unique<boost::iostreams::stream<boost::iostreams::file_descriptor_sink>>(fd, 4096, 0);
 	} catch(BOOST_IOSTREAMS_FAILURE& e) {
 		// If this operation failed because the parent directory didn't exist, create the parent directory and
 		// retry.
