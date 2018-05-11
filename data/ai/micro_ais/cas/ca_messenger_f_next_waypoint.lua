@@ -10,7 +10,7 @@ return function(cfg)
     -- Returns nil for first 3 arguments if no messenger has moves left
     -- Returns nil for all arguments if there are no messengers on the map
 
-    local filter = H.get_child(cfg, "filter") or { id = cfg.id }
+    local filter = wml.get_child(cfg, "filter") or { id = cfg.id }
     local messengers = wesnoth.get_units { side = wesnoth.current.side, { "and", filter } }
     if (not messengers[1]) then return end
 

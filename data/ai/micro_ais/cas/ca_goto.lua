@@ -31,7 +31,7 @@ function ca_goto:evaluation(cfg, data)
     local all_locs = wesnoth.get_locations {
         x = '1-' .. width,
         y = '1-' .. height,
-        { "and", H.get_child(cfg, "filter_location") }
+        { "and", wml.get_child(cfg, "filter_location") }
     }
     if (#all_locs == 0) then return 0 end
 
@@ -62,7 +62,7 @@ function ca_goto:evaluation(cfg, data)
 
     local all_units = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", H.get_child(cfg, "filter") }
+        { "and", wml.get_child(cfg, "filter") }
     }
 
     local units = {}

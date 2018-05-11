@@ -1,7 +1,7 @@
 local H = wesnoth.require "helper"
 
 function wesnoth.micro_ais.patrol(cfg)
-	if (cfg.action ~= 'delete') and (not cfg.id) and (not H.get_child(cfg, "filter")) then
+	if (cfg.action ~= 'delete') and (not cfg.id) and (not wml.get_child(cfg, "filter")) then
 		H.wml_error("Patrol [micro_ai] tag requires either id= key or [filter] tag")
 	end
 	local required_keys = { "waypoint_x", "waypoint_y" }

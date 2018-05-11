@@ -22,7 +22,7 @@ function ca_fast_attack_utils.get_avoid_map(cfg)
     -- Use [micro_ai][avoid] tag with priority over [ai][avoid].
     -- If neither is given, return an empty location set.
 
-    local avoid_tag = H.get_child(cfg, "avoid")
+    local avoid_tag = wml.get_child(cfg, "avoid")
 
     if not avoid_tag then
         return LS.of_pairs(ai.aspects.avoid)
@@ -118,7 +118,7 @@ function ca_fast_attack_utils.single_unit_info(unit_proxy)
     }
 
     -- Include the ability type, such as: hides, heals, regenerate, skirmisher (set up as 'hides = true')
-    local abilities = H.get_child(unit_proxy.__cfg, "abilities")
+    local abilities = wml.get_child(unit_proxy.__cfg, "abilities")
     if abilities then
         for _,ability in ipairs(abilities) do
             single_unit_info[ability[1]] = true

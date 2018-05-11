@@ -73,7 +73,7 @@ function ca_forest_animals_move:execution(cfg)
     end
 
     -- If no close enemies, do a random move
-    local wander_terrain = H.get_child(cfg, "filter_location") or {}
+    local wander_terrain = wml.get_child(cfg, "filter_location") or {}
     if (not close_enemies[1]) then
         local reach = AH.get_reachable_unocc(unit)
         local width, height = wesnoth.get_map_size()

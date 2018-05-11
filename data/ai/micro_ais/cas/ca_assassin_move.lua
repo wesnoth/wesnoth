@@ -5,12 +5,12 @@ local LS = wesnoth.require "location_set"
 local function get_units_target(cfg)
     local units = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", H.get_child(cfg, "filter") }
+        { "and", wml.get_child(cfg, "filter") }
     }
 
     local target = wesnoth.get_units {
         { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
-        { "and", H.get_child(cfg, "filter_second") }
+        { "and", wml.get_child(cfg, "filter_second") }
     }[1]
 
     return units, target
@@ -55,7 +55,7 @@ function ca_assassin_move:execution(cfg)
 
     local enemies = AH.get_visible_units(wesnoth.current.side, {
         { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
-        { "not", H.get_child(cfg, "filter_second") }
+        { "not", wml.get_child(cfg, "filter_second") }
     })
 
     -- Maximum damage the enemies can theoretically do for all hexes they can attack
@@ -128,7 +128,7 @@ function ca_assassin_move:execution(cfg)
     -- Preferred hexes (do this here once for all hexes, so that it does not need
     -- to get done for every step of the a* search.
     -- We only need to know whether a hex is preferred or not, there's no additional rating.
-    local prefer_slf = H.get_child(cfg, "prefer")
+    local prefer_slf = wml.get_child(cfg, "prefer")
     local prefer_map -- want this to be nil, not empty LS if [prefer] tag not given
     if prefer_slf then
         local preferred_hexes = wesnoth.get_locations(prefer_slf)

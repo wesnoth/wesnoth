@@ -6,7 +6,7 @@ local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 local function get_big_animals(cfg)
     local big_animals = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and" , H.get_child(cfg, "filter") }
+        { "and" , wml.get_child(cfg, "filter") }
     }
     return big_animals
 end
@@ -24,7 +24,7 @@ function ca_big_animals:execution(cfg)
 
     local unit = get_big_animals(cfg)[1]
 
-    local avoid_tag = H.get_child(cfg, "avoid_unit")
+    local avoid_tag = wml.get_child(cfg, "avoid_unit")
     local avoid_map = LS.create()
     if avoid_tag then
         local enemies_to_be_avoided = AH.get_attackable_enemies(avoid_tag)
@@ -41,7 +41,7 @@ function ca_big_animals:execution(cfg)
     -- Unit gets a new goal if none is set or on any move with a 10% random chance
     local r = math.random(10)
     if (not goal.goal_x) or (r == 1) then
-        local locs = AH.get_passable_locations(H.get_child(cfg, "filter_location") or {})
+        local locs = AH.get_passable_locations(wml.get_child(cfg, "filter_location") or {})
         local rand = math.random(#locs)
 
         goal.goal_x, goal.goal_y = locs[rand][1], locs[rand][2]
@@ -49,7 +49,7 @@ function ca_big_animals:execution(cfg)
     end
 
     local reach_map = AH.get_reachable_unocc(unit)
-    local wander_terrain = H.get_child(cfg, "filter_location_wander") or {}
+    local wander_terrain = wml.get_child(cfg, "filter_location_wander") or {}
     reach_map:iter( function(x, y, v)
         -- Remove tiles that do not comform to the wander terrain filter
         if (not wesnoth.match_location(x, y, wander_terrain)) then

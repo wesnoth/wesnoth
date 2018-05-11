@@ -45,11 +45,11 @@ local function messenger_find_clearing_attack(messenger, goal_x, goal_y, cfg)
     local enemy_in_way = messenger_find_enemies_in_way(messenger, goal_x, goal_y)
     if (not enemy_in_way) then return end
 
-    local filter = H.get_child(cfg, "filter") or { id = cfg.id }
+    local filter = wml.get_child(cfg, "filter") or { id = cfg.id }
     local units = AH.get_units_with_attacks {
         side = wesnoth.current.side,
         { "not", filter },
-        { "and", H.get_child(cfg, "filter_second") }
+        { "and", wml.get_child(cfg, "filter_second") }
     }
     if (not units[1]) then return end
 

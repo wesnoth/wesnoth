@@ -36,7 +36,7 @@ local function hunter_attack_weakest_adj_enemy(ai, hunter)
 end
 
 local function get_hunter(cfg)
-    local filter = H.get_child(cfg, "filter") or { id = cfg.id }
+    local filter = wml.get_child(cfg, "filter") or { id = cfg.id }
     local hunter = AH.get_units_with_moves {
         side = wesnoth.current.side,
         { "and", filter }
@@ -65,7 +65,7 @@ function ca_hunter:execution(cfg)
         local rand = math.random(10)
         if (not hunter_vars.goal_x) or (rand == 1) then
             -- 'locs' includes border hexes, but that does not matter here
-            locs = AH.get_passable_locations((H.get_child(cfg, "filter_location") or {}), hunter)
+            locs = AH.get_passable_locations((wml.get_child(cfg, "filter_location") or {}), hunter)
             local rand = math.random(#locs)
 
             hunter_vars.goal_x, hunter_vars.goal_y = locs[rand][1], locs[rand][2]

@@ -16,7 +16,7 @@ local function plugin()
   local function find_test_game(info)
     local g = info.game_list()
     if g then
-      local gamelist = helper.get_child(g, "gamelist")
+      local gamelist = wml.get_child(g, "gamelist")
       if gamelist then
         for i = 1, #gamelist do
           local t = gamelist[i]

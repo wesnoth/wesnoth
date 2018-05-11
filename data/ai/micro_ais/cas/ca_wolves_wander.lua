@@ -6,7 +6,7 @@ local LS = wesnoth.require "location_set"
 local function get_wolves(cfg)
     local wolves = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", H.get_child(cfg, "filter") }
+        { "and", wml.get_child(cfg, "filter") }
     }
     return wolves
 end

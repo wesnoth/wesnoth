@@ -5,7 +5,7 @@ local M = wesnoth.map
 local function get_next_sheep_enemies(cfg)
     local sheep = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", H.get_child(cfg, "filter_second") }
+        { "and", wml.get_child(cfg, "filter_second") }
     }
     if (not sheep[1]) then return end
 

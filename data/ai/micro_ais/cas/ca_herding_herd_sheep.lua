@@ -7,7 +7,7 @@ local herding_area = wesnoth.require "ai/micro_ais/cas/ca_herding_f_herding_area
 local function get_dogs(cfg)
     local dogs = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", H.get_child(cfg, "filter") }
+        { "and", wml.get_child(cfg, "filter") }
     }
     return dogs
 end
@@ -15,8 +15,8 @@ end
 local function get_sheep_to_herd(cfg)
     local all_sheep = wesnoth.get_units {
         side = wesnoth.current.side,
-        { "and", H.get_child(cfg, "filter_second") },
-        { "not", { { "filter_adjacent", { side = wesnoth.current.side, { "and", H.get_child(cfg, "filter") } } } } }
+        { "and", wml.get_child(cfg, "filter_second") },
+        { "not", { { "filter_adjacent", { side = wesnoth.current.side, { "and", wml.get_child(cfg, "filter") } } } } }
     }
 
     local sheep_to_herd = {}
@@ -63,7 +63,7 @@ function ca_herding_herd_sheep:execution(cfg)
                 -- And the closer dog goes first (so that it might be able to chase another sheep afterward)
                 rating = rating - M.distance_between(x, y, dog.x, dog.y) / 100.
                 -- Finally, prefer to stay on path, if possible
-                if (wesnoth.match_location(x, y, H.get_child(cfg, "filter_location")) ) then rating = rating + 0.001 end
+                if (wesnoth.match_location(x, y, wml.get_child(cfg, "filter_location")) ) then rating = rating + 0.001 end
 
                 reach_map:insert(x, y, rating)
 

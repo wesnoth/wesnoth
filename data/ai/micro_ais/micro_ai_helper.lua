@@ -169,7 +169,7 @@ function micro_ai_helper.micro_ai_setup(cfg, CA_parms, required_keys, optional_k
     for _,v in pairs(required_keys) do
         if v:match('%[[a-zA-Z0-9_]+%]')  then
             v = v:sub(2,-2)
-            if not H.get_child(cfg, v) then
+            if not wml.get_child(cfg, v) then
                 H.wml_error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: [" .. v .. "]")
             end
             for child in H.child_range(cfg, v) do
