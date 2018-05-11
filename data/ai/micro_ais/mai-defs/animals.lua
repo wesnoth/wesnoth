@@ -30,7 +30,7 @@ function wesnoth.micro_ais.wolves(cfg)
 					id = "mai_wolves_" .. (cfg.ca_id or "default") .. "_dont_attack",
 					invalidate_on_gamestate_change = "yes",
 					{ "filter_enemy", {
-						{ "and", H.get_child(cfg, "filter_second") }
+						{ "and", wml.get_child(cfg, "filter_second") }
 					} }
 				}
 			}
@@ -165,7 +165,7 @@ function wesnoth.micro_ais.wolves_multipacks(cfg)
 end
 
 function wesnoth.micro_ais.hunter(cfg)
-	if (cfg.action ~= 'delete') and (not cfg.id) and (not H.get_child(cfg, "filter")) then
+	if (cfg.action ~= 'delete') and (not cfg.id) and (not wml.get_child(cfg, "filter")) then
 		H.wml_error("Hunter [micro_ai] tag requires either id= key or [filter] tag")
 	end
 	local required_keys = { "home_x", "home_y" }

@@ -8,7 +8,7 @@ local M = wesnoth.map
 local function get_hang_out_units(cfg)
     local units = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", H.get_child(cfg, "filter") }
+        { "and", wml.get_child(cfg, "filter") }
     }
     return units
 end
@@ -22,14 +22,14 @@ function ca_hang_out:evaluation(cfg, data)
     end
 
     -- Otherwise check if any of the mobilize conditions are now met
-    local mobilize_condition = H.get_child(cfg, "mobilize_condition")
+    local mobilize_condition = wml.get_child(cfg, "mobilize_condition")
     if (mobilize_condition and wesnoth.eval_conditional(mobilize_condition))
         or (cfg.mobilize_on_gold_less_than and (wesnoth.sides[wesnoth.current.side].gold < cfg.mobilize_on_gold_less_than))
     then
         MAISD.insert_mai_self_data(data, cfg.ai_id, { mobilize_units = true })
 
         -- Need to unmark all units also (all units, with and without moves)
-        local units = wesnoth.get_units { side = wesnoth.current.side, { "and", H.get_child(cfg, "filter") } }
+        local units = wesnoth.get_units { side = wesnoth.current.side, { "and", wml.get_child(cfg, "filter") } }
         for _,unit in ipairs(units) do
             MAIUV.delete_mai_unit_variables(unit, cfg.ai_id)
         end
@@ -46,7 +46,7 @@ function ca_hang_out:execution(cfg)
 
     -- Get the locations close to which the units should hang out
     -- cfg.filter_location defaults to the location of the side leader(s)
-    local filter_location = H.get_child(cfg, "filter_location") or {
+    local filter_location = wml.get_child(cfg, "filter_location") or {
         { "filter", { side = wesnoth.current.side, canrecruit = "yes" } }
     }
 
@@ -60,15 +60,15 @@ function ca_hang_out:execution(cfg)
     -- Get map of locations to be avoided.
     -- Use [micro_ai][avoid] tag with priority over [ai][avoid].
     -- If neither is given, default to all castle terrain.
-    local avoid_tag = H.get_child(cfg, "avoid")
+    local avoid_tag = wml.get_child(cfg, "avoid")
     local avoid_map
     if avoid_tag then
         avoid_map = LS.of_pairs(wesnoth.get_locations(avoid_tag))
     else
-        local ai_tag = H.get_child(wesnoth.sides[wesnoth.current.side].__cfg, 'ai')
+        local ai_tag = wml.get_child(wesnoth.sides[wesnoth.current.side].__cfg, 'ai')
         for aspect in H.child_range(ai_tag, 'aspect') do
             if (aspect.id == 'avoid') then
-                local facet = H.get_child(aspect, 'facet')
+                local facet = wml.get_child(aspect, 'facet')
                 if facet or aspect.name ~= "composite_aspect" then
                     -- If there's a [facet] child, it's set as a composite aspect,
                     -- with at least one facet.

@@ -6,7 +6,7 @@ local function get_lurker(cfg)
     -- We simply pick the first of the lurkers, they have no strategy
     local lurker = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", H.get_child(cfg, "filter") }
+        { "and", wml.get_child(cfg, "filter") }
     }[1]
     return lurker
 end
@@ -26,7 +26,7 @@ function ca_lurkers:execution(cfg)
     table.sort(targets, function(a, b) return (a.hitpoints < b.hitpoints) end)
 
     local reach = LS.of_pairs(wesnoth.find_reach(lurker.x, lurker.y))
-    local lurk_area = H.get_child(cfg, "filter_location")
+    local lurk_area = wml.get_child(cfg, "filter_location")
     local reachable_attack_terrain =
          LS.of_pairs(wesnoth.get_locations  {
             { "and", { x = lurker.x, y = lurker.y, radius = lurker.moves } },
@@ -66,7 +66,7 @@ function ca_lurkers:execution(cfg)
         local reachable_wander_terrain =
             LS.of_pairs( wesnoth.get_locations {
                 { "and", { x = lurker.x, y = lurker.y, radius = lurker.moves } },
-                { "and", H.get_child(cfg, "filter_location_wander") or lurk_area }
+                { "and", wml.get_child(cfg, "filter_location_wander") or lurk_area }
             })
         reachable_wander_terrain:inter(reach)
 

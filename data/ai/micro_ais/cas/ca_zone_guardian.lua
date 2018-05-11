@@ -4,7 +4,7 @@ local LS = wesnoth.require "location_set"
 local M = wesnoth.map
 
 local function get_guardian(cfg)
-    local filter = H.get_child(cfg, "filter") or { id = cfg.id }
+    local filter = wml.get_child(cfg, "filter") or { id = cfg.id }
     local guardian = AH.get_units_with_moves {
         side = wesnoth.current.side,
         { "and", filter }
@@ -23,8 +23,8 @@ function ca_zone_guardian:execution(cfg)
     local guardian = get_guardian(cfg)
     local reach = wesnoth.find_reach(guardian)
 
-    local zone = H.get_child(cfg, "filter_location")
-    local zone_enemy = H.get_child(cfg, "filter_location_enemy") or zone
+    local zone = wml.get_child(cfg, "filter_location")
+    local zone_enemy = wml.get_child(cfg, "filter_location_enemy") or zone
     local enemies = AH.get_attackable_enemies { { "filter_location", zone_enemy } }
     if enemies[1] then
         local min_dist, target = 9e99

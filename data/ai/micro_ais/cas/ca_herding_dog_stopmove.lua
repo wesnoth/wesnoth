@@ -4,7 +4,7 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local function get_dog(cfg)
     local dogs = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", H.get_child(cfg, "filter") },
+        { "and", wml.get_child(cfg, "filter") },
     }
     return dogs[1]
 end
