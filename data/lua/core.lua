@@ -236,11 +236,12 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	--[========[Basic variable access]========]
 
 	-- Get all variables via wml.all_variables (read-only)
+	local get_all_vars_local = wesnoth.get_all_vars
 	setmetatable(wml, {
 		__metatable = "WML module",
 		__index = function(self, key)
 			if key == 'all_variables' then
-				return wesnoth.get_all_vars()
+				return get_all_vars_local()
 			end
 			return rawget(self, key)
 		end,
