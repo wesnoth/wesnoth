@@ -63,7 +63,7 @@ return {
             local abilities = wml.get_child(unit.__cfg, "abilities")
             local regen_amount = 0
             if abilities then
-                for regen in H.child_range(abilities, "regenerate") do
+                for regen in wml.child_range(abilities, "regenerate") do
                     if regen.value > regen_amount then
                         regen_amount = regen.value
                     end
@@ -121,14 +121,14 @@ return {
                 -- This may be rectifiable by looking at retaliation damage as well.
                 local steadfast = false
 
-                for attack in H.child_range(wesnoth.unit_types[attacker.type].__cfg, "attack") do
+                for attack in wml.child_range(wesnoth.unit_types[attacker.type].__cfg, "attack") do
                     local defense = defender_defense
                     local poison = false
                     local damage_multiplier = 1
                     local damage_bonus = 0
                     local weapon_damage = attack.damage
 
-                    for special in H.child_range(attack, 'specials') do
+                    for special in wml.child_range(attack, 'specials') do
                         local mod
                         if wml.get_child(special, 'poison') and can_poison then
                             poison = true
@@ -195,9 +195,9 @@ return {
 
                     -- Handle drain for defender
                     local drain_recovery = 0
-                    for defender_attack in H.child_range(defender.__cfg, 'attack') do
+                    for defender_attack in wml.child_range(defender.__cfg, 'attack') do
                         if (defender_attack.range == attack.range) then
-                            for special in H.child_range(defender_attack, 'specials') do
+                            for special in wml.child_range(defender_attack, 'specials') do
                                 if wml.get_child(special, 'drains') and drainable(attacker) then
                                     -- TODO: calculate chance to hit
                                     -- currently assumes 50% chance to hit using supplied constant
@@ -293,8 +293,8 @@ return {
         end
 
         function can_slow(unit)
-            for defender_attack in H.child_range(unit.__cfg, 'attack') do
-                for special in H.child_range(defender_attack, 'specials') do
+            for defender_attack in wml.child_range(unit.__cfg, 'attack') do
+                for special in wml.child_range(defender_attack, 'specials') do
                     if wml.get_child(special, 'slow') then
                         return true
                     end
