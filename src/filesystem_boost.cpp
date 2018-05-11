@@ -39,7 +39,9 @@
 #include <shlwapi.h>
 
 // Work around TDM-GCC not #defining this according to @newfrenchy83.
+#ifndef VOLUME_NAME_NONE
 #define VOLUME_NAME_NONE 0x4
+#endif
 
 #endif /* !_WIN32 */
 
