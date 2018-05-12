@@ -295,7 +295,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 		}
 	}
 
-	std::sort(mod_info.begin(), mod_info.end(), [](const auto& lhs, const auto& rhs) {
+	std::sort(mod_info.begin(), mod_info.end(), [](const std::pair<std::string, bool>& lhs, const std::pair<std::string, bool>& rhs) {
 		return translation::icompare(lhs.first, rhs.first) < 0;
 	});
 
