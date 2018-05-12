@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-05-06 05:31-0300\n"
-"PO-Revision-Date: 2018-05-07 18:23+0200\n"
+"PO-Revision-Date: 2018-04-25 10:48-0700\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -383,8 +383,10 @@ msgstr "Responsabili per l’internazionalizzazione"
 
 #. [about]
 #: data/core/about.cfg:323
+#, fuzzy
+#| msgid "Traits"
 msgid "Trailers"
-msgstr "Introduzioni"
+msgstr "Caratteristiche"
 
 #. [about]
 #: data/core/about.cfg:335
@@ -1641,7 +1643,7 @@ msgstr "Prendila"
 
 #: data/core/macros/items.cfg:275
 msgid "holy water^Leave it"
-msgstr "Lasciala lì"
+msgstr "Lasciala"
 
 #: data/core/macros/items.cfg:276
 msgid "$unit.name has no need for this Holy Water! Let another take it."
@@ -3634,7 +3636,7 @@ msgstr "Wesnoth (Predefinita)"
 #. [core]: id=default
 #: data/cores.cfg:8
 msgid "The standard Wesnoth core."
-msgstr "Era standard principale di Wesnoth."
+msgstr ""
 
 #. [language]
 #: data/english.cfg:6
@@ -4024,8 +4026,10 @@ msgstr "Impostazioni predefinite"
 
 #. [label]
 #: data/gui/macros/player_list_panel.cfg:29
+#, fuzzy
+#| msgid "Computer Player"
 msgid "Connected Players"
-msgstr "Giocatori Connessi"
+msgstr "Computer"
 
 #. [label]: id=title
 #: data/gui/window/install_dependencies.cfg:37
@@ -5770,7 +5774,7 @@ msgstr ""
 
 #: src/chat_command_handler.hpp:104
 msgid "Mute/Unmute all observers. (toggles)"
-msgstr "Togli/dai la parola a tutti gli osservatori (in modo alterno)"
+msgstr "Togli/dai la parola a tutti gli osservatori (in modo alterno)."
 
 #: src/chat_command_handler.hpp:108
 msgid ""
@@ -6241,7 +6245,7 @@ msgstr[1] "Caselle vuote:"
 
 #: src/game_initialization/lobby_data.cpp:429
 msgid "mp_game_available_slots^Full"
-msgstr "Pieni"
+msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:440
 #: src/game_initialization/lobby_data.cpp:442 src/savegame.cpp:631
@@ -6249,12 +6253,14 @@ msgid "Turn"
 msgstr "Turno"
 
 #: src/game_initialization/lobby_data.cpp:455
+#, fuzzy
+#| msgid "vision: "
 msgid "vision^none"
-msgstr "nessuna"
+msgstr "visione: "
 
 #: src/game_initialization/lobby_data.cpp:464
 msgid "time limit^none"
-msgstr "nessuno"
+msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:497
 msgid ""
@@ -6355,19 +6361,21 @@ msgid " This server disallows unregistered nicknames."
 msgstr " Questo server non permette l’uso di nickname non registrati."
 
 #: src/game_initialization/multiplayer.cpp:320
+#, fuzzy
+#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
-msgstr "Il nickname «$nick» è bandito sui forum di questo server."
+msgstr "Il nickname «$nick» è registrato su questo server."
 
 #: src/game_initialization/multiplayer.cpp:322
 msgid "Your IP address is banned on this server’s forums."
-msgstr "Il tuo indirizzo IP è stato bandito sui forum di questo server."
+msgstr ""
 
 #: src/game_initialization/multiplayer.cpp:324
+#, fuzzy
+#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
-msgstr ""
-"L'indirizzo e-mail associato al nickname «$nick» è bandito su forum di "
-"questo server."
+msgstr "Il nickname «$nick» è registrato su questo server."
 
 #: src/game_initialization/multiplayer.cpp:326
 #: src/game_initialization/multiplayer.cpp:328
@@ -6552,8 +6560,10 @@ msgid "Error while starting server: "
 msgstr "Errore durante l’avvio del server: "
 
 #: src/game_launcher.cpp:882
+#, fuzzy
+#| msgid "Connection timed out"
 msgid "Connection failed: "
-msgstr "Connessione fallita: "
+msgstr "Connessione scaduta"
 
 #: src/generators/default_map_generator_job.cpp:691
 msgid "Random maps with an odd width aren't supported."
@@ -7633,12 +7643,12 @@ msgid "Save and abort game"
 msgstr "Abbandona il gioco"
 
 #: src/playturn.cpp:296
+#, fuzzy
+#| msgid "$player has left the game. What do you want to do?"
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
-msgstr ""
-"$player che controllava la squadra $side_drop ha abbandonato la partita. Che "
-"cosa vuoi fare?"
+msgstr "$player ha abbandonato la partita. Che cosa vuoi fare?"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -7845,7 +7855,7 @@ msgstr "Attacchi speciali dell’arma: "
 
 #: src/reports.cpp:893
 msgid "weapon^None"
-msgstr "Nessuna"
+msgstr ""
 
 #: src/reports.cpp:922
 msgid "Total damage"
@@ -8202,8 +8212,10 @@ msgid "infix_binary^i"
 msgstr "i"
 
 #: src/synced_commands.cpp:410
+#, fuzzy
+#| msgid "Unknown era"
 msgid "(unknown player)"
-msgstr "(giocatore sconosciuto)"
+msgstr "Era sconosciuta"
 
 #: src/synced_commands.cpp:415
 msgid "The :$command debug command was used during $player’s turn"
@@ -8238,10 +8250,12 @@ msgstr ""
 "debug"
 
 #: src/synced_user_choice.cpp:327
+#, fuzzy
+#| msgid "waiting for $desc from side(s) $sides"
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
-msgstr[0] "in attesa di $desc dalla squadra $sides"
-msgstr[1] "in attesa di $desc delle squadre $sides"
+msgstr[0] "in attesa di $desc dalla squadra/e $sides"
+msgstr[1] "in attesa di $desc dalla squadra/e $sides"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8328,10 +8342,13 @@ msgstr[1] "$number punti movimento"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:429
+#, fuzzy
+#| msgid "<span color=\"$color\">$number_or_percent</span> move"
+#| msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span> punto movimento"
-msgstr[1] "<span color=\"$color\">$number_or_percent</span> punti movimento"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> mossa"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> mosse"
 
 #: src/units/types.cpp:545 src/units/types.hpp:181
 msgid "chaotic"
@@ -8428,7 +8445,7 @@ msgstr "$year DC"
 
 #: src/wesnothd_connection.cpp:402
 msgid "Disconnected from server."
-msgstr "Disconnesso dal server."
+msgstr ""
 
 #: src/whiteboard/manager.cpp:1115
 msgid "SHOW ALL allies’ plans"
@@ -8449,6 +8466,16 @@ msgstr "Nascondi i piani di $player"
 #: src/whiteboard/manager.cpp:1135
 msgid "Whiteboard Options"
 msgstr "Opzioni della lavagna"
+
+#~ msgid "Ping timeout"
+#~ msgstr "Timeout del ping"
+
+#~ msgid ""
+#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
+#~ "disable"
+#~ msgstr ""
+#~ "Numero di secondi d’attesa per una risposta al ping prima del timeout. "
+#~ "Imposta su 0 per disabilitare"
 
 #~ msgid ""
 #~ "Wesnoth has many different sagas waiting to be played. Fight to regain "
@@ -8490,6 +8517,7 @@ msgstr "Opzioni della lavagna"
 #~ "7 fazioni in battaglia lungo 46 mappe/scenari multigiocatore,\n"
 #~ "oltre 500 estensioni.)"
 
+#~| msgid "(missing)"
 #~ msgid "$era_name (missing)"
 #~ msgstr "$era_name (mancante)"
 
@@ -8504,16 +8532,6 @@ msgstr "Opzioni della lavagna"
 #~ "<span color=\"$color\">$number_or_percent movement</span> points"
 #~ msgstr[0] "<span color=\"$color\">$number_or_percent</span> punto movimento"
 #~ msgstr[1] "<span color=\"$color\">$number_or_percent</span> punti movimento"
-
-#~ msgid "Ping timeout"
-#~ msgstr "Timeout del ping"
-
-#~ msgid ""
-#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
-#~ "disable"
-#~ msgstr ""
-#~ "Numero di secondi d’attesa per una risposta al ping prima del timeout. "
-#~ "Imposta su 0 per disabilitare"
 
 #, fuzzy
 #~| msgid "Screenshot"
