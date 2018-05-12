@@ -583,6 +583,8 @@ void mp_lobby::update_playerlist()
 	assert(player_list_.other_games.tree);
 	assert(player_list_.other_rooms.tree);
 
+	unsigned scrollbar_position = player_list_.tree->get_vertical_scrollbar_item_position();
+
 	player_list_.active_game.tree->clear();
 #ifdef ENABLE_ROOM_MEMBER_TREE
 	player_list_.active_room.tree->clear();
@@ -687,6 +689,8 @@ void mp_lobby::update_playerlist()
 #endif
 	player_list_.other_rooms.update_player_count_label();
 	player_list_.other_games.update_player_count_label();
+
+	player_list_.tree->set_vertical_scrollbar_item_position(scrollbar_position);
 
 	player_list_dirty_ = false;
 	last_lobby_update_ = SDL_GetTicks();
