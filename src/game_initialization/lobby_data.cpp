@@ -279,7 +279,8 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 	info_stream << era;
 
 	for(const config& cfg : game.child_range("modification")) {
-		mod_info += (mod_info.empty() ? "" : ", ") + cfg["name"].str();
+		mod_info.emplace_back(cfg["name"].str(), true);
+		info_stream << ' ' << mod_info.back().first;
 
 		if(cfg["require_modification"].to_bool(false)) {
 			if(const config& mod = game_config.find_child("modification", "id", cfg["id"])) {
@@ -287,14 +288,18 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			} else {
 				have_all_mods = false;
-				mod_info += " " + _("(missing)");
+				mod_info.back().second = false;
 
 				addons_outcome = NEED_DOWNLOAD;
 			}
 		}
 	}
 
-	info_stream << mod_info;
+	std::sort(mod_info.begin(), mod_info.end(), [](const auto& lhs, const auto& rhs) {
+		return translation::icompare(lhs.first, rhs.first) < 0;
+	});
+
+	info_stream << ' ';
 
 	if(map_data.empty()) {
 		map_data = filesystem::read_map(game["mp_scenario"]);

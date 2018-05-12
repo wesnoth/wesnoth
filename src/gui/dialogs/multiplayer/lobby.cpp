@@ -452,22 +452,32 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	//
 	std::ostringstream ss;
 
+	const auto mark_missing = [&ss]() {
+		ss << ' ' << font::span_color(font::BAD_COLOR) << "(" << _("era_or_mod^missing") << ")</span>";
+	};
+
 	ss << "<big>" << colorize(_("Era"), font::TITLE_COLOR) << "</big>\n" << game.era;
 
 	if(!game.have_era) {
 		// NOTE: not using colorize() here deliberately to avoid awkward string concatenation.
-		ss << " " << font::span_color(font::BAD_COLOR) << "(" << _("era^missing") << ")</span>";
+		mark_missing();
 	}
 
 	ss << "\n\n<big>" << colorize(_("Modifications"), font::TITLE_COLOR) << "</big>\n";
 
-	std::vector<std::string> mods = utils::split(game.mod_info);
+	auto mods = game.mod_info;
 
 	if(mods.empty()) {
 		ss << _("active_modifications^None") << "\n";
 	} else {
-		for(const std::string& mod : mods) {
-			ss << mod << "\n";
+		for(const auto& mod : mods) {
+			ss << mod.first;
+
+			if(!mod.second) {
+				mark_missing();
+			}
+
+			ss << '\n';
 		}
 	}
 
