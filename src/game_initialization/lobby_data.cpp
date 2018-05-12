@@ -315,7 +315,6 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			map_size_info = msi.str();
 			info_stream << spaced_em_dash() << map_size_info;
 		} catch(incorrect_map_format_error& e) {
-			ERR_CF << "illegal map: " << e.message << std::endl;
 			verified = false;
 		} catch(wml_exception& e) {
 			ERR_CF << "map could not be loaded: " << e.dev_message << '\n';
