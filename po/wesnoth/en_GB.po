@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-05-06 21:22+1000\n"
+"PO-Revision-Date: 2018-05-10 12:28+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -7449,14 +7449,8 @@ msgid "Save and abort game"
 msgstr "Save and abort game"
 
 #: src/playturn.cpp:283
-#, fuzzy
-#| msgid ""
-#| "$player who controlled side $side_drop has left the game. What do you "
-#| "want to do?"
 msgid "$player has left the game. What do you want to do?"
-msgstr ""
-"$player who controlled side $side_drop has left the game. What do you want "
-"to do?"
+msgstr "$player has left the game. What do you want to do?"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -8034,11 +8028,8 @@ msgid "A unit was created using debug mode during $player’s turn"
 msgstr "A unit was created using debug mode during $player’s turn"
 
 #: src/synced_user_choice.cpp:326
-#, fuzzy
-#| msgid "waiting for $desc from side $sides"
-#| msgid_plural "waiting for $desc from sides $sides"
 msgid "waiting for $desc from side(s) $sides"
-msgstr "waiting for $desc from side $sides"
+msgstr "waiting for $desc from side(s) $sides"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
