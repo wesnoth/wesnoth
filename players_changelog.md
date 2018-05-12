@@ -3,6 +3,8 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 
 ## Version 1.14.1+dev
+ ### User interface
+   * Fixed MP lobby player list scrolling to top when it changes
  ### Miscellaneous and bug fixes
    * Fixed: unit halo remained after undoing a recall (issue #3065)
 
