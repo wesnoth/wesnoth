@@ -1,5 +1,3 @@
-local H = wesnoth.require "helper"
-
 local ca_healer_initialize = {}
 
 function ca_healer_initialize:evaluation()
