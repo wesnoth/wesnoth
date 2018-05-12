@@ -24,14 +24,12 @@ msgstr ""
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
 #, fuzzy
-#| msgid "prompt^Command:"
 msgid "Custom"
 msgstr "Команада:"
 
 #. [advanced_preference]: type=combo
 #: data/advanced_preferences.cfg:4
 #, fuzzy
-#| msgid "Compressed saves"
 msgid "Compress saved games"
 msgstr "Стискати збереження"
 
@@ -134,7 +132,6 @@ msgstr "12-годинний формат часу"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:110
 #, fuzzy
-#| msgid "Confirm loading of saves from a different version"
 msgid "Confirm loading saves from a different version"
 msgstr "Підтвердити завантаження збережень інших версій"
 
@@ -373,7 +370,6 @@ msgstr "Менеджери перекляду"
 #. [about]
 #: data/core/about.cfg:323
 #, fuzzy
-#| msgid "Traits"
 msgid "Trailers"
 msgstr "Риси"
 
@@ -860,7 +856,6 @@ msgstr ""
 #: data/core/editor/items.cfg:220 data/core/editor/items.cfg:226
 #: data/core/editor/items.cfg:232 data/core/editor/items.cfg:238
 #, fuzzy
-#| msgid "slowed"
 msgid "Flower"
 msgstr "уповільнений"
 
@@ -1052,7 +1047,6 @@ msgstr ""
 #. [item]: id=fire
 #: data/core/editor/items.cfg:474
 #, fuzzy
-#| msgid "fire"
 msgid "Campfire"
 msgstr "вогнем"
 
@@ -1108,7 +1102,6 @@ msgstr ""
 #. [item]: id=nest-empty
 #: data/core/editor/items.cfg:554
 #, fuzzy
-#| msgid "(Empty slot)"
 msgid "Empty Nest"
 msgstr "(Порожній слот)"
 
@@ -1120,7 +1113,6 @@ msgstr ""
 #. [item]: id=oak-leaning
 #: data/core/editor/items.cfg:566
 #, fuzzy
-#| msgid "Warning: "
 msgid "Leaning Oak"
 msgstr "Попередження: "
 
@@ -1505,7 +1497,6 @@ msgstr ""
 #. [else]
 #: data/core/macros/deprecated-utils.cfg:43
 #, fuzzy
-#| msgid "No usable weapon"
 msgid "This unit has been renamed to: "
 msgstr "Немає відповідної зброї"
 
@@ -1634,7 +1625,6 @@ msgstr "Залишити"
 
 #: data/core/macros/items.cfg:276
 #, fuzzy
-#| msgid "I am not suited to the use of this item! Let another take it."
 msgid "$unit.name has no need for this Holy Water! Let another take it."
 msgstr "Я не можу скористатися цим предметом! Хай його візьме хтось інший."
 
@@ -3033,7 +3023,6 @@ msgstr "Бонусна ціль:"
 
 #: data/core/macros/objective-utils.cfg:30
 #, fuzzy
-#| msgid "Bonus objective:"
 msgid "Optional objective:"
 msgstr "Бонусна ціль:"
 
@@ -3570,7 +3559,6 @@ msgstr ""
 #. Generator for mountain labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
 #: data/english.cfg:63
 #, fuzzy
-#| msgid "$name|’s Peak,Mount $name"
 msgid ""
 "\n"
 "\t\tmain=$base{!}’s Peak|$base Peak|Mount $base|Mount $base\n"
@@ -3730,7 +3718,6 @@ msgstr ""
 #. [label]
 #: data/gui/macros/player_list_panel.cfg:29
 #, fuzzy
-#| msgid "Computer Player"
 msgid "Connected Players"
 msgstr "Комп'ютерний гравець"
 
@@ -3747,7 +3734,6 @@ msgstr "Так"
 #. [button]: id=cancel
 #: data/gui/window/install_dependencies.cfg:96
 #, fuzzy
-#| msgid "None"
 msgid "No"
 msgstr "Немає"
 
@@ -3781,9 +3767,6 @@ msgstr ""
 #. [fonts]
 #: data/hardwired/fonts.cfg:36
 #, fuzzy
-#| msgid ""
-#| "DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull."
-#| "ttf,Junicode-Regular.ttf"
 msgid ""
 "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
@@ -3868,7 +3851,6 @@ msgstr "Поразка:"
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:57
 #, fuzzy
-#| msgid "(this turn left)"
 msgid "(this turn left)"
 msgid_plural "(%d turns left)"
 msgstr[0] "(це останній хід)"
@@ -3958,14 +3940,12 @@ msgstr "програти хід сторони"
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:525 data/themes/_initial.cfg:677
 #, fuzzy
-#| msgid "Next Side"
 msgid "Next Move"
 msgstr "Наступна сторона"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:526 data/themes/_initial.cfg:678
 #, fuzzy
-#| msgid "play side turn"
 msgid "play single move"
 msgstr "програти хід сторони"
 
@@ -3977,7 +3957,6 @@ msgstr "Точка зору"
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:549
 #, fuzzy
-#| msgid "continuous replay"
 msgid "Continue Play"
 msgstr "безперервний повтор"
 
@@ -4124,7 +4103,6 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
 #, fuzzy
-#| msgid "<i>― The Wesnoth Tactical Guide</i>"
 msgid "<i>― The Wesnoth Design Guide</i>"
 msgstr "<i>― Тактичний посібник Весноту</i>"
 
@@ -4611,7 +4589,6 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:153
 #, fuzzy
-#| msgid "<i>― King Konrad, 536YW</i>"
 msgid "<i>― Kai Laudiss, 623YW</i>"
 msgstr "<i>― Король Конрад, 536 рік Е.В.</i>"
 
@@ -4912,7 +4889,6 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:258
 #, fuzzy
-#| msgid "<i>― Queen Li’sar, 528YW</i>"
 msgid "<i>― Queen Asheviere, 503YW</i>"
 msgstr "<i>― Королева Лі'сар, 528 рік Е.В.</i>"
 
@@ -4942,7 +4918,6 @@ msgstr "У Вас немає лідера, який міг би закликат
 
 #: src/actions/create.cpp:342
 #, fuzzy
-#| msgid "None of your leaders is able to recall that unit."
 msgid "None of your leaders are able to recall that unit."
 msgstr "Жоден з Ваших лідерів не може призвати цього бійця."
 
@@ -4964,7 +4939,6 @@ msgstr "У Вас немає лідера, який міг би вербуват
 
 #: src/actions/create.cpp:478
 #, fuzzy
-#| msgid "None of your leaders is able to recall that unit."
 msgid "None of your leaders are able to recruit that unit."
 msgstr "Жоден з Ваших лідерів не може призвати цього бійця."
 
@@ -5042,9 +5016,6 @@ msgstr "Запит умов розповсюдження..."
 
 #: src/addon/client.cpp:127
 #, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
-#| "cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
@@ -5054,9 +5025,6 @@ msgstr ""
 
 #: src/addon/client.cpp:153
 #, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
-#| "cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
@@ -5076,9 +5044,6 @@ msgstr ""
 
 #: src/addon/client.cpp:172
 #, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
-#| "cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
@@ -5109,9 +5074,6 @@ msgstr ""
 
 #: src/addon/client.cpp:264
 #, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
-#| "cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -5330,7 +5292,6 @@ msgstr "Сталася помилка при завантаженні списк
 
 #: src/addon/manager_ui.cpp:284
 #, fuzzy
-#| msgid "Could not find any updated add-ons on this server."
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr "На цьому сервері немає оновлених аддонов."
 
@@ -5608,7 +5569,6 @@ msgstr ""
 
 #: src/desktop/notifications.cpp:82
 #, fuzzy
-#| msgid "Chat message aging"
 msgid "Chat message"
 msgstr "Затримувати повідомлення в чаті"
 
@@ -5642,7 +5602,6 @@ msgstr "%b %d"
 
 #: src/format_time_summary.cpp:65
 #, fuzzy
-#| msgid "%b %d %y"
 msgid "%b %d %Y"
 msgstr "%b %d %y"
 
@@ -5679,7 +5638,6 @@ msgstr ""
 
 #: src/game_config_manager.cpp:222
 #, fuzzy
-#| msgid "Variable not found"
 msgid "File not found."
 msgstr "Змінна не знайдена"
 
@@ -5705,7 +5663,6 @@ msgstr "Зараз гру буде завершено"
 
 #: src/game_config_manager.cpp:312
 #, fuzzy
-#| msgid "Error loading game configuration files: '"
 msgid ""
 "Error loading custom game configuration files. The game will try without "
 "loading add-ons."
@@ -5713,7 +5670,6 @@ msgstr "Помилка завантаження файлів з налаштув
 
 #: src/game_config_manager.cpp:319
 #, fuzzy
-#| msgid "Error loading game configuration files: '"
 msgid ""
 "Error loading custom game configuration files. The game will fallback to the "
 "default core files."
@@ -5721,7 +5677,6 @@ msgstr "Помилка завантаження файлів з налаштув
 
 #: src/game_config_manager.cpp:328
 #, fuzzy
-#| msgid "Error loading game configuration files: '"
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr "Помилка завантаження файлів з налаштуваннями гри: '"
@@ -5767,7 +5722,6 @@ msgstr "Команда"
 
 #: src/game_initialization/connect_engine.cpp:995
 #, fuzzy
-#| msgid "Anonymous local player"
 msgid "Anonymous player"
 msgstr "Анонімний локальний гравець"
 
@@ -5799,25 +5753,21 @@ msgstr "Зарезервовано"
 #: src/game_initialization/create_engine.cpp:73
 #: src/game_initialization/create_engine.cpp:666
 #, fuzzy
-#| msgid "The game could not be loaded: "
 msgid "Map could not be loaded: "
 msgstr "Не вдалось завантажити гру: "
 
 #: src/game_initialization/create_engine.cpp:77
 #, fuzzy
-#| msgid "The game could not be loaded: "
 msgid "Map could not be loaded."
 msgstr "Не вдалось завантажити гру: "
 
 #: src/game_initialization/create_engine.cpp:94
 #, fuzzy
-#| msgid " No help available."
 msgid "not available."
 msgstr " Довідка відсутня."
 
 #: src/game_initialization/create_engine.cpp:149
 #, fuzzy
-#| msgid "prompt^Command:"
 msgid "Custom map."
 msgstr "Команада:"
 
@@ -5868,13 +5818,11 @@ msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:237
 #, fuzzy
-#| msgid "Missing argument $arg_id"
 msgid "Missing addon: $name"
 msgstr "Відсутній аргумент $arg_id"
 
 #: src/game_initialization/lobby_data.cpp:239
 #, fuzzy
-#| msgid "Missing argument $arg_id"
 msgid "Missing addon: $id"
 msgstr "Відсутній аргумент $arg_id"
 
@@ -5884,7 +5832,6 @@ msgstr "Невідома ера"
 
 #: src/game_initialization/lobby_data.cpp:290
 #, fuzzy
-#| msgid " (missing)"
 msgid "(missing)"
 msgstr " (втрачено)"
 
@@ -5928,13 +5875,11 @@ msgstr "Хід"
 
 #: src/game_initialization/lobby_data.cpp:455
 #, fuzzy
-#| msgid "Version: "
 msgid "vision^none"
 msgstr "Версія: "
 
 #: src/game_initialization/lobby_data.cpp:464
 #, fuzzy
-#| msgid "Time limit"
 msgid "time limit^none"
 msgstr "Ліміт часу"
 
@@ -5960,9 +5905,6 @@ msgstr "Перевищена межа часу під'єднання"
 
 #: src/game_initialization/multiplayer.cpp:124
 #, fuzzy
-#| msgid ""
-#| "The server accepts versions '$version1' while you are using version "
-#| "'$version2'"
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
@@ -6008,9 +5950,6 @@ msgstr "Прізвисько '$nick' вже зайняте."
 
 #: src/game_initialization/multiplayer.cpp:308
 #, fuzzy
-#| msgid ""
-#| "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
-#| "characters, underscores and hyphens are allowed."
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -6036,7 +5975,6 @@ msgstr " Цей сервер не дозволяє використовуват�
 
 #: src/game_initialization/multiplayer.cpp:320
 #, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Нік '$nick' зареєстрований на цьому сервері."
 
@@ -6046,7 +5984,6 @@ msgstr ""
 
 #: src/game_initialization/multiplayer.cpp:324
 #, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Нік '$nick' зареєстрований на цьому сервері."
@@ -6087,7 +6024,6 @@ msgstr "К-сть невикористаних ходів: "
 
 #: src/game_initialization/playcampaign.cpp:67
 #, fuzzy
-#| msgid "per turn"
 msgid " per turn"
 msgstr "за хід"
 
@@ -6105,7 +6041,6 @@ msgstr "Усього золота: "
 
 #: src/game_initialization/playcampaign.cpp:73
 #, fuzzy
-#| msgid "Carry over percentage: "
 msgid "Carryover percentage: "
 msgstr "Відсоток перенесення: "
 
@@ -6219,7 +6154,6 @@ msgstr "Невідомий сценарій: '$scenario|'"
 
 #: src/game_initialization/singleplayer.cpp:42
 #, fuzzy
-#| msgid "No campaigns are available.\n"
 msgid "No campaigns are available."
 msgstr "Немає доступних кампаній.\n"
 
@@ -6247,13 +6181,11 @@ msgstr "Помилка запуску сервера: "
 
 #: src/game_launcher.cpp:882
 #, fuzzy
-#| msgid "Connection timed out"
 msgid "Connection failed: "
 msgstr "Перевищена межа часу під'єднання"
 
 #: src/generators/default_map_generator_job.cpp:691
 #, fuzzy
-#| msgid "Random maps with an odd width aren't supported."
 msgid "Random maps with an odd width aren't supported."
 msgstr "Випадкові карти з непарною шириною не підтримуються."
 
@@ -6271,12 +6203,6 @@ msgstr ""
 
 #: src/gui/dialogs/addon/install_dependencies.cpp:38
 #, fuzzy
-#| msgid ""
-#| "The selected add-on has the following dependency, which is not currently "
-#| "installed. Do you wish to install it before continuing?"
-#| msgid_plural ""
-#| "The selected add-on has the following dependencies, which are not "
-#| "currently installed. Do you wish to install them before continuing?"
 msgid ""
 "The selected add-on has the following dependency, which is outdated or not "
 "currently installed. Do you wish to install it before continuing?"
@@ -6299,13 +6225,11 @@ msgstr "Немає збережених ігор"
 
 #: src/gui/dialogs/game_load.hpp:40
 #, fuzzy
-#| msgid "The file you have tried to load is corrupt"
 msgid "There are no save files to load"
 msgstr "Файл, який Ви намагалися завантажити, пошкоджений"
 
 #: src/gui/dialogs/game_stats.hpp:43
 #, fuzzy
-#| msgid "No multiplayer sides found"
 msgid "No visible sides found."
 msgstr "Немає мережевих сторін"
 
@@ -6347,7 +6271,6 @@ msgstr "Помилка"
 
 #: src/gui/dialogs/unit_list.hpp:45
 #, fuzzy
-#| msgid "No eras found."
 msgid "No units found."
 msgstr "Ери не знайдені."
 
@@ -6385,7 +6308,6 @@ msgstr "Ера:"
 
 #: src/help/help_impl.cpp:590
 #, fuzzy
-#| msgid "Actions"
 msgid "Factions"
 msgstr "Дії"
 
@@ -6395,7 +6317,6 @@ msgstr "Раси: "
 
 #: src/help/help_impl.cpp:648 src/help/help_impl.cpp:998
 #, fuzzy
-#| msgid "Alignment: "
 msgid "Alignments: "
 msgstr "Тип: "
 
@@ -6413,7 +6334,6 @@ msgstr "Опису немає."
 
 #: src/help/help_impl.cpp:729 src/help/help_impl.cpp:731
 #, fuzzy
-#| msgid "Ability: "
 msgid "Availability: "
 msgstr "Здібність: "
 
@@ -6461,13 +6381,11 @@ msgstr ""
 
 #: src/help/help_topic_generators.cpp:165
 #, fuzzy
-#| msgid "Defense: "
 msgid "Defense properties: "
 msgstr "Захист: "
 
 #: src/help/help_topic_generators.cpp:245
 #, fuzzy
-#| msgid "Level: "
 msgid "Level"
 msgstr "Рівень: "
 
@@ -6522,7 +6440,6 @@ msgstr "Бачення: "
 
 #: src/help/help_topic_generators.cpp:487
 #, fuzzy
-#| msgid "Warning: "
 msgid "Jamming: "
 msgstr "Попередження: "
 
@@ -6552,7 +6469,6 @@ msgstr "Ударів"
 
 #: src/help/help_topic_generators.cpp:513
 #, fuzzy
-#| msgid "Orange"
 msgid "Range"
 msgstr "Помаранчевий"
 
@@ -6602,7 +6518,6 @@ msgstr ""
 
 #: src/hotkey/command_executor.cpp:388
 #, fuzzy
-#| msgid "Do you really want to start the server?"
 msgid "Do you really want to surrender the game?"
 msgstr "Ви дійсно хочете запустити сервер?"
 
@@ -6616,7 +6531,6 @@ msgstr ""
 
 #: src/hotkey/hotkey_handler.cpp:212
 #, fuzzy
-#| msgid "(press $hotkey to keep moving)"
 msgid "(press $hk to disable)"
 msgstr "(натисніть $hotkey, щоб продовжити рух)"
 
@@ -6638,7 +6552,6 @@ msgstr "Назад до початку"
 
 #: src/hotkey/hotkey_handler_sp.cpp:144
 #, fuzzy
-#| msgid "(press $hotkey to keep moving)"
 msgid "(press $hotkey to deactivate)"
 msgstr "(натисніть $hotkey, щоб продовжити рух)"
 
@@ -6817,21 +6730,16 @@ msgstr "Перейменувати бійця"
 
 #: src/menu_events.cpp:628
 #, fuzzy
-#| msgid "Name: "
 msgid "Name:"
 msgstr "Ім'я: "
 
 #: src/menu_events.cpp:802
 #, fuzzy
-#| msgid "Clear all orders"
 msgid "Clear Labels"
 msgstr "Скасувати всі накази"
 
 #: src/menu_events.cpp:803
 #, fuzzy
-#| msgid "Are you sure you want to remove the following installed add-on?"
-#| msgid_plural ""
-#| "Are you sure you want to remove the following installed add-ons?"
 msgid "Are you sure you want to clear map labels?"
 msgstr "Ви упевнені, що хочете видалити наступний аддон?"
 
@@ -7058,7 +6966,6 @@ msgstr "Перемкнути покриття кодів місцевості н
 
 #: src/menu_events.cpp:1250
 #, fuzzy
-#| msgid "Toggle overlaying of terrain codes on hexes."
 msgid "Toggle overlaying of number of bitmaps on hexes."
 msgstr "Перемкнути покриття кодів місцевості на сітці."
 
@@ -7072,7 +6979,6 @@ msgstr "Відкрити налаштування планувальника."
 
 #: src/menu_events.cpp:1375
 #, fuzzy
-#| msgid "Couldn't find label or unit containing the string '$search'."
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "Не можу знайти мітку або бійця з текстом \"$search\"."
 
@@ -7086,25 +6992,21 @@ msgstr "Не можу перемкнути на ПК мережну сторон
 
 #: src/menu_events.cpp:1441
 #, fuzzy
-#| msgid "Can't droid invalid side: '$side'."
 msgid "Can't droid a local ai side: '$side'."
 msgstr "Не можу перемкнути на ПК недійсну сторону: '$side'."
 
 #: src/menu_events.cpp:1457
 #, fuzzy
-#| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle invalid side: '$side'."
 msgstr "Не можу перемкнути на ПК недійсну сторону: '$side'."
 
 #: src/menu_events.cpp:1462
 #, fuzzy
-#| msgid "Can't droid networked side: '$side'."
 msgid "Can't idle networked side: '$side'."
 msgstr "Не можу перемкнути на ПК мережну сторону: '$side'."
 
 #: src/menu_events.cpp:1467
 #, fuzzy
-#| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle local ai side: '$side'."
 msgstr "Не можу перемкнути на ПК недійсну сторону: '$side'."
 
@@ -7118,13 +7020,11 @@ msgstr "Не можу змінити управління: сторона '$side
 
 #: src/menu_events.cpp:1554
 #, fuzzy
-#| msgid "Can't change control of invalid side: '$side'."
 msgid "Can't query control of invalid side: '$side'."
 msgstr "Не можу змінити управління: недійсна сторона '$side'."
 
 #: src/menu_events.cpp:1561
 #, fuzzy
-#| msgid "Can't change control of out-of-bounds side: '$side'."
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr "Не можу змінити управління: сторона '$side' поза межами."
 
@@ -7200,7 +7100,6 @@ msgstr ""
 
 #: src/mouse_events.cpp:994
 #, fuzzy
-#| msgid "No usable weapon"
 msgid "This unit has no usable weapons."
 msgstr "Немає відповідної зброї"
 
@@ -7231,7 +7130,6 @@ msgstr "Гравець вийшов"
 
 #: src/mp_ui_alerts.cpp:149
 #, fuzzy
-#| msgid "Back to Start"
 msgid "Ready to start!"
 msgstr "Назад до початку"
 
@@ -7303,7 +7201,6 @@ msgstr ""
 
 #: src/playsingle_controller.cpp:154
 #, fuzzy
-#| msgid "Error"
 msgid "Game Error"
 msgstr "Помилка"
 
@@ -7330,13 +7227,11 @@ msgstr "Зараз хід $name"
 
 #: src/playturn.cpp:275
 #, fuzzy
-#| msgid "Give gold to the current player."
 msgid "Give control to their ally $player"
 msgstr "Дати золота поточному гравцеві."
 
 #: src/playturn.cpp:284
 #, fuzzy
-#| msgid "Give gold to the current player."
 msgid "Give control to observer $player"
 msgstr "Дати золота поточному гравцеві."
 
@@ -7358,7 +7253,6 @@ msgstr "Зберегти і перервати гру"
 
 #: src/playturn.cpp:296
 #, fuzzy
-#| msgid "$player has left the game. What do you want to do?"
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -7370,7 +7264,6 @@ msgstr "Вийти"
 
 #: src/quit_confirmation.cpp:94
 #, fuzzy
-#| msgid "Do you really want to dismiss him?"
 msgid "Do you really want to quit?"
 msgstr "Ви дійсно хочете його звільнити?"
 
@@ -7712,7 +7605,6 @@ msgstr ""
 
 #: src/savegame.cpp:304
 #, fuzzy
-#| msgid "This is not a multiplayer save"
 msgid "This is not a multiplayer save."
 msgstr "Це не мережне збереження"
 
@@ -7773,7 +7665,6 @@ msgstr "Несподівані символи на початку рядка"
 
 #: src/serialization/parser.cpp:174
 #, fuzzy
-#| msgid "Missing closing tag for tag [$tag] at $pos"
 msgid "Missing closing tag for tag [$tag]"
 msgstr "Відсутній закриваючий тег для тегу [$tag] в $pos"
 
@@ -7811,7 +7702,6 @@ msgstr "Несподіваний закриваючий тег"
 
 #: src/serialization/parser.cpp:259
 #, fuzzy
-#| msgid "Found invalid closing tag [/$tag2] for tag [$tag1] (opened at $pos)"
 msgid "Found invalid closing tag [/$tag2] for tag [$tag1]"
 msgstr ""
 "Знайдений невірний закриваючий тег [/$tag2] для тега [$tag1] (відкритого в "
@@ -7819,7 +7709,6 @@ msgstr ""
 
 #: src/serialization/parser.cpp:261
 #, fuzzy
-#| msgid "Close"
 msgid "closed at $pos"
 msgstr "Закрити"
 
@@ -7917,7 +7806,6 @@ msgstr "і"
 
 #: src/synced_commands.cpp:410
 #, fuzzy
-#| msgid "Unknown era"
 msgid "(unknown player)"
 msgstr "Невідома ера"
 
@@ -7933,7 +7821,6 @@ msgstr ""
 
 #: src/synced_commands.cpp:425
 #, fuzzy
-#| msgid "Details"
 msgid "Details:"
 msgstr "Детально"
 
@@ -7943,7 +7830,6 @@ msgstr ""
 
 #: src/synced_commands.cpp:430
 #, fuzzy
-#| msgid "(debug command)"
 msgid "Debug Command Used"
 msgstr "(налагоджувальна команда)"
 
@@ -7989,7 +7875,6 @@ msgstr ""
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:356
 #, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "за хід"
@@ -8006,7 +7891,6 @@ msgstr[2] "пошкодження"
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:374
 #, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
 msgstr[0] "за хід"
@@ -8029,7 +7913,6 @@ msgstr "$number| влучність"
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:399
 #, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "за хід"
 
@@ -8041,7 +7924,6 @@ msgstr "$number захисту"
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:413
 #, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "за хід"
 
@@ -8056,7 +7938,6 @@ msgstr[2] ""
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:429
 #, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "за хід"
@@ -8101,13 +7982,11 @@ msgstr "$attack_list|: $effect_description"
 
 #: src/units/unit.cpp:1789
 #, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "за хід"
 
 #: src/units/unit.cpp:1799
 #, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "за хід"
@@ -8116,25 +7995,21 @@ msgstr[2] "за хід"
 
 #: src/units/unit.cpp:1805
 #, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "за хід"
 
 #: src/units/unit.cpp:1809
 #, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "за хід"
 
 #: src/units/unit.cpp:1814
 #, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "за хід"
 
 #: src/units/unit.cpp:1818
 #, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -8144,7 +8019,6 @@ msgstr[2] "за хід"
 
 #: src/units/unit.cpp:1825
 #, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "за хід"
 
@@ -8174,7 +8048,6 @@ msgstr ""
 
 #: src/wesnothd_connection.cpp:402
 #, fuzzy
-#| msgid "Connecting to Server..."
 msgid "Disconnected from server."
 msgstr "З'єднуюсь з сервером..."
 
@@ -8198,6 +8071,23 @@ msgstr "Сховати плани $player"
 msgid "Whiteboard Options"
 msgstr "Параметри планувальника"
 
+#~ msgid "Ping timeout"
+#~ msgstr "Таймаут пінгу"
+
+#~ msgid ""
+#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
+#~ "disable"
+#~ msgstr "Скільки секунд чекати відповіді сервера на пінг. 0 — відключити."
+
+#~ msgid "Size:"
+#~ msgstr "Розмір:"
+
+#~ msgid "Save"
+#~ msgstr "Зберегти"
+
+#~ msgid "Close"
+#~ msgstr "Закрити"
+
 #, fuzzy
 #~| msgid " (missing)"
 #~ msgid "$era_name (missing)"
@@ -8217,23 +8107,6 @@ msgstr "Параметри планувальника"
 #~ msgstr[0] "за хід"
 #~ msgstr[1] "за хід"
 #~ msgstr[2] "за хід"
-
-#~ msgid "Ping timeout"
-#~ msgstr "Таймаут пінгу"
-
-#~ msgid ""
-#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
-#~ "disable"
-#~ msgstr "Скільки секунд чекати відповіді сервера на пінг. 0 — відключити."
-
-#~ msgid "Size:"
-#~ msgstr "Розмір:"
-
-#~ msgid "Save"
-#~ msgstr "Зберегти"
-
-#~ msgid "Close"
-#~ msgstr "Закрити"
 
 #~ msgid "--give--"
 #~ msgstr "--дати--"
