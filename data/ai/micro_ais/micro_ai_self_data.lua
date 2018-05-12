@@ -13,8 +13,6 @@
 -- same side).
 -- For the time being, we only allow key=value style variables.
 
-local H = wesnoth.require "helper"
-
 local micro_ai_self_data = {}
 
 function micro_ai_self_data.modify_mai_self_data(self_data, ai_id, action, vars_table)

@@ -6,7 +6,6 @@ return {
 
         -- More generic grunt rush (and can, in fact, be used with other unit types as well)
 
-        local H = wesnoth.require "helper"
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
         local BC = wesnoth.require "ai/lua/battle_calcs.lua"
         local LS = wesnoth.require "location_set"

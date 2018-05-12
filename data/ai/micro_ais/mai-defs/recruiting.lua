@@ -1,5 +1,3 @@
-local H = wesnoth.require "helper"
-
 local function handle_default_recruitment(cfg)
 	-- Also need to delete/add the default recruitment CA
 	if cfg.action == 'add' then

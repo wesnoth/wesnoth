@@ -9,8 +9,6 @@
 -- with different ai_CA values affecting the same unit)
 -- For the time being, we only allow key=value style variables.
 
-local H = wesnoth.require "helper"
-
 local micro_ai_unit_variables = {}
 
 function micro_ai_unit_variables.modify_mai_unit_variables(unit, ai_id, action, vars_table)

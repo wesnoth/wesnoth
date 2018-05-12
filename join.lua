@@ -11,8 +11,6 @@ local function plugin()
 
   local events, context, info
 
-  local helper = wesnoth.require "helper"
-
   local function find_test_game(info)
     local g = info.game_list()
     if g then

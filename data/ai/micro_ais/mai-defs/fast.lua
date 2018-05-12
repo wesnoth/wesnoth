@@ -1,5 +1,3 @@
-local H = wesnoth.require "helper"
-
 function wesnoth.micro_ais.fast_ai(cfg)
 	local optional_keys = {
 		"attack_hidden_enemies", "[avoid]", "dungeon_mode",
