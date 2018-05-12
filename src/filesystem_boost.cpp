@@ -120,7 +120,7 @@ private:
 
 public:
 	// Not used by boost filesystem
-	int do_encoding() const noexcept
+	int do_encoding() const NOEXCEPT
 	{
 		return 0;
 	}
