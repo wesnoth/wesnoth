@@ -68,12 +68,6 @@ msgstr "Делфадор"
 #. [objectives]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:119
 #, fuzzy
-#| msgid ""
-#| "You will learn the basics of:\n"
-#| "Movement\n"
-#| "Attacking\n"
-#| "Healing\n"
-#| "Recruiting"
 msgid ""
 "You will learn the basics of:\n"
 "• <small>Movement</small>\n"
@@ -179,11 +173,13 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:230
+#, fuzzy
 msgid "Move Konrad next to Delfador."
 msgstr "Перемістіть Конрада до Делфадора"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:232
+#, fuzzy
 msgid "Move Li’sar next to Delfador."
 msgstr "Перемістіть Лі'сар до Делфадора"
 
@@ -235,9 +231,6 @@ msgstr "Стовп з мішенню? Ви пропонуєте мені бит�
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:325
 #, fuzzy
-#| msgid ""
-#| "female^Young lady, you have 32 hitpoints and a sword. I’m fairly sure "
-#| "you’ll win."
 msgid ""
 "Young man, you have $student_hp hitpoints and a sword. I’m fairly sure "
 "you’ll win."
@@ -262,6 +255,7 @@ msgstr "Атака"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:340
+#, fuzzy
 msgid ""
 "To attack the quintain, first select the attacker (Konrad), then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
@@ -273,6 +267,7 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:347
+#, fuzzy
 msgid ""
 "To attack the quintain, first select the attacker (Li’sar), then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
@@ -348,11 +343,6 @@ msgstr "<i>Манекен</i> може ходити?"
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:413
 #, fuzzy
-#| msgid ""
-#| "Yes. It’s a magical quintain.\n"
-#| "Now, this quintain gets 5 chances to hit you for 3 damage each. If it "
-#| "hits every time, you’ll drop from $student_hp to $future_hp hit points. "
-#| "Brace yourself!"
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
 "chances. If it hits every time, you’ll drop from $student_hp to "
@@ -398,7 +388,6 @@ msgstr ""
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:443
 #, fuzzy
-#| msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgid "female^Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr ""
 "Ой! Мені треба підлікуватись! В мене залишилось лише $student_hp очок "
@@ -431,12 +420,6 @@ msgstr "Села"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:469
 #, fuzzy
-#| msgid ""
-#| "You have captured a village! It now flies your flag and has been added to "
-#| "your total village count. (The house icon at the top of the screen shows "
-#| "how many villages you currently control.) Villages provide the gold "
-#| "needed to recruit units. Each turn, you gain two gold plus one for every "
-#| "village you own."
 msgid ""
 "You have captured a village! It now flies your colors and has been added to "
 "your total village count (the house icon at the top of the screen shows how "
@@ -471,7 +454,6 @@ msgstr "Я завербую декількох ельфів!"
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:502
 #, fuzzy
-#| msgid "I’ll recruit some elves!"
 msgid "female^I’ll recruit some elves!"
 msgstr "Я завербую декількох ельфів!"
 
@@ -503,10 +485,6 @@ msgstr "Вербування"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:533
 #, fuzzy
-#| msgid ""
-#| "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> into the castle "
-#| "tiles around it by right-clicking and selecting <b>Recruit</b>. This time "
-#| "you will only be given one type of unit to choose: the Elvish Fighter."
 msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the castle "
 "tiles around it by right-clicking and selecting <b>Recruit</b>. Note that "
@@ -549,8 +527,6 @@ msgstr ""
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:594
 #, fuzzy
-#| msgid ""
-#| "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgid ""
 "female^Hey, the quintain just healed 2 hitpoints! I’d better attack it at "
 "once!"
@@ -576,14 +552,12 @@ msgstr ""
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:609
 #, fuzzy
-#| msgid "I’ll tell them to use the one that does the most damage!"
 msgid "I’ll tell them to use the one that does more damage!"
 msgstr "Я звелю їм використати ту, котра наносить більше шкоди!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:610
 #, fuzzy
-#| msgid "I’ll tell them to use the one that does the most damage!"
 msgid "female^I’ll tell them to use the one that does more damage!"
 msgstr "Я звелю їм використати ту, котра наносить більше шкоди!"
 
@@ -605,10 +579,6 @@ msgstr "Атакуйте манекен своїми воїнами"
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:629
 #, fuzzy
-#| msgid ""
-#| "You wouldn’t do anything stupid like charging that quintain yourself "
-#| "again, now would you?\n"
-#| "Use the fighters you recruited first; they’ll be a lot of help."
 msgid ""
 "You wouldn’t do anything stupid like charging that quintain yourself again, "
 "now would you? Use the fighters you recruited first; they’ll be a lot of "
@@ -621,9 +591,6 @@ msgstr ""
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:660
 #, fuzzy
-#| msgid ""
-#| "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a <i>melee</"
-#| "i> attack. The quintain defended with its melee attack (3–5)."
 msgid ""
 "Your elf used a sword (5×4; or 5 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
@@ -636,10 +603,6 @@ msgstr ""
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:672
 #, fuzzy
-#| msgid ""
-#| "Your elf used a bow, which is a <i>ranged</i> attack (3–3; or 3 damage, 3 "
-#| "attacks). The quintain has no ranged attack, only a melee attack, so it "
-#| "could not defend itself."
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
@@ -735,14 +698,6 @@ msgstr "Захист"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:773
 #, fuzzy
-#| msgid ""
-#| "Whenever one of your units is selected, you’ll see varying percentages as "
-#| "you move the mouse over the map. The higher the percentage, the more "
-#| "<i>defense</i> that unit has in that kind of terrain. For example, most "
-#| "units have good defenses in castles and villages but poor defenses in "
-#| "rivers. However, these quintains use a <i>magical</i> attack, which "
-#| "always has a 70% chance of hitting no matter what terrain its target "
-#| "occupies."
 msgid ""
 "Whenever one of your units is selected, you’ll see varying percentages as "
 "you move the mouse over the map. The higher the percentage, the more "
@@ -777,11 +732,6 @@ msgstr "Стовп знищено, і я здобув більше досвід�
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:821
 #, fuzzy
-#| msgid ""
-#| "Yes, you gain experience through battle, especially by killing an "
-#| "opponent. Gain enough experience and you’ll become more powerful.\n"
-#| "Now, Konrad, I will leave you with more dummies to practice on! After "
-#| "that, we have real work to do..."
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful."
@@ -845,12 +795,6 @@ msgstr "Перемога"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:941
 #, fuzzy
-#| msgid ""
-#| "After your victory notice, the map will be grayed out to indicate that "
-#| "the scenario is over, but you will still be able to examine the final "
-#| "positions and state of your troops and any surviving enemies. This is "
-#| "called <i>linger mode</i>. When you’re finished, click the <b>End "
-#| "Scenario</b> button to go on the next scenario in the campaign."
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "
 "scenario is over; this is called <i>linger mode</i>. You will still be able "
@@ -896,7 +840,6 @@ msgstr "Одна вдачна атака орка-піхотинця - і мен
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:96
 #, fuzzy
-#| msgid "Ouch! I could make use of some healing in a village."
 msgid "I could make use of some healing in a village."
 msgstr "Ой! Мені треба підлікуватися в селі."
 
@@ -909,7 +852,6 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:98
 #, fuzzy
-#| msgid "I hope I have a chance to retreat after this!"
 msgid "female^I hope I have a chance to retreat after this!"
 msgstr "Сподіваюся, після цього я зможу відступити!"
 
@@ -1199,10 +1141,6 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:344
 #, fuzzy
-#| msgid ""
-#| "While none of your recruited units can move, you still can. Your five "
-#| "units cost you 5 gold in upkeep, leaving you 3 gold poorer per turn. You "
-#| "need more income."
 msgid ""
 "While none of your recruited units can move yet, you still can. You need "
 "more income; there are some villages near the keep you can capture."
@@ -1341,9 +1279,6 @@ msgstr ""
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:436
 #, fuzzy
-#| msgid ""
-#| "You’ve captured all the villages around the keep, but stay near so you "
-#| "can recruit more units."
 msgid ""
 "I think I’ll stick around the keep for now, in order to recruit more units."
 msgstr ""
@@ -1353,9 +1288,6 @@ msgstr ""
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:437
 #, fuzzy
-#| msgid ""
-#| "You’ve captured all the villages around the keep, but stay near so you "
-#| "can recruit more units."
 msgid ""
 "female^I think I’ll stick around the keep for now, in order to recruit more "
 "units."
@@ -1445,10 +1377,6 @@ msgstr ""
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:504
 #, fuzzy
-#| msgid ""
-#| "No other units can reach that orc. I hope my $unit.language_name survives "
-#| "its counter-attack! I’d better grab more villages and move everyone "
-#| "closer for next turn."
 msgid ""
 "I hope my units survive the counter-attack if I can’t take this grunt out "
 "this turn. I’d better grab more villages if I can and move everyone closer "
@@ -1460,9 +1388,6 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:509
 #, fuzzy
-#| msgid ""
-#| "Yes. If your Shaman stands just behind that unit on the bridge, she will "
-#| "heal it at the beginning of the next turn."
 msgid ""
 "If one of your Shamans stands just behind your wounded units, she will heal "
 "them each 4 hitpoints at the beginning of the next turn."
@@ -1514,10 +1439,6 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:609
 #, fuzzy
-#| msgid ""
-#| "It’s very dangerous to stand in water when there are enemies about! Your "
-#| "unit will have an 80% chance of being hit! Cancel, and wait for them to "
-#| "attack you!"
 msgid ""
 "It’s very dangerous to stand in water when there are enemies about! Your "
 "unit will have an 80% chance of being hit. Get back, and wait for them to "
@@ -1530,9 +1451,6 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:632
 #, fuzzy
-#| msgid ""
-#| "Stay near the keep! You need to be on a keep to recruit more units, and I "
-#| "doubt the orc leader will let you use his!"
 msgid ""
 "You’re venturing away from your keep. You might need recruit more units, and "
 "I doubt the orc leader will let you use his! Careful!"
@@ -1626,10 +1544,6 @@ msgstr "Умови перемоги"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:703
 #, fuzzy
-#| msgid ""
-#| "In this scenario, you only need to defeat the orc leader to win. (Victory "
-#| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
-#| "the <b>Main Menu</b>)."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. Victory "
 "conditions for a scenario are given under <b>Scenario Objectives</b> in  "
@@ -1661,14 +1575,12 @@ msgstr ""
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:750
 #, fuzzy
-#| msgid "I have no more money to recruit!"
 msgid "I have enough gold to recruit more units!"
 msgstr "У мене більше немає грошей щоб вербувати бійців!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:751
 #, fuzzy
-#| msgid "I have no more money to recruit!"
 msgid "female^I have enough gold to recruit more units!"
 msgstr "У мене більше немає грошей щоб вербувати бійців!"
 
@@ -1759,9 +1671,6 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:942
 #, fuzzy
-#| msgid ""
-#| "Second level units are powerful, but not invulnerable! Goodbye, $deadguy."
-#| "name|."
 msgid ""
 "Higher level units are powerful, but not invulnerable. Goodbye, $unit.name|."
 msgstr "Бійці другого рівня сильні, але не безсмертні! Прощай, $deadguy.name|."
@@ -1882,7 +1791,6 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1061
 #, fuzzy
-#| msgid "You took too long! We’ll never be rid of these orcs!"
 msgid "You took too long! Now we’ll never be rid of these orcs!"
 msgstr "Щось ти дуже довго! Ми ніколи не позбудемось цих орків!"
 
@@ -1904,12 +1812,6 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1127
 #, fuzzy
-#| msgid ""
-#| "You have beaten the orcs! You may want to try some novice-level campaigns "
-#| "next, such as: <i>The South Guard</i>, <i>An Orcish Incursion</i>, <i>A "
-#| "Tale of Two Brothers</i>, or <i>Heir to the Throne</i>. <i>The South "
-#| "Guard</i> was specifically designed as a beginner’s campaign. Konrad, "
-#| "Li’sar and Delfador are characters from <i>Heir to the Throne</i>."
 msgid ""
 "You have beaten the orcs! You may want to try one of the novice-level "
 "campaigns next, such as <i>A Tale of Two Brothers</i>, <i>An Orcish "
@@ -1967,9 +1869,6 @@ msgstr "Повернути"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/utils/utils.cfg:56
 #, fuzzy
-#| msgid ""
-#| "Don’t forget, you can press <b>u</b> to undo most things; useful for "
-#| "correcting mistakes."
 msgid ""
 "Don’t forget, you can press <b>u</b> to undo most things if you make a "
 "mistake."
