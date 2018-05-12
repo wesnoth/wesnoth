@@ -82,6 +82,7 @@
    * Custom MP game names are now capped at 50 characters.
    * Restored Era info to main MP game display.
    * Improved the resolution selection criteria for the MP Lobby.
+   * Fixed MP lobby player list scrolling to top when it changes.
    * Fixed inactive weapon specials being displayed in the Unit Attack dialog
      unlike in 1.12 (issue #3033).
  ### WML engine

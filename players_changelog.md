@@ -27,6 +27,7 @@ changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog.md
    * Highlight the titles of MP games with vacant slots.
    * Improved MP Lobby layout on low resolutions.
    * Improved reporting of network errors in the MP lobby (issue #3005).
+   * Fixed MP lobby player list scrolling to top when it changes.
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
    * Fixed some hotkeys triggering multiple commands on GNU/Linux (bug #1736)
