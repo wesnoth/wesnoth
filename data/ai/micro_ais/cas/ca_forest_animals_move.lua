@@ -1,5 +1,4 @@
 local H = wesnoth.require "helper"
-local W = H.set_wml_action_metatable {}
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "location_set"
 local M = wesnoth.map
@@ -45,9 +44,9 @@ function ca_forest_animals_move:execution(cfg)
     local enemies = AH.get_attackable_enemies()
 
     -- Get the locations of all the rabbit holes
-    W.store_items { variable = 'holes_wml' }
+    wesnoth.wml_actions.store_items { variable = 'holes_wml' }
     local all_items = wml.array_access.get('holes_wml')
-    W.clear_variable { name = 'holes_wml' }
+    wesnoth.wml_actions.clear_variable { name = 'holes_wml' }
 
     -- If cfg.rabbit_hole_img is set, only items with that image or halo count as holes
     local holes

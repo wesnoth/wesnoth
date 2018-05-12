@@ -1,5 +1,4 @@
 local H = wesnoth.require "helper"
-local W = H.set_wml_action_metatable {}
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local T = wml.tag
 
@@ -18,9 +17,9 @@ function ca_forest_animals_new_rabbit:execution(cfg)
     local rabbit_enemy_distance = cfg.rabbit_enemy_distance or 3
 
     -- Get the locations of all items on that map (which could be rabbit holes)
-    W.store_items { variable = 'holes_wml' }
+    wesnoth.wml_actions.store_items { variable = 'holes_wml' }
     local all_items = wml.array_access.get('holes_wml')
-    W.clear_variable { name = 'holes_wml' }
+    wesnoth.wml_actions.clear_variable { name = 'holes_wml' }
 
     -- Eliminate all holes that have an enemy within 'rabbit_enemy_distance' hexes
     -- We also add a random number to the ones we keep, for selection of the holes later

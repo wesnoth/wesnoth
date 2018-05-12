@@ -24,7 +24,6 @@ return {
         math.randomseed(os.time())
 
         local H = wesnoth.require "helper"
-        local W = H.set_wml_action_metatable {}
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
         local LS = wesnoth.require "location_set"
         local M = wesnoth.map
@@ -443,7 +442,7 @@ return {
         end
 
         function ai_cas:recruit_rushers_exec()
-            if AH.show_messages() then W.message { speaker = 'narrator', message = 'Recruiting' } end
+            if AH.show_messages() then wesnoth.wml_actions.message { speaker = 'narrator', message = 'Recruiting' } end
 
             local enemy_counts = recruit_data.recruit.enemy_counts
             local enemy_types = recruit_data.recruit.enemy_types
