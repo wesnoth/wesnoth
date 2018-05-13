@@ -453,7 +453,7 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	std::ostringstream ss;
 
 	const auto mark_missing = [&ss]() {
-		ss << ' ' << font::span_color(font::BAD_COLOR) << "(" << _("era_or_mod^missing") << ")</span>";
+		ss << ' ' << font::span_color(font::BAD_COLOR) << "(" << _("era_or_mod^not installed") << ")</span>";
 	};
 
 	ss << "<big>" << colorize(_("Era"), font::TITLE_COLOR) << "</big>\n" << game.era;
