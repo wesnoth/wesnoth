@@ -741,7 +741,7 @@ void validate_side(int side)
 		return;
 	}
 
-	if(side < 1 || side > int(resources::gameboard->teams().size())) {
+	if(side < 1 || side > static_cast<int>(resources::gameboard->teams().size())) {
 		throw game::game_error("invalid side(" + std::to_string(side) + ") found in unit definition");
 	}
 }

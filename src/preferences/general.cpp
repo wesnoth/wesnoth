@@ -892,7 +892,7 @@ void save_sample_rate(const unsigned int rate)
 	if (sample_rate() == rate)
 		return;
 
-	prefs["sample_rate"] = int(rate);
+	prefs["sample_rate"] = static_cast<int>(rate);
 
 	// If audio is open, we have to re set sample rate
 	sound::reset_sound();

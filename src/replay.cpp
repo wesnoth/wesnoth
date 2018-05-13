@@ -820,7 +820,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		{
 			int val = countdown_update["value"];
 			int tval = countdown_update["team"];
-			if (tval <= 0  || tval > int(resources::gameboard->teams().size())) {
+			if (tval <= 0  || tval > static_cast<int>(resources::gameboard->teams().size())) {
 				std::stringstream errbuf;
 				errbuf << "Illegal countdown update \n"
 					<< "Received update for :" << tval << " Current user :"

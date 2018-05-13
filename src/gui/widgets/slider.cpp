@@ -239,7 +239,7 @@ void slider::signal_handler_left_button_up(const event::ui_event event, bool& ha
 
 static t_string default_value_label_generator(const std::vector<t_string>& value_labels, int item_position, int max)
 {
-	assert(int(value_labels.size()) == max);
+	assert(static_cast<int>(value_labels.size()) == max);
 	assert(item_position < max && item_position >= 0);
 	return value_labels[item_position];
 }

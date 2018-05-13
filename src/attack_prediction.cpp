@@ -2510,7 +2510,7 @@ void combatant::print(const char label[], unsigned int battle, unsigned int figh
 
 	// TODO: add this to the stream... no idea how to convert it properly...
 	printf("#%06u: (%02u) %s%*c %u-%d; %uhp; %02u%% to hit; %.2f%% unscathed; ", battle, fighter, label,
-			int(strlen(label)) - 12, ':', u_.swarm_max, u_.damage, u_.hp, u_.chance_to_hit, untouched * 100.0);
+		static_cast<int>(strlen(label)) - 12, ':', u_.swarm_max, u_.damage, u_.hp, u_.chance_to_hit, untouched * 100.0);
 
 	if(u_.drains) {
 		ss << "drains, ";

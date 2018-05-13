@@ -1654,7 +1654,7 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 		lua_rawget(L, arg);
 		if (!lua_isnil(L, -1)) {
 			int i = luaL_checkinteger(L, -1);
-			if (i >= 1 && i <= int(teams().size())) viewing_side = i;
+			if (i >= 1 && i <= static_cast<int>(teams().size())) viewing_side = i;
 			else see_all = true;
 		}
 		lua_pop(L, 1);
@@ -1751,7 +1751,7 @@ int game_lua_kernel::intf_find_reach(lua_State *L)
 		lua_rawget(L, arg);
 		if (!lua_isnil(L, -1)) {
 			int i = luaL_checkinteger(L, -1);
-			if (i >= 1 && i <= int(teams().size())) viewing_side = i;
+			if (i >= 1 && i <= static_cast<int>(teams().size())) viewing_side = i;
 			else see_all = true;
 		}
 		lua_pop(L, 1);
@@ -1905,7 +1905,7 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 		if (!lua_isnil(L, -1))
 		{
 			int i = luaL_checkinteger(L, -1);
-			if (i >= 1 && i <= int(teams().size()))
+			if (i >= 1 && i <= static_cast<int>(teams().size()))
 			{
 				viewing_side = i;
 				see_all = false;
@@ -2521,7 +2521,7 @@ int game_lua_kernel::intf_simulate_combat(lua_State *L)
 	++arg_num;
 	if (lua_isnumber(L, arg_num)) {
 		att_w = lua_tointeger(L, arg_num) - 1;
-		if (att_w < 0 || att_w >= int(att.attacks().size()))
+		if (att_w < 0 || att_w >= static_cast<int>(att.attacks().size()))
 			return luaL_argerror(L, arg_num, "weapon index out of bounds");
 		++arg_num;
 	}
@@ -2530,7 +2530,7 @@ int game_lua_kernel::intf_simulate_combat(lua_State *L)
 	++arg_num;
 	if (lua_isnumber(L, arg_num)) {
 		def_w = lua_tointeger(L, arg_num) - 1;
-		if (def_w < 0 || def_w >= int(def.attacks().size()))
+		if (def_w < 0 || def_w >= static_cast<int>(def.attacks().size()))
 			return luaL_argerror(L, arg_num, "weapon index out of bounds");
 		++arg_num;
 	}
@@ -3312,7 +3312,7 @@ int game_lua_kernel::intf_delay(lua_State *L)
 	do {
 		play_controller_.play_slice(false);
 		CVideo::delay(10);
-	} while (int(final - SDL_GetTicks()) > 0);
+	} while (static_cast<int>(final - SDL_GetTicks()) > 0);
 	return 0;
 }
 

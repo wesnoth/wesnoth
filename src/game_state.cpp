@@ -161,7 +161,7 @@ void game_state::place_sides_in_preferred_locations(const config& level)
 	std::set<int> placed;
 	std::set<map_location> positions_taken;
 
-	for (std::vector<placing_info>::const_iterator i = placings.begin(); i != placings.end() && int(placed.size()) != side_num - 1; ++i) {
+	for (std::vector<placing_info>::const_iterator i = placings.begin(); i != placings.end() && static_cast<int>(placed.size()) != side_num - 1; ++i) {
 		if(placed.count(i->side) == 0 && positions_taken.count(i->pos) == 0) {
 			placed.insert(i->side);
 			positions_taken.insert(i->pos);

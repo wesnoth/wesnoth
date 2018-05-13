@@ -299,14 +299,14 @@ height_map default_map_generator_job::generate_height_map(std::size_t width, std
 		// Is this a negative hill? (i.e. a valley)
 		bool is_valley = false;
 
-		int x1 = island_size > 0 ? center_x - island_size + (rng_()%(island_size*2)) : int(rng_()%width);
-		int y1 = island_size > 0 ? center_y - island_size + (rng_()%(island_size*2)) : int(rng_()%height);
+		int x1 = island_size > 0 ? center_x - island_size + (rng_()%(island_size*2)) : static_cast<int>(rng_()%width);
+		int y1 = island_size > 0 ? center_y - island_size + (rng_()%(island_size*2)) : static_cast<int>(rng_()%height);
 
 		// We have to check whether this is actually a valley
 		if(island_size != 0) {
-			const std::size_t diffx = std::abs(x1 - int(center_x));
-			const std::size_t diffy = std::abs(y1 - int(center_y));
-			const std::size_t dist = std::size_t(std::sqrt(double(diffx*diffx + diffy*diffy)));
+			const std::size_t diffx = std::abs(x1 - static_cast<int>(center_x));
+			const std::size_t diffy = std::abs(y1 - static_cast<int>(center_y));
+			const std::size_t dist = std::size_t(std::sqrt(static_cast<double>(diffx*diffx + diffy*diffy)));
 			is_valley = dist > island_size;
 		}
 
@@ -322,7 +322,7 @@ height_map default_map_generator_job::generate_height_map(std::size_t width, std
 				const int xdiff = (x2-x1);
 				const int ydiff = (y2-y1);
 
-				const int hill_height = radius - int(std::sqrt(double(xdiff*xdiff + ydiff*ydiff)));
+				const int hill_height = radius - static_cast<int>(std::sqrt(static_cast<double>(xdiff*xdiff + ydiff*ydiff)));
 
 				if(hill_height > 0) {
 					if(is_valley) {
@@ -993,7 +993,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		dst.x += data.width/3 - 1;
 		dst.y += data.height/3 - 1;
 
-		if(data.link_castles && road < int(castles.size() * castles.size())) {
+		if(data.link_castles && road < static_cast<int>(castles.size() * castles.size())) {
 			const std::size_t src_castle = road/castles.size();
 			const std::size_t dst_castle = road%castles.size();
 			if(src_castle >= dst_castle) {

@@ -712,9 +712,9 @@ surface adjust_surface_color(const surface &surf, int red, int green, int blue)
 				g = (*beg) >> 8;
 				b = (*beg) >> 0;
 
-				r = std::max<int>(0,std::min<int>(255,int(r)+red));
-				g = std::max<int>(0,std::min<int>(255,int(g)+green));
-				b = std::max<int>(0,std::min<int>(255,int(b)+blue));
+				r = std::max<int>(0,std::min<int>(255,static_cast<int>(r)+red));
+				g = std::max<int>(0,std::min<int>(255,static_cast<int>(g)+green));
+				b = std::max<int>(0,std::min<int>(255,static_cast<int>(b)+blue));
 
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
@@ -1208,7 +1208,7 @@ surface adjust_surface_alpha_add(const surface &surf, int amount)
 				g = (*beg) >> 8;
 				b = (*beg);
 
-				alpha = uint8_t(std::max<int>(0,std::min<int>(255,int(alpha) + amount)));
+				alpha = uint8_t(std::max<int>(0,std::min<int>(255,static_cast<int>(alpha) + amount)));
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
 

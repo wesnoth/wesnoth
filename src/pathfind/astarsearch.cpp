@@ -153,7 +153,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 	if (calc.cost(dst, 0) >= stop_at) {
 		LOG_PF << "aborted A* search because Start or Dest is invalid\n";
 		plain_route locRoute;
-		locRoute.move_cost = int(calc.getNoPathValue());
+		locRoute.move_cost = static_cast<int>(calc.getNoPathValue());
 		return locRoute;
 	}
 

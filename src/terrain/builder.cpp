@@ -562,14 +562,14 @@ void terrain_builder::rotate(terrain_constraint& ret, int angle)
 	for(rule_imagelist::iterator itor = ret.images.begin(); itor != ret.images.end(); ++itor) {
 		double vx, vy, rx, ry;
 
-		vx = double(itor->basex) - double(tilewidth_) / 2;
-		vy = double(itor->basey) - double(tilewidth_) / 2;
+		vx = static_cast<double>(itor->basex) - static_cast<double>(tilewidth_) / 2;
+		vy = static_cast<double>(itor->basey) - static_cast<double>(tilewidth_) / 2;
 
 		rx = xyrotations[angle].xx * vx + xyrotations[angle].xy * vy;
 		ry = xyrotations[angle].yx * vx + xyrotations[angle].yy * vy;
 
-		itor->basex = int(rx + tilewidth_ / 2);
-		itor->basey = int(ry + tilewidth_ / 2);
+		itor->basex = static_cast<int>(rx + tilewidth_ / 2);
+		itor->basey = static_cast<int>(ry + tilewidth_ / 2);
 
 		// std::cerr << "Rotation: from " << vx << ", " << vy << " to " << itor->basex <<
 		//	", " << itor->basey << "\n";

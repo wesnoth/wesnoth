@@ -572,7 +572,7 @@ void file_dialog::sync_bookmarks_bar(window& window)
 		}
 		current_bookmark_ = -1;
 	} else {
-		const int new_selection = int(std::distance(bookmark_paths_.begin(), it.base()) - 1);
+		const int new_selection = static_cast<int>(std::distance(bookmark_paths_.begin(), it.base()) - 1);
 		if(new_selection != current_bookmark_) {
 			assert(unsigned(new_selection) < bookmarks_bar.get_item_count());
 			if(current_bookmark_ >= 0) {
@@ -686,7 +686,7 @@ void file_dialog::on_bookmark_del_cmd(window& window)
 	assert(user_bookmarks_begin_ >= 0
 		   && current_bookmark_ >= 0
 		   && current_bookmark_ >= user_bookmarks_begin_
-		   && current_bookmark_ < int(bookmark_paths_.size()));
+		   && current_bookmark_ < static_cast<int>(bookmark_paths_.size()));
 
 	listbox& bookmarks_bar = find_widget<listbox>(&window, "bookmarks", false);
 	desktop::remove_user_bookmark(current_bookmark_ - user_bookmarks_begin_);

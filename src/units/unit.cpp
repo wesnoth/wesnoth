@@ -1047,7 +1047,7 @@ static color_t hp_color_impl(int hitpoints, int max_hitpoints)
 	color_t energy_color {0,0,0,255};
 
 	if(max_hitpoints > 0) {
-		unit_energy = double(hitpoints)/double(max_hitpoints);
+		unit_energy = static_cast<double>(hitpoints)/static_cast<double>(max_hitpoints);
 	}
 
 	if(1.0 == unit_energy) {

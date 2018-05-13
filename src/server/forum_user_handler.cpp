@@ -166,7 +166,7 @@ void fuh::set_is_moderator(const std::string& name, const bool& is_moderator) {
 	if(!user_exists(name)) return;
 
 	try {
-		write_detail(name, "user_is_moderator", int(is_moderator));
+		write_detail(name, "user_is_moderator", static_cast<int>(is_moderator));
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not set is_moderator for user '" << name << "' :" << e.message << std::endl;
 	}
@@ -292,7 +292,7 @@ std::time_t fuh::get_registrationdate(const std::string& user) {
 void fuh::set_lastlogin(const std::string& user, const std::time_t& lastlogin) {
 
 	try {
-		write_detail(user, "user_lastvisit", int(lastlogin));
+		write_detail(user, "user_lastvisit", static_cast<int>(lastlogin));
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not set last visit for user '" << user << "' :" << e.message << std::endl;
 	}

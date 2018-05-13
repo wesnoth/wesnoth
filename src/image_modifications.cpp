@@ -263,9 +263,9 @@ public:
 		} else if(key == "height") {
 			return variant(h);
 		} else if(key == "u") {
-			return variant(p.x / float(w));
+			return variant(p.x / static_cast<float>(w));
 		} else if(key == "v") {
-			return variant(p.y / float(h));
+			return variant(p.y / static_cast<float>(h));
 		}
 
 		return variant();

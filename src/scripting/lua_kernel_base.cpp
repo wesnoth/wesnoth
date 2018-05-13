@@ -217,8 +217,8 @@ static int intf_name_generator(lua_State *L)
 static int intf_random(lua_State *L)
 {
 	if (lua_isnoneornil(L, 1)) {
-		double r = double(randomness::generator->next_random());
-		double r_max = double(std::numeric_limits<uint32_t>::max());
+		double r = static_cast<double>(randomness::generator->next_random());
+		double r_max = static_cast<double>(std::numeric_limits<uint32_t>::max());
 		lua_push(L, r / (r_max + 1));
 		return 1;
 	}

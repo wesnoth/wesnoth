@@ -1211,7 +1211,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 			}
 
 			// The 0.5 power avoids underestimating too much the damage of a wounded unit.
-			int64_t hp = int(std::sqrt(double(un.hitpoints()) / un.max_hitpoints()) * 1000);
+			int64_t hp = static_cast<int>(std::sqrt(static_cast<double>(un.hitpoints()) / un.max_hitpoints()) * 1000);
 			int64_t most_damage = 0;
 			for(const attack_type& att : un.attacks()) {
 				int damage = att.damage() * att.num_attacks() * (100 + tod_modifier);

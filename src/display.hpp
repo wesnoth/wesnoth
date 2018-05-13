@@ -326,7 +326,7 @@ public:
 	/** Returns the current zoom factor. */
 	double get_zoom_factor() const
 	{
-		return double(zoom_) / double(game_config::tile_size);
+		return static_cast<double>(zoom_) / static_cast<double>(game_config::tile_size);
 	}
 
 	/**

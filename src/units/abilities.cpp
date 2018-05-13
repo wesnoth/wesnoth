@@ -1269,7 +1269,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab)
 		effect_list_.push_back(val.second);
 	}
 
-	composite_value_ = int((value_set + addition) * multiplier / divisor);
+	composite_value_ = static_cast<int>((value_set + addition) * multiplier / divisor);
 }
 
 } // end namespace unit_abilities

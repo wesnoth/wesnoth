@@ -164,7 +164,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 
 			assert(threats.empty() == false);
 
-			const double value = threat/double(threats.size());
+			const double value = threat/static_cast<double>(threats.size());
 			for(std::set<map_location>::const_iterator i = threats.begin(); i != threats.end(); ++i) {
 				LOG_AI << "found threat target... " << *i << " with value: " << value << "\n";
 				targets.emplace_back(*i,value,target::TYPE::THREAT);

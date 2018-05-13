@@ -338,7 +338,7 @@ void unit_drawer::redraw_unit(const unit & u) const
 
 		double unit_energy = 0.0;
 		if(max_hitpoints > 0) {
-			unit_energy = double(hitpoints)/double(max_hitpoints);
+			unit_energy = static_cast<double>(hitpoints)/static_cast<double>(max_hitpoints);
 		}
 
 		const int bar_shift = static_cast<int>(-5*zoom_factor);
@@ -355,7 +355,7 @@ void unit_drawer::redraw_unit(const unit & u) const
 		);
 
 		if(experience > 0 && can_advance) {
-			const double filled = double(experience) / double(max_experience);
+			const double filled = static_cast<double>(experience) / static_cast<double>(max_experience);
 			const int xp_bar_height = static_cast<int>(max_experience * u.xp_bar_scaling() / std::max<int>(u.level(),1));
 
 			// XP bar

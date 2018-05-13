@@ -241,7 +241,11 @@ struct color_t
 
 inline std::ostream& operator<<(std::ostream& s, const color_t& c)
 {
-	s << int(c.r) << " " << int(c.g) << " " << int(c.b) << " " << int(c.a) << std::endl;
+	s << static_cast<int>(c.r) << " "
+	  << static_cast<int>(c.g) << " "
+	  << static_cast<int>(c.b) << " "
+	  << static_cast<int>(c.a) << std::endl;
+
 	return s;
 }
 

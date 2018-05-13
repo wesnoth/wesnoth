@@ -1054,7 +1054,7 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 	const SDL_Rect& area = map_area();
 
 	// Turn the zoom factor to a double in order to avoid rounding errors.
-	double zoom_factor = double(new_zoom) / double(zoom_);
+	double zoom_factor = static_cast<double>(new_zoom) / static_cast<double>(zoom_);
 
 	xpos_ = std::round(((xpos_ + area.w / 2) * zoom_factor) - (area.w / 2));
 	ypos_ = std::round(((ypos_ + area.h / 2) * zoom_factor) - (area.h / 2));
