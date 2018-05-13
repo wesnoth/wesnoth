@@ -479,9 +479,15 @@ static void draw_numbers(const map_location& hex, side_actions::numbers_t number
 
 		std::string number_text = std::to_string(number);
 		size_t font_size;
-		if (int(i) == main_number) font_size = 19;
-		else if (secondary_numbers.find(i)!=secondary_numbers.end()) font_size = 17;
-		else font_size = 15;
+		if (static_cast<int>(i) == main_number) {
+			font_size = 19;
+		}
+		else if (secondary_numbers.find(i)!=secondary_numbers.end()) {
+			font_size = 17;
+		}
+		else {
+			font_size = 15;
+		}
 
 		color_t color = team::get_side_color(static_cast<int>(team_numbers[i]+1));
 		const double x_in_hex = x_origin + x_offset;

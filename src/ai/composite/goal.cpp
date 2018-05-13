@@ -284,7 +284,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target >>
 			{
 				DBG_AI_GOAL << "side " << get_side() << ": in " << goal_type << ": found threat target. " << u.get_location() << " is a threat to "<< loc << '\n';
 				*target_list = target(u.get_location(),
-					value_ * double(radius_ - distance) /
+					value_ * static_cast<double>(radius_ - distance) /
 					radius_, target::TYPE::THREAT);
 			}
 		}

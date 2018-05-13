@@ -596,7 +596,7 @@ static config unit_moves(reports::context & rc, const unit* u)
 	std::set<terrain_movement> terrain_moves;
 
 	if (u->side() == rc.screen().playing_side()) {
-		movement_frac = double(u->movement_left()) / std::max<int>(1, u->total_movement());
+		movement_frac = static_cast<double>(u->movement_left()) / std::max<int>(1, u->total_movement());
 		if (movement_frac > 1.0)
 			movement_frac = 1.0;
 	}
@@ -636,7 +636,7 @@ static config unit_moves(reports::context & rc, const unit* u)
 		tooltip << naps << '\n';
 	}
 
-	int grey = 128 + int((255 - 128) * movement_frac);
+	int grey = 128 + static_cast<int>((255 - 128) * movement_frac);
 	color_t c = color_t(grey, grey, grey);
 	str << span_color(c) << u->movement_left() << '/' << u->total_movement() << naps;
 	return text_report(str.str(), tooltip.str());
@@ -732,7 +732,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 				// specials are calculated, but for an unusual case, simple brevity
 				// trumps complexities.
 				if ( max_attacks != base_attacks ) {
-					int attack_diff = int(max_attacks) - int(base_attacks);
+					int attack_diff = static_cast<int>(max_attacks) - static_cast<int>(base_attacks);
 					tooltip << '\t' << _("Specials: ") << utils::signed_value(attack_diff) << '\n';
 				}
 			}

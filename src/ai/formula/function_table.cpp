@@ -625,7 +625,7 @@ DEFINE_WFL_FUNCTION(calculate_outcome, 3, 4)
 	while (it != hp_dist.end()) {
 		if (*it != 0) {
 			hitLeft.emplace_back(i);
-			prob.emplace_back(int(*it*10000));
+			prob.emplace_back(static_cast<int>(*it*10000));
 		}
 		++it;
 		++i;
@@ -649,7 +649,7 @@ DEFINE_WFL_FUNCTION(calculate_outcome, 3, 4)
 	while (it != hp_dist.end()) {
 		if (*it != 0) {
 			hitLeft.emplace_back(i);
-			prob.emplace_back(int(*it*10000));
+			prob.emplace_back(static_cast<int>(*it*10000));
 		}
 		++it;
 		++i;

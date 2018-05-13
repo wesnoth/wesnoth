@@ -254,7 +254,10 @@ public:
 	static int hex_size(){ return zoom_; }
 
 	/** Returns the current zoom factor. */
-	static double get_zoom_factor() { return double(zoom_)/double(game_config::tile_size); }
+	static double get_zoom_factor()
+	{
+		return static_cast<double>(zoom_) / static_cast<double>(game_config::tile_size);
+	}
 
 	/**
 	 * given x,y co-ordinates of an onscreen pixel, will return the

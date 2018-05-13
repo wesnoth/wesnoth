@@ -47,7 +47,7 @@ std::string hexencode_hash(const std::array<uint8_t, len>& input) {
 	std::ostringstream sout;
 	sout << std::hex;
 	for(uint8_t c : input) {
-		sout << int(c);
+		sout << static_cast<int>(c);
 	}
 	return sout.str();
 }
