@@ -21,6 +21,7 @@
 #include "filesystem.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
+#include "serialization/unicode.hpp"
 #include "version.hpp"
 
 #include <algorithm>
@@ -337,6 +338,11 @@ std::size_t max_strlen(const std::vector<std::string>& strs)
 	return it != strs.end() ? it->length() : 0;
 }
 
+std::string report_heading(const std::string& heading_text)
+{
+	return heading_text + '\n' + std::string(utf8::size(heading_text), '=') + '\n';
+}
+
 } // end anonymous namespace 2
 
 std::string library_versions_report()
@@ -418,8 +424,7 @@ std::string full_build_report()
 	o << "The Battle for Wesnoth version " << game_config::revision << '\n'
 	  << "Running on " << desktop::os_version() << '\n'
 	  << '\n'
-	  << "Game paths\n"
-	  << "==========\n"
+	  << report_heading("Game paths")
 	  << '\n'
 	  << "Data dir:        " << filesystem::sanitize_path(game_config::path) << '\n'
 	  << "User config dir: " << filesystem::sanitize_path(filesystem::get_user_config_dir()) << '\n'
@@ -428,13 +433,11 @@ std::string full_build_report()
 	  << "Add-ons dir:     " << filesystem::sanitize_path(filesystem::get_addons_dir()) << '\n'
 	  << "Cache dir:       " << filesystem::sanitize_path(filesystem::get_cache_dir()) << '\n'
 	  << '\n'
-	  << "Libraries\n"
-	  << "=========\n"
+	  << report_heading("Libraries")
 	  << '\n'
 	  << game_config::library_versions_report()
 	  << '\n'
-	  << "Features\n"
-	  << "========\n"
+	  << report_heading("Features")
 	  << '\n'
 	  << game_config::optional_features_report();
 
