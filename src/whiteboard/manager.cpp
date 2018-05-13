@@ -805,7 +805,9 @@ void manager::save_temp_move()
 			//either switch over to a plain route for planned moves, or mark it correctly
 			pathfind::marked_route route;
 			route.steps = move_arrow->get_path();
-			route.move_cost = path_cost(route.steps,*u);
+			// path_cost() is incomplete as it for example doesn't handle skirmisher, we let the move action generate the costs on it own.
+			// route.move_cost = path_cost(route.steps,*u);
+			route.move_cost = -1;
 
 			sa.queue_move(turn, *u, route, move_arrow, std::move(fake_units_[i]));
 		}
