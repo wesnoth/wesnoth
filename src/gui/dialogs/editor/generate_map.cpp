@@ -77,7 +77,7 @@ void editor_generate_map::do_generator_selected(window& window)
 	listbox& list = find_widget<listbox>(&window, "generators_list", false);
 	const int current = list.get_selected_row();
 
-	if(current == -1 || unsigned(current) > map_generators_.size()) {
+	if(current == -1 || static_cast<unsigned>(current) > map_generators_.size()) {
 		return; // shouldn't happen!
 	}
 

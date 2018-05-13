@@ -1158,9 +1158,9 @@ surface brighten_image(const surface &surf, fixed_t amount)
 				g = (*beg) >> 8;
 				b = (*beg);
 
-				r = std::min<unsigned>(unsigned(fxpmult(r, amount)),255);
-				g = std::min<unsigned>(unsigned(fxpmult(g, amount)),255);
-				b = std::min<unsigned>(unsigned(fxpmult(b, amount)),255);
+				r = std::min<unsigned>(static_cast<unsigned>(fxpmult(r, amount)),255);
+				g = std::min<unsigned>(static_cast<unsigned>(fxpmult(g, amount)),255);
+				b = std::min<unsigned>(static_cast<unsigned>(fxpmult(b, amount)),255);
 
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
@@ -1361,7 +1361,7 @@ surface submerge_alpha(const surface &surf, int depth, float alpha_base, float a
 				int d = (beg-limit)/nsurf->w;  // current depth in pixels
 				float a = alpha_base - d * alpha_delta;
 				fixed_t amount = ftofxp(a<0?0:a);
-				alpha = std::min<unsigned>(unsigned(fxpmult(alpha,amount)),255);
+				alpha = std::min<unsigned>(static_cast<unsigned>(fxpmult(alpha,amount)),255);
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
 

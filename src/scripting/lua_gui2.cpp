@@ -840,7 +840,7 @@ int intf_set_dialog_canvas(lua_State* L)
 	}
 
 	std::vector<gui2::canvas> &cv = c->get_canvases();
-	if(i < 1 || unsigned(i) > cv.size()) {
+	if(i < 1 || static_cast<unsigned>(i) > cv.size()) {
 		return luaL_argerror(L, 1, "out of bounds");
 	}
 

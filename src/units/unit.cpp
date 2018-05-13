@@ -1679,7 +1679,7 @@ std::vector<config> unit::get_modification_advances() const
 			continue;
 		}
 
-		if(modification_count("advancement", adv["id"]) >= unsigned(adv["max_times"].to_int(1))) {
+		if(modification_count("advancement", adv["id"]) >= static_cast<unsigned>(adv["max_times"].to_int(1))) {
 			continue;
 		}
 

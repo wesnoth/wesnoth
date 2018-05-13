@@ -2171,7 +2171,7 @@ int game_lua_kernel::intf_put_recall_unit(lua_State *L)
 	lua_unit *lu = nullptr;
 	unit_ptr u = unit_ptr();
 	int side = lua_tointeger(L, 2);
-	if (unsigned(side) > teams().size()) side = 0;
+	if (static_cast<unsigned>(side) > teams().size()) side = 0;
 
 	if(luaW_isunit(L, 1)) {
 		lu = luaW_checkunit_ref(L, 1);

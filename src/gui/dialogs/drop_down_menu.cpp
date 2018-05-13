@@ -162,7 +162,7 @@ void drop_down_menu::pre_show(window& window)
 		}
 	}
 
-	if(selected_item_ >= 0 && unsigned(selected_item_) < list.get_item_count()) {
+	if(selected_item_ >= 0 && static_cast<unsigned>(selected_item_) < list.get_item_count()) {
 		list.select_row(selected_item_);
 	}
 

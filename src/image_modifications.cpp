@@ -564,7 +564,7 @@ surface o_modification::operator()(const surface& src) const
 				g = (*beg) >> 8;
 				b = (*beg);
 
-				alpha = std::min<unsigned>(unsigned(fxpmult(alpha,amount)), 255);
+				alpha = std::min<unsigned>(static_cast<unsigned>(fxpmult(alpha,amount)), 255);
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
 

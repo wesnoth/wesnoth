@@ -185,7 +185,7 @@ bool simulated_synced_command(){
 // Helper functions.
 void helper_check_village(const map_location& loc, int side){
 	std::vector<team> &teams = resources::gameboard->teams();
-	team *t = unsigned(side - 1) < teams.size() ? &teams[side - 1] : nullptr;
+	team *t = static_cast<unsigned>(side - 1) < teams.size() ? &teams[side - 1] : nullptr;
 	if(t && t->owns_village(loc)){
 		return;
 	}

@@ -568,17 +568,17 @@ void file_dialog::sync_bookmarks_bar(window& window)
 
 	if(it == bookmark_paths_.rend()) {
 		if(current_bookmark_ >= 0) {
-			bookmarks_bar.select_row(unsigned(current_bookmark_), false);
+			bookmarks_bar.select_row(static_cast<unsigned>(current_bookmark_), false);
 		}
 		current_bookmark_ = -1;
 	} else {
 		const int new_selection = static_cast<int>(std::distance(bookmark_paths_.begin(), it.base()) - 1);
 		if(new_selection != current_bookmark_) {
-			assert(unsigned(new_selection) < bookmarks_bar.get_item_count());
+			assert(static_cast<unsigned>(new_selection) < bookmarks_bar.get_item_count());
 			if(current_bookmark_ >= 0) {
-				bookmarks_bar.select_row(unsigned(current_bookmark_), false);
+				bookmarks_bar.select_row(static_cast<unsigned>(current_bookmark_), false);
 			}
-			bookmarks_bar.select_row(unsigned(new_selection), true);
+			bookmarks_bar.select_row(static_cast<unsigned>(new_selection), true);
 			current_bookmark_ = new_selection;
 		}
 	}
@@ -630,13 +630,13 @@ void file_dialog::on_bookmark_selected(window& window)
 		if(current_bookmark_ >= 0) {
 			// Don't allow the user to deselect the selected bookmark. That wouldn't
 			// make any sense.
-			bookmarks_bar.select_row(unsigned(current_bookmark_));
+			bookmarks_bar.select_row(static_cast<unsigned>(current_bookmark_));
 		}
 
 		return;
 	}
 
-	assert(unsigned(new_selection) < bookmark_paths_.size());
+	assert(static_cast<unsigned>(new_selection) < bookmark_paths_.size());
 	current_bookmark_ = new_selection;
 	set_path(bookmark_paths_[new_selection]);
 	refresh_fileview(window);

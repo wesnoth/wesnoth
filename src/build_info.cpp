@@ -67,9 +67,9 @@ std::string format_version(unsigned a, unsigned b, unsigned c)
 
 std::string format_version(const SDL_version& v)
 {
-	return formatter() << unsigned(v.major) << '.'
-						<< unsigned(v.minor) << '.'
-						<< unsigned(v.patch);
+	return formatter() << static_cast<unsigned>(v.major) << '.'
+						<< static_cast<unsigned>(v.minor) << '.'
+						<< static_cast<unsigned>(v.patch);
 }
 
 std::string format_openssl_patch_level(uint8_t p)
