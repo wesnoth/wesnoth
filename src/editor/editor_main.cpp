@@ -51,7 +51,7 @@ EXIT_STATUS start(const config& game_conf, const std::string& filename /* = "" *
 		if (!take_screenshot)
 			e = editor.main_loop();
 
-	} catch (editor_exception& e) {
+	} catch(const editor_exception& e) {
 		ERR_ED << "Editor exception in editor::start: " << e.what() << std::endl;
 		throw;
 	}

@@ -173,10 +173,10 @@ EXIT_STATUS editor_controller::main_loop()
 		while (!do_quit_) {
 			play_slice();
 		}
-	} catch (editor_exception& e) {
+	} catch (const editor_exception& e) {
 		gui2::show_transient_message(_("Fatal error"), e.what());
 		return EXIT_ERROR;
-	} catch (wml_exception& e) {
+	} catch (const wml_exception& e) {
 		e.show();
 	}
 	return quit_mode_;
@@ -192,7 +192,7 @@ void editor_controller::do_screenshot(const std::string& screenshot_filename /* 
 		if(screenshot.null() || image::save_image(screenshot, screenshot_filename) != image::save_result::success) {
 			ERR_ED << "Screenshot creation failed!\n";
 		}
-	} catch (wml_exception& e) {
+	} catch (const wml_exception& e) {
 		e.show();
 	}
 }

@@ -589,14 +589,14 @@ void server::handle_request_campaign_list(const server::request& req)
 	try {
 		before += req.cfg["before"].to_time_t();
 		before_flag = true;
-	} catch(bad_lexical_cast) {}
+	} catch(const bad_lexical_cast&) {}
 
 	bool after_flag = false;
 	time_t after = epoch;
 	try {
 		after += req.cfg["after"].to_time_t();
 		after_flag = true;
-	} catch(bad_lexical_cast) {}
+	} catch(const bad_lexical_cast&) {}
 
 	const std::string& name = req.cfg["name"];
 	const std::string& lang = req.cfg["language"];
@@ -1009,13 +1009,13 @@ int main()
 		const std::string cfg_path = filesystem::normalize_path("server.cfg");
 
 		campaignd::server(cfg_path).run();
-	} catch(config::error& /*e*/) {
+	} catch(const config::error& /*e*/) {
 		std::cerr << "Could not parse config file\n";
 		return 1;
-	} catch(filesystem::io_exception& e) {
+	} catch(const filesystem::io_exception& e) {
 		std::cerr << "File I/O error: " << e.what() << "\n";
 		return 2;
-	} catch(std::bad_function_call& /*e*/) {
+	} catch(const std::bad_function_call& /*e*/) {
 		std::cerr << "Bad request handler function call\n";
 		return 4;
 	}

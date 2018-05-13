@@ -32,7 +32,7 @@ save_blocker::~save_blocker() {
 		controller_ = nullptr;
 		callback_ = nullptr;
 	}
-	} catch (std::exception & e) {
+	} catch (const std::exception & e) {
 		std::cerr << "Save blocker dtor swallowing an exception: " << e.what() << "\n";
 	}
 }

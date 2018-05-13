@@ -296,24 +296,24 @@ LEVEL_RESULT campaign_controller::play_game()
 			{
 				res = playmp_scenario(end_level);
 			}
-		} catch(game::load_game_failed& e) {
+		} catch(const game::load_game_failed& e) {
 			gui2::show_error_message(_("The game could not be loaded: ") + e.message);
 			return LEVEL_RESULT::QUIT;
-		} catch(quit_game_exception&) {
+		} catch(const quit_game_exception&) {
 			LOG_NG << "The game was aborted\n";
 			return LEVEL_RESULT::QUIT;
-		} catch(game::game_error& e) {
+		} catch(const game::game_error& e) {
 			gui2::show_error_message(_("Error while playing the game: ") + e.message);
 			return LEVEL_RESULT::QUIT;
-		} catch(incorrect_map_format_error& e) {
+		} catch(const incorrect_map_format_error& e) {
 			gui2::show_error_message(_("The game map could not be loaded: ") + e.message);
 			return LEVEL_RESULT::QUIT;
-		} catch(mapgen_exception& e) {
+		} catch(const mapgen_exception& e) {
 			gui2::show_error_message(_("Map generator error: ") + e.message);
-		} catch(config::error& e) {
+		} catch(const config::error& e) {
 			gui2::show_error_message(_("Error while reading the WML: ") + e.message);
 			return LEVEL_RESULT::QUIT;
-		} catch(wml_exception& e) {
+		} catch(const wml_exception& e) {
 			e.show();
 			return LEVEL_RESULT::QUIT;
 		}

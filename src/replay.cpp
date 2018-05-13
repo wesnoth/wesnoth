@@ -460,7 +460,7 @@ static bool fix_rename_command(const config& c, config& async_child)
 
 		try {
 			read_locations(child,steps);
-		} catch (bad_lexical_cast &) {
+		} catch(const bad_lexical_cast &) {
 			WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child.debug() << std::endl;
 		}
 

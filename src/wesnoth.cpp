@@ -168,7 +168,7 @@ static void encode(const std::string& input_file, const std::string& output_file
 		ifile.close();
 
 		safe_exit(remove(input_file.c_str()));
-	} catch(filesystem::io_exception& e) {
+	} catch(const filesystem::io_exception& e) {
 		std::cerr << "IO error: " << e.what() << "\n";
 	}
 }
@@ -188,7 +188,7 @@ static void decode(const std::string& input_file, const std::string& output_file
 		ifile.close();
 
 		safe_exit(remove(input_file.c_str()));
-	} catch(filesystem::io_exception& e) {
+	} catch(const filesystem::io_exception& e) {
 		std::cerr << "IO error: " << e.what() << "\n";
 	}
 }
@@ -231,7 +231,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 		try {
 			filesystem::scoped_istream stream = filesystem::istream_file(file);
 			read(cfg, *stream);
-		} catch(config::error& e) {
+		} catch(const config::error& e) {
 			std::cerr << "Caught a config error while parsing file '" << file << "':\n" << e.message << std::endl;
 		}
 
@@ -1067,37 +1067,37 @@ int main(int argc, char** argv)
 
 		const int res = do_gameloop(args);
 		safe_exit(res);
-	} catch(boost::program_options::error& e) {
+	} catch(const boost::program_options::error& e) {
 		std::cerr << "Error in command line: " << e.what() << '\n';
 		error_exit(1);
-	} catch(CVideo::error& e) {
+	} catch(const CVideo::error& e) {
 		std::cerr << "Could not initialize video.\n\n" << e.what() << "\n\nExiting.\n";
 		error_exit(1);
-	} catch(font::error& e) {
+	} catch(const font::error& e) {
 		std::cerr << "Could not initialize fonts.\n\n" << e.what() << "\n\nExiting.\n";
 		error_exit(1);
-	} catch(config::error& e) {
+	} catch(const config::error& e) {
 		std::cerr << e.message << "\n";
 		error_exit(1);
-	} catch(CVideo::quit&) {
+	} catch(const CVideo::quit&) {
 		// just means the game should quit
-	} catch(return_to_play_side_exception&) {
+	} catch(const return_to_play_side_exception&) {
 		std::cerr << "caught return_to_play_side_exception, please report this bug (quitting)\n";
-	} catch(quit_game_exception&) {
+	} catch(const quit_game_exception&) {
 		std::cerr << "caught quit_game_exception (quitting)\n";
-	} catch(wml_exception& e) {
+	} catch(const wml_exception& e) {
 		std::cerr << "WML exception:\nUser message: " << e.user_message << "\nDev message: " << e.dev_message << '\n';
 		error_exit(1);
-	} catch(wfl::formula_error& e) {
+	} catch(const wfl::formula_error& e) {
 		std::cerr << e.what() << "\n\nGame will be aborted.\n";
 		error_exit(1);
 	} catch(const sdl::exception& e) {
 		std::cerr << e.what();
 		error_exit(1);
-	} catch(game::error&) {
+	} catch(const game::error&) {
 		// A message has already been displayed.
 		error_exit(1);
-	} catch(std::bad_alloc&) {
+	} catch(const std::bad_alloc&) {
 		std::cerr << "Ran out of memory. Aborted.\n";
 		error_exit(ENOMEM);
 #if !defined(NO_CATCH_AT_GAME_END)
@@ -1105,7 +1105,7 @@ int main(int argc, char** argv)
 		// Try to catch unexpected exceptions.
 		std::cerr << "Caught general '" << typeid(e).name() << "' exception:\n" << e.what() << std::endl;
 		error_exit(1);
-	} catch(std::string& e) {
+	} catch(const std::string& e) {
 		std::cerr << "Caught a string thrown as an exception:\n" << e << std::endl;
 		error_exit(1);
 	} catch(const char* e) {

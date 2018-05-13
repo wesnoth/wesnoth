@@ -466,10 +466,10 @@ void context_manager::apply_mask_dialog()
 			map_context mask(game_config_, dlg.path());
 			editor_action_apply_mask a(mask.map());
 			perform_refresh(a);
-		} catch (editor_map_load_exception& e) {
+		} catch (const editor_map_load_exception& e) {
 			gui2::show_transient_message(_("Error loading mask"), e.what());
 			return;
-		} catch (editor_action_exception& e) {
+		} catch (const editor_action_exception& e) {
 			gui2::show_error_message(e.what());
 			return;
 		}
@@ -509,10 +509,10 @@ void context_manager::create_mask_to_dialog()
 			map_context map(game_config_, dlg.path());
 			editor_action_create_mask a(map.map());
 			perform_refresh(a);
-		} catch (editor_map_load_exception& e) {
+		} catch (const editor_map_load_exception& e) {
 			gui2::show_transient_message(_("Error loading map"), e.what());
 			return;
-		} catch (editor_action_exception& e) {
+		} catch (const editor_action_exception& e) {
 			gui2::show_error_message(e.what());
 			return;
 		}
@@ -694,7 +694,7 @@ void context_manager::generate_map_dialog()
 		map_generator* const map_generator = dialog.get_selected_map_generator();
 		try {
 			map_string = map_generator->create_map(dialog.get_seed());
-		} catch (mapgen_exception& e) {
+		} catch (const mapgen_exception& e) {
 			gui2::show_transient_message(_("Map creation failed."), e.what());
 			return;
 		}
@@ -821,7 +821,7 @@ bool context_manager::write_scenario(bool display_confirmation)
 		if(display_confirmation) {
 			gui2::show_transient_message("", _("Scenario saved."));
 		}
-	} catch (editor_map_save_exception& e) {
+	} catch (const editor_map_save_exception& e) {
 		gui2::show_transient_message("", e.what());
 		return false;
 	}
@@ -836,7 +836,7 @@ bool context_manager::write_map(bool display_confirmation)
 		if(display_confirmation) {
 			gui2::show_transient_message("", _("Map saved."));
 		}
-	} catch (editor_map_save_exception& e) {
+	} catch (const editor_map_save_exception& e) {
 		gui2::show_transient_message("", e.what());
 		return false;
 	}
@@ -911,7 +911,7 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 				}
 			}
 		}
-	} catch (editor_map_load_exception& e) {
+	} catch(const editor_map_load_exception& e) {
 		gui2::show_transient_message(_("Error loading map"), e.what());
 		return;
 	}

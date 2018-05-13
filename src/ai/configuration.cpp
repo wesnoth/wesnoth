@@ -184,7 +184,7 @@ bool configuration::get_side_config_from_file(const std::string& file, config& c
 		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location(file));
 		read(cfg, *stream);
 		LOG_AI_CONFIGURATION << "Reading AI configuration from file '" << file << "'" << std::endl;
-	} catch(config::error&) {
+	} catch(const config::error&) {
 		ERR_AI_CONFIGURATION << "Error while reading AI configuration from file '" << file << "'" << std::endl;
 		return false;
 	}

@@ -49,7 +49,7 @@ void lua_map_generator::user_config()
 {
 	try {
 		lk_.user_config(user_config_.c_str(), generator_data_);
-	} catch (game::lua_error & e) {
+	} catch(const game::lua_error & e) {
 		std::string msg = "Error when running lua_map_generator user_config.\n";
 		msg += "The generator was: " + config_name_ + "\n";
 		msg += e.what();
@@ -65,7 +65,7 @@ std::string lua_map_generator::create_map(boost::optional<uint32_t> seed)
 
 	try {
 		return lk_.create_map(create_map_.c_str(), generator_data_, seed);
-	} catch (game::lua_error & e) {
+	} catch (const game::lua_error & e) {
 		std::string msg = "Error when running lua_map_generator create_map.\n";
 		msg += "The generator was: " + config_name_ + "\n";
 		msg += e.what();
@@ -81,7 +81,7 @@ config lua_map_generator::create_scenario(boost::optional<uint32_t> seed)
 
 	try {
 		return lk_.create_scenario(create_scenario_.c_str(), generator_data_, seed);
-	} catch (game::lua_error & e) {
+	} catch (const game::lua_error & e) {
 		std::string msg = "Error when running lua_map_generator create_scenario.\n";
 		msg += "The generator was: " + config_name_ + "\n";
 		msg += e.what();

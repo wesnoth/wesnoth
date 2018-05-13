@@ -224,7 +224,7 @@ void display::init_flags(std::size_t side_index)
 
 			try {
 				time = std::max<int>(1, std::stoi(sub_items.back()));
-			} catch(std::invalid_argument&) {
+			} catch(const std::invalid_argument&) {
 				ERR_DP << "Invalid time value found when constructing flag for side " << t.side() << ": " << sub_items.back() << "\n";
 			}
 		}

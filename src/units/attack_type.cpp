@@ -177,7 +177,7 @@ static bool matches_simple_filter(const attack_type& attack, const config& filte
 			if(!form.evaluate(callable).as_bool()) {
 				return false;
 			}
-		} catch(wfl::formula_error& e) {
+		} catch(const wfl::formula_error& e) {
 			lg::wml_error() << "Formula error in weapon filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
 			// Formulae with syntax errors match nothing
 			return false;

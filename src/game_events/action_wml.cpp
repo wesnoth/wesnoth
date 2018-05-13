@@ -615,11 +615,11 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 			deprecated_message("[replace_map]map=", DEP_LEVEL::INDEFINITE, "1.16", "Use map_data= instead.");
 			map.read(cfg["map"], false);
 		}
-	} catch(incorrect_map_format_error&) {
+	} catch(const incorrect_map_format_error&) {
 		const std::string log_map_name = cfg["map"].empty() ? cfg["map_file"] : std::string("from inline data");
 		lg::wml_error() << "replace_map: Unable to load map " << log_map_name << std::endl;
 		return;
-	} catch(wml_exception& e) {
+	} catch(const wml_exception& e) {
 		e.show();
 		return;
 	}
@@ -881,10 +881,10 @@ WML_HANDLER_FUNCTION(terrain_mask,, cfg)
 		} else {
 			mask_map.read(cfg["mask"], false);
 		}
-	} catch(incorrect_map_format_error&) {
+	} catch(const incorrect_map_format_error&) {
 		ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied" << std::endl;
 		return;
-	} catch(wml_exception& e) {
+	} catch(const wml_exception& e) {
 		e.show();
 		return;
 	}

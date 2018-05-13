@@ -261,7 +261,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 
 	try {
 		read_locations(child,steps);
-	} catch (std::invalid_argument&) {
+	} catch (const std::invalid_argument&) {
 		WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child.debug() << std::endl;
 		return false;
 	}
@@ -489,7 +489,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 			resources::gameboard->units().erase(loc);
 			resources::whiteboard->on_kill_unit();
 			resources::gameboard->units().insert(new_u);
-		} catch(unit_type::error& e) {
+		} catch(const unit_type::error& e) {
 			ERR_REPLAY << e.what() << std::endl; // TODO: more appropriate error message log
 			return false;
 		}

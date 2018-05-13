@@ -247,7 +247,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 		try {
 			soundsource::sourcespec spec(s);
 			soundsources_manager_->add(spec);
-		} catch (bad_lexical_cast &) {
+		} catch (const bad_lexical_cast &) {
 			ERR_NG << "Error when parsing sound_source config: bad lexical cast." << std::endl;
 			ERR_NG << "sound_source config was: " << s.debug() << std::endl;
 			ERR_NG << "Skipping this sound source..." << std::endl;
@@ -336,12 +336,12 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 		// Loading a new game is effectively a quit.
 		saved_game_.clear();
 		throw;
-	} catch(wesnothd_error& e) {
+	} catch(const wesnothd_error& e) {
 
 		scoped_savegame_snapshot snapshot(*this);
 		savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
 		save.save_game_interactive(_("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"), savegame::savegame::YES_NO);
-		if(dynamic_cast<ingame_wesnothd_error*>(&e)) {
+		if(dynamic_cast<const ingame_wesnothd_error*>(&e)) {
 			return LEVEL_RESULT::QUIT;
 		} else {
 			throw;
@@ -544,9 +544,9 @@ void playsingle_controller::play_ai_turn()
 				ai::manager::get_singleton().play_turn(current_side());
 			}
 		}
-		catch (return_to_play_side_exception&) {
+		catch (const return_to_play_side_exception&) {
 		}
-		catch (fallback_ai_to_human_exception&) {
+		catch (const fallback_ai_to_human_exception&) {
 			current_team().make_human();
 			player_type_changed_ = true;
 			ai_fallback_ = true;

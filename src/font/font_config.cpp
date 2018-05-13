@@ -123,7 +123,7 @@ bool load_font_config()
 
 		filesystem::scoped_istream stream = preprocess_file(cfg_path);
 		read(cfg, *stream);
-	} catch(config::error &e) {
+	} catch(const config::error &e) {
 		ERR_FT << "could not read fonts.cfg:\n"
 		       << e.message << '\n';
 		return false;

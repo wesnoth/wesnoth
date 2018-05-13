@@ -276,7 +276,7 @@ static lg::log_domain log_server("server");
 
 				if (new_ban->get_end_time() != 0)
 					time_queue_.push(new_ban);
-			} catch (banned::error& e) {
+			} catch (const banned::error& e) {
 				ERR_SERVER << e.message << " while reading bans" << std::endl;
 			}
 		}
@@ -289,7 +289,7 @@ static lg::log_domain log_server("server");
 				try {
 					banned_ptr new_ban(new banned(b));
 					deleted_bans_.push_back(new_ban);
-				} catch (banned::error& e) {
+				} catch (const banned::error& e) {
 					ERR_SERVER << e.message << " while reading deleted bans" << std::endl;
 				}
 			}
@@ -376,7 +376,7 @@ static lg::log_domain log_server("server");
 		std::string dur_lower;
 		try {
 			dur_lower = utf8::lowercase(duration);
-		} catch ( utf8::invalid_utf8_exception & e ) {
+		} catch (const utf8::invalid_utf8_exception & e ) {
 			ERR_SERVER << "While parsing ban command duration string, caught an invalid utf8 exception: " << e.what() << std::endl;
 			return false;
 		}
@@ -504,7 +504,7 @@ static lg::log_domain log_server("server");
 				ret << "Overwriting ban: " << (**ban) << "\n";
 				bans_.erase(ban);
 			}
-		} catch (banned::error& e) {
+		} catch (const banned::error& e) {
 			ERR_SERVER << e.message << " while creating dummy ban for finding existing ban" << std::endl;
 			return e.message;
 		}
@@ -514,7 +514,7 @@ static lg::log_domain log_server("server");
 			if (end_time != 0)
 				time_queue_.push(new_ban);
 			ret << *new_ban;
-		} catch (banned::error& e) {
+		} catch (const banned::error& e) {
 			ERR_SERVER << e.message << " while banning" << std::endl;
 			return e.message;
 		}
@@ -528,7 +528,7 @@ static lg::log_domain log_server("server");
 		ban_set::iterator ban;
 		try {
 			ban = bans_.find(banned::create_dummy(ip));
-		} catch (banned::error& e) {
+		} catch (const banned::error& e) {
 			ERR_SERVER << e.message << std::endl;
 			os << e.message;
 			return;
@@ -597,7 +597,7 @@ static lg::log_domain log_server("server");
 		ip_mask pair;
 		try {
 			pair = parse_ip(mask);
-		} catch (banned::error& e) {
+		} catch (const banned::error& e) {
 			out << "parse error: " << e.message;
 			return;
 		}
@@ -626,7 +626,7 @@ static lg::log_domain log_server("server");
 		ip_mask pair;
 		try {
 			pair = parse_ip(mask);
-		} catch (banned::error& e) {
+		} catch (const banned::error& e) {
 			out << "parse error: " << e.message;
 			return;
 		}
@@ -664,7 +664,7 @@ static lg::log_domain log_server("server");
 		ip_mask pair;
 		try {
 			pair = parse_ip(ip);
-		} catch (banned::error&) {
+		} catch (const banned::error&) {
 			return "";
 		}
 		ban_set::const_iterator ban = std::find_if(bans_.begin(), bans_.end(), [pair](const banned_ptr& p) { return p->match_ip(pair); });

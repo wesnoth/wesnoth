@@ -227,7 +227,7 @@ int halo_impl::add(
 			str = sub_items.front();
 			try {
 				time = std::stoi(sub_items.back());
-			} catch(std::invalid_argument) {
+			} catch(const std::invalid_argument) {
 				ERR_DP << "Invalid time value found when constructing halo: " << sub_items.back() << "\n";
 			}
 		}

@@ -87,7 +87,7 @@ void minimap::set_map_data(const std::string& map_data)
 
 	try {
 		map_.reset(new gamemap(std::make_shared<terrain_type_data>(*terrain_), map_data_));
-	} catch(incorrect_map_format_error& e) {
+	} catch(const incorrect_map_format_error& e) {
 		map_.reset(nullptr);
 		ERR_CF << "Error while loading the map: " << e.message << '\n';
 	}

@@ -753,7 +753,7 @@ void window::layout()
 	{
 		window_implementation::layout(*this, maximum_width, maximum_height);
 	}
-	catch(layout_exception_resize_failed&)
+	catch(const layout_exception_resize_failed&)
 	{
 
 		/** @todo implement the scrollbars on the window. */
@@ -789,7 +789,7 @@ void window::layout()
 			window_implementation::layout(
 					*this, maximum_width, maximum_height);
 		}
-		catch(layout_exception_resize_failed&)
+		catch(const layout_exception_resize_failed&)
 		{
 
 			/** @todo implement the scrollbars on the window. */
@@ -1054,7 +1054,7 @@ void window_implementation::layout(window& window,
 		DBG_GUI_L << LOG_IMPL_HEADER << " Result: Resizing succeeded.\n";
 		return;
 	}
-	catch(layout_exception_width_modified&)
+	catch(const layout_exception_width_modified&)
 	{
 		DBG_GUI_L << LOG_IMPL_HEADER
 				  << " Status: Width has been modified, rerun.\n";
