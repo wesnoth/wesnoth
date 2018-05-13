@@ -32,9 +32,7 @@
 #include <boost/system/windows_error.hpp>
 
 #if 0
-// Keeping this to MSVC for now since I don't know how complete the
-// filesystem library implementation is on GCC and Clang.
-#if defined HAVE_CXX17 && defined _MSC_VER
+#if defined HAVE_CXX17 && (defined _MSC_VER || (defined __GNUC__ && __GNUC__ >= 8))
 #define USE_STANDARD_FILESYSTEM_LIBRARY
 #endif
 #endif
