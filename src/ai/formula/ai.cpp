@@ -114,12 +114,12 @@ formula_ai::formula_ai(readonly_context &context, const config &cfg)
 	LOG_AI << "creating new formula ai"<< std::endl;
 }
 
-void formula_ai::handle_exception(formula_error& e) const
+void formula_ai::handle_exception(const formula_error& e) const
 {
 	handle_exception(e, "Error while parsing formula");
 }
 
-void formula_ai::handle_exception(formula_error& e, const std::string& failed_operation) const
+void formula_ai::handle_exception(const formula_error& e, const std::string& failed_operation) const
 {
 	LOG_AI << failed_operation << ": " << e.formula << std::endl;
 	display_message(failed_operation + ": " + e.formula);

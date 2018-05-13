@@ -53,7 +53,7 @@ void throw_wml_exception(
 	throw wml_exception(message, sstr.str());
 }
 
-void wml_exception::show()
+void wml_exception::show() const
 {
 	std::ostringstream sstr;
 

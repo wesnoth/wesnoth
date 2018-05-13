@@ -116,7 +116,7 @@ struct wml_exception
 	/**
 	 * Shows the error in a dialog.
 	 */
-	void show();
+	void show() const;
 private:
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(wml_exception)
 };
