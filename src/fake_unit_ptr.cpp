@@ -15,6 +15,7 @@
 #include "fake_unit_ptr.hpp"
 
 #include "fake_unit_manager.hpp"
+#include "resources.hpp"
 #include "units/unit.hpp"
 #include "units/ptr.hpp"
 
@@ -112,7 +113,12 @@ fake_unit_ptr::~fake_unit_ptr()
 	// The fake_unit class exists for this one line, which removes the
 	// fake_unit from the managers's fake_units_ dequeue in the event of an
 	// exception.
-	if(my_manager_){remove_from_fake_unit_manager();}
+	if(my_manager_) {
+		//my_manager_ points to resources::fake_units, the next line fixes a bug whre this code would attempt to access a freed fake_unit_manager object, see https://github.com/wesnoth/wesnoth/issues/3008 
+		if(resources::fake_units != nullptr) {
+			remove_from_fake_unit_manager();
+		}
+	}
 
 	} catch (...) {}
 }
