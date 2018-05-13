@@ -174,7 +174,7 @@ debug_clock::time::time() : hour(0), minute(0), second(0), millisecond(0)
 void debug_clock::time::set_current_time()
 {
 	std::time_t now = ::std::time(nullptr);
-	tm* stamp = std::localtime(&now);
+	std::tm* stamp = std::localtime(&now);
 
 	hour = stamp->tm_hour;
 	minute = stamp->tm_min;
