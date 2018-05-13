@@ -139,7 +139,7 @@ void move_unit_spectator::set_unit(const unit_map::const_iterator &u)
 game_events::pump_result_t get_village(const map_location& loc, int side, bool *action_timebonus, bool fire_event)
 {
 	std::vector<team> &teams = resources::gameboard->teams();
-	team *t = unsigned(side - 1) < teams.size() ? &teams[side - 1] : nullptr;
+	team *t = static_cast<unsigned>(side - 1) < teams.size() ? &teams[side - 1] : nullptr;
 	if (t && t->owns_village(loc)) {
 		return game_events::pump_result_t();
 	}
