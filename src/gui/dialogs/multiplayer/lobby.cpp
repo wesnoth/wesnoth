@@ -690,7 +690,10 @@ void mp_lobby::update_playerlist()
 	player_list_.other_rooms.update_player_count_label();
 	player_list_.other_games.update_player_count_label();
 
-	player_list_.tree->set_vertical_scrollbar_item_position(scrollbar_position);
+	// Don't attempt to restore the scroll position if the window hasn't been laid out yet
+	if(player_list_.tree->get_origin() != point{-1, -1}) {
+		player_list_.tree->set_vertical_scrollbar_item_position(scrollbar_position);
+	}
 
 	player_list_dirty_ = false;
 	last_lobby_update_ = SDL_GetTicks();
