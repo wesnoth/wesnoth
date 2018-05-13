@@ -119,7 +119,7 @@ void suh::set_realname(const std::string& user, const std::string& realname) {
 // set_lastlogin() is not called by the server via set_user_detail()
 // and thus must not throw user_handler::error
 
-void suh::set_lastlogin(const std::string& user, const time_t& lastlogin) {
+void suh::set_lastlogin(const std::string& user, const std::time_t& lastlogin) {
 	users_[user].lastlogin = lastlogin;
 }
 
@@ -137,11 +137,11 @@ std::string suh::get_realname(const std::string& user) {
 	return users_[user].realname;
 }
 
-time_t suh::get_lastlogin(const std::string& user) {
+std::time_t suh::get_lastlogin(const std::string& user) {
 	return users_[user].lastlogin;
 }
 
-time_t suh::get_registrationdate(const std::string& user) {
+std::time_t suh::get_registrationdate(const std::string& user) {
 	return users_[user].registrationdate;
 }
 
@@ -185,11 +185,11 @@ void suh::clean_up() {
 		return;
 	}
 
-	time_t now = time(nullptr);
+	std::time_t now = time(nullptr);
 
 	//A minute has 60 seconds, an hour 60 minutes and
 	//a day 24 hours.
-	time_t limit = user_expiration_ * 60 * 60 * 24;
+	std::time_t limit = user_expiration_ * 60 * 60 * 24;
 
 	std::vector<std::string> us = users();
 	for(std::vector<std::string>::const_iterator u = us.begin(); u != us.end(); ++u) {
@@ -211,8 +211,8 @@ void suh::user_logged_in(const std::string& name) {
 std::string suh::user_info(const std::string& name) {
 	if(!user_exists(name)) throw error("No user with the name '" + name + "' exists.");
 
-	time_t reg_date = get_registrationdate(name);
-	time_t ll_date = get_lastlogin(name);
+	std::time_t reg_date = get_registrationdate(name);
+	std::time_t ll_date = get_lastlogin(name);
 
 	std::string reg_string = ctime(&reg_date);
 	std::string ll_string;

@@ -18,5 +18,5 @@
 #include <string>
 
 namespace utils {
-	std::string format_time_summary(time_t t);
+	std::string format_time_summary(std::time_t t);
 }

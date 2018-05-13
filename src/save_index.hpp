@@ -26,7 +26,7 @@ class save_info
 private:
 	friend class create_save_info;
 
-	save_info(const std::string& name, const time_t& modified)
+	save_info(const std::string& name, const std::time_t& modified)
 		: name_(name)
 		, modified_(modified)
 	{
@@ -38,7 +38,7 @@ public:
 		return name_;
 	}
 
-	const time_t& modified() const
+	const std::time_t& modified() const
 	{
 		return modified_;
 	}
@@ -49,7 +49,7 @@ public:
 
 private:
 	std::string name_;
-	time_t modified_;
+	std::time_t modified_;
 };
 
 /**
@@ -86,10 +86,10 @@ public:
 	save_index_class();
 
 	void rebuild(const std::string& name);
-	void rebuild(const std::string& name, const time_t& modified);
+	void rebuild(const std::string& name, const std::time_t& modified);
 
 	void remove(const std::string& name);
-	void set_modified(const std::string& name, const time_t& modified);
+	void set_modified(const std::string& name, const std::time_t& modified);
 
 	config& get(const std::string& name);
 
@@ -103,7 +103,7 @@ private:
 
 	bool loaded_;
 	config data_;
-	std::map<std::string, time_t> modified_;
+	std::map<std::string, std::time_t> modified_;
 };
 
 extern save_index_class save_index_manager;

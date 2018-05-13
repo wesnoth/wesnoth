@@ -124,9 +124,9 @@ static void verify(const unit_map& units, const config& cfg) {
 	LOG_REPLAY << "verification passed\n";
 }
 
-static time_t get_time(const config &speak)
+static std::time_t get_time(const config &speak)
 {
-	time_t time;
+	std::time_t time;
 	if (!speak["time"].empty())
 	{
 		std::stringstream ss(speak["time"].str());

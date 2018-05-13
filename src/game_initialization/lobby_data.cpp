@@ -46,7 +46,7 @@ static lg::log_domain log_lobby("lobby");
 
 namespace mp {
 
-chat_message::chat_message(const time_t& timestamp,
+chat_message::chat_message(const std::time_t& timestamp,
 						   const std::string& user,
 						   const std::string& message)
 	: timestamp(timestamp), user(user), message(message)
@@ -57,7 +57,7 @@ chat_session::chat_session() : history_()
 {
 }
 
-void chat_session::add_message(const time_t& timestamp,
+void chat_session::add_message(const std::time_t& timestamp,
 						   const std::string& user,
 						   const std::string& message)
 {

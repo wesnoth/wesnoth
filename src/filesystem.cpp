@@ -962,7 +962,7 @@ bool file_exists(const std::string& name)
 	return file_exists(bfs::path(name));
 }
 
-time_t file_modified_time(const std::string& fname)
+std::time_t file_modified_time(const std::string& fname)
 {
 	error_code ec;
 	std::time_t mtime = bfs::last_write_time(bfs::path(fname), ec);

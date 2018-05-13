@@ -172,18 +172,18 @@ bool broke_strict() {
 	return strict_threw_;
 }
 
-std::string get_timestamp(const time_t& t, const std::string& format) {
+std::string get_timestamp(const std::time_t& t, const std::string& format) {
 	std::ostringstream ss;
 
 	ss << std::put_time(std::localtime(&t), format.c_str());
 
 	return ss.str();
 }
-std::string get_timespan(const time_t& t) {
+std::string get_timespan(const std::time_t& t) {
 	std::ostringstream sout;
 	// There doesn't seem to be any library function for this
-	const time_t minutes = t / 60;
-	const time_t days = minutes / 60 / 24;
+	const std::time_t minutes = t / 60;
+	const std::time_t days = minutes / 60 / 24;
 	if(t <= 0) {
 		sout << "expired";
 	} else if(minutes == 0) {

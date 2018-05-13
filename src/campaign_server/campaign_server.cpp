@@ -576,7 +576,7 @@ void server::handle_request_campaign_list(const server::request& req)
 {
 	LOG_CS << "sending campaign list to " << req.addr << " using gzip\n";
 
-	time_t epoch = time(nullptr);
+	std::time_t epoch = time(nullptr);
 	config campaign_list;
 
 	campaign_list["timestamp"] = epoch;
@@ -585,14 +585,14 @@ void server::handle_request_campaign_list(const server::request& req)
 	}
 
 	bool before_flag = false;
-	time_t before = epoch;
+	std::time_t before = epoch;
 	try {
 		before += req.cfg["before"].to_time_t();
 		before_flag = true;
 	} catch(const bad_lexical_cast&) {}
 
 	bool after_flag = false;
-	time_t after = epoch;
+	std::time_t after = epoch;
 	try {
 		after += req.cfg["after"].to_time_t();
 		after_flag = true;
@@ -825,7 +825,7 @@ void server::handle_upload(const server::request& req)
 		LOG_CS << "Upload denied - hidden add-on.\n";
 		send_error("Add-on upload denied. Please contact the server administration for assistance.", req.sock);
 	} else {
-		const time_t upload_ts = time(nullptr);
+		const std::time_t upload_ts = time(nullptr);
 
 		LOG_CS << "Upload is owner upload.\n";
 

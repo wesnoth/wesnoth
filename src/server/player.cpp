@@ -76,7 +76,7 @@ void wesnothd::player::mark_registered(bool registered)
 
 bool wesnothd::player::is_message_flooding()
 {
-	const time_t now = time(nullptr);
+	const std::time_t now = time(nullptr);
 	if (flood_start_ == 0) {
 		flood_start_ = now;
 		return false;

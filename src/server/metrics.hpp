@@ -72,7 +72,7 @@ private:
 	int current_requests_;
 	int nrequests_;
 	int nrequests_waited_;
-	const time_t started_at_;
+	const std::time_t started_at_;
 	std::map<std::string,int> terminations_;
 };
 

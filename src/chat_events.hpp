@@ -36,7 +36,7 @@ protected:
 	void do_speak(const std::string& message, bool allies_only=false);
 
 	//called from do_speak
-	virtual void add_chat_message(const time_t& time,
+	virtual void add_chat_message(const std::time_t& time,
 			const std::string& speaker, int side, const std::string& message,
 			MESSAGE_TYPE type=MESSAGE_PRIVATE) = 0;
 	virtual void send_chat_message(const std::string& message, bool allies_only=false) = 0;

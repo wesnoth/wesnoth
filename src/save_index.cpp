@@ -43,11 +43,11 @@ void extract_summary_from_config(config&, config&);
 
 void save_index_class::rebuild(const std::string& name)
 {
-	time_t modified = filesystem::file_modified_time(filesystem::get_saves_dir() + "/" + name);
+	std::time_t modified = filesystem::file_modified_time(filesystem::get_saves_dir() + "/" + name);
 	rebuild(name, modified);
 }
 
-void save_index_class::rebuild(const std::string& name, const time_t& modified)
+void save_index_class::rebuild(const std::string& name, const std::time_t& modified)
 {
 	log_scope("load_summary_from_file");
 
@@ -74,7 +74,7 @@ void save_index_class::remove(const std::string& name)
 	write_save_index();
 }
 
-void save_index_class::set_modified(const std::string& name, const time_t& modified)
+void save_index_class::set_modified(const std::string& name, const std::time_t& modified)
 {
 	modified_[name] = modified;
 }
@@ -82,7 +82,7 @@ void save_index_class::set_modified(const std::string& name, const time_t& modif
 config& save_index_class::get(const std::string& name)
 {
 	config& result = data(name);
-	time_t m = modified_[name];
+	std::time_t m = modified_[name];
 
 	config::attribute_value& mod_time = result["mod_time"];
 	if(mod_time.empty() || mod_time.to_time_t() != m) {
@@ -227,7 +227,7 @@ std::string save_info::format_time_local() const
 
 std::string save_info::format_time_summary() const
 {
-	time_t t = modified();
+	std::time_t t = modified();
 	return utils::format_time_summary(t);
 }
 
@@ -340,7 +340,7 @@ create_save_info::create_save_info(const std::string* d)
 
 save_info create_save_info::operator()(const std::string& filename) const
 {
-	time_t modified = filesystem::file_modified_time(dir + "/" + filename);
+	std::time_t modified = filesystem::file_modified_time(dir + "/" + filename);
 	save_index_manager.set_modified(filename, modified);
 	return save_info(filename, modified);
 }
