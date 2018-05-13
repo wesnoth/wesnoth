@@ -150,7 +150,7 @@ static stats::str_int_map read_str_int_map(const config& cfg)
 			for(const std::string& val : utils::split(i.second)) {
 				m[val] = std::stoi(i.first);
 			}
-		} catch(std::invalid_argument&) {
+		} catch(const std::invalid_argument&) {
 			ERR_NG << "Invalid statistics entry; skipping\n";
 		}
 	}

@@ -268,7 +268,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 								if(outer_salt.size() != 32)
 									throw utils::hash_error("salt wrong size");
 								sp["password"] = utils::md5(hash.base64_digest(), outer_salt).base64_digest();
-							} catch(utils::hash_error& err) {
+							} catch(const utils::hash_error& err) {
 								ERR_MP << "bcrypt hash failed: " << err.what() << std::endl;
 								throw wesnothd_error(_("Bad data received from server"));
 							}
@@ -542,7 +542,7 @@ bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::stri
 			case gui2::dialogs::mp_lobby::CREATE:
 				try {
 					enter_create_mode(helper);
-				} catch(config::error& error) {
+				} catch(const config::error& error) {
 					if(!error.message.empty()) {
 						gui2::show_error_message(error.message);
 					}
@@ -559,7 +559,7 @@ bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::stri
 						dlg_joined_game_id,
 						dlg_retval == gui2::dialogs::mp_lobby::OBSERVE
 					);
-				} catch(config::error& error) {
+				} catch(const config::error& error) {
 					if(!error.message.empty()) {
 						gui2::show_error_message(error.message);
 					}

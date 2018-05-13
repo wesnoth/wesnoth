@@ -70,7 +70,7 @@ bool fuh::login(const std::string& name, const std::string& password, const std:
 
 	try {
 		hash = get_hash(name);
-	} catch (error& e) {
+	} catch (const error& e) {
 		ERR_UH << "Could not retrieve hash for user '" << name << "' :" << e.message << std::endl;
 		return false;
 	}
@@ -102,7 +102,7 @@ std::string fuh::extract_salt(const std::string& name) {
 
 	try {
 		hash = get_hash(name);
-	} catch (error& e) {
+	} catch (const rror& e) {
 		ERR_UH << "Could not retrieve hash for user '" << name << "' :" << e.message << std::endl;
 		return "";
 	}
@@ -113,7 +113,7 @@ std::string fuh::extract_salt(const std::string& name) {
 	if(utils::bcrypt::is_valid_prefix(hash)) {
 		try {
 			return utils::bcrypt::from_hash_string(hash).get_salt();
-		} catch(utils::hash_error& err) {
+		} catch(const utils::hash_error& err) {
 			ERR_UH << "Error getting salt from hash of user '" << name << "': " << err.what() << std::endl;
 			return "";
 		}
@@ -131,7 +131,7 @@ bool fuh::user_exists(const std::string& name) {
 	// Make a test query for this username
 	try {
 		return prepared_statement<bool>("SELECT 1 FROM `" + db_users_table_ + "` WHERE UPPER(username)=UPPER(?)", name);
-	} catch (sql_error& e) {
+	} catch (const sql_error& e) {
 		ERR_UH << "Could not execute test query for user '" << name << "' :" << e.message << std::endl;
 		// If the database is down just let all usernames log in
 		return false;
@@ -142,7 +142,7 @@ bool fuh::user_is_active(const std::string& name) {
 	try {
 		int user_type = get_detail_for_user<int>(name, "user_type");
 		return user_type != USER_INACTIVE && user_type != USER_IGNORE;
-	} catch (sql_error& e) {
+	} catch (const sql_error& e) {
 		ERR_UH << "Could not retrieve user type for user '" << name << "' :" << e.message << std::endl;
 		return false;
 	}
@@ -154,7 +154,7 @@ bool fuh::user_is_moderator(const std::string& name) {
 
 	try {
 		return get_writable_detail_for_user<int>(name, "user_is_moderator") == 1;
-	} catch (sql_error& e) {
+	} catch (const sql_error& e) {
 		ERR_UH << "Could not query user_is_moderator for user '" << name << "' :" << e.message << std::endl;
 		// If the database is down mark nobody as a mod
 		return false;
@@ -167,7 +167,7 @@ void fuh::set_is_moderator(const std::string& name, const bool& is_moderator) {
 
 	try {
 		write_detail(name, "user_is_moderator", int(is_moderator));
-	} catch (sql_error& e) {
+	} catch (const sql_error& e) {
 		ERR_UH << "Could not set is_moderator for user '" << name << "' :" << e.message << std::endl;
 	}
 }
@@ -208,7 +208,7 @@ fuh::BAN_TYPE fuh::user_is_banned(const std::string& name, const std::string& ad
 			return BAN_EMAIL;
 		}
 
-	} catch(sql_error& e) {
+	} catch(const sql_error& e) {
 		ERR_UH << "Could not check forum bans on user '" << name << "' :" << e.message << '\n';
 	}
 
@@ -254,7 +254,7 @@ std::string fuh::get_valid_details() {
 std::string fuh::get_hash(const std::string& user) {
 	try {
 		return get_detail_for_user<std::string>(user, "user_password");
-	} catch (sql_error& e) {
+	} catch (const sql_error& e) {
 		ERR_UH << "Could not retrieve password for user '" << user << "' :" << e.message << std::endl;
 		return "";
 	}
@@ -263,7 +263,7 @@ std::string fuh::get_hash(const std::string& user) {
 std::string fuh::get_mail(const std::string& user) {
 	try {
 		return get_detail_for_user<std::string>(user, "user_email");
-	} catch (sql_error& e) {
+	} catch (const sql_error& e) {
 		ERR_UH << "Could not retrieve email for user '" << user << "' :" << e.message << std::endl;
 		return "";
 	}
@@ -273,7 +273,7 @@ time_t fuh::get_lastlogin(const std::string& user) {
 	try {
 		int time_int = get_writable_detail_for_user<int>(user, "user_lastvisit");
 		return time_t(time_int);
-	} catch (sql_error& e) {
+	} catch (const sql_error& e) {
 		ERR_UH << "Could not retrieve last visit for user '" << user << "' :" << e.message << std::endl;
 		return time_t(0);
 	}
@@ -283,7 +283,7 @@ time_t fuh::get_registrationdate(const std::string& user) {
 	try {
 		int time_int = get_detail_for_user<int>(user, "user_regdate");
 		return time_t(time_int);
-	} catch (sql_error& e) {
+	} catch (const sql_error& e) {
 		ERR_UH << "Could not retrieve registration date for user '" << user << "' :" << e.message << std::endl;
 		return time_t(0);
 	}
@@ -293,7 +293,7 @@ void fuh::set_lastlogin(const std::string& user, const time_t& lastlogin) {
 
 	try {
 		write_detail(user, "user_lastvisit", int(lastlogin));
-	} catch (sql_error& e) {
+	} catch (const sql_error& e) {
 		ERR_UH << "Could not set last visit for user '" << user << "' :" << e.message << std::endl;
 	}
 }
@@ -303,7 +303,7 @@ inline T fuh::prepared_statement(const std::string& sql, Args&&... args)
 {
 	try {
 		return ::prepared_statement<T>(conn, sql, std::forward<Args>(args)...);
-	} catch (sql_error& e) {
+	} catch (const sql_error& e) {
 		WRN_UH << "caught sql error: " << e.message << std::endl;
 		WRN_UH << "trying to reconnect and retry..." << std::endl;
 		//Try to reconnect and execute query again
@@ -339,7 +339,7 @@ void fuh::write_detail(const std::string& name, const std::string& detail, T&& v
 			prepared_statement<void>("INSERT INTO `" + db_extra_table_ + "` VALUES(?,?,'0')", name, std::forward<T>(value));
 		}
 		prepared_statement<void>("UPDATE `" + db_extra_table_ + "` SET " + detail + "=? WHERE UPPER(username)=UPPER(?)", std::forward<T>(value), name);
-	} catch (sql_error& e) {
+	} catch (const sql_error& e) {
 		ERR_UH << "Could not set detail for user '" << name << "': " << e.message << std::endl;
 	}
 }
@@ -349,7 +349,7 @@ bool fuh::extra_row_exists(const std::string& name) {
 	// Make a test query for this username
 	try {
 		return prepared_statement<bool>("SELECT 1 FROM `" + db_extra_table_ + "` WHERE UPPER(username)=UPPER(?)", name);
-	} catch (sql_error& e) {
+	} catch (const sql_error& e) {
 		ERR_UH << "Could not execute test query for user '" << name << "' :" << e.message << std::endl;
 		return false;
 	}

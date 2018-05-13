@@ -191,7 +191,7 @@ bool loadgame::load_game()
 		    gui2::show_error_message(
 				    _("Warning: The file you have tried to load is corrupt. Loading anyway.\n") +
 				    error_log);
-        } catch (utf8::invalid_utf8_exception&) {
+        } catch (const utf8::invalid_utf8_exception&) {
 		    gui2::show_error_message(
 				    _("Warning: The file you have tried to load is corrupt. Loading anyway.\n") +
                     std::string("(UTF-8 ERROR)"));
@@ -469,7 +469,7 @@ bool savegame::save_game(const std::string& filename)
 		if (show_confirmation_)
 			gui2::show_transient_message(_("Saved"), _("The game has been saved."));
 		return true;
-	} catch(game::save_game_failed& e) {
+	} catch(const game::save_game_failed& e) {
 		ERR_SAVE << error_message_ << e.message << std::endl;
 
 		gui2::show_error_message(error_message_ + e.message);
@@ -520,7 +520,7 @@ void savegame::finish_save_game(const config_writer &out)
 			throw game::save_game_failed(_("Could not write to file"));
 		}
 		save_index_manager.remove(gamestate_.classification().label);
-	} catch(filesystem::io_exception& e) {
+	} catch(const filesystem::io_exception& e) {
 		throw game::save_game_failed(e.what());
 	}
 }
@@ -530,7 +530,7 @@ filesystem::scoped_ostream savegame::open_save_game(const std::string &label)
 {
 	try {
 		return filesystem::ostream_file(filesystem::get_saves_dir() + "/" + label);
-	} catch(filesystem::io_exception& e) {
+	} catch(const filesystem::io_exception& e) {
 		throw game::save_game_failed(e.what());
 	}
 }

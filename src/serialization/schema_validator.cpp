@@ -148,7 +148,7 @@ bool schema_validator::read_config_file(const std::string& filename)
 		preproc_map preproc(game_config::config_cache::instance().get_preproc_map());
 		filesystem::scoped_istream stream = preprocess_file(filename, &preproc);
 		read(cfg, *stream);
-	} catch(config::error& e) {
+	} catch(const config::error& e) {
 		ERR_VL << "Failed to read file " << filename << ":\n" << e.what() << "\n";
 		return false;
 	}
@@ -164,7 +164,7 @@ bool schema_validator::read_config_file(const std::string& filename)
 		for(const config& type : g.child_range("type")) {
 			try {
 				types_[type["name"].str()] = boost::regex(type["value"].str());
-			} catch(std::exception&) {
+			} catch(const std::exception&) {
 				// Need to check all type values in schema-generator
 			}
 		}

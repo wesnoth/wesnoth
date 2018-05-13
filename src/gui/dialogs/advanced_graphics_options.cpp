@@ -54,7 +54,7 @@ advanced_graphics_options::SCALING_ALGORITHM advanced_graphics_options::get_scal
 
 	try {
 		algo = SCALING_ALGORITHM::string_to_enum(preferences::get(pref_id));
-	} catch(bad_enum_cast&) {
+	} catch(const bad_enum_cast&) {
 		preferences::set(pref_id, algo.to_string());
 	}
 

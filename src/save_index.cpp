@@ -59,7 +59,7 @@ void save_index_class::rebuild(const std::string& name, const time_t& modified)
 		read_save_file(name, full, &dummy);
 
 		extract_summary_from_config(full, summary);
-	} catch(game::load_game_failed&) {
+	} catch(const game::load_game_failed&) {
 		summary["corrupt"] = true;
 	}
 
@@ -105,7 +105,7 @@ void save_index_class::write_save_index()
 		} else {
 			write(*stream, data());
 		}
-	} catch(filesystem::io_exception& e) {
+	} catch(const filesystem::io_exception& e) {
 		ERR_SAVE << "error writing to save index file: '" << e.what() << "'" << std::endl;
 	}
 }
@@ -140,13 +140,13 @@ config& save_index_class::data()
 			filesystem::scoped_istream stream = filesystem::istream_file(si_file);
 			try {
 				read_gz(data_, *stream);
-			} catch(boost::iostreams::gzip_error&) {
+			} catch(const boost::iostreams::gzip_error&) {
 				stream->seekg(0);
 				read(data_, *stream);
 			}
-		} catch(filesystem::io_exception& e) {
+		} catch(const filesystem::io_exception& e) {
 			ERR_SAVE << "error reading save index: '" << e.what() << "'" << std::endl;
-		} catch(config::error& e) {
+		} catch(const config::error& e) {
 			ERR_SAVE << "error parsing save index config file:\n" << e.message << std::endl;
 			data_.clear();
 		}

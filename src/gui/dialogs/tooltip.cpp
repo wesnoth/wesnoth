@@ -169,7 +169,7 @@ void show(const std::string& window_id,
 	{
 		t.show();
 	}
-	catch(window_builder_invalid_id&)
+	catch(const window_builder_invalid_id&)
 	{
 		ERR_CFG << "Tip with the requested id '" << window_id
 				<< "' doesn't exist, fall back to the default.\n";
@@ -178,7 +178,7 @@ void show(const std::string& window_id,
 		{
 			t.show();
 		}
-		catch(window_builder_invalid_id&)
+		catch(const window_builder_invalid_id&)
 		{
 			ERR_CFG << "Default tooltip doesn't exist, no message shown."
 					<< std::endl;

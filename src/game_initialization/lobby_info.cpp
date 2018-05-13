@@ -138,7 +138,7 @@ bool lobby_info::process_gamelist_diff(const config& data)
 
 	try {
 		gamelist_.apply_diff(data, true);
-	} catch(config::error& e) {
+	} catch(const config::error& e) {
 		ERR_LB << "Error while applying the gamelist diff: '" << e.message << "' Getting a new gamelist.\n";
 		return false;
 	}
@@ -188,7 +188,7 @@ bool lobby_info::process_gamelist_diff(const config& data)
 
 	try {
 		gamelist_.clear_diff_track(data);
-	} catch(config::error& e) {
+	} catch(const config::error& e) {
 		ERR_LB << "Error while applying the gamelist diff (2): '" << e.message << "' Getting a new gamelist.\n";
 		return false;
 	}

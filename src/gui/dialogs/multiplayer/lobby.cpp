@@ -864,7 +864,7 @@ void mp_lobby::network_handler()
 		if (network_connection_.receive_data(data)) {
 			process_network_data(data);
 		}
-	} catch (wesnothd_error& e) {
+	} catch (const wesnothd_error& e) {
 		LOG_LB << "caught wesnothd_error in network_handler: " << e.message << "\n";
 		throw;
 	}

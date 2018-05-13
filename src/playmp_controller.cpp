@@ -251,11 +251,11 @@ void playmp_controller::linger()
 			play_linger_turn();
 			after_human_turn();
 			LOG_NG << "finished human turn" << std::endl;
-		} catch (savegame::load_game_exception&) {
+		} catch (const savegame::load_game_exception&) {
 			LOG_NG << "caught load-game-exception" << std::endl;
 			// this should not happen, the option to load a game is disabled
 			throw;
-		} catch (ingame_wesnothd_error&) {
+		} catch (const ingame_wesnothd_error&) {
 			LOG_NG << "caught network-error-exception" << std::endl;
 			quit = false;
 		}

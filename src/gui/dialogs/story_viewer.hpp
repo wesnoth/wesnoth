@@ -40,7 +40,7 @@ public:
 			if(viewer.controller_.max_parts() > 0) {
 				viewer.show();
 			}
-		} catch(std::out_of_range&) {}
+		} catch(const std::out_of_range&) {}
 	}
 
 private:

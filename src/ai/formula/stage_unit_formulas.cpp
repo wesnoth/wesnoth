@@ -78,7 +78,7 @@ bool stage_unit_formulas::do_play_stage()
 						fai_.handle_exception( e, "Unit priority formula error for unit: '" + i->type_id() + "' standing at (" + std::to_string(i->get_location().wml_x()) + "," + std::to_string(i->get_location().wml_y()) + ")");
 
 						priority = 0;
-					} catch(wfl::type_error& e) {
+					} catch(const wfl::type_error& e) {
 						priority = 0;
 						ERR_AI << "formula type error while evaluating unit priority formula  " << e.message << std::endl;
 					}

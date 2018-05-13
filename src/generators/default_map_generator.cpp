@@ -147,7 +147,7 @@ std::string default_map_generator::generate_map(std::map<map_location,std::strin
 		try {
 			map = job.default_generate_map(job_data, labels_ptr, cfg_);
 			error_message = "";
-		} catch(mapgen_exception& exc) {
+		} catch(const mapgen_exception& exc) {
 			error_message = exc.message;
 		}
 
@@ -179,7 +179,7 @@ config default_map_generator::create_scenario(boost::optional<uint32_t> randomse
 	try{
 		res["map_data"] = generate_map(&labels, randomseed);
 	}
-	catch (mapgen_exception& exc){
+	catch (const mapgen_exception& exc){
 		res["map_data"] = "";
 		res["error_message"] = exc.message;
 	}

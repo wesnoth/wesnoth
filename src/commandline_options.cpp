@@ -518,7 +518,7 @@ void commandline_options::parse_resolution_ ( const std::string& resolution_stri
 	try {
 		xres = std::stoi(tokens[0]);
 		yres = std::stoi(tokens[1]);
-	} catch(std::invalid_argument &) {
+	} catch(const std::invalid_argument &) {
 		throw bad_commandline_resolution(resolution_string);
 	}
 
@@ -541,7 +541,7 @@ std::vector<std::pair<unsigned int,std::string>> commandline_options::parse_to_u
 		unsigned int temp;
 		try {
 			temp = lexical_cast<unsigned int>(tokens[0]);
-		} catch (bad_lexical_cast &) {
+		} catch (const bad_lexical_cast &) {
 			throw bad_commandline_tuple(s, expected_format);
 		}
 
@@ -566,7 +566,7 @@ std::vector<std::tuple<unsigned int,std::string,std::string>> commandline_option
 		unsigned int temp;
 		try {
 			temp = lexical_cast<unsigned int>(tokens[0]);
-		} catch (bad_lexical_cast &) {
+		} catch (const bad_lexical_cast &) {
 			throw bad_commandline_tuple(s, expected_format);
 		}
 

@@ -91,7 +91,7 @@ char* uncompress_buffer(const string_span& input, string_span* span)
 		*span = string_span(small_out, pos);
 		state = 8;
 		return small_out;
-	} catch (std::bad_alloc& e) {
+	} catch (const std::bad_alloc& e) {
 		ERR_SWML << "ERROR: bad_alloc caught in uncompress_buffer() state "
 		<< state << " alloc bytes " << nalloc << " with input: '"
 		<< input << "' " << e.what() << std::endl;
@@ -144,7 +144,7 @@ char* compress_buffer(const char* input, string_span* span, bool bzip2)
 		assert(*small_out == (bzip2 ? 'B' : 31));
 		state = 9;
 		return small_out;
-	} catch (std::bad_alloc& e) {
+	} catch (const std::bad_alloc& e) {
 		ERR_SWML << "ERROR: bad_alloc caught in compress_buffer() state "
 		<< state << " alloc bytes " << nalloc << " with input: '"
 		<< input << "' " << e.what() << std::endl;
@@ -1047,7 +1047,7 @@ const char* document::output()
 	char* buf;
 	try {
 		buf = new char[buf_size];
-	} catch (std::bad_alloc& e) {
+	} catch (const std::bad_alloc& e) {
 		ERR_SWML << "ERROR: Trying to allocate " << buf_size << " bytes. "
 		<< e.what() << std::endl;
 		throw error("Bad allocation request in output().");

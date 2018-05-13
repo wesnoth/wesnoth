@@ -371,7 +371,7 @@ void title_screen::pre_show(window& win)
 				::image::flush_cache();
 				on_resize(win);
 			}
-		} catch(std::runtime_error& e) {
+		} catch(const std::runtime_error& e) {
 			gui2::show_error_message(e.what());
 		}
 	});

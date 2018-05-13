@@ -95,7 +95,7 @@ bool addons_manager_ui(const std::string& remote_address)
 
 		gui2::show_error_message(
 			VGETTEXT("A local file with add-on publishing information could not be read.\n\nFile: $path\nError message: $msg", symbols));
-	} catch(wml_exception& e) {
+	} catch(const wml_exception& e) {
 		e.show();
 	} catch(const addons_client::user_exit&) {
 		LOG_AC << "initial connection canceled by user\n";
@@ -306,7 +306,7 @@ bool ad_hoc_addon_fetch_session(const std::vector<std::string>& addon_ids)
 
 		gui2::show_error_message(
 			VGETTEXT("A local file with add-on publishing information could not be read.\n\nFile: $path\nError message: $msg", symbols));
-	} catch(wml_exception& e) {
+	} catch(const wml_exception& e) {
 		e.show();
 	} catch(const addons_client::user_exit&) {
 		LOG_AC << "initial connection canceled by user\n";

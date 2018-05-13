@@ -51,7 +51,7 @@ bool enter_create_mode(saved_game& state, jump_to_campaign_info jump_to_campaign
 
 			try {
 				dlg.show();
-			} catch(wml_exception& e) {
+			} catch(const wml_exception& e) {
 				e.show();
 				return false;
 			}

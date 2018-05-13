@@ -54,7 +54,7 @@ void init()
 		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("gui/_main.cfg"), &preproc);
 
 		read(cfg, *stream, &validator);
-	} catch(config::error& e) {
+	} catch(const config::error& e) {
 		ERR_GUI_P << e.what() << '\n';
 		ERR_GUI_P << "Setting: could not read file 'data/gui/_main.cfg'." << std::endl;
 	} catch(const abstract_validator::error& e) {

@@ -726,7 +726,7 @@ void lua_kernel_base::run(const char * prog, int nArgs)
 {
 	try {
 		this->throwing_run(prog, nArgs);
-	} catch (game::lua_error & e) {
+	} catch (const game::lua_error & e) {
 		cmd_log_ << e.what() << "\n";
 		lua_kernel_base::log_error(e.what(), "In function lua_kernel::run()");
 	}
@@ -743,7 +743,7 @@ void lua_kernel_base::interactive_run(char const * prog) {
 	try {
 		// Try to load the experiment without syntax errors
 		this->load_string(experiment.c_str(), eh);
-	} catch (game::lua_error &) {
+	} catch (const game::lua_error &) {
 		this->throwing_run(prog, 0);	// Since it failed, fall back to the usual throwing_run, on the original input.
 		return;
 	}

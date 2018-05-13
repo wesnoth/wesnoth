@@ -90,7 +90,7 @@ void tod_manager::resolve_random(randomness::rng& r)
 			return std::stoi(str);
 		});
 	}
-	catch (std::invalid_argument&)
+	catch (const std::invalid_argument&)
 	{
 		// This happens if the random_start_time string is a boolean.
 		// Simply ignore the exception.

@@ -257,7 +257,7 @@ const time_of_day& custom_tod::get_selected_tod() const
 {
 	try {
 		return times_.at(current_tod_);
-	} catch(std::out_of_range&) {
+	} catch(const std::out_of_range&) {
 		throw std::string("Attempted to fetch a non-existant ToD!");
 	}
 }

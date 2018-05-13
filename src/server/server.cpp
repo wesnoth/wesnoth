@@ -376,7 +376,7 @@ config server::read_config() const {
 		read(configuration, *stream);
 		LOG_SERVER << "Server configuration from file: '" << config_file_
 				   << "' read.\n";
-	} catch(config::error& e) {
+	} catch(const config::error& e) {
 		ERR_CONFIG << "ERROR: Could not read configuration file: '"
 				   << config_file_ << "': '" << e.message << "'.\n";
 	}
@@ -1080,7 +1080,7 @@ void server::handle_nickserv(socket_ptr socket, simple_wml::node& nickserv)
 							 "user", player_connections_.find(socket)->info().config_address(), diff);
 			send_to_lobby(diff);
 
-		} catch (user_handler::error& e) {
+		} catch (const user_handler::error& e) {
 			send_server_message(socket, "There was an error registering your username. The error message was: "
 								+ e.message);
 		}
@@ -1101,7 +1101,7 @@ void server::handle_nickserv(socket_ptr socket, simple_wml::node& nickserv)
 
 			send_server_message(socket, "Your details have been updated.");
 
-		} catch (user_handler::error& e) {
+		} catch (const user_handler::error& e) {
 			send_server_message(socket, "There was an error updating your details. The error message was: "
 								+ e.message);
 		}
@@ -1121,7 +1121,7 @@ void server::handle_nickserv(socket_ptr socket, simple_wml::node& nickserv)
 		try {
 			std::string res = user_handler_->user_info((*nickserv.child("info"))["name"].to_string());
 			send_server_message(socket, res);
-		} catch (user_handler::error& e) {
+		} catch (const user_handler::error& e) {
 			send_server_message(socket, "There was an error looking up the details of the user '" +
 								(*nickserv.child("info"))["name"].to_string() + "'. " +" The error message was: "
 					+ e.message);
@@ -1156,7 +1156,7 @@ void server::handle_nickserv(socket_ptr socket, simple_wml::node& nickserv)
 			make_change_diff(games_and_users_list_.root(), nullptr,
 							 "user", player_connections_.find(socket)->info().config_address(), diff);
 			send_to_lobby(diff);
-		} catch (user_handler::error& e) {
+		} catch (const user_handler::error& e) {
 			send_server_message(socket, "There was an error dropping your username. The error message was: "
 								+ e.message);
 		}
@@ -2103,7 +2103,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 			const cmd_handler &handler = handler_itor->second;
 			try {
 				handler(issuer_name, query, parameters, &out);
-			} catch (std::bad_function_call & ex) {
+			} catch (const std::bad_function_call & ex) {
 				ERR_SERVER << "While handling a command '" << command << "', caught a std::bad_function_call exception.\n";
 				ERR_SERVER << ex.what() << std::endl;
 				out << "An internal server error occurred (std::bad_function_call) while executing '" << command << "'\n";
@@ -2112,7 +2112,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 
 		return out.str();
 
-	} catch ( utf8::invalid_utf8_exception & e ) {
+	} catch (const utf8::invalid_utf8_exception & e ) {
 		std::string msg = "While handling a command, caught an invalid utf8 exception: ";
 		msg += e.what();
 		ERR_SERVER << msg << std::endl;
@@ -2412,7 +2412,7 @@ void server::bans_handler(const std::string& /*issuer_name*/, const std::string&
 			ban_manager_.list_bans(*out, parameters);
 		}
 
-	} catch ( utf8::invalid_utf8_exception & e ) {
+	} catch (const utf8::invalid_utf8_exception & e ) {
 		ERR_SERVER << "While handling bans, caught an invalid utf8 exception: " << e.what() << std::endl;
 	}
 }
@@ -2759,7 +2759,7 @@ void server::dul_handler(const std::string& /*issuer_name*/, const std::string& 
 			*out << "Unregistered login is now " << (deny_unregistered_login_ ? "disallowed" : "allowed") << ".";
 		}
 
-	} catch ( utf8::invalid_utf8_exception & e ) {
+	} catch (const utf8::invalid_utf8_exception & e ) {
 		ERR_SERVER << "While handling dul (deny unregistered logins), caught an invalid utf8 exception: " << e.what() << std::endl;
 	}
 }
@@ -2919,7 +2919,7 @@ int main(int argc, char** argv) {
 
 	try {
 		wesnothd::server(port, keep_alive, config_file, min_threads, max_threads).run();
-	} catch(std::exception& e) {
+	} catch(const std::exception& e) {
 		ERR_SERVER << "terminated by C++ exception: " << e.what() << std::endl;
 		return 1;
 	}

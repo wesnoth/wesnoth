@@ -599,7 +599,7 @@ void preferences_dialog::post_build(window& window)
 		ADVANCED_PREF_TYPE pref_type;
 		try {
 			pref_type = ADVANCED_PREF_TYPE::string_to_enum(option["type"].str());
-		} catch(bad_enum_cast&) {
+		} catch(const bad_enum_cast&) {
 			continue;
 		}
 
