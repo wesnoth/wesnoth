@@ -227,7 +227,7 @@ std::ostream &logger::operator()(const log_domain& domain, bool show_names, bool
 			if(precise_timestamp) {
 				print_precise_timestamp(stream);
 			} else {
-				stream << get_timestamp(time(nullptr));
+				stream << get_timestamp(std::time(nullptr));
 			}
 		}
 		if (show_names) {
@@ -256,7 +256,7 @@ void scope_logger::do_log_exit() noexcept
 	} catch(...) {}
 	--indent;
 	do_indent();
-	if (timestamp) (*output_) << get_timestamp(time(nullptr));
+	if (timestamp) (*output_) << get_timestamp(std::time(nullptr));
 	(*output_) << "} END: " << str_ << " (took " << ticks << "ms)\n";
 }
 

@@ -42,7 +42,7 @@ metrics::metrics() :
 	current_requests_(0),
 	nrequests_(0),
 	nrequests_waited_(0),
-	started_at_(time(nullptr)),
+	started_at_(std::time(nullptr)),
 	terminations_()
 {}
 
@@ -150,7 +150,7 @@ std::ostream& metrics::requests(std::ostream& out) const
 
 std::ostream& operator<<(std::ostream& out, metrics& met)
 {
-	const std::time_t time_up = time(nullptr) - met.started_at_;
+	const std::time_t time_up = std::time(nullptr) - met.started_at_;
 	const int seconds = time_up%60;
 	const int minutes = (time_up/60)%60;
 	const int hours = (time_up/(60*60))%24;

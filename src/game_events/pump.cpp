@@ -366,7 +366,7 @@ void wml_event_pump::show_wml_messages(std::stringstream& source, const std::str
 		}
 
 		game_display::get_singleton()->get_chat_manager().add_chat_message(
-			time(nullptr), caption, 0, msg.str(), events::chat_handler::MESSAGE_PUBLIC, false);
+			std::time(nullptr), caption, 0, msg.str(), events::chat_handler::MESSAGE_PUBLIC, false);
 
 		if(to_cerr) {
 			std::cerr << caption << ": " << msg.str() << '\n';

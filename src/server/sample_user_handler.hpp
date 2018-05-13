@@ -52,8 +52,8 @@ class suh : public user_handler {
 					password(),
 					realname(),
 					mail(),
-					lastlogin(time(nullptr)),
-					registrationdate(time(nullptr)),
+					lastlogin(std::time(nullptr)),
+					registrationdate(std::time(nullptr)),
 					is_moderator(false) {}
 			std::string password;
 			std::string realname;

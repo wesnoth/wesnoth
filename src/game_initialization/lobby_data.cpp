@@ -67,7 +67,7 @@ void chat_session::add_message(const std::time_t& timestamp,
 
 void chat_session::add_message(const std::string& user, const std::string& message)
 {
-	add_message(time(nullptr), user, message);
+	add_message(std::time(nullptr), user, message);
 }
 
 void chat_session::clear()

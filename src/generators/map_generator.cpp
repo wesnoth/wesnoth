@@ -85,7 +85,7 @@ int main(int argc, char** argv)
 		nplayers = std::stoi(argv[7]);
 	}
 
-	srand(time(nullptr));
+	srand(std::time(nullptr));
 	std::cout << generate_map(x,y,iterations,hill_size,lakes,nvillages,nplayers) << "\n";
 }
 

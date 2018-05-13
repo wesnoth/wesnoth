@@ -77,7 +77,7 @@ bool authenticate(config& campaign, const config::attribute_value& passphrase)
 
 std::string generate_salt(std::size_t len)
 {
-	boost::mt19937 mt(time(0));
+	boost::mt19937 mt(std::time(0));
 	std::string salt = std::string(len, '0');
 	boost::uniform_int<> from_str(0, 63); // 64 possible values for base64
 	boost::variate_generator< boost::mt19937, boost::uniform_int<>> get_char(mt, from_str);
@@ -576,7 +576,7 @@ void server::handle_request_campaign_list(const server::request& req)
 {
 	LOG_CS << "sending campaign list to " << req.addr << " using gzip\n";
 
-	std::time_t epoch = time(nullptr);
+	std::time_t epoch = std::time(nullptr);
 	config campaign_list;
 
 	campaign_list["timestamp"] = epoch;
@@ -825,7 +825,7 @@ void server::handle_upload(const server::request& req)
 		LOG_CS << "Upload denied - hidden add-on.\n";
 		send_error("Add-on upload denied. Please contact the server administration for assistance.", req.sock);
 	} else {
-		const std::time_t upload_ts = time(nullptr);
+		const std::time_t upload_ts = std::time(nullptr);
 
 		LOG_CS << "Upload is owner upload.\n";
 

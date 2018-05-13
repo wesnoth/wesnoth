@@ -123,7 +123,7 @@ std::string fuh::extract_salt(const std::string& name) {
 }
 
 void fuh::user_logged_in(const std::string& name) {
-	set_lastlogin(name, time(nullptr));
+	set_lastlogin(name, std::time(nullptr));
 }
 
 bool fuh::user_exists(const std::string& name) {
