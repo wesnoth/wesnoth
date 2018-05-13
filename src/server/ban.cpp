@@ -330,7 +330,7 @@ static lg::log_domain log_server("server");
 
 		if (duration.substr(0,4) == "TIME") {
 			struct tm* loc;
-			loc = localtime(time);
+			loc = std::localtime(time);
 
 			std::size_t number = 0;
 			for (std::string::const_iterator i = duration.begin() + 4;
