@@ -213,7 +213,7 @@ const config& save_info::summary() const
 
 std::string save_info::format_time_local() const
 {
-	if(tm* tm_l = localtime(&modified())) {
+	if(tm* tm_l = std::localtime(&modified())) {
 		const std::string format = preferences::use_twelve_hour_clock_format()
 			? _("%a %b %d %I:%M %p %Y")
 			: _("%a %b %d %H:%M %Y");
