@@ -55,7 +55,7 @@ function map_mt.__index.flip_x(map)
 	for y = 0, map.h - 1 do
 		for x = 0, map.w - 1 do
 			local i = loc_to_index(map, x, y)
-			local j = loc_to_index(map, map.w - x, y)
+			local j = loc_to_index(map, map.w - x - 1, y)
 			map[i], map[j] = map[j], map[i]
 		end
 	end
@@ -65,7 +65,7 @@ function map_mt.__index.flip_y(map)
 	for x = 0, map.w - 1 do
 		for y = 0, map.h - 1 do
 			local i = loc_to_index(map, x, y)
-			local j = loc_to_index(map, x, map.h - y)
+			local j = loc_to_index(map, x, map.h - y - 1)
 			map[i], map[j] = map[j], map[i]
 		end
 	end
