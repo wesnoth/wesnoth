@@ -102,7 +102,7 @@ std::string fuh::extract_salt(const std::string& name) {
 
 	try {
 		hash = get_hash(name);
-	} catch (const rror& e) {
+	} catch (const error& e) {
 		ERR_UH << "Could not retrieve hash for user '" << name << "' :" << e.message << std::endl;
 		return "";
 	}
