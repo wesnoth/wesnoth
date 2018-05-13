@@ -477,7 +477,7 @@
 		91A215BF1CAD951A00927AEA /* lua_jailbreak_exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419E44413354E620031448A /* lua_jailbreak_exception.cpp */; };
 		91A215C01CAD952C00927AEA /* game_config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A800EC62181008DD061 /* game_config.cpp */; };
 		91A215C11CAD952C00927AEA /* game_config_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62CC8E4A1771E7E000C16B75 /* game_config_manager.cpp */; };
-		91A215C21CAD954C00927AEA /* filesystem_boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF9D43C19F3FF9400E6C9D9 /* filesystem_boost.cpp */; };
+		91A215C21CAD954C00927AEA /* filesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF9D43C19F3FF9400E6C9D9 /* filesystem.cpp */; };
 		91A215C31CAD960300927AEA /* filesystem_common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5C70BB19EEB54900432CF4 /* filesystem_common.cpp */; };
 		91A215C41CAD968400927AEA /* custom_tod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B8A9175E9F1300DB8C9B /* custom_tod.cpp */; };
 		91A215C51CAD968400927AEA /* edit_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F49F134815BC627C00B64B0B /* edit_label.cpp */; };
@@ -582,7 +582,7 @@
 		91C548E51D886EF300FE6A7B /* binary_or_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999A70EC62181008DD061 /* binary_or_text.cpp */; };
 		91C548E81D886F1E00FE6A7B /* libboost_locale-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC4DF45919FEA838000EC086 /* libboost_locale-mt.dylib */; };
 		91C548EA1D886F7500FE6A7B /* game_config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A800EC62181008DD061 /* game_config.cpp */; };
-		91C548EC1D886FA800FE6A7B /* filesystem_boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF9D43C19F3FF9400E6C9D9 /* filesystem_boost.cpp */; };
+		91C548EC1D886FA800FE6A7B /* filesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF9D43C19F3FF9400E6C9D9 /* filesystem.cpp */; };
 		91C548ED1D886FC500FE6A7B /* libboost_filesystem-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF9D43F19F4026D00E6C9D9 /* libboost_filesystem-mt.dylib */; };
 		91C548EE1D886FCE00FE6A7B /* libboost_iostreams-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D4B13AD4D53003C701D /* libboost_iostreams-mt.dylib */; };
 		91C548F01D88703300FE6A7B /* validation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE9AB1213640400CFBDAB /* validation.cpp */; };
@@ -1248,8 +1248,8 @@
 		ECEEB7F01A1E8AB20006575B /* default_map_generator_job.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEEB7EF1A1E8AB20006575B /* default_map_generator_job.cpp */; };
 		ECF3A0B318AD3E8800DD643A /* wml_error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF3A0B118AD3E8700DD643A /* wml_error.cpp */; };
 		ECF44F6A1FC8A82B00B404D6 /* make.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF44F681FC8A82A00B404D6 /* make.cpp */; };
-		ECF9D43D19F3FF9400E6C9D9 /* filesystem_boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF9D43C19F3FF9400E6C9D9 /* filesystem_boost.cpp */; settings = {COMPILER_FLAGS = "-DPREFERENCES_DIR='\"Library/Application Support/Wesnoth_1.15\"' -DHAS_RELATIVE_LOCALEDIR"; }; };
-		ECF9D43E19F3FF9400E6C9D9 /* filesystem_boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF9D43C19F3FF9400E6C9D9 /* filesystem_boost.cpp */; };
+		ECF9D43D19F3FF9400E6C9D9 /* filesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF9D43C19F3FF9400E6C9D9 /* filesystem.cpp */; settings = {COMPILER_FLAGS = "-DPREFERENCES_DIR='\"Library/Application Support/Wesnoth_1.15\"' -DHAS_RELATIVE_LOCALEDIR"; }; };
+		ECF9D43E19F3FF9400E6C9D9 /* filesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF9D43C19F3FF9400E6C9D9 /* filesystem.cpp */; };
 		ECF9D44119F4042700E6C9D9 /* libboost_filesystem-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF9D43F19F4026D00E6C9D9 /* libboost_filesystem-mt.dylib */; };
 		ECF9D44219F4050E00E6C9D9 /* libboost_system-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5413AD4E35003C701D /* libboost_system-mt.dylib */; };
 		ECFA82E3184E59F3006782FB /* command_executor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFA82DA184E59F3006782FB /* command_executor.cpp */; };
@@ -2654,7 +2654,7 @@
 		ECF3A0B218AD3E8800DD643A /* wml_error.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = wml_error.hpp; sourceTree = "<group>"; };
 		ECF44F681FC8A82A00B404D6 /* make.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = make.cpp; sourceTree = "<group>"; };
 		ECF44F691FC8A82A00B404D6 /* make.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = make.hpp; sourceTree = "<group>"; };
-		ECF9D43C19F3FF9400E6C9D9 /* filesystem_boost.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = filesystem_boost.cpp; sourceTree = "<group>"; };
+		ECF9D43C19F3FF9400E6C9D9 /* filesystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = filesystem.cpp; sourceTree = "<group>"; };
 		ECF9D43F19F4026D00E6C9D9 /* libboost_filesystem-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_filesystem-mt.dylib"; path = "lib/libboost_filesystem-mt.dylib"; sourceTree = "<group>"; };
 		ECFA82DA184E59F3006782FB /* command_executor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = command_executor.cpp; sourceTree = "<group>"; };
 		ECFA82DB184E59F3006782FB /* command_executor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = command_executor.hpp; sourceTree = "<group>"; };
@@ -2966,7 +2966,7 @@
 				EC387E71195AFC8400FC0342 /* fake_unit_ptr.cpp */,
 				EC387E72195AFC8400FC0342 /* fake_unit_ptr.hpp */,
 				91B621A91B76A94D00B00E0F /* filesystem.hpp */,
-				ECF9D43C19F3FF9400E6C9D9 /* filesystem_boost.cpp */,
+				ECF9D43C19F3FF9400E6C9D9 /* filesystem.cpp */,
 				EC5C70BB19EEB54900432CF4 /* filesystem_common.cpp */,
 				91FBBAD71CB6BC3F00470BFE /* filesystem_sdl.cpp */,
 				91B621831B76701200B00E0F /* filter_context.hpp */,
@@ -5009,7 +5009,7 @@
 				EC84247118F30DB700FC1EEF /* exception.cpp in Sources */,
 				ECDEAF72194FE84000DB2F47 /* fake_unit_manager.cpp in Sources */,
 				EC387E73195AFC8400FC0342 /* fake_unit_ptr.cpp in Sources */,
-				ECF9D43D19F3FF9400E6C9D9 /* filesystem_boost.cpp in Sources */,
+				ECF9D43D19F3FF9400E6C9D9 /* filesystem.cpp in Sources */,
 				EC5C70BC19EEB54900432CF4 /* filesystem_common.cpp in Sources */,
 				EC2F60111A048E220018C9D6 /* flg_manager.cpp in Sources */,
 				EC45DEE11AD1CEF600BD760C /* floating_label.cpp in Sources */,
@@ -5437,7 +5437,7 @@
 				46F57084205FCE34007031BF /* base64.cpp in Sources */,
 				91C548F11D88705C00FE6A7B /* color_range.cpp in Sources */,
 				91C548DE1D886E0A00FE6A7B /* config.cpp in Sources */,
-				91C548EC1D886FA800FE6A7B /* filesystem_boost.cpp in Sources */,
+				91C548EC1D886FA800FE6A7B /* filesystem.cpp in Sources */,
 				46F5709A205FE48C007031BF /* string_utils.cpp in Sources */,
 				46F57088205FCF7E007031BF /* config_attribute_value.cpp in Sources */,
 				91C548F21D88707D00FE6A7B /* filesystem_common.cpp in Sources */,
@@ -5881,7 +5881,7 @@
 				91A215C01CAD952C00927AEA /* game_config.cpp in Sources */,
 				4649B8C02028911C00827CFB /* lobby.cpp in Sources */,
 				91A215C11CAD952C00927AEA /* game_config_manager.cpp in Sources */,
-				91A215C21CAD954C00927AEA /* filesystem_boost.cpp in Sources */,
+				91A215C21CAD954C00927AEA /* filesystem.cpp in Sources */,
 				91A215C31CAD960300927AEA /* filesystem_common.cpp in Sources */,
 				91A215C41CAD968400927AEA /* custom_tod.cpp in Sources */,
 				91A215C51CAD968400927AEA /* edit_label.cpp in Sources */,
@@ -6018,7 +6018,7 @@
 				B5BB6C820F89437400444FBF /* color_range.cpp in Sources */,
 				B5BB6C860F8943F600444FBF /* config_cache.cpp in Sources */,
 				B5BB6B8D0F893F2300444FBF /* config.cpp in Sources */,
-				ECF9D43E19F3FF9400E6C9D9 /* filesystem_boost.cpp in Sources */,
+				ECF9D43E19F3FF9400E6C9D9 /* filesystem.cpp in Sources */,
 				903F959F1ED5496700F1BDD3 /* hash.cpp in Sources */,
 				EC5C70BD19EEB54900432CF4 /* filesystem_common.cpp in Sources */,
 				EC8174671FB4284E00A8ED00 /* random.cpp in Sources */,
