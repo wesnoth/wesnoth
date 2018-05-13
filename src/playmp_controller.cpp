@@ -393,7 +393,7 @@ bool playmp_controller::is_host() const
 
 void playmp_controller::do_idle_notification()
 {
-	gui_->get_chat_manager().add_chat_message(time(nullptr), "", 0,
+	gui_->get_chat_manager().add_chat_message(std::time(nullptr), "", 0,
 		_("This side is in an idle state. To proceed with the game, it must be assigned to another controller. You may use :droid, :control or :give_control for example."),
 		events::chat_handler::MESSAGE_PUBLIC, false);
 }

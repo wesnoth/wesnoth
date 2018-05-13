@@ -94,7 +94,7 @@ static lg::log_domain log_server("server");
 		mask_(0),
 		ip_text_(ip),
 		end_time_(end_time),
-		start_time_(time(0)),
+		start_time_(std::time(0)),
 		reason_(reason),
 		who_banned_(who_banned),
 		group_(group),
@@ -236,7 +236,7 @@ static lg::log_domain log_server("server");
 		{
 			return "permanent";
 		}
-		return lg::get_timespan(end_time_ - time(nullptr));
+		return lg::get_timespan(end_time_ - std::time(nullptr));
 	}
 
 	bool banned::operator>(const banned& b) const

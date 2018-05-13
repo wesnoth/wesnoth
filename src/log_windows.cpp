@@ -109,7 +109,7 @@ std::string unique_log_filename()
 
 	o << log_file_prefix;
 
-	const std::time_t cur = time(nullptr);
+	const std::time_t cur = std::time(nullptr);
 	o << std::put_time(std::localtime(&cur), "%Y%m%d-%H%M%S-");
 
 	o << GetCurrentProcessId() << log_file_suffix;

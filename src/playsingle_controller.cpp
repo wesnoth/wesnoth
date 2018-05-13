@@ -569,7 +569,7 @@ void playsingle_controller::play_ai_turn()
  */
 void playsingle_controller::do_idle_notification()
 {
-	gui_->get_chat_manager().add_chat_message(time(nullptr), "Wesnoth", 0,
+	gui_->get_chat_manager().add_chat_message(std::time(nullptr), "Wesnoth", 0,
 		"This side is in an idle state. To proceed with the game, the host must assign it to another controller.",
 		events::chat_handler::MESSAGE_PUBLIC, false);
 }

@@ -946,7 +946,7 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n)
 void chat_message(const std::string& caption, const std::string& msg)
 {
 	if (!game_display::get_singleton()) return;
-	game_display::get_singleton()->get_chat_manager().add_chat_message(time(nullptr), caption, 0, msg,
+	game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), caption, 0, msg,
 														   events::chat_handler::MESSAGE_PUBLIC, false);
 }
 

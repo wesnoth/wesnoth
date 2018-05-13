@@ -99,7 +99,7 @@ manager::~manager()
 #if 0
 static void print_to_chat(const std::string& title, const std::string& message)
 {
-	display::get_singleton()->add_chat_message(time(nullptr), title, 0, message,
+	display::get_singleton()->add_chat_message(std::time(nullptr), title, 0, message,
 			events::chat_handler::MESSAGE_PRIVATE, false);
 }
 #endif

@@ -135,7 +135,7 @@ static std::time_t get_time(const config &speak)
 	else
 	{
 		//fallback in case sender uses wesnoth that doesn't send timestamps
-		time = ::time(nullptr);
+		time = std::time(nullptr);
 	}
 	return time;
 }

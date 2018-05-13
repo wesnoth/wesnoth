@@ -21,7 +21,7 @@
 namespace utils {
 
 std::string format_time_summary(std::time_t t) {
-	std::time_t curtime = time(nullptr);
+	std::time_t curtime = std::time(nullptr);
 	const struct tm* timeptr = localtime(&curtime);
 	if(timeptr == nullptr) {
 		return "";

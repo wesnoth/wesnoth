@@ -135,13 +135,13 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 	if (const config &message = cfg.child("message"))
 	{
-		game_display::get_singleton()->get_chat_manager().add_chat_message(time(nullptr), message["sender"], message["side"],
+		game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), message["sender"], message["side"],
 				message["message"], events::chat_handler::MESSAGE_PUBLIC,
 				preferences::message_bell());
 	}
 	else if (const config &whisper = cfg.child("whisper") /*&& is_observer()*/)
 	{
-		game_display::get_singleton()->get_chat_manager().add_chat_message(time(nullptr), "whisper: " + whisper["sender"].str(), 0,
+		game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), "whisper: " + whisper["sender"].str(), 0,
 				whisper["message"], events::chat_handler::MESSAGE_PRIVATE,
 				preferences::message_bell());
 	}

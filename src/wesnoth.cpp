@@ -623,7 +623,7 @@ static void check_fpu()
  */
 static int do_gameloop(const std::vector<std::string>& args)
 {
-	srand(time(nullptr));
+	srand(std::time(nullptr));
 
 	commandline_options cmdline_opts = commandline_options(args);
 	game_config::wesnoth_program_dir = filesystem::directory_name(args[0]);
@@ -1033,7 +1033,7 @@ int main(int argc, char** argv)
 
 	try {
 		std::cerr << "Battle for Wesnoth v" << game_config::revision << '\n';
-		const std::time_t t = time(nullptr);
+		const std::time_t t = std::time(nullptr);
 		std::cerr << "Started on " << ctime(&t) << "\n";
 
 		const std::string& exe_dir = filesystem::get_exe_dir();

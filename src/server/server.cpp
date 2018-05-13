@@ -230,8 +230,8 @@ server::server(int port, bool keep_alive, const std::string& config_file, std::s
 	default_time_period_(0),
 	concurrent_connections_(0),
 	graceful_restart(false),
-	lan_server_(time(nullptr)),
-	last_user_seen_time_(time(nullptr)),
+	lan_server_(std::time(nullptr)),
+	last_user_seen_time_(std::time(nullptr)),
 	restart_command(),
 	max_ip_log_size_(0),
 	uh_name_(),
@@ -248,7 +248,7 @@ server::server(int port, bool keep_alive, const std::string& config_file, std::s
 	join_lobby_response_("[join_lobby]\n[/join_lobby]\n", simple_wml::INIT_COMPRESSED),
 	games_and_users_list_("[gamelist]\n[/gamelist]\n", simple_wml::INIT_STATIC),
 	metrics_(),
-	last_ping_(time(nullptr)),
+	last_ping_(std::time(nullptr)),
 	last_stats_(last_ping_),
 	last_uh_clean_(last_ping_),
 	cmd_handlers_(),
@@ -782,7 +782,7 @@ bool server::authenticate(socket_ptr socket, const std::string& username, const 
 			}
 			// This name is registered and an incorrect password provided
 			else if(!(user_handler_->login(username, password, seeds_[reinterpret_cast<unsigned long>(socket.get())]))) {
-				const std::time_t now = time(nullptr);
+				const std::time_t now = std::time(nullptr);
 
 				// Reset the random seed
 				seeds_.erase(reinterpret_cast<unsigned long>(socket.get()));
@@ -1740,7 +1740,7 @@ void server::remove_player(socket_ptr socket)
 	connection_log ip_name = connection_log(iter->info().name(), ip, 0);
 	std::deque<connection_log>::iterator i = std::find(ip_log_.begin(), ip_log_.end(), ip_name);
 	if(i != ip_log_.end()) {
-		i->log_off = time(nullptr);
+		i->log_off = std::time(nullptr);
 	}
 
 	player_connections_.erase(iter);
@@ -1812,7 +1812,7 @@ void server::send_server_message_to_all(const std::string& message, socket_ptr e
 				}
 			}
 
-			std::time_t now = time(nullptr);
+			std::time_t now = std::time(nullptr);
 			if (last_ping_ + network::ping_interval <= now) {
 				if (lan_server_ && players_.empty() && last_user_seen_time_ + lan_server_ < now)
 				{
@@ -2034,14 +2034,14 @@ void server::send_server_message_to_all(const std::string& message, socket_ptr e
 			connection_log ip_name = connection_log(pl_it->second.name(), ip, 0);
 			std::deque<connection_log>::iterator i = std::find(ip_log_.begin(), ip_log_.end(), ip_name);
 			if(i != ip_log_.end()) {
-				i->log_off = time(nullptr);
+				i->log_off = std::time(nullptr);
 			}
 
 			players_.erase(pl_it);
 			ghost_players_.erase(e.socket);
 			if (lan_server_)
 			{
-				last_user_seen_time_ = time(0);
+				last_user_seen_time_ = std::time(0);
 			}
 			e.disconnect();
 			DBG_SERVER << "done closing socket...\n";
@@ -2432,7 +2432,7 @@ void server::ban_handler(const std::string& issuer_name, const std::string& /*qu
 	const std::string target(parameters.begin(), first_space);
 
 	const std::string duration(first_space + 1, second_space);
-	std::time_t parsed_time = time(nullptr);
+	std::time_t parsed_time = std::time(nullptr);
 	if (ban_manager_.parse_time(duration, &parsed_time) == false) {
 		*out << "Failed to parse the ban duration: '" << duration << "'\n"
 			 << ban_manager_.get_ban_help();
@@ -2500,7 +2500,7 @@ void server::kickban_handler(const std::string& issuer_name, const std::string& 
 	std::string::iterator second_space = std::find(first_space + 1, parameters.end(), ' ');
 	const std::string target(parameters.begin(), first_space);
 	const std::string duration(first_space + 1, second_space);
-	std::time_t parsed_time = time(nullptr);
+	std::time_t parsed_time = std::time(nullptr);
 	if (ban_manager_.parse_time(duration, &parsed_time) == false) {
 		*out << "Failed to parse the ban duration: '" << duration << "'\n"
 			 << ban_manager_.get_ban_help();
@@ -2589,7 +2589,7 @@ void server::gban_handler(const std::string& issuer_name, const std::string& /*q
 	second_space = std::find(first_space + 1, parameters.end(), ' ');
 
 	const std::string duration(first_space + 1, second_space);
-	std::time_t parsed_time = time(nullptr);
+	std::time_t parsed_time = std::time(nullptr);
 	if (ban_manager_.parse_time(duration, &parsed_time) == false) {
 		*out << "Failed to parse the ban duration: '" << duration << "'\n"
 			 << ban_manager_.get_ban_help();
@@ -2815,7 +2815,7 @@ int main(int argc, char** argv) {
 	std::size_t min_threads = 5;
 	std::size_t max_threads = 0;
 
-	srand(static_cast<unsigned>(time(nullptr)));
+	srand(static_cast<unsigned>(std::time(nullptr)));
 
 	std::string config_file;
 

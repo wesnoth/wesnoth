@@ -42,7 +42,7 @@ void user_handler::init_mailer(const config &) {
 }
 
 std::string user_handler::create_unsecure_nonce(int length) {
-	srand(static_cast<unsigned>(time(nullptr)));
+	srand(static_cast<unsigned>(std::time(nullptr)));
 
 	std::stringstream ss;
 

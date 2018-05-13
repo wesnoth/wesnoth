@@ -137,7 +137,7 @@ namespace wesnothd {
 		void init_ban_help();
 		void check_ban_times(std::time_t time_now);
 		inline void expire_bans() {
-			check_ban_times(time(nullptr));
+			check_ban_times(std::time(nullptr));
 		}
 	public:
 		ban_manager();

@@ -185,7 +185,7 @@ void suh::clean_up() {
 		return;
 	}
 
-	std::time_t now = time(nullptr);
+	std::time_t now = std::time(nullptr);
 
 	//A minute has 60 seconds, an hour 60 minutes and
 	//a day 24 hours.
@@ -205,7 +205,7 @@ bool suh::login(const std::string& name, const std::string& password, const std:
 }
 
 void suh::user_logged_in(const std::string& name) {
-	set_lastlogin(name, time(nullptr));
+	set_lastlogin(name, std::time(nullptr));
 }
 
 std::string suh::user_info(const std::string& name) {

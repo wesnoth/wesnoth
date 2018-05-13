@@ -1159,7 +1159,7 @@ protected:
 
 	void print(const std::string& title, const std::string& message)
 	{
-		menu_handler_.add_chat_message(time(nullptr), title, 0, message);
+		menu_handler_.add_chat_message(std::time(nullptr), title, 0, message);
 	}
 
 	void init_map()
@@ -1273,7 +1273,7 @@ void menu_handler::send_chat_message(const std::string& message, bool allies_onl
 	config cfg;
 	cfg["id"] = preferences::login();
 	cfg["message"] = message;
-	const std::time_t time = ::time(nullptr);
+	const std::time_t time = ::std::time(nullptr);
 	std::stringstream ss;
 	ss << time;
 	cfg["time"] = ss.str();
@@ -1946,10 +1946,10 @@ void console_handler::do_whiteboard_options()
 void menu_handler::do_ai_formula(const std::string& str, int side_num)
 {
 	try {
-		add_chat_message(time(nullptr), "wfl", 0, ai::manager::get_singleton().evaluate_command(side_num, str));
+		add_chat_message(std::time(nullptr), "wfl", 0, ai::manager::get_singleton().evaluate_command(side_num, str));
 	} catch(const wfl::formula_error&) {
 	} catch(...) {
-		add_chat_message(time(nullptr), "wfl", 0, "UNKNOWN ERROR IN FORMULA");
+		add_chat_message(std::time(nullptr), "wfl", 0, "UNKNOWN ERROR IN FORMULA");
 	}
 }
 

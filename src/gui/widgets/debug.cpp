@@ -84,7 +84,7 @@ std::string get_base_filename()
 {
 	std::ostringstream ss;
 
-	std::time_t t = time(nullptr);
+	std::time_t t = std::time(nullptr);
 	ss << std::put_time(std::localtime(&t), "%Y%m%d_%H%M%S");
 
 	static unsigned counter = 0;

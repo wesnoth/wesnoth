@@ -219,7 +219,7 @@ void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const b
 	const bool chatbox_at_end = log.vertical_scrollbar_at_end();
 
 	const std::string new_text = formatter()
-		<< log.get_label() << "\n" << "<span color='#bcb088'>" << preferences::get_chat_timestamp(time(0)) << text << "</span>";
+		<< log.get_label() << "\n" << "<span color='#bcb088'>" << preferences::get_chat_timestamp(std::time(0)) << text << "</span>";
 
 	log.set_use_markup(true);
 	log.set_label(new_text);
@@ -243,7 +243,7 @@ void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const b
 
 void chatbox::send_chat_message(const std::string& message, bool /*allies_only*/)
 {
-	add_chat_message(time(nullptr), preferences::login(), 0, message);
+	add_chat_message(std::time(nullptr), preferences::login(), 0, message);
 
 	::config c {"message", ::config {"message", message, "sender", preferences::login()}};
 	send_to_server(c);
