@@ -356,7 +356,7 @@ vconfig::all_children_iterator& vconfig::all_children_iterator::operator++()
 
 			config::const_child_itors range = vinfo.as_array();
 
-			if (++inner_index_ < int(range.size()))
+			if (++inner_index_ < static_cast<int>(range.size()))
 			{
 				return *this;
 			}

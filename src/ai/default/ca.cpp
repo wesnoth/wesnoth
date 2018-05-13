@@ -1472,7 +1472,7 @@ double retreat_phase::evaluate()
 					const map_location& hex = itors.first->second;
 					const int defense = i->defense_modifier(resources::gameboard->map().get_terrain(hex));
 					const double our_power = power_projection(hex,get_dstsrc());
-					const double their_power = power_projection(hex,get_enemy_dstsrc()) * double(defense)/100.0;
+					const double their_power = power_projection(hex,get_enemy_dstsrc()) * static_cast<double>(defense)/100.0;
 					const double rating = our_power - their_power;
 					if(rating > best_rating) {
 						best_pos = hex;

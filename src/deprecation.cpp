@@ -61,7 +61,7 @@ std::string deprecated_message(
 		break;
 
 	default: // Not impossible, in case level was given an invalid value from a cast.
-		utils::string_map err_params {{"level", std::to_string(int(level))}};
+		utils::string_map err_params {{"level", std::to_string(static_cast<int>(level))}};
 
 		// Note: This message is duplicated in data/lua/core.lua
 		// Any changes should be mirrorred there.

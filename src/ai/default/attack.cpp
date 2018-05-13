@@ -65,8 +65,8 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 	uses_leader = false;
 
 	target_value = defend_it->cost();
-	target_value += (double(defend_it->experience())/
-	                 double(defend_it->max_experience()))*target_value;
+	target_value += (static_cast<double>(defend_it->experience())/
+	                 static_cast<double>(defend_it->max_experience()))*target_value;
 	target_starting_damage = defend_it->max_hitpoints() -
 	                         defend_it->hitpoints();
 
@@ -166,7 +166,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		double cost = up->cost();
 		const bool on_village = map.is_village(m->second);
 		// Up to double the value of a unit based on experience
-		cost += (double(up->experience()) / up->max_experience())*cost;
+		cost += (static_cast<double>(up->experience()) / up->max_experience())*cost;
 		resources_used += cost;
 		avg_losses += cost * prob_died;
 
@@ -182,7 +182,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 			avg_damage_taken -= game_config::poison_amount*2 * prob_survived;
 		}
 
-		terrain_quality += (double(bc->get_defender_stats().chance_to_hit)/100.0)*cost * (on_village ? 0.5 : 1.0);
+		terrain_quality += (static_cast<double>(bc->get_defender_stats().chance_to_hit)/100.0)*cost * (on_village ? 0.5 : 1.0);
 
 		double advance_prob = 0.0;
 		// The reward for advancing a unit is to get a 'negative' loss of that unit

@@ -340,7 +340,7 @@ void play_controller::init_managers()
 void play_controller::fire_preload()
 {
 	// Run initialization scripts, even if loading from a snapshot.
-	gamestate().gamedata_.get_variable("turn_number") = int(turn());
+	gamestate().gamedata_.get_variable("turn_number") = static_cast<int>(turn());
 	pump().fire("preload");
 }
 
@@ -359,7 +359,7 @@ void play_controller::fire_prestart()
 
 	pump().fire("prestart");
 	// prestart event may modify start turn with WML, reflect any changes.
-	gamestate().gamedata_.get_variable("turn_number") = int(turn());
+	gamestate().gamedata_.get_variable("turn_number") = static_cast<int>(turn());
 }
 
 void play_controller::fire_start()
@@ -367,7 +367,8 @@ void play_controller::fire_start()
 	gamestate().gamedata_.set_phase(game_data::START);
 	pump().fire("start");
 	// start event may modify start turn with WML, reflect any changes.
-	gamestate().gamedata_.get_variable("turn_number") = int(turn());
+	gamestate().gamedata_.get_variable("turn_number") = static_cast<int>(turn());
+
 	check_objectives();
 	// prestart and start events may modify the initial gold amount,
 	// reflect any changes.
@@ -714,7 +715,7 @@ bool play_controller::is_team_visible(int team_num, bool observer) const
 
 int play_controller::find_last_visible_team() const
 {
-	assert(current_side() <= int(gamestate().board_.teams().size()));
+	assert(current_side() <= static_cast<int>(gamestate().board_.teams().size()));
 	const int num_teams = gamestate().board_.teams().size();
 	const bool is_observer = this->is_observer();
 
@@ -1175,8 +1176,7 @@ void play_controller::play_turn()
 	int last_player_number = gamestate_->player_number_;
 	int next_player_number = gamestate_->next_player_number_;
 
-	while(gamestate_->player_number_ <= int(gamestate().board_.teams().size()))
-	{
+	while(gamestate_->player_number_ <= static_cast<int>(gamestate().board_.teams().size())) {
 		gamestate_->next_player_number_ = gamestate_->player_number_ + 1;
 		next_player_number = gamestate_->next_player_number_;
 		last_player_number = gamestate_->player_number_;
@@ -1193,7 +1193,7 @@ void play_controller::play_turn()
 			play_side();
 			//ignore any changes to next_player_number_ that happen after the [end_turn] is sended to the server, otherwise we will get OOS.
 			next_player_number = gamestate_->next_player_number_;
-			assert(next_player_number <= 2 * int(gamestate().board_.teams().size()));
+			assert(next_player_number <= 2 * static_cast<int>(gamestate().board_.teams().size()));
 			if(is_regular_game_end()) {
 				return;
 			}

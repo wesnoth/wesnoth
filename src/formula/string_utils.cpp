@@ -71,7 +71,7 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 
 		// For the next iteration of the loop, search for more '$'
 		// (not from the same place because sometimes the '$' is not replaced)
-		rfind_dollars_sign_from = int(var_begin_loc) - 1;
+		rfind_dollars_sign_from = static_cast<int>(var_begin_loc) - 1;
 
 
 		const std::string::iterator var_begin = res.begin() + var_begin_loc;

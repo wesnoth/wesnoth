@@ -104,8 +104,8 @@ cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_ma
 	uint32_t seed = randomseed.get_ptr() ? *randomseed.get_ptr() : seed_rng::next_seed();
 	rng_.seed(seed);
 	LOG_NG << "creating random cave with seed: " << seed << '\n';
-	flipx_ = int(rng_() % 100) < params.flipx_chance_;
-	flipy_ = int(rng_() % 100) < params.flipy_chance_;
+	flipx_ = static_cast<int>(rng_() % 100) < params.flipx_chance_;
+	flipy_ = static_cast<int>(rng_() % 100) < params.flipy_chance_;
 
 	LOG_NG << "creating scenario....\n";
 	generate_chambers();
@@ -135,7 +135,7 @@ void cave_map_generator::cave_map_generator_job::build_chamber(map_location loc,
 	adjacent_loc_array_t adj;
 	get_adjacent_tiles(loc,adj.data());
 	for(std::size_t n = 0; n < adj.size(); ++n) {
-		if(int(rng_() % 100) < (100l - static_cast<long>(jagged))) {
+		if(static_cast<int>(rng_() % 100) < (100l - static_cast<long>(jagged))) {
 			build_chamber(adj[n],locs,size-1,jagged);
 		}
 	}
@@ -146,7 +146,7 @@ void cave_map_generator::cave_map_generator_job::generate_chambers()
 	for (const config &ch : params.cfg_.child_range("chamber"))
 	{
 		// If there is only a chance of the chamber appearing, deal with that here.
-		if (ch.has_attribute("chance") && int(rng_() % 100) < ch["chance"].to_int()) {
+		if (ch.has_attribute("chance") && static_cast<int>(rng_() % 100) < ch["chance"].to_int()) {
 			continue;
 		}
 
@@ -301,7 +301,7 @@ double passage_path_calculator::cost(const map_location& loc, const double) cons
 	}
 
 	if(windiness_ > 1) {
-		res *= double(rng_()%windiness_);
+		res *= static_cast<double>(rng_()%windiness_);
 	}
 
 	return res;
@@ -310,7 +310,7 @@ double passage_path_calculator::cost(const map_location& loc, const double) cons
 void cave_map_generator::cave_map_generator_job::place_passage(const passage& p)
 {
 	const std::string& chance = p.cfg["chance"];
-	if(!chance.empty() && int(rng_()%100) < std::stoi(chance)) {
+	if(!chance.empty() && static_cast<int>(rng_()%100) < std::stoi(chance)) {
 		return;
 	}
 
@@ -341,7 +341,7 @@ void cave_map_generator::cave_map_generator_job::set_terrain(map_location loc, c
 
 		if(c == params.clear_ || c == params.wall_ || c == params.village_) {
 			// Change this terrain.
-			if ( t == params.clear_  &&  int(rng_() % 1000) < params.village_density_ )
+			if ( t == params.clear_  &&  static_cast<int>(rng_() % 1000) < params.village_density_ )
 				// Override with a village.
 				c = params.village_;
 			else

@@ -103,7 +103,7 @@ config replay_helper::get_attack(const map_location& a, const map_location& b,
 	move["defender_type"] = defender_type_id;
 	move["attacker_lvl"] = attacker_lvl;
 	move["defender_lvl"] = defender_lvl;
-	move["turn"] = int(turn);
+	move["turn"] = static_cast<int>(turn);
 	move["tod"] = t.id;
 	/*
 	add_unit_checksum(a,current_);

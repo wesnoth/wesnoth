@@ -480,7 +480,7 @@ std::string urlencode(const std::string &str)
 
 		res << '%';
 		res.width(2);
-		res << int(c);
+		res << static_cast<int>(c);
 	}
 
 	return res.str();

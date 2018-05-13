@@ -479,7 +479,7 @@ static void draw_numbers(const map_location& hex, side_actions::numbers_t number
 
 		std::string number_text = std::to_string(number);
 		std::size_t font_size;
-		if (int(i) == main_number) font_size = 19;
+		if (static_cast<int>(i) == main_number) font_size = 19;
 		else if (secondary_numbers.find(i)!=secondary_numbers.end()) font_size = 17;
 		else font_size = 15;
 
