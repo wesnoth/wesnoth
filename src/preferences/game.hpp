@@ -199,7 +199,7 @@ class acquaintance;
 
 
 	// Multiplayer functions
-	std::string get_chat_timestamp(const time_t& t);
+	std::string get_chat_timestamp(const std::time_t& t);
 	bool chat_timestamping();
 	void set_chat_timestamping(bool value);
 

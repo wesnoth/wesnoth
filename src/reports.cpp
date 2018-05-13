@@ -1534,7 +1534,7 @@ REPORT_GENERATOR(report_clock, /*rc*/)
 		? "%I:%M %p"
 		: "%H:%M";
 
-	time_t t = std::time(nullptr);
+	std::time_t t = std::time(nullptr);
 	ss << std::put_time(std::localtime(&t), format);
 
 	return text_report(ss.str(), _("Clock"));

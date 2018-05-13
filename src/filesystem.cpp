@@ -991,7 +991,7 @@ bool file_exists(const std::string& name)
 	return file_exists(fs::path(name));
 }
 
-time_t file_modified_time(const std::string& fname)
+std::time_t file_modified_time(const std::string& fname)
 {
 	error_code ec;
 	auto mtime = fs::last_write_time(fs::path(fname), ec);

@@ -868,7 +868,7 @@ struct dialog_tester<mp_lobby>
 };
 
 class fake_chat_handler : public events::chat_handler {
-	void add_chat_message(const time_t&,
+	void add_chat_message(const std::time_t&,
 		const std::string&, int, const std::string&,
 		MESSAGE_TYPE) {}
 	void send_chat_message(const std::string&, bool) {}

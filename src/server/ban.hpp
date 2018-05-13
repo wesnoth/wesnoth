@@ -57,8 +57,8 @@ namespace wesnothd {
 		unsigned int ip_;
 		unsigned int mask_;
 		std::string ip_text_;
-		time_t end_time_;
-		time_t start_time_;
+		std::time_t end_time_;
+		std::time_t start_time_;
 		std::string reason_;
 		std::string who_banned_;
 		std::string group_;
@@ -68,19 +68,19 @@ namespace wesnothd {
 		banned(const std::string& ip);
 
 	public:
-		banned(const std::string& ip, const time_t end_time, const std::string& reason, const std::string& who_banned=who_banned_default_, const std::string& group="", const std::string& nick="");
+		banned(const std::string& ip, const std::time_t end_time, const std::string& reason, const std::string& who_banned=who_banned_default_, const std::string& group="", const std::string& nick="");
 		banned(const config&);
 
 		void read(const config&);
 		void write(config&) const;
 
-		time_t get_end_time() const
+		std::time_t get_end_time() const
 		{ return end_time_;	}
 
 		std::string get_human_end_time() const;
 		std::string get_human_start_time() const;
 		std::string get_human_time_span() const;
-		static std::string get_human_time(const time_t&);
+		static std::string get_human_time(const std::time_t&);
 
 		std::string get_reason() const
 		{ return reason_; }
@@ -135,7 +135,7 @@ namespace wesnothd {
 		{ return c - '0'; }
 
 		void init_ban_help();
-		void check_ban_times(time_t time_now);
+		void check_ban_times(std::time_t time_now);
 		inline void expire_bans() {
 			check_ban_times(time(nullptr));
 		}
@@ -152,9 +152,9 @@ namespace wesnothd {
 		 * @returns false if an invalid time modifier is encountered.
 		 * *time is undefined in that case.
 		 */
-		bool parse_time(const std::string& duration, time_t* time) const;
+		bool parse_time(const std::string& duration, std::time_t* time) const;
 
-		std::string ban(const std::string&, const time_t&, const std::string&, const std::string&, const std::string&, const std::string& = "");
+		std::string ban(const std::string&, const std::time_t&, const std::string&, const std::string&, const std::string&, const std::string& = "");
 		void unban(std::ostringstream& os, const std::string& ip, bool immediate_write=true);
 		void unban_group(std::ostringstream& os, const std::string& group);
 

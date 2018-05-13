@@ -91,7 +91,7 @@
 #include <clocale>   // for setlocale, LC_ALL, etc
 #include <cstdio>    // for remove, fprintf, stderr
 #include <cstdlib>   // for srand, exit
-#include <ctime>     // for time, ctime, time_t
+#include <ctime>     // for time, ctime, std::time_t
 #include <exception> // for exception
 #include <fstream>   // for operator<<, basic_ostream, etc
 #include <iostream>  // for cerr, cout
@@ -1033,7 +1033,7 @@ int main(int argc, char** argv)
 
 	try {
 		std::cerr << "Battle for Wesnoth v" << game_config::revision << '\n';
-		const time_t t = time(nullptr);
+		const std::time_t t = time(nullptr);
 		std::cerr << "Started on " << ctime(&t) << "\n";
 
 		const std::string& exe_dir = filesystem::get_exe_dir();

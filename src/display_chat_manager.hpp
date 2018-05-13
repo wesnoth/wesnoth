@@ -36,7 +36,7 @@ public:
 	void remove_whisperer(const std::string& nick) { whisperers_.erase(nick); }
 	const std::set<std::string>& whisperers() const { return whisperers_; }
 
-	void add_chat_message(const time_t& time, const std::string& speaker,
+	void add_chat_message(const std::time_t& time, const std::string& speaker,
 		int side, const std::string& msg, events::chat_handler::MESSAGE_TYPE type, bool bell);
 	void clear_chat_messages() { prune_chat_messages(true); }
 

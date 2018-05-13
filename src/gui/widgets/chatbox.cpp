@@ -256,7 +256,7 @@ void chatbox::user_relation_changed(const std::string& /*name*/)
 	}
 }
 
-void chatbox::add_chat_message(const time_t& /*time*/,
+void chatbox::add_chat_message(const std::time_t& /*time*/,
 	const std::string& speaker,
 	int /*side*/,
 	const std::string& message,

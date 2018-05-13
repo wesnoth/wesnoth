@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <ctime>
 #include <set>
 #include <deque>
 #include <functional>
@@ -28,11 +29,11 @@ namespace mp {
 struct chat_message
 {
 	/** Create a chat message */
-	chat_message(const time_t& timestamp,
+	chat_message(const std::time_t& timestamp,
 				 const std::string& user,
 				 const std::string& message);
 
-	time_t timestamp;
+	std::time_t timestamp;
 	std::string user;
 	std::string message;
 };
@@ -43,7 +44,7 @@ class chat_session
 public:
 	chat_session();
 
-	void add_message(const time_t& timestamp,
+	void add_message(const std::time_t& timestamp,
 					 const std::string& user,
 					 const std::string& message);
 

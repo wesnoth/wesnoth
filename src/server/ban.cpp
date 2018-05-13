@@ -85,7 +85,7 @@ static lg::log_domain log_server("server");
 	}
 
 	banned::banned(const std::string& ip,
-				   const time_t end_time,
+				   const std::time_t end_time,
 				   const std::string& reason,
 				   const std::string& who_banned,
 				   const std::string& group,
@@ -324,7 +324,7 @@ static lg::log_domain log_server("server");
 		writer.write(cfg);
 	}
 
-	bool ban_manager::parse_time(const std::string& duration, time_t* time) const
+	bool ban_manager::parse_time(const std::string& duration, std::time_t* time) const
 	{
 		if (!time) return false;
 
@@ -489,7 +489,7 @@ static lg::log_domain log_server("server");
 	}
 
 	std::string ban_manager::ban(const std::string& ip,
-								 const time_t& end_time,
+								 const std::time_t& end_time,
 								 const std::string& reason,
 								 const std::string& who_banned,
 								 const std::string& group,
@@ -562,7 +562,7 @@ static lg::log_domain log_server("server");
 		write();
 	}
 
-	void ban_manager::check_ban_times(time_t time_now)
+	void ban_manager::check_ban_times(std::time_t time_now)
 	{
 		while (!time_queue_.empty())
 		{
@@ -704,7 +704,7 @@ static lg::log_domain log_server("server");
 	{
 		ban_times_.clear();
 		for (const config &bt : cfg.child_range("ban_time")) {
-			time_t duration = 0;
+			std::time_t duration = 0;
 			if (parse_time(bt["time"], &duration)) {
 				ban_times_.emplace(bt["name"], duration);
 			}

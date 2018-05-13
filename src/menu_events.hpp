@@ -123,7 +123,7 @@ public:
 	const gamemap& map() const;
 
 protected:
-	void add_chat_message(const time_t& time,
+	void add_chat_message(const std::time_t& time,
 			const std::string& speaker,
 			int side,
 			const std::string& message,

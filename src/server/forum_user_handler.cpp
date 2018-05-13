@@ -220,8 +220,8 @@ std::string fuh::user_info(const std::string& name) {
 		throw error("No user with the name '" + name + "' exists.");
 	}
 
-	time_t reg_date = get_registrationdate(name);
-	time_t ll_date = get_lastlogin(name);
+	std::time_t reg_date = get_registrationdate(name);
+	std::time_t ll_date = get_lastlogin(name);
 
 	std::string reg_string = ctime(&reg_date);
 	std::string ll_string;
@@ -269,27 +269,27 @@ std::string fuh::get_mail(const std::string& user) {
 	}
 }
 
-time_t fuh::get_lastlogin(const std::string& user) {
+std::time_t fuh::get_lastlogin(const std::string& user) {
 	try {
 		int time_int = get_writable_detail_for_user<int>(user, "user_lastvisit");
-		return time_t(time_int);
+		return std::time_t(time_int);
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not retrieve last visit for user '" << user << "' :" << e.message << std::endl;
-		return time_t(0);
+		return std::time_t(0);
 	}
 }
 
-time_t fuh::get_registrationdate(const std::string& user) {
+std::time_t fuh::get_registrationdate(const std::string& user) {
 	try {
 		int time_int = get_detail_for_user<int>(user, "user_regdate");
-		return time_t(time_int);
+		return std::time_t(time_int);
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not retrieve registration date for user '" << user << "' :" << e.message << std::endl;
-		return time_t(0);
+		return std::time_t(0);
 	}
 }
 
-void fuh::set_lastlogin(const std::string& user, const time_t& lastlogin) {
+void fuh::set_lastlogin(const std::string& user, const std::time_t& lastlogin) {
 
 	try {
 		write_detail(user, "user_lastvisit", int(lastlogin));

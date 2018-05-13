@@ -219,7 +219,7 @@ bool is_directory(const std::string& fname);
 bool file_exists(const std::string& name);
 
 /** Get the modification time of a file. */
-time_t file_modified_time(const std::string& fname);
+std::time_t file_modified_time(const std::string& fname);
 
 /** Returns true if the file ends with '.gz'. */
 bool is_gzip_file(const std::string& filename);
@@ -239,7 +239,7 @@ struct file_tree_checksum
 	void reset() {nfiles = 0;modified = 0;sum_size=0;}
 	// @todo make variables private!
 	std::size_t nfiles, sum_size;
-	time_t modified;
+	std::time_t modified;
 	bool operator==(const file_tree_checksum &rhs) const;
 	bool operator!=(const file_tree_checksum &rhs) const
 	{ return !operator==(rhs); }

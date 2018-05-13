@@ -74,10 +74,10 @@ private:
 	wesnothd::ban_manager ban_manager_;
 
 	struct connection_log {
-		connection_log(std::string _nick, std::string _ip, time_t _log_off) :
+		connection_log(std::string _nick, std::string _ip, std::time_t _log_off) :
 			nick(_nick), ip(_ip), log_off(_log_off) {}
 		std::string nick, ip;
-		time_t log_off;
+		std::time_t log_off;
 
 		bool operator==(const connection_log& c) const
 		{
@@ -89,11 +89,11 @@ private:
 	std::deque<connection_log> ip_log_;
 
 	struct login_log {
-		login_log(std::string _ip, int _attempts, time_t _first_attempt) :
+		login_log(std::string _ip, int _attempts, std::time_t _first_attempt) :
 			ip(_ip), attempts(_attempts), first_attempt(_first_attempt) {}
 		std::string ip;
 		int attempts;
-		time_t first_attempt;
+		std::time_t first_attempt;
 
 		bool operator==(const login_log& l) const
 		{
@@ -140,8 +140,8 @@ private:
 	std::size_t default_time_period_;
 	std::size_t concurrent_connections_;
 	bool graceful_restart;
-	time_t lan_server_;
-	time_t last_user_seen_time_;
+	std::time_t lan_server_;
+	std::time_t last_user_seen_time_;
 	std::string restart_command;
 	std::size_t max_ip_log_size_;
 	std::string uh_name_;
@@ -151,7 +151,7 @@ private:
 	bool allow_remote_shutdown_;
 	std::vector<std::string> tor_ip_list_;
 	int failed_login_limit_;
-	time_t failed_login_ban_;
+	std::time_t failed_login_ban_;
 	std::deque<login_log>::size_type failed_login_buffer_size_;
 
 	/** Parse the server config into local variables. */
@@ -167,12 +167,12 @@ private:
 
 	metrics metrics_;
 
-	time_t last_ping_;
-	time_t last_stats_;
-	void dump_stats(const time_t& now);
+	std::time_t last_ping_;
+	std::time_t last_stats_;
+	void dump_stats(const std::time_t& now);
 
-	time_t last_uh_clean_;
-	void clean_user_handler(const time_t& now);
+	std::time_t last_uh_clean_;
+	void clean_user_handler(const std::time_t& now);
 
 	/** Process commands from admins and users. */
 	std::string process_command(std::string cmd, std::string issuer_name);

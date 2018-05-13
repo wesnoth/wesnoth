@@ -890,7 +890,7 @@ compression::format save_compression_format()
 	return compression::GZIP;
 }
 
-std::string get_chat_timestamp(const time_t& t) {
+std::string get_chat_timestamp(const std::time_t& t) {
 	if (chat_timestamping()) {
 		if(preferences::use_twelve_hour_clock_format() == false) {
 			return lg::get_timestamp(t, _("[%H:%M]")) + " ";

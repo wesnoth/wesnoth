@@ -54,8 +54,8 @@ struct addon_info
 
 	std::string feedback_url;
 
-	time_t updated;
-	time_t created;
+	std::time_t updated;
+	std::time_t created;
 
 	// Artificial upload order index used to preserve add-ons upload order
 	// until we have actual first-upload timestamps implemented. This index

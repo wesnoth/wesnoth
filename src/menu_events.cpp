@@ -1012,7 +1012,7 @@ void menu_handler::do_speak(const std::string& message)
 	chat_handler::do_speak(message, false);
 }
 
-void menu_handler::add_chat_message(const time_t& time,
+void menu_handler::add_chat_message(const std::time_t& time,
 		const std::string& speaker,
 		int side,
 		const std::string& message,
@@ -1273,7 +1273,7 @@ void menu_handler::send_chat_message(const std::string& message, bool allies_onl
 	config cfg;
 	cfg["id"] = preferences::login();
 	cfg["message"] = message;
-	const time_t time = ::time(nullptr);
+	const std::time_t time = ::time(nullptr);
 	std::stringstream ss;
 	ss << time;
 	cfg["time"] = ss.str();

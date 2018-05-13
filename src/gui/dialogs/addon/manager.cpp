@@ -831,7 +831,7 @@ void addon_manager::copy_url_callback(text_box& url_box)
 	desktop::clipboard::copy_to_clipboard(url_box.get_value(), false);
 }
 
-static std::string format_addon_time(time_t time)
+static std::string format_addon_time(std::time_t time)
 {
 	if(time) {
 		std::ostringstream ss;

@@ -58,8 +58,8 @@ class suh : public user_handler {
 			std::string password;
 			std::string realname;
 			std::string mail;
-			time_t lastlogin;
-			time_t registrationdate;
+			std::time_t lastlogin;
+			std::time_t registrationdate;
 			bool is_moderator;
 		};
 
@@ -73,8 +73,8 @@ class suh : public user_handler {
 		std::string get_mail(const std::string& user);
 		std::string get_password(const std::string& user);
 		std::string get_realname(const std::string& user) ;
-		time_t get_lastlogin(const std::string& user);
-		time_t get_registrationdate(const std::string& user);
+		std::time_t get_lastlogin(const std::string& user);
+		std::time_t get_registrationdate(const std::string& user);
 
 		void check_name(const std::string& name);
 		void check_mail(const std::string& mail);
@@ -85,7 +85,7 @@ class suh : public user_handler {
 		void set_password(const std::string& user, const std::string& password);
 		void set_realname(const std::string& user, const std::string& realname);
 
-		void set_lastlogin(const std::string& user, const time_t& lastlogin);
+		void set_lastlogin(const std::string& user, const std::time_t& lastlogin);
 
 		int user_expiration_;
 

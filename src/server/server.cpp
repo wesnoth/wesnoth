@@ -504,14 +504,14 @@ std::string server::is_ip_banned(const std::string& ip) {
 	return ban_manager_.is_ip_banned(ip);
 }
 
-void server::dump_stats(const time_t& now) {
+void server::dump_stats(const std::time_t& now) {
 	last_stats_ = now;
 	LOG_SERVER << "Statistics:"
 			   << "\tnumber_of_games = " << games().size()
 			   << "\tnumber_of_users = " << player_connections_.size() << "\n";
 }
 
-void server::clean_user_handler(const time_t& now) {
+void server::clean_user_handler(const std::time_t& now) {
 	if(!user_handler_) {
 		return;
 	}
@@ -782,7 +782,7 @@ bool server::authenticate(socket_ptr socket, const std::string& username, const 
 			}
 			// This name is registered and an incorrect password provided
 			else if(!(user_handler_->login(username, password, seeds_[reinterpret_cast<unsigned long>(socket.get())]))) {
-				const time_t now = time(nullptr);
+				const std::time_t now = time(nullptr);
 
 				// Reset the random seed
 				seeds_.erase(reinterpret_cast<unsigned long>(socket.get()));
@@ -1812,7 +1812,7 @@ void server::send_server_message_to_all(const std::string& message, socket_ptr e
 				}
 			}
 
-			time_t now = time(nullptr);
+			std::time_t now = time(nullptr);
 			if (last_ping_ + network::ping_interval <= now) {
 				if (lan_server_ && players_.empty() && last_user_seen_time_ + lan_server_ < now)
 				{
@@ -2432,7 +2432,7 @@ void server::ban_handler(const std::string& issuer_name, const std::string& /*qu
 	const std::string target(parameters.begin(), first_space);
 
 	const std::string duration(first_space + 1, second_space);
-	time_t parsed_time = time(nullptr);
+	std::time_t parsed_time = time(nullptr);
 	if (ban_manager_.parse_time(duration, &parsed_time) == false) {
 		*out << "Failed to parse the ban duration: '" << duration << "'\n"
 			 << ban_manager_.get_ban_help();
@@ -2500,7 +2500,7 @@ void server::kickban_handler(const std::string& issuer_name, const std::string& 
 	std::string::iterator second_space = std::find(first_space + 1, parameters.end(), ' ');
 	const std::string target(parameters.begin(), first_space);
 	const std::string duration(first_space + 1, second_space);
-	time_t parsed_time = time(nullptr);
+	std::time_t parsed_time = time(nullptr);
 	if (ban_manager_.parse_time(duration, &parsed_time) == false) {
 		*out << "Failed to parse the ban duration: '" << duration << "'\n"
 			 << ban_manager_.get_ban_help();
@@ -2589,7 +2589,7 @@ void server::gban_handler(const std::string& issuer_name, const std::string& /*q
 	second_space = std::find(first_space + 1, parameters.end(), ' ');
 
 	const std::string duration(first_space + 1, second_space);
-	time_t parsed_time = time(nullptr);
+	std::time_t parsed_time = time(nullptr);
 	if (ban_manager_.parse_time(duration, &parsed_time) == false) {
 		*out << "Failed to parse the ban duration: '" << duration << "'\n"
 			 << ban_manager_.get_ban_help();

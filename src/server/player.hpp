@@ -73,10 +73,10 @@ private:
 
 	bool registered_;
 
-	time_t flood_start_;
+	std::time_t flood_start_;
 	unsigned int messages_since_flood_start_;
 	const std::size_t MaxMessages;
-	const time_t TimePeriod;
+	const std::time_t TimePeriod;
 	STATUS status_;
 	bool moderator_;
 };

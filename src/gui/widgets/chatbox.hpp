@@ -107,7 +107,7 @@ protected:
 	virtual void user_relation_changed(const std::string& name) override;
 
 	/** Inherited form @ref chat_handler */
-	virtual void add_chat_message(const time_t& time,
+	virtual void add_chat_message(const std::time_t& time,
 		const std::string& speaker,
 		int side,
 		const std::string& message,
