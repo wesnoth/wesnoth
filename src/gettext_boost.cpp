@@ -138,9 +138,9 @@ namespace
 					po_file.open(path);
 					const po_catalog& cat = po_catalog::from_istream(po_file);
 					extra_messages_.emplace(get_base().domain(domain), cat);
-				} catch(spirit_po::catalog_exception& e) {
+				} catch(const spirit_po::catalog_exception& e) {
 					throw_po_error(lang_name_long, domain, e.what());
-				} catch(std::ios::failure&) {
+				} catch(const std::ios::failure&) {
 					throw_po_error(lang_name_long, domain, strerror(errno));
 				}
 			}

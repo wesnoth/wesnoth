@@ -188,7 +188,7 @@ void menu_handler::save_map()
 	try {
 		filesystem::write_file(dlg.path(), map().write());
 		gui2::show_transient_message("", _("Map saved."));
-	} catch(filesystem::io_exception& e) {
+	} catch(const filesystem::io_exception& e) {
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
 		const std::string msg = VGETTEXT("Could not save the map: $msg", symbols);
@@ -1518,7 +1518,7 @@ void console_handler::do_control()
 	unsigned int side_num;
 	try {
 		side_num = lexical_cast<unsigned int>(side);
-	} catch(bad_lexical_cast&) {
+	} catch(const bad_lexical_cast&) {
 		const auto it_t = std::find_if(
 				resources::gameboard->teams().begin(), resources::gameboard->teams().end(), save_id_matches(side));
 		if(it_t == resources::gameboard->teams().end()) {
@@ -1548,7 +1548,7 @@ void console_handler::do_controller()
 	unsigned int side_num;
 	try {
 		side_num = lexical_cast<unsigned int>(side);
-	} catch(bad_lexical_cast&) {
+	} catch(const bad_lexical_cast&) {
 		utils::string_map symbols;
 		symbols["side"] = side;
 		command_failed(VGETTEXT("Can't query control of invalid side: '$side'.", symbols));
@@ -1957,7 +1957,7 @@ void menu_handler::do_ai_formula(const std::string& str, int side_num, mouse_han
 {
 	try {
 		add_chat_message(time(nullptr), "wfl", 0, ai::manager::get_singleton().evaluate_command(side_num, str));
-	} catch(wfl::formula_error&) {
+	} catch(const wfl::formula_error&) {
 	} catch(...) {
 		add_chat_message(time(nullptr), "wfl", 0, "UNKNOWN ERROR IN FORMULA");
 	}

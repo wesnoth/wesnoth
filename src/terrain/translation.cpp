@@ -751,7 +751,7 @@ static terrain_code string_to_number_(std::string str, std::string& start_positi
 	if(offset < end) {
 		try {
 			start_position = str.substr(begin, offset - begin);
-		} catch(bad_lexical_cast&) {
+		} catch(const bad_lexical_cast&) {
 			return VOID_TERRAIN;
 		}
 		begin = offset + 1;

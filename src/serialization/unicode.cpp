@@ -77,7 +77,7 @@ size_t index(const utf8::string& str, const size_t index)
 		for (unsigned int chr=0; chr<index && i<len; ++chr) {
 			i += byte_size_from_utf8_first(str[i]);
 		}
-	} catch(invalid_utf8_exception&) {
+	} catch(const invalid_utf8_exception&) {
 		ERR_GENERAL << "Invalid UTF-8 string." << std::endl;
 	}
 	return i;
@@ -90,7 +90,7 @@ size_t size(const utf8::string& str)
 		for (chr=0; i<len; ++chr) {
 			i += byte_size_from_utf8_first(str[i]);
 		}
-	} catch(invalid_utf8_exception&) {
+	} catch(const invalid_utf8_exception&) {
 		ERR_GENERAL << "Invalid UTF-8 string." << std::endl;
 	}
 	return chr;

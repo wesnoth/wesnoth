@@ -233,7 +233,7 @@ namespace preferences
 			filesystem::scoped_ostream credentials_file = filesystem::ostream_file(filesystem::get_credentials_file());
 			secure_buffer encrypted = encrypt(credentials_data, build_key("global", get_system_username()));
 			credentials_file->write(reinterpret_cast<const char*>(encrypted.data()), encrypted.size());
-		} catch(filesystem::io_exception&) {
+		} catch(const filesystem::io_exception&) {
 			ERR_CFG << "error writing to credentials file '" << filesystem::get_credentials_file() << "'" << std::endl;
 		}
 	}

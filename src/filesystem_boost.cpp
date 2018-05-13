@@ -910,7 +910,7 @@ filesystem::scoped_ostream ostream_file(const std::string& fname, bool create_di
 		boost::iostreams::file_descriptor_sink fd(bfs::path(fname), std::ios_base::binary);
 		return filesystem::scoped_ostream(
 				new boost::iostreams::stream<boost::iostreams::file_descriptor_sink>(fd, 4096, 0));
-	} catch(BOOST_IOSTREAMS_FAILURE& e) {
+	} catch(const BOOST_IOSTREAMS_FAILURE& e) {
 		// If this operation failed because the parent directory didn't exist, create the parent directory and
 		// retry.
 		error_code ec_unused;

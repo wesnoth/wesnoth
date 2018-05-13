@@ -69,11 +69,11 @@ void scenario::set_metadata()
 	try {
 		map_.reset(new gamemap(game_config_manager::get()->terrain_types(),
 			map_data));
-	} catch(incorrect_map_format_error& e) {
+	} catch(const incorrect_map_format_error& e) {
 		data_["description"] = _("Map could not be loaded: ") + e.message;
 
 		ERR_CF << "map could not be loaded: " << e.message << '\n';
-	} catch(wml_exception& e) {
+	} catch(const wml_exception& e) {
 		data_["description"] = _("Map could not be loaded.");
 
 		ERR_CF << "map could not be loaded: " << e.dev_message << '\n';
@@ -335,7 +335,7 @@ void create_engine::init_generated_level_data()
 
 			cur_lev->set_data(data);
 		}
-	} catch (mapgen_exception & e) {
+	} catch (const mapgen_exception & e) {
 		config data = cur_lev->data();
 
 		data["error_message"] = e.what();
@@ -520,7 +520,7 @@ void create_engine::set_current_level(const size_t index)
 {
 	try {
 		current_level_index_ = type_map_.at(current_level_type_.v).games_filtered.at(index);
-	} catch (std::out_of_range&) {
+	} catch (const std::out_of_range&) {
 		current_level_index_ = 0u;
 	}
 
@@ -662,11 +662,11 @@ void create_engine::init_all_levels()
 			std::unique_ptr<gamemap> map;
 			try {
 				map.reset(new gamemap(game_config_manager::get()->terrain_types(), user_map_data["map_data"]));
-			} catch (incorrect_map_format_error& e) {
+			} catch (const incorrect_map_format_error& e) {
 				user_map_data["description"] = _("Map could not be loaded: ") + e.message;
 
 				ERR_CF << "map could not be loaded: " << e.message << '\n';
-			} catch (wml_exception&) {
+			} catch (const wml_exception&) {
 				add_map = false;
 				dep_index_offset++;
 			}
@@ -689,7 +689,7 @@ void create_engine::init_all_levels()
 			config data;
 			try {
 				read(data, *preprocess_file(filesystem::get_user_data_dir() + "/editor/scenarios/" + user_scenario_names_[i]));
-			} catch (config::error & e) {
+			} catch(const config::error & e) {
 				ERR_CF << "Caught a config error while parsing user made (editor) scenarios:\n" << e.message << std::endl;
 				ERR_CF << "Skipping file: " << (filesystem::get_user_data_dir() + "/editor/scenarios/" + user_scenario_names_[i]) << std::endl;
 				continue;

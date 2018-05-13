@@ -727,7 +727,7 @@ unit::~unit()
 		if(itor != units_with_cache.end()) {
 			units_with_cache.erase(itor);
 		}
-	} catch(std::exception & e) {
+	} catch(const std::exception & e) {
 		ERR_UT << "Caught exception when destroying unit: " << e.what() << std::endl;
 	} catch(...) {}
 }

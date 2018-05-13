@@ -343,7 +343,7 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 				str << _("Test scenario");
 				break;
 		}
-	} catch(bad_enum_cast&) {
+	} catch(const bad_enum_cast&) {
 		str << campaign_type;
 	}
 

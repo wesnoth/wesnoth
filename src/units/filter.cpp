@@ -627,7 +627,7 @@ void unit_filter_compound::fill(vconfig cfg)
 						return false;
 					}
 					return true;
-				} catch(wfl::formula_error& e) {
+				} catch(const wfl::formula_error& e) {
 					lg::wml_error() << "Formula error in unit filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
 					// Formulae with syntax errors match nothing
 					return false;

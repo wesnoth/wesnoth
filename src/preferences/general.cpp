@@ -160,7 +160,7 @@ void write_preferences()
 	try {
 		filesystem::scoped_ostream prefs_file = filesystem::ostream_file(filesystem::get_prefs_file());
 		write(*prefs_file, prefs);
-	} catch(filesystem::io_exception&) {
+	} catch(const filesystem::io_exception&) {
 		ERR_FS << "error writing to preferences file '" << filesystem::get_prefs_file() << "'" << std::endl;
 	}
 

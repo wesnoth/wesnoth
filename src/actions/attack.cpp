@@ -1202,14 +1202,14 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 	if(hits) {
 		try {
 			fire_event(attacker_turn ? "attacker_hits" : "defender_hits");
-		} catch(attack_end_exception) {
+		} catch(const attack_end_exception&) {
 			refresh_bc();
 			return false;
 		}
 	} else {
 		try {
 			fire_event(attacker_turn ? "attacker_misses" : "defender_misses");
-		} catch(attack_end_exception) {
+		} catch(const attack_end_exception&) {
 			refresh_bc();
 			return false;
 		}
@@ -1434,7 +1434,7 @@ void attack::perform()
 
 	try {
 		fire_event("attack");
-	} catch(attack_end_exception) {
+	} catch(const attack_end_exception&) {
 		return;
 	}
 

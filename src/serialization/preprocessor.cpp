@@ -1225,7 +1225,7 @@ bool preprocessor_data::get_chunk()
 								} else {
 									deprecation_level = level;
 								}
-							} catch(std::invalid_argument&) {
+							} catch(const std::invalid_argument&) {
 								// Meh, fall back to default of PREEMPTIVE...
 								deprecation_level = DEP_LEVEL::PREEMPTIVE;
 							}
@@ -1408,7 +1408,7 @@ bool preprocessor_data::get_chunk()
 			DEP_LEVEL level = DEP_LEVEL::PREEMPTIVE;
 			try {
 				level = DEP_LEVEL(std::stoi(read_word()));
-			} catch(std::invalid_argument&) {
+			} catch(const std::invalid_argument&) {
 				// Meh, just fall back to the default of PREEMPTIVE...
 			}
 			version_info version = game_config::wesnoth_version;

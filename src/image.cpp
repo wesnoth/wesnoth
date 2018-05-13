@@ -1340,7 +1340,7 @@ bool update_from_preferences()
 	SCALING_ALGORITHM algo = preferences::default_scaling_algorithm;
 	try {
 		algo = SCALING_ALGORITHM::string_to_enum(preferences::get("scale_hex"));
-	} catch(bad_enum_cast&) {
+	} catch(const bad_enum_cast&) {
 	}
 
 	scale_to_hex_func = select_algorithm(algo);
@@ -1348,7 +1348,7 @@ bool update_from_preferences()
 	algo = preferences::default_scaling_algorithm;
 	try {
 		algo = SCALING_ALGORITHM::string_to_enum(preferences::get("scale_zoom"));
-	} catch(bad_enum_cast&) {
+	} catch(const bad_enum_cast&) {
 	}
 
 	scale_to_zoom_func = select_algorithm(algo);

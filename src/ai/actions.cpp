@@ -96,7 +96,7 @@ void action_result::execute()
 	if (is_success()){
 		try {
 			do_execute();
-		} catch (return_to_play_side_exception&) {
+		} catch (const return_to_play_side_exception&) {
 			if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
 			throw;
 		}

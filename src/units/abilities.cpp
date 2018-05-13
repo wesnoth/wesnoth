@@ -467,7 +467,7 @@ T get_single_ability_value(const config::attribute_value& v, T def, const map_lo
 					callable.add("other", wfl::variant(std::make_shared<wfl::unit_callable>(*u_itor)));
 				}
 				return formula_handler(wfl::formula(s, new wfl::gamestate_function_symbol_table), callable);
-			} catch(wfl::formula_error& e) {
+			} catch(const wfl::formula_error& e) {
 				lg::wml_error() << "Formula error in ability or weapon special: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
 				return def;
 			}

@@ -218,7 +218,7 @@ const surface minimap::get_image(const int w, const int h) const
 #endif
 		return surf;
 	}
-	catch(incorrect_map_format_error& e)
+	catch(const incorrect_map_format_error& e)
 	{
 		ERR_CF << "Error while loading the map: " << e.message << '\n';
 #ifdef DEBUG_MINIMAP_CACHE

@@ -46,10 +46,10 @@ int base_candidate_action::execute_formula(const const_formula_ptr& formula,
 	int res = 0;
 	try {
 		res = (formula::evaluate(formula, callable)).as_int();
-	} catch(formula_error& e) {
+	} catch(const formula_error& e) {
 		ai->handle_exception(e);
 		res = 0;
-	} catch(type_error& e) {
+	} catch(const type_error& e) {
 		res = 0;
 		ERR_AI << "formula type error while evaluating candidate action: " << e.message << std::endl;
 	}
@@ -116,7 +116,7 @@ void move_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 		else
 			filtered_units=my_units;
 	}
-	catch(formula_error& e) {
+	catch(const formula_error& e) {
 		ai->handle_exception(e, "Error while executing filter formula for '" + get_name() + "' Candidate Action");
 		return;
 	}
@@ -186,7 +186,7 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 		else
 			filtered_enemy_units = enemy_units;
 	}
-	catch(formula_error& e) {
+	catch(const formula_error& e) {
 		ai->handle_exception(e, "Error while executing filter formula for '" + get_name() + "' Candidate Action");
 		return;
 	}
@@ -195,7 +195,7 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 		if( !(filtered_enemy_units.num_elements() && filtered_my_units.num_elements() ) )
 			return;
 	}
-	catch(type_error& e) {
+	catch(const type_error& e) {
 		ERR_AI << "Error while executing filter formulas for '" + get_name() + "' Candidate Action: " << e.message << std::endl;
 		return;
 	}

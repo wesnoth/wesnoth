@@ -1768,7 +1768,7 @@ void game::send_history(const socket_ptr& socket) const
 
 		history_.clear();
 		history_.push_back(doc);
-	} catch(simple_wml::error& e) {
+	} catch(const simple_wml::error& e) {
 		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message << std::endl;
 	}
 }
@@ -1853,7 +1853,7 @@ void game::save_replay()
 		if(!os->good()) {
 			ERR_GAME << "Could not save replay! (" << filename << ")" << std::endl;
 		}
-	} catch(simple_wml::error& e) {
+	} catch(const simple_wml::error& e) {
 		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message << std::endl;
 	}
 }

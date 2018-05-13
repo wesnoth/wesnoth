@@ -72,7 +72,7 @@ static T& value_ref_cast(variant_value_base& ptr)
 {
 	try {
 		return dynamic_cast<T&>(ptr);
-	} catch(std::bad_cast&) {
+	} catch(const std::bad_cast&) {
 		throw type_error("Could not cast type");
 	}
 }
