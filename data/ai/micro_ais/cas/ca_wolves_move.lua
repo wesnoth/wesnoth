@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local M = wesnoth.map
@@ -6,15 +5,15 @@ local M = wesnoth.map
 local function get_wolves(cfg)
     local wolves = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", H.get_child(cfg, "filter") }
+        { "and", wml.get_child(cfg, "filter") }
     }
     return wolves
 end
 
 local function get_prey(cfg)
-    -- Note: we cannot pass H.get_child() directly to AH.get_attackable_enemies()
+    -- Note: we cannot pass wml.get_child() directly to AH.get_attackable_enemies()
     -- as the former returns two values and the latter takes optional arguments
-    local filter_second = H.get_child(cfg, "filter_second")
+    local filter_second = wml.get_child(cfg, "filter_second")
     local prey = AH.get_attackable_enemies(filter_second)
     return prey
 end

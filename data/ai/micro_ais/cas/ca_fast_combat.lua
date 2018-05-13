@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local FAU = wesnoth.require "ai/micro_ais/cas/ca_fast_attack_utils.lua"
 local LS = wesnoth.require "location_set"
@@ -9,8 +8,8 @@ function ca_fast_combat:evaluation(cfg, data)
     data.move_cache = { turn = wesnoth.current.turn }
     data.gamedata = FAU.gamedata_setup()
 
-    local filter_own = H.get_child(cfg, "filter")
-    local filter_enemy = H.get_child(cfg, "filter_second")
+    local filter_own = wml.get_child(cfg, "filter")
+    local filter_enemy = wml.get_child(cfg, "filter_second")
 
     local enemies
     local units_sorted = true

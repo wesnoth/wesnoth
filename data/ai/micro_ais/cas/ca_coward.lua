@@ -2,7 +2,7 @@ local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local function get_coward(cfg)
-    local filter = H.get_child(cfg, "filter") or { id = cfg.id }
+    local filter = wml.get_child(cfg, "filter") or { id = cfg.id }
     local coward = AH.get_units_with_moves {
         side = wesnoth.current.side,
         { "and", filter }
@@ -23,7 +23,7 @@ function ca_coward:execution(cfg)
     local reach = wesnoth.find_reach(coward)
 
     local filter_second =
-        H.get_child(cfg, "filter_second")
+        wml.get_child(cfg, "filter_second")
         or { { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } } }
     local enemies = AH.get_live_units {
         { "and", filter_second },

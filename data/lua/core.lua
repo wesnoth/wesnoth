@@ -236,11 +236,12 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	--[========[Basic variable access]========]
 
 	-- Get all variables via wml.all_variables (read-only)
+	local get_all_vars_local = wesnoth.get_all_vars
 	setmetatable(wml, {
 		__metatable = "WML module",
 		__index = function(self, key)
 			if key == 'all_variables' then
-				return wesnoth.get_all_vars()
+				return get_all_vars_local()
 			end
 			return rawget(self, key)
 		end,
@@ -253,14 +254,18 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		end
 	})
 
+	-- So that definition of wml.variables does not cause deprecation warnings:
+	local get_variable_local = wesnoth.get_variable
+	local set_variable_local = wesnoth.set_variable
+
 	-- Get and set variables via wml.variables[variable_path]
 	wml.variables = setmetatable({}, {
 		__metatable = "WML variables",
 		__index = function(_, key)
-			return wesnoth.get_variable(key)
+			return get_variable_local(key)
 		end,
 		__newindex = function(_, key, value)
-			wesnoth.set_variable(key, value)
+			set_variable_local(key, value)
 		end
 	})
 
@@ -271,7 +276,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	}
 
 	local function get_variable_proxy(k)
-		local v = wesnoth.get_variable(k)
+		local v = wml.variables[k]
 		if type(v) == "table" then
 			v = setmetatable({ __varname = k }, variable_mt)
 		end
@@ -280,9 +285,9 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 
 	local function set_variable_proxy(k, v)
 		if getmetatable(v) == "WML variable proxy" then
-			v = wesnoth.get_variable(v.__varname)
+			v = wml.variables[v.__varname]
 		end
-		wesnoth.set_variable(k, v)
+		wml.variables[k] = v
 	end
 
 	function variable_mt.__index(t, k)
@@ -325,7 +330,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 
 	local function resolve_variable_context(ctx, err_hint)
 		if ctx == nil then
-			return {get = wesnoth.get_variable, set = wesnoth.set_variable}
+			return {get = get_variable_local, set = set_variable_local}
 		elseif type(ctx) == 'number' and ctx > 0 and ctx <= #wesnoth.sides then
 			return resolve_variable_context(wesnoth.sides[ctx])
 		elseif type(ctx) == 'string' then
@@ -378,7 +383,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	--! @returns a table containing all the variable proxies (starting at index 1).
 	function wml.array_access.get_proxy(var)
 		local result = {}
-		for i = 1, wesnoth.get_variable(var .. ".length") do
+		for i = 1, wml.variables[var .. ".length"] do
 			result[i] = get_variable_proxy(string.format("%s[%d]", var, i - 1))
 		end
 		return result

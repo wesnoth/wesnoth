@@ -13,8 +13,6 @@
 -- same side).
 -- For the time being, we only allow key=value style variables.
 
-local H = wesnoth.require "helper"
-
 local micro_ai_self_data = {}
 
 function micro_ai_self_data.modify_mai_self_data(self_data, ai_id, action, vars_table)
@@ -79,7 +77,7 @@ function micro_ai_self_data.get_mai_self_data(self_data, ai_id, key)
     --     table of key=value pairs (including the ai_id key)
     --   - If no such tag is found: nil (if @key is set), otherwise empty table
 
-    for mai in H.child_range(self_data, "micro_ai") do
+    for mai in wml.child_range(self_data, "micro_ai") do
         if (mai.ai_id == ai_id) then
             if key then
                 return mai[key]

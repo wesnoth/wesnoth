@@ -75,7 +75,7 @@ function wml_actions.item(cfg)
 	local redraw = cfg.redraw
 	if redraw == nil then redraw = true end
 	if redraw then wml_actions.redraw {} end
-	if cfg.write_name then wesnoth.set_variable(cfg.write_name, cfg.name) end
+	if cfg.write_name then wml.variables[cfg.write_name] = cfg.name end
 	return cfg.name
 end
 
@@ -89,13 +89,13 @@ end
 function wml_actions.store_items(cfg)
 	local variable = cfg.variable or "items"
 	variable = tostring(variable or helper.wml_error("invalid variable= in [store_items]"))
-	wesnoth.set_variable(variable)
+	wml.variables[variable] = nil
 	local index = 0
 	for i, loc in ipairs(wesnoth.get_locations(cfg)) do
 		local items = scenario_items[loc[1] * 10000 + loc[2]]
 		if items then
 			for j, item in ipairs(items) do
-				wesnoth.set_variable(string.format("%s[%u]", variable, index), item)
+				wml.variables[string.format("%s[%u]", variable, index)] = item
 				index = index + 1
 			end
 		end

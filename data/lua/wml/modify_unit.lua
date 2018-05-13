@@ -10,7 +10,7 @@ function wml_actions.modify_unit(cfg)
 	local function handle_attributes(cfg, unit_path, toplevel)
 		for current_key, current_value in pairs(wml.shallow_parsed(cfg)) do
 			if type(current_value) ~= "table" and (not toplevel or (current_key ~= "type" and current_key ~= "mode")) then
-				wesnoth.set_variable(string.format("%s.%s", unit_path, current_key), current_value)
+				wml.variables[string.format("%s.%s", unit_path, current_key)] = current_value
 			end
 		end
 	end
@@ -33,8 +33,8 @@ function wml_actions.modify_unit(cfg)
 	local function handle_unit(unit_num)
 		local children_handled = {}
 		local unit_path = string.format("%s[%u]", unit_variable, unit_num)
-		local this_unit = wesnoth.get_variable(unit_path)
-		wesnoth.set_variable("this_unit", this_unit)
+		local this_unit = wml.variables[unit_path]
+		wml.variables["this_unit"] = this_unit
 		handle_attributes(cfg, unit_path, true)
 
 		for current_index, current_table in ipairs(wml.shallow_parsed(cfg)) do
@@ -48,26 +48,26 @@ function wml_actions.modify_unit(cfg)
 				else
 					mod = wml.parsed(mod)
 				end
-				local unit = wesnoth.get_variable(unit_path)
+				local unit = wml.variables[unit_path]
 				unit = wesnoth.create_unit(unit)
 				wesnoth.add_modification(unit, current_tag, mod)
 				unit = unit.__cfg;
-				wesnoth.set_variable(unit_path, unit)
+				wml.variables[unit_path] = unit
 			elseif current_tag == "effect" then
 				local mod = current_table[2]
 				local apply_to = mod.apply_to
 				if wesnoth.effects[apply_to] then
-					local unit = wesnoth.get_variable(unit_path)
+					local unit = wml.variables[unit_path]
 					unit = wesnoth.create_unit(unit)
 					wesnoth.effects[apply_to](unit, mod)
 					unit = unit.__cfg;
-					wesnoth.set_variable(unit_path, unit)
+					wml.variables[unit_path] = unit
 				else
 					helper.wml_error("[modify_unit] had invalid [effect]apply_to value")
 				end
 			else
 				if replace_mode then
-					wesnoth.set_variable(string.format("%s.%s", unit_path, current_tag), {})
+					wml.variables[string.format("%s.%s", unit_path, current_tag)] = {}
 				end
 				local tag_index = children_handled[current_tag] or 0
 				handle_child(current_table[2], string.format("%s.%s[%u]",
@@ -77,15 +77,15 @@ function wml_actions.modify_unit(cfg)
 		end
 
 		if cfg.type then
-			if cfg.type ~= "" then wesnoth.set_variable(unit_path .. ".advances_to", cfg.type) end
-			wesnoth.set_variable(unit_path .. ".experience", wesnoth.get_variable(unit_path .. ".max_experience"))
+			if cfg.type ~= "" then wml.variables[unit_path .. ".advances_to"] = cfg.type end
+			wml.variables[unit_path .. ".experience"] = wml.variables[unit_path .. ".max_experience"]
 		end
 		wml_actions.kill({ id = this_unit.id, animate = false })
 		wml_actions.unstore_unit { variable = unit_path }
 	end
 
 	wml_actions.store_unit { {"filter", filter}, variable = unit_variable }
-	local max_index = wesnoth.get_variable(unit_variable .. ".length") - 1
+	local max_index = wml.variables[unit_variable .. ".length"] - 1
 
 	local this_unit = utils.start_var_scope("this_unit")
 	for current_unit = 0, max_index do
@@ -93,5 +93,5 @@ function wml_actions.modify_unit(cfg)
 	end
 	utils.end_var_scope("this_unit", this_unit)
 
-	wesnoth.set_variable(unit_variable)
+	wml.variables[unit_variable] = nil
 end

@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "location_set"
 local T = wml.tag
@@ -22,7 +21,7 @@ function ca_fast_attack_utils.get_avoid_map(cfg)
     -- Use [micro_ai][avoid] tag with priority over [ai][avoid].
     -- If neither is given, return an empty location set.
 
-    local avoid_tag = H.get_child(cfg, "avoid")
+    local avoid_tag = wml.get_child(cfg, "avoid")
 
     if not avoid_tag then
         return LS.of_pairs(ai.aspects.avoid)
@@ -118,7 +117,7 @@ function ca_fast_attack_utils.single_unit_info(unit_proxy)
     }
 
     -- Include the ability type, such as: hides, heals, regenerate, skirmisher (set up as 'hides = true')
-    local abilities = H.get_child(unit_proxy.__cfg, "abilities")
+    local abilities = wml.get_child(unit_proxy.__cfg, "abilities")
     if abilities then
         for _,ability in ipairs(abilities) do
             single_unit_info[ability[1]] = true
@@ -128,11 +127,11 @@ function ca_fast_attack_utils.single_unit_info(unit_proxy)
     -- Information about the attacks indexed by weapon number,
     -- including specials (e.g. 'poison = true')
     single_unit_info.attacks = {}
-    for attack in H.child_range(unit_cfg, 'attack') do
+    for attack in wml.child_range(unit_cfg, 'attack') do
         -- Extract information for specials; we do this first because some
         -- custom special might have the same name as one of the default scalar fields
         local a = {}
-        for special in H.child_range(attack, 'specials') do
+        for special in wml.child_range(attack, 'specials') do
             for _,sp in ipairs(special) do
                 if (sp[1] == 'damage') then  -- this is 'backstab'
                     if (sp[2].id == 'backstab') then

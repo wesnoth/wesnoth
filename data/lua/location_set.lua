@@ -145,8 +145,8 @@ end
 
 function methods:of_wml_var(name)
 	local values = self.values
-	for i = 0, wesnoth.get_variable(name .. ".length") - 1 do
-		local t = wesnoth.get_variable(string.format("%s[%d]", name, i))
+	for i = 0, wml.variables[name .. ".length"] - 1 do
+		local t = wml.variables[string.format("%s[%d]", name, i)]
 		local x, y = t.x, t.y
 		t.x, t.y = nil, nil
 		values[index(x, y)] = next(t) and t or true
@@ -175,13 +175,13 @@ end
 
 function methods:to_wml_var(name)
 	local i = 0
-	wesnoth.set_variable(name)
+	wml.variables[name] = nil
 	self:stable_iter(function(x, y, v)
 		if type(v) == 'table' then
-			wesnoth.set_variable(string.format("%s[%d]", name, i), v)
+			wml.variables[string.format("%s[%d]", name, i)] = v
 		end
-		wesnoth.set_variable(string.format("%s[%d].x", name, i), x)
-		wesnoth.set_variable(string.format("%s[%d].y", name, i), y)
+		wml.variables[string.format("%s[%d].x", name, i)] = x
+		wml.variables[string.format("%s[%d].y", name, i)] = y
 		i = i + 1
 	end)
 end

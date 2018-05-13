@@ -44,17 +44,17 @@ function helper.modify_unit(filter, vars)
 		variable = "LUA_modify_unit",
 		kill = true
 	})
-	for i = 0, wesnoth.get_variable("LUA_modify_unit.length") - 1 do
+	for i = 0, wml.variables["LUA_modify_unit.length"] - 1 do
 		local u = string.format("LUA_modify_unit[%d]", i)
 		for k, v in pairs(vars) do
-			wesnoth.set_variable(u .. '.' .. k, v)
+			wml.variables[u .. '.' .. k] = v
 		end
 		wml_actions.unstore_unit({
 			variable = u,
 			find_vacant = false
 		})
 	end
-	wesnoth.set_variable("LUA_modify_unit")
+	wml.variables["LUA_modify_unit"] = nil
 end
 
 --! Fakes the move of a unit satisfying the given @a filter to position @a x, @a y.
@@ -65,18 +65,18 @@ function helper.move_unit_fake(filter, to_x, to_y)
 		variable = "LUA_move_unit",
 		kill = false
 	})
-	local from_x = wesnoth.get_variable("LUA_move_unit.x")
-	local from_y = wesnoth.get_variable("LUA_move_unit.y")
+	local from_x = wml.variables["LUA_move_unit.x"]
+	local from_y = wml.variables["LUA_move_unit.y"]
 
 	wml_actions.scroll_to({ x=from_x, y=from_y })
 
 	if to_x < from_x then
-		wesnoth.set_variable("LUA_move_unit.facing", "sw")
+		wml.variables["LUA_move_unit.facing"] = "sw"
 	elseif to_x > from_x then
-		wesnoth.set_variable("LUA_move_unit.facing", "se")
+		wml.variables["LUA_move_unit.facing"] = "se"
 	end
-	wesnoth.set_variable("LUA_move_unit.x", to_x)
-	wesnoth.set_variable("LUA_move_unit.y", to_y)
+	wml.variables["LUA_move_unit.x"] = to_x
+	wml.variables["LUA_move_unit.y"] = to_y
 
 	wml_actions.kill({
 		x = from_x,
@@ -96,7 +96,7 @@ function helper.move_unit_fake(filter, to_x, to_y)
 
 	wml_actions.unstore_unit({ variable="LUA_move_unit", find_vacant=true })
 	wml_actions.redraw({})
-	wesnoth.set_variable("LUA_move_unit")
+	wml.variables["LUA_move_unit"] = nil
 end
 
 -- Metatable that redirects access to wml.variables_proxy

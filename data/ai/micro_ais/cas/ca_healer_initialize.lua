@@ -1,5 +1,3 @@
-local H = wesnoth.require "helper"
-
 local ca_healer_initialize = {}
 
 function ca_healer_initialize:evaluation()
@@ -19,7 +17,7 @@ function ca_healer_initialize:execution(cfg, data)
             id = "no_healers_attack",
             invalidate_on_gamestate_change = "yes",
             { "filter_own", {
-               { "not", { ability = "healing", { "and", H.get_child(cfg, "filter") } } }
+               { "not", { ability = "healing", { "and", wml.get_child(cfg, "filter") } } }
             } }
         }
     )

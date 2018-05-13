@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "location_set"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
@@ -9,7 +8,7 @@ local messenger_next_waypoint = wesnoth.require "ai/micro_ais/cas/ca_messenger_f
 local function get_escorts(cfg)
     local escorts = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", H.get_child(cfg, "filter_second") }
+        { "and", wml.get_child(cfg, "filter_second") }
     }
     return escorts
 end
