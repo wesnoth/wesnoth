@@ -69,7 +69,7 @@ struct mp_connect_fixture {
 		state->set_scenario(config_manager->
 			game_config().find_child("multiplayer", "id", state->mp_settings().name));
 
-		state->mp_settings().num_turns = state->get_starting_pos()["turns"];
+		state->mp_settings().num_turns = state->get_starting_point()["turns"];
 
 		rng.reset(new randomness::mt_rng());
 	}

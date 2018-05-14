@@ -23,16 +23,16 @@ class config_writer;
 
 class saved_game
 {
-	enum STARTING_POS_TYPE
+	enum STARTING_POINT_TYPE
 	{
 		/// There is no scenario stating pos data (start-of-scenario).
-		STARTINGPOS_NONE,
+		STARTING_POINT_NONE,
 		/// We have a [snapshot] (mid-game-savefile).
-		STARTINGPOS_SNAPSHOT,
+		STARTING_POINT_SNAPSHOT,
 		/// We have a [scenario] (start-of-scenario) savefile.
-		STARTINGPOS_SCENARIO,
+		STARTING_POINT_SCENARIO,
 		/// We failed to get a starting pos in expand_scenario.
-		STARTINGPOS_INVALID
+		STARTING_POINT_INVALID
 	};
 public:
 	saved_game();
@@ -50,7 +50,7 @@ public:
 	void write_config(config_writer& out) const;
 	void write_general_info(config_writer& out) const;
 	void write_carryover(config_writer& out) const;
-	void write_starting_pos(config_writer& out) const;
+	void write_starting_point(config_writer& out) const;
 	config to_config() const;
 	game_classification& classification() { return classification_; }
 	const game_classification& classification() const { return classification_; }
@@ -78,17 +78,17 @@ public:
 	/// of a campaign but calling it multiple times is no harm eigher
 	void expand_mp_options();
 	/// takes care of generate_map=, generate_scenario=, map= attributes
-	/// This should be called before expanding carryover or mp_events because this might completely replace starting_pos_.
+	/// This should be called before expanding carryover or mp_events because this might completely replace starting_point_.
 	void expand_random_scenario();
 	bool valid() const;
-	/// @return the snapshot in the savefile (get_starting_pos)
+	/// @return the snapshot in the savefile (get_starting_point)
 	config& set_snapshot(config snapshot);
 	void set_scenario(config scenario);
 	void remove_snapshot();
 
 	bool is_mid_game_save() const
 	{
-		return starting_pos_type_ == STARTINGPOS_SNAPSHOT;
+		return starting_point_type_ == STARTING_POINT_SNAPSHOT;
 	}
 	/// converts a normal savegame form the end of a scenaio to a start-of-scenario savefile for the next scenaio,
 	/// The saved_game must contain a [snapshot] made during the linger mode of the last scenaio.
@@ -96,12 +96,12 @@ public:
 	/// sets the random seed if that didn't already happen.
 	void set_random_seed();
 	/// @return the starting pos for replays. Usually this is [replay_start] but it can also be a [scenario] if no [replay_start] is present
-	const config& get_replay_starting_pos();
+	const config& get_replay_starting_point();
 	/// @return the id of the currently played scenario or the id of the next scenario if this is a between-scenaios-save (also called start-of-scenario-save).
 	std::string get_scenario_id();
 	/// @return the config from which the game will be started. (this is [scenario] or [snapshot] in the savefile)
-	config& get_starting_pos();
-	const config& get_starting_pos() const { return starting_pos_; }
+	config& get_starting_point();
+	const config& get_starting_point() const { return starting_point_; }
 	config& replay_start() { return replay_start_; }
 	const config& replay_start() const { return replay_start_; }
 
@@ -131,12 +131,12 @@ private:
 	game_classification classification_;
 	mp_game_settings mp_settings_;
 
-	STARTING_POS_TYPE starting_pos_type_;
+	STARTING_POINT_TYPE starting_point_type_;
 	/**
 		The starting pos where the (non replay) game will be started from.
 		This can eigher be a [scenario] for a fresh game or a [snapshot] if this is a reloaded game
 	*/
-	config starting_pos_;
+	config starting_point_;
 
 	replay_recorder_base replay_data_;
 };
