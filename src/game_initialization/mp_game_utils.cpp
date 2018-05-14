@@ -41,7 +41,7 @@ namespace mp
 static void add_multiplayer_classification(config& multiplayer, saved_game& state)
 {
 	multiplayer["mp_scenario"] = state.get_scenario_id();
-	multiplayer["mp_scenario_name"] = state.get_starting_pos()["name"];
+	multiplayer["mp_scenario_name"] = state.get_starting_point()["name"];
 	multiplayer["difficulty_define"] = state.classification().difficulty;
 	multiplayer["mp_campaign"] = state.classification().campaign;
 	multiplayer["mp_campaign_name"] = state.classification().campaign_name;
@@ -62,7 +62,7 @@ config initial_level_config(saved_game& state)
 		throw config::error("Failed to load the scenario");
 	}
 
-	config& scenario = state.get_starting_pos();
+	config& scenario = state.get_starting_point();
 	if(!state.mp_settings().saved_game) {
 		state.set_random_seed();
 	}

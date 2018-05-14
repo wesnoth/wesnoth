@@ -743,9 +743,9 @@ void start_local_game_commandline(const config& game_config, saved_game& state, 
 	state.expand_mp_options();
 
 	// Should number of turns be determined from scenario data?
-	if(parameters.use_map_settings && state.get_starting_pos()["turns"]) {
-		DBG_MP << "setting turns from scenario data: " << state.get_starting_pos()["turns"] << std::endl;
-		parameters.num_turns = state.get_starting_pos()["turns"];
+	if(parameters.use_map_settings && state.get_starting_point()["turns"]) {
+		DBG_MP << "setting turns from scenario data: " << state.get_starting_point()["turns"] << std::endl;
+		parameters.num_turns = state.get_starting_point()["turns"];
 	}
 
 	DBG_MP << "entering connect mode" << std::endl;
