@@ -24,8 +24,8 @@ function wml_actions.harm_unit(cfg)
 	for index, unit_to_harm in ipairs(wesnoth.get_units(filter)) do
 		if unit_to_harm.valid then
 			-- block to support $this_unit
-			wesnoth.set_variable ( "this_unit" ) -- clearing this_unit
-			wesnoth.set_variable("this_unit", unit_to_harm.__cfg) -- cfg field needed
+			wml.variables["this_unit"] = nil -- clearing this_unit
+			wml.variables["this_unit"] = unit_to_harm.__cfg -- cfg field needed
 			local amount = tonumber(cfg.amount)
 			local animate = cfg.animate -- attacker and defender are special values
 			local delay = cfg.delay or 500
@@ -187,7 +187,7 @@ function wml_actions.harm_unit(cfg)
 			end
 
 			if variable then
-				wesnoth.set_variable(string.format("%s[%d]", variable, index - 1), { harm_amount = damage })
+				wml.variables[string.format("%s[%d]", variable, index - 1)] = { harm_amount = damage }
 			end
 
 			-- both units may no longer be alive at this point, so double check
@@ -203,6 +203,6 @@ function wml_actions.harm_unit(cfg)
 		wml_actions.redraw {}
 	end
 
-	wesnoth.set_variable ( "this_unit" ) -- clearing this_unit
+	wml.variables["this_unit"] = nil -- clearing this_unit
 	utils.end_var_scope("this_unit", this_unit)
 end

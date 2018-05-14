@@ -175,13 +175,13 @@ end
 
 function methods:to_wml_var(name)
 	local i = 0
-	wesnoth.set_variable(name)
+	wml.variables[name] = nil
 	self:stable_iter(function(x, y, v)
 		if type(v) == 'table' then
-			wesnoth.set_variable(string.format("%s[%d]", name, i), v)
+			wml.variables[string.format("%s[%d]", name, i)] = v
 		end
-		wesnoth.set_variable(string.format("%s[%d].x", name, i), x)
-		wesnoth.set_variable(string.format("%s[%d].y", name, i), y)
+		wml.variables[string.format("%s[%d].x", name, i)] = x
+		wml.variables[string.format("%s[%d].y", name, i)] = y
 		i = i + 1
 	end)
 end

@@ -113,7 +113,7 @@ wesnoth.wml_actions["for"] = function(cfg)
 	end
 	local i_var = cfg.variable or "i"
 	local save_i = utils.start_var_scope(i_var)
-	wesnoth.set_variable(i_var, first)
+	wml.variables[i_var] = first
 	local function loop_condition()
 		local sentinel = loop_lim.last
 		if loop_lim.step then
@@ -144,7 +144,7 @@ wesnoth.wml_actions["for"] = function(cfg)
 				goto exit
 			end
 		end
-		wesnoth.set_variable(i_var, wml.variables[i_var] + loop_lim.step)
+		wml.variables[i_var] = wml.variables[i_var] + loop_lim.step
 	end
 	::exit::
 	utils.end_var_scope(i_var, save_i)
@@ -192,9 +192,9 @@ function wml_actions.foreach(cfg)
 		if array_length ~= wml.variables[array_name .. ".length"] then
 			helper.wml_error("WML array length changed during [foreach] iteration")
 		end
-		wesnoth.set_variable(item_name, value)
+		wml.variables[item_name] = value
 		-- set index variable
-		wesnoth.set_variable(i_name, index-1) -- here -1, because of WML array
+		wml.variables[i_name] = index-1 -- here -1, because of WML array
 		-- perform actions
 		for do_child in wml.child_range(cfg, "do") do
 			local action = utils.handle_event_commands(do_child, "loop")

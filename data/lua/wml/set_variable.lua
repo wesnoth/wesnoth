@@ -4,51 +4,51 @@ function wesnoth.wml_actions.set_variable(cfg)
 	local name = cfg.name or helper.wml_error "trying to set a variable with an empty name"
 
 	if cfg.value ~= nil then -- check for nil because user may try to set a variable as false
-		wesnoth.set_variable(name, cfg.value)
+		wml.variables[name] = cfg.value
 	end
 
 	if cfg.literal ~= nil then
-		wesnoth.set_variable(name, wml.shallow_literal(cfg).literal)
+		wml.variables[name] = wml.shallow_literal(cfg).literal
 	end
 
 	if cfg.to_variable then
-		wesnoth.set_variable(name, wml.variables[cfg.to_variable])
+		wml.variables[name] = wml.variables[cfg.to_variable]
 	end
 
 	if cfg.suffix then
-		wesnoth.set_variable(name, (wml.variables[name] or '') .. (cfg.suffix or ''))
+		wml.variables[name] = (wml.variables[name] or '') .. (cfg.suffix or '')
 	end
 
 	if cfg.prefix then
-		wesnoth.set_variable(name, (cfg.prefix or '') .. (wml.variables[name] or ''))
+		wml.variables[name] = (cfg.prefix or '') .. (wml.variables[name] or '')
 	end
 
 	if cfg.add then
-		wesnoth.set_variable(name, (tonumber(wml.variables[name]) or 0) + (tonumber(cfg.add) or 0))
+		wml.variables[name] = (tonumber(wml.variables[name]) or 0) + (tonumber(cfg.add) or 0)
 	end
 
 	if cfg.sub then
-		wesnoth.set_variable(name, (tonumber(wml.variables[name]) or 0) - (tonumber(cfg.sub) or 0))
+		wml.variables[name] = (tonumber(wml.variables[name]) or 0) - (tonumber(cfg.sub) or 0)
 	end
 
 	if cfg.multiply then
-		wesnoth.set_variable(name, (tonumber(wml.variables[name]) or 0) * (tonumber(cfg.multiply) or 0))
+		wml.variables[name] = (tonumber(wml.variables[name]) or 0) * (tonumber(cfg.multiply) or 0)
 	end
 
 	if cfg.divide then
 		local divide = tonumber(cfg.divide) or 0
 		if divide == 0 then helper.wml_error("division by zero on variable " .. name) end
-		wesnoth.set_variable(name, (tonumber(wml.variables[name]) or 0) / divide)
+		wml.variables[name] = (tonumber(wml.variables[name]) or 0) / divide
 	end
 
 	if cfg.modulo then
 		local modulo = tonumber(cfg.modulo) or 0
 		if modulo == 0 then helper.wml_error("division by zero on variable " .. name) end
-		wesnoth.set_variable(name, (tonumber(wml.variables[name]) or 0) % modulo)
+		wml.variables[name] = (tonumber(wml.variables[name]) or 0) % modulo
 	end
 
 	if cfg.abs then
-		wesnoth.set_variable(name, math.abs(tonumber(wml.variables[name]) or 0))
+		wml.variables[name] = math.abs(tonumber(wml.variables[name]) or 0)
 	end
 
 	if cfg.root then
@@ -73,31 +73,31 @@ function wesnoth.wml_actions.set_variable(cfg)
 			end
 		end
 
-		wesnoth.set_variable(name, root_fcn(radicand))
+		wml.variables[name] = root_fcn(radicand)
 	end
 
 	if cfg.power then
-		wesnoth.set_variable(name, (tonumber(wml.variables[name]) or 0) ^ (tonumber(cfg.power) or 0))
+		wml.variables[name] = (tonumber(wml.variables[name]) or 0) ^ (tonumber(cfg.power) or 0)
 	end
 
 	if cfg.round then
 		local var = tonumber(wml.variables[name] or 0)
 		local round_val = cfg.round
 		if round_val == "ceil" then
-			wesnoth.set_variable(name, math.ceil(var))
+			wml.variables[name] = math.ceil(var)
 		elseif round_val == "floor" then
-			wesnoth.set_variable(name, math.floor(var))
+			wml.variables[name] = math.floor(var)
 		elseif round_val == "trunc" then
 			-- Storing to a variable first because modf returns two values,
 			-- and I'm not sure if set_variable will complain about the extra parameter
 			local new_val = math.modf(var)
-			wesnoth.set_variable(name, new_val)
+			wml.variables[name] = new_val
 		else
 			local decimals = math.modf(tonumber(round_val) or 0)
 			local value = var * (10 ^ decimals)
 			value = helper.round(value)
 			value = value * (10 ^ -decimals)
-			wesnoth.set_variable(name, value)
+			wml.variables[name] = value
 		end
 	end
 
@@ -106,31 +106,31 @@ function wesnoth.wml_actions.set_variable(cfg)
 	-- but on the value assigned to the respective key
 	if cfg.ipart then
 		local ivalue = math.modf(tonumber(cfg.ipart) or 0)
-		wesnoth.set_variable(name, ivalue)
+		wml.variables[name] = ivalue
 	end
 
 	if cfg.fpart then
 		local ivalue, fvalue = math.modf(tonumber(cfg.fpart) or 0)
-		wesnoth.set_variable(name, fvalue)
+		wml.variables[name] = fvalue
 	end
 
 	if cfg.string_length ~= nil then
-		wesnoth.set_variable(name, string.len(tostring(cfg.string_length)))
+		wml.variables[name] = string.len(tostring(cfg.string_length))
 	end
 
 	if cfg.time then
 		if cfg.time == "stamp" then
-			wesnoth.set_variable(name, wesnoth.get_time_stamp())
+			wml.variables[name] = wesnoth.get_time_stamp()
 		end
 	end
 
 	if cfg.rand then
-		wesnoth.set_variable(name, helper.rand(tostring(cfg.rand)))
+		wml.variables[name] = helper.rand(tostring(cfg.rand))
 	end
 
 	if cfg.formula then
 		local fcn = wesnoth.compile_formula(cfg.formula)
-		wesnoth.set_variable(name, fcn(wml.variables[name]))
+		wml.variables[name] = fcn(wml.variables[name])
 	end
 
 	local join_child = wml.get_child(cfg, "join")
@@ -151,6 +151,6 @@ function wesnoth.wml_actions.set_variable(cfg)
 			end
 		end
 
-		wesnoth.set_variable(name, string_to_join)
+		wml.variables[name] = string_to_join
 	end
 end

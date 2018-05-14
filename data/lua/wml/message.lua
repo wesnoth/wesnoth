@@ -441,7 +441,7 @@ function wesnoth.wml_actions.message(cfg)
 
 		if text_input ~= nil then
 			-- Implement the consequences of the choice
-			wesnoth.set_variable(text_input.variable or "input", choice.text)
+			wml.variables[text_input.variable or "input"] = choice.text
 		end
 	end
 
@@ -459,9 +459,9 @@ function wesnoth.wml_actions.message(cfg)
 
 		if cfg.variable ~= nil then
 			if options[option_chosen].value == nil then
-				wesnoth.set_variable(cfg.variable, option_chosen)
+				wml.variables[cfg.variable] = option_chosen
 			else
-				wesnoth.set_variable(cfg.variable, options[option_chosen].value)
+				wml.variables[cfg.variable] = options[option_chosen].value
 			end
 		end
 

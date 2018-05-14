@@ -38,10 +38,10 @@ wesnoth.wml_actions.random_placement = function(cfg)
 		end
 		local index = wesnoth.random(size)
 		local point = locs[index]
-		wesnoth.set_variable(variable .. ".x", point[1])
-		wesnoth.set_variable(variable .. ".y", point[2])
-		wesnoth.set_variable(variable .. ".n", i)
-		wesnoth.set_variable(variable .. ".terrain", wesnoth.get_terrain(point[1], point[2]))
+		wml.variables[variable .. ".x"] = point[1]
+		wml.variables[variable .. ".y"] = point[2]
+		wml.variables[variable .. ".n"] = i
+		wml.variables[variable .. ".terrain"] = wesnoth.get_terrain(point[1], point[2])
 		if distance < 0 then
 			-- optimisation: nothing to do for distance < 0
 		elseif distance == 0 then

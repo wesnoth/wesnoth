@@ -46,13 +46,13 @@ function wml_actions.sync_variable(cfg)
 		local name = variable.name
 
 		if variable.type == "indexed" then
-			wesnoth.set_variable(name, variable[1][2])
+			wml.variables[name] = variable[1][2]
 		elseif variable.type == "array" then
 			for index, cfg_pair in ipairs(variable) do
-				wesnoth.set_variable( string.format("%s[%d]", name, index - 1), cfg_pair[2])
+				wml.variables[string.format("%s[%d]", name, index - 1)] = cfg_pair[2]
 			end
 		else
-			wesnoth.set_variable(name, variable.value)
+			wml.variables[name] = variable.value
 		end
 	end
 end
@@ -102,14 +102,14 @@ end
 --since the gold is stored in a scalar variable, not a container (there's no key).
 function wml_actions.store_gold(cfg)
 	local team = wesnoth.get_sides(cfg)[1]
-	if team then wesnoth.set_variable(cfg.variable or "gold", team.gold) end
+	if team then wml.variables[cfg.variable or "gold"] = team.gold end
 end
 
 function wml_actions.clear_variable(cfg)
 	local names = cfg.name or
 		helper.wml_error "[clear_variable] missing required name= attribute."
 	for w in utils.split(names) do
-		wesnoth.set_variable(utils.trim(w))
+		wml.variables[utils.trim(w)] = nil
 	end
 end
 
@@ -120,7 +120,7 @@ function wml_actions.store_unit_type_ids(cfg)
 	end
 	table.sort(types)
 	types = table.concat(types, ',')
-	wesnoth.set_variable(cfg.variable or "unit_type_ids", types)
+	wml.variables[cfg.variable or "unit_type_ids"] = types
 end
 
 function wml_actions.store_unit_type(cfg)
@@ -241,9 +241,9 @@ end
 function wml_actions.store_map_dimensions(cfg)
 	local var = cfg.variable or "map_size"
 	local w, h, b = wesnoth.get_map_size()
-	wesnoth.set_variable(var .. ".width", w)
-	wesnoth.set_variable(var .. ".height", h)
-	wesnoth.set_variable(var .. ".border_size", b)
+	wml.variables[var .. ".width"] = w
+	wml.variables[var .. ".height"] = h
+	wml.variables[var .. ".border_size"] = b
 end
 
 function wml_actions.unit_worth(cfg)
@@ -257,12 +257,12 @@ function wml_actions.unit_worth(cfg)
 		local uta = wesnoth.unit_types[w]
 		if uta and uta.cost > best_adv then best_adv = uta.cost end
 	end
-	wesnoth.set_variable("cost", ut.cost)
-	wesnoth.set_variable("next_cost", best_adv)
-	wesnoth.set_variable("health", math.floor(hp * 100))
-	wesnoth.set_variable("experience", math.floor(xp * 100))
-	wesnoth.set_variable("recall_cost", ut.recall_cost)
-	wesnoth.set_variable("unit_worth", math.floor(math.max(ut.cost * hp, best_adv * xp)))
+	wml.variables["cost"] = ut.cost
+	wml.variables["next_cost"] = best_adv
+	wml.variables["health"] = math.floor(hp * 100)
+	wml.variables["experience"] = math.floor(xp * 100)
+	wml.variables["recall_cost"] = ut.recall_cost
+	wml.variables["unit_worth"] = math.floor(math.max(ut.cost * hp, best_adv * xp))
 end
 
 function wml_actions.lua(cfg)
@@ -373,7 +373,7 @@ end
 
 function wml_actions.store_turns(cfg)
 	local var = cfg.variable or "turns"
-	wesnoth.set_variable(var, wesnoth.game_config.last_turn)
+	wml.variables[var] = wesnoth.game_config.last_turn
 end
 
 function wml_actions.store_unit(cfg)
@@ -948,5 +948,5 @@ function wesnoth.wml_actions.store_unit_defense(cfg)
 	else
 		defense = wesnoth.unit_defense(unit, wesnoth.get_terrain(unit.x, unit.y))
 	end
-	wesnoth.set_variable(cfg.variable or "terrain_defense", defense)
+	wml.variables[cfg.variable or "terrain_defense"] = defense
 end
