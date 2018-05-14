@@ -286,7 +286,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		if getmetatable(v) == "WML variable proxy" then
 			v = wml.variables[v.__varname]
 		end
-		wesnoth.set_variable(k, v)
+		wml.variables[k] = v
 	end
 
 	function variable_mt.__index(t, k)

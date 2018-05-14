@@ -67,7 +67,7 @@ function wesnoth.wml_actions.heal_unit(cfg)
 
 		if not heal_amount_set then
 			heal_amount_set = true
-			wesnoth.set_variable("heal_amount", heal_amount)
+			wml.variables["heal_amount"] = heal_amount
 		end
 	end
 end
