@@ -30,7 +30,7 @@ namespace ng
 configure_engine::configure_engine(saved_game& state, const config* initial)
 	: state_(state)
 	, parameters_(state_.mp_settings())
-	, initial_(initial ? initial : &state_.get_starting_pos())
+	, initial_(initial ? initial : &state_.get_starting_point())
 {
 	set_use_map_settings(use_map_settings_default());
 }
@@ -174,7 +174,7 @@ const config& configure_engine::options_default() const
 
 void configure_engine::write_parameters()
 {
-	config& scenario = this->state_.get_starting_pos();
+	config& scenario = this->state_.get_starting_point();
 	const mp_game_settings& params = this->state_.mp_settings();
 
 	if(params.random_start_time) {
