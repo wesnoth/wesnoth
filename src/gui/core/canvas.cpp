@@ -1569,13 +1569,18 @@ void canvas::parse_cfg(const config& cfg)
 
 void canvas::clear_shapes(const bool force)
 {
-	auto conditional = [force](const shape_ptr s)->bool { return !s->immutable() && !force; };
+	if(force) {
+		shapes_.clear();
+		drawn_shapes_.clear();
+	} else {
+		auto conditional = [](const shape_ptr s)->bool { return !s->immutable(); };
 
-	auto iter = std::remove_if(shapes_.begin(), shapes_.end(), conditional);
-	shapes_.erase(iter, shapes_.end());
+		auto iter = std::remove_if(shapes_.begin(), shapes_.end(), conditional);
+		shapes_.erase(iter, shapes_.end());
 
-	iter = std::remove_if(drawn_shapes_.begin(), drawn_shapes_.end(), conditional);
-	drawn_shapes_.erase(iter, drawn_shapes_.end());
+		iter = std::remove_if(drawn_shapes_.begin(), drawn_shapes_.end(), conditional);
+		drawn_shapes_.erase(iter, drawn_shapes_.end());
+	}
 }
 
 void canvas::set_size(unsigned w, unsigned h)
