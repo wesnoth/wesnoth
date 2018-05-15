@@ -79,36 +79,6 @@ config generate_difficulty_config(const config& source)
 
 	// Populate local config with difficulty children
 	result.append_children(source, "difficulty");
-
-	// Convert legacy format to new-style config if latter not present
-	if(result.empty() && source.has_attribute("difficulties")) {
-		deprecated_message("[campaign]difficulties", DEP_LEVEL::FOR_REMOVAL, {1, 15, 0}, "Use [difficulty] instead.");
-		if(source.has_attribute("difficulty_descriptions")) {
-			deprecated_message("[campaign]difficulty_descriptions", DEP_LEVEL::FOR_REMOVAL, {1, 15, 0}, "Use [difficulty] instead.");
-		}
-
-		std::vector<std::string> difficulty_list = utils::split(source["difficulties"]);
-		std::vector<std::string> difficulty_opts = utils::split(source["difficulty_descriptions"], ';');
-
-		if(difficulty_opts.size() != difficulty_list.size()) {
-			difficulty_opts = difficulty_list;
-		}
-
-		for(std::size_t i = 0; i < difficulty_opts.size(); ++i) {
-			config temp;
-			gui2::legacy_menu_item parsed(difficulty_opts[i], "Use [difficulty] instead.");
-
-			temp["define"] = difficulty_list[i];
-			temp["image"] = parsed.icon();
-			temp["label"] = parsed.label();
-			temp["description"] = parsed.description();
-			temp["default"] = parsed.is_default();
-			temp["old_markup"] = true; // To prevent double parentheses in the dialog
-
-			result.add_child("difficulty", std::move(temp));
-		}
-	}
-
 	return result;
 }
 

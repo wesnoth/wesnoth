@@ -258,11 +258,7 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 			} else if(opt.key == "spacer") {
 				option_node.add_child("options_spacer_node", empty_map);
 
-			} else if(opt.key == "choice" || opt.key == "combo") {
-				if(opt.key == "combo") {
-					deprecated_message("combo", DEP_LEVEL::FOR_REMOVAL, {1, 15, 0}, "Use [choice] instead.");
-				}
-
+			} else if(opt.key == "choice") {
 				if(!option_cfg.has_child("item")) {
 					continue;
 				}
