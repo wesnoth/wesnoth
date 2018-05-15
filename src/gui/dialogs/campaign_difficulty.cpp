@@ -19,7 +19,6 @@
 #include "config.hpp"
 #include "formatter.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/auxiliary/old_markup.hpp"
 #include "preferences/game.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
@@ -29,7 +28,6 @@
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
-#include "deprecation.hpp"
 
 static lg::log_domain log_wml("wml");
 #define WRN_WML LOG_STREAM(warn, log_wml)
@@ -106,12 +104,10 @@ void campaign_difficulty::pre_show(window& window)
 		item["label"] = d["label"];
 		data.emplace("label", item);
 
-		const std::string descrip_text = d["old_markup"].to_bool() || d["description"].empty()
-			? d["description"]
-			: (formatter() << "(" << d["description"].str() << ")").str();
-
-		item["label"] = descrip_text;
-		data.emplace("description", item);
+		if(!d["description"].empty()) {
+			item["label"] = (formatter() << "(" << d["description"].str() << ")").str();
+			data.emplace("description", item);
+		}
 
 		grid& grid = list.add_row(data);
 
