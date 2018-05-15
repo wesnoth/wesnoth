@@ -131,7 +131,7 @@ static bool make_delete_diff(const simple_wml::node& src,
 	}
 
 	const simple_wml::node::child_list& children = src.children(type);
-	const simple_wml::node::child_list::const_iterator itor = std::find(children.begin(), children.end(), remove);
+	const auto itor = std::find(children.begin(), children.end(), remove);
 
 	if(itor == children.end()) {
 		return false;
@@ -164,7 +164,7 @@ static bool make_change_diff(const simple_wml::node& src,
 	}
 
 	const simple_wml::node::child_list& children = src.children(type);
-	const simple_wml::node::child_list::const_iterator itor = std::find(children.begin(), children.end(), item);
+	const auto itor = std::find(children.begin(), children.end(), item);
 
 	if(itor == children.end()) {
 		return false;
@@ -575,10 +575,8 @@ void server::read_version(socket_ptr socket, std::shared_ptr<simple_wml::documen
 		const simple_wml::string_span& version_str_span = (*version)["version"];
 		const std::string version_str(version_str_span.begin(), version_str_span.end());
 
-		std::vector<std::string>::const_iterator accepted_it;
-
 		// Check if it is an accepted version.
-		accepted_it = std::find_if(accepted_versions_.begin(), accepted_versions_.end(),
+		auto accepted_it = std::find_if(accepted_versions_.begin(), accepted_versions_.end(),
 			std::bind(&utils::wildcard_string_match, version_str, _1));
 
 		if(accepted_it != accepted_versions_.end()) {
@@ -659,9 +657,8 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 	}
 
 	// Check if the username is allowed.
-	for(std::vector<std::string>::const_iterator d_it = disallowed_names_.begin(); d_it != disallowed_names_.end();
-			++d_it) {
-		if(utils::wildcard_string_match(utf8::lowercase(username), utf8::lowercase(*d_it))) {
+	for(const std::string d : disallowed_names_) {
+		if(utils::wildcard_string_match(utf8::lowercase(username), utf8::lowercase(d))) {
 			async_send_error(socket, "The nickname '" + username + "' is reserved and cannot be used by players",
 				MP_NAME_RESERVED_ERROR);
 			return false;
@@ -848,7 +845,7 @@ bool server::authenticate(
 				seeds_.erase(reinterpret_cast<unsigned long>(socket.get()));
 
 				login_log login_ip = login_log(client_address(socket), 0, now);
-				std::deque<login_log>::iterator i = std::find(failed_logins_.begin(), failed_logins_.end(), login_ip);
+				auto i = std::find(failed_logins_.begin(), failed_logins_.end(), login_ip);
 
 				if(i == failed_logins_.end()) {
 					failed_logins_.push_back(login_ip);
@@ -1351,7 +1348,7 @@ void server::cleanup_game(game* game_ptr)
 
 	// Delete the game from the games_and_users_list_.
 	const simple_wml::node::child_list& games = gamelist->children("game");
-	const simple_wml::node::child_list::const_iterator g = std::find(games.begin(), games.end(), game_ptr->description());
+	const auto g = std::find(games.begin(), games.end(), game_ptr->description());
 
 	if(g != games.end()) {
 		const size_t index = std::distance(games.begin(), g);
@@ -1815,21 +1812,8 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			   << data.output();
 }
 
-typedef std::map<socket_ptr, std::deque<std::shared_ptr<simple_wml::document>> > SendQueue;
+using SendQueue = std::map<socket_ptr, std::deque<std::shared_ptr<simple_wml::document>>>;
 SendQueue send_queue;
-
-void handle_send_to_player(socket_ptr socket);
-
-void send_to_player(socket_ptr socket, simple_wml::document& doc)
-{
-	SendQueue::iterator iter = send_queue.find(socket);
-	if(iter == send_queue.end()) {
-		send_queue[socket];
-		async_send_doc(socket, doc, handle_send_to_player, handle_send_to_player);
-	} else {
-		send_queue[socket].push_back(std::shared_ptr<simple_wml::document>(doc.clone()));
-	}
-}
 
 void handle_send_to_player(socket_ptr socket)
 {
@@ -1838,6 +1822,17 @@ void handle_send_to_player(socket_ptr socket)
 	} else {
 		async_send_doc(socket, *(send_queue[socket].front()), handle_send_to_player, handle_send_to_player);
 		send_queue[socket].pop_front();
+	}
+}
+
+void send_to_player(socket_ptr socket, simple_wml::document& doc)
+{
+	auto iter = send_queue.find(socket);
+	if(iter == send_queue.end()) {
+		send_queue[socket];
+		async_send_doc(socket, doc, handle_send_to_player, handle_send_to_player);
+	} else {
+		send_queue[socket].push_back(std::shared_ptr<simple_wml::document>(doc.clone()));
 	}
 }
 
@@ -1883,7 +1878,7 @@ void server::remove_player(socket_ptr socket)
 	// Find the matching nick-ip pair in the log and update the sign off time
 	connection_log ip_name = connection_log(iter->info().name(), ip, 0);
 
-	std::deque<connection_log>::iterator i = std::find(ip_log_.begin(), ip_log_.end(), ip_name);
+	auto i = std::find(ip_log_.begin(), ip_log_.end(), ip_name);
 	if(i != ip_log_.end()) {
 		i->log_off = time(nullptr);
 	}
@@ -1946,7 +1941,7 @@ std::string server::process_command(std::string query, std::string issuer_name)
 		// The first argument might be "+<issuer>: ".
 		// In that case we use +<issuer>+ as the issuer_name.
 		// (Mostly used for communication with IRC.)
-		std::string::iterator issuer_end = std::find(query.begin(), query.end(), ':');
+		auto issuer_end = std::find(query.begin(), query.end(), ':');
 
 		std::string issuer(query.begin() + 1, issuer_end);
 		if(!issuer.empty()) {
@@ -1956,7 +1951,7 @@ std::string server::process_command(std::string query, std::string issuer_name)
 		}
 	}
 
-	const std::string::iterator i = std::find(query.begin(), query.end(), ' ');
+	const auto i = std::find(query.begin(), query.end(), ' ');
 
 	try {
 		const std::string command = utf8::lowercase(std::string(query.begin(), i));
@@ -1965,7 +1960,7 @@ std::string server::process_command(std::string query, std::string issuer_name)
 		boost::trim(parameters);
 
 		std::ostringstream out;
-		std::map<std::string, server::cmd_handler>::iterator handler_itor = cmd_handlers_.find(command);
+		auto handler_itor = cmd_handlers_.find(command);
 
 		if(handler_itor == cmd_handlers_.end()) {
 			out << "Command '" << command << "' is not recognized.\n" << help_msg;
@@ -2203,7 +2198,7 @@ void server::pm_handler(
 {
 	assert(out != nullptr);
 
-	std::string::iterator first_space = std::find(parameters.begin(), parameters.end(), ' ');
+	auto first_space = std::find(parameters.begin(), parameters.end(), ' ');
 	if(first_space == parameters.end()) {
 		*out << "You must name a receiver.";
 		return;
@@ -2337,13 +2332,13 @@ void server::clones_handler(const std::string& /*issuer_name*/,
 
 	std::set<std::string> clones;
 
-	for(player_connections::iterator it = player_connections_.begin(); it != player_connections_.end(); ++it) {
+	for(auto it = player_connections_.begin(); it != player_connections_.end(); ++it) {
 		if(clones.find(client_address(it->socket())) != clones.end()) {
 			continue;
 		}
 
 		bool found = false;
-		for(player_connections::iterator clone = std::next(it); clone != player_connections_.end(); ++clone) {
+		for(auto clone = std::next(it); clone != player_connections_.end(); ++clone) {
 			if(client_address(it->socket()) == client_address(clone->socket())) {
 				if(!found) {
 					found = true;
@@ -2392,14 +2387,14 @@ void server::ban_handler(
 	assert(out != nullptr);
 
 	bool banned = false;
-	std::string::iterator first_space = std::find(parameters.begin(), parameters.end(), ' ');
+	auto first_space = std::find(parameters.begin(), parameters.end(), ' ');
 
 	if(first_space == parameters.end()) {
 		*out << ban_manager_.get_ban_help();
 		return;
 	}
 
-	std::string::iterator second_space = std::find(first_space + 1, parameters.end(), ' ');
+	auto second_space = std::find(first_space + 1, parameters.end(), ' ');
 	const std::string target(parameters.begin(), first_space);
 	const std::string duration(first_space + 1, second_space);
 	time_t parsed_time = time(nullptr);
@@ -2471,13 +2466,13 @@ void server::kickban_handler(
 	assert(out != nullptr);
 
 	bool banned = false;
-	std::string::iterator first_space = std::find(parameters.begin(), parameters.end(), ' ');
+	auto first_space = std::find(parameters.begin(), parameters.end(), ' ');
 	if(first_space == parameters.end()) {
 		*out << ban_manager_.get_ban_help();
 		return;
 	}
 
-	std::string::iterator second_space = std::find(first_space + 1, parameters.end(), ' ');
+	auto second_space = std::find(first_space + 1, parameters.end(), ' ');
 	const std::string target(parameters.begin(), first_space);
 	const std::string duration(first_space + 1, second_space);
 	time_t parsed_time = time(nullptr);
@@ -2562,13 +2557,13 @@ void server::gban_handler(
 	assert(out != nullptr);
 
 	bool banned = false;
-	std::string::iterator first_space = std::find(parameters.begin(), parameters.end(), ' ');
+	auto first_space = std::find(parameters.begin(), parameters.end(), ' ');
 	if(first_space == parameters.end()) {
 		*out << ban_manager_.get_ban_help();
 		return;
 	}
 
-	std::string::iterator second_space = std::find(first_space + 1, parameters.end(), ' ');
+	auto second_space = std::find(first_space + 1, parameters.end(), ' ');
 	const std::string target(parameters.begin(), first_space);
 
 	std::string group = std::string(first_space + 1, second_space);
@@ -2678,7 +2673,7 @@ void server::kick_handler(const std::string& /*issuer_name*/,
 		return;
 	}
 
-	std::string::iterator i = std::find(parameters.begin(), parameters.end(), ' ');
+	auto i = std::find(parameters.begin(), parameters.end(), ' ');
 	const std::string kick_mask = std::string(parameters.begin(), i);
 	const std::string kick_message = (i == parameters.end()
 		? "You have been kicked."
@@ -2758,9 +2753,9 @@ void server::searchlog_handler(const std::string& /*issuer_name*/,
 	// Otherwise look for the last IP the nick used to connect
 	const bool match_ip = (std::count(parameters.begin(), parameters.end(), '.') >= 1);
 
-	for(std::deque<connection_log>::const_iterator i = ip_log_.begin(); i != ip_log_.end(); ++i) {
-		const std::string& username = i->nick;
-		const std::string& ip = i->ip;
+	for(const auto& i : ip_log_) {
+		const std::string& username = i.nick;
+		const std::string& ip = i.ip;
 
 		if((match_ip && utils::wildcard_string_match(ip, parameters)) ||
 		  (!match_ip && utils::wildcard_string_match(username, parameters))
@@ -2772,7 +2767,7 @@ void server::searchlog_handler(const std::string& /*issuer_name*/,
 				*out << std::endl << player_status(*player);
 			} else {
 				*out << "\n'" << username << "' @ " << ip
-					 << " last seen: " << lg::get_timestamp(i->log_off, "%H:%M:%S %d.%m.%Y");
+					 << " last seen: " << lg::get_timestamp(i.log_off, "%H:%M:%S %d.%m.%Y");
 			}
 		}
 	}
@@ -2806,13 +2801,13 @@ void server::dul_handler(const std::string& /*issuer_name*/,
 void server::delete_game(int gameid)
 {
 	// Set the availability status for all quitting users.
-	using titer = player_connections::index<game_t>::type::iterator;
 	auto range_pair = player_connections_.get<game_t>().equal_range(gameid);
 
-	// make a copy of the iterators so that we can change them while iterating over them.
-	std::vector<titer> range_vctor;
+	// Make a copy of the iterators so that we can change them while iterating over them.
+	// We can use pair::first_type since equal_range returns a pair of iterators.
+	std::vector<decltype(range_pair)::first_type> range_vctor;
 
-	for(titer it = range_pair.first; it != range_pair.second; ++it) {
+	for(auto it = range_pair.first; it != range_pair.second; ++it) {
 		range_vctor.push_back(it);
 		it->info().mark_available();
 
@@ -2827,14 +2822,14 @@ void server::delete_game(int gameid)
 	// Put the remaining users back in the lobby.
 	// This will call cleanup_game() deleter since there won't
 	// be any references to that game from player_connections_ anymore
-	for(const titer& it : range_vctor) {
+	for(const auto& it : range_vctor) {
 		player_connections_.get<game_t>().modify(it, player_record::enter_lobby);
 	}
 
 	// send users in the game a notification to leave the game since it has ended
 	static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
 
-	for(const titer& it : range_vctor) {
+	for(const auto& it : range_vctor) {
 		send_to_player(it->socket(), leave_game_doc);
 		send_to_player(it->socket(), games_and_users_list_);
 	}
