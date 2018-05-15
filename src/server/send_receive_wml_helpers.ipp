@@ -43,13 +43,13 @@ struct handle_doc
 	socket_ptr socket;
 	union DataSize
 	{
-		boost::uint32_t size;
+		uint32_t size;
 		char buf[4];
 	};
 	std::shared_ptr<DataSize> data_size;
 	std::shared_ptr<simple_wml::document> doc;
 	boost::shared_array<char> buffer;
-	handle_doc(socket_ptr socket, Handler handler, ErrorHandler error_handler, boost::uint32_t size, std::shared_ptr<simple_wml::document> doc) :
+	handle_doc(socket_ptr socket, Handler handler, ErrorHandler error_handler, uint32_t size, std::shared_ptr<simple_wml::document> doc) :
 		handler(handler), error_handler(error_handler), socket(socket), data_size(new DataSize), doc(doc)
 	{
 		data_size->size = htonl(size);
