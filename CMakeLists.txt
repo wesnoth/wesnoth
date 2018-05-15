@@ -72,7 +72,9 @@ else()
 	message(WARNING "You are cross-compiling. Skipping IEEE 754 test.")
 endif()
 
-find_package(SDL2 2.0.4 REQUIRED)
+if(ENABLE_GAME OR ENABLE_TESTS)
+	find_package(SDL2 2.0.4 REQUIRED)
+endif(ENABLE_GAME OR ENABLE_TESTS)
 find_package(Crypto 1.0 REQUIRED)
 find_package(Boost 1.50 REQUIRED COMPONENTS iostreams program_options regex system thread random)
 

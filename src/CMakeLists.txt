@@ -94,6 +94,7 @@ endif(ENABLE_HISTORY AND HISTORY_FOUND)
 set(server-external-libs
 	${common-external-libs}
 	${Boost_SYSTEM_LIBRARIES}
+	-lpthread
 )
 
 set(tools-external-libs
