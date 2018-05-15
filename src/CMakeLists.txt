@@ -96,6 +96,7 @@ set(server-external-libs
 	${Boost_RANDOM_LIBRARY}
 	${CRYPTO_LIBRARY}
 	${MYSQL_LIBS}
+	-lpthread
 )
 
 if(ENABLE_FRIBIDI AND FRIBIDI_FOUND)
