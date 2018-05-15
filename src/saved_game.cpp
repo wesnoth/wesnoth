@@ -390,21 +390,11 @@ void saved_game::expand_mp_options()
 
 		for(modevents_entry& mod : mods) {
 			if(const config& cfg = this->mp_settings().options.find_child(mod.type, "id", mod.id)) {
-				// Parse old [option] tag range syntax.
 				for(const config& option : cfg.child_range("option")) {
 					try {
 						variable_access_create(option["id"], variables).as_scalar() = option["value"];
 					} catch(const invalid_variablename_exception&) {
 						ERR_NG << "variable " << option["id"] << "cannot be set to " << option["value"] << std::endl;
-					}
-				}
-
-				// Parse new [options] id = value syntax.
-				for(const auto& option : cfg.child_or_empty("options").attribute_range()) {
-					try {
-						variable_access_create(option.first, variables).as_scalar() = option.second;
-					} catch(const invalid_variablename_exception&) {
-						ERR_NG << "variable " << option.first << "cannot be set to " << option.second << std::endl;
 					}
 				}
 			} else {
