@@ -145,7 +145,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Formula\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\game_config.cpp" />
-    <ClCompile Include="..\..\src\gettext_boost.cpp">
+    <ClCompile Include="..\..\src\gettext.cpp">
       <DisableSpecificWarnings>4459;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <ClCompile Include="..\..\src\log.cpp" />
