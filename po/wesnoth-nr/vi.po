@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-06 08:31 UTC\n"
+"POT-Creation-Date: 2018-05-16 03:33 UTC\n"
 "PO-Revision-Date: 2014-06-03 22:21+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -380,8 +380,7 @@ msgstr "Đánh bại các chỉ huy của kẻ thù"
 
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:218
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:201
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:661
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:248
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:95
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:204
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:375
@@ -770,7 +769,7 @@ msgstr ""
 #. [side]: type=Troll, id=Henie
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:71
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:85
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:141
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:156
 #: data/campaigns/Northern_Rebirth/scenarios/05b_Compelled.cfg:57
 #: data/campaigns/Northern_Rebirth/scenarios/05b_Compelled.cfg:72
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:200
@@ -814,9 +813,9 @@ msgstr "Hamel"
 #. [side]: type=Death Knight, id=Author
 #. [side]: type=Death Knight, id=Boblin
 #. [side]: type=Death Knight, id=Antrasis
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:126
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:156
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:173
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:140
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:184
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:201
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:44
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:70
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:94
@@ -832,78 +831,82 @@ msgid "Undead"
 msgstr "Ma quái"
 
 #. [side]: type=Death Knight, id=Mal Barath
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:131
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:145
 msgid "Mal Barath"
 msgstr ""
 
 #. [side]: type=Troll Warrior, id=Thung
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:145
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:160
 msgid "Thung"
 msgstr "Thung"
 
 #. [side]: type=Death Knight, id=Delzath
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:161
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:189
 msgid "Delzath"
 msgstr ""
 
 #. [side]: type=Death Knight, id=Mal Tath
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:178
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:206
 msgid "Mal Tath"
 msgstr ""
 
 #. [objective]: condition=win
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:196
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:227
 #, fuzzy
 #| msgid "Find the Dwarves"
 msgid "Find the dwarves"
 msgstr "Tìm các người lùn"
 
+#. [objective]: condition=win
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:237
+#, fuzzy
+#| msgid "Move Tallin to a Dwarvish castle keep or..."
+msgid "Move Tallin to the dwarvish area to meet with Lord Hamel"
+msgstr "Di chuyển Tallin đến một pháo đài người lùn hoặc..."
+
 #. [objectives]
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:199
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:659
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:246
 #, fuzzy
 #| msgid "Clear the Caves"
 msgid "Clear the caves"
 msgstr "Dọn dẹp hang động"
 
 #. [objective]: condition=lose
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:205
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:665
-#: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:99
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:208
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:922
-msgid "Death of Hamel"
-msgstr "Hamel chết"
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:252
+#, fuzzy
+#| msgid "Phew, they are defeated at last."
+msgid "The dwarves are defeated"
+msgstr "Phù, cuối cùng chúng cũng bị đánh bại."
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:231
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:278
 msgid "So here we are..."
 msgstr "Chúng ta ở đây..."
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:236
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:283
 msgid "(<i>Trip</i>) <i>Oof!</i>"
 msgstr "(<i>Vấp ngã</i>) <i>Ối!</i>"
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:241
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:288
 msgid "Great idea, Tallin, I probably couldn’t even fight a bat down here."
 msgstr ""
 "Ý tưởng hay đấy, Tallin, tôi thậm chí không thể đánh nổi một con dơi ở dưới "
 "này."
 
 #. [message]: type=Blood Bat
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:255
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:302
 msgid "Neep Neep!"
 msgstr "Níp níp!"
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:260
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:307
 msgid "Ahhhh!"
 msgstr "Á!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:265
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:312
 msgid ""
 "Calm down. Come what may, we’ll handle them. Come on now, let’s find those "
 "dwarves!"
@@ -912,29 +915,29 @@ msgstr ""
 "tìm các người lùn."
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:287
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:334
 msgid "<i>Prepare to die, you foul orc!</i>"
 msgstr "<i>Chuẩn bị chết đi, tên người thú bẩn thỉu!</i>"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:292
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:339
 msgid "Hold it! I am no orc, I am a human!"
 msgstr "Khoan đã! Tôi không phải là người thú, tôi là con người!"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:297
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:344
 msgid "A human! Amazing, I haven’t seen a human ever since the orcs attacked."
 msgstr ""
 "Con người! Thật kinh ngạc, ta chưa từng nhìn thấy con người kể từ khi bọn "
 "người thú tấn công."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:302
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:349
 msgid "How have you managed to survive all this time?"
 msgstr "Ông sống sót được từ đó đến nay bằng cách nào?"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:307
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:354
 msgid ""
 "By frying every orc, troll or skeleton I come across. Duh! Those monsters "
 "desecrated my life’s work, now I shall not rest till I send every last one "
@@ -947,12 +950,12 @@ msgstr ""
 "vui đấy - kiểu gì cũng vui hơn việc ngồi trên mông đít học hành cả ngày..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:312
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:359
 msgid "... Uh, sure!"
 msgstr "... Ừm, chắc chắn rồi!"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:317
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:364
 msgid ""
 "But silly me, where are my manners? Would you like to come inside for tea?"
 msgstr ""
@@ -960,7 +963,7 @@ msgstr ""
 "uống trà không?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:322
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:369
 msgid ""
 "Um... err... well actually we are presently busy fighting our way through "
 "hordes of trolls and skeletons trying to find the dwarves... if there are "
@@ -970,42 +973,42 @@ msgstr ""
 "xương khô để tìm đường đến chỗ người lùn... nếu họ còn sống sót."
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:327
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:374
 msgid "Hordes of trolls and skeletons! Where?! Let’s go burn ’em all!"
 msgstr "Các đạo quân quỷ núi và xương khô! Ở đâu?! Hãy thiêu tất cả bọn chúng!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:333
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:380
 msgid "Er... let’s go..."
 msgstr "Ơ... chúng ta đi thôi..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:338
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:385
 msgid "whisper^Is it safe to have this lunatic with us?"
 msgstr "Để kẻ mất trí này đi cùng chúng ta có an toàn không nhỉ?"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:356
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:403
 msgid "<i>Burn, you disgusting filth!</i>"
 msgstr "<i>Cháy này, đồ rác rưởi kinh tởm!</i>"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:360
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:407
 msgid "Ahhh! Fire!"
 msgstr "Á! Lửa!"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:373
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:420
 msgid "<i>Yeah! Die, scum, die!</i>"
 msgstr "<i>Ừ! Chết đi, đồ cặn bã, chết đi!</i>"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:390
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:437
 msgid "This tunnel keeps on going..."
 msgstr "Đường hầm này cứ kéo dài mãi..."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:395
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:442
 msgid ""
 "I think we should finish searching this part of Knalga first before we go "
 "deeper into the caves."
@@ -1014,17 +1017,17 @@ msgstr ""
 "hang động Knalga."
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:411
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:458
 msgid "Grim Gods of Darkness, what are those things!"
 msgstr "Trời đất, nhìn những thứ đó kìa!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:416
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:463
 msgid "Skeletons!"
 msgstr "Các bộ xương!"
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:421
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:468
 msgid ""
 "Look at the axes they bear. At one time those skeletons must have been "
 "dwarves!"
@@ -1033,7 +1036,7 @@ msgstr ""
 "những người lùn!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:426
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:473
 msgid ""
 "Stand firm, men. The dwarven defenders of Knalga rise again. Now it remains "
 "to be seen whether or not they recognize us as friends."
@@ -1042,18 +1045,18 @@ msgstr ""
 "chỉ cần xem họ có còn nhận ra chúng ta là bạn hay không thôi."
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:442
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:489
 msgid "They are attacking us!"
 msgstr "Chúng đang tấn công chúng ta!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:447
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:494
 msgid "Destroy them!"
 msgstr "Tiêu diệt chúng!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:469
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:536
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:516
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:648
 msgid ""
 "Hey look, it’s an ancient door. It seems the trolls were too stupid to find "
 "how to open it."
@@ -1062,8 +1065,8 @@ msgstr ""
 "nghếch để tìm ra cách mở nó."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:475
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:542
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:524
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:654
 msgid ""
 "Hey look, it’s an ancient door. It seems the skeletons were too stupid to "
 "find how to open it."
@@ -1072,14 +1075,14 @@ msgstr ""
 "ngốc nghếch để tìm ra cách mở nó."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:482
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:549
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:533
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:661
 msgid "Well, let’s see what’s behind it."
 msgstr "Hừm, hãy xem có gì đằng sau."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:487
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:554
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:538
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:666
 msgid ""
 "All right. (<i>Grunt... strain...</i>) It’s not moving. It seems to be stuck."
 msgstr ""
@@ -1087,29 +1090,39 @@ msgstr ""
 "bị kẹt."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:492
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:559
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:543
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:671
 msgid "Well, just kick it down then."
 msgstr "Hừm, thế thì chỉ cần đá cho nó phát."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:497
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:564
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:548
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:676
 msgid "... Right."
 msgstr "... Được rồi."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:515
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:583
 msgid "The old door crumbles away, revealing an old tunnel on the other side."
 msgstr ""
 
+#. [message]: speaker=unit
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:603
+msgid "On the end of the passage is another door. I try to open it."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:609
+msgid "Here is a similar door as the one before. I try to open it."
+msgstr ""
+
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:582
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:694
 msgid "A large section of wall crumbles away."
 msgstr ""
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:592
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:704
 msgid ""
 "Tallin, this situation is hopeless — there are endless monsters swarming "
 "from all directions!"
@@ -1118,7 +1131,7 @@ msgstr ""
 "mọi hướng!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:597
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:709
 msgid ""
 "We are in a dire situation indeed — but just see — the trolls and the "
 "skeletons are also attacking each other. We must all stay together in one "
@@ -1132,7 +1145,7 @@ msgstr ""
 "chúng ta để tấn công con mồi dễ dàng hơn."
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:602
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:714
 msgid ""
 "But still, Tallin, we will take losses, and for each one of us, there is no "
 "replacement — whereas for every monster we kill, it seems that two more come "
@@ -1144,7 +1157,7 @@ msgstr ""
 "trí của nó."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:607
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:719
 msgid ""
 "Which is why we must make haste to find the dwarves. Dwarves are hardy "
 "creatures and they know their caves backwards and forwards — so I am sure at "
@@ -1159,17 +1172,17 @@ msgstr ""
 "hay ở dưới này, kiểu gì chúng ta cũng đối mặt với cảnh diệt vong chắc chắn!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:623
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:859
 msgid "Stand where ye be, you... Och! A human!"
 msgstr "Ngươi đứng nguyên đó... Ồ! Một con người!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:628
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:864
 msgid "Greetings from the people of Dwarven Doors, friend."
 msgstr "Những người ở Cửa Động Người Lùn gửi lời chào, anh bạn."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:633
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:869
 msgid ""
 "Dwarven Doors? I thought ye surface humans had been enslaved or slain by the "
 "orcs years ago."
@@ -1178,7 +1191,7 @@ msgstr ""
 "người thú giết hoặc bắt làm nô lệ cách đây nhiều năm rồi."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:638
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:874
 msgid ""
 "Yes, we were enslaved, but we rose against Al’Tar and defeated his warband. "
 "In order to stay free, we seek help and equipment from our old allies, the "
@@ -1189,7 +1202,7 @@ msgstr ""
 "giúp đỡ và trang thiết bị từ các đồng minh cũ của chúng tôi, những người lùn."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:643
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:879
 msgid ""
 "Och, the dwarves of Knalga are themselves in desperate straits — but we "
 "havena’ forgotten the old bonds. Be welcome to our keep. Aye, and have "
@@ -1203,7 +1216,7 @@ msgstr ""
 #. [message]: speaker=unit
 #. [message]: speaker=Father Morvin
 #. [message]: speaker=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:648
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:884
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1318
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2243
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2322
@@ -1214,20 +1227,15 @@ msgstr ""
 msgid "Very well."
 msgstr "Được rồi."
 
-#. [objective]: condition=win
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:656
-msgid "Move Tallin within five hexes of Hamel to speak with him"
-msgstr ""
-
 #. [message]: speaker=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:695
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:915
 msgid "Well met, Tallin. My men have told me of your victory against Al’Tar."
 msgstr ""
 "Chào Tallin. Người của tôi đã cho tôi biết về chiến thắng của cậu trước "
 "Al’Tar."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:700
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:920
 #, fuzzy
 #| msgid "Thank you and well-met indeed, Lord Hamel."
 msgid ""
@@ -1237,7 +1245,7 @@ msgstr ""
 "Cảm ơn và quả thực tôi rất hân hạnh được gặp mặt ngài, chủ tướng Hamel."
 
 #. [message]: speaker=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:705
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:925
 #, fuzzy
 #| msgid ""
 #| "This is how we get our food, me lad. Since we are a tad close to the "
@@ -1256,17 +1264,17 @@ msgstr ""
 "chúng tôi đã sống sót tất cả những năm tháng dài vừa qua."
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:710
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:930
 msgid "Whew, we did it!"
 msgstr "Chà, chúng ta đã làm được!"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:715
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:935
 msgid "Awww! Are we done already?"
 msgstr "Á! Chúng ta đã xong rồi sao?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:737
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:957
 msgid ""
 "Good, we managed to clear the caves... for now, anyway. Now let’s get to the "
 "dwarven keep and dicker for better weapons."
@@ -1275,7 +1283,7 @@ msgstr ""
 "pháo đài người lùn và mặc cả để có những vũ khí tốt hơn."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:743
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:963
 msgid ""
 "Good, there are no more monsters lurking in these parts of the tunnels. I "
 "think I can hear the clamor of dwarves just ahead. Come on men, let’s go "
@@ -1286,7 +1294,7 @@ msgstr ""
 "mọi người, chúng ta hãy đến gặp họ."
 
 #. [message]: role=Messenger
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:770
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:994
 msgid ""
 "Tallin, we have just received the news that the dwarvish Lord Hamel has just "
 "been slain. We are too late!"
@@ -1295,38 +1303,38 @@ msgstr ""
 "giết. Chúng ta đến quá muộn!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:775
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:999
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:62
 msgid "No! Without the dwarvish weapons we have no hope!"
 msgstr "Không! Không có vũ khí của người lùn, chúng ta không còn hy vọng!"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:810
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:1034
 msgid "Hey, what’s going on in here?"
 msgstr "Ê, chuyện gì đang diễn ra ở đây thế?"
 
 #. [message]: role=Admirer
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:864
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:1090
 msgid "We are killing lots of trolls and skeletons."
 msgstr "Chúng tôi đang giết nhiều quỷ núi và xương khô."
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:869
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:1095
 msgid "Really! Did you save any for me?"
 msgstr "Thật sao! Anh có để dành con nào cho tôi không?"
 
 #. [message]: role=Admirer
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:874
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:1100
 msgid "Uh, not really..."
 msgstr "Ồ, thực sự là không..."
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:879
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:1105
 msgid "Awww!"
 msgstr "Ặc!"
 
 #. [message]: role=Admirer
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:884
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:1110
 msgid ""
 "But hey, if you want to join us, I am sure we will be fighting a lot more "
 "orcs, trolls and skeletons in the near future."
@@ -1335,17 +1343,17 @@ msgstr ""
 "đấu với nhiều người thú, quỷ núi và xương khô trong tương lai gần."
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:889
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:1115
 msgid "Really! Oh yeah, I am in!"
 msgstr "Thật sao! Ồ, được, thế thì tôi tham gia!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:894
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:1120
 msgid "... That was rather odd. Who is this guy?"
 msgstr "... Thật kỳ cục. Gã đó là ai thế?"
 
 #. [message]: speaker=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:899
+#: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:1125
 msgid ""
 "Oh, dinna’ mind him, that’d be Camerin. He used to be yer usual scholarly "
 "mage, and he moved awa’ up here to be alone and study. But then when the "
@@ -1676,6 +1684,13 @@ msgstr "Dọn dẹp hầm mỏ"
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:93
 msgid "Eliminate the wolf riders"
 msgstr ""
+
+#. [objective]: condition=lose
+#: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:99
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:208
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:922
+msgid "Death of Hamel"
+msgstr "Hamel chết"
 
 #. [message]: speaker=Pruol
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:117
@@ -10995,9 +11010,6 @@ msgstr "Arthian"
 
 #~ msgid "(<i>Smash</i>)"
 #~ msgstr "(<i>Đập</i>)"
-
-#~ msgid "Move Tallin to a Dwarvish castle keep or..."
-#~ msgstr "Di chuyển Tallin đến một pháo đài người lùn hoặc..."
 
 #~ msgid "Clear the caves (Bonus)"
 #~ msgstr "Dọn dẹp hang động (Thưởng)"

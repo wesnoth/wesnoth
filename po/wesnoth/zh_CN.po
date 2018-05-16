@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-06 05:31-0300\n"
+"POT-Creation-Date: 2018-05-15 23:33-0400\n"
 "PO-Revision-Date: 2018-05-06 20:41+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -318,7 +318,7 @@ msgstr "手柄：用于加速的摇杆的死区大小"
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:358
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1086
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1129
 msgid "poisoned"
 msgstr "中毒"
 
@@ -3899,14 +3899,14 @@ msgstr "不可通过"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:447
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:451
 msgid "Fog"
 msgstr "迷雾"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:450
-#: src/game_initialization/lobby_data.cpp:453
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:454
+#: src/game_initialization/lobby_data.cpp:457
 msgid "Shroud"
 msgstr "战场黑幕"
 
@@ -4373,31 +4373,31 @@ msgstr "无效废弃级别（应为1-4）"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1086
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1129
 msgid "female^poisoned"
 msgstr "中毒"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1093
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1136
 msgid "female^slowed"
 msgstr "减速"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1093
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1136
 msgid "slowed"
 msgstr "减速"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1099
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1142
 msgid "female^petrified"
 msgstr "石化"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1099
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1142
 msgid "petrified"
 msgstr "石化"
 
@@ -4457,12 +4457,12 @@ msgid "Cancel"
 msgstr "取消"
 
 #. [language]
-#: data/scenario-test.cfg:4065
+#: data/scenario-test.cfg:4079
 msgid "very long"
 msgstr "非常长"
 
 #. [language]
-#: data/scenario-test.cfg:4066
+#: data/scenario-test.cfg:4080
 msgid "electrical"
 msgstr "电子"
 
@@ -5430,7 +5430,7 @@ msgstr ""
 "能得到村庄带来的任何防御加成，虽然说它们仍然会得到治疗。"
 
 #: src/actions/attack.cpp:386 src/actions/attack.cpp:656
-#: src/actions/attack.cpp:1369
+#: src/actions/attack.cpp:1424
 msgid "An invalid attacker weapon got selected."
 msgstr "选中了无效的进攻武器。"
 
@@ -6206,36 +6206,36 @@ msgstr "信息："
 msgid "$login|’s game"
 msgstr "$login|的游戏"
 
-#: src/game_initialization/connect_engine.cpp:103
+#: src/game_initialization/connect_engine.cpp:104
 msgid "Team"
 msgstr "团队"
 
-#: src/game_initialization/connect_engine.cpp:995
+#: src/game_initialization/connect_engine.cpp:993
 msgid "Anonymous player"
 msgstr "匿名玩家"
 
-#: src/game_initialization/connect_engine.cpp:1000
-#: src/game_initialization/connect_engine.cpp:1294
+#: src/game_initialization/connect_engine.cpp:998
+#: src/game_initialization/connect_engine.cpp:1292
 msgid "Computer Player"
 msgstr "电脑玩家"
 
-#: src/game_initialization/connect_engine.cpp:1042
+#: src/game_initialization/connect_engine.cpp:1040
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1288
 msgid "Network Player"
 msgstr "网络玩家"
 
-#: src/game_initialization/connect_engine.cpp:1293
+#: src/game_initialization/connect_engine.cpp:1291
 msgid "Local Player"
 msgstr "本地玩家"
 
-#: src/game_initialization/connect_engine.cpp:1295
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "Empty"
 msgstr "空置"
 
-#: src/game_initialization/connect_engine.cpp:1298
+#: src/game_initialization/connect_engine.cpp:1296
 msgid "Reserved"
 msgstr "保留"
 
@@ -6313,56 +6313,52 @@ msgstr "缺少附加组件：$id"
 msgid "Unknown era"
 msgstr "未知时代"
 
-#: src/game_initialization/lobby_data.cpp:290
-msgid "(missing)"
-msgstr "（丢失）"
-
-#: src/game_initialization/lobby_data.cpp:336
-#: src/game_initialization/lobby_data.cpp:366
+#: src/game_initialization/lobby_data.cpp:340
+#: src/game_initialization/lobby_data.cpp:370
 msgid "S"
 msgstr "S"
 
-#: src/game_initialization/lobby_data.cpp:355
+#: src/game_initialization/lobby_data.cpp:359
 msgid "Remote scenario"
 msgstr "远程场景"
 
-#: src/game_initialization/lobby_data.cpp:374
-#: src/game_initialization/lobby_data.cpp:397
+#: src/game_initialization/lobby_data.cpp:378
+#: src/game_initialization/lobby_data.cpp:401
 msgid "C"
 msgstr "C"
 
-#: src/game_initialization/lobby_data.cpp:402
+#: src/game_initialization/lobby_data.cpp:406
 msgid "Unknown scenario"
 msgstr "未知场景"
 
-#: src/game_initialization/lobby_data.cpp:412
+#: src/game_initialization/lobby_data.cpp:416
 msgid "Reloaded game"
 msgstr "重新载入了游戏"
 
-#: src/game_initialization/lobby_data.cpp:427
+#: src/game_initialization/lobby_data.cpp:431
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "空闲槽位："
 msgstr[1] "空闲槽位："
 
-#: src/game_initialization/lobby_data.cpp:429
+#: src/game_initialization/lobby_data.cpp:433
 msgid "mp_game_available_slots^Full"
 msgstr "已满"
 
-#: src/game_initialization/lobby_data.cpp:440
-#: src/game_initialization/lobby_data.cpp:442 src/savegame.cpp:631
+#: src/game_initialization/lobby_data.cpp:444
+#: src/game_initialization/lobby_data.cpp:446 src/savegame.cpp:631
 msgid "Turn"
 msgstr "回合"
 
-#: src/game_initialization/lobby_data.cpp:455
+#: src/game_initialization/lobby_data.cpp:459
 msgid "vision^none"
 msgstr "无"
 
-#: src/game_initialization/lobby_data.cpp:464
+#: src/game_initialization/lobby_data.cpp:468
 msgid "time limit^none"
 msgstr "无"
 
-#: src/game_initialization/lobby_data.cpp:497
+#: src/game_initialization/lobby_data.cpp:501
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
@@ -6370,7 +6366,7 @@ msgstr ""
 "主机的<b>$addon|</b>版本不兼容。主机拥有的版本是<b>$host_ver|</b>而你拥有的版"
 "本是<b>$local_ver|</b>。"
 
-#: src/game_initialization/lobby_data.cpp:511
+#: src/game_initialization/lobby_data.cpp:515
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -8367,44 +8363,48 @@ msgstr "中立"
 msgid "female^liminal"
 msgstr "边缘"
 
-#: src/units/unit.cpp:1783
+#: src/units/unit.cpp:643
+msgid "Unit with negative HP found"
+msgstr ""
+
+#: src/units/unit.cpp:1797
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|：$effect_description"
 
-#: src/units/unit.cpp:1789
+#: src/units/unit.cpp:1803
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span>生命"
 
-#: src/units/unit.cpp:1799
+#: src/units/unit.cpp:1813
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span>行动数"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span>行动数"
 
-#: src/units/unit.cpp:1805
+#: src/units/unit.cpp:1819
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span>视野"
 
-#: src/units/unit.cpp:1809
+#: src/units/unit.cpp:1823
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span>干扰"
 
-#: src/units/unit.cpp:1814
+#: src/units/unit.cpp:1828
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span>升级所需经验"
 
-#: src/units/unit.cpp:1818
+#: src/units/unit.cpp:1832
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span>每回合攻击数"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span>每回合攻击数"
 
-#: src/units/unit.cpp:1825
+#: src/units/unit.cpp:1839
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span>召回费用"
 
-#: src/units/unit.cpp:2230
+#: src/units/unit.cpp:2244
 msgid "$effect_description per level"
 msgstr "每一等级$effect_description"
 
@@ -8432,22 +8432,25 @@ msgstr "崩后$year|年"
 msgid "Disconnected from server."
 msgstr "已与服务器断开链接。"
 
-#: src/whiteboard/manager.cpp:1115
+#: src/whiteboard/manager.cpp:1117
 msgid "SHOW ALL allies’ plans"
 msgstr "显示全部友方计划"
 
-#: src/whiteboard/manager.cpp:1116
+#: src/whiteboard/manager.cpp:1118
 msgid "HIDE ALL allies’ plans"
 msgstr "隐藏全部友方计划"
 
-#: src/whiteboard/manager.cpp:1130
+#: src/whiteboard/manager.cpp:1132
 msgid "Show plans for $player"
 msgstr "显示$player的计划"
 
-#: src/whiteboard/manager.cpp:1132
+#: src/whiteboard/manager.cpp:1134
 msgid "Hide plans for $player"
 msgstr "隐藏$player的计划"
 
-#: src/whiteboard/manager.cpp:1135
+#: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "白板选项"
+
+#~ msgid "(missing)"
+#~ msgstr "（丢失）"

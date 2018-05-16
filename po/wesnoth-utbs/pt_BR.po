@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-09 06:49 UTC\n"
+"POT-Creation-Date: 2018-05-16 03:33 UTC\n"
 "PO-Revision-Date: 2007-12-06 00:59+0900\n"
 "Last-Translator: Claus Aranha <caranha@gmail.com>\n"
 "Language-Team: pt_BR\n"
@@ -1181,7 +1181,9 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg, line: 766
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:804
-msgid "These fields seem strangely vacant. Where are the horses?"
+#, fuzzy
+#| msgid "These fields seem strangely vacant. Where are the horses?"
+msgid "These fields seem strangely vacant. Where are the dustboks?"
 msgstr "Estes campos me parecem estranhamente vazios. Onde estão os cavalos?"
 
 #
@@ -1214,7 +1216,9 @@ msgstr "Já é seguro o suficiente pra sair? Eu estava tão assustado."
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg, line: 815
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:856
-msgid "Where are all the other horses?"
+#, fuzzy
+#| msgid "Where are all the other horses?"
+msgid "Where are all the other dustboks?"
 msgstr "Onde estão todos os outros cavalos?"
 
 #
@@ -1222,11 +1226,17 @@ msgstr "Onde estão todos os outros cavalos?"
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg, line: 819
 #. [message]: speaker=Naru
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:861
+#, fuzzy
+#| msgid ""
+#| "A hunting party left just yesterday, so unless the rocks fell all over "
+#| "the land, many of the horses have probably survived. The few that "
+#| "remained here were scared by the falling rocks and fled into the night. "
+#| "It took all my skill to calm Yasi and keep him from running."
 msgid ""
 "A hunting party left just yesterday, so unless the rocks fell all over the "
-"land, many of the horses have probably survived. The few that remained here "
-"were scared by the falling rocks and fled into the night. It took all my "
-"skill to calm Yasi and keep him from running."
+"land, many of the dustboks have probably survived. The few that remained "
+"here were scared by the falling rocks and fled into the night. It took all "
+"my skill to calm Yasi and keep him from running."
 msgstr ""
 "Um grupo de caça saiu ontem, então a não ser que as pedras tenham chovido "
 "pelo mundo inteiro, os cavalos devem ter sobrevivido. Os poucos que ficaram "
@@ -1243,7 +1253,7 @@ msgid ""
 "We’ll need your help in checking to see if the outer settlements survived. "
 "Who knows what kinds of damage they suffered in the night? And perhaps some "
 "of the people out in the desert have been able to round up some of the loose "
-"horses."
+"dusties."
 msgstr ""
 "Nós precisaremos de sua ajuda para verificar se os acampamentos externos "
 "estão bem. Quem sabe o tipo de dano que eles sofreram na noite? E talvez "
@@ -22141,6 +22151,12 @@ msgstr "Druida do Deserto"
 msgid "sand"
 msgstr "Melusand"
 
+#. [unit_type]: id=Quenoth Dustbok, race=monster, description=
+#. Made-up animal name derived from 'dust' (sand) and 'bok' as in real-world steenbok or springbok antelope
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Dustbok.cfg:6
+msgid "Dustbok"
+msgstr ""
+
 #
 # File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Fighter.cfg, line: 5
 # File: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg, line: 509
@@ -22934,8 +22950,18 @@ msgstr ""
 msgid "teaching"
 msgstr ""
 
+#
+# File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Ranger.cfg, line: 156
+# File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Ranger.cfg, line: 156
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:76
+#, fuzzy
+#| msgid "female^Desert Ranger"
+msgid "female^teaching"
+msgstr "Patrulheira do Deserto"
+
+#. [dummy]: id=teaching
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:77
 msgid ""
 "At the start of every turn, this unit redistributes its experience points to "
 "all the units of the same side adjacent to it. If no suitable unit is "
@@ -22943,23 +22969,30 @@ msgid ""
 msgstr ""
 
 #. [attacks]: id=shock
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:85
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:86
 msgid "shock"
 msgstr ""
 
 #. [attacks]: id=shock
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:87
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:88
 msgid ""
 "When this attack is used on offense, the opponent will retaliate with one "
 "less strike than normally, to a minimum of one strike."
 msgstr ""
 
 #. [dummy]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:101
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:100
 msgid "formation"
 msgstr ""
+
+#
+# File: data/campaigns/Under_the_Burning_Suns/units/elves/Divine_Incarnation.cfg, line: 4
+# File: data/campaigns/Under_the_Burning_Suns/units/elves/Divine_Incarnation.cfg, line: 4
+#. [dummy]: id=formation
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:101
+#, fuzzy
+msgid "female^formation"
+msgstr "Encarnação Divina"
 
 #. [dummy]: id=formation
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:102
@@ -22974,75 +23007,102 @@ msgstr ""
 msgid "disengage"
 msgstr ""
 
+#
+# File: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg, line: 37
+# File: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg, line: 37
 #. [dummy]: id=disengage
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:110
+#, fuzzy
+msgid "female^disengage"
+msgstr "Caçadora do Deserto"
+
+#. [dummy]: id=disengage
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:111
 msgid ""
 "If this unit doesn’t move before attacking, it will retain its movement "
 "points after the attack."
 msgstr ""
 
 #. [dummy]: id=daze
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:117
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:118
 msgid "daze"
 msgstr ""
 
 #. [dummy]: id=daze
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:118
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:119
 msgid ""
 "When hit with this attack, an enemy suffers a 10% penalty both to their "
 "defense and chance to hit for one turn, except for magical attacks."
 msgstr ""
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:125
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:126
 msgid "distract"
 msgstr ""
 
+#
+# File: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg, line: 37
+# File: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg, line: 37
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:126
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:127
+#, fuzzy
+msgid "female^distract"
+msgstr "Caçadora do Deserto"
+
+#. [skirmisher]: id=distract
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:128
 msgid ""
 "This unit negates enemy Zones of Control around itself for allied units (but "
 "not for itself)."
 msgstr ""
 
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:137
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:139
 msgid "support"
 msgstr ""
 
+#
+# File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Star.cfg, line: 4
+# File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Star.cfg, line: 4
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:138
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:140
+#, fuzzy
+msgid "female^support"
+msgstr "Caçadora do Deserto"
+
+#. [dummy]: id=support
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:141
 msgid "The upkeep costs of adjacent friendly units are lowered by 1."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:143
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:146
 msgid ""
 " This unit’s melee attack can overwhelm the defenses of enemies, preventing "
 "them from retaliating as effectively."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:146
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:149
 msgid " Groups of units of this type are able to shield each other in combat."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:149
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:152
 msgid " This unit can move either before or after attacking."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:152
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:155
 msgid ""
 " This unit can daze its enemies, reducing their accuracy and defense until "
 "they end a turn."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:155
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:158
 msgid ""
 "This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
 msgstr ""
 
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:362
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:365
 msgid "dazed"
 msgstr ""
 
@@ -23050,7 +23110,7 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg, line: 37
 # File: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg, line: 37
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:363
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:366
 #, fuzzy
 msgid "female^dazed"
 msgstr "Caçadora do Deserto"
@@ -24987,12 +25047,6 @@ msgstr "Fortaleza Fantasma"
 #~ "rastejar silenciosamente até seu inimigo."
 
 #
-# File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Ranger.cfg, line: 156
-# File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Ranger.cfg, line: 156
-#~ msgid "female^Desert Ranger"
-#~ msgstr "Patrulheira do Deserto"
-
-#
 # File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Rider.cfg, line: 4
 # File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Rider.cfg, line: 4
 #~ msgid "Desert Rider"
@@ -25124,13 +25178,6 @@ msgstr "Fortaleza Fantasma"
 #~ "danos de ataque do oponente. Sílfides são capazes de medicar unidades ao "
 #~ "seu redor e curá-las de um envenenamento. Sílfides podem voar através de "
 #~ "qualquer terreno, exceto águas profundas."
-
-#
-# File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Star.cfg, line: 4
-# File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Star.cfg, line: 4
-#, fuzzy
-#~ msgid "female^Desert Star"
-#~ msgstr "Caçadora do Deserto"
 
 #
 # File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Star.cfg, line: 32

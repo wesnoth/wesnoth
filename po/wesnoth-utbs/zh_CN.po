@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-09 06:49 UTC\n"
+"POT-Creation-Date: 2018-05-16 03:33 UTC\n"
 "PO-Revision-Date: 2018-05-06 22:02+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -666,7 +666,9 @@ msgstr "保护圣女， 我们把这个大怪物打回去！"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:804
-msgid "These fields seem strangely vacant. Where are the horses?"
+#, fuzzy
+#| msgid "These fields seem strangely vacant. Where are the horses?"
+msgid "These fields seem strangely vacant. Where are the dustboks?"
 msgstr "牧场空荡荡的。马都去哪儿啦？"
 
 #. [message]: speaker=Nym
@@ -686,27 +688,41 @@ msgstr "外面安全了吗？ 我刚才很害怕。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:856
-msgid "Where are all the other horses?"
+#, fuzzy
+#| msgid "Where are all the other horses?"
+msgid "Where are all the other dustboks?"
 msgstr "其他的马呢？"
 
 #. [message]: speaker=Naru
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:861
+#, fuzzy
+#| msgid ""
+#| "A hunting party left just yesterday, so unless the rocks fell all over "
+#| "the land, many of the horses have probably survived. The few that "
+#| "remained here were scared by the falling rocks and fled into the night. "
+#| "It took all my skill to calm Yasi and keep him from running."
 msgid ""
 "A hunting party left just yesterday, so unless the rocks fell all over the "
-"land, many of the horses have probably survived. The few that remained here "
-"were scared by the falling rocks and fled into the night. It took all my "
-"skill to calm Yasi and keep him from running."
+"land, many of the dustboks have probably survived. The few that remained "
+"here were scared by the falling rocks and fled into the night. It took all "
+"my skill to calm Yasi and keep him from running."
 msgstr ""
 "昨天一个狩猎团刚走，除非陨石落满大地，否则大多数马应该都没事，少数圈在这里的"
 "马昨晚受陨石惊吓跑散了。我使尽解数才安抚了亚希。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:866
+#, fuzzy
+#| msgid ""
+#| "We’ll need your help in checking to see if the outer settlements "
+#| "survived. Who knows what kinds of damage they suffered in the night? And "
+#| "perhaps some of the people out in the desert have been able to round up "
+#| "some of the loose horses."
 msgid ""
 "We’ll need your help in checking to see if the outer settlements survived. "
 "Who knows what kinds of damage they suffered in the night? And perhaps some "
 "of the people out in the desert have been able to round up some of the loose "
-"horses."
+"dusties."
 msgstr ""
 "我们需要你们帮忙查探外面的定居点情况。不知道他们在这个夜晚损失如何呢？也许外"
 "出的人们能寻回一些走失的马。"
@@ -13873,6 +13889,12 @@ msgstr "奎诺德鲁伊"
 msgid "sand"
 msgstr "沙"
 
+#. [unit_type]: id=Quenoth Dustbok, race=monster, description=
+#. Made-up animal name derived from 'dust' (sand) and 'bok' as in real-world steenbok or springbok antelope
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Dustbok.cfg:6
+msgid "Dustbok"
+msgstr ""
+
 #. [unit_type]: id=Quenoth Fighter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:5
 msgid "Quenoth Fighter"
@@ -14430,6 +14452,13 @@ msgstr "传授"
 
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:76
+#, fuzzy
+#| msgid "teaching"
+msgid "female^teaching"
+msgstr "传授"
+
+#. [dummy]: id=teaching
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:77
 msgid ""
 "At the start of every turn, this unit redistributes its experience points to "
 "all the units of the same side adjacent to it. If no suitable unit is "
@@ -14439,14 +14468,12 @@ msgstr ""
 "身边没有符合条件的单位，那么就只是它的经验值会降为零而已。"
 
 #. [attacks]: id=shock
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:85
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:86
 msgid "shock"
 msgstr "震慑"
 
 #. [attacks]: id=shock
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:87
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:88
 msgid ""
 "When this attack is used on offense, the opponent will retaliate with one "
 "less strike than normally, to a minimum of one strike."
@@ -14455,8 +14482,15 @@ msgstr ""
 "一次。"
 
 #. [dummy]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:101
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:100
 msgid "formation"
+msgstr "布阵"
+
+#. [dummy]: id=formation
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:101
+#, fuzzy
+#| msgid "formation"
+msgid "female^formation"
 msgstr "布阵"
 
 #. [dummy]: id=formation
@@ -14476,6 +14510,13 @@ msgstr "脱离"
 
 #. [dummy]: id=disengage
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:110
+#, fuzzy
+#| msgid "disengage"
+msgid "female^disengage"
+msgstr "脱离"
+
+#. [dummy]: id=disengage
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:111
 msgid ""
 "If this unit doesn’t move before attacking, it will retain its movement "
 "points after the attack."
@@ -14483,12 +14524,12 @@ msgstr ""
 "如果此单位在进攻之前没有移动，那么在进攻之后它仍然会保有自己的移动点数。"
 
 #. [dummy]: id=daze
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:117
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:118
 msgid "daze"
 msgstr "眩击"
 
 #. [dummy]: id=daze
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:118
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:119
 msgid ""
 "When hit with this attack, an enemy suffers a 10% penalty both to their "
 "defense and chance to hit for one turn, except for magical attacks."
@@ -14497,48 +14538,62 @@ msgstr ""
 "影响。"
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:125
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:126
 msgid "distract"
 msgstr "分神"
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:126
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:127
+#, fuzzy
+#| msgid "distract"
+msgid "female^distract"
+msgstr "分神"
+
+#. [skirmisher]: id=distract
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:128
 msgid ""
 "This unit negates enemy Zones of Control around itself for allied units (but "
 "not for itself)."
 msgstr "此单位将使得其身周的敌方控制区域对友好单位失效（但对其自身仍然有效）。"
 
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:137
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:139
 msgid "support"
 msgstr "支援"
 
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:138
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:140
+#, fuzzy
+#| msgid "support"
+msgid "female^support"
+msgstr "支援"
+
+#. [dummy]: id=support
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:141
 msgid "The upkeep costs of adjacent friendly units are lowered by 1."
 msgstr "身周的友好单位的维护费用降低1。"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:143
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:146
 msgid ""
 " This unit’s melee attack can overwhelm the defenses of enemies, preventing "
 "them from retaliating as effectively."
 msgstr " 此单位的近战攻击可以摧垮敌方的防御，使得他们无法以最佳状态反击。"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:146
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:149
 msgid " Groups of units of this type are able to shield each other in combat."
 msgstr " 此种类型的单位成群时，可以在战斗中互相保护。"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:149
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:152
 msgid " This unit can move either before or after attacking."
 msgstr " 此单位可以在进攻前移动，也可以在进攻后移动（但只能选其一）。"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:152
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:155
 msgid ""
 " This unit can daze its enemies, reducing their accuracy and defense until "
 "they end a turn."
 msgstr " 此单位可以让敌人眩目，降低他们的命中和防御，直到他们的回合结束。"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:155
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:158
 msgid ""
 "This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
@@ -14547,12 +14602,12 @@ msgstr ""
 "碍地穿行。"
 
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:362
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:365
 msgid "dazed"
 msgstr "眩晕"
 
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:363
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:366
 msgid "female^dazed"
 msgstr "眩晕"
 

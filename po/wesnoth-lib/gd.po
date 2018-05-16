@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-09 03:49-0300\n"
+"POT-Creation-Date: 2018-05-15 23:33-0400\n"
 "PO-Revision-Date: 2018-05-07 10:57+0100\n"
 "Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig\n"
@@ -2491,7 +2491,7 @@ msgstr "Seòrsaich a-rèir tuairmse air òrdugh thachartasan nan sgeulachdan"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:276
-#: src/gui/dialogs/multiplayer/lobby.cpp:462
+#: src/gui/dialogs/multiplayer/lobby.cpp:466
 msgid "Modifications"
 msgstr "Atharraichean"
 
@@ -2777,7 +2777,7 @@ msgstr "Tuairisgeul:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:478
+#: src/gui/dialogs/multiplayer/lobby.cpp:488
 msgid "Experience modifier:"
 msgstr "Atharraichear eòlais:"
 
@@ -2839,7 +2839,7 @@ msgstr "Òr:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#: src/gui/dialogs/multiplayer/lobby.cpp:479
+#: src/gui/dialogs/multiplayer/lobby.cpp:489
 msgid "Gold per village:"
 msgstr "Òr gach baile:"
 
@@ -2910,7 +2910,7 @@ msgstr "Tagh gineadair mapa:"
 #. [button]: id=settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
-#: src/gui/dialogs/multiplayer/lobby.cpp:477
+#: src/gui/dialogs/multiplayer/lobby.cpp:487
 msgid "Settings"
 msgstr "Roghainnean"
 
@@ -4176,7 +4176,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:177
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:480
+#: src/gui/dialogs/multiplayer/lobby.cpp:490
 msgid "Map size:"
 msgstr "Meud a’ mhapa:"
 
@@ -4728,14 +4728,18 @@ msgid "Set the scaling factor of fonts"
 msgstr "Suidhich factar sgàilidh nan cruthan-clò"
 
 #. [toggle_button]: id=fps_limiter
-#: data/gui/window/preferences/03_display.cfg:273
-msgid "FPS limiter"
-msgstr "Cuingeachadh FPS"
+#: data/gui/window/preferences/03_display.cfg:275
+msgid "Limit FPS"
+msgstr ""
 
 #. [toggle_button]: id=fps_limiter
-#: data/gui/window/preferences/03_display.cfg:274
+#: data/gui/window/preferences/03_display.cfg:276
+#, fuzzy
+#| msgid ""
+#| "Disabling this increases CPU usage to 100 % but may slightly improve "
+#| "performance at high resolutions"
 msgid ""
-"Disabling this increases CPU usage to 100 % but may slightly improve "
+"Disabling this increases CPU usage to 100% but may slightly improve "
 "performance at high resolutions"
 msgstr ""
 "Ma chuireas tu seo à comas, thèid 100% dhen CPU a cleachdadh ach dh’fhaoidte "
@@ -4743,12 +4747,12 @@ msgstr ""
 "bhreacaidh àrd agad"
 
 #. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:289
+#: data/gui/window/preferences/03_display.cfg:291
 msgid "Theme"
 msgstr "Ùrlar"
 
 #. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:290
+#: data/gui/window/preferences/03_display.cfg:292
 msgid "Change the in-game theme"
 msgstr "Atharraich ùrlar a’ gheama"
 
@@ -5374,31 +5378,31 @@ msgstr "Mearachd"
 msgid "Details:"
 msgstr "Fiosrachadh: "
 
-#: src/build_info.cpp:259
+#: src/build_info.cpp:260
 msgid "feature^Experimental OpenMP support"
 msgstr "Taic dheuchainneach ri OpenMP"
 
-#: src/build_info.cpp:264
+#: src/build_info.cpp:265
 msgid "feature^JPG screenshots"
 msgstr "Glacaidhean-sgrìn JPG"
 
-#: src/build_info.cpp:271
+#: src/build_info.cpp:272
 msgid "feature^Lua console completion"
 msgstr "Coileanadh consoil Lua"
 
-#: src/build_info.cpp:276
+#: src/build_info.cpp:277
 msgid "feature^Legacy bidirectional rendering"
 msgstr "Reandaradh dà-chomhaireach dìleabach"
 
-#: src/build_info.cpp:283
+#: src/build_info.cpp:284
 msgid "feature^D-Bus notifications back end"
 msgstr "Backend nam brathan D-Bus"
 
-#: src/build_info.cpp:292
+#: src/build_info.cpp:293
 msgid "feature^Win32 notifications back end"
 msgstr "Backend nam brathan Win32"
 
-#: src/build_info.cpp:298
+#: src/build_info.cpp:299
 msgid "feature^Cocoa notifications back end"
 msgstr "Backend nam brathan Cocoa"
 
@@ -5814,7 +5818,7 @@ msgid "Attacker vulnerability vs"
 msgstr "Ionnsaighear so-leònta a thaobh"
 
 #: src/gui/dialogs/campaign_selection.cpp:274
-#: src/gui/dialogs/multiplayer/lobby.cpp:467
+#: src/gui/dialogs/multiplayer/lobby.cpp:471
 msgid "active_modifications^None"
 msgstr "Chan eil gin"
 
@@ -6002,12 +6006,12 @@ msgid "Unknown"
 msgstr "Chan eil fhios"
 
 #: src/gui/dialogs/game_stats.cpp:200 src/gui/dialogs/game_stats.cpp:203
-#: src/gui/dialogs/multiplayer/lobby.cpp:475
+#: src/gui/dialogs/multiplayer/lobby.cpp:485
 msgid "no"
 msgstr "dheth"
 
 #: src/gui/dialogs/game_stats.cpp:200 src/gui/dialogs/game_stats.cpp:203
-#: src/gui/dialogs/multiplayer/lobby.cpp:475
+#: src/gui/dialogs/multiplayer/lobby.cpp:485
 msgid "yes"
 msgstr "air"
 
@@ -6176,41 +6180,39 @@ msgstr "Geamannan: a’ sealltainn $num_shown a-mach à $num_total"
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name (Linn: $era_name)"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:455
+#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#, fuzzy
+#| msgid "addon_state^Not installed"
+msgid "era_or_mod^not installed"
+msgstr "Gun stàladh"
+
+#: src/gui/dialogs/multiplayer/lobby.cpp:459
 #, fuzzy
 #| msgid "Era:"
 msgid "Era"
 msgstr "Linn:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:459
-msgid "era^missing"
-msgstr "a dhìth"
-
-#: src/gui/dialogs/multiplayer/lobby.cpp:481
-msgid "Registered users only:"
-msgstr "Cleachdaichean clàraichte a-mhàin:"
-
-#: src/gui/dialogs/multiplayer/lobby.cpp:482
+#: src/gui/dialogs/multiplayer/lobby.cpp:491
 msgid "Reloaded:"
 msgstr "Air ath-luchdadh:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:483
+#: src/gui/dialogs/multiplayer/lobby.cpp:492
 msgid "Shared vision:"
 msgstr "Sealladh co-roinnte:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:484
+#: src/gui/dialogs/multiplayer/lobby.cpp:493
 msgid "Shuffle sides:"
 msgstr "Measgaich na taobhan:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:485
+#: src/gui/dialogs/multiplayer/lobby.cpp:494
 msgid "Time limit:"
 msgstr "Cuingeachadh ùine:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:486
+#: src/gui/dialogs/multiplayer/lobby.cpp:495
 msgid "Use map settings:"
 msgstr "Cleachd roghainnean a’ mhapa:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:494
+#: src/gui/dialogs/multiplayer/lobby.cpp:503
 #, fuzzy
 #| msgid ""
 #| "One or more items need to be installed\n"
@@ -6222,15 +6224,15 @@ msgstr ""
 "Feumaidh tu rud no dhà a stàladh\n"
 "mus gabh thu pàirt sa gheama seo."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:519
+#: src/gui/dialogs/multiplayer/lobby.cpp:528
 msgid "Observers allowed"
 msgstr "Amhairc cheadaichte"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:522
+#: src/gui/dialogs/multiplayer/lobby.cpp:531
 msgid "Observers not allowed"
 msgstr "Chan eil amhairc ceadaichte"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:957
+#: src/gui/dialogs/multiplayer/lobby.cpp:973
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at http://bugs.wesnoth.org."
@@ -7635,6 +7637,15 @@ msgstr ""
 "Chaidh an iuchair “$deprecated_key” ath-ainmeachadh gu “$key|.” Thèid gach "
 "taic ri “$deprecated_key” a thoirt air falbh leis an tionndadh "
 "$removal_version."
+
+#~ msgid "FPS limiter"
+#~ msgstr "Cuingeachadh FPS"
+
+#~ msgid "era^missing"
+#~ msgstr "a dhìth"
+
+#~ msgid "Registered users only:"
+#~ msgstr "Cleachdaichean clàraichte a-mhàin:"
 
 #~ msgid "Settings:"
 #~ msgstr "Roghainnean:"

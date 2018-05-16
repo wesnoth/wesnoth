@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-06 05:31-0300\n"
+"POT-Creation-Date: 2018-05-15 23:33-0400\n"
 "PO-Revision-Date: 2018-05-07 10:56+0100\n"
 "Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig\n"
@@ -320,7 +320,7 @@ msgstr "Joysiick: raon-marbh aig an t-sàthadh"
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:358
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1086
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1129
 msgid "poisoned"
 msgstr "puinseanaichte"
 
@@ -3735,14 +3735,14 @@ msgstr "Do-shiubhal"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:447
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:451
 msgid "Fog"
 msgstr "Ceò"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:450
-#: src/game_initialization/lobby_data.cpp:453
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:454
+#: src/game_initialization/lobby_data.cpp:457
 msgid "Shroud"
 msgstr "Sgleò"
 
@@ -4213,31 +4213,31 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1086
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1129
 msgid "female^poisoned"
 msgstr "puinseanaichte"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1093
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1136
 msgid "female^slowed"
 msgstr "maille oirre"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1093
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1136
 msgid "slowed"
 msgstr "maille air"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1099
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1142
 msgid "female^petrified"
 msgstr "na clach"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1099
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1142
 msgid "petrified"
 msgstr "na chlach"
 
@@ -4299,12 +4299,12 @@ msgid "Cancel"
 msgstr "Sguir dheth"
 
 #. [language]
-#: data/scenario-test.cfg:4065
+#: data/scenario-test.cfg:4079
 msgid "very long"
 msgstr "glè fhada"
 
 #. [language]
-#: data/scenario-test.cfg:4066
+#: data/scenario-test.cfg:4080
 msgid "electrical"
 msgstr "dealanach"
 
@@ -5373,7 +5373,7 @@ msgstr ""
 "fhaigh iad buannachd dìona às ged a thèid an slànachadh fhathast."
 
 #: src/actions/attack.cpp:386 src/actions/attack.cpp:656
-#: src/actions/attack.cpp:1369
+#: src/actions/attack.cpp:1424
 msgid "An invalid attacker weapon got selected."
 msgstr "Chaidh airm ionnsaighe mì-dhligheach a thaghadh."
 
@@ -6258,36 +6258,36 @@ msgstr "Fios: "
 msgid "$login|’s game"
 msgstr "Geama aig $login"
 
-#: src/game_initialization/connect_engine.cpp:103
+#: src/game_initialization/connect_engine.cpp:104
 msgid "Team"
 msgstr "Sgioba"
 
-#: src/game_initialization/connect_engine.cpp:995
+#: src/game_initialization/connect_engine.cpp:993
 msgid "Anonymous player"
 msgstr "Cluicheadair gun ainm"
 
-#: src/game_initialization/connect_engine.cpp:1000
-#: src/game_initialization/connect_engine.cpp:1294
+#: src/game_initialization/connect_engine.cpp:998
+#: src/game_initialization/connect_engine.cpp:1292
 msgid "Computer Player"
 msgstr "Coimpiutair"
 
-#: src/game_initialization/connect_engine.cpp:1042
+#: src/game_initialization/connect_engine.cpp:1040
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1288
 msgid "Network Player"
 msgstr "Lìonraidh"
 
-#: src/game_initialization/connect_engine.cpp:1293
+#: src/game_initialization/connect_engine.cpp:1291
 msgid "Local Player"
 msgstr "Ionadail"
 
-#: src/game_initialization/connect_engine.cpp:1295
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "Empty"
 msgstr "Falamh"
 
-#: src/game_initialization/connect_engine.cpp:1298
+#: src/game_initialization/connect_engine.cpp:1296
 msgid "Reserved"
 msgstr "Glèidhte"
 
@@ -6370,33 +6370,29 @@ msgstr "Tha tuilleadan a dhìth: $id"
 msgid "Unknown era"
 msgstr "Linn nach aithne dhuinn"
 
-#: src/game_initialization/lobby_data.cpp:290
-msgid "(missing)"
-msgstr "(a dhìth)"
-
-#: src/game_initialization/lobby_data.cpp:336
-#: src/game_initialization/lobby_data.cpp:366
+#: src/game_initialization/lobby_data.cpp:340
+#: src/game_initialization/lobby_data.cpp:370
 msgid "S"
 msgstr "S"
 
-#: src/game_initialization/lobby_data.cpp:355
+#: src/game_initialization/lobby_data.cpp:359
 msgid "Remote scenario"
 msgstr "Cnàmh-sgeul air astar"
 
-#: src/game_initialization/lobby_data.cpp:374
-#: src/game_initialization/lobby_data.cpp:397
+#: src/game_initialization/lobby_data.cpp:378
+#: src/game_initialization/lobby_data.cpp:401
 msgid "C"
 msgstr "C"
 
-#: src/game_initialization/lobby_data.cpp:402
+#: src/game_initialization/lobby_data.cpp:406
 msgid "Unknown scenario"
 msgstr "Cnàmh-sgeul nach aithne dhuinn"
 
-#: src/game_initialization/lobby_data.cpp:412
+#: src/game_initialization/lobby_data.cpp:416
 msgid "Reloaded game"
 msgstr "Geama air ath-luchdadh"
 
-#: src/game_initialization/lobby_data.cpp:427
+#: src/game_initialization/lobby_data.cpp:431
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Slot falamh:"
@@ -6404,24 +6400,24 @@ msgstr[1] "Slotaichean falamh:"
 msgstr[2] "Slotaichean falamh:"
 msgstr[3] "Slotaichean falamh:"
 
-#: src/game_initialization/lobby_data.cpp:429
+#: src/game_initialization/lobby_data.cpp:433
 msgid "mp_game_available_slots^Full"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:440
-#: src/game_initialization/lobby_data.cpp:442 src/savegame.cpp:631
+#: src/game_initialization/lobby_data.cpp:444
+#: src/game_initialization/lobby_data.cpp:446 src/savegame.cpp:631
 msgid "Turn"
 msgstr "Cuairt"
 
-#: src/game_initialization/lobby_data.cpp:455
+#: src/game_initialization/lobby_data.cpp:459
 msgid "vision^none"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:464
+#: src/game_initialization/lobby_data.cpp:468
 msgid "time limit^none"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:497
+#: src/game_initialization/lobby_data.cpp:501
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
@@ -6429,7 +6425,7 @@ msgstr ""
 "Chan eil tionndadh an òstair dhe <i>$addon</i> co-chòrdail. Tha tionndadh <b>"
 "$host_ver</b> aca fhad ’s a tha tionndadh <b>$local_ver</b> agadsa."
 
-#: src/game_initialization/lobby_data.cpp:511
+#: src/game_initialization/lobby_data.cpp:515
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -8575,15 +8571,19 @@ msgstr "neodrach"
 msgid "female^liminal"
 msgstr "stairsnich"
 
-#: src/units/unit.cpp:1783
+#: src/units/unit.cpp:643
+msgid "Unit with negative HP found"
+msgstr ""
+
+#: src/units/unit.cpp:1797
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1789
+#: src/units/unit.cpp:1803
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> PB"
 
-#: src/units/unit.cpp:1799
+#: src/units/unit.cpp:1813
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> ghluasad"
@@ -8591,19 +8591,19 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> ghluasad"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> gluasadan"
 msgstr[3] "<span color=\"$color\">$number_or_percent</span> gluasad"
 
-#: src/units/unit.cpp:1805
+#: src/units/unit.cpp:1819
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> a lèirsinn"
 
-#: src/units/unit.cpp:1809
+#: src/units/unit.cpp:1823
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> a chasg"
 
-#: src/units/unit.cpp:1814
+#: src/units/unit.cpp:1828
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> PE airson àrdachadh"
 
-#: src/units/unit.cpp:1818
+#: src/units/unit.cpp:1832
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -8616,11 +8616,11 @@ msgstr[2] ""
 msgstr[3] ""
 "<span color=\"$color\">$number_or_percent</span> ionnsaigh gach cuairt"
 
-#: src/units/unit.cpp:1825
+#: src/units/unit.cpp:1839
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> a chosgais ais-ghairm"
 
-#: src/units/unit.cpp:2230
+#: src/units/unit.cpp:2244
 msgid "$effect_description per level"
 msgstr "$effect_description gach leibheil"
 
@@ -8648,22 +8648,25 @@ msgstr "$year BF"
 msgid "Disconnected from server."
 msgstr ""
 
-#: src/whiteboard/manager.cpp:1115
+#: src/whiteboard/manager.cpp:1117
 msgid "SHOW ALL allies’ plans"
 msgstr "SEALL GACH plana nan caidreabhach"
 
-#: src/whiteboard/manager.cpp:1116
+#: src/whiteboard/manager.cpp:1118
 msgid "HIDE ALL allies’ plans"
 msgstr "FALAICH GACH plana nan caidreabhach"
 
-#: src/whiteboard/manager.cpp:1130
+#: src/whiteboard/manager.cpp:1132
 msgid "Show plans for $player"
 msgstr "Seall na planaichean aig $player"
 
-#: src/whiteboard/manager.cpp:1132
+#: src/whiteboard/manager.cpp:1134
 msgid "Hide plans for $player"
 msgstr "Falaich na planaichean aig $player"
 
-#: src/whiteboard/manager.cpp:1135
+#: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Roghainnean a’ bhùird-ghil"
+
+#~ msgid "(missing)"
+#~ msgstr "(a dhìth)"

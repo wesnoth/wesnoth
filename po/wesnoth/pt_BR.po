@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-06 05:31-0300\n"
+"POT-Creation-Date: 2018-05-15 23:33-0400\n"
 "PO-Revision-Date: 2012-10-29 18:41-0300\n"
 "Last-Translator: gilberto dos santos alves <gsavix@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -494,7 +494,7 @@ msgstr "Controle: Deadzone do Acelerador (Thruster)"
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:358
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1086
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1129
 msgid "poisoned"
 msgstr "envenenado"
 
@@ -4503,7 +4503,7 @@ msgstr ""
 # File: src/multiplayer_lobby.cpp, line: 601
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:447
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:451
 msgid "Fog"
 msgstr "Fumaça"
 
@@ -4525,8 +4525,8 @@ msgstr "Fumaça"
 # File: src/multiplayer_lobby.cpp, line: 611
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:450
-#: src/game_initialization/lobby_data.cpp:453
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:454
+#: src/game_initialization/lobby_data.cpp:457
 msgid "Shroud"
 msgstr "Escuridão"
 
@@ -5036,7 +5036,7 @@ msgstr ""
 # File: src/actions/attack.cpp, line: 800
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1086
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1129
 msgid "female^poisoned"
 msgstr "envenenada"
 
@@ -5049,7 +5049,7 @@ msgstr "envenenada"
 # File: src/actions/attack.cpp, line: 805
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1093
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1136
 msgid "female^slowed"
 msgstr "lenta"
 
@@ -5062,7 +5062,7 @@ msgstr "lenta"
 # File: src/actions/attack.cpp, line: 805
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1093
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1136
 msgid "slowed"
 msgstr "lento"
 
@@ -5075,7 +5075,7 @@ msgstr "lento"
 # File: src/actions/attack.cpp, line: 810
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1099
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1142
 msgid "female^petrified"
 msgstr "petrificada"
 
@@ -5088,7 +5088,7 @@ msgstr "petrificada"
 # File: src/actions/attack.cpp, line: 810
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1099
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1142
 msgid "petrified"
 msgstr "petrificado"
 
@@ -5226,7 +5226,7 @@ msgstr "Cancelar"
 # File: data/scenario-test.cfg, line: 3670
 # File: data/scenario-test.cfg, line: 3670
 #. [language]
-#: data/scenario-test.cfg:4065
+#: data/scenario-test.cfg:4079
 msgid "very long"
 msgstr "muito longe"
 
@@ -5235,7 +5235,7 @@ msgstr "muito longe"
 # File: data/scenario-test.cfg, line: 3671
 # File: data/scenario-test.cfg, line: 3671
 #. [language]
-#: data/scenario-test.cfg:4066
+#: data/scenario-test.cfg:4080
 msgid "electrical"
 msgstr "elétrico"
 
@@ -7121,7 +7121,7 @@ msgstr ""
 # File: src/actions/attack.cpp, line: 419
 # File: src/actions/attack.cpp, line: 1049
 #: src/actions/attack.cpp:386 src/actions/attack.cpp:656
-#: src/actions/attack.cpp:1369
+#: src/actions/attack.cpp:1424
 msgid "An invalid attacker weapon got selected."
 msgstr "O atacante selecionou uma arma inválida."
 
@@ -8679,7 +8679,7 @@ msgstr "nome de $login"
 # File: src/leader_scroll_dialog.cpp, line: 46
 # File: src/menu_events.cpp, line: 192
 # File: src/multiplayer_connect.cpp, line: 1059
-#: src/game_initialization/connect_engine.cpp:103
+#: src/game_initialization/connect_engine.cpp:104
 msgid "Team"
 msgstr "Time"
 
@@ -8687,7 +8687,7 @@ msgstr "Time"
 # File: src/multiplayer_connect.cpp, line: 634
 # File: src/multiplayer_connect.cpp, line: 634
 # File: src/multiplayer_connect.cpp, line: 634
-#: src/game_initialization/connect_engine.cpp:995
+#: src/game_initialization/connect_engine.cpp:993
 #, fuzzy
 #| msgid "Anonymous local player"
 msgid "Anonymous player"
@@ -8700,8 +8700,8 @@ msgstr "Jogador local anônimo"
 # File: src/multiplayer_connect.cpp, line: 1658
 # File: src/multiplayer_connect.cpp, line: 647
 # File: src/multiplayer_connect.cpp, line: 1658
-#: src/game_initialization/connect_engine.cpp:1000
-#: src/game_initialization/connect_engine.cpp:1294
+#: src/game_initialization/connect_engine.cpp:998
+#: src/game_initialization/connect_engine.cpp:1292
 msgid "Computer Player"
 msgstr "Computador"
 
@@ -8709,7 +8709,7 @@ msgstr "Computador"
 # File: src/multiplayer_connect.cpp, line: 650
 # File: src/multiplayer_connect.cpp, line: 650
 # File: src/multiplayer_connect.cpp, line: 650
-#: src/game_initialization/connect_engine.cpp:1042
+#: src/game_initialization/connect_engine.cpp:1040
 msgid "$playername $side"
 msgstr "$playername $side"
 
@@ -8717,7 +8717,7 @@ msgstr "$playername $side"
 # File: src/multiplayer_connect.cpp, line: 1655
 # File: src/multiplayer_connect.cpp, line: 1655
 # File: src/multiplayer_connect.cpp, line: 1655
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1288
 msgid "Network Player"
 msgstr "Jogador Remoto"
 
@@ -8725,7 +8725,7 @@ msgstr "Jogador Remoto"
 # File: src/multiplayer_connect.cpp, line: 1657
 # File: src/multiplayer_connect.cpp, line: 1657
 # File: src/multiplayer_connect.cpp, line: 1657
-#: src/game_initialization/connect_engine.cpp:1293
+#: src/game_initialization/connect_engine.cpp:1291
 msgid "Local Player"
 msgstr "Jogador Local"
 
@@ -8733,7 +8733,7 @@ msgstr "Jogador Local"
 # File: src/multiplayer_connect.cpp, line: 1659
 # File: src/multiplayer_connect.cpp, line: 1659
 # File: src/multiplayer_connect.cpp, line: 1659
-#: src/game_initialization/connect_engine.cpp:1295
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "Empty"
 msgstr "Vazio"
 
@@ -8741,7 +8741,7 @@ msgstr "Vazio"
 # File: src/multiplayer_connect.cpp, line: 763
 # File: src/multiplayer_connect.cpp, line: 763
 # File: src/multiplayer_connect.cpp, line: 763
-#: src/game_initialization/connect_engine.cpp:1298
+#: src/game_initialization/connect_engine.cpp:1296
 msgid "Reserved"
 msgstr "Reservado"
 
@@ -8921,18 +8921,8 @@ msgstr "Faltando argumento $arg_id"
 msgid "Unknown era"
 msgstr "Era desconhecida"
 
-#
-# File: src/gui/dialogs/lobby_player_info.cpp, line: 100
-# File: src/gui/dialogs/lobby_player_info.cpp, line: 100
-# File: src/gui/dialogs/lobby_player_info.cpp, line: 100
-#: src/game_initialization/lobby_data.cpp:290
-#, fuzzy
-#| msgid "(observing)"
-msgid "(missing)"
-msgstr "(observando)"
-
-#: src/game_initialization/lobby_data.cpp:336
-#: src/game_initialization/lobby_data.cpp:366
+#: src/game_initialization/lobby_data.cpp:340
+#: src/game_initialization/lobby_data.cpp:370
 msgid "S"
 msgstr ""
 
@@ -8943,12 +8933,12 @@ msgstr ""
 # File: src/multiplayer_lobby.cpp, line: 528
 # File: src/gui/dialogs/lobby/lobby_data.cpp, line: 266
 # File: src/multiplayer_lobby.cpp, line: 528
-#: src/game_initialization/lobby_data.cpp:355
+#: src/game_initialization/lobby_data.cpp:359
 msgid "Remote scenario"
 msgstr "Cenário remoto"
 
-#: src/game_initialization/lobby_data.cpp:374
-#: src/game_initialization/lobby_data.cpp:397
+#: src/game_initialization/lobby_data.cpp:378
+#: src/game_initialization/lobby_data.cpp:401
 msgid "C"
 msgstr ""
 
@@ -8959,7 +8949,7 @@ msgstr ""
 # File: src/multiplayer_lobby.cpp, line: 539
 # File: src/gui/dialogs/lobby/lobby_data.cpp, line: 279
 # File: src/multiplayer_lobby.cpp, line: 539
-#: src/game_initialization/lobby_data.cpp:402
+#: src/game_initialization/lobby_data.cpp:406
 msgid "Unknown scenario"
 msgstr "Cenário desconhecido"
 
@@ -8970,7 +8960,7 @@ msgstr "Cenário desconhecido"
 # File: src/multiplayer_lobby.cpp, line: 570
 # File: src/gui/dialogs/lobby/lobby_data.cpp, line: 285
 # File: src/multiplayer_lobby.cpp, line: 570
-#: src/game_initialization/lobby_data.cpp:412
+#: src/game_initialization/lobby_data.cpp:416
 msgid "Reloaded game"
 msgstr "Jogo Regravado"
 
@@ -8981,13 +8971,13 @@ msgstr "Jogo Regravado"
 # File: src/multiplayer_lobby.cpp, line: 590
 # File: src/gui/dialogs/lobby/lobby_data.cpp, line: 300
 # File: src/multiplayer_lobby.cpp, line: 590
-#: src/game_initialization/lobby_data.cpp:427
+#: src/game_initialization/lobby_data.cpp:431
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Espaço vago:"
 msgstr[1] "Espaços vagos:"
 
-#: src/game_initialization/lobby_data.cpp:429
+#: src/game_initialization/lobby_data.cpp:433
 msgid "mp_game_available_slots^Full"
 msgstr ""
 
@@ -8998,8 +8988,8 @@ msgstr ""
 # File: src/savegame.cpp, line: 1142
 # File: src/dialogs.cpp, line: 864
 # File: src/savegame.cpp, line: 1142
-#: src/game_initialization/lobby_data.cpp:440
-#: src/game_initialization/lobby_data.cpp:442 src/savegame.cpp:631
+#: src/game_initialization/lobby_data.cpp:444
+#: src/game_initialization/lobby_data.cpp:446 src/savegame.cpp:631
 msgid "Turn"
 msgstr "Turno"
 
@@ -9007,7 +8997,7 @@ msgstr "Turno"
 # File: src/reports.cpp, line: 560
 # File: src/reports.cpp, line: 560
 # File: src/reports.cpp, line: 560
-#: src/game_initialization/lobby_data.cpp:455
+#: src/game_initialization/lobby_data.cpp:459
 #, fuzzy
 msgid "vision^none"
 msgstr "Versão: "
@@ -9016,19 +9006,19 @@ msgstr "Versão: "
 # File: src/multiplayer_create.cpp, line: 73
 # File: src/multiplayer_create.cpp, line: 73
 # File: src/multiplayer_create.cpp, line: 73
-#: src/game_initialization/lobby_data.cpp:464
+#: src/game_initialization/lobby_data.cpp:468
 #, fuzzy
 #| msgid "Time limit"
 msgid "time limit^none"
 msgstr "Limite de tempo"
 
-#: src/game_initialization/lobby_data.cpp:497
+#: src/game_initialization/lobby_data.cpp:501
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:511
+#: src/game_initialization/lobby_data.cpp:515
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -13081,11 +13071,15 @@ msgstr "neutra"
 msgid "female^liminal"
 msgstr "Liminar"
 
+#: src/units/unit.cpp:643
+msgid "Unit with negative HP found"
+msgstr ""
+
 #
 # File: src/unit.cpp, line: 2379
 # File: src/unit.cpp, line: 2379
 # File: src/unit.cpp, line: 2379
-#: src/units/unit.cpp:1783
+#: src/units/unit.cpp:1797
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
@@ -13093,7 +13087,7 @@ msgstr "$attack_list|: $effect_description"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:1789
+#: src/units/unit.cpp:1803
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
@@ -13103,7 +13097,7 @@ msgstr "por turno"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:1799
+#: src/units/unit.cpp:1813
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -13115,7 +13109,7 @@ msgstr[1] "por turno"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:1805
+#: src/units/unit.cpp:1819
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
@@ -13125,7 +13119,7 @@ msgstr "por turno"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:1809
+#: src/units/unit.cpp:1823
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
@@ -13135,7 +13129,7 @@ msgstr "por turno"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:1814
+#: src/units/unit.cpp:1828
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
@@ -13145,7 +13139,7 @@ msgstr "por turno"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:1818
+#: src/units/unit.cpp:1832
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -13158,7 +13152,7 @@ msgstr[1] "por turno"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:1825
+#: src/units/unit.cpp:1839
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
@@ -13168,7 +13162,7 @@ msgstr "por turno"
 # File: src/unit.cpp, line: 2630
 # File: src/unit.cpp, line: 2630
 # File: src/unit.cpp, line: 2630
-#: src/units/unit.cpp:2230
+#: src/units/unit.cpp:2244
 msgid "$effect_description per level"
 msgstr "$effect_description por nível"
 
@@ -13209,7 +13203,7 @@ msgstr "Conectando ao servidor..."
 # File: src/whiteboard/manager.cpp, line: 1094
 # File: src/whiteboard/manager.cpp, line: 1094
 # File: src/whiteboard/manager.cpp, line: 1094
-#: src/whiteboard/manager.cpp:1115
+#: src/whiteboard/manager.cpp:1117
 msgid "SHOW ALL allies’ plans"
 msgstr "MOSTRAR planos de TODOS aliados"
 
@@ -13217,7 +13211,7 @@ msgstr "MOSTRAR planos de TODOS aliados"
 # File: src/whiteboard/manager.cpp, line: 1095
 # File: src/whiteboard/manager.cpp, line: 1095
 # File: src/whiteboard/manager.cpp, line: 1095
-#: src/whiteboard/manager.cpp:1116
+#: src/whiteboard/manager.cpp:1118
 msgid "HIDE ALL allies’ plans"
 msgstr "ESCONDER planos de TODOS aliados"
 
@@ -13225,7 +13219,7 @@ msgstr "ESCONDER planos de TODOS aliados"
 # File: src/whiteboard/manager.cpp, line: 1109
 # File: src/whiteboard/manager.cpp, line: 1109
 # File: src/whiteboard/manager.cpp, line: 1109
-#: src/whiteboard/manager.cpp:1130
+#: src/whiteboard/manager.cpp:1132
 msgid "Show plans for $player"
 msgstr "Mostrar planos para $player"
 
@@ -13233,7 +13227,7 @@ msgstr "Mostrar planos para $player"
 # File: src/whiteboard/manager.cpp, line: 1111
 # File: src/whiteboard/manager.cpp, line: 1111
 # File: src/whiteboard/manager.cpp, line: 1111
-#: src/whiteboard/manager.cpp:1132
+#: src/whiteboard/manager.cpp:1134
 msgid "Hide plans for $player"
 msgstr "Esconder planos de $player"
 
@@ -13241,9 +13235,18 @@ msgstr "Esconder planos de $player"
 # File: src/whiteboard/manager.cpp, line: 1114
 # File: src/whiteboard/manager.cpp, line: 1114
 # File: src/whiteboard/manager.cpp, line: 1114
-#: src/whiteboard/manager.cpp:1135
+#: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Opções do Quadro-Branco"
+
+#
+# File: src/gui/dialogs/lobby_player_info.cpp, line: 100
+# File: src/gui/dialogs/lobby_player_info.cpp, line: 100
+# File: src/gui/dialogs/lobby_player_info.cpp, line: 100
+#, fuzzy
+#~| msgid "(observing)"
+#~ msgid "(missing)"
+#~ msgstr "(observando)"
 
 #
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 100

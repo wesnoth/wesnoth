@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-09 03:48-0300\n"
+"POT-Creation-Date: 2018-05-15 23:33-0400\n"
 "PO-Revision-Date: 2018-05-06 12:27+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
@@ -3050,10 +3050,15 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:490
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Multiplayer Modifications'</header>"
 msgid ""
 "\n"
 "\n"
-"<header>text='Multiplayer Modifications'</header>"
+"<header>text='Modifications'</header>"
 msgstr ""
 "\n"
 "\n"
@@ -3061,13 +3066,20 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:492
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Modifications are optional scenario- and era-independent scripts for "
+#| "<italic>text='Multiplayer'</italic> games that can alter the default "
+#| "ruleset in various ways. You can choose and configure modifications when "
+#| "creating a new game."
 msgid ""
 "\n"
 "\n"
-"Modifications are optional scenario- and era-independent scripts for "
-"<italic>text='Multiplayer'</italic> games that can alter the default ruleset "
-"in various ways. You can choose and configure modifications when creating a "
-"new game."
+"Modifications are optional scenario- and era-independent scripts that can "
+"alter the default ruleset in various ways. You can choose and configure "
+"modifications when creating a new game."
 msgstr ""
 "\n"
 "\n"
@@ -5824,63 +5836,112 @@ msgstr ""
 
 #. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:208 data/core/units.cfg:223
+#: data/core/units.cfg:208 data/core/units.cfg:233
 msgid "race^Dunefolk Human"
 msgstr "Lidé Dunefolku"
 
 #. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:209 data/core/units.cfg:224
+#: data/core/units.cfg:209 data/core/units.cfg:234
 msgid "race+female^Dunefolk Human"
 msgstr "Dunefolské ženy"
 
 #. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:210 data/core/units.cfg:225
+#: data/core/units.cfg:210 data/core/units.cfg:235
 msgid "race+plural^Dunefolk"
 msgstr "Dunefolkové"
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:211
 msgid ""
-"The Dunefolk are a human culture inhabiting the dry deserts in the southern "
-"region of the Great Continent."
+"An offshoot of a forgotten nomadic civilization, the Dunefolk humans lay "
+"claim to the river valleys and oases of the Sandy Wastes. How they came to "
+"inhabit this far corner of the Great Continent is unknown. Their legends "
+"tell of many long and perilous travels through far-flung lands, but the true "
+"origin of their people is a topic of endless and heated debate among even "
+"the most erudite of their scholars.\n"
+"\n"
+"Whatever their origin, the Dunefolk have thrived. Bustling cities stand "
+"proudly in the largest fertile regions. Skilled artisans, fine smiths, and "
+"wealthy merchants form the backbone of the urban economy. Each of these "
+"cities also enjoys a degree of independence less common in the more "
+"centralized nations to the north, many even maintaining their own standing "
+"armies. In times of need, however, each and all rally to a higher authority "
+"designated to protect the superior interest of the nation.\n"
+"\n"
+"Those who have not settled in these urban centers still adhere to the "
+"lifestyle of their ancestors, roaming the dunes and leading their herds from "
+"one watering hole to another. They are most active during the early hours of "
+"dawn and the onset of dusk, when the wastelands are neither too hot nor too "
+"cold. Their skill at moving through the sands is excellent even by Dunefolk "
+"standards. Although sometimes regarded with contempt by their city "
+"counterparts, they provide an invaluable service as mobile, light troops in "
+"war, or as escorts for trading caravans during times of peace.\n"
+"\n"
+"The Dunefolk's inclination towards trade and exploration has allowed their "
+"cities to amass immense fortunes, a fact regarded both with admiration and "
+"envy by other races. Mutual interests have fostered cordial relations with "
+"neighboring Naga tribes, but more secretive races such as Drakes and Elves "
+"have always considered Dunefolk expeditions to be too intrusive, especially "
+"when they venture close to territorial boundaries. It is not uncommon for "
+"caravans to fall prey to troll ambushes in the mountains, something that has "
+"given rise to countless tales of unimaginable treasure amassed in hidden "
+"caves.\n"
+"\n"
+"As a result of living in hostile environments for centuries, the Dunefolk "
+"have developed rational methods of enquiry through which they continue to "
+"improve their understanding of the world. Their study of herbal medicine "
+"keeps their warriors and workers fresh and healthy. Their knowledge of "
+"alchemy allows them to tame fire and wield it as a deadly weapon in battle. "
+"At the same time, this analytical mindset has distanced them from magical "
+"arts; to the rational mind, magic is uncontrollable, unpredictable, and "
+"hence unreliable. For this reason, the Dunefolk especially loathe the "
+"perversions of necromancy and the dark arts, even moreso than other races.\n"
+"\n"
+"The Dunefolk's inquisitive and explorative nature does not preclude military "
+"strength. Not only do they field nimble light troops, cataphracts, and "
+"heavily armored infantry, but their keen knowledge of technology grants them "
+"a decisive advantage over their opponents. When facing the Dunefolk in "
+"battle, however, the most fearsome sight is certainly their deployment of "
+"ferocious and bizarre beasts. From the majestic Roc to the imposing Wyvern, "
+"their synergy with these creatures allows for great versatility in combat. "
+"The origins of this tradition likely lie in the heritage of the Dunefolk's "
+"distant past in the exotic far corners of Irdya."
 msgstr ""
-"Dunefolkové jsou lidská kultura obývající suché pouště v jižní oblasti "
-"Velkého kontinentu."
 
 #. [race]: id=khalifate
-#: data/core/units.cfg:226
+#: data/core/units.cfg:236
 msgid "This race does not have a description yet."
 msgstr "Tato rasa zatím nemá žádný popis."
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:237
+#: data/core/units.cfg:247
 msgid "race^Saurian"
 msgstr "Ještěrák"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:238
+#: data/core/units.cfg:248
 msgid "race+female^Saurian"
 msgstr "Ještěráčice"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:239
+#: data/core/units.cfg:249
 msgid "race^Saurians"
 msgstr "Ještěráci"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:249
+#: data/core/units.cfg:259
 msgid "race^Mechanical"
 msgstr "Stroj"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:250
+#: data/core/units.cfg:260
 msgid "race+plural^Mechanical"
 msgstr "Stroje"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:251
+#: data/core/units.cfg:261
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -5893,22 +5954,22 @@ msgstr ""
 "překonat magie na ně vložená."
 
 #. [race]: id=merman
-#: data/core/units.cfg:260
+#: data/core/units.cfg:270
 msgid "race^Merman"
 msgstr "Mořský člověk"
 
 #. [race]: id=merman
-#: data/core/units.cfg:261
+#: data/core/units.cfg:271
 msgid "race^Mermaid"
 msgstr "Mořská panna"
 
 #. [race]: id=merman
-#: data/core/units.cfg:262
+#: data/core/units.cfg:272
 msgid "race^Merfolk"
 msgstr "Vodní lid"
 
 #. [race]: id=merman
-#: data/core/units.cfg:264
+#: data/core/units.cfg:274
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -5931,23 +5992,23 @@ msgstr ""
 "činí nemalé obtíže."
 
 #. [race]: id=monster
-#: data/core/units.cfg:272
+#: data/core/units.cfg:282
 msgid "race^Monster"
 msgstr "Monstrum"
 
 # msgid "race^Monster"
 #. [race]: id=monster
-#: data/core/units.cfg:273
+#: data/core/units.cfg:283
 msgid "race+female^Monster"
 msgstr "Monstrum"
 
 #. [race]: id=monster
-#: data/core/units.cfg:274
+#: data/core/units.cfg:284
 msgid "race^Monsters"
 msgstr "Monstra"
 
 #. [race]: id=monster
-#: data/core/units.cfg:275
+#: data/core/units.cfg:285
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -5959,24 +6020,24 @@ msgstr ""
 
 # Nágy? Hadí lid?
 #. [race]: id=naga
-#: data/core/units.cfg:282
+#: data/core/units.cfg:292
 msgid "race^Naga"
 msgstr "Naga"
 
 # Nágy? Hadí lid?
 #. [race]: id=naga
-#: data/core/units.cfg:283
+#: data/core/units.cfg:293
 msgid "race^Nagini"
 msgstr "Nagini"
 
 # Nágy? Hadí lid?
 #. [race]: id=naga
-#: data/core/units.cfg:284
+#: data/core/units.cfg:294
 msgid "race^Nagas"
 msgstr "Nágy"
 
 #. [race]: id=naga
-#: data/core/units.cfg:285
+#: data/core/units.cfg:295
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -6007,22 +6068,22 @@ msgstr ""
 "řekám než otevřeným vodním plochám."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:293
+#: data/core/units.cfg:303
 msgid "race^Ogre"
 msgstr "Obr"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:294
+#: data/core/units.cfg:304
 msgid "race+female^Ogre"
 msgstr "Obryně"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:295
+#: data/core/units.cfg:305
 msgid "race^Ogres"
 msgstr "Obři"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:296
+#: data/core/units.cfg:306
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -6054,22 +6115,22 @@ msgstr ""
 "okolnostem se neví."
 
 #. [race]: id=orc
-#: data/core/units.cfg:304
+#: data/core/units.cfg:314
 msgid "race^Orc"
 msgstr "Skřet"
 
 #. [race]: id=orc
-#: data/core/units.cfg:305
+#: data/core/units.cfg:315
 msgid "race+female^Orc"
 msgstr "Skřetice"
 
 #. [race]: id=orc
-#: data/core/units.cfg:306
+#: data/core/units.cfg:316
 msgid "race^Orcs"
 msgstr "Skřeti"
 
 #. [race]: id=orc
-#: data/core/units.cfg:307
+#: data/core/units.cfg:317
 #, fuzzy
 #| msgid ""
 #| "In appearance, orcs are half men and half beasts. They are taller, "
@@ -6236,7 +6297,7 @@ msgstr ""
 "primárně sílu - například střelbu nebo vraždění jedem."
 
 #. [race]: id=orc
-#: data/core/units.cfg:318
+#: data/core/units.cfg:328
 msgid ""
 "\n"
 "\n"
@@ -6249,22 +6310,22 @@ msgstr ""
 "další dovednosti, jako je lukostřelba nebo vražda."
 
 #. [race]: id=troll
-#: data/core/units.cfg:327
+#: data/core/units.cfg:337
 msgid "race^Troll"
 msgstr "Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:328
+#: data/core/units.cfg:338
 msgid "race+female^Troll"
 msgstr "Trollice"
 
 #. [race]: id=troll
-#: data/core/units.cfg:329
+#: data/core/units.cfg:339
 msgid "race^Trolls"
 msgstr "Trollové"
 
 #. [race]: id=troll
-#: data/core/units.cfg:330
+#: data/core/units.cfg:340
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -6336,23 +6397,23 @@ msgstr ""
 "východ od Wesnothu a také všude, kde se potulují skřetí hordy."
 
 #. [race]: id=undead
-#: data/core/units.cfg:350
+#: data/core/units.cfg:360
 msgid "race^Undead"
 msgstr "Nemrtvý"
 
 #. [race]: id=undead
-#: data/core/units.cfg:351
+#: data/core/units.cfg:361
 msgid "race+female^Undead"
 msgstr "Nemrtvá"
 
 #. [race]: id=undead
-#: data/core/units.cfg:352
+#: data/core/units.cfg:362
 msgid "race+plural^Undead"
 msgstr "Nemrtví"
 
 # Ten původní první odstavec je fakt slabý ... pořád se to opakuje dokola.
 #. [race]: id=undead
-#: data/core/units.cfg:353
+#: data/core/units.cfg:363
 #, fuzzy
 #| msgid ""
 #| "Undead are not really a single race of creatures, although often treated "
@@ -6427,22 +6488,22 @@ msgstr ""
 "až s příchodem Haldrika I., nebyli už předtím elfům a trpaslíkům neznámí."
 
 #. [race]: id=wolf
-#: data/core/units.cfg:366
+#: data/core/units.cfg:376
 msgid "race^Wolf"
 msgstr "Vlk"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:367
+#: data/core/units.cfg:377
 msgid "race+female^Wolf"
 msgstr "Vlčice"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:368
+#: data/core/units.cfg:378
 msgid "race^Wolves"
 msgstr "Vlci"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:369
+#: data/core/units.cfg:379
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -6454,17 +6515,17 @@ msgid ""
 msgstr ""
 
 #. [race]: id=wose
-#: data/core/units.cfg:378
+#: data/core/units.cfg:388
 msgid "race^Wose"
 msgstr "Stromový muž"
 
 #. [race]: id=wose
-#: data/core/units.cfg:379
+#: data/core/units.cfg:389
 msgid "race^Woses"
 msgstr "Stromový lid"
 
 #. [race]: id=wose
-#: data/core/units.cfg:380
+#: data/core/units.cfg:390
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
@@ -6554,6 +6615,13 @@ msgstr "Nápověda Bitvy o Wesnoth"
 #: src/help/help.cpp:241
 msgid "Parse error when parsing help text: "
 msgstr "Překládací chyba při pokusu o načtení pomocného textu: "
+
+#~ msgid ""
+#~ "The Dunefolk are a human culture inhabiting the dry deserts in the "
+#~ "southern region of the Great Continent."
+#~ msgstr ""
+#~ "Dunefolkové jsou lidská kultura obývající suché pouště v jižní oblasti "
+#~ "Velkého kontinentu."
 
 #~ msgid "race^Mermen"
 #~ msgstr "Mořský lid"

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-09 03:49-0300\n"
+"POT-Creation-Date: 2018-05-15 23:33-0400\n"
 "PO-Revision-Date: 2017-04-08 15:44+0100\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
@@ -2345,7 +2345,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:276
-#: src/gui/dialogs/multiplayer/lobby.cpp:462
+#: src/gui/dialogs/multiplayer/lobby.cpp:466
 #, fuzzy
 msgid "Modifications"
 msgstr "Pasirinkite raišką"
@@ -2641,7 +2641,7 @@ msgstr "Aprašymas:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:478
+#: src/gui/dialogs/multiplayer/lobby.cpp:488
 msgid "Experience modifier:"
 msgstr "Patirties modifikatorius:"
 
@@ -2704,7 +2704,7 @@ msgstr "Auksas:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#: src/gui/dialogs/multiplayer/lobby.cpp:479
+#: src/gui/dialogs/multiplayer/lobby.cpp:489
 msgid "Gold per village:"
 msgstr "Auksas kaimui:"
 
@@ -2780,7 +2780,7 @@ msgstr "Žemėlapio generatorius"
 #. [button]: id=settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
-#: src/gui/dialogs/multiplayer/lobby.cpp:477
+#: src/gui/dialogs/multiplayer/lobby.cpp:487
 msgid "Settings"
 msgstr "Nustatymai"
 
@@ -4058,7 +4058,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:177
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:480
+#: src/gui/dialogs/multiplayer/lobby.cpp:490
 msgid "Map size:"
 msgstr "Žemėlapio dydis:"
 
@@ -4619,26 +4619,24 @@ msgid "Set the scaling factor of fonts"
 msgstr ""
 
 #. [toggle_button]: id=fps_limiter
-#: data/gui/window/preferences/03_display.cfg:273
-#, fuzzy
-#| msgid "unlimited"
-msgid "FPS limiter"
-msgstr "neribotas"
+#: data/gui/window/preferences/03_display.cfg:275
+msgid "Limit FPS"
+msgstr ""
 
 #. [toggle_button]: id=fps_limiter
-#: data/gui/window/preferences/03_display.cfg:274
+#: data/gui/window/preferences/03_display.cfg:276
 msgid ""
-"Disabling this increases CPU usage to 100 % but may slightly improve "
+"Disabling this increases CPU usage to 100% but may slightly improve "
 "performance at high resolutions"
 msgstr ""
 
 #. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:289
+#: data/gui/window/preferences/03_display.cfg:291
 msgid "Theme"
 msgstr "Tema"
 
 #. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:290
+#: data/gui/window/preferences/03_display.cfg:292
 #, fuzzy
 msgid "Change the in-game theme"
 msgstr "Pakeisti taktinį dažnį"
@@ -5267,33 +5265,33 @@ msgstr "Klaida"
 msgid "Details:"
 msgstr "Detalės:"
 
-#: src/build_info.cpp:259
+#: src/build_info.cpp:260
 msgid "feature^Experimental OpenMP support"
 msgstr "Eksperimentinis OpenMP palaikymas"
 
-#: src/build_info.cpp:264
+#: src/build_info.cpp:265
 #, fuzzy
 #| msgid "feature^PNG screenshots"
 msgid "feature^JPG screenshots"
 msgstr "PNG ekranvaizdžiai"
 
-#: src/build_info.cpp:271
+#: src/build_info.cpp:272
 msgid "feature^Lua console completion"
 msgstr ""
 
-#: src/build_info.cpp:276
+#: src/build_info.cpp:277
 msgid "feature^Legacy bidirectional rendering"
 msgstr ""
 
-#: src/build_info.cpp:283
+#: src/build_info.cpp:284
 msgid "feature^D-Bus notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:292
+#: src/build_info.cpp:293
 msgid "feature^Win32 notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:298
+#: src/build_info.cpp:299
 msgid "feature^Cocoa notifications back end"
 msgstr ""
 
@@ -5710,7 +5708,7 @@ msgid "Attacker vulnerability vs"
 msgstr "Atakuojančiojo pažeidžiamumas prieš"
 
 #: src/gui/dialogs/campaign_selection.cpp:274
-#: src/gui/dialogs/multiplayer/lobby.cpp:467
+#: src/gui/dialogs/multiplayer/lobby.cpp:471
 #, fuzzy
 msgid "active_modifications^None"
 msgstr "Pasirinkite raišką"
@@ -5891,12 +5889,12 @@ msgid "Unknown"
 msgstr "Nežinoma"
 
 #: src/gui/dialogs/game_stats.cpp:200 src/gui/dialogs/game_stats.cpp:203
-#: src/gui/dialogs/multiplayer/lobby.cpp:475
+#: src/gui/dialogs/multiplayer/lobby.cpp:485
 msgid "no"
 msgstr "ne"
 
 #: src/gui/dialogs/game_stats.cpp:200 src/gui/dialogs/game_stats.cpp:203
-#: src/gui/dialogs/multiplayer/lobby.cpp:475
+#: src/gui/dialogs/multiplayer/lobby.cpp:485
 msgid "yes"
 msgstr "taip"
 
@@ -6063,64 +6061,62 @@ msgstr "Žaidimai: rodoma $num_shown iš $num_total"
 msgid "$game_name (Era: $era_name)"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:455
+#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#, fuzzy
+#| msgid "addon_state^Not installed"
+msgid "era_or_mod^not installed"
+msgstr "Neįdiegtas"
+
+#: src/gui/dialogs/multiplayer/lobby.cpp:459
 #, fuzzy
 #| msgid "Era:"
 msgid "Era"
 msgstr "Era:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:459
-msgid "era^missing"
-msgstr ""
-
-#: src/gui/dialogs/multiplayer/lobby.cpp:481
-msgid "Registered users only:"
-msgstr ""
-
-#: src/gui/dialogs/multiplayer/lobby.cpp:482
+#: src/gui/dialogs/multiplayer/lobby.cpp:491
 #, fuzzy
 #| msgid "Reloaded game"
 msgid "Reloaded:"
 msgstr "Perkrautas žaidimas"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:483
+#: src/gui/dialogs/multiplayer/lobby.cpp:492
 #, fuzzy
 msgid "Shared vision:"
 msgstr "Dalintis vaizdu"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:484
+#: src/gui/dialogs/multiplayer/lobby.cpp:493
 #, fuzzy
 #| msgid "Shuffle Sides"
 msgid "Shuffle sides:"
 msgstr "Sumaišyti puses"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:485
+#: src/gui/dialogs/multiplayer/lobby.cpp:494
 #, fuzzy
 #| msgid "Time limit"
 msgid "Time limit:"
 msgstr "Laiko limitas"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:486
+#: src/gui/dialogs/multiplayer/lobby.cpp:495
 #, fuzzy
 #| msgid "Use map settings"
 msgid "Use map settings:"
 msgstr "Naudoti žemėlapio nustatymus"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:494
+#: src/gui/dialogs/multiplayer/lobby.cpp:503
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:519
+#: src/gui/dialogs/multiplayer/lobby.cpp:528
 msgid "Observers allowed"
 msgstr "Stebėtojai leidžiami"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:522
+#: src/gui/dialogs/multiplayer/lobby.cpp:531
 msgid "Observers not allowed"
 msgstr "Stebėtojai neleidžiami"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:957
+#: src/gui/dialogs/multiplayer/lobby.cpp:973
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at http://bugs.wesnoth.org."
@@ -7508,6 +7504,11 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
+
+#, fuzzy
+#~| msgid "unlimited"
+#~ msgid "FPS limiter"
+#~ msgstr "neribotas"
 
 #, fuzzy
 #~| msgid "Settings"

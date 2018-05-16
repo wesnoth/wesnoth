@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-09 03:48-0300\n"
+"POT-Creation-Date: 2018-05-15 23:33-0400\n"
 "PO-Revision-Date: 2010-10-04 14:32+0100\n"
 "Last-Translator: Klemen Košir <klemen913@gmail.com>\n"
 "Language-Team: Slovenian\n"
@@ -2510,7 +2510,7 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<header>text='Multiplayer Modifications'</header>"
+"<header>text='Modifications'</header>"
 msgstr ""
 "\n"
 "\n"
@@ -2521,10 +2521,9 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"Modifications are optional scenario- and era-independent scripts for "
-"<italic>text='Multiplayer'</italic> games that can alter the default ruleset "
-"in various ways. You can choose and configure modifications when creating a "
-"new game."
+"Modifications are optional scenario- and era-independent scripts that can "
+"alter the default ruleset in various ways. You can choose and configure "
+"modifications when creating a new game."
 msgstr ""
 
 #. [topic]: id=using_addons
@@ -4836,7 +4835,7 @@ msgstr ""
 
 #. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:208 data/core/units.cfg:223
+#: data/core/units.cfg:208 data/core/units.cfg:233
 #, fuzzy
 #| msgid "race^Human"
 msgid "race^Dunefolk Human"
@@ -4844,7 +4843,7 @@ msgstr "Človek"
 
 #. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:209 data/core/units.cfg:224
+#: data/core/units.cfg:209 data/core/units.cfg:234
 #, fuzzy
 #| msgid "race+female^Human"
 msgid "race+female^Dunefolk Human"
@@ -4852,7 +4851,7 @@ msgstr "Človek"
 
 #. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:210 data/core/units.cfg:225
+#: data/core/units.cfg:210 data/core/units.cfg:235
 #, fuzzy
 #| msgid "race+plural^Undead"
 msgid "race+plural^Dunefolk"
@@ -4861,44 +4860,95 @@ msgstr "Nemrtvi"
 #. [race]: id=dunefolk
 #: data/core/units.cfg:211
 msgid ""
-"The Dunefolk are a human culture inhabiting the dry deserts in the southern "
-"region of the Great Continent."
+"An offshoot of a forgotten nomadic civilization, the Dunefolk humans lay "
+"claim to the river valleys and oases of the Sandy Wastes. How they came to "
+"inhabit this far corner of the Great Continent is unknown. Their legends "
+"tell of many long and perilous travels through far-flung lands, but the true "
+"origin of their people is a topic of endless and heated debate among even "
+"the most erudite of their scholars.\n"
+"\n"
+"Whatever their origin, the Dunefolk have thrived. Bustling cities stand "
+"proudly in the largest fertile regions. Skilled artisans, fine smiths, and "
+"wealthy merchants form the backbone of the urban economy. Each of these "
+"cities also enjoys a degree of independence less common in the more "
+"centralized nations to the north, many even maintaining their own standing "
+"armies. In times of need, however, each and all rally to a higher authority "
+"designated to protect the superior interest of the nation.\n"
+"\n"
+"Those who have not settled in these urban centers still adhere to the "
+"lifestyle of their ancestors, roaming the dunes and leading their herds from "
+"one watering hole to another. They are most active during the early hours of "
+"dawn and the onset of dusk, when the wastelands are neither too hot nor too "
+"cold. Their skill at moving through the sands is excellent even by Dunefolk "
+"standards. Although sometimes regarded with contempt by their city "
+"counterparts, they provide an invaluable service as mobile, light troops in "
+"war, or as escorts for trading caravans during times of peace.\n"
+"\n"
+"The Dunefolk's inclination towards trade and exploration has allowed their "
+"cities to amass immense fortunes, a fact regarded both with admiration and "
+"envy by other races. Mutual interests have fostered cordial relations with "
+"neighboring Naga tribes, but more secretive races such as Drakes and Elves "
+"have always considered Dunefolk expeditions to be too intrusive, especially "
+"when they venture close to territorial boundaries. It is not uncommon for "
+"caravans to fall prey to troll ambushes in the mountains, something that has "
+"given rise to countless tales of unimaginable treasure amassed in hidden "
+"caves.\n"
+"\n"
+"As a result of living in hostile environments for centuries, the Dunefolk "
+"have developed rational methods of enquiry through which they continue to "
+"improve their understanding of the world. Their study of herbal medicine "
+"keeps their warriors and workers fresh and healthy. Their knowledge of "
+"alchemy allows them to tame fire and wield it as a deadly weapon in battle. "
+"At the same time, this analytical mindset has distanced them from magical "
+"arts; to the rational mind, magic is uncontrollable, unpredictable, and "
+"hence unreliable. For this reason, the Dunefolk especially loathe the "
+"perversions of necromancy and the dark arts, even moreso than other races.\n"
+"\n"
+"The Dunefolk's inquisitive and explorative nature does not preclude military "
+"strength. Not only do they field nimble light troops, cataphracts, and "
+"heavily armored infantry, but their keen knowledge of technology grants them "
+"a decisive advantage over their opponents. When facing the Dunefolk in "
+"battle, however, the most fearsome sight is certainly their deployment of "
+"ferocious and bizarre beasts. From the majestic Roc to the imposing Wyvern, "
+"their synergy with these creatures allows for great versatility in combat. "
+"The origins of this tradition likely lie in the heritage of the Dunefolk's "
+"distant past in the exotic far corners of Irdya."
 msgstr ""
 
 #. [race]: id=khalifate
-#: data/core/units.cfg:226
+#: data/core/units.cfg:236
 msgid "This race does not have a description yet."
 msgstr ""
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:237
+#: data/core/units.cfg:247
 msgid "race^Saurian"
 msgstr "Zavrijec"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:238
+#: data/core/units.cfg:248
 msgid "race+female^Saurian"
 msgstr "Zavrijka"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:239
+#: data/core/units.cfg:249
 msgid "race^Saurians"
 msgstr "Zavrijci"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:249
+#: data/core/units.cfg:259
 #, fuzzy
 msgid "race^Mechanical"
 msgstr "mehanska"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:250
+#: data/core/units.cfg:260
 #, fuzzy
 msgid "race+plural^Mechanical"
 msgstr "mehanska"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:251
+#: data/core/units.cfg:261
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -4907,25 +4957,25 @@ msgid ""
 msgstr ""
 
 #. [race]: id=merman
-#: data/core/units.cfg:260
+#: data/core/units.cfg:270
 #, fuzzy
 msgid "race^Merman"
 msgstr "Razno"
 
 #. [race]: id=merman
-#: data/core/units.cfg:261
+#: data/core/units.cfg:271
 msgid "race^Mermaid"
 msgstr ""
 
 #. [race]: id=merman
-#: data/core/units.cfg:262
+#: data/core/units.cfg:272
 #, fuzzy
 #| msgid "race^Troll"
 msgid "race^Merfolk"
 msgstr "Trol"
 
 #. [race]: id=merman
-#: data/core/units.cfg:264
+#: data/core/units.cfg:274
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -4939,24 +4989,24 @@ msgid ""
 msgstr ""
 
 #. [race]: id=monster
-#: data/core/units.cfg:272
+#: data/core/units.cfg:282
 msgid "race^Monster"
 msgstr "Pošast"
 
 #. [race]: id=monster
-#: data/core/units.cfg:273
+#: data/core/units.cfg:283
 #, fuzzy
 #| msgid "race^Monster"
 msgid "race+female^Monster"
 msgstr "Pošast"
 
 #. [race]: id=monster
-#: data/core/units.cfg:274
+#: data/core/units.cfg:284
 msgid "race^Monsters"
 msgstr "Pošasti"
 
 #. [race]: id=monster
-#: data/core/units.cfg:275
+#: data/core/units.cfg:285
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -4964,24 +5014,24 @@ msgid ""
 msgstr ""
 
 #. [race]: id=naga
-#: data/core/units.cfg:282
+#: data/core/units.cfg:292
 msgid "race^Naga"
 msgstr "Naga"
 
 #. [race]: id=naga
-#: data/core/units.cfg:283
+#: data/core/units.cfg:293
 #, fuzzy
 #| msgid "race^Nagani"
 msgid "race^Nagini"
 msgstr "Nagini"
 
 #. [race]: id=naga
-#: data/core/units.cfg:284
+#: data/core/units.cfg:294
 msgid "race^Nagas"
 msgstr "Nage"
 
 #. [race]: id=naga
-#: data/core/units.cfg:285
+#: data/core/units.cfg:295
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -4999,23 +5049,23 @@ msgid ""
 msgstr ""
 
 #. [race]: id=ogre
-#: data/core/units.cfg:293
+#: data/core/units.cfg:303
 msgid "race^Ogre"
 msgstr "Oger"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:294
+#: data/core/units.cfg:304
 #, fuzzy
 msgid "race+female^Ogre"
 msgstr "postarana"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:295
+#: data/core/units.cfg:305
 msgid "race^Ogres"
 msgstr "Ogri"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:296
+#: data/core/units.cfg:306
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -5034,22 +5084,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:304
+#: data/core/units.cfg:314
 msgid "race^Orc"
 msgstr "Ork"
 
 #. [race]: id=orc
-#: data/core/units.cfg:305
+#: data/core/units.cfg:315
 msgid "race+female^Orc"
 msgstr "Orkinja"
 
 #. [race]: id=orc
-#: data/core/units.cfg:306
+#: data/core/units.cfg:316
 msgid "race^Orcs"
 msgstr "Orki"
 
 #. [race]: id=orc
-#: data/core/units.cfg:307
+#: data/core/units.cfg:317
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -5103,7 +5153,7 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:318
+#: data/core/units.cfg:328
 msgid ""
 "\n"
 "\n"
@@ -5112,23 +5162,23 @@ msgid ""
 msgstr ""
 
 #. [race]: id=troll
-#: data/core/units.cfg:327
+#: data/core/units.cfg:337
 msgid "race^Troll"
 msgstr "Trol"
 
 #. [race]: id=troll
-#: data/core/units.cfg:328
+#: data/core/units.cfg:338
 #, fuzzy
 msgid "race+female^Troll"
 msgstr "zvesta"
 
 #. [race]: id=troll
-#: data/core/units.cfg:329
+#: data/core/units.cfg:339
 msgid "race^Trolls"
 msgstr "Troli"
 
 #. [race]: id=troll
-#: data/core/units.cfg:330
+#: data/core/units.cfg:340
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -5167,22 +5217,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=undead
-#: data/core/units.cfg:350
+#: data/core/units.cfg:360
 msgid "race^Undead"
 msgstr "Nemrtvi"
 
 #. [race]: id=undead
-#: data/core/units.cfg:351
+#: data/core/units.cfg:361
 msgid "race+female^Undead"
 msgstr "Nemrtva"
 
 #. [race]: id=undead
-#: data/core/units.cfg:352
+#: data/core/units.cfg:362
 msgid "race+plural^Undead"
 msgstr "Nemrtvi"
 
 #. [race]: id=undead
-#: data/core/units.cfg:353
+#: data/core/units.cfg:363
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -5211,24 +5261,24 @@ msgid ""
 msgstr ""
 
 #. [race]: id=wolf
-#: data/core/units.cfg:366
+#: data/core/units.cfg:376
 msgid "race^Wolf"
 msgstr "Volk"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:367
+#: data/core/units.cfg:377
 #, fuzzy
 #| msgid "race+female^Elf"
 msgid "race+female^Wolf"
 msgstr "Vilinka"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:368
+#: data/core/units.cfg:378
 msgid "race^Wolves"
 msgstr "Volkovi"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:369
+#: data/core/units.cfg:379
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -5240,17 +5290,17 @@ msgid ""
 msgstr ""
 
 #. [race]: id=wose
-#: data/core/units.cfg:378
+#: data/core/units.cfg:388
 msgid "race^Wose"
 msgstr "Ent"
 
 #. [race]: id=wose
-#: data/core/units.cfg:379
+#: data/core/units.cfg:389
 msgid "race^Woses"
 msgstr "Enti"
 
 #. [race]: id=wose
-#: data/core/units.cfg:380
+#: data/core/units.cfg:390
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "

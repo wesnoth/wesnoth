@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-09 06:49 UTC\n"
+"POT-Creation-Date: 2018-05-16 03:33 UTC\n"
 "PO-Revision-Date: 2007-05-15 02:44+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -728,7 +728,9 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:804
-msgid "These fields seem strangely vacant. Where are the horses?"
+#, fuzzy
+#| msgid "These fields seem strangely vacant. Where are the horses?"
+msgid "These fields seem strangely vacant. Where are the dustboks?"
 msgstr "Странно, защо тези полета са пусти, къде са конете?"
 
 #. [message]: speaker=Nym
@@ -749,16 +751,24 @@ msgstr "Безопасно ли е вече? Толкова се изплаши�
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:856
-msgid "Where are all the other horses?"
+#, fuzzy
+#| msgid "Where are all the other horses?"
+msgid "Where are all the other dustboks?"
 msgstr "Къде са всички коне?"
 
 #. [message]: speaker=Naru
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:861
+#, fuzzy
+#| msgid ""
+#| "A hunting party left just yesterday, so unless the rocks fell all over "
+#| "the land, many of the horses have probably survived. The few that "
+#| "remained here were scared by the falling rocks and fled into the night. "
+#| "It took all my skill to calm Yasi and keep him from running."
 msgid ""
 "A hunting party left just yesterday, so unless the rocks fell all over the "
-"land, many of the horses have probably survived. The few that remained here "
-"were scared by the falling rocks and fled into the night. It took all my "
-"skill to calm Yasi and keep him from running."
+"land, many of the dustboks have probably survived. The few that remained "
+"here were scared by the falling rocks and fled into the night. It took all "
+"my skill to calm Yasi and keep him from running."
 msgstr ""
 "Вчера една ловна дружина с повечето коне и, освен ако не са валяли камъни "
 "навсякъде, те би трябвало да са в безопасност. Онези, които бях останали "
@@ -772,7 +782,7 @@ msgid ""
 "We’ll need your help in checking to see if the outer settlements survived. "
 "Who knows what kinds of damage they suffered in the night? And perhaps some "
 "of the people out in the desert have been able to round up some of the loose "
-"horses."
+"dusties."
 msgstr ""
 "Ще ни е нужна помощта ти, за да проверим дали другите селища са наред. Кой "
 "знае какво може да им се е случило през нощта. Освен това, някои от другите "
@@ -15841,6 +15851,12 @@ msgstr "Пустинен друид"
 msgid "sand"
 msgstr "Мелусанд"
 
+#. [unit_type]: id=Quenoth Dustbok, race=monster, description=
+#. Made-up animal name derived from 'dust' (sand) and 'bok' as in real-world steenbok or springbok antelope
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Dustbok.cfg:6
+msgid "Dustbok"
+msgstr ""
+
 #. [unit_type]: id=Quenoth Fighter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:5
 #, fuzzy
@@ -16429,6 +16445,13 @@ msgstr ""
 
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:76
+#, fuzzy
+#| msgid "female^Desert Ranger"
+msgid "female^teaching"
+msgstr "Пустинна рейнджърка"
+
+#. [dummy]: id=teaching
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:77
 msgid ""
 "At the start of every turn, this unit redistributes its experience points to "
 "all the units of the same side adjacent to it. If no suitable unit is "
@@ -16436,23 +16459,27 @@ msgid ""
 msgstr ""
 
 #. [attacks]: id=shock
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:85
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:86
 msgid "shock"
 msgstr ""
 
 #. [attacks]: id=shock
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:87
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:88
 msgid ""
 "When this attack is used on offense, the opponent will retaliate with one "
 "less strike than normally, to a minimum of one strike."
 msgstr ""
 
 #. [dummy]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:101
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:100
 msgid "formation"
 msgstr ""
+
+#. [dummy]: id=formation
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:101
+#, fuzzy
+msgid "female^formation"
+msgstr "Божествено присъствие"
 
 #. [dummy]: id=formation
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:102
@@ -16469,78 +16496,98 @@ msgstr ""
 
 #. [dummy]: id=disengage
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:110
+#, fuzzy
+#| msgid "female^Desert Hunter"
+msgid "female^disengage"
+msgstr "Пустинна ловджийка"
+
+#. [dummy]: id=disengage
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:111
 msgid ""
 "If this unit doesn’t move before attacking, it will retain its movement "
 "points after the attack."
 msgstr ""
 
 #. [dummy]: id=daze
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:117
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:118
 msgid "daze"
 msgstr ""
 
 #. [dummy]: id=daze
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:118
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:119
 msgid ""
 "When hit with this attack, an enemy suffers a 10% penalty both to their "
 "defense and chance to hit for one turn, except for magical attacks."
 msgstr ""
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:125
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:126
 msgid "distract"
 msgstr ""
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:126
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:127
+#, fuzzy
+#| msgid "female^Desert Hunter"
+msgid "female^distract"
+msgstr "Пустинна ловджийка"
+
+#. [skirmisher]: id=distract
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:128
 msgid ""
 "This unit negates enemy Zones of Control around itself for allied units (but "
 "not for itself)."
 msgstr ""
 
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:137
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:139
 msgid "support"
 msgstr ""
 
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:138
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:140
+#, fuzzy
+msgid "female^support"
+msgstr "Пустинна ловджийка"
+
+#. [dummy]: id=support
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:141
 msgid "The upkeep costs of adjacent friendly units are lowered by 1."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:143
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:146
 msgid ""
 " This unit’s melee attack can overwhelm the defenses of enemies, preventing "
 "them from retaliating as effectively."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:146
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:149
 msgid " Groups of units of this type are able to shield each other in combat."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:149
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:152
 msgid " This unit can move either before or after attacking."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:152
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:155
 msgid ""
 " This unit can daze its enemies, reducing their accuracy and defense until "
 "they end a turn."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:155
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:158
 msgid ""
 "This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
 msgstr ""
 
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:362
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:365
 msgid "dazed"
 msgstr ""
 
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:363
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:366
 #, fuzzy
 #| msgid "female^Desert Hunter"
 msgid "female^dazed"
@@ -18012,9 +18059,6 @@ msgstr ""
 #~ "вниманието на врага, рейнджърът може да заобиколи врага и да го атакува в "
 #~ "гръб като нанесе двойно поражение."
 
-#~ msgid "female^Desert Ranger"
-#~ msgstr "Пустинна рейнджърка"
-
 #~ msgid "Desert Rider"
 #~ msgstr "Пустинен ездач"
 
@@ -18097,10 +18141,6 @@ msgstr ""
 #~ "почти всеки терен, освен дълбока вода, на която пустинните елфи, така или "
 #~ "иначе рядко се натъкват. Тяхната магическа сила е приспособена към живота "
 #~ "сред пясъците, затова не действа над дълбоки води."
-
-#, fuzzy
-#~ msgid "female^Desert Star"
-#~ msgstr "Пустинна ловджийка"
 
 #, fuzzy
 #~ msgid ""

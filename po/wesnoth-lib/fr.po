@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-09 03:49-0300\n"
+"POT-Creation-Date: 2018-05-15 23:33-0400\n"
 "PO-Revision-Date: 2018-05-12 17:27+0200\n"
 "Last-Translator: Gérard Bodin <gbodin.qc@gmail.com>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
@@ -2555,7 +2555,7 @@ msgstr "Trier par ordre chronologique approximatif des évènement de l'histoire
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:276
-#: src/gui/dialogs/multiplayer/lobby.cpp:462
+#: src/gui/dialogs/multiplayer/lobby.cpp:466
 msgid "Modifications"
 msgstr "Modifications"
 
@@ -2842,7 +2842,7 @@ msgstr "Description :"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:478
+#: src/gui/dialogs/multiplayer/lobby.cpp:488
 msgid "Experience modifier:"
 msgstr "Modificateur d'expérience :"
 
@@ -2906,7 +2906,7 @@ msgstr "Or :"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#: src/gui/dialogs/multiplayer/lobby.cpp:479
+#: src/gui/dialogs/multiplayer/lobby.cpp:489
 msgid "Gold per village:"
 msgstr "Or par village :"
 
@@ -2977,7 +2977,7 @@ msgstr "Choix du générateur de carte :"
 #. [button]: id=settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
-#: src/gui/dialogs/multiplayer/lobby.cpp:477
+#: src/gui/dialogs/multiplayer/lobby.cpp:487
 msgid "Settings"
 msgstr "Paramètres"
 
@@ -4248,7 +4248,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:177
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:480
+#: src/gui/dialogs/multiplayer/lobby.cpp:490
 msgid "Map size:"
 msgstr "Taille de la carte :"
 
@@ -4794,29 +4794,25 @@ msgstr "Grossissement de la police :"
 msgid "Set the scaling factor of fonts"
 msgstr "Change le facteur de grossissement des polices"
 
-# Un accord à faire peut-être ?
-# Qu'est-ce qui est illimité ?
 #. [toggle_button]: id=fps_limiter
-#: data/gui/window/preferences/03_display.cfg:273
-#, fuzzy
-#| msgid "unlimited"
-msgid "FPS limiter"
-msgstr "illimité"
+#: data/gui/window/preferences/03_display.cfg:275
+msgid "Limit FPS"
+msgstr ""
 
 #. [toggle_button]: id=fps_limiter
-#: data/gui/window/preferences/03_display.cfg:274
+#: data/gui/window/preferences/03_display.cfg:276
 msgid ""
-"Disabling this increases CPU usage to 100 % but may slightly improve "
+"Disabling this increases CPU usage to 100% but may slightly improve "
 "performance at high resolutions"
 msgstr ""
 
 #. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:289
+#: data/gui/window/preferences/03_display.cfg:291
 msgid "Theme"
 msgstr "Thème"
 
 #. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:290
+#: data/gui/window/preferences/03_display.cfg:292
 msgid "Change the in-game theme"
 msgstr "Changer le thème du jeu"
 
@@ -5436,31 +5432,31 @@ msgstr "Erreur"
 msgid "Details:"
 msgstr "Détails :"
 
-#: src/build_info.cpp:259
+#: src/build_info.cpp:260
 msgid "feature^Experimental OpenMP support"
 msgstr "Support OpenMP expérimental"
 
-#: src/build_info.cpp:264
+#: src/build_info.cpp:265
 msgid "feature^JPG screenshots"
 msgstr "Capture d'écran au format PNG"
 
-#: src/build_info.cpp:271
+#: src/build_info.cpp:272
 msgid "feature^Lua console completion"
 msgstr "Complétion de la console Lua"
 
-#: src/build_info.cpp:276
+#: src/build_info.cpp:277
 msgid "feature^Legacy bidirectional rendering"
 msgstr "Ancien rendu bidirectionnel"
 
-#: src/build_info.cpp:283
+#: src/build_info.cpp:284
 msgid "feature^D-Bus notifications back end"
 msgstr "Notifications via le back-end D-Bus"
 
-#: src/build_info.cpp:292
+#: src/build_info.cpp:293
 msgid "feature^Win32 notifications back end"
 msgstr "Notifications via le back-end Win32"
 
-#: src/build_info.cpp:298
+#: src/build_info.cpp:299
 msgid "feature^Cocoa notifications back end"
 msgstr "Notifications via le back-end Cocoa"
 
@@ -5876,7 +5872,7 @@ msgid "Attacker vulnerability vs"
 msgstr "Vulnérabilité de l'attaquant contre"
 
 #: src/gui/dialogs/campaign_selection.cpp:274
-#: src/gui/dialogs/multiplayer/lobby.cpp:467
+#: src/gui/dialogs/multiplayer/lobby.cpp:471
 #, fuzzy
 #| msgid "Modifications"
 msgid "active_modifications^None"
@@ -6068,12 +6064,12 @@ msgid "Unknown"
 msgstr "Inconnu"
 
 #: src/gui/dialogs/game_stats.cpp:200 src/gui/dialogs/game_stats.cpp:203
-#: src/gui/dialogs/multiplayer/lobby.cpp:475
+#: src/gui/dialogs/multiplayer/lobby.cpp:485
 msgid "no"
 msgstr "non"
 
 #: src/gui/dialogs/game_stats.cpp:200 src/gui/dialogs/game_stats.cpp:203
-#: src/gui/dialogs/multiplayer/lobby.cpp:475
+#: src/gui/dialogs/multiplayer/lobby.cpp:485
 msgid "yes"
 msgstr "oui"
 
@@ -6241,41 +6237,39 @@ msgstr "Parties : $num_shown affichées sur $num_total"
 msgid "$game_name (Era: $era_name)"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:455
+#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#, fuzzy
+#| msgid "addon_state^Not installed"
+msgid "era_or_mod^not installed"
+msgstr "Non installée"
+
+#: src/gui/dialogs/multiplayer/lobby.cpp:459
 #, fuzzy
 #| msgid "Era:"
 msgid "Era"
 msgstr "Ère :"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:459
-msgid "era^missing"
-msgstr ""
-
-#: src/gui/dialogs/multiplayer/lobby.cpp:481
-msgid "Registered users only:"
-msgstr "Utilisateurs enregistrés seulement :"
-
-#: src/gui/dialogs/multiplayer/lobby.cpp:482
+#: src/gui/dialogs/multiplayer/lobby.cpp:491
 msgid "Reloaded:"
 msgstr "Rechargé :"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:483
+#: src/gui/dialogs/multiplayer/lobby.cpp:492
 msgid "Shared vision:"
 msgstr "Vue partagée :"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:484
+#: src/gui/dialogs/multiplayer/lobby.cpp:493
 msgid "Shuffle sides:"
 msgstr "Mélange des camps :"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:485
+#: src/gui/dialogs/multiplayer/lobby.cpp:494
 msgid "Time limit:"
 msgstr "Limite de temps :"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:486
+#: src/gui/dialogs/multiplayer/lobby.cpp:495
 msgid "Use map settings:"
 msgstr "Utiliser les paramètres de la carte :"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:494
+#: src/gui/dialogs/multiplayer/lobby.cpp:503
 #, fuzzy
 #| msgid ""
 #| "One or more items need to be installed\n"
@@ -6287,15 +6281,15 @@ msgstr ""
 "Un ou plusieurs éléments doivent être installés\n"
 "pour rejoindre cette partie."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:519
+#: src/gui/dialogs/multiplayer/lobby.cpp:528
 msgid "Observers allowed"
 msgstr "Observateurs autorisés"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:522
+#: src/gui/dialogs/multiplayer/lobby.cpp:531
 msgid "Observers not allowed"
 msgstr "Observateurs interdits"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:957
+#: src/gui/dialogs/multiplayer/lobby.cpp:973
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at http://bugs.wesnoth.org."
@@ -7699,6 +7693,16 @@ msgid ""
 msgstr ""
 "La clef « $deprecated_key » a été remplacée par « $key ». « $deprecated_key "
 "» ne sera plus maintenue à partir de la version $removal_version."
+
+# Un accord à faire peut-être ?
+# Qu'est-ce qui est illimité ?
+#, fuzzy
+#~| msgid "unlimited"
+#~ msgid "FPS limiter"
+#~ msgstr "illimité"
+
+#~ msgid "Registered users only:"
+#~ msgstr "Utilisateurs enregistrés seulement :"
 
 #~ msgid "Refresh"
 #~ msgstr "Rafraîchir"

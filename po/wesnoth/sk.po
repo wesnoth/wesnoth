@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-06 05:31-0300\n"
+"POT-Creation-Date: 2018-05-15 23:33-0400\n"
 "PO-Revision-Date: 2018-04-24 01:06+0200\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -315,7 +315,7 @@ msgstr "Joystick: mŕtva zóna pre ovládač tlaku"
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:358
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1086
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1129
 msgid "poisoned"
 msgstr "otrávený"
 
@@ -3370,14 +3370,14 @@ msgstr "Neprekonateľné"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:447
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:451
 msgid "Fog"
 msgstr "Hmla"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:450
-#: src/game_initialization/lobby_data.cpp:453
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:454
+#: src/game_initialization/lobby_data.cpp:457
 msgid "Shroud"
 msgstr "Odkrývanie mapy"
 
@@ -3795,31 +3795,31 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1086
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1129
 msgid "female^poisoned"
 msgstr "otrávená"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1093
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1136
 msgid "female^slowed"
 msgstr "spomalená"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1093
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1136
 msgid "slowed"
 msgstr "spomalený"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1099
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1142
 msgid "female^petrified"
 msgstr "skamenená"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1099
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1142
 msgid "petrified"
 msgstr "skamenený"
 
@@ -3880,12 +3880,12 @@ msgid "Cancel"
 msgstr "Storno"
 
 #. [language]
-#: data/scenario-test.cfg:4065
+#: data/scenario-test.cfg:4079
 msgid "very long"
 msgstr "veľmi dlhé"
 
 #. [language]
-#: data/scenario-test.cfg:4066
+#: data/scenario-test.cfg:4080
 msgid "electrical"
 msgstr "elektrický"
 
@@ -4898,7 +4898,7 @@ msgstr ""
 "liečia."
 
 #: src/actions/attack.cpp:386 src/actions/attack.cpp:656
-#: src/actions/attack.cpp:1369
+#: src/actions/attack.cpp:1424
 msgid "An invalid attacker weapon got selected."
 msgstr "Vybraná neplatná útočná zbraň."
 
@@ -5710,36 +5710,36 @@ msgstr "Informácia: "
 msgid "$login|’s game"
 msgstr "$login-ova hra"
 
-#: src/game_initialization/connect_engine.cpp:103
+#: src/game_initialization/connect_engine.cpp:104
 msgid "Team"
 msgstr "Tím"
 
-#: src/game_initialization/connect_engine.cpp:995
+#: src/game_initialization/connect_engine.cpp:993
 msgid "Anonymous player"
 msgstr "Anonymný hráč"
 
-#: src/game_initialization/connect_engine.cpp:1000
-#: src/game_initialization/connect_engine.cpp:1294
+#: src/game_initialization/connect_engine.cpp:998
+#: src/game_initialization/connect_engine.cpp:1292
 msgid "Computer Player"
 msgstr "Počítač"
 
-#: src/game_initialization/connect_engine.cpp:1042
+#: src/game_initialization/connect_engine.cpp:1040
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1288
 msgid "Network Player"
 msgstr "Sieťový hráč"
 
-#: src/game_initialization/connect_engine.cpp:1293
+#: src/game_initialization/connect_engine.cpp:1291
 msgid "Local Player"
 msgstr "Človek"
 
-#: src/game_initialization/connect_engine.cpp:1295
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "Empty"
 msgstr "Nič"
 
-#: src/game_initialization/connect_engine.cpp:1298
+#: src/game_initialization/connect_engine.cpp:1296
 msgid "Reserved"
 msgstr "Rezervované"
 
@@ -5817,67 +5817,63 @@ msgstr "Chýbajúci doplnok: $id"
 msgid "Unknown era"
 msgstr "Neznáma éra"
 
-#: src/game_initialization/lobby_data.cpp:290
-msgid "(missing)"
-msgstr "(chýba)"
-
-#: src/game_initialization/lobby_data.cpp:336
-#: src/game_initialization/lobby_data.cpp:366
+#: src/game_initialization/lobby_data.cpp:340
+#: src/game_initialization/lobby_data.cpp:370
 msgid "S"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:355
+#: src/game_initialization/lobby_data.cpp:359
 msgid "Remote scenario"
 msgstr "Scéna z iného počítača"
 
-#: src/game_initialization/lobby_data.cpp:374
-#: src/game_initialization/lobby_data.cpp:397
+#: src/game_initialization/lobby_data.cpp:378
+#: src/game_initialization/lobby_data.cpp:401
 msgid "C"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:402
+#: src/game_initialization/lobby_data.cpp:406
 msgid "Unknown scenario"
 msgstr "Neznáma scéna"
 
-#: src/game_initialization/lobby_data.cpp:412
+#: src/game_initialization/lobby_data.cpp:416
 msgid "Reloaded game"
 msgstr "Znovunačítaná hra"
 
-#: src/game_initialization/lobby_data.cpp:427
+#: src/game_initialization/lobby_data.cpp:431
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Voľných miest:"
 msgstr[1] "Voľné miesto:"
 msgstr[2] "Voľné miesta:"
 
-#: src/game_initialization/lobby_data.cpp:429
+#: src/game_initialization/lobby_data.cpp:433
 msgid "mp_game_available_slots^Full"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:440
-#: src/game_initialization/lobby_data.cpp:442 src/savegame.cpp:631
+#: src/game_initialization/lobby_data.cpp:444
+#: src/game_initialization/lobby_data.cpp:446 src/savegame.cpp:631
 msgid "Turn"
 msgstr "Kolo"
 
-#: src/game_initialization/lobby_data.cpp:455
+#: src/game_initialization/lobby_data.cpp:459
 #, fuzzy
 #| msgid "vision: "
 msgid "vision^none"
 msgstr "dohľadnosť: "
 
-#: src/game_initialization/lobby_data.cpp:464
+#: src/game_initialization/lobby_data.cpp:468
 #, fuzzy
 #| msgid "Time limit"
 msgid "time limit^none"
 msgstr "Časový limit"
 
-#: src/game_initialization/lobby_data.cpp:497
+#: src/game_initialization/lobby_data.cpp:501
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:511
+#: src/game_initialization/lobby_data.cpp:515
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -7925,35 +7921,39 @@ msgstr "neutrálna"
 msgid "female^liminal"
 msgstr "na rozhraní"
 
-#: src/units/unit.cpp:1783
+#: src/units/unit.cpp:643
+msgid "Unit with negative HP found"
+msgstr ""
+
+#: src/units/unit.cpp:1797
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1789
+#: src/units/unit.cpp:1803
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> životov"
 
-#: src/units/unit.cpp:1799
+#: src/units/unit.cpp:1813
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> ťahov"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> ťah"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> ťahy"
 
-#: src/units/unit.cpp:1805
+#: src/units/unit.cpp:1819
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> videnie"
 
-#: src/units/unit.cpp:1809
+#: src/units/unit.cpp:1823
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> blokovanie"
 
-#: src/units/unit.cpp:1814
+#: src/units/unit.cpp:1828
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr ""
 "<span color=\"$color\">$number_or_percent</span> skúseností na povýšenie"
 
-#: src/units/unit.cpp:1818
+#: src/units/unit.cpp:1832
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -7961,11 +7961,11 @@ msgstr[0] "<span color=\"$color\">$number_or_percent</span> útokov za kolo"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> útok za kolo"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> útoky za kolo"
 
-#: src/units/unit.cpp:1825
+#: src/units/unit.cpp:1839
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> cena za privolanie"
 
-#: src/units/unit.cpp:2230
+#: src/units/unit.cpp:2244
 msgid "$effect_description per level"
 msgstr "$effect_description za každú úroveň"
 
@@ -7995,25 +7995,28 @@ msgstr "$year Po P."
 msgid "Disconnected from server."
 msgstr "Pripoj sa na server"
 
-#: src/whiteboard/manager.cpp:1115
+#: src/whiteboard/manager.cpp:1117
 msgid "SHOW ALL allies’ plans"
 msgstr "ZOBRAZIŤ VŠETKY plány spojencov"
 
-#: src/whiteboard/manager.cpp:1116
+#: src/whiteboard/manager.cpp:1118
 msgid "HIDE ALL allies’ plans"
 msgstr "SKRYŤ VŠETKY plány spojencov"
 
-#: src/whiteboard/manager.cpp:1130
+#: src/whiteboard/manager.cpp:1132
 msgid "Show plans for $player"
 msgstr "Ukáž plán pre $player"
 
-#: src/whiteboard/manager.cpp:1132
+#: src/whiteboard/manager.cpp:1134
 msgid "Hide plans for $player"
 msgstr "Skryť plán pre $player"
 
-#: src/whiteboard/manager.cpp:1135
+#: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Nastavenia tabule"
+
+#~ msgid "(missing)"
+#~ msgstr "(chýba)"
 
 #~ msgid ""
 #~ "Wesnoth has many different sagas waiting to be played. Fight to regain "

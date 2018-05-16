@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-06 05:31-0300\n"
+"POT-Creation-Date: 2018-05-15 23:33-0400\n"
 "PO-Revision-Date: 2016-01-10 14:11+0100\n"
 "Last-Translator: Susanna Björverud <susanna.bjorverud@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -322,7 +322,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:358
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1086
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1129
 msgid "poisoned"
 msgstr "förgiftad"
 
@@ -3398,14 +3398,14 @@ msgstr "Oframkomlig"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:447
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:451
 msgid "Fog"
 msgstr "Dimma"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:450
-#: src/game_initialization/lobby_data.cpp:453
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:454
+#: src/game_initialization/lobby_data.cpp:457
 msgid "Shroud"
 msgstr "Slöja"
 
@@ -3807,31 +3807,31 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1086
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1129
 msgid "female^poisoned"
 msgstr "förgiftad"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1093
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1136
 msgid "female^slowed"
 msgstr "nersaktad"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1093
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1136
 msgid "slowed"
 msgstr "nersaktad"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1099
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1142
 msgid "female^petrified"
 msgstr "förstenad"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1099
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1142
 msgid "petrified"
 msgstr "förstenad"
 
@@ -3893,12 +3893,12 @@ msgid "Cancel"
 msgstr "Avbryt"
 
 #. [language]
-#: data/scenario-test.cfg:4065
+#: data/scenario-test.cfg:4079
 msgid "very long"
 msgstr "väldigt långt"
 
 #. [language]
-#: data/scenario-test.cfg:4066
+#: data/scenario-test.cfg:4080
 msgid "electrical"
 msgstr "elektrisk"
 
@@ -4929,7 +4929,7 @@ msgstr ""
 "dock fortfarande helade."
 
 #: src/actions/attack.cpp:386 src/actions/attack.cpp:656
-#: src/actions/attack.cpp:1369
+#: src/actions/attack.cpp:1424
 msgid "An invalid attacker weapon got selected."
 msgstr "Ogiltigt attackvapen valt"
 
@@ -5756,36 +5756,36 @@ msgstr "Info:"
 msgid "$login|’s game"
 msgstr "$login|s spel"
 
-#: src/game_initialization/connect_engine.cpp:103
+#: src/game_initialization/connect_engine.cpp:104
 msgid "Team"
 msgstr "Lag"
 
-#: src/game_initialization/connect_engine.cpp:995
+#: src/game_initialization/connect_engine.cpp:993
 msgid "Anonymous player"
 msgstr "Anonym spelare"
 
-#: src/game_initialization/connect_engine.cpp:1000
-#: src/game_initialization/connect_engine.cpp:1294
+#: src/game_initialization/connect_engine.cpp:998
+#: src/game_initialization/connect_engine.cpp:1292
 msgid "Computer Player"
 msgstr "Datorspelare"
 
-#: src/game_initialization/connect_engine.cpp:1042
+#: src/game_initialization/connect_engine.cpp:1040
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1288
 msgid "Network Player"
 msgstr "Nätverksspelare"
 
-#: src/game_initialization/connect_engine.cpp:1293
+#: src/game_initialization/connect_engine.cpp:1291
 msgid "Local Player"
 msgstr "Lokal spelare"
 
-#: src/game_initialization/connect_engine.cpp:1295
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "Empty"
 msgstr "Tom"
 
-#: src/game_initialization/connect_engine.cpp:1298
+#: src/game_initialization/connect_engine.cpp:1296
 msgid "Reserved"
 msgstr "Reserverad"
 
@@ -5869,62 +5869,56 @@ msgstr "Saknar extramaterial: $id"
 msgid "Unknown era"
 msgstr "Okänd era"
 
-#: src/game_initialization/lobby_data.cpp:290
-#, fuzzy
-#| msgid " (missing)"
-msgid "(missing)"
-msgstr "(saknas)"
-
-#: src/game_initialization/lobby_data.cpp:336
-#: src/game_initialization/lobby_data.cpp:366
+#: src/game_initialization/lobby_data.cpp:340
+#: src/game_initialization/lobby_data.cpp:370
 msgid "S"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:355
+#: src/game_initialization/lobby_data.cpp:359
 msgid "Remote scenario"
 msgstr "Nätverksscenario"
 
-#: src/game_initialization/lobby_data.cpp:374
-#: src/game_initialization/lobby_data.cpp:397
+#: src/game_initialization/lobby_data.cpp:378
+#: src/game_initialization/lobby_data.cpp:401
 msgid "C"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:402
+#: src/game_initialization/lobby_data.cpp:406
 msgid "Unknown scenario"
 msgstr "Okänt scenario"
 
-#: src/game_initialization/lobby_data.cpp:412
+#: src/game_initialization/lobby_data.cpp:416
 msgid "Reloaded game"
 msgstr "Öppna spel igen"
 
-#: src/game_initialization/lobby_data.cpp:427
+#: src/game_initialization/lobby_data.cpp:431
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Ledig plats:"
 msgstr[1] "Lediga platser:"
 
-#: src/game_initialization/lobby_data.cpp:429
+#: src/game_initialization/lobby_data.cpp:433
 msgid "mp_game_available_slots^Full"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:440
-#: src/game_initialization/lobby_data.cpp:442 src/savegame.cpp:631
+#: src/game_initialization/lobby_data.cpp:444
+#: src/game_initialization/lobby_data.cpp:446 src/savegame.cpp:631
 msgid "Turn"
 msgstr "Drag"
 
-#: src/game_initialization/lobby_data.cpp:455
+#: src/game_initialization/lobby_data.cpp:459
 #, fuzzy
 #| msgid "vision"
 msgid "vision^none"
 msgstr "Version: "
 
-#: src/game_initialization/lobby_data.cpp:464
+#: src/game_initialization/lobby_data.cpp:468
 #, fuzzy
 #| msgid "Time limit"
 msgid "time limit^none"
 msgstr "Tidsgräns"
 
-#: src/game_initialization/lobby_data.cpp:497
+#: src/game_initialization/lobby_data.cpp:501
 #, fuzzy
 #| msgid ""
 #| "Host's version of $addon is too old: host's version $host_ver < your "
@@ -5936,7 +5930,7 @@ msgstr ""
 "Värdens version av $addon är för gammal: värdens version $host_ver < din "
 "version $local_ver."
 
-#: src/game_initialization/lobby_data.cpp:511
+#: src/game_initialization/lobby_data.cpp:515
 #, fuzzy
 #| msgid ""
 #| "Your version of $addon is out of date: host's version $host_ver > your "
@@ -8080,17 +8074,21 @@ msgstr "neutral"
 msgid "female^liminal"
 msgstr "perifer"
 
-#: src/units/unit.cpp:1783
+#: src/units/unit.cpp:643
+msgid "Unit with negative HP found"
+msgstr ""
+
+#: src/units/unit.cpp:1797
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1789
+#: src/units/unit.cpp:1803
 #, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "attack per drag"
 
-#: src/units/unit.cpp:1799
+#: src/units/unit.cpp:1813
 #, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8098,25 +8096,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "attack per drag"
 msgstr[1] "attack per drag"
 
-#: src/units/unit.cpp:1805
+#: src/units/unit.cpp:1819
 #, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "attack per drag"
 
-#: src/units/unit.cpp:1809
+#: src/units/unit.cpp:1823
 #, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "attack per drag"
 
-#: src/units/unit.cpp:1814
+#: src/units/unit.cpp:1828
 #, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "attack per drag"
 
-#: src/units/unit.cpp:1818
+#: src/units/unit.cpp:1832
 #, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8125,13 +8123,13 @@ msgid_plural ""
 msgstr[0] "attack per drag"
 msgstr[1] "attack per drag"
 
-#: src/units/unit.cpp:1825
+#: src/units/unit.cpp:1839
 #, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "attack per drag"
 
-#: src/units/unit.cpp:2230
+#: src/units/unit.cpp:2244
 msgid "$effect_description per level"
 msgstr "$effect_description per nivå"
 
@@ -8161,25 +8159,30 @@ msgstr ""
 msgid "Disconnected from server."
 msgstr "Anslut till server"
 
-#: src/whiteboard/manager.cpp:1115
+#: src/whiteboard/manager.cpp:1117
 msgid "SHOW ALL allies’ plans"
 msgstr "VISA ALL alierad planering"
 
-#: src/whiteboard/manager.cpp:1116
+#: src/whiteboard/manager.cpp:1118
 msgid "HIDE ALL allies’ plans"
 msgstr "DÖLJ ALL allierad planering"
 
-#: src/whiteboard/manager.cpp:1130
+#: src/whiteboard/manager.cpp:1132
 msgid "Show plans for $player"
 msgstr "Visa planering $player genomför"
 
-#: src/whiteboard/manager.cpp:1132
+#: src/whiteboard/manager.cpp:1134
 msgid "Hide plans for $player"
 msgstr "Dölj planering genomför $player"
 
-#: src/whiteboard/manager.cpp:1135
+#: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Inställningar för whiteboard"
+
+#, fuzzy
+#~| msgid " (missing)"
+#~ msgid "(missing)"
+#~ msgstr "(saknas)"
 
 #~ msgid ""
 #~ "Wesnoth has many different sagas waiting to be played. Fight to regain "

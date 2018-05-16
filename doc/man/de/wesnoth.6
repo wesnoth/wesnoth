@@ -118,9 +118,10 @@ Benutzt für diese Sitzung die \fISprache\fP (Symbol). Beispiel: \fB\-\-language
 ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIstufe\fP\fB=\fP\fIDomäne1\fP\fB,\fP\fIDomäne2\fP\fB,\fP\fI...\fP
-sets the severity level of the log domains.  \fBall\fP can be used to match any
-log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default the \fBwarning\fP level is used for most domains, but
-\fBdeprecation\fP defaults to none.
+Setzt die \fIStufe\fP der Debugausgabe. Verwenden Sie \fBall\fP, um sämtliche
+Domänen zu verwenden. Verfügbare \fIStufen\fP: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP. Für doie meisten Logdomänen wird standardmäßig
+wird die Stufe \fBwarning\fP verwendet, die \fBdeprecation\fP Domäne dagegen
+benutzt \fBnone\fP als Voreinstellung.
 .TP 
 \fB\-\-log\-precise\fP
 Zeigt die timestamps in der Logdatei mit höherer Genauigkeit.
@@ -149,8 +150,8 @@ Startet die Multiplayer Test Szenarios.
 .TP 
 \fB\-\-no\-delay\fP
 Das Spiel wird ohne Verzögerungen ausgeführt. Wird zum Ausführen grafischer
-Leistungsvergleiche verwendet. Diese Option ist standardmäßig aktiviert,
-wenn die Option \fB\-\-nogui\fP gesetzt ist.
+Benchmakrs verwendet. Diese Option ist standardmäßig aktiviert, wenn die
+Option \fB\-\-nogui\fP gesetzt ist.
 .TP 
 \fB\-\-noaddons\fP
 Startet das Programm ohne Add\-ons.
@@ -318,9 +319,10 @@ werden soll. Die Ära wird anhand ihrer ID bestimmt. Eine genaue Beschreibung
 der Rassen und Epochen ist in der Datei \fBdata/multiplayer.cfg\fP zu finden.
 .TP 
 \fB\-\-exit\-at\-end\fP
-exits once the scenario is over, without displaying victory/defeat dialog
-which normally requires the user to click End Scenario.  This is also used
-for scriptable benchmarking.
+Beendet das Spiel am Ende eines Szenarios, ohne die
+Sieg/Niederlage\-Übersicht anzuzeigen, da der Benutzer hier auf »Szenario
+beenden« klicken müsste, um das Spiel zu beenden. Diese Option ist unter
+anderem nützlich um Benchmarks zu automatisieren.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
 Ignoriert die kartenspezifischen Einstellungen, stattdessen werden
