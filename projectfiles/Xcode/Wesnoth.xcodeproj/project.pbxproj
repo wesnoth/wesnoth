@@ -454,7 +454,7 @@
 		91A2159C1CAD887700927AEA /* side_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE90E12135AC300CFBDAB /* side_actions.cpp */; };
 		91A2159D1CAD887700927AEA /* suppose_dead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E4E0AF1367241E001C7528 /* suppose_dead.cpp */; };
 		91A2159E1CAD887700927AEA /* utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B553B6B812189C5900CC8C58 /* utility.cpp */; };
-		91A215A31CAD915400927AEA /* gettext_boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4DF45419FEA7A8000EC086 /* gettext_boost.cpp */; };
+		91A215A31CAD915400927AEA /* gettext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4DF45419FEA7A8000EC086 /* gettext.cpp */; };
 		91A215A51CAD91AB00927AEA /* version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999670EC62181008DD061 /* version.cpp */; };
 		91A215A61CAD91BE00927AEA /* location.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999F90EC62181008DD061 /* location.cpp */; };
 		91A215A71CAD924000927AEA /* binary_or_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999A70EC62181008DD061 /* binary_or_text.cpp */; };
@@ -578,7 +578,7 @@
 		91C548E01D886E2C00FE6A7B /* tstring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999810EC62181008DD061 /* tstring.cpp */; };
 		91C548E21D886E9000FE6A7B /* libboost_system-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5413AD4E35003C701D /* libboost_system-mt.dylib */; };
 		91C548E31D886EBC00FE6A7B /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAA3FE518E0E4EF002E8998 /* unicode.cpp */; };
-		91C548E41D886ECA00FE6A7B /* gettext_boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4DF45419FEA7A8000EC086 /* gettext_boost.cpp */; };
+		91C548E41D886ECA00FE6A7B /* gettext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4DF45419FEA7A8000EC086 /* gettext.cpp */; };
 		91C548E51D886EF300FE6A7B /* binary_or_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999A70EC62181008DD061 /* binary_or_text.cpp */; };
 		91C548E81D886F1E00FE6A7B /* libboost_locale-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC4DF45919FEA838000EC086 /* libboost_locale-mt.dylib */; };
 		91C548EA1D886F7500FE6A7B /* game_config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A800EC62181008DD061 /* game_config.cpp */; };
@@ -1124,8 +1124,8 @@
 		EC45DEE11AD1CEF600BD760C /* floating_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC45DEE01AD1CEF600BD760C /* floating_label.cpp */; };
 		EC48D74D17F3148300DE80BF /* recruitment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC48D74B17F3148300DE80BF /* recruitment.cpp */; };
 		EC49A38219F34F1200E78528 /* clipboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC49A38119F34F1200E78528 /* clipboard.cpp */; };
-		EC4DF45519FEA7A8000EC086 /* gettext_boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4DF45419FEA7A8000EC086 /* gettext_boost.cpp */; };
-		EC4DF45619FEA7A8000EC086 /* gettext_boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4DF45419FEA7A8000EC086 /* gettext_boost.cpp */; };
+		EC4DF45519FEA7A8000EC086 /* gettext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4DF45419FEA7A8000EC086 /* gettext.cpp */; };
+		EC4DF45619FEA7A8000EC086 /* gettext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4DF45419FEA7A8000EC086 /* gettext.cpp */; };
 		EC4DF45B19FEA84A000EC086 /* libboost_locale-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC4DF45919FEA838000EC086 /* libboost_locale-mt.dylib */; };
 		EC4E3B1B19B2D7AD0049CBD7 /* cave_map_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4E3B1819B2D7AD0049CBD7 /* cave_map_generator.cpp */; };
 		EC4E3B1C19B2D7AD0049CBD7 /* default_map_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4E3B1919B2D7AD0049CBD7 /* default_map_generator.cpp */; };
@@ -2453,7 +2453,7 @@
 		EC48D74B17F3148300DE80BF /* recruitment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = recruitment.cpp; sourceTree = "<group>"; };
 		EC48D74C17F3148300DE80BF /* recruitment.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = recruitment.hpp; sourceTree = "<group>"; };
 		EC49A38119F34F1200E78528 /* clipboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clipboard.cpp; sourceTree = "<group>"; };
-		EC4DF45419FEA7A8000EC086 /* gettext_boost.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gettext_boost.cpp; sourceTree = "<group>"; };
+		EC4DF45419FEA7A8000EC086 /* gettext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gettext.cpp; sourceTree = "<group>"; };
 		EC4DF45919FEA838000EC086 /* libboost_locale-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_locale-mt.dylib"; path = "lib/libboost_locale-mt.dylib"; sourceTree = "<group>"; };
 		EC4E3B1819B2D7AD0049CBD7 /* cave_map_generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cave_map_generator.cpp; sourceTree = "<group>"; };
 		EC4E3B1919B2D7AD0049CBD7 /* default_map_generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = default_map_generator.cpp; sourceTree = "<group>"; };
@@ -3002,7 +3002,7 @@
 				B5599A730EC62181008DD061 /* generic_event.cpp */,
 				B5599A720EC62181008DD061 /* generic_event.hpp */,
 				91A214E41CAD618700927AEA /* gettext.hpp */,
-				EC4DF45419FEA7A8000EC086 /* gettext_boost.cpp */,
+				EC4DF45419FEA7A8000EC086 /* gettext.cpp */,
 				B5599A6F0EC62181008DD061 /* global.hpp */,
 				B5A9BCA10ECA805A002BE442 /* gui */,
 				B5599A150EC62181008DD061 /* halo.cpp */,
@@ -5046,7 +5046,7 @@
 				B55BE03A11234AC700154E6C /* gamestate_observer.cpp in Sources */,
 				B5795A6A0F05858100EB190E /* generator.cpp in Sources */,
 				B5599B640EC62181008DD061 /* generic_event.cpp in Sources */,
-				EC4DF45519FEA7A8000EC086 /* gettext_boost.cpp in Sources */,
+				EC4DF45519FEA7A8000EC086 /* gettext.cpp in Sources */,
 				B59F96D6103478C900A57C1A /* goal.cpp in Sources */,
 				B5A9BD610ECA805A002BE442 /* grid.cpp in Sources */,
 				B5599B390EC62181008DD061 /* halo.cpp in Sources */,
@@ -5446,7 +5446,7 @@
 				46F57087205FCF5D007031BF /* filesystem_sdl.cpp in Sources */,
 				91C548EA1D886F7500FE6A7B /* game_config.cpp in Sources */,
 				46F570A7205FF856007031BF /* blacklist.cpp in Sources */,
-				91C548E41D886ECA00FE6A7B /* gettext_boost.cpp in Sources */,
+				91C548E41D886ECA00FE6A7B /* gettext.cpp in Sources */,
 				46F570A8205FF856007031BF /* campaign_server.cpp in Sources */,
 				46F57086205FCE79007031BF /* hash.cpp in Sources */,
 				91C548DF1D886E2100FE6A7B /* log.cpp in Sources */,
@@ -5852,7 +5852,7 @@
 				467D9DEF205EC39300FA2FC4 /* command_console.cpp in Sources */,
 				91A2159D1CAD887700927AEA /* suppose_dead.cpp in Sources */,
 				91A2159E1CAD887700927AEA /* utility.cpp in Sources */,
-				91A215A31CAD915400927AEA /* gettext_boost.cpp in Sources */,
+				91A215A31CAD915400927AEA /* gettext.cpp in Sources */,
 				4649B8AA202890F600827CFB /* formula_debugger.cpp in Sources */,
 				4649B8A7202890F600827CFB /* end_credits.cpp in Sources */,
 				91A215A51CAD91AB00927AEA /* version.cpp in Sources */,
@@ -6025,7 +6025,7 @@
 				B5BB6B8A0F893E7500444FBF /* forum_user_handler.cpp in Sources */,
 				B5BB6C6F0F8941CD00444FBF /* game_config.cpp in Sources */,
 				B5BB6B7D0F893E7500444FBF /* game.cpp in Sources */,
-				EC4DF45619FEA7A8000EC086 /* gettext_boost.cpp in Sources */,
+				EC4DF45619FEA7A8000EC086 /* gettext.cpp in Sources */,
 				B5BB6C800F89435300444FBF /* log.cpp in Sources */,
 				461CE967205C3A8700E6E98F /* base64.cpp in Sources */,
 				B5BB6B880F893E7500444FBF /* metrics.cpp in Sources */,
