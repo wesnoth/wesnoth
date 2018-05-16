@@ -92,6 +92,7 @@ game_stringfixes = {
 ("toggle bewteen human and AI.", "toggle between human and AI."),
 #fix added in 1.13.11+dev
 ("This unit can lead our own units", "This unit can lead your own units"),
+("moreso", "more so"),
 ),
 
 "wesnoth-lib" : (
