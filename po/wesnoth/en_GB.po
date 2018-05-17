@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-05-10 12:28+1000\n"
+"PO-Revision-Date: 2018-05-16 14:55+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -7449,8 +7449,14 @@ msgid "Save and abort game"
 msgstr "Save and abort game"
 
 #: src/playturn.cpp:283
+#, fuzzy
+#| msgid ""
+#| "$player who controlled side $side_drop has left the game. What do you "
+#| "want to do?"
 msgid "$player has left the game. What do you want to do?"
-msgstr "$player has left the game. What do you want to do?"
+msgstr ""
+"$player who controlled side $side_drop has left the game. What do you want "
+"to do?"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -8028,8 +8034,11 @@ msgid "A unit was created using debug mode during $player’s turn"
 msgstr "A unit was created using debug mode during $player’s turn"
 
 #: src/synced_user_choice.cpp:326
+#, fuzzy
+#| msgid "waiting for $desc from side $sides"
+#| msgid_plural "waiting for $desc from sides $sides"
 msgid "waiting for $desc from side(s) $sides"
-msgstr "waiting for $desc from side(s) $sides"
+msgstr "waiting for $desc from side $sides"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8262,22 +8271,18 @@ msgstr "Whiteboard Options"
 #~ msgid "mp_game_available_slots^Full"
 #~ msgstr "Full"
 
-#~| msgid "vision"
 #~ msgid "vision^none"
 #~ msgstr "none"
 
-#~| msgid "Time limit"
 #~ msgid "time limit^none"
 #~ msgstr "none"
 
-#~| msgid "The nickname ‘$nick’ is registered on this server."
 #~ msgid "The nickname ‘$nick’ is banned on this server’s forums."
 #~ msgstr "The nickname ‘$nick’ is banned on this server’s forums."
 
 #~ msgid "Your IP address is banned on this server’s forums."
 #~ msgstr "Your IP address is banned on this server’s forums."
 
-#~| msgid "The nickname ‘$nick’ is registered on this server."
 #~ msgid ""
 #~ "The email address for the nickname ‘$nick’ is banned on this server’s "
 #~ "forums."
@@ -8285,7 +8290,6 @@ msgstr "Whiteboard Options"
 #~ "The email address for the nickname ‘$nick’ is banned on this server’s "
 #~ "forums."
 
-#~| msgid "Connection timed out"
 #~ msgid "Connection failed: "
 #~ msgstr "Connection failed: "
 
@@ -8298,15 +8302,15 @@ msgstr "Whiteboard Options"
 #~ msgid "(unknown player)"
 #~ msgstr "(unknown player)"
 
-#~| msgid "<span color=\"$color\">$number_or_percent</span> move"
-#~| msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 #~ msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 #~ msgid_plural ""
 #~ "<span color=\"$color\">$number_or_percent</span> movement points"
 #~ msgstr[0] "<span color=\"$color\">$number_or_percent</span> movement point"
 #~ msgstr[1] "<span color=\"$color\">$number_or_percent</span> movement points"
 
-#~| msgid "Connecting to Server..."
+#~ msgid "Unit with negative HP found"
+#~ msgstr "Unit with negative HP found"
+
 #~ msgid "Disconnected from server."
 #~ msgstr "Disconnected from server."
 
