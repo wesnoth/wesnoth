@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "POT-Creation-Date: 2018-02-12 20:02+0300\n"
-"PO-Revision-Date: 2018-04-09 13:53+0100\n"
+"PO-Revision-Date: 2018-05-16 06:52+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
-"Language-Team: Galician <proxecto@trasno.gal>\n"
+"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -404,6 +404,12 @@ msgstr "B<--log->I<nivel>B<=>I<dominio_1>B<,>I<dominio_2>B<,>I<…>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:138
+#, fuzzy
+#| msgid ""
+#| "sets the severity level of the log domains.  B<all> can be used to match "
+#| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+#| "B<debug>.  By default the B<error> level is used and the B<info> level "
+#| "for the B<server> domain."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
@@ -412,7 +418,8 @@ msgstr ""
 "Establece o nivel de severidade dos dominios do rexistro.  Pódese usar "
 "B<all> para referirse a calquera dominio do rexistro. Os niveis dispoñíbeis "
 "son os seguintes: B<error> (erro),\\ B<warning> (aviso),\\ B<info> "
-"(información) e \\ B<debug> (depuración). B<error> é o nivel predeterminado."
+"(información) e \\ B<debug> (depuración). B<error> é o nivel predeterminado, "
+"B<info> para o dominio do servidor."
 
 # type: TP
 #. type: TP
@@ -1115,14 +1122,20 @@ msgstr "B<--exit-at-end>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:370
+#, fuzzy
+#| msgid ""
+#| "exits once the scenario is over, without displaying victory/defeat dialog "
+#| "which normally requires the user to click End Scenario.  This is also "
+#| "used for scriptable benchmarking."
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which requires the user to click OK.  This is also used for scriptable "
 "benchmarking."
 msgstr ""
 "Sae do xogo unha vez se remate o escenario, sen mostrar un diálogo de "
-"vitoria ou derrota que requira que o usuario prema «Aceptar». Isto tamén se "
-"emprega para probas de rendemento automatizadas mediante scripts."
+"vitoria ou derrota que normalmente require que o usuario prema «Finalizar». "
+"Isto tamén se emprega para probas de rendemento automatizadas mediante "
+"scripts."
 
 #. type: TP
 #: doc/man/wesnoth.6:370
@@ -2251,6 +2264,20 @@ msgstr ""
 #: doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
+
+# type: Plain text
+#~ msgid ""
+#~ "sets the severity level of the log domains.  B<all> can be used to match "
+#~ "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+#~ "B<debug>,\\ B<none>.  By default the B<warning> level is used for most "
+#~ "domains, but B<deprecation> defaults to none."
+#~ msgstr ""
+#~ "Establece o nivel de severidade dos dominios do rexistro.  Pódese usar "
+#~ "B<all> para referirse a calquera dominio do rexistro. Os niveis "
+#~ "dispoñíbeis son os seguintes: B<error> (erro),\\ B<warning> (aviso),\\ "
+#~ "B<info> (información), \\ B<debug> (depuración) e \\ B<none> (ningún). "
+#~ "B<warning> é o nivel predeterminado da meirande parte dos dominios, pero "
+#~ "o nivel predeterminado de B<deprecation> é B<ningún>."
 
 #~ msgid "2013"
 #~ msgstr "2013"
