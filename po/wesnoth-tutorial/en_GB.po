@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-05-16 03:33 UTC\n"
-"PO-Revision-Date: 2018-05-06 21:32+1000\n"
+"PO-Revision-Date: 2018-05-16 15:50+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -155,14 +155,6 @@ msgstr "Movement"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:210
-#, fuzzy
-#| msgid ""
-#| "When you select a unit, in this case Konrad, the places he can move to "
-#| "are highlighted. All units have a certain number of <i>movement points</"
-#| "i>, which dictate how many hexes that unit can move per turn. Normally, "
-#| "moving one hex on flat terrain uses one movement point. To move, simply "
-#| "click on your destination. (You can press <b>u</b> to undo a move if you "
-#| "move to the wrong place.)"
 msgid ""
 "When you hover over or select a unit, in this case Konrad, the places he can "
 "move to are highlighted. All units have a certain number of <i>movement "
@@ -171,23 +163,15 @@ msgid ""
 "simply click on Konrad and then your destination. (You can press <b>u</b> to "
 "undo a move if you move to the wrong place.)"
 msgstr ""
-"When you select a unit, in this case Konrad, the places he can move to are "
-"highlighted. All units have a certain number of <i>movement points</i>, "
-"which dictate how many hexes that unit can move per turn. Normally, moving "
-"one hex on flat terrain uses one movement point. To move, simply click on "
-"your destination. (You can press <b>u</b> to undo a move if you move to the "
-"wrong place.)"
+"When you hover over or select a unit, in this case Konrad, the places he can "
+"move to are highlighted. All units have a certain number of <i>movement "
+"points</i>, which dictate how many hexes that unit can move per turn. "
+"Normally, moving one hex on flat terrain uses one movement point. To move, "
+"simply click on Konrad and then your destination. (You can press <b>u</b> to "
+"undo a move if you move to the wrong place.)"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:218
-#, fuzzy
-#| msgid ""
-#| "When you select a unit, in this case Li’sar, the places she can move to "
-#| "are highlighted. All units have a certain number of <i>movement points</"
-#| "i>, which dictate how many hexes that unit can move per turn. Normally, "
-#| "moving one hex on flat terrain uses one movement point. To move, simply "
-#| "click on your destination. (You can press <b>u</b> to undo a move if you "
-#| "move to the wrong place.)"
 msgid ""
 "When you hover over or select a unit, in this case Li’sar, the places she "
 "can move to are highlighted. All units have a certain number of <i>movement "
@@ -196,12 +180,12 @@ msgid ""
 "simply click on Li’sar and then your destination. (You can press <b>u</b> to "
 "undo a move if you move to the wrong place.)"
 msgstr ""
-"When you select a unit, in this case Li’sar, the places she can move to are "
-"highlighted. All units have a certain number of <i>movement points</i>, "
-"which dictate how many hexes that unit can move per turn. Normally, moving "
-"one hex on flat terrain uses one movement point. To move, simply click on "
-"your destination. (You can press <b>u</b> to undo a move if you move to the "
-"wrong place.)"
+"When you hover over or select a unit, in this case Li’sar, the places she "
+"can move to are highlighted. All units have a certain number of <i>movement "
+"points</i>, which dictate how many hexes that unit can move per turn. "
+"Normally, moving one hex on flat terrain uses one movement point. To move, "
+"simply click on Li’sar and then your destination. (You can press <b>u</b> to "
+"undo a move if you move to the wrong place.)"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:229
@@ -1338,13 +1322,6 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:420
-#, fuzzy
-#| msgid ""
-#| "You could. However, elves (and orcs) have bad <i>defense</i> in water. "
-#| "You’ll be more vulnerable as you try to wade slowly across the ford; the "
-#| "enemy will have an 80% chance to hit you. Since elves have good defense "
-#| "in the forest, I would advise you keep to the trees and attack the orcs "
-#| "from there; you’ll only have a 40% chance of being hit in return."
 msgid ""
 "You could. However, elves (and orcs) have bad <i>defense</i> in water. "
 "You’ll be more vulnerable as you try to wade slowly across the ford; the "
@@ -1357,7 +1334,8 @@ msgstr ""
 "You’ll be more vulnerable as you try to wade slowly across the ford; the "
 "enemy will have an 80% chance to hit you. Since elves have good defence in "
 "the forest, I would advise you keep to the trees and attack the orcs from "
-"there; you’ll only have a 40% chance of being hit in return."
+"there; your Fighters will only suffer a 40% chance of being hit in return, "
+"while Shamans and Archers will only incur a 30% chance."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:425
@@ -1650,13 +1628,6 @@ msgstr "Time of Day"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:670
-#, fuzzy
-#| msgid ""
-#| "During a scenario, the time of day will shift as turns pass. There are "
-#| "four <i>alignments</i> a unit may be: Lawful, Neutral, Chaotic, or "
-#| "Liminal. Each alignment gets a different bonus or handicap depending on "
-#| "the time of day. You can mouse over the landscape image below the minimap "
-#| "on the right to see the current time of day and who has the advantage."
 msgid ""
 "During a scenario, the time of day will shift as turns pass. There are four "
 "<i>alignments</i> a unit may be: Lawful, Neutral, Chaotic, or Liminal. Each "
@@ -1667,8 +1638,8 @@ msgstr ""
 "During a scenario, the time of day will shift as turns pass. There are four "
 "<i>alignments</i> a unit may be: Lawful, Neutral, Chaotic, or Liminal. Each "
 "alignment gets a different bonus or handicap depending on the time of day. "
-"You can mouse over the landscape image below the mini-map on the right to "
-"see the current time of day and who has the advantage."
+"You can hover over the sky image below the mini-map on the right to see the "
+"current time of day and who has the advantage."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:681
@@ -1895,37 +1866,29 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1019
-#, fuzzy
-#| msgid ""
-#| "Advancing a level has fully healed me! I always have a 60% chance of "
-#| "hitting with my <i>Marksman</i> ability, and I deal 9 damage each for 4 "
-#| "attacks. Use me to dislodge hard-to-hit units."
 msgid ""
 "Advancing a level has fully healed me! When attacking, I always have at "
 "least a 60% chance of hitting with my longbow thanks to my <i>Marksman</i> "
 "ability, and I deal 9 damage each for 4 attacks. Use me to dislodge hard-to-"
 "hit units."
 msgstr ""
-"Advancing a level has fully healed me! I always have a 60% chance of hitting "
-"with my <i>Marksman</i> ability, and I deal 9 damage each for 4 attacks. Use "
-"me to dislodge hard-to-hit units."
+"Advancing a level has fully healed me! When attacking, I always have at "
+"least a 60% chance of hitting with my longbow thanks to my <i>Marksman</i> "
+"ability, and I deal 9 damage each for 4 attacks. Use me to dislodge hard-to-"
+"hit units."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1020
-#, fuzzy
-#| msgid ""
-#| "female^Advancing a level has fully healed me! I always have a 60% chance "
-#| "of hitting with my <i>Marksman</i> ability, and I deal 9 damage each for "
-#| "4 attacks. Use me to dislodge hard-to-hit units."
 msgid ""
 "female^Advancing a level has fully healed me! When attacking, I always have "
 "at least a 60% chance of hitting with my longbow thanks to my <i>Marksman</"
 "i> ability, and I deal 9 damage each for 4 attacks. Use me to dislodge hard-"
 "to-hit units."
 msgstr ""
-"Advancing a level has fully healed me! I always have a 60% chance of hitting "
-"with my <i>Marksman</i> ability, and I deal 9 damage each for 4 attacks. Use "
-"me to dislodge hard-to-hit units."
+"Advancing a level has fully healed me! When attacking, I always have at "
+"least a 60% chance of hitting with my longbow thanks to my <i>Marksman</i> "
+"ability, and I deal 9 damage each for 4 attacks. Use me to dislodge hard-to-"
+"hit units."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1033
