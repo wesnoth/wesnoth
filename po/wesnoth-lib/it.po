@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-05-07 18:35+0200\n"
+"PO-Revision-Date: 2018-05-17 01:11-0700\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -303,7 +303,7 @@ msgid ""
 msgstr ""
 "Segnale di benvenuto per qualsiasi viaggiatore, un’oasi permette alle unità "
 "di curarsi come se fossero in un villaggio, ma non incrementa gli introiti, "
-"nè vantaggio in termini di difesa."
+"né vantaggio in termini di difesa."
 
 #. [terrain_type]: id=sand_rubble
 #: data/core/terrain.cfg:332
@@ -5689,15 +5689,15 @@ msgstr "Installata ($local_version|), aggiornabile"
 
 #: src/gui/dialogs/addon/manager.cpp:278
 msgid "addon_state^Published ($local_version| installed), upgradable"
-msgstr "Pubbblicata ($local_version| installata), aggiornabile"
+msgstr "Pubblicata ($local_version| installata), aggiornabile"
 
 #: src/gui/dialogs/addon/manager.cpp:284
 msgid "addon_state^Installed ($local_version|), outdated on server"
-msgstr "Installata ($local_vesion|), antiquata sul server"
+msgstr "Installata ($local_version|), antiquata sul server"
 
 #: src/gui/dialogs/addon/manager.cpp:285
 msgid "addon_state^Published ($local_version| installed), outdated on server"
-msgstr "Pubblicata ($local_vesion|), antiquata sul server"
+msgstr "Pubblicata ($local_version|), antiquata sul server"
 
 #: src/gui/dialogs/addon/manager.cpp:291 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
@@ -6191,7 +6191,7 @@ msgstr "Partite: mostrate $num_shown di $num_total"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:452
 msgid "Era:"
-msgstr "Era:"
+msgstr ""
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:469
 msgid "Settings:"
@@ -6222,6 +6222,10 @@ msgid "Use map settings:"
 msgstr "Usa impostazioni della mappa:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:486
+#, fuzzy
+#| msgid ""
+#| "One or more add-ons need to be installed\n"
+#| "in order to join this game."
 msgid ""
 "One or more items need to be installed\n"
 "in order to join this game."
@@ -7657,11 +7661,11 @@ msgstr ""
 #~ msgid "Available at main menu"
 #~ msgstr "Disponibile nella schermata principale"
 
-#~ msgid "FPS limiter"
-#~ msgstr "Limitatore FPS"
+#~ msgid "Limit FPS"
+#~ msgstr "Limite FPS"
 
 #~ msgid ""
-#~ "Disabling this increases CPU usage to 100 % but may slightly improve "
+#~ "Disabling this increases CPU usage to 100% but may slightly improve "
 #~ "performance at high resolutions"
 #~ msgstr ""
 #~ "Disabilitarlo permetterà di utilizzare la CPU al 100%, ma potrebbe "
@@ -7676,8 +7680,11 @@ msgstr ""
 #~ msgid "$game_name (Era: $era_name)"
 #~ msgstr "$game_name (Era: $era_name)"
 
-#~ msgid "era^missing"
-#~ msgstr "mancante"
+#~ msgid "era_or_mod^not installed"
+#~ msgstr "non installata"
+
+#~ msgid "Era"
+#~ msgstr "Era"
 
 #~ msgid "$min to $max"
 #~ msgstr "$min a $max"
@@ -7693,6 +7700,12 @@ msgstr ""
 
 #~ msgid "Quit to Main Menu"
 #~ msgstr "Esci alla schermata iniziale"
+
+#~ msgid "FPS limiter"
+#~ msgstr "Limitatore FPS"
+
+#~ msgid "era^missing"
+#~ msgstr "mancante"
 
 #~ msgid "Password Reminder"
 #~ msgstr "Ricorda password"
