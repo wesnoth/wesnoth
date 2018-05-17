@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2018-05-09 03:49-0300\n"
-"PO-Revision-Date: 2018-05-07 18:47+0200\n"
+"PO-Revision-Date: 2018-05-17 01:14-0700\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.0.6\n"
 
 # type: TH
 #. type: TH
@@ -1116,19 +1116,14 @@ msgstr "B<--exit-at-end>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:372
-#, fuzzy
-#| msgid ""
-#| "exits once the scenario is over, without displaying victory/defeat dialog "
-#| "which requires the user to click OK.  This is also used for scriptable "
-#| "benchmarking."
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which normally requires the user to click End Scenario.  This is also used "
 "for scriptable benchmarking."
 msgstr ""
 "esce quando lo scenario è finito, senza mostrare la finestra delle vittorie/"
-"sconfitte, che richiede che l’utente prema il pulsante OK. Anche questa "
-"opzione è usata per eseguire dei benchmark con script."
+"sconfitte, che normalmente richiede che l’utente prema il pulsante Fine "
+"Scenario. Anche questa opzione è usata per eseguire dei benchmark con script."
 
 #. type: TP
 #: doc/man/wesnoth.6:372
@@ -1822,7 +1817,7 @@ msgid ""
 "B<allow_remote_shutdown> setting.)"
 msgstr ""
 "Il comando che il server utilizza per lanciare un muovo processo server "
-"cramite il comando B<restart>. Può essere inviato soltanto tramite la fifo. "
+"tramite il comando B<restart>. Può essere inviato soltanto tramite la fifo. "
 "Per dettagli, vedi i setaggi di B<allow_remote_shutdown>."
 
 # type: TP
