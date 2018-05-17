@@ -4,8 +4,8 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 
 ## Version 1.14.1+dev
  ### Language and i18n
-   * Updated translations: British English, Czech, French, Italian, Spanish,
-     Ukrainian.
+   * Updated translations: British English, Czech, French, Galician, Italian,
+     Spanish, Ukrainian.
  ### User interface
    * Fixed MP lobby player list scrolling to top when it changes
  ### Miscellaneous and bug fixes
