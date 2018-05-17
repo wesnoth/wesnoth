@@ -2059,25 +2059,16 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 	if(map_locked_) {
 		return luaL_error(L, "Attempted to move a unit while the map is locked");
 	}
-	int unit_arg = 1;
 
 	map_location loc;
-	if (lua_isnumber(L, 1)) {
-		// Since this form is deprecated, I didn't bother updating it to luaW_tolocation.
-		unit_arg = 3;
-		loc.set_wml_x(lua_tointeger(L, 1));
-		loc.set_wml_y(luaL_checkinteger(L, 2));
-		if (!map().on_board(loc)) {
-			return luaL_argerror(L, 1, "invalid location");
-		}
-	} else if (luaW_tolocation(L, 2, loc)) {
+	if (luaW_tolocation(L, 2, loc)) {
 		if (!map().on_board(loc)) {
 			return luaL_argerror(L, 2, "invalid location");
 		}
 	}
 
-	if((luaW_isunit(L, unit_arg))) {
-		lua_unit& u = *luaW_checkunit_ref(L, unit_arg);
+	if((luaW_isunit(L, 1))) {
+		lua_unit& u = *luaW_checkunit_ref(L, 1);
 		if(u.on_map() && u->get_location() == loc) {
 			return 0;
 		}
@@ -2085,36 +2076,30 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 			loc = u->get_location();
 			if (!map().on_board(loc))
 				return luaL_argerror(L, 1, "invalid location");
-		} else if (unit_arg != 1) {
-			deprecated_message("wesnoth.put_unit(x, y, unit)", DEP_LEVEL::FOR_REMOVAL, {1, 15, 0}, "Use wesnoth.put_unit(unit, x, y) or unit:to_map(x, y) instead.");
 		}
+
 		put_unit_helper(loc);
 		u.put_map(loc);
 		u.get_shared()->anim_comp().set_standing();
-	} else if(!lua_isnoneornil(L, unit_arg)) {
+	} else if(!lua_isnoneornil(L, 1)) {
 		const vconfig* vcfg = nullptr;
-		config cfg = luaW_checkconfig(L, unit_arg, vcfg);
-		if (unit_arg == 1 && !map().on_board(loc)) {
+		config cfg = luaW_checkconfig(L, 1, vcfg);
+		if (!map().on_board(loc)) {
 			loc.set_wml_x(cfg["x"]);
 			loc.set_wml_y(cfg["y"]);
 			if (!map().on_board(loc))
 				return luaL_argerror(L, 2, "invalid location");
-		} else if (unit_arg != 1) {
-			deprecated_message("wesnoth.put_unit(x, y, unit)", DEP_LEVEL::FOR_REMOVAL, {1, 15, 0}, "Use wesnoth.put_unit(unit, x, y) or unit:to_map(x, y) instead.");
 		}
+
 		unit_ptr u = unit::create(cfg, true, vcfg);
 		put_unit_helper(loc);
 		u->set_location(loc);
 		units().insert(u);
-	} else {
-		deprecated_message("wesnoth.put_unit(x, y)", DEP_LEVEL::FOR_REMOVAL, {1, 15, 0}, "Use wesnoth.erase_unit(x, y) or unit:erase() instead.");
-		put_unit_helper(loc);
-		return 0; // Don't fire event when unit is only erase
 	}
 
 	// Fire event if using the deprecated version or if the final argument is not false
 	// If the final boolean argument is omitted, the actual final argument (the unit or location) will always yield true.
-	if(unit_arg != 1 || luaW_toboolean(L, -1)) {
+	if(luaW_toboolean(L, -1)) {
 		play_controller_.pump().fire("unit_placed", loc);
 	}
 	return 0;
