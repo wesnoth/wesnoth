@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-05-16 03:33 UTC\n"
-"PO-Revision-Date: 2018-05-06 22:02+0800\n"
+"PO-Revision-Date: 2018-05-17 22:33+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -666,10 +666,8 @@ msgstr "保护圣女， 我们把这个大怪物打回去！"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:804
-#, fuzzy
-#| msgid "These fields seem strangely vacant. Where are the horses?"
 msgid "These fields seem strangely vacant. Where are the dustboks?"
-msgstr "牧场空荡荡的。马都去哪儿啦？"
+msgstr "奇怪，牧场空荡荡的。尘羚都去哪儿了？"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:809
@@ -688,44 +686,30 @@ msgstr "外面安全了吗？ 我刚才很害怕。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:856
-#, fuzzy
-#| msgid "Where are all the other horses?"
 msgid "Where are all the other dustboks?"
-msgstr "其他的马呢？"
+msgstr "剩下的尘羚都去哪儿了？"
 
 #. [message]: speaker=Naru
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:861
-#, fuzzy
-#| msgid ""
-#| "A hunting party left just yesterday, so unless the rocks fell all over "
-#| "the land, many of the horses have probably survived. The few that "
-#| "remained here were scared by the falling rocks and fled into the night. "
-#| "It took all my skill to calm Yasi and keep him from running."
 msgid ""
 "A hunting party left just yesterday, so unless the rocks fell all over the "
 "land, many of the dustboks have probably survived. The few that remained "
 "here were scared by the falling rocks and fled into the night. It took all "
 "my skill to calm Yasi and keep him from running."
 msgstr ""
-"昨天一个狩猎团刚走，除非陨石落满大地，否则大多数马应该都没事，少数圈在这里的"
-"马昨晚受陨石惊吓跑散了。我使尽解数才安抚了亚希。"
+"昨天一个狩猎团刚走，除非陨石落满大地，否则很多尘羚应该都没事，少数圈在这里的"
+"尘羚昨晚受陨石惊吓跑散了。我使尽解数安抚了亚希，他才没有跑掉。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:866
-#, fuzzy
-#| msgid ""
-#| "We’ll need your help in checking to see if the outer settlements "
-#| "survived. Who knows what kinds of damage they suffered in the night? And "
-#| "perhaps some of the people out in the desert have been able to round up "
-#| "some of the loose horses."
 msgid ""
 "We’ll need your help in checking to see if the outer settlements survived. "
 "Who knows what kinds of damage they suffered in the night? And perhaps some "
 "of the people out in the desert have been able to round up some of the loose "
 "dusties."
 msgstr ""
-"我们需要你们帮忙查探外面的定居点情况。不知道他们在这个夜晚损失如何呢？也许外"
-"出的人们能寻回一些走失的马。"
+"我们需要你们帮忙查探外面的定居点情况。谁也不知道他们在这个夜晚会有多大的损"
+"失。也许在沙漠里的人们已经圈住了一些走失的羚儿。"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:871
@@ -13893,7 +13877,7 @@ msgstr "沙"
 #. Made-up animal name derived from 'dust' (sand) and 'bok' as in real-world steenbok or springbok antelope
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Dustbok.cfg:6
 msgid "Dustbok"
-msgstr ""
+msgstr "尘羚"
 
 #. [unit_type]: id=Quenoth Fighter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:5
@@ -14452,8 +14436,6 @@ msgstr "传授"
 
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:76
-#, fuzzy
-#| msgid "teaching"
 msgid "female^teaching"
 msgstr "传授"
 
@@ -14488,8 +14470,6 @@ msgstr "布阵"
 
 #. [dummy]: id=formation
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:101
-#, fuzzy
-#| msgid "formation"
 msgid "female^formation"
 msgstr "布阵"
 
@@ -14510,8 +14490,6 @@ msgstr "脱离"
 
 #. [dummy]: id=disengage
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:110
-#, fuzzy
-#| msgid "disengage"
 msgid "female^disengage"
 msgstr "脱离"
 
@@ -14544,8 +14522,6 @@ msgstr "分神"
 
 #. [skirmisher]: id=distract
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:127
-#, fuzzy
-#| msgid "distract"
 msgid "female^distract"
 msgstr "分神"
 
@@ -14563,8 +14539,6 @@ msgstr "支援"
 
 #. [dummy]: id=support
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:140
-#, fuzzy
-#| msgid "support"
 msgid "female^support"
 msgstr "支援"
 

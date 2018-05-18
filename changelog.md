@@ -1,7 +1,7 @@
 ## Version 1.14.1+dev
  ### Language and i18n
-   * Updated translations: British English, Czech, French, Galician, Italian,
-     Spanish, Ukrainian
+   * Updated translations: British English, Chinese (Simplified), Czech, French,
+     Galician, Italian, Spanish, Ukrainian
  ### User interface
    * Fixed MP lobby player list scrolling to top when it changes
  ### Miscellaneous and bug fixes
