@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-05-06 20:41+0800\n"
+"PO-Revision-Date: 2018-05-16 22:19+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -6300,18 +6300,18 @@ msgid "Missing addon: $id"
 msgstr "缺少附加组件：$id"
 
 #: src/game_initialization/lobby_data.cpp:264
-#, fuzzy
-#| msgid "(missing)"
 msgid "$era_name (missing)"
-msgstr "（丢失）"
+msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:271
 msgid "Unknown era"
 msgstr "未知时代"
 
 #: src/game_initialization/lobby_data.cpp:288
+#, fuzzy
+#| msgid "(observing)"
 msgid "(missing)"
-msgstr "（丢失）"
+msgstr "（观察中）"
 
 #: src/game_initialization/lobby_data.cpp:334
 #: src/game_initialization/lobby_data.cpp:364
@@ -8476,6 +8476,9 @@ msgstr "白板选项"
 
 #~ msgid "(unknown player)"
 #~ msgstr "（未知玩家）"
+
+#~ msgid "Unit with negative HP found"
+#~ msgstr "发现生命值为负的单位"
 
 #~ msgid "Disconnected from server."
 #~ msgstr "已与服务器断开链接。"

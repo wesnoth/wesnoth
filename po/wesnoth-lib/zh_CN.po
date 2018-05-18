@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-05-06 21:07+0800\n"
+"PO-Revision-Date: 2018-05-16 22:50+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -6049,15 +6049,19 @@ msgstr "游戏：$num_shown|个已显示，共有$num_total|个"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:452
 msgid "Era:"
-msgstr "时代："
+msgstr ""
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:469
+#, fuzzy
+#| msgid "Settings"
 msgid "Settings:"
-msgstr "设置："
+msgstr "设置"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:473
+#, fuzzy
+#| msgid "Registered Users Only"
 msgid "Registered users only:"
-msgstr "仅注册用户："
+msgstr "仅注册用户"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:474
 msgid "Reloaded:"
@@ -6080,12 +6084,16 @@ msgid "Use map settings:"
 msgstr "使用地图设置："
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:486
+#, fuzzy
+#| msgid ""
+#| "One or more add-ons need to be installed\n"
+#| "in order to join this game."
 msgid ""
 "One or more items need to be installed\n"
 "in order to join this game."
 msgstr ""
-"为加入此游戏\n"
-"需要安装一个或多个项目"
+"为了加入此游戏\n"
+"需要安装一个或多个附加组件。"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:511
 msgid "Observers allowed"
@@ -7474,13 +7482,14 @@ msgstr ""
 #~ msgid "Sign Up"
 #~ msgstr "注册"
 
-#~ msgid "FPS limiter"
-#~ msgstr "FPS限制器"
+#~ msgid "Limit FPS"
+#~ msgstr "限制FPS"
 
 #~ msgid ""
-#~ "Disabling this increases CPU usage to 100 % but may slightly improve "
+#~ "Disabling this increases CPU usage to 100% but may slightly improve "
 #~ "performance at high resolutions"
-#~ msgstr "禁用此项将使得CPU使用率达到100%，但可以稍稍提升在高分辨率下的性能"
+#~ msgstr ""
+#~ "禁用此项将使得CPU使用率达到100%，但或许能够稍稍提升在高分辨率下的性能"
 
 #~ msgid "The maximum text width is less than 1."
 #~ msgstr "最大文字宽度小于1。"
@@ -7491,8 +7500,11 @@ msgstr ""
 #~ msgid "$game_name (Era: $era_name)"
 #~ msgstr "$game_name|（时代：$era_name|）"
 
-#~ msgid "era^missing"
-#~ msgstr "丢失"
+#~ msgid "era_or_mod^not installed"
+#~ msgstr "未安装"
+
+#~ msgid "Era"
+#~ msgstr "时代"
 
 #~ msgid "$min to $max"
 #~ msgstr "$min|至$max"

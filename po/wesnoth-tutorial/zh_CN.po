@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:31 UTC\n"
-"PO-Revision-Date: 2018-05-06 21:27+0800\n"
+"PO-Revision-Date: 2018-05-17 22:23+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -148,6 +148,14 @@ msgstr "移动"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:211
+#, fuzzy
+#| msgid ""
+#| "When you hover over or select a unit, in this case Konrad, the places he "
+#| "can move to are highlighted. All units have a certain number of "
+#| "<i>movement points</i>, which dictate how many hexes that unit can move "
+#| "per turn. Normally, moving one hex on flat terrain uses one movement "
+#| "point. To move, simply click on Konrad and then your destination. (You "
+#| "can press <b>u</b> to undo a move if you move to the wrong place.)"
 msgid ""
 "When you select a unit, in this case Konrad, the places he can move to are "
 "highlighted. All units have a certain number of <i>movement points</i>, "
@@ -156,13 +164,21 @@ msgid ""
 "your destination. (You can press <b>u</b> to undo a move if you move to the "
 "wrong place.)"
 msgstr ""
-"当你选中一个单位（此时为科纳德）时，他可以移动到的位置会高亮显示。所有单位都"
-"拥有一定的<b>移动力</b>，移动力决定了该单位每个回合可以移动的格子数。通常来"
-"说，在平坦地形上移动一格消耗一点移动力。只需点击目的地即可移动。（如果你移动"
-"到了错误的位置，可以按<b>u</b>撤销移动。）"
+"当你的鼠标在单位上方悬停或选中单位（此处为科纳德）时，他可以移动到的位置会高"
+"亮显示。所有单位都拥有一定的<b>移动力</b>，移动力决定了该单位每个回合可以移动"
+"的格子数。通常来说，在平坦地形上移动一格消耗一点移动力。只需先点击科纳德再点"
+"击目的地即可移动。（如果你移动到了错误的位置，可以按<b>u</b>撤销移动。）"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:219
+#, fuzzy
+#| msgid ""
+#| "When you hover over or select a unit, in this case Li’sar, the places she "
+#| "can move to are highlighted. All units have a certain number of "
+#| "<i>movement points</i>, which dictate how many hexes that unit can move "
+#| "per turn. Normally, moving one hex on flat terrain uses one movement "
+#| "point. To move, simply click on Li’sar and then your destination. (You "
+#| "can press <b>u</b> to undo a move if you move to the wrong place.)"
 msgid ""
 "When you select a unit, in this case Li’sar, the places she can move to are "
 "highlighted. All units have a certain number of <i>movement points</i>, "
@@ -171,10 +187,10 @@ msgid ""
 "your destination. (You can press <b>u</b> to undo a move if you move to the "
 "wrong place.)"
 msgstr ""
-"当你选中一个单位（此时为莉莎）时，他可以移动到的位置会高亮显示。所有单位都拥"
-"有一定的<b>移动力</b>，移动力决定了该单位每个回合可以移动的格子数。通常来说，"
-"在平坦地形上移动一格消耗一点移动力。只需点击目的地即可移动。（如果你移动到了"
-"错误的位置，可以按<b>u</b>撤销移动。）"
+"当你的鼠标在单位上方悬停或选中单位（此处为莉莎）时，她可以移动到的位置会高亮"
+"显示。所有单位都拥有一定的<b>移动力</b>，移动力决定了该单位每个回合可以移动的"
+"格子数。通常来说，在平坦地形上移动一格消耗一点移动力。只需先点击科纳德再点击"
+"目的地即可移动。（如果你移动到了错误的位置，可以按<b>u</b>撤销移动。）"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:230
@@ -1225,6 +1241,14 @@ msgstr "伽德拉德，如果我沿着河滩走，我可以溜到他的主楼旁
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:411
+#, fuzzy
+#| msgid ""
+#| "You could. However, elves (and orcs) have bad <i>defense</i> in water. "
+#| "You’ll be more vulnerable as you try to wade slowly across the ford; the "
+#| "enemy will have an 80% chance to hit you. Since elves have good defense "
+#| "in the forest, I would advise you keep to the trees and attack the orcs "
+#| "from there; your Fighters will only suffer a 40% chance of being hit in "
+#| "return, while Shamans and Archers will only incur a 30% chance."
 msgid ""
 "You could. However, elves (and orcs) have bad <i>defense</i> in water. "
 "You’ll be more vulnerable as you try to wade slowly across the ford; the "
@@ -1232,9 +1256,10 @@ msgid ""
 "the forest, I would advise you keep to the trees and attack the orcs from "
 "there; you’ll only have a 40% chance of being hit in return."
 msgstr ""
-"可以。不过，精灵（和兽人）在水中的<b>防御</b>很糟糕。你涉水过滩时更容易遭到伤"
-"害；敌人将有80%的几率命中你。精灵在森林中能够更好地防御，因此我建议你待在树林"
-"里攻击兽人；这样你被反击命中的几率就只有40%了。"
+"可以。不过，精灵（和兽人）在水中的<b>防御</b>很糟糕。你慢慢地涉水过滩时更容易"
+"受到伤害；敌人将有80%的几率命中你。精灵在森林中能够更好地防御，因此我建议你待"
+"在树林里攻击兽人；这样你的战士们被反击命中的几率就只有40%了，而萨满和弓箭手更"
+"是只有30%的被命中率。"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:416
@@ -1504,6 +1529,13 @@ msgstr "时段"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:661
+#, fuzzy
+#| msgid ""
+#| "During a scenario, the time of day will shift as turns pass. There are "
+#| "four <i>alignments</i> a unit may be: Lawful, Neutral, Chaotic, or "
+#| "Liminal. Each alignment gets a different bonus or handicap depending on "
+#| "the time of day. You can hover over the sky image below the minimap on "
+#| "the right to see the current time of day and who has the advantage."
 msgid ""
 "During a scenario, the time of day will shift as turns pass. There are four "
 "<i>alignments</i> a unit may be: Lawful, Neutral, Chaotic, or Liminal. Each "
@@ -1511,9 +1543,10 @@ msgid ""
 "You can mouse over the landscape image below the minimap on the right to see "
 "the current time of day and who has the advantage."
 msgstr ""
-"在场景中，时段会随着回合的变化而变化。一个单位拥有四种<b>立场</b>之一：守序，"
-"中立，混沌，或边缘。根据时段的不同，每种立场会得到不同的加成或是妨碍。你可以"
-"将鼠标移动到右侧小地图之下的风景画上，以查看当前时段，以及此时是谁拥有优势。"
+"在场景中，时段会随着回合的变化而变化。一个单位拥有四种<b>立场</b>之一：守序、"
+"中立、混沌或边缘。根据时段的不同，每种立场会得到不同的加成或是妨碍。你可以将"
+"鼠标移动到右侧小地图之下的天空图像上悬停，以查看当前是哪个时段，以及此时拥有"
+"优势的是谁。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:672
@@ -1726,23 +1759,35 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1010
+#, fuzzy
+#| msgid ""
+#| "Advancing a level has fully healed me! When attacking, I always have at "
+#| "least a 60% chance of hitting with my longbow thanks to my <i>Marksman</"
+#| "i> ability, and I deal 9 damage each for 4 attacks. Use me to dislodge "
+#| "hard-to-hit units."
 msgid ""
 "Advancing a level has fully healed me! I always have a 60% chance of hitting "
 "with my <i>Marksman</i> ability, and I deal 9 damage each for 4 attacks. Use "
 "me to dislodge hard-to-hit units."
 msgstr ""
-"升级将我完全治愈了！我的<b>精准</b>能力让我总是有60%的几率命中对手，并且我可"
-"以攻击4次，每次造成9点伤害。让我来驱逐那些难以命中的家伙。"
+"升级将我完全治愈了！我的<b>精准</b>能力让我使用长弓时总是有至少60%的几率命中"
+"对手，并且我可以攻击4次，每次造成9点伤害。让我来驱逐那些难以命中的家伙。"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1011
+#, fuzzy
+#| msgid ""
+#| "female^Advancing a level has fully healed me! When attacking, I always "
+#| "have at least a 60% chance of hitting with my longbow thanks to my "
+#| "<i>Marksman</i> ability, and I deal 9 damage each for 4 attacks. Use me "
+#| "to dislodge hard-to-hit units."
 msgid ""
 "female^Advancing a level has fully healed me! I always have a 60% chance of "
 "hitting with my <i>Marksman</i> ability, and I deal 9 damage each for 4 "
 "attacks. Use me to dislodge hard-to-hit units."
 msgstr ""
-"升级将我完全治愈了！我的<b>精准</b>能力让我总是有60%的几率命中对手，并且我可"
-"以攻击4次，每次造成9点伤害。让我来驱逐那些难以命中的家伙。"
+"升级将我完全治愈了！我的<b>精准</b>能力让我使用长弓时总是有至少60%的几率命中"
+"对手，并且我可以攻击4次，每次造成9点伤害。让我来驱逐那些难以命中的家伙。"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1024
@@ -1873,6 +1918,12 @@ msgid ""
 msgstr ""
 "\n"
 "<big>点击鼠标按钮或者按空格键继续……</big>"
+
+#~ msgid "Village"
+#~ msgstr "村庄"
+
+#~ msgid "Keep"
+#~ msgstr "城堡主楼"
 
 #~ msgid ""
 #~ "female^Hang on! You need to gather your forces. Or do you intend to fight "
