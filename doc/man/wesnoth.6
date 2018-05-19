@@ -43,6 +43,10 @@ campaigns, and share them with others.
 .SH OPTIONS
 .
 .TP
+.B --all-translations
+Show all translations in the in-game language selection list,
+even if they are deemed insufficiently complete.
+.TP
 .BI --bunzip \ infile.bz2
 decompresses a file which should be in bzip2 format and stores it
 without the .bz2 suffix. The
@@ -284,6 +288,12 @@ feature can be started with
 .BR micro_ai_test .
 Implies
 .BR --nogui .
+.TP
+.BI --translations-over \ percent
+Set the standard for deeming a translation is complete enough to show in the
+in-game language list to
+.IR percent .
+Valid values are 0 to 100.
 .TP
 .BI -u,\ --unit \ scenario-id
 runs the specified test scenario as a unit test. Implies
