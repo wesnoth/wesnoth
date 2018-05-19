@@ -686,15 +686,6 @@ void listbox::layout_children(const bool force)
 
 		content_grid()->set_visible_rectangle(visible);
 
-		if(selected_item != -1) {
-			SDL_Rect rect = generator_->item(selected_item).get_rectangle();
-
-			rect.x = visible.x;
-			rect.w = visible.w;
-
-			show_content_rect(rect);
-		}
-
 		need_layout_ = false;
 	}
 }
