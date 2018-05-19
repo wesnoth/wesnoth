@@ -418,9 +418,20 @@ return {
                     add_unit_type(unit_type)
                 end
             end
+
+            -- If no enemies were found, add a small number of "representative" unit types
+            if #enemy_types == 0 then
+                add_unit_type('Orcish Grunt')
+                add_unit_type('Orcish Archer')
+                add_unit_type('Wolf Rider')
+                add_unit_type('Spearman')
+                add_unit_type('Bowman')
+                add_unit_type('Cavalryman')
+            end
+
             data.enemy_counts = enemy_counts
             data.enemy_types = enemy_types
-            data.num_enemies = #enemies
+            data.num_enemies = math.max(#enemies, 1)
             data.possible_enemy_recruit_count = possible_enemy_recruit_count
 
             return data
@@ -650,11 +661,29 @@ return {
             local best_scores = {offense = 0, defense = 0, move = 0}
             local best_hex = recruit_data.recruit.best_hex
             local target_hex = recruit_data.recruit.target_hex
-            local distance_to_enemy, enemy_location
-            if target_hex[1] then
-                distance_to_enemy, enemy_location = AH.get_closest_enemy(target_hex, wesnoth.current.side, { viewing_side = 0 })
-            else
-                distance_to_enemy, enemy_location = AH.get_closest_enemy(best_hex, wesnoth.current.side, { viewing_side = 0 })
+
+            local reference_hex = target_hex[1] and target_hex or best_hex
+            local distance_to_enemy, enemy_location = AH.get_closest_enemy(reference_hex, wesnoth.current.side, { viewing_side = 0 })
+            -- If no enemy is on the map, then we first use closest enemy start hex,
+            -- and if that does not exist either, a location mirrored w.r.t the center of the map
+            if not enemy_location then
+                local enemy_sides = wesnoth.get_sides({ { "enemy_of", {side = wesnoth.current.side} } })
+                local min_dist = 9e99
+                for _, side in ipairs(enemy_sides) do
+                    local enemy_start_hex = wesnoth.special_locations[side.side]
+                    if enemy_start_hex then
+                        local dist = wesnoth.map.distance_between(reference_hex[1], reference_hex[2], enemy_start_hex[1], enemy_start_hex[2])
+                        if dist < min_dist then
+                            min_dist = dist
+                            enemy_location = { x = enemy_start_hex[1], y = enemy_start_hex[2] }
+                        end
+                    end
+                end
+                if not enemy_location then
+                    local width, height = wesnoth.get_map_size()
+                    enemy_location = { x = width + 1 - reference_hex[1], y = height + 1 - reference_hex[2] }
+                end
+                distance_to_enemy = wesnoth.map.distance_between(reference_hex[1], reference_hex[2], enemy_location.x, enemy_location.y)
             end
 
             local gold_limit = 9e99
