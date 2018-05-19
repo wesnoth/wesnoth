@@ -43,7 +43,7 @@ namespace {
 	language_def current_language;
 	std::vector<config> languages_;
 	utils::string_map strings_;
-	const int MIN_TRANSLATION_PERCENT = 80;
+	int min_translation_percent = 80;
 }
 
 static language_list known_languages;
@@ -118,11 +118,19 @@ language_list get_languages()
 	// sort order.
 	std::sort(known_languages.begin(), known_languages.end());
 
+	if(min_translation_percent == 0) {
+		return known_languages;
+	}
+
 	language_list result;
 	std::copy_if(known_languages.begin(), known_languages.end(), std::back_inserter(result),
-		[](const language_def& lang) { return lang.percent >= MIN_TRANSLATION_PERCENT; });
+		[](const language_def& lang) { return lang.percent >= min_translation_percent; });
 
 	return result;
+}
+
+void set_min_translation_percent(int percent) {
+	min_translation_percent = percent;
 }
 
 static void wesnoth_setlocale(int category, const std::string& slocale,

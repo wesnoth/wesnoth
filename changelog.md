@@ -24,6 +24,8 @@
    * Updated translations: British English, Chinese (Simplified), Czech, French,
      Galician, German, Italian, Japanese, Scottish Gaelic, Slovak, Spanish
    * Fixed Logging Options tooltips not being translatable (issue #2837).
+   * Add command-line argument to disable the filtering of incomplete translations
+     in the language selection list.
  ### Multiplayer server
    * Added support for matching user, IP, and email bans from a forums board
      when the forum_user_handler is enabled and active. (IP and email bans with

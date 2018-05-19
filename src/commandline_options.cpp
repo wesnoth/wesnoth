@@ -19,6 +19,7 @@
 #include "lexical_cast.hpp"
 #include "log.hpp"                      // for logger, set_strict_severity, etc
 #include "serialization/string_utils.hpp"  // for split
+#include "utils/general.hpp" // for clamp
 
 #include <boost/any.hpp>                // for any
 #include <boost/program_options/cmdline.hpp>
@@ -146,6 +147,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	// Options are sorted alphabetically by --long-option.
 	po::options_description general_opts("General options");
 	general_opts.add_options()
+		("all-translations", "Show all translations, even incomplete ones.")
 		("bunzip2", po::value<std::string>(), "decompresses a file (<arg>.bz2) in bzip2 format and stores it without the .bz2 suffix. <arg>.bz2 will be removed.")
 		("bzip2", po::value<std::string>(), "compresses a file (<arg>) in bzip2 format, stores it as <arg>.bz2 and removes <arg>.")
 		("clock", "Adds the option to show a clock for testing the drawing timer.")
@@ -193,6 +195,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("script", po::value<std::string>(), "(experimental) file containing a lua script to control the client")
 		("server,s", po::value<std::string>()->implicit_value(std::string()), "connects to the host <arg> if specified or to the first host in your preferences.")
 		("strict-validation", "makes validation errors fatal")
+		("translations-over", po::value<unsigned int>(), "Specify the standard for determining whether a translation is complete.")
 		("unsafe-scripts", "makes the \'package\' package available to lua scripts, so that they can load arbitrary packages. Do not do this with untrusted scripts! This action gives lua the same permissions as the wesnoth executable.")
 		("userconfig-dir", po::value<std::string>(), "sets the path of the user config directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. Defaults to $HOME/.config/wesnoth on X11 and to the userdata-dir on other systems.")
 		("userconfig-path", "prints the path of the user config directory and exits.")
@@ -481,6 +484,10 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		windowed = true;
 	if (vm.count("with-replay"))
 		with_replay = true;
+	if(vm.count("all-translations"))
+		translation_percent = 0;
+	else if(vm.count("translations-over"))
+		translation_percent = utils::clamp<unsigned int>(vm["translations-over"].as<unsigned int>(), 0, 100);
 }
 
 void commandline_options::parse_log_domains_(const std::string &domains_string, const int severity)
