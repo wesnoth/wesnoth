@@ -262,6 +262,8 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 		video().set_fullscreen(false);
 	if (cmdline_opts_.with_replay && load_data_)
 		load_data_->show_replay = true;
+	if(cmdline_opts_.translation_percent)
+		set_min_translation_percent(*cmdline_opts_.translation_percent);
 
 	std::cerr
 		<< "\nData directory:               " << filesystem::sanitize_path(game_config::path)
