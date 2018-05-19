@@ -213,6 +213,8 @@ public:
 	bool windowed;
 	/// True if --with-replay was given on the command line. Shows replay of the loaded file.
 	bool with_replay;
+	/// Non-empty if --all-translations or --translations-over is given on the command line.
+	boost::optional<unsigned int> translation_percent;
 private:
 	void parse_log_domains_(const std::string &domains_string, const int severity);
 	void parse_log_strictness (const std::string &severity);

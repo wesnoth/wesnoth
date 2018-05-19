@@ -100,3 +100,5 @@ void init_textdomains(const config& cfg);
 bool init_strings(const config& cfg);
 
 bool load_language_list();
+
+void set_min_translation_percent(int percent);

@@ -46,7 +46,7 @@ namespace {
 
 	// This should be enabled for stable releases.
 #ifdef ENABLE_TRANSLATION_COMPLETION_FILTERING
-	const int MIN_TRANSLATION_PERCENT = 80;
+	int min_translation_percent = 80;
 #endif
 }
 
@@ -122,13 +122,23 @@ language_list get_languages()
 	// sort order.
 	std::sort(known_languages.begin(), known_languages.end());
 #ifdef ENABLE_TRANSLATION_COMPLETION_FILTERING
+
+	if(min_translation_percent == 0) {
+		return known_languages;
+	}
+
 	language_list result;
 	std::copy_if(known_languages.begin(), known_languages.end(), std::back_inserter(result),
-		[](const language_def& lang) { return lang.percent >= MIN_TRANSLATION_PERCENT; });
+		[](const language_def& lang) { return lang.percent >= min_translation_percent; });
 
 	return result;
-#endif
+#else
 	return known_languages;
+#endif
+}
+
+void set_min_translation_percent(int percent) {
+	min_translation_percent = percent;
 }
 
 static void wesnoth_setlocale(int category, const std::string& slocale,
