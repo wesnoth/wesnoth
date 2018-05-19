@@ -3,6 +3,8 @@
    * Updated translations: British English, Chinese (Simplified), Czech, French,
      Galician, Italian, Spanish, Ukrainian
  ### User interface
+   * List boxes (MP lobby game list in particular) now keep the scroll position
+     when they change, instead of keeping the selected item visible (issue #3016).
    * Fixed MP lobby player list scrolling to top when it changes
  ### Miscellaneous and bug fixes
    * Fixed: unit halo remained after undoing a recall (issue #3065)
