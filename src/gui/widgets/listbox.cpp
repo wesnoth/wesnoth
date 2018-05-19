@@ -696,8 +696,6 @@ void listbox::layout_children(const bool force)
 	assert(content_grid());
 
 	if(need_layout_ || force) {
-		const int selected_item = generator_->get_selected_item();
-
 		content_grid()->place(content_grid()->get_origin(), content_grid()->get_size());
 
 		const SDL_Rect& visible = content_visible_area_;
