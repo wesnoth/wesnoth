@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-05-09 03:49-0300\n"
-"PO-Revision-Date: 2018-05-06 17:00+0200\n"
+"PO-Revision-Date: 2018-05-17 17:14+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -123,7 +123,7 @@ msgstr "Spezielles"
 #. Describes a scenario in the editor that has not set a time of day schedule
 #: data/core/editor/time-of-day.cfg:6
 msgid "time of day^None"
-msgstr "Keine"
+msgstr "Keiner"
 
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:11
@@ -183,7 +183,7 @@ msgstr "Datei"
 #. [menu]: id=menu-editor-recent
 #: data/themes/editor.cfg:72
 msgid "Load Recent"
-msgstr "Letzte Version laden"
+msgstr "Zuletzt verwendet"
 
 #. [menu]: id=menu-editor-map
 #: data/themes/editor.cfg:90
@@ -373,7 +373,7 @@ msgstr "Karte speichern unter"
 
 #: src/editor/map/context_manager.cpp:666
 msgid "Save Scenario As"
-msgstr "Szenario speichern als"
+msgstr "Szenario speichern unter"
 
 #: src/editor/map/context_manager.cpp:698
 msgid "No random map generators found."
@@ -418,7 +418,7 @@ msgstr "Eingebettete Karte geladen"
 #: src/editor/map/context_manager.cpp:909
 #: src/editor/map/context_manager.cpp:922
 msgid "Map loaded from scenario"
-msgstr "Karte aus Szenario Datei geladen"
+msgstr "Karte aus Szenario geladen"
 
 #: src/editor/map/context_manager.cpp:919
 msgid ""
@@ -459,7 +459,7 @@ msgstr "Das Szenario konnte nicht gespeichert werden: $msg"
 
 #: src/editor/map/map_context.cpp:636
 msgid "Could not save into scenario"
-msgstr "Konnte nicht in die Szenario Datei speichern"
+msgstr "Konnte nicht in das Szenario gespeichert werden"
 
 #: src/editor/map/map_context.cpp:646
 msgid "Could not save the map: $msg"
@@ -493,11 +493,11 @@ msgstr "Neue Ortbezeichnung"
 
 #: src/editor/palette/location_palette.cpp:272
 msgid "Error"
-msgstr ""
+msgstr "Fehler"
 
 #: src/editor/palette/location_palette.cpp:273
 msgid "Invalid location id"
-msgstr ""
+msgstr "Ungültige Gelände-ID"
 
 #: src/editor/palette/location_palette.cpp:280
 msgid "Delete"
@@ -522,7 +522,7 @@ msgstr "Datei auswählen"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:202
 msgid "Select"
-msgstr "Wähle"
+msgstr "Auswählen"
 
 #: src/gui/dialogs/editor/set_starting_position.cpp:88
 msgid "player^None"

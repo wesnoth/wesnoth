@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-05-15 23:33-0400\n"
-"PO-Revision-Date: 2018-05-07 01:54+0200\n"
+"PO-Revision-Date: 2018-05-17 16:49+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
@@ -453,7 +453,7 @@ msgstr ""
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
 msgid "The editor features two separate modes of operation:"
-msgstr "Der Editor beinhaltet zwei separate Modi für Operationen:"
+msgstr "Der Editor beinhaltet zwei separate Operationsmodi:"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:187
@@ -1587,19 +1587,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:202
-#, fuzzy
-#| msgid ""
-#| "Each side begins with one leader in their keep. At the start of any "
-#| "battle, and at times during it, you will need to recruit <ref>dst='.."
-#| "units' text='units'</ref> into your army. To recruit, you must have your "
-#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
-#| "italic> campaign) on the keep hex of a <ref>dst='terrain_castle' "
-#| "text='castle'</ref>. Then you may recruit by either choosing "
-#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
-#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
-#| "which lists units available for recruitment, along with their gold cost. "
-#| "Click on a unit to see its statistics, then press the OK button to "
-#| "recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -3096,11 +3083,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:490
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Multiplayer Modifications'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3108,18 +3090,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Mehrspieler-Modifikationen'</header>"
+"<header>text='Modifikationen'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:492
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Modifications are optional scenario- and era-independent scripts for "
-#| "<italic>text='Multiplayer'</italic> games that can alter the default "
-#| "ruleset in various ways. You can choose and configure modifications when "
-#| "creating a new game."
 msgid ""
 "\n"
 "\n"
@@ -3129,10 +3103,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Auf Wunsch können die im Mehrspieler-Modus vordefinierten Regeln abgeändert "
-"werden. Hierfür sind die »Modifikationen« gedacht: von Szenarien und Epochen "
-"unabhängige Skripte. Beim Start einer neuen Partie können die gewünschten "
-"Anpassungen aus der Änderungsliste gewählt und konfiguriert werden."
+"Auf Wunsch können die vordefinierten Regeln abgeändert werden. Hierfür sind "
+"die »Modifikationen« gedacht: von Szenarien und Epochen unabhängige Skripte. "
+"Beim Start einer neuen Partie können die gewünschten Anpassungen aus der "
+"Änderungsliste gewählt und konfiguriert werden."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:494
@@ -6473,32 +6447,6 @@ msgstr "Untote"
 
 #. [race]: id=undead
 #: data/core/units.cfg:363
-#, fuzzy
-#| msgid ""
-#| "Undead are not really a single race of creatures, although often treated "
-#| "as such. Almost any dead creature can, by a sufficiently skilled "
-#| "necromancer, be reanimated and rise again in undeath. Undead are for the "
-#| "most part unnatural but mindless constructs, obeying whoever created them "
-#| "without question nor thought. A greater mystery of necromancy is in how "
-#| "constructs are sustained without continuous effort from the necromancer. "
-#| "An undead creature does not require the constant attention of the "
-#| "necromancer to command and sustain, but can work autonomously according "
-#| "to the commands of its master. Only rarely, perhaps once every few "
-#| "months, does the necromancer need to maintain his creation.\n"
-#| "\n"
-#| "Necromancy is almost solely limited to humans. Even the legends of "
-#| "magically apt races like elves and mermen tell of very few of their kind "
-#| "who have ever delved in the dark arts. It is surmised that necromantic "
-#| "magic requires great adaptability and a flexible mind, extremes of which "
-#| "are most commonly found in humans. The ultimate goal of most necromancers "
-#| "is to turn the same art of preserving and imbuing life upon themselves, "
-#| "to alter themselves at whatever cost, to ultimately escape death by "
-#| "preserving their own mind and spirit.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "While undead lords arrived on the Great Continent in considerable numbers "
-#| "only in the wake of Haldric I, they were not completely unheard of by "
-#| "elves and dwarves before that."
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
