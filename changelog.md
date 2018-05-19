@@ -47,6 +47,8 @@
    * Updated translations: British English, Chinese (Simplified), Czech, French,
      Galician, German, Italian, Japanese, Polish, Scottish Gaelic, Slovak,
      Spanish, Ukrainian.
+   * Add command-line argument to disable the filtering of incomplete translations
+     in the language selection list.
  ### Lua API
    * Fix wesnoth.show_popup_dialog and wesnoth.show_message_box not accepting
      translatable strings
@@ -117,6 +119,8 @@
    * Add dir in [move_unit], allowing relative movements
    * Add clear_shroud in [move_unit] to clear shroud as the unit moves
    * Fixed [modify_side] share_vision=yes not doing anything (bug #2850).
+   * Support male_voice and female_voice in [message]
+   * Support [break], [continue], and [return] in [random_placement]
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
    * Fixed some hotkeys triggering multiple commands on GNU/Linux (bug #1736)
