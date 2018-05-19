@@ -39,6 +39,7 @@
 #include "game_end_exceptions.hpp"
 #include "game_state.hpp"
 #include "map/map.hpp"
+#include "play_controller.hpp"
 #include "resources.hpp"
 #include "units/unit.hpp"
 #include "utils/iterable_pair.hpp"
@@ -79,15 +80,19 @@ side_actions_container::side_actions_container()
 size_t side_actions_container::get_turn_impl(size_t begin, size_t end, const_iterator it) const
 {
 	if(begin+1 >= end) {
+		if(begin+1 != end) {
+			ERR_WB << "get_turn: begin >= end\n";
+		}
+		else if(it < turn_beginnings_[begin]) {
+			ERR_WB << "get_turn failed\n";			
+		}
 		return begin;
 	}
 	size_t mid = (begin+end) / 2;
 	if(it < turn_beginnings_[mid]) {
 		return get_turn_impl(begin, mid, it);
-	} else if(it > turn_beginnings_[mid]) {
-		return get_turn_impl(mid, end, it);
 	} else {
-		return mid;
+		return get_turn_impl(mid, end, it);
 	}
 }
 
@@ -221,6 +226,13 @@ side_actions_container::iterator side_actions_container::erase(iterator position
 				turn_beginnings_.pop_back();
 			}
 		} else {
+#if 1
+			for(auto& it : turn_beginnings_) {
+				if (it == position) {
+					it = next;
+				}
+			}
+#else
 			size_t turn_of_position = std::distance(turn_beginnings_.begin(), beginning);
 			// If we still have action this turn
 			if(get_turn(next) == turn_of_position) {
@@ -229,6 +241,7 @@ side_actions_container::iterator side_actions_container::erase(iterator position
 				assert(turn_of_position == 0);
 				*beginning = turn_end(0); // Otherwise, we are emptying the current turn.
 			}
+#endif
 		}
 	}
 
@@ -335,7 +348,7 @@ bool side_actions::execute(side_actions::iterator position)
 	bool action_complete;
 	try	{
 		 action->execute(action_successful, action_complete);
-	} catch (return_to_play_side_exception&) {
+	} catch (const return_to_play_side_exception&) {
 		synced_erase(position);
 		LOG_WB << "End turn exception caught during execution, deleting action. " << *this << "\n";
 		//validate actions at next map rebuild
@@ -344,7 +357,12 @@ bool side_actions::execute(side_actions::iterator position)
 	}
 
 	if(resources::whiteboard->should_clear_undo()) {
-		resources::undo_stack->clear();
+		if(resources::controller->current_team().auto_shroud_updates()) {
+			resources::undo_stack->clear();
+		}
+		else {
+			WRN_WB << "not clearing undo stack because dsu is active\n";
+		}
 	}
 
 	std::stringstream ss;
@@ -559,6 +577,36 @@ side_actions::iterator side_actions::find_first_action_at(map_location hex)
 	return find_first_action_of(actions_.get<container::by_hex>().equal_range(hex), begin(), std::less<iterator>());
 }
 
+side_actions::iterator side_actions::find_first_action_of(size_t unit_id, side_actions::iterator start_position)
+{
+	return find_first_action_of(actions_.get<container::by_unit>().equal_range(unit_id), start_position, std::less<iterator>());
+}
+
+side_actions::const_iterator side_actions::find_last_action_of(size_t unit_id, side_actions::const_iterator start_position) const {
+	return find_first_action_of(actions_.get<container::by_unit>().equal_range(unit_id), start_position, std::greater<iterator>());
+}
+
+side_actions::iterator side_actions::find_last_action_of(size_t unit_id, side_actions::iterator start_position)
+{
+	return find_first_action_of(actions_.get<container::by_unit>().equal_range(unit_id), start_position, std::greater<iterator>());
+}
+
+side_actions::const_iterator side_actions::find_last_action_of(size_t unit_id) const
+{
+	if(end() == begin()) {
+		return end();
+	}
+	return find_last_action_of(unit_id, end() - 1);
+}
+
+side_actions::iterator side_actions::find_last_action_of(size_t unit_id)
+{
+	if(end() == begin()) {
+		return end();
+	}
+	return find_last_action_of(unit_id, end() - 1);
+}
+
 side_actions::iterator side_actions::find_first_action_of(const unit& unit, side_actions::iterator start_position)
 {
 	return find_first_action_of(actions_.get<container::by_unit>().equal_range(unit.underlying_id()), start_position, std::less<iterator>());
@@ -630,6 +678,20 @@ void side_actions::reset_gold_spent()
 	gold_spent_ = 0;
 }
 
+void side_actions::update_recruited_unit(std::size_t old_id, unit& new_unit)
+{
+	for(const_iterator it = begin(); it != end(); ++it) {
+		if(move_ptr mp = std::dynamic_pointer_cast<move>(*it)) {
+			if(mp->raw_uid() == old_id) {
+				actions_.modify(it, [&](action_ptr& p) {
+					static_cast<move&>(*p).modify_unit(new_unit);
+				});
+			}
+		}
+	}
+}
+
+	
 side_actions::iterator side_actions::safe_insert(size_t turn, size_t pos, action_ptr act)
 {
 	assert(act);
@@ -674,13 +736,13 @@ side_actions::iterator side_actions::safe_erase(const iterator& itor)
 }
 side_actions::iterator side_actions::queue_move(size_t turn, unit& mover, const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
-	move_ptr new_move(std::make_shared<move>(team_index(), hidden_, std::ref(mover), route, arrow, fake_unit));
+	move_ptr new_move(std::make_shared<move>(team_index(), hidden_, std::ref(mover), route, arrow, std::move(fake_unit)));
 	return queue_action(turn, new_move);
 }
 
 side_actions::iterator side_actions::queue_attack(size_t turn, unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
-	attack_ptr new_attack(std::make_shared<attack>(team_index(), hidden_, std::ref(mover), target_hex, weapon_choice, route, arrow, fake_unit));
+	attack_ptr new_attack(std::make_shared<attack>(team_index(), hidden_, std::ref(mover), target_hex, weapon_choice, route, arrow, std::move(fake_unit)));
 	return queue_action(turn, new_attack);
 }
 

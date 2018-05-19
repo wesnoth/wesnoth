@@ -62,6 +62,7 @@ public:
 
 	/** @return pointer to a copy of the recall unit. */
 	virtual unit_ptr get_unit() const { return temp_unit_; }
+	virtual bool places_new_unit() const { return true; }
 	/** @return pointer to the fake unit used only for visuals */
 	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
 
@@ -81,9 +82,14 @@ private:
 	virtual void do_hide();
 	virtual void do_show();
 
+	// This is the pointer to the real recall unit.
 	unit_ptr temp_unit_;
 	map_location recall_hex_;
 	fake_unit_ptr fake_unit_;
+	
+	int original_mp_;
+	int original_ap_;
+	int original_recall_pos_;
 };
 
 std::ostream& operator<<(std::ostream& s, recall_ptr recall);

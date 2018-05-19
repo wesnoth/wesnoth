@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-27 01:21 UTC\n"
-"PO-Revision-Date: 2018-03-27 21:31+0800\n"
+"POT-Creation-Date: 2018-05-09 06:49 UTC\n"
+"PO-Revision-Date: 2018-05-16 23:12+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
@@ -204,10 +204,10 @@ msgstr ""
 msgid "Humans"
 msgstr "人类"
 
-#. [side]: type=Dark Sorcerer, id=Mordak
+#. [side]: type=Orcish Warlord, id=Tairach
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #. [side]
-#. [side]: type=Orcish Warlord, id=Tairach
+#. [side]: type=Dark Sorcerer, id=Mordak
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:114
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:81
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:131
@@ -613,24 +613,24 @@ msgstr ""
 "业余对手更大的威胁，并取得了胜利。"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:437
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:435
 msgid "I see them! There they are!"
 msgstr "我看到他们了！他们在那儿！"
 
 #. [message]: speaker=Muff Toras
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:442
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:440
 msgid ""
 "Curses! If they had been an hour slower our master’s reinforcements would "
 "already be here to meet us."
 msgstr "妈的！如果他们再晚来一个小时，我们主人的援军就已经来这里和我们汇合了。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:454
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:452
 msgid "Come on, men, let’s catch those kidnappers!"
 msgstr "快，伙计们，我们去逮住那些绑架者！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:468
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:466
 msgid ""
 "Hah! You have captured me, but it will avail you nothing. I sent your "
 "precious brother the mage north with half my men a day since; he will be "
@@ -640,7 +640,7 @@ msgstr ""
 "弟，那个法师往北面去了；到现在他已经被安全地锁在我们主人的地牢里了。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:473
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:471
 msgid ""
 "My blade is at your throat. Give us the way to my brother now, or I will "
 "spill your wretched blood on the ground."
@@ -649,47 +649,47 @@ msgstr ""
 "溅地三尺。"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:476
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:474
 msgid "Sithrak"
 msgstr "西斯拉克"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:477
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:475
 msgid "Eleben"
 msgstr "艾勒本"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:478
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:476
 msgid "Jarlom"
 msgstr "伽罗姆"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:479
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:477
 msgid "Hamik"
 msgstr "哈米克"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:483
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:481
 msgid "Akranbral"
 msgstr "阿克兰布雷尔"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:484
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:482
 msgid "Drakanal"
 msgstr "德拉卡纳尔"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:485
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:483
 msgid "Xaskanat"
 msgstr "卡斯卡纳特"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:486
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:484
 msgid "Katklagad"
 msgstr "卡特克拉加德"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:492
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:490
 msgid ""
 "Three days ride to the northeast, in a deserted castle. The passwords to the "
 "guards are $first_password_$first_password and $second_password_"
@@ -699,12 +699,12 @@ msgstr ""
 "$first_password|和$second_password_$second_password|。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:500
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:498
 msgid "Bind him and take him with us. If he has played us false, he will die."
 msgstr "把他绑上，带他一起走。如果他敢耍花样，就得死。"
 
 #. [message]: role=Mercenary
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:512
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:510
 msgid ""
 "Captain, what are we riding into? I thought you wanted nothing to do with "
 "Baran any more, not since Toen Caric."
@@ -713,7 +713,7 @@ msgstr ""
 "关系了。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:517
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:515
 msgid ""
 "I’m no longer sure. What’s between us remains, but knowing someone else has "
 "lain hands on him changes things. Mount up, and let’s get moving."
@@ -722,12 +722,12 @@ msgstr ""
 "上马，开拔。"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:532
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:530
 msgid "Brena"
 msgstr "布雷纳"
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:542
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:540
 msgid ""
 "Greetings. I am Brena, a knight errant. I saw you pursuing and fighting the "
 "foul undead. Are there more of them to be destroyed?"
@@ -736,68 +736,68 @@ msgstr ""
 "的亡灵吗？"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:547
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:545
 msgid ""
 "Aye. We think there’s a nest of them north-east of here. They’ve captured my "
 "brother."
 msgstr "是的。我认为他们在东北面还有老巢。他们抓走了我的弟弟。"
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:552
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:550
 msgid ""
 "I bear a great hatred towards their kind. I will follow and fight them with "
 "you, if you permit."
 msgstr "我非常痛恨亡灵族类。如果您允许，我可以跟随你们一起对付他们。"
 
 #. [message]: role=Mercenary
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:557
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:555
 msgid "He would only slow us down!"
 msgstr "他只会拖慢我们的速度！"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:562
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:560
 msgid "It is my place to decide this."
 msgstr "这事由我来决定。"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:564
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:562
 msgid "Oh, all right then. Come along with us."
 msgstr "噢，好吧。一起来吧。"
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:568
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:566
 msgid "Thank you. My comrades and I will help you on your noble quest."
 msgstr "谢谢您。我和我的战友会在您高贵的征途上帮助您。"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:573
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:571
 msgid "I am sorry. We have not the time to spare."
 msgstr "抱歉。我们没有空闲时间了。"
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:577
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:575
 msgid ""
 "Take this, then, for I see that you are on a quest. My comrades will help "
 "you whenever you call for them."
 msgstr "那请带上这个，我知道您正在征途之上。只需召唤，我的战友就会前来帮助您。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:592
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:590
 msgid "You receive 70 pieces of gold!"
 msgstr "你获得了70枚金币！"
 
 #. [message]: speaker=Muff Toras
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:615
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:613
 msgid "My reinforcements are here!"
 msgstr "我的援军来了！"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:620
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:618
 msgid "He escaped us..."
 msgstr "他逃跑了……"
 
 #. [message]: speaker=Nil-Galion
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:632
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:630
 msgid ""
 "Foolish human, you have killed me but you will not catch the undead in time. "
 "I have fulfilled my contract, and will be reanimated soon to become a lord "
@@ -807,7 +807,7 @@ msgstr ""
 "复活成为亡灵军队的领主。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:642
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:640
 msgid "Follow their back trail!"
 msgstr "跟上他们的足迹！"
 

@@ -8,14 +8,14 @@
 # Automatically generated, 2004.
 # Alessio D'Ascanio <otaku@fastwebnet.it>, 2004, 2005.
 # Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2009, 2011.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2016.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-31 23:36 UTC\n"
-"PO-Revision-Date: 2017-07-29 15:21+0300\n"
+"POT-Creation-Date: 2018-05-06 08:31 UTC\n"
+"PO-Revision-Date: 2018-04-11 12:00+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [generic_multiplayer]: id=user_map
@@ -69,18 +69,10 @@ msgstr ""
 #. [era]: id=era_dunefolk
 #: data/multiplayer/eras.cfg:83
 msgid "Default + Dunefolk"
-msgstr ""
+msgstr "Default + Califfato"
 
 #. [era]: id=era_dunefolk
 #: data/multiplayer/eras.cfg:84
-#, fuzzy
-#| msgid ""
-#| "An era featuring an additional faction besides the six factions from "
-#| "Default Era. Khalifate units use no magic, but instead rely on careful "
-#| "use of terrain and coordinated strikes around dusk or dawn.\n"
-#| "\n"
-#| "This era is still under development, so please be sure to report any "
-#| "problems that arise."
 msgid ""
 "An era featuring an additional faction besides the six factions from Default "
 "Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
@@ -89,31 +81,21 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
-"Un’era che propone una fazione aggiuntiva rispetto a quelle dell’era "
-"predefinita. Le unità  del Califfato non usano la magia, piuttosto si "
-"affidano ad un uso accorto del terreno e di attacchi coordinati, sferrati "
-"preferibilmente all’alba o al tramonto.\n"
+"Un’era che propone una fazione aggiuntiva rispetto alle sei dell’era "
+"predefinita. Le unità  del Califfato preferiscono fare affidamento ad un uso "
+"accorto del terreno e di attacchi coordinati, sferrati preferibilmente "
+"all’alba o al tramonto.\n"
 "\n"
 "Quest’era è ancora in fase di sviluppo, siete quindi pregati di riportare "
 "qualsiasi problema possiate incontrare."
 
 #. [era]: id=era_dunefolk_heroes
 #: data/multiplayer/eras.cfg:94
-#, fuzzy
-#| msgid "Age of Heroes"
 msgid "Age of Heroes + Dunefolk"
-msgstr "Era degli eroi"
+msgstr "Era degli eroi + Califfato"
 
 #. [era]: id=era_dunefolk_heroes
 #: data/multiplayer/eras.cfg:95
-#, fuzzy
-#| msgid ""
-#| "An era featuring an additional faction besides the six factions from Age "
-#| "of Heroes Era. Khalifate units use no magic, but instead rely on careful "
-#| "use of terrain and coordinated strikes around dusk or dawn.\n"
-#| "\n"
-#| "This era is still under development, so please be sure to report any "
-#| "problems that arise."
 msgid ""
 "An era featuring an additional faction besides the six factions from Age of "
 "Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
@@ -122,10 +104,10 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
-"Un’era che propone una fazione aggiuntiva rispetto a quelle dell’era degli "
-"eroi. Le unità  del Califfato non usano la magia, piuttosto si affidano ad "
-"un uso accorto del terreno e di attacchi coordinati, sferrati "
-"preferibilmente all’alba o al tramonto.\n"
+"Un’era che propone una fazione aggiuntiva rispetto alle sei dell’Era degli "
+"Eroi. Le unità del Califfato preferiscono fare affidamento ad un uso accorto "
+"del terreno e di attacchi coordinati, sferrati preferibilmente all’alba o al "
+"tramonto.\n"
 "\n"
 "Quest’era è ancora in fase di sviluppo, siete quindi pregati di riportare "
 "qualsiasi problema possiate incontrare."
@@ -186,21 +168,11 @@ msgstr ""
 #: data/multiplayer/factions/dunefolk-aoh.cfg:4
 #: data/multiplayer/factions/dunefolk-default.cfg:4
 msgid "Dunefolk"
-msgstr ""
+msgstr "Califfato"
 
 #. [multiplayer_side]: id=Dunefolk, type=random
 #: data/multiplayer/factions/dunefolk-aoh.cfg:14
 #: data/multiplayer/factions/dunefolk-default.cfg:14
-#, fuzzy
-#| msgid ""
-#| "The <bold>text='Khalifate'</bold> are a faction of humans from the "
-#| "deserts and hills of the southern lands. Lacking magic users, the "
-#| "Khalifate instead specialize in using terrain features to coordinate "
-#| "attacks at dawn or dusk. Their ranks boast lawful and liminal units, "
-#| "healers, high-accuracy melee fighters, and fearsome horse-mounted "
-#| "archers. While Khalifate units tend to be more expensive than those of "
-#| "the Loyalist faction, they make up for this with high mobility — "
-#| "especially on hilly terrains."
 msgid ""
 "The <bold>text='Dunefolk'</bold> are a faction of humans from the deserts "
 "and hills of the southern lands. The Dunefolk specialize in using terrain "
@@ -211,13 +183,13 @@ msgid ""
 "especially on hilly terrains."
 msgstr ""
 "Il <bold>text='Califfato'</bold> è una fazione composta da uomini "
-"provenienti dal deserto e dalle colline meridionali. Non avendo maghi, il "
-"Califfato ha preferito specializzarsi nell’utilizzo del terreno per "
-"coordinare attacchi all’alba e al tramonto. ‎‎‎Trai i loro ranghi trovano posto "
-"unità legali e liminali, curatori, combattenti di mischia infallibili e "
-"terribili arcieri a cavallo. Sebbene le unità del califfato tendano ad "
-"essere più costose di quelle della fazione Lealista, compensano il costo con "
-"la loro alta mobilità, specialmente su terreni collinosi."
+"provenienti dal deserto e dalle colline meridionali. Il Califfato ha "
+"preferito specializzarsi nell’utilizzo del terreno per coordinare attacchi "
+"all’alba e al tramonto. ‎‎‎Trai i loro ranghi trovano posto unità legali e "
+"liminali, curatori, combattenti di mischia infallibili e terribili arcieri a "
+"cavallo. Sebbene le unità del califfato tendano ad essere più costose di "
+"quelle della fazione Lealista, compensano il costo con la loro alta "
+"mobilità, specialmente su terreni collinosi."
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
@@ -652,10 +624,8 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:89
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:95
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:91
-#, fuzzy
-#| msgid "teamname^Southwest"
 msgid "teamname^Statues"
-msgstr "Sud-ovest"
+msgstr "Statue"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:94
@@ -1155,24 +1125,24 @@ msgstr ""
 "scenario funzioni correttamente."
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:22
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:34
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:21
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:33
 msgid "teamname^Revolt"
 msgstr "Rivolta"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:52
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:72
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:51
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:71
 msgid "teamname^Human"
 msgstr "Umani"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:107
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:106
 msgid "Death of your leader"
 msgstr "Morte del tuo comandante"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:108
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:107
 msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
@@ -1181,12 +1151,12 @@ msgstr ""
 "non sarà al massimo."
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:111
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:110
 msgid "Death of both of your team’s leaders"
 msgstr "Morte di entrambi i comandanti della tua squadra"
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:112
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:111
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr ""
@@ -1194,17 +1164,17 @@ msgstr ""
 "al massimo."
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:133
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:132
 msgid "Survive and defeat all enemy waves"
 msgstr "Sopravvivi e sconfiggi tutte le orde nemiche"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:153
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:152
 msgid "Dark Forecast — a random survival scenario"
 msgstr "La tetra previsione – uno scenario di sopravvivenza casuale"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:158
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:157
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
 "archenemies.\n"
@@ -1251,13 +1221,13 @@ msgstr ""
 "• implementazione WML"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:178
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:177
 msgid "So this is the accursed valley — a land ours for the taking."
 msgstr ""
 "Dunque questa è la valle maledetta – una terra che possiamo conquistare."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:182
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:181
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -1268,7 +1238,7 @@ msgstr ""
 "sorprese in queste terre."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:186
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:185
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
@@ -1277,7 +1247,7 @@ msgstr ""
 "non opporsi alle nostre rivendicazioni."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:205
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:204
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
@@ -1286,7 +1256,7 @@ msgstr ""
 "abbandonato..."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:219
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:218
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
@@ -1296,7 +1266,7 @@ msgstr ""
 "puro odio."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:241
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:240
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "
@@ -1307,7 +1277,7 @@ msgstr ""
 "tuo tempo in questo mondo è finito."
 
 #. [slider]: id=enemey_gold_factor
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:252
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:253
 msgid "Changes the gold worth of the enemy spawns by a certain percentage"
 msgstr ""
 "Cambia il valore dell’oro generato dai nemici di una percentuale fissata."
@@ -1333,27 +1303,27 @@ msgstr ""
 "farà più resistenza. Il tuo regno ha finalmente raggiunto la pace."
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:462
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:465
 msgid "Clear Weather"
 msgstr "Bel tempo"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:468
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:471
 msgid "Drought"
 msgstr "Siccità"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:480
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:483
 msgid "Heavy Rains"
 msgstr "Pioggia fitta"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:486
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:489
 msgid "Snowfall"
 msgstr "Nevicata"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:492
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:495
 msgid "Heavy Snowfall"
 msgstr "Nevicata fitta"
 
@@ -1500,7 +1470,7 @@ msgstr "Vilhelm Viskitynnyri"
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:684
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:695
 msgid "Clockwork Boy"
-msgstr "Ragazzo Meccanico"
+msgstr "Ragazzo meccanico"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brutal
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:302
@@ -1654,15 +1624,13 @@ msgstr ""
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:38
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Shapeshifter"
-msgstr "Centro"
+msgstr "Mutaforma"
 
 #. [unit]: type=Tentacle of the Deep
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:52
 msgid "Nani the Shapeshifter"
-msgstr ""
+msgstr "Nani il Mutaforma"
 
 #. [effect]: type=arcane
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:82
@@ -1976,19 +1944,19 @@ msgstr ""
 msgid "3p — Alirok Marsh"
 msgstr "3g – La palude di Alirok"
 
-#. [multiplayer]: id=multiplayer_Alirok_Marsh
-#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
-#. [multiplayer]: id=multiplayer_Clash
-#. [multiplayer]: id=multiplayer_4p_Hamlets
-#. [multiplayer]: id=multiplayer_Loris_River
-#. [multiplayer]: id=multiplayer_4p_Morituri
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
-#. [multiplayer]: id=multiplayer_4p_Underworld
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #. [multiplayer]: id=multiplayer_8p_Morituri
+#. [multiplayer]: id=multiplayer_Blue_Water_Province
+#. [multiplayer]: id=multiplayer_3p_Morituri
+#. [multiplayer]: id=multiplayer_Clash
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_Alirok_Marsh
+#. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -2220,8 +2188,8 @@ msgstr "Nord-est"
 msgid "4p — King of the Hill"
 msgstr "4g – Il re della collina"
 
-#. [multiplayer]: id=multiplayer_King_of_the_Hill
 #. [multiplayer]: id=multiplayer_Siege_Castles
+#. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 msgid " Recommended setting of 2 gold per village and 150 starting gold."

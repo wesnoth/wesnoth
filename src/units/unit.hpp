@@ -869,6 +869,18 @@ public:
 	}
 
 	/**
+	 * Gets the remaining number of attacks this unit can perform this turn.
+	 *
+	 * @param base_value          If false, consider the `incapacitated` flag.
+	 *
+	 * @returns                   If @a base_value is true, the raw value is returned.
+	 */
+	int attacks_left(bool base_value) const
+	{
+		return base_value ? attacks_left_ : attacks_left();
+	}
+
+	/**
 	 * Sets the number of attacks this unit has left this turn.
 	 * @param left The number of attacks left
 	 */
@@ -1094,9 +1106,9 @@ public:
 	/**
 	 * Gets how far a unit can move.
 	 *
-	 * @param base_value          If true, consider the `incapacitated` flag.
+	 * @param base_value          If false, consider the `incapacitated` flag.
 	 *
-	 * @returns                   If @a base_value is false, the raw value is returned.
+	 * @returns                   If @a base_value is true, the raw value is returned.
 	 */
 	int movement_left(bool base_value) const
 	{
@@ -1586,6 +1598,15 @@ public:
 
 	void set_appearance_changed(bool value) { appearance_changed_ = value; }
 	bool appearance_changed() const { return appearance_changed_; }
+
+	/**
+	 * The location of the dying unit for the duration of last_breath and die events.
+	 * Null location when neither of those events is running.
+	 * This exists in order to detect at unit creation time whether the WML/Lua code is unstoring a unit
+	 * that was already dead (e.g. as a result of [modify_unit], which is implemented with unstoring
+	 * under the hood). That's the only situation where creating a unit with negative HP is allowed.
+	 */
+	static map_location dying_unit_loc;
 
 protected:
 	mutable long ref_count_; // used by intrusive_ptr

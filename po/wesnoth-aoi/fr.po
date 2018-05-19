@@ -1,9 +1,10 @@
+# Mathieu Guilbaud <mathieu@guim.info>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: An_Orcish_Incursion-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-27 01:20 UTC\n"
-"PO-Revision-Date: 2011-12-14 21:55+0100\n"
+"POT-Creation-Date: 2018-05-06 08:31 UTC\n"
+"PO-Revision-Date: 2018-04-15 18:17+0200\n"
 "Last-Translator: Gérard Bodin <bodin.gnork@gmail.com>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -11,6 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:11
@@ -40,10 +42,8 @@ msgstr "(Niveau débutant, 7 scénarios.)"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:22
-#, fuzzy
-#| msgid "(Beginner)"
 msgid "Beginner"
-msgstr "(Débutant)"
+msgstr "Débutant"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:22
@@ -57,17 +57,13 @@ msgstr "Seigneur"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:23
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(Normal)"
+msgstr "Normal"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:24
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(Difficile)"
+msgstr "Difficile"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:24
@@ -181,11 +177,11 @@ msgstr "Elfes"
 msgid "Lomarfel"
 msgstr "Lomarfel"
 
-#. [side]: type=Orcish Warrior, id=Urugha
-#. [side]: type=Orcish Slayer, id=Gharlsa
+#. [side]: type=Orcish Sovereign, id=Rualsha
 #. [side]: type=Orcish Warlord, id=Gnargha
 #. [side]: type=Orcish Warlord, id=Krughnar
-#. [side]: type=Orcish Sovereign, id=Rualsha
+#. [side]: type=Orcish Warrior, id=Urugha
+#. [side]: type=Orcish Slayer, id=Gharlsa
 #: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:88
 #: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:59
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:66
@@ -217,16 +213,10 @@ msgstr "Mort de Erlornas"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:129
-#, fuzzy
-#| msgid ""
-#| "Hint:\n"
-#| "Elves can move quickly and safely among the trees. Pick off the enemy "
-#| "grunts with your archers from the safety of the forest."
 msgid ""
 "Elves can move quickly and safely among the trees. Pick off the enemy grunts "
 "with your archers from the safety of the forest."
 msgstr ""
-"Conseil :\n"
 "Les elfes se déplacent rapidement dans les bois et savent profiter de la "
 "protection des arbres. Mettez en pièces les grognards ennemis grâce à vos "
 "archers abrités dans la forêt."
@@ -423,18 +413,11 @@ msgstr "Vaincre Gharlsa"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:114
-#, fuzzy
-#| msgid ""
-#| "Hint:\n"
-#| "Assassins are hard to hit, and their poison is insidious. Stay close to "
-#| "the villages, where poisoning can be cured, and force your enemies to "
-#| "attack you from the river."
 msgid ""
 "Assassins are hard to hit, and their poison is insidious. Stay close to the "
 "villages, where poisoning can be cured, and force your enemies to attack you "
 "from the river."
 msgstr ""
-"Conseil :\n"
 "Les assassins sont difficiles à toucher et leur poison est insidieux. Restez "
 "proches des villages, où l'empoisonnement peut être guéri, et forcez vos "
 "ennemis à vous attaquer depuis le fleuve."
@@ -588,16 +571,10 @@ msgstr "Vaincre Gnargha"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:103
-#, fuzzy
-#| msgid ""
-#| "Hint:\n"
-#| "There are no villages in this scenario — you must use healers instead. "
-#| "Use hit-and-run tactics to weaken enemy units who cannot heal themselves."
 msgid ""
 "There are no villages in this scenario — you must use healers instead. Use "
 "hit-and-run tactics to weaken enemy units who cannot heal themselves."
 msgstr ""
-"Conseil :\n"
 "Il n'y a aucun village dans ce scénario ; vous devez utiliser des "
 "guérisseurs à la place. Utilisez des tactiques d'attaque-éclair pour "
 "affaiblir les unités ennemies qui ne peuvent pas guérir seules."
@@ -853,16 +830,10 @@ msgstr "Vaincre tous les chefs ennemis"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:170
-#, fuzzy
-#| msgid ""
-#| "Hint:\n"
-#| "Trolls are poor fighters when not on rugged terrain and fare even worse "
-#| "during the daytime. Lure them out of the hills and attack in the sunlight."
 msgid ""
 "Trolls are poor fighters when not on rugged terrain and fare even worse "
 "during the daytime. Lure them out of the hills and attack in the sunlight."
 msgstr ""
-"Conseil :\n"
 "Les trolls combattent mal quand ils ne sont pas sur un terrain rocailleux, "
 "et cela est même pire en journée. Attirez-les hors des collines et attaquez-"
 "les de jour."
@@ -1108,7 +1079,7 @@ msgstr "Krughnar"
 #. [side]
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:89
 msgid "Mages"
-msgstr ""
+msgstr "Mages"
 
 #. [objective]: condition=win
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:107
@@ -1126,19 +1097,15 @@ msgstr "Mort de Linaera"
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:89
 msgid "Linaera is a leader and can recruit mages when standing on a keep."
 msgstr ""
+"Linaera est la meneuse et peut recruter des mages lorsqu'elle se trouve sur "
+"un donjon."
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:129
-#, fuzzy
-#| msgid ""
-#| "Hint:\n"
-#| "Use Elven Scouts and Linaera’s power of teleportation to mount hit-and-"
-#| "run attacks."
 msgid ""
 "Use Elven Scouts and Linaera’s power of teleportation to mount hit-and-run "
 "attacks."
 msgstr ""
-"Conseil :\n"
 "Utilisez des éclaireurs elfes et le pouvoir de téléportation de Linaera pour "
 "harceler les ennemis."
 
@@ -1344,7 +1311,7 @@ msgstr "Un détour par les marécages"
 #. [side]: type=Lich, id=Keremal
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:45
 msgid "Undead"
-msgstr ""
+msgstr "Mort-vivant"
 
 #. [side]: type=Lich, id=Keremal
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:50
@@ -1358,16 +1325,10 @@ msgstr "Vaincre Keremal"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:90
-#, fuzzy
-#| msgid ""
-#| "Hint:\n"
-#| "Undead are resistant to physical attack. Use mages to attack the undead, "
-#| "and elves to protect and support the mages."
 msgid ""
 "Undead are resistant to physical attack. Use mages to attack the undead, and "
 "elves to protect and support the mages."
 msgstr ""
-"Conseil :\n"
 "Les morts-vivants résistent aux attaques physiques. Utilisez des mages "
 "protégés par des elfes pour les attaquer."
 
@@ -1423,16 +1384,10 @@ msgstr "Vaincre Rualsha"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:102
-#, fuzzy
-#| msgid ""
-#| "Hint:\n"
-#| "Your enemy is well-defended against attacks from the south. Use rangers "
-#| "to sneak through the forest and mount a surprise attack from the north."
 msgid ""
 "Your enemy is well-defended against attacks from the south. Use rangers to "
 "sneak through the forest and mount a surprise attack from the north."
 msgstr ""
-"Conseil :\n"
 "Votre ennemi est bien protégé contre les attaques provenant du sud. Utilisez "
 "des rôdeurs pour vous faufiler à travers la forêt et organiser une attaque "
 "surprise à partir du nord."
@@ -1440,22 +1395,22 @@ msgstr ""
 #. [unit]: type=Elvish Ranger, id=Celodith
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:139
 msgid "Celodith"
-msgstr ""
+msgstr "Celodith"
 
 #. [unit]: type=Elvish Ranger, id=Earanduil
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:159
 msgid "Earanduil"
-msgstr ""
+msgstr "Earanduil"
 
 #. [unit]: type=Elvish Ranger, id=Elvyniel
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:179
 msgid "Elvyniel"
-msgstr ""
+msgstr "Elvyniel"
 
 #. [unit]: type=Elvish Ranger, id=Delorfilith
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:199
 msgid "Delorfilith"
-msgstr ""
+msgstr "Delorfilith"
 
 #. [message]: speaker=Lomarfel
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:212
@@ -1559,20 +1514,16 @@ msgstr "Hélas, Erlornas, j'ai failli..."
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/utils/deaths.cfg:49
-#, fuzzy
-#| msgid ""
-#| "All is lost! Without Linaera’s help, I cannot hope to defeat these "
-#| "horrifying apparitions!"
 msgid ""
 "All is lost! Without Linaera’s help, I cannot hope to defeat these "
 "abominations!"
 msgstr ""
 "Tout est perdu ! Sans l'aide de Linaera, je ne peux espérer vaincre ces "
-"horribles apparitions !"
+"apparitions !"
 
 #: data/campaigns/An_Orcish_Incursion/utils/macros.cfg:4
 msgid "Hint:"
-msgstr ""
+msgstr "Conseil :"
 
 #~ msgid "Wizards"
 #~ msgstr "Magiciens"

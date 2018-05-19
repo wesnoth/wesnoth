@@ -15,6 +15,7 @@
 
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
 
+#include "chat_log.hpp"
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "game_config.hpp"
@@ -107,6 +108,7 @@ void mp_staging::pre_show(window& window)
 
 	chat.room_window_open("this game", true, false); // TODO: better title?
 	chat.active_window_changed();
+	chat.load_log(default_chat_log, false);
 
 	//
 	// Set up player list

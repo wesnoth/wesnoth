@@ -39,14 +39,11 @@ extern "C" int _putenv(const char*);
 #define WRN_G LOG_STREAM(warn, lg::general())
 #define ERR_G LOG_STREAM(err, lg::general())
 
-#ifndef MIN_TRANSLATION_PERCENT
-#define MIN_TRANSLATION_PERCENT 80
-#endif
-
 namespace {
 	language_def current_language;
 	std::vector<config> languages_;
 	utils::string_map strings_;
+	int min_translation_percent = 80;
 }
 
 static language_list known_languages;
@@ -98,7 +95,7 @@ bool load_language_list()
 	try {
 		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("hardwired/language.cfg"));
 		read(cfg, *stream);
-	} catch(config::error &) {
+	} catch(const config::error &) {
 		return false;
 	}
 
@@ -120,15 +117,20 @@ language_list get_languages()
 	// We sort every time, the local might have changed which can modify the
 	// sort order.
 	std::sort(known_languages.begin(), known_languages.end());
-	// FIXME! The translation percent complete script is giving results that don't
-	// match with gettext.wesnoth.org... need to figure out what the hell is wrong :(
-#if 0
+
+	if(min_translation_percent == 0) {
+		return known_languages;
+	}
+
 	language_list result;
 	std::copy_if(known_languages.begin(), known_languages.end(), std::back_inserter(result),
-						[](language_def lang) { return lang.percent >= MIN_TRANSLATION_PERCENT; });
+		[](const language_def& lang) { return lang.percent >= min_translation_percent; });
+
 	return result;
-#endif
-	return known_languages;
+}
+
+void set_min_translation_percent(int percent) {
+	min_translation_percent = percent;
 }
 
 static void wesnoth_setlocale(int category, const std::string& slocale,

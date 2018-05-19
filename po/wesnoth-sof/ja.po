@@ -9,13 +9,16 @@
 # np <tukiplus@gmail.com>, 2009
 # OOTA, Masato <ooyooxei+tr@gmail.com>, 2015
 # RatArmy <broadbarredfirefish@gmail.com>, 2015-2016
+# S.Suto, 2016
+# suto3, 2016
+# 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-Dev Japanese\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-27 01:20 UTC\n"
-"PO-Revision-Date: 2016-04-11 01:34+0000\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
+"POT-Creation-Date: 2018-05-06 08:32 UTC\n"
+"PO-Revision-Date: 2018-03-05 13:27+0000\n"
+"Last-Translator: 家庭的の人 <kateitekino_hito@yahoo.co.jp>\n"
 "Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
 "japanese/language/ja/)\n"
 "Language: ja\n"
@@ -66,17 +69,6 @@ msgstr "君主"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:25
-#, fuzzy
-#| msgid ""
-#| "The land of Wesnoth’s banner bold\n"
-#| "Comes not from its own land;\n"
-#| "It comes from Dwarfdom, grim and old\n"
-#| "Made by a runesmith’s hand.\n"
-#| "So now I tell from whence it came —\n"
-#| "The Fire-sceptre great —\n"
-#| "And of the makers of the same,\n"
-#| "Their tale I now relate...\n"
-#| "\n"
 msgid ""
 "<i>The land of Wesnoth’s banner bold\n"
 "Comes not from its own land;\n"
@@ -88,7 +80,7 @@ msgid ""
 "Their tale I now relate...</i>\n"
 "\n"
 msgstr ""
-"豪猛たるWesnothの「みしるし」は\n"
+"<i>豪猛たるWesnothの「みしるし」は\n"
 "祖国の元には現れぬ\n"
 "ルーンスミスがあつらえて\n"
 "古のドワーフ領より渡り来る\n"
@@ -96,7 +88,7 @@ msgstr ""
 "炎の笏は偉大なり\n"
 "創りし鍛冶らも秀でたり\n"
 "彼らの武勇の物語\n"
-"今こそ話して聞かせましょう……\n"
+"今こそ話して聞かせましょう…</i>\n"
 "\n"
 
 #. [campaign]: id=Sceptre_of_Fire
@@ -135,8 +127,8 @@ msgid "Rugnur"
 msgstr "Rugnur"
 
 #. [side]: type=Dwarvish Fighter, id=Rugnur
-#. [side]: type=Haldric II, id=Haldric II
 #. [side]: type=Dwarvish Lord, id=Durstorn
+#. [side]: type=Haldric II, id=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:27
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:44
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:24
@@ -159,20 +151,20 @@ msgstr "ドワーフ達"
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:36
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:26
 msgid "Haldric II"
-msgstr "Haldric二世"
+msgstr "Haldric II世"
 
 #. [side]: type=Elvish Captain, id=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:86
 msgid "Glildur"
 msgstr "Glildur"
 
-#. [side]: type=Elvish Captain, id=Glildur
 #. [side]: type=Elvish Captain, id=Glindur
+#. [side]: type=Elvish Marshal, id=Crintil
 #. [side]: type=Elvish Marshal, id=Gaenlar
 #. [side]: type=Elvish Marshal, id=Glinan
 #. [side]: type=Elvish Captain, id=Kalnar
 #. [side]
-#. [side]: type=Elvish Marshal, id=Crintil
+#. [side]: type=Elvish Captain, id=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:93
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:42
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:41
@@ -195,7 +187,7 @@ msgid ""
 msgstr ""
 "はい、炎の笏について。その笏には長く、栄誉ある、そして恐ろしい歴史がありま"
 "す。しかし偉大なるHaldricによって、どのようにその宝石が大海を渡って笏に付けら"
-"れたかを語るために私はここに居るわけではありません。もちろんGarard一世と彼が"
+"れたかを語るために私はここに居るわけではありません。もちろんGarard I世と彼が"
 "自身に課した挑戦の話や、笏の力に依ったWesnothの王、Konradの話をするためでもあ"
 "りません。"
 
@@ -219,7 +211,7 @@ msgid ""
 "army behind him..."
 msgstr ""
 "私達の物語はKnalgaの南の丘陵地にある小さな国境の前哨基地から始まります。若い"
-"ドワーフ、Rugnurがそこを任されていました。そして二代目のWesnoth王、Haldric二"
+"ドワーフ、Rugnurがそこを任されていました。そして二代目のWesnoth王、Haldric II"
 "世が軍隊を連れてAbezの浅瀬から上ってきました。"
 
 #. [objective]: condition=win
@@ -268,7 +260,7 @@ msgstr "Rugnurの死"
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:153
 msgid "Death of Haldric II"
-msgstr "Haldric二世の死"
+msgstr "Haldric II世の死"
 
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:157
@@ -668,7 +660,7 @@ msgstr "お前たちの大切なLandarは俺の斧にキスできるだろうぜ
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:674
 msgid "Good, the road is secured. Let’s move those caravans!"
-msgstr ""
+msgstr "よし、道の安全は確保した。隊商を動かそう！"
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:698
@@ -1103,7 +1095,7 @@ msgid ""
 "I think you’d better let me explain. King Haldric II of Wesnoth came to the "
 "gate. Then we had to close it, which took considerable time."
 msgstr ""
-"私に説明させてください。Wesnothの王Haldric二世が門のところへいらっしゃってい"
+"私に説明させてください。Wesnothの王Haldric II世が門のところへいらっしゃってい"
 "ます。我々はその門を閉ざさるを得ませんでした。かなりの時間がかかりましたが。"
 
 #. [message]: speaker=Glinar
@@ -3020,8 +3012,8 @@ msgid ""
 "in the northlands, and now elvish horsemen are chasing me. I barely evaded "
 "them."
 msgstr ""
-"私は竜騎兵で、Haldric二世のボディーガードです。北の大地での任務に送られ、今や"
-"エルフの騎兵が私を追ってきます。彼らから逃れられそうもありません。"
+"私は竜騎兵で、Haldric II世のボディーガードです。北の大地での任務に送られ、今"
+"やエルフの騎兵が私を追ってきます。彼らから逃れられそうもありません。"
 
 #. [message]: speaker=Hadlin  # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:304
@@ -3516,7 +3508,7 @@ msgid ""
 "Alanin traveled south, to Wesnoth, to Haldric II. To report the events of "
 "the past fifteen years."
 msgstr ""
-"Alaninは南へ、Wesnothへ、Haldric二世の元へと旅をしました。ここ15年の間に起き"
+"Alaninは南へ、Wesnothへ、Haldric II世の元へと旅をしました。ここ15年の間に起き"
 "たことを報告するために。"
 
 #. [part]
@@ -3751,7 +3743,7 @@ msgid ""
 "of the Northlands, unfound but undestroyed, moved around by Orcs who never "
 "understood its true power."
 msgstr ""
-"笏はHaldric二世の時代から闇の女王Asheviereの時代まで、何世代にも渡る長い間発"
+"笏はHaldric II世の時代から闇の女王Asheviereの時代まで、何世代にも渡る長い間発"
 "見されませんでした。その間、笏は気付かれることも壊されることもなく、北の大地"
 "の洞窟で眠り、その本当の力を理解しないオーク達の間を行き来していました。"
 
@@ -3829,6 +3821,3 @@ msgstr "アァァ……。"
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:71
 msgid "Kraa..."
 msgstr "クァァ……。"
-
-#~ msgid "sword"
-#~ msgstr "剣"

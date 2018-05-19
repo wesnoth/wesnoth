@@ -297,6 +297,30 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 			load_config();
 			LOG_CS << "Reloaded configuration\n";
 		}
+	} else if(ctl == "delete") {
+		if(ctl.args_count() != 1) {
+			ERR_CS << "Incorrect number of arguments for 'delete'\n";
+		} else {
+			const std::string& addon_id = ctl[1];
+
+			LOG_CS << "deleting add-on '" << addon_id << "' requested from control FIFO\n";
+			delete_campaign(addon_id);
+		}
+	} else if(ctl == "hide" || ctl == "unhide") {
+		if(ctl.args_count() != 1) {
+			ERR_CS << "Incorrect number of arguments for '" << ctl.cmd() << "'\n";
+		} else {
+			const std::string& addon_id = ctl[1];
+			config& campaign = get_campaign(addon_id);
+
+			if(!campaign) {
+				ERR_CS << "Add-on '" << addon_id << "' not found, cannot " << ctl.cmd() << "\n";
+			} else {
+				campaign["hidden"] = ctl.cmd() == "hide";
+				write_config();
+				LOG_CS << "Add-on '" << addon_id << "' is now " << (ctl.cmd() == "hide" ? "hidden" : "unhidden") << '\n';
+			}
+		}
 	} else if(ctl == "setpass") {
 		if(ctl.args_count() != 2) {
 			ERR_CS << "Incorrect number of arguments for 'setpass'\n";
@@ -493,6 +517,47 @@ void server::send_error(const std::string& msg, const std::string& extra_data, s
 	async_send_doc(sock, doc, std::bind(&server::handle_new_client, this, _1), null_handler);
 }
 
+void server::delete_campaign(const std::string& id)
+{
+	config::child_itors itors = campaigns().child_range("campaign");
+
+	size_t pos = 0;
+	bool found = false;
+	std::string fn;
+
+	for(config& cfg : itors) {
+		if(cfg["name"] == id) {
+			fn = cfg["filename"].str();
+			found = true;
+			break;
+		}
+
+		++pos;
+	}
+
+	if(!found) {
+		ERR_CS << "Cannot delete unrecognized add-on '" << id << "'\n";
+		return;
+	}
+
+	if(fn.empty()) {
+		ERR_CS << "Add-on '" << id << "' does not have an associated filename, cannot delete\n";
+	}
+
+	filesystem::write_file(fn, {});
+	if(std::remove(fn.c_str()) != 0) {
+		ERR_CS << "Could not delete archive for campaign '" << id
+		       << "' (" << fn << "): " << strerror(errno) << '\n';
+	}
+
+	campaigns().remove_child("campaign", pos);
+	write_config();
+
+	fire("hook_post_erase", id);
+
+	LOG_CS << "Deleted add-on '" << id << "'\n";
+}
+
 #define REGISTER_CAMPAIGND_HANDLER(req_id) \
 	handlers_[#req_id] = std::bind(&server::handle_##req_id, \
 		std::placeholders::_1, std::placeholders::_2)
@@ -524,14 +589,14 @@ void server::handle_request_campaign_list(const server::request& req)
 	try {
 		before = before + lexical_cast<time_t>(req.cfg["before"]);
 		before_flag = true;
-	} catch(bad_lexical_cast) {}
+	} catch(const bad_lexical_cast&) {}
 
 	bool after_flag = false;
 	time_t after = epoch;
 	try {
 		after = after + lexical_cast<time_t>(req.cfg["after"]);
 		after_flag = true;
-	} catch(bad_lexical_cast) {}
+	} catch(const bad_lexical_cast&) {}
 
 	const std::string& name = req.cfg["name"];
 	const std::string& lang = req.cfg["language"];
@@ -539,6 +604,10 @@ void server::handle_request_campaign_list(const server::request& req)
 	for(const config& i : campaigns().child_range("campaign"))
 	{
 		if(!name.empty() && name != i["name"]) {
+			continue;
+		}
+
+		if(i["hidden"].to_bool()) {
 			continue;
 		}
 
@@ -608,7 +677,7 @@ void server::handle_request_campaign(const server::request& req)
 
 	config& campaign = get_campaign(req.cfg["name"]);
 
-	if(!campaign) {
+	if(!campaign || campaign["hidden"].to_bool()) {
 		send_error("Add-on '" + req.cfg["name"].str() + "' not found.", req.sock);
 	} else {
 		const int size = filesystem::file_size(campaign["filename"]);
@@ -752,6 +821,9 @@ void server::handle_upload(const server::request& req)
 	} else if(campaign && !authenticate(*campaign, upload["passphrase"])) {
 		LOG_CS << "Upload aborted - incorrect passphrase.\n";
 		send_error("Add-on rejected: The add-on already exists, and your passphrase was incorrect.", req.sock);
+	} else if(campaign && (*campaign)["hidden"].to_bool()) {
+		LOG_CS << "Upload denied - hidden add-on.\n";
+		send_error("Add-on upload denied. Please contact the server administration for assistance.", req.sock);
 	} else {
 		const time_t upload_ts = time(nullptr);
 
@@ -853,16 +925,17 @@ void server::handle_upload(const server::request& req)
 void server::handle_delete(const server::request& req)
 {
 	const config& erase = req.cfg;
+	const std::string& id = erase["name"].str();
 
 	if(read_only_) {
-		LOG_CS << "in read-only mode, request to delete '" << erase["name"] << "' from " << req.addr << " denied\n";
+		LOG_CS << "in read-only mode, request to delete '" << id << "' from " << req.addr << " denied\n";
 		send_error("Cannot delete add-on: The server is currently in read-only mode.", req.sock);
 		return;
 	}
 
-	LOG_CS << "deleting campaign '" << erase["name"] << "' requested from " << req.addr << "\n";
+	LOG_CS << "deleting campaign '" << id << "' requested from " << req.addr << "\n";
 
-	config& campaign = get_campaign(erase["name"]);
+	config& campaign = get_campaign(id);
 
 	if(!campaign) {
 		send_error("The add-on does not exist.", req.sock);
@@ -876,37 +949,20 @@ void server::handle_delete(const server::request& req)
 		return;
 	}
 
-	if(!authenticate(campaign, pass)
-		&& (campaigns()["master_password"].empty()
-		|| campaigns()["master_password"] != pass))
-	{
+	if(!authenticate(campaign, pass)) {
 		send_error("The passphrase is incorrect.", req.sock);
 		return;
 	}
 
-	// Erase the campaign.
-	filesystem::write_file(campaign["filename"], std::string());
-	if(remove(campaign["filename"].str().c_str()) != 0) {
-		ERR_CS << "failed to delete archive for campaign '" << erase["name"]
-			   << "' (" << campaign["filename"] << "): " << strerror(errno)
-			   << '\n';
+	if(campaign["hidden"].to_bool()) {
+		LOG_CS << "Add-on removal denied - hidden add-on.\n";
+		send_error("Add-on deletion denied. Please contact the server administration for assistance.", req.sock);
+		return;
 	}
 
-	config::child_itors itors = campaigns().child_range("campaign");
-	for(size_t index = 0; !itors.empty(); ++index, itors.pop_front())
-	{
-		if(&campaign == &itors.front()) {
-			campaigns().remove_child("campaign", index);
-			break;
-		}
-	}
-
-	write_config();
+	delete_campaign(id);
 
 	send_message("Add-on deleted.", req.sock);
-
-	fire("hook_post_erase", erase["name"]);
-
 }
 
 void server::handle_change_passphrase(const server::request& req)
@@ -925,6 +981,9 @@ void server::handle_change_passphrase(const server::request& req)
 		send_error("No add-on with that name exists.", req.sock);
 	} else if(!authenticate(campaign, cpass["passphrase"])) {
 		send_error("Your old passphrase was incorrect.", req.sock);
+	} else if(campaign["hidden"].to_bool()) {
+		LOG_CS << "Passphrase change denied - hidden add-on.\n";
+		send_error("Add-on passphrase change denied. Please contact the server administration for assistance.", req.sock);
 	} else if(cpass["new_passphrase"].empty()) {
 		send_error("No new passphrase was supplied.", req.sock);
 	} else {
@@ -950,13 +1009,13 @@ int main()
 		const std::string cfg_path = filesystem::normalize_path("server.cfg");
 
 		campaignd::server(cfg_path).run();
-	} catch(config::error& /*e*/) {
+	} catch(const config::error& /*e*/) {
 		std::cerr << "Could not parse config file\n";
 		return 1;
-	} catch(filesystem::io_exception& e) {
+	} catch(const filesystem::io_exception& e) {
 		std::cerr << "File I/O error: " << e.what() << "\n";
 		return 2;
-	} catch(std::bad_function_call& /*e*/) {
+	} catch(const std::bad_function_call& /*e*/) {
 		std::cerr << "Bad request handler function call\n";
 		return 4;
 	}

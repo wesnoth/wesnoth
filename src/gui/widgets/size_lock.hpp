@@ -56,19 +56,12 @@ public:
 	/** See @ref widget::layout_children. */
 	void layout_children() override;
 
-	void set_target_size(const point& size)
-	{
-		size_ = size;
-	}
-
 protected:
-	point calculate_best_size() const override
-	{
-		return size_;
-	}
+	point calculate_best_size() const override;
 
 private:
-	point size_;
+	typed_formula<unsigned> width_;
+	typed_formula<unsigned> height_;
 
 	/**
 	 * Points to the actual widget.
@@ -118,10 +111,11 @@ struct builder_size_lock : public builder_styled_widget
 
 	widget* build() const;
 
-private:
-	builder_widget_const_ptr content_;
 	typed_formula<unsigned> width_;
 	typed_formula<unsigned> height_;
+
+private:
+	builder_widget_const_ptr content_;
 };
 }
 }

@@ -19,11 +19,13 @@
 #include "resources.hpp"
 #include "team.hpp"
 #include "replay.hpp"
+#include "units/animation_component.hpp"
 #include "units/map.hpp"
 #include "units/unit.hpp"
 #include "statistics.hpp"
 #include "log.hpp"
 #include "game_display.hpp"
+#include "whiteboard/manager.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -96,6 +98,8 @@ bool recall_action::undo(int side)
 	// to also do the overlapped hexes
 	gui.invalidate(recall_loc);
 	units.erase(recall_loc);
+	resources::whiteboard->on_kill_unit();
+	un->anim_comp().clear_haloes();
 	this->return_village();
 	execute_undo_umc_wml();
 	return true;

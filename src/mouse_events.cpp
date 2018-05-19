@@ -985,6 +985,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 	std::vector<battle_context> bc_vector;
 	const int best = fill_weapon_choices(bc_vector, attacker, defender);
 
+	//TODO: this "disable" check has no attack context.
 	const bool all_disabled = std::all_of(bc_vector.begin(), bc_vector.end(),
 		[](battle_context& context) { return (*context.get_attacker_stats().weapon).get_special_bool("disable"); }
 	);
@@ -1010,7 +1011,7 @@ void mouse_handler::attack_enemy(const map_location& attacker_loc, const map_loc
 {
 	try {
 		attack_enemy_(attacker_loc, defender_loc, choice);
-	} catch(std::bad_alloc&) {
+	} catch(const std::bad_alloc&) {
 		lg::wml_error() << "Memory exhausted a unit has either a lot hitpoints or a negative amount.\n";
 	}
 }

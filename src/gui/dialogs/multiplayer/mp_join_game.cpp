@@ -15,6 +15,7 @@
 
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 
+#include "chat_log.hpp"
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
@@ -284,6 +285,7 @@ void mp_join_game::pre_show(window& window)
 
 	chat.room_window_open("this game", true, false); // TODO: better title?
 	chat.active_window_changed();
+	chat.load_log(default_chat_log, false);
 
 	//
 	// Set up player list

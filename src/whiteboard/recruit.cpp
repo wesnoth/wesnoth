@@ -85,6 +85,9 @@ recruit::recruit(const config& cfg, bool hidden)
 
 void recruit::init()
 {
+	temp_unit_->set_movement(0, true);
+	temp_unit_->set_attacks(0);
+	
 	fake_unit_->set_location(recruit_hex_);
 	fake_unit_->set_movement(0, true);
 	fake_unit_->set_attacks(0);
@@ -107,13 +110,22 @@ void recruit::execute(bool& success, bool& complete)
 {
 	assert(valid());
 	temporary_unit_hider const raii(*fake_unit_);
+	const std::size_t old_id = fake_unit_->underlying_id();
+	map_location loc = recruit_hex_;
 	const int side_num = team_index() + 1;
 	//Give back the spent gold so we don't get "not enough gold" message
 	resources::gameboard->teams().at(team_index()).get_side_actions()->change_gold_spent_by(-cost_);
-	bool const result = resources::controller->get_menu_handler().do_recruit(unit_name_, side_num, recruit_hex_);
+	bool const result = resources::controller->get_menu_handler().do_recruit(unit_name_, side_num, loc);
 	//If it failed, take back the gold
 	if (!result) {
 		resources::gameboard->teams().at(team_index()).get_side_actions()->change_gold_spent_by(cost_);
+	}
+	else {
+		auto mit = resources::gameboard->units().find(loc);
+		if(mit != resources::gameboard->units().end()) {
+			viewer_actions()->update_recruited_unit(old_id, *mit);
+		}
+
 	}
 	success = complete = result;
 }
@@ -131,7 +143,11 @@ void recruit::apply_temp_modifier(unit_map& unit_map)
 
 	// Temporarily insert unit into unit_map
 	// unit map takes ownership of temp_unit
+	const size_t old_id = temp_unit_->underlying_id();
 	unit_map.insert(temp_unit_);
+	
+	//in the past there was a bug where the map changed the unit ids here (because a unit with that id already existed) which caused crashes later.
+	assert(temp_unit_->underlying_id() == old_id);
 
 	// Update gold in the top bar
 	display::get_singleton()->invalidate_game_status();
@@ -141,6 +157,11 @@ void recruit::remove_temp_modifier(unit_map& unit_map)
 {
 	//Unit map gives back ownership of temp_unit_
 	temp_unit_ = unit_map.extract(recruit_hex_);
+
+	//remove simulated unit refresh on new turn done by mapbuilder.
+	temp_unit_->set_movement(0, true);
+	temp_unit_->set_attacks(0);
+
 	assert(temp_unit_.get());
 }
 

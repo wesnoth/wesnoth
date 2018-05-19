@@ -89,7 +89,7 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一个回合制奇幻策略游
 在本次游戏期间使用语言 \fIlang\fP （符号）。例如： \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
-设置日志域的严重度级别。\fBall\fP可以用来匹配任意日志域。可选的级别有：\fBerror\fP，\ \fBwarning\fP，\ \fBinfo\fP，\ \fBdebug\fP。默认的级别是\fBerror\fP。
+设置日志域的严重度级别。\fBall\fP可以用来匹配任意日志域。可选的级别有：\fBerror\fP，\ \fBwarning\fP，\ \fBinfo\fP，\ \fBdebug\fP, \ \fBnone\fP。对绝大多数日志域而言，默认日志级别是\fBwarning\fP，但\fBdeprecation\fP的默认级别是\fBnone\fP。
 .TP 
 \fB\-\-log\-precise\fP
 在日志文件中显示更高精度的时间戳。
@@ -235,7 +235,9 @@ Games”之外。在Windows下，也可以使用以“.\e”或“..\e”开头�
 使用这个选项来选择一个时代以代替\fB默认\fP时代。所选时代由id确定。时代信息在\fBdata/multiplayer/eras.cfg\fP文件中描述。
 .TP 
 \fB\-\-exit\-at\-end\fP
-当场景结束时直接退出游戏而不显示需要用户点击“确认”按钮的胜利/失败对话框。这个选项也可以用来进行脚本化的性能基准测试。
+exits once the scenario is over, without displaying victory/defeat dialog
+which normally requires the user to click End Scenario.  This is also used
+for scriptable benchmarking.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
 不使用地图设置，而使用默认值。

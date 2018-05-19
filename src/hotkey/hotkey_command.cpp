@@ -30,9 +30,27 @@ static lg::log_domain log_config("config");
 #define DBG_G LOG_STREAM(debug, lg::general())
 #define ERR_CF LOG_STREAM(err, log_config)
 
+namespace hotkey
+{
 namespace
 {
-using namespace hotkey;
+const category_name_map_t category_names {
+	{ HKCAT_GENERAL,    N_("General") },
+	{ HKCAT_SAVING,     N_("Saved Games") },
+	{ HKCAT_MAP,        N_("Map Commands") },
+	{ HKCAT_UNITS,      N_("Unit Commands") },
+	{ HKCAT_CHAT,       N_("Player Chat") },
+	{ HKCAT_REPLAY,     N_("Replay Control") },
+	{ HKCAT_WHITEBOARD, N_("Planning Mode") },
+	{ HKCAT_SCENARIO,   N_("Scenario Editor") },
+	{ HKCAT_PALETTE,    N_("Editor Palettes") },
+	{ HKCAT_TOOLS,      N_("Editor Tools") },
+	{ HKCAT_CLIPBOARD,  N_("Editor Clipboard") },
+	{ HKCAT_DEBUG,      N_("Debug Commands") },
+	{ HKCAT_CUSTOM,     N_("Custom WML Commands") },
+};
+
+std::map<HOTKEY_CATEGORY, std::list<HOTKEY_COMMAND>> hotkeys_by_category;
 
 // Make them global ?
 hk_scopes scope_game(1 << SCOPE_GAME);
@@ -46,7 +64,7 @@ hk_scopes scope_main(1 << SCOPE_MAIN_MENU);
 // Since HOTKEY_NULL is the last entry in said enum, we can use its index to dynamically
 // size the array.
 //
-std::array<hotkey_command_temp, HOTKEY_NULL - 1> hotkey_list_ {{
+std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_SCROLL_UP, "scroll-up", N_("Scroll Up"), false, scope_game | scope_editor, HKCAT_GENERAL, "" },
 	{ HOTKEY_SCROLL_DOWN, "scroll-down", N_("Scroll Down"), false, scope_game | scope_editor, HKCAT_GENERAL, "" },
 	{ HOTKEY_SCROLL_LEFT, "scroll-left", N_("Scroll Left"), false, scope_game | scope_editor, HKCAT_GENERAL, "" },
@@ -103,7 +121,7 @@ std::array<hotkey_command_temp, HOTKEY_NULL - 1> hotkey_list_ {{
 	{ HOTKEY_STOP_NETWORK, "stopnetwork", N_("Pause Network Game"), false, scope_game, HKCAT_GENERAL, "" },
 	{ HOTKEY_START_NETWORK, "startnetwork", N_("Continue Network Game"), false, scope_game, HKCAT_GENERAL, "" },
 	{ HOTKEY_SURRENDER, "surrender", N_("Surrender Game"), false, scope_game, HKCAT_SCENARIO, "" },
-	{ HOTKEY_QUIT_GAME, "quit", N_("Quit to Titlescreen"), false, scope_game | scope_editor, HKCAT_GENERAL, "" },
+	{ HOTKEY_QUIT_GAME, "quit", N_("Quit to Main Menu"), false, scope_game | scope_editor, HKCAT_GENERAL, "" },
 	{ HOTKEY_LABEL_TEAM_TERRAIN, "labelteamterrain", N_("Set Team Label"), false, scope_game, HKCAT_MAP, "" },
 	{ HOTKEY_LABEL_TERRAIN, "labelterrain", N_("Set Label"), false, scope_game, HKCAT_MAP, "" },
 	{ HOTKEY_CLEAR_LABELS, "clearlabels", N_("Clear Labels"), false, scope_game, HKCAT_MAP, "" },
@@ -290,18 +308,16 @@ std::set<HOTKEY_COMMAND> toggle_commands {
 	HOTKEY_SCROLL_RIGHT
 };
 
-// Contains copies of hotkey_list_ and all current active wml menu hotkeys
+// Contains copies of master_hotkey_list and all current active wml menu hotkeys
 // TODO: Maybe known_hotkeys is not a fitting name anymore.
 std::vector<hotkey::hotkey_command> known_hotkeys;
 
-// Index map for known_hotkeys. Since known_hotkeys begins with hotkey_list_, they are also indexes for hotkey_list_.
+// Index map for known_hotkeys. Since known_hotkeys begins with master_hotkey_list, they are also indexes for master_hotkey_list.
 std::map<std::string, size_t> command_map_;
 
 hk_scopes scope_active_(0);
 } // end anon namespace
 
-namespace hotkey
-{
 scope_changer::scope_changer()
 	: prev_scope_active_(scope_active_)
 {
@@ -496,8 +512,8 @@ const hotkey_command& hotkey_command::get_command_by_command(hotkey::HOTKEY_COMM
 
 const hotkey_command& get_hotkey_null()
 {
-	// It is the last entry in that array, and the indexes in hotkey_list_ and known_hotkeys are the same.
-	return known_hotkeys[hotkey_list_.size() - 1];
+	// It is the last entry in that array, and the indexes in master_hotkey_list and known_hotkeys are the same.
+	return known_hotkeys[master_hotkey_list.size() - 1];
 }
 
 void delete_all_wml_hotkeys()
@@ -507,6 +523,8 @@ void delete_all_wml_hotkeys()
 
 		known_hotkeys.pop_back();
 	}
+
+	hotkeys_by_category[HKCAT_CUSTOM].clear();
 }
 
 const std::string& get_description(const std::string& command)
@@ -523,19 +541,24 @@ const std::string& get_tooltip(const std::string& command)
 void init_hotkey_commands()
 {
 	known_hotkeys.clear();
+	hotkeys_by_category.clear();
 
 	// Reserve enough space for the built-in hotkeys and 20 extra spaces for WML hotkeys. This is
 	// to avoid reallocation of this huge vector when any of the latter are added. 20 is honestly
 	// overkill, since there's really no reason to ever have near that many hotkey-enabled WML menu
 	// items, but it doesn't cost us anything to have extra.
-	known_hotkeys.reserve(hotkey_list_.size() + 20);
+	known_hotkeys.reserve(master_hotkey_list.size() + 20);
 
 	size_t i = 0;
-	for(hotkey_command_temp& cmd : hotkey_list_) {
+	for(const hotkey_command_temp& cmd : master_hotkey_list) {
+		// Initialize the full hotkey from the temp data.
 		known_hotkeys.emplace_back(cmd);
 
-		command_map_[cmd.command] = i;
-		++i;
+		// Note the known_hotkeys index associated with this command.
+		command_map_[cmd.command] = i++;
+
+		// Record this hotkey's id in the appropriate category list.
+		hotkeys_by_category[cmd.category].push_back(cmd.id);
 	}
 }
 
@@ -548,4 +571,15 @@ HOTKEY_COMMAND get_id(const std::string& command)
 {
 	return get_hotkey_command(command).id;
 }
+
+const category_name_map_t& get_category_names()
+{
+	return category_names;
 }
+
+std::list<HOTKEY_COMMAND> get_hotkeys_by_category(HOTKEY_CATEGORY category)
+{
+	return hotkeys_by_category[category];
+}
+
+} // namespace hotkey

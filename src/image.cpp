@@ -687,7 +687,9 @@ static surface load_image_data_uri(const image::locator& loc)
 		const std::vector<uint8_t> image_data = base64::decode(parsed.data);
 		filesystem::rwops_ptr rwops{SDL_RWFromConstMem(image_data.data(), image_data.size()), &SDL_FreeRW};
 
-		if(parsed.mime == "image/png") {
+		if(image_data.empty()) {
+			ERR_DP << "Invalid encoding in data URI" << std::endl;
+		} else if(parsed.mime == "image/png") {
 			surf = IMG_LoadTyped_RW(rwops.release(), true, "PNG");
 		} else if(parsed.mime == "image/jpeg") {
 			surf = IMG_LoadTyped_RW(rwops.release(), true, "JPG");
@@ -1295,15 +1297,15 @@ bool precached_file_exists(const std::string& file)
 	return false;
 }
 
-bool save_image(const locator& i_locator, const std::string& filename)
+save_result save_image(const locator& i_locator, const std::string& filename)
 {
 	return save_image(get_image(i_locator), filename);
 }
 
-bool save_image(const surface& surf, const std::string& filename)
+save_result save_image(const surface& surf, const std::string& filename)
 {
 	if(surf.null()) {
-		return false;
+		return save_result::no_image;
 	}
 
 #ifdef SDL_IMAGE_VERSION_ATLEAST
@@ -1312,7 +1314,7 @@ bool save_image(const surface& surf, const std::string& filename)
 		LOG_DP << "Writing a JPG image to " << filename << std::endl;
 
 		const int err = IMG_SaveJPG_RW(surf, filesystem::make_write_RWops(filename).release(), true, 75); // SDL takes ownership of the RWops
-		return err == 0;
+		return err == 0 ? save_result::success : save_result::save_failed;
 	}
 #endif
 #endif
@@ -1321,11 +1323,16 @@ bool save_image(const surface& surf, const std::string& filename)
 		LOG_DP << "Writing a PNG image to " << filename << std::endl;
 
 		const int err = IMG_SavePNG_RW(surf, filesystem::make_write_RWops(filename).release(), true); // SDL takes ownership of the RWops
-		return err == 0;
+		return err == 0 ? save_result::success : save_result::save_failed;
 	}
 
-	LOG_DP << "Writing a BMP image to " << filename << std::endl;
-	return SDL_SaveBMP(surf, filename.c_str()) == 0;
+	if(filesystem::ends_with(filename, ".bmp")) {
+		LOG_DP << "Writing a BMP image to " << filename << std::endl;
+		const int err = SDL_SaveBMP(surf, filename.c_str()) == 0;
+		return err == 0 ? save_result::success : save_result::save_failed;
+	}
+
+	return save_result::unsupported_format;
 }
 
 bool update_from_preferences()
@@ -1333,7 +1340,7 @@ bool update_from_preferences()
 	SCALING_ALGORITHM algo = preferences::default_scaling_algorithm;
 	try {
 		algo = SCALING_ALGORITHM::string_to_enum(preferences::get("scale_hex"));
-	} catch(bad_enum_cast&) {
+	} catch(const bad_enum_cast&) {
 	}
 
 	scale_to_hex_func = select_algorithm(algo);
@@ -1341,7 +1348,7 @@ bool update_from_preferences()
 	algo = preferences::default_scaling_algorithm;
 	try {
 		algo = SCALING_ALGORITHM::string_to_enum(preferences::get("scale_zoom"));
-	} catch(bad_enum_cast&) {
+	} catch(const bad_enum_cast&) {
 	}
 
 	scale_to_zoom_func = select_algorithm(algo);

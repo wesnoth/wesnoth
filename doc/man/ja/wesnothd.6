@@ -33,9 +33,9 @@ wesnothd \- Battle for \fBWesnoth\fP マルチプレイヤー・ネットワー�
 .
 .SH 説明
 .
-Manages Battle for Wesnoth multiplayer games. See
-https://www.wesnoth.org/wiki/ServerAdministration on what commands the
-server accepts via the wesnoth client (/query ...) or the fifo.
+Battle for Wesnoth のマルチプレイヤーゲームを管理する。 wesnoth クライアント(/query ...)や fifo
+を通して、サーバーがどのようなコマンドを受けつけるかについては
+https://www.wesnoth.org/wiki/ServerAdministration を参照。
 .
 .SH オプション
 .
@@ -55,7 +55,7 @@ wesnothd をデーモンとして実行する。
 領域には \fBinfo\fP が使用される。
 .TP 
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
-指定ポートにサーバをバインドする。もしポートが指定されないなら、 \fB15000\fP番ポートが使用される。
+指定ポートにサーバーをバインドする。もしポートが指定されないなら、 \fB15000\fP番ポートが使用される。
 .TP 
 \fB\-t\ \fP\fInumber\fP\fB,\ \-\-threads\fP\fI\ number\fP
 ネットワーク I/O 用の作業スレッドの数の最大値を n に設定する。(既定値: \fB5\fP、\ 最大: \fB30\fP)
@@ -90,7 +90,7 @@ wesnothd をデーモンとして実行する。
 /query での遠隔停止を許容する。
 .TP 
 \fBban_save_file\fP
-サーバーが読み書きする（gzip 圧縮の）ファイルへの完全パスまたは相対パス。 ban はこのファイルへ保存され、サーバ開始時に再度読み込まれる。
+サーバーが読み書きする（gzip 圧縮の）ファイルへの完全パスまたは相対パス。 ban はこのファイルへ保存され、サーバー開始時に再度読み込まれる。
 .TP 
 \fBcompress_stored_rooms\fP
 部屋ファイルが圧縮形式で読み書きされるか決定する。既定値は \fByes\fP。
@@ -99,14 +99,13 @@ wesnothd をデーモンとして実行する。
 同じ IP から許可される接続数。 \fB0\fP は無限大を意味する。(既定値: \fB5\fP)
 .TP 
 \fBdisallow_names\fP
-サーバによって受けつけられない名前やニックネーム。 \fB*\fP と \fB?\fP からなるワイルドカードのパターンに対応。詳細は \fBglob\fP(7)
+サーバーによって受けつけられない名前やニックネーム。 \fB*\fP と \fB?\fP からなるワイルドカードのパターンに対応。詳細は \fBglob\fP(7)
 を参照。既定の値(何も指定されなかった際に使用される)は
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP。
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time path
-(default: \fB/var/run/wesnothd/socket\fP).
+サーバーコマンド(wesnoth からの /query ... と同じ)をエコーする fifo
+へのパス。指定されない場合の既定値はコンパイル時に指定されたパス(既定値: \fB/var/run/wesnothd/socket\fP)。
 .TP 
 \fBmax_messages\fP
 \fBmessages_time_period\fP の時間内に許可されるメッセージ数。(既定値: \fB4\fP)
@@ -118,43 +117,45 @@ The path to the fifo you can echo server commands into (same as /query
 本日のメッセージ。
 .TP 
 \fBnew_room_policy\fP
-サーバ上で新しい部屋を立てられる者を決定する。使用可能な値は \fBeveryone\fP と \fBregistered\fP と \fBadmin\fP と
-\fBnobody\fP で、それぞれ全員、登録ユーザ、管理者ユーザに権限を与えるか、新しい部屋を立てられなくする。既定値は \fBeveryone\fP。
+サーバー上で新しい部屋を立てられる者を決定する。使用可能な値は \fBeveryone\fP と \fBregistered\fP と \fBadmin\fP と
+\fBnobody\fP で、それぞれ全員、登録ユーザー、管理者ユーザーに権限を与えるか、新しい部屋を立てられなくする。既定値は \fBeveryone\fP。
 .TP 
 \fBpasswd\fP
 管理者権限の獲得に用いられるパスワード。(\fB/query admin \fP\fIpassword\fP で)
 .TP 
 \fBreplay_save_path\fP
-サーバがゲームのリプレイを置くディレクトリ。(/! をつけるのを忘れないこと) 既定値の `' は wesnothd が開始したディレクトリを意味する。
+サーバーがゲームのリプレイを置くディレクトリ。(/! をつけるのを忘れないこと) 既定値の `' は wesnothd
+が開始したディレクトリを意味する。
 .TP 
 \fBrestart_command\fP
-\fBrestart\fP コマンドで新しいサーバプロセスを開始するのにサーバが使用するコマンド。(fifo で問題があるときのみ。)
+\fBrestart\fP コマンドで新しいサーバープロセスを開始するのにサーバーが使用するコマンド。(fifo で問題があるときのみ。)
 .TP 
 \fBroom_save_file\fP
-部屋情報が置かれるファイルへのパス。このファイルはサーバ開始時に読み込まれ、後で書き出される。空欄か未設定の場合は、部屋は読み込まれず保存されない。
+部屋情報が置かれるファイルへのパス。このファイルはサーバー開始時に読み込まれ、後で書き出される。空欄か未設定の場合は、部屋は読み込まれず保存されない。
 .TP 
 \fBsave_replays\fP
-サーバが自動的にゲームのリプレイを保存するか定義する。(既定値: \fBfalse\fP)
+サーバーが自動的にゲームのリプレイを保存するか定義する。(既定値: \fBfalse\fP)
 .TP 
 \fBversions_accepted\fP
-カンマで区切られた、サーバに受けつけられるバージョン文字列のリスト。 \fB*\fP と \fB?\fP からなるワイルドカードのパターンに対応。(既定値では
+カンマで区切られた、サーバーに受けつけられるバージョン文字列のリスト。 \fB*\fP と \fB?\fP からなるワイルドカードのパターンに対応。(既定値では
 wesnoth のバージョンに一致する)
 .br
 例: \fBversions_accepted="*"\fP で、どのようなバージョン文字列も受けつける。
 .TP 
 \fBuser_handler\fP
-使用するユーザハンドラの名前。現在利用可能なユーザハンドラは \fBforum\fP (wesnothd を phpbb フォーラムデータベースに接続する)
-と \fBsample\fP (ユーザハンドラインターフェースのサンプル実装。もし何かしら本当にこれを使用するならあなたは発狂する)。既定値は
-\fBforum\fP。下記の \fB[user_handler]\fP セクションも追加しなければならならい。
+使用するユーザーハンドラの名前。現在利用可能なユーザーハンドラは \fBforum\fP (wesnothd を phpbb
+フォーラムデータベースに接続する) と \fBsample\fP
+(ユーザーハンドラインターフェースのサンプル実装。もし何かしら本当にこれを使用するならあなたは発狂する)。既定値は \fBforum\fP。下記の
+\fB[user_handler]\fP セクションも追加しなければならならい。
 .
 .SS グローバルタグ:
 .
 .P
-\fB[redirect]\fP クライアントのバージョンでリダイレクトするサーバを指定するためのタグ。
+\fB[redirect]\fP クライアントのバージョンでリダイレクトするサーバーを指定するためのタグ。
 .RS
 .TP 
 \fBhost\fP
-リダイレクトするサーバのアドレス。
+リダイレクトするサーバーのアドレス。
 .TP 
 \fBport\fP
 接続するポート。
@@ -176,26 +177,26 @@ Y (年) で %d は数字。もし時間修飾子がない場合は分(m)が指�
 1 日と 12 時間 30 分となる。
 .RE
 .P
-\fB[proxy]\fP プロキシとして振る舞い、接続クライアントのリクエストを指定したサーバへと転送するよう指定するよう、サーバに伝えるタグ。
+\fB[proxy]\fP プロキシとして振る舞い、接続クライアントのリクエストを指定したサーバーへと転送するよう指定するよう、サーバーに伝えるタグ。
 \fB[redirect]\fP と同じキーを受けつける。
 .RE
 .P
-\fB[user_handler]\fP でユーザハンドラを指定する。利用可能なキーは \fBuser_handler\fP
-キーに設定されているユーザハンドラによって変化する。もし \fB[user_handler]\fP
-セクションが設定中に存在しなければ、サーバはニックネーム登録サービスなしで実行される。
+\fB[user_handler]\fP でユーザーハンドラを指定する。利用可能なキーは \fBuser_handler\fP
+キーに設定されているユーザーハンドラによって変化する。もし \fB[user_handler]\fP
+セクションが設定中に存在しなければ、サーバーはニックネーム登録サービスなしで実行される。
 .RS
 .TP 
 \fBdb_host\fP
-(user_handler=forum のとき) データベースサーバのホスト名
+(user_handler=forum のとき) データベースサーバーのホスト名
 .TP 
 \fBdb_name\fP
 (user_handler=forum のとき) データベース名
 .TP 
 \fBdb_user\fP
-(user_handler=forum のとき) データベースにログインするユーザ名
+(user_handler=forum のとき) データベースにログインするユーザー名
 .TP 
 \fBdb_password\fP
-(user_handler=forum のとき) このユーザのパスワード
+(user_handler=forum のとき) このユーザーのパスワード
 .TP 
 \fBdb_users_table\fP
 (user_handler=forum のとき) あなたの phpbb フォーラムがユーザーデータを保存するテーブル名。最もありそうなのは
@@ -212,28 +213,27 @@ UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
 (user_handler=sample のとき) 登録されたニックネームが期限切れになる時間(単位は日)。
 .RE
 .P
-\fB[mail]\fP で SMTP サーバユーザハンドラがメールを送れるサーバを設定する。現在はサンプルのユーザハンドラとしてのみ使用される。
+\fB[mail]\fP で SMTP サーバユーザーハンドラがメールを送れるサーバーを設定する。現在はサンプルのユーザーハンドラとしてのみ使用される。
 .RS
 .TP 
 \fBserver\fP
-メールサーバのホスト名
+メールサーバーのホスト名
 .TP 
 \fBusername\fP
-メールサーバにログインするユーザ名。
+メールサーバーにログインするユーザー名。
 .TP 
 \fBpassword\fP
-このユーザのパスワード。
+このユーザーのパスワード。
 .TP 
 \fBfrom_address\fP
 あなたのメールの返信先アドレス。
 .TP 
 \fBmail_port\fP
-あなたのメールサーバが動作しているポート。既定値は 25。
+あなたのメールサーバーが動作しているポート。既定値は 25。
 .
-.SH "EXIT STATUS"
+.SH 終了ステータス
 .
-Normal exit status is 0 when the server was properly shutdown. An exit
-status of 2 indicates an error with the command line options.
+サーバーが正常終了した場合は 0 を返す。コマンドラインオプションのエラーのときは 2 を返す。
 .
 .SH 著者
 .
@@ -244,7 +244,7 @@ David White <davidnwhite@verizon.net> によって書かれた。 Nils Kneuper
 <cyril@bouthors.org> によって最初に書かれた。 岡田信人 <okyada@gmail.com>
 によって日本語に翻訳され、いいむらなおき <amatubu@gmail.com> によって編集された。
 .br
-Visit the official homepage: https://www.wesnoth.org/
+公式サイト: https://www.wesnoth.org/
 .
 .SH 著作権
 .

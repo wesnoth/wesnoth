@@ -4,13 +4,14 @@
 # Automatically generated, 2007.
 # Guillaume Pascal <guillaume.pascal43@laposte.net>, 2012.
 # Rémi BERTHO <remi.bertho@gmail.com>, 2014.
+# Mathieu Guilbaud <mathieu@guim.info>, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Manual-1.12\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-03-27 04:20+0300\n"
-"PO-Revision-Date: 2014-07-10 20:14+0100\n"
+"PO-Revision-Date: 2018-04-15 18:13+0200\n"
 "Last-Translator: Émile Enguehard <zerbugug@gmail.com>\n"
 "Language-Team: français <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.8.11\n"
 
 # type: Attribute 'lang' of: <book>
 #. type: Attribute 'lang' of: <book>
@@ -269,14 +270,11 @@ msgstr ""
 #. type: Content of: <book><chapter><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:90
 #, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/main-menu-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/main-menu-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/fr/main-menu-1.11.11.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/fr/main-menu-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><simpara><inlinemediaobject><textobject><phrase>
@@ -383,13 +381,6 @@ msgstr "Charger"
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:153
-#, fuzzy
-#| msgid ""
-#| "Click this button to load a previously saved game. You will be shown a "
-#| "dialogue listing saved games. Select the game and click Ok to load and "
-#| "continue, or Cancel to return to the Main Menu. If you select a replay "
-#| "game, you can check the Replay check box. The loaded game will make all "
-#| "the moves from the beginning while you watch."
 msgid ""
 "Click this button to load a previously saved game. You will be shown a "
 "dialogue listing saved games. Select the game and click Ok to load and "
@@ -397,9 +388,9 @@ msgid ""
 "you can check the \"Show replay\" check box. The loaded game will make all "
 "the moves from the beginning while you watch."
 msgstr ""
-"Appuyez sur ce bouton pour charger un jeu. Une fenêtre affichera la liste "
-"des jeux déjà sauvegardés ; choisissez-en un et cliquez sur « Ok » pour "
-"jouer, ou sur « Annuler » pour revenir au menu principal. Si vous "
+"Appuyez sur ce bouton pour charger une partie. Une fenêtre affichera la "
+"liste des partie déjà sauvegardés ; choisissez-en une et cliquez sur « Ok » "
+"pour jouer, ou sur « Annuler » pour revenir au menu principal. Si vous "
 "sélectionnez un film, vous pourrez cocher la case « Film » pour regarder "
 "tous les mouvements faits du début à la fin d'une partie."
 
@@ -480,11 +471,6 @@ msgstr "Crédits"
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:215
-#, fuzzy
-#| msgid ""
-#| "Click this button for a list of major Wesnoth contributors. You will "
-#| "often be able to reach them in real time at irc.freenode.org:6667 on "
-#| "#wesnoth."
 msgid ""
 "Click this button for a list of major Wesnoth contributors. You will often "
 "be able to reach them in real time at irc.freenode.org:6667 on #wesnoth or "
@@ -492,7 +478,8 @@ msgid ""
 "battleforwesnoth</ulink>"
 msgstr ""
 "Appuyez ici pour voir les principaux contributeurs de Wesnoth. Vous pourrez "
-"les joindre sur irc.freenode.org:6667, #wesnoth."
+"les joindre sur irc.freenode.org:6667, #wesnoth ou sur <ulink url=\"https://"
+"discord.gg/battleforwesnoth\">https://discord.gg/battleforwesnoth</ulink>"
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:223
@@ -565,6 +552,8 @@ msgid ""
 "Click this button to view game version and technical information. It may be "
 "useful when troubleshooting issues."
 msgstr ""
+"Cliquez sur ce bouton pour voir la version du jeu et les informations "
+"techniques. Cela peut être utile pour rapporter les problèmes."
 
 # type: Content of: <book><chapter><section><title>
 #. type: Content of: <book><chapter><section><title>
@@ -595,10 +584,8 @@ msgstr "Jouer un scénario contre l'ordinateur ou des adversaires humains."
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:292
-#, fuzzy
-#| msgid "Message another player (in multiplayer)"
 msgid "There are also campaigns that can be played in multiplayer."
-msgstr "Envoie un message à un joueur (multijoueur)"
+msgstr "Des campagnes peuvent également être jouées en multijoueurs."
 
 # type: Content of: <book><chapter><section><section><title>
 #. type: Content of: <book><chapter><section><section><title>
@@ -660,18 +647,6 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:313
-#, fuzzy
-#| msgid ""
-#| "In general multiplayer games are played against other players via the "
-#| "Internet (you can also run them on your LAN if you have one). All these "
-#| "games are co-ordinated through the Wesnoth multiplayer server. "
-#| "Multiplayer games can take anywhere from 1 hour to 10 hours, depending on "
-#| "how many players there are (and the size of the map). The average time is "
-#| "between 3 to 7 hours. Games can be saved and loaded as many times as you "
-#| "like. So, it&#8217;s possible for some games to last 1 or 2 weeks, even "
-#| "though the play time is only a few hours. You cannot carry over units in "
-#| "multiplayer from one scenario to the next, so building up your army&#8217;"
-#| "s strength is possible only within the scenario."
 msgid ""
 "In general multiplayer games are played against other players via the "
 "Internet (you can also run them on your LAN if you have one). All these "
@@ -688,11 +663,12 @@ msgstr ""
 "pouvez aussi en faire sur votre réseau local si vous en avez un. Toutes ces "
 "parties sont coordonnées par le serveur multijoueur de Wesnoth, et peuvent "
 "prendre de 1 à 10 heures, en fonction du nombre de participants et de la "
-"taille de la carte. La durée moyenne est de 3 à 7 heures. Les jeux peuvent "
-"être sauvés et chargés autant de fois que nécessaire : une partie peut durer "
-"de 1 à 2 semaines, même si le temps réel de jeu est faible. Vous ne pouvez "
-"pas transférer des unités d'un jeu multijoueur à un autre : la construction "
-"de forces armées expérimentées n'est possible qu'au sein du scénario."
+"taille de la carte. La durée moyenne est de 3 à 7 heures. Les parties "
+"peuvent être sauvése et chargées autant de fois que nécessaire : une partie "
+"peut durer de 1 à 2 semaines, même si le temps réel de jeu est faible. Vous "
+"ne pouvez pas transférer des unités d'un jeu multijoueur à un autre : la "
+"construction de forces armées expérimentées n'est possible qu'au sein du "
+"scénario."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -732,14 +708,6 @@ msgstr "Identifiant"
 # type: Content of: <book><chapter><section><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><section><simpara>
 #: doc/manual/manual.en.xml:333
-#, fuzzy
-#| msgid ""
-#| "This will be your name on the multiplayer server. If you have an account "
-#| "on the <ulink url=\"http://www.wesnoth.org/forum\">Wesnoth forums</"
-#| "ulink>, you may use the same username and password for joining the "
-#| "official server. A password box will pop up if a password is required for "
-#| "the current username. You cannot use a registered name without the "
-#| "password."
 msgid ""
 "This will be your name on the multiplayer server. If you have an account on "
 "the <ulink url=\"https://forums.wesnoth.org/\">Wesnoth forums</ulink>, you "
@@ -796,18 +764,13 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><section><simpara>
 #: doc/manual/manual.en.xml:351
-#, fuzzy
-#| msgid ""
-#| "A complete list of official and user setup servers is listed at this "
-#| "website: <ulink url=\"http://wesnoth.org/wiki/MultiplayerServers"
-#| "\">Multiplayer servers</ulink>."
 msgid ""
 "A complete list of official and user setup servers is listed at this "
 "website: <ulink url=\"https://wiki.wesnoth.org/MultiplayerServers"
 "\">Multiplayer servers</ulink>."
 msgstr ""
 "Une liste complète des serveurs officiels ou maintenus par des joueurs est "
-"disponible sur le site : <ulink url=\"http://wesnoth.org/wiki/"
+"disponible sur le site : <ulink url=\"https://wesnoth.org/wiki/"
 "MultiplayerServers\">Serveurs multijoueurs</ulink>."
 
 # type: Content of: <book><chapter><section><section><section><simpara>
@@ -2002,14 +1965,10 @@ msgstr ":"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1165
-#, fuzzy
-#| msgid ""
-#| "<ulink url=\"http://www.wesnoth.org/wiki/CommandMode\">Command mode</"
-#| "ulink>"
 msgid ""
 "<ulink url=\"https://wiki.wesnoth.org/CommandMode\">Command mode</ulink>"
 msgstr ""
-"<ulink url=\"http://www.wesnoth.org/wiki/CommandMode\">Command mode</ulink>"
+"<ulink url=\"https://www.wesnoth.org/wiki/CommandMode\">Mode commande</ulink>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -2774,10 +2733,6 @@ msgstr "Sauvage"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:1650
-#, fuzzy
-#| msgid ""
-#| "Units with the Feral trait only receive 50% defense in villages "
-#| "regardless of the base terrain the village is on."
 msgid ""
 "Units with the Feral trait only receive 50% defense in villages regardless "
 "of the base terrain the village is on (Bats, Falcons)."
@@ -3811,8 +3766,6 @@ msgstr "Pas d'orbe"
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:2368
-#, fuzzy
-#| msgid "Enemy units have a red orb on the top of their energy bar"
 msgid "Enemy units have no orb on the top of their energy bar"
 msgstr "Les ennemis ont un orbe rouge au-dessus de leur barre d'énergie."
 
@@ -3904,13 +3857,6 @@ msgstr ""
 # type: Content of: <book><chapter><section><simpara>
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:2406
-#, fuzzy
-#| msgid ""
-#| "Different types of attacks do different amounts of damage, and a certain "
-#| "number of strikes may be made with each weapon. For instance, an Elvish "
-#| "Fighter does 5 points of damage with its sword every time it hits, and "
-#| "can strike 4 blows with the sword in one exchange. This is written as 5–"
-#| "4, meaning 5 damage per hit, and 4 strikes."
 msgid ""
 "Different types of attacks do different amounts of damage, and a certain "
 "number of strikes may be made with each weapon. For instance, an Elvish "
@@ -3921,7 +3867,8 @@ msgstr ""
 "Différents types d'attaques font différentes quantités de dégâts, et chaque "
 "arme ne permet qu'un certain nombre de frappes. Par exemple, un guerrier "
 "elfe avec une attaque 5-4 à l'épée peut asséner 4 coups tranchants "
-"infligeant chacun 5 points de dégâts."
+"infligeant chacun 5 points de dégâts. Ainsi 5&times;4, signifie 5 dégâts "
+"pour chaque attaque réussie, et 4 frappes."
 
 # type: Content of: <book><chapter><section><simpara>
 #. type: Content of: <book><chapter><section><simpara>
@@ -4606,20 +4553,14 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:2690
-#, fuzzy
-#| msgid ""
-#| "In particular, use your ranged weapons if the enemy has no ranged attack. "
-#| "The computer&#8217;s default choice only looks for the most damage you "
-#| "can deal, so using it will often result in your units taking more damage "
-#| "than necessary."
 msgid ""
 "In particular, use your ranged weapons if the enemy has no ranged attack. "
 "Using it will often reduce the damage which your units take until the enemy "
 "dies."
 msgstr ""
-"Utilisez vos armes à distances si l'adversaire n'en possède pas. "
-"L'ordinateur choisit par défaut les attaques qui font le plus dégâts, et "
-"cela provoque souvent plus de blessures que nécessaire dans vos rangs."
+"Utilisez vos armes à distances si l'adversaire n'en possède pas. Cela "
+"réduira le nombre de dommages que votre unité recevra jusqu'à la mort de "
+"l'ennemi."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:2695

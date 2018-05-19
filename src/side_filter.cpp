@@ -236,7 +236,7 @@ bool side_filter::match_internal(const team &t) const
 				return false;
 			}
 			return true;
-		} catch(wfl::formula_error& e) {
+		} catch(const wfl::formula_error& e) {
 			lg::wml_error() << "Formula error in side filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
 			// Formulae with syntax errors match nothing
 			return false;

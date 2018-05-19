@@ -69,11 +69,13 @@ public:
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */
 	virtual unit_ptr get_unit() const = 0;
 
+	/** Returns true for recall and recruit actions */
+	virtual bool places_new_unit() const { return false; };
 	/**
 	 * Returns the id of the unit targeted by this action.
 	 * @retval 0 no unit is targeted.
 	 */
-	size_t get_unit_id() const;
+	virtual size_t get_unit_id() const;
 
 	/** @return pointer to the fake unit used only for visuals */
 	virtual fake_unit_ptr get_fake_unit() = 0;

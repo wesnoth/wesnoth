@@ -92,6 +92,7 @@ game_stringfixes = {
 ("toggle bewteen human and AI.", "toggle between human and AI."),
 #fix added in 1.13.11+dev
 ("This unit can lead our own units", "This unit can lead your own units"),
+("moreso", "more so"),
 ),
 
 "wesnoth-lib" : (
@@ -183,6 +184,9 @@ game_stringfixes = {
 ("On the tallest peak was build", "On the tallest peak was built"),
 ("He killed himself rather then surrender to us!", "He killed himself rather than surrender to us!"),
 ("bigger distraction then they were expecting.", "bigger distraction than they were expecting."),
+
+# added in 1.13.14+dev
+("the one thing she not will be anticipating.", "the one thing she will not be anticipating."),
 ),
 
 "wesnoth-multiplayer" : (
@@ -194,14 +198,20 @@ game_stringfixes = {
 
 website_stringfixes = {
 
-"1.12-announcement" : (
-("http://1.12-changelog.wesnoth.org", "//changelog.wesnoth.org/1.12"),
-("http://wiki.wesnoth.org", "//wiki.wesnoth.org"),
-("http://forums.wesnoth.org", "//forums.wesnoth.org"),
-("http://www.wesnoth.org", "//www.wesnoth.org"),
-("wesnoth-1.12.5/wesnoth-1.12.5.tar.bz2", "wesnoth-1.12.6/wesnoth-1.12.6.tar.bz2"),
-("wesnoth-1.12.5/wesnoth-1.12.5-win32.exe", "wesnoth-1.12.6/wesnoth-1.12.6-win32.exe"),
-("wesnoth-1.12.5/Wesnoth_1.12.5.dmg", "wesnoth-1.12.6/Wesnoth_1.12.6.dmg"),
+"1.14-announcement" : (
+("better ingrate them", "better integrate them"),
+
+("wesnoth-1.14.0/wesnoth-1.14.0.tar.bz2", "wesnoth-1.14.1/wesnoth-1.14.1.tar.bz2"),
+("wesnoth-1.14.0/wesnoth-1.14.0-win32.exe", "wesnoth-1.14.1/wesnoth-1.14.1-win32.exe"),
+("wesnoth-1.14.0/Wesnoth_1.14.0.dmg", "wesnoth-1.14.1/Wesnoth_1.14.1a.dmg"),
+
+# Yes, these are really flimsy. In hindsight it was a bad idea to include
+# download sizes in the announcement. Hopefully we won't end up with
+# files that have the same size in a release/in the last two releases
+# any time soon.
+("442.2", "442.4"),
+("403.1", "403.2"),
+("447.0", "450.5"),
 ),
 
 }

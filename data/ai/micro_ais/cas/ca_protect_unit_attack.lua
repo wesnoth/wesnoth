@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 
@@ -10,7 +9,7 @@ function ca_protect_unit_attack:evaluation(cfg)
     -- or the counter attack on the enemy turn, it does not attack, even if that's really unlikely
 
     local units = {}
-    for u in H.child_range(cfg, "unit") do
+    for u in wml.child_range(cfg, "unit") do
         table.insert(units, AH.get_units_with_attacks { id = u.id }[1])
     end
     if (not units[1]) then return 0 end

@@ -8,14 +8,17 @@
 # clearpotion <clearpotion+fantasy@gmail.com>, 2010
 # mishan <mishanhideaki88@gmail.com>, 2011
 # RatArmy <broadbarredfirefish@gmail.com>, 2015-2016
+# suto3, 2017
+# tamanegi, 2017
 # yma <yma9yma@gmail.com>, 2011
+# 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-Dev Japanese\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-27 01:20 UTC\n"
-"PO-Revision-Date: 2016-04-11 01:10+0000\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
+"POT-Creation-Date: 2018-05-06 08:31 UTC\n"
+"PO-Revision-Date: 2017-09-22 20:48+0000\n"
+"Last-Translator: tamanegi\n"
 "Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
 "japanese/language/ja/)\n"
 "Language: ja\n"
@@ -72,7 +75,7 @@ msgstr "難しい"
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:21
 msgid "Triton"
-msgstr "トライトン"
+msgstr "トリトン"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:23
@@ -87,7 +90,7 @@ msgid ""
 msgstr ""
 "Kai Krellis、あなたは最後のマーマン王の跡取り息子です。しかし、今はまだ子供に"
 "すぎません。ネクロマンサーがあなたの同胞をアンデッドと変え、奴隷にしていま"
-"す！強力なマーマンの女魔術師を説得する任務をこなし、同胞たちを導いて下さい。"
+"す！強力なマーメイドの魔術師を説得する任務をこなし、同胞たちを導いて下さい。"
 "北の大陸の近くの海洋は危険なため、生き残るためには知恵と勇気が必要です。しか"
 "し、まず最初にあなたの軍隊から尊敬を集める必要があります！\n"
 "\n"
@@ -224,8 +227,8 @@ msgstr ""
 msgid "Undead Forces"
 msgstr "アンデッド軍"
 
-#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #. [side]: type=Lich, id=Mal-Kevek
+#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:116
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
@@ -724,8 +727,8 @@ msgstr "コウモリを殺さないのですか？ 移動しなければなら�
 msgid "I would feel bad about that. It is, uh, licking my hand."
 msgstr "そんなことをしたら心苦しいです。ほら、私の手を舐めてるんです。"
 
-#. [message]: speaker=Friendly Bat
 #. [message]: speaker=unit
+#. [message]: speaker=Friendly Bat
 #. This should just be "translated" to whatever noise a bat makes in your language.
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:607
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:641
@@ -742,10 +745,8 @@ msgstr "みたところ、あなたに飼われたいみたいですね。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:629
-#, fuzzy
-#| msgid "Look! There is a massive bat back here."
 msgid "Look! There is a bat."
-msgstr "見てください！この後ろに巨大なコウモリがいます。"
+msgstr "見よ！　コウモリだ。"
 
 #. [message]: speaker=Kai Krellis
 #. [message]: speaker=second_unit
@@ -786,14 +787,8 @@ msgstr "アンデッドのコウモリ"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:742
-#, fuzzy
-#| msgid ""
-#| "Look! There is a bat in the corner here. It is moving, but it looks half "
-#| "dead."
 msgid "Look! There is a bat. It is moving, but it looks half dead."
-msgstr ""
-"見てください！ この隅にコウモリがいます。動いていますが、半分死んでるみたいで"
-"す。"
+msgstr "見ろ！ この隅にコウモリがいるぞ。動いてはいるが、死にかけのようだな。"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:749
@@ -964,11 +959,9 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:299
-#, fuzzy
-#| msgid "The trident is 14-2, magical, ranged, with <i>fire</i> damage."
 msgid "The trident is 14×2, magical, ranged, with <i>fire</i> damage."
 msgstr ""
-"このトライデントは遠隔武器です。<i>火炎</i>の魔法ダメージ14-2を与えます。"
+"このトライデントは遠隔武器です。<i>火炎</i>の魔法ダメージ14×2を与えます。"
 
 #. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:306
@@ -1738,8 +1731,9 @@ msgid ""
 "just behind it. The island was inhabited, however, and the residents didn’t "
 "look happy to see them."
 msgstr ""
-"ようやく、マーマン族は Bilheld に到着しました。目的地と助けはもうすぐでした。"
-"しかし、その島にはドレークが住んでおり、マーフォークを歓迎しませんでした。"
+"ようやく、マーフォークは Bilheld に到着しました。目的地と助けはもうすぐでし"
+"た。しかし、その島にはドレークが住んでおり、マーフォークを歓迎しませんでし"
+"た。"
 
 #. [side]: id=Vlagnor, type=Drake Flameheart
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:50
@@ -1754,7 +1748,7 @@ msgstr "Vlagnor"
 #. [message]: speaker=Vlagnor
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:124
 msgid "What are you mermen doing here?"
-msgstr "お前たちマーマン族はここで何をしているのだ？"
+msgstr "お前たちマーフォークはここで何をしているのだ？"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:128
@@ -1783,7 +1777,7 @@ msgid ""
 "MORE mermen blasting and stabbing."
 msgstr ""
 "あの女はドレークを殺した。もし、お前たちがあいつの仲間なら、お前たちを殺す。"
-"我々は<b>これ以上</b>マーマンを焼き尽くし、刺し殺したくはないのだがな。"
+"我々は<b>これ以上</b>マーフォークを焼き尽くし、刺し殺したくはないのだがな。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:148
@@ -2181,8 +2175,8 @@ msgid ""
 msgstr ""
 "ここは居留地に適している場所ですので、もうすぐ見つかるかもしれませんね。"
 
-#. [unit]: type=Silver Mage, id=Caladon
 #. [side]: id=Caladon
+#. [unit]: type=Silver Mage, id=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:383
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:96
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:98
@@ -2429,8 +2423,8 @@ msgid ""
 "Do not speak to <i>me</i> of fear."
 msgstr ""
 "私の覚えているところでは、愚かなおまえは私の剣を奪うために雇ったオークの燻っ"
-"た死体を残して逃げたんだったな。今度はマーマンか。こいつらが陸であえいでいる"
-"魚のように死につつあったら、お前はまた逃げられるか？ 恐怖など私にはない。"
+"た死体を残して逃げたんだったな。今度はマーフォークか。こいつらが陸であえいで"
+"いる魚のように死につつあったら、お前はまた逃げられるか？ 恐怖など私にはない。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:307
@@ -2625,13 +2619,13 @@ msgstr ""
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:958
 msgid "This is not food. And it is definitely not a toy. Leave it."
 msgstr ""
+"これは食べられそうにはないな。かといって、おもちゃにもなりえない。置いていこ"
+"う。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:987
-#, fuzzy
-#| msgid "This sword is 8-4, magical, with <i>fire</i> damage."
 msgid "This sword is 8×4, magical, with <i>fire</i> damage."
-msgstr "この剣は<i>火炎型</i>の魔法ダメージ 8-4 を与えます。"
+msgstr "この剣は<i>火炎</i>の魔法ダメージ 8×4 を与えます。"
 
 #. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:994
@@ -2912,12 +2906,13 @@ msgstr "Tyegëa！ だめよ！"
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:797
 msgid "Inky has found something. Someone should check it out."
-msgstr ""
+msgstr "Inky が何か見つけたぞ。誰か行って確かめよ。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:819
 msgid "Something must be there! Good bat! Someone should find out what it is."
 msgstr ""
+"何かあるに違いない！　優秀なコウモリだ！　誰か行って正体を確かめるのだ！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:853
@@ -2975,21 +2970,13 @@ msgstr ""
 "Mal-Ravanal の子分をけちらしたあと、Kai Krellis は次の攻撃に備えました。しか"
 "し、攻撃はありませんでした。Krellis は偵察隊を南に送り、何が起こったのかを調"
 "べさせました。偵察隊が持って帰った知らせは良いものでした。Mal-Ravanal は死ん"
-"だのです！ Wesnoth の戦士たちが Mal-Ravanal を倒していたときに、マーマン族は "
-"Jotha でアンデッドを打ち破ったのでした。邪悪な魔術師がいないと知ると、マーマ"
-"ンたちは緊張を解き、熱心に再建に取り組みました。Jotha の町はすぐに復興しまし"
-"た。"
+"だのです！ Wesnoth の戦士たちが Mal-Ravanal を倒していたときに、マーフォーク"
+"は Jotha でアンデッドを打ち破ったのでした。邪悪な魔術師がいないと知ると、マー"
+"マンたちは緊張を解き、熱心に再建に取り組みました。Jotha の町はすぐに復興しま"
+"した。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:39
-#, fuzzy
-#| msgid ""
-#| "Not everything was as before, of course. Many good merfolk had been lost "
-#| "in the first attacks and on the journey. The visiting priestesses did "
-#| "much to console the families of the dead, and as it always does, life "
-#| "continued. In a few months, the giggles of children could be heard "
-#| "echoing through shallows. Many of those children were named after Kai "
-#| "Krellis, Gwabbo, Cylanna, and the other heroes."
 msgid ""
 "Not everything was as before, of course. Many good merfolk had been lost in "
 "the first attacks and on the journey. The visiting priestesses did much to "
@@ -3112,16 +3099,14 @@ msgstr ""
 "す。"
 
 #. [unstore_unit]
-#. [set_variable]
 #: data/campaigns/Dead_Water/units/Brawler.cfg:95
-#: data/campaigns/Dead_Water/units/Brawler.cfg:155
+#: data/campaigns/Dead_Water/units/Brawler.cfg:142
 msgid "stunned"
 msgstr "スタン"
 
 #. [unstore_unit]
-#. [set_variable]
 #: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:148
+#: data/campaigns/Dead_Water/units/Brawler.cfg:143
 msgid "female^stunned"
 msgstr "スタン"
 
@@ -3299,7 +3284,7 @@ msgstr "怪我をする前に、だれかが彼に渡さねば。"
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/utils/items.cfg:239
 msgid "Leave it."
-msgstr ""
+msgstr "置いていこう。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Dead_Water/utils/items.cfg:254
@@ -3370,18 +3355,3 @@ msgid ""
 msgstr ""
 "この攻撃は厳しい打撃を与えるので、敵は混乱してZOCを維持することができなくなっ"
 "てしまいます。この効果は敵の次のターンでなくなります。"
-
-#~ msgid "fist"
-#~ msgstr "拳"
-
-#~ msgid "tail"
-#~ msgstr "尻尾"
-
-#~ msgid "tentacle"
-#~ msgstr "触手"
-
-#~ msgid "ink"
-#~ msgstr "墨"
-
-#~ msgid "mace"
-#~ msgstr "メイス"

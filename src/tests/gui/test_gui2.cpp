@@ -201,15 +201,15 @@ namespace {
 			std::string exception;
 			try {
 				dlg->show(1);
-			} catch(gui2::layout_exception_width_modified&) {
+			} catch(const gui2::layout_exception_width_modified&) {
 				exception = "gui2::layout_exception_width_modified";
-			} catch(gui2::layout_exception_width_resize_failed&) {
+			} catch(const gui2::layout_exception_width_resize_failed&) {
 				exception = "gui2::layout_exception_width_resize_failed";
-			} catch(gui2::layout_exception_height_resize_failed&) {
+			} catch(const gui2::layout_exception_height_resize_failed&) {
 				exception = "gui2::layout_exception_height_resize_failed";
-			} catch(wml_exception& e) {
+			} catch(const wml_exception& e) {
 				exception = e.dev_message;
-			} catch(std::exception& e) {
+			} catch(const std::exception& e) {
 				exception = e.what();
 			} catch(...) {
 				exception = "unknown";
@@ -243,15 +243,15 @@ namespace {
 					gui2::window* window = unit_test_window((*dlg.get()));
 					BOOST_REQUIRE_NE(window, static_cast<void*>(nullptr));
 					window->draw();
-				} catch(gui2::layout_exception_width_modified&) {
+				} catch(const gui2::layout_exception_width_modified&) {
 					exception = "gui2::layout_exception_width_modified";
-				} catch(gui2::layout_exception_width_resize_failed&) {
+				} catch(const gui2::layout_exception_width_resize_failed&) {
 					exception = "gui2::layout_exception_width_resize_failed";
-				} catch(gui2::layout_exception_height_resize_failed&) {
+				} catch(const gui2::layout_exception_height_resize_failed&) {
 					exception = "gui2::layout_exception_height_resize_failed";
-				} catch(wml_exception& e) {
+				} catch(const wml_exception& e) {
 					exception = e.dev_message;
-				} catch(std::exception& e) {
+				} catch(const std::exception& e) {
 					exception = e.what();
 				} catch(...) {
 					exception = "unknown";
@@ -287,15 +287,15 @@ namespace {
 						, "Test message for a tooltip."
 						, point(0, 0)
 						, {0,0,0,0});
-			} catch(gui2::layout_exception_width_modified&) {
+			} catch(const gui2::layout_exception_width_modified&) {
 				exception = "gui2::layout_exception_width_modified";
-			} catch(gui2::layout_exception_width_resize_failed&) {
+			} catch(const gui2::layout_exception_width_resize_failed&) {
 				exception = "gui2::layout_exception_width_resize_failed";
-			} catch(gui2::layout_exception_height_resize_failed&) {
+			} catch(const gui2::layout_exception_height_resize_failed&) {
 				exception = "gui2::layout_exception_height_resize_failed";
-			} catch(wml_exception& e) {
+			} catch(const wml_exception& e) {
 				exception = e.dev_message;
-			} catch(std::exception& e) {
+			} catch(const std::exception& e) {
 				exception = e.what();
 			} catch(...) {
 				exception = "unknown";
@@ -565,7 +565,7 @@ BOOST_AUTO_TEST_CASE(test_make_test_fake)
 	try {
 		message dlg("title", "message", true, false, false);
 		dlg.show(1);
-	} catch(wml_exception& e) {
+	} catch(const wml_exception& e) {
 		BOOST_CHECK(e.user_message == _("Failed to show a dialog, "
 					"which doesn't fit on the screen."));
 		return;

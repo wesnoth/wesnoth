@@ -282,10 +282,6 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 				for (config& scenario : game_config_.child_range("scenario"))
 				{
 					scenario["require_scenario"] = require_campaign;
-					for (config& side : scenario.child_range("side"))
-					{
-						side["no_leader"] = side["no_leader"].to_bool(true);
-					}
 				}
 			}
 		}
@@ -305,7 +301,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		tdata_ = std::make_shared<terrain_type_data>(game_config_);
 		::init_strings(game_config());
 		theme::set_known_themes(&game_config());
-	} catch(game::error& e) {
+	} catch(const game::error& e) {
 		ERR_CONFIG << "Error loading game configuration files\n" << e.message << '\n';
 
 		// Try reloading without add-ons
@@ -457,17 +453,17 @@ void game_config_manager::load_addons_cfg()
 			}
 
 			game_config_.append(umc_cfg);
-		} catch(config::error& err) {
+		} catch(const config::error& err) {
 			ERR_CONFIG << "error reading usermade add-on '" << addon.main_cfg << "'" << std::endl;
 			ERR_CONFIG << err.message << '\n';
 			error_addons.push_back(addon.main_cfg);
 			error_log.push_back(err.message);
-		} catch(preproc_config::error& err) {
+		} catch(const preproc_config::error& err) {
 			ERR_CONFIG << "error reading usermade add-on '" << addon.main_cfg << "'" << std::endl;
 			ERR_CONFIG << err.message << '\n';
 			error_addons.push_back(addon.main_cfg);
 			error_log.push_back(err.message);
-		} catch(filesystem::io_exception&) {
+		} catch(const filesystem::io_exception&) {
 			ERR_CONFIG << "error reading usermade add-on '" << addon.main_cfg << "'" << std::endl;
 			error_addons.push_back(addon.main_cfg);
 		}
@@ -561,7 +557,7 @@ void game_config_manager::load_game_config_for_game(
 
 	try {
 		load_game_config_with_loadscreen(NO_FORCE_RELOAD, &classification);
-	} catch(game::error&) {
+	} catch(const game::error&) {
 		cache_.clear_defines();
 
 		std::deque<define> previous_defines;
@@ -588,7 +584,7 @@ void game_config_manager::load_game_config_for_create(bool is_mp, bool is_test)
 	try{
 		load_game_config_with_loadscreen(NO_INCLUDE_RELOAD);
 	}
-	catch(game::error&) {
+	catch(const game::error&) {
 		cache_.clear_defines();
 
 		std::deque<define> previous_defines;

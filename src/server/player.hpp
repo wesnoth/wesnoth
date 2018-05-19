@@ -34,7 +34,7 @@ public:
 
 	player(const std::string& n, simple_wml::node& cfg, bool registered,
 	       const size_t max_messages=4, const size_t time_period=10,
-	       const bool sp=false, const bool moderator=false);
+	       const bool moderator=false);
 
 	void set_status(STATUS status);
 
@@ -47,8 +47,6 @@ public:
 
 
 	const std::string& name() const { return name_; }
-	bool selective_ping() const { return selective_ping_ ; }
-
 	const simple_wml::node* config_address() const { return &cfg_; }
 
 	bool is_message_flooding();
@@ -72,7 +70,6 @@ public:
 private:
 	const std::string name_;
 	simple_wml::node& cfg_;
-	const bool selective_ping_ ;
 
 	bool registered_;
 

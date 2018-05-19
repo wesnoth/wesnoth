@@ -121,7 +121,7 @@ void unit_attack::pre_show(window& window)
 		const attack_type& defender_weapon = defender.weapon ?
 			*defender.weapon : *no_weapon;
 
-		// Don't show if the atacker's weapon has at least one active "disable" special.
+		// Don't show if the attacker's weapon has at least one active "disable" special.
 		if(attacker.disable) {
 			continue;
 		}
@@ -137,17 +137,37 @@ void unit_attack::pre_show(window& window)
 			range = string_table["range_" + range];
 		}
 
-		const std::string& attw_apecials =
-			!attacker_weapon.weapon_specials().empty() ? " " + attacker_weapon.weapon_specials() : "";
-		const std::string& defw_specials =
-			!defender_weapon.weapon_specials().empty() ? " " + defender_weapon.weapon_specials() : "";
+		auto a_ctx = attacker_weapon.specials_context(
+			attacker_itor_.get_shared_ptr(),
+			defender_itor_.get_shared_ptr(),
+			attacker_itor_->get_location(),
+			defender_itor_->get_location(), true, defender.weapon
+		);
+
+		auto d_ctx = defender_weapon.specials_context(
+			defender_itor_.get_shared_ptr(),
+			attacker_itor_.get_shared_ptr(),
+			defender_itor_->get_location(),
+			attacker_itor_->get_location(), false, attacker.weapon
+		);
+
+		std::string attw_specials = attacker_weapon.weapon_specials(true, attacker.backstab_pos);
+		std::string defw_specials = defender_weapon.weapon_specials(true);
+
+		if(!attw_specials.empty()) {
+			attw_specials = " " + attw_specials;
+		}
+
+		if(!defw_specials.empty()) {
+			defw_specials = " " + defw_specials;
+		}
 
 		std::stringstream attacker_stats, defender_stats;
 
 		// Use attacker/defender.num_blows instead of attacker/defender_weapon.num_attacks() because the latter does not consider the swarm weapon special
 		attacker_stats << "<b>" << attw_name << "</b>" << "\n"
 			<< attacker.damage << font::weapon_numbers_sep << attacker.num_blows
-			<< attw_apecials << "\n"
+			<< attw_specials << "\n"
 			<< font::span_color(a_cth_color) << attacker.chance_to_hit << "%</span>";
 
 		defender_stats << "<b>" << defw_name << "</b>" << "\n"

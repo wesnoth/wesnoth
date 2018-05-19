@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-sotbe\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-27 01:21 UTC\n"
+"POT-Creation-Date: 2018-05-16 03:33 UTC\n"
 "PO-Revision-Date: 2011-12-10 09:11+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -144,11 +144,11 @@ msgstr "Поразиш ли Албера"
 msgid "Death of Kapou’e"
 msgstr "Настрада ли Капуе"
 
-#. [side]: type=Orcish Leader, id=Kapou'e
 #. [side]: id=Kapou'e, type=Orcish Leader
 #. [side]
 #. [side]: type=Orcish Slayer, id=Rugh
 #. [side]: id=Grüü, type=Great Troll
+#. [side]: type=Orcish Leader, id=Kapou'e
 #. [side]: type=General, id=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:56
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:64
@@ -185,11 +185,11 @@ msgstr "Капуе"
 msgid "Alber"
 msgstr "Албер"
 
-#. [side]: type=Lieutenant, id=Alber
-#. [side]: type=General, id=Lanbec'h
 #. [side]: type=General, id=Slowhand
 #. [side]
 #. [side]: type=General, id=Harman
+#. [side]: type=General, id=Lanbec'h
+#. [side]: type=Lieutenant, id=Alber
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:82
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:61
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:34
@@ -200,10 +200,16 @@ msgstr "Људи"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:98
+#, fuzzy
+#| msgid ""
+#| "Rahul I, Lord Protector of the Northern Alliance, concluded peace with "
+#| "enemy orcs during the fourth year of his leadership. He ended a 15-year "
+#| "war with Black-Eye Karun, ruler of the enemy orcs. A peace treaty between "
+#| "the Alliance and the orcs settled their territorial disputes."
 msgid ""
 "Rahul I, Lord Protector of the Northern Alliance, concluded peace with enemy "
-"orcs during the fourth year of his leadership. He ended a 15-year war with "
-"Black-Eye Karun, ruler of the enemy orcs. A peace treaty between the "
+"orcs during the fourteenth year of his leadership. He ended a 15-year war "
+"with Black-Eye Karun, ruler of the enemy orcs. A peace treaty between the "
 "Alliance and the orcs settled their territorial disputes."
 msgstr ""
 "Рахул Први, господар заштитник Северњачког савеза, закључи мир са орковским "
@@ -1792,17 +1798,17 @@ msgstr "Досегнеш ли оазу"
 msgid "Ar-Dant"
 msgstr "Ар-Дант"
 
-#. [side]: type=Assassin, type=Rogue, id=Ar-Dant
-#. [side]
-#. [side]: type=Elvish Champion, id=Thelarion
-#. [side]: type=Dwarvish Steelclad, id=Darstang
-#. [side]: type=General, id=Earl Lanbec'h
-#. [side]: type=General, id=Arthain
-#. [side]: type=Lieutenant, id=Hanak
-#. [side]: type=Bandit, id=Sagmar
 #. [side]: type=General, id=Telthys
+#. [side]: type=Elvish Champion, id=Thelarion
 #. [side]: type=General, id=Fredor
 #. [side]: type=General, id=Georan
+#. [side]: type=General, id=Arthain
+#. [side]: type=Lieutenant, id=Hanak
+#. [side]: type=Dwarvish Steelclad, id=Darstang
+#. [side]: type=General, id=Earl Lanbec'h
+#. [side]
+#. [side]: type=Bandit, id=Sagmar
+#. [side]: type=Assassin, type=Rogue, id=Ar-Dant
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #. [side]: type=Orcish Warlord, id=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:86
@@ -2374,8 +2380,8 @@ msgstr "Преживиш ли претњу Шана Таума 20 потеза"
 msgid "Defeat Shan Taum"
 msgstr "Поразиш ли Шана Таума"
 
-#. [side]: type=Orcish Warlord, id=Shan Taum
 #. [unit]: type=Orcish Warlord, id=Shan Taum
+#. [side]: type=Orcish Warlord, id=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:60
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:143
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:126
@@ -2849,8 +2855,8 @@ msgstr ""
 msgid "It won’t be said that Elves were braver than us, everyone attack!"
 msgstr "Да нико не каже да су вилењаци били храбрији од нас, сви у напад!"
 
-#. [unit]: type=General, id=Earl Lanbec'h
 #. [side]: type=General, id=Earl Lanbec'h
+#. [unit]: type=General, id=Earl Lanbec'h
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:658
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:143
@@ -3817,13 +3823,13 @@ msgstr "Доведеш ли Капуа до путоказа на југозап
 msgid "Braga"
 msgstr "Брага"
 
+#. [side]: type=Orcish Warlord, id=Orga
+#. [side]: type=Orcish Warrior, id=Knorgh
+#. [side]: type=Orcish Warrior, id=Nofhug
 #. [side]: type=Orcish Warlord, id=Braga
 #. [side]: type=Orcish Warlord, id=Meato
 #. [side]: type=Orcish Warlord, id=Ragvan
 #. [side]: type=Orcish Warlord, id=Kergai
-#. [side]: type=Orcish Warlord, id=Orga
-#. [side]: type=Orcish Warrior, id=Knorgh
-#. [side]: type=Orcish Warrior, id=Nofhug
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:73
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:93
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:113
@@ -4376,8 +4382,8 @@ msgstr "Стигли смо, господару."
 msgid "Ahhh, perfect, more reinforcements."
 msgstr "Ааа, одлично, још појачања."
 
-#. [unit]: type=General, id=Howgarth III
 #. [side]: type=General, id=Howgarth III
+#. [unit]: type=General, id=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:390
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:154
 msgid "Howgarth III"
@@ -4418,10 +4424,16 @@ msgstr ""
 
 #. [message]: speaker=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:459
+#, fuzzy
+#| msgid ""
+#| "The hell I don’t, Earl Lanbec’h, the Northern Alliance was witness to a "
+#| "treaty some twenty seven years ago between your people and the orcs, "
+#| "which both of you are no doubt violating. It is our duty as the "
+#| "orchestrator and witness of this treaty to see that it is honored."
 msgid ""
 "The hell I don’t, Earl Lanbec’h, the Northern Alliance was witness to a "
-"treaty some twenty seven years ago between your people and the orcs, which "
-"both of you are no doubt violating. It is our duty as the orchestrator and "
+"treaty some seventeen years ago between your people and the orcs, which both "
+"of you are no doubt violating. It is our duty as the orchestrator and "
 "witness of this treaty to see that it is honored."
 msgstr ""
 "Ђавола немам, жупане Ланбече! Северњачки савез је био сведок споразуму пре "
@@ -4467,8 +4479,13 @@ msgstr "О чему то дођавола причаш?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:486
+#, fuzzy
+#| msgid ""
+#| "I am Kapou’e, son of the Black-Eye Karun. Twenty-seven years ago you "
+#| "people assassinated my father after inviting him to join the Northern "
+#| "Alliance."
 msgid ""
-"I am Kapou’e, son of the Black-Eye Karun. Twenty-seven years ago you people "
+"I am Kapou’e, son of the Black-Eye Karun. Seventeen years ago you people "
 "assassinated my father after inviting him to join the Northern Alliance."
 msgstr ""
 "Ја сам Капуе, син Црнооког Каруна. Пре двадесет седам година убили сте из "

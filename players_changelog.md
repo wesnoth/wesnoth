@@ -2,14 +2,67 @@ This is meant to be a concise list of player-visible changes (very minor
 changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 
-## Version 1.13.13+dev
+## Version 1.14.1+dev
+ ### Language and i18n
+   * Updated translations: British English, Chinese (Simplified), Czech, French,
+     Galician, Italian, Spanish, Ukrainian.
+ ### User interface
+   * List boxes (MP lobby game list in particular) now keep the scroll position
+     when they change, instead of keeping the selected item visible (issue #3016).
+   * Fixed MP lobby player list scrolling to top when it changes
+ ### Miscellaneous and bug fixes
+   * Fixed: unit halo remained after undoing a recall (issue #3065)
+
+
+## Version 1.14.1
+ ### Campaigns
+   * Eastern Invasion:
+     * In 'Captured', fixed units incorrectly costing upkeep after leveling up.
+ ### Language and i18n
+   * Updated translations: British English, Chinese (Simplified), Czech, French,
+     Galician, German, Italian, Japanese, Scottish Gaelic, Slovak, Spanish.
+ ### Performance
+   * Added an option to disable the FPS limiter for a slight performance boost.
+ ### User interface
+   * Removed individual Join/Observe buttons for each game in the MP Lobby.
+   * Highlight the titles of MP games with vacant slots.
+   * Improved MP Lobby layout on low resolutions.
+   * Improved reporting of network errors in the MP lobby (issue #3005).
+ ### Miscellaneous and bug fixes
+   * Removed misleading tooltip text stating registered nicknames are optional for
+     the official MP server.
+   * Attempting to save a screenshot with an unsupported format now shows an error
+     message, instead of saving the screenshot as BMP with the requested extension.
+   * Implemented a workaround for an unhandled std::bad_cast from string comparison
+     functions that caused a crash-to-desktop when opening Preferences among others
+     (issue #3050).
+
+
+## Version 1.14.0
+ ### Campaigns
+   * Under the Burning Suns
+     * New set of Quenoth faction and character portraits by LordBob.
+     * Updated sprites for several Quenoth units.
+ ### Language and i18n
+   * Updated translations: Czech, French, Galician, German, Japanese, Polish,
+     Scottish Gaelic, Slovak, Spanish.
+ ### User Interface
+   * Implemented MP chat message history saving (issue #1194, issue #2802).
+ ### Miscellaneous and bug fixes
+   * macOS user data directory is now ~/Library/Application Support/Wesnoth_1.14
+
+
+## Version 1.13.14
  ### Campaigns
    * The Hammer of Thursagan
      * S12 Fixed enemies from ai6 going to the book room
    * The Rise of Wesnoth
      * New set of story art.
  ### Language and i18n
-   * Updated translations: Chinese (Simplified), Czech, French, Galician, Polish.
+   * Updated translations: Chinese (Simplified), Czech, French, Galician,
+     Italian, Polish.
+ ### Miscellaneous and bug fixes
+   * Fixed some hotkeys triggering multiple commands on GNU/Linux (bug #1736).
 
 
 ## Version 1.13.13

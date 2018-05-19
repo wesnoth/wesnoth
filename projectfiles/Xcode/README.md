@@ -16,8 +16,8 @@ Currently there are two types of builds:
  * Xcode 5.1.1 or higher...
  * Mac OS X 10.8.5 or higher...
  * `scons` and `gettext` (if you want to compile translations)
- * The Headers and lib folders, which can be found in the newest zip here:
-   https://sourceforge.net/downloads/wesnoth/unofficial/Mac%20Compile%20Stuff/
+ * The Headers and lib folders, which can be found in the MacCompileStuff repository here:
+   https://github.com/hrubymar10/MacCompileStuff/tree/1.14
 
 ## Targets
 * **Wesnoth**:
@@ -74,3 +74,5 @@ When compiling Wesnoth for an official release, the following steps should be ta
  * Verify that you signed `.dmg` propertly using `spctl -a -t open --context context:primary-signature -v /PATH/TO/NEW/IMAGE.dmg`.
  * Create SHA-256 checksum using `shasum -a 256 /PATH/TO/NEW/IMAGE.dmg` command.
  * Done! You can release it now.
+
+

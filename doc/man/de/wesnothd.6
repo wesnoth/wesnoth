@@ -33,51 +33,51 @@ wesnothd \- Battle for \fBWesnoth\fP Mehrspielernetzwerkdaemon
 .
 .SH BESCHREIBUNG
 .
-Manages Battle for Wesnoth multiplayer games. See
-https://www.wesnoth.org/wiki/ServerAdministration on what commands the
-server accepts via the wesnoth client (/query ...) or the fifo.
+Verwaltet Battle for Wesnoth Mehrspieler Partien. Siehe
+https://www.wesnoth.org/wiki/ServerAdministration für die Befehle, die der
+Server von Wesnoth (/query ...) oder über die FIFO entgegennimmt.
 .
 .SH KOMMANDOZEILENOPTIONEN
 .
 .TP 
 \fB\-c\ \fP\fIPfad\fP\fB,\ \-\-config\fP\fI\ Pfad\fP
-sagt wesnothd wo er die zu benutzende Konfigurationsdatei findet. Siehe im
-Abschnitt \fBSERVER KONFIGURATION\fP unterhalb für den genauen Syntax. Sie
+Sagt wesnothd wo es die zu benutzende Konfigurationsdatei findet. Siehe den
+Abschnitt \fBSERVER KONFIGURATION\fP unterhalb für die genaue Syntax. Sie
 können die Konfigurationsdatei durch senden eines SIGHUP an den
-Serverprozess neuladen.
+Serverprozess neu laden.
 .TP 
 \fB\-d, \-\-daemon\fP
-startet wesnothd als Dämon.
+Startet wesnothd als Dämon.
 .TP 
 \fB\-h, \-\-help\fP
 Gibt die möglichen Kommandozeilenoptionen aus.
 .TP 
-\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIDomäne1\fP\fB,\fP\fIDomäne2\fP\fB,\fP\fI...\fP
+\fB\-\-log\-\fP\fIstufe\fP\fB=\fP\fIDomäne1\fP\fB,\fP\fIDomäne2\fP\fB,\fP\fI...\fP
 Setzt die Stufe der Debugausgabe. Verwenden Sie \fBall\fP, um sämtliche Domänen
 zu verwenden. Verfügbare Stufen: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Standardmäßig werden die Stufe \fBerror\fP für die Domäne des Spieles
 und die Stufe \fBinfo\fP für die Domäne des Servers verwendet.
 .TP 
 \fB\-p\ \fP\fIPort\fP\fB,\ \-\-port\fP\fI\ Port\fP
-bindet den Server an den angegebenen Port. Wenn kein Port angegeben ist,
+Bindet den Server an den angegebenen Port. Wenn kein Port angegeben ist,
 wird Port \fB15000\fP genommen.
 .TP 
 \fB\-t\ \fP\fINummer\fP\fB,\ \-\-threads\fP\fI\ Nummer\fP
-Legt die maximale Anzahl an Arbeiterprozessen für Netzwerk I/O
+Legt die maximale Anzahl an Arbeiterthreads für Netzwerk E/A
 fest. (Standard: \fB5\fP,\ Maximum:\ \fB30\fP)
 .TP 
-\fB\-t,\ \-\-max\-threads\fP\fI\ Wert\fP
-Legt die maximal zu erzeugende Anzahl an Arbeiterprozessen fest. Bei einem
+\fB\-T,\ \-\-max\-threads\fP\fI\ Wert\fP
+Legt die maximal zu erzeugende Anzahl an Arbeiterthreads fest. Bei einem
 Wert von \fB0\fP gibt es keine Beschränkung. (Standard: \fB0\fP)
 .TP 
 \fB\-V, \-\-version\fP
 Zeigt die Versionsnummer an und beendet das Programm.
 .TP 
 \fB\-v, \-\-verbose\fP
-aktiviert mehr Details in der Logausgabe.
+Aktiviert mehr Details in der Logausgabe.
 .
 .SH "SERVER KONFIGURATION"
 .
-.SS "Der allgemeine Syntax ist:"
+.SS "Die allgemeine Syntax ist:"
 .
 .P
 [\fIElement\fP]
@@ -117,9 +117,10 @@ Platzhalter unterstützt. Siehe \fBglob\fP(7) für mehr Details. Standardwerte
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time path
-(default: \fB/var/run/wesnothd/socket\fP).
+Der Pfad zur FIFO\-Datei, in die Befehle für den Server geschrieben werden
+können (das gleiche wie mit /query ... in Wesnoth selbst). Falls nicht
+angegeben, wird die einkompilierte Voreinstellung verwendet (Standard:
+\fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 Die Anzahl der erlaubten Nachrichten in \fBmessages_time_period\fP. (Standard:
@@ -145,7 +146,7 @@ Das Passwort, um auf dem Server Administratorrechte zu erhalten (über
 .TP 
 \fBreplay_save_path\fP
 Legt den Ordner fest, in dem der Server Wiederholungen
-abspeichert. (Vergesst das abschließende /! nicht) Standardmäßig wird »«
+abspeichert. (Vergesst das abschließende /! nicht) Standardmäßig wird »./«
 verwendet, was für den Ordner steht, in dem wesnothd gestartet wurde.
 .TP 
 \fBrestart_command\fP
@@ -198,12 +199,12 @@ sollen. Verhält sich in Bezug auf Wildcards genauso wie
 \fBversions_accepted\fP.
 .RE
 .P
-\fB[ban_time]\fP Eine Markierung, um A tag to define convenient keywords for
-temporary ban time lengths.
+\fB[ban_time]\fP Eine Tag um Bannzeiten zur einfacheren Benutzung einem Alias
+zuzuordnen.
 .RS
 .TP 
 \fBname\fP
-Der Name, um die Ban\-Zeit zu referenzieren.
+Der Name, um die Bann\-Zeit zu referenzieren.
 .TP 
 \fBtime\fP
 Die Zeitlängen\-Definition. Das Format lautet: %d[%s[%d%s[...]]] wobei %s für
@@ -226,17 +227,17 @@ ist es nicht möglich registrierte Nutzernamen auf dem Server zu verwenden.
 .RS
 .TP 
 \fBdb_host\fP
-(für user_handler=forum) Der Hostname des Datenbank\-Servers
+(für user_handler=forum) Der Hostname des Datenbank\-Servers.
 .TP 
 \fBdb_name\fP
-(für user_handler=forum) Der Name der zu nutzenden Datenbank
+(für user_handler=forum) Der Name der zu nutzenden Datenbank.
 .TP 
 \fBdb_user\fP
 (für user_handler=forum) Der Benutzername, der zur Anmeldung an der
-Datenbank verwendet werden soll
+Datenbank verwendet werden soll.
 .TP 
 \fBdb_password\fP
-(für user_handler=forum) Das zugehörige Passwort für den Nutzer
+(für user_handler=forum) Das zugehörige Passwort für diesen Benutzer.
 .TP 
 \fBdb_users_table\fP
 (für user_handler=forum) Der Name der Tabelle, in der das phpbb Forum die
@@ -265,10 +266,10 @@ Nutzerverwaltung »sample« verwendet.
 Der Hostname des Mail\-Servers.
 .TP 
 \fBusername\fP
-Der Nutzername mit welchem man sich beim Mail\-Server anmeldet.
+Der Benutzername mit welchem man sich beim Mail\-Server anmeldet.
 .TP 
 \fBpassword\fP
-Das Passwort dieses Nutzers.
+Das Passwort dieses Benutzers.
 .TP 
 \fBfrom_address\fP
 Die Antwortadresse für ausgehende Mails.
@@ -285,16 +286,16 @@ den Optionen auf der Befehlszeile hin.
 .
 .SH AUTOR
 .
-Geschrieben von David White <davidnwhite@verizon.net>.  Bearbeitet
+Geschrieben von David White <davidnwhite@verizon.net>. Bearbeitet
 von Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
-<ott@gaon.net>, Soliton  <soliton.de@gmail.com> und Thomas
-Baumhauer <thomas.baumhauer@gmail.com>.  Übersetzt von Jan\-Heiner
+<ott@gaon.net>, Soliton <soliton.de@gmail.com> und Thomas
+Baumhauer <thomas.baumhauer@gmail.com>. Übersetzt von Jan\-Heiner
 Laberenz <Jan\-Heiner@arcor.de>, Nils Kneuper
-<crazy\-ivanovic@gmx.net>und Soliton <soliton.de@gmail.com>.
-Diese Beschreibung stammt im Original von Cyril Bouthors
-<cyril@bouthors.org>.
+<crazy\-ivanovic@gmx.net>und Soliton
+<soliton.de@gmail.com>. Diese Beschreibung stammt im Original von
+Cyril Bouthors <cyril@bouthors.org>.
 .br
-Visit the official homepage: https://www.wesnoth.org/
+Besuchen Sie auch die offizielle Webseite: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .

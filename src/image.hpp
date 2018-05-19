@@ -223,6 +223,8 @@ namespace image {
 	/// initialize any private data, e.g. algorithm choices from preferences
 	bool update_from_preferences();
 
-	bool save_image(const locator& i_locator, const std::string& outfile);
-	bool save_image(const surface& surf, const std::string& outfile);
+	enum class save_result {success, unsupported_format, save_failed, no_image};
+
+	save_result save_image(const locator& i_locator, const std::string& outfile);
+	save_result save_image(const surface& surf, const std::string& outfile);
 }

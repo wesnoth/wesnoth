@@ -2,19 +2,22 @@
 #  Jan Heiner Laberenz <jan-heiner@arcor.de>, 2004
 #  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2007 - 2010
 #  Nils Kneuper <crazy-ivanovic@gmx.net>, 2009 - 2010
+#  Aaron Winter <winter.aaron93@gmail.com>, 2018
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.12\n"
+"Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-17 21:29+0300\n"
-"PO-Revision-Date: 2011-11-30 13:52+0100\n"
-"Last-Translator: daMark <daMark@arcor.de>\n"
+"POT-Creation-Date: 2018-05-09 03:49-0300\n"
+"PO-Revision-Date: 2018-05-17 17:14+0200\n"
+"Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -117,52 +120,53 @@ msgid "special"
 msgstr "Spezielles"
 
 #. [editor_times]: id=empty
-#: data/core/editor/time-of-day.cfg:5
-msgid "None"
-msgstr "keine"
+#. Describes a scenario in the editor that has not set a time of day schedule
+#: data/core/editor/time-of-day.cfg:6
+msgid "time of day^None"
+msgstr "Keiner"
 
 #. [editor_times]: id=test
-#: data/core/editor/time-of-day.cfg:10
+#: data/core/editor/time-of-day.cfg:11
 msgid "Test"
 msgstr "Test"
 
 #. [editor_times]: id=default
-#: data/core/editor/time-of-day.cfg:21
+#: data/core/editor/time-of-day.cfg:22
 msgid "Default"
 msgstr "Standard"
 
 #. [editor_times]: id=summer
-#: data/core/editor/time-of-day.cfg:27
+#: data/core/editor/time-of-day.cfg:28
 msgid "Summer"
 msgstr "Sommer"
 
 #. [editor_times]: id=winter
-#: data/core/editor/time-of-day.cfg:33
+#: data/core/editor/time-of-day.cfg:34
 msgid "Winter"
 msgstr "Winter"
 
 #. [editor_times]: id=underground
-#: data/core/editor/time-of-day.cfg:39
+#: data/core/editor/time-of-day.cfg:40
 msgid "Underground"
 msgstr "Untergrund"
 
 #. [editor_times]: id=deep_underground
-#: data/core/editor/time-of-day.cfg:45
+#: data/core/editor/time-of-day.cfg:46
 msgid "Deep Underground"
 msgstr "Tiefer Untergrund"
 
 #. [editor_times]: id=indoors
-#: data/core/editor/time-of-day.cfg:51
+#: data/core/editor/time-of-day.cfg:52
 msgid "Indoors"
 msgstr "Innen"
 
 #. [editor_times]: id=24
-#: data/core/editor/time-of-day.cfg:57
+#: data/core/editor/time-of-day.cfg:58
 msgid "24 Hour Schedule"
 msgstr "24-Stunden-Zeitplan"
 
 #. [editor_times]: id=after_the_fall
-#: data/core/editor/time-of-day.cfg:63
+#: data/core/editor/time-of-day.cfg:64
 msgid "After the Fall"
 msgstr "Nach dem Fall"
 
@@ -179,7 +183,7 @@ msgstr "Datei"
 #. [menu]: id=menu-editor-recent
 #: data/themes/editor.cfg:72
 msgid "Load Recent"
-msgstr "Letzte Version laden"
+msgstr "Zuletzt verwendet"
 
 #. [menu]: id=menu-editor-map
 #: data/themes/editor.cfg:90
@@ -189,7 +193,7 @@ msgstr "Karte"
 #. [menu]: id=menu-unit-facing
 #: data/themes/editor.cfg:98
 msgid "Unit Facing"
-msgstr ""
+msgstr "Einheitenblickrichtung"
 
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:104
@@ -204,7 +208,7 @@ msgstr "Fenster"
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:120
 msgid "Areas"
-msgstr "Gebiete"
+msgstr "Zonen"
 
 #. [menu]: id=menu-editor-local-time
 #: data/themes/editor.cfg:128
@@ -219,7 +223,7 @@ msgstr "Lokalen Zeitplan zuweisen"
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:142
 msgid "Side"
-msgstr "Fraktion"
+msgstr "Partei"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:159
@@ -270,15 +274,15 @@ msgstr "Kosten: "
 msgid "Recruit: "
 msgstr "Ausbilden:"
 
-#: src/editor/controller/editor_controller.cpp:177
+#: src/editor/controller/editor_controller.cpp:178
 msgid "Fatal error"
 msgstr "Kritischer Fehler"
 
-#: src/editor/controller/editor_controller.cpp:207
+#: src/editor/controller/editor_controller.cpp:208
 msgid "Do you really want to quit?"
 msgstr "Wollt Ihr wirklich beenden?"
 
-#: src/editor/controller/editor_controller.cpp:209
+#: src/editor/controller/editor_controller.cpp:210
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -286,7 +290,7 @@ msgstr ""
 "Wollt Ihr wirklich beenden? Sämtliche Änderungen an der Karte seit dem "
 "letzten Speichern werden verloren gehen."
 
-#: src/editor/controller/editor_controller.cpp:211
+#: src/editor/controller/editor_controller.cpp:212
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -294,135 +298,129 @@ msgstr ""
 "Wollt Ihr wirklich beenden? Die folgenden Karten wurden seit dem letzten "
 "Speichern verändert und sämtliche Änderungen werden verloren gehen:"
 
-#: src/editor/controller/editor_controller.cpp:220
+#: src/editor/controller/editor_controller.cpp:221
 msgid "No editor time-of-day found."
 msgstr "Keine Tageszeiten-Definitionen für den Editor gefunden."
 
-#: src/editor/controller/editor_controller.cpp:1142
+#: src/editor/controller/editor_controller.cpp:1147
 msgid "Change Unit ID"
 msgstr "Einheitenkennung ändern"
 
-#: src/editor/controller/editor_controller.cpp:1143
+#: src/editor/controller/editor_controller.cpp:1148
 msgid "ID:"
 msgstr "Kennung:"
 
-#: src/editor/controller/editor_controller.cpp:1159
+#: src/editor/controller/editor_controller.cpp:1164
 msgid "Rename Unit"
 msgstr "Einheit umbenennen"
 
-#: src/editor/controller/editor_controller.cpp:1160
+#: src/editor/controller/editor_controller.cpp:1165
 msgid "Name:"
 msgstr "Name: "
 
-#: src/editor/map/context_manager.cpp:191
+#: src/editor/map/context_manager.cpp:205
 msgid "Load Map"
-msgstr ""
+msgstr "Lade Karte"
 
-#: src/editor/map/context_manager.cpp:259 src/editor/map/map_context.cpp:831
+#: src/editor/map/context_manager.cpp:273 src/editor/map/map_context.cpp:835
 msgid "New Map"
 msgstr "Neue Karte"
 
-#: src/editor/map/context_manager.cpp:272 src/editor/map/map_context.cpp:831
+#: src/editor/map/context_manager.cpp:286 src/editor/map/map_context.cpp:835
 msgid "New Scenario"
 msgstr "Neues Szenario"
 
-#: src/editor/map/context_manager.cpp:328
+#: src/editor/map/context_manager.cpp:342
 msgid "No Recent Files"
 msgstr "Keine vorherigen Dateien"
 
-#: src/editor/map/context_manager.cpp:366
-#, fuzzy
-#| msgid "(Unnamed Area)"
+#: src/editor/map/context_manager.cpp:380
 msgid "Unnamed Area"
-msgstr "(Unbenanntes Gebiet)"
+msgstr "Unbenannte Zone"
 
-#: src/editor/map/context_manager.cpp:397
-#, fuzzy
-#| msgid "(New Side)"
+#: src/editor/map/context_manager.cpp:411
 msgid "New Side"
-msgstr "(Neue Fraktion)"
+msgstr "Neue Partei"
 
-#: src/editor/map/context_manager.cpp:453
+#: src/editor/map/context_manager.cpp:467
 msgid "Apply Mask"
 msgstr "Maske anwenden"
 
-#: src/editor/map/context_manager.cpp:462
+#: src/editor/map/context_manager.cpp:476
 msgid "Error loading mask"
 msgstr "Fehler beim Laden der Maske"
 
-#: src/editor/map/context_manager.cpp:482
+#: src/editor/map/context_manager.cpp:496
 msgid "Identifier:"
 msgstr "Kennung:"
 
-#: src/editor/map/context_manager.cpp:482
-msgid "Rename Area"
-msgstr "Das Gebiet umbenennen"
-
 #: src/editor/map/context_manager.cpp:496
+msgid "Rename Area"
+msgstr "Die Zone umbenennen"
+
+#: src/editor/map/context_manager.cpp:510
 msgid "Choose Target Map"
 msgstr "Wählt die Zielkarte"
 
-#: src/editor/map/context_manager.cpp:505
-#: src/editor/map/context_manager.cpp:915
+#: src/editor/map/context_manager.cpp:519
+#: src/editor/map/context_manager.cpp:929
 msgid "Error loading map"
 msgstr "Fehler beim Laden der Karte"
 
-#: src/editor/map/context_manager.cpp:631
+#: src/editor/map/context_manager.cpp:645
 msgid "Save Map As"
 msgstr "Karte speichern unter"
 
-#: src/editor/map/context_manager.cpp:652
-#, fuzzy
-#| msgid "Save the Scenario As"
+#: src/editor/map/context_manager.cpp:666
 msgid "Save Scenario As"
-msgstr "Szenario speichern als"
+msgstr "Szenario speichern unter"
 
-#: src/editor/map/context_manager.cpp:684
+#: src/editor/map/context_manager.cpp:698
 msgid "No random map generators found."
 msgstr "Keine Generatoren für Zufallskarten gefunden."
 
-#: src/editor/map/context_manager.cpp:698
-#: src/editor/map/context_manager.cpp:703
+#: src/editor/map/context_manager.cpp:712
+#: src/editor/map/context_manager.cpp:717
 msgid "Map creation failed."
 msgstr "Erstellen der Karte fehlgeschlagen"
 
-#: src/editor/map/context_manager.cpp:718
+#: src/editor/map/context_manager.cpp:732
 msgid "Unsaved Changes"
 msgstr "Nicht gespeicherte Änderungen"
 
-#: src/editor/map/context_manager.cpp:719
+#: src/editor/map/context_manager.cpp:733
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "Wollt Ihr alle Änderungen an der Karte, die seit dem letzten Speichern "
 "gemacht wurden, verwerfen?"
 
-#: src/editor/map/context_manager.cpp:775
+#: src/editor/map/context_manager.cpp:789
 msgid "This scenario is already open."
 msgstr "Dieses Szenario ist bereits geöffnet."
 
-#: src/editor/map/context_manager.cpp:798
-#: src/editor/map/context_manager.cpp:861
+#: src/editor/map/context_manager.cpp:812
+#: src/editor/map/context_manager.cpp:875
 msgid "This map is already open."
 msgstr "Diese Karte ist bereits geöffnet."
 
-#: src/editor/map/context_manager.cpp:822
+#: src/editor/map/context_manager.cpp:836
 msgid "Scenario saved."
 msgstr "Szenario gespeichert."
 
-#: src/editor/map/context_manager.cpp:837
+#: src/editor/map/context_manager.cpp:851
 msgid "Map saved."
 msgstr "Karte gespeichert."
 
-#: src/editor/map/context_manager.cpp:894
+#: src/editor/map/context_manager.cpp:908
 msgid "Loaded embedded map data"
 msgstr "Eingebettete Karte geladen"
 
-#: src/editor/map/context_manager.cpp:895
-#: src/editor/map/context_manager.cpp:908
+#: src/editor/map/context_manager.cpp:909
+#: src/editor/map/context_manager.cpp:922
 msgid "Map loaded from scenario"
-msgstr "Karte aus Szenario Datei geladen"
+msgstr "Karte aus Szenario geladen"
 
-#: src/editor/map/context_manager.cpp:905
+#: src/editor/map/context_manager.cpp:919
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -431,7 +429,7 @@ msgstr ""
 "$new"
 
 #: src/editor/map/editor_map.cpp:148
-#: src/editor/palette/location_palette.cpp:111
+#: src/editor/palette/location_palette.cpp:119
 msgid "Player $side_num"
 msgstr "Spieler $side_num"
 
@@ -455,15 +453,15 @@ msgstr ""
 "Diese Karte scheint eine Szenario Datei zu sein, doch der Wert für "
 "»map_data« verweist nicht auf eine existierende Datei"
 
-#: src/editor/map/map_context.cpp:600
+#: src/editor/map/map_context.cpp:604
 msgid "Could not save the scenario: $msg"
 msgstr "Das Szenario konnte nicht gespeichert werden: $msg"
 
-#: src/editor/map/map_context.cpp:632
+#: src/editor/map/map_context.cpp:636
 msgid "Could not save into scenario"
-msgstr "Konnte nicht in die Szenario Datei speichern"
+msgstr "Konnte nicht in das Szenario gespeichert werden"
 
-#: src/editor/map/map_context.cpp:642
+#: src/editor/map/map_context.cpp:646
 msgid "Could not save the map: $msg"
 msgstr "Die Karte konnte nicht gespeichert werden: $msg"
 
@@ -481,21 +479,27 @@ msgstr "(kein Kernbestandteil)"
 msgid "Will not work in game without extra care."
 msgstr "Funktioniert nicht ohne weitere Anpassungen im WML."
 
-#: src/editor/palette/location_palette.cpp:248
+#: src/editor/palette/location_palette.cpp:256
 msgid "Go To"
 msgstr "Gehe zu"
 
-#: src/editor/palette/location_palette.cpp:255
+#: src/editor/palette/location_palette.cpp:263
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: src/editor/palette/location_palette.cpp:257
-#, fuzzy
-#| msgid "New Location Identifer"
+#: src/editor/palette/location_palette.cpp:265
 msgid "New Location Identifier"
 msgstr "Neue Ortbezeichnung"
 
-#: src/editor/palette/location_palette.cpp:261
+#: src/editor/palette/location_palette.cpp:272
+msgid "Error"
+msgstr "Fehler"
+
+#: src/editor/palette/location_palette.cpp:273
+msgid "Invalid location id"
+msgstr "Ungültige Gelände-ID"
+
+#: src/editor/palette/location_palette.cpp:280
 msgid "Delete"
 msgstr "Löschen"
 
@@ -510,6 +514,7 @@ msgstr "HG: "
 #: src/gui/dialogs/editor/custom_tod.cpp:137
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
+"Zwischenablage-Unterstützung nicht gefunden, wenden Sie sich an Ihren Manager"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:201
 msgid "Choose File"
@@ -517,7 +522,7 @@ msgstr "Datei auswählen"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:202
 msgid "Select"
-msgstr "Wähle"
+msgstr "Auswählen"
 
 #: src/gui/dialogs/editor/set_starting_position.cpp:88
 msgid "player^None"
@@ -526,6 +531,9 @@ msgstr "Keiner"
 #: src/gui/dialogs/editor/set_starting_position.cpp:101
 msgid "Player $player_number"
 msgstr "Spieler $player_number"
+
+#~ msgid "None"
+#~ msgstr "keine"
 
 #~ msgid "(New Map)"
 #~ msgstr "(Neue Karte)"

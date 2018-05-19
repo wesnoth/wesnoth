@@ -10,16 +10,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-27 01:20 UTC\n"
-"PO-Revision-Date: 2018-03-27 21:38+0800\n"
-"Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
+"POT-Creation-Date: 2018-05-16 03:33 UTC\n"
+"PO-Revision-Date: 2018-05-18 10:03+0900\n"
+"Last-Translator: qrqiuren <qrqiuren@users.noreply.github.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:9
@@ -173,8 +173,8 @@ msgstr "科纳德死亡"
 msgid "Death of Delfador"
 msgstr "德法多死亡"
 
-#. [side]: type=Fighter, id=Konrad
 #. [side]: type=Commander, id=Konrad
+#. [side]: type=Fighter, id=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:71
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:63
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:50
@@ -207,14 +207,14 @@ msgstr "德法多死亡"
 msgid "Konrad"
 msgstr "科纳德"
 
+#. [side]: type=Commander, id=Konrad
 #. [side]: type=Fighter, id=Konrad
 #. [side]: type=Elvish Champion, id=Galdrad
 #. [side]: type=Elvish Shyde, id=Chantal
-#. [side]: type=Commander, id=Konrad
-#. [side]: type=Grand Knight, id=Kaylan
-#. [side]: id=Relgorn, type=Dwarvish Lord
 #. [side]: id=Geldar, type=Dwarvish Lord
 #. [side]
+#. [side]: type=Grand Knight, id=Kaylan
+#. [side]: id=Relgorn, type=Dwarvish Lord
 #. [side]: type=Ancient Wose, id=Haralamdum
 #. [side]: type=Elvish Sylph, id=Bona-Melodia
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:80
@@ -259,26 +259,26 @@ msgstr "反抗军"
 msgid "Urug-Telfar"
 msgstr "乌鲁戈-特尔法"
 
+#. [side]: type=Orcish Warlord, id=Kojun Herolm
+#. [side]: type=Orcish Warrior, id=Mokho Kimer
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
-#. [side]: type=Orcish Warrior, id=Mokolo Qimur
-#. [side]: type=Orcish Warrior, id=Usadar Q'kai
-#. [side]: type=Orcish Warrior, id=Dwaba-Kukai
-#. [side]: type=Orcish Warrior, id=Managa'Gwin
-#. [side]: type=Orcish Warlord, id=Kojun Herolm
-#. [side]: type=Orcish Warrior, id=Mokho Kimer
-#. [side]: type=Orcish Warlord, id=Gaga-Breuk
 #. [side]: type=Orcish Warrior, id=Halgar Du'nar
 #. [side]: type=Orcish Warrior, id=Gorlak
 #. [side]: type=Orcish Slurbow, id=Knafa-Telfar
 #. [side]: type=Orcish Warlord, id=Urug-Tan
 #. [side]: type=Orcish Sovereign, id=Shuuga-Mool
+#. [side]: type=Orcish Warlord, id=Gaga-Breuk
+#. [side]: type=Orcish Warlord, id=Urag-Tifer
+#. [side]: type=Orcish Warrior, id=Usadar Q'kai
+#. [side]: type=Orcish Warrior, id=Dwaba-Kukai
+#. [side]: type=Orcish Warrior, id=Managa'Gwin
+#. [side]: type=Orcish Warrior, id=Mokolo Qimur
+#. [side]: type=Orcish Warlord, id=Kior-Dal
 #. [side]: type=Goblin Rouser
 #. [side]: type=Orcish Warlord
 #. [side]: type=Troll Warrior
-#. [side]: type=Orcish Warlord, id=Urag-Tifer
-#. [side]: type=Orcish Warlord, id=Kior-Dal
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:181
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:194
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:215
@@ -811,7 +811,7 @@ msgstr "能为您效力是我的荣幸，殿下。"
 msgid ""
 "Thank you for the help, friends. The ship should arrive soon, it will take "
 "you to Alduin."
-msgstr "感谢你们的协助，朋友们。船马上就到，它会把你们带到Alduin。"
+msgstr "感谢你们的协助，朋友们。船马上就到，它会把你们带到奥渡因岛。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:539
@@ -982,8 +982,8 @@ msgid ""
 "treaty and attack Elensefar!"
 msgstr ""
 "她已经控制了珍珠湾，那里长久以来都是人鱼的领地。她把人鱼都贬为奴隶，逼迫他们"
-"采集珍珠，这样她每天都能变得更加富有。更有谣言说她就要背信弃义，攻打"
-"Elensefar！"
+"采集珍珠，这样她每天都能变得更加富有。更有谣言说她就要背信弃义，攻打埃仁撒"
+"伐！"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:318
@@ -1011,8 +1011,8 @@ msgstr "珍珠湾"
 msgid "Defeat one enemy leader, and resist the other until turns run out"
 msgstr "击败一名敌方首领，并抵御另一名首领的攻击直到回合数耗尽"
 
-#. [objectives]
 #. [objective]: condition=win
+#. [objectives]
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:26
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:25
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:24
@@ -1474,18 +1474,18 @@ msgstr "击败玛夫·玛拉尔"
 msgid "Muff Malal"
 msgstr "玛夫·玛拉尔"
 
-#. [side]: type=Dark Sorcerer, id=Muff Malal
-#. [side]: id=Haf-Mal, type=Lich
-#. [side]: id=Jarmal-Gorg, type=Lich
 #. [side]: type=Lich, id=Galga
 #. [side]: type=Lich, id=Na-alga
 #. [side]: type=Lich, id=Selda-Mana
+#. [side]: id=Haf-Mal, type=Lich
+#. [side]: id=Jarmal-Gorg, type=Lich
 #. [side]: type=Death Knight, id=Clarustus
 #. [side]: type=Death Knight, id=Merlunius
 #. [side]: type=Lich, id=Aimucasur
 #. [side]: type=Death Knight, id=Secadius
 #. [side]: type=Death Knight, id=Dafeis
 #. [side]: type=Ancient Lich, id=Muff Argulak
+#. [side]: type=Dark Sorcerer, id=Muff Malal
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:79
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:131
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:148
@@ -1697,8 +1697,8 @@ msgstr "这座神庙似乎是空的。"
 msgid "Looks like there is somebody hidden in the temple."
 msgstr "看上去似乎有什么人躲在神庙里。"
 
-#. [unit]: id=Moremirmu, type=White Mage
 #. [unit]: id=Moremirmu, type=Mage of Light
+#. [unit]: id=Moremirmu, type=White Mage
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:301
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:259
 msgid "Moremirmu"
@@ -1763,7 +1763,7 @@ msgid ""
 "to do is wait for the ship to arrive, so we can make our way to Elensefar!"
 msgstr ""
 "我们已经从邪恶亡灵的手中夺回了这座岛的控制权！现在我们只需要等待一艘船的到"
-"来，这样就可以前往Elensefar了！"
+"来，这样就可以前往埃仁撒伐了！"
 
 #. [message]: speaker=Moremirmu
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:523
@@ -1815,9 +1815,9 @@ msgstr "阿伽德拉"
 #. [side]: type=Dark Sorcerer, id=Muff Jaanal
 #. [side]: id=Brugg, type=Troll Warrior
 #. [side]: id=Lionel, type=Death Knight
-#. [side]: type=Troll Warrior, id=Haaf-Garga
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Death Knight, id=Unan-Ka'tall
+#. [side]: type=Troll Warrior, id=Haaf-Garga
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:74
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:116
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:91
@@ -2284,7 +2284,7 @@ msgid ""
 "are providing what gold they can spare to help us swell our ranks with new "
 "recruits. Let it begin!"
 msgstr ""
-"那就让我们战斗吧！幸运的是，我们解放了Elensefar，他们便把多余的资金提供给我们"
+"那就让我们战斗吧！幸运的是，我们解放了埃仁撒伐，他们便把多余的资金提供给我们"
 "以征募更多的新兵。现在我们兵多粮足，开战吧！"
 
 #. [event]
@@ -2372,8 +2372,8 @@ msgstr "艾尔玛河口"
 msgid "Elbridge"
 msgstr "艾尔桥"
 
-#. [side]: type=Princess, id=Li'sar
 #. [event]
+#. [side]: type=Princess, id=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:87
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:68
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:751
@@ -2382,11 +2382,11 @@ msgid "Li’sar"
 msgstr "莉莎"
 
 #. [side]: type=Princess, id=Li'sar
-#. [side]: type=General, id=Robryn
-#. [side]: type=General, id=Honber
 #. [side]: type=General, id=Josephus
 #. [side]: type=Orcish Warlord, id=Dwar-Ni
 #. [side]: type=General, id=Malatus
+#. [side]: type=General, id=Robryn
+#. [side]: type=General, id=Honber
 #. [side]: type=Orcish Warlord, id=Haliel-Maga
 #. [side]: type=General, id=Heford
 #. [side]: type=Cavalier, id=Sir Kalm
@@ -2694,7 +2694,7 @@ msgid ""
 "us go quickly!"
 msgstr ""
 "韦诺的土地对我们来说已经不安全了。女王的军队散播在王国的各个角落。我们必须尽"
-"快前往北方大陆，渡过大河。快走吧！"
+"快前往北方大陆，渡过泰河。快走吧！"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:440
@@ -2816,8 +2816,8 @@ msgid ""
 "or Alduin before winter falls. We must therefore cross the great river and "
 "continue toward the land of the dwarves. Hurry, let us go!"
 msgstr ""
-"我们必须继续北上。在冬天降临之前我们已经赶不回Elensefar或者Alduin进行整顿。所"
-"以我们必须渡过大河，继续向矮人的国度前进。快点，我们走！"
+"我们必须继续北上。在冬天降临之前我们已经赶不回埃仁撒伐或者奥渡因岛进行整顿。"
+"所以我们必须渡过泰河，继续向矮人的国度前进。快点，我们走！"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:274
@@ -3069,7 +3069,7 @@ msgid ""
 "full of soldiers! We must cross here, and quickly!"
 msgstr ""
 "冬季马上就要来临，我们只剩下几天时间来渡河了，但最近的桥在上游很远的地方。如"
-"果冬天到来的时候我们还被困在大河南面，那就是自杀。艾什薇尔会像困住老鼠一样困"
+"果冬天到来的时候我们还被困在泰河南面，那就是自杀。艾什薇尔会像困住老鼠一样困"
 "住我们！看西边！艾什薇尔有一个边境要塞，里面满是士兵！我们必须从那里过河，马"
 "上！"
 
@@ -3199,7 +3199,7 @@ msgid ""
 "distant thutter of orcish signal drums made the abundant pine forests "
 "nestled in rolling foothills both breathtaking and ominous."
 msgstr ""
-"大河的对岸，是几乎没有什么人类曾经涉足过的土地。远方偶尔会隐隐约约地传来兽人"
+"泰河的对岸，是几乎没有什么人类曾经涉足过的土地。远方偶尔会隐隐约约地传来兽人"
 "的号鼓声，令这藏身山麓之中的广袤松林变得很是惊险，让人有不祥的预感。"
 
 #. [part]
@@ -3367,7 +3367,7 @@ msgstr ""
 #. [scenario]: id=13_The_Dwarven_Doors
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:4
 msgid "The Dwarven Doors"
-msgstr "矮人国门"
+msgstr "矮人之门"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:28
@@ -4675,35 +4675,35 @@ msgid ""
 "right about now..."
 msgstr "我感觉到我们已经很接近权杖了；事实上，我们应该马上就能看到它了……"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:664
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:662
 msgid "I sense the path to the Sceptre is to the east of me."
 msgstr "我感觉到通往权杖之路在我的东方。"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:665
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:663
 msgid "I sense the path to the Sceptre is to the south-east of me."
 msgstr "我感觉到通往权杖之路在我的东南方。"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:666
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:664
 msgid "I sense the path to the Sceptre is to the south of me."
 msgstr "我感觉到通往权杖之路在我的南方。"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:667
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:665
 msgid "I sense the path to the Sceptre is to the south-west of me."
 msgstr "我感觉到通往权杖之路在我的西南方。"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:668
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:666
 msgid "I sense the path to the Sceptre is to the west of me."
 msgstr "我感觉到通往权杖之路在我的西方。"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:669
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:667
 msgid "I sense the path to the Sceptre is to the north-west of me."
 msgstr "我感觉到通往权杖之路在我的西北方。"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:670
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:668
 msgid "I sense the path to the Sceptre is to the north of me."
 msgstr "我感觉到通往权杖之路在我的北方。"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:671
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:669
 msgid "I sense the path to the Sceptre is to the north-east of me."
 msgstr "我感觉到通往权杖之路在我的东北方。"
 
@@ -4823,7 +4823,7 @@ msgid ""
 "your life."
 msgstr ""
 "不，我在想……我并不是真的想要杀死你。我已经拥有了我要拿走的东西，所以如果你发"
-"誓再也不到大河的南岸来，那我就会饶你一命。"
+"誓再也不到泰河的南岸来，那我就会饶你一命。"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:220
@@ -5916,7 +5916,7 @@ msgstr "就连我们人鱼都游不过去。通往东面的道路被堵塞了。
 msgid ""
 "Wait. What about the tributary which flows into the river from inside the "
 "mountain? There seems to be a cave..."
-msgstr "等等。从山里流出来汇入大河的那条支流怎么样？那里似乎有个洞穴……"
+msgstr "等等。从山里流出来汇入泰河的那条支流怎么样？那里似乎有个洞穴……"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:890
@@ -6009,9 +6009,9 @@ msgid "Your encampment will be dismantled after the first turn."
 msgstr "你的营地在第一回合后会被拆除。"
 
 #. [side]: type=Commander, id=Konrad
-#. [side]: type=Elvish Marshal, id=El'rien
 #. [side]: type=Elvish Lord, id=Uradredia
 #. [side]: type=Elvish Lady, id=Parandra
+#. [side]: type=Elvish Marshal, id=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:61
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:225
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:30
@@ -7559,7 +7559,7 @@ msgid ""
 "join your siege of Weldyn."
 msgstr ""
 "不，小崽子，你们也许会被削弱，但马上氏族是永恒的。不过，我可以向你承诺，如果"
-"你能够亲自击败我，那我个人将会加入你对Weldyn的围攻。"
+"你能够亲自击败我，那我个人将会加入你对维尔帝的围攻。"
 
 #. [message]: speaker=Sir Ruga
 #. [message]: speaker=Sir Daryn
@@ -8628,5 +8628,5 @@ msgid ""
 "Delfador raised the child Konrad under the protection of the Elves, watching "
 "sadly as Asheviere’s reign of terror over the land began..."
 msgstr ""
-"德法多逃到了埃森丛林，远在韦诺的西南边境之外。在精灵们的保护下，他将科纳德抚"
+"德法多逃到了艾森丛林，远在韦诺的西南边境之外。在精灵们的保护下，他将科纳德抚"
 "养长大。而与此同时，他只能悲哀地看着艾什薇尔的恐怖统治开始在这片土地上蔓延……"

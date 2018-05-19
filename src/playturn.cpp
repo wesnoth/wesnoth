@@ -292,7 +292,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			options.emplace_back(_("Save and abort game"));
 
 			t_vars["player"] = tm.current_player();
-			const std::string gettext_message =  VGETTEXT("$player has left the game. What do you want to do?", t_vars);
+			t_vars["side_drop"] = std::to_string(side_drop);
+			const std::string gettext_message =  VGETTEXT("$player who controlled side $side_drop has left the game. What do you want to do?", t_vars);
 			gui2::dialogs::simple_item_selector dlg("", gettext_message, options);
 			dlg.set_single_button(true);
 			dlg.show();

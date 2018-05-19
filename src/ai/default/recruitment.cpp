@@ -262,6 +262,10 @@ void recruitment::execute() {
 			if (!ufilt(*recall, map_location::null_location())) {
 				continue;
 			}
+			const double recall_value = recruitment::recall_unit_value(recall);
+			if (recall_value < 0) {
+				continue;  // Unit is not worth to get recalled.
+			}
 			data.recruits.insert(recall->type_id());
 			data.scores[recall->type_id()] = 0.0;
 			global_recruits.insert(recall->type_id());
@@ -474,6 +478,37 @@ action_result_ptr recruitment::execute_recruit(const std::string& type, data& le
  * If this value is less then the recall cost, we dismiss the unit.
  * The unit with the highest value will be returned.
  */
+
+double recruitment::recall_unit_value(const unit_const_ptr & recall_unit) const {
+	double average_cost_of_advanced_unit = 0;
+	int counter = 0;
+	for (const std::string& advancement : recall_unit->advances_to()) {
+		const unit_type* advancement_type = unit_types.find(advancement);
+		if (!advancement_type) {
+			continue;
+		}
+		average_cost_of_advanced_unit += advancement_type->cost();
+		++counter;
+	}
+	if (counter > 0) {
+		average_cost_of_advanced_unit /= counter;
+	} else {
+		// Unit don't have advancements. Use cost of unit itself.
+		average_cost_of_advanced_unit = recall_unit->cost();
+	}
+	double xp_quantity = static_cast<double>(recall_unit->experience()) /
+			recall_unit->max_experience();
+	double recall_value = recall_unit->cost() + xp_quantity * average_cost_of_advanced_unit;
+	int cost = current_team().recall_cost();
+	if (recall_unit->recall_cost() > -1) {
+		cost=recall_unit->recall_cost();
+	}
+	if (recall_value < cost) {
+		recall_value = -1;  // Unit is not worth to get recalled.
+	}
+	return recall_value;
+}
+
 const std::string* recruitment::get_appropriate_recall(const std::string& type,
 		const data& leader_data) const {
 	const std::string* best_recall_id = nullptr;
@@ -488,28 +523,7 @@ const std::string* recruitment::get_appropriate_recall(const std::string& type,
 			LOG_AI_RECRUITMENT << "Refused recall because of filter: " << recall_unit->id() << "\n";
 			continue;
 		}
-		double average_cost_of_advanced_unit = 0;
-		int counter = 0;
-		for (const std::string& advancement : recall_unit->advances_to()) {
-			const unit_type* advancement_type = unit_types.find(advancement);
-			if (!advancement_type) {
-				continue;
-			}
-			average_cost_of_advanced_unit += advancement_type->cost();
-			++counter;
-		}
-		if (counter > 0) {
-			average_cost_of_advanced_unit /= counter;
-		} else {
-			// Unit don't have advancements. Use cost of unit itself.
-			average_cost_of_advanced_unit = recall_unit->cost();
-		}
-		double xp_quantity = static_cast<double>(recall_unit->experience()) /
-				recall_unit->max_experience();
-		double recall_value = recall_unit->cost() + xp_quantity * average_cost_of_advanced_unit;
-		if (recall_value < current_team().recall_cost()) {
-			continue;  // Unit is not worth to get recalled.
-		}
+		const double recall_value = recruitment::recall_unit_value(recall_unit);
 		if (recall_value > best_recall_value) {
 			best_recall_id = &recall_unit->id();
 			best_recall_value = recall_value;

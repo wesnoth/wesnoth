@@ -175,9 +175,9 @@ void config_cache::read_cache(const std::string& file_path, config& cfg)
 
 					dir_checksum = filesystem::file_tree_checksum(checksum_cfg);
 				}
-			} catch(config::error&) {
+			} catch(const config::error&) {
 				ERR_CACHE << "cache checksum is corrupt" << std::endl;
-			} catch(filesystem::io_exception&) {
+			} catch(const filesystem::io_exception&) {
 				ERR_CACHE << "error reading cache checksum" << std::endl;
 			}
 		}
@@ -199,11 +199,11 @@ void config_cache::read_cache(const std::string& file_path, config& cfg)
 				}
 
 				return;
-			} catch(config::error& e) {
+			} catch(const config::error& e) {
 				ERR_CACHE << "cache " << fname << extension << " is corrupt. Loading from files: "<< e.message << std::endl;
-			} catch(filesystem::io_exception&) {
+			} catch(const filesystem::io_exception&) {
 				ERR_CACHE << "error reading cache " << fname << extension << ". Loading from files" << std::endl;
-			} catch (boost::iostreams::gzip_error& e) {
+			} catch (const boost::iostreams::gzip_error& e) {
 				//read_file -> ... -> read_gz can throw this exception.
 				ERR_CACHE << "cache " << fname << extension << " is corrupt. Error code: " << e.error() << std::endl;
 			}
@@ -227,7 +227,7 @@ void config_cache::read_cache(const std::string& file_path, config& cfg)
 
 			filesystem::data_tree_checksum().write(checksum_cfg);
 			write_file(fname_checksum, checksum_cfg);
-		} catch(filesystem::io_exception&) {
+		} catch(const filesystem::io_exception&) {
 			ERR_CACHE << "could not write to cache '" << fname << "'" << std::endl;
 		}
 

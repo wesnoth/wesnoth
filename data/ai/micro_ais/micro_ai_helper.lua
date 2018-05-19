@@ -39,9 +39,9 @@ function micro_ai_helper.add_CAs(side, ca_id_core, CA_parms, CA_cfg)
     while id_found do -- This is really just a precaution
         id_found = false
 
-        for ai_tag in H.child_range(wesnoth.sides[side].__cfg, 'ai') do
-            for stage in H.child_range(ai_tag, 'stage') do
-                for ca in H.child_range(stage, 'candidate_action') do
+        for ai_tag in wml.child_range(wesnoth.sides[side].__cfg, 'ai') do
+            for stage in wml.child_range(ai_tag, 'stage') do
+                for ca in wml.child_range(stage, 'candidate_action') do
                     if string.find(ca.name, ai_id .. '_') then
                         id_found = true
                         break
@@ -54,10 +54,10 @@ function micro_ai_helper.add_CAs(side, ca_id_core, CA_parms, CA_cfg)
         -- AI's data variable. However, the MAI can be changed while it is not
         -- the AI's turn, when this is not possible. So instead, we check for the
         -- existence of such tags and make sure we are using a different ai_id.
-        for ai_tag in H.child_range(wesnoth.sides[side].__cfg, 'ai') do
-            for engine in H.child_range(ai_tag, 'engine') do
-                for data in H.child_range(engine, 'data') do
-                    for mai in H.child_range(data, 'micro_ai') do
+        for ai_tag in wml.child_range(wesnoth.sides[side].__cfg, 'ai') do
+            for engine in wml.child_range(ai_tag, 'engine') do
+                for data in wml.child_range(engine, 'data') do
+                    for mai in wml.child_range(data, 'micro_ai') do
                         if (mai.ai_id == ai_id) then
                             id_found = true
                             break
@@ -169,10 +169,10 @@ function micro_ai_helper.micro_ai_setup(cfg, CA_parms, required_keys, optional_k
     for _,v in pairs(required_keys) do
         if v:match('%[[a-zA-Z0-9_]+%]')  then
             v = v:sub(2,-2)
-            if not H.get_child(cfg, v) then
+            if not wml.get_child(cfg, v) then
                 H.wml_error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: [" .. v .. "]")
             end
-            for child in H.child_range(cfg, v) do
+            for child in wml.child_range(cfg, v) do
                 table.insert(CA_cfg, T[v](child))
             end
         else
@@ -187,7 +187,7 @@ function micro_ai_helper.micro_ai_setup(cfg, CA_parms, required_keys, optional_k
     for _,v in pairs(optional_keys) do
         if v:match('%[[a-zA-Z0-9_]+%]')  then
             v = v:sub(2,-2)
-            for child in H.child_range(cfg, v) do
+            for child in wml.child_range(cfg, v) do
                 table.insert(CA_cfg, T[v](child))
             end
         else

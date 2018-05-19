@@ -191,6 +191,8 @@ public:
 		return nullptr; // No Lua kernel in the editor.
 	}
 
+	// TODO: Make this private with an accessor or something
+	class location_palette* locs_;
 private:
 	/** init available random map generators */
 	void init_map_generators(const config& game_config);

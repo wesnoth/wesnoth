@@ -23,8 +23,6 @@ return {
         end
         math.randomseed(os.time())
 
-        local H = wesnoth.require "helper"
-        local W = H.set_wml_action_metatable {}
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
         local LS = wesnoth.require "location_set"
         local M = wesnoth.map
@@ -60,10 +58,10 @@ return {
                 random_gender = false
             }
             -- Find the best regeneration ability and use it to estimate hp regained by regeneration
-            local abilities = H.get_child(unit.__cfg, "abilities")
+            local abilities = wml.get_child(unit.__cfg, "abilities")
             local regen_amount = 0
             if abilities then
-                for regen in H.child_range(abilities, "regenerate") do
+                for regen in wml.child_range(abilities, "regenerate") do
                     if regen.value > regen_amount then
                         regen_amount = regen.value
                     end
@@ -121,21 +119,21 @@ return {
                 -- This may be rectifiable by looking at retaliation damage as well.
                 local steadfast = false
 
-                for attack in H.child_range(wesnoth.unit_types[attacker.type].__cfg, "attack") do
+                for attack in wml.child_range(wesnoth.unit_types[attacker.type].__cfg, "attack") do
                     local defense = defender_defense
                     local poison = false
                     local damage_multiplier = 1
                     local damage_bonus = 0
                     local weapon_damage = attack.damage
 
-                    for special in H.child_range(attack, 'specials') do
+                    for special in wml.child_range(attack, 'specials') do
                         local mod
-                        if H.get_child(special, 'poison') and can_poison then
+                        if wml.get_child(special, 'poison') and can_poison then
                             poison = true
                         end
 
                         -- Handle marksman and magical
-                        mod = H.get_child(special, 'chance_to_hit')
+                        mod = wml.get_child(special, 'chance_to_hit')
                         if mod then
                             if mod.value then
                                 if mod.cumulative then
@@ -157,7 +155,7 @@ return {
                         end
 
                         -- Handle most damage specials (assumes all are cumulative)
-                        mod = H.get_child(special, 'damage')
+                        mod = wml.get_child(special, 'damage')
                         if mod and mod.active_on ~= "defense" then
                             local special_multiplier = 1
                             local special_bonus = 0
@@ -195,10 +193,10 @@ return {
 
                     -- Handle drain for defender
                     local drain_recovery = 0
-                    for defender_attack in H.child_range(defender.__cfg, 'attack') do
+                    for defender_attack in wml.child_range(defender.__cfg, 'attack') do
                         if (defender_attack.range == attack.range) then
-                            for special in H.child_range(defender_attack, 'specials') do
-                                if H.get_child(special, 'drains') and drainable(attacker) then
+                            for special in wml.child_range(defender_attack, 'specials') do
+                                if wml.get_child(special, 'drains') and drainable(attacker) then
                                     -- TODO: calculate chance to hit
                                     -- currently assumes 50% chance to hit using supplied constant
                                     local attacker_resistance = wesnoth.unit_resistance(attacker, defender_attack.type)
@@ -293,9 +291,9 @@ return {
         end
 
         function can_slow(unit)
-            for defender_attack in H.child_range(unit.__cfg, 'attack') do
-                for special in H.child_range(defender_attack, 'specials') do
-                    if H.get_child(special, 'slow') then
+            for defender_attack in wml.child_range(unit.__cfg, 'attack') do
+                for special in wml.child_range(defender_attack, 'specials') do
+                    if wml.get_child(special, 'slow') then
                         return true
                     end
                 end
@@ -443,7 +441,7 @@ return {
         end
 
         function ai_cas:recruit_rushers_exec()
-            if AH.show_messages() then W.message { speaker = 'narrator', message = 'Recruiting' } end
+            if AH.show_messages() then wesnoth.wml_actions.message { speaker = 'narrator', message = 'Recruiting' } end
 
             local enemy_counts = recruit_data.recruit.enemy_counts
             local enemy_types = recruit_data.recruit.enemy_types
@@ -936,7 +934,7 @@ return {
             local test_units, num_recruits = {}, 0
             local movetypes = {}
             for x,id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
-                local custom_movement = H.get_child(wesnoth.unit_types[id].__cfg, "movement_costs")
+                local custom_movement = wml.get_child(wesnoth.unit_types[id].__cfg, "movement_costs")
                 local movetype = wesnoth.unit_types[id].__cfg.movement_type
                 if custom_movement
                 or (not movetypes[movetype])

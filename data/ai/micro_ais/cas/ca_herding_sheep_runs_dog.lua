@@ -1,12 +1,11 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local M = wesnoth.map
 
 local function get_next_sheep(cfg)
     local sheep = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", H.get_child(cfg, "filter_second") },
-        { "filter_adjacent", { side = wesnoth.current.side, { "and", H.get_child(cfg, "filter") } } }
+        { "and", wml.get_child(cfg, "filter_second") },
+        { "filter_adjacent", { side = wesnoth.current.side, { "and", wml.get_child(cfg, "filter") } } }
     }
     return sheep[1]
 end
@@ -24,7 +23,7 @@ function ca_herding_sheep_runs_dog:execution(cfg)
     local sheep = get_next_sheep(cfg)
 
     -- Get the first dog that the sheep is adjacent to
-    local dog = wesnoth.get_units { side = wesnoth.current.side, { "and", H.get_child(cfg, "filter") },
+    local dog = wesnoth.get_units { side = wesnoth.current.side, { "and", wml.get_child(cfg, "filter") },
         { "filter_adjacent", { x = sheep.x, y = sheep.y } }
     }[1]
 

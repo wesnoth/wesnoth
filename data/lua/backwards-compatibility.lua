@@ -8,5 +8,5 @@ wesnoth.set_music = wesnoth.deprecate_api('wesnoth.set_music', 'wesnoth.music_li
 -- which also provides "constness" of the passed wml object from the point of view of the caller.
 -- So please don't remove since it's not deprecated.
 function wesnoth.fire(name, cfg)
-	wesnoth.wml_actions[name](wesnoth.tovconfig(cfg or {}))
+	wesnoth.wml_actions[name](wml.tovconfig(cfg or {}))
 end

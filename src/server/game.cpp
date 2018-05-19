@@ -636,11 +636,11 @@ void game::change_controller(
 	simple_wml::document response;
 	simple_wml::node& change = response.root().add_child("change_controller");
 
-	change.set_attr("side", side.c_str());
-	change.set_attr("player", player_name.c_str());
+	change.set_attr_dup("side", side.c_str());
+	change.set_attr_dup("player", player_name.c_str());
 
 	// Tell everyone but the new player that this side's controller changed.
-	change.set_attr("controller", side_controllers_[side_index].to_cstring());
+	change.set_attr_dup("controller", side_controllers_[side_index].to_cstring());
 	change.set_attr("is_local", "no");
 
 	send_data(response, sock);
@@ -1066,7 +1066,7 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr& user)
 			if(side_index < sides_.size()) {
 				simple_wml::document cfg;
 				std::string playername;
-				cfg.root().set_attr("side", std::to_string(side_index + 1).c_str());
+				cfg.root().set_attr_dup("side", std::to_string(side_index + 1).c_str());
 
 				// figure out who gets the surrendered side
 				if(owner_ == user) {
@@ -1075,7 +1075,7 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr& user)
 					playername = username(owner_);
 				}
 
-				cfg.root().set_attr("player", playername.c_str());
+				cfg.root().set_attr_dup("player", playername.c_str());
 				transfer_side_control(user, cfg.root());
 			}
 			send_and_record_server_message(username(user) + " has surrendered.");
@@ -1208,7 +1208,7 @@ void game::handle_controller_choice(const simple_wml::node& req)
 	simple_wml::node& command = turn.add_child("command");
 	simple_wml::node& change_controller_wml = command.add_child("change_controller_wml");
 
-	change_controller_wml.set_attr("controller", new_controller.to_cstring());
+	change_controller_wml.set_attr_dup("controller", new_controller.to_cstring());
 	change_controller_wml.set_attr("is_local", "yes");
 
 	command.set_attr("from_side", "server");
@@ -1528,10 +1528,15 @@ bool game::remove_player(const socket_ptr& player, const bool disconnect, const 
 		// Check whether the host is actually a player and make him one if not.
 		if(!is_player(owner_)) {
 			DBG_GAME << "making the owner a player...\n";
-			player_connections_.find(owner_)->info().set_status(player::PLAYING);
-			observers_.erase(std::remove(observers_.begin(), observers_.end(), owner_), observers_.end());
-			players_.push_back(owner_);
-			send_observerquit(owner_);
+			auto owner_iter = player_connections_.find(owner_);
+			if(owner_iter == player_connections_.end())
+				ERR_GAME << "game owner " << client_address(owner_) << "is not in player_connections_\n";
+			else {
+				owner_iter->info().set_status(player::PLAYING);
+				observers_.erase(std::remove(observers_.begin(), observers_.end(), owner_), observers_.end());
+				players_.push_back(owner_);
+				send_observerquit(owner_);
+			}
 		}
 
 		// send the host a notification of removal of this side
@@ -1540,8 +1545,8 @@ bool game::remove_player(const socket_ptr& player, const bool disconnect, const 
 		simple_wml::document drop;
 		auto& node_side_drop = drop.root().add_child("side_drop");
 
-		node_side_drop.set_attr("side_num", side_drop.c_str());
-		node_side_drop.set_attr("controller", side_controllers_[side_index].to_cstring());
+		node_side_drop.set_attr_dup("side_num", side_drop.c_str());
+		node_side_drop.set_attr_dup("controller", side_controllers_[side_index].to_cstring());
 
 		DBG_GAME << "*** sending side drop: \n" << drop.output() << std::endl;
 
@@ -1576,7 +1581,7 @@ void game::send_user_list(const socket_ptr& exclude) const
 
 			// Don't need to duplicate pl->info().name().c_str() because the
 			// document will be destroyed by the end of the function
-			user.set_attr("name", pl->info().name().c_str());
+			user.set_attr_dup("name", pl->info().name().c_str());
 			user.set_attr("host", is_owner(user_ptr) ? "yes" : "no");
 			user.set_attr("observer", is_observer(user_ptr) ? "yes" : "no");
 		}
@@ -1736,7 +1741,7 @@ void game::send_observerquit(const socket_ptr& observer) const
 	// Don't need to dup the attribute because this document is short-lived.
 	observer_quit.root()
 		.add_child("observer_quit")
-		.set_attr("name", player_connections_.find(observer)->info().name().c_str());
+		.set_attr_dup("name", player_connections_.find(observer)->info().name().c_str());
 
 	send_data(observer_quit, observer);
 }
@@ -1763,7 +1768,7 @@ void game::send_history(const socket_ptr& socket) const
 
 		history_.clear();
 		history_.push_back(doc);
-	} catch(simple_wml::error& e) {
+	} catch(const simple_wml::error& e) {
 		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message << std::endl;
 	}
 }
@@ -1848,7 +1853,7 @@ void game::save_replay()
 		if(!os->good()) {
 			ERR_GAME << "Could not save replay! (" << filename << ")" << std::endl;
 		}
-	} catch(simple_wml::error& e) {
+	} catch(const simple_wml::error& e) {
 		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message << std::endl;
 	}
 }

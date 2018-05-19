@@ -172,6 +172,9 @@ void drop_down_menu::pre_show(window& window)
 	window.connect_signal<event::SDL_LEFT_BUTTON_UP>(
 		std::bind(&click_callback, std::ref(window), keep_open_, _3, _4, _5), event::dispatcher::front_child);
 
+	window.connect_signal<event::SDL_RIGHT_BUTTON_UP>(
+		std::bind(&click_callback, std::ref(window), keep_open_, _3, _4, _5), event::dispatcher::front_child);
+
 	// Handle embedded button toggling.
 	// For some reason this works as a listbox value callback but don't ask me why.
 	// - vultraz, 2017-02-17

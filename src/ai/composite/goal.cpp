@@ -334,7 +334,7 @@ void lua_goal::add_targets(std::back_insert_iterator< std::vector< target >> tar
 		{
 			*target_list = tg;
 		}
-	} catch(bad_enum_cast& e) {
+	} catch(const bad_enum_cast& e) {
 		ERR_AI_GOAL << "A Lua goal returned a target of an unknown type (\"" << e.value() << "\"; unfortunately, the engine cannot recover from this error. As a result, all targets returned by the goal have been lost.\n";
 	}
 

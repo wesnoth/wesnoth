@@ -148,7 +148,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 	config addon_data;
 	try {
 		archive_addon(id, addon_data);
-	} catch(utf8::invalid_utf8_exception&){
+	} catch(const utf8::invalid_utf8_exception&){
 		this->last_error_ =
 			VGETTEXT("The add-on <i>$addon_title</i> has a file or directory "
 				"containing invalid characters and cannot be published.", i18n_symbols);

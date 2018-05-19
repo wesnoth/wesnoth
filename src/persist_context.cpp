@@ -39,7 +39,7 @@ void persist_file_context::load()
 		if (!(file_stream->fail())) {
 			try {
 				read(cfg_,*file_stream);
-			} catch (config::error &err) {
+			} catch (const config::error &err) {
 				LOG_PERSIST << err.message << std::endl;
 			}
 		}

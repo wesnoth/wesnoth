@@ -6,8 +6,6 @@ return {
 
         -- More generic grunt rush (and can, in fact, be used with other unit types as well)
 
-        local H = wesnoth.require "helper"
-        local W = H.set_wml_action_metatable {}
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
         local BC = wesnoth.require "ai/lua/battle_calcs.lua"
         local LS = wesnoth.require "location_set"
@@ -256,7 +254,7 @@ return {
             local leader = wesnoth.get_units { side = wesnoth.current.side, canrecruit = 'yes' }[1]
 
             if AH.print_exec() then print_time('   Executing castle_switch CA') end
-            if AH.show_messages() then W.message { speaker = leader.id, message = 'Switching castles' } end
+            if AH.show_messages() then wesnoth.wml_actions.message { speaker = leader.id, message = 'Switching castles' } end
 
             AH.checked_move(ai, leader, self.data.leader_target[1], self.data.leader_target[2])
             self.data.leader_target = nil
@@ -395,7 +393,7 @@ return {
 
         function generic_rush:grab_villages_exec()
             if AH.print_exec() then print_time('   Executing grab_villages CA') end
-            if AH.show_messages() then W.message { speaker = self.data.unit.id, message = 'Grab villages' } end
+            if AH.show_messages() then wesnoth.wml_actions.message { speaker = self.data.unit.id, message = 'Grab villages' } end
 
             AH.movefull_stopunit(ai, self.data.unit, self.data.village)
             self.data.unit, self.data.village = nil, nil
@@ -492,7 +490,7 @@ return {
             local is_poisoner, poison_weapon = AH.has_weapon_special(attacker, "poison")
 
             if AH.print_exec() then print_time('   Executing spread_poison CA') end
-            if AH.show_messages() then W.message { speaker = attacker.id, message = 'Poison attack' } end
+            if AH.show_messages() then wesnoth.wml_actions.message { speaker = attacker.id, message = 'Poison attack' } end
 
             AH.robust_move_and_attack(ai, attacker, self.data.attack.dst, self.data.attack.target, { weapon = poison_weapon })
 

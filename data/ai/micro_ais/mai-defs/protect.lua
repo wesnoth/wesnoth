@@ -11,7 +11,7 @@ function wesnoth.micro_ais.protect_unit(cfg)
 	}
 
 	local unit_ids = {}
-	for u in H.child_range(cfg, "unit") do
+	for u in wml.child_range(cfg, "unit") do
 		if not u.id then
 			H.wml_error("Protect Unit Micro AI missing id key in [unit] tag")
 		end

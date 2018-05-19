@@ -169,7 +169,7 @@ config vconfig::get_parsed_config() const
 			{
 				res.add_child(name);
 			}
-			catch(recursion_error &err) {
+			catch(const recursion_error &err) {
 				vconfig_recursion.erase(vname);
 				WRN_NG << err.message << std::endl;
 				if(vconfig_recursion.empty()) {

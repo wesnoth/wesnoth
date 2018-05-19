@@ -54,10 +54,10 @@ std::ostream& attack::print(std::ostream& s) const
 
 attack::attack(size_t team_index, bool hidden, unit& u, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
-	: move(team_index, hidden, u, route, arrow, fake_unit),
+	: move(team_index, hidden, u, route, arrow, std::move(fake_unit)),
 	target_hex_(target_hex),
 	weapon_choice_(weapon_choice),
-	attack_movement_cost_(get_unit()->attacks()[weapon_choice_].movement_used()),
+	attack_movement_cost_(u.attacks()[weapon_choice_].movement_used()),
 	temp_movement_subtracted_(0)
 {
 	this->init();
@@ -79,6 +79,7 @@ attack::attack(const config& cfg, bool hidden)
 		throw action::ctor_err("attack: Invalid weapon_choice_");
 
 	// Construct attack_movement_cost_
+	assert(get_unit());
 	attack_movement_cost_ = get_unit()->attacks()[weapon_choice_].movement_used();
 
 	this->init();
@@ -138,7 +139,7 @@ void attack::execute(bool& success, bool& complete)
 
 	//check that attacking unit is still alive, if not, consider the attack a failure
 	unit_map::const_iterator survivor = resources::gameboard->units().find(get_dest_hex());
-	if(!survivor.valid() || survivor->id() != unit_id_)
+	if(!survivor.valid() || (!unit_id_.empty() && (survivor->id() != unit_id_)))
 	{
 		success = false;
 	}

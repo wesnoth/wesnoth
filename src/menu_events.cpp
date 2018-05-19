@@ -188,7 +188,7 @@ void menu_handler::save_map()
 	try {
 		filesystem::write_file(dlg.path(), map().write());
 		gui2::show_transient_message("", _("Map saved."));
-	} catch(filesystem::io_exception& e) {
+	} catch(const filesystem::io_exception& e) {
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
 		const std::string msg = VGETTEXT("Could not save the map: $msg", symbols);
@@ -281,7 +281,8 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 	dlg.show();
 
 	if(dlg.get_retval() == gui2::retval::OK) {
-		do_recruit(sample_units[dlg.get_selected_index()]->id(), side_num, last_hex);
+		map_location recruit_hex = last_hex;
+		do_recruit(sample_units[dlg.get_selected_index()]->id(), side_num, recruit_hex);
 	}
 }
 
@@ -289,16 +290,17 @@ void menu_handler::repeat_recruit(int side_num, const map_location& last_hex)
 {
 	const std::string& last_recruit = board().get_team(side_num).last_recruit();
 	if(last_recruit.empty() == false) {
-		do_recruit(last_recruit, side_num, last_hex);
+		map_location recruit_hex = last_hex;
+		do_recruit(last_recruit, side_num, recruit_hex);
 	}
 }
 
-bool menu_handler::do_recruit(const std::string& name, int side_num, const map_location& last_hex)
+bool menu_handler::do_recruit(const std::string& name, int side_num, map_location& loc)
 {
 	team& current_team = board().get_team(side_num);
 
 	// search for the unit to be recruited in recruits
-	if(!utils::contains(actions::get_recruits(side_num, last_hex), name)) {
+	if(!utils::contains(actions::get_recruits(side_num, loc), name)) {
 		return false;
 	}
 
@@ -316,7 +318,6 @@ bool menu_handler::do_recruit(const std::string& name, int side_num, const map_l
 	current_team.last_recruit(name);
 	const events::command_disabler disable_commands;
 
-	map_location loc = last_hex;
 	map_location recruited_from = map_location::null_location();
 
 	std::string msg;
@@ -1517,7 +1518,7 @@ void console_handler::do_control()
 	unsigned int side_num;
 	try {
 		side_num = lexical_cast<unsigned int>(side);
-	} catch(bad_lexical_cast&) {
+	} catch(const bad_lexical_cast&) {
 		const auto it_t = std::find_if(
 				resources::gameboard->teams().begin(), resources::gameboard->teams().end(), save_id_matches(side));
 		if(it_t == resources::gameboard->teams().end()) {
@@ -1547,7 +1548,7 @@ void console_handler::do_controller()
 	unsigned int side_num;
 	try {
 		side_num = lexical_cast<unsigned int>(side);
-	} catch(bad_lexical_cast&) {
+	} catch(const bad_lexical_cast&) {
 		utils::string_map symbols;
 		symbols["side"] = side;
 		command_failed(VGETTEXT("Can't query control of invalid side: '$side'.", symbols));
@@ -1956,7 +1957,7 @@ void menu_handler::do_ai_formula(const std::string& str, int side_num, mouse_han
 {
 	try {
 		add_chat_message(time(nullptr), "wfl", 0, ai::manager::get_singleton().evaluate_command(side_num, str));
-	} catch(wfl::formula_error&) {
+	} catch(const wfl::formula_error&) {
 	} catch(...) {
 		add_chat_message(time(nullptr), "wfl", 0, "UNKNOWN ERROR IN FORMULA");
 	}

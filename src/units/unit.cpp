@@ -22,13 +22,15 @@
 #include "color.hpp"
 #include "deprecation.hpp"
 #include "display_context.hpp"
+#include "filter_context.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp" // for VGETTEXT
 #include "game_board.hpp"			// for game_board
 #include "game_config.hpp"			// for add_color_info, etc
 #include "game_data.hpp"
 #include "game_errors.hpp"		   // for game_error
-#include "game_events/manager.hpp" // for add_events
+#include "game_events/manager.hpp" // for add_events, pump
+#include "game_events/pump.hpp" // for running
 #include "preferences/game.hpp"	// for encountered_units
 #include "gettext.hpp"			   // for N_
 #include "lexical_cast.hpp"
@@ -50,10 +52,12 @@
 #include "units/map.hpp"	   // for unit_map, etc
 #include "variable.hpp"		   // for vconfig, etc
 #include "version.hpp"
+#include "wml_exception.hpp"
 
 #include "utils/functional.hpp"
 #include <boost/dynamic_bitset.hpp>
 #include <boost/function_output_iterator.hpp>
+#include "lua/lauxlib.h"
 
 #ifdef _MSC_VER
 #pragma warning (push)
@@ -206,6 +210,8 @@ namespace
 	}
 } // end anon namespace
 
+map_location unit::dying_unit_loc;
+
 /**
  * Intrusive Pointer interface
  *
@@ -220,7 +226,6 @@ void intrusive_ptr_add_ref(const unit* u)
 	// or if you are sure that the refcounting system works
 	// then feel free to remove the next line
 	assert(u->ref_count_ < 100000);
-	LOG_UT << "Adding a reference to a unit: id = " << u->id() << ", uid = " << u->underlying_id() << ", refcount = " << u->ref_count() << " ptr:" << u << std::endl;
 	if(u->ref_count_ == 0) {
 		LOG_UT << "Freshly constructed" << std::endl;
 	}
@@ -231,10 +236,9 @@ void intrusive_ptr_release(const unit* u)
 {
 	assert(u->ref_count_ >= 1);
 	assert(u->ref_count_ < 100000); //See comment in intrusive_ptr_add_ref
-	LOG_UT << "Removing a reference to a unit: id = " << u->id() << ", uid = " << u->underlying_id() << ", refcount = " << u->ref_count() << " ptr:" << u << std::endl;
 	if(--(u->ref_count_) == 0)
 	{
-		LOG_UT << "Deleting a unit: id = " << u->id() << ", uid = " << u->underlying_id() << std::endl;
+		DBG_UT << "Deleting a unit: id = " << u->id() << ", uid = " << u->underlying_id() << std::endl;
 		delete u;
 	}
 }
@@ -631,6 +635,14 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	}
 
 	if(const config::attribute_value* v = cfg.get("hitpoints")) {
+		if(!(*v > 0 || loc_ == dying_unit_loc)) {
+			if(resources::game_events->pump().running()) {
+				// This function throws an exception, it doesn't return
+				luaL_error(resources::filter_con->get_lua_kernel()->get_state(), "Attempted to create a unit with negative HP");
+			} else {
+				VALIDATE(false, _("Unit with negative HP found"));
+			}
+		}
 		hit_points_ = *v;
 	} else {
 		hit_points_ = max_hit_points_;
@@ -727,7 +739,7 @@ unit::~unit()
 		if(itor != units_with_cache.end()) {
 			units_with_cache.erase(itor);
 		}
-	} catch(std::exception & e) {
+	} catch(const std::exception & e) {
 		ERR_UT << "Caught exception when destroying unit: " << e.what() << std::endl;
 	} catch(...) {}
 }
@@ -2382,6 +2394,15 @@ bool unit::is_visible_to_team(const team& team,const  display_context& dc, bool 
 
 	// allied planned moves are also visible under fog. (we assume that fake units on the map are always whiteboard markers)
 	if(!team.is_enemy(side()) && underlying_id_.is_fake()) {
+		return true;
+	}
+
+	// when the whiteboard planned unit map is applied, it uses moved the _real_ unit so
+	// underlying_id_.is_fake() will be false and the check above will not apply.
+	// TODO: improve this check so that is also works for allied planned units but without
+	//       breaking sp campaigns with allies under fog. We probably need an explicit flag
+	//       is_planned_ in unit that is set by the whiteboard.
+	if(team.side() == side()) {
 		return true;
 	}
 

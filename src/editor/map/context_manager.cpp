@@ -64,7 +64,8 @@ static const std::string get_menu_marker(const bool changed)
 }
 
 context_manager::context_manager(editor_display& gui, const config& game_config)
-	: gui_(gui)
+	: locs_(nullptr)
+	, gui_(gui)
 	, game_config_(game_config)
 	, default_dir_(preferences::editor::default_dir())
 	, map_generators_()
@@ -121,6 +122,19 @@ void context_manager::refresh_all()
 	gui_.invalidate_all();
 	get_map_context().clear_changed_locations();
 	gui_.recalculate_minimap();
+	if(locs_) {
+		for(const auto& loc : get_map_context().map().special_locations().left) {
+			locs_->add_item(loc.first);
+		}
+		if(!get_map_context().is_pure_map()) {
+			// If the scenario has more than 9 teams, add locations for them
+			// (First 9 teams are always in the list)
+			size_t n_teams = get_map_context().teams().size();
+			for(size_t i = 10; i <= n_teams; i++) {
+				locs_->add_item(std::to_string(i));
+			}
+		}
+	}
 }
 
 void context_manager::reload_map()
@@ -458,10 +472,10 @@ void context_manager::apply_mask_dialog()
 			map_context mask(game_config_, dlg.path());
 			editor_action_apply_mask a(mask.map());
 			perform_refresh(a);
-		} catch (editor_map_load_exception& e) {
+		} catch (const editor_map_load_exception& e) {
 			gui2::show_transient_message(_("Error loading mask"), e.what());
 			return;
-		} catch (editor_action_exception& e) {
+		} catch (const editor_action_exception& e) {
 			gui2::show_error_message(e.what());
 			return;
 		}
@@ -501,10 +515,10 @@ void context_manager::create_mask_to_dialog()
 			map_context map(game_config_, dlg.path());
 			editor_action_create_mask a(map.map());
 			perform_refresh(a);
-		} catch (editor_map_load_exception& e) {
+		} catch (const editor_map_load_exception& e) {
 			gui2::show_transient_message(_("Error loading map"), e.what());
 			return;
-		} catch (editor_action_exception& e) {
+		} catch (const editor_action_exception& e) {
 			gui2::show_error_message(e.what());
 			return;
 		}
@@ -694,7 +708,7 @@ void context_manager::generate_map_dialog()
 		map_generator* const map_generator = dialog.get_selected_map_generator();
 		try {
 			map_string = map_generator->create_map(dialog.get_seed());
-		} catch (mapgen_exception& e) {
+		} catch (const mapgen_exception& e) {
 			gui2::show_transient_message(_("Map creation failed."), e.what());
 			return;
 		}
@@ -821,7 +835,7 @@ bool context_manager::write_scenario(bool display_confirmation)
 		if(display_confirmation) {
 			gui2::show_transient_message("", _("Scenario saved."));
 		}
-	} catch (editor_map_save_exception& e) {
+	} catch (const editor_map_save_exception& e) {
 		gui2::show_transient_message("", e.what());
 		return false;
 	}
@@ -836,7 +850,7 @@ bool context_manager::write_map(bool display_confirmation)
 		if(display_confirmation) {
 			gui2::show_transient_message("", _("Map saved."));
 		}
-	} catch (editor_map_save_exception& e) {
+	} catch (const editor_map_save_exception& e) {
 		gui2::show_transient_message("", e.what());
 		return false;
 	}
@@ -911,7 +925,7 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 				}
 			}
 		}
-	} catch (editor_map_load_exception& e) {
+	} catch(const editor_map_load_exception& e) {
 		gui2::show_transient_message(_("Error loading map"), e.what());
 		return;
 	}

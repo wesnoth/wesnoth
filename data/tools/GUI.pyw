@@ -27,7 +27,7 @@ from tkinter.ttk import *
 # we need to know in what series we are
 # so set it in a constant and change it for every new series
 # it must be a string
-WESNOTH_SERIES="1.13"
+WESNOTH_SERIES="1.14"
 
 # get the location where the script is placed
 # we'll check later if this is a Wesnoth directory
@@ -1327,8 +1327,7 @@ Do you want to overwrite it?""".format(output_file))
 
 wmlxgettext won't be run""")
             return
-        else:
-            wmlxgettext_command_string.extend(["-o",self.wmlxgettext_tab.output_variable.get()])
+        wmlxgettext_command_string.extend(["-o",self.wmlxgettext_tab.output_variable.get()])
         if self.wmlxgettext_tab.warnall_variable.get():
             wmlxgettext_command_string.append("--warnall")
         if self.wmlxgettext_tab.fuzzy_variable.get():

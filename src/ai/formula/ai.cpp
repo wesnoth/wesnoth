@@ -86,7 +86,7 @@ ca_ptr formula_ai::load_candidate_action_from_config(const config& rc_action)
 		} else {
 			ERR_AI << "Unknown candidate action type: " << type << std::endl;
 		}
-	} catch(formula_error& e) {
+	} catch(const formula_error& e) {
 		handle_exception(e, "Error while registering candidate action '" + name + "'");
 	}
 	return new_ca;
@@ -114,12 +114,12 @@ formula_ai::formula_ai(readonly_context &context, const config &cfg)
 	LOG_AI << "creating new formula ai"<< std::endl;
 }
 
-void formula_ai::handle_exception(formula_error& e) const
+void formula_ai::handle_exception(const formula_error& e) const
 {
 	handle_exception(e, "Error while parsing formula");
 }
 
-void formula_ai::handle_exception(formula_error& e, const std::string& failed_operation) const
+void formula_ai::handle_exception(const formula_error& e, const std::string& failed_operation) const
 {
 	LOG_AI << failed_operation << ": " << e.formula << std::endl;
 	display_message(failed_operation + ": " + e.formula);
@@ -144,7 +144,7 @@ formula_ptr formula_ai::create_optional_formula(const std::string& formula_strin
 	try{
 		return formula::create_optional_formula(formula_string, &function_table_);
 	}
-	catch(formula_error& e) {
+	catch(const formula_error& e) {
 		handle_exception(e);
 		return wfl::formula_ptr();
 	}
@@ -656,7 +656,7 @@ void formula_ai::on_create(){
 					     create_optional_formula(func["precondition"]),
 					     args);
 		}
-		catch(formula_error& e) {
+		catch(const formula_error& e) {
 			handle_exception(e, "Error while registering function '" + name + "'");
 		}
 	}
@@ -752,7 +752,7 @@ config formula_ai::to_config() const
 		{
 			try {
 				str = i->second.serialize_to_string();
-			} catch (type_error&) {
+			} catch(const type_error&) {
 				WRN_AI << "variable ["<< i->first <<"] is not serializable - it will not be persisted across savegames"<<std::endl;
 				continue;
 			}

@@ -60,7 +60,7 @@ namespace soundsource
 class manager;
 }
 
-class controller_base : public video2::draw_layering
+class controller_base : public video2::draw_layering, public events::pump_monitor
 {
 public:
 	controller_base(const config& game_config);
@@ -147,12 +147,14 @@ protected:
 	 * Calls various virtual function to allow specialized
 	 * behavior of derived classes.
 	 */
-	void handle_event(const SDL_Event& event);
+	void handle_event(const SDL_Event& event) override;
 
-	void handle_window_event(const SDL_Event& /*event*/)
+	void handle_window_event(const SDL_Event& /*event*/) override
 	{
 		// No action by default
 	}
+
+	virtual void process(events::pump_info&) override;
 
 	/** Process keydown (only when the general map display does not have focus). */
 	virtual void process_focus_keydown_event(const SDL_Event& /*event*/)

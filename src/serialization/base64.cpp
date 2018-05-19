@@ -51,7 +51,8 @@ char itoa(unsigned value, const std::string& map)
 std::vector<uint8_t> generic_decode_be(utils::string_view in, const std::vector<int>& atoi_map)
 {
 	const int last_char = in.find_last_not_of("=");
-	const int length = last_char * 6 / 8;
+	const int num_chars = last_char + 1;
+	const int length = num_chars * 6 / 8;
 
 	std::vector<uint8_t> out;
 	out.reserve(length);
@@ -59,7 +60,12 @@ std::vector<uint8_t> generic_decode_be(utils::string_view in, const std::vector<
 	int val = 0, bits = -8;
 	for(unsigned char c: in) {
 		if(atoi_map[c] == -1) {
-			break; // Non-base64 character encountered. Should be =
+			// Non-base64 character encountered. Should be =
+			if(c != '='){
+				// If it's not a valid char, return an empty result
+				return {};
+			}
+			break;
 		}
 		val = (val<<6) + atoi_map[c];
 		bits += 6;
@@ -68,6 +74,9 @@ std::vector<uint8_t> generic_decode_be(utils::string_view in, const std::vector<
 			bits -= 8;
 			val &= 0xFFFF; // Prevent shifting bits off the left end, which is UB
 		}
+	}
+	if(static_cast<int>(out.size()) != length) {
+		return {};
 	}
 
 	return out;

@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/game_load.hpp"
 
+#include "desktop/open.hpp"
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
@@ -146,6 +147,10 @@ void game_load::pre_show(window& window)
 			find_widget<button>(&window, "delete", false),
 			std::bind(&game_load::delete_button_callback,
 					this, std::ref(window)));
+
+	connect_signal_mouse_left_click(
+		find_widget<button>(&window, "browse_saves_folder", false),
+		bind_void(&desktop::open_object, filesystem::get_saves_dir()));
 
 	display_savegame(window);
 }
@@ -338,7 +343,7 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 				str << _("Test scenario");
 				break;
 		}
-	} catch(bad_enum_cast&) {
+	} catch(const bad_enum_cast&) {
 		str << campaign_type;
 	}
 

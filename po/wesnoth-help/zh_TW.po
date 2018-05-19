@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-27 04:20+0300\n"
+"POT-Creation-Date: 2018-05-15 23:33-0400\n"
 "PO-Revision-Date: 2013-04-14 21:47+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -26,14 +26,12 @@ msgstr "地下"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:659
-#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:657
 #: data/core/macros/abilities.cfg:274
 msgid "berserk"
 msgstr "狂暴"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:661
-#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:659
 #: data/core/macros/abilities.cfg:275
 #, fuzzy
 #| msgid ""
@@ -50,14 +48,12 @@ msgstr ""
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:670
-#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:668
 #: data/core/macros/abilities.cfg:359
 msgid "magical"
 msgstr "魔法"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:672
-#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:670
 #: data/core/macros/abilities.cfg:360
 #, fuzzy
 #| msgid ""
@@ -70,28 +66,6 @@ msgid ""
 msgstr ""
 "魔法：\n"
 "無論目標防禦能力為何，此攻擊永遠有百分之七十的機會對敵人造成傷害。"
-
-#. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:679
-#: data/core/macros/abilities.cfg:404
-#, fuzzy
-#| msgid "firststrike"
-msgid "first strike"
-msgstr "先發制人"
-
-#. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:681
-#: data/core/macros/abilities.cfg:405
-#, fuzzy
-#| msgid ""
-#| "First Strike:\n"
-#| "This unit always strikes first with this attack, even if they are "
-#| "defending."
-msgid ""
-"This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"先發制人：\n"
-"即使在守勢之中，該單位永遠先攻擊敵人。"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -1244,7 +1218,7 @@ msgstr ""
 "          ◦ 荒原"
 
 #. [section]: id=schedule
-#: data/core/help.cfg:10
+#: data/core/help.cfg:14
 #, fuzzy
 #| msgid "Time of Day"
 msgid "Time of Day Schedule"
@@ -1252,66 +1226,66 @@ msgstr "時刻"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
-#: data/core/help.cfg:17 data/core/help.cfg:96
+#: data/core/help.cfg:21 data/core/help.cfg:99
 msgid "Introduction"
 msgstr "遊戲介紹"
 
 #. [section]: id=gameplay
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:23 data/core/help.cfg:168
+#: data/core/help.cfg:27 data/core/help.cfg:171
 msgid "Gameplay"
 msgstr "遊戲教學"
 
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:29 data/core/help.cfg:391
+#: data/core/help.cfg:33 data/core/help.cfg:394
 msgid "Traits"
 msgstr "特質"
 
 #. [section]: id=units
 #. [topic]: id=..units
-#: data/core/help.cfg:37 data/core/help.cfg:119
+#: data/core/help.cfg:41 data/core/help.cfg:122
 msgid "Units"
 msgstr "部隊"
 
 #. [section]: id=abilities_section
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:46 data/core/help.cfg:139
+#: data/core/help.cfg:50 data/core/help.cfg:142
 msgid "Abilities"
 msgstr "技能"
 
 #. [section]: id=weapon_specials
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:54 data/core/help.cfg:148
+#: data/core/help.cfg:58 data/core/help.cfg:151
 msgid "Weapon Specials"
 msgstr "專長"
 
 #. [section]: id=eras_section
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:62 data/core/help.cfg:128
+#: data/core/help.cfg:66 data/core/help.cfg:131
 msgid "Eras"
 msgstr ""
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:71 data/core/help.cfg:406
+#: data/core/help.cfg:74 data/core/help.cfg:409
 msgid "Terrains"
 msgstr "地形"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:79 data/core/help.cfg:459
+#: data/core/help.cfg:82 data/core/help.cfg:462
 msgid "Add-ons"
 msgstr ""
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:85 data/core/help.cfg:526
+#: data/core/help.cfg:88 data/core/help.cfg:529
 msgid "Commands"
 msgstr "指令"
 
 #. [topic]: id=..introduction
-#: data/core/help.cfg:97
+#: data/core/help.cfg:100
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -1345,12 +1319,12 @@ msgstr ""
 "戲。"
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:107
+#: data/core/help.cfg:110
 msgid "About the Game"
 msgstr "關於韋諾之戰"
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:108
+#: data/core/help.cfg:111
 msgid ""
 "The game takes place on a hex-based game field, where your units battle "
 "against those controlled by the computer, friends who each take turns on the "
@@ -1373,7 +1347,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..units
-#: data/core/help.cfg:120
+#: data/core/help.cfg:123
 msgid ""
 "This section will list all the units you discover as you explore the world "
 "of Wesnoth. When you see a new unit during a campaign or multiplayer "
@@ -1384,7 +1358,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:129
+#: data/core/help.cfg:132
 msgid ""
 "A faction is a collection of units and leaders. Factions are assigned to "
 "sides in multiplayer games.\n"
@@ -1392,7 +1366,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:131
+#: data/core/help.cfg:134
 msgid ""
 "An era is a collection of factions, intended to be played against one "
 "another. Besides the mainline eras that come with the game, many user-made "
@@ -1401,7 +1375,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:140
+#: data/core/help.cfg:143
 #, fuzzy
 #| msgid ""
 #| "Certain units have abilities that either directly affect other units, or "
@@ -1420,7 +1394,7 @@ msgstr ""
 "在狀態欄中。\n"
 
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:149
+#: data/core/help.cfg:152
 msgid ""
 "Some weapons have special features that increase the effectiveness of "
 "attacking with them. When you see a new weapon special during a campaign or "
@@ -1431,12 +1405,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:158
+#: data/core/help.cfg:161
 msgid "Unknown Unit"
 msgstr "未知的單位"
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:159
+#: data/core/help.cfg:162
 msgid ""
 "\n"
 "\n"
@@ -1448,7 +1422,7 @@ msgstr ""
 "目前不清楚這個士兵的資訊。只有在遇到這個士兵後才會知道他的資料。"
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:169
+#: data/core/help.cfg:172
 msgid ""
 "Wesnoth is comprised of a series of battles, called "
 "<italic>text='scenarios'</italic>, that pit your troops against the troops "
@@ -1471,7 +1445,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:176
+#: data/core/help.cfg:179
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid ""
@@ -1482,7 +1456,7 @@ msgid ""
 msgstr "<header>text='這個種族的單位'</header>"
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:176
+#: data/core/help.cfg:179
 #, fuzzy
 #| msgid ""
 #| "While playing, keep in mind that if you mouse-over many items in the "
@@ -1502,12 +1476,12 @@ msgstr ""
 "常有用。"
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:188
+#: data/core/help.cfg:191
 msgid "Victory and Defeat"
 msgstr "勝利和失敗"
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:189
+#: data/core/help.cfg:192
 msgid ""
 "\n"
 "\n"
@@ -1523,7 +1497,7 @@ msgstr ""
 "或是和其他玩家交談（如果在多人遊戲中）。然後才按下那個按鈕繼續。"
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:189
+#: data/core/help.cfg:192
 #, fuzzy
 #| msgid ""
 #| "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
@@ -1547,12 +1521,12 @@ msgstr ""
 "達指定地點，或者救人，或者解决一個迷題，或者與敵人對抗並堅守一定回合數。"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:198
+#: data/core/help.cfg:201
 msgid "Recruiting and Recalling"
 msgstr "招募與徵召"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:199
+#: data/core/help.cfg:202
 msgid ""
 "\n"
 "\n"
@@ -1568,7 +1542,7 @@ msgstr ""
 "總花費不能超出您所擁有的金幣數量。"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:199
+#: data/core/help.cfg:202
 #, fuzzy
 #| msgid ""
 #| "Each side begins with one leader in their keep. At the start of any "
@@ -1592,7 +1566,7 @@ msgid ""
 "from the menu or right-clicking on a hex and selecting <bold>text='Recruit'</"
 "bold>. This brings up the recruit menu, which lists units available for "
 "recruitment, along with their gold cost. Click on a unit to see its "
-"statistics, then press the OK button to recruit it."
+"statistics, then press the <bold>text='Recruit'</bold> button to recruit it."
 msgstr ""
 "遊戲開始時每一方的指揮官都會在城堡的主堡上。戰鬥開始之前或戰鬥過程中，您可能"
 "需要為部隊招募<ref>dst='..units' text='單位'</ref>。要想招募士兵，您必須讓指"
@@ -1603,7 +1577,7 @@ msgstr ""
 "單位可以查看他的資訊，然後點選招募按鈕就可招募。"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:201
+#: data/core/help.cfg:204
 msgid ""
 "\n"
 "\n"
@@ -1616,7 +1590,7 @@ msgstr ""
 "其單位數值影響。"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:203
+#: data/core/help.cfg:206
 msgid ""
 "\n"
 "\n"
@@ -1630,7 +1604,7 @@ msgstr ""
 "兵的清單。徵召一律花費20金幣。"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:205
+#: data/core/help.cfg:208
 msgid ""
 "\n"
 "\n"
@@ -1644,12 +1618,12 @@ msgstr ""
 "<ref>dst='income_and_upkeep' text='收入與支出'</ref>。"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:214
+#: data/core/help.cfg:217
 msgid "Income and Upkeep"
 msgstr "收入和支出"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:215
+#: data/core/help.cfg:218
 msgid ""
 "\n"
 "\n"
@@ -1668,7 +1642,7 @@ msgstr ""
 "下是詳細信息。"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:215
+#: data/core/help.cfg:218
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1680,7 +1654,7 @@ msgstr ""
 "italic> 和 <italic>text='支出'</italic>。"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:217
+#: data/core/help.cfg:220
 msgid ""
 "\n"
 "\n"
@@ -1699,7 +1673,7 @@ msgstr ""
 "您就得每回合支付2個金幣。"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:219
+#: data/core/help.cfg:222
 msgid ""
 "\n"
 "\n"
@@ -1713,7 +1687,7 @@ msgstr ""
 "將會是每回合10個金幣。"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:221
+#: data/core/help.cfg:224
 msgid ""
 "\n"
 "\n"
@@ -1733,12 +1707,12 @@ msgstr ""
 "袖。"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:230
+#: data/core/help.cfg:233
 msgid "Hitpoints and Experience"
 msgstr "生命值和經驗值"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:231
+#: data/core/help.cfg:234
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
 "the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
@@ -1751,7 +1725,7 @@ msgstr ""
 "單位一開始没有經驗值，必須與敵人戰鬥才可以獲得。"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:235
+#: data/core/help.cfg:238
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -1761,7 +1735,7 @@ msgstr ""
 "值）。"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:237
+#: data/core/help.cfg:240
 #, fuzzy
 #| msgid ""
 #| "The hitpoints are also indicated by an energy bar next to each unit, "
@@ -1779,14 +1753,14 @@ msgstr ""
 "text=升級</ref>時經驗條會顯示為白色。"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:244
+#: data/core/help.cfg:247
 #, fuzzy
 #| msgid "Advances to: "
 msgid "Advancement"
 msgstr "升級為： "
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:245
+#: data/core/help.cfg:248
 msgid ""
 "\n"
 "\n"
@@ -1801,7 +1775,7 @@ msgstr ""
 "足夠的經驗值就可立即升級，生命全滿。有些情况下，您還會遇到升級選項。"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:245
+#: data/core/help.cfg:248
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they’re fighting. If a unit kills another in "
@@ -1813,7 +1787,7 @@ msgstr ""
 "8點，2等級單位16點，3等級單位24點等等。"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:247
+#: data/core/help.cfg:250
 msgid ""
 "\n"
 "\n"
@@ -1838,12 +1812,12 @@ msgstr ""
 "變大，所以讓您的低等級單位升級一般會更有用處。"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:256
+#: data/core/help.cfg:259
 msgid "Movement"
 msgstr "移動"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:257
+#: data/core/help.cfg:260
 msgid ""
 "\n"
 "\n"
@@ -1866,7 +1840,7 @@ msgstr ""
 "<bold>text='單位描述'</bold>，然後查看<bold>text='地形影響'</bold>的部分。"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:257
+#: data/core/help.cfg:260
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -1891,7 +1865,7 @@ msgstr ""
 "位進入一個您還没有占領的村莊時也會花完所有移動數，但仍然能夠攻撃。"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:259
+#: data/core/help.cfg:262
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -1922,7 +1896,7 @@ msgstr ""
 "以忽視控制區域的效用。"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:261
+#: data/core/help.cfg:264
 msgid ""
 "\n"
 "\n"
@@ -1936,12 +1910,12 @@ msgstr ""
 "不影響對手移動的情况下，對手可以移動到的區域。"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:270
+#: data/core/help.cfg:273
 msgid "Shroud and Fog of War"
 msgstr "未探索區域和戰爭迷霧"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:271
+#: data/core/help.cfg:274
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The "
@@ -1966,12 +1940,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=combat
-#: data/core/help.cfg:280
+#: data/core/help.cfg:283
 msgid "Combat"
 msgstr "戰鬥"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:281
+#: data/core/help.cfg:284
 msgid ""
 "\n"
 "\n"
@@ -1982,7 +1956,7 @@ msgstr ""
 "<header>text='攻撃順序與次數'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:281
+#: data/core/help.cfg:284
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -2003,7 +1977,7 @@ msgstr ""
 "<italic>text='遠程'</italic>，武器通常是弓，矛和火球。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:283
+#: data/core/help.cfg:286
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2034,7 +2008,7 @@ msgstr ""
 "傷害，獸人步兵9-2的進攻代表他只能攻擊2次（但每次撃中敵人會造成9點傷害）。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:285
+#: data/core/help.cfg:288
 msgid ""
 "\n"
 "\n"
@@ -2045,7 +2019,7 @@ msgstr ""
 "<header>text='命中率'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:287
+#: data/core/help.cfg:290
 msgid ""
 "\n"
 "\n"
@@ -2066,7 +2040,7 @@ msgstr ""
 "幾率取决於攻撃者所處的地形。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:289
+#: data/core/help.cfg:292
 msgid ""
 "\n"
 "\n"
@@ -2083,7 +2057,7 @@ msgstr ""
 "形，且有70%的命中率，而精準射撃在進攻中也無視地形，且最少有60%的命中率。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:291
+#: data/core/help.cfg:294
 msgid ""
 "\n"
 "\n"
@@ -2094,7 +2068,7 @@ msgstr ""
 "<header>text=傷害</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:293
+#: data/core/help.cfg:296
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2126,7 +2100,7 @@ msgstr ""
 "在攻撃選單中選擇<bold>text='傷害計算'</bold>。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:295
+#: data/core/help.cfg:298
 msgid ""
 "\n"
 "\n"
@@ -2142,12 +2116,12 @@ msgstr ""
 "會使戰鬥中的進攻方和防守方都輸出雙倍的傷害。"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:303
+#: data/core/help.cfg:306
 msgid "Damage Types and Resistance"
 msgstr "傷害種類和抗性"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:304
+#: data/core/help.cfg:307
 msgid ""
 "\n"
 "\n"
@@ -2164,7 +2138,7 @@ msgstr ""
 "則被撃中時增加100%的傷害。"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:304
+#: data/core/help.cfg:307
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -2178,7 +2152,7 @@ msgstr ""
 "單位有著不同的抗性所以在遇到不同的攻擊類型時也會有不同的傷害。"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:306
+#: data/core/help.cfg:309
 msgid ""
 "\n"
 "\n"
@@ -2192,7 +2166,7 @@ msgstr ""
 "法攻擊。"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:308
+#: data/core/help.cfg:311
 msgid ""
 "\n"
 "\n"
@@ -2205,29 +2179,29 @@ msgstr ""
 "每次成功的攻撃至少會造成1點的傷害，即使防禦者對這種攻撃有100%的抗性。"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:316
+#: data/core/help.cfg:319
 msgid "Orbs"
 msgstr "行動圖示"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:317
+#: data/core/help.cfg:320
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
 msgstr "行動圖示位於士兵左上角，能量條上方當這個圖示顏色是："
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:319
+#: data/core/help.cfg:322
 msgid " green if it hasn’t moved this turn,"
 msgstr "綠色表示該單位這回合還沒有移動過，"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:320
+#: data/core/help.cfg:323
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr "黃色表示該單位已經移動過，但可以繼續移動或是攻擊，"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:321
+#: data/core/help.cfg:324
 #, fuzzy
 #| msgid ""
 #| " red if it can no longer move or attack, or the user ended the unit’s "
@@ -2237,24 +2211,24 @@ msgid ""
 msgstr "紅色表示該單位不能移動，或玩家已經結束了這一回合。"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:322
+#: data/core/help.cfg:325
 msgid " blue if the unit is an ally you do not control."
 msgstr "藍色表示該單位是您不能控制的同盟單位。"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:323
+#: data/core/help.cfg:326
 #, fuzzy
 #| msgid " Enemy units have no orb on top of their energy bar."
 msgid " Enemy units have no orb on top of their energy bar."
 msgstr "敵方單位的血條不會顯示行動圖示。"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:330
+#: data/core/help.cfg:333
 msgid "Time of Day"
 msgstr "時刻"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:331
+#: data/core/help.cfg:334
 #, fuzzy
 #| msgid ""
 #| "The time of day affects the damage of certain units as follows:\n"
@@ -2280,7 +2254,7 @@ msgstr ""
 "特殊單位的攻擊力在白天跟晚上都−25%。"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:336
+#: data/core/help.cfg:339
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2304,21 +2278,21 @@ msgstr ""
 #. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
-#: data/core/help.cfg:340 data/core/macros/schedules.cfg:14
+#: data/core/help.cfg:343 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "黎明"
 
 #. [topic]: id=time_of_day
 #. [time]: id=morning
-#: data/core/help.cfg:341 data/core/macros/schedules.cfg:26
+#: data/core/help.cfg:344 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "上午"
 
 #. [topic]: id=time_of_day
 #. [time]: id=afternoon
-#: data/core/help.cfg:342 data/core/macros/schedules.cfg:44
+#: data/core/help.cfg:345 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "下午"
@@ -2326,27 +2300,27 @@ msgstr "下午"
 #. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
-#: data/core/help.cfg:343 data/core/macros/schedules.cfg:53
+#: data/core/help.cfg:346 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "黄昏"
 
 #. [topic]: id=time_of_day
 #. [time]: id=first_watch
-#: data/core/help.cfg:344 data/core/macros/schedules.cfg:65
+#: data/core/help.cfg:347 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "夜晚"
 
 #. [topic]: id=time_of_day
 #. [time]: id=second_watch
-#: data/core/help.cfg:345 data/core/macros/schedules.cfg:89
+#: data/core/help.cfg:348 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
 msgstr "凌晨"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:347
+#: data/core/help.cfg:350
 #, fuzzy
 #| msgid ""
 #| "Keep in mind that some scenarios take place underground, where it is "
@@ -2357,26 +2331,26 @@ msgid ""
 msgstr "記住，有些場景是發生在地下的，那裏一直是晚上。"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:349
+#: data/core/help.cfg:352
 msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night.\n"
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:351
+#: data/core/help.cfg:354
 msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate."
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:358
+#: data/core/help.cfg:361
 msgid "Healing"
 msgstr "治療"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:359
+#: data/core/help.cfg:362
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2395,7 +2369,7 @@ msgstr ""
 "合恢復2點生命值。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:359
+#: data/core/help.cfg:362
 msgid ""
 "In combat, your units will inevitably take damage. There are several ways to "
 "heal your units. However, with the exception of resting, these do not stack; "
@@ -2403,7 +2377,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:361
+#: data/core/help.cfg:364
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2419,7 +2393,7 @@ msgstr ""
 "<italic>text='村莊'</italic>：每回合開始時在村莊中的單位可以恢復8點生命值。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:362
+#: data/core/help.cfg:365
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2436,7 +2410,7 @@ msgstr ""
 "復8點生命值。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:363
+#: data/core/help.cfg:366
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2457,7 +2431,7 @@ msgstr ""
 "ref>能力的單位每回合能恢復相鄰盟軍單位4點或8點的生命值，或阻止毒藥發作。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:364
+#: data/core/help.cfg:367
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2477,7 +2451,7 @@ msgstr ""
 "療為優先）。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:365
+#: data/core/help.cfg:368
 msgid ""
 "\n"
 "• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
@@ -2486,7 +2460,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:366
+#: data/core/help.cfg:369
 msgid ""
 "\n"
 "\n"
@@ -2500,7 +2474,7 @@ msgstr ""
 "會自動選擇最優治療方式。最後，單位能在過場時完全恢復生命值。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:368
+#: data/core/help.cfg:371
 msgid ""
 "\n"
 "\n"
@@ -2508,7 +2482,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:370
+#: data/core/help.cfg:373
 msgid ""
 "\n"
 "\n"
@@ -2520,12 +2494,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:378
+#: data/core/help.cfg:381
 msgid "Wrap Up"
 msgstr "總結"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:379
+#: data/core/help.cfg:382
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -2539,12 +2513,12 @@ msgstr ""
 "<italic>text='王位繼承者'</italic>這個戰役了。希望您玩得開心，祝您好運！"
 
 #. [topic]: id=license
-#: data/core/help.cfg:384
+#: data/core/help.cfg:387
 msgid "License"
 msgstr "授權"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:393
+#: data/core/help.cfg:396
 #, fuzzy
 #| msgid ""
 #| "Most units have two traits. However, undead units are assigned the single "
@@ -2565,7 +2539,7 @@ msgstr ""
 "位會隨機獲得特質。"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:393
+#: data/core/help.cfg:396
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
@@ -2574,7 +2548,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:395
+#: data/core/help.cfg:398
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2599,7 +2573,7 @@ msgstr ""
 "text='強壯'</ref>。"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:397
+#: data/core/help.cfg:400
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2627,7 +2601,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:407
+#: data/core/help.cfg:410
 msgid ""
 "\n"
 "\n"
@@ -2636,7 +2610,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:407
+#: data/core/help.cfg:410
 #, fuzzy
 #| msgid ""
 #| "Game maps feature a variety of terrains that affect both unit movement "
@@ -2651,7 +2625,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:409
+#: data/core/help.cfg:412
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2667,7 +2641,7 @@ msgstr ""
 "<header>text='命中率'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:411
+#: data/core/help.cfg:414
 msgid ""
 "\n"
 "\n"
@@ -2678,7 +2652,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:415
+#: data/core/help.cfg:418
 msgid ""
 "\n"
 "\n"
@@ -2688,7 +2662,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:417
+#: data/core/help.cfg:420
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2704,7 +2678,7 @@ msgstr ""
 "<header>text='命中率'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:419
+#: data/core/help.cfg:422
 msgid ""
 "\n"
 "\n"
@@ -2718,7 +2692,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:423
+#: data/core/help.cfg:426
 msgid ""
 "\n"
 "\n"
@@ -2733,7 +2707,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:427
+#: data/core/help.cfg:430
 msgid ""
 "\n"
 "\n"
@@ -2744,7 +2718,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:431
+#: data/core/help.cfg:434
 msgid ""
 "\n"
 "\n"
@@ -2755,7 +2729,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:435
+#: data/core/help.cfg:438
 msgid ""
 "\n"
 "\n"
@@ -2765,7 +2739,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:437
+#: data/core/help.cfg:440
 msgid ""
 "\n"
 "\n"
@@ -2776,7 +2750,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:439
+#: data/core/help.cfg:442
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2792,7 +2766,7 @@ msgstr ""
 "<header>text='命中率'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:441
+#: data/core/help.cfg:444
 msgid ""
 "\n"
 "\n"
@@ -2802,7 +2776,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:443
+#: data/core/help.cfg:446
 msgid ""
 "\n"
 "\n"
@@ -2813,7 +2787,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:445
+#: data/core/help.cfg:448
 msgid ""
 "\n"
 "\n"
@@ -2822,7 +2796,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:447
+#: data/core/help.cfg:450
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2839,7 +2813,7 @@ msgstr ""
 "<header>text='命中率'</header>"
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:460
+#: data/core/help.cfg:463
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -2848,12 +2822,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:470
+#: data/core/help.cfg:473
 msgid "Using Add-ons"
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:471
+#: data/core/help.cfg:474
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2869,14 +2843,14 @@ msgstr ""
 "<header>text=傷害</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:471
+#: data/core/help.cfg:474
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:473
+#: data/core/help.cfg:476
 msgid ""
 "\n"
 "\n"
@@ -2887,7 +2861,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:475
+#: data/core/help.cfg:478
 #, fuzzy
 #| msgid "<header>text='Units having this special attack'</header>"
 msgid ""
@@ -2897,7 +2871,7 @@ msgid ""
 msgstr "<header>text='擁有這種武器特性的單位:'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:477
+#: data/core/help.cfg:480
 msgid ""
 "\n"
 "\n"
@@ -2907,7 +2881,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:479
+#: data/core/help.cfg:482
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2923,7 +2897,7 @@ msgstr ""
 "<header>text='攻撃順序與次數'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:481
+#: data/core/help.cfg:484
 msgid ""
 "\n"
 "\n"
@@ -2938,7 +2912,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:485
+#: data/core/help.cfg:488
 msgid ""
 "\n"
 "\n"
@@ -2947,7 +2921,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:487
+#: data/core/help.cfg:490
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2956,25 +2930,24 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<header>text='Multiplayer Modifications'</header>"
+"<header>text='Modifications'</header>"
 msgstr ""
 "\n"
 "\n"
 "<header>text='攻撃順序與次數'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:489
+#: data/core/help.cfg:492
 msgid ""
 "\n"
 "\n"
-"Modifications are optional scenario- and era-independent scripts for "
-"<italic>text='Multiplayer'</italic> games that can alter the default ruleset "
-"in various ways. You can choose and configure modifications when creating a "
-"new game."
+"Modifications are optional scenario- and era-independent scripts that can "
+"alter the default ruleset in various ways. You can choose and configure "
+"modifications when creating a new game."
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:491
+#: data/core/help.cfg:494
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2990,7 +2963,7 @@ msgstr ""
 "<header>text='命中率'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:493
+#: data/core/help.cfg:496
 msgid ""
 "\n"
 "\n"
@@ -3002,12 +2975,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:502
+#: data/core/help.cfg:505
 msgid "Installing Add-ons"
 msgstr ""
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:503
+#: data/core/help.cfg:506
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -3025,20 +2998,20 @@ msgid ""
 "choose to only display add-ons of specific categories by clicking on the "
 "<bold>text='Options'</bold> button in the top-right corner.\n"
 "\n"
-"To install an add-on, select it from the list and click <bold>text='OK'</"
-"bold>, or simply double-click on the add-on’s title. The "
+"To install an add-on, select it from the list and click the <bold>text='+'</"
+"bold> icon, or simply double-click on the add-on’s title. The "
 "<bold>text='Description'</bold> button provides you with additional details "
 "about the add-on, such as its full description, installation status, and "
 "available languages."
 msgstr ""
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:516
+#: data/core/help.cfg:519
 msgid "Removing Add-ons"
 msgstr ""
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:517
+#: data/core/help.cfg:520
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -3052,7 +3025,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:532
+#: data/core/help.cfg:535
 #, fuzzy
 #| msgid "General commands"
 msgid "General Commands"
@@ -3061,7 +3034,7 @@ msgstr "指令"
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:534 data/core/help.cfg:577 data/core/help.cfg:615
+#: data/core/help.cfg:537 data/core/help.cfg:580 data/core/help.cfg:618
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3070,7 +3043,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:536
+#: data/core/help.cfg:539
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3081,7 +3054,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:539
+#: data/core/help.cfg:542
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3096,7 +3069,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:543
+#: data/core/help.cfg:546
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3123,7 +3096,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:546
+#: data/core/help.cfg:549
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -3131,7 +3104,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:549
+#: data/core/help.cfg:552
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3142,7 +3115,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:552
+#: data/core/help.cfg:555
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3153,7 +3126,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:555
+#: data/core/help.cfg:558
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3164,7 +3137,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:558
+#: data/core/help.cfg:561
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3175,7 +3148,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:561
+#: data/core/help.cfg:564
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3186,7 +3159,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:564
+#: data/core/help.cfg:567
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3197,7 +3170,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:567
+#: data/core/help.cfg:570
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3206,14 +3179,14 @@ msgstr ""
 "儲存遊戲並退出任務（無提示視窗）。"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:576
+#: data/core/help.cfg:579
 #, fuzzy
 #| msgid "Multiplayer commands"
 msgid "Multiplayer Commands"
 msgstr "多人對戰指令"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:579
+#: data/core/help.cfg:582
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3227,7 +3200,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:582
+#: data/core/help.cfg:585
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3246,7 +3219,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:585
+#: data/core/help.cfg:588
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -3255,7 +3228,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:588
+#: data/core/help.cfg:591
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -3264,7 +3237,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:591
+#: data/core/help.cfg:594
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -3278,7 +3251,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:594
+#: data/core/help.cfg:597
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3291,7 +3264,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:597
+#: data/core/help.cfg:600
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3304,7 +3277,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:600
+#: data/core/help.cfg:603
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -3315,7 +3288,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:603
+#: data/core/help.cfg:606
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3327,7 +3300,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:606
+#: data/core/help.cfg:609
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -3337,14 +3310,14 @@ msgstr ""
 "允許一個指定的觀察者可以發言。如果没有指定觀察者，則所有觀察者皆可發言。"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:614
+#: data/core/help.cfg:617
 #, fuzzy
 #| msgid "Debug mode commands"
 msgid "Debug Mode Commands"
 msgstr "偵錯模式指令"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:617
+#: data/core/help.cfg:620
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3356,7 +3329,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:620
+#: data/core/help.cfg:623
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3368,7 +3341,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:623
+#: data/core/help.cfg:626
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3379,7 +3352,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:626
+#: data/core/help.cfg:629
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3390,7 +3363,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:629
+#: data/core/help.cfg:632
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3401,7 +3374,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:632
+#: data/core/help.cfg:635
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3412,7 +3385,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:635
+#: data/core/help.cfg:638
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3423,7 +3396,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:638
+#: data/core/help.cfg:641
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3434,7 +3407,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:641
+#: data/core/help.cfg:644
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3446,7 +3419,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:644
+#: data/core/help.cfg:647
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -4036,6 +4009,26 @@ msgid ""
 msgstr ""
 "吸血：\n"
 "通過吸食生物單位的生命來治療自己，能治療造成傷害一半的生命值。"
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/abilities.cfg:404
+#, fuzzy
+#| msgid "firststrike"
+msgid "first strike"
+msgstr "先發制人"
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/abilities.cfg:405
+#, fuzzy
+#| msgid ""
+#| "First Strike:\n"
+#| "This unit always strikes first with this attack, even if they are "
+#| "defending."
+msgid ""
+"This unit always strikes first with this attack, even if they are defending."
+msgstr ""
+"先發制人：\n"
+"即使在守勢之中，該單位永遠先攻擊敵人。"
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:414
@@ -5288,20 +5281,33 @@ msgid ""
 "having existed for over a millennium."
 msgstr ""
 
-#. [race]: id=falcon, description=
+#. [race]: id=falcon
 #: data/core/units.cfg:135
 msgid "race^Falcon"
 msgstr "人類"
 
-#. [race]: id=falcon, description=
+#. [race]: id=falcon
 #: data/core/units.cfg:136
 msgid "race+female^Falcon"
 msgstr "人類"
 
-#. [race]: id=falcon, description=
+#. [race]: id=falcon
 #: data/core/units.cfg:137
 msgid "race^Falcons"
 msgstr "人類"
+
+#. [race]: id=falcon
+#: data/core/units.cfg:138
+msgid ""
+"Falcons are birds of prey, noted for their exceptional speed and agility. "
+"Lighter and with less powerful talons than other raptors, falcons instead "
+"favor the use of their beak to kill their targets. Their keen eye and "
+"capacity for domestication makes them a populous and well-known creature, "
+"used both by nobles in sport, and by nomads or tribes who find them useful "
+"in hunting for food. Falcons occasionally find a role on the field of war as "
+"well, with certain falconers training their birds to distinguish between "
+"friend and foe, making them a useful asset to aid in an army's charge."
+msgstr ""
 
 #. [race]: id=goblin
 #: data/core/units.cfg:148
@@ -5423,7 +5429,7 @@ msgstr ""
 
 #. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:208 data/core/units.cfg:223
+#: data/core/units.cfg:208 data/core/units.cfg:233
 #, fuzzy
 #| msgid "race^Human"
 msgid "race^Dunefolk Human"
@@ -5431,7 +5437,7 @@ msgstr "人類"
 
 #. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:209 data/core/units.cfg:224
+#: data/core/units.cfg:209 data/core/units.cfg:234
 #, fuzzy
 #| msgid "race+female^Human"
 msgid "race+female^Dunefolk Human"
@@ -5439,7 +5445,7 @@ msgstr "人類"
 
 #. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:210 data/core/units.cfg:225
+#: data/core/units.cfg:210 data/core/units.cfg:235
 #, fuzzy
 #| msgid "race+plural^Undead"
 msgid "race+plural^Dunefolk"
@@ -5448,42 +5454,93 @@ msgstr "不死族"
 #. [race]: id=dunefolk
 #: data/core/units.cfg:211
 msgid ""
-"The Dunefolk are a human culture inhabiting the dry deserts in the southern "
-"region of the Great Continent."
+"An offshoot of a forgotten nomadic civilization, the Dunefolk humans lay "
+"claim to the river valleys and oases of the Sandy Wastes. How they came to "
+"inhabit this far corner of the Great Continent is unknown. Their legends "
+"tell of many long and perilous travels through far-flung lands, but the true "
+"origin of their people is a topic of endless and heated debate among even "
+"the most erudite of their scholars.\n"
+"\n"
+"Whatever their origin, the Dunefolk have thrived. Bustling cities stand "
+"proudly in the largest fertile regions. Skilled artisans, fine smiths, and "
+"wealthy merchants form the backbone of the urban economy. Each of these "
+"cities also enjoys a degree of independence less common in the more "
+"centralized nations to the north, many even maintaining their own standing "
+"armies. In times of need, however, each and all rally to a higher authority "
+"designated to protect the superior interest of the nation.\n"
+"\n"
+"Those who have not settled in these urban centers still adhere to the "
+"lifestyle of their ancestors, roaming the dunes and leading their herds from "
+"one watering hole to another. They are most active during the early hours of "
+"dawn and the onset of dusk, when the wastelands are neither too hot nor too "
+"cold. Their skill at moving through the sands is excellent even by Dunefolk "
+"standards. Although sometimes regarded with contempt by their city "
+"counterparts, they provide an invaluable service as mobile, light troops in "
+"war, or as escorts for trading caravans during times of peace.\n"
+"\n"
+"The Dunefolk's inclination towards trade and exploration has allowed their "
+"cities to amass immense fortunes, a fact regarded both with admiration and "
+"envy by other races. Mutual interests have fostered cordial relations with "
+"neighboring Naga tribes, but more secretive races such as Drakes and Elves "
+"have always considered Dunefolk expeditions to be too intrusive, especially "
+"when they venture close to territorial boundaries. It is not uncommon for "
+"caravans to fall prey to troll ambushes in the mountains, something that has "
+"given rise to countless tales of unimaginable treasure amassed in hidden "
+"caves.\n"
+"\n"
+"As a result of living in hostile environments for centuries, the Dunefolk "
+"have developed rational methods of enquiry through which they continue to "
+"improve their understanding of the world. Their study of herbal medicine "
+"keeps their warriors and workers fresh and healthy. Their knowledge of "
+"alchemy allows them to tame fire and wield it as a deadly weapon in battle. "
+"At the same time, this analytical mindset has distanced them from magical "
+"arts; to the rational mind, magic is uncontrollable, unpredictable, and "
+"hence unreliable. For this reason, the Dunefolk especially loathe the "
+"perversions of necromancy and the dark arts, even more so than other races.\n"
+"\n"
+"The Dunefolk's inquisitive and explorative nature does not preclude military "
+"strength. Not only do they field nimble light troops, cataphracts, and "
+"heavily armored infantry, but their keen knowledge of technology grants them "
+"a decisive advantage over their opponents. When facing the Dunefolk in "
+"battle, however, the most fearsome sight is certainly their deployment of "
+"ferocious and bizarre beasts. From the majestic Roc to the imposing Wyvern, "
+"their synergy with these creatures allows for great versatility in combat. "
+"The origins of this tradition likely lie in the heritage of the Dunefolk's "
+"distant past in the exotic far corners of Irdya."
 msgstr ""
 
 #. [race]: id=khalifate
-#: data/core/units.cfg:226
+#: data/core/units.cfg:236
 msgid "This race does not have a description yet."
 msgstr ""
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:237
+#: data/core/units.cfg:247
 msgid "race^Saurian"
 msgstr "蜥蜴人"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:238
+#: data/core/units.cfg:248
 msgid "race+female^Saurian"
 msgstr "蜥蜴人"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:239
+#: data/core/units.cfg:249
 msgid "race^Saurians"
 msgstr "蜥蜴人"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:249
+#: data/core/units.cfg:259
 msgid "race^Mechanical"
 msgstr "機械"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:250
+#: data/core/units.cfg:260
 msgid "race+plural^Mechanical"
 msgstr "機械"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:251
+#: data/core/units.cfg:261
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -5495,22 +5552,24 @@ msgstr ""
 "控制之類的。"
 
 #. [race]: id=merman
-#: data/core/units.cfg:260
+#: data/core/units.cfg:270
 msgid "race^Merman"
 msgstr "人魚"
 
 #. [race]: id=merman
-#: data/core/units.cfg:261
+#: data/core/units.cfg:271
 msgid "race^Mermaid"
 msgstr "人魚"
 
 #. [race]: id=merman
-#: data/core/units.cfg:262
-msgid "race^Mermen"
-msgstr "人魚"
+#: data/core/units.cfg:272
+#, fuzzy
+#| msgid "race^Troll"
+msgid "race^Merfolk"
+msgstr "巨魔"
 
 #. [race]: id=merman
-#: data/core/units.cfg:264
+#: data/core/units.cfg:274
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -5524,22 +5583,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=monster
-#: data/core/units.cfg:272
+#: data/core/units.cfg:282
 msgid "race^Monster"
 msgstr "怪物"
 
 #. [race]: id=monster
-#: data/core/units.cfg:273
+#: data/core/units.cfg:283
 msgid "race+female^Monster"
 msgstr "怪物"
 
 #. [race]: id=monster
-#: data/core/units.cfg:274
+#: data/core/units.cfg:284
 msgid "race^Monsters"
 msgstr "怪物"
 
 #. [race]: id=monster
-#: data/core/units.cfg:275
+#: data/core/units.cfg:285
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -5549,22 +5608,22 @@ msgstr ""
 "出沒於居民的故事及惡夢之中。"
 
 #. [race]: id=naga
-#: data/core/units.cfg:282
+#: data/core/units.cfg:292
 msgid "race^Naga"
 msgstr "納迦"
 
 #. [race]: id=naga
-#: data/core/units.cfg:283
+#: data/core/units.cfg:293
 msgid "race^Nagini"
 msgstr "納迦"
 
 #. [race]: id=naga
-#: data/core/units.cfg:284
+#: data/core/units.cfg:294
 msgid "race^Nagas"
 msgstr "納迦"
 
 #. [race]: id=naga
-#: data/core/units.cfg:285
+#: data/core/units.cfg:295
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -5582,22 +5641,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=ogre
-#: data/core/units.cfg:293
+#: data/core/units.cfg:303
 msgid "race^Ogre"
 msgstr "食人魔"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:294
+#: data/core/units.cfg:304
 msgid "race+female^Ogre"
 msgstr "食人魔"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:295
+#: data/core/units.cfg:305
 msgid "race^Ogres"
 msgstr "食人魔"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:296
+#: data/core/units.cfg:306
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -5616,22 +5675,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:304
+#: data/core/units.cfg:314
 msgid "race^Orc"
 msgstr "半獸人"
 
 #. [race]: id=orc
-#: data/core/units.cfg:305
+#: data/core/units.cfg:315
 msgid "race+female^Orc"
 msgstr "半獸人"
 
 #. [race]: id=orc
-#: data/core/units.cfg:306
+#: data/core/units.cfg:316
 msgid "race^Orcs"
 msgstr "半獸人"
 
 #. [race]: id=orc
-#: data/core/units.cfg:307
+#: data/core/units.cfg:317
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -5685,7 +5744,7 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:318
+#: data/core/units.cfg:328
 msgid ""
 "\n"
 "\n"
@@ -5694,22 +5753,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=troll
-#: data/core/units.cfg:327
+#: data/core/units.cfg:337
 msgid "race^Troll"
 msgstr "巨魔"
 
 #. [race]: id=troll
-#: data/core/units.cfg:328
+#: data/core/units.cfg:338
 msgid "race+female^Troll"
 msgstr "巨魔"
 
 #. [race]: id=troll
-#: data/core/units.cfg:329
+#: data/core/units.cfg:339
 msgid "race^Trolls"
 msgstr "巨魔"
 
 #. [race]: id=troll
-#: data/core/units.cfg:330
+#: data/core/units.cfg:340
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -5748,22 +5807,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=undead
-#: data/core/units.cfg:350
+#: data/core/units.cfg:360
 msgid "race^Undead"
 msgstr "不死族"
 
 #. [race]: id=undead
-#: data/core/units.cfg:351
+#: data/core/units.cfg:361
 msgid "race+female^Undead"
 msgstr "不死族"
 
 #. [race]: id=undead
-#: data/core/units.cfg:352
+#: data/core/units.cfg:362
 msgid "race+plural^Undead"
 msgstr "不死族"
 
 #. [race]: id=undead
-#: data/core/units.cfg:353
+#: data/core/units.cfg:363
 #, fuzzy
 #| msgid ""
 #| "Undead are not really a single race of creatures, although often treated "
@@ -5803,8 +5862,8 @@ msgid ""
 "need to maintain his creation.\n"
 "\n"
 "Necromancy is almost solely limited to humans. Even the legends of magically "
-"apt races like elves and mermen tell of very few of their kind who have ever "
-"delved in the dark arts. It is surmised that necromantic magic requires "
+"apt races like elves and merfolk tell of very few of their kind who have "
+"ever delved in the dark arts. It is surmised that necromantic magic requires "
 "great adaptability and a flexible mind, extremes of which are most commonly "
 "found in humans. The ultimate goal of most necromancers is to turn the same "
 "art of preserving and imbuing life upon themselves, to alter themselves at "
@@ -5835,33 +5894,45 @@ msgstr ""
 "only in the wake of Haldric I, they were not completely unheard of by elves "
 "and dwarves before that."
 
-#. [race]: id=wolf, description=
-#: data/core/units.cfg:366
+#. [race]: id=wolf
+#: data/core/units.cfg:376
 msgid "race^Wolf"
 msgstr "狼"
 
-#. [race]: id=wolf, description=
-#: data/core/units.cfg:367
+#. [race]: id=wolf
+#: data/core/units.cfg:377
 msgid "race+female^Wolf"
 msgstr "狼"
 
-#. [race]: id=wolf, description=
-#: data/core/units.cfg:368
+#. [race]: id=wolf
+#: data/core/units.cfg:378
 msgid "race^Wolves"
 msgstr "狼"
 
+#. [race]: id=wolf
+#: data/core/units.cfg:379
+msgid ""
+"Wolves are predatory canines encountered frequently in the wilderness. "
+"Quick, tough, and durable, a solitary wolf suffices to maim or kill "
+"civilians and untrained soldiers with ease, but it is their tendency to "
+"travel in packs and attack in an organized manner that makes them "
+"particularly fearsome to travelers. They tend to stay away from "
+"civilization, though, only occasionally venturing close to prey upon "
+"livestock."
+msgstr ""
+
 #. [race]: id=wose
-#: data/core/units.cfg:378
+#: data/core/units.cfg:388
 msgid "race^Wose"
 msgstr "樹人"
 
 #. [race]: id=wose
-#: data/core/units.cfg:379
+#: data/core/units.cfg:389
 msgid "race^Woses"
 msgstr "樹人"
 
 #. [race]: id=wose
-#: data/core/units.cfg:380
+#: data/core/units.cfg:390
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
@@ -5915,9 +5986,12 @@ msgstr "關閉"
 msgid "The Battle for Wesnoth Help"
 msgstr "韋諾之戰說明"
 
-#: src/help/help.cpp:239
+#: src/help/help.cpp:241
 msgid "Parse error when parsing help text: "
 msgstr "分析幫助文本時語法錯誤： "
+
+#~ msgid "race^Mermen"
+#~ msgstr "人魚"
 
 #~ msgid "ingame_help_item^Contributors"
 #~ msgstr "制作人"

@@ -39,7 +39,7 @@ namespace utils {
 			try {
 				const wfl::formula form(formula);
 				return form.evaluate().string_cast();
-			} catch(wfl::formula_error& e) {
+			} catch(const wfl::formula_error& e) {
 				ERR_NG << "Formula in WML string cannot be evaluated due to "
 					<< e.type << "\n\t--> \"";
 				return "";
@@ -205,7 +205,7 @@ formula::formula(const std::string& text, function_symbol_table* symbols)
 				tokens.back().filename = &(*filenames_it);
 				tokens.back().line_number = files.back().second;
 			}
-		} catch(tk::token_error& e) {
+		} catch(const tk::token_error& e) {
 			// When we catch token error, we should write whole line in which error occurred,
 			// so we merge info from token and everything we had in the line so far
 			std::string str = "";
@@ -263,7 +263,7 @@ variant formula::execute(const formula_callable& variables, formula_debugger*fdb
 {
 	try {
 		return expr_->evaluate(variables, fdb);
-	} catch(type_error& e) {
+	} catch(const type_error& e) {
 		std::cerr << "formula type error: " << e.message << "\n";
 		return variant();
 	}
@@ -1376,7 +1376,7 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 								parse_expression(tok + 1, i2 - 1, symbols)
 							)
 						);
-					} catch (formula_error& e){
+					} catch (const formula_error& e){
 						throw formula_error( e.type, tokens_to_string(i1, i2-1), *i1->filename, i1->line_number );
 					}
 				}
@@ -1440,7 +1440,7 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 				try{
 					return symbols->create_function(std::string(i1->begin, i1->end),args);
 				}
-				catch(formula_error& e) {
+				catch(const formula_error& e) {
 					throw formula_error(e.type, tokens_to_string(function_call_begin, function_call_end), *i1->filename, i1->line_number);
 				}
 			}
@@ -1457,7 +1457,7 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 		try{
 			return expression_ptr(
 				new unary_operator_expression(std::string(op->begin, op->end), parse_expression(op + 1, i2 ,symbols)));
-		} catch(formula_error& e)	{
+		} catch(const formula_error& e)	{
 			throw formula_error( e.type, tokens_to_string(begin,end - 1), *op->filename, op->line_number);
 		}
 	}

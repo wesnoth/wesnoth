@@ -56,11 +56,11 @@ editor_map editor_map::from_string(const config& terrain_cfg, const std::string&
 {
 	try {
 		return editor_map(terrain_cfg, data);
-	} catch (incorrect_map_format_error& e) {
+	} catch (const incorrect_map_format_error& e) {
 		throw wrap_exc("format", e.message, "");
-	} catch (wml_exception& e) {
+	} catch (const wml_exception& e) {
 		throw wrap_exc("wml", e.user_message, "");
-	} catch (config::error& e) {
+	} catch (const config::error& e) {
 		throw wrap_exc("config", e.message, "");
 	}
 }

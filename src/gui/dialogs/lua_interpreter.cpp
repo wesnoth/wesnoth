@@ -420,7 +420,7 @@ bool lua_interpreter::lua_model::execute (const std::string & cmd)
 	try {
 		L_.interactive_run(cmd.c_str());
 		return true;
-	} catch (game::lua_error & e) {
+	} catch (const game::lua_error & e) {
 		add_dialog_message(std::string(e.what()));
 		return false;
 	}

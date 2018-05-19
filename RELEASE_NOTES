@@ -26,14 +26,11 @@ CHANGES
 
 [rawarn="Deprecations and breaking changes"]
 [list]
-[*][set_menu_item] no longer fires repeatedly if the player holds the hotkey (bug #1711). If you were relying on repeated firing, add repeat_on_hold=yes to [default_hotkey].
-[*][tt]ai.synced_command[/tt] was removed
 [/list]
 [/rawarn]
 
 [rasection="New Lua/WML features"]
 [list]
-[*]Add-on creators can now specify a comma-separated list of tags in the .pbl file, which are used by the Add-ons Manager when filtering add-ons by typing key words into the Filter box. This may be used to make it easier for people to find add-ons, e.g. by including their acronym among the tags. See [wiki]PblWML[/wiki] for details.
 [/list]
 [/rasection]
 
@@ -41,7 +38,7 @@ CHANGES
 KNOWN BUGS
 ==========
 
-[raissue="Newly introduced in 1.13.x"]
+[raissue="Newly introduced in 1.14.x"]
 [b]General bugs:[/b]
 
 [list]
@@ -57,7 +54,6 @@ KNOWN BUGS
 [b]General bugs:[/b]
 
 [list]
-[*]The game can crash when planning recruits in Planning Mode.
 [/list]
 
 [b]Bugs specific to Microsoft Windows:[/b]

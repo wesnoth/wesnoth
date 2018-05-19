@@ -8,14 +8,16 @@
 # BlueStar, 2006
 # Nobuhito Okada <okyada@gmail.com>, 2006
 # RatArmy <broadbarredfirefish@gmail.com>, 2016
+# tamanegi, 2018
 # yma <yma9yma@gmail.com>, 2011
+# 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2017-2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-Dev Japanese\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-27 01:21 UTC\n"
-"PO-Revision-Date: 2016-04-17 03:57+0000\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
+"POT-Creation-Date: 2018-05-09 06:49 UTC\n"
+"PO-Revision-Date: 2018-04-22 06:58+0000\n"
+"Last-Translator: tamanegi\n"
 "Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
 "japanese/language/ja/)\n"
 "Language: ja\n"
@@ -218,10 +220,10 @@ msgstr ""
 msgid "Humans"
 msgstr "人間"
 
-#. [side]: type=Dark Sorcerer, id=Mordak
+#. [side]: type=Orcish Warlord, id=Tairach
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #. [side]
-#. [side]: type=Orcish Warlord, id=Tairach
+#. [side]: type=Dark Sorcerer, id=Mordak
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:114
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:81
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:131
@@ -299,6 +301,8 @@ msgid ""
 "Use footpads as fodder to protect your loyal units and attack during the day "
 "to minimize the damage your forces take."
 msgstr ""
+"追いはぎをエサにして忠義ユニットを守り、また日中に攻撃して軍が受けるダメージ"
+"を最小化しましょう。"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:186
@@ -322,12 +326,6 @@ msgstr "お前の呼び出しで私が来たからには安心しろ。で Maghr
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:206
-#, fuzzy
-#| msgid ""
-#| "A dark mage has come upon us; his creatures call him Mordak. They have "
-#| "been terrorizing outlying farms, and we fear they may soon attack the "
-#| "village itself! The villagers of Maghre have taken up weapons but they "
-#| "are not trained fighters; but we need your men, and you to lead them."
 msgid ""
 "A dark mage has come upon us; his creatures call him Mordak. They have been "
 "terrorizing outlying farms, and we fear they may soon attack the village "
@@ -337,8 +335,8 @@ msgstr ""
 "我々は黒魔術師と出会いました。奴に作られた者達は、奴を Mordak と呼んでいま"
 "す。奴らは辺鄙な所にある農場を恐怖に陥れていて、我々は、奴らがすぐにも村自体"
 "を攻撃するのではないかと恐れています！ Maghre の村人達は武器を取りましたが、"
-"彼らは訓練された戦士ではありません。それより我々にはあなたの部下と、あなたが"
-"彼らを率いてくれる事が必要なのです。"
+"彼らは訓練された戦士ではありません。我々にはあなたの部下が必要ですし、またあ"
+"なたに彼らを率いてもらうことが必要なのです。"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:211
@@ -556,10 +554,8 @@ msgstr "Nil-Galion"
 
 #. [side]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:170
-#, fuzzy
-#| msgid "Catch the kidnappers"
 msgid "Kidnappers"
-msgstr "誘拐者達を捕える"
+msgstr "誘拐犯"
 
 #. [side]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:174
@@ -587,6 +583,8 @@ msgid ""
 "The Elvish forces are spread out. Seek to fight them one at a time with "
 "several of your units."
 msgstr ""
+"エルフの軍は散開しました。探して、各１人に対してあなたのユニット数人で戦いま"
+"しょう。"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:317
@@ -594,12 +592,14 @@ msgid ""
 "Use horsemen or footpads to quickly explore the shrouded woods to locate the "
 "kidnappers."
 msgstr ""
+"騎兵または追いはぎを用いて、すばやく幕を探索し、誘拐犯の位置を突き止めましょ"
+"う。"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:332
 msgid ""
 "Separate the Dark Adept from his guards and attack in force for an easy kill."
-msgstr ""
+msgstr "暗黒僧を簡単に殺すため、護衛から引き離し、一斉に攻撃しましょう"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:375
@@ -659,12 +659,12 @@ msgstr ""
 "のだ。"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:437
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:435
 msgid "I see them! There they are!"
 msgstr "奴らが見える！ あそこに奴らがいるぞ！"
 
 #. [message]: speaker=Muff Toras
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:442
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:440
 msgid ""
 "Curses! If they had been an hour slower our master’s reinforcements would "
 "already be here to meet us."
@@ -673,12 +673,12 @@ msgstr ""
 "にここにいただろうに。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:454
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:452
 msgid "Come on, men, let’s catch those kidnappers!"
 msgstr "さあ、お前達、誘拐犯どもを捕まえよう！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:468
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:466
 msgid ""
 "Hah! You have captured me, but it will avail you nothing. I sent your "
 "precious brother the mage north with half my men a day since; he will be "
@@ -689,7 +689,7 @@ msgstr ""
 "牢に、安全に仕舞い込まれているだろう。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:473
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:471
 msgid ""
 "My blade is at your throat. Give us the way to my brother now, or I will "
 "spill your wretched blood on the ground."
@@ -698,70 +698,64 @@ msgstr ""
 "惨めな血が地面に流れることになるだろう。"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:476
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:474
 msgid "Sithrak"
 msgstr "Sithrak"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:477
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:475
 msgid "Eleben"
 msgstr "Eleben"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:478
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:476
 msgid "Jarlom"
 msgstr "Jarlom"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:479
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:477
 msgid "Hamik"
 msgstr "Hamik"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:483
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:481
 msgid "Akranbral"
 msgstr "Akranbral"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:484
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:482
 msgid "Drakanal"
 msgstr "Drakanal"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:485
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:483
 msgid "Xaskanat"
 msgstr "Xaskanat"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:486
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:484
 msgid "Katklagad"
 msgstr "Katklagad"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:492
-#, fuzzy
-#| msgid ""
-#| "Three days ride to the northeast, in a deserted castle. The passwords to "
-#| "the guards are $first_password_$first_password_number and "
-#| "$second_password_$second_password_number|."
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:490
 msgid ""
 "Three days ride to the northeast, in a deserted castle. The passwords to the "
 "guards are $first_password_$first_password and $second_password_"
 "$second_password|."
 msgstr ""
 "馬で北東に3日の所にある、さびれた城の中にいる。見張りの合言葉は "
-"$first_password_$first_password_number と $second_password_"
-"$second_password_number| だ。"
+"$first_password_$first_password と $second_password_$second_password| だ。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:500
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:498
 msgid "Bind him and take him with us. If he has played us false, he will die."
 msgstr ""
 "奴を縛って一緒に連れて行こう。もし我々を騙したのなら、奴は死ぬことになるだろ"
 "う。"
 
 #. [message]: role=Mercenary
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:512
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:510
 msgid ""
 "Captain, what are we riding into? I thought you wanted nothing to do with "
 "Baran any more, not since Toen Caric."
@@ -770,7 +764,7 @@ msgstr ""
 "Baran に一切何もしたくないのだと私は思っていたのですが。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:517
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:515
 msgid ""
 "I’m no longer sure. What’s between us remains, but knowing someone else has "
 "lain hands on him changes things. Mount up, and let’s get moving."
@@ -779,12 +773,12 @@ msgstr ""
 "誰かが状況を変えられるのかもしれない。馬に乗れ、移動開始だ。"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:532
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:530
 msgid "Brena"
 msgstr "Brena"
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:542
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:540
 msgid ""
 "Greetings. I am Brena, a knight errant. I saw you pursuing and fighting the "
 "foul undead. Are there more of them to be destroyed?"
@@ -793,7 +787,7 @@ msgstr ""
 "跡し戦っているのを見た。滅ぼされるために、奴らはもっと沢山いるだろうか？"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:547
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:545
 msgid ""
 "Aye. We think there’s a nest of them north-east of here. They’ve captured my "
 "brother."
@@ -802,7 +796,7 @@ msgstr ""
 "るのだ。"
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:552
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:550
 msgid ""
 "I bear a great hatred towards their kind. I will follow and fight them with "
 "you, if you permit."
@@ -811,32 +805,32 @@ msgstr ""
 "奴らと戦うだろう。"
 
 #. [message]: role=Mercenary
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:557
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:555
 msgid "He would only slow us down!"
 msgstr "彼は足手纏いになるだけです！"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:562
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:560
 msgid "It is my place to decide this."
 msgstr "ここが思案のしどころだな。"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:564
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:562
 msgid "Oh, all right then. Come along with us."
 msgstr "そうか、それではわかった。 俺たちに同行してくれ。"
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:568
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:566
 msgid "Thank you. My comrades and I will help you on your noble quest."
 msgstr "礼を言う。俺と俺の仲間は、あなたの気高い探求の手助けをしよう。"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:573
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:571
 msgid "I am sorry. We have not the time to spare."
 msgstr "すまない。 俺たちには時間がないのだ。"
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:577
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:575
 msgid ""
 "Take this, then, for I see that you are on a quest. My comrades will help "
 "you whenever you call for them."
@@ -845,22 +839,22 @@ msgstr ""
 "ば、いつでも俺の仲間達はあなたを助けるだろう。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:592
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:590
 msgid "You receive 70 pieces of gold!"
 msgstr "あなたは 70ゴールドを受け取る！"
 
 #. [message]: speaker=Muff Toras
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:615
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:613
 msgid "My reinforcements are here!"
 msgstr "俺の増援隊はここだ！"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:620
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:618
 msgid "He escaped us..."
 msgstr "奴は俺たちから逃亡した..."
 
 #. [message]: speaker=Nil-Galion
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:632
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:630
 msgid ""
 "Foolish human, you have killed me but you will not catch the undead in time. "
 "I have fulfilled my contract, and will be reanimated soon to become a lord "
@@ -870,7 +864,7 @@ msgstr ""
 "いだろう。俺は契約を果たした。すぐにあの軍隊の主として蘇るのだ。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:642
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:640
 msgid "Follow their back trail!"
 msgstr "奴らの後を追え！"
 
@@ -1012,6 +1006,8 @@ msgid ""
 "When facing an unknown situation, take into account details from story and "
 "dialog to inform your strategy."
 msgstr ""
+"未知の状況に直面した際は、作戦を知らせるストーリーとダイアログを考慮に入れま"
+"しょう。"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:337
@@ -1019,6 +1015,8 @@ msgid ""
 "The dark sorcerer is a strong unit; attack him with multiple units at once "
 "and try to force him off his keep."
 msgstr ""
+"黒魔術師は強力なユニットです。複数のユニットで一度に攻撃するように心がけ、で"
+"きれば彼を主塔から離れるように仕向けましょう。"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:347
@@ -1026,6 +1024,8 @@ msgid ""
 "Markings or decorations on hexes may indicate something to be found. If you "
 "can, it is usually a good idea to investigate."
 msgstr ""
+"ヘクス上の印や装飾は、何かが見つかることを示しているかもしれません。もし可能"
+"ならば、調査するというのが一般に良い案です。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:384
@@ -1048,31 +1048,23 @@ msgstr "合言葉は"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:397
-#, fuzzy
-#| msgid "Sithrak"
 msgid "Sithrak!"
-msgstr "Sithrak"
+msgstr "Sithrak!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:400
-#, fuzzy
-#| msgid "Eleben"
 msgid "Eleben!"
-msgstr "Eleben"
+msgstr "Eleben!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:403
-#, fuzzy
-#| msgid "Jarlom"
 msgid "Jarlom!"
-msgstr "Jarlom"
+msgstr "Jarlom!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:406
-#, fuzzy
-#| msgid "Hamik"
 msgid "Hamik!"
-msgstr "Hamik"
+msgstr "Hamik!"
 
 #. [message]: speaker=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:419
@@ -1149,31 +1141,23 @@ msgstr "あぁ、もちろんだとも。 もう少しで忘れるところだ�
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:612
-#, fuzzy
-#| msgid "Akranbral"
 msgid "Akranbral!"
-msgstr "Akranbral"
+msgstr "Akranbral!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:615
-#, fuzzy
-#| msgid "Drakanal"
 msgid "Drakanal!"
-msgstr "Drakanal"
+msgstr "Drakanal!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:618
-#, fuzzy
-#| msgid "Xaskanat"
 msgid "Xaskanat!"
-msgstr "Xaskanat"
+msgstr "Xaskanat!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:621
-#, fuzzy
-#| msgid "Katklagad"
 msgid "Katklagad!"
-msgstr "Katklagad"
+msgstr "Katklagad!"
 
 #. [message]: speaker=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:634
@@ -1265,7 +1249,7 @@ msgstr ""
 msgid ""
 "I have already met, and killed, the sorcerer. Is this the key to which you "
 "referred?"
-msgstr ""
+msgstr "私はもうその魔術師に遭遇し、倒したぞ。これがお前が言っている鍵か？"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:835
@@ -1273,6 +1257,8 @@ msgid ""
 "Yes, it is. Come, unlock this cell door, and let us depart this place, "
 "brother!"
 msgstr ""
+"そう、それです。こっちへ来てこの独房の扉を開けてください。そしてこの地から解"
+"放してください、兄さん！"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:889
@@ -1321,7 +1307,7 @@ msgstr "助けに来てくれてありがとう。村へ帰還しましょう。
 #. [unit]: id=Rotharik, type=Orcish Assassin
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:948
 msgid "Minion of Tairach"
-msgstr ""
+msgstr "Tairach の手先"
 
 #. [message]: speaker=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:960
@@ -1434,6 +1420,8 @@ msgid ""
 "Recruit or Recall some high-move units to be able to see as far as possible "
 "through the fog for approaching units."
 msgstr ""
+"接近するユニットに対応するため、高い移動力のユニットを雇用あるいは召還し、で"
+"きるだけ遠く霧を見通せるようにしましょう。"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:171
@@ -1549,6 +1537,8 @@ msgstr "村を解放するためにオークの将軍を殺害する"
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:300
 msgid "You can use Reeve Hoban’s keep to recruit or recall additional units."
 msgstr ""
+"Reeve Hoban の主塔を用いて追加のユニットを雇用あるいは召還することができま"
+"す。"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:310
@@ -1666,31 +1656,4 @@ msgstr "Baran"
 
 #: data/campaigns/Two_Brothers/utils/macros.cfg:4
 msgid "Hint:"
-msgstr ""
-
-#~ msgid "$first_password_1|!"
-#~ msgstr "$first_password_1|！"
-
-#~ msgid "$first_password_2|!"
-#~ msgstr "$first_password_2|！"
-
-#~ msgid "$first_password_3|!"
-#~ msgstr "$first_password_3|！"
-
-#~ msgid "$first_password_4|!"
-#~ msgstr "$first_password_4|！"
-
-#~ msgid "$second_password_1|!"
-#~ msgstr "$second_password_1|！"
-
-#~ msgid "$second_password_2|!"
-#~ msgstr "$second_password_2|！"
-
-#~ msgid "$second_password_3|!"
-#~ msgstr "$second_password_3|！"
-
-#~ msgid "$second_password_4|!"
-#~ msgstr "$second_password_4|！"
-
-#~ msgid "Everything is lost now that I am dead..."
-#~ msgstr "私が死んだ今、全ては失われた..."
+msgstr "ヒント："

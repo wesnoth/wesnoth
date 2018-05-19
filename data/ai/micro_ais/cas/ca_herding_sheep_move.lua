@@ -6,7 +6,7 @@ local herding_area = wesnoth.require "ai/micro_ais/cas/ca_herding_f_herding_area
 local function get_next_sheep(cfg)
     local sheep = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", H.get_child(cfg, "filter_second") }
+        { "and", wml.get_child(cfg, "filter_second") }
     }
     return sheep[1]
 end
@@ -24,7 +24,7 @@ function ca_herding_sheep_move:execution(cfg)
     local sheep = get_next_sheep(cfg)
 
     local reach_map = AH.get_reachable_unocc(sheep)
-    local dogs_filter = H.get_child(cfg, "filter")
+    local dogs_filter = wml.get_child(cfg, "filter")
     -- Exclude those that are next to a dog
     reach_map:iter( function(x, y, v)
         for xa, ya in H.adjacent_tiles(x, y) do

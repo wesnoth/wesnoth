@@ -111,8 +111,8 @@ ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 sets the severity level of the log domains.  \fBall\fP can be used to match any
-log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.
-By default the \fBerror\fP level is used.
+log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default the \fBwarning\fP level is used for most domains, but
+\fBdeprecation\fP is none by default.
 .TP 
 \fB\-\-log\-precise\fP
 shows the timestamps in the logfile with more precision.
@@ -294,9 +294,9 @@ era. The era is chosen by an id. Eras are described in the
 \fBdata/multiplayer/eras.cfg\fP file.
 .TP 
 \fB\-\-exit\-at\-end\fP
-exits once the scenario is over, without displaying victory/defeat dialog
-which requires the user to click OK.  This is also used for script\-based
-benchmarking.
+exits once the scenario is over, without displaying the victory/defeat
+dialogue which normally requires the user to click End Scenario. This is
+also used for scripted benchmarking.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
 do not use map settings, use default values instead.

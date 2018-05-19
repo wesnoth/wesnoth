@@ -1,7 +1,7 @@
 local H = wesnoth.require "helper"
 
 function wesnoth.micro_ais.stationed_guardian(cfg)
-	if (cfg.action ~= 'delete') and (not cfg.id) and (not H.get_child(cfg, "filter")) then
+	if (cfg.action ~= 'delete') and (not cfg.id) and (not wml.get_child(cfg, "filter")) then
 		H.wml_error("Stationed Guardian [micro_ai] tag requires either id= key or [filter] tag")
 	end
 	local required_keys = { "distance", "station_x", "station_y" }
@@ -14,7 +14,7 @@ function wesnoth.micro_ais.stationed_guardian(cfg)
 end
 
 function wesnoth.micro_ais.zone_guardian(cfg)
-	if (cfg.action ~= 'delete') and (not cfg.id) and (not H.get_child(cfg, "filter")) then
+	if (cfg.action ~= 'delete') and (not cfg.id) and (not wml.get_child(cfg, "filter")) then
 		H.wml_error("Zone Guardian [micro_ai] tag requires either id= key or [filter] tag")
 	end
 	local required_keys = { "[filter_location]" }
@@ -27,7 +27,7 @@ function wesnoth.micro_ais.zone_guardian(cfg)
 end
 
 function wesnoth.micro_ais.return_guardian(cfg)
-	if (cfg.action ~= 'delete') and (not cfg.id) and (not H.get_child(cfg, "filter")) then
+	if (cfg.action ~= 'delete') and (not cfg.id) and (not wml.get_child(cfg, "filter")) then
 		H.wml_error("Return Guardian [micro_ai] tag requires either id= key or [filter] tag")
 	end
 	local required_keys = { "return_x", "return_y" }
@@ -40,7 +40,7 @@ function wesnoth.micro_ais.return_guardian(cfg)
 end
 
 function wesnoth.micro_ais.coward(cfg)
-	if (cfg.action ~= 'delete') and (not cfg.id) and (not H.get_child(cfg, "filter")) then
+	if (cfg.action ~= 'delete') and (not cfg.id) and (not wml.get_child(cfg, "filter")) then
 		H.wml_error("Coward [micro_ai] tag requires either id= key or [filter] tag")
 	end
 	local required_keys = { "distance" }

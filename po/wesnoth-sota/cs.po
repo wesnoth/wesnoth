@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-31 23:36 UTC\n"
-"PO-Revision-Date: 2018-04-09 10:05+0200\n"
+"POT-Creation-Date: 2018-05-06 08:31 UTC\n"
+"PO-Revision-Date: 2018-05-06 12:21+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #. [campaign]: id=Secrets of the Ancients
 #. [editor_group]: id=sota
@@ -401,8 +401,8 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:279
-msgid "Gwillyn"
-msgstr "Gwillyn"
+msgid "Gwyllin"
+msgstr "Gwyllin"
 
 #. [event]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:280
@@ -1334,7 +1334,7 @@ msgstr "Hele, je to mág, který umí dělat i vtipy! Jdeme."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:603
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:604
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:592
 msgid "You have no more time."
 msgstr "Už nemáš čas."
 
@@ -1358,8 +1358,8 @@ msgstr ""
 "světélkovaly, což mi pomáhalo, abych pořád neklopýtala. Nakonec jsem před "
 "sebou spatřila jasnější světlo."
 
-#. [side]: type=Dark Sorcerer SotA, id=Ras-Tabahn
 #. [unit]: type=Sacrifice, id=necromancer_on_altar
+#. [side]: type=Dark Sorcerer SotA, id=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:36
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:38
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/17_Mortality.cfg:279
@@ -1575,8 +1575,8 @@ msgstr "Obsaď všechny vesnice"
 
 #. [unit]: type=Shadow
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:92
-msgid "Vash Gorn"
-msgstr "Vash Gorn"
+msgid "Vash-Gorn"
+msgstr "Vash-Gorn"
 
 #. [unit]: type=Mage, id=Wynran
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:114
@@ -1784,7 +1784,7 @@ msgstr "Nyní můžete verbovat temné učedníky!"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:462
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:424
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:420
 msgid ""
 "This has taken too long. We will surely miss our meeting with Ardonna now."
 msgstr ""
@@ -1865,8 +1865,8 @@ msgstr ""
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:366
-msgid "You kids may watch."
-msgstr "Vy děcka můžete sledovat."
+msgid "plural^You may watch."
+msgstr "Můžeš se dívat."
 
 #. [message]: speaker=Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:370
@@ -1875,8 +1875,7 @@ msgstr "Můžeme pomoci?"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:374
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:397
-msgid "As you wish. (<i>Cough, cough</i>)"
+msgid "plural^As you wish. (<i>Cough, cough</i>)"
 msgstr "Jak si přeješ. (<i>kašel, kašel</i>)"
 
 #. [message]: speaker=Ras-Tabahn
@@ -1884,15 +1883,23 @@ msgstr "Jak si přeješ. (<i>kašel, kašel</i>)"
 msgid "You may watch."
 msgstr "Můžeš se dívat."
 
-#. [message]: speaker=Carcyn
-#. [message]: speaker=Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:389
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:393
+#. [message]: id=Carcyn,Shynal
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:388
 msgid "Can I help?"
 msgstr "Mohu pomoci?"
 
+#. [message]: id=Carcyn,Shynal
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:389
+msgid "self_female^Can I help?"
+msgstr "Mohu pomoci?"
+
+#. [message]: speaker=Ras-Tabahn
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:393
+msgid "As you wish. (<i>Cough, cough</i>)"
+msgstr "Jak si přeješ. (<i>kašel, kašel</i>)"
+
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:405
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:401
 msgid ""
 "You can recruit from in front of each dark adept during the first turn only."
 msgstr "Můžete verbovat před každého temného učně pouze během prvního kola."
@@ -1912,8 +1919,8 @@ msgstr ""
 "Ras-Tabahnova skupina dorazila na konec elfské cesty poblíž Velké řeky, kdy "
 "měli čekat na Ardonnu. Když dorazili, tak jiná skupina dorazila také."
 
-#. [side]: type=Merman Triton, id=Okean
 #. [side]
+#. [side]: type=Merman Triton, id=Okean
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:45
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:124
 msgid "Merfolk"
@@ -1963,8 +1970,8 @@ msgid ""
 msgstr ""
 "Zajímalo by mě, koho jsou. Velkého nelétavého ptáka možná? Podívejme se."
 
-#. [message]: speaker=$other_human
 #. [message]: speaker=Ardonna
+#. [message]: speaker=$other_human
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:261
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:242
 msgid "Oh, you were right!"
@@ -2033,9 +2040,9 @@ msgstr ""
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:507
 msgid ""
-"This is going to cost us, but I want to keep some gold around for "
-"emergencies — I think 50 is about right. You kids help me collect some. "
-"(<i>Cough, cough</i>)"
+"addressed_plural^This is going to cost us, but I want to keep some gold "
+"around for emergencies — I think 50 is about right. You help me collect "
+"some. (<i>Cough, cough</i>)"
 msgstr ""
 "Toto nás bude stát, ale chci si nechat nějaké zlato pro případ nouze — "
 "Myslím tak okolo 50 zlatých. Děti, pomozte mi nějaký sehnat. (<i>Kašel, "
@@ -2053,36 +2060,34 @@ msgstr "Je vám dobře?"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:519
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:558
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:553
 msgid "Yes, yes. I’m quite all right."
 msgstr "Ano, ano. Jsem v pořádku."
 
 #. [message]: speaker=Shynal
-#. [message]: speaker=Carcyn
+#. [message]: id=Carcyn,Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:523
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:562
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:566
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:557
 msgid "I don’t fancy wading in the water to fight these things."
 msgstr "Nemám chuť brodit se ve vodě kvůli boji s těmito věcmi."
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:527
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:570
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:562
 msgid "No problem. We can lure them onto land."
 msgstr "Žádný problém. Můžeme je vylákat na pevninu."
 
 #. [message]: speaker=Shynal
-#. [message]: speaker=Carcyn
+#. [message]: id=Carcyn,Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:531
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:574
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:578
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:566
 msgid "How?"
 msgstr "Jak?"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:535
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:582
-msgid "Have you never been fishing before? With bait of course."
+msgid ""
+"addressed_plural^Have you never been fishing before? With bait of course."
 msgstr "Ty jsi nikdy předtím nerybařil? Návnadou samozřejmě."
 
 #. [message]: speaker=Ras-Tabahn
@@ -2095,15 +2100,23 @@ msgstr ""
 "Toto nás bude stát, ale chci si nechat nějaké zlato pro případ nouze — "
 "Myslím tak okolo 50 zlatých. Pomoz mi nějaký sehnat. (<i>Kašel, kašel</i>)"
 
-#. [message]: speaker=Carcyn
-#. [message]: speaker=Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:550
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:554
+#. [message]: id=Carcyn,Shynal
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:549
 msgid "Right away sir. Are you feeling well?"
 msgstr "Hned pane. Je vám dobře?"
 
+#. [message]: id=Carcyn,Shynal
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:558
+msgid "self_female^I don’t fancy wading in the water to fight these things."
+msgstr "Nemám chuť brodit se ve vodě kvůli boji s těmito věcmi."
+
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:592
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:570
+msgid "Have you never been fishing before? With bait of course."
+msgstr "Ty jsi nikdy předtím nerybařil? Návnadou samozřejmě."
+
+#. [message]: speaker=Ras-Tabahn
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:580
 msgid ""
 "This is going to cost me, but I want to keep some gold around for "
 "emergencies — I think 50 is about right. I’d better send someone to collect "
@@ -2188,8 +2201,8 @@ msgstr ""
 "po mém boku. Ti nejsilnější z nich si budou dokonce pamatovat, čím si jí "
 "vysloužili."
 
-#. [side]: type=Saurian Soothsayer, id=Krissaz
 #. [side]
+#. [side]: type=Saurian Soothsayer, id=Krissaz
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:66
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:74
 msgid "Saurians"
@@ -2200,8 +2213,8 @@ msgstr "Ještěráci"
 msgid "Krissaz"
 msgstr "Krissaz"
 
-#. [side]: type=Naga Myrmidon, id=Blianxkep
 #. [side]
+#. [side]: type=Naga Myrmidon, id=Blianxkep
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:79
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:148
 msgid "Nagas"
@@ -3492,8 +3505,8 @@ msgstr ""
 "Opustili jsme ohně v horách za námi a znovu jsme se dostali do temnoty. Po "
 "dlouhé cestě jsme se dostali na konec tunelu… ale zeď nebyla úplně pevná."
 
-#. [side]: type=Dwarvish Lord, id=Golbanduth
 #. [side]
+#. [side]: type=Dwarvish Lord, id=Golbanduth
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:38
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:86
 msgid "Dwarves"
@@ -4336,6 +4349,12 @@ msgstr "Překryv prázdnoty"
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:344
 msgid "Half Void"
 msgstr "Poloprázdno"
+
+#~ msgid "Gwillyn"
+#~ msgstr "Gwillyn"
+
+#~ msgid "You kids may watch."
+#~ msgstr "Vy děcka můžete sledovat."
 
 #~ msgid "Translations"
 #~ msgstr "Překlady"

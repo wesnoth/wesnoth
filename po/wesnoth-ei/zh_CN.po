@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-27 01:20 UTC\n"
-"PO-Revision-Date: 2018-03-27 21:41+0800\n"
+"POT-Creation-Date: 2018-05-06 08:31 UTC\n"
+"PO-Revision-Date: 2018-05-18 22:22+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:13
@@ -121,8 +121,8 @@ msgid ""
 "It was the thirteenth year of Konrad II’s reign when the strange occurrences "
 "in the Estmark Hills on the eastern border of Wesnoth began."
 msgstr ""
-"这是科纳德二世统治的第三十个年头，在韦诺东部边境的伊斯特玛克丘陵周遭发生了一"
-"些奇怪的事情。"
+"这是科纳德二世统治的第三十个年头，在韦诺东部边境的东界丘陵周遭发生了一些奇怪"
+"的事情。"
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:25
@@ -169,10 +169,10 @@ msgid ""
 "River Guard posts had been abandoned, as colonists spread into the Estmarks "
 "and the orcs were driven in retreat north of the Great River."
 msgstr ""
-"在伽拉德一世国王统治的时期，为了阻挡伊斯特玛克外围的强盗和兽人掠夺者，人们在"
-"索拉多克南部的维尔帝河岸边建造了两座坚固的堡垒，以阻止伊斯特玛克之外匪盗以及"
-"兽人劫掠者进入韦诺。但近年来，殖民者深入伊斯特玛克各处定居，而兽人也被赶回了"
-"大河的北面，河岸卫队的岗哨随之也都被放弃了。"
+"在伽拉德一世国王统治的时期，为了阻挡东界丘陵外围的强盗和兽人掠夺者，人们在索"
+"拉多克南部的维尔帝河岸边建造了两座坚固的堡垒，以阻止东界丘陵之外匪盗以及兽人"
+"劫掠者进入韦诺。但近年来，殖民者深入东界各处定居，而兽人也被赶回了泰河的北"
+"面，河岸卫队的岗哨随之也都被放弃了。"
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:44
@@ -250,25 +250,22 @@ msgstr ""
 msgid "Wesnothians"
 msgstr "韦诺人"
 
-#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
-#. [side]: type=Dark Sorcerer, id=Mal-Talar
-#. [side]: type=Lich, id=Mal-Uldhar
 #. [side]
-#. [side]: type=Dark Sorcerer, id=Mal-Skraat
-#. [side]: type=Lich, id=Mal-Telnarad
 #. [side]: type=Dark Sorcerer, id=Mal-Marak
 #. [side]: type=Dark Sorcerer, id=Mal-Galkar
 #. [side]: type=Death Knight, id=Ravanal-Guard
-#. [side]: type=Revenant, id=Lanar-Skal
-#. [side]: type=Bone Knight, id=Garnad
 #. [side]: type=Necromancer, id=Mal-un-Karad
+#. [side]: type=Dark Sorcerer, id=Mal-Skraat
+#. [side]: type=Dark Adept, id=Mal-Tar
+#. [side]: type=Dark Sorcerer, id=Mal-Kallat
 #. [side]: type=Necromancer, id=Mal-un-Darak
 #. [side]: type=Necromancer, id=Mal-un-Zanrad
 #. [side]: type=Necromancer, id=Mal-un-Xadrux
 #. [side]: type=Lich, id=Mal-Grekulak
 #. [side]: type=Lich, id=Mal-Xakralan
 #. [side]: type=Lich, id=Mal-Uknalu
-#. [side]: type=Lich Lord, id=Mal-Ravanal
+#. [side]: type=Revenant, id=Lanar-Skal
+#. [side]: type=Lich, id=Mal-Telnarad
 #. [side]: type=Lich, id=Lich2
 #. [side]: type=Lich, id=Lich3
 #. [side]: type=Lich, id=Lich4
@@ -276,8 +273,11 @@ msgstr "韦诺人"
 #. [side]: type=Lich, id=Lich6
 #. [side]: type=Lich, id=Lich7
 #. [side]: type=Lich, id=Lich8
-#. [side]: type=Dark Adept, id=Mal-Tar
-#. [side]: type=Dark Sorcerer, id=Mal-Kallat
+#. [side]: type=Bone Knight, id=Garnad
+#. [side]: type=Lich Lord, id=Mal-Ravanal
+#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
+#. [side]: type=Dark Sorcerer, id=Mal-Talar
+#. [side]: type=Lich, id=Mal-Uldhar
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:95
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:123
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:158
@@ -487,10 +487,10 @@ msgid "The Escape Tunnel"
 msgstr "离脱隧道"
 
 #. [side]: type=Troll, id=Kabak
-#. [side]: type=Ogre, id=Grug
 #. [side]
 #. [side]: type=Troll Warrior, id=Darg
 #. [side]: type=Gryphon, id=Kraagak
+#. [side]: type=Ogre, id=Grug
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:42
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:83
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:69
@@ -735,7 +735,7 @@ msgid ""
 "But Gweddry and Dacyn were to find no respite within the borders of Wesnoth. "
 "They marched out of the foothills of the Estmarks into an unknown forest..."
 msgstr ""
-"然而格温德利和达辛发现在韦诺境内根本无法找到歇脚之处。他们从伊斯特玛克山脚出"
+"然而格温德利和达辛发现在韦诺境内根本无法找到歇脚之处。他们从东界丘陵的山脚出"
 "发，进入了一片未知的森林……"
 
 #. [side]
@@ -750,10 +750,10 @@ msgstr "同盟"
 msgid "Volas"
 msgstr "沃拉斯"
 
+#. [side]: type=Orcish Warlord, id=King Dra-Nak
 #. [side]: type=Orcish Warrior, id=Gruga-Har
 #. [side]: type=Orcish Nightblade, id=Bagork
 #. [side]: type=Orcish Warlord, id=Prok-Bak
-#. [side]: type=Orcish Warlord, id=King Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:75
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:80
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:134
@@ -1230,8 +1230,8 @@ msgid ""
 "before them on the other side."
 msgstr ""
 "格温德利的部下从苦涩沼泽飞速撤退，像插了翅膀似的向西北部飞速逃去。他们发现了"
-"一条通向伊斯特玛克北部的小道。当看到小道的尽头，维尔帝峡谷向自己敞开时，他们"
-"大大地松了一口气。"
+"一条穿过东界丘陵北部的小道。当看到小道的尽头，维尔帝峡谷向自己敞开时，他们大"
+"大地松了一口气。"
 
 #. [scenario]: id=05_Northern_Outpost
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:5
@@ -1435,11 +1435,11 @@ msgstr "分岔口"
 
 #. [side]: type=Orcish Warlord, id=Wak-Rano
 #. [side]: type=Dark Sorcerer, id=Mal-Arnai
+#. [side]
 #. [side]: type=Orcish Ruler, id=Draka-Kura
 #. [side]: type=Orcish Warlord, id=Varrak-Klar
 #. [side]: type=Troll Warrior, id=Unhk
 #. [side]: type=Orcish Warlord, id=Ran-Lar
-#. [side]
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:38
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:67
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:60
@@ -1475,7 +1475,7 @@ msgid ""
 "a time, before we reach another river crossing north of Glyn’s Forest. If we "
 "travel west we will not have to fight orcs immediately."
 msgstr ""
-"我们到达氏族领地了，我了解这儿。北方的路直接通往大河，河对岸是北陆的兽人领"
+"我们到达氏族领地了，我了解这儿。北方的路直接通往泰河，河对岸是北陆的兽人领"
 "土。西边的路暂时还在韦诺国界之内，直到我们到达另一条河为止。那条河穿过了格林"
 "之森的北部。如果我们往西走，我们就不会马上和兽人发生战斗。"
 
@@ -1572,7 +1572,7 @@ msgstr "让格温德利和欧瓦埃克过河"
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:145
 msgid ""
 "We have come to the Great River. Should we cross here, or try to find a ford?"
-msgstr "我们来到大河边了。是就地渡河，还是去找个浅滩？"
+msgstr "我们来到泰河边了。是就地渡河，还是去找个浅滩？"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:149
@@ -1648,12 +1648,12 @@ msgid ""
 msgstr "亡灵增援部队到了！我们必须马上过河！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:292
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:294
 msgid "Hurry up. We must get across before these undead slaughter us!"
 msgstr "快点。我们必须在亡灵杀光我们之前过河！"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:339
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:341
 msgid ""
 "Good! We have crossed. Now let’s see if we can get the ogres to join us. "
 "They have been convinced to work for the Crown in the past; maybe it can be "
@@ -1663,17 +1663,17 @@ msgstr ""
 "现在也可以再一次为王室战斗。"
 
 #. [message]: speaker=Grug
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:348
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:350
 msgid "Grug say join you will he."
 msgstr "格拉格说加入你们他会。"
 
 #. [unit]: type=Ogre
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:367
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:369
 msgid "Gork"
 msgstr "高克"
 
 #. [unit]: type=Ogre
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:374
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:376
 msgid "Drog"
 msgstr "德罗格"
 
@@ -2049,7 +2049,7 @@ msgstr "该死的精灵！我们也许该和人类结盟的……"
 #. [scenario]: id=10_Lake_Vrug
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:4
 msgid "Lake Vrug"
-msgstr "拉格湖"
+msgstr "瓦格湖"
 
 #. [side]: type=Lieutenant, id=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:26
@@ -2093,7 +2093,7 @@ msgid ""
 "island off the coast ahead that was once home to a great school of magic. I "
 "pray that the library is still intact."
 msgstr ""
-"足迹很快就没了。我们快到拉格湖了。前方湖岸之外有一个小岛，岛上曾经有一所伟大"
+"足迹很快就没了。我们快到瓦格湖了。前方湖岸之外有一个小岛，岛上曾经有一所伟大"
 "的魔法学院。但愿图书馆仍然完好无损。"
 
 #. [message]: speaker=Owaec
@@ -3130,8 +3130,8 @@ msgstr "我将整备部队。"
 msgid "The Duel"
 msgstr "决斗"
 
-#. [side]: type=Lich Lord, id=Mal-Ravanal
 #. [modify_unit]: type=Lich Lord, id=Mal-Ravanal
+#. [side]: type=Lich Lord, id=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:33
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:339
 #: data/campaigns/Eastern_Invasion/utils/character-definitions.cfg:29
@@ -3442,8 +3442,8 @@ msgid ""
 "Sir Terraent, your service to the crown has been a beacon of light in these "
 "dark times. We are appointing you to command the River Guard in Estmark."
 msgstr ""
-"特拉恩特爵士，你为王室建立的功勋有如黑暗中的明灯。我将委派你指挥伊斯特玛克的"
-"河岸卫队。"
+"特拉恩特爵士，你为王室建立的功勋有如黑暗中的明灯。我将委派你指挥东界的河岸卫"
+"队。"
 
 #. [message]: speaker=Terraent
 #: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:152
@@ -3458,7 +3458,7 @@ msgid ""
 "We wish to offer you a new home in the Estmark Hills along with Our thanks."
 msgstr ""
 "格拉格，关于你和你的部落对格温德利所部的帮助，他已告知于我。我们希望能够为你"
-"们在伊斯特马克丘陵里安一个新家，以示感谢。"
+"们在东界丘陵里安一个新家，以示感谢。"
 
 #. [message]: speaker=Grug
 #: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:168
@@ -3485,8 +3485,7 @@ msgid ""
 "Engineer, much of Estmark region stands in ruins. The crown has need of your "
 "skills to clear the wreckage and organize the reconstruction."
 msgstr ""
-"工程师，伊斯特玛克的大部分都成了废墟。为了废墟清理和组织重建，王室需要你的才"
-"干。"
+"工程师，东界的大部分都成了废墟。为了废墟清理和组织重建，王室需要你的才干。"
 
 #. [message]: speaker=Engineer
 #: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:193
@@ -3538,8 +3537,7 @@ msgstr "的确。现在不要打断我……单膝下跪，格温德利。"
 msgid ""
 "And arise, Gweddry, Earl of Estmark. The land for which you shed your blood "
 "shall be put under your hand to be made green again."
-msgstr ""
-"平身，格温德利，伊斯特玛克伯爵。这片你所染血的土地，会经由你的手重获绿色。"
+msgstr "平身，格温德利，东界伯爵。这片你所染血的土地，会经由你的手重获绿色。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:275

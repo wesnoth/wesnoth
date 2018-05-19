@@ -22,7 +22,6 @@
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "preferences/game.hpp"
-#include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "preferences/credentials.hpp"
 #include "preferences/lobby.hpp"
@@ -64,7 +63,11 @@
 #include "gui/widgets/window.hpp"
 #include "lexical_cast.hpp"
 
+#if BOOST_VERSION >= 106700
+#include <boost/integer/common_factor_rt.hpp>
+#else
 #include <boost/math/common_factor_rt.hpp>
+#endif
 
 namespace gui2
 {
@@ -133,24 +136,12 @@ preferences_dialog::preferences_dialog(const config& game_cfg, const PREFERENCE_
 			return lhs["name"].t_str().str() < rhs["name"].t_str().str();
 		});
 
-	cat_names_ = {
-		// TODO: This list needs to be synchronized with the hotkey::HOTKEY_CATEGORY enum
-		// Find some way to do that automatically
-		_("General"),
-		_("Saved Games"),
-		_("Map Commands"),
-		_("Unit Commands"),
-		_("Player Chat"),
-		_("Replay Control"),
-		_("Planning Mode"),
-		_("Scenario Editor"),
-		_("Editor Palettes"),
-		_("Editor Tools"),
-		_("Editor Clipboard"),
-		_("Debug Commands"),
-		_("Custom WML Commands"),
-		// HKCAT_PLACEHOLDER intentionally excluded (it shouldn't have any anyway)
-	};
+	for(const auto& name : hotkey::get_category_names()) {
+		// Don't include categories with no hotkeys
+		if(!hotkey::get_hotkeys_by_category(name.first).empty()) {
+			cat_names_[name.first] = t_string(name.second, "wesnoth-lib");
+		}
+	}
 }
 
 // Helper function to refresh resolution list
@@ -163,7 +154,11 @@ void preferences_dialog::set_resolution_list(menu_button& res_list, CVideo& vide
 		config option;
 		option["label"] = formatter() << res.x << font::unicode_multiplication_sign << res.y;
 
+#if BOOST_VERSION >= 106700
+		const int div = boost::integer::gcd(res.x, res.y);
+#else
 		const int div = boost::math::gcd(res.x, res.y);
+#endif
 
 		const int x_ratio = res.x / div;
 		const int y_ratio = res.y / div;
@@ -484,6 +479,10 @@ void preferences_dialog::post_build(window& window)
 	register_integer("scaling_slider", true,
 		font_scaling, set_font_scaling);
 #endif
+	/* FPS LIMITER */
+	register_bool("fps_limiter", true,
+		[]() { return draw_delay() != 0; }, [](bool v) { set_draw_delay(v ? -1 : 0); });
+
 	/* SELECT THEME */
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "choose_theme", false),
@@ -604,7 +603,7 @@ void preferences_dialog::post_build(window& window)
 		ADVANCED_PREF_TYPE pref_type;
 		try {
 			pref_type = ADVANCED_PREF_TYPE::string_to_enum(option["type"].str());
-		} catch(bad_enum_cast&) {
+		} catch(const bad_enum_cast&) {
 			continue;
 		}
 
@@ -745,7 +744,7 @@ void preferences_dialog::post_build(window& window)
 
 	std::vector<config> hotkey_category_entries;
 	for(const auto& name : cat_names_) {
-		hotkey_category_entries.emplace_back(config {"label", name, "checkbox", false});
+		hotkey_category_entries.emplace_back("label", name.second, "checkbox", false);
 	}
 
 	multimenu_button& hotkey_menu = find_widget<multimenu_button>(&window, "hotkey_category_menu", false);
@@ -923,18 +922,21 @@ void preferences_dialog::hotkey_type_filter_callback(window& window) const
 
 	if(!toggle_states.none()) {
 		for(size_t h = 0; h < visible_hotkeys_.size(); ++h) {
-			int index = 0;
+			unsigned index = 0;
 
-			for(size_t i = 0; i < cat_names_.size(); ++i) {
-				hotkey::HOTKEY_CATEGORY cat = hotkey::HOTKEY_CATEGORY(i);
-
-				if(visible_hotkeys_[h]->category == cat) {
-					index = i;
+			for(const auto& name : cat_names_) {
+				if(visible_hotkeys_[h]->category == name.first) {
 					break;
+				} else {
+					++index;
 				}
 			}
 
-			res[h] = toggle_states[index];
+			if(index < toggle_states.size()) {
+				res[h] = toggle_states[index];
+			} else {
+				res[h] = false;
+			}
 		}
 	} else {
 		// Nothing selected. It means that *all* categories are shown.

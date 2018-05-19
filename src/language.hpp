@@ -44,7 +44,7 @@ struct language_def
 	{
 		try {
 			this->percent = percent.empty() ? 100 : std::stoi(percent);
-		} catch(std::invalid_argument&) {
+		} catch(const std::invalid_argument&) {
 			this->percent = 100;
 		}
     }
@@ -100,3 +100,5 @@ void init_textdomains(const config& cfg);
 bool init_strings(const config& cfg);
 
 bool load_language_list();
+
+void set_min_translation_percent(int percent);

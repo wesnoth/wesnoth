@@ -261,11 +261,13 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 		} else {
 			have_era = !game["require_era"].to_bool(true);
-			era = VGETTEXT("$era_name (missing)", {{"era_name", game["mp_era_name"].str()}});
+			era = game["mp_era_name"].str();
 			era_short = make_short_name(era);
 			verified = false;
 
-			addons_outcome = NEED_DOWNLOAD;
+			if(!have_era) {
+				addons_outcome = NEED_DOWNLOAD;
+			}
 		}
 	} else {
 		era = _("Unknown era");
@@ -277,7 +279,8 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 	info_stream << era;
 
 	for(const config& cfg : game.child_range("modification")) {
-		mod_info += (mod_info.empty() ? "" : ", ") + cfg["name"].str();
+		mod_info.emplace_back(cfg["name"].str(), true);
+		info_stream << ' ' << mod_info.back().first;
 
 		if(cfg["require_modification"].to_bool(false)) {
 			if(const config& mod = game_config.find_child("modification", "id", cfg["id"])) {
@@ -285,14 +288,18 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			} else {
 				have_all_mods = false;
-				mod_info += " " + _("(missing)");
+				mod_info.back().second = false;
 
 				addons_outcome = NEED_DOWNLOAD;
 			}
 		}
 	}
 
-	info_stream << mod_info;
+	std::sort(mod_info.begin(), mod_info.end(), [](const std::pair<std::string, bool>& lhs, const std::pair<std::string, bool>& rhs) {
+		return translation::icompare(lhs.first, rhs.first) < 0;
+	});
+
+	info_stream << ' ';
 
 	if(map_data.empty()) {
 		map_data = filesystem::read_map(game["mp_scenario"]);
@@ -307,10 +314,9 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			msi << map.w() << font::unicode_multiplication_sign << map.h();
 			map_size_info = msi.str();
 			info_stream << spaced_em_dash() << map_size_info;
-		} catch(incorrect_map_format_error& e) {
-			ERR_CF << "illegal map: " << e.message << std::endl;
+		} catch(const incorrect_map_format_error&) {
 			verified = false;
-		} catch(wml_exception& e) {
+		} catch(const wml_exception& e) {
 			ERR_CF << "map could not be loaded: " << e.dev_message << '\n';
 			verified = false;
 		}
@@ -424,7 +430,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 		if(vacant_slots > 0) {
 			status = formatter() << _n("Vacant Slot:", "Vacant Slots:", vacant_slots) << " " << vacant_slots << "/" << s["max"];
 		} else {
-			// TODO: status message for no vacant sides!
+			status = _("mp_game_available_slots^Full");
 		}
 	}
 
@@ -450,7 +456,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 	} else if(shroud) {
 		vision = _("Shroud");
 	} else {
-		vision = _("none");
+		vision = _("vision^none");
 	}
 
 	if(game["mp_countdown"].to_bool()) {
@@ -459,7 +465,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			<< game["mp_countdown_turn_bonus"].str() << "/"
 			<< game["mp_countdown_action_bonus"].str();
 	} else {
-		time_limit = _("none");
+		time_limit = _("time limit^none");
 	}
 
 	map_info = info_stream.str();
@@ -549,8 +555,8 @@ const char* game_info::display_status_string() const
 
 bool game_info::match_string_filter(const std::string& filter) const
 {
-	const std::string& s1 = map_info;
-	const std::string& s2 = name;
+	const std::string& s1 = name;
+	const std::string& s2 = map_info;
 	return std::search(s1.begin(), s1.end(), filter.begin(), filter.end(),
 			chars_equal_insensitive) != s1.end()
 	    || std::search(s2.begin(), s2.end(), filter.begin(), filter.end(),

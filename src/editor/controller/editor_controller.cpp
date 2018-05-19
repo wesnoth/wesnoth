@@ -81,6 +81,7 @@ editor_controller::editor_controller(const config &game_config)
 	init_gui();
 	toolkit_.reset(new editor_toolkit(*gui_.get(), key_, game_config_, *context_manager_.get()));
 	help_manager_.reset(new help::help_manager(&game_config));
+	context_manager_->locs_ = toolkit_->get_palette_manager()->location_palette_.get();
 	context_manager_->switch_context(0, true);
 	init_tods(game_config);
 	init_music(game_config);
@@ -173,10 +174,10 @@ EXIT_STATUS editor_controller::main_loop()
 		while (!do_quit_) {
 			play_slice();
 		}
-	} catch (editor_exception& e) {
+	} catch (const editor_exception& e) {
 		gui2::show_transient_message(_("Fatal error"), e.what());
 		return EXIT_ERROR;
-	} catch (wml_exception& e) {
+	} catch (const wml_exception& e) {
 		e.show();
 	}
 	return quit_mode_;
@@ -189,10 +190,10 @@ void editor_controller::do_screenshot(const std::string& screenshot_filename /* 
 {
 	try {
 		surface screenshot = gui().screenshot(true);
-		if(screenshot.null() || !image::save_image(screenshot, screenshot_filename)) {
+		if(screenshot.null() || image::save_image(screenshot, screenshot_filename) != image::save_result::success) {
 			ERR_ED << "Screenshot creation failed!\n";
 		}
-	} catch (wml_exception& e) {
+	} catch (const wml_exception& e) {
 		e.show();
 	}
 }
@@ -926,6 +927,10 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 
 		// Side specific ones
 		case HOTKEY_EDITOR_SIDE_NEW:
+			if(get_current_map_context().teams().size() >= 9) {
+				size_t new_side_num = get_current_map_context().teams().size() + 1;
+				toolkit_->get_palette_manager()->location_palette_->add_item(std::to_string(new_side_num));
+			}
 			get_current_map_context().new_side();
 			gui_->init_flags();
 			return true;

@@ -306,14 +306,13 @@ void user_choice_manager::update_local_choice()
 	//equals to any side in sides that is local, 0 if no such side exists.
 	local_choice_ = 0;
 	//if for any side from which we need an answer
-	std::string sides_str;
+	std::vector<t_string> sides_str;
 	for(int side : required_)
 	{
 		//and we haven't already received our answer from that side
 		if(res_.find(side) == res_.end())
 		{
-			sides_str += " ";
-			sides_str += std::to_string(side);
+			sides_str.push_back(std::to_string(side));
 			//and it is local
 			if(resources::gameboard->get_team(side).is_local() && !resources::gameboard->get_team(side).is_idle())
 			{
@@ -323,7 +322,13 @@ void user_choice_manager::update_local_choice()
 			}
 		}
 	}
-	wait_message_ = VGETTEXT("waiting for $desc from side(s) $sides", {std::make_pair("desc", uch_.description()), std::make_pair("sides", sides_str)});
+
+	wait_message_ = VNGETTEXT(
+		"waiting for $desc from side $sides",
+		"waiting for $desc from sides $sides",
+		sides_str.size(),
+		{std::make_pair("desc", uch_.description()), std::make_pair("sides", utils::format_conjunct_list("", sides_str))}
+	);
 	if(local_choice_prev != local_choice_) {
 		changed_event_.notify_observers();
 	}

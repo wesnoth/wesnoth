@@ -137,7 +137,7 @@ void gamemap::read(const std::string& data, const bool allow_invalid)
 	try {
 		tiles_ = t_translation::read_game_map(data_only, starting_positions_, t_translation::coordinate{ border_size(), border_size() });
 
-	} catch(t_translation::error& e) {
+	} catch(const t_translation::error& e) {
 		// We re-throw the error but as map error.
 		// Since all codepaths test for this, it's the least work.
 		throw incorrect_map_format_error(e.message);
@@ -159,7 +159,7 @@ void gamemap::read(const std::string& data, const bool allow_invalid)
 			if(tdata_->map().count(t) == 0) {
 				if(!tdata_->try_merge_terrains(t)) {
 					std::stringstream ss;
-					ss << "Illegal tile in map: (" << t_translation::write_terrain_code(t)
+					ss << "Unknown tile in map: (" << t_translation::write_terrain_code(t)
 						   << ") '" << t << "'";
 					throw incorrect_map_format_error(ss.str().c_str());
 				}

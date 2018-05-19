@@ -39,6 +39,7 @@
 
 #include <cassert>
 #include <ios>
+#include <set>
 
 static lg::log_domain log_config("config");
 static lg::log_domain log_hotkey("hotkey");
@@ -63,7 +64,7 @@ void make_screenshot(const std::string& name, bool map_screenshot)
 }
 namespace hotkey {
 
-static void event_execute(const SDL_Event& event, command_executor* executor);
+static void event_queue(const SDL_Event& event, command_executor* executor);
 
 bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*index*/, bool press, bool release)
 {
@@ -523,23 +524,36 @@ void command_executor::get_menu_images(display& disp, std::vector<config>& items
 
 void mbutton_event(const SDL_Event& event, command_executor* executor)
 {
-	event_execute(event, executor);
+	event_queue(event, executor);
+
+	/* Run mouse events immediately.
+
+	This is necessary because the sidebar doesn't allow set_button_state() to be called after a
+	button has received the mouse press event but before it has received the mouse release event.
+	When https://github.com/wesnoth/wesnoth/pull/2872 delayed the processing of input events,
+	set_button_state() ended up being called at such a time. However, if we run the event handlers
+	now, the button (if any) hasn't received the press event yet and we can call set_button_state()
+	safely.
+
+	See https://github.com/wesnoth/wesnoth/issues/2884 */
+
+	run_events(executor);
 }
 
 void jbutton_event(const SDL_Event& event, command_executor* executor)
 {
-	event_execute(event, executor);
+	event_queue(event, executor);
 }
 
 void jhat_event(const SDL_Event& event, command_executor* executor)
 {
-	event_execute(event, executor);
+	event_queue(event, executor);
 }
 
 void key_event(const SDL_Event& event, command_executor* executor)
 {
 	if (!executor) return;
-	event_execute(event,executor);
+	event_queue(event,executor);
 }
 
 void keyup_event(const SDL_Event&, command_executor* executor)
@@ -548,14 +562,22 @@ void keyup_event(const SDL_Event&, command_executor* executor)
 	executor->handle_keyup();
 }
 
-static void event_execute(const SDL_Event& event, command_executor* executor)
+void run_events(command_executor* executor)
 {
-	if (!executor) return;
-	executor->execute_command(event);
-	executor->set_button_state();
+	if(!executor) return;
+	bool commands_ran = executor->run_queued_commands();
+	if(commands_ran) {
+		executor->set_button_state();
+	}
 }
 
-void command_executor::execute_command(const SDL_Event& event, int index)
+static void event_queue(const SDL_Event& event, command_executor* executor)
+{
+	if (!executor) return;
+	executor->queue_command(event);
+}
+
+void command_executor::queue_command(const SDL_Event& event, int index)
 {
 	LOG_HK << "event 0x" << std::hex << event.type << std::dec << std::endl;
 	if(event.type == SDL_TEXTINPUT) {
@@ -581,16 +603,21 @@ void command_executor::execute_command(const SDL_Event& event, int index)
 		press_event_sent_ = true;
 	}
 
-	if (!can_execute_command(command, index)
-			|| do_execute_command(command, index, press, release)) {
+	command_queue_.emplace_back(command, index, press, release);
+}
+
+void command_executor::execute_command_wrap(const command_executor::queued_command& command)
+{
+	if (!can_execute_command(*command.command, command.index)
+			|| do_execute_command(*command.command, command.index, command.press, command.release)) {
 		return;
 	}
 
-	if (!press) {
+	if (!command.press) {
 		return; // none of the commands here respond to a key release
     }
 
-	switch (command.id) {
+	switch (command.command->id) {
 		case HOTKEY_FULLSCREEN:
 			CVideo::get_singleton().toggle_fullscreen();
 			break;
@@ -628,9 +655,42 @@ void command_executor::execute_command(const SDL_Event& event, int index)
 			}
 			break;
 		default:
-			DBG_G << "command_executor: unknown command number " << command.id << ", ignoring.\n";
+			DBG_G << "command_executor: unknown command number " << command.command->id << ", ignoring.\n";
 			break;
 	}
+}
+
+// Removes duplicate commands caused by both SDL_KEYDOWN and SDL_TEXTINPUT triggering hotkeys.
+// See https://github.com/wesnoth/wesnoth/issues/1736
+std::vector<command_executor::queued_command> command_executor::filter_command_queue()
+{
+	std::vector<queued_command> filtered_commands;
+
+	/** A command plus "key released" flag. Otherwise, we will filter out key releases that are preceded by a keypress. */
+	using command_with_keyrelease = std::pair<const hotkey_command*, bool>;
+	std::set<command_with_keyrelease> seen_commands;
+
+	for(const queued_command& cmd : command_queue_) {
+		command_with_keyrelease command_key(cmd.command, cmd.release);
+		if(seen_commands.find(command_key) == seen_commands.end()) {
+			seen_commands.insert(command_key);
+			filtered_commands.push_back(cmd);
+		}
+	}
+
+	command_queue_.clear();
+
+	return filtered_commands;
+}
+
+bool command_executor::run_queued_commands()
+{
+	std::vector<queued_command> commands = filter_command_queue();
+	for(const queued_command& cmd : commands) {
+		execute_command_wrap(cmd);
+	}
+
+	return !commands.empty();
 }
 
 void command_executor_default::set_button_state()

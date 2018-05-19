@@ -1,0 +1,402 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2018 wesnoth "Battle for Wesnoth"
+.
+.SH NAME
+wesnoth \- Battle for Wesnoth, ein rundenbasiertes Strategiespiel
+.
+.SH ZUSAMMENFASSUNG
+.
+\fBwesnoth\fP [\fIOPTIONEN\fP] [\fIORT_DER_SPIELDATEN\fP]
+.
+.SH BESCHREIBUNG
+.
+Battle for \fBWesnoth\fP ist ein rundenbasiertes Strategiespiel in einem
+Fantasy\-Szenario.
+
+Besiegen Sie alle feindlichen Anführer, indem Sie einen geschickt gewählten
+Kader an Truppen in die Schlacht führen und dabei auch Ihr Gold und Ihre
+Dörfer verwalten. Alle Einheiten haben ihre eigenen Stärken und Schwächen;
+um siegreich hervor zu gehen, müssen Sie diese Kräfte zu Ihrem Vorteil
+nutzen und zugleich den Gegner an selbigem hindern. Mit wachsender Erfahrung
+erlernen die Truppen neue Fertigkeiten und werden mächtiger. Spielt in Eurer
+eigenen Sprache und testet Eure Fertigkeiten gegen kluge Computer\-Gegner,
+oder tretet Wesnoths vielfältiger Gemeinschaft der Online\-Spieler
+bei. Erstellt eure eigen angepassten Einheiten, Szenarien oder Kampagnen,
+und teilt diese mit anderen.
+.
+.SH KOMMANDOZEILENOPTIONEN
+.
+.TP 
+\fB\-\-gunzip\fP\fI\ Dateiname.bz2\fP
+Entpackt einen Spielstand (\fIDateiname.bz2\fP), der als bzip2 komprimiert sein
+sollte, und speichert ihn ohne die Dateiendung .bz2. Dabei wird
+\fIDateiname.bz2\fP entfernt.
+.TP 
+\fB\-\-bzip\fP\fI\ Dateiname\fP
+Komprimiert einen normalen textbasierten Spielstand (\fIDateiname\fP) in einen
+als bzip2 komprimierten Spielstand \fIDateiname\fP.bz2 um und entfernt die alte
+Datei \fIDateiname\fP.
+.TP 
+\fB\-c[\fP\fIKampagnen\-ID\fP\fB],\ \-\-campaign[\fP\fI=Kampagnen\-ID\fP\fB]\fP
+Startet die Kampagne mit der ID \fIKampagnen\-ID\fP.  Ein Auswahlmenü wird
+angezeigt falls keine ID angegeben wurde.
+.TP 
+\fB\-\-campaign\-difficulty[\fP\fI=Schwierigkeitsgrad\fP\fB]\fP
+Der \fISchwierigkeitsgrad\fP der gewünschten Kampagne (1 bis Max). Falls nicht
+angegeben, wird ein Dialog zur Auswahl der Kampagnen\-Einstufung angezeigt.
+.TP 
+\fB\-\-campaign\-scenario\fP\fI\ Szenario\-ID\fP
+Die ID des Szenarios der gewünschten Kampagne. Falls diese Option nicht
+angegeben ist wird das erste Szenario gestartet.
+.TP 
+\fB\-\-core\fP\fI\ Core\-ID\fP
+Ersetzt den Core mit dem angegebenen.
+.TP 
+\fB\-\-data\-dir\fP\fI\ Verzeichnis\fP
+Das angegebene Verzeichnis als Daten\-Verzeichnis verwenden.
+.TP 
+\fB\-\-data\-path\fP
+Zeigt an, wo sich das Verzeichnis für die Nutzerdaten (Spielstände, Add\-ons,
+\&...) befindet.
+.TP 
+\fB\-d, \-\-debug\fP
+Erlaubt zusätzliche Kommandos in der spieleigenen Befehlszeile (auf der
+Wiki\-Seite https://www.wesnoth.org/wiki/CommandMode sind weitere
+Informationen hierzu verfügbar).
+.TP 
+\fB\-e[\fP\fIDatei\fP\fB],\ \-\-editor[\fP\fI=Datei\fP\fB]\fP
+Den im Spiel integrierten Karteneditor direkt starten. Falls \fIDatei\fP
+angegeben wurde, verhält es sich äquivalent zu \fB\-l \-\-load\fP.
+.TP 
+\fB\-\-fps\fP
+Aktiviert die Anzeige der Bilder pro Sekunde im Spiel.
+.TP 
+\fB\-f, \-\-fullscreen\fP
+Startet das Programm im Vollbildmodus.
+.TP 
+\fB\-\-gunzip\fP\fI\ Dateiname.gz\fP
+Entpackt einen Spielstand (\fIDateiname.gz\fP), der als gzip komprimiert sein
+sollte, und speichert ihn ohne die Dateiendung .gz. Dabei wird
+\fIDateiname.gz\fP entfernt.
+.TP 
+\fB\-\-gzip\fP\fI\ Dateiname\fP
+Komprimiert einen normalen textbasierten Spielstand (\fIDateiname\fP) in einen
+als gzip komprimierten Spielstand \fIDateiname\fP.gz um und entfernt die alte
+Datei \fIDateiname\fP.
+.TP 
+\fB\-h, \-\-help\fP
+Gibt die möglichen Kommandozeilenoptionen aus.
+.TP 
+\fB\-l,\ \-\-load\fP\fI\ Datei\fP
+Lädt den Spielstand \fIDatei\fP aus dem Standard\-Spielstand\-Verzeichnis. Falls
+auch die \fB\-e\fP oder \fB\-\-editor\fP Option verwendet wurde, wird der Editor mit
+der Karte aus \fIDatei\fP geöffnet. Falls ein Verzeichnis angegeben wurde, wird
+der Editor mit einem Dialog zum Laden einer Karte aus eben diesem
+Verzeichnis gestartet.
+.TP 
+\fB\-L,\ \-\-language\fP\fI\ Sprache\fP
+Benutzt für diese Sitzung die \fISprache\fP (Symbol). Beispiel: \fB\-\-language
+ang_GB@latin\fP
+.TP 
+\fB\-\-log\-\fP\fIstufe\fP\fB=\fP\fIDomäne1\fP\fB,\fP\fIDomäne2\fP\fB,\fP\fI...\fP
+Setzt die \fIStufe\fP der Debugausgabe. Verwenden Sie \fBall\fP, um sämtliche
+Domänen zu verwenden. Verfügbare \fIStufen\fP: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP. Für doie meisten Logdomänen wird standardmäßig
+wird die Stufe \fBwarning\fP verwendet, die \fBdeprecation\fP Domäne dagegen
+benutzt \fBnone\fP als Voreinstellung.
+.TP 
+\fB\-\-log\-precise\fP
+Zeigt die timestamps in der Logdatei mit höherer Genauigkeit.
+.TP 
+\fB\-\-log\-strict\fP\fI\ Stufe\fP
+Sorgt dafür dass die Unit Tests scheitern falls irgendeine Log\-Domäne einen
+Meldung auf dee entsprechenden \fIStufe\fP erhält. Wird nur zusammen mit \fB\-u\fP
+benutzt.
+.TP 
+\fB\-\-logdomains[\fP\fI=Filter\fP\fB]\fP
+Gibt die definierten Log\-Domänen aus (nur jene, die \fIFilter\fP enthalten,
+falls angegeben).
+.TP 
+\fB\-\-max\-fps\fP\fI\ FPS\fP
+Setzt die Anzahl der gezeichneten Bilder pro Sekunde, die vom Spiel
+angezeigt werden. Der Wert sollte zwischen 1 und 1000 liegen. Die
+Voreinstellung ist die Bildwiederholfrequenz des Monitors.
+.TP 
+\fB\-m, \-\-multiplayer\fP
+Startet ein Spiel im Mehrspieler\-Modus. Es gibt noch weitere Optionen, die,
+wie weiter unten beschrieben, gemeinsam mit \fB\-\-multiplayer\fP verwendet
+werden können.
+.TP 
+\fB\-\-mp\-test\fP
+Startet die Multiplayer Test Szenarios.
+.TP 
+\fB\-\-no\-delay\fP
+Das Spiel wird ohne Verzögerungen ausgeführt. Wird zum Ausführen grafischer
+Benchmakrs verwendet. Diese Option ist standardmäßig aktiviert, wenn die
+Option \fB\-\-nogui\fP gesetzt ist.
+.TP 
+\fB\-\-noaddons\fP
+Startet das Programm ohne Add\-ons.
+.TP 
+\fB\-\-nocache\fP
+Veranlasst das Programm, keine Daten zwischenzuspeichern.
+.TP 
+\fB\-\-nogui\fP
+Startet das Spiel ohne Graphische Oberfläche. Nur in Kombination mit
+\fB\-\-multiplayer\fP oder \fB\-\-screenshot\fP oder \fB\-\-plugin\fP verfügbar.
+.TP 
+\fB\-\-nomusic\fP
+Deaktiviert die Musik im Spiel.
+.TP 
+\fB\-\-noreplaycheck\fP
+Überprüft die Spielaufzeichnung bei Unit Tests nicht. Wird nur zusammen mit
+\fB\-u\fP benutzt.
+.TP 
+\fB\-\-nosound\fP
+Deaktiviert jegliche Soundeffekte im Spiel.
+.TP 
+\fB\-\-password\fP\fI\ Passwort\fP
+Benutzt das angegebene \fIPasswort\fP um sich zu einem Server zu verbinden,
+andere Einstellungen werden ignoriert. Ist unsicher.
+.TP 
+\fB\-\-path\fP
+Zeigt an, wo sich das Verzeichnis mit den Spieldateien befindet.
+.TP 
+\fB\-p,\ \-\-preprocess\fP\fI\ Quelldatei/Verzeichnis\fP\fB\ \fP\fIZielverzeichnis\fP
+Eine angegebene Datei/Verzeichnis vorverarbeiten. Wenn ein Verzeichnis
+angegeben wird, wird dieses basierend auf den bekannten
+Vorverarbeitungsregeln rekursiv verarbeitet. Für jede Eingabedatei wird im
+Zielverzeichnis eine normale .cfg Datei und eine vorverarbeitete .cfg Datei
+erzeugt. Die core Makros aus »data/core/macros« werden vor den angegebenen
+Ressourcen vorverarbeitet. Beispiel: \fB\-p ~/wesnoth/data/campaigns/tutorial
+~/ergebnis\fP. Siehe
+https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor für
+weitere Dokumentation.
+.TP 
+\fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
+Durch Kommas getrennte Liste von Defines welche vom \fB\-\-preprocess\fP Kommando
+benutzt werden. Falls \fBSKIP_CORE\fP in der Liste der Defines ist wird
+"data/core" ignoriert.
+.TP 
+\fB\-\-preprocess\-input\-macros\fP\fI\ Quelldatei\fP
+Wird nur vom \fB\-\-preprocess\fP Befehl verwendet. Gibt eine \fB[preproc_define]\fP
+enthaltende Datei an, die vor dem Vorbearbeiten eingelesen wird.
+.TP 
+\fB\-\-preprocess\-output\-macros [\fP\fI=Zieldatei\fP\fB]\fP
+Wird nur vom »\-\-preprocess« Befehl verwendet. Gibt alle vorverarbeiteten
+Makros in die Zieldatei aus. Falls keine Datei angegeben wird, wird die
+Ausgabe in die Datei »_MACROS_.cfg« im Zielverzeichnis des
+Vorverarbeitungs\-Befehls geschrieben. Die erzeugte Datei kann als Eingabe
+für \fB\-\-preprocess\-input\-macros\fP verwendet werden. Diese Option sollte vor
+dem \-\-preprocess Befehl angegeben werden.
+.TP 
+\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
+Ermöglicht es, die Auflösung zu bestimmen, in der das Spiel gestartet
+wird. Beispiel: \fB\-r 800x600\fP
+.TP 
+\fB\-\-render\-image\fP\fI\ Bild\fP\fB\ \fP\fIAusgabe\fP
+Akzeptiert einen gültigen "Image Path Ausdruck" mit Image Path Funktionen,
+und speichert die Ausgabedatei als .png, oder als .bmp wenn der Dateiname
+mit .bmp endet. Dokumentation zu Image Path Funktionen ist unter
+https://wiki.wesnoth.org/ImagePathFunctionWML einsehbar.
+.TP 
+\fB\-R,\ \-\-report\fP
+Erzeugt die Spielverzeichnisse und gibt Informationen für Bugreports aus.
+.TP 
+\fB\-\-rng\-seed\fP\fI\ Seed\fP
+Füttert den Zufallszahlengenerator mit der Zahl \fISeed\fP. Beispiel:
+\fB\-\-rng\-seed 0\fP
+.TP 
+\fB\-\-screenshot\fP\fI\ Karte\fP\fB\ \fP\fIAusgabe\fP
+Erzeugt ein Bildschirmfoto der \fIKarte\fP und speichert ihn in einer Datei
+namens \fIAusgabe\fP ohne die Graphische Oberfläche zu initialisieren.
+.TP 
+\fB\-s[\fP\fIHost\fP\fB],\ \-\-server[\fP\fI=Host\fP\fB]\fP
+Verbindet sich, falls angegeben, mit dem entsprechenden Rechner, oder aber
+zum ersten Rechner in den Einstellungen. Beispiel: \fB\-\-server
+server.wesnoth.org\fP
+.TP 
+\fB\-\-showgui\fP
+Startet das Spiel mit Graphischer Oberfläche, selbst wenn implizit
+\fB\-\-nogui\fP gesetzt ist.
+.TP 
+\fB\-\-strict\-validation\fP
+Prüfungsfehler werden als schwerwiegende Fehler angesehen.
+.TP 
+\fB\-t[\fP\fISzenario\-ID\fP\fB],\ \-\-test[\fP\fI=Szenario\-ID\fP\fB]\fP
+Startet das Spiel in einem kleinen Testszenario. Dies sollte ein Szenario
+sein welches mit einem \fB[test]\fP WML Tag definiert wurde. Standard ist
+\fBtest\fP.  Eine Demonstration des \fB[micro_ai]\fP Features kann mit
+\fBmicro_ai_test\fP gestartet werden. Impliziert \fB\-\-nogui\fP.
+.TP 
+\fB\-u,\ \-\-unit\fP\fI\ Szenario\-ID\fP
+Startet das angegebene Testszenario als Unit Test. Impliziert \fB\-\-nogui\fP.
+.TP 
+\fB\-\-userconfig\-dir\fP\fI\ Name\fP
+Setzt das Konfigurationsverzeichnis des Benutzers auf \fIName\fP in $HOME oder
+»Eigene Dateien\eMy Games« auf Windows. Es kann auch ein absoluter Pfad zum
+Konfigurationsverzeichnis außerhalb von $HOME oder »Eigene Dateien\eMy
+Games« angegeben werden. Unter Windows ist es auch möglich ein Verzeichnis
+relativ zum Installationsverzeichnis mit ".\e" oder "..\e"
+anzugeben. Standard ist unter Linux und BSD $XDG_CONFIG_HOME
+bzw. $HOME/.config/wesnoth, auf anderen Betriebssystemen ist ist es das
+Nutzerdatenverzeichnis.
+.TP 
+\fB\-\-userconfig\-path\fP
+Zeigt an, wo sich das Verzeichnis für die Nutzereinstellungen befindet.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ Name\fP
+Setzt das Verzeichnis für Nutzerdaten (Spielstände, Add\-ons, ...) auf
+\fIName\fP in $HOME oder »Eigene Dateien\eMy Games« auf Windows. Es kann auch
+ein absoluter Pfad zum Nutzerdatenverzeichnis außerhalb von $HOME oder
+»Eigene Dateien\eMy Games« angegeben werden. Unter Windows ist es auch
+möglich ein Verzeichnis relativ zum Installationsverzeichnis mit ".\e" oder
+"..\e" anzugeben.
+.TP 
+\fB\-\-username\fP\fI\ Benutzername\fP
+Benutzt den angegebene \fIBenutzernamen\fP um sich zu einem Server zu
+verbinden, andere Einstellungen werden ignoriert.
+.TP 
+\fB\-\-userdata\-path\fP
+Zeigt an, wo sich das Verzeichnis für die Nutzerdaten befindet.
+.TP 
+\fB\-\-validcache\fP
+Nimmt an, dass der Cache gültig ist. (gefährlich)
+.TP 
+\fB\-v, \-\-version\fP
+Zeigt die Versionsnummer an und beendet das Programm.
+.TP 
+\fB\-w, \-\-windowed\fP
+Startet das Programm im Fenstermodus.
+.TP 
+\fB\-\-with\-replay\fP
+Gibt das Spiel wieder, das mit der \fB\-\-load\fP Option geladen wurde.
+.
+.SH "Zusätzliche Optionen für \-\-multiplayer"
+.
+Die Parteispezifischen Einstellungen sind mit \fINummer\fP markiert. \fINummer\fP
+muss dabei durch die Nummer der jeweiligen Partei ersetzt werden. Meistens
+ist diese Nummer 1 oder 2, doch hängt es letztendlich von der Anzahl der
+möglichen Spieler in dem gewählten Szenario ab.
+.TP 
+\fB\-\-ai_config\fP\fI\ Nummer\fP\fB:\fP\fIWert\fP
+Gibt eine Konfigurationsdatei an, um aus dieser die KI für die angegebene
+Partei zu laden.
+.TP 
+\fB\-\-algorithm\fP\fI\ Nummer\fP\fB:\fP\fIWert\fP
+Aktiviert einen andere KI\-Algorithmus für die angegebene Partei, welcher
+benutzt wird falls die Partei von eine KI gesteuert wird. Der angegebene
+Algorithmus muss durch einen \fB[ai]\fP Tag definiert sein. KI\-Algorithmen sind
+in »data/ai/ais« und »data/ai/dev« definiert, auch Add\-ons können neue
+KI\-Algorithmen definieren. Unter anderem gibt es die Werte \fBidle_ai\fP und
+\fBexperimental_ai\fP.
+.TP 
+\fB\-\-controller\fP\fI\ Nummer\fP\fB:\fP\fI\ Wert\fP
+Bestimmt, wer die gewählte Partei kontrolliert. Mögliche Werte sind \fBhuman\fP
+für einen Menschen oder \fBai\fP für einen KI\-Spieler.
+.TP 
+\fB\-\-era\fP\fI\ Wert\fP
+Bestimmt, welche Ära für diese Partie anstelle der \fBStandard\fP Ära genutzt
+werden soll. Die Ära wird anhand ihrer ID bestimmt. Eine genaue Beschreibung
+der Rassen und Epochen ist in der Datei \fBdata/multiplayer.cfg\fP zu finden.
+.TP 
+\fB\-\-exit\-at\-end\fP
+Beendet das Spiel am Ende eines Szenarios, ohne die
+Sieg/Niederlage\-Übersicht anzuzeigen, da der Benutzer hier auf »Szenario
+beenden« klicken müsste, um das Spiel zu beenden. Diese Option ist unter
+anderem nützlich um Benchmarks zu automatisieren.
+.TP 
+\fB\-\-ignore\-map\-settings\fP
+Ignoriert die kartenspezifischen Einstellungen, stattdessen werden
+Standardwerte benutzt.
+.TP 
+\fB\-\-multiplayer\-repeat\fP\fI\ Wert\fP
+Wiederholt eine Mehrspielerpartie \fIWert\fP mal. Eignet sich zusammen mit der
+Option \fB\-\-nogui\fP für Benchmarks.
+.TP 
+\fB\-\-parm\fP\fI\ Nummer\fP\fB:\fP\fIName\fP\fB:\fP\fIWert\fP
+Gibt zusätzliche Parameter für diese Partei an. Die möglichen Parameter
+hängen davon ab, welche Optionen für \fB\-\-controller\fP und \fB\-\-algorithm\fP
+verwendet werden. Diese Einstellung ist nur interessant, wenn Sie Ihre
+eigene KI entwickeln wollen. (bisher ist noch keine vollständige
+Dokumentation verfügbar)
+.TP 
+\fB\-\-scenario\fP\fI\ Wert\fP
+Bestimmt das Szenario, das geladen werden soll. Standard ist
+\fBmultiplayer_The_Freelands\fP.
+.TP 
+\fB\-\-side\fP\fI\ Nummer\fP\fB:\fP\fIWert\fP
+Bestimmt die Fraktion für die festgelegte Partei in Abhängigkeit von der
+gewählten Ära. Die Fraktion wird per "id" bestimmt. Eine genaue Beschreibung
+der Fraktionen ist in der Datei »data/multiplayer.cfg« zu finden.
+.TP 
+\fB\-\-turns\fP\fI\ Wert\fP
+Bestimmt die Anzahl der Runden. Standardmäßig ist keine Beschränkung
+gegeben.
+.
+.SH RÜCKGABEWERT
+.
+Im Regelfall ist der Rückgabewert 0. Ein Rückgabewert von 1 weist auf einen
+Initialisierungsfehler (SDL, Video, Schriften, usw.) hin. Ein Rückgabewert
+von 2 deutet auf einen Fehler mit den Optionen auf der Befehlszeile hin.
+.br
+Wenn Unit Tests benutzt werden (mittels\fB\ \-u\fP) hat der Rückgabecwert eine
+andere Bedeutung. In diesem Fall bedeutet ein Rückgabewert von 0 das
+Bestehen der Test, und 1 das scheitern. Ein Rückgabewert von 3 bedeutet zwar
+ein Bestehen der Tests, jedoch ist die Datei für die Spielaufzeichnung
+kaputt. Ein Rückgabewert von 4 bedeutet dass die Tests bestehen, aber die
+Spielaufzeichnung Fehler generiert. Ein Rückgabewert von 2 kennzeichnet eine
+Zeitüberschreitung der Tests, wir allerdings nur in Zusammenhang mir der
+veralteten \fB\-\-timeout\fP Option benutzt.
+.
+.SH AUTOR
+.
+Geschrieben von David White <davidnwhite@verizon.net>.
+.br
+Bearbeitet von Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
+<ott@gaon.net> und Soliton <soliton.de@gmail.com>. Übersetzt
+von Jan\-Heiner Laberenz <Jan\-Heiner@arcor.de> und Nils Kneuper
+<crazy\-ivanovic@gmx.net>.
+.br
+Diese Beschreibung stammt im Original von Cyril Bouthors
+<cyril@bouthors.org>.
+.br
+Besuchen Sie auch die offizielle Webseite: https://www.wesnoth.org/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003\-2018 David White <davidnwhite@verizon.net>
+.br
+Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+GNU General Public License, wie von der Free Software Foundation
+veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 2
+der Lizenz oder (nach Ihrer Option) jeder späteren Version. Die
+Veröffentlichung dieses Programms erfolgt in der Hoffnung, dass es Ihnen von
+Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite
+Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN BESTIMMTEN
+ZWECK. Details finden Sie in der GNU General Public License. Sie sollten
+eine Kopie der GNU General Public License zusammen mit diesem Programm
+erhalten haben. Falls nicht, schreiben Sie an die Free Software Foundation,
+Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110\-1301, USA.
+.
+.SH ANDERE
+.
+\fBwesnothd\fP(6).

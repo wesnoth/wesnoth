@@ -4,6 +4,7 @@
 import html
 import glob
 import os
+import re
 import sys
 import time
 import urllib.parse
@@ -90,7 +91,7 @@ WESMERE_HEADER = '''\
 <div id="content">
     <h1>Wesnoth %(server_name)s Add-ons List</h1>
 
-    <p>To install add-ons using the in-game client, choose “Add-ons” from the main menu, and click “Connect” to connect to the add-ons server. Pick the add-on you want to install from the list and click “OK” — the download will commence immediately and the add-on will be automatically installed once finished. Bear in mind that not all add-ons are singleplayer campaigns!</p>
+    <p>To install add-ons using the in-game client, choose “Add-ons” from the main menu, and click “Connect” to connect to the add-ons server. Pick the add-on you want to install from the list and click the “+” icon — the download will commence immediately and the add-on will be automatically installed once finished. Bear in mind that not all add-ons are singleplayer campaigns!</p>
 '''
 
 WESMERE_DOWNLOAD_HELP = '''\
@@ -260,32 +261,40 @@ def output(path, url, datadir, data):
 
         if icon:
             icon = icon.strip()
-            tilde = icon.find("~")
-            if tilde >= 0:
-                icon = icon[:tilde]
-            if "\\" in icon:
-                icon = icon.replace("\\", "/")
-            try:
-                os.mkdir(path + "/icons")
-            except OSError:
-                pass
-            if "." not in icon:
-                icon += ".png"
-            src = root_dir + icon
-            imgurl = "icons/" + os.path.basename(icon)
-            if not os.path.exists(src):
-                src = root_dir + "data/core/images/" + icon
-            if not os.path.exists(src):
-                src = root_dir + "images/" + icon
-            if not os.path.exists(src):
-                src = glob.glob(root_dir + "data/campaigns/*/images/" + icon)
-                if src:
-                    src = src[0]
-                if not src or not os.path.exists(src):
-                    sys.stderr.write("Cannot find icon " + icon + "\n")
-                    src = root_dir + "images/misc/missing-image.png"
-                    imgurl = "icons/missing-image.png"
-            images_to_tc.append((src, path + "/" + imgurl))
+            uri_manifest = re.match('^data:(image/(?:png|jpeg));base64,', icon)
+
+            if uri_manifest:
+                if uri_manifest.group(1) not in ('image/png', 'image/jpeg'):
+                    sys.stderr.write("Data URI icon using unsupported content type " + uri_manifest.group(1))
+                else:
+                    imgurl = icon
+            else:
+                tilde = icon.find("~")
+                if tilde >= 0:
+                    icon = icon[:tilde]
+                if "\\" in icon:
+                    icon = icon.replace("\\", "/")
+                try:
+                    os.mkdir(path + "/icons")
+                except OSError:
+                    pass
+                if "." not in icon:
+                    icon += ".png"
+                src = root_dir + icon
+                imgurl = "icons/" + os.path.basename(icon)
+                if not os.path.exists(src):
+                    src = root_dir + "data/core/images/" + icon
+                if not os.path.exists(src):
+                    src = root_dir + "images/" + icon
+                if not os.path.exists(src):
+                    src = glob.glob(root_dir + "data/campaigns/*/images/" + icon)
+                    if src:
+                        src = src[0]
+                    if not src or not os.path.exists(src):
+                        sys.stderr.write("Cannot find icon " + icon + "\n")
+                        src = root_dir + "images/misc/missing-image.png"
+                        imgurl = "icons/missing-image.png"
+                images_to_tc.append((src, path + "/" + imgurl))
 
         w('<tr>')
 

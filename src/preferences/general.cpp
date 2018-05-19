@@ -51,8 +51,6 @@ bool no_preferences_save = false;
 
 bool fps = false;
 
-int draw_delay_ = 0;
-
 config prefs;
 }
 
@@ -162,7 +160,7 @@ void write_preferences()
 	try {
 		filesystem::scoped_ostream prefs_file = filesystem::ostream_file(filesystem::get_prefs_file());
 		write(*prefs_file, prefs);
-	} catch(filesystem::io_exception&) {
+	} catch(const filesystem::io_exception&) {
 		ERR_FS << "error writing to preferences file '" << filesystem::get_prefs_file() << "'" << std::endl;
 	}
 
@@ -974,12 +972,12 @@ void set_show_fps(bool value)
 
 int draw_delay()
 {
-	return draw_delay_;
+	return prefs["draw_delay"].to_int(-1);
 }
 
 void set_draw_delay(int value)
 {
-	draw_delay_ = value;
+	prefs["draw_delay"] = value;
 }
 
 bool use_color_cursors()

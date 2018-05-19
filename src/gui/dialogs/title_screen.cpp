@@ -17,11 +17,10 @@
 #include "gui/dialogs/title_screen.hpp"
 
 #include "addon/manager_ui.hpp"
-#include "formatter.hpp"
+#include "formula/string_utils.hpp"
 #include "game_config.hpp"
 #include "game_config_manager.hpp"
 #include "game_launcher.hpp"
-#include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/tips.hpp"
 #include "gui/core/timer.hpp"
@@ -239,7 +238,7 @@ void title_screen::pre_show(window& win)
 	//
 	// Version string
 	//
-	const std::string version_string = formatter() << ("Version") << " " << game_config::revision;
+	const std::string& version_string = VGETTEXT("Version $version", {{ "version", game_config::revision }});
 
 	if(label* version_label = find_widget<label>(&win, "revision_number", false, false)) {
 		version_label->set_label(version_string);
@@ -372,7 +371,7 @@ void title_screen::pre_show(window& win)
 				::image::flush_cache();
 				on_resize(win);
 			}
-		} catch(std::runtime_error& e) {
+		} catch(const std::runtime_error& e) {
 			gui2::show_error_message(e.what());
 		}
 	});

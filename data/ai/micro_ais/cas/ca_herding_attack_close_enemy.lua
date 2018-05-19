@@ -1,11 +1,10 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local M = wesnoth.map
 
 local function get_sheep(cfg)
     local sheep = wesnoth.get_units {
         side = wesnoth.current.side,
-        { "and", H.get_child(cfg, "filter_second") }
+        { "and", wml.get_child(cfg, "filter_second") }
     }
     return sheep
 end
@@ -13,7 +12,7 @@ end
 local function get_dogs(cfg)
     local dogs = AH.get_units_with_attacks {
         side = wesnoth.current.side,
-        { "and", H.get_child(cfg, "filter") }
+        { "and", wml.get_child(cfg, "filter") }
     }
     return dogs
 end
@@ -22,7 +21,7 @@ local function get_enemies(cfg, radius)
     local enemies = AH.get_attackable_enemies {
         { "filter_location",
             { radius = radius,
-            { "filter", { side = wesnoth.current.side, { "and", H.get_child(cfg, "filter_second") } } } }
+            { "filter", { side = wesnoth.current.side, { "and", wml.get_child(cfg, "filter_second") } } } }
         }
     }
     return enemies

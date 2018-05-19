@@ -43,7 +43,9 @@
 #include "key.hpp"
 #include "pathfind/pathfind.hpp"
 #include "play_controller.hpp"
+#include "replay_helper.hpp"
 #include "resources.hpp"
+#include "synced_context.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
@@ -181,8 +183,13 @@ void manager::set_active(bool active)
 
 		if (active_)
 		{
-			if(should_clear_undo())
+			if(should_clear_undo()) {
+				if(!resources::controller->current_team().auto_shroud_updates()) {
+					synced_context::run_and_throw("update_shroud", replay_helper::get_update_shroud());
+					synced_context::run_and_throw("auto_shroud", replay_helper::get_auto_shroud(true));
+				}
 				resources::undo_stack->clear();
+			}
 			validate_viewer_actions();
 			LOG_WB << "Whiteboard activated! " << *viewer_actions() << "\n";
 			create_temp_move();
@@ -265,7 +272,17 @@ bool manager::allow_leader_to_move(const unit& leader) const
 
 	//Look for another leader on another keep in the same castle
 	{ wb::future_map future; // start planned unit map scope
-		if(!has_planned_unit_map()) {
+	
+		// TODO: when the game executes all whiteboard moves at turn end applying the future map
+		//       will fail because we are currently executing actions, and if one of those actions
+		//       was a movement of the leader this function will be called, resulting the the error
+		//       mesage below, we silence that message for now by adding (!executing_actions_)
+		//
+		//       Also this check is generally flawed, for example it could happen that the leader found
+		//       by find_backup_leader would be moved to that location _after_ the unit would be recruited
+		//       It could also happen that the original leader can be moved back to that location before
+		//       the unit is recruited.
+		if(!has_planned_unit_map() && !executing_actions_) {
 			WRN_WB << "Unable to build future map to determine whether leader's allowed to move." << std::endl;
 		}
 		if(find_backup_leader(leader))
@@ -387,7 +404,7 @@ void manager::on_change_controller(int side, const team& t)
 	if(t.is_local_human()) // we own this side now
 	{
 		//tell everyone to clear this side's actions -- we're starting anew
-		resources::whiteboard->queue_net_cmd(sa.team_index(),sa.make_net_cmd_clear());
+		queue_net_cmd(sa.team_index(),sa.make_net_cmd_clear());
 		sa.clear();
 		//refresh the hidden_ attribute of every team's side_actions
 		update_plan_hiding();
@@ -405,7 +422,7 @@ void manager::on_change_controller(int side, const team& t)
 		{
 			team& local_team = resources::gameboard->teams().at(i);
 			if(local_team.is_local_human() && !local_team.is_enemy(side))
-				resources::whiteboard->queue_net_cmd(i,local_team.get_side_actions()->make_net_cmd_refresh());
+				queue_net_cmd(i,local_team.get_side_actions()->make_net_cmd_refresh());
 		}
 	}
 }
@@ -528,8 +545,9 @@ void manager::pre_draw()
 
 		for (size_t unit_id : units_owning_moves_) {
 			unit_map::iterator unit_iter = resources::gameboard->units().find(unit_id);
-			assert(unit_iter.valid());
-			ghost_owner_unit(&*unit_iter);
+			if(unit_iter.valid()) {
+				ghost_owner_unit(&*unit_iter);
+			}
 		}
 	}
 }
@@ -782,15 +800,16 @@ void manager::save_temp_move()
 				continue;
 
 			size_t turn = first_turn + i;
-			fake_unit_ptr fake_unit = fake_units_[i];
 
 			//@todo Using a marked_route here is wrong, since right now it's not marked
 			//either switch over to a plain route for planned moves, or mark it correctly
 			pathfind::marked_route route;
 			route.steps = move_arrow->get_path();
-			route.move_cost = path_cost(route.steps,*u);
+			// path_cost() is incomplete as it for example doesn't handle skirmisher, we let the move action generate the costs on it own.
+			// route.move_cost = path_cost(route.steps,*u);
+			route.move_cost = -1;
 
-			sa.queue_move(turn,*u,route,move_arrow,fake_unit);
+			sa.queue_move(turn, *u, route, move_arrow, std::move(fake_units_[i]));
 		}
 		erase_temp_move();
 
@@ -811,7 +830,7 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 		assert(weapon_choice >= 0);
 
 		arrow_ptr move_arrow;
-		fake_unit_ptr fake_unit;
+		fake_unit_ptr* fake_unit = nullptr;
 		map_location source_hex;
 
 		if (route_ && !route_->steps.empty())
@@ -820,12 +839,12 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 			assert(move_arrows_.size() == 1);
 			assert(fake_units_.size() == 1);
 			move_arrow = move_arrows_.front();
-			fake_unit = fake_units_.front();
+			fake_unit = &fake_units_.front();
 
 			assert(route_->steps.back() == attacker_loc);
 			source_hex = route_->steps.front();
 
-			fake_unit->anim_comp().set_disabled_ghosted(true);
+			(**fake_unit).anim_comp().set_disabled_ghosted(true);
 		}
 		else
 		{
@@ -843,7 +862,7 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 		validate_viewer_actions();
 
 		side_actions& sa = *viewer_actions();
-		sa.queue_attack(sa.get_turn_num_of(*attacking_unit),*attacking_unit,defender_loc,weapon_choice,*route_,move_arrow,fake_unit);
+		sa.queue_attack(sa.get_turn_num_of(*attacking_unit), *attacking_unit, defender_loc, weapon_choice, *route_, move_arrow, fake_unit ? std::move(*fake_unit) : fake_unit_ptr());
 
 		print_help_once();
 
@@ -959,6 +978,10 @@ bool manager::allow_end_turn()
 
 bool manager::execute_all_actions()
 {
+	if (has_planned_unit_map())
+	{
+		ERR_WB << "Modifying action queue while temp modifiers are applied1!!!" << std::endl;
+	}
 	//exception-safety: finalizers set variables to false on destruction
 	//i.e. when method exits naturally or exception is thrown
 	variable_finalizer<bool> finalize_executing_actions(executing_actions_, false);
@@ -985,7 +1008,7 @@ bool manager::execute_all_actions()
 
 	side_actions_ptr sa = viewer_actions();
 
-	if (resources::whiteboard->has_planned_unit_map())
+	if (has_planned_unit_map())
 	{
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!" << std::endl;
 	}
@@ -1078,7 +1101,7 @@ int manager::get_spent_gold_for(int side)
 
 bool manager::should_clear_undo() const
 {
-	return resources::controller->is_networked_mp();
+	return resources::controller->is_networked_mp() && resources::controller->current_team().is_local();
 }
 
 void manager::options_dlg()

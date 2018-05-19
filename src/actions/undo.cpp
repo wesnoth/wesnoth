@@ -107,6 +107,8 @@ undo_action_base * undo_list::create_action(const config & cfg)
 
 	else if ( str == "update_shroud" )
 		res =  new undo::update_shroud_action();
+	else if ( str == "dummy" )
+		res =  new undo_dummy_action(cfg);
 	else
 	{
 		// Unrecognized type.
@@ -296,11 +298,11 @@ void undo_list::read(const config & cfg)
 			if ( action ) {
 				undos_.push_back(action);
 			}
-		} catch (bad_lexical_cast &) {
+		} catch (const bad_lexical_cast &) {
 			ERR_NG << "Error when parsing undo list from config: bad lexical cast." << std::endl;
 			ERR_NG << "config was: " << child.debug() << std::endl;
 			ERR_NG << "Skipping this undo action..." << std::endl;
-		} catch (config::error& e) {
+		} catch (const config::error& e) {
 			ERR_NG << "Error when parsing undo list from config: " << e.what() << std::endl;
 			ERR_NG << "config was: " << child.debug() << std::endl;
 			ERR_NG << "Skipping this undo action..." << std::endl;
@@ -311,11 +313,11 @@ void undo_list::read(const config & cfg)
 	for (const config & child : cfg.child_range("redo")) {
 		try {
 			redos_.push_back(new config(child));
-		} catch (bad_lexical_cast &) {
+		} catch (const bad_lexical_cast &) {
 			ERR_NG << "Error when parsing redo list from config: bad lexical cast." << std::endl;
 			ERR_NG << "config was: " << child.debug() << std::endl;
 			ERR_NG << "Skipping this redo action..." << std::endl;
-		} catch (config::error& e) {
+		} catch (const config::error& e) {
 			ERR_NG << "Error when parsing redo list from config: " << e.what() << std::endl;
 			ERR_NG << "config was: " << child.debug() << std::endl;
 			ERR_NG << "Skipping this redo action..." << std::endl;

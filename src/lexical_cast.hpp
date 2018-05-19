@@ -230,8 +230,8 @@ struct lexical_caster<
 
 		try {
 			return std::stoll(value);
-		} catch(std::invalid_argument&) {
-		} catch(std::out_of_range&) {
+		} catch(const std::invalid_argument&) {
+		} catch(const std::out_of_range&) {
 		}
 
 		if(fallback) {
@@ -288,8 +288,8 @@ struct lexical_caster<
 			if(std::numeric_limits<To>::lowest() <= res && std::numeric_limits<To>::max() >= res) {
 				return static_cast<To>(res);
 			}
-		} catch(std::invalid_argument&) {
-		} catch(std::out_of_range&) {
+		} catch(const std::invalid_argument&) {
+		} catch(const std::out_of_range&) {
 		}
 
 		if(fallback) {
@@ -355,8 +355,8 @@ struct lexical_caster<
 			if((static_cast<long double>(std::numeric_limits<To>::lowest()) <= res) && (static_cast<long double>(std::numeric_limits<To>::max()) >= res)) {
 				return static_cast<To>(res);
 			}
-		} catch(std::invalid_argument&) {
-		} catch(std::out_of_range&) {
+		} catch(const std::invalid_argument&) {
+		} catch(const std::out_of_range&) {
 		}
 
 		if(fallback) {
@@ -414,8 +414,8 @@ struct lexical_caster<
 
 		try {
 			return std::stoull(value);
-		} catch(std::invalid_argument&) {
-		} catch(std::out_of_range&) {
+		} catch(const std::invalid_argument&) {
+		} catch(const std::out_of_range&) {
 		}
 
 		if(fallback) {
@@ -473,8 +473,8 @@ struct lexical_caster<
 			if(std::numeric_limits<To>::max() >= res) {
 				return static_cast<To>(res);
 			}
-		} catch(std::invalid_argument&) {
-		} catch(std::out_of_range&) {
+		} catch(const std::invalid_argument&) {
+		} catch(const std::out_of_range&) {
 		}
 
 		if(fallback) {

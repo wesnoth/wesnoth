@@ -94,6 +94,7 @@ endif(ENABLE_HISTORY AND HISTORY_FOUND)
 set(server-external-libs
 	${common-external-libs}
 	${Boost_SYSTEM_LIBRARIES}
+	-lpthread
 )
 
 set(tools-external-libs
@@ -182,7 +183,7 @@ set_source_files_properties(${lua_STAT_SRC} PROPERTIES LANGUAGE CXX)
 # Inject a header into the Lua sources for Wesnoth-specific changes
 # makedepend won't see it so we have to specifically add it as a dependency.
 file(GLOB wesnoth_lua_config wesnoth_lua_config.h)
-set_source_files_properties(${lua_STAT_SRC} PROPERTIES COMPILE_FLAGS "-include ${wesnoth_lua_config}")
+set_source_files_properties(${lua_STAT_SRC} PROPERTIES COMPILE_FLAGS "-include \"${wesnoth_lua_config}\"")
 set_source_files_properties(${lua_STAT_SRC} PROPERTIES OBJECT_DEPENDS ${wesnoth_lua_config})
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
@@ -284,7 +285,11 @@ add_library(wesnoth-game ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${libwesnoth-game_STAT
 ########### Wesnoth ###############
 
 if(ENABLE_GAME)
-	add_executable(wesnoth WIN32 wesnoth.cpp)
+	if(NOT APPLE)
+		add_executable(wesnoth WIN32 wesnoth.cpp)
+	else()
+		add_executable(wesnoth WIN32 wesnoth.cpp macosx/SDLMain.mm)
+	endif(NOT APPLE)
 
 	target_link_libraries(wesnoth
 		wesnoth-client

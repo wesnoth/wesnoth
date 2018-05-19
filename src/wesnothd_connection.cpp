@@ -15,6 +15,7 @@
 #include "wesnothd_connection.hpp"
 
 #include "gui/dialogs/loading_screen.hpp"
+#include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "utils/functional.hpp"
@@ -319,12 +320,13 @@ void wesnothd_connection::handle_read(const boost::system::error_code& ec, std::
 	std::istream is(&read_buf_);
 	config data;
 	read_gz(data, is);
+	if(!data.empty()) { DBG_NW << "Received:\n" << data; }
+
 	{
 		std::lock_guard<std::mutex> lock(recv_queue_mutex_);
 		recv_queue_.emplace_back(std::move(data));
 	}
 
-	DBG_NW << "Received " << recv_queue_.back() << " bytes.\n";
 	recv();
 }
 
@@ -394,7 +396,13 @@ bool wesnothd_connection::receive_data(config& result)
 	{
 		std::lock_guard<std::mutex> lock(last_error_mutex_);
 		if(last_error_) {
-			throw error(last_error_);
+			std::string user_msg;
+
+			if(last_error_ == boost::asio::error::eof) {
+				user_msg = _("Disconnected from server.");
+			}
+
+			throw error(last_error_, user_msg);
 		}
 	}
 
@@ -405,6 +413,10 @@ bool wesnothd_connection::wait_and_receive_data(config& data)
 {
 	while(!has_data_received()) {
 		SDL_Delay(1);
+		std::lock_guard<std::mutex> lock(last_error_mutex_);
+		if(last_error_) {
+			break;
+		}
 	}
 
 	return receive_data(data);

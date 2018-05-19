@@ -341,7 +341,7 @@ void display::init_flags_for_side_internal(size_t n, const std::string& side_col
 			str = sub_items.front();
 			try {
 				time = std::max<int>(1, std::stoi(sub_items.back()));
-			} catch(std::invalid_argument&) {
+			} catch(const std::invalid_argument&) {
 				ERR_DP << "Invalid time value found when constructing flag for side " << n << ": " << sub_items.back() << "\n";
 			}
 		}
@@ -1672,7 +1672,7 @@ void display::draw_init()
 void display::draw_wrap(bool update, bool force)
 {
 	static int time_between_draws = preferences::draw_delay();
-	if(time_between_draws == 0) {
+	if(time_between_draws < 0) {
 		time_between_draws = 1000 / screen_.current_refresh_rate();
 	}
 

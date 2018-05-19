@@ -182,7 +182,7 @@ map_context::map_context(const config& game_config, const std::string& filename)
 			// 4.0 editor generated scenario
 			try {
 				load_scenario(game_config);
-			} catch(config::error& e) {
+			} catch(const config::error& e) {
 				// We already caught and rethrew this exception in load_scenario
 				throw editor_map_load_exception("load_scenario", e.message);
 			}
@@ -318,7 +318,7 @@ void map_context::load_scenario(const config& game_config)
 
 	try {
 		read(scenario, *(preprocess_file(filename_)));
-	} catch(config::error& e) {
+	} catch(const config::error& e) {
 		LOG_ED << "Caught a config error while parsing file: '" << filename_ << "'\n" << e.message << std::endl;
 		throw;
 	}
@@ -481,6 +481,10 @@ config map_context::to_config()
 
 	scenario.append(tod_manager_->to_config());
 	scenario.remove_attribute("turn_at");
+	scenario.remove_attribute("it_is_a_new_turn");
+	if(scenario["turns"].to_int() == -1) {
+		scenario.remove_attribute("turns");
+	}
 
 	scenario["map_data"] = map_.write();
 
@@ -594,7 +598,7 @@ bool map_context::save_scenario()
 		}
 
 		clear_modified();
-	} catch(filesystem::io_exception& e) {
+	} catch(const filesystem::io_exception& e) {
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
 		const std::string msg = VGETTEXT("Could not save the scenario: $msg", symbols);
@@ -636,7 +640,7 @@ bool map_context::save_map()
 		add_to_recent_files();
 
 		clear_modified();
-	} catch(filesystem::io_exception& e) {
+	} catch(const filesystem::io_exception& e) {
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
 		const std::string msg = VGETTEXT("Could not save the map: $msg", symbols);

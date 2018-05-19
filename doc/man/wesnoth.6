@@ -131,10 +131,12 @@ Example:
 sets the severity level of the log domains.
 .B all
 can be used to match any log domain. Available levels:
-.BR error ,\  warning ,\  info ,\  debug .
+.BR error ,\  warning ,\  info ,\  debug ,\  none .
 By default the
-.B error
-level is used.
+.B warning
+level is used for most domains, but
+.B deprecation
+defaults to none.
 .TP
 .B --log-precise
 shows the timestamps in the logfile with more precision.
@@ -365,7 +367,7 @@ era. The era is chosen by an id. Eras are described in the
 file.
 .TP
 .B --exit-at-end
-exits once the scenario is over, without displaying victory/defeat dialog which requires the user to click OK.
+exits once the scenario is over, without displaying victory/defeat dialog which normally requires the user to click End Scenario.
 This is also used for scriptable benchmarking.
 .TP
 .B --ignore-map-settings

@@ -160,7 +160,7 @@ end
 -- @a base_gold_amount, gold_increment: used to cauculate the amount of gold available for each timed spawn
 -- @a units_amount, gold_per_unit_amount: used to cauculate the number of units spawned in each timed spawn
 local function create_timed_spaws(interval, num_spawns, base_gold_amount, gold_increment, units_amount, gold_per_unit_amount)
-	local configure_gold_factor = ((wesnoth.get_variable("enemey_gold_factor") or 0) + 100)/100
+	local configure_gold_factor = ((wml.variables["enemey_gold_factor"] or 0) + 100)/100
 	local random_spawn_numbers = {}
 	for i = 1, #random_spawns do
 		table.insert(random_spawn_numbers, i)
@@ -191,22 +191,22 @@ local function create_timed_spaws(interval, num_spawns, base_gold_amount, gold_i
 					break
 				end
 			end
-			wesnoth.set_variable(string.format("timed_spawn[%d]", spawn_number - 1), {
+			wml.variables[string.format("timed_spawn[%d]", spawn_number - 1)] = {
 				units = math.ceil(units),
 				turn = turn,
 				gold = helper.round(gold * configure_gold_factor),
 				pool_num = random_spawn_numbers[spawn_number],
-			})
+			}
 		else
-			wesnoth.set_variable(string.format("timed_spawn[%d]", spawn_number - 1), {
+			wml.variables[string.format("timed_spawn[%d]", spawn_number - 1)] = {
 				units = units_amount + 1,
 				turn = turn,
 				gold = gold,
 				pool_num = random_spawn_numbers[spawn_number],
-			})
+			}
 		end
 	end
-	wesnoth.set_variable("final_turn", final_turn)
+	wml.variables["final_turn"] = final_turn
 end
 
 -- @a unittypes: a array of strings
@@ -243,15 +243,15 @@ local function place_units(unittypes, x, y)
 end
 
 local function final_spawn()
-	local spawns_left = wesnoth.get_variable("fixed_spawn.length")
+	local spawns_left = wml.variables["fixed_spawn.length"]
 	if spawns_left == 0 then
 		return
 	end
 	local spawn_index = wesnoth.random(spawns_left) - 1
-	local spawn = wesnoth.get_variable(string.format("fixed_spawn[%d]", spawn_index))
-	wesnoth.set_variable(string.format("fixed_spawn[%d]", spawn_index))
+	local spawn = wml.variables[string.format("fixed_spawn[%d]", spawn_index)]
+	wml.variables[string.format("fixed_spawn[%d]", spawn_index)] = nil
 	local types = {}
-	for tag in helper.child_range(spawn, "type") do
+	for tag in wml.child_range(spawn, "type") do
 		table.insert(types, tag.type)
 	end
 	place_units(types, spawn.x, spawn.y)
@@ -278,14 +278,14 @@ end)
 --   when they appear is defined in the 'timed_spawn' wml array. which is created at prestart
 --   which unit types get spawned is defined in the 'main_spawn' wml array which is also spawned at prestart
 on_event("new turn", function()
-	local next_spawn = wesnoth.get_variable("timed_spawn[0]")
+	local next_spawn = wml.variables["timed_spawn[0]"]
 	if next_spawn == nil then
 		return
 	end
 	if wesnoth.current.turn ~= next_spawn.turn then
 		return
 	end
-	wesnoth.set_variable("timed_spawn[0]")
+	wml.variables["timed_spawn[0]"] = nil
 	local unit_types = get_spawn_types(next_spawn.units, next_spawn.gold, random_spawns[next_spawn.pool_num])
 	local spawn_areas = {{"3-14", "15"}, {"1", "4-13"}, {"2-13", "1"}, {"1", "2-15"}}
 	local spawn_area = spawn_areas[wesnoth.random(#spawn_areas)]
@@ -296,7 +296,7 @@ end)
 
 -- on turn 'final_turn' the first 'final spawn' appears
 on_event("new turn", function()
-	if wesnoth.current.turn ~= wesnoth.get_variable("final_turn") then
+	if wesnoth.current.turn ~= wml.variables["final_turn"] then
 		return
 	end
 	wesnoth.wml_actions.music {
@@ -316,16 +316,16 @@ end)
 
 -- after the first final spawn, spawn a new final spawn every 1 or 2 turns.
 on_event("new turn", function()
-	if wesnoth.current.turn ~= wesnoth.get_variable("next_final_spawn") then
+	if wesnoth.current.turn ~= wml.variables["next_final_spawn"] then
 		return
 	end
 	final_spawn()
-	wesnoth.set_variable("next_final_spawn", wesnoth.current.turn + wesnoth.random(1,2))
+	wml.variables["next_final_spawn"] = wesnoth.current.turn + wesnoth.random(1,2)
 end)
 
 -- The victory condition: win when there are no enemy unit after the first final spawn appeared.
 on_event("die", function()
-	if wesnoth.current.turn < wesnoth.get_variable("final_turn") then
+	if wesnoth.current.turn < wml.variables["final_turn"] then
 		return
 	end
 	if wesnoth.wml_conditionals.have_unit { side = "1,2"} then
@@ -355,7 +355,7 @@ on_event("prestart", function()
 		end
 		return res
 	end
-	helper.set_variable_array("fixed_spawn", {
+	wml.array_access.set("fixed_spawn", {
 		fixed_spawn(1, 15, "Fire Dragon", "Gryphon Master", "Hurricane Drake"),
 		fixed_spawn(5, 1, "Yeti", "Elvish Druid", "Elvish Druid"),
 		fixed_spawn(1, 7, "Lich", "Walking Corpse", "Walking Corpse", "Walking Corpse", "Ghoul", "Soulless", "Walking Corpse", "Walking Corpse", "Walking Corpse"),
@@ -395,29 +395,29 @@ on_event("prestart", function()
 		if weather_to_dispense[index].turns_left <= 0 then
 			table.remove(weather_to_dispense, index)
 		end
-		wesnoth.set_variable(string.format("weather_event[%d]", event_num), {
+		wml.variables[string.format("weather_event[%d]", event_num)] = {
 			turn = turn,
 			weather_id = weather_id,
-		})
+		}
 		event_num = event_num + 1
 		turn = turn + num_turns
 		-- Second snow happens half the time.
 		if weather_id == "snowfall" and heavy_snowfall_turns_left >= 0 and wesnoth.random(2) == 2 then
 			num_turns = get_weather_duration(heavy_snowfall_turns_left)
-			wesnoth.set_variable(string.format("weather_event[%d]", event_num), {
+			wml.variables[string.format("weather_event[%d]", event_num)] = {
 				turn = turn,
 				weather_id = "heavy snowfall",
-			})
+			}
 			event_num = event_num + 1
 			turn = turn + num_turns
 			heavy_snowfall_turns_left = heavy_snowfall_turns_left - num_turns
 		end
 		-- Go back to clear weather.
 		num_turns = get_weather_duration(clear_turns_left)
-		wesnoth.set_variable(string.format("weather_event[%d]", event_num), {
+		wml.variables[string.format("weather_event[%d]", event_num)] = {
 			turn = turn,
 			weather_id = "clear",
-		})
+		}
 		event_num = event_num + 1
 		turn = turn + num_turns
 		clear_turns_left = clear_turns_left - num_turns
@@ -448,12 +448,15 @@ end
 -- change weather at side 3 turns, TODO: consider the case that side 3 is empty.
 on_event("side 3 turn", function()
 	-- get next weather event
-	local weather_event = wesnoth.get_variable("weather_event[0]")
+	local weather_event = wml.variables["weather_event[0]"]
+	if weather_event == nil then
+		return
+	end
 	if wesnoth.current.turn ~= weather_event.turn then
 		return
 	end
 	-- remove the to-be-consumed weather event from the todo list.
-	wesnoth.set_variable("weather_event[0]")
+	wml.variables["weather_event[0]"] = nil
 	if weather_event.weather_id == "clear" then
 		weather_map("multiplayer/maps/Dark_Forecast_basic.map")
 		wesnoth.wml_actions.sound {

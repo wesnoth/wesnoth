@@ -41,6 +41,8 @@
 #include "gui/widgets/tree_view_node.hpp"
 
 #include "addon/manager_ui.hpp"
+#include "chat_log.hpp"
+#include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "preferences/game.hpp"
@@ -101,12 +103,12 @@ void sub_player_list::update_player_count_label()
 
 void player_list::init(window& w)
 {
-	active_game.init(w, _("Selected Game"));
-	other_games.init(w, _("Other Games"));
+	active_game.init(w, _("Selected Game"), true);
+	other_rooms.init(w, _("Lobby"), true);
 #ifdef ENABLE_ROOM_MEMBER_TREE
 	active_room.init(w, _("Current Room"));
 #endif
-	other_rooms.init(w, _("Lobby"), true);
+	other_games.init(w, _("Other Games"));
 
 	sort_by_name = find_widget<toggle_button>(&w, "player_list_sort_name", false, true);
 	sort_by_relation = find_widget<toggle_button>(&w, "player_list_sort_relation", false, true);
@@ -140,7 +142,7 @@ mp_lobby::mp_lobby(const config& game_config, mp::lobby_info& info, wesnothd_con
 	, player_list_()
 	, player_list_dirty_(true)
 	, gamelist_dirty_(true)
-	, last_gamelist_update_(0)
+	, last_lobby_update_(0)
 	, gamelist_diff_update_(true)
 	, network_connection_(connection)
 	, lobby_update_timer_(0)
@@ -209,13 +211,9 @@ void modify_grid_with_data(grid* grid, const std::map<std::string, string_map>& 
 	}
 }
 
-std::string colorize(const std::string& str, const std::string& color)
+std::string colorize(const std::string& str, const color_t& color)
 {
-	if(color.empty()) {
-		return str;
-	}
-
-	return (formatter() << "<span color=\"" << color << "\">" << str << "</span>").str();
+	return (formatter() << font::span_color(color) << str << "</span>").str();
 }
 
 bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_addon>& reqs, mp::game_info::ADDON_REQ addon_outcome)
@@ -294,7 +292,7 @@ void mp_lobby::update_gamelist()
 
 	update_selected_game();
 	gamelist_dirty_ = false;
-	last_gamelist_update_ = SDL_GetTicks();
+	last_lobby_update_ = SDL_GetTicks();
 	lobby_info_.sync_games_display_status();
 	lobby_info_.apply_game_filter();
 	update_gamelist_header();
@@ -394,7 +392,7 @@ void mp_lobby::update_gamelist_diff()
 
 	update_selected_game();
 	gamelist_dirty_ = false;
-	last_gamelist_update_ = SDL_GetTicks();
+	last_lobby_update_ = SDL_GetTicks();
 	lobby_info_.sync_games_display_status();
 	lobby_info_.apply_game_filter();
 	update_gamelist_header();
@@ -420,15 +418,20 @@ std::map<std::string, string_map> mp_lobby::make_game_row_data(const mp::game_in
 
 	item["use_markup"] = "true";
 
-	std::string color_string;
+	color_t color_string;
 	if(game.vacant_slots > 0) {
-		color_string = (game.reloaded || game.started) ? "yellow" : "green";
+		color_string = (game.reloaded || game.started) ? font::YELLOW_COLOR : font::GOOD_COLOR;
 	}
 
-	item["label"] = game.name;
+	const std::string scenario_text = VGETTEXT("$game_name (Era: $era_name)", {
+		{"game_name", game.scenario},
+		{"era_name", game.era}
+	});
+
+	item["label"] = game.vacant_slots > 0 ? colorize(game.name, color_string) : game.name;
 	data.emplace("name", item);
 
-	item["label"] = colorize("<i>" + game.scenario + "</i>", font::GRAY_COLOR.to_hex_string());
+	item["label"] = colorize("<i>" + scenario_text + "</i>", font::GRAY_COLOR);
 	data.emplace("scenario", item);
 
 	item["label"] = colorize(game.status, color_string);
@@ -449,28 +452,42 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	//
 	std::ostringstream ss;
 
-	ss << "<big>" << _("Era:") << "</big>\n" << game.era << "\n";
+	const auto mark_missing = [&ss]() {
+		ss << ' ' << font::span_color(font::BAD_COLOR) << "(" << _("era_or_mod^not installed") << ")</span>";
+	};
 
-	ss << "\n<big>" << _("Modifications:") << "</big>\n";
+	ss << "<big>" << colorize(_("Era"), font::TITLE_COLOR) << "</big>\n" << game.era;
 
-	std::vector<std::string> mods = utils::split(game.mod_info);
+	if(!game.have_era) {
+		// NOTE: not using colorize() here deliberately to avoid awkward string concatenation.
+		mark_missing();
+	}
+
+	ss << "\n\n<big>" << colorize(_("Modifications"), font::TITLE_COLOR) << "</big>\n";
+
+	auto mods = game.mod_info;
 
 	if(mods.empty()) {
-		ss << _("None") << "\n";
+		ss << _("active_modifications^None") << "\n";
 	} else {
-		for(const std::string& mod : mods) {
-			ss << mod << "\n";
+		for(const auto& mod : mods) {
+			ss << mod.first;
+
+			if(!mod.second) {
+				mark_missing();
+			}
+
+			ss << '\n';
 		}
 	}
 
 	// TODO: move to some general are of the code.
 	const auto yes_or_no = [](bool val) { return val ? _("yes") : _("no"); };
 
-	ss << "\n<big>" << _("Settings:") << "</big>\n";
+	ss << "\n<big>" << colorize(_("Settings"), font::TITLE_COLOR) << "</big>\n";
 	ss << _("Experience modifier:")   << " " << game.xp << "\n";
-	ss << _("Gold:")                  << " " << game.gold << "\n";
+	ss << _("Gold per village:")      << " " << game.gold << "\n";
 	ss << _("Map size:")              << " " << game.map_size_info << "\n";
-	ss << _("Registered users only:") << " " << yes_or_no(game.registered_users_only) << "\n";
 	ss << _("Reloaded:")              << " " << yes_or_no(game.reloaded) << "\n";
 	ss << _("Shared vision:")         << " " << game.vision << "\n";
 	ss << _("Shuffle sides:")         << " " << yes_or_no(game.shuffle_sides) << "\n";
@@ -482,8 +499,8 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	if(!game.have_era || !game.have_all_mods || !game.required_addons.empty()) {
 		info_icon.set_label("icons/icon-info-error.png");
 
-		ss << "\n\n<big><span color='#f00'>! </span></big>";
-		ss << _("One or more items need to be installed\nin order to join this game.");
+		ss << "\n\n<span color='#f00' size='x-large'>! </span>";
+		ss << _("One or more add-ons need to be installed\nin order to join this game.");
 	} else {
 		info_icon.set_label("icons/icon-info.png");
 	}
@@ -522,24 +539,12 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	map.set_config(&game_config_);
 	map.set_map_data(game.map_data);
 
-	button& join_button = find_widget<button>(grid, "join", false);
-	button& observe_button = find_widget<button>(grid, "observe", false);
-
-	join_button.set_active(game.can_join());
-	observe_button.set_active(game.can_observe());
-
 	if(!add_callbacks) {
 		return;
 	}
 
 	connect_signal_mouse_left_double_click(row_panel,
 		std::bind(&mp_lobby::enter_game_by_id, this, game.id, DO_EITHER));
-
-	connect_signal_mouse_left_click(join_button,
-		std::bind(&mp_lobby::enter_game_by_id, this, game.id, DO_JOIN));
-
-	connect_signal_mouse_left_click(observe_button,
-		std::bind(&mp_lobby::enter_game_by_id, this, game.id, DO_OBSERVE));
 }
 
 void mp_lobby::update_gamelist_filter()
@@ -556,10 +561,6 @@ void mp_lobby::update_gamelist_filter()
 
 void mp_lobby::update_playerlist()
 {
-	if(delay_playerlist_update_) {
-		return;
-	}
-
 	SCOPE_LB;
 	DBG_LB << "Playerlist update: " << lobby_info_.users().size() << "\n";
 	lobby_info_.update_user_statuses(selected_game_id_, chatbox_->active_window_room());
@@ -581,6 +582,8 @@ void mp_lobby::update_playerlist()
 #endif
 	assert(player_list_.other_games.tree);
 	assert(player_list_.other_rooms.tree);
+
+	unsigned scrollbar_position = player_list_.tree->get_vertical_scrollbar_item_position();
 
 	player_list_.active_game.tree->clear();
 #ifdef ENABLE_ROOM_MEMBER_TREE
@@ -612,12 +615,12 @@ void mp_lobby::update_playerlist()
 				target_list = &player_list_.other_rooms;
 				break;
 			case mp::user_info::SEL_GAME:
-				name = colorize(name, "cyan");
+				name = colorize(name, {0, 255, 255});
 				icon_ss << (user.observing ? "-obs" : "-playing");
 				target_list = &player_list_.active_game;
 				break;
 			case mp::user_info::GAME:
-				name = colorize(name, "red");
+				name = colorize(name, font::BAD_COLOR);
 				icon_ss << (user.observing ? "-obs" : "-playing");
 				target_list = &player_list_.other_games;
 				break;
@@ -645,9 +648,15 @@ void mp_lobby::update_playerlist()
 					   << "\n";
 		}
 
+		// TODO: on the official server this results in every name being bold since we
+		// require a registered account. Leaving this commented out in case we ever
+		// walk that back and want to have such an indication again (it's useless for
+		// custom servers since registered logins aren't supported there).
+#if 0
 		if(user.registered) {
 			name = "<b>" + name + "</b>";
 		}
+#endif
 
 		icon_ss << ".png";
 
@@ -681,7 +690,13 @@ void mp_lobby::update_playerlist()
 	player_list_.other_rooms.update_player_count_label();
 	player_list_.other_games.update_player_count_label();
 
+	// Don't attempt to restore the scroll position if the window hasn't been laid out yet
+	if(player_list_.tree->get_origin() != point{-1, -1}) {
+		player_list_.tree->set_vertical_scrollbar_item_position(scrollbar_position);
+	}
+
 	player_list_dirty_ = false;
+	last_lobby_update_ = SDL_GetTicks();
 }
 
 void mp_lobby::update_selected_game()
@@ -745,12 +760,9 @@ void mp_lobby::pre_show(window& window)
 	chatbox_->set_lobby_info(lobby_info_);
 	chatbox_->set_wesnothd_connection(network_connection_);
 	chatbox_->set_active_window_changed_callback([this]() { player_list_dirty_ = true; });
+	chatbox_->load_log(default_chat_log, true);
 
 	find_widget<button>(&window, "create", false).set_retval(CREATE);
-
-	connect_signal_mouse_left_click(
-		find_widget<button>(&window, "refresh", false),
-		std::bind(&mp_lobby::refresh_lobby, this));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "show_preferences", false),
@@ -855,12 +867,16 @@ void mp_lobby::network_handler()
 		if (network_connection_.receive_data(data)) {
 			process_network_data(data);
 		}
-	} catch (wesnothd_error& e) {
+	} catch (const wesnothd_error& e) {
 		LOG_LB << "caught wesnothd_error in network_handler: " << e.message << "\n";
 		throw;
 	}
 
-	if(gamelist_dirty_ && !delay_gamelist_update_ && (SDL_GetTicks() - last_gamelist_update_ > game_config::lobby_refresh)) {
+	if ((SDL_GetTicks() - last_lobby_update_ < game_config::lobby_refresh)) {
+		return;
+	}
+
+	if(gamelist_dirty_ && !delay_gamelist_update_) {
 		if(gamelist_diff_update_) {
 			update_gamelist_diff();
 		} else {
@@ -869,7 +885,7 @@ void mp_lobby::network_handler()
 		}
 	}
 
-	if(player_list_dirty_) {
+	if(player_list_dirty_ && !delay_playerlist_update_) {
 		update_gamelist_filter();
 		update_playerlist();
 	}

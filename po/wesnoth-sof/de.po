@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-27 01:20 UTC\n"
-"PO-Revision-Date: 2014-06-21 17:05+0100\n"
+"POT-Creation-Date: 2018-05-06 08:32 UTC\n"
+"PO-Revision-Date: 2018-05-03 17:20+0200\n"
 "Last-Translator: Crommy\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:11
@@ -33,17 +33,13 @@ msgstr "Kämpfer"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:20
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(Normal)"
+msgstr "Normal"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:21
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(Herausfordernd)"
+msgstr "Herausfordernd"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:21
@@ -52,10 +48,8 @@ msgstr "Chalybter"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:22
-#, fuzzy
-#| msgid "(Difficult)"
 msgid "Difficult"
-msgstr "(Schwierig)"
+msgstr "Schwierig"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:22
@@ -75,17 +69,6 @@ msgstr "Fürst"
 # (Einstufung: Schwierig, 9 Szenarien)
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:25
-#, fuzzy
-#| msgid ""
-#| "The land of Wesnoth’s banner bold\n"
-#| "Comes not from its own land;\n"
-#| "It comes from Dwarfdom, grim and old\n"
-#| "Made by a runesmith’s hand.\n"
-#| "So now I tell from whence it came —\n"
-#| "The Fire-sceptre great —\n"
-#| "And of the makers of the same,\n"
-#| "Their tale I now relate...\n"
-#| "\n"
 msgid ""
 "<i>The land of Wesnoth’s banner bold\n"
 "Comes not from its own land;\n"
@@ -97,16 +80,16 @@ msgid ""
 "Their tale I now relate...</i>\n"
 "\n"
 msgstr ""
-"Wesnoths Wappen – königlich\n"
+"<i>Wesnoths Wappen – königlich\n"
 "Stammt nicht aus eignem Lande\n"
 "Mit Runenzauber – ewiglich,\n"
 "Schuf es des Zwerges Hande.\n"
-"—\n"
+"\n"
 "So tu' ich kund, woher es kam\n"
 "Das Feuerzepter – Wunderbar!\n"
 "Geschmiedet wards durch Treu' und Gram\n"
-"Dies Leid leg' ich nun dar...\n"
-"—\n"
+"Dies Leid leg' ich nun dar...</i>\n"
+"\n"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:34
@@ -144,8 +127,8 @@ msgid "Rugnur"
 msgstr "Rugnur"
 
 #. [side]: type=Dwarvish Fighter, id=Rugnur
-#. [side]: type=Haldric II, id=Haldric II
 #. [side]: type=Dwarvish Lord, id=Durstorn
+#. [side]: type=Haldric II, id=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:27
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:44
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:24
@@ -168,20 +151,20 @@ msgstr "Zwerge"
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:36
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:26
 msgid "Haldric II"
-msgstr "Haldric II."
+msgstr "Haldric II"
 
 #. [side]: type=Elvish Captain, id=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:86
 msgid "Glildur"
 msgstr "Glildur"
 
-#. [side]: type=Elvish Captain, id=Glildur
 #. [side]: type=Elvish Captain, id=Glindur
+#. [side]: type=Elvish Marshal, id=Crintil
 #. [side]: type=Elvish Marshal, id=Gaenlar
 #. [side]: type=Elvish Marshal, id=Glinan
 #. [side]: type=Elvish Captain, id=Kalnar
 #. [side]
-#. [side]: type=Elvish Marshal, id=Crintil
+#. [side]: type=Elvish Captain, id=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:93
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:42
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:41
@@ -433,10 +416,6 @@ msgstr ""
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:279
-#, fuzzy
-#| msgid ""
-#| "Uh, no, wait! Lets talk business — how much will you pay us to do this "
-#| "for you?"
 msgid ""
 "Uh, no, wait! Let’s talk business — how much will you pay us to do this for "
 "you?"
@@ -712,7 +691,7 @@ msgstr "Euer ach so kostbarer Landar kann mal meine Axt küssen."
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:674
 msgid "Good, the road is secured. Let’s move those caravans!"
-msgstr ""
+msgstr "Gut, der Weg ist gesichert. Bringt die Wagen in Bewegung!"
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:698
@@ -2809,12 +2788,6 @@ msgstr ""
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:271
-#, fuzzy
-#| msgid ""
-#| "You don’t have authority over me, Durstorn. And I wouldn’t give the "
-#| "Sceptre to them even if you did. It’s not yours to give, its mine, and "
-#| "Rugnur’s, and Baglur’s. Krawg’s done more for its existence than you "
-#| "have! And yet, you still get the profits from selling it to Haldric."
 msgid ""
 "You don’t have authority over me, Durstorn. And I wouldn’t give the Sceptre "
 "to them even if you did. It’s not yours to give, it’s mine, and Rugnur’s, "
@@ -2825,7 +2798,7 @@ msgstr ""
 "über mich hättet, würde ich den Elfen das Zepter nicht geben. Es ist nicht "
 "an euch, das Zepter wegzugeben – die Entscheidung liegt in meinen, Rugnurs "
 "und Balglurs Händen. Auch Krawg hatte mehr Anteil am Gelingen des Zepters "
-"als ihr! Und doch erwartet ihr den Gewinn vom Verkauf an Haldric."
+"als ihr! Und doch erhaltet ihr den Gewinn vom Verkauf an Haldric."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:275
@@ -2965,19 +2938,14 @@ msgstr ""
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:426
-#, fuzzy
-#| msgid ""
-#| "I’m not going to do that, its suicide! And in any case, I’ve been with "
-#| "you for ten years, almost as long as I was in the Wesnothian army; I’d "
-#| "prefer to fight with you."
 msgid ""
 "I’m not going to do that, it’s suicide! And in any case, I’ve been with you "
 "for ten years, almost as long as I was in the Wesnothian army; I’d prefer to "
 "fight with you."
 msgstr ""
 "Das werde ich nicht machen, es grenzt an Selbstmord! Ich bin nun seit 10 "
-"Jahren mit euch zusammen, das ist fast so lange, wie ich in der Armee von "
-"Wesnoth diene. Ich würde lieber an eurer Seite kämpfen."
+"Jahren mit euch zusammen, das ist fast so lange, wie ich in Wesnoths Armee "
+"gedient habe. Ich würde lieber an eurer Seite kämpfen."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:430
@@ -3005,11 +2973,6 @@ msgstr ""
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:472
-#, fuzzy
-#| msgid ""
-#| "Alanin, ride as fast as you can south. Tell Haldric we are heading "
-#| "northeast, towards the old eastern mines, and if he wants his precious "
-#| "sceptre he should send forces to meet us there as soon as he can!"
 msgid ""
 "Alanin, ride south as fast as you can. Tell Haldric we are heading "
 "northeast, towards the old eastern mines, and if he wants his precious "
@@ -3017,8 +2980,8 @@ msgid ""
 msgstr ""
 "Reitet schnell gen Süden, Alanin. Sagt Haldric, dass wir uns gen Nordosten "
 "in Richtung der alten östlichen Minen begeben. Wenn er sein ach so kostbares "
-"Zepter will, soll er uns sobald wie möglich Unterstützung schicken und dort "
-"treffen!"
+"Zepter will, soll er uns sobald wie möglich Unterstützung schicken und uns "
+"dort treffen!"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:514
@@ -3256,9 +3219,9 @@ msgstr ""
 "Wir haben zwei Möglichkeiten. Entweder bleiben wir, kämpfen heldenhaft und "
 "sterben sicherlich, oder wir rennen so schnell wie nur möglich diesen Pfad "
 "entlang in die Tiefen dieser Höhle, um vielleicht etwas zu finden, das uns "
-"hilft. Bedenkt, Elfen sind untertage ja so unbeholfen. Mit einem gesunden "
-"Vorsprung gewinnen wir vielleicht ausreichend Zeit, um ihnen eine Falle zu "
-"stellen."
+"hilft. Bedenkt, Elfen sind untertage ja so unbeholfen. Wir sollten einen "
+"gewissen Vorsprung gewinnen und vielleicht ausreichend Zeit um ihnen eine "
+"Falle zu stellen."
 
 # Wer sagt das?
 # 1) der Drache, dann stimmt "wasssss ich will"

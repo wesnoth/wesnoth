@@ -4,19 +4,21 @@
 #  Stefan von Halenbach <vonHalenbach@users.sourceforge.net>, 2006 - 2007
 #  HaJo Gurt <gurt@gmx.de>, 2007
 #  Oliver 'Crommy' Lange <oli-lange@web.de>, 2008 - 2010
+#  Aaron Winter <winter.aaron93@gmail.com>, 2018
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-27 01:21 UTC\n"
-"PO-Revision-Date: 2014-03-16 18:27+0100\n"
-"Last-Translator: Crommy\n"
+"POT-Creation-Date: 2018-05-16 03:33 UTC\n"
+"PO-Revision-Date: 2018-04-25 20:06+0200\n"
+"Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de <>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 2.0.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. [campaign]: id=Son_of_the_Black-Eye
@@ -31,10 +33,8 @@ msgstr "SchwS"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:17
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(Herausfordernd)"
+msgstr "Herausfordernd"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:17
@@ -43,10 +43,8 @@ msgstr "Grunzer"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:18
-#, fuzzy
-#| msgid "(Difficult)"
 msgid "Difficult"
-msgstr "(Schwierig)"
+msgstr "Schwierig"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:18
@@ -55,10 +53,8 @@ msgstr "Krieger"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:19
-#, fuzzy
-#| msgid "(Nightmare)"
 msgid "Nightmare"
-msgstr "(Albtraum)"
+msgstr "Albtraum"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:19
@@ -89,7 +85,7 @@ msgstr ""
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:24
 msgid "(Expert level, 18 scenarios.)"
-msgstr "(Einstufung: Schwierig, 18 Szenarien.)"
+msgstr "(Einstufung: Schwierig, 18 Szenarien)"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:29
@@ -148,11 +144,11 @@ msgstr "Besiegt Alber"
 msgid "Death of Kapou’e"
 msgstr "Kapou’e fällt in der Schlacht"
 
-#. [side]: type=Orcish Leader, id=Kapou'e
 #. [side]: id=Kapou'e, type=Orcish Leader
 #. [side]
 #. [side]: type=Orcish Slayer, id=Rugh
 #. [side]: id=Grüü, type=Great Troll
+#. [side]: type=Orcish Leader, id=Kapou'e
 #. [side]: type=General, id=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:56
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:64
@@ -189,11 +185,11 @@ msgstr "Kapou’e"
 msgid "Alber"
 msgstr "Alber"
 
-#. [side]: type=Lieutenant, id=Alber
-#. [side]: type=General, id=Lanbec'h
 #. [side]: type=General, id=Slowhand
 #. [side]
 #. [side]: type=General, id=Harman
+#. [side]: type=General, id=Lanbec'h
+#. [side]: type=Lieutenant, id=Alber
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:82
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:61
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:34
@@ -204,10 +200,16 @@ msgstr "Menschen"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:98
+#, fuzzy
+#| msgid ""
+#| "Rahul I, Lord Protector of the Northern Alliance, concluded peace with "
+#| "enemy orcs during the fourth year of his leadership. He ended a 15-year "
+#| "war with Black-Eye Karun, ruler of the enemy orcs. A peace treaty between "
+#| "the Alliance and the orcs settled their territorial disputes."
 msgid ""
 "Rahul I, Lord Protector of the Northern Alliance, concluded peace with enemy "
-"orcs during the fourth year of his leadership. He ended a 15-year war with "
-"Black-Eye Karun, ruler of the enemy orcs. A peace treaty between the "
+"orcs during the fourteenth year of his leadership. He ended a 15-year war "
+"with Black-Eye Karun, ruler of the enemy orcs. A peace treaty between the "
 "Alliance and the orcs settled their territorial disputes."
 msgstr ""
 "Es war Rahul der Erste, Marschall der Nordallianz, der im vierten Jahr "
@@ -241,16 +243,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:108
-#, fuzzy
-#| msgid ""
-#| "The peace treaty still held however, partially because the treaty — "
-#| "although arranged by the Northern Alliance — was between the local earls "
-#| "and the orcish tribes and didn’t have any direct connection with the "
-#| "Northern Alliance. The other — and perhaps the main — reason why the "
-#| "treaty held was that with the death of the Black Eye, the unity of the "
-#| "orcs was shattered and they once again descended into inner squabbling. "
-#| "Thus the years that followed were relatively peaceful and prosperous — at "
-#| "least for the humans."
 msgid ""
 "The peace treaty still held however, partially because the treaty — although "
 "arranged by the Northern Alliance — was between the local earls and the "
@@ -1458,10 +1450,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:138
-#, fuzzy
-#| msgid ""
-#| "Leaving most of his people at Barag Gór, Kapou’e, accompanied by the "
-#| "shamans and his warriors set off to Tirigaz."
 msgid ""
 "Leaving most of his people at Barag Gór, Kapou’e, accompanied by the shamans "
 "and his warriors, set off to Tirigaz."
@@ -1791,27 +1779,25 @@ msgstr "Die Todeswüste"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:20
-#, fuzzy
-#| msgid "Reach the Oasis"
 msgid "Reach the Oasis in the Southeast"
-msgstr "Erreicht die Oase"
+msgstr "Erreicht die Oase im Südosten"
 
 #. [side]: type=Assassin, type=Rogue, id=Ar-Dant
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:83
 msgid "Ar-Dant"
 msgstr "Ar-Dant"
 
-#. [side]: type=Assassin, type=Rogue, id=Ar-Dant
-#. [side]
-#. [side]: type=Elvish Champion, id=Thelarion
-#. [side]: type=Dwarvish Steelclad, id=Darstang
-#. [side]: type=General, id=Earl Lanbec'h
-#. [side]: type=General, id=Arthain
-#. [side]: type=Lieutenant, id=Hanak
-#. [side]: type=Bandit, id=Sagmar
 #. [side]: type=General, id=Telthys
+#. [side]: type=Elvish Champion, id=Thelarion
 #. [side]: type=General, id=Fredor
 #. [side]: type=General, id=Georan
+#. [side]: type=General, id=Arthain
+#. [side]: type=Lieutenant, id=Hanak
+#. [side]: type=Dwarvish Steelclad, id=Darstang
+#. [side]: type=General, id=Earl Lanbec'h
+#. [side]
+#. [side]: type=Bandit, id=Sagmar
+#. [side]: type=Assassin, type=Rogue, id=Ar-Dant
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #. [side]: type=Orcish Warlord, id=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:86
@@ -2171,14 +2157,10 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:200
-#, fuzzy
-#| msgid ""
-#| "Elves! You were right, Gork, this place is infested with the skinny "
-#| "weaklings."
 msgid "Elves! I was right, this place is infested with the skinny weaklings."
 msgstr ""
-"Elfen! Pirk, du hattest Recht! Dieser Ort ist verseucht mit diesen "
-"dünnhäutigen Schwächlingen."
+"Elfen! Ich hatte recht! Dieser Ort ist verseucht mit diesen dünnhäutigen "
+"Schwächlingen."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:206
@@ -2367,8 +2349,8 @@ msgstr "Übersteht Shan Taums Zorn für 20 Runden"
 msgid "Defeat Shan Taum"
 msgstr "Besiegt Shan Taum"
 
-#. [side]: type=Orcish Warlord, id=Shan Taum
 #. [unit]: type=Orcish Warlord, id=Shan Taum
+#. [side]: type=Orcish Warlord, id=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:60
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:143
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:126
@@ -2553,12 +2535,6 @@ msgstr ""
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:201
-#, fuzzy
-#| msgid ""
-#| "Leave your people here Kapou’e — they are safe for the moment — and go "
-#| "defend Prestim. In the meantime, now that the council is complete again, "
-#| "we will decide. We may have to form the Great Horde again, and give you "
-#| "the leadership on it."
 msgid ""
 "Leave your people here Kapou’e — they are safe for the moment — and go "
 "defend Prestim. In the meantime, now that the council is complete again, we "
@@ -2601,10 +2577,8 @@ msgstr ""
 
 #. [note]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:65
-#, fuzzy
-#| msgid "Note: whoever detonates the bridge will die."
 msgid "Whoever detonates the bridge will die."
-msgstr "Hinweis: Derjenige, der die Brücke sprengt, opfert sein Leben."
+msgstr "Derjenige, der die Brücke sprengt, opfert sein Leben."
 
 #. [side]: type=Elvish Champion, id=Thelarion
 #. [unit]: type=Elvish Champion, id=Thelarion
@@ -2842,8 +2816,8 @@ msgid "It won’t be said that Elves were braver than us, everyone attack!"
 msgstr ""
 "Es kann nicht sein, dass Elfen tapferer sind als wir. Zum Angriff, Männer!"
 
-#. [unit]: type=General, id=Earl Lanbec'h
 #. [side]: type=General, id=Earl Lanbec'h
+#. [unit]: type=General, id=Earl Lanbec'h
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:658
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:143
@@ -3764,7 +3738,7 @@ msgstr "Werft ihn in den See. Soll er doch erfrieren."
 #. [message]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:769
 msgid "You retrieve $amount_gold of Grüü's leftover gold."
-msgstr ""
+msgstr "Ihr erhaltet $amount_gold von Grüüs übriggebliebenem Gold."
 
 #. [scenario]: id=15_Civil_War
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:4
@@ -3786,13 +3760,13 @@ msgstr "Sodann führt Kapou’e zum Wegweiser im Südwesten"
 msgid "Braga"
 msgstr "Braga"
 
+#. [side]: type=Orcish Warlord, id=Orga
+#. [side]: type=Orcish Warrior, id=Knorgh
+#. [side]: type=Orcish Warrior, id=Nofhug
 #. [side]: type=Orcish Warlord, id=Braga
 #. [side]: type=Orcish Warlord, id=Meato
 #. [side]: type=Orcish Warlord, id=Ragvan
 #. [side]: type=Orcish Warlord, id=Kergai
-#. [side]: type=Orcish Warlord, id=Orga
-#. [side]: type=Orcish Warrior, id=Knorgh
-#. [side]: type=Orcish Warrior, id=Nofhug
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:73
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:93
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:113
@@ -4097,14 +4071,6 @@ msgstr "Verdienste?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:234
-#, fuzzy
-#| msgid ""
-#| "Well let’s see, first he betrays the trust of his sworn sovereign and "
-#| "becomes no less than a boot-licking spy for the humans. Then goes on to "
-#| "engineer the death of half of the Great Council and in doing so makes "
-#| "himself directly responsible for the deaths of hundreds of orcs. And best "
-#| "of all, he is directly responsible for a bloody civil war right at the "
-#| "time when his people are on the edge of total extermination!"
 msgid ""
 "Well let’s see, first he betrays the trust of his sworn sovereign and "
 "becomes no less than a boot-licking spy for the humans. Then he goes on to "
@@ -4299,8 +4265,8 @@ msgstr "Melde mich wie befohlen, mein Fürst."
 msgid "Ahhh, perfect, more reinforcements."
 msgstr "Perfekt, mehr Verstärkungen."
 
-#. [unit]: type=General, id=Howgarth III
 #. [side]: type=General, id=Howgarth III
+#. [unit]: type=General, id=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:390
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:154
 msgid "Howgarth III"
@@ -4340,10 +4306,16 @@ msgstr ""
 
 #. [message]: speaker=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:459
+#, fuzzy
+#| msgid ""
+#| "The hell I don’t, Earl Lanbec’h, the Northern Alliance was witness to a "
+#| "treaty some twenty seven years ago between your people and the orcs, "
+#| "which both of you are no doubt violating. It is our duty as the "
+#| "orchestrator and witness of this treaty to see that it is honored."
 msgid ""
 "The hell I don’t, Earl Lanbec’h, the Northern Alliance was witness to a "
-"treaty some twenty seven years ago between your people and the orcs, which "
-"both of you are no doubt violating. It is our duty as the orchestrator and "
+"treaty some seventeen years ago between your people and the orcs, which both "
+"of you are no doubt violating. It is our duty as the orchestrator and "
 "witness of this treaty to see that it is honored."
 msgstr ""
 "Den Teufel werde ich tun, Graf Lanbec’h! Die Nordallianz war Zeuge des "
@@ -4391,8 +4363,13 @@ msgstr "Wovon redet ihr?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:486
+#, fuzzy
+#| msgid ""
+#| "I am Kapou’e, son of the Black-Eye Karun. Twenty-seven years ago you "
+#| "people assassinated my father after inviting him to join the Northern "
+#| "Alliance."
 msgid ""
-"I am Kapou’e, son of the Black-Eye Karun. Twenty-seven years ago you people "
+"I am Kapou’e, son of the Black-Eye Karun. Seventeen years ago you people "
 "assassinated my father after inviting him to join the Northern Alliance."
 msgstr ""
 "Ich bin Kapou’e, Sohn von Schwarzauge Karun. Vor siebenundzwanzig Jahren "

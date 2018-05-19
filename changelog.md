@@ -1,9 +1,106 @@
-## Version 1.13.13+dev
+## Version 1.14.1+dev
+ ### Language and i18n
+   * Updated translations: British English, Chinese (Simplified), Czech, French,
+     Galician, Italian, Spanish, Ukrainian
+ ### User interface
+   * List boxes (MP lobby game list in particular) now keep the scroll position
+     when they change, instead of keeping the selected item visible (issue #3016).
+   * Fixed MP lobby player list scrolling to top when it changes
+ ### Miscellaneous and bug fixes
+   * Fixed: unit halo remained after undoing a recall (issue #3065)
+
+## Version 1.14.1
  ### Campaigns
+   * Eastern Invasion:
+     * In 'Captured', fixed units incorrectly costing upkeep after leveling up.
    * Secrets of the Ancients
-     * Fixed several inconsistently spelled names.
+     * Fixed minor unit naming inconsistencies (issues #2844 and #2846).
+   * Under the Burning Suns
+     * Added custom graphics for the broken tree in S1.
+     * Various sprite and image updates.
+     * Fixed a bug in the formation ability causing defense bonuses not being
+       received in some cases.
+ ### Language and i18n
+   * Updated translations: British English, Chinese (Simplified), Czech, French,
+     Galician, German, Italian, Japanese, Scottish Gaelic, Slovak, Spanish
+   * Fixed Logging Options tooltips not being translatable (issue #2837).
+   * Add command-line argument to disable the filtering of incomplete translations
+     in the language selection list.
+ ### Multiplayer server
+   * Added support for matching user, IP, and email bans from a forums board
+     when the forum_user_handler is enabled and active. (IP and email bans with
+     wildcards are not supported yet.)
+   * Fixed various instances of the server crashing under certain conditions.
+ ### Performance
+   * Added an option to disable the FPS limiter for a slight performance boost.
+ ### Units
+   * Changed the plural name for the merfolk race from Mermen to Merfolk (issue #2940)
+     and replaced a few instances in core unit or terrain descriptions accordingly.
+ ### User interface
+   * Removed individual Join/Observe buttons for each game in the MP Lobby.
+   * Highlight the titles of MP games with vacant slots.
+   * Improved MP Lobby layout on low resolutions.
+   * Improved reporting of network errors in the MP lobby (issue #3005).
+   * Ensure the chat widget remains the correct size even after a window resize.
+   * Custom MP game names are now capped at 50 characters.
+   * Restored Era info to main MP game display.
+   * Improved the resolution selection criteria for the MP Lobby.
+   * Fixed inactive weapon specials being displayed in the Unit Attack dialog
+     unlike in 1.12 (issue #3033).
+ ### Miscellaneous and bug fixes
+   * Removed misleading tooltip text stating registered nicknames are optional for
+     the official MP server.
+   * Attempting to save a screenshot with an unsupported format now shows an error
+     message, instead of saving the screenshot as BMP with the requested extension.
+   * It is now possible to disable logdomains in the Logging Options dialog.
+   * Fixed the wesnoth(6) manpage claiming the default log level is 'error' when it
+     has been 'warning' since version 1.9.0.
+   * Document --log-none in the wesnoth(6) manpage.
+   * Avoid trying to load invalid base64-encoded data URIs.
+   * wesnoth_addon_manager and the addons.wesnoth.org web index can now use data URIs.
+   * Fixed a crash when using certain invalid color= values.
+   * Implemented a workaround for an unhandled std::bad_cast from string comparison
+     functions that caused a crash-to-desktop when opening Preferences among others
+     (issue #3050).
+
+## Version 1.14.0
+ ### Campaigns
+   * Under the Burning Suns
+     * New set of Quenoth faction and character portraits by LordBob.
+     * Updated sprites for several Quenoth units.
+     * Fixed "Invalid WML found" error that can be caused by the Quenoth Youth
+       support ability.
+ ### Help browser
+   * Temporarily hidden Editor section as it is mostly incomplete and of little
+     use right now (issue #2963).
+ ### Language and i18n
+   * Fixed Version label on the title screen not being translatable (issue #2914).
+   * Updated translations: Czech, French, Galician, German, Japanese, Polish,
+     Scottish Gaelic, Slovak, Spanish
+ ### Multiplayer
+   * Fixed regression causing a crash-to-desktop when trying to log into the
+     server using a registered and active account without specifying a
+     password.
+   * Fixed an infinite loading screen if the server shut down or restarted
+     mid-login.
+   * Fixed an infinite loading screen when attempting to login with an
+     unregistered nickname followed by a registered one.
+   * Dark Forecast: Fixed possible Lua error when the weather changes.
+ ### User Interface
+   * Implemented MP chat message history saving (issue #1194, issue #2802).
+   * Fixed context menus not dismissing on right click.
+ ### Miscellaneous and bug fixes
+   * Fixed an AI assertion when a unit with one disabled attack attacked a unit
+     with no attacks or a single disabled attack.
+
+## Version 1.13.14
+ ### Security fixes
+   * Fixed an issue allowing MP lobby and whisper message origins to be spoofed
+     by clients.
+ ### Campaigns
    * The Hammer of Thursagan
-     * S12 Fixed enemies from ai6 (south-east lich) going to the book (spider) room
+     * S12 Fixed enemies from ai6 (south-east lich) going to the book (spider)
+       room
      * S12 Fixed north treasure chest disappearing
    * The Rise of Wesnoth
      * New set of story art.
@@ -11,12 +108,23 @@
    * Unit descriptions use the new multiplication sign format for attack lists
      now (issue #2873).
  ### Language and i18n
-   * Updated translations: Chinese (Simplified), Czech, French, Galician, Polish
+   * Updated translations: Chinese (Simplified), Czech, French, Galician,
+     Italian, Polish
+ ### Lua API
+   * Fix wesnoth.show_popup_dialog and wesnoth.show_message_box not accepting
+     translatable strings
+ ### Multiplayer
+   * Added team color to a few background units missing in Aethermaw.
  ### User Interface
-   * Swapped the position and formatting of game names and titles in the MP lobby.
+   * Swapped the position and formatting of game names and titles in the MP
+     lobby.
    * Made Faction Select button's purpose more clear in MP Staging.
+   * Added a convenient button in Load Game to open your saves folder.
  ### Miscellaneous and bug fixes
-   * Removed the Font Scaling preference. It was too buggy (issues #2792 and #1624).
+   * Removed the Font Scaling preference. It was too buggy (issues #2792 and
+     #1624).
+   * Fixed some hotkeys triggering multiple commands on GNU/Linux (bug #1736).
+   * Fixed [modify_side] share_vision=yes not doing anything (bug #2850).
    * Fixed regression where unit filters in [disable] weapon specials would not
      match the attacking unit.
    * Fixed images with no alpha channel rendering incorrectly.
@@ -24,6 +132,11 @@
    * Fixed assertion when undoing actions in a synced context.
    * [filter_wml] no longer accepts [and] and [or] in addition to [not] since
      the implementation was non-functional.
+   * Fixed some MP passwords being saved incorrectly (issue #2745)
+   * Fixed AI not recruiting in some circumstances when there are only cheap
+     units on the recall list.
+   * Fixed sometimes being unable to join MP games with non-required eras.
+   * Fixed locations not being added to the palette when loading a map (#1023)
 
 ## Version 1.13.13
  ### Campaigns
