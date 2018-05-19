@@ -82,6 +82,8 @@
    * Custom MP game names are now capped at 50 characters.
    * Restored Era info to main MP game display.
    * Improved the resolution selection criteria for the MP Lobby.
+   * List boxes (MP lobby game list in particular) now keep the scroll position
+     when they change, instead of keeping the selected item visible (issue #3016).
    * Fixed MP lobby player list scrolling to top when it changes.
    * Fixed inactive weapon specials being displayed in the Unit Attack dialog
      unlike in 1.12 (issue #3033).
