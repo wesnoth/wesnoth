@@ -78,6 +78,20 @@ wesnoth.wml_actions.random_placement = function(cfg)
 				::continue::
 			end
 		end
+		-- TODO: This should really be "do" but is kept as "command" for compatibility
+		for do_child in wml.child_range(cfg, "command") do
+			local action = utils.handle_event_commands(do_child, "loop")
+			if action == "break" then
+				utils.set_exiting("none")
+				return
+			elseif action == "continue" then
+				utils.set_exiting("none")
+				break
+			elseif action ~= "none" then
+				utils.end_var_scope(variable, variable_previous)
+				return
+			end
+		end
 		wesnoth.wml_actions.command (command)
 	end
 	utils.end_var_scope(variable, variable_previous)
