@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-05-16 03:33 UTC\n"
-"PO-Revision-Date: 2018-05-07 09:42+0200\n"
+"PO-Revision-Date: 2018-05-19 19:58+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -707,10 +707,8 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:804
-#, fuzzy
-#| msgid "These fields seem strangely vacant. Where are the horses?"
 msgid "These fields seem strangely vacant. Where are the dustboks?"
-msgstr "Estos campos parecen extrañamente vacíos. ¿Dónde están los caballos?"
+msgstr "Estos campos parecen extrañamente vacíos. ¿Dónde están los dubocs?"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:809
@@ -729,19 +727,11 @@ msgstr "¿Es seguro salir? Estaba muy asustado."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:856
-#, fuzzy
-#| msgid "Where are all the other horses?"
 msgid "Where are all the other dustboks?"
-msgstr "¿Dónde están todos los demás caballos?"
+msgstr "¿Dónde están todos los demás dubocs?"
 
 #. [message]: speaker=Naru
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:861
-#, fuzzy
-#| msgid ""
-#| "A hunting party left just yesterday, so unless the rocks fell all over "
-#| "the land, many of the horses have probably survived. The few that "
-#| "remained here were scared by the falling rocks and fled into the night. "
-#| "It took all my skill to calm Yasi and keep him from running."
 msgid ""
 "A hunting party left just yesterday, so unless the rocks fell all over the "
 "land, many of the dustboks have probably survived. The few that remained "
@@ -749,19 +739,14 @@ msgid ""
 "my skill to calm Yasi and keep him from running."
 msgstr ""
 "Una partida de caza salió justo ayer, así que a menos que las rocas hayan "
-"caído por todas partes, es probable que muchos caballos aún estén vivos. Los "
+"caído por todas partes, es probable que muchos dubocs aún estén vivos. Los "
 "pocos que quedaban aquí se asustaron con las rocas que caían y huyeron en la "
 "noche. Tuve que hacer uso de toda mi habilidad para calmar a Yasi y evitar "
 "que escapase."
 
+# Encima les ponen nombres cariñosos. ¿que pongo? ¿polvitos?
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:866
-#, fuzzy
-#| msgid ""
-#| "We’ll need your help in checking to see if the outer settlements "
-#| "survived. Who knows what kinds of damage they suffered in the night? And "
-#| "perhaps some of the people out in the desert have been able to round up "
-#| "some of the loose horses."
 msgid ""
 "We’ll need your help in checking to see if the outer settlements survived. "
 "Who knows what kinds of damage they suffered in the night? And perhaps some "
@@ -770,8 +755,8 @@ msgid ""
 msgstr ""
 "Necesitaremos de tu ayuda para comprobar si los asentamientos lejanos están "
 "bien. Quién sabe cuantos daños sufrieron por la noche. Y quizás algunos de "
-"los que fueron al desierto hayan sido capaces de reunir parte de los "
-"caballos perdidos."
+"los que fueron al desierto hayan sido capaces de reunir parte de los dubocs "
+"perdidos."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:871
@@ -15508,11 +15493,12 @@ msgstr "Druida Quenoth"
 msgid "sand"
 msgstr "arena"
 
+# Me niego a llamarlos antílopes de arena o del desierto o gacelas de arena o del polvo. Es un incordio esto de los nombres compuestos en inglés. Al traducirlos quedan de pena y muy largos. (Pepe)
 #. [unit_type]: id=Quenoth Dustbok, race=monster, description=
 #. Made-up animal name derived from 'dust' (sand) and 'bok' as in real-world steenbok or springbok antelope
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Dustbok.cfg:6
 msgid "Dustbok"
-msgstr ""
+msgstr "Duboc"
 
 #. [unit_type]: id=Quenoth Fighter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:5
@@ -16122,8 +16108,6 @@ msgstr "enseñando"
 
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:76
-#, fuzzy
-#| msgid "teaching"
 msgid "female^teaching"
 msgstr "enseñando"
 
@@ -16159,8 +16143,6 @@ msgstr "formación"
 
 #. [dummy]: id=formation
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:101
-#, fuzzy
-#| msgid "formation"
 msgid "female^formation"
 msgstr "formación"
 
@@ -16182,8 +16164,6 @@ msgstr "separarse"
 
 #. [dummy]: id=disengage
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:110
-#, fuzzy
-#| msgid "disengage"
 msgid "female^disengage"
 msgstr "separarse"
 
@@ -16218,8 +16198,6 @@ msgstr "distraer"
 
 #. [skirmisher]: id=distract
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:127
-#, fuzzy
-#| msgid "distract"
 msgid "female^distract"
 msgstr "distraer"
 
@@ -16239,8 +16217,6 @@ msgstr "apoyo"
 
 #. [dummy]: id=support
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:140
-#, fuzzy
-#| msgid "support"
 msgid "female^support"
 msgstr "apoyo"
 
