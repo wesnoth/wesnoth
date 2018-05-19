@@ -188,7 +188,7 @@ void saved_game::set_defaults()
 	for(config& side : starting_point_.child_range("side")) {
 		// Set save_id default value directly after loading to its default to prevent different default behaviour in
 		// mp_connect code and sp code.
-		
+
 		if(side["no_leader"].to_bool()) {
 			side["leader_lock"] = true;
 			side.remove_attribute("type");
@@ -237,17 +237,7 @@ void saved_game::expand_scenario()
 			// A hash has to be generated using an unmodified scenario data.
 			mp_settings_.hash = scenario.hash();
 
-			// Add addon_id information if it exists.
-			if(!scenario["addon_id"].empty() && scenario["require_scenario"].to_bool(false)) {
-				config required_scenario;
-
-				required_scenario["id"] = scenario["addon_id"];
-				required_scenario["name"] = scenario["addon_title"];
-				required_scenario["version"] = scenario["addon_version"];
-				required_scenario["min_version"] = scenario["addon_min_version"];
-
-				mp_settings_.update_addon_requirements(required_scenario);
-			}
+			check_require_scenario();
 
 			update_label();
 			set_defaults();
@@ -256,6 +246,27 @@ void saved_game::expand_scenario()
 			this->starting_point_.clear();
 		}
 	}
+}
+
+void saved_game::check_require_scenario()
+{
+	if(!starting_point_["require_scenario"].to_bool(false)) {
+		return;
+	}
+
+	if(starting_point_["addon_id"].empty()) {
+		ERR_NG << "cannot handle require_scenario=yes because we don't know from which addon that scenario came from\n";
+		return;
+	}
+
+	config required_scenario;
+
+	required_scenario["id"] = starting_point_["addon_id"];
+	required_scenario["name"] = starting_point_["addon_title"];
+	required_scenario["version"] = starting_point_["addon_version"];
+	required_scenario["min_version"] = starting_point_["addon_min_version"];
+
+	mp_settings_.update_addon_requirements(required_scenario);
 }
 
 namespace
@@ -417,12 +428,7 @@ void saved_game::expand_random_scenario()
 			config scenario_new =
 				random_generate_scenario(starting_point_["scenario_generation"], starting_point_.child("generator"));
 
-			// Preserve "story" form the scenario toplevel.
-			for(config& story : starting_point_.child_range("story")) {
-				scenario_new.add_child("story", story);
-			}
-
-			scenario_new["id"] = starting_point_["id"];
+			post_scenario_generation(starting_point_, scenario_new);
 			starting_point_ = scenario_new;
 
 			update_label();
@@ -445,6 +451,33 @@ void saved_game::expand_random_scenario()
 		}
 	}
 }
+
+void saved_game::post_scenario_generation(const config& old_scenario, config& generated_scenario)
+{
+	static const std::vector<std::string> attributes_to_copy {
+		"id",
+		"addon_id",
+		"addon_title",
+		"addon_version",
+		"addon_min_version",
+		"require_scenario",
+	};
+
+	// TODO: should we add "description" to this list?
+	// TODO: in theory it is possible that whether the scenario is required depends on the generated scenario, so maybe remove require_scenario from this list.
+
+	for(const auto& str : attributes_to_copy) {
+		generated_scenario[str] = old_scenario[str];
+	}
+
+	// Preserve "story" form the scenario toplevel.
+	// Note that it does not delete [story] tags in generated_scenario, so you can still have your story
+	// dependent on the generated scenario.
+	for(const config& story : old_scenario.child_range("story")) {
+		generated_scenario.add_child("story", story);
+	}
+}
+
 
 void saved_game::expand_carryover()
 {
