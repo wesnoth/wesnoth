@@ -913,7 +913,13 @@ function wml_actions.reset_fog(cfg)
 end
 
 function wesnoth.wml_actions.change_theme(cfg)
-	wesnoth.game_config.theme = cfg.theme
+	local new_theme = cfg.theme
+
+	if new_theme == nil then
+		new_theme = ""
+	end
+
+	wesnoth.game_config.theme = new_theme
 end
 
 function wesnoth.wml_actions.zoom(cfg)

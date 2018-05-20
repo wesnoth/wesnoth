@@ -8,6 +8,8 @@
    * Fixed MP lobby player list scrolling to top when it changes
  ### Miscellaneous and bug fixes
    * Fixed: unit halo remained after undoing a recall (issue #3065)
+   * [change_theme] no longer causes a Lua error when theme= is not specified
+     instead of explicitly set to an empty string.
 
 ## Version 1.14.1
  ### Campaigns
