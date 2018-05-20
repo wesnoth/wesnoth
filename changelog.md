@@ -54,6 +54,9 @@
  ### Miscellaneous and bug fixes
    * Rest healing now happens on turn 2. (issue #3562)
    * Normal healing now happens on turn 1 for all sides except the first. (issue #3562)
+   * [change_theme] no longer requires running a separate action to update the
+     UI afterwards (e.g. [redraw]) and the status panels are updated immediately.
+     as well.
 
 ## Version 1.14.5+dev
  ### Campaigns
