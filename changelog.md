@@ -1,4 +1,8 @@
 ## Version 1.14.1+dev
+ ### Campaigns
+   * Northern Rebirth:
+     * S02_01 Infested Caves: keep side 8 AI leader from wandering off too far
+       and ending up on a keep with only one hex for recruiting
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Czech, French,
      Galician, Italian, Spanish, Ukrainian
@@ -13,6 +17,14 @@
    * [change_theme] no longer requires running a separate action to update the
      UI afterwards (e.g. [redraw]) and the status panels are updated immediately.
      as well.
+   * Lua random map generator: fixed error when flipping map; specifically this
+     also fixes an assert at the start of HttT S7 (Sceptre of Fire) that had a
+     50% chance of being triggered
+   * Experimental AI: fixed recruiting not working on maps without enemies, such
+     as the first two turns of Dark Forecast
+   * Experimental AI: fixed recruiting evaluations sometimes not being updated
+   * Replaced deprecated Lua code and all remaining uses of FOREACH and MESSAGE
+     macros
 
 ## Version 1.14.1
  ### Campaigns
