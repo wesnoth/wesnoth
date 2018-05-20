@@ -8,6 +8,9 @@
    * Eastern Invasion
      * Fixed some Lua errors in S05.
      * In 'Captured', fixed units incorrectly costing upkeep after leveling up.
+   * Northern Rebirth:
+     * S02_01 Infested Caves: keep side 8 AI leader from wandering off too far
+       and ending up on a keep with only one hex for recruiting
    * Secrets of the Ancients
      * Fixed several inconsistently spelled names.
    * The Hammer of Thursagan
@@ -165,6 +168,14 @@
    * Fixed: unit halo remained after undoing a recall (issue #3065).
    * [change_theme] no longer causes a Lua error when theme= is not specified
      instead of explicitly set to an empty string.
+   * Lua random map generator: fixed error when flipping map; specifically this
+     also fixes an assert at the start of HttT S7 (Sceptre of Fire) that had a
+     50% chance of being triggered
+   * Experimental AI: fixed recruiting not working on maps without enemies, such
+     as the first two turns of Dark Forecast
+   * Experimental AI: fixed recruiting evaluations sometimes not being updated
+   * Replaced deprecated Lua code and all remaining uses of FOREACH and MESSAGE
+     macros
 
 ## Version 1.13.12
  ### Security fixes
