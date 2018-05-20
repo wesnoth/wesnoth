@@ -245,7 +245,7 @@ void unit_recall::pre_show(window& window)
 		return !recall_list_[i]->trait_names().empty() ? recall_list_[i]->trait_names().front().str() : "";
 	});
 
-	list.set_active_sorting_option(sort_last.first >= 0 ? sort_last	: sort_default);
+	list.set_active_sorting_option(sort_last.first >= 0 ? sort_last	: sort_default, true);
 
 	list_item_clicked(window);
 }
