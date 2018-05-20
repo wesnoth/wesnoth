@@ -282,6 +282,7 @@ void display::set_theme(config theme_cfg) {
 	action_buttons_.clear();
 	create_buttons();
 	invalidate_theme();
+	redraw_everything();
 }
 
 void display::init_flags() {

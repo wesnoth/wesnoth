@@ -10,6 +10,9 @@
    * Fixed: unit halo remained after undoing a recall (issue #3065)
    * [change_theme] no longer causes a Lua error when theme= is not specified
      instead of explicitly set to an empty string.
+   * [change_theme] no longer requires running a separate action to update the
+     UI afterwards (e.g. [redraw]) and the status panels are updated immediately.
+     as well.
 
 ## Version 1.14.1
  ### Campaigns
