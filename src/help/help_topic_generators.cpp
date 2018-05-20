@@ -184,7 +184,6 @@ std::string terrain_topic_generator::operator()() const {
 		ss << "Terrain string:"  << type_.number() << "\n";
 
 		ss << "Hide in Editor: " << (type_.hide_in_editor() ? "Yes" : "No") << "\n";
-		ss << "Hide Help: "      << (type_.hide_help() ? "Yes" : "No") << "\n";
 		ss << "Editor Group: "   << type_.editor_group() << "\n";
 
 		ss << "Light Bonus: "   << type_.light_bonus(0) << "\n";
