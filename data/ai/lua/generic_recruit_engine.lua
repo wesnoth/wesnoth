@@ -671,7 +671,7 @@ return {
             -- and if that does not exist either, a location mirrored w.r.t the center of the map
             if not enemy_location then
                 local enemy_sides = wesnoth.get_sides({ { "enemy_of", {side = wesnoth.current.side} } })
-                local min_dist = 9e99
+                local min_dist = math.huge
                 for _, side in ipairs(enemy_sides) do
                     local enemy_start_hex = wesnoth.special_locations[side.side]
                     if enemy_start_hex then
@@ -689,7 +689,7 @@ return {
                 distance_to_enemy = wesnoth.map.distance_between(reference_hex[1], reference_hex[2], enemy_location.x, enemy_location.y)
             end
 
-            local gold_limit = 9e99
+            local gold_limit = math.huge
             if recruit_data.castle.loose_gold_limit >= recruit_data.recruit.cheapest_unit_cost then
                 gold_limit = recruit_data.castle.loose_gold_limit
             end
