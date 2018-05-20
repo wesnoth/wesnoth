@@ -137,10 +137,14 @@ bool affects_side(const config& cfg, std::size_t side, std::size_t other_side)
 }
 } // end anon namespace
 
-bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc) const
+bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
 {
-	for(const config& i : this->abilities_.child_range(tag_name)) {
-		if(ability_active(tag_name, i, loc) && ability_affects_self(tag_name, i, loc)) {
+	for (const config &i : this->abilities_.child_range(tag_name)) {
+		if (ability_active(tag_name, i, loc) &&
+			ability_affects_self(tag_name, i, loc) &&
+			ability_affects_weapon(i, weapon, false) &&
+			ability_affects_weapon(i, opp_weapon, true))
+		{
 			return true;
 		}
 	}
@@ -149,34 +153,31 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 	const unit_map& units = display::get_singleton()->get_units();
 
 	adjacent_loc_array_t adjacent;
-	get_adjacent_tiles(loc, adjacent.data());
-
+	get_adjacent_tiles(loc,adjacent.data());
 	for(unsigned i = 0; i < adjacent.size(); ++i) {
 		const unit_map::const_iterator it = units.find(adjacent[i]);
-		if(it == units.end() || it->incapacitated()) {
+		if (it == units.end() || it->incapacitated())
 			continue;
-		}
-
 		// Abilities may be tested at locations other than the unit's current
 		// location. This is intentional to allow for less messing with the unit
 		// map during calculations, particularly with regards to movement.
 		// Thus, we need to make sure the adjacent unit (*it) is not actually
 		// ourself.
-		if(&*it == this) {
+		if ( &*it == this )
 			continue;
-		}
-
-		for(const config& j : it->abilities_.child_range(tag_name)) {
-			if(affects_side(j, side(), it->side()) && it->ability_active(tag_name, j, adjacent[i])
-					&& ability_affects_adjacent(tag_name, j, i, loc, *it)) {
+		for (const config &j : it->abilities_.child_range(tag_name)) {
+			if (affects_side(j,  side(), it->side()) &&
+			    it->ability_active(tag_name, j, adjacent[i]) &&
+			    ability_affects_adjacent(tag_name,  j, i, loc, *it) &&
+			ability_affects_weapon(j, weapon, false) &&
+			ability_affects_weapon(j, opp_weapon, true))
+			{
 				return true;
 			}
 		}
 	}
-
 	return false;
 }
-
 unit_ability_list unit::get_abilities(const std::string& tag_name,
 		const map_location& loc,
 		const_attack_ptr weapon,
