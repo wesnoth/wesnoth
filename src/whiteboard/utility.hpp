@@ -53,6 +53,11 @@ unit_const_ptr find_backup_leader(const unit& leader);
  * @retval nullptr if no such leader has been found
  */
 unit* find_recruiter(size_t team_index, const map_location&);
+/**
+ * executes @a func for each unti of side of @a side_num that can recruit on @a loc.
+ * @a func takes the leader unit and can return true to 'break' the loop
+ */
+bool any_recruiter(int side_num, const map_location& loc, std::function<bool(unit&)> func);
 
 /// Applies the future unit map and @return a pointer to the unit at hex
 /// @retval nullptr if none is visible to the specified viewer side
