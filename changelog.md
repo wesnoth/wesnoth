@@ -163,6 +163,8 @@
      (issue #3050).
    * Fixed a crash when using certain invalid color= values.
    * Fixed: unit halo remained after undoing a recall (issue #3065).
+   * [change_theme] no longer causes a Lua error when theme= is not specified
+     instead of explicitly set to an empty string.
 
 ## Version 1.13.12
  ### Security fixes
