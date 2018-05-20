@@ -234,7 +234,7 @@ action::error recall::check_validity() const
 		return NOT_ENOUGH_GOLD;
 	}
 	//Check that there is a leader available to recall this unit
-	bool has_recruiter = any_recruiter(team_index() - 1, get_recall_hex(), [&](unit& leader) {
+	bool has_recruiter = any_recruiter(team_index() + 1, get_recall_hex(), [&](unit& leader) {
 		const unit_filter ufilt(vconfig(leader.recall_filter()));
 		return ufilt(*temp_unit_, map_location::null_location());
 	});
