@@ -89,6 +89,22 @@ unit* find_recruiter(std::size_t team_index, const map_location& hex)
 	return nullptr;
 }
 
+bool any_recruiter(int team_num, const map_location& loc, std::function<bool(unit&)> func)
+{
+	if ( !resources::gameboard->map().is_castle(loc) ) {
+		return false;
+	}
+
+	for(unit& u : resources::gameboard->units()) {
+		if(u.can_recruit() && u.side() == team_num && dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(u, loc)) {
+			if(func(u)) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
 unit* future_visible_unit(map_location hex, int viewer_side)
 {
 	future_map planned_unit_map;
