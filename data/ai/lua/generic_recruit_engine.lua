@@ -586,6 +586,9 @@ return {
 
                 return true
             else
+                -- This results in the CA being blacklisted -> clear cache
+                recruit_data.recruit = nil
+
                 return false
             end
         end
