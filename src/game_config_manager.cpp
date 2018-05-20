@@ -440,7 +440,7 @@ void game_config_manager::load_addons_cfg()
 			cache_.get_config(addon.main_cfg, umc_cfg);
 
 			// Annotate "era", "modification", and scenario tags with addon_id info
-			static const std::set<std::string> tags_with_addon_id { "era", "modification", "multiplayer", "scenario", "campaign" };
+			static const std::set<std::string> tags_with_addon_id { "era", "modification", "resource", "multiplayer", "scenario", "campaign" };
 
 			for(auto child : umc_cfg.all_children_range()) {
 				if(tags_with_addon_id.count(child.key) > 0) {
