@@ -246,7 +246,6 @@ std::string terrain_topic_generator::generate() const
 		ss << "Terrain string: " << type_.number() << "\n";
 
 		ss << "Hide in Editor: " << yes_no_str(type_.hide_in_editor()) << "\n";
-		ss << "Hide Help: " << yes_no_str(type_.hide_help()) << "\n";
 		ss << "Editor Group: " << type_.editor_group() << "\n";
 
 		ss << "Light Bonus: " << type_.light_bonus(0) << "\n";
