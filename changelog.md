@@ -100,6 +100,11 @@
    * Support [filter_second_weapon] in leadership and resistance abilities,
      which activates the ability only when the affected unit's opponent
      is using a matching weapon.
+   * Added ['specials'_leadership] abilities except damage, attacks plagues and swarm + defense_leadership ability, which emulate the weapon specials minus apply_to=both/opponent but with [affect_adjacent].
+   * Support active_on option in leadership type abilities.
+   * Support increase_base_value in chance_to_hit_leadership ability
+	 for choice to add value to base_value with cumulative=yes/no active or replace base_value by value
+	(replace value by add or sub create an cumulative=yes situation same with cumulative=no).
    * Support WFL and percentages in [random_placement]num_items=
    * Support [or] in [filter_wml] and similar places
    * Support globbing in [filter_wml] via glob_on_* keys
