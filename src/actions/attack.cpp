@@ -63,44 +63,106 @@ static lg::log_domain log_config("config");
 // ==================================================================================
 
 
+/*
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+   See the COPYING file for more details.
+*/
+
+/**
+ * @file
+ * Fighting.
+ */
+
+#include "actions/attack.hpp"
+
+#include "actions/advancement.hpp"
+#include "actions/vision.hpp"
+
+#include "ai/lua/aspect_advancements.hpp"
+#include "game_config.hpp"
+#include "game_data.hpp"
+#include "game_events/pump.hpp"
+#include "gettext.hpp"
+#include "log.hpp"
+#include "map/map.hpp"
+#include "mouse_handler_base.hpp"
+#include "play_controller.hpp"
+#include "preferences/game.hpp"
+#include "random.hpp"
+#include "replay.hpp"
+#include "resources.hpp"
+#include "statistics.hpp"
+#include "synced_checkup.hpp"
+#include "synced_user_choice.hpp"
+#include "team.hpp"
+#include "tod_manager.hpp"
+#include "units/abilities.hpp"
+#include "units/animation_component.hpp"
+#include "units/helper.hpp"
+#include "units/map.hpp"
+#include "units/udisplay.hpp"
+#include "units/unit.hpp"
+#include "whiteboard/manager.hpp"
+#include "wml_exception.hpp"
+
+static lg::log_domain log_engine("engine");
+#define DBG_NG LOG_STREAM(debug, log_engine)
+#define LOG_NG LOG_STREAM(info, log_engine)
+#define WRN_NG LOG_STREAM(err, log_engine)
+#define ERR_NG LOG_STREAM(err, log_engine)
+
+static lg::log_domain log_config("config");
+#define LOG_CF LOG_STREAM(info, log_config)
+
+// ==================================================================================
+// BATTLE CONTEXT UNIT STATS
+// ==================================================================================
+
 battle_context_unit_stats::battle_context_unit_stats(const unit& u,
-  const map_location& u_loc,
-  int u_attack_num,
-  bool attacking,
-  const unit& opp,
-  const map_location& opp_loc,
-  const_attack_ptr opp_weapon,
-  const unit_map& units)
- : weapon(nullptr)
- , attack_num(u_attack_num)
- , is_attacker(attacking)
- , is_poisoned(u.get_state(unit::STATE_POISONED))
- , is_slowed(u.get_state(unit::STATE_SLOWED))
- , slows(false)
- , drains(false)
- , berserk(false)
- , petrifies(false)
- , plagues(false)
- , poisons(false)
- , backstab_pos(false)
- , swarm(false)
- , firststrike(false)
- , disable(false)
- , experience(u.experience())
- , max_experience(u.max_experience())
- , level(u.level())
- , rounds(1)
- , hp(0)
- , max_hp(u.max_hitpoints())
- , chance_to_hit(0)
- , damage(0)
- , slow_damage(0)
- , drain_percent(0)
- , drain_constant(0)
- , num_blows(0)
- , swarm_min(0)
- , swarm_max(0)
- , plague_type()
+		const map_location& u_loc,
+		int u_attack_num,
+		bool attacking,
+		const unit& opp,
+		const map_location& opp_loc,
+		const_attack_ptr opp_weapon,
+		const unit_map& units)
+	: weapon(nullptr)
+	, attack_num(u_attack_num)
+	, is_attacker(attacking)
+	, is_poisoned(u.get_state(unit::STATE_POISONED))
+	, is_slowed(u.get_state(unit::STATE_SLOWED))
+	, slows(false)
+	, drains(false)
+	, berserk(false)
+	, petrifies(false)
+	, plagues(false)
+	, poisons(false)
+	, backstab_pos(false)
+	, swarm(false)
+	, firststrike(false)
+	, disable(false)
+	, experience(u.experience())
+	, max_experience(u.max_experience())
+	, level(u.level())
+	, rounds(1)
+	, hp(0)
+	, max_hp(u.max_hitpoints())
+	, chance_to_hit(0)
+	, damage(0)
+	, slow_damage(0)
+	, drain_percent(0)
+	, drain_constant(0)
+	, num_blows(0)
+	, swarm_min(0)
+	, swarm_max(0)
+	, plague_type()
 {
  // Get the current state of the unit.
  if(attack_num >= 0) {
