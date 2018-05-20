@@ -133,7 +133,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 
  slows = bool_leadership("slow", units, u_loc, weapon, opp_weapon, attacking);
  drains = !opp.get_state("undrainable") && bool_leadership("drains", units, u_loc, weapon, opp_weapon, attacking);
- petrifies = weapon->get_special_bool("petrifies");
+ petrifies = bool_leadership("petrifies", units, u_loc, weapon, opp_weapon, attacking);
  poisons = !opp.get_state("unpoisonable") && bool_leadership("poison", units, u_loc, weapon, opp_weapon, attacking) && !opp.get_state(unit::STATE_POISONED);
  backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, resources::gameboard->teams());
 
