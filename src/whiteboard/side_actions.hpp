@@ -378,14 +378,14 @@ public:
 	 * i.e. at the front of the queue by one position.
 	 * @return The action's new position.
 	 */
-	iterator bump_earlier(iterator position);
+	iterator bump_earlier(iterator position, bool send_to_net = true);
 
 	/**
 	 * Moves an action later in the execution order.
 	 * i.e. at the back of the queue by one position.
 	 * @return The action's new position.
 	 */
-	iterator bump_later(iterator position);
+	iterator bump_later(iterator position, bool send_to_net = true);
 
 	/**
 	 * Deletes the action at the specified position.
