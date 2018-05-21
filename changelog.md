@@ -1,8 +1,11 @@
 ## Version 1.14.1+dev
  ### Campaigns
    * Northern Rebirth:
-     * S02_01 Infested Caves: keep side 8 AI leader from wandering off too far
+     * S02.1 Infested Caves: keep side 8 AI leader from wandering off too far
        and ending up on a keep with only one hex for recruiting
+     * S02.1 Infested Caves: minor map tweaks and improvements.
+   * Under the Burning Suns:
+     * Various Quenoth unit graphics updates.
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Czech, French,
      Galician, Italian, Japanese, Scottish Gaelic, Spanish, Ukrainian
@@ -10,6 +13,8 @@
    * List boxes (MP lobby game list in particular) now keep the scroll position
      when they change, instead of keeping the selected item visible (issue #3016).
    * Fixed MP lobby player list scrolling to top when it changes
+   * Fixed the first unit sometimes not being selected when opening the Recall
+     dialog.
  ### Terrains
    * Removed hidden terrains that were not supposed to make it to 1.14: ^Prg,
      ^Prgo, ^Pwd, ^Pwdo
@@ -30,6 +35,11 @@
      macros
    * Fixed [color_adjust] interacting poorly with time of day color shifts and
      values outside the [-255, 255] range (issue #3144).
+   * Fixed a regression from 1.13.10 where modification option values couldn't
+     be properly saved in arrays.
+   * Added stricter validation to ensure units cannot have negative hitpoints,
+     except during specific attack-related events.
+   * Added deprecation notices for several macros that had them missing before.
 
 ## Version 1.14.1
  ### Campaigns
