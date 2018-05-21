@@ -70,6 +70,9 @@
    * Fixed various instances of the server crashing under certain conditions.
  ### Packaging
    * OpenMP support has been removed. It is no longer an optional build-time dependency.
+ ### Terrains
+   * Removed hidden terrains that were not supposed to make it to 1.14: ^Prg,
+     ^Prgo, ^Pwd, ^Pwdo
  ### Units
    * Changed the plural name for the merfolk race from Mermen to Merfolk (issue #2940)
      and replaced a few instances in core unit or terrain descriptions accordingly.
