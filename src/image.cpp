@@ -106,7 +106,6 @@ public:
 	cache_type()
 		: content_()
 	{
-		content_.reserve(20000);
 	}
 
 	cache_item<T>& get_element(int index)
