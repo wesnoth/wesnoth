@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-05-15 23:33-0400\n"
-"PO-Revision-Date: 2018-05-17 17:06+0200\n"
+"PO-Revision-Date: 2018-05-21 08:14+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -908,7 +908,7 @@ msgstr "Hölzerne Türe"
 #: data/core/terrain.cfg:1332 data/core/terrain.cfg:1344
 #: data/core/terrain.cfg:1357
 msgid "Open Rusty Gate"
-msgstr "Offenes rostiges Tor"
+msgstr "Geöffnetes rostiges Tor"
 
 #. [terrain_type]: id=portal_door_wooden_open_sw
 #. [terrain_type]: id=portal_door_wooden_open_se
@@ -916,17 +916,17 @@ msgstr "Offenes rostiges Tor"
 #: data/core/terrain.cfg:1370 data/core/terrain.cfg:1382
 #: data/core/terrain.cfg:1395
 msgid "Open Wooden Door"
-msgstr "Offene hölzerne Türe"
+msgstr "Geöffnete hölzerne Türe"
 
 #. [terrain_type]: id=p_open_rusty
 #: data/core/terrain.cfg:1443
 msgid "Rusty Open Gate"
-msgstr "Rostiges offenes Tor"
+msgstr "Geöffnetes rostiges Tor"
 
 #. [terrain_type]: id=p_open_wooden
 #: data/core/terrain.cfg:1457
 msgid "Wooden Open Door"
-msgstr "Hölzerne offene Türe"
+msgstr "Geöffnete hölzerne Türe"
 
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:1473
@@ -1022,7 +1022,7 @@ msgstr "Orklager"
 #. [terrain_type]: id=orcish_snow_village
 #: data/core/terrain.cfg:1582
 msgid "Snowy Orcish Village"
-msgstr "Bibberndes Orklager"
+msgstr "Eingeschneites Orklager"
 
 #. [terrain_type]: id=elven_snow_village
 #: data/core/terrain.cfg:1597
@@ -1184,7 +1184,7 @@ msgstr "Lager"
 #. [terrain_type]: id=encampment_ruin
 #: data/core/terrain.cfg:1936
 msgid "Ruined Encampment"
-msgstr "Kaputtes Lager"
+msgstr "Verrottetes Lager"
 
 #. [terrain_type]: id=encampment_snow
 #: data/core/terrain.cfg:1948
@@ -1219,7 +1219,7 @@ msgstr "Orkfeste"
 #. [terrain_type]: id=snow_orcish_fort
 #: data/core/terrain.cfg:1972
 msgid "Snowy Orcish Castle"
-msgstr "Bibbernde Orkfeste"
+msgstr "Eingeschneite Orkfeste"
 
 #. [terrain_type]: id=human_castle
 #: data/core/terrain.cfg:1984
@@ -1288,12 +1288,12 @@ msgstr "Trolllager"
 #. [terrain_type]: id=aquatic_camp
 #: data/core/terrain.cfg:2117
 msgid "Aquatic Encampment"
-msgstr "Überschwemmtes Lager"
+msgstr "Wassercamp"
 
 #. [terrain_type]: id=aquatic_castle
 #: data/core/terrain.cfg:2130
 msgid "Aquatic Castle"
-msgstr "Überschwemmte Burg"
+msgstr "Wasserburg"
 
 #. [terrain_type]: id=encampment_keep
 #. [terrain_type]: id=encampment_keep_tall
@@ -1309,7 +1309,7 @@ msgstr "Anführerzelt"
 #. [terrain_type]: id=encampment_ruin_keep
 #: data/core/terrain.cfg:2158
 msgid "Ruined Encampment Keep"
-msgstr "Kaputtes Anführerzelt"
+msgstr "Verrottetes Anführerzelt"
 
 #. [terrain_type]: id=encampment_keep_tall
 #: data/core/terrain.cfg:2171
@@ -1411,7 +1411,7 @@ msgstr "Verfallener Burgfried"
 #. [terrain_type]: id=merman_campkeep
 #: data/core/terrain.cfg:2353
 msgid "Aquatic Encampment Keep"
-msgstr "Überschwemmtes Anführerzelt"
+msgstr "Wasserbasis"
 
 #. [terrain_type]: id=troll_campkeep
 #: data/core/terrain.cfg:2366
@@ -1421,7 +1421,7 @@ msgstr "Troll Burgfried"
 #. [terrain_type]: id=merman_castlekeep
 #: data/core/terrain.cfg:2379
 msgid "Aquatic Keep"
-msgstr "Überschwemmter Burgfried"
+msgstr "Wasserpalast"
 
 #. [terrain_type]: id=castle_overlay
 #: data/core/terrain.cfg:2394
@@ -2313,15 +2313,15 @@ msgstr "Nearest Neighbor"
 
 #: data/gui/window/advanced_graphics_options.cfg:42
 msgid "Nearest Neighbor scaling (fastest)"
-msgstr "Nearest Neighbor Skalierung (schnellste)"
+msgstr "Nearest Neighbor Skalierung (am schnellsten)"
 
 #: data/gui/window/advanced_graphics_options.cfg:43
 msgid "xBRZ + linear"
-msgstr "xBRZ + linear"
+msgstr "xBRZ + Linear"
 
 #: data/gui/window/advanced_graphics_options.cfg:43
 msgid "xBRZ followed by Bilinear interpolation"
-msgstr "xBRZ gefolgt von Bilinear interpolation"
+msgstr "xBRZ gefolgt von Bilinear Interpolation"
 
 #: data/gui/window/advanced_graphics_options.cfg:44
 msgid "xBRZ + NN"
@@ -2333,7 +2333,7 @@ msgstr "xBRZ gefolgt von Nearest Neighbor (empfohlen)"
 
 #: data/gui/window/advanced_graphics_options.cfg:45
 msgid "Bilinear interpolation scaling"
-msgstr "Bilinear interpolation Skalierung"
+msgstr "Bilinear Interpolation Skalierung"
 
 #: data/gui/window/advanced_graphics_options.cfg:45
 msgid "Linear"
@@ -2347,7 +2347,7 @@ msgstr "Erweiterte Grafik-Optionen"
 #. [label]
 #: data/gui/window/advanced_graphics_options.cfg:107
 msgid "Images will be scaled using the following algorithms:"
-msgstr "Bilder werden mit folgendem Algorithmus skaliert:"
+msgstr "Bilder werden mit folgenden Algorithmen skaliert:"
 
 #. [column]
 #: data/gui/window/advanced_graphics_options.cfg:128
@@ -2357,7 +2357,7 @@ msgstr "Alle Einheiten, Effekte, Randfelder"
 #. [column]
 #: data/gui/window/advanced_graphics_options.cfg:128
 msgid "Scaled to zoom"
-msgstr "Zu Vergrößerung skalieren"
+msgstr "Zu Zoomlevel skalieren:"
 
 #. [column]
 #: data/gui/window/advanced_graphics_options.cfg:139
@@ -2367,7 +2367,7 @@ msgstr "Alles andere"
 #. [column]
 #: data/gui/window/advanced_graphics_options.cfg:139
 msgid "Scaled to hex"
-msgstr "Zu Hex skalieren"
+msgstr "Auf Hexgröße skalieren:"
 
 #. [button]: id=ok
 #: data/gui/window/advanced_graphics_options.cfg:165
@@ -2406,7 +2406,7 @@ msgstr "Basisschaden"
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:84
 msgid "Time of day modifier"
-msgstr "Tag-/Nachteinfluss Modifikator"
+msgstr "Tag-/Nachteinfluss"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:85
@@ -2620,7 +2620,7 @@ msgstr "Bild:"
 #. [grid]
 #: data/gui/window/custom_tod.cfg:286
 msgid "Mask:"
-msgstr "Maske:"
+msgstr "Terrainmaske:"
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:287
@@ -3704,22 +3704,22 @@ msgstr "Logging-Einstellungen"
 #. [row]
 #: data/gui/window/logging.cfg:136
 msgid "Debug level logging: maximum information"
-msgstr "Debug-Stufe Logging: Maximale Informationen"
+msgstr "Loggingstufe Debug: Maximale Informationen"
 
 #. [row]
 #: data/gui/window/logging.cfg:137
 msgid "Info level logging: more information"
-msgstr "Info-Stufe Logging: Mehr Informationen"
+msgstr "Loggingstufe Info: Mehr Informationen"
 
 #. [row]
 #: data/gui/window/logging.cfg:138
 msgid "Warning level logging: less information"
-msgstr "Warnung-Stufe Logging: Weniger Informationen"
+msgstr "Loggingstufe Warnung: Weniger Informationen"
 
 #. [row]
 #: data/gui/window/logging.cfg:139
 msgid "Error level logging: minimum information"
-msgstr "Fehler-Stufe Logging: Minimale Informationen"
+msgstr "Loggingstufe Fehler: Minimale Informationen"
 
 #. [row]
 #: data/gui/window/logging.cfg:140
@@ -6231,7 +6231,7 @@ msgstr "Keine Epochen für diese Partie verfügbar"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:735
 msgid "$min to $max"
-msgstr "$min zu $max"
+msgstr "$min bis $max"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:832
 msgid "The selected game has no sides!"
@@ -6456,7 +6456,7 @@ msgstr "Benötigtes Steuerelement ’$id’ wurde nicht definiert."
 msgid "Opening links is not supported, contact your packager"
 msgstr ""
 "Das Öffnen von Links wird nicht unterstützt. Bitte kontaktieren sie ihren "
-"Paket Betreuer."
+"Paketbetreuer."
 
 #: src/gui/widgets/label.cpp:172
 msgid "Do you want to open this link?"
@@ -7279,11 +7279,11 @@ msgstr "Karte drehen"
 
 #: src/hotkey/hotkey_command.cpp:243
 msgid "Apply a Mask"
-msgstr "Maske anwenden"
+msgstr "Terrainmaske anwenden"
 
 #: src/hotkey/hotkey_command.cpp:244
 msgid "Create Mask"
-msgstr "Maske erstellen"
+msgstr "Terrainmaske erstellen"
 
 #: src/hotkey/hotkey_command.cpp:245
 msgid "Refresh Display"
@@ -7319,23 +7319,23 @@ msgstr "Hexkoordinaten anzeigen"
 
 #: src/hotkey/hotkey_command.cpp:258
 msgid "Draw Terrain Codes"
-msgstr "Geländekürzel zeigen"
+msgstr "Geländekürzel anzeigen"
 
 #: src/hotkey/hotkey_command.cpp:259
 msgid "Draw Number of Bitmaps"
-msgstr "Zeichne Anzahl der Bitmaps"
+msgstr "Anzahl der Bitmaps anzeigen"
 
 #: src/hotkey/hotkey_command.cpp:261
 msgid "Save Selection to Area"
-msgstr "Auswahl zu Zone speichern"
+msgstr "Auswahl der Zone zuweisen"
 
 #: src/hotkey/hotkey_command.cpp:262
 msgid "Rename Selected Area"
-msgstr "Ausgewählte Zone umbenennen"
+msgstr "Zone umbenennen"
 
 #: src/hotkey/hotkey_command.cpp:263
 msgid "Remove Selected Area"
-msgstr "Ausgewählte Zone entfernen"
+msgstr "Zone entfernen"
 
 #: src/hotkey/hotkey_command.cpp:264
 msgid "Add New Area"

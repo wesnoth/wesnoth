@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "POT-Creation-Date: 2018-05-09 03:49-0300\n"
-"PO-Revision-Date: 2018-05-11 17:35+0200\n"
+"PO-Revision-Date: 2018-05-21 04:58+0200\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 
 # type: TH
 #. type: TH
@@ -398,11 +398,11 @@ msgid ""
 "B<none>.  By default the B<warning> level is used for most domains, but "
 "B<deprecation> defaults to none."
 msgstr ""
-"Setzt die I<Stufe> der Debugausgabe. Verwenden Sie B<all>, um sämtliche Domänen "
+"Setzt die I<Stufe> der Logausgabe. Verwenden Sie B<all>, um sämtliche Domänen "
 "zu verwenden. Verfügbare I<Stufen>: B<error>,\\ B<warning>,\\ B<info>,\\ "
-"B<debug>,\\ B<none>. Für doie meisten Logdomänen wird standardmäßig wird die "
+"B<debug>,\\ B<none>. Für die meisten Logdomänen wird standardmäßig wird die "
 "Stufe B<warning> verwendet, die B<deprecation> Domäne dagegen benutzt B<none> "
-"als Voreinstellung."
+"als Voreinstellung sofern nicht die B<-d> Option gesetzt ist."
 
 # type: TP
 #. type: TP
@@ -1451,10 +1451,10 @@ msgid ""
 "By default the B<error> level is used and the B<info> level for the B<server> "
 "domain."
 msgstr ""
-"Setzt die Stufe der Debugausgabe. Verwenden Sie B<all>, um sämtliche Domänen zu "
-"verwenden. Verfügbare Stufen: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>. "
-"Standardmäßig werden die Stufe B<error> für die Domäne des Spieles und die "
-"Stufe B<info> für die Domäne des Servers verwendet."
+"Setzt die Stufe der Logausgabe. Verwenden Sie B<all>, um sämtliche Domänen zu "
+"verwenden. Verfügbare I<Stufen>: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>. "
+"Standardmäßig wird die Stufe B<error> benutzt und die Stufe B<info> für die "
+"Domäne B<server> verwendet."
 
 # type: TP
 #. type: TP
@@ -1531,7 +1531,8 @@ msgstr "B<-v, --verbose>"
 #. type: Plain text
 #: doc/man/wesnothd.6:94
 msgid "turns debug logging on."
-msgstr "Aktiviert mehr Details in der Logausgabe."
+msgstr ""
+"Aktiviert mehr Details in der Logausgabe, einschließlich der Stufe B<debug>."
 
 # type: SH
 #. type: SH
