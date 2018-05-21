@@ -225,7 +225,6 @@ int defense_bonus = under_specials("defense_leadership", units, opp_loc, opp_wea
 	}
 
 	// Compute drain amounts only if draining is possible.
-
 	 if(drains) {
             if (u.get_ability_bool("drains_leadership", u_loc, weapon, opp_weapon)){
             drain_percent = under_specials("drains_leadership", units, u_loc, weapon, opp_weapon, attacking, 25).first;
@@ -251,8 +250,6 @@ int defense_bonus = under_specials("defense_leadership", units, opp_loc, opp_wea
 	swarm = swarm_min != swarm_max;
 	num_blows = calc_blows(hp);
 }
-
-
 
 battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 		const_attack_ptr att_weapon,
