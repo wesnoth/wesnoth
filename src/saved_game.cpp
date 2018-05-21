@@ -254,7 +254,7 @@ void saved_game::check_require_scenario()
 		return;
 	}
 	if(starting_pos_["addon_id"].empty()) {
-		ERR_NG << "cannot handle require_scenario=yes because we don't know from which addon that scenario came from\n";
+		//ERR_NG << "cannot handle require_scenario=yes because we don't know from which addon that scenario came from\n";
 		return;
 	}
 
