@@ -127,7 +127,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	boost::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
-		opp_ctx = opp_weapon->specials_context(&opp, &u, opp_loc, u_loc, !attacking, weapon);
+		opp_ctx.emplace(opp_weapon->specials_context(&opp, &u, opp_loc, u_loc, !attacking, weapon));
 	}
 
 	slows = bool_leadership("slow", units, u_loc, weapon, opp_weapon, attacking);
