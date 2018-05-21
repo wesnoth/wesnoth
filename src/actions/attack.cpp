@@ -101,182 +101,158 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	, swarm_max(0)
 	, plague_type()
 {
- // Get the current state of the unit.
- if(attack_num >= 0) {
-  weapon = u.attacks()[attack_num].shared_from_this();
- }
+	// Get the current state of the unit.
+	if(attack_num >= 0) {
+		weapon = u.attacks()[attack_num].shared_from_this();
+	}
 
- if(u.hitpoints() < 0) {
-  LOG_CF << "Unit with " << u.hitpoints() << " hitpoints found, set to 0 for damage calculations\n";
-  hp = 0;
- } else if(u.hitpoints() > u.max_hitpoints()) {
-  // If a unit has more hp than its maximum, the engine will fail with an
-  // assertion failure due to accessing the prob_matrix out of bounds.
-  hp = u.max_hitpoints();
- } else {
-  hp = u.hitpoints();
- }
+	if(u.hitpoints() < 0) {
+		LOG_CF << "Unit with " << u.hitpoints() << " hitpoints found, set to 0 for damage calculations\n";
+		hp = 0;
+	} else if(u.hitpoints() > u.max_hitpoints()) {
+		// If a unit has more hp than its maximum, the engine will fail with an
+		// assertion failure due to accessing the prob_matrix out of bounds.
+		hp = u.max_hitpoints();
+	} else {
+		hp = u.hitpoints();
+	}
 
- // Exit if no weapon.
- if(!weapon) {
-  return;
- }
+	// Exit if no weapon.
+	if(!weapon) {
+		return;
+	}
 
- // Get the weapon characteristics as appropriate.
- auto ctx = weapon->specials_context(&u, &opp, u_loc, opp_loc, attacking, opp_weapon);
- boost::optional<decltype(ctx)> opp_ctx;
+	// Get the weapon characteristics as appropriate.
+	auto ctx = weapon->specials_context(&u, &opp, u_loc, opp_loc, attacking, opp_weapon);
+	boost::optional<decltype(ctx)> opp_ctx;
 
- if(opp_weapon) {
-  opp_ctx = opp_weapon->specials_context(&opp, &u, opp_loc, u_loc, !attacking, weapon);
- }
+	if(opp_weapon) {
+		opp_ctx = opp_weapon->specials_context(&opp, &u, opp_loc, u_loc, !attacking, weapon);
+	}
 
- slows = bool_leadership("slow", units, u_loc, weapon, opp_weapon, attacking);
- drains = !opp.get_state("undrainable") && bool_leadership("drains", units, u_loc, weapon, opp_weapon, attacking);
- petrifies = bool_leadership("petrifies", units, u_loc, weapon, opp_weapon, attacking);
- poisons = !opp.get_state("unpoisonable") && bool_leadership("poison", units, u_loc, weapon, opp_weapon, attacking) && !opp.get_state(unit::STATE_POISONED);
- backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, resources::gameboard->teams());
-
- rounds = weapon->get_specials("berserk").highest("value", 1).first;
-
- berserk=bool_leadership("berserk", units, u_loc, weapon, opp_weapon, attacking);
-
- if(berserk) {
-
+	slows = bool_leadership("slow", units, u_loc, weapon, opp_weapon, attacking);
+	drains = !opp.get_state("undrainable") && bool_leadership("drains", units, u_loc, weapon, opp_weapon, attacking);
+	petrifies = bool_leadership("petrifies", units, u_loc, weapon, opp_weapon, attacking);
+	poisons = !opp.get_state("unpoisonable") && bool_leadership("poison", units, u_loc, weapon, opp_weapon, attacking) && !opp.get_state(unit::STATE_POISONED);
+	backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, resources::gameboard->teams());
+	rounds = weapon->get_specials("berserk").highest("value", 1).first;
+	berserk=bool_leadership("berserk", units, u_loc, weapon, opp_weapon, attacking);
+	if(berserk) {
             if(u.get_ability_bool("berserk_leadership", u_loc, weapon, opp_weapon))
-  rounds = under_specials("berserk_leadership", units, u_loc, weapon, opp_weapon, attacking).first;
- }
- firststrike = bool_leadership("firststrike", units, u_loc, weapon, opp_weapon, attacking);
+		rounds = under_specials("berserk_leadership", units, u_loc, weapon, opp_weapon, attacking).first;
+	}
+	firststrike = bool_leadership("firststrike", units, u_loc, weapon, opp_weapon, attacking);
 
- {
-  const int distance = distance_between(u_loc, opp_loc);
-  const bool out_of_range = distance > weapon->max_range() || distance < weapon->min_range();
-  disable = weapon->get_special_bool("disable") || out_of_range;
- }
+	{
+		const int distance = distance_between(u_loc, opp_loc);
+		const bool out_of_range = distance > weapon->max_range() || distance < weapon->min_range();
+		disable = weapon->get_special_bool("disable") || out_of_range;
+	}
 
- // Handle plague.
- unit_ability_list plague_specials = weapon->get_specials("plague");
- plagues = !opp.get_state("unplagueable") && !plague_specials.empty() &&
-  opp.undead_variation() != "null" && !resources::gameboard->map().is_village(opp_loc);
+	// Handle plague.
+	unit_ability_list plague_specials = weapon->get_specials("plague");
+	plagues = !opp.get_state("unplagueable") && !plague_specials.empty() &&
+		opp.undead_variation() != "null" && !resources::gameboard->map().is_village(opp_loc);
 
- if(plagues) {
-  plague_type = (*plague_specials.front().first)["type"].str();
+	if(plagues) {
+		plague_type = (*plague_specials.front().first)["type"].str();
 
-  if(plague_type.empty()) {
-   plague_type = u.type().base_id();
-  }
- }
+		if(plague_type.empty()) {
+			plague_type = u.type().base_id();
+		}
+	}
 
- // Compute chance to hit.
- chance_to_hit = opp.defense_modifier(resources::gameboard->map().get_terrain(opp_loc)) + weapon->accuracy()
-  - (opp_weapon ? opp_weapon->parry() : 0);
+	// Compute chance to hit.
+	chance_to_hit = opp.defense_modifier(resources::gameboard->map().get_terrain(opp_loc)) + weapon->accuracy()
+		- (opp_weapon ? opp_weapon->parry() : 0);
 
 
+	if(chance_to_hit > 100) {
+		chance_to_hit = 100;
+	}
 
- if(chance_to_hit > 100) {
-  chance_to_hit = 100;
- }
+	unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
+	unit_abilities::effect cth_effects(cth_specials, chance_to_hit, backstab_pos);
+	chance_to_hit = cth_effects.get_composite_value();
 
- unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
- unit_abilities::effect cth_effects(cth_specials, chance_to_hit, backstab_pos);
- chance_to_hit = cth_effects.get_composite_value();
-
- 
-
- int chance_bonus = under_specials("chance_to_hit_leadership", units, u_loc, weapon, opp_weapon, attacking, chance_to_hit).first;
-
- 
+	int chance_bonus = under_specials("chance_to_hit_leadership", units, u_loc, weapon, opp_weapon, attacking, chance_to_hit).first;
 
     if(chance_bonus != 0) {
-
             if(bool_increase_chance_to_hit(units, u_loc, weapon, opp_weapon)){
-  chance_to_hit += chance_bonus;
-
+		chance_to_hit += chance_bonus;
     } else {
-  chance_to_hit = chance_bonus;
-
+		chance_to_hit = chance_bonus;
     }
-
  }
-
 int defense_bonus = under_specials("defense_leadership", units, opp_loc, opp_weapon, weapon, !attacking, chance_to_hit).first + weapon->accuracy()
-  - (opp_weapon ? opp_weapon->parry() : 0);
-
-  if(defense_bonus != 0) {
-
-      chance_to_hit-=defense_bonus;
-
-  }
-
+		- (opp_weapon ? opp_weapon->parry() : 0);
+		if(defense_bonus != 0) {
+		    chance_to_hit-=defense_bonus;
+		}
      if(chance_to_hit > 100) {
-  chance_to_hit = 100;
+		chance_to_hit = 100;
+		}
 
-  }
+	if(opp.get_state("invulnerable")) {
+		chance_to_hit = 0;
+	}
 
- if(opp.get_state("invulnerable")) {
-  chance_to_hit = 0;
- }
+	// Compute base damage done with the weapon.
+	int base_damage = weapon->modified_damage(backstab_pos);
 
- // Compute base damage done with the weapon.
- int base_damage = weapon->modified_damage(backstab_pos);
+	// Get the damage multiplier applied to the base damage of the weapon.
+	int damage_multiplier = 100;
 
- // Get the damage multiplier applied to the base damage of the weapon.
- int damage_multiplier = 100;
+	// Time of day bonus.
+	damage_multiplier += combat_modifier(
+			resources::gameboard->units(), resources::gameboard->map(), u_loc, u.alignment(), u.is_fearless());
 
- // Time of day bonus.
- damage_multiplier += combat_modifier(
-   resources::gameboard->units(), resources::gameboard->map(), u_loc, u.alignment(), u.is_fearless());
+	// Leadership bonus.
+	int leader_bonus = under_leadership( units, u_loc, attacking, weapon, opp_weapon).first;
+	if(leader_bonus != 0) {
+		damage_multiplier += leader_bonus;
+	}
 
- // Leadership bonus.
- int leader_bonus = under_leadership( units, u_loc, attacking, weapon, opp_weapon).first;
- if(leader_bonus != 0) {
-  damage_multiplier += leader_bonus;
- }
+	// Resistance modifier.
+	damage_multiplier *= opp.damage_from(*weapon, !attacking, opp_loc, opp_weapon);
 
- // Resistance modifier.
- damage_multiplier *= opp.damage_from(*weapon, !attacking, opp_loc, opp_weapon);
+	// Compute both the normal and slowed damage.
+	damage = round_damage(base_damage, damage_multiplier, 10000);
+	slow_damage = round_damage(base_damage, damage_multiplier, 20000);
 
- // Compute both the normal and slowed damage.
- damage = round_damage(base_damage, damage_multiplier, 10000);
- slow_damage = round_damage(base_damage, damage_multiplier, 20000);
+	if(is_slowed) {
+		damage = slow_damage;
+	}
 
- if(is_slowed) {
-  damage = slow_damage;
- }
+	// Compute drain amounts only if draining is possible.
 
- // Compute drain amounts only if draining is possible.
-
-
-  if(drains) {
-
+	 if(drains) {
             if (u.get_ability_bool("drains_leadership", u_loc, weapon, opp_weapon)){
-
             drain_percent = under_specials("drains_leadership", units, u_loc, weapon, opp_weapon, attacking, 25).first;
-
             }
-
      if (weapon->get_special_bool("drains")){
-  unit_ability_list drain_specials = weapon->get_specials("drains");
+		unit_ability_list drain_specials = weapon->get_specials("drains");
 
-  // Compute the drain percent (with 50% as the base for backward compatibility)
-  unit_abilities::effect drain_percent_effects(drain_specials, 50, backstab_pos);
-  drain_percent = drain_percent_effects.get_composite_value();
+		// Compute the drain percent (with 50% as the base for backward compatibility)
+		unit_abilities::effect drain_percent_effects(drain_specials, 50, backstab_pos);
+		drain_percent = drain_percent_effects.get_composite_value();
+		}
+	}
 
-  }
- }
+	// Add heal_on_hit (the drain constant)
+	unit_ability_list heal_on_hit_specials = weapon->get_specials("heal_on_hit");
+	unit_abilities::effect heal_on_hit_effects(heal_on_hit_specials, 0, backstab_pos);
+	drain_constant += heal_on_hit_effects.get_composite_value();
 
+	drains = drain_constant || drain_percent;
 
- // Add heal_on_hit (the drain constant)
- unit_ability_list heal_on_hit_specials = weapon->get_specials("heal_on_hit");
- unit_abilities::effect heal_on_hit_effects(heal_on_hit_specials, 0, backstab_pos);
- drain_constant += heal_on_hit_effects.get_composite_value();
-
- drains = drain_constant || drain_percent;
-
- // Compute the number of blows and handle swarm.
- weapon->modified_attacks(backstab_pos, swarm_min, swarm_max);
- swarm = swarm_min != swarm_max;
- num_blows = calc_blows(hp);
+	// Compute the number of blows and handle swarm.
+	weapon->modified_attacks(backstab_pos, swarm_min, swarm_max);
+	swarm = swarm_min != swarm_max;
+	num_blows = calc_blows(hp);
 }
+
+
 
 battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 		const_attack_ptr att_weapon,
