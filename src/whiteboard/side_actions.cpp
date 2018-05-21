@@ -489,7 +489,7 @@ namespace
 }
 
 //move action toward front of queue
-side_actions::iterator side_actions::bump_earlier(side_actions::iterator position)
+side_actions::iterator side_actions::bump_earlier(side_actions::iterator position, bool send_to_net)
 {
 	if(resources::whiteboard->has_planned_unit_map()) {
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!" << std::endl;
@@ -529,8 +529,9 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 			<< ", bumping action #" << action_number << "/" << last_position
 			<< " to position #" << action_number - 1  << "/" << last_position << ".\n";
 
-	resources::whiteboard->queue_net_cmd(team_index_, make_net_cmd_bump_later(position - 1));
-
+	if (send_to_net) {
+		resources::whiteboard->queue_net_cmd(team_index_, make_net_cmd_bump_later(position - 1));
+	}
 	actions_.bump_earlier(position);
 
 	LOG_WB << "After bumping earlier, " << *this << "\n";
@@ -538,7 +539,7 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 }
 
 //move action toward back of queue
-side_actions::iterator side_actions::bump_later(side_actions::iterator position)
+side_actions::iterator side_actions::bump_later(iterator position, bool send_to_net)
 {
 	assert(position < end());
 
@@ -546,7 +547,7 @@ side_actions::iterator side_actions::bump_later(side_actions::iterator position)
 	if(position == end()) {
 		return end();
 	}
-	position = bump_earlier(position);
+	position = bump_earlier(position, send_to_net);
 	if(position == end()) {
 		return end();
 	}
@@ -841,7 +842,7 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 
 		action_ptr first_action = *itor;
 		action_ptr second_action = itor[1];
-		bump_later(itor);
+		bump_later(itor, false);
 
 		LOG_WB << "Command received: action bumped later from turn #" << turn << ", position #" << pos << "\n";
 
