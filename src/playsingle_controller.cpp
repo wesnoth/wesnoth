@@ -409,7 +409,7 @@ void playsingle_controller::before_human_turn()
 		return;
 	}
 
-	if(init_side_done_now_) {
+	if(init_side_done_now_ && !game_config::disable_autosave && preferences::autosavemax() > 0) {
 		scoped_savegame_snapshot snapshot(*this);
 		savegame::autosave_savegame save(saved_game_, preferences::save_compression_format());
 		save.autosave(game_config::disable_autosave, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
