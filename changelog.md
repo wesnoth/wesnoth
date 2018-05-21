@@ -25,6 +25,8 @@
    * Experimental AI: fixed recruiting evaluations sometimes not being updated
    * Replaced deprecated Lua code and all remaining uses of FOREACH and MESSAGE
      macros
+   * Fixed [color_adjust] interacting poorly with time of day color shifts and
+     values outside the [-255, 255] range (issue #3144).
 
 ## Version 1.14.1
  ### Campaigns
