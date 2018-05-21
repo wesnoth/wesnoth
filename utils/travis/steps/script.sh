@@ -11,7 +11,7 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
         export CCACHE_MAXSIZE=2G
         export CCACHE_COMPILERCHECK=content
 
-        xcodebuild -project Wesnoth.xcodeproj -target Wesnoth
+        xcodebuild -project Wesnoth.xcodeproj -target Wesnoth -configuration Debug
 
         BUILD_RET=$?
 
