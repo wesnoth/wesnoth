@@ -985,14 +985,19 @@ msgstr "B<--exit-at-end>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:370
+#, fuzzy
+#| msgid ""
+#| "exits once the scenario is over, without displaying victory/defeat dialog "
+#| "which normally requires the user to click End Scenario.  This is also "
+#| "used for scriptable benchmarking."
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which requires the user to click OK.  This is also used for scriptable "
 "benchmarking."
 msgstr ""
-"シナリオが終わると、ユーザーが OK をクリックする必要のある勝利／敗北のダイア"
-"ログを表示せずに終了する。これはスクリプト化可能なベンチマークにも利用され"
-"る。"
+"シナリオ終了時の勝利／敗北ダイアログが非表示となり、ユーザーが「シナリオ終"
+"了」をクリックせずとも終了するようになる。スクリプトによるベンチマーク時に利"
+"用される。"
 
 #. type: TP
 #: doc/man/wesnoth.6:370
@@ -1979,7 +1984,7 @@ msgstr "B<wesnoth>(6)."
 #~ "B<debug>,\\ B<none>.  By default the B<warning> level is used for most "
 #~ "domains, but B<deprecation> defaults to none."
 #~ msgstr ""
-#~ "ログ領域(domain)の厳密さのレベルを設定する。 B<all> は、どのログ領域にも対"
-#~ "応させるために利用される。有効なレベルは以下の通り。 B<error>、\\ "
+#~ "ログ領域（log domain）の厳密さのレベルを設定する。 B<all> は、どのログ領域"
+#~ "にも対応させるために利用される。有効なレベルは以下の通り。 B<error>、\\ "
 #~ "B<warning>、\\ B<info>、\\ B<debug>。既定値では B<warning> レベルがほとん"
 #~ "どのログ領域に使用されるが、B<deprecation>は無効である。"

@@ -6101,15 +6101,19 @@ msgstr "ゲーム： $num_total 中の $num_shown を表示"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:452
 msgid "Era:"
-msgstr "時代："
+msgstr ""
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:469
+#, fuzzy
+#| msgid "Settings"
 msgid "Settings:"
-msgstr "設定："
+msgstr "設定"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:473
+#, fuzzy
+#| msgid "Registered Users Only"
 msgid "Registered users only:"
-msgstr "登録ユーザーのみ："
+msgstr "登録済みユーザー限定"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:474
 msgid "Reloaded:"
@@ -6132,11 +6136,15 @@ msgid "Use map settings:"
 msgstr "マップ設定を使用："
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:486
+#, fuzzy
+#| msgid ""
+#| "One or more add-ons need to be installed\n"
+#| "in order to join this game."
 msgid ""
 "One or more items need to be installed\n"
 "in order to join this game."
 msgstr ""
-"このゲームに参加するには、１つあるいは複数のアイテムをインストールする必要が"
+"このゲームに参加するには、１つあるいは複数のアドオンをインストールする必要が"
 "あります。"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:511
@@ -7553,18 +7561,18 @@ msgstr ""
 #~ msgid "Sign Up"
 #~ msgstr "登録"
 
-#~ msgid "FPS limiter"
+#~ msgid "Limit FPS"
 #~ msgstr "FPS 制限"
 
 #~ msgid ""
-#~ "Disabling this increases CPU usage to 100 % but may slightly improve "
+#~ "Disabling this increases CPU usage to 100% but may slightly improve "
 #~ "performance at high resolutions"
 #~ msgstr ""
 #~ "CPU 使用率が 100% になるのを抑えますが、高解像度でのパフォーマンスが大きく"
 #~ "向上します。"
 
 #~ msgid "The maximum text width is less than 1."
-#~ msgstr "最大テキスト幅が1より小さいです。"
+#~ msgstr "最大テキスト幅が 1 より小さいです。"
 
 #~ msgid "active_modifications^None"
 #~ msgstr "なし"
@@ -7572,8 +7580,11 @@ msgstr ""
 #~ msgid "$game_name (Era: $era_name)"
 #~ msgstr "$game_name（時代： $era_name）"
 
-#~ msgid "era^missing"
-#~ msgstr "未所持"
+#~ msgid "era_or_mod^not installed"
+#~ msgstr "未インストール"
+
+#~ msgid "Era"
+#~ msgstr "時代"
 
 #~ msgid "$min to $max"
 #~ msgstr "$min ～ $max"
