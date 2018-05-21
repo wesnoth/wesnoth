@@ -5,7 +5,7 @@
        and ending up on a keep with only one hex for recruiting
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Czech, French,
-     Galician, Italian, Spanish, Ukrainian
+     Galician, Italian, Scottish Gaelic, Spanish, Ukrainian
  ### User interface
    * List boxes (MP lobby game list in particular) now keep the scroll position
      when they change, instead of keeping the selected item visible (issue #3016).

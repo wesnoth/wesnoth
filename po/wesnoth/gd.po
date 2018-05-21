@@ -2,22 +2,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Wesnoth development team
 # This file is distributed under the same license as the PACKAGE package.
-# GunChleoc <fios@foramnagaidhlig.net>, 2018.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-05-15 23:33-0400\n"
-"PO-Revision-Date: 2018-05-07 10:56+0100\n"
-"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
-"Language-Team: Fòram na Gàidhlig\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: GunChleoc, 2017\n"
+"Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
+"teams/12769/gd/)\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Generator: Virtaal 0.7.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -212,6 +214,7 @@ msgstr "Seall èifeachdan grafaigeachd nan aonadan sònraichte"
 #: data/advanced_preferences.cfg:178
 msgid "Show deprecation messages in-game"
 msgstr ""
+"Seall teachdaireachdan mu nithean nach molar tuilleadh am broinn a’ gheama"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:179
@@ -220,6 +223,11 @@ msgid ""
 "will still be shown in the log, even if this is disabled. In addition, the "
 "deprecation log-domain controls how many messages are printed."
 msgstr ""
+"Seall rabhaidhean mu API nach molar tuilleadh air raon na cabadaich am "
+"broinn a’ gheama. Thèid na teachdaireachdan sin a shealltainn san loga "
+"fhathast ma chuireas tu seo dheth. Cuideachd, stiùirichidh àrainn an loga "
+"air nithean nach molar tuilleadh co mheud teachdaireachdan a thèid a "
+"shealltainn. "
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:187
@@ -371,7 +379,7 @@ msgstr "Stiùirichean eadar-theangachaidh"
 #. [about]
 #: data/core/about.cfg:323
 msgid "Trailers"
-msgstr ""
+msgstr "Trèilearan"
 
 #. [about]
 #: data/core/about.cfg:335
@@ -3754,7 +3762,7 @@ msgstr "Beasnad (tùsail)"
 #. [core]: id=default
 #: data/cores.cfg:8
 msgid "The standard Wesnoth core."
-msgstr ""
+msgstr "Eitean stannardach Bheasnaid."
 
 #. [language]
 #: data/english.cfg:6
@@ -6402,7 +6410,7 @@ msgstr[3] "Slotaichean falamh:"
 
 #: src/game_initialization/lobby_data.cpp:433
 msgid "mp_game_available_slots^Full"
-msgstr ""
+msgstr "Làn"
 
 #: src/game_initialization/lobby_data.cpp:444
 #: src/game_initialization/lobby_data.cpp:446 src/savegame.cpp:631
@@ -6411,11 +6419,11 @@ msgstr "Cuairt"
 
 #: src/game_initialization/lobby_data.cpp:459
 msgid "vision^none"
-msgstr ""
+msgstr "chan eil gin"
 
 #: src/game_initialization/lobby_data.cpp:468
 msgid "time limit^none"
-msgstr ""
+msgstr "chan eil gin"
 
 #: src/game_initialization/lobby_data.cpp:501
 msgid ""
@@ -6517,15 +6525,19 @@ msgstr ""
 #: src/game_initialization/multiplayer.cpp:320
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
+"Chaidh am far-ainm “$nick” a thoirmeasg air bòrd-brath an fhrithealaiche seo."
 
 #: src/game_initialization/multiplayer.cpp:322
 msgid "Your IP address is banned on this server’s forums."
 msgstr ""
+"Chaidh an seòladh IP agad a thoirmeasg air bòrd-brath an fhrithealaiche seo."
 
 #: src/game_initialization/multiplayer.cpp:324
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
+"Chaidh seòladh puist-d an fhar-ainm “$nick” a thoirmeasg air bòrd-brath an "
+"fhrithealaiche seo."
 
 #: src/game_initialization/multiplayer.cpp:326
 #: src/game_initialization/multiplayer.cpp:328
@@ -6729,7 +6741,7 @@ msgstr "Mearachd ann an tòiseachadh an fhrithealaiche: "
 
 #: src/game_launcher.cpp:882
 msgid "Connection failed: "
-msgstr " "
+msgstr "Dh’fhàillig leis a’ cheangal: "
 
 #: src/generators/default_map_generator_job.cpp:691
 msgid "Random maps with an odd width aren't supported."
@@ -7831,6 +7843,8 @@ msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
 msgstr ""
+"Dh’fhàg $player a stiùirich taobh $side_drop an geama. Dè a tha thu airson "
+"dèanamh?"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -8037,7 +8051,7 @@ msgstr "Ionnsaigh shònraichte: "
 
 #: src/reports.cpp:893
 msgid "weapon^None"
-msgstr ""
+msgstr "Chan eil gin"
 
 #: src/reports.cpp:922
 msgid "Total damage"
@@ -8433,10 +8447,10 @@ msgstr ""
 #: src/synced_user_choice.cpp:327
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "a’ feitheamh air $desc o thaobh $sides"
+msgstr[1] "a’ feitheamh air $desc o thaobhan $sides"
+msgstr[2] "a’ feitheamh air $desc o thaobhan $sides"
+msgstr[3] "a’ feitheamh air $desc o thaobhan $sides"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8534,10 +8548,10 @@ msgstr[3] "$number puing-gluasaid"
 #: src/units/attack_type.cpp:429
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> puing gluasaid"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> phuing gluasaid"
+msgstr[2] "<span color=\"$color\">$number_or_percent</span> puingean gluasaid"
+msgstr[3] "<span color=\"$color\">$number_or_percent</span> puing gluasaid"
 
 #: src/units/types.cpp:545 src/units/types.hpp:181
 msgid "chaotic"
@@ -8573,7 +8587,7 @@ msgstr "stairsnich"
 
 #: src/units/unit.cpp:643
 msgid "Unit with negative HP found"
-msgstr ""
+msgstr "Chaidh aonad le PB àicheil a lorg"
 
 #: src/units/unit.cpp:1797
 msgid "$attack_list|: $effect_description"
@@ -8646,7 +8660,7 @@ msgstr "$year BF"
 
 #: src/wesnothd_connection.cpp:402
 msgid "Disconnected from server."
-msgstr ""
+msgstr "Chaidh an ceangal dhan fhrithealaiche a bhriseadh."
 
 #: src/whiteboard/manager.cpp:1117
 msgid "SHOW ALL allies’ plans"
@@ -8667,6 +8681,3 @@ msgstr "Falaich na planaichean aig $player"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Roghainnean a’ bhùird-ghil"
-
-#~ msgid "(missing)"
-#~ msgstr "(a dhìth)"

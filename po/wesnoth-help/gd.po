@@ -2,22 +2,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Wesnoth development team
 # This file is distributed under the same license as the PACKAGE package.
-# GunChleoc <fios@foramnagaidhlig.net>, 2018.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-05-15 23:33-0400\n"
-"PO-Revision-Date: 2018-05-07 10:57+0100\n"
-"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
-"Language-Team: Fòram na Gàidhlig\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: GunChleoc, 2017\n"
+"Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
+"teams/12769/gd/)\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Generator: Virtaal 0.7.1\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
@@ -1582,19 +1584,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:202
-#, fuzzy
-#| msgid ""
-#| "Each side begins with one leader in their keep. At the start of any "
-#| "battle, and at times during it, you will need to recruit <ref>dst='.."
-#| "units' text='units'</ref> into your army. To recruit, you must have your "
-#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
-#| "italic> campaign) on the keep hex of a <ref>dst='terrain_castle' "
-#| "text='castle'</ref>. Then you may recruit by either choosing "
-#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
-#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
-#| "which lists units available for recruitment, along with their gold cost. "
-#| "Click on a unit to see its statistics, then press the OK button to "
-#| "recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1618,7 +1607,7 @@ msgstr ""
 "bold> an uair sin. Gheibh thu an clàr-taice trusaidh le seo, a sheallas a h-"
 "uile aonad a tha ri fhaighinn dhut le cosgaisean òir ’na lùib. Briog air "
 "aonad gus a stadastaireachd fhaicinn is an uair sin briog air a’ phutain "
-"“Ceart ma-thà” gus a thrusadh."
+"<bold>text='Trus'</bold> gus a thrusadh."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:204
@@ -3095,11 +3084,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:490
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Multiplayer Modifications'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3107,18 +3091,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Atharraichean ioma-chluicheadair'</header>"
+"<header>text=’Tuilleadain'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:492
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Modifications are optional scenario- and era-independent scripts for "
-#| "<italic>text='Multiplayer'</italic> games that can alter the default "
-#| "ruleset in various ways. You can choose and configure modifications when "
-#| "creating a new game."
 msgid ""
 "\n"
 "\n"
@@ -3128,8 +3104,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"’S e sgriobtaichean roghainneil airson geamannan <italic>text='Ioma-"
-"chluicheadair'</italic> a th’ anns na h-atharraichean a bhios neo-"
+"’S e sgriobtaichean roghainneil a tha sna tuilleadain a bhios neo-"
 "eisimeileach bho chnàmh-sgeul no iomairt agus as urrainn dha na riaghailtean "
 "tùsail atharrachadh ann an iomadh dòigh. ’S urrainn dhut atharraichean a "
 "thaghadh ’s a rèiteachadh nuair a chruthaicheas tu geama ùr."
@@ -3172,31 +3147,6 @@ msgstr "A’ stàladh tuilleadain"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:506
-#, fuzzy
-#| msgid ""
-#| "User-made add-ons can be obtained and updated through the "
-#| "<italic>text='Add-ons'</italic> option in the main menu. After connecting "
-#| "to the add-ons server (by default <italic>text='add-ons.wesnoth.org'</"
-#| "italic>), you will be presented with a list of add-ons available on the "
-#| "server for downloading.\n"
-#| "\n"
-#| "The installation status for each add-on is shown below each entry. For "
-#| "add-ons that are <italic>text='upgradable'</italic> or "
-#| "<italic>text='outdated'</italic> on the server, their installed and "
-#| "published versions will be shown in the <italic>text='Version'</italic> "
-#| "column.\n"
-#| "\n"
-#| "To search for add-ons by keywords, type any relevant terms in any order "
-#| "in the <bold>text='Filter'</bold> box, separated by spaces. You can also "
-#| "sort the add-on list by clicking the column headers. It is also possible "
-#| "to choose to only display add-ons of specific categories by clicking on "
-#| "the <bold>text='Options'</bold> button in the top-right corner.\n"
-#| "\n"
-#| "To install an add-on, select it from the list and click <bold>text='OK'</"
-#| "bold>, or simply double-click on the add-on’s title. The "
-#| "<bold>text='Description'</bold> button provides you with additional "
-#| "details about the add-on, such as its full description, installation "
-#| "status, and available languages."
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -3241,11 +3191,11 @@ msgstr ""
 "deas a chleachdadh gus nach seall thu ach tuilleadain de sheòrsa "
 "sònraichte.\n"
 "\n"
-"Gus tuilleadan a stàladh, tagh air an liosta e agus briog air "
-"<bold>text='Ceart ma-thà'</bold> no dèan briogadh dùbailte air tiotal an "
-"tuilleadain. Bheir am putan <bold>text='Tuairisgeul'</bold> barrachd "
-"fiosrachaidh mun tuilleadan dhut a leithid tuairisgeul slàin, staid an "
-"stàlaidh agus cànanan rim faighinn."
+"Gus tuilleadan a stàladh, tagh air an liosta e agus briog air ìomhaigheag "
+"<bold>text='+'</bold> no dèan briogadh dùbailte air tiotal an tuilleadain. "
+"Bheir am putan <bold>text='Tuairisgeul'</bold> barrachd fiosrachaidh mun "
+"tuilleadan dhut a leithid tuairisgeul slàin, staid an stàlaidh agus cànanan "
+"rim faighinn."
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:519
@@ -6508,10 +6458,3 @@ msgstr "Cobhair aig Strì Bheasnaid"
 #: src/help/help.cpp:241
 msgid "Parse error when parsing help text: "
 msgstr "Mearachd parsaidh le parsadh an teacsa taice: "
-
-#~ msgid ""
-#~ "The Dunefolk are a human culture inhabiting the dry deserts in the "
-#~ "southern region of the Great Continent."
-#~ msgstr ""
-#~ "’Se dualchas a’ chinne-dhaonna a th’ ann am Muinntir na Gainmhich a tha "
-#~ "a’ fuireach san fhàsach tioram ceann a deas Na Mòr-thire Farsainge."
