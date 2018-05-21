@@ -150,14 +150,6 @@ msgstr "移動"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:210
-#, fuzzy
-#| msgid ""
-#| "When you select a unit, in this case Konrad, the places he can move to "
-#| "are highlighted. All units have a certain number of <i>movement points</"
-#| "i>, which dictate how many hexes that unit can move per turn. Normally, "
-#| "moving one hex on flat terrain uses one movement point. To move, simply "
-#| "click on your destination. (You can press <b>u</b> to undo a move if you "
-#| "move to the wrong place.)"
 msgid ""
 "When you hover over or select a unit, in this case Konrad, the places he can "
 "move to are highlighted. All units have a certain number of <i>movement "
@@ -166,23 +158,15 @@ msgid ""
 "simply click on Konrad and then your destination. (You can press <b>u</b> to "
 "undo a move if you move to the wrong place.)"
 msgstr ""
-"あなたがユニット（今回の例だとKonrad）を選択すると、ユニットが移動できるヘク"
-"ス（マス）が明るくなります。全てのユニットは<i>移動力（MP：Movement Point）</"
-"i>を持っており、ユニットが毎ターン何ヘクス移動できるかが示されています。普通"
-"は、平地の地形を1ヘクス移動する際には移動力を1消費します。移動するには、行き"
-"たいヘクスをクリックしましょう。（移動するヘクスを間違えてしまった時は、"
-"<b>u</b>キーを押すと移動前のヘクスに戻ることができます。）"
+"ユニット（今回の例だとKonrad）を選択すると、移動可能なヘクス（マス）が明るく"
+"なります。全てのユニットは<i>移動力（MP：Movement Point）</i>を持っており、毎"
+"ターン何ヘクス移動できるかが示されています。普通は、平地の地形を 1 ヘクス移動"
+"する際には移動力を 1 消費します。移動するには、行きたいヘクスをクリックしま"
+"しょう。（移動するヘクスを間違えてしまった時は、<b>u</b>キーを押すと移動前の"
+"ヘクスに戻ることができます。）"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:218
-#, fuzzy
-#| msgid ""
-#| "When you select a unit, in this case Li’sar, the places she can move to "
-#| "are highlighted. All units have a certain number of <i>movement points</"
-#| "i>, which dictate how many hexes that unit can move per turn. Normally, "
-#| "moving one hex on flat terrain uses one movement point. To move, simply "
-#| "click on your destination. (You can press <b>u</b> to undo a move if you "
-#| "move to the wrong place.)"
 msgid ""
 "When you hover over or select a unit, in this case Li’sar, the places she "
 "can move to are highlighted. All units have a certain number of <i>movement "
@@ -191,12 +175,12 @@ msgid ""
 "simply click on Li’sar and then your destination. (You can press <b>u</b> to "
 "undo a move if you move to the wrong place.)"
 msgstr ""
-"あなたがユニット（今回の例だと Li’sar ）を選択すると、ユニットが移動できるヘ"
-"クス（マス）が明るくなります。全てのユニットは移動力（MP：Movement Point）を"
-"持っており、ユニットが毎ターン何ヘクス移動できるかが示されています。普通は、"
-"平地の地形を1ヘクス移動する際には移動力を1消費します。移動するには、行きたい"
-"ヘクスをクリックしましょう。（移動するヘクスを間違えてしまった時は、uキーを押"
-"すと移動前のヘクスに戻ることができます。）"
+"ユニット（今回の例だと Li’sar ）を選択すると、移動可能なヘクス（マス）が明る"
+"くなります。全てのユニットは移動力（MP：Movement Point）を持っており、ユニッ"
+"トが毎ターン何ヘクス移動できるかが示されています。普通は、平地の地形を 1 ヘク"
+"ス移動する際には移動力を 1 消費します。移動するには、行きたいヘクスをクリック"
+"しましょう。（移動するヘクスを間違えてしまった時は、uキーを押すと移動前のヘク"
+"スに戻ることができます。）"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:229
@@ -429,8 +413,6 @@ msgstr ""
 #. [label]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:452
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:461
-#, fuzzy
-#| msgid "Villages"
 msgid "Village"
 msgstr "村"
 
@@ -503,7 +485,7 @@ msgstr ""
 #. [label]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:529
 msgid "Keep"
-msgstr ""
+msgstr "主塔"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:537
@@ -1307,13 +1289,6 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:420
-#, fuzzy
-#| msgid ""
-#| "You could. However, elves (and orcs) have bad <i>defense</i> in water. "
-#| "You’ll be more vulnerable as you try to wade slowly across the ford; the "
-#| "enemy will have an 80% chance to hit you. Since elves have good defense "
-#| "in the forest, I would advise you keep to the trees and attack the orcs "
-#| "from there; you’ll only have a 40% chance of being hit in return."
 msgid ""
 "You could. However, elves (and orcs) have bad <i>defense</i> in water. "
 "You’ll be more vulnerable as you try to wade slowly across the ford; the "
@@ -1325,8 +1300,9 @@ msgstr ""
 "そうかもしれません。しかし、エルフ（だけでなくオークも）は水の中では<i>回避率"
 "</i>が低下します。川の中では動きが遅くなりますし、攻撃を受ければ80%の確率で命"
 "中してしまいます。川を渡るのは危険でしょう。エルフは森の中では高い回避率を得"
-"ますから、森の中に留まってオークを攻撃した方が良いのではないかと思います。森"
-"にとどまれば、少なくとも60%の回避を得ることができます。"
+"ますから、森の中に留まってオークを攻撃した方が良いのではないかと思います。そ"
+"うすれば、戦士であれば 60% 、呪術師と射手であれば 70% の確率で敵の攻撃を回避"
+"できます。"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:425
@@ -1602,13 +1578,6 @@ msgstr "時刻"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:670
-#, fuzzy
-#| msgid ""
-#| "During a scenario, the time of day will shift as turns pass. There are "
-#| "four <i>alignments</i> a unit may be: Lawful, Neutral, Chaotic, or "
-#| "Liminal. Each alignment gets a different bonus or handicap depending on "
-#| "the time of day. You can mouse over the landscape image below the minimap "
-#| "on the right to see the current time of day and who has the advantage."
 msgid ""
 "During a scenario, the time of day will shift as turns pass. There are four "
 "<i>alignments</i> a unit may be: Lawful, Neutral, Chaotic, or Liminal. Each "
@@ -1619,8 +1588,8 @@ msgstr ""
 "シナリオでは、ターンが経過するごとに時刻も移り変わっていきます。ユニットには4"
 "つの<i>アラインメント</i>があります。秩序、中立、混沌、薄明です。それぞれのア"
 "ラインメントごとに、時刻に応じたボーナスやペナルティが与えられます。画面右側"
-"にあるミニマップの下の風景画像にマウスカーソルを合わせると、現在の時刻と各ア"
-"ラインメントへの影響が確認できます。"
+"にあるミニマップの下、空の画像にカーソルを合わせると、現在の時刻と各アライン"
+"メントへの影響が確認できます。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:681
@@ -1841,35 +1810,25 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1019
-#, fuzzy
-#| msgid ""
-#| "Advancing a level has fully healed me! I always have a 60% chance of "
-#| "hitting with my <i>Marksman</i> ability, and I deal 9 damage each for 4 "
-#| "attacks. Use me to dislodge hard-to-hit units."
 msgid ""
 "Advancing a level has fully healed me! When attacking, I always have at "
 "least a 60% chance of hitting with my longbow thanks to my <i>Marksman</i> "
 "ability, and I deal 9 damage each for 4 attacks. Use me to dislodge hard-to-"
 "hit units."
 msgstr ""
-"レベルアップで全回復したぞ！<i>精密</i>によって60%の命中率で9ー4の攻撃ができ"
-"るんだ。回避率の高いユニットを倒す時には私を呼んでくれ。"
+"レベルアップで全回復したぞ！<i>精密</i>によって攻撃時には 60% の命中率で 9ー"
+"4 の攻撃ができるんだ。回避率の高いユニットを倒す時には私を呼んでくれ。"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1020
-#, fuzzy
-#| msgid ""
-#| "female^Advancing a level has fully healed me! I always have a 60% chance "
-#| "of hitting with my <i>Marksman</i> ability, and I deal 9 damage each for "
-#| "4 attacks. Use me to dislodge hard-to-hit units."
 msgid ""
 "female^Advancing a level has fully healed me! When attacking, I always have "
 "at least a 60% chance of hitting with my longbow thanks to my <i>Marksman</"
 "i> ability, and I deal 9 damage each for 4 attacks. Use me to dislodge hard-"
 "to-hit units."
 msgstr ""
-"レベルアップで全回復したわ！<i>精密</i>によって60%の命中率で9ー4の攻撃ができ"
-"るの。回避率の高いユニットを倒す時には私を呼んでね。"
+"レベルアップで全回復したわ！<i>精密</i>によって攻撃時には 60% の命中率で9ー4"
+"の攻撃ができるの。回避率の高いユニットを倒す時には私を呼んでね。"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1033

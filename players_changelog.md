@@ -5,7 +5,7 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 ## Version 1.14.1+dev
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Czech, French,
-     Galician, Italian, Scottish Gaelic, Spanish, Ukrainian.
+     Galician, Italian, Japanese, Scottish Gaelic, Spanish, Ukrainian.
  ### User interface
    * List boxes (MP lobby game list in particular) now keep the scroll position
      when they change, instead of keeping the selected item visible (issue #3016).

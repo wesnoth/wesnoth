@@ -4658,14 +4658,10 @@ msgstr "フォントを拡大・縮小します"
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:275
 msgid "Limit FPS"
-msgstr ""
+msgstr "FPS 制限"
 
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:276
-#, fuzzy
-#| msgid ""
-#| "Disabling this increases CPU usage to 100 % but may slightly improve "
-#| "performance at high resolutions"
 msgid ""
 "Disabling this increases CPU usage to 100% but may slightly improve "
 "performance at high resolutions"
@@ -5356,7 +5352,7 @@ msgstr "<不明>"
 
 #: src/font/marked-up_text.cpp:402
 msgid "The maximum text width is less than 1."
-msgstr "最大テキスト幅が1より小さいです。"
+msgstr "最大テキスト幅が 1 より小さいです。"
 
 #: src/font/text.cpp:761
 msgid "The text contains invalid markup: "
@@ -6090,16 +6086,12 @@ msgid "$game_name (Era: $era_name)"
 msgstr "$game_name（時代： $era_name）"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:456
-#, fuzzy
-#| msgid "addon_state^Not installed"
 msgid "era_or_mod^not installed"
 msgstr "未インストール"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:459
-#, fuzzy
-#| msgid "Era:"
 msgid "Era"
-msgstr "時代："
+msgstr "時代"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:491
 msgid "Reloaded:"
@@ -6122,15 +6114,11 @@ msgid "Use map settings:"
 msgstr "マップ設定を使用："
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:503
-#, fuzzy
-#| msgid ""
-#| "One or more items need to be installed\n"
-#| "in order to join this game."
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
 msgstr ""
-"このゲームに参加するには、１つあるいは複数のアイテムをインストールする必要が"
+"このゲームに参加するには、１つあるいは複数のアドオンをインストールする必要が"
 "あります。"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:528
@@ -7530,15 +7518,3 @@ msgid ""
 msgstr ""
 "キー「$deprecated_key」は「$key」に名前が変更されました。「$deprecated_key」"
 "のサポートはバージョン$removal_versionで削除されます。"
-
-#~ msgid "FPS limiter"
-#~ msgstr "FPS 制限"
-
-#~ msgid "era^missing"
-#~ msgstr "未所持"
-
-#~ msgid "Registered users only:"
-#~ msgstr "登録ユーザーのみ："
-
-#~ msgid "Settings:"
-#~ msgstr "設定："
