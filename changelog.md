@@ -9,8 +9,9 @@
      * Fixed some Lua errors in S05.
      * In 'Captured', fixed units incorrectly costing upkeep after leveling up.
    * Northern Rebirth:
-     * S02_01 Infested Caves: keep side 8 AI leader from wandering off too far
+     * S02.1 Infested Caves: keep side 8 AI leader from wandering off too far
        and ending up on a keep with only one hex for recruiting
+     * S02.1 Infested Caves: minor map tweaks and improvements.
    * Secrets of the Ancients
      * Fixed several inconsistently spelled names.
    * The Hammer of Thursagan
@@ -95,6 +96,8 @@
    * Fixed MP lobby player list scrolling to top when it changes.
    * Fixed inactive weapon specials being displayed in the Unit Attack dialog
      unlike in 1.12 (issue #3033).
+   * Fixed the first unit sometimes not being selected when opening the Recall
+     dialog.
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a location ID
@@ -181,6 +184,11 @@
      macros
    * Fixed [color_adjust] interacting poorly with time of day color shifts and
      values outside the [-255, 255] range (issue #3144).
+   * Fixed a regression from 1.13.10 where modification option values couldn't
+     be properly saved in arrays.
+   * Added stricter validation to ensure units cannot have negative hitpoints,
+     except during specific attack-related events.
+   * Added deprecation notices for several macros that had them missing before.
 
 ## Version 1.13.12
  ### Security fixes
