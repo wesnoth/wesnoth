@@ -732,7 +732,7 @@ void mp_create_game::update_details(window& win)
 			const int p_max = current_campaign->max_players();
 
 			if(p_max > p_min) {
-				players.set_label(VGETTEXT("$min to $max", {{"min", std::to_string(p_min)}, {"max", std::to_string(p_max)}}));
+				players.set_label(VGETTEXT("number of players^$min to $max", {{"min", std::to_string(p_min)}, {"max", std::to_string(p_max)}}));
 			} else {
 				players.set_label(std::to_string(p_min));
 			}
