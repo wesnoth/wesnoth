@@ -1,4 +1,4 @@
-
+﻿
 # set minimum version
 cmake_minimum_required(VERSION 2.8.5)
 
@@ -58,19 +58,6 @@ option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ${ENABLE_GAME})
 option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
 option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
-
-if(NOT CMAKE_CROSSCOMPILING)
-	try_run(IEEE754_TEST_RETURN_CODE IEEE754_TEST_COMPILED ${CMAKE_BINARY_DIR} ${CMAKE_SOURCE_DIR}/src/compile_time_tests/ieee_754.cpp
-		CMAKE_FLAGS "-DCMAKE_CXX_STANDARD=11" COMPILE_OUTPUT_VARIABLE IEEE754_TEST_COMPILE_OUTPUT)
-	if(NOT IEEE754_TEST_COMPILED)
-		message(WARNING "Failed to compile the IEEE 754 test. Skipping it.")
-		message(${IEEE754_TEST_COMPILE_OUTPUT})
-	elseif(NOT IEEE754_TEST_RETURN_CODE EQUAL 0)
-		message(FATAL_ERROR "Your platform does not represent floating point numbers in the IEEE 754 format.")
-	endif()
-else()
-	message(WARNING "You are cross-compiling. Skipping IEEE 754 test.")
-endif()
 
 if(ENABLE_GAME OR ENABLE_TESTS)
 	find_package(SDL2 2.0.4 REQUIRED)
