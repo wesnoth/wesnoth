@@ -10,6 +10,9 @@
    * List boxes (MP lobby game list in particular) now keep the scroll position
      when they change, instead of keeping the selected item visible (issue #3016).
    * Fixed MP lobby player list scrolling to top when it changes
+ ### Terrains
+   * Removed hidden terrains that were not supposed to make it to 1.14: ^Prg,
+     ^Prgo, ^Pwd, ^Pwdo
  ### Miscellaneous and bug fixes
    * Fixed: unit halo remained after undoing a recall (issue #3065)
    * [change_theme] no longer causes a Lua error when theme= is not specified
