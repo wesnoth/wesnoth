@@ -373,7 +373,7 @@ function wesnoth.wml_actions.message(cfg)
 	else
 		-- Check ~= false, because the default if omitted should be true
 		if cfg.scroll ~= false then
-			wesnoth.scroll_to_tile(speaker.x, speaker.y, false, false, true)
+			wesnoth.scroll_to_tile(speaker.x, speaker.y, true, false, true)
 		end
 
 		wesnoth.highlight_hex(speaker.x, speaker.y)
