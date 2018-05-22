@@ -31,6 +31,9 @@
        received in some cases.
  ### Engine
    * Windows 7 is now the minimum supported Windows version.
+ ### Graphics
+   * Fixed a minor team coloring mistake in the north-facing Revenant standing
+     animation.
  ### Help browser
    * Unit descriptions use the new multiplication sign format for attack lists
      now (issue #2873).
