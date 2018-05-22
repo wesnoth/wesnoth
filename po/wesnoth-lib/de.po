@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-05-15 23:33-0400\n"
-"PO-Revision-Date: 2018-05-21 08:14+0200\n"
+"PO-Revision-Date: 2018-05-22 20:27+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -73,7 +73,7 @@ msgstr "Seichtes Wasser"
 #. [terrain_type]: id=tropical_water
 #: data/core/terrain.cfg:76
 msgid "Tropical Shallow Water"
-msgstr "Tropisches Flachwasser"
+msgstr "Tropisches seichtes Wasser"
 
 #. [terrain_type]: id=ford
 #: data/core/terrain.cfg:86 data/core/terrain.cfg:87
@@ -115,7 +115,7 @@ msgstr "Trübes küstennahes Riff"
 #. [terrain_type]: id=medium_reef
 #: data/core/terrain.cfg:110
 msgid "Medium Coastal Reef"
-msgstr "Mittleres küstennahes Riff"
+msgstr "Küstennahes Riff"
 
 #. [terrain_type]: id=tropical_reef
 #: data/core/terrain.cfg:121
@@ -133,7 +133,7 @@ msgstr "Sumpf"
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:134
 msgid "Swamp Water Reed"
-msgstr "Sumpfiges Ried"
+msgstr "Sumpfiges Schilf"
 
 #. [terrain_type]: id=quagmire
 #: data/core/terrain.cfg:145
@@ -185,7 +185,7 @@ msgstr "Dunkler Dreck"
 #. [terrain_type]: id=dirt
 #: data/core/terrain.cfg:217
 msgid "Regular Dirt"
-msgstr "Schmutzboden"
+msgstr "Dreck"
 
 #. [terrain_type]: id=dirt_dry
 #: data/core/terrain.cfg:227
@@ -222,12 +222,12 @@ msgstr ""
 #. [terrain_type]: id=road_clean
 #: data/core/terrain.cfg:248
 msgid "Clean Gray Cobbles"
-msgstr "Pflasterstraße"
+msgstr "Sauberer Pflasterstein"
 
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:258
 msgid "Overgrown Cobbles"
-msgstr "Überwuchertes Straßenpflaster"
+msgstr "Überwucherter Pflasterstein"
 
 #. [terrain_type]: id=ice
 #: data/core/terrain.cfg:271
@@ -258,7 +258,8 @@ msgid ""
 msgstr ""
 "Eigentlich sind <italic>text='Wüsten'</italic> anders beschaffen, als kleine "
 "Sandflächen oder Strände. Der Einfachheit halber verhält sich eine Wüste "
-"spieltechnisch jedoch wie das Gelände <ref>dst=terrain_sand text=Sand</ref>."
+"spieltechnisch jedoch wie das Gelände <ref>dst='terrain_sand_beach' "
+"text='Sand'</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -269,7 +270,7 @@ msgstr "Sand"
 #. [terrain_type]: id=sand_beach
 #: data/core/terrain.cfg:305
 msgid "Beach Sands"
-msgstr "Sandstrand"
+msgstr "Strandsand"
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -300,8 +301,8 @@ msgid ""
 "A welcome sight to any traveler, an oasis allows units to heal as if "
 "stationed in a village, but provides no income or defensive advantage."
 msgstr ""
-"Ein willkommener Anblick für jeden Reisenden. Eine Oase erlaubt Einheiten zu "
-"heilen, als wären sie in einem Dorf stationiert. Es bringt jedoch kein "
+"Ein wunderbarer Anblick für jeden Reisenden. Eine Oase erlaubt Einheiten zu "
+"heilen, als wären sie in einem Dorf stationiert. Sie bringt jedoch kein "
 "zusätzliches Einkommen oder defensiven Vorteil."
 
 #. [terrain_type]: id=sand_rubble
@@ -347,7 +348,7 @@ msgstr "Wüstenpflanzen"
 #. [terrain_type]: id=desert_plants_sans_bones
 #: data/core/terrain.cfg:410
 msgid "Desert Plants without Bones"
-msgstr "Wüstenpflanze ohne Knochen"
+msgstr "Wüstenpflanzen ohne Knochen"
 
 #. [terrain_type]: id=windmill
 #: data/core/terrain.cfg:419
@@ -362,7 +363,7 @@ msgstr "Lagerfeuer"
 #. [terrain_type]: id=wallfire
 #: data/core/terrain.cfg:437
 msgid "Sconce"
-msgstr "Beleuchtete Wand"
+msgstr "Fackel"
 
 #. [terrain_type]: id=brazier
 #: data/core/terrain.cfg:446
@@ -397,7 +398,7 @@ msgstr "Abfall"
 #. [terrain_type]: id=detritus_bones
 #: data/core/terrain.cfg:512
 msgid "Remains"
-msgstr "Relikte"
+msgstr "Überreste"
 
 #. [terrain_type]: id=great_tree
 #. [terrain_type]: id=great_tree_dead
@@ -569,7 +570,7 @@ msgstr "Normales Gebirge"
 #. [terrain_type]: id=dry_mountains
 #: data/core/terrain.cfg:789
 msgid "Dry Mountains"
-msgstr "Wüstengebirge"
+msgstr "Trockenes Gebirge"
 
 #. [terrain_type]: id=snow_mountains
 #: data/core/terrain.cfg:799
@@ -589,7 +590,7 @@ msgstr "Steinboden"
 #. [terrain_type]: id=regular_stone_floor
 #: data/core/terrain.cfg:824
 msgid "Basic Stone Floor"
-msgstr "Einfacher Steinboden"
+msgstr "Steinboden"
 
 #. [terrain_type]: id=rug_floor
 #. [terrain_type]: id=rug2_floor
@@ -607,7 +608,7 @@ msgstr "Königklicher Teppich"
 #. [terrain_type]: id=rug2_floor
 #: data/core/terrain.cfg:844
 msgid "Normal Rug"
-msgstr "Normaler Teppich"
+msgstr "Teppich"
 
 #. [terrain_type]: id=rug3_floor
 #: data/core/terrain.cfg:854
@@ -627,7 +628,7 @@ msgstr "Holzdielen"
 #. [terrain_type]: id=old_wood_floor
 #: data/core/terrain.cfg:871 data/core/terrain.cfg:874
 msgid "Old Wooden Floor"
-msgstr "Alter Holzboden"
+msgstr "Alte Holzdielen"
 
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:887
@@ -705,7 +706,7 @@ msgstr ""
 "in den Höhlen leben, haben es dagegen relativ leicht, sich in ihnen "
 "fortzubewegen, besonders die Zwerge, die durch ihren kleinen Wuchs leichter "
 "durch viele Hindernisse kriechen können. Gelegentlich sind Höhlen "
-"<ref>dst='terrain_illuminated_cave' text='erhellt'</ref>.\n"
+"<italic>text='erhellt'</italic>.\n"
 "\n"
 "Die meisten Einheiten haben 50% Verteidigung in unwegsamen Höhlen, "
 "wohingegen Kavallerie auf 40% begrenzt ist. Zwerge erhalten 60% Verteidigung."
@@ -784,7 +785,7 @@ msgstr "Normales unpassierbares Gebirge"
 #. [terrain_type]: id=cloud_dry
 #: data/core/terrain.cfg:1108
 msgid "Dry Impassable Mountains"
-msgstr "Unpassierbares Wüstengebirge"
+msgstr "Unpassierbares trockenes Gebirge"
 
 #. [terrain_type]: id=cloud_snow
 #: data/core/terrain.cfg:1119
@@ -1022,7 +1023,7 @@ msgstr "Orklager"
 #. [terrain_type]: id=orcish_snow_village
 #: data/core/terrain.cfg:1582
 msgid "Snowy Orcish Village"
-msgstr "Eingeschneites Orklager"
+msgstr "Verschneites Orklager"
 
 #. [terrain_type]: id=elven_snow_village
 #: data/core/terrain.cfg:1597
@@ -1042,7 +1043,7 @@ msgstr "Häuschen"
 #. [terrain_type]: id=snow_village
 #: data/core/terrain.cfg:1638
 msgid "Snowy Cottage"
-msgstr "Eingeschneites Häuschen"
+msgstr "Verschneites Häuschen"
 
 #. [terrain_type]: id=human_village_ruin
 #: data/core/terrain.cfg:1651
@@ -1077,7 +1078,7 @@ msgstr "Bergdorf"
 #. [terrain_type]: id=snow-hill_village
 #: data/core/terrain.cfg:1729
 msgid "Snowy Hill Stone Village"
-msgstr "Eingeschneites Bergdorf"
+msgstr "Verschneites Bergdorf"
 
 #. [terrain_type]: id=hill_village_ruin
 #: data/core/terrain.cfg:1742
@@ -1112,7 +1113,7 @@ msgstr "Hüttensiedlung"
 #. [terrain_type]: id=hut_snow_village
 #: data/core/terrain.cfg:1822
 msgid "Snowy Hut"
-msgstr "Eingeschneite Hüttensiedlung"
+msgstr "Verschneite Hüttensiedlung"
 
 #. [terrain_type]: id=logcabin_village
 #: data/core/terrain.cfg:1835
@@ -1127,7 +1128,7 @@ msgstr "Winterlicher Landhof"
 #. [terrain_type]: id=igloo
 #: data/core/terrain.cfg:1861
 msgid "Igloo"
-msgstr "Iglo"
+msgstr "Iglu"
 
 #. [terrain_type]: id=swamp_village
 #: data/core/terrain.cfg:1876
@@ -1219,7 +1220,7 @@ msgstr "Orkfeste"
 #. [terrain_type]: id=snow_orcish_fort
 #: data/core/terrain.cfg:1972
 msgid "Snowy Orcish Castle"
-msgstr "Eingeschneite Orkfeste"
+msgstr "Verschneite Orkfeste"
 
 #. [terrain_type]: id=human_castle
 #: data/core/terrain.cfg:1984
@@ -1347,7 +1348,7 @@ msgstr "Orkischer Burgfried"
 #. [terrain_type]: id=snow_orcish_keep
 #: data/core/terrain.cfg:2210
 msgid "Snowy Orcish Keep"
-msgstr "Eingeschneiter orkischer Burgfried"
+msgstr "Verschneiter orkischer Burgfried"
 
 #. [terrain_type]: id=human_keep
 #: data/core/terrain.cfg:2223
@@ -1639,7 +1640,7 @@ msgstr ""
 "Höhlen und haben dadurch leichtes Spiel, sich auf diesem Gelände zurecht zu "
 "finden. Besonders Zwerge, da sie durch ihre Größe leicht Hindernisse umgehen "
 "können, die andere Völker aufhalten wurden. Gelegentlich sind Höhlen auch "
-"<ref>dst='terrain_illuminated_cave' text='erhellt'</ref>.\n"
+"<italic>text='erhellt'</italic>.\n"
 "\n"
 "Selten sind teile des Untergrunds durch etwas Licht erhellt. Dies gibt "
 "redlichen Einheiten einen Angriffsbonus und entfernt den Angriffsbonus von "
@@ -1665,8 +1666,8 @@ msgid ""
 "\n"
 "Merfolk and Naga both receive 70% defense on coastal reefs."
 msgstr ""
-"<italic>text='Küstenriffe'</italic>sind sichte Gewässer, geprägt durch "
-"Steine, Korallen und Sand.\n"
+"<italic>text='Küstennahe Riffe'</italic> sind seichte Gewässer, geprägt "
+"durch Steine, Korallen und Sand.\n"
 "Das ermöglicht den meisten Landeinheiten sicheren Tritt und gute "
 "Verteidigungspositionen. Einheiten die im Wasser heimisch sind erhalten "
 "dennoch exzellente Verteidigung in Küstenriffen.\n"
@@ -2031,7 +2032,6 @@ msgstr "Erweiterung installieren"
 msgid "Update add-on"
 msgstr "Erweiterung aktualisieren"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=single_publish
 #. [button]: id=publish
 #: data/gui/widget/addon_list.cfg:412 data/gui/window/addon_manager.cfg:270
@@ -2039,7 +2039,6 @@ msgstr "Erweiterung aktualisieren"
 msgid "Publish add-on"
 msgstr "Erweiterung veröffentlichen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:247
@@ -2106,7 +2105,6 @@ msgstr "Server:"
 msgid "Remove Add-ons"
 msgstr "Erweiterungen entfernen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_help
 #. [button]: id=help
 #: data/gui/window/addon_connect.cfg:184 data/gui/window/title_screen.cfg:174
@@ -2119,7 +2117,6 @@ msgstr "Hilfe"
 msgid "Connect"
 msgstr "Verbinden"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/window/addon_connect.cfg:212
 #: data/gui/window/addon_uninstall_list.cfg:174
@@ -2170,7 +2167,6 @@ msgstr "Von:"
 msgid "Version:"
 msgstr "Version:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:160
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:591
@@ -2219,7 +2215,6 @@ msgstr "Heruntergeladen:"
 msgid "Dependencies:"
 msgstr "Abhängigkeiten:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
 #: data/gui/window/addon_manager.cfg:523 src/gui/dialogs/addon/manager.cpp:885
 msgid "addon_dependencies^None"
@@ -2230,7 +2225,6 @@ msgstr "Keine"
 msgid "Translations:"
 msgstr "Übersetzungen:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
 #: data/gui/window/addon_manager.cfg:557 src/gui/dialogs/addon/manager.cpp:899
 msgid "translations^None"
@@ -2286,7 +2280,6 @@ msgstr "Reihenfolge:"
 msgid "Add-ons Manager"
 msgstr "Erweiterungen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
 #: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:452
 #: src/gui/dialogs/addon/manager.cpp:639
@@ -2377,7 +2370,6 @@ msgstr "Alles andere"
 msgid "Scaled to hex"
 msgstr "Auf Hexgröße skalieren:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/advanced_graphics_options.cfg:165
 #: data/gui/window/campaign_dialog.cfg:426
@@ -2487,7 +2479,6 @@ msgstr "Datum"
 msgid "Sort in approximate chronological order of story events"
 msgstr "Sortiert nach den Geschehnissen in chronologischer Reihenfolge"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:276
 #: src/gui/dialogs/multiplayer/lobby.cpp:466
@@ -2667,7 +2658,6 @@ msgstr "Neuer Tagesablauf"
 msgid "Delete ToD"
 msgstr "Lösche Tagesablauf"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
 #: src/gui/dialogs/addon/manager.cpp:773 src/gui/dialogs/file_dialog.cpp:307
@@ -2680,7 +2670,6 @@ msgstr "Bestätigen"
 msgid "Would you like to apply the changes?"
 msgstr "Möchtet Ihr die Änderungen übernehmen?"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/depcheck_confirm_change.cfg:130
 #: data/gui/window/game_delete.cfg:107
@@ -2691,7 +2680,6 @@ msgstr "Möchtet Ihr die Änderungen übernehmen?"
 msgid "Yes"
 msgstr "Ja"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/window/depcheck_confirm_change.cfg:144
 #: data/gui/window/game_delete.cfg:121
@@ -2772,7 +2760,6 @@ msgstr "Kennung:"
 msgid "Description:"
 msgstr "Beschreibung:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
 #: src/gui/dialogs/multiplayer/lobby.cpp:488
@@ -2834,7 +2821,6 @@ msgstr "In Spielübersicht ausblenden"
 msgid "Gold:"
 msgstr "Gold:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
 #: src/gui/dialogs/multiplayer/lobby.cpp:489
@@ -2856,7 +2842,6 @@ msgstr "Unterhalt pro Dorf:"
 msgid "Controller:"
 msgstr "Spielertyp:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:373 src/gui/dialogs/game_stats.cpp:78
 msgid "controller^Human"
@@ -2892,7 +2877,6 @@ msgstr "Schleier der Finsternis"
 msgid "vision^None"
 msgstr "Keine"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:242
 msgid "Generate Map"
@@ -2903,7 +2887,6 @@ msgstr "Karte erzeugen"
 msgid "Choose a map generator:"
 msgstr "Wähle einen Zufallskartengenerator:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=random_map_settings
 #. [button]: id=settings
 #: data/gui/window/editor_generate_map.cfg:128
@@ -2922,7 +2905,6 @@ msgstr "Numerischer Startwert:"
 msgid "Generate"
 msgstr "Erzeugen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/editor_new_map.cfg:36 src/hotkey/hotkey_command.cpp:170
 msgid "New Map"
@@ -2947,7 +2929,6 @@ msgstr "Höhe:"
 msgid "Create"
 msgstr "Erstellen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:240
 msgid "Resize Map"
@@ -3175,7 +3156,6 @@ msgstr "Truppen in Reserve:"
 msgid "Date"
 msgstr "Datum"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #. [button]: id=load_game
 #: data/gui/window/game_load.cfg:286 data/gui/window/mp_create_game.cfg:898
@@ -3220,7 +3200,6 @@ msgstr ""
 msgid "Open saves folder"
 msgstr "Öffne Ordner mit gespeicherten Spielstanden"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/window/game_save.cfg:42 data/gui/window/game_save_message.cfg:42
 #: data/gui/window/game_save_oos.cfg:42 src/hotkey/hotkey_command.cpp:98
@@ -3247,7 +3226,6 @@ msgstr "Überschreiben?"
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Der Spielstand existiert bereits. Möchtet Ihr ihn überschreiben?"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_0
 #: data/gui/window/game_stats.cfg:35 data/gui/window/game_stats.cfg:283
 #: src/hotkey/hotkey_command.cpp:83
@@ -3259,7 +3237,6 @@ msgstr "Heerführer"
 msgid "Team"
 msgstr "Allianz"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:401
@@ -3281,7 +3258,6 @@ msgstr "Einheiten"
 msgid "Upkeep"
 msgstr "Unterhaltskosten"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_6
 #. [image]: id=income_icon
 #. [label]: id=side_income
@@ -3333,7 +3309,6 @@ msgstr ""
 "Unterhalt\n"
 "pro Dorf"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:255
 msgid "Current Status"
@@ -3344,7 +3319,6 @@ msgstr "Übersicht (Parteien)"
 msgid "Game Stats"
 msgstr "Übersicht (Parteien)"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:255
 msgid "Scenario Settings"
@@ -3615,7 +3589,6 @@ msgstr "Abmelden"
 msgid "Create Game"
 msgstr "Partie eröffnen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [label]: id=title
 #. [grid]
@@ -4078,7 +4051,6 @@ msgstr "Aktionsbonus"
 msgid "Time for each attack, recruit, and capture"
 msgstr "Zeit für jeden Angriff, jede Ausbildung und Einnahme"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=label
 #. [widget]: id=tab_label
 #: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:291
@@ -4164,7 +4136,6 @@ msgstr ""
 "Legt das Passwort fest, welches Spieler benötigen, um Eurer Partie "
 "beizutreten."
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:177
@@ -4184,7 +4155,6 @@ msgstr "Anführer:"
 msgid "Gender:"
 msgstr "Geschlecht:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
 #: data/gui/window/mp_faction_select.cfg:167
 #: src/gui/dialogs/multiplayer/faction_select.cpp:151
@@ -4259,7 +4229,6 @@ msgstr "Verlassen"
 msgid "Game Lobby"
 msgstr "Spiel Lobby"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:479 data/gui/window/mp_staging.cfg:614
 #: data/gui/window/mp_staging.cfg:806
@@ -4298,7 +4267,6 @@ msgstr "Euer Name:"
 msgid "Save password locally (encrypted)"
 msgstr "Speichert das Passwort in der Konfigurationsdatei (verschlüsselt)"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=label
 #. [label]
 #. [grid]
@@ -4357,7 +4325,6 @@ msgstr "Lokales Spiel"
 msgid "Address"
 msgstr "Adresse"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/mp_server_list.cfg:217 src/preferences/display.cpp:170
 msgid "Select"
@@ -4951,7 +4918,6 @@ msgstr "Bildschirmfotos…"
 msgid "Browse the screenshots folder using a file manager"
 msgstr "Bildschirmfotoverzeichnis im Dateimanager öffnen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=save
 #: data/gui/window/screenshot_notification.cfg:203
 #: src/gui/dialogs/file_dialog.cpp:185
@@ -5015,7 +4981,6 @@ msgstr "Insgesamt"
 msgid "This Turn"
 msgstr "Diese Runde"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/statistics_dialog.cfg:432 src/hotkey/hotkey_command.cpp:120
 msgid "Statistics"
@@ -5036,7 +5001,6 @@ msgstr "Kampagne"
 msgid "Skip"
 msgstr "Überspringen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/window/surrender_quit.cfg:40 src/hotkey/hotkey_command.cpp:123
 msgid "Surrender Game"
@@ -5138,7 +5102,6 @@ msgstr "Nächsten Tipp des Tages anzeigen"
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Führt in die Grundzüge des Spieles ein"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/window/title_screen.cfg:251 src/gui/dialogs/game_load.cpp:340
 msgid "Tutorial"
@@ -5258,7 +5221,6 @@ msgstr "Angreifen"
 msgid "Attack Enemy"
 msgstr "Gegner angreifen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/unit_create.cfg:47 src/hotkey/hotkey_command.cpp:114
 msgid "Create Unit (Debug!)"
@@ -5296,7 +5258,6 @@ msgstr "S"
 msgid "XP"
 msgstr "EP"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_6
 #: data/gui/window/unit_list.cfg:177 data/gui/window/unit_recall.cfg:89
@@ -5305,7 +5266,6 @@ msgstr "EP"
 msgid "Traits"
 msgstr "Charakteristiken"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/unit_list.cfg:368 src/hotkey/hotkey_command.cpp:119
 msgid "Unit List"
@@ -5321,7 +5281,6 @@ msgstr "Einheit einberufen"
 msgid "Dismiss"
 msgstr "Entlassen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/unit_recall.cfg:419 src/hotkey/hotkey_command.cpp:104
 msgid "Recall"
@@ -5332,13 +5291,11 @@ msgstr "Einberufen"
 msgid "Recruit Unit"
 msgstr "Einheit ausbilden"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/unit_recruit.cfg:219 src/hotkey/hotkey_command.cpp:102
 msgid "Recruit"
 msgstr "Ausbilden"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:210
 #: src/gui/dialogs/preferences_dialog.cpp:262
@@ -5346,7 +5303,6 @@ msgstr "Ausbilden"
 msgid "Error"
 msgstr "Fehler"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
 #: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:226
 #: src/gui/dialogs/multiplayer/lobby.cpp:242 src/gui/dialogs/wml_error.cpp:197
