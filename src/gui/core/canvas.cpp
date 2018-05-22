@@ -1380,8 +1380,15 @@ canvas::~canvas()
 {
 }
 
-void canvas::draw()
+void canvas::render()
 {
+	/**
+	 * @note Both the clip rect and viewport should be set before this function is called.
+	 * The clip rect ensures the canvas texture is cropped appropriately, and the viewport sets the
+	 * origin for all the drawing operations, as well as specifying the area of the screen to which
+	 * this canvas applies.
+	 */
+
 	log_scope2(log_gui_draw, "Canvas: drawing.");
 
 	if(size_changed_) {
@@ -1393,44 +1400,12 @@ void canvas::draw()
 	}
 
 	// Draw shapes.
+	// TODO: reenable blur handling. Need a shader.
 	for(auto& shape : shapes_) {
 		lg::scope_logger inner_scope_logging_object__(log_gui_draw, "Canvas: draw shape.");
 
 		shape->draw(w_, h_, renderer_, variables_);
 	}
-}
-
-void canvas::render()
-{
-	/**
-	 * @note Both the clip rect and viewport should be set before this function is called.
-	 * The clip rect ensures the canvas texture is cropped appropriately, and the viewport sets the
-	 * origin for all the drawing operations, as well as specifying the area of the screen to which
-	 * this canvas applies.
-	 */
-
-	// Update the canvas texture, if necessary.
-	draw();
-
-	// TODO: reenable. Need a shader.
-#if 0
-	if(blur_depth_) {
-		/*
-		 * If the surf is the video surface the blurring seems to stack, this
-		 * can be seen in the title screen. So also use the not 32 bpp method
-		 * for this situation.
-		 */
-		if(surf != CVideo::get_singleton().getSurface() && is_neutral(surf)) {
-			blur_surface(surf, rect, blur_depth_);
-		} else {
-			// Can't directly blur the surface if not 32 bpp.
-			SDL_Rect r = rect;
-			surface s = get_surface_portion(surf, r);
-			s = blur_surface(s, blur_depth_);
-			sdl_blit(s, nullptr, surf, &r);
-		}
-	}
-#endif
 }
 
 void canvas::parse_cfg(const config& cfg)

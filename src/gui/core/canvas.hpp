@@ -94,15 +94,7 @@ public:
 	~canvas();
 
 	/**
-	 * Draws the canvas.
-	 */
-	void draw();
-
-	/**
-	 * Copies the canvas texture to the screen renderer.
-	 *
-	 * This will re-render the canvas texture if necessary (ie, if marked dirty).
-	 * It also executes the pre-commit functions such as blurring (@todo: reenable).
+	 * Renders the canvas contents to screen.
 	 */
 	void render();
 
