@@ -6,6 +6,8 @@ changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog.md
  ### Campaigns
    * Eastern Invasion
      * In 'Captured', fixed units incorrectly costing upkeep after leveling up.
+   * Sceptre of Fire:
+     * In 'Caverns of Flame', fixed various issues with the volcano eruption.
    * The Hammer of Thursagan
      * Fixed a misplaced door image in S12.
      * S12 Fixed enemies from ai6 (south-east lich) going to the book (spider) room
