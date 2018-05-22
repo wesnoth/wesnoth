@@ -120,9 +120,9 @@ public:
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML for
 	 *                            more information.
 	 */
-	void set_cfg(const config& cfg)
+	void set_cfg(const config& cfg, const bool force = false)
 	{
-		clear_shapes();
+		clear_shapes(force);
 		parse_cfg(cfg);
 	}
 
@@ -204,7 +204,7 @@ private:
 	 */
 	void parse_cfg(const config& cfg);
 
-	void clear_shapes();
+	void clear_shapes(const bool force);
 };
 
 } // namespace gui2

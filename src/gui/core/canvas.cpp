@@ -1485,9 +1485,16 @@ void canvas::parse_cfg(const config& cfg)
 	}
 }
 
-void canvas::clear_shapes()
+void canvas::clear_shapes(const bool force)
 {
-	shapes_.clear();
+	if(force) {
+		shapes_.clear();
+	} else {
+		const auto conditional = [](const shape_ptr s)->bool { return !s->immutable(); };
+
+		auto iter = std::remove_if(shapes_.begin(), shapes_.end(), conditional);
+		shapes_.erase(iter, shapes_.end());
+	}
 }
 
 void canvas::set_size(unsigned w, unsigned h)
