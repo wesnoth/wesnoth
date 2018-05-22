@@ -4,6 +4,8 @@
      * S02.1 Infested Caves: keep side 8 AI leader from wandering off too far
        and ending up on a keep with only one hex for recruiting
      * S02.1 Infested Caves: minor map tweaks and improvements.
+   * Sceptre of Fire:
+     * In 'Caverns of Flame', fixed various issues with the volcano eruption.
    * Under the Burning Suns:
      * Various Quenoth unit graphics updates.
  ### Language and i18n

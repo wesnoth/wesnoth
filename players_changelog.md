@@ -3,6 +3,11 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 
 ## Version 1.14.1+dev
+ ### Campaigns
+   * Sceptre of Fire:
+     * In 'Caverns of Flame', fixed various issues with the volcano eruption.
+   * Under the Burning Suns:
+     * Various Quenoth unit graphics updates.
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Czech, French,
      Galician, Italian, Japanese, Scottish Gaelic, Spanish, Ukrainian.
