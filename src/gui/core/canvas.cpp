@@ -1388,6 +1388,8 @@ void canvas::draw()
 		get_screen_size_variables(variables_);
 		variables_.add("width", wfl::variant(w_));
 		variables_.add("height", wfl::variant(h_));
+
+		size_changed_ = false;
 	}
 
 	// Draw shapes.
