@@ -93,15 +93,12 @@ public:
 
 	~canvas();
 
-	using draw_func_t = std::function<void(texture&)>;
+	using draw_func_t = std::function<void(unsigned, unsigned)>;
 
 	/**
 	 * Draws the canvas.
-	 *
-	 * @param force               If the canvas isn't dirty it isn't redrawn
-	 *                            unless force is set to true.
 	 */
-	void draw(const bool force = false);
+	void draw();
 
 	/**
 	 * Copies the canvas texture to the screen renderer.
@@ -123,10 +120,9 @@ public:
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML for
 	 *                            more information.
 	 */
-	void set_cfg(const config& cfg, const bool force = false)
+	void set_cfg(const config& cfg)
 	{
-		clear_shapes(force);
-		invalidate_cache();
+		clear_shapes();
 		parse_cfg(cfg);
 	}
 
@@ -159,22 +155,11 @@ public:
 	void set_variable(const std::string& key, const wfl::variant& value)
 	{
 		variables_.add(key, value);
-		set_is_dirty(true);
-		invalidate_cache();
-	}
-
-	void set_is_dirty(const bool is_dirty)
-	{
-		is_dirty_ = is_dirty;
 	}
 
 private:
 	/** Vector with the shapes to draw. */
 	std::vector<shape_ptr> shapes_;
-
-	/** All shapes which have been already drawn. Kept around in case
-	 * the cache needs to be invalidated. */
-	std::vector<shape_ptr> drawn_shapes_;
 
 	/** Optional custom drawing function. */
 	draw_func_t draw_func_;
@@ -195,9 +180,6 @@ private:
 	/** Height of the canvas. */
 	unsigned h_;
 
-	/** The texture onto which items are drawn. */
-	texture texture_;
-
 	/** A pointer to the window renderer. */
 	SDL_Renderer* renderer_;
 
@@ -207,14 +189,8 @@ private:
 	/** Action function definitions for the canvas. */
 	wfl::action_function_symbol_table functions_;
 
-	/** The dirty state of the canvas. */
-	bool is_dirty_;
-
 	/** Whether canvas dimensions changed. */
 	bool size_changed_;
-
-	/** Whether to completely clear the canvas texture of any previously drawn content. */
-	bool cache_invalidated_;
 
 	/**
 	 * Parses a config object.
@@ -228,15 +204,7 @@ private:
 	 */
 	void parse_cfg(const config& cfg);
 
-	void clear_shapes(const bool force);
-
-	void invalidate_cache()
-	{
-		cache_invalidated_ = true;
-	}
-
-	/** Small helper to handle size variable update logic. */
-	void update_size(unsigned int& value, unsigned int new_value);
+	void clear_shapes();
 };
 
 } // namespace gui2

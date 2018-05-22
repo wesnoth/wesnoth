@@ -350,7 +350,6 @@ void story_viewer::draw_floating_image(window& window, floating_image_list::cons
 
 	// Needed to make the background redraw correctly.
 	window_canvas.append_cfg(cfg);
-	window_canvas.set_is_dirty(true);
 
 	++image_iter;
 

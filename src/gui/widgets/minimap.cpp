@@ -54,7 +54,7 @@ minimap::minimap(const implementation::builder_minimap& builder)
 	, terrain_(nullptr)
 	, map_(nullptr)
 {
-	get_canvas(0).set_draw_function(std::bind(&minimap::canvas_draw_background, this, _1));
+	get_canvas(0).set_draw_function(std::bind(&minimap::canvas_draw_background, this, _1, _2));
 }
 
 void minimap::set_active(const bool /*active*/)
@@ -91,15 +91,12 @@ void minimap::set_map_data(const std::string& map_data)
 		map_.reset(nullptr);
 		ERR_CF << "Error while loading the map: " << e.message << '\n';
 	}
-
-	// Flag the background canvas as dirty so the minimap is redrawn.
-	get_canvas(0).set_is_dirty(true);
 }
 
-void minimap::canvas_draw_background(texture& tex)
+void minimap::canvas_draw_background(unsigned dst_w, unsigned dst_h)
 {
 	if(map_) {
-		image::render_minimap(tex, *map_, nullptr, nullptr, nullptr, true);
+		image::render_minimap(dst_w, dst_h, *map_, nullptr, nullptr, nullptr, true);
 	}
 }
 

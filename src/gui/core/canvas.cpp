@@ -1354,121 +1354,48 @@ void text_shape::draw(
 
 canvas::canvas()
 	: shapes_()
-	, drawn_shapes_()
 	, draw_func_(nullptr)
 	, blur_depth_(0)
 	, w_(0)
 	, h_(0)
-	, texture_(nullptr)
 	, renderer_(CVideo::get_singleton().get_renderer())
 	, variables_()
 	, functions_()
-	, is_dirty_(true)
 	, size_changed_(true)
-	, cache_invalidated_(false)
 {
 }
 
 canvas::canvas(canvas&& c)
 	: shapes_(std::move(c.shapes_))
-	, drawn_shapes_(std::move(c.drawn_shapes_))
 	, draw_func_(c.draw_func_)
 	, blur_depth_(c.blur_depth_)
 	, w_(c.w_)
 	, h_(c.h_)
-	, texture_(std::move(c.texture_))
 	, renderer_(std::exchange(c.renderer_, nullptr))
 	, variables_(c.variables_)
 	, functions_(c.functions_)
-	, is_dirty_(c.is_dirty_)
 	, size_changed_(c.size_changed_)
-	, cache_invalidated_(c.cache_invalidated_)
 {
 }
 
 canvas::~canvas()
 {
-	SDL_SetRenderTarget(renderer_, nullptr);
 }
 
-void canvas::draw(const bool force)
+void canvas::draw()
 {
 	log_scope2(log_gui_draw, "Canvas: drawing.");
-	if(!is_dirty_ && !force && !texture_.null()) {
-		DBG_GUI_D << "Canvas: nothing to draw.\n";
-		return;
-	}
 
-	if(is_dirty_) {
+	if(size_changed_) {
 		get_screen_size_variables(variables_);
 		variables_.add("width", wfl::variant(w_));
 		variables_.add("height", wfl::variant(h_));
 	}
 
-	// Do we have a custom drawing function?
-	const bool have_custom_draw = draw_func_ != nullptr;
-
-	// If cached texture is null or size has changed, throw it out and create a new one.
-	const bool do_texture_reset = !texture_ || size_changed_;
-
-	// Reset texture, if applicable.
-	if(do_texture_reset) {
-		DBG_GUI_D << "Canvas: resetting canvas.\n";
-
-		texture_.reset(w_, h_, SDL_TEXTUREACCESS_TARGET);
-
-		size_changed_ = false;
-	}
-
-	// Something went wrong! Bail! The texture ctor will print the error if applicable.
-	if(!texture_) {
-		return;
-	}
-
-	// Set the render target. *Must* be called after the above block in case the texture's
-	// been recreated or else the game will crash upon trying to write to a null texture.
-	render_target_setter target_setter(texture_);
-
-	// Clear the texture, if applicable. *Must* be called after setting the render target
-	// since SDL_RenderClear operates on the current target - in this case the canvas texture.
-	// Calling it prior would clear the screen.
-	//
-	// There are three cases in which this should happen:
-	//
-	// - The texture was reset:
-	//   This prevents weird graphics bleed-through with certain driver configurations.
-	//
-	// - The cache was invalidated:
-	//   This means we're drawing all the canvas shapes, so we want a clean texture. Since
-	//   drawn shapes are removed from drawing queue once they've been rendered, only clearing
-	//   the texture if this is true allows subsequently added shapes to be drawn on top of
-	//   the already-rendered ones.
-	//
-	// - A custom drawing function was set:
-	//   Custom drawing functions don't use shapes, so we always want a clean texture prior
-	//   to calling those.
-	if(do_texture_reset || cache_invalidated_ || have_custom_draw) {
-		set_draw_color(renderer_, 0, 0, 0, 0);
-
-		SDL_RenderClear(renderer_); // TODO: move to its own wrapper.
-	}
-
 	// If we have a custom drawing function, call it now and exit.
-	if(have_custom_draw) {
-		draw_func_(texture_);
-
-		set_is_dirty(false);
+	if(draw_func_) {
+		draw_func_(w_, h_);
 		return;
-	}
-
-	// If the cache was invalidated, restore all the available shapes from the drawn drawn cache.
-	if(cache_invalidated_) {
-		if(shapes_.empty()) {
-			shapes_.swap(drawn_shapes_);
-		} else {
-			std::copy(drawn_shapes_.begin(), drawn_shapes_.end(), std::inserter(shapes_, shapes_.begin()));
-			drawn_shapes_.clear();
-		}
 	}
 
 	// Draw shapes.
@@ -1477,12 +1404,6 @@ void canvas::draw(const bool force)
 
 		shape->draw(w_, h_, renderer_, variables_);
 	}
-
-	// The shapes have been drawn and the draw result has been cached. Clear the list.
-	std::copy(shapes_.begin(), shapes_.end(), std::back_inserter(drawn_shapes_));
-	shapes_.clear();
-
-	set_is_dirty(false);
 }
 
 void canvas::render()
@@ -1516,9 +1437,6 @@ void canvas::render()
 		}
 	}
 #endif
-
-	// Copy the entire texture to the full viewport.
-	CVideo::get_singleton().render_copy(texture_);
 }
 
 void canvas::parse_cfg(const config& cfg)
@@ -1567,38 +1485,16 @@ void canvas::parse_cfg(const config& cfg)
 	}
 }
 
-void canvas::clear_shapes(const bool force)
+void canvas::clear_shapes()
 {
-	if(force) {
-		shapes_.clear();
-		drawn_shapes_.clear();
-	} else {
-		auto conditional = [](const shape_ptr s)->bool { return !s->immutable(); };
-
-		auto iter = std::remove_if(shapes_.begin(), shapes_.end(), conditional);
-		shapes_.erase(iter, shapes_.end());
-
-		iter = std::remove_if(drawn_shapes_.begin(), drawn_shapes_.end(), conditional);
-		drawn_shapes_.erase(iter, drawn_shapes_.end());
-	}
+	shapes_.clear();
 }
 
 void canvas::set_size(unsigned w, unsigned h)
 {
-	update_size(w_, w);
-	update_size(h_, h);
-
-	invalidate_cache();
-}
-
-void canvas::update_size(unsigned int& value, unsigned int new_value)
-{
-	if(value != new_value) {
-		value = new_value;
-
-		size_changed_ = true;
-		set_is_dirty(true);
-	}
+	w_ = w;
+	h_ = h;
+	size_changed_ = true;
 }
 
 /***** ***** ***** ***** ***** SHAPE ***** ***** ***** ***** *****/

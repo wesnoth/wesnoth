@@ -21,7 +21,6 @@
 
 class config;
 class gamemap;
-class texture;
 
 namespace gui2
 {
@@ -91,7 +90,7 @@ private:
 	std::unique_ptr<gamemap> map_;
 
 	/** Drawing function passed to the background canvas. */
-	void canvas_draw_background(texture& tex);
+	void canvas_draw_background(unsigned dst_w, unsigned dst_h);
 
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
