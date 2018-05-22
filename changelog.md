@@ -3,6 +3,9 @@
    * Northern Rebirth:
      * S02.1 Infested Caves: keep side 8 AI leader from wandering off too far
        and ending up on a keep with only one hex for recruiting
+     * S02.1 Infested Caves: AIs are less likely to kill each other in early
+       game, which would make it harder for the player otherwise
+     * S02.1 Infested Caves: Dwarvish allies are also less likely to die
      * S02.1 Infested Caves: minor map tweaks and improvements.
    * Sceptre of Fire:
      * In 'Caverns of Flame', fixed various issues with the volcano eruption.
@@ -10,7 +13,7 @@
      * Various Quenoth unit graphics updates.
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Czech, French,
-     Galician, Italian, Japanese, Scottish Gaelic, Spanish, Ukrainian
+     Galician, German, Italian, Japanese, Scottish Gaelic, Spanish, Ukrainian
  ### User interface
    * List boxes (MP lobby game list in particular) now keep the scroll position
      when they change, instead of keeping the selected item visible (issue #3016).

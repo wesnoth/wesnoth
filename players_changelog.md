@@ -4,13 +4,15 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 
 ## Version 1.14.1+dev
  ### Campaigns
+   * Northern Rebirth:
+     * In 'Infested Caves', fixed various issues with AI balancing
    * Sceptre of Fire:
      * In 'Caverns of Flame', fixed various issues with the volcano eruption.
    * Under the Burning Suns:
      * Various Quenoth unit graphics updates.
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Czech, French,
-     Galician, Italian, Japanese, Scottish Gaelic, Spanish, Ukrainian.
+     Galician, German, Italian, Japanese, Scottish Gaelic, Spanish, Ukrainian.
  ### User interface
    * List boxes (MP lobby game list in particular) now keep the scroll position
      when they change, instead of keeping the selected item visible (issue #3016).
