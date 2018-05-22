@@ -11,6 +11,9 @@
      * In 'Caverns of Flame', fixed various issues with the volcano eruption.
    * Under the Burning Suns:
      * Various Quenoth unit graphics updates.
+ ### Graphics
+   * Fixed a minor team coloring mistake in the north-facing Revenant standing
+     animation.
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Czech, French,
      Galician, German, Italian, Japanese, Scottish Gaelic, Spanish, Ukrainian
