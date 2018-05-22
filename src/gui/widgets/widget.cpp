@@ -395,11 +395,6 @@ private:
 
 } // anon namespace
 
-/**
- * @todo remove the offset arguments from these functions.
- * Currently they're only needed by the minimap.
- */
-
 void widget::draw_background()
 {
 	assert(visible_ == visibility::visible);
