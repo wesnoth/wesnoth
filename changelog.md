@@ -192,6 +192,8 @@
    * Added stricter validation to ensure units cannot have negative hitpoints,
      except during specific attack-related events.
    * Added deprecation notices for several macros that had them missing before.
+   * [message] no longer scrolls to units through fog or shroud so it matches
+     1.12's behavior.
 
 ## Version 1.13.12
  ### Security fixes
