@@ -93,8 +93,6 @@ public:
 
 	~canvas();
 
-	using draw_func_t = std::function<void(unsigned, unsigned)>;
-
 	/**
 	 * Draws the canvas.
 	 */
@@ -107,11 +105,6 @@ public:
 	 * It also executes the pre-commit functions such as blurring (@todo: reenable).
 	 */
 	void render();
-
-	void set_draw_function(draw_func_t func)
-	{
-		draw_func_ = func;
-	}
 
 	/**
 	 * Sets the config.
@@ -160,9 +153,6 @@ public:
 private:
 	/** Vector with the shapes to draw. */
 	std::vector<shape_ptr> shapes_;
-
-	/** Optional custom drawing function. */
-	draw_func_t draw_func_;
 
 	/**
 	 * The depth of the blur to use in the pre committing.

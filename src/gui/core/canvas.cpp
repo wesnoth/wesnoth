@@ -1354,7 +1354,6 @@ void text_shape::draw(
 
 canvas::canvas()
 	: shapes_()
-	, draw_func_(nullptr)
 	, blur_depth_(0)
 	, w_(0)
 	, h_(0)
@@ -1367,7 +1366,6 @@ canvas::canvas()
 
 canvas::canvas(canvas&& c)
 	: shapes_(std::move(c.shapes_))
-	, draw_func_(c.draw_func_)
 	, blur_depth_(c.blur_depth_)
 	, w_(c.w_)
 	, h_(c.h_)
@@ -1390,12 +1388,6 @@ void canvas::draw()
 		get_screen_size_variables(variables_);
 		variables_.add("width", wfl::variant(w_));
 		variables_.add("height", wfl::variant(h_));
-	}
-
-	// If we have a custom drawing function, call it now and exit.
-	if(draw_func_) {
-		draw_func_(w_, h_);
-		return;
 	}
 
 	// Draw shapes.

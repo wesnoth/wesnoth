@@ -54,7 +54,6 @@ minimap::minimap(const implementation::builder_minimap& builder)
 	, terrain_(nullptr)
 	, map_(nullptr)
 {
-	get_canvas(0).set_draw_function(std::bind(&minimap::canvas_draw_background, this, _1, _2));
 }
 
 void minimap::set_active(const bool /*active*/)
@@ -93,10 +92,10 @@ void minimap::set_map_data(const std::string& map_data)
 	}
 }
 
-void minimap::canvas_draw_background(unsigned dst_w, unsigned dst_h)
+void minimap::impl_draw_background()
 {
 	if(map_) {
-		image::render_minimap(dst_w, dst_h, *map_, nullptr, nullptr, nullptr, true);
+		image::render_minimap(get_width(), get_height(), *map_, nullptr, nullptr, nullptr, true);
 	}
 }
 

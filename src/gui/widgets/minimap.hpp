@@ -89,8 +89,8 @@ private:
 	/** Game map generated from the provided data. */
 	std::unique_ptr<gamemap> map_;
 
-	/** Drawing function passed to the background canvas. */
-	void canvas_draw_background(unsigned dst_w, unsigned dst_h);
+	/** See @ref widget::impl_draw_background. */
+	virtual void impl_draw_background() override;
 
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
