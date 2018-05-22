@@ -133,6 +133,7 @@
    * Fixed [modify_side] share_vision=yes not doing anything (bug #2850).
    * Support male_voice and female_voice in [message]
    * Support [break], [continue], and [return] in [random_placement]
+   * [remove_sound_source] now accepts a comma-separated ID list
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
    * Fixed some hotkeys triggering multiple commands on GNU/Linux (bug #1736)
