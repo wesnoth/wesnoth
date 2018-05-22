@@ -120,16 +120,12 @@ void viewport::layout_initialize(const bool full_initialization)
 	}
 }
 
-void
-viewport::impl_draw_children(int x_offset, int y_offset)
+void viewport::impl_draw_children()
 {
-	x_offset += get_x();
-	y_offset += get_y();
-
 	if(widget_.get_visible() != widget::visibility::invisible) {
-		widget_.draw_background(x_offset, y_offset);
-		widget_.draw_children(x_offset, y_offset);
-		widget_.draw_foreground(x_offset, y_offset);
+		widget_.draw_background();
+		widget_.draw_children();
+		widget_.draw_foreground();
 	}
 }
 

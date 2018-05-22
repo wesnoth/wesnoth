@@ -53,10 +53,10 @@ public:
 
 private:
 	/** See @ref widget::impl_draw_background. */
-	virtual void impl_draw_background(int x_offset, int y_offset) override;
+	virtual void impl_draw_background() override;
 
 	/** See @ref widget::impl_draw_foreground. */
-	virtual void impl_draw_foreground(int x_offset, int y_offset) override;
+	virtual void impl_draw_foreground() override;
 
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;

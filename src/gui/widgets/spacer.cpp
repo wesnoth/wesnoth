@@ -96,7 +96,7 @@ bool spacer::disable_click_dismiss() const
 	return false;
 }
 
-void spacer::impl_draw_background(int /*x_offset*/, int /*y_offset*/)
+void spacer::impl_draw_background()
 {
 	/* DO NOTHING */
 }

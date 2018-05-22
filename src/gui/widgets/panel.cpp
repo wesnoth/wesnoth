@@ -64,14 +64,14 @@ unsigned panel::get_state() const
 	return 0;
 }
 
-void panel::impl_draw_background(int /*x_offset*/, int /*y_offset*/)
+void panel::impl_draw_background()
 {
 	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
 
 	get_canvas(0).render();
 }
 
-void panel::impl_draw_foreground(int /*x_offset*/, int /*y_offset*/)
+void panel::impl_draw_foreground()
 {
 	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
 

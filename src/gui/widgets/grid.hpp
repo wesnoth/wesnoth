@@ -547,7 +547,7 @@ private:
 	void layout(const point& origin);
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(int x_offset, int y_offset) override;
+	virtual void impl_draw_children() override;
 };
 
 /**
