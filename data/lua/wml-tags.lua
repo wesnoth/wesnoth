@@ -877,7 +877,10 @@ wml_actions.teleport = function(cfg)
 end
 
 function wml_actions.remove_sound_source(cfg)
-	wesnoth.remove_sound_source(cfg.id)
+	local ids = cfg.id or helper.wml_error("[remove_sound_source] missing required id= attribute")
+	for id in utils.split(ids) do
+		wesnoth.remove_sound_source(id)
+	end
 end
 
 function wml_actions.sound_source(cfg)
