@@ -9,9 +9,6 @@
      * S02.1 Infested Caves: minor map tweaks and improvements.
    * Sceptre of Fire:
      * In 'Caverns of Flame', fixed various issues with the volcano eruption.
-   * The Rise of Wesnoth:
-     * Work around a portrait size-related crash-to-titlescreen on Return to
-       Oldwood (issue #2912).
    * Under the Burning Suns:
      * Various Quenoth unit graphics updates.
  ### Graphics
