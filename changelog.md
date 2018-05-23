@@ -308,9 +308,6 @@
      * S05 The Pursuit: removed a bottleneck and tweaked Rod of Justice.
    * Sceptre of Fire:
      * In 'Caverns of Flame', fixed various issues with the volcano eruption.
-   * The Rise of Wesnoth:
-     * Work around a portrait size-related crash-to-titlescreen on Return to
-       Oldwood (issue #2912).
    * Under the Burning Suns:
      * Various Quenoth unit graphics updates.
    * Descent into Darkness:
