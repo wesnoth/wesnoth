@@ -103,6 +103,7 @@
      unlike in 1.12 (issue #3033).
    * Fixed the first unit sometimes not being selected when opening the Recall
      dialog.
+   * Fixed a crash when using very large portraits in [message] (issue #2912)
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a location ID
