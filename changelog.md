@@ -104,6 +104,7 @@
    * Fixed the first unit sometimes not being selected when opening the Recall
      dialog.
    * Fixed a crash when using very large portraits in [message] (issue #2912)
+   * Added a button to access the version info dialog to Preferences.
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a location ID
