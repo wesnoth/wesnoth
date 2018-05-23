@@ -912,11 +912,6 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 		ERR_MP << "controller=<number> is deperecated\n";
 	}
 
-	if(!parent_.params_.saved_game && cfg_["save_id"].str().empty()) {
-		assert(cfg_["id"].empty()); // we already set "save_id" to "id" if "id" existed.
-		cfg_["save_id"] = parent_.scenario()["id"].str() + "_" + std::to_string(index);
-	}
-
 	if(cfg_["controller"] != "human" && cfg_["controller"] != "ai" && cfg_["controller"] != "null") {
 		//an invalid controller type was specified. Remove it to prevent asertion failures later.
 		cfg_.remove_attribute("controller");
