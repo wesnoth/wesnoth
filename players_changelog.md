@@ -32,6 +32,9 @@ changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog.md
    * List boxes (MP lobby game list in particular) now keep the scroll position
      when they change, instead of keeping the selected item visible (issue #3016).
    * Fixed MP lobby player list scrolling to top when it changes.
+   * Fixed the first unit sometimes not being selected when opening the Recall
+     dialog.
+   * Added a button to access the version info dialog to Preferences.
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
    * Fixed some hotkeys triggering multiple commands on GNU/Linux (bug #1736)
