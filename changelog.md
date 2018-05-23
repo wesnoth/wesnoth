@@ -23,6 +23,7 @@
    * Fixed MP lobby player list scrolling to top when it changes
    * Fixed the first unit sometimes not being selected when opening the Recall
      dialog.
+   * Fixed a crash when using very large portraits in [message] (issue #2912)
  ### Terrains
    * Removed hidden terrains that were not supposed to make it to 1.14: ^Prg,
      ^Prgo, ^Pwd, ^Pwdo
