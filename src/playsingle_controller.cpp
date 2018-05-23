@@ -359,6 +359,7 @@ void playsingle_controller::play_side_impl()
 		end_turn_ = END_TURN_NONE;
 	}
 	if(replay_.get() != nullptr) {
+		init_side_done_now_ = false;
 		REPLAY_RETURN res = replay_->play_side_impl();
 		if(res == REPLAY_FOUND_END_TURN) {
 			end_turn_ = END_TURN_SYNCED;
