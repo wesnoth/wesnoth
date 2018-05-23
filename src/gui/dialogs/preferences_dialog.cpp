@@ -40,6 +40,7 @@
 #include "gui/dialogs/select_orb_colors.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/dialogs/game_version.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
@@ -996,6 +997,8 @@ void preferences_dialog::initialize_tabs(window& window, listbox& selector)
 void preferences_dialog::pre_show(window& window)
 {
 	set_always_save_fields(true);
+
+	connect_signal_mouse_left_click(find_widget<button>(&window, "about", false), std::bind(&game_version::display<>));
 
 	//
 	// Status labels

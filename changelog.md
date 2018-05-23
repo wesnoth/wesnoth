@@ -24,6 +24,7 @@
    * Fixed the first unit sometimes not being selected when opening the Recall
      dialog.
    * Fixed a crash when using very large portraits in [message] (issue #2912)
+   * Added a button to access the version info dialog to Preferences.
  ### Terrains
    * Removed hidden terrains that were not supposed to make it to 1.14: ^Prg,
      ^Prgo, ^Pwd, ^Pwdo
