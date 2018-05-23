@@ -15,9 +15,14 @@
 #include "carryover.hpp"
 
 #include "config.hpp"
+#include "log.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
 #include <cassert>
+
+static lg::log_domain log_engine("engine");
+#define LOG_NG LOG_STREAM(info, log_engine)
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 carryover::carryover(const config& side)
 		: add_(!side["carryover_add"].empty() ? side["carryover_add"].to_bool() : side["add"].to_bool())
@@ -128,10 +133,12 @@ carryover_info::carryover_info(const config& cfg, bool from_snpashot)
 {
 	for(const config& side : cfg.child_range("side"))
 	{
-		if(side["lost"].to_bool(false) || !side["persistent"].to_bool(true))
+		if(side["lost"].to_bool(false) || !side["persistent"].to_bool(true) || side["save_id"].empty())
 		{
 			//this shouldn't happen outside a snpshot.
-			assert(from_snpashot);
+			if(!from_snpashot) {
+				ERR_NG << "found invalid carryover data in saved game, lost='" << side["lost"] << "' persistent='" << side["persistent"] << "' save_id='" << side["save_id"] << "'\n";
+			}
 			continue;
 		}
 		this->carryover_sides_.emplace_back(side);
