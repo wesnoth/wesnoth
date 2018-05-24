@@ -199,6 +199,7 @@
    * Added deprecation notices for several macros that had them missing before.
    * [message] no longer scrolls to units through fog or shroud so it matches
      1.12's behavior.
+   * Fixed animation-wide text_color and blend_color keys being overwritten
 
 ## Version 1.13.12
  ### Security fixes
