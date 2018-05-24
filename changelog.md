@@ -179,6 +179,8 @@
      functions that caused a crash-to-desktop when opening Preferences among others
      (issue #3050).
    * Fixed a crash when using certain invalid color= values.
+   * Fixed memory leak in terrain filter code. In a huge map with Silver Mages,
+     it could leak several gigabytes of memory in a long session.
    * Fixed: unit halo remained after undoing a recall (issue #3065).
    * [change_theme] no longer causes a Lua error when theme= is not specified
      instead of explicitly set to an empty string.
