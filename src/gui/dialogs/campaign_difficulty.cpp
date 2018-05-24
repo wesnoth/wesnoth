@@ -17,6 +17,7 @@
 #include "gui/dialogs/campaign_difficulty.hpp"
 
 #include "config.hpp"
+#include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/old_markup.hpp"
@@ -139,7 +140,8 @@ void campaign_difficulty::pre_show(window& window)
 
 		const std::string descrip_text = d["old_markup"].to_bool() || d["description"].empty()
 			? d["description"]
-			: (formatter() << "(" << d["description"].str() << ")").str();
+			: (formatter() <<
+				font::span_color(font::GRAY_COLOR) << "(" << d["description"].str() << ")" << "</span>").str();
 
 		item["label"] = descrip_text;
 		data.emplace("description", item);
