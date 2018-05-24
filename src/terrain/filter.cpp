@@ -330,7 +330,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 			const wfl::terrain_callable main(fc_->get_disp_context(), loc);
 			wfl::map_formula_callable callable(main.fake_ptr());
 			if(ref_unit) {
-				std::shared_ptr<wfl::unit_callable> ref(new wfl::unit_callable(*ref_unit));
+				auto ref = std::make_shared<wfl::unit_callable>(*ref_unit);
 				callable.add("teleport_unit", wfl::variant(ref));
 				// It's not destroyed upon scope exit because the variant holds a reference
 			}
