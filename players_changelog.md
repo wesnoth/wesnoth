@@ -21,6 +21,8 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
      dialog.
    * Added a button to access the version info dialog to Preferences.
  ### Miscellaneous and bug fixes
+   * Fixed memory leak in terrain filter code. In a huge map with Silver Mages,
+     it could leak several gigabytes of memory in a long session.
    * Fixed: unit halo remained after undoing a recall (issue #3065)
 
 

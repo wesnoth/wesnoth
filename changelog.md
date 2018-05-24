@@ -29,6 +29,8 @@
    * Removed hidden terrains that were not supposed to make it to 1.14: ^Prg,
      ^Prgo, ^Pwd, ^Pwdo
  ### Miscellaneous and bug fixes
+   * Fixed memory leak in terrain filter code. In a huge map with Silver Mages,
+     it could leak several gigabytes of memory in a long session.
    * Fixed: unit halo remained after undoing a recall (issue #3065)
    * [change_theme] no longer causes a Lua error when theme= is not specified
      instead of explicitly set to an empty string.
