@@ -45,6 +45,8 @@ changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog.md
    * Implemented a workaround for an unhandled std::bad_cast from string comparison
      functions that caused a crash-to-desktop when opening Preferences among others
      (issue #3050).
+   * Fixed memory leak in terrain filter code. In a huge map with Silver Mages,
+     it could leak several gigabytes of memory in a long session.
    * Fixed: unit halo remained after undoing a recall (issue #3065).
 
 
