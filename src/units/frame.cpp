@@ -90,12 +90,15 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 		primary_frame_ = cfg[frame_string + "primary"].to_bool();
 	}
 
-	try {
-		text_color_ = color_t::from_rgb_string(cfg[frame_string + "text_color"]);
-	} catch(const std::invalid_argument& e) {
-		// Might be thrown either due to an incorrect number of elements or std::stoul failure.
-		ERR_NG << "Invalid RBG text color in unit animation: " << cfg[frame_string + "text_color"].str()
-		       << "\n" << e.what() << "\n;";
+	const auto& text_color_key = cfg[frame_string + "text_color"];
+	if(!text_color_key.empty()) {
+		try {
+			text_color_ = color_t::from_rgb_string(text_color_key);
+		} catch(const std::invalid_argument& e) {
+			// Might be thrown either due to an incorrect number of elements or std::stoul failure.
+			ERR_NG << "Invalid RBG text color in unit animation: " << text_color_key.str()
+				<< "\n" << e.what() << "\n;";
+		}
 	}
 
 	if(const config::attribute_value* v = cfg.get(frame_string + "duration")) {
@@ -112,12 +115,15 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 
 	duration_ = std::max(duration_, 1);
 
-	try {
-		blend_with_ = color_t::from_rgb_string(cfg[frame_string + "blend_color"]);
-	} catch(const std::invalid_argument& e) {
-		// Might be thrown either due to an incorrect number of elements or std::stoul failure.
-		ERR_NG << "Invalid RBG blend color in unit animation: " << cfg[frame_string + "blend_color"].str()
-		       << "\n" << e.what() << "\n;";
+	const auto& blend_color_key = cfg[frame_string + "blend_color"];
+	if(!blend_color_key.empty()) {
+		try {
+			blend_with_ = color_t::from_rgb_string(blend_color_key);
+		} catch(const std::invalid_argument& e) {
+			// Might be thrown either due to an incorrect number of elements or std::stoul failure.
+			ERR_NG << "Invalid RBG blend color in unit animation: " << blend_color_key.str()
+				<< "\n" << e.what() << "\n;";
+		}
 	}
 }
 
