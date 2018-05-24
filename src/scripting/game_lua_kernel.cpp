@@ -439,6 +439,10 @@ static int impl_add_animation(lua_State* L)
 
 static int impl_run_animation(lua_State* L)
 {
+	CVideo& v = CVideo::get_singleton();
+	if(v.update_locked() || v.faked()) {
+		return 0;
+	}
 	events::command_disabler command_disabler;
 	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
 	anim.start_animations();
