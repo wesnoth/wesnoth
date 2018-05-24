@@ -17,6 +17,7 @@
 #include "gui/dialogs/campaign_difficulty.hpp"
 
 #include "config.hpp"
+#include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "preferences/game.hpp"
@@ -105,7 +106,8 @@ void campaign_difficulty::pre_show(window& window)
 		data.emplace("label", item);
 
 		if(!d["description"].empty()) {
-			item["label"] = (formatter() << "(" << d["description"].str() << ")").str();
+			item["label"] = (formatter() <<
+				font::span_color(font::GRAY_COLOR) << "(" << d["description"].str() << ")" << "</span>").str();
 			data.emplace("description", item);
 		}
 
