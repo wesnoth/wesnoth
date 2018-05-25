@@ -107,7 +107,7 @@ void campaign_difficulty::pre_show(window& window)
 
 		if(!d["description"].empty()) {
 			item["label"] = (formatter() <<
-				font::span_color(font::GRAY_COLOR) << d["description"].str() << "</span>").str();
+				font::span_color(font::GRAY_COLOR) << "(" << d["description"].str() << ")</span>").str();
 			data.emplace("description", item);
 		}
 
