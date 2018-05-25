@@ -141,7 +141,7 @@ void campaign_difficulty::pre_show(window& window)
 		const std::string descrip_text = d["old_markup"].to_bool() || d["description"].empty()
 			? d["description"]
 			: (formatter() <<
-				font::span_color(font::GRAY_COLOR) << d["description"].str() << "</span>").str();
+				font::span_color(font::GRAY_COLOR) << "(" << d["description"].str() << ")</span>").str();
 
 		item["label"] = descrip_text;
 		data.emplace("description", item);
