@@ -121,7 +121,7 @@ struct user_info
 		SEL_GAME
 	};
 
-	bool operator>(const user_info& b) const;
+	bool operator<(const user_info& b) const;
 
 	std::string name;
 	int game_id;

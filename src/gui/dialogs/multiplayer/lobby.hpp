@@ -55,14 +55,11 @@ struct sub_player_list
 struct player_list
 {
 	void init(window& w);
-	void update_sort_icons();
+
 	sub_player_list active_game;
 	sub_player_list active_room;
 	sub_player_list other_rooms;
 	sub_player_list other_games;
-
-	toggle_button* sort_by_name;
-	toggle_button* sort_by_relation;
 
 	tree_view* tree;
 };
