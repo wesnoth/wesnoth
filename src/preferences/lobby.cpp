@@ -32,26 +32,6 @@ bool auto_open_whisper_windows()
 	return preferences::get("lobby_auto_open_whisper_windows", true);
 }
 
-bool playerlist_sort_relation()
-{
-	return preferences::get("lobby_playerlist_sort_relation", true);
-}
-
-void set_playerlist_sort_relation(bool v)
-{
-	return preferences::set("lobby_playerlist_sort_relation", v);
-}
-
-bool playerlist_sort_name()
-{
-	return preferences::get("lobby_playerlist_sort_name", true);
-}
-
-void set_playerlist_sort_name(bool v)
-{
-	return preferences::set("lobby_playerlist_sort_name", v);
-}
-
 bool playerlist_group_players()
 {
 	return preferences::get("lobby_playerlist_group_players", true);
