@@ -60,6 +60,17 @@
    * Fixed animation-wide text_color and blend_color keys being overwritten. This
      fixes level-in and level-out animations sometimes fading to black instead of
      white.
+   * Fixed [animate_unit] freesing the game when observing mp games (#2970).
+   * Fixed carryover behaving differently when loading a start-of-scenario save
+     (#3152).
+   * Fixed turn replay function in mp.
+   * Fixed savegames beeing creates even though not needed (#3150).
+   * Fixed handling of extra_recruit in whiteboard (#3100).
+   * Fixed handling of skirmisher in whiteboard.
+   * Fixed handling of filter_recall in whiteboard.
+   * Fixed possible segfault at game end.
+   * Fixed require_resource in [resource].
+   * Fixed require_scenario=yes not working with map_generation (#3105).
 
 ## Version 1.14.1
  ### Campaigns
