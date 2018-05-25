@@ -26,11 +26,14 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
+#include "gui/widgets/button.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 #include "formatter.hpp"
+#include "game_config_manager.hpp"
 #include "gettext.hpp"
+#include "help/help.hpp"
 #include "units/types.hpp"
 
 #include "utils/functional.hpp"
@@ -77,6 +80,10 @@ void faction_select::pre_show(window& window)
 	//
 	connect_signal_notify_modified(find_widget<menu_button>(&window, "leader_menu", false),
 		std::bind(&faction_select::on_leader_select, this, std::ref(window)));
+
+	// Leader's profile button
+	find_widget<button>(&window, "type_profile", false).connect_click_handler(
+		std::bind(&faction_select::profile_button_callback, this, std::ref(window)));
 
 	//
 	// Set up faction list
@@ -179,6 +186,21 @@ void faction_select::on_leader_select(window& window)
 	});
 
 	update_leader_image(window);
+
+	// Disable the profile button if leader_type is dash or "Random"
+	button& profile_button = find_widget<button>(&window, "type_profile", false);
+	const std::string& leader_type = find_widget<menu_button>(&window, "leader_menu", false).get_value_string();
+	profile_button.set_active(unit_types.find(leader_type) != nullptr);
+}
+
+void faction_select::profile_button_callback(window& window)
+{
+	const std::string& leader_type = find_widget<menu_button>(&window, "leader_menu", false).get_value_string();
+	const unit_type* ut = unit_types.find(leader_type);
+	if(ut != nullptr) {
+		help::help_manager help_manager(&game_config_manager::get()->game_config());
+		help::show_unit_description(*ut);
+	}
 }
 
 void faction_select::on_gender_select(window& window)
