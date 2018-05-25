@@ -50,6 +50,8 @@ private:
 
 	void on_leader_select(window& window);
 
+	void profile_button_callback(window& window);
+
 	void on_gender_select(window& window);
 
 	void update_leader_image(window& window);
