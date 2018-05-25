@@ -125,6 +125,7 @@
    * Implemented a workaround for an unhandled std::bad_cast from string comparison
      functions that caused a crash-to-desktop when opening Preferences among others
      (issue #3050).
+   * Fixed many crashes and oos erros when using the whiteboard.
 
 ## Version 1.14.0
  ### Campaigns
