@@ -107,6 +107,7 @@
    * Added a button to access the version info dialog to Preferences.
    * Removed player list sorting options in the MP lobby. The list is now
      automatically sorted alphabetically, friends first.
+   * Rearranged campaign difficulty menu layout
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a location ID
