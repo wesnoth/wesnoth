@@ -34,6 +34,7 @@
 #include "game_config_manager.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
+#include "preferences/game.hpp"	// for encountered_units
 #include "units/types.hpp"
 
 #include "utils/functional.hpp"
@@ -212,6 +213,7 @@ void faction_select::profile_button_callback(window& window)
 	const std::string& leader_type = find_widget<menu_button>(&window, "leader_menu", false).get_value_string();
 	const unit_type* ut = unit_types.find(leader_type);
 	if(ut != nullptr) {
+		preferences::encountered_units().insert(ut->id());
 		help::help_manager help_manager(&game_config_manager::get()->game_config());
 		help::show_unit_description(*ut);
 	}
