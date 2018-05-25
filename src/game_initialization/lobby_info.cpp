@@ -44,7 +44,6 @@ lobby_info::lobby_info(const config& game_config, const std::vector<std::string>
 	, games_by_id_()
 	, games_()
 	, users_()
-	, users_sorted_()
 	, whispers_()
 	, game_filters_()
 	, game_filter_invert_(false)
@@ -208,12 +207,7 @@ void lobby_info::process_userlist()
 		users_.emplace_back(c);
 	}
 
-	users_sorted_.reserve(users_.size());
-	users_sorted_.clear();
-
-	for(auto& u : users_) {
-		users_sorted_.push_back(&u);
-	}
+	std::stable_sort(users_.begin(), users_.end());
 
 	for(auto& ui : users_) {
 		if(ui.game_id == 0) {
@@ -371,18 +365,6 @@ void lobby_info::update_user_statuses(int game_id, const room_info* room)
 	for(auto& user : users_) {
 		user.update_state(game_id, room);
 	}
-}
-
-void lobby_info::sort_users(bool by_name, bool by_relation)
-{
-	std::sort(users_sorted_.begin(), users_sorted_.end(), [&](const user_info* u1, const user_info* u2) {
-		if(by_name && by_relation) {
-			return u1->relation <  u2->relation ||
-			      (u1->relation == u2->relation && translation::icompare(u1->name, u2->name) < 0);
-		}
-
-		return (by_name && translation::icompare(u1->name, u2->name) < 0) || (by_relation && u1->relation < u2->relation);
-	});
 }
 
 } // end namespace mp

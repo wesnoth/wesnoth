@@ -146,6 +146,11 @@ void user_info::update_relation()
 	}
 }
 
+bool user_info::operator<(const user_info& b) const
+{
+	return relation < b.relation || (relation == b.relation && translation::icompare(name, b.name) < 0);
+}
+
 namespace
 {
 const std::string& spaced_em_dash()
