@@ -18,7 +18,7 @@ namespace font {
 
 const color_t
 	NORMAL_COLOR    {221, 221, 221},
-	GRAY_COLOR      {119, 119, 119},
+	GRAY_COLOR      {136, 136, 136},
 	LOBBY_COLOR     {187, 187, 187},
 	GOOD_COLOR      {0  , 255, 0  },
 	BAD_COLOR       {255, 0  , 0  },
