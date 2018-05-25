@@ -24,12 +24,6 @@ namespace preferences {
 	bool auto_open_whisper_windows();
 	void set_auto_open_whisper_windows(bool v);
 
-	bool playerlist_sort_relation();
-	void set_playerlist_sort_relation(bool v);
-
-	bool playerlist_sort_name();
-	void set_playerlist_sort_name(bool v);
-
 	bool playerlist_group_players();
 
 	bool filter_lobby();
