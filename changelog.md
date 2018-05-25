@@ -105,6 +105,8 @@
      dialog.
    * Fixed a crash when using very large portraits in [message] (issue #2912)
    * Added a button to access the version info dialog to Preferences.
+   * Removed player list sorting options in the MP lobby. The list is now
+     automatically sorted alphabetically, friends first.
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a location ID
@@ -201,7 +203,9 @@
    * Added deprecation notices for several macros that had them missing before.
    * [message] no longer scrolls to units through fog or shroud so it matches
      1.12's behavior.
-   * Fixed animation-wide text_color and blend_color keys being overwritten
+   * Fixed animation-wide text_color and blend_color keys being overwritten. This
+     fixes level-in and level-out animations sometimes fading to black instead of
+     white.
 
 ## Version 1.13.12
  ### Security fixes
