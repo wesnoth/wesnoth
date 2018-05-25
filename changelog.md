@@ -25,6 +25,8 @@
      dialog.
    * Fixed a crash when using very large portraits in [message] (issue #2912)
    * Added a button to access the version info dialog to Preferences.
+   * Removed player list sorting options in the MP lobby. The list is now
+     automatically sorted alphabetically, friends first.
  ### Terrains
    * Removed hidden terrains that were not supposed to make it to 1.14: ^Prg,
      ^Prgo, ^Pwd, ^Pwdo
@@ -54,7 +56,9 @@
    * Added deprecation notices for several macros that had them missing before.
    * [message] no longer scrolls to units through fog or shroud so it matches
      1.12's behavior.
-   * Fixed animation-wide text_color and blend_color keys being overwritten
+   * Fixed animation-wide text_color and blend_color keys being overwritten. This
+     fixes level-in and level-out animations sometimes fading to black instead of
+     white.
 
 ## Version 1.14.1
  ### Campaigns
