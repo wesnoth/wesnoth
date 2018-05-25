@@ -27,6 +27,7 @@
    * Added a button to access the version info dialog to Preferences.
    * Removed player list sorting options in the MP lobby. The list is now
      automatically sorted alphabetically, friends first.
+   * Rearranged campaign difficulty menu layout
  ### Terrains
    * Removed hidden terrains that were not supposed to make it to 1.14: ^Prg,
      ^Prgo, ^Pwd, ^Pwdo
