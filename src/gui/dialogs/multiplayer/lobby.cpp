@@ -110,16 +110,7 @@ void player_list::init(window& w)
 #endif
 	other_games.init(w, _("Other Games"));
 
-	sort_by_name = find_widget<toggle_button>(&w, "player_list_sort_name", false, true);
-	sort_by_relation = find_widget<toggle_button>(&w, "player_list_sort_relation", false, true);
-
 	tree = find_widget<tree_view>(&w, "player_tree", false, true);
-}
-
-void player_list::update_sort_icons()
-{
-	sort_by_name->set_icon_name(sort_by_name->get_value() ? "lobby/sort-az.png" : "lobby/sort-az-off.png");
-	sort_by_relation->set_icon_name(sort_by_relation->get_value() ? "lobby/sort-friend.png" : "lobby/sort-friend-off.png");
 }
 
 bool mp_lobby::logout_prompt()
@@ -564,8 +555,6 @@ void mp_lobby::update_playerlist()
 	SCOPE_LB;
 	DBG_LB << "Playerlist update: " << lobby_info_.users().size() << "\n";
 	lobby_info_.update_user_statuses(selected_game_id_, chatbox_->active_window_room());
-	lobby_info_.sort_users(player_list_.sort_by_name->get_value_bool(),
-						   player_list_.sort_by_relation->get_value_bool());
 
 #ifdef ENABLE_ROOM_MEMBER_TREE
 	bool lobby = false;
@@ -592,8 +581,7 @@ void mp_lobby::update_playerlist()
 	player_list_.other_games.tree->clear();
 	player_list_.other_rooms.tree->clear();
 
-	for(auto userptr : lobby_info_.users_sorted()) {
-		mp::user_info& user = *userptr;
+	for(auto& user : lobby_info_.users()) {
 		sub_player_list* target_list(nullptr);
 
 		std::string name = user.name;
@@ -680,7 +668,7 @@ void mp_lobby::update_playerlist()
 		tree_view_node& player = target_list->tree->add_child("player", tree_group_item);
 
 		connect_signal_mouse_left_double_click(find_widget<toggle_panel>(&player, "tree_view_node_label", false),
-			std::bind(&mp_lobby::user_dialog_callback, this, userptr));
+			std::bind(&mp_lobby::user_dialog_callback, this, &user));
 	}
 
 	player_list_.active_game.update_player_count_label();
@@ -738,15 +726,6 @@ void mp_lobby::pre_show(window& window)
 			std::bind(&mp_lobby::gamelist_change_callback, this));
 
 	player_list_.init(window);
-	player_list_.sort_by_name->set_value(preferences::playerlist_sort_name());
-	player_list_.sort_by_relation->set_value(preferences::playerlist_sort_relation());
-	player_list_.update_sort_icons();
-
-	connect_signal_notify_modified(*player_list_.sort_by_name,
-		std::bind(&mp_lobby::player_filter_callback, this));
-
-	connect_signal_notify_modified(*player_list_.sort_by_relation,
-		std::bind(&mp_lobby::player_filter_callback, this));
 
 	window.set_enter_disabled(true);
 
@@ -1119,11 +1098,6 @@ void mp_lobby::gamelist_change_callback()
 
 void mp_lobby::player_filter_callback()
 {
-	player_list_.update_sort_icons();
-
-	preferences::set_playerlist_sort_relation(player_list_.sort_by_relation->get_value_bool());
-	preferences::set_playerlist_sort_name(player_list_.sort_by_name->get_value_bool());
-
 	player_list_dirty_ = true;
 	// get_window()->invalidate_layout();
 }

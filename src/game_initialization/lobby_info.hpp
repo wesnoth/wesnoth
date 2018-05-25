@@ -90,15 +90,6 @@ public:
 	/** Const overload of @ref get_game_by_id. */
 	const game_info* get_game_by_id(int id) const;
 
-	/**
-	 * Sorts the user list by the given parameters.
-	 *
-	 * @param by_name         Whether to sort users alphabetically by name.
-	 * @param by_relation     Whether to sort users by their relation to each other (ie,
-	 *                        display friends before blocked users).
-	 */
-	void sort_users(bool by_name, bool by_relation);
-
 	/** Open a new chat room with the given name. */
 	void open_room(const std::string& name);
 
@@ -144,9 +135,9 @@ public:
 		return users_;
 	}
 
-	const std::vector<user_info*>& users_sorted() const
+	std::vector<user_info>& users()
 	{
-		return users_sorted_;
+		return users_;
 	}
 
 private:
@@ -167,7 +158,6 @@ private:
 	std::vector<game_info*> games_;
 
 	std::vector<user_info> users_;
-	std::vector<user_info*> users_sorted_;
 
 	std::map<std::string, chat_session> whispers_;
 
