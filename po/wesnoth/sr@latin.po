@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-15 23:33-0400\n"
+"POT-Creation-Date: 2018-05-26 15:04+0300\n"
 "PO-Revision-Date: 2012-04-01 16:53+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -333,14 +333,14 @@ msgstr "otrovan"
 
 #. [objectives]
 #. [lua]: generate_objectives
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:208
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:260
 #: data/lua/wml/objectives.lua:38
 msgid "Gold carryover:"
 msgstr "Preneseno zlato:"
 
 #. [note]
 #. [lua]: generate_objectives
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:220
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:272
 #: data/lua/wml/objectives.lua:39
 msgid "Notes:"
 msgstr "Beleške:"
@@ -1562,21 +1562,21 @@ msgid "<small>(early finish bonus)</small>"
 msgstr "<small>(bonus za rani završetak)</small>"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:98 data/lua/wml/objectives.lua:106
+#: data/core/macros/deprecated-utils.cfg:99 data/lua/wml/objectives.lua:106
 msgid "Early finish bonus."
 msgstr "Bonus za rani završetak."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:101 data/lua/wml/objectives.lua:109
+#: data/core/macros/deprecated-utils.cfg:103 data/lua/wml/objectives.lua:109
 msgid "No early finish bonus."
 msgstr "Bez bonusa za rani završetak."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:104 data/lua/wml/objectives.lua:117
+#: data/core/macros/deprecated-utils.cfg:107 data/lua/wml/objectives.lua:117
 msgid "No gold carried over to the next scenario."
 msgstr "Zlato se ne prenosi u sledeći scenario."
 
-#: data/core/macros/deprecated-utils.cfg:107
+#: data/core/macros/deprecated-utils.cfg:111
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
@@ -1584,7 +1584,7 @@ msgstr ""
 "\n"
 "100% zlata na kraju prenosi se u sledeći scenario."
 
-#: data/core/macros/deprecated-utils.cfg:111
+#: data/core/macros/deprecated-utils.cfg:116
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
@@ -1592,7 +1592,7 @@ msgstr ""
 "\n"
 "40% zlata na kraju prenosi se u sledeći scenario."
 
-#: data/core/macros/deprecated-utils.cfg:115
+#: data/core/macros/deprecated-utils.cfg:121
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -1816,7 +1816,7 @@ msgstr ""
 "Omaž,Omagra,Ora Ka,Oridan,Orida,Ošibi,Valin,Valnira,Valnit,Velisk,Vera,Velin "
 "Ka,Veštar,Vuštin"
 
-#. Generator for male drake names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for male drake names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:21
 msgid ""
 "\n"
@@ -1828,7 +1828,7 @@ msgid ""
 "ritos|rusté|shitt|nick|rath|ditt|kon|mad|tick|nir\n"
 msgstr ""
 
-#. Generator for female drake names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for female drake names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:28
 msgid ""
 "\n"
@@ -1926,7 +1926,7 @@ msgstr ""
 "Tridris,Tridrsol,Tridrol,Tridrsol,Tridrus,Triduril,Triduring,Tridurlos,"
 "Tridurlol,Tridursil,Tridurus,Tritas,Tritajil,Tritajing,Tritasol,Tritaus"
 
-#. Generator for male dwarf names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for male dwarf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:39
 msgid ""
 "\n"
@@ -2193,7 +2193,7 @@ msgstr ""
 "Vadrijeven,Varavijel,Vebritijen,Vil-Gandra,Violinde,Viovijel,Vitrang,"
 "Vitranijel,Vivijel,Vodija,Vong,Vorfiklija,Vorfing,Vorfirit,Vorfivijel,Vovijen"
 
-#. Generator for male elf names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for male elf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:53
 msgid ""
 "\n"
@@ -2212,7 +2212,7 @@ msgid ""
 "nim|nol|bris|lad|rier|ra|fil|thran|man\n"
 msgstr ""
 
-#. Generator for female elf names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for female elf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:67
 msgid ""
 "\n"
@@ -2247,7 +2247,7 @@ msgstr "Graa,Greaa,Gree,Kaa,Kaaš,Keeš,Koro,Kraa,Kuu,Kzaa,Kzuu"
 msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
 msgstr "Kaasa,Kaja,Keja,Kiira,Kora"
 
-#. Generator for male gryphon names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for male gryphon names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:90
 msgid ""
 "\n"
@@ -2257,7 +2257,7 @@ msgid ""
 "centre=arr|aash|eez|ozz\n"
 msgstr ""
 
-#. Generator for female gryphon names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for female gryphon names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:97
 msgid ""
 "\n"
@@ -2458,7 +2458,7 @@ msgstr ""
 "Isanoik,Isajekla,Isejalona,Isejalijan,Iseda,Isel,Iselona,Isilijan,Isionik,"
 "Isoda,Isongven,Isonoik,Isura,Isuaniver,Isikla,Isila,Isilijan,Isirka,Isasa"
 
-#. Generator for male Wesnothian human names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for male Wesnothian human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:109
 msgid ""
 "\n"
@@ -2480,7 +2480,7 @@ msgid ""
 "centre_v=rae|ra|thar|gwy\n"
 msgstr ""
 
-#. Generator for female Wesnothian human names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for female Wesnothian human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:125
 msgid ""
 "\n"
@@ -2652,7 +2652,7 @@ msgstr ""
 "Junus,Jušua,Jusri,Jusuf,Zafar,Zafir,Zahid,Zahir,Zajd,Zajim,Zajn,Zarif,"
 "Zakarija,Zaki,Zakvan,Zijad,Zubajir,Zuhajir"
 
-#. Generator for male dunefolk human names
+#. Generator for male dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:145
 msgid ""
 "\n"
@@ -2670,7 +2670,7 @@ msgid ""
 "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 msgstr ""
 
-#. Generator for female dunefolk human names
+#. Generator for female dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:156
 msgid ""
 "\n"
@@ -2726,7 +2726,7 @@ msgstr ""
 "Ksafraz,Ksartrez,Ksaz,Ksasteks,Kserksiks,Ksiraz,Ksir,Ksirtraz,Ksirtrez,Ksirz,"
 "Zandler,Zedriks,Zilriks,Zizaz,Zlap,Zalks,Zupde"
 
-#. Generator for saurian names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for saurian names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:178
 msgid ""
 "\n"
@@ -2770,7 +2770,7 @@ msgstr ""
 "Vata,Marina,Miranda,Mirijam,Molpe,Partenopa,Pelagija,Pizinoe,Ran,Sedna,Stela "
 "Maris,Telksijepija,Tirgata,Vateja,Ved-ava,Ven-emo,Vete-ema"
 
-#. Generator for merman names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for merman names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:190
 msgid ""
 "\n"
@@ -2782,7 +2782,7 @@ msgid ""
 "centre=la|ma|ri|sei|te|ka|li|cer|tu|ni|ki|na|ga|si\n"
 msgstr ""
 
-#. Generator for mermaid names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for mermaid names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:197
 msgid ""
 "\n"
@@ -2829,7 +2829,7 @@ msgstr ""
 "Triksed,Vilajila,Visalaji,Vlanisa,Ksabrak,Ksamalija,Ksina,Kinasija,Ksnamas,"
 "Ksopkne,Zalsp,Zlek,Zepsek,Zekp"
 
-#. Generator for male naga names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for male naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:209
 msgid ""
 "\n"
@@ -2841,7 +2841,7 @@ msgid ""
 "iaz|on|sal|ol|kil|oz|ail|al|nis|rak|lel|nas|kon|ekp\n"
 msgstr ""
 
-#. Generator for female naga names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for female naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:215
 msgid ""
 "\n"
@@ -2869,7 +2869,7 @@ msgstr ""
 "Koruk,Kramak,Krog,Krukrak,Krumuk,Kuknuk,Kurkur,Kurmak,Makron,Markak,Markuk,"
 "Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakon,Urkar,Irkark"
 
-#. Generator for ogre names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for ogre names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:225
 msgid ""
 "\n"
@@ -2977,7 +2977,7 @@ msgstr ""
 "Nak,Nuk,Kar,Pag,Rek,Rok,Ruk,Sark,Šak,Šuf,Štuh,Targ,Tog,Truf,Tur,Tog,Torg,"
 "Trok,Tsok,Tuh,Tuk,Ruh,Ug,Uh,Urg,Urgh,Urk,Vak,Zog,Zug"
 
-#. Generator for troll names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for troll names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:249
 msgid ""
 "\n"
@@ -3019,7 +3019,7 @@ msgstr ""
 "Trumbadum,Tumtentantarun,Tumtonongatum,Tumtumgamtomtom,Vonrunmaldin,"
 "Vudadunopl"
 
-#. Generator for wose names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for wose names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:262
 msgid ""
 "\n"
@@ -3044,7 +3044,7 @@ msgstr ""
 "Bal,Kam,Korn,Erl,El,Foks,Fren,Gel,Hel,Heks,Hol,Hoks,Il,Kin,Nam,Nes,Ol,Old,"
 "Olf,Oul,Oks,Rok,Ruk,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Voter,Vet,Jork"
 
-#. Generator for the base names of features assigned by the random map generator; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for the base names of features assigned by the random map generator; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:273
 msgid ""
 "\n"
@@ -3097,173 +3097,173 @@ msgstr ""
 "scenariju. Ona je namenjena za ljudskog igrača."
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:282
+#: data/core/macros/sound-utils.cfg:157
 msgid "Battle Epic"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:288
+#: data/core/macros/sound-utils.cfg:163
 msgid "Battle Music"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:294
+#: data/core/macros/sound-utils.cfg:169
 msgid "Breaking the Chains"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:300
+#: data/core/macros/sound-utils.cfg:175
 msgid "Casualties of War"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:306
+#: data/core/macros/sound-utils.cfg:181
 msgid "Elf Land"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:312
+#: data/core/macros/sound-utils.cfg:187
 msgid "Elvish theme"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:318
+#: data/core/macros/sound-utils.cfg:193
 msgid "Frantic"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:324
+#: data/core/macros/sound-utils.cfg:199
 msgid "Heroes Rite"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:330
+#: data/core/macros/sound-utils.cfg:205
 msgid "Into the Shadows"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:336
+#: data/core/macros/sound-utils.cfg:211
 msgid "Journey’s End"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:342
+#: data/core/macros/sound-utils.cfg:217
 msgid "Knalgan Theme"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:348
+#: data/core/macros/sound-utils.cfg:223
 msgid "The Knolls of Doldesh"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:354
+#: data/core/macros/sound-utils.cfg:229
 msgid "Legends of the North"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:360
+#: data/core/macros/sound-utils.cfg:235
 msgid "Love Theme"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:366
+#: data/core/macros/sound-utils.cfg:241
 msgid "Loyalists"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:372
+#: data/core/macros/sound-utils.cfg:247
 msgid "Over the Northern Mountains"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:378
+#: data/core/macros/sound-utils.cfg:253
 msgid "Northerners"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:384
+#: data/core/macros/sound-utils.cfg:259
 msgid "Nunc Dimittis"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:390
+#: data/core/macros/sound-utils.cfg:265
 #, fuzzy
 #| msgid "Invalid location"
 msgid "Revelation"
 msgstr "Loša lokacija"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:396
+#: data/core/macros/sound-utils.cfg:271
 #, fuzzy
 #| msgid "Saved"
 msgid "Sad"
 msgstr "Sačuvano"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:402
+#: data/core/macros/sound-utils.cfg:277
 msgid "Siege of Laurelmor"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:408
+#: data/core/macros/sound-utils.cfg:283
 msgid "Silvan Sanctuary"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:414
+#: data/core/macros/sound-utils.cfg:289
 msgid "Suspense"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:420
+#: data/core/macros/sound-utils.cfg:295
 msgid "The City Falls"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:426
+#: data/core/macros/sound-utils.cfg:301
 msgid "The Dangerous Symphony"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:432
+#: data/core/macros/sound-utils.cfg:307
 msgid "The Deep Path"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:438
+#: data/core/macros/sound-utils.cfg:313
 #, fuzzy
 #| msgid "The game is over."
 msgid "The King is Dead"
 msgstr "Igra je završena."
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:444
+#: data/core/macros/sound-utils.cfg:319
 msgid "Transience"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:450
+#: data/core/macros/sound-utils.cfg:325
 msgid "Traveling Minstrels"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:456
+#: data/core/macros/sound-utils.cfg:331
 msgid "Underground"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:462
+#: data/core/macros/sound-utils.cfg:337
 msgid "Vengeful Pursuit"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:468
+#: data/core/macros/sound-utils.cfg:343
 msgid "Still Another Wanderer"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:474
+#: data/core/macros/sound-utils.cfg:349
 msgid "Weight of Revenge"
 msgstr ""
 
@@ -3456,14 +3456,14 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:451
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:456
 msgid "Fog"
 msgstr "magla"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:454
-#: src/game_initialization/lobby_data.cpp:457
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:459
+#: src/game_initialization/lobby_data.cpp:462
 msgid "Shroud"
 msgstr "pokrov"
 
@@ -3909,8 +3909,8 @@ msgstr "neisceljiv"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:390 src/scripting/game_lua_kernel.cpp:2779
-#: src/scripting/game_lua_kernel.cpp:2814
+#: data/lua/wml/message.lua:390 src/scripting/game_lua_kernel.cpp:2783
+#: src/scripting/game_lua_kernel.cpp:2818
 msgid "input"
 msgstr ""
 
@@ -3948,21 +3948,21 @@ msgstr "%d%% zlata se prenosi u sledeći scenario."
 msgid "Defeat enemy leader(s)"
 msgstr "Poraziš li protivničke vođe"
 
-#: data/scenario-test.cfg:1030 src/game_initialization/depcheck.cpp:491
+#: data/scenario-test.cfg:1023 src/game_initialization/depcheck.cpp:491
 msgid "OK"
 msgstr "U redu"
 
-#: data/scenario-test.cfg:1031
+#: data/scenario-test.cfg:1024
 msgid "Cancel"
 msgstr "Odustani"
 
 #. [language]
-#: data/scenario-test.cfg:4079
+#: data/scenario-test.cfg:4072
 msgid "very long"
 msgstr "vrlo dugačak"
 
 #. [language]
-#: data/scenario-test.cfg:4080
+#: data/scenario-test.cfg:4073
 msgid "electrical"
 msgstr "električni"
 
@@ -5863,7 +5863,7 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/game_events/pump.cpp:481 src/game_launcher.cpp:909
+#: src/game_events/pump.cpp:481 src/game_launcher.cpp:911
 msgid "Error: "
 msgstr "Greška: "
 
@@ -5887,34 +5887,34 @@ msgstr "$login|-ova igra"
 msgid "Team"
 msgstr "tim"
 
-#: src/game_initialization/connect_engine.cpp:993
+#: src/game_initialization/connect_engine.cpp:988
 #, fuzzy
 #| msgid "Anonymous local player"
 msgid "Anonymous player"
 msgstr "Nikogović"
 
-#: src/game_initialization/connect_engine.cpp:998
-#: src/game_initialization/connect_engine.cpp:1292
+#: src/game_initialization/connect_engine.cpp:993
+#: src/game_initialization/connect_engine.cpp:1287
 msgid "Computer Player"
 msgstr "računarski igrač"
 
-#: src/game_initialization/connect_engine.cpp:1040
+#: src/game_initialization/connect_engine.cpp:1035
 msgid "$playername $side"
 msgstr "$playername ($side)"
 
-#: src/game_initialization/connect_engine.cpp:1288
+#: src/game_initialization/connect_engine.cpp:1283
 msgid "Network Player"
 msgstr "mrežni igrač"
 
-#: src/game_initialization/connect_engine.cpp:1291
+#: src/game_initialization/connect_engine.cpp:1286
 msgid "Local Player"
 msgstr "lokalni igrač"
 
-#: src/game_initialization/connect_engine.cpp:1293
+#: src/game_initialization/connect_engine.cpp:1288
 msgid "Empty"
 msgstr "prazno"
 
-#: src/game_initialization/connect_engine.cpp:1296
+#: src/game_initialization/connect_engine.cpp:1291
 msgid "Reserved"
 msgstr "rezervisano"
 
@@ -5995,45 +5995,45 @@ msgstr "Ne mogu da nađem tip vođa za frakciju $faction"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:237
+#: src/game_initialization/lobby_data.cpp:242
 #, fuzzy
 #| msgid "Missing argument $arg_id"
 msgid "Missing addon: $name"
 msgstr "Nedostaje argument $arg_id"
 
-#: src/game_initialization/lobby_data.cpp:239
+#: src/game_initialization/lobby_data.cpp:244
 #, fuzzy
 #| msgid "Missing argument $arg_id"
 msgid "Missing addon: $id"
 msgstr "Nedostaje argument $arg_id"
 
-#: src/game_initialization/lobby_data.cpp:273
+#: src/game_initialization/lobby_data.cpp:278
 msgid "Unknown era"
 msgstr "nepoznata epoha"
 
-#: src/game_initialization/lobby_data.cpp:340
-#: src/game_initialization/lobby_data.cpp:370
+#: src/game_initialization/lobby_data.cpp:345
+#: src/game_initialization/lobby_data.cpp:375
 msgid "S"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:359
+#: src/game_initialization/lobby_data.cpp:364
 msgid "Remote scenario"
 msgstr "udaljeni scenario"
 
-#: src/game_initialization/lobby_data.cpp:378
-#: src/game_initialization/lobby_data.cpp:401
+#: src/game_initialization/lobby_data.cpp:383
+#: src/game_initialization/lobby_data.cpp:406
 msgid "C"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:406
+#: src/game_initialization/lobby_data.cpp:411
 msgid "Unknown scenario"
 msgstr "nepoznat scenario"
 
-#: src/game_initialization/lobby_data.cpp:416
+#: src/game_initialization/lobby_data.cpp:421
 msgid "Reloaded game"
 msgstr "učitana pozicija"
 
-#: src/game_initialization/lobby_data.cpp:431
+#: src/game_initialization/lobby_data.cpp:436
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "slobodna mesta:"
@@ -6041,34 +6041,34 @@ msgstr[1] "slobodna mesta:"
 msgstr[2] "slobodna mesta:"
 msgstr[3] "slobodno mesto:"
 
-#: src/game_initialization/lobby_data.cpp:433
+#: src/game_initialization/lobby_data.cpp:438
 msgid "mp_game_available_slots^Full"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:444
-#: src/game_initialization/lobby_data.cpp:446 src/savegame.cpp:631
+#: src/game_initialization/lobby_data.cpp:449
+#: src/game_initialization/lobby_data.cpp:451 src/savegame.cpp:631
 msgid "Turn"
 msgstr "potez"
 
-#: src/game_initialization/lobby_data.cpp:459
+#: src/game_initialization/lobby_data.cpp:464
 #, fuzzy
 #| msgid "Version: "
 msgid "vision^none"
 msgstr "Verzija: "
 
-#: src/game_initialization/lobby_data.cpp:468
+#: src/game_initialization/lobby_data.cpp:473
 #, fuzzy
 #| msgid "Time limit"
 msgid "time limit^none"
 msgstr "vremenski limit"
 
-#: src/game_initialization/lobby_data.cpp:501
+#: src/game_initialization/lobby_data.cpp:506
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:515
+#: src/game_initialization/lobby_data.cpp:520
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -6317,20 +6317,20 @@ msgstr "Poraz"
 msgid "You have been defeated!"
 msgstr "Poraženi ste!"
 
-#: src/game_initialization/playcampaign.cpp:291 src/game_launcher.cpp:862
+#: src/game_initialization/playcampaign.cpp:291 src/game_launcher.cpp:864
 msgid "The game could not be loaded: "
 msgstr "Poziciju nije moguće učitati: "
 
-#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:864
+#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:866
 msgid "Error while playing the game: "
 msgstr "Greška prilikom igranja partije: "
 
-#: src/game_initialization/playcampaign.cpp:300 src/game_launcher.cpp:901
+#: src/game_initialization/playcampaign.cpp:300 src/game_launcher.cpp:903
 msgid "The game map could not be loaded: "
 msgstr "Mapu igre nije moguće učitati: "
 
-#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:866
-#: src/game_launcher.cpp:1000
+#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:868
+#: src/game_launcher.cpp:1002
 msgid "Map generator error: "
 msgstr ""
 
@@ -6357,29 +6357,29 @@ msgstr "Nepoznat scenario: ‘$scenario|’"
 msgid "No campaigns are available."
 msgstr "Nema nijednog pohoda.\n"
 
-#: src/game_launcher.cpp:644 src/game_launcher.cpp:662
+#: src/game_launcher.cpp:646 src/game_launcher.cpp:664
 msgid "The file you have tried to load is corrupt"
 msgstr "Datoteka koju ste pokušali da otvorite iskvarena je"
 
-#: src/game_launcher.cpp:647 src/game_launcher.cpp:665
+#: src/game_launcher.cpp:649 src/game_launcher.cpp:667
 #: src/hotkey/hotkey_handler_sp.cpp:312 src/savegame.cpp:146
 #: src/savegame.cpp:291
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Datoteka koju ste pokušali da učitate iskvarena je: '"
 
-#: src/game_launcher.cpp:655
+#: src/game_launcher.cpp:657
 msgid "File I/O Error while reading the game"
 msgstr "U/I greška u datoteci prilikom čitanja pozicije"
 
-#: src/game_launcher.cpp:657
+#: src/game_launcher.cpp:659
 msgid "File I/O Error while reading the game: '"
 msgstr "U/I greška u datoteci prilikom čitanja pozicije: '"
 
-#: src/game_launcher.cpp:860
+#: src/game_launcher.cpp:862
 msgid "Error while starting server: "
 msgstr "Greška pri pokretanju servera: "
 
-#: src/game_launcher.cpp:882
+#: src/game_launcher.cpp:884
 #, fuzzy
 #| msgid "Connection timed out"
 msgid "Connection failed: "
@@ -6565,11 +6565,11 @@ msgid "Unavailable"
 msgstr " Pomoć nije dostupna."
 
 #: src/help/help_impl.cpp:811 src/help/help_impl.cpp:986
-#: src/help/help_topic_generators.cpp:384
+#: src/help/help_topic_generators.cpp:383
 msgid "race^Miscellaneous"
 msgstr ""
 
-#: src/help/help_impl.cpp:998 src/help/help_topic_generators.cpp:490
+#: src/help/help_impl.cpp:998 src/help/help_topic_generators.cpp:489
 #: src/reports.cpp:347
 msgid "Alignment: "
 msgstr "poredak: "
@@ -6606,175 +6606,175 @@ msgstr ""
 msgid "Defense properties: "
 msgstr "odbrana: "
 
-#: src/help/help_topic_generators.cpp:245
+#: src/help/help_topic_generators.cpp:244
 #, fuzzy
 #| msgid "Level: "
 msgid "Level"
 msgstr "nivo: "
 
-#: src/help/help_topic_generators.cpp:306
+#: src/help/help_topic_generators.cpp:305
 #, fuzzy
 #| msgid "Advances to:"
 msgid "Advances from: "
 msgstr "može postati: "
 
-#: src/help/help_topic_generators.cpp:308
+#: src/help/help_topic_generators.cpp:307
 #, fuzzy
 #| msgid "Advances to:"
 msgid "Advances to: "
 msgstr "može postati: "
 
-#: src/help/help_topic_generators.cpp:337
+#: src/help/help_topic_generators.cpp:336
 #, fuzzy
 #| msgid "Base attacks: "
 msgid "Base unit: "
 msgstr "baznih napada: "
 
-#: src/help/help_topic_generators.cpp:342
+#: src/help/help_topic_generators.cpp:341
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Base units: "
 msgstr "zakonite jedinice: "
 
-#: src/help/help_topic_generators.cpp:360
+#: src/help/help_topic_generators.cpp:359
 #, fuzzy
 #| msgid "Disable notifications"
 msgid "Variations: "
 msgstr "Bez obaveštenja"
 
-#: src/help/help_topic_generators.cpp:386 src/reports.cpp:185
+#: src/help/help_topic_generators.cpp:385 src/reports.cpp:185
 msgid "Race: "
 msgstr "rasa: "
 
-#: src/help/help_topic_generators.cpp:412
-#: src/help/help_topic_generators.cpp:435
+#: src/help/help_topic_generators.cpp:411
+#: src/help/help_topic_generators.cpp:434
 msgid "Traits"
 msgstr "Osobine"
 
-#: src/help/help_topic_generators.cpp:445
+#: src/help/help_topic_generators.cpp:444
 #, fuzzy
 #| msgid "Ability: "
 msgid "Abilities: "
 msgstr "sposobnost: "
 
-#: src/help/help_topic_generators.cpp:463
+#: src/help/help_topic_generators.cpp:462
 #, fuzzy
 #| msgid "Ability: "
 msgid "Ability Upgrades: "
 msgstr "sposobnost: "
 
-#: src/help/help_topic_generators.cpp:481
+#: src/help/help_topic_generators.cpp:480
 msgid "HP: "
 msgstr "UP: "
 
-#: src/help/help_topic_generators.cpp:482
+#: src/help/help_topic_generators.cpp:481
 msgid "Moves: "
 msgstr "kretanje: "
 
-#: src/help/help_topic_generators.cpp:484
+#: src/help/help_topic_generators.cpp:483
 #, fuzzy
 #| msgid "Version: "
 msgid "Vision: "
 msgstr "Verzija: "
 
-#: src/help/help_topic_generators.cpp:487
+#: src/help/help_topic_generators.cpp:486
 #, fuzzy
 #| msgid "Warning: "
 msgid "Jamming: "
 msgstr "Upozorenje: "
 
-#: src/help/help_topic_generators.cpp:489
+#: src/help/help_topic_generators.cpp:488
 msgid "Cost: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:494
+#: src/help/help_topic_generators.cpp:493
 msgid "Required XP: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:503
+#: src/help/help_topic_generators.cpp:502
 msgid "unit help^Attacks"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:510
+#: src/help/help_topic_generators.cpp:509
 msgid "unit help^Name"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:511
+#: src/help/help_topic_generators.cpp:510
 msgid "Type"
 msgstr "tip"
 
-#: src/help/help_topic_generators.cpp:512
+#: src/help/help_topic_generators.cpp:511
 #, fuzzy
 #| msgid "strike"
 #| msgid_plural "strikes"
 msgid "Strikes"
 msgstr "udara"
 
-#: src/help/help_topic_generators.cpp:513
+#: src/help/help_topic_generators.cpp:512
 #, fuzzy
 #| msgid "Orange"
 msgid "Range"
 msgstr "narandžasta"
 
-#: src/help/help_topic_generators.cpp:514
+#: src/help/help_topic_generators.cpp:513
 #, fuzzy
 #| msgid "Weapon special: "
 msgid "Special"
 msgstr "svojstvo oružja: "
 
-#: src/help/help_topic_generators.cpp:576
+#: src/help/help_topic_generators.cpp:575
 #, fuzzy
 #| msgid "Resistances: "
 msgid "Resistances"
 msgstr "otpornosti: "
 
-#: src/help/help_topic_generators.cpp:580
+#: src/help/help_topic_generators.cpp:579
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack Type"
 msgstr "napadač"
 
-#: src/help/help_topic_generators.cpp:581
+#: src/help/help_topic_generators.cpp:580
 #, fuzzy
 #| msgid "Resistances: "
 msgid "Resistance"
 msgstr "otpornosti: "
 
-#: src/help/help_topic_generators.cpp:610
+#: src/help/help_topic_generators.cpp:609
 #, fuzzy
 #| msgid "Experience Modifier: "
 msgid "Terrain Modifiers"
 msgstr "modifikator iskustva: "
 
-#: src/help/help_topic_generators.cpp:614
+#: src/help/help_topic_generators.cpp:613
 #, fuzzy
 #| msgid "Terrain: "
 msgid "Terrain"
 msgstr "teren: "
 
-#: src/help/help_topic_generators.cpp:615
+#: src/help/help_topic_generators.cpp:614
 #, fuzzy
 #| msgid "Defense: "
 msgid "Defense"
 msgstr "odbrana: "
 
-#: src/help/help_topic_generators.cpp:616
+#: src/help/help_topic_generators.cpp:615
 msgid "Movement Cost"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:619
 #, fuzzy
 #| msgid "Defense: "
 msgid "Defense Cap"
 msgstr "odbrana: "
 
-#: src/help/help_topic_generators.cpp:625
+#: src/help/help_topic_generators.cpp:624
 #, fuzzy
 #| msgid "Version: "
 msgid "Vision Cost"
 msgstr "Verzija: "
 
-#: src/help/help_topic_generators.cpp:629
+#: src/help/help_topic_generators.cpp:628
 msgid "Jamming Cost"
 msgstr ""
 
@@ -7526,7 +7526,7 @@ msgstr ""
 "Mrežna veza je prekinuta i igra se ne može nastaviti. Želite li da sačuvate "
 "poziciju?"
 
-#: src/playsingle_controller.cpp:428
+#: src/playsingle_controller.cpp:429
 msgid "It is now $name|’s turn"
 msgstr "Na potezu je $name"
 

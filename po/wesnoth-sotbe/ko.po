@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-16 03:33 UTC\n"
+"POT-Creation-Date: 2018-05-26 12:04 UTC\n"
 "PO-Revision-Date: 2011-10-27 23:27+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -179,10 +179,10 @@ msgstr "Kapou’e"
 msgid "Alber"
 msgstr "Alber"
 
+#. [side]: type=General, id=Lanbec'h
 #. [side]: type=General, id=Slowhand
 #. [side]
 #. [side]: type=General, id=Harman
-#. [side]: type=General, id=Lanbec'h
 #. [side]: type=Lieutenant, id=Alber
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:82
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:61
@@ -1776,17 +1776,17 @@ msgstr "오아시스에 도착할 것"
 msgid "Ar-Dant"
 msgstr "Ar-Dant"
 
-#. [side]: type=General, id=Telthys
+#. [side]: type=Assassin, type=Rogue, id=Ar-Dant
+#. [side]
 #. [side]: type=Elvish Champion, id=Thelarion
-#. [side]: type=General, id=Fredor
-#. [side]: type=General, id=Georan
-#. [side]: type=General, id=Arthain
-#. [side]: type=Lieutenant, id=Hanak
 #. [side]: type=Dwarvish Steelclad, id=Darstang
 #. [side]: type=General, id=Earl Lanbec'h
-#. [side]
+#. [side]: type=General, id=Arthain
+#. [side]: type=Lieutenant, id=Hanak
 #. [side]: type=Bandit, id=Sagmar
-#. [side]: type=Assassin, type=Rogue, id=Ar-Dant
+#. [side]: type=General, id=Telthys
+#. [side]: type=General, id=Fredor
+#. [side]: type=General, id=Georan
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #. [side]: type=Orcish Warlord, id=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:86
@@ -2343,8 +2343,8 @@ msgstr "Shan Taum의 위협으로부터 20 턴을 버틸 것"
 msgid "Defeat Shan Taum"
 msgstr "Shan Taum을 무찌른다"
 
-#. [unit]: type=Orcish Warlord, id=Shan Taum
 #. [side]: type=Orcish Warlord, id=Shan Taum
+#. [unit]: type=Orcish Warlord, id=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:60
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:143
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:126
@@ -2806,8 +2806,8 @@ msgstr ""
 msgid "It won’t be said that Elves were braver than us, everyone attack!"
 msgstr "엘프들이 우리보다 용감하단 소릴 듣게 할 순 없지. 전원 공격!"
 
-#. [side]: type=General, id=Earl Lanbec'h
 #. [unit]: type=General, id=Earl Lanbec'h
+#. [side]: type=General, id=Earl Lanbec'h
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:658
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:143
@@ -3749,13 +3749,13 @@ msgstr "Kapou'e를 남서쪽의 표지판으로 이동시킨다"
 msgid "Braga"
 msgstr "Braga"
 
-#. [side]: type=Orcish Warlord, id=Orga
-#. [side]: type=Orcish Warrior, id=Knorgh
-#. [side]: type=Orcish Warrior, id=Nofhug
 #. [side]: type=Orcish Warlord, id=Braga
 #. [side]: type=Orcish Warlord, id=Meato
 #. [side]: type=Orcish Warlord, id=Ragvan
 #. [side]: type=Orcish Warlord, id=Kergai
+#. [side]: type=Orcish Warlord, id=Orga
+#. [side]: type=Orcish Warrior, id=Knorgh
+#. [side]: type=Orcish Warrior, id=Nofhug
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:73
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:93
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:113
@@ -4295,8 +4295,8 @@ msgstr "도착했습니다, 각하."
 msgid "Ahhh, perfect, more reinforcements."
 msgstr "아아아, 완벽해, 증원이 더 왔군."
 
-#. [side]: type=General, id=Howgarth III
 #. [unit]: type=General, id=Howgarth III
+#. [side]: type=General, id=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:390
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:154
 msgid "Howgarth III"

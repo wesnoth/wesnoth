@@ -53,9 +53,9 @@ Startet wesnothd als Dämon.
 Gibt die möglichen Kommandozeilenoptionen aus.
 .TP 
 \fB\-\-log\-\fP\fIstufe\fP\fB=\fP\fIDomäne1\fP\fB,\fP\fIDomäne2\fP\fB,\fP\fI...\fP
-Setzt die Stufe der Debugausgabe. Verwenden Sie \fBall\fP, um sämtliche Domänen
-zu verwenden. Verfügbare Stufen: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Standardmäßig werden die Stufe \fBerror\fP für die Domäne des Spieles
-und die Stufe \fBinfo\fP für die Domäne des Servers verwendet.
+Setzt die Stufe der Logausgabe. Verwenden Sie \fBall\fP, um sämtliche Domänen
+zu verwenden. Verfügbare \fIStufen\fP: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Standardmäßig wird die Stufe \fBerror\fP benutzt und die Stufe
+\fBinfo\fP für die Domäne \fBserver\fP verwendet.
 .TP 
 \fB\-p\ \fP\fIPort\fP\fB,\ \-\-port\fP\fI\ Port\fP
 Bindet den Server an den angegebenen Port. Wenn kein Port angegeben ist,
@@ -73,7 +73,7 @@ Wert von \fB0\fP gibt es keine Beschränkung. (Standard: \fB0\fP)
 Zeigt die Versionsnummer an und beendet das Programm.
 .TP 
 \fB\-v, \-\-verbose\fP
-Aktiviert mehr Details in der Logausgabe.
+Aktiviert mehr Details in der Logausgabe, einschließlich der Stufe \fBdebug\fP.
 .
 .SH "SERVER KONFIGURATION"
 .

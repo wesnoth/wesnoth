@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-15 23:33-0400\n"
+"POT-Creation-Date: 2018-05-26 15:04+0300\n"
 "PO-Revision-Date: 2018-05-16 07:07+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -337,14 +337,14 @@ msgstr "Envelenado"
 
 #. [objectives]
 #. [lua]: generate_objectives
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:208
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:260
 #: data/lua/wml/objectives.lua:38
 msgid "Gold carryover:"
 msgstr "Ouro retido:"
 
 #. [note]
 #. [lua]: generate_objectives
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:220
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:272
 #: data/lua/wml/objectives.lua:39
 msgid "Notes:"
 msgstr "Notas:"
@@ -1518,21 +1518,21 @@ msgid "<small>(early finish bonus)</small>"
 msgstr "<small>(hai bonificación por rematar cedo)</small>"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:98 data/lua/wml/objectives.lua:106
+#: data/core/macros/deprecated-utils.cfg:99 data/lua/wml/objectives.lua:106
 msgid "Early finish bonus."
 msgstr "Hai bonificación por rematar cedo."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:101 data/lua/wml/objectives.lua:109
+#: data/core/macros/deprecated-utils.cfg:103 data/lua/wml/objectives.lua:109
 msgid "No early finish bonus."
 msgstr "Non hai bonificación por rematar cedo."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:104 data/lua/wml/objectives.lua:117
+#: data/core/macros/deprecated-utils.cfg:107 data/lua/wml/objectives.lua:117
 msgid "No gold carried over to the next scenario."
 msgstr "Non se conserva ouro para o seguinte escenario."
 
-#: data/core/macros/deprecated-utils.cfg:107
+#: data/core/macros/deprecated-utils.cfg:111
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
@@ -1540,7 +1540,7 @@ msgstr ""
 "\n"
 "Conservarase todo o ouro co que se remate para o seguinte escenario."
 
-#: data/core/macros/deprecated-utils.cfg:111
+#: data/core/macros/deprecated-utils.cfg:116
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
@@ -1548,7 +1548,7 @@ msgstr ""
 "\n"
 "Conservarase o 40% do ouro co que se remate para o seguinte escenario."
 
-#: data/core/macros/deprecated-utils.cfg:115
+#: data/core/macros/deprecated-utils.cfg:121
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -1775,7 +1775,7 @@ msgstr ""
 "Omaxe,Omagra,Orra Ca,Orridan,Hórrida,Oxibi,Valin,Valnira,Valnit,Velis,Verra,"
 "Velin Ca,Vexar,Vuxín"
 
-#. Generator for male drake names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for male drake names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:21
 msgid ""
 "\n"
@@ -1794,7 +1794,7 @@ msgstr ""
 "suffix=ax|cré|les|lin|rutin|xinar|ruxi|ca|ax|ague|al|eslar|li|dian|ritos|"
 "rusté|xit|nic|raz|dit|con|mad|tic|nir\n"
 
-#. Generator for female drake names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for female drake names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:28
 msgid ""
 "\n"
@@ -1896,7 +1896,7 @@ msgstr ""
 "Trisdrus,Trisduril,Trisdurin,Trisdurlos,Trisdurol,Trisdursil,Trisdurus,"
 "Trizas,Trizail,Trizain,Trizasol,Trizaus"
 
-#. Generator for male dwarf names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for male dwarf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:39
 msgid ""
 "\n"
@@ -2162,7 +2162,7 @@ msgstr ""
 "Vadrieriz,Vadrievel,Vadriegüen,Varagüel,Vebriden,Vil-Gandra,Violindë,Viogüel,"
 "Vidran,Vidranel,Vigüel,Vödia,Vön,Vonficha,Vonfin,Vonfiriz,Vonfigüel,Vögüen"
 
-#. Generator for male elf names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for male elf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:53
 msgid ""
 "\n"
@@ -2195,7 +2195,7 @@ msgstr ""
 "short_centre=lol|fer|tom|lis|nal|lor|guón|ra|rien|mar|re|riel|mal|ran|nil|"
 "nin|nol|bris|lar|rier|ra|fil|dran|man\n"
 
-#. Generator for female elf names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for female elf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:67
 msgid ""
 "\n"
@@ -2250,7 +2250,7 @@ msgstr ""
 msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
 msgstr "Crasa,Casa,Caia,Caias,Queia,Quenia,Quira,Cora,Cura"
 
-#. Generator for male gryphon names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for male gryphon names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:90
 msgid ""
 "\n"
@@ -2264,7 +2264,7 @@ msgstr ""
 "prefix=Gra|Gre|Gri|Gro|Gru|Ca|Que|Qui|Co|Cu\n"
 "suffix=co|so|io|nio|án\n"
 
-#. Generator for female gryphon names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for female gryphon names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:97
 msgid ""
 "\n"
@@ -2395,7 +2395,7 @@ msgstr ""
 "Alba,Alberta,Albertina,Aída,Berta,Carolina,Elvira,Icía,Iria,Marta,Matilde,"
 "Sara, Tareixa"
 
-#. Generator for male Wesnothian human names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for male Wesnothian human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:109
 msgid ""
 "\n"
@@ -2434,7 +2434,7 @@ msgstr ""
 "centre_c=rer|reor|or|din\n"
 "centre_v=rae|ra|dar|ui\n"
 
-#. Generator for female Wesnothian human names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for female Wesnothian human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:125
 msgid ""
 "\n"
@@ -2621,7 +2621,7 @@ msgstr ""
 "Iacid,Iunus,Iuxua,Iusri,Iusuf,Zafar,Zafir,Zaid,Zair,Zaid,Zain,Zain,Zarif,"
 "Zacarria,Zaqui,Zagüan,Ziad,Zubair,Zuair"
 
-#. Generator for male dunefolk human names
+#. Generator for male dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:145
 msgid ""
 "\n"
@@ -2651,7 +2651,7 @@ msgstr ""
 "connector= al-| bin | ibin\n"
 "centre=ʿ|ʾ|i|sa|car|da|na|ia|tai|qui|ai|sau\n"
 
-#. Generator for female dunefolk human names
+#. Generator for female dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:156
 msgid ""
 "\n"
@@ -2730,7 +2730,7 @@ msgstr ""
 "Xartres,Xas,Xastex,Xerxix,Xiras,Xir,Xirtras,Xirtres,Xirs,Zander,Zedrix,"
 "Zilrix,Zisas,Eslap,Salcos,Supde"
 
-#. Generator for saurian names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for saurian names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:178
 msgid ""
 "\n"
@@ -2783,7 +2783,7 @@ msgstr ""
 "Mirian,Molpe,Partenope,Pelaguia,Pisinoe,Popa,Proa,Ran,Ría,Senda,Estrela,"
 "Maris,Telxiepia,Tirgata,Batea,Vaga,Vedava,Vinemo,Vetema"
 
-#. Generator for merman names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for merman names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:190
 msgid ""
 "\n"
@@ -2802,7 +2802,7 @@ msgstr ""
 "ni|lau|nin|sa|loa|roa\n"
 "centre=la|ma|ri|sei|te|ca|li|cer|tu|ni|qui|na|ga|si\n"
 
-#. Generator for mermaid names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for mermaid names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:197
 msgid ""
 "\n"
@@ -2854,7 +2854,7 @@ msgstr ""
 "Sen,Escal,Esquéptica,Eslá,Esnelia,Erra,Eralda,Exan,Trixen,Vilaila,Visalai,"
 "Blanisa,Xabran,Xamalia,Xina,Ximnasia,Xanas,Xoque,Salsa,Glec,Sec,Seque"
 
-#. Generator for male naga names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for male naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:209
 msgid ""
 "\n"
@@ -2872,7 +2872,7 @@ msgstr ""
 "suffix=is|ail|nal|ei|mol|los|nos|xos|sal|sel|ques|pe|nes|or|sol|pei|ias|on|"
 "sal|ol|quil|os|ail|al|nis|raque|lel|nas|con|eque\n"
 
-#. Generator for female naga names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for female naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:215
 msgid ""
 "\n"
@@ -2908,7 +2908,7 @@ msgstr ""
 "Curmaco,Macron,Marcaco,Marcuco,Mernico,Nargaco,Olco,Orcut,Renaco,Tacolaco,"
 "Trabuco,Tracon,Urcar"
 
-#. Generator for ogre names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for ogre names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:225
 msgid ""
 "\n"
@@ -3032,7 +3032,7 @@ msgstr ""
 "Pagu,Recon,Ron,Run,Sarna,Xan,Xuf,Estu,Targu,Zogu,Truf,Dur,Togu,Torgu,Tron,"
 "Son,Tu,Tucru,Ugu,Urco,Urgü,Urgo,Urin,Van,Zogu,Zun"
 
-#. Generator for troll names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for troll names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:249
 msgid ""
 "\n"
@@ -3081,7 +3081,7 @@ msgstr ""
 "Tentundemben,Tentunongueten,Tondenontencon,Trumbadun,Tuntentantarun,"
 "Tuntonongatun,Tuntungantonton,Guonrunmaldin,Gudadunopel"
 
-#. Generator for wose names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for wose names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:262
 msgid ""
 "\n"
@@ -3141,7 +3141,7 @@ msgstr ""
 "Xondo,Xunqueira,Zas"
 
 # Nomes base
-#. Generator for the base names of features assigned by the random map generator; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for the base names of features assigned by the random map generator; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:273
 msgid ""
 "\n"
@@ -3269,167 +3269,167 @@ msgstr ""
 "bando $side_number neste escenario. Este bando está pensado para xogadores."
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:282
+#: data/core/macros/sound-utils.cfg:157
 msgid "Battle Epic"
 msgstr "Épica de batalla"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:288
+#: data/core/macros/sound-utils.cfg:163
 msgid "Battle Music"
 msgstr "Música de batalla"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:294
+#: data/core/macros/sound-utils.cfg:169
 msgid "Breaking the Chains"
 msgstr "Rompendo as cadeas"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:300
+#: data/core/macros/sound-utils.cfg:175
 msgid "Casualties of War"
 msgstr "Baixas da guerra"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:306
+#: data/core/macros/sound-utils.cfg:181
 msgid "Elf Land"
 msgstr "Terra de elfos"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:312
+#: data/core/macros/sound-utils.cfg:187
 msgid "Elvish theme"
 msgstr "Tema élfico"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:318
+#: data/core/macros/sound-utils.cfg:193
 msgid "Frantic"
 msgstr "Frenético"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:324
+#: data/core/macros/sound-utils.cfg:199
 msgid "Heroes Rite"
 msgstr "O rito dos heroes"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:330
+#: data/core/macros/sound-utils.cfg:205
 msgid "Into the Shadows"
 msgstr "Nas sombras"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:336
+#: data/core/macros/sound-utils.cfg:211
 msgid "Journey’s End"
 msgstr "A fin da viaxe"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:342
+#: data/core/macros/sound-utils.cfg:217
 msgid "Knalgan Theme"
 msgstr "Tema de Neilga"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:348
+#: data/core/macros/sound-utils.cfg:223
 msgid "The Knolls of Doldesh"
 msgstr "Os outeiros de Doldes"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:354
+#: data/core/macros/sound-utils.cfg:229
 msgid "Legends of the North"
 msgstr "Lendas do norte"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:360
+#: data/core/macros/sound-utils.cfg:235
 msgid "Love Theme"
 msgstr "Tema de amor"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:366
+#: data/core/macros/sound-utils.cfg:241
 msgid "Loyalists"
 msgstr "Leais"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:372
+#: data/core/macros/sound-utils.cfg:247
 msgid "Over the Northern Mountains"
 msgstr "Sobre as montañas do norte"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:378
+#: data/core/macros/sound-utils.cfg:253
 msgid "Northerners"
 msgstr "Nórdicos"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:384
+#: data/core/macros/sound-utils.cfg:259
 msgid "Nunc Dimittis"
 msgstr "Nunc Dimittis"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:390
+#: data/core/macros/sound-utils.cfg:265
 msgid "Revelation"
 msgstr "Revelación"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:396
+#: data/core/macros/sound-utils.cfg:271
 msgid "Sad"
 msgstr "Triste"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:402
+#: data/core/macros/sound-utils.cfg:277
 msgid "Siege of Laurelmor"
 msgstr "O sitio de Laurelmor"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:408
+#: data/core/macros/sound-utils.cfg:283
 msgid "Silvan Sanctuary"
 msgstr "O santuario silvano"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:414
+#: data/core/macros/sound-utils.cfg:289
 msgid "Suspense"
 msgstr "Suspenso"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:420
+#: data/core/macros/sound-utils.cfg:295
 msgid "The City Falls"
 msgstr "A caída da cidade"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:426
+#: data/core/macros/sound-utils.cfg:301
 msgid "The Dangerous Symphony"
 msgstr "A sinfonía perigosa"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:432
+#: data/core/macros/sound-utils.cfg:307
 msgid "The Deep Path"
 msgstr "O longo camiño"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:438
+#: data/core/macros/sound-utils.cfg:313
 msgid "The King is Dead"
 msgstr "A morte do rei"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:444
+#: data/core/macros/sound-utils.cfg:319
 msgid "Transience"
 msgstr "Brevidade"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:450
+#: data/core/macros/sound-utils.cfg:325
 msgid "Traveling Minstrels"
 msgstr "Os trobadores deambulantes"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:456
+#: data/core/macros/sound-utils.cfg:331
 msgid "Underground"
 msgstr "Baixo a terra"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:462
+#: data/core/macros/sound-utils.cfg:337
 msgid "Vengeful Pursuit"
 msgstr "A persecución vengativa"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:468
+#: data/core/macros/sound-utils.cfg:343
 msgid "Still Another Wanderer"
 msgstr "Outro errante máis"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:474
+#: data/core/macros/sound-utils.cfg:349
 msgid "Weight of Revenge"
 msgstr "O peso da vinganza"
 
@@ -3618,14 +3618,14 @@ msgstr "Infranqueábel"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:451
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:456
 msgid "Fog"
 msgstr "Néboa da guerra"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:454
-#: src/game_initialization/lobby_data.cpp:457
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:459
+#: src/game_initialization/lobby_data.cpp:462
 msgid "Shroud"
 msgstr "Manto do descoñecido"
 
@@ -4771,8 +4771,8 @@ msgstr "Insandábel"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:390 src/scripting/game_lua_kernel.cpp:2779
-#: src/scripting/game_lua_kernel.cpp:2814
+#: data/lua/wml/message.lua:390 src/scripting/game_lua_kernel.cpp:2783
+#: src/scripting/game_lua_kernel.cpp:2818
 msgid "input"
 msgstr "entrada"
 
@@ -4806,23 +4806,23 @@ msgstr "Conservarase un %d%% do ouro para o seguinte escenario."
 msgid "Defeat enemy leader(s)"
 msgstr "Derrota aos líderes inimigos."
 
-#: data/scenario-test.cfg:1030 src/game_initialization/depcheck.cpp:491
+#: data/scenario-test.cfg:1023 src/game_initialization/depcheck.cpp:491
 msgid "OK"
 msgstr "Aceptar"
 
-#: data/scenario-test.cfg:1031
+#: data/scenario-test.cfg:1024
 msgid "Cancel"
 msgstr "Cancelar"
 
 # Fai referencia á distancia de alcance.
 #. [language]
-#: data/scenario-test.cfg:4079
+#: data/scenario-test.cfg:4072
 msgid "very long"
 msgstr "grande"
 
 # Supoño que se refire a un tipo de dano.
 #. [language]
-#: data/scenario-test.cfg:4080
+#: data/scenario-test.cfg:4073
 msgid "electrical"
 msgstr "eléctrico"
 
@@ -6693,7 +6693,7 @@ msgid_plural ""
 msgstr[0] "Informe disto ao autor ou ao mantedor do complemento."
 msgstr[1] "Informe disto aos autores ou aos mantedores dos complementos."
 
-#: src/game_events/pump.cpp:481 src/game_launcher.cpp:909
+#: src/game_events/pump.cpp:481 src/game_launcher.cpp:911
 msgid "Error: "
 msgstr "Houbo un erro: "
 
@@ -6717,32 +6717,32 @@ msgstr "Partida de $login"
 msgid "Team"
 msgstr "Alianza"
 
-#: src/game_initialization/connect_engine.cpp:993
+#: src/game_initialization/connect_engine.cpp:988
 msgid "Anonymous player"
 msgstr "Xogador anónimo"
 
-#: src/game_initialization/connect_engine.cpp:998
-#: src/game_initialization/connect_engine.cpp:1292
+#: src/game_initialization/connect_engine.cpp:993
+#: src/game_initialization/connect_engine.cpp:1287
 msgid "Computer Player"
 msgstr "Computador"
 
-#: src/game_initialization/connect_engine.cpp:1040
+#: src/game_initialization/connect_engine.cpp:1035
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1288
+#: src/game_initialization/connect_engine.cpp:1283
 msgid "Network Player"
 msgstr "Xogador na rede"
 
-#: src/game_initialization/connect_engine.cpp:1291
+#: src/game_initialization/connect_engine.cpp:1286
 msgid "Local Player"
 msgstr "Xogador local"
 
-#: src/game_initialization/connect_engine.cpp:1293
+#: src/game_initialization/connect_engine.cpp:1288
 msgid "Empty"
 msgstr "Baleiro"
 
-#: src/game_initialization/connect_engine.cpp:1296
+#: src/game_initialization/connect_engine.cpp:1291
 msgid "Reserved"
 msgstr "Reservado"
 
@@ -6811,67 +6811,67 @@ msgstr "Non se atopou ningún tipo de líder para a facción $faction|."
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "Non é posíbel obter o sexo co líder $leader. O líder non é valido."
 
-#: src/game_initialization/lobby_data.cpp:237
+#: src/game_initialization/lobby_data.cpp:242
 msgid "Missing addon: $name"
 msgstr "Falta o complemento «$name»."
 
-#: src/game_initialization/lobby_data.cpp:239
+#: src/game_initialization/lobby_data.cpp:244
 msgid "Missing addon: $id"
 msgstr "Falta o complemento «$id»."
 
-#: src/game_initialization/lobby_data.cpp:273
+#: src/game_initialization/lobby_data.cpp:278
 msgid "Unknown era"
 msgstr "Era descoñecida"
 
 # Inicial de «escenario».
-#: src/game_initialization/lobby_data.cpp:340
-#: src/game_initialization/lobby_data.cpp:370
+#: src/game_initialization/lobby_data.cpp:345
+#: src/game_initialization/lobby_data.cpp:375
 msgid "S"
 msgstr "E"
 
-#: src/game_initialization/lobby_data.cpp:359
+#: src/game_initialization/lobby_data.cpp:364
 msgid "Remote scenario"
 msgstr "Escenario remoto"
 
 # Inicial de «campaña».
-#: src/game_initialization/lobby_data.cpp:378
-#: src/game_initialization/lobby_data.cpp:401
+#: src/game_initialization/lobby_data.cpp:383
+#: src/game_initialization/lobby_data.cpp:406
 msgid "C"
 msgstr "C"
 
-#: src/game_initialization/lobby_data.cpp:406
+#: src/game_initialization/lobby_data.cpp:411
 msgid "Unknown scenario"
 msgstr "Escenario descoñecido"
 
-#: src/game_initialization/lobby_data.cpp:416
+#: src/game_initialization/lobby_data.cpp:421
 msgid "Reloaded game"
 msgstr "Partida recargada"
 
-#: src/game_initialization/lobby_data.cpp:431
+#: src/game_initialization/lobby_data.cpp:436
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Posto vacante:"
 msgstr[1] "Postos vacantes:"
 
-#: src/game_initialization/lobby_data.cpp:433
+#: src/game_initialization/lobby_data.cpp:438
 msgid "mp_game_available_slots^Full"
 msgstr "Chea"
 
 # En referencia á rolda en que está a partida (unha rolda é o grupo formado por unha quenda de cada xogador).
-#: src/game_initialization/lobby_data.cpp:444
-#: src/game_initialization/lobby_data.cpp:446 src/savegame.cpp:631
+#: src/game_initialization/lobby_data.cpp:449
+#: src/game_initialization/lobby_data.cpp:451 src/savegame.cpp:631
 msgid "Turn"
 msgstr "Rolda"
 
-#: src/game_initialization/lobby_data.cpp:459
+#: src/game_initialization/lobby_data.cpp:464
 msgid "vision^none"
 msgstr "ningunha"
 
-#: src/game_initialization/lobby_data.cpp:468
+#: src/game_initialization/lobby_data.cpp:473
 msgid "time limit^none"
 msgstr "ningún"
 
-#: src/game_initialization/lobby_data.cpp:501
+#: src/game_initialization/lobby_data.cpp:506
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
@@ -6879,7 +6879,7 @@ msgstr ""
 "A versión de <i>$addon</i> que ten o anfitrión é incompatíbel. O anfitrión "
 "ten a versión <b>$host_ver</b>, ti tes a <b>$local_ver</b>."
 
-#: src/game_initialization/lobby_data.cpp:515
+#: src/game_initialization/lobby_data.cpp:520
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -7099,20 +7099,20 @@ msgstr "Derrota"
 msgid "You have been defeated!"
 msgstr "Derrotáronte!"
 
-#: src/game_initialization/playcampaign.cpp:291 src/game_launcher.cpp:862
+#: src/game_initialization/playcampaign.cpp:291 src/game_launcher.cpp:864
 msgid "The game could not be loaded: "
 msgstr "Non foi posíbel cargar a partida: "
 
-#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:864
+#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:866
 msgid "Error while playing the game: "
 msgstr "Houbo un erro mentres se xogaba a partida: "
 
-#: src/game_initialization/playcampaign.cpp:300 src/game_launcher.cpp:901
+#: src/game_initialization/playcampaign.cpp:300 src/game_launcher.cpp:903
 msgid "The game map could not be loaded: "
 msgstr "Non foi posíbel cargar o mapa da partida: "
 
-#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:866
-#: src/game_launcher.cpp:1000
+#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:868
+#: src/game_launcher.cpp:1002
 msgid "Map generator error: "
 msgstr "Erro do xerador de mapas: "
 
@@ -7137,29 +7137,29 @@ msgstr "Escenario descoñecido: «$scenario|»."
 msgid "No campaigns are available."
 msgstr "Non hai campañas dispoñíbeis."
 
-#: src/game_launcher.cpp:644 src/game_launcher.cpp:662
+#: src/game_launcher.cpp:646 src/game_launcher.cpp:664
 msgid "The file you have tried to load is corrupt"
 msgstr "O ficheiro que intentaches cargar non está ben."
 
-#: src/game_launcher.cpp:647 src/game_launcher.cpp:665
+#: src/game_launcher.cpp:649 src/game_launcher.cpp:667
 #: src/hotkey/hotkey_handler_sp.cpp:312 src/savegame.cpp:146
 #: src/savegame.cpp:291
 msgid "The file you have tried to load is corrupt: '"
 msgstr "O ficheiro que intentaches cargar non está ben: «"
 
-#: src/game_launcher.cpp:655
+#: src/game_launcher.cpp:657
 msgid "File I/O Error while reading the game"
 msgstr "Houbo problemas co ficheiro da partida mentres se lía."
 
-#: src/game_launcher.cpp:657
+#: src/game_launcher.cpp:659
 msgid "File I/O Error while reading the game: '"
 msgstr "Houbo problemas co ficheiro da partida mentres se lía: '"
 
-#: src/game_launcher.cpp:860
+#: src/game_launcher.cpp:862
 msgid "Error while starting server: "
 msgstr "Houbo un erro ao iniciar o servidor: "
 
-#: src/game_launcher.cpp:882
+#: src/game_launcher.cpp:884
 msgid "Connection failed: "
 msgstr "Fallou a conexión: "
 
@@ -7317,11 +7317,11 @@ msgid "Unavailable"
 msgstr "Non dispoñíbel."
 
 #: src/help/help_impl.cpp:811 src/help/help_impl.cpp:986
-#: src/help/help_topic_generators.cpp:384
+#: src/help/help_topic_generators.cpp:383
 msgid "race^Miscellaneous"
 msgstr "Varios"
 
-#: src/help/help_impl.cpp:998 src/help/help_topic_generators.cpp:490
+#: src/help/help_impl.cpp:998 src/help/help_topic_generators.cpp:489
 #: src/reports.cpp:347
 msgid "Alignment: "
 msgstr "Aliñación: "
@@ -7354,132 +7354,132 @@ msgstr "Propiedades de movemento: "
 msgid "Defense properties: "
 msgstr "Propiedades de defensa: "
 
-#: src/help/help_topic_generators.cpp:245
+#: src/help/help_topic_generators.cpp:244
 msgid "Level"
 msgstr "Nivel"
 
-#: src/help/help_topic_generators.cpp:306
+#: src/help/help_topic_generators.cpp:305
 msgid "Advances from: "
 msgstr "Avanza dende: "
 
-#: src/help/help_topic_generators.cpp:308
+#: src/help/help_topic_generators.cpp:307
 msgid "Advances to: "
 msgstr "Avanza a: "
 
-#: src/help/help_topic_generators.cpp:337
+#: src/help/help_topic_generators.cpp:336
 msgid "Base unit: "
 msgstr "Unidade base: "
 
-#: src/help/help_topic_generators.cpp:342
+#: src/help/help_topic_generators.cpp:341
 msgid "Base units: "
 msgstr "Unidades base: "
 
-#: src/help/help_topic_generators.cpp:360
+#: src/help/help_topic_generators.cpp:359
 msgid "Variations: "
 msgstr "Variacións: "
 
-#: src/help/help_topic_generators.cpp:386 src/reports.cpp:185
+#: src/help/help_topic_generators.cpp:385 src/reports.cpp:185
 msgid "Race: "
 msgstr "Especie: "
 
-#: src/help/help_topic_generators.cpp:412
-#: src/help/help_topic_generators.cpp:435
+#: src/help/help_topic_generators.cpp:411
+#: src/help/help_topic_generators.cpp:434
 msgid "Traits"
 msgstr "Trazos"
 
-#: src/help/help_topic_generators.cpp:445
+#: src/help/help_topic_generators.cpp:444
 msgid "Abilities: "
 msgstr "Habilidades: "
 
-#: src/help/help_topic_generators.cpp:463
+#: src/help/help_topic_generators.cpp:462
 msgid "Ability Upgrades: "
 msgstr "Melloras de habilidades:"
 
-#: src/help/help_topic_generators.cpp:481
+#: src/help/help_topic_generators.cpp:480
 msgid "HP: "
 msgstr "Vida: "
 
-#: src/help/help_topic_generators.cpp:482
+#: src/help/help_topic_generators.cpp:481
 msgid "Moves: "
 msgstr "Movementos: "
 
-#: src/help/help_topic_generators.cpp:484
+#: src/help/help_topic_generators.cpp:483
 msgid "Vision: "
 msgstr "Visión: "
 
-#: src/help/help_topic_generators.cpp:487
+#: src/help/help_topic_generators.cpp:486
 msgid "Jamming: "
 msgstr "Interferencia: "
 
-#: src/help/help_topic_generators.cpp:489
+#: src/help/help_topic_generators.cpp:488
 msgid "Cost: "
 msgstr "Custo: "
 
-#: src/help/help_topic_generators.cpp:494
+#: src/help/help_topic_generators.cpp:493
 msgid "Required XP: "
 msgstr "Experiencia necesaria: "
 
-#: src/help/help_topic_generators.cpp:503
+#: src/help/help_topic_generators.cpp:502
 msgid "unit help^Attacks"
 msgstr "Ataques"
 
-#: src/help/help_topic_generators.cpp:510
+#: src/help/help_topic_generators.cpp:509
 msgid "unit help^Name"
 msgstr "Nome"
 
-#: src/help/help_topic_generators.cpp:511
+#: src/help/help_topic_generators.cpp:510
 msgid "Type"
 msgstr "Tipo"
 
-#: src/help/help_topic_generators.cpp:512
+#: src/help/help_topic_generators.cpp:511
 msgid "Strikes"
 msgstr "Golpes"
 
-#: src/help/help_topic_generators.cpp:513
+#: src/help/help_topic_generators.cpp:512
 msgid "Range"
 msgstr "Alcance"
 
-#: src/help/help_topic_generators.cpp:514
+#: src/help/help_topic_generators.cpp:513
 msgid "Special"
 msgstr "Especiais"
 
-#: src/help/help_topic_generators.cpp:576
+#: src/help/help_topic_generators.cpp:575
 msgid "Resistances"
 msgstr "Resistencias"
 
-#: src/help/help_topic_generators.cpp:580
+#: src/help/help_topic_generators.cpp:579
 msgid "Attack Type"
 msgstr "Tipo de ataque"
 
-#: src/help/help_topic_generators.cpp:581
+#: src/help/help_topic_generators.cpp:580
 msgid "Resistance"
 msgstr "Resistencia"
 
-#: src/help/help_topic_generators.cpp:610
+#: src/help/help_topic_generators.cpp:609
 msgid "Terrain Modifiers"
 msgstr "Modificadores do terreo"
 
-#: src/help/help_topic_generators.cpp:614
+#: src/help/help_topic_generators.cpp:613
 msgid "Terrain"
 msgstr "Terreo"
 
-#: src/help/help_topic_generators.cpp:615
+#: src/help/help_topic_generators.cpp:614
 msgid "Defense"
 msgstr "Defensa"
 
-#: src/help/help_topic_generators.cpp:616
+#: src/help/help_topic_generators.cpp:615
 msgid "Movement Cost"
 msgstr "Custo de movemento"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:619
 msgid "Defense Cap"
 msgstr "Limitación da defensa"
 
-#: src/help/help_topic_generators.cpp:625
+#: src/help/help_topic_generators.cpp:624
 msgid "Vision Cost"
 msgstr "Custo da visión"
 
-#: src/help/help_topic_generators.cpp:629
+#: src/help/help_topic_generators.cpp:628
 msgid "Jamming Cost"
 msgstr "Custo de interferencia"
 
@@ -8214,7 +8214,7 @@ msgstr ""
 "Houbo unha interrupción da rede e a partida non é posíbel continuar. Queres "
 "gardala?"
 
-#: src/playsingle_controller.cpp:428
+#: src/playsingle_controller.cpp:429
 msgid "It is now $name|’s turn"
 msgstr "Tócalle mover a $name|."
 

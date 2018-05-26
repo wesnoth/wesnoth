@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-16 03:33 UTC\n"
+"POT-Creation-Date: 2018-05-26 12:04 UTC\n"
 "PO-Revision-Date: 2014-10-23 21:29+0100\n"
 "Last-Translator: Svistwarrior273 <romanbeno273@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,8 +61,8 @@ msgstr ""
 msgid "The Elves Besieged"
 msgstr "Elfovia v obkľúčení"
 
-#. [unit]: type=Spearman, id=Konrad
 #. [side]: type=Spearman, id=Konrad
+#. [unit]: type=Spearman, id=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:34
 #: data/ai/micro_ais/scenarios/patrols.cfg:92
 msgid "Konrad"
@@ -87,10 +87,10 @@ msgstr "Delfador"
 msgid "Urug-Telfar"
 msgstr "Urug-Telfar"
 
-#. [side]: id=Vanak, type=Orcish Ruler
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
+#. [side]: id=Vanak, type=Orcish Ruler
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:98
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:112
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:130
@@ -328,8 +328,8 @@ msgstr ""
 "tak sa nechávajú navzájom na pokoji, demonštrujúc tak veľké sebaovládanie "
 "dobre trénovaného salašníckeho psa."
 
-#. [event]
 #. [test]: id=animals
+#. [event]
 #: data/ai/micro_ais/scenarios/animals.cfg:27
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:45
 msgid "Animals"
@@ -340,10 +340,10 @@ msgstr "Zvieratá"
 msgid "Rutburt"
 msgstr "Rutburt"
 
+#. [side]: id=Rutburt, type=Outlaw
 #. [side]: type=General, id=leader2
 #. [side]: type=Lieutenant, id=leader5
 #. [side]: type=Lieutenant, id=leader6
-#. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:43
 #: data/ai/micro_ais/scenarios/goto.cfg:93
@@ -372,8 +372,8 @@ msgstr "Pavúky"
 msgid "Yetis"
 msgstr "Yetiovia"
 
-#. [event]
 #. [side]
+#. [event]
 #. [test]: id=wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:119
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:48
@@ -386,17 +386,17 @@ msgstr "Vlci"
 msgid "Whelps"
 msgstr "Mláďatá"
 
+#. [set_menu_item]: id=m01_end_animals
 #. [event]
 #. [set_menu_item]: id=m04_end_animals
 #. [set_menu_item]: id=m01_end_swarm
-#. [set_menu_item]: id=m01_end_animals
 #. [set_menu_item]: id=m01_end_wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:209
 #: data/ai/micro_ais/scenarios/dragon.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:382
 #: data/ai/micro_ais/scenarios/guardians.cfg:85
 #: data/ai/micro_ais/scenarios/lurkers.cfg:382
-#: data/ai/micro_ais/scenarios/patrols.cfg:177
+#: data/ai/micro_ais/scenarios/patrols.cfg:185
 #: data/ai/micro_ais/scenarios/swarm.cfg:66
 #: data/ai/micro_ais/scenarios/wolves.cfg:95
 msgid "End Scenario"
@@ -440,7 +440,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/animals.cfg:366
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:108
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:148
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:147
 #: data/ai/micro_ais/scenarios/wolves.cfg:204
 msgid "Question for the Player"
 msgstr "Otázka pre Hráča"
@@ -543,12 +543,12 @@ msgstr "Veľký Zlý Ork"
 msgid "All right, chaps. Those orcs need to be stopped."
 msgstr "OK, chlapi. Týchto orkov musíme zastaviť."
 
+#. [message]: speaker=Big Bad Orc
 #. [message]: speaker=Another Bad Orc
 #. [message]: speaker=Vanak
-#. [message]: speaker=Big Bad Orc
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:93
-#: data/ai/micro_ais/scenarios/guardians.cfg:550
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:138
+#: data/ai/micro_ais/scenarios/guardians.cfg:572
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:140
 msgid "They there!  We them get!"
 msgstr "Sú tam! Dostaneme ich!"
 
@@ -625,8 +625,8 @@ msgstr ""
 "Mohol som padnúť, ale v obrane priesmyku budeme pokračovať do posledného "
 "muža!"
 
-#. [event]
 #. [test]: id=dragon
+#. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:54
 msgid "Dragon"
@@ -653,12 +653,12 @@ msgid "Rowck"
 msgstr "Rowk"
 
 #. [message]: speaker=Dreadful Bat
-#: data/ai/micro_ais/scenarios/dragon.cfg:83
+#: data/ai/micro_ais/scenarios/dragon.cfg:85
 msgid "Be careful to stay out of the way of that dragon. He's a mean one."
 msgstr "Buď opatrný a nechoď do cesty tomu drakovi. Je to drsňák."
 
 #. [message]: speaker=Rowck
-#: data/ai/micro_ais/scenarios/dragon.cfg:89
+#: data/ai/micro_ais/scenarios/dragon.cfg:91
 msgid ""
 "Hi there. I am Rowck and here is what I do:\n"
 "When hungry, I move around part of the map in a random wander until I get "
@@ -701,28 +701,28 @@ msgstr ""
 "org/Micro_AIs pre viac informácii."
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/dragon.cfg:102
+#: data/ai/micro_ais/scenarios/dragon.cfg:104
 msgid "Move the bats around to explore how Rowck reacts"
 msgstr ""
 "Pošli netopierov na rôzne miesta, aby si zistil, ako bude Rowk reagovať"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/dragon.cfg:104
+#: data/ai/micro_ais/scenarios/dragon.cfg:106
 msgid "Defeat Rowck"
 msgstr "Poraz Rowka"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/dragon.cfg:108
+#: data/ai/micro_ais/scenarios/dragon.cfg:110
 msgid "Move the lead bat to the signpost"
 msgstr "Dostaň vodcu netopierov k smerovke"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/dragon.cfg:112
+#: data/ai/micro_ais/scenarios/dragon.cfg:114
 msgid "Death of the bat leader"
 msgstr "Smrť vodcu netopierov"
 
 #. [message]: speaker=Dreadful Bat
-#: data/ai/micro_ais/scenarios/dragon.cfg:147
+#: data/ai/micro_ais/scenarios/dragon.cfg:149
 msgid "I'm out of here."
 msgstr "Som odtiaľto preč."
 
@@ -949,12 +949,12 @@ msgstr ""
 "jediným riadkom,  'use_straight_line=yes/no'."
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/goto.cfg:589
+#: data/ai/micro_ais/scenarios/goto.cfg:591
 msgid "I told you so!"
 msgstr "Hovoril som ti to!"
 
 #. [message]: speaker=leader5
-#: data/ai/micro_ais/scenarios/goto.cfg:599
+#: data/ai/micro_ais/scenarios/goto.cfg:601
 msgid ""
 "Men, head down to the River Fort and get your orders from Sergeant Aethubry. "
 "I want each and every one of you to report to him before going east to fight "
@@ -965,7 +965,7 @@ msgstr ""
 "pôjdeme na východ bojovať s týmito saurami."
 
 #. [message]: speaker=leader6
-#: data/ai/micro_ais/scenarios/goto.cfg:608
+#: data/ai/micro_ais/scenarios/goto.cfg:610
 msgid ""
 "Hah, that's that pencil pusher Gadoc for you! Men, I want you to move toward "
 "the River Fort as well, but it's good enough for one of you to report to "
@@ -977,7 +977,7 @@ msgstr ""
 "jeden z vás. Hneď potom môže ísť zvyšok rovno do bitky."
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/goto.cfg:626
+#: data/ai/micro_ais/scenarios/goto.cfg:628
 msgid ""
 "$unit.language_name $unit.name from Lieutenant Gadoc's squadron reporting "
 "for duty, sir."
@@ -986,17 +986,17 @@ msgstr ""
 "ohlásiť, pane."
 
 #. [message]: speaker=fort_commander
-#: data/ai/micro_ais/scenarios/goto.cfg:642
+#: data/ai/micro_ais/scenarios/goto.cfg:644
 msgid "Ready to fight those saurians, soldier?"
 msgstr "Si pripravený bojovať s tými saurami, vojak?"
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/goto.cfg:646
+#: data/ai/micro_ais/scenarios/goto.cfg:648
 msgid "Yes, sir."
 msgstr "Áno, pane."
 
 #. [message]: speaker=fort_commander
-#: data/ai/micro_ais/scenarios/goto.cfg:654
+#: data/ai/micro_ais/scenarios/goto.cfg:656
 msgid ""
 "Very good, $unit.language_name. Now go help your comrade get rid of that "
 "saurian infestation in the swamps."
@@ -1005,24 +1005,24 @@ msgstr ""
 "ten saurský útok v močiaroch."
 
 #. [message]: speaker=fort_commander
-#: data/ai/micro_ais/scenarios/goto.cfg:662
+#: data/ai/micro_ais/scenarios/goto.cfg:664
 msgid "Maybe if I ignore them, they'll just go away?"
 msgstr "Možno ak ich budem ignorovať, jednoducho odídu preč?"
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/goto.cfg:681
+#: data/ai/micro_ais/scenarios/goto.cfg:683
 msgid "Lieutenant Senvan's men reporting for duty, sir."
 msgstr "Muži poručíka Senvana sa vám prišli ohlásiť, pane."
 
 #. [message]: speaker=fort_commander
-#: data/ai/micro_ais/scenarios/goto.cfg:685
+#: data/ai/micro_ais/scenarios/goto.cfg:687
 msgid ""
 "Ah, Lieutenant Senvan... Is every single one of you going to bother me "
 "individually as well?"
 msgstr "Ach, poručík Senvan... Každý z vás ma hodláte obťažovať po jednom?"
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/goto.cfg:689
+#: data/ai/micro_ais/scenarios/goto.cfg:691
 msgid ""
 "No, sir. Lieutenant Senvan ordered us to head into battle as soon as I have "
 "reported to you."
@@ -1031,7 +1031,7 @@ msgstr ""
 "ohlásim."
 
 #. [message]: speaker=fort_commander
-#: data/ai/micro_ais/scenarios/goto.cfg:693
+#: data/ai/micro_ais/scenarios/goto.cfg:695
 msgid ""
 "Well, that's a relief. Somebody knows how to use his ... I mean, very well, "
 "off you go then.\n"
@@ -1042,7 +1042,7 @@ msgstr ""
 "\n"
 
 #. [message]: speaker=fort_commander
-#: data/ai/micro_ais/scenarios/goto.cfg:695
+#: data/ai/micro_ais/scenarios/goto.cfg:697
 msgid ""
 "I wouldn't say anything negative about one of my superior officers now, "
 "would I?"
@@ -1050,12 +1050,12 @@ msgstr ""
 "Nepovedal by som nič negatívne o jednom z mojich nariadených, alebo snáď hej?"
 
 #. [message]: type=Vampire Bat
-#: data/ai/micro_ais/scenarios/goto.cfg:733
+#: data/ai/micro_ais/scenarios/goto.cfg:735
 msgid "We've all made it to the corners, let's get back together again."
 msgstr "Všetci sme sa dostali do rohov, poďme sa teraz spoločne vrátiť."
 
 #. [message]: type=Vampire Bat
-#: data/ai/micro_ais/scenarios/goto.cfg:774
+#: data/ai/micro_ais/scenarios/goto.cfg:776
 msgid "We're back together, let's head out to the corners again."
 msgstr "Spoločne sme sa vrátili, tak zase každý smerujme naspäť do rohov."
 
@@ -1099,94 +1099,94 @@ msgid "Coward 1"
 msgstr "Zbabelec 1"
 
 #. [unit]: type=Giant Rat, id=coward2
-#: data/ai/micro_ais/scenarios/guardians.cfg:142
+#: data/ai/micro_ais/scenarios/guardians.cfg:144
 msgid "Coward 2"
 msgstr "Zbabelec 2"
 
 #. [unit]: type=Giant Rat, id=coward3
-#: data/ai/micro_ais/scenarios/guardians.cfg:166
+#: data/ai/micro_ais/scenarios/guardians.cfg:170
 msgid "Coward 3"
 msgstr "Zbabelec 3"
 
 #. [unit]: type=Giant Rat, id=coward4
-#: data/ai/micro_ais/scenarios/guardians.cfg:191
+#: data/ai/micro_ais/scenarios/guardians.cfg:197
 msgid "Coward 4"
 msgstr "Zbabelec 4"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/guardians.cfg:211
+#: data/ai/micro_ais/scenarios/guardians.cfg:219
 msgid "Move gryphons here to see different coward reactions"
 msgstr "Dostaň gryfonov sem, aby si uvidel rôzne reakcie zbabelcov"
 
 #. [unit]: type=Troll, id=return1
-#: data/ai/micro_ais/scenarios/guardians.cfg:220
+#: data/ai/micro_ais/scenarios/guardians.cfg:228
 msgid "Return Guardian 1"
 msgstr "Vracajúci sa Strážca 1"
 
 #. [unit]: type=Troll Whelp, id=return2
-#: data/ai/micro_ais/scenarios/guardians.cfg:239
+#: data/ai/micro_ais/scenarios/guardians.cfg:249
 msgid "Return Guardian 2"
 msgstr "Vracajúci sa Strážca 1"
 
 #. [unit]: type=Troll Whelp, id=home1
-#: data/ai/micro_ais/scenarios/guardians.cfg:259
+#: data/ai/micro_ais/scenarios/guardians.cfg:271
 msgid "Home Guard 1"
 msgstr "Domový Strážca 1"
 
 #. [unit]: type=Troll, id=home 2
-#: data/ai/micro_ais/scenarios/guardians.cfg:271
+#: data/ai/micro_ais/scenarios/guardians.cfg:283
 msgid "Home Guard 2"
 msgstr "Domový Strážca 2"
 
 #. [unit]: type=Skeleton Archer, id=stationed1
-#: data/ai/micro_ais/scenarios/guardians.cfg:284
+#: data/ai/micro_ais/scenarios/guardians.cfg:296
 msgid "Stationed Guardian 1"
 msgstr "Umiestnený Strážca 1"
 
 #. [unit]: type=Skeleton, id=stationed2
-#: data/ai/micro_ais/scenarios/guardians.cfg:306
+#: data/ai/micro_ais/scenarios/guardians.cfg:320
 msgid "Stationed Guardian 2"
 msgstr "Umiestnený Strážca 2"
 
 #. [unit]: type=Troll, id=zone1
-#: data/ai/micro_ais/scenarios/guardians.cfg:329
+#: data/ai/micro_ais/scenarios/guardians.cfg:345
 msgid "Gate Keeper"
 msgstr "Dverník"
 
 #. [unit]: type=Dwarvish Guardsman, id=zone2
-#: data/ai/micro_ais/scenarios/guardians.cfg:354
+#: data/ai/micro_ais/scenarios/guardians.cfg:372
 msgid "Home Keeper"
 msgstr "Domovník"
 
 #. [unit]: type=Naga Fighter, id=zone3
-#: data/ai/micro_ais/scenarios/guardians.cfg:383
+#: data/ai/micro_ais/scenarios/guardians.cfg:403
 msgid "Water Guardian"
 msgstr "Vodný Strážca"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/guardians.cfg:402
+#: data/ai/micro_ais/scenarios/guardians.cfg:424
 msgid "Guarded Location"
 msgstr "Strážené Miesto"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/guardians.cfg:403
+#: data/ai/micro_ais/scenarios/guardians.cfg:425
 msgid "Station 1"
 msgstr "Miesto 1"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/guardians.cfg:404
+#: data/ai/micro_ais/scenarios/guardians.cfg:426
 msgid "Station 2"
 msgstr "Miesto 2"
 
 #. [message]: speaker=narrator
 #. [set_menu_item]: id=m01_guardian
-#: data/ai/micro_ais/scenarios/guardians.cfg:425
-#: data/ai/micro_ais/scenarios/guardians.cfg:434
+#: data/ai/micro_ais/scenarios/guardians.cfg:447
+#: data/ai/micro_ais/scenarios/guardians.cfg:456
 msgid "Standard WML Guardian"
 msgstr "Štandardný WML Strážca"
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/guardians.cfg:435
+#: data/ai/micro_ais/scenarios/guardians.cfg:457
 msgid ""
 "This is the built-in WML guardian coded using 'ai_special=guardian'. These "
 "guardians attack if there is an enemy within their movement range, otherwise "
@@ -1198,13 +1198,13 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #. [set_menu_item]: id=m02_return
-#: data/ai/micro_ais/scenarios/guardians.cfg:441
-#: data/ai/micro_ais/scenarios/guardians.cfg:450
+#: data/ai/micro_ais/scenarios/guardians.cfg:463
+#: data/ai/micro_ais/scenarios/guardians.cfg:472
 msgid "Return Guardian"
 msgstr "Vracajúci sa Strážca"
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/guardians.cfg:451
+#: data/ai/micro_ais/scenarios/guardians.cfg:473
 msgid ""
 "A 'return guardian' is a variation of the standard Wesnoth guardian. It has "
 "an assigned guard position (GP) to which it returns after attacks on "
@@ -1232,13 +1232,13 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #. [set_menu_item]: id=m03_home
-#: data/ai/micro_ais/scenarios/guardians.cfg:462
-#: data/ai/micro_ais/scenarios/guardians.cfg:471
+#: data/ai/micro_ais/scenarios/guardians.cfg:484
+#: data/ai/micro_ais/scenarios/guardians.cfg:493
 msgid "Home Guard"
 msgstr "Domový Strážca"
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/guardians.cfg:472
+#: data/ai/micro_ais/scenarios/guardians.cfg:494
 msgid ""
 "A 'home guard' is a variant on the 'guardian' AI special. With this variant, "
 "the unit has an assigned 'home' location, and will return there if not "
@@ -1271,13 +1271,13 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #. [set_menu_item]: id=m04_stationed
-#: data/ai/micro_ais/scenarios/guardians.cfg:479
-#: data/ai/micro_ais/scenarios/guardians.cfg:488
+#: data/ai/micro_ais/scenarios/guardians.cfg:501
+#: data/ai/micro_ais/scenarios/guardians.cfg:510
 msgid "Stationed Guardian"
 msgstr "Umiestnený Strážca"
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/guardians.cfg:489
+#: data/ai/micro_ais/scenarios/guardians.cfg:511
 msgid ""
 "A 'stationed guardian' is another variation of the standard Wesnoth guardian "
 "with a somewhat more complex behavior than that of the 'return guardian'. "
@@ -1312,13 +1312,13 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #. [set_menu_item]: id=m05_coward
-#: data/ai/micro_ais/scenarios/guardians.cfg:501
-#: data/ai/micro_ais/scenarios/guardians.cfg:510
+#: data/ai/micro_ais/scenarios/guardians.cfg:523
+#: data/ai/micro_ais/scenarios/guardians.cfg:532
 msgid "Coward"
 msgstr "Zbabelec"
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/guardians.cfg:511
+#: data/ai/micro_ais/scenarios/guardians.cfg:533
 msgid ""
 "Cowards are units that, like guardians, sit around doing nothing until an "
 "enemy comes into range. Unlike guardians, however, they run away once "
@@ -1351,13 +1351,13 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #. [set_menu_item]: id=m06_zone
-#: data/ai/micro_ais/scenarios/guardians.cfg:521
-#: data/ai/micro_ais/scenarios/guardians.cfg:530
+#: data/ai/micro_ais/scenarios/guardians.cfg:543
+#: data/ai/micro_ais/scenarios/guardians.cfg:552
 msgid "Zone Guardian"
 msgstr "Strážca Zóny"
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/guardians.cfg:531
+#: data/ai/micro_ais/scenarios/guardians.cfg:553
 msgid ""
 "A zone guardian is a unit that, as the name says, guards a zone. It moves "
 "randomly inside this zone until an enemy enters it (or a separately defined "
@@ -1379,12 +1379,12 @@ msgstr ""
 "nebudú žiadni nepriatelia, vráti sa hliadkovať späť do svojej základnej zóny."
 
 #. [message]: speaker=Kraa
-#: data/ai/micro_ais/scenarios/guardians.cfg:546
+#: data/ai/micro_ais/scenarios/guardians.cfg:568
 msgid "Kraahhh!!!!"
 msgstr "Kraaaaaa!!!"
 
 #. [message]: speaker=Kraa
-#: data/ai/micro_ais/scenarios/guardians.cfg:556
+#: data/ai/micro_ais/scenarios/guardians.cfg:578
 msgid ""
 "Gryphons of the High Plains, look at all these enemies. They don't behave "
 "normally. Most of them don't move at all unless we get close. Let's check "
@@ -1411,29 +1411,29 @@ msgstr ""
 "stránku</span> na http://wiki.wesnoth.org/Micro_AIs pre viac informácii."
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/guardians.cfg:566
+#: data/ai/micro_ais/scenarios/guardians.cfg:588
 msgid "Move the Gryphons around to explore how the guardians react"
 msgstr ""
 "Posielaj Gryfov na rôzne miesta, aby si zistil, ako budú strážnici reagovať"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/guardians.cfg:568
-#: data/ai/micro_ais/scenarios/patrols.cfg:248
+#: data/ai/micro_ais/scenarios/guardians.cfg:590
+#: data/ai/micro_ais/scenarios/patrols.cfg:256
 msgid "Defeat all enemy units"
 msgstr "Poraz všetky nepriateľské jednotky"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/guardians.cfg:572
+#: data/ai/micro_ais/scenarios/guardians.cfg:594
 msgid "Move Kraa to the signpost"
 msgstr "Dostaň Kraa k smerovke"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/guardians.cfg:576
+#: data/ai/micro_ais/scenarios/guardians.cfg:598
 msgid "Death of Kraa"
 msgstr "Smrť Kraa-a"
 
 #. [note]
-#: data/ai/micro_ais/scenarios/guardians.cfg:580
+#: data/ai/micro_ais/scenarios/guardians.cfg:602
 msgid ""
 "Check out the right-click menu options for information on each guardian type"
 msgstr ""
@@ -1441,7 +1441,7 @@ msgstr ""
 "každom type strážcu"
 
 #. [message]: speaker=Kraa
-#: data/ai/micro_ais/scenarios/guardians.cfg:637
+#: data/ai/micro_ais/scenarios/guardians.cfg:659
 msgid ""
 "Gryphons of the High Plains, it is time to return to said plains. Follow me."
 msgstr "Gryfovia z Vysokých Pláni, je čas sa vrátiť. Nasledujte ma."
@@ -1467,7 +1467,7 @@ msgid "Outlaw moves here"
 msgstr "Štvanec sa pohne sem"
 
 #. [message]: speaker=Good Bandit
-#: data/ai/micro_ais/scenarios/hang_out.cfg:118
+#: data/ai/micro_ais/scenarios/hang_out.cfg:120
 msgid ""
 "That outlaw over there is going to run for the keep in the southeast.  He's "
 "only going to recruit for three rounds before he'll start moving and he and "
@@ -1495,7 +1495,7 @@ msgstr ""
 "http://wiki.wesnoth.org/Micro_AIs pre viac informácii."
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/hang_out.cfg:125
+#: data/ai/micro_ais/scenarios/hang_out.cfg:127
 msgid ""
 "Get into the outlaw's way before he can make it to the south-eastern keep"
 msgstr ""
@@ -1503,27 +1503,27 @@ msgstr ""
 "pevnosti"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/hang_out.cfg:127
+#: data/ai/micro_ais/scenarios/hang_out.cfg:129
 msgid "Death of Bad Outlaw"
 msgstr "Smrť Zlého Štvanca"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/hang_out.cfg:131
+#: data/ai/micro_ais/scenarios/hang_out.cfg:133
 msgid "Death of Good Bandit"
 msgstr "Smrť Dobrého Banditu"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/hang_out.cfg:135
+#: data/ai/micro_ais/scenarios/hang_out.cfg:137
 msgid "Bad Outlaw makes it to the signpost"
 msgstr "Zlý Štvanec sa dostane k smerovke"
 
 #. [message]: speaker=Good Bandit
-#: data/ai/micro_ais/scenarios/hang_out.cfg:149
+#: data/ai/micro_ais/scenarios/hang_out.cfg:151
 msgid "We got him! Now whatever it is we are fighting for is safe."
 msgstr "Máme ho! Teraz je všetko, za čo bojujeme, v bezpečí."
 
 #. [message]: speaker=Bad Outlaw
-#: data/ai/micro_ais/scenarios/hang_out.cfg:176
+#: data/ai/micro_ais/scenarios/hang_out.cfg:178
 msgid ""
 "I made it! Now we can keep fighting for whatever it is that we are fighting "
 "for."
@@ -1705,8 +1705,8 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/lurkers.cfg:474
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:149
-#: data/ai/micro_ais/scenarios/patrols.cfg:230
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:151
+#: data/ai/micro_ais/scenarios/patrols.cfg:238
 #: data/ai/micro_ais/scenarios/recruiting.cfg:100
 msgid "Notes"
 msgstr "Poznámky"
@@ -1787,35 +1787,35 @@ msgstr "Vanak"
 #. [unit]: type=Dragoon, id=messenger
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:37
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:71
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:73
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:72
 msgid "Messenger"
 msgstr "Posol"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:121
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:123
 #, fuzzy
 #| msgid "Messenger Waypoint 2"
 msgid "Messenger Waypoint 1"
 msgstr "Poslov smerový bod 2"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:123
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:125
 msgid "Messenger Waypoint 2"
 msgstr "Poslov smerový bod 2"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:125
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:127
 msgid "Messenger Waypoint 3"
 msgstr "Poslov smerový bod 3"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:128
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:130
 msgid "AI moves Messenger here"
 msgstr "AI pošle Posla sem"
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:143
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:145
 msgid ""
 "Men, I need to get to that signpost in the north, to get the message to our "
 "leader. Let's head up there as quickly as we can."
@@ -1824,7 +1824,7 @@ msgstr ""
 "nášmu veliteľovi. Poďme na sever tak rýchlo, ako to len pôjde."
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:150
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:152
 msgid ""
 "The Messenger Escort AI will try to move the dragoon messenger to the "
 "signpost in the north, while protecting him as well as possible with the "
@@ -1861,32 +1861,32 @@ msgstr ""
 "org/Micro_AIs pre viac informácii."
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:163
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:165
 msgid "Defeat the messenger"
 msgstr "Poraz posla"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:167
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:169
 msgid "Messenger gets to the signpost"
 msgstr "Posol sa dostane k smerovke"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:171
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:173
 msgid "Death of Vanak"
 msgstr "Smrť Vanaka"
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:187
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:189
 msgid "I made it!  Now our people will be safe."
 msgstr "Dokázal som to! Teraz budú naši ľudia v bezpečí."
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:202
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:204
 msgid "Nooo!  All is lost. We will never stop the orcs now!"
 msgstr "Nieee! Všetko je stratené. Nikdy sa nám už nepodarí zastaviť orkov!"
 
-#. [event]
 #. [test]: id=patrols
+#. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:75
 msgid "Patrols"
@@ -1918,47 +1918,47 @@ msgid "Urudin"
 msgstr "Urudín"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/patrols.cfg:180
+#: data/ai/micro_ais/scenarios/patrols.cfg:188
 msgid "Konrad Waypoint 1"
 msgstr "Konrádov smerový bod 1"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/patrols.cfg:182
+#: data/ai/micro_ais/scenarios/patrols.cfg:190
 msgid "Konrad Waypoint 2"
 msgstr "Konrádov smerový bod 2"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/patrols.cfg:184
+#: data/ai/micro_ais/scenarios/patrols.cfg:192
 msgid "Konrad Final Waypoint"
 msgstr "Konrádov cieľový smerový bod"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/patrols.cfg:187
+#: data/ai/micro_ais/scenarios/patrols.cfg:195
 msgid "Patrol Waypoint 1"
 msgstr "Smerový bod hliadky 1"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/patrols.cfg:189
+#: data/ai/micro_ais/scenarios/patrols.cfg:197
 msgid "Patrol Waypoint 2"
 msgstr "Smerový bod hliadky 2"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/patrols.cfg:191
+#: data/ai/micro_ais/scenarios/patrols.cfg:199
 msgid "Patrol Waypoint 3"
 msgstr "Smerový bod hliadky 3"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/patrols.cfg:193
+#: data/ai/micro_ais/scenarios/patrols.cfg:201
 msgid "Patrol Waypoint 4"
 msgstr "Smerový bod hliadky 4"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/patrols.cfg:196
+#: data/ai/micro_ais/scenarios/patrols.cfg:204
 msgid "Urudin retreats here"
 msgstr "Urudín ustúpi sem"
 
 #. [message]: speaker=Konrad
-#: data/ai/micro_ais/scenarios/patrols.cfg:207
+#: data/ai/micro_ais/scenarios/patrols.cfg:215
 msgid ""
 "Hello!  I'm a Konrad impostor. We are going to demonstrate the Patrol AI to "
 "you in this scenario.\n"
@@ -1983,7 +1983,7 @@ msgstr ""
 "Všetko z tohto je implementované pomocou Hliadkového [micro_ai] tagu."
 
 #. [message]: speaker=guard1
-#: data/ai/micro_ais/scenarios/patrols.cfg:217
+#: data/ai/micro_ais/scenarios/patrols.cfg:225
 msgid ""
 "By contrast, I am a zone guardian patrolling, in a way, the southernmost "
 "part of the map.  This AI is implemented via the Guardian [micro_ai] tag.  "
@@ -1998,7 +1998,7 @@ msgstr ""
 "oddelený špeciálny scenár."
 
 #. [message]: speaker=Urudin
-#: data/ai/micro_ais/scenarios/patrols.cfg:221
+#: data/ai/micro_ais/scenarios/patrols.cfg:229
 msgid ""
 "And I am Urudin. I will attack my enemies for a few turns, but will retreat "
 "toward the right edge of the map if my hitpoints are below half of maximum "
@@ -2014,7 +2014,7 @@ msgstr ""
 "Toto AI je nezávislé od Hliadok strany 2."
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/patrols.cfg:231
+#: data/ai/micro_ais/scenarios/patrols.cfg:239
 msgid ""
 "You, as the player, are in charge of Gertburt's bandits in this scenario. "
 "You can either simply watch the patrols move around, or you can move units "
@@ -2065,22 +2065,22 @@ msgstr ""
 "span> na http://wiki.wesnoth.org/Micro_AIs pre viac informácii."
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/patrols.cfg:246
+#: data/ai/micro_ais/scenarios/patrols.cfg:254
 msgid "Watch the patrols, attack them etc."
 msgstr "Sleduj hliadky, útoč na ne, atď."
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/patrols.cfg:252
+#: data/ai/micro_ais/scenarios/patrols.cfg:260
 msgid "Move Gertburt to the signpost"
 msgstr "Dostaň Gertburta k smerovke"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/patrols.cfg:256
+#: data/ai/micro_ais/scenarios/patrols.cfg:264
 msgid "Death of Gertburt"
 msgstr "Smrť Gertburta"
 
 #. [message]: speaker=Konrad
-#: data/ai/micro_ais/scenarios/patrols.cfg:273
+#: data/ai/micro_ais/scenarios/patrols.cfg:281
 msgid ""
 "Well, that was fun!  I'll just hang out here now and watch those two guys "
 "walk and walk and ..."
@@ -2089,12 +2089,12 @@ msgstr ""
 "ako tí dvaja chlapci chodia, chodia a chodia..."
 
 #. [message]: speaker=Gertburt
-#: data/ai/micro_ais/scenarios/patrols.cfg:317
+#: data/ai/micro_ais/scenarios/patrols.cfg:325
 msgid "Let's go home, chaps."
 msgstr "Poďme domov, chlapi."
 
-#. [event]
 #. [test]: id=protect_unit
+#. [event]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:63
 msgid "Protect Unit"
@@ -2125,17 +2125,17 @@ msgid "team_name^Koorzhar"
 msgstr "team_name^Korzár"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:120
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:119
 msgid "Move Rossauba here"
 msgstr "Dostaň Rossaubu sem"
 
 #. [message]: speaker=Koorzhar
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:130
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:129
 msgid "There's that traitor wizard. Let's get him."
 msgstr "Tam je ten čarodejník zradca. Poďme ho chytiť."
 
 #. [message]: speaker=Langzhar
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:135
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:134
 msgid ""
 "Men, you know the deal. We must protect Rossauba under all circumstances. "
 "Even my survival is not as important."
@@ -2144,12 +2144,12 @@ msgstr ""
 "ani moje vlastné prežitie nie je tak dôležité."
 
 #. [message]: speaker=Rossauba
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:139
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:138
 msgid "That's very kind of you, but ..."
 msgstr "To je od teba veľmi milé, ale ..."
 
 #. [message]: speaker=Langzhar
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:143
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:142
 msgid ""
 "No buts!  You stay behind the lines and do not engage in battle unless there "
 "is no risk to your life, is that understood?  And get to that signpost in "
@@ -2160,7 +2160,7 @@ msgstr ""
 "severozápade, ak je to bezpečné."
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:151
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:150
 msgid ""
 "In this scenario, the AI playing the humans in the east (Langzhar) is "
 "instructed to protect the wizard Rossauba, while moving him safely to the "
@@ -2185,14 +2185,14 @@ msgstr ""
 "http://wiki.wesnoth.org/Micro_AIs pre viac informácii."
 
 #. [option]
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:156
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:155
 msgid "<span font='16'>I'll watch the two AIs fight it out</span>"
 msgstr ""
 "<span font='16'>Budem sa pozerať, ako si to tie dve AI medzi sebou vybojujú</"
 "span>"
 
 #. [option]
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:159
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:158
 msgid ""
 "<span font='16'>I'll play Langzhar's side (to see how Koorzhar's units "
 "target Rossauba)</span>"
@@ -2201,7 +2201,7 @@ msgstr ""
 "jednotky mieria na Rossaubu)</span>"
 
 #. [option]
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:168
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:167
 msgid ""
 "<span font='16'>I'll play Koorzhar's side (to see how Langzhar's units "
 "protect Rossauba)</span>"
@@ -2210,49 +2210,49 @@ msgstr ""
 "jednotky ochraňujú Rossaubu)</span>"
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:180
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:179
 msgid "Protect Rossauba while moving him to the signpost"
 msgstr "Ochraňuj Rossaubu zatiaľ čo pôjde k smerovke"
 
 #. [objective]: condition=win
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:182
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:202
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:181
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:201
 msgid "Rossauba makes it to the signpost"
 msgstr "Rossauba sa dostane k smerovke"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:186
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:185
 msgid "Death of Rossauba"
 msgstr "Smrť Rossaubu"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:190
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:189
 msgid "Death of Langzhar"
 msgstr "Smrť Langzara"
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:196
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:195
 msgid "Get rid of that traitor wizard Rossauba"
 msgstr "Zbav sa toho zradcovského čarodejníka Rossaubu"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:198
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:197
 msgid "Defeat Rossauba"
 msgstr "Poraz Rossaubu"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:206
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:205
 msgid "Death of Koorzhar"
 msgstr "Smrť Korzára"
 
 #. [message]: speaker=Rossauba
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:231
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:230
 msgid "I held out for as long as I could."
 msgstr "Držal som sa tak dlho, ako to len šlo."
 
 #. [message]: speaker=Rossauba
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:249
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:248
 msgid "I made it"
 msgstr "Dokázal som to"
 

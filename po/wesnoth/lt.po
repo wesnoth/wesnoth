@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-15 23:33-0400\n"
+"POT-Creation-Date: 2018-05-26 15:04+0300\n"
 "PO-Revision-Date: 2017-03-23 13:36+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
@@ -319,14 +319,14 @@ msgstr "apnuodytas"
 
 #. [objectives]
 #. [lua]: generate_objectives
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:208
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:260
 #: data/lua/wml/objectives.lua:38
 msgid "Gold carryover:"
 msgstr "Aukso pernešimas:"
 
 #. [note]
 #. [lua]: generate_objectives
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:220
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:272
 #: data/lua/wml/objectives.lua:39
 msgid "Notes:"
 msgstr "Pastabos:"
@@ -1504,21 +1504,21 @@ msgid "<small>(early finish bonus)</small>"
 msgstr "<small>(ankstyvo pabaigimo premija)</small>"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:98 data/lua/wml/objectives.lua:106
+#: data/core/macros/deprecated-utils.cfg:99 data/lua/wml/objectives.lua:106
 msgid "Early finish bonus."
 msgstr "Ankstyvo pabaigimo premija."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:101 data/lua/wml/objectives.lua:109
+#: data/core/macros/deprecated-utils.cfg:103 data/lua/wml/objectives.lua:109
 msgid "No early finish bonus."
 msgstr "Nėra ankstyvo pabaigimo premijos."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:104 data/lua/wml/objectives.lua:117
+#: data/core/macros/deprecated-utils.cfg:107 data/lua/wml/objectives.lua:117
 msgid "No gold carried over to the next scenario."
 msgstr "Nė kiek aukso nepernešama į kitą scenarijų."
 
-#: data/core/macros/deprecated-utils.cfg:107
+#: data/core/macros/deprecated-utils.cfg:111
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
@@ -1526,7 +1526,7 @@ msgstr ""
 "\n"
 "100% baigiamojo aukso pernešama į kitą scenarijų."
 
-#: data/core/macros/deprecated-utils.cfg:111
+#: data/core/macros/deprecated-utils.cfg:116
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
@@ -1534,7 +1534,7 @@ msgstr ""
 "\n"
 "40% baigiamojo aukso pernešama į kitą scenarijų."
 
-#: data/core/macros/deprecated-utils.cfg:115
+#: data/core/macros/deprecated-utils.cfg:121
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -1758,7 +1758,7 @@ msgstr ""
 "Olatė,Omagė,Omagra,Ora Ka,Oridan,Oridė,Ošibi,Valin,Valnira,Valnitė,Velisk,"
 "Vera,Velin Ka,Veštar,Vuštin"
 
-#. Generator for male drake names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for male drake names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:21
 msgid ""
 "\n"
@@ -1770,7 +1770,7 @@ msgid ""
 "ritos|rusté|shitt|nick|rath|ditt|kon|mad|tick|nir\n"
 msgstr ""
 
-#. Generator for female drake names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for female drake names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:28
 msgid ""
 "\n"
@@ -1879,7 +1879,7 @@ msgstr ""
 "Trithdurlosas,Trithdurolas,Trithdursilas,Trithdurusas,Triththaasas,"
 "Triththailas,Triththaingas,Triththasolas,Triththausas"
 
-#. Generator for male dwarf names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for male dwarf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:39
 msgid ""
 "\n"
@@ -2158,7 +2158,7 @@ msgstr ""
 "Gandra,Violindė,Viovielė,Vitranga,Vitranielė,Vivielė,Vódija,Vónga,Vorfiklija,"
 "Vorfinga,Vorfiritė,Vorfivielė,Vóviena"
 
-#. Generator for male elf names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for male elf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:53
 msgid ""
 "\n"
@@ -2177,7 +2177,7 @@ msgid ""
 "nim|nol|bris|lad|rier|ra|fil|thran|man\n"
 msgstr ""
 
-#. Generator for female elf names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for female elf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:67
 msgid ""
 "\n"
@@ -2210,7 +2210,7 @@ msgstr "Graa,Greaa,Gree,Kaaa,Kasšš,Kesšš,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
 msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
 msgstr "Kaasa,Kajja,Kejja,Kiira,Korra"
 
-#. Generator for male gryphon names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for male gryphon names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:90
 msgid ""
 "\n"
@@ -2220,7 +2220,7 @@ msgid ""
 "centre=arr|aash|eez|ozz\n"
 msgstr ""
 
-#. Generator for female gryphon names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for female gryphon names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:97
 msgid ""
 "\n"
@@ -2446,7 +2446,7 @@ msgstr ""
 "Yselonnas,Ysilyanas,Ysinoicas,Ysoddas,Ysongwenas,Ysonoicas,Ysuras,Yswniveras,"
 "Ysyclas,Ysyllas,Ysylyanas,Ysyrkas,Ysyssas"
 
-#. Generator for male Wesnothian human names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for male Wesnothian human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:109
 msgid ""
 "\n"
@@ -2468,7 +2468,7 @@ msgid ""
 "centre_v=rae|ra|thar|gwy\n"
 msgstr ""
 
-#. Generator for female Wesnothian human names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for female Wesnothian human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:125
 msgid ""
 "\n"
@@ -2568,7 +2568,7 @@ msgid ""
 "Ziyad,Zubayr,Zuhayr"
 msgstr ""
 
-#. Generator for male dunefolk human names
+#. Generator for male dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:145
 msgid ""
 "\n"
@@ -2586,7 +2586,7 @@ msgid ""
 "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 msgstr ""
 
-#. Generator for female dunefolk human names
+#. Generator for female dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:156
 msgid ""
 "\n"
@@ -2645,7 +2645,7 @@ msgstr ""
 "Xirtrezas,Xirzas,Zandleris,Zedrixas,Zilrixas,Zizzaszas,Zslapas,Zzalkzas,"
 "Zzupdenas"
 
-#. Generator for saurian names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for saurian names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:178
 msgid ""
 "\n"
@@ -2690,7 +2690,7 @@ msgstr ""
 "Marina,Miranda,Miriam,Molpė,Partenopė,Pelagija,Peisinojė,Râna,Sedna,Stela "
 "Maris,Telksiepėja,Tirgata,Vatėja,Ved-Ava,Veen emona,Vete-ema"
 
-#. Generator for merman names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for merman names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:190
 msgid ""
 "\n"
@@ -2702,7 +2702,7 @@ msgid ""
 "centre=la|ma|ri|sei|te|ka|li|cer|tu|ni|ki|na|ga|si\n"
 msgstr ""
 
-#. Generator for mermaid names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for mermaid names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:197
 msgid ""
 "\n"
@@ -2750,7 +2750,7 @@ msgstr ""
 "Srakė,Sralė,Szakė,Trikszedė,Vilaila,Vissalai,Vlanissa,Zabrakė,Zamalia,Zina,"
 "Zinasia,Znamasė,Zopknė,Zalspė,Zlekė,Zpsekė,Zsekpė"
 
-#. Generator for male naga names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for male naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:209
 msgid ""
 "\n"
@@ -2762,7 +2762,7 @@ msgid ""
 "iaz|on|sal|ol|kil|oz|ail|al|nis|rak|lel|nas|kon|ekp\n"
 msgstr ""
 
-#. Generator for female naga names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for female naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:215
 msgid ""
 "\n"
@@ -2791,7 +2791,7 @@ msgstr ""
 "Makronas,Markaakas,Markukas,Merknikas,Nargakas,Olkas,Orkutas,Reknakas,"
 "Takolakas,Trabukas,Trakkonas,Urkaras,Urkarkas"
 
-#. Generator for ogre names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for ogre names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:225
 msgid ""
 "\n"
@@ -2909,7 +2909,7 @@ msgstr ""
 "Tohgas,Torgas,Trokas,Tsokas,Tuhas,Tukas Ru,Uggas,Ühas,Urgas,Urghas,Urkas,"
 "Vakas,Zogas,Zuugas"
 
-#. Generator for troll names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for troll names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:249
 msgid ""
 "\n"
@@ -2951,7 +2951,7 @@ msgstr ""
 "Temtunnongetemas,Tondenkontenkonas,Trūmbadūmas,Tumtentantarunas,"
 "Tumtonnongatumas,Tumtumgamtomtomas,Vonrunmaldinas,Vudadūnoplas"
 
-#. Generator for wose names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for wose names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:262
 msgid ""
 "\n"
@@ -2977,7 +2977,7 @@ msgstr ""
 "Hoksas,Ilas,Kinas,Namis,Nesas,Naujas,Olas,Senas,Olfas,Oulas,Oksas,Rokas,"
 "Rukas,Salas,Samas,Sedas,Selas,Senas,Silas,Talas,Vanduo,Vetas,Jorkas"
 
-#. Generator for the base names of features assigned by the random map generator; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
+#. Generator for the base names of features assigned by the random map generator; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:273
 msgid ""
 "\n"
@@ -3030,168 +3030,168 @@ msgstr ""
 "šiame scenarijuje. $side_number pusė skirta žaisti žmogui."
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:282
+#: data/core/macros/sound-utils.cfg:157
 msgid "Battle Epic"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:288
+#: data/core/macros/sound-utils.cfg:163
 msgid "Battle Music"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:294
+#: data/core/macros/sound-utils.cfg:169
 msgid "Breaking the Chains"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:300
+#: data/core/macros/sound-utils.cfg:175
 msgid "Casualties of War"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:306
+#: data/core/macros/sound-utils.cfg:181
 msgid "Elf Land"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:312
+#: data/core/macros/sound-utils.cfg:187
 msgid "Elvish theme"
 msgstr "Elfų tema"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:318
+#: data/core/macros/sound-utils.cfg:193
 msgid "Frantic"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:324
+#: data/core/macros/sound-utils.cfg:199
 msgid "Heroes Rite"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:330
+#: data/core/macros/sound-utils.cfg:205
 msgid "Into the Shadows"
 msgstr "Į šešėlius"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:336
+#: data/core/macros/sound-utils.cfg:211
 msgid "Journey’s End"
 msgstr "Kelionės pabaiga"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:342
+#: data/core/macros/sound-utils.cfg:217
 msgid "Knalgan Theme"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:348
+#: data/core/macros/sound-utils.cfg:223
 msgid "The Knolls of Doldesh"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:354
+#: data/core/macros/sound-utils.cfg:229
 msgid "Legends of the North"
 msgstr "Šiaurės legendos"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:360
+#: data/core/macros/sound-utils.cfg:235
 msgid "Love Theme"
 msgstr "Meilės tema"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:366
+#: data/core/macros/sound-utils.cfg:241
 msgid "Loyalists"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:372
+#: data/core/macros/sound-utils.cfg:247
 msgid "Over the Northern Mountains"
 msgstr "Virš šiaurinių kalnų"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:378
+#: data/core/macros/sound-utils.cfg:253
 msgid "Northerners"
 msgstr "Šiauriečiai"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:384
+#: data/core/macros/sound-utils.cfg:259
 msgid "Nunc Dimittis"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:390
+#: data/core/macros/sound-utils.cfg:265
 msgid "Revelation"
 msgstr "Atskleidimas"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:396
+#: data/core/macros/sound-utils.cfg:271
 msgid "Sad"
 msgstr "Liūdna"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:402
+#: data/core/macros/sound-utils.cfg:277
 msgid "Siege of Laurelmor"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:408
+#: data/core/macros/sound-utils.cfg:283
 msgid "Silvan Sanctuary"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:414
+#: data/core/macros/sound-utils.cfg:289
 msgid "Suspense"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:420
+#: data/core/macros/sound-utils.cfg:295
 msgid "The City Falls"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:426
+#: data/core/macros/sound-utils.cfg:301
 msgid "The Dangerous Symphony"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:432
+#: data/core/macros/sound-utils.cfg:307
 #, fuzzy
 msgid "The Deep Path"
 msgstr "Gilus vanduo"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:438
+#: data/core/macros/sound-utils.cfg:313
 msgid "The King is Dead"
 msgstr "Karalius miręs"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:444
+#: data/core/macros/sound-utils.cfg:319
 msgid "Transience"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:450
+#: data/core/macros/sound-utils.cfg:325
 msgid "Traveling Minstrels"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:456
+#: data/core/macros/sound-utils.cfg:331
 msgid "Underground"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:462
+#: data/core/macros/sound-utils.cfg:337
 msgid "Vengeful Pursuit"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:468
+#: data/core/macros/sound-utils.cfg:343
 msgid "Still Another Wanderer"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:474
+#: data/core/macros/sound-utils.cfg:349
 #, fuzzy
 msgid "Weight of Revenge"
 msgstr "Ryškiai oranžinė"
@@ -3379,14 +3379,14 @@ msgstr "Nepereinama"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:451
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:456
 msgid "Fog"
 msgstr "Rūkas"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:454
-#: src/game_initialization/lobby_data.cpp:457
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:459
+#: src/game_initialization/lobby_data.cpp:462
 msgid "Shroud"
 msgstr "Uždanga"
 
@@ -3820,8 +3820,8 @@ msgstr "negydomas"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:390 src/scripting/game_lua_kernel.cpp:2779
-#: src/scripting/game_lua_kernel.cpp:2814
+#: data/lua/wml/message.lua:390 src/scripting/game_lua_kernel.cpp:2783
+#: src/scripting/game_lua_kernel.cpp:2818
 msgid "input"
 msgstr ""
 
@@ -3858,21 +3858,21 @@ msgstr "%d%% aukso pernešama į kitą scenarijų."
 msgid "Defeat enemy leader(s)"
 msgstr "Nugalėkite priešų vadus"
 
-#: data/scenario-test.cfg:1030 src/game_initialization/depcheck.cpp:491
+#: data/scenario-test.cfg:1023 src/game_initialization/depcheck.cpp:491
 msgid "OK"
 msgstr "Gerai"
 
-#: data/scenario-test.cfg:1031
+#: data/scenario-test.cfg:1024
 msgid "Cancel"
 msgstr "Atšaukti"
 
 #. [language]
-#: data/scenario-test.cfg:4079
+#: data/scenario-test.cfg:4072
 msgid "very long"
 msgstr "labai tolima"
 
 #. [language]
-#: data/scenario-test.cfg:4080
+#: data/scenario-test.cfg:4073
 msgid "electrical"
 msgstr "elektrinė"
 
@@ -5627,7 +5627,7 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/game_events/pump.cpp:481 src/game_launcher.cpp:909
+#: src/game_events/pump.cpp:481 src/game_launcher.cpp:911
 msgid "Error: "
 msgstr "Klaida: "
 
@@ -5651,33 +5651,33 @@ msgstr "$login žaidimas"
 msgid "Team"
 msgstr "Komanda"
 
-#: src/game_initialization/connect_engine.cpp:993
+#: src/game_initialization/connect_engine.cpp:988
 #, fuzzy
 msgid "Anonymous player"
 msgstr "Anoniminis vietinis žaidėjas"
 
-#: src/game_initialization/connect_engine.cpp:998
-#: src/game_initialization/connect_engine.cpp:1292
+#: src/game_initialization/connect_engine.cpp:993
+#: src/game_initialization/connect_engine.cpp:1287
 msgid "Computer Player"
 msgstr "Kompiuterio žaidėjas"
 
-#: src/game_initialization/connect_engine.cpp:1040
+#: src/game_initialization/connect_engine.cpp:1035
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1288
+#: src/game_initialization/connect_engine.cpp:1283
 msgid "Network Player"
 msgstr "Tinklo žaidėjas"
 
-#: src/game_initialization/connect_engine.cpp:1291
+#: src/game_initialization/connect_engine.cpp:1286
 msgid "Local Player"
 msgstr "Vietinis žaidėjas"
 
-#: src/game_initialization/connect_engine.cpp:1293
+#: src/game_initialization/connect_engine.cpp:1288
 msgid "Empty"
 msgstr "Tuščia"
 
-#: src/game_initialization/connect_engine.cpp:1296
+#: src/game_initialization/connect_engine.cpp:1291
 msgid "Reserved"
 msgstr "Rezervuota"
 
@@ -5746,43 +5746,43 @@ msgstr "Nepavyko rasti lyderio tipo frakcijai $faction"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:237
+#: src/game_initialization/lobby_data.cpp:242
 #, fuzzy
 msgid "Missing addon: $name"
 msgstr "Trūksta argumento $arg_id"
 
-#: src/game_initialization/lobby_data.cpp:239
+#: src/game_initialization/lobby_data.cpp:244
 #, fuzzy
 msgid "Missing addon: $id"
 msgstr "Trūksta argumento $arg_id"
 
-#: src/game_initialization/lobby_data.cpp:273
+#: src/game_initialization/lobby_data.cpp:278
 msgid "Unknown era"
 msgstr "Nežinoma era"
 
-#: src/game_initialization/lobby_data.cpp:340
-#: src/game_initialization/lobby_data.cpp:370
+#: src/game_initialization/lobby_data.cpp:345
+#: src/game_initialization/lobby_data.cpp:375
 msgid "S"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:359
+#: src/game_initialization/lobby_data.cpp:364
 msgid "Remote scenario"
 msgstr "Nutolęs scenarijus"
 
-#: src/game_initialization/lobby_data.cpp:378
-#: src/game_initialization/lobby_data.cpp:401
+#: src/game_initialization/lobby_data.cpp:383
+#: src/game_initialization/lobby_data.cpp:406
 msgid "C"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:406
+#: src/game_initialization/lobby_data.cpp:411
 msgid "Unknown scenario"
 msgstr "Nežinomas scenarijus"
 
-#: src/game_initialization/lobby_data.cpp:416
+#: src/game_initialization/lobby_data.cpp:421
 msgid "Reloaded game"
 msgstr "Iš naujo įkeltas žaidimas"
 
-#: src/game_initialization/lobby_data.cpp:431
+#: src/game_initialization/lobby_data.cpp:436
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Laisva vieta:"
@@ -5790,32 +5790,32 @@ msgstr[1] "Laisvų vietų:"
 msgstr[2] "Laisvų vietų:"
 msgstr[3] "Laisvų vietų:"
 
-#: src/game_initialization/lobby_data.cpp:433
+#: src/game_initialization/lobby_data.cpp:438
 msgid "mp_game_available_slots^Full"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:444
-#: src/game_initialization/lobby_data.cpp:446 src/savegame.cpp:631
+#: src/game_initialization/lobby_data.cpp:449
+#: src/game_initialization/lobby_data.cpp:451 src/savegame.cpp:631
 msgid "Turn"
 msgstr "Ėjimas"
 
-#: src/game_initialization/lobby_data.cpp:459
+#: src/game_initialization/lobby_data.cpp:464
 #, fuzzy
 #| msgid "vision: "
 msgid "vision^none"
 msgstr "matymas: "
 
-#: src/game_initialization/lobby_data.cpp:468
+#: src/game_initialization/lobby_data.cpp:473
 msgid "time limit^none"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:501
+#: src/game_initialization/lobby_data.cpp:506
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:515
+#: src/game_initialization/lobby_data.cpp:520
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -6055,20 +6055,20 @@ msgstr "Pralaimėjimas"
 msgid "You have been defeated!"
 msgstr "Jūs buvote nugalėtas!"
 
-#: src/game_initialization/playcampaign.cpp:291 src/game_launcher.cpp:862
+#: src/game_initialization/playcampaign.cpp:291 src/game_launcher.cpp:864
 msgid "The game could not be loaded: "
 msgstr "Žaidimas negali būti įkeltas: "
 
-#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:864
+#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:866
 msgid "Error while playing the game: "
 msgstr "Įvyko klaida, žaidžiant žaidimą: "
 
-#: src/game_initialization/playcampaign.cpp:300 src/game_launcher.cpp:901
+#: src/game_initialization/playcampaign.cpp:300 src/game_launcher.cpp:903
 msgid "The game map could not be loaded: "
 msgstr "Žaidimo žemėlapis negali būti įkeltas: "
 
-#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:866
-#: src/game_launcher.cpp:1000
+#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:868
+#: src/game_launcher.cpp:1002
 msgid "Map generator error: "
 msgstr ""
 
@@ -6094,29 +6094,29 @@ msgstr "Nežinomas scenarijus: „$scenario|“"
 msgid "No campaigns are available."
 msgstr "Nėra jokių kampanijų.\n"
 
-#: src/game_launcher.cpp:644 src/game_launcher.cpp:662
+#: src/game_launcher.cpp:646 src/game_launcher.cpp:664
 msgid "The file you have tried to load is corrupt"
 msgstr "Failas, kurį bandėte įkelti, yra sugadintas"
 
-#: src/game_launcher.cpp:647 src/game_launcher.cpp:665
+#: src/game_launcher.cpp:649 src/game_launcher.cpp:667
 #: src/hotkey/hotkey_handler_sp.cpp:312 src/savegame.cpp:146
 #: src/savegame.cpp:291
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Failas, kurį bandėte įkelti, sugadintas: „"
 
-#: src/game_launcher.cpp:655
+#: src/game_launcher.cpp:657
 msgid "File I/O Error while reading the game"
 msgstr "Failo I/O klaida, nuskaitant žaidimą"
 
-#: src/game_launcher.cpp:657
+#: src/game_launcher.cpp:659
 msgid "File I/O Error while reading the game: '"
 msgstr "Failo I/O klaida, nuskaitant žaidimą: „"
 
-#: src/game_launcher.cpp:860
+#: src/game_launcher.cpp:862
 msgid "Error while starting server: "
 msgstr "Įvyko klaida, paleidžiant serverį: "
 
-#: src/game_launcher.cpp:882
+#: src/game_launcher.cpp:884
 #, fuzzy
 #| msgid "Connection timed out"
 msgid "Connection failed: "
@@ -6281,11 +6281,11 @@ msgid "Unavailable"
 msgstr " Nėra prieinamos pagalbos."
 
 #: src/help/help_impl.cpp:811 src/help/help_impl.cpp:986
-#: src/help/help_topic_generators.cpp:384
+#: src/help/help_topic_generators.cpp:383
 msgid "race^Miscellaneous"
 msgstr ""
 
-#: src/help/help_impl.cpp:998 src/help/help_topic_generators.cpp:490
+#: src/help/help_impl.cpp:998 src/help/help_topic_generators.cpp:489
 #: src/reports.cpp:347
 msgid "Alignment: "
 msgstr "Prigimtis: "
@@ -6321,144 +6321,144 @@ msgstr "Judėjimo kainos:"
 msgid "Defense properties: "
 msgstr "Gynyba:"
 
-#: src/help/help_topic_generators.cpp:245
+#: src/help/help_topic_generators.cpp:244
 #, fuzzy
 #| msgid "Level: "
 msgid "Level"
 msgstr "Lygis: "
 
-#: src/help/help_topic_generators.cpp:306
+#: src/help/help_topic_generators.cpp:305
 #, fuzzy
 msgid "Advances from: "
 msgstr "Tobulėja į:"
 
-#: src/help/help_topic_generators.cpp:308
+#: src/help/help_topic_generators.cpp:307
 #, fuzzy
 msgid "Advances to: "
 msgstr "Tobulėja į:"
 
-#: src/help/help_topic_generators.cpp:337
+#: src/help/help_topic_generators.cpp:336
 #, fuzzy
 msgid "Base unit: "
 msgstr "Bazinės atakos:"
 
-#: src/help/help_topic_generators.cpp:342
+#: src/help/help_topic_generators.cpp:341
 #, fuzzy
 msgid "Base units: "
 msgstr "Šviesos daliniai: "
 
-#: src/help/help_topic_generators.cpp:360
+#: src/help/help_topic_generators.cpp:359
 #, fuzzy
 msgid "Variations: "
 msgstr "Pakeitimai:"
 
-#: src/help/help_topic_generators.cpp:386 src/reports.cpp:185
+#: src/help/help_topic_generators.cpp:385 src/reports.cpp:185
 msgid "Race: "
 msgstr "Rasė: "
 
-#: src/help/help_topic_generators.cpp:412
-#: src/help/help_topic_generators.cpp:435
+#: src/help/help_topic_generators.cpp:411
+#: src/help/help_topic_generators.cpp:434
 msgid "Traits"
 msgstr "Bruožai"
 
-#: src/help/help_topic_generators.cpp:445
+#: src/help/help_topic_generators.cpp:444
 msgid "Abilities: "
 msgstr "Gebėjimai: "
 
-#: src/help/help_topic_generators.cpp:463
+#: src/help/help_topic_generators.cpp:462
 msgid "Ability Upgrades: "
 msgstr "Gebėjimų patobulinimai: "
 
-#: src/help/help_topic_generators.cpp:481
+#: src/help/help_topic_generators.cpp:480
 msgid "HP: "
 msgstr "GT: "
 
-#: src/help/help_topic_generators.cpp:482
+#: src/help/help_topic_generators.cpp:481
 msgid "Moves: "
 msgstr "Žingsniai: "
 
-#: src/help/help_topic_generators.cpp:484
+#: src/help/help_topic_generators.cpp:483
 #, fuzzy
 msgid "Vision: "
 msgstr "matymas: "
 
-#: src/help/help_topic_generators.cpp:487
+#: src/help/help_topic_generators.cpp:486
 #, fuzzy
 msgid "Jamming: "
 msgstr "Įspėjimas: "
 
-#: src/help/help_topic_generators.cpp:489
+#: src/help/help_topic_generators.cpp:488
 msgid "Cost: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:494
+#: src/help/help_topic_generators.cpp:493
 msgid "Required XP: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:503
+#: src/help/help_topic_generators.cpp:502
 msgid "unit help^Attacks"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:510
+#: src/help/help_topic_generators.cpp:509
 msgid "unit help^Name"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:511
+#: src/help/help_topic_generators.cpp:510
 msgid "Type"
 msgstr "Tipas"
 
-#: src/help/help_topic_generators.cpp:512
+#: src/help/help_topic_generators.cpp:511
 msgid "Strikes"
 msgstr "Smūgiai"
 
-#: src/help/help_topic_generators.cpp:513
+#: src/help/help_topic_generators.cpp:512
 msgid "Range"
 msgstr "Nuotolis"
 
-#: src/help/help_topic_generators.cpp:514
+#: src/help/help_topic_generators.cpp:513
 #, fuzzy
 msgid "Special"
 msgstr "Ginklų ypatybės: "
 
-#: src/help/help_topic_generators.cpp:576
+#: src/help/help_topic_generators.cpp:575
 msgid "Resistances"
 msgstr "Atsparumai"
 
-#: src/help/help_topic_generators.cpp:580
+#: src/help/help_topic_generators.cpp:579
 msgid "Attack Type"
 msgstr "Atakos tipas"
 
-#: src/help/help_topic_generators.cpp:581
+#: src/help/help_topic_generators.cpp:580
 msgid "Resistance"
 msgstr "Atsparumas"
 
-#: src/help/help_topic_generators.cpp:610
+#: src/help/help_topic_generators.cpp:609
 msgid "Terrain Modifiers"
 msgstr "Vietovės modifikatoriai"
 
-#: src/help/help_topic_generators.cpp:614
+#: src/help/help_topic_generators.cpp:613
 msgid "Terrain"
 msgstr "Vietovė"
 
-#: src/help/help_topic_generators.cpp:615
+#: src/help/help_topic_generators.cpp:614
 msgid "Defense"
 msgstr "Gynyba"
 
-#: src/help/help_topic_generators.cpp:616
+#: src/help/help_topic_generators.cpp:615
 msgid "Movement Cost"
 msgstr "Judėjimo kaina"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:619
 #, fuzzy
 msgid "Defense Cap"
 msgstr "Gynyba:"
 
-#: src/help/help_topic_generators.cpp:625
+#: src/help/help_topic_generators.cpp:624
 #, fuzzy
 msgid "Vision Cost"
 msgstr "matymas: "
 
-#: src/help/help_topic_generators.cpp:629
+#: src/help/help_topic_generators.cpp:628
 msgid "Jamming Cost"
 msgstr ""
 
@@ -7180,7 +7180,7 @@ msgstr ""
 "Nutrūko tinklo ryšys ir žaidimas negali tęstis. Ar norite išsaugoti šį "
 "žaidimą?"
 
-#: src/playsingle_controller.cpp:428
+#: src/playsingle_controller.cpp:429
 msgid "It is now $name|’s turn"
 msgstr "Dabar $name| ėjimas"
 

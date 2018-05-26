@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-16 03:33 UTC\n"
+"POT-Creation-Date: 2018-05-26 12:04 UTC\n"
 "PO-Revision-Date: 2018-05-16 23:12+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -179,10 +179,10 @@ msgstr "卡破尔"
 msgid "Alber"
 msgstr "阿尔伯"
 
+#. [side]: type=General, id=Lanbec'h
 #. [side]: type=General, id=Slowhand
 #. [side]
 #. [side]: type=General, id=Harman
-#. [side]: type=General, id=Lanbec'h
 #. [side]: type=Lieutenant, id=Alber
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:82
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:61
@@ -1627,17 +1627,17 @@ msgstr "到达东南方的绿洲"
 msgid "Ar-Dant"
 msgstr "亚单"
 
-#. [side]: type=General, id=Telthys
+#. [side]: type=Assassin, type=Rogue, id=Ar-Dant
+#. [side]
 #. [side]: type=Elvish Champion, id=Thelarion
-#. [side]: type=General, id=Fredor
-#. [side]: type=General, id=Georan
-#. [side]: type=General, id=Arthain
-#. [side]: type=Lieutenant, id=Hanak
 #. [side]: type=Dwarvish Steelclad, id=Darstang
 #. [side]: type=General, id=Earl Lanbec'h
-#. [side]
+#. [side]: type=General, id=Arthain
+#. [side]: type=Lieutenant, id=Hanak
 #. [side]: type=Bandit, id=Sagmar
-#. [side]: type=Assassin, type=Rogue, id=Ar-Dant
+#. [side]: type=General, id=Telthys
+#. [side]: type=General, id=Fredor
+#. [side]: type=General, id=Georan
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #. [side]: type=Orcish Warlord, id=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:86
@@ -2145,8 +2145,8 @@ msgstr "抵御闪·陶姆攻击20回合"
 msgid "Defeat Shan Taum"
 msgstr "打败闪·陶姆"
 
-#. [unit]: type=Orcish Warlord, id=Shan Taum
 #. [side]: type=Orcish Warlord, id=Shan Taum
+#. [unit]: type=Orcish Warlord, id=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:60
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:143
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:126
@@ -2575,8 +2575,8 @@ msgstr "花的时间太多了。所有的军队出击，送这些混蛋下地狱
 msgid "It won’t be said that Elves were braver than us, everyone attack!"
 msgstr "我们岂能不如精灵勇猛，全体出击！"
 
-#. [side]: type=General, id=Earl Lanbec'h
 #. [unit]: type=General, id=Earl Lanbec'h
+#. [side]: type=General, id=Earl Lanbec'h
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:658
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:143
@@ -3437,13 +3437,13 @@ msgstr "移动卡破尔至西南方路标处"
 msgid "Braga"
 msgstr "布拉戛"
 
-#. [side]: type=Orcish Warlord, id=Orga
-#. [side]: type=Orcish Warrior, id=Knorgh
-#. [side]: type=Orcish Warrior, id=Nofhug
 #. [side]: type=Orcish Warlord, id=Braga
 #. [side]: type=Orcish Warlord, id=Meato
 #. [side]: type=Orcish Warlord, id=Ragvan
 #. [side]: type=Orcish Warlord, id=Kergai
+#. [side]: type=Orcish Warlord, id=Orga
+#. [side]: type=Orcish Warrior, id=Knorgh
+#. [side]: type=Orcish Warrior, id=Nofhug
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:73
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:93
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:113
@@ -3899,8 +3899,8 @@ msgstr "我们到了，伯爵阁下。"
 msgid "Ahhh, perfect, more reinforcements."
 msgstr "啊，好得很嘛，更多援军。"
 
-#. [side]: type=General, id=Howgarth III
 #. [unit]: type=General, id=Howgarth III
+#. [side]: type=General, id=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:390
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:154
 msgid "Howgarth III"

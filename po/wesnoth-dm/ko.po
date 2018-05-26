@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-06 08:31 UTC\n"
+"POT-Creation-Date: 2018-05-26 12:04 UTC\n"
 "PO-Revision-Date: 2011-11-21 18:15+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -344,18 +344,18 @@ msgstr "이 협곡은 내 것이다"
 msgid "Grogor-Tuk"
 msgstr "Grogor-Tuk"
 
+#. [side]: type=Goblin Pillager, id=Grogor-Tuk
 #. [side]: type=Orcish Warrior, id=Urthaka-Tan
+#. [side]: type=Orcish Slayer, id=Hagha-Tan
+#. [side]: type=Orcish Warlord, id=Tish Golub
 #. [side]: type=Orcish Warlord, id=Knafa-ord
 #. [side]: type=Orcish Warlord, id=Tan-drul
 #. [side]: type=Orcish Warlord, id=Krardul
-#. [side]: type=Orcish Warlord, id=Tish Golub
 #. [side]: type=Orcish Sovereign, id=Zorlan
 #. [side]: type=Orcish Warrior, id=T'bhan
 #. [side]: type=Orcish Warrior, id=Qgthun
 #. [side]: type=Great Troll, type=Troll Hero, id=Trgrau
 #. [side]: type=Orcish Warrior, id=Tan-Garthak
-#. [side]: type=Goblin Pillager, id=Grogor-Tuk
-#. [side]: type=Orcish Slayer, id=Hagha-Tan
 #. [side]: type=Orcish Warlord, id=Upgar
 #: data/campaigns/Delfadors_Memoirs/scenarios/02_This_Valley_Belongs_to_Me.cfg:49
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:44
@@ -465,7 +465,7 @@ msgstr "Grogor-Tuk를 격파하라"
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_A_New_Ally.cfg:124
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:195
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:332
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:165
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:161
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:126
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:93
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:189
@@ -663,15 +663,15 @@ msgstr "Leollyn"
 msgid "Hagha-Tan"
 msgstr "Hagha-Tan"
 
-#. [side]
-#. [side]: type=King of Wesnoth, id=Garard II
-#. [side]: type=General, id=Rhuwin
 #. [side]: type=Arch Mage, id=Leollyn
+#. [side]
 #. [modify_side]
-#. [side]: type=King of Wesnoth, id=Garard
+#. [side]: type=King of Wesnoth, id=Garard II
 #. [side]: type=General, id=Eldred
 #. [side]: type=General, id=Lowel
+#. [side]: type=General, id=Rhuwin
 #. [side]: type=Lieutenant, id=Niktor
+#. [side]: type=King of Wesnoth, id=Garard
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:101
 #: data/campaigns/Delfadors_Memoirs/scenarios/05_Council_in_Weldyn.cfg:23
 #: data/campaigns/Delfadors_Memoirs/scenarios/05_Council_in_Weldyn.cfg:34
@@ -1059,7 +1059,7 @@ msgstr "Delfador를 북동쪽의 표지판으로 이동시킨다"
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:99
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:114
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:131
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:169
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:165
 msgid "Death of Lionel"
 msgstr "Lionel의 사망"
 
@@ -1152,18 +1152,18 @@ msgstr "이 상자에 저 악당이 부주의한 여행자들로부터 뺏은 �
 msgid "Night in the Swamp"
 msgstr "늪지대의 밤"
 
-#. [side]: type=Lich, id=Sagus
-#. [side]: type=Death Knight, id=Prepolur
-#. [side]: type=Necromancer, id=Unuvim-Malal
 #. [side]
-#. [side]: type=Necromancer, id=Gruv-Malal
+#. [side]: type=Death Knight, id=Arakar
 #. [side]: type=Death Knight, id=Rudimil
 #. [side]: type=Necromancer, id=Roth-Malal
 #. [side]: type=Necromancer, id=Barth-Malal
-#. [side]: type=Death Knight, id=Arakar
+#. [side]: type=Necromancer, id=Gruv-Malal
+#. [side]: type=Death Knight, id=Prepolur
+#. [side]: type=Necromancer, id=Unuvim-Malal
+#. [side]: type=Lich, id=Sagus
+#. [side]: type=Death Knight, id=Dirator
 #. [side]: type=Necromancer, id=Maldun
 #. [side]: type=Death Knight, id=Alderoth
-#. [side]: type=Death Knight, id=Dirator
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:47
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:38
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:34
@@ -1175,9 +1175,9 @@ msgstr "늪지대의 밤"
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:107
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:147
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:156
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:69
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:110
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:122
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:65
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:106
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:118
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:54
 msgid "Undead"
 msgstr ""
@@ -1674,8 +1674,8 @@ msgstr ""
 "해골들을 만나보았나? 그들의 성이 여기서 북쪽에 있지. 그곳을 공격하는건 어려"
 "운 일이지만 Sythan의 집 너머 협곡에 비밀 통로가 있다네."
 
-#. [event]
 #. [scenario]: id=09_Houses_of_the_Dead
+#. [event]
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:318
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:193
 msgid "Nameless"
@@ -2098,9 +2098,9 @@ msgstr "황무지"
 msgid "Tish Golub"
 msgstr "Tish Golub"
 
+#. [side]: type=Elvish Druid
 #. [side]
 #. [side]: type=Elvish Captain, id=Clartakis
-#. [side]: type=Elvish Druid
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:54
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:40
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:181
@@ -2344,7 +2344,7 @@ msgstr "여울에 무슨 일이 생긴건지 알아낼 것"
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:133
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:295
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:193
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:161
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:157
 msgid "Defeat all enemy leaders"
 msgstr "모든 적 지휘관을 격파하라"
 
@@ -2985,7 +2985,7 @@ msgstr "Clartakis"
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:137
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:299
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:197
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:173
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:169
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_Prince_of_Wesnoth.cfg:139
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:130
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:97
@@ -3748,8 +3748,8 @@ msgstr ""
 "내 생각엔 우리 젊고 경험없는 친구가 적의 힘을 과대평가하고 있는 것 같군. "
 "Wesnoth의 군대에 대항할 수 있는 건 아무것도 없소."
 
-#. [part]
 #. [side]: type=Lich, id=Sagus
+#. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:59
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:47
 msgid "Sagus"
@@ -3977,7 +3977,7 @@ msgstr "Gruv-Malal을 쳐부술 것"
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_A_New_Ally.cfg:128
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:199
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:336
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:177
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:173
 msgid "Death of Ulrek"
 msgstr "Ulrek의 사망"
 
@@ -4360,29 +4360,29 @@ msgstr ""
 "도와 Wesnoth의 운명을 결정할 전투에 가담했다."
 
 #. [side]: type=Necromancer, id=Maldun
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:100
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:96
 msgid "Maldun"
 msgstr "Maldun"
 
 #. [side]: type=Death Knight, id=Alderoth
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:118
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:114
 msgid "Alderoth"
 msgstr "Alderoth"
 
 #. [note]
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:189
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:185
 msgid ""
 "The killing blow against Iliah-Malal can only be struck by one of your "
 "Undead veterans or by Delfador"
 msgstr ""
 
 #. [note]
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:199
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:195
 msgid "The killing blow against Iliah-Malal can only be struck by Delfador"
 msgstr ""
 
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:243
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:239
 msgid ""
 "So we meet again, Delfador. You were a fool to turn down my offer. None of "
 "your allies will save you now."
@@ -4391,7 +4391,7 @@ msgstr ""
 "원하지 못할 것이다."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:247
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:243
 msgid ""
 "You have ravaged your own soul with your corrupt arts, and your words are "
 "empty wind; I fear them not."
@@ -4400,7 +4400,7 @@ msgstr ""
 "바람과도 같다. 나는 두렵지 않다."
 
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:251
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:247
 msgid ""
 "Is he not amusing, my creatures? He puffs himself up as though he were "
 "Delfador the Mighty, Delfador the Powerful, Delfador the Great... rather "
@@ -4411,7 +4411,7 @@ msgstr ""
 "도사놈은 곧 패퇴하여 내 발밑에 무릎꿇게 되리라."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:255
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:251
 msgid ""
 "Delfador the Great, eh? And so it comes to pass as the four Oracles "
 "foretold. I accept your name-gift, Iliah-Malal."
@@ -4420,7 +4420,7 @@ msgstr ""
 "군. 그 이름 잘 받도록 하지, Iliah-Malal."
 
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:259
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:255
 msgid ""
 "Oracles? What nonsense you babble... After you die, I will raise your corpse "
 "and compel you to tell me how to reopen my portal!"
@@ -4429,12 +4429,12 @@ msgstr ""
 "어떻게 다시 열지 말하게 만들겠다!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:263
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:259
 msgid "One of us will find a final death here. I do not think it will be me."
 msgstr "우리 중 하나는 여기서 최후를 맞을 것이다. 그것이 나는 아닐 것 같군."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:274
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:270
 #, fuzzy
 #| msgid ""
 #| "In this scenario only, you may recall your veterans from the Land of the "
@@ -4449,12 +4449,12 @@ msgstr ""
 "Iliah-Malal에게 치명타를 먹일 수 있는 것은 그들 뿐입니다."
 
 #. [message]: speaker=Lionel
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:292
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:288
 msgid "Delfador... You raise undead?!"
 msgstr "Delfador... 당신 언데드를 부른거요?!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:297
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:293
 msgid ""
 "No. I did not raise them from our dead; I offered some who fought beside me "
 "in the otherworld a way here, and they come to us of their own will. Today "
@@ -4465,7 +4465,7 @@ msgstr ""
 "위해 싸울 것이오."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:305
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:301
 #, fuzzy
 #| msgid ""
 #| "I have prepared some holy water. Sprinkle it on your impact weapon and "
@@ -4478,27 +4478,27 @@ msgstr ""
 "시오!"
 
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:310
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:306
 msgid "Powers of darkness, enshroud this field!"
 msgstr "암흑의 힘이여, 이 전장을 뒤덮으라!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:326
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:322
 msgid "Darkness shall be dispelled!"
 msgstr "어둠은 흩어지리라!"
 
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:335
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:331
 msgid "No!"
 msgstr "안돼!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:339
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:335
 msgid "Let the light shine forth!"
 msgstr "빛이여 앞길을 비추라!"
 
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:343
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:339
 msgid ""
 "Your sorcery matters little. Your army will fall like wheat to the sickle "
 "before my undead legions."
@@ -4507,13 +4507,13 @@ msgstr ""
 "질 것이다."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:347
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:343
 msgid ""
 "Your mindless minions will be no match for the spirit and fire of the living."
 msgstr "너의 이성없는 졸개들은 산 자의 영혼과 불길에 대항할 수 없다."
 
 #. [message]: speaker=Lionel
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:353
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:349
 msgid ""
 "Delfador, as the King ordered I place all troops under your command. They "
 "will follow you to death, if necessary, and so will I!"
@@ -4522,7 +4522,7 @@ msgstr ""
 "당신을 지옥 끝까지 쫓아온다면, 나도 그렇게 하겠소!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:359
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:355
 msgid ""
 "Lionel, it is an honor to go into battle beside you. Now let us fight for "
 "life over death!"
@@ -4531,7 +4531,7 @@ msgstr ""
 "시다!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:372
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:368
 #, fuzzy
 #| msgid ""
 #| "Remember one of our undead must strike the final blow, for Iliah-Malal’s "
@@ -4545,7 +4545,7 @@ msgstr ""
 "드 중 하나가 마지막 일격을 날려야 함을 잊지 마시오."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:378
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:374
 #, fuzzy
 #| msgid ""
 #| "Remember one of our undead must strike the final blow, for Iliah-Malal’s "
@@ -4558,15 +4558,15 @@ msgstr ""
 "드 중 하나가 마지막 일격을 날려야 함을 잊지 마시오."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:399
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:427
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:395
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:423
 msgid "Now your days are ended!"
 msgstr "이제 네 시대는 끝났다!"
 
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:403
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:431
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:461
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:399
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:427
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:457
 msgid ""
 "The power of death is mine! When you strike me down I arise stronger than "
 "before!"
@@ -4575,7 +4575,7 @@ msgstr ""
 "다!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:407
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:403
 msgid ""
 "Not this time. For I have gazed upon the dark heart of necromancy in the "
 "Book of Crelanu, and found there your final doom at the hands of the dead "
@@ -4585,7 +4585,7 @@ msgstr ""
 "죽은 자 자신들이 너에게 최후를 안겨줄 수 있다는 것을 알아내었다."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:435
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:431
 msgid ""
 "Not this time. For I have gazed upon the dark heart of necromancy in the "
 "Book of Crelanu, AND I REMAIN OF THE LIGHT!"
@@ -4594,26 +4594,26 @@ msgstr ""
 "만, <b>나는 빛의 길을 걷는다<b>!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:484
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:480
 msgid ""
 "Evil has been vanquished on this day. May this victory bring lasting peace."
 msgstr ""
 "악은 오늘 파괴되었소. 부디 이 승리가 오랜 평화를 가져다주길 바랄 뿐이오."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:488
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:484
 msgid ""
 "You have earned the name the accursed one gave you... Delfador the Great."
 msgstr ""
 "당신은 저주받은 자가 주었던 이름을 가질 자격이 있소... 대마법사 Delfador."
 
 #. [message]: speaker=Ulrek
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:492
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:488
 msgid "Indeed. This will be quite a tale to tell."
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:518
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:514
 msgid ""
 "You who fought beside me in the Land of the Dead and chose the side of the "
 "living on this day, return now to your peace and rest."
@@ -4622,12 +4622,12 @@ msgstr ""
 "가 평온과 안식을 찾으시오."
 
 #. [message]: speaker=Lionel
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:530
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:526
 msgid "And the portal, it is sealed for good?"
 msgstr "그 전이문 말인데, 제대로 봉인된 겁니까?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:534
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:530
 msgid ""
 "Yes, it is. But it was too great a work of magic to be entirely undone; "
 "there is a flaw still remaining, a trace of Iliah-Malal’s way between "
@@ -4807,8 +4807,8 @@ msgstr ""
 "그럴지도 모르오. 지금 그걸 생각해낸 이상, 말 세 마리를 죽이는 한이 있더라도 "
 "여기 왔던 것보다 더 빨리 왕궁으로 돌아가야 할 것 같소."
 
-#. [side]
 #. [modify_side]
+#. [side]
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_Prince_of_Wesnoth.cfg:255
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:52
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:36
