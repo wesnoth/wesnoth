@@ -1,4 +1,4 @@
-## Version 1.14.1+dev
+## Version 1.14.2
  ### Campaigns
    * Northern Rebirth:
      * S02.1 Infested Caves: keep side 8 AI leader from wandering off too far
