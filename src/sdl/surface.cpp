@@ -29,7 +29,7 @@ void surface::free_surface()
 		*
 		* - Jyrki, 2017-09-23
 		*/
-		if(surface_->refcount > 1 && sdl_get_version() >= version_info(2, 0, 6)) {
+		if(surface_->refcount > 1 && sdl_get_version() == version_info(2, 0, 6)) {
 			--surface_->refcount;
 		} else {
 			SDL_FreeSurface(surface_);
