@@ -208,7 +208,7 @@ void playsingle_controller::play_scenario_main_loop()
 				resources::gameboard->teams()[i].set_local(local_players[i]);
 			}
 			play_scenario_init();
-			replay_.reset(new replay_controller(*this, false, ex.level));
+			replay_.reset(new replay_controller(*this, false, ex.level, [this](){ on_replay_end(false); } ));
 			if(ex.start_replay) {
 				replay_->play_replay();
 			}
@@ -694,7 +694,10 @@ bool playsingle_controller::should_return_to_play_side() const
 
 void playsingle_controller::on_replay_end(bool is_unit_test)
 {
-	if(is_unit_test) {
+	if(is_networked_mp()) {
+		set_player_type_changed();
+	}
+	else if(is_unit_test) {
 		replay_->return_to_play_side();
 		if(!is_regular_game_end()) {
 			end_level_data e;
