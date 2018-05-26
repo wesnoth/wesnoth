@@ -171,7 +171,7 @@ void addon_list::set_addons(const addons_list& addons)
 			data.emplace("icon", item);
 
 			const std::string publish_name = formatter()
-				<< "<span color='#00ff00'>" // GOOD_COLOR
+				<< font::span_color(font::GOOD_COLOR)
 				<< addon.display_title()
 				<< "</span>";
 
