@@ -180,6 +180,25 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 		era_factions_.push_back(&era);
 	}
 
+	// Sort alphabetically, but with the random faction options always first.
+	// Since some eras have multiple random options we can't just assume there is
+	// only one random faction on top of the list.
+	std::sort(era_factions_.begin(), era_factions_.end(), [](const config* c1, const config* c2) {
+		const config& lhs = *c1;
+		const config& rhs = *c2;
+
+		// Random factions always first.
+		if(lhs["random_faction"].to_bool() && !rhs["random_faction"].to_bool()) {
+			return true;
+		}
+
+		if(!lhs["random_faction"].to_bool() && rhs["random_faction"].to_bool()) {
+			return false;
+		}
+
+		return translation::compare(lhs["name"].str(), rhs["name"].str()) < 0;
+	});
+
 	game_config::add_color_info(scenario());
 
 	// Create side engines.
