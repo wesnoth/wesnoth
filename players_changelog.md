@@ -5,7 +5,7 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 ## Version 1.14.1+dev
  ### Campaigns
    * Northern Rebirth:
-     * In 'Infested Caves', fixed various issues with AI balancing
+     * In 'Infested Caves', fixed various issues with AI balancing.
    * Sceptre of Fire:
      * In 'Caverns of Flame', fixed various issues with the volcano eruption.
    * Under the Burning Suns:
@@ -24,6 +24,7 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
    * Fixed memory leak in terrain filter code. In a huge map with Silver Mages,
      it could leak several gigabytes of memory in a long session.
    * Fixed: unit halo remained after undoing a recall (issue #3065)
+   * Various fixes for the Planning Mode.
 
 
 ## Version 1.14.1

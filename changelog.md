@@ -2,15 +2,20 @@
  ### Campaigns
    * Northern Rebirth:
      * S02.1 Infested Caves: keep side 8 AI leader from wandering off too far
-       and ending up on a keep with only one hex for recruiting
+       and ending up on a keep with only one hex for recruiting.
      * S02.1 Infested Caves: AIs are less likely to kill each other in early
-       game, which would make it harder for the player otherwise
-     * S02.1 Infested Caves: Dwarvish allies are also less likely to die
+       game, which would make it harder for the player otherwise.
+     * S02.1 Infested Caves: Dwarvish allies are also less likely to die.
      * S02.1 Infested Caves: minor map tweaks and improvements.
+     * S05 The Pursuit: removed a bottleneck and tweaked Rod of Justice.
    * Sceptre of Fire:
      * In 'Caverns of Flame', fixed various issues with the volcano eruption.
    * Under the Burning Suns:
      * Various Quenoth unit graphics updates.
+   * Descent into Darkness:
+     * In 'A small Favor', disabled a not intended way to win the scenario.
+   * Secrets of the Ancients:
+     * Bats are transformed to normal ones already after S5
  ### Graphics
    * Fixed a minor team coloring mistake in the north-facing Revenant standing
      animation.
