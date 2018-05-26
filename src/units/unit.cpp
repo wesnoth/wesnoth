@@ -955,14 +955,6 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	max_experience_ = new_type.experience_needed(false);
 	level_ = new_type.level();
 	recall_cost_ = new_type.recall_cost();
-
-	/* Need to add a check to see if the unit's old cost is equal
-	to the unit's old unit_type cost first.  If it is change the cost
-	otherwise keep the old cost. */
-	if(old_type.recall_cost() == recall_cost_) {
-		recall_cost_ = new_type.recall_cost();
-	}
-
 	alignment_ = new_type.alignment();
 	max_hit_points_ = new_type.hitpoints();
 	hp_bar_scaling_ = new_type.hp_bar_scaling();
