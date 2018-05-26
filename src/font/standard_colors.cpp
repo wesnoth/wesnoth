@@ -20,7 +20,7 @@ const color_t
 	NORMAL_COLOR    {221, 221, 221},
 	GRAY_COLOR      {136, 136, 136},
 	LOBBY_COLOR     {187, 187, 187},
-	GOOD_COLOR      {0  , 255, 0  },
+	GOOD_COLOR      {0  , 181, 26 },
 	BAD_COLOR       {255, 0  , 0  },
 	BLACK_COLOR     {0  , 0  , 0  },
 	YELLOW_COLOR    {255, 255, 0  },
