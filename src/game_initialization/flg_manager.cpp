@@ -381,25 +381,6 @@ void flg_manager::update_choosable_factions()
 			choosable_factions_.push_back(faction);
 		}
 	}
-
-	// Sort alphabetically, but with the random faction options always first.
-	// Since some eras have multiple random options we can't just assume there is
-	// only one random faction on top of the list.
-	std::sort(choosable_factions_.begin(), choosable_factions_.end(), [](const config* c1, const config* c2) {
-		const config& lhs = *c1;
-		const config& rhs = *c2;
-
-		// Random factions always first.
-		if(lhs["random_faction"].to_bool() && !rhs["random_faction"].to_bool()) {
-			return true;
-		}
-
-		if(!lhs["random_faction"].to_bool() && rhs["random_faction"].to_bool()) {
-			return false;
-		}
-
-		return translation::compare(lhs["name"].str(), rhs["name"].str()) < 0;
-	});
 }
 
 void flg_manager::update_choosable_leaders()
