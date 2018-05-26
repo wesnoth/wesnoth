@@ -48,6 +48,7 @@ changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog.md
    * Fixed memory leak in terrain filter code. In a huge map with Silver Mages,
      it could leak several gigabytes of memory in a long session.
    * Fixed: unit halo remained after undoing a recall (issue #3065).
+   * Fixed: unit halo intensity doubled during AMLA animation.
 
 
 ## Version 1.13.12
