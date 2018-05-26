@@ -185,6 +185,7 @@
    * Fixed memory leak in terrain filter code. In a huge map with Silver Mages,
      it could leak several gigabytes of memory in a long session.
    * Fixed: unit halo remained after undoing a recall (issue #3065).
+   * Fixed: unit halo intensity doubled during AMLA animation.
    * [change_theme] no longer causes a Lua error when theme= is not specified
      instead of explicitly set to an empty string.
    * Lua random map generator: fixed error when flipping map; specifically this
