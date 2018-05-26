@@ -208,6 +208,18 @@
    * Fixed animation-wide text_color and blend_color keys being overwritten. This
      fixes level-in and level-out animations sometimes fading to black instead of
      white.
+   * Fixed [animate_unit] freezing the game when observing MP games (#2970).
+   * Fixed carryover behaving differently when loading a start-of-scenario save
+     (issue #3152).
+   * Fixed turn replay function in MP.
+   * Fixed savegames being created even when not needed (issue #3150).
+   * Fixed handling of extra_recruit in planning mode (issue #3100).
+   * Fixed handling of skirmisher in planning mode.
+   * Fixed handling of filter_recall in planning mode.
+   * Fixed possible segfault at game end.
+   * Fixed require_resource in [resource].
+   * Fixed require_scenario=yes not working with map_generation (issue #3105).
+   * Fixed many crashes and out-of-sync errors when using the planning mode.
 
 ## Version 1.13.12
  ### Security fixes
