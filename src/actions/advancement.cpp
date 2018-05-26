@@ -24,6 +24,7 @@
 #include "game_events/pump.hpp"
 #include "preferences/game.hpp"
 #include "game_data.hpp" //resources::gamedata->phase()
+#include "gettext.hpp"
 #include "gui/dialogs/unit_advance.hpp"
 #include "gui/widgets/retval.hpp" //gui2::retval::OK
 #include "log.hpp"
@@ -217,7 +218,7 @@ namespace
 		}
 		virtual std::string description() const
 		{
-			return "an advancement choice";
+			return _("an advancement choice");
 		}
 	private:
 		const map_location loc_;
