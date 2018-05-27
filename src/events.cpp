@@ -43,6 +43,13 @@ namespace
 {
 struct invoked_function_data
 {
+	explicit invoked_function_data(const std::function<void(void)>& func)
+		: f(func)
+		, finished(false)
+		, thrown_exception()
+	{
+	}
+
 	/** The actual function to call. */
 	const std::function<void(void)>& f;
 
