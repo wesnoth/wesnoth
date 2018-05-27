@@ -64,6 +64,7 @@ struct invoked_function_data
 			f();
 		} catch(const CVideo::quit&) {
 			// Handle this exception in the main thread.
+			throw;
 		} catch(...) {
 			thrown_exception = std::current_exception();
 		}
