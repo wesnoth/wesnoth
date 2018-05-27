@@ -43,18 +43,25 @@ namespace
 {
 struct invoked_function_data
 {
-	bool finished;
+	/** The actual function to call. */
 	const std::function<void(void)>& f;
 
-	invoked_function_data(bool finished_, const std::function<void(void)>& func)
-		: finished(finished_)
-		, f(func)
-	{
-	}
+	/** Whether execution in the main thread is complete. */
+	bool finished = false;
+
+	/** Stores any exception thrown during the execution of @ref f. */
+	std::exception_ptr thrown_exception;
 
 	void call()
 	{
-		f();
+		try {
+			f();
+		} catch(const CVideo::quit&) {
+			// Handle this exception in the main thread.
+		} catch(...) {
+			thrown_exception = std::current_exception();
+		}
+
 		finished = true;
 	}
 };
@@ -752,7 +759,7 @@ void call_in_main_thread(const std::function<void(void)>& f)
 		return;
 	}
 
-	invoked_function_data fdata{false, f};
+	invoked_function_data fdata{f};
 
 	SDL_Event sdl_event;
 	sdl::UserEvent sdl_userevent(INVOKE_FUNCTION_EVENT, &fdata);
@@ -764,6 +771,10 @@ void call_in_main_thread(const std::function<void(void)>& f)
 
 	while(!fdata.finished) {
 		SDL_Delay(10);
+	}
+
+	if(fdata.thrown_exception) {
+		std::rethrow_exception(fdata.thrown_exception);
 	}
 }
 
