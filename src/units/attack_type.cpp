@@ -324,7 +324,7 @@ bool attack_type::apply_modification(const config& cfg)
 	}
 
 	if(increase_accuracy.empty() == false) {
-		accuracy_ = utils::apply_modifier(accuracy_, increase_accuracy, 1);
+		accuracy_ = utils::apply_modifier(accuracy_, increase_accuracy);
 	}
 
 	if(set_parry.empty() == false) {
@@ -340,7 +340,7 @@ bool attack_type::apply_modification(const config& cfg)
 	}
 
 	if(increase_movement.empty() == false) {
-		movement_used_ = utils::apply_modifier(movement_used_, increase_movement);
+		movement_used_ = utils::apply_modifier(movement_used_, increase_movement, 1);
 	}
 
 	if(set_attack_weight.empty() == false) {
