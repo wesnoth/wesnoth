@@ -2,6 +2,8 @@
  ### Security fixes
    * Fixed an issue allowing MP lobby and whisper message origins to be spoofed
      by clients.
+ ### AI
+   * Fixed crash in presence of units with negative hitpoints (issue #3042).
  ### Campaigns
    * A Tale of Two Brothers
      * S2 'Chase': improved behavior of undead side leader with custom AI
@@ -200,8 +202,6 @@
      values outside the [-255, 255] range (issue #3144).
    * Fixed a regression from 1.13.10 where modification option values couldn't
      be properly saved in arrays.
-   * Added stricter validation to ensure units cannot have negative hitpoints,
-     except during specific attack-related events.
    * Added deprecation notices for several macros that had them missing before.
    * [message] no longer scrolls to units through fog or shroud so it matches
      1.12's behavior.
