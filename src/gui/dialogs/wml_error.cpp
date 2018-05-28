@@ -37,7 +37,7 @@ namespace
 
 void strip_trailing_dir_separators(std::string& str)
 {
-	while(filesystem::is_path_sep(str[str.size() - 1])) {
+	while(filesystem::is_path_sep(str.back())) {
 		str.erase(str.size() - 1);
 	}
 }
