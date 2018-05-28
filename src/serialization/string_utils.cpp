@@ -412,18 +412,25 @@ std::pair<string_view, string_view> vertical_split(const std::string& val)
 }
 
 // Modify a number by string representing integer difference, or optionally %
-int apply_modifier( const int number, const std::string &amount, const int minimum ) {
-	// wassert( amount.empty() == false );
+int apply_modifier(const int number, const std::string& amount, const int minimum)
+{
 	int value = 0;
+
 	try {
 		value = std::stoi(amount);
-	} catch(const std::invalid_argument&) {}
-	if(amount[amount.size()-1] == '%') {
+	} catch(const std::invalid_argument&) {
+	}
+
+	if(amount.back() == '%') {
 		value = div100rounded(number * value);
 	}
+
 	value += number;
-	if (( minimum > 0 ) && ( value < minimum ))
-	    value = minimum;
+
+	if(minimum > 0 && value < minimum) {
+		value = minimum;
+	}
+
 	return value;
 }
 
