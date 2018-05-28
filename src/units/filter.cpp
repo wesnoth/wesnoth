@@ -244,17 +244,15 @@ bool unit_filter_compound::matches(const unit_filter_args& args) const
 
 	// Handle [and], [or], and [not] with in-order precedence
 	for(const auto & filter : cond_children_) {
-		bool child_res = filter.second.matches(args);
-
 		switch (filter.first.v) {
 		case CONDITIONAL_TYPE::AND:
-			res = res && child_res;
+			res = res && filter.second.matches(args);
 			break;
 		case CONDITIONAL_TYPE::OR:
-			res = res || child_res;
+			res = res || filter.second.matches(args);
 			break;
 		case CONDITIONAL_TYPE::NOT:
-			res = res && !child_res;
+			res = res && !filter.second.matches(args);
 			break;
 		}
 	}
