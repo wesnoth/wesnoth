@@ -537,7 +537,6 @@ namespace { // Private helpers for move_unit()
 			animator.proceed_to(move_it_.get_shared_ptr(), step_to - begin_,
 			                    move_it_->appearance_changed(), false);
 			move_it_->set_appearance_changed(false);
-			disp.redraw_minimap();
 		}
 
 		return success;
@@ -1095,9 +1094,6 @@ namespace { // Private helpers for move_unit()
 				undo_stack->clear();
 			}
 		}
-
-		// Update the screen.
-		display::get_singleton()->redraw_minimap();
 	}
 
 

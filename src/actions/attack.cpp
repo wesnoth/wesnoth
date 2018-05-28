@@ -988,10 +988,6 @@ void attack::fire_event(const std::string& n)
 	) {
 		actions::recalculate_fog(defender_side);
 
-		if(update_display_) {
-			display::get_singleton()->redraw_minimap();
-		}
-
 		fire_event("attack_end");
 		throw attack_end_exception();
 	}
@@ -1514,11 +1510,6 @@ void attack::perform()
 
 	if(update_def_fog_) {
 		actions::recalculate_fog(defender_side);
-	}
-
-	// TODO: if we knew the viewing team, we could skip this display update
-	if(update_minimap_ && update_display_) {
-		display::get_singleton()->redraw_minimap();
 	}
 
 	if(a_.valid()) {

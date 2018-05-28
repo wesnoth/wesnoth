@@ -428,7 +428,6 @@ void playsingle_controller::before_human_turn()
 void playsingle_controller::show_turn_dialog(){
 	if(preferences::turn_dialog() && !is_regular_game_end() ) {
 		blindfold b(*gui_, true); //apply a blindfold for the duration of this dialog
-		gui_->recalculate_minimap();
 		std::string message = _("It is now $name|’s turn");
 		utils::string_map symbols;
 		symbols["name"] = gamestate().board_.get_team(current_side()).side_name();
@@ -523,7 +522,6 @@ void playsingle_controller::play_ai_turn()
 	LOG_NG << "is ai...\n";
 
 	end_turn_enable(false);
-	gui_->recalculate_minimap();
 
 	const cursor::setter cursor_setter(cursor::WAIT);
 
@@ -561,7 +559,6 @@ void playsingle_controller::play_ai_turn()
 		end_turn_ = END_TURN_REQUIRED;
 	}
 	turn_data_.sync_network();
-	gui_->recalculate_minimap();
 }
 
 

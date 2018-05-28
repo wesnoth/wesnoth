@@ -686,7 +686,6 @@ bool game_display::maybe_rebuild()
 {
 	if(needs_rebuild_) {
 		needs_rebuild_ = false;
-		recalculate_minimap();
 		rebuild_all();
 		return true;
 	}

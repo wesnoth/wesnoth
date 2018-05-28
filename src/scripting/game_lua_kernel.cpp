@@ -898,7 +898,6 @@ int game_lua_kernel::intf_shroud_op(lua_State *L, bool place_shroud)
 	}
 
 	game_display_->labels().recalculate_shroud();
-	game_display_->recalculate_minimap();
 
 	return 0;
 }
@@ -3333,7 +3332,6 @@ int game_lua_kernel::intf_redraw(lua_State *L)
 			for (const int side : filter.get_teams()){
 				actions::clear_shroud(side);
 			}
-			screen.recalculate_minimap();
 		}
 	}
 	return 0;
@@ -3907,8 +3905,6 @@ int game_lua_kernel::intf_toggle_fog(lua_State *L, const bool clear)
 		}
 	}
 
-	// Flag a screen update.
-	game_display_->recalculate_minimap();
 	return 0;
 }
 

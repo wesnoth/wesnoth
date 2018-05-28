@@ -373,9 +373,6 @@ void undo_list::undo()
 		resources::recorder->undo_cut(redos_.back());
 
 		resources::whiteboard->on_gamestate_change();
-
-		// Screen updates.
-		gui.redraw_minimap();
 	}
 	else
 	{
@@ -419,9 +416,6 @@ void undo_list::redo()
 	temp.swap(redos_);
 	synced_context::run(commandname, data, /*use_undo*/ true, /*show*/ true);
 	temp.swap(redos_);
-
-	// Screen updates.
-	gui.redraw_minimap();
 }
 
 

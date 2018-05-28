@@ -991,7 +991,6 @@ void play_controller::process_oos(const std::string& msg) const
 void play_controller::update_gui_to_player(const int team_index, const bool observe)
 {
 	gui_->set_team(team_index, observe);
-	gui_->recalculate_minimap();
 }
 
 void play_controller::do_autosave()
@@ -1094,7 +1093,6 @@ void play_controller::start_game()
 		}
 
 		sync.do_final_checkup();
-		gui_->recalculate_minimap();
 
 		// Initialize countdown clock.
 		for(const team& t : gamestate().board_.teams()) {
@@ -1105,7 +1103,6 @@ void play_controller::start_game()
 	} else {
 		init_gui();
 		gamestate().gamedata_.set_phase(game_data::PLAY);
-		gui_->recalculate_minimap();
 	}
 }
 

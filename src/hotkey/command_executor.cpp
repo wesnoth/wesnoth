@@ -359,23 +359,18 @@ bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*inde
 			break;
 		case HOTKEY_MINIMAP_DRAW_TERRAIN:
 			preferences::toggle_minimap_draw_terrain();
-			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_CODING_TERRAIN:
 			preferences::toggle_minimap_terrain_coding();
-			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_CODING_UNIT:
 			preferences::toggle_minimap_movement_coding();
-			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_DRAW_UNITS:
 			preferences::toggle_minimap_draw_units();
-			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_DRAW_VILLAGES:
 			preferences::toggle_minimap_draw_villages();
-			recalculate_minimap();
 			break;
 		default:
 			return false;
@@ -674,7 +669,6 @@ void command_executor::run_queued_commands()
 
 void command_executor_default::recalculate_minimap()
 {
-	get_display().recalculate_minimap();
 }
 
 void command_executor_default::lua_console()

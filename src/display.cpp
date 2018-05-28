@@ -104,14 +104,12 @@ display::display(const display_context* dc,
 	, fake_unit_man_(new fake_unit_manager(*this))
 	, builder_(new terrain_builder(level, (dc_ ? &get_map() : nullptr), theme_.border().tile_image, theme_.border().show_border))
 	, minimap_location_(sdl::empty_rect)
-	, redrawMinimap_(false)
 	, grid_(false)
 	, diagnostic_label_(0)
 	, turbo_speed_(2)
 	, turbo_(false)
 	, map_labels_(new map_labels(nullptr))
 	, scroll_event_("scrolled")
-	, complete_redraw_event_("completely_redrawn")
 	, fps_counter_()
 	, fps_start_()
 	, fps_actual_()
@@ -910,7 +908,6 @@ int display::draw_text_in_hex(const map_location& loc,
 void display::select_hex(map_location hex)
 {
 	selectedHex_ = hex;
-	recalculate_minimap();
 }
 
 void display::highlight_hex(map_location hex)
@@ -994,8 +991,6 @@ bool display::scroll(int xmove, int ymove, bool force)
 	labels().recalculate_shroud();
 
 	scroll_event_.notify_observers();
-
-	redrawMinimap_ = true;
 
 	return true;
 }

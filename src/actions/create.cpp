@@ -695,9 +695,6 @@ place_recruit_result place_recruit(unit_ptr u,
 	}
 	// Make sure the unit appears (if either !show or the animation is suppressed).
 	new_unit_itor->set_hidden(false);
-	if(display::get_singleton() != nullptr) {
-		display::get_singleton()->redraw_minimap();
-	}
 
 	// Village capturing.
 	if(resources::gameboard->map().is_village(current_loc)) {

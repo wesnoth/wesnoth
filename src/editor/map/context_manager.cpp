@@ -115,7 +115,6 @@ void context_manager::refresh_all()
 	gui_.rebuild_all();
 	get_map_context().set_needs_terrain_rebuild(false);
 	get_map_context().clear_changed_locations();
-	gui_.recalculate_minimap();
 	if(locs_) {
 		for(const auto& loc : get_map_context().map().special_locations().left) {
 			locs_->add_item(loc.first);
@@ -547,7 +546,6 @@ void context_manager::refresh_after_action(bool drag_part)
 	}
 
 	get_map_context().clear_changed_locations();
-	gui_.recalculate_minimap();
 }
 
 void context_manager::resize_map_dialog()

@@ -676,10 +676,6 @@ REPLAY_RETURN do_replay(bool one_move)
 {
 	log_scope("do replay");
 
-	if (!resources::controller->is_skipping_replay()) {
-		display::get_singleton()->recalculate_minimap();
-	}
-
 	update_locker lock_update(CVideo::get_singleton(), resources::controller->is_skipping_replay());
 	return do_replay_handle(one_move);
 }
