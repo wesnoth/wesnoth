@@ -1769,8 +1769,9 @@ double calculate_probability_of_debuff(double initial_prob, bool enemy_gives, do
 	// Prob_stay_alive can get slightly negative because of a rounding error, so ensure that it gets non-negative.
 	prob_stay_alive = std::max(prob_stay_alive, 0.0);
 	// Prob_kill can creep a bit above 100 % if the AI simulates an unit being attacked by multiple units in a row, due to rounding error.
+	// Likewise, it can get slightly negative if the unit already has negative HP.
 	// Simply limit it to suitable range.
-	prob_kill = std::min(prob_kill, 1.0);
+	prob_kill = utils::clamp(prob_kill, 0.0, 1.0);
 
 	// Probability we are already debuffed and the enemy doesn't hit us.
 	const double prob_already_debuffed_not_touched = initial_prob * (1.0 - prob_touched);
@@ -1968,17 +1969,19 @@ void one_strike_fight(const battle_context_unit_stats& stats,
 	// If we were killed in an earlier fight, we don't get to attack.
 	// (Most likely case: we are a first striking defender subject to a series
 	// of attacks.)
-	const double alive_prob = hp_dist.empty() ? 1.0 : 1.0 - hp_dist[0];
+	double alive_prob = hp_dist.empty() ? 1.0 : 1.0 - hp_dist[0];
+	if(stats.hp == 0) {
+		alive_prob = 0.0;
+	}
 	const double hit_chance = (stats.chance_to_hit / 100.0) * alive_prob;
 
 	if(opp_hp_dist.empty()) {
 		opp_hp_dist = std::vector<double>(opp_stats.max_hp + 1);
-		if(strikes == 1) {
+		if(strikes == 1 && opp_stats.hp > 0) {
 			opp_hp_dist[opp_stats.hp] = 1.0 - hit_chance;
 			opp_hp_dist[std::max<int>(opp_stats.hp - stats.damage, 0)] = hit_chance;
 			opp_not_hit *= 1.0 - hit_chance;
 		} else {
-			assert(strikes == 0);
 			opp_hp_dist[opp_stats.hp] = 1.0;
 		}
 	} else {
@@ -1994,17 +1997,16 @@ void one_strike_fight(const battle_context_unit_stats& stats,
 	}
 
 	// If we killed opponent, it won't attack us.
-	const double opp_alive_prob = 1.0 - opp_hp_dist[0] / alive_prob;
-	const double opp_hit_chance = (opp_stats.chance_to_hit / 100.0) * opp_alive_prob;
+	const double opp_attack_prob = (1.0 - opp_hp_dist[0]) * alive_prob;
+	const double opp_hit_chance = (opp_stats.chance_to_hit / 100.0) * opp_attack_prob;
 
 	if(hp_dist.empty()) {
 		hp_dist = std::vector<double>(stats.max_hp + 1);
-		if(opp_strikes == 1) {
+		if(opp_strikes == 1 && stats.hp > 0) {
 			hp_dist[stats.hp] = 1.0 - opp_hit_chance;
 			hp_dist[std::max<int>(stats.hp - opp_stats.damage, 0)] = opp_hit_chance;
 			self_not_hit *= 1.0 - opp_hit_chance;
 		} else {
-			assert(opp_strikes == 0);
 			hp_dist[stats.hp] = 1.0;
 		}
 	} else {
