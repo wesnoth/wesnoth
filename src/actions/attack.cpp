@@ -1195,16 +1195,10 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 		OOS_error_ = true;
 	}
 
-	if(dies) {
-		// Will be reset in unit_killed() later.
-		unit::dying_unit_loc = defender.loc_;
-	}
-
 	if(hits) {
 		try {
 			fire_event(attacker_turn ? "attacker_hits" : "defender_hits");
 		} catch(const attack_end_exception&) {
-			unit::dying_unit_loc = map_location::null_location();
 			refresh_bc();
 			return false;
 		}
@@ -1212,7 +1206,6 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 		try {
 			fire_event(attacker_turn ? "attacker_misses" : "defender_misses");
 		} catch(const attack_end_exception&) {
-			unit::dying_unit_loc = map_location::null_location();
 			refresh_bc();
 			return false;
 		}
