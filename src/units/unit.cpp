@@ -207,8 +207,6 @@ namespace
 	}
 } // end anon namespace
 
-map_location unit::dying_unit_loc;
-
 /**
  * Intrusive Pointer interface
  *
@@ -632,9 +630,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	}
 
 	if(const config::attribute_value* v = cfg.get("hitpoints")) {
-		if(loc_ != dying_unit_loc) {
-			VALIDATE(*v > 0, _("Unit with negative HP found"));
-		}
+		VALIDATE(*v > 0, _("Unit with negative HP found"));
 		hit_points_ = *v;
 	} else {
 		hit_points_ = max_hit_points_;
