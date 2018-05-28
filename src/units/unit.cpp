@@ -50,7 +50,6 @@
 #include "units/map.hpp"	   // for unit_map, etc
 #include "variable.hpp"		   // for vconfig, etc
 #include "version.hpp"
-#include "wml_exception.hpp"
 
 #include "utils/functional.hpp"
 #include <boost/dynamic_bitset.hpp>
@@ -630,7 +629,6 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	}
 
 	if(const config::attribute_value* v = cfg.get("hitpoints")) {
-		VALIDATE(*v > 0, _("Unit with negative HP found"));
 		hit_points_ = *v;
 	} else {
 		hit_points_ = max_hit_points_;

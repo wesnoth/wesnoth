@@ -391,6 +391,7 @@ static int impl_unit_set(lua_State *L)
 	//modify_int_attrib_check_range("side", u.set_side(value), 1, static_cast<int>(teams().size())); TODO: Figure out if this is a good idea, to refer to teams() and make this depend on having a gamestate
 	modify_int_attrib("side", u.set_side(value));
 	modify_int_attrib("moves", u.set_movement(value));
+	modify_int_attrib("hitpoints", u.set_hitpoints(value));
 	modify_int_attrib("experience", u.set_experience(value));
 	modify_int_attrib("recall_cost", u.set_recall_cost(value));
 	modify_int_attrib("attacks_left", u.set_attacks(value));
@@ -405,19 +406,6 @@ static int impl_unit_set(lua_State *L)
 
 	modify_vector_string_attrib("extra_recruit", u.set_recruits(value));
 	modify_vector_string_attrib("advances_to", u.set_advances_to(value));
-
-	if(strcmp(m, "hitpoints") == 0) {
-		int hp = luaL_checkinteger(L, 3);
-		if(hp >= 0) {
-			u.set_hitpoints(hp);
-			return 0;
-		} else {
-			std::string err_msg = "invalid target HP: ";
-			err_msg += std::to_string(hp);
-			return luaL_argerror(L, 3, err_msg.c_str());
-		}
-	}
-
 	if(strcmp(m, "alignment") == 0) {
 		u.set_alignment(lua_check<unit_type::ALIGNMENT>(L, 3));
 		return 0;
