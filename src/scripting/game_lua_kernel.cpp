@@ -3322,8 +3322,6 @@ int game_lua_kernel::intf_label(lua_State *L)
 int game_lua_kernel::intf_redraw(lua_State *L)
 {
 	if (game_display_) {
-		game_display & screen = *game_display_;
-
 		vconfig cfg(luaW_checkvconfig(L, 1));
 		bool clear_shroud(luaW_toboolean(L, 2));
 
