@@ -20,7 +20,6 @@
 #include "actions/undo.hpp"
 
 #include "game_board.hpp"               // for game_board
-#include "game_display.hpp"          // for game_display
 #include "log.hpp"                   // for LOG_STREAM, logger, etc
 #include "map/map.hpp"                      // for gamemap
 #include "map/location.hpp"  // for map_location, operator<<, etc
@@ -352,8 +351,6 @@ void undo_list::undo()
 
 	const events::command_disabler disable_commands;
 
-	game_display & gui = *game_display::get_singleton();
-
 	// Get the action to undo. (This will be placed on the redo stack, but
 	// only if the undo is successful.)
 	action_list::auto_type action = undos_.pop_back();
@@ -396,8 +393,6 @@ void undo_list::redo()
 		return;
 
 	const events::command_disabler disable_commands;
-
-	game_display & gui = *game_display::get_singleton();
 
 	// Get the action to redo. (This will be placed on the undo stack, but
 	// only if the redo is successful.)
