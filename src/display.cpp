@@ -1944,10 +1944,6 @@ void display::draw()
 	// Draw floating labels (includes map labels).
 	font::draw_floating_labels();
 
-	// TODO: what dis?
-	// events::raise_volatile_draw_event();
-	// events::raise_volatile_undraw_event();
-
 	// Execute any post-draw actions from derived classes.
 	post_draw();
 }

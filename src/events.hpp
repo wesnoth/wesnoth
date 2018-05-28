@@ -75,13 +75,7 @@ public:
 	virtual void process_event() {}
 	virtual void draw() {}
 
-	virtual void volatile_draw() {}
-	virtual void volatile_undraw() {}
-
 	virtual bool requires_event_focus(const SDL_Event * = nullptr) const { return false; }
-
-	virtual void process_help_string(int /*mousex*/, int /*mousey*/) {}
-	virtual void process_tooltip_string(int /*mousex*/, int /*mousey*/) {}
 
 	virtual void join(); /*joins the current event context*/
 	virtual void join(context &c); /*joins the specified event context*/
@@ -156,10 +150,6 @@ void raise_process_event();
 void raise_resize_event();
 void raise_draw_event();
 void raise_draw_all_event();
-void raise_volatile_draw_event();
-void raise_volatile_draw_all_event();
-void raise_volatile_undraw_event();
-void raise_help_string_event(int mousex, int mousey);
 
 
 /**

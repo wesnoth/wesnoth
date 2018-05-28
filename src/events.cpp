@@ -550,7 +550,6 @@ void run_event_loop()
 		case SDL_MOUSEMOTION: {
 			// Always make sure a cursor is displayed if the mouse moves or if the user clicks
 			cursor::set_focus(true);
-			raise_help_string_event(event.motion.x, event.motion.y);
 			break;
 		}
 
@@ -682,43 +681,6 @@ void raise_draw_all_event()
 	for(auto& context : event_contexts) {
 		for(auto handler : context.handlers) {
 			handler->draw();
-		}
-	}
-}
-
-void raise_volatile_draw_event()
-{
-	if(event_contexts.empty() == false) {
-		for(auto handler : event_contexts.back().handlers) {
-			handler->volatile_draw();
-		}
-	}
-}
-
-void raise_volatile_draw_all_event()
-{
-	for(auto& context : event_contexts) {
-		for(auto handler : context.handlers) {
-			handler->volatile_draw();
-		}
-	}
-}
-
-void raise_volatile_undraw_event()
-{
-	if(event_contexts.empty() == false) {
-		for(auto handler : event_contexts.back().handlers) {
-			handler->volatile_undraw();
-		}
-	}
-}
-
-void raise_help_string_event(int mousex, int mousey)
-{
-	if(event_contexts.empty() == false) {
-		for(auto handler : event_contexts.back().handlers) {
-			handler->process_help_string(mousex, mousey);
-			handler->process_tooltip_string(mousex, mousey);
 		}
 	}
 }
