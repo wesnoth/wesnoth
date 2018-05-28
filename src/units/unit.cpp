@@ -22,15 +22,13 @@
 #include "color.hpp"
 #include "deprecation.hpp"
 #include "display_context.hpp"
-#include "filter_context.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp" // for VGETTEXT
 #include "game_board.hpp"			// for game_board
 #include "game_config.hpp"			// for add_color_info, etc
 #include "game_data.hpp"
 #include "game_errors.hpp"		   // for game_error
-#include "game_events/manager.hpp" // for add_events, pump
-#include "game_events/pump.hpp" // for running
+#include "game_events/manager.hpp" // for add_events
 #include "preferences/game.hpp"	// for encountered_units
 #include "gettext.hpp"			   // for N_
 #include "lexical_cast.hpp"
@@ -57,7 +55,6 @@
 #include "utils/functional.hpp"
 #include <boost/dynamic_bitset.hpp>
 #include <boost/function_output_iterator.hpp>
-#include "lua/lauxlib.h"
 
 #ifdef _MSC_VER
 #pragma warning (push)
@@ -635,13 +632,8 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	}
 
 	if(const config::attribute_value* v = cfg.get("hitpoints")) {
-		if(!(*v > 0 || loc_ == dying_unit_loc)) {
-			if(resources::game_events->pump().running()) {
-				// This function throws an exception, it doesn't return
-				luaL_error(resources::filter_con->get_lua_kernel()->get_state(), "Attempted to create a unit with negative HP");
-			} else {
-				VALIDATE(false, _("Unit with negative HP found"));
-			}
+		if(loc_ != dying_unit_loc) {
+			VALIDATE(*v > 0, _("Unit with negative HP found"));
 		}
 		hit_points_ = *v;
 	} else {
