@@ -647,11 +647,6 @@ std::size_t wml_event_pump::wml_tracking()
 	return impl_->internal_wml_tracking;
 }
 
-bool wml_event_pump::running() const
-{
-	return impl_->instance_count > 0u;
-}
-
 wml_event_pump::wml_event_pump(manager& man)
 	: impl_(new pump_impl(man))
 {
