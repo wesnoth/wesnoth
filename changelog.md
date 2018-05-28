@@ -1,6 +1,13 @@
 ## Version 1.14.2+dev
+ ### AI
+   * Fixed crash in presence of units with negative hitpoints (issue #3042).
  ### Language and i18n
    * Updated translations: Italian
+ ### WML engine
+   * Removed validation to ensure units cannot have negative hitpoints. We
+     learned that the ability to create such units is documented, and thus
+     disallowing it was an API change. Since API changes aren't allowed in
+     the stable branch, we have reverted it.
 
 ## Version 1.14.2
  ### Campaigns
