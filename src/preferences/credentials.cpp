@@ -109,7 +109,7 @@ namespace preferences
 		std::string name = preferences::get("login", EMPTY_LOGIN);
 		if(name == EMPTY_LOGIN) {
 			name = get_system_username();
-		} else if(name.size() > 2 && name[0] == '@' && name[name.size() - 1] == '@') {
+		} else if(name.size() > 2 && name.front() == '@' && name.back() == '@') {
 			name = name.substr(1, name.size() - 2);
 		} else {
 			ERR_CFG << "malformed user credentials (did you manually edit the preferences file?)" << std::endl;

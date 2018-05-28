@@ -1212,7 +1212,7 @@ void binary_paths_manager::set_paths(const config& cfg)
 			continue;
 		}
 
-		if(!path.empty() && path[path.size() - 1] != '/')
+		if(!path.empty() && path.back() != '/')
 			path += "/";
 		if(binary_paths.count(path) == 0) {
 			binary_paths.insert(path);

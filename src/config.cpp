@@ -87,8 +87,8 @@ struct config_implementation
 		config->check_valid();
 
 		assert(!parent.empty());
-		assert(parent[0] == '[');
-		assert(parent[parent.size() - 1] == ']');
+		assert(parent.front() == '[');
+		assert(parent.back() == ']');
 
 		if(config->has_child(key)) {
 			return *(config->children_.find(key)->second.front());

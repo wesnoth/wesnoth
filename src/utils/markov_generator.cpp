@@ -81,9 +81,9 @@ static std::u32string markov_generate_name(const markov_prefix_map& prefixes,
 		}
 
 		res.resize(res.size()+1);
-		res[res.size()-1] = c;
+		res.back() = c;
 		prefix.resize(prefix.size()+1);
-		prefix[prefix.size()-1] = c;
+		prefix.back() = c;
 		while(prefix.size() > chain_size) {
 			prefix.erase(prefix.begin());
 		}
