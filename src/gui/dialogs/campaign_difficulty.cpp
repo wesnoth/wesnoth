@@ -135,15 +135,19 @@ void campaign_difficulty::pre_show(window& window)
 
 		item["use_markup"] = "true";
 
-		item["label"] = d["label"];
+		std::ostringstream ss;
+		ss << d["label"];
+
+		if(!d["description"].empty()) {
+			if (!d["old_markup"].to_bool()) {
+				ss << "\n<small>" << font::span_color(font::GRAY_COLOR) << "(" << d["description"].str() << ")</span></small>"";
+			} else {
+				ss << "\n<small>" << d["description"] << "</small>";
+			}
+		}
+
+		item["label"] = ss.str();
 		data.emplace("label", item);
-
-		const std::string descrip_text = d["old_markup"].to_bool() || d["description"].empty()
-			? d["description"]
-			: (formatter() << font::span_color(font::GRAY_COLOR) << "(" << d["description"].str() << ")</span>").str();
-
-		item["label"] = descrip_text;
-		data.emplace("description", item);
 
 		grid& grid = list.add_row(data);
 
