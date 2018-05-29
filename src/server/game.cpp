@@ -1120,7 +1120,7 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr& user)
 			continue;
 		}
 
-		std::unique_ptr<simple_wml::document> message(new simple_wml::document);
+		auto message = std::make_unique<simple_wml::document>();
 		simple_wml::node& message_turn = message->root().add_child("turn");
 		simple_wml::node& message_turn_command = message_turn.add_child("command");
 		speak->copy_into(message_turn_command.add_child("speak"));

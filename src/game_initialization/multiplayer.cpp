@@ -410,7 +410,7 @@ void enter_wait_mode(mp_workflow_helper_ptr helper, int game_id, bool observe)
 
 	statistics::fresh_stats();
 
-	std::unique_ptr<mp_campaign_info> campaign_info(new mp_campaign_info(*helper->connection));
+	auto campaign_info = std::make_unique<mp_campaign_info>(*helper->connection);
 	campaign_info->is_host = false;
 
 	if(helper->lobby_info->get_game_by_id(game_id)) {

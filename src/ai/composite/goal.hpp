@@ -206,7 +206,7 @@ public:
 	}
 
 	virtual goal_ptr get_new_instance( readonly_context &context, const config &cfg ){
-		goal_ptr a(new GOAL(context,cfg));
+		goal_ptr a = std::make_shared<GOAL>(context, cfg);
 		a->on_create();
 		return a;
 	}

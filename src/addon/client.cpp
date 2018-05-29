@@ -332,7 +332,7 @@ addons_client::install_result addons_client::do_resolve_addon_dependencies(const
 	result.outcome = install_outcome::success;
 	result.wml_changed = false;
 
-	std::unique_ptr<cursor::setter> cursor_setter(new cursor::setter(cursor::WAIT));
+	auto cursor_setter = std::make_unique<cursor::setter>(cursor::WAIT);
 
 	// TODO: We don't currently check for the need to upgrade. I'll probably
 	// work on that when implementing dependency tiers later.
