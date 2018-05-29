@@ -41,6 +41,7 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/functional/hash_fwd.hpp>
 
+#include <mutex>
 #include <set>
 
 static lg::log_domain log_display("display");
@@ -105,23 +106,30 @@ class cache_type
 public:
 	cache_type()
 		: content_()
+		, cache_lock_()
 	{
 	}
 
 	cache_item<T>& get_element(int index)
 	{
-		if(static_cast<unsigned>(index) >= content_.size())
+		std::lock_guard<std::mutex> lock(cache_lock_);
+
+		if(static_cast<unsigned>(index) >= content_.size()) {
 			content_.resize(index + 1);
+		}
+
 		return content_[index];
 	}
 
 	void flush()
 	{
+		std::lock_guard<std::mutex> lock(cache_lock_);
 		content_.clear();
 	}
 
 private:
 	std::vector<cache_item<T>> content_;
+	std::mutex cache_lock_;
 };
 
 template<typename T>
