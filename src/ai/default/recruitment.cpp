@@ -1138,10 +1138,10 @@ void recruitment::simulate_attack(
 			if (att_weapon.range() != def_weapon.range()) {
 				continue;
 			}
-			std::shared_ptr<attack_simulation> simulation(new attack_simulation(
+			auto simulation = std::make_shared<attack_simulation>(
 					attacker, defender,
 					attacker_defense, defender_defense,
-					att_weapon.shared_from_this(), def_weapon.shared_from_this(), average_lawful_bonus_));
+					att_weapon.shared_from_this(), def_weapon.shared_from_this(), average_lawful_bonus_);
 			if (!best_def_response || simulation->better_result(best_def_response.get(), true)) {
 				best_def_response = simulation;
 			}
@@ -1830,7 +1830,7 @@ void recruitment_aspect::recalculate() const {
 }
 
 void recruitment_aspect::create_job(std::vector<std::shared_ptr<recruit_job>> &jobs, const config &job) {
-	std::shared_ptr<recruit_job> job_ptr(new recruit_job(
+	jobs.emplace_back(std::make_shared<recruit_job>(
 		utils::split(job["type"]),
 		job["leader_id"], job["id"],
 		job["number"].to_int(-1), job["importance"].to_int(1),
@@ -1838,16 +1838,14 @@ void recruitment_aspect::create_job(std::vector<std::shared_ptr<recruit_job>> &j
 		job["blocker"].to_bool(true),
 		job["pattern"].to_bool(true)
 	));
-	jobs.push_back(job_ptr);
 }
 
 void recruitment_aspect::create_limit(std::vector<std::shared_ptr<recruit_limit>> &limits, const config &lim) {
-	std::shared_ptr<recruit_limit> lim_ptr(new recruit_limit(
+	limits.emplace_back(std::make_shared<recruit_limit>(
 		utils::split(lim["type"]),
 		lim["id"],
 		lim["max"].to_int(0)
 	));
-	limits.push_back(lim_ptr);
 }
 
 }  // namespace default_recruitment

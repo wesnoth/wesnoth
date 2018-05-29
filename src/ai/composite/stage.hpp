@@ -130,7 +130,7 @@ public:
 	}
 
 	virtual stage_ptr get_new_instance( ai_context &context, const config &cfg ){
-		stage_ptr a(new STAGE(context,cfg));
+		stage_ptr a = std::make_shared<STAGE>(context, cfg);
 		a->on_create();
 		return a;
 	}

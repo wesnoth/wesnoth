@@ -715,18 +715,18 @@ int battle_context::choose_defender_weapon(const unit& attacker,
 	for(i = 0; i < choices.size(); ++i) {
 		const attack_type& def = defender.attacks()[choices[i]];
 
-		std::unique_ptr<battle_context_unit_stats> att_stats(new battle_context_unit_stats(
-				attacker, attacker_loc, attacker_weapon, true, defender, defender_loc, def.shared_from_this(), units));
+		auto att_stats = std::make_unique<battle_context_unit_stats>(
+				attacker, attacker_loc, attacker_weapon, true, defender, defender_loc, def.shared_from_this(), units);
 
-		std::unique_ptr<battle_context_unit_stats> def_stats(new battle_context_unit_stats(
-				defender, defender_loc, choices[i], false, attacker, attacker_loc, att.shared_from_this(), units));
+		auto def_stats = std::make_unique<battle_context_unit_stats>(
+				defender, defender_loc, choices[i], false, attacker, attacker_loc, att.shared_from_this(), units);
 
 		if(def_stats->disable) {
 			continue;
 		}
 
-		std::unique_ptr<combatant> att_comb(new combatant(*att_stats));
-		std::unique_ptr<combatant> def_comb(new combatant(*def_stats, prev_def));
+		auto att_comb = std::make_unique<combatant>(*att_stats);
+		auto def_comb = std::make_unique<combatant>(*def_stats, prev_def);
 
 		att_comb->fight(*def_comb);
 
