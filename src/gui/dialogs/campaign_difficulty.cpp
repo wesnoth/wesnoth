@@ -140,7 +140,7 @@ void campaign_difficulty::pre_show(window& window)
 
 		if(!d["description"].empty()) {
 			if (!d["old_markup"].to_bool()) {
-				ss << "\n<small>" << font::span_color(font::GRAY_COLOR) << "(" << d["description"].str() << ")</span></small>"";
+				ss << "\n<small>" << font::span_color(font::GRAY_COLOR) << "(" << d["description"].str() << ")</span></small>";
 			} else {
 				ss << "\n<small>" << d["description"] << "</small>";
 			}
