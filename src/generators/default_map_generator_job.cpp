@@ -685,6 +685,20 @@ static void flood_name(const map_location& start, const std::string& name, std::
 std::string default_map_generator_job::default_generate_map(generator_data data, std::map<map_location,std::string>* labels, const config& cfg)
 {
 	log_scope("map generation");
+	
+	LOG_NG << "default_generate_map parameters" 
+		<< " width=" << data.width 
+		<< " height=" << data.height
+		<< " nplayers=" << data.nplayers
+		<< " nvillages=" << data.nvillages
+		<< " iterations=" << data.iterations
+		<< " hill_size=" << data.hill_size
+		<< " castle_size=" << data.castle_size
+		<< " island_size=" << data.island_size
+		<< " island_off_center=" << data.island_off_center
+		<< " max_lakes=" << data.max_lakes
+		<< " link_castles=" << data.link_castles
+		<< " show_labels=" << data.show_labels << "\n";
 
 	// Odd widths are nasty
 	VALIDATE(is_even(data.width), _("Random maps with an odd width aren't supported."));
