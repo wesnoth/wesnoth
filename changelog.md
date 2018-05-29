@@ -220,6 +220,8 @@
    * Fixed require_resource in [resource].
    * Fixed require_scenario=yes not working with map_generation (issue #3105).
    * Fixed many crashes and out-of-sync errors when using the planning mode.
+   * Fixed an occasional crash at the loading screen related to multi-thread
+     access of the image cache.
 
 ## Version 1.13.12
  ### Security fixes
