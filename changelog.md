@@ -8,6 +8,9 @@
      learned that the ability to create such units is documented, and thus
      disallowing it was an API change. Since API changes aren't allowed in
      the stable branch, we have reverted it.
+ ### Miscellaneous and bug fixes
+   * Fixed an occasional crash at the loading screen related to multi-thread
+     access of the image cache.
 
 ## Version 1.14.2
  ### Campaigns
