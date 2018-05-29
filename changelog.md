@@ -2,7 +2,7 @@
  ### AI
    * Fixed crash in presence of units with negative hitpoints (issue #3042).
  ### Language and i18n
-   * Updated translations: Italian
+   * Updated translations: French, Italian
  ### WML engine
    * Removed validation to ensure units cannot have negative hitpoints. We
      learned that the ability to create such units is documented, and thus
