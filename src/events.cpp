@@ -462,7 +462,7 @@ void pump()
 		events.push_back(temp_event);
 	}
 
-	std::vector<SDL_Event>::iterator ev_it = events.begin();
+	auto ev_it = events.begin();
 	for(int i = 1; i < begin_ignoring; ++i) {
 		if(is_input(*ev_it)) {
 			// ignore user input events that occurred before the window was activated
@@ -472,14 +472,15 @@ void pump()
 		}
 	}
 
-	std::vector<SDL_Event>::iterator ev_end = events.end();
 	bool resize_found = false;
-	for(ev_it = events.begin(); ev_it != ev_end; ++ev_it) {
-		SDL_Event& event = *ev_it;
+	for(const SDL_Event& event : boost::adaptors::reverse(events)) {
 		if(event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_RESIZED) {
 			resize_found = true;
 			last_resize_event = event;
 			last_resize_event_used = false;
+
+			// Since we're working backwards, the first resize event found is the last in the list.
+			break;
 		}
 	}
 
@@ -502,14 +503,11 @@ void pump()
 		events.erase(first_draw_event + 1, events.end());
 	}
 
-	ev_end = events.end();
-
-	for(ev_it = events.begin(); ev_it != ev_end; ++ev_it) {
+	for(const SDL_Event& event : events) {
 		for(context& c : event_contexts) {
 			c.add_staging_handlers();
 		}
 
-		SDL_Event& event = *ev_it;
 		switch(event.type) {
 		case SDL_WINDOWEVENT:
 			switch(event.window.event) {
