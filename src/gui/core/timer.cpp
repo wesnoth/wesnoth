@@ -205,7 +205,7 @@ bool execute_timer(const std::size_t id)
 	{
 		std::lock_guard<std::mutex> lock(timers_mutex);
 
-		std::map<size_t, timer>::iterator itor = get_timers().find(id);
+		auto itor = get_timers().find(id);
 		if(itor == get_timers().end()) {
 			LOG_GUI_E << "Can't execute timer since it no longer exists.\n";
 			return false;
