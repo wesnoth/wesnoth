@@ -35,6 +35,7 @@
 static lg::log_domain log_mapgen("mapgen");
 #define ERR_NG LOG_STREAM(err, log_mapgen)
 #define LOG_NG LOG_STREAM(info, log_mapgen)
+#define DBG_NG LOG_STREAM(debug, log_mapgen)
 
 typedef std::vector<std::vector<int>> height_map;
 typedef t_translation::ter_map terrain_map;
@@ -284,6 +285,7 @@ height_map default_map_generator_job::generate_height_map(std::size_t width, std
 		}
 	}
 
+	DBG_NG << iterations << " iterations\n";
 	for(std::size_t i = 0; i != iterations; ++i) {
 
 		// (x1,y1) is the location of the hill,
@@ -311,6 +313,7 @@ height_map default_map_generator_job::generate_height_map(std::size_t width, std
 		}
 
 		const int radius = rng_()%hill_size + 1;
+		DBG_NG << "placing hill at " << x1 << "," << y1 << " radius=" << radius << " is_valley=" << is_valley << "\n";
 
 		const int min_x = x1 - radius > 0 ? x1 - radius : 0;
 		const int max_x = x1 + radius < static_cast<long>(res.size()) ? x1 + radius : res.size();
