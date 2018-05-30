@@ -131,8 +131,7 @@ void loading_screen::pre_show(window& window)
 	animation_label_ = find_widget<label>(&window, "test_animation", false, true);
 
 	// Add a draw callback to handle the animation, et al.
-	window.connect_signal<event::DRAW>(
-		std::bind(&loading_screen::draw_callback, this), event::dispatcher::front_child);
+	connect_signal_on_draw(window, std::bind(&loading_screen::draw_callback, this));
 
 	set_next_animation_time();
 }

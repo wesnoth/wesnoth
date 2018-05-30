@@ -88,8 +88,8 @@ void story_viewer::pre_show(window& window)
 	connect_signal_mouse_left_click(find_widget<button>(&window, "back", false),
 		std::bind(&story_viewer::nav_button_callback, this, std::ref(window), DIR_BACKWARDS));
 
-	window.connect_signal<event::DRAW>(
-		std::bind(&story_viewer::draw_callback, this, std::ref(window)), event::dispatcher::front_child);
+	connect_signal_on_draw(window,
+		std::bind(&story_viewer::draw_callback, this, std::ref(window)));
 
 	display_part(window);
 }
