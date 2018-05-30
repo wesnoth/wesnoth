@@ -353,6 +353,9 @@ height_map default_map_generator_job::generate_height_map(std::size_t width, std
 		}
 	}
 
+	LOG_NG  << "generate_height_map"
+		<< " lowest=" << lowest
+		<< " highest =" << highest << " \n";
 	// Normalize the heights to the range 0-1000:
 	highest -= lowest;
 	for(x = 0; std::size_t(x) != res.size(); ++x) {
