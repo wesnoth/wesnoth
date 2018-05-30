@@ -88,8 +88,7 @@ static uint32_t timer_callback(uint32_t, void* id)
 {
 	DBG_GUI_E << "Pushing timer event in queue.\n";
 
-	std::map<std::size_t, timer>::iterator itor
-			= get_timers().find(reinterpret_cast<std::size_t>(id));
+	auto itor = get_timers().find(reinterpret_cast<std::size_t>(id));
 	if(itor == get_timers().end()) {
 		return 0;
 	}
@@ -144,7 +143,7 @@ bool remove_timer(const std::size_t id)
 {
 	DBG_GUI_E << "Removing timer " << id << ".\n";
 
-	std::map<std::size_t, timer>::iterator itor = get_timers().find(id);
+	auto itor = get_timers().find(id);
 	if(itor == get_timers().end()) {
 		LOG_GUI_E << "Can't remove timer since it no longer exists.\n";
 		return false;
@@ -175,7 +174,7 @@ bool execute_timer(const std::size_t id)
 {
 	DBG_GUI_E << "Executing timer " << id << ".\n";
 
-	std::map<std::size_t, timer>::iterator itor = get_timers().find(id);
+	auto itor = get_timers().find(id);
 	if(itor == get_timers().end()) {
 		LOG_GUI_E << "Can't execute timer since it no longer exists.\n";
 		return false;

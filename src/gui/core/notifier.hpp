@@ -75,8 +75,7 @@ public:
 	 */
 	void disconnect_notifiee(notifiee<functor_t>& target)
 	{
-		typename std::map<notifiee<functor_t>*, functor_t>::iterator itor
-				= notifiees_.find(&target);
+		auto itor = notifiees_.find(&target);
 
 		if(itor != notifiees_.end()) {
 
