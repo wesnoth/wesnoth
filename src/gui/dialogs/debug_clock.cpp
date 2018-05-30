@@ -104,8 +104,7 @@ void debug_clock::pre_show(window& window)
 	clock_ = find_widget<styled_widget>(&window, "clock", false, false);
 
 	signal_ = std::bind(&debug_clock::update_time, this, false);
-	window.connect_signal<event::DRAW>(signal_,
-									   event::dispatcher::front_child);
+	connect_signal_on_draw(window, signal_);
 
 	time_.set_current_time();
 	update_time(true);

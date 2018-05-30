@@ -52,8 +52,7 @@ void outro::pre_show(window& window)
 	window.set_enter_disabled(true);
 	window.get_canvas(0).set_variable("outro_text", wfl::variant(text_));
 
-	window.connect_signal<event::DRAW>(
-		std::bind(&outro::draw_callback, this, std::ref(window)), event::dispatcher::front_child);
+	connect_signal_on_draw(window, std::bind(&outro::draw_callback, this, std::ref(window)));
 
 	set_next_draw();
 }
