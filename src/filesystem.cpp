@@ -897,7 +897,7 @@ filesystem::scoped_istream istream_file(const std::string& fname, bool treat_fai
 
 	if(fname.empty()) {
 		ERR_FS << "Trying to open file with empty name.\n";
-		auto s = std::make_unique<fstream_t>();
+		filesystem::scoped_istream s = std::make_unique<fstream_t>();
 		s->clear(std::ios_base::failbit);
 		return s;
 	}
@@ -912,7 +912,7 @@ filesystem::scoped_istream istream_file(const std::string& fname, bool treat_fai
 			ERR_FS << "Could not open '" << fname << "' for reading.\n";
 		} else if(!is_filename_case_correct(fname, fd)) {
 			ERR_FS << "Not opening '" << fname << "' due to case mismatch.\n";
-			auto s = std::make_unique<fstream_t>();
+			filesystem::scoped_istream s = std::make_unique<fstream_t>();
 			s->clear(std::ios_base::failbit);
 			return s;
 		}
@@ -923,7 +923,7 @@ filesystem::scoped_istream istream_file(const std::string& fname, bool treat_fai
 			ERR_FS << "Could not open '" << fname << "' for reading.\n";
 		}
 
-		auto s = std::make_unique<fstream_t>();
+		filesystem::scoped_istream s = std::make_unique<fstream_t>();
 		s->clear(std::ios_base::failbit);
 		return s;
 	}
