@@ -76,23 +76,32 @@ std::string format_disjunct_list(const t_string& empty, const std::vector<t_stri
 
 }
 
-/** Handy wrappers around interpolate_variables_into_string and gettext. */
-std::string vgettext(const char* msgid, const utils::string_map& symbols);
-std::string vgettext(const char* domain
-		, const char* msgid
-		, const utils::string_map& symbols);
-
-std::string vngettext(const char*, const char*, int, const utils::string_map&);
-
-std::string vngettext(const char*, const char*, const char*, int, const utils::string_map&);
-
 /**
- * @todo Convert all functions.
+ * Implementation functions for the VGETTEXT and VNGETTEXT macros.
  *
- * All function in this file should have an overloaded version with a domain
- * and probably convert all callers to use the macro instead of directly calling
- * the function.
+ * DO NOT USE DIRECTLY unless you really know what you're doing.
+ * See https://github.com/wesnoth/wesnoth/issues/2716 for more info.
  */
 
-#define	VGETTEXT(msgid, ...) vgettext(GETTEXT_DOMAIN, msgid, __VA_ARGS__)
-#define	VNGETTEXT(msgid, msgid_plural, count, ...) vngettext(GETTEXT_DOMAIN, msgid, msgid_plural, count, __VA_ARGS__)
+std::string vgettext_impl(const char* domain, const char* msgid, const utils::string_map& symbols);
+
+std::string vngettext_impl(const char* domain,
+		const char* singular,
+		const char* plural,
+		int count,
+		const utils::string_map& symbols);
+
+/**
+ * Handy wrappers around interpolate_variables_into_string and gettext.
+ *
+ * These should cover most usecases. If you're not sure whether you want
+ * these macros or their implementation functions, use these. The only time
+ * you should need to use the implementation functions directly is to pass a
+ * different textdomain than the current value of GETTEXT_DOMAIN.
+ */
+
+#define VGETTEXT(msgid, ...) \
+	vgettext_impl(GETTEXT_DOMAIN, msgid, __VA_ARGS__)
+
+#define VNGETTEXT(msgid, msgid_plural, count, ...) \
+	vngettext_impl(GETTEXT_DOMAIN, msgid, msgid_plural, count, __VA_ARGS__)
