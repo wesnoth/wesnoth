@@ -391,7 +391,7 @@ lobby_chat_window* chatbox::whisper_window_open(const std::string& name, bool op
 {
 	return find_or_create_window(name, true, open_new, true,
 		VGETTEXT("Whisper session with <i>“$name”</i> started. "
-		"If you do not want to receive messages from this user, type <i>/ignore $name</i>\n", { { "name", name } }));
+		"If you do not want to receive messages from this user, type <i>/ignore $name</i>", { { "name", name } }));
 }
 
 lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
