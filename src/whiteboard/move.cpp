@@ -354,7 +354,7 @@ void move::apply_temp_modifier(unit_map& unit_map)
 
 	if (route_->move_cost == -1) {
 		// TODO: check_validity also calls pathfind::mark_route(get_route().route), optimize/refactor this to only call that once.
-		route_->move_cost = pathfind::mark_route(get_route().route).move_cost;
+		route_->move_cost = pathfind::mark_route(get_route().route, true).move_cost;
 	}
 	//Modify movement points
 	DBG_WB <<"Move: Changing movement points for unit " << unit->name() << " [" << unit->id()
