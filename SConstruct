@@ -535,7 +535,7 @@ for env in [test_env, client_env, env]:
 
 # Enable ASLR and NX bit support on mingw
         if "mingw" in env["TOOLS"]:
-            rel_link_flags += "-Wl,--dynamic-base -Wl,--nxcompat"
+            rel_link_flags += "-Wl,--dynamicbase -Wl,--nxcompat"
 
 # #
 # End setting options for release build
