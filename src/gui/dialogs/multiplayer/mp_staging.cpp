@@ -453,9 +453,7 @@ void mp_staging::update_leader_display(ng::side_engine_ptr side, grid& row_grid)
 		const std::string gender_icon = formatter() << "icons/icon-" << current_gender << ".png";
 
 		image& icon = find_widget<image>(&row_grid, "leader_gender", false);
-
 		icon.set_label(gender_icon);
-		icon.set_tooltip(current_gender);
 	}
 }
 
