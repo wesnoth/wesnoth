@@ -9,7 +9,7 @@ def CheckOpenGL(context):
 
     if env["PLATFORM"] == "win32":
         env.AppendUnique(LIBS = ["opengl32"])
-        test_program += "#include <GL/opengl32.h>\n"
+        test_program += "#include <windows.h>\n#include <GL/gl.h>\n"
     elif env["PLATFORM"] == "darwin":
         env.AppendUnique(FRAMEWORKS = "OpenGL")
         test_program += "#include <OpenGL/gl.h>\n"
