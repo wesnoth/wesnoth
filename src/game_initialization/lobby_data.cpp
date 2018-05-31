@@ -342,7 +342,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 		}
 
 		if(*level_cfg) {
-			scenario = formatter() << make_game_type_marker(_("S"), false) << (*level_cfg)["name"].str();
+			scenario = formatter() << make_game_type_marker(_("scenario_abbreviation^S"), false) << (*level_cfg)["name"].str();
 			info_stream << scenario;
 
 			// Reloaded games do not match the original scenario hash, so it makes no sense
@@ -372,7 +372,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			}
 		} else {
-			scenario = formatter() << make_game_type_marker(_("S"), true) << game["mp_scenario_name"].str();
+			scenario = formatter() << make_game_type_marker(_("scenario_abbreviation^S"), true) << game["mp_scenario_name"].str();
 			info_stream << scenario;
 			verified = false;
 		}
@@ -380,7 +380,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 		if(const config& campaign_cfg = game_config.find_child("campaign", "id", game["mp_campaign"])) {
 			std::stringstream campaign_text;
 			campaign_text
-				<< make_game_type_marker(_("C"), false)
+				<< make_game_type_marker(_("campaign_abbreviation^C"), false)
 				<< campaign_cfg["name"] << spaced_em_dash()
 				<< game["mp_scenario_name"];
 
@@ -403,7 +403,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			//}
 		} else {
-			scenario = formatter() << make_game_type_marker(_("C"), true) << game["mp_campaign_name"].str();
+			scenario = formatter() << make_game_type_marker(_("campaign_abbreviation^C"), true) << game["mp_campaign_name"].str();
 			info_stream << scenario;
 			verified = false;
 		}
