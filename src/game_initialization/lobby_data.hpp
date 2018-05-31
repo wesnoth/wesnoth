@@ -109,8 +109,8 @@ struct user_info
 	void update_relation();
 
 	enum user_relation {
-		FRIEND,
 		ME,
+		FRIEND,
 		NEUTRAL,
 		IGNORED
 	};
