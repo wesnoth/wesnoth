@@ -3,6 +3,9 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 
 ## Version 1.14.2+dev
+ ### Campaigns
+   * Secrets of the Ancients:
+     * Fix S09 Training Session not ending when all dark adepts die (Bug #3192)
  ### Language and i18n
    * Updated translations: French, Italian.
 

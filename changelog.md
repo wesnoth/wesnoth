@@ -1,6 +1,9 @@
 ## Version 1.14.2+dev
  ### AI
    * Fixed crash in presence of units with negative hitpoints (issue #3042).
+ ### Campaigns
+   * Secrets of the Ancients:
+     * Fix S09 Training Session not ending when all dark adepts die (Bug #3192)
  ### Language and i18n
    * Updated translations: French, Italian
  ### WML engine
