@@ -18,6 +18,7 @@
      * In 'Caverns of Flame', fixed various issues with the volcano eruption.
    * Secrets of the Ancients
      * Fixed several inconsistently spelled names.
+     * Fix S09 Training Session not ending when all dark adepts die (Bug #3192)
    * The Hammer of Thursagan
      * Fixed a misplaced door image in S12.
      * S12 Fixed enemies from ai6 (south-east lich) going to the book (spider) room

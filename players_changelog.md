@@ -6,6 +6,8 @@ changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog.md
  ### Campaigns
    * Eastern Invasion
      * In 'Captured', fixed units incorrectly costing upkeep after leveling up.
+   * Secrets of the Ancients:
+     * Fix S09 Training Session not ending when all dark adepts die (Bug #3192)
    * Sceptre of Fire:
      * In 'Caverns of Flame', fixed various issues with the volcano eruption.
    * The Hammer of Thursagan
