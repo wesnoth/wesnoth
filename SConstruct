@@ -533,6 +533,10 @@ for env in [test_env, client_env, env]:
                 rel_comp_flags = rel_comp_flags + " -flto=thin"
                 rel_link_flags = rel_comp_flags + " -fuse-ld=lld"
 
+# Enable ASLR and NX bit support on mingw
+        if "mingw" in env["TOOLS"]:
+            rel_link_flags += "-Wl,--dynamic-base -Wl,--nxcompat"
+
 # #
 # End setting options for release build
 # Start setting options for profile build
