@@ -14,6 +14,7 @@
      * S02.1 Infested Caves: keep side 8 AI leader from wandering off too far
        and ending up on a keep with only one hex for recruiting
      * S02.1 Infested Caves: minor map tweaks and improvements.
+     * Reduced starting gold and income in scenarios 10 to 13
    * Sceptre of Fire:
      * In 'Caverns of Flame', fixed various issues with the volcano eruption.
    * Secrets of the Ancients
