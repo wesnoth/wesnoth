@@ -106,6 +106,10 @@ def CheckBoost(context, boost_lib, require_version = None, header_only = False):
         \n"""
 
     test_program += """
+        // Workaround for sdl #defining main breaking non sdl programs
+        #ifdef main
+        #undef main
+        #endif
         int main()
         {
         }
