@@ -2,6 +2,8 @@
  ### AI
    * Fixed crash in presence of units with negative hitpoints (issue #3042).
  ### Campaigns
+   * Northern Rebirth:
+     * Reduced starting gold and income in scenarios 10 to 13
    * Secrets of the Ancients:
      * Fix S09 Training Session not ending when all dark adepts die (Bug #3192)
  ### Language and i18n
