@@ -354,6 +354,9 @@ if env["prereqs"]:
             conf.CheckSDL("SDL2_mixer", header_file = "SDL_mixer") & \
             conf.CheckSDL("SDL2_image", header_file = "SDL_image")
 
+    if sys.platform == "msys":
+        env["PKG_CONFIG_FLAGS"] = "--dont-define-prefix"
+
     have_server_prereqs = (\
         conf.CheckCPlusPlus(gcc_version = "4.8") & \
         conf.CheckLib("libcrypto") & \
