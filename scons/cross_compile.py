@@ -2,7 +2,7 @@
 import os
 
 def setup_cross_compile(env):
-    if "mingw" in env["host"]:
+    if "mingw" in env["host"] or env["PLATFORM"] == "msys":
         env["PLATFORM"] = "win32"
         env["PROGSUFFIX"] = ".exe"
         env.Tool("mingw")
