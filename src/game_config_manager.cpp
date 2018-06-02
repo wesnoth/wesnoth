@@ -570,8 +570,13 @@ void game_config_manager::load_game_config_for_game(
 		throw;
 	}
 
-	image::flush_cache();
+	// This needs to be done in the main thread since this function (load_game_config_for_game)
+	// might be called from a loading screen worker thread (and currently is, in fact). If the
+	// image cache is purged from the worker thread, there's a possibility for a data race where
+	// the main thread accesses the image cache and the worker thread simultaneously clears it.
+	events::call_in_main_thread([]() { image::flush_cache(); });
 }
+
 void game_config_manager::load_game_config_for_create(bool is_mp, bool is_test)
 {
 	game_config::scoped_preproc_define multiplayer("MULTIPLAYER", is_mp);
