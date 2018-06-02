@@ -355,7 +355,7 @@ void server::setup_handlers()
 	SETUP_HANDLER("sample", &server::sample_handler);
 	SETUP_HANDLER("help", &server::help_handler);
 	SETUP_HANDLER("stats", &server::stats_handler);
-	SETUP_HANDLER("player_version", &server::player_version_handler);
+	SETUP_HANDLER("version", &server::version_handler);
 	SETUP_HANDLER("metrics", &server::metrics_handler);
 	SETUP_HANDLER("requests", &server::requests_handler);
 	SETUP_HANDLER("games", &server::games_handler);
@@ -1068,7 +1068,7 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 
 	const std::string& query_help_msg =
 		"Available commands are: adminmsg <msg>, help, games, metrics,"
-		" motd, netstats [all], requests, sample, stats, status, wml.";
+		" motd, netstats [all], requests, sample, stats, status, version, wml.";
 
 	// Commands a player may issue.
 	if(command == "status") {
@@ -1081,7 +1081,7 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 		command == "motd" ||
 		command == "netstats" ||
 		command == "netstats all" ||
-		command == "player_version" ||
+		command.compare(0, 7, "version") == 0 ||
 		command == "requests" ||
 		command == "sample" ||
 		command == "stats" ||
@@ -2284,7 +2284,7 @@ void server::lobbymsg_handler(const std::string& /*issuer_name*/,
 	*out << "message '" << parameters << "' relayed to players";
 }
 
-void server::player_version_handler(
+void server::version_handler(
 		const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream* out)
 {
 	assert(out != nullptr);
@@ -2296,7 +2296,13 @@ void server::player_version_handler(
 			return;
 		}
 	}
-	*out << "Player " << parameters << " not found.";
+	if(parameters.empty()) {
+		*out << "Server version is " << game_config::version;
+			
+	}
+	else {
+		*out << "Player " << parameters << " not found.";
+	}
 }
 
 void server::status_handler(
