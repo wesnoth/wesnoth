@@ -204,7 +204,7 @@ private:
 	void netstats_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void adminmsg_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void pm_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
-	void player_version_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void version_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void msg_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void lobbymsg_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void status_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
