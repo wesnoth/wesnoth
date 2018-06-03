@@ -6,6 +6,8 @@
      * Reduced starting gold and income in scenarios 10 to 13
    * Secrets of the Ancients:
      * Fix S09 Training Session not ending when all dark adepts die (Bug #3192)
+   * Tutorial:
+     * S2: made enemy starting gold equal to that of the player.
  ### Language and i18n
    * Updated translations: Chinese (Traditional), French, Italian
  ### WML engine
