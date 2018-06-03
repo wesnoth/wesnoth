@@ -57,9 +57,9 @@
      translatable (bug #2709, bug #2732).
    * Fixed Logging Options tooltips not being translatable (bug #2837).
    * Fixed Version label on the title screen not being translatable (issue #2914).
-   * Updated translations: British English, Chinese (Simplified), Czech, French,
-     Galician, German, Italian, Japanese, Polish, Scottish Gaelic, Slovak,
-     Spanish, Ukrainian.
+   * Updated translations: British English, Chinese (Simplified),
+     Chinese (Traditional), Czech, French, Galician, German, Italian, Japanese,
+     Polish, Scottish Gaelic, Slovak, Spanish, Ukrainian.
    * Add command-line argument to disable the filtering of incomplete translations
      in the language selection list.
  ### Lua API
