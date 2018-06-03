@@ -7,7 +7,7 @@
    * Secrets of the Ancients:
      * Fix S09 Training Session not ending when all dark adepts die (Bug #3192)
  ### Language and i18n
-   * Updated translations: French, Italian
+   * Updated translations: Chinese (Traditional), French, Italian
  ### WML engine
    * Removed validation to ensure units cannot have negative hitpoints. We
      learned that the ability to create such units is documented, and thus
