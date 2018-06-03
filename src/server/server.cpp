@@ -2288,21 +2288,20 @@ void server::version_handler(
 		const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream* out)
 {
 	assert(out != nullptr);
-	
-	
+
+	if(parameters.empty()) {
+		*out << "Server version is " << game_config::version;
+		return;
+	}
+
 	for(const auto& player : player_connections_) {
 		if(parameters == player.info().name()) {
 			*out << "Player " << parameters << " is using wesnoth " << player.info().version();
 			return;
 		}
 	}
-	if(parameters.empty()) {
-		*out << "Server version is " << game_config::version;
-			
-	}
-	else {
-		*out << "Player " << parameters << " not found.";
-	}
+
+	*out << "Player '" << parameters << "' not found.";
 }
 
 void server::status_handler(
