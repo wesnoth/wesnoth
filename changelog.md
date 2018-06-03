@@ -26,6 +26,8 @@
      * S12 Fixed north treasure chest disappearing
    * The Rise of Wesnoth
      * New set of story art.
+   * Tutorial:
+     * S2: made enemy starting gold equal to that of the player.
    * Under the Burning Suns
      * Changed Sun Singer movetype from float to foot.
      * Added some Quenoth elf unit animations.
