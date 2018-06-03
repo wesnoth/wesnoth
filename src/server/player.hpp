@@ -32,7 +32,7 @@ public:
 		OBSERVING
 	};
 
-	player(const std::string& n, simple_wml::node& cfg, bool registered,
+	player(const std::string& n, simple_wml::node& cfg, bool registered, const std::string& version,
 	       const size_t max_messages=4, const size_t time_period=10,
 	       const bool moderator=false);
 
@@ -47,6 +47,7 @@ public:
 
 
 	const std::string& name() const { return name_; }
+	const std::string& version() const { return version_; }
 	const simple_wml::node* config_address() const { return &cfg_; }
 
 	bool is_message_flooding();
@@ -69,6 +70,7 @@ public:
 
 private:
 	const std::string name_;
+	std::string version_;
 	simple_wml::node& cfg_;
 
 	bool registered_;

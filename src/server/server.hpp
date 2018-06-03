@@ -41,12 +41,12 @@ private:
 	void handle_version(socket_ptr socket);
 	void read_version(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
 
-	void login(socket_ptr socket);
-	void handle_login(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
-	bool is_login_allowed(socket_ptr socket, const simple_wml::node* const login);
-	bool authenticate(socket_ptr socket, const std::string& username, const std::string& password, bool name_taken, bool& registered);
+	void login(socket_ptr socket, std::string version);
+	void handle_login(socket_ptr socket, std::shared_ptr<simple_wml::document> doc, std::string version);
+	bool is_login_allowed(socket_ptr socket, const simple_wml::node* const login, const std::string& version);
+	bool authenticate(socket_ptr socket, const std::string& username, const std::string& password, const std::string& version, bool name_taken, bool& registered);
 	void send_password_request(socket_ptr socket, const std::string& msg,
-		const std::string& user, const char* error_code = "", bool force_confirmation = false);
+		const std::string& user, const std::string& version, const char* error_code = "", bool force_confirmation = false);
 	bool accepting_connections() const { return !graceful_restart; }
 
 	void add_player(socket_ptr socket, const wesnothd::player&);
@@ -204,6 +204,7 @@ private:
 	void netstats_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void adminmsg_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void pm_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void version_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void msg_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void lobbymsg_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void status_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
