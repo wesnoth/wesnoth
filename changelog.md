@@ -52,6 +52,10 @@
    * Normal healing now happens on turn 1 for all sides except the first. (issue #3562)
 
 ## Version 1.14.5+dev
+ ### Campaigns
+   * Descent Into Darkness:
+     * Allow converting L3 necromancers to liches from S12 onwards (issue #3165).
+     * Added an alternative method of completing the campaign (issue #3167).
  ### Language and i18n
    * Updated translations: Chinese (Traditional), French, Italian, Spanish.
  ### Lua API
