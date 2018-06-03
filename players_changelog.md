@@ -22,9 +22,9 @@ changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog.md
      * New set of Quenoth faction and character portraits by LordBob.
      * Updated sprites for several Quenoth units.
  ### Language and i18n
-   * Updated translations: British English, Chinese (Simplified), Czech, French,
-     Galician, German, Italian, Japanese, Polish, Scottish Gaelic, Slovak,
-     Spanish, Ukrainian.
+   * Updated translations: British English, Chinese (Simplified),
+     Chinese (Traditional), Czech, French, Galician, German, Italian, Japanese,
+     Polish, Scottish Gaelic, Slovak, Spanish, Ukrainian.
  ### User interface
    * Implemented MP chat message history saving (issue #1194, issue #2802).
    * Removed individual Join/Observe buttons for each game in the MP Lobby.
