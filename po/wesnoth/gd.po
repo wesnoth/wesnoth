@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-26 15:04+0300\n"
+"POT-Creation-Date: 2018-06-03 16:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: GunChleoc, 2017\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -5380,8 +5380,14 @@ msgstr ""
 "fiadhaich na bailtean. Fiù ’s ma bhios iad air sia-cheàrnach baile, chan "
 "fhaigh iad buannachd dìona às ged a thèid an slànachadh fhathast."
 
+#: src/actions/advancement.cpp:225
+#, fuzzy
+#| msgid "No advancement"
+msgid "an advancement choice"
+msgstr "Gun àrdachadh"
+
 #: src/actions/attack.cpp:386 src/actions/attack.cpp:656
-#: src/actions/attack.cpp:1424
+#: src/actions/attack.cpp:1412
 msgid "An invalid attacker weapon got selected."
 msgstr "Chaidh airm ionnsaighe mì-dhligheach a thaghadh."
 
@@ -6270,32 +6276,32 @@ msgstr "Geama aig $login"
 msgid "Team"
 msgstr "Sgioba"
 
-#: src/game_initialization/connect_engine.cpp:988
+#: src/game_initialization/connect_engine.cpp:1007
 msgid "Anonymous player"
 msgstr "Cluicheadair gun ainm"
 
-#: src/game_initialization/connect_engine.cpp:993
-#: src/game_initialization/connect_engine.cpp:1287
+#: src/game_initialization/connect_engine.cpp:1012
+#: src/game_initialization/connect_engine.cpp:1306
 msgid "Computer Player"
 msgstr "Coimpiutair"
 
-#: src/game_initialization/connect_engine.cpp:1035
+#: src/game_initialization/connect_engine.cpp:1054
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1302
 msgid "Network Player"
 msgstr "Lìonraidh"
 
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1305
 msgid "Local Player"
 msgstr "Ionadail"
 
-#: src/game_initialization/connect_engine.cpp:1288
+#: src/game_initialization/connect_engine.cpp:1307
 msgid "Empty"
 msgstr "Falamh"
 
-#: src/game_initialization/connect_engine.cpp:1291
+#: src/game_initialization/connect_engine.cpp:1310
 msgid "Reserved"
 msgstr "Glèidhte"
 
@@ -6380,8 +6386,8 @@ msgstr "Linn nach aithne dhuinn"
 
 #: src/game_initialization/lobby_data.cpp:345
 #: src/game_initialization/lobby_data.cpp:375
-msgid "S"
-msgstr "S"
+msgid "scenario_abbreviation^S"
+msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:364
 msgid "Remote scenario"
@@ -6389,8 +6395,8 @@ msgstr "Cnàmh-sgeul air astar"
 
 #: src/game_initialization/lobby_data.cpp:383
 #: src/game_initialization/lobby_data.cpp:406
-msgid "C"
-msgstr "C"
+msgid "campaign_abbreviation^C"
+msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:411
 msgid "Unknown scenario"
@@ -6445,7 +6451,7 @@ msgstr ""
 msgid "Cannot find era $era"
 msgstr "Cha deach linn $era a lorg"
 
-#: src/game_initialization/mp_game_utils.cpp:140
+#: src/game_initialization/mp_game_utils.cpp:142
 msgid "Connection timed out"
 msgstr "Dh’fhalbh an ùine air a’ cheangal"
 
@@ -6743,11 +6749,11 @@ msgstr "Mearachd ann an tòiseachadh an fhrithealaiche: "
 msgid "Connection failed: "
 msgstr "Dh’fhàillig leis a’ cheangal: "
 
-#: src/generators/default_map_generator_job.cpp:691
+#: src/generators/default_map_generator_job.cpp:711
 msgid "Random maps with an odd width aren't supported."
 msgstr "Cha chuirear taic ri mapaichean le leud chorr."
 
-#: src/generators/default_map_generator_job.cpp:954
+#: src/generators/default_map_generator_job.cpp:974
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
@@ -8585,19 +8591,15 @@ msgstr "neodrach"
 msgid "female^liminal"
 msgstr "stairsnich"
 
-#: src/units/unit.cpp:643
-msgid "Unit with negative HP found"
-msgstr "Chaidh aonad le PB àicheil a lorg"
-
-#: src/units/unit.cpp:1797
+#: src/units/unit.cpp:1775
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1803
+#: src/units/unit.cpp:1781
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> PB"
 
-#: src/units/unit.cpp:1813
+#: src/units/unit.cpp:1791
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> ghluasad"
@@ -8605,19 +8607,19 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> ghluasad"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> gluasadan"
 msgstr[3] "<span color=\"$color\">$number_or_percent</span> gluasad"
 
-#: src/units/unit.cpp:1819
+#: src/units/unit.cpp:1797
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> a lèirsinn"
 
-#: src/units/unit.cpp:1823
+#: src/units/unit.cpp:1801
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> a chasg"
 
-#: src/units/unit.cpp:1828
+#: src/units/unit.cpp:1806
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> PE airson àrdachadh"
 
-#: src/units/unit.cpp:1832
+#: src/units/unit.cpp:1810
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -8630,11 +8632,11 @@ msgstr[2] ""
 msgstr[3] ""
 "<span color=\"$color\">$number_or_percent</span> ionnsaigh gach cuairt"
 
-#: src/units/unit.cpp:1839
+#: src/units/unit.cpp:1817
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> a chosgais ais-ghairm"
 
-#: src/units/unit.cpp:2244
+#: src/units/unit.cpp:2222
 msgid "$effect_description per level"
 msgstr "$effect_description gach leibheil"
 
@@ -8681,3 +8683,12 @@ msgstr "Falaich na planaichean aig $player"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Roghainnean a’ bhùird-ghil"
+
+#~ msgid "S"
+#~ msgstr "S"
+
+#~ msgid "C"
+#~ msgstr "C"
+
+#~ msgid "Unit with negative HP found"
+#~ msgstr "Chaidh aonad le PB àicheil a lorg"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-26 15:04+0300\n"
+"POT-Creation-Date: 2018-06-03 16:43+0300\n"
 "PO-Revision-Date: 2012-10-29 18:41-0300\n"
 "Last-Translator: gilberto dos santos alves <gsavix@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -7111,6 +7111,16 @@ msgstr ""
 "defensivo dela, mas ainda serão curados."
 
 #
+# File: src/reports.cpp, line: 243
+# File: src/reports.cpp, line: 243
+# File: src/reports.cpp, line: 243
+#: src/actions/advancement.cpp:225
+#, fuzzy
+#| msgid "No advancement"
+msgid "an advancement choice"
+msgstr "Sem avanços"
+
+#
 # File: src/actions/attack.cpp, line: 217
 # File: src/actions/attack.cpp, line: 419
 # File: src/actions/attack.cpp, line: 1049
@@ -7121,7 +7131,7 @@ msgstr ""
 # File: src/actions/attack.cpp, line: 419
 # File: src/actions/attack.cpp, line: 1049
 #: src/actions/attack.cpp:386 src/actions/attack.cpp:656
-#: src/actions/attack.cpp:1424
+#: src/actions/attack.cpp:1412
 msgid "An invalid attacker weapon got selected."
 msgstr "O atacante selecionou uma arma inválida."
 
@@ -8687,7 +8697,7 @@ msgstr "Time"
 # File: src/multiplayer_connect.cpp, line: 634
 # File: src/multiplayer_connect.cpp, line: 634
 # File: src/multiplayer_connect.cpp, line: 634
-#: src/game_initialization/connect_engine.cpp:988
+#: src/game_initialization/connect_engine.cpp:1007
 #, fuzzy
 #| msgid "Anonymous local player"
 msgid "Anonymous player"
@@ -8700,8 +8710,8 @@ msgstr "Jogador local anônimo"
 # File: src/multiplayer_connect.cpp, line: 1658
 # File: src/multiplayer_connect.cpp, line: 647
 # File: src/multiplayer_connect.cpp, line: 1658
-#: src/game_initialization/connect_engine.cpp:993
-#: src/game_initialization/connect_engine.cpp:1287
+#: src/game_initialization/connect_engine.cpp:1012
+#: src/game_initialization/connect_engine.cpp:1306
 msgid "Computer Player"
 msgstr "Computador"
 
@@ -8709,7 +8719,7 @@ msgstr "Computador"
 # File: src/multiplayer_connect.cpp, line: 650
 # File: src/multiplayer_connect.cpp, line: 650
 # File: src/multiplayer_connect.cpp, line: 650
-#: src/game_initialization/connect_engine.cpp:1035
+#: src/game_initialization/connect_engine.cpp:1054
 msgid "$playername $side"
 msgstr "$playername $side"
 
@@ -8717,7 +8727,7 @@ msgstr "$playername $side"
 # File: src/multiplayer_connect.cpp, line: 1655
 # File: src/multiplayer_connect.cpp, line: 1655
 # File: src/multiplayer_connect.cpp, line: 1655
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1302
 msgid "Network Player"
 msgstr "Jogador Remoto"
 
@@ -8725,7 +8735,7 @@ msgstr "Jogador Remoto"
 # File: src/multiplayer_connect.cpp, line: 1657
 # File: src/multiplayer_connect.cpp, line: 1657
 # File: src/multiplayer_connect.cpp, line: 1657
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1305
 msgid "Local Player"
 msgstr "Jogador Local"
 
@@ -8733,7 +8743,7 @@ msgstr "Jogador Local"
 # File: src/multiplayer_connect.cpp, line: 1659
 # File: src/multiplayer_connect.cpp, line: 1659
 # File: src/multiplayer_connect.cpp, line: 1659
-#: src/game_initialization/connect_engine.cpp:1288
+#: src/game_initialization/connect_engine.cpp:1307
 msgid "Empty"
 msgstr "Vazio"
 
@@ -8741,7 +8751,7 @@ msgstr "Vazio"
 # File: src/multiplayer_connect.cpp, line: 763
 # File: src/multiplayer_connect.cpp, line: 763
 # File: src/multiplayer_connect.cpp, line: 763
-#: src/game_initialization/connect_engine.cpp:1291
+#: src/game_initialization/connect_engine.cpp:1310
 msgid "Reserved"
 msgstr "Reservado"
 
@@ -8921,10 +8931,19 @@ msgstr "Faltando argumento $arg_id"
 msgid "Unknown era"
 msgstr "Era desconhecida"
 
+#
+# File: src/leader_scroll_dialog.cpp, line: 186
+# File: src/menu_events.cpp, line: 323
+# File: src/leader_scroll_dialog.cpp, line: 186
+# File: src/menu_events.cpp, line: 323
+# File: src/leader_scroll_dialog.cpp, line: 186
+# File: src/menu_events.cpp, line: 323
 #: src/game_initialization/lobby_data.cpp:345
 #: src/game_initialization/lobby_data.cpp:375
-msgid "S"
-msgstr ""
+#, fuzzy
+#| msgid "scenario settings^Side"
+msgid "scenario_abbreviation^S"
+msgstr "Time"
 
 #
 # File: src/gui/dialogs/lobby/lobby_data.cpp, line: 266
@@ -8939,7 +8958,7 @@ msgstr "Cenário remoto"
 
 #: src/game_initialization/lobby_data.cpp:383
 #: src/game_initialization/lobby_data.cpp:406
-msgid "C"
+msgid "campaign_abbreviation^C"
 msgstr ""
 
 #
@@ -9042,7 +9061,7 @@ msgstr "Não conseguiu encontrar a era $era"
 # File: src/multiplayer.cpp, line: 235
 # File: src/multiplayer.cpp, line: 320
 # File: src/multiplayer_ui.cpp, line: 84
-#: src/game_initialization/mp_game_utils.cpp:140
+#: src/game_initialization/mp_game_utils.cpp:142
 msgid "Connection timed out"
 msgstr "Time out na conexão"
 
@@ -9598,7 +9617,7 @@ msgstr "Time out na conexão"
 # File: src/mapgen.cpp, line: 740
 # File: src/mapgen.cpp, line: 740
 # File: src/mapgen.cpp, line: 740
-#: src/generators/default_map_generator_job.cpp:691
+#: src/generators/default_map_generator_job.cpp:711
 #, fuzzy
 #| msgid "Random maps with an odd width aren't supported."
 msgid "Random maps with an odd width aren't supported."
@@ -9608,7 +9627,7 @@ msgstr "Mapas aleatórios com largura ímpar não são suportados."
 # File: src/mapgen.cpp, line: 1006
 # File: src/mapgen.cpp, line: 1006
 # File: src/mapgen.cpp, line: 1006
-#: src/generators/default_map_generator_job.cpp:954
+#: src/generators/default_map_generator_job.cpp:974
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
@@ -13071,15 +13090,11 @@ msgstr "neutra"
 msgid "female^liminal"
 msgstr "Liminar"
 
-#: src/units/unit.cpp:643
-msgid "Unit with negative HP found"
-msgstr ""
-
 #
 # File: src/unit.cpp, line: 2379
 # File: src/unit.cpp, line: 2379
 # File: src/unit.cpp, line: 2379
-#: src/units/unit.cpp:1797
+#: src/units/unit.cpp:1775
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
@@ -13087,7 +13102,7 @@ msgstr "$attack_list|: $effect_description"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:1803
+#: src/units/unit.cpp:1781
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
@@ -13097,7 +13112,7 @@ msgstr "por turno"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:1813
+#: src/units/unit.cpp:1791
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -13109,7 +13124,7 @@ msgstr[1] "por turno"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:1819
+#: src/units/unit.cpp:1797
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
@@ -13119,7 +13134,7 @@ msgstr "por turno"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:1823
+#: src/units/unit.cpp:1801
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
@@ -13129,7 +13144,7 @@ msgstr "por turno"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:1828
+#: src/units/unit.cpp:1806
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
@@ -13139,7 +13154,7 @@ msgstr "por turno"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:1832
+#: src/units/unit.cpp:1810
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -13152,7 +13167,7 @@ msgstr[1] "por turno"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:1839
+#: src/units/unit.cpp:1817
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
@@ -13162,7 +13177,7 @@ msgstr "por turno"
 # File: src/unit.cpp, line: 2630
 # File: src/unit.cpp, line: 2630
 # File: src/unit.cpp, line: 2630
-#: src/units/unit.cpp:2244
+#: src/units/unit.cpp:2222
 msgid "$effect_description per level"
 msgstr "$effect_description por nível"
 
@@ -15439,16 +15454,6 @@ msgstr "Opções do Quadro-Branco"
 # File: src/menu_events.cpp, line: 321
 #~ msgid "scenario settings^Leader"
 #~ msgstr "Líder"
-
-#
-# File: src/leader_scroll_dialog.cpp, line: 186
-# File: src/menu_events.cpp, line: 323
-# File: src/leader_scroll_dialog.cpp, line: 186
-# File: src/menu_events.cpp, line: 323
-# File: src/leader_scroll_dialog.cpp, line: 186
-# File: src/menu_events.cpp, line: 323
-#~ msgid "scenario settings^Side"
-#~ msgstr "Time"
 
 #
 # File: src/leader_scroll_dialog.cpp, line: 187

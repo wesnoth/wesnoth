@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-26 15:04+0300\n"
+"POT-Creation-Date: 2018-06-03 16:42+0300\n"
 "PO-Revision-Date: 2018-05-16 22:50+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -1895,10 +1895,10 @@ msgid "Search"
 msgstr "搜索"
 
 #. [toggle_button]: id=sort_0
-#. [toggle_button]: id=sort_name
 #. [label]: id=name
 #. [label]
 #. [toggle_button]: id=sort_1
+#. [toggle_button]: id=sort_name
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:226
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_server_list.cfg:107
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -2040,7 +2040,7 @@ msgstr "连接"
 #: data/gui/window/addon_uninstall_list.cfg:174
 #: data/gui/window/advanced_graphics_options.cfg:178
 #: data/gui/window/campaign_dialog.cfg:440
-#: data/gui/window/campaign_difficulty.cfg:265
+#: data/gui/window/campaign_difficulty.cfg:234
 #: data/gui/window/core_dialog.cfg:240 data/gui/window/custom_tod.cfg:444
 #: data/gui/window/depcheck_select_new.cfg:165
 #: data/gui/window/edit_label.cfg:153 data/gui/window/edit_text.cfg:130
@@ -2296,7 +2296,7 @@ msgstr "按格子缩放"
 #. [button]: id=ok
 #: data/gui/window/advanced_graphics_options.cfg:165
 #: data/gui/window/campaign_dialog.cfg:426
-#: data/gui/window/campaign_difficulty.cfg:252
+#: data/gui/window/campaign_difficulty.cfg:221
 #: data/gui/window/core_dialog.cfg:227 data/gui/window/custom_tod.cfg:431
 #: data/gui/window/depcheck_select_new.cfg:151
 #: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
@@ -2411,8 +2411,10 @@ msgstr "模组"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:409
-msgid "Deterministic mode"
-msgstr "确定性随机模式"
+#, fuzzy
+#| msgid "Save Game"
+msgid "Save random seed"
+msgstr "保存游戏"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:411
@@ -4149,7 +4151,7 @@ msgstr "游戏大厅"
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:479 data/gui/window/mp_staging.cfg:614
 #: data/gui/window/mp_staging.cfg:806
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:465
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:463
 msgid "Waiting for players to join..."
 msgstr "等待玩家加入……"
 
@@ -6112,8 +6114,8 @@ msgid "No eras available for this game."
 msgstr "没有可用于此游戏的时代。"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:735
-msgid "$min to $max"
-msgstr "$min|至$max"
+msgid "number of players^$min to $max"
+msgstr ""
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:832
 msgid "The selected game has no sides!"
@@ -6156,7 +6158,7 @@ msgstr "空置"
 msgid "Team:"
 msgstr "团队："
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:466
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:464
 msgid "Waiting for players to choose factions..."
 msgstr "正在等待玩家选择派系……"
 
@@ -6314,9 +6316,13 @@ msgid "Room <i>“$name”</i> joined"
 msgstr "已加入<b>“$name|”</b>房间"
 
 #: src/gui/widgets/chatbox.cpp:393
+#, fuzzy
+#| msgid ""
+#| "Whisper session with <i>“$name”</i> started. If you do not want to "
+#| "receive messages from this user, type <i>/ignore $name</i>\n"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
-"messages from this user, type <i>/ignore $name</i>\n"
+"messages from this user, type <i>/ignore $name</i>"
 msgstr ""
 "和<b>“$name|”</b>的悄悄话开始。如果你不希望收到来自此用户的消息，请输入<b>/"
 "ignore $name|</b>\n"
@@ -7404,6 +7410,12 @@ msgid ""
 msgstr ""
 "主键‘$deprecated_key|’已重命名为‘$key’。对‘$deprecated_key|’的支持将在版本"
 "$removal_version|中移除。"
+
+#~ msgid "Deterministic mode"
+#~ msgstr "确定性随机模式"
+
+#~ msgid "$min to $max"
+#~ msgstr "$min|至$max"
 
 #~ msgid "Rusty Open Gate"
 #~ msgstr "开启的锈门"

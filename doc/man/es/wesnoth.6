@@ -46,6 +46,10 @@ compártalas con otros.
 .SH OPCIONES
 .
 .TP 
+\fB\-\-all\-translations\fP
+Show all translations in the in\-game language selection list, even if they
+are deemed insufficiently complete.
+.TP 
 \fB\-\-bunzip\fP\fI\ archivo_de_entrada.bz2\fP
 descomprime un archivo que debería estar en formato bzip2 y lo almacena sin
 el sufijo .bz2. El \fIarchivo_de_entrada.bz2\fP será eliminado.
@@ -114,11 +118,9 @@ editor mostrará un diálogo de selección de archivos apuntando a éste.
 usa el idioma \fIlang\fP en esta sesión.  Ejemplo: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fInivel\fP\fB=\fP\fIdominio1\fP\fB,\fP\fIdominio2\fP\fB,\fP\fI...\fP
-establece el nivel de gravedad del registro en los dominios. \fBall\fP puede
-utilizarse para coincidir con cualquier registro en un dominio. Los niveles
-disponibles son: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP. Por
-omisión se utiliza el nivel \fBwarning\fP para la mayoría de los dominios, pero
-\fBdeprecation\fP no determina ninguno.
+sets the severity level of the log domains.  \fBall\fP can be used to match any
+log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default the \fBwarning\fP level is used for most domains, but
+\fBdeprecation\fP defaults to none unless combined with the \fB\-d\fP option.
 .TP 
 \fB\-\-log\-precise\fP
 muestra los marcadores de tiempo del archivo de registro con mayor precisión
@@ -243,6 +245,10 @@ ejecuta el juego en un pequeño escenario de prueba. El escenario debería de
 ser alguno definido con una etiqueta WML \fB[test]\fP. Por omisión es
 \fBtest\fP. Una demostración de la característica \fB[micro_ai]\fP puede ser
 iniciada con \fBmicro_ai_test\fP. Implica \fB\-\-nogui.\fP
+.TP 
+\fB\-\-translations\-over\fP\fI\ percent\fP
+Set the standard for deeming a translation is complete enough to show in the
+in\-game language list to \fIpercent\fP.  Valid values are 0 to 100.
 .TP 
 \fB\-u,\ \-\-unit\fP\fI\ scenario\-id\fP
 ejecuta el escenario de prueba especificado para testar una unidad. Implica

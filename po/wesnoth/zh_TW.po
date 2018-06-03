@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth 1.12.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-26 15:04+0300\n"
+"POT-Creation-Date: 2018-06-03 16:43+0300\n"
 "PO-Revision-Date: 2018-05-20 21:53+0800\n"
 "Last-Translator: Li, Kwunron <likwueron>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -5085,8 +5085,14 @@ msgstr ""
 "<i>野生</i>單位，例如蝙蝠和野生動物會避開村莊。就算牠們佔據了一個村莊的格子，"
 "也不能夠得到村莊帶來的任何閃避率加成，不過牠們仍然會得到治療。"
 
+#: src/actions/advancement.cpp:225
+#, fuzzy
+#| msgid "No advancement"
+msgid "an advancement choice"
+msgstr "升級"
+
 #: src/actions/attack.cpp:386 src/actions/attack.cpp:656
-#: src/actions/attack.cpp:1424
+#: src/actions/attack.cpp:1412
 msgid "An invalid attacker weapon got selected."
 msgstr "無效的攻擊。"
 
@@ -5856,32 +5862,32 @@ msgstr "$login 的遊戲"
 msgid "Team"
 msgstr "團隊"
 
-#: src/game_initialization/connect_engine.cpp:988
+#: src/game_initialization/connect_engine.cpp:1007
 msgid "Anonymous player"
 msgstr "匿名玩家"
 
-#: src/game_initialization/connect_engine.cpp:993
-#: src/game_initialization/connect_engine.cpp:1287
+#: src/game_initialization/connect_engine.cpp:1012
+#: src/game_initialization/connect_engine.cpp:1306
 msgid "Computer Player"
 msgstr "電腦玩家"
 
-#: src/game_initialization/connect_engine.cpp:1035
+#: src/game_initialization/connect_engine.cpp:1054
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1302
 msgid "Network Player"
 msgstr "網絡玩家"
 
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1305
 msgid "Local Player"
 msgstr "本機玩家"
 
-#: src/game_initialization/connect_engine.cpp:1288
+#: src/game_initialization/connect_engine.cpp:1307
 msgid "Empty"
 msgstr "空位"
 
-#: src/game_initialization/connect_engine.cpp:1291
+#: src/game_initialization/connect_engine.cpp:1310
 msgid "Reserved"
 msgstr "保留"
 
@@ -5961,8 +5967,10 @@ msgstr "未知時代"
 
 #: src/game_initialization/lobby_data.cpp:345
 #: src/game_initialization/lobby_data.cpp:375
-msgid "S"
-msgstr "S"
+#, fuzzy
+#| msgid "scenario settings^Side"
+msgid "scenario_abbreviation^S"
+msgstr "陣營"
 
 #: src/game_initialization/lobby_data.cpp:364
 msgid "Remote scenario"
@@ -5970,8 +5978,8 @@ msgstr "控制章節"
 
 #: src/game_initialization/lobby_data.cpp:383
 #: src/game_initialization/lobby_data.cpp:406
-msgid "C"
-msgstr "C"
+msgid "campaign_abbreviation^C"
+msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:411
 msgid "Unknown scenario"
@@ -6028,7 +6036,7 @@ msgstr ""
 msgid "Cannot find era $era"
 msgstr "無法找到 $era"
 
-#: src/game_initialization/mp_game_utils.cpp:140
+#: src/game_initialization/mp_game_utils.cpp:142
 msgid "Connection timed out"
 msgstr "連線愈時"
 
@@ -6286,11 +6294,11 @@ msgstr "遊戲執行錯誤: "
 msgid "Connection failed: "
 msgstr "連線愈時"
 
-#: src/generators/default_map_generator_job.cpp:691
+#: src/generators/default_map_generator_job.cpp:711
 msgid "Random maps with an odd width aren't supported."
 msgstr "不支援奇數寬的隨機地圖。"
 
-#: src/generators/default_map_generator_job.cpp:954
+#: src/generators/default_map_generator_job.cpp:974
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
@@ -8016,48 +8024,44 @@ msgstr "中立"
 msgid "female^liminal"
 msgstr "邊緣"
 
-#: src/units/unit.cpp:643
-msgid "Unit with negative HP found"
-msgstr ""
-
-#: src/units/unit.cpp:1797
+#: src/units/unit.cpp:1775
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1803
+#: src/units/unit.cpp:1781
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> HP"
 
-#: src/units/unit.cpp:1813
+#: src/units/unit.cpp:1791
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> 行動數"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> 行動數"
 
-#: src/units/unit.cpp:1819
+#: src/units/unit.cpp:1797
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> 視野"
 
-#: src/units/unit.cpp:1823
+#: src/units/unit.cpp:1801
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> 干擾"
 
-#: src/units/unit.cpp:1828
+#: src/units/unit.cpp:1806
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> 升級所需經驗值"
 
-#: src/units/unit.cpp:1832
+#: src/units/unit.cpp:1810
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> 每回合攻擊數"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> 每回合攻擊數"
 
-#: src/units/unit.cpp:1839
+#: src/units/unit.cpp:1817
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> 徵召費用"
 
-#: src/units/unit.cpp:2244
+#: src/units/unit.cpp:2222
 msgid "$effect_description per level"
 msgstr "每級 $effect_description"
 
@@ -8106,6 +8110,12 @@ msgstr "對 $player 隱藏計劃"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "白板選項"
+
+#~ msgid "S"
+#~ msgstr "S"
+
+#~ msgid "C"
+#~ msgstr "C"
 
 #~ msgid "Ping timeout"
 #~ msgstr "連線逾時"
@@ -9198,9 +9208,6 @@ msgstr "白板選項"
 
 #~ msgid "scenario settings^Leader"
 #~ msgstr "領袖"
-
-#~ msgid "scenario settings^Side"
-#~ msgstr "陣營"
 
 #~ msgid ""
 #~ "scenario settings^Start\n"

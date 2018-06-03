@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-26 15:04+0300\n"
+"POT-Creation-Date: 2018-06-03 16:42+0300\n"
 "PO-Revision-Date: 2018-05-24 07:47+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -1987,10 +1987,10 @@ msgid "Search"
 msgstr "Buscar"
 
 #. [toggle_button]: id=sort_0
-#. [toggle_button]: id=sort_name
 #. [label]: id=name
 #. [label]
 #. [toggle_button]: id=sort_1
+#. [toggle_button]: id=sort_name
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:226
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_server_list.cfg:107
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -2132,7 +2132,7 @@ msgstr "Conectar"
 #: data/gui/window/addon_uninstall_list.cfg:174
 #: data/gui/window/advanced_graphics_options.cfg:178
 #: data/gui/window/campaign_dialog.cfg:440
-#: data/gui/window/campaign_difficulty.cfg:265
+#: data/gui/window/campaign_difficulty.cfg:234
 #: data/gui/window/core_dialog.cfg:240 data/gui/window/custom_tod.cfg:444
 #: data/gui/window/depcheck_select_new.cfg:165
 #: data/gui/window/edit_label.cfg:153 data/gui/window/edit_text.cfg:130
@@ -2388,7 +2388,7 @@ msgstr "Escalado al hexágono"
 #. [button]: id=ok
 #: data/gui/window/advanced_graphics_options.cfg:165
 #: data/gui/window/campaign_dialog.cfg:426
-#: data/gui/window/campaign_difficulty.cfg:252
+#: data/gui/window/campaign_difficulty.cfg:221
 #: data/gui/window/core_dialog.cfg:227 data/gui/window/custom_tod.cfg:431
 #: data/gui/window/depcheck_select_new.cfg:151
 #: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
@@ -2503,8 +2503,10 @@ msgstr "Modificaciones"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:409
-msgid "Deterministic mode"
-msgstr "Modo determinísta"
+#, fuzzy
+#| msgid "Save Game"
+msgid "Save random seed"
+msgstr "Guardar partida"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:411
@@ -4263,7 +4265,7 @@ msgstr "Sala de la partida"
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:479 data/gui/window/mp_staging.cfg:614
 #: data/gui/window/mp_staging.cfg:806
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:465
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:463
 msgid "Waiting for players to join..."
 msgstr "Esperando a que se unan jugadores..."
 
@@ -6275,8 +6277,8 @@ msgid "No eras available for this game."
 msgstr "No hay eras disponibles para esta partida."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:735
-msgid "$min to $max"
-msgstr "$min a $max"
+msgid "number of players^$min to $max"
+msgstr ""
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:832
 msgid "The selected game has no sides!"
@@ -6319,7 +6321,7 @@ msgstr "vacío"
 msgid "Team:"
 msgstr "Equipo:"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:466
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:464
 msgid "Waiting for players to choose factions..."
 msgstr "Esperando a que los jugadores elijan facciones..."
 
@@ -6478,9 +6480,13 @@ msgid "Room <i>“$name”</i> joined"
 msgstr "Unido a la estancia <i>“$name”</i>"
 
 #: src/gui/widgets/chatbox.cpp:393
+#, fuzzy
+#| msgid ""
+#| "Whisper session with <i>“$name”</i> started. If you do not want to "
+#| "receive messages from this user, type <i>/ignore $name</i>\n"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
-"messages from this user, type <i>/ignore $name</i>\n"
+"messages from this user, type <i>/ignore $name</i>"
 msgstr ""
 "Ha iniciado una sesión de susurros con <i>“$name”</i>. Si no desea recibir "
 "mensajes de este usuario, escriba <i>/ignore $name</i>\n"
@@ -7599,6 +7605,12 @@ msgstr ""
 "El nombre del atributo «$deprecated_key|» ha cambiado a «$key|». "
 "«$deprecated_key|» dejará de tener mantenimiento en la versión "
 "$removal_version."
+
+#~ msgid "Deterministic mode"
+#~ msgstr "Modo determinísta"
+
+#~ msgid "$min to $max"
+#~ msgstr "$min a $max"
 
 #~ msgid "Rusty Open Gate"
 #~ msgstr "Verja herrumbrosa abierta"

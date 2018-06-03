@@ -47,6 +47,10 @@ todo co resto da comunidade.
 .SH OPCIÓNS
 .
 .TP 
+\fB\-\-all\-translations\fP
+Show all translations in the in\-game language selection list, even if they
+are deemed insufficiently complete.
+.TP 
 \fB\-\-bunzip\fP\fI\ ficheiro_de_entrada.bz2\fP
 Descomprime un ficheiro que debería estar en formato BZip2 e gárdao sen o
 sufixo «.bz2». Borrarase o \fIficheiro_de_entrada.bz2\fP.
@@ -114,12 +118,9 @@ Usa o idioma \fIidioma\fP (código) durante esta sesión. Por exemplo:
 \fB\-\-language gl\fP.
 .TP 
 \fB\-\-log\-\fP\fInivel\fP\fB=\fP\fIdominio_1\fP\fB,\fP\fIdominio_2\fP\fB,\fP\fI…\fP
-Establece o nivel de severidade dos dominios do rexistro.  Pódese usar
-\fBall\fP para referirse a calquera dominio do rexistro. Os niveis dispoñíbeis
-son os seguintes: \fBerror\fP (erro),\ \fBwarning\fP (aviso),\ \fBinfo\fP
-(información), \ \fBdebug\fP (depuración) e \ \fBnone\fP (ningún). \fBwarning\fP é o
-nivel predeterminado da meirande parte dos dominios, pero o nivel
-predeterminado de \fBdeprecation\fP é \fBningún\fP.
+sets the severity level of the log domains.  \fBall\fP can be used to match any
+log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default the \fBwarning\fP level is used for most domains, but
+\fBdeprecation\fP defaults to none unless combined with the \fB\-d\fP option.
 .TP 
 \fB\-\-log\-precise\fP
 Mostra as marcas de tempo no ficheiro do historial con máis precisión.
@@ -240,6 +241,10 @@ Executa o xogo nun pequeno escenario de probas. O escenario debería ser un
 definido cunha etiqueta WML \fB[test]\fP. O predeterminado é \fBtest\fP.  Pode
 iniciarse unha mostra da funcionalidade \fB[micro_ai]\fP con
 \fBmicro_ai_test\fP. O uso de \fB\-\-nogui\fP vai implícito.
+.TP 
+\fB\-\-translations\-over\fP\fI\ percent\fP
+Set the standard for deeming a translation is complete enough to show in the
+in\-game language list to \fIpercent\fP.  Valid values are 0 to 100.
 .TP 
 \fB\-u,\ \-\-unit\fP\fI\ identificador_de_escenario\fP
 Executa o escenario de probas indicado como proba unitaria. O uso de

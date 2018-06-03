@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-26 15:04+0300\n"
+"POT-Creation-Date: 2018-06-03 16:43+0300\n"
 "PO-Revision-Date: 2018-03-27 23:09-0700\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: \n"
@@ -4903,8 +4903,14 @@ msgstr ""
 "якщо вони займуть поле з селом, вони не отримають ніякого додаткового "
 "захисту, хоча будуть зцілюватись."
 
+#: src/actions/advancement.cpp:225
+#, fuzzy
+#| msgid "No advancement"
+msgid "an advancement choice"
+msgstr "Не просувається"
+
 #: src/actions/attack.cpp:386 src/actions/attack.cpp:656
-#: src/actions/attack.cpp:1424
+#: src/actions/attack.cpp:1412
 msgid "An invalid attacker weapon got selected."
 msgstr "Вибрана неправильна зброя того, що атакує."
 
@@ -5720,33 +5726,33 @@ msgstr "Гра $login"
 msgid "Team"
 msgstr "Команда"
 
-#: src/game_initialization/connect_engine.cpp:988
+#: src/game_initialization/connect_engine.cpp:1007
 #, fuzzy
 msgid "Anonymous player"
 msgstr "Анонімний локальний гравець"
 
-#: src/game_initialization/connect_engine.cpp:993
-#: src/game_initialization/connect_engine.cpp:1287
+#: src/game_initialization/connect_engine.cpp:1012
+#: src/game_initialization/connect_engine.cpp:1306
 msgid "Computer Player"
 msgstr "Комп'ютерний гравець"
 
-#: src/game_initialization/connect_engine.cpp:1035
+#: src/game_initialization/connect_engine.cpp:1054
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1302
 msgid "Network Player"
 msgstr "Мережний гравець"
 
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1305
 msgid "Local Player"
 msgstr "Локальний гравець"
 
-#: src/game_initialization/connect_engine.cpp:1288
+#: src/game_initialization/connect_engine.cpp:1307
 msgid "Empty"
 msgstr "Порожньо"
 
-#: src/game_initialization/connect_engine.cpp:1291
+#: src/game_initialization/connect_engine.cpp:1310
 msgid "Reserved"
 msgstr "Зарезервовано"
 
@@ -5832,8 +5838,10 @@ msgstr "Невідома ера"
 
 #: src/game_initialization/lobby_data.cpp:345
 #: src/game_initialization/lobby_data.cpp:375
-msgid "S"
-msgstr ""
+#, fuzzy
+#| msgid "scenario settings^Side"
+msgid "scenario_abbreviation^S"
+msgstr "Сторона"
 
 #: src/game_initialization/lobby_data.cpp:364
 msgid "Remote scenario"
@@ -5841,7 +5849,7 @@ msgstr "Віддалений сценарій"
 
 #: src/game_initialization/lobby_data.cpp:383
 #: src/game_initialization/lobby_data.cpp:406
-msgid "C"
+msgid "campaign_abbreviation^C"
 msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:411
@@ -5894,7 +5902,7 @@ msgstr ""
 msgid "Cannot find era $era"
 msgstr "Не вдалось знайти еру $era"
 
-#: src/game_initialization/mp_game_utils.cpp:140
+#: src/game_initialization/mp_game_utils.cpp:142
 msgid "Connection timed out"
 msgstr "Перевищена межа часу під'єднання"
 
@@ -6179,12 +6187,12 @@ msgstr "Помилка запуску сервера: "
 msgid "Connection failed: "
 msgstr "Перевищена межа часу під'єднання"
 
-#: src/generators/default_map_generator_job.cpp:691
+#: src/generators/default_map_generator_job.cpp:711
 #, fuzzy
 msgid "Random maps with an odd width aren't supported."
 msgstr "Випадкові карти з непарною шириною не підтримуються."
 
-#: src/generators/default_map_generator_job.cpp:954
+#: src/generators/default_map_generator_job.cpp:974
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
@@ -7971,20 +7979,16 @@ msgstr "найтральна"
 msgid "female^liminal"
 msgstr "тіньова"
 
-#: src/units/unit.cpp:643
-msgid "Unit with negative HP found"
-msgstr ""
-
-#: src/units/unit.cpp:1797
+#: src/units/unit.cpp:1775
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1803
+#: src/units/unit.cpp:1781
 #, fuzzy
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "за хід"
 
-#: src/units/unit.cpp:1813
+#: src/units/unit.cpp:1791
 #, fuzzy
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
@@ -7992,22 +7996,22 @@ msgstr[0] "за хід"
 msgstr[1] "за хід"
 msgstr[2] "за хід"
 
-#: src/units/unit.cpp:1819
+#: src/units/unit.cpp:1797
 #, fuzzy
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "за хід"
 
-#: src/units/unit.cpp:1823
+#: src/units/unit.cpp:1801
 #, fuzzy
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "за хід"
 
-#: src/units/unit.cpp:1828
+#: src/units/unit.cpp:1806
 #, fuzzy
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "за хід"
 
-#: src/units/unit.cpp:1832
+#: src/units/unit.cpp:1810
 #, fuzzy
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
@@ -8016,12 +8020,12 @@ msgstr[0] "за хід"
 msgstr[1] "за хід"
 msgstr[2] "за хід"
 
-#: src/units/unit.cpp:1839
+#: src/units/unit.cpp:1817
 #, fuzzy
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "за хід"
 
-#: src/units/unit.cpp:2244
+#: src/units/unit.cpp:2222
 msgid "$effect_description per level"
 msgstr "$effect_description за рівень"
 
@@ -9024,9 +9028,6 @@ msgstr "Параметри планувальника"
 
 #~ msgid "scenario settings^Leader"
 #~ msgstr "Лідер"
-
-#~ msgid "scenario settings^Side"
-#~ msgstr "Сторона"
 
 #~ msgid ""
 #~ "scenario settings^Start\n"

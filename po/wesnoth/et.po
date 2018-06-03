@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4 Estonian translation\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-26 15:04+0300\n"
+"POT-Creation-Date: 2018-06-03 16:43+0300\n"
 "PO-Revision-Date: 2013-03-09 13:27+0300\n"
 "Last-Translator: Kaido Kikkas <kaido.kikkas@kakupesa.net>\n"
 "Language-Team: Kaido Kikkas <kakk@kakupesa.net>\n"
@@ -4964,8 +4964,14 @@ msgstr ""
 "Metslastest üksused nagu nahkhiired ja metsloomad hoiduvad küladest eemale. "
 "Sinna sattudes ei saa nad kaitsevõimepreemiat, ehkki küla tervendab ka neid."
 
+#: src/actions/advancement.cpp:225
+#, fuzzy
+#| msgid "No advancement"
+msgid "an advancement choice"
+msgstr "Edutamisi pole"
+
 #: src/actions/attack.cpp:386 src/actions/attack.cpp:656
-#: src/actions/attack.cpp:1424
+#: src/actions/attack.cpp:1412
 msgid "An invalid attacker weapon got selected."
 msgstr "Valiti ebasobiv ründerelv"
 
@@ -5812,34 +5818,34 @@ msgstr "Mängija: $login"
 msgid "Team"
 msgstr "Meeskond"
 
-#: src/game_initialization/connect_engine.cpp:988
+#: src/game_initialization/connect_engine.cpp:1007
 #, fuzzy
 #| msgid "Anonymous local player"
 msgid "Anonymous player"
 msgstr "Anonüümne kohalik mängija"
 
-#: src/game_initialization/connect_engine.cpp:993
-#: src/game_initialization/connect_engine.cpp:1287
+#: src/game_initialization/connect_engine.cpp:1012
+#: src/game_initialization/connect_engine.cpp:1306
 msgid "Computer Player"
 msgstr "Arvuti"
 
-#: src/game_initialization/connect_engine.cpp:1035
+#: src/game_initialization/connect_engine.cpp:1054
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1302
 msgid "Network Player"
 msgstr "Võrgumängija"
 
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1305
 msgid "Local Player"
 msgstr "Kohalik mängija"
 
-#: src/game_initialization/connect_engine.cpp:1288
+#: src/game_initialization/connect_engine.cpp:1307
 msgid "Empty"
 msgstr "Tühi"
 
-#: src/game_initialization/connect_engine.cpp:1291
+#: src/game_initialization/connect_engine.cpp:1310
 msgid "Reserved"
 msgstr "Reserveeritud"
 
@@ -5937,8 +5943,10 @@ msgstr "Tundmatu ajastu"
 
 #: src/game_initialization/lobby_data.cpp:345
 #: src/game_initialization/lobby_data.cpp:375
-msgid "S"
-msgstr ""
+#, fuzzy
+#| msgid "scenario settings^Side"
+msgid "scenario_abbreviation^S"
+msgstr "Osapool"
 
 #: src/game_initialization/lobby_data.cpp:364
 msgid "Remote scenario"
@@ -5946,7 +5954,7 @@ msgstr "Eemalt loetav stsenaarium"
 
 #: src/game_initialization/lobby_data.cpp:383
 #: src/game_initialization/lobby_data.cpp:406
-msgid "C"
+msgid "campaign_abbreviation^C"
 msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:411
@@ -6000,7 +6008,7 @@ msgstr ""
 msgid "Cannot find era $era"
 msgstr "Ei leia ajastut $era"
 
-#: src/game_initialization/mp_game_utils.cpp:140
+#: src/game_initialization/mp_game_utils.cpp:142
 msgid "Connection timed out"
 msgstr "Ühendus aegus."
 
@@ -6292,13 +6300,13 @@ msgstr "Serveri käivitamisel tekkis viga: "
 msgid "Connection failed: "
 msgstr "Ühendus aegus."
 
-#: src/generators/default_map_generator_job.cpp:691
+#: src/generators/default_map_generator_job.cpp:711
 #, fuzzy
 #| msgid "Random maps with an odd width aren't supported."
 msgid "Random maps with an odd width aren't supported."
 msgstr "Paaritu laiusega juhuslikku kaarti ei saa kasutada."
 
-#: src/generators/default_map_generator_job.cpp:954
+#: src/generators/default_map_generator_job.cpp:974
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
@@ -8216,21 +8224,17 @@ msgstr "ükskõikne"
 msgid "female^liminal"
 msgstr "kahetine"
 
-#: src/units/unit.cpp:643
-msgid "Unit with negative HP found"
-msgstr ""
-
-#: src/units/unit.cpp:1797
+#: src/units/unit.cpp:1775
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1803
+#: src/units/unit.cpp:1781
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "käigu kohta"
 
-#: src/units/unit.cpp:1813
+#: src/units/unit.cpp:1791
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8238,25 +8242,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "käigu kohta"
 msgstr[1] "käigu kohta"
 
-#: src/units/unit.cpp:1819
+#: src/units/unit.cpp:1797
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "käigu kohta"
 
-#: src/units/unit.cpp:1823
+#: src/units/unit.cpp:1801
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "käigu kohta"
 
-#: src/units/unit.cpp:1828
+#: src/units/unit.cpp:1806
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "käigu kohta"
 
-#: src/units/unit.cpp:1832
+#: src/units/unit.cpp:1810
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8265,13 +8269,13 @@ msgid_plural ""
 msgstr[0] "käigu kohta"
 msgstr[1] "käigu kohta"
 
-#: src/units/unit.cpp:1839
+#: src/units/unit.cpp:1817
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "käigu kohta"
 
-#: src/units/unit.cpp:2244
+#: src/units/unit.cpp:2222
 msgid "$effect_description per level"
 msgstr "$effect_description taseme kohta"
 
@@ -9364,9 +9368,6 @@ msgstr "Tahvli sätted"
 
 #~ msgid "scenario settings^Leader"
 #~ msgstr "Pealik"
-
-#~ msgid "scenario settings^Side"
-#~ msgstr "Osapool"
 
 #~ msgid ""
 #~ "scenario settings^Start\n"

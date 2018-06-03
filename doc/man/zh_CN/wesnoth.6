@@ -36,6 +36,10 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一个回合制奇幻策略游
 .SH 选项
 .
 .TP 
+\fB\-\-all\-translations\fP
+Show all translations in the in\-game language selection list, even if they
+are deemed insufficiently complete.
+.TP 
 \fB\-\-bunzip\fP\fI\ infile.bz2\fP
 解压缩应为bzip2格式的文件，解压后去掉.bz2后缀。文件\fIinfile.bz2\fP将被删除。
 .TP 
@@ -89,7 +93,9 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一个回合制奇幻策略游
 在本次游戏期间使用语言 \fIlang\fP （符号）。例如： \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
-设置日志域的严重度级别。\fBall\fP可以用来匹配任意日志域。可选的级别有：\fBerror\fP，\ \fBwarning\fP，\ \fBinfo\fP，\ \fBdebug\fP, \ \fBnone\fP。对绝大多数日志域而言，默认日志级别是\fBwarning\fP，但\fBdeprecation\fP的默认级别是\fBnone\fP。
+sets the severity level of the log domains.  \fBall\fP can be used to match any
+log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default the \fBwarning\fP level is used for most domains, but
+\fBdeprecation\fP defaults to none unless combined with the \fB\-d\fP option.
 .TP 
 \fB\-\-log\-precise\fP
 在日志文件中显示更高精度的时间戳。
@@ -181,6 +187,10 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一个回合制奇幻策略游
 \fB\-t[\fP\fIscenario_id\fP\fB],\ \-\-test[\fP\fI=scenario_id\fP\fB]\fP
 在小型测试场景中运行游戏。该场景应使用 \fB[test]\fP WML标签定义。默认为 \fBtest\fP 。可使用 \fBmicro_ai_test\fP 启动对
 \fB[micro_ai]\fP 特性的演示。此选项隐含 \fB\-\-nogui\fP 。
+.TP 
+\fB\-\-translations\-over\fP\fI\ percent\fP
+Set the standard for deeming a translation is complete enough to show in the
+in\-game language list to \fIpercent\fP.  Valid values are 0 to 100.
 .TP 
 \fB\-u,\ \-\-unit\fP\fI\ scenario\-id\fP
 将指定的测试场景作为单元测试运行。此选项隐含 \fB\-\-nogui\fP 。

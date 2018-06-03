@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-26 15:04+0300\n"
+"POT-Creation-Date: 2018-06-03 16:43+0300\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -4915,8 +4915,13 @@ msgid ""
 "the village, although they will still be healed."
 msgstr ""
 
+#: src/actions/advancement.cpp:225
+#, fuzzy
+msgid "an advancement choice"
+msgstr "𐑩𐑛𐑝𐑨𐑯𐑕𐑥𐑩𐑯𐑑𐑕"
+
 #: src/actions/attack.cpp:386 src/actions/attack.cpp:656
-#: src/actions/attack.cpp:1424
+#: src/actions/attack.cpp:1412
 msgid "An invalid attacker weapon got selected."
 msgstr "𐑩𐑯 𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑩𐑑𐑨𐑒𐑻 𐑢𐑧𐑐𐑩𐑯 𐑜𐑪𐑑 𐑕𐑩𐑤𐑧𐑒𐑑𐑩𐑛."
 
@@ -5794,34 +5799,34 @@ msgstr "$login|’s 𐑜𐑱𐑥"
 msgid "Team"
 msgstr "𐑑𐑰𐑥"
 
-#: src/game_initialization/connect_engine.cpp:988
+#: src/game_initialization/connect_engine.cpp:1007
 #, fuzzy
 #| msgid "Anonymous local player"
 msgid "Anonymous player"
 msgstr "𐑩𐑯𐑪𐑯𐑦𐑥𐑩𐑕 𐑤𐑴𐑒𐑩𐑤 𐑐𐑤𐑱𐑻"
 
-#: src/game_initialization/connect_engine.cpp:993
-#: src/game_initialization/connect_engine.cpp:1287
+#: src/game_initialization/connect_engine.cpp:1012
+#: src/game_initialization/connect_engine.cpp:1306
 msgid "Computer Player"
 msgstr "𐑒𐑩𐑥𐑐𐑿𐑑𐑼 𐑐𐑤𐑱𐑻"
 
-#: src/game_initialization/connect_engine.cpp:1035
+#: src/game_initialization/connect_engine.cpp:1054
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1302
 msgid "Network Player"
 msgstr "𐑯𐑧𐑑𐑢𐑻𐑒 𐑐𐑤𐑱𐑻"
 
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1305
 msgid "Local Player"
 msgstr "𐑤𐑴𐑒𐑩𐑤 𐑐𐑤𐑱𐑻"
 
-#: src/game_initialization/connect_engine.cpp:1288
+#: src/game_initialization/connect_engine.cpp:1307
 msgid "Empty"
 msgstr "𐑧𐑥𐑐𐑑𐑦"
 
-#: src/game_initialization/connect_engine.cpp:1291
+#: src/game_initialization/connect_engine.cpp:1310
 msgid "Reserved"
 msgstr "𐑮𐑦𐑟𐑻𐑝𐑛"
 
@@ -5914,8 +5919,10 @@ msgstr "𐑳𐑯𐑯𐑴𐑯 𐑽𐑩"
 
 #: src/game_initialization/lobby_data.cpp:345
 #: src/game_initialization/lobby_data.cpp:375
-msgid "S"
-msgstr ""
+#, fuzzy
+#| msgid "scenario settings^Side"
+msgid "scenario_abbreviation^S"
+msgstr "𐑕𐑲𐑛"
 
 #: src/game_initialization/lobby_data.cpp:364
 msgid "Remote scenario"
@@ -5923,7 +5930,7 @@ msgstr "𐑮𐑦𐑥𐑴𐑑 𐑕𐑦𐑯𐑺𐑰𐑴"
 
 #: src/game_initialization/lobby_data.cpp:383
 #: src/game_initialization/lobby_data.cpp:406
-msgid "C"
+msgid "campaign_abbreviation^C"
 msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:411
@@ -5980,7 +5987,7 @@ msgstr ""
 msgid "Cannot find era $era"
 msgstr "𐑒𐑨𐑯𐑪𐑑 𐑓𐑲𐑯𐑛 𐑽𐑩 $era"
 
-#: src/game_initialization/mp_game_utils.cpp:140
+#: src/game_initialization/mp_game_utils.cpp:142
 msgid "Connection timed out"
 msgstr "𐑒𐑩𐑯𐑧𐑒𐑖𐑩𐑯 𐑑𐑲𐑥𐑛 𐑬𐑑"
 
@@ -6291,13 +6298,13 @@ msgstr "𐑻𐑹 𐑢𐑲𐑤 𐑕𐑑𐑸𐑑𐑦𐑙 𐑕𐑻𐑝𐑻: "
 msgid "Connection failed: "
 msgstr "𐑒𐑩𐑯𐑧𐑒𐑖𐑩𐑯 𐑑𐑲𐑥𐑛 𐑬𐑑"
 
-#: src/generators/default_map_generator_job.cpp:691
+#: src/generators/default_map_generator_job.cpp:711
 #, fuzzy
 #| msgid "Random maps with an odd width aren't supported."
 msgid "Random maps with an odd width aren't supported."
 msgstr "𐑮𐑨𐑯𐑛𐑩𐑥 𐑥𐑨𐑐𐑕 𐑢𐑦𐑞 𐑩𐑯 𐑪𐑛 𐑢𐑦𐑛𐑔 𐑸𐑯𐑑 𐑕𐑩𐑐𐑹𐑑𐑩𐑛."
 
-#: src/generators/default_map_generator_job.cpp:954
+#: src/generators/default_map_generator_job.cpp:974
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
@@ -8215,21 +8222,17 @@ msgstr "𐑯𐑵𐑑𐑮𐑩𐑤"
 msgid "female^liminal"
 msgstr "𐑤𐑶𐑩𐑤"
 
-#: src/units/unit.cpp:643
-msgid "Unit with negative HP found"
-msgstr ""
-
-#: src/units/unit.cpp:1797
+#: src/units/unit.cpp:1775
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1803
+#: src/units/unit.cpp:1781
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:1813
+#: src/units/unit.cpp:1791
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8237,25 +8240,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "𐑐𐑻 𐑑𐑻𐑯"
 msgstr[1] "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:1819
+#: src/units/unit.cpp:1797
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:1823
+#: src/units/unit.cpp:1801
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:1828
+#: src/units/unit.cpp:1806
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:1832
+#: src/units/unit.cpp:1810
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8264,13 +8267,13 @@ msgid_plural ""
 msgstr[0] "𐑐𐑻 𐑑𐑻𐑯"
 msgstr[1] "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:1839
+#: src/units/unit.cpp:1817
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:2244
+#: src/units/unit.cpp:2222
 msgid "$effect_description per level"
 msgstr "$effect_description 𐑐𐑻 𐑤𐑧𐑝𐑩𐑤"
 
@@ -9281,9 +9284,6 @@ msgstr ""
 
 #~ msgid "scenario settings^Leader"
 #~ msgstr "𐑤𐑰𐑛𐑻"
-
-#~ msgid "scenario settings^Side"
-#~ msgstr "𐑕𐑲𐑛"
 
 #~ msgid ""
 #~ "scenario settings^Start\n"

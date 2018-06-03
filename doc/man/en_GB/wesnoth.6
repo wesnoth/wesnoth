@@ -43,6 +43,10 @@ scenarios or campaigns, and share them with others.
 .SH OPTIONS
 .
 .TP 
+\fB\-\-all\-translations\fP
+Show all translations in the in\-game language selection list, even if they
+are deemed insufficiently complete.
+.TP 
 \fB\-\-bunzip\fP\fI\ infile.bz2\fP
 decompresses a file which should be in bzip2 format and stores it without
 the .bz2 suffix. The \fIinfile.bz2\fP will be removed.
@@ -112,7 +116,7 @@ ang_GB@latin\fP
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 sets the severity level of the log domains.  \fBall\fP can be used to match any
 log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default the \fBwarning\fP level is used for most domains, but
-\fBdeprecation\fP is none by default.
+\fBdeprecation\fP defaults to none unless combined with the \fB\-d\fP option.
 .TP 
 \fB\-\-log\-precise\fP
 shows the timestamps in the logfile with more precision.
@@ -229,6 +233,10 @@ runs the game in a small test scenario. The scenario should be one defined
 with a \fB[test]\fP WML tag. The default is \fBtest\fP.  A demonstration of the
 \fB[micro_ai]\fP feature can be started with \fBmicro_ai_test\fP.  Implies
 \fB\-\-nogui\fP.
+.TP 
+\fB\-\-translations\-over\fP\fI\ percent\fP
+Set the standard for deeming a translation is complete enough to show in the
+in\-game language list to \fIpercent\fP.  Valid values are 0 to 100.
 .TP 
 \fB\-u,\ \-\-unit\fP\fI\ scenario\-id\fP
 runs the specified test scenario as a unit test. Implies \fB\-\-nogui\fP.

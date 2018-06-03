@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-26 15:04+0300\n"
+"POT-Creation-Date: 2018-06-03 16:43+0300\n"
 "PO-Revision-Date: 2018-05-17 00:55-0700\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -5258,8 +5258,14 @@ msgstr ""
 "alcun beneficio dal villaggio in termini difensivi; tuttavia, saranno "
 "comunque guarite."
 
+#: src/actions/advancement.cpp:225
+#, fuzzy
+#| msgid "No advancement"
+msgid "an advancement choice"
+msgstr "Nessun avanzamento"
+
 #: src/actions/attack.cpp:386 src/actions/attack.cpp:656
-#: src/actions/attack.cpp:1424
+#: src/actions/attack.cpp:1412
 msgid "An invalid attacker weapon got selected."
 msgstr "È stata selezionata un’arma di attacco non valida."
 
@@ -6102,32 +6108,32 @@ msgstr "Partita di $login|"
 msgid "Team"
 msgstr "Squadra"
 
-#: src/game_initialization/connect_engine.cpp:988
+#: src/game_initialization/connect_engine.cpp:1007
 msgid "Anonymous player"
 msgstr "Giocatore anonimo"
 
-#: src/game_initialization/connect_engine.cpp:993
-#: src/game_initialization/connect_engine.cpp:1287
+#: src/game_initialization/connect_engine.cpp:1012
+#: src/game_initialization/connect_engine.cpp:1306
 msgid "Computer Player"
 msgstr "Computer"
 
-#: src/game_initialization/connect_engine.cpp:1035
+#: src/game_initialization/connect_engine.cpp:1054
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1302
 msgid "Network Player"
 msgstr "Giocatore in rete"
 
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1305
 msgid "Local Player"
 msgstr "Giocatore in locale"
 
-#: src/game_initialization/connect_engine.cpp:1288
+#: src/game_initialization/connect_engine.cpp:1307
 msgid "Empty"
 msgstr "Vuota"
 
-#: src/game_initialization/connect_engine.cpp:1291
+#: src/game_initialization/connect_engine.cpp:1310
 msgid "Reserved"
 msgstr "Riservata"
 
@@ -6209,8 +6215,8 @@ msgstr "Era sconosciuta"
 
 #: src/game_initialization/lobby_data.cpp:345
 #: src/game_initialization/lobby_data.cpp:375
-msgid "S"
-msgstr "S"
+msgid "scenario_abbreviation^S"
+msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:364
 msgid "Remote scenario"
@@ -6218,8 +6224,8 @@ msgstr "Scenario remoto"
 
 #: src/game_initialization/lobby_data.cpp:383
 #: src/game_initialization/lobby_data.cpp:406
-msgid "C"
-msgstr "C"
+msgid "campaign_abbreviation^C"
+msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:411
 msgid "Unknown scenario"
@@ -6273,7 +6279,7 @@ msgstr ""
 msgid "Cannot find era $era"
 msgstr "Impossibile trovare l’era $era"
 
-#: src/game_initialization/mp_game_utils.cpp:140
+#: src/game_initialization/mp_game_utils.cpp:142
 msgid "Connection timed out"
 msgstr "Connessione scaduta"
 
@@ -6551,12 +6557,12 @@ msgstr "Errore durante l’avvio del server: "
 msgid "Connection failed: "
 msgstr "Connessione fallita: "
 
-#: src/generators/default_map_generator_job.cpp:691
+#: src/generators/default_map_generator_job.cpp:711
 msgid "Random maps with an odd width aren't supported."
 msgstr "Le mappe casuali con larghezza dispari non sono supportate."
 
 # verificare
-#: src/generators/default_map_generator_job.cpp:954
+#: src/generators/default_map_generator_job.cpp:974
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
@@ -8361,48 +8367,44 @@ msgstr "neutrale"
 msgid "female^liminal"
 msgstr "liminale"
 
-#: src/units/unit.cpp:643
-msgid "Unit with negative HP found"
-msgstr "Trovata unità con PF negativi"
-
-#: src/units/unit.cpp:1797
+#: src/units/unit.cpp:1775
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1803
+#: src/units/unit.cpp:1781
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> PF"
 
-#: src/units/unit.cpp:1813
+#: src/units/unit.cpp:1791
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> mossa"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> mosse"
 
-#: src/units/unit.cpp:1819
+#: src/units/unit.cpp:1797
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> visuale"
 
-#: src/units/unit.cpp:1823
+#: src/units/unit.cpp:1801
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> disturbo"
 
-#: src/units/unit.cpp:1828
+#: src/units/unit.cpp:1806
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> PE per avanzare"
 
-#: src/units/unit.cpp:1832
+#: src/units/unit.cpp:1810
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> attacco per turno"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> attacchi per turno"
 
-#: src/units/unit.cpp:1839
+#: src/units/unit.cpp:1817
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> costo di richiamo"
 
-#: src/units/unit.cpp:2244
+#: src/units/unit.cpp:2222
 msgid "$effect_description per level"
 msgstr "$effect_description per livello"
 
@@ -8449,6 +8451,15 @@ msgstr "Nascondi i piani di $player"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Opzioni della lavagna"
+
+#~ msgid "S"
+#~ msgstr "S"
+
+#~ msgid "C"
+#~ msgstr "C"
+
+#~ msgid "Unit with negative HP found"
+#~ msgstr "Trovata unità con PF negativi"
 
 #~ msgid "(missing)"
 #~ msgstr "(mancante)"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-26 15:04+0300\n"
+"POT-Creation-Date: 2018-06-03 16:43+0300\n"
 "PO-Revision-Date: 2012-04-01 16:53+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -4989,8 +4989,14 @@ msgstr ""
 "избегаваће села. Чак и када стану на поље са селом, не добијају одбрамбених "
 "предности; мада ће ипак бити лечене."
 
+#: src/actions/advancement.cpp:225
+#, fuzzy
+#| msgid "No advancement"
+msgid "an advancement choice"
+msgstr "без напредовања"
+
 #: src/actions/attack.cpp:386 src/actions/attack.cpp:656
-#: src/actions/attack.cpp:1424
+#: src/actions/attack.cpp:1412
 msgid "An invalid attacker weapon got selected."
 msgstr "Изабрано је лоше оружје за нападача."
 
@@ -5882,34 +5888,34 @@ msgstr "$login|-ова игра"
 msgid "Team"
 msgstr "тим"
 
-#: src/game_initialization/connect_engine.cpp:988
+#: src/game_initialization/connect_engine.cpp:1007
 #, fuzzy
 #| msgid "Anonymous local player"
 msgid "Anonymous player"
 msgstr "Никоговић"
 
-#: src/game_initialization/connect_engine.cpp:993
-#: src/game_initialization/connect_engine.cpp:1287
+#: src/game_initialization/connect_engine.cpp:1012
+#: src/game_initialization/connect_engine.cpp:1306
 msgid "Computer Player"
 msgstr "рачунарски играч"
 
-#: src/game_initialization/connect_engine.cpp:1035
+#: src/game_initialization/connect_engine.cpp:1054
 msgid "$playername $side"
 msgstr "$playername ($side)"
 
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1302
 msgid "Network Player"
 msgstr "мрежни играч"
 
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1305
 msgid "Local Player"
 msgstr "локални играч"
 
-#: src/game_initialization/connect_engine.cpp:1288
+#: src/game_initialization/connect_engine.cpp:1307
 msgid "Empty"
 msgstr "празно"
 
-#: src/game_initialization/connect_engine.cpp:1291
+#: src/game_initialization/connect_engine.cpp:1310
 msgid "Reserved"
 msgstr "резервисано"
 
@@ -6008,8 +6014,10 @@ msgstr "непозната епоха"
 
 #: src/game_initialization/lobby_data.cpp:345
 #: src/game_initialization/lobby_data.cpp:375
-msgid "S"
-msgstr ""
+#, fuzzy
+#| msgid "scenario settings^Side"
+msgid "scenario_abbreviation^S"
+msgstr "страна"
 
 #: src/game_initialization/lobby_data.cpp:364
 msgid "Remote scenario"
@@ -6017,7 +6025,7 @@ msgstr "удаљени сценарио"
 
 #: src/game_initialization/lobby_data.cpp:383
 #: src/game_initialization/lobby_data.cpp:406
-msgid "C"
+msgid "campaign_abbreviation^C"
 msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:411
@@ -6073,7 +6081,7 @@ msgstr ""
 msgid "Cannot find era $era"
 msgstr "Не могу да нађем епоху $era"
 
-#: src/game_initialization/mp_game_utils.cpp:140
+#: src/game_initialization/mp_game_utils.cpp:142
 msgid "Connection timed out"
 msgstr "Веза је истекла."
 
@@ -6380,13 +6388,13 @@ msgstr "Грешка при покретању сервера: "
 msgid "Connection failed: "
 msgstr "Веза је истекла."
 
-#: src/generators/default_map_generator_job.cpp:691
+#: src/generators/default_map_generator_job.cpp:711
 #, fuzzy
 #| msgid "Random maps with an odd width aren't supported."
 msgid "Random maps with an odd width aren't supported."
 msgstr "Насумичне мапе непарне ширине нису подржане."
 
-#: src/generators/default_map_generator_job.cpp:954
+#: src/generators/default_map_generator_job.cpp:974
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
@@ -8338,21 +8346,17 @@ msgstr "неутрална"
 msgid "female^liminal"
 msgstr "двојствена"
 
-#: src/units/unit.cpp:643
-msgid "Unit with negative HP found"
-msgstr ""
-
-#: src/units/unit.cpp:1797
+#: src/units/unit.cpp:1775
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1803
+#: src/units/unit.cpp:1781
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "по потезу"
 
-#: src/units/unit.cpp:1813
+#: src/units/unit.cpp:1791
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8362,25 +8366,25 @@ msgstr[1] "по потезу"
 msgstr[2] "по потезу"
 msgstr[3] "по потезу"
 
-#: src/units/unit.cpp:1819
+#: src/units/unit.cpp:1797
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "по потезу"
 
-#: src/units/unit.cpp:1823
+#: src/units/unit.cpp:1801
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "по потезу"
 
-#: src/units/unit.cpp:1828
+#: src/units/unit.cpp:1806
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "по потезу"
 
-#: src/units/unit.cpp:1832
+#: src/units/unit.cpp:1810
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8391,13 +8395,13 @@ msgstr[1] "по потезу"
 msgstr[2] "по потезу"
 msgstr[3] "по потезу"
 
-#: src/units/unit.cpp:1839
+#: src/units/unit.cpp:1817
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "по потезу"
 
-#: src/units/unit.cpp:2244
+#: src/units/unit.cpp:2222
 msgid "$effect_description per level"
 msgstr "$effect_description по нивоу"
 
@@ -9454,9 +9458,6 @@ msgstr "Опције блокчета"
 
 #~ msgid "scenario settings^Leader"
 #~ msgstr "вођ"
-
-#~ msgid "scenario settings^Side"
-#~ msgstr "страна"
 
 #~ msgid ""
 #~ "scenario settings^Start\n"

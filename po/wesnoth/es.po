@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-26 15:04+0300\n"
+"POT-Creation-Date: 2018-06-03 16:43+0300\n"
 "PO-Revision-Date: 2018-05-19 18:47+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth Spanish translation\n"
@@ -5290,8 +5290,14 @@ msgstr ""
 "y recuperen sus puntos de vida, no recibirán defensa adicional como otras "
 "unidades."
 
+#: src/actions/advancement.cpp:225
+#, fuzzy
+#| msgid "No advancement"
+msgid "an advancement choice"
+msgstr "Ningún avance"
+
 #: src/actions/attack.cpp:386 src/actions/attack.cpp:656
-#: src/actions/attack.cpp:1424
+#: src/actions/attack.cpp:1412
 msgid "An invalid attacker weapon got selected."
 msgstr "Se ha seleccionado un arma de atacante inválida."
 
@@ -6113,32 +6119,32 @@ msgstr "La partida de $login"
 msgid "Team"
 msgstr "Equipo"
 
-#: src/game_initialization/connect_engine.cpp:988
+#: src/game_initialization/connect_engine.cpp:1007
 msgid "Anonymous player"
 msgstr "Jugador anónimo"
 
-#: src/game_initialization/connect_engine.cpp:993
-#: src/game_initialization/connect_engine.cpp:1287
+#: src/game_initialization/connect_engine.cpp:1012
+#: src/game_initialization/connect_engine.cpp:1306
 msgid "Computer Player"
 msgstr "Inteligencia artificial (computadora)"
 
-#: src/game_initialization/connect_engine.cpp:1035
+#: src/game_initialization/connect_engine.cpp:1054
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1302
 msgid "Network Player"
 msgstr "Jugador en red"
 
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1305
 msgid "Local Player"
 msgstr "Jugador local"
 
-#: src/game_initialization/connect_engine.cpp:1288
+#: src/game_initialization/connect_engine.cpp:1307
 msgid "Empty"
 msgstr "Vacío"
 
-#: src/game_initialization/connect_engine.cpp:1291
+#: src/game_initialization/connect_engine.cpp:1310
 msgid "Reserved"
 msgstr "Reservado"
 
@@ -6221,8 +6227,10 @@ msgstr "Era desconocida"
 
 #: src/game_initialization/lobby_data.cpp:345
 #: src/game_initialization/lobby_data.cpp:375
-msgid "S"
-msgstr "S"
+#, fuzzy
+#| msgid "scenario settings^Side"
+msgid "scenario_abbreviation^S"
+msgstr "Bando"
 
 #: src/game_initialization/lobby_data.cpp:364
 msgid "Remote scenario"
@@ -6230,8 +6238,8 @@ msgstr "Escenario remoto"
 
 #: src/game_initialization/lobby_data.cpp:383
 #: src/game_initialization/lobby_data.cpp:406
-msgid "C"
-msgstr "C"
+msgid "campaign_abbreviation^C"
+msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:411
 msgid "Unknown scenario"
@@ -6284,7 +6292,7 @@ msgstr ""
 msgid "Cannot find era $era"
 msgstr "No se puede encontrar la era $era"
 
-#: src/game_initialization/mp_game_utils.cpp:140
+#: src/game_initialization/mp_game_utils.cpp:142
 msgid "Connection timed out"
 msgstr "Tiempo excedido en la conexión"
 
@@ -6563,11 +6571,11 @@ msgstr "Error al iniciar el servidor: "
 msgid "Connection failed: "
 msgstr "Conexión fallida: "
 
-#: src/generators/default_map_generator_job.cpp:691
+#: src/generators/default_map_generator_job.cpp:711
 msgid "Random maps with an odd width aren't supported."
 msgstr "Mapas aleatorios con una anchura obsoleta no son compatibles."
 
-#: src/generators/default_map_generator_job.cpp:954
+#: src/generators/default_map_generator_job.cpp:974
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
@@ -8369,49 +8377,45 @@ msgstr "neutral"
 msgid "female^liminal"
 msgstr "crepuscular"
 
-#: src/units/unit.cpp:643
-msgid "Unit with negative HP found"
-msgstr "Se ha encontrado una unidad con PV negativos"
-
-#: src/units/unit.cpp:1797
+#: src/units/unit.cpp:1775
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1803
+#: src/units/unit.cpp:1781
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> PV"
 
-#: src/units/unit.cpp:1813
+#: src/units/unit.cpp:1791
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> movimiento"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> movimientos"
 
-#: src/units/unit.cpp:1819
+#: src/units/unit.cpp:1797
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> vista"
 
-#: src/units/unit.cpp:1823
+#: src/units/unit.cpp:1801
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> interferencia"
 
-#: src/units/unit.cpp:1828
+#: src/units/unit.cpp:1806
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> PX para promoción"
 
-#: src/units/unit.cpp:1832
+#: src/units/unit.cpp:1810
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> ataque por turno"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> ataques por turno"
 
-#: src/units/unit.cpp:1839
+#: src/units/unit.cpp:1817
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr ""
 "<span color=\"$color\">$number_or_percent</span> coste de reincorporación"
 
-#: src/units/unit.cpp:2244
+#: src/units/unit.cpp:2222
 msgid "$effect_description per level"
 msgstr "$effect_description por nivel"
 
@@ -8458,6 +8462,15 @@ msgstr "Ocultar planes de $player"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Opciones del modo pizarra"
+
+#~ msgid "S"
+#~ msgstr "S"
+
+#~ msgid "C"
+#~ msgstr "C"
+
+#~ msgid "Unit with negative HP found"
+#~ msgstr "Se ha encontrado una unidad con PV negativos"
 
 # Desconozco el contexto. Podría ser perdida.
 #~ msgid "(missing)"
@@ -9566,9 +9579,6 @@ msgstr "Opciones del modo pizarra"
 
 #~ msgid "scenario settings^Leader"
 #~ msgstr "Líder"
-
-#~ msgid "scenario settings^Side"
-#~ msgstr "Bando"
 
 #~ msgid ""
 #~ "scenario settings^Start\n"

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-26 15:04+0300\n"
+"POT-Creation-Date: 2018-06-03 16:42+0300\n"
 "PO-Revision-Date: 2016-10-16 04:41+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: \n"
@@ -2062,10 +2062,10 @@ msgid "Search"
 msgstr ""
 
 #. [toggle_button]: id=sort_0
-#. [toggle_button]: id=sort_name
 #. [label]: id=name
 #. [label]
 #. [toggle_button]: id=sort_1
+#. [toggle_button]: id=sort_name
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:226
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_server_list.cfg:107
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -2211,7 +2211,7 @@ msgstr "Подключиться"
 #: data/gui/window/addon_uninstall_list.cfg:174
 #: data/gui/window/advanced_graphics_options.cfg:178
 #: data/gui/window/campaign_dialog.cfg:440
-#: data/gui/window/campaign_difficulty.cfg:265
+#: data/gui/window/campaign_difficulty.cfg:234
 #: data/gui/window/core_dialog.cfg:240 data/gui/window/custom_tod.cfg:444
 #: data/gui/window/depcheck_select_new.cfg:165
 #: data/gui/window/edit_label.cfg:153 data/gui/window/edit_text.cfg:130
@@ -2483,7 +2483,7 @@ msgstr "Масштабирование до ячейки"
 #. [button]: id=ok
 #: data/gui/window/advanced_graphics_options.cfg:165
 #: data/gui/window/campaign_dialog.cfg:426
-#: data/gui/window/campaign_difficulty.cfg:252
+#: data/gui/window/campaign_difficulty.cfg:221
 #: data/gui/window/core_dialog.cfg:227 data/gui/window/custom_tod.cfg:431
 #: data/gui/window/depcheck_select_new.cfg:151
 #: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
@@ -2614,8 +2614,10 @@ msgstr "Модификации:"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:409
-msgid "Deterministic mode"
-msgstr "Детерминистический режим"
+#, fuzzy
+#| msgid "Save Game"
+msgid "Save random seed"
+msgstr "Сохранить игру"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:411
@@ -4474,7 +4476,7 @@ msgstr "Лобби"
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:479 data/gui/window/mp_staging.cfg:614
 #: data/gui/window/mp_staging.cfg:806
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:465
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:463
 #, fuzzy
 #| msgid "Waiting for remote input"
 msgid "Waiting for players to join..."
@@ -6582,7 +6584,7 @@ msgid "No eras available for this game."
 msgstr "Доступно в игре"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:735
-msgid "$min to $max"
+msgid "number of players^$min to $max"
 msgstr ""
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:832
@@ -6636,7 +6638,7 @@ msgstr ""
 msgid "Team:"
 msgstr "Команда №1"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:466
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:464
 msgid "Waiting for players to choose factions..."
 msgstr ""
 
@@ -6813,7 +6815,7 @@ msgstr "<i>Зашли в комнату $name</i>"
 #| "messages from this user, type /ignore $name\n"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
-"messages from this user, type <i>/ignore $name</i>\n"
+"messages from this user, type <i>/ignore $name</i>"
 msgstr ""
 "Открылся приватный чат с $name. Если Вы не хотите получать сообщения от "
 "этого пользователя, наберите /ignore $name\n"
@@ -7945,6 +7947,9 @@ msgid ""
 msgstr ""
 "Клавиша '$deprecated_key' переименована в '$key'. Она будет удалена в версии "
 "$removal_version."
+
+#~ msgid "Deterministic mode"
+#~ msgstr "Детерминистический режим"
 
 #, fuzzy
 #~| msgid "Wooden Floor"

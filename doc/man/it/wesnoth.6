@@ -46,6 +46,10 @@ con gli altri.
 .SH OPZIONI
 .
 .TP 
+\fB\-\-all\-translations\fP
+Show all translations in the in\-game language selection list, even if they
+are deemed insufficiently complete.
+.TP 
 \fB\-\-bunzip\fP\fI\ infile.bz2\fP
 decomprime un file che dev’essere in formato bzip2 e lo memorizza senza
 suffisso .bz2. Il file \fIinfile.bz2\fP sarà rimosso.
@@ -115,11 +119,9 @@ usa il linguaggio \fIlang\fP (simbolo) per questa sessione.  Example:
 \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlivello\fP\fB=\fP\fIdominio1\fP\fB,\fP\fIdominio2\fP\fB,\fP\fI...\fP
-imposta il livello di dettaglio dei log dei domini di debug. Puoi usare
-\fBall\fP per selezionare tutti i domini di debug. Livelli disponibili:
-\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP. Normalmente è usato il
-livello \fBwarning\fP per la maggior parte dei domini, ma il livello
-\fBdeprecation\fP corrisponde al livello none.
+sets the severity level of the log domains.  \fBall\fP can be used to match any
+log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default the \fBwarning\fP level is used for most domains, but
+\fBdeprecation\fP defaults to none unless combined with the \fB\-d\fP option.
 .TP 
 \fB\-\-log\-precise\fP
 registra i tempi nel logfile in maniera più accurata.
@@ -244,6 +246,10 @@ esegue il gioco in un piccolo scenario di test. Lo scenario dovrebbe essere
 uno di quelli definiti con un tag WML \fB[test]\fP. Una dimostrazione delle
 caratteristiche delle \fB[micro_ai]\fP può essere avviata con
 \fBmicro_ai_test\fP. Implica \fB\-\-nogui\fP.
+.TP 
+\fB\-\-translations\-over\fP\fI\ percent\fP
+Set the standard for deeming a translation is complete enough to show in the
+in\-game language list to \fIpercent\fP.  Valid values are 0 to 100.
 .TP 
 \fB\-u,\ \-\-unit\fP\fI\ id_scenario\fP
 esegue lo scenario di test specificato come un test unità. Implica

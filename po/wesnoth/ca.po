@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-26 15:04+0300\n"
+"POT-Creation-Date: 2018-06-03 16:43+0300\n"
 "PO-Revision-Date: 2009-03-21 20:49+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -4910,8 +4910,13 @@ msgid ""
 "the village, although they will still be healed."
 msgstr ""
 
+#: src/actions/advancement.cpp:225
+#, fuzzy
+msgid "an advancement choice"
+msgstr "Avançaments"
+
 #: src/actions/attack.cpp:386 src/actions/attack.cpp:656
-#: src/actions/attack.cpp:1424
+#: src/actions/attack.cpp:1412
 #, fuzzy
 msgid "An invalid attacker weapon got selected."
 msgstr "L'era seleccionada no és vàlida"
@@ -5789,34 +5794,34 @@ msgstr "La partida d'en/na $login"
 msgid "Team"
 msgstr "Equip"
 
-#: src/game_initialization/connect_engine.cpp:988
+#: src/game_initialization/connect_engine.cpp:1007
 #, fuzzy
 #| msgid "Anonymous local player"
 msgid "Anonymous player"
 msgstr "Jugador anònim local"
 
-#: src/game_initialization/connect_engine.cpp:993
-#: src/game_initialization/connect_engine.cpp:1287
+#: src/game_initialization/connect_engine.cpp:1012
+#: src/game_initialization/connect_engine.cpp:1306
 msgid "Computer Player"
 msgstr "Ordinador"
 
-#: src/game_initialization/connect_engine.cpp:1035
+#: src/game_initialization/connect_engine.cpp:1054
 msgid "$playername $side"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1302
 msgid "Network Player"
 msgstr "Jugador xarxa"
 
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1305
 msgid "Local Player"
 msgstr "Jugador local"
 
-#: src/game_initialization/connect_engine.cpp:1288
+#: src/game_initialization/connect_engine.cpp:1307
 msgid "Empty"
 msgstr "Buit"
 
-#: src/game_initialization/connect_engine.cpp:1291
+#: src/game_initialization/connect_engine.cpp:1310
 msgid "Reserved"
 msgstr "Reservat"
 
@@ -5909,8 +5914,10 @@ msgstr "Era desconeguda"
 
 #: src/game_initialization/lobby_data.cpp:345
 #: src/game_initialization/lobby_data.cpp:375
-msgid "S"
-msgstr ""
+#, fuzzy
+#| msgid "scenario settings^Side"
+msgid "scenario_abbreviation^S"
+msgstr "Bàndol"
 
 #: src/game_initialization/lobby_data.cpp:364
 msgid "Remote scenario"
@@ -5918,7 +5925,7 @@ msgstr "Escenari remot"
 
 #: src/game_initialization/lobby_data.cpp:383
 #: src/game_initialization/lobby_data.cpp:406
-msgid "C"
+msgid "campaign_abbreviation^C"
 msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:411
@@ -5975,7 +5982,7 @@ msgstr ""
 msgid "Cannot find era $era"
 msgstr "No ha estat possible trobar $era."
 
-#: src/game_initialization/mp_game_utils.cpp:140
+#: src/game_initialization/mp_game_utils.cpp:142
 msgid "Connection timed out"
 msgstr "Connexió perduda."
 
@@ -6251,13 +6258,13 @@ msgstr "S'ha produït un error mentre s'iniciava el servidor: "
 msgid "Connection failed: "
 msgstr "Connexió perduda."
 
-#: src/generators/default_map_generator_job.cpp:691
+#: src/generators/default_map_generator_job.cpp:711
 #, fuzzy
 #| msgid "Random maps with an odd width aren't supported."
 msgid "Random maps with an odd width aren't supported."
 msgstr "Mapes aleatoris amb amplada imparella no estan suportats."
 
-#: src/generators/default_map_generator_job.cpp:954
+#: src/generators/default_map_generator_job.cpp:974
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
@@ -8179,21 +8186,17 @@ msgstr "neutral"
 msgid "female^liminal"
 msgstr "lleial"
 
-#: src/units/unit.cpp:643
-msgid "Unit with negative HP found"
-msgstr ""
-
-#: src/units/unit.cpp:1797
+#: src/units/unit.cpp:1775
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1803
+#: src/units/unit.cpp:1781
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "per torn"
 
-#: src/units/unit.cpp:1813
+#: src/units/unit.cpp:1791
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8201,25 +8204,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "per torn"
 msgstr[1] "per torn"
 
-#: src/units/unit.cpp:1819
+#: src/units/unit.cpp:1797
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "per torn"
 
-#: src/units/unit.cpp:1823
+#: src/units/unit.cpp:1801
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "per torn"
 
-#: src/units/unit.cpp:1828
+#: src/units/unit.cpp:1806
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "per torn"
 
-#: src/units/unit.cpp:1832
+#: src/units/unit.cpp:1810
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8228,13 +8231,13 @@ msgid_plural ""
 msgstr[0] "per torn"
 msgstr[1] "per torn"
 
-#: src/units/unit.cpp:1839
+#: src/units/unit.cpp:1817
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "per torn"
 
-#: src/units/unit.cpp:2244
+#: src/units/unit.cpp:2222
 #, fuzzy
 #| msgid "$attack_list|: $effect_description"
 msgid "$effect_description per level"
@@ -9162,9 +9165,6 @@ msgstr ""
 
 #~ msgid "scenario settings^Leader"
 #~ msgstr "Líder"
-
-#~ msgid "scenario settings^Side"
-#~ msgstr "Bàndol"
 
 #~ msgid ""
 #~ "scenario settings^Start\n"

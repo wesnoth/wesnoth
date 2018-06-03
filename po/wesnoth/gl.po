@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-26 15:04+0300\n"
+"POT-Creation-Date: 2018-06-03 16:43+0300\n"
 "PO-Revision-Date: 2018-05-16 07:07+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -5881,8 +5881,14 @@ msgstr ""
 "evitarán as vilas. Aínda no caso de que ocupen un hexágono de vila, non "
 "obteñen dela ningunha vantaxe defensiva, aínda que si recuperan vida e curan."
 
+#: src/actions/advancement.cpp:225
+#, fuzzy
+#| msgid "No advancement"
+msgid "an advancement choice"
+msgstr "Non pode avanzar."
+
 #: src/actions/attack.cpp:386 src/actions/attack.cpp:656
-#: src/actions/attack.cpp:1424
+#: src/actions/attack.cpp:1412
 msgid "An invalid attacker weapon got selected."
 msgstr "Seleccionouse un ataque incorrecto como atacante."
 
@@ -6717,32 +6723,32 @@ msgstr "Partida de $login"
 msgid "Team"
 msgstr "Alianza"
 
-#: src/game_initialization/connect_engine.cpp:988
+#: src/game_initialization/connect_engine.cpp:1007
 msgid "Anonymous player"
 msgstr "Xogador anónimo"
 
-#: src/game_initialization/connect_engine.cpp:993
-#: src/game_initialization/connect_engine.cpp:1287
+#: src/game_initialization/connect_engine.cpp:1012
+#: src/game_initialization/connect_engine.cpp:1306
 msgid "Computer Player"
 msgstr "Computador"
 
-#: src/game_initialization/connect_engine.cpp:1035
+#: src/game_initialization/connect_engine.cpp:1054
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1302
 msgid "Network Player"
 msgstr "Xogador na rede"
 
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1305
 msgid "Local Player"
 msgstr "Xogador local"
 
-#: src/game_initialization/connect_engine.cpp:1288
+#: src/game_initialization/connect_engine.cpp:1307
 msgid "Empty"
 msgstr "Baleiro"
 
-#: src/game_initialization/connect_engine.cpp:1291
+#: src/game_initialization/connect_engine.cpp:1310
 msgid "Reserved"
 msgstr "Reservado"
 
@@ -6823,21 +6829,21 @@ msgstr "Falta o complemento «$id»."
 msgid "Unknown era"
 msgstr "Era descoñecida"
 
-# Inicial de «escenario».
 #: src/game_initialization/lobby_data.cpp:345
 #: src/game_initialization/lobby_data.cpp:375
-msgid "S"
-msgstr "E"
+#, fuzzy
+#| msgid "scenario settings^Side"
+msgid "scenario_abbreviation^S"
+msgstr "Bando"
 
 #: src/game_initialization/lobby_data.cpp:364
 msgid "Remote scenario"
 msgstr "Escenario remoto"
 
-# Inicial de «campaña».
 #: src/game_initialization/lobby_data.cpp:383
 #: src/game_initialization/lobby_data.cpp:406
-msgid "C"
-msgstr "C"
+msgid "campaign_abbreviation^C"
+msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:411
 msgid "Unknown scenario"
@@ -6891,7 +6897,7 @@ msgstr ""
 msgid "Cannot find era $era"
 msgstr "Non foi posíbel atopar a era $era|."
 
-#: src/game_initialization/mp_game_utils.cpp:140
+#: src/game_initialization/mp_game_utils.cpp:142
 msgid "Connection timed out"
 msgstr "A conexión caducou."
 
@@ -7163,11 +7169,11 @@ msgstr "Houbo un erro ao iniciar o servidor: "
 msgid "Connection failed: "
 msgstr "Fallou a conexión: "
 
-#: src/generators/default_map_generator_job.cpp:691
+#: src/generators/default_map_generator_job.cpp:711
 msgid "Random maps with an odd width aren't supported."
 msgstr "Non se poden xerar mapas ao chou cun ancho impar."
 
-#: src/generators/default_map_generator_job.cpp:954
+#: src/generators/default_map_generator_job.cpp:974
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
@@ -8976,49 +8982,45 @@ msgstr "neutral"
 msgid "female^liminal"
 msgstr "crepuscular"
 
-#: src/units/unit.cpp:643
-msgid "Unit with negative HP found"
-msgstr "Atopouse unha unidade con vida negativa"
-
-#: src/units/unit.cpp:1797
+#: src/units/unit.cpp:1775
 msgid "$attack_list|: $effect_description"
 msgstr "$effect_description con $attack_list"
 
-#: src/units/unit.cpp:1803
+#: src/units/unit.cpp:1781
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> de vida"
 
-#: src/units/unit.cpp:1813
+#: src/units/unit.cpp:1791
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> movemento"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> movementos"
 
-#: src/units/unit.cpp:1819
+#: src/units/unit.cpp:1797
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> de visión"
 
-#: src/units/unit.cpp:1823
+#: src/units/unit.cpp:1801
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> de atranco"
 
-#: src/units/unit.cpp:1828
+#: src/units/unit.cpp:1806
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> de exp. para avanzar"
 
-#: src/units/unit.cpp:1832
+#: src/units/unit.cpp:1810
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> ataque por quenda"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> ataques por quenda"
 
-#: src/units/unit.cpp:1839
+#: src/units/unit.cpp:1817
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr ""
 "<span color=\"$color\">$number_or_percent</span> de custo de reincorporación"
 
-#: src/units/unit.cpp:2244
+#: src/units/unit.cpp:2222
 msgid "$effect_description per level"
 msgstr "$effect_description por nivel"
 
@@ -9065,6 +9067,17 @@ msgstr "Agochar os plans de $player"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Opcións de planificación"
+
+# Inicial de «escenario».
+#~ msgid "S"
+#~ msgstr "E"
+
+# Inicial de «campaña».
+#~ msgid "C"
+#~ msgstr "C"
+
+#~ msgid "Unit with negative HP found"
+#~ msgstr "Atopouse unha unidade con vida negativa"
 
 #~ msgid "(missing)"
 #~ msgstr " (falta)"
@@ -10418,9 +10431,6 @@ msgstr "Opcións de planificación"
 
 #~ msgid "scenario settings^Leader"
 #~ msgstr "Líder"
-
-#~ msgid "scenario settings^Side"
-#~ msgstr "Bando"
 
 #~ msgid ""
 #~ "scenario settings^Start\n"
