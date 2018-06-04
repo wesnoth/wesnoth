@@ -258,8 +258,8 @@ server::server(int port,
 	, join_lobby_response_("[join_lobby]\n[/join_lobby]\n", simple_wml::INIT_COMPRESSED)
 	, games_and_users_list_("[gamelist]\n[/gamelist]\n", simple_wml::INIT_STATIC)
 	, metrics_()
-	, last_ping_(time(nullptr))
-	, last_stats_(last_ping_)
+	, last_ping_(std::time(nullptr))
+	, dump_stats_timer_(io_service_)
 	, last_uh_clean_(last_ping_)
 	, cmd_handlers_()
 	, timer_(io_service_)
@@ -269,6 +269,8 @@ server::server(int port,
 	ban_manager_.read();
 
 	start_server();
+
+	start_dump_stats();
 }
 
 #ifndef _WIN32
@@ -542,12 +544,22 @@ std::string server::is_ip_banned(const std::string& ip)
 	return ban_manager_.is_ip_banned(ip);
 }
 
-void server::dump_stats(const time_t& now)
+void server::start_dump_stats()
 {
-	last_stats_ = now;
+	dump_stats_timer_.expires_from_now(std::chrono::minutes(5));
+	dump_stats_timer_.async_wait([this](const boost::system::error_code& ec) { dump_stats(ec); });
+}
+
+void server::dump_stats(const boost::system::error_code& ec)
+{
+	if(ec) {
+		ERR_SERVER << "Error waiting for timer: " << ec.message() << "\n";
+		return;
+	}
 	LOG_SERVER << "Statistics:"
 			   << "\tnumber_of_games = " << games().size() << "\tnumber_of_users = " << player_connections_.size()
 			   << "\n";
+	start_dump_stats();
 }
 
 void server::clean_user_handler(const time_t& now)
