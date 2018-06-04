@@ -26,7 +26,7 @@ function wesnoth.wml_actions.find_respawn_point(cfg)
 				}
 			},
 			T["not"] {
-				terrain = "Wo,*^Xm,X*,Q*"
+				terrain = "Wo,*^Xm,*^Xo,X*,Q*"
 			}
 		})
 
