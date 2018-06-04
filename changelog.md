@@ -226,6 +226,8 @@
    * Fixed many crashes and out-of-sync errors when using the planning mode.
    * Fixed an occasional crash at the loading screen related to multi-thread
      access of the image cache.
+   * [kill] animate=yes no longer scrolls to units through fog or shroud, thus
+     matching 1.12's behavior again.
 
 ## Version 1.13.12
  ### Security fixes
