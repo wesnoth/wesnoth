@@ -18,6 +18,8 @@
  ### Miscellaneous and bug fixes
    * Fixed an occasional crash at the loading screen related to multi-thread
      access of the image cache.
+   * [kill] animate=yes no longer scrolls to units through fog or shroud, thus
+     matching 1.12's behavior again.
 
 ## Version 1.14.2
  ### Campaigns
