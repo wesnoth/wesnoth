@@ -26,6 +26,7 @@
 #include <boost/shared_array.hpp>
 
 #include <boost/asio/signal_set.hpp>
+#include <boost/asio/steady_timer.hpp>
 
 namespace wesnothd
 {
@@ -168,8 +169,9 @@ private:
 	metrics metrics_;
 
 	std::time_t last_ping_;
-	std::time_t last_stats_;
-	void dump_stats(const std::time_t& now);
+	boost::asio::steady_timer dump_stats_timer_;
+	void start_dump_stats();
+	void dump_stats(const boost::system::error_code& ec);
 
 	std::time_t last_uh_clean_;
 	void clean_user_handler(const std::time_t& now);
