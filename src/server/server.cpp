@@ -1852,11 +1852,15 @@ void send_server_message(socket_ptr socket, const std::string& message)
 
 void server::remove_player(socket_ptr socket)
 {
-	std::string ip = client_address(socket);
+	std::string ip;
 
 	auto iter = player_connections_.find(socket);
 	if(iter == player_connections_.end()) {
 		return;
+	} else {
+		// client_address() is very likely to return <unknown address> at this point
+		// so we remember ip in player_connections_
+		ip = iter->saved_client_ip();
 	}
 
 	const std::shared_ptr<game> g = iter->get_game();

@@ -38,9 +38,12 @@ class player_record
 	mutable player player_;
 	std::shared_ptr<game> game_;
 
+	std::string ip_address;
+
 	public:
 
 	const socket_ptr socket() const { return socket_; }
+	std::string saved_client_ip() const { return ip_address; }
 	player& info() const { return player_; }
 	const std::string& name() const { return player_.name(); }
 	const std::shared_ptr<game> get_game() const;
@@ -49,7 +52,7 @@ class player_record
 	static void set_game(player_record&, std::shared_ptr<game>);
 	static void enter_lobby(player_record&);
 
-	player_record(const socket_ptr socket, const player& player) : socket_(socket), player_(player) {}
+	player_record(const socket_ptr socket, const player& player) : socket_(socket), player_(player), ip_address(client_address(socket)) {}
 };
 
 struct socket_t{};
