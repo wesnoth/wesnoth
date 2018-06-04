@@ -42,7 +42,7 @@ function wesnoth.wml_actions.kill(cfg)
 			wesnoth.fire_event("last breath", death_loc, killer_loc)
 		end
 		if cfg.animate and unit.valid == "map" then
-			wesnoth.scroll_to_tile(death_loc)
+			wesnoth.scroll_to_tile(death_loc, true)
 			local anim = wesnoth.create_animator()
 			local primary = wml.get_child(cfg, "primary_attack")
 			local secondary = wml.get_child(cfg, "secondary_attack")
