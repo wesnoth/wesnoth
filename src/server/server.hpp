@@ -228,6 +228,11 @@ private:
 
 	boost::asio::deadline_timer timer_;
 	void handle_graceful_timeout(const boost::system::error_code& error);
+
+	boost::asio::steady_timer lan_server_timer_;
+	void start_lan_server_timer();
+	void abort_lan_server_timer();
+	void handle_lan_server_shutdown(const boost::system::error_code& error);
 };
 
 void send_to_player(socket_ptr socket, simple_wml::document& doc);
