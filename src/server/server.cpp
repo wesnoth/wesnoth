@@ -263,6 +263,7 @@ server::server(int port,
 	, last_uh_clean_(last_ping_)
 	, cmd_handlers_()
 	, timer_(io_service_)
+	, lan_server_timer_(io_service_)
 {
 	setup_handlers();
 	load_config();
@@ -298,6 +299,25 @@ void server::handle_graceful_timeout(const boost::system::error_code& error)
 		timer_.expires_from_now(boost::posix_time::seconds(1));
 		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, _1));
 	}
+}
+
+void server::start_lan_server_timer()
+{
+	lan_server_timer_.expires_from_now(std::chrono::seconds(lan_server_));
+	lan_server_timer_.async_wait([this](const boost::system::error_code& ec) { handle_lan_server_shutdown(ec); });
+}
+
+void server::abort_lan_server_timer()
+{
+	lan_server_timer_.cancel();
+}
+
+void server::handle_lan_server_shutdown(const boost::system::error_code& error)
+{
+	if(error)
+		return;
+
+	throw server_shutdown("lan server shutdown");
 }
 
 void server::setup_fifo()
@@ -955,6 +975,9 @@ void server::send_password_request(socket_ptr socket,
 
 void server::add_player(socket_ptr socket, const wesnothd::player& player)
 {
+	if(lan_server_)
+		abort_lan_server_timer();
+
 	bool inserted;
 	std::tie(std::ignore, inserted) = player_connections_.insert(player_connections::value_type(socket, player));
 	assert(inserted);
@@ -1908,6 +1931,9 @@ void server::remove_player(socket_ptr socket)
 	if(socket->is_open()) {
 		socket->close();
 	}
+
+	if(lan_server_ && player_connections_.size() == 0)
+		start_lan_server_timer();
 }
 
 void server::send_to_lobby(simple_wml::document& data, socket_ptr exclude) const
