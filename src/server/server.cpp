@@ -2294,7 +2294,7 @@ void server::version_handler(
 	assert(out != nullptr);
 
 	if(parameters.empty()) {
-		*out << "Server version is " << game_config::version;
+		*out << "Server version is " << game_config::wesnoth_version.str();
 		return;
 	}
 
