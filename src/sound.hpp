@@ -53,6 +53,8 @@ void play_music_repeatedly(const std::string& id);
 void play_music_once(const std::string& id);
 // Empty the playlist
 void empty_playlist();
+// Clear current_track, allowing immediate music changes.
+void clear_current_track();
 // Start playing current music.
 void play_music();
 
