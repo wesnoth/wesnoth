@@ -137,7 +137,7 @@ static int impl_music_set(lua_State* L) {
 				// Remove the track at that index and add the new one in its place
 				// It's a little inefficient though...
 				sound::remove_track(i);
-				sound::play_music_config(cfg, i);
+				sound::play_music_config(cfg, false, i);
 			}
 		} else {
 			lua_music_track& track = *get_track(L, 3);
@@ -206,7 +206,7 @@ static int intf_music_add(lua_State* L) {
 			return luaL_argerror(L, i, "unrecognized argument");
 		}
 	}
-	sound::play_music_config(cfg, index);
+	sound::play_music_config(cfg, false, index);
 	return 0;
 }
 

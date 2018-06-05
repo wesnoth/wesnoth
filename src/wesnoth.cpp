@@ -754,13 +754,15 @@ static int do_gameloop(const std::vector<std::string>& args)
 		if(!game->is_loading()) {
 			const config& cfg = config_manager.game_config().child("titlescreen_music");
 			if(cfg) {
-				sound::play_music_repeatedly(game_config::title_music);
-
 				for(const config& i : cfg.child_range("music")) {
 					sound::play_music_config(i);
 				}
 
-				sound::commit_music_changes();
+				config title_music_config;
+				title_music_config["name"] = game_config::title_music;
+				title_music_config["append"] = true;
+				title_music_config["immediate"] = true;
+				sound::play_music_config(title_music_config);
 			} else {
 				sound::empty_playlist();
 				sound::stop_music();

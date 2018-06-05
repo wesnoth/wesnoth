@@ -663,7 +663,7 @@ void play_music_repeatedly(const std::string& id)
 	last_track.reset();
 }
 
-void play_music_config(const config& music_node, int i)
+void play_music_config(const config& music_node, bool allow_interrupt_current_track, int i)
 {
 	//
 	// FIXME: there is a memory leak somewhere in this function, seemingly related to the shared_ptrs
@@ -720,7 +720,8 @@ void play_music_config(const config& music_node, int i)
 		current_track = *iter;
 		current_track_index = iter - current_track_list.begin();
 		play_music();
-	} else if(!track.append() && current_track) { // Make sure the current track is finished
+	} else if(!track.append() && !allow_interrupt_current_track && current_track) {
+		// Make sure the current track will finish first
 		current_track->set_play_once(true);
 	}
 }

@@ -223,7 +223,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 
 	// Start music.
 	for(const config &m : level.child_range("music")) {
-		sound::play_music_config(m);
+		sound::play_music_config(m, true);
 	}
 	sound::commit_music_changes();
 
