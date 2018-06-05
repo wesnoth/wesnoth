@@ -233,6 +233,8 @@
      access of the image cache.
    * [kill] animate=yes no longer scrolls to units through fog or shroud, thus
      matching 1.12's behavior again.
+   * [message] displays the unit type name when a nameless unit speaks and no
+     custom caption= is specified (fixes #3211).
 
 ## Version 1.13.12
  ### Security fixes
