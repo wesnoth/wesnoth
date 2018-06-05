@@ -83,6 +83,8 @@
      when the forum_user_handler is enabled and active. (IP and email bans with
      wildcards are not supported yet.)
    * Fixed various instances of the server crashing under certain conditions.
+ ### Music and sound effects
+   * The music now changes immediately when you load a save file (issue #2602).
  ### Packaging
    * OpenMP support has been removed. It is no longer an optional build-time dependency.
  ### Terrains
