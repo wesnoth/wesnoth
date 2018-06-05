@@ -2,6 +2,9 @@
  ### AI
    * Fixed crash in presence of units with negative hitpoints (issue #3042).
  ### Campaigns
+   * Dead Water
+     * Fix possibility of villagers blocking pickup of sword in S10 The Flaming
+       Sword. (Bug # 3207)
    * Northern Rebirth:
      * Reduced starting gold and income in scenarios 10 to 13
    * Secrets of the Ancients:

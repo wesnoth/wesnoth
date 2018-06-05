@@ -4,6 +4,9 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 
 ## Version 1.14.2+dev
  ### Campaigns
+   * Dead Water
+     * Fix possibility of villagers blocking pickup of sword in S10 The Flaming
+       Sword. (Bug # 3207)
    * Secrets of the Ancients:
      * Fix S09 Training Session not ending when all dark adepts die (Bug #3192)
  ### Language and i18n
