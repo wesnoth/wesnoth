@@ -106,7 +106,7 @@ private:
 	std::deque<login_log> failed_logins_;
 
 	std::unique_ptr<user_handler> user_handler_;
-	std::map<long int,std::string> seeds_;
+	std::map<socket_ptr::element_type*, std::string> seeds_;
 
 	player_connections player_connections_;
 	std::deque<std::shared_ptr<game>> games() {
