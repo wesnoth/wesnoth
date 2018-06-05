@@ -866,17 +866,17 @@ bool server::authenticate(
 
 			// A password (or hashed password) was provided, however
 			// there is no seed
-			if(seeds_[reinterpret_cast<long int>(socket.get())].empty()) {
+			if(seeds_[socket.get()].empty()) {
 				send_password_request(socket, "Please try again.", username, version, MP_NO_SEED_ERROR);
 				return false;
 			}
 
 			// This name is registered and an incorrect password provided
-			else if(!(user_handler_->login(username, password, seeds_[reinterpret_cast<unsigned long>(socket.get())]))) {
+			else if(!(user_handler_->login(username, password, seeds_[socket.get()]))) {
 				const std::time_t now = std::time(nullptr);
 
 				// Reset the random seed
-				seeds_.erase(reinterpret_cast<unsigned long>(socket.get()));
+				seeds_.erase(socket.get());
 
 				login_log login_ip = login_log(client_address(socket), 0, now);
 				auto i = std::find(failed_logins_.begin(), failed_logins_.end(), login_ip);
@@ -922,7 +922,7 @@ bool server::authenticate(
 			registered = true;
 
 			// Reset the random seed
-			seeds_.erase(reinterpret_cast<long int>(socket.get()));
+			seeds_.erase(socket.get());
 			user_handler_->user_logged_in(username);
 		}
 	}
@@ -956,7 +956,7 @@ void server::send_password_request(socket_ptr socket,
 		return;
 	}
 
-	seeds_[reinterpret_cast<long int>(socket.get())] = nonce;
+	seeds_[socket.get()] = nonce;
 
 	simple_wml::document doc;
 	simple_wml::node& e = doc.root().add_child("error");
