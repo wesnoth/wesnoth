@@ -42,7 +42,11 @@ local function get_caption(cfg, speaker)
 	local caption = cfg.caption
 
 	if not caption and speaker ~= nil then
-		caption = speaker.name or speaker.type_name
+		if speaker.name ~= nil and tostring(speaker.name):len() > 0 then
+			caption = speaker.name
+		else
+			caption = speaker.__cfg.language_name
+		end
 	end
 
 	return caption
