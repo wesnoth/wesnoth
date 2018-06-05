@@ -11,6 +11,8 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
      * Fix S09 Training Session not ending when all dark adepts die (Bug #3192)
  ### Language and i18n
    * Updated translations: Chinese (Traditional), French, Italian.
+ ### Music and sound effects
+   * The music now changes immediately when you load a save file (issue #2602)
 
 
 ## Version 1.14.2

@@ -13,6 +13,8 @@
      * S2: made enemy starting gold equal to that of the player.
  ### Language and i18n
    * Updated translations: Chinese (Traditional), French, Italian
+ ### Music and sound effects
+   * The music now changes immediately when you load a save file (issue #2602).
  ### WML engine
    * Removed validation to ensure units cannot have negative hitpoints. We
      learned that the ability to create such units is documented, and thus
