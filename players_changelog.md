@@ -4,6 +4,9 @@ changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog.md
 
 ## Version 1.15.0-dev
  ### Campaigns
+   * Dead Water
+     * Fix possibility of villagers blocking pickup of sword in S10 The Flaming
+       Sword. (Bug # 3207)
    * Eastern Invasion
      * In 'Captured', fixed units incorrectly costing upkeep after leveling up.
    * Secrets of the Ancients:
