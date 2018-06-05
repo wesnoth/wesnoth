@@ -187,9 +187,7 @@ fuh::BAN_TYPE fuh::user_is_banned(const std::string& name, const std::string& ad
 		return BAN_IP;
 	}
 
-	if(!user_exists(name)) {
-		throw error("No user with the name '" + name + "' exists.");
-	}
+	if(!user_exists(name)) return BAN_NONE;
 
 	try {
 		auto uid = get_detail_for_user<unsigned int>(name, "user_id");
