@@ -42,7 +42,6 @@
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/utf8_exception.hpp"
-#include "sound.hpp"
 #include "statistics.hpp"
 #include "version.hpp"
 #include "video.hpp"
@@ -204,8 +203,6 @@ bool loadgame::load_game()
 	}
 	// read classification to for loading the game_config config object.
 	gamestate_.classification() = game_classification(load_data_.load_config);
-
-	sound::clear_current_track();
 
 	if (skip_version_check) {
 		return true;

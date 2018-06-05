@@ -576,11 +576,6 @@ void empty_playlist()
 	current_track_list.clear();
 }
 
-void clear_current_track()
-{
-	current_track.reset();
-}
-
 void play_music()
 {
 	if(!current_track) {
