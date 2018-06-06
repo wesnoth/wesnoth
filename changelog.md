@@ -27,6 +27,8 @@
      matching 1.12's behavior again.
    * [message] displays the unit type name when a nameless unit speaks and no
      custom caption= is specified (fixes #3211).
+   * do_not_list=yes units are no longer excluded from the debug mode-only
+     Create Unit dialog.
 
 ## Version 1.14.2
  ### Campaigns
