@@ -772,11 +772,9 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 		}
 	}
 
-	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
-
-	async_send_doc(socket, join_lobby_response_,
-		std::bind(&server::add_player, this, _1,
-			wesnothd::player(
+	async_send_doc(socket, join_lobby_response_, [this, username, registered, version](socket_ptr socket) {
+		simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
+		add_player(socket, wesnothd::player(
 				username,
 				player_cfg,
 				registered,
@@ -785,8 +783,8 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 				default_time_period_,
 				user_handler_ && user_handler_->user_is_moderator(username)
 			)
-		)
-	);
+		);
+	});
 
 	LOG_SERVER << client_address(socket) << "\t" << username << "\thas logged on"
 			   << (registered ? " to a registered account" : "") << "\n";
