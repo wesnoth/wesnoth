@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-05-17 01:11-0700\n"
+"PO-Revision-Date: 2018-06-04 06:18-0700\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -257,7 +257,7 @@ msgid ""
 "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgstr ""
 "I <italic>text='Deserti'</italic> hanno una composizione in qualche modo "
-"diversa dalle pozze di sabbia o dalle spiaggie, ma dal punto di vista del "
+"diversa dalle pozze di sabbia o dalle spiagge, ma dal punto di vista del "
 "gioco sono equiparati. Vedi <ref>dst='terrain_sand' text='sabbia'</ref>."
 
 #. [terrain_type]: id=sand_beach
@@ -6552,12 +6552,16 @@ msgid "whisper to $receiver"
 msgstr "Bisbiglia a $receiver"
 
 #: src/gui/widgets/chatbox.cpp:396
+#, fuzzy
+#| msgid ""
+#| "Whisper session with <i>“$name”</i> started. If you do not want to "
+#| "receive messages from this user, type <i>/ignore $name</i>"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>\n"
 msgstr ""
-"Iniziata una sessione bisbigliata con <i>$name</i>. Se non vuoi ricevere "
-"messaggi da questo utente, scrivi <i>/ignore $name</i>\n"
+"Iniziata una sessione bisbigliata con <i>“$name”</i>. Se non vuoi ricevere "
+"messaggi da questo utente, scrivi <i>/ignore $name</i>"
 
 #: src/gui/widgets/chatbox.cpp:400
 msgid "Room <i>“$name”</i> joined"
@@ -7630,6 +7634,9 @@ msgstr ""
 "La chiave «$deprecated_key» è stata rinonimata in «$key». Il supporto per "
 "«$deprecated_key» verrà rimosso nella versione $removal_version."
 
+#~ msgid "Save random seed"
+#~ msgstr "Salva seme numerico casuale"
+
 #~ msgid "Open saves folder"
 #~ msgstr "Apri la cartella dei salvataggi"
 
@@ -7686,7 +7693,7 @@ msgstr ""
 #~ msgid "Era"
 #~ msgstr "Era"
 
-#~ msgid "$min to $max"
+#~ msgid "number of players^$min to $max"
 #~ msgstr "$min a $max"
 
 #~ msgid ""
@@ -7700,6 +7707,9 @@ msgstr ""
 
 #~ msgid "Quit to Main Menu"
 #~ msgstr "Esci alla schermata iniziale"
+
+#~ msgid "$min to $max"
+#~ msgstr "$min a $max"
 
 #~ msgid "FPS limiter"
 #~ msgstr "Limitatore FPS"
