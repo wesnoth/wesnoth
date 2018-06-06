@@ -895,43 +895,18 @@ end
 --------- Unit related helper functions ----------
 
 function ai_helper.get_live_units(filter)
-    -- Same as wesnoth.get_units(), except that it only returns non-petrified units
-
-    local all_units = wesnoth.get_units(filter)
-
-    local units = {}
-    for _,unit in ipairs(all_units) do
-        if (not unit.status.petrified) then table.insert(units, unit) end
-    end
-
-    return units
+    -- Note: the order of the filters and the [and] tags are important for speed reasons
+    return wesnoth.get_units { { "not", { status = "petrified" } }, { "and", filter } }
 end
 
 function ai_helper.get_units_with_moves(filter)
-    -- Using formula = '$this_unit.moves > 0' is slow, this method is much faster
-    local all_units = wesnoth.get_units(filter)
-
-    local units = {}
-    for _,unit in ipairs(all_units) do
-        if (unit.moves > 0) then table.insert(units, unit) end
-    end
-
-    return units
+    -- Note: the order of the filters and the [and] tags are important for speed reasons
+    return wesnoth.get_units { { "and", { formula = "moves > 0" } }, { "and", filter } }
 end
 
 function ai_helper.get_units_with_attacks(filter)
-    -- Using formula = '$this_unit.attacks_left > 0' is slow, this method is much faster
-    -- Also need to check that units actually have attacks (as attacks_left > 0 with no attacks is possible)
-    local all_units = wesnoth.get_units(filter)
-
-    local units = {}
-    for _,unit in ipairs(all_units) do
-        if (unit.attacks_left > 0) and (#unit.attacks > 0) then
-            table.insert(units, unit)
-        end
-    end
-
-    return units
+    -- Note: the order of the filters and the [and] tags are important for speed reasons
+    return wesnoth.get_units { { "and", { formula = "attacks_left > 0 and size(attacks) > 0" } }, { "and", filter } }
 end
 
 function ai_helper.get_visible_units(viewing_side, filter)
