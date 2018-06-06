@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-06-03 16:42+0300\n"
-"PO-Revision-Date: 2018-05-16 15:03+1000\n"
+"PO-Revision-Date: 2018-06-04 22:02+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.0.8\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -2466,10 +2466,8 @@ msgstr "Modifications"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:409
-#, fuzzy
-#| msgid "Save Game"
 msgid "Save random seed"
-msgstr "Save Game"
+msgstr "Save random seed"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:411
@@ -6201,7 +6199,7 @@ msgstr "No eras available for this game."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:735
 msgid "number of players^$min to $max"
-msgstr ""
+msgstr "$min to $max"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:832
 msgid "The selected game has no sides!"
@@ -6402,16 +6400,12 @@ msgid "Room <i>“$name”</i> joined"
 msgstr "Room <i>“$name”</i> joined"
 
 #: src/gui/widgets/chatbox.cpp:393
-#, fuzzy
-#| msgid ""
-#| "Whisper session with <i>“$name”</i> started. If you do not want to "
-#| "receive messages from this user, type <i>/ignore $name</i>\n"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>"
 msgstr ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
-"messages from this user, type <i>/ignore $name</i>\n"
+"messages from this user, type <i>/ignore $name</i>"
 
 #: src/gui/widgets/chatbox.cpp:626
 msgid "$player has entered the room"

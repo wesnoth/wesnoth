@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "POT-Creation-Date: 2018-06-03 16:42+0300\n"
-"PO-Revision-Date: 2018-05-10 12:19+1000\n"
+"PO-Revision-Date: 2018-06-04 22:04+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.0.8\n"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -107,10 +107,9 @@ msgstr "OPTIONS"
 
 #. type: TP
 #: doc/man/wesnoth.6:45
-#, fuzzy, no-wrap
-#| msgid "B<--strict-validation>"
+#, no-wrap
 msgid "B<--all-translations>"
-msgstr "B<--strict-validation>"
+msgstr "B<--all-translations>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:49
@@ -118,6 +117,8 @@ msgid ""
 "Show all translations in the in-game language selection list, even if they "
 "are deemed insufficiently complete."
 msgstr ""
+"Show all translations in the in-game language selection list, even if they "
+"are deemed insufficiently complete."
 
 #. type: TP
 #: doc/man/wesnoth.6:49
@@ -370,12 +371,6 @@ msgstr "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:146
-#, fuzzy
-#| msgid ""
-#| "sets the severity level of the log domains.  B<all> can be used to match "
-#| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>,\\ B<none>.  By default the B<warning> level is used for most "
-#| "domains, but B<deprecation> defaults to none."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
@@ -385,7 +380,8 @@ msgstr ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
 "\\ B<none>.  By default the B<warning> level is used for most domains, but "
-"B<deprecation> is none by default."
+"B<deprecation> is set to none by default unless combined with the B<-d> "
+"option."
 
 #. type: TP
 #: doc/man/wesnoth.6:146
@@ -801,7 +797,7 @@ msgstr ""
 #: doc/man/wesnoth.6:291
 #, no-wrap
 msgid "B<--translations-over>I<\\ percent>"
-msgstr ""
+msgstr "B<--translations-over>I<\\ percent>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:297
@@ -809,6 +805,8 @@ msgid ""
 "Set the standard for deeming a translation is complete enough to show in the "
 "in-game language list to I<percent>.  Valid values are 0 to 100."
 msgstr ""
+"Set the standard for deeming a translation is complete enough to show in the "
+"in-game language list to I<percent>.  Valid values are 0 to 100."
 
 #. type: TP
 #: doc/man/wesnoth.6:297
