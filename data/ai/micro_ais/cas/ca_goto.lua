@@ -26,7 +26,7 @@ function ca_goto:evaluation(cfg, data)
     end
 
     local all_units = AH.get_units_with_moves {
-        side = wesnoth.current.side,
+        { "and", { side = wesnoth.current.side } },
         { "and", wml.get_child(cfg, "filter") }
     }
 
