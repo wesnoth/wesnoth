@@ -46,13 +46,9 @@ class viewport : public widget
 {
 	friend struct viewport_implementation;
 
-private:
+public:
 	viewport(const implementation::builder_viewport& builder,
 			  const builder_widget::replacements_map& replacements);
-
-public:
-	static viewport* build(const implementation::builder_viewport& builder,
-							const builder_widget::replacements_map& replacements);
 
 	~viewport();
 
@@ -100,9 +96,7 @@ public:
 	virtual iteration::walker_base* create_walker() override;
 
 private:
-	widget& widget_;
-
-	bool owns_widget_;
+	widget_ptr widget_;
 };
 
 // }---------- BUILDER -----------{
@@ -114,9 +108,9 @@ struct builder_viewport : public builder_widget
 {
 	explicit builder_viewport(const config& cfg);
 
-	virtual widget* build() const override;
+	virtual widget_ptr build() const override;
 
-	virtual widget* build(const replacements_map& replacements) const override;
+	virtual widget_ptr build(const replacements_map& replacements) const override;
 
 	builder_widget_ptr widget_;
 };

@@ -273,9 +273,9 @@ builder_multimenu_button::builder_multimenu_button(const config& cfg)
 	}
 }
 
-widget* builder_multimenu_button::build() const
+widget_ptr builder_multimenu_button::build() const
 {
-	multimenu_button* widget = new multimenu_button(*this);
+	auto widget = std::make_shared<multimenu_button>(*this);
 
 	widget->set_max_shown(max_shown_);
 	if(!options_.empty()) {

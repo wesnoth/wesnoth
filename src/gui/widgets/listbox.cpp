@@ -798,9 +798,9 @@ builder_listbox::builder_listbox(const config& cfg)
 	}
 }
 
-widget* builder_listbox::build() const
+widget_ptr builder_listbox::build() const
 {
-	listbox* widget = new listbox(*this, generator_base::vertical_list, list_builder, has_minimum_, has_maximum_);
+	auto widget = std::make_shared<listbox>(*this, generator_base::vertical_list, list_builder, has_minimum_, has_maximum_);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
@@ -840,9 +840,9 @@ builder_horizontal_listbox::builder_horizontal_listbox(const config& cfg)
 	}
 }
 
-widget* builder_horizontal_listbox::build() const
+widget_ptr builder_horizontal_listbox::build() const
 {
-	listbox* widget = new listbox(*this, generator_base::horizontal_list, list_builder, has_minimum_, has_maximum_);
+	auto widget = std::make_shared<listbox>(*this, generator_base::horizontal_list, list_builder, has_minimum_, has_maximum_);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
@@ -882,9 +882,9 @@ builder_grid_listbox::builder_grid_listbox(const config& cfg)
 	}
 }
 
-widget* builder_grid_listbox::build() const
+widget_ptr builder_grid_listbox::build() const
 {
-	listbox* widget = new listbox(*this, generator_base::table, list_builder, has_minimum_, has_maximum_);
+	auto widget = std::make_shared<listbox>(*this, generator_base::table, list_builder, has_minimum_, has_maximum_);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);

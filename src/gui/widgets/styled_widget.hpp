@@ -453,7 +453,7 @@ public:
 	 *
 	 * 2) Having a static type getter allows the type string to be fetched without
 	 *    constructing an instance of the widget. A good example of this usecase is
-	 *    in build_single_widget_and_cast_to.
+	 *    in build_single_widget_instance.
 	 */
 	virtual const std::string& get_control_type() const = 0;
 
@@ -545,7 +545,7 @@ public:
 
 	using builder_widget::build;
 
-	virtual widget* build(const replacements_map& replacements) const override;
+	virtual widget_ptr build(const replacements_map& replacements) const override;
 
 	/** Parameters for the styled_widget. */
 	std::string definition;

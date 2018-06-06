@@ -249,9 +249,9 @@ builder_menu_button::builder_menu_button(const config& cfg)
 	}
 }
 
-widget* builder_menu_button::build() const
+widget_ptr builder_menu_button::build() const
 {
-	menu_button* widget = new menu_button(*this);
+	auto widget = std::make_shared<menu_button>(*this);
 
 	if(!options_.empty()) {
 		widget->set_values(options_);

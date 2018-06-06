@@ -217,7 +217,7 @@ public:
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override;
+	virtual widget_ptr build() const override;
 
 private:
 	widget::visibility install_status_visibility_;

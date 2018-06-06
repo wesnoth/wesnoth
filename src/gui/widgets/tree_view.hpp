@@ -159,7 +159,7 @@ private:
 
 	bool need_layout_;
 
-	tree_view_node* root_node_;
+	std::shared_ptr<tree_view_node> root_node_;
 
 	tree_view_node* selected_item_;
 
@@ -244,7 +244,7 @@ struct builder_tree_view : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override;
+	virtual widget_ptr build() const override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;

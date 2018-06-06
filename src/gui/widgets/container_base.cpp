@@ -267,7 +267,7 @@ void container_base::init_grid(const builder_grid& grid_builder)
 
 	assert(grid_.get_rows() == 0 && grid_.get_cols() == 0);
 
-	grid_builder.build(&grid_);
+	grid_builder.build(grid_);
 }
 
 point container_base::border_space() const
