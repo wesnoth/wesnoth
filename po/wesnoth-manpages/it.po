@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2018-06-03 16:42+0300\n"
-"PO-Revision-Date: 2018-05-17 01:14-0700\n"
+"PO-Revision-Date: 2018-06-04 02:49-0700\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -121,10 +121,9 @@ msgstr "OPZIONI"
 
 #. type: TP
 #: doc/man/wesnoth.6:45
-#, fuzzy, no-wrap
-#| msgid "B<--strict-validation>"
+#, no-wrap
 msgid "B<--all-translations>"
-msgstr "B<--strict-validation>"
+msgstr "B<--all-translations>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:49
@@ -132,6 +131,8 @@ msgid ""
 "Show all translations in the in-game language selection list, even if they "
 "are deemed insufficiently complete."
 msgstr ""
+"Mostra tutte le traduzioni disponibili nella lista dei linguaggi di gioco, "
+"anche se non hanno un sufficiente livello di completezza."
 
 # type: TP
 #. type: TP
@@ -171,7 +172,7 @@ msgstr ""
 #: doc/man/wesnoth.6:61
 #, no-wrap
 msgid "B<-c[>I<id_campaign>B<],\\ --campaign[>I<=id_campaign>B<]>"
-msgstr "B<-c[>I<id_campaign>B<],\\ --campaign[>I<=id_campagna>B<]>"
+msgstr "B<-c[>I<id_campagna>B<],\\ --campaign[>I<=id_campagna>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:66
@@ -300,7 +301,7 @@ msgid ""
 "displays the number of frames per second the game is currently running at, "
 "in a corner of the screen."
 msgstr ""
-"mostra, in un angolo dello schermo, il numero di quadri per secondo che il "
+"mostra, in un angolo dello schermo, il numero di immagini per secondo che il "
 "gioco sta generando attualmente."
 
 # type: TP
@@ -400,7 +401,7 @@ msgid ""
 "uses language I<lang> (symbol) this session.  Example: B<--language "
 "ang_GB@latin>"
 msgstr ""
-"usa il linguaggio I<lang> (simbolo) per questa sessione.  Example: B<--"
+"usa il linguaggio I<linguaggio> (simbolo) per questa sessione.  Example: B<--"
 "language ang_GB@latin>"
 
 # type: TP
@@ -413,12 +414,6 @@ msgstr "B<--log->I<livello>B<=>I<dominio1>B<,>I<dominio2>B<,>I<...>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:146
-#, fuzzy
-#| msgid ""
-#| "sets the severity level of the log domains.  B<all> can be used to match "
-#| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>,\\ B<none>.  By default the B<warning> level is used for most "
-#| "domains, but B<deprecation> defaults to none."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
@@ -429,7 +424,8 @@ msgstr ""
 "B<all> per selezionare tutti i domini di debug. Livelli disponibili: "
 "B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,\\ B<none>. Normalmente è "
 "usato il livello B<warning> per la maggior parte dei domini, ma il livello "
-"B<deprecation> corrisponde al livello none."
+"B<deprecation> corrisponde al livello none, a meno che non sia usato in "
+"combinazione con l’opzione B<-d>."
 
 # type: TP
 #. type: TP
@@ -476,7 +472,7 @@ msgid ""
 "exits"
 msgstr ""
 "fornisce un elenco dei log domains definiti ( soltanto quelli contenenti "
-"I<filter>, se usata) e termina"
+"I<filtro>, se usata) e termina"
 
 # type: TP
 #. type: TP
@@ -523,7 +519,7 @@ msgstr "B<--mp-test>"
 #. type: Plain text
 #: doc/man/wesnoth.6:176
 msgid "load the test mp scenarios."
-msgstr "carica gli scenari di test mp."
+msgstr "carica gli scenari di test multigiocatore."
 
 # type: TP
 #. type: TP
@@ -539,8 +535,8 @@ msgid ""
 "runs the game without any delays for graphic benchmarking. This is "
 "automatically enabled by B<--nogui>."
 msgstr ""
-"esegue il gioco senza ritardi per stabilire le prestazioni del sistema. "
-"Questa opzione è abilitata automaticamente da B<--nogui>."
+"esegue il gioco senza ritardi per determinare le prestazioni grafiche del "
+"sistema. Questa opzione è abilitata automaticamente da B<--nogui>."
 
 # type: TP
 #. type: TP
@@ -871,7 +867,7 @@ msgid ""
 "nogui>."
 msgstr ""
 "esegue il gioco in un piccolo scenario di test. Lo scenario dovrebbe essere "
-"uno di quelli definiti con un tag WML B<[test]>. Una dimostrazione delle "
+"uno di quelli definiti con un tag WML B<test>. Una dimostrazione delle "
 "caratteristiche delle B<[micro_ai]> può essere avviata con B<micro_ai_test>. "
 "Implica B<--nogui>."
 
@@ -879,7 +875,7 @@ msgstr ""
 #: doc/man/wesnoth.6:291
 #, no-wrap
 msgid "B<--translations-over>I<\\ percent>"
-msgstr ""
+msgstr "B<--translations-over>I<\\ percentuale>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:297
@@ -887,6 +883,9 @@ msgid ""
 "Set the standard for deeming a translation is complete enough to show in the "
 "in-game language list to I<percent>.  Valid values are 0 to 100."
 msgstr ""
+"Imposta a I<percentuale> il livello standard per la determinare quando una "
+"traduzione è sufficientemente completa da essere mostrata nella lista dei "
+"linguaggi utilizzabili nel gioco. Sono ammessi valori da 0 a 100."
 
 # type: TP
 #. type: TP
@@ -972,14 +971,14 @@ msgstr ""
 #: doc/man/wesnoth.6:324
 #, no-wrap
 msgid "B<--username>I<\\ username>"
-msgstr "B<--username>I<\\ username>"
+msgstr "B<--username>I<\\ nomeutente>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:329
 msgid ""
 "uses I<username> when connecting to a server, ignoring other preferences."
 msgstr ""
-"utilizza I<username> per la connessione ad un server, ignorando le altre "
+"utilizza I<nomeutente> per la connessione ad un server, ignorando le altre "
 "scelte."
 
 # type: TP
@@ -1062,8 +1061,8 @@ msgid ""
 "has to be replaced by a side number. It usually is 1 or 2 but depends on the "
 "number of players possible in the chosen scenario."
 msgstr ""
-"Le opzioni multigiocatore specifiche delle fazioni sono indicate da "
-"I<numero>. I<numero> deve essere sostituito dal numero della fazione. "
+"Le opzioni multigiocatore specifiche delle squadre sono indicate da "
+"I<numero>. I<numero> deve essere sostituito dal numero della squadra. "
 "Normalmente è 1 o 2 ma dipende dal numero di giocatori possibili nello "
 "scenario scelto."
 
@@ -1081,7 +1080,7 @@ msgid ""
 "selects a configuration file to load for the AI controller for this side."
 msgstr ""
 "seleziona un file di configurazione da caricare per il controllo dell’IA di "
-"questa fazione."
+"questa squadra."
 
 # type: TP
 #. type: TP
@@ -1099,7 +1098,7 @@ msgid ""
 "addon. Available values include: B<idle_ai> and B<experimental_ai>."
 msgstr ""
 "seleziona un algoritmo non standard come controllore dell’IA per questa "
-"fazione. L’algoritmo è definito da un tag B<[ai]> che può essere uno di "
+"squadra. L’algoritmo è definito da un tag B<[ai]> che può essere uno di "
 "quelli base presenti sia in \"data/ai/ais\" o in \"data/ai/dev\", oppure un "
 "algoritmo definito da una estensione. Valori possibili sono anche: "
 "B<idle_ai> and B<experimental_ai>."
@@ -1117,7 +1116,7 @@ msgstr "B<--controller>I<\\ numero>B<:>I<valore>"
 msgid ""
 "selects the controller for this side. Available values: B<human> and B<ai>."
 msgstr ""
-"seleziona il tipo di controllo per questa fazione. Valori disponibili: "
+"seleziona il tipo di controllo per questa squadra. Valori disponibili: "
 "B<human> e B<ai>."
 
 # type: TP
@@ -1136,8 +1135,8 @@ msgid ""
 "eras.cfg> file."
 msgstr ""
 "usa questa opzione per giocare nell’era selezionata invece che in quella "
-"B<Default>. L’era è scelta per ID. Le ere sono descritte nel file data/"
-"multiplayer.cfg."
+"B<Default>. L’era è scelta tramite ID. Le ere sono descritte nel file B<data/"
+"multiplayer/eras.cfg>."
 
 # type: TP
 #. type: TP
@@ -1156,7 +1155,8 @@ msgid ""
 msgstr ""
 "esce quando lo scenario è finito, senza mostrare la finestra delle vittorie/"
 "sconfitte, che normalmente richiede che l’utente prema il pulsante Fine "
-"Scenario. Anche questa opzione è usata per eseguire dei benchmark con script."
+"Scenario. Anche questa opzione è usata per eseguire dei benchmark tramite "
+"script."
 
 #. type: TP
 #: doc/man/wesnoth.6:384
@@ -1168,7 +1168,7 @@ msgstr "B<--ignore-map-settings>"
 #: doc/man/wesnoth.6:387
 msgid "do not use map settings, use default values instead."
 msgstr ""
-"ignora le impostazioni della mappa, utilizza invece  i valori di default."
+"ignora le impostazioni della mappa, utilizza invece i valori di default."
 
 # type: TP
 #. type: TP
@@ -1184,7 +1184,7 @@ msgid ""
 "scriptable benchmarking."
 msgstr ""
 "ripete una partita multiplayer I<valore> volte. Preferibilmente da "
-"utilizzare insieme a B<--nogui> per eseguire benchmark con script."
+"utilizzare insieme a B<--nogui> per eseguire benchmark tramite script."
 
 # type: TP
 #. type: TP
@@ -1201,7 +1201,7 @@ msgid ""
 "options used with B<--controller> and B<--algorithm>.  It should only be "
 "useful for people designing their own AI. (not yet documented completely)"
 msgstr ""
-"imposta parametri aggiuntivi per questa fazione. Questo parametro dipende "
+"imposta parametri aggiuntivi per questa squadra. Questo parametro dipende "
 "dalle opzioni usate con B<--controller> e B<--algorithm>. Dovrebbe essere "
 "utile solo per chi sta programmando la propria IA. (non ancora documentata "
 "completamente)"
@@ -1358,7 +1358,7 @@ msgid ""
 msgstr ""
 "Questo gioco è rilasciato come Software Libero; viene rilasciato secondo i "
 "termini della licenza GPL versione 2 come pubblicata dalla Free Software "
-"Foundation. Non è fornita nessuna garanzia, né per la COMMERCIALIZZAZIONE né "
+"Foundation. Non è fornita NESSUNA garanzia, né per la COMMERCIALIZZAZIONE né "
 "per l’ADEGUATEZZA AD UNO SCOPO PARTICOLARE."
 
 # type: SH
@@ -1410,10 +1410,7 @@ msgstr "Demone di rete per multigiocatore di Battle for Wesnoth"
 #. type: Plain text
 #: doc/man/wesnothd.6:23
 msgid "wesnothd - Battle for B<Wesnoth> multiplayer network daemon"
-msgstr ""
-"wesnothd - Demone di rete per multigiocatore di Battle for "
-"B<Wesnoth>wesnothd - Demone di rete per multigiocatore di Battle for "
-"B<Wesnoth>"
+msgstr "wesnothd - Demone multigiocatore di rete per Battle for B<Wesnoth>"
 
 # type: Plain text
 #. type: Plain text
@@ -1597,13 +1594,13 @@ msgstr "[I<tag>]"
 #. type: Plain text
 #: doc/man/wesnothd.6:103
 msgid "I<key>=\"I<value>\""
-msgstr "I<key>=\"I<value>\""
+msgstr "I<chiave>=\"I<valore>\""
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:105
 msgid "I<key>=\"I<value>,I<value>,...\""
-msgstr "I<key>=\"I<value>,I<value>,...\""
+msgstr "I<chiave>=\"I<valore>,I<valore>,...\""
 
 # type: Plain text
 #. type: Plain text
@@ -1616,7 +1613,7 @@ msgstr "[/I<tag>]"
 #: doc/man/wesnothd.6:108
 #, no-wrap
 msgid "Global keys:"
-msgstr "Caratteri globali:"
+msgstr "Chiavi globali:"
 
 # type: TP
 #. type: TP
@@ -1633,8 +1630,8 @@ msgid ""
 "they come from the fifo.  Set it to B<yes> to allow remote shutdown via a /"
 "query by an administrator."
 msgstr ""
-"Se impostato su B<no> (default), le richieste di spegnimento e ripartenza "
-"vengono ignorate a meno che non provengano dal socket. Impostalo a B<yes> "
+"Se impostata su B<no> (default), le richieste di spegnimento e ripartenza "
+"vengono ignorate a meno che non provengano dal socket. Impostala a B<yes> "
 "per poter spegnere remotamente il server con una /query di un amministratore."
 
 # type: TP
@@ -1653,10 +1650,7 @@ msgid ""
 msgstr ""
 "Percorso completo o relativo ad un file (compresso con gzip) che il server "
 "possa scrivere e leggere. L’elenco degli utenti messi al bando sarà "
-"conservato in questo file e letto a tutti gli avvii del server.Percorso "
-"completo o relativo ad un file (compresso con gzip) che il server possa "
-"scrivere e leggere. L’elenco degli utenti messi al bando sarà conservato in "
-"questo file e letto a tutti gli avvii del server."
+"conservato in questo file e letto a tutti gli avvii del server."
 
 # type: TP
 #. type: TP
@@ -1728,10 +1722,10 @@ msgid ""
 "from wesnoth).  If not specified defaults to the compile-time path (default: "
 "B</var/run/wesnothd/socket>)."
 msgstr ""
-"Il path della fifo alla quale inviare i comandi del server (come in /"
-"query ... per wesnoth). Se non diversamente specificato invia allo standard "
-"utilizzato come path al momento della compilazione del sorgente (default: B</"
-"var/run/wesnothd/socket>)."
+"Il path del socket al quale inviare i comandi del server (come in /query ... "
+"per wesnoth). Se non diversamente specificato invia allo standard utilizzato "
+"come path al momento della compilazione del sorgente (default: B</var/run/"
+"wesnothd/socket>)."
 
 # type: TP
 #. type: TP
@@ -1850,8 +1844,8 @@ msgid ""
 "B<allow_remote_shutdown> setting.)"
 msgstr ""
 "Il comando che il server utilizza per lanciare un muovo processo server "
-"tramite il comando B<restart>. Può essere inviato soltanto tramite la fifo. "
-"Per dettagli, vedi i setaggi di B<allow_remote_shutdown>."
+"tramite il comando B<restart>. Può essere inviato soltanto tramite il "
+"socket. Per dettagli, vedi i setaggi di B<allow_remote_shutdown>."
 
 # type: TP
 #. type: TP
@@ -1994,8 +1988,9 @@ msgid ""
 "A comma separated list of versions to redirect. Behaves the same way as "
 "B<versions_accepted> in regard to wildcard patterns."
 msgstr ""
-"Una lista separata da virgole delle versioni da redirigere. Si comporta come "
-"B<versions_accepted> per quello che riguarda lo schema dei caratteri jolly."
+"Una lista separata da virgole delle versioni da reindirizzare. Si comporta "
+"come B<versions_accepted> per quello che riguarda lo schema dei caratteri "
+"jolly."
 
 # type: Plain text
 #. type: Plain text
@@ -2025,7 +2020,7 @@ msgstr "Il nome usato per fare riferimento al periodo di messa al bando."
 #: doc/man/wesnothd.6:199
 #, no-wrap
 msgid "B<time>"
-msgstr "B<periodo>"
+msgstr "B<time>"
 
 # type: Plain text
 #. type: Plain text
