@@ -282,9 +282,9 @@ builder_stacked_widget::builder_stacked_widget(const config& real_cfg)
 	}
 }
 
-widget* builder_stacked_widget::build() const
+widget_ptr builder_stacked_widget::build() const
 {
-	stacked_widget* widget = new stacked_widget(*this);
+	auto widget = std::make_shared<stacked_widget>(*this);
 
 	DBG_GUI_G << "Window builder: placed stacked widget '" << id
 			  << "' with definition '" << definition << "'.\n";

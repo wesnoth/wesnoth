@@ -163,9 +163,9 @@ builder_size_lock::builder_size_lock(const config& cfg)
 	content_ = create_widget_builder(cfg.child("widget"));
 }
 
-widget* builder_size_lock::build() const
+widget_ptr builder_size_lock::build() const
 {
-	size_lock* widget = new size_lock(*this);
+	auto widget = std::make_shared<size_lock>(*this);
 
 	DBG_GUI_G << "Window builder: placed fixed size widget '" << id << "' with definition '" << definition << "'.\n";
 

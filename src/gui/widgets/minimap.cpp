@@ -168,9 +168,9 @@ builder_minimap::builder_minimap(const config& cfg) : builder_styled_widget(cfg)
 {
 }
 
-widget* builder_minimap::build() const
+widget_ptr builder_minimap::build() const
 {
-	minimap* widget = new minimap(*this);
+	auto widget = std::make_shared<minimap>(*this);
 
 	DBG_GUI_G << "Window builder: placed minimap '" << id
 			  << "' with definition '" << definition << "'.\n";

@@ -97,7 +97,7 @@ struct builder_panel : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
 	builder_grid_ptr grid;
 };

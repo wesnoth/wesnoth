@@ -661,7 +661,7 @@ builder_styled_widget::builder_styled_widget(const config& cfg)
 			  << "' and definition '" << definition << "'.\n";
 }
 
-widget* builder_styled_widget::build(const replacements_map& /*replacements*/) const
+widget_ptr builder_styled_widget::build(const replacements_map& /*replacements*/) const
 {
 	return build();
 }

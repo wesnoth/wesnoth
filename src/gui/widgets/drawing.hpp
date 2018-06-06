@@ -130,7 +130,7 @@ struct builder_drawing : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
 	/** The width of the widget. */
 	typed_formula<unsigned> width;

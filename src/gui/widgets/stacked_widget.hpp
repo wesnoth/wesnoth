@@ -31,7 +31,7 @@ namespace implementation
 struct builder_stacked_widget;
 }
 
-class generator_base;
+using generator_ptr = std::shared_ptr<class generator_base>;
 
 class stacked_widget : public container_base
 {
@@ -143,7 +143,7 @@ private:
 	 * In that case, the generator would not allow the interim state where no layer
 	 * before the new chosen layer is reached in the loop.
 	 */
-	generator_base* generator_;
+	generator_ptr generator_;
 
 	/**
 	 * The number of the current selected layer.
@@ -200,7 +200,7 @@ struct builder_stacked_widget : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
 	/** The builders for all layers of the stack .*/
 	std::vector<builder_grid_const_ptr> stack;

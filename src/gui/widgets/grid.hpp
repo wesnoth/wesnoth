@@ -120,7 +120,7 @@ public:
 	 * @param border_size         The size of the border for the cell, how the
 	 *                            border is applied depends on the flags.
 	 */
-	void set_child(widget* widget,
+	void set_child(widget_ptr widget,
 				   const unsigned row,
 				   const unsigned col,
 				   const unsigned flags,
@@ -141,8 +141,8 @@ public:
 	 *                            the widget is cleared). If no widget found
 	 *                            and thus not replace nullptr will returned.
 	 */
-	std::unique_ptr<widget> swap_child(const std::string& id,
-						widget* w,
+	widget_ptr swap_child(const std::string& id,
+						widget_ptr w,
 						const bool recurse,
 						widget* new_parent = nullptr);
 
@@ -391,16 +391,17 @@ private:
 			return widget_.get();
 		}
 
-		void set_widget(widget* widget)
+		/** Acquires an owning reference to the given widget. */
+		void set_widget(widget_ptr widget)
 		{
-			widget_.reset(widget);
+			widget_ = std::move(widget);
 		}
 
 		/**
 		 * Releases widget from ownership by this child and returns it in the
-		 * form of a new unique_ptr. widget_ will be null after this is called.
+		 * form of a new shared_ptr. widget_ will be null after this is called.
 		 */
-		std::unique_ptr<widget> free_widget()
+		widget_ptr free_widget()
 		{
 			return std::exchange(widget_, nullptr);
 		}
@@ -421,7 +422,7 @@ private:
 		 * Once the widget is assigned to the grid we own the widget and it
 		 * will be destroyed with the grid or @ref free_widget is called.
 		 */
-		std::unique_ptr<widget> widget_;
+		widget_ptr widget_;
 
 		/** Returns the space needed for the border. */
 		point border_space() const;
@@ -442,14 +443,17 @@ public:
 		{
 			return iterator(++itor_);
 		}
+
 		iterator operator--()
 		{
 			return iterator(--itor_);
 		}
+
 		widget* operator->()
 		{
 			return itor_->get_widget();
 		}
+
 		widget* operator*()
 		{
 			return itor_->get_widget();
@@ -550,6 +554,8 @@ private:
 	virtual void impl_draw_children() override;
 };
 
+using grid_ptr = std::shared_ptr<grid>;
+
 /**
  * Sets the single child in a grid.
  *
@@ -559,6 +565,6 @@ private:
  * @param grid                    The grid to add the child to.
  * @param widget                  The widget to add as child to the grid.
  */
-void set_single_child(grid& grid, widget* widget);
+void set_single_child(grid& grid, widget_ptr widget);
 
 } // namespace gui2

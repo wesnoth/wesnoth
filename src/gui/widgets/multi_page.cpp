@@ -280,9 +280,9 @@ builder_multi_page::builder_multi_page(const config& cfg)
 	}
 }
 
-widget* builder_multi_page::build() const
+widget_ptr builder_multi_page::build() const
 {
-	multi_page* widget = new multi_page(*this);
+	auto widget = std::make_shared<multi_page>(*this);
 
 	widget->set_page_builders(builders);
 

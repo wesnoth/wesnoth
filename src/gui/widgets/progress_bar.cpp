@@ -144,9 +144,9 @@ builder_progress_bar::builder_progress_bar(const config& cfg)
 {
 }
 
-widget* builder_progress_bar::build() const
+widget_ptr builder_progress_bar::build() const
 {
-	progress_bar* widget = new progress_bar(*this);
+	auto widget = std::make_shared<progress_bar>(*this);
 
 	DBG_GUI_G << "Window builder: placed progress bar '" << id
 			  << "' with definition '" << definition << "'.\n";

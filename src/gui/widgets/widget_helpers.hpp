@@ -14,15 +14,16 @@
 
 #pragma once
 
+#include "gui/widgets/widget.hpp"
+
 #include <string>
 
 namespace gui2
 {
 class grid;
-class widget;
 
 /**
  * Swaps an item in a grid for another one.
  */
-void swap_grid(grid* g, grid* content_grid, widget* widget, const std::string& id);
+void swap_grid(grid* g, grid* content_grid, widget_ptr widget, const std::string& id);
 }

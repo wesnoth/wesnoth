@@ -485,9 +485,9 @@ builder_text_box::builder_text_box(const config& cfg)
 {
 }
 
-widget* builder_text_box::build() const
+widget_ptr builder_text_box::build() const
 {
-	text_box* widget = new text_box(*this);
+	auto widget = std::make_shared<text_box>(*this);
 
 	// A textbox doesn't have a label but a text
 	widget->set_value(label_string);

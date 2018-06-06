@@ -142,7 +142,7 @@ public:
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
 private:
 	std::string retval_id_;

@@ -398,9 +398,9 @@ builder_toggle_panel::builder_toggle_panel(const config& cfg)
 	grid = std::make_shared<builder_grid>(c);
 }
 
-widget* builder_toggle_panel::build() const
+widget_ptr builder_toggle_panel::build() const
 {
-	toggle_panel* widget = new toggle_panel(*this);
+	auto widget = std::make_shared<toggle_panel>(*this);
 
 	widget->set_retval(get_retval(retval_id_, retval_, id));
 

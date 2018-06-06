@@ -214,9 +214,9 @@ builder_horizontal_scrollbar::builder_horizontal_scrollbar(const config& cfg)
 {
 }
 
-widget* builder_horizontal_scrollbar::build() const
+widget_ptr builder_horizontal_scrollbar::build() const
 {
-	horizontal_scrollbar* widget = new horizontal_scrollbar(*this);
+	auto widget = std::make_shared<horizontal_scrollbar>(*this);
 
 	widget->finalize_setup();
 

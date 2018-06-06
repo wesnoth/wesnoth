@@ -1108,16 +1108,16 @@ static_assert(false, "GUI2/Generator: GENERATE_PLACEMENT already defined!");
 #define GENERATE_PLACEMENT                                                                                             \
 	switch(placement) {                                                                                                \
 	case generator_base::horizontal_list:                                                                              \
-		result = new generator<minimum, maximum, policy::placement::horizontal_list, select_action>;                   \
+		result = std::make_shared<generator<minimum, maximum, policy::placement::horizontal_list, select_action>>();   \
 		break;                                                                                                         \
 	case generator_base::vertical_list:                                                                                \
-		result = new generator<minimum, maximum, policy::placement::vertical_list, select_action>;                     \
+		result = std::make_shared<generator<minimum, maximum, policy::placement::vertical_list, select_action>>();     \
 		break;                                                                                                         \
 	case generator_base::table:                                                                                        \
-		result = new generator<minimum, maximum, policy::placement::table, select_action>;                             \
+		result = std::make_shared<generator<minimum, maximum, policy::placement::table, select_action>>();             \
 		break;                                                                                                         \
 	case generator_base::independent:                                                                                  \
-		result = new generator<minimum, maximum, policy::placement::independent, select_action>;                       \
+		result = std::make_shared<generator<minimum, maximum, policy::placement::independent, select_action>>();       \
 		break;                                                                                                         \
 	default:                                                                                                           \
 		assert(false);                                                                                                 \
@@ -1163,10 +1163,10 @@ static_assert(false, "GUI2/Generator: GENERATE_BODY already defined!");
 	}
 #endif
 
-generator_base* generator_base::build(
+generator_ptr generator_base::build(
 		const bool has_minimum, const bool has_maximum, const placement placement, const bool select)
 {
-	generator_base* result = nullptr;
+	generator_ptr result = nullptr;
 	GENERATE_BODY;
 	return result;
 }

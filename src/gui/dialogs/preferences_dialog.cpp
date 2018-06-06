@@ -646,7 +646,7 @@ void preferences_dialog::post_build(window& window)
 			}
 
 			case ADVANCED_PREF_TYPE::SLIDER: {
-				slider* setter_widget = build_single_widget_instance<slider>("slider", config {"definition", "minimal"});
+				auto setter_widget = build_single_widget_and_cast_to<slider>("slider", config {"definition", "minimal"});
 				setter_widget->set_id("setter");
 				// Maximum must be set first or this will assert
 				setter_widget->set_value_range(option["min"].to_int(), option["max"].to_int());
@@ -693,7 +693,7 @@ void preferences_dialog::post_build(window& window)
 					selected = 0;
 				}
 
-				menu_button* setter_widget = build_single_widget_instance<menu_button>("menu_button");
+				auto setter_widget = build_single_widget_and_cast_to<menu_button>("menu_button");
 				setter_widget->set_id("setter");
 
 				details_grid.swap_child("setter", setter_widget, true);
@@ -718,7 +718,7 @@ void preferences_dialog::post_build(window& window)
 			case ADVANCED_PREF_TYPE::SPECIAL: {
 				//main_grid->remove_child("setter");
 
-				image* value_widget = build_single_widget_instance<image>("image");
+				auto value_widget = build_single_widget_and_cast_to<image>("image");
 				value_widget->set_label("icons/arrows/arrows_blank_right_25.png~CROP(3,3,18,18)");
 
 				main_grid->swap_child("value", value_widget, true);

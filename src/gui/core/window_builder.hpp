@@ -20,6 +20,8 @@
 #include "gui/widgets/grid.hpp"
 #include "utils/functional.hpp"
 
+#include <boost/optional.hpp>
+
 #include <memory>
 
 class config;
@@ -31,7 +33,6 @@ class window;
 /** Contains the info needed to instantiate a widget. */
 struct builder_widget
 {
-public:
 	/**
 	 * The replacements type is used to define replacement types.
 	 *
@@ -40,7 +41,13 @@ public:
 	 * using and `[instance]' widget this decision can be postponed until
 	 * instantiation.
 	 */
-	typedef std::map<std::string, std::shared_ptr<builder_widget>> replacements_map;
+	using replacements_map = std::map<std::string, std::shared_ptr<builder_widget>>;
+
+	/**
+	 * @todo: evaluate whether to combine the two @ref build() functions with this
+	 * as the sole parameter.
+	 */
+	using optional_replacements_t = boost::optional<const replacements_map&>;
 
 	explicit builder_widget(const config& cfg);
 
@@ -48,9 +55,9 @@ public:
 	{
 	}
 
-	virtual widget* build() const = 0;
+	virtual widget_ptr build() const = 0;
 
-	virtual widget* build(const replacements_map& replacements) const = 0;
+	virtual widget_ptr build(const replacements_map& replacements) const = 0;
 
 	/** Parameters for the widget. */
 	std::string id;
@@ -60,8 +67,8 @@ public:
 	color_t debug_border_color;
 };
 
-typedef std::shared_ptr<builder_widget> builder_widget_ptr;
-typedef std::shared_ptr<const builder_widget> builder_widget_const_ptr;
+using builder_widget_ptr = std::shared_ptr<builder_widget>;
+using builder_widget_const_ptr = std::shared_ptr<const builder_widget>;
 
 /**
  * Create a widget builder.
@@ -76,33 +83,42 @@ typedef std::shared_ptr<const builder_widget> builder_widget_const_ptr;
 builder_widget_ptr create_widget_builder(const config& cfg);
 
 /**
- * Helper function to implement @ref build_single_widget_instance. This keeps the main
- * logic in the implementation despite said function being a template and therefor
- * needing to be fully implemented in the declaration.
- */
-widget* build_single_widget_instance_helper(const std::string& type, const config& cfg);
-
-/**
  * Builds a single widget instance of the given type with the specified attributes.
  *
  * This should be used in place of creating a widget object directly, as it
  * allows the widget-specific builder code to be executed.
+ *
+ * This is equivalent to calling @c build() on the result of @ref create_widget_builder.
+ *
+ * @param type                    String ID of the widget type.
+ * @param cfg                     Data config to pass to the widget's builder.
+ *
+ * @returns                       A shared_ptr of the base widget type containing
+ *                                the newly built widget.
+ */
+widget_ptr build_single_widget(const std::string& type, const config& cfg);
+
+/**
+ * Convenience wrapper around @ref build_single_widget that casts the resulting
+ * widget pointer to the given type.
  *
  * @tparam T                      The final widget type. The widget pointer will be
  *                                cast to this.
  *
  * @param type                    String ID of the widget type.
  * @param cfg                     Data config to pass to the widget's builder.
+ *
+ * @returns                       A shared_ptr of the given type containing the
+ *                                newly build widget.
  */
 template<typename T>
-T* build_single_widget_instance(const std::string& type, const config& cfg = config())
+std::shared_ptr<T> build_single_widget_and_cast_to(const std::string& type, const config& cfg = {})
 {
-	return dynamic_cast<T*>(build_single_widget_instance_helper(type, cfg));
+	return std::dynamic_pointer_cast<T>(build_single_widget(type, cfg));
 }
 
 struct builder_grid : public builder_widget
 {
-public:
 	explicit builder_grid(const config& cfg);
 
 	unsigned rows;
@@ -121,15 +137,18 @@ public:
 	/** The widgets per grid cell. */
 	std::vector<builder_widget_ptr> widgets;
 
-	grid* build() const;
-	widget* build(const replacements_map& replacements) const;
+	/** Inherited from @ref builder_widget. */
+	virtual widget_ptr build() const override;
 
-	grid* build(grid* grid) const;
-	void build(grid& grid, const replacements_map& replacements) const;
+	/** Inherited from @ref builder_widget. */
+	virtual widget_ptr build(const replacements_map& replacements) const override;
+
+	void build(grid& grid, optional_replacements_t replacements = boost::none) const;
 };
 
-typedef std::shared_ptr<builder_grid> builder_grid_ptr;
-typedef std::shared_ptr<const builder_grid> builder_grid_const_ptr;
+using builder_grid_ptr = std::shared_ptr<builder_grid>;
+using builder_grid_const_ptr = std::shared_ptr<const builder_grid>;
+using builder_grid_map = std::map<std::string, builder_grid_const_ptr>;
 
 class builder_window
 {
@@ -144,7 +163,6 @@ public:
 
 	struct window_resolution
 	{
-	public:
 		explicit window_resolution(const config& cfg);
 
 		unsigned window_width;

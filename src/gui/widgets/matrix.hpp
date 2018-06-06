@@ -100,11 +100,8 @@ class matrix : public tbase
 {
 	friend class debug_layout_graph;
 
-private:
-	explicit matrix(const implementation::builder_matrix& builder);
-
 public:
-	static matrix* build(const implementation::builder_matrix& builder);
+	explicit matrix(const implementation::builder_matrix& builder);
 
 	/***** ***** ***** ***** Item handling. ***** ***** ****** *****/
 
@@ -247,7 +244,7 @@ struct builder_matrix : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
