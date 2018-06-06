@@ -83,6 +83,9 @@
      when the forum_user_handler is enabled and active. (IP and email bans with
      wildcards are not supported yet.)
    * Fixed various instances of the server crashing under certain conditions.
+   * Fixed lan_server option not causing the server to exit once vacated, e.g.
+     when using the Host Networked Game option from the Multiplayer menu in the
+     game (issue #3206).
  ### Music and sound effects
    * The music now changes immediately when you load a save file (issue #2602).
  ### Packaging
