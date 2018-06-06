@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-05-16 15:03+1000\n"
+"PO-Revision-Date: 2018-06-04 22:02+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.0.8\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -6483,12 +6483,16 @@ msgid "whisper to $receiver"
 msgstr "whisper to $receiver"
 
 #: src/gui/widgets/chatbox.cpp:396
+#, fuzzy
+#| msgid ""
+#| "Whisper session with <i>“$name”</i> started. If you do not want to "
+#| "receive messages from this user, type <i>/ignore $name</i>"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>\n"
 msgstr ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
-"messages from this user, type <i>/ignore $name</i>\n"
+"messages from this user, type <i>/ignore $name</i>"
 
 #: src/gui/widgets/chatbox.cpp:400
 msgid "Room <i>“$name”</i> joined"
@@ -7543,6 +7547,10 @@ msgstr ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 
+#~| msgid "Save Game"
+#~ msgid "Save random seed"
+#~ msgstr "Save random seed"
+
 #~ msgid "Open saves folder"
 #~ msgstr "Open saves folder"
 
@@ -7577,9 +7585,6 @@ msgstr ""
 #~ msgid "Limit FPS"
 #~ msgstr "Limit FPS"
 
-#~| msgid ""
-#~| "Disabling this increases CPU usage to 100 % but may slightly improve "
-#~| "performance at high resolutions"
 #~ msgid ""
 #~ "Disabling this increases CPU usage to 100% but may slightly improve "
 #~ "performance at high resolutions"
@@ -7596,14 +7601,13 @@ msgstr ""
 #~ msgid "$game_name (Era: $era_name)"
 #~ msgstr "$game_name (Era: $era_name)"
 
-#~| msgid "addon_state^Not installed"
 #~ msgid "era_or_mod^not installed"
 #~ msgstr "not installed"
 
 #~ msgid "Era"
 #~ msgstr "Era"
 
-#~ msgid "$min to $max"
+#~ msgid "number of players^$min to $max"
 #~ msgstr "$min to $max"
 
 #~ msgid ""
@@ -7617,6 +7621,9 @@ msgstr ""
 
 #~ msgid "Quit to Main Menu"
 #~ msgstr "Quit to Main Menu"
+
+#~ msgid "$min to $max"
+#~ msgstr "$min to $max"
 
 #~ msgid "FPS limiter"
 #~ msgstr "FPS limiter"
