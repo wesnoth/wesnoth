@@ -13,6 +13,10 @@
      * S2: made enemy starting gold equal to that of the player.
  ### Language and i18n
    * Updated translations: Chinese (Traditional), French, Italian
+ ### Multiplayer server
+   * Fixed lan_server option not causing the server to exit once vacated, e.g.
+     when using the Host Networked Game option from the Multiplayer menu in the
+     game (issue #3206).
  ### Music and sound effects
    * The music now changes immediately when you load a save file (issue #2602).
  ### WML engine
