@@ -1456,7 +1456,7 @@ public:
 	 * @param loc                 The location around which to check for affected units. This may or
 	 *                            may not be the location of this unit.
 	 */
-	bool get_ability_bool(const std::string& tag_name, const map_location& loc) const;
+	bool get_ability_bool(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon=nullptr, const_attack_ptr opp_weapon = nullptr) const;
 
 	/**
 	 * Checks whether this unit currently possesses or is affected by a given ability.
@@ -1468,9 +1468,9 @@ public:
 	 *
 	 * @param tag_name            The name of the ability to check for.
 	 */
-	bool get_ability_bool(const std::string& tag_name) const
+	bool get_ability_bool(const std::string& tag_name, const_attack_ptr weapon=nullptr, const_attack_ptr opp_weapon=nullptr) const
 	{
-		return get_ability_bool(tag_name, loc_);
+		return get_ability_bool(tag_name, loc_, weapon, opp_weapon);
 	}
 
 	/**
@@ -1526,6 +1526,7 @@ public:
 	 * @param ability The type of ability (tag name) to remove.
 	 */
 	void remove_ability_by_id(const std::string& ability);
+	bool abilities_filter_matches(const config& cfg, bool attacker, int res) const;
 
 private:
 	/**
