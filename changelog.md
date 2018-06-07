@@ -1,6 +1,8 @@
 ## Version 1.14.2+dev
  ### AI
    * Fixed crash in presence of units with negative hitpoints (issue #3042).
+   * Efficiency improvements to filter evaluations in the Goto Micro AI and some
+     AI helper functions
  ### Campaigns
    * Dead Water
      * Fix possibility of villagers blocking pickup of sword in S10 The Flaming
