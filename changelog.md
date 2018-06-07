@@ -4,6 +4,11 @@
      by clients.
  ### AI
    * Fixed crash in presence of units with negative hitpoints (issue #3042).
+   * Fixed an AI assertion when a unit with one disabled attack attacked a unit
+     with no attacks or a single disabled attack.
+   * Experimental AI: fixed recruiting not working on maps without enemies, such
+     as the first two turns of Dark Forecast
+   * Experimental AI: fixed recruiting evaluations sometimes not being updated
  ### Campaigns
    * A Tale of Two Brothers
      * S2 'Chase': improved behavior of undead side leader with custom AI
@@ -181,8 +186,6 @@
    * Removed incomplete joystick support.
    * Fixed sometimes being unable to join MP games with non-required eras.
    * Fixed locations not being added to the palette when loading a map (#1023)
-   * Fixed an AI assertion when a unit with one disabled attack attacked a unit
-     with no attacks or a single disabled attack.
    * It is now possible to disable logdomains in the Logging Options dialog.
    * Removed misleading tooltip text stating registered nicknames are optional for
      the official MP server.
@@ -205,9 +208,6 @@
    * Lua random map generator: fixed error when flipping map; specifically this
      also fixes an assert at the start of HttT S7 (Sceptre of Fire) that had a
      50% chance of being triggered
-   * Experimental AI: fixed recruiting not working on maps without enemies, such
-     as the first two turns of Dark Forecast
-   * Experimental AI: fixed recruiting evaluations sometimes not being updated
    * Replaced deprecated Lua code and all remaining uses of FOREACH and MESSAGE
      macros
    * Fixed [color_adjust] interacting poorly with time of day color shifts and
