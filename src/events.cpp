@@ -53,7 +53,7 @@ struct invoked_function_data
 	const std::function<void(void)>& f;
 
 	/** Whether execution in the main thread is complete. */
-	bool finished = false;
+	std::atomic_bool finished = false;
 
 	/** Stores any exception thrown during the execution of @ref f. */
 	std::exception_ptr thrown_exception;
