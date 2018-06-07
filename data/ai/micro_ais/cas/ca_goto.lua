@@ -25,6 +25,24 @@ function ca_goto:evaluation(cfg, data)
         return 0
     end
 
+    local all_units = AH.get_units_with_moves {
+        { "and", { side = wesnoth.current.side } },
+        { "and", wml.get_child(cfg, "filter") }
+    }
+
+    local units = {}
+    if cfg.release_unit_at_goal then
+        for _,unit in ipairs(all_units) do
+            if (not MAIUV.get_mai_unit_variables(unit, cfg.ai_id, "release")) then
+                table.insert(units, unit)
+            end
+        end
+    else
+        units = all_units
+    end
+
+    if (not units[1]) then return 0 end
+
     -- For convenience, we check for locations here, and just pass that to the exec function
     -- This is mostly to make the unique_goals option easier
     local width, height = wesnoth.get_map_size()
@@ -59,23 +77,6 @@ function ca_goto:evaluation(cfg, data)
         locs = all_locs
     end
     if (not locs[1]) then return 0 end
-
-    local all_units = AH.get_units_with_moves {
-        side = wesnoth.current.side,
-        { "and", wml.get_child(cfg, "filter") }
-    }
-
-    local units = {}
-    if cfg.release_unit_at_goal then
-        for _,unit in ipairs(all_units) do
-            if (not MAIUV.get_mai_unit_variables(unit, cfg.ai_id, "release")) then
-                table.insert(units, unit)
-            end
-        end
-    else
-        units = all_units
-    end
-    if (not units[1]) then return 0 end
 
     -- Now store units and locs, so that we don't need to duplicate this in the exec function
     GO_units, GO_locs = units, locs
