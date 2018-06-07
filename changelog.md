@@ -9,6 +9,8 @@
    * Experimental AI: fixed recruiting not working on maps without enemies, such
      as the first two turns of Dark Forecast
    * Experimental AI: fixed recruiting evaluations sometimes not being updated
+   * Efficiency improvements to filter evaluations in the Goto Micro AI and some
+     AI helper functions
  ### Campaigns
    * A Tale of Two Brothers
      * S2 'Chase': improved behavior of undead side leader with custom AI
