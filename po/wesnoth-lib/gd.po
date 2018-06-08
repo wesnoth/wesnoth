@@ -2481,10 +2481,8 @@ msgstr "Atharraichean"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:409
-#, fuzzy
-#| msgid "Save Game"
 msgid "Save random seed"
-msgstr "Sàbhail an geama"
+msgstr "Sàbhail sìol na tuairmeachd"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:411
@@ -4706,7 +4704,7 @@ msgstr "Suidhich factar sgàilidh nan cruthan-clò"
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:275
 msgid "Limit FPS"
-msgstr "Cuingich FPS"
+msgstr "Cuingich na FPS"
 
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:276
@@ -6269,7 +6267,7 @@ msgstr "Chan eil linn ri fhaighinn airson a’ gheama seo."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:735
 msgid "number of players^$min to $max"
-msgstr ""
+msgstr "$min gu $max"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:832
 msgid "The selected game has no sides!"
@@ -6471,17 +6469,13 @@ msgid "Room <i>“$name”</i> joined"
 msgstr "Air tighinn a-steach dhan t-seòmar <i>“$name”</i>"
 
 #: src/gui/widgets/chatbox.cpp:393
-#, fuzzy
-#| msgid ""
-#| "Whisper session with <i>“$name”</i> started. If you do not want to "
-#| "receive messages from this user, type <i>/ignore $name</i>\n"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>"
 msgstr ""
 "Chaidh seisean cagairt le <i>“$name”</i> a thòiseachadh. Mura h-eil thu "
 "airson teachdaireachdan fhaighinn on chleachdaiche seo, sgrìobh <i>/ignore "
-"$name</i>\n"
+"$name</i>"
 
 #: src/gui/widgets/chatbox.cpp:626
 msgid "$player has entered the room"
@@ -7600,24 +7594,3 @@ msgstr ""
 "Chaidh an iuchair “$deprecated_key” ath-ainmeachadh gu “$key|.” Thèid gach "
 "taic ri “$deprecated_key” a thoirt air falbh leis an tionndadh "
 "$removal_version."
-
-#~ msgid "Deterministic mode"
-#~ msgstr "Modh cinnteach"
-
-#~ msgid "$min to $max"
-#~ msgstr "$min gu $max"
-
-#~ msgid "Rusty Open Gate"
-#~ msgstr "Geata meirgeach fosgailte"
-
-#~ msgid "Wooden Open Door"
-#~ msgstr "Doras fiodha fosgailte"
-
-#~ msgid "Sort players:"
-#~ msgstr "Seòrsaich cluicheadairean:"
-
-#~ msgid "Friends first, ignored people last"
-#~ msgstr "Caraidean an toiseach luchd neo-shuime aig an deireadh"
-
-#~ msgid "Alphabetically"
-#~ msgstr "Aibidealach"
