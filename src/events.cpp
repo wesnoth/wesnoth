@@ -26,6 +26,7 @@
 #endif
 
 #include <algorithm>
+#include <atomic>
 #include <cassert>
 #include <deque>
 #include <iterator>
