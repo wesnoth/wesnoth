@@ -176,6 +176,7 @@ void statistics_dialog::update_lists(window& window)
 	// Update primary stats list
 	//
 	listbox& stat_list = find_widget<listbox>(&window, "stats_list_main", false);
+	const int selected_row = stat_list.get_selected_row();
 
 	stat_list.clear();
 	main_stat_table_.clear();
@@ -190,6 +191,10 @@ void statistics_dialog::update_lists(window& window)
 
 	// Update unit count list
 	on_primary_list_select(window);
+
+	if (selected_row != -1) {
+		stat_list.select_row(selected_row);
+	}
 
 	//
 	// Update damage stats list
