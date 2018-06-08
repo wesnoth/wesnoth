@@ -759,7 +759,7 @@ void scrollbar_container::finalize_setup()
 	}
 
 	/***** Setup the content *****/
-	content_ = build_single_widget_and_cast_to<spacer>("spacer");
+	content_ = build_single_widget_and_cast_to<spacer>();
 
 	content_grid_ = std::dynamic_pointer_cast<grid>(get_grid().swap_child("_content_grid", content_, true));
 	assert(content_grid_);

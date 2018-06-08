@@ -105,16 +105,15 @@ widget_ptr build_single_widget(const std::string& type, const config& cfg);
  * @tparam T                      The final widget type. The widget pointer will be
  *                                cast to this.
  *
- * @param type                    String ID of the widget type.
  * @param cfg                     Data config to pass to the widget's builder.
  *
  * @returns                       A shared_ptr of the given type containing the
  *                                newly build widget.
  */
 template<typename T>
-std::shared_ptr<T> build_single_widget_and_cast_to(const std::string& type, const config& cfg = {})
+std::shared_ptr<T> build_single_widget_and_cast_to(const config& cfg = {})
 {
-	return std::dynamic_pointer_cast<T>(build_single_widget(type, cfg));
+	return std::dynamic_pointer_cast<T>(build_single_widget(T::type(), cfg));
 }
 
 struct builder_grid : public builder_widget
