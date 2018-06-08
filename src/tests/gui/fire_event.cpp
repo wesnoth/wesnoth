@@ -134,7 +134,7 @@ BOOST_AUTO_TEST_CASE(test_fire_event)
 	add_widget(grid, child_grid, "level 1", 0, 0);
 	connect_signals(sstr, *child_grid);
 
-	auto child = std::make_shared<gui2:grid>(1, 1);
+	auto child = std::make_shared<gui2::grid>(1, 1);
 	add_widget(*child_grid, child, "level 2", 0, 0);
 	connect_signals(sstr, *child);
 
