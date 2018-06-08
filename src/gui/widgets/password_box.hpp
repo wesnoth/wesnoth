@@ -60,6 +60,11 @@ private:
 
 	std::string real_value_;
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 };

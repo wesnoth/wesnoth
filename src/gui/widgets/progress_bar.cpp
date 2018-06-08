@@ -33,7 +33,7 @@ namespace gui2
 REGISTER_WIDGET(progress_bar)
 
 progress_bar::progress_bar(const implementation::builder_progress_bar& builder)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 	, percentage_(static_cast<unsigned>(-1))
 {
 	// Force canvas update

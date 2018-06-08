@@ -51,6 +51,9 @@ public:
 	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
 private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;

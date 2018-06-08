@@ -36,7 +36,7 @@ namespace gui2
 REGISTER_WIDGET(toggle_button)
 
 toggle_button::toggle_button(const implementation::builder_toggle_button& builder)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 	, state_(ENABLED)
 	, state_num_(0)
 	, retval_(retval::NONE)

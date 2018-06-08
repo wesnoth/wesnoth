@@ -41,7 +41,7 @@ namespace gui2
 REGISTER_WIDGET(button)
 
 button::button(const implementation::builder_button& builder)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 	, clickable_item()
 	, state_(ENABLED)
 	, retval_(retval::NONE)

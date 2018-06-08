@@ -55,7 +55,7 @@ namespace gui2
 REGISTER_WIDGET(chatbox)
 
 chatbox::chatbox(const implementation::builder_chatbox& builder)
-	: container_base(builder, get_control_type())
+	: container_base(builder, type())
 	, roomlistbox_(nullptr)
 	, chat_log_container_(nullptr)
 	, chat_input_(nullptr)

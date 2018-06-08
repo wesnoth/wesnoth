@@ -103,6 +103,11 @@ private:
 
 	label* get_internal_label();
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/***** ***** ***** inherited ****** *****/
 
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */

@@ -40,7 +40,7 @@ namespace gui2
 REGISTER_WIDGET(multimenu_button)
 
 multimenu_button::multimenu_button(const implementation::builder_multimenu_button& builder)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 	, state_(ENABLED)
 	, retval_(retval::NONE)
 	, max_shown_(1)

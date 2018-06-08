@@ -29,7 +29,7 @@ namespace gui2
 REGISTER_WIDGET(vertical_scrollbar)
 
 vertical_scrollbar::vertical_scrollbar(const implementation::builder_vertical_scrollbar& builder)
-	: scrollbar_base(builder, get_control_type())
+	: scrollbar_base(builder, type())
 {
 }
 
