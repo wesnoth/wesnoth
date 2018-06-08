@@ -105,7 +105,7 @@ static std::string bottom_up_t_t_t_result()
 }
 
 static void add_widget(gui2::grid& grid
-		, gui2::widget* widget
+		, gui2::widget_ptr widget
 		, const std::string& id
 		, const unsigned row
 		, const unsigned column)
@@ -182,16 +182,16 @@ static void test_grid()
 	gui2::grid grid(2 ,2);
 	grid.set_id("0");
 
-	gui2::grid* g = new gui2::grid(2, 2);
+	auto g = std::make_shared<grid>(2, 2);
 	add_widget(grid, g, "1", 0, 0);
-	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "2", 1, 0);
-	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "3", 0, 1);
-	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "4", 1, 1);
+	add_widget(grid, gui2::build_single_widget_and_cast_to<label>();, "2", 1, 0);
+	add_widget(grid, gui2::build_single_widget_and_cast_to<label>(), "3", 0, 1);
+	add_widget(grid, gui2::build_single_widget_and_cast_to<label>(), "4", 1, 1);
 
-	add_widget(*g, new gui2::label(gui2::implementation::builder_label(config())), "5", 0, 0);
-	add_widget(*g, new gui2::label(gui2::implementation::builder_label(config())), "6", 1, 0);
-	add_widget(*g, new gui2::label(gui2::implementation::builder_label(config())), "7", 0, 1);
-	add_widget(*g, new gui2::label(gui2::implementation::builder_label(config())), "8", 1, 1);
+	add_widget(*g, gui2::build_single_widget_and_cast_to<label>(), "5", 0, 0);
+	add_widget(*g, gui2::build_single_widget_and_cast_to<label>(), "6", 1, 0);
+	add_widget(*g, gui2::build_single_widget_and_cast_to<label>(), "7", 0, 1);
+	add_widget(*g, gui2::build_single_widget_and_cast_to<label>(), "8", 1, 1);
 
 	{
 		std::stringstream sstr;

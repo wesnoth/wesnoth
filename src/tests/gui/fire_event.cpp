@@ -75,7 +75,7 @@ static void connect_signals(
 }
 
 static void add_widget(gui2::grid& grid
-		, gui2::widget* widget
+		, gui2::widget_ptr widget
 		, const std::string& id
 		, const unsigned row
 		, const unsigned column)
@@ -130,11 +130,11 @@ BOOST_AUTO_TEST_CASE(test_fire_event)
 	grid.set_id("root");
 	connect_signals(sstr, grid);
 
-	gui2::grid *child_grid = new gui2::grid(1, 1);
+	auto child_grid = std::make_shared<grid>(1, 1);
 	add_widget(grid, child_grid, "level 1", 0, 0);
 	connect_signals(sstr, *child_grid);
 
-	gui2::widget *child = new gui2::grid(1, 1);
+	auto child = std::make_shared<grid>(1, 1);
 	add_widget(*child_grid, child, "level 2", 0, 0);
 	connect_signals(sstr, *child);
 

@@ -25,7 +25,7 @@
 #include <typeinfo>
 
 static void add_widget(gui2::grid& grid
-		, gui2::widget* widget
+		, gui2::widget_ptr widget
 		, const std::string& id
 		, const unsigned row
 		, const unsigned column)
@@ -94,10 +94,10 @@ static void test_grid()
 
 	/* Test the child part here. */
 	gui2::grid grid(2 ,2);
-	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "(1,1)", 0, 0);
-	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "(1,2)", 0, 1);
-	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "(2,1)", 1, 0);
-	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "(2,2)", 1, 1);
+	add_widget(grid, gui2::build_single_widget_and_cast_to<label>(), "(1,1)", 0, 0);
+	add_widget(grid, gui2::build_single_widget_and_cast_to<label>(), "(1,2)", 0, 1);
+	add_widget(grid, gui2::build_single_widget_and_cast_to<label>(), "(2,1)", 1, 0);
+	add_widget(grid, gui2::build_single_widget_and_cast_to<label>(), "(2,2)", 1, 1);
 
 	const std::unique_ptr<gui2::iteration::walker_base> visitor(grid.create_walker());
 
