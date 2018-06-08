@@ -62,7 +62,7 @@ struct viewport_implementation
 		coordinate.x -= viewport->get_x();
 		coordinate.y -= viewport->get_y();
 
-		return viewport->widget_.find_at(coordinate, must_be_active);
+		return viewport->widget_->find_at(coordinate, must_be_active);
 	}
 
 	template <class W>
@@ -72,60 +72,45 @@ struct viewport_implementation
 		if(viewport->widget::find(id, must_be_active)) {
 			return viewport;
 		} else {
-			return viewport->widget_.find(id, must_be_active);
+			return viewport->widget_->find(id, must_be_active);
 		}
 	}
 };
 
-viewport::viewport(widget& widget) : widget_(widget), owns_widget_(false)
-{
-	widget_.set_parent(this);
-}
-
 viewport::viewport(const implementation::builder_viewport& builder,
 					 const builder_widget::replacements_map& replacements)
 	: widget(builder)
-	, widget_(*builder.widget_->build(replacements))
-	, owns_widget_(true)
+	, widget_(builder.widget_->build(replacements))
 {
-	widget_.set_parent(this);
+	widget_->set_parent(this);
 }
 
 viewport::~viewport()
 {
-	if(owns_widget_) {
-		delete &widget_;
-	}
-}
-
-viewport* viewport::build(const implementation::builder_viewport& builder,
-							const builder_widget::replacements_map& replacements)
-{
-	return new viewport(builder, replacements);
 }
 
 void viewport::place(const point& origin, const point& size)
 {
 	widget::place(origin, size);
 
-	widget_.place(point(), widget_.get_best_size());
+	widget_->place(point(), widget_->get_best_size());
 }
 
 void viewport::layout_initialize(const bool full_initialization)
 {
 	widget::layout_initialize(full_initialization);
 
-	if(widget_.get_visible() != widget::visibility::invisible) {
-		widget_.layout_initialize(full_initialization);
+	if(widget_->get_visible() != widget::visibility::invisible) {
+		widget_->layout_initialize(full_initialization);
 	}
 }
 
 void viewport::impl_draw_children()
 {
-	if(widget_.get_visible() != widget::visibility::invisible) {
-		widget_.draw_background();
-		widget_.draw_children();
-		widget_.draw_foreground();
+	if(widget_->get_visible() != widget::visibility::invisible) {
+		widget_->draw_background();
+		widget_->draw_children();
+		widget_->draw_foreground();
 	}
 }
 
@@ -157,7 +142,7 @@ const widget* viewport::find(const std::string& id, const bool must_be_active)
 
 point viewport::calculate_best_size() const
 {
-	return widget_.get_best_size();
+	return widget_->get_best_size();
 }
 
 bool viewport::disable_click_dismiss() const
@@ -211,14 +196,14 @@ builder_viewport::builder_viewport(const config& cfg)
 {
 }
 
-widget* builder_viewport::build() const
+widget_ptr builder_viewport::build() const
 {
 	return build(replacements_map());
 }
 
-widget* builder_viewport::build(const replacements_map& replacements) const
+widget_ptr builder_viewport::build(const replacements_map& replacements) const
 {
-	return viewport::build(*this, replacements);
+	return std::make_shared<viewport>(*this, replacements);
 }
 
 } // namespace implementation

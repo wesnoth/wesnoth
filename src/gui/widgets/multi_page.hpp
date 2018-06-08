@@ -29,7 +29,7 @@ namespace implementation
 struct builder_multi_page;
 }
 
-class generator_base;
+using generator_ptr = std::shared_ptr<class generator_base>;
 
 /** The multi page class. */
 class multi_page : public container_base
@@ -174,7 +174,7 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_page_builders(const std::map<std::string, builder_grid_const_ptr>& page_builders)
+	void set_page_builders(const builder_grid_map& page_builders)
 	{
 		assert(!page_builders.empty());
 		page_builders_ = page_builders;
@@ -195,14 +195,19 @@ private:
 	 * of the scrollbar_container super class and freed when it's grid is
 	 * freed.
 	 */
-	generator_base* generator_;
+	generator_ptr generator_;
 
 	/** Contains the builder for the new items. */
-	std::map<std::string, builder_grid_const_ptr> page_builders_;
+	builder_grid_map page_builders_;
 
 	/** See @ref widget::impl_draw_background. */
 	virtual void impl_draw_background() override;
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
@@ -235,9 +240,9 @@ struct builder_multi_page : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
-	std::map<std::string, builder_grid_const_ptr> builders;
+	builder_grid_map builders;
 
 	/**
 	 * Multi page data.

@@ -38,7 +38,7 @@ namespace gui2
 REGISTER_WIDGET(tree_view)
 
 tree_view::tree_view(const implementation::builder_tree_view& builder)
-	: scrollbar_container(builder, get_control_type())
+	: scrollbar_container(builder, type())
 	, node_definitions_(builder.nodes)
 	, indentation_step_size_(0)
 	, need_layout_(false)
@@ -69,13 +69,13 @@ tree_view_node& tree_view::add_node(
 
 int tree_view::remove_node(tree_view_node* node)
 {
-	assert(node && node != root_node_ && node->parent_node_);
+	assert(node && node != root_node_.get() && node->parent_node_);
 	const point node_size = node->get_size();
 
 	tree_view_node::node_children_vector& siblings = node->parent_node_->children_;
 
 	auto node_itor = std::find_if(siblings.begin(), siblings.end(),
-		[node](const std::unique_ptr<tree_view_node>& c) { return c.get() == node; }
+		[node](const auto& c) { return c.get() == node; }
 	);
 
 	assert(node_itor != siblings.end());
@@ -375,13 +375,13 @@ builder_tree_view::builder_tree_view(const config& cfg)
 	VALIDATE(!nodes.empty(), _("No nodes defined for a tree view."));
 }
 
-widget* builder_tree_view::build() const
+widget_ptr builder_tree_view::build() const
 {
 	/*
 	 *  TODO see how much we can move in the constructor instead of
 	 *  building in several steps.
 	 */
-	tree_view* widget = new tree_view(*this);
+	auto widget = std::make_shared<tree_view>(*this);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);

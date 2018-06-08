@@ -103,6 +103,11 @@ private:
 
 	label* get_internal_label();
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/***** ***** ***** inherited ****** *****/
 
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
@@ -138,7 +143,7 @@ struct builder_scroll_label : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;

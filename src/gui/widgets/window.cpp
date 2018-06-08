@@ -98,7 +98,7 @@ public:
 
 	using builder_styled_widget::build;
 
-	widget* build() const
+	virtual widget_ptr build() const override
 	{
 		return nullptr;
 	}
@@ -252,7 +252,7 @@ window* manager::get_window(const unsigned id)
 } // namespace
 
 window::window(const builder_window::window_resolution* definition)
-	: panel(implementation::builder_window(::config {"definition", definition->definition}), get_control_type())
+	: panel(implementation::builder_window(::config {"definition", definition->definition}), type())
 	, cursor::setter(cursor::NORMAL)
 	, video_(CVideo::get_singleton())
 	, status_(NEW)
@@ -948,7 +948,7 @@ namespace
  */
 void window_swap_grid(grid* g,
 			   grid* content_grid,
-			   widget* widget,
+			   widget_ptr widget,
 			   const std::string& id)
 {
 	assert(content_grid);

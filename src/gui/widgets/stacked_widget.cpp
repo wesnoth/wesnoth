@@ -57,7 +57,7 @@ struct stacked_widget_implementation
 };
 
 stacked_widget::stacked_widget(const implementation::builder_stacked_widget& builder)
-	: container_base(builder, get_control_type())
+	: container_base(builder, type())
 	, generator_(generator_base::build(false, false, generator_base::independent, false))
 	, selected_layer_(-1)
 	, find_in_all_layers_(false)
@@ -282,9 +282,9 @@ builder_stacked_widget::builder_stacked_widget(const config& real_cfg)
 	}
 }
 
-widget* builder_stacked_widget::build() const
+widget_ptr builder_stacked_widget::build() const
 {
-	stacked_widget* widget = new stacked_widget(*this);
+	auto widget = std::make_shared<stacked_widget>(*this);
 
 	DBG_GUI_G << "Window builder: placed stacked widget '" << id
 			  << "' with definition '" << definition << "'.\n";

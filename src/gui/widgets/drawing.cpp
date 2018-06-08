@@ -32,7 +32,7 @@ namespace gui2
 REGISTER_WIDGET(drawing)
 
 drawing::drawing(const implementation::builder_drawing& builder)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 	, best_size_(0, 0)
 {
 }
@@ -175,9 +175,9 @@ builder_drawing::builder_drawing(const config& cfg)
 	assert(!draw.empty());
 }
 
-widget* builder_drawing::build() const
+widget_ptr builder_drawing::build() const
 {
-	drawing* widget = new drawing(*this);
+	auto widget = std::make_shared<drawing>(*this);
 
 	const wfl::map_formula_callable& size = get_screen_size_variables();
 

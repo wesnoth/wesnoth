@@ -55,7 +55,7 @@ namespace gui2
 REGISTER_WIDGET(chatbox)
 
 chatbox::chatbox(const implementation::builder_chatbox& builder)
-	: container_base(builder, get_control_type())
+	: container_base(builder, type())
 	, roomlistbox_(nullptr)
 	, chat_log_container_(nullptr)
 	, chat_input_(nullptr)
@@ -810,9 +810,9 @@ builder_chatbox::builder_chatbox(const config& cfg)
 {
 }
 
-widget* builder_chatbox::build() const
+widget_ptr builder_chatbox::build() const
 {
-	chatbox* widget = new chatbox(*this);
+	auto widget = std::make_shared<chatbox>(*this);
 
 	DBG_GUI_G << "Window builder: placed unit preview pane '" << id
 			  << "' with definition '" << definition << "'.\n";

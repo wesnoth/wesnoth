@@ -29,7 +29,7 @@ namespace gui2
 REGISTER_WIDGET(vertical_scrollbar)
 
 vertical_scrollbar::vertical_scrollbar(const implementation::builder_vertical_scrollbar& builder)
-	: scrollbar_base(builder, get_control_type())
+	: scrollbar_base(builder, type())
 {
 }
 
@@ -194,9 +194,9 @@ builder_vertical_scrollbar::builder_vertical_scrollbar(const config& cfg)
 {
 }
 
-widget* builder_vertical_scrollbar::build() const
+widget_ptr builder_vertical_scrollbar::build() const
 {
-	vertical_scrollbar* widget = new vertical_scrollbar(*this);
+	auto widget = std::make_shared<vertical_scrollbar>(*this);
 
 	widget->finalize_setup();
 

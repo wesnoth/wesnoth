@@ -101,10 +101,15 @@ void password_box::paste_selection(const bool mouse)
 	insert_char(text);
 }
 
-const std::string& password_box::get_control_type() const
+const std::string& password_box::type()                                                                                      \
 {
 	static const std::string type = "password_box";
 	return type;
+}
+
+const std::string& password_box::get_control_type() const
+{
+	return type();
 }
 
 // }---------- BUILDER -----------{
@@ -132,9 +137,9 @@ builder_password_box::builder_password_box(const config& cfg)
 {
 }
 
-widget* builder_password_box::build() const
+widget_ptr builder_password_box::build() const
 {
-	password_box* widget = new password_box(*this);
+	auto widget = std::make_shared<password_box>(*this);
 
 	// A password box doesn't have a label but a text.
 	// It also has no history.

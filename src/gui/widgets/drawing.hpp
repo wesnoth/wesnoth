@@ -103,6 +103,11 @@ private:
 	/** When we're used as a fixed size item, this holds the best size. */
 	point best_size_;
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 };
@@ -130,7 +135,7 @@ struct builder_drawing : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
 	/** The width of the widget. */
 	typed_formula<unsigned> width;

@@ -95,7 +95,7 @@ std::string text_history::get_value() const
 }
 
 text_box::text_box(const implementation::builder_styled_widget& builder)
-	: text_box_base(builder, get_control_type())
+	: text_box_base(builder, type())
 	, history_()
 	, max_input_length_(0)
 	, text_x_offset_(0)
@@ -485,9 +485,9 @@ builder_text_box::builder_text_box(const config& cfg)
 {
 }
 
-widget* builder_text_box::build() const
+widget_ptr builder_text_box::build() const
 {
-	text_box* widget = new text_box(*this);
+	auto widget = std::make_shared<text_box>(*this);
 
 	// A textbox doesn't have a label but a text
 	widget->set_value(label_string);

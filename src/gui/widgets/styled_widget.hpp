@@ -400,13 +400,22 @@ private:
 
 public:
 	/**
-	 * Returns the control_type of the styled_widget.
+	 * Returns the type of this styled_widget.
 	 *
-	 * The control_type parameter for gui_definition::get_control() To keep the
-	 * code more generic this type is required so the controls need to return
-	 * the proper string here.  Might be used at other parts as well the get the
-	 * type of
-	 * styled_widget involved.
+	 * This is used as the control_type parameter for @ref get_control.
+	 *
+	 * Do note that each widget also must have a public static type() function;
+	 * it's use to implement this function. The reason for this system is twofold:
+	 *
+	 * 1) Due to an oddity in C++, one technically may not call a virtual function
+	 *    in a derived class's *initializer list*, which we do liberally. Calling
+	 *    it in the constructor *body* is fine, but doing so in the initializer list
+	 *    is technically undefined behavior and will give "invalid vptr" errors
+	 *    under UBSanitizer.
+	 *
+	 * 2) Having a static type getter allows the type string to be fetched without
+	 *    constructing an instance of the widget. A good example of this usecase is
+	 *    in @ref build_single_widget_and_cast_to.
 	 */
 	virtual const std::string& get_control_type() const = 0;
 
@@ -498,7 +507,7 @@ public:
 
 	using builder_widget::build;
 
-	virtual widget* build(const replacements_map& replacements) const override;
+	virtual widget_ptr build(const replacements_map& replacements) const override;
 
 	/** Parameters for the styled_widget. */
 	std::string definition;

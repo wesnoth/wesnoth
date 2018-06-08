@@ -734,7 +734,7 @@ public:
 		assert(index == -1 || static_cast<unsigned>(index) <= items_.size());
 
 		child* item = new child;
-		list_builder->build(&item->child_grid);
+		list_builder->build(item->child_grid);
 
 		init(&item->child_grid, item_data, callback);
 

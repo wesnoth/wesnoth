@@ -38,7 +38,7 @@ namespace gui2
 REGISTER_WIDGET(menu_button)
 
 menu_button::menu_button(const implementation::builder_menu_button& builder)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 	, selectable_item()
 	, state_(ENABLED)
 	, retval_(retval::NONE)
@@ -280,9 +280,9 @@ builder_menu_button::builder_menu_button(const config& cfg)
 	}
 }
 
-widget* builder_menu_button::build() const
+widget_ptr builder_menu_button::build() const
 {
-	menu_button* widget = new menu_button(*this);
+	auto widget = std::make_shared<menu_button>(*this);
 
 	widget->set_retval(get_retval(retval_id_, retval_, id));
 	if(!options_.empty()) {

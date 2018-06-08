@@ -96,26 +96,13 @@ struct pane_implementation
 		{
 
 			if(item.id == id) {
-				return item.item_grid;
+				return item.item_grid.get();
 			}
 		}
 
 		return nullptr;
 	}
 };
-
-pane::pane(const builder_grid_ptr item_builder)
-	: widget()
-	, items_()
-	, item_builder_(item_builder)
-	, item_id_generator_(0)
-	, placer_(placer_base::build(placer_base::tgrow_direction::vertical, 1))
-{
-	connect_signal<event::REQUEST_PLACEMENT>(
-			std::bind(
-					&pane::signal_handler_request_placement, this, _1, _2, _3),
-			event::dispatcher::back_pre_child);
-}
 
 pane::pane(const implementation::builder_pane& builder)
 	: widget(builder)
@@ -130,22 +117,17 @@ pane::pane(const implementation::builder_pane& builder)
 			event::dispatcher::back_pre_child);
 }
 
-pane* pane::build(const implementation::builder_pane& builder)
-{
-	return new pane(builder);
-}
-
 unsigned pane::create_item(const std::map<std::string, string_map>& item_data,
 							const std::map<std::string, std::string>& tags)
 {
-	item item = { item_id_generator_++, tags, item_builder_->build() };
+	item item { item_id_generator_++, tags, std::dynamic_pointer_cast<grid>(item_builder_->build()) };
 
 	item.item_grid->set_parent(this);
 
 	for(const auto & data : item_data)
 	{
 		styled_widget* control
-				= find_widget<styled_widget>(item.item_grid, data.first, false, false);
+				= find_widget<styled_widget>(item.item_grid.get(), data.first, false, false);
 
 		if(control) {
 			control->set_members(data.second);
@@ -419,14 +401,14 @@ builder_pane::builder_pane(const config& cfg)
 	VALIDATE(parallel_items > 0, _("Need at least 1 parallel item."));
 }
 
-widget* builder_pane::build() const
+widget_ptr builder_pane::build() const
 {
 	return build(replacements_map());
 }
 
-widget* builder_pane::build(const replacements_map& /*replacements*/) const
+widget_ptr builder_pane::build(const replacements_map& /*replacements*/) const
 {
-	return pane::build(*this);
+	return std::make_shared<pane>(*this);
 }
 
 } // namespace implementation

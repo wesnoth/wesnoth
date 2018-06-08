@@ -36,7 +36,7 @@ namespace gui2
 REGISTER_WIDGET(repeating_button)
 
 repeating_button::repeating_button(const implementation::builder_repeating_button& builder)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 	, clickable_item()
 	, state_(ENABLED)
 	, repeat_timer_(0)
@@ -243,9 +243,9 @@ builder_repeating_button::builder_repeating_button(const config& cfg)
 {
 }
 
-widget* builder_repeating_button::build() const
+widget_ptr builder_repeating_button::build() const
 {
-	repeating_button* widget = new repeating_button(*this);
+	auto widget = std::make_shared<repeating_button>(*this);
 
 	DBG_GUI_G << "Window builder: placed repeating button '" << id
 			  << "' with definition '" << definition << "'.\n";

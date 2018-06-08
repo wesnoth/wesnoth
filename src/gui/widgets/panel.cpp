@@ -36,7 +36,7 @@ namespace gui2
 REGISTER_WIDGET(panel)
 
 panel::panel(const implementation::builder_styled_widget& builder, const std::string& control_type)
-	: container_base(builder, control_type.empty() ? get_control_type() : control_type)
+	: container_base(builder, control_type.empty() ? type() : control_type)
 {
 }
 
@@ -194,9 +194,9 @@ builder_panel::builder_panel(const config& cfg)
 	grid = std::make_shared<builder_grid>(c);
 }
 
-widget* builder_panel::build() const
+widget_ptr builder_panel::build() const
 {
-	panel* widget = new panel(*this);
+	auto widget = std::make_shared<panel>(*this);
 
 	DBG_GUI_G << "Window builder: placed panel '" << id << "' with definition '"
 			  << definition << "'.\n";

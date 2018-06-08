@@ -478,10 +478,10 @@ private:
 	scrollbar_base *vertical_scrollbar_, *horizontal_scrollbar_;
 
 	/** The grid that holds the content. */
-	std::unique_ptr<grid> content_grid_;
+	grid_ptr content_grid_;
 
 	/** Dummy spacer to hold the contents location. */
-	spacer* content_;
+	std::shared_ptr<spacer> content_;
 
 	/**
 	 * Cache for the visible area for the content.
@@ -522,6 +522,11 @@ private:
 	/** Helper function which needs to be called after the scollbar moved. */
 	void scrollbar_moved();
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 

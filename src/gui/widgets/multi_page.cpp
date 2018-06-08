@@ -34,7 +34,7 @@ namespace gui2
 REGISTER_WIDGET(multi_page)
 
 multi_page::multi_page(const implementation::builder_multi_page& builder)
-	: container_base(builder, get_control_type())
+	: container_base(builder, type())
 	, generator_(generator_base::build(true, true, generator_base::independent, false))
 	, page_builders_()
 {
@@ -280,9 +280,9 @@ builder_multi_page::builder_multi_page(const config& cfg)
 	}
 }
 
-widget* builder_multi_page::build() const
+widget_ptr builder_multi_page::build() const
 {
-	multi_page* widget = new multi_page(*this);
+	auto widget = std::make_shared<multi_page>(*this);
 
 	widget->set_page_builders(builders);
 

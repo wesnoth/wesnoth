@@ -66,7 +66,7 @@ unsigned grid::add_row(const unsigned count)
 	return result;
 }
 
-void grid::set_child(widget* widget,
+void grid::set_child(widget_ptr widget,
 					  const unsigned row,
 					  const unsigned col,
 					  const unsigned flags,
@@ -89,16 +89,17 @@ void grid::set_child(widget* widget,
 	cell.set_flags(flags);
 	cell.set_border_size(border_size);
 	cell.set_widget(widget);
-	if(cell.get_widget()) {
-		// make sure the new child is valid before deferring
-		cell.get_widget()->set_parent(this);
+
+	// make sure the new child is valid before deferring
+	if(gui2::widget* w = cell.get_widget()) {
+		w->set_parent(this);
 	}
 }
 
-std::unique_ptr<widget> grid::swap_child(const std::string& id,
-						   widget* w,
-						   const bool recurse,
-						   widget* new_parent)
+widget_ptr grid::swap_child(const std::string& id,
+		widget_ptr w,
+		const bool recurse,
+		widget* new_parent)
 {
 	assert(w);
 
@@ -111,7 +112,7 @@ std::unique_ptr<widget> grid::swap_child(const std::string& id,
 				grid* g = dynamic_cast<grid*>(child.get_widget());
 				if(g) {
 
-					std::unique_ptr<widget> old = g->swap_child(id, w, true);
+					widget_ptr old = g->swap_child(id, w, true);
 					if(old) {
 						return old;
 					}
@@ -122,7 +123,7 @@ std::unique_ptr<widget> grid::swap_child(const std::string& id,
 		}
 
 		// Free widget from cell and validate.
-		std::unique_ptr<widget> old = child.free_widget();
+		widget_ptr old = child.free_widget();
 		assert(old);
 
 		old->set_parent(new_parent);
@@ -1086,7 +1087,7 @@ grid_implementation::cell_request_reduce_width(grid::child& child,
 	child.widget_->request_reduce_width(maximum_width - child.border_space().x);
 }
 
-void set_single_child(grid& grid, widget* widget)
+void set_single_child(grid& grid, widget_ptr widget)
 {
 	grid.set_rows_cols(1, 1);
 	grid.set_child(widget,

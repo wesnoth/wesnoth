@@ -29,12 +29,12 @@ builder_instance::builder_instance(const config& cfg)
 {
 }
 
-widget* builder_instance::build() const
+widget_ptr builder_instance::build() const
 {
 	return build(replacements_map());
 }
 
-widget* builder_instance::build(const replacements_map& replacements) const
+widget_ptr builder_instance::build(const replacements_map& replacements) const
 {
 	const replacements_map::const_iterator itor = replacements.find(id);
 	if(itor != replacements.end()) {

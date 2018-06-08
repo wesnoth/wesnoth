@@ -44,6 +44,7 @@ class listbox : public scrollbar_container
 	friend struct implementation::builder_listbox;
 	friend struct implementation::builder_horizontal_listbox;
 	friend struct implementation::builder_grid_listbox;
+
 	friend class debug_layout_graph;
 
 public:
@@ -66,6 +67,7 @@ public:
 			const bool select = true);
 
 	/***** ***** ***** ***** Row handling. ***** ***** ****** *****/
+
 	/**
 	 * When an item in the list is selected by the user we need to
 	 * update the state. We installed a callback handler which
@@ -365,7 +367,7 @@ private:
 	 * of the scrollbar_container super class and freed when it's grid is
 	 * freed.
 	 */
-	generator_base* generator_;
+	generator_ptr generator_;
 
 	const bool is_horizontal_;
 
@@ -414,6 +416,11 @@ private:
 	/** Inherited from scrollbar_container. */
 	virtual void set_content_size(const point& origin, const point& size) override;
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
@@ -444,7 +451,7 @@ struct builder_listbox : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
@@ -471,7 +478,7 @@ struct builder_horizontal_listbox : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
@@ -495,7 +502,7 @@ struct builder_grid_listbox : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;

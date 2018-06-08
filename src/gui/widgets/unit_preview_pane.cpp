@@ -52,7 +52,7 @@ namespace gui2
 REGISTER_WIDGET(unit_preview_pane)
 
 unit_preview_pane::unit_preview_pane(const implementation::builder_unit_preview_pane& builder)
-	: container_base(builder, get_control_type())
+	: container_base(builder, type())
 	, current_type_()
 	, icon_type_(nullptr)
 	, icon_race_(nullptr)
@@ -587,9 +587,9 @@ builder_unit_preview_pane::builder_unit_preview_pane(const config& cfg)
 {
 }
 
-widget* builder_unit_preview_pane::build() const
+widget_ptr builder_unit_preview_pane::build() const
 {
-	unit_preview_pane* widget = new unit_preview_pane(*this);
+	auto widget = std::make_shared<unit_preview_pane>(*this);
 
 	DBG_GUI_G << "Window builder: placed unit preview pane '" << id
 			  << "' with definition '" << definition << "'.\n";

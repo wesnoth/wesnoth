@@ -137,17 +137,17 @@ void drop_down_menu::pre_show(window& window)
 		find_widget<toggle_panel>(&new_row, "panel", false).set_tooltip(entry["tooltip"]);
 
 		if(entry.has_attribute("image")) {
-			image* img = build_single_widget_instance<image>("image");
+			auto img = build_single_widget_and_cast_to<image>();
 			img->set_label(entry["image"]);
 
 			grid* mi_grid = dynamic_cast<grid*>(new_row.find("menu_item", false));
 			if(mi_grid) {
-				mi_grid->swap_child("label", img, false);
+				mi_grid->swap_child("label", std::static_pointer_cast<widget>(img), false);
 			}
 		}
 
 		if(entry.has_attribute("checkbox")) {
-			toggle_button* checkbox = build_single_widget_instance<toggle_button>("toggle_button");
+			auto checkbox = build_single_widget_and_cast_to<toggle_button>();
 			checkbox->set_id("checkbox");
 			checkbox->set_value_bool(entry["checkbox"].to_bool(false));
 
@@ -157,7 +157,7 @@ void drop_down_menu::pre_show(window& window)
 
 			grid* mi_grid = dynamic_cast<grid*>(new_row.find("menu_item", false));
 			if(mi_grid) {
-				mi_grid->swap_child("icon", checkbox, false);
+				mi_grid->swap_child("icon", std::static_pointer_cast<widget>(checkbox), false);
 			}
 		}
 	}

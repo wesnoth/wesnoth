@@ -41,7 +41,7 @@ namespace gui2
 REGISTER_WIDGET(label)
 
 label::label(const implementation::builder_label& builder)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 	, state_(ENABLED)
 	, can_wrap_(false)
 	, characters_per_line_(0)
@@ -309,9 +309,9 @@ builder_label::builder_label(const config& cfg)
 {
 }
 
-widget* builder_label::build() const
+widget_ptr builder_label::build() const
 {
-	label* lbl = new label(*this);
+	auto lbl = std::make_shared<label>(*this);
 
 	const auto conf = lbl->cast_config_to<label_definition>();
 	assert(conf);

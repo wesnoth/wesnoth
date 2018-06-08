@@ -37,7 +37,7 @@ namespace gui2
 REGISTER_WIDGET(image)
 
 image::image(const implementation::builder_image& builder)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 {
 }
 
@@ -165,9 +165,9 @@ builder_image::builder_image(const config& cfg) : builder_styled_widget(cfg)
 {
 }
 
-widget* builder_image::build() const
+widget_ptr builder_image::build() const
 {
-	image* widget = new image(*this);
+	auto widget = std::make_shared<image>(*this);
 
 	DBG_GUI_G << "Window builder: placed image '" << id << "' with definition '"
 			  << definition << "'.\n";

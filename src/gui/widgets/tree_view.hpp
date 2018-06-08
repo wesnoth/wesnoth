@@ -125,7 +125,7 @@ private:
 
 	bool need_layout_;
 
-	tree_view_node* root_node_;
+	std::shared_ptr<tree_view_node> root_node_;
 
 	tree_view_node* selected_item_;
 
@@ -157,6 +157,11 @@ private:
 	/** Inherited from container_base. */
 	virtual void finalize_setup();
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
@@ -197,7 +202,7 @@ struct builder_tree_view : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;

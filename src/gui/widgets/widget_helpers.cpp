@@ -16,13 +16,12 @@
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/grid.hpp"
-#include "gui/widgets/widget.hpp"
 
 #include <cassert>
 
 namespace gui2
 {
-void swap_grid(grid* g, grid* content_grid, widget* widget, const std::string& id)
+void swap_grid(grid* g, grid* content_grid,widget_ptr widget, const std::string& id)
 {
 	assert(content_grid);
 	assert(widget);
