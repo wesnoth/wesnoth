@@ -47,7 +47,7 @@ namespace gui2
 REGISTER_WIDGET(slider)
 
 slider::slider(const implementation::builder_slider& builder)
-	: slider_base(builder, get_control_type())
+	: slider_base(builder, type())
 	, best_slider_length_(0)
 	, minimum_value_(0)
 	, step_size_(1)

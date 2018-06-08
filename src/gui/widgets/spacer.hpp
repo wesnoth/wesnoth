@@ -81,6 +81,11 @@ private:
 	/** See @ref widget::impl_draw_background. */
 	virtual void impl_draw_background() override;
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 };

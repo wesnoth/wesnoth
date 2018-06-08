@@ -1060,10 +1060,15 @@ void scrollbar_container::scrollbar_moved()
 	set_scrollbar_button_status();
 }
 
-const std::string& scrollbar_container::get_control_type() const
+const std::string& scrollbar_container::type()
 {
 	static const std::string type = "scrollbar_container";
 	return type;
+}
+
+const std::string& scrollbar_container::get_control_type() const
+{
+	return type();
 }
 
 void scrollbar_container::signal_handler_sdl_key_down(

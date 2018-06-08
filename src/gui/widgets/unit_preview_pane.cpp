@@ -52,7 +52,7 @@ namespace gui2
 REGISTER_WIDGET(unit_preview_pane)
 
 unit_preview_pane::unit_preview_pane(const implementation::builder_unit_preview_pane& builder)
-	: container_base(builder, get_control_type())
+	: container_base(builder, type())
 	, current_type_()
 	, icon_type_(nullptr)
 	, icon_race_(nullptr)

@@ -50,7 +50,7 @@ const unsigned CONTROL_STACK_LAYER_PUBLISH = 2;
 REGISTER_WIDGET(addon_list)
 
 addon_list::addon_list(const implementation::builder_addon_list& builder)
-	: container_base(builder, get_control_type())
+	: container_base(builder, type())
 	, addon_vector_()
 	, install_status_visibility_(visibility::visible)
 	, install_buttons_visibility_(visibility::invisible)

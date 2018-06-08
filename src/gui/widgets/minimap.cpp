@@ -49,7 +49,7 @@ namespace gui2
 REGISTER_WIDGET(minimap)
 
 minimap::minimap(const implementation::builder_minimap& builder)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 	, map_data_()
 	, terrain_(nullptr)
 	, map_(nullptr)

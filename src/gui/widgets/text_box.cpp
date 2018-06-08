@@ -95,7 +95,7 @@ std::string text_history::get_value() const
 }
 
 text_box::text_box(const implementation::builder_styled_widget& builder)
-	: text_box_base(builder, get_control_type())
+	: text_box_base(builder, type())
 	, history_()
 	, max_input_length_(0)
 	, text_x_offset_(0)

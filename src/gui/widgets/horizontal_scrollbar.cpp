@@ -34,7 +34,7 @@ namespace gui2
 REGISTER_WIDGET(horizontal_scrollbar)
 
 horizontal_scrollbar::horizontal_scrollbar(const implementation::builder_horizontal_scrollbar& builder)
-	: scrollbar_base(builder, get_control_type())
+	: scrollbar_base(builder, type())
 {
 }
 

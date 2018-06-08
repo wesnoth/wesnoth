@@ -272,6 +272,11 @@ private:
 	/** Inherited from text_box_base. */
 	void handle_key_clear_line(SDL_Keymod modifier, bool& handled) override;
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 

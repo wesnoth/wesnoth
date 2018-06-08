@@ -36,7 +36,7 @@ namespace gui2
 REGISTER_WIDGET(repeating_button)
 
 repeating_button::repeating_button(const implementation::builder_repeating_button& builder)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 	, clickable_item()
 	, state_(ENABLED)
 	, repeat_timer_(0)

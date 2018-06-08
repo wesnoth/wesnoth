@@ -36,7 +36,7 @@ namespace gui2
 REGISTER_WIDGET(panel)
 
 panel::panel(const implementation::builder_styled_widget& builder, const std::string& control_type)
-	: container_base(builder, control_type.empty() ? get_control_type() : control_type)
+	: container_base(builder, control_type.empty() ? type() : control_type)
 {
 }
 

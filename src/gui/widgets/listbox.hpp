@@ -416,6 +416,11 @@ private:
 	/** Inherited from scrollbar_container. */
 	virtual void set_content_size(const point& origin, const point& size) override;
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 

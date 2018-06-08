@@ -55,7 +55,7 @@ listbox::listbox(const implementation::builder_styled_widget& builder,
 		const bool has_minimum,
 		const bool has_maximum,
 		const bool select)
-	: scrollbar_container(builder, get_control_type())
+	: scrollbar_container(builder, type())
 	, generator_(generator_base::build(has_minimum, has_maximum, placement, select))
 	, is_horizontal_(placement == generator_base::horizontal_list)
 	, list_builder_(list_builder)

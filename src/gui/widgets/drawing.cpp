@@ -32,7 +32,7 @@ namespace gui2
 REGISTER_WIDGET(drawing)
 
 drawing::drawing(const implementation::builder_drawing& builder)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 	, best_size_(0, 0)
 {
 }

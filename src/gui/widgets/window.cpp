@@ -252,7 +252,7 @@ window* manager::get_window(const unsigned id)
 } // namespace
 
 window::window(const builder_window::window_resolution* definition)
-	: panel(implementation::builder_window(::config {"definition", definition->definition}), get_control_type())
+	: panel(implementation::builder_window(::config {"definition", definition->definition}), type())
 	, cursor::setter(cursor::NORMAL)
 	, video_(CVideo::get_singleton())
 	, status_(NEW)

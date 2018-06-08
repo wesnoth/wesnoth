@@ -38,7 +38,7 @@ namespace gui2
 REGISTER_WIDGET(tree_view)
 
 tree_view::tree_view(const implementation::builder_tree_view& builder)
-	: scrollbar_container(builder, get_control_type())
+	: scrollbar_container(builder, type())
 	, node_definitions_(builder.nodes)
 	, indentation_step_size_(0)
 	, need_layout_(false)

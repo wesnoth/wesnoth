@@ -33,7 +33,7 @@ namespace gui2
 REGISTER_WIDGET(scrollbar_panel)
 
 scrollbar_panel::scrollbar_panel(const implementation::builder_scrollbar_panel& builder)
-	: scrollbar_container(builder, get_control_type())
+	: scrollbar_container(builder, type())
 {
 }
 
