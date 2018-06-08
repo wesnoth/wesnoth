@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-05-24 07:47+0200\n"
+"PO-Revision-Date: 2018-06-08 11:48+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -6565,12 +6565,16 @@ msgid "whisper to $receiver"
 msgstr "susurrar a $receiver"
 
 #: src/gui/widgets/chatbox.cpp:396
+#, fuzzy
+#| msgid ""
+#| "Whisper session with <i>“$name”</i> started. If you do not want to "
+#| "receive messages from this user, type <i>/ignore $name</i>"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>\n"
 msgstr ""
-"Ha iniciado una sesión de susurros con <i>“$name”</i>. Si no desea recibir "
-"mensajes de este usuario, escriba <i>/ignore $name</i>\n"
+"Se ha iniciado una sesión de susurros con <i>“$name”</i>. Si no desea "
+"recibir mensajes de este usuario, escriba <i>/ignore $name</i>"
 
 #: src/gui/widgets/chatbox.cpp:400
 msgid "Room <i>“$name”</i> joined"
@@ -7645,6 +7649,9 @@ msgstr ""
 "«$deprecated_key|» dejará de tener mantenimiento en la versión "
 "$removal_version."
 
+#~ msgid "Save random seed"
+#~ msgstr "Guardar la semilla aleatoria"
+
 #~ msgid "Open saves folder"
 #~ msgstr "Abrir la carpeta de partidas guardadas"
 
@@ -7701,7 +7708,7 @@ msgstr ""
 #~ msgid "Era"
 #~ msgstr "Era"
 
-#~ msgid "$min to $max"
+#~ msgid "number of players^$min to $max"
 #~ msgstr "$min a $max"
 
 #~ msgid ""
@@ -7715,6 +7722,9 @@ msgstr ""
 
 #~ msgid "Quit to Main Menu"
 #~ msgstr "Salir a la pantalla de título"
+
+#~ msgid "$min to $max"
+#~ msgstr "$min a $max"
 
 #~ msgid "FPS limiter"
 #~ msgstr "Limitador de FPS"
