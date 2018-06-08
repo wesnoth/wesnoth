@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-06-03 16:42+0300\n"
-"PO-Revision-Date: 2018-05-24 07:47+0200\n"
+"PO-Revision-Date: 2018-06-08 11:48+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -2503,10 +2503,8 @@ msgstr "Modificaciones"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:409
-#, fuzzy
-#| msgid "Save Game"
 msgid "Save random seed"
-msgstr "Guardar partida"
+msgstr "Guardar la semilla aleatoria"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:411
@@ -6278,7 +6276,7 @@ msgstr "No hay eras disponibles para esta partida."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:735
 msgid "number of players^$min to $max"
-msgstr ""
+msgstr "$min a $max"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:832
 msgid "The selected game has no sides!"
@@ -6480,16 +6478,12 @@ msgid "Room <i>“$name”</i> joined"
 msgstr "Unido a la estancia <i>“$name”</i>"
 
 #: src/gui/widgets/chatbox.cpp:393
-#, fuzzy
-#| msgid ""
-#| "Whisper session with <i>“$name”</i> started. If you do not want to "
-#| "receive messages from this user, type <i>/ignore $name</i>\n"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>"
 msgstr ""
-"Ha iniciado una sesión de susurros con <i>“$name”</i>. Si no desea recibir "
-"mensajes de este usuario, escriba <i>/ignore $name</i>\n"
+"Se ha iniciado una sesión de susurros con <i>“$name”</i>. Si no desea "
+"recibir mensajes de este usuario, escriba <i>/ignore $name</i>"
 
 #: src/gui/widgets/chatbox.cpp:626
 msgid "$player has entered the room"
