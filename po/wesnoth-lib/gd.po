@@ -925,13 +925,17 @@ msgstr "Doras fiodha fosgailte"
 
 #. [terrain_type]: id=p_open_rusty
 #: data/core/terrain.cfg:1443
+#, fuzzy
+#| msgid "Rusty Gate"
 msgid "Rusty Open Gate"
-msgstr "Geata meirgeach fosgailte"
+msgstr "Geata meirgeach"
 
 #. [terrain_type]: id=p_open_wooden
 #: data/core/terrain.cfg:1457
+#, fuzzy
+#| msgid "Wooden Door"
 msgid "Wooden Open Door"
-msgstr "Doras fiodha fosgailte"
+msgstr "Doras fiodha"
 
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:1473
@@ -2564,7 +2568,7 @@ msgstr "Atharraichean"
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:409
 msgid "Deterministic mode"
-msgstr "Modh cinnteach"
+msgstr ""
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:411
@@ -3638,18 +3642,20 @@ msgstr "Amhairc"
 
 #. [label]
 #: data/gui/window/lobby_main.cfg:223
+#, fuzzy
+#| msgid "Players:"
 msgid "Sort players:"
-msgstr "Seòrsaich cluicheadairean:"
+msgstr "Cluicheadairean:"
 
 #. [toggle_button]: id=player_list_sort_relation
 #: data/gui/window/lobby_main.cfg:236
 msgid "Friends first, ignored people last"
-msgstr "Caraidean an toiseach luchd neo-shuime aig an deireadh"
+msgstr ""
 
 #. [toggle_button]: id=player_list_sort_name
 #: data/gui/window/lobby_main.cfg:249
 msgid "Alphabetically"
-msgstr "Aibidealach"
+msgstr ""
 
 #. [widget]: id=tab_label
 #. [toggle_button]: id=filter_with_friends
@@ -6557,13 +6563,17 @@ msgid "whisper to $receiver"
 msgstr "cagair gu $receiver"
 
 #: src/gui/widgets/chatbox.cpp:396
+#, fuzzy
+#| msgid ""
+#| "Whisper session with <i>“$name”</i> started. If you do not want to "
+#| "receive messages from this user, type <i>/ignore $name</i>"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>\n"
 msgstr ""
 "Chaidh seisean cagairt le <i>“$name”</i> a thòiseachadh. Mura h-eil thu "
 "airson teachdaireachdan fhaighinn on chleachdaiche seo, sgrìobh <i>/ignore "
-"$name</i>\n"
+"$name</i>"
 
 #: src/gui/widgets/chatbox.cpp:400
 msgid "Room <i>“$name”</i> joined"
@@ -7641,6 +7651,9 @@ msgstr ""
 "taic ri “$deprecated_key” a thoirt air falbh leis an tionndadh "
 "$removal_version."
 
+#~ msgid "Save random seed"
+#~ msgstr "Sàbhail sìol na tuairmeachd"
+
 #~ msgid "Open saves folder"
 #~ msgstr "Fosgail am pasgan sàbhalaidh"
 
@@ -7670,7 +7683,7 @@ msgstr ""
 #~ msgstr "Clàraich"
 
 #~ msgid "Limit FPS"
-#~ msgstr "Cuingich FPS"
+#~ msgstr "Cuingich na FPS"
 
 #~ msgid ""
 #~ "Disabling this increases CPU usage to 100% but may slightly improve "
@@ -7695,7 +7708,7 @@ msgstr ""
 #~ msgid "Era"
 #~ msgstr "Linn"
 
-#~ msgid "$min to $max"
+#~ msgid "number of players^$min to $max"
 #~ msgstr "$min gu $max"
 
 #~ msgid ""
