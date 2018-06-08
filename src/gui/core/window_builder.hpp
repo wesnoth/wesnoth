@@ -99,13 +99,12 @@ widget* build_single_widget_instance_helper(const std::string& type, const confi
  * @tparam T                      The final widget type. The widget pointer will be
  *                                cast to this.
  *
- * @param type                    String ID of the widget type.
  * @param cfg                     Data config to pass to the widget's builder.
  */
 template<typename T>
-T* build_single_widget_instance(const std::string& type, const config& cfg = config())
+T* build_single_widget_instance(const config& cfg = config())
 {
-	return dynamic_cast<T*>(build_single_widget_instance_helper(type, cfg));
+	return dynamic_cast<T*>(build_single_widget_instance_helper(T::type(), cfg));
 }
 
 struct builder_grid : public builder_widget
