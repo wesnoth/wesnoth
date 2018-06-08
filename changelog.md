@@ -35,6 +35,10 @@
      custom caption= is specified (fixes #3211).
    * do_not_list=yes units are no longer excluded from the debug mode-only
      Create Unit dialog.
+   * Fixed a rare issue where disabled attacks could cause the wrong attack to
+     be initially selected in the Unit Attack dialog. This bug also had the
+     potential to cause units to the wrong attack when  engaging or viewing
+     damage calculations.
 
 ## Version 1.14.2
  ### Campaigns

@@ -958,6 +958,11 @@ int mouse_handler::fill_weapon_choices(
 		if(attacker->attacks()[i].attack_weight() > 0) {
 			battle_context bc(pc_.gamestate().board_.units_, attacker->get_location(), defender->get_location(), i);
 
+			// Don't include if the attacker's weapon has at least one active "disable" special.
+			if(bc.get_attacker_stats().disable) {
+				continue;
+			}
+
 			if(!bc_vector.empty() && bc.better_attack(bc_vector[best], 0.5)) {
 				// as some weapons can be hidden, i is not a valid index into the resulting vector
 				best = bc_vector.size();
