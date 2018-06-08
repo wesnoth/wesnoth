@@ -110,7 +110,7 @@ static void add_widget(gui2::grid& grid
 		, const unsigned row
 		, const unsigned column)
 {
-	BOOST_REQUIRE_NE(widget, static_cast<gui2::widget*>(nullptr));
+	BOOST_REQUIRE_NE(widget.get(), static_cast<gui2::widget*>(nullptr));
 
 	widget->set_id(id);
 	grid.set_child(widget
@@ -182,16 +182,16 @@ static void test_grid()
 	gui2::grid grid(2 ,2);
 	grid.set_id("0");
 
-	auto g = std::make_shared<grid>(2, 2);
+	auto g = std::make_shared<gui2::grid>(2, 2);
 	add_widget(grid, g, "1", 0, 0);
-	add_widget(grid, gui2::build_single_widget_and_cast_to<label>();, "2", 1, 0);
-	add_widget(grid, gui2::build_single_widget_and_cast_to<label>(), "3", 0, 1);
-	add_widget(grid, gui2::build_single_widget_and_cast_to<label>(), "4", 1, 1);
+	add_widget(grid, gui2::build_single_widget_and_cast_to<gui2::label>(), "2", 1, 0);
+	add_widget(grid, gui2::build_single_widget_and_cast_to<gui2::label>(), "3", 0, 1);
+	add_widget(grid, gui2::build_single_widget_and_cast_to<gui2::label>(), "4", 1, 1);
 
-	add_widget(*g, gui2::build_single_widget_and_cast_to<label>(), "5", 0, 0);
-	add_widget(*g, gui2::build_single_widget_and_cast_to<label>(), "6", 1, 0);
-	add_widget(*g, gui2::build_single_widget_and_cast_to<label>(), "7", 0, 1);
-	add_widget(*g, gui2::build_single_widget_and_cast_to<label>(), "8", 1, 1);
+	add_widget(*g, gui2::build_single_widget_and_cast_to<gui2::label>(), "5", 0, 0);
+	add_widget(*g, gui2::build_single_widget_and_cast_to<gui2::label>(), "6", 1, 0);
+	add_widget(*g, gui2::build_single_widget_and_cast_to<gui2::label>(), "7", 0, 1);
+	add_widget(*g, gui2::build_single_widget_and_cast_to<gui2::label>(), "8", 1, 1);
 
 	{
 		std::stringstream sstr;

@@ -80,7 +80,7 @@ static void add_widget(gui2::grid& grid
 		, const unsigned row
 		, const unsigned column)
 {
-	BOOST_REQUIRE_NE(widget, static_cast<gui2::widget*>(nullptr));
+	BOOST_REQUIRE_NE(widget.get(), static_cast<gui2::widget*>(nullptr));
 
 	widget->set_id(id);
 	grid.set_child(widget
@@ -130,11 +130,11 @@ BOOST_AUTO_TEST_CASE(test_fire_event)
 	grid.set_id("root");
 	connect_signals(sstr, grid);
 
-	auto child_grid = std::make_shared<grid>(1, 1);
+	auto child_grid = std::make_shared<gui2::grid>(1, 1);
 	add_widget(grid, child_grid, "level 1", 0, 0);
 	connect_signals(sstr, *child_grid);
 
-	auto child = std::make_shared<grid>(1, 1);
+	auto child = std::make_shared<gui2:grid>(1, 1);
 	add_widget(*child_grid, child, "level 2", 0, 0);
 	connect_signals(sstr, *child);
 

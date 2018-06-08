@@ -30,7 +30,7 @@ static void add_widget(gui2::grid& grid
 		, const unsigned row
 		, const unsigned column)
 {
-	BOOST_REQUIRE_NE(widget, static_cast<gui2::widget*>(nullptr));
+	BOOST_REQUIRE_NE(widget.get(), static_cast<gui2::widget*>(nullptr));
 
 	widget->set_id(id);
 	grid.set_child(widget
@@ -94,10 +94,10 @@ static void test_grid()
 
 	/* Test the child part here. */
 	gui2::grid grid(2 ,2);
-	add_widget(grid, gui2::build_single_widget_and_cast_to<label>(), "(1,1)", 0, 0);
-	add_widget(grid, gui2::build_single_widget_and_cast_to<label>(), "(1,2)", 0, 1);
-	add_widget(grid, gui2::build_single_widget_and_cast_to<label>(), "(2,1)", 1, 0);
-	add_widget(grid, gui2::build_single_widget_and_cast_to<label>(), "(2,2)", 1, 1);
+	add_widget(grid, gui2::build_single_widget_and_cast_to<gui2::label>(), "(1,1)", 0, 0);
+	add_widget(grid, gui2::build_single_widget_and_cast_to<gui2::label>(), "(1,2)", 0, 1);
+	add_widget(grid, gui2::build_single_widget_and_cast_to<gui2::label>(), "(2,1)", 1, 0);
+	add_widget(grid, gui2::build_single_widget_and_cast_to<gui2::label>(), "(2,2)", 1, 1);
 
 	const std::unique_ptr<gui2::iteration::walker_base> visitor(grid.create_walker());
 
