@@ -101,10 +101,15 @@ void password_box::paste_selection(const bool mouse)
 	insert_char(text);
 }
 
-const std::string& password_box::get_control_type() const
+const std::string& password_box::type()                                                                                      \
 {
 	static const std::string type = "password_box";
 	return type;
+}
+
+const std::string& password_box::get_control_type() const
+{
+	return type();
 }
 
 // }---------- BUILDER -----------{

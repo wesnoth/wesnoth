@@ -37,7 +37,7 @@ namespace gui2
 REGISTER_WIDGET(image)
 
 image::image(const implementation::builder_image& builder)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 {
 }
 

@@ -41,7 +41,7 @@ namespace gui2
 REGISTER_WIDGET(label)
 
 label::label(const implementation::builder_label& builder)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 	, state_(ENABLED)
 	, can_wrap_(false)
 	, characters_per_line_(0)

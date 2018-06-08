@@ -29,7 +29,7 @@ namespace gui2
 REGISTER_WIDGET(spacer)
 
 spacer::spacer(const implementation::builder_spacer& builder, const std::string& w, const std::string& h)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 	, width_(w)
 	, height_(h)
 {

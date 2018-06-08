@@ -40,7 +40,7 @@ namespace gui2
 REGISTER_WIDGET(scroll_label)
 
 scroll_label::scroll_label(const implementation::builder_scroll_label& builder)
-	: scrollbar_container(builder, get_control_type())
+	: scrollbar_container(builder, type())
 	, state_(ENABLED)
 	, wrap_on_(builder.wrap_on)
 	, text_alignment_(builder.text_alignment)

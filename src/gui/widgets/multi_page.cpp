@@ -34,7 +34,7 @@ namespace gui2
 REGISTER_WIDGET(multi_page)
 
 multi_page::multi_page(const implementation::builder_multi_page& builder)
-	: container_base(builder, get_control_type())
+	: container_base(builder, type())
 	, generator_(generator_base::build(true, true, generator_base::independent, false))
 	, page_builders_()
 {
