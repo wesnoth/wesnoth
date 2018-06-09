@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-06-03 16:42+0300\n"
-"PO-Revision-Date: 2018-05-12 18:15+0200\n"
+"PO-Revision-Date: 2018-05-26 16:55+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -2453,10 +2453,8 @@ msgstr ""
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:84
-#, fuzzy
-#| msgid "Switch Time of Day"
 msgid "Time of day modifier"
-msgstr "Přepnout denní dobu"
+msgstr "Modifikátor denní doby"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:85
@@ -3728,10 +3726,8 @@ msgstr "Pošli soukromou zprávu"
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:153
-#, fuzzy
-#| msgid "Moderation"
 msgid "Moderator Controls"
-msgstr "Moderování"
+msgstr "Ovládání moderátora"
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:173
@@ -3785,10 +3781,8 @@ msgstr ""
 
 #. [row]
 #: data/gui/window/logging.cfg:140
-#, fuzzy
-#| msgid "Visible in fog"
 msgid "Disable logging"
-msgstr "Viditelnost v mlze"
+msgstr "Vypnout logování"
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:117
@@ -3991,10 +3985,8 @@ msgstr "Použij nastavení z mapy"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/window/mp_create_game.cfg:314
-#, fuzzy
-#| msgid "Use map settings"
 msgid "Use scenario specific settings"
-msgstr "Použij nastavení z mapy"
+msgstr "Použij nastavení ze scénáře"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:330
@@ -4018,10 +4010,8 @@ msgstr "Příjem z každé vesnice za kolo"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:334
-#, fuzzy
-#| msgid "Village gold"
 msgid "Village Gold"
-msgstr "Zlato/Vesnice"
+msgstr "Zlato na vesnici"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:336
@@ -4030,10 +4020,8 @@ msgstr ""
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:336
-#, fuzzy
-#| msgid "Village gold"
 msgid "Village Support"
-msgstr "Zlato/Vesnice"
+msgstr "Podpora na vesnici"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:338
@@ -4115,10 +4103,8 @@ msgstr "Zásobárna"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:457
-#, fuzzy
-#| msgid "Actions"
 msgid "Action Bonus"
-msgstr "Akce"
+msgstr "Bonus za akci"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:457
@@ -4640,10 +4626,8 @@ msgstr "T"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:129
-#, fuzzy
-#| msgid "Available in game"
 msgid "Available at main menu"
-msgstr "Dostupné ve hře"
+msgstr "Dostupné v hlavní nabídce"
 
 #. [button]: id=btn_add_hotkey
 #: data/gui/window/preferences/02_hotkeys.cfg:241
@@ -4735,8 +4719,6 @@ msgstr "Zobrazuj náhodné animace jednotek"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:143
-#, fuzzy
-#| msgid "Continuously animate standing units in the battlefield"
 msgid "Continuously animate standing units on the battlefield"
 msgstr "Neustálá animace jednotek na bitevním poli"
 
@@ -5161,10 +5143,8 @@ msgstr "Střed"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:339
-#, fuzzy
-#| msgid "Draw Terrain Codes"
 msgid "Terrain Layers"
-msgstr "Zobrazuj kódy terénu"
+msgstr "Vrstvy terénu"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:384
@@ -5524,10 +5504,8 @@ msgid "Rectangle doesn't fit on canvas."
 msgstr "Obdélník se nevejde na plátno."
 
 #: src/gui/core/canvas.cpp:814
-#, fuzzy
-#| msgid "Rectangle doesn't fit on canvas."
 msgid "Rounded Rectangle doesn't fit on canvas."
-msgstr "Obdélník se nevejde na plátno."
+msgstr "Zaoblený obdélník se nevejde na plátno."
 
 #: src/gui/core/canvas.cpp:923 src/gui/core/canvas.cpp:928
 #: src/gui/core/canvas.cpp:933 src/gui/core/canvas.cpp:939
@@ -5818,10 +5796,8 @@ msgid ""
 msgstr ""
 
 #: src/gui/dialogs/addon/manager.cpp:801
-#, fuzzy
-#| msgid "Do you want to open this link?"
 msgid "Do you want to uninstall '$addon|'?"
-msgstr "Skutečně chcete otevřít tento odkaz?"
+msgstr "Chceš odinstalovat '$addon|'?"
 
 #: src/gui/dialogs/advanced_graphics_options.cpp:75
 msgid "No matching widget found for scaling option"
@@ -5841,10 +5817,8 @@ msgstr ""
 
 #: src/gui/dialogs/campaign_selection.cpp:274
 #: src/gui/dialogs/multiplayer/lobby.cpp:462
-#, fuzzy
-#| msgid "Modifications"
 msgid "active_modifications^None"
-msgstr "Rozšíření"
+msgstr "Žádné"
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:66
 msgid "$requester requires the following modifications to be enabled:"
@@ -5903,10 +5877,8 @@ msgid "Open"
 msgstr "Otevřít"
 
 #: src/gui/dialogs/file_dialog.cpp:306
-#, fuzzy
-#| msgid "Save already exists. Do you want to overwrite it?"
 msgid "The file already exists. Do you wish to overwrite it?"
-msgstr "Tato uložená pozice již existuje. Chceš ji přepsat?"
+msgstr "Tento soubor již existuje. Chceš ho přepsat?"
 
 #: src/gui/dialogs/file_dialog.cpp:330
 msgid "The file or folder $path cannot be created."
@@ -6192,10 +6164,8 @@ msgid "$game_name (Era: $era_name)"
 msgstr "$game_name (Éra: $era_name)"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:447
-#, fuzzy
-#| msgid "addon_state^Not installed"
 msgid "era_or_mod^not installed"
-msgstr "Nenainstalované"
+msgstr "Nenainstalováno"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:450
 msgid "Era"
@@ -6371,7 +6341,7 @@ msgstr "otrapa"
 #: src/gui/dialogs/preferences_dialog.cpp:245
 #: src/gui/dialogs/preferences_dialog.cpp:305
 msgid "No username specified"
-msgstr ""
+msgstr "Nebylo zvoleno uživatelské jméno"
 
 #: src/gui/dialogs/preferences_dialog.cpp:263
 msgid "Invalid username"
@@ -7620,6 +7590,9 @@ msgstr ""
 
 #~ msgid "Deterministic mode"
 #~ msgstr "Deterministický mód"
+
+#~ msgid "$min to $max"
+#~ msgstr "$min do $max"
 
 #~ msgid "Wooden Open Door"
 #~ msgstr "Otevřené dřevěné dveře"

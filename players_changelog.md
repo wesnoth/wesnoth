@@ -10,7 +10,7 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
    * Secrets of the Ancients:
      * Fix S09 Training Session not ending when all dark adepts die (Bug #3192)
  ### Language and i18n
-   * Updated translations: British English, Chinese (Traditional), French,
+   * Updated translations: British English, Chinese (Traditional), Czech, French,
      Italian, Scottish Gaelic, Spanish.
  ### Music and sound effects
    * The music now changes immediately when you load a save file (issue #2602)

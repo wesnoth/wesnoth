@@ -14,7 +14,7 @@
    * Tutorial:
      * S2: made enemy starting gold equal to that of the player.
  ### Language and i18n
-   * Updated translations: British English, Chinese (Traditional), French,
+   * Updated translations: British English, Chinese (Traditional), Czech, French,
      Italian, Scottish Gaelic, Spanish
  ### Multiplayer server
    * Fixed lan_server option not causing the server to exit once vacated, e.g.
