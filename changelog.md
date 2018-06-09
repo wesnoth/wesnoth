@@ -13,6 +13,8 @@
      * Fix S09 Training Session not ending when all dark adepts die (Bug #3192)
    * Tutorial:
      * S2: made enemy starting gold equal to that of the player.
+   * Under the Burning Suns:
+     * Added portrait and updated sprite for Giant Ant.
  ### Language and i18n
    * Updated translations: British English, Chinese (Traditional), Czech, French,
      Italian, Japanese, Scottish Gaelic, Spanish
