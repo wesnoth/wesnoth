@@ -26,6 +26,9 @@
      game (issue #3206).
  ### Music and sound effects
    * The music now changes immediately when you load a save file (issue #2602).
+   * Fixed Lua errors when setting a music track that cannot be found when the
+     playlist is already empty, e.g. if there's no music installed for the
+     game (issue #3194).
  ### WML engine
    * Removed validation to ensure units cannot have negative hitpoints. We
      learned that the ability to create such units is documented, and thus
@@ -44,9 +47,6 @@
      be initially selected in the Unit Attack dialog. This bug also had the
      potential to cause units to the wrong attack when  engaging or viewing
      damage calculations.
-   * Fixed Lua errors when setting a music track that cannot be found when the
-     playlist is already empty, e.g. if there's no music installed for the
-     game (issue #3194).
    * Fixed [scenario] map_file= being unusable in most circumstances.
 
 ## Version 1.14.2
