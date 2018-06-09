@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "POT-Creation-Date: 2018-06-03 16:42+0300\n"
-"PO-Revision-Date: 2018-06-04 02:40+0200\n"
+"PO-Revision-Date: 2018-06-10 01:19+0200\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -116,9 +116,8 @@ msgstr "KOMMANDOZEILENOPTIONEN"
 #. type: TP
 #: doc/man/wesnoth.6:45
 #, no-wrap
-#| msgid "B<--strict-validation>"
 msgid "B<--all-translations>"
-msgstr ""
+msgstr "B<--all-translations>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:49
@@ -126,6 +125,8 @@ msgid ""
 "Show all translations in the in-game language selection list, even if they are "
 "deemed insufficiently complete."
 msgstr ""
+"Zeige alle Übersetzungen in der Auswahlliste im Spiel an, egal wie weit sie "
+"übersetzt sind."
 
 # type: TP
 #. type: TP
@@ -406,12 +407,6 @@ msgstr "B<--log->I<stufe>B<=>I<Domäne1>B<,>I<Domäne2>B<,>I<...>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:146
-#, fuzzy
-#| msgid ""
-#| "sets the severity level of the log domains.  B<all> can be used to match any "
-#| "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
-#| "\\ B<none>.  By default the B<warning> level is used for most domains, but "
-#| "B<deprecation> defaults to none."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,\\ "
@@ -422,7 +417,7 @@ msgstr ""
 "zu verwenden. Verfügbare I<Stufen>: B<error>,\\ B<warning>,\\ B<info>,\\ "
 "B<debug>,\\ B<none>. Für die meisten Logdomänen wird standardmäßig wird die "
 "Stufe B<warning> verwendet, die B<deprecation> Domäne dagegen benutzt B<none> "
-"als Voreinstellung sofern nicht die B<-d> Option gesetzt ist."
+"als Voreinstellung sofern nicht die B<-d> Option ebenfalls gesetzt ist."
 
 # type: TP
 #. type: TP
@@ -868,7 +863,7 @@ msgstr ""
 #: doc/man/wesnoth.6:291
 #, no-wrap
 msgid "B<--translations-over>I<\\ percent>"
-msgstr ""
+msgstr "B<--translations-over>I<\\ Prozent>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:297
@@ -876,6 +871,8 @@ msgid ""
 "Set the standard for deeming a translation is complete enough to show in the in-"
 "game language list to I<percent>.  Valid values are 0 to 100."
 msgstr ""
+"Stellt ein zu wie viel I<Prozent> eine Sprache übersetzt sein muss, um in der "
+"Liste im Spiel angezeigt zu werden, gültige Werte sind B<0> bis B<100>."
 
 # type: TP
 #. type: TP
@@ -1520,8 +1517,8 @@ msgid ""
 "sets the maximum number of waiting worker threads for network I/O to n "
 "(default: B<5>,\\ max:\\ B<30>)."
 msgstr ""
-"Legt die maximale Anzahl an Arbeiterthreads für Netzwerk E/A fest. (Standard: "
-"B<5>,\\ Maximum:\\ B<30>)"
+"Legt die maximale Anzahl an für Netzwerk E/A reservierten Arbeiterthreads fest. "
+"(Standard: B<5>,\\ Maximum:\\ B<30>)"
 
 # type: TP
 #. type: TP

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-06-03 16:42+0300\n"
-"PO-Revision-Date: 2018-06-03 21:13+0200\n"
+"PO-Revision-Date: 2018-06-10 01:10+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -2449,12 +2449,12 @@ msgstr "Sortieren nach:"
 #. [toggle_button]: id=sort_name
 #: data/gui/window/campaign_dialog.cfg:227
 msgid "Sort by full campaign name in alphabetical order"
-msgstr "Sortiere nach vollen Kampagnennamen in alphabetischer Reihenfolge"
+msgstr "Sortiert nach Kampagnennamen in alphabetischer Reihenfolge"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:239
 msgid "Dates"
-msgstr "Datum"
+msgstr "Jahreszahl"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:240
@@ -2469,17 +2469,17 @@ msgstr "Modifikationen"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:409
-#, fuzzy
-#| msgid "Save Game"
 msgid "Save random seed"
-msgstr "Spiel speichern"
+msgstr "Speichere Startwert des Zufallsgenerators"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:411
 msgid ""
 "Makes the random number generator yield the same results even after "
 "reloading a game"
-msgstr "Zufällig generierte Zahlen bleiben auch nach einem Neustart die selben"
+msgstr ""
+"Der Zufallszahlengenerator erzeugt auch nach erneutem Laden des Spiels die "
+"gleichen Ergebnisse"
 
 #. [label]: id=title
 #. [slider]: id=enemey_gold_factor
@@ -5922,6 +5922,7 @@ msgstr "Version $version"
 msgid "Running on $os"
 msgstr "Läuft unter $os"
 
+# Ein Strich passt hier besser.
 #: src/gui/dialogs/game_version.cpp:226
 msgid "version^N/A"
 msgstr "-"
@@ -6403,16 +6404,13 @@ msgid "Room <i>“$name”</i> joined"
 msgstr "Raum <i>“$name”</i> betreten"
 
 #: src/gui/widgets/chatbox.cpp:393
-#, fuzzy
-#| msgid ""
-#| "Whisper session with <i>“$name”</i> started. If you do not want to "
-#| "receive messages from this user, type <i>/ignore $name</i>\n"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>"
 msgstr ""
-"Private Nachrichtensitzung mit $name gestartet. Wenn Ihr von diesem Benutzer "
-"keine Nachrichten mehr erhalten wollt, führt den Befehl »/ignore $name« aus\n"
+"Private Nachrichtensitzung mit <i>$name</i> gestartet. Wenn Ihr von diesem "
+"Benutzer keine Nachrichten mehr erhalten wollt, führt den Befehl »/ignore "
+"$name« aus."
 
 #: src/gui/widgets/chatbox.cpp:626
 msgid "$player has entered the room"
