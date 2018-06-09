@@ -228,6 +228,7 @@ public:
 	void last_recruit(const std::string & u_type) { last_recruit_ = u_type; }
 
 	const std::string& save_id() const { return info_.save_id; }
+	std::string save_id_or_number() const { return info_.save_id.empty() ? std::to_string(info_.side) : info_.save_id; }
 	void set_save_id(const std::string& save_id) { info_.save_id = save_id; }
 	const std::string& current_player() const { return info_.current_player; }
 

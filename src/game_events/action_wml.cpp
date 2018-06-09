@@ -471,7 +471,7 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 
 	for(int index = 0; index < int(resources::gameboard->teams().size()); ++index) {
 		LOG_NG << "for side " << index + 1 << "...\n";
-		const std::string player_id = resources::gameboard->teams()[index].save_id();
+		const std::string player_id = resources::gameboard->teams()[index].save_id_or_number();
 
 		if(resources::gameboard->teams()[index].recall_list().size() < 1) {
 			DBG_NG << "recall list is empty when trying to recall!\n"

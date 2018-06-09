@@ -1146,7 +1146,7 @@ void play_controller::play_side()
 		// This flag can be set by derived classes (in overridden functions).
 		player_type_changed_ = false;
 
-		statistics::reset_turn_stats(gamestate().board_.get_team(current_side()).save_id());
+		statistics::reset_turn_stats(gamestate().board_.get_team(current_side()).save_id_or_number());
 
 		play_side_impl();
 

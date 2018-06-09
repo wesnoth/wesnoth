@@ -71,7 +71,7 @@ namespace builtin_conditions {
 					if(counts == default_counts && match_count) {
 						break;
 					}
-					scoped_recall_unit auto_store("this_unit", team.save_id(), t);
+					scoped_recall_unit auto_store("this_unit", team.save_id_or_number(), t);
 					if(ufilt(*team.recall_list()[t])) {
 						++match_count;
 					}

@@ -41,7 +41,7 @@ typedef std::map<std::string,stats> team_stats_t;
 std::string get_team_save_id(const unit & u)
 {
 	assert(resources::gameboard);
-	return resources::gameboard->get_team(u.side()).save_id();
+	return resources::gameboard->get_team(u.side()).save_id_or_number();
 }
 
 struct scenario_stats
