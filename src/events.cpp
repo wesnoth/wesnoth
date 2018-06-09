@@ -45,9 +45,10 @@ struct invoked_function_data
 {
 	explicit invoked_function_data(const std::function<void(void)>& func)
 		: f(func)
-		, finished(false)
+		, finished()
 		, thrown_exception()
 	{
+		finished = false;
 	}
 
 	/** The actual function to call. */
