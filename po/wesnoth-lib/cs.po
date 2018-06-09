@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-05-12 18:15+0200\n"
+"PO-Revision-Date: 2018-05-26 16:55+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -935,8 +935,10 @@ msgstr "Otevřené dřevěné dveře"
 
 #. [terrain_type]: id=p_open_rusty
 #: data/core/terrain.cfg:1443
+#, fuzzy
+#| msgid "Rusty Gate"
 msgid "Rusty Open Gate"
-msgstr ""
+msgstr "Rezavá brána"
 
 #. [terrain_type]: id=p_open_wooden
 #: data/core/terrain.cfg:1457
@@ -2494,10 +2496,8 @@ msgstr ""
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:84
-#, fuzzy
-#| msgid "Switch Time of Day"
 msgid "Time of day modifier"
-msgstr "Přepnout denní dobu"
+msgstr "Modifikátor denní doby"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:85
@@ -3780,10 +3780,8 @@ msgstr "Pošli soukromou zprávu"
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:153
-#, fuzzy
-#| msgid "Moderation"
 msgid "Moderator Controls"
-msgstr "Moderování"
+msgstr "Ovládání moderátora"
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:173
@@ -4009,10 +4007,8 @@ msgstr "Použij nastavení z mapy"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/window/mp_create_game.cfg:314
-#, fuzzy
-#| msgid "Use map settings"
 msgid "Use scenario specific settings"
-msgstr "Použij nastavení z mapy"
+msgstr "Použij nastavení ze scénáře"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:330
@@ -4036,10 +4032,8 @@ msgstr "Příjem z každé vesnice za kolo"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:334
-#, fuzzy
-#| msgid "Village gold"
 msgid "Village Gold"
-msgstr "Zlato/Vesnice"
+msgstr "Zlato na vesnici"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:336
@@ -4048,10 +4042,8 @@ msgstr ""
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:336
-#, fuzzy
-#| msgid "Village gold"
 msgid "Village Support"
-msgstr "Zlato/Vesnice"
+msgstr "Podpora na vesnici"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:338
@@ -4133,10 +4125,8 @@ msgstr "Zásobárna"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:457
-#, fuzzy
-#| msgid "Actions"
 msgid "Action Bonus"
-msgstr "Akce"
+msgstr "Bonus za akci"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:457
@@ -4757,8 +4747,6 @@ msgstr "Zobrazuj náhodné animace jednotek"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:143
-#, fuzzy
-#| msgid "Continuously animate standing units in the battlefield"
 msgid "Continuously animate standing units on the battlefield"
 msgstr "Neustálá animace jednotek na bitevním poli"
 
@@ -5171,10 +5159,8 @@ msgstr "Střed"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:339
-#, fuzzy
-#| msgid "Draw Terrain Codes"
 msgid "Terrain Layers"
-msgstr "Zobrazuj kódy terénu"
+msgstr "Vrstvy terénu"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:384
@@ -5535,10 +5521,8 @@ msgid "Rectangle doesn't fit on canvas."
 msgstr "Obdélník se nevejde na plátno."
 
 #: src/gui/core/canvas.cpp:806
-#, fuzzy
-#| msgid "Rectangle doesn't fit on canvas."
 msgid "Rounded Rectangle doesn't fit on canvas."
-msgstr "Obdélník se nevejde na plátno."
+msgstr "Zaoblený obdélník se nevejde na plátno."
 
 #: src/gui/core/canvas.cpp:915 src/gui/core/canvas.cpp:920
 #: src/gui/core/canvas.cpp:925 src/gui/core/canvas.cpp:931
@@ -5829,10 +5813,8 @@ msgid ""
 msgstr ""
 
 #: src/gui/dialogs/addon/manager.cpp:800
-#, fuzzy
-#| msgid "Do you want to open this link?"
 msgid "Do you want to uninstall '$addon|'?"
-msgstr "Skutečně chcete otevřít tento odkaz?"
+msgstr "Chceš odinstalovat '$addon|'?"
 
 #: src/gui/dialogs/addon/manager.cpp:884 src/gui/dialogs/addon/manager.cpp:898
 #: src/gui/dialogs/campaign_selection.cpp:274
@@ -5913,10 +5895,8 @@ msgid "Open"
 msgstr "Otevřít"
 
 #: src/gui/dialogs/file_dialog.cpp:305
-#, fuzzy
-#| msgid "Save already exists. Do you want to overwrite it?"
 msgid "The file already exists. Do you wish to overwrite it?"
-msgstr "Tato uložená pozice již existuje. Chceš ji přepsat?"
+msgstr "Tento soubor již existuje. Chceš ho přepsat?"
 
 #: src/gui/dialogs/file_dialog.cpp:329
 msgid "The file or folder $path cannot be created."
@@ -6423,7 +6403,7 @@ msgstr "otrapa"
 #: src/gui/dialogs/preferences_dialog.cpp:249
 #: src/gui/dialogs/preferences_dialog.cpp:309
 msgid "No username specified"
-msgstr ""
+msgstr "Nebylo zvoleno uživatelské jméno"
 
 #: src/gui/dialogs/preferences_dialog.cpp:267
 msgid "Invalid username"
@@ -7617,10 +7597,8 @@ msgstr ""
 "Klíč '$deprecated_key' byl přejmenován na '$key' a ve verzi $removal_version "
 "bude odstraněna podpora původního tvaru."
 
-#, fuzzy
-#~| msgid "Visible in fog"
 #~ msgid "Disable logging"
-#~ msgstr "Viditelnost v mlze"
+#~ msgstr "Vypnout logování"
 
 #~ msgid ""
 #~ "A registered account on the Wesnoth forums is required to join the "
@@ -7632,30 +7610,32 @@ msgstr ""
 #~ msgid "Sign Up"
 #~ msgstr "Zaregistrovat"
 
-#, fuzzy
-#~| msgid "Available in game"
 #~ msgid "Available at main menu"
-#~ msgstr "Dostupné ve hře"
-
-#~ msgid "FPS limiter"
-#~ msgstr "Limitování FPS"
+#~ msgstr "Dostupné v hlavní nabídce"
 
 #~ msgid "The maximum text width is less than 1."
 #~ msgstr "Maximální šířka textu je menší než 1."
 
-#, fuzzy
-#~| msgid "Modifications"
 #~ msgid "active_modifications^None"
-#~ msgstr "Rozšíření"
+#~ msgstr "Žádné"
 
 #~ msgid "$game_name (Era: $era_name)"
 #~ msgstr "$game_name (Éra: $era_name)"
 
+#~ msgid "era_or_mod^not installed"
+#~ msgstr "Nenainstalováno"
+
 #~ msgid "Era"
 #~ msgstr "Éra"
 
+#~ msgid "$min to $max"
+#~ msgstr "$min do $max"
+
 #~ msgid "Quit to Main Menu"
 #~ msgstr "Vrátit se do hlavního menu"
+
+#~ msgid "FPS limiter"
+#~ msgstr "Limitování FPS"
 
 #~ msgid "Password Reminder"
 #~ msgstr "Připomenutí hesla"
