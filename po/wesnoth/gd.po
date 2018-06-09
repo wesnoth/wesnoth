@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-06-03 16:43+0300\n"
+"POT-Creation-Date: 2018-06-09 23:33+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: GunChleoc, 2017\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -4261,7 +4261,7 @@ msgstr "do-slànach"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:390 src/scripting/game_lua_kernel.cpp:2783
+#: data/lua/wml/message.lua:394 src/scripting/game_lua_kernel.cpp:2783
 #: src/scripting/game_lua_kernel.cpp:2818
 msgid "input"
 msgstr "ion-chur"
@@ -5447,11 +5447,11 @@ msgstr "leighiste"
 msgid "Ambushed!"
 msgstr "Fàth!"
 
-#: src/actions/move.cpp:1136
+#: src/actions/move.cpp:1130
 msgid "Failed teleport! Exit not empty"
 msgstr "Dh’fhàillig an tele-phortachadh! Chan eil an doras a-mach falamh"
 
-#: src/actions/move.cpp:1152
+#: src/actions/move.cpp:1146
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends chàirdeil"
@@ -5459,7 +5459,7 @@ msgstr[1] "$friends chàirdeil"
 msgstr[2] "$friends càirdeil"
 msgstr[3] "$friends càirdeil"
 
-#: src/actions/move.cpp:1153
+#: src/actions/move.cpp:1147
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies nàmhaid"
@@ -5467,11 +5467,11 @@ msgstr[1] "$enemies nàmhaid"
 msgstr[2] "$enemies nàimhdean"
 msgstr[3] "$enemies nàmhaid"
 
-#: src/actions/move.cpp:1154
+#: src/actions/move.cpp:1148
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Aonadan air faire! ($friendphrase, $enemyphrase)"
 
-#: src/actions/move.cpp:1158
+#: src/actions/move.cpp:1152
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Aonad nàmhad air faire!"
@@ -5479,7 +5479,7 @@ msgstr[1] "$enemies aonad nàmhad air faire!"
 msgstr[2] "$enemies aonadan nàmhad air faire!"
 msgstr[3] "$enemies aonad nàmhad air faire!"
 
-#: src/actions/move.cpp:1162
+#: src/actions/move.cpp:1156
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Aonad càirdeil air fàire"
@@ -5487,7 +5487,7 @@ msgstr[1] "$friends aonad càirdeil air fàire"
 msgstr[2] "$friends aonadan càirdeil air fàire"
 msgstr[3] "$friends aonad càirdeil air fàire"
 
-#: src/actions/move.cpp:1177
+#: src/actions/move.cpp:1171
 msgid "(press $hotkey to keep moving)"
 msgstr "(brùth air $hotkey gus leantainn air adhart leis a’ ghluasad)"
 
@@ -6250,19 +6250,19 @@ msgstr[1] "An innis thu seo dha ùghdar no neach-glèidhidh nan tuilleadan seo?"
 msgstr[2] "An innis thu seo dha ùghdar no neach-glèidhidh nan tuilleadan seo?"
 msgstr[3] "An innis thu seo dha ùghdar no neach-glèidhidh nan tuilleadan seo?"
 
-#: src/game_events/pump.cpp:481 src/game_launcher.cpp:911
+#: src/game_events/pump.cpp:476 src/game_launcher.cpp:911
 msgid "Error: "
 msgstr "Mearachd: "
 
-#: src/game_events/pump.cpp:483
+#: src/game_events/pump.cpp:478
 msgid "Warning: "
 msgstr "Rabhadh: "
 
-#: src/game_events/pump.cpp:485
+#: src/game_events/pump.cpp:480
 msgid "Debug: "
 msgstr "Dì-bhugachadh: "
 
-#: src/game_events/pump.cpp:487
+#: src/game_events/pump.cpp:482
 msgid "Info: "
 msgstr "Fios: "
 
@@ -7681,7 +7681,7 @@ msgstr ""
 "Chan urrainn dhut an ceannard agad a ghluasad air falbh bhon dhaingean le "
 "trusadh is ais-ghairm air fhàgail fhathast."
 
-#: src/mouse_events.cpp:994
+#: src/mouse_events.cpp:999
 msgid "This unit has no usable weapons."
 msgstr "Chan eil arm feumail air an aonad seo."
 

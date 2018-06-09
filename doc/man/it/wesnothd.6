@@ -22,9 +22,7 @@
 .
 .SH NOME
 .
-wesnothd \- Demone di rete per multigiocatore di Battle for
-\fBWesnoth\fPwesnothd \- Demone di rete per multigiocatore di Battle for
-\fBWesnoth\fP
+wesnothd \- Demone multigiocatore di rete per Battle for \fBWesnoth\fP
 .
 .SH SYNOPSIS
 .
@@ -84,28 +82,25 @@ rende più prolisso il log.
 .P
 [\fItag\fP]
 .IP
-\fIkey\fP="\fIvalue\fP"
+\fIchiave\fP="\fIvalore\fP"
 .IP
-\fIkey\fP="\fIvalue\fP,\fIvalue\fP,..."
+\fIchiave\fP="\fIvalore\fP,\fIvalore\fP,..."
 .P
 [/\fItag\fP]
 .
-.SS "Caratteri globali:"
+.SS "Chiavi globali:"
 .
 .TP 
 \fBallow_remote_shutdown\fP
-Se impostato su \fBno\fP (default), le richieste di spegnimento e ripartenza
-vengono ignorate a meno che non provengano dal socket. Impostalo a \fByes\fP
+Se impostata su \fBno\fP (default), le richieste di spegnimento e ripartenza
+vengono ignorate a meno che non provengano dal socket. Impostala a \fByes\fP
 per poter spegnere remotamente il server con una /query di un
 amministratore.
 .TP 
 \fBban_save_file\fP
 Percorso completo o relativo ad un file (compresso con gzip) che il server
 possa scrivere e leggere. L’elenco degli utenti messi al bando sarà
-conservato in questo file e letto a tutti gli avvii del server.Percorso
-completo o relativo ad un file (compresso con gzip) che il server possa
-scrivere e leggere. L’elenco degli utenti messi al bando sarà conservato in
-questo file e letto a tutti gli avvii del server.
+conservato in questo file e letto a tutti gli avvii del server.
 .TP 
 \fBcompress_stored_rooms\fP
 Determina se i file delle stanze debbano essere letti e scritti in forma
@@ -122,7 +117,7 @@ predefiniti (usati in mancanza di specifiche diverse) sono:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-Il path della fifo alla quale inviare i comandi del server (come in /query
+Il path del socket al quale inviare i comandi del server (come in /query
 \&... per wesnoth). Se non diversamente specificato invia allo standard
 utilizzato come path al momento della compilazione del sorgente (default:
 \fB/var/run/wesnothd/socket\fP).
@@ -156,8 +151,8 @@ significa la directory da cui è stato eseguito wesnothd.
 .TP 
 \fBrestart_command\fP
 Il comando che il server utilizza per lanciare un muovo processo server
-tramite il comando \fBrestart\fP. Può essere inviato soltanto tramite la
-fifo. Per dettagli, vedi i setaggi di \fBallow_remote_shutdown\fP.
+tramite il comando \fBrestart\fP. Può essere inviato soltanto tramite il
+socket. Per dettagli, vedi i setaggi di \fBallow_remote_shutdown\fP.
 .TP 
 \fBroom_save_file\fP
 Percorso del file in cui memorizzare le informazioni sulle stanze. Questo
@@ -197,8 +192,9 @@ Indirizzo del server a cui reindirizzare i collegamenti.
 Porta su cui connettersi.
 .TP 
 \fBversion\fP
-Una lista separata da virgole delle versioni da redirigere. Si comporta come
-\fBversions_accepted\fP per quello che riguarda lo schema dei caratteri jolly.
+Una lista separata da virgole delle versioni da reindirizzare. Si comporta
+come \fBversions_accepted\fP per quello che riguarda lo schema dei caratteri
+jolly.
 .RE
 .P
 \fB[ban_time]\fP Un’etichetta per definire parole chiave comode per periodi di
@@ -208,7 +204,7 @@ messa al bando temporanei.
 \fBnome\fP
 Il nome usato per fare riferimento al periodo di messa al bando.
 .TP 
-\fBperiodo\fP
+\fBtime\fP
 Definizione del formato per la rappresentazione del periodo. Il formato è
 %d[%s[%d%s[...]]] dove %s sono s (secondi), m (minuti), h (ore), D (giorni),
 M (mesi) o Y (anni) e %d è un numero. Se non vengono specificati
@@ -300,7 +296,7 @@ Copyright \(co 2003\-2018 David White <davidnwhite@verizon.net>
 .br
 Questo gioco è rilasciato come Software Libero; viene rilasciato secondo i
 termini della licenza GPL versione 2 come pubblicata dalla Free Software
-Foundation. Non è fornita nessuna garanzia, né per la COMMERCIALIZZAZIONE né
+Foundation. Non è fornita NESSUNA garanzia, né per la COMMERCIALIZZAZIONE né
 per l’ADEGUATEZZA AD UNO SCOPO PARTICOLARE.
 .
 .SH "SEE ALSO"

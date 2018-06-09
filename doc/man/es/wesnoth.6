@@ -47,8 +47,8 @@ compártalas con otros.
 .
 .TP 
 \fB\-\-all\-translations\fP
-Show all translations in the in\-game language selection list, even if they
-are deemed insufficiently complete.
+Muestra todas las traducciones en la lista de selección de idioma del juego,
+incluso si se considera que no están lo bastante completas.
 .TP 
 \fB\-\-bunzip\fP\fI\ archivo_de_entrada.bz2\fP
 descomprime un archivo que debería estar en formato bzip2 y lo almacena sin
@@ -118,9 +118,12 @@ editor mostrará un diálogo de selección de archivos apuntando a éste.
 usa el idioma \fIlang\fP en esta sesión.  Ejemplo: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fInivel\fP\fB=\fP\fIdominio1\fP\fB,\fP\fIdominio2\fP\fB,\fP\fI...\fP
-sets the severity level of the log domains.  \fBall\fP can be used to match any
-log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default the \fBwarning\fP level is used for most domains, but
-\fBdeprecation\fP defaults to none unless combined with the \fB\-d\fP option.
+establece el nivel de gravedad del registro de los dominios. \fBall\fP puede
+utilizarse para coincidir con cualquier registro de un dominio. Los niveles
+disponibles son: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP. Por
+omisión se utiliza el nivel \fBwarning\fP para la mayoría de los dominios, pero
+\fBdeprecation\fP no determina ninguno a no se que se combine con la opción
+\fB\-d\fP.
 .TP 
 \fB\-\-log\-precise\fP
 muestra los marcadores de tiempo del archivo de registro con mayor precisión
@@ -247,8 +250,9 @@ ser alguno definido con una etiqueta WML \fB[test]\fP. Por omisión es
 iniciada con \fBmicro_ai_test\fP. Implica \fB\-\-nogui.\fP
 .TP 
 \fB\-\-translations\-over\fP\fI\ percent\fP
-Set the standard for deeming a translation is complete enough to show in the
-in\-game language list to \fIpercent\fP.  Valid values are 0 to 100.
+Establece a \fIpercent\fP el estándar para considerar que una traducción está
+lo bastante completa como para mostrarse en la lista de idiomas del juego.
+Los valores válidos van desde 0 hasta 100.
 .TP 
 \fB\-u,\ \-\-unit\fP\fI\ scenario\-id\fP
 ejecuta el escenario de prueba especificado para testar una unidad. Implica

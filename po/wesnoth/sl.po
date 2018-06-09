@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-06-03 16:43+0300\n"
+"POT-Creation-Date: 2018-06-09 23:33+0300\n"
 "PO-Revision-Date: 2010-10-04 14:32+0100\n"
 "Last-Translator: Klemen Košir <klemen913@gmail.com>\n"
 "Language-Team: Slovenian\n"
@@ -3862,7 +3862,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:390 src/scripting/game_lua_kernel.cpp:2783
+#: data/lua/wml/message.lua:394 src/scripting/game_lua_kernel.cpp:2783
 #: src/scripting/game_lua_kernel.cpp:2818
 msgid "input"
 msgstr ""
@@ -4974,11 +4974,11 @@ msgstr "Princesa"
 msgid "Ambushed!"
 msgstr "Zaseda!"
 
-#: src/actions/move.cpp:1136
+#: src/actions/move.cpp:1130
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
-#: src/actions/move.cpp:1152
+#: src/actions/move.cpp:1146
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
@@ -4986,7 +4986,7 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/actions/move.cpp:1153
+#: src/actions/move.cpp:1147
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
@@ -4994,12 +4994,12 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/actions/move.cpp:1154
+#: src/actions/move.cpp:1148
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Enote opažene! ($friends zavezniških, $enemies sovražnih)"
 
-#: src/actions/move.cpp:1158
+#: src/actions/move.cpp:1152
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
@@ -5008,7 +5008,7 @@ msgstr[1] "Sovražne enote opažene!"
 msgstr[2] "Sovražne enote opažene!"
 msgstr[3] "Sovražne enote opažene!"
 
-#: src/actions/move.cpp:1162
+#: src/actions/move.cpp:1156
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
@@ -5017,7 +5017,7 @@ msgstr[1] "Zavezniške enote opažene!"
 msgstr[2] "Zavezniške enote opažene!"
 msgstr[3] "Zavezniške enote opažene!"
 
-#: src/actions/move.cpp:1177
+#: src/actions/move.cpp:1171
 #, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(za nadaljevanje pritisnite $hotkey)"
@@ -5762,19 +5762,19 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/game_events/pump.cpp:481 src/game_launcher.cpp:911
+#: src/game_events/pump.cpp:476 src/game_launcher.cpp:911
 msgid "Error: "
 msgstr "Napaka:"
 
-#: src/game_events/pump.cpp:483
+#: src/game_events/pump.cpp:478
 msgid "Warning: "
 msgstr "Opozorilo:"
 
-#: src/game_events/pump.cpp:485
+#: src/game_events/pump.cpp:480
 msgid "Debug: "
 msgstr ""
 
-#: src/game_events/pump.cpp:487
+#: src/game_events/pump.cpp:482
 msgid "Info: "
 msgstr ""
 
@@ -7223,7 +7223,7 @@ msgid ""
 msgstr ""
 "Če hočete vpoklicati ali priklicati enote, mora biti vaš voditelj v trdnjavi."
 
-#: src/mouse_events.cpp:994
+#: src/mouse_events.cpp:999
 #, fuzzy
 msgid "This unit has no usable weapons."
 msgstr "Ni orožja"

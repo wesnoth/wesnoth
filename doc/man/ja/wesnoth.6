@@ -38,8 +38,7 @@ Battle for \fBWesnoth\fPはターン制のファンタジー戦略ゲームで�
 .
 .TP 
 \fB\-\-all\-translations\fP
-Show all translations in the in\-game language selection list, even if they
-are deemed insufficiently complete.
+ゲーム内の言語選択リストに、翻訳率が低いものを含むすべての翻訳を表示する。
 .TP 
 \fB\-\-bunzip\fP\fI\ infile.bz2\fP
 bzip2 フォーマットのファイルを展開して .bz2 という拡張子を除いたファイルに保存する。 \fIinfile.bz2\fP は削除される。
@@ -96,9 +95,9 @@ gzip フォーマットのファイルを展開して .gz という拡張子を�
 このセッションで使用する言語 \fIlang\fP 例: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
-sets the severity level of the log domains.  \fBall\fP can be used to match any
-log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default the \fBwarning\fP level is used for most domains, but
-\fBdeprecation\fP defaults to none unless combined with the \fB\-d\fP option.
+ログ領域(domain)の厳密さのレベルを設定する。 \fBall\fP は、どのログ領域にも対応させるために利用される。有効なレベルは以下の通り。
+\fBerror\fP、\ \fBwarning\fP、\ \fBinfo\fP、\ \fBdebug\fP。既定値では \fBwarning\fP
+レベルがほとんどのログ領域に使用されるが、 \fB\-d\fP オプションと組み合わせた場合を除いて \fBdeprecation\fPは無効である。
 .TP 
 \fB\-\-log\-precise\fP
 より正確なログファイルの時刻を表示する。
@@ -201,8 +200,8 @@ WML\ タグが定義されるべきである。デフォルトでは\fBtest\fP�
 \fB\-\-nogui\fPが指定される。
 .TP 
 \fB\-\-translations\-over\fP\fI\ percent\fP
-Set the standard for deeming a translation is complete enough to show in the
-in\-game language list to \fIpercent\fP.  Valid values are 0 to 100.
+言語の基準翻訳率を I に設定する。言語の翻訳率が \fIpercent\fP を越えている場合のみ、ゲーム内の言語リストに表示される。有効な値は 0 から
+100 。
 .TP 
 \fB\-u,\ \-\-unit\fP\fI\ scenario\-id\fP
 指定されたテストシナリオをユニットテストとして実行する。 \fB\-\-nogui\fP を伴う。

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.10+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-06-03 16:43+0300\n"
+"POT-Creation-Date: 2018-06-09 23:33+0300\n"
 "PO-Revision-Date: 2015-08-08 13:56+0300\n"
 "Last-Translator: Gvido Bruveris <huhims@gmail.com>\n"
 "Language-Team: none\n"
@@ -3839,7 +3839,7 @@ msgstr "nedziedināms"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:390 src/scripting/game_lua_kernel.cpp:2783
+#: data/lua/wml/message.lua:394 src/scripting/game_lua_kernel.cpp:2783
 #: src/scripting/game_lua_kernel.cpp:2818
 msgid "input"
 msgstr ""
@@ -4971,43 +4971,43 @@ msgstr "izārstēta"
 msgid "Ambushed!"
 msgstr "Slēpnis!"
 
-#: src/actions/move.cpp:1136
+#: src/actions/move.cpp:1130
 msgid "Failed teleport! Exit not empty"
 msgstr "Teleportēšanās neizdevās! Izeja nav tukša"
 
-#: src/actions/move.cpp:1152
+#: src/actions/move.cpp:1146
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends draudzīga"
 msgstr[1] "$friends draudzīgas"
 msgstr[2] "$friends draudzīgu"
 
-#: src/actions/move.cpp:1153
+#: src/actions/move.cpp:1147
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies ienaidnieks"
 msgstr[1] "$enemies ienaidnieki"
 msgstr[2] "$enemies ienaidnieku"
 
-#: src/actions/move.cpp:1154
+#: src/actions/move.cpp:1148
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Pamanītas vienības! ($friendphrase, $enemyphrase)"
 
-#: src/actions/move.cpp:1158
+#: src/actions/move.cpp:1152
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Pamanīta $enemies ienaidnieka vienība!"
 msgstr[1] "Pamanītas $enemies ienaidnieka vienības!"
 msgstr[2] "Pamanītas $enemies ienaidnieka vienības!"
 
-#: src/actions/move.cpp:1162
+#: src/actions/move.cpp:1156
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Pamanīta $friends draudzīga vienība"
 msgstr[1] "Pamanītas $friends draudzīgas vienības"
 msgstr[2] "Pamanītas $friends draudzīgu vienību"
 
-#: src/actions/move.cpp:1177
+#: src/actions/move.cpp:1171
 msgid "(press $hotkey to keep moving)"
 msgstr "(nospied $hotkey, lai turpinātu pārvietoties)"
 
@@ -5727,19 +5727,19 @@ msgstr[0] "Paziņo to autoram kas izgatavoja papildinājumu."
 msgstr[1] "Paziņo to autoriem kas izgatavoja papildinājumu."
 msgstr[2] "Paziņo to autoriem kas izgatavoja papildinājumu."
 
-#: src/game_events/pump.cpp:481 src/game_launcher.cpp:911
+#: src/game_events/pump.cpp:476 src/game_launcher.cpp:911
 msgid "Error: "
 msgstr "Kļūda: "
 
-#: src/game_events/pump.cpp:483
+#: src/game_events/pump.cpp:478
 msgid "Warning: "
 msgstr "Brīdinājums:"
 
-#: src/game_events/pump.cpp:485
+#: src/game_events/pump.cpp:480
 msgid "Debug: "
 msgstr "Atkļūdot: "
 
-#: src/game_events/pump.cpp:487
+#: src/game_events/pump.cpp:482
 msgid "Info: "
 msgstr "Informācija: "
 
@@ -7219,7 +7219,7 @@ msgstr ""
 "Tu nevari pārvietot savu vadoni prom no torņa ar kādām neizpildītām "
 "plānotajām iesaukšanām."
 
-#: src/mouse_events.cpp:994
+#: src/mouse_events.cpp:999
 #, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit has no usable weapons."

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-06-03 16:43+0300\n"
+"POT-Creation-Date: 2018-06-09 23:33+0300\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -3865,7 +3865,7 @@ msgstr "𐑳𐑯𐑢𐑷𐑒𐑩𐑚𐑤"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:390 src/scripting/game_lua_kernel.cpp:2783
+#: data/lua/wml/message.lua:394 src/scripting/game_lua_kernel.cpp:2783
 #: src/scripting/game_lua_kernel.cpp:2818
 msgid "input"
 msgstr ""
@@ -4995,39 +4995,39 @@ msgstr "𐑒𐑘𐑫𐑮𐑟"
 msgid "Ambushed!"
 msgstr "𐑨𐑥𐑚𐑫𐑖𐑑!"
 
-#: src/actions/move.cpp:1136
+#: src/actions/move.cpp:1130
 msgid "Failed teleport! Exit not empty"
 msgstr "𐑓𐑱𐑤𐑛 𐑑𐑧𐑤𐑩𐑐𐑹𐑑! 𐑧𐑜𐑟𐑦𐑑 𐑯𐑪𐑑 𐑧𐑥𐑐𐑑𐑦"
 
-#: src/actions/move.cpp:1152
+#: src/actions/move.cpp:1146
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 𐑓𐑮𐑧𐑯𐑛𐑤𐑦"
 msgstr[1] "$friends 𐑓𐑮𐑧𐑯𐑛𐑤𐑦"
 
-#: src/actions/move.cpp:1153
+#: src/actions/move.cpp:1147
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 𐑧𐑯𐑩𐑥𐑦"
 msgstr[1] "$enemies 𐑧𐑯𐑩𐑥𐑦"
 
-#: src/actions/move.cpp:1154
+#: src/actions/move.cpp:1148
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "𐑿𐑯𐑦𐑑𐑕 𐑕𐑲𐑑𐑩𐑛! ($friendphrase, $enemyphrase)"
 
-#: src/actions/move.cpp:1158
+#: src/actions/move.cpp:1152
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "𐑧𐑯𐑩𐑥𐑦 𐑿𐑯𐑦𐑑 𐑕𐑲𐑑𐑩𐑛!"
 msgstr[1] "$enemies 𐑧𐑯𐑩𐑥𐑦 𐑿𐑯𐑦𐑑𐑕 𐑕𐑲𐑑𐑩𐑛!"
 
-#: src/actions/move.cpp:1162
+#: src/actions/move.cpp:1156
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "𐑓𐑮𐑧𐑯𐑛𐑤𐑦 𐑿𐑯𐑦𐑑 𐑕𐑲𐑑𐑩𐑛"
 msgstr[1] "$friends 𐑓𐑮𐑧𐑯𐑛𐑤𐑦 𐑿𐑯𐑦𐑑𐑕 𐑕𐑲𐑑𐑩𐑛"
 
-#: src/actions/move.cpp:1177
+#: src/actions/move.cpp:1171
 msgid "(press $hotkey to keep moving)"
 msgstr "(𐑐𐑮𐑧𐑕 $hotkey 𐑑 𐑒𐑰𐑐 𐑥𐑵𐑝𐑦𐑙)"
 
@@ -5775,19 +5775,19 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/game_events/pump.cpp:481 src/game_launcher.cpp:911
+#: src/game_events/pump.cpp:476 src/game_launcher.cpp:911
 msgid "Error: "
 msgstr "𐑻𐑹: "
 
-#: src/game_events/pump.cpp:483
+#: src/game_events/pump.cpp:478
 msgid "Warning: "
 msgstr "𐑢𐑹𐑯𐑦𐑙: "
 
-#: src/game_events/pump.cpp:485
+#: src/game_events/pump.cpp:480
 msgid "Debug: "
 msgstr "𐑛𐑰𐑚𐑳𐑜: "
 
-#: src/game_events/pump.cpp:487
+#: src/game_events/pump.cpp:482
 msgid "Info: "
 msgstr "𐑦𐑯𐑓𐑴: "
 
@@ -7263,7 +7263,7 @@ msgid ""
 "recalls left."
 msgstr "𐑿 𐑥𐑳𐑕𐑑 𐑣𐑨𐑝 𐑿𐑼 𐑤𐑰𐑛𐑻 𐑪𐑯 𐑩 𐑒𐑰𐑐 𐑑 𐑮𐑩𐑒𐑮𐑵𐑑 𐑹 𐑮𐑰𐑒𐑷𐑤 𐑿𐑯𐑦𐑑𐑕."
 
-#: src/mouse_events.cpp:994
+#: src/mouse_events.cpp:999
 #, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit has no usable weapons."
