@@ -103,10 +103,9 @@ msgstr "オプション"
 
 #. type: TP
 #: doc/man/wesnoth.6:45
-#, fuzzy, no-wrap
-#| msgid "B<--strict-validation>"
+#, no-wrap
 msgid "B<--all-translations>"
-msgstr "B<--strict-validation>"
+msgstr "B<--all-translations>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:49
@@ -114,6 +113,7 @@ msgid ""
 "Show all translations in the in-game language selection list, even if they "
 "are deemed insufficiently complete."
 msgstr ""
+"ゲーム内の言語選択リストに、翻訳率が低いものを含むすべての翻訳を表示する。"
 
 #. type: TP
 #: doc/man/wesnoth.6:49
@@ -359,22 +359,17 @@ msgstr "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:146
-#, fuzzy
-#| msgid ""
-#| "sets the severity level of the log domains.  B<all> can be used to match "
-#| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>,\\ B<none>.  By default the B<warning> level is used for most "
-#| "domains, but B<deprecation> defaults to none."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
 "\\ B<none>.  By default the B<warning> level is used for most domains, but "
 "B<deprecation> defaults to none unless combined with the B<-d> option."
 msgstr ""
-"ログ領域（log domain）の厳密さのレベルを設定する。 B<all> は、どのログ領域に"
-"も対応させるために利用される。有効なレベルは以下の通り。 B<error>、\\ "
+"ログ領域(domain)の厳密さのレベルを設定する。 B<all> は、どのログ領域にも対応"
+"させるために利用される。有効なレベルは以下の通り。 B<error>、\\ "
 "B<warning>、\\ B<info>、\\ B<debug>。既定値では B<warning> レベルがほとんどの"
-"ログ領域に使用されるが、B<deprecation>は無効である。"
+"ログ領域に使用されるが、 B<-d> オプションと組み合わせた場合を除いて "
+"B<deprecation>は無効である。"
 
 #. type: TP
 #: doc/man/wesnoth.6:146
@@ -781,7 +776,7 @@ msgstr ""
 #: doc/man/wesnoth.6:291
 #, no-wrap
 msgid "B<--translations-over>I<\\ percent>"
-msgstr ""
+msgstr "B<--translations-over>I<\\ percent>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:297
@@ -789,6 +784,8 @@ msgid ""
 "Set the standard for deeming a translation is complete enough to show in the "
 "in-game language list to I<percent>.  Valid values are 0 to 100."
 msgstr ""
+"言語の基準翻訳率を I に設定する。言語の翻訳率が I<percent> を越えている場合の"
+"み、ゲーム内の言語リストに表示される。有効な値は 0 から 100 。"
 
 #. type: TP
 #: doc/man/wesnoth.6:297

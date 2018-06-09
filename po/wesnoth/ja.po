@@ -5169,10 +5169,8 @@ msgstr ""
 "行うことはできます。"
 
 #: src/actions/advancement.cpp:225
-#, fuzzy
-#| msgid "No advancement"
 msgid "an advancement choice"
-msgstr "レベルアップなし"
+msgstr "レベルアップ先の選択"
 
 #: src/actions/attack.cpp:386 src/actions/attack.cpp:656
 #: src/actions/attack.cpp:1412
@@ -6072,7 +6070,7 @@ msgstr "不明な時代"
 #: src/game_initialization/lobby_data.cpp:345
 #: src/game_initialization/lobby_data.cpp:375
 msgid "scenario_abbreviation^S"
-msgstr ""
+msgstr "シ"
 
 #: src/game_initialization/lobby_data.cpp:364
 msgid "Remote scenario"
@@ -6081,7 +6079,7 @@ msgstr "リモートシナリオ"
 #: src/game_initialization/lobby_data.cpp:383
 #: src/game_initialization/lobby_data.cpp:406
 msgid "campaign_abbreviation^C"
-msgstr ""
+msgstr "キ"
 
 #: src/game_initialization/lobby_data.cpp:411
 msgid "Unknown scenario"
@@ -8234,12 +8232,3 @@ msgstr "$player の計画を非表示"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "行動予定オプション"
-
-#~ msgid "S"
-#~ msgstr "S"
-
-#~ msgid "C"
-#~ msgstr "C"
-
-#~ msgid "Unit with negative HP found"
-#~ msgstr "負の HP を持つユニットを発見"

@@ -2431,10 +2431,8 @@ msgstr "Mod"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:409
-#, fuzzy
-#| msgid "Save Game"
 msgid "Save random seed"
-msgstr "ゲームを保存"
+msgstr "乱数のシードを保存"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:411
@@ -6177,7 +6175,7 @@ msgstr "このゲームには時代を適用できません。"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:735
 msgid "number of players^$min to $max"
-msgstr ""
+msgstr "$min ～ $max"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:832
 msgid "The selected game has no sides!"
@@ -6379,16 +6377,12 @@ msgid "Room <i>“$name”</i> joined"
 msgstr "部屋「 $name 」に参加しました。"
 
 #: src/gui/widgets/chatbox.cpp:393
-#, fuzzy
-#| msgid ""
-#| "Whisper session with <i>“$name”</i> started. If you do not want to "
-#| "receive messages from this user, type <i>/ignore $name</i>\n"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>"
 msgstr ""
 "<i>「 $name 」</i>とのささやきが開始されました。このユーザーからのメッセージ"
-"を受けとりたくなければ、<i>/ignore $name</i>と入力してください。\n"
+"を受けとりたくなければ、<i>/ignore $name</i>と入力してください。"
 
 #: src/gui/widgets/chatbox.cpp:626
 msgid "$player has entered the room"
@@ -7491,24 +7485,3 @@ msgid ""
 msgstr ""
 "キー「$deprecated_key」は「$key」に名前が変更されました。「$deprecated_key」"
 "のサポートはバージョン$removal_versionで削除されます。"
-
-#~ msgid "Deterministic mode"
-#~ msgstr "決定論モード"
-
-#~ msgid "$min to $max"
-#~ msgstr "$min ～ $max"
-
-#~ msgid "Rusty Open Gate"
-#~ msgstr "開いた錆びた門"
-
-#~ msgid "Wooden Open Door"
-#~ msgstr "開いた木の扉"
-
-#~ msgid "Sort players:"
-#~ msgstr "プレイヤーの並び替え："
-
-#~ msgid "Friends first, ignored people last"
-#~ msgstr "友人を先に、無視対象を後に"
-
-#~ msgid "Alphabetically"
-#~ msgstr "アルファベット順"
