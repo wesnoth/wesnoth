@@ -124,7 +124,7 @@ void add_leader_filtered_recalls(const unit_const_ptr leader,
 		std::set<std::size_t>* already_added = nullptr)
 {
 	const team& leader_team = resources::gameboard->get_team(leader->side());
-	const std::string& save_id = leader_team.save_id();
+	std::string save_id = leader_team.save_id_or_number();
 
 	const unit_filter ufilt(vconfig(leader->recall_filter()));
 
@@ -234,7 +234,7 @@ RECRUIT_CHECK check_unit_recall_location(
 	// Make sure the recalling unit can recall this specific unit.
 	team& recall_team = (*resources::gameboard).get_team(recaller.side());
 	scoped_recall_unit this_unit(
-		"this_unit", recall_team.save_id(), recall_team.recall_list().find_index(recall_unit.id()));
+		"this_unit", recall_team.save_id_or_number(), recall_team.recall_list().find_index(recall_unit.id()));
 
 	const unit_filter ufilt(vconfig(recaller.recall_filter()));
 	if(!ufilt(recall_unit, map_location::null_location())) {
