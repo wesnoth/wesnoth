@@ -249,6 +249,7 @@
    * Fixed Lua errors when setting a music track that cannot be found when the
      playlist is already empty, e.g. if there's no music installed for the
      game (issue #3194).
+   * Fixed [scenario] map_file= being unusable in most circumstances.
 
 ## Version 1.13.12
  ### Security fixes
