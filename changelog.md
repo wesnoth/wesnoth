@@ -4,9 +4,11 @@
    * Efficiency improvements to filter evaluations in the Goto Micro AI and some
      AI helper functions
  ### Campaigns
-   * Dead Water
+   * Dead Water:
      * Fix possibility of villagers blocking pickup of sword in S10 The Flaming
        Sword (issue #3207).
+   * Descent Into Darkness:
+     * New Parthyn map in S1 and S6.
    * Northern Rebirth:
      * Reduced starting gold and income in scenarios 10 to 13
    * Secrets of the Ancients:
