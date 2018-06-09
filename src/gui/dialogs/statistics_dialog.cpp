@@ -45,8 +45,8 @@ REGISTER_DIALOG(statistics_dialog)
 
 statistics_dialog::statistics_dialog(const team& current_team)
 	: current_team_(current_team)
-	, campaign_(statistics::calculate_stats(current_team.save_id()))
-	, scenarios_(statistics::level_stats(current_team.save_id()))
+	, campaign_(statistics::calculate_stats(current_team.save_id_or_number()))
+	, scenarios_(statistics::level_stats(current_team.save_id_or_number()))
 	, scenario_index_(scenarios_.size() - 1)
 	, main_stat_table_()
 {

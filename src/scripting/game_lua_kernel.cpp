@@ -614,7 +614,7 @@ int game_lua_kernel::intf_match_unit(lua_State *L)
 			WRN_LUA << "but unit to match was on recall list. ";
 			WRN_LUA << "Thus the 3rd argument is ignored.\n";
 			team &t = board().get_team(side);
-			scoped_recall_unit auto_store("this_unit", t.save_id(), t.recall_list().find_index(u->id()));
+			scoped_recall_unit auto_store("this_unit", t.save_id_or_number(), t.recall_list().find_index(u->id()));
 			lua_pushboolean(L, unit_filter(filter).matches(*u, map_location()));
 			return 1;
 		}
@@ -626,7 +626,7 @@ int game_lua_kernel::intf_match_unit(lua_State *L)
 		map_location loc;
 		luaW_tolocation(L, 3, loc); // If argument 3 isn't a location, loc is unchanged
 		team &t = board().get_team(side);
-		scoped_recall_unit auto_store("this_unit", t.save_id(), t.recall_list().find_index(u->id()));
+		scoped_recall_unit auto_store("this_unit", t.save_id_or_number(), t.recall_list().find_index(u->id()));
 		lua_pushboolean(L, unit_filter(filter).matches(*u, loc));
 		return 1;
 	} else {
@@ -659,7 +659,7 @@ int game_lua_kernel::intf_get_recall_units(lua_State *L)
 		{
 			if (!filter.null()) {
 				scoped_recall_unit auto_store("this_unit",
-					t.save_id(), t.recall_list().find_index(u->id()));
+					t.save_id_or_number(), t.recall_list().find_index(u->id()));
 				if (!ufilt( *u, map_location() ))
 					continue;
 			}
