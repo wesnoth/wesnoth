@@ -246,6 +246,9 @@
      be initially selected in the Unit Attack dialog. This bug also had the
      potential to cause units to the wrong attack when  engaging or viewing
      damage calculations.
+   * Fixed Lua errors when setting a music track that cannot be found when the
+     playlist is already empty, e.g. if there's no music installed for the
+     game (issue #3194).
 
 ## Version 1.13.12
  ### Security fixes
