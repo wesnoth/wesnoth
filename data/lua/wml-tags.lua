@@ -277,17 +277,23 @@ function wml_actions.music(cfg)
 		wesnoth.music_list.play(cfg.name)
 	else
 		if not cfg.append then
-			if cfg.immediate then
+			if cfg.immediate and wesnoth.music_list.current_i then
 				wesnoth.music_list.current.once = true
 			end
 			wesnoth.music_list.clear()
 		end
+		local m = #wesnoth.music_list
 		wesnoth.music_list.add(cfg.name, not not cfg.immediate, cfg.ms_before or 0, cfg.ms_after or 0)
 		local n = #wesnoth.music_list
+		if n == 0 then
+			return
+		end
 		if cfg.shuffle == false then
 			wesnoth.music_list[n].shuffle = false
 		end
-		if cfg.title ~= nil then
+		-- Always overwrite shuffle even if the new track couldn't be added,
+		-- but title shouldn't be overwritten.
+		if cfg.title ~= nil and m ~= n then
 			wesnoth.music_list[n].title = cfg.title
 		end
 	end
