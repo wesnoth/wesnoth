@@ -17,6 +17,8 @@
    * Dead Water
      * Fix possibility of villagers blocking pickup of sword in S10 The Flaming
        Sword. (Bug # 3207)
+   * Descent Into Darkness:
+     * New Parthyn map in S1 and S6.
    * Eastern Invasion
      * Fixed some Lua errors in S05.
      * In 'Captured', fixed units incorrectly costing upkeep after leveling up.
