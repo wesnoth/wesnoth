@@ -6,11 +6,11 @@
  ### Campaigns
    * Dead Water
      * Fix possibility of villagers blocking pickup of sword in S10 The Flaming
-       Sword. (Bug # 3207)
+       Sword (issue #3207).
    * Northern Rebirth:
      * Reduced starting gold and income in scenarios 10 to 13
    * Secrets of the Ancients:
-     * Fix S09 Training Session not ending when all dark adepts die (Bug #3192)
+     * Fix S09 Training Session not ending when all dark adepts die (issue #3192)
    * Tutorial:
      * S2: made enemy starting gold equal to that of the player.
    * Under the Burning Suns:
@@ -35,7 +35,7 @@
    * [kill] animate=yes no longer scrolls to units through fog or shroud, thus
      matching 1.12's behavior again.
    * [message] displays the unit type name when a nameless unit speaks and no
-     custom caption= is specified (fixes #3211).
+     custom caption= is specified (issue #3211).
    * do_not_list=yes units are no longer excluded from the debug mode-only
      Create Unit dialog.
    * Fixed a rare issue where disabled attacks could cause the wrong attack to
