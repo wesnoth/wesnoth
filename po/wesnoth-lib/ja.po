@@ -914,13 +914,17 @@ msgstr "開いている木の扉"
 
 #. [terrain_type]: id=p_open_rusty
 #: data/core/terrain.cfg:1443
+#, fuzzy
+#| msgid "Rusty Gate"
 msgid "Rusty Open Gate"
-msgstr "開いた錆びた門"
+msgstr "錆びた門"
 
 #. [terrain_type]: id=p_open_wooden
 #: data/core/terrain.cfg:1457
+#, fuzzy
+#| msgid "Wooden Door"
 msgid "Wooden Open Door"
-msgstr "開いた木の扉"
+msgstr "木の扉"
 
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:1473
@@ -2514,7 +2518,7 @@ msgstr "Mod"
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:409
 msgid "Deterministic mode"
-msgstr "決定論モード"
+msgstr ""
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:411
@@ -3577,18 +3581,20 @@ msgstr "観戦"
 
 #. [label]
 #: data/gui/window/lobby_main.cfg:223
+#, fuzzy
+#| msgid "Players:"
 msgid "Sort players:"
-msgstr "プレイヤーの並び替え："
+msgstr "プレイヤー数："
 
 #. [toggle_button]: id=player_list_sort_relation
 #: data/gui/window/lobby_main.cfg:236
 msgid "Friends first, ignored people last"
-msgstr "友人を先に、無視対象を後に"
+msgstr ""
 
 #. [toggle_button]: id=player_list_sort_name
 #: data/gui/window/lobby_main.cfg:249
 msgid "Alphabetically"
-msgstr "アルファベット順"
+msgstr ""
 
 #. [widget]: id=tab_label
 #. [toggle_button]: id=filter_with_friends
@@ -6466,12 +6472,16 @@ msgid "whisper to $receiver"
 msgstr "$receiver にささやく"
 
 #: src/gui/widgets/chatbox.cpp:396
+#, fuzzy
+#| msgid ""
+#| "Whisper session with <i>“$name”</i> started. If you do not want to "
+#| "receive messages from this user, type <i>/ignore $name</i>"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>\n"
 msgstr ""
 "<i>「 $name 」</i>とのささやきが開始されました。このユーザーからのメッセージ"
-"を受けとりたくなければ、<i>/ignore $name</i>と入力してください。\n"
+"を受けとりたくなければ、<i>/ignore $name</i>と入力してください。"
 
 #: src/gui/widgets/chatbox.cpp:400
 msgid "Room <i>“$name”</i> joined"
@@ -7533,6 +7543,9 @@ msgstr ""
 "キー「$deprecated_key」は「$key」に名前が変更されました。「$deprecated_key」"
 "のサポートはバージョン$removal_versionで削除されます。"
 
+#~ msgid "Save random seed"
+#~ msgstr "乱数のシードを保存"
+
 #~ msgid "Open saves folder"
 #~ msgstr "保存フォルダを開く"
 
@@ -7586,7 +7599,7 @@ msgstr ""
 #~ msgid "Era"
 #~ msgstr "時代"
 
-#~ msgid "$min to $max"
+#~ msgid "number of players^$min to $max"
 #~ msgstr "$min ～ $max"
 
 #~ msgid ""
