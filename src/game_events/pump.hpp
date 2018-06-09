@@ -141,9 +141,6 @@ public:
 	/** Flushes WML messages and errors. */
 	void flush_messages();
 
-	/** This function can be used to detect when no WML/Lua has been executed. */
-	size_t wml_tracking();
-
 private:
 	bool filter_event(const event_handler& handler, const queued_event& ev);
 

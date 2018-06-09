@@ -838,14 +838,8 @@ namespace { // Private helpers for move_unit()
 	 */
 	void unit_mover::pump_sighted(const route_iterator & from)
 	{
-		const size_t track = resources::game_events->pump().wml_tracking();
-
-		auto pump_res = clearer_.fire_events();
-
-		if (track != resources::game_events->pump().wml_tracking()) {
-			// Some WML fired, so update our status.
-			post_wml(pump_res, from);
-		}
+		game_events::pump_result_t pump_res = clearer_.fire_events();
+		post_wml(pump_res, from);
 	}
 
 
