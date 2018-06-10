@@ -5,7 +5,6 @@
  ### Engine
    * Windows 7 is now the minimum supported Windows version.
  ### Language and i18n
-   * Fixed Logging Options tooltips not being translatable (bug #2837).
    * Updated translations: British English, Chinese (Simplified),
      Chinese (Traditional), Czech, French, Galician, German, Italian, Japanese,
      Polish, Scottish Gaelic, Slovak, Spanish, Ukrainian.
