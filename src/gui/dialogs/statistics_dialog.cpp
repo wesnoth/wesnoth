@@ -17,6 +17,7 @@
 
 #include "font/constants.hpp"
 #include "formatter.hpp"
+#include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/label.hpp"
@@ -242,11 +243,9 @@ void statistics_dialog::on_primary_list_select(window& window)
 		item["label"] = (formatter() << type->image() << "~RC(" << type->flag_rgb() << ">" << current_team_.color() << ")").str();
 		data.emplace("unit_image", item);
 
-		item["label"] = type->type_name();
+		// Note: the x here is a font::unicode_multiplication_sign
+		item["label"] = VGETTEXT("$count|× $name", {{"count", std::to_string(i.second)}, {"name", type->type_name()}});
 		data.emplace("unit_name", item);
-
-		item["label"] = (formatter() << i.second << font::unicode_multiplication_sign).str();
-		data.emplace("unit_count", item);
 
 		unit_list.add_row(data);
 	}
