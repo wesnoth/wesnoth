@@ -1,0 +1,154 @@
+#!/usr/bin/env python3
+'''
+Extracts a section of the changelog and converts it from Markdown to Steam's
+BBCode implementation.
+
+Copyright (C) 2018 by Iris Morelle <shadowm@wesnoth.org>
+Part of the Battle for Wesnoth Project <https://www.wesnoth.org/>
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, see <http://www.gnu.org/licenses/>.
+'''
+
+import argparse
+import re
+
+import io, os, sys
+
+
+LIST_ITEM_BASE_INDENT = 3
+LIST_ITEM_NESTED_INDENT = 2
+
+
+def warn(line, msg):
+    sys.stderr.write("Line {}: {}\n".format(line, msg))
+
+def list_items_to_bbcode(list_items):
+    current_depth = 1
+    lines = []
+    lines.append('[list]')
+    for depth, item in list_items:
+        if depth > current_depth:
+            lines[-1] += '[list]'
+        elif depth < current_depth:
+            lines.append('[/list]')
+        current_depth = depth
+        lines.append('[*]{}'.format(item))
+    for i in range(current_depth):
+        lines.append('[/list]')
+    return lines
+
+def process_changelog(file_handle, version_heading):
+    version_rx = re.compile(r'^\s*##\s*Version\s+(.*)\s*:?\s*$')
+    category_rx = re.compile(r'^\s*###\s*(.*)\s*:?\s*$')
+    list_item_start_rx = re.compile(r'^(\s+)\*\s*(.*)\s*:?\s*$')
+    list_item_cont_rx = re.compile(r'^(\s+)([^*].*)\s*$')
+
+    lines = []
+    list_items = []
+    lno = 0
+    in_section = False
+    in_list_item = 0
+
+    for line in file_handle:
+        lno += 1
+        if not in_section:
+            match = version_rx.search(line)
+            if match:
+                found_ver = match.group(1)
+                if found_ver == version_heading:
+                    in_section = True
+            continue
+        elif len(line.strip()) == 0:
+            # Empty line.
+            continue
+        else:
+            end_of_section = False
+            if version_rx.search(line):
+                # New section, we're done here.
+                end_of_section = True
+
+            # Entry category heading.
+            category = category_rx.search(line)
+
+            # New category or end of the section, we write the list into the
+            # output set.
+            if (category and list_items) or end_of_section:
+                # New section, spurt list
+                lines += list_items_to_bbcode(list_items)
+                in_list_item = 0
+                list_items = []
+
+            if category:
+                lines.append('[h1]{0}[/h1]'.format(category.group(1)))
+                continue
+
+            if end_of_section:
+                break
+
+            # Entry start.
+            list_item = list_item_start_rx.search(line)
+            if list_item:
+                indent = len(list_item.group(1))
+                if indent < LIST_ITEM_BASE_INDENT:
+                    warn(lno, "Bad base indent for list item (expected {}, got {}), list may be corrupted".format(indent, LIST_ITEM_BASE_INDENT))
+                depth = int((indent - LIST_ITEM_BASE_INDENT) / LIST_ITEM_NESTED_INDENT + 1)
+                if depth < in_list_item:
+                    # Stop current list, write it
+                    lines += list_items_to_bbcode(list_items)
+                    list_items = []
+                list_items.append([depth, list_item.group(2)])
+                in_list_item = depth
+                continue
+
+            # Entry continuation.
+            list_item = list_item_cont_rx.search(line)
+            if list_item:
+                if not in_list_item or not list_items:
+                    warn(lno, "Orphaned line is not part of a list item")
+                    continue
+                indent = len(list_item.group(1))
+                if indent < LIST_ITEM_BASE_INDENT + LIST_ITEM_NESTED_INDENT:
+                    warn(lno, "Bad base indent for list item continuation (expected {}, got {}), list may be corrupted".format(indent, LIST_ITEM_BASE_INDENT + LIST_ITEM_NESTED_INDENT))
+                depth = int((indent - LIST_ITEM_BASE_INDENT) / LIST_ITEM_NESTED_INDENT)
+                if depth != in_list_item:
+                    warn(lno, "Weird indent for list item continuation (expected {}, got {}), list may be corrupted".format(in_list_item, depth))
+                list_items[-1][1] += ' ' + list_item.group(2)
+                continue
+
+            warn(lno, "wut")
+
+    return lines
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('input_file', metavar='CHANGELOG_FILE')
+    parser.add_argument('version_heading', metavar='RELEASE_VERSION')
+
+    args = parser.parse_args()
+    input_file = args.input_file
+    version_heading = args.version_heading
+
+    try:
+        lines = ()
+        with open(input_file, 'r', encoding='utf-8') as changelog:
+            lines = process_changelog(changelog, version_heading.strip())
+        if not lines:
+            sys.exit("Could not find a changelog section for version {0}.".format(version_heading))
+        for line in lines:
+            sys.stdout.write(line + "\n")
+    except FileNotFoundError as err:
+        sys.exit("Could not open {0}, aborting.\n".format(err.filename))
+
+# kate: indent-mode normal; encoding utf-8; space-indent on;
