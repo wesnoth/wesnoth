@@ -13,7 +13,7 @@
    * OpenMP support has been removed. It is no longer an optional build-time dependency.
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
-   * Support to_location in [move_unit], taking a location ID
+   * Support to_location in [move_unit], taking a special location ID
    * Support dir in [move_unit] to perform relative movements
    * Support location_id in [teleport], [recall], [unstore_unit] for the target location
    * Support [filter_weapon] in leadership and resistance abilities,
@@ -36,8 +36,6 @@
    * Support usage and alignment in SUF
    * Deprecate [replace_map]map= in favor of map_data=
    * Add u and v variables in ~ADJUST_ALPHA() and ~CHAN()
-   * Add to_location in [move_unit], allowing use of special locations
-   * Add dir in [move_unit], allowing relative movements
    * Add clear_shroud in [move_unit] to clear shroud as the unit moves
    * Support male_voice and female_voice in [message]
    * Support [break], [continue], and [return] in [random_placement]
