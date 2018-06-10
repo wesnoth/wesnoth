@@ -4,6 +4,7 @@
      * S2 'Chase': improved behavior of undead side leader with custom AI
  ### Engine
    * Windows 7 is now the minimum supported Windows version.
+   * Removed incomplete joystick support.
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified),
      Chinese (Traditional), Czech, French, Galician, German, Italian, Japanese,
@@ -13,7 +14,7 @@
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a location ID
-   * Suppor dir in [move_unit] to perform relative movements
+   * Support dir in [move_unit] to perform relative movements
    * Support location_id in [teleport], [recall], [unstore_unit] for the target location
    * Support [filter_weapon] in leadership and resistance abilities,
      which activates the ability only when the affected unit is using
@@ -41,8 +42,6 @@
    * Support male_voice and female_voice in [message]
    * Support [break], [continue], and [return] in [random_placement]
    * [remove_sound_source] now accepts a comma-separated ID list
- ### Miscellaneous and bug fixes
-   * Removed incomplete joystick support.
 
 ## Version 1.14.3+dev
  ### User interface
