@@ -1,141 +1,16 @@
-TODO! REMOVE ALL DUPLICATE ENTRIES FOR CHANGES THAT BELONG UNDER THE 1.13.13 - 1.14.3 HEADINGS.
-
 ## Version 1.15.0-dev
- ### Security fixes
-   * Fixed an issue allowing MP lobby and whisper message origins to be spoofed
-     by clients.
- ### AI
-   * Fixed crash in presence of units with negative hitpoints (issue #3042).
-   * Fixed an AI assertion when a unit with one disabled attack attacked a unit
-     with no attacks or a single disabled attack.
-   * Experimental AI: fixed recruiting not working on maps without enemies, such
-     as the first two turns of Dark Forecast
-   * Experimental AI: fixed recruiting evaluations sometimes not being updated
-   * Efficiency improvements to filter evaluations in the Goto Micro AI and some
-     AI helper functions
  ### Campaigns
    * A Tale of Two Brothers
      * S2 'Chase': improved behavior of undead side leader with custom AI
-   * Dead Water
-     * Fix possibility of villagers blocking pickup of sword in S10 The Flaming
-       Sword. (Bug # 3207)
-   * Descent Into Darkness:
-     * New Parthyn map in S1 and S6.
-   * Eastern Invasion
-     * Fixed some Lua errors in S05.
-     * In 'Captured', fixed units incorrectly costing upkeep after leveling up.
-   * Northern Rebirth:
-     * S02.1 Infested Caves: keep side 8 AI leader from wandering off too far
-       and ending up on a keep with only one hex for recruiting
-     * S02.1 Infested Caves: minor map tweaks and improvements.
-     * Reduced starting gold and income in scenarios 10 to 13
-   * Sceptre of Fire:
-     * In 'Caverns of Flame', fixed various issues with the volcano eruption.
-   * Secrets of the Ancients
-     * Fixed several inconsistently spelled names.
-     * Fix S09 Training Session not ending when all dark adepts die (Bug #3192)
-   * The Hammer of Thursagan
-     * Fixed a misplaced door image in S12.
-     * S12 Fixed enemies from ai6 (south-east lich) going to the book (spider) room
-     * S12 Fixed north treasure chest disappearing
-   * The Rise of Wesnoth
-     * New set of story art.
-   * Tutorial:
-     * S2: made enemy starting gold equal to that of the player.
-   * Under the Burning Suns
-     * Changed Sun Singer movetype from float to foot.
-     * Added some Quenoth elf unit animations.
-     * Hide technical terrains in the Help browser (Human Ship, Lava overlay).
-     * New set of Quenoth faction and character portraits by LordBob.
-     * Updated sprites for several Quenoth units.
-     * Added custom graphics for the broken tree in S1.
-     * Fixed a bug in the formation ability causing defense bonuses not being
-       received in some cases.
  ### Engine
    * Windows 7 is now the minimum supported Windows version.
- ### Graphics
-   * Fixed a minor team coloring mistake in the north-facing Revenant standing
-     animation.
- ### Help browser
-   * Unit descriptions use the new multiplication sign format for attack lists
-     now (issue #2873).
  ### Language and i18n
-   * Fixed many cases of interpolated strings in the engine possibly having
-     their translations retrieved from the wrong textdomain and falling back
-     to the English original if that failed (PR #2711, bug #2709, bug #2732).
-   * Fixed parts of the MP game setup UI having their translations ignored by
-     the game (bug #2709).
-   * Fixed certain parts of the UI displaying unit stats and trait effects
-     having incomplete translations (bug #2732).
-   * Fixed "Level" label in unit descriptions in the help being untranslatable
-     (bug #2732)
-   * Fixed "Search" placeholder text in dialog item filters not being
-     translatable (bug #2709, bug #2732).
    * Fixed Logging Options tooltips not being translatable (bug #2837).
-   * Fixed Version label on the title screen not being translatable (issue #2914).
    * Updated translations: British English, Chinese (Simplified),
      Chinese (Traditional), Czech, French, Galician, German, Italian, Japanese,
      Polish, Scottish Gaelic, Slovak, Spanish, Ukrainian.
-   * Add command-line argument to disable the filtering of incomplete translations
-     in the language selection list.
- ### Lua API
-   * Fix wesnoth.show_popup_dialog and wesnoth.show_message_box not accepting
-     translatable strings
- ### Multiplayer
-   * A New Land: Fixed the scenario being broken.
-   * Added team color to a few background units missing in Aethermaw.
-   * Fixed an infinite loading screen if the server shut down or restarted
-     mid-login.
-   * Fixed an infinite loading screen when attempting to login with an
-     unregistered nickname followed by a registered one.
-   * Dark Forecast: Fixed possible Lua error when the weather changes.
- ### Multiplayer server
-   * Added support for matching user, IP, and email bans from a forums board
-     when the forum_user_handler is enabled and active. (IP and email bans with
-     wildcards are not supported yet.)
-   * Fixed various instances of the server crashing under certain conditions.
-   * Fixed lan_server option not causing the server to exit once vacated, e.g.
-     when using the Host Networked Game option from the Multiplayer menu in the
-     game (issue #3206).
- ### Music and sound effects
-   * The music now changes immediately when you load a save file (issue #2602).
-   * Fixed Lua errors when setting a music track that cannot be found when the
-     playlist is already empty, e.g. if there's no music installed for the
-     game (issue #3194).
  ### Packaging
    * OpenMP support has been removed. It is no longer an optional build-time dependency.
- ### Terrains
-   * Removed hidden terrains that were not supposed to make it to 1.14: ^Prg,
-     ^Prgo, ^Pwd, ^Pwdo
- ### Units
-   * Changed the plural name for the merfolk race from Mermen to Merfolk (issue #2940)
-     and replaced a few instances in core unit or terrain descriptions accordingly.
- ### User interface
-   * Swapped the position and formatting of game names and titles in the MP lobby.
-   * Made Faction Select button's purpose more clear in MP Staging.
-   * Implemented MP chat message history saving (issue #1194, issue #2802).
-   * Added a convenient button in Load Game to open your saves folder.
-   * Fixed context menus not dismissing on right click.
-   * Removed individual Join/Observe buttons for each game in the MP Lobby.
-   * Highlight the titles of MP games with vacant slots.
-   * Improved MP Lobby layout on low resolutions.
-   * Improved reporting of network errors in the MP lobby (issue #3005).
-   * Ensure the chat widget remains the correct size even after a window resize.
-   * Custom MP game names are now capped at 50 characters.
-   * Restored Era info to main MP game display.
-   * Improved the resolution selection criteria for the MP Lobby.
-   * List boxes (MP lobby game list in particular) now keep the scroll position
-     when they change, instead of keeping the selected item visible (issue #3016).
-   * Fixed MP lobby player list scrolling to top when it changes.
-   * Fixed inactive weapon specials being displayed in the Unit Attack dialog
-     unlike in 1.12 (issue #3033).
-   * Fixed the first unit sometimes not being selected when opening the Recall
-     dialog.
-   * Fixed a crash when using very large portraits in [message] (issue #2912)
-   * Added a button to access the version info dialog to Preferences.
-   * Removed player list sorting options in the MP lobby. The list is now
-     automatically sorted alphabetically, friends first.
-   * Rearranged campaign difficulty menu layout
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a location ID
@@ -157,7 +32,6 @@ TODO! REMOVE ALL DUPLICATE ENTRIES FOR CHANGES THAT BELONG UNDER THE 1.13.13 - 1
    * Support [set_variable]root=cube and root=_integer_
    * Support force_scroll in [move_units_fake] (default no)
    * Support facing= in [role][auto_recall]
-   * Support location_id in [teleport]
    * Support lists for special and special_active in SWF
    * Support usage and alignment in SUF
    * Deprecate [replace_map]map= in favor of map_data=
@@ -165,95 +39,11 @@ TODO! REMOVE ALL DUPLICATE ENTRIES FOR CHANGES THAT BELONG UNDER THE 1.13.13 - 1
    * Add to_location in [move_unit], allowing use of special locations
    * Add dir in [move_unit], allowing relative movements
    * Add clear_shroud in [move_unit] to clear shroud as the unit moves
-   * Fixed [modify_side] share_vision=yes not doing anything (bug #2850).
    * Support male_voice and female_voice in [message]
    * Support [break], [continue], and [return] in [random_placement]
    * [remove_sound_source] now accepts a comma-separated ID list
  ### Miscellaneous and bug fixes
-   * Fixed minimap buttons not doing anything (bug #2681)
-   * Fixed some hotkeys triggering multiple commands on GNU/Linux (bug #1736)
-   * Fixed events with an id but no name being rejected
-   * Fixed assertion when using [inspect]
-   * Fixed inability to deselect modifications in single-player
-   * Fixed infinite loading screen when logging in with an invalid name
-   * Improved UX in multiplayer when synced debug commands are used during a
-     game.
-   * Updated bundled Oldania font to version 1.007 (from 1.006).
-   * Added bold and italic Oldania font variants.
-   * Updated bundled DejaVu Sans fonts to version 2.37 (from 2.35).
-   * Fixed [chat] not working during [delay] or animations.
-   * Removed the Password Reminder option from the Login screen.
-   * Removed (optional) requirement of libpng from SCons and CMake and the
-     associated options as Wesnoth now uses SDL_image to write PNG files.
-   * Fixed regression where unit filters in [disable] weapon specials would not
-     match the attacking unit.
-   * Fixed images with no alpha channel rendering incorrectly.
-   * Fixed unit selection not persisting between uses of Create Unit.
-   * Fixed assertion when undoing actions in a synced context.
-   * Fixed assertion when saving game events mid-event.
-   * Fixed some MP passwords being saved incorrectly (issue #2745)
    * Removed incomplete joystick support.
-   * Fixed sometimes being unable to join MP games with non-required eras.
-   * Fixed locations not being added to the palette when loading a map (#1023)
-   * It is now possible to disable logdomains in the Logging Options dialog.
-   * Removed misleading tooltip text stating registered nicknames are optional for
-     the official MP server.
-   * Attempting to save a screenshot with an unsupported format now shows an error
-     message, instead of saving the screenshot as BMP with the requested extension.
-   * Fixed the wesnoth(6) manpage claiming the default log level is 'error' when it
-     has been 'warning' since version 1.9.0.
-   * Avoid trying to load invalid base64-encoded data URIs.
-   * wesnoth_addon_manager and the addons.wesnoth.org web index can now use data URIs.
-   * Implemented a workaround for an unhandled std::bad_cast from string comparison
-     functions that caused a crash-to-desktop when opening Preferences among others
-     (issue #3050).
-   * Fixed a crash when using certain invalid color= values.
-   * Fixed memory leak in terrain filter code. In a huge map with Silver Mages,
-     it could leak several gigabytes of memory in a long session.
-   * Fixed: unit halo remained after undoing a recall (issue #3065).
-   * Fixed: unit halo intensity doubled during AMLA animation.
-   * [change_theme] no longer causes a Lua error when theme= is not specified
-     instead of explicitly set to an empty string.
-   * Lua random map generator: fixed error when flipping map; specifically this
-     also fixes an assert at the start of HttT S7 (Sceptre of Fire) that had a
-     50% chance of being triggered
-   * Replaced deprecated Lua code and all remaining uses of FOREACH and MESSAGE
-     macros
-   * Fixed [color_adjust] interacting poorly with time of day color shifts and
-     values outside the [-255, 255] range (issue #3144).
-   * Fixed a regression from 1.13.10 where modification option values couldn't
-     be properly saved in arrays.
-   * Added deprecation notices for several macros that had them missing before.
-   * [message] no longer scrolls to units through fog or shroud so it matches
-     1.12's behavior.
-   * Fixed animation-wide text_color and blend_color keys being overwritten. This
-     fixes level-in and level-out animations sometimes fading to black instead of
-     white.
-   * Fixed [animate_unit] freezing the game when observing MP games (#2970).
-   * Fixed carryover behaving differently when loading a start-of-scenario save
-     (issue #3152).
-   * Fixed turn replay function in MP.
-   * Fixed savegames being created even when not needed (issue #3150).
-   * Fixed handling of extra_recruit in planning mode (issue #3100).
-   * Fixed handling of skirmisher in planning mode.
-   * Fixed handling of filter_recall in planning mode.
-   * Fixed possible segfault at game end.
-   * Fixed require_resource in [resource].
-   * Fixed require_scenario=yes not working with map_generation (issue #3105).
-   * Fixed many crashes and out-of-sync errors when using the planning mode.
-   * Fixed an occasional crash at the loading screen related to multi-thread
-     access of the image cache.
-   * [kill] animate=yes no longer scrolls to units through fog or shroud, thus
-     matching 1.12's behavior again.
-   * [message] displays the unit type name when a nameless unit speaks and no
-     custom caption= is specified (fixes #3211).
-   * do_not_list=yes units are no longer excluded from the debug mode-only
-     Create Unit dialog.
-   * Fixed a rare issue where disabled attacks could cause the wrong attack to
-     be initially selected in the Unit Attack dialog. This bug also had the
-     potential to cause units to the wrong attack when  engaging or viewing
-     damage calculations.
-   * Fixed [scenario] map_file= being unusable in most circumstances.
 
 ## Version 1.14.3+dev
  ### User interface
