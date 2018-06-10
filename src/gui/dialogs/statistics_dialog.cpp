@@ -30,24 +30,21 @@
 #include "gui/widgets/window.hpp"
 #include "team.hpp"
 #include "units/types.hpp"
-
 #include "utils/functional.hpp"
+
 #include <iostream>
 
 namespace gui2
 {
 namespace dialogs
 {
-
-static bool use_campaign = false;
-
 REGISTER_DIALOG(statistics_dialog)
 
 statistics_dialog::statistics_dialog(const team& current_team)
 	: current_team_(current_team)
 	, campaign_(statistics::calculate_stats(current_team.save_id_or_number()))
 	, scenarios_(statistics::level_stats(current_team.save_id_or_number()))
-	, scenario_index_(scenarios_.size() - 1)
+	, selection_index_(scenarios_.size()) // The extra All Scenarios menu entry makes size() a valid initial index.
 	, main_stat_table_()
 {
 }
@@ -64,23 +61,18 @@ void statistics_dialog::pre_show(window& window)
 	// Set up scenario menu
 	//
 	std::vector<config> menu_items;
+
+	// Keep this first!
+	menu_items.emplace_back("label", _("All Scenarios"));
+
 	for(const auto& scenario : scenarios_) {
 		menu_items.emplace_back("label", *scenario.first);
 	}
 
 	menu_button& scenario_menu = find_widget<menu_button>(&window, "scenario_menu", false);
 
-	scenario_menu.set_values(menu_items, scenario_index_);
+	scenario_menu.set_values(menu_items, selection_index_);
 	scenario_menu.connect_click_handler(std::bind(&statistics_dialog::on_scenario_select, this, std::ref(window)));
-
-	//
-	// Set up tab toggle
-	//
-	listbox& tab_bar = find_widget<listbox>(&window, "tab_bar", false);
-	tab_bar.select_row(use_campaign);
-
-	connect_signal_notify_modified(tab_bar,
-		std::bind(&statistics_dialog::on_tab_select, this, std::ref(window)));
 
 	//
 	// Set up primary stats list
@@ -95,7 +87,7 @@ void statistics_dialog::pre_show(window& window)
 
 inline const statistics::stats& statistics_dialog::current_stats()
 {
-	return use_campaign ? campaign_ : *scenarios_[scenario_index_].second;
+	return selection_index_ == 0 ? campaign_ : *scenarios_[selection_index_ - 1].second;
 }
 
 void statistics_dialog::add_stat_row(window& window, const std::string& type, const statistics::stats::str_int_map& value, const bool has_cost)
@@ -193,7 +185,7 @@ void statistics_dialog::update_lists(window& window)
 	//
 	// Update damage stats list
 	//
-	const bool show_this_turn = use_campaign || scenario_index_ + 1 == scenarios_.size();
+	const bool show_this_turn = selection_index_ == scenarios_.size();
 
 	listbox& damage_list = find_widget<listbox>(&window, "stats_list_damage", false);
 
@@ -216,24 +208,12 @@ void statistics_dialog::update_lists(window& window)
 	);
 }
 
-void statistics_dialog::on_tab_select(window& window)
-{
-	const bool is_campaign_tab = find_widget<listbox>(&window, "tab_bar", false).get_selected_row() == 1;
-
-	if(use_campaign != is_campaign_tab) {
-		use_campaign = is_campaign_tab;
-
-		update_lists(window);
-	}
-}
-
 void statistics_dialog::on_scenario_select(window& window)
 {
 	const std::size_t new_index = find_widget<menu_button>(&window, "scenario_menu", false).get_value();
 
-	if(scenario_index_ != new_index) {
-		scenario_index_ = new_index;
-
+	if(selection_index_ != new_index) {
+		selection_index_ = new_index;
 		update_lists(window);
 	}
 }

@@ -256,6 +256,8 @@ TODO! REMOVE ALL DUPLICATE ENTRIES FOR CHANGES THAT BELONG UNDER THE 1.13.13 - 1
    * Fixed [scenario] map_file= being unusable in most circumstances.
 
 ## Version 1.14.3+dev
+ ### User interface
+   * Improved the layout of the Statistics dialog.
 
 ## Version 1.14.3
  ### AI
