@@ -1,6 +1,8 @@
 ## Version 1.14.3+dev
  ### User interface
    * Improved the layout of the Statistics dialog.
+ ### Miscellaneous and bug fixes
+   * Added an advanced preference to enable experimental PRNG combat.
 
 ## Version 1.14.3
  ### AI
