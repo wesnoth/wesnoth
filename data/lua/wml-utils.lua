@@ -95,6 +95,25 @@ function utils.set_exiting(exit_type)
 	current_exit = exit_type
 end
 
+local function message_handler(message)
+	return debug.traceback(message, 3)
+end
+
+local function show_error(message)
+	std_print(message)
+	print(message)
+	if wesnoth.game_config.debug and message:find("~wml:") then
+		wesnoth.message("WML error", message:gsub("~wml:", ""))
+	end
+end
+
+local function invoke_wml(cmd, ...)
+	local success, errmsg = xpcall(cmd, message_handler, ...)
+	if not success then
+		show_error(tostring(errmsg))
+	end
+end
+
 --[[ Possible scope types:
 	- plain - ordinary scope, no special features; eg [command] or [event]
 	- conditional - scope that's executing because of a condition, eg [then] or [else]
@@ -116,8 +135,10 @@ function utils.handle_event_commands(cfg, scope_type)
 		local insert_from
 		if cmd == "insert_tag" then
 			cmd = arg.name
-			local from = arg.variable or
-				helper.wml_error("[insert_tag] found with no variable= field")
+			local from = arg.variable
+			if not from then
+				show_error("[insert_tag] found with no variable= field")
+			end
 
 			arg = wml.variables[from]
 			if type(arg) ~= "table" then
@@ -130,19 +151,21 @@ function utils.handle_event_commands(cfg, scope_type)
 			arg = wml.tovconfig(arg)
 		end
 		if not string.find(cmd, "^filter") then
-			cmd = wesnoth.wml_actions[cmd] or
-				helper.wml_error(string.format("[%s] not supported", cmd))
+			cmd = wesnoth.wml_actions[cmd]
+			if not cmd then
+				show_error(string.format("[%s] not supported", cmd))
+			end
 			if insert_from then
 				local j = 0
 				repeat
-					cmd(arg)
+					invoke_wml(cmd, arg)
 					if current_exit ~= "none" then break end
 					j = j + 1
 					if j >= wml.variables[insert_from .. ".length"] then break end
 					arg = wml.tovconfig(wml.variables[string.format("%s[%d]", insert_from, j)])
 				until false
 			else
-				cmd(arg)
+				invoke_wml(cmd, arg)
 			end
 		end
 		if current_exit ~= "none" then break end
@@ -150,7 +173,7 @@ function utils.handle_event_commands(cfg, scope_type)
 	scope_stack:pop()
 	if #scope_stack == 0 then
 		if current_exit == "continue" and scope_type ~= "loop" then
-			helper.wml_error("[continue] found outside a loop scope!")
+			show_error("[continue] found outside a loop scope!")
 		end
 		current_exit = "none"
 	end
