@@ -1,4 +1,4 @@
-## Version 1.14.2+dev
+## Version 1.14.3
  ### AI
    * Fixed crash in presence of units with negative hitpoints (issue #3042).
    * Efficiency improvements to filter evaluations in the Goto Micro AI and some

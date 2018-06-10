@@ -2,7 +2,7 @@ This is meant to be a concise list of player-visible changes (very minor
 changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 
-## Version 1.14.2+dev
+## Version 1.14.3
  ### Campaigns
    * Dead Water:
      * Fix possibility of villagers blocking pickup of sword in S10 The Flaming
