@@ -4,11 +4,15 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 
 ## Version 1.14.2+dev
  ### Campaigns
-   * Dead Water
+   * Dead Water:
      * Fix possibility of villagers blocking pickup of sword in S10 The Flaming
-       Sword. (Bug # 3207)
+       Sword (issue #3207).
+   * Descent Into Darkness:
+     * New Parthyn map in S1 and S6.
+   * Northern Rebirth:
+     * Reduced starting gold and income in scenarios 10 to 13
    * Secrets of the Ancients:
-     * Fix S09 Training Session not ending when all dark adepts die (Bug #3192)
+     * Fix S09 Training Session not ending when all dark adepts die (issue #3192)
  ### Language and i18n
    * Updated translations: British English, Chinese (Traditional), Czech, French,
      Italian, Japanese, Scottish Gaelic, Spanish.
