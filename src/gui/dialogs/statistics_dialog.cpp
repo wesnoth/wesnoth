@@ -168,6 +168,7 @@ void statistics_dialog::update_lists(window& window)
 	// Update primary stats list
 	//
 	listbox& stat_list = find_widget<listbox>(&window, "stats_list_main", false);
+	const int last_selected_stat_row = stat_list.get_selected_row();
 
 	stat_list.clear();
 	main_stat_table_.clear();
@@ -179,6 +180,11 @@ void statistics_dialog::update_lists(window& window)
 	add_stat_row(window, _("Advancements"), stats.advanced_to, false);
 	add_stat_row(window, _("Losses"),       stats.deaths);
 	add_stat_row(window, _("Kills"),        stats.killed);
+
+	// Reselect previously selected row. Do this *before* calling on_primary_list_select.
+	if(last_selected_stat_row != -1) {
+		stat_list.select_row(last_selected_stat_row);
+	}
 
 	// Update unit count list
 	on_primary_list_select(window);
