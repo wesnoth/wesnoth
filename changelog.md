@@ -1,6 +1,9 @@
 ## Version 1.14.3+dev
  ### User interface
    * Improved the layout of the Statistics dialog.
+ ### Graphics
+   * Tweaked the Ruffian's attack animation timing.
+   * New attack animation for the Peasant.
  ### Miscellaneous and bug fixes
    * Added an advanced preference to enable experimental PRNG combat.
 
