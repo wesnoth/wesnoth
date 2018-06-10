@@ -41,7 +41,7 @@ private:
 	/**
 	 * Picks out the stats structure that was selected for displaying.
 	 */
-	inline const statistics::stats & current_stats();
+	inline const statistics::stats& current_stats();
 
 	void add_stat_row(window& window, const std::string& type, const statistics::stats::str_int_map& value, const bool has_cost = true);
 
@@ -58,14 +58,13 @@ private:
 
 	void on_primary_list_select(window& window);
 	void on_scenario_select(window& window);
-	void on_tab_select(window& window);
 
 	const team& current_team_;
 
 	const statistics::stats  campaign_;
 	const statistics::levels scenarios_;
 
-	size_t scenario_index_;
+	size_t selection_index_;
 
 	std::vector<const statistics::stats::str_int_map*> main_stat_table_;
 };

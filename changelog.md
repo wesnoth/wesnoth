@@ -1,4 +1,6 @@
 ## Version 1.14.3+dev
+ ### User interface
+   * Improved the layout of the Statistics dialog.
 
 ## Version 1.14.3
  ### AI
