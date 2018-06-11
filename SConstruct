@@ -490,6 +490,9 @@ for env in [test_env, client_env, env]:
             env.AppendUnique(LINKFLAGS = ["-fPIE", "-pie", "-Wl,-z,now,-z,relro"])
             env.AppendUnique(CPPDEFINES = ["_FORTIFY_SOURCE=2"])
 
+            if env["enable_lto"] == True:
+                env.AppendUnique(LINKFLAGS = ["-fstack-protector-strong"])
+
 # #
 # Start determining options for debug build
 # #
