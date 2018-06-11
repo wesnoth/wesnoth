@@ -1641,15 +1641,77 @@ void attack_unit_and_advance(const map_location& attacker,
 	}
 }
 
-std::pair<int, map_location> under_leadership(const unit_map& units, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon)
+bool unit::abilities_filter_matches(const config& cfg, bool attacker, int res) const
+{
+	if(!(cfg["active_on"].empty() || (attacker && cfg["active_on"] == "offense") || (!attacker && cfg["active_on"] == "defense"))) {
+		return false;
+	}
+
+	if(!unit_abilities::filter_base_matches(cfg, res)) {
+		return false;
+	}
+
+	return true;
+}
+bool bool_increase_weapon(const std::string& ability,const unit_map& units, const map_location& loc, const_attack_ptr weapon,const_attack_ptr opp_weapon)
 {
 	const unit_map::const_iterator un = units.find(loc);
 	if(un == units.end()) {
-		return {0, map_location::null_location()};
+		return false;
+	}
+
+     unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
+     for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
+            if(!(*i->first)["increase_base_value"].empty()) {
+                return (*i->first)["increase_base_value"].to_bool();
+     } else {
+         return false;
+         }
+         ++i;
+         }
+     return false;
+}
+int under_leadership(const unit_map& units, const map_location& loc, bool attacker, int abil_value, const_attack_ptr weapon, const_attack_ptr opp_weapon)
+{
+	const unit_map::const_iterator un = units.find(loc);
+	if(un == units.end()) {
+		return 0;
 	}
 
 	unit_ability_list abil = un->get_abilities("leadership", weapon, opp_weapon);
-	return abil.highest("value");
+	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
+            if(!un->abilities_filter_matches(*i->first, attacker, abil_value)) {
+                i = abil.erase(i);
+    } else {
+        ++i;
+        }
+    }
+	if(!abil.empty()) {
+            unit_abilities::effect leader_effect(abil, abil_value, false);
+            return leader_effect.get_composite_value();
+    }
+    return 0;
+}
+std::pair<int, bool> under_leadership(const std::string& ability,const unit_map& units, const map_location& loc, bool attacker, int abil_value, const_attack_ptr weapon, const_attack_ptr opp_weapon)
+{
+	const unit_map::const_iterator un = units.find(loc);
+	if(un == units.end()) {
+		return {0, false};
+	}
+
+	unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
+	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
+            if(!un->abilities_filter_matches(*i->first, attacker, abil_value) || !(*i->first).child_range("affect_adjacent")) {
+                i = abil.erase(i);
+                } else {
+                    ++i;
+            }
+    }
+	if(!abil.empty()) {
+            unit_abilities::effect leader_effect(abil, abil_value, false);
+            return {leader_effect.get_composite_value(), true};
+    }
+    return {0, false};
 }
 
 int combat_modifier(const unit_map& units,
