@@ -126,16 +126,19 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	boost::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
-		opp_ctx.emplace(opp_weapon->specials_context(&opp, &u, opp_loc, u_loc, !attacking, weapon));
+		opp_ctx = opp_weapon->specials_context(&opp, &u, opp_loc, u_loc, !attacking, weapon);
 	}
 
-	slows = weapon->get_special_bool("slow");
-	drains = !opp.get_state("undrainable") && weapon->get_special_bool("drains");
-	petrifies = weapon->get_special_bool("petrifies");
-	poisons = !opp.get_state("unpoisonable") && weapon->get_special_bool("poison") && !opp.get_state(unit::STATE_POISONED);
+	slows = weapon->get_special_bool("slow")|| under_leadership("slow", units, u_loc, attacking, 0, weapon, opp_weapon).second;
+	drains = !opp.get_state("undrainable") && (weapon->get_special_bool("drains")|| under_leadership("drains", units, u_loc, attacking, 0, weapon, opp_weapon).second);
+	petrifies = weapon->get_special_bool("petrifies") || under_leadership("petrifies", units, u_loc, attacking, 0, weapon, opp_weapon).second;
+	poisons = !opp.get_state("unpoisonable") && (weapon->get_special_bool("poison")|| under_leadership("poison", units, u_loc, attacking, 0, weapon, opp_weapon).second) && !opp.get_state(unit::STATE_POISONED);
 	backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, resources::gameboard->teams());
 	rounds = weapon->get_specials("berserk").highest("value", 1).first;
-	firststrike = weapon->get_special_bool("firststrike");
+	if(under_leadership("berserk", units, u_loc, attacking, 1, weapon, opp_weapon).second) {
+		rounds = under_leadership("berserk", units, u_loc, attacking, 1, weapon, opp_weapon).first;
+	}
+	firststrike = weapon->get_special_bool("firststrike")|| under_leadership("firststrike", units, u_loc, attacking, 0, weapon, opp_weapon).second;
 
 	{
 		const int distance = distance_between(u_loc, opp_loc);
@@ -168,6 +171,25 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	unit_abilities::effect cth_effects(cth_specials, chance_to_hit, backstab_pos);
 	chance_to_hit = cth_effects.get_composite_value();
 
+	if(under_leadership("chance_to_hit", units, u_loc, attacking, chance_to_hit, weapon, opp_weapon).second){
+            int chance_bonus = under_leadership("chance_to_hit", units, u_loc, attacking, chance_to_hit, weapon, opp_weapon).first;
+    if(bool_increase_weapon("chance_to_hit", units, u_loc, weapon, opp_weapon)){
+		chance_to_hit += chance_bonus;
+    } else {
+		chance_to_hit = chance_bonus;
+		}
+    }
+
+	if(under_leadership("defense", units, opp_loc, !attacking, chance_to_hit, opp_weapon, weapon).second){
+            int defense_bonus = under_leadership("defense", units, opp_loc, !attacking, chance_to_hit, opp_weapon, weapon).first + weapon->accuracy()
+            - (opp_weapon ? opp_weapon->parry() : 0);
+    chance_to_hit-=defense_bonus;
+    }
+
+    if(chance_to_hit > 100) {
+            chance_to_hit = 100;
+    }
+
 	if(opp.get_state("invulnerable")) {
 		chance_to_hit = 0;
 	}
@@ -183,13 +205,13 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 			resources::gameboard->units(), resources::gameboard->map(), u_loc, u.alignment(), u.is_fearless());
 
 	// Leadership bonus.
-	int leader_bonus = under_leadership(units, u_loc, weapon, opp_weapon).first;
+	int leader_bonus = under_leadership(units, u_loc, attacking, 0, weapon, opp_weapon);
 	if(leader_bonus != 0) {
 		damage_multiplier += leader_bonus;
 	}
 
 	// Resistance modifier.
-	damage_multiplier *= opp.damage_from(*weapon, !attacking, opp_loc, opp_weapon);
+	damage_multiplier *= opp.damage_from(*weapon, !attacking, opp_loc);
 
 	// Compute both the normal and slowed damage.
 	damage = round_damage(base_damage, damage_multiplier, 10000);
@@ -201,11 +223,16 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 
 	// Compute drain amounts only if draining is possible.
 	if(drains) {
+	    if (under_leadership("drains", units, u_loc, attacking, 25, weapon, opp_weapon).second){
+	        drain_percent = under_leadership("drains", units, u_loc, attacking, 25, weapon, opp_weapon).first;
+    }
+    if (weapon->get_special_bool("drains")){
 		unit_ability_list drain_specials = weapon->get_specials("drains");
 
 		// Compute the drain percent (with 50% as the base for backward compatibility)
 		unit_abilities::effect drain_percent_effects(drain_specials, 50, backstab_pos);
 		drain_percent = drain_percent_effects.get_composite_value();
+		}
 	}
 
 	// Add heal_on_hit (the drain constant)
@@ -219,6 +246,14 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	weapon->modified_attacks(backstab_pos, swarm_min, swarm_max);
 	swarm = swarm_min != swarm_max;
 	num_blows = calc_blows(hp);
+	if(under_leadership("attacks", units, u_loc, attacking, num_blows, weapon, opp_weapon).second){
+            int attack_bonus = under_leadership("attacks", units, u_loc, attacking, num_blows, weapon, opp_weapon).first;
+    if(bool_increase_weapon("attacks", units, u_loc, weapon, opp_weapon)){
+            num_blows += attack_bonus;
+    } else {
+        num_blows = attack_bonus;
+        }
+    }
 }
 
 battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
