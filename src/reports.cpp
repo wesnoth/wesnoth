@@ -664,7 +664,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 		const_attack_ptr weapon  = at.shared_from_this();
 		int tod_bonus = combat_modifier(rc.units(), rc.map(), displayed_unit_hex, u.alignment(), u.is_fearless());
 		damage_multiplier += tod_bonus;
-		int leader_bonus = under_leadership(rc.units(), displayed_unit_hex, weapon).first;
+		int leader_bonus = under_leadership(rc.units(), displayed_unit_hex, u.side() == rc.screen().playing_side(), 0, weapon);
 		if (leader_bonus != 0)
 			damage_multiplier += leader_bonus;
 
@@ -681,7 +681,14 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 		unsigned min_attacks, max_attacks;
 		at.modified_attacks(false, min_attacks, max_attacks);
 		unsigned num_attacks = swarm_blows(min_attacks, max_attacks, cur_hp, max_hp);
-
+		if(under_leadership("attacks", rc.units(), displayed_unit_hex, u.side() == rc.screen().playing_side(), num_attacks, weapon).second){
+                int attack_bonus = under_leadership("attacks", rc.units(), displayed_unit_hex, u.side() == rc.screen().playing_side(), num_attacks, weapon).first;
+        if(bool_increase_weapon("attacks", rc.units(), displayed_unit_hex, weapon)){
+                num_attacks += attack_bonus;
+        } else {
+            num_attacks = attack_bonus;
+        }
+    }
 		color_t dmg_color = font::weapon_color;
 		if ( damage > specials_damage )
 			dmg_color = font::good_dmg_color;
