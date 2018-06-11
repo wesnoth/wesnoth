@@ -176,6 +176,12 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 			throw wesnothd_rejected_client_error(error_message);
 		}
 
+		// The only message we should get here is the admin authentication message.
+		// It's sent after [join_lobby] and before the initial gamelist.
+		if(const config& message = data.child("message")) {
+			preferences::parse_admin_authentication(message["sender"], message["message"]);
+		}
+
 		// Continue if we did not get a direction to login
 		if(!data.has_child("mustlogin")) {
 			continue;

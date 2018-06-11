@@ -49,6 +49,7 @@
    * New attack animation for the Peasant.
  ### Miscellaneous and bug fixes
    * Added an advanced preference to enable experimental PRNG combat.
+   * Fixed MP admins being unable to observe private games.
 
 ## Version 1.14.3
  ### AI
