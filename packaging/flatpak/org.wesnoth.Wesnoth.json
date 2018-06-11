@@ -38,6 +38,50 @@
 ]
         },
 	{
+            "name": "libglu",
+            "config-opts": [
+                "--enable-shared",
+                "--disable-static"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://mesa.freedesktop.org/archive/glu/glu-9.0.0.tar.bz2",
+                    "sha256": "1f7ad0d379a722fcbd303aa5650c6d7d5544fde83196b42a73d1193568a4df12"
+                }
+            ],
+            "cleanup": [
+                "/include",
+                "/lib/*.la",
+                "/lib/pkgconfig"
+            ]
+        },
+	{
+            "name": "glew",
+            "no-autogen": true,
+            "make-args": [
+                "GLEW_PREFIX=/app",
+                "GLEW_DEST=/app",
+                "LIBDIR=/app/lib"
+            ],
+            "make-install-args": [
+                "GLEW_PREFIX=/app",
+                "GLEW_DEST=/app",
+                "LIBDIR=/app/lib"
+            ],
+            "cleanup": [
+                "/include",
+                "/lib/pkgconfig"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://downloads.sourceforge.net/project/glew/glew/2.1.0/glew-2.1.0.tgz",
+                    "sha256": "04de91e7e6763039bc11940095cd9c7f880baba82196a7765f727ac05a993c95"
+                }
+            ]
+        },
+	{
             "name": "scons",
             "buildsystem": "simple",
             "cleanup": [ "*" ],
@@ -59,7 +103,7 @@
                 "/share/applications/wesnoth_editor.desktop"
             ],
             "build-commands": [
-                "scons -j4 prefix=/app ccache=true install wesnoth wesnothd"
+                "scons -j $FLATPAK_BUILDER_N_JOBS prefix=/app ccache=true install wesnoth wesnothd"
 	    ],
             "sources": [
                 {
