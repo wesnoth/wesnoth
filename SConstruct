@@ -55,6 +55,7 @@ opts.AddVariables(
     ('extra_flags_profile', 'Extra compiler and linker flags to use for profile builds', ""),
     BoolVariable('enable_lto', 'Whether to enable Link Time Optimization for build=release', False),
     ('arch', 'What -march option to use for build=release, will default to pentiumpro on Windows', ""),
+    BoolVariable('harden', 'Whether to enable options to harden the executables', False),
     BoolVariable('glibcxx_debug', 'Whether to define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC for build=debug', False),
     EnumVariable('profiler', 'profiler to be used for build=profile', "gprof", ["gprof", "gcov", "gperftools", "perf"]),
     EnumVariable('pgo_data', 'whether to generate profiling data for PGO, or use existing profiling data', "", ["", "generate", "use"]),
@@ -479,6 +480,15 @@ for env in [test_env, client_env, env]:
             env.AppendUnique(CXXFLAGS = Split("-Wctor-dtor-privacy -Wuseless-cast -Wnoexcept"))
         if env['sanitize']:
             env.AppendUnique(CCFLAGS = ["-fsanitize=" + env["sanitize"]], LINKFLAGS = ["-fsanitize=" + env["sanitize"]])
+
+# #
+# Add options to provide more hardened executables
+# #
+
+        if env['harden']:
+            env.AppendUnique(CCFLAGS = ["-fPIE", "-fstack-protector-strong"])
+            env.AppendUnique(LINKFLAGS = ["-fPIE", "-pie", "-Wl,-z,now,-z,relro"])
+            env.AppendUnique(CPPDEFINES = ["_FORTIFY_SOURCE=2"])
 
 # #
 # Start determining options for debug build

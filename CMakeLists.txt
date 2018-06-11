@@ -228,6 +228,14 @@ if(NOT "${CMAKE_CXX_FLAGS}" STREQUAL "${COMPILER_FLAGS}")
 	)
 endif(NOT "${CMAKE_CXX_FLAGS}" STREQUAL "${COMPILER_FLAGS}")
 
+# check for hardening options
+if(HARDEN)
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIE -fstack-protector-strong")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIE -fstack-protector-strong")
+	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -pie -Wl,-z,now,-z,relro")
+	add_definitions(-D_FORTIFY_SOURCE=2)
+endif(HARDEN)
+
 if(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 	# Assume the compiler is the clang compiler.
 	set(CMAKE_EXE_LINKER_FLAGS "-lstdc++ -lm ${CMAKE_EXE_LINKER_FLAGS}")
