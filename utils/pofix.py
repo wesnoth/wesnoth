@@ -201,17 +201,17 @@ website_stringfixes = {
 "1.14-announcement" : (
 ("better ingrate them", "better integrate them"),
 
-("wesnoth-1.14.1/wesnoth-1.14.1.tar.bz2", "wesnoth-1.14.2/wesnoth-1.14.2.tar.bz2"),
-("wesnoth-1.14.1/wesnoth-1.14.1-win32.exe", "wesnoth-1.14.2/wesnoth-1.14.2-win32.exe"),
-("wesnoth-1.14.1/Wesnoth_1.14.1a.dmg", "wesnoth-1.14.2/Wesnoth_1.14.2.dmg"),
+("wesnoth-1.14.2/wesnoth-1.14.2.tar.bz2", "wesnoth-1.14.3/wesnoth-1.14.3.tar.bz2"),
+("wesnoth-1.14.2/wesnoth-1.14.2-win32.exe", "wesnoth-1.14.3/wesnoth-1.14.3-win32.exe"),
+("wesnoth-1.14.2/Wesnoth_1.14.2.dmg", "wesnoth-1.14.3/Wesnoth_1.14.3.dmg"),
 
 # Yes, these are really flimsy. In hindsight it was a bad idea to include
 # download sizes in the announcement. Hopefully we won't end up with
 # files that have the same size in a release/in the last two releases
 # any time soon.
-("442.4", "449.9"),
-("403.2", "407.7"),
-("450.5", "456.4"),
+("449.9", "450.2 MB"),
+("407.7", "407.9 MB"),
+("456.4", "459.6 MB"),
 ),
 
 }
