@@ -203,7 +203,7 @@ website_stringfixes = {
 
 ("wesnoth-1.14.2/wesnoth-1.14.2.tar.bz2", "wesnoth-1.14.3/wesnoth-1.14.3.tar.bz2"),
 ("wesnoth-1.14.2/wesnoth-1.14.2-win32.exe", "wesnoth-1.14.3/wesnoth-1.14.3-win32.exe"),
-("wesnoth-1.14.2/Wesnoth_1.14.2.dmg", "wesnoth-1.14.3/Wesnoth_1.14.3.dmg"),
+("wesnoth-1.14.3/Wesnoth_1.14.3.dmg", "wesnoth-1.14.3/Wesnoth_1.14.3a.dmg"),
 
 # Yes, these are really flimsy. In hindsight it was a bad idea to include
 # download sizes in the announcement. Hopefully we won't end up with
@@ -211,7 +211,7 @@ website_stringfixes = {
 # any time soon.
 ("449.9", "450.2 MB"),
 ("407.7", "407.9 MB"),
-("456.4", "459.6 MB"),
+("459.6 MB", "468.2 MB"),
 ),
 
 }
