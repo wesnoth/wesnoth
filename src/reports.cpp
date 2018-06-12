@@ -681,6 +681,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 		unsigned min_attacks, max_attacks;
 		at.modified_attacks(false, min_attacks, max_attacks);
 		unsigned num_attacks = swarm_blows(min_attacks, max_attacks, cur_hp, max_hp);
+		
 		if(under_leadership("attacks", rc.units(), displayed_unit_hex, u.side() == rc.screen().playing_side(), num_attacks, weapon).second){
                 int attack_bonus = under_leadership("attacks", rc.units(), displayed_unit_hex, u.side() == rc.screen().playing_side(), num_attacks, weapon).first;
         if(bool_increase_weapon("attacks", rc.units(), displayed_unit_hex, weapon)){
