@@ -1,4 +1,7 @@
 ## Version 1.14.3+dev
+ ### Campaigns
+   * Eastern Invasion:
+     * Fixed missing prisoners and loss of recallable units in 'Captured'.
  ### User interface
    * Improved the layout of the Statistics dialog.
  ### Graphics
