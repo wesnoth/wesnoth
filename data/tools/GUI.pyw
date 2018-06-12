@@ -42,6 +42,29 @@ WESNOTH_DATA_DIR=os.path.join(WESNOTH_ROOT_DIR,"data")
 WESNOTH_CORE_DIR=os.path.normpath(os.path.join(WESNOTH_DATA_DIR,"core"))
 WMLXGETTEXT_DIR=os.path.normpath(os.path.join(WESNOTH_ROOT_DIR,"utils"))
 
+def path_to_preferences_dir():
+    """ Return a path to the preferences directory. """
+    return WESNOTH_ROOT_DIR
+
+def path_to_preferences_file():
+    """ Return a path to the preferences file. """
+    return path_to_preferences_dir() + os.sep + 'preferences'
+
+def preference(preference):
+    """ Return the requested preference. Receive the string representing
+    the requested preference. Return the preference value, or raise an
+    exception when not finding the preference in the file. """
+    path_to_preferences_file = path_to_preferences_file()
+    with open(path_to_preferences_file) as preferences_file:
+        preferences_file_lines = prefrences_file.readlines()
+    for preferences_file_line in preferences_file_lines:
+        splitted_preferences_file_line = preferences_file_line.split('=')
+        preference_name = splitted_preferences_file_line[0]
+        preference_value = splitted_preferences_file_line[1]
+        if preference_name == preference:
+            return preference_value
+    raise SyntaxError('unknown preference')
+
 def wrap_elem(line):
     """If the supplied line contains spaces, return it wrapped between double quotes"""
     if ' ' in line:

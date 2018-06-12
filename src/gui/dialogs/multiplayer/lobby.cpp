@@ -115,7 +115,11 @@ void player_list::init(window& w)
 
 bool mp_lobby::logout_prompt()
 {
-	return show_prompt(_("Do you really want to log out?"));
+	if(preferences::confirm_when_leaving()) {
+		return show_prompt(_("Do you really want to log out?"));
+	} else {
+		return true;
+	}
 }
 
 mp_lobby::mp_lobby(const config& game_config, mp::lobby_info& info, wesnothd_connection &connection)

@@ -60,6 +60,9 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
    * Highlight the titles of MP games with vacant slots.
    * Improved MP Lobby layout on low resolutions.
    * Improved reporting of network errors in the MP lobby (issue #3005).
+   * Added a preference in order to allow disabling confirmations when leaving
+     up to the title screen or to desktop, only if the player changes the
+     default configuration ex profeso.
  ### Miscellaneous and bug fixes
    * Removed misleading tooltip text stating registered nicknames are optional for
      the official MP server.

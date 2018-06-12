@@ -1044,6 +1044,12 @@ bool use_twelve_hour_clock_format()
 	return get("use_twelve_hour_clock_format", false);
 }
 
+/** Applies both leaving to title screen and leaving to desktop. */
+bool confirm_when_leaving()
+{
+	return get("confirm_when_leaving", "true");
+}
+
 bool disable_auto_moves()
 {
 	return get("disable_auto_moves", false);

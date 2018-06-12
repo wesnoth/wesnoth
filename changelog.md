@@ -177,6 +177,9 @@
    * Improved the resolution selection criteria for the MP Lobby.
    * Fixed inactive weapon specials being displayed in the Unit Attack dialog
      unlike in 1.12 (issue #3033).
+   * Added a preference in order to allow disabling confirmations when leaving
+     up to the title screen or to desktop, only if the player changes the
+     default configuration ex profeso.
  ### Miscellaneous and bug fixes
    * Removed misleading tooltip text stating registered nicknames are optional for
      the official MP server.

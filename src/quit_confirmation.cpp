@@ -18,6 +18,7 @@
 #include "video.hpp"
 #include "resources.hpp"
 #include "playmp_controller.hpp"
+#include "preferences/general.hpp"
 #include "gui/dialogs/surrender_quit.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/retval.hpp"
@@ -91,6 +92,10 @@ bool quit_confirmation::default_prompt()
 			return false;
 		}
 	} else {
-		return show_prompt(_("Do you really want to quit?"));
+		if(preferences::confirm_when_leaving()) {
+			return show_prompt(_("Do you really want to quit?"));
+		} else {
+			return true;
+		}
 	}
 }

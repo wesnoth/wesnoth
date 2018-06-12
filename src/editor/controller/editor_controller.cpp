@@ -212,7 +212,11 @@ bool editor_controller::quit_confirm()
 		message = _("Do you really want to quit? The following maps were modified and all changes since the last save will be lost:");
 		message += "\n" + modified;
 	}
-	return quit_confirmation::show_prompt(message);
+	if(amount > 0 || preferences::confirm_when_leaving()) {
+		return quit_confirmation::show_prompt(message);
+	} else {
+		return true;
+	}
 }
 
 void editor_controller::custom_tods_dialog()
