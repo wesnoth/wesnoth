@@ -51,7 +51,26 @@ bool notif_pref(const std::string& id)
 } // end anonymous namespace
 
 // Note: This list must agree with data/gui/.../lobby_sound_options.cfg
-const std::vector<std::string> items {"player_joins", "player_leaves", "private_message", "friend_message", "public_message", "server_message", "ready_for_start", "game_has_begun", "turn_changed"};
+// @lilinitsy: As of 1.14, it seems the above comment is not true, but someone could check.
+const std::vector<std::string> items {"player_joins", "player_leaves", "private_message", "friend_message", "public_message", "server_message", "ready_for_start", "game_has_begun", "turn_changed", "game_created"};
+
+void game_created(bool is_lobby, const std::string & scenario, const std::string & name)
+{
+	std::string id = "game_created";
+	if (is_lobby && !lobby_pref(id)) {
+		return ;
+	}
+
+	if (sound_pref(id)) {
+		sound::play_UI_sound(game_config::sounds::game_created);
+	}
+
+	if (notif_pref(id)) {
+		const std::string message = VGETTEXT("A game ($name|, $scenario|) has been created", {{"name", name}, {"scenario", scenario}});
+		desktop::notifications::send(_("Wesnoth"), message, desktop::notifications::OTHER);
+	}
+	
+}
 
 void player_joins(bool is_lobby)
 {
@@ -176,11 +195,11 @@ bool get_def_pref_sound(const std::string & id) {
 }
 
 bool get_def_pref_notif(const std::string & id) {
-	return (desktop::notifications::available() && (id == "private_message" || id == "ready_for_start" || id == "game_has_begun" || id == "turn_changed"));
+	return (desktop::notifications::available() && (id == "private_message" || id == "ready_for_start" || id == "game_has_begun" || id == "turn_changed" || id == "game_created"));
 }
 
 bool get_def_pref_lobby(const std::string & id) {
-	return (id == "private_message" || id == "server_message");
+	return (id == "private_message" || id == "server_message" || id == "game_created");
 }
 
 
