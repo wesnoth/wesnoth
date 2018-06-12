@@ -65,7 +65,7 @@ public:
 
 	/** Adds a new filter function to be considered when @ref apply_game_filter is called. */
 	void add_game_filter(game_filter_func func)
-	{
+	{	
 		game_filters_.push_back(func);
 	}
 
@@ -179,7 +179,8 @@ enum notify_mode {
 	NOTIFY_WHISPER_OTHER_WINDOW,
 	NOTIFY_LOBBY_JOIN,
 	NOTIFY_LOBBY_QUIT,
-	NOTIFY_COUNT
+	NOTIFY_COUNT,
+	NOTIFY_GAME_CREATED
 };
 
 void do_notify(notify_mode mode, const std::string& sender = "", const std::string& message = "");

@@ -290,6 +290,9 @@ void mp_lobby::update_gamelist()
 	gamelistbox_->set_row_shown(lobby_info_.games_visibility());
 }
 
+// ok THIS is the function.
+// this is the one that gets called whenever smth in the server list changes.
+// Awesome.
 void mp_lobby::update_gamelist_diff()
 {
 	SCOPE_LB;
@@ -298,11 +301,13 @@ void mp_lobby::update_gamelist_diff()
 	unsigned list_i = 0;
 	int list_rows_deleted = 0;
 
+
 	std::vector<int> next_gamelist_id_at_row;
 	for(unsigned i = 0; i < lobby_info_.games().size(); ++i) {
 		const mp::game_info& game = *lobby_info_.games()[i];
 
 		if(game.display_status == mp::game_info::NEW) {
+			do_notify(mp::NOTIFY_GAME_CREATED);
 			LOG_LB << "Adding game to listbox " << game.id << "\n";
 
 			if(list_i != gamelistbox_->get_item_count()) {

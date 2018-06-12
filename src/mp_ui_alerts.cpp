@@ -51,7 +51,38 @@ bool notif_pref(const std::string& id)
 } // end anonymous namespace
 
 // Note: This list must agree with data/gui/.../lobby_sound_options.cfg
-const std::vector<std::string> items {"player_joins", "player_leaves", "private_message", "friend_message", "public_message", "server_message", "ready_for_start", "game_has_begun", "turn_changed"};
+const std::vector<std::string> items {"player_joins", "player_leaves", "private_message", "friend_message", "public_message", 
+										"server_message", "ready_for_start", "game_has_begun", "turn_changed", "game_created"};
+
+void game_created(bool is_lobby)
+{
+	std::string id = "game_created";
+
+	sound::play_UI_sound(game_config::sounds::game_created);
+	desktop::notifications::send(_("Wesnoth"), _("A game has been created"), desktop::notifications::OTHER);
+
+	/*
+	@lilinitsy: I don't know what to do with all that preference namespace
+		stuff, so I'm just leaving that in for someone else to do.
+		For now, it'll default to playing a sound & notifications.
+
+	if(is_lobby && !lobby_pref(id))
+	{
+		return;
+	} 
+
+	if(sound_pref(id))
+	{
+		sound::play_UI_sound(game_config::sounds::game_created);
+	}
+
+	if(notif_pref(id))
+	{
+		desktop::notifications::send(_("Wesnoth"), _("A game has been created"), desktop::notifications::OTHER);
+	}
+	*/
+}
+
 
 void player_joins(bool is_lobby)
 {
@@ -172,15 +203,15 @@ void turn_changed(const std::string & player_name)
 }
 
 bool get_def_pref_sound(const std::string & id) {
-	return (id != "public_message" && id != "friend_message");
+	return (id != "public_message" && id != "friend_message" && id != "game_created");
 }
 
 bool get_def_pref_notif(const std::string & id) {
-	return (desktop::notifications::available() && (id == "private_message" || id == "ready_for_start" || id == "game_has_begun" || id == "turn_changed"));
+	return (desktop::notifications::available() && (id == "private_message" || id == "ready_for_start" || id == "game_has_begun" || id == "turn_changed" || id == "game_created"));
 }
 
 bool get_def_pref_lobby(const std::string & id) {
-	return (id == "private_message" || id == "server_message");
+	return (id == "private_message" || id == "server_message" || id == "game_created");
 }
 
 
