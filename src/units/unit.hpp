@@ -1528,7 +1528,6 @@ public:
 	void remove_ability_by_id(const std::string& ability);
 	bool abilities_filter_matches(const config& cfg, bool attacker, int res) const;
 
-
 private:
 	/**
 	 * Check if an ability is active.
