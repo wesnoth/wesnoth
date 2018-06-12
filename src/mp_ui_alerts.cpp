@@ -51,8 +51,7 @@ bool notif_pref(const std::string& id)
 } // end anonymous namespace
 
 // Note: This list must agree with data/gui/.../lobby_sound_options.cfg
-const std::vector<std::string> items {"player_joins", "player_leaves", "private_message", "friend_message", "public_message", 
-										"server_message", "ready_for_start", "game_has_begun", "turn_changed", "game_created"};
+const std::vector<std::string> items {"player_joins", "player_leaves", "private_message", "friend_message", "public_message", "server_message", "ready_for_start", "game_has_begun", "turn_changed", "game_created"};
 
 void game_created(bool is_lobby)
 {
