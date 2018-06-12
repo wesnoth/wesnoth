@@ -53,29 +53,33 @@ lobby_info::lobby_info(const config& game_config, const std::vector<std::string>
 
 void do_notify(notify_mode mode, const std::string& sender, const std::string& message)
 {
-	switch(mode) {
-	case NOTIFY_WHISPER:
-	case NOTIFY_WHISPER_OTHER_WINDOW:
-	case NOTIFY_OWN_NICK:
-		mp_ui_alerts::private_message(true, sender, message);
-		break;
-	case NOTIFY_FRIEND_MESSAGE:
-		mp_ui_alerts::friend_message(true, sender, message);
-		break;
-	case NOTIFY_SERVER_MESSAGE:
-		mp_ui_alerts::server_message(true, sender, message);
-		break;
-	case NOTIFY_LOBBY_QUIT:
-		mp_ui_alerts::player_leaves(true);
-		break;
-	case NOTIFY_LOBBY_JOIN:
-		mp_ui_alerts::player_joins(true);
-		break;
-	case NOTIFY_MESSAGE:
-		mp_ui_alerts::public_message(true, sender, message);
-		break;
-	default:
-		break;
+	switch(mode) 
+	{
+		case NOTIFY_WHISPER:
+		case NOTIFY_WHISPER_OTHER_WINDOW:
+		case NOTIFY_OWN_NICK:
+			mp_ui_alerts::private_message(true, sender, message);
+			break;
+		case NOTIFY_FRIEND_MESSAGE:
+			mp_ui_alerts::friend_message(true, sender, message);
+			break;
+		case NOTIFY_SERVER_MESSAGE:
+			mp_ui_alerts::server_message(true, sender, message);
+			break;
+		case NOTIFY_LOBBY_QUIT:
+			mp_ui_alerts::player_leaves(true);
+			break;
+		case NOTIFY_LOBBY_JOIN:
+			mp_ui_alerts::player_joins(true);
+			break;
+		case NOTIFY_MESSAGE:
+			mp_ui_alerts::public_message(true, sender, message);
+			break;
+		case NOTIFY_GAME_CREATED:
+			mp_ui_alerts::game_created(true);
+			break;
+		default:
+			break;
 	}
 }
 

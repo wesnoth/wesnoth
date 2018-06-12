@@ -303,6 +303,7 @@ void mp_lobby::update_gamelist_diff()
 		const mp::game_info& game = *lobby_info_.games()[i];
 
 		if(game.display_status == mp::game_info::NEW) {
+			do_notify(mp::NOTIFY_GAME_CREATED);
 			LOG_LB << "Adding game to listbox " << game.id << "\n";
 
 			if(list_i != gamelistbox_->get_item_count()) {

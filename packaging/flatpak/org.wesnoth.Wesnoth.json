@@ -1,0 +1,117 @@
+{
+    "app-id": "org.wesnoth.Wesnoth",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "1.6",
+    "sdk": "org.freedesktop.Sdk",
+    "finish-args": [
+        "--device=dri",
+        "--share=ipc",
+        "--share=network",
+        "--socket=x11",
+        "--socket=pulseaudio"
+    ],
+    "command": "wesnoth",
+    "rename-appdata-file": "wesnoth.appdata.xml",
+    "rename-desktop-file": "wesnoth.desktop",
+    "rename-icon": "wesnoth-icon",
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/share/aclocal",
+        "/share/man",
+        "*.la", "*.a"
+    ],
+    "modules": [
+        {
+            "name": "boost",
+            "buildsystem": "simple",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://dl.bintray.com/boostorg/release/1.66.0/source/boost_1_66_0.tar.bz2",
+                    "sha256": "5721818253e6a0989583192f96782c4a98eb6204965316df9f5ad75819225ca9"
+                }
+            ],
+            "build-commands": [
+                "./bootstrap.sh --prefix=/app --with-libraries=filesystem,locale,iostreams,program_options,regex,random,thread",
+                "./b2 -j4 install link=static variant=release address-model=64 --layout=system"
+]
+        },
+	{
+            "name": "libglu",
+            "config-opts": [
+                "--enable-shared",
+                "--disable-static"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://mesa.freedesktop.org/archive/glu/glu-9.0.0.tar.bz2",
+                    "sha256": "1f7ad0d379a722fcbd303aa5650c6d7d5544fde83196b42a73d1193568a4df12"
+                }
+            ],
+            "cleanup": [
+                "/include",
+                "/lib/*.la",
+                "/lib/pkgconfig"
+            ]
+        },
+	{
+            "name": "glew",
+            "no-autogen": true,
+            "make-args": [
+                "GLEW_PREFIX=/app",
+                "GLEW_DEST=/app",
+                "LIBDIR=/app/lib"
+            ],
+            "make-install-args": [
+                "GLEW_PREFIX=/app",
+                "GLEW_DEST=/app",
+                "LIBDIR=/app/lib"
+            ],
+            "cleanup": [
+                "/include",
+                "/lib/pkgconfig"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://downloads.sourceforge.net/project/glew/glew/2.1.0/glew-2.1.0.tgz",
+                    "sha256": "04de91e7e6763039bc11940095cd9c7f880baba82196a7765f727ac05a993c95"
+                }
+            ]
+        },
+	{
+            "name": "scons",
+            "buildsystem": "simple",
+            "cleanup": [ "*" ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://download.sourceforge.net/scons/scons-3.0.1.tar.gz",
+                    "sha256": "24475e38d39c19683bc88054524df018fe6949d70fbd4c69e298d39a0269f173"
+                }
+            ],
+            "build-commands": [
+                "python3 setup.py install --prefix=/app"
+            ]
+        },
+        {
+            "name": "wesnoth",
+            "buildsystem": "simple",
+            "cleanup": [
+                "/share/applications/wesnoth_editor.desktop"
+            ],
+            "build-commands": [
+                "scons -j $FLATPAK_BUILDER_N_JOBS prefix=/app ccache=true install wesnoth wesnothd"
+	    ],
+            "sources": [
+                {
+                    "type": "git",
+                    "path": "/usr/src/wesnoth/master",
+                    "branch": "master"
+                }
+            ]
+        }
+    ]
+}

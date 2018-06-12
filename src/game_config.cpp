@@ -259,7 +259,8 @@ std::string
 	game_user_arrive = "join.wav",
 	game_user_leave  = "leave.wav",
 	ready_for_start  = "bell.wav",
-	game_has_begun   = "gamestart.ogg";
+	game_has_begun   = "gamestart.ogg",
+	game_created	 = "chat-highlight.ogg";
 
 const std::string
 	button_press     = "button.wav",
@@ -434,6 +435,7 @@ void load_config(const config &v)
 		load_attribute(s, "server_message",   server_message);
 		load_attribute(s, "player_joins",     player_joins);
 		load_attribute(s, "player_leaves",    player_leaves);
+		load_attribute(s, "game_created",     game_created);
 		load_attribute(s, "game_user_arrive", game_user_arrive);
 		load_attribute(s, "game_user_leave",  game_user_leave);
 		load_attribute(s, "ready_for_start",  ready_for_start);
