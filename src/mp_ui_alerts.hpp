@@ -27,6 +27,7 @@ namespace mp_ui_alerts {
 	// Functions called when such an event occurs
 	void player_joins(bool is_lobby);
 	void player_leaves(bool is_lobby);
+	void game_created(bool is_lobby, const std::string & scenario, const std::string & name);
 	void public_message(bool is_lobby, const std::string & sender, const std::string & message);
 	void friend_message(bool is_lobby, const std::string & sender, const std::string & message);
 	void private_message(bool is_lobby, const std::string & sender, const std::string & message);
