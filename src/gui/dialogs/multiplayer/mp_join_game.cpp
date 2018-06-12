@@ -154,6 +154,8 @@ bool mp_join_game::fetch_game_config()
 
 	int side_num = 0, nb_sides = 0;
 	for(const config& side : get_scenario().child_range("side")) {
+		// TODO: it can happen that the scenario specifies that the controller
+		//       of a side should also gain control of another side.
 		if(side["controller"] == "reserved" && side["current_player"] == preferences::login()) {
 			side_choice = &side;
 			side_num = nb_sides;
@@ -188,6 +190,11 @@ bool mp_join_game::fetch_game_config()
 
 	// If the client is allowed to choose their team, do that here instead of having it set by the server
 	if((*side_choice)["allow_changes"].to_bool(true)) {
+		// TODO: show_flg_select does basicially the same,
+		//       i didn't want to risk breakig this for stable (1.14)
+		//       but id's be better if we didnt have this code dublication.
+		//       what i am in particular unsure about is why the '!era' and
+		//       'possible_sides.empty()' cases below are handled differntly here.
 		const config& era = level_.child("era");
 		// TODO: Check whether we have the era. If we don't, inform the player
 		if(!era) {
@@ -304,6 +311,59 @@ void mp_join_game::pre_show(window& window)
 	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
 }
 
+void mp_join_game::show_flg_select(int side_num)
+{
+	if(const config& side_choice = get_scenario().child("side", side_num - 1)) {
+		if(!side_choice["allow_changes"].to_bool(true)) {
+			return;
+		}
+		const config& era = level_.child("era");
+		if(!era) {
+			ERR_MP << "no era information\n";
+			return;
+		}
+
+		config::const_child_itors possible_sides = era.child_range("multiplayer_side");
+		if(possible_sides.empty()) {
+			WRN_MP << "no [multiplayer_side] found in era '" << era["id"] << "'.\n";
+			return;
+		}
+
+		const std::string color = side_choice["color"].str();
+
+		std::vector<const config*> era_factions;
+		for(const config& side : possible_sides) {
+			era_factions.push_back(&side);
+		}
+
+		const bool is_mp = state_.classification().is_normal_mp_game();
+		const bool lock_settings = get_scenario()["force_lock_settings"].to_bool(!is_mp);
+		const bool use_map_settings = level_.child("multiplayer")["mp_use_map_settings"].to_bool();
+		const bool saved_game = level_.child("multiplayer")["savegame"].to_bool();
+
+		ng::flg_manager flg(era_factions, side_choice, lock_settings, use_map_settings, saved_game);
+
+		gui2::dialogs::faction_select dlg(flg, color, side_num);
+		dlg.show();
+
+		if(dlg.get_retval() != gui2::retval::OK) {
+			return;
+		}
+
+		config faction;
+		config& change = faction.add_child("change_faction");
+		change["change_faction"] = true;
+		change["name"] = preferences::login();
+		change["faction"] = flg.current_faction()["id"];
+		change["leader"] = flg.current_leader();
+		change["gender"] = flg.current_gender();
+		//TODO: the host cannot yet handle this and always uses the first side owned by that player.
+		change["side_num"] = side_num;
+
+		network_connection_.send_data(faction);
+	}
+}
+
 void mp_join_game::generate_side_list(window& window)
 {
 	if(stop_updates_) {
@@ -318,7 +378,9 @@ void mp_join_game::generate_side_list(window& window)
 	team_tree_map_.clear();
 	const std::map<std::string, string_map> empty_map;
 
+	int side_num = 0;
 	for(const auto& side : get_scenario().child_range("side")) {
+		++side_num;
 		if(!side["allow_player"].to_bool(true)) {
 			continue;
 		}
@@ -410,6 +472,16 @@ void mp_join_game::generate_side_list(window& window)
 		tree_view_node& node = team_tree_map_[side["team_name"].str()]->add_child("side_panel", data);
 
 		grid& row_grid = node.get_grid();
+
+		auto* select_leader_button = find_widget<button>(&row_grid, "select_leader", false, false);
+		if(select_leader_button) {
+			if(side["player_id"] == preferences::login() && side["allow_changes"].to_bool(true)) {
+				connect_signal_mouse_left_click(*select_leader_button, std::bind(&mp_join_game::show_flg_select, this, side_num));
+			}
+			else {
+				select_leader_button->set_visible(widget::visibility::hidden);
+			}
+		}
 
 		if(income_amt == 0) {
 			find_widget<image>(&row_grid, "income_icon", false).set_visible(widget::visibility::invisible);
