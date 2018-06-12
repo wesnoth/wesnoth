@@ -74,6 +74,9 @@ void do_notify(notify_mode mode, const std::string& sender, const std::string& m
 	case NOTIFY_MESSAGE:
 		mp_ui_alerts::public_message(true, sender, message);
 		break;
+	case NOTIFY_GAME_CREATED:
+		mp_ui_alerts::game_created(true, sender, message);
+		break;
 	default:
 		break;
 	}

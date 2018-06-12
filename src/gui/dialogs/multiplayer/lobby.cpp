@@ -303,6 +303,10 @@ void mp_lobby::update_gamelist_diff()
 		const mp::game_info& game = *lobby_info_.games()[i];
 
 		if(game.display_status == mp::game_info::NEW) {
+			// call void do_notify(notify_mode mode, const std::string& sender, const std::string& message)
+			// sender will be the game_info.scenario (std::string) and message will be game_info.name (std::string) 
+			do_notify(mp::NOTIFY_GAME_CREATED, game.scenario, game.name);
+
 			LOG_LB << "Adding game to listbox " << game.id << "\n";
 
 			if(list_i != gamelistbox_->get_item_count()) {

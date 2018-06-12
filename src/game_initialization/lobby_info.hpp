@@ -179,7 +179,8 @@ enum notify_mode {
 	NOTIFY_WHISPER_OTHER_WINDOW,
 	NOTIFY_LOBBY_JOIN,
 	NOTIFY_LOBBY_QUIT,
-	NOTIFY_COUNT
+	NOTIFY_COUNT,
+	NOTIFY_GAME_CREATED
 };
 
 void do_notify(notify_mode mode, const std::string& sender = "", const std::string& message = "");
