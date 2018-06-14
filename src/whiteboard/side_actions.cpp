@@ -563,7 +563,18 @@ side_actions::iterator side_actions::remove_action(side_actions::iterator positi
 
 	LOG_WB << "Erasing action at turn #" << get_turn(position) << " position #" << actions_.position_in_turn(position) << "\n";
 
-	position = synced_erase(position);
+	
+	if(resources::gameboard->get_team(team_index_ + 1).is_local()) {
+		position = synced_erase(position);
+	}
+	else {
+		// don't sync actions of sides that we don't control, this would only generate 
+		// 'illegal whiteboard data' server wanrings.
+		// it might be better to instead don't even erase the action in this case to keep
+		// the actionlist in sync with the owner client.
+		position = safe_erase(position);
+	}
+	
 
 	if(validate_after_delete) {
 		resources::whiteboard->validate_viewer_actions();
