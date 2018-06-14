@@ -50,7 +50,7 @@ public:
 
 private:
 	/** Function called on each action. */
-	void process(side_actions &sa, side_actions::iterator action_it);
+	void process(side_actions &sa, side_actions::iterator action_it, bool is_local_side);
 
 	/** Function called after visiting a team. */
 	void post_visit_team(std::size_t turn);
