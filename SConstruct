@@ -775,7 +775,7 @@ if 'dist' in COMMAND_LINE_TARGETS:    # Speedup, the manifest is expensive
     def dist_manifest():
         "Get an argument list suitable for passing to a distribution archiver."
         # Start by getting a list of all files under version control
-        lst = subprocess.check_output("git ls-files | grep -v 'data\/test\/.*'", shell=True).splitlines()
+        lst = subprocess.check_output("git ls-files", shell=True).splitlines()
         lst = filter(os.path.isfile, lst)
         return lst
     dist_tarball = env.Tar('wesnoth-${version}.tar.bz2', [])
