@@ -2,6 +2,11 @@ This is meant to be a concise list of player-visible changes (very minor
 changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 
+## Version 1.14.3+dev
+ ### Language and i18n
+   * Updated translations: Slovak.
+
+
 ## Version 1.14.3
  ### Campaigns
    * Dead Water:

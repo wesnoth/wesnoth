@@ -7,6 +7,8 @@
  ### Graphics
    * Tweaked the Ruffian's attack animation timing.
    * New attack animation for the Peasant.
+ ### Language and i18n
+   * Updated translations: Slovak
  ### Miscellaneous and bug fixes
    * Added an advanced preference to enable experimental PRNG combat.
    * Fixed MP admins being unable to observe private games.
