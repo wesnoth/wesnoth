@@ -37,6 +37,7 @@ extern const size_t max_text_line_width;
 // String constants
 extern const std::string
 	ellipsis,
+	nbsp,
 
 	unicode_minus,
 	unicode_en_dash,

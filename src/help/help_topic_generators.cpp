@@ -477,20 +477,23 @@ std::string unit_topic_generator::operator()() const {
 
 	// Print some basic information such as HP and movement points.
 	// TODO: Make this info update according to musthave traits, similar to movetype below.
-	ss << _("HP: ") << type_.hitpoints() << jump(30)
-		<< _("Moves: ") << type_.movement() << jump(30);
+	ss << _("HP:") << font::nbsp << type_.hitpoints() << jump(30)
+		<< _("Moves:") << font::nbsp << type_.movement() << jump(30);
 	if (type_.vision() != type_.movement()) {
-		ss << _("Vision: ") << type_.vision() << jump(30);
+		ss << _("Vision:") << font::nbsp << type_.vision() << jump(30);
 	}
 	if (type_.jamming() > 0) {
-		ss << _("Jamming: ") << type_.jamming() << jump(30);
+		ss << _("Jamming:") << font::nbsp << type_.jamming() << jump(30);
 	}
-	ss << _("Cost: ") << type_.cost() << jump(30)
-		<< _("Alignment: ")
+	ss << _("Cost:") << font::nbsp << type_.cost() << jump(30)
+		<< _("Alignment:") << font::nbsp
 		<< make_link(type_.alignment_description(type_.alignment(), type_.genders().front()), "time_of_day")
 		<< jump(30);
 	if (type_.can_advance()) {
-		ss << _("Required XP: ") << type_.experience_needed();
+		// TRANSLATORS: This string is used in the help page of a single unit.  It uses
+		// non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
+		// translation use non-breaking spaces as appropriate for the target language.
+		ss << _("Required\u00a0XP:") << font::nbsp << type_.experience_needed();
 	}
 
 	// Print the detailed description about the unit.
