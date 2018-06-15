@@ -496,15 +496,20 @@ for env in [test_env, client_env, env]:
 
 # #
 # Add options to provide more hardened executables
+# osx doesn't seem to support RELRO
 # #
 
         if env['harden']:
             env.AppendUnique(CCFLAGS = ["-fPIE", "-fstack-protector-strong"])
-            env.AppendUnique(LINKFLAGS = ["-fPIE", "-pie", "-Wl,-z,now,-z,relro"])
             env.AppendUnique(CPPDEFINES = ["_FORTIFY_SOURCE=2"])
 
             if env["enable_lto"] == True:
                 env.AppendUnique(LINKFLAGS = ["-fstack-protector-strong"])
+            
+            if env["PLATFORM"] == 'darwin':
+                env.AppendUnique(LINKFLAGS = ["-fPIE", "-Wl,-pie"])
+            else:
+                env.AppendUnique(LINKFLAGS = ["-fPIE", "-pie", "-Wl,-z,relro,-z,now"])
 
 # #
 # Start determining options for debug build
