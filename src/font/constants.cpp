@@ -33,6 +33,7 @@ const size_t max_text_line_width = 4096;
 
 const std::string
 	ellipsis = "...",
+	nbsp = " ", // non-breaking space; unicode u00a0
 
 	unicode_minus = "-",
 	unicode_en_dash = "–", // unicode u2013
