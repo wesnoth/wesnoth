@@ -140,6 +140,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
 	option(ENABLE_APPDATA_FILE "enable installation of an appdata file for appstream" ON)
 endif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
 
+option(HARDEN "Whether to enable options to harden the executables" ON)
 option(ENABLE_STRICT_COMPILATION "Sets the strict compilation mode" OFF)
 option(ENABLE_PEDANTIC_COMPILATION "Sets the pedantic compilation mode" OFF)
 option(ENABLE_DEBUG_WINDOW_LAYOUT "Add the debug option to allow the generation of debug layout files in dot format" OFF)
