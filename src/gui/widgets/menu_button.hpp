@@ -68,11 +68,6 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_retval(const int retval)
-	{
-		retval_ = retval;
-	}
-
 	void set_values(const std::vector<::config>& values, int selected = 0);
 
 	void set_selected(int selected, bool fire_event = true);
@@ -125,14 +120,6 @@ private:
 	 * reacts to certain 'events'.
 	 */
 	state_t state_;
-
-	/**
-	 * The return value of the button.
-	 *
-	 * If this value is not 0 and the button is clicked it sets the retval of
-	 * the window and the window closes itself.
-	 */
-	int retval_;
 
 	std::vector<::config> values_;
 
@@ -190,8 +177,6 @@ public:
 	virtual widget_ptr build() const override;
 
 private:
-	std::string retval_id_;
-	int retval_;
 	std::vector<::config> options_;
 };
 

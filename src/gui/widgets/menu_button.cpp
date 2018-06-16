@@ -41,7 +41,6 @@ menu_button::menu_button(const implementation::builder_menu_button& builder)
 	: styled_widget(builder, type())
 	, selectable_item()
 	, state_(ENABLED)
-	, retval_(retval::NONE)
 	, values_()
 	, selected_()
 	, keep_open_(false)
@@ -143,13 +142,6 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 		}
 
 		set_selected(selected, true);
-
-		if(retval_ != retval::NONE) {
-			if(window* window = get_window()) {
-				window->set_retval(retval_);
-				return;
-			}
-		}
 	}
 
 	handled = true;
@@ -271,8 +263,6 @@ namespace implementation
 
 builder_menu_button::builder_menu_button(const config& cfg)
 	: builder_styled_widget(cfg)
-	, retval_id_(cfg["return_value_id"])
-	, retval_(cfg["return_value"])
 	, options_()
 {
 	for(const auto& option : cfg.child_range("option")) {
@@ -284,7 +274,6 @@ widget_ptr builder_menu_button::build() const
 {
 	auto widget = std::make_shared<menu_button>(*this);
 
-	widget->set_retval(get_retval(retval_id_, retval_, id));
 	if(!options_.empty()) {
 		widget->set_values(options_);
 	}
