@@ -15,15 +15,15 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
+
 #include <map>
 
 namespace gui2
 {
-
 namespace dialogs
 {
-
-class select_orb_colors : public modal_dialog {
+class select_orb_colors : public modal_dialog
+{
 public:
 	select_orb_colors();
 
@@ -35,11 +35,15 @@ public:
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(select_orb_colors)
 
 private:
-	void setup_orb_group(const std::string& base_id, bool& shown, const std::string& initial, window& window, bool connect = true);
-	void handle_toggle_click(bool& storage);
-	void handle_reset_click(window& window);
+	void setup_orb_group(const std::string& base_id, bool& shown, const std::string& initial);
+
+	void reset_orb_group(const std::string& base_id, bool& shown, const std::string& initial);
+
+	void toggle_orb_callback(bool& storage);
+	void reset_orb_callback();
 
 	bool show_unmoved_, show_partial_, show_moved_, show_ally_, show_enemy_;
+
 	std::map<std::string, group<std::string>> groups_;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
@@ -47,6 +51,7 @@ private:
 
 	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
+
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 };
