@@ -51,6 +51,8 @@
  ### Miscellaneous and bug fixes
    * Added an advanced preference to enable experimental PRNG combat.
    * Fixed MP admins being unable to observe private games.
+   * Fixed MP faction, leader, and leader gender changes persisting even if the
+     selection dialog is dismissed.
 
 ## Version 1.14.3
  ### AI
