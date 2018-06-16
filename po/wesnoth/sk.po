@@ -7169,6 +7169,8 @@ msgid "Save and abort game"
 msgstr "Uložiť a zrušiť hru"
 
 #: src/playturn.cpp:283
+#, fuzzy
+#| msgid "$player has left the game. What do you want to do?"
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player opustil hru. Čo chceš urobiť?"
 
@@ -7740,6 +7742,8 @@ msgid "A unit was created using debug mode during $player’s turn"
 msgstr "V režime ladenia bola vytvorená jednotka počas ťahu hráča $player"
 
 #: src/synced_user_choice.cpp:326
+#, fuzzy
+#| msgid "waiting for $desc from side(s) $sides"
 msgid "waiting for $desc from side(s) $sides"
 msgstr "čaká sa na $desc od strán: $sides"
 
@@ -7954,15 +7958,22 @@ msgstr "Skryť plán pre $player"
 msgid "Whiteboard Options"
 msgstr "Nastavenia tabule"
 
+#, fuzzy
+#~| msgid "Traits"
+#~ msgid "Trailers"
+#~ msgstr "Vlastnosti"
+
+#, fuzzy
+#~| msgid "The Battle for Wesnoth Help"
+#~ msgid "The standard Wesnoth core."
+#~ msgstr "Návod k Bitke o Wesnoth"
+
 #~ msgid "Defaults"
 #~ msgstr "Predvolené hodnoty"
 
 #~ msgid "Connected Players"
 #~ msgstr "Pripojení hráči"
 
-#~| msgid ""
-#~| "DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull."
-#~| "ttf,Junicode-Regular.ttf"
 #~ msgid ""
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
@@ -7970,12 +7981,53 @@ msgstr "Nastavenia tabule"
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
+#, fuzzy
+#~| msgid "vision: "
+#~ msgid "vision^none"
+#~ msgstr "dohľadnosť: "
+
+#, fuzzy
+#~| msgid "Time limit"
+#~ msgid "time limit^none"
+#~ msgstr "Časový limit"
+
+#, fuzzy
+#~| msgid "The nickname ‘$nick’ is registered on this server."
+#~ msgid "The nickname ‘$nick’ is banned on this server’s forums."
+#~ msgstr "Prezývka ‘$nick’ je na tomto serveri registrovaná."
+
+#, fuzzy
+#~| msgid "The nickname ‘$nick’ is registered on this server."
+#~ msgid ""
+#~ "The email address for the nickname ‘$nick’ is banned on this server’s "
+#~ "forums."
+#~ msgstr "Prezývka ‘$nick’ je na tomto serveri registrovaná."
+
+#, fuzzy
+#~| msgid "Connection timed out"
+#~ msgid "Connection failed: "
+#~ msgstr "Čas na pripojenie vypršal"
+
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "Odkaz na neexistujúcu záložku: "
 
-#~| msgid "Unknown era"
 #~ msgid "(unknown player)"
 #~ msgstr "(neznámy hráč)"
+
+#, fuzzy
+#~| msgid "<span color=\"$color\">$number_or_percent</span> move"
+#~| msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
+#~ msgid "<span color=\"$color\">$number_or_percent</span> movement point"
+#~ msgid_plural ""
+#~ "<span color=\"$color\">$number_or_percent</span> movement points"
+#~ msgstr[0] "<span color=\"$color\">$number_or_percent</span> ťahov"
+#~ msgstr[1] "<span color=\"$color\">$number_or_percent</span> ťah"
+#~ msgstr[2] "<span color=\"$color\">$number_or_percent</span> ťahy"
+
+#, fuzzy
+#~| msgid "Connect to Server"
+#~ msgid "Disconnected from server."
+#~ msgstr "Pripoj sa na server"
 
 #, fuzzy
 #~| msgid "Size: "
@@ -8279,9 +8331,6 @@ msgstr "Nastavenia tabule"
 
 #~ msgid "Configure Game"
 #~ msgstr "Nastaviť hru"
-
-#~ msgid "Time limit"
-#~ msgstr "Časový limit"
 
 #~ msgid "Name of game:"
 #~ msgstr "Názov hry:"
@@ -8823,11 +8872,6 @@ msgstr "Nastavenia tabule"
 #~ msgstr[0] "ťahy"
 #~ msgstr[1] "ťahy"
 #~ msgstr[2] "ťahy"
-
-#, fuzzy
-#~| msgid "vision: "
-#~ msgid "vision"
-#~ msgstr "dohľadnosť: "
 
 #, fuzzy
 #~| msgid "Warning: "
@@ -13686,9 +13730,6 @@ msgstr "Nastavenia tabule"
 #~ msgid "Recruits:"
 #~ msgstr "Verbovaní:"
 
-#~ msgid "The Battle for Wesnoth Help"
-#~ msgstr "Návod k Bitke o Wesnoth"
-
 #~ msgid "Parse error when parsing help text: "
 #~ msgstr "Chyba pri analyzovaní pomocného textu: "
 
@@ -14208,9 +14249,6 @@ msgstr "Nastavenia tabule"
 #~ "oblakoch. Dostať sa cez také hory je prakticky nemožné. Dokonca ani "
 #~ "lietajúce bytosti sa nevedia orientovať medzi rozoklanými vrcholmi v "
 #~ "takých výškach."
-
-#~ msgid "Connect to Server"
-#~ msgstr "Pripoj sa na server"
 
 #~ msgid "You will now connect to a server to download add-ons."
 #~ msgstr "Teraz sa pripojíš na server, aby si si stiahol doplnky."
