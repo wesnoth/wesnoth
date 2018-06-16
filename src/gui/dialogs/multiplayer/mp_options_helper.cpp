@@ -286,7 +286,7 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 					menu->set_selected(std::distance(combo_values.begin(), iter));
 				}
 
-				menu->connect_click_handler(
+				connect_signal_notify_modified(*menu,
 					std::bind(&mp_options_helper::update_options_data_map_menu_button, this, menu, visible_options_.back(), option_cfg));
 
 			} else if(opt.key == "slider") {

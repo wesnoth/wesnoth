@@ -72,7 +72,7 @@ void faction_select::pre_show(window& window)
 	//
 	// Set up leader menu button
 	//
-	find_widget<menu_button>(&window, "leader_menu", false).connect_click_handler(
+	connect_signal_notify_modified(find_widget<menu_button>(&window, "leader_menu", false),
 		std::bind(&faction_select::on_leader_select, this, std::ref(window)));
 
 	//
