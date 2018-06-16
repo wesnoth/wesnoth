@@ -404,10 +404,7 @@ void mp_staging::on_team_select(window& window, ng::side_engine_ptr side, menu_b
 
 void mp_staging::select_leader_callback(ng::side_engine_ptr side, grid& row_grid)
 {
-	gui2::dialogs::faction_select dlg(side->flg(), side->color_id(), side->index() + 1);
-	dlg.show();
-
-	if(dlg.get_retval() == retval::OK) {
+	if(gui2::dialogs::faction_select::execute(side->flg(), side->color_id(), side->index() + 1)) {
 		update_leader_display(side, row_grid);
 
 		set_state_changed();
