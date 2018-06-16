@@ -52,17 +52,19 @@ public:
 	virtual unsigned get_state() const override;
 
 	/** Inherited from styled_widget. */
-	void update_canvas() override;
+	virtual void update_canvas() override;
 
 	/** Inherited from selectable_item */
-	unsigned get_value() const override
+	virtual unsigned get_value() const override
 	{
 		return state_num_;
 	}
+
 	/** Inherited from selectable_item */
-	unsigned num_states() const override;
+	virtual unsigned num_states() const override;
+
 	/** Inherited from selectable_item */
-	void set_value(unsigned selected, bool fire_event = false) override;
+	virtual void set_value(unsigned selected, bool fire_event = false) override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -73,6 +75,7 @@ public:
 		icon_name_ = icon_name;
 		update_canvas();
 	}
+
 	const std::string& icon_name() const
 	{
 		return icon_name_;

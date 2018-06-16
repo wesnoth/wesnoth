@@ -90,16 +90,16 @@ public:
 	virtual point border_space() const override;
 
 	/** Inherited from selectable_item */
-	unsigned get_value() const override
+	virtual unsigned get_value() const override
 	{
 		return state_num_;
 	}
 
 	/** Inherited from selectable_item */
-	void set_value(unsigned selected, bool fire_event = false) override;
+	virtual void set_value(unsigned selected, bool fire_event = false) override;
 
 	/** Inherited from selectable_item */
-	unsigned num_states() const override;
+	virtual unsigned num_states() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
