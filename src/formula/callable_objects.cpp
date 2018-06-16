@@ -232,7 +232,7 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "states" || key == "status") {
 		return formula_callable::convert_set(u_.get_states());
 	} else if(key == "side") {
-		return variant(u_.side()-1);
+		return variant(u_.side());
 	} else if(key == "cost") {
 		return variant(u_.cost());
 	} else if(key == "upkeep") {

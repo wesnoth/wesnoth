@@ -378,6 +378,7 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "teams")
 	{
 		std::vector<variant> vars;
+		vars.emplace_back(); // This enables the array to be 1-indexed instead of 0-indexed.
 		for(std::vector<team>::const_iterator i = resources::gameboard->teams().begin(); i != resources::gameboard->teams().end(); ++i) {
 			vars.emplace_back(std::make_shared<team_callable>(*i));
 		}
@@ -386,6 +387,7 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "allies")
 	{
 		std::vector<variant> vars;
+		vars.emplace_back(); // This enables the array to be 1-indexed instead of 0-indexed.
 		for( size_t i = 0; i < resources::gameboard->teams().size(); ++i) {
 			if ( !current_team().is_enemy( i+1 ) )
 				vars.emplace_back(i);
@@ -395,6 +397,7 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "enemies")
 	{
 		std::vector<variant> vars;
+		vars.emplace_back(); // This enables the array to be 1-indexed instead of 0-indexed.
 		for( size_t i = 0; i < resources::gameboard->teams().size(); ++i) {
 			if ( current_team().is_enemy( i+1 ) )
 				vars.emplace_back(i);
