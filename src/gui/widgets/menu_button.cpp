@@ -42,7 +42,7 @@ menu_button::menu_button(const implementation::builder_menu_button& builder)
 	, selectable_item()
 	, state_(ENABLED)
 	, values_()
-	, selected_()
+	, selected_(0)
 	, keep_open_(false)
 {
 	values_.emplace_back(::config {"label", this->get_label()});
@@ -183,10 +183,10 @@ void menu_button::signal_handler_sdl_wheel_down(const event::ui_event event, boo
 	handled = true;
 }
 
-void menu_button::set_values(const std::vector<::config>& values, int selected)
+void menu_button::set_values(const std::vector<::config>& values, unsigned selected)
 {
-	assert(static_cast<size_t>(selected) < values.size());
-	assert(static_cast<size_t>(selected_) < values_.size());
+	assert(selected < values.size());
+	assert(selected_ < values_.size());
 
 	if(values[selected]["label"] != values_[selected_]["label"]) {
 		set_is_dirty(true);
@@ -198,10 +198,10 @@ void menu_button::set_values(const std::vector<::config>& values, int selected)
 	set_label(values_[selected_]["label"]);
 }
 
-void menu_button::set_selected(int selected, bool fire_event)
+void menu_button::set_selected(unsigned selected, bool fire_event)
 {
-	assert(static_cast<size_t>(selected) < values_.size());
-	assert(static_cast<size_t>(selected_) < values_.size());
+	assert(selected < values_.size());
+	assert(selected_ < values_.size());
 
 	if(selected != selected_) {
 		set_is_dirty(true);

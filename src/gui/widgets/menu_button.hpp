@@ -56,9 +56,9 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_values(const std::vector<::config>& values, int selected = 0);
+	void set_values(const std::vector<::config>& values, unsigned selected = 0);
 
-	void set_selected(int selected, bool fire_event = true);
+	void set_selected(unsigned selected, bool fire_event = true);
 
 	/** Inherited from selectable_item */
 	virtual unsigned get_value() const override { return selected_; }
@@ -111,7 +111,7 @@ private:
 
 	std::vector<::config> values_;
 
-	int selected_;
+	unsigned selected_;
 
 	bool keep_open_;
 
