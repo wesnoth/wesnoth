@@ -242,6 +242,33 @@ DEFINE_WFL_FUNCTION(enemy_of, 2, 2)
 	return variant(resources::gameboard->get_team(self).is_enemy(other) ? 1 : 0);
 }
 
+DEFINE_WFL_FUNCTION(get_team, 1, 1)
+{
+	variant which = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "get_team"));
+	if(which.is_int()) {
+		int i = which.as_int();
+		if(i > 0 && i <= resources::gameboard->teams().size()) {
+			return std::make_shared<team_callable>(resources::gameboard->get_team(i));
+		}
+	} else if(which.is_string()) {
+		std::string team_name = which.as_string();
+		std::vector<variant> sides;
+		for(auto team : resources::gameboard->teams()) {
+			auto teams = utils::split(team.team_name());
+			if(std::find(teams.begin(), teams.end(), team_name) != teams.end()) {
+				sides.emplace_back(std::make_shared<team_callable>(team));
+			}
+		}
+		return variant(sides);
+	} else if(auto u = which.try_convert<unit_callable>()) {
+		int i = u->get_unit().side();
+		return std::make_shared<team_callable>(resources::gameboard->get_team(i));
+	} else if(which.try_convert<team_callable>()) {
+		return which;
+	}
+	return variant();
+}
+
 } // namespace gamestate
 
 gamestate_function_symbol_table::gamestate_function_symbol_table(std::shared_ptr<function_symbol_table> parent) : function_symbol_table(parent) {
@@ -255,6 +282,7 @@ gamestate_function_symbol_table::gamestate_function_symbol_table(std::shared_ptr
 	DECLARE_WFL_FUNCTION(adjacent_locs); // This is deliberately duplicated here; this form excludes off-map locations, while the core form does not
 	DECLARE_WFL_FUNCTION(locations_in_radius);
 	DECLARE_WFL_FUNCTION(enemy_of);
+	DECLARE_WFL_FUNCTION(get_team);
 }
 
 }

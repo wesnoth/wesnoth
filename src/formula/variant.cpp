@@ -676,14 +676,16 @@ variant variant::execute_variant(const variant& var)
 			continue;
 		}
 
-		if(auto action = vars.top().try_convert<action_callable>()) {
+		auto& top = vars.top();
+
+		if(auto action = top.try_convert<action_callable>()) {
 			variant res = action->execute_self(*this);
 			if(res.is_int() && res.as_bool()) {
-				made_moves.push_back(vars.top());
+				made_moves.push_back(top);
 			}
-		} else if(vars.top().is_string() && vars.top().as_string() == "continue") {
+		} else if(top.is_string() && top.as_string() == "continue") {
 //			if(infinite_loop_guardian_.continue_check()) {
-				made_moves.push_back(vars.top());
+				made_moves.push_back(top);
 //			} else {
 				//too many calls in a row - possible infinite loop
 //				ERR_SF << "ERROR #5001 while executing 'continue' formula keyword" << std::endl;
@@ -691,11 +693,11 @@ variant variant::execute_variant(const variant& var)
 //				if(safe_call)
 //					error = variant(new game_logic::safe_call_result(nullptr, 5001));
 //			}
-		} else if(vars.top().is_string() && (vars.top().as_string() == "end_turn" || vars.top().as_string() == "end")) {
+		} else if(top.is_string() && (top.as_string() == "end_turn" || top.as_string() == "end")) {
 			break;
 		} else {
 			//this information is unneeded when evaluating formulas from commandline
-			ERR_SF << "UNRECOGNIZED MOVE: " << vars.top().to_debug_string() << std::endl;
+			ERR_SF << "UNRECOGNIZED MOVE: " << top.to_debug_string() << std::endl;
 		}
 
 		vars.pop();
