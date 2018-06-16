@@ -68,11 +68,6 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_retval(const int retval)
-	{
-		retval_ = retval;
-	}
-
 	/**
 	 * Sets the maximum number of selected elements shown on the label.
 	 * If more are selected, the label will say "and N others".
@@ -165,14 +160,6 @@ private:
 	state_t state_;
 
 	/**
-	 * The return value of the button.
-	 *
-	 * If this value is not 0 and the button is clicked it sets the retval of
-	 * the window and the window closes itself.
-	 */
-	int retval_;
-
-	/**
 	 * The maximum number of selected states to list in the label
 	 */
 	int max_shown_;
@@ -233,8 +220,7 @@ public:
 	widget* build() const;
 
 private:
-	std::string retval_id_;
-	int retval_, max_shown_;
+	int max_shown_;
 	std::vector<::config> options_;
 };
 

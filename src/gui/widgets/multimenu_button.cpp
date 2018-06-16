@@ -42,7 +42,6 @@ REGISTER_WIDGET(multimenu_button)
 multimenu_button::multimenu_button(const implementation::builder_multimenu_button& builder)
 	: styled_widget(builder, get_control_type())
 	, state_(ENABLED)
-	, retval_(retval::NONE)
 	, max_shown_(1)
 	, values_()
 	, toggle_states_()
@@ -139,13 +138,6 @@ void multimenu_button::signal_handler_left_button_click(const event::ui_event ev
 	droplist_ = &droplist;
 	droplist.show();
 	droplist_ = nullptr;
-
-	if(retval_ != retval::NONE) {
-		if(window* window = get_window()) {
-			window->set_retval(retval_);
-			return;
-		}
-	}
 
 	/* In order to allow toggle button states to be specified by various dialogs in the values config, we write the state
 	 * bools to the values_ config here, but only if a checkbox= key was already provided. The value of the checkbox= key
@@ -332,8 +324,6 @@ namespace implementation
 
 builder_multimenu_button::builder_multimenu_button(const config& cfg)
 	: builder_styled_widget(cfg)
-	, retval_id_(cfg["return_value_id"])
-	, retval_(cfg["return_value"])
 	, max_shown_(cfg["maximum_shown"])
 	, options_()
 {
@@ -346,7 +336,6 @@ widget* builder_multimenu_button::build() const
 {
 	multimenu_button* widget = new multimenu_button(*this);
 
-	widget->set_retval(get_retval(retval_id_, retval_, id));
 	widget->set_max_shown(max_shown_);
 	if(!options_.empty()) {
 		widget->set_values(options_);
