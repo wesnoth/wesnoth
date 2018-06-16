@@ -47,7 +47,7 @@ multimenu_button::multimenu_button(const implementation::builder_multimenu_butto
 	, toggle_states_()
 	, droplist_(nullptr)
 {
-	values_.emplace_back(::config {"label", this->get_label()});
+	values_.emplace_back("label", this->get_label());
 
 	connect_signal<event::MOUSE_ENTER>(
 			std::bind(&multimenu_button::signal_handler_mouse_enter, this, _2, _3));

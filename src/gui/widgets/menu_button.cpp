@@ -45,7 +45,7 @@ menu_button::menu_button(const implementation::builder_menu_button& builder)
 	, selected_(0)
 	, keep_open_(false)
 {
-	values_.emplace_back(::config {"label", this->get_label()});
+	values_.emplace_back("label", this->get_label());
 
 	connect_signal<event::MOUSE_ENTER>(
 		std::bind(&menu_button::signal_handler_mouse_enter, this, _2, _3));
