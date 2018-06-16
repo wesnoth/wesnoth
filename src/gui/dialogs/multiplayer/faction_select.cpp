@@ -46,6 +46,9 @@ faction_select::faction_select(ng::flg_manager& flg_manager, const std::string& 
 	: flg_manager_(flg_manager)
 	, tc_color_(color)
 	, side_(side)
+	, last_faction_(flg_manager.current_faction_index())
+	, last_leader_(flg_manager.current_leader_index())
+	, last_gender_(flg_manager.current_gender_index())
 {
 }
 
@@ -168,7 +171,6 @@ void faction_select::on_leader_select(window& window)
 {
 	flg_manager_.set_current_leader(find_widget<menu_button>(&window, "leader_menu", false).get_value());
 
-
 	// TODO: should we decouple this from the flg manager and instead just check the unit type directly?
 	// If that's done so, we'd need to come up with a different check for Random availability.
 	gender_toggle_.set_members_enabled([this](const std::string& gender)->bool {
@@ -196,6 +198,25 @@ void faction_select::update_leader_image(window& window)
 	}
 
 	find_widget<image>(&window, "leader_image", false).set_label(leader_image);
+}
+
+void faction_select::post_show(window& window)
+{
+	//
+	// If we're canceling, restore the previous selections. It might be worth looking
+	// into only making selections at all here in post_show, but that would require a
+	// refactor of the flg_manager class.
+	//
+	// Also, note it's important to set these in the order of faction -> leader -> gender
+	// or the saved indices will be invalid!
+	//
+	// -- vultraz, 2018-06-16
+	//
+	if(get_retval() != retval::OK) {
+		flg_manager_.set_current_faction(last_faction_);
+		flg_manager_.set_current_leader(last_leader_);
+		flg_manager_.set_current_gender(last_gender_);
+	}
 }
 
 } // namespace dialogs
