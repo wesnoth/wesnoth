@@ -769,8 +769,8 @@ void mp_lobby::pre_show(window& window)
 		replay_options.set_selected(2);
 	}
 
-	replay_options.connect_click_handler(
-			std::bind(&mp_lobby::skip_replay_changed_callback, this, std::ref(window)));
+	connect_signal_notify_modified(replay_options,
+		std::bind(&mp_lobby::skip_replay_changed_callback, this, std::ref(window)));
 
 	filter_friends_ = find_widget<toggle_button>(&window, "filter_with_friends", false, true);
 	filter_ignored_ = find_widget<toggle_button>(&window, "filter_without_ignored", false, true);

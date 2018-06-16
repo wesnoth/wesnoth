@@ -205,7 +205,9 @@ void mp_create_game::pre_show(window& win)
 	};
 
 	game_menu_button.set_values(game_types, get_initial_type_index());
-	game_menu_button.connect_click_handler(std::bind(&mp_create_game::update_games_list, this, std::ref(win)));
+
+	connect_signal_notify_modified(game_menu_button,
+		std::bind(&mp_create_game::update_games_list, this, std::ref(win)));
 
 	//
 	// Set up mods list
@@ -256,7 +258,9 @@ void mp_create_game::pre_show(window& win)
 	}
 
 	eras_menu_button_->set_values(era_names);
-	eras_menu_button_->connect_click_handler(std::bind(&mp_create_game::on_era_select, this, std::ref(win)));
+
+	connect_signal_notify_modified(*eras_menu_button_,
+		std::bind(&mp_create_game::on_era_select, this, std::ref(win)));
 
 	const int era_selection = create_engine_.find_extra_by_id(ng::create_engine::ERA, preferences::era());
 	if(era_selection >= 0) {
@@ -289,7 +293,9 @@ void mp_create_game::pre_show(window& win)
 	menu_button& rfm_menu_button = find_widget<menu_button>(&win, "random_faction_mode", false);
 
 	rfm_menu_button.set_values(rfm_options, initial_index);
-	rfm_menu_button.connect_click_handler(std::bind(&mp_create_game::on_random_faction_mode_select, this, std::ref(win)));
+
+	connect_signal_notify_modified(rfm_menu_button,
+		std::bind(&mp_create_game::on_random_faction_mode_select, this, std::ref(win)));
 
 	on_random_faction_mode_select(win);
 

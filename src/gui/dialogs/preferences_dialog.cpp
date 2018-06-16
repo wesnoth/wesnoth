@@ -441,9 +441,8 @@ void preferences_dialog::post_build(window& window)
 
 	set_resolution_list(res_list, window.video());
 
-	res_list.connect_click_handler(
-			std::bind(&preferences_dialog::handle_res_select,
-			this, std::ref(window)));
+	connect_signal_notify_modified(res_list,
+		std::bind(&preferences_dialog::handle_res_select, this, std::ref(window)));
 
 	/* SHOW FLOATING LABELS */
 	register_bool("show_floating_labels", true,
