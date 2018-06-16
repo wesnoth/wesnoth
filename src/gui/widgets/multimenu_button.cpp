@@ -321,7 +321,7 @@ namespace implementation
 
 builder_multimenu_button::builder_multimenu_button(const config& cfg)
 	: builder_styled_widget(cfg)
-	, max_shown_(cfg["maximum_shown"])
+	, max_shown_(cfg["maximum_shown"].to_unsigned(1))
 	, options_()
 {
 	for(const auto& option : cfg.child_range("option")) {
