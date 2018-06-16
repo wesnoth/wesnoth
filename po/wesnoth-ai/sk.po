@@ -9,52 +9,49 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:29 UTC\n"
-"PO-Revision-Date: 2014-10-23 21:29+0100\n"
+"PO-Revision-Date: 2018-06-10 19:02+0200\n"
 "Last-Translator: Svistwarrior273 <romanbeno273@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: \n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 2.0.4\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
 msgid "Multiplayer_AI^Default AI (RCA)"
-msgstr "Multiplayer_AI^Základné AI (RCA)"
+msgstr "Základná UI (RCA)"
 
 #. [ai]: id=experimental_ai
 #: data/ai/ais/ai_generic_rush.cfg:10
 msgid "Multiplayer_AI^Experimental AI"
-msgstr "Multiplayer_AI^Experimentálne AI"
+msgstr "Experimentálna UI"
 
 #. [ai]: id=idle_ai
 #: data/ai/ais/idle_ai.cfg:4
 msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "Multiplayer_AI^Dev AI: Idle AI"
+msgstr "Dev UI: Nečinná UI"
 
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
-#, fuzzy
-#| msgid "Multiplayer_AI^Dev AI: Default + Old Recruitment"
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
-msgstr "Multiplayer_AI^Dev AI: Základné + Starý spôsob verbovania"
+msgstr "Dev UI: Základná UI (RCA) s alternatívnym spôsobom verbovania"
 
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/dev/formula_ai.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (Formula AI)"
-msgstr ""
-"Multiplayer_AI^Dev AI: Základné + Experimentálne verbovanie (Formula AI)"
+msgstr "Dev UI: Základná + Experimentálne verbovanie (Formula UI)"
 
 #. [ai]: id=formula_ai_poisoning
 #: data/ai/dev/formula_ai_poisoning.cfg:9
 msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
-msgstr "Multiplayer_AI^Dev AI: Základné + Otravovanie (Formula AI)"
+msgstr "Dev UI: Základná + Otravovanie jedom (Formula UI)"
 
 #: data/ai/lua/patrol.lua:4
 msgid "Use the Patrols Micro AI instead of patrol.lua."
-msgstr ""
+msgstr "Použitie Hliadkovú UI namiesto patrol.lua."
 
 #. [test]: id=The_Elves_Besieged
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:5
@@ -152,9 +149,9 @@ msgstr ""
 "smerovníku na severozápade, pričom by mal Konrád aj Delfador prežiť. Umelá "
 "inteligencia je použitá zo scény 'Ochráň jednotku'.\n"
 "\n"
-"Poznámka: Ochranárske AI je naprogramované ako Mikro AI. Mikro AI môže byť "
-"pridané a adaptované k cieľu scenára ľahko iba použitím WML a tagu "
-"[micro_ai]. Pozrite si <span color='#00A000'>Mikro AI wiki stránku</span> na "
+"Poznámka: Ochranárska UI je naprogramovaná ako Mikro UI. Mikro UI môže byť "
+"pridaná a adaptovaná k cieľu scenára ľahko iba použitím WML a tagu "
+"[micro_ai]. Pozrite si <span color='#00A000'>Mikro UI wiki stránku</span> na "
 "http://wiki.wesnoth.org/Micro_AIs pre viac informácií."
 
 #. [event]
@@ -236,7 +233,7 @@ msgid ""
 "Wolves Multipack AI (used in a different scenario), this Wolves AI combines "
 "all wolves of the side in the same pack."
 msgstr ""
-"<u>Všeobecne</u>: Tieto AI sú nastavené tak, aby simulovali (do určitej "
+"<u>Všeobecne</u>: Tieto UI sú nastavené tak, aby simulovali (do určitej "
 "miery), ako sa tieto zvieratá správajú v reálnom živote. To zahŕňa fakt, že "
 "sú to zvieratá, čiže nie sú nejak veľmi múdre. Napríklad, vlky zvyknú loviť "
 "vo svorkách, ale ľahko sa rozptýlia, keď sa v ich dosahu zjaví korisť. Tiež "
@@ -255,9 +252,8 @@ msgstr ""
 "s výnimkou prípadu, keď sa na nich chystajú zaútočiť. Ak ich necháte sa "
 "pohybovať dostatočne dlho, naučia sa, že nie je múdre útočiť na sloníkov. "
 "Keď v okolí nie je žiadny jeleň, náhodne blúdia terénom. Všimnite si, "
-"narozdiel od Vlčieho Viacsvorkového AI (použitého v inom scenári), toto "
-"vlčie AI kombinuje všetkých vlkoch na jednej hernej strane do jednej veľkej "
-"svorky."
+"narozdiel od Vlčej Viacsvorkovej UI (použitého v inom scenári), táto Vlčia "
+"UI kombinuje všetkých vlkov na jednej hernej strane do jednej veľkej svorky."
 
 #: data/ai/micro_ais/scenarios/animals.cfg:12
 msgid ""
@@ -423,7 +419,7 @@ msgid ""
 "Wesnoth mainline, such as bears, sheep and sheep dogs, or deer. In this test "
 "scenario, these units have been replaced by mainline units."
 msgstr ""
-"<span color='#A00000'>Dôležité:</span> Zvieracie Mikro AI v tomto scenári sú "
+"<span color='#A00000'>Dôležité:</span> Zvieracie Mikro UI v tomto scenári sú "
 "napísané pre taký počet zvieracích jednotiek, aký sa nenachádza v hlavných "
 "výpravách Wesnothu, napr. medvede, ovce a pastierske psy, alebo jelene. V "
 "tomto scenári boli tieto jednotky nahradené štandardnejšími."
@@ -435,8 +431,9 @@ msgid ""
 "for watching only. The animal AIs behave as follows:\n"
 "\n"
 msgstr ""
-"Toto je zábavný malý scenár s kopou rôznych zvieracích AI, väčšinou iba na "
-"sledovanie. Tieto zvieracie AI sa správajú nasledovne: \n"
+"Toto je zábavný malý scenár s kopou rôznych zvieracích UI, väčšinou iba na "
+"sledovanie. Tieto zvieracie UI sa správajú nasledovne: \n"
+"\n"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/animals.cfg:349
@@ -472,13 +469,13 @@ msgstr ""
 "akákoľvek zabitá jednotka je nahradená ďalšou rovnakého typu na začiatku "
 "nasledujúceho ťahu. Za účelom skončenia scenára, je tu príslušná voľba "
 "pravým tlačítkom myši - ale funguje iba v človekom-kontrolovanom režime. V "
-"AI režime budete musieť stlačiť 'Esc' alebo znovunačítať posledný uložený "
+"režime UI budete musieť stlačiť 'Esc' alebo znovunačítať posledný uložený "
 "súbor.\n"
 "\n"
-"Taktiež berte na vedomie: Zvieracie AI sú nakódované ako Mikro AI. Mikro AI "
-"môže byť pridané a adaptované k cieľu scenára ľahko iba použitím WML a tagu "
-"[micro_ai]. Pozrite si <span color='#00A000'>Mikro AI wiki stránku</span> na "
-"http://wiki.wesnoth.org/Micro_AIs pre viac informácii."
+"Taktiež berte na vedomie: Zvieracie UI sú naprogramované ako Mikro UI. Mikro "
+"UI môže byť pridaná a adaptovaná k cieľu scenára ľahko iba použitím WML a "
+"tagu [micro_ai]. Pozrite si <span color='#00A000'>Mikro UI wiki stránku</"
+"span> na http://wiki.wesnoth.org/Micro_AIs pre viac informácii."
 
 #. [option]
 #: data/ai/micro_ais/scenarios/animals.cfg:361
@@ -569,9 +566,9 @@ msgstr ""
 "liečeniu. Ak budeme dostatočne opatrní, stále by sme to mohli dokonca "
 "vyhrať. Pridám sa k vám akonáhle dokončím verbovanie a trochu si zabojujem.\n"
 "\n"
-"Poznámka: AI Prekážkovej Obrany  je nakódované ako Mikro AI. Mikro AI môže "
-"byť pridané a adaptované k cieľu scenára ľahko iba použitím WML a tagu "
-"[micro_ai]. Pozrite si <span color='#00A000'>Mikro AI wiki stránku</span> na "
+"Poznámka: UI Prekážkovej Obrany je naprogramovaná ako Mikro UI. Mikro UI "
+"môže byť pridaná a adaptovaná k cieľu scenára ľahko iba použitím WML a tagu "
+"[micro_ai]. Pozrite si <span color='#00A000'>Mikro UI wiki stránku</span> na "
 "http://wiki.wesnoth.org/Micro_AIs pre viac informácii."
 
 #. [message]: speaker=narrator
@@ -582,14 +579,14 @@ msgid ""
 "possible. Do you want to play the orc side or let the default (RCA) AI do "
 "that?"
 msgstr ""
-"V tomto scenári, AI hrajúce za ľudí dostalo pokyn sformovať defenzívnu líniu "
+"V tomto scenári, UI hrajúca za ľudí dostalo pokyn sformovať defenzívnu líniu "
 "v priesmyku a udržať orkov tak dlho, ako to len bude možné. Chceš hrať za "
-"orkskú stranu alebo to necháš na základné (RCA) AI?"
+"orkskú stranu alebo to necháš na základnú (RCA) UI?"
 
 #. [option]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:102
 msgid "<span font='16'>I'll watch the two AIs fight it out.</span>"
-msgstr "<span font='16'>Budem sa pozerať, ako to AI vybojujú.</span>"
+msgstr "<span font='16'>Budem sa pozerať, ako to UI vybojujú.</span>"
 
 #. [option]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:105
@@ -685,7 +682,7 @@ msgstr ""
 "určitý počet ťahov, alebo sa plne nevyliečim.\n"
 "Zopár detailov (herné prvky, nie bugy, ale to sa môže v prípade potreby "
 "zmeniť):\n"
-"- Ak bude moja cesta domov pri návrate zablokovaná, základné RCA AI prevezme "
+"- Ak bude moja cesta domov pri návrate zablokovaná, základná RCA UI prevezme "
 "moje správanie.\n"
 "- Avšak zaútočím na každého nepriateľa, ktorý obsadí môj hex určený na "
 "odpočinok, ak sa mi tam podarí dostať.\n"
@@ -694,10 +691,10 @@ msgstr ""
 "- Príležitostne sa počas túlania sa nebudem chvíľku hýbať (aj drak musí "
 "občas odpočívať!)\n"
 "\n"
-"Poznámka: Lovecké AI je nakódované ako Mikro AI. Mikro AI môže byť pridané a "
-"adaptované k cieľu scenára ľahko iba použitím WML a tagu [micro_ai]. Pozrite "
-"si <span color='#00A000'>Mikro AI wiki stránku</span> na http://wiki.wesnoth."
-"org/Micro_AIs pre viac informácii."
+"Poznámka: Lovecká UI je naprogramovaná ako Mikro UI. Mikro UI môže byť "
+"pridaná a adaptovaná k cieľu scenára ľahko iba použitím WML a tagu "
+"[micro_ai]. Pozrite si <span color='#00A000'>Mikro UI wiki stránku</span> na "
+"http://wiki.wesnoth.org/Micro_AIs pre viac informácii."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/dragon.cfg:96
@@ -728,7 +725,7 @@ msgstr "Som odtiaľto preč."
 #. [test]: id=fast
 #: data/ai/micro_ais/scenarios/fast.cfg:5
 msgid "Fast"
-msgstr ""
+msgstr "Rýchla"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/fast.cfg:64
@@ -742,6 +739,13 @@ msgid ""
 "There is nothing to do here, just watch or use this scenario as a template "
 "or for your own tests."
 msgstr ""
+"Táto scéna predstavuje situáciu s toľkými jednotkami na mape, že pred každým "
+"ťahom štandardnej UI dochádza k dlhým prestávkam (niekoľko sekúnd). Naopak, "
+"Rýchla Mikro UI má omnoho kratšie pauzy. Na predvedenie rozdielu hrá stranu "
+"1 Rýchla Mikro UI a stranu 2 predvolená (RCA) UI.\n"
+"\n"
+"V scéne netreba nič robiť, len sledujte alebo použite túto scénu ako šablónu "
+"alebo pre vlastné testy."
 
 #. [test]: id=goto
 #. [event]
@@ -830,9 +834,9 @@ msgid ""
 "tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at http://"
 "wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
-"Tento scenár demonštruje viacero rôznych využití Chodiacej AI. Všetky AI "
-"strany sú kontrolované touto MAI jedným rovnakým spôsobom (okrem saurov, "
-"ktorí bežia pod Obsmŕdačskym Mikro AI). Počas scenára budú zobrazované rôzne "
+"Tento scenár demonštruje viacero rôznych využití Chodiacej Mikro UI. Všetky "
+"UI strany sú kontrolované touto MUI jedným rovnakým spôsobom (okrem saurov, "
+"ktorí bežia pod Obsmŕdačskym Mikro UI). Počas scenára budú zobrazované rôzne "
 "správy poukazujúce na to, čo práve jednotky robia.\n"
 "\n"
 "Hráč kontroluje stranu 1. Je tu k dispozícii pravo-tlačítkové kontextové "
@@ -840,15 +844,15 @@ msgstr ""
 "odstraňovanie. Toto je užitočné väčšinou pre zistenie reakcii strážnikov "
 "strany 3.\n"
 "\n"
-"Poznámka: Chodiace AI je nakódované ako Mikro AI. Mikro AI môže byť pridané "
-"a adaptované k cieľu scenára ľahko iba použitím WML a tagu [micro_ai]. "
-"Pozrite si <span color='#00A000'>Mikro AI wiki stránku</span> na http://wiki."
-"wesnoth.org/Micro_AIs pre viac informácii."
+"Poznámka: Chodiaca UI je naprogramovaná ako Mikro UI. Mikro UI môže byť "
+"pridaná a adaptovaná k cieľu scenára ľahko iba použitím WML a tagu "
+"[micro_ai]. Pozrite si <span color='#00A000'>Mikro UI wiki stránku</span> na "
+"http://wiki.wesnoth.org/Micro_AIs pre viac informácii."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/goto.cfg:422
 msgid "Watch the AI units do their things"
-msgstr "Pozoruj AI jednotky, ako robia svoje veci"
+msgstr "Pozoruj UI jednotky, ako robia svoje veci"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/goto.cfg:428
@@ -877,12 +881,13 @@ msgid ""
 "guardian units, although one of the dedicated Guardian Micro AIs will often "
 "be better suited for that purpose."
 msgstr ""
-"Chlapci, ignorujte všetkých naookolo okrem toho podvodníka Vaddana a jeho "
+"Chlapci, ignorujte všetkých naokolo okrem toho podvodníka Vaddana a jeho "
 "mužov. Zostaňte na mieste až pokiaľ sa ktorákoľvek z jeho jednotiek "
 "nedostane 8 alebo hexov od vás.\n"
-"Poznámka: Toto je demonštrácia toho, ako môže byť Chodiaca Mikro AI použitá "
-"na nakódovanie strážnickych jednotiek, aj keď jedna z vyhradených "
-"Strážnickych Mikro AI bude na tento účel často vhodnejšia."
+"\n"
+"Poznámka: Toto je demonštrácia toho, ako môže byť Chodiaca Mikro UI použitá "
+"na nakódovanie strážnických jednotiek, aj keď jedna z vyhradených "
+"Strážnických Mikro UI bude na tento účel často vhodnejšia."
 
 #. [message]: type=Vampire Bat
 #: data/ai/micro_ais/scenarios/goto.cfg:467
@@ -944,8 +949,8 @@ msgstr ""
 "Si blázon. Možno vzdušnou čiarou to je kratšie, ale dostať sa cez tieto hory "
 "ti zaberie celú večnosť.\n"
 "\n"
-"Poznámka: Poslovia sú kontrolovaní Chodiacimi Mikro AI, ktoré sa líšia "
-"jediným riadkom,  'use_straight_line=yes/no'."
+"Poznámka: Poslovia sú kontrolovaní Chodiacimi Mikro UI, ktoré sa líšia "
+"jediným riadkom, 'use_straight_line=yes/no'."
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:574
@@ -1220,9 +1225,9 @@ msgstr ""
 "priradenú strážnu pozíciu (SP), na ktorú sa vráti po útoku na "
 "prichádzajúcich nepriateľov:\n"
 "- Ak na SP nie je žiadny nepriateľ v dosahu, nerob nič.\n"
-"- Ak na SP je nejaký nepriateľ v dosahu, útok nechaj na základnú AI (to môže "
+"- Ak na SP je nejaký nepriateľ v dosahu, útok nechaj na základnú UI (to môže "
 "zahŕňať prípad neútočenia, ak pokladá nepriateľa za príliš silného).\n"
-"- Ak sa nenachádzaš na SP, vrátiš sa tam bez ohľadu  na to, či je nepriateľ "
+"- Ak sa nenachádzaš na SP, vrátiš sa tam bez ohľadu na to, či je nepriateľ "
 "na dosah alebo nie.\n"
 "- Ak nepriatelia blokujú tvoju cestu späť, urob čo len môžeš, aby si sa tam "
 "aj tak dostal.\n"
@@ -1253,20 +1258,20 @@ msgid ""
 "return and stationed guardians and the cowards are written in Lua AI. In "
 "addition the non-guardian units of the side follow the default AI behavior."
 msgstr ""
-"'Domový strážca' je variantou 'strážcovského' AI špeciálu. S touto variantou "
+"'Domový strážca' je variantou 'strážcovského' UI špeciálu. S touto variantou "
 "má jednotka priradenú 'domovskú' pozíciu, na ktorú sa vráti, ak sa medzitým "
 "nezapletie do boja alebo nezájde do dediny, či už kvôli liečeniu, alebo "
 "kvôli jej zabratiu ešte tento ťah. (Na rozdiel od štandardnej strážcovskej "
-"AI, ktorá zostane tam, kde naposledy na niekoho zaútočila) Týmto sa líši od "
+"UI, ktorá zostane tam, kde naposledy na niekoho zaútočila) Týmto sa líši od "
 "'vracajúceho sa strážcu', domový zaútočí aj vtedy, keď sa tým dostane celkom "
 "ďaleko od 'domova', namiesto toho, aby sa po každom útoku vrátil. (Taktiež "
 "môže byť odlákaný reťazou blízko umiestnených dedín, ale to je už niečo, čo "
 "môže tvorca mapy udržať pod kontrolou.)\n"
-"Toto tiež demonštruje spôsob, ako kombinovať kandidátske akcie od Formula AI "
-"a Lua AI na jednej hernej strane. Domová stráž je napísaná v Formula AI, "
-"zatiaľ čo vracajúci sa a umiestnení strážcovia zasa v Lua AI. Navyše, "
+"Toto tiež demonštruje spôsob, ako kombinovať kandidátske akcie od Formula UI "
+"a Lua UI na jednej hernej strane. Domová stráž je napísaná v Formula UI, "
+"zatiaľ čo vracajúci sa a umiestnení strážcovia zasa v Lua UI. Navyše, "
 "nestrážiace jednotky tej konkrétnej strany sa budú držať správania základnej "
-"AI."
+"UI."
 
 #. [command]
 #. [set_menu_item]: id=m04_stationed
@@ -1404,9 +1409,9 @@ msgstr ""
 "Poznámka pre hráča: kontextové menu po pravom kliknutí myši obsahuje "
 "informácie o správaní každej z jednotiek.\n"
 "\n"
-"Ďalšia poznámka:  Mnohé zo Strážcovských AI sú nakódované ako Mikro AI. "
-"Mikro AI môže byť pridané a adaptované k cieľu scenára ľahko iba použitím "
-"WML a tagu [micro_ai]. Pozrite si <span color='#00A000'>Mikro AI wiki "
+"Ďalšia poznámka: Mnohé zo Strážcovských UI sú naprogramované ako Mikro UI. "
+"Mikro UI môže byť pridaná a adaptovaná k cieľu scenára ľahko iba použitím "
+"WML a tagu [micro_ai]. Pozrite si <span color='#00A000'>Mikro UI wiki "
 "stránku</span> na http://wiki.wesnoth.org/Micro_AIs pre viac informácii."
 
 #. [objectives]
@@ -1485,12 +1490,12 @@ msgstr ""
 "začne hýbať, bude 3 kolá verbovať a on i jeho poskoci sú omnoho rýchlejší "
 "ako my. Poponáhľajme sa, inak ho nikdy nechytíme.\n"
 "\n"
-"Poznámka: Tento scenár používa kombináciu dvoch Mikro AI, Zdržiavacej Mikro "
-"AI, ktorá nechá jednotky strany 2 zotrvať pri pevnosti po dobu 2 ťahov  "
+"Poznámka: Tento scenár používa kombináciu dvoch Mikro UI, Zdržiavacej Mikro "
+"UI, ktorá nechá jednotky strany 2 zotrvať pri pevnosti po dobu 2 ťahov "
 "(zatiaľ čo ich bude iba posúvať von z hradu, aby uvoľnila miesta pre nových "
-"regrútov) a Poslo-eskortovaciu AI, ktorá bude riešiť eskortu. Mikro AI môže "
-"byť pridané a adaptované k cieľu scenára ľahko iba použitím WML a tagu "
-"[micro_ai]. Pozrite si <span color='#00A000'>Mikro AI wiki stránku</span> na "
+"regrútov) a Poslo-eskortovaciu UI, ktorá bude riešiť eskortu. Mikro UI môže "
+"byť pridaná a adaptovaná k cieľu scenára ľahko iba použitím WML a tagu "
+"[micro_ai]. Pozrite si <span color='#00A000'>Mikro UI wiki stránku</span> na "
 "http://wiki.wesnoth.org/Micro_AIs pre viac informácii."
 
 #. [objectives]
@@ -1562,19 +1567,19 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
-"V tomto scenári demonštrujeme použitie Liečiteľsko-podpornej Mikro AI. Táto "
-"AI ovláda liečiteľov strany tak, aby zostali za vojnovými líniami a liečili "
+"V tomto scenári demonštrujeme použitie Liečiteľsko-podpornej Mikro UI. Táto "
+"UI ovláda liečiteľov strany tak, aby zostali za vojnovými líniami a liečili "
 "zranených, prípadne ohrozené jednotky, namiesto toho, aby sa zúčastňovali "
 "útokov za každých okolností. Zahŕňa rôzne konfigurovateľné možnosti (ktoré "
 "sú nastavené rôzne pre dve strany v tomto scenári) určujúce ako agresívni/"
 "opatrní liečitelia sú, či budú občas aj útočiť a koľko budú riskovať, atď.\n"
 "\n"
 "Pre ujasnenie, každý liečiteľ ohlási svoj podporný ťah. Ak to nechceš každý "
-"krát vidieť, jednoducho stlač 'esc', keď sa to udeje po prvý krát.\n"
+"krát vidieť, jednoducho stlač 'Esc', keď sa to udeje po prvý krát.\n"
 "\n"
-"Poznámka: Liečiteľsko-podporné AI je nakódované ako Mikro AI. Mikro AI môže "
-"byť pridané a adaptované k cieľu scenára ľahko iba použitím WML a tagu "
-"[micro_ai]. Pozrite si <span color='#00A000'>Mikro AI wiki stránku</span> na "
+"Poznámka: Liečiteľsko-podporná UI je naprogramovaná ako Mikro UI. Mikro UI "
+"môže byť pridaná a adaptovaná k cieľu scenára ľahko iba použitím WML a tagu "
+"[micro_ai]. Pozrite si <span color='#00A000'>Mikro UI wiki stránku</span> na "
 "http://wiki.wesnoth.org/Micro_AIs pre viac informácii."
 
 #. [event]
@@ -1600,17 +1605,17 @@ msgstr "team_name^Pekzs"
 #. [side]: type=Saurian Oracle
 #: data/ai/micro_ais/scenarios/lurkers.cfg:220
 msgid "Micro AI Lurkers (saurians, stationary)"
-msgstr "Mikro AI Obsmŕdači (saurovia, umiestnení)"
+msgstr "Mikro UI Obsmŕdači (saurovia, umiestnení)"
 
 #. [side]: type=Saurian Oracle
 #: data/ai/micro_ais/scenarios/lurkers.cfg:236
 msgid "Micro AI Lurkers (saurians, wanderers)"
-msgstr "Mikro AI Obsmŕdači (saurovia, pútnici)"
+msgstr "Mikro UI Obsmŕdači (saurovia, pútnici)"
 
 #. [side]: type=Naga Warrior
 #: data/ai/micro_ais/scenarios/lurkers.cfg:252
 msgid "Micro AI Lurkers (nagas)"
-msgstr "Mikro AI Obsmŕdači (hadí ľudia)"
+msgstr "Mikro UI Obsmŕdači (hadí ľudia)"
 
 #. [side]: type=Saurian Oracle
 #: data/ai/micro_ais/scenarios/lurkers.cfg:268
@@ -1620,7 +1625,7 @@ msgstr "WML Obsmŕdači (saurovia)"
 #. [side]: type=Saurian Oracle
 #: data/ai/micro_ais/scenarios/lurkers.cfg:284
 msgid "Formula AI Lurkers (saurians)"
-msgstr "Formula AI Obsmŕdači (saurovia)"
+msgstr "Formula UI Obsmŕdači (saurovia)"
 
 #. [set_menu_item]: id=m01_menu_lurker2
 #: data/ai/micro_ais/scenarios/lurkers.cfg:387
@@ -1659,10 +1664,10 @@ msgid ""
 "enemy within their reach. If no enemy is in reach, the lurker does a random "
 "move instead - or it just sits and waits (lurks)."
 msgstr ""
-"V tomto scenári demonštrujeme Obsmŕdačské Mikro AI. Obsmŕdač je jednotka, "
+"V tomto scenári demonštrujeme Obsmŕdačskú Mikro UI. Obsmŕdač je jednotka, "
 "ktorá je schopná sa pohybovať po väčšine terénov, ale zastaví sa a útočí iba "
-"z jedného špecifického typu. Tiež môže mať schopnosť na tomto teréne schovať "
-"(čo je aj dôvod, prečo sa nazýva Obsmŕdačské AI).\n"
+"z jedného špecifického typu. Tiež môže mať schopnosť sa na tomto teréne "
+"schovať (čo je aj dôvod, prečo sa nazýva Obsmŕdačská UI).\n"
 "\n"
 "Obsmŕdači sa hýbu individuálne bez akejkoľvek stratégie a vždy útočia na "
 "najslabšieho nepriateľa, ktorého práve majú v dosahu. Ak sa žiadny v ich "
@@ -1700,7 +1705,7 @@ msgstr ""
 "vody aj z močiara.\n"
 "\n"
 "Pridali sme tiež ďalšie 2 strany, ktoré demonštrujú obsmŕdačské správanie "
-"nakódované vo WML (strana 5, šedí) a Formula AI (strana 6, hnedí)."
+"nakódované vo WML (strana 5, šedí) a Formula UI (strana 6, hnedí)."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/lurkers.cfg:465
@@ -1729,10 +1734,10 @@ msgstr ""
 "hadích ľudí) je od obsmŕdačov v bezpečí, teda je ľahké zabrániť útoku na "
 "Pekzsa.\n"
 "\n"
-" Lua Obsmŕdačské AI je nakódované ako Mikro AI. Mikro AI môže byť pridané a "
-"adaptované k cieľu scenára ľahko iba použitím WML a tagu [micro_ai]. Pozrite "
-"si <span color='#00A000'>Mikro AI wiki stránku</span> na http://wiki.wesnoth."
-"org/Micro_AIs pre viac informácii."
+"Lua Obsmŕdačská UI je naprogramovaná ako Mikro UI. Mikro UI môže byť pridaná "
+"a adaptovaná k cieľu scenára ľahko iba použitím WML a tagu [micro_ai]. "
+"Pozrite si <span color='#00A000'>Mikro UI wiki stránku</span> na http://wiki."
+"wesnoth.org/Micro_AIs pre viac informácii."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/lurkers.cfg:474
@@ -1792,10 +1797,8 @@ msgstr "Posol"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:121
-#, fuzzy
-#| msgid "Messenger Waypoint 2"
 msgid "Messenger Waypoint 1"
-msgstr "Poslov smerový bod 2"
+msgstr "Poslov smerový bod 1"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:123
@@ -1810,7 +1813,7 @@ msgstr "Poslov smerový bod 3"
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:128
 msgid "AI moves Messenger here"
-msgstr "AI pošle Posla sem"
+msgstr "UI pošle Posla sem"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:137
@@ -1841,7 +1844,7 @@ msgid ""
 "tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at http://"
 "wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
-"Poslo-eskortovacie AI sa pokúsi dostať posla dragúna k smerovke na severe, "
+"Poslo-eskortovacie UI sa pokúsi dostať posla dragúna k smerovke na severe, "
 "ochraňujúc ho pri tom tak, ako je to len možné s ostatnými jednotkami. "
 "Vanakovi orkovia ho potrebujú zastaviť.\n"
 "\n"
@@ -1853,10 +1856,10 @@ msgstr ""
 "Taktiež, posol nemusí bezprostredne prísť ku každému smerovému bodu (s "
 "výnimkou toho posledného), ak sa dostane dosť blízko, je to postačujúce.\n"
 "\n"
-"Poslo-eskortovacie AI je nakódované ako Mikro AI. Mikro AI môže byť pridané "
-"a adaptované k cieľu scenára ľahko iba použitím WML a tagu [micro_ai]. Pozri "
-"si <span color='#00A000'>Mikro AI wiki stránku</span> na http://wiki.wesnoth."
-"org/Micro_AIs pre viac informácii."
+"Poslo-eskortovacie UI je naprogramované ako Mikro UI. Mikro UI môže byť "
+"pridaná a adaptovaná k cieľu scenára ľahko iba použitím WML a tagu "
+"[micro_ai]. Pozri si <span color='#00A000'>Mikro UI wiki stránku</span> na "
+"http://wiki.wesnoth.org/Micro_AIs pre viac informácii."
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:151
@@ -1969,8 +1972,8 @@ msgid ""
 "\n"
 "All of this is implemented by use of the Patrol [micro_ai] tag."
 msgstr ""
-"Ahojte! Som Konrádov dvojník. Ideme vám v tomto scenári predviesť Hliadkové "
-"AI.\n"
+"Ahojte! Som Konrádov dvojník. Ideme vám v tomto scenári predviesť Hliadkovú "
+"UI.\n"
 "\n"
 "Smerujem k pevnosti východne od centrálnej hory prostredníctvo niekoľkých "
 "smerových bodov na juhu. Akonáhle tam prídem, tak tam aj zostanem. Na "
@@ -1989,10 +1992,10 @@ msgid ""
 "same side.  For more details on different types of guardian AIs, there is a "
 "separate test scenario specializing on those."
 msgstr ""
-"Ja naopak som strážcom zóny v najjužnejšej časti mapy. Toto AI je "
+"Ja naopak som strážcom zóny v najjužnejšej časti mapy. Táto UI je "
 "implementované cez Strážcovský [micro_ai] tag. Je tu z veľkej časti len "
-"preto, aby demonštroval, ako nastaviť rozličné Mikro AI pre jednu a tú istú "
-"hernú stranu. Pre viac detailov o rôznych typov strážcovských AI tu je "
+"preto, aby demonštroval, ako nastaviť rozličné Mikro UI pre jednu a tú istú "
+"hernú stranu. Pre viac detailov o rôznych typov strážcovských UI tu je "
 "oddelený špeciálny scenár."
 
 #. [event]
@@ -2009,7 +2012,7 @@ msgstr ""
 "polovicu, prípadne nastane 5 ťah, bez ohľadu na to, čo z toho sa udeje ako "
 "prvé.\n"
 "\n"
-"Toto AI je nezávislé od Hliadok strany 2."
+"Táto UI je nezávislá od Hliadkovej na strane 2."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:217
@@ -2057,10 +2060,10 @@ msgstr ""
 "na ktorú nedostali inštrukciu zaútočiť, eventuálne sa vykašlú na konkrétny "
 "smerový bod akonáhle prídu dostatočne blízko a vyberú sa k ďalšiemu.\n"
 "\n"
-"Hliadové AI kontrolujúce jednotky strany 2 je nakódované ako Mikro AI. Mikro "
-"AI môže byť pridané a adaptované k cieľu scenára ľahko iba použitím WML a "
-"tagu [micro_ai]. Pozrite si <span color='#00A000'>Mikro AI wiki stránku</"
-"span> na http://wiki.wesnoth.org/Micro_AIs pre viac informácii."
+"Hliadková UI kontrolujúce jednotky strany 2 je naprogramovaná ako Mikro UI. "
+"Mikro UI môže byť pridaná a adaptovaná k cieľu scenára ľahko iba použitím "
+"WML a tagu [micro_ai]. Pozrite si <span color='#00A000'>Mikro UI wiki "
+"stránku</span> na http://wiki.wesnoth.org/Micro_AIs pre viac informácii."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/patrols.cfg:231
@@ -2171,22 +2174,22 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
-"V tomto scenári, AI hrajúce za ľudí na východe (Langzar) dostalo pokyn "
+"V tomto scenári, UI hrajúca za ľudí na východe (Langzar) dostalo pokyn "
 "ochrániť čarodejníka Rossaubu a bezpečne ho doviesť k smerovke. Na opačnej "
 "strane, Korzárove jednotky (na západe) sa budú koncentrovať hlavne naňho, "
 "dokonca aj keď bude poruke lepší cieľ. Chceš hrať za jednu zo strán, alebo "
-"celú bitku necháš na AI?\n"
+"celú bitku necháš na UI?\n"
 "\n"
-"Poznámka: Ochranárske AI je nakódované ako Mikro AI. Mikro AI môže byť "
-"pridané a adaptované k cieľu scenára ľahko iba použitím WML a tagu "
-"[micro_ai]. Pozrite si <span color='#00A000'>Mikro AI wiki stránku</span> na "
-"http://wiki.wesnoth.org/Micro_AIs pre viac informácii."
+"Poznámka: Ochranárske UI je naprogramované ako Mikro UI. Mikro UI môže byť "
+"pridaná a adaptovaná k cieľu scenára ľahko iba použitím WML a tagu "
+"[micro_ai]. Pozrite si <span color='#00A000'>Mikro UI wiki stránku</span> na "
+"http://wiki.wesnoth.org/Micro_AIs pre viac informácií."
 
 #. [option]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:143
 msgid "<span font='16'>I'll watch the two AIs fight it out</span>"
 msgstr ""
-"<span font='16'>Budem sa pozerať, ako si to tie dve AI medzi sebou vybojujú</"
+"<span font='16'>Budem sa pozerať, ako si to tie dve UI medzi sebou vybojujú</"
 "span>"
 
 #. [option]
@@ -2283,21 +2286,6 @@ msgstr ""
 
 #. [event]
 #: data/ai/micro_ais/scenarios/recruiting.cfg:90
-#, fuzzy
-#| msgid ""
-#| "If you have not changed anything in the scenario code, Side 1 uses the "
-#| "Random Recruitment Micro AI, with swordsmen and peasants having been "
-#| "given higher probability than the other units. This is not meant as a "
-#| "good recruitment pattern, it simply serves as a demonstration how to use "
-#| "the AI.\n"
-#| "\n"
-#| "Side 2 uses the Rush Recruitment Micro AI (which is also used in the "
-#| "Experimental AI).\n"
-#| "\n"
-#| "A Micro AI can be added and adapted to the need of a scenario easily "
-#| "using only WML and the [micro_ai] tag. Check out the <span "
-#| "color='#00A000'>Micro AI wiki page</span> at http://wiki.wesnoth.org/"
-#| "Micro_AIs for more information."
 msgid ""
 "If you have not changed anything in the scenario code, Side 1 uses the "
 "Random Recruitment Micro AI, with swordsmen and peasants having been given "
@@ -2313,23 +2301,23 @@ msgid ""
 "AI wiki page</span> at http://wiki.wesnoth.org/Micro_AIs for more "
 "information."
 msgstr ""
-"Ak si nič nezmenil v kóde scenára, strana 1 používa Náhodne verbujúce Mikro "
-"AI s bojovníkmi a sedliakmi, ktorým bol nastavený vyšší koeficient "
-"pravdepodobnosti ako ostatným jednotkám. Toto nie je myslené ako ukážka "
-"dobrého verbovacieho vzorca, jednoducho len ako demonštrácia fungovania "
-"konkrétneho AI.\n"
+"Ak si nič nezmenil v kóde scenára, strana 1 používa Náhodne verbujúcu Mikro "
+"UI s bojovníkmi a sedliakmi, ktorým bol nastavený vyšší koeficient "
+"pravdepodobnosti ako ostatným jednotkám. Mágovia dostali strednú "
+"pravdepodobnosť. Toto nie je myslené ako ukážka dobrého verbovacieho vzorca, "
+"jednoducho len ako demonštrácia fungovania konkrétnej UI.\n"
 "\n"
-"Strana 2 používa Náhlivo verbujúce Mikro AI (ktoré je tiež použité v "
-"Experimentálnom AI).\n"
+"Strana 2 používa Náhlivo verbujúcu Mikro UI (ktorá je tiež použitá v "
+"Experimentálnej UI).\n"
 "\n"
-"Mikro AI môže byť pridané a adaptované k cieľu scenára ľahko iba použitím "
-"WML a tagu [micro_ai]. Pozrite si <span color='#00A000'>Mikro AI wiki "
-"stránku</span> na http://wiki.wesnoth.org/Micro_AIs pre viac informácii."
+"Mikro UI môže byť pridaná a adaptovaná k cieľu scenára ľahko iba použitím "
+"WML a tagu [micro_ai]. Pozrite si <span color='#00A000'>Mikro UI wiki "
+"stránku</span> na http://wiki.wesnoth.org/Micro_AIs pre viac informácií."
 
 #. [test]: id=micro_ai_test
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:5
 msgid "Micro AI Tests"
-msgstr "Mikro AI Testy"
+msgstr "Testy Mikro UI"
 
 #. [side]: id=Grnk, type=Goblin Spearman
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:19
@@ -2383,17 +2371,17 @@ msgstr "Jednoduchý útok"
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:93
 msgid "Fast AI"
-msgstr ""
+msgstr "Rýchla UI"
 
 #. [set_menu_item]: id=m01_menu_bottleneck_defense
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:100
 msgid "Bottleneck Defense Micro AI demo"
-msgstr "Demo Mikra AI prekážkovej obrany"
+msgstr "Demo Mikro UI prekážkovej obrany"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:109
 msgid "Bottleneck Defense Micro AI Demo"
-msgstr "Demo Mikra AI prekážkovej obrany"
+msgstr "Demo Mikro UI prekážkovej obrany"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:109
@@ -2403,16 +2391,16 @@ msgid ""
 "watch them fight it out against the standard RCA AI or take over the orc "
 "side."
 msgstr ""
-"V scenári s Mikro AI prekážkovej obrany, malá skupinka ľudských vojakov "
+"V scenári s Mikro UI prekážkovej obrany, malá skupinka ľudských vojakov "
 "dostala úlohu obrániť priesmyk proti veľkej bande orkov. Môžeš buď sledovať "
-"ich boj proti štandardnej RCA AI alebo prevzať kontrolu nad orkskou stranou."
+"ich boj proti štandardnej RCA UI alebo prevziať kontrolu nad orkskou stranou."
 
 #. [command]
 #. [set_menu_item]: id=m02_swamp_lurkers
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:115
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:124
 msgid "Swamp Lurker Micro AI demo"
-msgstr "Demo Mikra AI močiarnych obsmŕdačov"
+msgstr "Demo Mikro UI močiarnych obsmŕdačov"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:124
@@ -2433,7 +2421,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:130
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:139
 msgid "Guardian Micro AI demo"
-msgstr "Demo strážcovského Mikro AI"
+msgstr "Demo strážcovskej Mikro UI"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:139
@@ -2451,13 +2439,13 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:145
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:154
 msgid "Patrol Micro AI demo"
-msgstr "Demo hliadkového Mikro AI"
+msgstr "Demo hliadkovej Mikro UI"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:154
 msgid "'Patrols' contains AI modifications for units following patrol routes."
 msgstr ""
-"Scenár 'Hliadky' obsahuje AI modifikácie pre jednotky nasledujúce hliadkové "
+"Scenár 'Hliadky' obsahuje modifikácie UI pre jednotky nasledujúce hliadkové "
 "trasy."
 
 #. [command]
@@ -2465,7 +2453,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:160
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:169
 msgid "Recruiting Tests Micro AI demo"
-msgstr "Demo Mikra AI verbovacích testov"
+msgstr "Demo Mikro UI verbovacích testov"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:169
@@ -2479,12 +2467,12 @@ msgstr ""
 #. [set_menu_item]: id=m06_protect
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:175
 msgid "Protect Unit Micro AI demo"
-msgstr "Demo ochranárskeho Mikro AI"
+msgstr "Demo ochranárskej Mikro UI"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:184
 msgid "Protect Unit Micro AI Demo"
-msgstr "Demo ochranárskeho Mikro AI"
+msgstr "Demo ochranárskej Mikro UI"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:184
@@ -2498,16 +2486,16 @@ msgstr ""
 "Tento scenár demonštruje jednu stranu ochraňujúcu čarodejníka na jeho ceste "
 "na cieľovú pozíciu. V rovnakom čase, druhá strana upravená tak, aby svoje "
 "útoky sústredila najmä na čarodejníka, hoci aj ak by sa v jej dosahu "
-"nachádzal lepší cieľ (čo je v inom prípade štandardné kritérium pre AI). "
+"nachádzal lepší cieľ (čo je v inom prípade štandardné kritérium pre UI). "
 "Môžeš pozorovať ich vzájomný boj, alebo prebrať kontrolu nad jednou zo "
-"strán, aby si preskúmal správanie AI protivníka."
+"strán, aby si preskúmal správanie UI protivníka."
 
 #. [command]
 #. [set_menu_item]: id=m06a_protect
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:191
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:200
 msgid "HttT: The Elves Besieged Micro AI demo"
-msgstr "DT: Elfovia v obkľúčení Mikro AI demo"
+msgstr "DT: Elfovia v obkľúčení Mikro UI demo"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:200
@@ -2517,16 +2505,16 @@ msgid ""
 "here. The same algorithm as for scenario \"Protect Unit\" is used."
 msgstr ""
 "Toto je rekonštrukcia scenára \"Elfovia v obkľúčení\" z výpravy \"Dedič Trónu"
-"\", s tým rozdielom, že tu za Konrádovu stranu hrá AI. Cieľom je dostať "
+"\", s tým rozdielom, že tu za Konrádovu stranu hrá UI. Cieľom je dostať "
 "Konráda k smerovke na severozápade, udržiavajúc jeho aj Delfadora nažive. Je "
-"použité rovnaké AI ako v scenári \"Ochráň jednotku\"."
+"použité rovnaké UI ako v scenári \"Ochráň jednotku\"."
 
 #. [command]
 #. [set_menu_item]: id=m07_messenger
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:206
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:215
 msgid "Messenger Escort Micro AI demo"
-msgstr "Demo poslo-eskortovacej Mikro AI"
+msgstr "Demo Poslo-eskortovacej Mikro UI"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:215
@@ -2535,7 +2523,7 @@ msgid ""
 "his way to the edge of the map. The escort will also try to open the path "
 "for the messenger if there are enemies in the way."
 msgstr ""
-"'Eskorta Posla' má AI aktívne ochraňujúce posla, ktorý zatiaľ putuje k "
+"'Eskorta Posla' má UI aktívne ochraňujúce posla, ktorý zatiaľ putuje k "
 "okraju mapy. Eskorta sa tiež snaží uvoľniť pre neho cestu, v prípade, že sa "
 "na nej nachádzajú nepriatelia."
 
@@ -2544,7 +2532,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:221
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:230
 msgid "Animals Micro AI demo"
-msgstr "Demo zvieracej Mikro AI"
+msgstr "Demo Zvieracej Mikro UI"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:230
@@ -2554,17 +2542,17 @@ msgid ""
 "sheep; bears, spiders, yetis, boar and rabbits wandering and hunting/"
 "avoiding each other."
 msgstr ""
-"Tento scenár demonštruje niekoľko rôznych zvierat dodržiavajucich na svoju "
-"mieru upotrebené AI správanie, zahŕňajúc vlkov loviacich jeleňa vo svorke; "
-"psov pasúcich ovce; medvede, pavúky, yetiov, kance a zajace potulujúcich sa, "
-"resp. loviacich/vyhýbajúcich sa navzájom."
+"Tento scenár demonštruje niekoľko rôznych zvierat dodržiavajúcich "
+"prispôsobené správanie UI, zahŕňajúc vlkov loviacich jeleňa vo svorke; psov "
+"pasúcich ovce; medvede, pavúky, yetiov, kance a zajace potulujúce sa, resp. "
+"loviace/vyhýbajúce sa navzájom."
 
 #. [command]
 #. [set_menu_item]: id=m09_wolves
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:236
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:245
 msgid "Wolves Micro AI demo"
-msgstr "Demo vlčieho Mikro AI"
+msgstr "Demo Vlčieho Mikro UI"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:245
@@ -2580,7 +2568,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:251
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:260
 msgid "Swarm Micro AI demo"
-msgstr "Demo húfneho Mikro AI"
+msgstr "Demo Húfneho Mikro UI"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:260
@@ -2592,7 +2580,7 @@ msgstr "Tento scenár zachytáva polonáhodne sa pohybujúcich netopierov v húf
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:266
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:275
 msgid "Dragon Micro AI demo"
-msgstr "Demo dračieho Mikro AI"
+msgstr "Demo Dračieho Mikro UI"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:275
@@ -2603,12 +2591,12 @@ msgstr "Tento scenár zachytáva ohnivého draka a 'spi-a-oddychuj' správanie."
 #. [set_menu_item]: id=m12_healer_support
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:281
 msgid "Healer support Micro AI demo"
-msgstr "Demo Mikra AI liečiteľskej podpory"
+msgstr "Demo Mikro UI liečiteľskej podpory"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:290
 msgid "Healer Support Micro AI demo"
-msgstr "Demo Mikra AI liečiteľskej podpory"
+msgstr "Demo Mikro UI liečiteľskej podpory"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:290
@@ -2618,8 +2606,8 @@ msgid ""
 "threatened units rather than having them participate in combat under all "
 "circumstances."
 msgstr ""
-"Tento scenár obsahuje jednoduchú demonštráciu nastavenia Mikra AI "
-"liečiteľskej podpory, ktoré používa liečiteľov na zálohovanie zranených a "
+"Tento scenár obsahuje jednoduchú demonštráciu nastavenia Mikro UI "
+"liečiteľskej podpory, ktorá používa liečiteľov na zálohovanie zranených a "
 "ustupujúcich jednotiek namiesto nechávania ich aktívne sa zúčastňovať boja "
 "za každých okolností."
 
@@ -2628,7 +2616,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:296
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:305
 msgid "Goto Micro AI demo"
-msgstr "Demo chodiaceho Mikro AI"
+msgstr "Demo Chodiacej Mikro UI"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:305
@@ -2638,7 +2626,7 @@ msgid ""
 "set of locations. The units to be moved are defined using a Standard Unit "
 "Filter, while the goto locations are given in a Standard Location Filter."
 msgstr ""
-"Tento scenár obsahuje niekoľko ukážkových využití chodiaceho Mikro AI, čo je "
+"Tento scenár obsahuje niekoľko ukážkových využití Chodiacej Mikro UI, čo je "
 "vysoko konfigurovateľná metóda posielania jednotky (alebo jednotiek) na "
 "určitú pozíciu alebo množinu pozícii. Jednotky určené na pohyb sú definované "
 "použitím Štandardného Jednotkového Filtra, zatiaľ čo cieľové pozície sú dané "
@@ -2647,12 +2635,12 @@ msgstr ""
 #. [set_menu_item]: id=m14_hangout
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:311
 msgid "Hang Out Micro AI demo"
-msgstr "Demo zdržiavacieho Mikro AI"
+msgstr "Demo Zdržiavacej Mikro UI"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:320
 msgid "Combined Hang Out and Messenger Escort Micro AI demo"
-msgstr "Kombinované demo zdržiavacieho a poslo-eskortovacieho Mikro AI"
+msgstr "Kombinované demo Zdržiavacej a Poslo-eskortovacej Mikro UI"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:320
@@ -2663,18 +2651,18 @@ msgid ""
 "also shows how to combine two Micro AIs on the same side by having the "
 "Messenger Escort Micro AI take over at that point."
 msgstr ""
-"Tento scenár je demonštráciou zdržiavacieho Mikro AI, ktoré necháva jednotky "
+"Tento scenár je demonštráciou Zdržiavacej Mikro UI, ktorá necháva jednotky "
 "na určitom mieste, až pokiaľ sa nesplní určitá podmienka. Po jej splnení "
-"budú môcť jednotky nasledovať iné AI. Scenár tiež ukazuje ako skombinovať "
-"dve Mikro AI na rovnakej hernej strane prevzatím kontroly poslo-"
-"ochranárskeho Mikro AI v tomto bode hry."
+"budú môcť jednotky nasledovať iné UI. Scenár tiež ukazuje ako skombinovať "
+"dve Mikro UI na rovnakej hernej strane prevzatím kontroly Poslo-ochranárskej "
+"Mikro UI v tomto bode hry."
 
 #. [command]
 #. [set_menu_item]: id=m15_simple_attack
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:326
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:335
 msgid "Simple Attack Micro AI demo"
-msgstr "demo jednoduchého útočného Mikro AI"
+msgstr "Demo Jednoduchej útočnej Mikro UI"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:335
@@ -2684,17 +2672,15 @@ msgid ""
 "do attacks that it would otherwise avoid."
 msgstr ""
 "Tento scenár demonštruje ako môžu byť určité útoky vykonané s vyššou "
-"prioritou, než akú majú štandardné Wesnothské útoky a ako môže byť AI "
-"prinútené do útočných akcii, ktorým by sa za normálnych okolností vyhlo."
+"prioritou, než akú majú štandardné Wesnothské útoky a ako môže byť UI "
+"prinútená do útočných akcií, ktorým by sa za normálnych okolností vyhla."
 
 #. [command]
 #. [set_menu_item]: id=m16_fast
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:341
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:350
-#, fuzzy
-#| msgid "Patrol Micro AI demo"
 msgid "Fast Micro AI demo"
-msgstr "Demo hliadkového Mikro AI"
+msgstr "Demo Rýchlej Mikro UI"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:350
@@ -2702,6 +2688,8 @@ msgid ""
 "A simple demonstration of the calculation time advantage of the Fast Micro "
 "AI over the default AI in scenarios with many units."
 msgstr ""
+"Jednoduchá demonštrácia výhodnejšieho času výpočtu Rýchlej Mikro UI oproti "
+"štandardnej UI v scénach s veľa jednotkami."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:360
@@ -2712,7 +2700,7 @@ msgid ""
 "the respective signpost."
 msgstr ""
 "Dostaň ma ku ktorejkoľvek zo smeroviek, aby sme prešli k demonštrácii "
-"chodiaceho Mikro AI.\n"
+"Chodiacej Mikro UI.\n"
 "\n"
 "Informácie o každej demonštrácii sú prístupné pomocou kliknutia pravým "
 "tlačidlom myši na ľubovoľnú smerovku."
@@ -2761,10 +2749,10 @@ msgstr ""
 "skúseností. Nemŕtvi sa neodvážia na ne zaútočiť. A tých pár, ktorí sa cez ne "
 "prešmyknú... sa môžeme ľahko zbaviť, keď už ich budeme mať dnu.\n"
 "\n"
-"<i>Inými slovami, Wesnothské AI by nezaútočilo na jednotky s 1 XP od "
+"<i>Inými slovami, Wesnothská UI by nezaútočila na jednotky s 1 XP od "
 "povýšenia, ak by tu nebola žiadna šanca ich jedným útokom zabiť. Avšak, "
 "niektoré z útokov nemŕtvych sú v tomto scenári v réžii jednoduchého útočného "
-"AI. Generál Grospur sa môže dočkať veľkého prekvapenia. </i>"
+"UI. Generál Grospur sa môže dočkať veľkého prekvapenia.</i>"
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:129
@@ -2816,11 +2804,11 @@ msgstr ""
 "mojich cennejších kostlivých služobníkov na neskôr. Dotiahol som pojem "
 "'jednorazové jednotky' na úplne novú úroveň. V úžase sledujte !!\n"
 "\n"
-"<i> Preklad: Nemŕtva strana obsahuje dve instancie jednoduchého útočného "
-"Mikro AI. Prvá donúti Bezduchých zaútočiť na  jednotky, ktorým chýba 1 XP do "
+"<i> Preklad: Nemŕtva strana obsahuje dve inštancie Jednoduchej útočnej Mikro "
+"UI. Prvá donúti Bezduchých zaútočiť na  jednotky, ktorým chýba 1 XP do "
 "povýšenia, takže následne môžu byť eliminované. Druhá vykoná všetky "
 "ostávajúce dostupné útoky Bezduchých (a Chodiacich Mŕtvol), bez ohľadu na "
-"ich vlastné bezpečie. Až potom spustí klasické Wesnothské AI útočný "
+"ich vlastné bezpečie. Až potom spustí klasická Wesnothská UI útočný "
 "mechanizmus, čiže vyrazí do útoku so zostávajúcimi jednotkami (kostlivcami)."
 "</i>"
 
@@ -2832,7 +2820,7 @@ msgstr "Povstaňte, služobníci!"
 #. [else]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:224
 msgid "And that's how the undead AI executes total annihilation ..."
-msgstr "A tak nemŕtve AI totálne ľudí rozdrvilo ..."
+msgstr "A tak nemŕtve UI totálne ľudí rozdrvilo ..."
 
 #. [side]
 #: data/ai/micro_ais/scenarios/swarm.cfg:41
@@ -2887,10 +2875,10 @@ msgstr ""
 "po kliknutí pravým tlačítkom myši, napríklad pridávanie netopierov a gryfov, "
 "alebo odstraňovanie jednotiek z mapy.\n"
 "\n"
-"Poznámka: Húfne AI  je nakódované ako Mikro AI. Mikro AI môže byť pridané a "
-"adaptované k cieľu scenára ľahko iba použitím WML a tagu [micro_ai]. Pozrite "
-"si <span color='#00A000'>Mikro AI wiki stránku</span> na http://wiki.wesnoth."
-"org/Micro_AIs pre viac informácii."
+"Poznámka: Húfna UI je naprogramovaná ako Mikro UI. Mikro UI môže byť pridaná "
+"a adaptovaná k cieľu scenára ľahko iba použitím WML a tagu [micro_ai]. "
+"Pozrite si <span color='#00A000'>Mikro UI wiki stránku</span> na http://wiki."
+"wesnoth.org/Micro_AIs pre viac informácii."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/swarm.cfg:146
@@ -2975,7 +2963,7 @@ msgstr ""
 "zaradenému do svorky má vyššiu priority ako uspokojiť vlčiu túžbu po krvi.\n"
 "\n"
 "Na zdôraznenie toho, ktorý vlk patrí do ktorej svorky, číslo príslušnej "
-"svorky bude zobrazené pod každým vlkom, odkedy sa AI prvý krát zmocní "
+"svorky bude zobrazené pod každým vlkom, odkedy sa UI prvýkrát zmocní "
 "kontroly tejto strany."
 
 #. [message]: speaker=narrator
@@ -3004,15 +2992,15 @@ msgstr ""
 "niekoľko možností prostredníctvom menu po kliknutí pravým tlačidlom myši, "
 "napr. pridávanie ďalších vlkov na niektorú zo strán, odstraňovanie vlkov z "
 "mapy, pridávanie sedliakov k strane kontrolovanej človekom alebo skončenie "
-"scenára. Toto umožňuje jednoduché skúmanie správania vlčieho AI za rôznych "
+"scenára. Toto umožňuje jednoduché skúmanie správania vlčej UI za rôznych "
 "okolností.\n"
 "\n"
 "Všimni si, že vodca človekom kontrolovanej strany, Rutburt, sa môže hýbať 99 "
 "políčok za 1 ťah, čiže je tak vždy možné predísť jeho zraneniu.\n"
 "\n"
-"Taktiež si všimni, že vlčie AI je nakódované ako Mikro AI. Mikro AI môže byť "
-"pridané a adaptované k cieľu scenára ľahko iba použitím WML a tagu "
-"[micro_ai]. Pozrite si <span color='#00A000'>Mikro AI wiki stránku</span> na "
+"Taktiež si všimni, že vlčia UI je naprogramovaná ako Mikro UI. Mikro UI môže "
+"byť pridaná a adaptovaná k cieľu scenára ľahko iba použitím WML a tagu "
+"[micro_ai]. Pozrite si <span color='#00A000'>Mikro UI wiki stránku</span> na "
 "http://wiki.wesnoth.org/Micro_AIs pre viac informácii."
 
 #. [option]
@@ -3033,12 +3021,12 @@ msgstr "Na jednej zo strán nezostane žiadny vlk"
 #. [message]: speaker=narrator
 #: data/ai/scenarios/ai_arena_small/0001-healing.cfg:17
 msgid "This situation should test the ability of AI to heal efficiently..."
-msgstr "Táto situácia by mala otestovať schopnosť AI efektívne liečiť..."
+msgstr "Táto situácia by mala otestovať schopnosť UI efektívne liečiť..."
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:17
 msgid "This situation should test the ability of AI to spread poison around..."
-msgstr "Táto situácia by mala otestovať schopnosť AI roznášať otravu..."
+msgstr "Táto situácia by mala otestovať schopnosť UI roznášať otravu..."
 
 #. [label]
 #: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:112
@@ -3063,7 +3051,7 @@ msgstr "Test zbraní proti cieľu s malým počtom hp"
 #. [message]: speaker=narrator
 #: data/ai/scenarios/ai_arena_small/0003-simple_combat.cfg:17
 msgid "This situation should test the ability of AI to make an attack..."
-msgstr "Táto situácia by mala otestovať schopnosť AI zaútočiť..."
+msgstr "Táto situácia by mala otestovať schopnosť UI zaútočiť..."
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/ai_arena_small/0004-filtered_combat.cfg:17
@@ -3072,14 +3060,14 @@ msgid ""
 "filters while making attacks. Only dwarves should attack. Dark Adepts are "
 "not to be attacked."
 msgstr ""
-"Táto situácia by mala otestovať schopnosť AI rešpektovať filtre vlastných a "
+"Táto situácia by mala otestovať schopnosť UI rešpektovať filtre vlastných a "
 "nepriateľských jednotiek počas útočenia. Iba trpaslíci by mali útočiť. Temní "
 "učni by nemali byť napadnutí."
 
 #. [test]: id=ai_arena_small
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:6
 msgid "AI Arena - small"
-msgstr "AI aréna - malá"
+msgstr "UI aréna - malá"
 
 #. [test]: id=ai_arena_small
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:7
@@ -3104,17 +3092,17 @@ msgstr "Vybrať iný test"
 #. [side]: type=Nightgaunt
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:103
 msgid "AI Developer"
-msgstr "Vývojár AI"
+msgstr "Vývojár UI"
 
 #. [side]: type=Nightgaunt
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:109
 msgid "team_name^AI Developer"
-msgstr "team_name^Vývojár AI"
+msgstr "Vývojár UI"
 
 #. [side]: id=chall-ai, type=White Mage
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:120
 msgid "Challenger AI"
-msgstr "Vyzývajúce AI"
+msgstr "Vyzývajúca UI"
 
 #. [side]: id=chall-ai, type=White Mage
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:125
@@ -3124,7 +3112,7 @@ msgstr "Sever"
 #. [side]: id=champ-ai, type=Dark Adept
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:132
 msgid "Champion AI"
-msgstr "Šampiónske AI"
+msgstr "Šampiónska UI"
 
 #. [side]: id=champ-ai, type=Dark Adept
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:137
@@ -3134,17 +3122,17 @@ msgstr "Juh"
 #. [message]: speaker=narrator
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:176
 msgid "Which AI do you wish to use, O Mighty AI Developer?"
-msgstr "Ktoré AI si želáte použiť, ó Slávny AI Vývojár?"
+msgstr "Ktorú UI si želáte použiť, ó Slávny Vývojár UI?"
 
 #. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:178
 msgid "I am happy with the current AI of team 2, [$test_path_to_ai]"
-msgstr "Som spokojný s aktuálnym AI tímu 2, [$test_path_to_ai]"
+msgstr "Som spokojný s aktuálnou UI tímu 2, [$test_path_to_ai]"
 
 #. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:181
 msgid "My AI is the RCA AI (the current default)."
-msgstr ""
+msgstr "Moja UI je RCA UI (v súčasnosti predvolená)."
 
 #. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:190
@@ -3152,47 +3140,42 @@ msgid ""
 "I am the king of FORMULA AI, and I will use its vast powers for world "
 "domination."
 msgstr ""
-"Som kráľom FORMULA AI a využijem jeho obrovské sily na ovládnutie sveta."
+"Som kráľom FORMULA UI a využijem jej obrovské sily na ovládnutie sveta."
 
 #. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:199
 msgid "I want to test formulaAI-based poisoning improvements"
-msgstr "Chcem vyskúšať úpravy ohľadom otráv založené na formulaAI"
+msgstr "Chcem vyskúšať úpravy ohľadom otráv založené na formula UI"
 
 #. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:208
 msgid "I've come with my own AI, and I am ready to test its strength"
-msgstr "Prichádzam so svojim vlastným AI a som pripravený otestovať jeho silu"
+msgstr "Prichádzam so svojou vlastnou UI a som pripravený otestovať jej silu"
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:213
-#, fuzzy
-#| msgid "and where is it located (path follows the usual WML convention)"
 msgid "And where is it located (path follows the usual WML convention)"
-msgstr "a kde je umiestnené (cesta dodržujúca zvyčajnú WML konvenciu)"
+msgstr "A kde je umiestnené (cesta dodržujúca zvyčajnú WML konvenciu)"
 
 #. [text_input]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:215
 msgid "AI Location:"
-msgstr "Umiestnenie AI:"
+msgstr "Umiestnenie UI:"
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:316
-#, fuzzy
-#| msgid ""
-#| "and so, the AI for team 2 was redeployed from file '$test_path_to_ai'"
 msgid "And so, the AI for team 2 was redeployed from file '$test_path_to_ai'"
-msgstr "a tak bolo AI pre tím 2 presunuté zo súboru  '$test_path_to_ai'"
+msgstr "A tak bola UI pre tím 2 znovu nasadená zo súboru '$test_path_to_ai'"
 
 #. [test]: id=lua_ai
 #: data/ai/scenarios/scenario-lua_ai.cfg:4
 msgid "Lua AI Test scenario"
-msgstr ""
+msgstr "Testovací scenár pre Lua UI"
 
 #. [test]: id=lua_ai_old_syntax
 #: data/ai/scenarios/scenario-lua_ai_old_syntax.cfg:5
 msgid "Lua AI Test scenario (old syntax)"
-msgstr ""
+msgstr "Testovací scenár pre Lua UI (stará syntax)"
 
 #. [unit]: type=Skeletal Dragon, id=Kiressh
 #: data/ai/scenarios/scenario-lua_ai_old_syntax.cfg:87
