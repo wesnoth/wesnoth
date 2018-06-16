@@ -62,7 +62,7 @@ public:
 	 *
 	 * @param max      The maximum number of elements to show
 	 */
-	void set_max_shown(const int max)
+	void set_max_shown(const unsigned max)
 	{
 		max_shown_ = max;
 	}
@@ -72,7 +72,7 @@ public:
 	 *
 	 * @returns        The maximum number of elements to show
 	 */
-	int get_max_shown()
+	unsigned get_max_shown()
 	{
 		return max_shown_;
 	}
@@ -150,7 +150,7 @@ private:
 	/**
 	 * The maximum number of selected states to list in the label
 	 */
-	int max_shown_;
+	unsigned max_shown_;
 
 	std::vector<::config> values_;
 
@@ -213,7 +213,7 @@ public:
 	virtual widget_ptr build() const override;
 
 private:
-	int max_shown_;
+	unsigned max_shown_;
 	std::vector<::config> options_;
 };
 

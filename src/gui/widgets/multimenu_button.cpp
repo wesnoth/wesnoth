@@ -165,8 +165,8 @@ void multimenu_button::update_label()
 	if(selected.size() == values_.size()) {
 		set_label(_("multimenu^All Selected"));
 	} else {
-		if(selected.size() > static_cast<std::size_t>(max_shown_)) {
-			const int excess = selected.size() - max_shown_;
+		if(selected.size() > max_shown_) {
+			const unsigned excess = selected.size() - max_shown_;
 			selected.resize(max_shown_ + 1);
 			selected.back() = VNGETTEXT("multimenu^$excess other", "$excess others", excess, {{"excess", std::to_string(excess)}});
 		}
