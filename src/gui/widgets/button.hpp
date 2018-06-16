@@ -49,13 +49,13 @@ public:
 	virtual unsigned get_state() const override;
 
 	/** Inherited from clickable_item. */
-	void connect_click_handler(const event::signal_function& signal) override
+	virtual void connect_click_handler(const event::signal_function& signal) override
 	{
 		connect_signal_mouse_left_click(*this, signal);
 	}
 
 	/** Inherited from clickable_item. */
-	void disconnect_click_handler(const event::signal_function& signal) override
+	virtual void disconnect_click_handler(const event::signal_function& signal) override
 	{
 		disconnect_signal_mouse_left_click(*this, signal);
 	}
