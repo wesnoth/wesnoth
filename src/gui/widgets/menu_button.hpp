@@ -134,6 +134,10 @@ private:
 	void signal_handler_left_button_up(const event::ui_event event, bool& handled);
 
 	void signal_handler_left_button_click(const event::ui_event event, bool& handled);
+
+	void signal_handler_sdl_wheel_up(const event::ui_event event, bool& handled);
+
+	void signal_handler_sdl_wheel_down(const event::ui_event event, bool& handled);
 };
 
 // }---------- DEFINITION ---------{
