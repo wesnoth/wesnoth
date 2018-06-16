@@ -47,22 +47,22 @@ public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** Inherited from integer_selector. */
-	void set_value(int value) override;
+	virtual void set_value(int value) override;
 
 	/** Inherited from integer_selector. */
-	int get_value() const override
+	virtual int get_value() const override
 	{
 		return minimum_value_ + get_slider_position() * get_step_size();
 	}
 
 	/** Inherited from integer_selector. */
-	int get_minimum_value() const override
+	virtual int get_minimum_value() const override
 	{
 		return minimum_value_;
 	}
 
 	/** Inherited from integer_selector. */
-	int get_maximum_value() const override
+	virtual int get_maximum_value() const override
 	{
 		// The number of items needs to include the begin and end so count - 1.
 		return minimum_value_ + slider_get_item_last() * step_size_;
@@ -120,7 +120,7 @@ public:
 
 protected:
 	/** Inherited from scrollbar_base. */
-	void child_callback_positioner_moved() override;
+	virtual void child_callback_positioner_moved() override;
 
 private:
 	/** The best size for the slider part itself, if 0 ignored. */
@@ -136,7 +136,7 @@ private:
 	int step_size_;
 
 	/** Inherited from scrollbar_base. */
-	unsigned get_length() const override
+	virtual unsigned get_length() const override
 	{
 		return get_width();
 	}
