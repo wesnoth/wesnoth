@@ -213,10 +213,7 @@ bool mp_join_game::fetch_game_config()
 
 		ng::flg_manager flg(era_factions, *side_choice, lock_settings, use_map_settings, saved_game);
 
-		gui2::dialogs::faction_select dlg(flg, color, side_num);
-		dlg.show();
-
-		if(dlg.get_retval() != gui2::retval::OK) {
+		if(!gui2::dialogs::faction_select::execute(flg, color, side_num)) {
 			return true;
 		}
 

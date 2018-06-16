@@ -30,6 +30,8 @@ class faction_select : public modal_dialog
 public:
 	faction_select(ng::flg_manager& flg_manager, const std::string& color, const int side);
 
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(faction_select)
+
 private:
 	ng::flg_manager& flg_manager_;
 
