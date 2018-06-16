@@ -292,8 +292,7 @@ window::window(const builder_window::window_resolution* definition)
 
 	connect();
 
-	if (!video_.faked())
-	{
+	if(!video_.faked() && !video_.non_interactive()) {
 		connect_signal<event::DRAW>(std::bind(&window::draw, this));
 	}
 
