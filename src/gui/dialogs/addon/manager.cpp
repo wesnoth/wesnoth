@@ -336,7 +336,9 @@ void addon_manager::pre_show(window& window)
 	}
 
 	status_filter.set_values(status_filter_entries);
-	status_filter.connect_click_handler(std::bind(&addon_manager::apply_filters, this, std::ref(window)));
+
+	connect_signal_notify_modified(status_filter,
+		std::bind(&addon_manager::apply_filters, this, std::ref(window)));
 
 	multimenu_button& type_filter = find_widget<multimenu_button>(&window, "type_filter", false);
 
@@ -347,7 +349,8 @@ void addon_manager::pre_show(window& window)
 
 	type_filter.set_values(type_filter_entries);
 
-	connect_signal_notify_modified(type_filter, std::bind(&addon_manager::apply_filters, this, std::ref(window)));
+	connect_signal_notify_modified(type_filter,
+		std::bind(&addon_manager::apply_filters, this, std::ref(window)));
 
 	menu_button& order_dropdown = find_widget<menu_button>(&window, "order_dropdown", false);
 
@@ -366,7 +369,9 @@ void addon_manager::pre_show(window& window)
 	}
 
 	order_dropdown.set_values(order_dropdown_entries);
-	order_dropdown.connect_click_handler(std::bind(&addon_manager::order_addons, this, std::ref(window)));
+
+	connect_signal_notify_modified(order_dropdown,
+		std::bind(&addon_manager::order_addons, this, std::ref(window)));
 
 	button& url_go_button = find_widget<button>(&window, "url_go", false);
 	button& url_copy_button = find_widget<button>(&window, "url_copy", false);

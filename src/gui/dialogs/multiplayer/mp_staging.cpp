@@ -210,7 +210,9 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	menu_button& ai_selection = find_widget<menu_button>(&row_grid, "ai_controller", false);
 
 	ai_selection.set_values(ai_options, selection);
-	ai_selection.connect_click_handler(std::bind(&mp_staging::on_ai_select, this, side, std::ref(ai_selection)));
+
+	connect_signal_notify_modified(ai_selection,
+		std::bind(&mp_staging::on_ai_select, this, side, std::ref(ai_selection)));
 
 	on_ai_select(side, ai_selection);
 
@@ -226,7 +228,9 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 
 	controller_selection.set_values(controller_names, side->current_controller_index());
 	controller_selection.set_active(controller_names.size() > 1);
-	controller_selection.connect_click_handler(std::bind(&mp_staging::on_controller_select, this, side, std::ref(row_grid)));
+
+	connect_signal_notify_modified(controller_selection,
+		std::bind(&mp_staging::on_controller_select, this, side, std::ref(row_grid)));
 
 	on_controller_select(side, row_grid);
 
@@ -275,7 +279,9 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 
 	team_selection.set_values(team_names, initial_team_selection);
 	team_selection.set_active(!saved_game);
-	team_selection.connect_click_handler(std::bind(&mp_staging::on_team_select, this, std::ref(window), side, std::ref(team_selection), _3, _4));
+
+	connect_signal_notify_modified(team_selection,
+		std::bind(&mp_staging::on_team_select, this, std::ref(window), side, std::ref(team_selection), _3, _4));
 
 	//
 	// Colors
@@ -293,7 +299,9 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	color_selection.set_values(color_options, side->color());
 	color_selection.set_active(!saved_game);
 	color_selection.set_use_markup(true);
-	color_selection.connect_click_handler(std::bind(&mp_staging::on_color_select, this, side, std::ref(row_grid)));
+
+	connect_signal_notify_modified(color_selection,
+		std::bind(&mp_staging::on_color_select, this, side, std::ref(row_grid)));
 
 	//
 	// Gold and Income
