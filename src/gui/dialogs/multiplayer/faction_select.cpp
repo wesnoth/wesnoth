@@ -216,7 +216,7 @@ void faction_select::update_leader_image(window& window)
 	find_widget<image>(&window, "leader_image", false).set_label(leader_image);
 }
 
-void faction_select::post_show(window& window)
+void faction_select::post_show(window& /*window*/)
 {
 	//
 	// If we're canceling, restore the previous selections. It might be worth looking
