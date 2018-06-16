@@ -495,6 +495,8 @@ for env in [test_env, client_env, env]:
             
             if env["PLATFORM"] == 'darwin':
                 env.AppendUnique(LINKFLAGS = ["-fPIE", "-Wl,-pie"])
+            elif env["PLATFORM"] == 'win32':
+                env.AppendUnique(LINKFLAGS = ["-fPIE", "-pie"])
             else:
                 env.AppendUnique(LINKFLAGS = ["-fPIE", "-pie", "-Wl,-z,relro,-z,now"])
 
