@@ -129,7 +129,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 		opp_ctx.emplace(opp_weapon->specials_context(&opp, &u, opp_loc, u_loc, !attacking, weapon));
 	}
 
-	slows = weapon->get_special_bool("slow")|| under_leadership("slow", units, u_loc, attacking, 0, weapon, opp_weapon).second;
+	slows = weapon->get_special_bool("slow") || under_leadership("slow", units, u_loc, attacking, 0, weapon, opp_weapon).second;
 	drains = !opp.get_state("undrainable") && (weapon->get_special_bool("drains")|| under_leadership("drains", units, u_loc, attacking, 0, weapon, opp_weapon).second);
 	petrifies = weapon->get_special_bool("petrifies") || under_leadership("petrifies", units, u_loc, attacking, 0, weapon, opp_weapon).second;
 	poisons = !opp.get_state("unpoisonable") && (weapon->get_special_bool("poison")|| under_leadership("poison", units, u_loc, attacking, 0, weapon, opp_weapon).second) && !opp.get_state(unit::STATE_POISONED);
@@ -1653,6 +1653,7 @@ bool unit::abilities_filter_matches(const config& cfg, bool attacker, int res) c
 
 	return true;
 }
+
 bool bool_increase_weapon(const std::string& ability,const unit_map& units, const map_location& loc, const_attack_ptr weapon,const_attack_ptr opp_weapon)
 {
 	const unit_map::const_iterator un = units.find(loc);
@@ -1671,6 +1672,7 @@ bool bool_increase_weapon(const std::string& ability,const unit_map& units, cons
          }
      return false;
 }
+
 int under_leadership(const unit_map& units, const map_location& loc, bool attacker, int abil_value, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
 	const unit_map::const_iterator un = units.find(loc);
@@ -1692,6 +1694,7 @@ int under_leadership(const unit_map& units, const map_location& loc, bool attack
     }
     return 0;
 }
+
 std::pair<int, bool> under_leadership(const std::string& ability,const unit_map& units, const map_location& loc, bool attacker, int abil_value, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
 	const unit_map::const_iterator un = units.find(loc);
