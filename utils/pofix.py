@@ -93,6 +93,14 @@ game_stringfixes = {
 #fix added in 1.13.11+dev
 ("This unit can lead our own units", "This unit can lead your own units"),
 ("moreso", "more so"),
+# Typographical fixes added in 1.14.3+dev
+("Despite orcs' reliance on raw strength", "Despite orcs’ reliance on raw strength"),
+# FIXME: this won't work for some mysterious reason. The strings will have to be fuzzied.
+#('who grow to the strength of a \\"true orc\\"', "who grow to the strength of a “true orc”"),
+("making them a useful asset to aid in an army's charge.", "making them a useful asset to aid in an army’s charge."),
+("The Dunefolk's inclination", "The Dunefolk’s inclination"),
+("The Dunefolk's inquisitive", "The Dunefolk’s inquisitive"),
+("the heritage of the Dunefolk's", "the heritage of the Dunefolk’s"),
 ),
 
 "wesnoth-lib" : (
