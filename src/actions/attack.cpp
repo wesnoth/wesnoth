@@ -1394,6 +1394,11 @@ void attack::perform()
 		return;
 	}
 
+	if(a_.get_unit().attacks_left() <= 0) {
+		LOG_NG << "attack::perform(): not enough ap.\n";
+		return;
+	}
+
 	a_.get_unit().set_facing(a_.loc_.get_relative_dir(d_.loc_));
 	d_.get_unit().set_facing(d_.loc_.get_relative_dir(a_.loc_));
 
@@ -1414,6 +1419,11 @@ void attack::perform()
 
 	a_stats_ = &bc_->get_attacker_stats();
 	d_stats_ = &bc_->get_defender_stats();
+
+	if(a_stats_->disable) {
+		LOG_NG << "attack::perform(): tried to attack with a disabled attack.\n";
+		return;
+	}
 
 	if(a_stats_->weapon) {
 		a_.weap_id_ = a_stats_->weapon->id();
