@@ -1704,7 +1704,7 @@ std::pair<int, bool> under_leadership(const std::string& ability,const unit_map&
 
 	unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
-            if(!un->abilities_filter_matches(*i->first, attacker, abil_value) || !(*i->first).child_range("affect_adjacent")) {
+            if(!un->abilities_filter_matches(*i->first, attacker, abil_value)) {
                 i = abil.erase(i);
                 } else {
                     ++i;
