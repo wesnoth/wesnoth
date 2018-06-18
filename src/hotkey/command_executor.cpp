@@ -331,6 +331,9 @@ bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*inde
 		case HOTKEY_SELECT_AND_ACTION:
 			select_and_action();
 			break;
+		case HOTKEY_TOUCH_HEX:
+			touch_hex();
+			break;
 		case HOTKEY_ACCELERATED:
 			toggle_accelerated_speed();
 			break;

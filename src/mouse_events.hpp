@@ -84,6 +84,8 @@ public:
 		const bool fire_event = true);
 
 	void move_action(bool browse);
+	
+	void touch_action(const map_location hex, bool browse);
 
 	void select_or_action(bool browse);
 
