@@ -1082,7 +1082,12 @@ void server::handle_whisper(socket_ptr socket, simple_wml::node& whisper)
 	}
 
 	simple_wml::document cwhisper;
-	whisper.copy_into(cwhisper.root().add_child("whisper"));
+
+	simple_wml::node& trunc_whisper = cwhisper.root().add_child("whisper");
+	whisper.copy_into(trunc_whisper);
+
+	const simple_wml::string_span& msg = trunc_whisper["message"];
+	chat_message::truncate_message(msg, trunc_whisper);
 
 	send_to_player(receiver_iter->socket(), cwhisper);
 }
@@ -1305,10 +1310,12 @@ void server::handle_message(socket_ptr socket, simple_wml::node& message)
 
 	simple_wml::document relay_message;
 	message.set_attr_dup("sender", user->name().c_str());
-	message.copy_into(relay_message.root().add_child("message"));
 
-	const simple_wml::string_span& msg = message["message"];
-	chat_message::truncate_message(msg, message);
+	simple_wml::node& trunc_message = relay_message.root().add_child("message");
+	message.copy_into(trunc_message);
+
+	const simple_wml::string_span& msg = trunc_message["message"];
+	chat_message::truncate_message(msg, trunc_message);
 
 	if(msg.size() >= 3 && simple_wml::string_span(msg.begin(), 4) == "/me ") {
 		LOG_SERVER << client_address(socket) << "\t<" << user->name()
