@@ -2,9 +2,6 @@
  ### Campaigns
    * Eastern Invasion:
      * Fixed missing prisoners and loss of recallable units in 'Captured'.
- ### User interface
-   * Improved the layout of the Statistics dialog.
-   * Allow changing dropdown menu selections with the scrollwheel (FR #3251).
  ### Graphics
    * Tweaked the Ruffian's attack animation timing.
    * New attack animation for the Peasant.
@@ -12,6 +9,9 @@
    * Updated translations: Slovak
  ### Multiplayer server
    * Fixed lobby and whisper messages not having a maximum length.
+ ### User interface
+   * Improved the layout of the Statistics dialog.
+   * Allow changing dropdown menu selections with the scrollwheel (FR #3251).
  ### Miscellaneous and bug fixes
    * Added an advanced preference to enable experimental PRNG combat.
    * Fixed MP admins being unable to observe private games.
