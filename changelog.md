@@ -48,6 +48,8 @@
  ### Graphics
    * Tweaked the Ruffian's attack animation timing.
    * New attack animation for the Peasant.
+ ### Multiplayer server
+   * Fixed lobby and whisper messages not having a maximum length.
  ### Miscellaneous and bug fixes
    * Added an advanced preference to enable experimental PRNG combat.
    * Fixed MP admins being unable to observe private games.
