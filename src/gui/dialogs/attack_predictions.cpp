@@ -222,7 +222,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	}
 
 	// Leadership bonus.
-	const int leadership_bonus = under_leadership(resources::gameboard->units(), attacker.unit_.get_location(), attacker.stats_.is_attacker, 0, weapon, opp_weapon);
+	const int leadership_bonus = under_leadership(resources::gameboard->units(), attacker.unit_.get_location(), attacker.stats_.is_attacker, weapon, opp_weapon);
 
 	if(leadership_bonus != 0) {
 		set_label_helper("leadership_modifier", utils::signed_percent(leadership_bonus));
