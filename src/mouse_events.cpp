@@ -1010,6 +1010,17 @@ void mouse_handler::move_action(bool browse)
 	}
 }
 
+void mouse_handler::touch_action(const map_location touched_hex, bool browse)
+{
+	unit_map::iterator unit = find_unit(touched_hex);
+
+	if (touched_hex.valid() && unit.valid() && !unit->get_hidden()) {
+		select_or_action(browse);
+	} else {
+		deselect_hex();
+	}
+}
+
 void mouse_handler::select_hex(const map_location& hex, const bool browse, const bool highlight, const bool fire_event)
 {
 	selected_hex_ = hex;

@@ -88,6 +88,7 @@ public:
 	virtual void left_mouse_click() override;
 	virtual void move_action() override;
 	virtual void select_and_action() override;
+	virtual void touch_hex() override;
 	virtual void select_hex() override;
 	virtual void deselect_hex() override;
 	virtual void right_mouse_click() override;
