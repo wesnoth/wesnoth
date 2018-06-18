@@ -50,6 +50,9 @@
  ### User interface
    * Improved the layout of the Statistics dialog.
    * Allow changing dropdown menu selections with the scrollwheel (FR #3251).
+ ### WML engine
+   * Fixed errors about WESNOTH_VERSION not being defined when trying to load
+     add-ons that have preprocessor errors (issues #1924, #1634).
  ### Miscellaneous and bug fixes
    * Added an advanced preference to enable experimental PRNG combat.
    * Fixed MP admins being unable to observe private games.
