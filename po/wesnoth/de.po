@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-06-09 23:33+0300\n"
-"PO-Revision-Date: 2018-06-12 17:20+0200\n"
+"PO-Revision-Date: 2018-06-18 15:20+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.0.8\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -7427,7 +7427,7 @@ msgstr ""
 #: src/menu_events.cpp:1441
 msgid "Can't droid a local ai side: '$side'."
 msgstr ""
-"Kontrolle der lokalen Computer gesteuerten Partei »$side« kann nicht "
+"Kontrolle der von einer lokalen KI gesteuerten Partei »$side« kann nicht "
 "gewechselt werden."
 
 #: src/menu_events.cpp:1457
@@ -7445,8 +7445,8 @@ msgstr ""
 #: src/menu_events.cpp:1467
 msgid "Can't idle local ai side: '$side'."
 msgstr ""
-"Kontrolle der lokalen KI gesteuerten Partei »$side« kann nicht gewechselt "
-"werden."
+"Kontrolle der von einer lokalen KI gesteuerten Partei »$side« kann nicht "
+"gewechselt werden."
 
 #: src/menu_events.cpp:1527
 msgid "Can't change control of invalid side: '$side'."
@@ -7456,7 +7456,8 @@ msgstr ""
 #: src/menu_events.cpp:1537
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
-"Die Kontrolle der unerreichbaren Partei »$side« kann nicht geändert werden."
+"Die Kontrolle der Partei »$side« kann nicht geändert werden, es gibt keine "
+"Partei mit dieser Nummer."
 
 #: src/menu_events.cpp:1554
 msgid "Can't query control of invalid side: '$side'."
@@ -7466,7 +7467,8 @@ msgstr ""
 #: src/menu_events.cpp:1561
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr ""
-"Kontrollstatus der unerreichbaren Partei »$side« kann nicht abgefragt werden."
+"Kontrollstatus der Partei »$side« kann nicht abgefragt werden, es gibt keine "
+"Partei mit dieser Nummer."
 
 #: src/menu_events.cpp:1679
 msgid "Choose Scenario (Debug!)"
