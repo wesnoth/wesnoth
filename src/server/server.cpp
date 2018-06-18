@@ -2229,12 +2229,21 @@ void server::adminmsg_handler(
 		}
 	}
 
-	if(n == 0) {
-		*out << "Sorry, no admin available right now. But your message got logged.";
+	bool is_admin = false;
+
+	for(const auto& player : player_connections_) {
+		if(issuer_name == player.info().name() && player.info().is_moderator()) {
+			is_admin = true;
+			break;
+		}
+	}
+
+	if(!is_admin) {
+		*out << "Your report has been logged and sent to the server administrators. Thanks!";
 		return;
 	}
 
-	*out << "Message sent to " << n << " admins.";
+	*out << "Your report has been logged and sent to " << n << " online administrators. Thanks!";
 }
 
 void server::pm_handler(
