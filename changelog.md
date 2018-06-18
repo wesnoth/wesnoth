@@ -22,7 +22,7 @@
      add-ons that have preprocessor errors (issues #1924, #1634).
  ### Miscellaneous and bug fixes
    * Added an advanced preference to enable experimental PRNG combat.
-   * All Linux builds now enable security hardening by default.
+   * Windows and Linux builds now enable security hardening by default.
    * Fixed MP admins being unable to observe private games.
    * Fixed MP faction, leader, and leader gender changes persisting even if the
      selection dialog is dismissed.
