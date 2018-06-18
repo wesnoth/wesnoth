@@ -34,7 +34,7 @@
             ],
             "build-commands": [
                 "./bootstrap.sh --prefix=/app --with-libraries=filesystem,locale,iostreams,program_options,regex,random,thread",
-                "./b2 -j4 install link=static variant=release address-model=64 --layout=system"
+                "./b2 -j4 install cxxflags='-fPIE -fstack-protector-strong' define=_FORTIFY_SOURCE=2 link=static variant=release address-model=64 --layout=system"
 ]
         },
 	{
