@@ -1,12 +1,17 @@
 ## Version 1.14.3+dev
  ### Campaigns
+   * Dead Water:
+     * In 'Tirigaz', take the situation into account of orcs being killed either
+       first or by undead.
    * Eastern Invasion:
      * Fixed missing prisoners and loss of recallable units in 'Captured'.
+   * Under th Burning Suns:
+     * Viual improvements.
  ### Graphics
    * Tweaked the Ruffian's attack animation timing.
    * New attack animation for the Peasant.
  ### Language and i18n
-   * Updated translations: Slovak
+   * Updated translations: German, Slovak
  ### Multiplayer server
    * Fixed lobby and whisper messages not having a maximum length.
  ### User interface
@@ -17,6 +22,7 @@
      add-ons that have preprocessor errors (issues #1924, #1634).
  ### Miscellaneous and bug fixes
    * Added an advanced preference to enable experimental PRNG combat.
+   * All builds use now by default additional security hardening.
    * Fixed MP admins being unable to observe private games.
    * Fixed MP faction, leader, and leader gender changes persisting even if the
      selection dialog is dismissed.
