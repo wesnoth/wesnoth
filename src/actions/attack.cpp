@@ -318,7 +318,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	boost::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
-		opp_ctx = opp_weapon->specials_context(*opp_type, map_location::null_location(), !attacking);
+		opp_ctx.emplace(opp_weapon->specials_context(*opp_type, map_location::null_location(), !attacking));
 	}
 
 	slows = weapon->get_special_bool("slow");
@@ -378,7 +378,6 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	swarm = swarm_min != swarm_max;
 	num_blows = calc_blows(hp);
 }
-
 
 // ==================================================================================
 // BATTLE CONTEXT
