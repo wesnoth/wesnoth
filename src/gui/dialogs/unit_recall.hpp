@@ -45,6 +45,9 @@ public:
 		return selected_index_;
 	}
 
+	/** Function to sort recall_list_ by default. */
+	static bool unit_recall_default_compare(const unit_const_ptr first, const unit_const_ptr second);
+
 private:
 	recalls_ptr_vector& recall_list_;
 
@@ -60,9 +63,6 @@ private:
 	void filter_text_changed(text_box_base* textbox, const std::string& text);
 	void dismiss_unit(window& window);
 	void show_help();
-
-	/** Function to sort recall_list_ by default. */
-	static bool unit_recall_default_compare(const unit_const_ptr first, const unit_const_ptr second);
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
