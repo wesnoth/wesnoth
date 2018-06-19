@@ -154,6 +154,7 @@ class editor_controller : public controller_base,
 
 		/* mouse_handler_base overrides */
 		void mouse_motion(int x, int y, const bool browse, bool update, map_location new_loc = map_location::null_location()) override;
+		void touch_motion(int x, int y, const bool browse, bool update=false, map_location new_loc = map_location::null_location()) override;
 		editor_display& gui() override { return *gui_; }
 		const editor_display& gui() const override { return *gui_; }
 		bool allow_mouse_wheel_scroll(int x, int y) override;

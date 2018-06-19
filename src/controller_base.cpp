@@ -54,6 +54,8 @@ void controller_base::handle_event(const SDL_Event& event)
 
 	events::mouse_handler_base& mh_base = get_mouse_handler_base();
 
+	SDL_Event new_event = {};
+
 	switch(event.type) {
 	case SDL_TEXTINPUT:
 		if(have_keyboard_focus()) {
@@ -94,31 +96,45 @@ void controller_base::handle_event(const SDL_Event& event)
 		break;
 
 	case SDL_JOYBUTTONDOWN:
-		process_keydown_event(event);
 		hotkey::jbutton_event(event, get_hotkey_command_executor());
 		break;
 
 	case SDL_JOYHATMOTION:
-		process_keydown_event(event);
 		hotkey::jhat_event(event, get_hotkey_command_executor());
 		break;
 
 	case SDL_MOUSEMOTION:
 		// Ignore old mouse motion events in the event queue
-		SDL_Event new_event;
 		if(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {
 			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {
 			};
-			mh_base.mouse_motion_event(new_event.motion, is_browsing());
+			if(new_event.motion.which != SDL_TOUCH_MOUSEID) {
+				mh_base.mouse_motion_event(new_event.motion, is_browsing());
+			}
 		} else {
-			mh_base.mouse_motion_event(event.motion, is_browsing());
+			if(new_event.motion.which != SDL_TOUCH_MOUSEID) {
+				mh_base.mouse_motion_event(event.motion, is_browsing());
+			}
+		}
+		break;
+
+	case SDL_FINGERMOTION:
+		if(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_FINGERMOTION, SDL_FINGERMOTION) > 0) {
+			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_FINGERMOTION, SDL_FINGERMOTION) > 0) {
+			};
+			mh_base.touch_motion_event(new_event.tfinger, is_browsing());
+		} else {
+			mh_base.touch_motion_event(event.tfinger, is_browsing());
 		}
 		break;
 
 	case SDL_MOUSEBUTTONDOWN:
-		process_keydown_event(event);
 		mh_base.mouse_press(event.button, is_browsing());
 		hotkey::mbutton_event(event, get_hotkey_command_executor());
+		break;
+
+	case SDL_FINGERDOWN:
+		// handled by mouse case
 		break;
 
 	case SDL_MOUSEBUTTONUP:
@@ -129,6 +145,10 @@ void controller_base::handle_event(const SDL_Event& event)
 		}
 		break;
 
+	case SDL_FINGERUP:
+		// handled by mouse case
+		break;
+
 	case SDL_MOUSEWHEEL:
 #if defined(_WIN32) || defined(__APPLE__)
 		mh_base.mouse_wheel(-event.wheel.x, event.wheel.y, is_browsing());
@@ -137,6 +157,8 @@ void controller_base::handle_event(const SDL_Event& event)
 #endif
 		break;
 
+	// TODO: Support finger specifically, like pan the map. For now, SDL's "shadow mouse" events will do.
+	case SDL_MULTIGESTURE:
 	default:
 		break;
 	}
