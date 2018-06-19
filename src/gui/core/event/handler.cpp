@@ -379,17 +379,30 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 		return;
 	}
 
+	Uint8 button = event.button.button;
+	CVideo& video = dynamic_cast<window&>(*dispatchers_.back()).video();
+
 	switch(event.type) {
 		case SDL_MOUSEMOTION:
-			mouse(SDL_MOUSE_MOTION, {event.motion.x, event.motion.y});
+#ifdef MOUSE_TOUCH_EMULATION
+			// There's no finger motion when it's not down.
+			if (event.motion.state != 0)
+#endif
+			{
+				mouse(SDL_MOUSE_MOTION, {event.motion.x, event.motion.y});
+			}
 			break;
 
 		case SDL_MOUSEBUTTONDOWN:
-			mouse_button_down({event.button.x, event.button.y}, event.button.button);
+			{
+				mouse_button_down({event.button.x, event.button.y}, button);
+			}
 			break;
 
 		case SDL_MOUSEBUTTONUP:
-			mouse_button_up({event.button.x, event.button.y}, event.button.button);
+			{
+				mouse_button_up({event.button.x, event.button.y}, button);
+			}
 			break;
 
 		case SDL_MOUSEWHEEL:
@@ -465,20 +478,33 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			break;
 
 		case SDL_FINGERMOTION:
-			touch_motion(point(event.tfinger.x, event.tfinger.y), point(event.tfinger.dx, event.tfinger.dy));
+			{
+				SDL_Rect r = video.screen_area();
+				touch_motion(point(event.tfinger.x * r.w, event.tfinger.y * r.h),
+							 point(event.tfinger.dx * r.w, event.tfinger.dy * r.h));
+			}
 			break;
 
 		case SDL_FINGERUP:
-			touch_up(point(event.tfinger.x, event.tfinger.y));
+			{
+				SDL_Rect r = video.screen_area();
+				touch_up(point(event.tfinger.x * r.w, event.tfinger.y * r.h));
+			}
 			break;
 
 		case SDL_FINGERDOWN:
-			touch_down(point(event.tfinger.x, event.tfinger.y));
+			{
+				SDL_Rect r = video.screen_area();
+				touch_down(point(event.tfinger.x * r.w, event.tfinger.y * r.h));
+			}
 			break;
 
 		case SDL_MULTIGESTURE:
-			touch_multi_gesture(point(event.mgesture.x, event.mgesture.y),
-								event.mgesture.dTheta, event.mgesture.dDist, event.mgesture.numFingers);
+			{
+				SDL_Rect r = video.screen_area();
+				touch_multi_gesture(point(event.mgesture.x * r.w, event.mgesture.y * r.h),
+									event.mgesture.dTheta, event.mgesture.dDist, event.mgesture.numFingers);
+			}
 			break;
 
 #if(defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)

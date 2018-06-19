@@ -593,7 +593,7 @@ void command_executor::queue_command(const SDL_Event& event, int index)
 	bool keypress = (event.type == SDL_KEYDOWN || event.type == SDL_TEXTINPUT) &&
 		!press_event_sent_;
 	bool press = keypress ||
-		(event.type == SDL_JOYBUTTONDOWN || event.type == SDL_MOUSEBUTTONDOWN);
+		(event.type == SDL_JOYBUTTONDOWN || event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_FINGERDOWN);
 	bool release = event.type == SDL_KEYUP;
 	if(press) {
 		LOG_HK << "sending press event (keypress = " <<
