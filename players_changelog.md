@@ -4,7 +4,7 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 
 ## Version 1.14.3+dev
  ### Language and i18n
-   * Updated translations: Slovak.
+   * Updated translations: French, German, Slovak.
 
 
 ## Version 1.14.3
