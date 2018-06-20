@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-05-26 12:04 UTC\n"
-"PO-Revision-Date: 2017-04-14 23:12+0200\n"
+"PO-Revision-Date: 2018-06-16 14:23+0200\n"
 "Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sk_SK\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.4\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
@@ -156,7 +156,7 @@ msgid ""
 "brother, with which they might call to each other when in dire need. Baran "
 "sent out that call."
 msgstr ""
-"Bjarn má brata menom Arne, ktorý tiež na  istý čas odišiel z Maghre, a stal "
+"Bjarn má brata menom Arne, ktorý tiež na istý čas odišiel z Maghre, a stal "
 "sa lídrom malej skupiny jazdcov, ktorí za žold ochraňovali obchodné "
 "karavány. Kedysi dávno, keď Bjarn ešte na Alduine študoval mágiu, vytvoril "
 "dva vzácne amulety pre seba a pre svojho brata. Amulet umožňoval poslať "
@@ -272,7 +272,7 @@ msgstr "Magrid"
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:161
 msgid "Slay Mordak, the evil mage"
-msgstr "Zabiješ čierneho mága Mordaka."
+msgstr "Zabiješ čierneho mága Mordaka"
 
 #. [objective]: condition=lose
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:165
@@ -281,7 +281,7 @@ msgstr "Zabiješ čierneho mága Mordaka."
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:143
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:288
 msgid "Death of Arvith"
-msgstr "Zomrie Arne."
+msgstr "Zomrie Arne"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:176
@@ -289,6 +289,8 @@ msgid ""
 "Use footpads as fodder to protect your loyal units and attack during the day "
 "to minimize the damage your forces take."
 msgstr ""
+"Použi poskokov ako návnady, aby si ochránil svoje lojálne jednotky a útoč "
+"počas dňa pre minimalizovanie zranení tvojich jednotiek."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:186
@@ -312,12 +314,6 @@ msgstr "Ty si ma volal, a ja som prišiel. Čo trápi našu dedinu, Maghre?"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:206
-#, fuzzy
-#| msgid ""
-#| "A dark mage has come upon us; his creatures call him Mordak. They have "
-#| "been terrorizing outlying farms, and we fear they may soon attack the "
-#| "village itself! The villagers of Maghre have taken up weapons but they "
-#| "are not trained fighters; but we need your men, and you to lead them."
 msgid ""
 "A dark mage has come upon us; his creatures call him Mordak. They have been "
 "terrorizing outlying farms, and we fear they may soon attack the village "
@@ -326,7 +322,7 @@ msgid ""
 msgstr ""
 "Prišiel medzi nás temný kúzelník. Jeho potvory ho volajú Mordak. Už "
 "spustošili nejednu farmu, a bojíme sa, že zanedlho napadnú dedinu! "
-"Vidiečania z Maghre zobrali zbrane, no nie sú to trénovaný bojovníci. "
+"Vidiečania z Maghre zobrali zbrane, no nie sú to trénovaní bojovníci. "
 "Potrebujeme tvoje vojsko, a teba ako hlavného veliteľa."
 
 #. [message]: speaker=Baran
@@ -516,7 +512,7 @@ msgid ""
 "Besides... I want my brother back."
 msgstr ""
 "16 V, 363 R.W.\n"
-"Úryvok  z denníka Arneho z Maghre\n"
+"Úryvok z denníka Arneho z Maghre\n"
 "\n"
 "Toľko k poverám. Na svete som však pochodil už dosť na to, aby som vedel, že "
 "za každou poverou je kúsok pravdy. Les je domovom elfov - a to "
@@ -553,17 +549,17 @@ msgstr "Muff Toras"
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:261
 msgid "Fight your way through the woods before the kidnappers escape"
-msgstr "Prebojuješ si cestu lesmi skôr ako únoscovia uniknú."
+msgstr "Prebojuješ si cestu lesmi skôr ako únoscovia uniknú"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:278
 msgid "Catch the kidnappers"
-msgstr "Poďme, chlapi, chyťme tých únoscov!"
+msgstr "Chytíš únoscov"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:288
 msgid "Kill the Dark Adept before his reinforcements arrive"
-msgstr "Zabiješ temného učňa skôr ako prídu jeho posily."
+msgstr "Zabiješ temného učňa skôr než prídu jeho posily"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:304
@@ -571,6 +567,8 @@ msgid ""
 "The Elvish forces are spread out. Seek to fight them one at a time with "
 "several of your units."
 msgstr ""
+"Jednotky elfov sú roztrúsené. Vyhľadaj ich a napadni po jednom s viacerými "
+"tvojimi jednotkami."
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:317
@@ -578,12 +576,16 @@ msgid ""
 "Use horsemen or footpads to quickly explore the shrouded woods to locate the "
 "kidnappers."
 msgstr ""
+"Použi jazdcov alebo poskokov na rýchle preskúmanie skrytých lesov a nájdi "
+"únoscov."
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:332
 msgid ""
 "Separate the Dark Adept from his guards and attack in force for an easy kill."
 msgstr ""
+"Oddeľ temného učňa od jeho ochranky a zaútoč veľkou silou pre jeho ľahké "
+"zabitie."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:375
@@ -617,7 +619,7 @@ msgid ""
 "Baran!"
 msgstr ""
 "Takže asi toľko k tým príbehom o duchoch. Banda zle zaplatených elfských "
-"zabijakov nás na našej ceste nezastaví! "
+"zabijakov nás na našej ceste nezastaví!"
 
 #. [message]: role=Mercenary
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:400
@@ -818,8 +820,8 @@ msgid ""
 "Take this, then, for I see that you are on a quest. My comrades will help "
 "you whenever you call for them."
 msgstr ""
-"Tak vezmite si  toto, lebo vidím, že ste na dlhšej výprave. Moji druhovia "
-"vám prídu na pomoc, kedykoľvek ich zavoláte."
+"Tak vezmite si toto, lebo vidím, že ste na dlhšej výprave. Moji druhovia vám "
+"prídu na pomoc, kedykoľvek ich zavoláte."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:590
@@ -893,7 +895,7 @@ msgstr ""
 "Neviem čo vojvoda plánuje s tým mágom, ale rozhodne sme uniesli osobu "
 "zodpovedajúcu popisu. Mám dojem, že Mordakov plán by bol fungoval perfektne, "
 "keby nebolo tých vojakov na koňoch. Teraz prichádzajú sem, vedení bratom "
-"toho mága. Ak je to pravda, nič ich nezastaví, dokonca ani ja. "
+"toho mága. Ak je to pravda, nič ich nezastaví, dokonca ani ja."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:34
@@ -961,17 +963,17 @@ msgstr "Hradná stráž"
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:277
 msgid "Rescue Baran"
-msgstr "Zachrániš Bjarna."
+msgstr "Zachrániš Bjarna"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:289
 msgid "Kill the dark sorcerer to get the cell key"
-msgstr "Zabiješ temného čarodeja a vezmeš mu kľúč od cely."
+msgstr "Zabiješ temného čarodeja a vezmeš mu kľúč od cely"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:303
 msgid "Move Arvith to the cell with his brother to free him"
-msgstr "Arvith vojde do cely, kde je jeho brat, aby ho oslobodil"
+msgstr "Arne vojde do cely, kde je jeho brat, aby ho oslobodil"
 
 #. [objective]: condition=lose
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:316
@@ -986,6 +988,8 @@ msgid ""
 "When facing an unknown situation, take into account details from story and "
 "dialog to inform your strategy."
 msgstr ""
+"Ak narazíš na neznámu situáciu, v stratégii ti pomôžu informácie z príbehu a "
+"dialógov."
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:337
@@ -993,6 +997,8 @@ msgid ""
 "The dark sorcerer is a strong unit; attack him with multiple units at once "
 "and try to force him off his keep."
 msgstr ""
+"Temný čarodejník je silná jednotka. Napadni ho s viacerými jednotkami naraz "
+"a drž ho von z pevnosti."
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:347
@@ -1000,6 +1006,8 @@ msgid ""
 "Markings or decorations on hexes may indicate something to be found. If you "
 "can, it is usually a good idea to investigate."
 msgstr ""
+"Značky a ozdoby na poliach môžu znamenať niečo na objavenie. Ak môžeš, skús "
+"ich preskúmať."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:384
@@ -1084,7 +1092,7 @@ msgstr "O jedného chvastúnskeho orka na tomto svete menej."
 #. [message]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:489
 msgid "Captain, what are <i>orcs</i> doing this far south?"
-msgstr "Kapitán, čo robia <i>orkovia</i>  tak ďaleko na juhu?"
+msgstr "Kapitán, čo robia <i>orkovia</i> tak ďaleko na juhu?"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:494
@@ -1171,7 +1179,7 @@ msgid ""
 "That may well be the key to the cell they’re holding Baran in! I will take "
 "it."
 msgstr ""
-"To musí byť kľúč od cely, kde držia Barana! Vezmem si ten kľúč. Neviem sa "
+"To musí byť kľúč od cely, kde držia Bjarna! Vezmem si ten kľúč. Neviem sa "
 "dočkať, až uvidím svojho brata. Poďme, osloboďme ho."
 
 #. [message]: speaker=unit
@@ -1383,7 +1391,7 @@ msgstr "Kancelár Hoban"
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:139
 msgid "Find out what is happening in the village"
-msgstr "Zistíš, čo sa deje v dedine."
+msgstr "Zistíš, čo sa deje v dedine"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:155
@@ -1391,6 +1399,8 @@ msgid ""
 "Recruit or Recall some high-move units to be able to see as far as possible "
 "through the fog for approaching units."
 msgstr ""
+"Verbuj alebo privolaj zopár jednotiek s rýchlym pohybom, aby si mohol v hmle "
+"už z ďaleka vidieť prichádzajúce jednotky."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:171
@@ -1496,12 +1506,14 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:284
 msgid "Slay the Orcish Warlord to free the village"
-msgstr "Zabiješ orka vojvodu a oslobodíš dedinu."
+msgstr "Zabiješ orka vojvodu a oslobodíš dedinu"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:300
 msgid "You can use Reeve Hoban’s keep to recruit or recall additional units."
 msgstr ""
+"Na verbovanie a privolávanie ďalších jednotiek môžeš použiť pevnosť Reeva "
+"Hobana."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:310
@@ -1542,7 +1554,7 @@ msgstr ""
 #. [scenario]: id=05_Epilogue
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:5
 msgid "A Tale of Two Brothers — Epilogue"
-msgstr "Príbeh o dvoch bratoch - Epilóg."
+msgstr "Príbeh o dvoch bratoch - Epilóg"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:18
@@ -1570,8 +1582,8 @@ msgstr ""
 "hrozbám.\n"
 "\n"
 "Bolo ťažké byť odlúčený od brata dva roky, ale Bjarn má svoje povinnosti a "
-"ja svoje.  Za ten čas sme teda nemali veľa príležitostí sa stretnúť. Ale "
-"kedže ja a moja kompánia spolu s novým zamestnávateľom prechádzala touto "
+"ja svoje. Za ten čas sme teda nemali veľa príležitostí sa stretnúť. Ale "
+"keďže ja a moja kompánia spolu s novým zamestnávateľom prechádzala touto "
 "oblasťou, vypýtal som si od neho povolenie urobiť malú odbočku do mojej "
 "rodnej dediny a on s tým súhlasil."
 
@@ -1620,7 +1632,7 @@ msgstr "Bjarn"
 
 #: data/campaigns/Two_Brothers/utils/macros.cfg:4
 msgid "Hint:"
-msgstr ""
+msgstr "Pomocka:"
 
 #~ msgid "$first_password_1|!"
 #~ msgstr "$first_password_1|!"
