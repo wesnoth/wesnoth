@@ -14,7 +14,7 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/dialogs/unit_list.hpp"
-#include "gui/dialogs/unit_recall.hpp" /* for unit_recall_default_compare */
+#include "gui/dialogs/unit_recall.hpp" /* for default_compare */
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/log.hpp"
@@ -164,8 +164,8 @@ void unit_list::pre_show(window& window)
 	list.register_sorting_option(2, [this](const int i) { return unit_list_[i]->movement_left(); });
 	list.register_sorting_option(3, [this](const int i) { return unit_list_[i]->hitpoints(); });
 	list.set_column_order(4, {{
-		[this](int lhs, int rhs) { return unit_recall::unit_recall_default_compare(unit_list_[rhs], unit_list_[lhs]); },
-		[this](int lhs, int rhs) { return unit_recall::unit_recall_default_compare(unit_list_[lhs], unit_list_[rhs]); }
+		[this](int lhs, int rhs) { return unit_recall::default_compare(unit_list_[rhs], unit_list_[lhs]); },
+		[this](int lhs, int rhs) { return unit_recall::default_compare(unit_list_[lhs], unit_list_[rhs]); }
 	}});
 	list.register_sorting_option(5, [this](const int i) { return unit_list_[i]->experience(); });
 	list.register_translatable_sorting_option(6, [this](const int i) {
