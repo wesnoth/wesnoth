@@ -45,7 +45,7 @@ public:
 	}
 
 	/** Function to sort recall_list_ by default. */
-	static bool unit_recall_default_compare(const unit_const_ptr first, const unit_const_ptr second);
+	static bool default_compare(const unit_const_ptr first, const unit_const_ptr second);
 
 private:
 	recalls_ptr_vector& recall_list_;
