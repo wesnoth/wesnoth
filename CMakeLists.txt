@@ -244,20 +244,18 @@ if(NOT "${CMAKE_CXX_FLAGS}" STREQUAL "${COMPILER_FLAGS}")
 endif(NOT "${CMAKE_CXX_FLAGS}" STREQUAL "${COMPILER_FLAGS}")
 
 # check for hardening options
-if(HARDEN)
+if(HARDEN AND NOT WIN32)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIE -fstack-protector-strong")
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIE -fstack-protector-strong")
 
 	if(APPLE)
 		set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -Wl,-pie")
-	elseif(WIN32)
-		set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -pie")
 	else()
 		set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -pie -Wl,-z,relro,-z,now")
 	endif()
 
 	add_definitions(-D_FORTIFY_SOURCE=2)
-endif(HARDEN)
+endif(HARDEN AND NOT WIN32)
 
 if(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 	# Assume the compiler is the clang compiler.
