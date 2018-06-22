@@ -17,6 +17,7 @@
 #include "gui/widgets/pane.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/window.hpp"
@@ -225,11 +226,8 @@ bool pane::disable_click_dismiss() const
 	return false;
 }
 
-iteration::walker_base* pane::create_walker()
+iteration::walker_ptr pane::create_walker()
 {
-	/**
-	 * @todo Implement properly.
-	 */
 	return nullptr;
 }
 

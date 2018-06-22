@@ -34,7 +34,7 @@ class grid;
 
 namespace iteration
 {
-class walker_base;
+using walker_ptr = std::unique_ptr<class walker_base>;
 } // namespace iteration
 
 /**
@@ -724,8 +724,8 @@ public:
 	/** Does the widget disable easy close? */
 	virtual bool disable_click_dismiss() const = 0;
 
-	/** Creates a new walker object on the heap. */
-	virtual iteration::walker_base* create_walker() = 0;
+	/** Creates a new walker object managed by a smart pointer. */
+	virtual iteration::walker_ptr create_walker() = 0;
 };
 
 using widget_ptr = std::shared_ptr<widget>;

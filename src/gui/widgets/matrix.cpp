@@ -17,6 +17,7 @@
 #include "gui/widgets/matrix.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
@@ -162,11 +163,8 @@ bool matrix::disable_click_dismiss() const
 	return false;
 }
 
-iteration::walker_base* matrix::create_walker()
+iteration::walker_ptr matrix::create_walker()
 {
-	/**
-	 * @todo Implement properly.
-	 */
 	return nullptr;
 }
 

@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/core/window_builder.hpp"
@@ -140,7 +141,7 @@ public:
 	 *
 	 * @todo Implement properly.
 	 */
-	virtual iteration::walker_base* create_walker() override
+	virtual iteration::walker_ptr create_walker() override
 	{
 		return nullptr;
 	}

@@ -75,7 +75,7 @@ public:
 	bool disable_click_dismiss() const override;
 
 	/** See @ref widget::create_walker. */
-	virtual iteration::walker_base* create_walker() override;
+	virtual iteration::walker_ptr create_walker() override;
 
 private:
 	widget_ptr widget_;

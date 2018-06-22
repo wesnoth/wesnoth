@@ -16,6 +16,7 @@
 
 #include "gui/widgets/generator.hpp"
 
+#include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/toggle_button.hpp"
@@ -870,7 +871,7 @@ public:
 	 *
 	 * @todo Implement properly.
 	 */
-	virtual iteration::walker_base* create_walker() override
+	virtual iteration::walker_ptr create_walker() override
 	{
 		return nullptr;
 	}

@@ -809,9 +809,9 @@ void tree_view_node::layout_initialize(const bool full_initialization)
 	}
 }
 
-iteration::walker_base* tree_view_node::create_walker()
+iteration::walker_ptr tree_view_node::create_walker()
 {
-	return new gui2::iteration::tree_node(*this, children_);
+	return std::make_unique<gui2::iteration::tree_node>(*this, children_);
 }
 
 } // namespace gui2

@@ -104,7 +104,7 @@ void select_orb_colors::setup_orb_group(const std::string& base_id, bool& shown,
 	using iteration::walker_base;
 
 	grid& selection = find_widget<grid>(get_window(), prefix + "selection", false);
-	std::unique_ptr<iteration::walker_base> iter(selection.create_walker());
+	auto iter = selection.create_walker();
 
 	while(!iter->at_end(walker_base::child)) {
 		widget* next = iter->get(walker_base::child);
