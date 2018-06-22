@@ -61,13 +61,6 @@ public:
 
 	~bottom_up()
 	{
-		delete root_;
-		for(std::vector<iteration::walker_base*>::iterator itor = stack_.begin();
-			itor != stack_.end();
-			++itor) {
-
-			delete *itor;
-		}
 	}
 
 	bool at_end() const
@@ -134,8 +127,6 @@ public:
 				TST_GUI_I << " Finished iteration.\n";
 				return false;
 			} else {
-				delete root_;
-
 				root_ = stack_.back();
 				stack_.pop_back();
 				TST_GUI_I << " Up '" << operator*().id() << "'.";
@@ -191,9 +182,9 @@ public:
 	}
 
 private:
-	iteration::walker_base* root_;
+	iteration::walker_ptr root_;
 
-	std::vector<iteration::walker_base*> stack_;
+	std::vector<iteration::walker_ptr> stack_;
 };
 
 template <bool VW, bool VG, bool VC>
@@ -212,13 +203,6 @@ public:
 
 	~top_down()
 	{
-		delete root_;
-		for(std::vector<iteration::walker_base*>::iterator itor = stack_.begin();
-			itor != stack_.end();
-			++itor) {
-
-			delete *itor;
-		}
 	}
 
 	bool at_end() const
@@ -326,8 +310,6 @@ private:
 	bool up()
 	{
 		while(!stack_.empty()) {
-			delete root_;
-
 			root_ = stack_.back();
 			stack_.pop_back();
 			TST_GUI_I << " Up widget '" << operator*().id() << "'. Iterate:";
@@ -345,9 +327,9 @@ private:
 		return true;
 	}
 
-	iteration::walker_base* root_;
+	iteration::walker_ptr root_;
 
-	std::vector<iteration::walker_base*> stack_;
+	std::vector<iteration::walker_ptr> stack_;
 };
 
 } // namespace order
