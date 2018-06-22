@@ -33,12 +33,11 @@ namespace gui2
 {
 namespace dialogs
 {
-
 REGISTER_DIALOG(drop_down_menu)
 
 namespace
 {
-	void click_callback(window& window, bool keep_open, bool&, bool&, point coordinate)
+	void click_callback(window& window, bool keep_open, const point& coordinate)
 	{
 		listbox& list = find_widget<listbox>(&window, "list", true);
 
@@ -48,7 +47,7 @@ namespace
 		 * This works since this click_callback function is called before widgets' left-button-up handlers.
 		 *
 		 * Additionally, this is done before row deselection so selecting/deselecting a toggle button doesn't also leave
-		 * the list with no row visually selected. Oddly, the visial deselection doesn't seem to cause any crashes, and
+		 * the list with no row visually selected. Oddly, the visual deselection doesn't seem to cause any crashes, and
 		 * the previously selected row is reselected when the menu is opened again. Still, it's odd to see your selection
 		 * vanish.
 		 */
@@ -97,7 +96,6 @@ namespace
 	void resize_callback(window& window)
 	{
 		window.set_retval(retval::CANCEL);
-		window.close();
 	}
 }
 
@@ -110,43 +108,55 @@ void drop_down_menu::pre_show(window& window)
 
 	listbox& list = find_widget<listbox>(&window, "list", true);
 
-	std::map<std::string, string_map> data;
-	string_map item;
-
+	/* Each row's config can have the following keys. Note the containing [entry]
+	 * tag is for illustrative purposes and isn't actually present in the configs.
+	 *
+	 * [entry]
+	 *     icon = "path/to/image.png"          | Column 1 OR
+	 *     checkbox = yes/no                   | Column 1
+	 *     image = "path/to/image.png"         | Column 2 OR
+	 *     label = "text"                      | Column 2
+	 *     details = "text"                    | Column 3
+	 *     tooltip = "text"                    | Entire row
+	 * [/entry]
+	 */
 	for(const auto& entry : items_) {
-		data.clear();
+		std::map<std::string, string_map> data;
+		string_map item;
 
-		item["label"] = entry["icon"];
-		data.emplace("icon", item);
+		const bool has_image_key = entry.has_attribute("image");
+		const bool has_ckbox_key = entry.has_attribute("checkbox");
 
-		if(!entry.has_attribute("image")) {
+		//
+		// These widgets can be initialized here since they don't require widget type swapping.
+		//
+		item["use_markup"] = utils::bool_string(use_markup_);
+
+		if(!has_ckbox_key) {
+			item["label"] = entry["icon"];
+			data.emplace("icon", item);
+		}
+
+		if(!has_image_key) {
 			item["label"] = entry["label"];
-			item["use_markup"] = utils::bool_string(use_markup_);
 			data.emplace("label", item);
 		}
 
 		if(entry.has_attribute("details")) {
 			item["label"] = entry["details"];
-			item["use_markup"] = utils::bool_string(use_markup_);
 			data.emplace("details", item);
 		}
 
 		grid& new_row = list.add_row(data);
+		grid& mi_grid = find_widget<grid>(&new_row, "menu_item", false);
 
 		// Set the tooltip on the whole panel
 		find_widget<toggle_panel>(&new_row, "panel", false).set_tooltip(entry["tooltip"]);
 
-		if(entry.has_attribute("image")) {
-			auto img = build_single_widget_and_cast_to<image>();
-			img->set_label(entry["image"]);
-
-			grid* mi_grid = dynamic_cast<grid*>(new_row.find("menu_item", false));
-			if(mi_grid) {
-				mi_grid->swap_child("label", std::static_pointer_cast<widget>(img), false);
-			}
-		}
-
-		if(entry.has_attribute("checkbox")) {
+		//
+		// Handle the necessary widget type swaps.
+		//
+		if(has_ckbox_key) {
 			auto checkbox = build_single_widget_and_cast_to<toggle_button>();
 			checkbox->set_id("checkbox");
 			checkbox->set_value_bool(entry["checkbox"].to_bool(false));
@@ -155,10 +165,14 @@ void drop_down_menu::pre_show(window& window)
 				connect_signal_notify_modified(*checkbox, std::bind(callback_toggle_state_change_));
 			}
 
-			grid* mi_grid = dynamic_cast<grid*>(new_row.find("menu_item", false));
-			if(mi_grid) {
-				mi_grid->swap_child("icon", std::static_pointer_cast<widget>(checkbox), false);
-			}
+			mi_grid.swap_child("icon", std::static_pointer_cast<widget>(checkbox), false);
+		}
+
+		if(has_image_key) {
+			auto img = build_single_widget_and_cast_to<image>();
+			img->set_label(entry["image"]);
+
+			mi_grid.swap_child("label", std::static_pointer_cast<widget>(img), false);
 		}
 	}
 
@@ -168,27 +182,25 @@ void drop_down_menu::pre_show(window& window)
 
 	window.keyboard_capture(&list);
 
-	// Dismiss on click outside the window
+	// Dismiss on clicking outside the window.
 	window.connect_signal<event::SDL_LEFT_BUTTON_UP>(
-		std::bind(&click_callback, std::ref(window), keep_open_, _3, _4, _5), event::dispatcher::front_child);
+		std::bind(&click_callback, std::ref(window), keep_open_, _5), event::dispatcher::front_child);
 
 	window.connect_signal<event::SDL_RIGHT_BUTTON_UP>(
-		std::bind(&click_callback, std::ref(window), keep_open_, _3, _4, _5), event::dispatcher::front_child);
+		std::bind(&click_callback, std::ref(window), keep_open_, _5), event::dispatcher::front_child);
+
+	// Dismiss on resize.
+	window.connect_signal<event::SDL_VIDEO_RESIZE>(
+		std::bind(&resize_callback, std::ref(window)), event::dispatcher::front_child);
 
 	// Handle embedded button toggling.
-	// For some reason this works as a listbox value callback but don't ask me why.
-	// - vultraz, 2017-02-17
-	connect_signal_notify_modified(list, std::bind(&callback_flip_embedded_toggle, std::ref(window)));
-
-	// Dismiss on resize
-	window.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&resize_callback, std::ref(window)), event::dispatcher::front_child);
+	connect_signal_notify_modified(list,
+		std::bind(&callback_flip_embedded_toggle, std::ref(window)));
 }
 
 void drop_down_menu::post_show(window& window)
 {
-	listbox& list = find_widget<listbox>(&window, "list", true);
-
-	selected_item_ = list.get_selected_row();
+	selected_item_ = find_widget<listbox>(&window, "list", true).get_selected_row();
 }
 
 boost::dynamic_bitset<> drop_down_menu::get_toggle_states() const
