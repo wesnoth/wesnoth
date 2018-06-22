@@ -17,6 +17,8 @@
  ### User interface
    * Improved the layout of the Statistics dialog.
    * Allow changing dropdown menu selections with the scrollwheel (FR #3251).
+   * Fixed the unit preview pane not showing the default race icon when detailing
+     a single unit's stats.
  ### WML engine
    * Fixed errors about WESNOTH_VERSION not being defined when trying to load
      add-ons that have preprocessor errors (issues #1924, #1634).

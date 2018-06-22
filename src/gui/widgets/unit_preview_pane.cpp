@@ -424,7 +424,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 	}
 
 	if(icon_race_) {
-		icon_race_->set_label("icons/unit-groups/race_" + u.race()->id() + "_30.png");
+		icon_race_->set_label(u.race()->get_icon_path_stem() + "_30.png");
 	}
 
 	if(icon_alignment_) {
