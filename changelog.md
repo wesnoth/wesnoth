@@ -42,9 +42,21 @@
    * [remove_sound_source] now accepts a comma-separated ID list
 
 ## Version 1.14.3+dev
+ ### Campaigns
+   * Dead Water:
+     * In 'Tirigaz', take the situation into account of orcs being killed either
+       first or by undead.
+   * Eastern Invasion:
+     * Fixed missing prisoners and loss of recallable units in 'Captured'.
+   * Under the Burning Suns:
+     * S11: added custom graphics for the citadel.
+     * S12: clarified the alien bodies' weaknesses.
+     * Various visual improvements.
  ### Graphics
    * Tweaked the Ruffian's attack animation timing.
    * New attack animation for the Peasant.
+ ### Language and i18n
+   * Updated translations: French, German, Slovak
  ### Multiplayer server
    * Fixed lobby and whisper messages not having a maximum length.
  ### User interface
@@ -52,11 +64,14 @@
    * Allow changing dropdown menu selections with the scrollwheel (FR #3251).
    * Fixed the unit preview pane not showing the default race icon when detailing
      a single unit's stats.
+   * Sort units secondarily by XP in the unit list dialog.
+   * Limited chatbox input to 256 characters.
  ### WML engine
    * Fixed errors about WESNOTH_VERSION not being defined when trying to load
      add-ons that have preprocessor errors (issues #1924, #1634).
  ### Miscellaneous and bug fixes
    * Added an advanced preference to enable experimental PRNG combat.
+   * Linux builds now enable security hardening by default.
    * Fixed MP admins being unable to observe private games.
    * Fixed MP faction, leader, and leader gender changes persisting even if the
      selection dialog is dismissed.
