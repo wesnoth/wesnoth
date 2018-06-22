@@ -16,6 +16,7 @@
 
 #include "gui/auxiliary/iterator/exception.hpp"
 #include "gui/auxiliary/iterator/policy_visit.hpp"
+#include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/widget.hpp"
 
