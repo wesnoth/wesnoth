@@ -5,8 +5,10 @@
        first or by undead.
    * Eastern Invasion:
      * Fixed missing prisoners and loss of recallable units in 'Captured'.
-   * Under th Burning Suns:
-     * Viual improvements.
+   * Under the Burning Suns:
+     * S11: added custom graphics for the citadel.
+     * S12: clarified the alien bodies' weaknesses.
+     * Various visual improvements.
  ### Graphics
    * Tweaked the Ruffian's attack animation timing.
    * New attack animation for the Peasant.
@@ -19,6 +21,8 @@
    * Allow changing dropdown menu selections with the scrollwheel (FR #3251).
    * Fixed the unit preview pane not showing the default race icon when detailing
      a single unit's stats.
+   * Sort units secondarily by XP in the unit list dialog.
+   * Limited chatbox input to 256 characters.
  ### WML engine
    * Fixed errors about WESNOTH_VERSION not being defined when trying to load
      add-ons that have preprocessor errors (issues #1924, #1634).
