@@ -497,9 +497,10 @@ for env in [test_env, client_env, env]:
 # #
 # Add options to provide more hardened executables
 # osx doesn't seem to support RELRO
+# windows' tdm-gcc doesn't seem to provide good support for the hardening options in general
 # #
 
-        if env['harden']:
+        if env['harden'] and env["PLATFORM"] != 'win32':
             env.AppendUnique(CCFLAGS = ["-fPIE", "-fstack-protector-strong"])
             env.AppendUnique(CPPDEFINES = ["_FORTIFY_SOURCE=2"])
 
@@ -508,8 +509,6 @@ for env in [test_env, client_env, env]:
             
             if env["PLATFORM"] == 'darwin':
                 env.AppendUnique(LINKFLAGS = ["-fPIE", "-Wl,-pie"])
-            elif env["PLATFORM"] == 'win32':
-                env.AppendUnique(LINKFLAGS = ["-fPIE", "-pie"])
             else:
                 env.AppendUnique(LINKFLAGS = ["-fPIE", "-pie", "-Wl,-z,relro,-z,now"])
 
