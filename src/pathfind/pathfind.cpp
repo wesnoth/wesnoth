@@ -690,7 +690,12 @@ marked_route mark_route(const plain_route &rt, bool update_move_cost)
 
 			res.marks[*i] = marked_route::mark(turns, zoc, capture, invisible);
 
-			if (last_step) break; // finished and we used dummy move_cost
+			if(last_step) {
+				if(capture) {
+					total_costs += movement;
+				}
+				break; // finished and we used dummy move_cost
+			}
 
 			total_costs += movement;
 			movement = u.total_movement();
