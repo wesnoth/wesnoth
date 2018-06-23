@@ -14,7 +14,6 @@
 
 #include "scripting/lua_gui2.hpp"
 
-#include "gui/auxiliary/old_markup.hpp"
 #include "gui/core/canvas.hpp"
 #include "gui/core/gui_definition.hpp"
 #include "gui/core/window_builder.hpp"
@@ -291,16 +290,7 @@ int show_message_dialog(lua_State* L)
 			t_string short_opt;
 			config opt;
 			if(luaW_totstring(L, -1, short_opt)) {
-				// Note: Although this currently uses the legacy_menu_item class
-				// for the deprecated syntax, this branch should still be retained
-				// when the deprecated syntax is removed, as a simpler method
-				// of specifying options when only a single string is needed.
-				const std::string& opt_str = short_opt;
-				gui2::legacy_menu_item item(opt_str, "Use image=, label=, description=, default= instead.");
-				opt["image"] = item.icon();
-				opt["label"] = item.label();
-				opt["description"] = item.description();
-				opt["default"] = item.is_default();
+				// TODO: add some way to specify options with a single string?
 			} else if(!luaW_toconfig(L, -1, opt)) {
 				std::ostringstream error;
 				error << "expected array of config and/or translatable strings, but index ";
