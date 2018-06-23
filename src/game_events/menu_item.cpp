@@ -31,7 +31,6 @@
 #include "synced_context.hpp"
 #include "terrain/filter.hpp"
 #include "deprecation.hpp"
-#include "gui/auxiliary/old_markup.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -83,13 +82,6 @@ wml_menu_item::wml_menu_item(const std::string& id, const config& cfg)
 {
 	if(cfg.has_attribute("needs_select")) {
 		deprecated_message("needs_select", DEP_LEVEL::INDEFINITE, {1, 15, 0});
-	}
-	gui2::legacy_menu_item parsed(cfg["description"].str(), "Multiple columns in [set_menu_item] are no longer supported; the image is specified by image=.");
-	if(parsed.contained_markup()) {
-		description_ = parsed.label();
-		if(!parsed.description().empty()) {
-			description_ += " " + parsed.description();
-		}
 	}
 }
 
@@ -274,15 +266,7 @@ void wml_menu_item::update(const vconfig& vcfg)
 	}
 
 	if(vcfg.has_attribute("description")) {
-		gui2::legacy_menu_item parsed(vcfg["description"].str(), "Multiple columns in [set_menu_item] are no longer supported; the image is specified by image=.");
-		if(parsed.contained_markup()) {
-			description_ = parsed.label();
-			if(!parsed.description().empty()) {
-				description_ += " " + parsed.description();
-			}
-		} else {
-			description_ = vcfg["description"].t_str();
-		}
+		description_ = vcfg["description"].t_str();
 		hotkey_updated = true;
 	}
 
