@@ -101,7 +101,21 @@ public:
 	{
 		return &(operator*());
 	}
+
+	/** See @ref operator*. */
+	widget* get()
+	{
+		return operator->();
+	}
 };
+
+/* Helper aliases templates. */
+
+template<bool visit_self, bool visit_internal, bool visit_child>
+using top_down_iterator = iterator<policy::order::top_down<visit_self, visit_internal, visit_child>>;
+
+template<bool visit_self, bool visit_internal, bool visit_child>
+using bottom_up_iterator = iterator<policy::order::bottom_up<visit_self, visit_internal, visit_child>>;
 
 } // namespace iteration
 
