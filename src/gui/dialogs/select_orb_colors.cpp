@@ -16,7 +16,7 @@
 #include "gui/dialogs/select_orb_colors.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/auxiliary/iterator/walker.hpp"
+#include "gui/auxiliary/iterator/iterator.hpp"
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/grid.hpp"
@@ -101,20 +101,14 @@ void select_orb_colors::setup_orb_group(const std::string& base_id, bool& shown,
 	//
 	group<std::string>& group = groups_[base_id];
 
-	using iteration::walker_base;
-
+	// Grid containing each color option toggle.
 	grid& selection = find_widget<grid>(get_window(), prefix + "selection", false);
-	auto iter = selection.create_walker();
 
-	while(!iter->at_end(walker_base::child)) {
-		widget* next = iter->get(walker_base::child);
-
-		if(toggle_button* button = dynamic_cast<toggle_button*>(next)) {
+	for(iteration::bottom_up_iterator<true, false, true> iter(selection); !iter.at_end(); ++iter) {
+		if(toggle_button* button = dynamic_cast<toggle_button*>(iter.get())) {
 			const std::string& id = button->id();
 			group.add_member(button, id.substr(prefix.size()));
 		}
-
-		iter->next(walker_base::child);
 	}
 
 	group.set_member_states(initial);
