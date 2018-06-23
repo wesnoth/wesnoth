@@ -16,7 +16,6 @@
 #include "gui/dialogs/multiplayer/faction_select.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/auxiliary/old_markup.hpp"
 #include "gui/core/log.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
