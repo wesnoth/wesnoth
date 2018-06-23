@@ -47,8 +47,8 @@ public:
 	{
 		TST_GUI_I << "Constructor: ";
 		while(!visit_child::at_end(*root_)) {
-			stack_.push_back(root_);
-			root_ = visit_child::get(*root_)->create_walker();
+			stack_.push_back(std::move(root_));
+			root_ = visit_child::get(*stack_.back())->create_walker();
 			TST_GUI_I << " Down widget '" << operator*().id() << "'.";
 		}
 
@@ -127,7 +127,7 @@ public:
 				TST_GUI_I << " Finished iteration.\n";
 				return false;
 			} else {
-				root_ = stack_.back();
+				root_ = std::move(stack_.back());
 				stack_.pop_back();
 				TST_GUI_I << " Up '" << operator*().id() << "'.";
 			}
@@ -152,8 +152,8 @@ public:
 		}
 
 		while(!visit_child::at_end(*root_)) {
-			stack_.push_back(root_);
-			root_ = visit_child::get(*root_)->create_walker();
+			stack_.push_back(std::move(root_));
+			root_ = visit_child::get(*stack_.back())->create_walker();
 			TST_GUI_I << " Down widget '" << operator*().id() << "'.";
 		}
 		TST_GUI_I << " Visit '" << operator*().id() << "'.\n";
@@ -272,8 +272,8 @@ public:
 		}
 
 		if(!visit_child::at_end(*root_)) {
-			stack_.push_back(root_);
-			root_ = visit_child::get(*root_)->create_walker();
+			stack_.push_back(std::move(root_));
+			root_ = visit_child::get(*stack_.back())->create_walker();
 
 			assert(root_);
 			assert(!at_end());
@@ -310,7 +310,7 @@ private:
 	bool up()
 	{
 		while(!stack_.empty()) {
-			root_ = stack_.back();
+			root_ = std::move(stack_.back());
 			stack_.pop_back();
 			TST_GUI_I << " Up widget '" << operator*().id() << "'. Iterate:";
 			switch(visit_child::next(*root_)) {
