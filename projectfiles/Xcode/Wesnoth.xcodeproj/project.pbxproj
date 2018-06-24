@@ -143,11 +143,11 @@
 		46D7D24220736F1E004CA602 /* topic_text_generators.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D7D23420736F1D004CA602 /* topic_text_generators.cpp */; };
 		46D7D24320736F1E004CA602 /* topic_generators.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D7D23520736F1D004CA602 /* topic_generators.cpp */; };
 		46D7D24420736F1E004CA602 /* topic_generators.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D7D23520736F1D004CA602 /* topic_generators.cpp */; };
-		46EEFB762087434300E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB742087434200E1E75A /* chat_log.cpp */; };
-		46EEFB772087434300E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB742087434200E1E75A /* chat_log.cpp */; };
 		46F54C27211DFB7200374A1C /* apple_version.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46F54C26211DFB7200374A1C /* apple_version.mm */; };
 		46D7D24820769333004CA602 /* sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D7D24720769332004CA602 /* sprite.cpp */; };
 		46D7D24920769333004CA602 /* sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D7D24720769332004CA602 /* sprite.cpp */; };
+		46EEFB762087434300E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB742087434200E1E75A /* chat_log.cpp */; };
+		46EEFB772087434300E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB742087434200E1E75A /* chat_log.cpp */; };
 		46F57084205FCE34007031BF /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
 		46F57085205FCE48007031BF /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46F57086205FCE79007031BF /* hash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8AD121359A600CFBDAB /* hash.cpp */; };
@@ -570,7 +570,6 @@
 		91B622101B76C0A600B00E0F /* libgmodule-2.0.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242718EF07B4001FA499 /* libgmodule-2.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		91B622111B76C0A600B00E0F /* libgobject-2.0.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242818EF07B4001FA499 /* libgobject-2.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		91B622121B76C0A600B00E0F /* libgraphite2.3.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242918EF07B4001FA499 /* libgraphite2.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		91B622131B76C0A600B00E0F /* libgthread-2.0.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242A18EF07B4001FA499 /* libgthread-2.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		91B622141B76C0A600B00E0F /* libharfbuzz.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242B18EF07B4001FA499 /* libharfbuzz.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		91B622171B76C0A600B00E0F /* libpango-1.0.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242E18EF07B4001FA499 /* libpango-1.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		91B622181B76C0A600B00E0F /* libpangocairo-1.0.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242F18EF07B4001FA499 /* libpangocairo-1.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -1159,7 +1158,6 @@
 		EC5C244018EF07B4001FA499 /* libgmodule-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242718EF07B4001FA499 /* libgmodule-2.0.0.dylib */; };
 		EC5C244118EF07B4001FA499 /* libgobject-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242818EF07B4001FA499 /* libgobject-2.0.0.dylib */; };
 		EC5C244218EF07B4001FA499 /* libgraphite2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242918EF07B4001FA499 /* libgraphite2.3.dylib */; };
-		EC5C244318EF07B4001FA499 /* libgthread-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242A18EF07B4001FA499 /* libgthread-2.0.0.dylib */; };
 		EC5C244418EF07B4001FA499 /* libharfbuzz.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242B18EF07B4001FA499 /* libharfbuzz.0.dylib */; };
 		EC5C244518EF07B4001FA499 /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242C18EF07B4001FA499 /* libiconv.2.dylib */; };
 		EC5C244718EF07B4001FA499 /* libpango-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242E18EF07B4001FA499 /* libpango-1.0.0.dylib */; };
@@ -1392,7 +1390,6 @@
 				91B622101B76C0A600B00E0F /* libgmodule-2.0.0.dylib in Copy Frameworks */,
 				91B622111B76C0A600B00E0F /* libgobject-2.0.0.dylib in Copy Frameworks */,
 				91B622121B76C0A600B00E0F /* libgraphite2.3.dylib in Copy Frameworks */,
-				91B622131B76C0A600B00E0F /* libgthread-2.0.0.dylib in Copy Frameworks */,
 				91B622141B76C0A600B00E0F /* libharfbuzz.0.dylib in Copy Frameworks */,
 				915C68F51DF1F90F00594B07 /* libintl.8.dylib in Copy Frameworks */,
 				91B622171B76C0A600B00E0F /* libpango-1.0.0.dylib in Copy Frameworks */,
@@ -2503,7 +2500,6 @@
 		EC5C242718EF07B4001FA499 /* libgmodule-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libgmodule-2.0.0.dylib"; path = "lib/libgmodule-2.0.0.dylib"; sourceTree = "<group>"; };
 		EC5C242818EF07B4001FA499 /* libgobject-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libgobject-2.0.0.dylib"; path = "lib/libgobject-2.0.0.dylib"; sourceTree = "<group>"; };
 		EC5C242918EF07B4001FA499 /* libgraphite2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libgraphite2.3.dylib; path = lib/libgraphite2.3.dylib; sourceTree = "<group>"; };
-		EC5C242A18EF07B4001FA499 /* libgthread-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libgthread-2.0.0.dylib"; path = "lib/libgthread-2.0.0.dylib"; sourceTree = "<group>"; };
 		EC5C242B18EF07B4001FA499 /* libharfbuzz.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libharfbuzz.0.dylib; path = lib/libharfbuzz.0.dylib; sourceTree = "<group>"; };
 		EC5C242C18EF07B4001FA499 /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = /usr/lib/libiconv.2.dylib; sourceTree = "<absolute>"; };
 		EC5C242E18EF07B4001FA499 /* libpango-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libpango-1.0.0.dylib"; path = "lib/libpango-1.0.0.dylib"; sourceTree = "<group>"; };
@@ -2771,7 +2767,6 @@
 				EC5C244018EF07B4001FA499 /* libgmodule-2.0.0.dylib in Frameworks */,
 				EC5C244118EF07B4001FA499 /* libgobject-2.0.0.dylib in Frameworks */,
 				EC5C244218EF07B4001FA499 /* libgraphite2.3.dylib in Frameworks */,
-				EC5C244318EF07B4001FA499 /* libgthread-2.0.0.dylib in Frameworks */,
 				EC5C244418EF07B4001FA499 /* libharfbuzz.0.dylib in Frameworks */,
 				EC5C244518EF07B4001FA499 /* libiconv.2.dylib in Frameworks */,
 				EC5C244718EF07B4001FA499 /* libpango-1.0.0.dylib in Frameworks */,
@@ -3230,7 +3225,6 @@
 				EC5C242718EF07B4001FA499 /* libgmodule-2.0.0.dylib */,
 				EC5C242818EF07B4001FA499 /* libgobject-2.0.0.dylib */,
 				EC5C242918EF07B4001FA499 /* libgraphite2.3.dylib */,
-				EC5C242A18EF07B4001FA499 /* libgthread-2.0.0.dylib */,
 				EC5C242B18EF07B4001FA499 /* libharfbuzz.0.dylib */,
 				EC5C242C18EF07B4001FA499 /* libiconv.2.dylib */,
 				915C68F31DF1F78600594B07 /* libintl.8.dylib */,
