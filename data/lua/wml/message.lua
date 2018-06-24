@@ -417,6 +417,7 @@ function wesnoth.wml_actions.message(cfg)
 		wesnoth.deselect_hex()
 		-- The speaker is expected to be either nil or a unit later
 		speaker = nil
+		wesnoth.fire("redraw")
 	else
 		-- Check ~= false, because the default if omitted should be true
 		if cfg.scroll ~= false then
