@@ -1,4 +1,7 @@
 ## Version 1.14.3+dev
+ ### Add-ons server
+   * Made it so plain-text .po catalogues in add-ons are detected and added to
+     the list of translations for them.
  ### Campaigns
    * Dead Water:
      * In 'Tirigaz', take the situation into account of orcs being killed either
