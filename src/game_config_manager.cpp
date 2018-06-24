@@ -18,6 +18,7 @@
 #include "ai/configuration.hpp"
 #include "cursor.hpp"
 #include "events.hpp"
+#include "formatter.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "game_classification.hpp"
@@ -338,137 +339,134 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 	paths_manager_.set_paths(game_config());
 }
 
-struct addon_source
-{
-	std::string main_cfg;
-	std::string addon_id;
-	std::string addon_title;
-	version_info version;
-};
-
 void game_config_manager::load_addons_cfg()
 {
 	const std::string user_campaign_dir = filesystem::get_addons_dir();
 
+	std::vector<std::string> error_log;
 	std::vector<std::string> error_addons;
 	std::vector<std::string> user_dirs;
 	std::vector<std::string> user_files;
-	std::vector<addon_source> addons_to_load;
 
 	filesystem::get_files_in_dir(user_campaign_dir, &user_files, &user_dirs,
 		filesystem::ENTIRE_FILE_PATH);
 
-	std::vector<std::string> error_log;
-
-	// Append the $user_campaign_dir/*.cfg files to addons_to_load.
-	for(const std::string& uc : user_files) {
-		const std::string file = uc;
+	// Warn player about addons using the no-longer-supported single-file format.
+	for(const std::string& file : user_files) {
 		const int size_minus_extension = file.size() - 4;
+
 		if(file.substr(size_minus_extension, file.size()) == ".cfg") {
-				const int userdata_loc = file.find("data/add-ons") + 5;
-				ERR_CONFIG << "error reading usermade add-on '"
-					<< file << "'\n";
-				error_addons.push_back(file);
-				error_log.push_back("The format '~" + file.substr(userdata_loc)
-					+ "' (for single-file add-ons) is not supported anymore, use '~"
-					+ file.substr(userdata_loc,
-						size_minus_extension - userdata_loc)
-					+ "/_main.cfg' instead.");
+			ERR_CONFIG << "error reading usermade add-on '" << file << "'\n";
+
+			error_addons.push_back(file);
+
+			const int userdata_loc = file.find("data/add-ons") + 5;
+			const std::string log_msg = formatter()
+				<< "The format '~"
+				<< file.substr(userdata_loc)
+				<< "' (for single-file add-ons) is not supported anymore, use '~"
+				<< file.substr(userdata_loc, size_minus_extension - userdata_loc)
+				<< "/_main.cfg' instead.";
+
+			error_log.push_back(log_msg);
 		}
 	}
 
 	// Rerun the directory scan using filename only, to get the addon_ids more easily.
 	user_files.clear();
 	user_dirs.clear();
-	filesystem::get_files_in_dir(user_campaign_dir, &user_files, &user_dirs,
+
+	filesystem::get_files_in_dir(user_campaign_dir, nullptr, &user_dirs,
 		filesystem::FILE_NAME_ONLY);
 
-	// Append the $user_campaign_dir/*/_main.cfg files to addons_to_load.
-	for (const std::string& uc : user_dirs) {
-		const std::string addon_id = uc;
-		const std::string addon_dir = user_campaign_dir + "/" + uc;
+	// Load the addons.
+	for(const std::string& addon_id : user_dirs) {
+		const std::string addon_dir = user_campaign_dir + "/" + addon_id;
 
 		const std::string main_cfg = addon_dir + "/_main.cfg";
 		const std::string info_cfg = addon_dir + "/_info.cfg";
 
-		addon_source addon;
-		addon.main_cfg = main_cfg;
-		addon.addon_id = addon_id;
-
-		if(filesystem::file_exists(main_cfg)) {
-			if(filesystem::file_exists(info_cfg)) {
-				config info;
-				cache_.get_config(info_cfg, info);
-
-				const config& info_tag = info.child_or_empty("info");
-
-				std::string core = info_tag["core"];
-				if(core.empty()) {
-					core = "default";
-				}
-
-				addon.addon_title = info_tag["title"].str();
-
-				// Skip add-ons not matching our current core.
-				//
-				// Don't skip:
-				// - addons which have no [info], they are most likely manually installed.
-				// - cores, we want them selectable at all times.
-				// - addons matching our current core.
-				if(!info_tag.empty() && info_tag["type"] != "core" && core != preferences::core_id()) {
-					continue;
-				}
-			}
-
-			// Fall back to ID if no title was found (most likely in the case of missing _info.cfg).
-			// TODO: account for case where _info.cfg is missing but a .pbl file is present.
-			if(addon.addon_title.empty()) {
-				addon.addon_title = addon_id;
-			}
-
-			// Ask the addon manager to find version info for us (from info, pbl file)
-			addon.version = get_addon_version_info(addon_id);
-			addons_to_load.push_back(addon);
+		if(!filesystem::file_exists(main_cfg)) {
+			continue;
 		}
-	}
 
-	// Load the addons.
-	for (const addon_source & addon : addons_to_load) {
+		// Try to find this addon's metadata. Author publishing info (_server.pbl) is given
+		// precedence over addon sever-generated info (_info.cfg). If neither are found, it
+		// probably means the addon was installed manually and certain defaults will be used.
+		config metadata;
+
+		if(have_addon_pbl_info(addon_id)) {
+			// Publishing info needs to be read from disk.
+			metadata = get_addon_pbl_info(addon_id);
+		} else if(filesystem::file_exists(info_cfg)) {
+			// Addon server-generated info can be fetched from cache.
+			config temp;
+			cache_.get_config(info_cfg, temp);
+
+			metadata = temp.child_or_empty("info");
+		}
+
+		std::string using_core = metadata["core"];
+		if(using_core.empty()) {
+			using_core = "default";
+		}
+
+		// Skip add-ons not matching our current core. Cores themselves should be selectable
+		// at all times, so they aren't considered here.
+		if(!metadata.empty() && metadata["type"] != "core" && using_core != preferences::core_id()) {
+			continue;
+		}
+
+		std::string addon_title = metadata["title"].str();
+		if(addon_title.empty()) {
+			addon_title = addon_id;
+		}
+
+		version_info addon_version(metadata["version"]);
+
 		try {
-			// Load this addon from the cache, to a config
+			// Load this addon from the cache to a config.
 			config umc_cfg;
-			cache_.get_config(addon.main_cfg, umc_cfg);
+			cache_.get_config(main_cfg, umc_cfg);
 
-			// Annotate "era", "modification", and scenario tags with addon_id info
-			static const std::set<std::string> tags_with_addon_id { "era", "modification", "resource", "multiplayer", "scenario", "campaign" };
+			static const std::set<std::string> tags_with_addon_id {
+				"era",
+				"modification",
+				"resource",
+				"multiplayer",
+				"scenario",
+				"campaign"
+			};
 
+			// Annotate appropriate addon types with addon_id info.
 			for(auto child : umc_cfg.all_children_range()) {
 				if(tags_with_addon_id.count(child.key) > 0) {
 					auto& cfg = child.cfg;
-					cfg["addon_id"] = addon.addon_id;
-					cfg["addon_title"] = addon.addon_title;
+					cfg["addon_id"] = addon_id;
+					cfg["addon_title"] = addon_title;
 					// Note that this may reformat the string in a canonical form.
-					cfg["addon_version"] = addon.version.str();
+					cfg["addon_version"] = addon_version.str();
 				}
 			}
 
-			game_config_.append(umc_cfg);
+			game_config_.append(std::move(umc_cfg));
 		} catch(const config::error& err) {
-			ERR_CONFIG << "error reading usermade add-on '" << addon.main_cfg << "'" << std::endl;
+			ERR_CONFIG << "error reading usermade add-on '" << main_cfg << "'" << std::endl;
 			ERR_CONFIG << err.message << '\n';
-			error_addons.push_back(addon.main_cfg);
+			error_addons.push_back(main_cfg);
 			error_log.push_back(err.message);
 		} catch(const preproc_config::error& err) {
-			ERR_CONFIG << "error reading usermade add-on '" << addon.main_cfg << "'" << std::endl;
+			ERR_CONFIG << "error reading usermade add-on '" << main_cfg << "'" << std::endl;
 			ERR_CONFIG << err.message << '\n';
-			error_addons.push_back(addon.main_cfg);
+			error_addons.push_back(main_cfg);
 			error_log.push_back(err.message);
 		} catch(const filesystem::io_exception&) {
-			ERR_CONFIG << "error reading usermade add-on '" << addon.main_cfg << "'" << std::endl;
-			error_addons.push_back(addon.main_cfg);
+			ERR_CONFIG << "error reading usermade add-on '" << main_cfg << "'" << std::endl;
+			error_addons.push_back(main_cfg);
 		}
 	}
-	if(error_addons.empty() == false) {
+
+	if(!error_addons.empty()) {
 		const size_t n = error_addons.size();
 		const std::string& msg1 =
 			_n("The following add-on had errors and could not be loaded:",
