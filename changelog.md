@@ -75,6 +75,8 @@
    * Fixed MP admins being unable to observe private games.
    * Fixed MP faction, leader, and leader gender changes persisting even if the
      selection dialog is dismissed.
+   * Fixed an issue with positioned sound sources ignoring the volume set in
+     Preferences after going off the audible radius and back (issue #3280).
 
 ## Version 1.14.3
  ### AI
