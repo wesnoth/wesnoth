@@ -94,6 +94,13 @@ std::string format_addon_feedback_url(const std::string& format, const config& p
 
 void find_translations(const config& base_dir, config& addon)
 {
+	for(const config& file : base_dir.child_range("file")) {
+		const std::string& fn = file["name"].str();
+		if(filesystem::ends_with(fn, ".po")) {
+			addon.add_child("translation")["language"] = filesystem::base_name(fn, true);
+		}
+	}
+
 	for(const config &dir : base_dir.child_range("dir"))
 	{
 		if(dir["name"] == "LC_MESSAGES") {
