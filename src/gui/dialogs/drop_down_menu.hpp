@@ -37,6 +37,7 @@ public:
 		, selected_item_(selected_item)
 		, use_markup_(use_markup)
 		, keep_open_(keep_open)
+		, mouse_down_happened_(false)
 		, callback_toggle_state_change_(callback_toggle_state_change)
 	{
 		set_restore(true);
@@ -72,6 +73,12 @@ private:
 	bool keep_open_;
 
 	/**
+	 * When menu is invoked on a long-touch timer, a following mouse-up event will close it.
+	 * This flag prevents that: the menu will only be closed on a mouse-up that follows a mouse-down.
+	 * */
+	bool mouse_down_happened_;
+
+	/**
 	 * If toggle buttons are used, this callback is called whenever the state of any toggle
 	 * button changes.
 	 */
@@ -85,6 +92,10 @@ private:
 
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
+
+	void mouse_up_callback(window& window, bool&, bool&, const point& coordinate);
+
+	void mouse_down_callback();
 };
 
 } // namespace dialogs

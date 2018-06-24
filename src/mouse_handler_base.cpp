@@ -66,6 +66,11 @@ mouse_handler_base::mouse_handler_base()
 {
 }
 
+bool mouse_handler_base::dragging_started() const
+{
+	return dragging_started_;
+}
+
 bool mouse_handler_base::is_dragging() const
 {
 	return dragging_left_ || dragging_right_ || dragging_touch_;
