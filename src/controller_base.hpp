@@ -178,6 +178,8 @@ protected:
 	virtual void execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
 
 	virtual bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
+	
+	void long_touch_callback(int x, int y);
 
 	const config& game_config_;
 
@@ -213,4 +215,8 @@ private:
 	};
 
 	keyup_listener key_release_listener_;
+
+	bool last_mouse_is_touch_;
+	/** Context menu timer */
+	size_t long_touch_timer_;
 };
