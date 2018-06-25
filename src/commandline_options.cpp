@@ -28,6 +28,8 @@
 #include <boost/program_options/positional_options.hpp>
 #include <boost/program_options/value_semantic.hpp>  // for value, etc
 #include <boost/program_options/variables_map.hpp>  // for variables_map, etc
+
+#include <array>
 #include <iostream>                     // for operator<<, basic_ostream, etc
 
 namespace po = boost::program_options;
@@ -502,7 +504,7 @@ void commandline_options::parse_log_domains_(const std::string &domains_string, 
 }
 
 void commandline_options::parse_log_strictness (const std::string & severity ) {
-	static lg::logger const *loggers[] { &lg::err(), &lg::warn(), &lg::info(), &lg::debug() };
+	static const std::array<lg::logger const*, 4> loggers {{&lg::err(), &lg::warn(), &lg::info(), &lg::debug()}};
 	for (const lg::logger * l : loggers ) {
 		if (severity == l->get_name()) {
 			lg::set_strict_severity(*l);

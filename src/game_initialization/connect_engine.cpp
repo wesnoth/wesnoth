@@ -26,6 +26,7 @@
 #include "team.hpp"
 #include "wesnothd_connection.hpp"
 
+#include <array>
 #include <cstdlib>
 #include <ctime>
 
@@ -42,15 +43,15 @@ static lg::log_domain log_mp_connect_engine("mp/connect/engine");
 static lg::log_domain log_network("network");
 #define LOG_NW LOG_STREAM(info, log_network)
 
-static const std::string controller_names[] {
+static const std::array<std::string, 5> controller_names {{
 	"human",
 	"human",
 	"ai",
 	"null",
 	"reserved"
-};
+}};
 
-static const std::string attributes_to_trim[] {
+static const std::array<std::string, 15> attributes_to_trim {{
 	"side",
 	"type",
 	"gender",
@@ -66,7 +67,7 @@ static const std::string attributes_to_trim[] {
 	"income",
 	"allow_changes",
 	"faction"
-};
+}};
 
 namespace ng {
 

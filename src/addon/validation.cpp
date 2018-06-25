@@ -18,17 +18,18 @@
 #include "serialization/unicode_cast.hpp"
 
 #include <algorithm>
+#include <array>
 #include <boost/algorithm/string.hpp>
 #include <set>
 
 const unsigned short default_campaignd_port = 15014;
 
 namespace {
-	const std::string addon_type_strings[] {
+	const std::array<std::string, ADDON_TYPES_COUNT> addon_type_strings {{
 		"unknown", "core", "campaign", "scenario", "campaign_sp_mp", "campaign_mp",
 		"scenario_mp", "map_pack", "era", "faction", "mod_mp", /*"gui", */ "media",
-		"other", ""
-	};
+		"other"
+	}};
 
 	// Reserved DOS device names on Windows XP and later.
 	const std::set<std::string> dos_device_names = {

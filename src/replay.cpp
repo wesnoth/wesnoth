@@ -39,6 +39,7 @@
 #include "whiteboard/manager.hpp"
 #include "replay_recorder_base.hpp"
 
+#include <array>
 #include <set>
 #include <map>
 
@@ -104,12 +105,12 @@ static void verify(const unit_map& units, const config& cfg) {
 		u->write(u_cfg);
 
 		bool is_ok = true;
-		static const std::string fields[] {"type","hitpoints","experience","side",""};
-		for(const std::string* str = fields; str->empty() == false; ++str) {
-			if (u_cfg[*str] != un[*str]) {
-				errbuf << "ERROR IN FIELD '" << *str << "' for unit at "
-					   << loc << " data source: '" << un[*str]
-					   << "' local: '" << u_cfg[*str] << "'\n";
+		static const std::array<std::string, 4> fields {{"type","hitpoints","experience","side"}};
+		for(const std::string& field : fields) {
+			if (u_cfg[field] != un[field]) {
+				errbuf << "ERROR IN FIELD '" << field << "' for unit at "
+					   << loc << " data source: '" << un[field]
+					   << "' local: '" << u_cfg[field] << "'\n";
 				is_ok = false;
 			}
 		}

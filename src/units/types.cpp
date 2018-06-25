@@ -34,6 +34,7 @@
 
 #include <boost/regex.hpp>
 
+#include <array>
 #include <locale>
 
 static lg::log_domain log_config("config");
@@ -805,7 +806,7 @@ const config& unit_type::build_unit_cfg() const
 
 	// Remove "pure" unit_type attributes (attributes that do not get directly
 	// copied to units; some do get copied, but under different keys).
-	static char const* unit_type_attrs[] {
+	static std::array<std::string, 25> unit_type_attrs {{
 		"attacks",
 		"base_ids",
 		"die_sound",
@@ -816,7 +817,8 @@ const config& unit_type::build_unit_cfg() const
 		"hitpoints",
 		"id",
 		"ignore_race_traits",
-		"inherit", "movement",
+		"inherit",
+		"movement",
 		"movement_type",
 		"name",
 		"num_traits",
@@ -830,9 +832,9 @@ const config& unit_type::build_unit_cfg() const
 		"alignment",
 		"advances_to",
 		"do_not_list"
-	};
+	}};
 
-	for(const char* attr : unit_type_attrs) {
+	for(const std::string& attr : unit_type_attrs) {
 		unit_cfg_.remove_attribute(attr);
 	}
 
@@ -1162,7 +1164,7 @@ void unit_type_data::set_config(config& cfg)
 		const std::string& ter_type = terrain["id"];
 		config temp_cfg;
 
-		static const std::string terrain_info_tags[] {"movement", "vision", "jamming", "defense"};
+		static const std::array<std::string, 4> terrain_info_tags {{"movement", "vision", "jamming", "defense"}};
 
 		for(const std::string& tag : terrain_info_tags) {
 			if(!terrain.has_child(tag)) {

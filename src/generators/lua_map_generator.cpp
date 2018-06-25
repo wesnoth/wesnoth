@@ -18,6 +18,7 @@
 #include "game_errors.hpp"
 #include "scripting/mapgen_lua_kernel.hpp"
 
+#include <array>
 #include <string>
 
 lua_map_generator::lua_map_generator(const config & cfg)
@@ -30,8 +31,8 @@ lua_map_generator::lua_map_generator(const config & cfg)
 	, generator_data_(cfg)
 {
 	lk_.load_core();
-	const char* required[] {"id", "config_name", "create_map"};
-	for (std::string req : required) {
+	const std::array<std::string, 3> required {{"id", "config_name", "create_map"}};
+	for(const std::string& req : required) {
 		if (!cfg.has_attribute(req)) {
 			if(req == "create_map" && cfg.has_attribute("create_scenario")) {
 				// One of these is required, but not both
