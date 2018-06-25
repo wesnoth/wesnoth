@@ -561,10 +561,11 @@ attack_type::specials_context_t::specials_context_t(
 	weapon.is_for_listing_ = false;
 }
 
-attack_type::specials_context_t::specials_context_t(const attack_type& weapon)
+attack_type::specials_context_t::specials_context_t(const attack_type& weapon, bool attacking)
 	: parent(weapon.shared_from_this())
 {
 	weapon.is_for_listing_ = true;
+	weapon.is_attacker_ = attacking;
 }
 
 attack_type::specials_context_t::~specials_context_t()
