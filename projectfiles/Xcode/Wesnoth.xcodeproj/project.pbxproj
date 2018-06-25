@@ -38,7 +38,6 @@
 		4649B898202890F600827CFB /* install_dependencies.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA556341E7B5ED8006E907D /* install_dependencies.cpp */; };
 		4649B899202890F600827CFB /* manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B514C7090F5450CC00E273F0 /* manager.cpp */; };
 		4649B89A202890F600827CFB /* uninstall_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FBD769145D93370083CA67 /* uninstall_list.cpp */; };
-		4649B89B202890F600827CFB /* advanced_graphics_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F601D1A0490970018C9D6 /* advanced_graphics_options.cpp */; };
 		4649B89C202890F600827CFB /* attack_predictions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC50126E1E06151800C4DFC6 /* attack_predictions.cpp */; };
 		4649B89D202890F600827CFB /* campaign_difficulty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5CE46FF12A041EF00D665EE /* campaign_difficulty.cpp */; };
 		4649B89E202890F600827CFB /* campaign_selection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5F4D7170F5B3B25005E204A /* campaign_selection.cpp */; };
@@ -1103,7 +1102,6 @@
 		EC2F601A1A048E220018C9D6 /* multiplayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F600A1A048E210018C9D6 /* multiplayer.cpp */; };
 		EC2F601B1A048E220018C9D6 /* playcampaign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F600B1A048E210018C9D6 /* playcampaign.cpp */; };
 		EC2F601C1A048E220018C9D6 /* singleplayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F600C1A048E220018C9D6 /* singleplayer.cpp */; };
-		EC2F601E1A0490970018C9D6 /* advanced_graphics_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F601D1A0490970018C9D6 /* advanced_graphics_options.cpp */; };
 		EC2F60201A0490FC0018C9D6 /* xbrz.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F601F1A0490FC0018C9D6 /* xbrz.cpp */; };
 		EC2F9A041A18112D00A14878 /* lua_interpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F9A031A18112D00A14878 /* lua_interpreter.cpp */; };
 		EC3024DC1E8469050098D797 /* help_browser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3024DA1E8469050098D797 /* help_browser.cpp */; };
@@ -1757,7 +1755,6 @@
 		91B621D21B76B4DE00B00E0F /* lua_map_generator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = lua_map_generator.hpp; sourceTree = "<group>"; };
 		91B621D31B76B4DE00B00E0F /* map_generator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = map_generator.hpp; sourceTree = "<group>"; };
 		91B621D41B76B51600B00E0F /* find_widget.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = find_widget.hpp; sourceTree = "<group>"; };
-		91B621D61B76B5BC00B00E0F /* advanced_graphics_options.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = advanced_graphics_options.hpp; sourceTree = "<group>"; };
 		91B621D81B76B6DB00B00E0F /* debug_clock.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = debug_clock.hpp; sourceTree = "<group>"; };
 		91B621D91B76B6E000B00E0F /* depcheck_confirm_change.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = depcheck_confirm_change.hpp; sourceTree = "<group>"; };
 		91B621DA1B76B6E600B00E0F /* depcheck_select_new.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = depcheck_select_new.hpp; sourceTree = "<group>"; };
@@ -2419,7 +2416,6 @@
 		EC2F600A1A048E210018C9D6 /* multiplayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = multiplayer.cpp; sourceTree = "<group>"; };
 		EC2F600B1A048E210018C9D6 /* playcampaign.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = playcampaign.cpp; sourceTree = "<group>"; };
 		EC2F600C1A048E220018C9D6 /* singleplayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = singleplayer.cpp; sourceTree = "<group>"; };
-		EC2F601D1A0490970018C9D6 /* advanced_graphics_options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = advanced_graphics_options.cpp; sourceTree = "<group>"; };
 		EC2F601F1A0490FC0018C9D6 /* xbrz.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = xbrz.cpp; sourceTree = "<group>"; };
 		EC2F9A031A18112D00A14878 /* lua_interpreter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_interpreter.cpp; sourceTree = "<group>"; };
 		EC3024DA1E8469050098D797 /* help_browser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = help_browser.cpp; sourceTree = "<group>"; };
@@ -4326,8 +4322,6 @@
 			isa = PBXGroup;
 			children = (
 				49DA0CFB13550AC5000AFEBD /* addon */,
-				EC2F601D1A0490970018C9D6 /* advanced_graphics_options.cpp */,
-				91B621D61B76B5BC00B00E0F /* advanced_graphics_options.hpp */,
 				EC50126E1E06151800C4DFC6 /* attack_predictions.cpp */,
 				EC50126F1E06151800C4DFC6 /* attack_predictions.hpp */,
 				B5CE46FF12A041EF00D665EE /* campaign_difficulty.cpp */,
@@ -4889,7 +4883,6 @@
 				B5A9BD320ECA805A002BE442 /* connect.cpp in Sources */,
 				B514C70B0F5450CC00E273F0 /* manager.cpp in Sources */,
 				ECA556301E7B5E74006E907D /* linked_group_definition.cpp in Sources */,
-				EC2F601E1A0490970018C9D6 /* advanced_graphics_options.cpp in Sources */,
 				ECE0293D1E9A77E100DC0A62 /* outro.cpp in Sources */,
 				B54AC6D80FEA9EB5006F6FBD /* ai.cpp in Sources */,
 				B54AC6E40FEA9EB5006F6FBD /* ai.cpp in Sources */,
@@ -5966,7 +5959,6 @@
 				9164077B1D3C37470057C4DE /* lua_formula_bridge.cpp in Sources */,
 				9164077C1D3C37B40057C4DE /* wesnothd_connection.cpp in Sources */,
 				4649B8D32028916600827CFB /* slider_base.cpp in Sources */,
-				4649B89B202890F600827CFB /* advanced_graphics_options.cpp in Sources */,
 				9164077D1D3C37D30057C4DE /* location_palette.cpp in Sources */,
 				9164077E1D3C37F60057C4DE /* chat_events.cpp in Sources */,
 				9164077F1D3C381B0057C4DE /* chat_command_handler.cpp in Sources */,
