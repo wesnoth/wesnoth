@@ -872,6 +872,7 @@ class fake_chat_handler : public events::chat_handler {
 template<>
 struct dialog_tester<lobby_player_info>
 {
+	config c;
 	fake_chat_handler ch;
 	wesnothd_connection_ptr connection;
 	wesnothd_connection_init init;
