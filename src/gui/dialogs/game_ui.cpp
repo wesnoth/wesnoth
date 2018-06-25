@@ -25,7 +25,6 @@
 
 #include "display.hpp"
 #include "formula/variant.hpp"
-#include "game_config_manager.hpp"
 #include "gettext.hpp"
 
 namespace gui2

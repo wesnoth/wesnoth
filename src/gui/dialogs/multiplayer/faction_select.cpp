@@ -30,7 +30,6 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 #include "formatter.hpp"
-#include "game_config_manager.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
 #include "preferences/game.hpp"	// for encountered_units
