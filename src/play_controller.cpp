@@ -129,8 +129,8 @@ static void clear_resources()
 }
 
 play_controller::play_controller(const config& level, saved_game& state_of_game,
-		const config& game_config, const ter_data_cache& tdata, bool skip_replay)
-	: controller_base(game_config)
+		const ter_data_cache& tdata, bool skip_replay)
+	: controller_base()
 	, observer()
 	, quit_confirmation()
 	, ticks_(SDL_GetTicks())
@@ -142,9 +142,9 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, whiteboard_manager_()
 	, plugins_context_()
 	, labels_manager_()
-	, help_manager_(&game_config)
+	, help_manager_(&game_config_)
 	, mouse_handler_(nullptr, *this)
-	, menu_handler_(nullptr, *this, game_config)
+	, menu_handler_(nullptr, *this)
 	, hotkey_handler_(new hotkey_handler(*this, saved_game_))
 	, soundsources_manager_()
 	, persist_()

@@ -22,6 +22,7 @@
 #include "font/pango/escape.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
+#include "game_config_manager.hpp"
 #include "gettext.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
@@ -194,7 +195,7 @@ std::string make_game_type_marker(std::string text, bool color_for_missing)
 
 } // end anon namespace
 
-game_info::game_info(const config& game, const config& game_config, const std::vector<std::string>& installed_addons)
+game_info::game_info(const config& game, const std::vector<std::string>& installed_addons)
 	: id(game["id"])
 	, map_data(game["map_data"])
 	, name(font::escape_text(game["name"]))
@@ -230,6 +231,8 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 	, required_addons()
 	, addons_outcome(SATISFIED)
 {
+	const config& game_config = game_config_manager::get()->game_config();
+
 	// Parse the list of addons required to join this game.
 	for(const config& addon : game.child_range("addon")) {
 		if(addon.has_attribute("id")) {

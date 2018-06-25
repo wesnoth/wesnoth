@@ -76,7 +76,6 @@ class play_controller : public controller_base, public events::observer, public 
 {
 public:
 	play_controller(const config& level, saved_game& state_of_game,
-		const config& game_config,
 		const ter_data_cache& tdata, bool skip_replay);
 	virtual ~play_controller();
 

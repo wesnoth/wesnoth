@@ -18,6 +18,7 @@
 #include "display.hpp"
 #include "events.hpp"
 #include "preferences/game.hpp"
+#include "game_config_manager.hpp"
 #include "hotkey/command_executor.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -33,8 +34,8 @@ static lg::log_domain log_display("display");
 
 static const int long_touch_duration_ms = 800;
 
-controller_base::controller_base(const config& game_config)
-	: game_config_(game_config)
+controller_base::controller_base()
+	: game_config_(game_config_manager::get()->game_config())
 	, key_()
 	, scrolling_(false)
 	, scroll_up_(false)
