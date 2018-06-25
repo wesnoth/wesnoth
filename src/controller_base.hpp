@@ -63,7 +63,7 @@ class manager;
 class controller_base : public video2::draw_layering, public events::pump_monitor
 {
 public:
-	controller_base(const config& game_config);
+	controller_base();
 	virtual ~controller_base();
 
 	virtual void play_slice(bool is_delay_enabled = true);

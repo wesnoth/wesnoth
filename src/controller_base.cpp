@@ -17,6 +17,7 @@
 
 #include "display.hpp"
 #include "events.hpp"
+#include "game_config_manager.hpp"
 #include "hotkey/command_executor.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "log.hpp"
@@ -30,8 +31,8 @@
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
-controller_base::controller_base(const config& game_config)
-	: game_config_(game_config)
+controller_base::controller_base()
+	: game_config_(game_config_manager::get()->game_config())
 	, key_()
 	, scrolling_(false)
 	, scroll_up_(false)

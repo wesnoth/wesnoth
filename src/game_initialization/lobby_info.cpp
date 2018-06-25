@@ -35,9 +35,8 @@ static lg::log_domain log_lobby("lobby");
 
 namespace mp
 {
-lobby_info::lobby_info(const config& game_config, const std::vector<std::string>& installed_addons)
-	: game_config_(game_config)
-	, installed_addons_(installed_addons)
+lobby_info::lobby_info(const std::vector<std::string>& installed_addons)
+	: installed_addons_(installed_addons)
 	, gamelist_()
 	, gamelist_initialized_(false)
 	, rooms_()
@@ -116,7 +115,7 @@ void lobby_info::process_gamelist(const config& data)
 	games_by_id_.clear();
 
 	for(const auto& c : gamelist_.child("gamelist").child_range("game")) {
-		game_info game(c, game_config_, installed_addons_);
+		game_info game(c, installed_addons_);
 		games_by_id_.emplace(game.id, std::move(game));
 	}
 
@@ -160,12 +159,12 @@ bool lobby_info::process_gamelist_diff(const config& data)
 
 		if(diff_result == "new" || diff_result == "modified") {
 			if(current_i == games_by_id_.end()) {
-				games_by_id_.emplace(game_id, game_info(c, game_config_, installed_addons_));
+				games_by_id_.emplace(game_id, game_info(c, installed_addons_));
 				continue;
 			}
 
 			// Had a game with that id, so update it and mark it as such
-			current_i->second = game_info(c, game_config_, installed_addons_);
+			current_i->second = game_info(c, installed_addons_);
 			current_i->second.display_status = game_info::UPDATED;
 		} else if(diff_result == "deleted") {
 			if(current_i == games_by_id_.end()) {

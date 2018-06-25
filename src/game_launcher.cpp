@@ -489,7 +489,7 @@ bool game_launcher::play_test()
 		load_game_config_for_game(state_.classification());
 
 	try {
-		campaign_controller ccontroller(state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
+		campaign_controller ccontroller(state_, game_config_manager::get()->terrain_types());
 		ccontroller.play_game();
 	} catch(const savegame::load_game_exception &e) {
 		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
@@ -523,7 +523,7 @@ int game_launcher::unit_test()
 		load_game_config_for_game(state_.classification());
 
 	try {
-		campaign_controller ccontroller(state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), true);
+		campaign_controller ccontroller(state_, game_config_manager::get()->terrain_types(), true);
 		LEVEL_RESULT res = ccontroller.play_game();
 		if (!(res == LEVEL_RESULT::VICTORY) || lg::broke_strict()) {
 			return 1;
@@ -549,7 +549,7 @@ int game_launcher::unit_test()
 	}
 
 	try {
-		campaign_controller ccontroller(state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), true);
+		campaign_controller ccontroller(state_, game_config_manager::get()->terrain_types(), true);
 		LEVEL_RESULT res = ccontroller.play_replay();
 		if (!(res == LEVEL_RESULT::VICTORY) || lg::broke_strict()) {
 			std::cerr << "Observed failure on replay" << std::endl;
@@ -573,8 +573,7 @@ bool game_launcher::play_screenshot_mode()
 
 	::init_textdomains(game_config_manager::get()->game_config());
 
-	editor::start(game_config_manager::get()->game_config(),
-	    screenshot_map_, true, screenshot_filename_);
+	editor::start(screenshot_map_, true, screenshot_filename_);
 	return false;
 }
 
@@ -979,7 +978,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 	});
 
 	try {
-		campaign_controller ccontroller(state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
+		campaign_controller ccontroller(state_, game_config_manager::get()->terrain_types());
 		LEVEL_RESULT result = ccontroller.play_game();
 		ai::manager::singleton_ = nullptr;
 		// don't show The End for multiplayer scenario
@@ -1007,7 +1006,7 @@ void game_launcher::play_replay()
 {
 	assert(!load_data_);
 	try {
-		campaign_controller ccontroller(state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
+		campaign_controller ccontroller(state_, game_config_manager::get()->terrain_types());
 		ccontroller.play_replay();
 	} catch (const savegame::load_game_exception &e) {
 		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
@@ -1024,8 +1023,7 @@ editor::EXIT_STATUS game_launcher::start_editor(const std::string& filename)
 
 		::init_textdomains(game_config_manager::get()->game_config());
 
-		editor::EXIT_STATUS res = editor::start(
-		    game_config_manager::get()->game_config(), filename);
+		editor::EXIT_STATUS res = editor::start(filename);
 
 		if(res != editor::EXIT_RELOAD_DATA)
 			return res;
