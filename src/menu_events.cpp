@@ -89,10 +89,10 @@ static lg::log_domain log_engine("engine");
 
 namespace events
 {
-menu_handler::menu_handler(game_display* gui, play_controller& pc, const config& game_config)
+menu_handler::menu_handler(game_display* gui, play_controller& pc)
 	: gui_(gui)
 	, pc_(pc)
-	, game_config_(game_config)
+	, game_config_(game_config_manager::get()->game_config())
 	, last_search_()
 	, last_search_hit_()
 {

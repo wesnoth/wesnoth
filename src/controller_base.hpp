@@ -61,7 +61,7 @@ class manager;
 class controller_base : public events::sdl_handler, public events::pump_monitor
 {
 public:
-	controller_base(const config& game_config);
+	controller_base();
 	virtual ~controller_base();
 
 	virtual void play_slice(bool is_delay_enabled = true);

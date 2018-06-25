@@ -137,7 +137,7 @@ struct user_info
  */
 struct game_info
 {
-	game_info(const config& c, const config& game_config, const std::vector<std::string>& installed_addons);
+	game_info(const config& c, const std::vector<std::string>& installed_addons);
 
 	bool can_join() const;
 	bool can_observe() const;

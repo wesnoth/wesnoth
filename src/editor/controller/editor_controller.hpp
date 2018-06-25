@@ -78,7 +78,7 @@ class editor_controller : public controller_base,
 		 * to the map can be retrieved between the main loop's end and the controller's
 		 * destruction.
 		 */
-		explicit editor_controller(const config &game_config);
+		editor_controller();
 
 		~editor_controller();
 

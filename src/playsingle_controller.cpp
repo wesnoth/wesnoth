@@ -66,9 +66,8 @@ static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
 playsingle_controller::playsingle_controller(const config& level,
-	saved_game& state_of_game,
-	const config& game_config, const ter_data_cache & tdata, bool skip_replay)
-	: play_controller(level, state_of_game, game_config, tdata, skip_replay)
+	saved_game& state_of_game, const ter_data_cache & tdata, bool skip_replay)
+	: play_controller(level, state_of_game, tdata, skip_replay)
 	, cursor_setter_(cursor::NORMAL)
 	, replay_sender_(*resources::recorder)
 	, network_reader_([this](config& cfg) {return receive_from_wesnothd(cfg);})

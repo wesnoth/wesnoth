@@ -30,7 +30,7 @@ namespace mp
 class lobby_info
 {
 public:
-	explicit lobby_info(const config& game_config, const std::vector<std::string>& installed_addons);
+	explicit lobby_info(const std::vector<std::string>& installed_addons);
 
 	typedef std::map<int, game_info> game_info_map;
 
@@ -142,8 +142,6 @@ public:
 
 private:
 	void process_userlist();
-
-	const config& game_config_;
 
 	const std::vector<std::string>& installed_addons_;
 

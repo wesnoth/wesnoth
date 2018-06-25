@@ -45,7 +45,7 @@ namespace events
 class menu_handler : private chat_handler
 {
 public:
-	menu_handler(game_display* gui, play_controller& pc, const config& game_config);
+	menu_handler(game_display* gui, play_controller& pc);
 	virtual ~menu_handler();
 
 	void set_gui(game_display* gui)

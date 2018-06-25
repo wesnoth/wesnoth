@@ -61,13 +61,13 @@ static std::vector<std::string> saved_windows_;
 
 namespace editor {
 
-editor_controller::editor_controller(const config &game_config)
-	: controller_base(game_config)
+editor_controller::editor_controller()
+	: controller_base()
 	, mouse_handler_base()
 	, quit_confirmation(std::bind(&editor_controller::quit_confirm, this))
 	, active_menu_(editor::MAP)
 	, reports_(new reports())
-	, gui_(new editor_display(*this, controller_base::get_theme(game_config, "editor")))
+	, gui_(new editor_display(*this, controller_base::get_theme(game_config_, "editor")))
 	, tods_()
 	, context_manager_(new context_manager(*gui_.get(), game_config_))
 	, toolkit_(nullptr)
@@ -81,8 +81,8 @@ editor_controller::editor_controller(const config &game_config)
 	toolkit_.reset(new editor_toolkit(*gui_.get(), key_, game_config_, *context_manager_.get()));
 	context_manager_->locs_ = toolkit_->get_palette_manager()->location_palette_.get();
 	context_manager_->switch_context(0, true);
-	init_tods(game_config);
-	init_music(game_config);
+	init_tods(game_config_);
+	init_music(game_config_);
 	get_current_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
 

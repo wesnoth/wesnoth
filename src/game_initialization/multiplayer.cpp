@@ -442,7 +442,7 @@ void enter_wait_mode(mp_workflow_helper_ptr helper, int game_id, bool observe)
 	}
 
 	if(dlg_ok) {
-		campaign_controller controller(helper->state, helper->game_config, game_config_manager::get()->terrain_types());
+		campaign_controller controller(helper->state, game_config_manager::get()->terrain_types());
 		controller.set_mp_info(campaign_info.get());
 		controller.play_game();
 	}
@@ -473,7 +473,7 @@ void enter_staging_mode(mp_workflow_helper_ptr helper)
 	} // end connect_engine_ptr, dlg scope
 
 	if(dlg_ok) {
-		campaign_controller controller(helper->state, helper->game_config, game_config_manager::get()->terrain_types());
+		campaign_controller controller(helper->state, game_config_manager::get()->terrain_types());
 		controller.set_mp_info(campaign_info.get());
 		controller.play_game();
 	}
@@ -527,7 +527,7 @@ bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::stri
 			sound::stop_music();
 		}
 
-		mp::lobby_info li(helper->game_config, installed_addons);
+		mp::lobby_info li(installed_addons);
 		helper->lobby_info = &li;
 
 		if(!initial_lobby_config.empty()) {
@@ -639,16 +639,16 @@ void start_client(const config& game_config,	saved_game& state, const std::strin
 	} while(re_enter);
 }
 
-bool goto_mp_connect(ng::connect_engine& engine, const config& game_config, wesnothd_connection* connection)
+bool goto_mp_connect(ng::connect_engine& engine, wesnothd_connection* connection)
 {
-	lobby_info li(game_config, {});
+	lobby_info li({});
 
 	return gui2::dialogs::mp_staging::execute(engine, li, connection);
 }
 
-bool goto_mp_wait(saved_game& state, const config& game_config, wesnothd_connection* connection, bool observe)
+bool goto_mp_wait(saved_game& state, wesnothd_connection* connection, bool observe)
 {
-	lobby_info li(game_config, std::vector<std::string>());
+	lobby_info li({});
 
 	gui2::dialogs::mp_join_game dlg(state, li, *connection, false, observe);
 
@@ -671,7 +671,7 @@ void start_local_game(const config& game_config, saved_game& state)
 	preferences::set_message_private(false);
 
 	// TODO: should lobby_info take a nullptr in this case, or should we pass the installed_addons data here too?
-	lobby_info li(game_config, {});
+	lobby_info li({});
 	mp_workflow_helper_ptr workflow_helper = std::make_shared<mp_workflow_helper>(game_config, state, nullptr, &li);
 
 	enter_create_mode(workflow_helper);
@@ -773,7 +773,7 @@ void start_local_game_commandline(const config& game_config, saved_game& state, 
 	unsigned int repeat = (cmdline_opts.multiplayer_repeat) ? *cmdline_opts.multiplayer_repeat : 1;
 	for(unsigned int i = 0; i < repeat; i++){
 		saved_game state_copy(state);
-		campaign_controller controller(state_copy, game_config, game_config_manager::get()->terrain_types());
+		campaign_controller controller(state_copy, game_config_manager::get()->terrain_types());
 		controller.play_game();
 	}
 }
