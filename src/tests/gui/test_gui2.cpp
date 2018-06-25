@@ -852,7 +852,7 @@ struct dialog_tester<mp_lobby>
 	wesnothd_connection_init init;
 	std::vector<std::string> installed_addons;
 	mp::lobby_info li;
-	dialog_tester() : connection(wesnothd_connection::create("", "")), init(*connection), li(game_config, installed_addons)
+	dialog_tester() : connection(wesnothd_connection::create("", "")), init(*connection), li(installed_addons)
 	{
 	}
 	mp_lobby* create()
@@ -872,7 +872,6 @@ class fake_chat_handler : public events::chat_handler {
 template<>
 struct dialog_tester<lobby_player_info>
 {
-	config c;
 	fake_chat_handler ch;
 	wesnothd_connection_ptr connection;
 	wesnothd_connection_init init;
@@ -881,7 +880,7 @@ struct dialog_tester<lobby_player_info>
 	mp::lobby_info li;
 	dialog_tester()
 		: connection(wesnothd_connection::create("", "")), init(*connection)
-		, ui(c), li(c, installed_addons)
+		, ui(c), li(installed_addons)
 	{
 	}
 	lobby_player_info* create()
