@@ -741,11 +741,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 		return 1;
 	}
 
-	res = image::update_from_preferences();
-	if(res == false) {
-		std::cerr << "could not initialize image preferences\n";
-		return 1;
-	}
 
 	check_fpu();
 	const cursor::manager cursor_manager;

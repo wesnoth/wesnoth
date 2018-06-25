@@ -34,6 +34,8 @@
    * Fix --userdata-dir deprecation warning being printed when starting wesnoth without arguments
      when -DPREFERENCES_DIR="..." was defined at compile time.
    * Make wmllint recognize `[load_resource]` (issue #4538).
+   * Removed map scaling algorithm customization. Nearest-neighbor scaling will now
+     always be used.
 
 ## Version 1.15.2
  ### AI:
