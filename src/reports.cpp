@@ -813,7 +813,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 	}
 
 	{
-		auto ctx = at.specials_context_for_listing();
+		auto ctx = at.specials_context_for_listing(u.side() == rc.screen().playing_side());
 		boost::dynamic_bitset<> active;
 		const std::vector<std::pair<t_string, t_string>> &specials = at.special_tooltips(&active);
 		const std::size_t specials_size = specials.size();
