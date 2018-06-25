@@ -150,7 +150,6 @@ struct game_info
 	std::string map_info;
 	std::string map_size_info;
 	std::string era;
-	std::string era_short;
 
 	/** List of modification names and whether they're installed or not. */
 	std::vector<std::pair<std::string, bool>> mod_info;

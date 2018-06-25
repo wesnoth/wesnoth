@@ -160,29 +160,6 @@ const std::string& spaced_em_dash()
 	return res;
 }
 
-// Returns an abbreviated form of the provided string - ie, 'Ageless Era' should become 'AE'
-std::string make_short_name(const std::string& long_name)
-{
-	if(long_name.empty()) {
-		return "";
-	}
-
-	std::size_t pos = 0;
-
-	std::stringstream ss;
-	ss << long_name[pos];
-
-	while(pos < long_name.size()) {
-		pos = long_name.find(' ', pos + 1);
-
-		if(pos <= long_name.size() - 2) {
-			ss << long_name[pos + 1];
-		}
-	}
-
-	return ss.str();
-}
-
 std::string make_game_type_marker(std::string text, bool color_for_missing)
 {
 	if(color_for_missing) {
@@ -203,7 +180,6 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 	, map_info()
 	, map_size_info()
 	, era()
-	, era_short()
 	, gold(game["mp_village_gold"])
 	, support(game["mp_village_support"])
 	, xp(game["experience_modifier"].str() + "%")
@@ -260,17 +236,12 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 		const config& era_cfg = game_config.find_child("era", "id", game["mp_era"]);
 		if(era_cfg) {
 			era = era_cfg["name"].str();
-			era_short = era_cfg["short_name"].str();
-			if(era_short.empty()) {
-				era_short = make_short_name(era);
-			}
 
 			ADDON_REQ result = check_addon_version_compatibility(era_cfg, game);
 			addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 		} else {
 			have_era = !game["require_era"].to_bool(true);
 			era = game["mp_era_name"].str();
-			era_short = make_short_name(era);
 			verified = false;
 
 			if(!have_era) {
@@ -279,7 +250,6 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 		}
 	} else {
 		era = _("Unknown era");
-		era_short = "??";
 		verified = false;
 	}
 
