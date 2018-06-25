@@ -32,7 +32,6 @@
 #include "video.hpp"
 
 // Sub-dialog includes
-#include "gui/dialogs/advanced_graphics_options.hpp"
 #include "gui/dialogs/game_cache_options.hpp"
 #include "gui/dialogs/hotkey_bind.hpp"
 #include "gui/dialogs/log_settings.hpp"
@@ -951,9 +950,7 @@ void preferences_dialog::on_advanced_prefs_list_select(listbox& list)
 	const std::string& selected_field = adv_preferences_cfg_[selected_row]["field"].str();
 
 	if(selected_type == ADVANCED_PREF_TYPE::SPECIAL) {
-		if(selected_field == "advanced_graphic_options") {
-			gui2::dialogs::advanced_graphics_options::display();
-		} else if(selected_field == "logging") {
+		if(selected_field == "logging") {
 			gui2::dialogs::log_settings::display();
 		} else if(selected_field == "orb_color") {
 			gui2::dialogs::select_orb_colors::display();

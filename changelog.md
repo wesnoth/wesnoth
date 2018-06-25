@@ -5,6 +5,8 @@
  ### Engine
    * Windows 7 is now the minimum supported Windows version.
    * Removed incomplete joystick support.
+   * Removed map scaling algorithm customization. Nearest-neighbor scaling will now
+     always be used.
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified),
      Chinese (Traditional), Czech, French, Galician, German, Italian, Japanese,

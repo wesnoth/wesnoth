@@ -205,12 +205,6 @@ int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
 unsigned int zoom = tile_size;
 unsigned int cached_zoom = 0;
 
-/** Algorithm choices */
-// typedef std::function<surface(const surface &, int, int)> scaling_function;
-typedef surface (*scaling_function)(const surface&, int, int);
-scaling_function scale_to_zoom_func;
-scaling_function scale_to_hex_func;
-
 const std::string data_uri_prefix = "data:";
 struct parsed_data_URI{
 	explicit parsed_data_URI(utils::string_view data_URI);
@@ -859,42 +853,6 @@ void set_zoom(unsigned int amount)
 	}
 }
 
-// F should be a scaling algorithm without "integral" zoom limitations
-template<scaling_function F>
-static surface scale_xbrz_helper(const surface& res, int w, int h)
-{
-	int best_integer_zoom = std::min(w / res->w, h / res->h);
-	int legal_zoom = utils::clamp(best_integer_zoom, 1, 5);
-	return F(scale_surface_xbrz(res, legal_zoom), w, h);
-}
-
-using SCALING_ALGORITHM = preferences::SCALING_ALGORITHM;
-
-static scaling_function select_algorithm(SCALING_ALGORITHM algo)
-{
-	switch(algo.v) {
-	case SCALING_ALGORITHM::LINEAR: {
-		scaling_function result = &scale_surface;
-		return result;
-	}
-	case SCALING_ALGORITHM::NEAREST_NEIGHBOR: {
-		scaling_function result = &scale_surface_nn;
-		return result;
-	}
-	case SCALING_ALGORITHM::XBRZ_LIN: {
-		scaling_function result = &scale_xbrz_helper<scale_surface>;
-		return result;
-	}
-	case SCALING_ALGORITHM::XBRZ_NN: {
-		scaling_function result = &scale_xbrz_helper<scale_surface_nn>;
-		return result;
-	}
-	default:
-		assert(false && "I don't know how to implement this scaling algorithm");
-		throw 42;
-	}
-}
-
 static surface get_hexed(const locator& i_locator)
 {
 	surface image(get_image(i_locator, UNSCALED));
@@ -911,7 +869,7 @@ static surface get_scaled_to_hex(const locator& i_locator)
 	// return scale_surface(img, zoom, zoom);
 
 	if(!img.null()) {
-		return scale_to_hex_func(img, zoom, zoom);
+		return scale_surface_nn(img, zoom, zoom);
 	}
 
 	return surface(nullptr);
@@ -932,7 +890,7 @@ static surface get_scaled_to_zoom(const locator& i_locator)
 	surface res(get_image(i_locator, UNSCALED));
 	// For some reason haloes seems to have invalid images, protect against crashing
 	if(!res.null()) {
-		return scale_to_zoom_func(res, ((res->w * zoom) / tile_size), ((res->h * zoom) / tile_size));
+		return scale_surface_nn(res, ((res->w * zoom) / tile_size), ((res->h * zoom) / tile_size));
 	}
 
 	return surface(nullptr);
@@ -1290,27 +1248,6 @@ save_result save_image(const surface& surf, const std::string& filename)
 	}
 
 	return save_result::unsupported_format;
-}
-
-bool update_from_preferences()
-{
-	SCALING_ALGORITHM algo = preferences::default_scaling_algorithm;
-	try {
-		algo = SCALING_ALGORITHM::string_to_enum(preferences::get("scale_hex"));
-	} catch(const bad_enum_cast&) {
-	}
-
-	scale_to_hex_func = select_algorithm(algo);
-
-	algo = preferences::default_scaling_algorithm;
-	try {
-		algo = SCALING_ALGORITHM::string_to_enum(preferences::get("scale_zoom"));
-	} catch(const bad_enum_cast&) {
-	}
-
-	scale_to_zoom_func = select_algorithm(algo);
-
-	return true;
 }
 
 /*

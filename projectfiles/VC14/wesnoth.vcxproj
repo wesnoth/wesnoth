@@ -1457,13 +1457,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\Addon\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\Addon\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\advanced_graphics_options.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\attack_predictions.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
@@ -3710,7 +3703,6 @@
     <ClInclude Include="..\..\src\gui\dialogs\addon\install_dependencies.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\addon\manager.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\addon\uninstall_list.hpp" />
-    <ClInclude Include="..\..\src\gui\dialogs\advanced_graphics_options.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\attack_predictions.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\campaign_difficulty.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\campaign_selection.hpp" />

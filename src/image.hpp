@@ -215,9 +215,6 @@ namespace image {
 	void precache_file_existence(const std::string& subdir = "");
 	bool precached_file_exists(const std::string& file);
 
-	/// initialize any private data, e.g. algorithm choices from preferences
-	bool update_from_preferences();
-
 	enum class save_result {success, unsupported_format, save_failed, no_image};
 
 	save_result save_image(const locator& i_locator, const std::string& outfile);

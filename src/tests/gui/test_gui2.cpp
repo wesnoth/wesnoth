@@ -34,7 +34,6 @@
 #include "gui/dialogs/addon/connect.hpp"
 #include "gui/dialogs/addon/install_dependencies.hpp"
 #include "gui/dialogs/addon/manager.hpp"
-#include "gui/dialogs/advanced_graphics_options.hpp"
 #include "gui/dialogs/attack_predictions.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
@@ -423,7 +422,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	/* The modal_dialog classes. */
 	test<addon_connect>();
 	//test<addon_manager>();
-	test<advanced_graphics_options>();
 	//test<attack_predictions>();
 	test<campaign_difficulty>();
 	test<campaign_selection>();

@@ -672,13 +672,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	events::initialise();
 	events::run_event_loop();
-
-	res = image::update_from_preferences();
-	if(res == false) {
-		std::cerr << "could not initialize image preferences\n";
-		return 1;
-	}
-
 	events::run_event_loop();
 
 	check_fpu();
