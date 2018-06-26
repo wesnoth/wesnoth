@@ -45,6 +45,7 @@
 #include "mp_ui_alerts.hpp"
 #include "statistics.hpp"
 #include "units/types.hpp"
+#include "utils/scope_exit.hpp"
 #include "wesnothd_connection.hpp"
 
 
@@ -72,6 +73,7 @@ mp_join_game::mp_join_game(saved_game& state, mp::lobby_info& lobby_info, wesnot
 	, observe_game_(observe_game)
 	, stop_updates_(false)
 	, player_list_(nullptr)
+	, open_flg_dialog_(nullptr)
 {
 	set_show_even_without_video(true);
 }
@@ -350,9 +352,15 @@ void mp_join_game::show_flg_select(int side_num)
 
 		ng::flg_manager flg(era_factions, side_choice, lock_settings, use_map_settings, saved_game);
 
-		gui2::dialogs::faction_select dlg(flg, color, side_num);
-		dlg.show();
 
+		gui2::dialogs::faction_select dlg(flg, color, side_num);
+
+
+		{
+			open_flg_dialog_ = &dlg;
+			utils::scope_exit se([this](){ open_flg_dialog_ = nullptr; });
+			dlg.show();
+		}
 		if(dlg.get_retval() != gui2::retval::OK) {
 			return;
 		}
@@ -518,11 +526,20 @@ void mp_join_game::network_handler(window& window)
 	}
 
 	if(data["failed"].to_bool()) {
+		if(open_flg_dialog_) {
+			open_flg_dialog_->cancel();
+		}
 		window.set_retval(retval::CANCEL);
 	} else if(data.child("start_game")) {
+		if(open_flg_dialog_) {
+			open_flg_dialog_->cancel();
+		}
 		level_["started"] = true;
 		window.set_retval(retval::OK);
 	} else if(data.child("leave_game")) {
+		if(open_flg_dialog_) {
+			open_flg_dialog_->cancel();
+		}
 		window.set_retval(retval::CANCEL);
 	}
 
@@ -537,6 +554,10 @@ void mp_join_game::network_handler(window& window)
 		if(config& side_to_change = get_scenario().find_child("side", "side", change["side"])) {
 			side_to_change.merge_with(change);
 		}
+		if(open_flg_dialog_ && open_flg_dialog_->get_side_num() == change["side"].to_int()) {
+			open_flg_dialog_->cancel();
+		}
+
 	} else if(data.has_child("scenario") || data.has_child("snapshot") || data.child("next_scenario")) {
 		level_ = first_scenario_ ? data : data.child("next_scenario");
 
