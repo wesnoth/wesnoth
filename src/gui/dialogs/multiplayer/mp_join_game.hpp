@@ -31,6 +31,7 @@ class tree_view_node;
 
 namespace dialogs
 {
+class faction_select;
 
 class mp_join_game : public modal_dialog, private plugin_executor
 {
@@ -78,6 +79,8 @@ private:
 	std::map<std::string, tree_view_node*> team_tree_map_;
 
 	std::unique_ptr<player_list_helper> player_list_;
+
+	gui2::dialogs::faction_select* open_flg_dialog_;
 };
 
 } // namespace dialogs
