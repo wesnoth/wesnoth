@@ -209,8 +209,12 @@ bool mp_join_game::fetch_game_config()
 		const std::string color = (*side_choice)["color"].str();
 
 		std::vector<const config*> era_factions;
+
+		//make this safe against changes to level_ that might make possible_sides invalid pointers.
+		config era_copy;
 		for(const config& side : possible_sides) {
-			era_factions.push_back(&side);
+			config& side_new = era_copy.add_child("multiplayer_side", side);
+			era_factions.push_back(&side_new);
 		}
 
 		const bool is_mp = state_.classification().is_normal_mp_game();
@@ -332,8 +336,11 @@ void mp_join_game::show_flg_select(int side_num)
 		const std::string color = side_choice["color"].str();
 
 		std::vector<const config*> era_factions;
+		//make this safe against changes to level_ that might make possible_sides invalid pointers.
+		config era_copy;
 		for(const config& side : possible_sides) {
-			era_factions.push_back(&side);
+			config& side_new = era_copy.add_child("multiplayer_side", side);
+			era_factions.push_back(&side_new);
 		}
 
 		const bool is_mp = state_.classification().is_normal_mp_game();
