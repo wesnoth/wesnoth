@@ -12,6 +12,8 @@
      * S11: added custom graphics for the citadel.
      * S12: clarified the alien bodies' weaknesses.
      * Various visual improvements.
+ ### Editor
+   * Fixed saving a map as a scenario not enabling scenario editor tools.
  ### Graphics
    * Tweaked the Ruffian's attack animation timing.
    * New attack animation for the Peasant.

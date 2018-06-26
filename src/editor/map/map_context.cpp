@@ -606,6 +606,9 @@ bool map_context::save_scenario()
 		throw editor_map_save_exception(msg);
 	}
 
+	// After saving the map as a scenario, it's no longer a pure map.
+	pure_map_ = false;
+
 	// TODO the return value of this method does not need to be boolean.
 	// We either return true or there is an exception thrown.
 	return true;
