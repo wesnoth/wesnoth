@@ -776,7 +776,7 @@ void init_mouse_location()
 {
 	point mouse = get_mouse_position();
 
-	SDL_Event event;
+	SDL_Event event = {};
 	event.type = SDL_MOUSEMOTION;
 	event.motion.type = SDL_MOUSEMOTION;
 	event.motion.x = mouse.x;
