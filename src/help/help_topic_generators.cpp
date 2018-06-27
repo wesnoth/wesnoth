@@ -215,6 +215,7 @@ std::string terrain_topic_generator::operator()() const {
 
 
 //Typedef to help with formatting list of traits
+//Maps localized trait name to trait help topic ID
 typedef std::pair<std::string, std::string> trait_data;
 
 //Helper function for printing a list of trait data
@@ -394,7 +395,11 @@ std::string unit_topic_generator::operator()() const {
 		int must_have_nameless_traits = 0;
 
 		for (const config & trait : traits) {
-			const std::string trait_name = trait["male_name"];
+			std::string trait_name = trait["male_name"].str();
+			if (trait_name.empty()) trait_name = trait["female_name"].str();
+			if (trait_name.empty()) trait_name = trait["name"].str();
+			if (trait_name.empty()) continue; // Hidden trait
+
 			std::string lang_trait_name = translation::gettext(trait_name.c_str());
 			if (lang_trait_name.empty() && trait["availability"].str() == "musthave") {
 				++must_have_nameless_traits;
