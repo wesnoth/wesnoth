@@ -39,6 +39,7 @@
      selection dialog is dismissed.
    * Fixed an issue with positioned sound sources ignoring the volume set in
      Preferences after going off the audible radius and back (issue #3280).
+   * Fixed wmllint choking on gzipped binary files (e.g. gzipped tarballs).
 
 ## Version 1.14.3
  ### AI
