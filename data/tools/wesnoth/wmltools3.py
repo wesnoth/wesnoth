@@ -260,6 +260,9 @@ def issave(filename):
     if filename.endswith(".gz"):
         with gzip.open(filename) as content:
             firstline = content.readline()
+            if not isinstance(firstline, str):
+                # It's a compressed binary file
+                return False
     else:
         try:
             with codecs.open(filename, "r", "utf8") as content:
