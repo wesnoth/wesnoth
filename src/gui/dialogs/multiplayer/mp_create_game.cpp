@@ -33,7 +33,6 @@
 #else
 #include "gui/widgets/listbox.hpp"
 #endif
-#include "font/pango/escape.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
@@ -949,7 +948,7 @@ void mp_create_game::post_show(window& window)
 		config_engine_->set_options(options_manager_->get_options_config());
 
 		// Set game name
-		const std::string name = font::escape_text(find_widget<text_box>(&window, "game_name", false).get_value());
+		const std::string name = find_widget<text_box>(&window, "game_name", false).get_value();
 		if(!name.empty() && (name != ng::configure_engine::game_name_default())) {
 			config_engine_->set_game_name(name);
 		}
