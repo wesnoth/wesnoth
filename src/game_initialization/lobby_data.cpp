@@ -19,6 +19,7 @@
 #include "preferences/game.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "filesystem.hpp"
+#include "font/pango/escape.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
@@ -174,7 +175,7 @@ std::string make_game_type_marker(std::string text, bool color_for_missing)
 game_info::game_info(const config& game, const std::vector<std::string>& installed_addons)
 	: id(game["id"])
 	, map_data(game["map_data"])
-	, name(game["name"])
+	, name(font::escape_text(game["name"]))
 	, scenario()
 	, remote_scenario(false)
 	, map_info()
