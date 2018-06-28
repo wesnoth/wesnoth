@@ -330,7 +330,7 @@ void editor_palette<Item>::draw_contents()
 
 // Force compilation of the following template instantiations
 template class editor_palette<t_translation::terrain_code>;
-template class editor_palette<unit_type>;
+template class editor_palette<const unit_type&>;
 template class editor_palette<overlay>;
 
 } // end namespace editor
