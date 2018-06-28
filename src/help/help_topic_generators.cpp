@@ -477,15 +477,34 @@ std::string unit_topic_generator::operator()() const {
 
 	// Print some basic information such as HP and movement points.
 	// TODO: Make this info update according to musthave traits, similar to movetype below.
+
+	// TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+	// uses spaces, use non-breaking spaces as appropriate for the target language to prevent
+	// unpleasant line breaks (issue #3256).
 	ss << _("HP:") << font::nbsp << type_.hitpoints() << jump(30)
+		// TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+		// uses spaces, use non-breaking spaces as appropriate for the target language to prevent
+		// unpleasant line breaks (issue #3256).
 		<< _("Moves:") << font::nbsp << type_.movement() << jump(30);
 	if (type_.vision() != type_.movement()) {
+		// TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+		// uses spaces, use non-breaking spaces as appropriate for the target language to prevent
+		// unpleasant line breaks (issue #3256).
 		ss << _("Vision:") << font::nbsp << type_.vision() << jump(30);
 	}
 	if (type_.jamming() > 0) {
+		// TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+		// uses spaces, use non-breaking spaces as appropriate for the target language to prevent
+		// unpleasant line breaks (issue #3256).
 		ss << _("Jamming:") << font::nbsp << type_.jamming() << jump(30);
 	}
+	// TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+	// uses spaces, use non-breaking spaces as appropriate for the target language to prevent
+	// unpleasant line breaks (issue #3256).
 	ss << _("Cost:") << font::nbsp << type_.cost() << jump(30)
+		// TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+		// uses spaces, use non-breaking spaces as appropriate for the target language to prevent
+		// unpleasant line breaks (issue #3256).
 		<< _("Alignment:") << font::nbsp
 		<< make_link(type_.alignment_description(type_.alignment(), type_.genders().front()), "time_of_day")
 		<< jump(30);
