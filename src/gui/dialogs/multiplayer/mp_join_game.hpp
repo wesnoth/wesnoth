@@ -80,6 +80,8 @@ private:
 	std::unique_ptr<player_list_helper> player_list_;
 
 	gui2::dialogs::faction_select* open_flg_dialog_;
+
+	std::size_t flg_button_callback_timer_id_;
 };
 
 } // namespace dialogs
