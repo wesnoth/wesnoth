@@ -129,8 +129,8 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	if(opp_weapon) {
 		opp_ctx.emplace(opp_weapon->specials_context(&opp, &u, opp_loc, u_loc, !attacking, weapon));
 	}
-
-slows = weapon->bool_ability("slow");
+		
+	slows = weapon->bool_ability("slow");
 	drains = !opp.get_state("undrainable") && weapon->bool_ability("drains");
 	petrifies = weapon->bool_ability("petrifies");
 	poisons = !opp.get_state("unpoisonable") && weapon->bool_ability("poison") && !opp.get_state(unit::STATE_POISONED);
@@ -213,11 +213,15 @@ slows = weapon->bool_ability("slow");
 
 	// Compute drain amounts only if draining is possible.
 	if(drains) {
+	if (weapon->get_special_bool("drains")){
 		unit_ability_list drain_specials = weapon->get_specials("drains");
-
 		// Compute the drain percent (with 50% as the base for backward compatibility)
 		unit_abilities::effect drain_percent_effects(drain_specials, 50, backstab_pos);
 		drain_percent = drain_percent_effects.get_composite_value();
+		}
+		if (weapon->combat_ability("drains", 25).second){
+	        drain_percent = weapon->combat_ability("drains", 25).first;
+	    }
 	}
 
 	// Add heal_on_hit (the drain constant)
