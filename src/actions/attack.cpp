@@ -1708,21 +1708,33 @@ std::pair<int, bool> ability_leadership(const std::string& ability,const unit_ma
 {
 	const unit_map::const_iterator un = units.find(loc);
 	const unit_map::const_iterator up = units.find(opp_loc);
-	if(un == units.end() || up == units.end()) {
+	if(un == units.end()) {
 		return {abil_value, false};
 	}
-
+	
+	bool backstab_pos = false;
 
 	unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
-            if(!un->abilities_filter_matches(*i->first, attacker, abil_value) || !up->ability_affects_opponent(ability, *i->first, opp_loc)) {
+            const config &filter = (*i->first).child("filter_opponent");
+            bool show_result = false;
+            if (up == units.end() && !filter){
+                    show_result = un->abilities_filter_matches(*i->first, attacker, abil_value);
+            } else if (up == units.end() && filter){
+                return {abil_value, false};
+                } else {
+                    backstab_pos = attacker && backstab_check(loc, opp_loc, units, resources::gameboard->teams());
+                    show_result = !(!un->abilities_filter_matches(*i->first, attacker, abil_value) || !up->ability_filter_opponent(ability, *i->first, opp_loc));
+                    }
+
+            if(!show_result) {
                 i = abil.erase(i);
                 } else {
                     ++i;
             }
     }
 	if(!abil.empty()) {
-            unit_abilities::effect leader_effect(abil, abil_value, false);
+            unit_abilities::effect leader_effect(abil, abil_value, backstab_pos);
             return {leader_effect.get_composite_value(), true};
     }
     return {abil_value, false};
