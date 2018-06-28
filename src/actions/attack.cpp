@@ -130,13 +130,16 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 		opp_ctx.emplace(opp_weapon->specials_context(&opp, &u, opp_loc, u_loc, !attacking, weapon));
 	}
 
-	slows = weapon->get_special_bool("slow");
-	drains = !opp.get_state("undrainable") && weapon->get_special_bool("drains");
-	petrifies = weapon->get_special_bool("petrifies");
-	poisons = !opp.get_state("unpoisonable") && weapon->get_special_bool("poison") && !opp.get_state(unit::STATE_POISONED);
+slows = weapon->bool_ability("slow");
+	drains = !opp.get_state("undrainable") && weapon->bool_ability("drains");
+	petrifies = weapon->bool_ability("petrifies");
+	poisons = !opp.get_state("unpoisonable") && weapon->bool_ability("poison") && !opp.get_state(unit::STATE_POISONED);
 	backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, resources::gameboard->teams());
 	rounds = weapon->get_specials("berserk").highest("value", 1).first;
-	firststrike = weapon->get_special_bool("firststrike");
+	if(weapon->combat_ability("berserk", 1).second) {
+		rounds = weapon->combat_ability("berserk", 1).first;
+	}
+	firststrike = weapon->bool_ability("firststrike");
 
 	{
 		const int distance = distance_between(u_loc, opp_loc);
@@ -168,6 +171,14 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
 	unit_abilities::effect cth_effects(cth_specials, chance_to_hit, backstab_pos);
 	chance_to_hit = cth_effects.get_composite_value();
+	
+	if(weapon->combat_ability("chance_to_hit", chance_to_hit).second){
+    chance_to_hit = weapon->combat_ability("chance_to_hit", chance_to_hit).first;
+    }
+
+    if(chance_to_hit > 100) {
+            chance_to_hit = 100;
+    }
 
 	if(opp.get_state("invulnerable")) {
 		chance_to_hit = 0;
@@ -184,7 +195,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 			resources::gameboard->units(), resources::gameboard->map(), u_loc, u.alignment(), u.is_fearless());
 
 	// Leadership bonus.
-	int leader_bonus = under_leadership(units, u_loc, weapon, opp_weapon).first;
+	int leader_bonus = under_leadership(units, u_loc, attacking, weapon, opp_weapon);
 	if(leader_bonus != 0) {
 		damage_multiplier += leader_bonus;
 	}
