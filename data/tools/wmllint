@@ -3183,8 +3183,11 @@ In your case, your system interprets your arguments as:
         if not arguments:
             arguments = ["."]
 
+        failed_any_dirs = False
+
         for directory in arguments:
             if not os.path.exists(directory):
+                failed_any_dirs = True
                 print("wmllint: skipping non-existent path %s" % directory)
                 continue
             ofp = None
@@ -3258,6 +3261,7 @@ In your case, your system interprets your arguments as:
                         d.add_to_session(word.lower())
                     for directory in arguments:
                         if not os.path.exists(directory):
+                            failed_any_dirs = True
                             print("wmllint: skipping non-existent path %s" % directory)
                             continue
                         ofp = None
@@ -3267,6 +3271,8 @@ In your case, your system interprets your arguments as:
                             spellcheck(fn, d)
                 except ImportError:
                     print("wmllint: spell check unavailable, install python-enchant to enable", file=sys.stderr)
+        if failed_any_dirs:
+            sys.exit(1)
     except KeyboardInterrupt:
         print("Aborted")
 
