@@ -784,6 +784,9 @@ void attack_type::modified_attacks(bool is_backstab, unsigned& min_attacks, unsi
 	// Apply [attacks].
 	unit_abilities::effect attacks_effect(get_specials("attacks"), num_attacks(), is_backstab);
 	int attacks_value = attacks_effect.get_composite_value();
+	if(combat_ability("attacks", attacks_value).second){
+            attacks_value = combat_ability("attacks", attacks_value).first;
+    }
 	if(attacks_value < 0) {
 		attacks_value = num_attacks();
 		ERR_NG << "negative number of strikes after applying weapon specials" << std::endl;
@@ -805,7 +808,12 @@ void attack_type::modified_attacks(bool is_backstab, unsigned& min_attacks, unsi
 int attack_type::modified_damage(bool is_backstab) const
 {
 	unit_abilities::effect dmg_effect(get_specials("damage"), damage(), is_backstab);
-	return dmg_effect.get_composite_value();
+	int damage_value = dmg_effect.get_composite_value();
+
+	if(combat_ability("damage", damage()).second){
+    damage_value = combat_ability("damage", damage()).first;
+    }
+    return damage_value;
 }
 
 namespace
