@@ -25,6 +25,7 @@
 #include "preferences/credentials.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/core/timer.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/multiplayer/faction_select.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -74,6 +75,7 @@ mp_join_game::mp_join_game(saved_game& state, mp::lobby_info& lobby_info, wesnot
 	, stop_updates_(false)
 	, player_list_(nullptr)
 	, open_flg_dialog_(nullptr)
+	, flg_button_callback_timer_id_(0)
 {
 	set_show_even_without_video(true);
 }
@@ -83,6 +85,10 @@ mp_join_game::~mp_join_game()
 	if(update_timer_ != 0) {
 		remove_timer(update_timer_);
 		update_timer_ = 0;
+	}
+	if(flg_button_callback_timer_id_ != 0) {
+		remove_timer(flg_button_callback_timer_id_);
+		flg_button_callback_timer_id_ = 0;
 	}
 }
 
@@ -491,7 +497,21 @@ void mp_join_game::generate_side_list(window& window)
 		auto* select_leader_button = find_widget<button>(&row_grid, "select_leader", false, false);
 		if(select_leader_button) {
 			if(side["player_id"] == preferences::login() && side["allow_changes"].to_bool(true)) {
-				connect_signal_mouse_left_click(*select_leader_button, std::bind(&mp_join_game::show_flg_select, this, side_num));
+				auto handler = [this, side_num](){
+					if(flg_button_callback_timer_id_ != 0) {
+						remove_timer(flg_button_callback_timer_id_);
+						flg_button_callback_timer_id_ = 0;
+					}
+					if(flg_button_callback_timer_id_ == 0) {
+						auto real_handler = [this, side_num](size_t /*timer_id*/ ) {
+							show_flg_select(side_num);
+							//we cannot remoe the timer here as we are currently executing the timers handler.
+						};
+						//don't call this now but in a seperate callstack since the widget might be recreates while the dialog is open.
+						flg_button_callback_timer_id_ = add_timer(0, real_handler, /*repeat=*/false);
+					}
+				};
+				connect_signal_mouse_left_click(*select_leader_button, std::bind(handler));
 			}
 			else {
 				select_leader_button->set_visible(widget::visibility::hidden);
