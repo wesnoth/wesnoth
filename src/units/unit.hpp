@@ -1526,6 +1526,7 @@ public:
 	 * @param ability The type of ability (tag name) to remove.
 	 */
 	void remove_ability_by_id(const std::string& ability);
+	bool abilities_filter_matches(const config& cfg, bool attacker, int res) const;
 
 private:
 	/**

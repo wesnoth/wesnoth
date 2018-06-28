@@ -268,8 +268,10 @@ void attack_unit_and_advance(const map_location& attacker,
  * Returns a pair of bonus percentage and the leader's location if the unit is affected,
  * or 0 and map_location::null_location() otherwise.
  */
-std::pair<int, map_location> under_leadership(const unit_map& units, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon = nullptr);
-
+bool bool_increase_weapon(const std::string& ability,const unit_map& units, const map_location& loc, const_attack_ptr weapon,const_attack_ptr opp_weapon=nullptr);
+int under_leadership(const unit_map& units, const map_location& loc,bool attacker=true, const_attack_ptr weapon=nullptr, const_attack_ptr opp_weapon=nullptr);
+bool under_leadership(const std::string& ability,const unit_map& units, const map_location& loc, bool attacker=true, const_attack_ptr weapon=nullptr, const_attack_ptr opp_weapon=nullptr);
+std::pair<int, bool> under_leadership(const std::string& ability, const unit_map& units, const map_location& loc,bool attacker=true, int abil_value=0, const_attack_ptr weapon=nullptr, const_attack_ptr opp_weapon=nullptr);
 /**
  * Returns the amount that a unit's damage should be multiplied by
  * due to the current time of day.
