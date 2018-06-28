@@ -395,10 +395,17 @@ std::string unit_topic_generator::operator()() const {
 		int must_have_nameless_traits = 0;
 
 		for (const config & trait : traits) {
-			std::string trait_name = trait["male_name"].str();
-			if (trait_name.empty()) trait_name = trait["female_name"].str();
-			if (trait_name.empty()) trait_name = trait["name"].str();
-			if (trait_name.empty()) continue; // Hidden trait
+			const std::string& male_name = trait["male_name"].str();
+			const std::string& female_name = trait["female_name"].str();
+			std::string trait_name;
+			if (type_.has_gender_variation(unit_race::MALE) && ! male_name.empty())
+				trait_name = male_name;
+			else if (type_.has_gender_variation(unit_race::FEMALE) && ! female_name.empty())
+				trait_name = female_name;
+			else if (! trait["name"].str().empty())
+				trait_name = trait["name"].str();
+			else
+				continue; // Hidden trait
 
 			std::string lang_trait_name = translation::gettext(trait_name.c_str());
 			if (lang_trait_name.empty() && trait["availability"].str() == "musthave") {
