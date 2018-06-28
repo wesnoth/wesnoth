@@ -40,6 +40,8 @@
    * Fixed an issue with positioned sound sources ignoring the volume set in
      Preferences after going off the audible radius and back (issue #3280).
    * Fixed wmllint choking on gzipped binary files (e.g. gzipped tarballs).
+   * Fixed wmllint crashing on inexistent paths provided in the command line
+     (issue #3286).
 
 ## Version 1.14.3
  ### AI

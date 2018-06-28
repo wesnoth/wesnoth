@@ -3184,6 +3184,9 @@ In your case, your system interprets your arguments as:
             arguments = ["."]
 
         for directory in arguments:
+            if not os.path.exists(directory):
+                print("wmllint: skipping non-existent path %s" % directory)
+                continue
             ofp = None
             for fn in allcfgfiles(directory):
                 if verbose >= 2:
@@ -3254,6 +3257,9 @@ In your case, your system interprets your arguments as:
                     for word in declared_spellings["GLOBAL"]:
                         d.add_to_session(word.lower())
                     for directory in arguments:
+                        if not os.path.exists(directory):
+                            print("wmllint: skipping non-existent path %s" % directory)
+                            continue
                         ofp = None
                         for fn in allcfgfiles(directory):
                             if verbose >= 2:
