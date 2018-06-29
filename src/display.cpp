@@ -2499,7 +2499,7 @@ void display::draw(bool update,bool force) {
 		 * draw_invalidated() also invalidates the halos, so also needs to be
 		 * ran if invalidated_.empty() == true.
 		 */
-		if(!invalidated_.empty() || preferences::show_haloes()) {
+		if(!invalidated_.empty()) {
 			draw_invalidated();
 			invalidated_.clear();
 		}

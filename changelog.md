@@ -90,6 +90,7 @@
    * Passing relative paths to --user-data-dir is deprecated (part of PR#4449),
      * On windows, relative paths that start with `.\` are not deprecated
    * Removed incomplete joystick support.
+   * Removed option to disable unit and item halos.
 
 ## Version 1.15.1
  ### Editor
