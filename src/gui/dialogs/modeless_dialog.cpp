@@ -36,7 +36,7 @@ modeless_dialog::~modeless_dialog()
 void modeless_dialog::show(const bool allow_interaction, const unsigned /*auto_close_time*/)
 {
 	if(CVideo::get_singleton().faked()) {
-		return;
+		//return;
 	}
 
 	hide();
