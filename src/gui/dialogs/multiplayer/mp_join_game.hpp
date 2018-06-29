@@ -52,7 +52,8 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
-	void show_flg_select(int side_num);
+	/** @returns false if an error ocurred. */
+	bool show_flg_select(int side_num);
 
 	void generate_side_list(window& window);
 
