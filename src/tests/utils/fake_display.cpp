@@ -58,7 +58,7 @@ fake_display_manager* fake_display_manager::get_manager()
 }
 
 fake_display_manager::fake_display_manager()
-	: video_(CVideo::FAKE_TEST)
+	: video_(CVideo::FAKE)
 	, dummy_cfg_()
 	, dummy_cfg2_()
 	, dummy_board_(std::make_shared<terrain_type_data>(dummy_cfg_), dummy_cfg2_)
