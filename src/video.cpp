@@ -38,7 +38,7 @@ CVideo* CVideo::singleton_ = nullptr;
 
 namespace
 {
-bool fake_interactive = false;
+bool interactive = true;
 }
 
 CVideo::CVideo(FAKE_TYPES type)
@@ -89,7 +89,7 @@ CVideo::~CVideo()
 
 bool CVideo::non_interactive() const
 {
-	return fake_interactive ? false : (window == nullptr);
+	return !interactive || window == nullptr;
 }
 
 void CVideo::video_event_handler::handle_window_event(const SDL_Event& event)
@@ -113,7 +113,7 @@ void CVideo::make_fake()
 
 void CVideo::make_test_fake(const unsigned width, const unsigned height)
 {
-	fake_interactive = true;
+	interactive = false;
 	fake_size_.first = width;
 	fake_size_.second = height;
 }
