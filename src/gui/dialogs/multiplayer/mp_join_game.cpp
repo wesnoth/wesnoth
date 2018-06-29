@@ -160,25 +160,25 @@ bool mp_join_game::fetch_game_config()
 	// available side.
 	const config* side_choice = nullptr;
 
-	int side_num = 0, nb_sides = 0;
+	int side_num_choice = 1, side_num_counter = 1;
 	for(const config& side : get_scenario().child_range("side")) {
 		// TODO: it can happen that the scenario specifies that the controller
 		//       of a side should also gain control of another side.
 		if(side["controller"] == "reserved" && side["current_player"] == preferences::login()) {
 			side_choice = &side;
-			side_num = nb_sides;
+			side_num_choice = side_num_counter;
 			break;
 		}
 
 		if(side["controller"] == "human" && side["player_id"].empty()) {
 			if(!side_choice) { // Found the first empty side
 				side_choice = &side;
-				side_num = nb_sides;
+				side_num_choice = side_num_counter;
 			}
 
 			if(side["current_player"] == preferences::login()) {
 				side_choice = &side;
-				side_num = nb_sides;
+				side_num_choice = side_num_counter;
 				break;  // Found the preferred one
 			}
 		}
@@ -188,7 +188,7 @@ bool mp_join_game::fetch_game_config()
 			return true;
 		}
 
-		++nb_sides;
+		++side_num_counter;
 	}
 
 	if(!side_choice) {
@@ -198,53 +198,9 @@ bool mp_join_game::fetch_game_config()
 
 	// If the client is allowed to choose their team, do that here instead of having it set by the server
 	if((*side_choice)["allow_changes"].to_bool(true)) {
-		// TODO: show_flg_select does basicially the same,
-		//       i didn't want to risk breakig this for stable (1.14)
-		//       but id's be better if we didnt have this code dublication.
-		//       what i am in particular unsure about is why the '!era' and
-		//       'possible_sides.empty()' cases below are handled differntly here.
-		const config& era = level_.child("era");
-		// TODO: Check whether we have the era. If we don't, inform the player
-		if(!era) {
-			throw config::error(_("No era information found."));
-		}
-
-		config::const_child_itors possible_sides = era.child_range("multiplayer_side");
-		if(possible_sides.empty()) {
+		if(!show_flg_select(side_num_choice)) {
 			return false;
 		}
-
-		const std::string color = (*side_choice)["color"].str();
-
-		std::vector<const config*> era_factions;
-
-		//make this safe against changes to level_ that might make possible_sides invalid pointers.
-		config era_copy;
-		for(const config& side : possible_sides) {
-			config& side_new = era_copy.add_child("multiplayer_side", side);
-			era_factions.push_back(&side_new);
-		}
-
-		const bool is_mp = state_.classification().is_normal_mp_game();
-		const bool lock_settings = get_scenario()["force_lock_settings"].to_bool(!is_mp);
-		const bool use_map_settings = level_.child("multiplayer")["mp_use_map_settings"].to_bool();
-		const bool saved_game = level_.child("multiplayer")["savegame"].to_bool();
-
-		ng::flg_manager flg(era_factions, *side_choice, lock_settings, use_map_settings, saved_game);
-
-		if(!gui2::dialogs::faction_select::execute(flg, color, side_num)) {
-			return true;
-		}
-
-		config faction;
-		config& change = faction.add_child("change_faction");
-		change["change_faction"] = true;
-		change["name"] = preferences::login();
-		change["faction"] = flg.current_faction()["id"];
-		change["leader"] = flg.current_leader();
-		change["gender"] = flg.current_gender();
-
-		network_connection_.send_data(faction);
 	}
 
 	return true;
@@ -323,22 +279,22 @@ void mp_join_game::pre_show(window& window)
 	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
 }
 
-void mp_join_game::show_flg_select(int side_num)
+bool mp_join_game::show_flg_select(int side_num)
 {
 	if(const config& side_choice = get_scenario().child("side", side_num - 1)) {
 		if(!side_choice["allow_changes"].to_bool(true)) {
-			return;
+			return true;
 		}
 		const config& era = level_.child("era");
 		if(!era) {
 			ERR_MP << "no era information\n";
-			return;
+			return false;
 		}
 
 		config::const_child_itors possible_sides = era.child_range("multiplayer_side");
 		if(possible_sides.empty()) {
 			WRN_MP << "no [multiplayer_side] found in era '" << era["id"] << "'.\n";
-			return;
+			return false;
 		}
 
 		const std::string color = side_choice["color"].str();
@@ -357,18 +313,16 @@ void mp_join_game::show_flg_select(int side_num)
 		const bool saved_game = level_.child("multiplayer")["savegame"].to_bool();
 
 		ng::flg_manager flg(era_factions, side_choice, lock_settings, use_map_settings, saved_game);
-
-
 		gui2::dialogs::faction_select dlg(flg, color, side_num);
-
 
 		{
 			open_flg_dialog_ = &dlg;
 			utils::scope_exit se([this](){ open_flg_dialog_ = nullptr; });
 			dlg.show();
 		}
+
 		if(dlg.get_retval() != gui2::retval::OK) {
-			return;
+			return true;
 		}
 
 		config faction;
@@ -383,6 +337,7 @@ void mp_join_game::show_flg_select(int side_num)
 
 		network_connection_.send_data(faction);
 	}
+	return true;
 }
 
 void mp_join_game::generate_side_list(window& window)
