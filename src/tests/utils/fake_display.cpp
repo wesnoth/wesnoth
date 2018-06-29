@@ -58,7 +58,7 @@ fake_display_manager* fake_display_manager::get_manager()
 }
 
 fake_display_manager::fake_display_manager()
-	: video_(CVideo::FAKE)
+	: video_(CVideo::FAKE_TEST)
 	, dummy_cfg_()
 	, dummy_cfg2_()
 	, dummy_board_(std::make_shared<terrain_type_data>(dummy_cfg_), dummy_cfg2_)
@@ -72,10 +72,13 @@ game_display& fake_display_manager::get_display()
 	return disp_;
 }
 
-game_display& get_fake_display(const int /*width*/, const int /*height*/)
+game_display& get_fake_display(const int width, const int height)
 {
 	game_display& display = fake_display_manager::get_manager()->get_display();
-	display.video().make_fake();
+
+	if(width >= 0 && height >= 0) {
+		display.video().make_test_fake(width, height);
+	}
 
 	return display;
 }

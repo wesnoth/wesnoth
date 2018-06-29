@@ -69,7 +69,7 @@ bool modal_dialog::show(const unsigned auto_close_time)
 			pc.play_slice();
 		}
 
-		//return false;
+		return false;
 	}
 
 	build_window();
