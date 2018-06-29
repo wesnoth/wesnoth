@@ -540,18 +540,6 @@ int unit_type::experience_needed(bool with_acceleration) const
 	return experience_needed_;
 }
 
-#if 0
-const char* unit_type::alignment_description(unit_type::ALIGNMENT align, unit_race::GENDER gender)
-{
-	static const char* aligns[] { N_("lawful"), N_("neutral"), N_("chaotic"), N_("liminal") };
-	static const char* aligns_female[] { N_("female^lawful"), N_("female^neutral"), N_("female^chaotic"),
-N_("female^liminal") };
-	const char** tlist = (gender == unit_race::MALE ? aligns : aligns_female);
-
-	return (translation::sgettext(tlist[align]));
-}
-#endif
-
 bool unit_type::has_ability_by_id(const std::string& ability) const
 {
 	if(const config& abil = cfg_.child("abilities")) {

@@ -112,6 +112,7 @@
 #include "utils/functional.hpp"               // for bind_t, bind
 #include <boost/range/algorithm/copy.hpp>    // boost::copy
 #include <boost/range/adaptors.hpp>     // boost::adaptors::filtered
+#include <array>
 #include <cassert>                      // for assert
 #include <cstring>                      // for strcmp
 #include <iterator>                     // for distance, advance
@@ -4293,19 +4294,38 @@ void game_lua_kernel::set_game_display(game_display * gd) {
 /// These are the child tags of [scenario] (and the like) that are handled
 /// elsewhere (in the C++ code).
 /// Any child tags not in this list will be passed to Lua's on_load event.
-static char const *handled_file_tags[] {
-	"color_palette", "color_range", "display", "end_level_data", "era",
-	"event", "generator", "label", "lua", "map", "menu_item",
-	"modification", "music", "options", "side", "sound_source",
-	"story", "terrain_graphics", "time", "time_area", "tunnel",
-	"undo_stack", "variables"
-};
+static const std::array<std::string, 23> handled_file_tags {{
+	"color_palette",
+	"color_range",
+	"display",
+	"end_level_data",
+	"era",
+	"event",
+	"generator",
+	"label",
+	"lua",
+	"map",
+	"menu_item",
+	"modification",
+	"music",
+	"options",
+	"side",
+	"sound_source",
+	"story",
+	"terrain_graphics",
+	"time",
+	"time_area",
+	"tunnel",
+	"undo_stack",
+	"variables"
+}};
 
-static bool is_handled_file_tag(const std::string &s)
+static bool is_handled_file_tag(const std::string& s)
 {
-	for (char const *t : handled_file_tags) {
+	for(const std::string& t : handled_file_tags) {
 		if (s == t) return true;
 	}
+
 	return false;
 }
 
