@@ -40,8 +40,6 @@ namespace {
 
 bool message_private_on = false;
 
-bool haloes = true;
-
 std::map<std::string, std::set<std::string>> completed_campaigns;
 std::set<std::string> encountered_units_set;
 std::set<t_translation::terrain_code> encountered_terrains_set;
@@ -82,7 +80,6 @@ manager::manager() :
 	set_music_volume(music_volume());
 	set_sound_volume(sound_volume());
 
-	set_show_haloes(preferences::get("show_haloes", true));
 	if (!preferences::get("remember_timer_settings", false)) {
 		preferences::erase("mp_countdown_init_time");
 		preferences::erase("mp_countdown_reservoir_time");
@@ -856,17 +853,6 @@ bool message_private()
 void set_message_private(bool value)
 {
 	message_private_on = value;
-}
-
-bool show_haloes()
-{
-	return haloes;
-}
-
-void set_show_haloes(bool value)
-{
-	haloes = value;
-	preferences::set("show_haloes", value);
 }
 
 compression::format save_compression_format()

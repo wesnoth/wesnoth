@@ -7,6 +7,7 @@
    * Removed incomplete joystick support.
    * Removed map scaling algorithm customization. Nearest-neighbor scaling will now
      always be used.
+   * Removed option to disable unit and item halos.
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified),
      Chinese (Traditional), Czech, French, Galician, German, Italian, Japanese,

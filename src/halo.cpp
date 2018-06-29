@@ -263,7 +263,7 @@ void halo_impl::remove(int handle)
 
 void halo_impl::render()
 {
-	if(!preferences::show_haloes() || halos.empty()) {
+	if(halos.empty()) {
 		return;
 	}
 
