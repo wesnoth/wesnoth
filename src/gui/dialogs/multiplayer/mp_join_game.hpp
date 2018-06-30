@@ -30,6 +30,8 @@ class tree_view_node;
 
 namespace dialogs
 {
+class faction_select;
+
 class mp_join_game : public modal_dialog, private plugin_executor
 {
 public:
