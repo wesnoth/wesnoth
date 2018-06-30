@@ -26,13 +26,10 @@ class config;
 
 namespace gui2
 {
-
 class tree_view_node;
 
 namespace dialogs
 {
-class faction_select;
-
 class mp_join_game : public modal_dialog, private plugin_executor
 {
 public:
@@ -58,6 +55,17 @@ private:
 
 	void generate_side_list(window& window);
 
+	/**
+	 * Will close the Faction Select dialog if it's open.
+	 *
+	 * This is used in @ref network_handler to dismiss the dialog if certain actions
+	 * occur, such as the game starting.
+	 *
+	 * @todo maybe move this to a general-purpose close() function in @ref modal_dialog
+	 * and @ref modeless_dialog? It could be useful.
+	 */
+	void close_faction_select_dialog_if_open();
+
 	void network_handler(window& window);
 
 	config& get_scenario();
@@ -81,9 +89,7 @@ private:
 
 	std::unique_ptr<player_list_helper> player_list_;
 
-	gui2::dialogs::faction_select* open_flg_dialog_;
-
-	std::size_t flg_button_callback_timer_id_;
+	std::unique_ptr<class faction_select> flg_dialog_;
 };
 
 } // namespace dialogs
