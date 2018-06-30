@@ -51,19 +51,11 @@ faction_select::faction_select(ng::flg_manager& flg_manager, const std::string& 
 	, last_faction_(flg_manager.current_faction_index())
 	, last_leader_(flg_manager.current_leader_index())
 	, last_gender_(flg_manager.current_gender_index())
-	, w_(nullptr)
 {
 }
 
-void faction_select::cancel()
-{
-	if(w_) {
-		w_->set_retval(retval::CANCEL);
-	}
-}
 void faction_select::pre_show(window& window)
 {
-	w_ = &window;
 	find_widget<label>(&window, "starting_pos", false).set_label(std::to_string(side_));
 
 	//
