@@ -30,7 +30,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="-std=c++14" />
+			<Add option="-std=c++17" />
 			<Add option="-mthreads" />
 			<Add option="-fexceptions" />
 			<Add option="-fdiagnostics-show-option" />
@@ -525,8 +525,6 @@
 		<Unit filename="../../src/gui/dialogs/addon/manager.hpp" />
 		<Unit filename="../../src/gui/dialogs/addon/uninstall_list.cpp" />
 		<Unit filename="../../src/gui/dialogs/addon/uninstall_list.hpp" />
-		<Unit filename="../../src/gui/dialogs/advanced_graphics_options.cpp" />
-		<Unit filename="../../src/gui/dialogs/advanced_graphics_options.hpp" />
 		<Unit filename="../../src/gui/dialogs/attack_predictions.cpp" />
 		<Unit filename="../../src/gui/dialogs/attack_predictions.hpp" />
 		<Unit filename="../../src/gui/dialogs/campaign_difficulty.cpp" />
