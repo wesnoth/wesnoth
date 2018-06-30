@@ -89,7 +89,7 @@ private:
 
 	std::unique_ptr<player_list_helper> player_list_;
 
-	std::unique_ptr<class faction_select> flg_dialog_;
+	faction_select* flg_dialog_;
 };
 
 } // namespace dialogs

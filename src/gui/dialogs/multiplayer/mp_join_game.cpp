@@ -311,16 +311,11 @@ bool mp_join_game::show_flg_select(int side_num)
 		ng::flg_manager flg(era_factions, side_choice, lock_settings, use_map_settings, saved_game);
 
 		{
-			// Create a new Faction Select dialog. We use a smart pointer here instead of creating
-			// a new scoped object on the stack since other functions (such as network_handler())
-			// need to acces the dialog object while its open.
-			flg_dialog_.reset(new gui2::dialogs::faction_select(flg, color, side_num));
+			gui2::dialogs::faction_select flg_dialog(flg, color, side_num);
+			flg_dialog_ = &flg_dialog;
+			utils::scope_exit se([this]() { flg_dialog_ = nullptr; });
 
-			// Destroy the dialog object completely on scope exit.
-			// Using scope_exit ensured this happens even if the dialog throws an exception.
-			utils::scope_exit se([this]() { flg_dialog_.reset(); });
-
-			if(!flg_dialog_->show()) {
+			if(!flg_dialog.show()) {
 				return true;
 			}
 		}
