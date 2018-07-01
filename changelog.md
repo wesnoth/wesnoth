@@ -18,7 +18,7 @@
    * Tweaked the Ruffian's attack animation timing.
    * New attack animation for the Peasant.
  ### Language and i18n
-   * Updated translations: French, German, Slovak
+   * Updated translations: Chinese (Traditional), French, German, Slovak
  ### Multiplayer server
    * Fixed lobby and whisper messages not having a maximum length.
  ### User interface
