@@ -55,6 +55,7 @@ opts.AddVariables(
     ('extra_flags_profile', 'Extra compiler and linker flags to use for profile builds', ""),
     BoolVariable('enable_lto', 'Whether to enable Link Time Optimization for build=release', False),
     ('arch', 'What -march option to use for build=release, will default to pentiumpro on Windows', ""),
+    ('opt', 'override for the build\'s optimization level', ""),
     BoolVariable('harden', 'Whether to enable options to harden the executables', True),
     BoolVariable('glibcxx_debug', 'Whether to define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC for build=debug', False),
     EnumVariable('profiler', 'profiler to be used for build=profile', "gprof", ["gprof", "gcov", "gperftools", "perf"]),
@@ -482,6 +483,20 @@ for env in [test_env, client_env, env]:
             env.AppendUnique(CCFLAGS = ["-fsanitize=" + env["sanitize"]], LINKFLAGS = ["-fsanitize=" + env["sanitize"]])
 
 # #
+# Determine optimization level
+# #
+
+        if not env["opt"]:
+            if env["build"] == "release":
+                env["opt"] = "-O3 "
+            elif env["build"] == "profile" and env["profiler"] == "perf":
+                env["opt"] = "-Og "
+            else:
+                env["opt"] = "-O0 "
+        else:
+            env["opt"] = env["opt"]+" "
+
+# #
 # Add options to provide more hardened executables
 # osx doesn't seem to support RELRO
 # windows' tdm-gcc doesn't seem to provide good support for the hardening options in general
@@ -503,7 +518,7 @@ for env in [test_env, client_env, env]:
 # Start determining options for debug build
 # #
 
-        debug_flags = "-O0 -DDEBUG -ggdb3"
+        debug_flags = env["opt"]+"-DDEBUG -ggdb3"
 
         if env["glibcxx_debug"] == True:
             glibcxx_debug_flags = "_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC"
@@ -516,7 +531,7 @@ for env in [test_env, client_env, env]:
 # #
 
 # default compiler flags
-        rel_comp_flags = "-O3"
+        rel_comp_flags = env["opt"]
         rel_link_flags = ""
 
 # use the arch if provided, or if on Windows and no arch was passed in then default to pentiumpro
@@ -565,19 +580,19 @@ for env in [test_env, client_env, env]:
 # #
 
         if env["profiler"] == "gprof":
-            prof_comp_flags = "-pg"
+            prof_comp_flags = env["opt"]+"-pg"
             prof_link_flags = "-pg"
 
         if env["profiler"] == "gcov":
-            prof_comp_flags = "-fprofile-arcs -ftest-coverage"
+            prof_comp_flags = env["opt"]+"-fprofile-arcs -ftest-coverage"
             prof_link_flags = "-fprofile-arcs"
 
         if env["profiler"] == "gperftools":
-            prof_comp_flags = ""
+            prof_comp_flags = env["opt"]
             prof_link_flags = "-Wl,--no-as-needed,-lprofiler"
 
         if env["profiler"] == "perf":
-            prof_comp_flags = "-ggdb -Og"
+            prof_comp_flags = env["opt"]+"-ggdb"
             prof_link_flags = ""
 
 # #
