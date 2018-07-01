@@ -307,7 +307,8 @@ void play_controller::initialize_and_show_ui()
 	ui_.reset(new gui2::dialogs::game_ui());
 	assert(ui_);
 
-	ui_->show(true);
+	// TODO: reenable once we get the HUD/map event separation problems sorted out...
+	//ui_->show(true);
 }
 
 void play_controller::reset_gamestate(const config& level, int replay_pos)
