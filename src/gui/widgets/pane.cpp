@@ -392,7 +392,7 @@ namespace implementation
 builder_pane::builder_pane(const config& cfg)
 	: builder_widget(cfg)
 	, grow_direction(
-			  lexical_cast<placer_base::tgrow_direction>(cfg["grow_direction"]))
+			  lexical_cast<placer_base::grow_direction>(cfg["grow_direction"]))
 	, parallel_items(cfg["parallel_items"])
 	, item_definition(new builder_grid(cfg.child("item_definition", "[pane]")))
 {

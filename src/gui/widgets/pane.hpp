@@ -192,7 +192,7 @@ struct builder_pane : public builder_widget
 
 	virtual widget_ptr build(const replacements_map& replacements) const override;
 
-	placer_base::tgrow_direction grow_direction;
+	placer_base::grow_direction grow_direction;
 
 	unsigned parallel_items;
 

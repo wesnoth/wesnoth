@@ -24,13 +24,13 @@
 namespace gui2
 {
 
-placer_base* placer_base::build(const tgrow_direction grow_direction,
+placer_base* placer_base::build(const grow_direction grow_direction,
 						  const unsigned parallel_items)
 {
 	switch(grow_direction.v) {
-		case tgrow_direction::horizontal:
+		case grow_direction::horizontal:
 			return new implementation::placer_horizontal_list(parallel_items);
-		case tgrow_direction::vertical:
+		case grow_direction::vertical:
 			return new implementation::placer_vertical_list(parallel_items);
 	};
 
