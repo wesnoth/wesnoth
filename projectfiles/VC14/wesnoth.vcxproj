@@ -2134,13 +2134,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\widgets\list.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\listbox.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
@@ -3806,7 +3799,6 @@
     <ClInclude Include="..\..\src\gui\widgets\image.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\integer_selector.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\label.hpp" />
-    <ClInclude Include="..\..\src\gui\widgets\list.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\listbox.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\matrix.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\menu_button.hpp" />
@@ -4040,6 +4032,7 @@
     <ClInclude Include="..\..\src\utils\name_generator.hpp" />
     <ClInclude Include="..\..\src\utils\name_generator_factory.hpp" />
     <ClInclude Include="..\..\src\utils\reference_counter.hpp" />
+    <ClInclude Include="..\..\src\utils\scope_exit.hpp" />
     <ClInclude Include="..\..\src\variable.hpp" />
     <ClInclude Include="..\..\src\variable_info.hpp" />
     <ClInclude Include="..\..\src\variable_info_detail.hpp" />

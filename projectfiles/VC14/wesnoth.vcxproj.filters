@@ -434,9 +434,6 @@
     <ClCompile Include="..\..\src\gui\widgets\label.cpp">
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\widgets\list.cpp">
-      <Filter>Gui\Widgets</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\listbox.cpp">
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
@@ -1827,9 +1824,6 @@
     <ClInclude Include="..\..\src\gui\widgets\label.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\widgets\list.hpp">
-      <Filter>Gui\Widgets</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\gui\widgets\listbox.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
@@ -3003,6 +2997,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\preferences\lobby.hpp">
       <Filter>Preferences</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\scope_exit.hpp">
+      <Filter>utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
