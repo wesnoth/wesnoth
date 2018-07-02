@@ -330,13 +330,12 @@ void test()
 {
 	gui2::new_widgets = false;
 
-//	for(std::size_t i = 0; i < 2; ++i) {
+	for(std::size_t i = 0; i < 2; ++i) {
 
 		test_resolutions<T>(get_gui_resolutions());
 
-//		break; // FIXME: New widgets break
-//		gui2::new_widgets = true;
-//	}
+		gui2::new_widgets = true;
+	}
 }
 
 template<class T>
