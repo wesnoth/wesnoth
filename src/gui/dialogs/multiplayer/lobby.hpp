@@ -22,18 +22,13 @@
 #include "game_initialization/multiplayer.hpp"
 #include "quit_confirmation.hpp"
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#endif
 class wesnothd_connection;
 namespace gui2
 {
 
 class grid;
 class label;
-#ifndef GUI2_EXPERIMENTAL_LISTBOX
 class listbox;
-#endif
 class text_box;
 class window;
 class multi_page;

@@ -26,11 +26,7 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/chatbox.hpp"
@@ -392,14 +388,12 @@ void mp_lobby::update_gamelist_diff()
 
 void mp_lobby::update_gamelist_header()
 {
-#ifndef GUI2_EXPERIMENTAL_LISTBOX
 	const std::string games_string = VGETTEXT("Games: showing $num_shown out of $num_total", {
 		{"num_shown", std::to_string(lobby_info_.games_visibility().count())},
 		{"num_total", std::to_string(lobby_info_.games().size())}
 	});
 
 	find_widget<label>(gamelistbox_, "map", false).set_label(games_string);
-#endif
 }
 
 std::map<std::string, string_map> mp_lobby::make_game_row_data(const mp::game_info& game)

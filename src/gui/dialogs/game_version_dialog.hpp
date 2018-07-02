@@ -24,12 +24,7 @@
 
 namespace gui2
 {
-
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-class list_view;
-#else
 class listbox;
-#endif
 class stacked_widget;
 
 namespace dialogs

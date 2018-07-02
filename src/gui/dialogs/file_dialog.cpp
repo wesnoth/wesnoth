@@ -25,11 +25,7 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	#include "gui/widgets/list.hpp"
-#else
-	#include "gui/widgets/listbox.hpp"
-#endif
+#include "gui/widgets/listbox.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_panel.hpp"
