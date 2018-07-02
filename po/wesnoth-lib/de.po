@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-06-03 16:42+0300\n"
-"PO-Revision-Date: 2018-07-02 01:33+0200\n"
+"PO-Revision-Date: 2018-07-02 03:42+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -2605,7 +2605,7 @@ msgstr "Bild:"
 #. [grid]
 #: data/gui/window/custom_tod.cfg:286
 msgid "Mask:"
-msgstr "Terrainmaske:"
+msgstr "Maske:"
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:287
@@ -2697,7 +2697,7 @@ msgstr "Beschriftung:"
 #. [toggle_button]: id=team_only_toggle
 #: data/gui/window/edit_label.cfg:111
 msgid "Team only"
-msgstr "Nur für Allianzen"
+msgstr "Nur für Verbündete"
 
 #. [label]
 #: data/gui/window/editor_edit_label.cfg:106
@@ -2737,7 +2737,7 @@ msgstr "Szenarioeinstellungen bearbeiten"
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:72
 msgid "Identifier:"
-msgstr "Kennung:"
+msgstr "ID:"
 
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:140
@@ -2849,7 +2849,7 @@ msgstr "Sicht teilen:"
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:406
 msgid "vision^All"
-msgstr "Alle"
+msgstr "Komplett"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:408
@@ -2869,7 +2869,7 @@ msgstr "Karte erzeugen"
 #. [label]
 #: data/gui/window/editor_generate_map.cfg:58
 msgid "Choose a map generator:"
-msgstr "Wähle einen Zufallskartengenerator:"
+msgstr "Wählt einen Zufallskartengenerator:"
 
 #. [button]: id=settings
 #. [button]: id=random_map_settings
@@ -3590,7 +3590,7 @@ msgstr "Aufzeichnung Schnell"
 #. [option]
 #: data/gui/window/lobby_main.cfg:464 data/gui/window/lobby_main.cfg:617
 msgid "Skip quickly to the active turn when observing"
-msgstr "Überspringe schnell zum aktiven Zug, wenn Sie das Spiel beobachten"
+msgstr "Springt direkt zum aktuellen Zug, wenn Ihr ein Spiel beobachtet"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:468 data/gui/window/lobby_main.cfg:621
@@ -4312,7 +4312,7 @@ msgstr "Ändert, wer die Kontrolle über diese Partei hat"
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:261
 msgid "Change the AI side's behaviour"
-msgstr "Ändere das Verhalten dieser KI gesteuerten Partei"
+msgstr "Ändert das Verhalten dieser KI-gesteuerten Partei"
 
 #. [menu_button]: id=side_team
 #: data/gui/window/mp_staging.cfg:288
@@ -4786,12 +4786,12 @@ msgstr "Deaktiveren, um gespeicherte Passwörter zu löschen (bei Programmende)"
 #. [toggle_button]: id=lobby_whisper_friends_only
 #: data/gui/window/preferences/05_multiplayer.cfg:84
 msgid "Accept whispers from friends only"
-msgstr "Akzeptiere nur Flüster-Nachrichten von Freunden"
+msgstr "Akzeptiert nur Flüster-Nachrichten von Freunden"
 
 #. [toggle_button]: id=lobby_whisper_friends_only
 #: data/gui/window/preferences/05_multiplayer.cfg:85
 msgid "Only accept whisper messages from people on your friends list"
-msgstr "Flüster-Nachrichten nur von Leuten auf deiner Freundesliste zulassen"
+msgstr "Flüster-Nachrichten nur von Leuten auf Eurer Freundesliste zulassen"
 
 #. [toggle_button]: id=lobby_joins_none
 #: data/gui/window/preferences/05_multiplayer.cfg:101
@@ -4832,7 +4832,7 @@ msgstr "Meldungen"
 #. [button]: id=mp_alerts
 #: data/gui/window/preferences/05_multiplayer.cfg:150
 msgid "Configure multiplayer notification settings"
-msgstr "Konfiguriere Multiplayer-Nachrichten-Einstellungen"
+msgstr "Konfiguriere Multiplayer-Benachrichtiguns-Einstellungen"
 
 #. [button]: id=mp_wesnothd
 #: data/gui/window/preferences/05_multiplayer.cfg:162
@@ -4872,7 +4872,8 @@ msgstr "Entfernt den Spieler von Eurer Liste"
 #: data/gui/window/preferences/05_multiplayer.cfg:311
 msgid "You have not befriended or ignored any other players."
 msgstr ""
-"Du hast dich nicht mit anderen Spielern angefreundet oder sie ignoriert."
+"Ihr hast Euch noch nicht mit anderen Spielern angefreundet oder ignoriert "
+"sie."
 
 #. [button]: id=open
 #: data/gui/window/screenshot_notification.cfg:49
@@ -5130,7 +5131,7 @@ msgstr "Kerne"
 #. [grid]
 #: data/gui/window/title_screen.cfg:256
 msgid "Select the game core data"
-msgstr "Wähle Kernspieldaten aus"
+msgstr "Wählt Kernspieldaten aus"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:257
@@ -5627,8 +5628,8 @@ msgstr "Absteigend"
 #: src/gui/dialogs/wml_error.cpp:229
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
-"Zwischenablage-Unterstützung nicht gefunden, wenden Sie sich an Ihren "
-"Paketbetreuer"
+"Zwischenablage-Unterstützung nicht gefunden, wendet Euch an Euren "
+"Paketbetreuer."
 
 #: src/gui/dialogs/addon/manager.cpp:449
 msgid "addons^Back to List"
@@ -5672,13 +5673,13 @@ msgid ""
 "uploaded. Do you really wish to continue?"
 msgstr ""
 "Die Version dieser Erweiterung auf dem Server ist aktueller oder gleich der "
-"Version die hochgeladen werden soll. Möchten sie wirklich fortfahren?"
+"Version die hochgeladen werden soll. Möchten Ihr wirklich fortfahren?"
 
 #: src/gui/dialogs/addon/manager.cpp:736
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
-"Ungültiger Icon-Pfad. Stellen Sie sicher, dass der Pfad zu einem gültigen "
-"Bild führt."
+"Ungültiger Icon-Pfad. Stellt sicher, dass der Pfad zu einem gültigen Bild "
+"führt."
 
 #: src/gui/dialogs/addon/manager.cpp:739 src/gui/dialogs/addon/manager.cpp:742
 #: src/gui/dialogs/addon/manager.cpp:781
@@ -5700,7 +5701,7 @@ msgid ""
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
 "Das Entfernen von '$addon|' wird dauerhaft alle Hoch- und Runterladezahlen "
-"löschen. Möchten Sie wirklich fortfahren?"
+"löschen. Möchtet Ihr wirklich fortfahren?"
 
 #: src/gui/dialogs/addon/manager.cpp:801
 msgid "Do you want to uninstall '$addon|'?"
@@ -5785,7 +5786,7 @@ msgstr "Öffnen"
 
 #: src/gui/dialogs/file_dialog.cpp:306
 msgid "The file already exists. Do you wish to overwrite it?"
-msgstr "Die Datei existiert bereits. Willst Du sie überschreiben?"
+msgstr "Die Datei existiert bereits. Wollt Ihr sie überschreiben?"
 
 #: src/gui/dialogs/file_dialog.cpp:330
 msgid "The file or folder $path cannot be created."
@@ -5800,8 +5801,8 @@ msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
 msgstr ""
-"Konnte Order in $path nicht erstellen. Stellen Sie sicher, dass Sie die "
-"nötigen Rechte haben, um in diesem Verzeichnis schreiben zu können."
+"Konnte Order in $path nicht erstellen. Stellt sicher, dass Ihr die nötigen "
+"Rechte habt, um in diesem Verzeichnis schreiben zu können."
 
 #: src/gui/dialogs/file_dialog.cpp:729
 msgid "The following folder and its contents will be permanently deleted:"
@@ -5813,15 +5814,15 @@ msgstr "Diese Datei wird unwiderufbar gelöscht:"
 
 #: src/gui/dialogs/file_dialog.cpp:731
 msgid "Do you wish to continue?"
-msgstr "Willst Du weitermachen?"
+msgstr "Wollt Ihr weitermachen?"
 
 #: src/gui/dialogs/file_dialog.cpp:743
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
 msgstr ""
-"Konnte Order in $path nicht löschen. Stellen Sie sicher, dass Sie die "
-"nötigen Rechte haben, um in diesem Verzeichnis um schreiben zu können."
+"Konnte Order in $path nicht löschen. Stellt sicher, dass Ihr die nötigen "
+"Rechte habt, um in diesem Verzeichnis um schreiben zu können."
 
 #: src/gui/dialogs/folder_create.cpp:60
 msgid "New Bookmark"
@@ -5927,7 +5928,7 @@ msgstr "Läuft unter $os"
 # Ein Strich passt hier besser.
 #: src/gui/dialogs/game_version.cpp:226
 msgid "version^N/A"
-msgstr "-"
+msgstr "–"
 
 #: src/gui/dialogs/label_settings.cpp:53
 msgid "Team Labels"
@@ -6056,7 +6057,7 @@ msgid ""
 "add-ons be updated."
 msgstr ""
 "Der Partie kann nicht beigetreten werden, da der Host veraltete Versionen "
-"von Erweiterungen hat, die nicht mit Ihrer kompatibel sind. Sie könnten dem "
+"von Erweiterungen hat, die nicht mit Euren kompatibel sind. Ihr könnt dem "
 "Host vorschlagen, seine Erweiterungen zu aktualisieren."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:229
@@ -6069,9 +6070,9 @@ msgid ""
 "in order to join.\n"
 "Do you want to try to install them?"
 msgstr ""
-"Diese Partie benötigt die Installation weiterer Erweiterungen, um beitreten "
-"zu können.\n"
-"Möchten Sie diese installieren?"
+"Diese Partie benötigt die Installation weiterer Erweiterungen, um ihr "
+"beitreten zu können.\n"
+"Möchtet Ihr diese installieren?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:396
 msgid "Games: showing $num_shown out of $num_total"
@@ -6185,7 +6186,7 @@ msgstr "Keine Epochen gefunden"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:281
 msgid "Independent: Random factions assigned independently"
-msgstr "Unabhängig: Zufällige Fraktionen werden unabhängig zugewiesen"
+msgstr "Unabhängig: Zufällige Fraktionen werden komplett unabhängig zugewiesen"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:282
 msgid "No Mirror: No two players will get the same faction"
@@ -6211,11 +6212,11 @@ msgstr "Die gewählte Partie hat keine Parteien!"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:898
 msgid "Choose Starting Scenario"
-msgstr "Wähle zu startendes Szenario"
+msgstr "Wählt das zu startende Szenario"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:898
 msgid "Select at which point to begin this campaign."
-msgstr "Wähle Startpunkt der Kampagne aus."
+msgstr "Wählt den Einstiegspunkt in die Kampagne aus."
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:194
 msgid "No era information found."
@@ -6227,7 +6228,7 @@ msgstr "Computer Spieler"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:251
 msgid "Empty slot"
-msgstr "Entfernter Platz"
+msgstr "Unbesetzter Platz"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:253
 msgid "Reserved for $playername"
@@ -6348,9 +6349,9 @@ msgstr "Test wählen"
 
 #: src/gui/dialogs/unit_recall.cpp:265
 msgid "This unit is loyal and requires no upkeep."
-msgstr "Diese Einheit ist loyal und kosten euch keine Unterhaltskosten."
+msgstr "Diese Einheit ist loyal und kostet Euch keine Unterhaltskosten."
 
-# Der vorhergehende Satz sagt etwas übder die Einheit, darauf bezieht sich dieser Satz. Ich halte es daher für besser him mit sie zu übersetzen.
+# Der vorhergehende Satz sagt etwas über die Einheit, darauf bezieht sich dieser Satz. Ich halte es daher für besser, hier mit sie zu übersetzen.
 # --Sevu
 #: src/gui/dialogs/unit_recall.cpp:266 src/gui/dialogs/unit_recall.cpp:271
 #: src/gui/dialogs/unit_recall.cpp:276
@@ -6368,7 +6369,7 @@ msgstr "Diese Einheit ist ein Veteran, da sie eine höhere Stufe besitzt."
 
 #: src/gui/dialogs/unit_recall.cpp:275
 msgid "This unit is close to advancing a level."
-msgstr "Diese Einheit steht kurz davor die nächste Stufe zu erreichen."
+msgstr "Diese Einheit steht kurz davor, die nächste Stufe zu erreichen."
 
 #: src/gui/dialogs/unit_recall.cpp:281
 msgid "Dismiss Unit"
@@ -6435,7 +6436,7 @@ msgstr ""
 
 #: src/gui/widgets/label.cpp:172
 msgid "Do you want to open this link?"
-msgstr "Möchtet Ihr diesen Link wirklich öffnen?"
+msgstr "Wollt Ihr diesen Link wirklich öffnen?"
 
 #: src/gui/widgets/label.cpp:203
 msgid "Copied link!"
@@ -6479,7 +6480,7 @@ msgstr "Keine ausgewählt"
 
 #: src/gui/widgets/pane.cpp:429
 msgid "Need at least 1 parallel item."
-msgstr "Mindestens ein paralleler Gegenstand benötigt."
+msgstr "Mindestens ein paralleles Item benötigt."
 
 #: src/gui/widgets/size_lock.cpp:86
 msgid "Invalid size."
@@ -7002,9 +7003,9 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
-"Verwendet die linke und rechte Maustaste, um Gelände im Vorder- oder "
-"Hintergrund zu zeichnen. Haltet Shift gedrückt, um nur auf der Basisebene zu "
-"zeichnen. Mit Ctrl+Klick wird das Gelände unter dem Cursor als Pinsel "
+"Verwendet die linke und rechte Maustaste, um Gelände zu zeichnen. Haltet "
+"Shift gedrückt, um die zugrundeliegenden Ebene nicht zu ändern, z.B. bei "
+"Brücken. Mit Ctrl+Klick wird das Gelände unter dem Cursor als Pinsel "
 "übernommen."
 
 #: src/hotkey/hotkey_command.cpp:192
@@ -7017,7 +7018,7 @@ msgid ""
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
 "Die linke Maustaste wählt aus oder hebt die Auswahl auf, wenn Strg gedrückt "
-"ist; die Rechte ruft ein Kontextmenü auf. Haltet Umschalt gedrückt, um eine "
+"ist; die Rechte ruft ein Kontextmenü auf. Haltet Shift gedrückt, um eine "
 "Zauberstabauswahl des selben Geländetyps durchzuführen."
 
 #: src/hotkey/hotkey_command.cpp:193
@@ -7032,7 +7033,7 @@ msgid ""
 msgstr ""
 "Die linke Maustaste setzt die Spielerposition, die Rechte löscht sie. Mit "
 "den Zifferntasten springt Ihr zur jeweiligen Startposition, Alt+Nummer setzt "
-"die jeweilige Startposition, Entfernen löscht diese."
+"die jeweilige Startposition, Entfernen löscht sie."
 
 #: src/hotkey/hotkey_command.cpp:194
 msgid "Starting Positions Tool"
@@ -7068,17 +7069,13 @@ msgstr "Gegenstandswerkzeug"
 msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
-msgstr ""
-"Die linke Maustaste platziert oder verschiebt einen Gegenstand, die Rechte "
-"löscht ihn. Noch nicht implementiert."
+msgstr "Die linke Maustaste platziert einen Gegenstand."
 
 #: src/hotkey/hotkey_command.cpp:198
 msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
-msgstr ""
-"Die linke Maustaste platziert oder verschiebt eine Geräuschquelle, die "
-"Rechte löscht sie. Noch nicht implementiert."
+msgstr "Noch nicht implementiert."
 
 #: src/hotkey/hotkey_command.cpp:198
 msgid "Sound Source Tool"
@@ -7101,6 +7098,7 @@ msgid "Can Recruit"
 msgstr "Kann ausbilden"
 
 #: src/hotkey/hotkey_command.cpp:201
+#, fuzzy
 msgid "Toggle the recruit attribute of a unit."
 msgstr "Schalte den Ausbildungswert der Einheit ein/aus."
 
@@ -7123,7 +7121,7 @@ msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:205
 msgid "Change Unit ID"
-msgstr "Einheitenkennung ändern"
+msgstr "ID der Einheit ändern"
 
 #: src/hotkey/hotkey_command.cpp:206
 msgid "Loyal"
@@ -7460,7 +7458,7 @@ msgid ""
 msgstr ""
 "Das <b>$filename</b> Serverprogramm verfügt über eine Multiplayer-Server "
 "Funktionalität und wird zum Hosten einer Netzwerkpartie benötigt. Es ist "
-"normalerweise im Hauptverzeichnis des Spiels zu finden."
+"meist im Hauptverzeichnis des Spiels zu finden."
 
 #: src/preferences/display.cpp:168
 msgid "Find Server Application"
