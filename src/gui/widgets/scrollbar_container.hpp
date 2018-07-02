@@ -43,9 +43,7 @@ class scrollbar_container : public container_base
 
 	friend struct implementation::builder_scroll_label;
 	friend struct implementation::builder_scrollbar_panel;
-#ifndef GUI2_EXPERIMENTAL_LISTBOX
 	friend class listbox;
-#endif
 	friend class tree_view;
 	friend struct scrollbar_container_implementation;
 

@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI2_EXPERIMENTAL_LISTBOX
-
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/widgets/listbox.hpp"
@@ -973,17 +971,6 @@ builder_listbox::builder_listbox(const config& cfg)
 
 widget* builder_listbox::build() const
 {
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	list_view* widget = new list_view(true, true, generator_base::vertical_list, true, list_builder);
-
-	// init_control(widget);
-	if(!list_data.empty()) {
-		widget->append_rows(list_data);
-	}
-
-	return widget;
-#else
-
 	listbox* widget = new listbox(*this, generator_base::vertical_list, list_builder, has_minimum_, has_maximum_);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
@@ -999,7 +986,6 @@ widget* builder_listbox::build() const
 	widget->finalize(header, footer, list_data);
 
 	return widget;
-#endif
 }
 
 /*WIKI_MACRO
@@ -1090,17 +1076,6 @@ builder_horizontal_listbox::builder_horizontal_listbox(const config& cfg)
 
 widget* builder_horizontal_listbox::build() const
 {
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	list_view* widget = new list_view(true, true, generator_base::horizontal_list, true, list_builder);
-
-	// init_control(widget);
-	if(!list_data.empty()) {
-		widget->append_rows(list_data);
-	}
-
-	return widget;
-#else
-
 	listbox* widget = new listbox(*this, generator_base::horizontal_list, list_builder, has_minimum_, has_maximum_);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
@@ -1116,7 +1091,6 @@ widget* builder_horizontal_listbox::build() const
 	widget->finalize(nullptr, nullptr, list_data);
 
 	return widget;
-#endif
 }
 
 /*WIKI_MACRO
@@ -1207,17 +1181,6 @@ builder_grid_listbox::builder_grid_listbox(const config& cfg)
 
 widget* builder_grid_listbox::build() const
 {
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	list_view* widget = new list_view(true, true, generator_base::grid, true, list_builder);
-
-	// init_control(widget);
-	if(!list_data.empty()) {
-		widget->append_rows(list_data);
-	}
-
-	return widget;
-#else
-
 	listbox* widget = new listbox(*this, generator_base::table, list_builder, has_minimum_, has_maximum_);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
@@ -1233,7 +1196,6 @@ widget* builder_grid_listbox::build() const
 	widget->finalize(nullptr, nullptr, list_data);
 
 	return widget;
-#endif
 }
 
 } // namespace implementation
@@ -1241,5 +1203,3 @@ widget* builder_grid_listbox::build() const
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

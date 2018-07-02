@@ -34,11 +34,7 @@
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
@@ -49,13 +45,11 @@
 #include "utils/scope_exit.hpp"
 #include "wesnothd_connection.hpp"
 
-
 static lg::log_domain log_mp_connect_engine("mp/connect/engine");
 #define DBG_MP LOG_STREAM(debug, log_mp_connect_engine)
 #define LOG_MP LOG_STREAM(info, log_mp_connect_engine)
 #define WRN_MP LOG_STREAM(warn, log_mp_connect_engine)
 #define ERR_MP LOG_STREAM(err, log_mp_connect_engine)
-
 
 namespace gui2
 {
