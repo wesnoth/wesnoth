@@ -26,6 +26,7 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/clickable_item.hpp"
 #include "gui/widgets/styled_widget.hpp"
+#include "gui/widgets/listbox.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/progress_bar.hpp"
@@ -38,12 +39,6 @@
 #include "gui/widgets/unit_preview_pane.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
-
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
-#include "gui/widgets/listbox.hpp"
-#endif
 
 #include "config.hpp"
 #include "log.hpp"
@@ -130,11 +125,7 @@ static gui2::widget* find_widget(lua_State* L, int i, bool readonly)
 	gui2::widget* w = scoped_dialog::current->window.get();
 	for(; !lua_isnoneornil(L, i); ++i)
 	{
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-		if(gui2::list_view* list = dynamic_cast<gui2::list_view*>(w))
-#else
 		if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(w))
-#endif
 		{
 			int v = lua_tointeger(L, i);
 			if(v < 1) {
@@ -453,11 +444,7 @@ int intf_set_dialog_value(lua_State* L)
 {
 	gui2::widget *w = find_widget(L, 2, false);
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	if(gui2::list_view* list = dynamic_cast<gui2::list_view*>(w))
-#else
 	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(w))
-#endif
 	{
 		if(lua_istable(L, 1)) {
 			// Do two passes in case has_minimum is true
@@ -585,11 +572,7 @@ int intf_get_dialog_value(lua_State* L)
 	gui2::widget *w = find_widget(L, 1, true);
 	int num_rets = 1;
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	if(gui2::list_view* list = dynamic_cast<gui2::list_view*>(w))
-#else
 	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(w))
-#endif
 	{
 		lua_pushinteger(L, list->get_selected_row() + 1);
 		num_rets = 2;
@@ -681,11 +664,7 @@ int intf_remove_dialog_item(lua_State* L)
 	int number = luaL_checkinteger(L, 2);
 	gui2::widget* w = find_widget(L, 3, true);
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	if(gui2::list_view* list = dynamic_cast<gui2::list_view*>(w))
-#else
 	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(w))
-#endif
 	{
 		list->remove_row(pos, number);
 	} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(w)) {
@@ -763,23 +742,10 @@ int intf_set_dialog_callback(lua_State* L)
 		connect_signal_notify_modified(dynamic_cast<gui2::widget&>(*si), std::bind(dialog_callback, _1));
 	} else if(gui2::integer_selector* is = dynamic_cast<gui2::integer_selector*>(w)) {
 		connect_signal_notify_modified(dynamic_cast<gui2::widget&>(*is), std::bind(dialog_callback, _1));
-	}
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	else if(gui2::list_view* l = dynamic_cast<gui2::list_view*>(w)) {
-		static dialog_callback_wrapper wrapper;
-		connect_signal_notify_modified(*l
-				, std::bind(
-					  &dialog_callback_wrapper::forward
-					, wrapper
-					, w));
-	}
-#else
-	else if(gui2::listbox* l = dynamic_cast<gui2::listbox*>(w)) {
+	} else if(gui2::listbox* l = dynamic_cast<gui2::listbox*>(w)) {
 		static dialog_callback_wrapper wrapper;
 		connect_signal_notify_modified(*l, std::bind(&dialog_callback_wrapper::forward, wrapper, w));
-	}
-#endif
-	else if(gui2::tree_view* tv = dynamic_cast<gui2::tree_view*>(w)) {
+	} else if(gui2::tree_view* tv = dynamic_cast<gui2::tree_view*>(w)) {
 		tv->set_selection_change_callback(&dialog_callback);
 	} else {
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");

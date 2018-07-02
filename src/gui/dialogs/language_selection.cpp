@@ -17,11 +17,7 @@
 #include "gui/dialogs/language_selection.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "language.hpp"

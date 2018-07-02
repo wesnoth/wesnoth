@@ -36,11 +36,7 @@
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/image.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "gui/widgets/pane.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"

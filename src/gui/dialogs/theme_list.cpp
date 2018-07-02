@@ -15,11 +15,7 @@
 #include "gui/dialogs/theme_list.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "theme.hpp"

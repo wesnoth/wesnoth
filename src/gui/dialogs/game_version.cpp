@@ -26,11 +26,7 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/styled_widget.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/stacked_widget.hpp"

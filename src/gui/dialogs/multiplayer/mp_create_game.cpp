@@ -28,11 +28,7 @@
 #include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "preferences/game.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
@@ -48,12 +44,7 @@
 #include "savegame.hpp"
 #include "settings.hpp"
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "utils/functional.hpp"
-#endif
-
 #include <boost/algorithm/string.hpp>
-
 
 static lg::log_domain log_mp_create("mp/create");
 

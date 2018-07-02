@@ -21,11 +21,7 @@
 #include "formatter.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "preferences/game.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"

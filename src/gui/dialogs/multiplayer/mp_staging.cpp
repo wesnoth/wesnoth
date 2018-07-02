@@ -28,11 +28,7 @@
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/image.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
