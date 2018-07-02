@@ -508,7 +508,6 @@
 		91A215FB1CAD9D4300927AEA /* horizontal_scrollbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5795A610F05858100EB190E /* horizontal_scrollbar.cpp */; };
 		91A215FD1CAD9D4300927AEA /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCFB0ECA805A002BE442 /* image.cpp */; };
 		91A216001CAD9D4300927AEA /* label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCFD0ECA805A002BE442 /* label.cpp */; };
-		91A216021CAD9D4300927AEA /* list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8991213590500CFBDAB /* list.cpp */; };
 		91A216041CAD9D4300927AEA /* listbox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCFF0ECA805A002BE442 /* listbox.cpp */; };
 		91A216061CAD9D4300927AEA /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62579C811573E797003089D5 /* matrix.cpp */; };
 		91A216081CAD9D4300927AEA /* minimap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BD030ECA805A002BE442 /* minimap.cpp */; };
@@ -830,7 +829,6 @@
 		B514C70B0F5450CC00E273F0 /* manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B514C7090F5450CC00E273F0 /* manager.cpp */; };
 		B52EE8841213585300CFBDAB /* tod_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8821213585300CFBDAB /* tod_manager.cpp */; };
 		B52EE88C1213589100CFBDAB /* unit_attack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8891213589100CFBDAB /* unit_attack.cpp */; };
-		B52EE89D1213590500CFBDAB /* list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8991213590500CFBDAB /* list.cpp */; };
 		B52EE89E1213590500CFBDAB /* progress_bar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE89B1213590500CFBDAB /* progress_bar.cpp */; };
 		B52EE8CB121359A600CFBDAB /* arrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8A1121359A600CFBDAB /* arrow.cpp */; };
 		B52EE8CD121359A600CFBDAB /* debugger_fwd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8A6121359A600CFBDAB /* debugger_fwd.cpp */; };
@@ -1875,8 +1873,6 @@
 		B52EE88A1213589100CFBDAB /* unit_attack.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unit_attack.hpp; sourceTree = "<group>"; };
 		B52EE88F121358D700CFBDAB /* notifiee.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = notifiee.hpp; sourceTree = "<group>"; };
 		B52EE890121358D700CFBDAB /* notifier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = notifier.hpp; sourceTree = "<group>"; };
-		B52EE8991213590500CFBDAB /* list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = list.cpp; sourceTree = "<group>"; };
-		B52EE89A1213590500CFBDAB /* list.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = list.hpp; sourceTree = "<group>"; };
 		B52EE89B1213590500CFBDAB /* progress_bar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = progress_bar.cpp; sourceTree = "<group>"; };
 		B52EE89C1213590500CFBDAB /* progress_bar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = progress_bar.hpp; sourceTree = "<group>"; };
 		B52EE8A1121359A600CFBDAB /* arrow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = arrow.cpp; sourceTree = "<group>"; };
@@ -4477,8 +4473,6 @@
 				B5795A600F05858100EB190E /* integer_selector.hpp */,
 				B5A9BCFD0ECA805A002BE442 /* label.cpp */,
 				B5A9BCFE0ECA805A002BE442 /* label.hpp */,
-				B52EE8991213590500CFBDAB /* list.cpp */,
-				B52EE89A1213590500CFBDAB /* list.hpp */,
 				B5A9BCFF0ECA805A002BE442 /* listbox.cpp */,
 				B5A9BD000ECA805A002BE442 /* listbox.hpp */,
 				62579C811573E797003089D5 /* matrix.cpp */,
@@ -5071,7 +5065,6 @@
 				B5A9BD380ECA805A002BE442 /* language_selection.cpp in Sources */,
 				B5599B330EC62181008DD061 /* language.cpp in Sources */,
 				EC67F7F01DB3144A0038337E /* constants.cpp in Sources */,
-				B52EE89D1213590500CFBDAB /* list.cpp in Sources */,
 				B5A9BD650ECA805A002BE442 /* listbox.cpp in Sources */,
 				B55BE04B11234B1A00154E6C /* lobby_data.cpp in Sources */,
 				B55BE04C11234B1A00154E6C /* lobby_info.cpp in Sources */,
@@ -5892,7 +5885,6 @@
 				91A215FB1CAD9D4300927AEA /* horizontal_scrollbar.cpp in Sources */,
 				91A215FD1CAD9D4300927AEA /* image.cpp in Sources */,
 				91A216001CAD9D4300927AEA /* label.cpp in Sources */,
-				91A216021CAD9D4300927AEA /* list.cpp in Sources */,
 				91A216041CAD9D4300927AEA /* listbox.cpp in Sources */,
 				91A216061CAD9D4300927AEA /* matrix.cpp in Sources */,
 				91A216081CAD9D4300927AEA /* minimap.cpp in Sources */,
