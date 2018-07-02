@@ -206,7 +206,7 @@ struct builder_pane : public builder_widget
 
 	widget* build(const replacements_map& replacements) const;
 
-	placer_base::tgrow_direction grow_direction;
+	placer_base::grow_direction grow_direction;
 
 	unsigned parallel_items;
 
