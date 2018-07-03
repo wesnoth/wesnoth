@@ -129,7 +129,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	if(opp_weapon) {
 		opp_ctx.emplace(opp_weapon->specials_context(&opp, &u, opp_loc, u_loc, !attacking, weapon));
 	}
-		
+
 	slows = weapon->bool_ability("slow");
 	drains = !opp.get_state("undrainable") && weapon->bool_ability("drains");
 	petrifies = weapon->bool_ability("petrifies");
@@ -1713,7 +1713,6 @@ std::pair<int, bool> ability_leadership(const std::string& ability,const unit_ma
 	}
 	
 	bool backstab_pos = false;
-
 	unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
             const config &filter = (*i->first).child("filter_opponent");
