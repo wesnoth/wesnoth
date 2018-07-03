@@ -860,7 +860,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 			//do nothing
 
 		} else if((child = cfg->child("speak")) != NULL) {
-			const std::string& team_name = (*child)["team_name"];
+			const std::string& team_name = (*child)["to_sides"];
 			if (team_name == "" || (!is_observer()
 					&& teams[disp.viewing_team()].team_name() == team_name)
 					|| (is_observer() && team_name == "observer"))
