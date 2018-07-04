@@ -54,6 +54,9 @@
        first or by undead.
    * Eastern Invasion:
      * Fixed missing prisoners and loss of recallable units in 'Captured'.
+   * Secrets of the Ancients:
+     * Adjust gender of enemies to better match story in S11 & 21 (issue #3294)
+     * Simplify dialog to fix possible confusion in S16 (issue #3291)
    * Under the Burning Suns:
      * S11: added custom graphics for the citadel.
      * S12: clarified the alien bodies' weaknesses.
