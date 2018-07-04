@@ -240,7 +240,7 @@ def main():
     pkgversion = args.package_version + '\\n"'
     print('msgid ""\nmsgstr ""', file=outfile)
     print('"Project-Id-Version:', pkgversion, file=outfile)
-    print('"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\\n"', file=outfile)
+    print('"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\\n"', file=outfile)
     now = datetime.utcnow()
     cdate = '{:04d}-{:02d}-{:02d} {:02d}:{:02d} UTC\\n"'.format(now.year,
                                                                 now.month,
