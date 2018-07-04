@@ -843,9 +843,11 @@ static std::string format_prob(double prob)
 {
 	if(prob > 0.9995) {
 		return "100%";
+	} else if(prob < 0.0005) {
+		return "0%";
 	}
 	std::ostringstream res;
-	res << std::setprecision(1) << std::setw(4) << 100.0 * prob << "%";
+	res << std::setprecision(prob < 0.1 ? 2 : 3) << 100.0 * prob << "%";
 	return res.str();
 }
 
