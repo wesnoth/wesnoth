@@ -725,7 +725,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		}
 		else if (const config &speak = cfg->child("speak"))
 		{
-			const std::string &team_name = speak["team_name"];
+			const std::string &team_name = speak["to_sides"];
 			const std::string &speaker_name = speak["id"];
 			const std::string &message = speak["message"];
 			//if (!preferences::parse_should_show_lobby_join(speaker_name, message)) return;
