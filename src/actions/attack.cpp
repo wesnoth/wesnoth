@@ -1751,7 +1751,7 @@ bool bool_leadership(const std::string& ability,const unit_map& units, const map
 	unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
             const std::string& active_on = (*i->first)["active_on"];
-            if(!(active_on.empty() || (attacker && active_on == "offense") || (!attacker && active_on == "defense")) || !up->ability_affects_opponent(ability, *i->first, opp_loc)) {
+            if(!(active_on.empty() || (attacker && active_on == "offense") || (!attacker && active_on == "defense")) || !up->ability_filter_opponent(ability, *i->first, opp_loc)) {
                 i = abil.erase(i);
                 } else {
                     ++i;
