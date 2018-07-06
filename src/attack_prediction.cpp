@@ -1820,6 +1820,16 @@ double calculate_probability_of_debuff(double initial_prob, bool enemy_gives, do
 	return prob_debuff;
 }
 
+// Rounds a probability that's extremely close to 0 or 1 to exactly 0 or 1.
+void round_prob_if_close_to_sure(double& prob)
+{
+	if(prob < 1.0e-9) {
+		prob = 0.0;
+	} else if(prob > 1.0 - 1.0e-9) {
+		prob = 1.0;
+	}
+}
+
 /**
  * Returns the smallest HP we could possibly have based on the provided
  * hit point distribution.
@@ -2308,6 +2318,10 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 	// The probability of being already dead before the fight begins:
 	double self_already_dead = hp_dist[0];
 	double opp_already_dead = opponent.hp_dist[0];
+
+	// If incoming slow probabilities are extremely close to 0 or 1, round them to exactly 0 or 1 (bug #3321)
+	round_prob_if_close_to_sure(slowed);
+	round_prob_if_close_to_sure(opponent.slowed);
 
 	// If we've fought before and we have swarm, we might have to split the
 	// calculation by number of attacks.
