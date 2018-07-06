@@ -1639,7 +1639,7 @@ int under_leadership(const unit_map& units, const map_location& loc, bool attack
         }
     }
 		if(!abil.empty()) {
-            unit_abilities::effect leader_effect(abil, abil_value, backstab_pos);
+            unit_abilities::effect leader_effect(abil, abil_value, false);
             return leader_effect.get_composite_value();
     }
     return 0;
