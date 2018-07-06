@@ -1638,8 +1638,9 @@ int under_leadership(const unit_map& units, const map_location& loc, bool attack
         ++i;
         }
     }
-	if(!abil.empty()) {
-	return abil.highest("value");
+		if(!abil.empty()) {
+            unit_abilities::effect leader_effect(abil, abil_value, backstab_pos);
+            return leader_effect.get_composite_value();
     }
     return 0;
 }
