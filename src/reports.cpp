@@ -628,7 +628,12 @@ static config unit_vision(const unit* u)
 	std::ostringstream str, tooltip;
 	if (u->vision() != u->total_movement()) {
 		str << _("vision:") << ' ' << u->vision();
-		tooltip << _("vision:") << ' ' << u->vision();
+		tooltip << _("vision:") << ' ' << u->vision() << '\n';
+	}
+	if (u->jamming() != 0) {
+		if (str.tellp() == 0)
+			str << _("jamming:") << ' ' << u->jamming();
+		tooltip << _("jamming:") << ' ' << u->jamming() << '\n';
 	}
 	return text_report(str.str(), tooltip.str());
 }
