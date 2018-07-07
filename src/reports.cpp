@@ -230,8 +230,12 @@ static config unit_side(reports::context & rc, const unit* u)
 	std::stringstream text;
 	text << " " << u->side();
 
-	add_image(report, flag_icon + mods, u_team.side_name(), "");
-	add_text(report, text.str(), "", "");
+	std::ostringstream tooltip;
+	if (!u_team.side_name().empty()) {
+		tooltip << _("Side:") << " <b>" <<  u_team.side_name() << "</b>";
+	}
+	add_image(report, flag_icon + mods, tooltip.str(), "");
+	add_text(report, text.str(), tooltip.str(), "");
 	return report;
 }
 REPORT_GENERATOR(unit_side, rc)
@@ -611,10 +615,12 @@ static config unit_vision(const unit* u)
 	if (!u) return config();
 
 	// TODO
-	std::ostringstream str;
+	std::ostringstream str, tooltip;
 	if (u->vision() != u->total_movement()) {
-		str << _("vision: ") << u->vision(); }
-	return text_report(str.str(), str.str());
+		str << _("vision:") << ' ' << u->vision();
+		tooltip << _("vision:") << ' ' << u->vision();
+	}
+	return text_report(str.str(), tooltip.str());
 }
 REPORT_GENERATOR(unit_vision, rc)
 {
@@ -1130,6 +1136,7 @@ REPORT_GENERATOR(tod_stats, rc)
 	const map_location& tod_schedule_hex = display::get_singleton()->shrouded(hex) ? map_location::null_location() : hex;
 	const std::vector<time_of_day>& schedule = rc.tod().times(tod_schedule_hex);
 
+	tooltip << _("Time of day schedule:") << " \n";
 	int current = rc.tod().get_current_time(tod_schedule_hex);
 	int i = 0;
 	for (const time_of_day& tod : schedule) {
@@ -1161,7 +1168,7 @@ static config time_of_day_at(reports::context & rc, const map_location& mouseove
 		chaotic_color = (b < 0) ? "green" : "red";
 		liminal_color = "red";
 	}
-	tooltip << tod.name << '\n'
+	tooltip << _("Time of day:") << " <b>" << tod.name << "</b>\n"
 		<< _("Lawful units: ") << "<span foreground=\"" << lawful_color  << "\">"
 		<< utils::signed_percent(b)  << "</span>\n"
 		<< _("Neutral units: ") << utils::signed_percent(0)  << '\n'
