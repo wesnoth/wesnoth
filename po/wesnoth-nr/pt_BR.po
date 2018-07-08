@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-06-09 20:32 UTC\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2018-07-08 08:50 UTC\n"
 "PO-Revision-Date: 2012-12-23 15:22-0300\n"
 "Last-Translator: Diego Inácio Goergen <thegoergen@gmail.com>\n"
 "Language-Team: none\n"
@@ -377,6 +377,7 @@ msgstr "Derrotar líderes inimigos"
 #: data/campaigns/Northern_Rebirth/scenarios/05b_Compelled.cfg:84
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:267
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:58
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:327
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:697
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:43
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:265
@@ -748,15 +749,15 @@ msgstr ""
 "coletou o que conseguiu de comida e armas e entrou nas profundezas escuras "
 "das cavernas."
 
+#. [side]: type=Troll Warrior, id=Tor
+#. [side]: type=Troll Warrior, id=Bor
+#. [side]: type=Troll Warrior, id=Oof
+#. [side]: type=Troll Warrior, id=Glu
 #. [side]: type=Troll, id=Knash
 #. [side]: type=Troll, id=Krog
 #. [side]: type=Troll Warrior, id=Thung
 #. [side]: type=Troll, id=Franik
 #. [side]: type=Troll, id=Henie
-#. [side]: type=Troll Warrior, id=Tor
-#. [side]: type=Troll Warrior, id=Bor
-#. [side]: type=Troll Warrior, id=Oof
-#. [side]: type=Troll Warrior, id=Glu
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:71
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:85
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:157
@@ -779,8 +780,8 @@ msgstr "Knash"
 msgid "Krog"
 msgstr "Krog"
 
-#. [unit]: type=Dwarvish Lord, id=Hamel
 #. [side]: type=Dwarvish Lord, id=Hamel
+#. [unit]: type=Dwarvish Lord, id=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:105
 #: data/campaigns/Northern_Rebirth/scenarios/02_02_Meeting_With_Dwarves.cfg:48
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:42
@@ -790,14 +791,14 @@ msgstr "Krog"
 msgid "Hamel"
 msgstr "Hamel"
 
-#. [side]: type=Death Knight, id=Mal Barath
-#. [side]: type=Death Knight, id=Delzath
-#. [side]: type=Death Knight, id=Mal Tath
 #. [side]: type=Ancient Lich, id=Malifor
 #. [side]: type=Draug, id=Thorin
 #. [side]: type=Draug, id=Herlin
 #. [side]: type=Draug, id=Fervin
 #. [side]: type=Draug, id=Hellian
+#. [side]: type=Death Knight, id=Mal Barath
+#. [side]: type=Death Knight, id=Delzath
+#. [side]: type=Death Knight, id=Mal Tath
 #. [side]: type=Death Knight, id=Hettel
 #. [side]: type=Death Knight, id=Tervor
 #. [side]: type=Death Knight, id=Author
@@ -1196,9 +1197,9 @@ msgstr ""
 "conversa com nosso chefe, Lorde Hamel."
 
 #. [message]: speaker=Tallin
+#. [message]: speaker=unit
 #. [message]: speaker=Father Morvin
 #. [message]: speaker=Ro'Arthian
-#. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:885
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1328
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2317
@@ -1603,8 +1604,8 @@ msgstr ""
 msgid "Ahahahaha! Yes, smash the skeletons! Smash them!"
 msgstr ""
 
-#. [message]: speaker=Tallin
 #. [message]: role=Supporter
+#. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/02_02_Meeting_With_Dwarves.cfg:176
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:184
 msgid "..."
@@ -1715,8 +1716,8 @@ msgstr "Quando finalmente chegaram às minas, eles não foram desapontados."
 
 #. [side]
 #. [side]: type=Lieutenant, id=Tallin
-#. [side]: type=Elvish Avenger, id=Sisal
 #. [side]: type=Dwarvish Lord, id=Hamel
+#. [side]: type=Elvish Avenger, id=Sisal
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:29
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:32
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:162
@@ -1736,8 +1737,8 @@ msgstr "Quando finalmente chegaram às minas, eles não foram desapontados."
 msgid "Alliance"
 msgstr "Aliança"
 
-#. [unit]: type=Ancient Lich, id=Malifor
 #. [side]: type=Ancient Lich, id=Malifor
+#. [unit]: type=Ancient Lich, id=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:49
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:53
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:249
@@ -3369,10 +3370,10 @@ msgstr ""
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2131
 msgid ""
-"I am afraid times have changed much. Our first king, Haldric I, fled from "
-"the Green Isle with the Wesfolk and the orcs in pursuit. He came ashore on "
-"this land that we now call the Great Continent and destroyed the Lich-Lord "
-"Jevyan before founding the Kingdom of Wesnoth. That was centuries ago."
+"I am afraid times have changed much. Our first king, Haldric I, fled the "
+"Green Isle with the Wesfolk, the orcs in pursuit. He came ashore on this "
+"land that we now call the Great Continent and destroyed the Lich-Lord Jevyan "
+"before founding the Kingdom of Wesnoth. That was centuries ago."
 msgstr ""
 
 #. [message]: speaker=Abhai
@@ -3701,8 +3702,8 @@ msgstr ""
 "PRÓXIMOS E QUERIDOS POR VOCÊS OS DEIXEM! QUE UM RAIO CAIA SOBRE SUAS "
 "CABEÇAS! QUE-"
 
-#. [message]: speaker=Sister Thera
 #. [message]: speaker=Tallin
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2811
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:468
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:677
@@ -3718,8 +3719,8 @@ msgstr ""
 "QUE A TERRA SE PARTA E ENGULA VOCÊS! QUE TODOS OS SEUS DENTES CAIAM! QUE "
 "VOCÊS SE TORNEM VELHOS FRACOS! QUE—"
 
-#. [message]: speaker=Father Morvin
 #. [message]: speaker=second_unit
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2831
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:483
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:692
@@ -3824,12 +3825,12 @@ msgid "Galim"
 msgstr ""
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:120
+#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:126
 msgid "It is well, Hamel. Our people prosper."
 msgstr "Estamos bem, Hammel. Nosso povo prospera."
 
 #. [message]: speaker=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:125
+#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:131
 msgid ""
 "Aye. Word ha’ spread, and dwarves who had been living rough in the wilds for "
 "fear of the orcs have been coming to join us. Thanks to you, Tallin, Knalga "
@@ -3840,7 +3841,7 @@ msgstr ""
 "está se erguendo novamente!"
 
 #. [message]: speaker=Galim
-#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:130
+#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:136
 #, fuzzy
 #| msgid ""
 #| "It is slow and dangerous work, mostly due to the trolls. But it ha’ been "
@@ -3854,7 +3855,7 @@ msgstr ""
 "ficou mais fácil por causa do fim de Malifor."
 
 #. [message]: speaker=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:135
+#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:141
 #, fuzzy
 #| msgid ""
 #| "The lich’s skeletons were fighting the trolls, but when you destroyed "
@@ -3870,12 +3871,12 @@ msgstr ""
 "de nada menos que pilhas de ossos velhos."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:140
+#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:146
 msgid "Great! How about the weapons and armor?"
 msgstr "Ótimo! E quanto as armas e armaduras?"
 
 #. [message]: speaker=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:145
+#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:151
 #, fuzzy
 #| msgid ""
 #| "What’s more, some of the dwarves who are expert with the sword, mace and "
@@ -3892,7 +3893,7 @@ msgstr ""
 "com a experiência, podem ensinar os outros a empunhá-las."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:150
+#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:156
 #, fuzzy
 #| msgid ""
 #| "I didn’t know that you dwarves knew swordplay. I thought you all fought "
@@ -3905,7 +3906,7 @@ msgstr ""
 "machados, martelos e aquelas armas de trovão."
 
 #. [message]: speaker=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:156
+#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:162
 msgid ""
 "Aye, it’s true we do prefer our axes and hammers, but then again, we make "
 "swords. We couldna’ claim to be expert weaponsmiths wi’out kenning how to "
@@ -3916,7 +3917,7 @@ msgstr ""
 "empunhar as armas que forjamos."
 
 #. [message]: speaker=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:161
+#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:167
 #, fuzzy
 #| msgid ""
 #| "There are some dwarves out there that are bonny fighters wi’ a sword as "
@@ -3932,7 +3933,7 @@ msgstr ""
 "clavas e outras armas que moldamos."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:166
+#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:172
 msgid ""
 "That’s great! What is the price of your weapons? We have gathered much booty "
 "from Malifor’s treasury and we will be able to pay you generously."
@@ -3941,7 +3942,7 @@ msgstr ""
 "recompensas do tesouro de Malifor e poderemos pagá-los generosamente."
 
 #. [message]: speaker=Galim
-#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:171
+#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:177
 msgid ""
 "Price?! Don’t insult us, Tallin. Ye have done great things to help the "
 "dwarves — it’s because of you that we ha’ made a start rebuilding Knalga in "
@@ -3952,13 +3953,13 @@ msgstr ""
 "primeiro lugar. Não nos fale sobre preço."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:176
+#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:182
 msgid "But don’t you need the gold to help rebuild Knalga? And we have plenty."
 msgstr ""
 "Mas vocês não precisam de ouro para reconstruir Knalga? Nós temos muito."
 
 #. [message]: speaker=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:181
+#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:187
 msgid ""
 "Tallin, Knalga was an extremely rich nation. Malifor’s treasury is hardly a "
 "fraction of the riches that we will find, and are finding every day now. So "
@@ -3970,17 +3971,17 @@ msgstr ""
 "reconstruir Dwarven Doors"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:186
+#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:192
 msgid "Thank you, Hamel."
 msgstr "Obrigado, Hamel."
 
 #. [message]: speaker=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:192
+#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:198
 msgid "Pahhh, thank <i>you</i>!"
 msgstr "Pahhh, graças a <i>você</i>!"
 
 #. [message]: speaker=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:197
+#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:203
 msgid ""
 "And Tallin, one more thing, I have been leading our people into battle for "
 "many years now. As a young dwarf I was trained in the arts of leadership and "
@@ -3991,7 +3992,7 @@ msgstr ""
 "Existem coisas que você precisará saber..."
 
 #. [message]: speaker=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:203
+#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:209
 msgid ""
 "I know you’re impressive wi’ a pitchfork, and you are not half bad with a "
 "sword when you choose to use one. But there skills beyond swingin’ a weapon "
@@ -4002,12 +4003,12 @@ msgstr ""
 "balançar uma arma que um general deve possuir."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:208
+#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:214
 msgid "I would be honored, Lord Hamel."
 msgstr "Eu ficaria honrado, Lorde Hamel."
 
 #. [message]: speaker=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:213
+#: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:219
 msgid ""
 "Ahhhh, quit with the formality, me lad. Now, first things first. One of the "
 "most important things about being a leader is..."
@@ -4151,9 +4152,9 @@ msgstr ""
 "Ficou decidido então que os homens de Tallin deveriam surpreender os orcs, "
 "enquanto os anões de Hamel manteriam aberta a rota de fuga para as cavernas."
 
-#. [side]: type=Great Mage, id=Camerin
 #. [side]
 #. [side]: type=Dwarvish Lord, id=Stalrag
+#. [side]: type=Great Mage, id=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:43
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:130
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:148
@@ -4166,16 +4167,16 @@ msgstr "Knalganos"
 #. [side]
 #. [side]: type=Orcish Warlord, id=Drung
 #. [side]: type=Orcish Warlord, id=Poul
+#. [side]: type=Orcish Warlord, id=Ha'Tuil
+#. [side]: type=Orcish Warlord, id=Ar'Muff
+#. [side]: type=Orcish Warlord, id=Calter
+#. [side]: type=Orcish Warlord, id=Halter
 #. [side]: type=Orcish Warlord, id=Atul
 #. [side]: type=Troll Warrior, id=Gore
 #. [side]: type=Orcish Warlord, id=Carron
 #. [side]: type=Orcish Warlord, id=Rash
 #. [side]: type=Orcish Warlord, id=Al'Mar
 #. [side]: type=Orcish Warlord, id=Ha'Tang
-#. [side]: type=Orcish Warlord, id=Ha'Tuil
-#. [side]: type=Orcish Warlord, id=Ar'Muff
-#. [side]: type=Orcish Warlord, id=Calter
-#. [side]: type=Orcish Warlord, id=Halter
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:57
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:87
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:109
@@ -4352,8 +4353,8 @@ msgstr "Isso não é tudo, meus amigos. GENERAIS, CHAMEM AS RESERVAS!"
 msgid "Oh yeah!"
 msgstr "Ah sim!"
 
-#. [message]: speaker=Malifor
 #. [message]: id=Poul
+#. [message]: speaker=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:396
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:294
 msgid "HAHAHA!"
@@ -4953,8 +4954,8 @@ msgstr ""
 msgid "(<i>Giggle</i>) Something like that."
 msgstr "(<i>Risadinha</i>) Algo desse tipo."
 
-#. [story]
 #. [message]: speaker=Tallin
+#. [story]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:91
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:170
 msgid "(<i>Rolls eyes</i>)"
@@ -5056,17 +5057,17 @@ msgstr "Stalrag"
 msgid "Liches"
 msgstr ""
 
+#. [modify_side]
 #. [side]: type=Ancient Lich, id=Ro'Arthian
 #. [unit]: type=Ancient Lich, id=Ro'Arthian
-#. [modify_side]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:218
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:121
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:397
 msgid "Ro’Arthian"
 msgstr "Ro'Arthian"
 
-#. [unit]: type=Lich, id=Ro'Sothian
 #. [modify_side]
+#. [unit]: type=Lich, id=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:257
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:638
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:796
@@ -5077,20 +5078,17 @@ msgstr "Ro'Sothian"
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:323
-msgid "Save Stalrag from Ro’Sothian."
-msgstr "Salve Stalrag de Ro'Sothian."
-
-#. [objective]: condition=lose
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:327
 #, fuzzy
-#| msgid "Death of Tallin"
-msgid "Death of Tallin."
-msgstr "Morte de Tallin"
+#| msgid "Save Stalrag from Ro’Sothian."
+msgid "Save Stalrag from Ro’Sothian"
+msgstr "Salve Stalrag de Ro'Sothian."
 
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:331
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:701
-msgid "Death of Stalrag."
+#, fuzzy
+#| msgid "Death of Stalrag."
+msgid "Death of Stalrag"
 msgstr "Morte de Stalrag."
 
 #. [message]: speaker=narrator
@@ -5401,7 +5399,9 @@ msgstr "De volta à cela, meu amigo."
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:693
-msgid "Capture Ro’Arthian."
+#, fuzzy
+#| msgid "Capture Ro’Arthian."
+msgid "Capture Ro’Arthian"
 msgstr "Capture Ro'Arthian."
 
 #. [message]: speaker=Tallin
@@ -5559,10 +5559,10 @@ msgstr ""
 "Espere um segundo, Tallin. Você está dizendo que nos deveríamos abandonar "
 "nossa terra natal para esses magos infelizes?!"
 
-#. [message]: speaker=Ro'Arthian
-#. [message]: speaker=Ro'Sothian
-#. [message]: speaker=Eryssa
 #. [message]: id=Ro'Sothian
+#. [message]: speaker=Ro'Sothian
+#. [message]: speaker=Ro'Arthian
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:838
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1036
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:506
@@ -6285,8 +6285,8 @@ msgstr ""
 msgid "INTRUDERS! KILL THEM!!"
 msgstr "INTRUSOS! MATEM-NOS!!"
 
-#. [unit]: type=Elvish Sorceress, id=Eryssa
 #. [modify_side]
+#. [unit]: type=Elvish Sorceress, id=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:339
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:350
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:434
@@ -10834,6 +10834,11 @@ msgstr "Seus miseráveis, vocês vão pagar por isso! AVANTE, HOMENS!"
 #: data/campaigns/Northern_Rebirth/utils/utils.cfg:95
 msgid "Arthian"
 msgstr "Arthian"
+
+#, fuzzy
+#~| msgid "Death of Tallin"
+#~ msgid "Death of Tallin."
+#~ msgstr "Morte de Tallin"
 
 #~ msgid "Clear the mines"
 #~ msgstr "Limpar as minas"

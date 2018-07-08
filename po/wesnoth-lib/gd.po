@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-06-03 16:42+0300\n"
+"POT-Creation-Date: 2018-07-08 04:51-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: GunChleoc, 2017\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -1963,10 +1963,10 @@ msgid "Search"
 msgstr "Lorg"
 
 #. [toggle_button]: id=sort_0
-#. [label]: id=name
-#. [label]
 #. [toggle_button]: id=sort_1
 #. [toggle_button]: id=sort_name
+#. [label]
+#. [label]: id=name
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:226
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_server_list.cfg:107
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -2026,7 +2026,7 @@ msgstr "Foillsich an tuilleadan"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:247
-#: src/gui/dialogs/addon/manager.cpp:800
+#: src/gui/dialogs/addon/manager.cpp:805
 msgid "Uninstall add-on"
 msgstr "Dì-stàlaich an tuilleadan"
 
@@ -2041,7 +2041,7 @@ msgstr "Teachdaireachdan a’ feitheamh"
 #. [button]: id=ok
 #: data/gui/widget/chatbox.cfg:51 data/gui/widget/window_default.cfg:106
 #: data/gui/window/attack_predictions.cfg:304 data/gui/window/chat_log.cfg:200
-#: data/gui/window/end_credits.cfg:146
+#: data/gui/window/end_credits.cfg:145
 #: data/gui/window/game_cache_options.cfg:247
 #: data/gui/window/game_stats.cfg:843 data/gui/window/game_version.cfg:645
 #: data/gui/window/gamestate_inspector.cfg:397
@@ -2052,7 +2052,7 @@ msgstr "Teachdaireachdan a’ feitheamh"
 #: data/gui/window/mp_alerts_options.cfg:249
 #: data/gui/window/preferences.cfg:429
 #: data/gui/window/screenshot_notification.cfg:216
-#: data/gui/window/statistics_dialog.cfg:597
+#: data/gui/window/statistics_dialog.cfg:521
 #: data/gui/window/terrain_layers.cfg:434 data/gui/window/unit_list.cfg:447
 msgid "Close"
 msgstr "Dùin"
@@ -2061,6 +2061,7 @@ msgstr "Dùin"
 #: data/gui/widget/unit_preview_pane.cfg:113
 #: data/gui/widget/unit_preview_pane.cfg:296
 #: data/gui/widget/unit_preview_pane.cfg:356
+#: data/gui/window/mp_faction_select.cfg:140
 msgid "Profile"
 msgstr "Pròifil"
 
@@ -2129,7 +2130,7 @@ msgstr "Dèan ceangal"
 #: data/gui/window/mp_create_game/default_resolution.cfg:461
 #: data/gui/window/mp_create_game/small_resolution.cfg:374
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:334
-#: data/gui/window/mp_faction_select.cfg:391
+#: data/gui/window/mp_faction_select.cfg:400
 #: data/gui/window/mp_join_game_password_prompt.cfg:149
 #: data/gui/window/mp_login.cfg:257 data/gui/window/mp_method_selection.cfg:341
 #: data/gui/window/mp_server_list.cfg:231 data/gui/window/mp_staging.cfg:433
@@ -2157,7 +2158,7 @@ msgstr "Tionndadh:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:160
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:591
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:597
 msgid "No description available."
 msgstr "Chan eil tuairisgeul ri fhaighinn."
 
@@ -2205,7 +2206,7 @@ msgstr "Eisimeileachdan:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:523 src/gui/dialogs/addon/manager.cpp:885
+#: data/gui/window/addon_manager.cfg:523 src/gui/dialogs/addon/manager.cpp:890
 msgid "addon_dependencies^None"
 msgstr "Gun eisimeileachd"
 
@@ -2216,7 +2217,7 @@ msgstr "Eadar-theangachaidhean:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:557 src/gui/dialogs/addon/manager.cpp:899
+#: data/gui/window/addon_manager.cfg:557 src/gui/dialogs/addon/manager.cpp:904
 msgid "translations^None"
 msgstr "Gin"
 
@@ -2273,8 +2274,8 @@ msgstr "Manaidsear nan tuilleadan"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:452
-#: src/gui/dialogs/addon/manager.cpp:639
+#: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:457
+#: src/gui/dialogs/addon/manager.cpp:644
 msgid "Addon Details"
 msgstr "Fiosrachadh an tuilleadain"
 
@@ -2379,13 +2380,13 @@ msgstr "Sgèilichte dhan t-sia-cheàrnach"
 #: data/gui/window/label_settings.cfg:137
 #: data/gui/window/language_selection.cfg:148 data/gui/window/logging.cfg:167
 #: data/gui/window/mp_change_control.cfg:203
-#: data/gui/window/mp_faction_select.cfg:379
+#: data/gui/window/mp_faction_select.cfg:388
 #: data/gui/window/mp_join_game_password_prompt.cfg:136
 #: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:327
 #: data/gui/window/select_orb_colors.cfg:113
 #: data/gui/window/simple_item_selector.cfg:145
 #: data/gui/window/sp_options_configure.cfg:105
-#: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:190
+#: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
 #: data/gui/window/unit_create.cfg:269 data/gui/window/wml_error.cfg:162
 #: data/gui/window/wml_message.cfg:444 src/gui/dialogs/message.cpp:181
 #: src/gui/dialogs/message.cpp:188
@@ -2493,8 +2494,8 @@ msgstr ""
 "Bheir gineadair nan àireamhan tuaireamach an aon toradh dhut gach turas fiù "
 "’s nuair a bhios tu air geama ath-luchdadh"
 
-#. [label]: id=title
 #. [slider]: id=enemey_gold_factor
+#. [label]: id=title
 #: data/gui/window/campaign_difficulty.cfg:53
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:251
 msgid "Difficulty"
@@ -2656,7 +2657,7 @@ msgstr "Sguab às àm an latha"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:773 src/gui/dialogs/file_dialog.cpp:307
+#: src/gui/dialogs/addon/manager.cpp:778 src/gui/dialogs/file_dialog.cpp:307
 #: src/gui/dialogs/file_dialog.cpp:733
 msgid "Confirm"
 msgstr "Dearbhaich"
@@ -2890,8 +2891,8 @@ msgid "Choose a map generator:"
 msgstr "Tagh gineadair mapa:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=settings
 #. [button]: id=random_map_settings
+#. [button]: id=settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
 #: src/gui/dialogs/multiplayer/lobby.cpp:478
@@ -2914,15 +2915,15 @@ msgstr "Gin"
 msgid "New Map"
 msgstr "Mapa ùr"
 
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
 msgstr "Leud:"
 
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
@@ -2985,7 +2986,7 @@ msgid "Which player should start here?"
 msgstr "Cò an cluicheadair a thòisicheas an-seo?"
 
 #. [label]
-#: data/gui/window/end_credits.cfg:118
+#: data/gui/window/end_credits.cfg:117
 msgid "↑ ↓ to adjust speed"
 msgstr "Brùth air ↑ ↓ gus an luaths a ghleusadh"
 
@@ -3136,8 +3137,8 @@ msgstr "Sguab às an sàbhaladh"
 msgid "Do you really want to delete this game?"
 msgstr "A bheil thu cinnteach gu bheil thu airson an geama seo a sguabadh às?"
 
-#. [toggle_button]: id=dont_ask_again
 #. [toggle_button]: id=do_not_show_again
+#. [toggle_button]: id=dont_ask_again
 #: data/gui/window/game_delete.cfg:80
 #: data/gui/window/mp_host_game_prompt.cfg:79
 msgid "Do not show again"
@@ -3252,7 +3253,7 @@ msgstr "Sgioba"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:401
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:432
 msgid "Gold"
 msgstr "Òr"
 
@@ -3275,9 +3276,9 @@ msgstr "Beathachadh"
 #. [toggle_button]: id=sort_6
 #. [image]: id=income_icon
 #. [label]: id=side_income
-#: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:261
-#: data/gui/window/mp_join_game.cfg:274
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:407
+#: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
+#: data/gui/window/mp_join_game.cfg:286
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:438
 msgid "Income"
 msgstr "Teachd a-steach"
 
@@ -3549,8 +3550,8 @@ msgstr "Geamaichean"
 msgid "Requires a password to join"
 msgstr "Tha facal-faire a dhìth gus gabhail ann"
 
-#. [widget]: id=tab_label
 #. [toggle_button]: id=filter_with_friends
+#. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:338
 #: data/gui/window/preferences/05_multiplayer.cfg:415
 msgid "Friends"
@@ -3576,9 +3577,9 @@ msgstr "Ais-thionndaidh criathrag"
 msgid "Log Out"
 msgstr "Clàraich a-mach"
 
+#. [button]: id=create
 #. [label]
 #. [button]: id=ok
-#. [button]: id=create
 #: data/gui/window/lobby_main.cfg:407 data/gui/window/lobby_main.cfg:573
 #: data/gui/window/mp_create_game/default_resolution.cfg:45
 #: data/gui/window/mp_create_game/default_resolution.cfg:446
@@ -3590,9 +3591,9 @@ msgid "Create Game"
 msgstr "Cruthaich geama"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
 #. [button]: id=show_preferences
 #. [label]: id=title
+#. [grid]
 #: data/gui/window/lobby_main.cfg:417 data/gui/window/lobby_main.cfg:561
 #: data/gui/window/preferences.cfg:212 data/gui/window/title_screen.cfg:259
 #: src/hotkey/hotkey_command.cpp:117
@@ -3760,8 +3761,8 @@ msgstr ""
 msgid "Event"
 msgstr "Tachartas"
 
-#. [label]
 #. [widget]: id=label
+#. [label]
 #: data/gui/window/mp_alerts_options.cfg:154
 #: data/gui/window/preferences.cfg:346
 msgid "Sound"
@@ -3867,9 +3868,9 @@ msgstr "Cuairt air atharrachadh:"
 msgid "When a new turn has begun"
 msgstr "Nuair a thòisich cuairt ùr"
 
+#. [button]: id=orb_defaults
 #. [button]: id=revert_to_defaults
 #. [button]: id=btn_reset_hotkeys
-#. [button]: id=orb_defaults
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:263
 #: data/gui/window/select_orb_colors.cfg:102
@@ -4055,8 +4056,8 @@ msgid "Time for each attack, recruit, and capture"
 msgstr "Ùine airson gach ionnsaigh, trusadh, is glacadh"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [widget]: id=tab_label
 #. [widget]: id=label
+#. [widget]: id=tab_label
 #: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:291
 #: data/gui/window/preferences/05_multiplayer.cfg:402
 #: src/hotkey/hotkey_command.cpp:38
@@ -4155,49 +4156,49 @@ msgid "Leader:"
 msgstr "Ceannard:"
 
 #. [label]
-#: data/gui/window/mp_faction_select.cfg:161
+#: data/gui/window/mp_faction_select.cfg:170
 #: data/gui/window/unit_create.cfg:205
 msgid "Gender:"
 msgstr "Gnè:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
-#: data/gui/window/mp_faction_select.cfg:167
-#: src/gui/dialogs/multiplayer/faction_select.cpp:151
+#: data/gui/window/mp_faction_select.cfg:176
+#: src/gui/dialogs/multiplayer/faction_select.cpp:162
 msgid "Random"
 msgstr "Air thuaiream"
 
-#. [row]
 #. [toggle_button]: id=male_toggle
-#: data/gui/window/mp_faction_select.cfg:169
+#. [row]
+#: data/gui/window/mp_faction_select.cfg:178
 #: data/gui/window/unit_create.cfg:217
 msgid "Male"
 msgstr "Fireann"
 
-#. [row]
 #. [toggle_button]: id=female_toggle
-#: data/gui/window/mp_faction_select.cfg:171
+#. [row]
+#: data/gui/window/mp_faction_select.cfg:180
 #: data/gui/window/unit_create.cfg:229
 msgid "Female"
 msgstr "Boireann"
 
 #. [label]
-#: data/gui/window/mp_faction_select.cfg:201
+#: data/gui/window/mp_faction_select.cfg:210
 msgid "Recruits:"
 msgstr "Luchd-trusaidh:"
 
 #. [label]
-#: data/gui/window/mp_faction_select.cfg:280
+#: data/gui/window/mp_faction_select.cfg:289
 msgid "Choose Your Faction"
 msgstr "Tagh am buidheann agad"
 
 #. [label]
-#: data/gui/window/mp_faction_select.cfg:305
+#: data/gui/window/mp_faction_select.cfg:314
 msgid "Starting position:"
 msgstr "Ionad tòiseachaidh:"
 
-#. [label]
 #. [widget]: id=name
+#. [label]
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:273
 msgid "Host Networked Game"
@@ -4214,32 +4215,37 @@ msgstr ""
 "Ruithidh am frithealaiche air a’ chùlaibh gus am bi a h-uile cluicheadairean "
 "air dì-cheangal. A bheil thu airson leantainn air adhart?"
 
+#. [button]: id=select_leader
+#: data/gui/window/mp_join_game.cfg:71 data/gui/window/mp_staging.cfg:70
+msgid "Select the faction and leader for this side"
+msgstr "Tagh buidheann is ceannard an taoibh"
+
 #. [label]
-#: data/gui/window/mp_join_game.cfg:143 data/gui/window/mp_staging.cfg:157
+#: data/gui/window/mp_join_game.cfg:155 data/gui/window/mp_staging.cfg:157
 msgid "<b>Faction:</b>"
 msgstr "<b>Buidheann:</b>"
 
 #. [label]
-#: data/gui/window/mp_join_game.cfg:175 data/gui/window/mp_staging.cfg:190
+#: data/gui/window/mp_join_game.cfg:187 data/gui/window/mp_staging.cfg:190
 msgid "<b>Gender:</b>"
 msgstr "<b>Gnè:</b>"
 
 #. [button]: id=cancel
-#: data/gui/window/mp_join_game.cfg:347
+#: data/gui/window/mp_join_game.cfg:359
 msgid "Leave"
 msgstr "Falbh"
 
 #. [label]: id=title
-#: data/gui/window/mp_join_game.cfg:410 data/gui/window/mp_staging.cfg:552
+#: data/gui/window/mp_join_game.cfg:422 data/gui/window/mp_staging.cfg:552
 #: data/gui/window/mp_staging.cfg:737
 msgid "Game Lobby"
 msgstr "Lobaidh nan geama"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
-#: data/gui/window/mp_join_game.cfg:479 data/gui/window/mp_staging.cfg:614
+#: data/gui/window/mp_join_game.cfg:491 data/gui/window/mp_staging.cfg:614
 #: data/gui/window/mp_staging.cfg:806
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:463
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:468
 msgid "Waiting for players to join..."
 msgstr "A’ feitheamh gus an dig na cluicheadairean a-steach…"
 
@@ -4275,9 +4281,9 @@ msgid "Save password locally (encrypted)"
 msgstr "Sàbhail am facal-faire gu h-ionadail (crioptaichte)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
-#. [label]
 #. [widget]: id=label
+#. [label]
+#. [grid]
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:253
 #: src/gui/dialogs/game_load.cpp:337
@@ -4341,11 +4347,6 @@ msgstr "Seòladh"
 msgid "Select"
 msgstr "Tagh"
 
-#. [button]: id=select_leader
-#: data/gui/window/mp_staging.cfg:70
-msgid "Select the faction and leader for this side"
-msgstr "Tagh buidheann is ceannard an taoibh"
-
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
 msgid "Change the side's controller"
@@ -4401,108 +4402,110 @@ msgstr "Astar an sgrolaidh:"
 msgid "Change the speed of scrolling around the map"
 msgstr "Atharraich an t-astar sgrolaidh mun mhapa"
 
-#. [toggle_button]: id=turbo_toggle
-#: data/gui/window/preferences/01_general.cfg:57
-msgid "Accelerated speed"
-msgstr "Astar luathaichte"
-
-#. [toggle_button]: id=turbo_toggle
-#: data/gui/window/preferences/01_general.cfg:58
-msgid "Make units move and fight faster"
-msgstr "Thoir air aonadan gluasad is sabaid nas luaithe"
-
 #. [toggle_button]: id=skip_ai_moves
-#: data/gui/window/preferences/01_general.cfg:69
+#: data/gui/window/preferences/01_general.cfg:54
 msgid "Skip AI moves"
 msgstr "Leig seachad gluasadan IF"
 
 #. [toggle_button]: id=skip_ai_moves
-#: data/gui/window/preferences/01_general.cfg:70
+#: data/gui/window/preferences/01_general.cfg:55
 msgid "Do not animate AI units moving"
 msgstr "Na seall beòthachadh air aonadan IF a’ gluasad"
 
-#. [column]
-#: data/gui/window/preferences/01_general.cfg:83
-msgid "Speed:"
-msgstr "Luaths:"
+#. [toggle_button]: id=turbo_toggle
+#: data/gui/window/preferences/01_general.cfg:68
+msgid "Accelerated speed"
+msgstr "Astar luathaichte"
+
+#. [toggle_button]: id=turbo_toggle
+#: data/gui/window/preferences/01_general.cfg:69
+msgid "Make units move and fight faster"
+msgstr "Thoir air aonadan gluasad is sabaid nas luaithe"
 
 #. [column]
-#: data/gui/window/preferences/01_general.cfg:88
-msgid "Units move and fight speed"
-msgstr "Astar gluasad is sabaid nan aonadan"
+#: data/gui/window/preferences/01_general.cfg:79
+msgid "Acceleration factor:"
+msgstr ""
+
+#. [column]
+#: data/gui/window/preferences/01_general.cfg:84
+msgid ""
+"Speed at which unit moves and animations play when ‘Accelerated speed’ is "
+"enabled or when Shift is held down in-game"
+msgstr ""
 
 #. [toggle_button]: id=disable_auto_moves
-#: data/gui/window/preferences/01_general.cfg:104
+#: data/gui/window/preferences/01_general.cfg:100
 msgid "Disable automatic moves"
 msgstr "Cuir na gluasadan fèin-obrachail à comas"
 
 #. [toggle_button]: id=disable_auto_moves
-#: data/gui/window/preferences/01_general.cfg:105
+#: data/gui/window/preferences/01_general.cfg:101
 msgid "Do not allow automatic movements at the beginning of a turn"
 msgstr "Na ceadaich gluasad fèin-obrachail air toiseach cuairte"
 
 #. [toggle_button]: id=show_turn_dialog
-#: data/gui/window/preferences/01_general.cfg:118
+#: data/gui/window/preferences/01_general.cfg:114
 msgid "Turn dialog"
 msgstr "Còmhradh cuairte"
 
 #. [toggle_button]: id=show_turn_dialog
-#: data/gui/window/preferences/01_general.cfg:119
+#: data/gui/window/preferences/01_general.cfg:115
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Seall còmhradh air toiseach na cuairte agad"
 
 #. [toggle_button]: id=whiteboard_on_start
-#: data/gui/window/preferences/01_general.cfg:132
+#: data/gui/window/preferences/01_general.cfg:128
 msgid "Enable planning mode on start"
 msgstr "Cuir am modh planaidh an comas air an tòiseachadh"
 
 #. [toggle_button]: id=whiteboard_on_start
-#: data/gui/window/preferences/01_general.cfg:133
+#: data/gui/window/preferences/01_general.cfg:129
 msgid "Activates Planning Mode on game start"
 msgstr "Cuiridh seo am modh planaidh an comas nuair a thòisicheas an geama"
 
 #. [toggle_button]: id=whiteboard_hide_allies
-#: data/gui/window/preferences/01_general.cfg:146
+#: data/gui/window/preferences/01_general.cfg:142
 msgid "Hide allies’ plans by default"
 msgstr "Falaich planaichean nan caidreabhach a ghnàth"
 
 #. [toggle_button]: id=whiteboard_hide_allies
-#: data/gui/window/preferences/01_general.cfg:147
+#: data/gui/window/preferences/01_general.cfg:143
 msgid "Hide allies’ Planning Mode plans in multiplayer games"
 msgstr ""
 "Falaich planaichean modh-planaidh nan caidreabhach ann an geamannan ioma-"
 "chluicheadair"
 
 #. [toggle_button]: id=interrupt_move_when_ally_sighted
-#: data/gui/window/preferences/01_general.cfg:160
+#: data/gui/window/preferences/01_general.cfg:156
 msgid "Interrupt move when an ally is sighted"
 msgstr "Sguir dhen ghluasad nuair a thig caidreabhach air faire"
 
 #. [toggle_button]: id=interrupt_move_when_ally_sighted
-#: data/gui/window/preferences/01_general.cfg:161
+#: data/gui/window/preferences/01_general.cfg:157
 msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr ""
 "Thèid stad a thoirt air gluasad aonaid nuair a chì e aonad aig caidreabhach"
 
 #. [toggle_button]: id=save_replays
-#: data/gui/window/preferences/01_general.cfg:176
+#: data/gui/window/preferences/01_general.cfg:172
 msgid "Save replays at the end of scenarios"
 msgstr "Sàbhail ath-chluiche air deireadh chnàmh-sgeulan"
 
 #. [toggle_button]: id=save_replays
-#: data/gui/window/preferences/01_general.cfg:177
+#: data/gui/window/preferences/01_general.cfg:173
 msgid "Save replays of games on victory in all modes and defeat in multiplayer"
 msgstr ""
 "Sàbhail ath-chluiche aig geamannan a bhuannaich thu an-còmhnaidh is a chaill "
 "thu ann am modh ioma-chluicheadair"
 
 #. [toggle_button]: id=delete_saves
-#: data/gui/window/preferences/01_general.cfg:190
+#: data/gui/window/preferences/01_general.cfg:186
 msgid "Delete auto-saves at the end of scenarios"
 msgstr "Sguab às na fèin-shàbhalaidhean air deireadh chnàmh-sgeulan"
 
 #. [toggle_button]: id=delete_saves
-#: data/gui/window/preferences/01_general.cfg:191
+#: data/gui/window/preferences/01_general.cfg:187
 msgid ""
 "Delete previous auto-saves on victory in all modes and defeat in multiplayer"
 msgstr ""
@@ -4510,23 +4513,23 @@ msgstr ""
 "mhodh ioma-chluicheadair"
 
 #. [column]
-#: data/gui/window/preferences/01_general.cfg:201
+#: data/gui/window/preferences/01_general.cfg:197
 msgid "Maximum auto-saves:"
 msgstr "Àireamh as motha dhe fhèin-shàbhalaidhean:"
 
 #. [column]
-#: data/gui/window/preferences/01_general.cfg:205
+#: data/gui/window/preferences/01_general.cfg:201
 msgid "Set maximum number of automatic saves to be retained"
 msgstr ""
 "Suidhich an t-àireamh as motha dhe fhèin-shàbhalaidhean a thèid a chumail"
 
 #. [button]: id=cachemg
-#: data/gui/window/preferences/01_general.cfg:221
+#: data/gui/window/preferences/01_general.cfg:217
 msgid "Cache"
 msgstr "Tasgadan"
 
 #. [button]: id=cachemg
-#: data/gui/window/preferences/01_general.cfg:222
+#: data/gui/window/preferences/01_general.cfg:218
 msgid "Manage the game WML cache"
 msgstr "Stiùirich tasgadan WML a’ gheama"
 
@@ -5011,19 +5014,9 @@ msgstr "A’ chuairt seo"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/window/statistics_dialog.cfg:432 src/hotkey/hotkey_command.cpp:120
+#: data/gui/window/statistics_dialog.cfg:419 src/hotkey/hotkey_command.cpp:120
 msgid "Statistics"
 msgstr "Stadastaireachd"
-
-#. [widget]: id=tab_label
-#: data/gui/window/statistics_dialog.cfg:485
-msgid "Scenario"
-msgstr "Cnàmh-sgeul"
-
-#. [widget]: id=tab_label
-#: data/gui/window/statistics_dialog.cfg:498
-msgid "Campaign"
-msgstr "Iomairt"
 
 #. [button]: id=cancel
 #: data/gui/window/story_viewer.cfg:131
@@ -5229,7 +5222,7 @@ msgid "Advance Unit"
 msgstr "Àrdaich aonad"
 
 #. [label]
-#: data/gui/window/unit_advance.cfg:143
+#: data/gui/window/unit_advance.cfg:144
 msgid "What should our victorious unit become?"
 msgstr "Dè sa thèid an t-aonad buadhach?"
 
@@ -5274,21 +5267,21 @@ msgstr "Staid"
 msgid "HP"
 msgstr "PB"
 
-#. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_2
+#. [toggle_button]: id=sort_4
 #: data/gui/window/unit_list.cfg:149 data/gui/window/unit_recall.cfg:61
 msgid "Lvl"
 msgstr "Rang"
 
-#. [toggle_button]: id=sort_5
 #. [toggle_button]: id=sort_3
+#. [toggle_button]: id=sort_5
 #: data/gui/window/unit_list.cfg:163 data/gui/window/unit_recall.cfg:75
 msgid "XP"
 msgstr "PE"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [toggle_button]: id=sort_6
 #. [toggle_button]: id=sort_4
+#. [toggle_button]: id=sort_6
 #: data/gui/window/unit_list.cfg:177 data/gui/window/unit_recall.cfg:89
 #: src/gui/widgets/unit_preview_pane.cpp:345
 #: src/gui/widgets/unit_preview_pane.cpp:488
@@ -5671,16 +5664,16 @@ msgid "addon_state^Unknown"
 msgstr "Chan eil fhios"
 
 #. TRANSLATORS: ascending
-#: src/gui/dialogs/addon/manager.cpp:361
+#: src/gui/dialogs/addon/manager.cpp:364
 msgid "asc"
 msgstr "a’ dìreadh"
 
 #. TRANSLATORS: descending
-#: src/gui/dialogs/addon/manager.cpp:365
+#: src/gui/dialogs/addon/manager.cpp:368
 msgid "desc"
 msgstr "a’ teàrnadh"
 
-#: src/gui/dialogs/addon/manager.cpp:381 src/gui/dialogs/chat_log.cpp:420
+#: src/gui/dialogs/addon/manager.cpp:386 src/gui/dialogs/chat_log.cpp:420
 #: src/gui/dialogs/game_cache_options.cpp:105
 #: src/gui/dialogs/game_version.cpp:186
 #: src/gui/dialogs/gamestate_inspector.cpp:428
@@ -5691,24 +5684,24 @@ msgid "Clipboard support not found, contact your packager"
 msgstr ""
 "Cha do lorg sinn taic ris an stòr-bhòrd, cuir fios gun neach-pacaididh agad"
 
-#: src/gui/dialogs/addon/manager.cpp:449
+#: src/gui/dialogs/addon/manager.cpp:454
 msgid "addons^Back to List"
 msgstr "Air ais dhan liosta"
 
-#: src/gui/dialogs/addon/manager.cpp:461
+#: src/gui/dialogs/addon/manager.cpp:466
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
 "Thachair mearachd rè luchdadh a-nuas liosta nan tuilleadan an fhrithealaiche."
 
-#: src/gui/dialogs/addon/manager.cpp:497
+#: src/gui/dialogs/addon/manager.cpp:502
 msgid "No Add-ons Available"
 msgstr "Chan eil tuilleadan ri fhaighinn"
 
-#: src/gui/dialogs/addon/manager.cpp:497
+#: src/gui/dialogs/addon/manager.cpp:502
 msgid "There are no add-ons available for download from this server."
 msgstr "Chan eil tuilleadan ri luchdadh a-nuas air an fhrithealaiche seo."
 
-#: src/gui/dialogs/addon/manager.cpp:672
+#: src/gui/dialogs/addon/manager.cpp:677
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -5716,15 +5709,15 @@ msgstr ""
 "A rèir coltais, tha fiosrachadh foillsichidh no smachd nan tionndaidhean mun "
 "tuilleadan seo air stòradh gu h-ionadail is cha dèid a thoirt air falbh:"
 
-#: src/gui/dialogs/addon/manager.cpp:680
+#: src/gui/dialogs/addon/manager.cpp:685
 msgid "The following add-on could not be deleted properly:"
 msgstr "Cha b’ urrainn dhuinn an tuilleadan seo a sguabadh às mar bu chòir:"
 
-#: src/gui/dialogs/addon/manager.cpp:726
+#: src/gui/dialogs/addon/manager.cpp:731
 msgid "Warning"
 msgstr "Rabhadh"
 
-#: src/gui/dialogs/addon/manager.cpp:727
+#: src/gui/dialogs/addon/manager.cpp:732
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -5733,27 +5726,27 @@ msgstr ""
 "tionndadh a tha thu airson luchdadh suas. A bheil thu cinnteach gu bheil thu "
 "airson leantainn air adhart?"
 
-#: src/gui/dialogs/addon/manager.cpp:736
+#: src/gui/dialogs/addon/manager.cpp:741
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "Chan eil slighe na h-ìomhaigheige dligheach. Dèan cinnteach gun tomh an t-"
 "slighe ri dealbh dligheach."
 
-#: src/gui/dialogs/addon/manager.cpp:739 src/gui/dialogs/addon/manager.cpp:742
-#: src/gui/dialogs/addon/manager.cpp:781
+#: src/gui/dialogs/addon/manager.cpp:744 src/gui/dialogs/addon/manager.cpp:747
+#: src/gui/dialogs/addon/manager.cpp:786
 msgid "The server responded with an error:"
 msgstr "Dh’fhreagair am frithealaiche le mearachd:"
 
-#: src/gui/dialogs/addon/manager.cpp:740
+#: src/gui/dialogs/addon/manager.cpp:745
 msgid "Terms"
 msgstr "Teirmichean"
 
-#: src/gui/dialogs/addon/manager.cpp:757 src/gui/dialogs/addon/manager.cpp:784
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:441
+#: src/gui/dialogs/addon/manager.cpp:762 src/gui/dialogs/addon/manager.cpp:789
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:507
 msgid "Response"
 msgstr "Freagairt"
 
-#: src/gui/dialogs/addon/manager.cpp:769
+#: src/gui/dialogs/addon/manager.cpp:774
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -5762,7 +5755,7 @@ msgstr ""
 "luchdaidhean suas is a-nuas air frithealaiche nan tuilleadan. A bheil thu "
 "cinnteach gu bheil thu airson leantainn air adhart?"
 
-#: src/gui/dialogs/addon/manager.cpp:801
+#: src/gui/dialogs/addon/manager.cpp:806
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "A bheil thu airson “$addon|” a dhì-stàladh?"
 
@@ -6239,78 +6232,74 @@ msgstr "Mapaichean air thuaiream"
 msgid "No games found."
 msgstr "Cha deach geama a lorg."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:254
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:256
 msgid "No eras found."
 msgstr "Cha deach linn a lorg."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:255
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:257
 msgid "No eras found"
 msgstr "Cha deach linn a lorg"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:281
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:285
 msgid "Independent: Random factions assigned independently"
 msgstr "Neo-eisimeileach: Thèid na buidhnean iomruineadh air tuaiream fa leth"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:282
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:286
 msgid "No Mirror: No two players will get the same faction"
 msgstr "Gun sgàthan: Chan fhaigh dà chluicheadair an aon bhuidheann"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:283
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:287
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr ""
 "Gun sgàthan nan caidreabhach: Chan fhaigh dà chluicheadair caidreabhach an "
 "aon bhuidheann"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:537
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:543
 msgid "No eras available for this game."
 msgstr "Chan eil linn ri fhaighinn airson a’ gheama seo."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:735
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:741
 msgid "number of players^$min to $max"
 msgstr "$min gu $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:832
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:838
 msgid "The selected game has no sides!"
 msgstr "Chan eil taobhan aig a’ gheama a thagh thu!"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:898
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:904
 msgid "Choose Starting Scenario"
 msgstr "Tagh an cnàmh-sgeul tòiseachaidh"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:898
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:904
 msgid "Select at which point to begin this campaign."
 msgstr "Tagh càit an tòisich an iomairt seo."
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:194
-msgid "No era information found."
-msgstr "Cha deach fiosrachadh linn a lorg."
-
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:249
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:216
 msgid "Computer Player"
 msgstr "Coimpiutair"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:251
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:218
 msgid "Empty slot"
 msgstr "Slot falamh"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:253
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:220
 msgid "Reserved for $playername"
 msgstr "Glèidhte airson $playername"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:255
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:222
 msgid "Vacant slot"
 msgstr "Slot falamh"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:259
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:226
 msgid "empty"
 msgstr "falamh"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:334
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:365
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:156
 msgid "Team:"
 msgstr "Sgioba:"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:464
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:469
 msgid "Waiting for players to choose factions..."
 msgstr "A’ feitheamh gus an tagh na cluicheadairean na buidhnean…"
 
@@ -6339,11 +6328,11 @@ msgstr "Ainm cleachdaiche mì-dhligheach"
 msgid "Not on friends or ignore lists"
 msgstr "Chan eil iad air liosta nan caraidean no neo-shuime agad"
 
-#: src/gui/dialogs/preferences_dialog.cpp:814
+#: src/gui/dialogs/preferences_dialog.cpp:812
 msgid "&#9679;"
 msgstr "&#9679;"
 
-#: src/gui/dialogs/preferences_dialog.cpp:874
+#: src/gui/dialogs/preferences_dialog.cpp:872
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -6352,19 +6341,19 @@ msgstr ""
 "b>”. A bheil thu airson a shònrachadh dha “<b>$new_hotkey_action|</b>” ’na "
 "àite?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:880
+#: src/gui/dialogs/preferences_dialog.cpp:878
 msgid "Reassign Hotkey"
 msgstr "Sònraich a’ ghrad-iuchair dhan nì ùr"
 
-#: src/gui/dialogs/preferences_dialog.cpp:897
+#: src/gui/dialogs/preferences_dialog.cpp:895
 msgid "All hotkeys have been reset to their default values."
 msgstr "Chaidh a h-uile grad-iuchair ath-shuidheachadh air an luach tùsail."
 
-#: src/gui/dialogs/preferences_dialog.cpp:897
+#: src/gui/dialogs/preferences_dialog.cpp:895
 msgid "Hotkeys Reset"
 msgstr "Ath-shuidhich na grad-iuchraichean"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1010
+#: src/gui/dialogs/preferences_dialog.cpp:1008
 msgid "∞"
 msgstr "∞"
 
@@ -6378,33 +6367,43 @@ msgstr ""
 "\n"
 "Feuch an sàbhail thu an glacadh-sgrìn mar PNG ’na àite."
 
-#: src/gui/dialogs/statistics_dialog.cpp:185
+#: src/gui/dialogs/statistics_dialog.cpp:68
+#, fuzzy
+#| msgid "Scenarios"
+msgid "All Scenarios"
+msgstr "Cnàmh-sgeulan"
+
+#: src/gui/dialogs/statistics_dialog.cpp:181
 msgid "Recruits"
 msgstr "Air trusadh"
 
-#: src/gui/dialogs/statistics_dialog.cpp:186
+#: src/gui/dialogs/statistics_dialog.cpp:182
 msgid "Recalls"
 msgstr "Air ais-ghairm"
 
-#: src/gui/dialogs/statistics_dialog.cpp:187
+#: src/gui/dialogs/statistics_dialog.cpp:183
 msgid "Advancements"
 msgstr "Àrdachaidhean"
 
-#: src/gui/dialogs/statistics_dialog.cpp:188
+#: src/gui/dialogs/statistics_dialog.cpp:184
 msgid "Losses"
 msgstr "Air chall"
 
-#: src/gui/dialogs/statistics_dialog.cpp:189
+#: src/gui/dialogs/statistics_dialog.cpp:185
 msgid "Kills"
 msgstr "Air marbhadh"
 
-#: src/gui/dialogs/statistics_dialog.cpp:203
+#: src/gui/dialogs/statistics_dialog.cpp:204
 msgid "Inflicted"
 msgstr "Air a thoirt seachad"
 
-#: src/gui/dialogs/statistics_dialog.cpp:211
+#: src/gui/dialogs/statistics_dialog.cpp:212
 msgid "Taken"
 msgstr "Air gabhail"
+
+#: src/gui/dialogs/statistics_dialog.cpp:255
+msgid "$count|× $name"
+msgstr ""
 
 #: src/gui/dialogs/title_screen.cpp:467
 msgid "Choose Test"
@@ -6523,11 +6522,11 @@ msgstr "Bu chòir do ràgh a bhith ann an “list_definition.”"
 msgid "No page defined."
 msgstr "Cha deach duilleag a mhìneachadh."
 
-#: src/gui/widgets/multimenu_button.cpp:175
+#: src/gui/widgets/multimenu_button.cpp:167
 msgid "multimenu^All Selected"
 msgstr "Chaidh a nh-uile a thaghadh"
 
-#: src/gui/widgets/multimenu_button.cpp:180
+#: src/gui/widgets/multimenu_button.cpp:172
 msgid "multimenu^$excess other"
 msgid_plural "$excess others"
 msgstr[0] "$excess eile"
@@ -6535,8 +6534,8 @@ msgstr[1] "$excess eile"
 msgstr[2] "$excess eile"
 msgstr[3] "$excess eile"
 
-#: src/gui/widgets/multimenu_button.cpp:182
-#: src/gui/widgets/multimenu_button.cpp:239
+#: src/gui/widgets/multimenu_button.cpp:174
+#: src/gui/widgets/multimenu_button.cpp:231
 msgid "multimenu^None Selected"
 msgstr "Gun taghadh"
 
@@ -7594,3 +7593,18 @@ msgstr ""
 "Chaidh an iuchair “$deprecated_key” ath-ainmeachadh gu “$key|.” Thèid gach "
 "taic ri “$deprecated_key” a thoirt air falbh leis an tionndadh "
 "$removal_version."
+
+#~ msgid "Speed:"
+#~ msgstr "Luaths:"
+
+#~ msgid "Units move and fight speed"
+#~ msgstr "Astar gluasad is sabaid nan aonadan"
+
+#~ msgid "Scenario"
+#~ msgstr "Cnàmh-sgeul"
+
+#~ msgid "Campaign"
+#~ msgstr "Iomairt"
+
+#~ msgid "No era information found."
+#~ msgstr "Cha deach fiosrachadh linn a lorg."

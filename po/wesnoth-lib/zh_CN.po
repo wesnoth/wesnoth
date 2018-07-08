@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-06-03 16:42+0300\n"
+"POT-Creation-Date: 2018-07-08 04:51-0400\n"
 "PO-Revision-Date: 2018-05-16 22:50+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -1895,10 +1895,10 @@ msgid "Search"
 msgstr "搜索"
 
 #. [toggle_button]: id=sort_0
-#. [label]: id=name
-#. [label]
 #. [toggle_button]: id=sort_1
 #. [toggle_button]: id=sort_name
+#. [label]
+#. [label]: id=name
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:226
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_server_list.cfg:107
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -1958,7 +1958,7 @@ msgstr "发布附加组件"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:247
-#: src/gui/dialogs/addon/manager.cpp:800
+#: src/gui/dialogs/addon/manager.cpp:805
 msgid "Uninstall add-on"
 msgstr "卸载附加组件"
 
@@ -1973,7 +1973,7 @@ msgstr "消息等待中"
 #. [button]: id=ok
 #: data/gui/widget/chatbox.cfg:51 data/gui/widget/window_default.cfg:106
 #: data/gui/window/attack_predictions.cfg:304 data/gui/window/chat_log.cfg:200
-#: data/gui/window/end_credits.cfg:146
+#: data/gui/window/end_credits.cfg:145
 #: data/gui/window/game_cache_options.cfg:247
 #: data/gui/window/game_stats.cfg:843 data/gui/window/game_version.cfg:645
 #: data/gui/window/gamestate_inspector.cfg:397
@@ -1984,7 +1984,7 @@ msgstr "消息等待中"
 #: data/gui/window/mp_alerts_options.cfg:249
 #: data/gui/window/preferences.cfg:429
 #: data/gui/window/screenshot_notification.cfg:216
-#: data/gui/window/statistics_dialog.cfg:597
+#: data/gui/window/statistics_dialog.cfg:521
 #: data/gui/window/terrain_layers.cfg:434 data/gui/window/unit_list.cfg:447
 msgid "Close"
 msgstr "关闭"
@@ -1993,6 +1993,7 @@ msgstr "关闭"
 #: data/gui/widget/unit_preview_pane.cfg:113
 #: data/gui/widget/unit_preview_pane.cfg:296
 #: data/gui/widget/unit_preview_pane.cfg:356
+#: data/gui/window/mp_faction_select.cfg:140
 msgid "Profile"
 msgstr "档案"
 
@@ -2060,7 +2061,7 @@ msgstr "连接"
 #: data/gui/window/mp_create_game/default_resolution.cfg:461
 #: data/gui/window/mp_create_game/small_resolution.cfg:374
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:334
-#: data/gui/window/mp_faction_select.cfg:391
+#: data/gui/window/mp_faction_select.cfg:400
 #: data/gui/window/mp_join_game_password_prompt.cfg:149
 #: data/gui/window/mp_login.cfg:257 data/gui/window/mp_method_selection.cfg:341
 #: data/gui/window/mp_server_list.cfg:231 data/gui/window/mp_staging.cfg:433
@@ -2088,7 +2089,7 @@ msgstr "版本："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:160
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:591
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:597
 msgid "No description available."
 msgstr "没有可用的描述。"
 
@@ -2136,7 +2137,7 @@ msgstr "依赖项目："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:523 src/gui/dialogs/addon/manager.cpp:885
+#: data/gui/window/addon_manager.cfg:523 src/gui/dialogs/addon/manager.cpp:890
 msgid "addon_dependencies^None"
 msgstr "无"
 
@@ -2147,7 +2148,7 @@ msgstr "翻译："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:557 src/gui/dialogs/addon/manager.cpp:899
+#: data/gui/window/addon_manager.cfg:557 src/gui/dialogs/addon/manager.cpp:904
 msgid "translations^None"
 msgstr "无"
 
@@ -2203,8 +2204,8 @@ msgstr "附加组件管理器"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:452
-#: src/gui/dialogs/addon/manager.cpp:639
+#: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:457
+#: src/gui/dialogs/addon/manager.cpp:644
 msgid "Addon Details"
 msgstr "附加组件细节"
 
@@ -2309,13 +2310,13 @@ msgstr "按格子缩放"
 #: data/gui/window/label_settings.cfg:137
 #: data/gui/window/language_selection.cfg:148 data/gui/window/logging.cfg:167
 #: data/gui/window/mp_change_control.cfg:203
-#: data/gui/window/mp_faction_select.cfg:379
+#: data/gui/window/mp_faction_select.cfg:388
 #: data/gui/window/mp_join_game_password_prompt.cfg:136
 #: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:327
 #: data/gui/window/select_orb_colors.cfg:113
 #: data/gui/window/simple_item_selector.cfg:145
 #: data/gui/window/sp_options_configure.cfg:105
-#: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:190
+#: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
 #: data/gui/window/unit_create.cfg:269 data/gui/window/wml_error.cfg:162
 #: data/gui/window/wml_message.cfg:444 src/gui/dialogs/message.cpp:181
 #: src/gui/dialogs/message.cpp:188
@@ -2423,8 +2424,8 @@ msgid ""
 "reloading a game"
 msgstr "让随机数发生器即使在重新载入游戏后也产生同样的结果"
 
-#. [label]: id=title
 #. [slider]: id=enemey_gold_factor
+#. [label]: id=title
 #: data/gui/window/campaign_difficulty.cfg:53
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:251
 msgid "Difficulty"
@@ -2586,7 +2587,7 @@ msgstr "删除时段"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:773 src/gui/dialogs/file_dialog.cpp:307
+#: src/gui/dialogs/addon/manager.cpp:778 src/gui/dialogs/file_dialog.cpp:307
 #: src/gui/dialogs/file_dialog.cpp:733
 msgid "Confirm"
 msgstr "确认"
@@ -2820,8 +2821,8 @@ msgid "Choose a map generator:"
 msgstr "选择地图生成器："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=settings
 #. [button]: id=random_map_settings
+#. [button]: id=settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
 #: src/gui/dialogs/multiplayer/lobby.cpp:478
@@ -2844,15 +2845,15 @@ msgstr "生成"
 msgid "New Map"
 msgstr "新地图"
 
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
 msgstr "宽度："
 
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
@@ -2915,7 +2916,7 @@ msgid "Which player should start here?"
 msgstr "哪位玩家应在此开始游戏？"
 
 #. [label]
-#: data/gui/window/end_credits.cfg:118
+#: data/gui/window/end_credits.cfg:117
 msgid "↑ ↓ to adjust speed"
 msgstr "↑ ↓ 调整速度"
 
@@ -3063,8 +3064,8 @@ msgstr "删除存档"
 msgid "Do you really want to delete this game?"
 msgstr "你真的要删除这个游戏吗？"
 
-#. [toggle_button]: id=dont_ask_again
 #. [toggle_button]: id=do_not_show_again
+#. [toggle_button]: id=dont_ask_again
 #: data/gui/window/game_delete.cfg:80
 #: data/gui/window/mp_host_game_prompt.cfg:79
 msgid "Do not show again"
@@ -3175,7 +3176,7 @@ msgstr "团队"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:401
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:432
 msgid "Gold"
 msgstr "金币"
 
@@ -3198,9 +3199,9 @@ msgstr "维护费用"
 #. [toggle_button]: id=sort_6
 #. [image]: id=income_icon
 #. [label]: id=side_income
-#: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:261
-#: data/gui/window/mp_join_game.cfg:274
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:407
+#: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
+#: data/gui/window/mp_join_game.cfg:286
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:438
 msgid "Income"
 msgstr "收入"
 
@@ -3469,8 +3470,8 @@ msgstr "游戏"
 msgid "Requires a password to join"
 msgstr "需要密码才能加入游戏"
 
-#. [widget]: id=tab_label
 #. [toggle_button]: id=filter_with_friends
+#. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:338
 #: data/gui/window/preferences/05_multiplayer.cfg:415
 msgid "Friends"
@@ -3496,9 +3497,9 @@ msgstr "反转过滤条件"
 msgid "Log Out"
 msgstr "登出"
 
+#. [button]: id=create
 #. [label]
 #. [button]: id=ok
-#. [button]: id=create
 #: data/gui/window/lobby_main.cfg:407 data/gui/window/lobby_main.cfg:573
 #: data/gui/window/mp_create_game/default_resolution.cfg:45
 #: data/gui/window/mp_create_game/default_resolution.cfg:446
@@ -3510,9 +3511,9 @@ msgid "Create Game"
 msgstr "创建游戏"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
 #. [button]: id=show_preferences
 #. [label]: id=title
+#. [grid]
 #: data/gui/window/lobby_main.cfg:417 data/gui/window/lobby_main.cfg:561
 #: data/gui/window/preferences.cfg:212 data/gui/window/title_screen.cfg:259
 #: src/hotkey/hotkey_command.cpp:117
@@ -3678,8 +3679,8 @@ msgstr ""
 msgid "Event"
 msgstr "事件"
 
-#. [label]
 #. [widget]: id=label
+#. [label]
 #: data/gui/window/mp_alerts_options.cfg:154
 #: data/gui/window/preferences.cfg:346
 msgid "Sound"
@@ -3785,9 +3786,9 @@ msgstr "回合变化："
 msgid "When a new turn has begun"
 msgstr "当新的回合开始时"
 
+#. [button]: id=orb_defaults
 #. [button]: id=revert_to_defaults
 #. [button]: id=btn_reset_hotkeys
-#. [button]: id=orb_defaults
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:263
 #: data/gui/window/select_orb_colors.cfg:102
@@ -3970,8 +3971,8 @@ msgid "Time for each attack, recruit, and capture"
 msgstr "每次攻击、征募和占领的时间"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [widget]: id=tab_label
 #. [widget]: id=label
+#. [widget]: id=tab_label
 #: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:291
 #: data/gui/window/preferences/05_multiplayer.cfg:402
 #: src/hotkey/hotkey_command.cpp:38
@@ -4068,49 +4069,49 @@ msgid "Leader:"
 msgstr "首领："
 
 #. [label]
-#: data/gui/window/mp_faction_select.cfg:161
+#: data/gui/window/mp_faction_select.cfg:170
 #: data/gui/window/unit_create.cfg:205
 msgid "Gender:"
 msgstr "性别："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
-#: data/gui/window/mp_faction_select.cfg:167
-#: src/gui/dialogs/multiplayer/faction_select.cpp:151
+#: data/gui/window/mp_faction_select.cfg:176
+#: src/gui/dialogs/multiplayer/faction_select.cpp:162
 msgid "Random"
 msgstr "随机"
 
-#. [row]
 #. [toggle_button]: id=male_toggle
-#: data/gui/window/mp_faction_select.cfg:169
+#. [row]
+#: data/gui/window/mp_faction_select.cfg:178
 #: data/gui/window/unit_create.cfg:217
 msgid "Male"
 msgstr "男"
 
-#. [row]
 #. [toggle_button]: id=female_toggle
-#: data/gui/window/mp_faction_select.cfg:171
+#. [row]
+#: data/gui/window/mp_faction_select.cfg:180
 #: data/gui/window/unit_create.cfg:229
 msgid "Female"
 msgstr "女"
 
 #. [label]
-#: data/gui/window/mp_faction_select.cfg:201
+#: data/gui/window/mp_faction_select.cfg:210
 msgid "Recruits:"
 msgstr "新兵："
 
 #. [label]
-#: data/gui/window/mp_faction_select.cfg:280
+#: data/gui/window/mp_faction_select.cfg:289
 msgid "Choose Your Faction"
 msgstr "选择你的阵营"
 
 #. [label]
-#: data/gui/window/mp_faction_select.cfg:305
+#: data/gui/window/mp_faction_select.cfg:314
 msgid "Starting position:"
 msgstr "起始位置："
 
-#. [label]
 #. [widget]: id=name
+#. [label]
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:273
 msgid "Host Networked Game"
@@ -4126,32 +4127,37 @@ msgstr ""
 "必须启动一个本地服务器实例之后才能主建联机游戏。服务器将作为后台进程运行，直"
 "到所有玩家全部断线为止。您希望继续吗？"
 
+#. [button]: id=select_leader
+#: data/gui/window/mp_join_game.cfg:71 data/gui/window/mp_staging.cfg:70
+msgid "Select the faction and leader for this side"
+msgstr "选择此阵营的派系和首领"
+
 #. [label]
-#: data/gui/window/mp_join_game.cfg:143 data/gui/window/mp_staging.cfg:157
+#: data/gui/window/mp_join_game.cfg:155 data/gui/window/mp_staging.cfg:157
 msgid "<b>Faction:</b>"
 msgstr "<b>派系：</b>"
 
 #. [label]
-#: data/gui/window/mp_join_game.cfg:175 data/gui/window/mp_staging.cfg:190
+#: data/gui/window/mp_join_game.cfg:187 data/gui/window/mp_staging.cfg:190
 msgid "<b>Gender:</b>"
 msgstr "<b>性别：</b>"
 
 #. [button]: id=cancel
-#: data/gui/window/mp_join_game.cfg:347
+#: data/gui/window/mp_join_game.cfg:359
 msgid "Leave"
 msgstr "离开"
 
 #. [label]: id=title
-#: data/gui/window/mp_join_game.cfg:410 data/gui/window/mp_staging.cfg:552
+#: data/gui/window/mp_join_game.cfg:422 data/gui/window/mp_staging.cfg:552
 #: data/gui/window/mp_staging.cfg:737
 msgid "Game Lobby"
 msgstr "游戏大厅"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
-#: data/gui/window/mp_join_game.cfg:479 data/gui/window/mp_staging.cfg:614
+#: data/gui/window/mp_join_game.cfg:491 data/gui/window/mp_staging.cfg:614
 #: data/gui/window/mp_staging.cfg:806
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:463
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:468
 msgid "Waiting for players to join..."
 msgstr "等待玩家加入……"
 
@@ -4187,9 +4193,9 @@ msgid "Save password locally (encrypted)"
 msgstr "在本地保存密码（明文）"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
-#. [label]
 #. [widget]: id=label
+#. [label]
+#. [grid]
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:253
 #: src/gui/dialogs/game_load.cpp:337
@@ -4249,11 +4255,6 @@ msgstr "地址"
 msgid "Select"
 msgstr "选择"
 
-#. [button]: id=select_leader
-#: data/gui/window/mp_staging.cfg:70
-msgid "Select the faction and leader for this side"
-msgstr "选择此阵营的派系和首领"
-
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
 msgid "Change the side's controller"
@@ -4309,124 +4310,126 @@ msgstr "滚屏速度："
 msgid "Change the speed of scrolling around the map"
 msgstr "改变地图滚屏速度"
 
-#. [toggle_button]: id=turbo_toggle
-#: data/gui/window/preferences/01_general.cfg:57
-msgid "Accelerated speed"
-msgstr "加速"
-
-#. [toggle_button]: id=turbo_toggle
-#: data/gui/window/preferences/01_general.cfg:58
-msgid "Make units move and fight faster"
-msgstr "加快单位的移动和战斗速度"
-
 #. [toggle_button]: id=skip_ai_moves
-#: data/gui/window/preferences/01_general.cfg:69
+#: data/gui/window/preferences/01_general.cfg:54
 msgid "Skip AI moves"
 msgstr "略过AI移动"
 
 #. [toggle_button]: id=skip_ai_moves
-#: data/gui/window/preferences/01_general.cfg:70
+#: data/gui/window/preferences/01_general.cfg:55
 msgid "Do not animate AI units moving"
 msgstr "不显示AI单位的移动动画"
 
-#. [column]
-#: data/gui/window/preferences/01_general.cfg:83
-msgid "Speed:"
-msgstr "速度："
+#. [toggle_button]: id=turbo_toggle
+#: data/gui/window/preferences/01_general.cfg:68
+msgid "Accelerated speed"
+msgstr "加速"
+
+#. [toggle_button]: id=turbo_toggle
+#: data/gui/window/preferences/01_general.cfg:69
+msgid "Make units move and fight faster"
+msgstr "加快单位的移动和战斗速度"
 
 #. [column]
-#: data/gui/window/preferences/01_general.cfg:88
-msgid "Units move and fight speed"
-msgstr "单位的移动和战斗速度"
+#: data/gui/window/preferences/01_general.cfg:79
+msgid "Acceleration factor:"
+msgstr ""
+
+#. [column]
+#: data/gui/window/preferences/01_general.cfg:84
+msgid ""
+"Speed at which unit moves and animations play when ‘Accelerated speed’ is "
+"enabled or when Shift is held down in-game"
+msgstr ""
 
 #. [toggle_button]: id=disable_auto_moves
-#: data/gui/window/preferences/01_general.cfg:104
+#: data/gui/window/preferences/01_general.cfg:100
 msgid "Disable automatic moves"
 msgstr "禁用自动移动"
 
 #. [toggle_button]: id=disable_auto_moves
-#: data/gui/window/preferences/01_general.cfg:105
+#: data/gui/window/preferences/01_general.cfg:101
 msgid "Do not allow automatic movements at the beginning of a turn"
 msgstr "不允许回合开始时的自动移动"
 
 #. [toggle_button]: id=show_turn_dialog
-#: data/gui/window/preferences/01_general.cfg:118
+#: data/gui/window/preferences/01_general.cfg:114
 msgid "Turn dialog"
 msgstr "回合对话框"
 
 #. [toggle_button]: id=show_turn_dialog
-#: data/gui/window/preferences/01_general.cfg:119
+#: data/gui/window/preferences/01_general.cfg:115
 msgid "Display a dialog at the beginning of your turn"
 msgstr "在你的回合开始时显示提示对话框"
 
 #. [toggle_button]: id=whiteboard_on_start
-#: data/gui/window/preferences/01_general.cfg:132
+#: data/gui/window/preferences/01_general.cfg:128
 msgid "Enable planning mode on start"
 msgstr "开始时启用计划模式"
 
 #. [toggle_button]: id=whiteboard_on_start
-#: data/gui/window/preferences/01_general.cfg:133
+#: data/gui/window/preferences/01_general.cfg:129
 msgid "Activates Planning Mode on game start"
 msgstr "当游戏开始时，激活计划模式"
 
 #. [toggle_button]: id=whiteboard_hide_allies
-#: data/gui/window/preferences/01_general.cfg:146
+#: data/gui/window/preferences/01_general.cfg:142
 msgid "Hide allies’ plans by default"
 msgstr "默认隐藏盟友的计划"
 
 #. [toggle_button]: id=whiteboard_hide_allies
-#: data/gui/window/preferences/01_general.cfg:147
+#: data/gui/window/preferences/01_general.cfg:143
 msgid "Hide allies’ Planning Mode plans in multiplayer games"
 msgstr "在多人游戏中，隐藏盟友在计划模式下所制定的计划"
 
 #. [toggle_button]: id=interrupt_move_when_ally_sighted
-#: data/gui/window/preferences/01_general.cfg:160
+#: data/gui/window/preferences/01_general.cfg:156
 msgid "Interrupt move when an ally is sighted"
 msgstr "发现友军时中断移动"
 
 #. [toggle_button]: id=interrupt_move_when_ally_sighted
-#: data/gui/window/preferences/01_general.cfg:161
+#: data/gui/window/preferences/01_general.cfg:157
 msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr "当看到友方单位时中断你的单位的移动"
 
 #. [toggle_button]: id=save_replays
-#: data/gui/window/preferences/01_general.cfg:176
+#: data/gui/window/preferences/01_general.cfg:172
 msgid "Save replays at the end of scenarios"
 msgstr "在场景结束时保存录像"
 
 #. [toggle_button]: id=save_replays
-#: data/gui/window/preferences/01_general.cfg:177
+#: data/gui/window/preferences/01_general.cfg:173
 msgid "Save replays of games on victory in all modes and defeat in multiplayer"
 msgstr "在所有模式中胜利时，以及在多人游戏中被击败时，保存录像"
 
 #. [toggle_button]: id=delete_saves
-#: data/gui/window/preferences/01_general.cfg:190
+#: data/gui/window/preferences/01_general.cfg:186
 msgid "Delete auto-saves at the end of scenarios"
 msgstr "在场景结束时删除自动存档"
 
 #. [toggle_button]: id=delete_saves
-#: data/gui/window/preferences/01_general.cfg:191
+#: data/gui/window/preferences/01_general.cfg:187
 msgid ""
 "Delete previous auto-saves on victory in all modes and defeat in multiplayer"
 msgstr "在所有模式中胜利时，以及在多人游戏中被击败时，删除之前的自动存档"
 
 #. [column]
-#: data/gui/window/preferences/01_general.cfg:201
+#: data/gui/window/preferences/01_general.cfg:197
 msgid "Maximum auto-saves:"
 msgstr "最大自动存档数："
 
 #. [column]
-#: data/gui/window/preferences/01_general.cfg:205
+#: data/gui/window/preferences/01_general.cfg:201
 msgid "Set maximum number of automatic saves to be retained"
 msgstr "设置自动存档的最大保留数量"
 
 #. [button]: id=cachemg
-#: data/gui/window/preferences/01_general.cfg:221
+#: data/gui/window/preferences/01_general.cfg:217
 msgid "Cache"
 msgstr "缓存"
 
 #. [button]: id=cachemg
-#: data/gui/window/preferences/01_general.cfg:222
+#: data/gui/window/preferences/01_general.cfg:218
 msgid "Manage the game WML cache"
 msgstr "管理游戏的WML缓存"
 
@@ -4889,19 +4892,9 @@ msgstr "此回合"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/window/statistics_dialog.cfg:432 src/hotkey/hotkey_command.cpp:120
+#: data/gui/window/statistics_dialog.cfg:419 src/hotkey/hotkey_command.cpp:120
 msgid "Statistics"
 msgstr "统计"
-
-#. [widget]: id=tab_label
-#: data/gui/window/statistics_dialog.cfg:485
-msgid "Scenario"
-msgstr "场景"
-
-#. [widget]: id=tab_label
-#: data/gui/window/statistics_dialog.cfg:498
-msgid "Campaign"
-msgstr "战役"
 
 #. [button]: id=cancel
 #: data/gui/window/story_viewer.cfg:131
@@ -5103,7 +5096,7 @@ msgid "Advance Unit"
 msgstr "升级单位"
 
 #. [label]
-#: data/gui/window/unit_advance.cfg:143
+#: data/gui/window/unit_advance.cfg:144
 msgid "What should our victorious unit become?"
 msgstr "我们获胜的单位应该成为？"
 
@@ -5148,21 +5141,21 @@ msgstr "状态"
 msgid "HP"
 msgstr "生命"
 
-#. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_2
+#. [toggle_button]: id=sort_4
 #: data/gui/window/unit_list.cfg:149 data/gui/window/unit_recall.cfg:61
 msgid "Lvl"
 msgstr "等级"
 
-#. [toggle_button]: id=sort_5
 #. [toggle_button]: id=sort_3
+#. [toggle_button]: id=sort_5
 #: data/gui/window/unit_list.cfg:163 data/gui/window/unit_recall.cfg:75
 msgid "XP"
 msgstr "经验"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [toggle_button]: id=sort_6
 #. [toggle_button]: id=sort_4
+#. [toggle_button]: id=sort_6
 #: data/gui/window/unit_list.cfg:177 data/gui/window/unit_recall.cfg:89
 #: src/gui/widgets/unit_preview_pane.cpp:345
 #: src/gui/widgets/unit_preview_pane.cpp:488
@@ -5545,16 +5538,16 @@ msgid "addon_state^Unknown"
 msgstr "未知"
 
 #. TRANSLATORS: ascending
-#: src/gui/dialogs/addon/manager.cpp:361
+#: src/gui/dialogs/addon/manager.cpp:364
 msgid "asc"
 msgstr "升序"
 
 #. TRANSLATORS: descending
-#: src/gui/dialogs/addon/manager.cpp:365
+#: src/gui/dialogs/addon/manager.cpp:368
 msgid "desc"
 msgstr "降序"
 
-#: src/gui/dialogs/addon/manager.cpp:381 src/gui/dialogs/chat_log.cpp:420
+#: src/gui/dialogs/addon/manager.cpp:386 src/gui/dialogs/chat_log.cpp:420
 #: src/gui/dialogs/game_cache_options.cpp:105
 #: src/gui/dialogs/game_version.cpp:186
 #: src/gui/dialogs/gamestate_inspector.cpp:428
@@ -5564,61 +5557,61 @@ msgstr "降序"
 msgid "Clipboard support not found, contact your packager"
 msgstr "未找到剪贴板支持，请联系你的打包者"
 
-#: src/gui/dialogs/addon/manager.cpp:449
+#: src/gui/dialogs/addon/manager.cpp:454
 msgid "addons^Back to List"
 msgstr "回退到列表"
 
-#: src/gui/dialogs/addon/manager.cpp:461
+#: src/gui/dialogs/addon/manager.cpp:466
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "从服务器上下载附加组件列表时发生错误。"
 
-#: src/gui/dialogs/addon/manager.cpp:497
+#: src/gui/dialogs/addon/manager.cpp:502
 msgid "No Add-ons Available"
 msgstr "没有可用的附加组件"
 
-#: src/gui/dialogs/addon/manager.cpp:497
+#: src/gui/dialogs/addon/manager.cpp:502
 msgid "There are no add-ons available for download from this server."
 msgstr "此服务器上没有可供下载的附加组件。"
 
-#: src/gui/dialogs/addon/manager.cpp:672
+#: src/gui/dialogs/addon/manager.cpp:677
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr "下列附加组件似乎有发布或版本控制信息存储在本地，因此将不会被移除："
 
-#: src/gui/dialogs/addon/manager.cpp:680
+#: src/gui/dialogs/addon/manager.cpp:685
 msgid "The following add-on could not be deleted properly:"
 msgstr "下列附加组件无法正常删除："
 
-#: src/gui/dialogs/addon/manager.cpp:726
+#: src/gui/dialogs/addon/manager.cpp:731
 msgid "Warning"
 msgstr "警告"
 
-#: src/gui/dialogs/addon/manager.cpp:727
+#: src/gui/dialogs/addon/manager.cpp:732
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 msgstr "此附加组件的远程版本与正在上传的版本相同，或比它新。你真的希望继续吗？"
 
-#: src/gui/dialogs/addon/manager.cpp:736
+#: src/gui/dialogs/addon/manager.cpp:741
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr "无效的图标路径。请确认路径指向有效的图像。"
 
-#: src/gui/dialogs/addon/manager.cpp:739 src/gui/dialogs/addon/manager.cpp:742
-#: src/gui/dialogs/addon/manager.cpp:781
+#: src/gui/dialogs/addon/manager.cpp:744 src/gui/dialogs/addon/manager.cpp:747
+#: src/gui/dialogs/addon/manager.cpp:786
 msgid "The server responded with an error:"
 msgstr "服务器返回了一个错误："
 
-#: src/gui/dialogs/addon/manager.cpp:740
+#: src/gui/dialogs/addon/manager.cpp:745
 msgid "Terms"
 msgstr "使用条款"
 
-#: src/gui/dialogs/addon/manager.cpp:757 src/gui/dialogs/addon/manager.cpp:784
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:441
+#: src/gui/dialogs/addon/manager.cpp:762 src/gui/dialogs/addon/manager.cpp:789
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:507
 msgid "Response"
 msgstr "回复"
 
-#: src/gui/dialogs/addon/manager.cpp:769
+#: src/gui/dialogs/addon/manager.cpp:774
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -5626,7 +5619,7 @@ msgstr ""
 "删除‘$addon|’将会从附加组件服务器上永久擦除其下载和上传计数。你真的希望继续"
 "吗？"
 
-#: src/gui/dialogs/addon/manager.cpp:801
+#: src/gui/dialogs/addon/manager.cpp:806
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "你要卸载’$addon|’吗？"
 
@@ -6089,76 +6082,72 @@ msgstr "随机地图"
 msgid "No games found."
 msgstr "未找到游戏。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:254
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:256
 msgid "No eras found."
 msgstr "未找到时代。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:255
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:257
 msgid "No eras found"
 msgstr "未找到时代"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:281
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:285
 msgid "Independent: Random factions assigned independently"
 msgstr "独立：将随机阵营独立地指定给玩家"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:282
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:286
 msgid "No Mirror: No two players will get the same faction"
 msgstr "无镜像：任意两位玩家都不会被指定到同一个派系"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:283
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:287
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr "无友方镜像：任意两位结盟的玩家都不会被指定到同一个派系"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:537
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:543
 msgid "No eras available for this game."
 msgstr "没有可用于此游戏的时代。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:735
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:741
 msgid "number of players^$min to $max"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:832
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:838
 msgid "The selected game has no sides!"
 msgstr "选定的游戏没有阵营！"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:898
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:904
 msgid "Choose Starting Scenario"
 msgstr "选择起始场景"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:898
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:904
 msgid "Select at which point to begin this campaign."
 msgstr "选择在何处开始此战役。"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:194
-msgid "No era information found."
-msgstr "未找到时代信息。"
-
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:249
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:216
 msgid "Computer Player"
 msgstr "电脑玩家"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:251
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:218
 msgid "Empty slot"
 msgstr "空置槽位"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:253
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:220
 msgid "Reserved for $playername"
 msgstr "为$playername而保留"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:255
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:222
 msgid "Vacant slot"
 msgstr "空闲槽位"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:259
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:226
 msgid "empty"
 msgstr "空置"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:334
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:365
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:156
 msgid "Team:"
 msgstr "团队："
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:464
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:469
 msgid "Waiting for players to choose factions..."
 msgstr "正在等待玩家选择派系……"
 
@@ -6187,11 +6176,11 @@ msgstr "无效用户名"
 msgid "Not on friends or ignore lists"
 msgstr "不在好友或忽略列表上"
 
-#: src/gui/dialogs/preferences_dialog.cpp:814
+#: src/gui/dialogs/preferences_dialog.cpp:812
 msgid "&#9679;"
 msgstr "&#9679;"
 
-#: src/gui/dialogs/preferences_dialog.cpp:874
+#: src/gui/dialogs/preferences_dialog.cpp:872
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -6199,19 +6188,19 @@ msgstr ""
 "“<b>$hotkey_sequence</b>”目前已用于“<b>$old_hotkey_action</b>”。\n"
 "你希望将该快捷键序列重新指定给“<b>$new_hotkey_action|</b>”吗？"
 
-#: src/gui/dialogs/preferences_dialog.cpp:880
+#: src/gui/dialogs/preferences_dialog.cpp:878
 msgid "Reassign Hotkey"
 msgstr "重新指定快捷键"
 
-#: src/gui/dialogs/preferences_dialog.cpp:897
+#: src/gui/dialogs/preferences_dialog.cpp:895
 msgid "All hotkeys have been reset to their default values."
 msgstr "所有快捷键都已被重置为默认值。"
 
-#: src/gui/dialogs/preferences_dialog.cpp:897
+#: src/gui/dialogs/preferences_dialog.cpp:895
 msgid "Hotkeys Reset"
 msgstr "重置快捷键"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1010
+#: src/gui/dialogs/preferences_dialog.cpp:1008
 msgid "∞"
 msgstr "∞"
 
@@ -6225,33 +6214,43 @@ msgstr ""
 "\n"
 "请尝试将截屏保存为PNG。"
 
-#: src/gui/dialogs/statistics_dialog.cpp:185
+#: src/gui/dialogs/statistics_dialog.cpp:68
+#, fuzzy
+#| msgid "Scenarios"
+msgid "All Scenarios"
+msgstr "场景"
+
+#: src/gui/dialogs/statistics_dialog.cpp:181
 msgid "Recruits"
 msgstr "次征募"
 
-#: src/gui/dialogs/statistics_dialog.cpp:186
+#: src/gui/dialogs/statistics_dialog.cpp:182
 msgid "Recalls"
 msgstr "次召回"
 
-#: src/gui/dialogs/statistics_dialog.cpp:187
+#: src/gui/dialogs/statistics_dialog.cpp:183
 msgid "Advancements"
 msgstr "次升级"
 
-#: src/gui/dialogs/statistics_dialog.cpp:188
+#: src/gui/dialogs/statistics_dialog.cpp:184
 msgid "Losses"
 msgstr "次损失"
 
-#: src/gui/dialogs/statistics_dialog.cpp:189
+#: src/gui/dialogs/statistics_dialog.cpp:185
 msgid "Kills"
 msgstr "次击杀"
 
-#: src/gui/dialogs/statistics_dialog.cpp:203
+#: src/gui/dialogs/statistics_dialog.cpp:204
 msgid "Inflicted"
 msgstr "点造成的伤害"
 
-#: src/gui/dialogs/statistics_dialog.cpp:211
+#: src/gui/dialogs/statistics_dialog.cpp:212
 msgid "Taken"
 msgstr "点受到的伤害"
+
+#: src/gui/dialogs/statistics_dialog.cpp:255
+msgid "$count|× $name"
+msgstr ""
 
 #: src/gui/dialogs/title_screen.cpp:467
 msgid "Choose Test"
@@ -6370,18 +6369,18 @@ msgstr "每个“list_definition”（列表定义）应该至少有一行。"
 msgid "No page defined."
 msgstr "没有已定义的页面。"
 
-#: src/gui/widgets/multimenu_button.cpp:175
+#: src/gui/widgets/multimenu_button.cpp:167
 msgid "multimenu^All Selected"
 msgstr "全部选中"
 
-#: src/gui/widgets/multimenu_button.cpp:180
+#: src/gui/widgets/multimenu_button.cpp:172
 msgid "multimenu^$excess other"
 msgid_plural "$excess others"
 msgstr[0] "及另1个"
 msgstr[1] "及另$excess|个"
 
-#: src/gui/widgets/multimenu_button.cpp:182
-#: src/gui/widgets/multimenu_button.cpp:239
+#: src/gui/widgets/multimenu_button.cpp:174
+#: src/gui/widgets/multimenu_button.cpp:231
 msgid "multimenu^None Selected"
 msgstr "未选中"
 
@@ -7410,6 +7409,21 @@ msgid ""
 msgstr ""
 "主键‘$deprecated_key|’已重命名为‘$key’。对‘$deprecated_key|’的支持将在版本"
 "$removal_version|中移除。"
+
+#~ msgid "Speed:"
+#~ msgstr "速度："
+
+#~ msgid "Units move and fight speed"
+#~ msgstr "单位的移动和战斗速度"
+
+#~ msgid "Scenario"
+#~ msgstr "场景"
+
+#~ msgid "Campaign"
+#~ msgstr "战役"
+
+#~ msgid "No era information found."
+#~ msgstr "未找到时代信息。"
 
 #~ msgid "Deterministic mode"
 #~ msgstr "确定性随机模式"

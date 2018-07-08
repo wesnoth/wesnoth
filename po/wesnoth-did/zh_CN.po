@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-06-09 20:31 UTC\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2018-07-08 08:51 UTC\n"
 "PO-Revision-Date: 2018-05-16 22:20+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -19,8 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n>1;\n"
 "X-Generator: Poedit 2.0.7\n"
 
-#. [campaign]: id=Descent_into_Darkness
 #. [scenario]: id=11_Descent_into_Darkness
+#. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:14
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:5
 msgid "Descent into Darkness"
@@ -181,8 +181,8 @@ msgstr ""
 "盟。”</b>"
 
 #. [side]
-#. [side]: type=Sergeant, id=Drogan
 #. [side]: type=General, id=Taylor
+#. [side]: type=Sergeant, id=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:56
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:102
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:115
@@ -192,12 +192,12 @@ msgstr ""
 msgid "Defenders"
 msgstr "守卫者"
 
-#. [side]: type=Orcish Warlord, id=Gron'r Hronk
-#. [side]: type=Orcish Warlord, id=K'rrlar Oban
-#. [side]: type=Orcish Warrior, id=Kreg'a'shar Trr
 #. [side]: type=Orcish Warlord, id=Borth
 #. [side]: type=Orcish Warlord, id=P'Gareth
 #. [side]: type=Orcish Warlord, id=K'Vark
+#. [side]: type=Orcish Warrior, id=Kreg'a'shar Trr
+#. [side]: type=Orcish Warlord, id=Gron'r Hronk
+#. [side]: type=Orcish Warlord, id=K'rrlar Oban
 #. [modify_side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:77
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:55
@@ -245,7 +245,7 @@ msgstr "兽人攻破河口要塞的防御"
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:121
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:183
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:190
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:464
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:460
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:276
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:72
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:329
@@ -253,7 +253,7 @@ msgstr "兽人攻破河口要塞的防御"
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:379
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:443
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:168
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:634
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:637
 msgid "Death of Malin Keshar"
 msgstr "马林·凯沙死亡"
 
@@ -342,7 +342,7 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:252
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:317
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:313
 msgid "Welcome to Parthyn"
 msgstr "欢迎来到帕辛"
 
@@ -1135,12 +1135,12 @@ msgid "Kill any people from Parthyn but Drogan"
 msgstr "击杀除了德罗甘以外的任何帕辛居民"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:229
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:225
 msgid "I bring word of a great victory against the orcs, Drogan!"
 msgstr "我带来了对兽人之战的重大捷报，德罗甘！"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:240
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:236
 msgid ""
 "I had hoped never to see you again, Malin. You have been banished, and now "
 "return. You give me no choice but to order my soldiers to attack you."
@@ -1149,7 +1149,7 @@ msgstr ""
 "只能命令我的士兵攻击你了。"
 
 #. [message]: role=advisor
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:245
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:241
 msgid ""
 "Master, do not listen to the lies he tells. There is always a choice, and he "
 "chooses to attack you. He jeopardizes the safety of Parthyn!"
@@ -1158,12 +1158,12 @@ msgstr ""
 "全！"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:250
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:246
 msgid "Silence from you."
 msgstr "你闭嘴。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:255
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:251
 msgid ""
 "I have eliminated two orc chieftains! I doubt that we will see any orc raids "
 "this summer. The beasts will be too busy trying to regroup."
@@ -1172,14 +1172,14 @@ msgstr ""
 "畜生正忙着重整部队呢。"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:261
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:257
 msgid ""
 "I had not thought to see you again, Malin. But what is this foul creature "
 "that stands by your side?"
 msgstr "没想到我还能再见到你，马林。不过你身边站着的邪恶生物是什么？"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:266
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:262
 msgid ""
 "A spirit I raised with the arts taught to me by Darken Volk. With his help, "
 "I have slain two orcish chieftains!"
@@ -1187,7 +1187,7 @@ msgstr ""
 "我靠着达肯·沃克传授于我的法术召起的灵魂。靠他帮忙，我已经杀死了两名兽人酋长！"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:271
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:267
 msgid ""
 "You allowed yourself to be corrupted by the foul taint of the necromancer? "
 "Better to face the orcish menace than even dabble in dark magic! People "
@@ -1199,7 +1199,7 @@ msgstr ""
 "亲若是看到，会羞愧万分的。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:276
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:272
 msgid ""
 "I doubt that we will see any orc raids this summer. The beasts will be too "
 "busy trying to regroup! Is this how you repay me?"
@@ -1208,12 +1208,12 @@ msgstr ""
 "是你报答我的方式吗？"
 
 #. [message]: speaker=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:283
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:279
 msgid "You are mistaken, brother. Even now the orcs camp north of the river."
 msgstr "你错了，弟弟。哪怕是现在，兽人都还在河的北面扎营啊。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:288
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:284
 msgid ""
 "I have been tracking that band since they fled the field at my great "
 "victory! But how did they get north of the river? Let my forces be and I "
@@ -1223,7 +1223,7 @@ msgstr ""
 "北面了？让我召唤出部队，我会对付他们的。"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:293
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:289
 msgid ""
 "A nice story. I find it more likely that you brought your orcish allies here "
 "with you to take your revenge upon the city. If we stand down your undead "
@@ -1235,12 +1235,12 @@ msgstr ""
 "会变成一名叛徒。"
 
 #. [message]: role=advisor
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:298
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:294
 msgid "Master, he threatens the safety of the city by standing in your way."
 msgstr "主人，他在妨碍您，因此威胁到了城市的安全。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:303
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:299
 msgid ""
 "Then you are the traitor, Drogan, for preventing me from protecting the "
 "city. I will defend Parthyn, and if you stand in my way I will cut you down "
@@ -1250,14 +1250,14 @@ msgstr ""
 "我，我将因你的反叛而砍倒你。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:337
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:333
 msgid ""
 "Behold, Drogan! I have slain the last orc chieftain. Do you trust my word "
 "now?"
 msgstr "睁眼看看，德罗甘！我杀死了最后一名兽人酋长。你现在相信我的话了吧？"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:342
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:338
 msgid ""
 "You have saved us the trouble of killing those worthless orcs ourselves; for "
 "that I thank you. But you cannot return to Parthyn, Malin."
@@ -1266,7 +1266,7 @@ msgstr ""
 "你。但你不能回帕辛，马林。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:347
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:343
 msgid ""
 "What! You still do not trust my word? Well, perhaps you have lost sight of "
 "the true threat. The orcs will not be gone forever, and without me, how will "
@@ -1276,7 +1276,7 @@ msgstr ""
 "的，要是没有我，谁来保住这城镇？你在危害帕辛的安全。攻击他！"
 
 #. [message]: speaker=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:373
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:369
 msgid ""
 "I am defeated but not dead, foul thing that was once my brother. Watch your "
 "back, because I will be coming for you..."
@@ -1284,22 +1284,22 @@ msgstr ""
 "我败了，但我还没死，曾经是我的弟弟的邪魔。小心你背后，因为我会来追杀你的……"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:402
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:398
 msgid "Now the people of Parthyn will never accept me back!"
 msgstr "现在帕辛的人民再也不会接受我的回归了！"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:412
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:408
 msgid "See how you die when you spurn the help of Malin Keshar!"
 msgstr "敢藐视马林·凯沙的帮助，看看你们自己是怎么死的吧！"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:427
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:423
 msgid "See what your traitorous ways have won you, Drogan?"
 msgstr "看到你的反叛给你带来什么了吗，德罗甘？"
 
 #. [message]: speaker=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:432
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:428
 msgid ""
 "You will pay for Drogan’s death. Now that I have seen the true evil to which "
 "you have come, I will commit every guardsman to your demise. It pains me to "
@@ -1309,7 +1309,7 @@ msgstr ""
 "出所有的卫兵来消灭你。想到你曾是我的弟弟，我很痛苦。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:440
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:436
 msgid ""
 "Even with my new power, I cannot fight the entire town as well as the orcs. "
 "I must flee to the west to find Darken Volk!"
@@ -1318,7 +1318,7 @@ msgstr ""
 "去找达肯·沃克！"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:446
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:442
 msgid ""
 "Even with my new power, I cannot fight the entire town. I must flee to the "
 "west to find Darken Volk!"
@@ -1327,12 +1327,12 @@ msgstr ""
 "沃克！"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:457
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:453
 msgid "Escape to the northwest"
 msgstr "逃往西北"
 
 #. [message]: speaker=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:498
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:494
 msgid ""
 "While our forces must stay here to fight off your pet orcs, when we are done "
 "I shall come after you. You are my brother no longer."
@@ -1341,7 +1341,7 @@ msgstr ""
 "杀你的。你不再是我的弟弟了。"
 
 #. [message]: speaker=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:504
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:500
 msgid ""
 "While our forces must stay here and make sure the orcs are routed, when we "
 "are done I shall come after you. You are my brother no longer."
@@ -1350,7 +1350,7 @@ msgstr ""
 "的。你不再是我的弟弟了。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:512
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:508
 msgid ""
 "Gods of Darkness, how did it come to this? My own sister determined on my "
 "death. Nothing has gone right since... since that day the fat toad Zephrin "
@@ -1364,7 +1364,7 @@ msgstr ""
 "说。于是他们便把我从学院里开除了。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:517
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:513
 msgid ""
 "Now the only being who still wants to keep me alive is a necromancer. Curse "
 "them all! Live or die, I’ll have my revenge on those that have wronged me."
@@ -1793,7 +1793,7 @@ msgid "You are even more of a fool than I thought."
 msgstr "你甚至比我所想的还要愚蠢得多。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:388
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:391
 msgid ""
 "You let me believe Parthyn would accept me back so when they didn’t I would "
 "be willing to attack my own countrymen!"
@@ -1802,7 +1802,7 @@ msgstr ""
 "了！"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:393
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:396
 msgid ""
 "What you let yourself believe is no fault of mine. Cease your foolish "
 "prattle. I gave you more power than you could have possibly dreamed. Use it "
@@ -1812,7 +1812,7 @@ msgstr ""
 "强大的力量，比你所梦想的还强大得多。用它来对付惹恼你的兽人，而不是对付我。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:398
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:401
 msgid ""
 "So it is true! You took my home away from me. You took Drogan away. Now that "
 "all of that is gone, I will at least keep the fruits of my labors."
@@ -1821,22 +1821,22 @@ msgstr ""
 "切，至少，我会守住自己的劳动果实。"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:403
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:406
 msgid "Hardly. I will crush you easily."
 msgstr "这几乎不可能。我会轻易地碾死你。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:408
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:411
 msgid "Perhaps, but I have nothing left to lose."
 msgstr "也许吧，但我已经没有任何可以失去的东西了。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:423
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:426
 msgid "Now you shall pay for what you have done to me."
 msgstr "现在你将为你对我所做的一切付出代价。"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:428
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:431
 msgid ""
 "Done? I have done nothing but give you an opportunity. You have chosen your "
 "own path. Now leave me alone!"
@@ -1845,12 +1845,12 @@ msgstr ""
 "点！"
 
 #. [unit]: type=Paladin, id=Sir Cadaeus
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:452
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:455
 msgid "Sir Cadaeus"
 msgstr "卡达艾乌斯爵士"
 
 #. [message]: speaker=Sir Cadaeus
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:485
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:488
 msgid ""
 "Your travels in this region have not gone unnoticed, foul necromancers! We "
 "have been tracking you for weeks, with our purpose renewed this morning upon "
@@ -1861,7 +1861,7 @@ msgstr ""
 "了。"
 
 #. [message]: speaker=Sir Cadaeus
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:490
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:493
 msgid ""
 "Do not even think of running away — my horsemen can easily catch you. Yes, "
 "on this day you shall have to answer for your innumerable crimes."
@@ -1870,7 +1870,7 @@ msgstr ""
 "的罪行而受到惩罚。"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:495
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:498
 msgid ""
 "We’ll see how well your pompous words protect you from the blades of the "
 "undead once I have finished this upstart."
@@ -1878,7 +1878,7 @@ msgstr ""
 "等我干掉这个暴发户之后，就让我们来看看你在亡灵的刀下怎么用大话来保护自己吧。"
 
 #. [message]: speaker=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:596
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:599
 msgid ""
 "I told you, Malin, that I would find you again, and I have kept my word. I "
 "will not suffer you to bring any further harm to my people, and so you will "
@@ -1888,7 +1888,7 @@ msgstr ""
 "遭受更多的伤害，所以，你不会活着看到下一次日出了。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:601
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:604
 msgid ""
 "You wrong me, sister. I have only tried to help. Have you not seen fewer "
 "orcs this past summer?"
@@ -1896,44 +1896,44 @@ msgstr ""
 "您误会我了，姐姐。我只是试着帮忙罢了。在刚过去的夏天里，你没发现兽人少了吗？"
 
 #. [message]: speaker=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:606
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:609
 msgid "I will not listen to any more of your lies. Men, attack!"
 msgstr "我不会再听你的任何谎言了。大伙儿，进攻！"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:618
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:621
 msgid "With my dying breath I curse you, Malin the Damned!"
 msgstr "用我临终的这口气诅咒你，被诅咒的马林！"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:623
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:626
 msgid "Now I’ve just got to get that book off the battlefield!"
 msgstr "现在我可以着手把那本书带出战场了！"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:630
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:633
 msgid "Bring the book back to Malin’s castle"
 msgstr "把书带回马林的城堡"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:646
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:649
 msgid ""
 "Pick up the book by moving a unit onto it. Bats and ghosts cannot carry the "
 "book."
 msgstr "将一个单位移动到书所在的地方以捡起它。蝙蝠和鬼魂不能携带书。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:691
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:694
 msgid "I have the book!"
 msgstr "我拿到书了！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:711
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:714
 msgid "I am sorry, master, but that is too heavy for me."
 msgstr "对不起，主人，那对我而言太重了。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:747
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:750
 msgid ""
 "The paladins will not be able to pursue me through the mountains, and Dela "
 "will not dare take the soldiers too far from Parthyn."

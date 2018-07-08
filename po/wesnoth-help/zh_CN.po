@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-26 15:04+0300\n"
+"POT-Creation-Date: 2018-07-08 04:51-0400\n"
 "PO-Revision-Date: 2018-05-20 10:18+0900\n"
 "Last-Translator: qrqiuren <qrqiuren@users.noreply.github.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -31,13 +31,13 @@ msgid "Underground"
 msgstr "地下"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:658
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:667
 #: data/core/macros/abilities.cfg:274
 msgid "berserk"
 msgstr "狂暴"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:660
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:669
 #: data/core/macros/abilities.cfg:275
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -47,13 +47,13 @@ msgstr ""
 "或者恶斗三十回合为止。"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:669
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:678
 #: data/core/macros/abilities.cfg:359
 msgid "magical"
 msgstr "魔法"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:671
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:680
 #: data/core/macros/abilities.cfg:360
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
@@ -2134,45 +2134,45 @@ msgstr ""
 "间，而前半夜和后半夜则算作夜间：\n"
 "\n"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:343 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "黎明"
 
-#. [time]: id=morning
 #. [topic]: id=time_of_day
+#. [time]: id=morning
 #: data/core/help.cfg:344 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "上午"
 
-#. [time]: id=afternoon
 #. [topic]: id=time_of_day
+#. [time]: id=afternoon
 #: data/core/help.cfg:345 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "下午"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:346 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "黄昏"
 
-#. [time]: id=first_watch
 #. [topic]: id=time_of_day
+#. [time]: id=first_watch
 #: data/core/help.cfg:347 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "前半夜"
 
-#. [time]: id=second_watch
 #. [topic]: id=time_of_day
+#. [time]: id=second_watch
 #: data/core/help.cfg:348 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
@@ -3943,7 +3943,7 @@ msgid "The Long Dark (2)"
 msgstr "长夜(2)"
 
 #. [time]: id=long_dark3
-#: data/core/macros/schedules.cfg:652
+#: data/core/macros/schedules.cfg:650
 msgid "The Long Dark (3)"
 msgstr "长夜(3)"
 
@@ -4657,18 +4657,32 @@ msgstr ""
 "减少1点。"
 
 #: data/core/units.cfg:11
+#, fuzzy
+#| msgid ""
+#| "Despite orcs’ reliance on raw strength, few of their children are "
+#| "destined to grow to possess any. Goblins are, despite their appearance, "
+#| "born as siblings to the orcs and members of the same race. While other "
+#| "races usually bear children singly or in pairs, orcs will have large "
+#| "litters of children all at once, causing their populations to explode. "
+#| "Within any litter, there will be only one or two who grow to the strength "
+#| "of a \"true orc\", a few who are born slightly smaller and weaker, and "
+#| "the rest, often a full half of any litter, are much weaker and destined "
+#| "to be goblins. Almost as newborns the class system of orcish society is "
+#| "visible, with the weak put in their place by their stronger siblings. The "
+#| "stronger ones will routinely grab most of the food and thus grow stronger "
+#| "still, while their weaker siblings do not."
 msgid ""
 "Despite orcs’ reliance on raw strength, few of their children are destined "
 "to grow to possess any. Goblins are, despite their appearance, born as "
 "siblings to the orcs and members of the same race. While other races usually "
 "bear children singly or in pairs, orcs will have large litters of children "
 "all at once, causing their populations to explode. Within any litter, there "
-"will be only one or two who grow to the strength of a \"true orc\", a few "
-"who are born slightly smaller and weaker, and the rest, often a full half of "
-"any litter, are much weaker and destined to be goblins. Almost as newborns "
-"the class system of orcish society is visible, with the weak put in their "
-"place by their stronger siblings. The stronger ones will routinely grab most "
-"of the food and thus grow stronger still, while their weaker siblings do not."
+"will be only one or two who grow to the strength of a “true orc”, a few who "
+"are born slightly smaller and weaker, and the rest, often a full half of any "
+"litter, are much weaker and destined to be goblins. Almost as newborns the "
+"class system of orcish society is visible, with the weak put in their place "
+"by their stronger siblings. The stronger ones will routinely grab most of "
+"the food and thus grow stronger still, while their weaker siblings do not."
 msgstr ""
 "尽管兽人依赖蛮力，但他们的子嗣中只有很少的一部分长大后会拥有力量。虽然外表上"
 "有区别，但地精天生就是兽人的兄弟，是同一种族的成员。其他种族通常只会抚养一个"

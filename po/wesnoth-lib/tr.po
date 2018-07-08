@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-06-03 16:42+0300\n"
+"POT-Creation-Date: 2018-07-08 04:51-0400\n"
 "PO-Revision-Date: 2009-04-12 14:55+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <ceviri@belgeler.gen.tr>\n"
@@ -1903,10 +1903,10 @@ msgid "Search"
 msgstr ""
 
 #. [toggle_button]: id=sort_0
-#. [label]: id=name
-#. [label]
 #. [toggle_button]: id=sort_1
 #. [toggle_button]: id=sort_name
+#. [label]
+#. [label]: id=name
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:226
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_server_list.cfg:107
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -1967,7 +1967,7 @@ msgstr ""
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:247
-#: src/gui/dialogs/addon/manager.cpp:800
+#: src/gui/dialogs/addon/manager.cpp:805
 #, fuzzy
 msgid "Uninstall add-on"
 msgstr "Eklentileri güncelle"
@@ -1984,7 +1984,7 @@ msgstr "İletişim"
 #. [button]: id=ok
 #: data/gui/widget/chatbox.cfg:51 data/gui/widget/window_default.cfg:106
 #: data/gui/window/attack_predictions.cfg:304 data/gui/window/chat_log.cfg:200
-#: data/gui/window/end_credits.cfg:146
+#: data/gui/window/end_credits.cfg:145
 #: data/gui/window/game_cache_options.cfg:247
 #: data/gui/window/game_stats.cfg:843 data/gui/window/game_version.cfg:645
 #: data/gui/window/gamestate_inspector.cfg:397
@@ -1995,7 +1995,7 @@ msgstr "İletişim"
 #: data/gui/window/mp_alerts_options.cfg:249
 #: data/gui/window/preferences.cfg:429
 #: data/gui/window/screenshot_notification.cfg:216
-#: data/gui/window/statistics_dialog.cfg:597
+#: data/gui/window/statistics_dialog.cfg:521
 #: data/gui/window/terrain_layers.cfg:434 data/gui/window/unit_list.cfg:447
 msgid "Close"
 msgstr "Kapat"
@@ -2004,6 +2004,7 @@ msgstr "Kapat"
 #: data/gui/widget/unit_preview_pane.cfg:113
 #: data/gui/widget/unit_preview_pane.cfg:296
 #: data/gui/widget/unit_preview_pane.cfg:356
+#: data/gui/window/mp_faction_select.cfg:140
 msgid "Profile"
 msgstr ""
 
@@ -2071,7 +2072,7 @@ msgstr "Bağlan"
 #: data/gui/window/mp_create_game/default_resolution.cfg:461
 #: data/gui/window/mp_create_game/small_resolution.cfg:374
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:334
-#: data/gui/window/mp_faction_select.cfg:391
+#: data/gui/window/mp_faction_select.cfg:400
 #: data/gui/window/mp_join_game_password_prompt.cfg:149
 #: data/gui/window/mp_login.cfg:257 data/gui/window/mp_method_selection.cfg:341
 #: data/gui/window/mp_server_list.cfg:231 data/gui/window/mp_staging.cfg:433
@@ -2100,7 +2101,7 @@ msgstr "Sürüm"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:160
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:591
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:597
 msgid "No description available."
 msgstr ""
 
@@ -2152,7 +2153,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:523 src/gui/dialogs/addon/manager.cpp:885
+#: data/gui/window/addon_manager.cfg:523 src/gui/dialogs/addon/manager.cpp:890
 msgid "addon_dependencies^None"
 msgstr ""
 
@@ -2163,7 +2164,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:557 src/gui/dialogs/addon/manager.cpp:899
+#: data/gui/window/addon_manager.cfg:557 src/gui/dialogs/addon/manager.cpp:904
 msgid "translations^None"
 msgstr ""
 
@@ -2229,8 +2230,8 @@ msgstr "Eklentiler"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:452
-#: src/gui/dialogs/addon/manager.cpp:639
+#: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:457
+#: src/gui/dialogs/addon/manager.cpp:644
 msgid "Addon Details"
 msgstr ""
 
@@ -2338,13 +2339,13 @@ msgstr ""
 #: data/gui/window/label_settings.cfg:137
 #: data/gui/window/language_selection.cfg:148 data/gui/window/logging.cfg:167
 #: data/gui/window/mp_change_control.cfg:203
-#: data/gui/window/mp_faction_select.cfg:379
+#: data/gui/window/mp_faction_select.cfg:388
 #: data/gui/window/mp_join_game_password_prompt.cfg:136
 #: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:327
 #: data/gui/window/select_orb_colors.cfg:113
 #: data/gui/window/simple_item_selector.cfg:145
 #: data/gui/window/sp_options_configure.cfg:105
-#: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:190
+#: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
 #: data/gui/window/unit_create.cfg:269 data/gui/window/wml_error.cfg:162
 #: data/gui/window/wml_message.cfg:444 src/gui/dialogs/message.cpp:181
 #: src/gui/dialogs/message.cpp:188
@@ -2464,8 +2465,8 @@ msgid ""
 "reloading a game"
 msgstr ""
 
-#. [label]: id=title
 #. [slider]: id=enemey_gold_factor
+#. [label]: id=title
 #: data/gui/window/campaign_difficulty.cfg:53
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:251
 msgid "Difficulty"
@@ -2641,7 +2642,7 @@ msgstr "Dosyayı Sil"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:773 src/gui/dialogs/file_dialog.cpp:307
+#: src/gui/dialogs/addon/manager.cpp:778 src/gui/dialogs/file_dialog.cpp:307
 #: src/gui/dialogs/file_dialog.cpp:733
 msgid "Confirm"
 msgstr ""
@@ -2905,8 +2906,8 @@ msgid "Choose a map generator:"
 msgstr "Harita Üreteci"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=settings
 #. [button]: id=random_map_settings
+#. [button]: id=settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
 #: src/gui/dialogs/multiplayer/lobby.cpp:478
@@ -2929,15 +2930,15 @@ msgstr "Üret"
 msgid "New Map"
 msgstr "Yeni Harita"
 
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
 msgstr "Eni:"
 
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
@@ -3006,7 +3007,7 @@ msgid "Which player should start here?"
 msgstr ""
 
 #. [label]
-#: data/gui/window/end_credits.cfg:118
+#: data/gui/window/end_credits.cfg:117
 msgid "↑ ↓ to adjust speed"
 msgstr ""
 
@@ -3160,8 +3161,8 @@ msgstr "Dosyayı Sil"
 msgid "Do you really want to delete this game?"
 msgstr "Gerçekten çıkmak istiyor musunuz?"
 
-#. [toggle_button]: id=dont_ask_again
 #. [toggle_button]: id=do_not_show_again
+#. [toggle_button]: id=dont_ask_again
 #: data/gui/window/game_delete.cfg:80
 #: data/gui/window/mp_host_game_prompt.cfg:79
 #, fuzzy
@@ -3285,7 +3286,7 @@ msgstr "1. Takım"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:401
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:432
 msgid "Gold"
 msgstr ""
 
@@ -3312,9 +3313,9 @@ msgstr ""
 #. [toggle_button]: id=sort_6
 #. [image]: id=income_icon
 #. [label]: id=side_income
-#: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:261
-#: data/gui/window/mp_join_game.cfg:274
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:407
+#: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
+#: data/gui/window/mp_join_game.cfg:286
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:438
 msgid "Income"
 msgstr ""
 
@@ -3617,8 +3618,8 @@ msgstr "İsim"
 msgid "Requires a password to join"
 msgstr ""
 
-#. [widget]: id=tab_label
 #. [toggle_button]: id=filter_with_friends
+#. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:338
 #: data/gui/window/preferences/05_multiplayer.cfg:415
 #, fuzzy
@@ -3647,9 +3648,9 @@ msgstr ""
 msgid "Log Out"
 msgstr "Uzaklaş"
 
+#. [button]: id=create
 #. [label]
 #. [button]: id=ok
-#. [button]: id=create
 #: data/gui/window/lobby_main.cfg:407 data/gui/window/lobby_main.cfg:573
 #: data/gui/window/mp_create_game/default_resolution.cfg:45
 #: data/gui/window/mp_create_game/default_resolution.cfg:446
@@ -3661,9 +3662,9 @@ msgid "Create Game"
 msgstr "Oyun Üret"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
 #. [button]: id=show_preferences
 #. [label]: id=title
+#. [grid]
 #: data/gui/window/lobby_main.cfg:417 data/gui/window/lobby_main.cfg:561
 #: data/gui/window/preferences.cfg:212 data/gui/window/title_screen.cfg:259
 #: src/hotkey/hotkey_command.cpp:117
@@ -3845,8 +3846,8 @@ msgstr ""
 msgid "Event"
 msgstr ""
 
-#. [label]
 #. [widget]: id=label
+#. [label]
 #: data/gui/window/mp_alerts_options.cfg:154
 #: data/gui/window/preferences.cfg:346
 msgid "Sound"
@@ -3973,9 +3974,9 @@ msgstr ""
 msgid "When a new turn has begun"
 msgstr ""
 
+#. [button]: id=orb_defaults
 #. [button]: id=revert_to_defaults
 #. [button]: id=btn_reset_hotkeys
-#. [button]: id=orb_defaults
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:263
 #: data/gui/window/select_orb_colors.cfg:102
@@ -4186,8 +4187,8 @@ msgid "Time for each attack, recruit, and capture"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [widget]: id=tab_label
 #. [widget]: id=label
+#. [widget]: id=tab_label
 #: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:291
 #: data/gui/window/preferences/05_multiplayer.cfg:402
 #: src/hotkey/hotkey_command.cpp:38
@@ -4299,7 +4300,7 @@ msgid "Leader:"
 msgstr "Lider"
 
 #. [label]
-#: data/gui/window/mp_faction_select.cfg:161
+#: data/gui/window/mp_faction_select.cfg:170
 #: data/gui/window/unit_create.cfg:205
 #, fuzzy
 msgid "Gender:"
@@ -4307,49 +4308,49 @@ msgstr "Üret"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
-#: data/gui/window/mp_faction_select.cfg:167
-#: src/gui/dialogs/multiplayer/faction_select.cpp:151
+#: data/gui/window/mp_faction_select.cfg:176
+#: src/gui/dialogs/multiplayer/faction_select.cpp:162
 msgid "Random"
 msgstr ""
 
-#. [row]
 #. [toggle_button]: id=male_toggle
-#: data/gui/window/mp_faction_select.cfg:169
+#. [row]
+#: data/gui/window/mp_faction_select.cfg:178
 #: data/gui/window/unit_create.cfg:217
 #, fuzzy
 msgid "Male"
 msgstr "Kale"
 
-#. [row]
 #. [toggle_button]: id=female_toggle
-#: data/gui/window/mp_faction_select.cfg:171
+#. [row]
+#: data/gui/window/mp_faction_select.cfg:180
 #: data/gui/window/unit_create.cfg:229
 msgid "Female"
 msgstr ""
 
 #. [label]
-#: data/gui/window/mp_faction_select.cfg:201
+#: data/gui/window/mp_faction_select.cfg:210
 #, fuzzy
 #| msgid "Recruit"
 msgid "Recruits:"
 msgstr "Asker al"
 
 #. [label]
-#: data/gui/window/mp_faction_select.cfg:280
+#: data/gui/window/mp_faction_select.cfg:289
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Choose Your Faction"
 msgstr "Çözünürlüğü Seç"
 
 #. [label]
-#: data/gui/window/mp_faction_select.cfg:305
+#: data/gui/window/mp_faction_select.cfg:314
 #, fuzzy
 #| msgid "Set Starting Positions Tool"
 msgid "Starting position:"
 msgstr "Başlangıç Konumları Araçları"
 
-#. [label]
 #. [widget]: id=name
+#. [label]
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:273
 msgid "Host Networked Game"
@@ -4363,33 +4364,38 @@ msgid ""
 "disconnected. Do you wish to continue?"
 msgstr ""
 
+#. [button]: id=select_leader
+#: data/gui/window/mp_join_game.cfg:71 data/gui/window/mp_staging.cfg:70
+msgid "Select the faction and leader for this side"
+msgstr ""
+
 #. [label]
-#: data/gui/window/mp_join_game.cfg:143 data/gui/window/mp_staging.cfg:157
+#: data/gui/window/mp_join_game.cfg:155 data/gui/window/mp_staging.cfg:157
 msgid "<b>Faction:</b>"
 msgstr ""
 
 #. [label]
-#: data/gui/window/mp_join_game.cfg:175 data/gui/window/mp_staging.cfg:190
+#: data/gui/window/mp_join_game.cfg:187 data/gui/window/mp_staging.cfg:190
 #, fuzzy
 msgid "<b>Gender:</b>"
 msgstr "Üret"
 
 #. [button]: id=cancel
-#: data/gui/window/mp_join_game.cfg:347
+#: data/gui/window/mp_join_game.cfg:359
 msgid "Leave"
 msgstr ""
 
 #. [label]: id=title
-#: data/gui/window/mp_join_game.cfg:410 data/gui/window/mp_staging.cfg:552
+#: data/gui/window/mp_join_game.cfg:422 data/gui/window/mp_staging.cfg:552
 #: data/gui/window/mp_staging.cfg:737
 msgid "Game Lobby"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
-#: data/gui/window/mp_join_game.cfg:479 data/gui/window/mp_staging.cfg:614
+#: data/gui/window/mp_join_game.cfg:491 data/gui/window/mp_staging.cfg:614
 #: data/gui/window/mp_staging.cfg:806
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:463
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:468
 msgid "Waiting for players to join..."
 msgstr ""
 
@@ -4428,9 +4434,9 @@ msgid "Save password locally (encrypted)"
 msgstr "Parolayı tercihlere kaydet (şifresiz)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
-#. [label]
 #. [widget]: id=label
+#. [label]
+#. [grid]
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:253
 #: src/gui/dialogs/game_load.cpp:337
@@ -4492,11 +4498,6 @@ msgstr "Adres"
 #: data/gui/window/mp_server_list.cfg:217 src/preferences/display.cpp:170
 msgid "Select"
 msgstr "Seçiniz"
-
-#. [button]: id=select_leader
-#: data/gui/window/mp_staging.cfg:70
-msgid "Select the faction and leader for this side"
-msgstr ""
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
@@ -4565,97 +4566,97 @@ msgstr "Kaydırma Hızı:"
 msgid "Change the speed of scrolling around the map"
 msgstr "Haritanın ekrandaki kayma hızını değiştir"
 
-#. [toggle_button]: id=turbo_toggle
-#: data/gui/window/preferences/01_general.cfg:57
-msgid "Accelerated speed"
-msgstr "Arttırılmış Hız"
-
-#. [toggle_button]: id=turbo_toggle
-#: data/gui/window/preferences/01_general.cfg:58
-msgid "Make units move and fight faster"
-msgstr "Birimlerin daha hızlı hareket etmesi ve savaşmasını sağlar"
-
 #. [toggle_button]: id=skip_ai_moves
-#: data/gui/window/preferences/01_general.cfg:69
+#: data/gui/window/preferences/01_general.cfg:54
 msgid "Skip AI moves"
 msgstr "Saldırı Arabirimi Hareketlerini Atla"
 
 #. [toggle_button]: id=skip_ai_moves
-#: data/gui/window/preferences/01_general.cfg:70
+#: data/gui/window/preferences/01_general.cfg:55
 msgid "Do not animate AI units moving"
 msgstr "Saldırı Arayüzü birimlerinin hareketleri canlandırılmaz"
 
-#. [column]
-#: data/gui/window/preferences/01_general.cfg:83
-#, fuzzy
-#| msgid "Speed: "
-msgid "Speed:"
-msgstr "Hız: "
+#. [toggle_button]: id=turbo_toggle
+#: data/gui/window/preferences/01_general.cfg:68
+msgid "Accelerated speed"
+msgstr "Arttırılmış Hız"
+
+#. [toggle_button]: id=turbo_toggle
+#: data/gui/window/preferences/01_general.cfg:69
+msgid "Make units move and fight faster"
+msgstr "Birimlerin daha hızlı hareket etmesi ve savaşmasını sağlar"
 
 #. [column]
-#: data/gui/window/preferences/01_general.cfg:88
-msgid "Units move and fight speed"
-msgstr "Birimlerin hareket ve döğüş hızı"
+#: data/gui/window/preferences/01_general.cfg:79
+msgid "Acceleration factor:"
+msgstr ""
+
+#. [column]
+#: data/gui/window/preferences/01_general.cfg:84
+msgid ""
+"Speed at which unit moves and animations play when ‘Accelerated speed’ is "
+"enabled or when Shift is held down in-game"
+msgstr ""
 
 #. [toggle_button]: id=disable_auto_moves
-#: data/gui/window/preferences/01_general.cfg:104
+#: data/gui/window/preferences/01_general.cfg:100
 msgid "Disable automatic moves"
 msgstr ""
 
 #. [toggle_button]: id=disable_auto_moves
-#: data/gui/window/preferences/01_general.cfg:105
+#: data/gui/window/preferences/01_general.cfg:101
 #, fuzzy
 #| msgid "Play a bell sound at the beginning of your turn"
 msgid "Do not allow automatic movements at the beginning of a turn"
 msgstr "Sıranız geldiğinde bir gong sesi duyulur"
 
 #. [toggle_button]: id=show_turn_dialog
-#: data/gui/window/preferences/01_general.cfg:118
+#: data/gui/window/preferences/01_general.cfg:114
 msgid "Turn dialog"
 msgstr "Sıra Gelme Kutusu"
 
 #. [toggle_button]: id=show_turn_dialog
-#: data/gui/window/preferences/01_general.cfg:119
+#: data/gui/window/preferences/01_general.cfg:115
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Sıranız geldiğinde bir uyarı gösterir"
 
 #. [toggle_button]: id=whiteboard_on_start
-#: data/gui/window/preferences/01_general.cfg:132
+#: data/gui/window/preferences/01_general.cfg:128
 msgid "Enable planning mode on start"
 msgstr ""
 
 #. [toggle_button]: id=whiteboard_on_start
-#: data/gui/window/preferences/01_general.cfg:133
+#: data/gui/window/preferences/01_general.cfg:129
 msgid "Activates Planning Mode on game start"
 msgstr ""
 
 #. [toggle_button]: id=whiteboard_hide_allies
-#: data/gui/window/preferences/01_general.cfg:146
+#: data/gui/window/preferences/01_general.cfg:142
 msgid "Hide allies’ plans by default"
 msgstr ""
 
 #. [toggle_button]: id=whiteboard_hide_allies
-#: data/gui/window/preferences/01_general.cfg:147
+#: data/gui/window/preferences/01_general.cfg:143
 msgid "Hide allies’ Planning Mode plans in multiplayer games"
 msgstr ""
 
 #. [toggle_button]: id=interrupt_move_when_ally_sighted
-#: data/gui/window/preferences/01_general.cfg:160
+#: data/gui/window/preferences/01_general.cfg:156
 msgid "Interrupt move when an ally is sighted"
 msgstr ""
 
 #. [toggle_button]: id=interrupt_move_when_ally_sighted
-#: data/gui/window/preferences/01_general.cfg:161
+#: data/gui/window/preferences/01_general.cfg:157
 msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr ""
 
 #. [toggle_button]: id=save_replays
-#: data/gui/window/preferences/01_general.cfg:176
+#: data/gui/window/preferences/01_general.cfg:172
 msgid "Save replays at the end of scenarios"
 msgstr ""
 
 #. [toggle_button]: id=save_replays
-#: data/gui/window/preferences/01_general.cfg:177
+#: data/gui/window/preferences/01_general.cfg:173
 #, fuzzy
 #| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid "Save replays of games on victory in all modes and defeat in multiplayer"
@@ -4663,12 +4664,12 @@ msgstr ""
 "TO/ÇO Galibiyetinde veya ÇO Yenilgisinde kendiliğinden kaydedilenleri sil"
 
 #. [toggle_button]: id=delete_saves
-#: data/gui/window/preferences/01_general.cfg:190
+#: data/gui/window/preferences/01_general.cfg:186
 msgid "Delete auto-saves at the end of scenarios"
 msgstr ""
 
 #. [toggle_button]: id=delete_saves
-#: data/gui/window/preferences/01_general.cfg:191
+#: data/gui/window/preferences/01_general.cfg:187
 #, fuzzy
 #| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid ""
@@ -4677,24 +4678,24 @@ msgstr ""
 "TO/ÇO Galibiyetinde veya ÇO Yenilgisinde kendiliğinden kaydedilenleri sil"
 
 #. [column]
-#: data/gui/window/preferences/01_general.cfg:201
+#: data/gui/window/preferences/01_general.cfg:197
 #, fuzzy
 #| msgid "Maximum auto-saves: "
 msgid "Maximum auto-saves:"
 msgstr "Azami Kayıt Sayısı: "
 
 #. [column]
-#: data/gui/window/preferences/01_general.cfg:205
+#: data/gui/window/preferences/01_general.cfg:201
 msgid "Set maximum number of automatic saves to be retained"
 msgstr "Kendiliğinden yapılan kayıtların azami sayısını ayarla"
 
 #. [button]: id=cachemg
-#: data/gui/window/preferences/01_general.cfg:221
+#: data/gui/window/preferences/01_general.cfg:217
 msgid "Cache"
 msgstr ""
 
 #. [button]: id=cachemg
-#: data/gui/window/preferences/01_general.cfg:222
+#: data/gui/window/preferences/01_general.cfg:218
 #, fuzzy
 #| msgid "Change the sample rate"
 msgid "Manage the game WML cache"
@@ -5210,22 +5211,9 @@ msgstr "Eli Bitir"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/window/statistics_dialog.cfg:432 src/hotkey/hotkey_command.cpp:120
+#: data/gui/window/statistics_dialog.cfg:419 src/hotkey/hotkey_command.cpp:120
 msgid "Statistics"
 msgstr "İstatistikler"
-
-#. [widget]: id=tab_label
-#: data/gui/window/statistics_dialog.cfg:485
-#, fuzzy
-msgid "Scenario"
-msgstr "Senaryo Amaçları"
-
-#. [widget]: id=tab_label
-#: data/gui/window/statistics_dialog.cfg:498
-#, fuzzy
-#| msgid "Campaign"
-msgid "Campaign"
-msgstr "Seferberlik"
 
 #. [button]: id=cancel
 #: data/gui/window/story_viewer.cfg:131
@@ -5446,7 +5434,7 @@ msgid "Advance Unit"
 msgstr "Gelişmiş Seçenekler"
 
 #. [label]
-#: data/gui/window/unit_advance.cfg:143
+#: data/gui/window/unit_advance.cfg:144
 msgid "What should our victorious unit become?"
 msgstr ""
 
@@ -5492,21 +5480,21 @@ msgstr "Durum"
 msgid "HP"
 msgstr ""
 
-#. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_2
+#. [toggle_button]: id=sort_4
 #: data/gui/window/unit_list.cfg:149 data/gui/window/unit_recall.cfg:61
 msgid "Lvl"
 msgstr ""
 
-#. [toggle_button]: id=sort_5
 #. [toggle_button]: id=sort_3
+#. [toggle_button]: id=sort_5
 #: data/gui/window/unit_list.cfg:163 data/gui/window/unit_recall.cfg:75
 msgid "XP"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [toggle_button]: id=sort_6
 #. [toggle_button]: id=sort_4
+#. [toggle_button]: id=sort_6
 #: data/gui/window/unit_list.cfg:177 data/gui/window/unit_recall.cfg:89
 #: src/gui/widgets/unit_preview_pane.cpp:345
 #: src/gui/widgets/unit_preview_pane.cpp:488
@@ -5901,16 +5889,16 @@ msgid "addon_state^Unknown"
 msgstr ""
 
 #. TRANSLATORS: ascending
-#: src/gui/dialogs/addon/manager.cpp:361
+#: src/gui/dialogs/addon/manager.cpp:364
 msgid "asc"
 msgstr ""
 
 #. TRANSLATORS: descending
-#: src/gui/dialogs/addon/manager.cpp:365
+#: src/gui/dialogs/addon/manager.cpp:368
 msgid "desc"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:381 src/gui/dialogs/chat_log.cpp:420
+#: src/gui/dialogs/addon/manager.cpp:386 src/gui/dialogs/chat_log.cpp:420
 #: src/gui/dialogs/game_cache_options.cpp:105
 #: src/gui/dialogs/game_version.cpp:186
 #: src/gui/dialogs/gamestate_inspector.cpp:428
@@ -5920,67 +5908,67 @@ msgstr ""
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:449
+#: src/gui/dialogs/addon/manager.cpp:454
 msgid "addons^Back to List"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:461
+#: src/gui/dialogs/addon/manager.cpp:466
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:497
+#: src/gui/dialogs/addon/manager.cpp:502
 msgid "No Add-ons Available"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:497
+#: src/gui/dialogs/addon/manager.cpp:502
 msgid "There are no add-ons available for download from this server."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:672
+#: src/gui/dialogs/addon/manager.cpp:677
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:680
+#: src/gui/dialogs/addon/manager.cpp:685
 msgid "The following add-on could not be deleted properly:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:726
+#: src/gui/dialogs/addon/manager.cpp:731
 msgid "Warning"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:727
+#: src/gui/dialogs/addon/manager.cpp:732
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:736
+#: src/gui/dialogs/addon/manager.cpp:741
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:739 src/gui/dialogs/addon/manager.cpp:742
-#: src/gui/dialogs/addon/manager.cpp:781
+#: src/gui/dialogs/addon/manager.cpp:744 src/gui/dialogs/addon/manager.cpp:747
+#: src/gui/dialogs/addon/manager.cpp:786
 msgid "The server responded with an error:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:740
+#: src/gui/dialogs/addon/manager.cpp:745
 msgid "Terms"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:757 src/gui/dialogs/addon/manager.cpp:784
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:441
+#: src/gui/dialogs/addon/manager.cpp:762 src/gui/dialogs/addon/manager.cpp:789
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:507
 msgid "Response"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:769
+#: src/gui/dialogs/addon/manager.cpp:774
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:801
+#: src/gui/dialogs/addon/manager.cpp:806
 #, fuzzy
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Gerçekten çıkmak istiyor musunuz?"
@@ -6473,82 +6461,76 @@ msgstr "Rastgele Harita Üret"
 msgid "No games found."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:254
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:256
 msgid "No eras found."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:255
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:257
 msgid "No eras found"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:281
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:285
 msgid "Independent: Random factions assigned independently"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:282
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:286
 msgid "No Mirror: No two players will get the same faction"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:283
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:287
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:537
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:543
 msgid "No eras available for this game."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:735
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:741
 msgid "number of players^$min to $max"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:832
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:838
 msgid "The selected game has no sides!"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:898
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:904
 msgid "Choose Starting Scenario"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:898
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:904
 msgid "Select at which point to begin this campaign."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:194
-#, fuzzy
-#| msgid "Map Information"
-msgid "No era information found."
-msgstr "Harita Bilgileri"
-
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:249
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:216
 msgid "Computer Player"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:251
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:218
 #, fuzzy
 #| msgid "(empty list)"
 msgid "Empty slot"
 msgstr "(boş liste)"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:253
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:220
 msgid "Reserved for $playername"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:255
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:222
 msgid "Vacant slot"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:259
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:226
 msgid "empty"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:334
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:365
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:156
 #, fuzzy
 #| msgid "Team 1"
 msgid "Team:"
 msgstr "1. Takım"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:464
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:469
 msgid "Waiting for players to choose factions..."
 msgstr ""
 
@@ -6581,33 +6563,33 @@ msgid "Not on friends or ignore lists"
 msgstr ""
 "Arkadaşlar ve gözardı edilenler listeleriniz gösterilir ve düzenlenebilir"
 
-#: src/gui/dialogs/preferences_dialog.cpp:814
+#: src/gui/dialogs/preferences_dialog.cpp:812
 msgid "&#9679;"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:874
+#: src/gui/dialogs/preferences_dialog.cpp:872
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:880
+#: src/gui/dialogs/preferences_dialog.cpp:878
 #, fuzzy
 #| msgid "Hotkeys"
 msgid "Reassign Hotkey"
 msgstr "Klavye kısayolları"
 
-#: src/gui/dialogs/preferences_dialog.cpp:897
+#: src/gui/dialogs/preferences_dialog.cpp:895
 msgid "All hotkeys have been reset to their default values."
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:897
+#: src/gui/dialogs/preferences_dialog.cpp:895
 #, fuzzy
 #| msgid "Hotkeys"
 msgid "Hotkeys Reset"
 msgstr "Klavye kısayolları"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1010
+#: src/gui/dialogs/preferences_dialog.cpp:1008
 msgid "∞"
 msgstr ""
 
@@ -6618,40 +6600,49 @@ msgid ""
 "Try to save the screenshot as PNG instead."
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:185
+#: src/gui/dialogs/statistics_dialog.cpp:68
+#, fuzzy
+msgid "All Scenarios"
+msgstr "Senaryo Amaçları"
+
+#: src/gui/dialogs/statistics_dialog.cpp:181
 #, fuzzy
 #| msgid "Recruit"
 msgid "Recruits"
 msgstr "Asker al"
 
-#: src/gui/dialogs/statistics_dialog.cpp:186
+#: src/gui/dialogs/statistics_dialog.cpp:182
 #, fuzzy
 #| msgid "Recall"
 msgid "Recalls"
 msgstr "Çağır"
 
-#: src/gui/dialogs/statistics_dialog.cpp:187
+#: src/gui/dialogs/statistics_dialog.cpp:183
 #, fuzzy
 #| msgid "sound^Advanced Options"
 msgid "Advancements"
 msgstr "Gelişmiş Seçenekler"
 
-#: src/gui/dialogs/statistics_dialog.cpp:188
+#: src/gui/dialogs/statistics_dialog.cpp:184
 msgid "Losses"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:189
+#: src/gui/dialogs/statistics_dialog.cpp:185
 #, fuzzy
 #| msgid "Hills"
 msgid "Kills"
 msgstr "Tepeler"
 
-#: src/gui/dialogs/statistics_dialog.cpp:203
+#: src/gui/dialogs/statistics_dialog.cpp:204
 msgid "Inflicted"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:211
+#: src/gui/dialogs/statistics_dialog.cpp:212
 msgid "Taken"
+msgstr ""
+
+#: src/gui/dialogs/statistics_dialog.cpp:255
+msgid "$count|× $name"
 msgstr ""
 
 #: src/gui/dialogs/title_screen.cpp:467
@@ -6773,18 +6764,18 @@ msgstr "Bir 'list_definition' tek bir satır içermelidir."
 msgid "No page defined."
 msgstr "Tanımlı bir ızgara yok."
 
-#: src/gui/widgets/multimenu_button.cpp:175
+#: src/gui/widgets/multimenu_button.cpp:167
 msgid "multimenu^All Selected"
 msgstr ""
 
-#: src/gui/widgets/multimenu_button.cpp:180
+#: src/gui/widgets/multimenu_button.cpp:172
 msgid "multimenu^$excess other"
 msgid_plural "$excess others"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/gui/widgets/multimenu_button.cpp:182
-#: src/gui/widgets/multimenu_button.cpp:239
+#: src/gui/widgets/multimenu_button.cpp:174
+#: src/gui/widgets/multimenu_button.cpp:231
 msgid "multimenu^None Selected"
 msgstr ""
 
@@ -7938,6 +7929,28 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
+
+#, fuzzy
+#~| msgid "Speed: "
+#~ msgid "Speed:"
+#~ msgstr "Hız: "
+
+#~ msgid "Units move and fight speed"
+#~ msgstr "Birimlerin hareket ve döğüş hızı"
+
+#, fuzzy
+#~ msgid "Scenario"
+#~ msgstr "Senaryo Amaçları"
+
+#, fuzzy
+#~| msgid "Campaign"
+#~ msgid "Campaign"
+#~ msgstr "Seferberlik"
+
+#, fuzzy
+#~| msgid "Map Information"
+#~ msgid "No era information found."
+#~ msgstr "Harita Bilgileri"
 
 #, fuzzy
 #~ msgid "Wooden Open Door"

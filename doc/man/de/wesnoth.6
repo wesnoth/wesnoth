@@ -122,11 +122,9 @@ Benutzt für diese Sitzung die \fISprache\fP (Symbol). Beispiel: \fB\-\-language
 ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIstufe\fP\fB=\fP\fIDomäne1\fP\fB,\fP\fIDomäne2\fP\fB,\fP\fI...\fP
-Setzt die \fIStufe\fP der Logausgabe. Verwenden Sie \fBall\fP, um sämtliche
-Domänen zu verwenden. Verfügbare \fIStufen\fP: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP. Für die meisten Logdomänen wird standardmäßig
-wird die Stufe \fBwarning\fP verwendet, die \fBdeprecation\fP Domäne dagegen
-benutzt \fBnone\fP als Voreinstellung sofern nicht die \fB\-d\fP Option ebenfalls
-gesetzt ist.
+sets the severity level of the log domains.  \fBall\fP can be used to match any
+log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default the \fBwarning\fP level is used for most domains, but
+\fBdeprecation\fP defaults to \fBnone\fP unless combined with the \fB\-d\fP option.
 .TP 
 \fB\-\-log\-precise\fP
 Zeigt die timestamps in der Logdatei mit höherer Genauigkeit.
