@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:31 UTC\n"
-"PO-Revision-Date: 2018-05-16 22:55+0800\n"
+"PO-Revision-Date: 2018-07-08 21:23+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.0.8\n"
 
 #. [campaign]: id=Secrets of the Ancients
 #. [editor_group]: id=sota
@@ -2799,11 +2799,16 @@ msgstr "击败克雷拉努"
 
 #. [note]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:83
+#, fuzzy
+#| msgid ""
+#| "Ras-Tabahn is slowed and will lose four hitpoints every turn. He will die "
+#| "if he reaches zero."
 msgid ""
 "Ras-Tabahn is slowed. He will also lose four hitpoints every turn unless "
 "this amount is modified by healing."
 msgstr ""
-"拉斯-塔班行动缓慢。他每回合还会失去四点生命值，除非这一数值被治疗能力修正。"
+"拉斯-塔班行动缓慢，他每回合还会失去四点生命值，如果生命值降到零，那么他就会死"
+"亡。"
 
 #. [note]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:86
@@ -2899,14 +2904,17 @@ msgstr "走着瞧。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:363
+#, fuzzy
+#| msgid ""
+#| "Ras-Tabahn is sick. He is slowed, and will lose four hitpoints every "
+#| "turn. He will die if he reaches zero."
 msgid ""
 "Ras-Tabahn is sick. He is slowed, and will lose four hitpoints every turn. "
 "He will die if he reaches zero. Villages will heal him four points, and he "
 "will lose only two if he is resting."
 msgstr ""
 "拉斯-塔班病了。他行动缓慢，而且每回合还会失去四点生命值。如果生命值降到零，那"
-"么他就会死亡。村庄可以为他回复四点生命值，而如果他休息不动，就只会损失两点生"
-"命值。"
+"么他就会死亡。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:391
@@ -3073,9 +3081,9 @@ msgid ""
 "spirit, but only once it has been unbound from the body. To become a lich, "
 "the mage must make the necessary incantations with his dying breaths. He "
 "thus binds his own spirit in much the same way he binds the spirits of "
-"others... An altar serves to hold his soul in the physical plane long "
-"enough to make the transition, and a suitable object must be found to hold "
-"the consciousness for one crucial moment when the body expires."
+"others... An altar serves to hold his soul in the physical plane long enough "
+"to make the transition, and a suitable object must be found to hold the "
+"consciousness for one crucial moment when the body expires."
 msgstr ""
 "韦元23年6月9日\n"
 "\n"
@@ -3822,7 +3830,7 @@ msgstr "镐"
 #. [unit_type]: id=Ancient Lich SotA, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:4
 msgid "Ancient Lich"
-msgstr "上古巫妖"
+msgstr ""
 
 #. [unit_type]: id=Ancient Lich SotA, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:18

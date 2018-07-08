@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-05-16 22:50+0800\n"
+"PO-Revision-Date: 2018-07-08 20:47+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.0.8\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -909,13 +909,17 @@ msgstr "开启的木门"
 
 #. [terrain_type]: id=p_open_rusty
 #: data/core/terrain.cfg:1443
+#, fuzzy
+#| msgid "Rusty Gate"
 msgid "Rusty Open Gate"
-msgstr "开启的锈门"
+msgstr "锈门"
 
 #. [terrain_type]: id=p_open_wooden
 #: data/core/terrain.cfg:1457
+#, fuzzy
+#| msgid "Wooden Door"
 msgid "Wooden Open Door"
-msgstr "开启的木门"
+msgstr "木门"
 
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:1473
@@ -2494,7 +2498,7 @@ msgstr "模组"
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:409
 msgid "Deterministic mode"
-msgstr "确定性随机模式"
+msgstr ""
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:411
@@ -3556,18 +3560,20 @@ msgstr "观察"
 
 #. [label]
 #: data/gui/window/lobby_main.cfg:223
+#, fuzzy
+#| msgid "Players:"
 msgid "Sort players:"
-msgstr "玩家排序："
+msgstr "玩家："
 
 #. [toggle_button]: id=player_list_sort_relation
 #: data/gui/window/lobby_main.cfg:236
 msgid "Friends first, ignored people last"
-msgstr "好友优先，被忽略者在最后"
+msgstr ""
 
 #. [toggle_button]: id=player_list_sort_name
 #: data/gui/window/lobby_main.cfg:249
 msgid "Alphabetically"
-msgstr "字母顺序"
+msgstr ""
 
 #. [widget]: id=tab_label
 #. [toggle_button]: id=filter_with_friends
@@ -4390,13 +4396,17 @@ msgstr "不显示AI单位的移动动画"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:83
+#, fuzzy
+#| msgid "Scroll speed:"
 msgid "Speed:"
-msgstr "速度："
+msgstr "滚屏速度："
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:88
+#, fuzzy
+#| msgid "Make units move and fight faster"
 msgid "Units move and fight speed"
-msgstr "单位的移动和战斗速度"
+msgstr "加快单位的移动和战斗速度"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:104
@@ -4944,11 +4954,15 @@ msgstr "统计"
 
 #. [widget]: id=tab_label
 #: data/gui/window/statistics_dialog.cfg:485
+#, fuzzy
+#| msgid "Scenarios"
 msgid "Scenario"
 msgstr "场景"
 
 #. [widget]: id=tab_label
 #: data/gui/window/statistics_dialog.cfg:498
+#, fuzzy
+#| msgid "Campaigns"
 msgid "Campaign"
 msgstr "战役"
 
@@ -6187,8 +6201,10 @@ msgid "Select at which point to begin this campaign."
 msgstr "选择在何处开始此战役。"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:193
+#, fuzzy
+#| msgid "No eras found."
 msgid "No era information found."
-msgstr "未找到时代信息。"
+msgstr "未找到时代。"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:248
 msgid "Computer Player"
@@ -6407,12 +6423,16 @@ msgid "whisper to $receiver"
 msgstr "对$receiver说悄悄话"
 
 #: src/gui/widgets/chatbox.cpp:396
+#, fuzzy
+#| msgid ""
+#| "Whisper session with <i>“$name”</i> started. If you do not want to "
+#| "receive messages from this user, type <i>/ignore $name</i>"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>\n"
 msgstr ""
 "和<b>“$name|”</b>的悄悄话开始。如果你不希望收到来自此用户的消息，请输入<b>/"
-"ignore $name|</b>\n"
+"ignore $name|</b>"
 
 #: src/gui/widgets/chatbox.cpp:400
 msgid "Room <i>“$name”</i> joined"
@@ -7456,6 +7476,9 @@ msgstr ""
 "主键‘$deprecated_key|’已重命名为‘$key’。对‘$deprecated_key|’的支持将在版本"
 "$removal_version|中移除。"
 
+#~ msgid "Save random seed"
+#~ msgstr "保存随机种子"
+
 #~ msgid "Open saves folder"
 #~ msgstr "打开存档文件夹"
 
@@ -7482,6 +7505,14 @@ msgstr ""
 #~ msgid "Sign Up"
 #~ msgstr "注册"
 
+#~ msgid "Acceleration factor:"
+#~ msgstr "加速因子："
+
+#~ msgid ""
+#~ "Speed at which unit moves and animations play when ‘Accelerated speed’ is "
+#~ "enabled or when Shift is held down in-game"
+#~ msgstr "当启用“加快速度”或在游戏中按住Shift时，单位行动和动画的播放速度"
+
 #~ msgid "Limit FPS"
 #~ msgstr "限制FPS"
 
@@ -7506,7 +7537,7 @@ msgstr ""
 #~ msgid "Era"
 #~ msgstr "时代"
 
-#~ msgid "$min to $max"
+#~ msgid "number of players^$min to $max"
 #~ msgstr "$min|至$max"
 
 #~ msgid ""
@@ -7517,3 +7548,9 @@ msgstr ""
 #~ "不支持的图片格式。\n"
 #~ "\n"
 #~ "请尝试将截屏保存为PNG。"
+
+#~ msgid "All Scenarios"
+#~ msgstr "全部场景"
+
+#~ msgid "$count|× $name"
+#~ msgstr "$count|× $name"
