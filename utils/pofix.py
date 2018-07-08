@@ -127,6 +127,9 @@ game_stringfixes = {
 ("You must lead your men to the city and help defend it. Or recapture it if it falls before you arrive.", "You must lead your men to the city. Help defend it, or recapture it if it falls before you arrive!"),
 # fix added in 1.13.11+dev
 ("with the greatest generals, and battle tactics", "with the greatest generals and battle tactics"),
+# fixes added in 1.14.3+dev
+("Whatever.... I still think we should make an effort", "Whatever... I still think we should make an effort"),
+("That is so very encouraging....","That is so very encouraging...")
 ),
 
 "wesnoth-low" : (
@@ -149,11 +152,15 @@ game_stringfixes = {
 ("fearsome a foe then a dwarf.", "fearsome a foe than a dwarf."),
 ("hold the orcs off far longer and with less loss then ye could ha’ done", "hold the orcs off far longer and with less loss than ye could ha’ done"),
 ("Bah! I have better things to do then stamp out your insignificant life.", "Bah! I have better things to do than stamp out your insignificant life."),
+# fixes added in 1.14.3+dev
+("most important things about being a leader is....", "most important things about being a leader is..."),
 ),
 
-# fixes added in 1.13.13+dev
 "wesnoth-sota" : (
+# fixes added in 1.13.13+dev
 ("Welcome to my laboratory, Ardonna of Tarynth", "Welcome to my laboratory, Ardonna of Tarrynth"),
+# fixes added in 1.14.3+dev
+("others.... An altar serves", "others... An altar serves"),
 ),
 
 "wesnoth-sotbe" : (
@@ -167,6 +174,11 @@ game_stringfixes = {
 
 "wesnoth-tb" : (
 ("try to force him off of his keep", "try to force him off his keep"),
+),
+
+"wesnoth-trow" : (
+# fixes added in 1.14.3+dev
+("a noble of the line of Kings should utter the following....", "a noble of the line of Kings should utter the following..."),
 ),
 
 "wesnoth-tutorial" : (
@@ -200,6 +212,10 @@ game_stringfixes = {
 "wesnoth-multiplayer" : (
 # 1.13.4+dev
 ("Changes the gold worth of the enemy spawns by a certain perentage", "Changes the gold worth of the enemy spawns by a certain percentage"),
+# fixes added in 1.14.3+dev
+("Rah Ihn Mar began the hunt.....", "Rah Ihn Mar began the hunt..."),
+("Perhaps he should not have shouted quite so loudly.... ", "Perhaps he should not have shouted quite so loudly..."),
+("but the two men never found one another. ", "but the two men never found one another."),
 ),
 
 }
