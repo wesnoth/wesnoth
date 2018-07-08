@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-07-08 04:51-0400\n"
-"PO-Revision-Date: 2018-05-16 22:19+0800\n"
+"PO-Revision-Date: 2018-07-08 20:29+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.0.8\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -222,7 +222,7 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:186
 msgid "Use experimental PRNG combat"
-msgstr ""
+msgstr "在战斗中使用试验性的PRNG"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:187
@@ -234,6 +234,11 @@ msgid ""
 "Note: this option only affects singleplayer, and the ‘Save random seed’ "
 "option must also be enabled when creating a game for this to work."
 msgstr ""
+"启用更具有确定性的命中率计算模式。这是一个试验性的特性，是为了让观察到的命中/"
+"射失率和显示的百分比更接近而设计的。\n"
+"\n"
+"注：此选项只影响单人游戏，且为了让此特性正常工作，在创建游戏时必须启用“保存随"
+"机种子”选项。"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:197
@@ -1712,11 +1717,9 @@ msgstr "$unit.name|无法使用风暴三叉戟！让能够使用它的人鱼拥�
 
 #. [object]
 #: data/core/macros/items.cfg:521
-#, fuzzy
-#| msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
-msgstr "这柄三叉戟能让人鱼向敌人发射闪电球！"
+msgstr "这柄三叉戟赐予人鱼向敌人发射闪电的力量。"
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:525
@@ -5449,10 +5452,8 @@ msgstr ""
 "能得到村庄带来的任何防御加成，虽然说它们仍然会得到治疗。"
 
 #: src/actions/advancement.cpp:225
-#, fuzzy
-#| msgid "No advancement"
 msgid "an advancement choice"
-msgstr "不能升级"
+msgstr "升级选择"
 
 #: src/actions/attack.cpp:386 src/actions/attack.cpp:656
 #: src/actions/attack.cpp:1417
@@ -6341,7 +6342,7 @@ msgstr "未知时代"
 #: src/game_initialization/lobby_data.cpp:346
 #: src/game_initialization/lobby_data.cpp:376
 msgid "scenario_abbreviation^S"
-msgstr ""
+msgstr "S"
 
 #: src/game_initialization/lobby_data.cpp:365
 msgid "Remote scenario"
@@ -6350,7 +6351,7 @@ msgstr "远程场景"
 #: src/game_initialization/lobby_data.cpp:384
 #: src/game_initialization/lobby_data.cpp:407
 msgid "campaign_abbreviation^C"
-msgstr ""
+msgstr "C"
 
 #: src/game_initialization/lobby_data.cpp:412
 msgid "Unknown scenario"
@@ -8472,12 +8473,3 @@ msgstr "隐藏$player的计划"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "白板选项"
-
-#~ msgid "S"
-#~ msgstr "S"
-
-#~ msgid "C"
-#~ msgstr "C"
-
-#~ msgid "Unit with negative HP found"
-#~ msgstr "发现生命值为负的单位"

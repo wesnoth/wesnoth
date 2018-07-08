@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "POT-Creation-Date: 2018-06-03 16:42+0300\n"
-"PO-Revision-Date: 2018-05-16 22:52+0800\n"
+"PO-Revision-Date: 2018-07-08 21:16+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.0.8\n"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -101,10 +101,9 @@ msgstr "选项"
 
 #. type: TP
 #: doc/man/wesnoth.6:45
-#, fuzzy, no-wrap
-#| msgid "B<--strict-validation>"
+#, no-wrap
 msgid "B<--all-translations>"
-msgstr "B<--strict-validation>"
+msgstr "B<--all-translations>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:49
@@ -112,6 +111,8 @@ msgid ""
 "Show all translations in the in-game language selection list, even if they "
 "are deemed insufficiently complete."
 msgstr ""
+"在游戏中的语言选择列表中显示所有翻译，哪怕这些翻译被认为不够完整，也一样显"
+"示。"
 
 #. type: TP
 #: doc/man/wesnoth.6:49
@@ -349,12 +350,6 @@ msgstr "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:146
-#, fuzzy
-#| msgid ""
-#| "sets the severity level of the log domains.  B<all> can be used to match "
-#| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>,\\ B<none>.  By default the B<warning> level is used for most "
-#| "domains, but B<deprecation> defaults to none."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
@@ -363,7 +358,8 @@ msgid ""
 msgstr ""
 "设置日志域的严重度级别。B<all>可以用来匹配任意日志域。可选的级别有："
 "B<error>，\\ B<warning>，\\ B<info>，\\ B<debug>, \\ B<none>。对绝大多数日志"
-"域而言，默认日志级别是B<warning>，但B<deprecation>的默认级别是B<none>。"
+"域而言，默认日志级别是B<warning>，但B<deprecation>的默认级别是B<none>，除非和"
+"B<-d>选项并用。"
 
 #. type: TP
 #: doc/man/wesnoth.6:146
@@ -758,14 +754,14 @@ msgstr ""
 #: doc/man/wesnoth.6:291
 #, no-wrap
 msgid "B<--translations-over>I<\\ percent>"
-msgstr ""
+msgstr "B<--translations-over>I<\\ percent>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:297
 msgid ""
 "Set the standard for deeming a translation is complete enough to show in the "
 "in-game language list to I<percent>.  Valid values are 0 to 100."
-msgstr ""
+msgstr "将确认翻译是否足够完整的判断标准设为I<percent>，合法的值为0到100。"
 
 #. type: TP
 #: doc/man/wesnoth.6:297

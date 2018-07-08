@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-07-08 04:51-0400\n"
-"PO-Revision-Date: 2018-05-16 22:50+0800\n"
+"PO-Revision-Date: 2018-07-08 20:47+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.0.8\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -2412,10 +2412,8 @@ msgstr "模组"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:409
-#, fuzzy
-#| msgid "Save Game"
 msgid "Save random seed"
-msgstr "保存游戏"
+msgstr "保存随机种子"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:411
@@ -4333,14 +4331,14 @@ msgstr "加快单位的移动和战斗速度"
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:79
 msgid "Acceleration factor:"
-msgstr ""
+msgstr "加速因子："
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:84
 msgid ""
 "Speed at which unit moves and animations play when ‘Accelerated speed’ is "
 "enabled or when Shift is held down in-game"
-msgstr ""
+msgstr "当启用“加快速度”或在游戏中按住Shift时，单位行动和动画的播放速度"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:100
@@ -6108,7 +6106,7 @@ msgstr "没有可用于此游戏的时代。"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:741
 msgid "number of players^$min to $max"
-msgstr ""
+msgstr "$min|至$max"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:838
 msgid "The selected game has no sides!"
@@ -6215,10 +6213,8 @@ msgstr ""
 "请尝试将截屏保存为PNG。"
 
 #: src/gui/dialogs/statistics_dialog.cpp:68
-#, fuzzy
-#| msgid "Scenarios"
 msgid "All Scenarios"
-msgstr "场景"
+msgstr "全部场景"
 
 #: src/gui/dialogs/statistics_dialog.cpp:181
 msgid "Recruits"
@@ -6250,7 +6246,7 @@ msgstr "点受到的伤害"
 
 #: src/gui/dialogs/statistics_dialog.cpp:255
 msgid "$count|× $name"
-msgstr ""
+msgstr "$count|× $name"
 
 #: src/gui/dialogs/title_screen.cpp:467
 msgid "Choose Test"
@@ -6315,16 +6311,12 @@ msgid "Room <i>“$name”</i> joined"
 msgstr "已加入<b>“$name|”</b>房间"
 
 #: src/gui/widgets/chatbox.cpp:393
-#, fuzzy
-#| msgid ""
-#| "Whisper session with <i>“$name”</i> started. If you do not want to "
-#| "receive messages from this user, type <i>/ignore $name</i>\n"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>"
 msgstr ""
 "和<b>“$name|”</b>的悄悄话开始。如果你不希望收到来自此用户的消息，请输入<b>/"
-"ignore $name|</b>\n"
+"ignore $name|</b>"
 
 #: src/gui/widgets/chatbox.cpp:626
 msgid "$player has entered the room"
@@ -7409,39 +7401,3 @@ msgid ""
 msgstr ""
 "主键‘$deprecated_key|’已重命名为‘$key’。对‘$deprecated_key|’的支持将在版本"
 "$removal_version|中移除。"
-
-#~ msgid "Speed:"
-#~ msgstr "速度："
-
-#~ msgid "Units move and fight speed"
-#~ msgstr "单位的移动和战斗速度"
-
-#~ msgid "Scenario"
-#~ msgstr "场景"
-
-#~ msgid "Campaign"
-#~ msgstr "战役"
-
-#~ msgid "No era information found."
-#~ msgstr "未找到时代信息。"
-
-#~ msgid "Deterministic mode"
-#~ msgstr "确定性随机模式"
-
-#~ msgid "$min to $max"
-#~ msgstr "$min|至$max"
-
-#~ msgid "Rusty Open Gate"
-#~ msgstr "开启的锈门"
-
-#~ msgid "Wooden Open Door"
-#~ msgstr "开启的木门"
-
-#~ msgid "Sort players:"
-#~ msgstr "玩家排序："
-
-#~ msgid "Friends first, ignored people last"
-#~ msgstr "好友优先，被忽略者在最后"
-
-#~ msgid "Alphabetically"
-#~ msgstr "字母顺序"
