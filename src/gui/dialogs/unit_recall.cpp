@@ -219,14 +219,14 @@ void unit_recall::pre_show(window& window)
 		filter_options_.push_back(filter_text);
 	}
 
-	list.register_sorting_option(0, [this](const int i) { return recall_list_[i]->type_name().str(); });
-	list.register_sorting_option(1, [this](const int i) { return recall_list_[i]->name().str(); });
+	list.register_translatable_sorting_option(0, [this](const int i) { return recall_list_[i]->type_name().str(); });
+	list.register_translatable_sorting_option(1, [this](const int i) { return recall_list_[i]->name().str(); });
 	list.register_sorting_option(2, [this](const int i) {
 		const unit& u = *recall_list_[i];
 		return std::make_tuple(-u.level(), u.experience_to_advance());
 	});
 	list.register_sorting_option(3, [this](const int i) { return recall_list_[i]->experience(); });
-	list.register_sorting_option(4, [this](const int i) {
+	list.register_translatable_sorting_option(4, [this](const int i) {
 		return !recall_list_[i]->trait_names().empty() ? recall_list_[i]->trait_names().front().str() : "";
 	});
 
