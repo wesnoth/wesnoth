@@ -1,6 +1,6 @@
 /*
 Copyright (C) 2007 - 2018 by Mark de Wever <koraq@xs4all.nl>
-Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ public:
 	 * Constructor.
 	 *
 	 * @param cfg                 The config object to define the line see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Line
+	 *                            https://www.wesnoth.org/wiki/GUICanvasWML#Line
 	 *                            for more information.
 	 */
 	explicit line_shape(const config& cfg);
@@ -60,7 +60,7 @@ public:
 	 * Constructor.
 	 *
 	 * @param cfg                 The config object to define the rectangle see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Rectangle
+	 *                            https://www.wesnoth.org/wiki/GUICanvasWML#Rectangle
 	 *                            for more information.
 	 */
 	explicit rectangle_shape(const config& cfg);
@@ -105,7 +105,7 @@ public:
 	 * Constructor.
 	 *
 	 * @param cfg                 The config object to define the round rectangle see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Rounded_Rectangle
+	 *                            https://www.wesnoth.org/wiki/GUICanvasWML#Rounded_Rectangle
 	 *                            for more information.
 	 */
 	explicit round_rectangle_shape(const config& cfg);
@@ -151,7 +151,7 @@ public:
 	 * Constructor.
 	 *
 	 * @param cfg                 The config object to define the circle see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Circle
+	 *                            https://www.wesnoth.org/wiki/GUICanvasWML#Circle
 	 *                            for more information.
 	 */
 	explicit circle_shape(const config& cfg);
@@ -180,7 +180,7 @@ public:
 	 * Constructor.
 	 *
 	 * @param cfg                 The config object to define the image see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Image
+	 *                            https://www.wesnoth.org/wiki/GUICanvasWML#Image
 	 *                            for more information.
 	 */
 	image_shape(const config& cfg, wfl::action_function_symbol_table& functions);
@@ -246,7 +246,7 @@ public:
 	 * Constructor.
 	 *
 	 * @param cfg                 The config object to define the text see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Text
+	 *                            https://www.wesnoth.org/wiki/GUICanvasWML#Text
 	 *                            for more information.
 	 */
 	explicit text_shape(const config& cfg);

@@ -1111,7 +1111,7 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
        2 different guardians and a coward, healer support, lurkers,
        messenger escort, patrol, protect and move a unit, and 2 alternative
        recruiting strategies.
-     * Documentation at http://wiki.wesnoth.org/Micro_AIs
+     * Documentation at https://wiki.wesnoth.org/Micro_AIs
 
  ### Campaigns
    * New world maps for Heir to the Throne, The South Guard, Sceptre of Fire and
@@ -3074,7 +3074,7 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
      line "-e" or "--editor" option. The interface is largely unchanged.
    * The game must be compiled with editor2 support for this to work. See
      RELEASE_NOTES for details.
-   * See http://www.wesnoth.org/wiki/Editor2 for details and known issues.
+   * See https://www.wesnoth.org/wiki/Editor2 for details and known issues.
    * You can continue to use the old editor by launching wesnoth_editor
      like you did so far. New features, however, are much more likely to
      appear in editor2.
@@ -4225,7 +4225,7 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
  ### Terrain system
    * The entire underlaying system has been converted to a new system
      (this might render some user-made content broken, read this forum thread
-     for more details: http://www.wesnoth.org/forum/viewtopic.php?t=14910).
+     for more details: https://www.wesnoth.org/forum/viewtopic.php?t=14910).
 
  ### Unit changes and balancing
    * New traits: healthy (+3 HP, +4 rest healing),

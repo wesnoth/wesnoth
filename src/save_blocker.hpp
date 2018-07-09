@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Daniel Franke.
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@ class play_controller;
  * functions throw exceptions. For example if the user decides to quit the game,
  * or there is a filesystem error. If the destructor throws exceptions, it will
  * cause memory leaks and crashes.
- * http://wiki.wesnoth.org/CodingStandards#Destructors_must_not_throw_exceptions
+ * https://wiki.wesnoth.org/CodingStandards#Destructors_must_not_throw_exceptions
  *
  * As a temporary fix the destructor has been changed to swallow all exceptions.
  * However this means that if the user attempts to quit the game from the savegame

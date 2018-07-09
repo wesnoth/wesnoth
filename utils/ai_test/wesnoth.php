@@ -4,7 +4,7 @@ $sqlitefile = 'RELATIVE PATH TO SQLITE-FILE';
 <html>
 <head>
 <title>Wesnoth AI Testing Statistics</title>
-<link rel="stylesheet" type="text/css" href="http://wiki.wesnoth.org/skins/glamdrol/main.css">
+<link rel="stylesheet" type="text/css" href="https://wiki.wesnoth.org/skins/glamdrol/main.css">
 <style>
 thead th, thead td {
   text-align: center;
