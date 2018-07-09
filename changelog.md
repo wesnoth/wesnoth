@@ -76,7 +76,6 @@
    * Fixed the unit preview pane not showing the default race icon when detailing
      a single unit's stats.
    * Sort units secondarily by XP in the unit list dialog.
-   * Limited chatbox input to 256 characters.
  ### WML engine
    * Fixed errors about WESNOTH_VERSION not being defined when trying to load
      add-ons that have preprocessor errors (issues #1924, #1634).
@@ -91,6 +90,7 @@
    * Fixed wmllint choking on gzipped binary files (e.g. gzipped tarballs).
    * Fixed wmllint crashing on inexistent paths provided in the command line
      (issue #3286).
+   * Greatly improved touch control support.
 
 ## Version 1.14.3
  ### AI
