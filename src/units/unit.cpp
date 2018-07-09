@@ -578,6 +578,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	max_experience_ = std::max(1, cfg["max_experience"].to_int(max_experience_));
 
 	vision_ = cfg["vision"].to_int(vision_);
+	jamming_ = cfg["jamming"].to_int(jamming_);
 
 	std::vector<std::string> temp_advances = utils::split(cfg["advances_to"]);
 	if(temp_advances.size() == 1 && temp_advances.front() == "null") {
