@@ -6,7 +6,7 @@
 # used in building Vorbis.
 
 # Copied from
-# http://code.google.com/p/osgaudio/source/browse/trunk/CMakeModules/FindVorbisFile.cmake
+# https://code.google.com/p/osgaudio/source/browse/trunk/CMakeModules/FindVorbisFile.cmake
 
 SET(VORBISFILE_SEARCH_PATHS
 	~/Library/Frameworks

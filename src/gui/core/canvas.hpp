@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2007 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -115,7 +115,7 @@ public:
 	 * Sets the config.
 	 *
 	 * @param cfg                 The config object with the data to draw, see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML for
+	 *                            https://www.wesnoth.org/wiki/GUICanvasWML for
 	 *                            more information.
 	 */
 	void set_cfg(const config& cfg, const bool force = false)
@@ -129,7 +129,7 @@ public:
 	 * Appends data to the config.
 	 *
 	 * @param cfg                 The config object with the data to draw, see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML for
+	 *                            https://www.wesnoth.org/wiki/GUICanvasWML for
 	 *                            more information.
 	 */
 	void append_cfg(const config& cfg)
@@ -226,7 +226,7 @@ private:
 	 * object.
 	 *
 	 * @param cfg                 The config object with the data to draw, see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML
+	 *                            https://www.wesnoth.org/wiki/GUICanvasWML
 	 */
 	void parse_cfg(const config& cfg);
 

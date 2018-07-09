@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
  *  @file
  *  Replay control code.
  *
- *  See http://www.wesnoth.org/wiki/ReplayWML for more info.
+ *  See https://www.wesnoth.org/wiki/ReplayWML for more info.
  */
 
 #include "replay.hpp"

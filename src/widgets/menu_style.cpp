@@ -1,7 +1,7 @@
 /*
    wesnoth menu styles Copyright (C) 2006 - 2018 by Patrick Parker <patrick_x99@hotmail.com>
    wesnoth menu Copyright (C) 2003-5 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
