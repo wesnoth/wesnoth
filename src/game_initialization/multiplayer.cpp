@@ -30,7 +30,6 @@
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 #include "gui/dialogs/multiplayer/mp_login.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
-#include "gui/widgets/settings.hpp"
 #include "hash.hpp"
 #include "log.hpp"
 #include "multiplayer_error_codes.hpp"

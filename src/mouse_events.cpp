@@ -24,7 +24,6 @@
 #include "gettext.hpp"                       // for _
 #include "gui/dialogs/transient_message.hpp" // for show_transient_message
 #include "gui/dialogs/unit_attack.hpp"       // for unit_attack
-#include "gui/widgets/settings.hpp"          // for new_widgets
 #include "gui/widgets/retval.hpp"            // for enum
 #include "language.hpp"                      // for string_table, symbol_table
 #include "log.hpp"                           // for LOG_STREAM, logger, etc

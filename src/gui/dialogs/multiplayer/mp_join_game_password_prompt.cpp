@@ -14,8 +14,6 @@
 
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
 
-#include "gui/widgets/settings.hpp"
-
 namespace gui2
 {
 namespace dialogs

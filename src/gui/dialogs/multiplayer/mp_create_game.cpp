@@ -33,7 +33,6 @@
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
 #include "gui/widgets/minimap.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/status_label_helper.hpp"

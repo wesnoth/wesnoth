@@ -20,7 +20,6 @@
 #include "gui/core/gui_definition.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/dialogs/modeless_dialog.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
 static lg::log_domain log_config("config");

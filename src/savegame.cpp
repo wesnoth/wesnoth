@@ -32,7 +32,6 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/retval.hpp"
 #include "log.hpp"
 #include "persist_manager.hpp"

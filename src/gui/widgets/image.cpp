@@ -22,7 +22,6 @@
 #include "gui/core/window_builder.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 
 #include "utils/functional.hpp"
 

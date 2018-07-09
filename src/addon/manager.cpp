@@ -24,7 +24,6 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/retval.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"

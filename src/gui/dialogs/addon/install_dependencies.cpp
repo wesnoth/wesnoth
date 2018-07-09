@@ -20,7 +20,6 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/addon_list.hpp"
 #include "gui/widgets/label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "tstring.hpp"
 

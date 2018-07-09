@@ -20,7 +20,6 @@
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/grid.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 

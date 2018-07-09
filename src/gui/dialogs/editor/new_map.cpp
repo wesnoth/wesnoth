@@ -15,8 +15,6 @@
 
 #include "gui/dialogs/editor/new_map.hpp"
 
-#include "gui/widgets/settings.hpp"
-
 namespace gui2
 {
 namespace dialogs

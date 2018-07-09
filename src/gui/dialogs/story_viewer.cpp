@@ -24,7 +24,6 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"

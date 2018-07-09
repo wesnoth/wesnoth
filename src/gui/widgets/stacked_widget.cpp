@@ -18,7 +18,6 @@
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/widget_helpers.hpp"
 #include "gui/widgets/generator.hpp"
 #include "gettext.hpp"

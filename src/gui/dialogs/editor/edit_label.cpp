@@ -17,7 +17,6 @@
 #include "gui/dialogs/editor/edit_label.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 

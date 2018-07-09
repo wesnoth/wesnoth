@@ -15,8 +15,6 @@
 
 #include "gui/dialogs/sp_options_configure.hpp"
 
-#include "gui/widgets/settings.hpp"
-
 namespace gui2
 {
 namespace dialogs

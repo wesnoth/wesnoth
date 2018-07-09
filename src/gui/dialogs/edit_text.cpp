@@ -16,8 +16,6 @@
 
 #include "gui/dialogs/edit_text.hpp"
 
-#include "gui/widgets/settings.hpp"
-
 namespace gui2
 {
 namespace dialogs

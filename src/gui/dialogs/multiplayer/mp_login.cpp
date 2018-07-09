@@ -19,11 +19,7 @@
 #include "preferences/credentials.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/field.hpp"
-#include "gui/widgets/button.hpp"
 #include "gui/widgets/password_box.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 
 namespace gui2

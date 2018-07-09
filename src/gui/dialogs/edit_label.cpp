@@ -16,8 +16,6 @@
 
 #include "gui/dialogs/edit_label.hpp"
 
-#include "gui/widgets/settings.hpp"
-
 namespace gui2
 {
 namespace dialogs

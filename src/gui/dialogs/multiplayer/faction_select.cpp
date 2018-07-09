@@ -18,7 +18,6 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/button.hpp"

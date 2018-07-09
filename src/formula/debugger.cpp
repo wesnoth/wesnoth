@@ -24,7 +24,6 @@
 #include "game_display.hpp"
 #include "log.hpp"
 #include "gui/dialogs/formula_debugger.hpp"
-#include "gui/widgets/settings.hpp"
 
 static lg::log_domain log_formula_debugger("scripting/formula/debug");
 #define DBG_FDB LOG_STREAM(debug, log_formula_debugger)

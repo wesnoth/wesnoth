@@ -23,7 +23,6 @@
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
 #include "desktop/clipboard.hpp"

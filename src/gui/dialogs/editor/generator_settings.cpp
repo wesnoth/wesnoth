@@ -17,7 +17,6 @@
 
 #include "formatter.hpp"
 #include "gui/auxiliary/field.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/status_label_helper.hpp"
 #include "gettext.hpp"

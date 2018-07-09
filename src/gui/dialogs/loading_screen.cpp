@@ -25,7 +25,6 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/timer.hpp"
 #include "gui/widgets/label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "preferences/general.hpp"

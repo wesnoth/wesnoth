@@ -17,7 +17,6 @@
 #include "gui/widgets/spacer.hpp"
 
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 
 #include "utils/functional.hpp"
 

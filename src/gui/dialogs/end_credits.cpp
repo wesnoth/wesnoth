@@ -23,7 +23,6 @@
 #include "gui/widgets/repeating_button.hpp"
 #include "gui/widgets/scrollbar.hpp"
 #include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 

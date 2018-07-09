@@ -17,7 +17,6 @@
 #include "gui/dialogs/depcheck_select_new.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gettext.hpp"

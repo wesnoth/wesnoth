@@ -26,7 +26,6 @@
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/widgets/pane.hpp"
 #include "gui/widgets/selectable_item.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/viewport.hpp"
 #include "gui/widgets/widget_helpers.hpp"

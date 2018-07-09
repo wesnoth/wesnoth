@@ -21,7 +21,6 @@
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/scrollbar.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/window.hpp"
