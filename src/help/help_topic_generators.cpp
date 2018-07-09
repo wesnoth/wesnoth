@@ -245,7 +245,7 @@ std::string unit_topic_generator::operator()() const {
 	// Used for sorting terrain_movement_info terrain_moves. Needs to be declared before terrain_moves.
 	auto movement_compare = [](terrain_movement_info a, terrain_movement_info b)
 	{
-		return a.name < b.name;
+		return translation::icompare(a.name, b.name) < 0;
 	};
 
 

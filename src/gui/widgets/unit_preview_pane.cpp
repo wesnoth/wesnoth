@@ -147,7 +147,7 @@ static inline std::string get_mp_tooltip(int total_movement, std::function<int (
 {
 	auto movement_compare = [](std::pair<t_string, int> a, std::pair<t_string, int> b)
 	{
-		return a.first < b.first;
+		return translation::icompare(a.first, b.first) < 0;
 	};
 
 	// terrain_moves pair: first: name, second: movement_cost

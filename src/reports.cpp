@@ -586,7 +586,7 @@ static config unit_moves(reports::context & rc, const unit* u)
 
 	auto movement_compare = [](std::pair<t_string, int> a, std::pair<t_string, int> b)
 	{
-		return a.first < b.first;
+		return translation::icompare(a.first, b.first) < 0;
 	};
 
 	// terrain_moves pair: first: name, second: movement_cost
