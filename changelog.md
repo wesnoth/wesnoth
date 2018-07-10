@@ -75,6 +75,8 @@
  ### User interface
    * Improved the layout of the Statistics dialog.
    * Allow changing dropdown menu selections with the scrollwheel (FR #3251).
+   * Fixed lobby chat box scrolling to top on a new message if it isn't at the
+     bottom (issue #2789).
    * Fixed the unit preview pane not showing the default race icon when detailing
      a single unit's stats.
    * Sort units secondarily by XP in the unit list dialog.

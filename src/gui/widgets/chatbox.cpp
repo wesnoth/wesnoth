@@ -216,6 +216,7 @@ void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const b
 
 	scroll_label& log = find_widget<scroll_label>(&grid, "log_text", false);
 	const bool chatbox_at_end = log.vertical_scrollbar_at_end();
+	const unsigned chatbox_position = log.get_vertical_scrollbar_item_position();
 
 	const std::string new_text = formatter()
 		<< log.get_label() << "\n" << "<span color='#bcb088'>" << preferences::get_chat_timestamp(std::time(0)) << text << "</span>";
@@ -230,8 +231,6 @@ void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const b
 		} catch(const std::out_of_range&) {
 		}
 	}
-
-	const unsigned chatbox_position = log.get_vertical_scrollbar_item_position();
 
 	if(chatbox_at_end || force_scroll) {
 		log.scroll_vertical_scrollbar(scrollbar_base::END);
