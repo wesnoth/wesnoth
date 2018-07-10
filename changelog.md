@@ -52,6 +52,8 @@
    * Dead Water:
      * In 'Tirigaz', take the situation into account of orcs being killed either
        first or by undead.
+   * Delfador's Memoirs:
+     * Fix hero units costing upkeep (issue #3722)
    * Eastern Invasion:
      * Fixed missing prisoners and loss of recallable units in 'Captured'.
    * Secrets of the Ancients:
