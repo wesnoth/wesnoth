@@ -5,7 +5,7 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 ## Version 1.14.3+dev
  ### Language and i18n
    * Updated translations: Chinese (Simplified), Chinese (Traditional), French,
-     German, Slovak.
+     German, Scottish Gaelic, Slovak.
 
 
 ## Version 1.14.3

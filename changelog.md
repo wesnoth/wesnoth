@@ -30,7 +30,7 @@
    * Tweaked the Ruffian's attack animation timing.
  ### Language and i18n
    * Updated translations: Chinese (Simplified), Chinese (Traditional), French,
-     German, Slovak
+     German, Scottish Gaelic, Slovak
  ### Multiplayer server
    * Fixed lobby and whisper messages not having a maximum length.
  ### User interface
