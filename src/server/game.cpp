@@ -545,7 +545,7 @@ void game::transfer_side_control(const socket_ptr& sock, const simple_wml::node&
 	}
 
 	const simple_wml::string_span& newplayer_name = cfg["player"];
-	const socket_ptr& old_player = sides_[side_num - 1];
+	const socket_ptr old_player = sides_[side_num - 1];
 	const auto oldplayer = player_connections_.find(old_player);
 	if(oldplayer == player_connections_.end()) {
 		missing_user(old_player, __func__);
