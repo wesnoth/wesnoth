@@ -4488,13 +4488,17 @@ msgstr "Na seall beòthachadh air aonadan IF a’ gluasad"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:83
+#, fuzzy
+#| msgid "Scroll speed:"
 msgid "Speed:"
-msgstr "Luaths:"
+msgstr "Astar an sgrolaidh:"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:88
+#, fuzzy
+#| msgid "Make units move and fight faster"
 msgid "Units move and fight speed"
-msgstr "Astar gluasad is sabaid nan aonadan"
+msgstr "Thoir air aonadan gluasad is sabaid nas luaithe"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:104
@@ -5069,13 +5073,17 @@ msgstr "Stadastaireachd"
 
 #. [widget]: id=tab_label
 #: data/gui/window/statistics_dialog.cfg:485
+#, fuzzy
+#| msgid "Scenarios"
 msgid "Scenario"
-msgstr "Cnàmh-sgeul"
+msgstr "Cnàmh-sgeulan"
 
 #. [widget]: id=tab_label
 #: data/gui/window/statistics_dialog.cfg:498
+#, fuzzy
+#| msgid "Campaigns"
 msgid "Campaign"
-msgstr "Iomairt"
+msgstr "Iomairtean"
 
 #. [button]: id=cancel
 #: data/gui/window/story_viewer.cfg:131
@@ -6342,8 +6350,10 @@ msgid "Select at which point to begin this campaign."
 msgstr "Tagh càit an tòisich an iomairt seo."
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:193
+#, fuzzy
+#| msgid "No eras found."
 msgid "No era information found."
-msgstr "Cha deach fiosrachadh linn a lorg."
+msgstr "Cha deach linn a lorg."
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:248
 msgid "Computer Player"
@@ -7682,6 +7692,17 @@ msgstr ""
 #~ msgid "Sign Up"
 #~ msgstr "Clàraich"
 
+#~ msgid "Acceleration factor:"
+#~ msgstr "Factar an luathachaidh:"
+
+#~ msgid ""
+#~ "Speed at which unit moves and animations play when ‘Accelerated speed’ is "
+#~ "enabled or when Shift is held down in-game"
+#~ msgstr ""
+#~ "An t-astar leis a ghluaiseas na h-aonadan ’s a thèid beòthachaidhean a "
+#~ "chluich nuair a bhios “Astar luathaichte” an comas no nuair a bhios Shift "
+#~ "’ga chumail sìos sa gheama"
+
 #~ msgid "Limit FPS"
 #~ msgstr "Cuingich na FPS"
 
@@ -7719,3 +7740,9 @@ msgstr ""
 #~ "Cha chuir sinn taic ris an fhòrmat deilbh seo.\n"
 #~ "\n"
 #~ "Feuch an sàbhail thu an glacadh-sgrìn mar PNG ’na àite."
+
+#~ msgid "All Scenarios"
+#~ msgstr "A h-uile cnàmh-sgeul"
+
+#~ msgid "$count|× $name"
+#~ msgstr "$count|× $name"
