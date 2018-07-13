@@ -31,6 +31,8 @@
  ### Language and i18n
    * Updated translations: Chinese (Simplified), Chinese (Traditional), French,
      German, Scottish Gaelic, Slovak, Spanish
+ ### Lua API
+   * Upgrade to Lua 5.3.5.
  ### Multiplayer server
    * Fixed lobby and whisper messages not having a maximum length.
  ### User interface

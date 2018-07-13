@@ -1,5 +1,5 @@
 /*
-** $Id: lobject.c,v 2.113 2016/12/22 13:08:50 roberto Exp $
+** $Id: lobject.c,v 2.113.1.1 2017/04/19 17:29:57 roberto Exp $
 ** Some generic functions over Lua objects
 ** See Copyright Notice in lua.h
 */
@@ -266,7 +266,7 @@ static const char *l_str2dloc (const char *s, lua_Number *result, int mode) {
 ** - 'n'/'N' means 'inf' or 'nan' (which should be rejected)
 ** - '.' just optimizes the search for the common case (nothing special)
 ** This function accepts both the current locale or a dot as the radix
-** mark. If the conversion fails, it may mean number has a dot but
+** mark. If the convertion fails, it may mean number has a dot but
 ** locale accepts something else. In that case, the code copies 's'
 ** to a buffer (because 's' is read-only), changes the dot to the
 ** current locale radix mark, and tries to convert again.
@@ -435,7 +435,8 @@ const char *luaO_pushvfstring (lua_State *L, const char *fmt, va_list argp) {
       }
       case 'p': {  /* a pointer */
         char buff[4*sizeof(void *) + 8]; /* should be enough space for a '%p' */
-        int l = l_sprintf(buff, sizeof(buff), "%p", va_arg(argp, void *));
+        void *p = va_arg(argp, void *);
+        int l = lua_pointer2str(buff, sizeof(buff), p);
         pushstr(L, buff, l);
         break;
       }
