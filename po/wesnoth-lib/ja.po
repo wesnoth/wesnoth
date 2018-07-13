@@ -4420,13 +4420,17 @@ msgstr "AIが操作するユニットの移動時にアニメーションを行�
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:83
+#, fuzzy
+#| msgid "Scroll speed:"
 msgid "Speed:"
-msgstr "速度："
+msgstr "スクロール速度："
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:88
+#, fuzzy
+#| msgid "Make units move and fight faster"
 msgid "Units move and fight speed"
-msgstr "ユニットの移動と戦闘の速度を変更します"
+msgstr "ユニットの移動と戦闘を高速化します"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:104
@@ -4987,11 +4991,15 @@ msgstr "統計情報"
 
 #. [widget]: id=tab_label
 #: data/gui/window/statistics_dialog.cfg:485
+#, fuzzy
+#| msgid "Scenarios"
 msgid "Scenario"
 msgstr "シナリオ"
 
 #. [widget]: id=tab_label
 #: data/gui/window/statistics_dialog.cfg:498
+#, fuzzy
+#| msgid "Campaigns"
 msgid "Campaign"
 msgstr "キャンペーン"
 
@@ -6251,8 +6259,10 @@ msgid "Select at which point to begin this campaign."
 msgstr "どこからキャンペーンを開始しますか？"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:193
+#, fuzzy
+#| msgid "No eras found."
 msgid "No era information found."
-msgstr "時代の情報が見つかりません。"
+msgstr "時代が存在しません。"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:248
 msgid "Computer Player"
@@ -7574,6 +7584,16 @@ msgstr ""
 #~ msgid "Sign Up"
 #~ msgstr "登録"
 
+#~ msgid "Acceleration factor:"
+#~ msgstr "高速化の倍率："
+
+#~ msgid ""
+#~ "Speed at which unit moves and animations play when ‘Accelerated speed’ is "
+#~ "enabled or when Shift is held down in-game"
+#~ msgstr ""
+#~ "ユニットの移動とアニメーションの速度です。「高速化」が有効になっているか、"
+#~ "ゲーム中で Shift キーを押している間に適用されます。"
+
 #~ msgid "Limit FPS"
 #~ msgstr "FPS 制限"
 
@@ -7610,3 +7630,9 @@ msgstr ""
 #~ "サポートされていない画像のフォーマットです。\n"
 #~ "\n"
 #~ "代わりに、PNG でスクリーンショットを保存します。"
+
+#~ msgid "All Scenarios"
+#~ msgstr "すべてのシナリオ"
+
+#~ msgid "$count|× $name"
+#~ msgstr "$count|× $name"
