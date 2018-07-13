@@ -1724,9 +1724,12 @@ msgstr ""
 
 #. [object]
 #: data/core/macros/items.cfg:521
+#, fuzzy
+#| msgid ""
+#| "This trident gives merfolk the power to throw lightning at their enemies."
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
-"このトライデントを持ったマーフォークは、敵に電気の矢を放つことができます！"
+"このトライデントを持ったマーフォークは、敵に電気の矢を放つことができます。"
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:525
@@ -8203,6 +8206,23 @@ msgstr "$player の計画を非表示"
 #: src/whiteboard/manager.cpp:1103
 msgid "Whiteboard Options"
 msgstr "行動予定オプション"
+
+#~ msgid "Use experimental PRNG combat"
+#~ msgstr "実験的な PRNG 戦闘を使用"
+
+#~ msgid ""
+#~ "Enables more determinstic chance-to-hit calculations. This is an "
+#~ "experimental feature designed to bring the observed hit/miss rate more in "
+#~ "line with the displayed percentages.\n"
+#~ "\n"
+#~ "Note: this option only affects singleplayer, and the ‘Save random seed’ "
+#~ "option must also be enabled when creating a game for this to work."
+#~ msgstr ""
+#~ "より決定論的な命中率の計算を行います。これは実験的な機能は、観測される命中"
+#~ "結果を、表示されている確率により近づけるようにデザインされています。\n"
+#~ "\n"
+#~ "メモ：このオプションはシングルプレイヤーでのみ適用されます。また、「乱数の"
+#~ "シードを保存」オプションをゲーム作成時に有効にしなｋれば動作しません。"
 
 #~ msgid "Trailers"
 #~ msgstr "トレーラー"
