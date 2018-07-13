@@ -52,7 +52,7 @@ public:
 	~tree_view_node();
 
 	/**
-	 * Adds a child item to the list of child nodes.
+	 * Constructs a new child node.
 	 *
 	 * @param id                  The id of the node definition to use for the
 	 *                            new node.
@@ -66,10 +66,26 @@ public:
 	 * @param index               The item before which to add the new item,
 	 *                            0 == begin, -1 == end.
 	 */
-	tree_view_node&
-	add_child(const std::string& id,
-			  const std::map<std::string /* widget id */, string_map>& data,
-			  const int index = -1);
+	tree_view_node& add_child(const std::string& id,
+			const std::map<std::string /* widget id */, string_map>& data,
+			const int index = -1)
+	{
+		ptr_t new_node(new tree_view_node(id, this, get_tree_view(), data));
+		return add_child_impl(std::move(new_node), index);
+	}
+
+	/**
+	 * Adds a previously-constructed node as a child of this node at the given position.
+	 *
+	 * @param new_node            A smart pointer to the node object to insert.
+	 * @param index               The item before which to add the new item,
+	 *                            0 == begin, -1 == end.
+	 */
+	tree_view_node& add_child(ptr_t new_node, const int index = -1)
+	{
+		new_node->parent_node_ = this;
+		return add_child_impl(std::move(new_node), index);
+	}
 
 	/**
 	 * Adds a sibbling for a node at the end of the list.
@@ -92,12 +108,20 @@ public:
 		return parent_node().add_child(id, data);
 	}
 
+private:
+	/** Implementation detail for @ref add_child. */
+	tree_view_node& add_child_impl(ptr_t&& new_node, const int index);
+
+public:
 	/**
 	 * Is this node the root node?
 	 *
 	 * When the parent tree view is created it adds one special node, the root
 	 * node. This node has no parent node and some other special features so
 	 * several code paths need to check whether they are the parent node.
+	 *
+	 * This also returns true for a detecthed node returned with @ref tree_view::
+	 * remove_node.
 	 */
 	bool is_root_node() const
 	{
