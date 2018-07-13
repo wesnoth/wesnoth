@@ -722,7 +722,7 @@ void display::draw_fog_shroud_transition_images(const map_location& loc, image::
 	enum VISIBILITY { FOG = 0, SHROUD = 1, CLEAR = 2 };
 	std::array<VISIBILITY, 6> tiles;
 
-	const std::array<const std::string*, 2> image_prefix {&game_config::fog_prefix, &game_config::shroud_prefix};
+	const std::array<const std::string*, 2> image_prefix {{&game_config::fog_prefix, &game_config::shroud_prefix}};
 
 	for(unsigned i = 0; i < tiles.size(); ++i) {
 		if(shrouded(adjacent[i])) {

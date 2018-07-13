@@ -691,9 +691,9 @@ static void flood_name(const map_location& start, const std::string& name, std::
 std::string default_map_generator_job::default_generate_map(generator_data data, std::map<map_location,std::string>* labels, const config& cfg)
 {
 	log_scope("map generation");
-	
-	LOG_NG << "default_generate_map parameters" 
-		<< " width=" << data.width 
+
+	LOG_NG << "default_generate_map parameters"
+		<< " width=" << data.width
 		<< " height=" << data.height
 		<< " nplayers=" << data.nplayers
 		<< " nvillages=" << data.nvillages
@@ -1153,9 +1153,20 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		starting_positions.insert(t_translation::starting_positions::value_type(std::to_string(player), coord));
 		terrain[x][y] = t_translation::HUMAN_KEEP;
 
-		const std::array<std::array<int, 2>, 13> castle_array {{
-			{-1, 0}, {-1, -1}, {0, -1}, {1, -1}, {1, 0}, {0, 1}, {-1, 1},
-			{-2, 1}, {-2, 0}, {-2, -1}, {-1, -2}, {0, -2}, {1, -2}
+		static const std::array<std::array<int, 2>, 13> castle_array {{
+			{{-1,  0}},
+			{{-1, -1}},
+			{{ 0, -1}},
+			{{ 1, -1}},
+			{{ 1,  0}},
+			{{ 0,  1}},
+			{{-1,  1}},
+			{{-2,  1}},
+			{{-2,  0}},
+			{{-2, -1}},
+			{{-1, -2}},
+			{{ 0, -2}},
+			{{ 1, -2}}
 		}};
 
 		for(int i = 0; i < data.castle_size - 1; i++) {
