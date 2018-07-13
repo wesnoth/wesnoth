@@ -1247,7 +1247,7 @@ std::ostream& operator<<(std::ostream& outstream, const config& cfg)
 		}
 
 		for(int j = 0; j < i - 1; j++) {
-			outstream << char(9);
+			outstream << static_cast<char>(9);
 		}
 
 		outstream << val.first << " = " << val.second << '\n';
@@ -1255,14 +1255,14 @@ std::ostream& operator<<(std::ostream& outstream, const config& cfg)
 
 	for(const config::any_child& child : cfg.all_children_range()) {
 		for(int j = 0; j < i - 1; ++j) {
-			outstream << char(9);
+			outstream << static_cast<char>(9);
 		}
 
 		outstream << "[" << child.key << "]\n";
 		outstream << child.cfg;
 
 		for(int j = 0; j < i - 1; ++j) {
-			outstream << char(9);
+			outstream << static_cast<char>(9);
 		}
 
 		outstream << "[/" << child.key << "]\n";

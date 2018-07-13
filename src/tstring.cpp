@@ -275,8 +275,8 @@ t_string_base::t_string_base(const std::string& string, const std::string& textd
 		id = idi->second;
 	}
 
-	value_ += char(id & 0xff);
-	value_ += char(id >> 8);
+	value_ += static_cast<char>(id & 0xff);
+	value_ += static_cast<char>(id >> 8);
 	value_ += string;
 }
 
@@ -304,8 +304,8 @@ t_string_base::t_string_base(const std::string& sing, const std::string& pl, int
 		id = idi->second;
 	}
 
-	value_ += char(id & 0xff);
-	value_ += char(id >> 8);
+	value_ += static_cast<char>(id & 0xff);
+	value_ += static_cast<char>(id >> 8);
 	value_ += sing;
 	value_ += PLURAL_PART;
 
