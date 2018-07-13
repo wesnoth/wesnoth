@@ -20,7 +20,6 @@
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
-#include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 #include "wml_exception.hpp"
@@ -67,7 +66,7 @@ tree_view_node& tree_view::add_node(
 	return get_root_node().add_child(id, data, index);
 }
 
-int tree_view::remove_node(tree_view_node* node)
+std::pair<tree_view_node::ptr_t, int> tree_view::remove_node(tree_view_node* node)
 {
 	assert(node && node != root_node_ && node->parent_node_);
 	const point node_size = node->get_size();
@@ -80,6 +79,9 @@ int tree_view::remove_node(tree_view_node* node)
 
 	assert(node_itor != siblings.end());
 
+	auto old_node = std::move(*node_itor);
+	old_node->parent_node_ = nullptr;
+
 	const int position = std::distance(siblings.begin(), node_itor);
 
 	siblings.erase(node_itor);
@@ -89,7 +91,7 @@ int tree_view::remove_node(tree_view_node* node)
 		resize_content(0, -node_size.y);
 	}
 
-	return position;
+	return std::make_pair(std::move(old_node), position);
 }
 
 void tree_view::clear()
