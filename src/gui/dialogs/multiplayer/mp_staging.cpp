@@ -130,6 +130,18 @@ void mp_staging::pre_show(window& window)
 	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
 }
 
+int mp_staging::get_side_node_position(ng::side_engine_ptr side) const
+{
+	int position = 0;
+	for(const auto& side_engine : connect_engine_.side_engines()) {
+		if(side->team() == side_engine->team() && side->index() > side_engine->index()) {
+			++position;
+		}
+	}
+
+	return position;
+}
+
 void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 {
 	tree_view& tree = find_widget<tree_view>(&window, "side_list", false);
@@ -162,17 +174,8 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 		team_tree_map_[side->team_name()] = &team_node;
 	}
 
-	// Find an appropriate position to insert this node. This ensures the side nodes are always
-	// arranged by descending index order in each team group.
-	int position = 0;
-	for(const auto& side_engine : connect_engine_.side_engines()) {
-		if(side->team() == side_engine->team() && side->index() > side_engine->index()) {
-			++position;
-		}
-	}
-
 	// Must be *after* the above if block, or the node ptr could be invalid
-	tree_view_node& node = team_tree_map_[side->team_name()]->add_child("side_panel", data, position);
+	tree_view_node& node = team_tree_map_[side->team_name()]->add_child("side_panel", data, get_side_node_position(side));
 
 	side_tree_map_[side] = &node;
 
@@ -280,7 +283,7 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	team_selection.set_active(!saved_game);
 
 	connect_signal_notify_modified(team_selection,
-		std::bind(&mp_staging::on_team_select, this, std::ref(window), side, std::ref(team_selection), _3, _4));
+		std::bind(&mp_staging::on_team_select, this, std::ref(window), side, std::ref(team_selection)));
 
 	//
 	// Colors
@@ -375,7 +378,7 @@ void mp_staging::on_color_select(ng::side_engine_ptr side, grid& row_grid)
 	set_state_changed();
 }
 
-void mp_staging::on_team_select(window& window, ng::side_engine_ptr side, menu_button& team_menu, bool& handled, bool& halt)
+void mp_staging::on_team_select(window& window, ng::side_engine_ptr side, menu_button& team_menu)
 {
 	// Since we're not necessarily displaying every every team in the menu, we can't just
 	// use the selected index to set a side's team. Instead, we grab the index we stored
@@ -390,15 +393,12 @@ void mp_staging::on_team_select(window& window, ng::side_engine_ptr side, menu_b
 	side->set_team(team_index);
 
 	// First, remove the node from the tree
-	find_widget<tree_view>(&window, "side_list", false).remove_node(side_tree_map_[side]);
+	auto node = find_widget<tree_view>(&window, "side_list", false).remove_node(side_tree_map_[side]);
 
 	// Then add a new node as a child to the appropriate team's node
-	add_side_node(window, side);
+	team_tree_map_[side->team_name()]->add_child(std::move(node.first), get_side_node_position(side));
 
 	set_state_changed();
-
-	handled = true;
-	halt = true;
 }
 
 void mp_staging::select_leader_callback(ng::side_engine_ptr side, grid& row_grid)
