@@ -493,15 +493,36 @@ bool terrain_builder::load_images(building_rule& rule)
 	return true;
 }
 
+namespace
+{
+struct rotations_t
+{
+	int ii;
+	int ij;
+	int ji;
+	int jj;
+};
+
+struct xy_rotations_t
+{
+	double xx;
+	double xy;
+	double yx;
+	double yy;
+};
+
+} // end anon namespace
+
 void terrain_builder::rotate(terrain_constraint& ret, int angle)
 {
-	static const struct
-	{
-		int ii;
-		int ij;
-		int ji;
-		int jj;
-	} rotations[6] {{1, 0, 0, 1}, {1, 1, -1, 0}, {0, 1, -1, -1}, {-1, 0, 0, -1}, {-1, -1, 1, 0}, {0, -1, 1, 1}};
+	static const std::array<rotations_t, 6> rotations {{
+		{1,   0,  0,  1},
+		{1,   1, -1,  0},
+		{0,   1, -1, -1},
+		{-1,  0,  0, -1},
+		{-1, -1,  1,  0},
+		{0,  -1,  1,  1}
+	}};
 
 	// The following array of matrices is intended to rotate the (x,y)
 	// coordinates of a point in a wesnoth hex (and wesnoth hexes are not
@@ -530,20 +551,14 @@ void terrain_builder::rotate(terrain_constraint& ret, int angle)
 	//
 	// And the following array contains I(2), r, r^2, r^3, r^4, r^5
 	// (with r^3 == -I(2)), which are the successive rotations.
-	static const struct
-	{
-		double xx;
-		double xy;
-		double yx;
-		double yy;
-	} xyrotations[6] {
+	static const std::array<xy_rotations_t, 6> xyrotations {{
 		{ 1.,         0.,  0., 1.    },
 		{ 1./2. , -3./4.,  1., 1./2. },
 		{ -1./2., -3./4.,   1, -1./2.},
 		{ -1.   ,     0.,  0., -1.   },
 		{ -1./2.,  3./4., -1., -1./2.},
 		{ 1./2. ,  3./4., -1., 1./2. },
-	};
+	}};
 
 	assert(angle >= 0);
 

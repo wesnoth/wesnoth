@@ -1250,9 +1250,10 @@ REGISTER_MOD_PARSER(RIGHT, )
 // Add a background color.
 REGISTER_MOD_PARSER(BG, args)
 {
-	int c[4] { 0, 0, 0, SDL_ALPHA_OPAQUE };
+	std::array<int, 4> c { 0, 0, 0, SDL_ALPHA_OPAQUE };
 	std::vector<std::string> factors = utils::split(args, ',');
 
+	// Doesn't use color_t::from_rgba_string since there maybe fewer than 4 arguments
 	for(int i = 0; i < std::min<int>(factors.size(), 4); ++i) {
 		c[i] = lexical_cast_default<int>(factors[i]);
 	}

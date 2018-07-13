@@ -719,12 +719,12 @@ void display::draw_fog_shroud_transition_images(const map_location& loc, image::
 	adjacent_loc_array_t adjacent;
 	get_adjacent_tiles(loc, adjacent.data());
 
-	enum visibility { FOG = 0, SHROUD = 1, CLEAR = 2 };
-	visibility tiles[6];
+	enum VISIBILITY { FOG = 0, SHROUD = 1, CLEAR = 2 };
+	std::array<VISIBILITY, 6> tiles;
 
-	const std::string* image_prefix[]{&game_config::fog_prefix, &game_config::shroud_prefix};
+	const std::array<const std::string*, 2> image_prefix {&game_config::fog_prefix, &game_config::shroud_prefix};
 
-	for(int i = 0; i < 6; ++i) {
+	for(unsigned i = 0; i < tiles.size(); ++i) {
 		if(shrouded(adjacent[i])) {
 			tiles[i] = SHROUD;
 		} else if(!fogged(loc) && fogged(adjacent[i])) {
@@ -789,7 +789,7 @@ void display::draw_fog_shroud_transition_images(const map_location& loc, image::
 	}
 
 	// Now render the images
-	for(std::string& name : names) {
+	for(const std::string& name : names) {
 		render_scaled_to_zoom(image::get_texture(name), loc); // TODO: image_type
 	}
 }
