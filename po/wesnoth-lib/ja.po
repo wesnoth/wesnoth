@@ -4357,7 +4357,7 @@ msgstr "ユニットの移動と戦闘を高速化します"
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:79
 msgid "Acceleration factor:"
-msgstr ""
+msgstr "高速化の倍率："
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:84
@@ -4365,6 +4365,8 @@ msgid ""
 "Speed at which unit moves and animations play when ‘Accelerated speed’ is "
 "enabled or when Shift is held down in-game"
 msgstr ""
+"ユニットの移動とアニメーションの速度です。「高速化」が有効になっているか、"
+"ゲーム中で Shift キーを押している間に適用されます。"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:100
@@ -6276,10 +6278,8 @@ msgstr ""
 "代わりに、PNG でスクリーンショットを保存します。"
 
 #: src/gui/dialogs/statistics_dialog.cpp:68
-#, fuzzy
-#| msgid "Scenarios"
 msgid "All Scenarios"
-msgstr "シナリオ"
+msgstr "すべてのシナリオ"
 
 #: src/gui/dialogs/statistics_dialog.cpp:181
 msgid "Recruits"
@@ -6311,7 +6311,7 @@ msgstr "被ダメージ"
 
 #: src/gui/dialogs/statistics_dialog.cpp:255
 msgid "$count|× $name"
-msgstr ""
+msgstr "$count|× $name"
 
 #: src/gui/dialogs/title_screen.cpp:467
 msgid "Choose Test"
@@ -7484,18 +7484,3 @@ msgid ""
 msgstr ""
 "キー「$deprecated_key」は「$key」に名前が変更されました。「$deprecated_key」"
 "のサポートはバージョン$removal_versionで削除されます。"
-
-#~ msgid "Speed:"
-#~ msgstr "速度："
-
-#~ msgid "Units move and fight speed"
-#~ msgstr "ユニットの移動と戦闘の速度を変更します"
-
-#~ msgid "Scenario"
-#~ msgstr "シナリオ"
-
-#~ msgid "Campaign"
-#~ msgstr "キャンペーン"
-
-#~ msgid "No era information found."
-#~ msgstr "時代の情報が見つかりません。"

@@ -226,7 +226,7 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:186
 msgid "Use experimental PRNG combat"
-msgstr ""
+msgstr "実験的な PRNG 戦闘を使用"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:187
@@ -238,6 +238,11 @@ msgid ""
 "Note: this option only affects singleplayer, and the ‘Save random seed’ "
 "option must also be enabled when creating a game for this to work."
 msgstr ""
+"より決定論的な命中率の計算を行います。これは実験的な機能は、観測される命中結"
+"果を、表示されている確率により近づけるようにデザインされています。\n"
+"\n"
+"メモ：このオプションはシングルプレイヤーでのみ適用されます。また、「乱数の"
+"シードを保存」オプションをゲーム作成時に有効にしなｋれば動作しません。"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:197
@@ -1725,12 +1730,10 @@ msgstr ""
 
 #. [object]
 #: data/core/macros/items.cfg:521
-#, fuzzy
-#| msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
 msgstr ""
-"このトライデントを持ったマーフォークは、敵に電気の矢を放つことができます！"
+"このトライデントを持ったマーフォークは、敵に電気の矢を放つことができます。"
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:525

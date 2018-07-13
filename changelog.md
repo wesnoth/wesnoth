@@ -30,7 +30,7 @@
    * Tweaked the Ruffian's attack animation timing.
  ### Language and i18n
    * Updated translations: Chinese (Simplified), Chinese (Traditional), French,
-     German, Hungarian, Scottish Gaelic, Slovak, Spanish
+     German, Hungarian, Japanese, Scottish Gaelic, Slovak, Spanish
  ### Lua API
    * Upgrade to Lua 5.3.5.
  ### Multiplayer server
