@@ -9,7 +9,6 @@ find data/ -not -name "*.png" -not -name "*.ogg" -not -name "*.jpg" -not -name "
 find po/ -type f -print0 | xargs -0 isutf8 -- || exit_code=1
 
 isutf8 changelog.md || exit_code=1
-isutf8 players_changelog.md || exit_code=1
 isutf8 RELEASE_NOTES || exit_code=1
 
 if [ $exit_code != 0 ]; then
