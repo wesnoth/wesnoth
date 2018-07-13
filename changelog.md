@@ -10,8 +10,8 @@
    * Removed option to disable unit and item halos.
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified),
-     Chinese (Traditional), Czech, French, Galician, German, Italian, Japanese,
-     Polish, Scottish Gaelic, Slovak, Spanish, Ukrainian.
+     Chinese (Traditional), Czech, French, Galician, German, Hungarian, Italian,
+     Japanese, Polish, Scottish Gaelic, Slovak, Spanish, Ukrainian.
  ### Packaging
    * OpenMP support has been removed. It is no longer an optional build-time dependency.
  ### WML engine
