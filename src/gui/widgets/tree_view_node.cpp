@@ -127,10 +127,7 @@ void tree_view_node::clear_before_destruct()
 	}
 }
 
-tree_view_node& tree_view_node::add_child(
-		const std::string& id,
-		const std::map<std::string /* widget id */, string_map>& data,
-		const int index)
+tree_view_node& tree_view_node::add_child_impl(ptr_t&& new_node, const int index)
 {
 	auto itor = children_.end();
 
@@ -138,14 +135,22 @@ tree_view_node& tree_view_node::add_child(
 		itor = children_.begin() + index;
 	}
 
-	itor = children_.emplace(itor, new tree_view_node(id, this, get_tree_view(), data));
+	tree_view_node& node = **children_.insert(itor, std::move(new_node));
+
+	// NOTE: we currently don't support moving nodes between different trees, so this
+	// just ensures that wasn't tried. Remove this if we implement support for that.
+	assert(node.tree_view_ == tree_view_);
+
+	// Safety check. Might only fail if someone accidentally removed the parent_node_
+	// setter in add_child().
+	assert(node.parent_node_ == this);
 
 	if(is_folded() /*|| is_root_node()*/) {
-		return **itor;
+		return node;
 	}
 
 	if(get_tree_view().get_size() == point()) {
-		return **itor;
+		return node;
 	}
 
 	assert(get_tree_view().content_grid());
@@ -153,7 +158,7 @@ tree_view_node& tree_view_node::add_child(
 
 	// Calculate width modification.
 	// This increases tree width if the width of the new node is greater than the current width.
-	point best_size = (*itor)->get_best_size();
+	point best_size = node.get_best_size();
 	best_size.x += get_indentation_level() * get_tree_view().indentation_step_size_;
 
 	const int width_modification = best_size.x > current_size.x
@@ -165,7 +170,7 @@ tree_view_node& tree_view_node::add_child(
 	// is larger than its current size. This prevents the scrollbar being reserved even when there's obviously
 	// enough visual space.
 
-	// Throw away cached best size to force a recomputation.
+	// Throw away cached best size to force a recalculation.
 	get_tree_view().layout_initialize(false);
 
 	const point tree_best_size = get_tree_view().get_best_size();
@@ -177,9 +182,9 @@ tree_view_node& tree_view_node::add_child(
 	assert(height_modification >= 0);
 
 	// Request new size.
-	get_tree_view().resize_content(width_modification, height_modification, -1, (*itor)->calculate_ypos());
+	get_tree_view().resize_content(width_modification, height_modification, -1, node.calculate_ypos());
 
-	return **itor;
+	return node;
 }
 
 unsigned tree_view_node::get_indentation_level() const

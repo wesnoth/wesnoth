@@ -15,6 +15,7 @@
 #pragma once
 
 #include "gui/widgets/scrollbar_container.hpp"
+#include "gui/widgets/tree_view_node.hpp"
 
 namespace gui2
 {
@@ -59,7 +60,15 @@ public:
 			 const std::map<std::string /* widget id */, string_map>& data,
 			 const int index = -1);
 
-	int remove_node(tree_view_node* tree_view_node);
+	/**
+	 * Removes the given node as a child of its parent node.
+	 *
+	 * @param node      A pointer to the node to remove.
+	 *
+	 * @returns         A pair consisting of a smart pointer managing the removed
+	 *                  node, and its position before removal.
+	 */
+	std::pair<tree_view_node::ptr_t, int> remove_node(tree_view_node* node);
 
 	void clear();
 
