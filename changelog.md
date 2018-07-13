@@ -70,6 +70,8 @@
    * New attack animation for the Peasant.
  ### Language and i18n
    * Updated translations: French, German, Slovak
+ ### Lua API
+   * Upgrade to Lua 5.3.5.
  ### Multiplayer server
    * Fixed lobby and whisper messages not having a maximum length.
  ### User interface
