@@ -56,9 +56,15 @@
      * Fix hero units costing upkeep (issue #3722)
    * Eastern Invasion:
      * Fixed missing prisoners and loss of recallable units in 'Captured'.
+   * Northern Rebirth:
+     * Level 0 units are not availaible anymore after scenario 5
    * Secrets of the Ancients:
      * Adjust gender of enemies to better match story in S11 & 21 (issue #3294)
      * Simplify dialog to fix possible confusion in S16 (issue #3291)
+   * The South Guard:
+     * S4: undead leader won't leave the castle anymore
+     * S5: the untypical situation that one can defeat the lich before finding
+       Urza Afalas is now handled
    * Under the Burning Suns:
      * S11: added custom graphics for the citadel.
      * S12: clarified the alien bodies' weaknesses.
@@ -66,10 +72,11 @@
  ### Editor
    * Fixed saving a map as a scenario not enabling scenario editor tools.
  ### Graphics
-   * Tweaked the Ruffian's attack animation timing.
    * New attack animation for the Peasant.
+   * Tweaked the Ruffian's attack animation timing.
  ### Language and i18n
-   * Updated translations: French, German, Slovak
+   * Updated translations: Chinese (Simplified), Chinese (Traditional), French,
+     German, Scottish Gaelic, Slovak, Spanish
  ### Lua API
    * Upgrade to Lua 5.3.5.
  ### Multiplayer server
@@ -82,11 +89,13 @@
    * Fixed the unit preview pane not showing the default race icon when detailing
      a single unit's stats.
    * Sort units secondarily by XP in the unit list dialog.
+   * Whiteboard related bugfixes
  ### WML engine
    * Fixed errors about WESNOTH_VERSION not being defined when trying to load
      add-ons that have preprocessor errors (issues #1924, #1634).
  ### Miscellaneous and bug fixes
    * Added an advanced preference to enable experimental PRNG combat.
+   * Campfires use illumination instead of a different ToD.
    * Linux builds now enable security hardening by default.
    * Fixed MP admins being unable to observe private games.
    * Fixed MP faction, leader, and leader gender changes persisting even if the
@@ -96,6 +105,7 @@
    * Fixed wmllint choking on gzipped binary files (e.g. gzipped tarballs).
    * Fixed wmllint crashing on inexistent paths provided in the command line
      (issue #3286).
+   * Slight changes to the objectives dialogue (pr #3309)
    * Greatly improved touch control support.
 
 ## Version 1.14.3
