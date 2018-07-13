@@ -75,7 +75,7 @@ std::string format_version(const SDL_version& v)
 std::string format_openssl_patch_level(uint8_t p)
 {
 	return p <= 26
-		? std::string(1, 'a' + char(p) - 1)
+		? std::string(1, 'a' + static_cast<char>(p) - 1)
 		: "patch" + std::to_string(p);
 }
 
