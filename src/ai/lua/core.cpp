@@ -1026,7 +1026,7 @@ static size_t generate_and_push_ai_state(lua_State* L, ai::engine_lua* engine)
 
 lua_ai_context* lua_ai_context::create(lua_State* L, char const* code, ai::engine_lua* engine)
 {
-	int res_ai = luaL_loadstring(L, code); // [-1: AI code]
+	int res_ai = luaL_loadbufferx(L, code, strlen(code), /*name*/ code, "t"); // [-1: AI code]
 	if(res_ai != 0) {
 		char const* m = lua_tostring(L, -1);
 		ERR_LUA << "error while initializing ai:  " << m << '\n';
@@ -1068,7 +1068,7 @@ void lua_ai_context::update_state()
 
 lua_ai_action_handler* lua_ai_action_handler::create(lua_State* L, char const* code, lua_ai_context& context)
 {
-	int res = luaL_loadstring(L, code); // stack size is now 1 [ -1: f]
+	int res = luaL_loadbufferx(L, code, strlen(code), /*name*/ code, "t");//stack size is now 1 [ -1: f]
 	if(res) {
 		char const* m = lua_tostring(L, -1);
 		ERR_LUA << "error while creating ai function:  " << m << '\n';
