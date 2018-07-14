@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:31 UTC\n"
-"PO-Revision-Date: 2018-05-16 15:42+1000\n"
+"PO-Revision-Date: 2018-07-14 14:47+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.0.9\n"
 
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:9
@@ -3210,16 +3210,22 @@ msgstr ""
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2057
+#, fuzzy
+#| msgid ""
+#| "I am afraid times have changed much. Our first king, Haldric I, fled the "
+#| "Green Isle with the Wesfolk, the orcs in pursuit. He came ashore on this "
+#| "land that we now call the Great Continent and destroyed the Lich-Lord "
+#| "Jevyan before founding the Kingdom of Wesnoth. That was centuries ago."
 msgid ""
 "I am afraid times have changed much. Our first king, Haldric I, fled from "
 "the Green Isle with the Wesfolk and the orcs in pursuit. He came ashore on "
 "this land that we now call the Great Continent and destroyed the Lich-Lord "
 "Jevyan before founding the Kingdom of Wesnoth. That was centuries ago."
 msgstr ""
-"I am afraid times have changed much. Our first king, Haldric I, fled from "
-"the Green Isle with the Wesfolk and the orcs in pursuit. He came ashore on "
-"this land that we now call the Great Continent and destroyed the Lich-Lord "
-"Jevyan before founding the Kingdom of Wesnoth. That was centuries ago."
+"I am afraid times have changed much. Our first king, Haldric I, fled the "
+"Green Isle with the Wesfolk, the orcs in pursuit. He came ashore on this "
+"land that we now call the Great Continent and destroyed the Lich-Lord Jevyan "
+"before founding the Kingdom of Wesnoth. That was centuries ago."
 
 #. [message]: speaker=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2062
@@ -4840,8 +4846,10 @@ msgstr "Ro’Sothian"
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:323
+#, fuzzy
+#| msgid "Save Stalrag from Ro’Sothian"
 msgid "Save Stalrag from Ro’Sothian."
-msgstr "Save Stalrag from Ro’Sothian."
+msgstr "Save Stalrag from Ro’Sothian"
 
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:327
@@ -4851,8 +4859,10 @@ msgstr "Death of Tallin."
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:331
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:701
+#, fuzzy
+#| msgid "Death of Stalrag"
 msgid "Death of Stalrag."
-msgstr "Death of Stalrag."
+msgstr "Death of Stalrag"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:350
@@ -5159,8 +5169,10 @@ msgstr "Back to gaol, my friend."
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:693
+#, fuzzy
+#| msgid "Capture Ro’Arthian"
 msgid "Capture Ro’Arthian."
-msgstr "Capture Ro’Arthian."
+msgstr "Capture Ro’Arthian"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:735
@@ -10519,11 +10531,9 @@ msgstr "You wretches will pay for this! FORWARDS, MEN!"
 msgid "Arthian"
 msgstr "Arthian"
 
-#~| msgid "Move Tallin to a Dwarvish castle keep or..."
 #~ msgid "Move Tallin to the dwarvish area to meet with Lord Hamel"
 #~ msgstr "Move Tallin to the dwarvish area to meet with Lord Hamel"
 
-#~| msgid "Phew, they are defeated at last."
 #~ msgid "The dwarves are defeated"
 #~ msgstr "The dwarves are defeated"
 
