@@ -16,21 +16,19 @@
 
 #include "gui/widgets/tree_view.hpp"
 
-#include "gui/core/log.hpp"
-#include "gui/core/window_builder/helper.hpp"
-#include "gui/core/register_widget.hpp"
-#include "gui/widgets/window.hpp"
 #include "gettext.hpp"
-#include "wml_exception.hpp"
-
+#include "gui/core/log.hpp"
+#include "gui/core/register_widget.hpp"
+#include "gui/core/window_builder/helper.hpp"
+#include "gui/widgets/window.hpp"
 #include "utils/functional.hpp"
+#include "wml_exception.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
 namespace gui2
 {
-
 // ------------ WIDGET -----------{
 
 REGISTER_WIDGET(tree_view)
@@ -40,27 +38,23 @@ tree_view::tree_view(const implementation::builder_tree_view& builder)
 	, node_definitions_(builder.nodes)
 	, indentation_step_size_(0)
 	, need_layout_(false)
-	, root_node_(new tree_view_node("root",
-									 nullptr,
-									 *this,
-									 std::map<std::string, string_map>()))
+	, root_node_(new tree_view_node("root", nullptr, *this, std::map<std::string, string_map>()))
 	, selected_item_(nullptr)
 	, selection_change_callback_()
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
-			std::bind(&tree_view::signal_handler_left_button_down, this, _2),
-			event::dispatcher::back_pre_child);
+		std::bind(&tree_view::signal_handler_left_button_down, this, _2), event::dispatcher::back_pre_child);
 }
+
 tree_view::~tree_view()
 {
-	if (root_node_) {
+	if(root_node_) {
 		root_node_->clear_before_destruct();
 	}
 }
+
 tree_view_node& tree_view::add_node(
-		const std::string& id,
-		const std::map<std::string /* widget id */, string_map>& data,
-		const int index)
+		const std::string& id, const std::map<std::string /* widget id */, string_map>& data, const int index)
 {
 	return get_root_node().add_child(id, data, index);
 }
@@ -72,9 +66,7 @@ std::pair<tree_view_node::ptr_t, int> tree_view::remove_node(tree_view_node* nod
 
 	tree_view_node::node_children_vector& siblings = node->parent_node_->children_;
 
-	auto node_itor = std::find_if(siblings.begin(), siblings.end(),
-		[node](const auto& c) { return c.get() == node; }
-	);
+	auto node_itor = std::find_if(siblings.begin(), siblings.end(), [node](const auto& c) { return c.get() == node; });
 
 	assert(node_itor != siblings.end());
 
@@ -115,16 +107,19 @@ void tree_view::layout_children()
 }
 
 void tree_view::resize_content(const int width_modification,
-								const int height_modification,
-						const int width__modification_pos,
-						const int height_modification_pos)
+		const int height_modification,
+		const int width__modification_pos,
+		const int height_modification_pos)
 {
-	DBG_GUI_L << LOG_HEADER << " current size " << content_grid()->get_size()
-			  << " width_modification " << width_modification
-			  << " height_modification " << height_modification << ".\n";
+	DBG_GUI_L << LOG_HEADER << " current size " << content_grid()->get_size() << " width_modification "
+			  << width_modification << " height_modification " << height_modification << ".\n";
 
-	if(content_resize_request(width_modification, height_modification, width__modification_pos, height_modification_pos)) {
-
+	if(content_resize_request(
+		width_modification,
+		height_modification,
+		width__modification_pos,
+		height_modification_pos
+	)) {
 		// Calculate new size.
 		point size = content_grid()->get_size();
 		size.x += width_modification;
@@ -148,9 +143,7 @@ void tree_view::layout_children(const bool force)
 	assert(root_node_ && content_grid());
 
 	if(need_layout_ || force) {
-		root_node_->place(indentation_step_size_,
-						  get_origin(),
-						  content_grid()->get_size().x);
+		root_node_->place(indentation_step_size_, get_origin(), content_grid()->get_size().x);
 		root_node_->set_visible_rectangle(content_visible_area_);
 
 		need_layout_ = false;
@@ -165,12 +158,8 @@ void tree_view::finalize_setup()
 
 	assert(content_grid());
 	content_grid()->set_rows_cols(1, 1);
-	content_grid()->set_child(root_node_,
-							  0,
-							  0,
-							  grid::VERTICAL_GROW_SEND_TO_CLIENT
-							  | grid::HORIZONTAL_GROW_SEND_TO_CLIENT,
-							  0);
+	content_grid()->set_child(
+		root_node_, 0, 0, grid::VERTICAL_GROW_SEND_TO_CLIENT | grid::HORIZONTAL_GROW_SEND_TO_CLIENT, 0);
 }
 
 void tree_view::signal_handler_left_button_down(const event::ui_event event)
@@ -179,33 +168,36 @@ void tree_view::signal_handler_left_button_down(const event::ui_event event)
 
 	get_window()->keyboard_capture(this);
 }
-template<tree_view_node* (tree_view_node::*func) ()>
+
+template<tree_view_node* (tree_view_node::*func)()>
 tree_view_node* tree_view::get_next_node()
 {
 	tree_view_node* selected = selected_item();
 	if(!selected) {
 		return nullptr;
 	}
+
 	tree_view_node* visible = selected->get_last_visible_parent_node();
 	if(visible != selected) {
 		return visible;
 	}
+
 	return (selected->*func)();
 }
 
-template<tree_view_node* (tree_view_node::*func) ()>
+template<tree_view_node* (tree_view_node::*func)()>
 bool tree_view::handle_up_down_arrow()
 {
-	if(tree_view_node* next = get_next_node<func>())
-	{
+	if(tree_view_node* next = get_next_node<func>()) {
 		next->select_node();
 		SDL_Rect visible = content_visible_area();
 		SDL_Rect rect = next->get_grid().get_rectangle();
-		visible.y = rect.y;// - content_grid()->get_y();
+		visible.y = rect.y; // - content_grid()->get_y();
 		visible.h = rect.h;
 		show_content_rect(visible);
 		return true;
 	}
+
 	return false;
 }
 
@@ -213,8 +205,7 @@ void tree_view::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 {
 	if(handle_up_down_arrow<&tree_view_node::get_selectable_node_above>()) {
 		handled = true;
-	}
-	else {
+	} else {
 		scrollbar_container::handle_key_up_arrow(modifier, handled);
 	}
 }
@@ -223,12 +214,10 @@ void tree_view::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
 {
 	if(handle_up_down_arrow<&tree_view_node::get_selectable_node_below>()) {
 		handled = true;
-	}
-	else {
+	} else {
 		scrollbar_container::handle_key_down_arrow(modifier, handled);
 	}
 }
-
 
 void tree_view::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
 {
@@ -237,6 +226,7 @@ void tree_view::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
 		scrollbar_container::handle_key_left_arrow(modifier, handled);
 		return;
 	}
+
 	selected->fold();
 	handled = true;
 }
@@ -248,6 +238,7 @@ void tree_view::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 		scrollbar_container::handle_key_right_arrow(modifier, handled);
 		return;
 	}
+
 	selected->unfold();
 	handled = true;
 }
@@ -288,7 +279,8 @@ tree_view_definition::tree_view_definition(const config& cfg)
  * @end{parent}{name="gui/"}
  */
 tree_view_definition::resolution::resolution(const config& cfg)
-	: resolution_definition(cfg), grid(nullptr)
+	: resolution_definition(cfg)
+	, grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t is listbox.hpp.
 	state.emplace_back(cfg.child("state_enabled"));
@@ -357,19 +349,14 @@ tree_view_definition::resolution::resolution(const config& cfg)
 
 namespace implementation
 {
-
 builder_tree_view::builder_tree_view(const config& cfg)
 	: builder_styled_widget(cfg)
-	, vertical_scrollbar_mode(
-			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
-	, horizontal_scrollbar_mode(
-			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+	, vertical_scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
+	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
 	, indentation_step_size(cfg["indentation_step_size"])
 	, nodes()
 {
-
-	for(const auto & node : cfg.child_range("node"))
-	{
+	for(const auto& node : cfg.child_range("node")) {
 		nodes.emplace_back(node);
 	}
 
@@ -389,8 +376,7 @@ widget_ptr builder_tree_view::build() const
 
 	widget->set_indentation_step_size(indentation_step_size);
 
-	DBG_GUI_G << "Window builder: placed tree_view '" << id
-			  << "' with definition '" << definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed tree_view '" << id << "' with definition '" << definition << "'.\n";
 
 	const auto conf = widget->cast_config_to<tree_view_definition>();
 	assert(conf);
@@ -408,8 +394,7 @@ tree_node::tree_node(const config& cfg)
 {
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("node", "id"));
 
-	VALIDATE(id != "root",
-			 _("[node]id 'root' is reserved for the implementation."));
+	VALIDATE(id != "root", _("[node]id 'root' is reserved for the implementation."));
 
 	const config& node_definition = cfg.child("node_definition");
 
