@@ -916,9 +916,9 @@ bool game_launcher::play_multiplayer_commandline()
 
 bool game_launcher::change_language()
 {
-	gui2::dialogs::language_selection dlg;
-	dlg.show();
-	if (dlg.get_retval() != gui2::retval::OK) return false;
+	if(!gui2::dialogs::language_selection::execute()) {
+		return false;
+	}
 
 	if (!(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test)) {
 		video().set_window_title(game_config::get_default_title_string());
