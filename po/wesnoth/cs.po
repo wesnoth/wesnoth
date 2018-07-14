@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-05-06 12:14+0200\n"
+"PO-Revision-Date: 2018-07-09 15:04+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.8\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -1734,10 +1734,12 @@ msgstr ""
 
 #. [object]
 #: data/core/macros/items.cfg:521
+#, fuzzy
+#| msgid ""
+#| "This trident gives merfolk the power to throw lightning at their enemies."
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
-"Tento trojzubec umožňuje vodním lidem střílet na své nepřátele elektrické "
-"blesky!"
+"Tento trojzubec umožňuje mořských lidech svádět blesky na jejich nepřátele."
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:525
@@ -8245,6 +8247,9 @@ msgstr "Skryj plány pro hráče $player"
 msgid "Whiteboard Options"
 msgstr "Nastavení plánovacího módu"
 
+#~ msgid "Use experimental PRNG combat"
+#~ msgstr "Použít experimentální PRNG souboj"
+
 #~ msgid "Trailers"
 #~ msgstr "Upoutávky"
 
@@ -8270,6 +8275,16 @@ msgstr "Nastavení plánovacího módu"
 #~ msgstr ""
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
+
+# text místo klikacího seznamu povýšení v nápovědě
+#~ msgid "an advancement choice"
+#~ msgstr "výběr povýšení"
+
+#~ msgid "scenario_abbreviation^S"
+#~ msgstr "scenario_abbreviation^S"
+
+#~ msgid "campaign_abbreviation^C"
+#~ msgstr "campaign_abbreviation^C"
 
 #~ msgid "mp_game_available_slots^Full"
 #~ msgstr "Plný"
@@ -9467,9 +9482,6 @@ msgstr "Nastavení plánovacího módu"
 
 #~ msgid "scenario settings^Leader"
 #~ msgstr "Vůdce"
-
-#~ msgid "scenario settings^Side"
-#~ msgstr "Strana"
 
 # zlato?
 #~ msgid ""
