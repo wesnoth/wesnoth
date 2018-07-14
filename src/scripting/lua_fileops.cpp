@@ -217,7 +217,7 @@ public:
 		//lua uses '@' to know that this is a file (as opposed to something loaded via loadstring )
 		std::string chunkname = '@' + relativename;
 		LOG_LUA << "starting to read from " << fname << "\n";
-		return  lua_load(L, &lua_filestream::lua_read_data, &lfs, chunkname.c_str(), nullptr);
+		return  lua_load(L, &lua_filestream::lua_read_data, &lfs, chunkname.c_str(), "t");
 	}
 private:
 	char buff_[LUAL_BUFFERSIZE];
