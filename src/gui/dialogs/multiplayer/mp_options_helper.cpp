@@ -129,7 +129,7 @@ int mp_options_helper::remove_nodes_for_type(const std::string& type)
 
 	// Remove each node in reverse, so that in the end we have the position of the first node removed
 	for(auto i = type_node_vector.rbegin(); i != type_node_vector.rend(); i++) {
-		position = options_tree_.remove_node(*i);
+		position = options_tree_.remove_node(*i).second;
 	}
 
 	type_node_vector.clear();

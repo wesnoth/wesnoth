@@ -2858,16 +2858,12 @@ msgstr "Crelanu を倒す"
 
 #. [note]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:83
-#, fuzzy
-#| msgid ""
-#| "Ras-Tabahn is slowed. He will also lose four hitpoints every turn unless "
-#| "this amount is modified by healing."
 msgid ""
 "Ras-Tabahn is slowed and will lose four hitpoints every turn. He will die if "
 "he reaches zero."
 msgstr ""
 "Ras-Tabahn は遅化状態となっています。 また、回復を行わなければ、毎ターン 4HP "
-"を失います。"
+"を失います。HP が 0 となれば、彼は死んでしまいます。"
 
 #. [note]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:86
@@ -2968,18 +2964,12 @@ msgstr "そのうち分かるわい。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:363
-#, fuzzy
-#| msgid ""
-#| "Ras-Tabahn is sick. He is slowed, and will lose four hitpoints every "
-#| "turn. He will die if he reaches zero. Villages will heal him four points, "
-#| "and he will lose only two if he is resting."
 msgid ""
 "Ras-Tabahn is sick. He is slowed, and will lose four hitpoints every turn. "
 "He will die if he reaches zero."
 msgstr ""
-"Ras-Tabahnは病に蝕まれています。彼は遅化状態となり、毎ターンHPを4づつ失いま"
-"す。HPが0になれば彼は死んでしまいます。村にいれば毎ターン4回復でき、身動きを"
-"とらずにいればHPの減少を2に抑えることができます。"
+"Ras-Tabahn は病に冒されています。そのため、遅化状態となり、毎ターン 4HP を失"
+"います。HP が 0 となれば、彼は死んでしまいます。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:391
@@ -4266,6 +4256,3 @@ msgstr "空っぽのオーバーレイ"
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:344
 msgid "Half Void"
 msgstr "半分空っぽ"
-
-#~ msgid "Ancient Lich"
-#~ msgstr "古代リッチ"

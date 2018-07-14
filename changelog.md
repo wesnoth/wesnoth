@@ -6,6 +6,8 @@
    * Dead Water:
      * In 'Tirigaz', take the situation into account of orcs being killed either
        first or by undead.
+   * Delfador's Memoirs:
+     * Fix hero units costing upkeep (issue #3722)
    * Eastern Invasion:
      * Fixed missing prisoners and loss of recallable units in 'Captured'.
    * Northern Rebirth:
@@ -27,13 +29,18 @@
    * New attack animation for the Peasant.
    * Tweaked the Ruffian's attack animation timing.
  ### Language and i18n
-   * Updated translations: Chinese (Simplified), Chinese (Traditional), French,
-     German, Slovak
+   * Updated translations: British English, Chinese (Simplified),
+     Chinese (Traditional), French, German, Hungarian, Japanese, Scottish Gaelic,
+     Slovak, Spanish
+ ### Lua API
+   * Upgrade to Lua 5.3.5.
  ### Multiplayer server
    * Fixed lobby and whisper messages not having a maximum length.
  ### User interface
    * Improved the layout of the Statistics dialog.
    * Allow changing dropdown menu selections with the scrollwheel (FR #3251).
+   * Fixed lobby chat box scrolling to top on a new message if it isn't at the
+     bottom (issue #2789).
    * Fixed the unit preview pane not showing the default race icon when detailing
      a single unit's stats.
    * Sort units secondarily by XP in the unit list dialog.

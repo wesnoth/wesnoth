@@ -9,20 +9,22 @@
 # Fábián Balázs <nermal93@freemail.hu>, 2008.
 # Barthalos Márton <barthalosmarton@yahoo.com>, 2008-2009.
 # Farkas János <mail.janos.farkas@gmail.com>, 2014.
+# Széll András <szell.andris@gmail.com>, 2018.
+# Krutki Tamás <krtamas@0x64.org>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-07-08 04:51-0400\n"
-"PO-Revision-Date: 2014-10-29 22:20+0100\n"
-"Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
+"PO-Revision-Date: 2018-07-11 00:26+0200\n"
+"Last-Translator: Széll András <szell.andris@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.8\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -170,10 +172,8 @@ msgstr "Színes kurzor megjelenítése"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:137
-#, fuzzy
-#| msgid "Show color cursors"
 msgid "Use colored mouse cursors"
-msgstr "Színes kurzor megjelenítése"
+msgstr "Színes egérkurzor használata"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:144
@@ -1527,10 +1527,8 @@ msgstr ""
 
 #. [else]
 #: data/core/macros/deprecated-utils.cfg:43
-#, fuzzy
-#| msgid "No usable weapon"
 msgid "This unit has been renamed to: "
-msgstr "Nincsen használható fegyver"
+msgstr "Ezt az egységet átnevezték: "
 
 #: data/core/macros/deprecated-utils.cfg:95
 msgid "<small>(early finish bonus)</small>"
@@ -3896,12 +3894,10 @@ msgstr "Veszítesz, ha:"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:57
-#, fuzzy
-#| msgid "(this turn left)"
 msgid "(this turn left)"
 msgid_plural "(%d turns left)"
 msgstr[0] "(ez az utolsó kör)"
-msgstr[1] "(ez az utolsó kör)"
+msgstr[1] "(%d kör van hátra)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
@@ -3951,7 +3947,7 @@ msgstr "Leállít"
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:463
 msgid "pause after current move"
-msgstr ""
+msgstr "szüneteltetés az aktuális lépés után"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:478 data/themes/_initial.cfg:635
@@ -3985,17 +3981,13 @@ msgstr "csapat körének lejátszása"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:525 data/themes/_initial.cfg:677
-#, fuzzy
-#| msgid "Next Side"
 msgid "Next Move"
-msgstr "Következő csapat"
+msgstr "Következő lépés"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:526 data/themes/_initial.cfg:678
-#, fuzzy
-#| msgid "play side turn"
 msgid "play single move"
-msgstr "csapat körének lejátszása"
+msgstr "egyetlen lépés lejátszása"
 
 #. [menu]: id=show-what
 #: data/themes/_initial.cfg:538 data/themes/_initial.cfg:690
@@ -4004,20 +3996,18 @@ msgstr "Nézőpont"
 
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:549
-#, fuzzy
-#| msgid "continuous replay"
 msgid "Continue Play"
-msgstr "folyamatos visszajátszás"
+msgstr "Játék folytatása"
 
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:550
 msgid "Exit the replay mode and continue playing normally."
-msgstr ""
+msgstr "Visszajátszás megszakítása, folytatás normál játékmódban"
 
 #. [action]: id=skip-animation, type=checkbox
 #: data/themes/_initial.cfg:562 data/themes/_initial.cfg:702
 msgid "Skip animation"
-msgstr "Megjelenítés átugrása"
+msgstr "Animációk kihagyása"
 
 #. [label]: id=replay-label
 #: data/themes/_initial.cfg:592
@@ -4027,7 +4017,7 @@ msgstr "Visszajátszás"
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:622
 msgid "pause"
-msgstr ""
+msgstr "szünet"
 
 #. [theme]: id=Classic
 #: data/themes/classic.cfg:11
@@ -4142,7 +4132,7 @@ msgstr "véd"
 #. [unit_level]: id=unit-level
 #: data/themes/default.cfg:394
 msgid "statuspanel^lvl"
-msgstr "szt"
+msgstr "sz"
 
 #. [tip]
 #: data/tips.cfg:4
@@ -4961,6 +4951,9 @@ msgid ""
 "of 20 gold. In a campaign, always check if recalling a unit of the same type "
 "may be cheaper."
 msgstr ""
+"Némely egység toborzási költsége meghaladhatja a 20 aranyba kerülő "
+"visszahívást. Hadjáratok során érdemes ellenőrizni, hogy az adott típusú "
+"egység visszahívása olcsóbb-e."
 
 #. [tip]
 #: data/tips.cfg:257
@@ -6159,42 +6152,30 @@ msgid "Turns finished early: "
 msgstr "Kihasználatlan körök: "
 
 #: src/game_initialization/playcampaign.cpp:67
-#, fuzzy
-#| msgid "per turn"
 msgid " per turn"
-msgstr "körönként"
+msgstr " körönként"
 
 #: src/game_initialization/playcampaign.cpp:67
 msgid "Early finish bonus: "
 msgstr "Jutalom a korai befejezésért: "
 
 #: src/game_initialization/playcampaign.cpp:68
-#, fuzzy
-#| msgid "Turn bonus: "
 msgid "Total bonus: "
-msgstr "Kör bónusz: "
+msgstr "Összes bónusz: "
 
 #: src/game_initialization/playcampaign.cpp:70
-#, fuzzy
-#| msgid "Village gold: "
 msgid "Total gold: "
-msgstr "Falvankénti arany: "
+msgstr "Összes arany: "
 
 #: src/game_initialization/playcampaign.cpp:73
-#, fuzzy
-#| msgid "Carry over percentage: "
 msgid "Carryover percentage: "
 msgstr "Továbbviteli százalék: "
 
 #: src/game_initialization/playcampaign.cpp:76
-#, fuzzy
-#| msgid "Bonus Gold: "
 msgid "Bonus gold: "
 msgstr "Bónusz arany: "
 
 #: src/game_initialization/playcampaign.cpp:78
-#, fuzzy
-#| msgid "Retained Gold: "
 msgid "Retained gold: "
 msgstr "Megőrzött arany: "
 
@@ -6293,10 +6274,8 @@ msgid "Unknown scenario: '$scenario|'"
 msgstr "Ismeretlen küldetés: „$scenario|”"
 
 #: src/game_initialization/singleplayer.cpp:42
-#, fuzzy
-#| msgid "No campaigns are available.\n"
 msgid "No campaigns are available."
-msgstr "Nincsenek elérhető hadjáratok.\n"
+msgstr "Nincsenek elérhető hadjáratok."
 
 #: src/game_launcher.cpp:646 src/game_launcher.cpp:664
 msgid "The file you have tried to load is corrupt"
@@ -7707,12 +7686,10 @@ msgid "Total damage"
 msgstr "Összsebzés"
 
 #: src/reports.cpp:986
-#, fuzzy
-#| msgid "Attacker"
 msgid "Attack"
 msgid_plural "Attacks"
-msgstr[0] "Támadó"
-msgstr[1] "Támadó"
+msgstr[0] "Támadás"
+msgstr[1] "Támadások"
 
 #: src/reports.cpp:1122 src/reports.cpp:1174
 msgid "Lawful units: "
@@ -7731,25 +7708,23 @@ msgid "Liminal units: "
 msgstr "Ingatag egységek: "
 
 #: src/reports.cpp:1238
-#, fuzzy
-#| msgid "Turn "
 msgid "Turn Number"
-msgstr "Kör "
+msgstr "Körök száma"
 
 #: src/reports.cpp:1240
 msgid ""
 "When the game reaches the number of turns indicated by the second number, it "
 "will end."
-msgstr ""
+msgstr "A játék véget ér, amikor a körök száma eléri a második értéket."
 
 #: src/reports.cpp:1265
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
-msgstr ""
+msgstr "Egységek toborzására és csapatfenntartásra fordítható arany."
 
 #: src/reports.cpp:1284
 msgid "The fraction of known villages that your side has captured."
-msgstr ""
+msgstr "Az ismert falvak ekkora hányadát foglaltad el."
 
 #: src/reports.cpp:1284
 msgid "Villages"
@@ -7757,13 +7732,11 @@ msgstr "Falvak"
 
 #: src/reports.cpp:1289
 msgid "The total number of units on your side."
-msgstr ""
+msgstr "Az oldaladon álló egységek száma"
 
 #: src/reports.cpp:1289
-#, fuzzy
-#| msgid "units"
 msgid "Units"
-msgstr "egység"
+msgstr "Egységek"
 
 #: src/reports.cpp:1299
 msgid ""
@@ -7772,6 +7745,10 @@ msgid ""
 "total cost of upkeep, including that covered by villages — in other words, "
 "the amount of gold that would be deducted if you lost all villages."
 msgstr ""
+"A körönkénti csapatfenntartási költség. Az első szám azt jelzi, mennyivel "
+"csökken aranyaid száma, a második pedig a falvak támogatásával együtt "
+"számított teljes fenntartási költség - más szóval az az aranymennyiség, "
+"amibe kerülnének csapataid, ha minden falut elvesztenél."
 
 #: src/reports.cpp:1299
 msgid "Upkeep"
@@ -7786,6 +7763,8 @@ msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
 msgstr ""
+"Körönként ennyivel növekszik vagyonod a falvaidból befolyó jövedelem után, "
+"vagy ennyivel csökken egységeid fenntartási költsége miatt."
 
 #: src/reports.cpp:1504
 msgid "Observers:"
@@ -7793,7 +7772,7 @@ msgstr "Megfigyelők:"
 
 #: src/reports.cpp:1544
 msgid "Clock"
-msgstr ""
+msgstr "Óra"
 
 #: src/reports.cpp:1570
 msgid "Countdown until your turn automatically ends."
@@ -8207,8 +8186,6 @@ msgid "chaotic"
 msgstr "törvénytelen"
 
 #: src/units/types.cpp:545 src/units/types.hpp:179
-#, fuzzy
-#| msgid "female^lawful"
 msgid "lawful"
 msgstr "igazságos"
 

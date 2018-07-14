@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-07-08 04:51-0400\n"
-"PO-Revision-Date: 2018-06-08 11:48+0200\n"
+"PO-Revision-Date: 2018-07-10 12:46+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -4449,7 +4449,7 @@ msgstr "Hacer que las unidades se muevan y luchen más deprisa"
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:79
 msgid "Acceleration factor:"
-msgstr ""
+msgstr "Coeficiente de aceleración:"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:84
@@ -4457,6 +4457,9 @@ msgid ""
 "Speed at which unit moves and animations play when ‘Accelerated speed’ is "
 "enabled or when Shift is held down in-game"
 msgstr ""
+"Velocidad a la que se mueve una unidad y a la que se muestran sus "
+"animaciones cuando ‘Velocidad acelerada’ está activada o cuando se mantiene "
+"presionada la tecla Mayúsculas durante la partida"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:100
@@ -6377,10 +6380,8 @@ msgstr ""
 "Intente guardar la captura de pantalla como PNG."
 
 #: src/gui/dialogs/statistics_dialog.cpp:68
-#, fuzzy
-#| msgid "Scenarios"
 msgid "All Scenarios"
-msgstr "Escenarios"
+msgstr "Todos los escenarios"
 
 #: src/gui/dialogs/statistics_dialog.cpp:181
 msgid "Recruits"
@@ -6412,7 +6413,7 @@ msgstr "Recibidas"
 
 #: src/gui/dialogs/statistics_dialog.cpp:255
 msgid "$count|× $name"
-msgstr ""
+msgstr "$count|× $name"
 
 #: src/gui/dialogs/title_screen.cpp:467
 msgid "Choose Test"

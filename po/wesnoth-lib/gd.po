@@ -4425,7 +4425,7 @@ msgstr "Thoir air aonadan gluasad is sabaid nas luaithe"
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:79
 msgid "Acceleration factor:"
-msgstr ""
+msgstr "Factar an luathachaidh:"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:84
@@ -4433,6 +4433,9 @@ msgid ""
 "Speed at which unit moves and animations play when ‘Accelerated speed’ is "
 "enabled or when Shift is held down in-game"
 msgstr ""
+"An t-astar leis a ghluaiseas na h-aonadan ’s a thèid beòthachaidhean a "
+"chluich nuair a bhios “Astar luathaichte” an comas no nuair a bhios Shift "
+"’ga chumail sìos sa gheama"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:100
@@ -6368,10 +6371,8 @@ msgstr ""
 "Feuch an sàbhail thu an glacadh-sgrìn mar PNG ’na àite."
 
 #: src/gui/dialogs/statistics_dialog.cpp:68
-#, fuzzy
-#| msgid "Scenarios"
 msgid "All Scenarios"
-msgstr "Cnàmh-sgeulan"
+msgstr "A h-uile cnàmh-sgeul"
 
 #: src/gui/dialogs/statistics_dialog.cpp:181
 msgid "Recruits"
@@ -6403,7 +6404,7 @@ msgstr "Air gabhail"
 
 #: src/gui/dialogs/statistics_dialog.cpp:255
 msgid "$count|× $name"
-msgstr ""
+msgstr "$count|× $name"
 
 #: src/gui/dialogs/title_screen.cpp:467
 msgid "Choose Test"
@@ -7593,18 +7594,3 @@ msgstr ""
 "Chaidh an iuchair “$deprecated_key” ath-ainmeachadh gu “$key|.” Thèid gach "
 "taic ri “$deprecated_key” a thoirt air falbh leis an tionndadh "
 "$removal_version."
-
-#~ msgid "Speed:"
-#~ msgstr "Luaths:"
-
-#~ msgid "Units move and fight speed"
-#~ msgstr "Astar gluasad is sabaid nan aonadan"
-
-#~ msgid "Scenario"
-#~ msgstr "Cnàmh-sgeul"
-
-#~ msgid "Campaign"
-#~ msgstr "Iomairt"
-
-#~ msgid "No era information found."
-#~ msgstr "Cha deach fiosrachadh linn a lorg."
