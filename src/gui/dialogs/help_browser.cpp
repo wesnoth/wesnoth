@@ -56,7 +56,8 @@ void help_browser::pre_show(window& window)
 	connect_signal_mouse_left_click(next_button,
 		std::bind(&help_browser::on_history_navigate, this, std::ref(window), false));
 
-	topic_tree.set_selection_change_callback(std::bind(&help_browser::on_topic_select, this, std::ref(window)));
+	connect_signal_notify_modified(topic_tree,
+		std::bind(&help_browser::on_topic_select, this, std::ref(window)));
 
 	window.keyboard_capture(&topic_tree);
 

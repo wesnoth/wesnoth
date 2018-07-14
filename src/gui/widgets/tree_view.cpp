@@ -40,7 +40,6 @@ tree_view::tree_view(const implementation::builder_tree_view& builder)
 	, need_layout_(false)
 	, root_node_(new tree_view_node("root", nullptr, *this, std::map<std::string, string_map>()))
 	, selected_item_(nullptr)
-	, selection_change_callback_()
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
 		std::bind(&tree_view::signal_handler_left_button_down, this, _2), event::dispatcher::back_pre_child);

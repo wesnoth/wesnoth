@@ -396,7 +396,8 @@ public:
 		auto left_button = find_widget<button>(&window, "page_left", false, true);
 		auto right_button = find_widget<button>(&window, "page_right", false, true);
 
-		stuff_list->set_selection_change_callback(std::bind(&gamestate_inspector::controller::handle_stuff_list_item_clicked, this, _1));
+		connect_signal_notify_modified(*stuff_list,
+			std::bind(&gamestate_inspector::controller::handle_stuff_list_item_clicked, this, _1));
 
 		connect_signal_mouse_left_click(
 				*copy_button,

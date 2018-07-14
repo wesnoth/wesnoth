@@ -97,11 +97,6 @@ public:
 		return selected_item_;
 	}
 
-	void set_selection_change_callback(std::function<void(widget&)> callback)
-	{
-		selection_change_callback_ = callback;
-	}
-
 	const std::vector<node_definition>& get_node_definitions() const
 	{
 		return node_definitions_;
@@ -137,8 +132,6 @@ private:
 	std::shared_ptr<tree_view_node> root_node_;
 
 	tree_view_node* selected_item_;
-
-	std::function<void(widget&)> selection_change_callback_;
 
 	/**
 	 * Resizes the content.

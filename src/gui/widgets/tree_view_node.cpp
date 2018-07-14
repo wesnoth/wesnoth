@@ -577,7 +577,7 @@ void tree_view_node::signal_handler_left_button_click(const event::ui_event even
 	unfolded_ = unfolded_new;
 	is_folded() ? fold_internal() : unfold_internal();
 
-	fire(event::NOTIFY_MODIFIED, *this, nullptr);
+	fire(event::NOTIFY_MODIFIED, get_tree_view(), nullptr);
 }
 
 void tree_view_node::signal_handler_label_left_button_click(const event::ui_event event, bool& handled, bool& halt)
@@ -601,9 +601,7 @@ void tree_view_node::signal_handler_label_left_button_click(const event::ui_even
 
 	get_tree_view().selected_item_ = this;
 
-	if(get_tree_view().selection_change_callback_) {
-		get_tree_view().selection_change_callback_(get_tree_view());
-	}
+	fire(event::NOTIFY_MODIFIED, get_tree_view(), nullptr);
 }
 
 void tree_view_node::init_grid(grid* g, const std::map<std::string /* widget id */, string_map>& data)
@@ -792,9 +790,7 @@ void tree_view_node::select_node(bool expand_parents)
 
 	get_tree_view().selected_item_ = this;
 
-	if(get_tree_view().selection_change_callback_) {
-		get_tree_view().selection_change_callback_(get_tree_view());
-	}
+	fire(event::NOTIFY_MODIFIED, get_tree_view(), nullptr);
 
 	label_->set_value_bool(true);
 }

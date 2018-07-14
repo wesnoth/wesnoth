@@ -201,7 +201,8 @@ void campaign_selection::pre_show(window& window)
 	/***** Setup campaign tree. *****/
 	tree_view& tree = find_widget<tree_view>(&window, "campaign_tree", false);
 
-	tree.set_selection_change_callback(std::bind(&campaign_selection::campaign_selected, this, std::ref(window)));
+	connect_signal_notify_modified(tree,
+		std::bind(&campaign_selection::campaign_selected, this, std::ref(window)));
 
 	toggle_button& sort_name = find_widget<toggle_button>(&window, "sort_name", false);
 	toggle_button& sort_time = find_widget<toggle_button>(&window, "sort_time", false);
