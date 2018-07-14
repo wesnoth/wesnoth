@@ -97,7 +97,7 @@ private:
 	template<bool(*toggle_getter)(), bool(*toggle_setter)(bool), int(*vol_getter)(), void(*vol_setter)(int)>
 	void initialize_sound_option_group(const std::string& id_suffix);
 
-	std::map<std::string, string_map> get_friends_list_row_data(const preferences::acquaintance& entry);
+	widget_data get_friends_list_row_data(const preferences::acquaintance& entry);
 
 	void add_friend_list_entry(const bool is_friend, text_box& textbox, window& window);
 	void remove_friend_list_entry(listbox& friends_list, text_box& textbox, window& window);

@@ -77,7 +77,7 @@ label_settings::label_settings(display_context& dc)
 			team_name = _("Unknown");
 		}
 
-		string_map subst;
+		widget_item subst;
 		subst["side_number"] = std::to_string(team.side());
 		subst["name"] = team_name;
 
@@ -87,7 +87,7 @@ label_settings::label_settings(display_context& dc)
 
 void label_settings::pre_show(window& window)
 {
-	std::map<std::string, string_map> list_data;
+	widget_data list_data;
 	listbox& cats_listbox = find_widget<listbox>(&window, "label_types", false);
 
 	for(const auto& label_entry : all_labels) {

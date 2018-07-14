@@ -196,7 +196,7 @@ void file_dialog::pre_show(window& window)
 	bookmark_paths_.clear();
 	current_bookmark_ = user_bookmarks_begin_ = -1;
 
-	std::map<std::string, string_map> data;
+	widget_data data;
 
 	for(const auto& pinfo : bookmarks) {
 		bookmark_paths_.push_back(pinfo.path);
@@ -528,7 +528,7 @@ void file_dialog::push_fileview_row(listbox& filelist, const std::string& name, 
 	std::string label = name;
 	utils::ellipsis_truncate(label, FILE_DIALOG_MAX_ENTRY_LENGTH);
 
-	std::map<std::string, string_map> data;
+	widget_data data;
 	data["icon"]["label"] = icon;
 	data["file"]["label"] = label;
 
@@ -667,7 +667,7 @@ void file_dialog::on_bookmark_add_cmd(window& window)
 		user_bookmarks_begin_ = top_bookmark;
 	}
 
-	std::map<std::string, string_map> data;
+	widget_data data;
 	data["bookmark"]["label"] = label;
 	bookmarks_bar.add_row(data);
 

@@ -156,8 +156,8 @@ void addon_list::set_addons(const addons_list& addons)
 
 		addon_vector_.push_back(&addon);
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		if(!tracking_info.can_publish) {
 			item["label"] = addon.display_icon();

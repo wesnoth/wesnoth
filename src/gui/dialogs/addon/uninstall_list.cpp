@@ -66,8 +66,8 @@ void addon_uninstall_list::pre_show(window& window)
 		this->ids_.push_back(id);
 		this->selections_[id] = false;
 
-		std::map<std::string, string_map> data;
-		string_map column;
+		widget_data data;
+		widget_item column;
 
 		column["label"] = title;
 		data.emplace("name", column);

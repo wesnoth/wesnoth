@@ -89,8 +89,8 @@ void help_browser::add_topics_for_section(const help::section& parent_section, t
 tree_view_node& help_browser::add_topic(
 		const std::string& topic_id, const std::string& topic_title, bool expands, tree_view_node& parent)
 {
-	std::map<std::string, string_map> data;
-	string_map item;
+	widget_data data;
+	widget_item item;
 
 	item["label"] = topic_title;
 	data.emplace("topic_name", item);
@@ -169,8 +169,8 @@ void help_browser::on_topic_select(window& window)
 			return;
 		}
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["label"] = format_help_text(topic->parsed_text());
 		data.emplace("topic_text", item);

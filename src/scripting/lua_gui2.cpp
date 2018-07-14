@@ -909,7 +909,7 @@ int intf_add_dialog_tree_node(lua_State* L)
 {
 	const std::string node_type = luaL_checkstring(L, 1);
 	const int insert_pos = luaL_checkinteger(L, 2);
-	static const std::map<std::string, string_map> data;
+	static const gui2::widget_data data;
 	gui2::widget* w = find_widget(L, 3, false);
 
 	if(gui2::tree_view_node* twn = dynamic_cast<gui2::tree_view_node*>(w)) {

@@ -57,7 +57,7 @@ public:
 
 	tree_view_node&
 	add_node(const std::string& id,
-			 const std::map<std::string /* widget id */, string_map>& data,
+			 const widget_data& data,
 			 const int index = -1);
 
 	/**

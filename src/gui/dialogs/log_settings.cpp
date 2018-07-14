@@ -58,8 +58,8 @@ void log_settings::pre_show(window& window)
 
 	for(unsigned int i = 0; i < domain_list_.size(); i++){
 		std::string this_domain = domain_list_[i];
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["label"] = this_domain;
 		data["label"] = item;

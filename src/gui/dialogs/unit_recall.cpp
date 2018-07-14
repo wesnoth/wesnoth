@@ -164,8 +164,8 @@ void unit_recall::pre_show(window& window)
 		std::bind(&unit_recall::show_help, this));
 
 	for(const unit_const_ptr& unit : recall_list_) {
-		std::map<std::string, string_map> row_data;
-		string_map column;
+		widget_data row_data;
+		widget_item column;
 
 		std::string mods = unit->image_mods();
 

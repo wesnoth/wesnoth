@@ -140,10 +140,10 @@ int mp_staging::get_side_node_position(ng::side_engine_ptr side) const
 void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 {
 	tree_view& tree = find_widget<tree_view>(&window, "side_list", false);
-	static const std::map<std::string, string_map> empty_map;
+	static const widget_data empty_map;
 
-	std::map<std::string, string_map> data;
-	string_map item;
+	widget_data data;
+	widget_item item;
 
 	item["label"] = std::to_string(side->index() + 1);
 	data.emplace("side_number", item);
@@ -157,8 +157,8 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 
 	// Check to see whether we've added a toplevel tree node for this team. If not, add one
 	if(team_tree_map_.find(side->team_name()) == team_tree_map_.end()) {
-		std::map<std::string, string_map> tree_data;
-		string_map tree_item;
+		widget_data tree_data;
+		widget_item tree_item;
 
 		tree_item["label"] = (formatter() << _("Team:") << " " << side->user_team_name()).str();
 		tree_data.emplace("tree_view_node_label", tree_item);

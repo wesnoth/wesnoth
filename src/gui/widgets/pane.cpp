@@ -118,7 +118,7 @@ pane::pane(const implementation::builder_pane& builder)
 			event::dispatcher::back_pre_child);
 }
 
-unsigned pane::create_item(const std::map<std::string, string_map>& item_data,
+unsigned pane::create_item(const widget_data& item_data,
 							const std::map<std::string, std::string>& tags)
 {
 	item item { item_id_generator_++, tags, std::dynamic_pointer_cast<grid>(item_builder_->build()) };

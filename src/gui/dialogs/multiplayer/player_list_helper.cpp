@@ -24,7 +24,7 @@ player_list_helper::player_list_helper(window* window)
 	: list_(find_widget<listbox>(window, "player_list", false))
 {
 	// add ourselves as the host
-	std::map<std::string, string_map> data = {
+	widget_data data = {
 		{ "player_type_icon", {{ "label", "misc/leader-crown.png~CROP(12, 1, 15, 15)"}}},
 		{ "player_name",      {{ "label", preferences::login()}}}
 	};
@@ -38,8 +38,8 @@ void player_list_helper::update_list(const config::const_child_itors& users)
 	unsigned i = 0;
 
 	for(const config& user : users) {
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		const std::string name = user["name"];
 		const bool is_you = name == preferences::login();

@@ -341,7 +341,7 @@ void mp_join_game::generate_side_list(window& window)
 
 	tree.clear();
 	team_tree_map_.clear();
-	const std::map<std::string, string_map> empty_map;
+	const widget_data empty_map;
 
 	int side_num = 0;
 	for(const auto& side : get_scenario().child_range("side")) {
@@ -352,8 +352,8 @@ void mp_join_game::generate_side_list(window& window)
 
 		// Check to see whether we've added a toplevel tree node for this team. If not, add one
 		if(team_tree_map_.find(side["team_name"].str()) == team_tree_map_.end()) {
-			std::map<std::string, string_map> data;
-			string_map item;
+			widget_data data;
+			widget_item item;
 
 			item["label"] = (formatter() << _("Team:") << " " << t_string::from_serialized(side["user_team_name"])).str();
 			data.emplace("tree_view_node_label", item);
@@ -364,8 +364,8 @@ void mp_join_game::generate_side_list(window& window)
 			team_tree_map_[side["team_name"].str()] = &team_node;
 		}
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		const std::string color = !side["color"].empty() ? side["color"] : side["side"].str();
 

@@ -120,8 +120,8 @@ void game_load::pre_show(window& window)
 	list.clear();
 
 	for(const auto& game : games_) {
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		std::string name = game.name();
 		utils::ellipsis_truncate(name, 40);
@@ -173,8 +173,8 @@ void game_load::display_savegame(window& window)
 	leader_list.clear();
 
 	for(const auto& leader : summary_.child_range("leader")) {
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		// First, we evaluate whether the leader image as provided exists.
 		// If not, we try getting a binary path-independent path. If that still doesn't

@@ -90,8 +90,8 @@ void campaign_difficulty::pre_show(window& window)
 	window.keyboard_capture(&list);
 
 	for(const config& d : difficulties_.child_range("difficulty")) {
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["label"] = d["image"];
 		data.emplace("icon", item);

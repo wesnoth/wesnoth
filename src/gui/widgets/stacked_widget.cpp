@@ -85,7 +85,7 @@ void
 stacked_widget::finalize(std::vector<builder_grid_const_ptr> widget_builder)
 {
 	assert(generator_);
-	string_map empty_data;
+	widget_item empty_data;
 	for(const auto & builder : widget_builder)
 	{
 		generator_->create_item(-1, builder, empty_data, nullptr);

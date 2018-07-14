@@ -201,7 +201,7 @@ std::pair<T*, config::attribute_value> mp_options_helper::add_node_and_get_widge
 void mp_options_helper::display_custom_options(const std::string& type, int node_position, const config& cfg)
 {
 	// Needed since some compilers don't like passing just {}
-	static const std::map<std::string, string_map> empty_map;
+	static const widget_data empty_map;
 
 	// This ensures that any game, era, or mod with no options doesn't get an entry in the visible_options_
 	// vector and prevents invalid options from different games, era, or mods being created when the options
@@ -216,8 +216,8 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 	node_vector& type_node_vector = node_data_map_[type].nodes;
 
 	for(const auto& options : cfg.child_range("options")) {
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["label"] = cfg["name"];
 		data.emplace("tree_view_node_label", item);

@@ -77,8 +77,8 @@ void editor_set_starting_position::pre_show(window& window)
 	listbox& list = find_widget<listbox>(&window, "listbox", false);
 	window.keyboard_capture(&list);
 
-	std::map<std::string, string_map> data;
-	string_map column;
+	widget_data data;
+	widget_item column;
 
 	column["label"] = _("player^None");
 	data.emplace("player", column);

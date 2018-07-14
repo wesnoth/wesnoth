@@ -66,7 +66,7 @@ void sub_player_list::init(window& w, const std::string& lbl, const bool unfolde
 {
 	tree_view& parent_tree = find_widget<tree_view>(&w, "player_tree", false);
 
-	std::map<std::string, string_map> tree_group_item;
+	widget_data tree_group_item;
 	tree_group_item["tree_view_node_label"]["label"] = lbl;
 
 	tree = &parent_tree.add_node("player_group", tree_group_item);
@@ -172,11 +172,11 @@ void mp_lobby::post_build(window& win)
 
 namespace
 {
-void modify_grid_with_data(grid* grid, const std::map<std::string, string_map>& map)
+void modify_grid_with_data(grid* grid, const widget_data& map)
 {
 	for(const auto& v : map) {
 		const std::string& key = v.first;
-		const string_map& strmap = v.second;
+		const widget_item& strmap = v.second;
 
 		widget* w = grid->find(key, false);
 		if(!w) {
@@ -396,10 +396,10 @@ void mp_lobby::update_gamelist_header()
 	find_widget<label>(gamelistbox_, "map", false).set_label(games_string);
 }
 
-std::map<std::string, string_map> mp_lobby::make_game_row_data(const mp::game_info& game)
+widget_data mp_lobby::make_game_row_data(const mp::game_info& game)
 {
-	std::map<std::string, string_map> data;
-	string_map item;
+	widget_data data;
+	widget_item item;
 
 	item["use_markup"] = "true";
 
@@ -648,8 +648,8 @@ void mp_lobby::update_playerlist()
 
 		assert(target_list->tree);
 
-		string_map tree_group_field;
-		std::map<std::string, string_map> tree_group_item;
+		widget_item tree_group_field;
+		widget_data tree_group_item;
 
 		/*** Add tree item ***/
 		tree_group_field["label"] = icon_ss.str();

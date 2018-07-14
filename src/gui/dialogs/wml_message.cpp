@@ -95,7 +95,7 @@ void wml_message_base::pre_show(window& window)
 	listbox& options = find_widget<listbox>(&window, "input_list", true);
 
 	if(!option_list_.empty()) {
-		std::map<std::string, string_map> data;
+		widget_data data;
 		for(const wml_message_option& item : option_list_) {
 			// Add the data.
 			data["icon"]["label"] = item.image();

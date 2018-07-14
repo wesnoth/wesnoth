@@ -115,8 +115,8 @@ void unit_create::pre_show(window& window)
 
 		units_.push_back(&i.second);
 
-		std::map<std::string, string_map> row_data;
-		string_map column;
+		widget_data row_data;
+		widget_item column;
 
 		column["label"] = units_.back()->race()->plural_name();
 		row_data.emplace("race", column);

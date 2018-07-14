@@ -108,7 +108,7 @@ void editor_generate_map::pre_show(window& window)
 	listbox& list = find_widget<listbox>(&window, "generators_list", false);
 	window.keyboard_capture(&list);
 
-	std::map<std::string, string_map> lrow;
+	widget_data lrow;
 	for(const auto & gen : map_generators_)
 	{
 		assert(gen);

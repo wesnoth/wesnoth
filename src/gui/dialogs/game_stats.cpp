@@ -79,8 +79,8 @@ void game_stats::pre_show(window& window)
 			continue;
 		}
 
-		std::map<std::string, string_map> row_data_stats;
-		string_map column_stats;
+		widget_data row_data_stats;
+		widget_item column_stats;
 
 		const bool known = viewing_team_.knows_about_team(team.side() - 1);
 		const bool enemy = viewing_team_.is_enemy(team.side());
@@ -161,8 +161,8 @@ void game_stats::pre_show(window& window)
 		//
 		// Settings list
 		//
-		std::map<std::string, string_map> row_data_settings;
-		string_map column_settings;
+		widget_data row_data_settings;
+		widget_item column_settings;
 
 		column_settings["use_markup"] = "true";
 

@@ -120,8 +120,8 @@ void drop_down_menu::pre_show(window& window)
 	 * [/entry]
 	 */
 	for(const auto& entry : items_) {
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		const bool has_image_key = entry.has_attribute("image");
 		const bool has_ckbox_key = entry.has_attribute("checkbox");

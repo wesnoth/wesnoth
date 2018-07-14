@@ -57,7 +57,7 @@ public:
 	/*
 	 * Creates a new item.
 	 */
-	unsigned create_item(const std::map<std::string, string_map>& item_data,
+	unsigned create_item(const widget_data& item_data,
 						 const std::map<std::string, std::string>& tags);
 
 	/** See @ref widget::place. */

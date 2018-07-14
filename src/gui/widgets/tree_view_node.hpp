@@ -47,7 +47,7 @@ public:
 			const std::string& id,
 			tree_view_node* parent_node,
 			tree_view& parent_tree_view,
-			const std::map<std::string /* widget id */, string_map>& data);
+			const widget_data& data);
 
 	~tree_view_node();
 
@@ -67,7 +67,7 @@ public:
 	 *                            0 == begin, -1 == end.
 	 */
 	tree_view_node& add_child(const std::string& id,
-			const std::map<std::string /* widget id */, string_map>& data,
+			const widget_data& data,
 			const int index = -1)
 	{
 		return add_child_impl(std::make_shared<tree_view_node>(id, this, get_tree_view(), data), index);
@@ -99,9 +99,7 @@ public:
 	 *                            Having both empty and non-empty id's gives
 	 *                            undefined behavior.
 	 */
-	tree_view_node&
-	add_sibling(const std::string& id,
-				const std::map<std::string /* widget id */, string_map>& data)
+	tree_view_node& add_sibling(const std::string& id, const widget_data& data)
 	{
 		assert(!is_root_node());
 		return parent_node().add_child(id, data);
@@ -305,9 +303,7 @@ private:
 												bool& handled,
 												bool& halt);
 
-	void
-	init_grid(grid* grid,
-			  const std::map<std::string /* widget id */, string_map>& data);
+	void init_grid(grid* grid, const widget_data& data);
 
 	/**
 	 * Returns the control_type of the @ref tree_view_node.

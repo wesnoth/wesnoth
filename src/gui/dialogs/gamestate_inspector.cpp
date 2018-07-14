@@ -164,7 +164,7 @@ public:
 
 	stuff_list_adder& widget(const std::string& ref, const std::string& label, bool markup = false)
 	{
-		string_map& item = data_[ref];
+		widget_item& item = data_[ref];
 		item["label"] = label;
 		item["use_markup"] = utils::bool_string(markup);
 		return *this;
@@ -173,7 +173,7 @@ public:
 private:
 	tree_view_node& stuff_list_;
 	const std::string defn_;
-	std::map<std::string, string_map> data_;
+	widget_data data_;
 };
 
 class gamestate_inspector::view

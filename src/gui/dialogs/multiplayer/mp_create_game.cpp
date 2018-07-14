@@ -206,8 +206,8 @@ void mp_create_game::pre_show(window& win)
 
 	const auto& activemods = preferences::modifications();
 	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["label"] = mod->name;
 		data.emplace("mod_name", item);
@@ -608,8 +608,8 @@ void mp_create_game::display_games_of_type(window& window, ng::level::TYPE type,
 			continue;
 		}
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		if(type == ng::level::TYPE::CAMPAIGN || type == ng::level::TYPE::SP_CAMPAIGN) {
 			item["label"] = game->icon();

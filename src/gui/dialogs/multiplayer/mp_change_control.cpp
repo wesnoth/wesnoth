@@ -97,8 +97,8 @@ void mp_change_control::pre_show(window& window)
 
 		sides_.push_back(side);
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		std::string side_str = VGETTEXT("Side $side", {{"side", std::to_string(side)}});
 		side_str = font::span_color(team::get_side_color(side)) + side_str + "</span>";
@@ -135,8 +135,8 @@ void mp_change_control::pre_show(window& window)
 	for(const std::string& nick : temp_nicks) {
 		nicks_.push_back(nick);
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["id"] = nick;
 		item["label"] = nick;

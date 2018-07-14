@@ -92,8 +92,8 @@ void faction_select::pre_show(window& window)
 	for(const config *s : flg_manager_.choosable_factions()) {
 		const config& side = *s;
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		const std::string name = side["name"].str();
 		// flag_rgb here is unrelated to any handling in the unit class

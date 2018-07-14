@@ -1036,7 +1036,7 @@ void selection::select(grid& grid, const bool select)
 }
 
 void selection::init(grid* g,
-		const std::map<std::string /* widget id */, string_map>& data,
+		const widget_data& data,
 		const std::function<void(widget&)>& callback)
 {
 	for(unsigned row = 0; row < g->get_rows(); ++row) {
@@ -1051,7 +1051,7 @@ void selection::init(grid* g,
 			if(btn) {
 				connect_signal_notify_modified(*btn, std::bind(callback, _1));
 
-				std::map<std::string, string_map>::const_iterator itor = data.find(btn->id());
+				widget_data::const_iterator itor = data.find(btn->id());
 
 				if(itor == data.end()) {
 					itor = data.find("");
@@ -1073,7 +1073,7 @@ void selection::init(grid* g,
 }
 
 void show::init(grid* grid,
-		const std::map<std::string /* widget id */, string_map>& data,
+		const widget_data& data,
 		const std::function<void(widget&)>& callback)
 {
 	assert(!callback);

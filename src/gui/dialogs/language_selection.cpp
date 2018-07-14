@@ -64,7 +64,7 @@ void language_selection::pre_show(window& window)
 	const language_def& current_language = get_language();
 	for(const auto & lang : languages)
 	{
-		std::map<std::string, string_map> data;
+		widget_data data;
 
 		data["language"]["label"] = lang.language;
 

@@ -76,7 +76,7 @@ public:
 	 * @param index               The item before which to add the new item,
 	 *                            0 == begin, -1 == end.
 	 */
-	grid& add_row(const string_map& item, const int index = -1);
+	grid& add_row(const widget_item& item, const int index = -1);
 
 	/**
 	 * Adds single row to the grid.
@@ -95,7 +95,7 @@ public:
 	 * @param index               The item before which to add the new item,
 	 *                            0 == begin, -1 == end.
 	 */
-	grid& add_row(const std::map<std::string /* widget id */, string_map>& data, const int index = -1);
+	grid& add_row(const widget_data& data, const int index = -1);
 
 	/**
 	 * Removes a row in the listbox.
@@ -357,7 +357,7 @@ private:
 	 */
 	void finalize(builder_grid_const_ptr header,
 			builder_grid_const_ptr footer,
-			const std::vector<std::map<std::string, string_map>>& list_data);
+			const std::vector<widget_data>& list_data);
 	/**
 	 * Contains a pointer to the generator.
 	 *
@@ -465,7 +465,7 @@ struct builder_listbox : public builder_styled_widget
 	 * Contains a vector with the data to set in every cell, it's used to
 	 * serialize the data in the config, so the config is no longer required.
 	 */
-	std::vector<std::map<std::string, string_map>> list_data;
+	std::vector<widget_data> list_data;
 
 	bool has_minimum_, has_maximum_;
 };
@@ -489,7 +489,7 @@ struct builder_horizontal_listbox : public builder_styled_widget
 	 * Contains a vector with the data to set in every cell, it's used to
 	 * serialize the data in the config, so the config is no longer required.
 	 */
-	std::vector<std::map<std::string, string_map>> list_data;
+	std::vector<widget_data> list_data;
 
 	bool has_minimum_, has_maximum_;
 };
@@ -513,7 +513,7 @@ struct builder_grid_listbox : public builder_styled_widget
 	 * Contains a vector with the data to set in every cell, it's used to
 	 * serialize the data in the config, so the config is no longer required.
 	 */
-	std::vector<std::map<std::string, string_map>> list_data;
+	std::vector<widget_data> list_data;
 
 	bool has_minimum_, has_maximum_;
 };

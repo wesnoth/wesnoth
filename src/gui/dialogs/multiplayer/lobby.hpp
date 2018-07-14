@@ -77,7 +77,7 @@ protected:
 
 	void update_gamelist_filter();
 
-	std::map<std::string, string_map> make_game_row_data(const mp::game_info& game);
+	widget_data make_game_row_data(const mp::game_info& game);
 
 	void adjust_game_row_contents(const mp::game_info& game, grid* grid, bool add_callbacks = true);
 

@@ -49,8 +49,7 @@ public:
 	 * @param data                Map with the key value pairs to set the
 	 *                            members.
 	 */
-	void set_child_members(
-			const std::map<std::string /* widget id */, string_map>& data);
+	void set_child_members(const widget_data& data);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 

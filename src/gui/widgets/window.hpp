@@ -36,7 +36,6 @@
 #include <vector>
 
 class CVideo;
-class surface;
 struct point;
 
 namespace gui2

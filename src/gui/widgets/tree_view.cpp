@@ -38,7 +38,7 @@ tree_view::tree_view(const implementation::builder_tree_view& builder)
 	, node_definitions_(builder.nodes)
 	, indentation_step_size_(0)
 	, need_layout_(false)
-	, root_node_(new tree_view_node("root", nullptr, *this, std::map<std::string, string_map>()))
+	, root_node_(new tree_view_node("root", nullptr, *this, widget_data()))
 	, selected_item_(nullptr)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
@@ -53,7 +53,7 @@ tree_view::~tree_view()
 }
 
 tree_view_node& tree_view::add_node(
-		const std::string& id, const std::map<std::string /* widget id */, string_map>& data, const int index)
+		const std::string& id, const widget_data& data, const int index)
 {
 	return get_root_node().add_child(id, data, index);
 }

@@ -154,8 +154,8 @@ void debug_clock::update_time(const bool force)
 	}
 
 	const std::map<std::string, std::string> tags;
-	std::map<std::string, string_map> item_data;
-	string_map item;
+	widget_data item_data;
+	widget_item item;
 
 	item["label"] = std::to_string(second_stamp);
 	item_data.emplace("time", item);

@@ -93,8 +93,8 @@ void core_selection::pre_show(window& window)
 	for(const auto & core : cores_)
 	{
 		/*** Add list item ***/
-		string_map list_item;
-		std::map<std::string, string_map> list_item_item;
+		widget_item list_item;
+		widget_data list_item_item;
 
 		list_item["label"] = core["image"];
 		list_item_item.emplace("image", list_item);
@@ -106,8 +106,8 @@ void core_selection::pre_show(window& window)
 		assert(grid);
 
 		/*** Add detail item ***/
-		string_map detail_item;
-		std::map<std::string, string_map> detail_page;
+		widget_item detail_item;
+		widget_data detail_page;
 
 		detail_item["label"] = core["description"];
 		detail_item["use_markup"] = "true";

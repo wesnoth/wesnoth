@@ -92,8 +92,8 @@ void statistics_dialog::add_stat_row(window& window, const std::string& type, co
 {
 	listbox& stat_list = find_widget<listbox>(&window, "stats_list_main", false);
 
-	std::map<std::string, string_map> data;
-	string_map item;
+	widget_data data;
+	widget_item item;
 
 	item["label"] = type;
 	data.emplace("stat_type", item);
@@ -120,8 +120,8 @@ void statistics_dialog::add_damage_row(
 {
 	listbox& damage_list = find_widget<listbox>(&window, "stats_list_damage", false);
 
-	std::map<std::string, string_map> data;
-	string_map item;
+	widget_data data;
+	widget_item item;
 
 	item["label"] = type;
 	data.emplace("damage_type", item);
@@ -239,8 +239,8 @@ void statistics_dialog::on_primary_list_select(window& window)
 			continue;
 		}
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["label"] = (formatter() << type->image() << "~RC(" << type->flag_rgb() << ">" << current_team_.color() << ")").str();
 		data.emplace("unit_image", item);

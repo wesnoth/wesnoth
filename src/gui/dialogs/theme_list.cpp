@@ -60,8 +60,8 @@ void theme_list::pre_show(window& window)
 
 	for(const auto & t : themes_)
 	{
-		std::map<std::string, string_map> data;
-		string_map column;
+		widget_data data;
+		widget_item column;
 
 		std::string theme_name = t.name;
 		if(theme_name.empty()) {

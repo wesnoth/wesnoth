@@ -34,7 +34,7 @@ namespace gui2
 tree_view_node::tree_view_node(const std::string& id,
 		tree_view_node* parent_node,
 		tree_view& parent_tree_view,
-		const std::map<std::string /* widget id */, string_map>& data)
+		const widget_data& data)
 	: widget()
 	, parent_node_(parent_node)
 	, tree_view_(&parent_tree_view)
@@ -604,7 +604,7 @@ void tree_view_node::signal_handler_label_left_button_click(const event::ui_even
 	fire(event::NOTIFY_MODIFIED, get_tree_view(), nullptr);
 }
 
-void tree_view_node::init_grid(grid* g, const std::map<std::string /* widget id */, string_map>& data)
+void tree_view_node::init_grid(grid* g, const widget_data& data)
 {
 	assert(g);
 

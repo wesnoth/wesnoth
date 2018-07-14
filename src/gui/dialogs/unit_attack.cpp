@@ -162,8 +162,8 @@ void unit_attack::pre_show(window& window)
 			<< defw_specials << "\n"
 			<< font::span_color(d_cth_color) << defender.chance_to_hit << "%</span>";
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["use_markup"] = "true";
 

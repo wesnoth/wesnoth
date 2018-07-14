@@ -94,8 +94,8 @@ void unit_list::pre_show(window& window)
 	window.keyboard_capture(&list);
 
 	for(const unit_const_ptr& unit : unit_list_) {
-		std::map<std::string, string_map> row_data;
-		string_map column;
+		widget_data row_data;
+		widget_item column;
 
 		column["use_markup"] = "true";
 

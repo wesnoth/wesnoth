@@ -121,7 +121,7 @@ game_version::game_version()
 
 void game_version::pre_show(window& window)
 {
-	string_map i18n_syms;
+	widget_item i18n_syms;
 
 	//
 	// General information.
@@ -201,7 +201,7 @@ void game_version::pre_show(window& window)
 	// Build info tab.
 	//
 
-	std::map<std::string, string_map> list_data;
+	widget_data list_data;
 
 	listbox& deps_listbox
 			= find_widget<listbox>(&window, "deps_listbox", false);

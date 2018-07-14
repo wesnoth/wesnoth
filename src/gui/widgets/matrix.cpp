@@ -88,7 +88,7 @@ matrix::matrix(const implementation::builder_matrix& builder)
 }
 
 unsigned
-matrix::create_item(const std::map<std::string, string_map>& item_data,
+matrix::create_item(const widget_data& item_data,
 					 const std::map<std::string, std::string>& tags)
 {
 	return pane_->create_item(item_data, tags);

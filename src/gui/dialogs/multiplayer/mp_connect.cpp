@@ -93,8 +93,8 @@ void mp_server_list::pre_show(window& window)
 	for(const auto & server : pref_servers)
 	{
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["label"] = server.name;
 		data.emplace("name", item);

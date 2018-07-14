@@ -86,7 +86,7 @@ unsigned toggle_panel::num_states() const
 }
 
 void toggle_panel::set_child_members(
-		const std::map<std::string /* widget id */, string_map>& data)
+		const widget_data& data)
 {
 	for(const auto & item : data)
 	{
