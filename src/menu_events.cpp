@@ -284,9 +284,7 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 
 	gui2::dialogs::unit_recruit dlg(sample_units, board().get_team(side_num));
 
-	dlg.show();
-
-	if(dlg.get_retval() == gui2::retval::OK) {
+	if(dlg.show()) {
 		map_location recruit_hex = last_hex;
 		do_recruit(sample_units[dlg.get_selected_index()]->id(), side_num, recruit_hex);
 	}
@@ -382,9 +380,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 
 	gui2::dialogs::unit_recall dlg(recall_list_team, current_team);
 
-	dlg.show();
-
-	if(dlg.get_retval() != gui2::retval::OK) {
+	if(!dlg.show()) {
 		return;
 	}
 

@@ -24,7 +24,6 @@
 #include "gettext.hpp"                       // for _
 #include "gui/dialogs/transient_message.hpp" // for show_transient_message
 #include "gui/dialogs/unit_attack.hpp"       // for unit_attack
-#include "gui/widgets/retval.hpp"            // for enum
 #include "language.hpp"                      // for string_table, symbol_table
 #include "log.hpp"                           // for LOG_STREAM, logger, etc
 #include "map/map.hpp"                       // for gamemap
@@ -994,9 +993,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 
 	gui2::dialogs::unit_attack dlg(attacker, defender, bc_vector, best);
 
-	dlg.show();
-
-	if(dlg.get_retval() == gui2::retval::OK) {
+	if(dlg.show()) {
 		return dlg.get_selected_weapon();
 	}
 

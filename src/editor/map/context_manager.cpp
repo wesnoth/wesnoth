@@ -685,9 +685,8 @@ void context_manager::generate_map_dialog()
 
 	gui2::dialogs::editor_generate_map dialog(map_generators_);
 	dialog.select_map_generator(last_map_generator_);
-	dialog.show();
 
-	if(dialog.get_retval() == gui2::retval::OK) {
+	if(dialog.show()) {
 		std::string map_string;
 		map_generator* const map_generator = dialog.get_selected_map_generator();
 		try {

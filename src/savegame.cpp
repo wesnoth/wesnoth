@@ -100,7 +100,7 @@ bool loadgame::show_difficulty_dialog()
 		difficulty_dlg.show();
 
 		// Return if canceled, since otherwise load_data_.difficulty will be set to 'CANCEL'
-		if (difficulty_dlg.get_retval() != gui2::retval::OK) {
+		if(!difficulty_dlg.show()) {
 			return false;
 		}
 
