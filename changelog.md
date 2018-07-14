@@ -42,6 +42,8 @@
  ### Miscellaneous and bug fixes
 
 ## Version 1.14.3+dev
+ ### Security Fixes
+   * Fixed lua can escape sandbox through load/loadstring (CVE-2018-1999023).
  ### Add-ons server
    * Made it so plain-text .po catalogues in add-ons are detected and added to
      the list of translations for them.

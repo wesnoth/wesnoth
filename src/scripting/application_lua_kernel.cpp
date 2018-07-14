@@ -171,6 +171,7 @@ application_lua_kernel::thread * application_lua_kernel::load_script_from_string
 	DBG_LUA << "created thread: status = " << lua_status(T) << (lua_status(T) == LUA_OK ? " == OK" : " == ?") << "\n";
 	DBG_LUA << "loading script from string:\n<<\n" << prog << "\n>>\n";
 
+	// note: this is unsafe for umc as it allows loading lua baytecode, but umc cannot add application lua kernel scipts.
 	int errcode = luaL_loadstring(T, prog.c_str());
 	if (errcode != LUA_OK) {
 		const char * err_str = lua_tostring(T, -1);
