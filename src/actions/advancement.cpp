@@ -26,7 +26,6 @@
 #include "game_data.hpp" //resources::gamedata->phase()
 #include "gettext.hpp"
 #include "gui/dialogs/unit_advance.hpp"
-#include "gui/widgets/retval.hpp" //gui2::retval::OK
 #include "log.hpp"
 #include "play_controller.hpp" //resources::controller
 #include "random.hpp"
@@ -78,9 +77,7 @@ namespace
 		if (previews.size() > 1 || always_display) {
 			gui2::dialogs::unit_advance dlg(previews, num_real_advances);
 
-			dlg.show();
-
-			if (dlg.get_retval() == gui2::retval::OK) {
+			if(dlg.show()) {
 				return dlg.get_selected_index();
 			}
 
