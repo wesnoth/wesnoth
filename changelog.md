@@ -3638,7 +3638,7 @@
        2 different guardians and a coward, healer support, lurkers,
        messenger escort, patrol, protect and move a unit, and 2 alternative
        recruiting strategies.
-     * Documentation at http://wiki.wesnoth.org/Micro_AIs
+     * Documentation at https://wiki.wesnoth.org/Micro_AIs
    * New leader_ignores_keep AI aspect that lets AI leader take part in the same
      AI moves as the non-leader units.
    * Rename passive_leader_shares_keep candidate action to leader_shares_keep.
@@ -6110,7 +6110,7 @@
    * Event "turn refresh" is now fired at turn 1 too
  ### Miscellaneous and bugfixes
    * Using a hotkey to reload during an attack no longer disables the mouse
-     (http://www.wesnoth.org/forum/viewtopic.php?f=4&t=27616)
+     (https://www.wesnoth.org/forum/viewtopic.php?f=4&t=27616)
    * Removed some unused Drake macros from animation_utils
    * Add recruitment anims for the Sky and Hurricane Drakes
    * Removed the old stats code (Debian bug #555276, CVE-2007-2383,
@@ -6371,7 +6371,7 @@
      pre-srng or with srng disabled as well can work without OOS. This is a
      testing feature that will likely be removed prior to 1.8.
    * Room support via /join and /room commands, better support in the
-     experimental new lobby. See http://www.wesnoth.org/wiki/MultiplayerRooms
+     experimental new lobby. See https://www.wesnoth.org/wiki/MultiplayerRooms
      for details.
  ### Multiplayer server
    * Added server-side RNG support. Old clients can still play as normal.
@@ -7562,7 +7562,7 @@
      improvements.
    * Built by default in scons, cmake and autotools, if building manually
      see RELEASE_NOTES.
-   * See http://www.wesnoth.org/wiki/Editor2 for details and known issues.
+   * See https://www.wesnoth.org/wiki/Editor2 for details and known issues.
  ### Language and i18n
    * updated fonts: DejaVuSans 2.26
    * updated translations: Chinese (Traditional), Danish, Finnish, Galician,
@@ -7981,7 +7981,7 @@
      * Fix graphic artifact bug #11438
  ### Formula AI
    * added support for Formula AI language, more info available at:
-     http://www.wesnoth.org/wiki/FormulaAI
+     https://www.wesnoth.org/wiki/FormulaAI
  ### graphics
    * Fixed broken TC on transport-galleon and drake walking corpse graphics
    * New portraits: Elvish Sorceress
@@ -9893,7 +9893,7 @@
  ### terrain system
    * The entire underlaying system has been converted to a new system,
      this might render some UMC broken, read this forum thread for more details
-     http://www.wesnoth.org/forum/viewtopic.php?t=14910
+     https://www.wesnoth.org/forum/viewtopic.php?t=14910
    * Terrain of the starting position can be changed in the map,
      the automatic conversion to a keep is no longer done
    * New definition for the maps in terrain-graphics
@@ -11231,7 +11231,7 @@
      * increased the holy resistance of the scuttlefoot movetype from 0% to 20%
      * made Fireball, Gate, Galeons & Watch Tower unpoisonable and unplaguable
      * recosting and minor stats changes for many level 2+ units:
-       http://www.wesnoth.org/forum/viewtopic.php?p=121154#121154
+       https://www.wesnoth.org/forum/viewtopic.php?p=121154#121154
  * user interface:
    * added font colors to theme
    * reorganized side-bar information
@@ -11291,7 +11291,7 @@
  * various other changes:
    * --with-preferences-dir configure option for coexistence of multiple versions
    * experimental Python API for AI.
-     See http://www.wesnoth.org/wiki/ReferencePythonAPI for more information.
+     See https://www.wesnoth.org/wiki/ReferencePythonAPI for more information.
    * various bug fixes and code cleanups
    * better support for MacOSX filesystems
 
@@ -14207,7 +14207,7 @@
  * added some explanatory tooltips for some unit attributes on sidebar
  * added in flag to show whose turn it currently is
  * added end turn confirmation when units can still move (requires
-   editing preferences-file - see WesnothPreferences on http://wiki.wesnoth.org for more information)
+   editing preferences-file - see WesnothPreferences on https://wiki.wesnoth.org for more information)
  * added 'unit list' to context menu
  * restored 'save game' in the context menu (#7172)
  * multiplayer improvements:
