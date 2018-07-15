@@ -1395,7 +1395,11 @@ texture create_texture_from_disk(const locator& loc)
 {
 	switch(loc.get_type()) {
 	case locator::FILE:
-		return create_texture_from_file(loc);
+		if(loc.is_data_uri()){
+			return texture(load_image_data_uri(loc));
+		} else {
+			return create_texture_from_file(loc);
+		}
 	case locator::SUB_FILE:
 		return create_texture_from_sub_file(loc);
 	default:
