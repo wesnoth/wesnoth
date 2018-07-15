@@ -1198,12 +1198,12 @@ void window::signal_handler_sdl_key_down(const event::ui_event event,
 
 void window::signal_handler_message_show_tooltip(const event::ui_event event,
 												  bool& handled,
-												  event::message& message)
+												  const event::message& message)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	event::message_show_tooltip& request
-			= dynamic_cast<event::message_show_tooltip&>(message);
+	const event::message_show_tooltip& request
+			= dynamic_cast<const event::message_show_tooltip&>(message);
 
 	dialogs::tip::show(tooltip_.id, request.message, request.location, request.source_rect);
 
@@ -1212,12 +1212,12 @@ void window::signal_handler_message_show_tooltip(const event::ui_event event,
 
 void window::signal_handler_message_show_helptip(const event::ui_event event,
 												  bool& handled,
-												  event::message& message)
+												  const event::message& message)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	event::message_show_helptip& request
-			= dynamic_cast<event::message_show_helptip&>(message);
+	const event::message_show_helptip& request
+			= dynamic_cast<const event::message_show_helptip&>(message);
 
 	dialogs::tip::show(helptip_.id, request.message, request.location, request.source_rect);
 

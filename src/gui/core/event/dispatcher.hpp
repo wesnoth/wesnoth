@@ -239,7 +239,7 @@ using signal_notification_function = dispatcher_callback_func<void*>;
  * Extra parameters:
  * 5. The applicable data this event requires.
  */
-using signal_message_function = dispatcher_callback_func<message&>;
+using signal_message_function = dispatcher_callback_func<const message&>;
 
 /**
  * Raw event callback function signature.
@@ -389,7 +389,7 @@ public:
 	 */
 	bool fire(const ui_event event,
 			  widget& target,
-			  message& msg);
+			  const message& msg);
 
 	/**
 	 * Fires an event that's a raw SDL event

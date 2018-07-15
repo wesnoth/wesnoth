@@ -124,8 +124,7 @@ bool dispatcher::fire(const ui_event event, widget& target, void*)
 	return fire_event<signal_notification_function>(event, this, &target, nullptr);
 }
 
-// TODO: is there any reason msg isn't a const reference?
-bool dispatcher::fire(const ui_event event, widget& target, message& msg)
+bool dispatcher::fire(const ui_event event, widget& target, const message& msg)
 {
 	assert(is_message_event(event));
 	return fire_event<signal_message_function>(event, this, &target, msg);

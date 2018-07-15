@@ -720,11 +720,11 @@ private:
 
 	void signal_handler_message_show_tooltip(const event::ui_event event,
 											 bool& handled,
-											 event::message& message);
+											 const event::message& message);
 
 	void signal_handler_message_show_helptip(const event::ui_event event,
 											 bool& handled,
-											 event::message& message);
+											 const event::message& message);
 
 	void signal_handler_request_placement(const event::ui_event event,
 										  bool& handled);
