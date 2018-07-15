@@ -111,7 +111,7 @@ typedef std::function<void(widget& dispatcher,
 							 const ui_event event,
 							 bool& handled,
 							 bool& halt,
-							 message& message)> signal_message_function;
+							 const message& message)> signal_message_function;
 
 /**
  * Callback function signature.
@@ -263,7 +263,7 @@ public:
 	 */
 	bool fire(const ui_event event,
 			  widget& target,
-			  message& msg);
+			  const message& msg);
 
 	/**
 	 * Fires an event that's a raw SDL event
