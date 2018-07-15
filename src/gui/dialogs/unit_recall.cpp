@@ -18,6 +18,7 @@
 #include "font/text_formatting.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/log.hpp"
+#include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/button.hpp"
@@ -156,6 +157,10 @@ void unit_recall::pre_show(window& window)
 	window.add_to_keyboard_chain(&list);
 
 	connect_signal_mouse_left_click(
+		find_widget<button>(&window, "rename", false),
+		std::bind(&unit_recall::rename_unit, this, std::ref(window)));
+
+	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "dismiss", false),
 		std::bind(&unit_recall::dismiss_unit, this, std::ref(window)));
 
@@ -235,6 +240,35 @@ void unit_recall::pre_show(window& window)
 	list_item_clicked(window);
 }
 
+void unit_recall::rename_unit(window& window)
+{
+	listbox& list = find_widget<listbox>(&window, "recall_list", false);
+
+	const int index = list.get_selected_row();
+	unit& selected_unit = const_cast<unit&>(*recall_list_[index].get());
+
+	std::string name = selected_unit.name();
+	const std::string dialog_title(N_("Rename Unit"));
+	const std::string dialog_label(N_("Name:"));
+
+	if(gui2::dialogs::edit_text::execute(dialog_title, dialog_label, name)) {
+		selected_unit.rename(name);
+
+		find_widget<label>(list.get_row_grid(index), "unit_name", false).set_label(name);
+
+		filter_options_.erase(filter_options_.begin() + index);
+		std::ostringstream filter_text;
+		filter_text << selected_unit.type_name() << " " << name << " " << std::to_string(selected_unit.level());
+		for(const std::string& trait : selected_unit.trait_names()) {
+			filter_text << " " << trait;
+		}
+		filter_options_.insert(filter_options_.begin() + index, filter_text.str());
+
+		list_item_clicked(window);
+		window.invalidate_layout();
+	}
+}
+
 void unit_recall::dismiss_unit(window& window)
 {
 	LOG_DP << "Recall list units:\n"; dump_recall_list_to_console(recall_list_);
@@ -311,8 +345,12 @@ void unit_recall::list_item_clicked(window& window)
 		return;
 	}
 
+	const unit& selected_unit = *recall_list_[selected_row].get();
+
 	find_widget<unit_preview_pane>(&window, "unit_details", false)
-		.set_displayed_unit(*recall_list_[selected_row].get());
+		.set_displayed_unit(selected_unit);
+
+	find_widget<button>(&window, "rename", false).set_active(!selected_unit.unrenamable());
 }
 
 void unit_recall::post_show(window& window)
