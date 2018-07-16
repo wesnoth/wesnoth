@@ -12,8 +12,8 @@ If texinfo installed, the manual can be produced in PDF and info format using:
  $ make doc
 
 Otherwise, an online version of the manual can be found here:
-http://www.wesnoth.org/wiki/Wesnoth_Mode
+https://www.wesnoth.org/wiki/Wesnoth_Mode
 
 For the latest updates and information or if you have any questions, problems
 or suggestions regarding Wesnoth Mode, please direct them to:
-http://www.wesnoth.org/forum/viewtopic.php?t=13798.
+https://www.wesnoth.org/forum/viewtopic.php?t=13798.

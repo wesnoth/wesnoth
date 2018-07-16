@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -943,7 +943,7 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 	// Prompt user to download this game's required addons if its requirements have not been met
 	if(game.addons_outcome != mp::game_info::SATISFIED) {
 		if(game.required_addons.empty()) {
-			gui2::show_error_message(_("Something is wrong with the addon version check database supporting the multiplayer lobby. Please report this at http://bugs.wesnoth.org."));
+			gui2::show_error_message(_("Something is wrong with the addon version check database supporting the multiplayer lobby. Please report this at https://bugs.wesnoth.org."));
 			return;
 		}
 

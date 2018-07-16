@@ -34,7 +34,7 @@ public class WmlFactoryImpl extends EFactoryImpl implements WmlFactory
   {
     try
     {
-      WmlFactory theWmlFactory = (WmlFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.wesnoth.org/WML"); 
+      WmlFactory theWmlFactory = (WmlFactory)EPackage.Registry.INSTANCE.getEFactory("https://www.wesnoth.org/WML"); 
       if (theWmlFactory != null)
       {
         return theWmlFactory;

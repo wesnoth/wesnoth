@@ -35,8 +35,8 @@ public class WMLStandaloneSetupGenerated implements ISetup {
 	}
 	
 	public void register(Injector injector) {
-	if (!EPackage.Registry.INSTANCE.containsKey("http://www.wesnoth.org/WML")) {
-		EPackage.Registry.INSTANCE.put("http://www.wesnoth.org/WML", org.wesnoth.wml.WmlPackage.eINSTANCE);
+	if (!EPackage.Registry.INSTANCE.containsKey("https://www.wesnoth.org/WML")) {
+		EPackage.Registry.INSTANCE.put("https://www.wesnoth.org/WML", org.wesnoth.wml.WmlPackage.eINSTANCE);
 	}
 
 		org.eclipse.xtext.resource.IResourceFactory resourceFactory = injector.getInstance(org.eclipse.xtext.resource.IResourceFactory.class);
