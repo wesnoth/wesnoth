@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2013 - 2018 by Felix Bauer
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 /**
  * @file
  * Recruitment Engine by flix
- * See http://wiki.wesnoth.org/AI_Recruitment
+ * See https://wiki.wesnoth.org/AI_Recruitment
  */
 
 #pragma once

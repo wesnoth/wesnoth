@@ -1,6 +1,6 @@
 /*
    By Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    The contents of this file are placed in the public domain.
  */

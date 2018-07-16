@@ -51,7 +51,7 @@ static std::vector<char*> gArgs;
 - (IBAction) openHomepage:(id)sender
 {
 	(void) sender;
-	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.wesnoth.org/"]];
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://www.wesnoth.org/"]];
 }
 
 /* Called when the internal event loop has just started running */

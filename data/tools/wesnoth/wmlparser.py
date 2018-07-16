@@ -51,7 +51,7 @@ class Parser:
 
         data_dir is used for resolving {filepath} and {@filepath}
         user_dir is used for resolving {~filepath} and {@filepath}
-        See http://www.wesnoth.org/wiki/PreprocessorRef
+        See https://www.wesnoth.org/wiki/PreprocessorRef
         """
 
         self.data_dir = data_dir

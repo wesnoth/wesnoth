@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -47,7 +47,7 @@ SDL_Rect create_rect(const point& origin, const point& size);
  * Converts a color string to a color.
  *
  * @param color                   A color string see
- *                                http://www.wesnoth.org/wiki/GUIVariable for
+ *                                https://www.wesnoth.org/wiki/GUIVariable for
  *                                more info.
  *
  * @returns                       The color.
@@ -58,7 +58,7 @@ color_t decode_color(const std::string& color);
  * Converts a text alignment string to a text alignment.
  *
  * @param alignment               An alignment string see
- *                                http://www.wesnoth.org/wiki/GUIVariable for
+ *                                https://www.wesnoth.org/wiki/GUIVariable for
  *                                more info.
  *
  * @returns                       The text alignment.
@@ -71,7 +71,7 @@ PangoAlignment decode_text_alignment(const std::string& alignment);
  * @param alignment               An alignment.
  *
  * @returns                       An alignment string see
- *                                http://www.wesnoth.org/wiki/GUIVariable for
+ *                                https://www.wesnoth.org/wiki/GUIVariable for
  *                                more info.
  */
 std::string encode_text_alignment(const PangoAlignment alignment);
@@ -80,7 +80,7 @@ std::string encode_text_alignment(const PangoAlignment alignment);
  * Converts a font style string to a font style.
  *
  * @param style                   A font style string see
- *                                http://www.wesnoth.org/wiki/GUIVariable for
+ *                                https://www.wesnoth.org/wiki/GUIVariable for
  *                                more info.
  *
  * @returns                       The font style.

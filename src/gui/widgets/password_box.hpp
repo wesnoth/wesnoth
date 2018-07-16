@@ -2,7 +2,7 @@
    Copyright (C) 2009 - 2018 by Thomas Baumhauer
    <thomas.baumhauer@NOSPAMgmail.com>
    Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

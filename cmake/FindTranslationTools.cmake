@@ -17,7 +17,7 @@ set(GETTEXT_XGETTEXT_OPTIONS
 	--force-po
 	--add-comments=TRANSLATORS
 	--copyright-holder=\"Wesnoth development team\"
-	--msgid-bugs-address=\"http://bugs.wesnoth.org/\"
+	--msgid-bugs-address=\"https://bugs.wesnoth.org/\"
 	--from-code=UTF-8
 	--sort-by-file
 	--keyword=_

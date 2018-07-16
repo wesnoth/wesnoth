@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language:		WML (Wesnoth Markup Language)
 " Maintainer:	Étienne Simon <etienne.jl.simon@gmail.com>
-" URL:			http://wesnoth.org
+" URL:			https://wesnoth.org
 " Last Change:	26 Feb 2012
 
 " LICENSE (3-clause BSD) :
@@ -143,7 +143,7 @@ syn region wesmlLuaQ start=+\(^[^#]*code\s*=\s*"\)\@<=+ skip=+""+ end=+\ze"+ con
 """""""""""""""""
 " Standard tags "
 """""""""""""""""
-" Copied from the wiki: <http://wiki.wesnoth.org/AlphabeticalWML>
+" Copied from the wiki: <https://wiki.wesnoth.org/AlphabeticalWML>
 syn keyword wesmlStdTag contained abilities about advanced_preference advancefrom advancement
 syn keyword wesmlStdTag contained advances ai allow_end_turn allow_extra_recruit allow_recruit
 syn keyword wesmlStdTag contained allow_undo and animate_unit animation array

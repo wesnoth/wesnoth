@@ -3,7 +3,7 @@
 
 """
    Copyright (C) 2007 - 2009 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -16,7 +16,7 @@
 The wiki grabber is a tool to convert wiki comment formatting[1] into a text
 page which can be used in the wiki.
 
-[1] http://wesnoth.org/wiki/Wiki_grabber
+[1] https://wesnoth.org/wiki/Wiki_grabber
 """
 from __future__ import with_statement     # For python < 2.6
 
@@ -37,7 +37,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='The wiki grabber is a tool'
             + ' to convert wiki comment formatting into a text page which can'
             + ' be used in the wiki. For more details, see'
-            + ' http://wesnoth.org/wiki/Wiki_grabber')
+            + ' https://wesnoth.org/wiki/Wiki_grabber')
     parser.add_argument('-s', '--src-dir', default='../src/gui', dest='src_dir',
             help="the location of wesnoth's source code")
     parser.add_argument('-o', '--output', default='/tmp/', dest='output_dir',

@@ -56,7 +56,7 @@ features:
 ## 2. Build Environment
 
 You can obtain the source code tarball for the latest version from
-<http://www.wesnoth.org/downloads>.
+<https://www.wesnoth.org/downloads>.
 
 Before building, make sure to untar the package and change into the newly
 created directory:
