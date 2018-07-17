@@ -5,7 +5,7 @@
  ### Engine
    * Windows 7 is now the minimum supported Windows version.
  ### Language and i18n
-   * Updated translations: British English, Chinese (Simplified),
+   * Updated translations: British English, Bulgarian, Chinese (Simplified),
      Chinese (Traditional), Czech, French, Galician, German, Hungarian, Italian,
      Japanese, Polish, Scottish Gaelic, Slovak, Spanish, Ukrainian.
  ### Packaging
