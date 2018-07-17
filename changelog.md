@@ -29,7 +29,7 @@
    * New attack animation for the Peasant.
    * Tweaked the Ruffian's attack animation timing.
  ### Language and i18n
-   * Updated translations: British English, Chinese (Simplified),
+   * Updated translations: British English, Bulgarian, Chinese (Simplified),
      Chinese (Traditional), Czech, French, German, Hungarian, Japanese,
      Scottish Gaelic, Slovak, Spanish
  ### Lua API
