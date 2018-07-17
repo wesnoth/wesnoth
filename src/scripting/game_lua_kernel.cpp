@@ -3310,6 +3310,10 @@ int game_lua_kernel::intf_color_adjust(lua_State *L)
  */
 int game_lua_kernel::intf_delay(lua_State *L)
 {
+	if(gamedata().phase() == game_data::PRELOAD || gamedata().phase() == game_data::PRESTART || gamedata().phase() == game_data::INITIAL) {
+		//don't call play_slice if the game ui is not active yet.
+		return 0;
+	}
 	events::command_disabler command_disabler;
 	lua_Integer delay = luaL_checkinteger(L, 1);
 	if(delay == 0) {
