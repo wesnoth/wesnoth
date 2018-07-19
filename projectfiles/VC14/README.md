@@ -32,9 +32,14 @@ projectfiles for your current VS and Windows versions. Do so; the build will lik
 and/or time-consuming if you build regularly. They can be disabled by heading to the `wesnoth` projectfile's
 properties, under `Build Events → Post-Build Event`. Delete the value in the "Command Line" field.
 
-6. That's it! You can now go ahead and start the build (`Build → Build Solution`).
+6. **Optional:** By default, the Debug configuration is selected. This type of build is only good if you
+intend to work on the game's engine or wish to get a stacktrace for a bug report. If you're only interested
+in playing the game, a Release build is faster. You can switch the configurations in the toolbar at the top
+of the screen.
 
-7. **Important!** After building, copy all the files from `external/dll` into the same directory (`wesnoth/`
+7. That's it! You can now go ahead and start the build (`Build → Build Solution`).
+
+8. **Important!** After building, copy all the files from `external/dll` into the same directory (`wesnoth/`
 by default) as the newly built executable . The game will not start if you fail to do this.
 
 ## Manually updating the external dependencies
@@ -43,17 +48,17 @@ We do our best to keep the build dependency repository up-to-date with the lates
 within, as well as synced with any build requirement changes. If you want to build with a different version
 of a certain library, however, you can fetch the relevant files at the links below:
 
-* **Boost:** http://www.boost.org/users/download. Do note that you will need to build the necessary Boost
+* [**Boost:**](http://www.boost.org/users/download) Do note that you will need to build the necessary Boost
 libraries yourself. See the [instructions](https://github.com/aquileia/external/blob/master/README.md#updating-boost-libraries)
 in the dependency repository for details.
 
-* **SDL 2:** https://www.libsdl.org/download-2.0.php. You'll want the "Visual C++ 32/64-bit" Development
+* [**SDL 2:**](https://www.libsdl.org/download-2.0.php) You'll want the "Visual C++ 32/64-bit" Development
 Libraries.
 
-* **SDL_Image:** https://www.libsdl.org/projects/SDL_image. Again, you'll want the "Visual C++ 32/64-bit"
+* [**SDL_Image:**](https://www.libsdl.org/projects/SDL_image) Again, you'll want the "Visual C++ 32/64-bit"
 Development Libraries.
 
-* **SDL_Mixer:** https://www.libsdl.org/projects/SDL_mixer. Again, you'll want the "Visual C++ 32/64-bit"
+* [**SDL_Mixer:**](https://www.libsdl.org/projects/SDL_mixer) Again, you'll want the "Visual C++ 32/64-bit"
 Development Libraries.
 
 The other libraries require complicated compilation procedures too in-depth to document here.
