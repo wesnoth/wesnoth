@@ -594,7 +594,27 @@ bool textbox::handle_key_down(const SDL_Event &event)
 				}
 			}
 			break;
+
+			case SDLK_x: // cut
+			{
+				if(is_selection())
+				{
+					const size_t beg = std::min<size_t>(size_t(selstart_),size_t(selend_));
+					const size_t end = std::max<size_t>(size_t(selstart_),size_t(selend_));
+
+					ucs4::string ws(text_.begin() + beg, text_.begin() + end);
+					std::string s = unicode_cast<utf8::string>(ws);
+					desktop::clipboard::copy_to_clipboard(s, false);
+					erase_selection();
+				}
+				break;
 			}
+			case SDLK_a: // selectall
+			{
+				set_selection(0, text_.size());
+				break;
+			}
+			}//end switch
 		}
 		else {
 			pass_event_to_target(event);
