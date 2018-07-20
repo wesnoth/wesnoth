@@ -849,6 +849,11 @@ void mp_lobby::network_handler()
 		return;
 	}
 
+	if(gamelist_diff_update_ && !lobby_info_.gamelist_initialized()) {
+		//don't process a corrupted gamelist further to prevent crashes later.
+		return;
+	}
+
 	if(gamelist_dirty_ && !delay_gamelist_update_) {
 		if(gamelist_diff_update_) {
 			update_gamelist_diff();

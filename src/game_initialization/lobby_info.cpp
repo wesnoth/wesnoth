@@ -127,6 +127,17 @@ void lobby_info::process_gamelist(const config& data)
 
 bool lobby_info::process_gamelist_diff(const config& data)
 {
+	if(!process_gamelist_diff_impl(data)) {
+		// the gamelist is now corrupted, stop further processing and wait for a fresh list.
+		gamelist_initialized_ = false;
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+bool lobby_info::process_gamelist_diff_impl(const config& data)
+{
 	SCOPE_LB;
 	if(!gamelist_initialized_) {
 		return false;
