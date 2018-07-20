@@ -47,6 +47,8 @@ public:
 	 */
 	bool process_gamelist_diff(const config& data);
 
+	bool process_gamelist_diff_impl(const config& data);
+
 	void sync_games_display_status();
 
 	/**
@@ -140,6 +142,10 @@ public:
 		return users_;
 	}
 
+	bool gamelist_initialized() const 
+	{
+		return gamelist_initialized_;
+	}
 private:
 	void process_userlist();
 
