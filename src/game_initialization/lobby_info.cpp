@@ -158,6 +158,11 @@ bool lobby_info::process_gamelist_diff(const config& data)
 		const std::string& diff_result = c[config::diff_track_attribute];
 
 		if(diff_result == "new" || diff_result == "modified") {
+			// note: at this point (1.14.3) the server never sends a 'modified' and instead
+			// just sends a 'delete' followed by a 'new', it still works becasue the delete doesn't
+			// delete the element and just marks it as game_info::DELETED so that game_info::DELETED
+			// is replaced by game_info::UPDATED below. See also
+			// https://github.com/wesnoth/wesnoth/blob/1.14/src/server/server.cpp#L149
 			if(current_i == games_by_id_.end()) {
 				games_by_id_.emplace(game_id, game_info(c, installed_addons_));
 				continue;
