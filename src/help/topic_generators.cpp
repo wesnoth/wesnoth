@@ -133,6 +133,10 @@ topic_list generate_ability_topics(const bool sort_generated)
 	}
 
 	for(const auto& a : ability_topic_data) {
+		if(a.second->name.empty()) {
+			continue;
+		}
+
 		std::ostringstream text;
 		text << a.second->description;
 		text << "\n\n" << "<big>" << _("Units with this ability") << "</big>"<< "\n";
