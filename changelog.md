@@ -15,6 +15,7 @@
    * Secrets of the Ancients:
      * Adjust gender of enemies to better match story in S11 & 21 (issue #3294)
      * Simplify dialog to fix possible confusion in S16 (issue #3291)
+     * Have nagas be able to recruit in S21 (issue #3293)
    * The South Guard:
      * S4: undead leader won't leave the castle anymore
      * S5: the untypical situation that one can defeat the lich before finding
