@@ -108,6 +108,8 @@
      (issue #3286).
    * Slight changes to the objectives dialogue (pr #3309)
    * Greatly improved touch control support.
+   * Fixed wmlindent crashing on inexistent paths provided in the command line
+     (issue #3346).
 
 ## Version 1.14.3
  ### AI
