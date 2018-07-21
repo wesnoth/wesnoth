@@ -231,16 +231,25 @@ def reindent(name, infp, outfp):
 def allwmlfiles(directory):
     "Get names of all WML files under dir, or dir itself if not a directory."
     datafiles = []
-    if not os.path.isdir(directory):
+    if os.path.isfile(directory):
         if directory.endswith(".cfg"):
             datafiles.append(directory)
-    else:
+    elif os.path.isdir(directory):
         for root, dirs, files in os.walk(directory):
             if wmltools.vcdir in dirs:
                 dirs.remove(wmltools.vcdir)
             for name in files:
                 if name.endswith(".cfg"):
                     datafiles.append(os.path.join(root, name))
+    elif not os.path.exists(directory):
+        print("wmlindent: path %s does not exist and will be skipped" % directory, file=sys.stderr)
+    else:
+        # please note that both os.path.isfile() and os.path.isdir() follow symlinks
+        # and os.path.isdir() even covers mountpoints and drive letters
+        # however, this point can be reached by using special paths
+        # like /dev/null, /dev/random or /dev/zero on Linux
+        print("wmlindent: path %s is neither a file or a directory and will be skipped" % directory, file=sys.stderr)
+
     return datafiles
 
 def convertor(linefilter, arglist, exclude):
@@ -248,8 +257,10 @@ def convertor(linefilter, arglist, exclude):
     if not arglist:
         linefilter("standard input", sys.stdin, sys.stdout)
     else:
+        found_valid_path = False
         for arg in arglist:
             for filename in allwmlfiles(arg):
+                found_valid_path = True
                 if exclude and re.search(exclude, filename):
                     if verbose:
                         print("wmlindent: %s excluded" % filename, file=sys.stderr)
@@ -282,6 +293,10 @@ def convertor(linefilter, arglist, exclude):
                                 # under Windows when the target exists -- see
                                 # Python manual 14.1.4::rename()
                                 os.rename(filename + ".out", filename)
+        else: # in a for .. else cycle, else is always executed after the for cycle ends
+            if not found_valid_path:
+                print("wmlindent: no WML file found, exiting", file=sys.stderr)
+                sys.exit(1)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
