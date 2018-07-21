@@ -503,11 +503,8 @@ for env in [test_env, client_env, env]:
 # #
 
         if env['harden'] and env["PLATFORM"] != 'win32':
-            env.AppendUnique(CCFLAGS = ["-fPIE", "-fstack-protector-strong"])
+            env.AppendUnique(CCFLAGS = ["-fPIE"])
             env.AppendUnique(CPPDEFINES = ["_FORTIFY_SOURCE=2"])
-
-            if env["enable_lto"] == True:
-                env.AppendUnique(LINKFLAGS = ["-fstack-protector-strong"])
             
             if env["PLATFORM"] == 'darwin':
                 env.AppendUnique(LINKFLAGS = ["-fPIE", "-Wl,-pie"])
