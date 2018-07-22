@@ -79,6 +79,11 @@ game_stringfixes = {
 ("The server accepts versions '$version1' while you are using version '$version2'", "The server accepts versions '$required_version', but you are using version '$your_version'")
 ),
 
+"wesnoth-ai": (
+# conversion added in 1.14.3+dev
+("http://wiki.wesnoth.org/Micro_AIs", "https://wiki.wesnoth.org/Micro_AIs"),
+),
+
 "wesnoth-editor" : (
 # conversion added in 1.11.10+dev
 ("Choose file", "Choose File"),
