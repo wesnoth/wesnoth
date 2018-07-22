@@ -248,8 +248,8 @@ void unit_recall::rename_unit(window& window)
 	unit& selected_unit = const_cast<unit&>(*recall_list_[index].get());
 
 	std::string name = selected_unit.name();
-	const std::string dialog_title(N_("Rename Unit"));
-	const std::string dialog_label(N_("Name:"));
+	const std::string dialog_title(_("Rename Unit"));
+	const std::string dialog_label(_("Name:"));
 
 	if(gui2::dialogs::edit_text::execute(dialog_title, dialog_label, name)) {
 		selected_unit.rename(name);
