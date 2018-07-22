@@ -42,6 +42,17 @@ static lg::log_domain log_help("help");
 
 namespace help {
 
+struct terrain_movement_info
+{
+	const t_string name;
+	const t_string id;
+	const int defense;
+	const int movement_cost;
+	const int vision_cost;
+	const int jamming_cost;
+	const bool defense_cap;
+};
+
 static std::string best_str(bool best) {
 	std::string lang_policy = (best ? _("Best of") : _("Worst of"));
 	std::string color_policy = (best ? "green": "red");
@@ -231,6 +242,14 @@ static void print_trait_list(std::stringstream & ss, const std::vector<trait_dat
 }
 
 std::string unit_topic_generator::operator()() const {
+	
+	// Used for sorting terrain_movement_info terrain_moves. Needs to be declared before terrain_moves.
+	auto movement_compare = [](terrain_movement_info a, terrain_movement_info b)
+	{
+		return translation::icompare(a.name, b.name) < 0;
+	};
+
+
 	// Force the lazy loading to build this unit.
 	unit_types.build_unit_type(type_, unit_type::FULL);
 
@@ -644,6 +663,8 @@ std::string unit_topic_generator::operator()() const {
 		std::set<t_translation::terrain_code>::const_iterator terrain_it =
 			preferences::encountered_terrains().begin();
 
+		std::set<terrain_movement_info, decltype(movement_compare)> terrain_moves(movement_compare);
+
 		for (; terrain_it != preferences::encountered_terrains().end();
 				++terrain_it) {
 			const t_translation::terrain_code terrain = *terrain_it;
@@ -658,148 +679,169 @@ std::string unit_topic_generator::operator()() const {
 			}
 
 			if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
-				std::vector<item> row;
-				const std::string& name = info.name();
-				const std::string& id = info.id();
-				const int views = movement_type.vision_cost(terrain);
-				const int jams  = movement_type.jamming_cost(terrain);
+				terrain_movement_info movement_info = 
+				{
+					info.name(),
+					info.id(),
+					100 - movement_type.defense_modifier(terrain),
+					moves,
+					movement_type.vision_cost(terrain),
+					movement_type.jamming_cost(terrain),
+					movement_type.get_defense().capped(terrain)
+				};
 
-				bool high_res = false;
-				const std::string tc_base = high_res ? "images/buttons/icon-base-32.png" : "images/buttons/icon-base-16.png";
-				const std::string terrain_image = "icons/terrain/terrain_type_" + id + (high_res ? "_30.png" : ".png");
+				terrain_moves.insert(movement_info);
+			}
+		}
 
-				const std::string final_image = tc_base + "~RC(magenta>" + id + ")~BLIT(" + terrain_image + ")";
+		for(const terrain_movement_info &terr_move : terrain_moves)
+		{
+			std::vector<item> row;
+			const std::string& name = terr_move.name;
+			const std::string& id = terr_move.id;
+			const int defense = terr_move.defense;
+			const int moves = terr_move.movement_cost;
+			const int views = terr_move.vision_cost;
+			const int jams  = terr_move.jamming_cost;
+			const bool has_cap = terr_move.defense_cap;
+			const bool cannot_move = moves > type_.movement();
 
-				row.emplace_back("<img>src='" + final_image + "'</img> " +
-						make_link(name, "..terrain_" + id),
-					font::line_width(name, normal_font_size) + (high_res ? 32 : 16) );
 
-				//defense  -  range: +10 % .. +70 %
-				const int defense = 100 - movement_type.defense_modifier(terrain);
-				std::string color;
-				if (defense <= 10) {
+			bool high_res = false;
+			const std::string tc_base = high_res ? "images/buttons/icon-base-32.png" : "images/buttons/icon-base-16.png";
+			const std::string terrain_image = "icons/terrain/terrain_type_" + id + (high_res ? "_30.png" : ".png");
+
+			const std::string final_image = tc_base + "~RC(magenta>" + id + ")~BLIT(" + terrain_image + ")";
+
+			row.emplace_back("<img>src='" + final_image + "'</img> " +
+					make_link(name, "..terrain_" + id),
+				font::line_width(name, normal_font_size) + (high_res ? 32 : 16) );
+
+			//defense  -  range: +10 % .. +70 %
+			std::string color;
+			if (defense <= 10) {
+				color = "red";
+			} else if (defense <= 30) {
+				color = "yellow";
+			} else if (defense <= 50) {
+				color = "white";
+			} else {
+				color = "green";
+			}
+
+			std::stringstream str;
+			str << "<format>color=" << color << " text='"<< defense << "%'</format>";
+			std::string markup = str.str();
+			str.str(clear_stringstream);
+			str << defense << "%";
+			row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
+
+			//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
+			str.str(clear_stringstream);
+			if (cannot_move) {		// cannot move in this terrain
+				color = "red";
+			} else if (moves > 1) {
+				color = "yellow";
+			} else {
+				color = "white";
+			}
+			str << "<format>color=" << color << " text='";
+			// A 5 MP margin; if the movement costs go above
+			// the unit's max moves + 5, we replace it with dashes.
+			if(cannot_move && (moves > type_.movement() + 5)) {
+				str << font::unicode_figure_dash;
+			} else {
+				str << moves;
+			}
+			str << "'</format>";
+			markup = str.str();
+			str.str(clear_stringstream);
+			str << moves;
+			row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
+
+			//defense cap
+			if (has_terrain_defense_caps) {
+				str.str(clear_stringstream);
+				if (has_cap) {
+					str << "<format>color='"<< color <<"' text='" << defense << "%'</format>";
+				} else {
+					str << "<format>color=white text='" << font::unicode_figure_dash << "'</format>";
+				}
+				markup = str.str();
+				str.str(clear_stringstream);
+				if (has_cap) {
+					str << defense << '%';
+				} else {
+					str << font::unicode_figure_dash;
+				}
+				row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
+			}
+
+			//vision
+			if (has_vision) {
+				str.str(clear_stringstream);
+				const bool cannot_view = views > type_.vision();
+				if (cannot_view) {		// cannot view in this terrain
 					color = "red";
-				} else if (defense <= 30) {
+				} else if (views > moves) {
 					color = "yellow";
-				} else if (defense <= 50) {
+				} else if (views == moves) {
 					color = "white";
 				} else {
 					color = "green";
 				}
-
-				std::stringstream str;
-				str << "<format>color=" << color << " text='"<< defense << "%'</format>";
-				std::string markup = str.str();
-				str.str(clear_stringstream);
-				str << defense << "%";
-				row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
-
-				//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
-				str.str(clear_stringstream);
-				if (cannot_move) {		// cannot move in this terrain
-					color = "red";
-				} else if (moves > 1) {
-					color = "yellow";
-				} else {
-					color = "white";
-				}
 				str << "<format>color=" << color << " text='";
-				// A 5 MP margin; if the movement costs go above
-				// the unit's max moves + 5, we replace it with dashes.
-				if(cannot_move && (moves > type_.movement() + 5)) {
+				// A 5 MP margin; if the vision costs go above
+				// the unit's vision + 5, we replace it with dashes.
+				if(cannot_view && (views > type_.vision() + 5)) {
 					str << font::unicode_figure_dash;
 				} else {
-					str << moves;
+					str << views;
 				}
 				str << "'</format>";
 				markup = str.str();
 				str.str(clear_stringstream);
-				str << moves;
+				str << views;
 				row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
-
-				//defense cap
-				if (has_terrain_defense_caps) {
-					str.str(clear_stringstream);
-					const bool has_cap = movement_type.get_defense().capped(terrain);
-					if (has_cap) {
-						str << "<format>color='"<< color <<"' text='" << defense << "%'</format>";
-					} else {
-						str << "<format>color=white text='" << font::unicode_figure_dash << "'</format>";
-					}
-					markup = str.str();
-					str.str(clear_stringstream);
-					if (has_cap) {
-						str << defense << '%';
-					} else {
-						str << font::unicode_figure_dash;
-					}
-					row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
-				}
-
-				//vision
-					if (has_vision) {
-						str.str(clear_stringstream);
-						const bool cannot_view = views > type_.vision();
-						if (cannot_view) {		// cannot view in this terrain
-							color = "red";
-						} else if (views > moves) {
-							color = "yellow";
-						} else if (views == moves) {
-							color = "white";
-						} else {
-							color = "green";
-						}
-						str << "<format>color=" << color << " text='";
-						// A 5 MP margin; if the vision costs go above
-						// the unit's vision + 5, we replace it with dashes.
-						if(cannot_view && (views > type_.vision() + 5)) {
-							str << font::unicode_figure_dash;
-						} else {
-							str << views;
-						}
-						str << "'</format>";
-						markup = str.str();
-						str.str(clear_stringstream);
-						str << views;
-						row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
-					}
-
-				//jamming
-				if (has_jamming) {
-					str.str(clear_stringstream);
-					const bool cannot_jam = jams > type_.jamming();
-					if (cannot_jam) {		// cannot jamm in this terrain
-						color = "red";
-					} else if (jams > views) {
-						color = "yellow";
-					} else if (jams == views) {
-						color = "white";
-					} else {
-						color = "green";
-					}
-					str << "<format>color=" << color << " text='";
-					// A 5 MP margin; if the jamming costs go above
-					// the unit's jamming + 5, we replace it with dashes.
-					if ( cannot_jam  &&  jams > type_.jamming() + 5 ) {
-						str << font::unicode_figure_dash;
-					} else {
-						str << jams;
-					}
-					str << "'</format>";
-
-					push_tab_pair(row, str.str());
-				}
-
-				table.push_back(row);
 			}
-		}
 
+			//jamming
+			if (has_jamming) {
+				str.str(clear_stringstream);
+				const bool cannot_jam = jams > type_.jamming();
+				if (cannot_jam) {		// cannot jamm in this terrain
+					color = "red";
+				} else if (jams > views) {
+					color = "yellow";
+				} else if (jams == views) {
+					color = "white";
+				} else {
+					color = "green";
+				}
+				str << "<format>color=" << color << " text='";
+				// A 5 MP margin; if the jamming costs go above
+				// the unit's jamming + 5, we replace it with dashes.
+				if ( cannot_jam  &&  jams > type_.jamming() + 5 ) {
+					str << font::unicode_figure_dash;
+				} else {
+					str << jams;
+				}
+				str << "'</format>";
+
+				push_tab_pair(row, str.str());
+			}
+
+			table.push_back(row);
+		}
+		
 		ss << generate_table(table);
 	} else {
 		WRN_HP << "When building unit help topics, the display object was null and we couldn't get the terrain info we need.\n";
 	}
 	return ss.str();
 }
+
+
 
 void unit_topic_generator::push_header(std::vector< item > &row,  const std::string& name) const {
 	row.emplace_back(bold(name), font::line_width(name, normal_font_size, TTF_STYLE_BOLD));
