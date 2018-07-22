@@ -1,6 +1,6 @@
 ## Version 1.14.3+dev
  ### Security Fixes
-   * Fixed lua can escape sandbox through load/loadstring (CVE-2018-1999023).
+   * Fixed Lua being able to escape sandboxing via load/loadstring (CVE-2018-1999023).
  ### Add-ons server
    * Made it so plain-text .po catalogues in add-ons are detected and added to
      the list of translations for them.
@@ -13,7 +13,7 @@
    * Eastern Invasion:
      * Fixed missing prisoners and loss of recallable units in 'Captured'.
    * Northern Rebirth:
-     * Level 0 units are not availaible anymore after scenario 5
+     * Level 0 units are not available anymore after scenario 5
    * Secrets of the Ancients:
      * Adjust gender of enemies to better match story in S11 & 21 (issue #3294)
      * Simplify dialog to fix possible confusion in S16 (issue #3291)
@@ -61,11 +61,11 @@
    * Fixed an issue with positioned sound sources ignoring the volume set in
      Preferences after going off the audible radius and back (issue #3280).
    * Fixed wmllint choking on gzipped binary files (e.g. gzipped tarballs).
-   * Fixed wmllint crashing on inexistent paths provided in the command line
+   * Fixed wmllint crashing on nonexistent paths provided in the command line
      (issue #3286).
    * Slight changes to the objectives dialogue (pr #3309)
    * Greatly improved touch control support.
-   * Fixed wmlindent crashing on inexistent paths provided in the command line
+   * Fixed wmlindent crashing on nonexistent paths provided in the command line
      (issue #3346).
 
 ## Version 1.14.3
