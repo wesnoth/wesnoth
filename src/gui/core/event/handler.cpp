@@ -380,8 +380,9 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 	}
 
 	Uint8 button = event.button.button;
+#if defined(__IPHONEOS__) || !defined(__APPLE__)
 	CVideo& video = dynamic_cast<window&>(*dispatchers_.back()).video();
-
+#endif
 	switch(event.type) {
 		case SDL_MOUSEMOTION:
 #ifdef MOUSE_TOUCH_EMULATION
@@ -477,6 +478,7 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			text_editing(event.edit.text, event.edit.start, event.edit.length);
 			break;
 
+#if defined(__IPHONEOS__) || !defined(__APPLE__) 
 		case SDL_FINGERMOTION:
 			{
 				SDL_Rect r = video.screen_area();
@@ -506,6 +508,7 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 									event.mgesture.dTheta, event.mgesture.dDist, event.mgesture.numFingers);
 			}
 			break;
+#endif
 
 #if(defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
 		case SDL_SYSWMEVENT:
