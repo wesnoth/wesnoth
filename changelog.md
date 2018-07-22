@@ -1,4 +1,4 @@
-## Version 1.14.3+dev
+## Version 1.14.4
  ### Security Fixes
    * Fixed Lua being able to escape sandboxing via load/loadstring (CVE-2018-1999023).
  ### Add-ons server
