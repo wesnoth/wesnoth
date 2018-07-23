@@ -40,7 +40,7 @@
  ### Lua API
    * Upgrade to Lua 5.3.5.
  ### Multiplayer
-   * Non hosts can not change their faction in the mp wait dialog.
+   * Non hosts can now change their faction in the mp wait dialog.
  ### Multiplayer server
    * Fixed lobby and whisper messages not having a maximum length.
    * Partly fixed the mp server breaking translatable strings.
@@ -75,7 +75,7 @@
    * [do_command][attack] can no longer invoke disabled attacks.
    * [delay] is now skipped during preload events.
    * Fixed wrong simulated movement points when planning to capture a village.
-   * Fixed attacks wrongly beeing disabled in the ui.
+   * Fixed attacks wrongly being disabled in the UI.
 
 ## Version 1.14.3
  ### AI
