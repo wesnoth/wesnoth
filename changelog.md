@@ -39,8 +39,11 @@
      Scottish Gaelic, Slovak, Spanish
  ### Lua API
    * Upgrade to Lua 5.3.5.
+ ### Multiplayer
+   * Non hosts can not change their faction in the mp wait dialog.
  ### Multiplayer server
    * Fixed lobby and whisper messages not having a maximum length.
+   * Partly fixed the mp server breaking translatable strings.
  ### User interface
    * Improved the layout of the Statistics dialog.
    * Allow changing dropdown menu selections with the scrollwheel (FR #3251).
@@ -69,6 +72,12 @@
    * Greatly improved touch control support.
    * Fixed wmlindent crashing on nonexistent paths provided in the command line
      (issue #3346).
+   * [do_command][attack] can no longer invoke disabled attacks.
+   * [delay] is now skipped during preload events.
+   * Fixed wrong simulated movement points when planning to capture a village.
+   * Fixed attacks wrongly beeing disabled in the ui.
+
+…llage.
 
 ## Version 1.14.3
  ### AI
@@ -96,6 +105,7 @@
    * Fixed lan_server option not causing the server to exit once vacated, e.g.
      when using the Host Networked Game option from the Multiplayer menu in the
      game (issue #3206).
+   * It is now possible to query the client version of other players.
  ### Music and sound effects
    * The music now changes immediately when you load a save file (issue #2602).
    * Fixed Lua errors when setting a music track that cannot be found when the
