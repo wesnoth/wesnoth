@@ -11,7 +11,7 @@
      * In 'Tirigaz', take the situation into account of orcs being killed either
        first or by undead.
    * Delfador's Memoirs:
-     * Fix hero units costing upkeep (issue #3722)
+     * Fix hero units costing upkeep (issue #3277)
    * Eastern Invasion:
      * Fixed missing prisoners and loss of recallable units in 'Captured'.
    * Northern Rebirth:
