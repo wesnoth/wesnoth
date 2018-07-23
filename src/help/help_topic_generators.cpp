@@ -51,6 +51,11 @@ struct terrain_movement_info
 	const int vision_cost;
 	const int jamming_cost;
 	const bool defense_cap;
+
+	bool operator<(const terrain_movement_info& other) const
+	{
+		return translation::icompare(name, other.name) < 0;
+	}
 };
 
 static std::string best_str(bool best) {
@@ -242,14 +247,6 @@ static void print_trait_list(std::stringstream & ss, const std::vector<trait_dat
 }
 
 std::string unit_topic_generator::operator()() const {
-	
-	// Used for sorting terrain_movement_info terrain_moves. Needs to be declared before terrain_moves.
-	auto movement_compare = [](terrain_movement_info a, terrain_movement_info b)
-	{
-		return translation::icompare(a.name, b.name) < 0;
-	};
-
-
 	// Force the lazy loading to build this unit.
 	unit_types.build_unit_type(type_, unit_type::FULL);
 
@@ -660,14 +657,10 @@ std::string unit_topic_generator::operator()() const {
 		}
 
 		table.push_back(first_row);
-		std::set<t_translation::terrain_code>::const_iterator terrain_it =
-			preferences::encountered_terrains().begin();
 
-		std::set<terrain_movement_info, decltype(movement_compare)> terrain_moves(movement_compare);
+		std::set<terrain_movement_info> terrain_moves;
 
-		for (; terrain_it != preferences::encountered_terrains().end();
-				++terrain_it) {
-			const t_translation::terrain_code terrain = *terrain_it;
+		for (t_translation::terrain_code terrain : preferences::encountered_terrains()) {
 			if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP)) {
 				continue;
 			}
@@ -694,53 +687,45 @@ std::string unit_topic_generator::operator()() const {
 			}
 		}
 
-		for(const terrain_movement_info &terr_move : terrain_moves)
+		for(const terrain_movement_info &m : terrain_moves)
 		{
 			std::vector<item> row;
-			const std::string& name = terr_move.name;
-			const std::string& id = terr_move.id;
-			const int defense = terr_move.defense;
-			const int moves = terr_move.movement_cost;
-			const int views = terr_move.vision_cost;
-			const int jams  = terr_move.jamming_cost;
-			const bool has_cap = terr_move.defense_cap;
-			const bool cannot_move = moves > type_.movement();
-
 
 			bool high_res = false;
 			const std::string tc_base = high_res ? "images/buttons/icon-base-32.png" : "images/buttons/icon-base-16.png";
-			const std::string terrain_image = "icons/terrain/terrain_type_" + id + (high_res ? "_30.png" : ".png");
+			const std::string terrain_image = "icons/terrain/terrain_type_" + m.id + (high_res ? "_30.png" : ".png");
 
-			const std::string final_image = tc_base + "~RC(magenta>" + id + ")~BLIT(" + terrain_image + ")";
+			const std::string final_image = tc_base + "~RC(magenta>" + m.id + ")~BLIT(" + terrain_image + ")";
 
 			row.emplace_back("<img>src='" + final_image + "'</img> " +
-					make_link(name, "..terrain_" + id),
-				font::line_width(name, normal_font_size) + (high_res ? 32 : 16) );
+					make_link(m.name, "..terrain_" + m.id),
+				font::line_width(m.name, normal_font_size) + (high_res ? 32 : 16) );
 
 			//defense  -  range: +10 % .. +70 %
 			std::string color;
-			if (defense <= 10) {
+			if (m.defense <= 10) {
 				color = "red";
-			} else if (defense <= 30) {
+			} else if (m.defense <= 30) {
 				color = "yellow";
-			} else if (defense <= 50) {
+			} else if (m.defense <= 50) {
 				color = "white";
 			} else {
 				color = "green";
 			}
 
 			std::stringstream str;
-			str << "<format>color=" << color << " text='"<< defense << "%'</format>";
+			str << "<format>color=" << color << " text='"<< m.defense << "%'</format>";
 			std::string markup = str.str();
 			str.str(clear_stringstream);
-			str << defense << "%";
+			str << m.defense << "%";
 			row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
 
 			//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
 			str.str(clear_stringstream);
+			bool cannot_move = m.movement_cost > type_.movement();
 			if (cannot_move) {		// cannot move in this terrain
 				color = "red";
-			} else if (moves > 1) {
+			} else if (m.movement_cost > 1) {
 				color = "yellow";
 			} else {
 				color = "white";
@@ -748,29 +733,29 @@ std::string unit_topic_generator::operator()() const {
 			str << "<format>color=" << color << " text='";
 			// A 5 MP margin; if the movement costs go above
 			// the unit's max moves + 5, we replace it with dashes.
-			if(cannot_move && (moves > type_.movement() + 5)) {
+			if(cannot_move && (m.movement_cost > type_.movement() + 5)) {
 				str << font::unicode_figure_dash;
 			} else {
-				str << moves;
+				str << m.movement_cost;
 			}
 			str << "'</format>";
 			markup = str.str();
 			str.str(clear_stringstream);
-			str << moves;
+			str << m.movement_cost;
 			row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
 
 			//defense cap
 			if (has_terrain_defense_caps) {
 				str.str(clear_stringstream);
-				if (has_cap) {
-					str << "<format>color='"<< color <<"' text='" << defense << "%'</format>";
+				if (m.defense_cap) {
+					str << "<format>color='"<< color <<"' text='" << m.defense << "%'</format>";
 				} else {
 					str << "<format>color=white text='" << font::unicode_figure_dash << "'</format>";
 				}
 				markup = str.str();
 				str.str(clear_stringstream);
-				if (has_cap) {
-					str << defense << '%';
+				if (m.defense_cap) {
+					str << m.defense << '%';
 				} else {
 					str << font::unicode_figure_dash;
 				}
@@ -780,12 +765,12 @@ std::string unit_topic_generator::operator()() const {
 			//vision
 			if (has_vision) {
 				str.str(clear_stringstream);
-				const bool cannot_view = views > type_.vision();
+				const bool cannot_view = m.vision_cost > type_.vision();
 				if (cannot_view) {		// cannot view in this terrain
 					color = "red";
-				} else if (views > moves) {
+				} else if (m.vision_cost > m.movement_cost) {
 					color = "yellow";
-				} else if (views == moves) {
+				} else if (m.vision_cost == m.movement_cost) {
 					color = "white";
 				} else {
 					color = "green";
@@ -793,27 +778,27 @@ std::string unit_topic_generator::operator()() const {
 				str << "<format>color=" << color << " text='";
 				// A 5 MP margin; if the vision costs go above
 				// the unit's vision + 5, we replace it with dashes.
-				if(cannot_view && (views > type_.vision() + 5)) {
+				if(cannot_view && (m.vision_cost > type_.vision() + 5)) {
 					str << font::unicode_figure_dash;
 				} else {
-					str << views;
+					str << m.vision_cost;
 				}
 				str << "'</format>";
 				markup = str.str();
 				str.str(clear_stringstream);
-				str << views;
+				str << m.vision_cost;
 				row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
 			}
 
 			//jamming
 			if (has_jamming) {
 				str.str(clear_stringstream);
-				const bool cannot_jam = jams > type_.jamming();
+				const bool cannot_jam = m.jamming_cost > type_.jamming();
 				if (cannot_jam) {		// cannot jamm in this terrain
 					color = "red";
-				} else if (jams > views) {
+				} else if (m.jamming_cost > m.vision_cost) {
 					color = "yellow";
-				} else if (jams == views) {
+				} else if (m.jamming_cost == m.vision_cost) {
 					color = "white";
 				} else {
 					color = "green";
@@ -821,10 +806,10 @@ std::string unit_topic_generator::operator()() const {
 				str << "<format>color=" << color << " text='";
 				// A 5 MP margin; if the jamming costs go above
 				// the unit's jamming + 5, we replace it with dashes.
-				if ( cannot_jam  &&  jams > type_.jamming() + 5 ) {
+				if (cannot_jam && m.jamming_cost > type_.jamming() + 5) {
 					str << font::unicode_figure_dash;
 				} else {
-					str << jams;
+					str << m.jamming_cost;
 				}
 				str << "'</format>";
 
