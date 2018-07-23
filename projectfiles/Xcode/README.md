@@ -58,10 +58,10 @@ To compile translations you need `gettext-tools` and `scons`. You can obtain the
 ## Packaging
 When compiling Wesnoth for an official release, the following steps should be taken:
 
- * You must use **package build**
- * Update version numbers in Info.plist (if not already by the release manager)
- * Update the changelog in SDLMain.nib with players_changelog.md
- * Rebuild translations
+ * You must use **package build**!
+ * Update version numbers in Info.plist (if not already by the release manager).
+ * Update the changelog in SDLMain.nib with `changelog.md`.
+ * Rebuild translations `scons translations`.
  * Rebuild all in XCode (clean all, then build). Be sure to set it to release configuration first!
  * Download old `.dmg` release.
  * Convert it using Disk Utility to Read and Write disk image and mount it.
