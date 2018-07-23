@@ -475,6 +475,13 @@ game_info::ADDON_REQ game_info::check_addon_version_compatibility(const config& 
 
 		// Check if the host is too out of date to play.
 		if(local_min_ver > remote_ver) {
+			DBG_LB << "r.outcome = CANNOT_SATISFY for item='" << local_item["id"]
+				<< "' addon='" << local_item["addon_id"]
+				<< "' addon_min_version='" << local_item["addon_min_version"]
+				<< "' addon_min_version_parsed='" << local_min_ver.str()
+				<< "' addon_version='" << local_item["addon_version"]
+				<< "' remote_ver='" << remote_ver.str()
+				<< "'\n";
 			r.outcome = CANNOT_SATISFY;
 
 			r.message = VGETTEXT("The host's version of <i>$addon</i> is incompatible. They have version <b>$host_ver</b> while you have version <b>$local_ver</b>.", {
