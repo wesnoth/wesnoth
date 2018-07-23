@@ -1,4 +1,6 @@
 ## Version 1.14.4+dev
+ ### Language and i18n
+   * Updated translations: British English
 
 ## Version 1.14.4
  ### Security Fixes
