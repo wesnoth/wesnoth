@@ -25,6 +25,7 @@
 #include "reports.hpp"
 #include "color.hpp"
 #include "team.hpp"
+#include "terrain/movement.hpp"
 #include "tod_manager.hpp"
 #include "units/unit.hpp"
 #include "units/helper.hpp"
@@ -582,13 +583,7 @@ static config unit_moves(reports::context & rc, const unit* u)
 	std::ostringstream str, tooltip;
 	double movement_frac = 1.0;
 
-	auto movement_compare = [](std::pair<t_string, int> a, std::pair<t_string, int> b)
-	{
-		return translation::icompare(a.first, b.first) < 0;
-	};
-
-	// terrain_moves pair: first: name, second: movement_cost
-	std::set<std::pair<t_string, int>, decltype(movement_compare)> terrain_moves(movement_compare);
+	std::set<terrain_movement> terrain_moves;
 
 	if (u->side() == rc.screen().playing_side()) {
 		movement_frac = static_cast<double>(u->movement_left()) / std::max<int>(1, u->total_movement());
@@ -596,13 +591,8 @@ static config unit_moves(reports::context & rc, const unit* u)
 			movement_frac = 1.0;
 	}
 
-	std::set<t_translation::terrain_code>::const_iterator terrain_it =
-				preferences::encountered_terrains().begin();
-
 	tooltip << _("Movement Costs:") << "\n";
-	for (; terrain_it != preferences::encountered_terrains().end();
-			++terrain_it) {
-		const t_translation::terrain_code terrain = *terrain_it;
+	for (t_translation::terrain_code terrain : preferences::encountered_terrains()) {
 		if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP))
 			continue;
 
@@ -613,28 +603,25 @@ static config unit_moves(reports::context & rc, const unit* u)
 		}
 	}
 
-	for(const std::pair<t_string, int> tm : terrain_moves)
-	{
-		const std::string name = tm.first;
-		const int moves = tm.second;
-		tooltip << name << ": ";
+	for (const terrain_movement& tm : terrain_moves) {
+		tooltip << tm.name << ": ";
 		
 		std::string color;
 		//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
-		const bool cannot_move = moves > u->total_movement();
+		const bool cannot_move = tm.moves > u->total_movement();
 		if (cannot_move)		// cannot move in this terrain
 			color = "red";
-		else if (moves > 1)
+		else if (tm.moves > 1)
 			color = "yellow";
 		else
 			color = "white";
 		tooltip << "<span foreground=\"" << color << "\">";
 		// A 5 MP margin; if the movement costs go above
 		// the unit's max moves + 5, we replace it with dashes.
-		if(cannot_move && (moves > u->total_movement() + 5)) {
+		if (cannot_move && (tm.moves > u->total_movement() + 5)) {
 			tooltip << font::unicode_figure_dash;
 		} else {
-			tooltip << moves;
+			tooltip << tm.moves;
 		}
 		tooltip << naps << '\n';
 	}
