@@ -118,8 +118,6 @@
    * Fixed wrong simulated movement points when planning to capture a village.
    * Fixed attacks wrongly beeing disabled in the ui.
 
-…llage.
-
 ## Version 1.14.3
  ### AI
    * Fixed crash in presence of units with negative hitpoints (issue #3042).
