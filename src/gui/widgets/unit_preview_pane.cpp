@@ -36,6 +36,7 @@
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
+#include "terrain/movement.hpp"
 #include "units/attack_type.hpp"
 #include "units/types.hpp"
 #include "units/helper.hpp"
@@ -144,13 +145,7 @@ static inline std::string get_hp_tooltip(const utils::string_map& res, const std
 
 static inline std::string get_mp_tooltip(int total_movement, std::function<int (t_translation::terrain_code)> get)
 {
-	auto movement_compare = [](std::pair<t_string, int> a, std::pair<t_string, int> b)
-	{
-		return translation::icompare(a.first, b.first) < 0;
-	};
-
-	// terrain_moves pair: first: name, second: movement_cost
-	std::set<std::pair<t_string, int>, decltype(movement_compare)> terrain_moves(movement_compare);
+	std::set<terrain_movement> terrain_moves;
 	std::ostringstream tooltip;
 	tooltip << "<big>" << _("Movement Costs:") << "</big>";
 
@@ -171,21 +166,18 @@ static inline std::string get_mp_tooltip(int total_movement, std::function<int (
 		}
 	}
 
-	for(const std::pair<t_string, int> tm: terrain_moves)
+	for(const terrain_movement& tm: terrain_moves)
 	{
-		const std::string name = tm.first;
-		const int moves = tm.second;
-
-		tooltip << '\n' << font::unicode_bullet << " " << name << ": ";
+		tooltip << '\n' << font::unicode_bullet << " " << tm.name << ": ";
 
 		// movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
-		const bool cannot_move = moves > total_movement;
+		const bool cannot_move = tm.moves > total_movement;
 
 		std::string color;
 		if(cannot_move) {
 			// cannot move in this terrain
 			color = "red";
-		} else if(moves > 1) {
+		} else if(tm.moves > 1) {
 			color = "yellow";
 		} else {
 			color = "white";
@@ -194,10 +186,10 @@ static inline std::string get_mp_tooltip(int total_movement, std::function<int (
 		tooltip << "<span color='" << color << "'>";
 
 		// A 5 MP margin; if the movement costs go above the unit's max moves + 5, we replace it with dashes.
-		if(cannot_move && (moves > total_movement + 5)) {
+		if(cannot_move && (tm.moves > total_movement + 5)) {
 			tooltip << font::unicode_figure_dash;
 		} else {
-			tooltip << moves;
+			tooltip << tm.moves;
 		}
 
 		tooltip << "</span>";

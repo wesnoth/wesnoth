@@ -3001,6 +3001,10 @@
     <ClInclude Include="..\..\src\utils\scope_exit.hpp">
       <Filter>utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\chat_log.hpp" />
+    <ClInclude Include="..\..\src\terrain\movement.hpp">
+      <Filter>Terrain</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\src\tests\test_sdl_utils.hpp">
