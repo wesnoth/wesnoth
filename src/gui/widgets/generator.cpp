@@ -169,9 +169,9 @@ void horizontal_list::place(const point& origin, const point& size)
 	}
 
 	if(current_origin.x != origin.x + size.x) {
-		ERR_GUI_L << "Failed to fit horizontal list to requested rect; expected right edge was " << origin.x + size.x;
-		ERR_GUI_L << ", actual right edge was " << current_origin.x;
-		ERR_GUI_L << " (left edge is " << origin.x << ")\n";
+		ERR_GUI_L << "Failed to fit horizontal list to requested rect; expected right edge was " << origin.x + size.x
+		          << ", actual right edge was " << current_origin.x
+		          << " (left edge is " << origin.x << ")\n";
 	}
 }
 
@@ -380,9 +380,9 @@ void vertical_list::place(const point& origin, const point& size)
 	}
 
 	if(current_origin.y != origin.y + size.y) {
-		ERR_GUI_L << "Failed to fit vertical list to requested rect; expected bottom edge was " << origin.y + size.y;
-		ERR_GUI_L << ", actual bottom edge was " << current_origin.y;
-		ERR_GUI_L << " (top edge is " << origin.y << ")\n";
+		ERR_GUI_L << "Failed to fit vertical list to requested rect; expected bottom edge was " << origin.y + size.y
+		          << ", actual bottom edge was " << current_origin.y
+		          << " (top edge is " << origin.y << ")\n";
 	}
 }
 
