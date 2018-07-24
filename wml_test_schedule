@@ -11,6 +11,11 @@
 0 fixed_lua_random_replay_with_sync_choice
 0 test_end_turn
 #
+# Security test
+#
+0 cve_2018_1999023
+1 cve_2018_1999023_2
+#
 # Test Check Victory (If this isn't working other tests may have dubious value)
 #
 2 check_victory_basic_timeout
