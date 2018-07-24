@@ -2371,7 +2371,7 @@ void server::status_handler(
 	// If a simple username is given we'll check for its IP instead.
 	if(utils::isvalid_username(parameters)) {
 		for(const auto& player : player_connections_) {
-			if(parameters == player.info().name()) {
+			if(utf8::lowercase(parameters) == utf8::lowercase(player.info().name())) {
 				parameters = client_address(player.socket());
 				found_something = true;
 				break;
@@ -2390,7 +2390,7 @@ void server::status_handler(
 	for(const auto& player : player_connections_) {
 		if(parameters.empty() || parameters == "*" ||
 			(match_ip  && utils::wildcard_string_match(client_address(player.socket()), parameters)) ||
-			(!match_ip && utils::wildcard_string_match(player.info().name(), parameters))
+			(!match_ip && utils::wildcard_string_match(utf8::lowercase(player.info().name()), utf8::lowercase(parameters)))
 		) {
 			found_something = true;
 			*out << std::endl << player_status(player);
@@ -2838,7 +2838,7 @@ void server::searchlog_handler(const std::string& /*issuer_name*/,
 		const std::string& ip = i.ip;
 
 		if((match_ip && utils::wildcard_string_match(ip, parameters)) ||
-		  (!match_ip && utils::wildcard_string_match(username, parameters))
+		  (!match_ip && utils::wildcard_string_match(utf8::lowercase(username), utf8::lowercase(parameters)))
 		) {
 			found_something = true;
 			auto player = player_connections_.get<name_t>().find(username);
