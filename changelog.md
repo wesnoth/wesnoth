@@ -1,4 +1,7 @@
 ## Version 1.14.4+dev
+ ### Campaigns
+   * Tutorial:
+     * Added more information to the Status Table prompt about how to access it (issue #2883).
  ### Language and i18n
    * Updated translations: British English
  ### User Interface
