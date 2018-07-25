@@ -1,6 +1,8 @@
 ## Version 1.14.4+dev
  ### Language and i18n
    * Updated translations: British English
+ ### User Interface
+   * MacOS: fixed moving the mouse with a touchpad also scrolling GUI dialogs
 
 ## Version 1.14.4
  ### Security Fixes
