@@ -5,7 +5,8 @@
 exit_code=0
 
 find src/ -type f -print0 | xargs -0 isutf8 -- || exit_code=1
-find data/ -not -name "*.png" -not -name "*.ogg" -not -name "*.jpg" -not -name "*.wav" -not -name "*.gif" -not -name "*.xcf" -not -name "*.bin" -type f -print0 | xargs -0 isutf8 -- || exit_code=1
+find data/ -not -name "*.png" -not -name "*.ogg" -not -name "*.jpg" -not -name "*.wav" -not -name "*.gif" -not -name "*.xcf" -not -name "*.bin" \
+    -not -name "test_cve_2018_1999023_2.cfg" -type f -print0 | xargs -0 isutf8 -- || exit_code=1
 find po/ -type f -print0 | xargs -0 isutf8 -- || exit_code=1
 
 isutf8 changelog.md || exit_code=1
