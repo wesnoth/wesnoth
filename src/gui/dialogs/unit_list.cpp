@@ -166,7 +166,7 @@ void unit_list::pre_show(window& window)
 	list.register_sorting_option(3, [this](const int i) { return unit_list_[i]->hitpoints(); });
 	list.register_sorting_option(4, [this](const int i) {
 		const unit& u = *unit_list_[i];
-		return std::make_tuple(-u.level(), u.experience_to_advance());
+		return std::make_tuple(u.level(), -u.experience_to_advance());
 	});
 	list.register_sorting_option(5, [this](const int i) { return unit_list_[i]->experience(); });
 	list.register_translatable_sorting_option(6, [this](const int i) {
