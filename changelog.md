@@ -2,6 +2,8 @@
  ### Campaigns
    * Tutorial:
      * Added more information to the Status Table prompt about how to access it (issue #2883).
+   * Under the Burning Suns:
+     * New graphics for Eloh.
  ### Language and i18n
    * Updated translations: British English
  ### User Interface
