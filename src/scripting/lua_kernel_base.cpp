@@ -125,6 +125,44 @@ int lua_kernel_base::intf_print(lua_State* L)
 	return 0;
 }
 
+/**
+ * Replacement load function. Mostly the same as regular load, but disallows loading binary chunks
+ * due to CVE-2018-1999023.
+ */
+static int intf_load(lua_State* L)
+{
+	std::string chunk = luaL_checkstring(L, 1);
+	const char* name = luaL_optstring(L, 2, chunk.c_str());
+	std::string mode = luaL_optstring(L, 3, "t");
+	bool override_env = !lua_isnone(L, 4);
+
+	if(mode != "t") {
+		return luaL_argerror(L, 3, "binary chunks are not allowed for security reasons");
+	}
+
+	int result = luaL_loadbufferx(L, chunk.data(), chunk.length(), name, "t");
+	if(result != LUA_OK) {
+		lua_pushnil(L);
+		// Move the nil as the first return value, like Lua's own load() does.
+		lua_insert(L, -2);
+
+		return 2;
+	}
+
+	if(override_env) {
+		// Copy "env" to the top of the stack.
+		lua_pushvalue(L, 4);
+		// Set "env" as the first upvalue.
+		const char* upvalue_name = lua_setupvalue(L, -2, 1);
+		if(upvalue_name == nullptr) {
+			// lua_setupvalue() didn't remove the copy of "env" from the stack, so we need to do it ourselves.
+			lua_pop(L, 1);
+		}
+	}
+
+	return 1;
+}
+
 // The show lua console callback is similarly a method of lua kernel
 int lua_kernel_base::intf_show_lua_console(lua_State *L)
 {
@@ -510,6 +548,9 @@ lua_kernel_base::lua_kernel_base()
 
 	lua_pushcfunction(L, &dispatch<&lua_kernel_base::intf_print>);
 	lua_setglobal(L, "print");
+
+	lua_pushcfunction(L, intf_load);
+	lua_setglobal(L, "load");
 
 	cmd_log_ << "Initializing package repository...\n";
 	// Create the package table.
