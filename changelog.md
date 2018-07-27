@@ -44,9 +44,20 @@
    * Support [break], [continue], and [return] in [random_placement]
    * [remove_sound_source] now accepts a comma-separated ID list
 
-## Version 1.14.3+dev
+## Version 1.14.4+dev
+ ### Campaigns
+   * Tutorial:
+     * Added more information to the Status Table prompt about how to access it (issue #2883).
+   * Under the Burning Suns:
+     * New graphics for Eloh.
+ ### Language and i18n
+   * Updated translations: British English
+ ### User Interface
+   * MacOS: fixed moving the mouse with a touchpad also scrolling GUI dialogs
+
+## Version 1.14.4
  ### Security Fixes
-   * Fixed lua can escape sandbox through load/loadstring (CVE-2018-1999023).
+   * Fixed Lua being able to escape sandboxing via load/loadstring (CVE-2018-1999023).
  ### Add-ons server
    * Made it so plain-text .po catalogues in add-ons are detected and added to
      the list of translations for them.
@@ -59,7 +70,7 @@
    * Eastern Invasion:
      * Fixed missing prisoners and loss of recallable units in 'Captured'.
    * Northern Rebirth:
-     * Level 0 units are not availaible anymore after scenario 5
+     * Level 0 units are not available anymore after scenario 5
    * Secrets of the Ancients:
      * Adjust gender of enemies to better match story in S11 & 21 (issue #3294)
      * Simplify dialog to fix possible confusion in S16 (issue #3291)
@@ -78,8 +89,9 @@
    * New attack animation for the Peasant.
    * Tweaked the Ruffian's attack animation timing.
  ### Language and i18n
-   * Updated translations: Chinese (Simplified), Chinese (Traditional), French,
-     German, Scottish Gaelic, Slovak, Spanish
+   * Updated translations: British English, Bulgarian, Chinese (Simplified),
+     Chinese (Traditional), Czech, French, German, Hungarian, Japanese,
+     Scottish Gaelic, Slovak, Spanish
  ### Lua API
    * Upgrade to Lua 5.3.5.
  ### Multiplayer
@@ -109,11 +121,11 @@
    * Fixed an issue with positioned sound sources ignoring the volume set in
      Preferences after going off the audible radius and back (issue #3280).
    * Fixed wmllint choking on gzipped binary files (e.g. gzipped tarballs).
-   * Fixed wmllint crashing on inexistent paths provided in the command line
+   * Fixed wmllint crashing on nonexistent paths provided in the command line
      (issue #3286).
    * Slight changes to the objectives dialogue (pr #3309)
    * Greatly improved touch control support.
-   * Fixed wmlindent crashing on inexistent paths provided in the command line
+   * Fixed wmlindent crashing on nonexistent paths provided in the command line
      (issue #3346).
    * [do_command][attack] can no longer invoke disabled attacks.
    * [delay] is now skipped during preload events.
