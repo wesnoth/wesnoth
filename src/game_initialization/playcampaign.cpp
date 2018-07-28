@@ -249,6 +249,8 @@ LEVEL_RESULT campaign_controller::playmp_scenario(end_level_data& end_level)
 
 	if(mp_info_) {
 		mp_info_->connected_players = playcontroller.all_players();
+		mp_info_->skip_replay = false;
+		mp_info_->skip_replay_blindfolded = false;
 	}
 
 	return res;
