@@ -163,6 +163,24 @@ static int intf_load(lua_State* L)
 	return 1;
 }
 
+// Same for loadstring.
+static int intf_loadstring(lua_State* L)
+{
+	std::string string = luaL_checkstring(L, 1);
+	const char* name = luaL_optstring(L, 2, string.c_str());
+
+	deprecated_message("loadstring()", DEP_LEVEL::FOR_REMOVAL, {1, 15, 0}, "Use load() instead.");
+
+	int result = luaL_loadbufferx(L, string.data(), string.length(), name, "t");
+	if(result != LUA_OK) {
+		lua_pushnil(L);
+		lua_insert(L, -2);
+		return 2;
+	}
+
+	return 1;
+}
+
 // The show lua console callback is similarly a method of lua kernel
 int lua_kernel_base::intf_show_lua_console(lua_State *L)
 {
@@ -551,6 +569,8 @@ lua_kernel_base::lua_kernel_base()
 
 	lua_pushcfunction(L, intf_load);
 	lua_setglobal(L, "load");
+	lua_pushcfunction(L, intf_loadstring);
+	lua_setglobal(L, "loadstring");
 
 	cmd_log_ << "Initializing package repository...\n";
 	// Create the package table.
