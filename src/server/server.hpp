@@ -132,6 +132,7 @@ private:
 
 	// settings from the server config
 	std::vector<std::string> accepted_versions_;
+	std::string recommended_version_;
 	std::map<std::string,config> redirected_versions_;
 	std::map<std::string,config> proxy_versions_;
 	std::vector<std::string> disallowed_names_;

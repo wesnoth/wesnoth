@@ -31,6 +31,7 @@
 #include "serialization/unicode.hpp"
 #include "utils/functional.hpp"
 #include "utils/iterable_pair.hpp"
+#include "version.hpp"
 
 #include "server/ban.hpp"
 #include "server/game.hpp"
@@ -84,6 +85,7 @@ namespace wesnothd
 {
 // we take profiling info on every n requests
 int request_sample_frequency = 1;
+version_info secure_version = version_info("1.14.4");
 
 static void make_add_diff(
 		const simple_wml::node& src, const char* gamelist, const char* type, simple_wml::document& out, int index = -1)
@@ -489,6 +491,7 @@ void server::load_config()
 	// remember to make new one as a daemon or it will block old one
 	restart_command = cfg_["restart_command"].str();
 
+	recommended_version_ = cfg_["recommended_version"].str();
 	accepted_versions_.clear();
 	const std::string& versions = cfg_["versions_accepted"];
 	if(versions.empty() == false) {
@@ -984,6 +987,12 @@ void server::add_player(socket_ptr socket, const wesnothd::player& player)
 
 	if(!motd_.empty()) {
 		send_server_message(socket, motd_);
+	}
+	if(version_info(player.version()) < secure_version ){
+		send_server_message(socket, "you are using version " + player.version() + " which has known security issues that can be used to invade your computer. We strongly reccomend to update to a newer wesnoth version");
+	}
+	if(version_info(player.version()) < version_info(recommended_version_)) {
+		send_server_message(socket, "A new version wesnoth " + recommended_version_ + " is out!");
 	}
 
 	read_from_player(socket);
