@@ -235,13 +235,16 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 
 	if(!game["mp_era"].empty()) {
 		const config& era_cfg = game_config.find_child("era", "id", game["mp_era"]);
+		const bool require = game["require_era"].to_bool(true);
 		if(era_cfg) {
 			era = era_cfg["name"].str();
 
-			ADDON_REQ result = check_addon_version_compatibility(era_cfg, game);
-			addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
+			if(require) {
+				ADDON_REQ result = check_addon_version_compatibility(era_cfg, game);
+				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
+			}
 		} else {
-			have_era = !game["require_era"].to_bool(true);
+			have_era = !require;
 			era = game["mp_era_name"].str();
 			verified = false;
 
@@ -309,6 +312,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 	if(!game["mp_scenario"].empty() && game["mp_campaign"].empty()) {
 		// Check if it's a multiplayer scenario
 		const config* level_cfg = &game_config.find_child("multiplayer", "id", game["mp_scenario"]);
+		const bool require = game["require_scenario"].to_bool(false);
 
 		// Check if it's a user map
 		if(!*level_cfg) {
@@ -341,11 +345,14 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 				}
 			}
 
-			if((*level_cfg)["require_scenario"].to_bool(false)) {
+			if(require) {
 				ADDON_REQ result = check_addon_version_compatibility((*level_cfg), game);
 				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			}
 		} else {
+			if(require) {
+				addons_outcome = std::max(addons_outcome, NEED_DOWNLOAD); // Elevate to most severe error level encountered so far
+			}
 			scenario = formatter() << make_game_type_marker(_("scenario_abbreviation^S"), true) << game["mp_scenario_name"].str();
 			info_stream << scenario;
 			verified = false;
