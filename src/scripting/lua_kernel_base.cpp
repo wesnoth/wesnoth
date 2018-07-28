@@ -550,6 +550,8 @@ lua_kernel_base::lua_kernel_base()
 
 	lua_pushcfunction(L, intf_load);
 	lua_setglobal(L, "load");
+	lua_pushnil(L);
+	lua_setglobal(L, "loadstring");
 
 	cmd_log_ << "Initializing package repository...\n";
 	// Create the package table.
