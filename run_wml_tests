@@ -130,6 +130,7 @@ run_test()
 {
   # Argument 1 is the expected error code
   # Argument 2 is the name of the test scenario
+  # Argument 3 (optional) overrides strict mode (0 to disable, 1 to enable)
 
   preopts=""
   binary="$BinPath"
@@ -166,8 +167,13 @@ run_test()
     return 100
   fi
 
+  strict_mode=$3
+  if [ -z "$strict_mode" ]; then
+    strict_mode=$StrictMode
+  fi
+
   # If running strict, then set strict level to "warning"
-  if [ "$StrictMode" -eq 1 ]; then
+  if [ "$strict_mode" -eq 1 ]; then
     opts+="--log-strict=warning "
   fi
 
