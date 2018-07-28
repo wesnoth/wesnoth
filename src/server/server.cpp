@@ -1553,8 +1553,11 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		// Update the game's description.
 		// If there is no shroud, then tell players in the lobby
 		// what the map looks like
+		const simple_wml::node& s = *wesnothd::game::starting_pos(g.level().root());
+		// fixme: the hanlder of [store_next_scenario] below searches for 'mp_shroud' in [scenario]
+		//        at least of the these cosed is likely wrong.
 		if(!data["mp_shroud"].to_bool()) {
-			desc.set_attr_dup("map_data", (*wesnothd::game::starting_pos(data.root()))["map_data"]);
+			desc.set_attr_dup("map_data", s["map_data"]);
 		}
 
 		if(const simple_wml::node* e = data.child("era")) {
@@ -1563,7 +1566,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			}
 		}
 
-		if(data.attr("require_scenario").to_bool(false)) {
+		if(s["require_scenario"].to_bool(false)) {
 			desc.set_attr("require_scenario", "yes");
 		}
 
@@ -1658,7 +1661,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			}
 		}
 
-		if(data.attr("require_scenario").to_bool(false)) {
+		if(s["require_scenario"].to_bool(false)) {
 			desc.set_attr("require_scenario", "yes");
 		}
 
