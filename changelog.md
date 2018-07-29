@@ -1,5 +1,7 @@
 ## Version 1.14.4+dev
  ### Campaigns
+   * Secrets of the Ancients:
+     * Fix dialog said by wrong unit & revert previous fix (issue #3294)
    * Tutorial:
      * Added more information to the Status Table prompt about how to access it (issue #2883).
    * Under the Burning Suns:
