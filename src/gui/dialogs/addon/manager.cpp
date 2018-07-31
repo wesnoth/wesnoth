@@ -226,10 +226,10 @@ const std::vector<addon_manager::addon_order> addon_manager::all_orders_{
 	{N_("addons_order^Type ($order)"), 4,
 	[](const addon_info& a, const addon_info& b) { return a.display_type() < b.display_type(); },
 	[](const addon_info& a, const addon_info& b) { return a.display_type() > b.display_type(); }},
-	{N_("addons_order^Last updated ($order)"), -1,
+	{N_("addons_order^Last updated ($datelike_order)"), -1,
 	[](const addon_info& a, const addon_info& b) { return a.updated < b.updated; },
 	[](const addon_info& a, const addon_info& b) { return a.updated > b.updated; }},
-	{N_("addons_order^First uploaded ($order)"), -1,
+	{N_("addons_order^First uploaded ($datelike_order)"), -1,
 	[](const addon_info& a, const addon_info& b) { return a.created < b.created; },
 	[](const addon_info& a, const addon_info& b) { return a.created > b.created; }}
 };
@@ -362,10 +362,14 @@ void addon_manager::pre_show(window& window)
 
 		// TRANSLATORS: ascending
 		symbols["order"] = _("asc");
+		// TRANSLATORS: Sorting order of dates, oldest first
+		symbols["datelike_order"] = _("oldest to newest");
 		config entry{"label", VGETTEXT(f.label.c_str(), symbols)};
 		order_dropdown_entries.push_back(entry);
 		// TRANSLATORS: descending
 		symbols["order"] = _("desc");
+		// TRANSLATORS: Sorting order of dates, newest first
+		symbols["datelike_order"] = _("newest to oldest");
 		entry["label"] = VGETTEXT(f.label.c_str(), symbols);
 		order_dropdown_entries.push_back(entry);
 	}
