@@ -1417,7 +1417,7 @@ void console_handler::do_droid()
 		command_failed(VGETTEXT("Can't droid networked side: '$side'.", symbols));
 		return;
 	} else if(menu_handler_.board().get_team(side).is_local_human()) {
-		if(menu_handler_.board().get_team(side).is_droid() ? action == " on" : action == " off") {
+		if(menu_handler_.board().get_team(side).is_droid() ? action == "on" : action == "off") {
 			return;
 		}
 		menu_handler_.board().get_team(side).toggle_droid();
