@@ -1417,7 +1417,10 @@ void console_handler::do_droid()
 		command_failed(VGETTEXT("Can't droid networked side: '$side'.", symbols));
 		return;
 	} else if(menu_handler_.board().get_team(side).is_local_human()) {
+		utils::string_map symbols;
+		symbols["side"] = std::to_string(side);
 		if(menu_handler_.board().get_team(side).is_droid() ? action == "on" : action == "off") {
+			print(get_cmd(), VGETTEXT("Side '$side' is already droided.", symbols));
 			return;
 		}
 		menu_handler_.board().get_team(side).toggle_droid();
@@ -1425,6 +1428,11 @@ void console_handler::do_droid()
 			if(playsingle_controller* psc = dynamic_cast<playsingle_controller*>(&menu_handler_.pc_)) {
 				psc->set_player_type_changed();
 			}
+		}
+		if (menu_handler_.board().get_team(side).is_droid()) {
+			print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: AI.", symbols));
+		} else {
+			print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: human.", symbols));
 		}
 	} else if(menu_handler_.board().get_team(side).is_local_ai()) {
 		//		menu_handler_.board().get_team(side).make_human();
