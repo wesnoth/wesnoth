@@ -13,9 +13,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-06-04 02:04-0700\n"
+"PO-Revision-Date: 2018-07-30 00:36-0700\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -1744,10 +1744,13 @@ msgstr ""
 
 #. [object]
 #: data/core/macros/items.cfg:521
+#, fuzzy
+#| msgid ""
+#| "This trident gives merfolk the power to throw lightning at their enemies."
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
-"Questo tridente permette a un nereide di lanciare saette contro i suoi "
-"nemici!"
+"Questo tridente conferisce ad un nereide il potere di lanciare saette contro "
+"i suoi nemici."
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:525
@@ -8420,6 +8423,26 @@ msgstr "Nascondi i piani di $player"
 #: src/whiteboard/manager.cpp:1103
 msgid "Whiteboard Options"
 msgstr "Opzioni della lavagna"
+
+#~ msgid "Use experimental PRNG combat"
+#~ msgstr "Usa combattimento sperimentale PRNG"
+
+#~ msgid ""
+#~ "Enables more determinstic chance-to-hit calculations. This is an "
+#~ "experimental feature designed to bring the observed hit/miss rate more in "
+#~ "line with the displayed percentages.\n"
+#~ "\n"
+#~ "Note: this option only affects singleplayer, and the ‘Save random seed’ "
+#~ "option must also be enabled when creating a game for this to work."
+#~ msgstr ""
+#~ "Abilita una modalità di calcolo delle possibilità di colpire un bersaglio "
+#~ "più deterministica. Questa è una caratteristica sperimentale progettata "
+#~ "per allineare il rateo successo/fallimento osservato alle percentuali "
+#~ "mostrate in gioco.\n"
+#~ "\n"
+#~ "Nota: questa opzione è attiva soltanto in modalità giocatore singolo; per "
+#~ "funzionare, deve anche assere selezionata l’opzione \"Salva seme numerico "
+#~ "casuale\" al momento della creazione di una partita."
 
 #~ msgid "Trailers"
 #~ msgstr "Anteprime"
