@@ -2194,6 +2194,7 @@ int game_lua_kernel::intf_put_recall_unit(lua_State *L)
 	t.recall_list().add(u);
 	if (lu) {
 		if (lu->on_map())
+			u->anim_comp().clear_haloes();
 			units().erase(u->get_location());
 		lu->lua_unit::~lua_unit();
 		new(lu) lua_unit(side, uid);
