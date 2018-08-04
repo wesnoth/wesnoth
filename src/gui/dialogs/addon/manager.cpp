@@ -360,14 +360,12 @@ void addon_manager::pre_show(window& window)
 	for(const auto& f : all_orders_) {
 		utils::string_map symbols;
 
-		// TRANSLATORS: ascending
-		symbols["order"] = _("asc");
+		symbols["order"] = _("ascending");
 		// TRANSLATORS: Sorting order of dates, oldest first
 		symbols["datelike_order"] = _("oldest to newest");
 		config entry{"label", VGETTEXT(f.label.c_str(), symbols)};
 		order_dropdown_entries.push_back(entry);
-		// TRANSLATORS: descending
-		symbols["order"] = _("desc");
+		symbols["order"] = _("descending");
 		// TRANSLATORS: Sorting order of dates, newest first
 		symbols["datelike_order"] = _("newest to oldest");
 		entry["label"] = VGETTEXT(f.label.c_str(), symbols);
