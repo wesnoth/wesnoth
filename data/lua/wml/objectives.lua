@@ -121,6 +121,9 @@ function wml_actions.objectives.gold_carryover.generate(cfg, default_bullet)
 			local bonus_string = wesnoth.format(_"Early finish bonus &times;$multiple.", {multiple = obj.bonus})
 			gold_carryover = color_prefix(r, g, b) .. gold_carryover_bullet
 				.. "<small>" ..  bonus_string .. "</small></span>\n"
+		elseif type(obj.bonus) == 'string' or (type(obj.bonus) == 'userdata' and getmetatable(obj.bonus) == 'translatable string') then
+			gold_carryover = color_prefix(r, g, b) .. gold_carryover_bullet
+				.. "<small>" .. _"Early finish bonus if:" .. " " ..  obj.bonus .. "</small></span>\n"
 		end
 	end
 
