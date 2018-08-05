@@ -21,149 +21,200 @@ function wesnoth.persistent_tags.objectives.read(cfg)
 	scenario_objectives[cfg.side or 0] = cfg
 end
 
+local _ = wesnoth.textdomain("wesnoth")
+local objectives_meta = {
+	-- Attempting to read an nonexistent value yields a new empty table.
+	-- This is to enable syntax like "function wesnoth.wml_actions.objectives.new_category.generate(cfg)",
+	-- without previously defining new_category.
+	__index = function(self, key)
+		rawset(self, key, {})
+		return rawget(self, key)
+	end
+}
+
+wml_actions.objectives = setmetatable({
+	win = {priority = 1, default_title = _ "Victory:"},
+	lose = {priority = 2, default_title = _ "Defeat:"},
+	gold_carryover = {priority = 9000, max = 1, default_title = _ "Gold carryover:"},
+	note = {priority = 9999, default_title = _ "Notes:"},
+}, objectives_meta)
+
+function wml_actions.objectives.win.generate(cfg, default_bullet)
+	local objective_bullet = obj.bullet or default_bullet
+	local description = obj.description or ""
+	local turn_counter = ""
+
+	if obj.show_turn_counter then
+		local current_turn = wesnoth.current.turn
+		local turn_limit = wesnoth.game_config.last_turn
+
+		if turn_limit >= current_turn then
+			local turn_count = turn_limit - current_turn + 1
+			turn_counter = _("(this turn left)", "($remaining_turns turns left)", turn_count)
+			turn_counter = wesnoth.format(turn_counter, {remaining_turns = turn_count})
+			turn_counter = "<span foreground='white'><small> " .. turn_counter .. "</small></span>"
+		end
+	end
+
+	local caption = obj.caption
+	local r = obj.red or 0
+	local g = obj.green or 255
+	local b = obj.blue or 0
+
+	local objective = color_prefix(r, g, b) .. objective_bullet
+		.. description .. turn_counter .. "</span>" .. "\n"
+
+	if caption then
+		objective = caption .. "\n" .. objective
+	end
+	
+	return objective
+end
+
+function wml_actions.objectives.lose.generate(cfg, default_bullet)
+	local objective_bullet = obj.bullet or default_bullet
+	local description = obj.description or ""
+	local turn_counter = ""
+
+	if obj.show_turn_counter then
+		local current_turn = wesnoth.current.turn
+		local turn_limit = wesnoth.game_config.last_turn
+
+		if turn_limit >= current_turn then
+			local turn_count = turn_limit - current_turn + 1
+			turn_counter = _("(this turn left)", "($remaining_turns turns left)", turn_count)
+			turn_counter = wesnoth.format(turn_counter, {remaining_turns = turn_count})
+			turn_counter = "<span foreground='white'><small> " .. turn_counter .. "</small></span>"
+		end
+	end
+	
+	local caption = obj.caption
+	local r = obj.red or 255
+	local g = obj.green or 0
+	local b = obj.blue or 0
+	
+	local objective =  color_prefix(r, g, b) .. objective_bullet.. description
+		.. turn_counter .. "</span>" .. "\n"
+
+	if caption then
+		objective = caption .. "\n" .. objective
+	end
+	
+	return objective
+end
+
+function wml_actions.objectives.gold_carryover.generate(cfg, default_bullet)
+	local gold_carryover_bullet = obj.bullet or default_bullet
+	local r = obj.red or 255
+	local g = obj.green or 255
+	local b = obj.blue or 192
+	local gold_carryover = ""
+
+	if obj.bonus ~= nil then
+		if obj.bonus then
+			gold_carryover = color_prefix(r, g, b) .. gold_carryover_bullet
+				.. "<small>" .. _"Early finish bonus." .. "</small></span>\n"
+		else
+			gold_carryover = color_prefix(r, g, b) .. gold_carryover_bullet
+			.. "<small>" .. _"No early finish bonus." .. "</small></span>\n"
+		end
+	end
+
+	if obj.carryover_percentage then
+		local carryover_amount_string
+
+		if obj.carryover_percentage == 0 then
+			carryover_amount_string = _"No gold carried over to the next scenario."
+		else
+			carryover_amount_string = wesnoth.format(_ "$percent|% of gold carried over to the next scenario.", {percent = obj.carryover_percentage})
+		end
+
+		gold_carryover = gold_carryover
+			.. color_prefix(r, g, b) .. gold_carryover_bullet
+			.. "<small>" .. carryover_amount_string .. "</small></span>\n"
+	end
+	
+	return gold_carryover
+end
+
+function wml_actions.note.generate(cfg, default_bullet)
+	local note_bullet = note.bullet or default_bullet
+	local r = note.red or 255
+	local g = note.green or 255
+	local b = note.blue or 255
+
+	if note.description then
+		return color_prefix(r, g, b) .. note_bullet .. "<small>" .. note.description .. "</small></span>\n"
+	end
+	
+	return ""
+end
+
 local function generate_objectives(cfg)
 	-- Note: when changing the text formatting, remember to check if you also
 	-- need to change the hardcoded default multiplayer objective text in
 	-- multiplayer_connect.cpp.
 
-	local _ = wesnoth.textdomain("wesnoth")
 	local objectives = ""
-	local win_objectives = ""
-	local lose_objectives = ""
-	local gold_carryover = ""
-	local notes = ""
-
-	local win_string = cfg.victory_string or _ "Victory:"
-	local lose_string = cfg.defeat_string or _ "Defeat:"
-	local gold_carryover_string = cfg.gold_carryover_string or _ "Gold carryover:"
-	local notes_string = cfg.notes_string or _ "Notes:"
-
+	local conditions = {}
 	local bullet = cfg.bullet or "&#8226; "
-
-	for obj in wml.child_range(cfg, "objective") do
+	local showed_deprecation = false
+	
+	for i = 1, #cfg do
+		local tag, obj = cfg[i][1], cfg[i][2]
 		local show_if = wml.get_child(obj, "show_if")
 		if not show_if or wesnoth.eval_conditional(show_if) then
-			local objective_bullet = obj.bullet or bullet
-			local condition = obj.condition
-			local description = obj.description or ""
-			local turn_counter = ""
-
-			if obj.show_turn_counter then
-				local current_turn = wesnoth.current.turn
-				local turn_limit = wesnoth.game_config.last_turn
-
-				if turn_limit >= current_turn then
-					local turn_count = turn_limit - current_turn + 1
-					turn_counter = _("(this turn left)", "($remaining_turns turns left)", turn_count)
-					turn_counter = wesnoth.format(turn_counter, {remaining_turns = turn_count})
-					turn_counter = "<span foreground='white'><small> " .. turn_counter .. "</small></span>"
+			if tag == "objective" then
+				if not showed_deprecation then
+					showed_deprecation = true
+					deprecated_message("[objectives][objective]", 1, "1.17", "Use [win] or [lose] instead (without the condition= key)")
 				end
+				if obj.condition ~= "lose" and obj.condition ~= "win" then
+					wesnoth.message "Unknown condition, ignoring."
+					goto next
+				end
+				tag = obj.condition
 			end
-
-			if condition == "win" then
-				local caption = obj.caption
-				local r = obj.red or 0
-				local g = obj.green or 255
-				local b = obj.blue or 0
-
-				if caption then
-					win_objectives = win_objectives .. caption .. "\n"
-				end
-
-				win_objectives = win_objectives
-					.. color_prefix(r, g, b) .. objective_bullet
-					.. description .. turn_counter .. "</span>" .. "\n"
-			elseif condition == "lose" then
-				local caption = obj.caption
-				local r = obj.red or 255
-				local g = obj.green or 0
-				local b = obj.blue or 0
-
-				if caption then
-					lose_objectives = lose_objectives .. caption .. "\n"
-				end
-
-				lose_objectives = lose_objectives
-					.. color_prefix(r, g, b) .. objective_bullet.. description
-					.. turn_counter .. "</span>" .. "\n"
-			else
-				wesnoth.message "Unknown condition, ignoring."
+			if conditions[tag] == nil then
+				conditions[tag] = {}
 			end
+			local max = wml_actions.objectives[tag].max
+			if max ~= nil and #conditions[tag] >= max then
+				wesnoth.message "Two many [" .. tag .. "], ignoring."
+				goto next
+			end
+			table.insert(conditions[tag], wml_actions.objectives[tag].generate(obj, bullet))
 		end
+		::next::
 	end
-
-	for obj in wml.child_range(cfg, "gold_carryover") do
-		local show_if = wml.get_child(obj, "show_if")
-		if not show_if or wesnoth.eval_conditional(show_if) then
-			local gold_carryover_bullet = obj.bullet or bullet
-			local r = obj.red or 255
-			local g = obj.green or 255
-			local b = obj.blue or 192
-
-			if obj.bonus ~= nil then
-				if obj.bonus then
-					gold_carryover = color_prefix(r, g, b) .. gold_carryover_bullet
-						.. "<small>" .. _"Early finish bonus." .. "</small></span>\n"
-				else
-					gold_carryover = color_prefix(r, g, b) .. gold_carryover_bullet
-					.. "<small>" .. _"No early finish bonus." .. "</small></span>\n"
-				end
-			end
-
-			if obj.carryover_percentage then
-				local carryover_amount_string
-
-				if obj.carryover_percentage == 0 then
-					carryover_amount_string = _"No gold carried over to the next scenario."
-				else
-					carryover_amount_string = wesnoth.format(_ "$percent|% of gold carried over to the next scenario.", {percent = obj.carryover_percentage})
-				end
-
-				gold_carryover = gold_carryover
-					.. color_prefix(r, g, b) .. gold_carryover_bullet
-					.. "<small>" .. carryover_amount_string .. "</small></span>\n"
-			end
+	
+	local priority_ordered = {}
+	for k,v in pairs(conditions) do
+		table.insert(priority_ordered, k)
+		local joined = ""
+		local num_conditions, min = 0, wml_actions.objectives[k].min
+		for i = 1, #v do
+			joined = joined .. v[i]
+			num_conditions = num_conditions + 1
 		end
-	end
-
-	for note in wml.child_range(cfg, "note") do
-		local show_if = wml.get_child(note, "show_if")
-		if not show_if or wesnoth.eval_conditional(show_if) then
-			local note_bullet = note.bullet or bullet
-			local r = note.red or 255
-			local g = note.green or 255
-			local b = note.blue or 255
-
-			if note.description then
-				notes = notes .. color_prefix(r, g, b) .. note_bullet .. "<small>" .. note.description .. "</small></span>\n"
-			end
+		if min ~= nil and num_conditions < min then
+			wesnoth.message "Not enough [" .. k .. "]"
 		end
+		conditions[k] = joined
 	end
+	table.sort(priority_ordered, function(a,b)
+		return wml_actions.objectives[a].priority < wml_actions.objectives[b].priority
+	end)
 
 	local summary = cfg.summary
 	if summary then
 		objectives = "<big>" .. insert_before_nl(summary, "</big>") .. "\n"
 	end
-	if win_objectives ~= "" then
+	for i = 1, #priority_ordered do
+		local tag = priority_ordered[i]
+		local caption = wml_actions.objectives[tag].default_title
 		if objectives ~= "" then objectives = objectives .. "\n" end
-		objectives = objectives .. "<big>" .. win_string .. "</big>\n" .. win_objectives
-	end
-	if lose_objectives ~= "" then
-		if objectives ~= "" then objectives = objectives .. "\n" end
-		objectives = objectives .. "<big>" .. lose_string .. "</big>\n" .. lose_objectives
-	end
-	if gold_carryover ~= "" then
-		if objectives ~= "" then objectives = objectives .. "\n" end
-		objectives = objectives .. gold_carryover_string .. "\n" .. gold_carryover
-	end
-	if notes ~= "" then
-		if objectives ~= "" then objectives = objectives .. "\n" end
-		objectives = objectives .. notes_string .. "\n" .. notes
-	end
-	local note = cfg.note
-	if note then
-		if objectives ~= "" then objectives = objectives .. "\n" end
-		objectives = objectives .. note .. "\n"
+		objectives = objectives .. "<big>" .. caption .. "</big>\n" .. conditions[tag]
 	end
 
 	return string.sub(tostring(objectives), 1, -2)
@@ -180,7 +231,7 @@ local function remove_ssf_info_from(cfg)
 	end
 end
 
-function wml_actions.objectives(cfg)
+function objectives_meta:__call(cfg)
 	if cfg.delayed_variable_substitution ~= true then
 		cfg = wml.parsed(cfg)
 	end
