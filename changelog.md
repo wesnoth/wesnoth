@@ -7,7 +7,7 @@
    * Under the Burning Suns:
      * New graphics for Eloh.
  ### Language and i18n
-   * Updated translations: British English, French, Italian
+   * Updated translations: British English, Chinese (Traditional), French, Italian
  ### User Interface
    * MacOS: fixed moving the mouse with a touchpad also scrolling GUI dialogs
 
