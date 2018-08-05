@@ -111,12 +111,16 @@ function wml_actions.objectives.gold_carryover.generate(cfg, default_bullet)
 	local gold_carryover = ""
 
 	if obj.bonus ~= nil then
-		if obj.bonus then
+		if obj.bonus == true then
 			gold_carryover = color_prefix(r, g, b) .. gold_carryover_bullet
 				.. "<small>" .. _"Early finish bonus." .. "</small></span>\n"
-		else
+		elseif obj.bonus == false then
 			gold_carryover = color_prefix(r, g, b) .. gold_carryover_bullet
 			.. "<small>" .. _"No early finish bonus." .. "</small></span>\n"
+		elseif type(obj.bonus) == 'number' then
+			local bonus_string = wesnoth.format(_"Early finish bonus &times;$multiple.", {multiple = obj.bonus})
+			gold_carryover = color_prefix(r, g, b) .. gold_carryover_bullet
+				.. "<small>" ..  bonus_string .. "</small></span>\n"
 		end
 	end
 
