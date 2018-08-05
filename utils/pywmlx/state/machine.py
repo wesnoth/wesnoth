@@ -386,6 +386,9 @@ def run(*, filebuf, fileref, fileno, startstate, waitwml=True):
             # end while xline
         # end for xline
     except UnicodeDecodeError as e:
+        if "test_cve_2018_1999023_2.cfg" in pywmlx.nodemanip.fileref:
+            # This unit test is allowed to contain invalid UTF-8. Ignore it.
+            return
         errpos = int(e.start)  # error position on file object with UTF-8 error
         errbval = hex(e.object[errpos]) # value of byte wich causes UTF-8 error
         # well... when exception occurred, the _current_lineno value
