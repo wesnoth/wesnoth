@@ -134,6 +134,16 @@ function wml_actions.objectives.gold_carryover.generate(cfg, default_bullet)
 			.. "<small>" .. carryover_amount_string .. "</small></span>\n"
 	end
 	
+	if obj.carryover_add ~- nil then
+		if obj.carryover_add then
+			gold_carryover =  gold_carryover .. color_prefix(r, g, b) .. gold_carryover_bullet
+				.. "<small>" .. _"Carryover gold will be added to the next scenario's starting gold." .. "</small></span>\n"
+		else
+			gold_carryover =  gold_carryover .. color_prefix(r, g, b) .. gold_carryover_bullet
+				.. "<small>" .. _"Carryover gold will replace the next scenario's starting gold, if larger." .. "</small></span>\n"
+		end
+	end
+	
 	return gold_carryover
 end
 
