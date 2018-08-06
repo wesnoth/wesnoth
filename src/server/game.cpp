@@ -1123,6 +1123,7 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr& user)
 		auto message = std::make_unique<simple_wml::document>();
 		simple_wml::node& message_turn = message->root().add_child("turn");
 		simple_wml::node& message_turn_command = message_turn.add_child("command");
+		message_turn_command.set_attr("undo", "no");
 		speak->copy_into(message_turn_command.add_child("speak"));
 
 		if(to_sides.empty()) {
@@ -1996,6 +1997,7 @@ void game::send_server_message(const char* message, const socket_ptr& sock, simp
 	if(started_) {
 		simple_wml::node& cmd = doc.root().add_child("turn");
 		simple_wml::node& cfg = cmd.add_child("command");
+		cmd.set_attr("undo", "no");
 		simple_wml::node& msg = cfg.add_child("speak");
 
 		msg.set_attr("id", "server");
