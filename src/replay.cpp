@@ -649,6 +649,9 @@ void replay::add_config(const config& cfg, MARK_SENT mark)
 		if(mark == MARK_AS_SENT) {
 			cmd_cfg["sent"] = true;
 		}
+		if(cmd_cfg.has_child("speak")) {
+			cmd_cfg["undo"] = false;
+		}
 	}
 }
 bool replay::add_start_if_not_there_yet()
