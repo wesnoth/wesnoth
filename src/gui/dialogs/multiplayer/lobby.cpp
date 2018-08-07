@@ -788,7 +788,7 @@ void mp_lobby::pre_show(window& window)
 			*filter_text_,
 			std::bind(&mp_lobby::game_filter_keypress_callback, this, _5));
 
-	chatbox_->room_window_open("lobby", true, false);
+	chatbox_->room_window_open(N_("lobby"), true, false);
 	chatbox_->active_window_changed();
 	game_filter_reload();
 
