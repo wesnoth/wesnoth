@@ -1562,7 +1562,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		// Update the game's description.
 		// If there is no shroud, then tell players in the lobby
 		// what the map looks like
-		const simple_wml::node& s = *wesnothd::game::starting_pos(g.level().root());
+		const simple_wml::node& s = *wesnothd::game::starting_pos(data.root());
 		// fixme: the hanlder of [store_next_scenario] below searches for 'mp_shroud' in [scenario]
 		//        at least of the these cosed is likely wrong.
 		if(!data["mp_shroud"].to_bool()) {
