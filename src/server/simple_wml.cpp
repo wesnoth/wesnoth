@@ -359,10 +359,11 @@ node::node(document& doc, node* parent, const char** str, int depth, string_span
 				// Read textdomain marker.
 				if (*endline == '#') {
 					const char* endline2 = strchr(endline + 1, '\n');
+					if (!endline2) {
+						throw error("did not find newline after '#'");
+					}
 					maybe_change_textdomain(endline, endline2, textdomain);
 					endline = endline2;
-					if (!endline)
-						throw error("did not find newline after '#'");
 					++endline;
 				}
 
@@ -771,6 +772,7 @@ void node::shift_buffers(ptrdiff_t offset)
 	for(std::vector<attribute>::iterator i = attr_.begin(); i != attr_.end(); ++i) {
 		i->key = string_span(i->key.begin() + offset, i->key.size());
 		i->value = string_span(i->value.begin() + offset, i->value.size());
+		i->textdomain = string_span(i->textdomain.begin() + offset, i->textdomain.size());
 	}
 
 	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
