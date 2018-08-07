@@ -18,7 +18,6 @@
 #include "game_initialization/lobby_data.hpp"
 #include "game_initialization/lobby_info.hpp"
 #include "gui/widgets/container_base.hpp"
-#include "tstring.hpp"
 
 #include <map>
 #include <string>
@@ -227,7 +226,7 @@ public:
 	 * 'close' button will be disabled.
 	 * @return valid ptr if the window was found or added, null otherwise
 	 */
-	lobby_chat_window* room_window_open(const t_string& room,
+	lobby_chat_window* room_window_open(const std::string& room,
 		const bool open_new, const bool allow_close = true);
 
 	/**

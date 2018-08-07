@@ -380,10 +380,10 @@ bool chatbox::room_window_active(const std::string& room)
 	return t.name == room && t.whisper == false;
 }
 
-lobby_chat_window* chatbox::room_window_open(const t_string& room, const bool open_new, const bool allow_close)
+lobby_chat_window* chatbox::room_window_open(const std::string& room, const bool open_new, const bool allow_close)
 {
-	return find_or_create_window(room.base_str(), false, open_new, allow_close,
-		VGETTEXT("Room <i>“$name”</i> joined", { { "name", room } }));
+	return find_or_create_window(room, false, open_new, allow_close,
+		VGETTEXT("Room <i>“$name”</i> joined", { { "name", translation::dsgettext("wesnoth-lib", room.c_str()) } }));
 }
 
 lobby_chat_window* chatbox::whisper_window_open(const std::string& name, bool open_new)
@@ -433,8 +433,14 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 	// Add a new room window tab.
 	//
 	data.clear();
+	item.clear();
 
-	item["label"] = whisper ? font::escape_text("<" + name + ">") : name;
+	if(!whisper) {
+		item["label"] = translation::dsgettext("wesnoth-lib", name.c_str());
+	} else {
+		item["label"] = "<" + name + ">";
+	}
+
 	data.emplace("room", item);
 
 	grid& row_grid = roomlistbox_->add_row(data);
