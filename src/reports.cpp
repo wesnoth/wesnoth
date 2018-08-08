@@ -14,6 +14,7 @@
 
 #include "actions/attack.hpp"
 #include "attack_prediction.hpp"
+#include "desktop/battery_info.hpp"
 #include "font/pango/escape.hpp"
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
@@ -35,6 +36,7 @@
 #include <ctime>
 #include <iomanip>
 #include <boost/dynamic_bitset.hpp>
+#include <boost/lexical_cast.hpp>
 
 #include "utils/io.hpp"
 
@@ -1541,6 +1543,18 @@ REPORT_GENERATOR(report_clock, /*rc*/)
 	ss << utils::put_time(std::localtime(&t), format);
 
 	return text_report(ss.str(), _("Clock"));
+}
+
+
+REPORT_GENERATOR(battery, /*rc*/)
+{
+    std::ostringstream ss;
+    std::string battery = "";
+    if (desktop::battery_info::does_device_have_battery()) {
+        ss << boost::lexical_cast<std::string>(desktop::battery_info::get_battery_percentage()) + "%";
+    }
+    
+    return text_report(ss.str(), _("Battery"));
 }
 
 REPORT_GENERATOR(report_countdown, rc)
