@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1EF6CE8214D9846D00ECBE58 /* mp_host_game_prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EF6CE8014D9846D00ECBE58 /* mp_host_game_prompt.cpp */; };
+		46181DCF2119F73A00908BC2 /* apple_battery_info.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46181DCE2119F73A00908BC2 /* apple_battery_info.mm */; };
+		46181DD22119F74D00908BC2 /* battery_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46181DD12119F74C00908BC2 /* battery_info.cpp */; };
 		461CE967205C3A8700E6E98F /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
 		463896712034180900075E54 /* deprecation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 463896702034180900075E54 /* deprecation.cpp */; };
 		463896722034180900075E54 /* deprecation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 463896702034180900075E54 /* deprecation.cpp */; };
@@ -104,6 +106,7 @@
 		46B2A7C12028DDA2006C2323 /* libpng16.16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C243118EF07B4001FA499 /* libpng16.16.dylib */; };
 		46BAF785206672250004711F /* libboost_chrono-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BAF784206672240004711F /* libboost_chrono-mt.dylib */; };
 		46BAF787206672300004711F /* libboost_timer-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BAF786206672300004711F /* libboost_timer-mt.dylib */; };
+		46BCC905211A1E68003BDB8C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BCC904211A1E68003BDB8C /* IOKit.framework */; };
 		46BED4D3205060EA00842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46BED4D4205060EA00842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46BED4D52050611600842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
@@ -1437,6 +1440,10 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1EF6CE8014D9846D00ECBE58 /* mp_host_game_prompt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_host_game_prompt.cpp; sourceTree = "<group>"; };
 		1EF6CE8114D9846D00ECBE58 /* mp_host_game_prompt.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_host_game_prompt.hpp; sourceTree = "<group>"; };
+		46181DCD2119F73A00908BC2 /* apple_battery_info.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = apple_battery_info.hpp; path = ../../src/desktop/apple_battery_info.hpp; sourceTree = "<group>"; };
+		46181DCE2119F73A00908BC2 /* apple_battery_info.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = apple_battery_info.mm; path = ../../src/desktop/apple_battery_info.mm; sourceTree = "<group>"; };
+		46181DD02119F74C00908BC2 /* battery_info.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = battery_info.hpp; sourceTree = "<group>"; };
+		46181DD12119F74C00908BC2 /* battery_info.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = battery_info.cpp; sourceTree = "<group>"; };
 		4638966F2034180800075E54 /* deprecation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = deprecation.hpp; sourceTree = "<group>"; };
 		463896702034180900075E54 /* deprecation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = deprecation.cpp; sourceTree = "<group>"; };
 		4649B879202886F000827CFB /* test_irdya_date.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_irdya_date.cpp; sourceTree = "<group>"; };
@@ -1449,6 +1456,7 @@
 		469EC8EB20287C49008A0CAD /* surrender_quit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = surrender_quit.hpp; sourceTree = "<group>"; };
 		46BAF784206672240004711F /* libboost_chrono-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_chrono-mt.dylib"; path = "lib/libboost_chrono-mt.dylib"; sourceTree = "<group>"; };
 		46BAF786206672300004711F /* libboost_timer-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_timer-mt.dylib"; path = "lib/libboost_timer-mt.dylib"; sourceTree = "<group>"; };
+		46BCC904211A1E68003BDB8C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		46BED4D0205060EA00842FA5 /* crypt_blowfish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt_blowfish.h; sourceTree = "<group>"; };
 		46BED4D1205060EA00842FA5 /* crypt_blowfish.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypt_blowfish.c; sourceTree = "<group>"; };
 		46BED4D92050710800842FA5 /* scenario-story.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "scenario-story.cfg"; sourceTree = "<group>"; };
@@ -2765,6 +2773,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46BCC905211A1E68003BDB8C /* IOKit.framework in Frameworks */,
 				ECA9E7471CA20AA800A947D6 /* libreadline.7.0.dylib in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				F4D2A99614DAED0E00CAFF31 /* CoreFoundation.framework in Frameworks */,
@@ -2880,6 +2889,8 @@
 		080E96DDFE201D6D7F000001 /* Mac-specific */ = {
 			isa = PBXGroup;
 			children = (
+				46181DCD2119F73A00908BC2 /* apple_battery_info.hpp */,
+				46181DCE2119F73A00908BC2 /* apple_battery_info.mm */,
 				F40A13BD1A3AA56800C4D071 /* apple_notification.hpp */,
 				F40A13BB1A3A88BA00C4D071 /* apple_notification.mm */,
 				46F54C28211DFB9100374A1C /* apple_version.hpp */,
@@ -3231,6 +3242,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				46BCC904211A1E68003BDB8C /* IOKit.framework */,
 				1058C7A2FEA54F0111CA2CBB /* Included Frameworks */,
 				ECF9D43F19F4026D00E6C9D9 /* libboost_filesystem-mt.dylib */,
 				F4EF0D4B13AD4D53003C701D /* libboost_iostreams-mt.dylib */,
@@ -3614,6 +3626,8 @@
 		91B621A41B76A6E900B00E0F /* desktop */ = {
 			isa = PBXGroup;
 			children = (
+				46181DD12119F74C00908BC2 /* battery_info.cpp */,
+				46181DD02119F74C00908BC2 /* battery_info.hpp */,
 				EC49A38119F34F1200E78528 /* clipboard.cpp */,
 				91B621B81B76B2AB00B00E0F /* clipboard.hpp */,
 				EC74C119197576F500B85A1A /* notifications.cpp */,
@@ -5298,6 +5312,7 @@
 				B54AC6DD0FEA9EB5006F6FBD /* stage.cpp in Sources */,
 				620EC87414FEEE6D006BBD1F /* state.cpp in Sources */,
 				B5599AFE0EC62181008DD061 /* statistics.cpp in Sources */,
+				46181DD22119F74D00908BC2 /* battery_info.cpp in Sources */,
 				B5599B080EC62181008DD061 /* string_utils.cpp in Sources */,
 				F4E4E0B11367241E001C7528 /* suppose_dead.cpp in Sources */,
 				EC84246C18F30D9100FC1EEF /* synced_checkup.cpp in Sources */,
@@ -5384,6 +5399,7 @@
 				B5A9BD750ECA805A002BE442 /* widget.cpp in Sources */,
 				B597EC5C0FC08E0100CE81F5 /* window_builder.cpp in Sources */,
 				B5A9BD760ECA805A002BE442 /* window.cpp in Sources */,
+				46181DCF2119F73A00908BC2 /* apple_battery_info.mm in Sources */,
 				EC44E383181DDAF90037A62F /* wmi_manager.cpp in Sources */,
 				ECF3A0B318AD3E8800DD643A /* wml_error.cpp in Sources */,
 				B5599AD30EC62181008DD061 /* wml_exception.cpp in Sources */,
