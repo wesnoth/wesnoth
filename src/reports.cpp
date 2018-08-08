@@ -1549,7 +1549,7 @@ REPORT_GENERATOR(report_clock, /*rc*/)
 REPORT_GENERATOR(battery, /*rc*/)
 {
     std::ostringstream ss;
-    std::string battery = "";
+    
     if (desktop::battery_info::does_device_have_battery()) {
         ss << boost::lexical_cast<std::string>((int)desktop::battery_info::get_battery_percentage()) + "%";
     }
