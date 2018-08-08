@@ -370,6 +370,7 @@ void game_display::draw_sidebar()
 		return;
 
 	refresh_report("report_clock");
+    refresh_report("report_battery");
 	refresh_report("report_countdown");
 
 	if (invalidateGameStatus_)
