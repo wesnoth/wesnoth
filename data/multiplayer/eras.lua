@@ -41,7 +41,8 @@ res.turns_over_advantage = function()
 
 	local income_factor = 5
 
-	local side_num = -1
+	local winning_sides = {}
+	local tie = true
 	local total_score = -1
 	local side_comparison = ""
 	local color = "#000000"
@@ -76,14 +77,23 @@ res.turns_over_advantage = function()
 				r, g, b, side, income, units, team.gold, total)
 				if total > total_score then
 					color = string.format("#%02x%02x%02x", r, g, b)
-					side_num = side
+					winning_sides = {side}
+					tie = false
 					total_score = total
+				elseif total == total_score then
+					table.insert(winning_sides, side)
+					tie = true
 				end
 			end
 		end
 	end
 
-	side_comparison = side_comparison .. string.format( "\n" .. tostring( _ "<span foreground='%s'>Side %d</span> has the advantage."), color, side_num)
+	if tie then
+		local last_winning_side = table.remove(winning_sides)
+		side_comparison = side_comparison .. string.format( "\n" .. tostring( _ "Sides %s and %d are tied."), table.concat(winning_sides, ", "), last_winning_side)
+	else
+		side_comparison = side_comparison .. string.format( "\n" .. tostring( _ "<span foreground='%s'>Side %d</span> has the advantage."), color, winning_sides[1])
+	end
 	wesnoth.fire("message", { message = side_comparison, speaker = "narrator", image = "wesnoth-icon.png"})
 end
 return res
