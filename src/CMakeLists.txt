@@ -254,11 +254,12 @@ endif(ENABLE_GAME OR ENABLE_TESTS)
 
 GetSources("libwesnoth" libwesnoth-game_STAT_SRC)
 
-# On windows only, this file needs to be linked, as its header is included #ifdef win32.
+# On windows only, these files need to be linked, as their headers are included #ifdef win32.
 if(WIN32)
 	set(libwesnoth-game_STAT_SRC
 		${libwesnoth-game_STAT_SRC}
 		desktop/windows_tray_notification.cpp
+		desktop/windows_battery_info.cpp
 	)
 endif(WIN32)
 
