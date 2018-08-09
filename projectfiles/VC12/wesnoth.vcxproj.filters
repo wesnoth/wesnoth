@@ -1554,6 +1554,12 @@
     </ClCompile>
     <ClCompile Include="..\..\src\deprecation.cpp" />
     <ClCompile Include="..\..\src\chat_log.cpp" />
+    <ClCompile Include="..\..\src\desktop\battery_info.cpp">
+      <Filter>Desktop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\desktop\windows_battery_info.cpp">
+      <Filter>Desktop</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -3019,6 +3025,12 @@
     <ClInclude Include="..\..\src\chat_log.hpp" />
     <ClInclude Include="..\..\src\terrain\movement.hpp">
       <Filter>Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\desktop\battery_info.hpp">
+      <Filter>Desktop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\desktop\windows_battery_info.hpp">
+      <Filter>Desktop</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
