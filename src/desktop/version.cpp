@@ -124,40 +124,40 @@ std::string os_version()
 	//
 	// Standard Mac OS X version
 	//
-    
-    std::string version_string = "Apple";
+	
+	std::string version_string = "Apple";
 
 	static const std::string version_plist = "/System/Library/CoreServices/SystemVersion.plist";
 	static const std::string defaults_bin = "/usr/bin/defaults";
 
 	if(filesystem::file_exists(defaults_bin) && filesystem::file_exists(version_plist)) {
 		static const std::string cmdline_version = defaults_bin + " read " + version_plist + " ProductUserVisibleVersion";
-        static const std::string cmdline_build = defaults_bin + " read " + version_plist + " ProductBuildVersion";
+		static const std::string cmdline_build = defaults_bin + " read " + version_plist + " ProductBuildVersion";
 
 		scoped_posix_pipe p_version(popen(cmdline_version.c_str(), "r"));
 		const std::string& version = read_pipe_line(p_version);
-        
-        scoped_posix_pipe p_build(popen(cmdline_build.c_str(), "r"));
-        const std::string& build = read_pipe_line(p_build);
+		
+		scoped_posix_pipe p_build(popen(cmdline_build.c_str(), "r"));
+		const std::string& build = read_pipe_line(p_build);
 
 		if(!version.empty()) {
-            const version_info version_info(version);
-            
+			const version_info version_info(version);
+			
 			if (version_info.major_version() == 10 && version_info.minor_version() < 12) {
-                version_string += " OS X ";
+				version_string += " OS X ";
 			} else {
 				 version_string += " macOS ";
 			}
-            
-            version_string += version;
+			
+			version_string += version;
 		}
-        
-        if(!build.empty()) {
-            version_string += " (" + build + ")";
-        }
-    }
-    
-    return version_string;
+		
+		if(!build.empty()) {
+			version_string += " (" + build + ")";
+		}
+	}
+	
+	return version_string;
 
 #else
 
