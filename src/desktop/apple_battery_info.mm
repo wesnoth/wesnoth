@@ -76,7 +76,7 @@ inline NSDictionary* get_iops_battery_info() {
     CFRelease(list);
     CFRelease(info);
 
-    return (NSDictionary*) battery;
+    return static_cast<NSDictionary*>(battery);
 }
 #endif
 
