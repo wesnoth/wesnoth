@@ -1686,6 +1686,9 @@ def global_sanity_check(filename, lines):
     in_unstore = False
     in_not = False
     in_clear = False
+    in_fire_event = False
+    in_primary_unit = False
+    in_secondary_unit = False
     in_checkbox = False
     in_combo = False
     in_entry = False
@@ -1817,6 +1820,20 @@ def global_sanity_check(filename, lines):
             in_clear = True
         elif "[/clear_variable]" in lines[i]:
             in_clear = False
+        # starting from 1.13.6, [fire_event] supports id= fields
+        # ignore them, but don't ignore [primary_unit] and [secondary_unit]
+        elif "[fire_event]" in lines[i]:
+            in_fire_event = True
+        elif "[/fire_event]" in lines[i]:
+            in_fire_event = False
+        elif "[primary_unit]" in lines[i]:
+            in_primary_unit = True
+        elif "[/primary_unit]" in lines[i]:
+            in_primary_unit = False
+        elif "[secondary_unit]" in lines[i]:
+            in_secondary_unit = True
+        elif "[/secondary_unit]" in lines[i]:
+            in_secondary_unit = False
         # sub-tags of [options] tag
         elif "[checkbox]" in lines[i]:
             in_checkbox = True
@@ -2029,7 +2046,8 @@ def global_sanity_check(filename, lines):
                          and not in_clear_menu_item and not directly_in_event[-1] \
                          and not in_time_area and not in_trait and not in_checkbox \
                          and not in_combo and not in_entry and not in_slider \
-                         and not in_map_generator:
+                         and not in_map_generator \
+                         and not (in_fire_event and not (in_primary_unit or in_secondary_unit)):
                         ids = value.split(",")
                         for id_ in ids:
                             # removal of leading whitespace of items in comma-separated lists
