@@ -1719,7 +1719,9 @@ def global_sanity_check(filename, lines):
         elif "[/multiplayer]" in lines[i]:
             in_multiplayer = False
         else:
-            if re.search(r"\[[a-z]", lines[i]):
+            # the + check is needed for augmentation tags
+            # otherwise subtag_depth may become negative
+            if re.search(r"\[\+?[a-z]", lines[i]):
                 subtag_depth += 1
             if "[/" in lines[i]:
                 subtag_depth -= 1
