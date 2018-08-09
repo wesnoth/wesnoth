@@ -989,7 +989,7 @@ void server::add_player(socket_ptr socket, const wesnothd::player& player)
 		send_server_message(socket, motd_);
 	}
 	if(version_info(player.version()) < secure_version ){
-		send_server_message(socket, "You are using version " + player.version() + " which has known security issues that can be used to compromise your computer. We strongly recommend updating to a newer Wesnoth version!");
+		send_server_message(socket, "You are using version " + player.version() + " which has known security issues that can be used to compromise your computer. We strongly recommend updating to a Wesnoth version " + secure_version.str() + " or newer!");
 	}
 	if(version_info(player.version()) < version_info(recommended_version_)) {
 		send_server_message(socket, "A newer Wesnoth version, " + recommended_version_ + ", is out!");
