@@ -14,6 +14,10 @@
 
 #include "battery_info.hpp"
 
+#ifdef _WIN32
+#include "desktop/windows_battery_info.hpp"
+#endif
+
 #ifdef __APPLE__
 #include "apple_battery_info.hpp"
 #endif
@@ -24,7 +28,9 @@ namespace battery_info {
         
 bool does_device_have_battery()
 {
-#if defined(__APPLE__)
+#if defined(_WIN32)
+	return windows_battery_info::does_device_have_battery();
+#elif defined(__APPLE__)
     return apple_battery_info::does_device_have_battery();
 #else
     return false;
@@ -33,7 +39,9 @@ bool does_device_have_battery()
 
 double get_battery_percentage()
 {
-#if defined(__APPLE__)
+#if defined(_WIN32)
+	return windows_battery_info::get_battery_percentage();
+#elif defined(__APPLE__)
     return apple_battery_info::get_battery_percentage();
 #else
     return -1;
