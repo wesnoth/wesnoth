@@ -615,6 +615,7 @@ for env in [test_env, client_env, env]:
 
     if env["PLATFORM"] == 'darwin':            # Mac OS X
         env.Append(FRAMEWORKS = "Cocoa")            # Cocoa GUI
+        env.Append(FRAMEWORKS = "IOKit")            # IOKit
 
 if not env['static_test']:
     test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
