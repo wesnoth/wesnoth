@@ -36,7 +36,6 @@ matrix:
 
     - os: osx
       compiler: clang
-      osx_image: xcode9.2
       env: TOOL=xcodebuild
 
 install:
