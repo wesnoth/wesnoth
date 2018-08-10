@@ -11,10 +11,10 @@
 extern "C" int wesnoth_main(int argc, char **argv);
 static std::vector<char*> gArgs;
 
-@interface SDLApplication : NSApplication
+@interface WesnothSDLApplication : NSApplication
 @end
 
-@implementation SDLApplication
+@implementation WesnothSDLApplication
 /* Invoked from the Quit menu item */
 - (void)terminate:(id)sender
 {
@@ -113,7 +113,7 @@ int main (int argc, char **argv)
 	}
 	gArgs.push_back(nullptr);
 
-	[SDLApplication sharedApplication];
+	[WesnothSDLApplication sharedApplication];
 
 	// loadNibNamed:owner:topLevelObjects was introduced in 10.8 (Mountain Lion).
 	// In order to support Lion and Mountain Lion +, we need to see which OS we're
