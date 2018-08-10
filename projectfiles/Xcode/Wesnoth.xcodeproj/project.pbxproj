@@ -110,6 +110,7 @@
 		46BED4DA2050711600842FA5 /* scenario-story.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 46BED4D92050710800842FA5 /* scenario-story.cfg */; };
 		46EEFB7220872C5E00E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB7020872C5D00E1E75A /* chat_log.cpp */; };
 		46EEFB7320872C5E00E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB7020872C5D00E1E75A /* chat_log.cpp */; };
+		46F54C27211DFB7200374A1C /* apple_version.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46F54C26211DFB7200374A1C /* apple_version.mm */; };
 		46F57084205FCE34007031BF /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
 		46F57085205FCE48007031BF /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46F57086205FCE79007031BF /* hash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8AD121359A600CFBDAB /* hash.cpp */; };
@@ -1455,6 +1456,8 @@
 		46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = irdya_datetime.cpp; sourceTree = "<group>"; };
 		46EEFB7020872C5D00E1E75A /* chat_log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chat_log.cpp; sourceTree = "<group>"; };
 		46EEFB7120872C5D00E1E75A /* chat_log.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = chat_log.hpp; sourceTree = "<group>"; };
+		46F54C26211DFB7200374A1C /* apple_version.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = apple_version.mm; path = ../../src/desktop/apple_version.mm; sourceTree = "<group>"; };
+		46F54C28211DFB9100374A1C /* apple_version.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = apple_version.hpp; path = ../../src/desktop/apple_version.hpp; sourceTree = "<group>"; };
 		46F5709D205FF856007031BF /* fs_commit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fs_commit.hpp; sourceTree = "<group>"; };
 		46F5709E205FF856007031BF /* addon_utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = addon_utils.cpp; sourceTree = "<group>"; };
 		46F5709F205FF856007031BF /* blacklist.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = blacklist.hpp; sourceTree = "<group>"; };
@@ -2880,6 +2883,8 @@
 			children = (
 				F40A13BD1A3AA56800C4D071 /* apple_notification.hpp */,
 				F40A13BB1A3A88BA00C4D071 /* apple_notification.mm */,
+				46F54C28211DFB9100374A1C /* apple_version.hpp */,
+				46F54C26211DFB7200374A1C /* apple_version.mm */,
 				B559986A0EC616B3008DD061 /* SDLMain.h */,
 				B559986B0EC616B3008DD061 /* SDLMain.mm */,
 			);
@@ -4996,6 +5001,7 @@
 				62D24F321519987400350848 /* context_manager.cpp in Sources */,
 				EC59F2611A4529D2001910CB /* context.cpp in Sources */,
 				B597EBEE0FC082AB00CE81F5 /* contexts.cpp in Sources */,
+				46F54C27211DFB7200374A1C /* apple_version.mm in Sources */,
 				B54AC6D90FEA9EB5006F6FBD /* contexts.cpp in Sources */,
 				B54AC6E00FEA9EB5006F6FBD /* contexts.cpp in Sources */,
 				B5A9BD5E0ECA805A002BE442 /* styled_widget.cpp in Sources */,
