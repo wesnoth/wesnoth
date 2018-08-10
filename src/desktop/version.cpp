@@ -151,6 +151,22 @@ std::string os_version()
 		if(!ver.empty()) {
 			return ver;
 		}
+	} else {
+		
+	//
+	// POSIX uname version fallback.
+	//
+		
+		utsname u;
+		
+		if(uname(&u) != 0) {
+			ERR_DU << "os_version: uname error (" << strerror(errno) << ")\n";
+		}
+		
+		return formatter() 	<< u.sysname << ' '
+							<< u.release << ' '
+							<< u.version << ' '
+							<< u.machine;
 	}
 
 #elif defined(_WIN32)
