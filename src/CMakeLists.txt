@@ -114,6 +114,9 @@ if(X11_FOUND)
 	set(game-external-libs ${game-external-libs} ${X11_LIBRARIES})
 endif(X11_FOUND)
 
+if(APPLE)
+	set(game-external-libs ${game-external-libs} "-framework IOKit")
+endif(APPLE)
 ########### Set Library mode ###############
 
 if(ENABLE_SHARED_LIBRARIES)
