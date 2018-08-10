@@ -23,17 +23,16 @@
 #endif
 
 namespace desktop {
-    
 namespace battery_info {
-        
+
 bool does_device_have_battery()
 {
 #if defined(_WIN32)
 	return windows_battery_info::does_device_have_battery();
 #elif defined(__APPLE__)
-    return apple_battery_info::does_device_have_battery();
+	return desktop::battery_info::apple::does_device_have_battery();
 #else
-    return false;
+	return false;
 #endif
 }
 
@@ -42,12 +41,11 @@ double get_battery_percentage()
 #if defined(_WIN32)
 	return windows_battery_info::get_battery_percentage();
 #elif defined(__APPLE__)
-    return apple_battery_info::get_battery_percentage();
+	return desktop::battery_info::apple::get_battery_percentage();
 #else
-    return -1;
+	return -1;
 #endif
 }
-        
+
 } // end namespace battery_info
-    
 } // end namespace desktop

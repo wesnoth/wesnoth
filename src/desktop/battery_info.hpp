@@ -15,14 +15,12 @@
 #pragma once
 
 namespace desktop {
-    
 namespace battery_info {
-        
+
 /// @return true if the device has a battery, false otherwise.
 bool does_device_have_battery();
 /// @return battery charge as a number between 0 and 100.
 double get_battery_percentage();
-        
+
 } // end namespace battery_info
-    
 } // end namespace desktop
