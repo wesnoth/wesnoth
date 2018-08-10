@@ -32,10 +32,10 @@ public:
 	void run_lua_tag(const config& cfg);
 
 	/** Runs a plain script. Doesn't throw lua_error.*/
-	void run(char const *prog, int nArgs = 0);
+	void run(char const *prog, const std::string& name, int nArgs = 0);
 
 	/** Runs a plain script, but reports errors by throwing lua_error.*/
-	void throwing_run(char const * prog, int nArgs);
+	void throwing_run(char const * prog, const std::string& name, int nArgs);
 
 	/** Tests if a program resolves to an expression, and pretty prints it if it is, otherwise it runs it normally. Throws exceptions.*/
 	void interactive_run(char const * prog);
@@ -122,10 +122,10 @@ protected:
 	// Execute a protected call, taking a lua_State as argument. For functions pushed into the lua environment, this version should be used, or the function cannot be used by coroutines without segfaulting (since they have a different lua_State pointer). This version is called by the above version.
 	static bool protected_call(lua_State * L, int nArgs, int nRets, error_handler);
 	// Load a string onto the stack as a function. Returns true if successful, error handler is called if not.
-	bool load_string(char const * prog, error_handler);
+	bool load_string(char const * prog, const std::string& name, error_handler);
 
 	virtual bool protected_call(int nArgs, int nRets); 	// select default error handler polymorphically
-	virtual bool load_string(char const * prog);		// select default error handler polymorphically
+	virtual bool load_string(char const * prog, const std::string& name);		// select default error handler polymorphically
 
 	// dofile (using lua_fileops)
 	int intf_dofile(lua_State * L);

@@ -394,7 +394,7 @@ bool game_launcher::init_lua_script()
 
 			std::cerr << "\nRunning lua script: " << *cmdline_opts_.script_file << std::endl;
 
-			plugins_manager::get()->get_kernel_base()->run(full_script.c_str());
+			plugins_manager::get()->get_kernel_base()->run(full_script.c_str(), *cmdline_opts_.script_file);
 		} else {
 			std::cerr << "Encountered failure when opening script '" << *cmdline_opts_.script_file << "'\n";
 			error = true;

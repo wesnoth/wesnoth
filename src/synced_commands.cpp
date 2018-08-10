@@ -556,7 +556,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_lua, child, use_undo, /*show*/, /*error_ha
 		resources::undo_stack->clear();
 	}
 	debug_cmd_notification("lua");
-	resources::lua_kernel->run(child["code"].str().c_str());
+	resources::lua_kernel->run(child["code"].str().c_str(), "debug command");
 	resources::controller->pump().flush_messages();
 
 	return true;

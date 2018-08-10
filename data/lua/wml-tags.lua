@@ -267,7 +267,8 @@ end
 
 function wml_actions.lua(cfg)
 	cfg = wml.shallow_literal(cfg)
-	local bytecode, message = load(cfg.code or "")
+	--fixme untested 
+	local bytecode, message = load(cfg.code or "", cfg.name or "")
 	if not bytecode then error("~lua:" .. message, 0) end
 	bytecode(wml.get_child(cfg, "args"))
 end

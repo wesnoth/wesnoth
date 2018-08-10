@@ -670,10 +670,10 @@ bool lua_kernel_base::protected_call(int nArgs, int nRets)
 	return this->protected_call(nArgs, nRets, eh);
 }
 
-bool lua_kernel_base::load_string(char const * prog)
+bool lua_kernel_base::load_string(char const * prog, const std::string& name)
 {
 	error_handler eh = std::bind(&lua_kernel_base::log_error, this, _1, _2 );
-	return this->load_string(prog, eh);
+	return this->load_string(prog, name, eh);
 }
 
 bool lua_kernel_base::protected_call(int nArgs, int nRets, error_handler e_h)
@@ -716,11 +716,11 @@ bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, error_
 	return true;
 }
 
-bool lua_kernel_base::load_string(char const * prog, error_handler e_h)
+bool lua_kernel_base::load_string(char const * prog, const std::string& name, error_handler e_h)
 {
 	// pass 't' to prevent loading bytecode which is unsafe and can be used to escape the sandbox.
 	// todo: maybe allow a 'name' parameter to give better error messages.
-	int errcode = luaL_loadbufferx(mState, prog, strlen(prog), /*name*/ prog, "t");
+	int errcode = luaL_loadbufferx(mState, prog, strlen(prog), name.empty() ? name.c_str() : prog, "t");
 	if (errcode != LUA_OK) {
 		char const * msg = lua_tostring(mState, -1);
 		std::string message = msg ? msg : "null string";
@@ -753,24 +753,24 @@ void lua_kernel_base::run_lua_tag(const config& cfg)
 		luaW_pushconfig(this->mState, args);
 		++nArgs;
 	}
-	this->run(cfg["code"].str().c_str(), nArgs);
+	this->run(cfg["code"].str().c_str(), cfg["name"].str(), nArgs);
 }
 // Call load_string and protected call. Make them throw exceptions.
 //
-void lua_kernel_base::throwing_run(const char * prog, int nArgs)
+void lua_kernel_base::throwing_run(const char * prog, const std::string& name, int nArgs)
 {
 	cmd_log_ << "$ " << prog << "\n";
 	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, _1, _2 );
-	this->load_string(prog, eh);
+	this->load_string(prog, name, eh);
 	lua_insert(mState, -nArgs - 1);
 	this->protected_call(nArgs, 0, eh);
 }
 
 // Do a throwing run, but if we catch a lua_error, reformat it with signature for this function and log it.
-void lua_kernel_base::run(const char * prog, int nArgs)
+void lua_kernel_base::run(const char * prog, const std::string& name, int nArgs)
 {
 	try {
-		this->throwing_run(prog, nArgs);
+		this->throwing_run(prog, name, nArgs);
 	} catch (const game::lua_error & e) {
 		cmd_log_ << e.what() << "\n";
 		lua_kernel_base::log_error(e.what(), "In function lua_kernel::run()");
@@ -787,9 +787,9 @@ void lua_kernel_base::interactive_run(char const * prog) {
 
 	try {
 		// Try to load the experiment without syntax errors
-		this->load_string(experiment.c_str(), eh);
+		this->load_string(experiment.c_str(), "interactive", eh);
 	} catch (const game::lua_error &) {
-		this->throwing_run(prog, 0);	// Since it failed, fall back to the usual throwing_run, on the original input.
+		this->throwing_run(prog, "interactive", 0);	// Since it failed, fall back to the usual throwing_run, on the original input.
 		return;
 	}
 	// experiment succeeded, now run but log normally.
