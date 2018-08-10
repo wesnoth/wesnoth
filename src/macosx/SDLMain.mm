@@ -66,7 +66,7 @@ static std::vector<char*> gArgs;
 	setenv ("PANGO_RC_FILE", "./pangorc", 1);
 	setenv ("PANGO_SYSCONFDIR", ".", 1);
 	setenv ("PANGO_LIBDIR", ".", 1);
-	setenv ("FONTCONFIG_PATH", ".", 1);
+	setenv ("FONTCONFIG_PATH", "./fonts/", 1);
 	setenv ("FONTCONFIG_FILE", "fonts.conf", 1);
 
 	int status;
