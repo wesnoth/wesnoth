@@ -16,9 +16,13 @@
 
 #include "battery_info.hpp"
 
-namespace apple_battery_info {
-    
+namespace desktop {
+namespace battery_info {
+namespace apple {
+
 bool does_device_have_battery();
 double get_battery_percentage();
-    
-} // end namespace apple_battery_info
+
+} // end namespace apple
+} // end namespace battery_info
+} // end namespace desktop
