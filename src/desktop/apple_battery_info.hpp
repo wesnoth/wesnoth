@@ -21,4 +21,4 @@ namespace apple_battery_info {
 bool does_device_have_battery();
 double get_battery_percentage();
     
-} // end namespace battery_info
+} // end namespace apple_battery_info
