@@ -140,9 +140,9 @@ function ca_fast_attack_utils.single_unit_info(unit_proxy)
                         if (sp[2].id == 'charge') then a.charge = true end
                     end
                 else
-                    -- magical, marksman
+                    -- magical, marksman, custom chance-to-hit specials
                     if (sp[1] == 'chance_to_hit') then
-                        a[sp[2].id] = true
+                        a[sp[2].id or 'no_id'] = true
                     else
                         a[sp[1]] = true
                     end
