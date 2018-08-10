@@ -278,7 +278,7 @@ create_engine::create_engine(saved_game& state)
 	init_extras(ERA);
 	init_extras(MOD);
 
-	state_.mp_settings().saved_game = false;
+	state_.mp_settings().saved_game = mp_game_settings::SAVED_GAME_MODE::NONE;
 
 	for(const std::string& str : preferences::modifications(state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)) {
 		if(game_config_.find_child("modification", "id", str)) {
@@ -474,7 +474,7 @@ void create_engine::prepare_for_saved_game()
 
 	// The save might be a start-of-scenario save so make sure we have the scenario data loaded.
 	state_.expand_scenario();
-	state_.mp_settings().saved_game = true;
+	state_.mp_settings().saved_game = state_.is_mid_game_save() ? mp_game_settings::SAVED_GAME_MODE::MIDGAME : mp_game_settings::SAVED_GAME_MODE::SCENARIO_START;
 }
 
 void create_engine::prepare_for_other()

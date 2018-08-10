@@ -64,7 +64,7 @@ struct mp_connect_fixture {
 		state->mp_settings().mp_era = "era_default";
 		state->mp_settings().name = "multiplayer_The_Freelands";
 		state->mp_settings().use_map_settings = true;
-		state->mp_settings().saved_game = false;
+		state->mp_settings().saved_game = mp_game_settings::SAVED_GAME_MODE::NONE;
 
 		state->set_scenario(config_manager->
 			game_config().find_child("multiplayer", "id", state->mp_settings().name));
@@ -115,7 +115,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
-	state->mp_settings().saved_game = false;
+	state->mp_settings().saved_game = mp_game_settings::SAVED_GAME_MODE::NONE;
 	std::unique_ptr<test_connect_engine>
 		connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
@@ -325,7 +325,7 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings )
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = false;
-	state->mp_settings().saved_game = false;
+	state->mp_settings().saved_game = mp_game_settings::SAVED_GAME_MODE::NONE;
 	const std::unique_ptr<test_connect_engine>
 		connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;

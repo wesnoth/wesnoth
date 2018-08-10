@@ -90,7 +90,7 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 	}
 
 	const bool is_mp = state_.classification().is_normal_mp_game();
-	force_lock_settings_ = (!state.mp_settings().saved_game) && scenario()["force_lock_settings"].to_bool(!is_mp);
+	force_lock_settings_ = (state.mp_settings().saved_game != mp_game_settings::SAVED_GAME_MODE::MIDGAME) && scenario()["force_lock_settings"].to_bool(!is_mp);
 
 	// Original level sides.
 	config::child_itors sides = current_config()->child_range("side");
@@ -899,8 +899,8 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 	, ai_algorithm_()
 	, chose_random_(cfg["chose_random"].to_bool(false))
 	, disallow_shuffle_(cfg["disallow_shuffle"].to_bool(false))
-	, flg_(parent_.era_factions_, cfg_, parent_.force_lock_settings_, parent_.params_.use_map_settings, parent_.params_.saved_game)
-	, allow_changes_(!parent_.params_.saved_game && !(flg_.choosable_factions().size() == 1 && flg_.choosable_leaders().size() == 1 && flg_.choosable_genders().size() == 1))
+	, flg_(parent_.era_factions_, cfg_, parent_.force_lock_settings_, parent_.params_.use_map_settings, parent_.params_.saved_game == mp_game_settings::SAVED_GAME_MODE::MIDGAME)
+	, allow_changes_(parent_.params_.saved_game != mp_game_settings::SAVED_GAME_MODE::MIDGAME && !(flg_.choosable_factions().size() == 1 && flg_.choosable_leaders().size() == 1 && flg_.choosable_genders().size() == 1))
 	, waiting_to_choose_faction_(allow_changes_)
 	, color_options_(game_config::default_colors)
 	, color_id_(color_options_[color_])
@@ -1024,7 +1024,7 @@ config side_engine::new_config() const
 	res["side"] = index_ + 1;
 
 	// If the user is allowed to change type, faction, leader etc,  then import their new values in the config.
-	if(!parent_.params_.saved_game) {
+	if(parent_.params_.saved_game != mp_game_settings::SAVED_GAME_MODE::MIDGAME) {
 		// Merge the faction data to res.
 		config faction = flg_.current_faction();
 		LOG_MP << "side_engine::new_config: side=" << index_ + 1 << " faction=" << faction["id"] << " recruit=" << faction["recruit"] << "\n";
@@ -1092,7 +1092,7 @@ config side_engine::new_config() const
 	res["allow_changes"] = allow_changes_;
 	res["chose_random"] = chose_random_;
 
-	if(!parent_.params_.saved_game) {
+	if(parent_.params_.saved_game != mp_game_settings::SAVED_GAME_MODE::MIDGAME) {
 		// Find a config where a default leader is and set a new type and gender values for it.
 		config* leader = &res;
 
@@ -1175,7 +1175,7 @@ config side_engine::new_config() const
 		res["income"] = income_;
 	}
 
-	if(parent_.params_.use_map_settings && !parent_.params_.saved_game) {
+	if(parent_.params_.use_map_settings && parent_.params_.saved_game != mp_game_settings::SAVED_GAME_MODE::MIDGAME) {
 		config trimmed = cfg_;
 
 		for(const std::string& attribute : attributes_to_trim) {
@@ -1245,7 +1245,7 @@ bool side_engine::available_for_user(const std::string& name) const
 
 void side_engine::resolve_random(randomness::mt_rng & rng, const std::vector<std::string> & avoid_faction_ids)
 {
-	if(parent_.params_.saved_game) {
+	if(parent_.params_.saved_game == mp_game_settings::SAVED_GAME_MODE::MIDGAME) {
 		return;
 	}
 
@@ -1264,7 +1264,7 @@ void side_engine::reset()
 	set_waiting_to_choose_status(false);
 	set_controller(parent_.default_controller_);
 
-	if(!parent_.params_.saved_game) {
+	if(parent_.params_.saved_game != mp_game_settings::SAVED_GAME_MODE::MIDGAME) {
 		flg_.set_current_faction(0);
 	}
 }

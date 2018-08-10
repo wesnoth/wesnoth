@@ -188,7 +188,7 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	const bool lock_team   = side->cfg()["team_lock"].to_bool(fls);
 	const bool lock_color  = side->cfg()["color_lock"].to_bool(fls);
 
-	const bool saved_game = connect_engine_.params().saved_game;
+	const bool saved_game = connect_engine_.params().saved_game == mp_game_settings::SAVED_GAME_MODE::MIDGAME;
 
 	//
 	// AI Algorithm
@@ -237,6 +237,7 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	//
 	button& leader_select = find_widget<button>(&row_grid, "select_leader", false);
 
+	//todo: shouldn't this also be disabled when the flg settings are locked.
 	leader_select.set_active(!saved_game);
 
 	connect_signal_mouse_left_click(leader_select,
@@ -276,6 +277,7 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	menu_button& team_selection = find_widget<menu_button>(&row_grid, "side_team", false);
 
 	team_selection.set_values(team_names, initial_team_selection);
+	//todo: shouldn't this also be disabled when team settings are locked.
 	team_selection.set_active(!saved_game);
 
 	connect_signal_notify_modified(team_selection,

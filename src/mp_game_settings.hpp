@@ -60,7 +60,13 @@ struct mp_game_settings
 	bool registered_users_only;
 	bool shuffle_sides;
 
-	bool saved_game;
+	MAKE_ENUM(SAVED_GAME_MODE,
+		(NONE, "no")
+		(MIDGAME, "midgame")
+		(SCENARIO_START, "scenaro_start")
+	)
+
+	SAVED_GAME_MODE saved_game;
 
 	// HACK: The Create Game dialog has special knowledge of these strings
 	//       and the fact that they're placed in the default (wesnoth)

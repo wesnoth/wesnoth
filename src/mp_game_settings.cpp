@@ -55,7 +55,7 @@ mp_game_settings::mp_game_settings() :
 	allow_observers(true),
 	registered_users_only(false),
 	shuffle_sides(false),
-	saved_game(false),
+	saved_game(SAVED_GAME_MODE::NONE),
 	random_faction_mode(RANDOM_FACTION_MODE::DEFAULT),
 	options(),
 	addons()
@@ -88,7 +88,7 @@ mp_game_settings::mp_game_settings(const config& cfg)
 	, allow_observers(cfg["observer"].to_bool())
 	, registered_users_only(cfg["registered_users_only"].to_bool())
 	, shuffle_sides(cfg["shuffle_sides"].to_bool())
-	, saved_game(cfg["savegame"].to_bool())
+	, saved_game(cfg["savegame"].to_enum<SAVED_GAME_MODE>(SAVED_GAME_MODE::NONE))
 	, random_faction_mode(cfg["random_faction_mode"].to_enum<RANDOM_FACTION_MODE>(RANDOM_FACTION_MODE::DEFAULT))
 	, options(cfg.child_or_empty("options"))
 	, addons()
