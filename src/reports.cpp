@@ -36,6 +36,7 @@
 #include <ctime>
 #include <iomanip>
 #include <boost/dynamic_bitset.hpp>
+#include <boost/format.hpp>
 #include <boost/lexical_cast.hpp>
 
 #include "utils/io.hpp"
@@ -1533,6 +1534,9 @@ REPORT_GENERATOR(edit_left_button_function)
 
 REPORT_GENERATOR(report_clock, /*rc*/)
 {
+	config report;
+	add_image(report, game_config::images::time_icon, "");
+
 	std::ostringstream ss;
 
 	const char* format = preferences::use_twelve_hour_clock_format()
@@ -1541,20 +1545,22 @@ REPORT_GENERATOR(report_clock, /*rc*/)
 
 	time_t t = std::time(nullptr);
 	ss << utils::put_time(std::localtime(&t), format);
+	add_text(report, ss.str(), _("Clock"));
 
-	return text_report(ss.str(), _("Clock"));
+	return report;
 }
 
 
 REPORT_GENERATOR(battery, /*rc*/)
 {
-    std::ostringstream ss;
-    
-    if (desktop::battery_info::does_device_have_battery()) {
-        ss << boost::lexical_cast<std::string>(static_cast<int>(desktop::battery_info::get_battery_percentage())) + "%";
-    }
-    
-    return text_report(ss.str(), _("Battery"));
+	config report;
+
+	if(desktop::battery_info::does_device_have_battery()) {
+		add_image(report, game_config::images::battery_icon, "");
+		add_text(report, (boost::format("%.0f %%") % desktop::battery_info::get_battery_percentage()).str(), _("Battery"));
+	}
+
+	return report;
 }
 
 REPORT_GENERATOR(report_countdown, rc)

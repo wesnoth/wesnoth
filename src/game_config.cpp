@@ -212,6 +212,9 @@ std::string
 	// orbs and hp/xp bar
 	orb,
 	energy,
+	// top bar icons
+	battery_icon,
+	time_icon,
 	// flags
 	flag,
 	flag_icon,
@@ -343,6 +346,9 @@ void load_config(const config &v)
 
 		orb    = i["orb"].str();
 		energy = i["energy"].str();
+
+		battery_icon = i["battery_icon"].str();
+		time_icon = i["time_icon"].str();
 
 		flag      = i["flag"].str();
 		flag_icon = i["flag_icon"].str();
