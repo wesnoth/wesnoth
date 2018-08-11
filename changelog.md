@@ -9,7 +9,11 @@
  ### Language and i18n
    * Updated translations: British English, Chinese (Traditional), French, Italian
  ### User Interface
-   * MacOS: fixed moving the mouse with a touchpad also scrolling GUI dialogs
+   * MacOS: Fixed moving the mouse with a touchpad also scrolling GUI dialogs
+   * MacOS: Add build number to OS version report
+   * Fix layout of Preferences window with some localisations (such as Czech)
+ ### Miscellaneous and bug fixes
+   * Fix some minor problems in macOS package
 
 ## Version 1.14.4
  ### Security Fixes
