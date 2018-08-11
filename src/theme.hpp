@@ -23,6 +23,7 @@
 #include "config.hpp"
 #include "generic_event.hpp"
 
+#include <memory>
 #include <SDL_rect.h>
 
 struct _rect { size_t x1,y1,x2,y2; };
@@ -44,7 +45,7 @@ class theme
 		object(const config& cfg);
 		virtual ~object() { }
 
-		SDL_Rect& location(const SDL_Rect& screen) const;
+		virtual SDL_Rect& location(const SDL_Rect& screen) const;
 		const SDL_Rect& get_location() const { return loc_; }
 		const std::string& get_id() const { return id_; }
 
@@ -139,6 +140,15 @@ public:
 		size_t font_;
 		bool font_rgb_set_;
 		color_t font_rgb_;
+	};
+
+	class countdown : public status_item
+	{
+	public:
+		explicit countdown(const config& cfg) : status_item(cfg)
+		{}
+
+		SDL_Rect& location(const SDL_Rect& screen) const override;
 	};
 
 	class panel : public object
@@ -238,6 +248,10 @@ public:
 	};
 
 	explicit theme(const config& cfg, const SDL_Rect& screen);
+	theme(const theme&) = delete;
+	theme& operator=(const theme&) = delete;
+	theme& operator=(theme&&);
+
 	bool set_resolution(const SDL_Rect& screen);
 	void modify(const config &cfg);
 
@@ -298,7 +312,7 @@ private:
 	menu context_;
 	action action_context_;
 
-	std::map<std::string,status_item> status_;
+	std::map<std::string, std::unique_ptr<status_item>> status_;
 
 	object main_map_, mini_map_, unit_image_, palette_;
 

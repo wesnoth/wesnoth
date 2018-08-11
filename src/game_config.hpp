@@ -101,6 +101,9 @@ namespace game_config
 			// orbs and hp/xp bar
 			orb,
 			energy,
+			// top bar icons
+			battery_icon,
+			time_icon,
 			// flags
 			flag,
 			flag_icon,
