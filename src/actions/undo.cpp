@@ -381,6 +381,11 @@ void undo_list::undo()
 		resources::recorder->redo(replay_data);
 		undos_.emplace_back(std::move(action));
 	}
+	if(std::all_of(undos_.begin(), undos_.begin(), [](const action_ptr_t& action){ return dynamic_cast<undo_action*>(action.get()) == nullptr; }))
+	{
+		//clear the undo stack if it only contains dsu related actions, this in particular makes sure loops like `while(can_undo()) { undo(); }`always stop.
+		undos_.clear();
+	}
 }
 
 
