@@ -186,7 +186,7 @@ bool mp_join_game::fetch_game_config()
 
 	// If the client is allowed to choose their team, do that here instead of having it set by the server
 	if((*side_choice)["allow_changes"].to_bool(true)) {
-		if(!show_flg_select(side_num_choice)) {
+		if(!show_flg_select(side_num_choice, true)) {
 			return false;
 		}
 	}
@@ -267,7 +267,7 @@ void mp_join_game::pre_show(window& window)
 	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
 }
 
-bool mp_join_game::show_flg_select(int side_num)
+bool mp_join_game::show_flg_select(int side_num, bool first_time)
 {
 	if(const config& side_choice = get_scenario().child("side", side_num - 1)) {
 		if(!side_choice["allow_changes"].to_bool(true)) {
@@ -308,7 +308,7 @@ bool mp_join_game::show_flg_select(int side_num)
 			flg_dialog_ = &flg_dialog;
 			utils::scope_exit se([this]() { flg_dialog_ = nullptr; });
 
-			if(!flg_dialog.show()) {
+			if(!flg_dialog.show() && !first_time) {
 				return true;
 			}
 		}

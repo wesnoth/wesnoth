@@ -52,7 +52,7 @@ private:
 	virtual void post_show(window& window) override;
 
 	/** @returns false if an error ocurred. */
-	bool show_flg_select(int side_num);
+	bool show_flg_select(int side_num, bool first_time = false);
 
 	void generate_side_list(window& window);
 
