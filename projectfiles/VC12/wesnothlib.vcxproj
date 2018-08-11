@@ -164,7 +164,7 @@
     <ClCompile Include="..\..\src\serialization\unicode.cpp" />
     <ClCompile Include="..\..\src\serialization\validator.cpp" />
     <ClCompile Include="..\..\src\tstring.cpp" />
-    <ClCompile Include="..\..\src\version.cpp" />
+    <ClCompile Include="..\..\src\game_version.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\color.hpp" />
@@ -205,7 +205,7 @@
     <ClInclude Include="..\..\src\spirit_po\version.hpp" />
     <ClInclude Include="..\..\src\tstring.hpp" />
     <ClInclude Include="..\..\src\utils\type_trait_aliases.hpp" />
-    <ClInclude Include="..\..\src\version.hpp" />
+    <ClInclude Include="..\..\src\game_version.hpp" />
     <ClInclude Include="..\..\src\wesconfig.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
