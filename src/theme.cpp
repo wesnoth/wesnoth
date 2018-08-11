@@ -16,6 +16,8 @@
 
 #include "theme.hpp"
 
+#include "desktop/battery_info.hpp"
+#include "display.hpp"
 #include "gettext.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
@@ -23,6 +25,8 @@
 #include "sdl/rect.hpp"
 #include "serialization/string_utils.hpp"
 #include "wml_exception.hpp"
+
+#include <utility>
 
 static lg::log_domain log_display("display");
 #define DBG_DP LOG_STREAM(debug, log_display)
@@ -456,6 +460,16 @@ theme::status_item::status_item(const config& cfg)
 	}
 }
 
+SDL_Rect& theme::countdown::location(const SDL_Rect& screen) const
+{
+	if(desktop::battery_info::does_device_have_battery()) {
+		return status_item::location(screen);
+	} else {
+		return display::get_singleton()->get_theme().
+			get_status_item("battery")->location(screen);
+	}
+}
+
 theme::panel::panel(const config& cfg)
 	: object(cfg)
 	, image_(cfg["image"])
@@ -583,6 +597,29 @@ theme::theme(const config& cfg, const SDL_Rect& screen)
 	set_resolution(screen);
 }
 
+theme& theme::operator=(theme&& other)
+{
+	theme_reset_event_ = other.theme_reset_event_;
+	known_themes = std::move(other.known_themes);
+	cur_theme = std::move(other.cur_theme);
+	cfg_ = std::move(other.cfg_);
+	panels_ = std::move(other.panels_);
+	labels_ = std::move(other.labels_);
+	menus_ = std::move(other.menus_);
+	actions_ = std::move(other.actions_);
+	sliders_ = std::move(other.sliders_);
+	context_ = other.context_;
+	action_context_ = other.action_context_;
+	status_ = std::move(other.status_);
+	main_map_ = other.main_map_;
+	mini_map_ = other.mini_map_;
+	unit_image_ = other.unit_image_;
+	palette_ = other.palette_;
+	border_ = other.border_;
+
+	return *this;
+}
+
 bool theme::set_resolution(const SDL_Rect& screen)
 {
 	bool result = false;
@@ -668,7 +705,11 @@ void theme::add_object(const config& cfg)
 
 	if(const config& status_cfg = cfg.child("status")) {
 		for(const config::any_child& i : status_cfg.all_children_range()) {
-			status_.emplace(i.key, status_item(i.cfg));
+			if(i.key != "report_countdown") {
+				status_[i.key].reset(new status_item(i.cfg));
+			} else {
+				status_[i.key].reset(new countdown(i.cfg));
+			}
 		}
 		if(const config& unit_image_cfg = status_cfg.child("unit_image")) {
 			unit_image_ = object(unit_image_cfg);
@@ -862,9 +903,9 @@ theme::object& theme::find_element(const std::string& id)
 
 const theme::status_item* theme::get_status_item(const std::string& key) const
 {
-	const std::map<std::string, status_item>::const_iterator i = status_.find(key);
+	const auto& i = status_.find(key);
 	if(i != status_.end())
-		return &i->second;
+		return i->second.get();
 	else
 		return nullptr;
 }
