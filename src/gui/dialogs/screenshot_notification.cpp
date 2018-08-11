@@ -28,7 +28,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 
 #include "utils/functional.hpp"
 

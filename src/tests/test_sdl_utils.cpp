@@ -16,7 +16,7 @@
 //
 //#include "tests/test_sdl_utils.hpp"
 //
-//#include "image.hpp"
+//#include "picture.hpp"
 //
 //#include "utils/functional.hpp"
 //#include <boost/test/auto_unit_test.hpp>

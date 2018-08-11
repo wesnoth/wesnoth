@@ -20,7 +20,7 @@
 #include "log.hpp"
 #include "utils/general.hpp"
 #include "utils/math.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 #include "wesconfig.h"
 #include "serialization/string_utils.hpp"
 #ifdef LOAD_REVISION

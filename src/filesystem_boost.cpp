@@ -24,7 +24,7 @@
 #include "log.hpp"
 #include "serialization/unicode.hpp"
 #include "serialization/unicode_cast.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 
 #include <boost/algorithm/string.hpp>
 #include <boost/filesystem.hpp>

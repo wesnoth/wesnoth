@@ -49,7 +49,7 @@
 #include "units/id.hpp"
 #include "units/map.hpp"	   // for unit_map, etc
 #include "variable.hpp"		   // for vconfig, etc
-#include "version.hpp"
+#include "game_version.hpp"
 
 #include "utils/functional.hpp"
 #include <boost/dynamic_bitset.hpp>
