@@ -21,11 +21,14 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/unicode.hpp"
-#include "../version.hpp"
 
 #include <cstring>
 
-#if defined(_X11) || defined(__APPLE__)
+#if defined(__APPLE__)
+
+#include "apple_version.hpp"
+
+#elif defined(_X11)
 
 #include <cerrno>
 #include <sys/utsname.h>
@@ -71,7 +74,7 @@ bool on_wine()
 }
 #endif
 
-#if defined(_X11) || defined(__APPLE__)
+#if defined(_X11)
 /**
  * Release policy for POSIX pipe streams opened with popen(3).
  */
@@ -117,49 +120,15 @@ std::string read_pipe_line(scoped_posix_pipe& p)
 
 std::string os_version()
 {
-#if defined(_X11) || defined(__APPLE__)
-
-#ifdef __APPLE__
+#if defined(__APPLE__)
 
 	//
 	// Standard Mac OS X version
 	//
 	
-	std::string version_string = "Apple";
+	return desktop::apple::os_version();
 
-	static const std::string version_plist = "/System/Library/CoreServices/SystemVersion.plist";
-	static const std::string defaults_bin = "/usr/bin/defaults";
-
-	if(filesystem::file_exists(defaults_bin) && filesystem::file_exists(version_plist)) {
-		static const std::string cmdline_version = defaults_bin + " read " + version_plist + " ProductUserVisibleVersion";
-		static const std::string cmdline_build = defaults_bin + " read " + version_plist + " ProductBuildVersion";
-
-		scoped_posix_pipe p_version(popen(cmdline_version.c_str(), "r"));
-		const std::string& version = read_pipe_line(p_version);
-		
-		scoped_posix_pipe p_build(popen(cmdline_build.c_str(), "r"));
-		const std::string& build = read_pipe_line(p_build);
-
-		if(!version.empty()) {
-			const version_info version_info(version);
-			
-			if (version_info.major_version() == 10 && version_info.minor_version() < 12) {
-				version_string += " OS X ";
-			} else {
-				 version_string += " macOS ";
-			}
-			
-			version_string += version;
-		}
-		
-		if(!build.empty()) {
-			version_string += " (" + build + ")";
-		}
-	}
-	
-	return version_string;
-
-#else
+#elif defined(_X11)
 
 	//
 	// Linux Standard Base version.
@@ -183,10 +152,9 @@ std::string os_version()
 			return ver;
 		}
 	}
-#endif
 
 	//
-	// POSIX uname version.
+	// POSIX uname version fallback.
 	//
 
 	utsname u;

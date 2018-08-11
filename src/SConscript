@@ -90,6 +90,7 @@ if env["PLATFORM"] == "win32":
 
 if env["PLATFORM"] == 'darwin':
     wesnoth_client_sources.append("desktop/apple_notification.mm")
+    wesnoth_client_sources.append("desktop/apple_version.mm")
 
 if env["notifications"]:
     wesnoth_client_sources.append("desktop/dbus_notification.cpp")
