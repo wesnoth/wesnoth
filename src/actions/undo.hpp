@@ -34,7 +34,8 @@ namespace actions {
 /// Class to store the actions that a player can undo and redo.
 class undo_list {
 
-	typedef std::vector<std::unique_ptr<undo_action_base>> action_list;
+	typedef std::unique_ptr<undo_action_base> action_ptr_t;
+	typedef std::vector<action_ptr_t> action_list;
 	typedef std::vector<std::unique_ptr<config>> redos_list;
 
 public:
