@@ -296,7 +296,7 @@ void undo_list::read(const config & cfg)
 		try {
 			undo_action_base * action = create_action(child);
 			if ( action ) {
-				undos_.push_back(action);
+				undos_.emplace_back(action);
 			}
 		} catch (const bad_lexical_cast &) {
 			ERR_NG << "Error when parsing undo list from config: bad lexical cast." << std::endl;
@@ -312,7 +312,7 @@ void undo_list::read(const config & cfg)
 	// Build the redo stack.
 	for (const config & child : cfg.child_range("redo")) {
 		try {
-			redos_.push_back(new config(child));
+			redos_.emplace_back(new config(child));
 		} catch (const bad_lexical_cast &) {
 			ERR_NG << "Error when parsing redo list from config: bad lexical cast." << std::endl;
 			ERR_NG << "config was: " << child.debug() << std::endl;
@@ -334,11 +334,11 @@ void undo_list::write(config & cfg) const
 	cfg["side"] = side_;
 	cfg["committed"] = committed_actions_;
 
-	for ( action_list::const_iterator it = undos_.begin(); it != undos_.end(); ++it )
-		it->write(cfg.add_child("undo"));
+	for ( const auto& action_ptr : undos_)
+		action_ptr->write(cfg.add_child("undo"));
 
-	for ( redos_list::const_iterator it = redos_.begin(); it != redos_.end(); ++it )
-		cfg.add_child("redo") = *it;
+	for ( const auto& cfg_ptr : redos_)
+		cfg.add_child("redo") = *cfg_ptr;
 }
 
 
@@ -356,8 +356,9 @@ void undo_list::undo()
 
 	// Get the action to undo. (This will be placed on the redo stack, but
 	// only if the undo is successful.)
-	action_list::auto_type action = undos_.pop_back();
-	if (undo_action* undoable_action = dynamic_cast<undo_action*>(action.ptr()))
+	auto action = std::move(undos_.back());
+	undos_.pop_back();
+	if (undo_action* undoable_action = dynamic_cast<undo_action*>(action.get()))
 	{
 		int last_unit_id = resources::gameboard->unit_id_manager().get_save_id();
 		if ( !undoable_action->undo(side_) ) {
@@ -369,8 +370,8 @@ void undo_list::undo()
 		resources::gameboard->unit_id_manager().set_save_id(last_unit_id - undoable_action->unit_id_diff);
 
 		// Bookkeeping.
-		redos_.push_back(new config());
-		resources::recorder->undo_cut(redos_.back());
+		redos_.emplace_back(new config());
+		resources::recorder->undo_cut(*redos_.back());
 
 		resources::whiteboard->on_gamestate_change();
 
@@ -386,7 +387,7 @@ void undo_list::undo()
 		resources::recorder->undo_cut(replay_data);
 		undo();
 		resources::recorder->redo(replay_data);
-		undos_.push_back(action.release());
+		undos_.emplace_back(std::move(action));
 	}
 }
 
@@ -406,7 +407,8 @@ void undo_list::redo()
 
 	// Get the action to redo. (This will be placed on the undo stack, but
 	// only if the redo is successful.)
-	redos_list::auto_type action = redos_.pop_back();
+	auto action = std::move(redos_.back());
+	redos_.pop_back();
 
 	const config& command_wml = action->child("command");
 	std::string commandname = command_wml.all_children_range().front().key;
@@ -452,7 +454,7 @@ bool undo_list::apply_shroud_changes() const
 
 	// Loop through the list of undo_actions.
 	for( size_t i = 0; i != list_size; ++i ) {
-		if (const shroud_clearing_action* action = dynamic_cast<const shroud_clearing_action*>(&undos_[i])) {
+		if (const shroud_clearing_action* action = dynamic_cast<const shroud_clearing_action*>(undos_[i].get())) {
 			LOG_NG << "Turning an undo...\n";
 
 			// Clear the hexes this unit can see from each hex occupied during
