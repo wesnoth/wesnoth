@@ -1690,6 +1690,7 @@ def global_sanity_check(filename, lines):
     in_fire_event = False
     in_primary_unit = False
     in_secondary_unit = False
+    in_remove_event = False
     in_checkbox = False
     in_combo = False
     in_entry = False
@@ -1839,6 +1840,11 @@ def global_sanity_check(filename, lines):
             in_secondary_unit = True
         elif "[/secondary_unit]" in lines[i]:
             in_secondary_unit = False
+        # version 1.13.0 added [remove_event], which accepts a id= field
+        elif "[remove_event]" in lines[i]:
+            in_remove_event = True
+        elif "[/remove_event]" in lines[i]:
+            in_remove_event = False
         # sub-tags of [options] tag
         elif "[checkbox]" in lines[i]:
             in_checkbox = True
@@ -2053,7 +2059,8 @@ def global_sanity_check(filename, lines):
                          and not in_time_area and not in_trait and not in_checkbox \
                          and not in_combo and not in_entry and not in_slider \
                          and not in_map_generator \
-                         and not (in_fire_event and not (in_primary_unit or in_secondary_unit)):
+                         and not (in_fire_event and not (in_primary_unit or in_secondary_unit)) \
+                         and not in_remove_event:
                         ids = value.split(",")
                         for id_ in ids:
                             # removal of leading whitespace of items in comma-separated lists
