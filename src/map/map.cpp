@@ -378,6 +378,7 @@ bool gamemap::on_board_with_border(const map_location& loc) const
 
 void gamemap::set_terrain(const map_location& loc, const t_translation::terrain_code & terrain, const terrain_type_data::merge_mode mode, bool replace_if_failed) {
 	if(!on_board_with_border(loc)) {
+		DBG_G << "set_terrain: " << loc << " is not on the map.\n";
 		// off the map: ignore request
 		return;
 	}
