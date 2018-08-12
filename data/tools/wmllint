@@ -2969,7 +2969,8 @@ vctypes = (".svn", ".git", ".hg")
 
 def interesting(fn):
     "Is a file interesting for conversion purposes?"
-    return fn.endswith(".cfg") or is_map(fn) or issave(fn)
+    return (fn.endswith(".cfg") and not fn.endswith("_info.cfg")) \
+           or is_map(fn) or issave(fn)
 
 def allcfgfiles(directory):
     "Get the names of all interesting files under directory."
