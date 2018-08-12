@@ -749,11 +749,7 @@ static terrain_code string_to_number_(std::string str, std::string& start_positi
 	// Split if we have 1 space inside
 	std::size_t offset = str.find(' ', begin);
 	if(offset < end) {
-		try {
-			start_position = str.substr(begin, offset - begin);
-		} catch(const bad_lexical_cast&) {
-			return VOID_TERRAIN;
-		}
+		start_position = str.substr(begin, offset - begin);
 		begin = offset + 1;
 	}
 
