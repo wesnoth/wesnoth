@@ -29,7 +29,7 @@
 #include "map/exception.hpp"
 #include "terrain/type_data.hpp"
 #include "wml_exception.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 
 #include <iterator>
 

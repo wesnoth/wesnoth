@@ -23,7 +23,7 @@
 #include "gettext.hpp"                  // for _, gettext, N_
 #include "help/help_topic_generators.hpp"
 #include "hotkey/hotkey_command.hpp"    // for is_scope_active, etc
-#include "image.hpp"                    // for get_image, locator
+#include "picture.hpp"            // for get_image, locator
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
 #include "utils/make_enum.hpp"          // for operator<<
 #include "map/map.hpp"                  // for gamemap

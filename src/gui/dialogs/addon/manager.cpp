@@ -48,7 +48,7 @@
 #include "gui/widgets/window.hpp"
 #include "serialization/string_utils.hpp"
 #include "formula/string_utils.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 #include "language.hpp"
 #include "preferences/general.hpp"
 #include "utils/general.hpp"

@@ -20,7 +20,7 @@
 #include "terrain/builder.hpp"
 
 #include "gui/dialogs/loading_screen.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "preferences/game.hpp"

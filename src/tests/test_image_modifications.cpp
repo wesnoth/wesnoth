@@ -21,7 +21,7 @@
 #include "config_cache.hpp"
 #include "config.hpp"
 #include "color_range.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 #include "image_modifications.hpp"
 #include "log.hpp"
 #include "filesystem.hpp"

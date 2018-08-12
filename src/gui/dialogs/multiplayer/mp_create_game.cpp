@@ -46,7 +46,7 @@
 #include "gui/widgets/toggle_panel.hpp"
 #include "log.hpp"
 #include "savegame.hpp"
-#include "settings.hpp"
+#include "map_settings.hpp"
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "utils/functional.hpp"

@@ -23,7 +23,7 @@
 #include "map/map.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode_cast.hpp"
-#include "settings.hpp"
+#include "map_settings.hpp"
 #include "units/unit.hpp"
 #include "units/map.hpp"
 #include "wml_exception.hpp"

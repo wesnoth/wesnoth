@@ -17,7 +17,7 @@
 #include "display.hpp"
 #include "floating_label.hpp"
 #include "font/sdl_ttf.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 #include "log.hpp"
 #include "preferences/general.hpp"
 #include "sdl/point.hpp"
@@ -232,6 +232,7 @@ void CVideo::init_window()
 
 	// Add any more default flags here
 	window_flags |= SDL_WINDOW_RESIZABLE;
+	window_flags |= SDL_WINDOW_ALLOW_HIGHDPI;
 
 	if(preferences::fullscreen()) {
 		window_flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;

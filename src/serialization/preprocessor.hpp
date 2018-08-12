@@ -24,7 +24,7 @@
 #include <boost/optional.hpp>
 
 #include "exceptions.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 #include "deprecation.hpp"
 
 class config_writer;

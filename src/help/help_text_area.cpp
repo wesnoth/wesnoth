@@ -17,7 +17,7 @@
 #include "config.hpp"                   // for config, etc
 #include "game_config.hpp"              // for debug
 #include "help/help_impl.hpp"           // for parse_error, box_width, etc
-#include "image.hpp"                    // for get_image
+#include "picture.hpp"                    // for get_image
 #include "log.hpp"                      // for LOG_STREAM, log_domain, etc
 #include "preferences/general.hpp"              // for font_scaled
 #include "sdl/rect.hpp"                 // for draw_rectangle, etc

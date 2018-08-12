@@ -42,7 +42,7 @@
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "statistics.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 #include "video.hpp"
 
 #include <algorithm>

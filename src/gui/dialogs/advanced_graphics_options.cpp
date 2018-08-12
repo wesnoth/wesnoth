@@ -21,7 +21,7 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 
-#include "image.hpp"
+#include "picture.hpp"
 
 #include "utils/functional.hpp"
 
