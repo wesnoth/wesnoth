@@ -1103,6 +1103,14 @@ int main(int argc, char** argv)
 	sigaction(SIGINT, &terminate_handler, nullptr);
 #endif
 
+	// Mac's touchpad generates touch events too.
+	// Ignore them until Macs have a touchscreen: https://forums.libsdl.org/viewtopic.php?p=45758
+#if defined(__APPLE__) && !defined(__IPHONEOS__) 
+	SDL_EventState(SDL_FINGERMOTION, SDL_DISABLE);
+	SDL_EventState(SDL_FINGERDOWN, SDL_DISABLE);
+	SDL_EventState(SDL_FINGERUP, SDL_DISABLE);
+#endif	
+
 	// declare this here so that it will always be at the front of the event queue.
 	events::event_context global_context;
 
