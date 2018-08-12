@@ -1672,6 +1672,7 @@ def global_sanity_check(filename, lines):
     in_goal = False
     in_set_menu_item = False
     in_clear_menu_item = False
+    in_aspect = False
     in_facet = False
     in_sound_source = False
     in_remove_sound_source = False
@@ -1764,6 +1765,10 @@ def global_sanity_check(filename, lines):
             in_clear_menu_item = True
         elif "[/clear_menu_item]" in lines[i]:
             in_clear_menu_item = False
+        elif "[aspect]" in lines[i]:
+            in_aspect = True
+        elif "[/aspect]" in lines[i]:
+            in_aspect = False
         elif "[facet]" in lines[i]:
             in_facet = True
         elif "[/facet]" in lines[i]:
@@ -2040,9 +2045,10 @@ def global_sanity_check(filename, lines):
                     elif value and value[0] in ("$", "{"):
                         continue
                     elif preamble_seen and subtag_depth > 0 and not ignore_id \
-                         and not in_object and not in_cfg and not in_facet \
-                         and not in_sound_source and not in_remove_sound_source \
-                         and not in_stage and not in_goal and not in_set_menu_item \
+                         and not in_object and not in_cfg and not in_aspect \
+                         and not in_facet and not in_sound_source \
+                         and not in_remove_sound_source and not in_stage \
+                         and not in_goal and not in_set_menu_item \
                          and not in_clear_menu_item and not directly_in_event[-1] \
                          and not in_time_area and not in_trait and not in_checkbox \
                          and not in_combo and not in_entry and not in_slider \
