@@ -209,7 +209,7 @@ std::string write_terrain_code(const terrain_code& tcode)
 	return number_to_string_(tcode);
 }
 
-ter_list read_list(const std::string& str, const ter_layer filler)
+ter_list read_list(utils::string_view str, const ter_layer filler)
 {
 	// Handle an empty string
 	ter_list result;
@@ -224,7 +224,7 @@ ter_list read_list(const std::string& str, const ter_layer filler)
 		// Get a terrain chunk
 		const std::string separators = ",";
 		const size_t pos_separator = str.find_first_of(separators, offset);
-		const std::string terrain = str.substr(offset, pos_separator - offset);
+		const std::string terrain = str.substr(offset, pos_separator - offset).to_string();
 
 		// Process the chunk
 		const terrain_code tile = string_to_number_(terrain, filler);
