@@ -31,7 +31,7 @@
 #include "serialization/unicode.hpp"
 #include "utils/functional.hpp"
 #include "utils/iterable_pair.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 
 #include "server/ban.hpp"
 #include "server/game.hpp"

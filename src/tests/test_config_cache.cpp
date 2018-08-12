@@ -21,9 +21,9 @@
 #include "config.hpp"
 #include "game_config.hpp"
 #include "language.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 
-#include "tests/utils/game_config_manager.hpp"
+#include "tests/utils/game_config_manager_tests."
 
 #include "utils/functional.hpp"
 

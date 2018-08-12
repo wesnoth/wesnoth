@@ -33,9 +33,9 @@
 #include "terrain/builder.hpp"
 #include "terrain/type_data.hpp"
 #include "units/types.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 #include "theme.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)

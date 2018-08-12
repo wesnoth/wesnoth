@@ -20,7 +20,7 @@
 #include "color.hpp"
 #include "sdl/surface.hpp"
 #include "utils/math.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 
 #include <SDL.h>
 

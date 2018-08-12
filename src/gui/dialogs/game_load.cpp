@@ -34,7 +34,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 #include "language.hpp"
 #include "utils/general.hpp"
 
