@@ -1303,7 +1303,7 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
        (len(ancestors) >= 2 and parent == "#ifdef" and ancestors[-1] == "[if]"):
         if isOpener(nav.element) and nav.element not in ("[and]",
                            "[else]", "[elseif]", "[frame]", "[have_location]",
-                           "[have_unit]", "[not]", "[or]", "[then]",
+                           "[have_unit]", "[not]", "[or]", "[then]", "[lua]",
                            "[variable]") and not nav.element.endswith("_frame]") and not nav.element.startswith("[filter"):
             print(errlead + 'illegal child of [if]:', nav.element)
     # Check for fluky credit parts
