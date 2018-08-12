@@ -115,28 +115,7 @@ int main (int argc, char **argv)
 
 	[WesnothSDLApplication sharedApplication];
 
-	// loadNibNamed:owner:topLevelObjects was introduced in 10.8 (Mountain Lion).
-	// In order to support Lion and Mountain Lion +, we need to see which OS we're
-	// on. We do this by testing to see if [NSBundle mainBundle] responds to
-	// loadNibNamed:owner:topLevelObjects: ... If so, the app is running on at least
-	// Mountain Lion... If not, then the app is running on Lion so we fall back to the
-	// the older loadNibNamed:owner: method. If your app does not support Lion, then
-	// you can go with strictly the newer one and not deal with the if/else conditional.
-
-	if ([[NSBundle mainBundle] respondsToSelector:@selector(loadNibNamed:owner:topLevelObjects:)]) {
-		// We're running on Mountain Lion or higher
-		[[NSBundle mainBundle] loadNibNamed:@"SDLMain"
-		owner:NSApp
-		topLevelObjects:nil];
-	} else {
-		// We're running on Lion
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-
-		[NSBundle loadNibNamed:@"SDLMain" owner:NSApp];
-
-#pragma clang diagnostic pop
-	}
+	[[NSBundle mainBundle] loadNibNamed:@"SDLMain" owner:NSApp topLevelObjects:nil];
 
 	[NSApp run];
 	return 0;
