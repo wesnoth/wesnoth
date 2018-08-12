@@ -237,10 +237,10 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, map_location lo
 	for(std::size_t i = 0; i <rules.size(); ++i)
 	{
 		const config& cfg = rules_cfg.child("rule", i);
-		rules[i].old_ = t_translation::read_list(cfg["old"]);
-		rules[i].new_ = t_translation::read_list(cfg["new"]);
+		rules[i].old_ = t_translation::read_list(cfg["old"].str());
+		rules[i].new_ = t_translation::read_list(cfg["new"].str());
 		rules[i].mode_ = cfg["layer"] == "base" ? terrain_type_data::BASE : cfg["layer"] == "overlay" ? terrain_type_data::OVERLAY : terrain_type_data::BOTH;
-		const t_translation::ter_list& terrain = t_translation::read_list(cfg["terrain"]);
+		const t_translation::ter_list& terrain = t_translation::read_list(cfg["terrain"].str());
 		if(!terrain.empty()) {
 			rules[i].terrain_ = terrain[0];
 		}

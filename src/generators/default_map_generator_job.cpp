@@ -203,7 +203,7 @@ namespace {
 		, max_temp(cfg["max_temperature"].to_int(100000))
 		, min_height(cfg["min_height"].to_int(-100000))
 		, max_height(cfg["max_height"].to_int(100000))
-		, from(t_translation::read_list(cfg["from"]))
+		, from(t_translation::read_list(cfg["from"].str()))
 		, to(t_translation::NONE_TERRAIN)
 	{
 		const std::string& to_str = cfg["to"];
@@ -629,7 +629,7 @@ static map_location place_village(const t_translation::ter_map& map,
 			if(l != adj_liked_cache.end()) {
 				adjacent_liked = &(l->second);
 			} else {
-				adj_liked_cache[t] = t_translation::read_list(child["adjacent_liked"]);
+				adj_liked_cache[t] = t_translation::read_list(child["adjacent_liked"].str());
 				adjacent_liked = &(adj_liked_cache[t]);
 			}
 
@@ -934,7 +934,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		 * Castle configuration tag contains a 'valid_terrain' attribute which is a
 		 * list of terrains that the castle may appear on.
 		 */
-		const t_translation::ter_list list = t_translation::read_list(castle_config["valid_terrain"]);
+		const t_translation::ter_list list = t_translation::read_list(castle_config["valid_terrain"].str());
 
 		const is_valid_terrain terrain_tester(terrain, list);
 
