@@ -133,6 +133,9 @@ void CVideo::init_window()
 
 	// Add any more default flags here
 	window_flags |= SDL_WINDOW_RESIZABLE;
+#ifdef __APPLE__
+	window_flags |= SDL_WINDOW_ALLOW_HIGHDPI;
+#endif
 #ifdef USE_GL_RENDERING
 	video_flags |= SDL_WINDOW_OPENGL;
 #endif
