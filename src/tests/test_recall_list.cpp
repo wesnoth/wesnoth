@@ -16,7 +16,7 @@
 
 #include "config.hpp"
 #include "recall_list_manager.hpp"
-#include "tests/utils/game_config_manager_tests."
+#include "tests/utils/game_config_manager_tests.hpp"
 #include "units/unit.hpp"
 #include "units/ptr.hpp"
 

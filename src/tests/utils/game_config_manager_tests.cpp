@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-test"
 
-#include "tests/utils/game_config_manager_tests."
+#include "tests/utils/game_config_manager_tests.hpp"
 
 #include "config.hpp"
 #include "config_cache.hpp"

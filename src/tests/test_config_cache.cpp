@@ -23,7 +23,7 @@
 #include "language.hpp"
 #include "game_version.hpp"
 
-#include "tests/utils/game_config_manager_tests."
+#include "tests/utils/game_config_manager_tests.hpp"
 
 #include "utils/functional.hpp"
 
