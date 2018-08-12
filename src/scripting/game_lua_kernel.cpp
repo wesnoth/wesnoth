@@ -1011,6 +1011,115 @@ int game_lua_kernel::intf_set_terrain(lua_State *L)
 	return 0;
 }
 
+static bool luaW_tableget(lua_State *L, int index, const char* key)
+{
+	lua_pushstring(L, key);
+	lua_gettable(L, index);
+	if(lua_isnil(L, -1)) {
+		lua_pop(L, 1);
+		return false;
+	}
+	return true;
+}
+
+static utils::string_view luaW_tostring(lua_State *L, int index)
+{
+	size_t len = 0;
+	const char* str = lua_tolstring (L, index, &len);
+	return utils::string_view(str, len);
+}
+ 
+/**
+ * Reaplces part of rhe map.
+ * - Arg 1: map location.
+ * - Arg 2: map data string.
+ * - Arg 3: table for optional named arguments
+ *   - is_odd: boolen, if Arg2 has the odd mapo format (as if it was cut from a odd map location)
+ *   - ignore_special_locations: boolean
+ *   - rules: table of tables
+*/
+int game_lua_kernel::intf_terrain_mask(lua_State *L)
+{
+	map_location loc = luaW_checklocation(L, 1);
+	std::string t_str(luaL_checkstring(L, 2));
+	bool is_odd = false;
+	bool ignore_special_locations = false;
+	std::vector<gamemap::overlay_rule> rules;
+
+	if(lua_istable(L, 3)) {
+		if(luaW_tableget(L, 3, "is_odd")) {
+			is_odd = luaW_toboolean(L, -1);
+			lua_pop(L, 1);
+		}
+		if(luaW_tableget(L, 3, "ignore_special_locations")) {
+			ignore_special_locations = luaW_toboolean(L, -1);
+			lua_pop(L, 1);
+		}
+		if(luaW_tableget(L, 3, "rules")) {
+			if(!lua_istable(L, -1)) {
+				return luaL_argerror(L, 3, "rules must be a table");
+			}
+
+			for (int i = 1, i_end = lua_rawlen(L, -1); i <= i_end; ++i)
+			{
+				lua_rawgeti(L, -1, i);
+				if(!lua_istable(L, -1)) {
+					return luaL_argerror(L, 3, "rules must be a table of tables");
+				}
+				rules.push_back(gamemap::overlay_rule());
+				auto& rule = rules.back();
+				if(luaW_tableget(L, -1, "old")) {
+					rule.old_ = t_translation::read_list(luaW_tostring(L, -1));
+					lua_pop(L, 1);
+				}
+
+				if(luaW_tableget(L, -1, "new")) {
+					rule.new_ = t_translation::read_list(luaW_tostring(L, -1));
+					lua_pop(L, 1);
+				}
+
+				if(luaW_tableget(L, -1, "mode")) {
+					auto str = luaW_tostring(L, -1);
+					rule.mode_ = str == "base" ? terrain_type_data::BASE : (str == "overlay" ? terrain_type_data::OVERLAY : terrain_type_data::BOTH);
+					lua_pop(L, 1);
+				}
+
+				if(luaW_tableget(L, -1, "terrain")) {
+					const t_translation::ter_list terrain = t_translation::read_list(luaW_tostring(L, -1));
+					if(!terrain.empty()) {
+						rule.terrain_ = terrain[0];
+					}
+					lua_pop(L, 1);
+				}
+
+				if(luaW_tableget(L, -1, "use_old")) {
+					rule.use_old_ = luaW_toboolean(L, -1);
+					lua_pop(L, 1);
+				}
+
+				if(luaW_tableget(L, -1, "replace_if_failed")) {
+					rule.replace_if_failed_ = luaW_toboolean(L, -1);
+					lua_pop(L, 1);
+				}
+
+				lua_pop(L, 1);
+			}
+			lua_pop(L, 1);
+		}
+	}
+	
+
+	gamemap mask_map(resources::gameboard->map().tdata(), "");
+	mask_map.read(t_str, false);
+	board().map_->overlay(mask_map, loc, rules, is_odd, ignore_special_locations);
+
+	if (game_display_) {
+		game_display_->needs_rebuild(true);
+	}
+
+	return 0;
+}
+
 /**
  * Gets details about a terrain.
  * - Arg 1: terrain code string.
@@ -4112,6 +4221,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "switch_ai",                 &intf_switch_ai                                                      },
 		{ "synchronize_choice",        &intf_synchronize_choice                                             },
 		{ "synchronize_choices",       &intf_synchronize_choices                                            },
+		{ "terrain_mask",              &dispatch<&game_lua_kernel::intf_terrain_mask               >        },
 		{ "zoom",                      &dispatch<&game_lua_kernel::intf_zoom                       >        },
 		{ "teleport",                  &dispatch<&game_lua_kernel::intf_teleport                   >        },
 		{ "unit_ability",              &dispatch<&game_lua_kernel::intf_unit_ability               >        },

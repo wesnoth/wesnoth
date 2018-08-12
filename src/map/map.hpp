@@ -22,6 +22,8 @@ class config;
 #include "terrain/translation.hpp"
 #include "terrain/type_data.hpp"
 
+#include <boost/optional.hpp>
+
 //class terrain_type_data; Can't forward declare because of enum
 
 /**
@@ -83,8 +85,30 @@ public:
 
 	std::string write() const;
 
+	struct overlay_rule
+	{
+		t_translation::ter_list old_;
+		t_translation::ter_list new_;
+		terrain_type_data::merge_mode mode_;
+		boost::optional<t_translation::terrain_code> terrain_;
+		bool use_old_;
+		bool replace_if_failed_;
+
+		overlay_rule()
+			: old_()
+			, new_()
+			, mode_(terrain_type_data::BOTH)
+			, terrain_()
+			, use_old_(false)
+			, replace_if_failed_(false)
+		{
+
+		}
+	};
+	
 	/** Overlays another map onto this one at the given position. */
-	void overlay(const gamemap& m, const config& rules, map_location loc);
+	void overlay_old(const gamemap& m, const config& rules, map_location loc);
+	void overlay(const gamemap& m, map_location loc, const std::vector<overlay_rule>& rules, bool is_odd, bool ignore_special_locations);
 
 	/** Effective map width. */
 	int w() const { return w_; }

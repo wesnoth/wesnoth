@@ -156,7 +156,7 @@ public:
 
 	bool try_add_unit_to_recall_list(const map_location& loc, const unit_ptr u);
 	boost::optional<std::string> replace_map (const gamemap & r);
-	void overlay_map (const gamemap & o, const config & cfg, map_location loc);
+	void overlay_map(const gamemap & o, const config & cfg, map_location loc);
 
 	bool change_terrain(const map_location &loc, const std::string &t,
 	                    const std::string & mode, bool replace_if_failed); //used only by lua
