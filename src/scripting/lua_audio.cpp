@@ -274,6 +274,7 @@ static int impl_track_set(lua_State* L) {
 	modify_bool_attrib("once", (*track)->set_play_once(value));
 	modify_int_attrib("ms_before", (*track)->set_ms_before(value));
 	modify_int_attrib("ms_after", (*track)->set_ms_after(value));
+	modify_string_attrib("title", (*track)->set_title(value));
 	return 0;
 }
 

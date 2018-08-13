@@ -50,6 +50,7 @@ public:
 	void set_shuffle(bool v) { shuffle_ = v; }
 	void set_ms_before(int v) { ms_before_ = v; }
 	void set_ms_after(int v) { ms_after_ = v; }
+	void set_title(const std::string& v) { title_ = v; }
 
 private:
 	void resolve();
