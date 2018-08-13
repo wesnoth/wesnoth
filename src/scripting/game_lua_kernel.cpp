@@ -1109,9 +1109,13 @@ int game_lua_kernel::intf_terrain_mask(lua_State *L)
 	}
 	
 
-	gamemap mask_map(resources::gameboard->map().tdata(), "");
+	gamemap mask_map(board().map().tdata(), "");
 	mask_map.read(t_str, false);
 	board().map_->overlay(mask_map, loc, rules, is_odd, ignore_special_locations);
+
+	for(team& t : board().teams()) {
+		t.fix_villages(board().map());
+	}
 
 	if (game_display_) {
 		game_display_->needs_rebuild(true);

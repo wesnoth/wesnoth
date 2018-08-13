@@ -422,6 +422,18 @@ void team::write(config& cfg) const
 	cfg["action_bonus_count"] = action_bonus_count_;
 }
 
+void team::fix_villages(const gamemap &map)
+{
+	for (auto it = villages_.begin(); it != villages_.end(); ) {
+		if (map.is_village(*it)) {
+			++it;
+		}
+		else {
+			it = villages_.erase(it);
+		}
+	}
+}
+
 game_events::pump_result_t team::get_village(const map_location& loc, const int owner_side, game_data* gamedata)
 {
 	villages_.insert(loc);
