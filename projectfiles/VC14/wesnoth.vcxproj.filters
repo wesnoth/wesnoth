@@ -602,9 +602,6 @@
     <ClCompile Include="..\..\src\gui\dialogs\game_ui.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\game_version.cpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\gamestate_inspector.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
@@ -1546,6 +1543,9 @@
     <ClCompile Include="..\..\src\preferences\lobby.cpp">
       <Filter>Preferences</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\game_version_dialog.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -2005,9 +2005,6 @@
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\game_ui.hpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\game_version.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\gamestate_inspector.hpp">
@@ -3004,6 +3001,9 @@
     <ClInclude Include="..\..\src\chat_log.hpp" />
     <ClInclude Include="..\..\src\terrain\movement.hpp">
       <Filter>Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\game_version_dialog.hpp">
+      <Filter>Gui\Dialogs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
