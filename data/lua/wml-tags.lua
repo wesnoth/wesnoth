@@ -981,7 +981,7 @@ function wml_actions.terrain_mask(cfg)
 		is_odd = true
 	elseif alignment == "raw" then
 		--todo: maybe rename this value?
-		is_odd = (number % 2 != 0)
+		is_odd = (x % 2 ~= 0)
 	elseif border == false then
 		is_odd = true
 	else
