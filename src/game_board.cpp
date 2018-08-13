@@ -283,10 +283,6 @@ boost::optional<std::string> game_board::replace_map(const gamemap & newmap) {
 	return ret;
 }
 
-void game_board::overlay_map(const gamemap & mask_map, const config & cfg, map_location loc) {
-	map_->overlay_old(mask_map, cfg, loc);
-}
-
 bool game_board::change_terrain(const map_location &loc, const std::string &t_str,
                     const std::string & mode_str, bool replace_if_failed)
 {
