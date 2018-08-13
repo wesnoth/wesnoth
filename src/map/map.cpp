@@ -206,74 +206,6 @@ std::string gamemap::write() const
 	return t_translation::write_game_map(tiles_, starting_positions_, t_translation::coordinate{ border_size(), border_size() }) + "\n";
 }
 
-void gamemap::overlay_old(const gamemap& m, const config& rules_cfg, map_location loc)
-{
-	int xpos = loc.x;
-	int ypos = loc.y;
-	//const config::const_child_itors &rules = rules_cfg.child_range("rule");
-	std::vector<overlay_rule> rules(rules_cfg.child_count("rule"));
-	for(std::size_t i = 0; i <rules.size(); ++i)
-	{
-		const config& cfg = rules_cfg.child("rule", i);
-		rules[i].old_ = t_translation::read_list(cfg["old"].str());
-		rules[i].new_ = t_translation::read_list(cfg["new"].str());
-		rules[i].mode_ = cfg["layer"] == "base" ? terrain_type_data::BASE : cfg["layer"] == "overlay" ? terrain_type_data::OVERLAY : terrain_type_data::BOTH;
-		const t_translation::ter_list& terrain = t_translation::read_list(cfg["terrain"].str());
-		if(!terrain.empty()) {
-			rules[i].terrain_ = terrain[0];
-		}
-		rules[i].use_old_ = cfg["use_old"].to_bool();
-		rules[i].replace_if_failed_ = cfg["replace_if_failed"].to_bool();
-	}
-
-	const int xstart = std::max<int>(-border_size(), -xpos - border_size());
-	const int ystart = std::max<int>(-border_size(), -ypos - border_size() - ((xpos & 1) ? 1 : 0));
-	const int xend = std::min<int>(m.w() + border_size(), w() + border_size() - xpos);
-	const int yend = std::min<int>(m.h() + border_size(), h() + border_size() - ypos);
-
-	for(int x1 = xstart; x1 < xend; ++x1) {
-		for(int y1 = ystart; y1 < yend; ++y1) {
-			const int x2 = x1 + xpos;
-			const int y2 = y1 + ypos + ((xpos & 1) && (x1 & 1) ? 1 : 0);
-
-			const t_translation::terrain_code t = m[{x1,y1}];
-			const t_translation::terrain_code current = (*this)[{x2, y2}];
-
-			if(t == t_translation::FOGGED || t == t_translation::VOID_TERRAIN) {
-				continue;
-			}
-
-			// See if there is a matching rule
-			const overlay_rule* rule = nullptr;
-			for(const overlay_rule& current_rule : rules)
-			{
-				if(!current_rule.old_.empty() && !t_translation::terrain_matches(current, current_rule.old_)) {
-					continue;
-				}
-				if(!current_rule.new_.empty() && !t_translation::terrain_matches(t, current_rule.new_)) {
-					continue;
-				}
-				rule = &current_rule;
-				break;
-			}
-
-			if (!rule) {
-				set_terrain(map_location(x2, y2), t);
-			}
-			else if(!rule->use_old_) {
-				set_terrain(map_location(x2, y2), rule->terrain_ ? *rule->terrain_ : t , rule->mode_, rule->replace_if_failed_);
-			}
-		}
-	}
-
-	if (!rules_cfg["ignore_special_locations"].to_bool(false)) {
-		for(auto& pair : m.starting_positions_.left) {
-			starting_positions_.left.erase(pair.first);
-			starting_positions_.insert(starting_positions::value_type(pair.first, t_translation::coordinate(pair.second.x + xpos, pair.second.y + ypos+ ((xpos & 1) && (pair.second.x & 1) ? 1 : 0))));
-		}
-	}
-}
-
 void gamemap::overlay(const gamemap& m, map_location loc, const std::vector<overlay_rule>& rules, bool m_is_odd, bool ignore_special_locations)
 {
 	int xpos = loc.wml_x();
@@ -508,17 +440,4 @@ std::vector<map_location> gamemap::parse_location_range(const std::string &x, co
 		}
 	}
 	return res;
-}
-
-void gamemap::add_fog_border()
-{
-	t_translation::ter_map tiles_new(tiles_.w + 1, tiles_.h + 1);
-	for (int x = 0, x_end = tiles_new.w; x != x_end; ++x) {
-		for (int y = 0, y_end = tiles_new.h; y != y_end; ++y) {
-			tiles_new.get(x, y) = (x == 0 || y == 0) ? t_translation::VOID_TERRAIN : tiles_.get(x - 1, y - 1);
-		}
-	}
-	++w_;
-	++h_;
-	tiles_ = tiles_new;
 }

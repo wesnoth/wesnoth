@@ -303,7 +303,7 @@ IMPLEMENT_ACTION(apply_mask)
 
 void editor_action_apply_mask::perform_without_undo(map_context& mc) const
 {
-	mc.map().overlay(mask_, config(), {0, 0});
+	mc.map().overlay(mask_, {0, 0, wml_loc()});
 	mc.set_needs_terrain_rebuild();
 }
 
