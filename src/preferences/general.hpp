@@ -192,6 +192,9 @@ namespace preferences {
 
 	bool use_color_cursors();
 	void _set_color_cursors(bool value);
+	
+	void set_update_check(bool ison);
+	bool update_check();
 
 	bool joystick_support_enabled();
 	int joystick_mouse_deadzone();

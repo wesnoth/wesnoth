@@ -714,6 +714,16 @@ void set_stop_music_in_background(bool ison)
 	preferences::set("stop_music_in_background", ison);
 }
 
+void set_update_check(bool ison)
+{
+	prefs["update_check"] = ison;
+}
+
+bool update_check()
+{
+	return get("update_check", false);
+}
+
 namespace {
 	double scroll = 0.2;
 }

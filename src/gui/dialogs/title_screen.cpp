@@ -238,7 +238,11 @@ void title_screen::pre_show(window& win)
 	//
 	// Version string
 	//
-	const std::string& version_string = VGETTEXT("Version $version", {{ "version", game_config::revision }});
+	std::string version_string = VGETTEXT("Version $version", {{ "version", game_config::revision }});
+
+	if (preferences::update_check()) {
+		version_string += " | " + VGETTEXT("New updated version $new_version available!", {{ "new_version", "1.14.5" }});
+	}
 
 	if(label* version_label = find_widget<label>(&win, "revision_number", false, false)) {
 		version_label->set_label(version_string);

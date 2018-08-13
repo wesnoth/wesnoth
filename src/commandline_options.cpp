@@ -105,6 +105,11 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	nogui(false),
 	nomusic(false),
 	nosound(false),
+#if defined(__linux__)
+	noupdatecheck(true),
+#else
+	noupdatecheck(false),
+#endif
 	new_widgets(false),
 	path(false),
 	preprocess(false),
@@ -173,6 +178,9 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("nodelay", "runs the game without any delays.")
 		("nomusic", "runs the game without music.")
 		("nosound", "runs the game without sounds and music.")
+#if !defined(__linux__)
+		("no-update-check", "runs the game without automatic checking for update.")
+#endif
 		("password", po::value<std::string>(), "uses <password> when connecting to a server, ignoring other preferences.")
 		("path", "prints the path to the data directory and exits.")
 		("plugin", po::value<std::string>(), "(experimental) load a script which defines a wesnoth plugin. similar to --script below, but lua file should return a function which will be run as a coroutine and periodically woken up with updates.")
@@ -400,6 +408,8 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		noreplaycheck = true;
 	if (vm.count("nosound"))
 		nosound = true;
+	if (vm.count("no-update-check"))
+		noupdatecheck = true;
 	if (vm.count("nogui"))
 		nogui = true;
 	if (vm.count("parm"))

@@ -210,6 +210,11 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 		no_music = true;
 	if (cmdline_opts_.nosound)
 		no_sound = true;
+	if (cmdline_opts_.noupdatecheck) {
+		preferences::set_update_check(false);
+	} else {
+		preferences::set_update_check(true);
+	}
 	if (cmdline_opts_.resolution) {
 		const int xres = std::get<0>(*cmdline_opts_.resolution);
 		const int yres = std::get<1>(*cmdline_opts_.resolution);

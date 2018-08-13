@@ -139,6 +139,8 @@ public:
 	bool nomusic;
 	/// True if --nosound was given on the command line. Disables sound.
 	bool nosound;
+	/// True if --no-update-check was given on the command line. True by default on Linux. Disables automatic update checking.
+	bool noupdatecheck;
 	/// True if --new-widgets was given on the command line. Hidden option to enable the new widget toolkit.
 	bool new_widgets;
 	/// True if --path was given on the command line. Prints the path to data directory and exits.
