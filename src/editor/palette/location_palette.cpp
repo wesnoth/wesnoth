@@ -242,7 +242,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 		button_add_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Add"), [this]() {
 			std::string newid;
 			if (gui2::dialogs::edit_text::execute(_("New Location Identifier"), "", newid)) {
-				static const boost::regex valid_id("[a-zA-Z_]+");
+				static const boost::regex valid_id("[a-zA-Z0-9_]+");
 				if(boost::regex_match(newid, valid_id)) {
 					add_item(newid);
 				}
