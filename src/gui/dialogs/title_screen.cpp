@@ -26,7 +26,7 @@
 #include "gui/core/timer.hpp"
 #include "gui/dialogs/core_selection.hpp"
 #include "gui/dialogs/debug_clock.hpp"
-#include "gui/dialogs/game_version.hpp"
+#include "gui/dialogs/game_version_dialog.hpp"
 #include "gui/dialogs/help_browser.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
