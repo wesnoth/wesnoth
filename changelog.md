@@ -14,6 +14,8 @@
    * Fix layout of Preferences window with some localisations (such as Czech)
  ### Miscellaneous and bug fixes
    * Fix some minor problems in macOS package
+   * Fast Micro AI: Fix bug crashing the AI when units with chance-to-hit
+     specials without id are on map
 
 ## Version 1.14.4
  ### Security Fixes
