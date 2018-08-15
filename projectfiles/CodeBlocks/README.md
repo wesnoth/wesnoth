@@ -20,7 +20,7 @@
     Building a 64-bit Wesnoth executable on Windows is currently not supported and will
     fail with the SDK package provided in the next step.
 
-4.  Download the latest `CodeBlocksWinSDK*.zip` package from <http://sourceforge.net/projects/wesnoth/files/SDK/>.
+4.  Download the latest `CodeBlocksWinSDK*.7z` package from https://github.com/newfrenchy83/codeblock/tree/Cb-13-8-18.
     The package contains the right version/build combination of source headers,
     build-time libraries (`*.a`) and run-time libraries (`*.dll`) needed to build
     and run Wesnoth. Older versions of the package may no longer be useful
@@ -46,15 +46,15 @@
     dialog. Enter the following settings into the text boxes:
 
     * Compiler's installation directory: the path to which you installed
-      tdm-gcc-5.1.0 (click on ... to browse for it).
+      tMinGW-w64 (click on ... to browse for it).
     * C compiler, C++ compiler, Linker for dynamic libs: g++.exe
     * Linker for static libs: ar.exe
 
 7.  Change to the Search directories -> Compiler tab and choose Add; enter the
-    path to `sdk_root/include_tdm_gcc/`.
+    path to `sdk_root/include_mingw/`.
 
 8.  Change to the Search directories -> Linker tab and choose Add; enter the
-    path to `sdk_root/lib_tdm_gcc/`.
+    path to `sdk_root/lib_mingw/`.
 
 9.  OPTIONAL: By default, CodeBlocks will only run one compiler instance at a
     time, making the overall build process very slow even with fast hardware.
