@@ -40,6 +40,7 @@ namespace game_config
 	extern unsigned lobby_refresh;
 	extern const std::string version;
 	extern const std::string revision;
+	extern std::string new_version;
 	extern const std::string default_title_string;
 	extern std::string default_terrain;
 

@@ -38,6 +38,7 @@ namespace game_config
 // Path and revision info
 //
 const std::string version = VERSION;
+std::string new_version = "";
 
 const version_info wesnoth_version(VERSION);
 const version_info min_savegame_version(MIN_SAVEGAME_VERSION);

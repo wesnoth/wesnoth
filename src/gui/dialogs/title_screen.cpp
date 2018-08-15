@@ -17,6 +17,8 @@
 #include "gui/dialogs/title_screen.hpp"
 
 #include "addon/manager_ui.hpp"
+#include <boost/thread.hpp>
+#include "desktop/update_check.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
 #include "game_config_manager.hpp"
@@ -192,6 +194,8 @@ static void debug_tooltip(window& /*window*/, bool& handled, const point& coordi
 
 void title_screen::pre_show(window& win)
 {
+	boost::thread update_check(desktop::update_check::check_for_updates, std::ref(win));
+	
 	win.set_click_dismiss(false);
 	win.set_enter_disabled(true);
 	win.set_escape_disabled(true);
@@ -234,21 +238,6 @@ void title_screen::pre_show(window& win)
 
 	find_widget<image>(&win, "logo-bg", false).set_image(game_config::images::game_logo_background);
 	find_widget<image>(&win, "logo", false).set_image(game_config::images::game_logo);
-
-	//
-	// Version string
-	//
-	std::string version_string = VGETTEXT("Version $version", {{ "version", game_config::revision }});
-
-	if (preferences::update_check()) {
-		version_string += " | " + VGETTEXT("New updated version $new_version available!", {{ "new_version", "1.14.5" }});
-	}
-
-	if(label* version_label = find_widget<label>(&win, "revision_number", false, false)) {
-		version_label->set_label(version_string);
-	}
-
-	win.get_canvas(0).set_variable("revision_number", wfl::variant(version_string));
 
 	//
 	// Tip-of-the-day browser
@@ -404,6 +393,17 @@ void title_screen::pre_show(window& win)
 	find_widget<button>(&win, "clock", false).set_visible(show_debug_clock_button
 		? widget::visibility::visible
 		: widget::visibility::invisible);
+	
+	//TODO: Don't run this if boost::thread update_check already finished
+	//
+	// Version string
+	//
+	const std::string& version_string = VGETTEXT("Version $version", {{ "version", game_config::revision }});
+	if(label* version_label = find_widget<label>(&win, "revision_number", false, false)) {
+		version_label->set_label(version_string);
+	}
+	
+	win.get_canvas(0).set_variable("revision_number", wfl::variant(version_string));
 }
 
 void title_screen::on_resize(window& win)
