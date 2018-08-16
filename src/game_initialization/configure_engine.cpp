@@ -17,7 +17,7 @@
 #include "mp_game_settings.hpp"
 #include "preferences/credentials.hpp"
 #include "preferences/game.hpp"
-#include "settings.hpp"
+#include "map_settings.hpp"
 #include "tod_manager.hpp"
 
 #include <cassert>

@@ -26,7 +26,7 @@
 #include "utils/const_clone.hpp"
 #include "utils/functional.hpp"
 #include "deprecation.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <algorithm>

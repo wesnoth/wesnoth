@@ -43,7 +43,7 @@
 #include "serialization/parser.hpp"
 #include "serialization/utf8_exception.hpp"
 #include "statistics.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 #include "video.hpp"
 
 #include <algorithm>

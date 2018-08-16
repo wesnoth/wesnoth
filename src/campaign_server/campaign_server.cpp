@@ -35,7 +35,7 @@
 #include "campaign_server/blacklist.hpp"
 #include "campaign_server/control.hpp"
 #include "campaign_server/fs_commit.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 #include "hash.hpp"
 
 #include <csignal>

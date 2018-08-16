@@ -17,7 +17,7 @@
 #include "config.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)

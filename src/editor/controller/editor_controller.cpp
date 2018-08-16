@@ -45,7 +45,7 @@
 #include "game_board.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 #include "preferences/display.hpp"
 #include "sound.hpp"
 #include "units/unit.hpp"

@@ -19,7 +19,7 @@
 #include "log.hpp"
 #include "config.hpp"
 #include "units/unit.hpp"
-#include "tests/utils/game_config_manager.hpp"
+#include "tests/utils/game_config_manager_tests.hpp"
 #include "units/map.hpp"
 #include "units/id.hpp"
 

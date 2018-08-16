@@ -21,7 +21,7 @@
 #include "resources.hpp"
 #include "variable.hpp"
 #include "deprecation.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 
 namespace storyscreen
 {

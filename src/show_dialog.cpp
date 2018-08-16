@@ -18,7 +18,7 @@
 
 #include "floating_label.hpp"
 #include "font/sdl_ttf.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 #include "gettext.hpp"
 #include "gui/core/event/handler.hpp"
 #include "help/help.hpp"

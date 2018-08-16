@@ -25,7 +25,7 @@
 #include "font/text.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 
 #include "gui/auxiliary/typed_formula.hpp"
 #include "gui/core/log.hpp"

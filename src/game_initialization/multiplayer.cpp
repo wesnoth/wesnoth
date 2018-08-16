@@ -34,7 +34,7 @@
 #include "hash.hpp"
 #include "log.hpp"
 #include "multiplayer_error_codes.hpp"
-#include "settings.hpp"
+#include "map_settings.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"
 #include "wesnothd_connection.hpp"

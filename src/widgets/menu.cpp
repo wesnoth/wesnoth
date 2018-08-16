@@ -20,7 +20,7 @@
 #include "font/sdl_ttf.hpp"
 #include "font/standard_colors.hpp"
 #include "language.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 #include "font/marked-up_text.hpp"
 #include "sdl/rect.hpp"
 #include "sound.hpp"

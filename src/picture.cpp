@@ -19,7 +19,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "image.hpp"
+#include "picture.hpp"
 
 #include "config.hpp"
 #include "display.hpp"

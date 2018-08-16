@@ -19,7 +19,7 @@
 #include "config.hpp"
 #include "gettext.hpp"
 #include "utils/make_enum.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 
 #include <boost/optional.hpp>
 

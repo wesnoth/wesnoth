@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "version.hpp"
+#include "game_version.hpp"
 
 #include <string>
 

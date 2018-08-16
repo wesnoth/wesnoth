@@ -20,7 +20,7 @@
 #include "display.hpp"
 #include "game_board.hpp"
 #include "gettext.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "preferences/general.hpp"

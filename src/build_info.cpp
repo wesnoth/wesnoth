@@ -22,7 +22,7 @@
 #include "formatter.hpp"
 #include "gettext.hpp"
 #include "serialization/unicode.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 
 #include <algorithm>
 
