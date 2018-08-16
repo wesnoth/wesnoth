@@ -15,7 +15,7 @@
 #define GETTEXT_DOMAIN "wesnoth-test"
 
 #include <boost/test/unit_test.hpp>
-#include "version.hpp"
+#include "game_version.hpp"
 
 BOOST_AUTO_TEST_SUITE( version )
 

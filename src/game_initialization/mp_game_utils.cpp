@@ -19,7 +19,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "saved_game.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 #include "wesnothd_connection_error.hpp"
 
 static lg::log_domain log_engine("engine");

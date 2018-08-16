@@ -57,7 +57,7 @@ class manager;
 #include "events.hpp"
 #include "font/standard_colors.hpp"
 #include "game_config.hpp"
-#include "image.hpp" //only needed for enums (!)
+#include "picture.hpp" //only needed for enums (!)
 #include "key.hpp"
 #include "map/hex_rect.hpp"
 #include "sdl/rect.hpp"

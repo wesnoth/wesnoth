@@ -18,7 +18,7 @@
  */
 
 #include "lexical_cast.hpp"
-#include "settings.hpp"
+#include "map_settings.hpp"
 
 #include "serialization/string_utils.hpp"
 #include "utils/general.hpp"

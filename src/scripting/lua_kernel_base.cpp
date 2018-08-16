@@ -36,8 +36,8 @@
 #include "scripting/lua_rng.hpp"
 #include "scripting/push_check.hpp"
 
-#include "version.hpp"                  // for do_version_check, etc
-#include "image.hpp"
+#include "game_version.hpp"                  // for do_version_check, etc
+#include "picture.hpp"
 
 #include "formula/string_utils.hpp"
 #include "utils/functional.hpp"

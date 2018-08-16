@@ -64,7 +64,7 @@
 #include "gui/dialogs/game_save.hpp"
 #include "gui/dialogs/game_stats.hpp"
 #include "gui/dialogs/game_ui.hpp"
-#include "gui/dialogs/game_version.hpp"
+#include "gui/dialogs/game_version_dialog.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/help_browser.hpp"
 #include "gui/dialogs/hotkey_bind.hpp"

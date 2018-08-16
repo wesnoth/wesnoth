@@ -41,7 +41,7 @@
 #include "gui/widgets/toggle_panel.hpp"
 #include "log.hpp"
 #include "savegame.hpp"
-#include "settings.hpp"
+#include "map_settings.hpp"
 
 #include <boost/algorithm/string.hpp>
 
