@@ -385,6 +385,10 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 	}
 
 	int res = dlg.get_selected_index();
+	if (res < 0) {
+		gui2::show_transient_message("", _("No unit recalled"));
+		return;
+	}
 	int unit_cost = current_team.recall_cost();
 
 	// we need to check if unit has a specific recall cost
