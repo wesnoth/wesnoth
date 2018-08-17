@@ -19,7 +19,7 @@
 
 #include "cursor.hpp"
 
-#include "image.hpp"
+#include "picture.hpp"
 #include "preferences/game.hpp"
 #include "sdl/utils.hpp"
 

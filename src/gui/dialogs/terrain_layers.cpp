@@ -21,7 +21,7 @@
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/window.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 
 namespace gui2
 {

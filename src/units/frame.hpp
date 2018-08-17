@@ -23,7 +23,7 @@
 
 #include "color.hpp"
 #include "halo.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 
 #include <boost/logic/tribool.hpp>
 #include <boost/optional.hpp>

@@ -39,7 +39,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "formula/string_utils.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 #include "language.hpp"
 #include "preferences/general.hpp"
 #include "utils/general.hpp"

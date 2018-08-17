@@ -16,7 +16,7 @@
 
 #include "editor/palette/tristate_button.hpp"
 
-#include "image.hpp"
+#include "picture.hpp"
 #include "log.hpp"
 #include "sdl/rect.hpp"
 #include "sound.hpp"

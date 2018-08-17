@@ -14,6 +14,8 @@
      Japanese, Polish, Scottish Gaelic, Slovak, Spanish, Ukrainian.
  ### Packaging
    * OpenMP support has been removed. It is no longer an optional build-time dependency.
+ ### Units
+   * Saurian warriors are now female. (issue #3392)
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a special location ID
@@ -60,6 +62,8 @@
    * Fix layout of Preferences window with some localisations (such as Czech)
  ### Miscellaneous and bug fixes
    * Fix some minor problems in macOS package
+   * Fast Micro AI: Fix bug crashing the AI when units with chance-to-hit
+     specials without id are on map
 
 ## Version 1.14.4
  ### Security Fixes

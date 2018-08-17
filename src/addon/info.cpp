@@ -18,7 +18,7 @@
 #include "config.hpp"
 #include "font/pango/escape.hpp"
 #include "gettext.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 

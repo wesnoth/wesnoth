@@ -39,7 +39,7 @@
 #include "gui/dialogs/select_orb_colors.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/dialogs/game_version.hpp"
+#include "gui/dialogs/game_version_dialog.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"

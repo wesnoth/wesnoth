@@ -27,7 +27,7 @@
 #include "gui/widgets/retval.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 #include "serialization/string_utils.hpp"
 #include "addon/client.hpp"
 

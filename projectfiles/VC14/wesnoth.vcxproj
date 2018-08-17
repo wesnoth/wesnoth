@@ -1681,7 +1681,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\game_version.cpp">
+    <ClCompile Include="..\..\src\gui\dialogs\game_version_dialog.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
@@ -2486,7 +2486,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Hotkeys\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Hotkeys\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\image.cpp" />
+    <ClCompile Include="..\..\src\picture.cpp" />
     <ClCompile Include="..\..\src\image_modifications.cpp" />
     <ClCompile Include="..\..\src\key.cpp" />
     <ClCompile Include="..\..\src\language.cpp" />
@@ -2827,7 +2827,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Serialization\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Serialization\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\settings.cpp" />
+    <ClCompile Include="..\..\src\map_settings.cpp" />
     <ClCompile Include="..\..\src\side_filter.cpp" />
     <ClCompile Include="..\..\src\sound.cpp" />
     <ClCompile Include="..\..\src\soundsource.cpp" />
@@ -3195,7 +3195,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Tests\Utils\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Tests\Utils\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\tests\utils\game_config_manager.cpp">
+    <ClCompile Include="..\..\src\tests\utils\game_config_manager_tests.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Tests\Utils\</ObjectFileName>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">true</ExcludedFromBuild>
@@ -3728,7 +3728,7 @@
     <ClInclude Include="..\..\src\gui\dialogs\game_save.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\game_stats.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\game_ui.hpp" />
-    <ClInclude Include="..\..\src\gui\dialogs\game_version.hpp" />
+    <ClInclude Include="..\..\src\gui\dialogs\game_version_dialog.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\help_browser.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\hotkey_bind.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\ingame_ui_base.hpp" />
@@ -3856,7 +3856,7 @@
     <ClInclude Include="..\..\src\hotkey\hotkey_handler_sp.hpp" />
     <ClInclude Include="..\..\src\hotkey\hotkey_item.hpp" />
     <ClInclude Include="..\..\src\hotkey\hotkey_manager.hpp" />
-    <ClInclude Include="..\..\src\image.hpp" />
+    <ClInclude Include="..\..\src\picture.hpp" />
     <ClInclude Include="..\..\src\image_modifications.hpp" />
     <ClInclude Include="..\..\src\key.hpp" />
     <ClInclude Include="..\..\src\language.hpp" />
@@ -3945,7 +3945,7 @@
     <ClInclude Include="..\..\src\sdl\utils.hpp" />
     <ClInclude Include="..\..\src\sdl\window.hpp" />
     <ClInclude Include="..\..\src\seed_rng.hpp" />
-    <ClInclude Include="..\..\src\settings.hpp" />
+    <ClInclude Include="..\..\src\map_settings.hpp" />
     <ClInclude Include="..\..\src\side_filter.hpp" />
     <ClInclude Include="..\..\src\sound.hpp" />
     <ClInclude Include="..\..\src\soundsource.hpp" />
@@ -3988,7 +3988,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </CustomBuild>
-    <CustomBuild Include="..\..\src\tests\utils\game_config_manager.hpp">
+    <CustomBuild Include="..\..\src\tests\utils\game_config_manager_tests.hpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -4038,7 +4038,7 @@
     <ClInclude Include="..\..\src\variable_info.hpp" />
     <ClInclude Include="..\..\src\variable_info_detail.hpp" />
     <ClInclude Include="..\..\src\variable_info_private.hpp" />
-    <ClInclude Include="..\..\src\version.hpp" />
+    <ClInclude Include="..\..\src\game_version.hpp" />
     <ClInclude Include="..\..\src\video.hpp" />
     <ClInclude Include="..\..\src\wesconfig.h" />
     <ClInclude Include="..\..\src\wesnothd_connection.hpp" />

@@ -17,7 +17,7 @@
 #include "color.hpp"
 #include "config.hpp"
 #include "game_config.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
