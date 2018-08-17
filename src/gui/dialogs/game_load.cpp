@@ -18,6 +18,7 @@
 
 #include "desktop/open.hpp"
 #include "filesystem.hpp"
+#include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "game_config.hpp"
@@ -178,6 +179,8 @@ void game_load::display_savegame(window& window)
 
 	leader_list.clear();
 
+	const std::string sprite_scale_mod = (formatter() << "~SCALE_INTO(" << game_config::tile_size << ',' << game_config::tile_size << ')').str();
+
 	for(const auto& leader : summary_.child_range("leader")) {
 		std::map<std::string, string_map> data;
 		string_map item;
@@ -198,6 +201,9 @@ void game_load::display_savegame(window& window)
 
 		if(leader_image.empty()) {
 			leader_image = "units/unknown-unit.png" + leader["leader_image_tc_modifier"].str();
+		} else {
+			// Scale down any sprites larger than 72x72
+			leader_image += sprite_scale_mod;
 		}
 
 		item["label"] = leader_image;

@@ -12,6 +12,7 @@
    * MacOS: Fixed moving the mouse with a touchpad also scrolling GUI dialogs
    * MacOS: Add build number to OS version report
    * Fix layout of Preferences window with some localisations (such as Czech)
+   * Force leader sprites larger than 72x72 to be downscaled in Load Game (issue #3474).
  ### Miscellaneous and bug fixes
    * Fix some minor problems in macOS package
    * Fast Micro AI: Fix bug crashing the AI when units with chance-to-hit
