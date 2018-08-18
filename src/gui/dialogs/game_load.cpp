@@ -303,6 +303,7 @@ void game_load::filter_text_changed(text_box_base* textbox, const std::string& t
 
 void game_load::evaluate_summary_string(std::stringstream& str, const config& cfg_summary)
 {
+	std::string difficulty_human_str = string_table[cfg_summary["difficulty"]];
 	if(cfg_summary["corrupt"].to_bool()) {
 		str << "\n<span color='#f00'>" << _("(Invalid)") << "</span>";
 
@@ -320,6 +321,16 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 				if(!campaign_id.empty()) {
 					if(const config& c = cache_config_.find_child("campaign", "id", campaign_id)) {
 						campaign = &c;
+					}
+				}
+
+				if (campaign != nullptr) {
+					try {
+						const config &difficulty = campaign->find_child("difficulty", "define", cfg_summary["difficulty"]);
+						std::ostringstream ss;
+						ss << difficulty["label"] << " (" << difficulty["description"] << ")";
+						difficulty_human_str = ss.str();
+					} catch(const config::error&) {
 					}
 				}
 
@@ -364,7 +375,7 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 	}
 
 	str << "\n" << _("Difficulty: ")
-		<< string_table[cfg_summary["difficulty"]];
+		<< difficulty_human_str;
 
 	if(!cfg_summary["version"].empty()) {
 		str << "\n" << _("Version: ") << cfg_summary["version"];
