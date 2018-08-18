@@ -70,7 +70,7 @@ Comment[sr@latin]=Fantazijska strateška igra na poteze
 Comment[tr]=Fantastik, sırayla oynanan bir strateji oyunu
 Comment[vi]=Một trò chơi chiến lược dựa trên lượt đi theo phong cách thần thoại
 Icon=wesnoth-icon
-Exec=wesnoth
+Exec=wesnoth >/dev/null 2>&1
 Categories=Game;StrategyGame;
 Actions=Editor;
 
@@ -91,4 +91,4 @@ Name[sr@ijekavian]=Уређивач мапа
 Name[sr@ijekavianlatin]=Uređivač mapa
 Name[sr@latin]=Uređivač mapa
 Name[tr]=Harita Düzenleyici
-Exec=wesnoth -e
+Exec=wesnoth -e  >/dev/null 2>&1
