@@ -381,6 +381,7 @@ void game_config_manager::load_addons_cfg()
 
 	// Load the addons.
 	for(const std::string& addon_id : user_dirs) {
+		log_scope2(log_config, "Loading add-on '" + addon_id + "'");
 		const std::string addon_dir = user_campaign_dir + "/" + addon_id;
 
 		const std::string main_cfg = addon_dir + "/_main.cfg";
