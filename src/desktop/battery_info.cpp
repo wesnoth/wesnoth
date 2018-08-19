@@ -22,6 +22,10 @@
 #include "apple_battery_info.hpp"
 #endif
 
+#ifdef HAVE_LIBDBUS
+#include "desktop/dbus_features.hpp"
+#endif
+
 namespace desktop {
 namespace battery_info {
 
@@ -31,6 +35,8 @@ bool does_device_have_battery()
 	return windows_battery_info::does_device_have_battery();
 #elif defined(__APPLE__)
 	return desktop::battery_info::apple::does_device_have_battery();
+#elif defined(HAVE_LIBDBUS)
+	return dbus::does_device_have_battery();
 #else
 	return false;
 #endif
@@ -42,6 +48,8 @@ double get_battery_percentage()
 	return windows_battery_info::get_battery_percentage();
 #elif defined(__APPLE__)
 	return desktop::battery_info::apple::get_battery_percentage();
+#elif defined(HAVE_LIBDBUS)
+	return dbus::get_battery_percentage();
 #else
 	return -1;
 #endif
