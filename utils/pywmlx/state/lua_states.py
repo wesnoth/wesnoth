@@ -77,7 +77,8 @@ class LuaCommentState:
 
 class LuaStr00:
     def __init__(self):
-        self.regex = re.compile(r'((?:_)|(?:.*?\s+_))\s*\(')
+        # self.regex = re.compile(r'((?:_)|(?:.*?\s+_))\s*\(')
+        self.regex = re.compile(r'\b_\b\s*\(')
         self.iffail = 'lua_str01'
     
     def run(self, xline, lineno, match):
