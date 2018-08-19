@@ -18,4 +18,6 @@
 
 namespace dbus {
 	void send_notification(const std::string& owner, const std::string& message, bool with_history);
+	bool does_device_have_battery();
+	double get_battery_percentage();
 }

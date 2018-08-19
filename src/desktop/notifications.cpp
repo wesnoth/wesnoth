@@ -20,7 +20,7 @@
 #include "video.hpp" //CVideo::get_singleton().window_state()
 
 #ifdef HAVE_LIBDBUS
-#include "desktop/dbus_notification.hpp"
+#include "desktop/dbus_features.hpp"
 #endif
 
 #ifdef __APPLE__

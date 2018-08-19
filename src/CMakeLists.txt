@@ -280,7 +280,7 @@ endif(APPLE)
 if(LIBDBUS_FOUND)
 	set(libwesnoth-game_STAT_SRC
 		${libwesnoth-game_STAT_SRC}
-		desktop/dbus_notification.cpp
+		desktop/dbus_features.cpp
 	)
 endif(LIBDBUS_FOUND)
 
