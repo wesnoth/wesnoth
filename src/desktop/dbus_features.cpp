@@ -12,14 +12,14 @@
    See the COPYING file for more details.
 */
 
-#include "desktop/dbus_notification.hpp"
+#include "desktop/dbus_features.hpp"
 
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
 
 #ifndef HAVE_LIBDBUS
-#error "The HAVE_LIBDBUS symbol is not defined, you do not have lib dbus available, you should not be trying to compile dbus_notification.cpp"
+#error "The HAVE_LIBDBUS symbol is not defined, you do not have lib dbus available, you should not be trying to compile dbus_features.cpp"
 #endif
 
 #include <dbus/dbus.h>
@@ -28,6 +28,8 @@
 #include <boost/multi_index/hashed_index.hpp>
 #include <boost/multi_index/member.hpp>
 #include <cstdlib>
+#include <functional>
+#include <memory>
 #include <string>
 
 #pragma GCC diagnostic ignored "-Wold-style-cast"
@@ -196,6 +198,45 @@ uint32_t send_dbus_notification(DBusConnection *connection, uint32_t replaces_id
 	return id;
 }
 
+template<typename T>
+T get_power_source_property(const std::string &name, int type, T fallback)
+{
+	DBusConnection *connection = get_dbus_connection();
+	if (!connection) return fallback;
+
+	std::unique_ptr<DBusMessage, std::function<void(DBusMessage*)>> msg(dbus_message_new_method_call(
+			"org.freedesktop.UPower",
+			"/org/freedesktop/UPower/devices/DisplayDevice",
+			"org.freedesktop.DBus.Properties",
+			"Get"),
+		dbus_message_unref);
+
+	const char *interface_name = "org.freedesktop.UPower.Device";
+	const char *property_name = name.data();
+	dbus_message_append_args(msg.get(),
+		DBUS_TYPE_STRING, &interface_name,
+		DBUS_TYPE_STRING, &property_name,
+		DBUS_TYPE_INVALID);
+
+	DBusError err;
+	dbus_error_init(&err);
+
+	std::unique_ptr<DBusMessage, std::function<void(DBusMessage*)>> ret(dbus_connection_send_with_reply_and_block(
+		connection, msg.get(), 1000, &err), dbus_message_unref);
+	if (ret == nullptr) {
+		DBG_DU << "Failed to query power source properties: " << err.message << '\n';
+		dbus_error_free(&err);
+		return fallback;
+	}
+
+	T value;
+	dbus_message_get_args(ret.get(), nullptr,
+		type, &value,
+		DBUS_TYPE_INVALID);
+
+	return value;
+}
+
 } // end anonymous namespace
 
 namespace dbus {
@@ -241,6 +282,16 @@ void send_notification(const std::string & owner, const std::string & message, b
 				<< "Old Item:\n" << "\tid=" << result.first->id << "\n\towner=" << result.first->owner << "\n\tmessage=" << result.first->message << "\n";
 		}
 	}
+}
+
+bool does_device_have_battery()
+{
+	return get_power_source_property<uint32_t>("Type", DBUS_TYPE_UINT32, 0) == 2;
+}
+
+double get_battery_percentage()
+{
+	return get_power_source_property<double>("Percentage", DBUS_TYPE_DOUBLE, 0.0);
 }
 
 } // end namespace dbus
