@@ -786,7 +786,7 @@ bool pango_text::set_markup(utils::string_view text, PangoLayout& layout) {
 		ERR_GUI_L << "pango_text::" << __func__
 			<< " text '" << text
 			<< "' has broken markup, set to normal text.\n";
-		set_text(_("The text contains invalid markup: ") + text.to_string(), false);
+		set_text(_("The text contains invalid pango markup: ") + text.to_string(), false);
 	}
 
 	return valid;
