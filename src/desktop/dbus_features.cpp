@@ -98,7 +98,7 @@ DBusHandlerResult filter_dbus_signal(DBusConnection *, DBusMessage *buf, void *)
 	return DBUS_HANDLER_RESULT_HANDLED;
 }
 
-DBusConnection *get_dbus_connection()
+DBusConnection *get_dbus_session_bus()
 {
 	static bool initted = false;
 	static DBusConnection *connection = nullptr;
@@ -124,6 +124,21 @@ DBusConnection *get_dbus_connection()
 		dbus_connection_read_write(connection, 0);
 		while (dbus_connection_dispatch(connection) == DBUS_DISPATCH_DATA_REMAINS) {}
 	}
+	return connection;
+}
+
+DBusConnection *get_dbus_system_bus()
+{
+	static DBusConnection *connection = nullptr;
+
+	if (connection == nullptr)
+	{
+		DBusError err;
+		dbus_error_init(&err);
+		connection = dbus_bus_get(DBUS_BUS_SYSTEM, &err);
+		dbus_error_free(&err);
+	}
+
 	return connection;
 }
 
@@ -199,9 +214,9 @@ uint32_t send_dbus_notification(DBusConnection *connection, uint32_t replaces_id
 }
 
 template<typename T>
-T get_power_source_property(const std::string &name, int type, T fallback)
+T get_power_source_property(const std::string &name, T fallback)
 {
-	DBusConnection *connection = get_dbus_connection();
+	DBusConnection *connection = get_dbus_system_bus();
 	if (!connection) return fallback;
 
 	std::unique_ptr<DBusMessage, std::function<void(DBusMessage*)>> msg(dbus_message_new_method_call(
@@ -229,10 +244,13 @@ T get_power_source_property(const std::string &name, int type, T fallback)
 		return fallback;
 	}
 
+	// The value is returned as a variant. We need to recurse into it to read the underlying value.
+	DBusMessageIter iter;
+	dbus_message_iter_init(ret.get(), &iter);
+	DBusMessageIter sub_iter;
+	dbus_message_iter_recurse(&iter, &sub_iter);
 	T value;
-	dbus_message_get_args(ret.get(), nullptr,
-		type, &value,
-		DBUS_TYPE_INVALID);
+	dbus_message_iter_get_basic(&sub_iter, &value);
 
 	return value;
 }
@@ -245,7 +263,7 @@ const size_t MAX_MSG_LINES = 5;
 
 void send_notification(const std::string & owner, const std::string & message, bool with_history)
 {
-	DBusConnection *connection = get_dbus_connection();
+	DBusConnection *connection = get_dbus_session_bus();
 	if (!connection) return;
 
 	wnotify_by_owner & noticias = notifications.get<by_owner>();
@@ -286,12 +304,12 @@ void send_notification(const std::string & owner, const std::string & message, b
 
 bool does_device_have_battery()
 {
-	return get_power_source_property<uint32_t>("Type", DBUS_TYPE_UINT32, 0) == 2;
+	return get_power_source_property<uint32_t>("Type", 0) == 2;
 }
 
 double get_battery_percentage()
 {
-	return get_power_source_property<double>("Percentage", DBUS_TYPE_DOUBLE, 0.0);
+	return get_power_source_property<double>("Percentage", 0.0);
 }
 
 } // end namespace dbus
