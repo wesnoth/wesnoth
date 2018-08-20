@@ -230,6 +230,9 @@ website_stringfixes = {
 "1.14-announcement" : (
 ("better ingrate them", "better integrate them"),
 
+# Lua version number
+("5.3.4", "5.3"),
+
 # Yes, these are really flimsy. In hindsight it was a bad idea to include
 # download sizes in the announcement. Hopefully we won't end up with
 # files that have the same size in a release/in the last two releases
