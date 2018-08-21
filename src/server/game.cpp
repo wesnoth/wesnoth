@@ -1998,7 +1998,7 @@ void game::send_server_message(const char* message, const socket_ptr& sock, simp
 	if(started_) {
 		simple_wml::node& cmd = doc.root().add_child("turn");
 		simple_wml::node& cfg = cmd.add_child("command");
-		cmd.set_attr("undo", "no");
+		cfg.set_attr("undo", "no");
 		simple_wml::node& msg = cfg.add_child("speak");
 
 		msg.set_attr("id", "server");
