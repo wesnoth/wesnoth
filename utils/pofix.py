@@ -134,7 +134,14 @@ game_stringfixes = {
 ("with the greatest generals, and battle tactics", "with the greatest generals and battle tactics"),
 # fixes added in 1.14.3+dev
 ("Whatever.... I still think we should make an effort", "Whatever... I still think we should make an effort"),
-("That is so very encouraging....","That is so very encouraging...")
+("That is so very encouraging....","That is so very encouraging..."),
+# fixes added in 1.14.4+dev
+("Asheviere is the queen of Wesnoth.", "Asheviere is the Queen of Wesnoth."),
+),
+
+"wesnoth-l" : (
+# fixes added in 1.14.4+dev
+("destroys our homes. Retreat!!", "destroys our homes. Retreat!"),
 ),
 
 "wesnoth-low" : (
@@ -179,6 +186,11 @@ game_stringfixes = {
 
 "wesnoth-tb" : (
 ("try to force him off of his keep", "try to force him off his keep"),
+),
+
+"wesnoth-tsg": (
+# fixes added in 1.14.4+dev
+("Bury me deeply my friends...", "Bury me deeply, my friends..."),
 ),
 
 "wesnoth-trow" : (
