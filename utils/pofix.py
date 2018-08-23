@@ -84,6 +84,12 @@ game_stringfixes = {
 ("http://wiki.wesnoth.org/Micro_AIs", "https://wiki.wesnoth.org/Micro_AIs"),
 ),
 
+"wesnoth-aoi": (
+# conversion added in 1.14.4+dev
+("the bodies of both sides, there was no hale orc in sight,", "the bodies of both sides. There was no hale orc in sight,"),
+("Now battle-hardened and strong of will, she can now aid those around her in the art of combat.", "Now battle-hardened and strong of will, she can aid those around her in the art of combat."),
+),
+
 "wesnoth-editor" : (
 # conversion added in 1.11.10+dev
 ("Choose file", "Choose File"),
