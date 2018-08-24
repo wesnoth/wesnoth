@@ -1622,6 +1622,7 @@ void attack_unit_and_advance(const map_location& attacker,
 	}
 }
 
+//integrate active_on in leadership ability
 int under_leadership(const unit_map& units, const map_location& loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
 	const unit_map::const_iterator un = units.find(loc);
@@ -1658,6 +1659,8 @@ bool unit::abilities_filter_matches(const config& cfg, bool attacker, int res) c
 	return true;
 }
 
+//functions for emulate weapon specials.
+//filter opponent and affect self/opponent/both option.
 bool unit::ability_filter_opponent(const std::string& ability,const config& cfg,const map_location& loc) const
 {
 	const config &filter = cfg.child("filter_opponent");
@@ -1705,6 +1708,7 @@ bool leadership_affects_opponent(const std::string& ability,const unit_map& unit
      return false;
 }
 
+//sub function for emulate chance_to_hit,damage drains and attacks special.
 std::pair<int, bool> ability_leadership(const std::string& ability,const unit_map& units, const map_location& loc, const map_location& opp_loc, bool attacker, int abil_value, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
 	const unit_map::const_iterator un = units.find(loc);
@@ -1740,6 +1744,7 @@ std::pair<int, bool> ability_leadership(const std::string& ability,const unit_ma
     return {abil_value, false};
 }
 
+//sub function for wmulate boolean special(slow, poison...)
 bool bool_leadership(const std::string& ability,const unit_map& units, const map_location& loc, const map_location& opp_loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
 	const unit_map::const_iterator un = units.find(loc);
@@ -1763,6 +1768,7 @@ bool bool_leadership(const std::string& ability,const unit_map& units, const map
     return false;
 }
 
+//emulate boolean special for self/adjacent and/or opponent.
 bool attack_type::bool_ability(const std::string& ability) const {
 
     bool abil_bool= get_special_bool(ability);
@@ -1777,6 +1783,7 @@ bool attack_type::bool_ability(const std::string& ability) const {
    return abil_bool;
 }
 
+//emulate numerical special for self/adjacent and/or opponent.
 std::pair<int, bool> attack_type::combat_ability(const std::string& ability, int abil_value) const {
     const unit_map& units = display::get_singleton()->get_units();
             if(leadership_affects_self(ability, units, self_loc_, shared_from_this(), other_attack_)){
@@ -1788,6 +1795,7 @@ std::pair<int, bool> attack_type::combat_ability(const std::string& ability, int
     }
    return {abil_value, false};
 }
+//end of emulate weapon special functions.
 
 int combat_modifier(const unit_map& units,
 		const gamemap& map,
