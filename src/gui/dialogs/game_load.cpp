@@ -369,6 +369,22 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 	if(!cfg_summary["version"].empty()) {
 		str << "\n" << _("Version: ") << cfg_summary["version"];
 	}
+
+	const std::vector<std::string>& active_mods = utils::split(cfg_summary["active_mods"]);
+	if(!active_mods.empty()) {
+		str << "\n" << _("Modifications: ");
+		for(const auto& mod_id : active_mods) {
+			std::string mod_name;
+			try {
+				mod_name = cache_config_.find_child("modification", "id", mod_id)["name"].str();
+			} catch(const config::error&) {
+				// Fallback to nontranslatable mod id.
+				mod_name = "(" + mod_id + ")";
+			}
+
+			str << "\n" << font::unicode_bullet << " " << mod_name;
+		}
+	}
 }
 
 void game_load::delete_button_callback(window& window)
