@@ -30,6 +30,7 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
+#include "gui/widgets/scroll_label.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else
@@ -229,7 +230,7 @@ void game_load::display_savegame(window& window)
 	evaluate_summary_string(str, summary_);
 
 	// The new label value may have more or less lines than the previous value, so invalidate the layout.
-	find_widget<label>(&window, "lblSummary", false).set_label(str.str());
+	find_widget<scroll_label>(&window, "slblSummary", false).set_label(str.str());
 	window.invalidate_layout();
 
 	toggle_button& replay_toggle            = dynamic_cast<toggle_button&>(*show_replay_->get_widget());
