@@ -86,8 +86,8 @@ game_stringfixes = {
 
 "wesnoth-aoi": (
 # conversion added in 1.14.4+dev
-("the bodies of both sides, there was no hale orc in sight,", "the bodies of both sides. There was no hale orc in sight,"),
-("Now battle-hardened and strong of will, she can now aid those around her in the art of combat.", "Now battle-hardened and strong of will, she can aid those around her in the art of combat."),
+("the bodies of both sides, ", "the bodies of both sides."),
+("there was no hale orc in sight,", "There was no hale orc in sight,"),
 ),
 
 "wesnoth-editor" : (
@@ -112,6 +112,11 @@ game_stringfixes = {
 ("The Dunefolk's inclination", "The Dunefolk’s inclination"),
 ("The Dunefolk's inquisitive", "The Dunefolk’s inquisitive"),
 ("the heritage of the Dunefolk's", "the heritage of the Dunefolk’s"),
+),
+
+"wesnoth-l" : (
+# conversion added in 1.14.4+dev
+("Retreat!!", "Retreat!"),
 ),
 
 "wesnoth-lib" : (
@@ -141,13 +146,8 @@ game_stringfixes = {
 # fixes added in 1.14.3+dev
 ("Whatever.... I still think we should make an effort", "Whatever... I still think we should make an effort"),
 ("That is so very encouraging....","That is so very encouraging..."),
-# fixes added in 1.14.4+dev
-("Asheviere is the queen of Wesnoth.", "Asheviere is the Queen of Wesnoth."),
-),
-
-"wesnoth-l" : (
-# fixes added in 1.14.4+dev
-("destroys our homes. Retreat!!", "destroys our homes. Retreat!"),
+# fix added in 1.14.4+dev
+("can now aid those around her in the art of combat.", "can aid those around her in the art of combat."),
 ),
 
 "wesnoth-low" : (
@@ -303,7 +303,7 @@ def process_file(path):
         # In case of screwed-up pairs that are hard to find, uncomment the following:
         #for fix in fixes:
         #    if len(fix) != 2:
-        #        print fix
+        #        print(fix)
         for (old, new) in fixes:
             if old is new:
                 #complain loudly
