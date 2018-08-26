@@ -592,7 +592,7 @@ void menu_handler::goto_leader(int side_num)
 {
 	unit_map::const_iterator i = units().find_leader(side_num);
 	if(i != units().end()
-			&& i->is_visible_to_team(gui_->get_disp_context().teams()[gui_->viewing_team()], gui_->get_disp_context(), false)) {
+			&& i->is_visible_to_team(gui_->get_disp_context().get_team(gui_->viewing_side()), gui_->get_disp_context(), false)) {
 		gui_->scroll_to_tile(i->get_location(), game_display::WARP);
 	}
 }
