@@ -160,7 +160,7 @@ void faction_select::on_faction_select(window& window)
 		} else if(leader == "random") {
 			leaders.emplace_back(config {"label", _("Random"), "icon", ng::random_enemy_picture});
 		} else if(leader == "null") {
-			leaders.emplace_back(config {"label", font::unicode_em_dash});
+			leaders.emplace_back(config {"label", font::unicode_em_dash, "icon", ng::blank_hex_picture});
 		} else {
 			leaders.emplace_back(config {"label", "?"});
 		}
@@ -179,6 +179,22 @@ void faction_select::on_faction_select(window& window)
 		data.emplace("leader_name", item);
 
 		leader2.add_row(data);
+	}
+	if (leaders.size() == 1 && leaders[0]["label"] == font::unicode_em_dash) {
+		// Add some blank_hex rows for layout purposes.
+		std::map<std::string, string_map> data;
+		string_map item;
+
+		item["label"] = ng::blank_hex_picture;
+		data.emplace("leader_image", item);
+
+		item["label"] = "";
+		data.emplace("leader_name", item);
+
+		for (int i = 1; i <= 3; i++) {
+			leader2.add_row(data);
+			//leader2.set_row_active(leader2.get_item_count() - 1, false);
+		}
 	}
 	leader2.select_row(std::min<int>(leaders.size() - 1, previous_leader_selection));
 	leader2.update_content_size();
@@ -205,7 +221,13 @@ void faction_select::on_faction_select(window& window)
 
 void faction_select::on_leader_select(window& window)
 {
-	flg_manager_.set_current_leader(find_widget<listbox>(&window, "leader_list", false).get_selected_row());
+	if (flg_manager_.choosable_leaders().size() != 1) {
+		// Don't call set_current_leader() when that's redundant, including the important special case
+		// of the Random faction being selected. In that case there exist rows whose indices are not
+		// valid arguments to set_current_leader().
+		const int selected_row = find_widget<listbox>(&window, "leader_list", false).get_selected_row();
+		flg_manager_.set_current_leader(selected_row);
+	}
 
 	// TODO: should we decouple this from the flg manager and instead just check the unit type directly?
 	// If that's done so, we'd need to come up with a different check for Random availability.
