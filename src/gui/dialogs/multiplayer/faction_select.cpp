@@ -27,7 +27,6 @@
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 #include "formatter.hpp"
@@ -79,7 +78,7 @@ void faction_select::pre_show(window& window)
 	//
 	// Set up leader menu button
 	//
-	connect_signal_notify_modified(find_widget<menu_button>(&window, "leader_menu", false),
+	connect_signal_notify_modified(find_widget<listbox>(&window, "leader_list", false),
 		std::bind(&faction_select::on_leader_select, this, std::ref(window)));
 
 	// Leader's profile button
@@ -145,7 +144,7 @@ void faction_select::on_faction_select(window& window)
 	}
 
 	// Since set_current_faction overrides the current leader, save a copy of the previous leader index so the
-	// leader dropdown can be set to the appropriate initial selection.
+	// leader listbox can be set to the appropriate initial selection.
 	const int previous_leader_selection = flg_manager_.current_leader_index();
 
 	flg_manager_.set_current_faction(selected_row);
@@ -167,10 +166,22 @@ void faction_select::on_faction_select(window& window)
 		}
 	}
 
-	menu_button& leader_dropdown = find_widget<menu_button>(&window, "leader_menu", false);
+	listbox& leader2 = find_widget<listbox>(&window, "leader_list", false);
+	leader2.clear();
+	for (const config& leader : leaders) {
+		std::map<std::string, string_map> data;
+		string_map item;
 
-	leader_dropdown.set_values(leaders, std::min<int>(leaders.size() - 1, previous_leader_selection));
-	leader_dropdown.set_active(leaders.size() > 1 && !flg_manager_.is_saved_game());
+		item["label"] = leader["icon"];
+		data.emplace("leader_image", item);
+
+		item["label"] = leader["label"];
+		data.emplace("leader_name", item);
+
+		leader2.add_row(data);
+	}
+	leader2.select_row(std::min<int>(leaders.size() - 1, previous_leader_selection));
+	leader2.update_content_size();
 
 	on_leader_select(window);
 
@@ -189,11 +200,12 @@ void faction_select::on_faction_select(window& window)
 	});
 
 	find_widget<styled_widget>(&window, "recruits", false).set_label(utils::join(recruit_names, "\n"));
+	//window.invalidate_layout();
 }
 
 void faction_select::on_leader_select(window& window)
 {
-	flg_manager_.set_current_leader(find_widget<menu_button>(&window, "leader_menu", false).get_value());
+	flg_manager_.set_current_leader(find_widget<listbox>(&window, "leader_list", false).get_selected_row());
 
 	// TODO: should we decouple this from the flg manager and instead just check the unit type directly?
 	// If that's done so, we'd need to come up with a different check for Random availability.
