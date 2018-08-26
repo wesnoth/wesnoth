@@ -84,7 +84,7 @@ void faction_select::pre_show(window& window)
 
 	// Leader's profile button
 	find_widget<button>(&window, "type_profile", false).connect_click_handler(
-		std::bind(&faction_select::profile_button_callback, this, std::ref(window)));
+		std::bind(&faction_select::profile_button_callback, this));
 
 	//
 	// Set up faction list
@@ -204,13 +204,13 @@ void faction_select::on_leader_select(window& window)
 
 	// Disable the profile button if leader_type is dash or "Random"
 	button& profile_button = find_widget<button>(&window, "type_profile", false);
-	const std::string& leader_type = find_widget<menu_button>(&window, "leader_menu", false).get_value_string();
+	const std::string& leader_type = flg_manager_.current_leader();
 	profile_button.set_active(unit_types.find(leader_type) != nullptr);
 }
 
-void faction_select::profile_button_callback(window& window)
+void faction_select::profile_button_callback(void)
 {
-	const std::string& leader_type = find_widget<menu_button>(&window, "leader_menu", false).get_value_string();
+	const std::string& leader_type = flg_manager_.current_leader();
 	const unit_type* ut = unit_types.find(leader_type);
 	if(ut != nullptr) {
 		preferences::encountered_units().insert(ut->id());

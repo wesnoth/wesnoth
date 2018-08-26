@@ -58,7 +58,7 @@ private:
 
 	void on_leader_select(window& window);
 
-	void profile_button_callback(window& window);
+	void profile_button_callback(void);
 
 	void on_gender_select(void);
 };
