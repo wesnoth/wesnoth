@@ -74,7 +74,7 @@ void faction_select::pre_show(window& window)
 	gender_toggle_.set_member_states("random");
 
 	gender_toggle_.set_callback_on_value_change(
-		std::bind(&faction_select::on_gender_select, this, std::ref(window)));
+		std::bind(&faction_select::on_gender_select, this));
 
 	//
 	// Set up leader menu button
@@ -202,8 +202,6 @@ void faction_select::on_leader_select(window& window)
 		return std::find(genders.begin(), genders.end(), gender) != genders.end();
 	});
 
-	update_leader_image(window);
-
 	// Disable the profile button if leader_type is dash or "Random"
 	button& profile_button = find_widget<button>(&window, "type_profile", false);
 	const std::string& leader_type = find_widget<menu_button>(&window, "leader_menu", false).get_value_string();
@@ -221,23 +219,9 @@ void faction_select::profile_button_callback(window& window)
 	}
 }
 
-void faction_select::on_gender_select(window& window)
+void faction_select::on_gender_select(void)
 {
 	flg_manager_.set_current_gender(gender_toggle_.get_active_member_value());
-
-	update_leader_image(window);
-}
-
-void faction_select::update_leader_image(window& window)
-{
-	std::string leader_image = ng::random_enemy_picture;
-
-	if(const unit_type* ut = unit_types.find(flg_manager_.current_leader())) {
-		const unit_type& utg = ut->get_gender_unit_type(flg_manager_.current_gender());
-		leader_image = formatter() << utg.image() << "~RC(" << utg.flag_rgb() << ">" << tc_color_ << ")" << "~SCALE_INTO_SHARP(144,144)";
-	}
-
-	find_widget<image>(&window, "leader_image", false).set_label(leader_image);
 }
 
 void faction_select::post_show(window& /*window*/)
