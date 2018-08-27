@@ -242,14 +242,14 @@ function ca_attack_highxp:evaluation(cfg, data)
                         rating = 1000
 
                         local enemy_value_loss = (target.hitpoints - def_stats.average_hp) / target.max_hitpoints
-                        enemy_value_loss = enemy_value_loss * wesnoth.unit_types[target.type].cost
+                        enemy_value_loss = enemy_value_loss * target.cost
 
                         -- We want the _least_ damage to the enemy, so the minus sign is no typo!
                         rating = rating - enemy_value_loss
 
                         local own_value_loss = (attacker_copy.hitpoints - att_stats.average_hp) / attacker_copy.max_hitpoints
                         own_value_loss = own_value_loss + att_stats.hp_chance[0]
-                        own_value_loss = own_value_loss * wesnoth.unit_types[attacker_copy.type].cost
+                        own_value_loss = own_value_loss * attacker_copy.cost
 
                         rating = rating - own_value_loss
 

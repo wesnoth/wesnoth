@@ -837,7 +837,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     -- In addition, potentially leveling up in this attack is a huge bonus,
     -- proportional to the chance of it happening and the chance of not dying itself
     local level_bonus = 0.
-    local defender_level = wesnoth.unit_types[defender.type].level
+    local defender_level = defender.level
     if (attacker.max_experience - attacker.experience <= defender_level) then
         level_bonus = 1. - att_stats.hp_chance[0]
     else
@@ -849,7 +849,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
 
 
     -- Now convert this into gold-equivalent value
-    local attacker_value = wesnoth.unit_types[attacker.type].cost
+    local attacker_value = attacker.cost
 
     -- Being closer to leveling is good (this makes AI prefer units with lots of XP)
     local xp_bonus = attacker.experience / attacker.max_experience
@@ -886,7 +886,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     -- In addition, the defender potentially leveling up in this attack is a huge penalty,
     -- proportional to the chance of it happening and the chance of not dying itself
     local defender_level_penalty = 0.
-    local attacker_level = wesnoth.unit_types[attacker.type].level
+    local attacker_level = attacker.level
     if (defender.max_experience - defender.experience <= attacker_level) then
         defender_level_penalty = 1. - def_stats.hp_chance[0]
     else
@@ -897,7 +897,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     value_fraction = value_fraction - defender_level_penalty * defender_level_weight
 
     -- Now convert this into gold-equivalent value
-    local defender_value = wesnoth.unit_types[defender.type].cost
+    local defender_value = defender.cost
 
     -- If this is the enemy leader, make damage to it much more important
     if defender.canrecruit then
@@ -1011,7 +1011,7 @@ function battle_calcs.attack_combo_stats(tmp_attackers, tmp_dsts, defender, cach
 
             --for hp,p in pairs(tmp_def_stats[i].hp_chance) do
             --    if (p > 0) then
-            --        local dhp_norm = (hp - av) / defender.max_hitpoints * wesnoth.unit_types[defender.type].cost
+            --        local dhp_norm = (hp - av) / defender.max_hitpoints * defender.cost
             --        local dvar = p * dhp_norm^2
             --        outcome_variance = outcome_variance + dvar
             --        n_outcomes = n_outcomes + 1
@@ -1028,7 +1028,7 @@ function battle_calcs.attack_combo_stats(tmp_attackers, tmp_dsts, defender, cach
             -- Almost, bonus should not be quite as high as a really high CTK
             -- This isn't quite true in reality, but can be refined later
             if AH.has_weapon_special(attacker, "slow") then
-                rating = rating + wesnoth.unit_types[defender.type].cost / 2.
+                rating = rating + defender.cost / 2.
             end
 
             ratings[i] = { i, rating, base_rating, def_rating, att_rating }
