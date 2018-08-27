@@ -125,7 +125,7 @@ function ai_helper.print_ts(...)
     local arg = { ... }
     arg[#arg+1] = string.format('[ t = %.3f ]', ts)
 
-    print(table.unpack(arg))
+    std_print(table.unpack(arg))
 
     return ts
 end
@@ -143,7 +143,7 @@ function ai_helper.print_ts_delta(start_time, ...)
     local arg = { ... }
     arg[#arg+1] = string.format('[ t = %.3f, dt = %.3f ]', ts, delta)
 
-    print(table.unpack(arg))
+    std_print(table.unpack(arg))
 
     return ts, delta
 end
