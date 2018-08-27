@@ -86,7 +86,6 @@ function ca_ogres_flee:execution()
 
         --AH.put_labels(rating_map)
     end
-    --print(best_unit.id, best_unit.x, best_unit.y, best_hex[1], best_hex[2], max_rating)
 
     if best_hex then
         AH.movefull_outofway_stopunit(ai, best_unit, best_hex[1], best_hex[2])
