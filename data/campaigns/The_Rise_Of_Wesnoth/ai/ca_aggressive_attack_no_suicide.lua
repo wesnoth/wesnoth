@@ -8,12 +8,10 @@ function ca_aggressive_attack_no_suicide:evaluation(cfg, data)
         side = wesnoth.current.side,
         formula = 'attacks_left > 0'
     }
-    --print('#units', #units)
     if (not units[1]) then return 0 end
 
     -- Get all possible attacks
     local attacks = AH.get_attacks(units, { include_occupied = true })
-    --print('#attacks', #attacks)
     if (not attacks[1]) then return 0 end
 
     -- Now find the best of the possible attacks
@@ -38,7 +36,6 @@ function ca_aggressive_attack_no_suicide:evaluation(cfg, data)
 
             -- Also, take strongest unit first
             rating = rating + attacker.hitpoints / 10.
-            --print('rating:', rating, attacker.id, defender.id)
 
             if (rating > max_rating) then
                 max_rating = rating

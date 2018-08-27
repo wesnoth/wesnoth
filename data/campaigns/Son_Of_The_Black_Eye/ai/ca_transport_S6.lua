@@ -40,7 +40,6 @@ function ca_transport:execution()
         then
             transport_map:insert(u.x, u.y)
             table.insert(transports, u)
-            --print("----> Inserting " .. u.id, u.x, u.y, u.variables.destination_x, u.variables.destination_y)
         else
             blocked_hex_map:insert(u.x, u.y)
        end

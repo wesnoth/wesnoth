@@ -283,13 +283,11 @@ return {
                 if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
                 return 0
             end
-            --print('#units, #enemies', #units, #enemies)
 
             -- First check if attacks are possible for any unit
             local return_value = 200000
             -- If one with > 50% chance of kill is possible, set return_value to lower than combat CA
             local attacks = ai.get_attacks()
-            --print(#attacks)
             for i,a in ipairs(attacks) do
                 if (#a.movements == 1) and (a.chance_to_kill > 0.5) then
                     return_value = 90000
@@ -311,7 +309,6 @@ return {
 
                 -- If an enemy can get within one move of the village, we want to hold it
                 if enemy_attack_map:get(v[1], v[2]) then
-                        --print('  within enemy reach', v[1], v[2])
                         village_rating = village_rating + 100
                 end
 
@@ -345,7 +342,6 @@ return {
                             if (cost <= u.moves) then
                                 village_rating = village_rating - 1
                                 reachable = true
-                                --print('Can reach:', u.id, v[1], v[2], cost)
                                 local rating = 0
 
                                 -- Prefer strong units if enemies can reach the village, injured units otherwise
@@ -362,7 +358,6 @@ return {
                                 if (rating > best_unit_rating) then
                                     best_unit_rating, best_unit = rating, u
                                 end
-                                --print('  rating:', rating)
                             end
                         end
                     end
@@ -375,7 +370,6 @@ return {
                     max_rating, best_village, best_unit = rating, v, village_ratings[v][2]
                 end
             end
-            --print('max_rating', max_rating)
 
             if (max_rating > -9e99) then
                 self.data.unit, self.data.village = best_unit, best_village
@@ -418,14 +412,12 @@ return {
                 } },
                 canrecruit = 'no'
             }
-            --print('#poisoners', #poisoners)
             if (not poisoners[1]) then
                 if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
                 return 0
             end
 
             local attacks = AH.get_attacks(poisoners)
-            --print('#attacks', #attacks)
             if (not attacks[1]) then
                 if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
                 return 0
@@ -463,7 +455,6 @@ return {
                     -- For the same attacker/defender pair, go to strongest terrain
                     local attack_defense = 100 - attacker:defense(wesnoth.get_terrain(a.dst.x, a.dst.y))
                     rating = rating + attack_defense / 2.
-                    --print('rating', rating)
 
                     -- And from village everything else being equal
                     local is_village = wesnoth.get_terrain_info(wesnoth.get_terrain(a.dst.x, a.dst.y)).village
