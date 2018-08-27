@@ -188,7 +188,7 @@ void game_display::scroll_to_leader(int side, SCROLL_TYPE scroll_type, bool forc
 {
 	unit_map::const_iterator leader = dc_->units().find_leader(side);
 
-	if(leader.valid() && leader->is_visible_to_team(dc_->get_team(viewing_side()), *dc_, false)) {
+	if(leader.valid() && leader->is_visible_to_team(dc_->get_team(viewing_side()), false)) {
 		scroll_to_tile(leader->get_location(), scroll_type, true, force);
 	}
 }
