@@ -91,7 +91,7 @@ return {
             local best_defense = 100
 
             for i, terrain in ipairs(terrain_archetypes) do
-                local defense = wesnoth.unit_defense(unit, terrain)
+                local defense = unit:defense(terrain)
                 if defense < best_defense then
                     best_defense = defense
                 end
@@ -199,7 +199,7 @@ return {
                                 if wml.get_child(special, 'drains') and drainable(attacker) then
                                     -- TODO: calculate chance to hit
                                     -- currently assumes 50% chance to hit using supplied constant
-                                    local attacker_resistance = wesnoth.unit_resistance(attacker, defender_attack.type)
+                                    local attacker_resistance = attacker:resistance(defender_attack.type)
                                     drain_recovery = (defender_attack.damage*defender_attack.number*attacker_resistance*attacker_defense/2)/10000
                                 end
                             end
@@ -207,7 +207,7 @@ return {
                     end
 
                     defense = defense/100.0
-                    local resistance = wesnoth.unit_resistance(defender, attack.type)
+                    local resistance = defender:resistance(attack.type)
                     if steadfast and (resistance < 100) then
                         resistance = 100 - ((100 - resistance) * 2)
                         if (resistance < 50) then
@@ -260,8 +260,8 @@ return {
                 name = "X",
                 random_gender = false
             }
-            local can_poison = poisonable(unit) and (not wesnoth.unit_ability(unit, 'regenerate'))
-            local flat_defense = wesnoth.unit_defense(unit, "Gt")
+            local can_poison = poisonable(unit) and (not unit:ability('regenerate'))
+            local flat_defense = unit:defense("Gt")
             local best_defense = get_best_defense(unit)
 
             local recruit = wesnoth.create_unit {
@@ -270,10 +270,10 @@ return {
                 name = "X",
                 random_gender = false
             }
-            local recruit_flat_defense = wesnoth.unit_defense(recruit, "Gt")
+            local recruit_flat_defense = recruit:defense("Gt")
             local recruit_best_defense = get_best_defense(recruit)
 
-            local can_poison_retaliation = poisonable(recruit) and (not wesnoth.unit_ability(recruit, 'regenerate'))
+            local can_poison_retaliation = poisonable(recruit) and (not recruit:ability('regenerate'))
             best_flat_attack, best_flat_damage, flat_poison = get_best_attack(recruit, unit, flat_defense, recruit_best_defense, can_poison)
             best_high_defense_attack, best_high_defense_damage, high_defense_poison = get_best_attack(recruit, unit, best_defense, recruit_flat_defense, can_poison)
             best_retaliation, best_retaliation_damage, retaliation_poison = get_best_attack(unit, recruit, recruit_flat_defense, best_defense, can_poison_retaliation)
@@ -767,10 +767,10 @@ return {
                 if can_slow(recruit_unit) then
                     unit_score["slows"] = true
                 end
-                if wesnoth.match_unit(recruit_unit, { ability = "healing" }) then
+                if recruit_unit:matches { ability = "healing" } then
                     unit_score["heals"] = true
                 end
-                if wesnoth.match_unit(recruit_unit, { ability = "skirmisher" }) then
+                if recruit_unit:matches { ability = "skirmisher" } then
                     unit_score["skirmisher"] = true
                 end
                 recruitable_units[recruit_id] = recruit_unit

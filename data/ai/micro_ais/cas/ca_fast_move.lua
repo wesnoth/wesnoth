@@ -243,7 +243,7 @@ function ca_fast_move:execution(cfg)
             if cfg.dungeon_mode then
                 table.sort(pre_ratings, function(a,b) return (a.rating > b.rating) end)
 
-                wesnoth.extract_unit(unit)
+                unit:extract()
                 local old_x, old_y = unit.x, unit.y
 
                 local max_rating = -9e99
@@ -264,7 +264,7 @@ function ca_fast_move:execution(cfg)
                 end
 
                 unit.x, unit.y = old_x, old_y
-                wesnoth.put_unit(unit)
+                unit:to_map()
             end
 
             if best_hex then

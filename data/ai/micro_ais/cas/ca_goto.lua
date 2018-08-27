@@ -8,7 +8,7 @@ local M = wesnoth.map
 
 local function custom_cost(x, y, unit, enemy_map, enemy_attack_map, multiplier)
     local terrain = wesnoth.get_terrain(x, y)
-    local move_cost = wesnoth.unit_movement_cost(unit, terrain)
+    local move_cost = unit:movement(terrain)
 
     move_cost = move_cost + (enemy_map:get(x,y) or 0)
     move_cost = move_cost + (enemy_attack_map.units:get(x,y) or 0) * multiplier
@@ -149,14 +149,14 @@ function ca_goto:execution(cfg, data)
                     if cfg.ignore_enemy_at_goal then
                         enemy_at_goal = wesnoth.get_unit(loc[1], loc[2])
                         if enemy_at_goal and wesnoth.is_enemy(wesnoth.current.side, enemy_at_goal.side) then
-                             wesnoth.extract_unit(enemy_at_goal)
+                             enemy_at_goal:extract()
                         else
                             enemy_at_goal = nil
                         end
                     end
                     path, cost = AH.find_path_with_shroud(unit, loc[1], loc[2], { ignore_units = cfg.ignore_units })
                     if enemy_at_goal then
-                        wesnoth.put_unit(enemy_at_goal)
+                        enemy_at_goal:to_map()
                         --- Give massive penalty for this goal hex
                         cost = cost + 100
                     end

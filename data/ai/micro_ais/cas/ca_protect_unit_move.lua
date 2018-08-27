@@ -23,7 +23,7 @@ function ca_protect_unit_move:execution(cfg, data)
 
     -- Need to take the protected units off the map, as they don't count into the map scores
     -- as long as they can still move
-    for _,unit in ipairs(protected_units) do wesnoth.extract_unit(unit) end
+    for _,unit in ipairs(protected_units) do unit:extract() end
 
     local units = wesnoth.get_units { side = wesnoth.current.side }
     local enemy_units = AH.get_attackable_enemies()
@@ -32,7 +32,7 @@ function ca_protect_unit_move:execution(cfg, data)
     local enemy_attack_map = BC.get_attack_map(enemy_units).units  -- enemy attack map
 
     -- Now put the protected units back out there
-    for _,unit in ipairs(protected_units) do wesnoth.put_unit(unit) end
+    for _,unit in ipairs(protected_units) do unit:to_map() end
 
     -- We move the weakest (fewest HP unit) first
     local unit = AH.choose(protected_units, function(u) return - u.hitpoints end)
@@ -46,7 +46,7 @@ function ca_protect_unit_move:execution(cfg, data)
 
     local terrain_defense_map = LS.create()
     reach_map:iter(function(x, y, data)
-        terrain_defense_map:insert(x, y, 100 - wesnoth.unit_defense(unit, wesnoth.get_terrain(x, y)))
+        terrain_defense_map:insert(x, y, 100 - unit:defense(wesnoth.get_terrain(x, y)))
     end)
 
     local goal_distance_map = LS.create()

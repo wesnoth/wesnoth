@@ -164,7 +164,7 @@ function ca_fast_attack_utils.single_unit_info(unit_proxy)
     local attack_types = { "arcane", "blade", "cold", "fire", "impact", "pierce" }
     single_unit_info.resistances = {}
     for _,attack_type in ipairs(attack_types) do
-        single_unit_info.resistances[attack_type] = wesnoth.unit_resistance(unit_proxy, attack_type) / 100.
+        single_unit_info.resistances[attack_type] = unit_proxy:resistance(attack_type) / 100.
     end
 
     return single_unit_info
@@ -187,7 +187,7 @@ function ca_fast_attack_utils.get_unit_copy(id, gamedata)
 
     if (not gamedata.unit_copies[id]) then
         local unit_proxy = wesnoth.get_units { id = id }[1]
-        gamedata.unit_copies[id] = wesnoth.copy_unit(unit_proxy)
+        gamedata.unit_copies[id] = unit_proxy:clone()
     end
 
     return gamedata.unit_copies[id]
@@ -209,7 +209,7 @@ function ca_fast_attack_utils.get_unit_defense(unit_copy, x, y, defense_maps)
     if (not defense_maps[unit_copy.id][x]) then defense_maps[unit_copy.id][x] = {} end
 
     if (not defense_maps[unit_copy.id][x][y]) then
-        local defense = (100. - wesnoth.unit_defense(unit_copy, wesnoth.get_terrain(x, y))) / 100.
+        local defense = (100. - unit_copy:defense(wesnoth.get_terrain(x, y))) / 100.
         defense_maps[unit_copy.id][x][y] = { defense = defense }
     end
 

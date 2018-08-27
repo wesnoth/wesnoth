@@ -22,7 +22,7 @@ function ca_aggressive_attack_no_suicide:evaluation(cfg, data)
         local attacker = wesnoth.get_unit(att.src.x, att.src.y)
         local defender = wesnoth.get_unit(att.target.x, att.target.y)
 
-        local attacker_dst = wesnoth.copy_unit(attacker)
+        local attacker_dst = attacker:clone()
         attacker_dst.x, attacker_dst.y = att.dst.x, att.dst.y
 
         local att_stats, def_stats = wesnoth.simulate_combat(attacker_dst, defender)
