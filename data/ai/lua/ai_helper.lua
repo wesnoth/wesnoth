@@ -678,7 +678,7 @@ function ai_helper.get_closest_location(hex, location_filter, unit)
 
         if unit then
             for _,loc in ipairs(locs) do
-                local movecost = wesnoth.unit_movement_cost(unit, wesnoth.get_terrain(loc[1], loc[2]))
+                local movecost = unit:movement(wesnoth.get_terrain(loc[1], loc[2]))
                 if (movecost <= unit.max_moves) then return loc end
             end
         else
@@ -709,7 +709,7 @@ function ai_helper.get_passable_locations(location_filter, unit)
     if unit then
         local locs = {}
         for _,loc in ipairs(all_locs) do
-            local movecost = wesnoth.unit_movement_cost(unit, wesnoth.get_terrain(loc[1], loc[2]))
+            local movecost = unit:movement(wesnoth.get_terrain(loc[1], loc[2]))
             if (movecost <= unit.max_moves) then table.insert(locs, loc) end
         end
         return locs
@@ -1364,7 +1364,7 @@ function ai_helper.find_path_with_shroud(unit, x, y, cfg)
                 if (u.side ~= viewing_side)
                     and (not ai_helper.is_visible_unit(viewing_side, u))
                 then
-                    wesnoth.extract_unit(u)
+                    u:extract()
                     table.insert(extracted_units, u)
                 end
             end
@@ -1376,7 +1376,7 @@ function ai_helper.find_path_with_shroud(unit, x, y, cfg)
         path, cost = wesnoth.find_path(unit, x, y, cfg_copy)
 
         for _,extracted_unit in ipairs(extracted_units) do
-            wesnoth.put_unit(extracted_unit)
+            extracted_unit:to_map()
         end
     else
         path, cost = wesnoth.find_path(unit, x, y, cfg)
@@ -1665,7 +1665,7 @@ function ai_helper.get_attacks(units, cfg)
                     for _,target in ipairs(attack_hex_map:get(loc[1], loc[2])) do
                         local att_stats, def_stats
                         if cfg.simulate_combat then
-                            local unit_dst = wesnoth.copy_unit(unit)
+                            local unit_dst = unit:clone()
                             unit_dst.x, unit_dst.y = loc[1], loc[2]
 
                             local enemy = all_units[target.i]

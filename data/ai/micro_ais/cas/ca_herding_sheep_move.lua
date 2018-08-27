@@ -29,7 +29,7 @@ function ca_herding_sheep_move:execution(cfg)
     reach_map:iter( function(x, y, v)
         for xa, ya in H.adjacent_tiles(x, y) do
             local dog = wesnoth.get_unit(xa, ya)
-            if dog and (wesnoth.match_unit(dog, dogs_filter)) then
+            if dog and dog:matches(dogs_filter) then
                 reach_map:remove(x, y)
             end
         end

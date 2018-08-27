@@ -199,7 +199,7 @@ return {
                     for i,loc in ipairs(close_villages) do
                         local path_village, cost_village = wesnoth.find_path(leader, loc[1], loc[2])
                         if cost_village <= leader.moves then
-                            local dummy_leader = wesnoth.copy_unit(leader)
+                            local dummy_leader = leader:clone()
                             dummy_leader.x = loc[1]
                             dummy_leader.y = loc[2]
                             local path_keep, cost_keep = wesnoth.find_path(dummy_leader, best_loc[1], best_loc[2])
@@ -454,14 +454,14 @@ return {
                     if defender.canrecruit then rating = rating + 1000 end
 
                     -- Enemies that can regenerate are not good targets
-                    if wesnoth.unit_ability(defender, 'regenerate') then rating = rating - 1000 end
+                    if defender:ability('regenerate') then rating = rating - 1000 end
 
                     -- More priority to enemies on strong terrain
-                    local defender_defense = 100 - wesnoth.unit_defense(defender, wesnoth.get_terrain(defender.x, defender.y))
+                    local defender_defense = 100 - defender:defense(wesnoth.get_terrain(defender.x, defender.y))
                     rating = rating + defender_defense / 4.
 
                     -- For the same attacker/defender pair, go to strongest terrain
-                    local attack_defense = 100 - wesnoth.unit_defense(attacker, wesnoth.get_terrain(a.dst.x, a.dst.y))
+                    local attack_defense = 100 - attacker:defense(wesnoth.get_terrain(a.dst.x, a.dst.y))
                     rating = rating + attack_defense / 2.
                     --print('rating', rating)
 

@@ -14,7 +14,7 @@ local function bottleneck_is_my_territory(map, enemy_map)
     -- If there is no leader, use first unit found
     local unit = wesnoth.get_units { side = wesnoth.current.side, canrecruit = 'yes' }[1]
     if (not unit) then unit = wesnoth.get_units { side = wesnoth.current.side }[1] end
-    local dummy_unit = wesnoth.copy_unit(unit)
+    local dummy_unit = unit:clone()
 
     local territory_map = LS.create()
     local width, height = wesnoth.get_map_size()

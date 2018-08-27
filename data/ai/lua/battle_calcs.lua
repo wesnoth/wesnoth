@@ -76,7 +76,7 @@ function battle_calcs.unit_attack_info(unit, cache)
 
     local attack_types = { "arcane", "blade", "cold", "fire", "impact", "pierce" }
     for _,attack_type in ipairs(attack_types) do
-        unit_info.resist_mod[attack_type] = wesnoth.unit_resistance(unit, attack_type) / 100.
+        unit_info.resist_mod[attack_type] = unit:resistance(attack_type) / 100.
     end
 
     if cache then cache[cind] = unit_info end
@@ -680,8 +680,8 @@ function battle_calcs.battle_outcome(attacker, defender, cfg, cache)
     if (def_max_hits > att_strikes) then def_max_hits = att_strikes end
 
     -- Probability of landing a hit
-    local att_hit_prob = wesnoth.unit_defense(defender, wesnoth.get_terrain(defender.x, defender.y)) / 100.
-    local def_hit_prob = wesnoth.unit_defense(attacker, wesnoth.get_terrain(dst[1], dst[2])) / 100.
+    local att_hit_prob = defender:defense(wesnoth.get_terrain(defender.x, defender.y)) / 100.
+    local def_hit_prob = attacker:defense(wesnoth.get_terrain(dst[1], dst[2])) / 100.
 
     -- Magical: attack and defense, and under all circumstances
     if att_attack.magical then att_hit_prob = 0.7 end
@@ -731,7 +731,7 @@ function battle_calcs.simulate_combat_loc(attacker, dst, defender, weapon)
     -- when on terrain of same type as that at @dst, which is of form { x, y }
     -- If @weapon is set, use that weapon (Lua index starting at 1), otherwise use best weapon
 
-    local attacker_dst = wesnoth.copy_unit(attacker)
+    local attacker_dst = attacker:clone()
     attacker_dst.x, attacker_dst.y = dst[1], dst[2]
 
     if weapon then
@@ -932,7 +932,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     -- We don't need a bonus for good terrain for the attacker, as that is covered in the damage calculation
     -- However, we add a small bonus for good terrain defense of the _defender_ on the _attack_ hex
     -- This is in order to take good terrain away from defender on next move, all else being equal
-    local defender_defense = - wesnoth.unit_defense(defender, wesnoth.get_terrain(dst[1], dst[2])) / 100.
+    local defender_defense = - defender:defense(wesnoth.get_terrain(dst[1], dst[2])) / 100.
     defender_value = defender_value + defender_defense * defense_weight
 
     -- Get a very small bonus for hexes in between defender and AI leader
@@ -1173,7 +1173,7 @@ function battle_calcs.get_attack_map_unit(unit, cfg)
         for _,unit in ipairs(all_units) do
             if (unit.moves > 0) then
                 table.insert(units_MP, unit)
-                wesnoth.extract_unit(unit)
+                unit:extract()
             end
         end
     end
@@ -1183,7 +1183,7 @@ function battle_calcs.get_attack_map_unit(unit, cfg)
 
     -- Put the units back out there
     if (unit.side ~= wesnoth.current.side) then
-        for _,uMP in ipairs(units_MP) do wesnoth.put_unit(uMP) end
+        for _,uMP in ipairs(units_MP) do uMP:to_map() end
     end
 
     for _,loc in ipairs(initial_reach) do
@@ -1312,7 +1312,7 @@ function battle_calcs.best_defense_map(units, cfg)
     local defense_map = LS.create()
 
     if cfg.ignore_these_units then
-        for _,unit in ipairs(cfg.ignore_these_units) do wesnoth.extract_unit(unit) end
+        for _,unit in ipairs(cfg.ignore_these_units) do unit:extract() end
     end
 
     for _,unit in ipairs(units) do
@@ -1326,7 +1326,7 @@ function battle_calcs.best_defense_map(units, cfg)
         if max_moves then unit.moves = old_moves end
 
         for _,loc in ipairs(reach) do
-            local defense = 100 - wesnoth.unit_defense(unit, wesnoth.get_terrain(loc[1], loc[2]))
+            local defense = 100 - unit:defense(wesnoth.get_terrain(loc[1], loc[2]))
 
             if (defense > (defense_map:get(loc[1], loc[2]) or -9e99)) then
                 defense_map:insert(loc[1], loc[2], defense)
@@ -1335,7 +1335,7 @@ function battle_calcs.best_defense_map(units, cfg)
     end
 
     if cfg.ignore_these_units then
-        for _,unit in ipairs(cfg.ignore_these_units) do wesnoth.put_unit(unit) end
+        for _,unit in ipairs(cfg.ignore_these_units) do unit:to_map() end
     end
 
     return defense_map
@@ -1534,7 +1534,7 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
                     -- Store information about it in 'loc' and add this to 'locs'
                     -- Want coordinates (dst) and terrain defense (for sorting)
                     loc.dst = xa * 1000 + ya
-                    loc.hit_prob = wesnoth.unit_defense(unit, wesnoth.get_terrain(xa, ya))
+                    loc.hit_prob = unit:defense(wesnoth.get_terrain(xa, ya))
                     table.insert(locs, loc)
 
                     -- Also mark this hex as usable

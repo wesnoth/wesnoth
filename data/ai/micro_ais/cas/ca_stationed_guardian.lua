@@ -59,7 +59,7 @@ function ca_stationed_guardian:execution(cfg)
             if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way))
                 or (unit_in_way == guardian)
             then
-                local defense = 100 - wesnoth.unit_defense(guardian, wesnoth.get_terrain(xa, ya))
+                local defense = 100 - guardian:defense(wesnoth.get_terrain(xa, ya))
                 local nh = AH.next_hop(guardian, xa, ya)
                 if nh then
                     if (nh[1] == xa) and (nh[2] == ya) and (defense > best_defense) then

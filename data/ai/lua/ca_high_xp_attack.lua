@@ -82,7 +82,7 @@ function ca_attack_highxp:evaluation(cfg, data)
     if (not target_infos[1]) then return 0 end
 
     -- The following location sets are used so that we at most need to call
-    -- find_reach() and wesnoth.copy_unit() once per unit
+    -- find_reach() and unit:clone() once per unit
     local reaches = LS.create()
     local attacker_copies = LS.create()
 
@@ -217,7 +217,7 @@ function ca_attack_highxp:evaluation(cfg, data)
                 if attacker_copies:get(attacker.x, attacker.y) then
                     attacker_copy = attacker_copies:get(attacker.x, attacker.y)
                 else
-                    attacker_copy = wesnoth.copy_unit(attacker)
+                    attacker_copy = attacker:clone()
                     attacker_copies:insert(attacker.x, attacker.y, attacker_copy)
                 end
 

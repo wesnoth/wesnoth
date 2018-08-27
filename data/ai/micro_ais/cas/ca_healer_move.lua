@@ -38,7 +38,7 @@ function ca_healer_move:evaluation(cfg, data)
         -- Potential healees are units without MP that don't already have a healer (also without MP) next to them
         -- Also, they cannot be on a village or regenerate
         if (healee.moves == 0) then
-            if (not wesnoth.match_unit(healee, { ability = "regenerates" })) then
+            if (not healee:matches { ability = "regenerates" }) then
                 local is_village = wesnoth.get_terrain_info(wesnoth.get_terrain(healee.x, healee.y)).village
                 if (not is_village) then
                     local is_healee = true
@@ -57,9 +57,9 @@ function ca_healer_move:evaluation(cfg, data)
     end
 
     local enemies = AH.get_attackable_enemies()
-    for _,healee in ipairs(healees_MP) do wesnoth.extract_unit(healee) end
+    for _,healee in ipairs(healees_MP) do healee:extract() end
     local enemy_attack_map = BC.get_attack_map(enemies)
-    for _,healee in ipairs(healees_MP) do wesnoth.put_unit(healee) end
+    for _,healee in ipairs(healees_MP) do healee:to_map() end
 
     local avoid_map = LS.of_pairs(ai.aspects.avoid)
 
@@ -106,7 +106,7 @@ function ca_healer_move:evaluation(cfg, data)
                 local is_village = wesnoth.get_terrain_info(wesnoth.get_terrain(loc[1], loc[2])).village
                 if is_village then rating = rating + 2 end
 
-                local defense = 100 - wesnoth.unit_defense(healer, wesnoth.get_terrain(loc[1], loc[2]))
+                local defense = 100 - healer:defense(wesnoth.get_terrain(loc[1], loc[2]))
                 rating = rating + defense / 10.
             end
 
