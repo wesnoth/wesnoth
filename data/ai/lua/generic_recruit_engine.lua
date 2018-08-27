@@ -650,9 +650,9 @@ return {
 
             if AH.print_eval() then
                 if village[1] then
-                    print("Recruit at: " .. best_hex[1] .. "," .. best_hex[2] .. " -> " .. village[1] .. "," .. village[2])
+                    std_print("Recruit at: " .. best_hex[1] .. "," .. best_hex[2] .. " -> " .. village[1] .. "," .. village[2])
                 else
-                    print("Recruit at: " .. best_hex[1] .. "," .. best_hex[2])
+                    std_print("Recruit at: " .. best_hex[1] .. "," .. best_hex[2])
                 end
             end
             return best_hex, village
@@ -815,7 +815,7 @@ return {
                 local score = offense_score*offense_weight + defense_score*defense_weight + move_score*move_weight + bonus
 
                 if AH.print_eval() then
-                    print(recruit_id .. " score: " .. offense_score*offense_weight .. " + " .. defense_score*defense_weight .. " + " .. move_score*move_weight  .. " + " .. bonus  .. " = " .. score)
+                    std_print(recruit_id .. " score: " .. offense_score*offense_weight .. " + " .. defense_score*defense_weight .. " + " .. move_score*move_weight  .. " + " .. bonus  .. " = " .. score)
                 end
                 if score > best_score and wesnoth.unit_types[recruit_id].cost <= gold_limit then
                     best_score = score

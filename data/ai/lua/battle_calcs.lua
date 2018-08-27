@@ -532,10 +532,10 @@ function battle_calcs.print_coefficients()
                 dummy, coeffs = battle_calcs.battle_outcome_coefficients(cfg)
             end
 
-            print()
-            print('Attacker: ' .. cfg.att.strikes .. ' strikes, can survive ' .. cfg.att.max_hits .. ' hits')
-            print('Defender: ' .. cfg.def.strikes .. ' strikes, can survive ' .. cfg.def.max_hits .. ' hits')
-            print('Chance of hits on defender: ')
+            std_print()
+            std_print('Attacker: ' .. cfg.att.strikes .. ' strikes, can survive ' .. cfg.att.max_hits .. ' hits')
+            std_print('Defender: ' .. cfg.def.strikes .. ' strikes, can survive ' .. cfg.def.max_hits .. ' hits')
+            std_print('Chance of hits on defender: ')
 
             -- The first indices of coeffs are the possible number of hits the attacker can land on the defender
             for hits = 0,#coeffs do
@@ -570,8 +570,8 @@ function battle_calcs.print_coefficients()
                 local skip_str = ''
                 if combs.skip then skip_str = ' (skip)' end
 
-                print(hits .. skip_str .. ':  ' .. str)
-                print('      = ' .. hit_prob)
+                std_print(hits .. skip_str .. ':  ' .. str)
+                std_print('      = ' .. hit_prob)
             end
         end
     end
