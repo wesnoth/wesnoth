@@ -86,7 +86,7 @@ game_stringfixes = {
 
 "wesnoth-aoi": (
 # conversion added in 1.14.4+dev
-("the bodies of both sides, ", "the bodies of both sides."),
+("the bodies of both sides, ", "the bodies of both sides. "),
 ("there was no hale orc in sight,", "There was no hale orc in sight,"),
 ),
 
