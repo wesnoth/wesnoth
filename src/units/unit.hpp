@@ -926,7 +926,7 @@ private:
 	/**
 	 * @}
 	 * @defgroup unit_trait Trait and upkeep functions
-	 * @}
+	 * @{
 	 */
 public:
 	/**
