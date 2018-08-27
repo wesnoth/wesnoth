@@ -183,9 +183,11 @@ namespace {
 
 		int healing = 0;
 		int harming = 0;
+		int heal_value = 0;
+		bool inverse_value = false;
 
 
-		if ( patient.side() == side )
+	if ( patient.side() == side )
 		{
 			// Village healing?
 			update_healing(healing, harming,
@@ -207,13 +209,19 @@ namespace {
 
 			if ( healer->side() != side )
 				heal_it = heal_list.erase(heal_it);
-			else
-				++heal_it;
+			else {
+                 inverse_value= (*heal_it->first)["harming"].to_bool();
+                 ++heal_it;
+			}
 		}
 
 		// Now we can get the aggregate healing amount.
 		unit_abilities::effect heal_effect(heal_list, 0, false);
-		if ( update_healing(healing, harming, heal_effect.get_composite_value()) )
+		if (inverse_value)
+            heal_value = -heal_effect.get_composite_value();
+        else
+            heal_value = heal_effect.get_composite_value();
+		if ( update_healing(healing, harming, heal_value) )
 		{
 			// Collect the healers involved.
 			for (const unit_abilities::individual_effect & heal : heal_effect)
