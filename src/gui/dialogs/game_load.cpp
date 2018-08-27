@@ -32,6 +32,7 @@
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/minimap.hpp"
+#include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
@@ -222,7 +223,9 @@ void game_load::display_savegame(window& window)
 	str << game.format_time_local() << "\n";
 	evaluate_summary_string(str, summary_);
 
-	find_widget<label>(&window, "lblSummary", false).set_label(str.str());
+	// The new label value may have more or less lines than the previous value, so invalidate the layout.
+	find_widget<scroll_label>(&window, "slblSummary", false).set_label(str.str());
+	window.invalidate_layout();
 
 	toggle_button& replay_toggle            = dynamic_cast<toggle_button&>(*show_replay_->get_widget());
 	toggle_button& cancel_orders_toggle     = dynamic_cast<toggle_button&>(*cancel_orders_->get_widget());
@@ -373,6 +376,22 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 
 	if(!cfg_summary["version"].empty()) {
 		str << "\n" << _("Version: ") << cfg_summary["version"];
+	}
+
+	const std::vector<std::string>& active_mods = utils::split(cfg_summary["active_mods"]);
+	if(!active_mods.empty()) {
+		str << "\n" << _("Modifications: ");
+		for(const auto& mod_id : active_mods) {
+			std::string mod_name;
+			try {
+				mod_name = cache_config_.find_child("modification", "id", mod_id)["name"].str();
+			} catch(const config::error&) {
+				// Fallback to nontranslatable mod id.
+				mod_name = "(" + mod_id + ")";
+			}
+
+			str << "\n" << font::unicode_bullet << " " << mod_name;
+		}
 	}
 }
 
