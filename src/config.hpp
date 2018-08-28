@@ -592,7 +592,7 @@ public:
 		typedef std::vector<child_pos>::const_iterator Itor;
 		typedef const_all_children_iterator this_type;
 		explicit const_all_children_iterator(const Itor &i): i_(i) {}
-		const_all_children_iterator(all_children_iterator& i): i_(i.i_) {}
+		const_all_children_iterator(const all_children_iterator& i): i_(i.i_) {}
 
 		const_all_children_iterator &operator++() { ++i_; return *this; }
 		const_all_children_iterator operator++(int) { return const_all_children_iterator(i_++); }
@@ -626,6 +626,8 @@ public:
 
 		friend class config;
 	};
+
+	config& add_child_at(config_key_type key, const config &val, const const_all_children_iterator& pos);
 
 	typedef boost::iterator_range<all_children_iterator> all_children_itors;
 	typedef boost::iterator_range<const_all_children_iterator> const_all_children_itors;

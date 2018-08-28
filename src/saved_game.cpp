@@ -292,7 +292,7 @@ struct modevents_entry
 
 } // end anon namespace
 
-void saved_game::load_mod(const std::string& type, const std::string& id)
+void saved_game::load_mod(const std::string& type, const std::string& id, config::all_children_iterator pos)
 {
 	if(const config& cfg = game_config_manager::get()->game_config().find_child(type, "id", id)) {
 		// Note the addon_id if this mod is required to play the game in mp.
@@ -317,18 +317,18 @@ void saved_game::load_mod(const std::string& type, const std::string& id)
 			if(modevent["enable_if"].empty()
 				|| variable_to_bool(carryover_.child_or_empty("variables"), modevent["enable_if"])
 			) {
-				this->starting_point_.add_child("event", modevent);
+				this->starting_point_.add_child_at("event", modevent, pos++);
 			}
 		}
 
 		// Copy lua
 		for(const config& modlua : cfg.child_range("lua")) {
-			this->starting_point_.add_child("lua", modlua);
+			this->starting_point_.add_child_at("lua", modlua, pos++);
 		}
 
 		// Copy load_resource
 		for(const config& load_resource : cfg.child_range("load_resource")) {
-			this->starting_point_.add_child("load_resource", load_resource);
+			this->starting_point_.add_child_at("load_resource", load_resource, pos++);
 		}
 	} else {
 		// TODO: A user message instead?
@@ -361,25 +361,24 @@ void saved_game::expand_mp_events()
 			mods.emplace_back("campaign", classification_.campaign);
 		}
 
-		// In the first iteration mod contains no [resource]s in all other iterations, mods contains only [resource]s.
-		do {
-			for(modevents_entry& mod : mods) {
-				load_mod(mod.type, mod.id);
+		for(modevents_entry& mod : mods) {
+			load_mod(mod.type, mod.id, this->starting_point_.ordered_end());
+		}
+		mods.clear();
+
+		while(starting_point_.has_child("load_resource")) {
+			//todo: this looks like too much exposure of configs internals.
+			auto pos = std::find_if(starting_point_.ordered_begin(), starting_point_.ordered_end(), [&](const config::any_child& can){ return can.key == "load_resource"; });
+			assert(pos != starting_point_.ordered_end());
+			//assert(pos->index == 0);
+			std::string id = pos->cfg["id"];
+			starting_point_.remove_child("load_resource", 0);
+			//pos is still valid because starting_point_.ordered_begin() is a vector iterator.
+			if(loaded_resources.find(id) == loaded_resources.end()) {
+				loaded_resources.insert(id);
+				load_mod("resource", id, pos);
 			}
-
-			mods.clear();
-
-			for(const config& cfg : starting_point_.child_range("load_resource")) {
-				if(loaded_resources.find(cfg["id"].str()) == loaded_resources.end()) {
-					mods.emplace_back("resource", cfg["id"].str());
-
-					loaded_resources.insert(cfg["id"].str());
-				}
-			}
-
-			starting_point_.clear_children("load_resource");
-		} while(!mods.empty());
-
+		}
 		this->starting_point_["has_mod_events"] = true;
 	}
 }

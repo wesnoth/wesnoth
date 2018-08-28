@@ -72,7 +72,7 @@ public:
 	/// should be called after expand_scenario() but before expand_carryover()
 	void expand_mp_events();
 	/// helper for expand_mp_events();
-	void load_mod(const std::string& type, const std::string& id);
+	void load_mod(const std::string& type, const std::string& id, config::all_children_iterator pos);
 	/// adds values of [option]s into [carryover_sides_start][variables] so that they are applied in the next level.
 	/// Note that since [variabels] are persistent we only use this once at the beginning
 	/// of a campaign but calling it multiple times is no harm eigher
