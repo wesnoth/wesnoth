@@ -542,6 +542,42 @@ config& config::add_child_at(config_key_type key, const config& val, unsigned in
 	return *v[index];
 }
 
+config& config::add_child_at(config_key_type key, const config &val, const const_all_children_iterator& pos)
+{
+	if(pos == ordered_end()) {
+		//optimisation
+		config::add_child(key, val);
+	}
+
+	auto end = ordered_children.end();
+	assert(pos.i_ <= end);
+
+	auto pos_it = ordered_children.begin() + (pos.i_ - ordered_children.begin()); //'const cast'.
+	auto next = std::find_if(pos_it, end,[&](const child_pos& p){ return p.pos->first == key; });
+	
+	if(next == end) {
+		config& res = config::add_child(key, val);
+		std::rotate( pos_it, ordered_children.end(), ordered_children.end());
+		return res;
+	}
+
+	auto pl = next->pos;
+	child_list& l = pl->second;
+	unsigned int index = next->index;
+	config& res = **(l.emplace(l.begin() + index, new config(val)));
+	
+	for(auto ord = next; ord != end; ++ord) {
+		//this changes next->index and all later refernces to that tag.
+		if(ord->pos == pl) {
+			++ord->index;
+		}
+	}
+
+	//finally insert our new child in ordered_children.
+	ordered_children.insert(pos.i_, { pl, index });
+	return res;
+}
+
 namespace
 {
 struct remove_ordered
