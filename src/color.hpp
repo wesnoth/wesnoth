@@ -250,7 +250,7 @@ namespace std
 	template<>
 	struct hash<color_t>
 	{
-		size_t operator()(const color_t& c) const
+		size_t operator()(const color_t& c) const noexcept
 		{
 			return c.to_rgba_bytes();
 		}
