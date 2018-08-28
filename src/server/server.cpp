@@ -1871,7 +1871,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 using SendQueue = std::map<socket_ptr, std::deque<std::shared_ptr<simple_wml::document>>>;
 SendQueue send_queue;
 
-void handle_send_to_player(socket_ptr socket)
+static void handle_send_to_player(socket_ptr socket)
 {
 	if(send_queue[socket].empty()) {
 		send_queue.erase(socket);
