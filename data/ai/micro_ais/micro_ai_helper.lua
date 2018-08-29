@@ -1,6 +1,5 @@
 local H = wesnoth.require "helper"
 local T = wml.tag
-local AH = wesnoth.require("ai/lua/ai_helper.lua")
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 
 local micro_ai_helper = {}
