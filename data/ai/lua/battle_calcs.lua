@@ -54,7 +54,7 @@ function battle_calcs.unit_attack_info(unit, cache)
             else
                 -- magical, marksman
                 if (sp[1] == 'chance_to_hit') then
-                    a[sp[2].id] = true
+                    a[sp[2].id or 'no_id'] = true
                 else
                     a[sp[1]] = true
                 end
