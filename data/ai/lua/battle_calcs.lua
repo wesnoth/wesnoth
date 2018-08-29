@@ -38,38 +38,35 @@ function battle_calcs.unit_attack_info(unit, cache)
         resist_mod = {},
         alignment = unit_cfg.alignment
     }
-    for attack in wml.child_range(unit_cfg, 'attack') do
+    local attacks = unit.attacks
+    for i_a = 1,#attacks do
+        local attack = attacks[i_a]
         -- Extract information for specials; we do this first because some
         -- custom special might have the same name as one of the default scalar fields
         local a = {}
-        for special in wml.child_range(attack, 'specials') do
-            for _,sp in ipairs(special) do
-                if (sp[1] == 'damage') then  -- this is 'backstab'
-                    if (sp[2].id == 'backstab') then
-                        a.backstab = true
-                    else
-                        if (sp[2].id == 'charge') then a.charge = true end
-                    end
+        for _,sp in ipairs(attack.specials) do
+            if (sp[1] == 'damage') then  -- this is 'backstab'
+                if (sp[2].id == 'backstab') then
+                    a.backstab = true
                 else
-                    -- magical, marksman
-                    if (sp[1] == 'chance_to_hit') then
-                        a[sp[2].id] = true
-                    else
-                        a[sp[1]] = true
-                    end
+                    if (sp[2].id == 'charge') then a.charge = true end
+                end
+            else
+                -- magical, marksman
+                if (sp[1] == 'chance_to_hit') then
+                    a[sp[2].id] = true
+                else
+                    a[sp[1]] = true
                 end
             end
         end
 
         -- Now extract the scalar (string and number) values from attack
-        for k,v in pairs(attack) do
-            if (type(v) == 'number') or (type(v) == 'string') then
-                a[k] = v
-            end
-        end
-
-        -- [attack]number= defaults to zero; must be defined for battle_calcs.best_weapons()
-        a.number = a.number or 0
+        a.damage = attack.damage
+        a.type = attack.type
+        a.range = attack.range
+        -- number must be defined for battle_calcs.best_weapons()
+        a.number = attack.number or 0
 
         table.insert(unit_info.attacks, a)
     end
