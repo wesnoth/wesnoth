@@ -8,7 +8,6 @@ return {
 
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
         local BC = wesnoth.require "ai/lua/battle_calcs.lua"
-        local LS = wesnoth.require "location_set"
         local HS = wesnoth.require "ai/micro_ais/cas/ca_healer_move.lua"
         local R = wesnoth.require "ai/lua/retreat.lua"
         local M = wesnoth.map
