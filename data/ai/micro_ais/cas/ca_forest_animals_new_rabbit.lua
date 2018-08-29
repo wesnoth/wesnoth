@@ -1,5 +1,4 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
-local T = wml.tag
 
 local ca_forest_animals_new_rabbit = {}
 

@@ -24,7 +24,6 @@ return {
         math.randomseed(os.time())
 
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
-        local LS = wesnoth.require "location_set"
         local M = wesnoth.map
 
         local function print_time(...)

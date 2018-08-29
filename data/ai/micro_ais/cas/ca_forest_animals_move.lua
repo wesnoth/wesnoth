@@ -1,7 +1,6 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "location_set"
 local M = wesnoth.map
-local T = wml.tag
 
 local function get_forest_animals(cfg)
     -- We want the deer/rabbits to move first, tuskers afterward
