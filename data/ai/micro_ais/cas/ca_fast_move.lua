@@ -263,8 +263,7 @@ function ca_fast_move:execution(cfg)
                     end
                 end
 
-                unit.x, unit.y = old_x, old_y
-                unit:to_map()
+                unit:to_map(old_x, old_y)
             end
 
             if best_hex then
