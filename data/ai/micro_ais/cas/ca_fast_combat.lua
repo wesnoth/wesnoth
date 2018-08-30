@@ -71,7 +71,6 @@ function ca_fast_combat:evaluation(cfg, data)
 
     local aggression = ai.aspects.aggression
     if (aggression > 1) then aggression = 1 end
-    local own_value_weight = 1. - aggression
 
     -- Get the locations to be avoided
     local avoid_map = FAU.get_avoid_map(cfg)
@@ -102,12 +101,12 @@ function ca_fast_combat:evaluation(cfg, data)
                             { unit_info }, target_info, { { attack.dst.x, attack.dst.y } },
                             { att_stat }, def_stat, data.gamedata,
                             {
-                                own_value_weight = own_value_weight,
+                                aggression = aggression,
                                 leader_weight = cfg.leader_weight
                             }
                         )
 
-                        local acceptable_attack = FAU.is_acceptable_attack(attacker_rating, defender_rating, own_value_weight)
+                        local acceptable_attack = FAU.is_acceptable_attack(attacker_rating, defender_rating, aggression)
 
                         if acceptable_attack and (rating > max_rating) then
                             max_rating, best_target, best_dst = rating, target, attack.dst
