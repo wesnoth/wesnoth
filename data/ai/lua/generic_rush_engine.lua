@@ -574,7 +574,7 @@ return {
             })[1]
 
             local villages = wesnoth.get_villages()
-            local target, best_cost = nil, AH.no_path
+            local best_cost, target = AH.no_path
             for i,v in ipairs(villages) do
                 if not wesnoth.match_location(v[1], v[2], { {"filter_owner", { {"ally_of", { side = wesnoth.current.side }} }} }) then
                     local path, cost = wesnoth.find_path(unit, v[1], v[2], { ignore_units = true, max_cost = best_cost })
