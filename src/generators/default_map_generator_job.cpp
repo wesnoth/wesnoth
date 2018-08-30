@@ -1190,13 +1190,13 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	 * roads could split a forest)
 	 */
 	if(misc_labels != nullptr) {
+		std::set<std::string> used_names;
 		for(int x = data.width / 3; x < (data.width / 3)*2; x++) {
 			for(int y = data.height / 3; y < (data.height / 3) * 2;y++) {
 				//check the terrain of the tile
 				const map_location loc(x - data.width / 3, y - data.height / 3);
 				const t_translation::terrain_code terr = terrain[x][y];
-				std::string name, base_name;
-				std::set<std::string> used_names;
+				std::string name = "", base_name;
 
 				if(t_translation::terrain_matches(terr, t_translation::ALL_MOUNTAINS)) {
 					//name every 15th mountain
@@ -1232,6 +1232,9 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 						// name all connected swamp tiles accordingly
 						flood_name(loc, base_name, swamp_names, t_translation::ALL_SWAMPS, terrain, data.width, data.height, 0, misc_labels, name);
 					}
+				}
+				if(!name.empty()) {
+					used_names.insert(name);
 				}
 			}
 		}
