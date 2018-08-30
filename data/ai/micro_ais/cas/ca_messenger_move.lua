@@ -90,12 +90,12 @@ function ca_messenger_move:execution(cfg)
 
     local targets = AH.get_attackable_enemies { { "filter_adjacent", { id = messenger.id } } }
 
-    local max_rating, best_target, best_weapon = -9e99
+    local max_rating, best_target, best_weapon = - math.huge
     for _,target in ipairs(targets) do
         for n_weapon,weapon in ipairs(messenger.attacks) do
             local att_stats, def_stats = wesnoth.simulate_combat(messenger, n_weapon, target)
 
-            local rating = -9e99
+            local rating = - math.huge
             -- This is an acceptable attack if:
             -- 1. There is no counter attack
             -- 2. Probability of death is >=67% for enemy, 0% for attacker (default values)

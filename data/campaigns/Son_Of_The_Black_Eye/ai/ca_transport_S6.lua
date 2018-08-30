@@ -53,7 +53,7 @@ function ca_transport:execution()
         }
     )
 
-    local max_rating, best_unit, best_hex, best_adj_tiles = -9e99
+    local max_rating, best_unit, best_hex, best_adj_tiles = - math.huge
     for i,u in ipairs(transports) do
         local dst = { u.variables.destination_x, u.variables.destination_y }
 
@@ -104,7 +104,7 @@ function ca_transport:execution()
         end
     end
 
-    if (max_rating > -9e99) then
+    if (max_rating > - math.huge) then
         ai.move_full(best_unit, best_hex[1], best_hex[2])
 
         -- Also unload units
@@ -128,12 +128,12 @@ function ca_transport:execution()
         }
     )
 
-    local max_rating, best_unit, best_hex = -9e99, {}, {}
+    local max_rating, best_unit, best_hex = - math.huge, {}, {}
     for i,u in ipairs(transports) do
         local dst = { u.variables.destination_x, u.variables.destination_y }
         local reach = wesnoth.find_reach(u)
 
-        local max_rating_unit, best_hex_unit = -9e99, {}
+        local max_rating_unit, best_hex_unit = - math.huge, {}
         for i,r in ipairs(reach) do
             if deep_water_map:get(r[1], r[2]) and (not blocked_hex_map:get(r[1], r[2])) then
                 local rating = -M.distance_between(r[1], r[2], dst[1], dst[2])
@@ -149,7 +149,7 @@ function ca_transport:execution()
 
         -- We give a penalty to hexes occupied by another transport that can still move away.
         -- All ratings need to be set to the same value for this to work.
-        if (max_rating_unit > -9e99) then
+        if (max_rating_unit > - math.huge) then
             max_rating_unit = 0
             if transport_map:get(best_hex_unit[1], best_hex_unit[2]) then
                 max_rating_unit = -1

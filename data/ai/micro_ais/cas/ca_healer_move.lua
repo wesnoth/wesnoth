@@ -63,7 +63,7 @@ function ca_healer_move:evaluation(cfg, data)
 
     local avoid_map = LS.of_pairs(ai.aspects.avoid)
 
-    local max_rating = -9e99
+    local max_rating = - math.huge
     for _,healer in ipairs(healers) do
         local reach = wesnoth.find_reach(healer)
 

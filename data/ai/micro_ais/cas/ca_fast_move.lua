@@ -143,7 +143,7 @@ function ca_fast_move:execution(cfg)
         if (next_goal > #goals) then next_goal = 1 end
         local goal = goals[next_goal]
 
-        local max_rating, best_unit_info = -9e99
+        local max_rating, best_unit_info = - math.huge
         for _,unit_info in ipairs(goal) do
             if (not unit_info.cost) then
                 local _,cost =
@@ -198,7 +198,7 @@ function ca_fast_move:execution(cfg)
             local reach = wesnoth.find_reach(unit)
 
             local pre_ratings = {}
-            local max_rating, best_hex = -9e99
+            local max_rating, best_hex = - math.huge
             for _,loc in ipairs(reach) do
                 if (not avoid_map:get(loc[1], loc[2])) then
                     local rating = -M.distance_between(loc[1], loc[2], short_goal[1], short_goal[2])
@@ -246,7 +246,7 @@ function ca_fast_move:execution(cfg)
                 unit:extract()
                 local old_x, old_y = unit.x, unit.y
 
-                local max_rating = -9e99
+                local max_rating = - math.huge
                 for _,pre_rating in ipairs(pre_ratings) do
                     -- If pre_rating is worse than the full rating, we are done because the
                     -- move cost can never be less than the distance, so we cannot possibly do

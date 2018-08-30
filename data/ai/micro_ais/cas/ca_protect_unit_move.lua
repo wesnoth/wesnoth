@@ -69,7 +69,7 @@ function ca_protect_unit_move:execution(cfg, data)
         terrain_weight = 0
     end
 
-    local max_rating, best_hex = -9e99
+    local max_rating, best_hex = - math.huge
     for ind,_ in pairs(reach_map.values) do
         local rating =
             (attack_map.values[ind] or 0) * my_unit_weight

@@ -96,7 +96,7 @@ function ca_forest_animals_move:execution(cfg)
                 AH.checked_move(ai, unit, reachable_wander_terrain[rand][1], reachable_wander_terrain[rand][2])
             end
         else  -- Or if no close reachable terrain was found, move toward the closest
-            local min_dist, best_hex = 9e99
+            local min_dist, best_hex = math.huge
             for _,loc in ipairs(wander_locs) do
                 local dist = M.distance_between(loc[1], loc[2], unit.x, unit.y)
                 if dist < min_dist then

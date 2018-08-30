@@ -15,7 +15,7 @@ function ca_aggressive_attack_no_suicide:evaluation(cfg, data)
     if (not attacks[1]) then return 0 end
 
     -- Now find the best of the possible attacks
-    local max_rating, best_attack = -9e99, {}
+    local max_rating, best_attack = - math.huge, {}
     for i, att in ipairs(attacks) do
         local attacker = wesnoth.get_unit(att.src.x, att.src.y)
         local defender = wesnoth.get_unit(att.target.x, att.target.y)
@@ -44,7 +44,7 @@ function ca_aggressive_attack_no_suicide:evaluation(cfg, data)
         end
     end
 
-    if (max_rating > -9e99) then
+    if (max_rating > - math.huge) then
         data.attack = best_attack
         return 100000
     end

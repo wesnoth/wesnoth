@@ -27,7 +27,7 @@ function ca_zone_guardian:execution(cfg)
     local zone_enemy = wml.get_child(cfg, "filter_location_enemy") or zone
     local enemies = AH.get_attackable_enemies { { "filter_location", zone_enemy } }
     if enemies[1] then
-        local min_dist, target = 9e99
+        local min_dist, target = math.huge
         for _,enemy in ipairs(enemies) do
             local dist = M.distance_between(guardian.x, guardian.y, enemy.x, enemy.y)
             if (dist < min_dist) then
@@ -39,7 +39,7 @@ function ca_zone_guardian:execution(cfg)
         if target then
             -- Find tiles adjacent to the target
             -- Save the one with the highest defense rating that guardian can reach
-            local best_defense, attack_loc = -9e99
+            local best_defense, attack_loc = - math.huge
             for xa,ya in H.adjacent_tiles(target.x, target.y) do
                 -- Only consider unoccupied hexes
                 local unit_in_way = wesnoth.get_unit(xa, ya)
@@ -64,7 +64,7 @@ function ca_zone_guardian:execution(cfg)
 
                 -- Go through all hexes the guardian can reach, find closest to target
                 -- Cannot use next_hop here since target hex is occupied by enemy
-                local min_dist, nh = 9e99
+                local min_dist, nh = math.huge
                 for _,hex in ipairs(reach) do
                     -- Only consider unoccupied hexes
                     local unit_in_way = wesnoth.get_unit(hex[1], hex[2])

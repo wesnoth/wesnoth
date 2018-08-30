@@ -199,10 +199,10 @@ function battle_calcs.best_weapons(attacker, defender, dst, cache)
     local defender_info = battle_calcs.unit_attack_info(defender, cache)
 
     -- Best attacker weapon
-    local max_rating, best_att_weapon, best_def_weapon = -9e99, 0, 0
+    local max_rating, best_att_weapon, best_def_weapon = - math.huge, 0, 0
     for att_weapon_number,att_weapon in ipairs(attacker_info.attacks) do
         local att_damage = battle_calcs.strike_damage(attacker, defender, att_weapon_number, 0, { dst[1], dst[2] }, cache)
-        local max_def_rating, tmp_best_def_weapon = -9e99, 0
+        local max_def_rating, tmp_best_def_weapon = - math.huge, 0
         for def_weapon_number,def_weapon in ipairs(defender_info.attacks) do
             if (def_weapon.range == att_weapon.range) then
                 local def_damage = battle_calcs.strike_damage(defender, attacker, def_weapon_number, 0, { defender.x, defender.y }, cache)
@@ -214,7 +214,7 @@ function battle_calcs.best_weapons(attacker, defender, dst, cache)
         end
 
         local rating = att_damage * att_weapon.number
-        if (max_def_rating > -9e99) then rating = rating - max_def_rating / 2. end
+        if (max_def_rating > - math.huge) then rating = rating - max_def_rating / 2. end
 
         if (rating > max_rating) then
             max_rating, best_att_weapon, best_def_weapon = rating, att_weapon_number, tmp_best_def_weapon
@@ -1245,7 +1245,7 @@ function battle_calcs.relative_damage_map(units, enemies, cache)
     -- against any of the enemy units
     local unit_ratings = {}
     for i,unit in ipairs(units) do
-        local max_rating, best_enemy = -9e99, {}
+        local max_rating, best_enemy = - math.huge, {}
         for _,enemy in ipairs(enemies) do
             local rating, defender_rating, attacker_rating =
                 battle_calcs.attack_rating(unit, enemy, { unit.x, unit.y }, { enemy_leader_weight = 1 }, cache)
@@ -1262,7 +1262,7 @@ function battle_calcs.relative_damage_map(units, enemies, cache)
     -- Then we want the same thing for all of the enemy units (for the counter attack on enemy turn)
     local enemy_ratings = {}
     for i,enemy in ipairs(enemies) do
-        local max_rating, best_unit = -9e99, {}
+        local max_rating, best_unit = - math.huge, {}
         for _,unit in ipairs(units) do
             local rating, defender_rating, attacker_rating =
                 battle_calcs.attack_rating(enemy, unit, { enemy.x, enemy.y }, { enemy_leader_weight = 1 }, cache)
@@ -1323,7 +1323,7 @@ function battle_calcs.best_defense_map(units, cfg)
         for _,loc in ipairs(reach) do
             local defense = 100 - unit:defense(wesnoth.get_terrain(loc[1], loc[2]))
 
-            if (defense > (defense_map:get(loc[1], loc[2]) or -9e99)) then
+            if (defense > (defense_map:get(loc[1], loc[2]) or - math.huge)) then
                 defense_map:insert(loc[1], loc[2], defense)
             end
         end
@@ -1373,7 +1373,7 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
 
     cfg = cfg or {}
     cfg.order_matters = cfg.order_matters or false
-    cfg.max_combos = cfg.max_combos or 9e99
+    cfg.max_combos = cfg.max_combos or math.huge
     cfg.max_time = cfg.max_time or false
     cfg.skip_presort = cfg.skip_presort or 5
 

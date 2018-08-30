@@ -12,7 +12,7 @@ local function hunter_attack_weakest_adj_enemy(ai, hunter)
 
     if (hunter.attacks_left == 0) then return 'no_attack' end
 
-    local min_hp, target = 9e99
+    local min_hp, target = math.huge
     for xa,ya in H.adjacent_tiles(hunter.x, hunter.y) do
         local enemy = wesnoth.get_unit(xa, ya)
         if AH.is_attackable_enemy(enemy) then
@@ -74,7 +74,7 @@ function ca_hunter:execution(cfg)
         local reach_map = AH.get_reachable_unocc(hunter)
 
         -- Now find the one of these hexes that is closest to the goal
-        local max_rating, best_hex = -9e99
+        local max_rating, best_hex = - math.huge
         reach_map:iter( function(x, y, v)
             -- Distance from goal is first rating
             local rating = -M.distance_between(x, y, hunter_vars.goal_x, hunter_vars.goal_y)
