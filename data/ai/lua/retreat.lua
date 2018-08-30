@@ -114,7 +114,7 @@ function retreat_functions.get_retreat_injured_units(healees, regenerates)
 
     local healing_locs = retreat_functions.get_healing_locations()
 
-    local max_rating, best_loc, best_unit = - math.huge, nil, nil
+    local max_rating, best_loc, best_unit = - math.huge
     for i,u in ipairs(healees) do
         local possible_locations = wesnoth.find_reach(u)
         -- TODO: avoid ally's villages (may be preferable to lower rating so they will
