@@ -81,7 +81,7 @@ function ca_wolves_multipacks_wander:execution(cfg)
 
         -- Keep only those hexes that can be reached by all wolves in the pack
         -- and add distance from goal for those
-        local max_rating, goto_hex = -9e99
+        local max_rating, goto_hex = - math.huge
         reach_map:iter( function(x, y, v)
             local rating = reach_map:get(x, y)
             if (rating == #pack * 100) then

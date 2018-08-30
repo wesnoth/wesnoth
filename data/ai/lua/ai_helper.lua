@@ -1052,7 +1052,7 @@ function ai_helper.get_closest_enemy(loc, side, cfg)
         x, y = loc[1], loc[2]
     end
 
-    local closest_distance, location = 9e99
+    local closest_distance, location = math.huge
     for _,enemy in ipairs(enemies) do
         enemy_distance = M.distance_between(x, y, enemy.x, enemy.y)
         if (enemy_distance < closest_distance) then
@@ -1088,7 +1088,7 @@ function ai_helper.has_weapon_special(unit, special)
 end
 
 function ai_helper.get_cheapest_recruit_cost()
-    local cheapest_unit_cost = 9e99
+    local cheapest_unit_cost = math.huge
     for _,recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
         if wesnoth.unit_types[recruit_id].cost < cheapest_unit_cost then
             cheapest_unit_cost = wesnoth.unit_types[recruit_id].cost
@@ -1408,7 +1408,7 @@ function ai_helper.find_best_move(units, rating_function, cfg)
     -- If this is an individual unit, turn it into an array
     if units.hitpoints then units = { units } end
 
-    local max_rating, best_hex, best_unit = -9e99, {}, {}
+    local max_rating, best_hex, best_unit = - math.huge, {}, {}
     for _,unit in ipairs(units) do
         -- Hexes each unit can reach
         local reach_map = ai_helper.get_reachable_unocc(unit, cfg)
@@ -1452,7 +1452,7 @@ function ai_helper.move_unit_out_of_way(ai, unit, cfg)
     local reach = wesnoth.find_reach(unit, cfg)
     local reach_map = LS.create()
 
-    local max_rating, best_hex = -9e99
+    local max_rating, best_hex = - math.huge
     for _,loc in ipairs(reach) do
         local unit_in_way = wesnoth.get_unit(loc[1], loc[2])
         if (not unit_in_way)       -- also excludes current hex

@@ -118,7 +118,7 @@ function ca_goto:execution(cfg, data)
         enemy_attack_map = BC.get_attack_map(live_enemies)
     end
 
-    local max_rating, closest_hex, best_path, best_unit = -9e99
+    local max_rating, closest_hex, best_path, best_unit = - math.huge
     for _,unit in ipairs(units) do
         for _,loc in ipairs(locs) do
             -- If cfg.use_straight_line is set, we simply find the closest

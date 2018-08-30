@@ -55,7 +55,7 @@ local function messenger_find_clearing_attack(messenger, goal_x, goal_y, cfg)
 
     local attacks = AH.get_attacks(units, { simulate_combat = true })
 
-    local max_rating = -9e99
+    local max_rating = - math.huge
     for _,attack in ipairs(attacks) do
         if (attack.target.x == enemy_in_way.x) and (attack.target.y == enemy_in_way.y) then
 

@@ -35,7 +35,7 @@ function ca_messenger_escort_move:execution(cfg)
     local enemies = AH.get_attackable_enemies()
 
     local base_rating_map = LS.create()
-    local max_rating, best_unit, best_hex = -9e99
+    local max_rating, best_unit, best_hex = - math.huge
     for _,unit in ipairs(escorts) do
         -- Only considering hexes unoccupied by other units is good enough for this
         local reach_map = AH.get_reachable_unocc(unit)
@@ -51,7 +51,7 @@ function ca_messenger_escort_move:execution(cfg)
 
                 -- Distance from messenger is most important; only closest messenger counts for this
                 -- Give somewhat of a bonus for the messenger that has moved the farthest through the waypoints
-                local max_messenger_rating = -9e99
+                local max_messenger_rating = - math.huge
                 for _,m in ipairs(messengers) do
                     local messenger_rating = 1. / (M.distance_between(x, y, m.x, m.y) + 2.)
                     local wp_rating = MAIUV.get_mai_unit_variables(m, cfg.ai_id, "wp_rating")

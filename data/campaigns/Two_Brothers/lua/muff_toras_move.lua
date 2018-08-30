@@ -28,10 +28,10 @@ function muff_toras_move:execution()
         local rating = -10000 -- This is the base rating if no other units are left
 
         -- Main rating is distance from the closest own unit
-        local min_dist
+        local min_dist = math.huge
         for _,unit in ipairs(units) do
             local dist = M.distance_between(x, y, unit.x, unit.y)
-            if (not min_dist) or (dist < min_dist) then
+            if (dist < min_dist) then
                 min_dist = dist
             end
         end
@@ -75,12 +75,12 @@ function muff_toras_move:execution()
 
     local targets = AH.get_attackable_enemies { { "filter_adjacent", { id = muff_toras.id } } }
 
-    local max_rating, best_target, best_weapon = -9e99
+    local max_rating, best_target, best_weapon = - math.huge
     for _,target in ipairs(targets) do
         for n_weapon,weapon in ipairs(muff_toras.attacks) do
             local att_stats, def_stats = wesnoth.simulate_combat(muff_toras, n_weapon, target)
 
-            local rating = -9e99
+            local rating = - math.huge
             -- This is an acceptable attack if:
             -- 1. There is no counter attack
             -- 2. Probability of death is >=67% for enemy, 0% for attacker (default values)

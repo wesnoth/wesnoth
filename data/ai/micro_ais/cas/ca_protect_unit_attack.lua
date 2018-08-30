@@ -29,7 +29,7 @@ function ca_protect_unit_attack:evaluation(cfg)
     -- Set up a counter attack damage table, as many pairs of attacks will be the same
     local counter_damage_table = {}
 
-    local max_rating = -9e99
+    local max_rating = - math.huge
     for _,attack in pairs(attacks) do
         -- Only consider attack if there is no chance to die or to be poisoned or slowed
         if (attack.att_stats.hp_chance[0] == 0)
@@ -70,7 +70,7 @@ function ca_protect_unit_attack:evaluation(cfg)
             end
 
             -- Add this to damage possible on this attack
-            local min_hp = 1000
+            local min_hp = math.huge
             for hp,chance in pairs(attack.att_stats.hp_chance) do
                 if (chance > 0) and (hp < min_hp) then
                     min_hp = hp

@@ -25,7 +25,7 @@ local function bottleneck_is_my_territory(map, enemy_map)
                 dummy_unit.x, dummy_unit.y = x, y
 
                 -- Find lowest movement cost to own front-line hexes
-                local min_cost, best_path = 9e99
+                local min_cost, best_path = math.huge
                 map:iter(function(xm, ym, v)
                     local path, cost = AH.find_path_with_shroud(dummy_unit, xm, ym, { ignore_units = true })
                     if (cost < min_cost) then
@@ -34,7 +34,7 @@ local function bottleneck_is_my_territory(map, enemy_map)
                 end)
 
                 -- And the same to the enemy front line
-                local min_cost_enemy, best_path_enemy = 9e99
+                local min_cost_enemy, best_path_enemy = math.huge
                 enemy_map:iter(function(xm, ym, v)
                     local path, cost = AH.find_path_with_shroud(dummy_unit, xm, ym, { ignore_units = true })
                     if (cost < min_cost_enemy) then
@@ -192,7 +192,7 @@ local function bottleneck_move_out_of_way(unit_in_way, data)
         occ_hexes:insert(unit.x, unit.y)
     end
 
-    local best_reach, best_hex = -9e99
+    local best_reach, best_hex = - math.huge
     for _,loc in ipairs(reach) do
         if data.BD_is_my_territory:get(loc[1], loc[2]) and (not occ_hexes:get(loc[1], loc[2])) then
             -- Criterion: MP left after the move has been done
@@ -273,7 +273,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
         for xa,ya in H.adjacent_tiles(healer.x, healer.y) do
             -- Cannot be on the line, and needs to be in own territory
             if data.BD_is_my_territory:get(xa, ya) then
-                local min_dist = 9e99
+                local min_dist = math.huge
                 data.BD_def_map:iter( function(xd, yd, vd)
                     local dist_line = M.distance_between(xa, ya, xd, yd)
                     if (dist_line < min_dist) then min_dist = dist_line end

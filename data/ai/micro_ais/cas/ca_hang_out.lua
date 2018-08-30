@@ -83,11 +83,11 @@ function ca_hang_out:execution(cfg)
         avoid_map = LS.of_pairs(wesnoth.get_locations { terrain = 'C*,C*^*,*^C*' })
     end
 
-    local max_rating, best_hex, best_unit = -9e99
+    local max_rating, best_hex, best_unit = - math.huge
     for _,unit in ipairs(units) do
         -- Only consider units that have not been marked yet
         if (not MAIUV.get_mai_unit_variables(unit, cfg.ai_id, "moved")) then
-            local max_rating_unit, best_hex_unit = -9e99
+            local max_rating_unit, best_hex_unit = - math.huge
 
             -- Check out all unoccupied hexes the unit can reach
             local reach_map = AH.get_reachable_unocc(unit)

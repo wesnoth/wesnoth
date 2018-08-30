@@ -32,7 +32,7 @@ function ca_forest_animals_tusker_attack:execution(cfg)
     local adjacent_enemies = get_adjacent_enemies(cfg)
 
     -- Find the closest enemy to any tusker
-    local min_dist, attacker, target = 9e99
+    local min_dist, attacker, target = math.huge
     for _,tusker in ipairs(tuskers) do
         for _,enemy in ipairs(adjacent_enemies) do
             local dist = M.distance_between(tusker.x, tusker.y, enemy.x, enemy.y)

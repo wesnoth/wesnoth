@@ -27,7 +27,7 @@ function ca_simple_attack:evaluation(cfg)
     local attacks = AH.get_attacks(units, { include_occupied = true })
     if (not attacks[1]) then return 0 end
 
-    local max_rating = -9e99
+    local max_rating = - math.huge
     for _, att in ipairs(attacks) do
         local valid_target = true
         if enemy_filter and (not enemy_map:get(att.target.x, att.target.y)) then

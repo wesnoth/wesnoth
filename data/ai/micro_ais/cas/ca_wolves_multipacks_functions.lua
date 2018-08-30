@@ -58,7 +58,7 @@ function wolves_multipacks_functions.assign_packs(cfg)
     -- First, go through packs that have less than pack_size members
     for pack_number,pack in pairs(packs) do
         if (#pack < pack_size) then
-            local min_dist, best_wolf, best_ind = 9e99
+            local min_dist, best_wolf, best_ind = math.huge
             for ind,wolf in ipairs(nopack_wolves) do
                 -- Criterion is distance from the first two wolves of the pack
                 local dist1 = M.distance_between(wolf.x, wolf.y, pack[1].x, pack[1].y)
@@ -97,7 +97,7 @@ function wolves_multipacks_functions.assign_packs(cfg)
         -- They form the next pack
         local new_pack_wolves = {}
         while (#new_pack_wolves < pack_size) do
-            local min_dist, best_wolf, best_wolf_ind = 9e99
+            local min_dist, best_wolf, best_wolf_ind = math.huge
             for ind,nopack_wolf in ipairs(nopack_wolves) do
                 local dist = 0
                 for _,pack_wolf in ipairs(new_pack_wolves) do
