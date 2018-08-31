@@ -12,14 +12,6 @@ return {
         local R = wesnoth.require "ai/lua/retreat.lua"
         local M = wesnoth.map
 
-        local function print_time(...)
-            if generic_rush.data.turn_start_time then
-                AH.print_ts_delta(generic_rush.data.turn_start_time, ...)
-            else
-                AH.print_ts(...)
-            end
-        end
-
         ------ Stats at beginning of turn -----------
 
         -- This will be blacklisted after first execution each turn
@@ -84,7 +76,7 @@ return {
 
         function generic_rush:castle_switch_eval()
             local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'castle_switch'
-            if AH.print_eval() then print_time('     - Evaluating castle_switch CA:') end
+            if AH.print_eval() then AH.print_ts('     - Evaluating castle_switch CA:') end
 
             if ai.aspects.passive_leader then
                 -- Turn off this CA if the leader is passive
@@ -252,7 +244,7 @@ return {
         function generic_rush:castle_switch_exec()
             local leader = wesnoth.get_units { side = wesnoth.current.side, canrecruit = 'yes' }[1]
 
-            if AH.print_exec() then print_time('   Executing castle_switch CA') end
+            if AH.print_exec() then AH.print_ts('   Executing castle_switch CA') end
             if AH.show_messages() then wesnoth.wml_actions.message { speaker = leader.id, message = 'Switching castles' } end
 
             AH.checked_move(ai, leader, self.data.leader_target[1], self.data.leader_target[2])
@@ -263,7 +255,7 @@ return {
 
         function generic_rush:grab_villages_eval()
             local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'grab_villages'
-            if AH.print_eval() then print_time('     - Evaluating grab_villages CA:') end
+            if AH.print_eval() then AH.print_ts('     - Evaluating grab_villages CA:') end
 
             -- Check if there are units with moves left
             local units = wesnoth.get_units { side = wesnoth.current.side, canrecruit = 'no',
@@ -385,7 +377,7 @@ return {
         end
 
         function generic_rush:grab_villages_exec()
-            if AH.print_exec() then print_time('   Executing grab_villages CA') end
+            if AH.print_exec() then AH.print_ts('   Executing grab_villages CA') end
             if AH.show_messages() then wesnoth.wml_actions.message { speaker = self.data.unit.id, message = 'Grab villages' } end
 
             AH.movefull_stopunit(ai, self.data.unit, self.data.village)
@@ -396,7 +388,7 @@ return {
 
         function generic_rush:spread_poison_eval()
             local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'spread_poison'
-            if AH.print_eval() then print_time('     - Evaluating spread_poison CA:') end
+            if AH.print_eval() then AH.print_ts('     - Evaluating spread_poison CA:') end
 
             -- If a unit with a poisoned weapon can make an attack, we'll do that preferentially
             -- (with some exceptions)
@@ -479,7 +471,7 @@ return {
             -- If several attacks have poison, this will always find the last one
             local is_poisoner, poison_weapon = AH.has_weapon_special(attacker, "poison")
 
-            if AH.print_exec() then print_time('   Executing spread_poison CA') end
+            if AH.print_exec() then AH.print_ts('   Executing spread_poison CA') end
             if AH.show_messages() then wesnoth.wml_actions.message { speaker = attacker.id, message = 'Poison attack' } end
 
             AH.robust_move_and_attack(ai, attacker, self.data.attack.dst, self.data.attack.target, { weapon = poison_weapon })
@@ -490,19 +482,28 @@ return {
         ------- Place Healers CA --------------
 
         function generic_rush:place_healers_eval()
+            local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'place_healers'
+            if AH.print_eval() then AH.print_ts('     - Evaluating place_healers CA:') end
+
             if HS:evaluation(ai, {}, self) > 0 then
+                if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
                 return 95000
             end
+            if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
             return 0
         end
 
         function generic_rush:place_healers_exec()
+            if AH.print_exec() then AH.print_ts('   Executing place_healers CA') end
             HS:execution(ai, nil, self)
         end
 
         ------- Retreat CA --------------
 
         function generic_rush:retreat_injured_units_eval()
+            local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'retreat_injured_units'
+            if AH.print_eval() then AH.print_ts('     - Evaluating retreat_injured_units CA:') end
+
             local units = wesnoth.get_units {
                 side = wesnoth.current.side,
                 formula = 'movement_left > 0'
@@ -517,15 +518,19 @@ return {
                 local attacks = ai.get_attacks()
                 for i,a in ipairs(attacks) do
                     if (#a.movements == 1) and (a.chance_to_kill > 0.5) then
+                        if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
                         return 95000
                     end
                 end
+                if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
                 return 205000
             end
+            if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
             return 0
         end
 
         function generic_rush:retreat_injured_units_exec()
+            if AH.print_exec() then AH.print_ts('   Executing retreat_injured_units CA') end
             AH.robust_move_and_attack(ai, self.data.retreat_unit, self.data.retreat_loc)
             self.data.retreat_unit = nil
             self.data.retreat_loc = nil
@@ -536,20 +541,26 @@ return {
         -- our share is defined as being slightly more than the total/the number of sides
 
         function generic_rush:village_hunt_eval()
+            local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'village_hunt'
+            if AH.print_eval() then AH.print_ts('     - Evaluating village_hunt CA:') end
+
             local villages = wesnoth.get_villages()
 
             if not villages[1] then
+                if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
                 return 0
             end
 
             local my_villages = wesnoth.get_villages { owner_side = wesnoth.current.side }
 
             if #my_villages > #villages / #wesnoth.sides then
+                if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
                 return 0
             end
 
             local allied_villages = wesnoth.get_villages { {"filter_owner", { {"ally_of", { side = wesnoth.current.side }} }} }
             if #allied_villages == #villages then
+                if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
                 return 0
             end
 
@@ -560,9 +571,11 @@ return {
             }
 
             if not units[1] then
+                if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
                 return 0
             end
 
+            if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
             return 30000
         end
 
@@ -572,6 +585,8 @@ return {
                 canrecruit = false,
                 formula = 'movement_left > 0'
             })[1]
+
+            if AH.print_exec() then AH.print_ts('   Executing village_hunt CA') end
 
             local villages = wesnoth.get_villages()
             local best_cost, target = AH.no_path
