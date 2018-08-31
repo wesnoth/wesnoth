@@ -5,6 +5,9 @@ return {
         local move_to_any_target = {}
 
         function move_to_any_target:move_to_enemy_eval()
+            local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'move_to_enemy'
+            if AH.print_eval() then AH.print_ts('     - Evaluating move_to_enemy CA:') end
+
             local units = wesnoth.get_units {
                 side = wesnoth.current.side,
                 canrecruit = 'no',
@@ -13,6 +16,7 @@ return {
 
             if (not units[1]) then
                 -- No units with moves left
+                if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
                 return 0
             end
 
@@ -34,16 +38,19 @@ return {
 
             if (not destination) then
                 -- No path was found
+                if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
                 return 0
             end
 
             self.data.destination = destination
             self.data.unit = unit
 
+            if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
             return 1
         end
 
         function move_to_any_target:move_to_enemy_exec()
+            if AH.print_exec() then AH.print_ts('   Executing move_to_enemy CA') end
             AH.checked_move(ai, self.data.unit, self.data.destination[1], self.data.destination[2])
         end
 
