@@ -298,7 +298,7 @@ return {
             local enemy_attack_map = BC.get_attack_map(enemies).units
 
             -- Now we go through the villages and units
-            local max_rating, best_village, best_unit = - math.huge, {}, {}
+            local max_rating, best_village, best_unit = - math.huge
             local village_ratings = {}
             for j,v in ipairs(villages) do
                 -- First collect all information that only depends on the village
@@ -370,7 +370,7 @@ return {
                 end
             end
 
-            if (max_rating > - math.huge) then
+            if best_village then
                 self.data.unit, self.data.village = best_unit, best_village
                 if (max_rating >= 1000) then
                     if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
@@ -423,7 +423,7 @@ return {
             end
 
             -- Go through all possible attacks with poisoners
-            local max_rating, best_attack = - math.huge, {}
+            local max_rating, best_attack = - math.huge
             for i,a in ipairs(attacks) do
                 local attacker = wesnoth.get_unit(a.src.x, a.src.y)
                 local defender = wesnoth.get_unit(a.target.x, a.target.y)
@@ -465,7 +465,7 @@ return {
                 end
             end
 
-            if (max_rating > - math.huge) then
+            if best_attack then
                 self.data.attack = best_attack
                 if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
                 return 190000
