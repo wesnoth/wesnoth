@@ -33,7 +33,7 @@ function ca_forest_animals_tusklet_move:execution(cfg)
     local tusklet = get_tusklets(cfg)[1]
     local tuskers = get_tuskers(cfg)
 
-    local goto_tusker, min_dist = {}, math.huge
+    local min_dist, goto_tusker = math.huge
     for _,tusker in ipairs(tuskers) do
         local dist = M.distance_between(tusker.x, tusker.y, tusklet.x, tusklet.y)
         if (dist < min_dist) then

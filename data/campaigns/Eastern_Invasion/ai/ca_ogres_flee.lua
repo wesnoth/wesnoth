@@ -29,7 +29,7 @@ function ca_ogres_flee:execution()
     local enemies = wesnoth.get_units {  { "filter_side", { {"enemy_of", {side = wesnoth.current.side} } } } }
     local enemy_attack_map = BC.get_attack_map(enemies)
 
-    local max_rating, best_hex, best_unit = - math.huge, {}
+    local max_rating, best_hex, best_unit = - math.huge
     for i,u in ipairs(units) do
         local reach = wesnoth.find_reach(u)
 
