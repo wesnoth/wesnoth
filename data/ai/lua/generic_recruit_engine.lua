@@ -177,13 +177,13 @@ return {
                                 -- TODO: find out what actual probability of getting to backstab is
                                 damage_multiplier = damage_multiplier*(special_multiplier*0.5 + 0.5)
                                 damage_bonus = damage_bonus+(special_bonus*0.5)
-                                if mod.value ~= nil then
+                                if mod.value then
                                     weapon_damage = (weapon_damage+mod.value)/2
                                 end
                             else
                                 damage_multiplier = damage_multiplier*special_multiplier
                                 damage_bonus = damage_bonus+special_bonus
-                                if mod.value ~= nil then
+                                if mod.value then
                                     weapon_damage = mod.value
                                 end
                             end
@@ -374,7 +374,7 @@ return {
                 end
             end
 
-            if data.recruit == nil then
+            if not data.recruit then
                 data.recruit = init_data(leader)
             end
             data.recruit.cheapest_unit_cost = cheapest_unit_cost
@@ -398,7 +398,7 @@ return {
             local possible_enemy_recruit_count = 0
 
             local function add_unit_type(unit_type)
-                if enemy_counts[unit_type] == nil then
+                if not enemy_counts[unit_type] then
                     table.insert(enemy_types, unit_type)
                     enemy_counts[unit_type] = 1
                 else
@@ -482,7 +482,7 @@ return {
                 for i, recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
                     local analysis = analyze_enemy_unit(unit_type, recruit_id)
 
-                    if recruit_effectiveness[recruit_id] == nil then
+                    if not recruit_effectiveness[recruit_id] then
                         recruit_effectiveness[recruit_id] = {damage = 0, poison_damage = 0}
                         recruit_vulnerability[recruit_id] = 0
                     end
@@ -496,23 +496,23 @@ return {
                     recruit_vulnerability[recruit_id] = recruit_vulnerability[recruit_id] + (analysis.retaliation.damage * enemy_counts[unit_type])^3
 
                     local attack_type = analysis.defense.attack.type
-                    if attack_type_count[attack_type] == nil then
+                    if not attack_type_count[attack_type] then
                         attack_type_count[attack_type] = 0
                     end
                     attack_type_count[attack_type] = attack_type_count[attack_type] + recruit_count[recruit_id]
 
                     local attack_range = analysis.defense.attack.range
-                    if attack_range_count[attack_range] == nil then
+                    if not attack_range_count[attack_range] then
                         attack_range_count[attack_range] = 0
                     end
                     attack_range_count[attack_range] = attack_range_count[attack_range] + recruit_count[recruit_id]
 
-                    if unit_attack_type_count[recruit_id] == nil then
+                    if not unit_attack_type_count[recruit_id] then
                         unit_attack_type_count[recruit_id] = {}
                     end
                     unit_attack_type_count[recruit_id][attack_type] = true
 
-                    if unit_attack_range_count[recruit_id] == nil then
+                    if not unit_attack_range_count[recruit_id] then
                         unit_attack_range_count[recruit_id] = {}
                     end
                     unit_attack_range_count[recruit_id][attack_range] = true
@@ -567,13 +567,13 @@ return {
             repeat
                 recruit_data.recruit.best_hex, recruit_data.recruit.target_hex = ai_cas:find_best_recruit_hex(leader, recruit_data)
                 recruit_type = ai_cas:find_best_recruit(attack_type_count, unit_attack_type_count, recruit_effectiveness, recruit_vulnerability, attack_range_count, unit_attack_range_count, most_common_range_count)
-            until recruit_type ~= nil
+            until recruit_type
 
             if wesnoth.unit_types[recruit_type].cost <= wesnoth.sides[wesnoth.current.side].gold then
                 AH.checked_recruit(ai, recruit_type, recruit_data.recruit.best_hex[1], recruit_data.recruit.best_hex[2])
 
                 -- If the recruited unit cannot reach the target hex, return it to the pool of targets
-                if recruit_data.recruit.target_hex ~= nil and recruit_data.recruit.target_hex[1] ~= nil then
+                if recruit_data.recruit.target_hex and recruit_data.recruit.target_hex[1] then
                     local unit = wesnoth.get_unit(recruit_data.recruit.best_hex[1], recruit_data.recruit.best_hex[2])
                     local path, cost = wesnoth.find_path(unit, recruit_data.recruit.target_hex[1], recruit_data.recruit.target_hex[2], {viewing_side=0, max_cost=unit.max_moves+1})
                     if cost > unit.max_moves then
@@ -856,7 +856,7 @@ return {
             -- TODO get list of villages not owned by allies instead
             -- this may have false positives (villages that can't be reached due to difficult/impassible terrain)
             local exclude_x, exclude_y = "0", "0"
-            if data.castle.assigned_villages_x ~= nil and data.castle.assigned_villages_x[1] then
+            if data.castle.assigned_villages_x and data.castle.assigned_villages_x[1] then
                 exclude_x = table.concat(data.castle.assigned_villages_x, ",")
                 exclude_y = table.concat(data.castle.assigned_villages_y, ",")
             end
