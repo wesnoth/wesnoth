@@ -79,7 +79,7 @@ function ca_hang_out:execution(cfg)
             end
         end
     end
-    if avoid_map == nil then
+    if not avoid_map then
         avoid_map = LS.of_pairs(wesnoth.get_locations { terrain = 'C*,C*^*,*^C*' })
     end
 
