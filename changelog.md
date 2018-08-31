@@ -8,7 +8,7 @@
      * New graphics for Eloh.
  ### Language and i18n
    * Updated translations: British English, Chinese (Traditional), French,
-     German, Italian
+     German, Italian, Ukrainian
  ### User Interface
    * MacOS: Fixed moving the mouse with a touchpad also scrolling GUI dialogs
    * MacOS: Add build number to OS version report
