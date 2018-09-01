@@ -103,10 +103,11 @@ function ca_healer_move:evaluation(cfg, data)
                 rating = rating - enemies_in_reach * 1000
 
                 -- All else being more or less equal, prefer villages and strong terrain
-                local is_village = wesnoth.get_terrain_info(wesnoth.get_terrain(loc[1], loc[2])).village
+                local terrain = wesnoth.get_terrain(loc[1], loc[2])
+                local is_village = wesnoth.get_terrain_info(terrain).village
                 if is_village then rating = rating + 2 end
 
-                local defense = 100 - healer:defense(wesnoth.get_terrain(loc[1], loc[2]))
+                local defense = 100 - healer:defense(terrain)
                 rating = rating + defense / 10.
             end
 

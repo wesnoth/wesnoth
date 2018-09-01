@@ -42,7 +42,8 @@ function ca_spread_poison:evaluation(cfg, data)
         local cant_poison = defender.status.poisoned or defender.status.unpoisonable
 
         -- For now, we also simply don't poison units on villages (unless standard combat CA does it)
-        local on_village = wesnoth.get_terrain_info(wesnoth.get_terrain(defender.x, defender.y)).village
+        local defender_terrain = wesnoth.get_terrain(defender.x, defender.y)
+        local on_village = wesnoth.get_terrain_info(defender_terrain).village
 
         -- Also, poisoning units that would level up through the attack or could level on their turn as a result is very bad
         local about_to_level = defender.max_experience - defender.experience <= (attacker.level * 2)
@@ -58,15 +59,16 @@ function ca_spread_poison:evaluation(cfg, data)
             if defender:ability('regenerate') then rating = rating - 1000 end
 
             -- More priority to enemies on strong terrain
-            local defender_defense = 100 - defender:defense(wesnoth.get_terrain(defender.x, defender.y))
+            local defender_defense = 100 - defender:defense(defender_terrain)
             rating = rating + defender_defense / 4.
 
             -- For the same attacker/defender pair, go to strongest terrain
-            local attack_defense = 100 - attacker:defense(wesnoth.get_terrain(a.dst.x, a.dst.y))
-            rating = rating + attack_defense / 2.
+            local attacker_terrain = wesnoth.get_terrain(a.dst.x, a.dst.y)
+            local attacker_defense = 100 - attacker:defense(attacker_terrain)
+            rating = rating + attacker_defense / 2.
 
             -- And from village everything else being equal
-            local is_village = wesnoth.get_terrain_info(wesnoth.get_terrain(a.dst.x, a.dst.y)).village
+            local is_village = wesnoth.get_terrain_info(attacker_terrain).village
             if is_village then rating = rating + 0.5 end
 
             if rating > max_rating then
