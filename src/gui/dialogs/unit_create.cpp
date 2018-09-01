@@ -201,6 +201,18 @@ void unit_create::list_item_clicked(window& window)
 	});
 }
 
+namespace
+{
+
+bool ci_search(const std::string& a, const std::string& b)
+{
+	return std::search(a.begin(), a.end(),
+	                   b.begin(), b.end(),
+	                   chars_equal_insensitive) != a.end();
+}
+
+} // end unnamed namespace
+
 void unit_create::filter_text_changed(text_box_base* textbox, const std::string& text)
 {
 	window& window = *textbox->get_window();
@@ -223,16 +235,14 @@ void unit_create::filter_text_changed(text_box_base* textbox, const std::string&
 			grid::iterator it = row->begin();
 			label& type_label
 					= find_widget<label>(*it, "unit_type", false);
+			label& race_label
+					= find_widget<label>(*it, "race", false);
 
 			bool found = false;
 			for(const auto & word : words)
 			{
-				found = std::search(type_label.get_label().str().begin(),
-									type_label.get_label().str().end(),
-									word.begin(),
-									word.end(),
-									chars_equal_insensitive)
-						!= type_label.get_label().str().end();
+				found = ci_search(type_label.get_label().str(), word) ||
+				        ci_search(race_label.get_label().str(), word);
 
 				if(!found) {
 					// one word doesn't match, we don't reach words.end()
