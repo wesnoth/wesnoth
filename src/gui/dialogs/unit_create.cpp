@@ -186,6 +186,10 @@ void unit_create::update_displayed_type() const
 	const int selected_row
 		= find_widget<listbox>(w, "unit_type_list", false).get_selected_row();
 
+	if(selected_row == -1) {
+		return;
+	}
+
 	find_widget<unit_preview_pane>(w, "unit_details", false)
 		.set_displayed_type(units_[selected_row]->get_gender_unit_type(gender_));
 }
