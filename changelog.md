@@ -65,6 +65,9 @@
    * Fix some minor problems in macOS package
    * Fast Micro AI: Fix bug crashing the AI when units with chance-to-hit
      specials without id are on map
+   * Fixed the debug mode Create Unit dialog crashing when changing the gender
+     of the previous selection after causing the list to come up empty using
+     the filter box.
 
 ## Version 1.14.4
  ### Security Fixes
