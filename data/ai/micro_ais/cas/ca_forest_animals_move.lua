@@ -155,7 +155,7 @@ function ca_forest_animals_move:execution(cfg)
 
         -- If this is a rabbit ending on a hole -> disappears
         if (unit.type == rabbit_type) and hole_map:get(farthest_hex[1], farthest_hex[2]) then
-			wesnoth.invoke_synced_command("rabbit_despawn", { x = farthest_hex[1], y = farthest_hex[2]})
+            wesnoth.invoke_synced_command("rabbit_despawn", { x = farthest_hex[1], y = farthest_hex[2]})
         end
     end
 
