@@ -55,10 +55,10 @@ function ca_protect_unit_move:execution(cfg, data)
     end)
 
     -- Configuration parameters (no option to change these enabled at the moment)
-    local enemy_weight = data.PU_enemy_weight or 100.
-    local my_unit_weight = data.PU_my_unit_weight or 1.
-    local distance_weight = data.PU_distance_weight or 3.
-    local terrain_weight = data.PU_terrain_weight or 0.1
+    local enemy_weight = 100.
+    local my_unit_weight = 1.
+    local distance_weight = 3.
+    local terrain_weight = 0.1
 
     -- If there are no enemies left, only distance to goal matters
     -- This is to avoid rare situations where moving toward goal rating is canceled by rating for moving away from own units
