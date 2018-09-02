@@ -1,5 +1,7 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
+local BD_attacker, BD_target, BD_weapon, BD_bottleneck_attacks_done
+
 local ca_bottleneck_attack = {}
 
 function ca_bottleneck_attack:evaluation(cfg, data)
@@ -48,29 +50,29 @@ function ca_bottleneck_attack:evaluation(cfg, data)
 
     if (not best_attacker) then
         -- In this case we take attacks away from all units
-        data.BD_bottleneck_attacks_done = true
+        BD_bottleneck_attacks_done = true
     else
-        data.BD_bottleneck_attacks_done = false
-        data.BD_attacker = best_attacker
-        data.BD_target = best_target
-        data.BD_weapon = best_weapon
+        BD_bottleneck_attacks_done = false
+        BD_attacker = best_attacker
+        BD_target = best_target
+        BD_weapon = best_weapon
     end
 
     return cfg.ca_score
 end
 
 function ca_bottleneck_attack:execution(cfg, data)
-    if data.BD_bottleneck_attacks_done then
+    if BD_bottleneck_attacks_done then
         local units = AH.get_units_with_attacks { side = wesnoth.current.side }
         for _,unit in ipairs(units) do
             AH.checked_stopunit_attacks(ai, unit)
         end
     else
-        AH.checked_attack(ai, data.BD_attacker, data.BD_target, data.BD_weapon)
+        AH.checked_attack(ai, BD_attacker, BD_target, BD_weapon)
     end
 
-    data.BD_attacker, data.BD_target, data.BD_weapon = nil, nil, nil
-    data.BD_bottleneck_attacks_done = nil
+    BD_attacker, BD_target, BD_weapon = nil, nil, nil
+    BD_bottleneck_attacks_done = nil
 end
 
 return ca_bottleneck_attack

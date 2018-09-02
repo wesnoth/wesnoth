@@ -26,6 +26,8 @@ local M = wesnoth.map
 --    so that we can follow up with stronger units. In addition, use of poison or
 --    slow attacks is strongly discouraged. See code for exact equations.
 
+local XP_attack
+
 local ca_attack_highxp = {}
 
 function ca_attack_highxp:evaluation(cfg, data)
@@ -284,15 +286,15 @@ function ca_attack_highxp:evaluation(cfg, data)
     end
 
     if best_attack then
-        data.XP_attack = best_attack
+        XP_attack = best_attack
     end
 
     return max_ca_score
 end
 
 function ca_attack_highxp:execution(cfg, data)
-    AH.robust_move_and_attack(ai, data.XP_attack.src, data.XP_attack.dst, data.XP_attack.target, { weapon = data.XP_attack.attack_num })
-    data.XP_attack = nil
+    AH.robust_move_and_attack(ai, XP_attack.src, XP_attack.dst, XP_attack.target, { weapon = XP_attack.attack_num })
+    XP_attack = nil
 end
 
 return ca_attack_highxp

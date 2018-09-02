@@ -5,6 +5,8 @@
 
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
+local MTAE_unit, MTAE_destination
+
 local ca_move_to_any_enemy = {}
 
 function ca_move_to_any_enemy:evaluation(cfg, data)
@@ -45,8 +47,8 @@ function ca_move_to_any_enemy:evaluation(cfg, data)
         return 0
     end
 
-    data.destination = destination
-    data.unit = unit
+    MTAE_destination = destination
+    MTAE_unit = unit
 
     if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
     return 1
@@ -54,7 +56,8 @@ end
 
 function ca_move_to_any_enemy:execution(cfg, data)
     if AH.print_exec() then AH.print_ts('   Executing move_to_any_enemy CA') end
-    AH.checked_move(ai, data.unit, data.destination[1], data.destination[2])
+    AH.checked_move(ai, MTAE_unit, MTAE_destination[1], MTAE_destination[2])
+    MTAE_unit, MTAE_destination = nil,nil
 end
 
 return ca_move_to_any_enemy

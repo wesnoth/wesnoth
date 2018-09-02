@@ -3,6 +3,9 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local M = wesnoth.map
 
+local CS_leader_score
+-- Note that leader_target is also needed by the recruiting CA, so it must be stored in 'data'
+
 local function get_reachable_enemy_leaders(unit)
 	-- We're cheating a little here and also find hidden enemy leaders. That's
 	-- because a human player could make a pretty good educated guess as to where
@@ -51,7 +54,7 @@ function ca_castle_switch:evaluation(cfg, data)
 		local next_hop = AH.next_hop(leader, data.leader_target[1], data.leader_target[2])
 		if next_hop and next_hop[1] == data.leader_target[1]
 		and next_hop[2] == data.leader_target[2] then
-			return data.leader_score
+			return CS_leader_score
 		end
 	end
 
@@ -158,7 +161,7 @@ function ca_castle_switch:evaluation(cfg, data)
 		data.leader_target = next_hop
 
 		-- if we're on a keep, wait until there are no movable units on the castle before moving off
-		data.leader_score = 290000
+		CS_leader_score = 290000
 		if wesnoth.get_terrain_info(wesnoth.get_terrain(leader.x, leader.y)).keep then
 			local castle = wesnoth.get_locations {
 				x = "1-"..width, y = "1-"..height,
@@ -178,12 +181,12 @@ function ca_castle_switch:evaluation(cfg, data)
 				end
 			end
 			if should_wait then
-				data.leader_score = 15000
+				CS_leader_score = 15000
 			end
 		end
 
 		if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
-		return data.leader_score
+		return CS_leader_score
 	end
 
 	if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end

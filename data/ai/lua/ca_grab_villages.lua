@@ -4,6 +4,8 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local M = wesnoth.map
 
+local GV_unit, GV_village
+
 local ca_grab_villages = {}
 
 function ca_grab_villages:evaluation(cfg, data)
@@ -116,7 +118,7 @@ function ca_grab_villages:evaluation(cfg, data)
     end
 
     if best_village then
-        data.unit, data.village = best_unit, best_village
+        GV_unit, GV_village = best_unit, best_village
         if (max_rating >= 1000) then
             if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
             return return_value
@@ -131,10 +133,10 @@ end
 
 function ca_grab_villages:execution(cfg, data)
     if AH.print_exec() then AH.print_ts('   Executing grab_villages CA') end
-    if AH.show_messages() then wesnoth.wml_actions.message { speaker = data.unit.id, message = 'Grab villages' } end
+    if AH.show_messages() then wesnoth.wml_actions.message { speaker = GV_unit.id, message = 'Grab villages' } end
 
-    AH.movefull_stopunit(ai, data.unit, data.village)
-    data.unit, data.village = nil, nil
+    AH.movefull_stopunit(ai, GV_unit, GV_village)
+    GV_unit, GV_village = nil, nil
 end
 
 return ca_grab_villages
