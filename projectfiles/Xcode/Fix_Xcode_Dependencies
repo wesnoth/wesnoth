@@ -64,7 +64,7 @@ if ! [ -d temp ]; then
         mkdir temp
 fi
 cd temp
-if ! [ -d MacCompileStuff ]; then
+if ! [ -d MacCompileStuff-1.14 ]; then
         git clone -b 1.14 https://github.com/hrubymar10/MacCompileStuff MacCompileStuff-1.14
 fi
 cd MacCompileStuff-1.14
