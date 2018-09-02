@@ -110,12 +110,12 @@ function ca_transport:execution()
         -- Also unload units
         table.sort(best_adj_tiles, function(a, b) return a[3] > b[3] end)
 
-		local command_data = { x = best_unit.x, y = best_unit.y }
-		for i = 1, math.min(#best_adj_tiles, 3) do
-			table.insert(command_data, T.dst { x = best_adj_tiles[i][1], y = best_adj_tiles[i][2]} )
-		end
+        local command_data = { x = best_unit.x, y = best_unit.y }
+        for i = 1, math.min(#best_adj_tiles, 3) do
+            table.insert(command_data, T.dst { x = best_adj_tiles[i][1], y = best_adj_tiles[i][2]} )
+        end
 
-		wesnoth.invoke_synced_command("ship_unload", command_data)
+        wesnoth.invoke_synced_command("ship_unload", command_data)
 
         return
     end
