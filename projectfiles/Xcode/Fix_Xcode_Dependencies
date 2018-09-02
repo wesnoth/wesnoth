@@ -64,7 +64,7 @@ if ! [ -d temp ]; then
         mkdir temp
 fi
 cd temp
-if ! [ -d MacCompileStuff ]; then
+if ! [ -d MacCompileStuff-master ]; then
         git clone -b master https://github.com/hrubymar10/MacCompileStuff MacCompileStuff-master
 fi
 cd MacCompileStuff-master
