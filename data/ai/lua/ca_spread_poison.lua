@@ -2,6 +2,8 @@
 
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
+local SP_attack
+
 local ca_spread_poison = {}
 
 function ca_spread_poison:evaluation(cfg, data)
@@ -78,7 +80,7 @@ function ca_spread_poison:evaluation(cfg, data)
     end
 
     if best_attack then
-        data.attack = best_attack
+        SP_attack = best_attack
         if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
         return 190000
     end
@@ -87,16 +89,16 @@ function ca_spread_poison:evaluation(cfg, data)
 end
 
 function ca_spread_poison:execution(cfg, data)
-    local attacker = wesnoth.get_unit(data.attack.src.x, data.attack.src.y)
+    local attacker = wesnoth.get_unit(SP_attack.src.x, SP_attack.src.y)
     -- If several attacks have poison, this will always find the last one
     local is_poisoner, poison_weapon = AH.has_weapon_special(attacker, "poison")
 
     if AH.print_exec() then AH.print_ts('   Executing spread_poison CA') end
     if AH.show_messages() then wesnoth.wml_actions.message { speaker = attacker.id, message = 'Poison attack' } end
 
-    AH.robust_move_and_attack(ai, attacker, data.attack.dst, data.attack.target, { weapon = poison_weapon })
+    AH.robust_move_and_attack(ai, attacker, SP_attack.dst, SP_attack.target, { weapon = poison_weapon })
 
-    data.attack = nil
+    SP_attack = nil
 end
 
 return ca_spread_poison

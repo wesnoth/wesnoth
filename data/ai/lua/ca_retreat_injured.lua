@@ -3,6 +3,8 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local R = wesnoth.require "ai/lua/retreat.lua"
 
+local retreat_unit, retreat_loc
+
 local ca_retreat_injured = {}
 
 function ca_retreat_injured:evaluation(cfg, data)
@@ -15,8 +17,8 @@ function ca_retreat_injured:evaluation(cfg, data)
     }
     local unit, loc = R.retreat_injured_units(units)
     if unit then
-        data.retreat_unit = unit
-        data.retreat_loc = loc
+        retreat_unit = unit
+        retreat_loc = loc
 
         -- First check if attacks are possible for any unit
         -- If one with > 50% chance of kill is possible, set return_value to lower than combat CA
@@ -36,9 +38,9 @@ end
 
 function ca_retreat_injured:execution(cfg, data)
     if AH.print_exec() then AH.print_ts('   Executing retreat_injured CA') end
-    AH.robust_move_and_attack(ai, data.retreat_unit, data.retreat_loc)
-    data.retreat_unit = nil
-    data.retreat_loc = nil
+    AH.robust_move_and_attack(ai, retreat_unit, retreat_loc)
+    retreat_unit = nil
+    retreat_loc = nil
 end
 
 return ca_retreat_injured

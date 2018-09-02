@@ -1,5 +1,7 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
+local AANS_attack
+
 local ca_aggressive_attack_no_suicide = {}
 
 function ca_aggressive_attack_no_suicide:evaluation(cfg, data)
@@ -45,7 +47,7 @@ function ca_aggressive_attack_no_suicide:evaluation(cfg, data)
     end
 
     if best_attack then
-        data.attack = best_attack
+        AANS_attack = best_attack
         return 100000
     end
 
@@ -53,8 +55,8 @@ function ca_aggressive_attack_no_suicide:evaluation(cfg, data)
 end
 
 function ca_aggressive_attack_no_suicide:execution(cfg, data)
-    AH.robust_move_and_attack(ai, data.attack.src, data.attack.dst, data.attack.target)
-    data.attack = nil
+    AH.robust_move_and_attack(ai, AANS_attack.src, AANS_attack.dst, AANS_attack.target)
+    AANS_attack = nil
 end
 
 return ca_aggressive_attack_no_suicide
