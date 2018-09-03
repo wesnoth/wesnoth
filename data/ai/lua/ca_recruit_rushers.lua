@@ -25,7 +25,7 @@ if ca_castle_switch then
                 }) > 0
                 return take_village
             end
-            return true
+            return not ai.aspects.passive_leader
         end
     )
 end
