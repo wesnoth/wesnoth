@@ -688,7 +688,6 @@ return {
             if recruit_data.castle.loose_gold_limit >= recruit_data.recruit.cheapest_unit_cost then
                 gold_limit = recruit_data.castle.loose_gold_limit
             end
-            --print (recruit_data.castle.loose_gold_limit .. " " .. recruit_data.recruit.cheapest_unit_cost .. " " .. gold_limit)
 
             local recruitable_units = {}
 

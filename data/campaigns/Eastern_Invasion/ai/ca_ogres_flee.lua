@@ -32,9 +32,6 @@ function ca_ogres_flee:execution()
     local max_rating, best_hex, best_unit = - math.huge
     for i,u in ipairs(units) do
         local reach = wesnoth.find_reach(u)
-
-        --local rating_map = LS.create()
-
         for j,r in ipairs(reach) do
             local unit_in_way = wesnoth.get_unit(r[1], r[2])
 
@@ -74,8 +71,6 @@ function ca_ogres_flee:execution()
 
                 rating = rating + own_unit_rating * own_unit_weight
 
-                --rating_map:insert(r[1], r[2], rating)
-
                 if (rating > max_rating) then
                     best_hex = { r[1], r[2] }
                     best_unit = u
@@ -83,8 +78,6 @@ function ca_ogres_flee:execution()
                 end
             end
         end
-
-        --AH.put_labels(rating_map)
     end
 
     if best_hex then
