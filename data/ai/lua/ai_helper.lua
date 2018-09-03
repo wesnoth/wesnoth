@@ -1523,7 +1523,6 @@ function ai_helper.movefull_outofway_stopunit(ai, unit, x, y, cfg)
         if unit_in_way and (unit_in_way ~= unit)
             and ai_helper.is_visible_unit(viewing_side, unit_in_way)
         then
-            --W.message { speaker = 'narrator', message = 'Moving out of way' }
             ai_helper.move_unit_out_of_way(ai, unit_in_way, cfg)
         end
     end
