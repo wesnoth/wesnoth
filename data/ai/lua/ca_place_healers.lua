@@ -11,7 +11,7 @@ function ca_place_healers:evaluation(cfg, data)
 
     if HS:evaluation(cfg, data) > 0 then
         if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
-        return 95000
+        return 96000
     end
     if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
     return 0

@@ -30,7 +30,7 @@ function ca_retreat_injured:evaluation(cfg, data)
             end
         end
         if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
-        return 205000
+        return 192000
     end
     if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
     return 0

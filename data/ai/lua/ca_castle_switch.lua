@@ -161,7 +161,7 @@ function ca_castle_switch:evaluation(cfg, data)
         data.leader_target = next_hop
 
         -- if we're on a keep, wait until there are no movable units on the castle before moving off
-        CS_leader_score = 290000
+        CS_leader_score = 195000
         if wesnoth.get_terrain_info(wesnoth.get_terrain(leader.x, leader.y)).keep then
             local castle = wesnoth.get_locations {
                 x = "1-"..width, y = "1-"..height,

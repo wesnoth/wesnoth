@@ -51,7 +51,7 @@ function ca_move_to_any_enemy:evaluation(cfg, data)
     MTAE_unit = unit
 
     if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
-    return 1
+    return 1000
 end
 
 function ca_move_to_any_enemy:execution(cfg, data)
