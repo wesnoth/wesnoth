@@ -13,7 +13,7 @@ return {
     --      min_turn_1_recruit: function that returns true if only enough units to grab nearby villages should be recruited turn 1, false otherwise
     --          (default always returns false)
     --      leader_takes_village: function that returns true if and only if the leader is going to move to capture a village this turn
-    --          (default always returns true)
+    --          (default returns 'not ai.aspects.passive_leader')
     -- Note: the recruiting code assumes full knowledge of units on the map and the recruit lists of other sides for the purpose of
     --   finding the best unit types to recruit. It does not work otherwise. It assumes normal vision of the AI side (that is, it disregards
     --   hidden enemy units) for determining from which keep hex the leader should recruit and on which castle hexes to recruit new units
@@ -871,7 +871,7 @@ return {
                 data.castle.assigned_villages_x = {}
                 data.castle.assigned_villages_y = {}
 
-                if not params.leader_takes_village or params.leader_takes_village() then
+                if not ai.aspects.passive_leader and (not params.leader_takes_village or params.leader_takes_village()) then
                     -- skip one village for the leader
                     for i,v in ipairs(villages) do
                         local path, cost = wesnoth.find_path(leader, v[1], v[2], {max_cost = leader.max_moves+1})
