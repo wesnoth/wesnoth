@@ -371,7 +371,7 @@ return {
             end
             data.recruit.cheapest_unit_cost = cheapest_unit_cost
 
-            local score = 180000 -- default score if one not provided. Same as RCA AI
+            local score = 180010 -- default score if one not provided, just above RCA AI recruiting
             if params.score_function then
                 score = params.score_function()
             end

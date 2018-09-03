@@ -31,7 +31,7 @@ function ca_grab_villages:evaluation(cfg, data)
     end
 
     -- First check if attacks are possible for any unit
-    local return_value = 200000
+    local return_value = 191000
     -- If one with > 50% chance of kill is possible, set return_value to lower than combat CA
     local attacks = ai.get_attacks()
     for i,a in ipairs(attacks) do

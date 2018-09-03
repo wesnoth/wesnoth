@@ -14,7 +14,7 @@ end
 
 local dummy_engine = { data = {} }
 
-local params = { score_function = (function() return 300000 end) }
+local params = { score_function = (function() return 196000 end) }
 if ca_castle_switch then
     params.min_turn_1_recruit = (function() return ca_castle_switch:evaluation({}, dummy_engine.data) > 0 end)
     params.leader_takes_village = (function()
