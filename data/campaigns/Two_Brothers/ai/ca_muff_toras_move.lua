@@ -64,8 +64,6 @@ function muff_toras_move:execution()
 
     if ((go_to[1] ~= muff_toras.x) or (go_to[2] ~= muff_toras.y)) then
         AH.robust_move_and_attack(ai, muff_toras, go_to)
-    else
-        AH.checked_stopunit_moves(ai, muff_toras)
     end
 
     -- Test whether an attack without retaliation or with little damage is possible
