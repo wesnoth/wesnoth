@@ -238,11 +238,15 @@ void unit_create::filter_text_changed(text_box_base* textbox, const std::string&
 			label& race_label
 					= find_widget<label>(*it, "race", false);
 
+			assert(i < units_.size());
+			const std::string& unit_type_id = units_[i] ? units_[i]->id() : "";
+
 			bool found = false;
 			for(const auto & word : words)
 			{
 				found = ci_search(type_label.get_label().str(), word) ||
-				        ci_search(race_label.get_label().str(), word);
+				        ci_search(race_label.get_label().str(), word) ||
+				        ci_search(unit_type_id, word);
 
 				if(!found) {
 					// one word doesn't match, we don't reach words.end()
