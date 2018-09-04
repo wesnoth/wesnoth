@@ -48,8 +48,21 @@
 
 ## Version 1.14.4+dev
  ### Campaigns
-   * Secrets of the Ancients:
+  * Northern Rebirth:
+    * S12: empty sides are hidden
+    * S13: allied leaders whose death causes defeat won't leave their keep and
+      the lich brothers and Krash got more gold
+  * Secrets of the Ancients:
      * Fix dialog said by wrong unit & revert previous fix (issue #3294)
+  * The South Guard:
+    * S2: the case that Deoran is not sent to the Citadel is handled better.
+    * S2: it may not happen anymore that enemy units neutralize villages instead
+      of capturing or burning them; and the game stats don't hide units anymore.
+    * S4: bodyguards are never spawned next to other units, and always in forest.
+    * S5: zombies have now one castle with two leaders.
+    * S6a: mermen leave after this scenario.
+    * S7a & S8a: some hero may now die.
+    * Mermen are not anymore availaible after S6a.
    * Tutorial:
      * Added more information to the Status Table prompt about how to access it (issue #2883).
    * Under the Burning Suns:
