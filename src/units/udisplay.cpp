@@ -585,7 +585,6 @@ void unit_die(const map_location& loc,
 
 	animator.start_animations();
 	animator.wait_for_end();
-	loser. anim_comp (). clear_haloes ();
 
 	reset_helpers(winner, &loser);
 
