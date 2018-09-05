@@ -518,7 +518,10 @@ for env in [test_env, client_env, env]:
 # Start determining options for debug build
 # #
 
-        debug_flags = env["opt"]+"-DDEBUG -ggdb3"
+        if env['harden'] and env["PLATFORM"] != 'win32':
+            debug_flags = env["opt"]+"-Og -DDEBUG -ggdb3"
+        else:
+            debug_flags = env["opt"]+"-DDEBUG -ggdb3"
 
         if env["glibcxx_debug"] == True:
             glibcxx_debug_flags = "_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC"
