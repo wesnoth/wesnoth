@@ -6,18 +6,14 @@ local M = wesnoth.map
 local ca_ogres_flee = {}
 
 function ca_ogres_flee:evaluation()
-    local units = wesnoth.get_units { side = wesnoth.current.side,
-        formula = 'movement_left > 0'
-    }
+    local units = AH.get_units_with_moves { side = wesnoth.current.side }
 
     if (not units[1]) then return 0 end
     return 110000
 end
 
 function ca_ogres_flee:execution()
-    local units = wesnoth.get_units { side = wesnoth.current.side,
-        formula = 'movement_left > 0'
-    }
+    local units = AH.get_units_with_moves { side = wesnoth.current.side }
 
     local units_noMP = wesnoth.get_units { side = wesnoth.current.side,
         formula = 'movement_left = 0'

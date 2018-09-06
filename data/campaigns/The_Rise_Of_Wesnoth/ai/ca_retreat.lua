@@ -7,10 +7,7 @@ local retreat = {}
 
 function retreat:evaluation(cfg, data)
 
-    local units = wesnoth.get_units {
-        side = wesnoth.current.side,
-        formula = 'movement_left > 0'
-    }
+    local units = AH.get_units_with_moves { side = wesnoth.current.side }
     if (not units[1]) then return 0 end
 
     local unit, dst, enemy_threat = R.retreat_injured_units(units)

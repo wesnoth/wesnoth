@@ -13,10 +13,9 @@ function ca_move_to_any_enemy:evaluation(cfg, data)
     local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'move_to_any_enemy'
     if AH.print_eval() then AH.print_ts('     - Evaluating move_to_any_enemy CA:') end
 
-    local units = wesnoth.get_units {
+    local units = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        canrecruit = 'no',
-        formula = 'movement_left > 0'
+        canrecruit = 'no'
     }
 
     if (not units[1]) then

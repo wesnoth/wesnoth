@@ -6,10 +6,7 @@ local ca_aggressive_attack_no_suicide = {}
 
 function ca_aggressive_attack_no_suicide:evaluation(cfg, data)
 
-    local units = wesnoth.get_units {
-        side = wesnoth.current.side,
-        formula = 'attacks_left > 0'
-    }
+    local units = AH.get_units_with_attacks { side = wesnoth.current.side }
     if (not units[1]) then return 0 end
 
     -- Get all possible attacks

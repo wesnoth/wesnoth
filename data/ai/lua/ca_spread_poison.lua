@@ -12,8 +12,7 @@ function ca_spread_poison:evaluation(cfg, data)
 
     -- If a unit with a poisoned weapon can make an attack, we'll do that preferentially
     -- (with some exceptions)
-    local poisoners = AH.get_live_units { side = wesnoth.current.side,
-        formula = 'attacks_left > 0',
+    local poisoners = AH.get_units_with_attacks { side = wesnoth.current.side,
         { "filter_wml", {
             { "attack", {
                 { "specials", {
