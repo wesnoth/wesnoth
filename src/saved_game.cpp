@@ -77,6 +77,7 @@
 #include "variable_info.hpp"
 
 #include <cassert>
+#include <iomanip>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
