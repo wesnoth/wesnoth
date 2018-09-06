@@ -110,4 +110,5 @@ function wesnoth.wml_actions.animate_unit(cfg)
 	local anim = wesnoth.create_animator()
 	add_animation(anim, cfg)
 	anim:run()
+	anim:clear()
 end
