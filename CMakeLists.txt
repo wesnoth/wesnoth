@@ -229,45 +229,6 @@ if(NOT "${CMAKE_CXX_FLAGS}" STREQUAL "${COMPILER_FLAGS}")
 	)
 endif(NOT "${CMAKE_CXX_FLAGS}" STREQUAL "${COMPILER_FLAGS}")
 
-# check for hardening options
-if(HARDEN AND NOT WIN32)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIE")
-	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIE")
-
-	if(APPLE)
-		set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -Wl,-pie")
-	else()
-		set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -pie -Wl,-z,relro,-z,now")
-	endif()
-
-	add_definitions(-D_FORTIFY_SOURCE=2)
-endif(HARDEN AND NOT WIN32)
-
-if(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
-	# Assume the compiler is the clang compiler.
-	set(CMAKE_EXE_LINKER_FLAGS "-lstdc++ -lm ${CMAKE_EXE_LINKER_FLAGS}")
-endif(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
-
-if(NOT WIN32)
-	add_definitions(-DWESNOTH_PATH="${CMAKE_INSTALL_FULL_DATADIR}/${DATADIRNAME}")
-endif(NOT WIN32)
-
-if(X11_FOUND)
-	add_definitions(-D_X11)
-endif(X11_FOUND)
-
-add_definitions(-DLOCALEDIR="${LOCALEDIR}")
-
-# -DNDEBUG is automatically added to all release build types, so manually remove this define from the related variables
-RemoveFlag(CMAKE_CXX_FLAGS_RELWITHDEBINFO CACHE "-DNDEBUG" "Default C++ flags for RelWithDebInfo")
-RemoveFlag(CMAKE_C_FLAGS_RELWITHDEBINFO CACHE "-DNDEBUG" "Default C flags for RelWithDebInfo")
-RemoveFlag(CMAKE_CXX_FLAGS_MINSIZEREL CACHE "-DNDEBUG" "Default C++ flags for MinSizeRel")
-RemoveFlag(CMAKE_C_FLAGS_MINSIZEREL CACHE "-DNDEBUG" "Default C flags for MinSizeRel")
-
-# -rdynamic is automatically added, but we don't need it, and it increases the executable size
-RemoveFlag(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS SCRIPT "-rdynamic" "")
-RemoveFlag(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS SCRIPT "-rdynamic" "")
-
 # #
 # Determine optimization level
 # #
@@ -296,6 +257,47 @@ else(NOT OPT)
 	set(CMAKE_CXX_FLAGS_PROFILE "${OPT}")
 	set(CMAKE_C_FLAGS_PROFILE "${OPT}")
 endif(NOT OPT)
+
+# check for hardening options
+if(HARDEN AND NOT WIN32)
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIE")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIE")
+
+	if(APPLE)
+		set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -Wl,-pie")
+	else()
+		set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -pie -Wl,-z,relro,-z,now")
+	endif()
+
+	if(NOT CMAKE_CXX_FLAGS_DEBUG STREQUAL "-O0")
+		add_definitions(-D_FORTIFY_SOURCE=2)
+	endif()
+endif(HARDEN AND NOT WIN32)
+
+if(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
+	# Assume the compiler is the clang compiler.
+	set(CMAKE_EXE_LINKER_FLAGS "-lstdc++ -lm ${CMAKE_EXE_LINKER_FLAGS}")
+endif(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
+
+if(NOT WIN32)
+	add_definitions(-DWESNOTH_PATH="${CMAKE_INSTALL_FULL_DATADIR}/${DATADIRNAME}")
+endif(NOT WIN32)
+
+if(X11_FOUND)
+	add_definitions(-D_X11)
+endif(X11_FOUND)
+
+add_definitions(-DLOCALEDIR="${LOCALEDIR}")
+
+# -DNDEBUG is automatically added to all release build types, so manually remove this define from the related variables
+RemoveFlag(CMAKE_CXX_FLAGS_RELWITHDEBINFO CACHE "-DNDEBUG" "Default C++ flags for RelWithDebInfo")
+RemoveFlag(CMAKE_C_FLAGS_RELWITHDEBINFO CACHE "-DNDEBUG" "Default C flags for RelWithDebInfo")
+RemoveFlag(CMAKE_CXX_FLAGS_MINSIZEREL CACHE "-DNDEBUG" "Default C++ flags for MinSizeRel")
+RemoveFlag(CMAKE_C_FLAGS_MINSIZEREL CACHE "-DNDEBUG" "Default C flags for MinSizeRel")
+
+# -rdynamic is automatically added, but we don't need it, and it increases the executable size
+RemoveFlag(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS SCRIPT "-rdynamic" "")
+RemoveFlag(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS SCRIPT "-rdynamic" "")
 
 # #
 # Start determining options for Release build
