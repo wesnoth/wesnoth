@@ -590,8 +590,6 @@ return {
 
         function get_current_castle(leader, data)
             if (not data.castle) or (data.castle.x ~= leader.x) or (data.castle.y ~= leader.y) then
-                data.castle = {}
-
                 data.castle = {
                     locs = AH.get_locations_no_borders {
                         { "filter_vision", { side = wesnoth.current.side, visible = 'yes' } },
