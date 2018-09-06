@@ -639,6 +639,21 @@ function ai_helper.is_opposite_adjacent(hex1, hex2, center_hex)
     return false
 end
 
+function ai_helper.get_locations_no_borders(location_filter)
+    -- Returns the same locations array as wesnoth.get_locations(location_filter),
+    -- but excluding hexes on the map border.
+    --
+    -- This is faster than alternative methods, at least with the current
+    -- implementation of standard location filter evaluation by the engine.
+    -- Note that this might not work if @location_filter is a vconfig object.
+
+    local old_include_borders = location_filter.include_borders
+    location_filter.include_borders = false
+    local locs = wesnoth.get_locations(location_filter)
+    location_filter.include_borders = old_include_borders
+    return locs
+end
+
 function ai_helper.get_closest_location(hex, location_filter, unit)
     -- Get the location closest to @hex (in format { x, y })
     -- that matches @location_filter (in WML table format)
