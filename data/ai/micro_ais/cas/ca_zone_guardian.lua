@@ -90,12 +90,7 @@ function ca_zone_guardian:execution(cfg)
             newpos = { cfg.station_x, cfg.station_y }
         -- Otherwise choose one randomly from those given in filter_location
         else
-            local width, height = wesnoth.get_map_size()
-            local locs_map = LS.of_pairs(wesnoth.get_locations {
-                x = '1-' .. width,
-                y = '1-' .. height,
-                { "and", zone }
-            })
+            local locs_map = LS.of_pairs(AH.get_locations_no_borders(zone))
 
             -- Check out which of those hexes the guardian can reach
             local reach_map = LS.of_pairs(wesnoth.find_reach(guardian))

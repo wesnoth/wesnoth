@@ -591,11 +591,9 @@ return {
         function get_current_castle(leader, data)
             if (not data.castle) or (data.castle.x ~= leader.x) or (data.castle.y ~= leader.y) then
                 data.castle = {}
-                local width,height,border = wesnoth.get_map_size()
 
                 data.castle = {
-                    locs = wesnoth.get_locations {
-                        x = "1-"..width, y = "1-"..height,
+                    locs = AH.get_locations_no_borders {
                         { "filter_vision", { side = wesnoth.current.side, visible = 'yes' } },
                         { "and", {
                             x = leader.x, y = leader.y, radius = 200,
