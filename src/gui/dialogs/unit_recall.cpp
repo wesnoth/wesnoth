@@ -208,8 +208,13 @@ void unit_recall::pre_show(window& window)
 		row_data.emplace("unit_level", column);
 
 		std::stringstream exp_str;
-		exp_str << font::span_color(unit->xp_color()) << unit->experience() << "/"
-		        << (unit->can_advance() ? std::to_string(unit->max_experience()) : font::unicode_en_dash) << "</span>";
+		exp_str << font::span_color(unit->xp_color());
+		if(unit->can_advance()) {
+			exp_str << unit->experience() << "/" << unit->max_experience();
+		} else {
+			exp_str << font::unicode_en_dash;
+		}
+		exp_str << "</span>";
 
 		column["label"] = exp_str.str();
 		row_data.emplace("unit_experience", column);

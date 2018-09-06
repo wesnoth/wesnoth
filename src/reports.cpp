@@ -468,8 +468,13 @@ static config unit_xp(const unit* u)
 {
 	if (!u) return config();
 	std::ostringstream str, tooltip;
-	str << span_color(u->xp_color()) << u->experience()
-		<< '/' << u->max_experience() << naps;
+	str << span_color(u->xp_color());
+	if(u->can_advance()) {
+		str << u->experience() << '/' << u->max_experience();
+	} else {
+		str << font::unicode_en_dash;
+	}
+	str << naps;
 
 	int exp_mod = unit_experience_accelerator::get_acceleration();
 	tooltip << _("Experience Modifier: ") << exp_mod << '%';
