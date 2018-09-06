@@ -705,7 +705,8 @@ void unit_filter_compound::fill(vconfig cfg)
 
 					for (const int viewer : viewers) {
 						bool fogged = args.context().get_disp_context().get_team(viewer).fogged(args.loc);
-						bool hiding = args.u.invisible(args.loc) && args.context().get_disp_context().get_team(viewer).is_enemy(args.u.side());
+						// Check is_enemy() before invisible() to prevent infinite recursion in [abilities][hides][filter_self][filter_vision]
+						bool hiding = args.context().get_disp_context().get_team(viewer).is_enemy(args.u.side()) && args.u.invisible(args.loc);
 						bool unit_hidden = fogged || hiding;
 						if (c["visible"].to_bool(true) != unit_hidden) {
 							return true;
