@@ -35,6 +35,7 @@
 #include "savegame.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "formula/string_utils.hpp"
+#include "units/animation_component.hpp"
 #include "units/types.hpp"
 #include "units/udisplay.hpp"
 #include "whiteboard/manager.hpp"
@@ -579,6 +580,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, use_undo, /*show*/, /*error_h
 		}
 		resources::controller->pump().fire("die", loc, loc);
 		if (i.valid()) {
+			i->anim_comp().clear_haloes();
 			resources::gameboard->units().erase(i);
 		}
 		resources::whiteboard->on_kill_unit();

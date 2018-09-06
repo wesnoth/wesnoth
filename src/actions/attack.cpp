@@ -1339,7 +1339,7 @@ void attack::unit_killed(unit_info& attacker,
 		// WML has invalidated the dying unit, abort
 		return;
 	}
-
+	defender.get_unit().anim_comp().clear_haloes();
 	units_.erase(defender.loc_);
 	resources::whiteboard->on_kill_unit();
 
