@@ -11,10 +11,7 @@ function ca_retreat_injured:evaluation(cfg, data)
     local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'retreat_injured'
     if AH.print_eval() then AH.print_ts('     - Evaluating retreat_injured CA:') end
 
-    local units = wesnoth.get_units {
-        side = wesnoth.current.side,
-        formula = 'movement_left > 0'
-    }
+    local units = AH.get_units_with_moves { side = wesnoth.current.side }
     local unit, loc = R.retreat_injured_units(units)
     if unit then
         retreat_unit = unit
