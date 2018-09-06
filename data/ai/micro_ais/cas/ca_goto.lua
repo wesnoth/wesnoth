@@ -45,12 +45,7 @@ function ca_goto:evaluation(cfg, data)
 
     -- For convenience, we check for locations here, and just pass that to the exec function
     -- This is mostly to make the unique_goals option easier
-    local width, height = wesnoth.get_map_size()
-    local all_locs = wesnoth.get_locations {
-        x = '1-' .. width,
-        y = '1-' .. height,
-        { "and", wml.get_child(cfg, "filter_location") }
-    }
+    local all_locs = AH.get_locations_no_borders(wml.get_child(cfg, "filter_location"))
     if (#all_locs == 0) then return 0 end
 
     -- If 'unique_goals' is set, check whether there are locations left to go to.

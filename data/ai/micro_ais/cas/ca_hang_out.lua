@@ -49,12 +49,7 @@ function ca_hang_out:execution(cfg)
         { "filter", { side = wesnoth.current.side, canrecruit = "yes" } }
     }
 
-    local width, height = wesnoth.get_map_size()
-    local locs = wesnoth.get_locations {
-        x = '1-' .. width,
-        y = '1-' .. height,
-        { "and", filter_location }
-    }
+    local locs = AH.get_locations_no_borders(filter_location)
 
     -- Get map of locations to be avoided.
     -- Use [micro_ai][avoid] tag with priority over [ai][avoid].

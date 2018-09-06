@@ -43,8 +43,7 @@ function ca_wolves_multipacks_wander:execution(cfg)
         -- Pack gets a new goal if none exist or on any move with 10% random chance
         local rand = math.random(10)
         if (not goal[1]) or (rand == 1) then
-            local width, height = wesnoth.get_map_size()
-            local locs = wesnoth.get_locations { x = '1-'..width, y = '1-'..height }
+            local locs = AH.get_locations_no_borders {}
 
             -- Need to find reachable terrain for this to be a viable goal
             -- We only check whether the first wolf can get there

@@ -713,12 +713,7 @@ function ai_helper.get_passable_locations(location_filter, unit)
     -- excluding border hexes are returned
 
     -- All hexes that are not on the map border
-    local width, height = wesnoth.get_map_size()
-    local all_locs = wesnoth.get_locations{
-        x = '1-' .. width,
-        y = '1-' .. height,
-        { "and", location_filter }
-    }
+    local all_locs = ai_helper.get_locations_no_borders(location_filter)
 
     -- If @unit is provided, exclude terrain that's impassable for the unit
     if unit then

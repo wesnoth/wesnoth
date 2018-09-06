@@ -58,11 +58,8 @@ function ca_castle_switch:evaluation(cfg, data)
         end
     end
 
-    local width,height,border = wesnoth.get_map_size()
-    local keeps = wesnoth.get_locations {
+    local keeps = AH.get_locations_no_borders {
         terrain = 'K*,K*^*,*^K*', -- Keeps
-        x = '1-'..width,
-        y = '1-'..height,
         { "not", { {"filter", {}} }}, -- That have no unit
         { "not", { radius = 6, {"filter", { canrecruit = 'yes',
             { "filter_side", { { "enemy_of", {side = wesnoth.current.side} } } }
@@ -163,8 +160,7 @@ function ca_castle_switch:evaluation(cfg, data)
         -- if we're on a keep, wait until there are no movable units on the castle before moving off
         CS_leader_score = 195000
         if wesnoth.get_terrain_info(wesnoth.get_terrain(leader.x, leader.y)).keep then
-            local castle = wesnoth.get_locations {
-                x = "1-"..width, y = "1-"..height,
+            local castle = AH.get_locations_no_borders {
                 { "and", {
                     x = leader.x, y = leader.y, radius = 200,
                     { "filter_radius", { terrain = 'C*,K*,C*^*,K*^*,*^K*,*^C*' } }
