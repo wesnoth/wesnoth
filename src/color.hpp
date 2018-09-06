@@ -13,6 +13,8 @@
 
 #pragma once
 
+#include "global.hpp"
+
 #include <algorithm> // for max
 #include <cstdint>
 #include <ostream>
@@ -250,7 +252,7 @@ namespace std
 	template<>
 	struct hash<color_t>
 	{
-		size_t operator()(const color_t& c) const noexcept
+		size_t operator()(const color_t& c) const NOEXCEPT
 		{
 			return c.to_rgba_bytes();
 		}

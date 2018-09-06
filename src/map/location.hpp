@@ -19,6 +19,8 @@
 class config;
 class variable_set;
 
+#include "global.hpp"
+
 #include <array>
 #include <cmath>
 #include <cstdlib>
@@ -210,7 +212,7 @@ std::ostream &operator<<(std::ostream &s, const std::vector<map_location>& v);
 namespace std {
 template<>
 struct hash<map_location> {
-	size_t operator()(const map_location& l) const noexcept {
+	size_t operator()(const map_location& l) const NOEXCEPT {
 		// The 2000 bias supposedly ensures that the correct x is recovered for negative y
 		// This implementation copied from the Lua location_set
 		return (l.wml_x()) * 16384 + (l.wml_y()) + 2000;
