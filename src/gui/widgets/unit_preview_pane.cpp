@@ -457,8 +457,13 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 		str << font::span_color(u.hp_color())
 			<< _("HP: ") << u.hitpoints() << "/" << u.max_hitpoints() << "</span>" << "\n";
 
-		str << font::span_color(u.xp_color())
-			<< _("XP: ") << u.experience() << "/" << u.max_experience() << "</span>";
+		str << font::span_color(u.xp_color()) << _("XP: ");
+		if(u.can_advance()) {
+			str << u.experience() << "/" << u.max_experience();
+		} else {
+			str << font::unicode_en_dash;
+		}
+		str << "</span>";
 
 		label_details_->set_label(str.str());
 		label_details_->set_use_markup(true);
@@ -466,6 +471,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 
 	if(tree_details_) {
 		tree_details_->clear();
+		const std::string unit_xp = u.can_advance() ? (formatter() << u.experience() << "/" << u.max_experience()).str() : font::unicode_en_dash;
 		tree_details_->add_node("hp_xp_mp", {
 			{ "hp",{
 				{ "label", (formatter() << "<small>" << font::span_color(u.hp_color()) << "<b>" << _("HP: ") << "</b>" << u.hitpoints() << "/" << u.max_hitpoints() << "</span>" << " | </small>").str() },
@@ -473,7 +479,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 				{ "tooltip", get_hp_tooltip(u.get_base_resistances(), [&u](const std::string& dt, bool is_attacker) { return u.resistance_against(dt, is_attacker, u.get_location()); }) }
 			} },
 			{ "xp",{
-				{ "label", (formatter() << "<small>" << font::span_color(u.xp_color()) << "<b>" << _("XP: ") << "</b>" << u.experience() << "/" << u.max_experience() << "</span>" << " | </small>").str() },
+				{ "label", (formatter() << "<small>" << font::span_color(u.xp_color()) << "<b>" << _("XP: ") << "</b>" << unit_xp << "</span>" << " | </small>").str() },
 				{ "use_markup", "true" },
 				{ "tooltip", (formatter() << _("Experience Modifier: ") << unit_experience_accelerator::get_acceleration() << '%').str() }
 			} },
