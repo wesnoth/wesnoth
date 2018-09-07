@@ -153,6 +153,7 @@ play_controller::play_controller(const config& level,
 	, statistics_context_(new statistics::scenario_context(level["name"]))
 	, replay_(new replay(state_of_game.get_replay()))
 	, skip_replay_(skip_replay)
+	, skip_story_(state_of_game.skip_story())
 	, linger_(false)
 	, init_side_done_now_(false)
 	, map_start_()

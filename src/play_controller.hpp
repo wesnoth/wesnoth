@@ -242,6 +242,8 @@ public:
 
 	void do_autosave();
 
+	bool is_skipping_story() const { return skip_story_; }
+
 	void do_consolesave(const std::string& filename);
 
 	events::mouse_handler& get_mouse_handler_base() override;
@@ -451,6 +453,7 @@ protected:
 	std::unique_ptr<replay> replay_;
 
 	bool skip_replay_;
+	bool skip_story_;
 	bool linger_;
 
 	/**
