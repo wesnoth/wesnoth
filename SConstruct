@@ -505,7 +505,8 @@ for env in [test_env, client_env, env]:
 
         if env['harden'] and env["PLATFORM"] != 'win32':
             env.AppendUnique(CCFLAGS = ["-fPIE", "-fstack-protector-strong"])
-            if not env["have_fortify"] : env.AppendUnique(CPPDEFINES = ["_FORTIFY_SOURCE=2"])
+            if not env["have_fortify"] and "-O0" not in env["opt"]:
+                env.AppendUnique(CPPDEFINES = ["_FORTIFY_SOURCE=2"])
 
             if env["enable_lto"] == True:
                 env.AppendUnique(LINKFLAGS = ["-fstack-protector-strong"])
