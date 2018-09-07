@@ -29,6 +29,7 @@ BOOST_AUTO_TEST_CASE (test_empty_options)
 	BOOST_CHECK(!co.campaign);
 	BOOST_CHECK(!co.campaign_difficulty);
 	BOOST_CHECK(!co.campaign_scenario);
+	BOOST_CHECK(!co.campaign_skip_story);
 	BOOST_CHECK(!co.clock);
 	BOOST_CHECK(!co.data_dir);
 	BOOST_CHECK(!co.data_path);
@@ -104,6 +105,7 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 	BOOST_CHECK(co.campaign && co.campaign->empty());
 	BOOST_CHECK(!co.campaign_difficulty);
 	BOOST_CHECK(!co.campaign_scenario);
+	BOOST_CHECK(!co.campaign_skip_story);
 	BOOST_CHECK(!co.clock);
 	BOOST_CHECK(!co.data_dir);
 	BOOST_CHECK(!co.data_path);
@@ -175,6 +177,7 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--campaign=campfoo",
 		"--campaign-difficulty=16",
 		"--campaign-scenario=scenfoo",
+		"--campaign-skip-story",
 		"--clock",
 		"--controller=5:confoo",
 		"--controller=6:conbar",
@@ -239,6 +242,7 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.campaign && *co.campaign == "campfoo");
 	BOOST_CHECK(co.campaign_difficulty && *co.campaign_difficulty == 16);
 	BOOST_CHECK(co.campaign_scenario && *co.campaign_scenario == "scenfoo");
+	BOOST_CHECK(co.campaign_skip_story);
 	BOOST_CHECK(co.clock);
 	BOOST_CHECK(co.data_dir && *co.data_dir == "datadirfoo");
 	BOOST_CHECK(co.data_path);
@@ -331,6 +335,7 @@ BOOST_AUTO_TEST_CASE (test_positional_options)
 	BOOST_CHECK(!co.campaign);
 	BOOST_CHECK(!co.campaign_difficulty);
 	BOOST_CHECK(!co.campaign_scenario);
+	BOOST_CHECK(!co.campaign_skip_story);
 	BOOST_CHECK(!co.clock);
 	BOOST_CHECK(co.data_dir && *co.data_dir == "datadirfoo");
 	BOOST_CHECK(!co.data_path);

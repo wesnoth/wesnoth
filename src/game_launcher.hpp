@@ -33,14 +33,16 @@ namespace savegame { struct load_game_metadata; }
 struct jump_to_campaign_info
 {
 public:
-	jump_to_campaign_info(bool jump,int difficulty, const std::string& campaign_id,const std::string& scenario_id)
+	jump_to_campaign_info(bool jump, bool skip_story, int difficulty, const std::string& campaign_id,const std::string& scenario_id)
 		: jump_(jump)
+		, skip_story_(skip_story)
 		, difficulty_(difficulty)
 		, campaign_id_(campaign_id)
 		, scenario_id_(scenario_id)
 	{
 	}
 	bool jump_;
+	bool skip_story_;
 	int difficulty_;
 	std::string campaign_id_,scenario_id_;
 };
@@ -71,6 +73,7 @@ public:
 	void set_tutorial();
 	void set_test(const std::string& id);
 
+	/// Return the ID of the campaign to jump to (skipping the main menu).
 	std::string jump_to_campaign_id() const;
 	bool new_campaign();
 	bool goto_campaign();
