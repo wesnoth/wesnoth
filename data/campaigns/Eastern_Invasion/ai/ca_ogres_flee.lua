@@ -1,6 +1,5 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
---local LS = wesnoth.require "location_set"
 local M = wesnoth.map
 
 local ca_ogres_flee = {}
