@@ -118,7 +118,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	play_replay_(false),
 	multiplayer_server_(),
 	jump_to_multiplayer_(false),
-	jump_to_campaign_(false, -1, "", ""),
+	jump_to_campaign_(false, false, -1, "", ""),
 	jump_to_editor_(false),
 	load_data_()
 {
@@ -163,6 +163,10 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 		if (cmdline_opts_.campaign_scenario) {
 			jump_to_campaign_.scenario_id_ = *cmdline_opts_.campaign_scenario;
 			std::cerr << "selected scenario id: [" << jump_to_campaign_.scenario_id_ << "]\n";
+		}
+
+		if (cmdline_opts_.campaign_skip_story) {
+			jump_to_campaign_.skip_story_ = true;
 		}
 	}
 	if (cmdline_opts_.clock)
@@ -729,6 +733,7 @@ bool game_launcher::goto_campaign()
 {
 	if(jump_to_campaign_.jump_){
 		if(new_campaign()) {
+			state_.set_skip_story(jump_to_campaign_.skip_story_);
 			jump_to_campaign_.jump_ = false;
 			launch_game(NO_RELOAD_DATA);
 		}else{

@@ -229,7 +229,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 	}
 	sound::commit_music_changes();
 
-	if(!this->is_skipping_replay()) {
+	if(!this->is_skipping_replay() && !saved_game_.skip_story()) {
 		// Combine all the [story] tags into a single config. Handle this here since
 		// storyscreen::controller doesn't have a default constructor.
 		config cfg;
