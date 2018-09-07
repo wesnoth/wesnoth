@@ -2796,7 +2796,7 @@ int game_lua_kernel::intf_deselect_hex(lua_State*)
  */
 int game_lua_kernel::intf_is_skipping_messages(lua_State *L)
 {
-	bool skipping = play_controller_.is_skipping_replay();
+	bool skipping = play_controller_.is_skipping_replay() || play_controller_.is_skipping_story();
 	if (!skipping) {
 		skipping = game_state_.events_manager_->pump().context_skip_messages();
 	}

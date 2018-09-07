@@ -401,6 +401,8 @@ void play_controller::fire_start()
 	gamestate().gamedata_.set_phase(game_data::START);
 	pump().fire("start");
 
+	skip_story_ = false; // Show [message]s from now on even with --campaign-skip-story
+
 	// start event may modify start turn with WML, reflect any changes.
 	gamestate().gamedata_.get_variable("turn_number") = static_cast<int>(turn());
 
