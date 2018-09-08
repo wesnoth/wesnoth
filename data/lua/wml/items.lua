@@ -16,7 +16,7 @@ local function add_overlay(x, y, cfg)
 			image = cfg.image,
 			halo = cfg.halo,
 			team_name = cfg.team_name,
-			filter_side = cfg.filter_side,
+			filter_team = cfg.filter_team,
 			visible_in_fog = cfg.visible_in_fog,
 			redraw = cfg.redraw,
 			name = cfg.name

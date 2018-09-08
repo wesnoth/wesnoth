@@ -3324,7 +3324,7 @@ int game_lua_kernel::intf_add_tile_overlay(lua_State *L)
 {
 	map_location loc = luaW_checklocation(L, 1);
 	vconfig cfg = luaW_checkvconfig(L, 2);
-	const vconfig &ssf = cfg.child("filter_side");
+	const vconfig &ssf = cfg.child("filter_team");
 
 	std::string team_name;
 	if (!ssf.null()) {
