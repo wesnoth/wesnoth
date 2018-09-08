@@ -40,7 +40,6 @@ APP_DIR,APP_NAME=os.path.split(os.path.realpath(sys.argv[0]))
 WESNOTH_ROOT_DIR=os.sep.join(APP_DIR.split(os.sep)[:-2])  # pop out "data" and "tools"
 WESNOTH_DATA_DIR=os.path.join(WESNOTH_ROOT_DIR,"data")
 WESNOTH_CORE_DIR=os.path.normpath(os.path.join(WESNOTH_DATA_DIR,"core"))
-WMLXGETTEXT_DIR=os.path.normpath(os.path.join(WESNOTH_ROOT_DIR,"utils"))
 
 def wrap_elem(line):
     """If the supplied line contains spaces, return it wrapped between double quotes"""
@@ -1294,7 +1293,7 @@ wmlindent will be run on the Wesnoth core directory""")
     def on_run_wmlxgettext(self):
         # build the command line and add the path of the Python interpreter
         wmlxgettext_command_string=[sys.executable]
-        wmlxgettext_command_string.append(os.path.join(WMLXGETTEXT_DIR,"wmlxgettext"))
+        wmlxgettext_command_string.append(os.path.join(APP_DIR,"wmlxgettext"))
         textdomain=self.wmlxgettext_tab.domain_variable.get()
         if textdomain:
             wmlxgettext_command_string.extend(["--domain",textdomain])

@@ -73,7 +73,7 @@ if "pot-update" in COMMAND_LINE_TARGETS:
             wml_pot = env.Command(
                 join(domain, domain + ".wml.pot"),
                 cfgs,
-                "utils/wmlxgettext --directory=. --domain=%s $SOURCES -o $TARGET" % domain
+                "data/tools/wmlxgettext --directory=. --domain=%s $SOURCES -o $TARGET" % domain
                 )
 
         new_pot = str(pot) + ".new"
