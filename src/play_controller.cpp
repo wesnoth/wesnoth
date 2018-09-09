@@ -485,9 +485,8 @@ void play_controller::do_init_side()
 		if(expense > 0) {
 			current_team().spend_gold(expense);
 		}
-
-		calculate_healing(current_side(), !is_skipping_replay());
 	}
+	calculate_healing(current_side(), !is_skipping_replay());
 
 	// Prepare the undo stack.
 	undo_stack().new_side_turn(current_side());
