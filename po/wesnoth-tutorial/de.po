@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-07-22 11:33 UTC\n"
+"POT-Creation-Date: 2018-09-09 08:38 UTC\n"
 "PO-Revision-Date: 2018-08-14 22:17+0200\n"
 "Last-Translator: Gerfried Fuchs <rhonda@deb.at>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -311,8 +311,8 @@ msgstr "Soll ich mich zurückziehen?"
 msgid "female^Should I retreat?"
 msgstr "Soll ich mich zurückziehen?"
 
-#. [message]: speaker=Galdrad
 #. [message]: speaker=Delfador
+#. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:401
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:768
 msgid "Good idea!"
@@ -1310,11 +1310,17 @@ msgstr "Spielübersicht"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:385
+#, fuzzy
+#| msgid ""
+#| "The Status Table details the sides’ current status and starting "
+#| "conditions. Fog and shroud will affect what you can see in this table, "
+#| "and occasionally a side may be hidden. It is useful to check this table "
+#| "when a scenario begins."
 msgid ""
 "The Status Table details the sides’ current status and starting conditions. "
 "Fog and shroud will affect what you can see in this table, and occasionally "
-"a side may be hidden. It is useful to check this table when a scenario "
-"begins."
+"a side may be hidden; however, it is still useful to check this table when a "
+"scenario begins. You can access it in the <b>Menu</b> menu."
 msgstr ""
 "Die Spielübersicht zeigt zu Informationen über den Stand der verschiedenen "
 "Parteien als auch über das Szenario. Sowohl Nebel als auch der Schleier der "
@@ -1738,10 +1744,15 @@ msgstr "Siegesbedingungen"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:715
+#, fuzzy
+#| msgid ""
+#| "In this scenario, you only need to defeat the orc leader to win. Victory "
+#| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
+#| "<b>Menu</b>."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. Victory "
-"conditions for a scenario are given under <b>Scenario Objectives</b> in "
-"<b>Menu</b>."
+"conditions for a scenario are given under <b>Scenario Objectives</b> in the "
+"<b>Menu</b> menu."
 msgstr ""
 "In diesem Szenario müsst Ihr einzig den Orkhäuptling besiegen, um zu "
 "gewinnen. Die Siegesbedingungen sind unter den <b>Missionszielen</b> im "

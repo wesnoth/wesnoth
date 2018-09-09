@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-07-08 04:51-0400\n"
+"POT-Creation-Date: 2018-09-09 11:38+0300\n"
 "PO-Revision-Date: 2018-07-31 00:07+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -947,6 +947,46 @@ msgstr "北方大陸"
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:114
+#, fuzzy
+#| msgid ""
+#| "There is no government of the Northlands. Various groups of orcs, "
+#| "dwarves, barbarian men and even elves populate the region. The northern "
+#| "and eastern borders are not defined, the southern border is the "
+#| "<ref>dst='great_river' text='Great River'</ref>, and the western border "
+#| "is the <ref>dst='great_ocean' text='Great Ocean'</ref>.\n"
+#| "\n"
+#| "<header>text='Notable cities:'</header>\n"
+#| "    • Glamdrol: An Orcish tribal capital.\n"
+#| "    • Wesmere: The location of the Ka’lian — the Elvish Council.\n"
+#| "    • Dwarven Doors: A mixed human/dwarven town in the region of Knalga "
+#| "in the southern Heart Mountains. A major trade center.\n"
+#| "    • Dallben and Delwyn: Human villages originally built by settlers who "
+#| "crossed the Great River during Wesnoth’s Golden Age expansion. Now "
+#| "abandoned. The forested area northeast of Elensefar, where these villages "
+#| "were located, was named the Annuvin province by men but was known by the "
+#| "elves as Wesmere.\n"
+#| "\n"
+#| "<header>text='Notable land features:'</header>\n"
+#| "    • Heart Mountains: A virtually impassable barrier between the river "
+#| "country and the Northern Plains.\n"
+#| "    • Heartfangs: the particularly forbidding stretch of high peaks "
+#| "southwest of Lake Vrug and north of the Forest of Wesmere. The most "
+#| "inhospitable and dangerous portion of the Heart Mountains; only hermits, "
+#| "madmen, and mages live there.\n"
+#| "    • Swamp of Dread: a very large bog located between the Heart "
+#| "Mountains and the Great River. A notoriously dangerous place.\n"
+#| "    • Lake Vrug: A large mountain lake whose river carves the only "
+#| "pathway through the Northern Mountains.\n"
+#| "    • Arkan-thoria: The river that comes out of Lake Vrug. This is the "
+#| "elvish name; among humans it is called Longlier.\n"
+#| "    • River Listra: The south-running tributary of the Great River into "
+#| "which the Arkan-thoria empties.\n"
+#| "    • Lintanir Forest: The southernmost portion of the Great Northern "
+#| "Forest, a gigantic wood whose eastern and northern boundaries are known "
+#| "only the elves. Their capitol, Elensiria, has only seldom been visited by "
+#| "humans.\n"
+#| "    • Great River: The origin of this river is somewhere in the east of "
+#| "the northern lands."
 msgid ""
 "There is no government of the Northlands. Various groups of orcs, dwarves, "
 "barbarian men and even elves populate the region. The northern and eastern "
@@ -982,7 +1022,7 @@ msgid ""
 "which the Arkan-thoria empties.\n"
 "    • Lintanir Forest: The southernmost portion of the Great Northern "
 "Forest, a gigantic wood whose eastern and northern boundaries are known only "
-"the elves. Their capitol, Elensiria, has only seldom been visited by "
+"to the elves. Their capital, Elensiria, has only seldom been visited by "
 "humans.\n"
 "    • Great River: The origin of this river is somewhere in the east of the "
 "northern lands."
@@ -1193,7 +1233,7 @@ msgstr "模組"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:88 data/core/help.cfg:529
+#: data/core/help.cfg:88 data/core/help.cfg:535
 msgid "Commands"
 msgstr "指令"
 
@@ -2366,45 +2406,45 @@ msgstr ""
 "上午和下午是白天，夜晚和凌晨是夜間：\n"
 "\n"
 
-#. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:343 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "黎明"
 
-#. [topic]: id=time_of_day
 #. [time]: id=morning
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:344 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "上午"
 
-#. [topic]: id=time_of_day
 #. [time]: id=afternoon
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:345 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "下午"
 
-#. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:346 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "黄昏"
 
-#. [topic]: id=time_of_day
 #. [time]: id=first_watch
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:347 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "夜晚"
 
-#. [topic]: id=time_of_day
 #. [time]: id=second_watch
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:348 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
@@ -3208,7 +3248,7 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<header>text='Creator Resources'</header>"
+"<header>text='Cores'</header>"
 msgstr ""
 "\n"
 "\n"
@@ -3216,6 +3256,36 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:496
+msgid ""
+"\n"
+"\n"
+"Cores enable total conversion of The Battle for Wesnoth. A core can replace "
+"all the content in Wesnoth: when a different core is loaded, the regular "
+"units, terrains and the like do not exist.\n"
+"\n"
+"Cores allow a significantly different game experience: for example, a World "
+"War II campaign, or even a different game altogether, as long as it can be "
+"represented as a hexagonal map with ’units’ in some way."
+msgstr ""
+
+#. [topic]: id=using_addons
+#: data/core/help.cfg:500
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text=Damage</header>"
+msgid ""
+"\n"
+"\n"
+"<header>text='Creator Resources'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text=傷害</header>"
+
+#. [topic]: id=using_addons
+#: data/core/help.cfg:502
 msgid ""
 "\n"
 "\n"
@@ -3232,12 +3302,12 @@ msgstr ""
 "載相對應的資源包。"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:505
+#: data/core/help.cfg:511
 msgid "Installing Add-ons"
 msgstr "安裝模組"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:506
+#: data/core/help.cfg:512
 #, fuzzy
 #| msgid ""
 #| "User-made add-ons can be obtained and updated through the <i>Add-ons</i> "
@@ -3272,16 +3342,16 @@ msgid ""
 "in the <italic>text='Version'</italic> column.\n"
 "\n"
 "To search for add-ons by keywords, type any relevant terms in any order in "
-"the <bold>text='Filter'</bold> box, separated by spaces. You can also sort "
-"the add-on list by clicking the column headers. It is also possible to "
-"choose to only display add-ons of specific categories by clicking on the "
-"<bold>text='Options'</bold> button in the top-right corner.\n"
+"the search box, separated by spaces. You can also sort the add-on list by "
+"clicking the column headers. It is also possible to choose to only display "
+"add-ons of specific categories by clicking on the <bold>text='Type'</bold> "
+"dropdown.\n"
 "\n"
 "To install an add-on, select it from the list and click the <bold>text='+'</"
-"bold> icon, or simply double-click on the add-on’s title. The "
-"<bold>text='Description'</bold> button provides you with additional details "
-"about the add-on, such as its full description, installation status, and "
-"available languages."
+"bold> icon, or simply double-click on the add-on’s title. If the window is "
+"too small to show them inline, the <bold>text='Addon Details'</bold> button "
+"provides you with additional details about the add-on, such as its full "
+"description, installation status, and available translations."
 msgstr ""
 "在主選單中的<i>模組</i>中玩家可以自行下載及更新模組。在連線到模組伺服器（預設"
 "<i>add-ons.wesnoth.org</i>），您將看到一份可以下載的模組列表。\n"
@@ -3297,12 +3367,12 @@ msgstr ""
 "言。"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:519
+#: data/core/help.cfg:525
 msgid "Removing Add-ons"
 msgstr "移除模組"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:520
+#: data/core/help.cfg:526
 #, fuzzy
 #| msgid ""
 #| "To remove add-ons, choose <b>Remove Add-ons</b> in the add-ons server "
@@ -3332,14 +3402,14 @@ msgstr ""
 "意外遺失。如果有必要，您可以手動刪除信息檔及模組。"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:535
+#: data/core/help.cfg:541
 msgid "General Commands"
 msgstr "一般指令"
 
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:537 data/core/help.cfg:580 data/core/help.cfg:618
+#: data/core/help.cfg:543 data/core/help.cfg:586 data/core/help.cfg:624
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3351,7 +3421,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:539
+#: data/core/help.cfg:545
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3362,7 +3432,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:542
+#: data/core/help.cfg:548
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3377,7 +3447,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:546
+#: data/core/help.cfg:552
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -3395,7 +3465,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:549
+#: data/core/help.cfg:555
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -3406,7 +3476,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:552
+#: data/core/help.cfg:558
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3417,7 +3487,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:555
+#: data/core/help.cfg:561
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3428,7 +3498,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:558
+#: data/core/help.cfg:564
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3439,7 +3509,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:561
+#: data/core/help.cfg:567
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3450,7 +3520,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:564
+#: data/core/help.cfg:570
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3461,7 +3531,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:567
+#: data/core/help.cfg:573
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3472,7 +3542,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:570
+#: data/core/help.cfg:576
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3481,12 +3551,12 @@ msgstr ""
 "儲存遊戲並退出任務（無提示視窗）。"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:579
+#: data/core/help.cfg:585
 msgid "Multiplayer Commands"
 msgstr "多人對戰指令"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:582
+#: data/core/help.cfg:588
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3500,7 +3570,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:585
+#: data/core/help.cfg:591
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3527,7 +3597,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:588
+#: data/core/help.cfg:594
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -3539,7 +3609,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:591
+#: data/core/help.cfg:597
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -3551,7 +3621,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:594
+#: data/core/help.cfg:600
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -3565,7 +3635,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:597
+#: data/core/help.cfg:603
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3578,7 +3648,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:600
+#: data/core/help.cfg:606
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3591,7 +3661,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:603
+#: data/core/help.cfg:609
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -3602,7 +3672,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:606
+#: data/core/help.cfg:612
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3614,7 +3684,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:609
+#: data/core/help.cfg:615
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -3624,12 +3694,12 @@ msgstr ""
 "允許一個指定的觀察者可以發言。如果没有指定觀察者，則所有觀察者皆可發言。"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:617
+#: data/core/help.cfg:623
 msgid "Debug Mode Commands"
 msgstr "偵錯模式指令"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:620
+#: data/core/help.cfg:626
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3641,7 +3711,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:623
+#: data/core/help.cfg:629
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3653,7 +3723,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:626
+#: data/core/help.cfg:632
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3664,7 +3734,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:629
+#: data/core/help.cfg:635
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3675,7 +3745,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:632
+#: data/core/help.cfg:638
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3686,7 +3756,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:635
+#: data/core/help.cfg:641
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3697,7 +3767,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:638
+#: data/core/help.cfg:644
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3708,7 +3778,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:641
+#: data/core/help.cfg:647
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3719,7 +3789,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:644
+#: data/core/help.cfg:650
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3731,7 +3801,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:647
+#: data/core/help.cfg:653
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -5598,19 +5668,19 @@ msgstr ""
 "氏族的戰士比文明戰士缺乏組織，但他們的優缺點是互補的。"
 
 #. [race]: id=dunefolk
-#. [race]: id=khalifate
+#. [race]: id=khalifate # wmllint: noconvert
 #: data/core/units.cfg:208 data/core/units.cfg:233
 msgid "race^Dunefolk Human"
 msgstr "沙漠遊民"
 
 #. [race]: id=dunefolk
-#. [race]: id=khalifate
+#. [race]: id=khalifate # wmllint: noconvert
 #: data/core/units.cfg:209 data/core/units.cfg:234
 msgid "race+female^Dunefolk Human"
 msgstr "沙漠遊民"
 
 #. [race]: id=dunefolk
-#. [race]: id=khalifate
+#. [race]: id=khalifate # wmllint: noconvert
 #: data/core/units.cfg:210 data/core/units.cfg:235
 msgid "race+plural^Dunefolk"
 msgstr "沙漠遊民"
@@ -5765,38 +5835,108 @@ msgstr ""
 "線。從雄偉的鵬到威風凜凜的飛龍，他們與這些生物的協同效應在戰時能有多種攻擊變"
 "化性。這個傳統很可能是沙漠遊民遺傳自遙遠且充滿異國風情的埃迪亞。"
 
-#. [race]: id=khalifate
+#. [race]: id=khalifate # wmllint: noconvert
 #: data/core/units.cfg:236
 msgid "This race does not have a description yet."
 msgstr ""
 
-#. [race]: id=lizard, description=
+#. [race]: id=lizard
 #: data/core/units.cfg:247
 msgid "race^Saurian"
 msgstr "蜥蜴人"
 
-#. [race]: id=lizard, description=
+#. [race]: id=lizard
 #: data/core/units.cfg:248
 msgid "race+female^Saurian"
 msgstr "蜥蜴人"
 
-#. [race]: id=lizard, description=
+#. [race]: id=lizard
 #: data/core/units.cfg:249
 msgid "race^Saurians"
 msgstr "蜥蜴人"
 
+#. [race]: id=lizard
+#: data/core/units.cfg:250
+msgid ""
+"Saurians are lizard-like creatures. Smaller and more slender than humans, "
+"they rarely stand taller than a ten year old child, though from tip of snout "
+"to end of tail a Saurian can be as long as the average man is tall. Light "
+"and nimble, the warriors prefer to fight as they hunt — slipping through "
+"enemy lines to target the weak and the injured while evading their "
+"attackers.\n"
+"\n"
+"<header>text='Society'</header>\n"
+"Saurians are very mysterious creatures due to their tendency to live in "
+"areas inhospitable to others, such as swamps. Fatalistic in the extreme, "
+"Saurians believe all the events in a life can be predicted by the use of a "
+"complex form of astrology.\n"
+"\n"
+"Saurian culture is sharply segregated between the genders. Within each "
+"gender the members compete, and through skill, determination, and reputation "
+"establish a clear pecking order, with a chief at the top. On those occasions "
+"when the two genders interact they do not contest for dominance; instead, "
+"the situation determines the dominant gender. The chief of the males is "
+"alpha within the clan's village or encampment while the chief of females is "
+"dominant anywhere else. This continues down the rank structure with each "
+"male or female being dominant over any member of the opposite gender with "
+"lower rank and submitting to members of the opposite gender with higher "
+"rank.\n"
+"\n"
+"The segregation and alternating gender-dominance of Saurian society is an "
+"outgrowth of their clearly defined gender roles. It is the responsibility of "
+"the female to hunt and find food, skills which ultimately train them to be "
+"warriors: the skirmishers, flankers, and ambushers other races so fear. "
+"Males, meanwhile, are responsible for guarding the clutch — the eggs left by "
+"the females. While this leaves time for the males to develop and hone the "
+"arts of astrology, healing, and magic, it also exposes them to significant "
+"danger, as they are stationary targets for a Saurian clan's number one enemy "
+"— other Saurian clans.\n"
+"\n"
+"New Saurian clans are started when the proper astrological signs are read. "
+"Called a “hatching,” each female indicated by the conjunction selects a "
+"group of individuals with lower rank and leave their source clan. Frequently "
+"all females with a specific trait will be indicated, causing multiple clans "
+"to “hatch” at the same time. Selection is a simple process: no group leaving "
+"can be larger than any other, all the groups together cannot be larger than "
+"the group being left, and higher ranking allows a female to overrule another "
+"female's choice of who they take.\n"
+"\n"
+"Because of their rapid population growth, frequent splits in clans, and the "
+"fact that cannibalism is not taboo, violence is one of the defining features "
+"of Saurian life. This limits the growth of the Saurian culture to fits and "
+"starts, as much of their knowledge is passed by oral tradition and their "
+"possessions must be mobile.\n"
+"\n"
+"<header>text='Geography'</header>\n"
+"Saurians can live in many different areas, though swamps are by far their "
+"most common habitat.\n"
+"\n"
+"<header>text='Biology'</header>\n"
+"Saurians live spectacularly short lives by comparison to most of the other "
+"races of Wesnoth, reaching full adulthood within three years and often dying "
+"by the time they are 10 to 15 years old. By far, the most common cause of "
+"death is violence. Saurian females produce clutches of about 20 eggs roughly "
+"once a year, which creates constant population pressure and would stress "
+"most carnivores' food supply. Hunters and scavengers, Saurians have "
+"extremely strong jaws and have a very powerful digestive system with highly "
+"acidic fluids, making them capable of eating and digesting all of their prey "
+"including skin, teeth, horns and bones. Further, they have no aversion to "
+"eating carrion and even committing cannibalism, which are both regular "
+"occurrences."
+msgstr ""
+
 #. [race]: id=mechanical
-#: data/core/units.cfg:259
+#: data/core/units.cfg:276
 msgid "race^Mechanical"
 msgstr "機械"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:260
+#: data/core/units.cfg:277
 msgid "race+plural^Mechanical"
 msgstr "機械"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:261
+#: data/core/units.cfg:278
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -5808,24 +5948,24 @@ msgstr ""
 "控制之類的。"
 
 #. [race]: id=merman
-#: data/core/units.cfg:270
+#: data/core/units.cfg:287
 msgid "race^Merman"
 msgstr "人魚"
 
 #. [race]: id=merman
-#: data/core/units.cfg:271
+#: data/core/units.cfg:288
 msgid "race^Mermaid"
 msgstr "人魚"
 
 #. [race]: id=merman
-#: data/core/units.cfg:272
+#: data/core/units.cfg:289
 #, fuzzy
 #| msgid "race^Troll"
 msgid "race^Merfolk"
 msgstr "巨魔"
 
 #. [race]: id=merman
-#: data/core/units.cfg:274
+#: data/core/units.cfg:291
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -5845,22 +5985,22 @@ msgstr ""
 "扎很久。"
 
 #. [race]: id=monster
-#: data/core/units.cfg:282
+#: data/core/units.cfg:299
 msgid "race^Monster"
 msgstr "怪物"
 
 #. [race]: id=monster
-#: data/core/units.cfg:283
+#: data/core/units.cfg:300
 msgid "race+female^Monster"
 msgstr "怪物"
 
 #. [race]: id=monster
-#: data/core/units.cfg:284
+#: data/core/units.cfg:301
 msgid "race^Monsters"
 msgstr "怪物"
 
 #. [race]: id=monster
-#: data/core/units.cfg:285
+#: data/core/units.cfg:302
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -5870,22 +6010,22 @@ msgstr ""
 "出沒於居民的故事及惡夢之中。"
 
 #. [race]: id=naga
-#: data/core/units.cfg:292
+#: data/core/units.cfg:309
 msgid "race^Naga"
 msgstr "納迦"
 
 #. [race]: id=naga
-#: data/core/units.cfg:293
+#: data/core/units.cfg:310
 msgid "race^Nagini"
 msgstr "納迦"
 
 #. [race]: id=naga
-#: data/core/units.cfg:294
+#: data/core/units.cfg:311
 msgid "race^Nagas"
 msgstr "納迦"
 
 #. [race]: id=naga
-#: data/core/units.cfg:295
+#: data/core/units.cfg:312
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -5911,22 +6051,22 @@ msgstr ""
 "程度差不多。"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:303
+#: data/core/units.cfg:320
 msgid "race^Ogre"
 msgstr "食人魔"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:304
+#: data/core/units.cfg:321
 msgid "race+female^Ogre"
 msgstr "食人魔"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:305
+#: data/core/units.cfg:322
 msgid "race^Ogres"
 msgstr "食人魔"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:306
+#: data/core/units.cfg:323
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -5953,22 +6093,22 @@ msgstr ""
 "野獸一起襲擊別人。但這是否算合作、馴化或是單純的互相利用就不得而知了。"
 
 #. [race]: id=orc
-#: data/core/units.cfg:314
+#: data/core/units.cfg:331
 msgid "race^Orc"
 msgstr "半獸人"
 
 #. [race]: id=orc
-#: data/core/units.cfg:315
+#: data/core/units.cfg:332
 msgid "race+female^Orc"
 msgstr "半獸人"
 
 #. [race]: id=orc
-#: data/core/units.cfg:316
+#: data/core/units.cfg:333
 msgid "race^Orcs"
 msgstr "半獸人"
 
 #. [race]: id=orc
-#: data/core/units.cfg:317
+#: data/core/units.cfg:334
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -6055,7 +6195,7 @@ msgstr ""
 "\n"
 
 #. [race]: id=orc
-#: data/core/units.cfg:328
+#: data/core/units.cfg:345
 msgid ""
 "\n"
 "\n"
@@ -6067,22 +6207,22 @@ msgstr ""
 "那些不是最強壯的半獸人較擅長於其他技能，例如箭術或是暗殺。"
 
 #. [race]: id=troll
-#: data/core/units.cfg:337
+#: data/core/units.cfg:354
 msgid "race^Troll"
 msgstr "巨魔"
 
 #. [race]: id=troll
-#: data/core/units.cfg:338
+#: data/core/units.cfg:355
 msgid "race+female^Troll"
 msgstr "巨魔"
 
 #. [race]: id=troll
-#: data/core/units.cfg:339
+#: data/core/units.cfg:356
 msgid "race^Trolls"
 msgstr "巨魔"
 
 #. [race]: id=troll
-#: data/core/units.cfg:340
+#: data/core/units.cfg:357
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -6142,22 +6282,22 @@ msgstr ""
 "巨魔，巨魔也常隨著半獸人旅行。"
 
 #. [race]: id=undead
-#: data/core/units.cfg:360
+#: data/core/units.cfg:377
 msgid "race^Undead"
 msgstr "不死族"
 
 #. [race]: id=undead
-#: data/core/units.cfg:361
+#: data/core/units.cfg:378
 msgid "race+female^Undead"
 msgstr "不死族"
 
 #. [race]: id=undead
-#: data/core/units.cfg:362
+#: data/core/units.cfg:379
 msgid "race+plural^Undead"
 msgstr "不死族"
 
 #. [race]: id=undead
-#: data/core/units.cfg:363
+#: data/core/units.cfg:380
 #, fuzzy
 #| msgid ""
 #| "Undead are not really a single race of creatures, although often treated "
@@ -6229,22 +6369,22 @@ msgstr ""
 "說過他們。"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:376
+#: data/core/units.cfg:393
 msgid "race^Wolf"
 msgstr "狼"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:377
+#: data/core/units.cfg:394
 msgid "race+female^Wolf"
 msgstr "狼"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:378
+#: data/core/units.cfg:395
 msgid "race^Wolves"
 msgstr "狼"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:379
+#: data/core/units.cfg:396
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -6256,17 +6396,17 @@ msgid ""
 msgstr ""
 
 #. [race]: id=wose
-#: data/core/units.cfg:388
+#: data/core/units.cfg:405
 msgid "race^Wose"
 msgstr "樹人"
 
 #. [race]: id=wose
-#: data/core/units.cfg:389
+#: data/core/units.cfg:406
 msgid "race^Woses"
 msgstr "樹人"
 
 #. [race]: id=wose
-#: data/core/units.cfg:390
+#: data/core/units.cfg:407
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "

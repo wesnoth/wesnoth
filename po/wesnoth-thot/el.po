@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.12+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-07-22 11:33 UTC\n"
+"POT-Creation-Date: 2018-09-09 08:38 UTC\n"
 "PO-Revision-Date: 2011-05-13 11:51+0200\n"
 "Last-Translator: nikos\n"
 "Language-Team: none\n"
@@ -149,8 +149,8 @@ msgstr ""
 "ομάδας Ορκ προς την θέση του."
 
 #. [side]
-#. [side]: type=Orcish Warrior, id=Marth-Tak
 #. [side]: type=Dwarvish Lord, id=Hamel
+#. [side]: type=Orcish Warrior, id=Marth-Tak
 #. [side]: type=Great Mage, id=Master Perrin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:43
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:34
@@ -179,10 +179,10 @@ msgstr "Συμμαχία"
 msgid "Pelmathidrol"
 msgstr "Πελμάθιντρολ"
 
+#. [side]: type=Orcish Warrior, id=Bashnark
 #. [side]: type=Orcish Warlord, id=Tan-Malgar
 #. [side]: type=Orcish Warlord, id=Tan-Grolak
 #. [side]: type=Orcish Warlord, id=Tan-Uthkar
-#. [side]: type=Orcish Warrior, id=Bashnark
 #. [side]: type=Orcish Warlord, id=Tan-Morgh
 #. [side]: type=Orcish Warlord, id=Tan-Garukh
 #. [side]: type=Orcish Warlord, id=Tan-Wagran
@@ -216,7 +216,7 @@ msgstr "Νίκησε τον Μπάσναρκ"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:146
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:103
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:180
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:109
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:122
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:120
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:118
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:319
@@ -561,7 +561,7 @@ msgstr "Βοήθησε τον Μαρθ-Τακ να νικήσει τον Γκό�
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:150
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:107
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:184
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:113
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:126
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:124
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:122
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:323
@@ -776,7 +776,6 @@ msgstr "Ερειπωμένο Κάστρο"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:176
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:219
 msgid "Defeat all enemies"
 msgstr "Νίκησε όλους τους αντιπάλους σου"
 
@@ -853,24 +852,24 @@ msgstr "Χιονισμένη Διάβαση"
 
 #. [side]: type=Gryphon, id=Kaara
 #. [side]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:49
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:70
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:50
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:74
 msgid "Monsters"
 msgstr "Τέρατα"
 
 #. [side]: type=Gryphon, id=Kaara
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:53
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:54
 msgid "Kaara"
 msgstr "Καάρα"
 
 #. [objective]: condition=win
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:105
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:118
 msgid "Move Aiglondur to the signpost at the east end of the pass"
 msgstr ""
 "Μετακίνησε τον Άιγκλοντουρ στον οδοδείκτη στην ανατολική άκρη του περάσματος."
 
 #. [objective]: condition=lose
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:117
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:130
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:128
 #, fuzzy
 #| msgid "Death of Angarthing"
@@ -878,7 +877,7 @@ msgid "Death of Ratheln"
 msgstr "Θάνατος του Ανγκάρθινγκ"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:146
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:159
 msgid ""
 "Behold, the High Pass. By the old maps, we are halfway to Kal Kartha here."
 msgstr ""
@@ -886,7 +885,7 @@ msgstr ""
 "μέση της διαδρομής για την Καλ-Κάρθα."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:151
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:164
 msgid ""
 "We must push through quickly; there is a vicious storm coming in behind us. "
 "Being caught in a blizzard on those heights would be no laughing matter."
@@ -894,16 +893,15 @@ msgstr ""
 "Πρέπει να προχωρήσουμε γρήγορα. Μια χιονοθύελλα πλησιάζει από πίσω μας. Αν "
 "μας πιάσει σε αυτό το υψόμετρο δεν θα είναι και τόσο αστείο."
 
-#. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:243
+#. [message]: role=keen nose
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:278
 msgid ""
-"That hut near the top of the pass... Something is glowing inside it. We "
-"should investigate."
+"There’s a scent of scorched gryphon meat in the air, emanating from that hut "
+"yonder. We should investigate."
 msgstr ""
-"Αλλά η καλύβα στην κορυφή... Κάτι λάμπει. Θα έπρεπε να ρίξουμε μια ματιά."
 
 #. [message]: speaker=Ratheln
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:309
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:345
 msgid ""
 "Hail, I am Ratheln. If you’re traveling down the pass, please take me with "
 "you. I am near freezing and starving to death up here."
@@ -912,14 +910,14 @@ msgstr ""
 "θα πεθάνω της πείνας - ή από την παγωνιά."
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:314
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:350
 msgid "Pardon my curiosity, but what is a fire-mage doing freezing to death?"
 msgstr ""
 "Συγχωρήστε την περιέργειά μου, αλλά πως μπορεί ένας μάγος της φωτιάς να "
 "πεθάνει από την παγωνιά;"
 
 #. [message]: speaker=Ratheln
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:319
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:355
 msgid ""
 "In case you haven’t noticed, there is a serious shortage of both firewood "
 "and food in this gods-forsaken slot. And the damned gryphons descend on me "
@@ -932,12 +930,12 @@ msgstr ""
 "καλυβάκι εδώ. Τις τελευταίες τρεις βδομάδες επιβιώνω με ψητό γρύπα."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:324
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:360
 msgid "Where were you bound when you got stuck here?"
 msgstr "Και πού πήγαινες πριν κολλήσεις εδώ;"
 
 #. [message]: speaker=Ratheln
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:329
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:365
 msgid ""
 "There is a school of mages near the east end of the pass. They’ve an opening "
 "for an instructor, and they’re expecting me."
@@ -947,7 +945,7 @@ msgstr ""
 "καιρό, τρεις βδομάδες περίπου..."
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:334
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:370
 msgid ""
 "Let’s take him with us, Aiglondur. We know little about the country beyond "
 "to the east; we’ve had few reports on it since before the orcs took Knalga. "
@@ -959,7 +957,7 @@ msgstr ""
 "'πρεπε τουλάχιστον να έχουν ακούσει φήμες."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:339
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:375
 msgid ""
 "Aye. And I’d not leave anyone who had done my kin no harm stranded to starve."
 msgstr ""
@@ -967,12 +965,12 @@ msgstr ""
 "πείνας."
 
 #. [message]: speaker=Ratheln
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:353
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:392
 msgid "This is no fit death for a mage of fire!"
 msgstr "Τέτοιος θάνατος δεν αρμόζει σε έναν μάγο της φωτιάς!"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:358
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:397
 msgid ""
 "The snow has redoubled its fury, as if his presence had been holding it "
 "back. I do not see a way forward for us."
@@ -981,13 +979,13 @@ msgstr ""
 "μόνος του... Δεν μας βλέπω να βγαίνουμε ζωντανοί από εδώ..."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:371
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:410
 msgid ""
 "It has begun to snow. Move, everyone! To be trapped here would be death."
 msgstr "Ξεκίνησε να χιονίζει. Κουνηθείτε! Αν παγιδευτούμε εδώ έχουμε πεθάνει!"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:380
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:419
 msgid ""
 "We’re snowed in. Our mission has failed, even if we live until the spring."
 msgstr ""
@@ -995,12 +993,12 @@ msgstr ""
 "αποστολή μας."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:394
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:433
 msgid "We’re through the pass!"
 msgstr "Τα καταφέραμε!"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:399
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:438
 msgid ""
 "That may not be a blessing. Something frightened those orcs we fought among "
 "the bandit villages, enough to make them push west into Alliance territory. "
@@ -1011,7 +1009,7 @@ msgstr ""
 "να τολμήσουν να εισβάλλουν στα εδάφη της Συμμαχίας;"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:404
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:443
 msgid ""
 "Aye. But I’ve a grim feeling we might be going to discover that in person."
 msgstr ""
@@ -1241,13 +1239,13 @@ msgstr ""
 msgid "Fear"
 msgstr "Φόβος"
 
+#. [unit]: type=Dwarvish Ulfserker, id={ID_STRING}
+#. [unit]: type=Dwarvish Masked Steelclad
+#. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
 #. [unit]: type=Dwarvish Masked Steelclad, id=Gog
 #. [unit]: type=Dwarvish Masked Steelclad, id=Magog
 #. [unit]: type=Dwarvish Ulfserker, id=Hekyll
 #. [unit]: type=Dwarvish Ulfserker, id=Jekyll
-#. [unit]: type=Dwarvish Ulfserker, id={ID_STRING}
-#. [unit]: type=Dwarvish Masked Steelclad
-#. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
 #. [unit]: type={TYPE}
 #. [side]: type=Dwarvish Masked Steelclad, id=Dufon
 #. [side]: type=Dwarvish Masked Lord, id=Aragoth
@@ -1616,6 +1614,13 @@ msgstr "Ταν-Βάγκραν"
 #| msgid "East Gate"
 msgid "West Gate"
 msgstr "Ανατολική Πύλη"
+
+#. [objective]: condition=win
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:219
+#, fuzzy
+#| msgid "Defeat the Masked Dwarf"
+msgid "Defeat the orcish leaders"
+msgstr "Νίκησε τον Μασκοφόρο Νάνο"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:231
@@ -2538,10 +2543,19 @@ msgstr "Νάνος Μασκοφόρος Άρχοντας"
 
 #. [unit_type]: id=Dwarvish Masked Lord, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:17
+#, fuzzy
+#| msgid ""
+#| "Feared in dwarven legend is the Dwarf Lord who masks his face, using the "
+#| "formidable fighting powers of his kind without accounting to his peers "
+#| "and the loremasters of Dwarven-kind for the dark and bloody uses to which "
+#| "he puts his weapons. Like his barefaced kin, the Dwarf Lord wields axe "
+#| "and hammer with masterful skill, and can hit a target with a thrown hand "
+#| "axe at several paces. Though slow on their feet, these dwarves are a "
+#| "testament to the prowess of their kind."
 msgid ""
 "Feared in dwarven legend is the Dwarf Lord who masks his face, using the "
 "formidable fighting powers of his kind without accounting to his peers and "
-"the loremasters of Dwarven-kind for the dark and bloody uses to which he "
+"to the loremasters of Dwarven-kind for the dark and bloody uses to which he "
 "puts his weapons. Like his barefaced kin, the Dwarf Lord wields axe and "
 "hammer with masterful skill, and can hit a target with a thrown hand axe at "
 "several paces. Though slow on their feet, these dwarves are a testament to "
@@ -2748,6 +2762,12 @@ msgid ""
 msgstr ""
 "ΑΑΑΑΡΓΚ! Εγώ πεθαίνω, αλλά η φλόγα της δικαιοσύνης θα σας στείλει στην "
 "κόλαση!"
+
+#~ msgid ""
+#~ "That hut near the top of the pass... Something is glowing inside it. We "
+#~ "should investigate."
+#~ msgstr ""
+#~ "Αλλά η καλύβα στην κορυφή... Κάτι λάμπει. Θα έπρεπε να ρίξουμε μια ματιά."
 
 #~ msgid "morningstar"
 #~ msgstr "Απελατίκι"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-07-08 08:51 UTC\n"
+"POT-Creation-Date: 2018-09-09 08:37 UTC\n"
 "PO-Revision-Date: 2018-08-11 21:38+0800\n"
 "Last-Translator: Li, Kwunron <likwueron>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -171,11 +171,11 @@ msgstr "精靈"
 msgid "Lomarfel"
 msgstr "羅摩福"
 
-#. [side]: type=Orcish Sovereign, id=Rualsha
-#. [side]: type=Orcish Warlord, id=Gnargha
-#. [side]: type=Orcish Warlord, id=Krughnar
 #. [side]: type=Orcish Warrior, id=Urugha
+#. [side]: type=Orcish Warlord, id=Krughnar
+#. [side]: type=Orcish Sovereign, id=Rualsha
 #. [side]: type=Orcish Slayer, id=Gharlsa
+#. [side]: type=Orcish Warlord, id=Gnargha
 #: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:88
 #: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:59
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:66
@@ -621,8 +621,8 @@ msgstr "(咳咳) 我在黃泉路...等你..."
 #| "mercy. The elves took no prisoners."
 msgid ""
 "The orcish chieftain finally fell, overcome by his wounds. The elves found "
-"themselves in a half-ruined camp littered with the bodies of both sides, "
-"there was no hale orc in sight, nor did any of the wounded beg mercy. The "
+"themselves in a half-ruined camp littered with the bodies of both sides. "
+"There was no hale orc in sight, nor did any of the wounded beg mercy. The "
 "elves took no prisoners."
 msgstr ""
 "遍體鱗傷的半獸人酋長終於身體不支的倒下了。 戰勝的精靈們環顧四周，發現身處於屍"
@@ -665,9 +665,13 @@ msgstr ""
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:265
+#, fuzzy
+#| msgid ""
+#| "What about the loot lord? We found supplies worth over a hundred gold in "
+#| "the camp."
 msgid ""
-"What about the loot lord? We found supplies worth over a hundred gold in the "
-"camp."
+"What about the loot, lord? We found supplies worth over a hundred gold in "
+"the camp."
 msgstr "閣下，那戰利品呢？ 我們在營地裡發現這裡有數以百金的物資。"
 
 #. [message]: speaker=Erlornas
@@ -695,7 +699,9 @@ msgstr "留下來北征時候用。 這裡一片荒涼恐怕什麼都找不到�
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:320
-msgid "We can’t carry on Lord, the men are too tired. We have to fall back."
+#, fuzzy
+#| msgid "We can’t carry on Lord, the men are too tired. We have to fall back."
+msgid "We can’t carry on, lord, the men are too tired. We have to fall back."
 msgstr "閣下，弟兄們已經精疲力盡了，不能再推進了。 我們得後退。"
 
 #. [message]: speaker=Erlornas

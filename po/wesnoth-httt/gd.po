@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-07-08 08:51 UTC\n"
+"POT-Creation-Date: 2018-09-09 08:38 UTC\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: GunChleoc, 2017\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -196,13 +196,13 @@ msgid "Konrad"
 msgstr "Conall"
 
 #. [side]: type=Commander, id=Konrad
+#. [side]: type=Grand Knight, id=Kaylan
 #. [side]: type=Fighter, id=Konrad
 #. [side]: type=Elvish Champion, id=Galdrad
 #. [side]: type=Elvish Shyde, id=Chantal
-#. [side]: id=Geldar, type=Dwarvish Lord
-#. [side]
-#. [side]: type=Grand Knight, id=Kaylan
 #. [side]: id=Relgorn, type=Dwarvish Lord
+#. [side]
+#. [side]: id=Geldar, type=Dwarvish Lord
 #. [side]: type=Ancient Wose, id=Haralamdum
 #. [side]: type=Elvish Sylph, id=Bona-Melodia
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:80
@@ -247,23 +247,23 @@ msgstr "Aramaichean"
 msgid "Urug-Telfar"
 msgstr "Urug-Tealfar"
 
+#. [side]: type=Orcish Warrior, id=Mokolo Qimur
+#. [side]: type=Orcish Warrior, id=Usadar Q'kai
+#. [side]: type=Orcish Warrior, id=Dwaba-Kukai
+#. [side]: type=Orcish Warrior, id=Managa'Gwin
 #. [side]: type=Orcish Warlord, id=Kojun Herolm
 #. [side]: type=Orcish Warrior, id=Mokho Kimer
-#. [side]: type=Orcish Warlord, id=Urug-Telfar
-#. [side]: type=Orcish Warlord, id=Knafa-Tan
-#. [side]: type=Orcish Warlord, id=Maga-Knafa
+#. [side]: type=Orcish Warlord, id=Gaga-Breuk
 #. [side]: type=Orcish Warrior, id=Halgar Du'nar
 #. [side]: type=Orcish Warrior, id=Gorlak
 #. [side]: type=Orcish Slurbow, id=Knafa-Telfar
 #. [side]: type=Orcish Warlord, id=Urug-Tan
 #. [side]: type=Orcish Sovereign, id=Shuuga-Mool
-#. [side]: type=Orcish Warlord, id=Gaga-Breuk
 #. [side]: type=Orcish Warlord, id=Urag-Tifer
-#. [side]: type=Orcish Warrior, id=Usadar Q'kai
-#. [side]: type=Orcish Warrior, id=Dwaba-Kukai
-#. [side]: type=Orcish Warrior, id=Managa'Gwin
-#. [side]: type=Orcish Warrior, id=Mokolo Qimur
 #. [side]: type=Orcish Warlord, id=Kior-Dal
+#. [side]: type=Orcish Warlord, id=Urug-Telfar
+#. [side]: type=Orcish Warlord, id=Knafa-Tan
+#. [side]: type=Orcish Warlord, id=Maga-Knafa
 #. [side]: type=Goblin Rouser
 #. [side]: type=Orcish Warlord
 #. [side]: type=Troll Warrior
@@ -1081,8 +1081,8 @@ msgstr ""
 "Thoir buaidh air ceannard nàmhad is seas an aghaidh an corr gus am bi na "
 "cuairtean seachad"
 
-#. [objective]: condition=win
 #. [objectives]
+#. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:26
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:25
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:24
@@ -1588,9 +1588,7 @@ msgstr "Thoir buaidh air Muff Malal"
 msgid "Muff Malal"
 msgstr "Muff Malal"
 
-#. [side]: type=Lich, id=Galga
-#. [side]: type=Lich, id=Na-alga
-#. [side]: type=Lich, id=Selda-Mana
+#. [side]: type=Dark Sorcerer, id=Muff Malal
 #. [side]: id=Haf-Mal, type=Lich
 #. [side]: id=Jarmal-Gorg, type=Lich
 #. [side]: type=Death Knight, id=Clarustus
@@ -1598,8 +1596,10 @@ msgstr "Muff Malal"
 #. [side]: type=Lich, id=Aimucasur
 #. [side]: type=Death Knight, id=Secadius
 #. [side]: type=Death Knight, id=Dafeis
+#. [side]: type=Lich, id=Galga
+#. [side]: type=Lich, id=Na-alga
+#. [side]: type=Lich, id=Selda-Mana
 #. [side]: type=Ancient Lich, id=Muff Argulak
-#. [side]: type=Dark Sorcerer, id=Muff Malal
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:79
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:131
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:148
@@ -1833,8 +1833,8 @@ msgstr "Tha coltas falamh air an teampall."
 msgid "Looks like there is somebody hidden in the temple."
 msgstr "Tha cuideigin ’na fhalach san teampaill a-rèir coltais."
 
-#. [unit]: id=Moremirmu, type=Mage of Light
 #. [unit]: id=Moremirmu, type=White Mage
+#. [unit]: id=Moremirmu, type=Mage of Light
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:301
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:259
 msgid "Moremirmu"
@@ -1957,11 +1957,11 @@ msgstr "Agadla"
 
 #. [side]: type=Orcish Warlord, id=Agadla
 #. [side]: type=Dark Sorcerer, id=Muff Jaanal
-#. [side]: id=Brugg, type=Troll Warrior
-#. [side]: id=Lionel, type=Death Knight
+#. [side]: type=Troll Warrior, id=Haaf-Garga
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Death Knight, id=Unan-Ka'tall
-#. [side]: type=Troll Warrior, id=Haaf-Garga
+#. [side]: id=Brugg, type=Troll Warrior
+#. [side]: id=Lionel, type=Death Knight
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:74
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:116
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:91
@@ -2569,8 +2569,8 @@ msgstr "Àth Ealmair"
 msgid "Elbridge"
 msgstr "Drochaid Eil"
 
-#. [event]
 #. [side]: type=Princess, id=Li'sar
+#. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:87
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:68
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:751
@@ -2578,16 +2578,16 @@ msgstr "Drochaid Eil"
 msgid "Li’sar"
 msgstr "Li’sar"
 
-#. [side]: type=Princess, id=Li'sar
-#. [side]: type=General, id=Josephus
-#. [side]: type=Orcish Warlord, id=Dwar-Ni
-#. [side]: type=General, id=Malatus
 #. [side]: type=General, id=Robryn
+#. [side]: type=Princess, id=Li'sar
 #. [side]: type=General, id=Honber
 #. [side]: type=Orcish Warlord, id=Haliel-Maga
 #. [side]: type=General, id=Heford
 #. [side]: type=Cavalier, id=Sir Kalm
 #. [side]: type=Dark Queen, id=Asheviere
+#. [side]: type=General, id=Josephus
+#. [side]: type=Orcish Warlord, id=Dwar-Ni
+#. [side]: type=General, id=Malatus
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:161
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:99
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:84
@@ -4486,7 +4486,8 @@ msgstr ""
 "sìos mi gus m’ ithe, an e?"
 
 #. [message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:235
+#. Comic relief
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:236
 msgid ""
 "I am a merman, dweller of the vast oceans! Do not ask me what I am doing in "
 "a cave. My lord can be somewhat eccentric. We are fighting at the side of "
@@ -4498,7 +4499,8 @@ msgstr ""
 "’s athaich."
 
 #. [message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:236
+#. Comic relief
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:238
 msgid ""
 "I am a mermaid, dweller of the vast oceans! Do not ask me what I am doing in "
 "a cave. My lord can be somewhat eccentric. We are fighting at the side of "
@@ -4510,7 +4512,7 @@ msgstr ""
 "’s athaich."
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:247
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:249
 msgid ""
 "(sniffs) A mer-mahn. Never heard of it. I doubt yer as tasty as my friends "
 "here."
@@ -4519,7 +4521,7 @@ msgstr ""
 "gu bheil thu cho blasta ’s a tha mo chàirdean ud."
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:258
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:260
 msgid ""
 "(sniffs) A mer-mead. Never heard of it. I doubt yer as tasty as my friends "
 "here."
@@ -4528,12 +4530,12 @@ msgstr ""
 "gu bheil thu cho blasta ’s a tha mo chàirdean ud."
 
 #. [message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:262
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:264
 msgid "Why are you down here? Are those... troll carcasses?"
 msgstr "Carson a tha thu sìos an-seo? An e … cuirp athach thall an-siud?"
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:266
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:268
 msgid ""
 "I was brawlin’ with these wee pups here defending my outpost. We got a "
 "little carried away, fell in the water, and were sucked down intae this "
@@ -4544,12 +4546,12 @@ msgstr ""
 "chaidh ar slugadh sìos dhan uamhag seo."
 
 #. [message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:270
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:272
 msgid "How long have you been here?"
 msgstr "Dè cho fad ’s a tha thu air a bhith an-seo?"
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:274
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:276
 msgid ""
 "Och, several days at least. The troll meat is starting to stink, and I’m a "
 "little ravenous, if ye catch my drift. Canna’ swim past that current, and "
@@ -4560,20 +4562,20 @@ msgstr ""
 "srutha seo ged a dh’fheuch mi ris."
 
 #. [message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:278
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:280
 msgid "I will rescue you. Hold onto my shoulders, sir dwarf."
 msgstr ""
 "Bheir mi cobhair dhut. Cum greim air mo ghuailnean, a mhaighstir troiche. "
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:282
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:284
 msgid "Thanks. Nae need to wait around here. Let’s go."
 msgstr ""
 "Gun robh math agad. Chan eil adhbhar ann gus fuireach an-seo. A-mach à seo "
 "leinn."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:305
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:307
 msgid ""
 "Better prepared this time to fight the current, you eventually manage to "
 "emerge from the whirlpool."
@@ -4582,7 +4584,7 @@ msgstr ""
 "mach às a’ chuairt-shruth aig a cheann thall."
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:333
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:335
 msgid ""
 "Well, mer-mahn, we made it. I will fight for yer lord. He sounds like a "
 "brave fellow."
@@ -4591,7 +4593,7 @@ msgstr ""
 "thighearna. Tha coltas dàna air."
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:343
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:345
 msgid ""
 "Well, mer-mead, we made it. I will fight for yer lord. He sounds like a "
 "brave fellow."
@@ -4600,14 +4602,14 @@ msgstr ""
 "thighearna. Tha coltas dàna air."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:357
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:359
 msgid "These passages seem to have been used recently."
 msgstr ""
 "Tha coltas air an t&#8209;slighe seo gun deach a cleachdadh bho chionn "
 "ghoirid."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:385
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:387
 msgid ""
 "You emerge into a vast natural cathedral, the walls arching higher than you "
 "can see in the darkness. Stretching across the gallery is a great chasm, "
@@ -4623,22 +4625,22 @@ msgstr ""
 "Khnalga as àirde leis na cumhachdan dorcha."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:398
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:400
 msgid "There is a big cave-in south of here."
 msgstr "Tha na clachan air tuiteam gu deas."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:411
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:413
 msgid "The rocks are moving!"
 msgstr "Tha na clachan a’ gluasad!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:475
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:477
 msgid "Who goes there? Friend or foe?"
 msgstr "Cò th’ ann, caraid no nàmhaid?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:479
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:481
 msgid ""
 "We are desperately trying to rid these tunnels of orcs and trolls! Please "
 "help us in our quest."
@@ -4647,41 +4649,41 @@ msgstr ""
 "na tunailean seo! An toir sibh taic dhuinn?"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:493
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:495
 msgid "Vile creature! Let us rid these tunnels of its kind!"
 msgstr ""
 "Siud creutair dìblidh! Cuireamaid às dha na h&#8209;uile gin dhiubh a tha "
 "sna tunailean seo!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:507
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:509
 msgid "I did not know that the undead were in these pits!"
 msgstr "Cha robh fios agam gun robh closaich sna slocan seo!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:521
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:523
 msgid "Who is this foul enemy that we fight?"
 msgstr "Cò an nàmhaid thàireil ris an dèan sinn sabaid?"
 
 #. [message]: speaker=Lionel
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:525
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:527
 msgid "I am Lionel. I am the Lost General. I will avenge myself upon you all!"
 msgstr ""
 "’S mise Leòmhail. ’S mise an ceann-armailt caillte. Nì mi dìoghaltas oirbh "
 "uile!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:529
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:531
 msgid "Avenge? What have we done to you that you must avenge?"
 msgstr "Dìoghaltas? Dè rinn sinn ach am biodh sinn àraidh air dìoghaltas?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:533
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:535
 msgid "Lionel? A General? I remember that name..."
 msgstr "Leòmhail? Ceann-armailt? Tha cuimhne agam air ainm…"
 
 #. [message]: speaker=Lionel
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:537
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:539
 msgid ""
 "Remember me, do you? Aye. I was the king’s finest general, sent down to "
 "these pits to retrieve the Sceptre. But the orcs trapped me and my men in "
@@ -4696,7 +4698,7 @@ msgstr ""
 "mi dìoghaltas oirbh uile a-nis!"
 
 #. [message]: speaker=Lionel
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:556
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:558
 msgid ""
 "Argh! I am vanquished! But at least by worthy foes, instead of those "
 "disgusting orcs."
@@ -4705,14 +4707,14 @@ msgstr ""
 "seach na deamhain sgreamhail ud."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:560
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:562
 msgid "Rest in peace, Lionel. The poor, lost general."
 msgstr ""
 "Guidheam sìth d’ ur n&#8209;anam, a Leòmhail. A cheann-armailt chaillte "
 "bhochd."
 
 #. [message]: speaker=Lionel
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:564
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:566
 msgid ""
 "I am destroyed, but my mission must be completed. Though you are foes, you "
 "are at least worthy ones, so I will tell you that the Sceptre is east from "
@@ -4728,12 +4730,12 @@ msgstr ""
 "fhearr leibh nach chaidh leamsa!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:578
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:580
 msgid "The earth shakes."
 msgstr "Tha an talamh a’ crith."
 
 #. [message]: speaker=Geldar
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:614
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:616
 msgid ""
 "Tall ones, I thank ye. Life has been nothing but a struggle recently. We are "
 "the last outpost o’ civilization in these caves."
@@ -4743,7 +4745,7 @@ msgstr ""
 "uamhan seo a th’ annainn."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:618
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:620
 msgid ""
 "These caves are vast. If we are to find the Sceptre of Fire we must hurry. "
 "We are not alone, and now that our foes have smelled our blood it will be "
@@ -4754,7 +4756,7 @@ msgstr ""
 "a-nis bhon a tha an nàmhaid fàileadh ar fala fhaireachdainn."
 
 #. [message]: speaker=Geldar
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:622
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:624
 msgid ""
 "The Sceptre? Ah, the Sceptre ye seek. You surface dwellers are ambitious. "
 "Beyond my citadel the spawn of the darkness hold complete sway. You’ll no’ "
@@ -4765,12 +4767,12 @@ msgstr ""
 "tha seachad air an daingeann agam. Cha mhair sibh beò gun taic."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:626
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:628
 msgid "How will we make it?"
 msgstr "Ciamar a mhaireas sinn mar-thà?"
 
 #. [message]: speaker=Geldar
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:630
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:632
 msgid ""
 "Northeast o’ my keep, young human, the tunnels converge towards the deepest "
 "reaches of the underground kingdom. The Sceptre can only be there. Please "
@@ -4782,7 +4784,7 @@ msgstr ""
 "seo sibh."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:640
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:642
 msgid ""
 "Your boon is most welcome, sir dwarf. Keeping the Sceptre out of the hands "
 "of evil beasts is a common goal for us, and we will prevail with your help."
@@ -4792,12 +4794,12 @@ msgstr ""
 "bèistean olca agus rinneadh sinn a’ chùis le ur taic."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:645
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:647
 msgid "You may now recruit the legendary dwarvish guardsmen!"
 msgstr "’S urrainn dhut ceatharnaich troiche seann-sgeulach a thrusadh a-nis!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:655
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:657
 msgid ""
 "I do not know, Konrad, but I can sense our path only leads us downward. We "
 "will continue to the northeast, to the deepest depths of these caverns."
@@ -5134,8 +5136,65 @@ msgstr ""
 msgid "Concentrating"
 msgstr "Ri dùr-aire"
 
+#. [message]: id=Konrad
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:628
+msgid ""
+"That noise was made by no troll! What manner of beast makes its den in these "
+"forsaken caves?"
+msgstr ""
+
+#. [message]: race=merman
+#. Comic relief
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:633
+msgid ""
+"I wouldn't know, milord. Without a river running though it, such hot, dry "
+"places are anathema to my kind. Whatever monsters may abide in these depths, "
+"are known not to my kin."
+msgstr ""
+
+#. [message]: race=merman
+#. Comic relief
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:638
+msgid ""
+"Nor do I know, my most eccentric lord, what I am doing in a cave. No Mer has "
+"yet entered the caves under the mountain and lived to tell the tale. I would "
+"gladly die for you, milord, but I would that you didn't spend my life for "
+"nothing, looking for another dwarf to rescue when there is none."
+msgstr ""
+
+#. [message]: race=dwarf
+#. "sowl" is a rare word synonymous with "sully", meaning "contaminate". 
+#. "toiled" means "difficult, requires effort".
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:650
+msgid ""
+"Lord Konrad, yon rumble was made by nae living creature. ’Tis the echoes o’ "
+"the very bedrock witherin’ and crumbling beneath us that we ’eard. Are ye "
+"nae feeling the heat redoubling? Is yer breath nae toiled for the ashes "
+"sowling the air? I beseech that we not tarry ’ere any more than we ha’ to, "
+"lest the forming abysses claim us."
+msgstr ""
+
+#. [message]: type=Arch Mage,Great Mage,Silver Mage
+#. "din" means "loud noise". It refers to an ambient sound of collapsing cave walls.
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:672
+msgid ""
+"Prince Konrad, that din was made by no living thing. It was the sound of the "
+"very earth that’s boiling around us, of the fire and lava that are breaching "
+"this cave even now. We must tread with caution, for the very ground we stand "
+"on may turn against us."
+msgstr ""
+
+#. [message]: id=Li'sar
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:681
+msgid ""
+"Konrad, that must have been the floor collapsing. I was warned of such "
+"dangers when I prepared to journey here. We mustn’t tarry here; let us fetch "
+"the Sceptre and return to the surface with haste, before the lava under our "
+"feet consumes us."
+msgstr ""
+
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:632
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:697
 msgid ""
 "I sense we are quite near the Sceptre; in fact, we should be able to see it "
 "right about now..."
@@ -5143,35 +5202,35 @@ msgstr ""
 "Tha mi a’ mothachadh gu bheil sinn faisg air an t&#8209;slat-rìoghail; a "
 "dh’innse na fìrinn, bu chòir dhuinn fhaicinn a-nis…"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:662
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:727
 msgid "I sense the path to the Sceptre is to the east of me."
 msgstr "Tha mi a’ mothachadh slighe don t&#8209;slat-rìoghail gu ear."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:663
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:728
 msgid "I sense the path to the Sceptre is to the south-east of me."
 msgstr "Tha mi a’ mothachadh slighe don t&#8209;slat-rìoghail gu ear-dheas."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:664
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:729
 msgid "I sense the path to the Sceptre is to the south of me."
 msgstr "Tha mi a’ mothachadh slighe don t&#8209;slat-rìoghail gu deas."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:665
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:730
 msgid "I sense the path to the Sceptre is to the south-west of me."
 msgstr "Tha mi a’ mothachadh slighe don t&#8209;slat-rìoghail gu iar-dheas."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:666
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:731
 msgid "I sense the path to the Sceptre is to the west of me."
 msgstr "Tha mi a’ mothachadh slighe don t&#8209;slat-rìoghail gu iar."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:667
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:732
 msgid "I sense the path to the Sceptre is to the north-west of me."
 msgstr "Tha mi a’ mothachadh slighe don t&#8209;slat-rìoghail gu iar-thuath."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:668
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:733
 msgid "I sense the path to the Sceptre is to the north of me."
 msgstr "Tha mi a’ mothachadh slighe don t&#8209;slat-rìoghail gu tuath."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:669
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:734
 msgid "I sense the path to the Sceptre is to the north-east of me."
 msgstr "Tha mi a’ mothachadh slighe don t&#8209;slat-rìoghail gu ear-thuath."
 
@@ -6661,9 +6720,9 @@ msgid "Your encampment will be dismantled after the first turn."
 msgstr "Thèid an campa agad a thoirt far a chèile an dèidh na ciad cuairte."
 
 #. [side]: type=Commander, id=Konrad
+#. [side]: type=Elvish Marshal, id=El'rien
 #. [side]: type=Elvish Lord, id=Uradredia
 #. [side]: type=Elvish Lady, id=Parandra
-#. [side]: type=Elvish Marshal, id=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:61
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:225
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:30
@@ -7186,8 +7245,12 @@ msgstr "Stadaibh!"
 
 #. [message]: speaker=Bona-Melodia
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:251
+#, fuzzy
+#| msgid ""
+#| "Milord Kalenz! My apologies. I mistook him for one of those foul "
+#| "lizardmen. How came you to be traveling such paths?"
 msgid ""
-"Milord Kalenz! My apologies. I mistook him for one of those foul lizardmen. "
+"Milord Kalenz! My apologies. I mistook you for one of those foul lizardmen. "
 "How came you to be traveling such paths?"
 msgstr ""
 "A thighearna Chalains! Gabhaidh mo leisgeul. Shaoilinn gur e fear dhe na "
@@ -7248,7 +7311,9 @@ msgstr ""
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:296
-msgid "Then we must hurry. Stand fast, we will send reinforcements."
+#, fuzzy
+#| msgid "Then we must hurry. Stand fast, we will send reinforcements."
+msgid "Then we must hurry. Stand fast! We will send reinforcements."
 msgstr ""
 "Feumaidh sinn greasadh oirnn mar-thà. Cumaibh a’ dol, cuiridh sinn "
 "foirlionadh chuibh."
@@ -9000,11 +9065,17 @@ msgstr "Bana-phrionnsa a’ bhlàir"
 
 #. [unit_type]: id=Battle Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:28
+#, fuzzy
+#| msgid ""
+#| "A noble by birth, the Princess has learnt swordplay with the greatest "
+#| "generals, and battle tactics with the greatest sages, making her both a "
+#| "great combatant and a leader. Now battle-hardened and strong of will, she "
+#| "can aid those around her in the art of combat."
 msgid ""
 "A noble by birth, the Princess has learnt swordplay with the greatest "
 "generals and battle tactics with the greatest sages, making her both a great "
-"combatant and a leader. Now battle-hardened and strong of will, she can now "
-"aid those around her in the art of combat."
+"combatant and a leader. Now battle-hardened and strong of will, she can aid "
+"those around her in the art of combat."
 msgstr ""
 "’S e maighdeann uasail a tha sa bhana-phrionnsa agus dh’ionnsaich i sabaid "
 "leis a’ chlaidheamh bho na cinn-armailt as cliùmhoire agus ro-innleachd a’ "
@@ -9592,3 +9663,16 @@ msgstr ""
 "Air a theicheadh dha Choille Aidhean taobh thall crìochan iar-dheas "
 "Bheasnaid, dh’àraich Deilfeadar Conall fo dhìon nan sìthichean, làn truais "
 "mun rìoghladh uabhasach a thug Aisebheir dhan dùthaich …"
+
+#~ msgid ""
+#~ "A noble by birth, the Princess has learnt swordplay with the greatest "
+#~ "generals and battle tactics with the greatest sages, making her both a "
+#~ "great combatant and a leader. Now battle-hardened and strong of will, she "
+#~ "can now aid those around her in the art of combat."
+#~ msgstr ""
+#~ "’S e maighdeann uasail a tha sa bhana-phrionnsa agus dh’ionnsaich i "
+#~ "sabaid leis a’ chlaidheamh bho na cinn-armailt as cliùmhoire agus ro-"
+#~ "innleachd a’ bhlàir bho na sàr-eòlaichean. Mar sin, tha i fìor mhath air "
+#~ "sabaid ’s air stiùireadh nan saighdearan. ’S urrainn dhi taic a thoirt "
+#~ "dhan fheadhainn mu timcheall bhon a tha i eòlach is seasmhach air a’ "
+#~ "bhlàr."

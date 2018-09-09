@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-07-08 08:51 UTC\n"
+"POT-Creation-Date: 2018-09-09 08:38 UTC\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: GunChleoc, 2017\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -101,12 +101,12 @@ msgstr ""
 "sam bith."
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:61
+#: data/multiplayer/eras.lua:62
 msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>Taobh %d</span>"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:75
+#: data/multiplayer/eras.lua:76
 msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
@@ -115,12 +115,17 @@ msgstr ""
 "%d  Sgòr aonadan = %d  Buinn òr = %d"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:75
+#: data/multiplayer/eras.lua:76
 msgid "Grand total: <b>%d</b>"
 msgstr "Iomlan: <b>%d</b>"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:86
+#: data/multiplayer/eras.lua:93
+msgid "Sides %s and %d are tied."
+msgstr ""
+
+#. [lua]: f
+#: data/multiplayer/eras.lua:95
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgstr "Tha a’ bhuannachd aig <span foreground='%s'>taobh %d</span>."
 
@@ -1871,19 +1876,19 @@ msgstr ""
 msgid "3p — Alirok Marsh"
 msgstr "3cl – Boglach Ailiorok"
 
+#. [multiplayer]: id=multiplayer_Alirok_Marsh
+#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
+#. [multiplayer]: id=multiplayer_3p_Morituri
+#. [multiplayer]: id=multiplayer_Blue_Water_Province
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_Clash
+#. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_4p_Underworld
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #. [multiplayer]: id=multiplayer_8p_Morituri
-#. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_Clash
-#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
-#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
-#. [multiplayer]: id=multiplayer_4p_Morituri
 #. [multiplayer]: id=multiplayer_Loris_River
-#. [multiplayer]: id=multiplayer_Alirok_Marsh
-#. [multiplayer]: id=multiplayer_4p_Hamlets
-#. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -2055,11 +2060,17 @@ msgstr "4cl – Crois Iosair"
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A very small 2 vs. 2 map. Close quarters fighting means the successful "
+#| "rotation of units and planning of moves is important. Teams set for "
+#| "players 1+4 vs. 2+3 (northeast vs. southwest). Designed for 75 starting "
+#| "gold, 20 villages."
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
-"1+4 vs. 2+3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
-"villages."
+"1 &amp; 4 vs. 2 &amp; 3 (northeast vs. southwest). Designed for 75 starting "
+"gold, 20 villages."
 msgstr ""
 "Mapa 2 an aghaidh 2 glè bheag. Tha sabaid gun mhòran rùm a’ ciallachadh gum "
 "feum thu a’ bhith cùramach le ro-innleachd nan gluasadan is cuairteachadh "
@@ -2100,8 +2111,8 @@ msgstr "Ear-thuath"
 msgid "4p — King of the Hill"
 msgstr "4cl – Rìgh an tulaich"
 
-#. [multiplayer]: id=multiplayer_Siege_Castles
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
+#. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 msgid " Recommended setting of 2 gold per village and 150 starting gold."
@@ -2148,9 +2159,13 @@ msgstr "4cl – Abhainn Lorais"
 
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
+#, fuzzy
+#| msgid ""
+#| "2 vs. 2 map centered around a river with keeps in opposite corners. "
+#| "Designed for players 1+4 vs. 2+3. There are 28 villages."
 msgid ""
 "2 vs. 2 map centered around a river with keeps in opposite corners. Designed "
-"for players 1+4 vs. 2+3. There are 28 villages."
+"for players 1 &amp; 4 vs. 2 &amp; 3. There are 28 villages."
 msgstr ""
 "Mapa 25x25 is 2 an aghaidh 2 air a shuidheachadh mu abhainn le daingnean ann "
 "an oiseanan mu choinneamh. Air a dhealbhadh airson cluicheadairean 1 is 4 an "
@@ -2178,9 +2193,14 @@ msgstr " Mholamaid gun suidhich thu òr bhailtean air 2, 28 bailtean."
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
+#| "east vs. west (1+4 vs. 2+3), but works well with any teams or FFA."
 msgid ""
 "A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
-"east vs. west (1+4 vs. 2+3), but works well with any teams or FFA."
+"east vs. west (1 &amp; 4 vs. 2 &amp; 3), but works well with any teams or "
+"FFA."
 msgstr ""
 "Mapa 35X27 is 2 an aghaidh 2 le slighean catha fa leth. Chaidh meidh a cho-"
 "dhealbhadh ach an cluich taobh an ear an aghaidh taobh an iar (1 is 4 an "

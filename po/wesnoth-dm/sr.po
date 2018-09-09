@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-dm\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-07-22 11:32 UTC\n"
+"POT-Creation-Date: 2018-09-09 08:37 UTC\n"
 "PO-Revision-Date: 2011-12-10 10:16+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -121,8 +121,8 @@ msgid "Overture"
 msgstr "Увод"
 
 #. [side]
-#. [side]: type=Mage of Light, id=Marshal
 #. [side]: type=White Mage, id=Arpus
+#. [side]: type=Mage of Light, id=Marshal
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:23
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:34
 #: data/campaigns/Delfadors_Memoirs/scenarios/02_This_Valley_Belongs_to_Me.cfg:25
@@ -348,19 +348,19 @@ msgstr "Ово је моја долина"
 msgid "Grogor-Tuk"
 msgstr "Грогор-Тук"
 
+#. [side]: type=Goblin Pillager, id=Grogor-Tuk
 #. [side]: type=Orcish Warrior, id=Urthaka-Tan
+#. [side]: type=Orcish Slayer, id=Hagha-Tan
+#. [side]: type=Orcish Warlord, id=Tish Golub
 #. [side]: type=Orcish Warlord, id=Knafa-ord
 #. [side]: type=Orcish Warlord, id=Tan-drul
 #. [side]: type=Orcish Warlord, id=Krardul
-#. [side]: type=Orcish Warlord, id=Tish Golub
+#. [side]: type=Orcish Warlord, id=Upgar
+#. [side]
 #. [side]: type=Orcish Sovereign, id=Zorlan
 #. [side]: type=Orcish Warrior, id=T'bhan
 #. [side]: type=Orcish Warrior, id=Qgthun
 #. [side]: type=Great Troll, type=Troll Hero, id=Trgrau
-#. [side]
-#. [side]: type=Goblin Pillager, id=Grogor-Tuk
-#. [side]: type=Orcish Slayer, id=Hagha-Tan
-#. [side]: type=Orcish Warlord, id=Upgar
 #: data/campaigns/Delfadors_Memoirs/scenarios/02_This_Valley_Belongs_to_Me.cfg:49
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:44
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:79
@@ -672,15 +672,15 @@ msgstr "Леолин"
 msgid "Hagha-Tan"
 msgstr "Хага-тан"
 
-#. [side]
-#. [side]: type=King of Wesnoth, id=Garard II
-#. [side]: type=General, id=Rhuwin
 #. [side]: type=Arch Mage, id=Leollyn
-#. [modify_side]
-#. [side]: type=King of Wesnoth, id=Garard
+#. [side]
 #. [side]: type=General, id=Eldred
 #. [side]: type=General, id=Lowel
 #. [side]: type=Lieutenant, id=Niktor
+#. [side]: type=King of Wesnoth, id=Garard
+#. [modify_side]
+#. [side]: type=King of Wesnoth, id=Garard II
+#. [side]: type=General, id=Rhuwin
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:101
 #: data/campaigns/Delfadors_Memoirs/scenarios/05_Council_in_Weldyn.cfg:23
 #: data/campaigns/Delfadors_Memoirs/scenarios/05_Council_in_Weldyn.cfg:34
@@ -1166,18 +1166,18 @@ msgstr ""
 msgid "Night in the Swamp"
 msgstr "Ноћ у мочвари"
 
-#. [side]: type=Lich, id=Sagus
+#. [side]
+#. [side]: type=Death Knight, id=Arakar
 #. [side]: type=Death Knight, id=Prepolur
 #. [side]: type=Necromancer, id=Unuvim-Malal
-#. [side]
-#. [side]: type=Necromancer, id=Gruv-Malal
+#. [side]: type=Lich, id=Sagus
+#. [side]: type=Death Knight, id=Dirator
+#. [side]: type=Necromancer, id=Maldun
+#. [side]: type=Death Knight, id=Alderoth
 #. [side]: type=Death Knight, id=Rudimil
 #. [side]: type=Necromancer, id=Roth-Malal
 #. [side]: type=Necromancer, id=Barth-Malal
-#. [side]: type=Death Knight, id=Arakar
-#. [side]: type=Necromancer, id=Maldun
-#. [side]: type=Death Knight, id=Alderoth
-#. [side]: type=Death Knight, id=Dirator
+#. [side]: type=Necromancer, id=Gruv-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:47
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:38
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:34
@@ -1689,8 +1689,8 @@ msgstr ""
 "Набаса ли на скелете? Њихова утврда је на северу. Тешко би је било напасти, "
 "али постоји тајни улаз у долини одмах изнад Ситановог села."
 
-#. [event]
 #. [scenario]: id=09_Houses_of_the_Dead
+#. [event]
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:318
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:193
 msgid "Nameless"
@@ -2110,9 +2110,9 @@ msgstr "Пустош"
 msgid "Tish Golub"
 msgstr "Тиш Голуб"
 
+#. [side]: type=Elvish Druid
 #. [side]
 #. [side]: type=Elvish Captain, id=Clartakis
-#. [side]: type=Elvish Druid
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:54
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:40
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:181
@@ -2323,7 +2323,7 @@ msgstr "Настрада ли Чантал"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:306
-#: data/campaigns/Delfadors_Memoirs/utils/deaths.cfg:42
+#: data/campaigns/Delfadors_Memoirs/utils/deaths.cfg:41
 msgid ""
 "Chantal! No — you can’t be dead! I have no hope of returning to Wesnoth "
 "now..."
@@ -3684,6 +3684,11 @@ msgstr "Рондугер"
 msgid "For the King!"
 msgstr "За Краља!"
 
+#. [message]: speaker=Zorlan
+#: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:457
+msgid "Argh! It can't be, beaten by these swine!"
+msgstr ""
+
 #. [scenario]: id=16_Dark_Sky_Over_Weldyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:3
 msgid "Dark Sky Over Weldyn"
@@ -3821,8 +3826,8 @@ msgstr ""
 "Мислим да наш млади и неискусни пријатељ прецењује снагу непријатеља. "
 "Сигуран сам да се они не могу носити са веснотском војском."
 
-#. [part]
 #. [side]: type=Lich, id=Sagus
+#. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:59
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:47
 msgid "Sagus"
@@ -4897,8 +4902,8 @@ msgstr ""
 "Могуће је. Сад, кад боље промислим о томе, најбоље је да се вратим на двор "
 "брже него што дођох овде, чак и ако сатрем три коња под собом ради тога."
 
-#. [side]
 #. [modify_side]
+#. [side]
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_Prince_of_Wesnoth.cfg:255
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:52
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:36
@@ -5372,26 +5377,26 @@ msgstr "Илијах-малал"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/utils/deaths.cfg:13
-msgid "No! So young..."
-msgstr "Не! Тако млад..."
+msgid "No! There is still more that I must do!"
+msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/utils/deaths.cfg:28
+#: data/campaigns/Delfadors_Memoirs/utils/deaths.cfg:27
 msgid "No! Without Lionel’s help, I am as good as defeated!"
 msgstr "Не! Без Лионелове помоћи, као да сам одмах поражен!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Delfadors_Memoirs/utils/deaths.cfg:57
+#: data/campaigns/Delfadors_Memoirs/utils/deaths.cfg:56
 msgid "I have been defeated!"
 msgstr "Поражен сам!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/utils/deaths.cfg:70
+#: data/campaigns/Delfadors_Memoirs/utils/deaths.cfg:69
 msgid "No! All is now lost..."
 msgstr "Не. Сад је све изгубљено..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/utils/deaths.cfg:84
+#: data/campaigns/Delfadors_Memoirs/utils/deaths.cfg:83
 #, fuzzy
 #| msgid ""
 #| "With their leader slain we cannot count on dwarvish help to reach Iliah-"
@@ -5490,6 +5495,9 @@ msgstr "Дрони"
 #: data/campaigns/Delfadors_Memoirs/utils/sides.cfg:276
 msgid "Artor"
 msgstr "Артор"
+
+#~ msgid "No! So young..."
+#~ msgstr "Не! Тако млад..."
 
 # |, no-check-spell
 #~ msgid "Tan-Garthak"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-07-22 11:33 UTC\n"
+"POT-Creation-Date: 2018-09-09 08:38 UTC\n"
 "PO-Revision-Date: 2006-05-05 16:30+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: data/campaigns/Dead_Water/units/Citizen.cfg:23
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Darawf.cfg:23
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Small_Mudcrawler.cfg:16
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:26
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:28
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:31
 #: data/core/units/monsters/Yeti.cfg:37
 #: data/core/units/trolls/Rocklobber.cfg:25
@@ -251,7 +251,7 @@ msgstr ""
 #: data/core/units/elves/Archer.cfg:23 data/core/units/elves/Avenger.cfg:38
 #: data/core/units/elves/Captain.cfg:34 data/core/units/elves/Champion.cfg:23
 #: data/core/units/elves/Fighter.cfg:22 data/core/units/elves/Hero.cfg:22
-#: data/core/units/elves/High_Lord.cfg:45 data/core/units/elves/Lord.cfg:24
+#: data/core/units/elves/High_Lord.cfg:46 data/core/units/elves/Lord.cfg:24
 #: data/core/units/elves/Marksman.cfg:29 data/core/units/elves/Marshal.cfg:33
 #: data/core/units/elves/Outrider.cfg:32 data/core/units/elves/Ranger.cfg:35
 #: data/core/units/elves/Rider.cfg:34 data/core/units/elves/Scout.cfg:32
@@ -359,8 +359,8 @@ msgid ""
 "former comrades amongst their number is frightening to say the least."
 msgstr ""
 
-#. [attack]: type=impact
 #. [attack]: type=arcane
+#. [attack]: type=impact
 #. [attack]: type=fire
 #. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:35
@@ -703,7 +703,7 @@ msgid "fangs"
 msgstr ""
 
 #. [attack]: type=arcane
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:34
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:36
 #: data/core/units/humans/Mage_White.cfg:53
 #: data/core/units/humans/Mage_of_Light.cfg:56
 #: data/core/units/merfolk/Diviner.cfg:54
@@ -737,7 +737,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:36
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:39
 #: data/core/units/elves/Enchantress.cfg:47
-#: data/core/units/elves/High_Lord.cfg:54 data/core/units/elves/Lord.cfg:33
+#: data/core/units/elves/High_Lord.cfg:55 data/core/units/elves/Lord.cfg:33
 #: data/core/units/elves/Sorceress.cfg:49 data/core/units/elves/Sylph.cfg:53
 msgid "faerie fire"
 msgstr ""
@@ -851,8 +851,8 @@ msgid ""
 "protects them well against weapons that could slip between their scales."
 msgstr ""
 
-#. [attack]: type=pierce
 #. [attack]: type=blade
+#. [attack]: type=pierce
 #: data/core/units/drakes/Arbiter.cfg:27 data/core/units/drakes/Arbiter.cfg:36
 #: data/core/units/drakes/Warden.cfg:28 data/core/units/drakes/Warden.cfg:37
 #: data/core/units/humans/Loyalist_Halberdier.cfg:28
@@ -1216,14 +1216,14 @@ msgstr ""
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Burner.cfg:28
 #: data/core/units/dunefolk/Firetrooper.cfg:29
-#: data/core/units/dunefolk/Scorcher.cfg:29
+#: data/core/units/dunefolk/Scorcher.cfg:28
 msgid "naphtha attack"
 msgstr ""
 
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Burner.cfg:37
 #: data/core/units/dunefolk/Firetrooper.cfg:38
-#: data/core/units/dunefolk/Scorcher.cfg:38
+#: data/core/units/dunefolk/Scorcher.cfg:37
 msgid "fire arrow"
 msgstr ""
 
@@ -1453,12 +1453,12 @@ msgid ""
 msgstr ""
 
 #. [unit_type]: id=Dune Scorcher, race=dunefolk
-#: data/core/units/dunefolk/Scorcher.cfg:5
+#: data/core/units/dunefolk/Scorcher.cfg:4
 msgid "Dune Scorcher"
 msgstr ""
 
 #. [unit_type]: id=Dune Scorcher, race=dunefolk
-#: data/core/units/dunefolk/Scorcher.cfg:24
+#: data/core/units/dunefolk/Scorcher.cfg:23
 msgid ""
 "Scorchers spend so much time experimenting with their weapons that they "
 "smell constantly of ash and flame. Regarded with wariness by their fellow "
@@ -1929,7 +1929,8 @@ msgid "Elvish High Lord"
 msgstr ""
 
 #. [unit_type]: id=Elvish High Lord, race=elf
-#: data/core/units/elves/High_Lord.cfg:18
+#. "awesome" is used here in the sense of "causing awe", not in the sense of "very good".
+#: data/core/units/elves/High_Lord.cfg:19
 msgid ""
 "The leaders of elvenkind command an instinctive loyalty from their people "
 "that rulers of other races can only envy, and earn it with great mindfulness "
@@ -3859,8 +3860,8 @@ msgstr ""
 msgid "Wolf"
 msgstr ""
 
-#. [unit_type]: id=Direwolf, race=wolf
 #. [unit_type]: id=Wolf, race=wolf
+#. [unit_type]: id=Direwolf, race=wolf
 #. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:33
 #: data/core/units/monsters/Wolf_Dire.cfg:24
@@ -4906,8 +4907,8 @@ msgid ""
 "There is a curious story of a farmer who had a great oak in his lawn, a tree "
 "which had stood when his father first broke the soil on that land, and under "
 "which his family had many memories. It was thus a shock to him, one morning, "
-"when he awoke to find it somehow spirited away, with nothing but a bare "
-"patch of earth where it once stood.\n"
+"when he awoke to find nothing but a bare patch of earth where the tree once "
+"stood, as though it had been spirited away in the wee hours of the night.\n"
 "\n"
 "Such encounters are all that is known of what are presumably the most "
 "ancient of woses."

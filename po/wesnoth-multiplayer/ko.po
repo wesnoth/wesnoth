@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-07-08 08:51 UTC\n"
+"POT-Creation-Date: 2018-09-09 08:38 UTC\n"
 "PO-Revision-Date: 2012-04-25 19:11+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -88,24 +88,29 @@ msgid ""
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:61
+#: data/multiplayer/eras.lua:62
 msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:75
+#: data/multiplayer/eras.lua:76
 msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:75
+#: data/multiplayer/eras.lua:76
 msgid "Grand total: <b>%d</b>"
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:86
+#: data/multiplayer/eras.lua:93
+msgid "Sides %s and %d are tied."
+msgstr ""
+
+#. [lua]: f
+#: data/multiplayer/eras.lua:95
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgstr ""
 
@@ -1552,19 +1557,19 @@ msgstr ""
 msgid "3p — Alirok Marsh"
 msgstr "3p - Alirok Marsh"
 
+#. [multiplayer]: id=multiplayer_Alirok_Marsh
+#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
+#. [multiplayer]: id=multiplayer_3p_Morituri
+#. [multiplayer]: id=multiplayer_Blue_Water_Province
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_Clash
+#. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_4p_Underworld
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #. [multiplayer]: id=multiplayer_8p_Morituri
-#. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_Clash
-#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
-#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
-#. [multiplayer]: id=multiplayer_4p_Morituri
 #. [multiplayer]: id=multiplayer_Loris_River
-#. [multiplayer]: id=multiplayer_Alirok_Marsh
-#. [multiplayer]: id=multiplayer_4p_Hamlets
-#. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -1737,8 +1742,8 @@ msgstr "4p - 이사르 교차로"
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
-"1+4 vs. 2+3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
-"villages."
+"1 &amp; 4 vs. 2 &amp; 3 (northeast vs. southwest). Designed for 75 starting "
+"gold, 20 villages."
 msgstr ""
 "아주 작은 2대 2 맵입니다. 좁은 장소에서의 전투에서는 적절한 유닛 교대와 계획"
 "된 움직임이 중요합니다. 팀은 플레이어 1,4와 2,3 (북동 팀 대 남서 팀)으로 구성"
@@ -1777,8 +1782,8 @@ msgstr "북동 팀"
 msgid "4p — King of the Hill"
 msgstr "4p - 산악의 제왕"
 
-#. [multiplayer]: id=multiplayer_Siege_Castles
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
+#. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 msgid " Recommended setting of 2 gold per village and 150 starting gold."
@@ -1822,7 +1827,7 @@ msgstr "4p - 로리스 강변"
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
 msgid ""
 "2 vs. 2 map centered around a river with keeps in opposite corners. Designed "
-"for players 1+4 vs. 2+3. There are 28 villages."
+"for players 1 &amp; 4 vs. 2 &amp; 3. There are 28 villages."
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
@@ -1849,7 +1854,8 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
 msgid ""
 "A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
-"east vs. west (1+4 vs. 2+3), but works well with any teams or FFA."
+"east vs. west (1 &amp; 4 vs. 2 &amp; 3), but works well with any teams or "
+"FFA."
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve

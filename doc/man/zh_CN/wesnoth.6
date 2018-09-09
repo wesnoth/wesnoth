@@ -37,8 +37,7 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一个回合制奇幻策略游
 .
 .TP 
 \fB\-\-all\-translations\fP
-Show all translations in the in\-game language selection list, even if they
-are deemed insufficiently complete.
+在游戏中的语言选择列表中显示所有翻译，哪怕这些翻译被认为不够完整，也一样显示。
 .TP 
 \fB\-\-bunzip\fP\fI\ infile.bz2\fP
 解压缩应为bzip2格式的文件，解压后去掉.bz2后缀。文件\fIinfile.bz2\fP将被删除。
@@ -65,7 +64,7 @@ are deemed insufficiently complete.
 打印数据目录的路径并退出。
 .TP 
 \fB\-d, \-\-debug\fP
-在游戏中启用额外的命令模式选项。（关于命令模式的更多信息请参阅wiki页面：https://www.wesnoth.org/wiki/CommandMode）
+在游戏中启用额外的命令模式选项。（关于命令模式的更多信息请参阅wiki页面：http://www.wesnoth.org/wiki/CommandMode）
 .TP 
 \fB\-e[\fP\fIfile\fP\fB],\ \-\-editor[\fP\fI=file\fP\fB]\fP
 直接启动游戏内置的地图编辑器。如果指定了\fIfile\fP，则和\fB\-e \-\-load\fP等价
@@ -95,7 +94,7 @@ are deemed insufficiently complete.
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 sets the severity level of the log domains.  \fBall\fP can be used to match any
 log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default the \fBwarning\fP level is used for most domains, but
-\fBdeprecation\fP defaults to none unless combined with the \fB\-d\fP option.
+\fBdeprecation\fP defaults to \fBnone\fP unless combined with the \fB\-d\fP option.
 .TP 
 \fB\-\-log\-precise\fP
 在日志文件中显示更高精度的时间戳。
@@ -145,7 +144,7 @@ log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebu
 \fB\-p,\ \-\-preprocess\fP\fI\ source\-file/folder\fP\fB\ \fP\fItarget\-directory\fP
 预处理指定的文件/文件夹。针对每个文件，一个未处理的.cfg文件和一个处理过的.cfg文件会被写入指定的目标目录中。如果指定的是个文件夹，那么将根据已知的预处理器规则递归地预处理之。“data/core/macros”目录中的常用宏会在指定的资源之前被预处理。例如：
 \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP
-有关预处理器的详情请见：https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor
+有关预处理器的详情请见：http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor
 .TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
 由逗号分隔的定义列表，用于 \fB\-\-preprocess\fP 指令。如果\fBSKIP_CORE\fP在定义列表中，则“data/core”目录不会被预处理。
@@ -189,8 +188,7 @@ log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebu
 \fB[micro_ai]\fP 特性的演示。此选项隐含 \fB\-\-nogui\fP 。
 .TP 
 \fB\-\-translations\-over\fP\fI\ percent\fP
-Set the standard for deeming a translation is complete enough to show in the
-in\-game language list to \fIpercent\fP.  Valid values are 0 to 100.
+将确认翻译是否足够完整的判断标准设为\fIpercent\fP，合法的值为0到100。
 .TP 
 \fB\-u,\ \-\-unit\fP\fI\ scenario\-id\fP
 将指定的测试场景作为单元测试运行。此选项隐含 \fB\-\-nogui\fP 。

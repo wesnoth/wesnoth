@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-07-08 04:51-0400\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2018-09-09 11:38+0300\n"
 "PO-Revision-Date: 2012-04-18 23:26-0300\n"
 "Last-Translator: Davi Duarte Pinheiro <daviduartep@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -1005,7 +1005,7 @@ msgid ""
 "which the Arkan-thoria empties.\n"
 "    • Lintanir Forest: The southernmost portion of the Great Northern "
 "Forest, a gigantic wood whose eastern and northern boundaries are known only "
-"the elves. Their capitol, Elensiria, has only seldom been visited by "
+"to the elves. Their capital, Elensiria, has only seldom been visited by "
 "humans.\n"
 "    • Great River: The origin of this river is somewhere in the east of the "
 "northern lands."
@@ -1239,7 +1239,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 854
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:88 data/core/help.cfg:529
+#: data/core/help.cfg:88 data/core/help.cfg:535
 msgid "Commands"
 msgstr "Comandos"
 
@@ -2602,9 +2602,9 @@ msgstr ""
 # File: data/core/help.cfg, line: 281
 # File: data/core/macros/schedules.cfg, line: 6
 # File: data/core/macros/schedules.cfg, line: 246
-#. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:343 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
@@ -2617,8 +2617,8 @@ msgstr "Amanhecer"
 # File: data/core/macros/schedules.cfg, line: 17
 # File: data/core/help.cfg, line: 282
 # File: data/core/macros/schedules.cfg, line: 17
-#. [topic]: id=time_of_day
 #. [time]: id=morning
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:344 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
@@ -2631,8 +2631,8 @@ msgstr "Manhã"
 # File: data/core/macros/schedules.cfg, line: 26
 # File: data/core/help.cfg, line: 283
 # File: data/core/macros/schedules.cfg, line: 26
-#. [topic]: id=time_of_day
 #. [time]: id=afternoon
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:345 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
@@ -2648,9 +2648,9 @@ msgstr "Tarde"
 # File: data/core/help.cfg, line: 284
 # File: data/core/macros/schedules.cfg, line: 35
 # File: data/core/macros/schedules.cfg, line: 358
-#. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:346 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
@@ -2663,8 +2663,8 @@ msgstr "Anoitecer"
 # File: data/core/macros/schedules.cfg, line: 46
 # File: data/core/help.cfg, line: 285
 # File: data/core/macros/schedules.cfg, line: 46
-#. [topic]: id=time_of_day
 #. [time]: id=first_watch
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:347 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
@@ -2677,8 +2677,8 @@ msgstr "Noite"
 # File: data/core/macros/schedules.cfg, line: 58
 # File: data/core/help.cfg, line: 286
 # File: data/core/macros/schedules.cfg, line: 58
-#. [topic]: id=time_of_day
 #. [time]: id=second_watch
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:348 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
@@ -3403,7 +3403,7 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<header>text='Creator Resources'</header>"
+"<header>text='Cores'</header>"
 msgstr ""
 "\n"
 "\n"
@@ -3411,6 +3411,36 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:496
+msgid ""
+"\n"
+"\n"
+"Cores enable total conversion of The Battle for Wesnoth. A core can replace "
+"all the content in Wesnoth: when a different core is loaded, the regular "
+"units, terrains and the like do not exist.\n"
+"\n"
+"Cores allow a significantly different game experience: for example, a World "
+"War II campaign, or even a different game altogether, as long as it can be "
+"represented as a hexagonal map with ’units’ in some way."
+msgstr ""
+
+#
+# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 819
+#. [topic]: id=using_addons
+#: data/core/help.cfg:500
+#, fuzzy
+msgid ""
+"\n"
+"\n"
+"<header>text='Creator Resources'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Chance de acertar'</header>"
+
+#. [topic]: id=using_addons
+#: data/core/help.cfg:502
 msgid ""
 "\n"
 "\n"
@@ -3426,12 +3456,12 @@ msgstr ""
 # File: data/core/help.cfg, line: 830
 # File: data/core/help.cfg, line: 830
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:505
+#: data/core/help.cfg:511
 msgid "Installing Add-ons"
 msgstr ""
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:506
+#: data/core/help.cfg:512
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -3444,16 +3474,16 @@ msgid ""
 "in the <italic>text='Version'</italic> column.\n"
 "\n"
 "To search for add-ons by keywords, type any relevant terms in any order in "
-"the <bold>text='Filter'</bold> box, separated by spaces. You can also sort "
-"the add-on list by clicking the column headers. It is also possible to "
-"choose to only display add-ons of specific categories by clicking on the "
-"<bold>text='Options'</bold> button in the top-right corner.\n"
+"the search box, separated by spaces. You can also sort the add-on list by "
+"clicking the column headers. It is also possible to choose to only display "
+"add-ons of specific categories by clicking on the <bold>text='Type'</bold> "
+"dropdown.\n"
 "\n"
 "To install an add-on, select it from the list and click the <bold>text='+'</"
-"bold> icon, or simply double-click on the add-on’s title. The "
-"<bold>text='Description'</bold> button provides you with additional details "
-"about the add-on, such as its full description, installation status, and "
-"available languages."
+"bold> icon, or simply double-click on the add-on’s title. If the window is "
+"too small to show them inline, the <bold>text='Addon Details'</bold> button "
+"provides you with additional details about the add-on, such as its full "
+"description, installation status, and available translations."
 msgstr ""
 
 #
@@ -3461,12 +3491,12 @@ msgstr ""
 # File: data/core/help.cfg, line: 844
 # File: data/core/help.cfg, line: 844
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:519
+#: data/core/help.cfg:525
 msgid "Removing Add-ons"
 msgstr ""
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:520
+#: data/core/help.cfg:526
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -3484,7 +3514,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 860
 # File: data/core/help.cfg, line: 860
 #. [topic]: id=general_commands
-#: data/core/help.cfg:535
+#: data/core/help.cfg:541
 #, fuzzy
 #| msgid "General commands"
 msgid "General Commands"
@@ -3503,7 +3533,7 @@ msgstr "Comandos Gerais"
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:537 data/core/help.cfg:580 data/core/help.cfg:618
+#: data/core/help.cfg:543 data/core/help.cfg:586 data/core/help.cfg:624
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3516,7 +3546,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 864
 # File: data/core/help.cfg, line: 864
 #. [topic]: id=general_commands
-#: data/core/help.cfg:539
+#: data/core/help.cfg:545
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3531,7 +3561,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 867
 # File: data/core/help.cfg, line: 867
 #. [topic]: id=general_commands
-#: data/core/help.cfg:542
+#: data/core/help.cfg:548
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3550,7 +3580,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 871
 # File: data/core/help.cfg, line: 871
 #. [topic]: id=general_commands
-#: data/core/help.cfg:546
+#: data/core/help.cfg:552
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3576,7 +3606,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:549
+#: data/core/help.cfg:555
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -3588,7 +3618,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 874
 # File: data/core/help.cfg, line: 874
 #. [topic]: id=general_commands
-#: data/core/help.cfg:552
+#: data/core/help.cfg:558
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3603,7 +3633,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 877
 # File: data/core/help.cfg, line: 877
 #. [topic]: id=general_commands
-#: data/core/help.cfg:555
+#: data/core/help.cfg:561
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3618,7 +3648,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 880
 # File: data/core/help.cfg, line: 880
 #. [topic]: id=general_commands
-#: data/core/help.cfg:558
+#: data/core/help.cfg:564
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3634,7 +3664,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 883
 # File: data/core/help.cfg, line: 883
 #. [topic]: id=general_commands
-#: data/core/help.cfg:561
+#: data/core/help.cfg:567
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3649,7 +3679,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 886
 # File: data/core/help.cfg, line: 886
 #. [topic]: id=general_commands
-#: data/core/help.cfg:564
+#: data/core/help.cfg:570
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3664,7 +3694,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 889
 # File: data/core/help.cfg, line: 889
 #. [topic]: id=general_commands
-#: data/core/help.cfg:567
+#: data/core/help.cfg:573
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3679,7 +3709,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 892
 # File: data/core/help.cfg, line: 892
 #. [topic]: id=general_commands
-#: data/core/help.cfg:570
+#: data/core/help.cfg:576
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3692,7 +3722,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 901
 # File: data/core/help.cfg, line: 901
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:579
+#: data/core/help.cfg:585
 #, fuzzy
 #| msgid "Multiplayer commands"
 msgid "Multiplayer Commands"
@@ -3703,7 +3733,7 @@ msgstr "Comandos para Multijogador"
 # File: data/core/help.cfg, line: 904
 # File: data/core/help.cfg, line: 904
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:582
+#: data/core/help.cfg:588
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3720,7 +3750,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 907
 # File: data/core/help.cfg, line: 907
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:585
+#: data/core/help.cfg:591
 #, fuzzy
 msgid ""
 "\n"
@@ -3742,7 +3772,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:588
+#: data/core/help.cfg:594
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -3751,7 +3781,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:591
+#: data/core/help.cfg:597
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -3764,7 +3794,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 910
 # File: data/core/help.cfg, line: 910
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:594
+#: data/core/help.cfg:600
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -3783,7 +3813,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 913
 # File: data/core/help.cfg, line: 913
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:597
+#: data/core/help.cfg:603
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3801,7 +3831,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 916
 # File: data/core/help.cfg, line: 916
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:600
+#: data/core/help.cfg:606
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3818,7 +3848,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 919
 # File: data/core/help.cfg, line: 919
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:603
+#: data/core/help.cfg:609
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -3833,7 +3863,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 922
 # File: data/core/help.cfg, line: 922
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:606
+#: data/core/help.cfg:612
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3850,7 +3880,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 925
 # File: data/core/help.cfg, line: 925
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:609
+#: data/core/help.cfg:615
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -3865,7 +3895,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 933
 # File: data/core/help.cfg, line: 933
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:617
+#: data/core/help.cfg:623
 #, fuzzy
 #| msgid "Debug mode commands"
 msgid "Debug Mode Commands"
@@ -3876,7 +3906,7 @@ msgstr "Comandos do modo de Debug"
 # File: data/core/help.cfg, line: 936
 # File: data/core/help.cfg, line: 936
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:620
+#: data/core/help.cfg:626
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3893,7 +3923,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 939
 # File: data/core/help.cfg, line: 939
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:623
+#: data/core/help.cfg:629
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3908,7 +3938,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 942
 # File: data/core/help.cfg, line: 942
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:626
+#: data/core/help.cfg:632
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3923,7 +3953,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 945
 # File: data/core/help.cfg, line: 945
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:629
+#: data/core/help.cfg:635
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3938,7 +3968,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 948
 # File: data/core/help.cfg, line: 948
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:632
+#: data/core/help.cfg:638
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3953,7 +3983,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 951
 # File: data/core/help.cfg, line: 951
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:635
+#: data/core/help.cfg:641
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3968,7 +3998,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 954
 # File: data/core/help.cfg, line: 954
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:638
+#: data/core/help.cfg:644
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3983,7 +4013,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 957
 # File: data/core/help.cfg, line: 957
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:641
+#: data/core/help.cfg:647
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3998,7 +4028,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 960
 # File: data/core/help.cfg, line: 960
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:644
+#: data/core/help.cfg:650
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -4015,7 +4045,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 963
 # File: data/core/help.cfg, line: 963
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:647
+#: data/core/help.cfg:653
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -7168,7 +7198,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 168
 # File: data/core/units.cfg, line: 168
 #. [race]: id=dunefolk
-#. [race]: id=khalifate
+#. [race]: id=khalifate # wmllint: noconvert
 #: data/core/units.cfg:208 data/core/units.cfg:233
 #, fuzzy
 #| msgid "race^Human"
@@ -7180,7 +7210,7 @@ msgstr "Humano"
 # File: data/core/units.cfg, line: 169
 # File: data/core/units.cfg, line: 169
 #. [race]: id=dunefolk
-#. [race]: id=khalifate
+#. [race]: id=khalifate # wmllint: noconvert
 #: data/core/units.cfg:209 data/core/units.cfg:234
 #, fuzzy
 #| msgid "race+female^Human"
@@ -7192,7 +7222,7 @@ msgstr "Humana"
 # File: data/core/units.cfg, line: 296
 # File: data/core/units.cfg, line: 296
 #. [race]: id=dunefolk
-#. [race]: id=khalifate
+#. [race]: id=khalifate # wmllint: noconvert
 #: data/core/units.cfg:210 data/core/units.cfg:235
 #, fuzzy
 #| msgid "race+plural^Undead"
@@ -7257,7 +7287,7 @@ msgid ""
 "distant past in the exotic far corners of Irdya."
 msgstr ""
 
-#. [race]: id=khalifate
+#. [race]: id=khalifate # wmllint: noconvert
 #: data/core/units.cfg:236
 msgid "This race does not have a description yet."
 msgstr ""
@@ -7266,7 +7296,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 185
 # File: data/core/units.cfg, line: 185
 # File: data/core/units.cfg, line: 185
-#. [race]: id=lizard, description=
+#. [race]: id=lizard
 #: data/core/units.cfg:247
 msgid "race^Saurian"
 msgstr "Lagarto"
@@ -7275,7 +7305,7 @@ msgstr "Lagarto"
 # File: data/core/units.cfg, line: 186
 # File: data/core/units.cfg, line: 186
 # File: data/core/units.cfg, line: 186
-#. [race]: id=lizard, description=
+#. [race]: id=lizard
 #: data/core/units.cfg:248
 msgid "race+female^Saurian"
 msgstr "Lagarta"
@@ -7284,17 +7314,87 @@ msgstr "Lagarta"
 # File: data/core/units.cfg, line: 187
 # File: data/core/units.cfg, line: 187
 # File: data/core/units.cfg, line: 187
-#. [race]: id=lizard, description=
+#. [race]: id=lizard
 #: data/core/units.cfg:249
 msgid "race^Saurians"
 msgstr "Lagartos"
+
+#. [race]: id=lizard
+#: data/core/units.cfg:250
+msgid ""
+"Saurians are lizard-like creatures. Smaller and more slender than humans, "
+"they rarely stand taller than a ten year old child, though from tip of snout "
+"to end of tail a Saurian can be as long as the average man is tall. Light "
+"and nimble, the warriors prefer to fight as they hunt — slipping through "
+"enemy lines to target the weak and the injured while evading their "
+"attackers.\n"
+"\n"
+"<header>text='Society'</header>\n"
+"Saurians are very mysterious creatures due to their tendency to live in "
+"areas inhospitable to others, such as swamps. Fatalistic in the extreme, "
+"Saurians believe all the events in a life can be predicted by the use of a "
+"complex form of astrology.\n"
+"\n"
+"Saurian culture is sharply segregated between the genders. Within each "
+"gender the members compete, and through skill, determination, and reputation "
+"establish a clear pecking order, with a chief at the top. On those occasions "
+"when the two genders interact they do not contest for dominance; instead, "
+"the situation determines the dominant gender. The chief of the males is "
+"alpha within the clan's village or encampment while the chief of females is "
+"dominant anywhere else. This continues down the rank structure with each "
+"male or female being dominant over any member of the opposite gender with "
+"lower rank and submitting to members of the opposite gender with higher "
+"rank.\n"
+"\n"
+"The segregation and alternating gender-dominance of Saurian society is an "
+"outgrowth of their clearly defined gender roles. It is the responsibility of "
+"the female to hunt and find food, skills which ultimately train them to be "
+"warriors: the skirmishers, flankers, and ambushers other races so fear. "
+"Males, meanwhile, are responsible for guarding the clutch — the eggs left by "
+"the females. While this leaves time for the males to develop and hone the "
+"arts of astrology, healing, and magic, it also exposes them to significant "
+"danger, as they are stationary targets for a Saurian clan's number one enemy "
+"— other Saurian clans.\n"
+"\n"
+"New Saurian clans are started when the proper astrological signs are read. "
+"Called a “hatching,” each female indicated by the conjunction selects a "
+"group of individuals with lower rank and leave their source clan. Frequently "
+"all females with a specific trait will be indicated, causing multiple clans "
+"to “hatch” at the same time. Selection is a simple process: no group leaving "
+"can be larger than any other, all the groups together cannot be larger than "
+"the group being left, and higher ranking allows a female to overrule another "
+"female's choice of who they take.\n"
+"\n"
+"Because of their rapid population growth, frequent splits in clans, and the "
+"fact that cannibalism is not taboo, violence is one of the defining features "
+"of Saurian life. This limits the growth of the Saurian culture to fits and "
+"starts, as much of their knowledge is passed by oral tradition and their "
+"possessions must be mobile.\n"
+"\n"
+"<header>text='Geography'</header>\n"
+"Saurians can live in many different areas, though swamps are by far their "
+"most common habitat.\n"
+"\n"
+"<header>text='Biology'</header>\n"
+"Saurians live spectacularly short lives by comparison to most of the other "
+"races of Wesnoth, reaching full adulthood within three years and often dying "
+"by the time they are 10 to 15 years old. By far, the most common cause of "
+"death is violence. Saurian females produce clutches of about 20 eggs roughly "
+"once a year, which creates constant population pressure and would stress "
+"most carnivores' food supply. Hunters and scavengers, Saurians have "
+"extremely strong jaws and have a very powerful digestive system with highly "
+"acidic fluids, making them capable of eating and digesting all of their prey "
+"including skin, teeth, horns and bones. Further, they have no aversion to "
+"eating carrion and even committing cannibalism, which are both regular "
+"occurrences."
+msgstr ""
 
 #
 # File: data/core/units.cfg, line: 197
 # File: data/core/units.cfg, line: 197
 # File: data/core/units.cfg, line: 197
 #. [race]: id=mechanical
-#: data/core/units.cfg:259
+#: data/core/units.cfg:276
 msgid "race^Mechanical"
 msgstr "Construtos"
 
@@ -7303,7 +7403,7 @@ msgstr "Construtos"
 # File: data/core/units.cfg, line: 198
 # File: data/core/units.cfg, line: 198
 #. [race]: id=mechanical
-#: data/core/units.cfg:260
+#: data/core/units.cfg:277
 msgid "race+plural^Mechanical"
 msgstr "Construtos"
 
@@ -7312,7 +7412,7 @@ msgstr "Construtos"
 # File: data/core/units.cfg, line: 199
 # File: data/core/units.cfg, line: 199
 #. [race]: id=mechanical
-#: data/core/units.cfg:261
+#: data/core/units.cfg:278
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -7329,7 +7429,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 208
 # File: data/core/units.cfg, line: 208
 #. [race]: id=merman
-#: data/core/units.cfg:270
+#: data/core/units.cfg:287
 msgid "race^Merman"
 msgstr "Sereio"
 
@@ -7338,7 +7438,7 @@ msgstr "Sereio"
 # File: data/core/units.cfg, line: 209
 # File: data/core/units.cfg, line: 209
 #. [race]: id=merman
-#: data/core/units.cfg:271
+#: data/core/units.cfg:288
 msgid "race^Mermaid"
 msgstr "Sereia"
 
@@ -7347,7 +7447,7 @@ msgstr "Sereia"
 # File: data/core/units.cfg, line: 271
 # File: data/core/units.cfg, line: 271
 #. [race]: id=merman
-#: data/core/units.cfg:272
+#: data/core/units.cfg:289
 #, fuzzy
 #| msgid "race^Troll"
 msgid "race^Merfolk"
@@ -7358,7 +7458,7 @@ msgstr "Troll"
 # File: data/core/units.cfg, line: 212
 # File: data/core/units.cfg, line: 212
 #. [race]: id=merman
-#: data/core/units.cfg:274
+#: data/core/units.cfg:291
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -7386,7 +7486,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 220
 # File: data/core/units.cfg, line: 220
 #. [race]: id=monster
-#: data/core/units.cfg:282
+#: data/core/units.cfg:299
 msgid "race^Monster"
 msgstr "Monstro"
 
@@ -7395,7 +7495,7 @@ msgstr "Monstro"
 # File: data/core/units.cfg, line: 221
 # File: data/core/units.cfg, line: 221
 #. [race]: id=monster
-#: data/core/units.cfg:283
+#: data/core/units.cfg:300
 #, fuzzy
 msgid "race+female^Monster"
 msgstr "Monstro"
@@ -7405,7 +7505,7 @@ msgstr "Monstro"
 # File: data/core/units.cfg, line: 222
 # File: data/core/units.cfg, line: 222
 #. [race]: id=monster
-#: data/core/units.cfg:284
+#: data/core/units.cfg:301
 msgid "race^Monsters"
 msgstr "Monstros"
 
@@ -7414,7 +7514,7 @@ msgstr "Monstros"
 # File: data/core/units.cfg, line: 223
 # File: data/core/units.cfg, line: 223
 #. [race]: id=monster
-#: data/core/units.cfg:285
+#: data/core/units.cfg:302
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -7429,7 +7529,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 230
 # File: data/core/units.cfg, line: 230
 #. [race]: id=naga
-#: data/core/units.cfg:292
+#: data/core/units.cfg:309
 msgid "race^Naga"
 msgstr "Naga"
 
@@ -7438,7 +7538,7 @@ msgstr "Naga"
 # File: data/core/units.cfg, line: 231
 # File: data/core/units.cfg, line: 231
 #. [race]: id=naga
-#: data/core/units.cfg:293
+#: data/core/units.cfg:310
 #, fuzzy
 msgid "race^Nagini"
 msgstr "Nagani"
@@ -7448,7 +7548,7 @@ msgstr "Nagani"
 # File: data/core/units.cfg, line: 232
 # File: data/core/units.cfg, line: 232
 #. [race]: id=naga
-#: data/core/units.cfg:294
+#: data/core/units.cfg:311
 msgid "race^Nagas"
 msgstr "Nagas"
 
@@ -7457,7 +7557,7 @@ msgstr "Nagas"
 # File: data/core/units.cfg, line: 233
 # File: data/core/units.cfg, line: 233
 #. [race]: id=naga
-#: data/core/units.cfg:295
+#: data/core/units.cfg:312
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -7492,7 +7592,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 241
 # File: data/core/units.cfg, line: 241
 #. [race]: id=ogre
-#: data/core/units.cfg:303
+#: data/core/units.cfg:320
 msgid "race^Ogre"
 msgstr "Ogro"
 
@@ -7501,7 +7601,7 @@ msgstr "Ogro"
 # File: data/core/units.cfg, line: 242
 # File: data/core/units.cfg, line: 242
 #. [race]: id=ogre
-#: data/core/units.cfg:304
+#: data/core/units.cfg:321
 msgid "race+female^Ogre"
 msgstr "Ogro"
 
@@ -7510,12 +7610,12 @@ msgstr "Ogro"
 # File: data/core/units.cfg, line: 243
 # File: data/core/units.cfg, line: 243
 #. [race]: id=ogre
-#: data/core/units.cfg:305
+#: data/core/units.cfg:322
 msgid "race^Ogres"
 msgstr "Ogres"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:306
+#: data/core/units.cfg:323
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -7538,7 +7638,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 252
 # File: data/core/units.cfg, line: 252
 #. [race]: id=orc
-#: data/core/units.cfg:314
+#: data/core/units.cfg:331
 msgid "race^Orc"
 msgstr "Orc"
 
@@ -7547,7 +7647,7 @@ msgstr "Orc"
 # File: data/core/units.cfg, line: 253
 # File: data/core/units.cfg, line: 253
 #. [race]: id=orc
-#: data/core/units.cfg:315
+#: data/core/units.cfg:332
 msgid "race+female^Orc"
 msgstr "Orc"
 
@@ -7556,12 +7656,12 @@ msgstr "Orc"
 # File: data/core/units.cfg, line: 254
 # File: data/core/units.cfg, line: 254
 #. [race]: id=orc
-#: data/core/units.cfg:316
+#: data/core/units.cfg:333
 msgid "race^Orcs"
 msgstr "Orcs"
 
 #. [race]: id=orc
-#: data/core/units.cfg:317
+#: data/core/units.cfg:334
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -7615,7 +7715,7 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:328
+#: data/core/units.cfg:345
 msgid ""
 "\n"
 "\n"
@@ -7628,7 +7728,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 271
 # File: data/core/units.cfg, line: 271
 #. [race]: id=troll
-#: data/core/units.cfg:337
+#: data/core/units.cfg:354
 msgid "race^Troll"
 msgstr "Troll"
 
@@ -7637,7 +7737,7 @@ msgstr "Troll"
 # File: data/core/units.cfg, line: 272
 # File: data/core/units.cfg, line: 272
 #. [race]: id=troll
-#: data/core/units.cfg:338
+#: data/core/units.cfg:355
 msgid "race+female^Troll"
 msgstr "Troll"
 
@@ -7646,12 +7746,12 @@ msgstr "Troll"
 # File: data/core/units.cfg, line: 273
 # File: data/core/units.cfg, line: 273
 #. [race]: id=troll
-#: data/core/units.cfg:339
+#: data/core/units.cfg:356
 msgid "race^Trolls"
 msgstr "Trolls"
 
 #. [race]: id=troll
-#: data/core/units.cfg:340
+#: data/core/units.cfg:357
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -7694,7 +7794,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 294
 # File: data/core/units.cfg, line: 294
 #. [race]: id=undead
-#: data/core/units.cfg:360
+#: data/core/units.cfg:377
 msgid "race^Undead"
 msgstr "Mortos-Vivos"
 
@@ -7703,7 +7803,7 @@ msgstr "Mortos-Vivos"
 # File: data/core/units.cfg, line: 295
 # File: data/core/units.cfg, line: 295
 #. [race]: id=undead
-#: data/core/units.cfg:361
+#: data/core/units.cfg:378
 msgid "race+female^Undead"
 msgstr "Morta-Viva"
 
@@ -7712,12 +7812,12 @@ msgstr "Morta-Viva"
 # File: data/core/units.cfg, line: 296
 # File: data/core/units.cfg, line: 296
 #. [race]: id=undead
-#: data/core/units.cfg:362
+#: data/core/units.cfg:379
 msgid "race+plural^Undead"
 msgstr "Mortos-Vivos"
 
 #. [race]: id=undead
-#: data/core/units.cfg:363
+#: data/core/units.cfg:380
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -7750,7 +7850,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 310
 # File: data/core/units.cfg, line: 310
 #. [race]: id=wolf
-#: data/core/units.cfg:376
+#: data/core/units.cfg:393
 msgid "race^Wolf"
 msgstr "Lobo"
 
@@ -7759,7 +7859,7 @@ msgstr "Lobo"
 # File: data/core/units.cfg, line: 311
 # File: data/core/units.cfg, line: 311
 #. [race]: id=wolf
-#: data/core/units.cfg:377
+#: data/core/units.cfg:394
 #, fuzzy
 msgid "race+female^Wolf"
 msgstr "Elfa"
@@ -7769,12 +7869,12 @@ msgstr "Elfa"
 # File: data/core/units.cfg, line: 312
 # File: data/core/units.cfg, line: 312
 #. [race]: id=wolf
-#: data/core/units.cfg:378
+#: data/core/units.cfg:395
 msgid "race^Wolves"
 msgstr "Lobos"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:379
+#: data/core/units.cfg:396
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -7790,7 +7890,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 322
 # File: data/core/units.cfg, line: 322
 #. [race]: id=wose
-#: data/core/units.cfg:388
+#: data/core/units.cfg:405
 msgid "race^Wose"
 msgstr "Wose"
 
@@ -7799,12 +7899,12 @@ msgstr "Wose"
 # File: data/core/units.cfg, line: 323
 # File: data/core/units.cfg, line: 323
 #. [race]: id=wose
-#: data/core/units.cfg:389
+#: data/core/units.cfg:406
 msgid "race^Woses"
 msgstr "Woses"
 
 #. [race]: id=wose
-#: data/core/units.cfg:390
+#: data/core/units.cfg:407
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "

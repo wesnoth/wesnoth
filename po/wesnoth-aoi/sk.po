@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-07-08 08:51 UTC\n"
+"POT-Creation-Date: 2018-09-09 08:37 UTC\n"
 "PO-Revision-Date: 2018-04-18 01:12+0200\n"
 "Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
@@ -174,11 +174,11 @@ msgstr "Elfovia"
 msgid "Lomarfel"
 msgstr "Lomarfel"
 
-#. [side]: type=Orcish Sovereign, id=Rualsha
-#. [side]: type=Orcish Warlord, id=Gnargha
-#. [side]: type=Orcish Warlord, id=Krughnar
 #. [side]: type=Orcish Warrior, id=Urugha
+#. [side]: type=Orcish Warlord, id=Krughnar
+#. [side]: type=Orcish Sovereign, id=Rualsha
 #. [side]: type=Orcish Slayer, id=Gharlsa
+#. [side]: type=Orcish Warlord, id=Gnargha
 #: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:88
 #: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:59
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:66
@@ -631,9 +631,15 @@ msgstr "(<i>Odkašľanie</i>) Počkám si... spolu s mŕtvymi..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:222
+#, fuzzy
+#| msgid ""
+#| "The orcish chieftain finally fell, overcome by his wounds. The elves "
+#| "found themselves in a half-ruined camp littered with the bodies of both "
+#| "sides.There was no hale orc in sight, nor did any of the wounded beg "
+#| "mercy. The elves took no prisoners."
 msgid ""
 "The orcish chieftain finally fell, overcome by his wounds. The elves found "
-"themselves in a half-ruined camp littered with the bodies of both sides."
+"themselves in a half-ruined camp littered with the bodies of both sides. "
 "There was no hale orc in sight, nor did any of the wounded beg mercy. The "
 "elves took no prisoners."
 msgstr ""
@@ -678,9 +684,13 @@ msgstr ""
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:265
+#, fuzzy
+#| msgid ""
+#| "What about the loot lord? We found supplies worth over a hundred gold in "
+#| "the camp."
 msgid ""
-"What about the loot lord? We found supplies worth over a hundred gold in the "
-"camp."
+"What about the loot, lord? We found supplies worth over a hundred gold in "
+"the camp."
 msgstr ""
 "Čo urobíme s korisťou? Našli sme zásoby po celom tábore aj so stovkou "
 "zlatých mincí."
@@ -714,7 +724,9 @@ msgstr ""
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:320
-msgid "We can’t carry on Lord, the men are too tired. We have to fall back."
+#, fuzzy
+#| msgid "We can’t carry on Lord, the men are too tired. We have to fall back."
+msgid "We can’t carry on, lord, the men are too tired. We have to fall back."
 msgstr "Nemôžeme pokračovať, muži sú unavení. Musíme sa stiahnuť."
 
 #. [message]: speaker=Erlornas
