@@ -5,16 +5,15 @@
     * S13: allied leaders whose death causes defeat won't leave their keep and
       the lich brothers and Krash got more gold
   * Secrets of the Ancients:
-     * Fix dialog said by wrong unit & revert previous fix (issue #3294)
+    * Fix dialog said by wrong unit & revert previous fix (issue #3294)
   * The South Guard:
-    * S2: the case that Deoran is not sent to the Citadel is handled better.
-    * S2: it may not happen anymore that enemy units neutralize villages instead
-      of capturing or burning them; and the game stats don't hide units anymore.
+    * S2: the case where Deoran is not sent to the Citadel is handled better.
+    * S2: enemy units will no longer neutralize villages instead of capturing or burning them.
+      This also means certain units will no longer be hidden in the Game Stats list.
     * S4: bodyguards are never spawned next to other units, and always in forest.
     * S5: zombies have now one castle with two leaders.
-    * S6a: mermen leave after this scenario.
-    * S7a & S8a: some hero may now die.
-    * Mermen are not anymore availaible after S6a.
+    * S6a: mermen leave after this scenario and will no longer be available.
+    * S7a & S8a: some heroes may now die.
    * Tutorial:
      * Added more information to the Status Table prompt about how to access it (issue #2883).
    * Under the Burning Suns:
@@ -25,10 +24,10 @@
  ### User Interface
    * MacOS: Fixed moving the mouse with a touchpad also scrolling GUI dialogs
    * MacOS: Add build number to OS version report
-   * Fix layout of Preferences window with some localisations (such as Czech)
+   * Fix layout of Preferences window with some localizations (such as Czech)
    * Force leader sprites larger than 72x72 to be downscaled in Load Game (issue #3474).
  ### Miscellaneous and bug fixes
-   * Fix some minor problems in macOS package
+   * Fix some minor problems with the macOS package
    * Fast Micro AI: Fix bug crashing the AI when units with chance-to-hit
      specials without id are on map
    * Fixed the debug mode Create Unit dialog crashing when changing the gender
