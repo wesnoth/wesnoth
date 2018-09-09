@@ -44,7 +44,6 @@ function wesnoth.wml_actions.heal_unit(cfg)
 				animator:add(healers[1], 'healing', 'hit', {value = heal_amount})
 			end
 			animator:run()
-			animator:clear()
 		end
 
 		u.hitpoints = new_hitpoints
