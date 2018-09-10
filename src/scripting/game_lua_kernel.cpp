@@ -4738,12 +4738,16 @@ bool game_lua_kernel::run_filter(char const *name, const map_location& l)
 bool game_lua_kernel::run_filter(char const *name, const unit& u)
 {
 	lua_State *L = mState;
-	unit_map::const_unit_iterator ui = units().find(u.get_location());
-	if (!ui.valid()) return false;
-	// Pass the unit as argument.
-	luaW_pushunit(L, ui->underlying_id());
-
-	return run_filter(name, 1);
+	lua_unit* lu = luaW_pushlocalunit(L, const_cast<unit&>(u));
+	// stack: unit
+	// put the unit to the stack twice to prevent gc.
+	lua_pushvalue(L, -1);
+	// stack: unit, unit
+	bool res = run_filter(name, 1);
+	// stack: unit
+	lu->clear_ref();
+	lua_pop(L, 1);
+	return res;
 }
 /**
 * Runs a script from a filter.
