@@ -194,7 +194,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 			if (xp_for_advance == 0)
 				xp_for_advance = 1;
 
-			int fight_xp = defend_it->level();
+			int fight_xp = game_config::combat_xp(defend_it->level());
 			int kill_xp = game_config::kill_xp(fight_xp);
 
 			if (fight_xp >= xp_for_advance) {
@@ -233,7 +233,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		 * directly.  For each level of attacker def gets 1 xp or
 		 * kill_experience.
 		 */
-		int fight_xp = up->level();
+		int fight_xp = game_config::combat_xp(up->level());
 		int kill_xp = game_config::kill_xp(fight_xp);
 		def_avg_experience += fight_xp * (1.0 - att.hp_dist[0]) + kill_xp * att.hp_dist[0];
 		if (m == movements.begin()) {

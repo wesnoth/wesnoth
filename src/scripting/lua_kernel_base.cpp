@@ -878,6 +878,7 @@ int lua_kernel_base::impl_game_config_get(lua_State* L)
 	return_int_attrib("rest_heal_amount", game_config::rest_heal_amount);
 	return_int_attrib("recall_cost", game_config::recall_cost);
 	return_int_attrib("kill_experience", game_config::kill_experience);
+	return_int_attrib("combat_experience", game_config::combat_experience);
 	return_string_attrib("version", game_config::wesnoth_version.str());
 	return_bool_attrib("debug", game_config::debug);
 	return_bool_attrib("debug_lua", game_config::debug_lua);

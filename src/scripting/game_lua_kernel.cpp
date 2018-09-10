@@ -1443,6 +1443,7 @@ int game_lua_kernel::impl_game_config_set(lua_State *L)
 	modify_int_attrib("rest_heal_amount", game_config::rest_heal_amount = value);
 	modify_int_attrib("recall_cost", game_config::recall_cost = value);
 	modify_int_attrib("kill_experience", game_config::kill_experience = value);
+	modify_int_attrib("combat_experience", game_config::combat_experience = value);
 	modify_int_attrib("last_turn", tod_man().set_number_of_turns_by_wml(value));
 	modify_string_attrib("next_scenario", gamedata().set_next_scenario(value));
 	modify_string_attrib("theme",

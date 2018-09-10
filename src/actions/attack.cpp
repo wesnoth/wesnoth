@@ -1449,8 +1449,8 @@ void attack::perform()
 	d_.orig_attacks_ = d_stats_->num_blows;
 	a_.n_attacks_ = a_.orig_attacks_;
 	d_.n_attacks_ = d_.orig_attacks_;
-	a_.xp_ = d_.get_unit().level();
-	d_.xp_ = a_.get_unit().level();
+	a_.xp_ = game_config::combat_xp(d_.get_unit().level());
+	d_.xp_ = game_config::combat_xp(a_.get_unit().level());
 
 	bool defender_strikes_first = (d_stats_->firststrike && !a_stats_->firststrike);
 	unsigned int rounds = std::max<unsigned int>(a_stats_->rounds, d_stats_->rounds) - 1;

@@ -2035,13 +2035,13 @@ void one_strike_fight(const battle_context_unit_stats& stats,
 		return;
 	}
 
-	if(stats.experience + opp_stats.level >= stats.max_experience) {
+	if(stats.experience + game_config::combat_xp(opp_stats.level) >= stats.max_experience) {
 		forced_levelup(hp_dist);
 	} else if(stats.experience + game_config::kill_xp(opp_stats.level) >= stats.max_experience) {
 		conditional_levelup(hp_dist, opp_hp_dist[0]);
 	}
 
-	if(opp_stats.experience + stats.level >= opp_stats.max_experience) {
+	if(opp_stats.experience + game_config::combat_xp(stats.level) >= opp_stats.max_experience) {
 		forced_levelup(opp_hp_dist);
 	} else if(opp_stats.experience + game_config::kill_xp(stats.level) >= opp_stats.max_experience) {
 		conditional_levelup(opp_hp_dist, hp_dist[0]);
@@ -2180,13 +2180,13 @@ void complex_fight(attack_prediction_mode mode,
 	}
 
 	if(levelup_considered) {
-		if(stats.experience + opp_stats.level >= stats.max_experience) {
+		if(stats.experience + game_config::combat_xp(opp_stats.level) >= stats.max_experience) {
 			m->forced_levelup_a();
 		} else if(stats.experience + game_config::kill_xp(opp_stats.level) >= stats.max_experience) {
 			m->conditional_levelup_a();
 		}
 
-		if(opp_stats.experience + stats.level >= opp_stats.max_experience) {
+		if(opp_stats.experience + game_config::combat_xp(stats.level) >= opp_stats.max_experience) {
 			m->forced_levelup_b();
 		} else if(opp_stats.experience + game_config::kill_xp(stats.level) >= opp_stats.max_experience) {
 			m->conditional_levelup_b();
@@ -2447,12 +2447,12 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 		opponent.slowed = std::min(std::accumulate(opponent.summary[1].begin(), opponent.summary[1].end(), 0.0), 1.0);
 	}
 
-	if(u_.experience + opponent.u_.level >= u_.max_experience) {
+	if(u_.experience + game_config::combat_xp(opponent.u_.level) >= u_.max_experience) {
 		// We'll level up after the battle -> slow/poison will go away
 		poisoned = 0.0;
 		slowed = 0.0;
 	}
-	if(opponent.u_.experience + u_.level >= opponent.u_.max_experience) {
+	if(opponent.u_.experience + game_config::combat_xp(u_.level) >= opponent.u_.max_experience) {
 		opponent.poisoned = 0.0;
 		opponent.slowed = 0.0;
 	}
