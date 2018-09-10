@@ -34,6 +34,7 @@ namespace game_config
 	extern int rest_heal_amount;
 	extern int recall_cost;
 	extern int kill_experience;
+	extern int combat_experience;
 	extern unsigned int tile_size;
 	extern unsigned lobby_network_timer;
 	extern unsigned lobby_refresh;
@@ -45,6 +46,11 @@ namespace game_config
 	inline int kill_xp(int level)
 	{
 		return level ? kill_experience * level : kill_experience / 2;
+	}
+
+	inline int combat_xp(int level)
+	{
+		return combat_experience * level;
 	}
 
 	extern std::string wesnoth_program_dir;

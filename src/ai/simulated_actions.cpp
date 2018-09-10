@@ -61,8 +61,8 @@ bool simulated_attack(const map_location& attacker_loc, const map_location& defe
 	LOG_AI_SIM_ACTIONS << "attacker's hp after attack: " << attack_unit->hitpoints() << std::endl;
 	LOG_AI_SIM_ACTIONS << "defender's hp after attack: " << defend_unit->hitpoints() << std::endl;
 
-	int attacker_xp = defend_unit->level();
-	int defender_xp = attack_unit->level();
+	int attacker_xp = game_config::combat_xp(defend_unit->level());
+	int defender_xp = game_config::combat_xp(attack_unit->level());
 	bool attacker_died = false;
 	bool defender_died = false;
 	if(attack_unit->hitpoints() <= 0){
