@@ -153,16 +153,16 @@ static int impl_tstring_collect(lua_State *L)
 
 static int impl_tstring_lt(lua_State *L)
 {
-	t_string *t1 = static_cast<t_string *>(lua_touserdata(L, 1));
-	t_string *t2 = static_cast<t_string *>(lua_touserdata(L, 2));
+	t_string *t1 = static_cast<t_string *>(luaL_checkudata(L, 1, tstringKey));
+	t_string *t2 = static_cast<t_string *>(luaL_checkudata(L, 2, tstringKey));
 	lua_pushboolean(L, translation::compare(t1->get(), t2->get()) < 0);
 	return 1;
 }
 
 static int impl_tstring_le(lua_State *L)
 {
-	t_string *t1 = static_cast<t_string *>(lua_touserdata(L, 1));
-	t_string *t2 = static_cast<t_string *>(lua_touserdata(L, 2));
+	t_string *t1 = static_cast<t_string *>(luaL_checkudata(L, 1, tstringKey));
+	t_string *t2 = static_cast<t_string *>(luaL_checkudata(L, 2, tstringKey));
 	lua_pushboolean(L, translation::compare(t1->get(), t2->get()) < 1);
 	return 1;
 }
