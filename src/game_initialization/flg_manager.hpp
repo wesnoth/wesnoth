@@ -23,6 +23,7 @@ namespace randomness { class mt_rng; }
 namespace ng {
 
 const std::string random_enemy_picture("units/random-dice.png");
+const std::string blank_hex_picture("misc/blank-hex.png");
 
 /// FLG stands for faction, leader and gender.
 class flg_manager
