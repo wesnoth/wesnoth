@@ -1629,6 +1629,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			return;
 		}
 
+		g.new_scenario(socket);
 		g.save_replay();
 		g.reset_last_synced_context_id();
 
