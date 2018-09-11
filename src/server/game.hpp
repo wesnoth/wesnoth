@@ -77,6 +77,9 @@ public:
 	/** Checks whether the connection's ip address is banned. */
 	bool player_is_banned(const socket_ptr& player) const;
 
+	/** when the host sends the new scenario of a mp campaign */
+	void new_scenario(const socket_ptr& player);
+
 	bool level_init() const
 	{
 		return level_.child("snapshot") || level_.child("scenario");
@@ -500,6 +503,10 @@ private:
 	bool all_observers_muted_;
 
 	std::vector<std::string> bans_;
+	/// in multiplayer campaigns it can happen that some players are still in the previousl scenario
+	/// keep track of those players because processing certain
+	/// input from those side wil lead to error (oos)
+	std::set<socket_ptr> players_not_advanced_;
 
 	std::string termination_;
 
