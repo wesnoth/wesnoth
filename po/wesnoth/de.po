@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-09-09 11:38+0300\n"
-"PO-Revision-Date: 2018-08-20 05:37+0200\n"
+"PO-Revision-Date: 2018-09-11 01:08+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -345,7 +345,6 @@ msgstr "Joystick: Achsen-Nummer des Schubhebels"
 msgid "Joystick: deadzone of the thruster"
 msgstr "Joystick: Totbereich des Schubhebels"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:358
@@ -3555,7 +3554,7 @@ msgstr "Türkis"
 #. [color_range]: id=gold
 #: data/core/team-colors.cfg:107
 msgid "color^Gold"
-msgstr ""
+msgstr "Gold"
 
 #. [color_range]: id=reef
 #: data/core/team-colors.cfg:116
@@ -3617,7 +3616,6 @@ msgstr "Höhle"
 msgid "Fungus"
 msgstr "Pilzhain"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=village
 #: data/core/team-colors.cfg:188 src/terrain/terrain.cpp:176
 msgid "Village"
@@ -3648,13 +3646,11 @@ msgstr "Unbegehbar"
 msgid "Impassable"
 msgstr "Unpassierbar"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
 #: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:464
 msgid "Fog"
 msgstr "Nebel"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
 #: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:467
 #: src/game_initialization/lobby_data.cpp:470
@@ -4088,7 +4084,6 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nein"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
 #: src/hotkey/command_executor.cpp:628
@@ -4129,7 +4124,6 @@ msgstr ""
 msgid "(Note: You should use $replacement instead in new code)"
 msgstr "(Anmerkung: Sie sollten stattdessen $replacement in Ihrem Code nutzen)"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:194 src/deprecation.cpp:69
 msgid "Invalid deprecation level $level (should be 1-4)"
@@ -4140,31 +4134,26 @@ msgstr "Ungültige Deprekationsstufe $level (nur 1-4 erlaubt)"
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "Ungültige Deprekationsstufe (nur 1-4 erlaubt)"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1129
 msgid "female^poisoned"
 msgstr "vergiftet"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1136
 msgid "female^slowed"
 msgstr "verlangsamt"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1136
 msgid "slowed"
 msgstr "verlangsamt"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1142
 msgid "female^petrified"
 msgstr "versteinert"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1142
 msgid "petrified"
@@ -4180,14 +4169,12 @@ msgstr "unheilbar"
 msgid "unhealable"
 msgstr "unheilbar"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
 #: data/lua/wml/message.lua:395 src/scripting/game_lua_kernel.cpp:2786
 #: src/scripting/game_lua_kernel.cpp:2821
 msgid "input"
 msgstr "Eingabe"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:74
 msgid "Victory:"
@@ -4210,7 +4197,6 @@ msgstr[1] "(%d Runden verbleiben)"
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% Goldstücke werden ins nächste Szenario übernommen."
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:152
 #: src/game_initialization/mp_game_utils.cpp:76
@@ -4396,7 +4382,7 @@ msgstr "Einkommen"
 #. [label]: id=battery-icon
 #: data/themes/classic.cfg:266
 msgid "battery"
-msgstr ""
+msgstr "Akku"
 
 # Klassisches Grafikthema: 'level' bzw. 'Stufe' wird ausgeschrieben
 # src/dialogs.cpp:281 src/dialogs.cpp:453
@@ -7157,7 +7143,7 @@ msgstr "Ihr könnt im Moment auf dem ausgewählten Feld nicht einberufen"
 
 #: src/menu_events.cpp:387
 msgid "No unit recalled"
-msgstr ""
+msgstr "Keine Einheit einberufen"
 
 #: src/menu_events.cpp:404
 msgid "You must have at least 1 gold piece to recall a unit"
@@ -7471,15 +7457,15 @@ msgstr ""
 
 #: src/menu_events.cpp:1434
 msgid "Side '$side' is already droided."
-msgstr ""
+msgstr "Partei »$side« wird bereits auf diese Weise gesteuert."
 
 #: src/menu_events.cpp:1444
 msgid "Side '$side' controller is now controlled by: AI."
-msgstr ""
+msgstr "Partei »$side« wird nun gesteuert von: KI"
 
 #: src/menu_events.cpp:1446
 msgid "Side '$side' controller is now controlled by: human."
-msgstr ""
+msgstr "Partei »$side« wird nun gesteuert von: Mensch"
 
 # Im Original wird nicht "fraction" benutzt – m.E. sind "Fraktion" und "Seite" nicht unbedingt dasselbe, bin aber kein MP
 # Kontrolle der ungültigen Seite »$side« kann nicht gewechselt werden.
@@ -7653,7 +7639,7 @@ msgid "$name has taken control"
 msgstr "$name ist am Zug"
 
 # Wo wird dies angezeigt?
-# Muss evt. mit 
+# Muss evt. mit
 # "$name has taken control"
 # abgestimmt sein!
 #: src/mp_ui_alerts.cpp:170
@@ -8120,7 +8106,7 @@ msgstr "Uhrzeit"
 
 #: src/reports.cpp:1560
 msgid "Battery"
-msgstr ""
+msgstr "Akku"
 
 #: src/reports.cpp:1589
 msgid "Countdown until your turn automatically ends."

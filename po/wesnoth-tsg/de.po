@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-09-09 08:38 UTC\n"
-"PO-Revision-Date: 2018-07-28 18:50+0200\n"
+"PO-Revision-Date: 2018-09-11 03:33+0200\n"
 "Last-Translator: German translation team <irc://irc.freenode.net/#wesnoth-"
 "de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.9\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:9
@@ -684,14 +684,13 @@ msgstr "Urza Nalmath"
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:108
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:109
 msgid "Criminal"
-msgstr "Überfäller/in"
+msgstr "Überfäller"
 
 #. [do]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:179
-#, fuzzy
 #| msgid "Criminal"
 msgid "female^Criminal"
-msgstr "Überfäller/in"
+msgstr "Überfällerin"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:212
@@ -803,11 +802,11 @@ msgid ""
 "And yet he would never lead his men against them until their strength had "
 "waxed and ours waned."
 msgstr ""
-"Tja, der edle Loris ist nicht in der Verfassung, sich zu rechtfertigen. Er "
-"liegt nördlich der Stadt begraben, wo gefallen ist. Über Wochen warnten wir "
-"ihn vor der Gefahr, die von den erstarkten Räuberbanden ausgeht, ohne sein "
-"Gehör zu finden. Die Kompanie blieb tatenlos in der Garnison, bis die "
-"Banditen letztlich kamen und uns überrannten."
+"Tja, der edle Loris ist nicht in der Verfassung, sich zu rechtfertigen ... "
+"Er liegt nördlich der Stadt begraben, wo er gefallen ist. Über Wochen "
+"warnten wir ihn vor der Gefahr, die von den erstarkten Räuberbanden ausgeht, "
+"ohne sein Gehör zu finden. Die Kompanie blieb tatenlos in der Garnison, bis "
+"die Banditen letztlich kamen und uns überrannten."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:380
@@ -861,7 +860,6 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:423
-#, fuzzy
 #| msgid ""
 #| "It grieves me to learn of his death, foolish though he may have been! "
 #| "Now, though, there are more pressing matters. Rise, men of Wesnoth! We "
@@ -872,9 +870,9 @@ msgid ""
 "happened?"
 msgstr ""
 "Oh, welch ein Tor! Die Nachricht seines Todes ist dessen ungeachtet "
-"schmerzlich ... Fatalerweise bleibt für Trauer keine Muße, wir müssen die "
-"Banditen ein für alle Mal vertreiben. Ein Reiter kläre den König auf:  Ich "
-"übernehme das Kommando über die Südwacht!  — Zu den Waffen, Männer!"
+"schmerzlich ... Seid getrost, er wird gerächt! Wir müssen die Banditen ein "
+"für alle Mal vertreiben. Ein Reiter kläre den König auf: Ich übernehme das "
+"Kommando über die Südwacht! Klärt mich über die Lage genau auf, werter Hylas."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:445
@@ -981,20 +979,20 @@ msgstr "Woher hat so ein Haderlump nur die Macht, Untote zu rufen?"
 
 #. [message]: speaker=Ufes
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:645
-#, fuzzy
 #| msgid "The master of the undead is defeated!"
 msgid "The bandits are defeated!"
-msgstr "Der dunkle Meister ist gefallen!"
+msgstr ""
+"Endlich ist dem Rädelsführer der Garaus gemacht! Wurde aber auch Zeit ..."
 
 #. [message]: speaker=Makees
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:655
 msgid "Westin is safe again."
-msgstr ""
+msgstr "Hurra! Den Gaunern haben wir gezeigt, was 'ne Harke ist!"
 
 #. [message]: speaker=Makees
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:661
 msgid "Westin will soon be safe again."
-msgstr ""
+msgstr "Hoffentlich herrschen in Westin bald wieder Ruhe und Friede ..."
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:675
@@ -1520,10 +1518,9 @@ msgstr "Leibwächter"
 
 #. [then]
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:508
-#, fuzzy
 #| msgid "Elvish Bodyguard"
 msgid "female^Elvish Bodyguard"
-msgstr "Leibwächter"
+msgstr "Leibwächterin"
 
 #. [message]: role=Elvish Bodyguard
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:521
@@ -1649,7 +1646,7 @@ msgstr "Gruth"
 #. [unit]: type=Soulless, id=Gerd
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:108
 msgid "Gerd"
-msgstr ""
+msgstr "Gerth"
 
 #. [side]: type=Lich, id=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:138
@@ -1777,6 +1774,8 @@ msgstr "Urza Afalas fällt in der Schlacht"
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:382
 msgid "He was not alone."
 msgstr ""
+"Mit dem einen ist es nicht getan … Da steckt eindeutig längerfristiges "
+"Kalkül dahinter!"
 
 #. [message]: speaker=second_unit
 #. [message]: speaker=Sir Gerrick
@@ -1784,10 +1783,9 @@ msgstr ""
 #. Note that masters is in plural.
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:425
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:433
-#, fuzzy
 #| msgid "The master of the undead is defeated!"
 msgid "The masters of the undead are defeated!"
-msgstr "Der dunkle Meister ist gefallen!"
+msgstr "Der dunkle— … die dunklen Meister sind gefallen!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:440
@@ -1797,7 +1795,6 @@ msgstr "Nein, wartet … Ich spüre noch ein größeres Übel."
 #. [message]: speaker=Deoran
 #. Note that servants is in plural.
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:446
-#, fuzzy
 #| msgid ""
 #| "Surely the undead infestation cannot be dispatched so easily. We have "
 #| "merely destroyed a servant of a far darker master."
@@ -1805,34 +1802,33 @@ msgid ""
 "Surely the undead infestation cannot be dispatched so easily. We have merely "
 "destroyed servants of a far darker master."
 msgstr ""
-"War zu schön, um wahr zu sein … Wir haben nur den Laufburschen eines noch "
+"War zu schön, um wahr zu sein … Wir haben nur die Laufburschen eines noch "
 "übleren Herrn bezwungen? Das kann ja noch heiter werden ..."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:468
 msgid "Two undead leaders have fallen…"
-msgstr ""
+msgstr "Haarsträubend, in mehr als zwiefacher Hinsicht …"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:472
-#, fuzzy
 #| msgid ""
 #| "Surely the undead infestation cannot be dispatched so easily. We have "
 #| "merely destroyed a servant of a far darker master."
 msgid "Though we have merely destroyed the servants of a far darker master…"
-msgstr ""
-"War zu schön, um wahr zu sein … Wir haben nur den Laufburschen eines noch "
-"übleren Herrn bezwungen? Das kann ja noch heiter werden ..."
+msgstr "Guter Mann, das waren nur Lakaien eines noch viel übleren Herrn ..."
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:479
 msgid "They were just servants of a far darker master…"
 msgstr ""
+"Lasst es euch von mir gesagt sein: Das waren lediglich Knechte! Der "
+"Aufhetzer all der Leichen ist weit verkommener ..."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:488
 msgid "One less evil in this forest…"
-msgstr ""
+msgstr "<small>(<i>verzagt</i>)</small>  Nur kommt ein Übel selten allein ..."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:512
@@ -2543,7 +2539,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:471
-#, fuzzy
 #| msgid ""
 #| "While the council debated the best course of action, Deoran and Ethiliel "
 #| "prepared to enter the caves under Mebrin’s fortress..."
@@ -2552,8 +2547,8 @@ msgid ""
 "prepared to enter the caves under the fortress..."
 msgstr ""
 "<span color='#BAAC7D'>Und während Gerrick unverdrossen in Richtung Kerlath "
-"preschte, wagten Deoran und Ethiliel sich in die Tiefen unter Mebrins "
-"Zwingburg vor ...</span>"
+"preschte,\n"
+"wagten Deoran und Ethiliel sich in die Tiefen unter der Zwingburg ...</span>"
 
 #. [scenario]: id=06b_The_Long_March
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:5
@@ -3722,7 +3717,7 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:225
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:290
 msgid "Disciple of Mebrin"
-msgstr "Mebrins Schüler/in"
+msgstr "Mebrins Schüler"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:235
@@ -3761,10 +3756,9 @@ msgstr "Schickt Ethiliel zur hohen Kiefer, um mit Ithelden zu verhandeln"
 
 #. [then]
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:301
-#, fuzzy
 #| msgid "Disciple of Mebrin"
 msgid "female^Disciple of Mebrin"
-msgstr "Mebrins Schüler/in"
+msgstr "Mebrins Schülerin"
 
 #. [message]: speaker=$new_elf.id
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:313
