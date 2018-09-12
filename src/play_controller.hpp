@@ -361,6 +361,8 @@ public:
 		return false;
 	}
 
+	/// Reevaluate [show_if] conditions and build a new objectives string.
+	void refresh_objectives();
 	void show_objectives() const;
 
 	struct scoped_savegame_snapshot
