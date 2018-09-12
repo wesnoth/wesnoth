@@ -1,4 +1,6 @@
 ## Version 1.14.4+dev
+ ### AI
+  * Fix AI ignoring teleport locations when moving leader to leader goals.
  ### Campaigns
   * Northern Rebirth:
     * S12: empty sides are hidden
@@ -41,6 +43,7 @@
      the filter box.
    * Allow searching by race and internal unit type id with the Create Unit
      filter box as well.
+   * wmlxgettext is now included in release packages, so a separate download is no longer required to use it with GUI.pyw.
 
 ## Version 1.14.4
  ### Security Fixes
