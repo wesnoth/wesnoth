@@ -22,12 +22,18 @@
    * Updated translations: British English, Chinese (Traditional), French,
      German, Italian, Ukrainian
  ### User Interface
+   * On laptop computers we now show how much battery you have left
    * MacOS: Fixed moving the mouse with a touchpad also scrolling GUI dialogs
    * MacOS: Add build number to OS version report
    * Fix layout of Preferences window with some localizations (such as Czech)
-   * Force leader sprites larger than 72x72 to be downscaled in Load Game (issue #3474).
+   * Load Game now shows the chosen difficulty with the same name that you originally selected
+   * Force leader sprites larger than 72x72 to be downscaled in Load Game (issue #3474)
+ ### WML engine
+   * Fixed [animate_unit] and [heal_unit] preventing unit halo from disappearing if the unit
+     dies later (issue #3509)
  ### Miscellaneous and bug fixes
    * Fix some minor problems with the macOS package
+   * Fixed crash when trying to attack with a unit without usable weapons (issue #3424)
    * Fast Micro AI: Fix bug crashing the AI when units with chance-to-hit
      specials without id are on map
    * Fixed the debug mode Create Unit dialog crashing when changing the gender
