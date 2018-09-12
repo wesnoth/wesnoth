@@ -12,6 +12,8 @@
    * Updated translations: British English, Bulgarian, Chinese (Simplified),
      Chinese (Traditional), Czech, French, Galician, German, Hungarian, Italian,
      Japanese, Polish, Scottish Gaelic, Slovak, Spanish, Ukrainian.
+ ### Lua API
+   * Allow specifying custom flags (in particular teleport) when using a custom cost function in wesnoth.find_path
  ### Packaging
    * OpenMP support has been removed. It is no longer an optional build-time dependency.
  ### Units
@@ -21,6 +23,7 @@
    * Support to_location in [move_unit], taking a special location ID
    * Support dir in [move_unit] to perform relative movements
    * Support location_id in [teleport], [recall], [unstore_unit] for the target location
+   * Support a comma-separated list for location_id key in SLF
    * Support [filter_weapon] in leadership and resistance abilities,
      which activates the ability only when the affected unit is using
      a matching weapon.
@@ -47,6 +50,8 @@
    * [remove_sound_source] now accepts a comma-separated ID list
 
 ## Version 1.14.4+dev
+ ### AI
+  * Fix AI ignoring teleport locations when moving leader to leader goals.
  ### Campaigns
   * Northern Rebirth:
     * S12: empty sides are hidden
@@ -89,6 +94,7 @@
      the filter box.
    * Allow searching by race and internal unit type id with the Create Unit
      filter box as well.
+   * wmlxgettext is now included in release packages, so a separate download is no longer required to use it with GUI.pyw.
 
 ## Version 1.14.4
  ### Security Fixes
