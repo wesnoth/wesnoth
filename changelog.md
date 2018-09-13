@@ -44,6 +44,17 @@
    * Allow searching by race and internal unit type id with the Create Unit
      filter box as well.
    * wmlxgettext is now included in release packages, so a separate download is no longer required to use it with GUI.pyw.
+   * Fixed possible crash when leaving a game as an observer #3017
+   * Fixed require_scenario and require_era attributes.
+   * Fixed skip replay when joining mp campaigns.
+   * Fixed oos errors when undoing after ally chat.
+   * Fixed crash whe pressing Reset replay. #3439
+   * Fixed 'start game' locked when other players abort flg dialog.  #3452
+   * Fixed game freezes on droiding when using dsu. #3453
+   * Fixed editor cannot add starting location for > 9 players.
+   * Fixed crash in ai code when a side has multiple leaders.
+   * Fixed random start time not working. #3515
+   * Fixed crash in lua tstring comparision. #3541
 
 ## Version 1.14.4
  ### Security Fixes
