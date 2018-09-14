@@ -6,6 +6,10 @@
     * S12: empty sides are hidden
     * S13: allied leaders whose death causes defeat won't leave their keep and
       the lich brothers and Krash got more gold
+  * Sceptre of Fire:
+    * S4: a cave entrance has been added.
+    * S5: Gryphon Riders are now available starting form S5 (formerly S3).
+    * S7: it's now impossible to kill all pursuers.
   * Secrets of the Ancients:
     * Fix dialog said by wrong unit & revert previous fix (issue #3294)
   * The South Guard:
@@ -15,11 +19,13 @@
     * S4: bodyguards are never spawned next to other units, and always in forest.
     * S5: zombies have now one castle with two leaders.
     * S6a: mermen leave after this scenario and will no longer be available.
-    * S7a & S8a: some heroes may now die.
+    * S7a & S8a: a certain hero may now die.
    * Tutorial:
      * Added more information to the Status Table prompt about how to access it (issue #2883).
    * Under the Burning Suns:
      * New graphics for Eloh.
+ ### Multiplayer
+   * A New Land: Fixed village gold being 1 instead of 2.
  ### Language and i18n
    * Updated translations: British English, Chinese (Traditional), Czech, French,
      German, Italian, Japanese, Scottish Gaelic, Ukrainian
