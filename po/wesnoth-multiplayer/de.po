@@ -1,7 +1,7 @@
 # Translators:
 #  Andre Schmidt <andre@schmidtandre.de>, 2004 - 2005
 #  Boris Stumm <wesnoth@bstumm.de>, 2005
-#  Gerfried Fuchs <rhonda@deb.at>, 2005 - 2006, 2010
+#  Rhonda D'Vine <rhonda@deb.at>, 2005 - 2006, 2010
 #  Nils Kneuper <crazy-ivanovic@gmx.net>, 2005 - 2006
 #  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2010
 #  Aaron Winter <winter.aaron93@gmail.com>, 2018
@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-09-09 08:38 UTC\n"
-"PO-Revision-Date: 2018-07-09 12:44+0200\n"
+"PO-Revision-Date: 2018-09-13 18:14+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -127,7 +127,7 @@ msgstr "Gesamtpunkte: <b>%d</b>"
 #. [lua]: f
 #: data/multiplayer/eras.lua:93
 msgid "Sides %s and %d are tied."
-msgstr ""
+msgstr "Unentschieden zwischen Partei %s und %d."
 
 #. [lua]: f
 #: data/multiplayer/eras.lua:95
@@ -2138,12 +2138,6 @@ msgstr "4S – Isars Kreuz"
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
-#, fuzzy
-#| msgid ""
-#| "A very small 2 vs. 2 map. Close quarters fighting means the successful "
-#| "rotation of units and planning of moves is important. Teams set for "
-#| "players 1+4 vs. 2+3 (northeast vs. southwest). Designed for 75 starting "
-#| "gold, 20 villages."
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
@@ -2153,7 +2147,7 @@ msgstr ""
 "Eine sehr kleine 2-gegen-2-Karte mit 20 Dörfern. Durch die engen "
 "Verhältnisse auf dieser Karte ist sinnvolles Platzieren sowie gutes "
 "Manövrieren Eurer Einheiten von entscheidender Bedeutung. Vorgesehene "
-"Allianzen sind 1&amp;4 gegen 2&amp;3 (Nordosten gegen Südwesten).\n"
+"Allianzen sind 1 &amp; 4 gegen 2 &amp; 3 (Nordosten gegen Südwesten).\n"
 "Empfohlene Einstellung: 75 Goldstücke Startkapital."
 
 #. [side]
@@ -2238,16 +2232,12 @@ msgstr "4S – Der Lorisfluss"
 
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
-#, fuzzy
-#| msgid ""
-#| "2 vs. 2 map centered around a river with keeps in opposite corners. "
-#| "Designed for players 1+4 vs. 2+3. There are 28 villages."
 msgid ""
 "2 vs. 2 map centered around a river with keeps in opposite corners. Designed "
 "for players 1 &amp; 4 vs. 2 &amp; 3. There are 28 villages."
 msgstr ""
 "Eine 25x25 Felder große 2-gegen-2-Karte, die um einen Fluss angesiedelt ist. "
-"Verbündete 1&amp;3 gegen 2&amp;4 streiten um die 28 Dörfer."
+"Verbündete 1 &amp; 3 gegen 2 &amp; 4 streiten um die 28 Dörfer."
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
@@ -2273,17 +2263,14 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
-#, fuzzy
-#| msgid ""
-#| "A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
-#| "east vs. west (1+4 vs. 2+3), but works well with any teams or FFA."
 msgid ""
 "A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
 "east vs. west (1 &amp; 4 vs. 2 &amp; 3), but works well with any teams or "
 "FFA."
 msgstr ""
 "Eine 2-gegen-2-Karte mit 28 Dörfern und fünf möglichen Wegen zum Sieg. "
-"Vorgesehen für Schlachten 1&amp;3 gegen 2&amp;4 (Osten gegen Westen)."
+"Vorgesehen für Schlachten 1 &amp; 3 gegen 2 &amp; 4 (Osten gegen Westen), "
+"aber auch FFA und andera Teamkombinationen sind geeignet."
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:6

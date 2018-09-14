@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-09-09 08:38 UTC\n"
-"PO-Revision-Date: 2018-06-04 02:08+0200\n"
+"PO-Revision-Date: 2018-09-13 19:26+0200\n"
 "Last-Translator: daMark <daMark@arcor.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -682,26 +682,6 @@ msgstr ""
 
 #. [message]: speaker=Rowck
 #: data/ai/micro_ais/scenarios/dragon.cfg:91
-#, fuzzy
-#| msgid ""
-#| "Hi there. I am Rowck and here is what I do:\n"
-#| "When hungry, I move around part of the map in a random wander until I get "
-#| "into range of an enemy. If enemies are within range, I attack and devour "
-#| "the weakest of them. After that, I retreat to my rest location, where I "
-#| "stay for a certain number of turns or until fully healed.\n"
-#| "A few details (features, not bugs, but can be changed if desired):\n"
-#| "- If my way home is blocked on the return, the normal RCA AI takes over "
-#| "my behavior.\n"
-#| "- I will, however, attack any enemy occupying my rest hex, if I can get "
-#| "there.\n"
-#| "- A kill only makes me go home when I am the attacker, not as defender.\n"
-#| "- Occasionally I will not move at all while wandering (a dragon has to "
-#| "rest sometimes!)\n"
-#| "\n"
-#| "Note: The Hunter AI is coded as a Micro AI. A Micro AI can be added and "
-#| "adapted to the need of a scenario easily using only WML and the "
-#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
-#| "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "Hi there. I am Rowck and here is what I do:\n"
 "When hungry, I move around part of the map in a random wander until I get "
@@ -741,10 +721,9 @@ msgstr ""
 "\n"
 "Bemerkung: Die Jäger-KI ist als Mikro-KI programmiert. Eine Mikro-KI kann, "
 "abgestimmt auf die Anforderungen eines Szenarios, einfach eingesetzt und "
-"angepasst werden. Dazu benötigt man nur WML Code und die Markierung [micro-"
-"ai]. Weitergehende Informationen findet sich auf der <span "
-"color='#00A000'>Micro AI wiki page</span> unter http://wiki.wesnoth.org/"
-"Micro_AIs"
+"angepasst werden. Dazu benötigt man nur WML Code und den Tag [micro_ai]. "
+"Weitergehende Informationen findet sich auf der <span color='#00A000'>Micro "
+"AI wiki page</span> unter https://wiki.wesnoth.org/Micro_AIs."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/dragon.cfg:104
@@ -871,22 +850,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/goto.cfg:419
-#, fuzzy
-#| msgid ""
-#| "This scenario demonstrates a variety of different uses of the Goto Micro "
-#| "AI. All AI sides are controlled by this MAI in one way or another (except "
-#| "for the saurians, which are run by the Lurkers Micro AI). Messages will "
-#| "be displayed throughout the scenario to point out what the units are "
-#| "doing.\n"
-#| "\n"
-#| "The player controls Side 1. There are right-click context menu options "
-#| "for adding Side 1 units to the map and for taking them off again. This is "
-#| "useful mostly for testing how the Side 3 guardians react.\n"
-#| "\n"
-#| "Note: The Goto AI is coded as a Micro AI. A Micro AI can be added and "
-#| "adapted to the need of a scenario easily using only WML and the "
-#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
-#| "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "This scenario demonstrates a variety of different uses of the Goto Micro AI. "
 "All AI sides are controlled by this MAI in one way or another (except for "
@@ -915,10 +878,9 @@ msgstr ""
 "\n"
 "Bemerkung: Die „Ziel“-KI ist als Mikro-KI programmiert. Eine Mikro-KI kann, "
 "abgestimmt auf die Anforderungen eines Szenarios, einfach eingesetzt und "
-"angepasst werden. Dazu benötigt man nur WML Code und die Markierung [micro-"
-"ai]. Weitergehende Informationen finden sich auf der <span "
-"color='#00A000'>Micro AI wiki page</span> unter http://wiki.wesnoth.org/"
-"Micro_AIs"
+"angepasst werden. Dazu benötigt man nur WML Code und den Tag [micro_ai]. "
+"Weitergehende Informationen finden sich auf der <span color='#00A000'>Micro "
+"AI wiki page</span> unter https://wiki.wesnoth.org/Micro_AIs."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/goto.cfg:429
@@ -1573,20 +1535,6 @@ msgstr "Der Gesetzlose geht hier her"
 
 #. [message]: speaker=Good Bandit
 #: data/ai/micro_ais/scenarios/hang_out.cfg:120
-#, fuzzy
-#| msgid ""
-#| "That outlaw over there is going to run for the keep in the southeast.  "
-#| "He's only going to recruit for three rounds before he'll start moving and "
-#| "he and his footpads are much faster than we are.  Let's make haste or "
-#| "we'll never catch him.\n"
-#| "\n"
-#| "Note: This scenario uses a combination of two Micro AIs, the Hang Out "
-#| "Micro AI which makes the Side 2 units remain around the keep for two "
-#| "turns (while moving off castle tiles to allow for recruiting) and the "
-#| "Messenger Escort AI which takes over after that.  A Micro AI can be added "
-#| "and adapted to the need of a scenario easily using only WML and the "
-#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
-#| "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "That outlaw over there is going to run for the keep in the southeast.  He's "
 "only going to recruit for three rounds before he'll start moving and he and "
@@ -1610,12 +1558,13 @@ msgstr ""
 "Bleiben-Mikro-KI, die dafür sorgt, dass Einheiten der Fraktion 2 für zwei "
 "Züge in der Nähe des Bergfrieds bleiben (wobei sie die Felder der Burg frei "
 "machen um das Rekrutieren weiterer Einheiten zu ermöglichen) sowie die Boten-"
-"Eskorte KI, die danach die Kontrolle übernimmt. Eine Mikro-KI kann, "
-"abgestimmt auf die Anforderungen eines Szenarios, einfach eingesetzt und "
-"angepasst werden. Dazu benötigt man nur WML Code und die Markierung [micro-"
-"ai]. Weitergehende Informationen finden sich auf der <span "
-"color='#00A000'>Micro AI wiki page</span> unter http://wiki.wesnoth.org/"
-"Micro_AIs"
+"Eskorte KI, die danach die Kontrolle übernimmt.\n"
+"\n"
+"Eine Mikro-KI kann, abgestimmt auf die Anforderungen eines Szenarios, "
+"einfach eingesetzt und angepasst werden. Dazu benötigt man nur WML Code und "
+"den Tag [micro_ai]. Weitergehende Informationen finden sich auf der <span "
+"color='#00A000'>Micro AI wiki page</span> unter https://wiki.wesnoth.org/"
+"Micro_AIs."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/hang_out.cfg:127
@@ -1758,27 +1707,27 @@ msgstr "Formelbasierte KI Schleicher (Saurianer)"
 #. [set_menu_item]: id=m01_menu_lurker2
 #: data/ai/micro_ais/scenarios/lurkers.cfg:387
 msgid "Place a Side 2 lurker"
-msgstr "Platziere einen Schleicher der Fraktion 2"
+msgstr "Platziere einen Schleicher für Partei 2"
 
 #. [set_menu_item]: id=m01_menu_lurker3
 #: data/ai/micro_ais/scenarios/lurkers.cfg:399
 msgid "Place a Side 3 lurker"
-msgstr "Platziere einen Schleicher der Fraktion 3"
+msgstr "Platziere einen Schleicher für Partei 3"
 
 #. [set_menu_item]: id=m01_menu_lurker4
 #: data/ai/micro_ais/scenarios/lurkers.cfg:411
 msgid "Place a Side 4 lurker"
-msgstr "Platziere einen Schleicher der Fraktion 4"
+msgstr "Platziere einen Schleicher für Partei 4"
 
 #. [set_menu_item]: id=m01_menu_lurker5
 #: data/ai/micro_ais/scenarios/lurkers.cfg:423
 msgid "Place a Side 5 lurker"
-msgstr "Platziere einen Schleicher der Fraktion 5"
+msgstr "Platziere einen Schleicher für Partei 5"
 
 #. [set_menu_item]: id=m01_menu_lurker6
 #: data/ai/micro_ais/scenarios/lurkers.cfg:435
 msgid "Place a Side 6 lurker"
-msgstr "Platziere einen Schleicher der Fraktion 6"
+msgstr "Platziere einen Schleicher für Partei 6"
 
 #. [message]: speaker=Pekzs
 #: data/ai/micro_ais/scenarios/lurkers.cfg:452
@@ -1848,17 +1797,6 @@ msgstr "Bemerkungen"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/lurkers.cfg:475
-#, fuzzy
-#| msgid ""
-#| "You can use the right-click context menu to add additional lurkers.\n"
-#| "\n"
-#| "Any unit not adjacent to swamp (and water, for the nagas) is safe from "
-#| "the lurkers, thus it is easy to keep Pekzs from being attacked.\n"
-#| "\n"
-#| "The Lua Lurker AI is coded as a Micro AI. A Micro AI can be added and "
-#| "adapted to the need of a scenario easily using only WML and the "
-#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
-#| "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "You can use the right-click context menu to add additional lurkers.\n"
 "\n"
@@ -1879,10 +1817,10 @@ msgstr ""
 "\n"
 "Die Lua Schleicher KI ist als Mikro-KI programmiert. Eine Mikro-KI kann, "
 "abgestimmt auf die Anforderungen eines Szenarios, einfach eingesetzt und "
-"angepasst werden. Dazu benötigt man nur WML Code und die Markierung [micro-"
-"ai]. Weitergehende Informationen finden sich auf auf der <span "
-"color='#00A000'>Micro AI wiki page</span> unter http://wiki.wesnoth.org/"
-"Micro_AIs"
+"angepasst werden. Dazu benötigt man nur WML Code und den Tag [micro_ai]. "
+"Weitergehende Informationen finden sich auf auf der <span "
+"color='#00A000'>Micro AI wiki page</span> unter <a href=https://wiki.wesnoth."
+"org/Micro_AI>https://wiki.wesnoth.org/Micro_AI</a>s."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/lurkers.cfg:485
@@ -1972,24 +1910,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:152
-#, fuzzy
-#| msgid ""
-#| "The Messenger Escort AI will try to move the dragoon messenger to the "
-#| "signpost in the north, while protecting him as well as possible with the "
-#| "other units. Vanak's orcs need to stop him.\n"
-#| "\n"
-#| "Note that the messenger route is set up through a series of waypoints "
-#| "here simply to demonstrate how to use waypoints. On this map, using only "
-#| "a single waypoint at the end of the route would work just as well (or "
-#| "probably even better).\n"
-#| "\n"
-#| "Also note that the messenger does not have to get exactly to each "
-#| "signpost (except for the last one), getting close is good enough.\n"
-#| "\n"
-#| "The Messenger Escort AI is coded as a Micro AI. A Micro AI can be added "
-#| "and adapted to the need of a scenario easily using only WML and the "
-#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
-#| "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "The Messenger Escort AI will try to move the dragoon messenger to the "
 "signpost in the north, while protecting him as well as possible with the "
@@ -2022,10 +1942,9 @@ msgstr ""
 "\n"
 "Die Boten Geleitschutz KI ist als Mikro-KI programmiert. Eine Mikro-KI kann, "
 "abgestimmt auf die Anforderungen eines Szenarios, einfach eingesetzt und "
-"angepasst werden. Dazu benötigt man nur WML Code und die Markierung [micro-"
-"ai]. Weitergehende Informationen finden sich auf der <span "
-"color='#00A000'>Micro AI wiki page</span> unter http://wiki.wesnoth.org/"
-"Micro_AIs"
+"angepasst werden. Dazu benötigt man nur WML Code und den Tag [micro_ai]. "
+"Weitergehende Informationen finden sich auf der <span color='#00A000'>Micro "
+"AI wiki page</span> unter https://wiki.wesnoth.org/Micro_AIs."
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:165
@@ -3034,27 +2953,6 @@ msgstr "Platz Fraktion 2 Fledermaus"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/swarm.cfg:144
-#, fuzzy
-#| msgid ""
-#| "This scenario features bats moving around in a swarm. Without adjacent "
-#| "enemies, they simply try to stay together and at a certain distance from "
-#| "enemies. However, if an enemy unit is close to any bat, the swarm "
-#| "scatters. This is particular fun to watch when one places an enemy unit "
-#| "in the middle of the swarm. After being scattered, the swarm members "
-#| "slowly rejoin, but not in a very organized way. Sub-swarms or individual "
-#| "bats might roam around for quite some time before they find their way "
-#| "back. It is also possible that individual bats (or small groups) split "
-#| "off from the larger swarm at times.\n"
-#| "\n"
-#| "The player controls a side of gryphons, each of which is given 99 moves "
-#| "so that the reaction of the swarm to enemies can be tested easily. There "
-#| "are also several right-click options, for example for adding bats or "
-#| "gryphons or for taking units off the map.\n"
-#| "\n"
-#| "Note: The Swarm AI is coded as a Micro AI. A Micro AI can be added and "
-#| "adapted to the need of a scenario easily using only WML and the "
-#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
-#| "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "This scenario features bats moving around in a swarm. Without adjacent "
 "enemies, they simply try to stay together and at a certain distance from "
@@ -3094,10 +2992,9 @@ msgstr ""
 "\n"
 "Bemerkung: Die Schwarm KI ist als Mikro-KI programmiert. Eine Mikro-KI kann, "
 "abgestimmt auf die Anforderungen eines Szenarios, einfach eingesetzt und "
-"angepasst werden. Dazu benötigt man nur WML Code und die Markierung [micro-"
-"ai]. Weitergehende Informationen finden sich auf der <span "
-"color='#00A000'>Micro AI wiki page</span> unter http://wiki.wesnoth.org/"
-"Micro_AIs"
+"angepasst werden. Dazu benötigt man nur WML Code und den Tag [micro_ai]. "
+"Weitergehende Informationen finden sich auf der <span color='#00A000'>Micro "
+"AI wiki page</span> unter https://wiki.wesnoth.org/Micro_AIs."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/swarm.cfg:154

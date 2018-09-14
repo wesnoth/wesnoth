@@ -3,7 +3,7 @@
 #  Boris Stumm <wesnoth@bstumm.de>, 2005
 #  Nils Kneuper <crazy-ivanovic@gmx.net>, 2005, 2006
 #  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2012
-#  Gerfried Fuchs <rhonda@deb.at>, 2005, 2006, 2010
+#  Rhonda D'Vine <rhonda@deb.at>, 2005, 2006, 2010
 #  Marcel Miebach <marcel_miebach@gmx.de>, 2012
 #  Aaron Winter <winter.aaron93@gmail.com>, 2018.
 #
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-09-09 11:38+0300\n"
-"PO-Revision-Date: 2018-07-28 14:55+0200\n"
+"PO-Revision-Date: 2018-09-14 19:33+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.9\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
@@ -984,46 +984,6 @@ msgstr "Nordlande"
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:114
-#, fuzzy
-#| msgid ""
-#| "There is no government of the Northlands. Various groups of orcs, "
-#| "dwarves, barbarian men and even elves populate the region. The northern "
-#| "and eastern borders are not defined, the southern border is the "
-#| "<ref>dst='great_river' text='Great River'</ref>, and the western border "
-#| "is the <ref>dst='great_ocean' text='Great Ocean'</ref>.\n"
-#| "\n"
-#| "<header>text='Notable cities:'</header>\n"
-#| "    • Glamdrol: An Orcish tribal capital.\n"
-#| "    • Wesmere: The location of the Ka’lian — the Elvish Council.\n"
-#| "    • Dwarven Doors: A mixed human/dwarven town in the region of Knalga "
-#| "in the southern Heart Mountains. A major trade center.\n"
-#| "    • Dallben and Delwyn: Human villages originally built by settlers who "
-#| "crossed the Great River during Wesnoth’s Golden Age expansion. Now "
-#| "abandoned. The forested area northeast of Elensefar, where these villages "
-#| "were located, was named the Annuvin province by men but was known by the "
-#| "elves as Wesmere.\n"
-#| "\n"
-#| "<header>text='Notable land features:'</header>\n"
-#| "    • Heart Mountains: A virtually impassable barrier between the river "
-#| "country and the Northern Plains.\n"
-#| "    • Heartfangs: the particularly forbidding stretch of high peaks "
-#| "southwest of Lake Vrug and north of the Forest of Wesmere. The most "
-#| "inhospitable and dangerous portion of the Heart Mountains; only hermits, "
-#| "madmen, and mages live there.\n"
-#| "    • Swamp of Dread: a very large bog located between the Heart "
-#| "Mountains and the Great River. A notoriously dangerous place.\n"
-#| "    • Lake Vrug: A large mountain lake whose river carves the only "
-#| "pathway through the Northern Mountains.\n"
-#| "    • Arkan-thoria: The river that comes out of Lake Vrug. This is the "
-#| "elvish name; among humans it is called Longlier.\n"
-#| "    • River Listra: The south-running tributary of the Great River into "
-#| "which the Arkan-thoria empties.\n"
-#| "    • Lintanir Forest: The southernmost portion of the Great Northern "
-#| "Forest, a gigantic wood whose eastern and northern boundaries are known "
-#| "only the elves. Their capitol, Elensiria, has only seldom been visited by "
-#| "humans.\n"
-#| "    • Great River: The origin of this river is somewhere in the east of "
-#| "the northern lands."
 msgid ""
 "There is no government of the Northlands. Various groups of orcs, dwarves, "
 "barbarian men and even elves populate the region. The northern and eastern "
@@ -3150,11 +3110,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:494
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3162,7 +3117,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Ressourcen für Entwickler von Erweiterungen'</header>"
+"<header>text='Kerne'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:496
@@ -3177,6 +3132,16 @@ msgid ""
 "War II campaign, or even a different game altogether, as long as it can be "
 "represented as a hexagonal map with ’units’ in some way."
 msgstr ""
+"\n"
+"\n"
+"Mit Kernen lässt sich »Total Conversion« in Battle for Wesnoth erreichen. "
+"Ein Kern kann jegliche vordefinieren Inhalte ersetzen, Standardeinheiten, "
+"Terrains und ähnliches existieren dann nicht.\n"
+"\n"
+"Mit Kernen lässt sich das Spiel sehr weit umstellen, beispielsweise wäre "
+"eine WK II Kampagne möglich, oder ein komplett anderes Spiel, sofern es sich "
+"in irgendeiner Art mit Einheiten auf einer hexagonalen Karte darstellen "
+"lässt."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:500
@@ -3216,31 +3181,6 @@ msgstr "Installation von Erweiterungen"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:512
-#, fuzzy
-#| msgid ""
-#| "User-made add-ons can be obtained and updated through the "
-#| "<italic>text='Add-ons'</italic> option in the main menu. After connecting "
-#| "to the add-ons server (by default <italic>text='add-ons.wesnoth.org'</"
-#| "italic>), you will be presented with a list of add-ons available on the "
-#| "server for downloading.\n"
-#| "\n"
-#| "The installation status for each add-on is shown below each entry. For "
-#| "add-ons that are <italic>text='upgradable'</italic> or "
-#| "<italic>text='outdated'</italic> on the server, their installed and "
-#| "published versions will be shown in the <italic>text='Version'</italic> "
-#| "column.\n"
-#| "\n"
-#| "To search for add-ons by keywords, type any relevant terms in any order "
-#| "in the <bold>text='Filter'</bold> box, separated by spaces. You can also "
-#| "sort the add-on list by clicking the column headers. It is also possible "
-#| "to choose to only display add-ons of specific categories by clicking on "
-#| "the <bold>text='Options'</bold> button in the top-right corner.\n"
-#| "\n"
-#| "To install an add-on, select it from the list and click the "
-#| "<bold>text='+'</bold> icon, or simply double-click on the add-on’s title. "
-#| "The <bold>text='Description'</bold> button provides you with additional "
-#| "details about the add-on, such as its full description, installation "
-#| "status, and available languages."
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -3277,17 +3217,18 @@ msgstr ""
 "angezeigt.\n"
 "\n"
 "Um per Stichwort nach einem Titel zu suchen, reicht es, eine beliebige "
-"Referenz im Feld <bold>text='Filter'</bold> einzutippen (Worte durch "
+"Referenz im Feld <bold>text='Suche'</bold> einzutippen (Worte durch "
 "Leerzeichen trennen). Durch Anklicken des jeweiligen Spaltentitels kann man "
 "die Liste der Erweiterungen entsprechend sortieren. Und über den Schalter "
-"<bold>text='Optionen'</bold> gelangt Ihr zu einer Auswahlbox, wo sich die "
+"<bold>text='Typ'</bold> gelangt Ihr zu einer Auswahlbox, wo sich die "
 "Auflistung auf definierte Kategorien einschränken lässt.\n"
 "\n"
-"Via <bold>text='Beschreibung'</bold> wird ein Fenster mit weiteren Details "
-"eingeblendet, es enthält eine Kurzfassung zum Inhalt, Verweise auf "
-"Übersetzungen, Abhängigkeit von anderen Erweiterungen oder einen Link zum "
-"Forum. Mit Klick auf <bold>text='+'</bold> oder Doppelklick auf den Titel "
-"der Erweiterung wird die Installation durchgeführt."
+"Mit Klick auf <bold>text='+'</bold> oder Doppelklick auf den Titel der "
+"Erweiterung wird die Installation durchgeführt. Bei kleinen Fenstergfrößen "
+"lässt sich via <bold>text='Erweiterungsdetails'</bold> ein Fenster mit "
+"weiteren Details einblenden, es enthält eine Kurzfassung zum Inhalt, "
+"Verweise auf Übersetzungen, Abhängigkeiten von anderen Erweiterungen oder "
+"einen Link zum Forum."
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:525
@@ -5156,8 +5097,7 @@ msgstr "furchtlos"
 #: data/core/macros/traits.cfg:224 data/core/macros/traits.cfg:241
 msgid "Fights normally during unfavorable times of day/night"
 msgstr ""
-"Tag/Nacht haben keinen negativen Einfluss, der positive Bonus bleibt "
-"erhalten."
+"Tag/Nacht haben keinen negativen Einfluss, der positive Bonus bleibt erhalten"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:225 data/core/macros/traits.cfg:242
