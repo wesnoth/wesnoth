@@ -22,7 +22,7 @@
      * New graphics for Eloh.
  ### Language and i18n
    * Updated translations: British English, Chinese (Traditional), Czech, French,
-     German, Italian, Ukrainian
+     German, Italian, Scottish Gaelic, Ukrainian
  ### User Interface
    * On laptop computers we now show how much battery you have left
    * MacOS: Fixed moving the mouse with a touchpad also scrolling GUI dialogs

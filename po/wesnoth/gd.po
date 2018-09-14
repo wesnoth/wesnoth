@@ -813,7 +813,7 @@ msgstr "Bogha criostail"
 #. [item]: id=bow-elven
 #: data/core/editor/items.cfg:136
 msgid "Elven Bow"
-msgstr "Bogha shìthiche"
+msgstr "Bogha-shìthe"
 
 #. [item]: id=bow
 #: data/core/editor/items.cfg:142
@@ -3462,7 +3462,7 @@ msgstr "Deas-ghnàth nan gaisgeach"
 #. [music]
 #: data/core/macros/sound-utils.cfg:205
 msgid "Into the Shadows"
-msgstr "Dha na faileasan"
+msgstr "Dha na sgàilean"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:211
@@ -3671,7 +3671,7 @@ msgstr "Saidhean"
 #. [color_range]: id=gold
 #: data/core/team-colors.cfg:107
 msgid "color^Gold"
-msgstr ""
+msgstr "Òrach"
 
 #. [color_range]: id=reef
 #: data/core/team-colors.cfg:116
@@ -4275,12 +4275,12 @@ msgstr "na chlach"
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:130
 msgid "female^unhealable"
-msgstr "dho-slànach"
+msgstr "dho-slànaichte"
 
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:130
 msgid "unhealable"
-msgstr "do-slànach"
+msgstr "do-slànaichte"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
@@ -4501,7 +4501,7 @@ msgstr "teachd a-steach"
 #. [label]: id=battery-icon
 #: data/themes/classic.cfg:266
 msgid "battery"
-msgstr ""
+msgstr "bataraidh"
 
 #. [unit_level]: id=unit-level
 #: data/themes/classic.cfg:438
@@ -4744,7 +4744,7 @@ msgid ""
 msgstr ""
 "Sabaididh aonadan <i>dligheach</i> nas fhearr air an latha is aonadan "
 "<i>coimeasgach</i> nas fhearr air an oidhche. Tha aonadan <i>neodrach</i> "
-"coma mu dhèidhinn oidhche no latha. Sabaididh na h-aonadan ainneamh "
+"coma mu dhèidhinn an ama dhen latha. Sabaididh na h-aonadan ainneamh "
 "<i>stairsnich</i> nas fhearr air a’ chiaradh is chamhanaich."
 
 #. [tip]
@@ -4760,8 +4760,8 @@ msgstr ""
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
 msgstr ""
-"Faodaidh plana math tuiteam às a chèile ma bheir thu ionnsaigh air àm an "
-"latha cearr."
+"Faodaidh plana math tuiteam às a chèile ma bheir thu ionnsaigh air àm cearr "
+"dhen latha."
 
 #. [tip]
 #: data/tips.cfg:61 data/tips.cfg:85 data/tips.cfg:137 data/tips.cfg:145
@@ -5166,7 +5166,7 @@ msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
 msgstr ""
-"Tha aonadan le cruinn-leum nas fearr an aghaidh nàimhdean a mharbhas iad le "
+"Tha aonadan le brùchdadh nas fearr an aghaidh nàimhdean a mharbhas iad le "
 "aon bhuille."
 
 #. [tip]
@@ -5268,11 +5268,11 @@ msgid ""
 msgstr ""
 "Tha an comas <i>maille</i> fìor chumhachdach oir tha buaidhean fad is "
 "farsaing aige. Chan fhaigh an nàmhaid ach an dàrna leth à comas <i>sùigh</"
-"i>, chan fhaigh e buannachd à <i>cruinn-leum</i> no <i>cùl-shàthadh</i> idir "
-"is tha <i>caothach a’ chatha</i> nas laige. Tha e doirbh dha nàimhdean "
-"luatha teicheadh, tha nàimhdean malla cha mhòr gun ghluasad is chan fhaigh "
-"na h-aonadan agad fhèin cus dochann dìoghaltais is mar sin gheibh iad "
-"slànachadh nas luaithe."
+"i>, chan fhaigh e buannachd à <i>brùchdadh</i> no <i>cùl-shàthadh</i> idir "
+"is tha <i>mire-chatha</i> nas laige air. Tha e doirbh dha nàimhdean luatha "
+"teicheadh, tha nàimhdean malla cha mhòr gun ghluasad is chan fhaigh na h-"
+"aonadan agad fhèin cus dochann dìoghaltais is mar sin gheibh iad slànachadh "
+"nas luaithe."
 
 #. [tip]
 #: data/tips.cfg:225
@@ -5338,7 +5338,7 @@ msgid ""
 "<i>Charge</i> against a slowed opponent, the results can be impressive."
 msgstr ""
 "Faodaidh iomadh chomas sònraichte còmhla a bhith marbhtach. Ged a bheireadh "
-"e obair gus <i>ceannardas</i>, <i>soillseachadh</i> is <i>cruinn-leum</i> a "
+"e obair gus <i>ceannardas</i>, <i>soillseachadh</i> is <i>brùchdadh</i> a "
 "chur còmhla an aghaigh nàmhad air a bheil maille, mar eisimpleir, faodaidh "
 "an toradh a bhith drùidhteach."
 
@@ -7292,7 +7292,7 @@ msgstr "Chan urrainn dhut ais-ghairm air an àite comharraichte an-dràsta"
 
 #: src/menu_events.cpp:387
 msgid "No unit recalled"
-msgstr ""
+msgstr "Cha deach aonad ais-ghairm"
 
 #: src/menu_events.cpp:404
 msgid "You must have at least 1 gold piece to recall a unit"
@@ -7453,8 +7453,8 @@ msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
-"Atharraich àireamh nan cuairtean (is àm an latha), no cuir 1 ris mura h-eil "
-"àireamh ’ga cur a-steach."
+"Atharraich àireamh nan cuairtean (is an t-àm dhen latha), no cuir 1 ris mura "
+"h-eil àireamh ’ga cur a-steach."
 
 #: src/menu_events.cpp:1212
 msgid "[turn]"
@@ -7602,15 +7602,15 @@ msgstr "Chan urrainn dhan IF smachd a ghabhail air taobh lìonraidh: “$side|.�
 
 #: src/menu_events.cpp:1434
 msgid "Side '$side' is already droided."
-msgstr ""
+msgstr "Tha smachd aig IF air “$side” mu thràth."
 
 #: src/menu_events.cpp:1444
 msgid "Side '$side' controller is now controlled by: AI."
-msgstr ""
+msgstr "Tha “$side” fo smachd IF a-nis."
 
 #: src/menu_events.cpp:1446
 msgid "Side '$side' controller is now controlled by: human."
-msgstr ""
+msgstr "Tha “$side” fo smachd daonna a-nis."
 
 #: src/menu_events.cpp:1454
 msgid "Can't droid a local ai side: '$side'."
@@ -8039,7 +8039,7 @@ msgstr "Le feartan sònraichte: "
 
 #: src/reports.cpp:707
 msgid "Time of day: "
-msgstr "Àm an latha: "
+msgstr "Àm dhen latha: "
 
 #: src/reports.cpp:711
 msgid "Leadership: "
@@ -8208,7 +8208,7 @@ msgstr "Cleoc"
 
 #: src/reports.cpp:1560
 msgid "Battery"
-msgstr ""
+msgstr "Bataraidh"
 
 #: src/reports.cpp:1589
 msgid "Countdown until your turn automatically ends."
@@ -8530,11 +8530,11 @@ msgstr "Grad-iuchair: "
 
 #: src/time_of_day.cpp:45
 msgid "Stub Time of Day"
-msgstr "Bun-àm an latha"
+msgstr "Bun-àm dhen latha"
 
 #: src/time_of_day.cpp:46
 msgid "This Time of Day is only a Stub!"
-msgstr "Chan eil àm an latha seo ach ’na bhun-àm!"
+msgstr "Chan eil an t-àm dhen latha seo ach ’na bhun-àm!"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:356
