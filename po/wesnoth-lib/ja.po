@@ -8,10 +8,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2018\n"
+"Last-Translator: 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -5384,8 +5384,10 @@ msgid "operating_system^<unknown>"
 msgstr "<不明>"
 
 #: src/font/text.cpp:789
+#, fuzzy
+#| msgid "The text contains invalid Pango markup: "
 msgid "The text contains invalid markup: "
-msgstr "テキストに無効なマークアップが含まれています："
+msgstr "テキストに無効な Pango マークアップが含まれています："
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:251
@@ -5579,12 +5581,16 @@ msgid "addons_order^Type ($order)"
 msgstr "タイプ（$order）"
 
 #: src/gui/dialogs/addon/manager.cpp:228
+#, fuzzy
+#| msgid "addons_order^Last updated ($datelike_order)"
 msgid "addons_order^Last updated ($order)"
-msgstr "最終更新（$order）"
+msgstr "最終更新（$datelike_order）"
 
 #: src/gui/dialogs/addon/manager.cpp:231
+#, fuzzy
+#| msgid "addons_order^First uploaded ($datelike_order)"
 msgid "addons_order^First uploaded ($order)"
-msgstr "初アップロード（$order）"
+msgstr "初アップロード（$datelike_order）"
 
 #: src/gui/dialogs/addon/manager.cpp:260 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -5650,12 +5656,12 @@ msgstr "不明"
 #. TRANSLATORS: ascending
 #: src/gui/dialogs/addon/manager.cpp:360
 msgid "asc"
-msgstr "昇順"
+msgstr ""
 
 #. TRANSLATORS: descending
 #: src/gui/dialogs/addon/manager.cpp:364
 msgid "desc"
-msgstr "降順"
+msgstr ""
 
 #: src/gui/dialogs/addon/manager.cpp:380 src/gui/dialogs/chat_log.cpp:420
 #: src/gui/dialogs/game_cache_options.cpp:105
@@ -6172,7 +6178,7 @@ msgstr "観戦不可"
 #: src/gui/dialogs/multiplayer/lobby.cpp:957
 msgid ""
 "Something is wrong with the addon version check database supporting the "
-"multiplayer lobby. Please report this at http://bugs.wesnoth.org."
+"multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
 "マルチプレイヤーロビーのアドオンバージョンチェックデータベースに何らかの不具"
 "合があったようです。bugs.wesnoth.orgにバグ報告をお願いします。"
@@ -7604,11 +7610,37 @@ msgstr ""
 #~ "CPU 使用率が 100% になるのを抑えますが、高解像度でのパフォーマンスが大きく"
 #~ "向上します。"
 
+#~ msgid "Rename"
+#~ msgstr "名前を変更する"
+
 #~ msgid "The maximum text width is less than 1."
 #~ msgstr "最大テキスト幅が 1 より小さいです。"
 
+#~ msgid "ascending"
+#~ msgstr "昇順"
+
+#~ msgid "oldest to newest"
+#~ msgstr "古い順"
+
+#~ msgid "descending"
+#~ msgstr "降順"
+
+#~ msgid "newest to oldest"
+#~ msgstr "新しい順"
+
 #~ msgid "active_modifications^None"
 #~ msgstr "なし"
+
+#~ msgid "Modifications: "
+#~ msgstr "Mod："
+
+#~ msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
+#~ msgstr ""
+#~ "Lua コンソールはデバッグモードでのみ使用可能です！　( まず ’:debug’ を起動"
+#~ "してください)"
+
+#~ msgid "lua console"
+#~ msgstr "Luaコンソール"
 
 #~ msgid "$game_name (Era: $era_name)"
 #~ msgstr "$game_name（時代： $era_name）"
@@ -7619,8 +7651,14 @@ msgstr ""
 #~ msgid "Era"
 #~ msgstr "時代"
 
+#~ msgid "lobby"
+#~ msgstr "ロビー"
+
 #~ msgid "number of players^$min to $max"
 #~ msgstr "$min ～ $max"
+
+#~ msgid "this game"
+#~ msgstr "このゲーム"
 
 #~ msgid ""
 #~ "Unsupported image format.\n"
@@ -7636,3 +7674,6 @@ msgstr ""
 
 #~ msgid "$count|× $name"
 #~ msgstr "$count|× $name"
+
+#~ msgid "Touch"
+#~ msgstr "タッチ"
