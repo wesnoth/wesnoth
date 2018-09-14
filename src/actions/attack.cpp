@@ -180,7 +180,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
             chance_to_hit = 100;
     }
 
-	if(opp.get_state("invulnerable") || chance_to_hit < 0) {
+	if(opp.get_state("invulnerable")) {
 		chance_to_hit = 0;
 	}
 
