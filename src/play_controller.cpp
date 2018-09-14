@@ -388,7 +388,7 @@ void play_controller::fire_prestart()
 	gamestate().gamedata_.get_variable("turn_number") = static_cast<int>(turn());
 }
 
-void play_controller::refresh_objectives()
+void play_controller::refresh_objectives() const
 {
 	const config cfg("side", gui_->viewing_side());
 	gamestate().lua_kernel_->run_wml_action("show_objectives", vconfig(cfg),
