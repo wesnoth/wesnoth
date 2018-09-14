@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-09-09 11:38+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2018\n"
+"Last-Translator: 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -5219,10 +5219,8 @@ msgstr "ユニットの召還"
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:393
-#, fuzzy
-#| msgid "Rename Unit"
 msgid "Rename"
-msgstr "ユニット名を変更"
+msgstr "名前を変更する"
 
 #. [button]: id=dismiss
 #: data/gui/window/unit_recall.cfg:405
@@ -5326,10 +5324,8 @@ msgid "The maximum text width is less than 1."
 msgstr "最大テキスト幅が 1 より小さいです。"
 
 #: src/font/text.cpp:761
-#, fuzzy
-#| msgid "The text contains invalid markup: "
 msgid "The text contains invalid Pango markup: "
-msgstr "テキストに無効なマークアップが含まれています："
+msgstr "テキストに無効な Pango マークアップが含まれています："
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:251
@@ -5523,16 +5519,12 @@ msgid "addons_order^Type ($order)"
 msgstr "タイプ（$order）"
 
 #: src/gui/dialogs/addon/manager.cpp:229
-#, fuzzy
-#| msgid "addons_order^Last updated ($order)"
 msgid "addons_order^Last updated ($datelike_order)"
-msgstr "最終更新（$order）"
+msgstr "最終更新（$datelike_order）"
 
 #: src/gui/dialogs/addon/manager.cpp:232
-#, fuzzy
-#| msgid "addons_order^First uploaded ($order)"
 msgid "addons_order^First uploaded ($datelike_order)"
-msgstr "初アップロード（$order）"
+msgstr "初アップロード（$datelike_order）"
 
 #: src/gui/dialogs/addon/manager.cpp:261 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -5597,21 +5589,21 @@ msgstr "不明"
 
 #: src/gui/dialogs/addon/manager.cpp:363
 msgid "ascending"
-msgstr ""
+msgstr "昇順"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
 #: src/gui/dialogs/addon/manager.cpp:365
 msgid "oldest to newest"
-msgstr ""
+msgstr "古い順"
 
 #: src/gui/dialogs/addon/manager.cpp:368
 msgid "descending"
-msgstr ""
+msgstr "降順"
 
 #. TRANSLATORS: Sorting order of dates, newest first
 #: src/gui/dialogs/addon/manager.cpp:370
 msgid "newest to oldest"
-msgstr ""
+msgstr "新しい順"
 
 #: src/gui/dialogs/addon/manager.cpp:388 src/gui/dialogs/chat_log.cpp:420
 #: src/gui/dialogs/game_cache_options.cpp:105
@@ -5886,8 +5878,6 @@ msgid "Version: "
 msgstr "バージョン："
 
 #: src/gui/dialogs/game_load.cpp:389
-#, fuzzy
-#| msgid "Modifications:"
 msgid "Modifications: "
 msgstr "Mod："
 
@@ -6025,10 +6015,10 @@ msgstr "ロビーデータをダウンロード中"
 #: src/gui/dialogs/lua_interpreter.cpp:690
 msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
 msgstr ""
+"Lua コンソールはデバッグモードでのみ使用可能です！　( まず ’:debug’ を起動し"
+"てください)"
 
 #: src/gui/dialogs/lua_interpreter.cpp:691
-#, fuzzy
-#| msgid "Lua Console"
 msgid "lua console"
 msgstr "Luaコンソール"
 
@@ -6132,16 +6122,10 @@ msgid "Observers not allowed"
 msgstr "観戦不可"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:797
-#, fuzzy
-#| msgid "Lobby"
 msgid "lobby"
 msgstr "ロビー"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:957
-#, fuzzy
-#| msgid ""
-#| "Something is wrong with the addon version check database supporting the "
-#| "multiplayer lobby. Please report this at http://bugs.wesnoth.org."
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -6256,10 +6240,8 @@ msgstr "空"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:253
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:109
-#, fuzzy
-#| msgid "Quit game"
 msgid "this game"
-msgstr "ゲーム終了"
+msgstr "このゲーム"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:365
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:168
@@ -6691,7 +6673,7 @@ msgstr "選択/移動/攻撃"
 
 #: src/hotkey/hotkey_command.cpp:78
 msgid "Touch"
-msgstr ""
+msgstr "タッチ"
 
 #: src/hotkey/hotkey_command.cpp:79
 msgid "Animate Map"
@@ -7545,9 +7527,3 @@ msgid ""
 msgstr ""
 "キー「$deprecated_key」は「$key」に名前が変更されました。「$deprecated_key」"
 "のサポートはバージョン$removal_versionで削除されます。"
-
-#~ msgid "asc"
-#~ msgstr "昇順"
-
-#~ msgid "desc"
-#~ msgstr "降順"

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-09-09 11:38+0300\n"
+"POT-Creation-Date: 2018-09-09 11:42+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2018\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -359,13 +359,6 @@ msgstr "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:148
-#, fuzzy
-#| msgid ""
-#| "sets the severity level of the log domains.  B<all> can be used to match "
-#| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>,\\ B<none>.  By default the B<warning> level is used for most "
-#| "domains, but B<deprecation> defaults to none unless combined with the B<-"
-#| "d> option."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
@@ -376,7 +369,7 @@ msgstr ""
 "させるために利用される。有効なレベルは以下の通り。 B<error>、\\ "
 "B<warning>、\\ B<info>、\\ B<debug>。既定値では B<warning> レベルがほとんどの"
 "ログ領域に使用されるが、 B<-d> オプションと組み合わせた場合を除いて "
-"B<deprecation>は無効である。"
+"B<deprecation>は B<none>である。"
 
 #. type: TP
 #: doc/man/wesnoth.6:148
