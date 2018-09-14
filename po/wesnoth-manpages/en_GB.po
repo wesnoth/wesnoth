@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
-"POT-Creation-Date: 2018-09-09 11:38+0300\n"
-"PO-Revision-Date: 2018-06-04 22:04+1000\n"
+"POT-Creation-Date: 2018-09-09 11:42+0300\n"
+"PO-Revision-Date: 2018-09-12 16:42+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -371,13 +371,6 @@ msgstr "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:148
-#, fuzzy
-#| msgid ""
-#| "sets the severity level of the log domains.  B<all> can be used to match "
-#| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>,\\ B<none>.  By default the B<warning> level is used for most "
-#| "domains, but B<deprecation> defaults to none unless combined with the B<-"
-#| "d> option."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
@@ -387,7 +380,7 @@ msgstr ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
 "\\ B<none>.  By default the B<warning> level is used for most domains, but "
-"B<deprecation> is set to none by default unless combined with the B<-d> "
+"B<deprecation> is set to B<none> by default unless combined with the B<-d> "
 "option."
 
 #. type: TP
@@ -1544,8 +1537,8 @@ msgid ""
 "B</var/run/wesnothd/socket>)."
 msgstr ""
 "The path to the fifo you can echo server commands into (same as /query ... "
-"from wesnoth).  If not specified defaults to the compile-time path (default: "
-"B</var/run/wesnothd/socket>)."
+"from wesnoth). The compile-time path is used by default if it is not "
+"specified (default: B</var/run/wesnothd/socket>)."
 
 #. type: TP
 #: doc/man/wesnothd.6:135
@@ -1632,8 +1625,8 @@ msgid ""
 "in."
 msgstr ""
 "The directory where the server stores game replays. (Don't forget the "
-"trailing /!) Defaults to `' which means the directory wesnothd was started "
-"in."
+"trailing /!) It is set to `' by default, which means the directory wesnothd "
+"was started in."
 
 #. type: TP
 #: doc/man/wesnothd.6:153
@@ -1698,7 +1691,7 @@ msgid ""
 "corresponding wesnoth version)"
 msgstr ""
 "A comma separated list of version strings to be accepted by the server. B<*> "
-"and B<?> from wild-card patterns are supported.  (defaults to the "
+"and B<?> from wild-card patterns are supported. (default is the "
 "corresponding wesnoth version)"
 
 #. type: Plain text

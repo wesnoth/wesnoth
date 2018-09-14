@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-09-09 11:38+0300\n"
-"PO-Revision-Date: 2018-07-23 17:50+1000\n"
+"PO-Revision-Date: 2018-09-12 16:34+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.9\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -5251,10 +5251,8 @@ msgstr "Recall Unit"
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:393
-#, fuzzy
-#| msgid "Rename Unit"
 msgid "Rename"
-msgstr "Rename Unit"
+msgstr "Rename"
 
 #. [button]: id=dismiss
 #: data/gui/window/unit_recall.cfg:405
@@ -5358,10 +5356,8 @@ msgid "The maximum text width is less than 1."
 msgstr "The maximum text width is less than 1."
 
 #: src/font/text.cpp:761
-#, fuzzy
-#| msgid "The text contains invalid markup: "
 msgid "The text contains invalid Pango markup: "
-msgstr "The text contains invalid markup: "
+msgstr "The text contains invalid Pango mark-up: "
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:251
@@ -5555,16 +5551,12 @@ msgid "addons_order^Type ($order)"
 msgstr "Type ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:229
-#, fuzzy
-#| msgid "addons_order^Last updated ($order)"
 msgid "addons_order^Last updated ($datelike_order)"
-msgstr "Last updated ($order)"
+msgstr "Last updated ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:232
-#, fuzzy
-#| msgid "addons_order^First uploaded ($order)"
 msgid "addons_order^First uploaded ($datelike_order)"
-msgstr "First uploaded ($order)"
+msgstr "First uploaded ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:261 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -5627,26 +5619,22 @@ msgid "addon_state^Unknown"
 msgstr "Unknown"
 
 #: src/gui/dialogs/addon/manager.cpp:363
-#, fuzzy
-#| msgid "sort^Ascending"
 msgid "ascending"
-msgstr "Ascending"
+msgstr "ascending"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
 #: src/gui/dialogs/addon/manager.cpp:365
 msgid "oldest to newest"
-msgstr ""
+msgstr "oldest to newest"
 
 #: src/gui/dialogs/addon/manager.cpp:368
-#, fuzzy
-#| msgid "sort^Descending"
 msgid "descending"
-msgstr "Descending"
+msgstr "descending"
 
 #. TRANSLATORS: Sorting order of dates, newest first
 #: src/gui/dialogs/addon/manager.cpp:370
 msgid "newest to oldest"
-msgstr ""
+msgstr "newest to oldest"
 
 #: src/gui/dialogs/addon/manager.cpp:388 src/gui/dialogs/chat_log.cpp:420
 #: src/gui/dialogs/game_cache_options.cpp:105
@@ -5917,10 +5905,8 @@ msgid "Version: "
 msgstr "Version: "
 
 #: src/gui/dialogs/game_load.cpp:389
-#, fuzzy
-#| msgid "Modifications:"
 msgid "Modifications: "
-msgstr "Modifications:"
+msgstr "Modifications: "
 
 #: src/gui/dialogs/game_stats.cpp:78
 msgid "controller^AI"
@@ -6055,13 +6041,11 @@ msgstr "Downloading lobby data"
 
 #: src/gui/dialogs/lua_interpreter.cpp:690
 msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
-msgstr ""
+msgstr "The lua console can only be used in debug mode! (Run ':debug' first)"
 
 #: src/gui/dialogs/lua_interpreter.cpp:691
-#, fuzzy
-#| msgid "Lua Console"
 msgid "lua console"
-msgstr "Lua Console"
+msgstr "lua console"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:106
 msgid "Selected Game"
@@ -6164,10 +6148,8 @@ msgid "Observers not allowed"
 msgstr "Observers not allowed"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:797
-#, fuzzy
-#| msgid "Lobby"
 msgid "lobby"
-msgstr "Lobby"
+msgstr "lobby"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:957
 msgid ""
@@ -6280,10 +6262,8 @@ msgstr "empty"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:253
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:109
-#, fuzzy
-#| msgid "Quit game"
 msgid "this game"
-msgstr "Quit game"
+msgstr "this game"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:365
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:168
