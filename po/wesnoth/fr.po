@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-09-09 11:38+0300\n"
-"PO-Revision-Date: 2018-07-29 17:04+0200\n"
+"PO-Revision-Date: 2018-09-12 14:05+0200\n"
 "Last-Translator: Syll <syll-dev@laposte.net>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -3544,7 +3544,7 @@ msgstr "Turquoise"
 #. [color_range]: id=gold
 #: data/core/team-colors.cfg:107
 msgid "color^Gold"
-msgstr ""
+msgstr "Or"
 
 #. [color_range]: id=reef
 #: data/core/team-colors.cfg:116
@@ -4289,9 +4289,8 @@ msgstr "Tour suivant"
 
 #. [action]: id=button-nextturn, type=image
 #: data/themes/_initial.cfg:486 data/themes/_initial.cfg:641
-#, fuzzy
 msgid "play turn"
-msgstr "Voir le tour"
+msgstr "Jouer le tour"
 
 #. [action]: id=button-nextside, type=image
 #: data/themes/_initial.cfg:501 data/themes/_initial.cfg:654
@@ -4300,9 +4299,8 @@ msgstr "Équipe suivante"
 
 #. [action]: id=button-nextside, type=image
 #: data/themes/_initial.cfg:502 data/themes/_initial.cfg:655
-#, fuzzy
 msgid "play side turn"
-msgstr "Voir le tour de cette équipe"
+msgstr "Jouer le tour de ce camp"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:516 data/themes/_initial.cfg:668
@@ -4311,9 +4309,8 @@ msgstr "Coup suivant"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:517 data/themes/_initial.cfg:669
-#, fuzzy
 msgid "play single move"
-msgstr "Voir un tour"
+msgstr "Jouer un seul mouvement"
 
 #. [menu]: id=show-what
 #: data/themes/_initial.cfg:529 data/themes/_initial.cfg:681
@@ -4327,7 +4324,6 @@ msgstr "Continuer à jouer"
 
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:541
-#, fuzzy
 msgid "Exit the replay mode and continue playing normally."
 msgstr "Sortir du mode rejeu et continuer à joueur normalement."
 
@@ -4417,7 +4413,7 @@ msgstr "revenu"
 #. [label]: id=battery-icon
 #: data/themes/classic.cfg:266
 msgid "battery"
-msgstr ""
+msgstr "batterie"
 
 #. [unit_level]: id=unit-level
 #: data/themes/classic.cfg:438
@@ -7123,7 +7119,7 @@ msgstr ""
 
 #: src/menu_events.cpp:387
 msgid "No unit recalled"
-msgstr ""
+msgstr "Aucune unité rappelée"
 
 #: src/menu_events.cpp:404
 msgid "You must have at least 1 gold piece to recall a unit"
@@ -7425,15 +7421,15 @@ msgstr "Impossible de robotiser ce camp (distant) : « $side »."
 
 #: src/menu_events.cpp:1434
 msgid "Side '$side' is already droided."
-msgstr ""
+msgstr "Le camp '$side' est déjà contrôlé par l'IA."
 
 #: src/menu_events.cpp:1444
 msgid "Side '$side' controller is now controlled by: AI."
-msgstr ""
+msgstr "Le camp '$side' est dorénavant contrôlé par l'IA."
 
 #: src/menu_events.cpp:1446
 msgid "Side '$side' controller is now controlled by: human."
-msgstr ""
+msgstr "Le camp '$side' est dorénavant contrôlé par un humain."
 
 #: src/menu_events.cpp:1454
 msgid "Can't droid a local ai side: '$side'."
@@ -8024,7 +8020,7 @@ msgstr "Horloge"
 
 #: src/reports.cpp:1560
 msgid "Battery"
-msgstr ""
+msgstr "Batterie"
 
 #: src/reports.cpp:1589
 msgid "Countdown until your turn automatically ends."

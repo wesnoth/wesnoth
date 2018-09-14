@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-09-09 11:38+0300\n"
-"PO-Revision-Date: 2018-05-12 17:27+0200\n"
+"PO-Revision-Date: 2018-09-12 18:03+0200\n"
 "Last-Translator: Gérard Bodin <gbodin.qc@gmail.com>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -1662,15 +1662,6 @@ msgstr "Sable"
 
 #. [terrain_type]: id=reef
 #: data/core/terrain.cfg:2762
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
-#| "and sand.\n"
-#| "This provides most land units with a more steady footing and defensive "
-#| "positions than wading in shallow water normally would and also grants "
-#| "most water-dwelling races an exceptionally high defense.\n"
-#| "\n"
-#| "Mermen and Naga both receive 70% defense on coastal reefs."
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
 "and sand.\n"
@@ -1713,17 +1704,6 @@ msgstr ""
 
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:2791
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Swamps'</italic> represent any sort of wetlands.\n"
-#| "Swamps slow down nearly everyone, and inhibit their ability to defend "
-#| "themselves. An exception to this is any race bodily skilled in navigating "
-#| "water; these receive both full movement and a defensive bonus. Those that "
-#| "make their living in the wetlands are also adept at using this terrain "
-#| "for cover.\n"
-#| "\n"
-#| "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
-#| "all generally enjoy 60%."
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands.\n"
 "Swamps slow down nearly everyone, and inhibit their ability to defend "
@@ -1748,18 +1728,6 @@ msgstr ""
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:2804
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Shallow water'</italic> represents any body of water deep "
-#| "enough to come up to roughly a man’s waist. This is enough to slow down "
-#| "nearly anyone and leave them wide open to attack. Dwarves, given that the "
-#| "water reaches up almost to their heads, have an extremely hard time of "
-#| "this. The exception is any race whose bodies naturally lend themselves to "
-#| "swimming, for which they receive a considerable defensive bonus and full "
-#| "movement.\n"
-#| "\n"
-#| "Most units make do with 20 to 30% defense in shallow water, whereas both "
-#| "naga and mermen enjoy 60%."
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
 "enough to come up to roughly a man’s waist. This is enough to slow down "
@@ -1830,15 +1798,6 @@ msgstr ""
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:2845
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Deep water'</italic> represents any body of water deep "
-#| "enough to cover a man’s head.\n"
-#| "Most units cannot enter deep water: it is the domain of units which can "
-#| "either fly, or are exceptionally strong swimmers.\n"
-#| "\n"
-#| "Mermen and naga both receive 50% defense in deep water, with full "
-#| "movement."
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
 "to cover a man’s head.\n"
@@ -2544,10 +2503,8 @@ msgstr "Modifications"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:409
-#, fuzzy
-#| msgid "Save Game"
 msgid "Save random seed"
-msgstr "Sauvegarder la partie"
+msgstr "Sauvegarder la graine"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:411
@@ -2582,7 +2539,6 @@ msgstr "Page :"
 
 #. [slider]: id=page_number
 #: data/gui/window/chat_log.cfg:76
-#, fuzzy
 msgid "Last"
 msgstr "Dernière"
 
@@ -3274,7 +3230,7 @@ msgstr ""
 #. [button]: id=browse_saves_folder
 #: data/gui/window/game_load.cfg:568
 msgid "Open saves folder"
-msgstr ""
+msgstr "Ouvrir le répertoire des sauvegardes"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -3775,29 +3731,27 @@ msgstr "Options de connexion"
 #. [row]
 #: data/gui/window/logging.cfg:136
 msgid "Debug level logging: maximum information"
-msgstr ""
+msgstr "Niveau de journalisation « Debug » : information maximum"
 
 #. [row]
 #: data/gui/window/logging.cfg:137
 msgid "Info level logging: more information"
-msgstr ""
+msgstr "Niveau de journalisation « Info » : plus d'information"
 
 #. [row]
 #: data/gui/window/logging.cfg:138
 msgid "Warning level logging: less information"
-msgstr ""
+msgstr "Niveau de journalisation « Warning » : moins d'information"
 
 #. [row]
 #: data/gui/window/logging.cfg:139
 msgid "Error level logging: minimum information"
-msgstr ""
+msgstr "Niveau de journalisation « Error » : information minimum"
 
 #. [row]
 #: data/gui/window/logging.cfg:140
-#, fuzzy
-#| msgid "Visible in fog"
 msgid "Disable logging"
-msgstr "Visible dans le brouillard"
+msgstr "Désactiver la journalisation"
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:117
@@ -4149,7 +4103,6 @@ msgstr "Paramètres du jeu"
 
 #. [slider]: id=num_players
 #: data/gui/window/mp_create_game.cfg:702
-#, fuzzy
 msgid "Any"
 msgstr "N'importe lequel"
 
@@ -4370,11 +4323,13 @@ msgid ""
 "A registered account on the Wesnoth forums is required to join the official "
 "server."
 msgstr ""
+"Un compte enregistré sur le forum de Wesnoth est nécessaire pour rejoindre "
+"le serveur officiel."
 
 #. [button]: id=register
 #: data/gui/window/mp_method_selection.cfg:136
 msgid "Sign Up"
-msgstr ""
+msgstr "Créer un compte"
 
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:226
@@ -4497,7 +4452,7 @@ msgstr "Accélérer les mouvements et les combats"
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:79
 msgid "Acceleration factor:"
-msgstr ""
+msgstr "Facteur d’accélération :"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:84
@@ -4505,6 +4460,9 @@ msgid ""
 "Speed at which unit moves and animations play when ‘Accelerated speed’ is "
 "enabled or when Shift is held down in-game"
 msgstr ""
+"Vitesse à laquelle les unités se déplacent et les animations sont jouées "
+"lorsque « Facteur d'accélération » est activé ou lorsque la touche Shift est "
+"pressée en jeu"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:100
@@ -4615,7 +4573,6 @@ msgstr "Action"
 # Avec un "s" ou pas ?
 #. [toggle_button]: id=sort_1
 #: data/gui/window/preferences/02_hotkeys.cfg:93
-#, fuzzy
 msgid "Hotkey"
 msgstr "Raccourci clavier"
 
@@ -4646,10 +4603,8 @@ msgstr "T"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:129
-#, fuzzy
-#| msgid "Available in game"
 msgid "Available at main menu"
-msgstr "Disponible en jeu"
+msgstr "Disponible dans le menu principal"
 
 #. [button]: id=btn_add_hotkey
 #: data/gui/window/preferences/02_hotkeys.cfg:241
@@ -4776,7 +4731,7 @@ msgstr "Change le facteur de grossissement des polices"
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:275
 msgid "Limit FPS"
-msgstr ""
+msgstr "Limité le nombre d'image par seconde"
 
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:276
@@ -4784,6 +4739,8 @@ msgid ""
 "Disabling this increases CPU usage to 100% but may slightly improve "
 "performance at high resolutions"
 msgstr ""
+"Désactiver cette option augmente l'usage du CPU à 100%, mais peut améliorer "
+"sensiblement les performances à hautes résolutions"
 
 #. [button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:291
@@ -5361,10 +5318,8 @@ msgstr "Rappeler l'unité"
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:393
-#, fuzzy
-#| msgid "Rename Unit"
 msgid "Rename"
-msgstr "Renommer l'unité"
+msgstr "Renommer"
 
 #. [button]: id=dismiss
 #: data/gui/window/unit_recall.cfg:405
@@ -5468,10 +5423,8 @@ msgid "The maximum text width is less than 1."
 msgstr "La largeur maximum du texte est inférieure à 1."
 
 #: src/font/text.cpp:761
-#, fuzzy
-#| msgid "The text contains invalid markup: "
 msgid "The text contains invalid Pango markup: "
-msgstr "Le texte contient une balise invalide : "
+msgstr "Le texte contient une balise Pango invalide : "
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:251
@@ -5665,16 +5618,12 @@ msgid "addons_order^Type ($order)"
 msgstr "Type ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:229
-#, fuzzy
-#| msgid "addons_order^Last updated ($order)"
 msgid "addons_order^Last updated ($datelike_order)"
-msgstr "Dernière mise à jour ($order)"
+msgstr "Dernière mise à jour ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:232
-#, fuzzy
-#| msgid "addons_order^First uploaded ($order)"
 msgid "addons_order^First uploaded ($datelike_order)"
-msgstr "Date d'envoi initiale ($order)"
+msgstr "Date d'envoi initiale ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:261 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -5737,26 +5686,22 @@ msgid "addon_state^Unknown"
 msgstr "Inconnu"
 
 #: src/gui/dialogs/addon/manager.cpp:363
-#, fuzzy
-#| msgid "sort^Ascending"
 msgid "ascending"
 msgstr "Croissant(e)"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
 #: src/gui/dialogs/addon/manager.cpp:365
 msgid "oldest to newest"
-msgstr ""
+msgstr "du plus ancien au plus récent"
 
 #: src/gui/dialogs/addon/manager.cpp:368
-#, fuzzy
-#| msgid "sort^Descending"
 msgid "descending"
 msgstr "Décroissant(e)"
 
 #. TRANSLATORS: Sorting order of dates, newest first
 #: src/gui/dialogs/addon/manager.cpp:370
 msgid "newest to oldest"
-msgstr ""
+msgstr "du plus récent au plus ancien"
 
 #: src/gui/dialogs/addon/manager.cpp:388 src/gui/dialogs/chat_log.cpp:420
 #: src/gui/dialogs/game_cache_options.cpp:105
@@ -5862,10 +5807,8 @@ msgstr "Vulnérabilité de l'attaquant contre"
 
 #: src/gui/dialogs/campaign_selection.cpp:274
 #: src/gui/dialogs/multiplayer/lobby.cpp:462
-#, fuzzy
-#| msgid "Modifications"
 msgid "active_modifications^None"
-msgstr "Modifications"
+msgstr "Aucune"
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:66
 msgid "$requester requires the following modifications to be enabled:"
@@ -6041,8 +5984,6 @@ msgid "Version: "
 msgstr "Version : "
 
 #: src/gui/dialogs/game_load.cpp:389
-#, fuzzy
-#| msgid "Modifications:"
 msgid "Modifications: "
 msgstr "Modifications :"
 
@@ -6180,10 +6121,10 @@ msgstr "Téléchargement des données du vestibule"
 #: src/gui/dialogs/lua_interpreter.cpp:690
 msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
 msgstr ""
+"La console lua ne peut être utilisé qu'en mode débogage  (Exécutez ':debug' "
+"d'abord)"
 
 #: src/gui/dialogs/lua_interpreter.cpp:691
-#, fuzzy
-#| msgid "Lua Console"
 msgid "lua console"
 msgstr "Console Lua"
 
@@ -6241,17 +6182,13 @@ msgstr "Parties : $num_shown affichées sur $num_total"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:417
 msgid "$game_name (Era: $era_name)"
-msgstr ""
+msgstr "$game_name (Ère: $era_name)"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:447
-#, fuzzy
-#| msgid "addon_state^Not installed"
 msgid "era_or_mod^not installed"
 msgstr "Non installée"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:450
-#, fuzzy
-#| msgid "Era:"
 msgid "Era"
 msgstr "Ère :"
 
@@ -6276,10 +6213,6 @@ msgid "Use map settings:"
 msgstr "Utiliser les paramètres de la carte :"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:494
-#, fuzzy
-#| msgid ""
-#| "One or more items need to be installed\n"
-#| "in order to join this game."
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -6296,22 +6229,16 @@ msgid "Observers not allowed"
 msgstr "Observateurs interdits"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:797
-#, fuzzy
-#| msgid "Lobby"
 msgid "lobby"
 msgstr "Vestibule"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:957
-#, fuzzy
-#| msgid ""
-#| "Something is wrong with the addon version check database supporting the "
-#| "multiplayer lobby. Please report this at http://bugs.wesnoth.org."
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
 "Il y a un problème avec la vérification des versions d'extension au niveau "
-"du vestibule multijoueur. Merci de le signaler sur http://bugs.wesnoth.org."
+"du vestibule multijoueur. Merci de le signaler sur https://bugs.wesnoth.org."
 
 #: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:131
 msgid ""
@@ -6384,7 +6311,7 @@ msgstr "Aucune ère disponible pour cette partie."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:741
 msgid "number of players^$min to $max"
-msgstr ""
+msgstr "$min à $max"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:838
 msgid "The selected game has no sides!"
@@ -6420,10 +6347,8 @@ msgstr "vide"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:253
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:109
-#, fuzzy
-#| msgid "Quit game"
 msgid "this game"
-msgstr "Quitter la partie"
+msgstr "cette partie"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:365
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:168
@@ -6495,12 +6420,13 @@ msgid ""
 "\n"
 "Try to save the screenshot as PNG instead."
 msgstr ""
+"Format d'image non pris en charge\n"
+"\n"
+"Essayer plutôt de sauvegarder la capture d’écran au format PNG ."
 
 #: src/gui/dialogs/statistics_dialog.cpp:68
-#, fuzzy
-#| msgid "Scenarios"
 msgid "All Scenarios"
-msgstr "Scénarios"
+msgstr "Tous les scénarios"
 
 #: src/gui/dialogs/statistics_dialog.cpp:181
 msgid "Recruits"
@@ -6515,7 +6441,6 @@ msgid "Advancements"
 msgstr "Avancements"
 
 #: src/gui/dialogs/statistics_dialog.cpp:184
-#, fuzzy
 msgid "Losses"
 msgstr "Pertes"
 
@@ -6528,13 +6453,12 @@ msgid "Inflicted"
 msgstr "Infligé"
 
 #: src/gui/dialogs/statistics_dialog.cpp:212
-#, fuzzy
 msgid "Taken"
-msgstr "Pris"
+msgstr "Reçu"
 
 #: src/gui/dialogs/statistics_dialog.cpp:255
 msgid "$count|× $name"
-msgstr ""
+msgstr "$count|× $name"
 
 #: src/gui/dialogs/title_screen.cpp:467
 msgid "Choose Test"
@@ -6603,16 +6527,12 @@ msgid "Room <i>“$name”</i> joined"
 msgstr "Salle <i>$name</i> rejointe"
 
 #: src/gui/widgets/chatbox.cpp:392
-#, fuzzy
-#| msgid ""
-#| "Whisper session with <i>“$name”</i> started. If you do not want to "
-#| "receive messages from this user, type <i>/ignore $name</i>\n"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>"
 msgstr ""
-"Une conversation privée avec <i>$name</i> a débuté. Si vous ne voulez pas "
-"recevoir les messages de cet utilisateur, tapez <i>/ignore $name</i>\n"
+"Une conversation privée avec <i>\"$name\"</i> a débuté. Si vous ne voulez "
+"pas recevoir les messages de cet utilisateur, tapez <i>/ignore $name</i>"
 
 #: src/gui/widgets/chatbox.cpp:631
 msgid "$player has entered the room"
@@ -6865,7 +6785,7 @@ msgstr "Sélectionner/Déplacer/Attaquer"
 
 #: src/hotkey/hotkey_command.cpp:78
 msgid "Touch"
-msgstr ""
+msgstr "Touche"
 
 #: src/hotkey/hotkey_command.cpp:79
 msgid "Animate Map"
@@ -7000,8 +6920,6 @@ msgid "Continue Network Game"
 msgstr "Reprendre le jeu en réseau"
 
 #: src/hotkey/hotkey_command.cpp:125
-#, fuzzy
-#| msgid "Quit to Titlescreen"
 msgid "Quit to Main Menu"
 msgstr "Quitter pour l'écran d'acceuil"
 
