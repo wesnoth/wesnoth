@@ -1,21 +1,20 @@
 # Translators:
 # GunChleoc, 2017
-# GunChleoc <fios@foramnagaidhlig.net>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 17:02 UTC\n"
-"PO-Revision-Date: 2018-05-07 10:58+0100\n"
-"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
-"Language-Team: Fòram na Gàidhlig\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: GunChleoc, 2017\n"
+"Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
+"teams/12769/gd/)\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Generator: Virtaal 0.7.1\n"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:9
@@ -1082,8 +1081,8 @@ msgid ""
 "a force strong enough to drive off the bandits before moving Deoran from his "
 "encampment!"
 msgstr ""
-"Feumaidh tu Deoran a ghluasad gu meadhan na torr-chathrach sìthiche. Dèan "
-"cinnteach gun trus thu feachd làidir gu leòr gus ruaig a chur air na "
+"Feumaidh tu Deoran a ghluasad gu meadhan na torr-chathrach nan sìthichean. "
+"Dèan cinnteach gun trus thu feachd làidir gu leòr gus ruaig a chur air na "
 "spùinneadairean mus gluais thu Deoran bho champachadh."
 
 #. [objective]: condition=win
@@ -1457,12 +1456,15 @@ msgid ""
 "foes! Cannot some of your elf friends help us in our struggle?"
 msgstr ""
 "Thuirt sibh gum biodh an gleann seo sàbhailte ach lorg sinn làn nàimhdean "
-"cnàimhnich e! Nach urrainn do chuid de na caraidean sìthiche agaibh cobhair "
-"a thoirt leis an strì againn?"
+"cnàimhnich e! Nach urrainn do chuid de na caraidean-sìthe agaibh cobhair a "
+"thoirt leis an strì againn?"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:358
-msgid "I shall not join these accursed undead! Bury me deeply, my friends..."
+#, fuzzy
+#| msgid ""
+#| "I shall not join these accursed undead! Bury me deeply, my friends..."
+msgid "I shall not join these accursed undead! Bury me deeply my friends..."
 msgstr ""
 "Cha dèid mi ’nam chlosach mallaichte! Mo chàirdean, cladhaichibh gu domhainn "
 "mi ..."
@@ -1656,9 +1658,9 @@ msgid ""
 "bow and are deadly with both. They are quick and can hold their own against "
 "just about anything."
 msgstr ""
-"’S e na coilltean dlùtha a th’ anns na dachaighean aig na cathaich "
-"shìthiche. Tha claidheamh is bogha aca is tha iad marbhtach leis an dà "
-"chuid. Tha iad luath is seasaidh iad cha mhòr an aghaidh rud sam bith."
+"’S e na coilltean dlùtha a th’ anns na dachaighean aig na cathaich-shìthe. "
+"Tha claidheamh is bogha aca is tha iad marbhtach leis an dà chuid. Tha iad "
+"luath is seasaidh iad cha mhòr an aghaidh rud sam bith."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:234
@@ -1667,7 +1669,7 @@ msgid ""
 "however, heal units next to them every turn. Use them to bolster your "
 "weakening lines and heal wounded soldiers."
 msgstr ""
-"Nì a’ mhòrchuid dhe nàimhdean a chùis air seumanan sìthiche gun chus "
+"Nì a’ mhòrchuid dhe nàimhdean a chùis air seumanan-sìthe gun chus "
 "trioblaide. Co-dhiù, nì iad slànachadh air na h&#8209;aonadan rin taobh gach "
 "cuairt. Cleachd iad gus na loidhnichean air lagachadh agad a neartachadh is "
 "gus saighdearan leòinte a shlànachadh."
@@ -1710,8 +1712,10 @@ msgstr "Sgrùd na raointean taobh a deas na h&#8209;Aibhne Duibhe"
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:317
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:324
+#, fuzzy
+#| msgid "The masters of the undead are defeated!"
 msgid "The master of the undead is defeated!"
-msgstr "Chaidh maighstir nan closach a cheannsachadh!"
+msgstr "Chaidh maighstirean nan closach a cheannsachadh!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:331
@@ -1721,12 +1725,17 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:336
+#, fuzzy
+#| msgid ""
+#| "Surely the undead infestation cannot be dispatched so easily. We have "
+#| "merely destroyed servants of a far darker master."
 msgid ""
 "Surely the undead infestation cannot be dispatched so easily. We have merely "
 "destroyed a servant of a far darker master."
 msgstr ""
 "Chan eil mi an dùil gum faigheamaid cuidhteas de phlàigh nan closach seo cho "
-"furasta sin. Cha do mhill sinn ach sgalag aig maighstir nas duirche buileach."
+"furasta sin. Cha do mhill sinn ach sgalagan aig maighstir nas duirche "
+"buileach."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:358
@@ -2459,13 +2468,17 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:458
+#, fuzzy
+#| msgid ""
+#| "While the council debated the best course of action, Deoran and Ethiliel "
+#| "prepared to enter the caves under the fortress..."
 msgid ""
 "While the council debated the best course of action, Deoran and Ethiliel "
 "prepared to enter the caves under Mebrin’s fortress..."
 msgstr ""
 "Fhad ’s a bha a’ chomhairle a’ deasbad mu dè am bu chòir dèanamh, dh’ullaich "
-"Deoran is Ethiliel gus briseadh a-steach dha na h&#8209;uamhan fo dhaingean "
-"Mhebrin ..."
+"Deoran is Ethiliel gus briseadh a-steach dha na h&#8209;uamhan fon "
+"daingean..."
 
 #. [scenario]: id=06b_The_Long_March
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:5
@@ -2706,8 +2719,8 @@ msgid ""
 "Cavalrymen and Dragoons will be less useful in the caves than soldiers who "
 "fight on foot."
 msgstr ""
-"Cha bhi saighdearan-eachraidh is eachraidhean cho feumail sna h&#8209;uamhan "
-"seo ’s a bhios saighdearan a shabaideas air an dà chois."
+"Cha bhi saighdearan-eachraidh is cath-mharcaich cho feumail sna h&#8209;"
+"uamhan seo ’s a bhios saighdearan a shabaideas air an dà chois."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:288
@@ -2943,7 +2956,7 @@ msgid ""
 "touches on mysteries that are not for men to know, human. I bind you never "
 "to speak of it."
 msgstr ""
-"Chan e ach cathaich a th’ annta. Fairichidh a h&#8209;uile sìthiche faileas "
+"Chan e ach cathaich a th’ annta. Fairichidh a h&#8209;uile sìthiche sgàile "
 "an iarrainn ach ’s e milleadh a th’ ann dhan fheadhainn a ghabhas na "
 "slighean as àirde, a’ buntainn dha ar draoidheachd. Ach seo gnothaichean "
 "dìomhair againne nach innis sinn dhan chinne-daonna, a Dhuine. Cuiridh mi fo "
@@ -3008,7 +3021,7 @@ msgid ""
 "devouring all we once cherished."
 msgstr ""
 "Is nuair a bhios sinn deiseil leis, dè sna rachadh sinn? Ana-bheatha. "
-"Faileasan acrach a dh’itheas a h&#8209;uile rud a bhiodh dlùth ’nar cridhe "
+"Sgàilean acrach a dh’itheas a h&#8209;uile rud a bhiodh dlùth ’nar cridhe "
 "uair."
 
 #. [message]: speaker=Ethiliel
@@ -3317,7 +3330,7 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:234
 msgid "We, and our elvish allies, have won a great battle against a lich."
 msgstr ""
-"Bhuannaich sinn blàr mòr an aghaidh corp le taic ar caidreabhaich shìthiche."
+"Bhuannaich sinn blàr mòr an aghaidh corp le taic ar caidreabhaich-shìthe."
 
 #. [message]: role=GarrisonCommander
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:239
@@ -3325,9 +3338,9 @@ msgid ""
 "Elvish allies? I think you had best make haste to Westin. There are rumors "
 "of trouble with the elves of the Aethenwood."
 msgstr ""
-"Caidreabhaich shìthiche? Saoilidh mi gum bu chòir dhuibh ur casan a thoirt "
-"leibh dha Bheasdan. Tha fathannan ann mu thrioblaid le sìthichean Coille "
-"Aidhean."
+"Caidreabhaich-shìthe, an e? Saoilidh mi gum bu chòir dhuibh ur casan a "
+"thoirt leibh dha Bheasdan. Tha fathannan ann mu thrioblaid le sìthichean "
+"Coille Aidhean."
 
 #. [scenario]: id=08b_The_Tides_of_War
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:5
@@ -3750,7 +3763,7 @@ msgstr "spleuchd"
 #. [unit_type]: id=Horseman Commander, race=human
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:4
 msgid "Horseman Commander"
-msgstr "Ceann-feadhna Marcaiche"
+msgstr "Ceann-feadhna eachraidh"
 
 #. [unit_type]: id=Horseman Commander, race=human
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:25
@@ -4036,7 +4049,7 @@ msgid ""
 "soon covered their paths day and night, and a thick fog filled the air."
 msgstr ""
 "Stiùir Ethiliel daoine a’ gheàird dheasaich a-steach dhan choille a deas. "
-"Nach b’ fhada mus do chòmhdaich faileasan an slighean oidhche is latha agus "
+"Nach b’ fhada mus do chòmhdaich sgàilean an slighean oidhche is latha agus "
 "mus do lìon ceò tiugh an adhar."
 
 #. [part]
@@ -4069,9 +4082,9 @@ msgid ""
 "winter."
 msgstr ""
 "An dèidh ruaig a chur air Mal M’Brin, thill saighdearan Dheorain is na "
-"caidreabhaich shìthiche aca air an t&#8209;slighe dhachaigh an comhair a "
-"tuath. Nuair a chaidh iad thairis air an Abhainn Duibh a-rithist, bha am "
-"foghar a’ gèilleadh dhan gheamhradh."
+"caidreabhaich-shìthe aca air an t&#8209;slighe dhachaigh an comhair a tuath. "
+"Nuair a chaidh iad thairis air an Abhainn Duibh a-rithist, bha am foghar a’ "
+"gèilleadh dhan gheamhradh."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:79
@@ -4115,9 +4128,9 @@ msgid ""
 msgstr ""
 "Mu dheireadh thall, dh’èirich a’ ghrian air an fhàire is thug a gathan anail "
 "ùr dha na dìonadairean claoidhte Bheasdain. Chualas mac-talla èighich mhòir "
-"air feadh a’ ghlinne fhad ’s a bhrùth fir a’ gheàird dheasaich na nàimhdean "
-"sìthiche aca far nam ballachan. Gu h&#8209;obann, bha am blàr ’ga "
-"chòmhdachadh le mòr-cheò ..."
+"air feadh a’ ghlinne fhad ’s a bhrùth fir a’ gheàird dheasaich na nàimhdean-"
+"sìthe aca far nam ballachan. Gu h&#8209;obann, bha am blàr ’ga chòmhdachadh "
+"le mòr-cheò ..."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:108
@@ -4253,3 +4266,51 @@ msgstr ""
 "milleadh. Mu dheireadh thall, nuair a bha an sneachd air a leaghadh is na "
 "rathaidean freagarrach airson siubhail a-rithist, thàinig teachdaire bhon "
 "Rìgh Taldraig."
+
+#~ msgid "female^Criminal"
+#~ msgstr "Eucoireach"
+
+#~ msgid ""
+#~ "It grieves me to learn of his death, foolish though he may have been! At "
+#~ "least we managed to defeat some of these bandits here and now. What else "
+#~ "happened?"
+#~ msgstr ""
+#~ "’S truagh leam cluinntinn mun chaochladh aige ged a bhiodh e faoin! Chuir "
+#~ "sinn ruaig air cuid de na spùinneadairean air a char as lugha. Dè eile a "
+#~ "thachair?"
+
+#~ msgid "The bandits are defeated!"
+#~ msgstr "Chaidh ruaig a chur air na spùinneadairean!"
+
+#~ msgid "Westin is safe again."
+#~ msgstr "Tha Beasdan sàbhailte a-rithist."
+
+#~ msgid "Westin will soon be safe again."
+#~ msgstr "Bidh Beasdan sàbhailte a-rithist a dh’aithghearr."
+
+#~ msgid "female^Elvish Bodyguard"
+#~ msgstr "Lèine-chrios"
+
+#~ msgid "Gerd"
+#~ msgstr "Gerd"
+
+#~ msgid "He was not alone."
+#~ msgstr "Cha robh e ’na aonar."
+
+#~ msgid "Two undead leaders have fallen…"
+#~ msgstr "Thuit dithis cheannardan nan closach…"
+
+#~ msgid "Though we have merely destroyed the servants of a far darker master…"
+#~ msgstr ""
+#~ "Gidheadh, cha do mhill sinn ach sgalagan aig maighstir nas duirche "
+#~ "buileach…"
+
+#~ msgid "They were just servants of a far darker master…"
+#~ msgstr ""
+#~ "Cha b’ e ach sgalagan aig maighstir nas duirche buileach a bh’ annta…"
+
+#~ msgid "One less evil in this forest…"
+#~ msgstr "Seo aon olc fo nach eil a’ choille a’ fulang tuilleadh…"
+
+#~ msgid "female^Disciple of Mebrin"
+#~ msgstr "Deisciobal Mhebrin"

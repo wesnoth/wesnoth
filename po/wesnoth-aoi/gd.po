@@ -1,21 +1,20 @@
 # Translators:
 # GunChleoc, 2017
-# GunChleoc <fios@foramnagaidhlig.net>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-04 16:39 UTC\n"
-"PO-Revision-Date: 2018-05-07 10:56+0100\n"
-"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
-"Language-Team: Fòram na Gàidhlig\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: GunChleoc, 2017\n"
+"Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
+"teams/12769/gd/)\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Generator: Virtaal 0.7.1\n"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:11
@@ -148,8 +147,8 @@ msgstr ""
 "Air  feadh beagan bhliadhnaichean an dèidh muinntir Thaldraig a bhualadh "
 "tràigh, cha bhiodh na deamhain ach fàthan a chuireadh an-shocair air tìr "
 "uaine nan sìthichean. ’S ann mar sin a bhiodh cùisean gus an latha a sheas "
-"Earlornas, duine-uasal nan sìthichean, an aghaidh nàmhad air nach facadh a "
-"leithid roimhe riamh."
+"Earlornas, duine-sìthe uasal, an aghaidh nàmhad air nach facadh a leithid "
+"roimhe riamh."
 
 #. [part]
 #. "northern marches" is *not* a typo for "northern marshes" here.
@@ -670,10 +669,16 @@ msgstr "(<i>Casad</i>) Bidh mi a’ feitheamh ort ... am measg ’nam marbh ..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:222
+#, fuzzy
+#| msgid ""
+#| "The orcish chieftain finally fell, overcome by his wounds. The elves "
+#| "found themselves in a half-ruined camp littered with the bodies of both "
+#| "sides. There was no hale orc in sight, nor did any of the wounded beg "
+#| "mercy. The elves took no prisoners."
 msgid ""
 "The orcish chieftain finally fell, overcome by his wounds. The elves found "
-"themselves in a half-ruined camp littered with the bodies of both sides. "
-"There was no hale orc in sight, nor did any of the wounded beg mercy. The "
+"themselves in a half-ruined camp littered with the bodies of both sides, "
+"there was no hale orc in sight, nor did any of the wounded beg mercy. The "
 "elves took no prisoners."
 msgstr ""
 "Ghèill ceannard nan deamhan mu dheireadh thall fo bhuaidh a lotan. Mhair na "
@@ -724,6 +729,10 @@ msgstr ""
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:265
+#, fuzzy
+#| msgid ""
+#| "What about the loot, lord? We found supplies worth over a hundred gold in "
+#| "the camp."
 msgid ""
 "What about the loot lord? We found supplies worth over a hundred gold in the "
 "camp."
@@ -761,6 +770,9 @@ msgstr ""
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:320
+#, fuzzy
+#| msgid ""
+#| "We can’t carry on, lord, the men are too tired. We have to fall back."
 msgid "We can’t carry on Lord, the men are too tired. We have to fall back."
 msgstr ""
 "Chan urrainn dhuinn leantainn oirnn, a thighearna. Feumaidh sinn cùlachadh a "
@@ -1244,12 +1256,11 @@ msgid ""
 msgstr ""
 "Dhùin Earlornas a shùilean is shìn e a dhà làmh, ’gan cur ri chèile ann an "
 "cruth cupa fosgailte dha na speuran. Thòisich iad air luisneachadh an ceann "
-"greis is an uair sin air dol ’nan lasan mar phràisiche le teine nan "
-"sìthichean, a’ cur teine fuar gorm timcheall air a’ mhorair. Thog sionnachan "
-"solais bho na lasairean uaigealta agus le beagan fhaclan sèimhe bhon "
-"mhorair, sgìthich iad an comhair an tùir shìos. An uair sin, chrìon an solas "
-"timcheall air Earlornas is a rèir coltais, thill a h&#8209;uile rud mar a "
-"bha."
+"greis is an uair sin air dol ’nan lasan mar phràisiche le teine-sìthe, a’ "
+"cur teine fuar gorm timcheall air a’ mhorair. Thog sionnachan solais bho na "
+"lasairean uaigealta agus le beagan fhaclan sèimhe bhon mhorair, sgìthich iad "
+"an comhair an tùir shìos. An uair sin, chrìon an solas timcheall air "
+"Earlornas is a rèir coltais, thill a h&#8209;uile rud mar a bha."
 
 #. [message]: speaker=narrator
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:212
@@ -1271,9 +1282,9 @@ msgid ""
 "Scarcely less than I find yours, my lord elf, but I would welcome your aid "
 "against these orcs. They have been besieging my tower for weeks."
 msgstr ""
-"Mar a tha an làthaireachd agaibh dhomhsa, mo thighearna shìthiche, ach "
-"chuirinn fàilte air ur taic an aghaidh nan deamhan seo. Tha iad a’ sèisteadh "
-"an tùr agam bho chionn seachdainnean."
+"Mar a tha an làthaireachd agaibh dhomhsa, mo thighearna-shìthe, ach chuirinn "
+"fàilte air ur taic an aghaidh nan deamhan seo. Tha iad a’ sèisteadh an tùr "
+"agam bho chionn seachdainnean."
 
 #. [message]: id=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:246
@@ -1469,8 +1480,8 @@ msgid ""
 "Puny elves! My full army will be here soon, and then we will crush you. You "
 "will beg for a quick death!"
 msgstr ""
-"A sheargairean shìthiche! Bidh am  feachd slàn agam an-seo a dh’aithghearr "
-"is cuiridh sinn às dhiubh. Grìosaichidh sibh bàs luath oirnn!"
+"A sheargairean-shìthe! Bidh am  feachd slàn agam an-seo a dh’aithghearr is "
+"cuiridh sinn às dhiubh. Grìosaichidh sibh bàs luath oirnn!"
 
 #. [message]: speaker=unit
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:229
