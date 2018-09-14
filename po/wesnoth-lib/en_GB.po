@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-07-23 17:50+1000\n"
+"PO-Revision-Date: 2018-09-12 16:34+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.9\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -5402,8 +5402,10 @@ msgid "operating_system^<unknown>"
 msgstr "<unknown>"
 
 #: src/font/text.cpp:789
+#, fuzzy
+#| msgid "The text contains invalid Pango markup: "
 msgid "The text contains invalid markup: "
-msgstr "The text contains invalid markup: "
+msgstr "The text contains invalid Pango mark-up: "
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:251
@@ -5597,12 +5599,16 @@ msgid "addons_order^Type ($order)"
 msgstr "Type ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:228
+#, fuzzy
+#| msgid "addons_order^Last updated ($datelike_order)"
 msgid "addons_order^Last updated ($order)"
-msgstr "Last updated ($order)"
+msgstr "Last updated ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:231
+#, fuzzy
+#| msgid "addons_order^First uploaded ($datelike_order)"
 msgid "addons_order^First uploaded ($order)"
-msgstr "First uploaded ($order)"
+msgstr "First uploaded ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:260 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -7601,11 +7607,41 @@ msgstr ""
 #~ "Disabling this increases CPU usage to 100% but may slightly improve "
 #~ "performance at high resolutions"
 
+#~| msgid "Rename Unit"
+#~ msgid "Rename"
+#~ msgstr "Rename"
+
 #~ msgid "The maximum text width is less than 1."
 #~ msgstr "The maximum text width is less than 1."
 
+#~| msgid "sort^Ascending"
+#~ msgid "ascending"
+#~ msgstr "ascending"
+
+#~ msgid "oldest to newest"
+#~ msgstr "oldest to newest"
+
+#~| msgid "sort^Descending"
+#~ msgid "descending"
+#~ msgstr "descending"
+
+#~ msgid "newest to oldest"
+#~ msgstr "newest to oldest"
+
 #~ msgid "active_modifications^None"
 #~ msgstr "None"
+
+#~| msgid "Modifications:"
+#~ msgid "Modifications: "
+#~ msgstr "Modifications: "
+
+#~ msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
+#~ msgstr ""
+#~ "The lua console can only be used in debug mode! (Run ':debug' first)"
+
+#~| msgid "Lua Console"
+#~ msgid "lua console"
+#~ msgstr "lua console"
 
 #~ msgid "$game_name (Era: $era_name)"
 #~ msgstr "$game_name (Era: $era_name)"
@@ -7616,8 +7652,16 @@ msgstr ""
 #~ msgid "Era"
 #~ msgstr "Era"
 
+#~| msgid "Lobby"
+#~ msgid "lobby"
+#~ msgstr "lobby"
+
 #~ msgid "number of players^$min to $max"
 #~ msgstr "$min to $max"
+
+#~| msgid "Quit game"
+#~ msgid "this game"
+#~ msgstr "this game"
 
 #~ msgid ""
 #~ "Unsupported image format.\n"
@@ -7823,12 +7867,6 @@ msgstr ""
 
 #~ msgid "sort^By first upload"
 #~ msgstr "By first upload"
-
-#~ msgid "sort^Ascending"
-#~ msgstr "Ascending"
-
-#~ msgid "sort^Descending"
-#~ msgstr "Descending"
 
 #~ msgid "Filter:"
 #~ msgstr "Filter:"

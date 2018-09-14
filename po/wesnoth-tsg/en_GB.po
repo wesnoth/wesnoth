@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 17:02 UTC\n"
-"PO-Revision-Date: 2018-02-10 02:33+1100\n"
+"PO-Revision-Date: 2018-09-12 16:48+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:9
@@ -1403,7 +1403,10 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:358
-msgid "I shall not join these accursed undead! Bury me deeply, my friends..."
+#, fuzzy
+#| msgid ""
+#| "I shall not join these accursed undead! Bury me deeply, my friends..."
+msgid "I shall not join these accursed undead! Bury me deeply my friends..."
 msgstr "I shall not join these accursed undead! Bury me deeply, my friends..."
 
 #. [message]: speaker=Ethiliel
@@ -1642,8 +1645,10 @@ msgstr "Investigate the areas to the south of the Black River"
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:317
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:324
+#, fuzzy
+#| msgid "The masters of the undead are defeated!"
 msgid "The master of the undead is defeated!"
-msgstr "The master of the undead is defeated!"
+msgstr "The masters of the undead are defeated!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:331
@@ -1652,12 +1657,16 @@ msgstr "No... I fear there is still much evil present."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:336
+#, fuzzy
+#| msgid ""
+#| "Surely the undead infestation cannot be dispatched so easily. We have "
+#| "merely destroyed servants of a far darker master."
 msgid ""
 "Surely the undead infestation cannot be dispatched so easily. We have merely "
 "destroyed a servant of a far darker master."
 msgstr ""
 "Surely the undead infestation cannot be dispatched so easily. We have merely "
-"destroyed a servant of a far darker master."
+"destroyed servants of a far darker master."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:358
@@ -2351,12 +2360,16 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:458
+#, fuzzy
+#| msgid ""
+#| "While the council debated the best course of action, Deoran and Ethiliel "
+#| "prepared to enter the caves under the fortress..."
 msgid ""
 "While the council debated the best course of action, Deoran and Ethiliel "
 "prepared to enter the caves under Mebrin’s fortress..."
 msgstr ""
 "While the council debated the best course of action, Deoran and Ethiliel "
-"prepared to enter the caves under Mebrin’s fortress..."
+"prepared to enter the caves under the fortress..."
 
 #. [scenario]: id=06b_The_Long_March
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:5
@@ -4068,6 +4081,61 @@ msgstr ""
 "rebuilt the shattered walls and ramparts of the city. Finally, as the snow "
 "melted and the roads bore their burdens again, a messenger came from King "
 "Haldric."
+
+#~ msgid "female^Criminal"
+#~ msgstr "Criminal"
+
+#~| msgid ""
+#~| "It grieves me to learn of his death, foolish though he may have been! "
+#~| "Now, though, there are more pressing matters. Rise, men of Wesnoth! We "
+#~| "must drive these bandits from our city!"
+#~ msgid ""
+#~ "It grieves me to learn of his death, foolish though he may have been! At "
+#~ "least we managed to defeat some of these bandits here and now. What else "
+#~ "happened?"
+#~ msgstr ""
+#~ "It grieves me to learn of his death, foolish though he may have been! At "
+#~ "least we managed to defeat some of these bandits here and now. What else "
+#~ "happened?"
+
+#~| msgid "The master of the undead is defeated!"
+#~ msgid "The bandits are defeated!"
+#~ msgstr "The bandits are defeated!"
+
+#~ msgid "Westin is safe again."
+#~ msgstr "Westin is safe again."
+
+#~ msgid "Westin will soon be safe again."
+#~ msgstr "Westin will soon be safe again."
+
+#~| msgid "Elvish Bodyguard"
+#~ msgid "female^Elvish Bodyguard"
+#~ msgstr "Elvish Bodyguard"
+
+#~ msgid "Gerd"
+#~ msgstr "Gerd"
+
+#~ msgid "He was not alone."
+#~ msgstr "He was not alone."
+
+#~ msgid "Two undead leaders have fallen…"
+#~ msgstr "Two undead leaders have fallen…"
+
+#~| msgid ""
+#~| "Surely the undead infestation cannot be dispatched so easily. We have "
+#~| "merely destroyed a servant of a far darker master."
+#~ msgid "Though we have merely destroyed the servants of a far darker master…"
+#~ msgstr ""
+#~ "Though we have merely destroyed the servants of a far darker master…"
+
+#~ msgid "They were just servants of a far darker master…"
+#~ msgstr "They were just servants of a far darker master…"
+
+#~ msgid "One less evil in this forest…"
+#~ msgstr "One less evil in this forest…"
+
+#~ msgid "female^Disciple of Mebrin"
+#~ msgstr "Disciple of Mebrin"
 
 #~ msgid "lance"
 #~ msgstr "lance"
