@@ -21,7 +21,7 @@
    * Under the Burning Suns:
      * New graphics for Eloh.
  ### Language and i18n
-   * Updated translations: British English, Chinese (Traditional), French,
+   * Updated translations: British English, Chinese (Traditional), Czech, French,
      German, Italian, Ukrainian
  ### User Interface
    * On laptop computers we now show how much battery you have left

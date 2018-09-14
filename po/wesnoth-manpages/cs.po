@@ -15,9 +15,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-09-09 11:38+0300\n"
-"PO-Revision-Date: 2018-07-09 15:05+0200\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2018-09-09 11:42+0300\n"
+"PO-Revision-Date: 2018-09-14 22:32+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -273,8 +273,8 @@ msgid ""
 "https://www.wesnoth.org/wiki/CommandMode for more information about command "
 "mode)."
 msgstr ""
-"umožňuje použít rozšiřující volby příkazového módu (více viz Wiki na  http://"
-"www.wesnoth.org/wiki/CommandMode)."
+"umožňuje použít rozšiřující volby příkazového módu (více viz Wiki na  "
+"https://www.wesnoth.org/wiki/CommandMode)."
 
 # type: TP
 #. type: TP
@@ -718,7 +718,7 @@ msgstr ""
 "pravidel preprocesoru. Běžná makra z umístění \"data/core/macros\" budou "
 "předzpracována před udanými zdroji. Příklad:  B<-p ~/wesnoth/data/campaigns/"
 "tutorial ~/result.>. Pro podrobnosti týkající se preprocessoru navštivte: "
-"http://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor"
+"https://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor"
 
 #. type: TP
 #: doc/man/wesnoth.6:224
@@ -1297,13 +1297,12 @@ msgstr "B<--turns=>I<hodnota>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:417
-#, fuzzy
-#| msgid ""
-#| "sets the number of turns for the chosen scenario. The default is B<50>."
 msgid ""
 "sets the number of turns for the chosen scenario. By default no turn limit "
 "is set."
-msgstr "nastavuje počet kol pro vybraný scénář, implicitně je B<50>."
+msgstr ""
+"nastavuje počet kol pro vybraný scénář, implicitně je scénář bez omezení "
+"koly."
 
 #. type: SH
 #: doc/man/wesnoth.6:418 doc/man/wesnothd.6:265
@@ -1313,17 +1312,12 @@ msgstr "NÁVRATOVÝ STATUS"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:423
-#, fuzzy
-#| msgid ""
-#| "Normal exit status is 0. An exit status of 1 indicates an (SDL, video, "
-#| "fonts, etc) initialization error. An exit status of 2 indicates an error "
-#| "with the command line options."
 msgid ""
 "Normal exit status is 0.  An exit status of 1 indicates an (SDL, video, "
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
 "with the command line options."
 msgstr ""
-"Status normálního ukončení je 0. Návratový tatus 1 pak signalizuje chybu "
+"Status normálního ukončení je 0. Návratový status 1 pak signalizuje chybu "
 "inicializace (ať už jde o knihovnu SDL, video, fonty či jiné knihovny). "
 "Status 2 pak signalizuje chybu při zpracování nějaké volby z příkazového "
 "řádku."
@@ -1377,10 +1371,8 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:445 doc/man/wesnothd.6:276
-#, fuzzy
-#| msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgid "Visit the official homepage: https://www.wesnoth.org/"
-msgstr "Navštivte oficiální stránky: http://www.wesnoth.org/"
+msgstr "Navštivte oficiální stránky: https://www.wesnoth.org/"
 
 # type: SH
 #. type: SH
@@ -1392,12 +1384,9 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:449 doc/man/wesnothd.6:280
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -1481,19 +1470,14 @@ msgstr "B<wesnothd> B<-V>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:44
-#, fuzzy
-#| msgid ""
-#| "Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
-#| "wiki/ServerAdministration on what commands the server accepts via the "
-#| "wesnoth client (/query ...) or the fifo."
 msgid ""
 "Manages Battle for Wesnoth multiplayer games. See https://www.wesnoth.org/"
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
-"Součást Bitvy o Wesnoth spravující hry více hráčů. Na http://www.wesnoth.org/"
-"wiki/ServerAdministration lze nalézt příkazy, které server akceptuje, a to "
-"jak přes fifo, tak přímo od klienta wesnoth."
+"Součást Bitvy o Wesnoth spravující hry více hráčů. Na https://www.wesnoth."
+"org/wiki/ServerAdministration lze nalézt příkazy, které server akceptuje, a "
+"to jak přes fifo, tak přímo od klienta wesnoth."
 
 # type: TP
 #. type: TP
@@ -1768,11 +1752,6 @@ msgstr "B<fifo_path>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:135
-#, fuzzy
-#| msgid ""
-#| "The path to the fifo you can echo server commands into (same as /"
-#| "query ... from wesnoth).  If not specified defaults to the compile-time "
-#| "path (default: B</var/run/socket/wesnothd/socket>)."
 msgid ""
 "The path to the fifo you can echo server commands into (same as /query ... "
 "from wesnoth).  If not specified defaults to the compile-time path (default: "
@@ -1780,7 +1759,7 @@ msgid ""
 msgstr ""
 "Cesta k fifo, do nějž můžete posílat příkazy serveru (stejně jako pomocí /"
 "query z klienta). Pokud není explicitně určena, je použita výchozí hodnota "
-"určená při kompilaci (běžně B</var/run/socket/wesnothd/socket>)."
+"určená při kompilaci (výchozí B</var/run/wesnothd/socket>)."
 
 # type: TP
 #. type: TP
