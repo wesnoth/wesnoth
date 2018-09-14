@@ -265,7 +265,7 @@ public:
 	virtual void send_to_wesnothd(const config&, const std::string& = "unknown") const { }
 	virtual bool receive_from_wesnothd(config&) const { return false; }
 	/// Reevaluate [show_if] conditions and build a new objectives string.
-	void refresh_objectives();
+	void refresh_objectives() const;
 	void show_objectives() const;
 
 	struct scoped_savegame_snapshot
