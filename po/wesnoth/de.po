@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-09-09 11:38+0300\n"
-"PO-Revision-Date: 2018-09-15 23:19+0200\n"
+"PO-Revision-Date: 2018-09-16 00:58+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -7633,18 +7633,20 @@ msgstr "Startbereit!"
 msgid "Game has begun!"
 msgstr "Das Spiel hat begonnen!"
 
-# Wird als Desktopbenachrichtigung angezeigt
+# Desktopbenachrichtigung.
+# Unter Linux wird nur dieser Text angezeigt, unter Windows wir oben drüber der Text von "Turn changed" angezeigt"
+# Es sollte in beiden Fällen passend aussehen.
 #: src/mp_ui_alerts.cpp:170
 msgid "$name has taken control"
 msgstr "$name ist am Zug"
 
-# Wo wird dies angezeigt?
-# Muss evt. mit
+# Desktopbenachrichtigung,
+# wird unter Windows über
 # "$name has taken control"
-# abgestimmt sein!
+# angezeigt und sollte damit zusammenpassen.
 #: src/mp_ui_alerts.cpp:170
 msgid "Turn changed"
-msgstr "Nächster Spieler am Zug"
+msgstr "Nächster Spieler"
 
 #: src/pathfind/pathfind.cpp:747
 msgid "Terrain with a movement cost less than 1 encountered."
