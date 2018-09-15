@@ -29,6 +29,7 @@
     * S6a: mermen leave after this scenario and will no longer be available.
     * S7a & S8a: a certain hero may now die.
    * Tutorial:
+     * Show an undo reminder if one is out of moves, but can't end the turn yet.
      * Added more information to the Status Table prompt about how to access it (issue #2883).
    * Under the Burning Suns:
      * New graphics for Eloh.
