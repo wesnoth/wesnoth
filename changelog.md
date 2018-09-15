@@ -2,6 +2,12 @@
  ### AI
   * Fix AI ignoring teleport locations when moving leader to leader goals.
  ### Campaigns
+  * Heir to the Throne:
+    * S6: Allow canceling an attack when a move+attack spawns enemy units (issue #3459)
+    * S6: Change the trigger for spawning undead reinforcements (issue #3459)
+    * S17: Add dialog explaining the lava game mechanic and an easter egg (issue #3473)
+  * Liberty:
+    * S3: Add story and war drums music
   * Northern Rebirth:
     * S12: empty sides are hidden
     * S13: allied leaders whose death causes defeat won't leave their keep and
@@ -12,6 +18,8 @@
     * S7: it's now impossible to kill all pursuers.
   * Secrets of the Ancients:
     * Fix dialog said by wrong unit & revert previous fix (issue #3294)
+  * The Hammer of Thursagan:
+    * S10: Fix objectives requiring too much of the player
   * The South Guard:
     * S2: the case where Deoran is not sent to the Citadel is handled better.
     * S2: enemy units will no longer neutralize villages instead of capturing or burning them.
@@ -35,7 +43,11 @@
    * MacOS: Add build number to OS version report
    * Fix layout of Preferences window with some localizations (such as Czech)
    * Load Game now shows the chosen difficulty with the same name that you originally selected
+   * Load Game now shows the modifications enabled in the selected savegame (issue #3495)
    * Force leader sprites larger than 72x72 to be downscaled in Load Game (issue #3474)
+   * Add left padding to dialog messages shown with a portrait on the right (issue #1938)
+   * Addon Manager uses clearer terms for sort order
+   * Fix reversed sort order by unit level in Unit List and Recall List
  ### WML engine
    * Fixed [animate_unit] and [heal_unit] preventing unit halo from disappearing if the unit
      dies later (issue #3509)
@@ -61,6 +73,12 @@
    * Fixed crash in ai code when a side has multiple leaders.
    * Fixed random start time not working. #3515
    * Fixed crash in lua tstring comparision. #3541
+   * Fixed objectives at scenario start use old/cached values of conditions/variables (issue #3544)
+   * Show an error message when trying to open the lua console not in debug mode
+   * On enemy side's turn, don't scroll to that side's leader if it's invisible
+   * Fixed crash in recall list when no units matched the filter (issue #3475)
+   * Fixed :droid ignore its second argument
+   * Fixed :droid giving no feedback when successful
 
 ## Version 1.14.4
  ### Security Fixes
