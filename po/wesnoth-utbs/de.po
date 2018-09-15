@@ -9,7 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-09-09 08:38 UTC\n"
-"PO-Revision-Date: 2018-09-10 18:07+0200\n"
+"PO-Revision-Date: 2018-09-15 22:20+0200\n"
+"Last-Translator: Christoph Berg <christoph.berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.1.1\n"
-"X-Poedit-Bookmarks: 1777,1822,-1,-1,-1,-1,-1,-1,-1,-1\n"
+"X-Poedit-Bookmarks: 596,1822,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -677,8 +678,8 @@ msgid ""
 msgstr ""
 "Die Ungeheuer aus der Tiefe sind gigantische Wasserwesen, die sich an den "
 "dunkelsten Plätzen der Welt finden. Nur selten kommen sie an die Oberfläche, "
-"und wenn sie es tun, dann ist der beste Weg, am Leben zu bleiben, auf dem "
-"Festland zu bleiben. Sie können ihre Opfer mit ihren starken Tentakeln "
+"und wenn sie es tun, dann ist auf dem Festland zu bleiben die beste "
+"Überlebensstrategie. Sie können ihre Opfer mit ihren starken Tentakeln "
 "packen und sie können giftige schwarze Tinte versprühen."
 
 #. [message]: speaker=narrator
@@ -823,7 +824,7 @@ msgid ""
 "undead! All shall bow down before Xanthos the Necromancer!"
 msgstr ""
 "Über diesem Ort liegt der Gestank des Todes, ich konnte ihn schon Meilen "
-"entfernt riechen. Oh, wie liebe ich diesen Geruch, es ist der Geruch der "
+"entfernt riechen. Oh, wie ich diesen Geruch liebe, es ist der Geruch der "
 "Macht, der unvermeidbare Triumph des Todes über das Leben. Arme kleine "
 "Elflein, ich werde die Körper eurer Familien verwenden, um eine Armee von "
 "Untoten aufzustellen. Alle sollen niederknien vor Xanthos, dem "
@@ -1057,13 +1058,14 @@ msgstr ""
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1373
+#, fuzzy
 msgid ""
 "Think for a moment. Who else has seen the rock storm? What other foes are "
 "coming to pick over the remains of our people? There is no mercy in the "
 "desert, and we have many enemies who would seek to gain in our time of "
 "weakness."
 msgstr ""
-"Denke einen Augenblick nach. Wer sonst hat diesen Sturm gesehen? Welch "
+"Denk einen Augenblick nach. Wer sonst hat diesen Sturm gesehen? Welch "
 "weitere Feinde werden kommen, um sich an den Überresten unseres Volkes zu "
 "bereichern? Diese Wüste ist gnadenlos und wir haben viele Feinde, die jetzt "
 "versuchen werden, unsere Schwäche auszunutzen."
@@ -1154,6 +1156,7 @@ msgstr ""
 "lassen, damit die Krähen sie fressen oder sie von dunkler Magie entweiht "
 "werden."
 
+# Der Begriff "Himmelreich" klingt m.E. sehr stark nach christlicher Religion. Vielleicht gibt es einen neutraleren Begriff, der besser zu der Religion der Quenoth-Elfen passt?
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1416
 msgid ""
@@ -1175,7 +1178,7 @@ msgstr ""
 "Kaleh, ich will nicht länger hier verweilen als unbedingt notwendig, aber "
 "ich stimme zu, dass wir uns um die Toten kümmern müssen, bevor wir gehen. "
 "Garak, du und deine Männer, beginnt damit, die Toten zu sammeln. Nym, hilf "
-"mir dabei, Öl und Holz zu finden, so dass wir einen Scheiterhaufen errichten "
+"mir dabei, Öl und Holz zu finden, sodass wir einen Scheiterhaufen errichten "
 "können."
 
 #. [message]: speaker=narrator
@@ -1189,7 +1192,7 @@ msgid ""
 "but they were to be far from the last."
 msgstr ""
 "Und so wurde es gemacht. Die Toten wurden ehrfürchtig auf das wenige Holz "
-"gebettet, dass wir finden konnten. Doch das Feuer war nicht groß genug, um "
+"gebettet, das wir finden konnten. Doch das Feuer war nicht groß genug, um "
 "alle Körper zu Asche zu verbrennen und ihre Seelen ins Jenseits zu geleiten. "
 "Ich erinnere mich daran, wie damals der Tod von so vielen unseres Volkes "
 "bereits zu Beginn dieser so langen Reise ein schlechtes Omen war. Sie waren "
@@ -1349,10 +1352,10 @@ msgstr ""
 "Tagsüber (Morgengrauen, Morgen, Mittag, Nachmittag, Abenddämmerung) leiden "
 "Einheiten, die sich zu Beginn eines Zuges auf einem Sand-, Straßen-, Geröll- "
 "oder Dünenfeld befinden, unter Durst. Dadurch verlieren sie in jedem solchen "
-"Zug Angriffststärke und $dehydration_loss Lebenspunkte. Die einzige "
-"Möglichkeit, die volle Angriffsstärke zurückzuerlangen ist, von einem Heiler "
-"behandelt zu werden oder wenn sich die Einheit zu Beginn eines Zuges in "
-"einer Oase (flaches Wasser-Feld) erfrischen kann."
+"Zug Angriffsstärke und $dehydration_loss Lebenspunkte. Heiler können "
+"verhindern, dass sich die Dehydration verschlimmert, können sie aber nicht "
+"heilen. Nur wenn sie sich bei Rundenbeginn an einer Oase (jedes Wasserfeld) "
+"erfrischen, können die Einheiten ihre volle Angriffsstärke zurückerlangen."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:307
@@ -1610,7 +1613,7 @@ msgid ""
 "is our oasis, and we will water it with your blood!"
 msgstr ""
 "Und ich hatte schon gedacht, es wäre eine weitere langweilige Patrouille. Du "
-"da! Elfe! Das ist unsere Oase, und euer Blut wird hier fließen!"
+"da! Elf! Das ist unsere Oase, und euer Blut wird hier fließen!"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:908
@@ -1671,7 +1674,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1116
 msgid "You have defied our master for the last time. Now you shall die!"
 msgstr ""
-"Zum letzten Mal habt ihr euch unserem Meister widersetzt. Jetzt werdet ihr "
+"Zum letzten Mal habt Ihr euch unserem Meister widersetzt. Jetzt werdet ihr "
 "sterben!"
 
 #. [message]: speaker=Elyssa
@@ -1719,7 +1722,7 @@ msgid ""
 "We are, we’re the Quenoth Elves and we are traveling north. You look like "
 "you’re a mage, but I thought your kind were all gone."
 msgstr ""
-"Wir sind es, wir sind die Quenoth-Elfen, und wir sind auf einer Reise nach "
+"Wir sind es, wir sind die Quenoth-Elfen, und wir sind auf einer Reise gen "
 "Norden. Du siehst aus wie eine Magierin, aber ich habe gedacht, alle von "
 "deiner Art seien tot."
 
@@ -2017,7 +2020,7 @@ msgid ""
 msgstr ""
 "Jetzt wo wir einen Augenblick Ruhe haben, muss ich dich fragen, Elyssa, was "
 "hast du in Wirklichkeit hier mitten in der Wüste gemacht? Es ist ein recht "
-"bizarrer Ort dafür, um einfach hier durchzureisen."
+"bizarrer Ort dafür, um einfach hier durch zu reisen."
 
 #. [message]: speaker=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1727
@@ -2079,12 +2082,12 @@ msgid ""
 "old empire, but I have no idea where it might be. So I scour the land, "
 "learning all I can about the olden days. I’m sure it must be somewhere."
 msgstr ""
-"Ich bin mir nicht sicher. Ich habe des öfteren Referenzen darauf gesehen, "
-"aber nie etwas genaues. Ich suche ihn schon seit geraumer Zeit. Alles was "
-"ich weiß ist, dass es ein sehr mächtiger Zauberstab war und das er ein "
-"Symbol für die Macht des alten Reiches ist. Ich weiß aber nicht, wo er sich "
+"Ich bin mir nicht sicher. Ich habe des Öfteren Referenzen darauf gesehen, "
+"aber nie etwas genaues. Ich suche es schon seit geraumer Zeit. Alles was ich "
+"weiß ist, dass es ein sehr mächtiger Zauberstab war und das es ein Symbol "
+"für die Macht des alten Reiches ist. Ich weiß aber nicht, wo es sich "
 "befinden könnte. Und so streife ich durch das Land und finde so viel über "
-"die alten Tage heraus, wie ich kann. Ich bin mir sicher, dass er irgendwo "
+"die alten Tage heraus, wie ich kann. Ich bin mir sicher, dass es irgendwo "
 "sein muss."
 
 #. [message]: speaker=Kaleh
@@ -2192,7 +2195,8 @@ msgstr "Ystara"
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:187
 msgid "You lose control (even temporarily) of more than 6 villages"
-msgstr "Ihr verliert (für kurze Zeit) die Kontrolle über mehr als 6 Dörfer"
+msgstr ""
+"Ihr verliert (auch nur für kurze Zeit) die Kontrolle über mehr als 6 Dörfer"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:193
@@ -2236,12 +2240,13 @@ msgstr "Kaleh, wach auf! Die Späher berichten von Bewegung in der Wüste!"
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:361
 msgid "Orcs?"
-msgstr "Orcs?"
+msgstr "Orks?"
 
+# Gehört zu "... think so" ein paar Zeilen drunter
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:365
 msgid "I don’t..."
-msgstr "Ich kann nicht..."
+msgstr "Nein, ich ..."
 
 #. [message]: speaker=Azkotep
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:369
@@ -2282,14 +2287,15 @@ msgstr ""
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:389
 msgid "... think so. You really know how to pick a campsite, Kaleh."
-msgstr "...denke ich. Du verstehst es wirklich, Lagerplätze zu wählen, Kaleh."
+msgstr ""
+"… glaube nicht. Du verstehst es wirklich, Lagerplätze zu wählen, Kaleh."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:393
 msgid ""
 "Where did they come from? I swear those castles weren’t there at sunset."
 msgstr ""
-"Woher sind sie gekommen? Ich könnte schwören, diese Burgen waren bei "
+"Woher sind die denn gekommen? Ich könnte schwören, diese Burgen waren bei "
 "Sonnenuntergang noch nicht hier."
 
 #. [message]: speaker=Zhul
@@ -2309,8 +2315,8 @@ msgid ""
 "Like I haven’t killed enough undead recently. Why can’t these guys just stay "
 "dead?"
 msgstr ""
-"Als wenn ich nicht kürzlich schon genügend Untote getötet hätte. Wieso "
-"können sie nicht einfach tot bleiben?"
+"Als hätte ich nicht kürzlich schon genügend Untote getötet. Wieso können sie "
+"nicht einfach endgültig tot bleiben?"
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:405
@@ -2346,9 +2352,9 @@ msgid ""
 "strength to go on. Garak, wake your men. We must hold off the undead until "
 "dawn."
 msgstr ""
-"Ich befürchte, dass wenn wir mehr als die Hälfte unserer Lager verlieren, "
-"wir nicht die Stärke haben werden, weiter vorzurücken. Garak, wecke deine "
-"Männer. Wir müssen die Untoten bis zur Morgendämmerung zurückhalten."
+"Ich befürchte, wenn wir mehr als die Hälfte unserer Lager verlieren, werden "
+"wir nicht stark genug sein um weiter vorzurücken. Garak, wecke deine Männer. "
+"Wir müssen die Untoten bis zur Morgendämmerung zurückhalten."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:421
@@ -2359,7 +2365,7 @@ msgstr "Zu den Waffen, Elfen, zu den Waffen!"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:476
 msgid "They’re raising the corpses of our fallen! What a horrible fate!"
 msgstr ""
-"Sie lassen die Körper unserer Gefallenen wiederauferstehen! Welch "
+"Sie lassen die Körper unserer Gefallenen wieder auferstehen! Welch "
 "grauenvolles Schicksal!"
 
 #. [message]: speaker=Elyssa
@@ -2415,8 +2421,8 @@ msgid ""
 "No! That’s not true, our future is what we make of it, stay behind for this "
 "fight and..."
 msgstr ""
-"Nein! Das ist nicht wahr. Unsere Zukunft ist das, was wir daraus machen. "
-"Bleib diesem Kampf fern und..."
+"Nein! Das ist nicht wahr. Unsere Zukunft ist, was wir daraus machen. Bleib "
+"diesem Kampf fern und..."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:638
@@ -2474,7 +2480,7 @@ msgstr ""
 #. [message]: speaker=Zur
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:792
 msgid "Puny elf... Time to die..."
-msgstr "Kümmerlicher Elfe... Zeit für dich zu sterben..."
+msgstr "Kümmerlicher Elf... Zeit für dich zu sterben..."
 
 #. [message]: speaker=Zur
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:798
@@ -2552,6 +2558,9 @@ msgstr ""
 "bekommen, dass ihr diesen Wettkampf vereitelt habt! Dunkelheit soll "
 "herrschen bis zu meinem Triumph!"
 
+# Ist Uria männlich oder weiblich?
+# In der bestehenden Übersetzung 2x männlich, 1x weiblich.
+# Überarbeiten!!
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:938
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1152
@@ -2734,7 +2743,7 @@ msgstr ""
 #. [message]: speaker=Possessed Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1422
 msgid "No, fool! Stop!"
-msgstr "Nein, du Idiot! Stop!"
+msgstr "Nein, du Idiot! Stopp!"
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1435
@@ -2779,6 +2788,7 @@ msgstr ""
 msgid "Ganthos"
 msgstr "Ganthos"
 
+# Man könnte hier eine dümmlichere Sprechweise wählen wie im englischen Text.
 #. [message]: speaker=Ganthos
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1633
 msgid ""
@@ -2807,7 +2817,7 @@ msgstr "Verwundeter Elfenspäher"
 #. [message]: speaker=Elven Scout
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1650
 msgid "Orcs... Not far behind me... From the hills..."
-msgstr "Orcs...Knapp hinter mir...Von den Hügeln..."
+msgstr "Orks... Knapp hinter mir... Von den Hügeln..."
 
 #. [message]: speaker=Ganthos
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1677
@@ -2815,13 +2825,13 @@ msgid ""
 "You got me, elf... But you won’t be so lucky with the tribes of the hills... "
 "(<i>Cough</i>)"
 msgstr ""
-"Ihr habt gewonnen, Elf... Aber mit dem Hügelvolk werdet Ihr nicht soviel "
+"Ihr habt gewonnen, Elf... Aber mit dem Hügelvolk werdet Ihr nicht so viel "
 "Glück haben... (<i>hust</i>)"
 
 #. [message]: speaker=Ganthos
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1681
 msgid "I deeply regret... I won’t be able to see that..."
-msgstr "Ich bedauere zutiefest... dass ich das nicht mehr miterleben kann..."
+msgstr "Ich bedauere zutiefst... dass ich das nicht mehr miterleben kann..."
 
 #. [message]: speaker=Ganthos
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1687
@@ -2848,9 +2858,8 @@ msgid ""
 "And these look like camps and patrol routes. A lot of camps and patrol "
 "routes. Kaleh, do you think we could sneak up between them?"
 msgstr ""
-"Und das hier sieht aus wie Lager und die Routen der Wächter. Eine ganze "
-"Menge an Lagern und Routen. Kaleh, denkst du, wir können uns da "
-"hindurchschleichen?"
+"Und das hier sieht aus wie Lager und die Patrouillenrouten. Eine ganze Menge "
+"an Lagern und Routen. Kaleh, denkst du, wir können uns da hindurchschleichen?"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1724
@@ -2881,13 +2890,14 @@ msgstr "Der Häuptling ist gefallen! Flieht!"
 msgid "Boss dead! Run!"
 msgstr "Häuptling tot! Flieht!"
 
+# Angleichen sg oder pl.
 #. [message]: speaker=$unit.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1801
 msgid ""
 "You think you have defeated me, don’t you? Foolish boy, I shall assume a new "
 "form more powerful and horrible than you could ever imagine!"
 msgstr ""
-"Ihr denkt, ihr habt mich besiegt? Törichter Junge! Ich werde nun eine neue "
+"Ihr denkt, ihr habt mich besiegt? Törichter ! Ich werde nun eine neue "
 "Gestalt annehmen, machtvoller und schrecklicher, als du es dir vorstellen "
 "kannst!"
 
@@ -2914,7 +2924,7 @@ msgid ""
 "shell of a body."
 msgstr ""
 "Seht, ich habe euch gesagt, dass ich mächtiger bin. Das Spiel ist vorbei, "
-"jetzt kann ich diese Körper-Hülle verlassen."
+"jetzt kann ich diese Körperhülle verlassen."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1839
@@ -2950,7 +2960,7 @@ msgid ""
 "and remember him for that."
 msgstr ""
 "Dann ist er wohl tot. Doch er starb als Kämpfer. Lasst uns seinem Wunsch "
-"Folge leisten und ihn uns dessen in Erinnerung behalten."
+"Folge leisten und ihn als solchen in Erinnerung behalten."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1874
@@ -3035,8 +3045,8 @@ msgid ""
 "You fought so hard to protect your precious people, young elf. No great deed "
 "should go unpunished."
 msgstr ""
-"Ihr habt so hart gekämpft, um eure teuren Gefolgsleute zu beschützen, junger "
-"Elfe. Keine große Tat sollte ungesühnt bleiben."
+"Ihr habt so hart gekämpft, um Eure teuren Gefolgsleute zu beschützen, junger "
+"Elf. Keine große Tat sollte ungesühnt bleiben."
 
 #. [message]: id=Ystara,Azkotep
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1943
@@ -3068,9 +3078,9 @@ msgid ""
 "Don’t listen to them, they are powerless in their defeat. Even if Garak fell "
 "in battle his soul went to a better place and they can’t reach him there."
 msgstr ""
-"Hört nicht auf sie. Sie sind machtlos und besiegt. Selbst wenn Garak "
-"gefallen sein sollte, so ist seine Seele nun an einem besseren Ort und sie "
-"können ihn dort nicht erreichen."
+"Hör nicht auf sie. Sie sind machtlos und besiegt. Selbst wenn Garak gefallen "
+"sein sollte, so ist seine Seele nun an einem besseren Ort und sie können ihn "
+"dort nicht erreichen."
 
 #. [message]: speaker=Azkotep
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2006
@@ -3396,7 +3406,7 @@ msgstr "Rückzug!"
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:459
 msgid "Goblins are so predictable."
-msgstr "Kobolde sind so vorhersagbar."
+msgstr "Kobolde sind so berechenbar."
 
 #. [scenario]: id=04_Descending_into_Darkness
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:482
@@ -3404,11 +3414,12 @@ msgstr "Kobolde sind so vorhersagbar."
 msgid "Orac"
 msgstr "Orac"
 
+# Ich finds mit k schöner; wie bei Skylla und Charybdis. :D
 #. [scenario]: id=04_Descending_into_Darkness
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:490
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:492
 msgid "Scylla"
-msgstr "Scylla"
+msgstr "Skylla"
 
 #. [scenario]: id=04_Descending_into_Darkness
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:500
@@ -3519,8 +3530,8 @@ msgid ""
 "less like to go into."
 msgstr ""
 "Pfui! Diese Tunnel sind pechschwarz. Es ist genauso, wie wenn man in einer "
-"mondlosen Nacht kämpft. Und es stinkt nach Orkschmutz. Ich kann mir kaum "
-"einen Ort vorstellen, den ich weniger gerne betreten würde, als diesen."
+"mondlosen Nacht kämpft. Und es stinkt nach Orkdreck. Ich kann mir kaum einen "
+"Ort vorstellen, den ich weniger gerne betreten würde als diesen."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:734
@@ -3562,7 +3573,7 @@ msgstr "Greebo"
 msgid ""
 "Greebo keeps shinies safe from nasty orcses. And ’specially stinking elves."
 msgstr ""
-"Greebo versteckt funkelndes vor den garstigen Orksen. Und ganz besonders vor "
+"Greebo versteckt Funkelndes vor den garstigen Orksen. Und ganz besonders vor "
 "den stinkenden Elfen."
 
 #. [message]: speaker=$explorer.id
@@ -3572,7 +3583,7 @@ msgid ""
 "he had much. Must be hard times."
 msgstr ""
 "Es sieht so aus, als hätten die Orks hier ihre Beute aufbewahrt. Sehr viel "
-"scheint es ja nicht zu sein, es müssen wohl harte Zeiten sein."
+"scheint es ja nicht zu sein, müssen wohl harte Zeiten sein."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:819
@@ -3588,12 +3599,11 @@ msgstr ""
 "Wie seltsam. Am Ende dieses Ganges hat jemand einen Springbrunnen grob in "
 "den Fels gemeißelt. Das eiskalte Wasser sprudelt in ein großes Becken. Am "
 "Grunde des Beckens erkenne ich ein Skelett, dass noch immer ein Schwert in "
-"der Hand hält. Die Klinge scheint einen leichten blauen Schimmer zu haben. "
-"Das Becken ist nicht sehr tief, ich könnte mit Leichtigkeit hineinsteigen "
-"und es aufheben. Jemand anderes hat aber noch eine Nachricht in den Stein "
-"gemeißelt: <i>»Erlaub` es dir, zu nehmen diese Klinge hier, und schlecht "
-"ergeht es dir!«</i> Es sieht wie eine gutes Schwert aus, aber soll ich das "
-"Risiko eingehen?"
+"der Hand hält. Die Klinge scheint einen leicht blauen Schimmer zu haben. Das "
+"Becken ist nicht sehr tief, ich könnte mit Leichtigkeit hineinsteigen und es "
+"aufheben. Irgendjemand jedoch hat eine Nachricht in den Stein gemeißelt: "
+"<i>»Ergreifst du diese Klinge hier, soll es schlecht ergehen dir!«</i> Es "
+"sieht wie eine gutes Schwert aus, aber soll ich das Risiko eingehen?"
 
 #. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:821
@@ -3636,8 +3646,8 @@ msgstr "Ich bin eine schreckliche Ausgeburt, bitte tötet mich."
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:855
 msgid "I’ve seen some ugly creatures in my day, but that thing is just wrong."
 msgstr ""
-"Ich habe eine Menge entsetzliche Kreaturen gesehen, aber das wäre einfach "
-"falsch."
+"Ich habe eine Menge entsetzliche Kreaturen gesehen, aber dieses Ding da ist "
+"einfach falsch."
 
 #. [message]: speaker=Purple Abomination
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:860
@@ -3658,11 +3668,11 @@ msgid ""
 "here, but I don’t know what made me think it could be of any good."
 msgstr ""
 "Hier ist Endstation für mich. Das Wasser ist zu tief für mich, um "
-"weiterzugehen. Ich bin dabei, zu erfrieren, durchnässt und ich kann "
-"überhaupt nichts sehen. Ich bin mir nicht ganz sicher, warum ich überhaupt "
-"hier bin. Irgendein seltsamer Einfluss hat in mir das Verlangen geweckt, "
-"diesen Berg zu erklimmen, auch wenn ich mir nicht vorstellen kann, inwiefern "
-"daraus Gutes erwachsen mag."
+"weiterzugehen. Ich bin am erfrieren, durchnässt und ich kann überhaupt "
+"nichts sehen. Ich bin mir nicht ganz sicher, warum ich überhaupt hier bin. "
+"Irgendein seltsamer Einfluss hat in mir das Verlangen geweckt, diesen Berg "
+"zu erklimmen, auch wenn ich mir nicht vorstellen kann, inwiefern daraus "
+"Gutes erwachsen mag."
 
 #. [unit]: type=Dark Assassin1, id=Cloaked Figure
 #. [unit]: type=Dark Assassin2, id=Cloaked Figure
@@ -3676,7 +3686,7 @@ msgstr "Verhüllte Gestalt"
 #. [message]: speaker=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:950
 msgid "Kaleh, I am death incarnate."
-msgstr "Kaleh, ich bin der personifizierte Tod."
+msgstr "Kaleh, ich bin der leibhaftigeTod."
 
 #. [message]: speaker=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:956
@@ -3758,7 +3768,7 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1047
 msgid "Well, there’s only one way to find out."
-msgstr "Nun gut, es gibt nur einen Weg, es herauszufinden."
+msgstr "Nun ja, es gibt nur einen Weg, es herauszufinden."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1058
@@ -3837,10 +3847,10 @@ msgid ""
 "read a bit about them, and have even met a few people who had dealings with "
 "dwarves."
 msgstr ""
-"Nein, ich erforsche nicht oft den Untergrund, wenn ich nicht muss. Es gibt "
-"eine Menge widerlicher Dinge, die weitab vom Licht der Sonnen lauern. Aber "
-"ich habe einiges über sie gelesen, und ich habe einige Leute getroffen, die "
-"Geschäfte mit Zwergen gemacht haben."
+"Nein, ich erforsche den Untergrund nicht so oft, wenn ich nicht unbedingt "
+"muss. Es gibt eine Menge widerlicher Dinge, die weitab vom Licht der Sonnen "
+"lauern. Aber ich habe einiges über sie gelesen, und ich habe einige Leute "
+"getroffen, die Geschäfte mit Zwergen gemacht haben."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:437
@@ -3858,7 +3868,7 @@ msgstr ""
 "Sie sind ein stolzes Volk und, wie einige meinen, gierig. Sie lieben ihr "
 "Gold und andere wertvolle Metalle und schmieden viele wunderschöne Dinge. "
 "Ich sollte euch warnen, sie mögen Elfen nicht besonders gerne. Es gab vor "
-"vielen Jahren einen Verrat, aber ich weiß nichts darüber."
+"vielen Jahren einen Verrat, aber darüber weiß ich nichts."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:447
@@ -3919,7 +3929,7 @@ msgstr ""
 "wenn beide Sonnen auf uns herabscheinen. Aber es wird gesagt, dass sie "
 "selbst in der tiefsten Nacht alle treu Ergebenen beschützt. Und vor langer "
 "Zeit, im goldenen Zeitalter, führten heilige Elfenkrieger große Kreuzzüge "
-"gegen Orks und andere faule Kreaturen aus der Unterwelt – ganz ohne die "
+"gegen Orks und andere garstige Kreaturen aus der Unterwelt – ganz ohne die "
 "Hilfe von Eloh. Vertrauen ist unser Schild, Kaleh. Ich denke, du solltest "
 "deine Zweifel für dich behalten – es wäre nicht gut, unsere Leute unnötig zu "
 "beunruhigen. Eloh wird uns immer beschützen, solange wir auf ihrem Pfad "
@@ -3990,10 +4000,10 @@ msgid ""
 msgstr ""
 "Trolle waren gigantische, graue Kreaturen, groß wie Riesen und sehr stark. "
 "Sie lebten zurückgezogen und versteckten sich im Untergrund. Wir hatten nie "
-"sehr viel Kontakt mit ihnen, aber einige kämpften, während der großen "
-"Kriege, mit den Orks. Sie waren mächtige Krieger. Ich bin mir sicher, dass "
-"sie alle ausgestorben sind, und falls nicht, möchte ich sicher nie einen zu "
-"Gesicht bekommen."
+"sehr viel Kontakt mit ihnen, aber einige kämpften während der großen Kriege "
+"mit den Orks. Sie waren mächtige Krieger. Ich bin mir sicher, dass sie alle "
+"ausgestorben sind, und falls nicht, möchte ich sicher nie einen zu Gesicht "
+"bekommen."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:509
@@ -4188,15 +4198,14 @@ msgid ""
 "he was just sent back from where real fighting is."
 msgstr ""
 "Gibt geheime Gänge, Sonnenmenschen nicht kennen. Nur Trolle kennen. Wir "
-"schlauer als ihr denkt. Zurg würde selber Zwerge töten, aber war bei "
-"wirklicher Schlacht."
+"schlauer als ihr denkt. Zurg würde selber Zwerge töten, aber war bei echter "
+"Schlacht."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:873
 msgid "The real fighting? I thought that was what we were waist-deep in?"
 msgstr ""
-"Bei der wirklichen Schlacht? Ich habe gedacht, wir stecken bis zum Hals "
-"darin?"
+"Bei der echten Schlacht? Ich dachte, darin waren wir schon bis zum Halse?"
 
 #. [message]: speaker=Zurg
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:879
@@ -4281,8 +4290,8 @@ msgstr "Grimnir"
 msgid ""
 "Congratulations, some of me boys didn’t think you could beat the trolls."
 msgstr ""
-"Glückwunsch! Einige meiner Jungs haben gar nicht geglaubt, ihr würdet die "
-"Trolle besiegen."
+"Glückwunsch! Einige meiner Jungs haben gar nicht daran geglaubt, dass Ihr "
+"die Trolle besiegen könntet."
 
 #. [message]: speaker=Grimnir
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:976
@@ -4291,7 +4300,7 @@ msgid ""
 "caves, elf. I would have killed him myself, but I was just sent back from "
 "the main front of the battle."
 msgstr ""
-"Denke nicht, Elfe, dass du all die verschlungenen Gänge kennst, die sich "
+"Denke nicht, Elf, dass du all die verschlungenen Gänge kennst, die sich "
 "durch diese Höhlen ziehen. Ich hätte den Troll selber getötet, aber ich "
 "komme gerade erst von der Hauptfront."
 
@@ -4313,9 +4322,9 @@ msgstr ""
 "Während ihr hier gekämpft habt, schlich sich ein anderer Trollhaufen an "
 "unseren Wachposten vorbei und attackierte die Flanke unserer Vorratslager. "
 "Es gibt mehr von diesen stinkenden Mistkerlen, als wir ursprünglich "
-"angenommen haben. Um euch die Wahrheit zu sagen, wir stecken in der Klemme. "
+"angenommen haben. Um Euch die Wahrheit zu sagen, wir stecken in der Klemme. "
 "Wir müssen all unsere Kräfte aus diesem Teil der Höhlen zurückziehen, um "
-"unsere weiter zurückliegenden Linien zu verstärken. Aber euer Sieg hier hat "
+"unsere weiter zurückliegenden Linien zu verstärken. Aber Euer Sieg hier hat "
 "uns eine unerwartete Möglichkeit eröffnet."
 
 #. [message]: speaker=Nym
@@ -4343,12 +4352,12 @@ msgstr ""
 "Anführer in diesem Hauptquartier beschützt wird und von da aus die Schlacht "
 "leitet. Wir hatten vor, uns hineinzuschleichen und einen "
 "Überraschungsangriff durchzuführen – doch ehrlich gesagt, fehlte es uns an "
-"Zwergen, die wir dafür aufwenden konnten. Wenn ihr es schafft, euch unter "
+"Zwergen, die wir dafür aufwenden konnten. Wenn Ihr es schafft, Euch unter "
 "Zuhilfenahme dieses Tunnels hinter die Frontlinien zu schleichen und ihn zu "
 "töten, dann wird das Verwirrung unter den Trollen stiften und den Druck auf "
 "unsere eigenen Frontlinien verringern. Als Gegenleistung hat unser König "
-"versprochen, euch bei der Rückkehr in das sonnenbeschienene Land zu helfen. "
-"Sobald ihr bereit seid, werde ich euch den Weg zeigen. Es ist nicht weit."
+"versprochen, Euch bei der Rückkehr in das sonnenbeschienene Land zu helfen. "
+"Sobald Ihr bereit seid, werde ich Euch den Weg zeigen. Es ist nicht weit."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1012
@@ -4419,7 +4428,7 @@ msgstr "Woah."
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1235
 msgid "I think I preferred the spider and the ants..."
-msgstr "Ich glaube, ich bevorzuge die Spinnen und die Ameisen..."
+msgstr "Ich glaube, die Spinnen und die Ameisen haben mir besser gefallen..."
 
 #. [message]: speaker=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1240
@@ -4452,12 +4461,13 @@ msgstr "Wartet... Was... Wer ihr sein?"
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1260
 msgid "Uh..."
-msgstr "Um...."
+msgstr "Ähm ..."
 
+# Klingt komisch
 #. [message]: speaker=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1265
 msgid "What by the names of my forefathers are they?"
-msgstr "Was, im Namen meiner Vorväter, sind das?"
+msgstr "Was … Wer … sind das?"
 
 #. [message]: speaker=first_dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1270
@@ -4544,7 +4554,7 @@ msgid ""
 "here."
 msgstr ""
 "Wir müssen sie nicht hierher bringen. Wir können den Großteil sicher "
-"versteckt weiter oben im Tunnel lassen. Somit können wie sie gut beschützen, "
+"versteckt weiter oben im Tunnel lassen. Somit können wir sie gut beschützen, "
 "zumindest für einige Zeit. In der Zwischenzeit können wir hier vorne etwas "
 "Ordnung in dieses Chaos bringen. Ich denke, du hast Recht, Zhul – wenn wir "
 "Glück haben, können wir so eine sichere Durchreise für uns aushandeln."
@@ -4811,8 +4821,8 @@ msgid ""
 "Our leader sent us to help you. We fight for you until all the dwarves are "
 "dead. We will avenge the deaths of our people!"
 msgstr ""
-"Anführer schickt uns dir helfen. Wir kämpfen bis alle Zwerge tot. Rächen den "
-"Tod unserer Leute!"
+"Anführer schickt uns euch helfen. Wir kämpfen bis alle Zwerge tot. Rächen "
+"den Tod unserer Leute!"
 
 #. [message]: role=ally
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2245
@@ -4917,7 +4927,7 @@ msgid ""
 "was he ranting about? Whoever that is is starting to make me get edgy."
 msgstr ""
 "Wo ist er hin? Wie kann er einfach so erscheinen? Und was in Urias Namen hat "
-"er dahergeredet? Wer auch immer das ist, fängt langsam an, mir auf die "
+"er dahergeredet? Wer auch immer das ist, er fängt langsam an, mir auf die "
 "Nerven zu gehen."
 
 #. [message]: speaker=Kaleh
@@ -4955,7 +4965,7 @@ msgid ""
 "time they smell much worse."
 msgstr ""
 "Diese untoten Trolle kämpfen auch nach dem Tod genauso weiter wie zuvor, nur "
-"riechen sie jetzt schlimmer."
+"riechen sie jetzt noch schlimmer."
 
 #. [scenario]: id=06a_In_the_Tunnels_of_the_Trolls
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:8
