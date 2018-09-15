@@ -28,7 +28,7 @@
    * A New Land: Fixed village gold being 1 instead of 2.
  ### Language and i18n
    * Updated translations: British English, Chinese (Traditional), Czech, French,
-     German, Italian, Japanese, Scottish Gaelic, Ukrainian
+     German, Hungarian, Italian, Japanese, Scottish Gaelic, Ukrainian
  ### User Interface
    * On laptop computers we now show how much battery you have left
    * MacOS: Fixed moving the mouse with a touchpad also scrolling GUI dialogs

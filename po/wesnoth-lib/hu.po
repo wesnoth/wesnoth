@@ -8,20 +8,21 @@
 # Farkas János <mail.janos.farkas@gmail.com>, 2014.
 # Széll András <szell.andris@gmail.com>, 2018.
 # Krutki Tamás <krtamas@0x64.org>, 2018.
+# Pazurik L. Ádám <pazurik.laszlo.adam@gmail.com>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-09-09 11:38+0300\n"
-"PO-Revision-Date: 2018-07-13 23:16+0200\n"
-"Last-Translator: Tamás Krutki <krtamas@0x64.org>\n"
+"PO-Revision-Date: 2018-08-08 22:18+0100\n"
+"Last-Translator: Krutki Tamás <krtamas-wesnoth@0x64.org>\n"
 "Language-Team: Hungarian <>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.9\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -303,6 +304,9 @@ msgid ""
 "A welcome sight to any traveler, an oasis allows units to heal as if "
 "stationed in a village, but provides no income or defensive advantage."
 msgstr ""
+"A bármely utazó által szívesen látott oázisokban az egységek a falvakhoz "
+"hasonlóan gyógyulnak, de a falvak által adott bevétel és védekezési előny "
+"nélkül."
 
 #. [terrain_type]: id=sand_rubble
 #: data/core/terrain.cfg:332
@@ -362,17 +366,17 @@ msgstr "Tábortűz"
 #. [terrain_type]: id=wallfire
 #: data/core/terrain.cfg:437
 msgid "Sconce"
-msgstr ""
+msgstr "Gyertyatartó"
 
 #. [terrain_type]: id=brazier
 #: data/core/terrain.cfg:446
 msgid "Brazier"
-msgstr ""
+msgstr "Parázstartó üst"
 
 #. [terrain_type]: id=brazier-lit
 #: data/core/terrain.cfg:455
 msgid "Lit Brazier"
-msgstr ""
+msgstr "Izzó parázstartó üst"
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:473
@@ -583,17 +587,13 @@ msgstr "Sivatagi hegyvidék"
 
 #. [terrain_type]: id=regular_stone_floor
 #: data/core/terrain.cfg:821
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Stone Floor"
-msgstr "Fapadló"
+msgstr "Kőpadló"
 
 #. [terrain_type]: id=regular_stone_floor
 #: data/core/terrain.cfg:824
-#, fuzzy
-#| msgid "Basic Wooden Floor"
 msgid "Basic Stone Floor"
-msgstr "Hagyományos fapadló"
+msgstr "Egyszerű kőpadló"
 
 #. [terrain_type]: id=rug_floor
 #. [terrain_type]: id=rug2_floor
@@ -606,7 +606,7 @@ msgstr "Szőnyeg"
 #. [terrain_type]: id=rug_floor
 #: data/core/terrain.cfg:834
 msgid "Royal Rug"
-msgstr ""
+msgstr "Királyi szőnyeg"
 
 #. [terrain_type]: id=rug2_floor
 #: data/core/terrain.cfg:844
@@ -615,10 +615,8 @@ msgstr "Normál szőnyeg"
 
 #. [terrain_type]: id=rug3_floor
 #: data/core/terrain.cfg:854
-#, fuzzy
-#| msgid "Cave"
 msgid "Cave Rug"
-msgstr "Barlang"
+msgstr "Barlangi szőnyeg"
 
 #. [terrain_type]: id=wood_floor
 #: data/core/terrain.cfg:861
@@ -628,14 +626,12 @@ msgstr "Fapadló"
 #. [terrain_type]: id=wood_floor
 #: data/core/terrain.cfg:864
 msgid "Basic Wooden Floor"
-msgstr "Hagyományos fapadló"
+msgstr "Egyszerű fapadló"
 
 #. [terrain_type]: id=old_wood_floor
 #: data/core/terrain.cfg:871 data/core/terrain.cfg:874
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Old Wooden Floor"
-msgstr "Fapadló"
+msgstr "Régi fapadló"
 
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:887
@@ -694,19 +690,6 @@ msgstr "Sziklás barlang"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:967
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
-#| "water and wind, carrying erosive particles that carve the rock. It "
-#| "resembles a scraggy underground cavern which reduces efficiency of most "
-#| "units, but shoulders defense. Dwarves and trolls, who are main settlers "
-#| "of caves, have a relatively easy time navigating this terrain. Dwarves, "
-#| "who by dint of their small size have the full advantage of navigation in "
-#| "such topography. Occasionally caves are "
-#| "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>\n"
-#| "\n"
-#| "Most units have about 50% defense in rocky caves, whereas cavalry are "
-#| "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -725,13 +708,14 @@ msgstr ""
 "alakította ki, az általuk sodort részecskék vájták ki a sziklát. Hasonlatos "
 "egy fölszabdalt földalatti üreghez, amely lecsökkenti a legtöbb egység "
 "hatékonyságát, ugyanakkor elősegíti védekezésüket. A törpök és a trollok, a "
-"barlangok legfőbb lakói, viszonylag könnyedén eligazodnak ezen a terepen. "
-"Mozgás tekintetében, alacsony termetükből fakadóan, a törpök abszolút előnyt "
-"élveznek ezen a terepen. Néha a barlangok "
-"<ref>dst='terrain_illuminated_cave'text='megvilágítottak'</ref>.\n"
-"\n"
+"barlangok legfőbb lakói, viszonylag könnyedén eligazodnak ezen a terepen.\n"
+" \n"
 "A legtöbb egység védekezése 50%-os a sziklás barlangokban, míg a lovasság "
-"védelme csupán 40%. A törpök 60% védelmet élveznek ezen a terepen."
+"védelme csupán 40%. A törpök alacsony termetükből adódóan 60% védelmet "
+"élveznek ezen a terepen.\n"
+"\n"
+"Néha a barlangok meg vannak <ref>dst='terrain_illuminated_cave' "
+"text='világítva'</ref>."
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -805,10 +789,8 @@ msgstr "Szokványos megmászhatatlan hegyvidék"
 
 #. [terrain_type]: id=cloud_dry
 #: data/core/terrain.cfg:1108
-#, fuzzy
-#| msgid "Desert Impassable Mountains"
 msgid "Dry Impassable Mountains"
-msgstr "Sivatagi megmászhatatlan hegyvidék"
+msgstr "Száraz megmászhatatlan hegyvidék"
 
 #. [terrain_type]: id=cloud_snow
 #: data/core/terrain.cfg:1119
@@ -837,10 +819,8 @@ msgstr "Természetes barlangfal"
 #. [terrain_type]: id=wall_stone_mine
 #: data/core/terrain.cfg:1150 data/core/terrain.cfg:1151
 #: data/core/terrain.cfg:1209
-#, fuzzy
-#| msgid "Mine Rail"
 msgid "Mine Wall"
-msgstr "Bányavasút"
+msgstr "Bányafal"
 
 #. [terrain_type]: id=cavewall_earthy
 #: data/core/terrain.cfg:1162
@@ -862,31 +842,23 @@ msgstr "Megvilágított kőfal"
 
 #. [terrain_type]: id=wall_stone_mine
 #: data/core/terrain.cfg:1210
-#, fuzzy
-#| msgid "Mine Rail"
 msgid "Straight Mine Wall"
-msgstr "Bányavasút"
+msgstr "Sima bányafal"
 
 #. [terrain_type]: id=wall_stone_white
 #: data/core/terrain.cfg:1220
-#, fuzzy
-#| msgid "Mine Rail"
 msgid "Interior Wall"
-msgstr "Bányavasút"
+msgstr "Belső fal"
 
 #. [terrain_type]: id=wall_stone_white
 #: data/core/terrain.cfg:1221
-#, fuzzy
-#| msgid "Lit Stone Wall"
 msgid "Straight White Wall"
-msgstr "Megvilágított kőfal"
+msgstr "Sima fehér fal"
 
 #. [terrain_type]: id=wall_stone_clean
 #: data/core/terrain.cfg:1232
-#, fuzzy
-#| msgid "Stone Wall"
 msgid "Clean Stone Wall"
-msgstr "Kőfal"
+msgstr "Kőfal (tiszta)"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -898,7 +870,7 @@ msgstr "Kőfal"
 #: data/core/terrain.cfg:1275 data/core/terrain.cfg:1332
 #: data/core/terrain.cfg:1344 data/core/terrain.cfg:1357
 msgid "Gate"
-msgstr ""
+msgstr "Kapu"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -906,7 +878,7 @@ msgstr ""
 #: data/core/terrain.cfg:1249 data/core/terrain.cfg:1262
 #: data/core/terrain.cfg:1276
 msgid "Rusty Gate"
-msgstr ""
+msgstr "Rozsdás kapu"
 
 #. [terrain_type]: id=portal_door_wooden_sw
 #. [terrain_type]: id=portal_door_wooden_se
@@ -918,17 +890,15 @@ msgstr ""
 #: data/core/terrain.cfg:1316 data/core/terrain.cfg:1370
 #: data/core/terrain.cfg:1382 data/core/terrain.cfg:1395
 msgid "Door"
-msgstr ""
+msgstr "Ajtó"
 
 #. [terrain_type]: id=portal_door_wooden_sw
 #. [terrain_type]: id=portal_door_wooden_se
 #. [terrain_type]: id=portal_door_wooden_n
 #: data/core/terrain.cfg:1290 data/core/terrain.cfg:1303
 #: data/core/terrain.cfg:1317
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Wooden Door"
-msgstr "Fapadló"
+msgstr "Faajtó"
 
 #. [terrain_type]: id=portal_gate_rusty_open_sw
 #. [terrain_type]: id=portal_gate_rusty_open_se
@@ -936,17 +906,15 @@ msgstr "Fapadló"
 #: data/core/terrain.cfg:1333 data/core/terrain.cfg:1345
 #: data/core/terrain.cfg:1358
 msgid "Open Rusty Gate"
-msgstr ""
+msgstr "Rozsdás ajtó (nyitva)"
 
 #. [terrain_type]: id=portal_door_wooden_open_sw
 #. [terrain_type]: id=portal_door_wooden_open_se
 #. [terrain_type]: id=portal_door_wooden_open_n
 #: data/core/terrain.cfg:1371 data/core/terrain.cfg:1383
 #: data/core/terrain.cfg:1396
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Open Wooden Door"
-msgstr "Fapadló"
+msgstr "Faajtó (nyitva)"
 
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:1411
@@ -1021,10 +989,8 @@ msgstr "Vályogfalu"
 
 #. [terrain_type]: id=desert_village_ruin
 #: data/core/terrain.cfg:1466
-#, fuzzy
-#| msgid "Adobe Village"
 msgid "Ruined Adobe Village"
-msgstr "Vályogfalu"
+msgstr "Romos vályogfalu"
 
 #. [terrain_type]: id=desert_village_tent
 #: data/core/terrain.cfg:1479
@@ -1202,10 +1168,8 @@ msgstr "Tábor"
 
 #. [terrain_type]: id=encampment_ruin
 #: data/core/terrain.cfg:1874
-#, fuzzy
-#| msgid "Encampment"
 msgid "Ruined Encampment"
-msgstr "Tábor"
+msgstr "Romos tábor"
 
 #. [terrain_type]: id=encampment_snow
 #: data/core/terrain.cfg:1886
@@ -1259,10 +1223,8 @@ msgstr "Tünde várkastély"
 
 #. [terrain_type]: id=elven_castle_ruin
 #: data/core/terrain.cfg:1957
-#, fuzzy
-#| msgid "Elven Castle"
 msgid "Elven Castle Ruin"
-msgstr "Tünde várkastély"
+msgstr "Romos tünde várkastély"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:1969
@@ -1305,24 +1267,18 @@ msgstr "Romos sivatagi várkastély"
 
 #. [terrain_type]: id=troll_encampment
 #: data/core/terrain.cfg:2043
-#, fuzzy
-#| msgid "Tall Encampment Keep"
 msgid "Troll Encampment"
-msgstr "Magas tábori torony"
+msgstr "Troll tábor"
 
 #. [terrain_type]: id=aquatic_camp
 #: data/core/terrain.cfg:2055
-#, fuzzy
-#| msgid "Encampment"
 msgid "Aquatic Encampment"
-msgstr "Tábor"
+msgstr "Vízi tábor"
 
 #. [terrain_type]: id=aquatic_castle
 #: data/core/terrain.cfg:2068
-#, fuzzy
-#| msgid "Human Castle"
 msgid "Aquatic Castle"
-msgstr "Emberi várkastély"
+msgstr "Vízi várkastély"
 
 #. [terrain_type]: id=encampment_keep
 #. [terrain_type]: id=encampment_keep_tall
@@ -1337,10 +1293,8 @@ msgstr "Tábori torony"
 
 #. [terrain_type]: id=encampment_ruin_keep
 #: data/core/terrain.cfg:2096
-#, fuzzy
-#| msgid "Encampment Keep"
 msgid "Ruined Encampment Keep"
-msgstr "Tábori torony"
+msgstr "Romos tábori torony"
 
 #. [terrain_type]: id=encampment_keep_tall
 #: data/core/terrain.cfg:2109
@@ -1397,10 +1351,8 @@ msgstr "Tünde vártorony"
 
 #. [terrain_type]: id=elven_keep_ruin
 #: data/core/terrain.cfg:2200
-#, fuzzy
-#| msgid "Elven Castle Keep"
 msgid "Elven Keep Ruin"
-msgstr "Tünde vártorony"
+msgstr "Romos tünde vártorony"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:2213
@@ -1443,24 +1395,18 @@ msgstr "Romos sivatagi torony"
 
 #. [terrain_type]: id=merman_campkeep
 #: data/core/terrain.cfg:2291
-#, fuzzy
-#| msgid "Tall Encampment Keep"
 msgid "Aquatic Encampment Keep"
-msgstr "Magas tábori torony"
+msgstr "Vízi tábori torony"
 
 #. [terrain_type]: id=troll_campkeep
 #: data/core/terrain.cfg:2304
-#, fuzzy
-#| msgid "Tall Encampment Keep"
 msgid "Troll Encampment Keep"
-msgstr "Magas tábori torony"
+msgstr "Troll tábori torony"
 
 #. [terrain_type]: id=merman_castlekeep
 #: data/core/terrain.cfg:2317
-#, fuzzy
-#| msgid "Ruined Keep"
 msgid "Aquatic Keep"
-msgstr "Romos torony"
+msgstr "Vízi vártorony"
 
 #. [terrain_type]: id=castle_overlay
 #: data/core/terrain.cfg:2332
@@ -1598,7 +1544,7 @@ msgstr "Térképen kívül"
 #. [terrain_type]: id=off_map2
 #: data/core/terrain.cfg:2668
 msgid "Fake Map Border"
-msgstr ""
+msgstr "Hamis térképperem"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
@@ -1610,10 +1556,8 @@ msgstr "Eltakarás"
 
 #. [terrain_type]: id=fake_shroud_overlay
 #: data/core/terrain.cfg:2690
-#, fuzzy
-#| msgid "Shroud"
 msgid "Fake Shroud"
-msgstr "Eltakarás"
+msgstr "Hamis eltakarás"
 
 #. [terrain_type]: id=fog
 #. [toggle_button]: id=sort_6
@@ -1654,24 +1598,6 @@ msgstr ""
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2732
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Cave'</italic> terrain represents any underground cavern "
-#| "with enough room for a unit to pass.\n"
-#| "Most units are wholly unfamiliar with the terrain, and thus are both "
-#| "slowed down and hindered in defense. Dwarves and trolls, who make their "
-#| "homes in caves, both have a relatively easy time navigating this terrain, "
-#| "especially dwarves, who by dint of their small size can navigate many "
-#| "obstacles that other races cannot. Occasionally caves are "
-#| "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>.\n"
-#| "\n"
-#| "Rare patches of the underground world are illuminated by light from the "
-#| "surface shining down into the gloomy darkness. This provides an attack "
-#| "bonus for lawful units and removes the attack bonus from chaotic units. "
-#| "In all other regards this terrain is functionally identical to normal "
-#| "<ref>dst='terrain_cave' text='cave terrains'</ref>.\n"
-#| "\n"
-#| "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -1703,8 +1629,7 @@ msgstr ""
 "beragyogó fény, amely szétoszlatja a mély homályát. Ez támadási bónuszt "
 "jelent az igazságos egységeknek, míg közömbösíti a törvénytelenek barlangi "
 "sötétségből fakadó előnyös helyzetét. A megvilágított terep minden egyéb "
-"tulajdonsága a <ref>dst='terrain_cave' text='barlangi terep'</ref> "
-"jellemzőivel megegyező.\n"
+"tulajdonsága a barlangi terep jellemzőivel megegyező.\n"
 "\n"
 "A legtöbb egység védelme 20–40%-os a barlangban, a törpöké viszont 50%."
 
@@ -1715,15 +1640,6 @@ msgstr "Homok"
 
 #. [terrain_type]: id=reef
 #: data/core/terrain.cfg:2762
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
-#| "and sand.\n"
-#| "This provides most land units with a more steady footing and defensive "
-#| "positions than wading in shallow water normally would and also grants "
-#| "most water-dwelling races an exceptionally high defense.\n"
-#| "\n"
-#| "Mermen and Naga both receive 70% defense on coastal reefs."
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
 "and sand.\n"
@@ -1769,17 +1685,6 @@ msgstr ""
 
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:2791
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Swamps'</italic> represent any sort of wetlands.\n"
-#| "Swamps slow down nearly everyone, and inhibit their ability to defend "
-#| "themselves. An exception to this is any race bodily skilled in navigating "
-#| "water; these receive both full movement and a defensive bonus. Those that "
-#| "make their living in the wetlands are also adept at using this terrain "
-#| "for cover.\n"
-#| "\n"
-#| "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
-#| "all generally enjoy 60%."
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands.\n"
 "Swamps slow down nearly everyone, and inhibit their ability to defend "
@@ -1804,18 +1709,6 @@ msgstr ""
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:2804
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Shallow water'</italic> represents any body of water deep "
-#| "enough to come up to roughly a man’s waist. This is enough to slow down "
-#| "nearly anyone and leave them wide open to attack. Dwarves, given that the "
-#| "water reaches up almost to their heads, have an extremely hard time of "
-#| "this. The exception is any race whose bodies naturally lend themselves to "
-#| "swimming, for which they receive a considerable defensive bonus and full "
-#| "movement.\n"
-#| "\n"
-#| "Most units make do with 20 to 30% defense in shallow water, whereas both "
-#| "naga and mermen enjoy 60%."
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
 "enough to come up to roughly a man’s waist. This is enough to slow down "
@@ -1885,15 +1778,6 @@ msgstr ""
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:2845
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Deep water'</italic> represents any body of water deep "
-#| "enough to cover a man’s head.\n"
-#| "Most units cannot enter deep water: it is the domain of units which can "
-#| "either fly, or are exceptionally strong swimmers.\n"
-#| "\n"
-#| "Mermen and naga both receive 50% defense in deep water, with full "
-#| "movement."
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
 "to cover a man’s head.\n"
@@ -2064,10 +1948,6 @@ msgstr "Sín"
 
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:2930
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Rails'</italic> are used to transport ore. By Dwarfs. "
-#| "Mostly."
 msgid ""
 "<italic>text='Rails'</italic> are used to transport ore, mostly by dwarves."
 msgstr ""
@@ -2077,11 +1957,11 @@ msgstr ""
 #. [settings]
 #: data/gui/default.cfg:23
 msgid " (Press '$hotkey' for more information)"
-msgstr ""
+msgstr "(Nyomd meg a(z) '$hotkey' billentyűt további információért)"
 
 #: data/gui/macros/_initial.cfg:338
 msgid "Search"
-msgstr ""
+msgstr "Keresés"
 
 #. [toggle_button]: id=sort_0
 #. [label]: id=name
@@ -2103,7 +1983,7 @@ msgstr "Verzió"
 #. [toggle_button]: id=sort_1
 #: data/gui/widget/addon_list.cfg:107
 msgid "Author"
-msgstr "Szerző"
+msgstr "Készítő"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/widget/addon_list.cfg:121
@@ -2127,15 +2007,13 @@ msgstr "Egységtípus"
 #. [button]: id=install
 #: data/gui/widget/addon_list.cfg:366 data/gui/window/addon_manager.cfg:203
 msgid "Install add-on"
-msgstr ""
+msgstr "Kiegészítő telepítése"
 
 #. [button]: id=single_update
 #. [button]: id=update
 #: data/gui/widget/addon_list.cfg:389 data/gui/window/addon_manager.cfg:225
-#, fuzzy
-#| msgid "Update Add-ons"
 msgid "Update add-on"
-msgstr "Kiegészítések frissítése"
+msgstr "Kiegészítő frissítése"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=single_publish
@@ -2143,17 +2021,15 @@ msgstr "Kiegészítések frissítése"
 #: data/gui/widget/addon_list.cfg:412 data/gui/window/addon_manager.cfg:270
 #: src/gui/widgets/addon_list.cpp:254
 msgid "Publish add-on"
-msgstr ""
+msgstr "Kiegészítő közzététele"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:247
 #: src/gui/dialogs/addon/manager.cpp:807
-#, fuzzy
-#| msgid "Uninstall Add-ons"
 msgid "Uninstall add-on"
-msgstr "Kiegészítések eltávolítása"
+msgstr "Kiegészítő eltávolítása"
 
 #. [image]: id=pending_messages
 #: data/gui/widget/chatbox.cfg:40
@@ -2214,7 +2090,7 @@ msgstr "Kiszolgáló:"
 #: data/gui/window/addon_connect.cfg:144
 #: data/gui/window/addon_uninstall_list.cfg:51
 msgid "Remove Add-ons"
-msgstr "Kiegészítések eltávolítása"
+msgstr "Kiegészítők eltávolítása"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_help
@@ -2273,7 +2149,7 @@ msgstr "Mégsem"
 #. [label]: id=byline
 #: data/gui/window/addon_manager.cfg:84
 msgid "By:"
-msgstr ""
+msgstr "Készítette:"
 
 #. [label]: id=version_string
 #: data/gui/window/addon_manager.cfg:120
@@ -2289,10 +2165,8 @@ msgstr "Nincs elérhető leírás."
 
 #. [button]: id=delete
 #: data/gui/window/addon_manager.cfg:284
-#, fuzzy
-#| msgid "Delete ToD"
 msgid "Delete add-on"
-msgstr "Napszak törlése"
+msgstr "Kiegészítő törlése"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:318 data/gui/window/addon_manager.cfg:733
@@ -2381,54 +2255,44 @@ msgstr "A honlap megtekintése egy internet böngészővel"
 #. [text_box]: id=filter
 #: data/gui/window/addon_manager.cfg:694
 msgid "Filters on addon description, version, type or author."
-msgstr ""
+msgstr "A kiegészítők leírására, verziójára, típusára vagy készítőjére szűr."
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:707
-#, fuzzy
-#| msgid "Status:"
 msgid "State:"
 msgstr "Állapot:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:760
-#, fuzzy
-#| msgid "Leader"
 msgid "Order:"
-msgstr "Vezér"
+msgstr "Rendezés:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:846 data/gui/window/addon_manager.cfg:1021
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-ons Manager"
-msgstr "Kiegészítések"
+msgstr "Kiegészítőkezelő"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
 #: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:459
 #: src/gui/dialogs/addon/manager.cpp:646
-#, fuzzy
-#| msgid "Details:"
 msgid "Addon Details"
-msgstr "Részletek:"
+msgstr "Kiegészítő részletei"
 
 #. [button]: id=update_all
 #: data/gui/window/addon_manager.cfg:960 data/gui/window/addon_manager.cfg:1124
-#, fuzzy
-#| msgid "Update Add-ons"
 msgid "Update All"
-msgstr "Kiegészítések frissítése"
+msgstr "Minden frissítése"
 
 #. [button]: id=cancel
 #: data/gui/window/addon_manager.cfg:974 data/gui/window/addon_manager.cfg:1138
 msgid "Exit"
-msgstr ""
+msgstr "Kilépés"
 
 #. [scroll_label]
 #: data/gui/window/addon_uninstall_list.cfg:70
 msgid "Choose the add-ons you want to remove."
-msgstr "Válaszd ki az eltávolítandó kiegészítéseket!"
+msgstr "Válaszd ki az eltávolítandó kiegészítőket!"
 
 #. [button]: id=ok
 #. [button]: id=remove
@@ -2439,35 +2303,36 @@ msgstr "Eltávolítás"
 
 #: data/gui/window/advanced_graphics_options.cfg:42
 msgid "Nearest Neighbor"
-msgstr ""
+msgstr "Legközelebbi szomszéd"
 
 #: data/gui/window/advanced_graphics_options.cfg:42
 msgid "Nearest Neighbor scaling (fastest)"
-msgstr ""
+msgstr "Legközelebbi szomszéd skálázás (leggyorsabb)"
 
 #: data/gui/window/advanced_graphics_options.cfg:43
 msgid "xBRZ + linear"
-msgstr ""
+msgstr "xBRZ + lineáris"
 
 #: data/gui/window/advanced_graphics_options.cfg:43
 msgid "xBRZ followed by Bilinear interpolation"
-msgstr ""
+msgstr "xBRZ, majd bilineáris interpoláció"
 
 #: data/gui/window/advanced_graphics_options.cfg:44
 msgid "xBRZ + NN"
-msgstr ""
+msgstr "xBRZ + NN"
 
+# majd→következő
 #: data/gui/window/advanced_graphics_options.cfg:44
 msgid "xBRZ followed by Nearest Neighbor (recommended)"
-msgstr ""
+msgstr "xBRZ, majd legközelebbi szomszéd (ajánlott)"
 
 #: data/gui/window/advanced_graphics_options.cfg:45
 msgid "Bilinear interpolation scaling"
-msgstr ""
+msgstr "Skálázás bilineáris interpolációval"
 
 #: data/gui/window/advanced_graphics_options.cfg:45
 msgid "Linear"
-msgstr ""
+msgstr "Lineáris"
 
 #. [label]
 #: data/gui/window/advanced_graphics_options.cfg:91
@@ -2477,27 +2342,27 @@ msgstr "Haladó grafikai beállítások"
 #. [label]
 #: data/gui/window/advanced_graphics_options.cfg:107
 msgid "Images will be scaled using the following algorithms:"
-msgstr ""
+msgstr "Képek skálázásához használt algoritmusok:"
 
 #. [column]
 #: data/gui/window/advanced_graphics_options.cfg:128
 msgid "All units, haloes, border hexes"
-msgstr ""
+msgstr "Minden egység, fényhatás és határoló mező"
 
 #. [column]
 #: data/gui/window/advanced_graphics_options.cfg:128
 msgid "Scaled to zoom"
-msgstr ""
+msgstr "Nagyítás mértékéhez skálázva"
 
 #. [column]
 #: data/gui/window/advanced_graphics_options.cfg:139
 msgid "Everything else"
-msgstr ""
+msgstr "Minden más"
 
 #. [column]
 #: data/gui/window/advanced_graphics_options.cfg:139
 msgid "Scaled to hex"
-msgstr ""
+msgstr "Mezőhöz skálázva"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -2532,7 +2397,7 @@ msgstr "Rendben"
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:82
 msgid "Base damage"
-msgstr ""
+msgstr "Alapsebzés"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:84
@@ -2541,20 +2406,18 @@ msgstr "Napszak módosító"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:85
-#, fuzzy
-#| msgid "Leader"
 msgid "Leadership bonus"
-msgstr "Vezér"
+msgstr "Hadvezetési bónusz"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:86
 msgid "Slowed penalty"
-msgstr ""
+msgstr "Lelassítva"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:90
 msgid "Total damage"
-msgstr ""
+msgstr "Összsebzés"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:94
@@ -2564,12 +2427,12 @@ msgstr "Találati esély"
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:95
 msgid "Chance of being unscathed"
-msgstr ""
+msgstr "Sértetlenül maradás esélye"
 
 #. [label]
 #: data/gui/window/attack_predictions.cfg:185
 msgid "Expected Battle Result (HP)"
-msgstr ""
+msgstr "Az összecsapás várt eredménye (ÉP)"
 
 #. [label]: id=title
 #: data/gui/window/attack_predictions.cfg:249
@@ -2599,7 +2462,7 @@ msgstr "Rendezés:"
 #. [toggle_button]: id=sort_name
 #: data/gui/window/campaign_dialog.cfg:227
 msgid "Sort by full campaign name in alphabetical order"
-msgstr ""
+msgstr "Hadjárat teljes neve szerinti ábécé-sorrendbe rendezés"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:239
@@ -2609,7 +2472,7 @@ msgstr "Dátumok"
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:240
 msgid "Sort in approximate chronological order of story events"
-msgstr ""
+msgstr "Rendezés a történetbeli események közelítőleges időpontja szerint"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -2629,6 +2492,8 @@ msgid ""
 "Makes the random number generator yield the same results even after "
 "reloading a game"
 msgstr ""
+"A véletlenszám-generátor a játék újratöltése után is ugyanazokat az "
+"eredményeket fogja adni"
 
 #. [label]: id=title
 #. [slider]: id=enemey_gold_factor
@@ -2687,17 +2552,13 @@ msgstr "Másolás"
 
 #. [button]: id=copy
 #: data/gui/window/chat_log.cfg:187 data/gui/window/lua_interpreter.cfg:106
-#, fuzzy
-#| msgid "Copy this URL to clipboard"
 msgid "Copy this log to clipboard"
-msgstr "A honlapcím másolása a vágólapra"
+msgstr "Ezen napló másolása a vágólapra"
 
 #. [label]
 #: data/gui/window/core_dialog.cfg:44
-#, fuzzy
-#| msgid "Load Game"
 msgid "Load Core"
-msgstr "Játék betöltése"
+msgstr "Játékmag betöltése"
 
 #. [button]: id=copy_
 #. [button]: id=copy
@@ -2731,10 +2592,8 @@ msgstr "Az elérési útvonal megnyitása fájlkezelővel"
 
 #. [label]
 #: data/gui/window/custom_tod.cfg:147
-#, fuzzy
-#| msgid "Custom Time of Day Schedule"
 msgid "Edit Time Schedule"
-msgstr "Tetszőleges napszakrend"
+msgstr "Napszakrend szerkesztése"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -2755,17 +2614,13 @@ msgstr "Azonosító:"
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:285
-#, fuzzy
-#| msgid "Image"
 msgid "Image:"
-msgstr "Kép"
+msgstr "Kép:"
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:286
-#, fuzzy
-#| msgid "Mask"
 msgid "Mask:"
-msgstr "Maszk"
+msgstr "Maszk:"
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:287
@@ -2780,17 +2635,17 @@ msgstr "Igazságos egységek előnye:"
 #. [grid]
 #: data/gui/window/custom_tod.cfg:339
 msgid "Red:"
-msgstr "Vörös: "
+msgstr "Vörös:"
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:340
 msgid "Green:"
-msgstr "Zöld: "
+msgstr "Zöld:"
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:341
 msgid "Blue:"
-msgstr "Kék: "
+msgstr "Kék:"
 
 #. [button]: id=new
 #: data/gui/window/custom_tod.cfg:405
@@ -2845,7 +2700,7 @@ msgstr "Felhasználói közreműködés szükséges"
 #. [label]: id=message
 #: data/gui/window/depcheck_select_new.cfg:59
 msgid "User interaction required"
-msgstr "Felhasználói közreműködés szükséges."
+msgstr "Felhasználói közreműködés szükséges"
 
 #. [label]: id=title
 #: data/gui/window/edit_label.cfg:42 data/gui/window/editor_edit_label.cfg:42
@@ -2860,22 +2715,22 @@ msgstr "Címke:"
 #. [toggle_button]: id=team_only_toggle
 #: data/gui/window/edit_label.cfg:111
 msgid "Team only"
-msgstr "csak a csapat"
+msgstr "Csak a csapat"
 
 #. [label]
 #: data/gui/window/editor_edit_label.cfg:106
 msgid "Category:"
-msgstr ""
+msgstr "Kategória:"
 
 #. [label]
 #: data/gui/window/editor_edit_label.cfg:152
 msgid "Properties"
-msgstr ""
+msgstr "Tulajdonságok"
 
 #. [label]
 #: data/gui/window/editor_edit_label.cfg:164
 msgid "Color"
-msgstr ""
+msgstr "Szín"
 
 #. [toggle_button]: id=immutable_toggle
 #: data/gui/window/editor_edit_label.cfg:181
@@ -2984,7 +2839,7 @@ msgstr "Bevétel:"
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:333
 msgid "Support per village:"
-msgstr "Falvankénti ellátmány:"
+msgstr "Falvankénti fenntartás:"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:363
@@ -3009,29 +2864,23 @@ msgstr "Egyik sem"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:396
-#, fuzzy
-#| msgid "Share view"
 msgid "Share Vision:"
-msgstr "Nézőpont megosztása"
+msgstr "Látottak megosztása:"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:406
 msgid "vision^All"
-msgstr ""
+msgstr "Minden"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:408
-#, fuzzy
-#| msgid "Shroud"
 msgid "vision^Shroud"
 msgstr "Eltakarás"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:410
-#, fuzzy
-#| msgid "translations^None"
 msgid "vision^None"
-msgstr "Egy sincs"
+msgstr "Nincs"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -3041,10 +2890,8 @@ msgstr "Pálya generálása"
 
 #. [label]
 #: data/gui/window/editor_generate_map.cfg:58
-#, fuzzy
-#| msgid "Map Generator"
 msgid "Choose a map generator:"
-msgstr "Pályarajzoló"
+msgstr "Pályarajzoló kiválasztása:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=settings
@@ -3058,7 +2905,7 @@ msgstr "Beállítások"
 #. [label]
 #: data/gui/window/editor_generate_map.cfg:161
 msgid "Numerical seed:"
-msgstr ""
+msgstr "Generátor kezdőszám:"
 
 #. [button]: id=ok
 #: data/gui/window/editor_generate_map.cfg:202
@@ -3076,14 +2923,14 @@ msgstr "Új pálya"
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
-msgstr "Szélesség: "
+msgstr "Szélesség:"
 
 #. [label]
 #. [grid]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
-msgstr "Magasság: "
+msgstr "Magasság:"
 
 #. [button]: id=ok
 #: data/gui/window/editor_new_map.cfg:116
@@ -3099,22 +2946,22 @@ msgstr "Pálya átméretezése"
 #. [label]
 #: data/gui/window/editor_resize_map.cfg:54
 msgid "New width:"
-msgstr "Új szélesség: "
+msgstr "Új szélesség:"
 
 #. [label]
 #: data/gui/window/editor_resize_map.cfg:78
 msgid "Old width:"
-msgstr "Régi szélesség: "
+msgstr "Régi szélesség:"
 
 #. [label]
 #: data/gui/window/editor_resize_map.cfg:102
 msgid "New height:"
-msgstr "Új magasság: "
+msgstr "Új magasság:"
 
 #. [label]
 #: data/gui/window/editor_resize_map.cfg:126
 msgid "Old height:"
-msgstr "Régi magasság: "
+msgstr "Régi magasság:"
 
 #. [label]
 #: data/gui/window/editor_resize_map.cfg:154
@@ -3144,22 +2991,22 @@ msgstr "Melyik játékos kezdjen itt?"
 #. [label]
 #: data/gui/window/end_credits.cfg:117
 msgid "↑ ↓ to adjust speed"
-msgstr ""
+msgstr "Sebesség állítása: ↑ ↓"
 
 #. [label]
 #: data/gui/window/file_dialog.cfg:103
 msgid "Places"
-msgstr ""
+msgstr "Helyek"
 
 #. [button]: id=add_bookmark
 #: data/gui/window/file_dialog.cfg:299
 msgid "Bookmarks the current folder"
-msgstr ""
+msgstr "A jelenlegi mappát a könyvjelzők közé helyezi"
 
 #. [button]: id=remove_bookmark
 #: data/gui/window/file_dialog.cfg:312
 msgid "Removes the current bookmark"
-msgstr ""
+msgstr "Eltávolítja a jelenlegi könyvjelzőt"
 
 #. [button]: id=delete_file
 #. [button]: id=delete
@@ -3238,10 +3085,8 @@ msgstr "Kilépés"
 
 #. [label]: id=title
 #: data/gui/window/game_cache_options.cfg:36
-#, fuzzy
-#| msgid "Cache:"
 msgid "WML Cache"
-msgstr "Gyorsítótár:"
+msgstr "WML gyorsítótár"
 
 #. [label]
 #: data/gui/window/game_cache_options.cfg:53
@@ -3252,33 +3097,37 @@ msgid ""
 "files generated by older versions; or you may purge its entire contents if "
 "you are experiencing issues when loading the game data."
 msgstr ""
+"A Wesnoth fenntart egy gyorsítótárat, amelyben a hadjáratokhoz, többjátékos "
+"küldetésekhez és egyéb kiegészítőkhöz tartozó előfeldolgozott WML adatokat "
+"tárolja a betöltés felgyorsítása érdekében. A gyorsítótár biztonságosan "
+"megtisztítható a régebbi verziókhoz tartozó fájlok eltávolításával, s így "
+"lemezterület szabadul fel, de törölheted a gyorsítótár teljes tartalmát is, "
+"ha problémák vannak a játékadatok betöltése során."
 
 #. [label]
 #: data/gui/window/game_cache_options.cfg:81
-#, fuzzy
-#| msgid "Paths"
 msgid "Path:"
-msgstr "Elérési útvonalak"
+msgstr "Elérési útvonal:"
 
 #. [button]: id=clean
 #: data/gui/window/game_cache_options.cfg:194
 msgid "cache^Clean"
-msgstr ""
+msgstr "Megtisztítás"
 
 #. [button]: id=clean
 #: data/gui/window/game_cache_options.cfg:195
 msgid "Clear stale and unused cache files"
-msgstr ""
+msgstr "Régi vagy nem használt fájlok törlése a gyorsítótárból"
 
 #. [button]: id=purge
 #: data/gui/window/game_cache_options.cfg:207
 msgid "cache^Purge"
-msgstr ""
+msgstr "Teljes törlés"
 
 #. [button]: id=purge
 #: data/gui/window/game_cache_options.cfg:208
 msgid "Purge the entire contents of the cache"
-msgstr ""
+msgstr "A gyorsítótár teljes tartalmának törlése"
 
 #. [label]: id=lblTitle
 #: data/gui/window/game_delete.cfg:40
@@ -3299,20 +3148,18 @@ msgstr "Ne mutasd többször"
 
 #. [grid]
 #: data/gui/window/game_load.cfg:92
-#, fuzzy
-#| msgid "Scroll Palette Left"
 msgid "Gold Left:"
-msgstr "Paletta görgetése balra"
+msgstr "Arany:"
 
 #. [grid]
 #: data/gui/window/game_load.cfg:95
 msgid "Active Troops:"
-msgstr ""
+msgstr "Aktív egységek:"
 
 #. [grid]
 #: data/gui/window/game_load.cfg:98
 msgid "Reserve Troops:"
-msgstr ""
+msgstr "Tartalékosok:"
 
 #. [toggle_button]: id=sort_1
 #: data/gui/window/game_load.cfg:171
@@ -3361,7 +3208,7 @@ msgstr "A függőben lévő egységmozgások visszavonása a mentett játékban"
 #. [button]: id=browse_saves_folder
 #: data/gui/window/game_load.cfg:568
 msgid "Open saves folder"
-msgstr ""
+msgstr "Játékmentések mappájának megnyitása"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -3399,38 +3246,30 @@ msgstr "Vezér"
 
 #. [toggle_button]: id=sort_1
 #: data/gui/window/game_stats.cfg:49
-#, fuzzy
-#| msgid "Team 1"
 msgid "Team"
-msgstr "1-es csapat"
+msgstr "Csapat"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:432
-#, fuzzy
-#| msgid "Gold:"
 msgid "Gold"
-msgstr "Arany:"
+msgstr "Arany"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/game_stats.cfg:76
-#, fuzzy
-#| msgid "Villages:"
 msgid "Villages"
-msgstr "Falvak:"
+msgstr "Falvak"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/game_stats.cfg:90
-#, fuzzy
-#| msgid "Unit List"
 msgid "Units"
-msgstr "Egységlista"
+msgstr "Egységek"
 
 #. [toggle_button]: id=sort_5
 #: data/gui/window/game_stats.cfg:104
 msgid "Upkeep"
-msgstr ""
+msgstr "Fenntartás"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_6
@@ -3439,10 +3278,8 @@ msgstr ""
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:438
-#, fuzzy
-#| msgid "Income:"
 msgid "Income"
-msgstr "Bevétel:"
+msgstr "Bevétel"
 
 #. [toggle_button]: id=sort_1
 #. [label]: id=side_title
@@ -3452,69 +3289,61 @@ msgstr "Csapat"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:311
-#, fuzzy
-#| msgid "Random starting time"
 msgid ""
 "Starting\n"
 "Gold"
-msgstr "Véletlen kezdőnapszak"
+msgstr ""
+"Kezdő\n"
+"Arany"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/game_stats.cfg:325
-#, fuzzy
-#| msgid "Income:"
 msgid ""
 "Base\n"
 "Income"
-msgstr "Bevétel:"
+msgstr ""
+"Alap\n"
+"Bevétel"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/game_stats.cfg:340
-#, fuzzy
-#| msgid "Gold per village"
 msgid ""
 "Gold Per\n"
 "Village"
-msgstr "Falvankénti arany"
+msgstr ""
+"Falvankénti\n"
+"arany"
 
 #. [toggle_button]: id=sort_5
 #: data/gui/window/game_stats.cfg:355
-#, fuzzy
-#| msgid "Support per village:"
 msgid ""
 "Support Per\n"
 "Village"
-msgstr "Falvankénti ellátmány:"
+msgstr ""
+"Falvankénti\n"
+"fenntartás"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:255
-#, fuzzy
-#| msgid "Current room"
 msgid "Current Status"
-msgstr "Jelenlegi szoba"
+msgstr "Jelenlegi helyzet"
 
 #. [widget]: id=tab_label
 #: data/gui/window/game_stats.cfg:780
-#, fuzzy
-#| msgid "Game Paths"
 msgid "Game Stats"
-msgstr "Elérési útvonalak"
+msgstr "Játék statisztika"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:255
-#, fuzzy
-#| msgid "Edit Scenario Settings"
 msgid "Scenario Settings"
-msgstr "A küldetés beállításainak szerkesztése"
+msgstr "Küldetés beállításai"
 
 #. [button]: id=ok
 #: data/gui/window/game_stats.cfg:832 data/gui/window/unit_list.cfg:436
-#, fuzzy
-#| msgid "Scroll speed:"
 msgid "Scroll To"
-msgstr "Görgetés sebessége:"
+msgstr "Odagörget"
 
 #. [grid]
 #: data/gui/window/game_version.cfg:126
@@ -3539,7 +3368,7 @@ msgstr "Játékmentések:"
 #. [grid]
 #: data/gui/window/game_version.cfg:134
 msgid "Add-ons:"
-msgstr "Kiegészítések:"
+msgstr "Kiegészítők:"
 
 #. [grid]
 #: data/gui/window/game_version.cfg:136
@@ -3549,40 +3378,41 @@ msgstr "Gyorsítótár:"
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:161
 msgid "Open Log File"
-msgstr ""
+msgstr "Naplófájl megnyitása"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:162
 msgid "Opens the log file, which may contain useful debug information"
 msgstr ""
+"Megnyitja a naplófájlt, amely hasznos hibakeresési információkat tartalmazhat"
 
 #. [label]
 #: data/gui/window/game_version.cfg:195
 msgid "library^Name"
-msgstr ""
+msgstr "Név"
 
 #. [label]
 #: data/gui/window/game_version.cfg:205
 msgid "library^Build version"
-msgstr ""
+msgstr "Fordításkori verzió"
 
 #. [label]
 #: data/gui/window/game_version.cfg:215
 msgid "library^Runtime version"
-msgstr ""
+msgstr "Futásidejű verzió"
 
 #. [label]
 #: data/gui/window/game_version.cfg:293
 msgid ""
 "The following features were selected when building this version of Wesnoth:"
 msgstr ""
+"A Wesnoth ezen verziójának fordításakor a következő képességek lettek "
+"engedélyezve:"
 
 #. [label]
 #: data/gui/window/game_version.cfg:447
-#, fuzzy
-#| msgid "Show Battle for Wesnoth help"
 msgid "The Battle for Wesnoth"
-msgstr "Harc Wesnothért Súgó"
+msgstr "Harc Wesnothért"
 
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:528
@@ -3592,26 +3422,22 @@ msgstr "Elérési útvonalak"
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:541
 msgid "Libraries"
-msgstr ""
+msgstr "Könyvtárak"
 
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:554
 msgid "Features"
-msgstr ""
+msgstr "Jellemzők"
 
 #. [button]: id=copy_all
 #: data/gui/window/game_version.cfg:629
-#, fuzzy
-#| msgid "Copy"
 msgid "page^Copy"
 msgstr "Másolás"
 
 #. [button]: id=copy_all
 #: data/gui/window/game_version.cfg:630
-#, fuzzy
-#| msgid "Copy this report to clipboard"
 msgid "Copy the full report to clipboard"
-msgstr "A jelentés másolása a vágólapra"
+msgstr "A teljes jelentés másolása a vágólapra"
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:94
@@ -3629,14 +3455,12 @@ msgstr "A jelentés másolása a vágólapra"
 #: data/gui/window/gamestate_inspector.cfg:348
 #: data/gui/window/lua_interpreter.cfg:38
 msgid "Lua Console"
-msgstr ""
+msgstr "Lua konzol"
 
 #. [label]
 #: data/gui/window/generator_settings.cfg:89
-#, fuzzy
-#| msgid "Map Generator"
 msgid "Map Generator Settings"
-msgstr "Pályarajzoló"
+msgstr "Pályarajzoló beállítása"
 
 #. [grid]
 #. [label]
@@ -3650,17 +3474,13 @@ msgstr "Játékosok:"
 
 #. [grid]
 #: data/gui/window/generator_settings.cfg:111
-#, fuzzy
-#| msgid "Number of hills:"
 msgid "Number of Hills:"
 msgstr "Dombok száma:"
 
 #. [grid]
 #: data/gui/window/generator_settings.cfg:113
-#, fuzzy
-#| msgid "Max hill size:"
 msgid "Max Hill Size:"
-msgstr "Dombok maximális magassága:"
+msgstr "Dombok maximális mérete:"
 
 #. [grid]
 #: data/gui/window/generator_settings.cfg:115
@@ -3669,8 +3489,6 @@ msgstr "Falvak:"
 
 #. [grid]
 #: data/gui/window/generator_settings.cfg:117
-#, fuzzy
-#| msgid "Castle size:"
 msgid "Castle Size:"
 msgstr "Vár mérete:"
 
@@ -3681,22 +3499,16 @@ msgstr "Területforma:"
 
 #. [toggle_button]: id=connect_castles
 #: data/gui/window/generator_settings.cfg:135
-#, fuzzy
-#| msgid "Roads between castles"
 msgid "Roads Between Castles"
 msgstr "Várak összekötése utakkal"
 
 #. [toggle_button]: id=show_labels
 #: data/gui/window/generator_settings.cfg:157
-#, fuzzy
-#| msgid "Show labels"
 msgid "Show Labels"
 msgstr "Címkék megjelenítése"
 
 #. [label]
 #: data/gui/window/help_browser.cfg:116
-#, fuzzy
-#| msgid "Show Battle for Wesnoth help"
 msgid "Battle For Wesnoth Help"
 msgstr "Harc Wesnothért Súgó"
 
@@ -3707,10 +3519,8 @@ msgstr "Nyomd le a kívánt gyorsbillentyűt (Esc a visszalépéshez)"
 
 #. [label]: id=title
 #: data/gui/window/label_settings.cfg:42
-#, fuzzy
-#| msgid "Show floating labels"
 msgid "Show or Hide Labels"
-msgstr "Szálló címkék megjelenítése"
+msgstr "Címkék megjelenítése/elrejtése"
 
 #. [label]
 #. [grid]
@@ -3726,8 +3536,6 @@ msgstr "A megfelelő nyelv kiválasztása:"
 
 #. [label]: id=status
 #: data/gui/window/loadscreen.cfg:150
-#, fuzzy
-#| msgid "Load Game..."
 msgid "Loading..."
 msgstr "Játék betöltése..."
 
@@ -3765,10 +3573,8 @@ msgstr "Szűrés megfordítása"
 
 #. [button]: id=quit
 #: data/gui/window/lobby_main.cfg:390 data/gui/window/lobby_main.cfg:535
-#, fuzzy
-#| msgid "Zoom Out"
 msgid "Log Out"
-msgstr "Eltávolítás"
+msgstr "Kijelentkezés"
 
 #. [label]
 #. [button]: id=ok
@@ -3805,32 +3611,28 @@ msgstr "Megfigyelés"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:459 data/gui/window/lobby_main.cfg:612
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Normal Replays"
-msgstr "Visszajátszás mentése"
+msgstr "Normál visszajátszások"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:463 data/gui/window/lobby_main.cfg:616
-#, fuzzy
-#| msgid "Quick replay"
 msgid "Quick Replays"
-msgstr "Gyors visszajátszás"
+msgstr "Gyors visszajátszások"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:464 data/gui/window/lobby_main.cfg:617
 msgid "Skip quickly to the active turn when observing"
-msgstr ""
+msgstr "Gyorsan az éppen aktív körre ugrik megfigyeléskor"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:468 data/gui/window/lobby_main.cfg:621
 msgid "Enter Blindfolded"
-msgstr ""
+msgstr "Enter Blindfolded"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:469 data/gui/window/lobby_main.cfg:622
 msgid "Do not show the map until given control of a side"
-msgstr ""
+msgstr "Ne mutassa a térképet, amíg nincs irányított oldal"
 
 #. [label]
 #: data/gui/window/lobby_main.cfg:523 data/gui/window/lobby_main.cfg:729
@@ -3846,8 +3648,6 @@ msgstr "Információ a játékosról - "
 #. [button]: id=add_friend
 #: data/gui/window/lobby_player_info.cfg:94
 #: data/gui/window/preferences/05_multiplayer.cfg:263
-#, fuzzy
-#| msgid "Add as Friend"
 msgid "Add Friend"
 msgstr "Felvétel a barátok közé"
 
@@ -3856,7 +3656,7 @@ msgstr "Felvétel a barátok közé"
 #: data/gui/window/lobby_player_info.cfg:105
 #: data/gui/window/preferences/05_multiplayer.cfg:276
 msgid "Block"
-msgstr ""
+msgstr "Blokkolás"
 
 #. [button]: id=remove_from_list
 #: data/gui/window/lobby_player_info.cfg:118
@@ -3870,10 +3670,8 @@ msgstr "Privát üzenet küldése"
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:153
-#, fuzzy
-#| msgid "Moderation"
 msgid "Moderator Controls"
-msgstr "Moderálás"
+msgstr "Moderátor eszközök"
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:173
@@ -3887,8 +3685,6 @@ msgstr "A kitiltás időtartama:"
 
 #. [button]: id=check_status
 #: data/gui/window/lobby_player_info.cfg:238
-#, fuzzy
-#| msgid "Check status"
 msgid "Check Status"
 msgstr "Állapot ellenőrzése"
 
@@ -3899,63 +3695,53 @@ msgstr "Kirúgás"
 
 #. [button]: id=kick_ban
 #: data/gui/window/lobby_player_info.cfg:262
-#, fuzzy
-#| msgid "Kick/ban"
 msgid "Kick + Ban"
-msgstr "Kirúgás/kitiltás"
+msgstr "Kirúgás + Kitiltás"
 
 #. [label]
 #: data/gui/window/logging.cfg:93
-#, fuzzy
-#| msgid "Options"
 msgid "Logging Options"
-msgstr "Beállítások"
+msgstr "Naplózási beállítások"
 
 #. [row]
 #: data/gui/window/logging.cfg:136
 msgid "Debug level logging: maximum information"
-msgstr ""
+msgstr "Hibakeresési naplózási szint: a lehető legtöbb információ"
 
 #. [row]
 #: data/gui/window/logging.cfg:137
 msgid "Info level logging: more information"
-msgstr ""
+msgstr "Információk naplózása: több információ"
 
 #. [row]
 #: data/gui/window/logging.cfg:138
 msgid "Warning level logging: less information"
-msgstr ""
+msgstr "Figyelmeztetések naplózása: kevesebb információ"
 
 #. [row]
 #: data/gui/window/logging.cfg:139
 msgid "Error level logging: minimum information"
-msgstr ""
+msgstr "Csak a hibák naplózása: a lehető legkevesebb információ"
 
 #. [row]
 #: data/gui/window/logging.cfg:140
-#, fuzzy
-#| msgid "Visible in fog"
 msgid "Disable logging"
-msgstr "Ködben is látható"
+msgstr "Naplózás letiltása"
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:117
-#, fuzzy
-#| msgid "Clean Gray Cobbles"
 msgid "Clear Console"
-msgstr "Szürke utcakő"
+msgstr "Konzol tartalmának törlése"
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:118
 msgid "Clear the log area"
-msgstr ""
+msgstr "Naplóterület tartalmának törlése"
 
 #. [label]: id=title
 #: data/gui/window/mp_alerts_options.cfg:95
-#, fuzzy
-#| msgid "Multiplayer"
 msgid "Multiplayer Alerts"
-msgstr "Többjátékos"
+msgstr "Többjátékos figyelmeztetések"
 
 #. [label]
 #: data/gui/window/mp_alerts_options.cfg:113
@@ -3964,11 +3750,14 @@ msgid ""
 "multiplayer lobby; either by playing sound alerts or (if the game window is "
 "inactive or minimized) displaying desktop notifications."
 msgstr ""
+"Válaszd ki, hogyan szeretnél értesülni a hálózati játékban és a "
+"játékcsarnokban történő eseményekről; vagy hanghatásokkal vagy (ha a játék "
+"ablaka inaktív vagy tálcára van téve) asztali értesítésekkel."
 
 #. [label]
 #: data/gui/window/mp_alerts_options.cfg:139
 msgid "Event"
-msgstr ""
+msgstr "Esemény"
 
 #. [label]
 #. [widget]: id=label
@@ -3979,121 +3768,103 @@ msgstr "Hang"
 
 #. [label]: id=notification_label
 #: data/gui/window/mp_alerts_options.cfg:170
-#, fuzzy
-#| msgid "Choose Modifications"
 msgid "Desktop Notification"
-msgstr "Módosítók kiválasztása"
+msgstr "Asztali értesítés"
 
 #. [label]
 #: data/gui/window/mp_alerts_options.cfg:185
-#, fuzzy
-#| msgid "Lobby"
 msgid "In Lobby"
-msgstr "Játékcsarnok"
+msgstr "Játékcsarnokban"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
-#, fuzzy
-#| msgid "Players:"
 msgid "Player joins:"
-msgstr "Játékosok:"
+msgstr "Csatlakozó játékosok:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
 msgid "When a player joins the lobby or game"
-msgstr ""
+msgstr "Amikor egy játékos belép a játékcsarnokba vagy játékba"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:192
-#, fuzzy
-#| msgid "Players:"
 msgid "Player leaves:"
-msgstr "Játékosok:"
+msgstr "Kilépő játékosok:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:192
 msgid "When a player leaves the lobby or game"
-msgstr ""
+msgstr "Amikor egy játékos elhagyja a játékcsarnokot vagy játékot"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
-#, fuzzy
-#| msgid "whisper to $receiver"
 msgid "When a whisper is received"
-msgstr "súgás neki: $receiver"
+msgstr "Amikor egy súgás érkezik"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
 msgid "Whisper:"
-msgstr ""
+msgstr "Súgás:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:194
-#, fuzzy
-#| msgid "Friends"
 msgid "Friend message:"
-msgstr "Barátok"
+msgstr "Baráti üzenet:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:194
 msgid "When a message from a friend is received"
-msgstr ""
+msgstr "Amikor üzenet érkezik egy baráttól"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:195
-#, fuzzy
-#| msgid "Message:"
 msgid "Public message:"
-msgstr "Üzenet:"
+msgstr "Nyilvános üzenet:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:195
 msgid "When a public message is received"
-msgstr ""
+msgstr "Amikor egy nyilvános üzenet érkezik"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:196
-#, fuzzy
-#| msgid "Send Private Message"
 msgid "Server message:"
-msgstr "Privát üzenet küldése"
+msgstr "Kiszolgáló üzenet:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:196
 msgid "When a server message is received"
-msgstr ""
+msgstr "Amikor egy kiszolgáló üzenet érkezik"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:197
-#, fuzzy
-#| msgid "Random start time"
 msgid "Ready to start:"
-msgstr "Véletlenszerű kezdési idő"
+msgstr "Kezdésre kész:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:197
 msgid "When the game you are hosting is ready to start"
-msgstr ""
+msgstr "Amikor az általad nyitott játék indításra kész"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:198
 msgid "Game has begun:"
-msgstr ""
+msgstr "Játék elkezdődött:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:198
 msgid "When the host (not you) has started the game"
-msgstr ""
+msgstr "Amikor a játékgazda (nem te) elindította a játékot"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:199
 msgid "Turn changed:"
-msgstr ""
+msgstr "Körváltás:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:199
 msgid "When a new turn has begun"
-msgstr ""
+msgstr "Amikor egy új kör kezdődött"
 
 #. [button]: id=revert_to_defaults
 #. [button]: id=btn_reset_hotkeys
@@ -4106,11 +3877,8 @@ msgstr "Alapértelmezett"
 
 #. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:235
-#, fuzzy
-#| msgid "Reset all bindings to the default values"
 msgid "Reset all options to their default values"
-msgstr ""
-"Az összes gyorsbillentyű visszaállítása az alapértelmezett beállításokra"
+msgstr "Az összes beállítás visszaállítása alapértelmezettre"
 
 #. [label]: id=nick_title
 #: data/gui/window/mp_change_control.cfg:75
@@ -4135,98 +3903,81 @@ msgstr "Lista megtekintése"
 #. [label]
 #: data/gui/window/mp_create_game.cfg:119
 msgid "Eras:"
-msgstr ""
+msgstr "Korszakok:"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:155
 msgid "Random Faction Matchups:"
-msgstr ""
+msgstr "Véletlenszerű szövetség párosítások:"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:156
 msgid "Allow for mirror matchups when random factions are chosen."
 msgstr ""
+"Tükör párosítások engedélyezése véletlen szövetségek választása esetén."
 
 #. [label]: id=mods_header
 #: data/gui/window/mp_create_game.cfg:203
-#, fuzzy
-#| msgid "Choose Modifications"
 msgid "Modifications:"
-msgstr "Módosítók kiválasztása"
+msgstr "Módosítók:"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/window/mp_create_game.cfg:313
-#, fuzzy
-#| msgid "Use map settings"
 msgid "Use Map Settings"
 msgstr "Pálya beállításainak használata"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/window/mp_create_game.cfg:314
-#, fuzzy
-#| msgid "Use map settings"
 msgid "Use scenario specific settings"
-msgstr "Pálya beállításainak használata"
+msgstr "A küldetés egyedi beállításainak használata"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:330
-#, fuzzy
-#| msgid "Number of turns"
 msgid "Number of Turns"
 msgstr "Körök száma"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:330
 msgid "The maximum number of turns the game can last"
-msgstr ""
+msgstr "A játék maximális hossza körökben"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:331
-#, fuzzy
-#| msgid "Unlimited"
 msgid "unlimited"
-msgstr "Korlátlan"
+msgstr "korlátlan"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:334
 msgid "The amount of income each village yields per turn"
-msgstr ""
+msgstr "A falvak egyenként ennyi bevételt adnak körönként"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:334
-#, fuzzy
-#| msgid "Village gold"
 msgid "Village Gold"
 msgstr "Falu arany"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:336
 msgid "The number of unit levels each village can support"
-msgstr ""
+msgstr "Egy falu ennyi egységszint fenntartását fedezi"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:336
-#, fuzzy
-#| msgid "Village gold"
 msgid "Village Support"
-msgstr "Falu arany"
+msgstr "Falu fenntartás"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:338
-#, fuzzy
-#| msgid "Experience modifier"
 msgid "Experience Modifier"
 msgstr "Szintlépési küszöb"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:338
 msgid "The amount of experience a unit needs to advance"
-msgstr ""
+msgstr "A szintlépéshez szükséges tapasztalati pontok"
 
 #. [toggle_button]: id=fog
 #: data/gui/window/mp_create_game.cfg:372
-#, fuzzy
-#| msgid "Fog of war"
 msgid "Fog of War"
 msgstr "Köd"
 
@@ -4234,81 +3985,75 @@ msgstr "Köd"
 #: data/gui/window/mp_create_game.cfg:373
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
+"Az ellenséges egységek csak akkor láthatóak, ha valamely egységed "
+"hatótávolságában vannak"
 
 #. [toggle_button]: id=shroud
 #: data/gui/window/mp_create_game.cfg:389
 msgid "The map is unknown until your units explore it"
-msgstr ""
+msgstr "A térkép nem ismert, amíg egységeid fel nem fedezik"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/window/mp_create_game.cfg:405
-#, fuzzy
-#| msgid "Random start time"
 msgid "Random Start Time"
 msgstr "Véletlenszerű kezdési idő"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/window/mp_create_game.cfg:406
-#, fuzzy
-#| msgid "Random starting time"
 msgid "Randomize the starting time of day"
 msgstr "Véletlen kezdőnapszak"
 
 #. [toggle_button]: id=time_limit
 #: data/gui/window/mp_create_game.cfg:434
-#, fuzzy
-#| msgid "Time limit"
 msgid "Time Limit"
 msgstr "Időkorlát"
 
 #. [toggle_button]: id=time_limit
 #: data/gui/window/mp_create_game.cfg:435
 msgid "Enable custom time limits"
-msgstr ""
+msgstr "Egyedi időkorlátok engedélyezése"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:451
 msgid "Initial Limit"
-msgstr ""
+msgstr "Kezdeti időkorlát"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:451
 msgid "Longest time allowed for first turn (seconds)"
-msgstr ""
+msgstr "Az első kör leghosszabb megengedett ideje (másodpercben)"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:453
 msgid "Time for general tasks each turn (seconds)"
 msgstr ""
+"Körönként az általános feladatok elvégzésére rendelkezésre álló idő "
+"(másodpercben)"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:453
-#, fuzzy
-#| msgid "Turns:"
 msgid "Turn Bonus"
-msgstr "A körök maximális száma:"
+msgstr "Kör bónusz"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:455
 msgid "Longest time possible for any turn (seconds)"
-msgstr ""
+msgstr "Egy kör leghosszabb megengedett ideje (másodpercben)"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:455
 msgid "Reservoir"
-msgstr ""
+msgstr "Tartalék"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:457
-#, fuzzy
-#| msgid "Actions"
 msgid "Action Bonus"
-msgstr "Parancsok"
+msgstr "Cselekvés bónusz"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:457
 msgid "Time for each attack, recruit, and capture"
-msgstr ""
+msgstr "Támadásra, toborzásra és falu elfoglalásra jutó idő"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
@@ -4332,21 +4077,17 @@ msgstr "Beállítások"
 #. [slider]: id=num_players
 #: data/gui/window/mp_create_game.cfg:702
 msgid "Any"
-msgstr ""
+msgstr "∞"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:835
-#, fuzzy
-#| msgid "Random starting time"
 msgid "Random map options: "
-msgstr "Véletlen kezdőnapszak"
+msgstr "Véletlen térkép beállításai: "
 
 #. [button]: id=random_map_regenerate
 #: data/gui/window/mp_create_game.cfg:856
-#, fuzzy
-#| msgid "Generate"
 msgid "Regenerate"
-msgstr "Megrajzolás"
+msgstr "Újrarajzolás"
 
 #: data/gui/window/mp_create_game.cfg:929
 msgid "Assign sides to players at random"
@@ -4354,33 +4095,33 @@ msgstr "Véletlenszerűen alakul, hogy melyik játékos kezd"
 
 #: data/gui/window/mp_create_game.cfg:929
 msgid "Shuffle Sides"
-msgstr ""
+msgstr "Oldalak megkeverése"
 
 #: data/gui/window/mp_create_game.cfg:933
 msgid "Allow users who are not playing to watch the game"
-msgstr ""
+msgstr "A játékban nem résztvevő felhasználók is nézhetik a játékot"
 
 #: data/gui/window/mp_create_game.cfg:933
-#, fuzzy
-#| msgid "Observe"
 msgid "Observers"
-msgstr "Megfigyelés"
+msgstr "Megfigyelők"
 
 #: data/gui/window/mp_create_game.cfg:937
 msgid "Allow only registered users to join the game"
 msgstr ""
+"A játékhoz való csatlakozás engedélyezése kizárólag regisztrált felhasználók "
+"számára"
 
 #: data/gui/window/mp_create_game.cfg:937
 msgid "Registered Users Only"
-msgstr ""
+msgstr "Csak regisztrált felhasználók"
 
 #: data/gui/window/mp_create_game.cfg:941
 msgid "Strict Synchronization"
-msgstr ""
+msgstr "Szigorú szinkronizálás"
 
 #: data/gui/window/mp_create_game.cfg:941
 msgid "Stricter checks for out-of-sync errors"
-msgstr ""
+msgstr "Szigorúbb szinkronizálási hiba (OOS) ellenőrzések"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:957
@@ -4392,7 +4133,7 @@ msgstr "Játék neve:"
 #: data/gui/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/window/mp_login.cfg:143
 msgid "Password:"
-msgstr "Jelszó: "
+msgstr "Jelszó:"
 
 #. [text_box]: id=game_password
 #: data/gui/window/mp_create_game.cfg:1004
@@ -4408,17 +4149,13 @@ msgstr ""
 #: data/gui/window/mp_create_game/small_resolution.cfg:177
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
 #: src/gui/dialogs/multiplayer/lobby.cpp:481
-#, fuzzy
-#| msgid "Map size: "
 msgid "Map size:"
-msgstr "Térkép mérete: "
+msgstr "Térkép mérete:"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:116
-#, fuzzy
-#| msgid "Leader"
 msgid "Leader:"
-msgstr "Vezér"
+msgstr "Vezér:"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:170
@@ -4431,7 +4168,7 @@ msgstr "Nem:"
 #: data/gui/window/mp_faction_select.cfg:176
 #: src/gui/dialogs/multiplayer/faction_select.cpp:162
 msgid "Random"
-msgstr ""
+msgstr "Véletlen"
 
 #. [toggle_button]: id=male_toggle
 #. [row]
@@ -4449,24 +4186,18 @@ msgstr "Nő"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:210
-#, fuzzy
-#| msgid "Recruit"
 msgid "Recruits:"
-msgstr "Toborzás"
+msgstr "Toborzás:"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:289
-#, fuzzy
-#| msgid "Choose Resolution"
 msgid "Choose Your Faction"
-msgstr "Felbontás kiválasztása"
+msgstr "Szövetség kiválasztása"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:314
-#, fuzzy
-#| msgid "Starting Positions Tool"
 msgid "Starting position:"
-msgstr "Kezdőhelymegadó-eszköz"
+msgstr "Kezdő pozíció:"
 
 #. [label]
 #. [widget]: id=name
@@ -4489,12 +4220,12 @@ msgstr ""
 #. [button]: id=select_leader
 #: data/gui/window/mp_join_game.cfg:71 data/gui/window/mp_staging.cfg:70
 msgid "Select the faction and leader for this side"
-msgstr ""
+msgstr "Válaszd ki az oldalhoz tartozó szövetséget és vezért"
 
 #. [label]
 #: data/gui/window/mp_join_game.cfg:155 data/gui/window/mp_staging.cfg:157
 msgid "<b>Faction:</b>"
-msgstr ""
+msgstr "<b>Szövetség:</b>"
 
 #. [label]
 #: data/gui/window/mp_join_game.cfg:187 data/gui/window/mp_staging.cfg:190
@@ -4504,13 +4235,11 @@ msgstr "<b>Nem:</b>"
 #. [button]: id=cancel
 #: data/gui/window/mp_join_game.cfg:359
 msgid "Leave"
-msgstr ""
+msgstr "Vissza"
 
 #. [label]: id=title
 #: data/gui/window/mp_join_game.cfg:422 data/gui/window/mp_staging.cfg:552
 #: data/gui/window/mp_staging.cfg:737
-#, fuzzy
-#| msgid "Lobby"
 msgid "Game Lobby"
 msgstr "Játékcsarnok"
 
@@ -4520,7 +4249,7 @@ msgstr "Játékcsarnok"
 #: data/gui/window/mp_staging.cfg:806
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:468
 msgid "Waiting for players to join..."
-msgstr ""
+msgstr "Várakozás a játékosok csatlakozására..."
 
 #. [label]: id=title
 #: data/gui/window/mp_join_game_password_prompt.cfg:42
@@ -4540,20 +4269,18 @@ msgstr "Többjátékos kiszolgáló bejelentkezőablak"
 #. [label]
 #: data/gui/window/mp_login.cfg:41
 msgid "Login"
-msgstr "Bejelentkezés "
+msgstr "Bejelentkezés"
 
 #. [label]
 #: data/gui/window/mp_login.cfg:91 data/gui/window/mp_method_selection.cfg:76
 msgid "Login:"
-msgstr "Bejelentkezés: "
+msgstr "Bejelentkezés:"
 
 #. [toggle_button]: id=remember_password
 #: data/gui/window/mp_login.cfg:199
 #: data/gui/window/preferences/05_multiplayer.cfg:68
-#, fuzzy
-#| msgid "Save password to preferences (clear text)"
 msgid "Save password locally (encrypted)"
-msgstr "Jelszó mentése a beállítások fájljába (kódolatlan szöveg)"
+msgstr "Jelszó mentése a helyi számítógépre (titkosított)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -4571,11 +4298,13 @@ msgid ""
 "A registered account on the Wesnoth forums is required to join the official "
 "server."
 msgstr ""
+"A hivatalos kiszolgálóhoz való csatlakozáshoz szükség van egy regisztrált "
+"felhasználóra az angol nyelvű Wesnoth fórumon."
 
 #. [button]: id=register
 #: data/gui/window/mp_method_selection.cfg:136
 msgid "Sign Up"
-msgstr ""
+msgstr "Regisztrálás"
 
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:226
@@ -4594,10 +4323,8 @@ msgstr "Csatlakozás másik kiszolgálóhoz"
 
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:264
-#, fuzzy
-#| msgid "Host a game using dedicated server ‘wesnothd’"
 msgid "Host a game using a dedicated server"
-msgstr "Hálózati játék készítése a „wesnothd” kiszolgáló használatával"
+msgstr "Hálózati játék készítése dedikált kiszolgáló használatával"
 
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:283
@@ -4623,34 +4350,28 @@ msgstr "Kiválasztás"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
-#, fuzzy
-#| msgid "Change the music volume"
 msgid "Change the side's controller"
-msgstr "A zene hangerejének megváltoztatása"
+msgstr "Az oldal irányítójának megváltoztatása"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:261
-#, fuzzy
-#| msgid "Change the music volume"
 msgid "Change the AI side's behaviour"
-msgstr "A zene hangerejének megváltoztatása"
+msgstr "Az MI oldal viselkedésének megváltoztatása"
 
 #. [menu_button]: id=side_team
 #: data/gui/window/mp_staging.cfg:288
 msgid "Which team this side belongs to"
-msgstr ""
+msgstr "Melyik csapatba tartozik ez az oldal"
 
 #. [menu_button]: id=side_color
 #: data/gui/window/mp_staging.cfg:304
-#, fuzzy
-#| msgid "Show team colors"
 msgid "The team color"
-msgstr "Csapatszínek megjelenítése"
+msgstr "A csapat színe"
 
 #. [button]: id=ok
 #: data/gui/window/mp_staging.cfg:422
 msgid "I’m Ready"
-msgstr ""
+msgstr "Készen vagyok"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:310
@@ -4665,12 +4386,12 @@ msgstr "Kijelző"
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:382
 msgid "Advanced"
-msgstr "Haladó beállítások"
+msgstr "Haladó"
 
 #. [button]: id=about
 #: data/gui/window/preferences.cfg:418 data/gui/window/title_screen.cfg:463
 msgid "Display the game version and build information"
-msgstr ""
+msgstr "A játék verziójára vonatkozó információk megjelenítése"
 
 #. [label]
 #: data/gui/window/preferences/01_general.cfg:20
@@ -4705,7 +4426,7 @@ msgstr "Az egységek gyorsabban mozognak és harcolnak"
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:79
 msgid "Acceleration factor:"
-msgstr ""
+msgstr "Gyorsítási szorzó:"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:84
@@ -4713,18 +4434,19 @@ msgid ""
 "Speed at which unit moves and animations play when ‘Accelerated speed’ is "
 "enabled or when Shift is held down in-game"
 msgstr ""
+"A sebesség, amellyel az egységek lépései és az animációk lejátszása történik "
+"amikor a „Megnövelt sebesség” opció be van kapcsolva vagy a Shift billentyűt "
+"nyomva tartják játék közben"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:100
 msgid "Disable automatic moves"
-msgstr ""
+msgstr "Automatikus lépések letiltása"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:101
-#, fuzzy
-#| msgid "Play a bell sound at the beginning of your turn"
 msgid "Do not allow automatic movements at the beginning of a turn"
-msgstr "Egy hangjelzést ad le a köröd kezdetekor"
+msgstr "A kör eleji automatikus lépések letiltása"
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/window/preferences/01_general.cfg:114
@@ -4753,8 +4475,6 @@ msgstr "A szövetségesek terveinek elrejtése"
 
 #. [toggle_button]: id=whiteboard_hide_allies
 #: data/gui/window/preferences/01_general.cfg:143
-#, fuzzy
-#| msgid "Hides allies’ Planning Mode plans in multiplayer games"
 msgid "Hide allies’ Planning Mode plans in multiplayer games"
 msgstr "Elrejti a szövetségesek lépésterveit a többjátékos mérkőzéseken"
 
@@ -4768,7 +4488,7 @@ msgstr "A mozgás félbehagyása, ha egy szövetséges tűnik fel a láthatáron
 msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr ""
 "Ha egy szövetséges egység kerül látótávolságba, az egységed mozgása "
-"félbeszakad."
+"félbeszakad"
 
 #. [toggle_button]: id=save_replays
 #: data/gui/window/preferences/01_general.cfg:172
@@ -4777,9 +4497,6 @@ msgstr "A visszajátszások mentése a küldetések végén"
 
 #. [toggle_button]: id=save_replays
 #: data/gui/window/preferences/01_general.cfg:173
-#, fuzzy
-#| msgid ""
-#| "Saves replays of games on victory in all modes and defeat in multiplayer"
 msgid "Save replays of games on victory in all modes and defeat in multiplayer"
 msgstr ""
 "Visszajátszások mentése győzelem esetén, valamint többjátékos játszmánál "
@@ -4792,10 +4509,6 @@ msgstr "Az automatikusan készült állásmentések törlése a küldetések vé
 
 #. [toggle_button]: id=delete_saves
 #: data/gui/window/preferences/01_general.cfg:187
-#, fuzzy
-#| msgid ""
-#| "Deletes previous auto-saves on victory in all modes and defeat in "
-#| "multiplayer"
 msgid ""
 "Delete previous auto-saves on victory in all modes and defeat in multiplayer"
 msgstr ""
@@ -4804,10 +4517,8 @@ msgstr ""
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:197
-#, fuzzy
-#| msgid "Maximum auto-saves: "
 msgid "Maximum auto-saves:"
-msgstr "Automatikus mentések számának maximuma: "
+msgstr "Automatikus mentések száma legfeljebb:"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:201
@@ -4816,22 +4527,18 @@ msgstr "Az automatikus mentések maximális számának korlátozása"
 
 #. [button]: id=cachemg
 #: data/gui/window/preferences/01_general.cfg:217
-#, fuzzy
-#| msgid "Cache:"
 msgid "Cache"
-msgstr "Gyorsítótár:"
+msgstr "Gyorsítótár"
 
 #. [button]: id=cachemg
 #: data/gui/window/preferences/01_general.cfg:218
-#, fuzzy
-#| msgid "Change the sample rate"
 msgid "Manage the game WML cache"
-msgstr "Mintavételi frekvencia megváltoztatása"
+msgstr "A játék WML gyorsítótárának kezelése"
 
 #. [label]
 #: data/gui/window/preferences/02_hotkeys.cfg:25
 msgid "Categories:"
-msgstr ""
+msgstr "Kategóriák:"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/preferences/02_hotkeys.cfg:81
@@ -4840,40 +4547,38 @@ msgstr "Cselekvés"
 
 #. [toggle_button]: id=sort_1
 #: data/gui/window/preferences/02_hotkeys.cfg:93
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Hotkey"
-msgstr "Gyorsbillentyűk"
+msgstr "Gyorsbill."
 
 #. [toggle_button]: id=sort_2
 #: data/gui/window/preferences/02_hotkeys.cfg:104
 msgid "game_hotkeys^G"
-msgstr ""
+msgstr "J"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/window/preferences/02_hotkeys.cfg:105
 msgid "Available in game"
-msgstr ""
+msgstr "Elérhető a játékban"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/preferences/02_hotkeys.cfg:116
 msgid "editor_hotkeys^E"
-msgstr ""
+msgstr "Sz"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/preferences/02_hotkeys.cfg:117
 msgid "Available in editor"
-msgstr ""
+msgstr "Elérhető a szerkesztőben"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:128
 msgid "titlescreen_hotkeys^T"
-msgstr ""
+msgstr "F"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:129
 msgid "Available at main menu"
-msgstr ""
+msgstr "Elérhető a főmenüben"
 
 #. [button]: id=btn_add_hotkey
 #: data/gui/window/preferences/02_hotkeys.cfg:241
@@ -4887,17 +4592,13 @@ msgstr "Gyorsbillentyű törlése"
 
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:20
-#, fuzzy
-#| msgid "Change Resolution"
 msgid "Resolution:"
-msgstr "Felbontás megváltoztatása"
+msgstr "Felbontás:"
 
 #. [menu_button]: id=resolution_set
 #: data/gui/window/preferences/03_display.cfg:32
-#, fuzzy
-#| msgid "Change the sample rate"
 msgid "Change the game resolution"
-msgstr "Mintavételi frekvencia megváltoztatása"
+msgstr "Felbontás megváltoztatása"
 
 #. [toggle_button]: id=fullscreen
 #: data/gui/window/preferences/03_display.cfg:48
@@ -4907,7 +4608,7 @@ msgstr "Teljes képernyő"
 #. [toggle_button]: id=fullscreen
 #: data/gui/window/preferences/03_display.cfg:49
 msgid "Toggle between fullscreen and window mode"
-msgstr ""
+msgstr "Váltás teljes képernyős és ablakos mód között"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:68
@@ -4917,7 +4618,7 @@ msgstr "Szálló címkék megjelenítése"
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:69
 msgid "Show damage and healing amounts above a unit"
-msgstr ""
+msgstr "Sebzések és gyógyulások mértékének mutatása az egységek felett"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:82
@@ -4940,8 +4641,6 @@ msgstr "Rács megjelenítése"
 
 #. [toggle_button]: id=show_grid
 #: data/gui/window/preferences/03_display.cfg:99
-#, fuzzy
-#| msgid "Overlay a grid onto the map"
 msgid "Overlay a grid over the map"
 msgstr "Fektessen egy rácsot a térképre"
 
@@ -4957,17 +4656,13 @@ msgstr "Terepanimációk megjelenítése"
 
 #. [toggle_button]: id=animate_water
 #: data/gui/window/preferences/03_display.cfg:128
-#, fuzzy
-#| msgid "Animate map"
 msgid "Animate water"
-msgstr "Térkép animálása"
+msgstr "Víz animálása"
 
 #. [toggle_button]: id=animate_water
 #: data/gui/window/preferences/03_display.cfg:129
-#, fuzzy
-#| msgid "Display animated terrain graphics"
 msgid "Display animated water graphics (can be slow)"
-msgstr "Terepanimációk megjelenítése"
+msgstr "A víz animált grafikájának megjelenítése (lassabb lehet)"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:142
@@ -4976,8 +4671,6 @@ msgstr "Álló egységek animálása"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:143
-#, fuzzy
-#| msgid "Continuously animate standing units in the battlefield"
 msgid "Continuously animate standing units on the battlefield"
 msgstr "A csatatéren álló egységek folyamatos animálása"
 
@@ -5006,17 +4699,17 @@ msgstr ""
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:229
 msgid "Font Scaling:"
-msgstr ""
+msgstr "Betű skálázás:"
 
 #. [slider]: id=scaling_slider
 #: data/gui/window/preferences/03_display.cfg:244
 msgid "Set the scaling factor of fonts"
-msgstr ""
+msgstr "A betűk skálázási szorzóját állítja be"
 
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:275
 msgid "Limit FPS"
-msgstr ""
+msgstr "FPS limit"
 
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:276
@@ -5024,6 +4717,8 @@ msgid ""
 "Disabling this increases CPU usage to 100% but may slightly improve "
 "performance at high resolutions"
 msgstr ""
+"Ezen beállítás letiltása 100%-ra növeli a CPU használatot, de kissé "
+"növelheti a teljesítményt nagyobb felbontásokon"
 
 #. [button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:291
@@ -5032,10 +4727,8 @@ msgstr "Téma"
 
 #. [button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:292
-#, fuzzy
-#| msgid "Change the sample rate"
 msgid "Change the in-game theme"
-msgstr "Mintavételi frekvencia megváltoztatása"
+msgstr "A játékon belüli téma megváltoztatása"
 
 #. [label]
 #: data/gui/window/preferences/04_sound.cfg:38
@@ -5045,12 +4738,12 @@ msgstr "Hangerő:"
 #. [toggle_button]: id=sound_toggle_stop_music_in_background
 #: data/gui/window/preferences/04_sound.cfg:82
 msgid "Pause music on focus loss"
-msgstr ""
+msgstr "Zene szüneteltetése, mikor a játék háttérbe kerül"
 
 #. [toggle_button]: id=sound_toggle_stop_music_in_background
 #: data/gui/window/preferences/04_sound.cfg:83
 msgid "Pause the music when you switch to any other window"
-msgstr ""
+msgstr "Zene szüneteltetése, amikor egy másik ablakra váltasz"
 
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:104
@@ -5099,8 +4792,6 @@ msgstr "A csengő hangerejének megváltoztatása"
 
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:137
-#, fuzzy
-#| msgid "Turn menu and button sounds on/off"
 msgid "Turn menu and button sounds on/off"
 msgstr "Menü és gomb hangok be/ki"
 
@@ -5111,24 +4802,18 @@ msgstr "Kezelői felület hangjai"
 
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:138
-#, fuzzy
-#| msgid "Change the sound volume for button clicks, etc."
 msgid "Change the sound volume for button clicks, etc."
-msgstr "A gombnyomások és egyéb események hangerejének megváltoztatása"
+msgstr "A gombnyomások hangerejének megváltoztatása"
 
 #. [label]
 #: data/gui/window/preferences/05_multiplayer.cfg:20
-#, fuzzy
-#| msgid "Chat lines: "
 msgid "Chat lines:"
-msgstr "Csevegés sorai: "
+msgstr "Csevegés sorai:"
 
 #. [slider]: id=chat_lines
 #: data/gui/window/preferences/05_multiplayer.cfg:36
-#, fuzzy
-#| msgid "Set the amount of chat lines shown"
 msgid "Set the number of chat lines shown"
-msgstr "Add meg a csevegés sorainak mennyiségét"
+msgstr "Add meg a csevegés sorainak számát"
 
 #. [toggle_button]: id=chat_timestamps
 #: data/gui/window/preferences/05_multiplayer.cfg:52
@@ -5148,14 +4833,12 @@ msgstr "Ha nincs bejelölve, akkor az elmentett jelszó kilépéskor törlődik"
 #. [toggle_button]: id=lobby_whisper_friends_only
 #: data/gui/window/preferences/05_multiplayer.cfg:84
 msgid "Accept whispers from friends only"
-msgstr ""
+msgstr "Csak barátoktól fogad el súgást"
 
 #. [toggle_button]: id=lobby_whisper_friends_only
 #: data/gui/window/preferences/05_multiplayer.cfg:85
-#, fuzzy
-#| msgid "Add this username to your friends list"
 msgid "Only accept whisper messages from people on your friends list"
-msgstr "A megadott felhasználó felvétele a barátaim közé"
+msgstr "Súgó üzenetek elfogadása csak a barátlistán szereplő felhasználóktól"
 
 #. [toggle_button]: id=lobby_joins_none
 #: data/gui/window/preferences/05_multiplayer.cfg:101
@@ -5196,21 +4879,17 @@ msgstr ""
 #. [button]: id=mp_alerts
 #: data/gui/window/preferences/05_multiplayer.cfg:149
 msgid "Alerts"
-msgstr ""
+msgstr "Figyelmeztetések"
 
 #. [button]: id=mp_alerts
 #: data/gui/window/preferences/05_multiplayer.cfg:150
-#, fuzzy
-#| msgid "Configure the game’s settings"
 msgid "Configure multiplayer notification settings"
-msgstr "A játék beállítása"
+msgstr "Többjátékos értesítések beállításai"
 
 #. [button]: id=mp_wesnothd
 #: data/gui/window/preferences/05_multiplayer.cfg:162
-#, fuzzy
-#| msgid "Send Private Message"
 msgid "Server Executable"
-msgstr "Privát üzenet küldése"
+msgstr "Kiszolgáló alkalmazás"
 
 #. [button]: id=mp_wesnothd
 #: data/gui/window/preferences/05_multiplayer.cfg:163
@@ -5230,16 +4909,12 @@ msgstr ""
 
 #. [button]: id=add_ignored
 #: data/gui/window/preferences/05_multiplayer.cfg:277
-#, fuzzy
-#| msgid ""
-#| "Add this username to your ignores list (add optional reason, e.g., "
-#| "'player_name reason ignored')"
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
 "'player_name reason ignored')"
 msgstr ""
 "A megadott felhasználó felvétele a mellőzöttek közé (egyéb információk "
-"hozzáadása a „játékos_neve megjegyzés” formában lehetséges)"
+"hozzáadása a „játékos_neve mellőzés oka” formában lehetséges)"
 
 #. [button]: id=remove
 #: data/gui/window/preferences/05_multiplayer.cfg:290
@@ -5249,7 +4924,7 @@ msgstr "A megadott felhasználó eltávolítása a listáról"
 #. [label]: id=no_friends_notice
 #: data/gui/window/preferences/05_multiplayer.cfg:311
 msgid "You have not befriended or ignored any other players."
-msgstr ""
+msgstr "Nem jelöltél barátnak vagy mellőzöttnek egyetlen játékost sem."
 
 #. [button]: id=open
 #: data/gui/window/screenshot_notification.cfg:49
@@ -5259,7 +4934,7 @@ msgstr "Megnyitás"
 #. [button]: id=open
 #: data/gui/window/screenshot_notification.cfg:50
 msgid "Open this file with an external application"
-msgstr "A kiválasztott fájl megnyitása egy külső alkalmazással."
+msgstr "A kiválasztott fájl megnyitása egy külső alkalmazással"
 
 #. [button]: id=browse_dir
 #: data/gui/window/screenshot_notification.cfg:187
@@ -5275,87 +4950,69 @@ msgstr "A képernyőképeket tartalmazó könyvtár megnyitása fájlkezelővel"
 #. [button]: id=save
 #: data/gui/window/screenshot_notification.cfg:203
 #: src/gui/dialogs/file_dialog.cpp:185
-#, fuzzy
-#| msgid "Save Map"
 msgid "Save"
-msgstr "Pálya mentése"
+msgstr "Mentés"
 
 #. [label]
 #: data/gui/window/select_orb_colors.cfg:80
 msgid "Choose Orb/Minimap Colors"
-msgstr ""
+msgstr "Jelzőgömb/Mini-térkép színeinek kiválasztása"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:84
-#, fuzzy
-#| msgid "Show Enemy Moves"
 msgid "Show unmoved orb"
-msgstr "Ellenséges lépések mutatása"
+msgstr "Nem lépett egység jelzőgömb színének mutatása"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:85
-#, fuzzy
-#| msgid "Show team colors"
 msgid "Show partial moved orb"
-msgstr "Csapatszínek megjelenítése"
+msgstr "Továbbléptethető egység jelzőgömb színének mutatása"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:86
-#, fuzzy
-#| msgid "Show team colors"
 msgid "Show moved orb"
-msgstr "Csapatszínek megjelenítése"
+msgstr "Lépését befejezett egység jelzőgömb színének mutatása"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:87
-#, fuzzy
-#| msgid "Show all lobby joins"
 msgid "Show ally orb"
-msgstr "Értesítés akkor, ha új játékos lép a játékcsarnokba"
+msgstr "Szövetséges egység jelzőgömb színének mutatása"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:88
-#, fuzzy
-#| msgid "Show Enemy Moves"
 msgid "Show enemy orb"
-msgstr "Ellenséges lépések mutatása"
+msgstr "Ellenséges egység jelzőgömb színének mutatása"
 
 #. [label]
 #: data/gui/window/sp_options_configure.cfg:44
-#, fuzzy
-#| msgid "Configuration:"
 msgid "Configure Options"
-msgstr "Beállítások:"
+msgstr "Beállítások"
 
 #. [label]
 #: data/gui/window/sp_options_configure.cfg:62
 msgid "Configure settings for the selected custom modifications."
-msgstr ""
+msgstr "Add meg a kiválasztott egyedi módosítók beállításait."
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:129
-#, fuzzy
-#| msgid "Image"
 msgid "Damage"
-msgstr "Kép"
+msgstr "Sérülés"
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:141
 msgid "Overall"
-msgstr ""
+msgstr "Összesen"
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:153
-#, fuzzy
-#| msgid "Turn"
 msgid "This Turn"
-msgstr "Kör"
+msgstr "Ez a kör"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/statistics_dialog.cfg:419 src/hotkey/hotkey_command.cpp:121
 msgid "Statistics"
-msgstr "Statisztikák"
+msgstr "Statisztika"
 
 #. [button]: id=cancel
 #: data/gui/window/story_viewer.cfg:131
@@ -5365,44 +5022,38 @@ msgstr "Kihagyás"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/window/surrender_quit.cfg:40 src/hotkey/hotkey_command.cpp:124
-#, fuzzy
-#| msgid "Create Game"
 msgid "Surrender Game"
-msgstr "Játék létrehozása"
+msgstr "Játék feladása"
 
 #. [label]: id=lblMessage
 #: data/gui/window/surrender_quit.cfg:60
-#, fuzzy
-#| msgid "Do you really want to delete this game?"
 msgid "Do you really want to surrender and quit the game?"
-msgstr "Biztosan törölni akarod ezt az játékot?"
+msgstr "Biztosan feladod ezt a játékot és kilépsz?"
 
 #. [button]: id=quit_and_surrender
 #: data/gui/window/surrender_quit.cfg:85
 msgid "Surrender & Quit"
-msgstr ""
+msgstr "Feladás és kilépés"
 
 #. [label]: id=lblTitle
 #: data/gui/window/synced_choice_wait.cfg:40
 msgid "Waiting..."
-msgstr ""
+msgstr "Várakozás..."
 
 #. [label]: id=lblMessage
 #: data/gui/window/synced_choice_wait.cfg:60
 msgid "Waiting for remote input"
-msgstr ""
+msgstr "Várakozás távoli bemenetre"
 
 #. [button]: id=btn_quit_game
 #: data/gui/window/synced_choice_wait.cfg:96
-#, fuzzy
-#| msgid "Quit Game"
 msgid "Quit game"
 msgstr "Kilépés a játékból"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:21
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:33
@@ -5412,43 +5063,37 @@ msgstr "Kép"
 #. [label]
 #: data/gui/window/terrain_layers.cfg:57
 msgid "Loc"
-msgstr ""
+msgstr "Hely"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:69
-#, fuzzy
-#| msgid "player"
 msgid "Layer"
-msgstr "játékos"
+msgstr "Réteg"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:81
 msgid "Base.x"
-msgstr ""
+msgstr "Alap.x"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:93
 msgid "Base.y"
-msgstr ""
+msgstr "Alap.y"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:105
-#, fuzzy
-#| msgid "Centered"
 msgid "Center"
-msgstr "Középre"
+msgstr "Közép"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:339
-#, fuzzy
-#| msgid "Draw Terrain Codes"
 msgid "Terrain Layers"
-msgstr "Terepkódok megjelenítése"
+msgstr "Terepkódok"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:384
 msgid "Flags"
-msgstr ""
+msgstr "Zászlók"
 
 #. [label]
 #: data/gui/window/theme_list.cfg:51
@@ -5513,7 +5158,7 @@ msgstr "Elmentett játék betöltése"
 #. [grid]
 #: data/gui/window/title_screen.cfg:255
 msgid "Add-ons"
-msgstr "Kiegészítések"
+msgstr "Kiegészítők"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:255
@@ -5522,17 +5167,13 @@ msgstr "Játékosok által készített hadjáratok, korszakok, pályák letölt�
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:256
-#, fuzzy
-#| msgid "Forest"
 msgid "Cores"
-msgstr "Erdő"
+msgstr "Játékmagok"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:256
-#, fuzzy
-#| msgid "Selected game"
 msgid "Select the game core data"
-msgstr "A kiválasztott játék"
+msgstr "Válaszd ki a játékmagot"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:257
@@ -5608,7 +5249,7 @@ msgstr "Faj"
 #. [toggle_button]: id=sort_2
 #: data/gui/window/unit_list.cfg:107
 msgid "Moves"
-msgstr ""
+msgstr "Lépések"
 
 #. [label]
 #: data/gui/window/unit_list.cfg:121
@@ -5624,7 +5265,7 @@ msgstr "ÉP"
 #. [toggle_button]: id=sort_2
 #: data/gui/window/unit_list.cfg:149 data/gui/window/unit_recall.cfg:61
 msgid "Lvl"
-msgstr "sz"
+msgstr "Sz"
 
 #. [toggle_button]: id=sort_5
 #. [toggle_button]: id=sort_3
@@ -5662,7 +5303,7 @@ msgstr "Egység átnevezése"
 #. [button]: id=dismiss
 #: data/gui/window/unit_recall.cfg:405
 msgid "Dismiss"
-msgstr "Feloszlatás"
+msgstr "Elbocsátás"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -5698,63 +5339,63 @@ msgstr "Részletek:"
 
 #: src/build_info.cpp:260
 msgid "feature^Experimental OpenMP support"
-msgstr ""
+msgstr "Kísérleti OpenMP támogatás"
 
 #: src/build_info.cpp:265
 msgid "feature^JPG screenshots"
-msgstr ""
+msgstr "JPG képernyőképek"
 
 #: src/build_info.cpp:272
 msgid "feature^Lua console completion"
-msgstr ""
+msgstr "Lua konzol kiegészítő"
 
 #: src/build_info.cpp:277
 msgid "feature^Legacy bidirectional rendering"
-msgstr ""
+msgstr "Régi kétirányú renderelés"
 
 #: src/build_info.cpp:284
 msgid "feature^D-Bus notifications back end"
-msgstr ""
+msgstr "D-Bus értesítéskezelő"
 
 #: src/build_info.cpp:293
 msgid "feature^Win32 notifications back end"
-msgstr ""
+msgstr "Win32 értesítéskezelő"
 
 #: src/build_info.cpp:299
 msgid "feature^Cocoa notifications back end"
-msgstr ""
+msgstr "Cocoa értesítéskezelő"
 
 #: src/desktop/paths.cpp:96
 msgid "filesystem_path_system^Volumes"
-msgstr ""
+msgstr "Kötetek"
 
 #: src/desktop/paths.cpp:200
 msgid "filesystem_path_game^Game executables"
-msgstr ""
+msgstr "Játék programfájlok"
 
 #: src/desktop/paths.cpp:204
 msgid "filesystem_path_game^Game data"
-msgstr ""
+msgstr "Játékadatok"
 
 #: src/desktop/paths.cpp:208
 msgid "filesystem_path_game^User data"
-msgstr ""
+msgstr "Felhasználói adatok"
 
 #: src/desktop/paths.cpp:212
 msgid "filesystem_path_game^User preferences"
-msgstr ""
+msgstr "Felhasználói beállítások"
 
 #: src/desktop/paths.cpp:225
 msgid "filesystem_path_system^Home"
-msgstr ""
+msgstr "Saját mappa"
 
 #: src/desktop/paths.cpp:234
 msgid "filesystem_path_system^Root"
-msgstr ""
+msgstr "Gyökér"
 
 #: src/desktop/version.cpp:274
 msgid "operating_system^<unknown>"
-msgstr ""
+msgstr "<ismeretlen>"
 
 #: src/font/marked-up_text.cpp:402
 msgid "The maximum text width is less than 1."
@@ -5769,42 +5410,42 @@ msgstr "A szöveg érvénytelen elemet tartalmaz: "
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:251
 msgid "conjunct pair^$first and $second"
-msgstr ""
+msgstr "$first és $second"
 
 #. TRANSLATORS: Formats the first two elements of a conjunctive list.
 #: src/formula/string_utils.cpp:254
 msgid "conjunct start^$first, $second"
-msgstr ""
+msgstr "$first, $second"
 
 #. TRANSLATORS: Formats successive elements of a conjunctive list.
 #: src/formula/string_utils.cpp:258
 msgid "conjunct mid^$prefix, $next"
-msgstr ""
+msgstr "$prefix, $next"
 
 #. TRANSLATORS: Formats the final element of a conjunctive list.
 #: src/formula/string_utils.cpp:261
 msgid "conjunct end^$prefix, and $last"
-msgstr ""
+msgstr "$prefix és $last"
 
 #. TRANSLATORS: Formats a two-element disjunctive list.
 #: src/formula/string_utils.cpp:269
 msgid "disjunct pair^$first or $second"
-msgstr ""
+msgstr "$first vagy $second"
 
 #. TRANSLATORS: Formats the first two elements of a disjunctive list.
 #: src/formula/string_utils.cpp:272
 msgid "disjunct start^$first, $second"
-msgstr ""
+msgstr "$first, $second"
 
 #. TRANSLATORS: Formats successive elements of a disjunctive list.
 #: src/formula/string_utils.cpp:276
 msgid "disjunct mid^$prefix, $next"
-msgstr ""
+msgstr "$prefix, $next"
 
 #. TRANSLATORS: Formats the final element of a disjunctive list.
 #: src/formula/string_utils.cpp:279
 msgid "disjunct end^$prefix, or $last"
-msgstr ""
+msgstr "$prefix vagy $last"
 
 #: src/gui/core/canvas.cpp:612
 msgid "Line doesn't fit on canvas."
@@ -5815,10 +5456,8 @@ msgid "Rectangle doesn't fit on canvas."
 msgstr "A téglalap nem illeszkedik a vászonra."
 
 #: src/gui/core/canvas.cpp:814
-#, fuzzy
-#| msgid "Rectangle doesn't fit on canvas."
 msgid "Rounded Rectangle doesn't fit on canvas."
-msgstr "A téglalap nem illeszkedik a vászonra."
+msgstr "A lekerekített téglalap nem illeszkedik a vászonra."
 
 #: src/gui/core/canvas.cpp:923 src/gui/core/canvas.cpp:928
 #: src/gui/core/canvas.cpp:933 src/gui/core/canvas.cpp:939
@@ -5869,7 +5508,7 @@ msgstr "Az oszlopok száma helytelen."
 
 #: src/gui/dialogs/addon/manager.cpp:189
 msgid "addons_view^All Add-ons"
-msgstr "Minden kiegészítés"
+msgstr "Minden kiegészítő"
 
 #: src/gui/dialogs/addon/manager.cpp:190
 msgid "addons_view^Installed"
@@ -5880,10 +5519,8 @@ msgid "addons_view^Upgradable"
 msgstr "Frissíthető"
 
 #: src/gui/dialogs/addon/manager.cpp:192
-#, fuzzy
-#| msgid "addons_view^Installed"
 msgid "addons_view^Publishable"
-msgstr "Telepítve"
+msgstr "Közzétehető"
 
 #: src/gui/dialogs/addon/manager.cpp:193
 msgid "addons_view^Not Installed"
@@ -5922,16 +5559,12 @@ msgid "addons_of_type^MP factions"
 msgstr "Többjátékos szövetségek"
 
 #: src/gui/dialogs/addon/manager.cpp:205
-#, fuzzy
-#| msgid "addons_of_type^MP modifications"
 msgid "addons_of_type^Modifications"
-msgstr "Többjátékos módosítók"
+msgstr "Módosítók"
 
 #: src/gui/dialogs/addon/manager.cpp:206
-#, fuzzy
-#| msgid "addons_of_type^Resources"
 msgid "addons_of_type^Cores"
-msgstr "Források"
+msgstr "Játékmagok"
 
 #: src/gui/dialogs/addon/manager.cpp:207
 msgid "addons_of_type^Resources"
@@ -5947,37 +5580,33 @@ msgstr "Ismeretlen"
 
 #: src/gui/dialogs/addon/manager.cpp:214
 msgid "addons_order^Name ($order)"
-msgstr ""
+msgstr "Név ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:217
 msgid "addons_order^Author ($order)"
-msgstr ""
+msgstr "Készítő ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:220
 msgid "addons_order^Size ($order)"
-msgstr ""
+msgstr "Méret ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:223
 msgid "addons_order^Downloads ($order)"
-msgstr ""
+msgstr "Letöltések ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:226
-#, fuzzy
-#| msgid "addons_of_type^Resources"
 msgid "addons_order^Type ($order)"
-msgstr "Források"
+msgstr "Típus ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:229
-#, fuzzy
-#| msgid "addons_of_type^Resources"
 msgid "addons_order^Last updated ($datelike_order)"
-msgstr "Források"
+msgstr "Utoljára frissítve ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:232
 #, fuzzy
-#| msgid "addons_of_type^Resources"
+#| msgid "addons_order^Last updated ($datelike_order)"
 msgid "addons_order^First uploaded ($datelike_order)"
-msgstr "Források"
+msgstr "Utoljára frissítve ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:261 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -6020,16 +5649,12 @@ msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "Közzé téve ($local_version|. verzió telepítve), a kiszolgálón elavult"
 
 #: src/gui/dialogs/addon/manager.cpp:292 src/gui/widgets/addon_list.cpp:114
-#, fuzzy
-#| msgid "addon_state^Installed ($local_version|), outdated on server"
 msgid "addon_state^Installed, not ready to publish"
-msgstr "Telepítve ($local_version|.), a kiszolgálón elavult"
+msgstr "Telepítve, nem közzétehető"
 
 #: src/gui/dialogs/addon/manager.cpp:293 src/gui/widgets/addon_list.cpp:114
-#, fuzzy
-#| msgid "addon_state^Published"
 msgid "addon_state^Ready to publish"
-msgstr "Közzé téve"
+msgstr "Közzétehető"
 
 #: src/gui/dialogs/addon/manager.cpp:297 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
@@ -6052,7 +5677,7 @@ msgstr "Növekvő sorrendben"
 #. TRANSLATORS: Sorting order of dates, oldest first
 #: src/gui/dialogs/addon/manager.cpp:365
 msgid "oldest to newest"
-msgstr ""
+msgstr "növekvő"
 
 #: src/gui/dialogs/addon/manager.cpp:368
 #, fuzzy
@@ -6063,7 +5688,7 @@ msgstr "Csökkenő sorrendben"
 #. TRANSLATORS: Sorting order of dates, newest first
 #: src/gui/dialogs/addon/manager.cpp:370
 msgid "newest to oldest"
-msgstr ""
+msgstr "csökkenő"
 
 #: src/gui/dialogs/addon/manager.cpp:388 src/gui/dialogs/chat_log.cpp:420
 #: src/gui/dialogs/game_cache_options.cpp:105
@@ -6074,107 +5699,108 @@ msgstr ""
 #: src/gui/dialogs/wml_error.cpp:229
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
+"Vágólap támogatás nem található, vedd fel a kapcsolatot a csomag készítőjével"
 
 #: src/gui/dialogs/addon/manager.cpp:456
 msgid "addons^Back to List"
-msgstr ""
+msgstr "Vissza a listához"
 
 #: src/gui/dialogs/addon/manager.cpp:468
 msgid "An error occurred while downloading the add-ons list from the server."
-msgstr ""
+msgstr "Hiba történt a kiegészítők listájának letöltése közben."
 
 #: src/gui/dialogs/addon/manager.cpp:504
-#, fuzzy
-#| msgid "No description available."
 msgid "No Add-ons Available"
-msgstr "Nincs elérhető leírás."
+msgstr "Nincs elérhető kiegészítő"
 
 #: src/gui/dialogs/addon/manager.cpp:504
 msgid "There are no add-ons available for download from this server."
-msgstr ""
+msgstr "Nincsenek letölthető kiegészítők ezen a kiszolgálón."
 
 #: src/gui/dialogs/addon/manager.cpp:679
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr ""
+"Úgy néz ki, hogy az alábbi kiegészítőkhöz közzétételi vagy verziókezelési "
+"információk találhatók ezen a gépen, így nem lesznek eltávolítva:"
 
 #: src/gui/dialogs/addon/manager.cpp:687
 msgid "The following add-on could not be deleted properly:"
-msgstr ""
+msgstr "Az alábbi kiegészítőt nem sikerült törölni:"
 
 #: src/gui/dialogs/addon/manager.cpp:733
 msgid "Warning"
-msgstr "Figyelmeztetés "
+msgstr "Figyelmeztetés"
 
 #: src/gui/dialogs/addon/manager.cpp:734
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 msgstr ""
+"A kiegészítő távoli kiszolgálón található verziója nagyobb vagy egyenlő a "
+"feltöltendőjénél. Biztos, hogy folytatod?"
 
 #: src/gui/dialogs/addon/manager.cpp:743
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
+"Érvénytelen ikon útvonal. Győződj meg róla, hogy az útvonal egy érvényes "
+"képre mutat."
 
 #: src/gui/dialogs/addon/manager.cpp:746 src/gui/dialogs/addon/manager.cpp:749
 #: src/gui/dialogs/addon/manager.cpp:788
 msgid "The server responded with an error:"
-msgstr ""
+msgstr "A kiszolgáló a következő hibával válaszolt:"
 
 #: src/gui/dialogs/addon/manager.cpp:747
 msgid "Terms"
-msgstr ""
+msgstr "Feltételek"
 
 #: src/gui/dialogs/addon/manager.cpp:764 src/gui/dialogs/addon/manager.cpp:791
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:507
 msgid "Response"
-msgstr ""
+msgstr "Válasz"
 
 #: src/gui/dialogs/addon/manager.cpp:776
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
+"„$addon|” törlése végérvényesen törölni fogja a letöltéseinek és "
+"feltöltéseinek számát a kiegészítő-kiszolgálón. Biztos, hogy folytatod?"
 
 #: src/gui/dialogs/addon/manager.cpp:808
-#, fuzzy
-#| msgid "Do you really want to delete this game?"
 msgid "Do you want to uninstall '$addon|'?"
-msgstr "Biztosan törölni akarod ezt az játékot?"
+msgstr "Törölni akarod ezt a kiegészítőt: '$addon|'?"
 
 #: src/gui/dialogs/advanced_graphics_options.cpp:75
 msgid "No matching widget found for scaling option"
-msgstr ""
+msgstr "Nem található illeszkedő widget a skálázási beállításhoz"
 
 #: src/gui/dialogs/attack_predictions.cpp:116
-#, fuzzy
-#| msgid "Choose Resolution"
 msgid "No usable weapon"
-msgstr "Felbontás kiválasztása"
+msgstr "Nincs használható fegyver"
 
 #: src/gui/dialogs/attack_predictions.cpp:188
 msgid "Defender resistance vs"
-msgstr ""
+msgstr "Védekező ellenállása vs."
 
 #: src/gui/dialogs/attack_predictions.cpp:190
 msgid "Attacker vulnerability vs"
-msgstr ""
+msgstr "Támadó sebezhetősége vs."
 
 #: src/gui/dialogs/campaign_selection.cpp:274
 #: src/gui/dialogs/multiplayer/lobby.cpp:462
-#, fuzzy
-#| msgid "Choose Modifications"
 msgid "active_modifications^None"
-msgstr "Módosítók kiválasztása"
+msgstr "Nincs"
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:66
 msgid "$requester requires the following modifications to be enabled:"
-msgstr "A „$requester” kiegészítés az alábbi módosítók bekapcsolását igényli:"
+msgstr "A „$requester” kiegészítő az alábbi módosítók bekapcsolását igényli:"
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:70
 msgid "$requester requires the following modifications to be disabled:"
-msgstr "A „$requester” kiegészítés az alábbi módosítók kikapcsolását igényli:"
+msgstr "A „$requester” kiegészítő az alábbi módosítók kikapcsolását igényli:"
 
 #: src/gui/dialogs/depcheck_select_new.cpp:73
 msgid ""
@@ -6218,59 +5844,57 @@ msgstr "Sziget"
 
 #: src/gui/dialogs/file_dialog.cpp:109
 msgid "Find File"
-msgstr ""
+msgstr "Fájl keresése"
 
 #: src/gui/dialogs/file_dialog.cpp:185
 msgid "Open"
-msgstr ""
+msgstr "Megnyit"
 
 #: src/gui/dialogs/file_dialog.cpp:306
-#, fuzzy
-#| msgid "Save already exists. Do you want to overwrite it?"
 msgid "The file already exists. Do you wish to overwrite it?"
-msgstr "Már van ilyen mentés. Felülírjam?"
+msgstr "Már van ilyen fájl. Felülírjam?"
 
 #: src/gui/dialogs/file_dialog.cpp:330
 msgid "The file or folder $path cannot be created."
-msgstr ""
+msgstr "Nem sikerült létrehozni a fájlt vagy mappát: $path."
 
 #: src/gui/dialogs/file_dialog.cpp:336
 msgid "The file or folder $path does not exist."
-msgstr ""
+msgstr "A fájl vagy mappa nem létezik: $path."
 
 #: src/gui/dialogs/file_dialog.cpp:711
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
 msgstr ""
+"Nem sikerült új mappát létrehozni itt: $path|. Győződj meg róla, hogy "
+"rendelkezel a szükséges írási jogosultságokkal."
 
 #: src/gui/dialogs/file_dialog.cpp:729
 msgid "The following folder and its contents will be permanently deleted:"
-msgstr ""
+msgstr "A következő mappa és tartalma végérvényesen törölve lesz:"
 
 #: src/gui/dialogs/file_dialog.cpp:730
 msgid "The following file will be permanently deleted:"
-msgstr ""
+msgstr "A következő fájl végérvényesen törölve lesz:"
 
 #: src/gui/dialogs/file_dialog.cpp:731
-#, fuzzy
-#| msgid "Do you really want to delete this game?"
 msgid "Do you wish to continue?"
-msgstr "Biztosan törölni akarod ezt az játékot?"
+msgstr "Szeretnéd folytatni?"
 
 #: src/gui/dialogs/file_dialog.cpp:743
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
 msgstr ""
+"Nem sikerült törölni: $path|. Győződj meg róla, hogy rendelkezel a szükséges "
+"írási jogosultságokkal."
 
 #: src/gui/dialogs/folder_create.cpp:60
 msgid "New Bookmark"
-msgstr ""
+msgstr "Új könyvjelző"
 
 #: src/gui/dialogs/game_cache_options.cpp:137
-#, fuzzy
-#| msgid "addon_state^Unknown"
 msgid "dir_size^Unknown"
 msgstr "Ismeretlen"
 
@@ -6283,33 +5907,31 @@ msgstr "B"
 
 #: src/gui/dialogs/game_cache_options.cpp:162
 msgid "Cache Cleaned"
-msgstr ""
+msgstr "Gyorsítótár megtisztítva"
 
 #: src/gui/dialogs/game_cache_options.cpp:163
 msgid "The game data cache has been cleaned."
-msgstr ""
+msgstr "A játékadatok gyorsítótára törölve."
 
 #: src/gui/dialogs/game_cache_options.cpp:165
 msgid "The game data cache could not be completely cleaned."
-msgstr ""
+msgstr "A játékadatok gyorsítótárát nem sikerült teljesen törölni."
 
 #: src/gui/dialogs/game_cache_options.cpp:181
 msgid "Cache Purged"
-msgstr ""
+msgstr "Gyorsítótár törölve"
 
 #: src/gui/dialogs/game_cache_options.cpp:182
 msgid "The game data cache has been purged."
-msgstr ""
+msgstr "A gyorsítótár teljes tartalma törölve lett."
 
 #: src/gui/dialogs/game_cache_options.cpp:184
 msgid "The game data cache could not be purged."
-msgstr ""
+msgstr "Nem sikerült a gyorsítótárbeli játékadatok teljes törlése."
 
 #: src/gui/dialogs/game_load.cpp:311
-#, fuzzy
-#| msgid "#(Invalid)"
 msgid "(Invalid)"
-msgstr "#(Érvénytelen)"
+msgstr "(Érvénytelen)"
 
 #: src/gui/dialogs/game_load.cpp:348
 msgid "Campaign: $campaign_name"
@@ -6346,16 +5968,12 @@ msgid "Modifications: "
 msgstr "Módosítók kiválasztása"
 
 #: src/gui/dialogs/game_stats.cpp:78
-#, fuzzy
-#| msgid "controller^None"
 msgid "controller^AI"
-msgstr "Egyik sem"
+msgstr "MI"
 
 #: src/gui/dialogs/game_stats.cpp:78
-#, fuzzy
-#| msgid "controller^None"
 msgid "controller^Idle"
-msgstr "Egyik sem"
+msgstr "Tétlen"
 
 #: src/gui/dialogs/game_stats.cpp:114 src/gui/dialogs/label_settings.cpp:71
 msgid "Unknown"
@@ -6373,30 +5991,24 @@ msgstr "igen"
 
 #: src/gui/dialogs/game_version_dialog.cpp:137
 #: src/gui/dialogs/title_screen.cpp:241
-#, fuzzy
-#| msgid "Version "
 msgid "Version $version"
-msgstr "Verzió "
+msgstr "Verzió: $version"
 
 #: src/gui/dialogs/game_version_dialog.cpp:141
 msgid "Running on $os"
-msgstr ""
+msgstr "$os rendszeren futtatva"
 
 #: src/gui/dialogs/game_version_dialog.cpp:226
-#, fuzzy
-#| msgid "Version"
 msgid "version^N/A"
-msgstr "Verzió"
+msgstr "N/A"
 
 #: src/gui/dialogs/label_settings.cpp:53
-#, fuzzy
-#| msgid "Set Team Label"
 msgid "Team Labels"
-msgstr "Csapat címkéjének megadása"
+msgstr "Csapat címke"
 
 #: src/gui/dialogs/label_settings.cpp:76
 msgid "Side $side_number ($name)"
-msgstr ""
+msgstr "$side_number. oldal ($name)"
 
 #: src/gui/dialogs/loading_screen.cpp:50
 msgid "Building terrain rules"
@@ -6419,10 +6031,8 @@ msgid "Initializing teams"
 msgstr "Csapatok inicializálása"
 
 #: src/gui/dialogs/loading_screen.cpp:56
-#, fuzzy
-#| msgid "Configuration:"
 msgid "Loading game configuration"
-msgstr "Beállítások:"
+msgstr "Játékkonfiguráció betöltése"
 
 #: src/gui/dialogs/loading_screen.cpp:57
 msgid "Loading data files"
@@ -6450,7 +6060,7 @@ msgstr "Egységek betöltése"
 
 #: src/gui/dialogs/loading_screen.cpp:63
 msgid "Searching for installed add-ons"
-msgstr "Telepített kiegészítések keresése"
+msgstr "Telepített kiegészítők keresése"
 
 #: src/gui/dialogs/loading_screen.cpp:64
 msgid "Starting game"
@@ -6465,34 +6075,28 @@ msgid "Connecting to server"
 msgstr "Csatlakozás a kiszolgálóhoz"
 
 #: src/gui/dialogs/loading_screen.cpp:67
-#, fuzzy
-#| msgid "Options"
 msgid "Logging in"
-msgstr "Beállítások"
+msgstr "Bejelentkezés"
 
 #: src/gui/dialogs/loading_screen.cpp:68
 msgid "Waiting for server"
-msgstr ""
+msgstr "Várakozás a kiszolgálóra"
 
 #: src/gui/dialogs/loading_screen.cpp:69
-#, fuzzy
-#| msgid "Connect to Server"
 msgid "Connecting to redirected server"
-msgstr "Csatlakozás a kiszolgálóhoz"
+msgstr "Csatlakozás az átirányított kiszolgálóhoz"
 
 #: src/gui/dialogs/loading_screen.cpp:70
 msgid "Waiting for next scenario"
-msgstr ""
+msgstr "Várakozás a következő küldetésre"
 
 #: src/gui/dialogs/loading_screen.cpp:71
-#, fuzzy
-#| msgid "Random starting time"
 msgid "Getting game data"
-msgstr "Véletlen kezdőnapszak"
+msgstr "Játékadatok megszerzése"
 
 #: src/gui/dialogs/loading_screen.cpp:72
 msgid "Downloading lobby data"
-msgstr ""
+msgstr "Játékcsarnok adatainak letöltése"
 
 #: src/gui/dialogs/lua_interpreter.cpp:690
 msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
@@ -6505,8 +6109,6 @@ msgid "lua console"
 msgstr "Szürke utcakő"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:106
-#, fuzzy
-#| msgid "Selected game"
 msgid "Selected Game"
 msgstr "A kiválasztott játék"
 
@@ -6515,26 +6117,20 @@ msgid "Lobby"
 msgstr "Játékcsarnok"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:109
-#, fuzzy
-#| msgid "Current room"
 msgid "Current Room"
 msgstr "Jelenlegi szoba"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:111
-#, fuzzy
-#| msgid "Other games"
 msgid "Other Games"
 msgstr "Egyéb játékok"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:118
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to log out?"
-msgstr "Biztos ki akarsz lépni?"
+msgstr "Biztosan ki akarsz lépni?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:213
 msgid "Incompatible User-made Content."
-msgstr ""
+msgstr "Nem kompatibilis rajongói tartalom."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:214
 msgid ""
@@ -6542,10 +6138,13 @@ msgid ""
 "incompatible with your version. You might wish to suggest that the host's "
 "add-ons be updated."
 msgstr ""
+"Nem lehet ehhez a játékhoz csatlakozni, mert a játékgazda elavult "
+"kiegészítőket használ, amelyek nem kompatibilisek a te verzióddal. Érdemes "
+"lehet megkérni a játékgazdát, hogy frissítse a kiegészítőit."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:229
 msgid "Missing User-made Content."
-msgstr ""
+msgstr "Hibás rajongói tartalom."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:230
 msgid ""
@@ -6553,6 +6152,9 @@ msgid ""
 "in order to join.\n"
 "Do you want to try to install them?"
 msgstr ""
+"A játékhoz való csatlakozáshoz szükséges egy vagy több felhasználói "
+"kiegészítő telepítése vagy frissítése.\n"
+"Megpróbáljuk telepíteni őket?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:396
 msgid "Games: showing $num_shown out of $num_total"
@@ -6560,59 +6162,48 @@ msgstr "Játékok: összesen $num_total mérkőzés zajlik, ebből $num_shown l�
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:417
 msgid "$game_name (Era: $era_name)"
-msgstr ""
+msgstr "$game_name (Korszak: $era_name)"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:447
-#, fuzzy
-#| msgid "addon_state^Not installed"
 msgid "era_or_mod^not installed"
-msgstr "Nincs telepítve"
+msgstr "nincs telepítve"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:450
-#, fuzzy
-#| msgid "Era:"
 msgid "Era"
-msgstr "Korszak: "
+msgstr "Korszak"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:482
-#, fuzzy
-#| msgid "Reloaded game"
 msgid "Reloaded:"
-msgstr "Korábbi játszma folytatása"
+msgstr "Korábbi játszma folytatása:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:483
-#, fuzzy
-#| msgid "Share view"
 msgid "Shared vision:"
-msgstr "Nézőpont megosztása"
+msgstr "Közös látókör:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:484
 msgid "Shuffle sides:"
-msgstr ""
+msgstr "Oldalak megkeverése:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:485
-#, fuzzy
-#| msgid "Time limit"
 msgid "Time limit:"
-msgstr "Időkorlát"
+msgstr "Időkorlát:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:486
-#, fuzzy
-#| msgid "Use map settings"
 msgid "Use map settings:"
-msgstr "Pálya beállításainak használata"
+msgstr "Pálya beállításainak használata:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:494
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
 msgstr ""
+"Egy vagy több kiegészítőt telepíteni kell\n"
+"a játékhoz való csatlakozáshoz."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:519
 msgid "Observers allowed"
 msgstr "Megfigyelés engedélyezve"
 
-# tiltva?
 #: src/gui/dialogs/multiplayer/lobby.cpp:522
 msgid "Observers not allowed"
 msgstr "Megfigyelés letiltva"
@@ -6628,123 +6219,113 @@ msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
+"Valami probléma van a játékcsarnokban a kiegészítők verzióinak ellenőrzésére "
+"használt adatbázissal. Kérlek jelentsd a hibát a https://bugs.wesnoth.org "
+"oldalon."
 
 #: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:131
 msgid ""
 "This build of wesnoth does not include support for desktop notifications, "
 "contact your package manager"
 msgstr ""
+"A Wesnoth ezen változata nem tartalmaz támogatást asztali értesítésekhez. "
+"Vedd fel a kapcsolatot a Wesnoth csomagod készítőjével."
 
 #: src/gui/dialogs/multiplayer/mp_change_control.cpp:108
 msgid "Side $side"
 msgstr "$side oldal"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:109
-#, fuzzy
-#| msgid "Scenario start"
 msgid "Scenarios"
-msgstr "Pálya indítása"
+msgstr "Küldetések"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:110
-#, fuzzy
-#| msgid "Multiplayer Options"
 msgid "Multiplayer Campaigns"
-msgstr "Többjátékos beállítások"
+msgstr "Többjátékos hadjáratok"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:111
-#, fuzzy
-#| msgid "Start a new single player campaign"
 msgid "Singleplayer Campaigns"
-msgstr "Új egyjátékos hadjárat indítása"
+msgstr "Egyjátékos hadjáratok"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:112
-#, fuzzy
-#| msgid "Options"
 msgid "Custom Maps"
-msgstr "Beállítások"
+msgstr "Egyedi pálya"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:113
-#, fuzzy
-#| msgid "New Scenario"
 msgid "Custom Scenarios"
-msgstr "Új küldetés"
+msgstr "Egyedi küldetés"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:114
-#, fuzzy
-#| msgid "Generate Random Map"
 msgid "Random Maps"
-msgstr "Véletlenszerű pálya generálása"
+msgstr "Véletlenszerű pálya"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:188
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:189
 msgid "No games found."
-msgstr ""
+msgstr "Játék nem található."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:256
 msgid "No eras found."
-msgstr ""
+msgstr "Korszak nem található."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:257
 msgid "No eras found"
-msgstr ""
+msgstr "Korszak nem található"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:285
 msgid "Independent: Random factions assigned independently"
 msgstr ""
+"Független: Egymástól függetlenül meghatározott véletlenszerű szövetségek"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:286
 msgid "No Mirror: No two players will get the same faction"
-msgstr ""
+msgstr "Nincs tükör: Nem lesz két játékos ugyanazzal a szövetséggel"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:287
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr ""
+"Nincs szövetséges tükör: Nem lesz két, azonos csapatba tartozó játékos "
+"ugyanazzal a szövetséggel"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:543
 msgid "No eras available for this game."
-msgstr ""
+msgstr "Nincsenek megfelelő korszakok ehhez a játékhoz."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:741
 msgid "number of players^$min to $max"
-msgstr ""
+msgstr "$min–$max"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:838
 msgid "The selected game has no sides!"
-msgstr ""
+msgstr "A kiválasztott játékban nincsenek oldalak!"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:904
 msgid "Choose Starting Scenario"
-msgstr ""
+msgstr "Kezdő küldetés kiválasztása"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:904
 msgid "Select at which point to begin this campaign."
-msgstr ""
+msgstr "Válaszd ki, mely ponton kezdődjön a hadjárat."
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:216
-#, fuzzy
-#| msgid "Choose Player"
 msgid "Computer Player"
-msgstr "Válassz játékost"
+msgstr "Számítógép"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:218
-#, fuzzy
-#| msgid "(empty list)"
 msgid "Empty slot"
-msgstr "(üres lista)"
+msgstr "(üres hely)"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:220
 msgid "Reserved for $playername"
-msgstr ""
+msgstr "Foglalva $playername számára"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:222
-#, fuzzy
-#| msgid "Vacant slots"
 msgid "Vacant slot"
-msgstr "Üres helyek"
+msgstr "Betölthető hely"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:226
 msgid "empty"
-msgstr ""
+msgstr "üres"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:253
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:109
@@ -6755,18 +6336,16 @@ msgstr "Kilépés a játékból"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:365
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:168
-#, fuzzy
-#| msgid "Team 1"
 msgid "Team:"
-msgstr "1-es csapat"
+msgstr "Csapat:"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:469
 msgid "Waiting for players to choose factions..."
-msgstr ""
+msgstr "Várakozás, amíg a játékosok szövetséget választanak..."
 
 #: src/gui/dialogs/outro.cpp:42
 msgid "The End"
-msgstr ""
+msgstr "VÉGE"
 
 #: src/gui/dialogs/preferences_dialog.cpp:186
 msgid "friend"
@@ -6779,34 +6358,29 @@ msgstr "mellőzött"
 #: src/gui/dialogs/preferences_dialog.cpp:245
 #: src/gui/dialogs/preferences_dialog.cpp:305
 msgid "No username specified"
-msgstr ""
+msgstr "Nincs felhasználónév megadva"
 
 #: src/gui/dialogs/preferences_dialog.cpp:263
 msgid "Invalid username"
 msgstr "Érvénytelen felhasználónév"
 
+# Jf: a fordítást javítaní kell, nem nyúltam hozzá, mert nem találtam meg a játékban, hol jelenik meg; elvileg a beállításoknál kéne lennie, de nincs még meg. Vagy kísérleti, vagy ennyire nem látom/találom.
 #: src/gui/dialogs/preferences_dialog.cpp:310
-#, fuzzy
-#| msgid "View and edit your friends and ignores list"
 msgid "Not on friends or ignore lists"
-msgstr "Barátaim és a mellőzöttek listájának megtekintése és szerkesztése"
+msgstr "Nem szerepel a barátok vagy mellőzöttek listáján"
 
 #: src/gui/dialogs/preferences_dialog.cpp:812
 msgid "&#9679;"
-msgstr ""
+msgstr "&#9679;"
 
 #: src/gui/dialogs/preferences_dialog.cpp:872
-#, fuzzy
-#| msgid ""
-#| "\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\". Do you wish "
-#| "to reassign it to \"$new_hotkey_action|\"?"
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
-"A(z) „$hotkey_sequence|” billentyűkombináció már a(z) „$old_hotkey_action|” "
-"parancshoz van rendelve. Szeretnéd inkább ehhez a parancshoz rendelni: "
-"„$new_hotkey_action|”?"
+"A(z) „<b>$hotkey_sequence|</b>” billentyűkombináció már a(z) „<b>"
+"$old_hotkey_action|</b>” parancshoz van rendelve.\n"
+"Szeretnéd inkább ehhez a parancshoz rendelni: „<b>$new_hotkey_action|</b>”?"
 
 #: src/gui/dialogs/preferences_dialog.cpp:878
 msgid "Reassign Hotkey"
@@ -6822,7 +6396,7 @@ msgstr "Gyorsbillentyűk visszaállítása"
 
 #: src/gui/dialogs/preferences_dialog.cpp:1008
 msgid "∞"
-msgstr ""
+msgstr "∞"
 
 #: src/gui/dialogs/screenshot_notification.cpp:130
 msgid ""
@@ -6830,58 +6404,49 @@ msgid ""
 "\n"
 "Try to save the screenshot as PNG instead."
 msgstr ""
+"Nem támogatott képformátum\n"
+"\n"
+"Próbáld meg menteni a képernyőképet PNG-ként."
 
 #: src/gui/dialogs/statistics_dialog.cpp:68
-#, fuzzy
-#| msgid "Scenario start"
 msgid "All Scenarios"
-msgstr "Pálya indítása"
+msgstr "Összes küldetés"
 
 #: src/gui/dialogs/statistics_dialog.cpp:181
-#, fuzzy
-#| msgid "Recruit"
 msgid "Recruits"
 msgstr "Toborzás"
 
 #: src/gui/dialogs/statistics_dialog.cpp:182
-#, fuzzy
-#| msgid "Recall"
 msgid "Recalls"
 msgstr "Visszahívás"
 
 #: src/gui/dialogs/statistics_dialog.cpp:183
-#, fuzzy
-#| msgid "sound^Advanced Options"
 msgid "Advancements"
-msgstr "Szakértői beállítások"
+msgstr "Szintlépések"
 
 #: src/gui/dialogs/statistics_dialog.cpp:184
 msgid "Losses"
-msgstr ""
+msgstr "Veszteségek"
 
 #: src/gui/dialogs/statistics_dialog.cpp:185
-#, fuzzy
-#| msgid "Hills"
 msgid "Kills"
-msgstr "Dombság"
+msgstr "Ölések"
 
 #: src/gui/dialogs/statistics_dialog.cpp:204
 msgid "Inflicted"
-msgstr ""
+msgstr "Okozott"
 
 #: src/gui/dialogs/statistics_dialog.cpp:212
 msgid "Taken"
-msgstr ""
+msgstr "Elszenvedett"
 
 #: src/gui/dialogs/statistics_dialog.cpp:255
 msgid "$count|× $name"
-msgstr ""
+msgstr "$count|× $name"
 
 #: src/gui/dialogs/title_screen.cpp:467
-#, fuzzy
-#| msgid "Choose Theme"
 msgid "Choose Test"
-msgstr "Téma kiválasztása"
+msgstr "Teszt kiválasztása"
 
 #: src/gui/dialogs/unit_recall.cpp:258 src/hotkey/hotkey_command.cpp:96
 msgid "Rename Unit"
@@ -6889,87 +6454,70 @@ msgstr "Egység átnevezése"
 
 #: src/gui/dialogs/unit_recall.cpp:291
 msgid "This unit is loyal and requires no upkeep."
-msgstr ""
+msgstr "Ez az egység hűséges, így nincs fenntartási költsége."
 
 #: src/gui/dialogs/unit_recall.cpp:292 src/gui/dialogs/unit_recall.cpp:297
 #: src/gui/dialogs/unit_recall.cpp:302
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to dismiss him?"
-msgstr "Biztos ki akarsz lépni?"
+msgstr "Biztosan el akarod bocsátani?"
 
 #: src/gui/dialogs/unit_recall.cpp:293 src/gui/dialogs/unit_recall.cpp:298
 #: src/gui/dialogs/unit_recall.cpp:303
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to dismiss her?"
-msgstr "Biztos ki akarsz lépni?"
+msgstr "Biztosan el akarod bocsátani?"
 
 #: src/gui/dialogs/unit_recall.cpp:296
 msgid "This unit is an experienced one, having advanced levels."
-msgstr ""
+msgstr "Ez az egység magasabb szintű és tapasztalt."
 
 #: src/gui/dialogs/unit_recall.cpp:301
 msgid "This unit is close to advancing a level."
-msgstr ""
+msgstr "Ez az egység közel van a szintlépéshez."
 
 #: src/gui/dialogs/unit_recall.cpp:307
 msgid "Dismiss Unit"
-msgstr ""
+msgstr "Egység elbocsátása"
 
 #: src/gui/gui.cpp:84
 msgid "No default gui defined."
 msgstr "Nincs alapértelmezett grafikus felület megadva."
 
 #: src/gui/widgets/addon_list.cpp:118
-#, fuzzy
-#| msgid "addon_state^Installed, broken"
 msgid "addon_state^Installed, upgradable"
-msgstr "Telepítve, hibás"
+msgstr "Telepítve, frissíthető"
 
 #: src/gui/widgets/addon_list.cpp:118
-#, fuzzy
-#| msgid "addon_state^Published, broken"
 msgid "addon_state^Published, upgradable"
-msgstr "Közzé téve, hibás"
+msgstr "Közzétéve, frissíthető"
 
 #: src/gui/widgets/addon_list.cpp:122
-#, fuzzy
-#| msgid "addon_state^Installed ($local_version|), outdated on server"
 msgid "addon_state^Installed, outdated on server"
-msgstr "Telepítve ($local_version|.), a kiszolgálón elavult"
+msgstr "Telepítve, a kiszolgálón elavult"
 
 #: src/gui/widgets/addon_list.cpp:122
-#, fuzzy
-#| msgid "addon_state^Published, not installed"
 msgid "addon_state^Published, outdated on server"
-msgstr "Közzé téve, nincs telepítve "
+msgstr "Közzétéve, a kiszolgálón elavult"
 
 #: src/gui/widgets/addon_list.cpp:285
 msgid "Delete add-on from server"
-msgstr ""
+msgstr "Kiegészítő törlése a kiszolgálóról"
 
 #: src/gui/widgets/chatbox.cpp:286
 msgid "whisper to $receiver"
 msgstr "súgás neki: $receiver"
 
 #: src/gui/widgets/chatbox.cpp:386
-#, fuzzy
-#| msgid "Room $name joined"
 msgid "Room <i>“$name”</i> joined"
-msgstr "Csatlakoztál ehhez a szobához: $name"
+msgstr "Csatlakoztál ehhez a szobához: <i>“$name”</i>"
 
 #: src/gui/widgets/chatbox.cpp:392
-#, fuzzy
-#| msgid ""
-#| "Whisper session with $name started. If you do not want to receive "
-#| "messages from this user, type /ignore $name\n"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>"
 msgstr ""
-"Sugdolózás kezdődött ezzel a felhasználóval: $name. Ha mégsem szeretnél "
-"üzeneteket kapni tőle, írd be a következő parancsot: /ignore $name\n"
+"Sugdolózás kezdődött ezzel a felhasználóval: <i>“$name”</i>. Ha mégsem "
+"szeretnél üzeneteket kapni tőle, írd be a következő parancsot: <i>/ignore "
+"$name</i>"
 
 #: src/gui/widgets/chatbox.cpp:631
 msgid "$player has entered the room"
@@ -6986,16 +6534,16 @@ msgstr "Ez a nélkülözhetetlen vezérlőeszköz nincs megadva: „$id”."
 #: src/gui/widgets/label.cpp:153
 msgid "Opening links is not supported, contact your packager"
 msgstr ""
+"Linkek megnyitása nem támogatott, vedd fel a kapcsolatot a csomagod "
+"készítőjével"
 
 #: src/gui/widgets/label.cpp:172
-#, fuzzy
-#| msgid "Do you really want to delete this game?"
 msgid "Do you want to open this link?"
-msgstr "Biztosan törölni akarod ezt az játékot?"
+msgstr "Meg akarod nyitni ezt a linket?"
 
 #: src/gui/widgets/label.cpp:203
 msgid "Copied link!"
-msgstr ""
+msgstr "Hivatkozás másolva!"
 
 #: src/gui/widgets/listbox.cpp:918 src/gui/widgets/multi_page.cpp:282
 msgid ""
@@ -7020,44 +6568,38 @@ msgstr "Nincs oldal megadva."
 
 #: src/gui/widgets/multimenu_button.cpp:167
 msgid "multimenu^All Selected"
-msgstr ""
+msgstr "Összes kijelölve"
 
 #: src/gui/widgets/multimenu_button.cpp:172
 msgid "multimenu^$excess other"
 msgid_plural "$excess others"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$excess további"
+msgstr[1] "$excess további"
 
 #: src/gui/widgets/multimenu_button.cpp:174
 #: src/gui/widgets/multimenu_button.cpp:231
 msgid "multimenu^None Selected"
-msgstr ""
+msgstr "Nincsenek kijelöltek"
 
 #: src/gui/widgets/pane.cpp:429
 msgid "Need at least 1 parallel item."
 msgstr "Legalább egy párhuzamos elem szükséges."
 
 #: src/gui/widgets/size_lock.cpp:86
-#, fuzzy
-#| msgid "Invalid username"
 msgid "Invalid size."
-msgstr "Érvénytelen felhasználónév"
+msgstr "Érvénytelen méret."
 
 #: src/gui/widgets/size_lock.cpp:162
-#, fuzzy
-#| msgid "No list defined."
 msgid "No widget defined."
-msgstr "Nincs lista megadva."
+msgstr "Nincs modul megadva."
 
 #: src/gui/widgets/slider.cpp:466
 msgid "The number of value_labels and values don't match."
 msgstr "Az értékek és az „értékcímkék” száma nem egyezik."
 
 #: src/gui/widgets/stacked_widget.cpp:278
-#, fuzzy
-#| msgid "No stack defined."
 msgid "No stack layers defined."
-msgstr "Nincs halmaz megadva."
+msgstr "Nincsenek stack rétegek megadva."
 
 #: src/gui/widgets/styled_widget.cpp:667
 msgid "Found a widget with a helptip and without a tooltip."
@@ -7082,15 +6624,15 @@ msgstr "Ismeretlen elnevezésű csomópont."
 
 #: src/gui/widgets/unit_preview_pane.cpp:135
 msgid "Resistances: "
-msgstr ""
+msgstr "Ellenállások: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:137
 msgid "(Att / Def)"
-msgstr ""
+msgstr "(Tám / Véd)"
 
 #: src/gui/widgets/unit_preview_pane.cpp:151
 msgid "Movement Costs:"
-msgstr ""
+msgstr "Lépéspontköltség:"
 
 #: src/gui/widgets/unit_preview_pane.cpp:218
 msgid "Attacks"
@@ -7101,33 +6643,31 @@ msgstr "Támadások"
 #: src/gui/widgets/unit_preview_pane.cpp:422
 #: src/gui/widgets/unit_preview_pane.cpp:453
 msgid "Lvl $lvl"
-msgstr ""
+msgstr "$lvl. sz"
 
 #: src/gui/widgets/unit_preview_pane.cpp:308
 #: src/gui/widgets/unit_preview_pane.cpp:321
 #: src/gui/widgets/unit_preview_pane.cpp:461
 #: src/gui/widgets/unit_preview_pane.cpp:474
 msgid "HP: "
-msgstr ""
+msgstr "ÉP: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:310
 #: src/gui/widgets/unit_preview_pane.cpp:326
 #: src/gui/widgets/unit_preview_pane.cpp:464
 #: src/gui/widgets/unit_preview_pane.cpp:479
 msgid "XP: "
-msgstr ""
+msgstr "TP: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:328
 #: src/gui/widgets/unit_preview_pane.cpp:481
-#, fuzzy
-#| msgid "Experience modifier"
 msgid "Experience Modifier: "
-msgstr "Szintlépési küszöb"
+msgstr "Szintlépési küszöb: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:331
 #: src/gui/widgets/unit_preview_pane.cpp:484
 msgid "MP: "
-msgstr ""
+msgstr "LP: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:369
 #: src/gui/widgets/unit_preview_pane.cpp:512
@@ -7145,94 +6685,68 @@ msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Egy párbeszédablak nem jeleníthető meg, mert nem fér el a képernyőn."
 
 #: src/hotkey/hotkey_command.cpp:39
-#, fuzzy
-#| msgid "Save Game"
 msgid "Saved Games"
-msgstr "Állás mentése"
+msgstr "Mentett állások"
 
 #: src/hotkey/hotkey_command.cpp:40
-#, fuzzy
-#| msgid "Custom Command"
 msgid "Map Commands"
-msgstr "Tetszőleges parancs"
+msgstr "Térkép parancs"
 
 #: src/hotkey/hotkey_command.cpp:41
-#, fuzzy
-#| msgid "Custom Command"
 msgid "Unit Commands"
-msgstr "Tetszőleges parancs"
+msgstr "Egység parancs"
 
 #: src/hotkey/hotkey_command.cpp:42
-#, fuzzy
-#| msgid "Players: "
 msgid "Player Chat"
-msgstr "Játékosok: "
+msgstr "Játékos csevegés"
 
 #: src/hotkey/hotkey_command.cpp:43
-#, fuzzy
-#| msgid "Change Control"
 msgid "Replay Control"
-msgstr "Irányítás megváltoztatása"
+msgstr "Visszajátszás vezérlése"
 
 #: src/hotkey/hotkey_command.cpp:44
-#, fuzzy
-#| msgid "whiteboard^Planning Mode"
 msgid "Planning Mode"
-msgstr "Lépéstervező"
+msgstr "Tervező mód"
 
 #: src/hotkey/hotkey_command.cpp:45
-#, fuzzy
-#| msgid "Scenario start"
 msgid "Scenario Editor"
-msgstr "Pálya indítása"
+msgstr "Küldetés-szerkesztő"
 
 #: src/hotkey/hotkey_command.cpp:46
 msgid "Editor Palettes"
-msgstr ""
+msgstr "Szerkesztő paletták"
 
 #: src/hotkey/hotkey_command.cpp:47
-#, fuzzy
-#| msgid "Unit Tool"
 msgid "Editor Tools"
-msgstr "Egységeszköz"
+msgstr "Szerkesztő eszközök"
 
 #: src/hotkey/hotkey_command.cpp:48
 msgid "Editor Clipboard"
-msgstr ""
+msgstr "Szerkesztő vágólap"
 
 #: src/hotkey/hotkey_command.cpp:49
-#, fuzzy
-#| msgid "Custom Command"
 msgid "Debug Commands"
-msgstr "Tetszőleges parancs"
+msgstr "Hibakereső parancsok"
 
 #: src/hotkey/hotkey_command.cpp:50
-#, fuzzy
-#| msgid "Custom Command"
 msgid "Custom WML Commands"
-msgstr "Tetszőleges parancs"
+msgstr "Egyéni WML parancsok"
 
 #: src/hotkey/hotkey_command.cpp:68
-#, fuzzy
-#| msgid "Scroll speed:"
 msgid "Scroll Up"
-msgstr "Görgetés sebessége:"
+msgstr "Görgetés fel"
 
 #: src/hotkey/hotkey_command.cpp:69
 msgid "Scroll Down"
-msgstr ""
+msgstr "Görgetés le"
 
 #: src/hotkey/hotkey_command.cpp:70
-#, fuzzy
-#| msgid "Scroll Palette Left"
 msgid "Scroll Left"
-msgstr "Paletta görgetése balra"
+msgstr "Görgetés balra"
 
 #: src/hotkey/hotkey_command.cpp:71
-#, fuzzy
-#| msgid "Scroll Palette Right"
 msgid "Scroll Right"
-msgstr "uPaletta görgetése jobbra"
+msgstr "Görgetés jobbra"
 
 #: src/hotkey/hotkey_command.cpp:73
 msgid "cancel"
@@ -7256,7 +6770,7 @@ msgstr "Kiválasztás/mozgás/támadás"
 
 #: src/hotkey/hotkey_command.cpp:78
 msgid "Touch"
-msgstr ""
+msgstr "Érintés"
 
 #: src/hotkey/hotkey_command.cpp:79
 msgid "Animate Map"
@@ -7339,10 +6853,8 @@ msgid "Repeat Recruit"
 msgstr "Toborzás megismétlése"
 
 #: src/hotkey/hotkey_command.cpp:106
-#, fuzzy
-#| msgid "Show labels"
 msgid "Show/Hide Labels"
-msgstr "Címkék megjelenítése"
+msgstr "Címkék megjelenítése/elrejtése"
 
 #: src/hotkey/hotkey_command.cpp:107
 msgid "End Turn"
@@ -7414,7 +6926,7 @@ msgstr "Ellenséges lépések mutatása"
 
 #: src/hotkey/hotkey_command.cpp:130
 msgid "Best Possible Enemy Moves"
-msgstr "Legjobb lehetséges ellenséges lépések"
+msgstr "Legjobb ellenséges lépéslehetőségek"
 
 #: src/hotkey/hotkey_command.cpp:132
 msgid "Play Replay"
@@ -7513,11 +7025,11 @@ msgstr "Térképváltás"
 
 #: src/hotkey/hotkey_command.cpp:167
 msgid "Assign Local Time"
-msgstr "Helyi idő alkalmazása"
+msgstr "Helyi idő megadása"
 
 #: src/hotkey/hotkey_command.cpp:169
 msgid "Time Schedule Editor"
-msgstr ""
+msgstr "Napszakrend-szerkesztő"
 
 #: src/hotkey/hotkey_command.cpp:170
 msgid "Partial Undo"
@@ -7553,11 +7065,11 @@ msgstr "Térképinformáció"
 
 #: src/hotkey/hotkey_command.cpp:181
 msgid "Clear Selected Item Set"
-msgstr "A kiválasztott tárgykészlet törlése"
+msgstr "Kiválasztott tárgykészlet törlése"
 
 #: src/hotkey/hotkey_command.cpp:182
 msgid "Swap Foreground/Background Palette Item"
-msgstr "Az előtér/háttér palettaelem felcserélése"
+msgstr "Előtér/háttér palettaelem felcserélése"
 
 #: src/hotkey/hotkey_command.cpp:183
 msgid "Change Palette Group"
@@ -7569,13 +7081,11 @@ msgstr "Paletta görgetése balra"
 
 #: src/hotkey/hotkey_command.cpp:185
 msgid "Scroll Palette Right"
-msgstr "uPaletta görgetése jobbra"
+msgstr "Paletta görgetése jobbra"
 
 #: src/hotkey/hotkey_command.cpp:186
-#, fuzzy
-#| msgid "Options"
 msgid "Remove Location"
-msgstr "Beállítások"
+msgstr "Kezdőhely eltávolítása"
 
 #: src/hotkey/hotkey_command.cpp:188
 msgid "Add New Side"
@@ -7714,7 +7224,7 @@ msgstr "A kiválasztott egységkészlet beállítása toborzási listaként."
 
 #: src/hotkey/hotkey_command.cpp:206
 msgid "Change Unit ID"
-msgstr "Egység azonosítójának megváltoztatása"
+msgstr "Egységazonosító megváltoztatása"
 
 #: src/hotkey/hotkey_command.cpp:207
 msgid "Loyal"
@@ -7722,23 +7232,23 @@ msgstr "Hűséges"
 
 #: src/hotkey/hotkey_command.cpp:210
 msgid "Toggle Minimap Unit Coding"
-msgstr "Egységkódolás átkapcsolása a kis térképen"
+msgstr "Egységkódolás átkapcs. a kis térképen"
 
 #: src/hotkey/hotkey_command.cpp:211
 msgid "Toggle Minimap Terrain Coding"
-msgstr "Terepkódolás átkapcsolása a kis térképen"
+msgstr "Terepkódolás átkapcs. a kis térképen"
 
 #: src/hotkey/hotkey_command.cpp:213
 msgid "Toggle Minimap Unit Drawing"
-msgstr "Egységrajzolás átkapcsolása a kis térképen"
+msgstr "Egységrajzolás átkapcs. a kis térképen"
 
 #: src/hotkey/hotkey_command.cpp:214
 msgid "Toggle Minimap Village Drawing"
-msgstr "Falurajzolás átkapcsolása a kis térképen"
+msgstr "Falurajzolás átkapcs. a kis térképen"
 
 #: src/hotkey/hotkey_command.cpp:215
 msgid "Toggle Minimap Terrain Drawing"
-msgstr "Tereprajzolás átkapcsolása a kis térképen"
+msgstr "Tereprajzolás átkapcs. a kis térképen"
 
 #: src/hotkey/hotkey_command.cpp:217
 msgid "Next Brush"
@@ -7789,7 +7299,7 @@ msgstr "Beillesztés"
 
 #: src/hotkey/hotkey_command.cpp:228
 msgid "Export Selected Coordinates to System Clipboard"
-msgstr "A kijelölt koordináták exportálása a vágólapra"
+msgstr "Kijelölt koordináták exportálása a vágólapra"
 
 #: src/hotkey/hotkey_command.cpp:229
 msgid "Select All"
@@ -7805,31 +7315,31 @@ msgstr "Kijelölés törlése"
 
 #: src/hotkey/hotkey_command.cpp:232
 msgid "Rotate Clipboard Clockwise"
-msgstr "A vágólap elforgatása az óramutató járásának megfelelően "
+msgstr "Vágólap elforgatása óramutató szerint"
 
 #: src/hotkey/hotkey_command.cpp:233
 msgid "Rotate Clipboard Counter-Clockwise"
-msgstr "A vágólap elforgatása az óramutató járásával ellentétesen"
+msgstr "Vágólap forg. óramutatóval ellentétesen"
 
 #: src/hotkey/hotkey_command.cpp:234
 msgid "Flip Clipboard Horizontally"
-msgstr "A vágólap vízszintes tükrözése"
+msgstr "Vágólap vízszintes tükrözése"
 
 #: src/hotkey/hotkey_command.cpp:235
 msgid "Flip Clipboard Vertically"
-msgstr "A vágólap függőleges tükrözése"
+msgstr "Vágólap függőleges tükrözése"
 
 #: src/hotkey/hotkey_command.cpp:236
 msgid "Rotate Selection"
-msgstr "A kijelölt terület elforgatása"
+msgstr "Kijelölt terület elforgatása"
 
 #: src/hotkey/hotkey_command.cpp:237
 msgid "Flip Selection"
-msgstr "A kijelölt terület tükrözése"
+msgstr "Kijelölt terület tükrözése"
 
 #: src/hotkey/hotkey_command.cpp:238
 msgid "Fill Selection"
-msgstr "A kijelölt terület kitöltése"
+msgstr "Kijelölt terület kitöltése"
 
 #: src/hotkey/hotkey_command.cpp:239
 msgid "Generate Tiles in Selection"
@@ -7837,7 +7347,7 @@ msgstr "Mezők rajzolása a kijelölt területen"
 
 #: src/hotkey/hotkey_command.cpp:240
 msgid "Randomize Tiles in Selection"
-msgstr "Mezők véletlenszerűvé tétele a kijelölt területen"
+msgstr "Mezők véletlenszerűen a kijelölt ter."
 
 #: src/hotkey/hotkey_command.cpp:242
 msgid "Rotate Map"
@@ -7861,7 +7371,7 @@ msgstr "Terepáttűnések frissítése"
 
 #: src/hotkey/hotkey_command.cpp:251
 msgid "Toggle Terrain Transition Update"
-msgstr "Terepáttűnések frissítésének bekapcsolása/kikapcsolása"
+msgstr "Terepáttűnések frissítése be/ki"
 
 #: src/hotkey/hotkey_command.cpp:253
 msgid "Auto-update Terrain Transitions"
@@ -7888,22 +7398,20 @@ msgid "Draw Terrain Codes"
 msgstr "Terepkódok megjelenítése"
 
 #: src/hotkey/hotkey_command.cpp:260
-#, fuzzy
-#| msgid "Number of turns"
 msgid "Draw Number of Bitmaps"
-msgstr "Körök száma"
+msgstr "Bittérképek számának rajzolása"
 
 #: src/hotkey/hotkey_command.cpp:262
 msgid "Save Selection to Area"
-msgstr "A kijelölés mentése a területre"
+msgstr "Kijelölés mentése a területre"
 
 #: src/hotkey/hotkey_command.cpp:263
 msgid "Rename Selected Area"
-msgstr "A kijelölt terület átnevezése"
+msgstr "Kijelölt terület átnevezése"
 
 #: src/hotkey/hotkey_command.cpp:264
 msgid "Remove Selected Area"
-msgstr "A kijelölt terület eltávolítása"
+msgstr "Kijelölt terület eltávolítása"
 
 #: src/hotkey/hotkey_command.cpp:265
 msgid "Add New Area"
@@ -7995,13 +7503,11 @@ msgstr "Többjátékos játék indítása"
 
 #: src/hotkey/hotkey_command.cpp:291
 msgid "Manage Add-ons"
-msgstr "Kiegészítések kezelése"
+msgstr "Kiegészítők kezelése"
 
 #: src/hotkey/hotkey_command.cpp:292
-#, fuzzy
-#| msgid "Manage Add-ons"
 msgid "Manage Cores"
-msgstr "Kiegészítések kezelése"
+msgstr "Játékmagok kezelése"
 
 #: src/hotkey/hotkey_command.cpp:293
 msgid "Start Editor"
@@ -8012,10 +7518,8 @@ msgid "Show Credits"
 msgstr "Készítők listájának mutatása"
 
 #: src/hotkey/hotkey_command.cpp:295
-#, fuzzy
-#| msgid "Test scenario"
 msgid "Start Test Scenario"
-msgstr "Próbapálya"
+msgstr "Próbapálya indítása"
 
 #: src/hotkey/hotkey_command.cpp:297
 msgid "Show Helptip"
@@ -8023,7 +7527,7 @@ msgstr "Eszközleírás mutatása"
 
 #: src/hotkey/hotkey_command.cpp:299
 msgid "Show Lua Console"
-msgstr ""
+msgstr "Lua konzol megjelenítése"
 
 #: src/hotkey/hotkey_command.cpp:302
 msgid "Unrecognized Command"
@@ -8054,26 +7558,25 @@ msgid ""
 "functionality and is required for hosting local network games. It will "
 "normally be found in the same folder as the game executable."
 msgstr ""
+"A <b>$filename</b> kiszolgáló alkalmazás többjátékos funkciókat biztosít és "
+"szükséges a helyi hálózati játékok nyitásához. Általában ugyanabban a "
+"mappában található, mint a játék programfájlja."
 
 #: src/preferences/display.cpp:168
 msgid "Find Server Application"
-msgstr ""
+msgstr "Kiszolgáló alkalmazás keresése"
 
 #: src/preferences/game.cpp:380
 msgid "No server has been defined."
 msgstr "Egy kiszolgáló sincs megadva."
 
 #: src/preferences/game.cpp:898
-#, fuzzy
-#| msgid "%H:%M"
 msgid "[%H:%M]"
-msgstr "%H:%M"
+msgstr "[%H:%M]"
 
 #: src/preferences/game.cpp:901
-#, fuzzy
-#| msgid "%I:%M %p"
 msgid "[%I:%M %p]"
-msgstr "%I:%M %p"
+msgstr "[%I:%M %p]"
 
 #: src/terrain/translation.cpp:710
 msgid ""
@@ -8224,7 +7727,7 @@ msgstr ""
 #, fuzzy
 #~| msgid "Add-ons"
 #~ msgid "Get Add-ons"
-#~ msgstr "Kiegészítések"
+#~ msgstr "Kiegészítők"
 
 #, fuzzy
 #~| msgid "Connect to Server"
@@ -8357,20 +7860,20 @@ msgstr ""
 #~ msgstr "Beállítások"
 
 #~ msgid "Add-ons matching the following criteria will be displayed."
-#~ msgstr "Az alábbi feltételeknek megfelelő kiegészítések megjelenítése."
+#~ msgstr "Az alábbi feltételeknek megfelelő kiegészítők megjelenítése."
 
 #~ msgid "Installation status:"
 #~ msgstr "Telepítési állapot:"
 
 #~ msgid "Add-on types:"
-#~ msgstr "Kiegészítések típusai:"
+#~ msgstr "Kiegészítők típusai:"
 
 #~ msgid "Toggle All"
 #~ msgstr "Az összes átkapcsolása"
 
 #~ msgid "Add-ons will be sorted as follows when no column is selected:"
 #~ msgstr ""
-#~ "A kiegészítések kiválogatása az alábbiak szerint, ha egy oszlop sincs "
+#~ "A kiegészítők kiválogatása az alábbiak szerint, ha egy oszlop sincs "
 #~ "bejelölve:"
 
 #~ msgid "sort^By name"

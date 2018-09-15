@@ -6,23 +6,22 @@
 #
 # Majsa Norbert <nmajsa@monocom.hu>, 2008.
 # Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008, 2009.
-# Gabor Udvari <gabor.udvari@gmail.com>, 2008, 2009, 2011.
+# Udvari Gabor <gabor.udvari@gmail.com>, 2008, 2009, 2011.
+# Krutki Tamás <krtamas@0x64.org>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-thot_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-09-09 08:38 UTC\n"
-"PO-Revision-Date: 2011-12-11 01:52+0100\n"
-"Last-Translator: Gábor Udvari <gabor.udvari@gmail.com>\n"
-"Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
+"PO-Revision-Date: 2018-07-29 15:26+0100\n"
+"Last-Translator: Krutki Tamás <krtamas@0x64.org>\n"
+"Language-Team: Hungarian <>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Language: Hungarian\n"
-"X-Poedit-Country: HUNGARY\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 2.0\n"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:10
@@ -36,10 +35,8 @@ msgstr "ThP"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:19
-#, fuzzy
-#| msgid "(Easy)"
 msgid "Easy"
-msgstr "(Könnyű)"
+msgstr "könnyű"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:19
@@ -48,10 +45,8 @@ msgstr "Harcos"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:20
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(Átlagos)"
+msgstr "átlagos"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:20
@@ -60,10 +55,8 @@ msgstr "Vértes"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:21
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(Kihívást jelentő)"
+msgstr "kihívást jelentő"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:21
@@ -113,7 +106,7 @@ msgstr "Ötletek, játékteszt és hitvesi támogatás"
 #. [about]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:60
 msgid "Campaign Maintenance"
-msgstr ""
+msgstr "Hadjárat karbantartása"
 
 #. [scenario]: id=01_At_the_East_Gate
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:5
@@ -122,15 +115,6 @@ msgstr "A Keleti-kapunál"
 
 #. [part]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:26
-#, fuzzy
-#| msgid ""
-#| "In the first few years after the founding of the Northern Alliance, the "
-#| "dwarves of Knalga and the human population of Dwarven Doors were fully "
-#| "preoccupied with rebuilding what had been broken by the long orcish "
-#| "occupation. But soon enough they prospered once again. The dwarves begin "
-#| "mining their past for inspiration in ways to rebuild Knalga so it would "
-#| "be even greater than before, and began also reaching out for contact with "
-#| "their scattered kinfolk."
 msgid ""
 "In the first few years after the founding of the Northern Alliance, the "
 "dwarves of Knalga and the human population of Dwarven Doors were fully "
@@ -507,8 +491,6 @@ msgstr "Igenis, Hamel uram."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:220
-#, fuzzy
-#| msgid "The Order thanks you, Lord Hamel"
 msgid "The Order thanks you, Lord Hamel."
 msgstr "A rend köszöni neked, Hamel nagyúr."
 
@@ -866,10 +848,8 @@ msgstr "Aiglondur eléri a hágó keleti végén lévő útjelzőt"
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:130
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:128
-#, fuzzy
-#| msgid "Death of Angarthing"
 msgid "Death of Ratheln"
-msgstr "Angarthing elesik"
+msgstr "Ratheln elesik"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:159
@@ -1098,39 +1078,27 @@ msgstr "Ezek a bárdforgatók nem juthatnak fészkeink közelébe. Támadás!"
 
 #. [message]: speaker=Master Perrin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:198
-#, fuzzy
-#| msgid ""
-#| "We’re grateful for your assistance. And I’d like to send at least one of "
-#| "our senior apprentices with you to the east. It has come time for them to "
-#| "be journeymen... and I sense something being born to the east that I do "
-#| "not like the feel of."
 msgid ""
 "We’re grateful for your assistance. And I’d like to send a couple of our "
 "senior apprentices with you to the east. It has come time for them to be "
 "journeymen... and I sense something being born to the east that I do not "
 "like the feel of."
 msgstr ""
-"Nagyon örülünk a segítségeteknek. Szeretném, ha legalább egy tanult "
-"növendékünk veletek tarthatna keletre. Itt az ideje, hogy utazzanak... és "
-"úgy érzem, valami olyan van születőben keleten, ami nem tetszene nekem."
+"Nagyon örülünk a segítségeteknek. Szeretném, ha pár tanult növendékünk "
+"veletek tarthatna keletre. Itt az ideje, hogy utazzanak... és úgy érzem, "
+"valami olyan van születőben keleten, ami nem tetszene nekem."
 
 #. [message]: speaker=Master Perrin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:203
-#, fuzzy
-#| msgid ""
-#| "We’re grateful for your assistance. And I’d like to send at least one of "
-#| "our senior apprentices with you to the east. It has come time for them to "
-#| "be journeymen... and I sense something being born to the east that I do "
-#| "not like the feel of."
 msgid ""
 "We’re grateful for your assistance. And I’d like to send one of our senior "
 "apprentices with you to the east. It has come time for him to be a "
 "journeyman... and I sense something being born to the east that I do not "
 "like the feel of."
 msgstr ""
-"Nagyon örülünk a segítségeteknek. Szeretném, ha legalább egy tanult "
-"növendékünk veletek tarthatna keletre. Itt az ideje, hogy utazzanak... és "
-"úgy érzem, valami olyan van születőben keleten, ami nem tetszene nekem."
+"Nagyon örülünk a segítségeteknek. Szeretném, ha egy tanult növendékünk "
+"veletek tarthatna keletre. Itt az ideje, hogy utazzon... és úgy érzem, "
+"valami olyan van születőben keleten, ami nem tetszene nekem."
 
 #. [unit]: type=Mage, id=Lorinne
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:212
@@ -1144,26 +1112,16 @@ msgstr "Darchas"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:247
-#, fuzzy
-#| msgid ""
-#| "The presence of Master Perrin’s journeymen gives you the ability to "
-#| "recruit mages."
 msgid ""
 "The presence of Lorinne and Darchas gives you the ability to recruit mages."
 msgstr ""
-"Perrin mester tanítványainak jelenléte lehetővé teszi számodra, hogy "
-"mágusokat toborozz."
+"Lorinne és Darchas jelenléte lehetővé teszi számodra, hogy mágusokat "
+"toborozz."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:253
-#, fuzzy
-#| msgid ""
-#| "The presence of Master Perrin’s journeymen gives you the ability to "
-#| "recruit mages."
 msgid "The presence of Darchas gives you the ability to recruit mages."
-msgstr ""
-"Perrin mester tanítványainak jelenléte lehetővé teszi számodra, hogy "
-"mágusokat toborozz."
+msgstr "Darchas jelenléte lehetővé teszi számodra, hogy mágusokat toborozz."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:260
@@ -1269,10 +1227,8 @@ msgstr "Álarcos törp"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:171
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:207
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:286
-#, fuzzy
-#| msgid "Masked Dwarf"
 msgid "Masked Dwarves"
-msgstr "Álarcos törp"
+msgstr "Álarcos törpök"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:114
@@ -1423,8 +1379,6 @@ msgstr "Ezt a családom emlékéért kapod, te gyilkos!"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:354
-#, fuzzy
-#| msgid "They are defeated"
 msgid "They are defeated!"
 msgstr "Legyőztük őket!"
 
@@ -1595,10 +1549,8 @@ msgstr "Tan-Wagran"
 
 #. [label]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:210
-#, fuzzy
-#| msgid "East Gate"
 msgid "West Gate"
-msgstr "Keleti-kapu"
+msgstr "Nyugati-kapu"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:219
@@ -1936,7 +1888,7 @@ msgstr "Az alsó bugyrok"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:244
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:263
 msgid "Undead"
-msgstr ""
+msgstr "Élőholtak"
 
 #. [side]: type=Lich, id=Fleleen
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:249
@@ -2044,11 +1996,6 @@ msgstr ""
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:542
-#, fuzzy
-#| msgid ""
-#| "I sense these bindings to be the work of common sorcery, not the power of "
-#| "the Hammer. Usually to each such locking spell there is some sort of key. "
-#| "If we can but find the key, we will able to open these doors."
 msgid ""
 "I sense these bindings to be the work of common sorcery, not the power of "
 "the Hammer. Usually to each such locking spell there is some sort of key. If "
@@ -2181,10 +2128,6 @@ msgstr ""
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:871
-#, fuzzy
-#| msgid ""
-#| "Freeing these prisoners is more of a blow to Karrag then we thought, for "
-#| "now he is unable to continue his foul sorcery."
 msgid ""
 "Freeing these prisoners is more of a blow to Karrag than we thought, for now "
 "he is unable to continue his foul sorcery."
@@ -2614,28 +2557,21 @@ msgstr "ösztönzés"
 
 #. [leadership]: id=inspire
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:14
-#, fuzzy
-#| msgid "inspire"
 msgid "female^inspire"
 msgstr "ösztönzés"
 
 #. [leadership]: id=inspire
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:15
-#, fuzzy
-#| msgid ""
-#| "Inspire:\n"
-#| "This unit can inspire own L0 or L1 units that are next to it, making them "
-#| "fight better. Adjacent own units of L1 will do 25% more damage; L0 units "
-#| "will do 50% more."
 msgid ""
 "This unit can inspire own units that are next to it, making them fight "
 "better. Adjacent own units of lower or equal level will deal 25% more damage "
 "plus 25% for each level they are below the inspiring unit."
 msgstr ""
-"Ösztönzés:\n"
-"Ez az egység ösztönözni tudja a mellette álló, saját csapatába tartozó 0 és "
-"1-es szintű egységeket, hogy jobban harcoljanak. A szomszédos 1-es szintű "
-"egységek 25%-kal, a 0 szintűek 50%-kal többet sebeznek."
+"Ez az egység ösztönözni tudja a mellette álló, saját csapatába tartozó "
+"egységeket, hogy jobban harcoljanak. A szomszédos, saját csapatába tartozó, "
+"vele egyenlő vagy alacsonyabb szintű egységek 25%-kal többet sebeznek, és "
+"további 25%-kal többet minden egyes szinttől amivel az ösztönző egység alatt "
+"vannak."
 
 #: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:6
 msgid "Aiglondur"
@@ -2695,7 +2631,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:67
 msgid "There an altar in this temple, and a staff lies upon it."
-msgstr ""
+msgstr "Van egy oltár ebben a templomban, s rajta egy bot fekszik."
 
 #. [object]: id=sorf	# Prevent it from being picked up more than once.
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:81
@@ -2713,10 +2649,8 @@ msgstr ""
 
 #. [object]: id=sorf	# Prevent it from being picked up more than once.
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:85
-#, fuzzy
-#| msgid "Only mages can wield the Staff."
 msgid "Only a mage may wield this Staff."
-msgstr "Csak a mágusok tudják használni a botot."
+msgstr "Csak mágusok tudják használni ezt a botot."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:110
