@@ -14,7 +14,7 @@
 
 #include "desktop/windows_battery_info.hpp"
 
-#include <Windows.h>
+#include <windows.h>
 
 bool windows_battery_info::does_device_have_battery()
 {
