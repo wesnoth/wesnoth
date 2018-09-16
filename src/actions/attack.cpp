@@ -314,11 +314,14 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	signed int cth = 100 - opp_terrain_defense + weapon->accuracy() - (opp_weapon ? opp_weapon->parry() : 0);
 	cth = std::min(100, cth);
 	cth = std::max(0, cth);
-	chance_to_hit = cth;
 
 	unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
-	unit_abilities::effect cth_effects(cth_specials, chance_to_hit, backstab_pos);
-	chance_to_hit = cth_effects.get_composite_value();
+	unit_abilities::effect cth_effects(cth_specials, cth, backstab_pos);
+	cth = cth_effects.get_composite_value();
+		
+	cth = std::min(100, cth);
+	cth = std::max(0, cth);
+	chance_to_hit = cth;
 
 	int base_damage = weapon->modified_damage(backstab_pos);
 	int damage_multiplier = 100;
