@@ -33,9 +33,9 @@ wesnothd \- Bitva o \fBWesnoth\fP \- síťový server pro hru více hráčů
 .
 .SH POPIS
 .
-Manages Battle for Wesnoth multiplayer games. See
-https://www.wesnoth.org/wiki/ServerAdministration on what commands the
-server accepts via the wesnoth client (/query ...) or the fifo.
+Součást Bitvy o Wesnoth spravující hry více hráčů. Na
+https://www.wesnoth.org/wiki/ServerAdministration lze nalézt příkazy, které
+server akceptuje, a to jak přes fifo, tak přímo od klienta wesnoth.
 .
 .SH VOLBY
 .
@@ -113,9 +113,9 @@ metaznaky \fB*\fP a \fB?\fP. Více viz. \fBglob\fP(7). Implicitní hodnota je:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time path
-(default: \fB/var/run/wesnothd/socket\fP).
+Cesta k fifo, do nějž můžete posílat příkazy serveru (stejně jako pomocí
+/query z klienta). Pokud není explicitně určena, je použita výchozí hodnota
+určená při kompilaci (výchozí \fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 Maximální počet zpráv, které jsou přijaty během
@@ -278,7 +278,7 @@ Cyril Bouthors <cyril@bouthors.org>. Překlad Oto 'tapik' Buchta
 <tapik@buchtovi.cz> a Vladimír Slávik
 <slavik.vladimir@seznam.cz>.
 .br
-Visit the official homepage: https://www.wesnoth.org/
+Navštivte oficiální stránky: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .

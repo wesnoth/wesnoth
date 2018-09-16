@@ -116,8 +116,8 @@ values (used if nothing is specified) are:
 .TP 
 \fBfifo_path\fP
 The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time path
-(default: \fB/var/run/wesnothd/socket\fP).
+\&... from wesnoth). The compile\-time path is used by default if it is not
+specified (default: \fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 The number of allowed messages in \fBmessages_time_period\fP. (default: \fB4\fP)
@@ -141,8 +141,8 @@ The password used to gain admin privileges (via \fB/query admin
 .TP 
 \fBreplay_save_path\fP
 The directory where the server stores game replays. (Don't forget the
-trailing /!) Defaults to `' which means the directory wesnothd was started
-in.
+trailing /!) It is set to `' by default, which means the directory wesnothd
+was started in.
 .TP 
 \fBrestart_command\fP
 The command that the server uses to start a new server process via the
@@ -160,7 +160,7 @@ games. (default: \fBfalse\fP)
 .TP 
 \fBversions_accepted\fP
 A comma separated list of version strings to be accepted by the server. \fB*\fP
-and \fB?\fP from wild\-card patterns are supported.  (defaults to the
+and \fB?\fP from wild\-card patterns are supported. (default is the
 corresponding wesnoth version)
 .br
 Example: \fBversions_accepted="*"\fP accepts any version string.

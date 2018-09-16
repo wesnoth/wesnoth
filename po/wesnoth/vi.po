@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-09-09 11:38+0300\n"
+"POT-Creation-Date: 2018-09-16 10:04+0300\n"
 "PO-Revision-Date: 2014-06-05 22:13+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -3863,13 +3863,6 @@ msgid "unhealable"
 msgstr "không thể hồi máu"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:395 src/scripting/game_lua_kernel.cpp:2786
-#: src/scripting/game_lua_kernel.cpp:2821
-msgid "input"
-msgstr ""
-
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:74
 msgid "Victory:"
@@ -3881,21 +3874,13 @@ msgid "Defeat:"
 msgstr "Thua cuộc:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:57
-#, fuzzy
-#| msgid "(this turn left)"
-msgid "(this turn left)"
-msgid_plural "(%d turns left)"
-msgstr[0] "(còn lượt này)"
-
-#. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% lượng vàng được mang sang màn kế tiếp."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:152
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:156
 #: src/game_initialization/mp_game_utils.cpp:76
 msgid "Defeat enemy leader(s)"
 msgstr "Đánh bại người chỉ huy kẻ thù"
@@ -5411,7 +5396,7 @@ msgstr "lấy thông tin về người dùng $nick"
 msgid "(A) — admin command"
 msgstr "(A) - lệnh quản trị"
 
-#: src/chat_command_handler.hpp:73 src/menu_events.cpp:1151
+#: src/chat_command_handler.hpp:73 src/menu_events.cpp:1148
 msgid "(admin only)"
 msgstr "(chỉ quản trị)"
 
@@ -6687,11 +6672,11 @@ msgstr "Trở lại từ đầu"
 msgid "(press $hotkey to deactivate)"
 msgstr "(ấn $hotkey để ngừng kích hoạt)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:144 src/menu_events.cpp:1954
+#: src/hotkey/hotkey_handler_sp.cpp:144 src/menu_events.cpp:1951
 msgid "Planning mode activated!"
 msgstr "Đã kích hoạt chế độ lập kế hoạch!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:1957
+#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:1954
 msgid "Planning mode deactivated!"
 msgstr "Đã ngừng kích hoạt chế độ lập kế hoạch!"
 
@@ -6791,45 +6776,45 @@ msgstr "Cách sử dụng:"
 msgid "aliases:"
 msgstr "biệt danh:"
 
-#: src/menu_events.cpp:179
+#: src/menu_events.cpp:176
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Lưu bản đồ thành"
 
-#: src/menu_events.cpp:190
+#: src/menu_events.cpp:187
 msgid "Map saved."
 msgstr "Đã lưu bản đồ."
 
-#: src/menu_events.cpp:194
+#: src/menu_events.cpp:191
 msgid "Could not save the map: $msg"
 msgstr "Không thể lưu bản đồ: $msg"
 
-#: src/menu_events.cpp:223
+#: src/menu_events.cpp:220
 msgid "Message:"
 msgstr "Tin nhắn:"
 
-#: src/menu_events.cpp:225
+#: src/menu_events.cpp:222
 msgid "Send to observers only"
 msgstr "Chỉ gửi cho người quan sát"
 
-#: src/menu_events.cpp:226
+#: src/menu_events.cpp:223
 msgid "Send to allies only"
 msgstr "Chỉ gửi cho đồng minh"
 
-#: src/menu_events.cpp:275
+#: src/menu_events.cpp:272
 msgid "You have no units available to recruit."
 msgstr "Bạn không có đơn vị nào để tuyển."
 
-#: src/menu_events.cpp:314
+#: src/menu_events.cpp:311
 msgid "You do not have enough gold to recruit that unit"
 msgstr "Bạn không có đủ vàng để tuyển đơn vị đó"
 
-#: src/menu_events.cpp:350
+#: src/menu_events.cpp:347
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Bạn bị tách khỏi quân lính và không thể gọi lại họ"
 
-#: src/menu_events.cpp:369
+#: src/menu_events.cpp:366
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -6837,15 +6822,15 @@ msgstr ""
 "Không có quân lính nào để gọi lại\n"
 "(Bạn phải có quân lính sống sót từ màn chơi trước)"
 
-#: src/menu_events.cpp:373
+#: src/menu_events.cpp:370
 msgid "You currently can't recall at the highlighted location"
 msgstr "Bạn hiện không thể gọi lại ở vị trí được tô sáng"
 
-#: src/menu_events.cpp:387
+#: src/menu_events.cpp:384
 msgid "No unit recalled"
 msgstr ""
 
-#: src/menu_events.cpp:404
+#: src/menu_events.cpp:401
 #, fuzzy
 #| msgid "You must have at least 1 gold piece to recall a unit"
 #| msgid_plural "You must have at least $cost gold pieces to recall a unit"
@@ -6853,42 +6838,42 @@ msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgstr[0] "Bạn phải có ít nhất $cost lượng vàng để gọi lại một đơn vị"
 
-#: src/menu_events.cpp:544
+#: src/menu_events.cpp:541
 msgid "You cannot end your turn yet!"
 msgstr "Bạn chưa thể kết thúc lượt!"
 
-#: src/menu_events.cpp:557
+#: src/menu_events.cpp:554
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Bạn còn chưa bắt đầu lượt của bạn. Bạn có thực sự muốn kết thúc lượt không?"
 
-#: src/menu_events.cpp:566
+#: src/menu_events.cpp:563
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Một số đơn vị vẫn còn có thể di chuyển. Bạn có thực sự muốn kết thúc lượt "
 "không?"
 
-#: src/menu_events.cpp:575
+#: src/menu_events.cpp:572
 msgid "Some units have not moved. Do you really want to end your turn?"
 msgstr ""
 "Một số đơn vị không di chuyển. Bạn có thực sự muốn kết thúc lượt không?"
 
-#: src/menu_events.cpp:632
+#: src/menu_events.cpp:629
 msgid "Rename Unit"
 msgstr "Đổi tên đơn vị"
 
-#: src/menu_events.cpp:633
+#: src/menu_events.cpp:630
 msgid "Name:"
 msgstr "Tên:"
 
-#: src/menu_events.cpp:807
+#: src/menu_events.cpp:804
 #, fuzzy
 #| msgid "Clear all orders"
 msgid "Clear Labels"
 msgstr "Xóa mọi chỉ thị"
 
-#: src/menu_events.cpp:808
+#: src/menu_events.cpp:805
 #, fuzzy
 #| msgid "Are you sure you want to remove the following installed add-on?"
 #| msgid_plural ""
@@ -6896,108 +6881,108 @@ msgstr "Xóa mọi chỉ thị"
 msgid "Are you sure you want to clear map labels?"
 msgstr "Bạn có chắc bạn muốn xóa phần bổ sung đã cài đặt sau đây không?"
 
-#: src/menu_events.cpp:1003
+#: src/menu_events.cpp:1000
 msgid "Search"
 msgstr "Tìm kiếm"
 
-#: src/menu_events.cpp:1142
+#: src/menu_events.cpp:1139
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr "(D) - chỉ chế độ gỡ lỗi, (N) - chỉ chế độ mạng, (A) - chỉ quản trị"
 
-#: src/menu_events.cpp:1149
+#: src/menu_events.cpp:1146
 msgid "(debug command)"
 msgstr "(lệnh gỡ lỗi)"
 
-#: src/menu_events.cpp:1150
+#: src/menu_events.cpp:1147
 msgid "(network only)"
 msgstr "(chỉ chế độ mạng)"
 
-#: src/menu_events.cpp:1152
+#: src/menu_events.cpp:1149
 msgid "(not during other events)"
 msgstr ""
 
-#: src/menu_events.cpp:1181
+#: src/menu_events.cpp:1178
 msgid "Refresh gui."
 msgstr "Tải lại giao diện người dùng đồ họa."
 
-#: src/menu_events.cpp:1182
+#: src/menu_events.cpp:1179
 msgid "Switch a side to/from AI control."
 msgstr "Chuyển một phe thành/từ máy điều khiển."
 
-#: src/menu_events.cpp:1183 src/menu_events.cpp:1185
+#: src/menu_events.cpp:1180 src/menu_events.cpp:1182
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<phe> [on/off]]"
 
-#: src/menu_events.cpp:1184
+#: src/menu_events.cpp:1181
 msgid "Switch a side to/from idle state."
 msgstr "Chuyển một phe thành/từ trạng thái rảnh rỗi."
 
-#: src/menu_events.cpp:1188
+#: src/menu_events.cpp:1185
 msgid "<side> <nickname>"
 msgstr "<phe> <biệt danh>"
 
-#: src/menu_events.cpp:1188
+#: src/menu_events.cpp:1185
 msgid "Assign control of a side to a different player or observer."
 msgstr ""
 "Cấp quyền điều khiển một phe cho một người chơi hoặc người quan sát khác."
 
-#: src/menu_events.cpp:1189
+#: src/menu_events.cpp:1186
 msgid "Query the controller status of a side."
 msgstr "Truy vấn trạng thái điều khiển của một phe."
 
-#: src/menu_events.cpp:1190
+#: src/menu_events.cpp:1187
 msgid "<side>"
 msgstr "<phe>"
 
-#: src/menu_events.cpp:1191
+#: src/menu_events.cpp:1188
 msgid "Clear chat history."
 msgstr "Xóa lịch sử tán gẫu."
 
-#: src/menu_events.cpp:1192
+#: src/menu_events.cpp:1189
 msgid "Debug foreground terrain."
 msgstr "Gỡ lỗi địa hình cận cảnh."
 
-#: src/menu_events.cpp:1194
+#: src/menu_events.cpp:1191
 msgid "Debug layers from terrain under the mouse."
 msgstr "Gỡ lỗi lớp từ địa hình dưới con trỏ chuột."
 
-#: src/menu_events.cpp:1195
+#: src/menu_events.cpp:1192
 msgid "Show fps."
 msgstr "Hiện số khung hình trên giây."
 
-#: src/menu_events.cpp:1197
+#: src/menu_events.cpp:1194
 msgid "Save game."
 msgstr "Lưu trò chơi."
 
-#: src/menu_events.cpp:1199
+#: src/menu_events.cpp:1196
 msgid "Quit game."
 msgstr "Thoát trò chơi."
 
-#: src/menu_events.cpp:1202
+#: src/menu_events.cpp:1199
 msgid "Save and quit."
 msgstr "Lưu và thoát."
 
-#: src/menu_events.cpp:1204
+#: src/menu_events.cpp:1201
 msgid "Ignore replay errors."
 msgstr "Bỏ qua các lỗi phát lại."
 
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1202
 msgid "Disable autosaves."
 msgstr "Tắt chế độ lưu tự động."
 
-#: src/menu_events.cpp:1207
+#: src/menu_events.cpp:1204
 msgid "<id>"
 msgstr "<id>"
 
-#: src/menu_events.cpp:1207
+#: src/menu_events.cpp:1204
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "Chuyển sang màn kế tiếp, hoặc màn được xác định bởi 'id'"
 
-#: src/menu_events.cpp:1209
+#: src/menu_events.cpp:1206
 msgid "Choose next scenario"
 msgstr "Chọn màn kế tiếp"
 
-#: src/menu_events.cpp:1212
+#: src/menu_events.cpp:1209
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
@@ -7005,11 +6990,11 @@ msgstr ""
 "Thay đổi số lượt (và thời điểm trong ngày), hoặc tăng thêm một nếu không đưa "
 "ra số nào."
 
-#: src/menu_events.cpp:1212
+#: src/menu_events.cpp:1209
 msgid "[turn]"
 msgstr "[lượt]"
 
-#: src/menu_events.cpp:1215
+#: src/menu_events.cpp:1212
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
@@ -7017,203 +7002,203 @@ msgstr ""
 "Thay đổi giới hạn lượt đi, hoặc tắt giới hạn lượt đi nếu không đưa ra số nào "
 "hoặc đặt ở −1."
 
-#: src/menu_events.cpp:1215
+#: src/menu_events.cpp:1212
 msgid "[limit]"
 msgstr "[giới hạn]"
 
-#: src/menu_events.cpp:1217
+#: src/menu_events.cpp:1214
 msgid "Turn debug mode on."
 msgstr "Bật chế độ gỡ lỗi."
 
-#: src/menu_events.cpp:1218
+#: src/menu_events.cpp:1215
 msgid "Turn debug mode off."
 msgstr "Tắt chế độ gỡ lỗi."
 
-#: src/menu_events.cpp:1220 src/menu_events.cpp:1224
+#: src/menu_events.cpp:1217 src/menu_events.cpp:1221
 msgid "<command>[;<command>...]"
 msgstr "<lệnh>[;<lệnh>...]"
 
-#: src/menu_events.cpp:1220
+#: src/menu_events.cpp:1217
 msgid "Execute a Lua statement."
 msgstr "Thi hành một câu lệnh Lua."
 
-#: src/menu_events.cpp:1222
+#: src/menu_events.cpp:1219
 msgid "Grant higher privileges to Lua scripts."
 msgstr "Cấp đặc quyền cao hơn cho mã lệnh Lua."
 
-#: src/menu_events.cpp:1223
+#: src/menu_events.cpp:1220
 msgid "Set the command used by the custom command hotkey"
 msgstr "Thiết lập lệnh được sử dụng bởi phím lệnh tùy chỉnh"
 
-#: src/menu_events.cpp:1226
+#: src/menu_events.cpp:1223
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr "Mở hộp thoại cho phép thay đổi quyền điều khiển các phe NNC."
 
-#: src/menu_events.cpp:1227
+#: src/menu_events.cpp:1224
 msgid "Launch the gamestate inspector"
 msgstr "Khởi chạy trình kiểm tra trạng thái trò chơi"
 
-#: src/menu_events.cpp:1229
+#: src/menu_events.cpp:1226
 msgid "<name>[=<command>]"
 msgstr "<tên>[=<lệnh>]"
 
-#: src/menu_events.cpp:1229
+#: src/menu_events.cpp:1226
 msgid "Set or show alias to a command"
 msgstr "Thiết lập hoặc hiện bí danh một lệnh"
 
-#: src/menu_events.cpp:1231
+#: src/menu_events.cpp:1228
 msgid "<var>=<value>"
 msgstr "<biến>=<giá trị>"
 
-#: src/menu_events.cpp:1231
+#: src/menu_events.cpp:1228
 msgid "Set a scenario variable."
 msgstr "Thiết lập một biến của màn chơi."
 
-#: src/menu_events.cpp:1232
+#: src/menu_events.cpp:1229
 msgid "<var>"
 msgstr "<biến>"
 
-#: src/menu_events.cpp:1232
+#: src/menu_events.cpp:1229
 msgid "Show a scenario variable."
 msgstr "Hiện một biến của màn chơi."
 
-#: src/menu_events.cpp:1234
+#: src/menu_events.cpp:1231
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr "Sửa đổi một biến đơn vị. (Chỉ hỗ trợ các khóa mức trên cùng.)"
 
-#: src/menu_events.cpp:1240
+#: src/menu_events.cpp:1237
 msgid "Discover all units in help."
 msgstr "Khám phá tất cả các đơn vị trong trợ giúp."
 
-#: src/menu_events.cpp:1241
+#: src/menu_events.cpp:1238
 msgid "'Undiscover' all units in help."
 msgstr "'Tắt khám phá' tất cả các đơn vị trong trợ giúp."
 
-#: src/menu_events.cpp:1242
+#: src/menu_events.cpp:1239
 msgid "Create a unit."
 msgstr "Tạo một đơn vị."
 
-#: src/menu_events.cpp:1243
+#: src/menu_events.cpp:1240
 msgid "Toggle fog for the current player."
 msgstr "Bật tắt sương mù cho người chơi hiện thời."
 
-#: src/menu_events.cpp:1244
+#: src/menu_events.cpp:1241
 msgid "Toggle shroud for the current player."
 msgstr "Bật tắt màn che cho người chơi hiện thời."
 
-#: src/menu_events.cpp:1245
+#: src/menu_events.cpp:1242
 msgid "Give gold to the current player."
 msgstr "Thêm vàng cho người chơi hiện thời."
 
-#: src/menu_events.cpp:1246
+#: src/menu_events.cpp:1243
 msgid "Fire a game event."
 msgstr "Kích hoạt một sự kiện trò chơi."
 
-#: src/menu_events.cpp:1249
+#: src/menu_events.cpp:1246
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Bật tắt phủ tọa độ x,y trên các ô lục giác."
 
-#: src/menu_events.cpp:1252
+#: src/menu_events.cpp:1249
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Bật tắt phủ mã địa hình trên các ô lục giác."
 
-#: src/menu_events.cpp:1255
+#: src/menu_events.cpp:1252
 #, fuzzy
 #| msgid "Toggle overlaying of terrain codes on hexes."
 msgid "Toggle overlaying of number of bitmaps on hexes."
 msgstr "Bật tắt phủ mã địa hình trên các ô lục giác."
 
-#: src/menu_events.cpp:1257
+#: src/menu_events.cpp:1254
 msgid "Toggle planning mode."
 msgstr "Bật tắt chế độ lập kế hoạch."
 
-#: src/menu_events.cpp:1260
+#: src/menu_events.cpp:1257
 msgid "Access whiteboard options dialog."
 msgstr "Truy cập hộp thoại tùy chọn bảng trắng"
 
-#: src/menu_events.cpp:1380
+#: src/menu_events.cpp:1377
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "Không thể tìm thấy nhãn hoặc đơn vị chứa chuỗi '$search'."
 
-#: src/menu_events.cpp:1423
+#: src/menu_events.cpp:1420
 msgid "Can't droid invalid side: '$side'."
 msgstr "Không thể tự động hóa phe không hợp lệ: '$side'."
 
-#: src/menu_events.cpp:1428
+#: src/menu_events.cpp:1425
 msgid "Can't droid networked side: '$side'."
 msgstr "Không thể tự động hóa phe mạng: '$side'."
 
-#: src/menu_events.cpp:1434
+#: src/menu_events.cpp:1431
 msgid "Side '$side' is already droided."
 msgstr ""
 
-#: src/menu_events.cpp:1444
+#: src/menu_events.cpp:1441
 msgid "Side '$side' controller is now controlled by: AI."
 msgstr ""
 
-#: src/menu_events.cpp:1446
+#: src/menu_events.cpp:1443
 msgid "Side '$side' controller is now controlled by: human."
 msgstr ""
 
-#: src/menu_events.cpp:1454
+#: src/menu_events.cpp:1451
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can't droid a local ai side: '$side'."
 msgstr "Không thể tự động hóa phe không hợp lệ: '$side'."
 
-#: src/menu_events.cpp:1470
+#: src/menu_events.cpp:1467
 msgid "Can't idle invalid side: '$side'."
 msgstr "Không thể rảnh rỗi hóa phe không hợp lệ: '$side'."
 
-#: src/menu_events.cpp:1475
+#: src/menu_events.cpp:1472
 #, fuzzy
 #| msgid "Can't droid networked side: '$side'."
 msgid "Can't idle networked side: '$side'."
 msgstr "Không thể tự động hóa phe mạng: '$side'."
 
-#: src/menu_events.cpp:1480
+#: src/menu_events.cpp:1477
 #, fuzzy
 #| msgid "Can't idle invalid side: '$side'."
 msgid "Can't idle local ai side: '$side'."
 msgstr "Không thể rảnh rỗi hóa phe không hợp lệ: '$side'."
 
-#: src/menu_events.cpp:1540
+#: src/menu_events.cpp:1537
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Không thể thay đổi quyền điều khiển của phe không hợp lệ: '$side'."
 
-#: src/menu_events.cpp:1550
+#: src/menu_events.cpp:1547
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Không thể thay đổi quyền điều khiển của phe ngoài phạm vi: '$side'."
 
-#: src/menu_events.cpp:1567
+#: src/menu_events.cpp:1564
 msgid "Can't query control of invalid side: '$side'."
 msgstr "Không thể truy vấn quyền điều khiển của phe không hợp lệ: '$side'."
 
-#: src/menu_events.cpp:1574
+#: src/menu_events.cpp:1571
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr "Không thể truy vấn quyền điều khiển của phe ngoài phạm vi: '$side'."
 
-#: src/menu_events.cpp:1692
+#: src/menu_events.cpp:1689
 msgid "Choose Scenario (Debug!)"
 msgstr "Chọn màn (Gỡ lỗi!)"
 
-#: src/menu_events.cpp:1728
+#: src/menu_events.cpp:1725
 msgid "Debug mode activated!"
 msgstr "Đã kích hoạt chế độ gỡ lỗi!"
 
-#: src/menu_events.cpp:1731
+#: src/menu_events.cpp:1728
 msgid "Debug mode not available in network games"
 msgstr "Không dùng được chế độ gỡ lỗi trong trò chơi mạng"
 
-#: src/menu_events.cpp:1738
+#: src/menu_events.cpp:1735
 msgid "Debug mode deactivated!"
 msgstr "Đã ngừng kích hoạt chế độ gỡ lỗi!"
 
-#: src/menu_events.cpp:1758
+#: src/menu_events.cpp:1755
 msgid "WARNING! Unsafe Lua Mode"
 msgstr ""
 
-#: src/menu_events.cpp:1759
+#: src/menu_events.cpp:1756
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -7222,15 +7207,15 @@ msgid ""
 "Do not continue unless you really know what you are doing."
 msgstr ""
 
-#: src/menu_events.cpp:1764
+#: src/menu_events.cpp:1761
 msgid "Unsafe mode enabled!"
 msgstr "Đã kích hoạt chế độ không an toàn!"
 
-#: src/menu_events.cpp:1813
+#: src/menu_events.cpp:1810
 msgid "Variable not found"
 msgstr "Không tìm thấy biến"
 
-#: src/menu_events.cpp:1861
+#: src/menu_events.cpp:1858
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
@@ -7238,19 +7223,19 @@ msgstr ""
 "Phân loại không hợp lệ: '$alignment', phải là một trong: chính thống, trung "
 "lập, hỗn độn hoặc tính ngưỡng."
 
-#: src/menu_events.cpp:1887
+#: src/menu_events.cpp:1884
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "Bạn có muốn xóa tất cả các đơn vị quân đã khám phá khỏi mục trợ giúp?"
 
-#: src/menu_events.cpp:1901
+#: src/menu_events.cpp:1898
 msgid "Invalid unit type"
 msgstr "Kiểu đơn vị không hợp lệ"
 
-#: src/menu_events.cpp:1908
+#: src/menu_events.cpp:1905
 msgid "Invalid location"
 msgstr "Vị trí không hợp lệ"
 
-#: src/menu_events.cpp:1981 src/menu_events.cpp:2007
+#: src/menu_events.cpp:1978 src/menu_events.cpp:2004
 msgid "prompt^Command:"
 msgstr "Lệnh:"
 
@@ -7323,7 +7308,7 @@ msgstr "thời gian còn lại cho lượt hiện tại"
 msgid "current local time"
 msgstr "giờ cục bộ hiện tại"
 
-#: src/play_controller.cpp:984
+#: src/play_controller.cpp:992
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7331,11 +7316,11 @@ msgstr ""
 "Trò chơi bị mất đồng bộ. Tiếp tục có thể sẽ không có nhiều ý nghĩa. Bạn có "
 "muốn lưu trò chơi không?"
 
-#: src/play_controller.cpp:985
+#: src/play_controller.cpp:993
 msgid "Error details:"
 msgstr "Chi tiết lỗi:"
 
-#: src/play_controller.cpp:1274
+#: src/play_controller.cpp:1282
 msgid "No objectives available"
 msgstr "Không có mục tiêu"
 
@@ -7515,7 +7500,7 @@ msgstr "Đơn vị này đã bị hóa đá. Nó không thể di chuyển hay t�
 msgid "Ability: "
 msgstr "Khả năng: "
 
-#: src/reports.cpp:395 src/reports.cpp:835
+#: src/reports.cpp:395 src/reports.cpp:840
 msgid " (inactive)"
 msgstr " (không hoạt động)"
 
@@ -7527,181 +7512,181 @@ msgstr "Sức kháng cự: "
 msgid "(Att / Def)"
 msgstr "(TC / PT)"
 
-#: src/reports.cpp:475
+#: src/reports.cpp:480
 msgid "Experience Modifier: "
 msgstr "Hệ số kinh nghiệm: "
 
-#: src/reports.cpp:526
+#: src/reports.cpp:531
 msgid "Terrain: "
 msgstr "Địa hình: "
 
-#: src/reports.cpp:543
+#: src/reports.cpp:548
 msgid "maximum^max."
 msgstr "tối đa"
 
-#: src/reports.cpp:543
+#: src/reports.cpp:548
 msgid "minimum^min."
 msgstr "tối thiểu"
 
-#: src/reports.cpp:548
+#: src/reports.cpp:553
 msgid "Defense: "
 msgstr "Phòng thủ: "
 
-#: src/reports.cpp:571
+#: src/reports.cpp:576
 msgid "vision: "
 msgstr "tầm nhìn: "
 
-#: src/reports.cpp:599
+#: src/reports.cpp:604
 msgid "Movement Costs:"
 msgstr "Chi phí di chuyển:"
 
-#: src/reports.cpp:697 src/reports.cpp:913 src/reports.cpp:925
+#: src/reports.cpp:702 src/reports.cpp:918 src/reports.cpp:930
 msgid "Weapon: "
 msgstr "Vũ khí: "
 
-#: src/reports.cpp:698 src/reports.cpp:914
+#: src/reports.cpp:703 src/reports.cpp:919
 msgid "Damage: "
 msgstr "Lượng thiệt hại: "
 
-#: src/reports.cpp:702
+#: src/reports.cpp:707
 msgid "Base damage: "
 msgstr "Lượng thiệt hại cơ bản: "
 
-#: src/reports.cpp:704 src/reports.cpp:738 src/reports.cpp:748
+#: src/reports.cpp:709 src/reports.cpp:743 src/reports.cpp:753
 msgid "With specials: "
 msgstr "Có tính đặc biệt: "
 
-#: src/reports.cpp:707
+#: src/reports.cpp:712
 msgid "Time of day: "
 msgstr "Thời điểm trong ngày: "
 
-#: src/reports.cpp:711
+#: src/reports.cpp:716
 msgid "Leadership: "
 msgstr "Lãnh đạo: "
 
-#: src/reports.cpp:715
+#: src/reports.cpp:720
 msgid "Slowed: "
 msgstr "Bị chậm: "
 
-#: src/reports.cpp:719
+#: src/reports.cpp:724
 msgid "Attacks: "
 msgstr "Đòn tấn công: "
 
-#: src/reports.cpp:723
+#: src/reports.cpp:728
 msgid "Max swarm bonus: "
 msgstr "Thưởng liên hoàn tối đa: "
 
-#: src/reports.cpp:724 src/reports.cpp:743
+#: src/reports.cpp:729 src/reports.cpp:748
 msgid "Swarm: "
 msgstr "Liên hoàn: "
 
-#: src/reports.cpp:725 src/reports.cpp:736 src/reports.cpp:747
+#: src/reports.cpp:730 src/reports.cpp:741 src/reports.cpp:752
 msgid "Base attacks: "
 msgstr "Đòn tấn công cơ bản: "
 
-#: src/reports.cpp:731
+#: src/reports.cpp:736
 msgid "Specials: "
 msgstr "Tính đặc biệt: "
 
-#: src/reports.cpp:741
+#: src/reports.cpp:746
 msgid "Subject to swarm: "
 msgstr "Chịu liên hoàn: "
 
-#: src/reports.cpp:760
+#: src/reports.cpp:765
 msgid "Weapon range: "
 msgstr "Tầm xa của vũ khí: "
 
-#: src/reports.cpp:761
+#: src/reports.cpp:766
 msgid "Damage type: "
 msgstr "Kiểu thiệt hại: "
 
-#: src/reports.cpp:762
+#: src/reports.cpp:767
 msgid "Damage versus: "
 msgstr "Lượng thiệt hại đối với: "
 
-#: src/reports.cpp:806
+#: src/reports.cpp:811
 msgid "Accuracy:"
 msgstr "Độ chính xác:"
 
-#: src/reports.cpp:811
+#: src/reports.cpp:816
 msgid "Parry:"
 msgstr "Đỡ đòn:"
 
-#: src/reports.cpp:833
+#: src/reports.cpp:838
 msgid "Weapon special: "
 msgstr "Tính đặc biệt của vũ khí: "
 
-#: src/reports.cpp:897
+#: src/reports.cpp:902
 msgid "weapon^None"
 msgstr ""
 
-#: src/reports.cpp:926
+#: src/reports.cpp:931
 msgid "Total damage"
 msgstr "Tổng thiệt hại"
 
-#: src/reports.cpp:988
+#: src/reports.cpp:993
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "Người tấn công"
 
-#: src/reports.cpp:1124 src/reports.cpp:1176
+#: src/reports.cpp:1129 src/reports.cpp:1181
 msgid "Lawful units: "
 msgstr "Đơn vị chính thống: "
 
-#: src/reports.cpp:1126 src/reports.cpp:1178
+#: src/reports.cpp:1131 src/reports.cpp:1183
 msgid "Neutral units: "
 msgstr "Đơn vị trung lập: "
 
-#: src/reports.cpp:1127 src/reports.cpp:1179
+#: src/reports.cpp:1132 src/reports.cpp:1184
 msgid "Chaotic units: "
 msgstr "Đơn vị hỗn độn: "
 
-#: src/reports.cpp:1129 src/reports.cpp:1181
+#: src/reports.cpp:1134 src/reports.cpp:1186
 msgid "Liminal units: "
 msgstr "Đơn vị tính ngưỡng: "
 
-#: src/reports.cpp:1240
+#: src/reports.cpp:1245
 #, fuzzy
 #| msgid "Turn "
 msgid "Turn Number"
 msgstr "Lượt "
 
-#: src/reports.cpp:1242
+#: src/reports.cpp:1247
 msgid ""
 "When the game reaches the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 
-#: src/reports.cpp:1267
+#: src/reports.cpp:1272
 msgid "Gold"
 msgstr "Vàng"
 
-#: src/reports.cpp:1267
+#: src/reports.cpp:1272
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 
-#: src/reports.cpp:1286
+#: src/reports.cpp:1291
 msgid "The fraction of known villages that your side has captured."
 msgstr ""
 
-#: src/reports.cpp:1286
+#: src/reports.cpp:1291
 msgid "Villages"
 msgstr "Làng"
 
-#: src/reports.cpp:1291
+#: src/reports.cpp:1296
 msgid "The total number of units on your side."
 msgstr ""
 
-#: src/reports.cpp:1291
+#: src/reports.cpp:1296
 #, fuzzy
 #| msgid "units"
 msgid "Units"
 msgstr "đơn vị"
 
-#: src/reports.cpp:1301
+#: src/reports.cpp:1306
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. The second is the "
@@ -7709,37 +7694,37 @@ msgid ""
 "the amount of gold that would be deducted if you lost all villages."
 msgstr ""
 
-#: src/reports.cpp:1301
+#: src/reports.cpp:1306
 msgid "Upkeep"
 msgstr "Phí bảo trì"
 
-#: src/reports.cpp:1338
+#: src/reports.cpp:1343
 msgid "Income"
 msgstr "Thu nhập"
 
-#: src/reports.cpp:1338
+#: src/reports.cpp:1343
 msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
 msgstr ""
 
-#: src/reports.cpp:1506
+#: src/reports.cpp:1511
 msgid "Observers:"
 msgstr "Người quan sát:"
 
-#: src/reports.cpp:1548
+#: src/reports.cpp:1553
 msgid "Clock"
 msgstr ""
 
-#: src/reports.cpp:1560
+#: src/reports.cpp:1565
 msgid "Battery"
 msgstr ""
 
-#: src/reports.cpp:1589
+#: src/reports.cpp:1594
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1589
+#: src/reports.cpp:1594
 msgid "Turn Countdown"
 msgstr ""
 
@@ -7840,6 +7825,11 @@ msgstr "Lưu trò chơi"
 
 #: src/savegame.cpp:638
 msgid "Game state is corrupted"
+msgstr ""
+
+#: src/scripting/game_lua_kernel.cpp:2786
+#: src/scripting/game_lua_kernel.cpp:2821
+msgid "input"
 msgstr ""
 
 #: src/serialization/parser.cpp:153
@@ -8260,6 +8250,12 @@ msgstr "Ẩn kế hoạch đối với $player"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Tùy chọn bảng trắng"
+
+#, fuzzy
+#~| msgid "(this turn left)"
+#~ msgid "(this turn left)"
+#~ msgid_plural "(%d turns left)"
+#~ msgstr[0] "(còn lượt này)"
 
 #, fuzzy
 #~| msgid " (missing)"

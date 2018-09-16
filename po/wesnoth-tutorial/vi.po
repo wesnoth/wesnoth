@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-09-09 08:38 UTC\n"
+"POT-Creation-Date: 2018-09-16 07:03 UTC\n"
 "PO-Revision-Date: 2013-03-12 21:13+0800\n"
 "Last-Translator: Phạm Thành Nam\n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -163,16 +163,31 @@ msgstr "Nhấn chuột trái vào Konrad"
 msgid "Click on Li’sar"
 msgstr "Nhấn chuột trái vào Li’sar"
 
+#. [then]
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:208
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:216
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:316
+#: data/campaigns/tutorial/utils/utils.cfg:59
+#, fuzzy
+#| msgid ""
+#| "Don’t forget, you can press <b>u</b> to undo most things; useful for "
+#| "correcting mistakes."
+msgid ""
+"Don’t forget, you can press <b>u</b> to undo most things if you make a "
+"mistake."
+msgstr ""
+"Đừng quên, bạn có thể ấn <b>u</b> để đảo lại hầu hết các di chuyển, rất hữu "
+"ích để sửa chữa sai lầm."
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:357
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:365
 #, fuzzy
 #| msgid "Advancement"
 msgid "Movement"
 msgstr "Nâng cấp"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:210
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:359
 msgid ""
 "When you hover over or select a unit, in this case Konrad, the places he can "
 "move to are highlighted. All units have a certain number of <i>movement "
@@ -183,7 +198,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:218
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:367
 msgid ""
 "When you hover over or select a unit, in this case Li’sar, the places she "
 "can move to are highlighted. All units have a certain number of <i>movement "
@@ -194,45 +209,45 @@ msgid ""
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:229
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:378
 #, fuzzy
 #| msgid "Move Konrad to the keep"
 msgid "Move Konrad next to Delfador"
 msgstr "Di chuyển Konrad đến pháo đài"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:231
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:380
 #, fuzzy
 #| msgid "Move Li’sar to the keep"
 msgid "Move Li’sar next to Delfador"
 msgstr "Di chuyển Li’sar đến pháo đài"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:248
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:397
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "Chào ngài, Delfador! Đã đến lúc để tấn công thứ gì đó chưa?"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:249
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:398
 #, fuzzy
 #| msgid "Good morning, Delfador! Is it time to attack things?"
 msgid "female^Good morning, Delfador! Is it time to attack things?"
 msgstr "Chào ngài, Delfador! Đã đến lúc để tấn công thứ gì đó chưa?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:254
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:403
 msgid "Um, well..."
 msgstr "Hừm..."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:259
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:408
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr ""
 "Ngài đã tìm thấy một tên người thú cho cháu đánh rồi, phải không? Hay là một "
 "con quỷ núi?"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:260
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:409
 #, fuzzy
 #| msgid "Have you found an orc for me to fight, huh? A troll?"
 msgid "female^Have you found an orc for me to fight, huh? A troll?"
@@ -241,29 +256,29 @@ msgstr ""
 "con quỷ núi?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:265
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:414
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "Yên lặng nào! Ta sẽ triệu ra cho cháu một đối thủ..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:337
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:486
 msgid "... this quintain!"
 msgstr "... là hình nộm này!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:342
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:491
 msgid "A quintain? You want me to fight a dummy?"
 msgstr "Một hình nộm? Ngài muốn cháu chiến đấu với một con bù nhìn sao?"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:343
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:492
 #, fuzzy
 #| msgid "A quintain? You want me to fight a dummy?"
 msgid "female^A quintain? You want me to fight a dummy?"
 msgstr "Một hình nộm? Ngài muốn cháu chiến đấu với một con bù nhìn sao?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:349
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:498
 #, fuzzy
 #| msgid ""
 #| "female^Young lady, you have 32 hitpoints and a sword. I’m fairly sure "
@@ -275,7 +290,7 @@ msgstr ""
 "Cô gái trẻ, cháu có 32 máu và một thanh kiếm. Ta chắc chắn cháu sẽ thắng."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:354
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:503
 #, fuzzy
 #| msgid ""
 #| "female^Young lady, you have 32 hitpoints and a sword. I’m fairly sure "
@@ -287,13 +302,13 @@ msgstr ""
 "Cô gái trẻ, cháu có 32 máu và một thanh kiếm. Ta chắc chắn cháu sẽ thắng."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:361
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:368
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:510
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:517
 msgid "Attacking"
 msgstr "Tấn công"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:363
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:512
 #, fuzzy
 #| msgid ""
 #| "To attack the quintain, first select the attacker (Konrad) then the "
@@ -309,7 +324,7 @@ msgstr ""
 "bạn nhấn <b>Đồng ý</b>, Konrad sẽ tấn công."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:370
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:519
 #, fuzzy
 #| msgid ""
 #| "To attack the quintain, first select the attacker (Li’sar) then the "
@@ -325,42 +340,42 @@ msgstr ""
 "bạn nhấn <b>Đồng ý</b>, Li’sar sẽ tấn công."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:385
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:534
 msgid "Hey! This quintain fights back!"
 msgstr "Ơ! Hình nộm này đánh trả!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:390
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:539
 msgid "Hmm, perhaps we should have started with a doll."
 msgstr "Hừm, có lẽ chúng ta nên bắt đầu với một con búp bê."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:395
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:544
 msgid "Should I retreat?"
 msgstr "Cháu có nên rút lui không?"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:396
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:545
 #, fuzzy
 #| msgid "Should I retreat?"
 msgid "female^Should I retreat?"
 msgstr "Cháu có nên rút lui không?"
 
-#. [message]: speaker=Delfador
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:401
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:550
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:768
 msgid "Good idea!"
 msgstr "Ý kiến hay đấy!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:407
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:414
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:556
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:563
 msgid "Crowns"
 msgstr "Vương miện"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:409
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:558
 msgid ""
 "The tiny golden crown above your leader (Konrad) indicates he is a side "
 "leader. In most scenarios, you will lose if your leader is killed. Be sure "
@@ -368,7 +383,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:416
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:565
 msgid ""
 "The tiny golden crown above your leader (Li’sar) indicates she is a side "
 "leader. In most scenarios, you will lose if your leader is killed. Be sure "
@@ -376,7 +391,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:443
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:592
 msgid ""
 "Unfortunately, you’ve used up your turn attacking the quintain. The quintain "
 "now gets to attack."
@@ -385,12 +400,12 @@ msgstr ""
 "tới lượt hình nộm."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:448
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:597
 msgid "The <i>dummy</i> gets a turn?"
 msgstr "Con <i>bù nhìn</i> được một lượt?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:453
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:602
 #, fuzzy
 #| msgid ""
 #| "Yes. It’s a magical quintain.\n"
@@ -408,12 +423,12 @@ msgstr ""
 "máu. Cố lên nhé!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:460
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:609
 msgid "Turns"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:462
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:611
 msgid ""
 "Every turn, each side in a scenario gets a chance to make their move. Once "
 "you’ve completed everything you wish to do this turn, click on the <b>End "
@@ -425,27 +440,27 @@ msgid ""
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:465
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:525
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:622
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:614
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:679
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:785
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:390
 msgid "End your turn"
 msgstr "Kết thúc lượt"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:484
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:633
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr "Ối! Cháu cần trị thương! Chỉ còn $student_hp máu!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:485
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:634
 #, fuzzy
 #| msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgid "female^Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr "Ối! Cháu cần trị thương! Chỉ còn $student_hp máu!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:490
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:639
 #, fuzzy
 #| msgid ""
 #| "There is a village on the other side of the river. Visiting villages is a "
@@ -458,31 +473,31 @@ msgstr ""
 "khi kết thúc lượt trong một ngôi làng, cháu sẽ được điều trị. Mau đến đó!"
 
 #. [label]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:495
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:644
 msgid "Village"
 msgstr "Làng"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:503
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:657
 #, fuzzy
 #| msgid "Move Konrad to capture a village"
 msgid "Move Konrad to a nearby village"
 msgstr "Di chuyển Konrad để chiếm một ngôi làng"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:505
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:659
 #, fuzzy
 #| msgid "Move Li’sar to capture a village"
 msgid "Move Li’sar to a nearby village"
 msgstr "Di chuyển Li’sar để chiếm một ngôi làng"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:518
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:672
 msgid "Villages"
 msgstr "Làng"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:520
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:674
 #, fuzzy
 #| msgid ""
 #| "You have captured a village! It now flies your flag and has been added to "
@@ -503,7 +518,7 @@ msgstr ""
 "sở hữu."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:542
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:696
 msgid ""
 "Since you started your turn on a village, you regained some health! Villages "
 "heal units 8 hitpoints per turn, or enough to top off their health, "
@@ -512,7 +527,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:547
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:701
 #, fuzzy
 #| msgid ""
 #| "You’re about to be healed by $hp_difference hitpoints, but it’s time to "
@@ -523,19 +538,19 @@ msgstr ""
 "giúp để chống lại hình nộm đó."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:552
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:706
 msgid "I’ll recruit some elves!"
 msgstr "Cháu sẽ tuyển một số thần tiên!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:553
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:707
 #, fuzzy
 #| msgid "I’ll recruit some elves!"
 msgid "female^I’ll recruit some elves!"
 msgstr "Cháu sẽ tuyển một số thần tiên!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:558
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:712
 #, fuzzy
 #| msgid ""
 #| "A splendid idea. You can recruit two units if you return to the keep. You "
@@ -549,27 +564,27 @@ msgstr ""
 "Cháu có nhiều vàng để thực hiện điều đó."
 
 #. [label]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:563
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:717
 msgid "Keep"
 msgstr "Pháo đài"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:571
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:731
 msgid "Move Konrad to the keep"
 msgstr "Di chuyển Konrad đến pháo đài"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:573
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:733
 msgid "Move Li’sar to the keep"
 msgstr "Di chuyển Li’sar đến pháo đài"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:591
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:751
 msgid "Recruiting"
 msgstr "Tuyển quân"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:593
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:753
 #, fuzzy
 #| msgid ""
 #| "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> into the castle "
@@ -587,19 +602,19 @@ msgstr ""
 "Lần này bạn chỉ được cho một kiểu đơn vị để lựa chọn: đấu sĩ thần tiên."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:596
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:756
 #, fuzzy
 #| msgid "Left click on an Elvish Fighter"
 msgid "Recruit two Elvish Fighters"
 msgstr "Nhấn chuột trái vào một đấu sĩ thần tiên"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:615
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:775
 msgid "Traits"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:617
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:777
 msgid ""
 "Be sure to examine the <i>traits</i> of your new recruits. They are listed "
 "under its race in the sidebar. Traits can subtly affect how you use your "
@@ -609,13 +624,13 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:653
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:826
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgstr "Ơ, hình nộm vừa phục hồi 2 máu! Cháu cần tấn công nó thêm lần nữa!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:654
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:827
 #, fuzzy
 #| msgid ""
 #| "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
@@ -625,13 +640,13 @@ msgid ""
 msgstr "Ơ, hình nộm vừa phục hồi 2 máu! Cháu cần tấn công nó thêm lần nữa!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:659
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:832
 msgid "Yes, if a unit doesn’t do anything for a turn, it will slowly heal."
 msgstr ""
 "Đúng vậy, nếu một đơn vị không làm gì trong một lượt, nó sẽ hồi máu từ từ."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:664
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:837
 #, fuzzy
 #| msgid ""
 #| "But before you send your fighters against the quintain, you should know "
@@ -644,21 +659,21 @@ msgstr ""
 "hai kiểu tấn công..."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:669
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:842
 #, fuzzy
 #| msgid "I’ll tell them to use the one that does the most damage!"
 msgid "I’ll tell them to use the one that does more damage!"
 msgstr "Cháu sẽ bảo họ sử dụng kiểu gây nhiều thiệt hại nhất!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:670
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:843
 #, fuzzy
 #| msgid "I’ll tell them to use the one that does the most damage!"
 msgid "female^I’ll tell them to use the one that does more damage!"
 msgstr "Cháu sẽ bảo họ sử dụng kiểu gây nhiều thiệt hại nhất!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:675
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:848
 #, fuzzy
 #| msgid ""
 #| "And which would that be? The sword (5–4) or the bow (3–3)? I suppose "
@@ -671,14 +686,14 @@ msgstr ""
 "Thế thì sẽ là gì nào? Kiếm (5-4) hay cung (3-3)? Ta nghĩ cháu sẽ tìm ra..."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:678
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:851
 #, fuzzy
 #| msgid "Attack the orc with an Archer"
 msgid "Attack the quintain with your fighters"
 msgstr "Tấn công tên người thú bằng một cung thủ"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:689
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:862
 #, fuzzy
 #| msgid ""
 #| "You wouldn’t do anything stupid like charging that quintain yourself "
@@ -694,7 +709,7 @@ msgstr ""
 "Sử dụng các đấu sĩ cháu đã tuyển lúc đầu, họ sẽ giúp ích nhiều đấy."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:720
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:898
 #, fuzzy
 #| msgid ""
 #| "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
@@ -713,7 +728,7 @@ msgstr ""
 "Kết thúc lượt, sau đó tấn công lần nữa."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:732
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:910
 #, fuzzy
 #| msgid ""
 #| "Your elf used a bow, which is a <i>ranged</i> attack (3–3; or 3 damage, 3 "
@@ -729,22 +744,22 @@ msgstr ""
 "từ xa, chỉ có một đòn tấn công cận chiến, vì thế nó không thể tự bảo vệ."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:747
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:925
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "Tiếp tục tấn công bằng cả hai thần tiên đến khi hình nộm bị tiêu diệt!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:762
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:940
 msgid "Maybe you should recruit another elf?"
 msgstr "Có lẽ cháu nên tuyển một thần tiên khác?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:772
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:950
 msgid "Unit Descriptions"
 msgstr "Mô tả đơn vị"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:774
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:952
 msgid ""
 "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
@@ -752,12 +767,12 @@ msgstr ""
 "tiết."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:784
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:962
 msgid "Protect Your Troops"
 msgstr "Bảo vệ quân lính của bạn"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:786
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:964
 msgid ""
 "Remember to pull back wounded units into villages and recruit more if "
 "needed. Take special care of units with the highest <i>experience points "
@@ -768,12 +783,12 @@ msgstr ""
 "có thể nâng cấp và trở nên mạnh mẽ hơn."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:796
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:974
 msgid "Support"
 msgstr "Hỗ trợ"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:798
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:976
 msgid ""
 "Each village you control will <i>support</i> one unit for free. After that, "
 "each unit costs you one gold per turn."
@@ -782,17 +797,17 @@ msgstr ""
 "hạn đó, bạn phải trả phí cho mỗi đơn vị một lượng vàng mỗi lượt."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:808
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:986
 msgid "You had really better finish off that quintain."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:818
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:996
 msgid "Advancement"
 msgstr "Nâng cấp"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:820
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:998
 #, fuzzy
 #| msgid ""
 #| "When a unit gains enough experience points (the <i>experience bar</i>, if "
@@ -814,12 +829,12 @@ msgstr ""
 "đơn vị cấp độ 1."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:830
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1008
 msgid "Defenses"
 msgstr "Phòng thủ"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:833
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1011
 #, fuzzy
 #| msgid ""
 #| "Whenever one of your units is selected, you’ll see varying percentages as "
@@ -846,22 +861,22 @@ msgstr ""
 "có cơ hội đánh trúng 70% bất kể địa hình mà đối thủ của nó chiếm."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:845
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1023
 msgid "Agh! This training is too much for me..."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:846
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1024
 msgid "female^Agh! This training is too much for me..."
 msgstr ""
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:876
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1060
 msgid "The quintain is destroyed, and I have gained more experience!"
 msgstr "Hình nộm đã bị tiêu diệt, và mình vừa giành được thêm kinh nghiệm!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:881
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1065
 #, fuzzy
 #| msgid ""
 #| "Yes, you gain experience through battle, especially by killing an "
@@ -878,7 +893,7 @@ msgstr ""
 "ta có việc thực sự cần làm..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:887
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1071
 #, fuzzy
 #| msgid ""
 #| " Now, Konrad, I will leave you with more dummies to practice on! After "
@@ -891,7 +906,7 @@ msgstr ""
 "có công việc thực sự cần làm..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:892
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1076
 #, fuzzy
 #| msgid ""
 #| " Now, Li’sar, I will leave you with more dummies to practice on! After "
@@ -904,12 +919,12 @@ msgstr ""
 "sẽ có công việc thực sự cần làm..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:968
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1152
 msgid "Note"
 msgstr "Ghi chú"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:970
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1154
 msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
@@ -918,26 +933,26 @@ msgstr ""
 "bạn có thể giết được chúng lần lượt từng con một."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:979
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1163
 msgid ""
 "Well, I think I know the basics. Onwards! Maybe I can fight in a real battle "
 "next?"
 msgstr ""
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:980
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1164
 msgid ""
 "female^Well, I think I know the basics. Onwards! Maybe I can fight in a real "
 "battle next?"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:996
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1180
 msgid "Victory"
 msgstr "Chiến thắng"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:998
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1182
 #, fuzzy
 #| msgid ""
 #| "After your victory notice, the map will be grayed out to indicate that "
@@ -2185,19 +2200,6 @@ msgstr ""
 #: data/campaigns/tutorial/utils/utils.cfg:57
 msgid "Undo"
 msgstr "Đảo lại"
-
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/utils/utils.cfg:59
-#, fuzzy
-#| msgid ""
-#| "Don’t forget, you can press <b>u</b> to undo most things; useful for "
-#| "correcting mistakes."
-msgid ""
-"Don’t forget, you can press <b>u</b> to undo most things if you make a "
-"mistake."
-msgstr ""
-"Đừng quên, bạn có thể ấn <b>u</b> để đảo lại hầu hết các di chuyển, rất hữu "
-"ích để sửa chữa sai lầm."
 
 #: data/campaigns/tutorial/utils/utils.cfg:95
 msgid ""

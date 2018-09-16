@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-09-09 11:38+0300\n"
+"POT-Creation-Date: 2018-09-16 10:03+0300\n"
 "PO-Revision-Date: 2018-09-14 22:43+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
@@ -2658,7 +2658,7 @@ msgstr "Nastavení rozvržení dne"
 #: data/gui/window/game_save_message.cfg:92
 #: data/gui/window/game_save_oos.cfg:90
 #: data/gui/window/screenshot_notification.cfg:120
-#: src/gui/dialogs/unit_recall.cpp:259
+#: src/gui/dialogs/unit_recall.cpp:264
 msgid "Name:"
 msgstr "Jméno:"
 
@@ -5319,7 +5319,7 @@ msgstr "XP"
 #. [toggle_button]: id=sort_4
 #: data/gui/window/unit_list.cfg:177 data/gui/window/unit_recall.cfg:89
 #: src/gui/widgets/unit_preview_pane.cpp:351
-#: src/gui/widgets/unit_preview_pane.cpp:494
+#: src/gui/widgets/unit_preview_pane.cpp:500
 msgid "Traits"
 msgstr "Vlastnosti"
 
@@ -5533,7 +5533,7 @@ msgstr "Spojená skupina '$id' má více definicí,"
 #: src/gui/widgets/scroll_label.cpp:220 src/gui/widgets/scrollbar_panel.cpp:98
 #: src/gui/widgets/size_lock.cpp:125 src/gui/widgets/stacked_widget.cpp:241
 #: src/gui/widgets/toggle_panel.cpp:402 src/gui/widgets/tree_view.cpp:313
-#: src/gui/widgets/unit_preview_pane.cpp:580
+#: src/gui/widgets/unit_preview_pane.cpp:586
 msgid "No grid defined."
 msgstr "Není definována žádná mřížka."
 
@@ -6449,33 +6449,33 @@ msgstr "$count|× $name"
 msgid "Choose Test"
 msgstr "Vybrat Test"
 
-#: src/gui/dialogs/unit_recall.cpp:258 src/hotkey/hotkey_command.cpp:96
+#: src/gui/dialogs/unit_recall.cpp:263 src/hotkey/hotkey_command.cpp:96
 msgid "Rename Unit"
 msgstr "Přejmenuj"
 
-#: src/gui/dialogs/unit_recall.cpp:291
+#: src/gui/dialogs/unit_recall.cpp:296
 msgid "This unit is loyal and requires no upkeep."
 msgstr ""
 
-#: src/gui/dialogs/unit_recall.cpp:292 src/gui/dialogs/unit_recall.cpp:297
-#: src/gui/dialogs/unit_recall.cpp:302
+#: src/gui/dialogs/unit_recall.cpp:297 src/gui/dialogs/unit_recall.cpp:302
+#: src/gui/dialogs/unit_recall.cpp:307
 msgid "Do you really want to dismiss him?"
 msgstr "Opravdu ho chceš propustit?"
 
-#: src/gui/dialogs/unit_recall.cpp:293 src/gui/dialogs/unit_recall.cpp:298
-#: src/gui/dialogs/unit_recall.cpp:303
+#: src/gui/dialogs/unit_recall.cpp:298 src/gui/dialogs/unit_recall.cpp:303
+#: src/gui/dialogs/unit_recall.cpp:308
 msgid "Do you really want to dismiss her?"
 msgstr "Opravdu ji chceš propustit?"
 
-#: src/gui/dialogs/unit_recall.cpp:296
+#: src/gui/dialogs/unit_recall.cpp:301
 msgid "This unit is an experienced one, having advanced levels."
 msgstr ""
 
-#: src/gui/dialogs/unit_recall.cpp:301
+#: src/gui/dialogs/unit_recall.cpp:306
 msgid "This unit is close to advancing a level."
 msgstr ""
 
-#: src/gui/dialogs/unit_recall.cpp:307
+#: src/gui/dialogs/unit_recall.cpp:312
 msgid "Dismiss Unit"
 msgstr "Propusť jednotku"
 
@@ -6647,29 +6647,29 @@ msgstr "Lvl $lvl"
 #: src/gui/widgets/unit_preview_pane.cpp:308
 #: src/gui/widgets/unit_preview_pane.cpp:321
 #: src/gui/widgets/unit_preview_pane.cpp:461
-#: src/gui/widgets/unit_preview_pane.cpp:474
+#: src/gui/widgets/unit_preview_pane.cpp:480
 msgid "HP: "
 msgstr "HP: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:310
 #: src/gui/widgets/unit_preview_pane.cpp:326
-#: src/gui/widgets/unit_preview_pane.cpp:464
-#: src/gui/widgets/unit_preview_pane.cpp:479
+#: src/gui/widgets/unit_preview_pane.cpp:463
+#: src/gui/widgets/unit_preview_pane.cpp:485
 msgid "XP: "
 msgstr "XP: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:328
-#: src/gui/widgets/unit_preview_pane.cpp:481
+#: src/gui/widgets/unit_preview_pane.cpp:487
 msgid "Experience Modifier: "
 msgstr "Modifikátor zkušenostních bodů: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:331
-#: src/gui/widgets/unit_preview_pane.cpp:484
+#: src/gui/widgets/unit_preview_pane.cpp:490
 msgid "MP: "
 msgstr "MP: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:369
-#: src/gui/widgets/unit_preview_pane.cpp:512
+#: src/gui/widgets/unit_preview_pane.cpp:518
 msgid "Abilities"
 msgstr "Schopnosti"
 

@@ -34,9 +34,9 @@ wesnothd \- Serveur pour jeu multijoueur en réseau de Bataille pour
 .
 .SH DESCRIPTION
 .
-Manages Battle for Wesnoth multiplayer games. See
-https://www.wesnoth.org/wiki/ServerAdministration on what commands the
-server accepts via the wesnoth client (/query ...) or the fifo.
+Gère les jeux multijoueurs de Bataille pour Wesnoth. Voir les commandes que
+le serveur accepte via le client wesnoth (/query) ou via une fifo sur
+https://www.wesnoth.org/wiki/ServerAdministration.
 .
 .SH OPTIONS
 .
@@ -116,9 +116,10 @@ par défaut (utilisées si rien n'est précisé) sont\ :
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time path
-(default: \fB/var/run/wesnothd/socket\fP).
+Chemin de la fifo dans laquelle vous pouvez envoyer des commandes au serveur
+(comme les /query depuis wesnoth). Si elle n'est pas précisée, le chemin est
+celui prédéfini lors de la compilation (valeur par défaut\ :
+\fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 Nombre maximum de messages permis en \fBmessages_time_period\fP (par défaut :
@@ -283,7 +284,7 @@ Soliton <soliton.de@gmail.com> et Thomas Baumhauer
 <thomas.baumhauer@gmail.com>. Ce manuel a été à l'origine écrit par
 Cyril Bouthors <cyril@bouthors.org>.
 .br
-Visit the official homepage: https://www.wesnoth.org/
+Rendez\-vous sur la page d'accueil officielle\ : https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
