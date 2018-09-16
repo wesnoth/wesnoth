@@ -157,7 +157,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	}
 
 	// Compute chance to hit.
-	int tmp_chance_to_hit = opp.defense_modifier(resources::gameboard->map().get_terrain(opp_loc)) + weapon->accuracy()
+    int tmp_chance_to_hit = opp.defense_modifier(resources::gameboard->map().get_terrain(opp_loc)) + weapon->accuracy()
 		- (opp_weapon ? opp_weapon->parry() : 0);
 
 	if(tmp_chance_to_hit > 100) {
