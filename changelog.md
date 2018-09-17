@@ -51,34 +51,34 @@
 
 ## Version 1.14.4+dev
  ### AI
-  * Fix AI ignoring teleport locations when moving leader to leader goals.
+   * Fix AI ignoring teleport locations when moving leader to leader goals.
  ### Campaigns
-  * Heir to the Throne:
-    * S6: Allow canceling an attack when a move+attack spawns enemy units (issue #3459)
-    * S6: Change the trigger for spawning undead reinforcements (issue #3459)
-    * S17: Add dialog explaining the lava game mechanic and an easter egg (issue #3473)
-  * Liberty:
-    * S3: Add story and war drums music
-  * Northern Rebirth:
-    * S12: empty sides are hidden
-    * S13: allied leaders whose death causes defeat won't leave their keep and
-      the lich brothers and Krash got more gold
-  * Sceptre of Fire:
-    * S4: a cave entrance has been added.
-    * S5: Gryphon Riders are now available starting form S5 (formerly S3).
-    * S7: it's now impossible to kill all pursuers.
-  * Secrets of the Ancients:
-    * Fix dialog said by wrong unit & revert previous fix (issue #3294)
-  * The Hammer of Thursagan:
-    * S10: Fix objectives requiring too much of the player
-  * The South Guard:
-    * S2: the case where Deoran is not sent to the Citadel is handled better.
-    * S2: enemy units will no longer neutralize villages instead of capturing or burning them.
-      This also means certain units will no longer be hidden in the Game Stats list.
-    * S4: bodyguards are never spawned next to other units, and always in forest.
-    * S5: zombies have now one castle with two leaders.
-    * S6a: mermen leave after this scenario and will no longer be available.
-    * S7a & S8a: a certain hero may now die.
+   * Heir to the Throne:
+     * S6: Allow canceling an attack when a move+attack spawns enemy units (issue #3459)
+     * S6: Change the trigger for spawning undead reinforcements (issue #3459)
+     * S17: Add dialog explaining the lava game mechanic and an easter egg (issue #3473)
+   * Liberty:
+     * S3: Add story and war drums music
+   * Northern Rebirth:
+     * S12: empty sides are hidden
+     * S13: allied leaders whose death causes defeat won't leave their keep and
+       the lich brothers and Krash got more gold
+   * Sceptre of Fire:
+     * S4: a cave entrance has been added.
+     * S5: Gryphon Riders are now available starting form S5 (formerly S3).
+     * S7: it's now impossible to kill all pursuers.
+   * Secrets of the Ancients:
+     * Fix dialog said by wrong unit & revert previous fix (issue #3294)
+   * The Hammer of Thursagan:
+     * S10: Fix objectives requiring too much of the player
+   * The South Guard:
+     * S2: the case where Deoran is not sent to the Citadel is handled better.
+     * S2: enemy units will no longer neutralize villages instead of capturing or burning them.
+       This also means certain units will no longer be hidden in the Game Stats list.
+     * S4: bodyguards are never spawned next to other units, and always in forest.
+     * S5: zombies have now one castle with two leaders.
+     * S6a: mermen leave after this scenario and will no longer be available.
+     * S7a & S8a: a certain hero may now die.
    * Tutorial:
      * Added more information to the Status Table prompt about how to access it (issue #2883).
    * Under the Burning Suns:
