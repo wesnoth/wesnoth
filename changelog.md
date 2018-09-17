@@ -2,26 +2,29 @@
 
 ## Version 1.14.5
  ### AI
+   * Fixed crash in AI code when a side has multiple leaders.
    * Fix AI ignoring teleport locations when moving leader to leader goals.
+   * Fast Micro AI: Fix bug crashing the AI when units with chance-to-hit
+     specials without id are on map.
  ### Campaigns
    * Heir to the Throne:
-     * S6: Allow canceling an attack when a move+attack spawns enemy units (issue #3459)
-     * S6: Change the trigger for spawning undead reinforcements (issue #3459)
-     * S17: Add dialog explaining the lava game mechanic and an easter egg (issue #3473)
+     * S6: Allow canceling an attack when a move+attack spawns enemy units (issue #3459).
+     * S6: Change the trigger for spawning undead reinforcements (issue #3459).
+     * S17: Add dialog explaining the lava game mechanic and an easter egg (issue #3473).
    * Liberty:
-     * S3: Add story and war drums music
+     * S3: Add story and war drums music.
    * Northern Rebirth:
-     * S12: empty sides are hidden
+     * S12: empty sides are hidden.
      * S13: allied leaders whose death causes defeat won't leave their keep and
-       the lich brothers and Krash got more gold
+       the lich brothers and Krash got more gold.
    * Sceptre of Fire:
      * S4: a cave entrance has been added.
      * S5: Gryphon Riders are now available starting form S5 (formerly S3).
      * S7: it's now impossible to kill all pursuers.
    * Secrets of the Ancients:
-     * Fix dialog said by wrong unit & revert previous fix (issue #3294)
+     * Fix dialog said by wrong unit & revert previous fix (issue #3294).
    * The Hammer of Thursagan:
-     * S10: Fix objectives requiring too much of the player
+     * S10: Fix objectives requiring too much of the player.
    * The South Guard:
      * S2: the case where Deoran is not sent to the Citadel is handled better.
      * S2: enemy units will no longer neutralize villages instead of capturing or burning them.
@@ -37,51 +40,49 @@
      * New graphics for Eloh.
  ### Multiplayer
    * A New Land: Fixed village gold being 1 instead of 2.
+   * Fixed Random Start Time not working (issue #3515).
+   * Fixed a possible crash when leaving a game as an observer (issue #3017).
+   * Fixed Start Game locked when other players abort the faction/leader selection
+     dialog (issue #3452).
+   * Fixed Skip Replay when joining MP campaigns.
+   * Fixed OOS errors when undoing after ally chat.
+   * Fixed game freezing upon droiding with Delayed Shroud Updates (issue #3453).
+   * Fixed require_scenario and require_era attributes.
  ### Language and i18n
    * Updated translations: British English, Chinese (Traditional), Czech, French,
-     German, Hungarian, Italian, Japanese, Scottish Gaelic, Ukrainian
+     German, Hungarian, Italian, Japanese, Scottish Gaelic, Ukrainian.
  ### User Interface
-   * On laptop computers we now show how much battery you have left
-   * MacOS: Fixed moving the mouse with a touchpad also scrolling GUI dialogs
-   * MacOS: Add build number to OS version report
-   * Fix layout of Preferences window with some localizations (such as Czech)
-   * Load Game now shows the chosen difficulty with the same name that you originally selected
-   * Load Game now shows the modifications enabled in the selected savegame (issue #3495)
-   * Force leader sprites larger than 72x72 to be downscaled in Load Game (issue #3474)
-   * Add left padding to dialog messages shown with a portrait on the right (issue #1938)
-   * Addon Manager uses clearer terms for sort order
-   * Fix reversed sort order by unit level in Unit List and Recall List
+   * On laptop computers we now show how much battery you have left.
+   * MacOS: Fixed moving the mouse with a touchpad also scrolling GUI dialogs.
+   * MacOS: Add build number to OS version report.
+   * Fix layout of Preferences window with some localizations (such as Czech).
+   * Load Game now shows the chosen difficulty with the same name that you originally selected.
+   * Load Game now shows the modifications enabled in the selected savegame (issue #3495).
+   * Force leader sprites larger than 72x72 to be downscaled in Load Game (issue #3474).
+   * Add left padding to dialog messages shown with a portrait on the right (issue #1938).
+   * Addon Manager uses clearer terms for sort order.
+   * Fix reversed sort order by unit level in Unit List and Recall Unit.
+   * Fixed crash in Recall Unit when no units match the filter (issue #3475).
  ### WML engine
    * Fixed [animate_unit] and [heal_unit] preventing unit halo from disappearing if the unit
-     dies later (issue #3509)
+     dies later (issue #3509).
  ### Miscellaneous and bug fixes
-   * Fix some minor problems with the macOS package
-   * Fixed crash when trying to attack with a unit without usable weapons (issue #3424)
-   * Fast Micro AI: Fix bug crashing the AI when units with chance-to-hit
-     specials without id are on map
+   * Fix some minor problems with the macOS package.
+   * Fixed crash when trying to attack with a unit without usable weapons (issue #3424).
    * Fixed the debug mode Create Unit dialog crashing when changing the gender
      of the previous selection after causing the list to come up empty using
      the filter box.
    * Allow searching by race and internal unit type id with the Create Unit
      filter box as well.
    * wmlxgettext is now included in release packages, so a separate download is no longer required to use it with GUI.pyw.
-   * Fixed possible crash when leaving a game as an observer #3017
-   * Fixed require_scenario and require_era attributes.
-   * Fixed skip replay when joining mp campaigns.
-   * Fixed oos errors when undoing after ally chat.
-   * Fixed crash whe pressing Reset replay. #3439
-   * Fixed 'start game' locked when other players abort flg dialog.  #3452
-   * Fixed game freezes on droiding when using dsu. #3453
+   * Fixed crash when pressing Reset replay (issue #3439).
    * Fixed editor cannot add starting location for > 9 players.
-   * Fixed crash in ai code when a side has multiple leaders.
-   * Fixed random start time not working. #3515
-   * Fixed crash in lua tstring comparision. #3541
-   * Fixed objectives at scenario start use old/cached values of conditions/variables (issue #3544)
-   * Show an error message when trying to open the lua console not in debug mode
-   * On enemy side's turn, don't scroll to that side's leader if it's invisible
-   * Fixed crash in recall list when no units matched the filter (issue #3475)
-   * Fixed :droid ignore its second argument
-   * Fixed :droid giving no feedback when successful
+   * Fixed crash in Lua tstring comparision (issue #3541).
+   * Fixed objectives at scenario start using old/cached values of conditions/variables (issue #3544).
+   * Show an error message when trying to open the Lua console while not in debug mode.
+   * On enemy side's turn, don't scroll to that side's leader if it's invisible.
+   * Fixed :droid ignoring its second argument.
+   * Fixed :droid giving no feedback when successful.
 
 ## Version 1.14.4
  ### Security Fixes
