@@ -475,7 +475,7 @@ void saved_game::post_scenario_generation(const config& old_scenario, config& ge
 		generated_scenario[str] = old_scenario[str];
 	}
 
-	// Preserve "story" form the scenario toplevel.
+	// Preserve "story" from the scenario toplevel.
 	// Note that it does not delete [story] tags in generated_scenario, so you can still have your story
 	// dependent on the generated scenario.
 	for(const config& story : old_scenario.child_range("story")) {

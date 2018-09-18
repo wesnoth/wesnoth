@@ -301,7 +301,7 @@ void playmp_controller::wait_for_upload()
 void playmp_controller::after_human_turn(){
 	if(saved_game_.mp_settings().mp_countdown)
 	{
-		//time_left + turn_bonus + (action_bouns * number of actions done)
+		//time_left + turn_bonus + (action_bonus * number of actions done)
 		const int new_time_in_secs = (current_team().countdown_time() / 1000)
 			+ saved_game_.mp_settings().mp_countdown_turn_bonus
 			+ saved_game_.mp_settings().mp_countdown_action_bonus * current_team().action_bonus_count();
