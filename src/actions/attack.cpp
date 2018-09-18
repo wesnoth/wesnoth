@@ -157,26 +157,20 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	}
 
 	// Compute chance to hit.
-    int tmp_chance_to_hit = opp.defense_modifier(resources::gameboard->map().get_terrain(opp_loc)) + weapon->accuracy()
+    signed int cth = opp.defense_modifier(resources::gameboard->map().get_terrain(opp_loc)) + weapon->accuracy()
 		- (opp_weapon ? opp_weapon->parry() : 0);
-
-	if(tmp_chance_to_hit > 100) {
-		tmp_chance_to_hit = 100;
-	}
+		
+	cth = utils::clamp(cth, 0, 100);
 
 	unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
-	unit_abilities::effect cth_effects(cth_specials, tmp_chance_to_hit, backstab_pos);
-	tmp_chance_to_hit = cth_effects.get_composite_value();
-		
-	if(tmp_chance_to_hit > 100) {
-		tmp_chance_to_hit = 100;
+	unit_abilities::effect cth_effects(cth_specials, cth, backstab_pos);
+	cth = cth_effects.get_composite_value();
+
+	if(opp.get_state("invulnerable")) {
+		cth = 0;
 	}
 
-	if(opp.get_state("invulnerable") || tmp_chance_to_hit < 0) {
-		tmp_chance_to_hit = 0;
-	}
-
-	chance_to_hit = tmp_chance_to_hit;
+	chance_to_hit = utils::clamp(cth, 0, 100);
 
 	// Compute base damage done with the weapon.
 	int base_damage = weapon->modified_damage(backstab_pos);
@@ -312,16 +306,13 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	}
 
 	signed int cth = 100 - opp_terrain_defense + weapon->accuracy() - (opp_weapon ? opp_weapon->parry() : 0);
-	cth = std::min(100, cth);
-	cth = std::max(0, cth);
+	cth = utils::clamp(cth, 0, 100);
 
 	unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
 	unit_abilities::effect cth_effects(cth_specials, cth, backstab_pos);
 	cth = cth_effects.get_composite_value();
 		
-	cth = std::min(100, cth);
-	cth = std::max(0, cth);
-	chance_to_hit = cth;
+	chance_to_hit = utils::clamp(cth, 0, 100);
 
 	int base_damage = weapon->modified_damage(backstab_pos);
 	int damage_multiplier = 100;
