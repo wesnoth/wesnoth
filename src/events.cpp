@@ -486,7 +486,7 @@ void pump()
 	}
 
 	// remove all inputs, draw events and only keep the last of the resize events
-	// This will turn horrible after ~38 days when the uint32_t wraps.
+	// This will turn horrible after ~49 days when the uint32_t wraps.
 	if(resize_found || SDL_GetTicks() <= last_resize_event.window.timestamp + resize_timeout) {
 		events.erase(std::remove_if(events.begin(), events.end(), remove_on_resize), events.end());
 	} else if(SDL_GetTicks() > last_resize_event.window.timestamp + resize_timeout && !last_resize_event_used) {

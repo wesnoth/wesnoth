@@ -2611,7 +2611,7 @@ void unit::parse_upkeep(const config::attribute_value& upkeep)
 	} else if(upkeep == upkeep_full::type()) {
 		upkeep_ = upkeep_full();
 	} else {
-		WRN_UT << "Fund invalid upkeep=\"" << upkeep <<  "\" in a unit" << std::endl;
+		WRN_UT << "Found invalid upkeep=\"" << upkeep <<  "\" in a unit" << std::endl;
 		upkeep_ = upkeep_full();
 	}
 }
