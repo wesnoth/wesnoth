@@ -100,6 +100,9 @@ public:
 	//returns a duplicate of the string span in a new[] allocated buffer
 	char* duplicate() const;
 
+	//counts how many copies of the given character the string span has
+	int count(char ch) const;
+
 private:
         const char* str_;
         unsigned int size_;
@@ -182,6 +185,9 @@ private:
 
 	int get_children(const string_span& name);
 	int get_children(const char* name);
+
+	static char* unescape_value(const string_span& value);
+	static void escape_value(const string_span& value, char** buffer);
 
 	void set_dirty();
 	void shift_buffers(ptrdiff_t offset);
