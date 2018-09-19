@@ -176,7 +176,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("password", po::value<std::string>(), "uses <password> when connecting to a server, ignoring other preferences.")
 		("path", "prints the path to the data directory and exits.")
 		("plugin", po::value<std::string>(), "(experimental) load a script which defines a wesnoth plugin. similar to --script below, but lua file should return a function which will be run as a coroutine and periodically woken up with updates.")
-		("render-image", po::value<two_strings>()->multitoken(), "takes two arguments: <image> <output>. Like screenshot, but instead of a map, takes a valid wesnoth 'image path string' with image path functions, and outputs to a windows .bmp file."
+		("render-image", po::value<two_strings>()->multitoken(), "takes two arguments: <image> <output>. Like screenshot, but instead of a map, takes a valid wesnoth 'image path string' with image path functions, and writes it to a .png file."
 #ifdef _WIN32
 		 " Implies --wconsole."
 #endif // _WIN32
