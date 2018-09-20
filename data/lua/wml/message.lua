@@ -475,5 +475,4 @@ function wesnoth.wml_actions.message(cfg)
 			if action ~= "none" then break end
 		end
 	end
-	wesnoth.delay(0)
 end
