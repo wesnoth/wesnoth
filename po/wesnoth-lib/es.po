@@ -13,9 +13,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-07-10 12:46+0200\n"
+"PO-Revision-Date: 2018-09-16 19:50+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -5476,8 +5476,10 @@ msgid "operating_system^<unknown>"
 msgstr "<desconocido>"
 
 #: src/font/text.cpp:789
+#, fuzzy
+#| msgid "The text contains invalid Pango markup: "
 msgid "The text contains invalid markup: "
-msgstr "El texto contiene marcado inválido: "
+msgstr "El texto contiene marcado Pango inválido: "
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:251
@@ -5671,12 +5673,16 @@ msgid "addons_order^Type ($order)"
 msgstr "Tipo ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:228
+#, fuzzy
+#| msgid "addons_order^Last updated ($datelike_order)"
 msgid "addons_order^Last updated ($order)"
-msgstr "Última actualización ($order)"
+msgstr "Última actualización ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:231
+#, fuzzy
+#| msgid "addons_order^First uploaded ($datelike_order)"
 msgid "addons_order^First uploaded ($order)"
-msgstr "Primera publicación ($order)"
+msgstr "Primera publicación ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:260 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -6260,11 +6266,11 @@ msgstr "No se permiten observadores"
 #: src/gui/dialogs/multiplayer/lobby.cpp:957
 msgid ""
 "Something is wrong with the addon version check database supporting the "
-"multiplayer lobby. Please report this at http://bugs.wesnoth.org."
+"multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
 "Hay algún error en la base de datos de verificación de la versión de los "
 "complementos que respalda la sala multijugador. Por favor, informe de esto a "
-"http://bugs.wesnoth.org."
+"https://bugs.wesnoth.org."
 
 #: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:131
 msgid ""
@@ -7704,11 +7710,37 @@ msgstr ""
 #~ "Deshabilitando esta opción se aumenta el uso de la CPU hasta el 100 % "
 #~ "aunque podría mejorar sensiblemente el rendimiento en resoluciones altas"
 
+#~ msgid "Rename"
+#~ msgstr "Renombrar"
+
 #~ msgid "The maximum text width is less than 1."
 #~ msgstr "La anchura máxima del texto es menos de 1."
 
+#~ msgid "ascending"
+#~ msgstr "ascendente"
+
+#~ msgid "oldest to newest"
+#~ msgstr "de más viejo a más nuevo"
+
+#~ msgid "descending"
+#~ msgstr "descendente"
+
+#~ msgid "newest to oldest"
+#~ msgstr "de más nuevo a más viejo"
+
 #~ msgid "active_modifications^None"
 #~ msgstr "Ninguna"
+
+#~ msgid "Modifications: "
+#~ msgstr "Modificaciones: "
+
+#~ msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
+#~ msgstr ""
+#~ "¡La consola de lua solo puede usarse en modo depuración! (Ejecute primero "
+#~ "':debug')"
+
+#~ msgid "lua console"
+#~ msgstr "Consola de Lua"
 
 #~ msgid "$game_name (Era: $era_name)"
 #~ msgstr "$game_name (Era: $era_name)"
@@ -7719,8 +7751,14 @@ msgstr ""
 #~ msgid "Era"
 #~ msgstr "Era"
 
+#~ msgid "lobby"
+#~ msgstr "sala"
+
 #~ msgid "number of players^$min to $max"
 #~ msgstr "$min a $max"
+
+#~ msgid "this game"
+#~ msgstr "esta partida"
 
 #~ msgid ""
 #~ "Unsupported image format.\n"
@@ -7736,6 +7774,9 @@ msgstr ""
 
 #~ msgid "$count|× $name"
 #~ msgstr "$count|× $name"
+
+#~ msgid "Touch"
+#~ msgstr "Toque"
 
 #~ msgid "Quit to Main Menu"
 #~ msgstr "Salir a la pantalla de título"
@@ -7929,12 +7970,6 @@ msgstr ""
 
 #~ msgid "sort^By first upload"
 #~ msgstr "Por fecha de primera subida al repositorio"
-
-#~ msgid "sort^Ascending"
-#~ msgstr "Ascendente"
-
-#~ msgid "sort^Descending"
-#~ msgstr "Descendente"
 
 #~ msgid "Filter:"
 #~ msgstr "Filtro:"
