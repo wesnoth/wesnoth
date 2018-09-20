@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
-"POT-Creation-Date: 2018-09-09 11:38+0300\n"
-"PO-Revision-Date: 2018-06-08 12:30+0200\n"
+"POT-Creation-Date: 2018-09-16 10:14+0300\n"
+"PO-Revision-Date: 2018-09-16 15:46+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -376,13 +376,6 @@ msgstr "B<--log->I<nivel>B<=>I<dominio1>B<,>I<dominio2>B<,>I<...>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:148
-#, fuzzy
-#| msgid ""
-#| "sets the severity level of the log domains.  B<all> can be used to match "
-#| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>,\\ B<none>.  By default the B<warning> level is used for most "
-#| "domains, but B<deprecation> defaults to none unless combined with the B<-"
-#| "d> option."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
@@ -393,8 +386,8 @@ msgstr ""
 "utilizarse para coincidir con cualquier registro de un dominio. Los niveles "
 "disponibles son: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,\\ B<none>. "
 "Por omisión se utiliza el nivel B<warning> para la mayoría de los dominios, "
-"pero B<deprecation> no determina ninguno a no se que se combine con la "
-"opción B<-d>."
+"pero B<deprecation> equivale por omisión a B<none> a no ser que se combine "
+"con la opción B<-d>."
 
 #. type: TP
 #: doc/man/wesnoth.6:148

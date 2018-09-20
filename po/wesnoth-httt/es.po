@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-09-16 07:03 UTC\n"
-"PO-Revision-Date: 2018-05-01 15:28+0200\n"
+"PO-Revision-Date: 2018-09-16 18:19+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:9
@@ -5019,6 +5019,8 @@ msgid ""
 "That noise was made by no troll! What manner of beast makes its den in these "
 "forsaken caves?"
 msgstr ""
+"¡Ese ruido no lo ha hecho un trol! ¿Qué tipo de bestia tendría su madriguera "
+"en estas cavernas abandonadas?"
 
 #. [message]: race=merman
 #. Comic relief
@@ -5028,6 +5030,9 @@ msgid ""
 "places are anathema to my kind. Whatever monsters may abide in these depths, "
 "are known not to my kin."
 msgstr ""
+"No sabría decirlo, mi señor. Sin un río corriendo a su través, estos lugares "
+"secos y cálidos son aborrecibles para mi gente. Sean cuales sean los "
+"monstruos que puedan habitar estas profundidades, nos son desconocidos."
 
 #. [message]: race=merman
 #. Comic relief
@@ -5038,6 +5043,11 @@ msgid ""
 "gladly die for you, milord, but I would that you didn't spend my life for "
 "nothing, looking for another dwarf to rescue when there is none."
 msgstr ""
+"Ni sé, mi muy excéntrico señor, que es lo que estoy haciendo en una cueva. "
+"Ningún sirénido ha logrado entrar en las cuevas bajo las montañas y ha "
+"vivido para contarlo. Moriría por vos sin dudarlo , mi señor, pero espero "
+"que no malgastéis mi vida para nada, intentando el rescate de un enano donde "
+"no hay ninguno."
 
 #. [message]: race=dwarf
 #. "sowl" is a rare word synonymous with "sully", meaning "contaminate". 
@@ -5050,6 +5060,12 @@ msgid ""
 "sowling the air? I beseech that we not tarry ’ere any more than we ha’ to, "
 "lest the forming abysses claim us."
 msgstr ""
+"Señor Konrad, ese estruendo no ha sido hecho por ninguna criatura viviente. "
+"Son los ecos de los lechos de roca destruyéndose y desmenuzándose bajo "
+"nuestros pies lo que estamos oyendo. ¿No notáis cómo aumenta la temperatura? "
+"¿No inhaláis las cenizas que se mantienen suspendidas en el aire? Os ruego "
+"que no nos demoremos aquí más de lo necesario, antes de que nos reclamen los "
+"abismos en formación."
 
 #. [message]: type=Arch Mage,Great Mage,Silver Mage
 #. "din" means "loud noise". It refers to an ambient sound of collapsing cave walls.
@@ -5060,6 +5076,11 @@ msgid ""
 "this cave even now. We must tread with caution, for the very ground we stand "
 "on may turn against us."
 msgstr ""
+"Príncipe Konrad, ese estruendo no lo ha hecho ninguna criatura viviente. Era "
+"el sonido de la tierra que fluye a nuestro alrededor, del fuego y la lava "
+"que atraviesan estas cuevas en estos momentos. Hemos de proceder con "
+"cuidado, puesto que el mismo suelo que nos sostiene podría volverse en "
+"nuestra contra."
 
 #. [message]: id=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:681
@@ -5069,6 +5090,11 @@ msgid ""
 "the Sceptre and return to the surface with haste, before the lava under our "
 "feet consumes us."
 msgstr ""
+"Konrad, eso debe de haber sido el suelo desmoronándose. Me advirtieron de "
+"esos peligros cuando me preparaba para viajar hasta aquí. No debemos "
+"demorarnos por estos lugares; vayamos a por el Cetro y volvamos cuanto antes "
+"a la superficie, antes de que nos consuma la lava que corre bajo nuestros "
+"pies."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:697
@@ -7076,10 +7102,6 @@ msgstr "¡Resistid!"
 
 #. [message]: speaker=Bona-Melodia
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:251
-#, fuzzy
-#| msgid ""
-#| "Milord Kalenz! My apologies. I mistook him for one of those foul "
-#| "lizardmen. How came you to be traveling such paths?"
 msgid ""
 "Milord Kalenz! My apologies. I mistook you for one of those foul lizardmen. "
 "How came you to be traveling such paths?"
@@ -7142,11 +7164,9 @@ msgstr ""
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:296
-#, fuzzy
-#| msgid "Then we must hurry. Stand fast, we will send reinforcements."
 msgid "Then we must hurry. Stand fast! We will send reinforcements."
 msgstr ""
-"Entonces hemos de darnos prisa. Mantengamos el ritmo, enviaremos refuerzos."
+"Entonces hemos de darnos prisa. ¡Mantengamos el ritmo! Enviaremos refuerzos."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:303
@@ -8807,12 +8827,6 @@ msgstr "Princesa guerrera"
 
 #. [unit_type]: id=Battle Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:28
-#, fuzzy
-#| msgid ""
-#| "A noble by birth, the Princess has learnt swordplay with the greatest "
-#| "generals, and battle tactics with the greatest sages, making her both a "
-#| "great combatant and a leader. Now battle-hardened and strong of will, she "
-#| "can aid those around her in the art of combat."
 msgid ""
 "A noble by birth, the Princess has learnt swordplay with the greatest "
 "generals and battle tactics with the greatest sages, making her both a great "

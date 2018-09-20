@@ -1,6 +1,6 @@
 ## Version 1.14.5+dev
  ### Language and i18n
-   * Updated translations: Italian
+   * Updated translations: Italian, Spanish.
 
 ## Version 1.14.5
  ### AI

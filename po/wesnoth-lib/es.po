@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-09-16 10:03+0300\n"
-"PO-Revision-Date: 2018-07-10 12:46+0200\n"
+"PO-Revision-Date: 2018-09-16 19:50+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -5322,10 +5322,8 @@ msgstr "Reincorporar unidad"
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:393
-#, fuzzy
-#| msgid "Rename Unit"
 msgid "Rename"
-msgstr "Renombrar unidad"
+msgstr "Renombrar"
 
 #. [button]: id=dismiss
 #: data/gui/window/unit_recall.cfg:405
@@ -5429,10 +5427,8 @@ msgid "The maximum text width is less than 1."
 msgstr "La anchura máxima del texto es menos de 1."
 
 #: src/font/text.cpp:761
-#, fuzzy
-#| msgid "The text contains invalid markup: "
 msgid "The text contains invalid Pango markup: "
-msgstr "El texto contiene marcado inválido: "
+msgstr "El texto contiene marcado Pango inválido: "
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:251
@@ -5626,16 +5622,12 @@ msgid "addons_order^Type ($order)"
 msgstr "Tipo ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:229
-#, fuzzy
-#| msgid "addons_order^Last updated ($order)"
 msgid "addons_order^Last updated ($datelike_order)"
-msgstr "Última actualización ($order)"
+msgstr "Última actualización ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:232
-#, fuzzy
-#| msgid "addons_order^First uploaded ($order)"
 msgid "addons_order^First uploaded ($datelike_order)"
-msgstr "Primera publicación ($order)"
+msgstr "Primera publicación ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:261 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -5698,26 +5690,22 @@ msgid "addon_state^Unknown"
 msgstr "Desconocido"
 
 #: src/gui/dialogs/addon/manager.cpp:363
-#, fuzzy
-#| msgid "sort^Ascending"
 msgid "ascending"
-msgstr "Ascendente"
+msgstr "ascendente"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
 #: src/gui/dialogs/addon/manager.cpp:365
 msgid "oldest to newest"
-msgstr ""
+msgstr "de más viejo a más nuevo"
 
 #: src/gui/dialogs/addon/manager.cpp:368
-#, fuzzy
-#| msgid "sort^Descending"
 msgid "descending"
-msgstr "Descendente"
+msgstr "descendente"
 
 #. TRANSLATORS: Sorting order of dates, newest first
 #: src/gui/dialogs/addon/manager.cpp:370
 msgid "newest to oldest"
-msgstr ""
+msgstr "de más nuevo a más viejo"
 
 #: src/gui/dialogs/addon/manager.cpp:388 src/gui/dialogs/chat_log.cpp:420
 #: src/gui/dialogs/game_cache_options.cpp:105
@@ -5993,10 +5981,8 @@ msgid "Version: "
 msgstr "Versión: "
 
 #: src/gui/dialogs/game_load.cpp:389
-#, fuzzy
-#| msgid "Modifications:"
 msgid "Modifications: "
-msgstr "Modificaciones:"
+msgstr "Modificaciones: "
 
 #: src/gui/dialogs/game_stats.cpp:78
 msgid "controller^AI"
@@ -6133,10 +6119,10 @@ msgstr "Descargando datos de la sala"
 #: src/gui/dialogs/lua_interpreter.cpp:690
 msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
 msgstr ""
+"¡La consola de lua solo puede usarse en modo depuración! (Ejecute primero ':"
+"debug')"
 
 #: src/gui/dialogs/lua_interpreter.cpp:691
-#, fuzzy
-#| msgid "Lua Console"
 msgid "lua console"
 msgstr "Consola de Lua"
 
@@ -6241,23 +6227,17 @@ msgid "Observers not allowed"
 msgstr "No se permiten observadores"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:797
-#, fuzzy
-#| msgid "Lobby"
 msgid "lobby"
-msgstr "Sala"
+msgstr "sala"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:957
-#, fuzzy
-#| msgid ""
-#| "Something is wrong with the addon version check database supporting the "
-#| "multiplayer lobby. Please report this at http://bugs.wesnoth.org."
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
 "Hay algún error en la base de datos de verificación de la versión de los "
 "complementos que respalda la sala multijugador. Por favor, informe de esto a "
-"http://bugs.wesnoth.org."
+"https://bugs.wesnoth.org."
 
 #: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:131
 msgid ""
@@ -6362,10 +6342,8 @@ msgstr "vacío"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:253
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:109
-#, fuzzy
-#| msgid "Quit game"
 msgid "this game"
-msgstr "Salir del juego"
+msgstr "esta partida"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:365
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:168
@@ -6802,7 +6780,7 @@ msgstr "Seleccionar/Mover/Atacar"
 
 #: src/hotkey/hotkey_command.cpp:78
 msgid "Touch"
-msgstr ""
+msgstr "Toque"
 
 #: src/hotkey/hotkey_command.cpp:79
 msgid "Animate Map"

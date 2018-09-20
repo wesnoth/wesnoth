@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-09-16 10:04+0300\n"
-"PO-Revision-Date: 2018-07-10 12:37+0200\n"
+"PO-Revision-Date: 2018-09-17 10:04+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth Spanish translation\n"
 "Language: es\n"
@@ -148,7 +148,7 @@ msgstr "Confirmar carga de partidas de versiones anteriores"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:117
 msgid "Show all unit types in help"
-msgstr "Mostrar todos las unidades en la ayuda"
+msgstr "Mostrar todas las unidades en la ayuda"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:118
@@ -3556,7 +3556,7 @@ msgstr "Turquesa"
 #. [color_range]: id=gold
 #: data/core/team-colors.cfg:107
 msgid "color^Gold"
-msgstr ""
+msgstr "Dorado"
 
 #. [color_range]: id=reef
 #: data/core/team-colors.cfg:116
@@ -4390,7 +4390,7 @@ msgstr "ingresos"
 #. [label]: id=battery-icon
 #: data/themes/classic.cfg:266
 msgid "battery"
-msgstr ""
+msgstr "batería"
 
 #. [unit_level]: id=unit-level
 #: data/themes/classic.cfg:438
@@ -7085,10 +7085,8 @@ msgid "You currently can't recall at the highlighted location"
 msgstr "Ahora no puede reincorporar en el lugar resaltado"
 
 #: src/menu_events.cpp:384
-#, fuzzy
-#| msgid "cost to recall"
 msgid "No unit recalled"
-msgstr "coste de reincorporar"
+msgstr "No se ha reincorporado ninguna unidad"
 
 #: src/menu_events.cpp:401
 msgid "You must have at least 1 gold piece to recall a unit"
@@ -7390,15 +7388,15 @@ msgstr "No se puede automatizar el control del bando en red: «$side|»."
 
 #: src/menu_events.cpp:1431
 msgid "Side '$side' is already droided."
-msgstr ""
+msgstr "El lado '$side' ya está automatizado."
 
 #: src/menu_events.cpp:1441
 msgid "Side '$side' controller is now controlled by: AI."
-msgstr ""
+msgstr "El manejo del lado '$side' está controlado por: IA."
 
 #: src/menu_events.cpp:1443
 msgid "Side '$side' controller is now controlled by: human."
-msgstr ""
+msgstr "El manejo del lado '$side' está controlado por: humano."
 
 #: src/menu_events.cpp:1451
 msgid "Can't droid a local ai side: '$side'."
@@ -7991,7 +7989,7 @@ msgstr "Reloj"
 
 #: src/reports.cpp:1565
 msgid "Battery"
-msgstr ""
+msgstr "Batería"
 
 #: src/reports.cpp:1594
 msgid "Countdown until your turn automatically ends."
