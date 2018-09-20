@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-09-16 10:04+0300\n"
-"PO-Revision-Date: 2018-07-30 00:36-0700\n"
+"PO-Revision-Date: 2018-09-09 16:54+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.1.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -1665,7 +1665,7 @@ msgstr "Prendila"
 
 #: data/core/macros/items.cfg:275
 msgid "holy water^Leave it"
-msgstr "Lasciala"
+msgstr "Lasciala lì"
 
 #: data/core/macros/items.cfg:276
 msgid "$unit.name has no need for this Holy Water! Let another take it."
@@ -1759,11 +1759,13 @@ msgstr ""
 
 #. [object]
 #: data/core/macros/items.cfg:521
+#, fuzzy
+#| msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
 msgstr ""
 "Questo tridente conferisce ad un nereide il potere di lanciare saette contro "
-"i suoi nemici."
+"i suoi nemici!"
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:525
@@ -7664,12 +7666,12 @@ msgid "Save and abort game"
 msgstr "Abbandona il gioco"
 
 #: src/playturn.cpp:296
+#, fuzzy
+#| msgid "$player has left the game. What do you want to do?"
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
-msgstr ""
-"$player che controllava la squadra $side_drop ha abbandonato la partita. Che "
-"cosa vuoi fare?"
+msgstr "$player ha abbandonato la partita. Che cosa vuoi fare?"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -8282,10 +8284,12 @@ msgstr ""
 "debug"
 
 #: src/synced_user_choice.cpp:327
+#, fuzzy
+#| msgid "waiting for $desc from side(s) $sides"
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
-msgstr[0] "in attesa di $desc dalla squadra $sides"
-msgstr[1] "in attesa di $desc dalle squadre $sides"
+msgstr[0] "in attesa di $desc dalla squadra(e) $sides"
+msgstr[1] "in attesa di $desc dalla squadra(e) $sides"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8494,23 +8498,6 @@ msgstr "Nascondi i piani di $player"
 msgid "Whiteboard Options"
 msgstr "Opzioni della lavagna"
 
-#~ msgid "(this turn left)"
-#~ msgid_plural "(%d turns left)"
-#~ msgstr[0] "(ultimo turno)"
-#~ msgstr[1] "(%d turni rimasti)"
-
-#~ msgid "S"
-#~ msgstr "S"
-
-#~ msgid "C"
-#~ msgstr "C"
-
-#~ msgid "Unit with negative HP found"
-#~ msgstr "Trovata unità con PF negativi"
-
-#~ msgid "(missing)"
-#~ msgstr "(mancante)"
-
 #~ msgid "Ping timeout"
 #~ msgstr "Timeout del ping"
 
@@ -8561,9 +8548,22 @@ msgstr "Opzioni della lavagna"
 #~ "7 fazioni in battaglia lungo 46 mappe/scenari multigiocatore,\n"
 #~ "oltre 500 estensioni.)"
 
-#~| msgid "(missing)"
+#~ msgid "(this turn left)"
+#~ msgid_plural "(%d turns left)"
+#~ msgstr[0] "(ultimo turno)"
+#~ msgstr[1] "(%d turni rimasti)"
+
 #~ msgid "$era_name (missing)"
 #~ msgstr "$era_name (mancante)"
+
+#~ msgid "(missing)"
+#~ msgstr "(mancante)"
+
+#~ msgid "S"
+#~ msgstr "S"
+
+#~ msgid "C"
+#~ msgstr "C"
 
 #~ msgid "none"
 #~ msgstr "nessuno"
@@ -8576,6 +8576,9 @@ msgstr "Opzioni della lavagna"
 #~ "<span color=\"$color\">$number_or_percent movement</span> points"
 #~ msgstr[0] "<span color=\"$color\">$number_or_percent</span> punto movimento"
 #~ msgstr[1] "<span color=\"$color\">$number_or_percent</span> punti movimento"
+
+#~ msgid "Unit with negative HP found"
+#~ msgstr "Trovata unità con PF negativi"
 
 #, fuzzy
 #~| msgid "Screenshot"

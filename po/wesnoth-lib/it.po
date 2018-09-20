@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-09-16 10:03+0300\n"
-"PO-Revision-Date: 2018-06-04 06:18-0700\n"
+"PO-Revision-Date: 2018-09-09 17:05+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -1644,6 +1644,15 @@ msgstr "Sabbia"
 
 #. [terrain_type]: id=reef
 #: data/core/terrain.cfg:2762
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
+#| "and sand.\n"
+#| "This provides most land units with a more steady footing and defensive "
+#| "positions than wading in shallow water normally would and also grants "
+#| "most water-dwelling races an exceptionally high defense.\n"
+#| "\n"
+#| "Mermen and Naga both receive 70% defense on coastal reefs."
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
 "and sand.\n"
@@ -1657,8 +1666,8 @@ msgstr ""
 "coralli e sabbia.\n"
 "Questo fornisce alla maggior parte delle unità terrestri una base "
 "decisamente più stabile e difendibile rispetto alle generiche acque poco "
-"profonde. Questo porta anche un eccezionale bonus in difesa per tutte le "
-"razze che vivono normalmente in acqua.\n"
+"profonde e porta anche un eccezionale bonus in difesa per tutte le razze che "
+"vivono normalmente in acqua.\n"
 "\n"
 "Nereidi e Naga ottengono entrambe un bonus difensivo del 70% sulle scogliere."
 
@@ -1689,6 +1698,17 @@ msgstr ""
 
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:2791
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Swamps'</italic> represent any sort of wetlands.\n"
+#| "Swamps slow down nearly everyone, and inhibit their ability to defend "
+#| "themselves. An exception to this is any race bodily skilled in navigating "
+#| "water; these receive both full movement and a defensive bonus. Those that "
+#| "make their living in the wetlands are also adept at using this terrain "
+#| "for cover.\n"
+#| "\n"
+#| "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
+#| "all generally enjoy 60%."
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands.\n"
 "Swamps slow down nearly everyone, and inhibit their ability to defend "
@@ -1714,6 +1734,18 @@ msgstr ""
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:2804
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Shallow water'</italic> represents any body of water deep "
+#| "enough to come up to roughly a man’s waist. This is enough to slow down "
+#| "nearly anyone and leave them wide open to attack. Dwarves, given that the "
+#| "water reaches up almost to their heads, have an extremely hard time of "
+#| "this. The exception is any race whose bodies naturally lend themselves to "
+#| "swimming, for which they receive a considerable defensive bonus and full "
+#| "movement.\n"
+#| "\n"
+#| "Most units make do with 20 to 30% defense in shallow water, whereas both "
+#| "naga and mermen enjoy 60%."
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
 "enough to come up to roughly a man’s waist. This is enough to slow down "
@@ -1789,6 +1821,15 @@ msgstr ""
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:2845
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Deep water'</italic> represents any body of water deep "
+#| "enough to cover a man’s head.\n"
+#| "Most units cannot enter deep water: it is the domain of units which can "
+#| "either fly, or are exceptionally strong swimmers.\n"
+#| "\n"
+#| "Mermen and naga both receive 50% defense in deep water, with full "
+#| "movement."
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
 "to cover a man’s head.\n"
@@ -2297,7 +2338,7 @@ msgstr "Gestore Estensioni"
 #: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:459
 #: src/gui/dialogs/addon/manager.cpp:646
 msgid "Addon Details"
-msgstr "Dettagli estensione:"
+msgstr "Dettagli estensione"
 
 #. [button]: id=update_all
 #: data/gui/window/addon_manager.cfg:960 data/gui/window/addon_manager.cfg:1124
@@ -2649,7 +2690,7 @@ msgstr "Suono:"
 #. [label]
 #: data/gui/window/custom_tod.cfg:316
 msgid "Lawful Bonus:"
-msgstr "Bonus Legali"
+msgstr "Bonus Legali:"
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:339
@@ -2910,7 +2951,7 @@ msgstr "Genera mappa"
 #. [label]
 #: data/gui/window/editor_generate_map.cfg:58
 msgid "Choose a map generator:"
-msgstr "Scegli un generatore di mappe"
+msgstr "Scegli un generatore di mappe:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=settings
@@ -3105,7 +3146,7 @@ msgstr "Esci"
 #. [label]: id=title
 #: data/gui/window/game_cache_options.cfg:36
 msgid "WML Cache"
-msgstr "Cache WML:"
+msgstr "Cache WML"
 
 #. [label]
 #: data/gui/window/game_cache_options.cfg:53
@@ -3178,7 +3219,7 @@ msgstr "Truppe attive:"
 #. [grid]
 #: data/gui/window/game_load.cfg:98
 msgid "Reserve Troops:"
-msgstr "truppe di riserva:"
+msgstr "Truppe di riserva:"
 
 #. [toggle_button]: id=sort_1
 #: data/gui/window/game_load.cfg:171
@@ -3211,7 +3252,7 @@ msgstr "Mostra replay"
 #. [toggle_button]: id=show_replay
 #: data/gui/window/game_load.cfg:508
 msgid "Play the embedded replay from the saved game if applicable"
-msgstr "Mostra il replay incluso nel salvataggio, se possibile "
+msgstr "Mostra il replay incluso nel salvataggio, se possibile"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/window/game_load.cfg:527
@@ -3488,7 +3529,7 @@ msgstr "Impostazioni generatore di mappe"
 #: data/gui/window/mp_create_game/small_resolution.cfg:147
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:137
 msgid "Players:"
-msgstr "Giocatori: "
+msgstr "Giocatori:"
 
 #. [grid]
 #: data/gui/window/generator_settings.cfg:111
@@ -3503,7 +3544,7 @@ msgstr "Dimensione massima delle colline:"
 #. [grid]
 #: data/gui/window/generator_settings.cfg:115
 msgid "Villages:"
-msgstr "Villaggi: "
+msgstr "Villaggi:"
 
 #. [grid]
 #: data/gui/window/generator_settings.cfg:117
@@ -3695,7 +3736,7 @@ msgstr "Controlli del moderatore"
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:173
 msgid "Kick / ban reason:"
-msgstr "Ragione dell’espulsione/messa al bando"
+msgstr "Ragione dell’espulsione/messa al bando:"
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:198
@@ -4165,7 +4206,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
 #: src/gui/dialogs/multiplayer/lobby.cpp:481
 msgid "Map size:"
-msgstr "Dimensione mappa: "
+msgstr "Dimensione mappa:"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:116
@@ -4995,12 +5036,12 @@ msgstr "Mostra sfere nemiche"
 #. [label]
 #: data/gui/window/sp_options_configure.cfg:44
 msgid "Configure Options"
-msgstr "Configurazione opzioni:"
+msgstr "Configurazione opzioni"
 
 #. [label]
 #: data/gui/window/sp_options_configure.cfg:62
 msgid "Configure settings for the selected custom modifications."
-msgstr "Configura le impostazioni delle modifiche selezionate"
+msgstr "Configura le impostazioni delle modifiche selezionate."
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:129
@@ -5597,7 +5638,7 @@ msgstr "Autore ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:220
 msgid "addons_order^Size ($order)"
-msgstr "Squadra ($order)"
+msgstr "Dimensione ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:223
 msgid "addons_order^Downloads ($order)"
@@ -5839,7 +5880,7 @@ msgid ""
 "Please select a compatible one."
 msgstr ""
 "La modifica attualmente scelta non è compatibile con il tuo setup.\n"
-"Prova a sceglierne una compatibile. "
+"Prova a sceglierne una compatibile."
 
 #: src/gui/dialogs/editor/generator_settings.cpp:71
 msgid "/1000 tiles"
@@ -5928,7 +5969,7 @@ msgstr "Cache azzerata"
 
 #: src/gui/dialogs/game_cache_options.cpp:163
 msgid "The game data cache has been cleaned."
-msgstr "La cache del gioco è stata azzerata"
+msgstr "La cache del gioco è stata azzerata."
 
 #: src/gui/dialogs/game_cache_options.cpp:165
 msgid "The game data cache could not be completely cleaned."
@@ -5940,7 +5981,7 @@ msgstr "Cache ripulita"
 
 #: src/gui/dialogs/game_cache_options.cpp:182
 msgid "The game data cache has been purged."
-msgstr "la cache del gioco è stata ripulita."
+msgstr "La cache del gioco è stata ripulita."
 
 #: src/gui/dialogs/game_cache_options.cpp:184
 msgid "The game data cache could not be purged."
@@ -6147,7 +6188,7 @@ msgstr "Vuoi davvero uscire?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:213
 msgid "Incompatible User-made Content."
-msgstr "Contenuto creato dall’utente incompatibile"
+msgstr "Contenuto creato dall’utente incompatibile."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:214
 msgid ""
@@ -6210,6 +6251,10 @@ msgid "Use map settings:"
 msgstr "Usa impostazioni della mappa:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:494
+#, fuzzy
+#| msgid ""
+#| "One or more items need to be installed\n"
+#| "in order to join this game."
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -6232,16 +6277,12 @@ msgid "lobby"
 msgstr "Lobby"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:957
-#, fuzzy
-#| msgid ""
-#| "Something is wrong with the addon version check database supporting the "
-#| "multiplayer lobby. Please report this at http://bugs.wesnoth.org."
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
 "Qualcosa è andato storto nel database di verifica della versione "
-"dell’estensione nel supporto alla lobby multigiocatore. SI prega di "
+"dell’estensione nel supporto alla lobby multigiocatore. Si prega di "
 "riportare l’errore a http://bugs.wesnoth.org."
 
 #: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:131
@@ -6283,7 +6324,7 @@ msgstr "Mappe casuali"
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:188
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:189
 msgid "No games found."
-msgstr "Nessuna partita trovata"
+msgstr "Nessuna partita trovata."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:256
 msgid "No eras found."
@@ -6387,7 +6428,7 @@ msgstr "Nome utente non valido"
 
 #: src/gui/dialogs/preferences_dialog.cpp:310
 msgid "Not on friends or ignore lists"
-msgstr "Non presente nelle liste degli amici o ignorati."
+msgstr "Non presente nelle liste degli amici o ignorati"
 
 #: src/gui/dialogs/preferences_dialog.cpp:812
 msgid "&#9679;"
@@ -6533,12 +6574,16 @@ msgid "Room <i>“$name”</i> joined"
 msgstr "Sei entrato nella stanza <i>“$name”</i>"
 
 #: src/gui/widgets/chatbox.cpp:392
+#, fuzzy
+#| msgid ""
+#| "Whisper session with <i>“$name”</i> started. If you do not want to "
+#| "receive messages from this user, type <i>/ignore $name</i>\n"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>"
 msgstr ""
 "Iniziata una sessione bisbigliata con <i>“$name”</i>. Se non vuoi ricevere "
-"messaggi da questo utente, scrivi <i>/ignore $name</i>"
+"messaggi da questo utente, scrivi <i>/ignore $name</i>\n"
 
 #: src/gui/widgets/chatbox.cpp:631
 msgid "$player has entered the room"
@@ -6603,7 +6648,7 @@ msgstr "Nessuno selezionato"
 
 #: src/gui/widgets/pane.cpp:429
 msgid "Need at least 1 parallel item."
-msgstr "Necessita di almeno un item parallelo"
+msgstr "Necessita di almeno un item parallelo."
 
 #: src/gui/widgets/size_lock.cpp:86
 msgid "Invalid size."
@@ -6640,11 +6685,11 @@ msgstr "Non è stato definito nessun nodo."
 
 #: src/gui/widgets/tree_view_node.cpp:112
 msgid "Unknown builder id for tree view node."
-msgstr "Id sconosciuta per un nodo di vista ad albero"
+msgstr "Id sconosciuta per un nodo di vista ad albero."
 
 #: src/gui/widgets/unit_preview_pane.cpp:135
 msgid "Resistances: "
-msgstr "Resistenze:"
+msgstr "Resistenze: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:137
 msgid "(Att / Def)"
@@ -6682,7 +6727,7 @@ msgstr "PE: "
 #: src/gui/widgets/unit_preview_pane.cpp:328
 #: src/gui/widgets/unit_preview_pane.cpp:487
 msgid "Experience Modifier: "
-msgstr "Modificatore dell’esperienza:"
+msgstr "Modificatore dell’esperienza: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:331
 #: src/gui/widgets/unit_preview_pane.cpp:490
@@ -7138,7 +7183,7 @@ msgid ""
 msgstr ""
 "Il bottone sinistro del mouse seleziona o deseleziona insieme al tasto Ctrl, "
 "il destro attiva un menù contestuale. Tieni premuto il tasto Maiuscole per "
-"selezionare auto-magicamente tutte le tessere dello stesso tipo di terreno"
+"selezionare auto-magicamente tutte le tessere dello stesso tipo di terreno."
 
 #: src/hotkey/hotkey_command.cpp:194
 msgid "Selection Tool"
@@ -7167,7 +7212,7 @@ msgstr "Strumento per le etichette"
 msgid "Left mouse button sets or drags a label, right clears."
 msgstr ""
 "Il bottone sinistro del mouse assegna o sposta un’etichetta, il destro "
-"annulla"
+"annulla."
 
 #: src/hotkey/hotkey_command.cpp:197
 msgid ""
@@ -7200,7 +7245,7 @@ msgid ""
 "implemented yet."
 msgstr ""
 "Il bottone sinistro del mouse assegna o sposta una sorgente audio, il destro "
-"annulla. Non ancora implementato"
+"annulla. Non ancora implementato."
 
 #: src/hotkey/hotkey_command.cpp:199
 msgid "Sound Source Tool"
@@ -7225,7 +7270,7 @@ msgstr "Può reclutare"
 
 #: src/hotkey/hotkey_command.cpp:202
 msgid "Toggle the recruit attribute of a unit."
-msgstr "Attiva/Disattiva recrutabilità di una unità"
+msgstr "Attiva/Disattiva recrutabilità di una unità."
 
 #: src/hotkey/hotkey_command.cpp:203
 msgid "Can be Renamed"
@@ -7233,7 +7278,7 @@ msgstr "Può essere rinominato"
 
 #: src/hotkey/hotkey_command.cpp:203
 msgid "Toggle the unit being renameable."
-msgstr "Attiva/Disattiva rinominabilità unità"
+msgstr "Attiva/Disattiva rinominabilità unità."
 
 #: src/hotkey/hotkey_command.cpp:204
 msgid "Assign Recruit List"
@@ -7241,7 +7286,7 @@ msgstr "Assegna lista di reclutamento"
 
 #: src/hotkey/hotkey_command.cpp:204
 msgid "Assign the selected unit set as recruit list to the unit."
-msgstr "Assegna le unità selezionate come lista di reclutamento dell’unità"
+msgstr "Assegna le unità selezionate come lista di reclutamento dell’unità."
 
 #: src/hotkey/hotkey_command.cpp:206
 msgid "Change Unit ID"
@@ -7312,7 +7357,7 @@ msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
 "Il bottone sinistro del mouse incolla dagli appunti, il destro fa apparire "
-"un menù contestuale"
+"un menù contestuale."
 
 #: src/hotkey/hotkey_command.cpp:227
 msgid "Paste"
@@ -7653,38 +7698,24 @@ msgstr ""
 "La chiave «$deprecated_key» è stata rinonimata in «$key». Il supporto per "
 "«$deprecated_key» verrà rimosso nella versione $removal_version."
 
-#~ msgid "asc"
-#~ msgstr "asc"
-
-#~ msgid "desc"
-#~ msgstr "desc"
-
-#~ msgid "Speed:"
-#~ msgstr "Velocità: "
-
-#~ msgid "Units move and fight speed"
-#~ msgstr "Velocità di spostamento e combattimento delle unità"
-
-#~ msgid "Scenario"
-#~ msgstr "Scenario"
-
-#~ msgid "Campaign"
-#~ msgstr "Campagna"
-
-#~ msgid "No era information found."
-#~ msgstr "Non sono state trovate informazioni per questa era."
-
-#~ msgid "Deterministic mode"
-#~ msgstr "Modalità deterministica"
-
-#~ msgid "$min to $max"
-#~ msgstr "$min a $max"
-
 #~ msgid "Rusty Open Gate"
 #~ msgstr "Cancello arrugginito aperto"
 
 #~ msgid "Wooden Open Door"
 #~ msgstr "Porta di legno aperta"
+
+#~ msgid ""
+#~ "There are no custom options available for the selected era, game, or "
+#~ "modification."
+#~ msgstr ""
+#~ "Non ci sono opzioni personalizzabili per l’era, la partita o la modifica "
+#~ "scelta."
+
+#~ msgid "Connected Players"
+#~ msgstr "Giocatori connessi"
+
+#~ msgid "Deterministic mode"
+#~ msgstr "Modalità deterministica"
 
 #~ msgid "Sort players:"
 #~ msgstr "Ordina giocatori:"
@@ -7694,18 +7725,6 @@ msgstr ""
 
 #~ msgid "Alphabetically"
 #~ msgstr "Alfabeticamente"
-
-#~ msgid "FPS limiter"
-#~ msgstr "Limitatore FPS"
-
-#~ msgid "era^missing"
-#~ msgstr "mancante"
-
-#~ msgid "Registered users only:"
-#~ msgstr "Solo utenti registrati:"
-
-#~ msgid "Settings:"
-#~ msgstr "Impostazioni:"
 
 #~ msgid "Refresh"
 #~ msgstr "Aggiorna"
@@ -7725,21 +7744,53 @@ msgstr ""
 #~ "\n"
 #~ "Il forum di The Battle for Wesnoth si trova su http://forums.wesnoth.org/"
 
+#~ msgid "Speed:"
+#~ msgstr "Velocità: "
+
+#~ msgid "Units move and fight speed"
+#~ msgstr "Velocità di spostamento e combattimento delle unità"
+
 #~ msgid "Available at titlescreen"
 #~ msgstr "Disponibile nella schermata iniziale"
+
+#~ msgid "Scenario"
+#~ msgstr "Scenario"
+
+#~ msgid "Campaign"
+#~ msgstr "Campagna"
+
+#~ msgid "asc"
+#~ msgstr "asc"
+
+#~ msgid "desc"
+#~ msgstr "desc"
 
 #~ msgid "None"
 #~ msgstr "Nessuno"
 
-#~ msgid ""
-#~ "There are no custom options available for the selected era, game, or "
-#~ "modification."
-#~ msgstr ""
-#~ "Non ci sono opzioni personalizzabili per l’era, la partita o la modifica "
-#~ "scelta."
+#~ msgid "Era:"
+#~ msgstr "Era:"
 
-#~ msgid "Connected Players"
-#~ msgstr "Giocatori connessi"
+#~ msgid "Settings:"
+#~ msgstr "Impostazioni:"
+
+#~ msgid "Registered users only:"
+#~ msgstr "Solo utenti registrati:"
+
+#~ msgid "No era information found."
+#~ msgstr "Non sono state trovate informazioni per questa era."
+
+#~ msgid "Quit to Titlescreen"
+#~ msgstr "Esci alla schermata iniziale"
+
+#~ msgid "$min to $max"
+#~ msgstr "$min a $max"
+
+#~ msgid "FPS limiter"
+#~ msgstr "Limitatore FPS"
+
+#~ msgid "era^missing"
+#~ msgstr "mancante"
 
 #~ msgid "Password Reminder"
 #~ msgstr "Ricorda password"

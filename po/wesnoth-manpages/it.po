@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
-"POT-Creation-Date: 2018-09-09 11:38+0300\n"
-"PO-Revision-Date: 2018-06-04 02:49-0700\n"
+"POT-Creation-Date: 2018-09-16 10:14+0300\n"
+"PO-Revision-Date: 2018-09-09 18:21+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.1.1\n"
 
 # type: TH
 #. type: TH
@@ -1155,15 +1155,19 @@ msgstr "B<--exit-at-end>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:386
+#, fuzzy
+#| msgid ""
+#| "exits once the scenario is over, without displaying victory/defeat dialog "
+#| "which requires the user to click OK.  This is also used for scriptable "
+#| "benchmarking."
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which normally requires the user to click End Scenario.  This is also used "
 "for scriptable benchmarking."
 msgstr ""
 "esce quando lo scenario è finito, senza mostrare la finestra delle vittorie/"
-"sconfitte, che normalmente richiede che l’utente prema il pulsante Fine "
-"Scenario. Anche questa opzione è usata per eseguire dei benchmark tramite "
-"script."
+"sconfitte, che normalmente richiede che l’utente prema il pulsante OK. Anche "
+"questa opzione è usata per eseguire dei benchmark tramite script."
 
 #. type: TP
 #: doc/man/wesnoth.6:386
@@ -2295,6 +2299,16 @@ msgstr ""
 #: doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
+
+# type: Plain text
+#~ msgid ""
+#~ "sets the severity level of the log domains.  B<all> can be used to match "
+#~ "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+#~ "B<debug>.  By default the B<error> level is used."
+#~ msgstr ""
+#~ "imposta il livello di severità dei domini di debug. Puoi usare B<all> per "
+#~ "qualsiasi dominio di debug. Livelli disponibili: B<error>,\\ B<warning>,"
+#~ "\\ B<info>,\\ B<debug>. Normalmente è usato il livello B<error>."
 
 #~ msgid "2017"
 #~ msgstr "2017"
