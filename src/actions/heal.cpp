@@ -223,6 +223,32 @@ namespace {
 				DBG_NG << "Unit has " << healers.size() << " healers.\n";
 			}
 		}
+		
+		unit_ability_list harm_list = patient.get_abilities("harms");
+		// Remove all healers not on this side (since they do not heal now).
+		unit_ability_list::iterator harm_it = harm_list.begin();
+		while ( harm_it != harm_list.end() ) {
+			unit_map::iterator healer = units.find(harm_it->second);
+			assert(healer != units.end());
+
+			if ( healer->side() != side )
+				harm_it = harm_list.erase(harm_it);
+			else
+				++harm_it;
+		}
+
+		// Now we can get the aggregate harming amount.
+		unit_abilities::effect harm_effect(harm_list, 0, false);
+		if ( update_healing(healing, harming, -harm_effect.get_composite_value()) )
+		{
+			// Collect the healers involved.
+			for (const unit_abilities::individual_effect & heal : harm_effect)
+				healers.push_back(&*units.find(heal.loc));
+
+			if ( !healers.empty() ) {
+				DBG_NG << "Unit has " << healers.size() << " healers.\n";
+			}
+		}
 
 		return healing + harming;
 	}
