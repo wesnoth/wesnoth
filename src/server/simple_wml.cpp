@@ -683,7 +683,7 @@ char* node::unescape_value(const string_span& value)
 	const char* begin = value.begin();
 	const char* end;
 	// Find the next duplicated double quote.
-	while((end = strstr(begin, "\"\"")) != nullptr) {
+	while((end = strstr(begin, "\"\"")) != nullptr && end < value.end()) {
 		// Copy characters up to and including the first double quote, but not the second.
 		buffer.append(begin, end - begin + 1);
 		begin = end + 2;
@@ -780,7 +780,13 @@ void node::shift_buffers(ptrdiff_t offset)
 
 	for(std::vector<attribute>::iterator i = attr_.begin(); i != attr_.end(); ++i) {
 		i->key = string_span(i->key.begin() + offset, i->key.size());
-		i->value = string_span(i->value.begin() + offset, i->value.size());
+		if(memchr(i->value.begin(), '"', i->value.size()) == nullptr) {
+			i->value = string_span(i->value.begin() + offset, i->value.size());
+		} else {
+			char* value = i->value.duplicate();
+			doc_->take_ownership_of_buffer(value);
+			i->value = string_span(value, i->value.size());
+		}
 	}
 
 	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
@@ -816,6 +822,9 @@ void node::output(char*& buf, CACHE_STATUS cache_status)
 			i->value = string_span(buf, i->value.size());
 			buf += i->value.size();
 		} else {
+			char* value = i->value.duplicate();
+			doc_->take_ownership_of_buffer(value);
+			i->value = string_span(value, i->value.size());
 			escape_value(i->value, &buf);
 		}
 		*buf++ = '"';
