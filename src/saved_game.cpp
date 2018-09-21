@@ -94,6 +94,7 @@ saved_game::saved_game()
 	, starting_pos_type_(STARTINGPOS_NONE)
 	, starting_pos_()
 	, replay_data_()
+	, skip_story_(false)
 {
 }
 
@@ -106,6 +107,7 @@ saved_game::saved_game(config cfg)
 	, starting_pos_type_(STARTINGPOS_NONE)
 	, starting_pos_()
 	, replay_data_()
+	, skip_story_(false)
 
 {
 	set_data(cfg);
@@ -120,6 +122,7 @@ saved_game::saved_game(const saved_game& state)
 	, starting_pos_type_(state.starting_pos_type_)
 	, starting_pos_(state.starting_pos_)
 	, replay_data_(state.replay_data_)
+	, skip_story_(state.skip_story_)
 {
 }
 

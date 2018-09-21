@@ -121,6 +121,10 @@ public:
 	replay_recorder_base& get_replay() { return replay_data_; }
 	const replay_recorder_base& get_replay() const { return replay_data_; }
 
+	/// Whether to play [story] tags
+	bool skip_story() const { return skip_story_; }
+	void set_skip_story(bool skip_story) { skip_story_ = skip_story; }
+
 private:
 	bool has_carryover_expanded_;
 	/**
@@ -143,6 +147,8 @@ private:
 	config starting_pos_;
 
 	replay_recorder_base replay_data_;
+
+	bool skip_story_;
 };
 
 /** Implement non-member swap function for std::swap (calls @ref saved_game::swap). */

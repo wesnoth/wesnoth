@@ -153,6 +153,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, statistics_context_(new statistics::scenario_context(level["name"]))
 	, replay_(new replay(state_of_game.get_replay()))
 	, skip_replay_(skip_replay)
+	, skip_story_(state_of_game.skip_story())
 	, linger_(false)
 	, init_side_done_now_(false)
 	, map_start_()
@@ -373,6 +374,7 @@ void play_controller::fire_start()
 {
 	gamestate().gamedata_.set_phase(game_data::START);
 	pump().fire("start");
+	skip_story_ = false; // Show [message]s from now on even with --campaign-skip-story
 	// start event may modify start turn with WML, reflect any changes.
 	gamestate().gamedata_.get_variable("turn_number") = int(turn());
 	refresh_objectives();
