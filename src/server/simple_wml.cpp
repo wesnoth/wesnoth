@@ -191,6 +191,15 @@ char* string_span::duplicate() const
 	return buf;
 }
 
+int string_span::count(char ch) const
+{
+	int count = 0;
+	for(const char* c = begin(); c != end(); ++c) {
+		count += *c == ch ? 1 : 0;
+	}
+	return count;
+}
+
 error::error(const char* msg)
   : game::error(msg)
 {
@@ -276,6 +285,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			break;
 		default: {
 			const char* end = strchr(s, '=');
+			bool needs_escaping = false;
 			if(end == nullptr) {
 				ERR_SWML << "attribute: " << s << std::endl;
 				throw error("did not find '=' after attribute");
@@ -309,6 +319,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 #pragma warning (pop)
 #endif
 					++end;
+					needs_escaping = true;
 				}
 				if(end == nullptr)
 					throw error("did not find end of attribute");
@@ -351,7 +362,13 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 
 			s = end + 1;
 
-			attr_.emplace_back(name, value);
+			if(!needs_escaping) {
+				attr_.emplace_back(name, value);
+			} else {
+				char* value_buf = unescape_value(value);
+				doc_->take_ownership_of_buffer(value_buf);
+				attr_.emplace_back(name, string_span(value_buf));
+			}
 		}
 		}
 	}
@@ -659,6 +676,42 @@ int node::get_children(const string_span& name)
 	return children_.size() - 1;
 }
 
+char* node::unescape_value(const string_span& value)
+{
+	std::string buffer;
+	buffer.reserve(value.size());
+	const char* begin = value.begin();
+	const char* end;
+	// Find the next duplicated double quote.
+	while((end = strstr(begin, "\"\"")) != nullptr && end < value.end()) {
+		// Copy characters up to and including the first double quote, but not the second.
+		buffer.append(begin, end - begin + 1);
+		begin = end + 2;
+	}
+	// Copy the rest.
+	buffer.append(begin, value.end() - begin);
+
+	char* final_buffer = new char[buffer.size() + 1];
+	buffer.copy(final_buffer, std::string::npos);
+	final_buffer[buffer.size()] = '\0';
+	return final_buffer;
+}
+
+void node::escape_value(const string_span& value, char** buffer)
+{
+	char* buf = *buffer;
+	for(const char* c = value.begin(); c != value.end(); ++c)
+	{
+		if(*c != '"') {
+			*buf++ = *c;
+		} else {
+			*buf++ = '"';
+			*buf++ = '"';
+		}
+	}
+	*buffer = buf;
+}
+
 node::child_map::const_iterator node::find_in_map(const child_map& m, const string_span& attr)
 {
 	child_map::const_iterator i = m.begin();
@@ -702,7 +755,7 @@ int node::output_size() const
 
 	int res = 0;
 	for(attribute_list::const_iterator i = attr_.begin(); i != attr_.end(); ++i) {
-		res += i->key.size() + i->value.size() + 4;
+		res += i->key.size() + i->value.size() + i->value.count('"') + 4;
 	}
 
 	size_t count_children = 0;
@@ -727,7 +780,13 @@ void node::shift_buffers(ptrdiff_t offset)
 
 	for(std::vector<attribute>::iterator i = attr_.begin(); i != attr_.end(); ++i) {
 		i->key = string_span(i->key.begin() + offset, i->key.size());
-		i->value = string_span(i->value.begin() + offset, i->value.size());
+		if(memchr(i->value.begin(), '"', i->value.size()) == nullptr) {
+			i->value = string_span(i->value.begin() + offset, i->value.size());
+		} else {
+			char* value = i->value.duplicate();
+			doc_->take_ownership_of_buffer(value);
+			i->value = string_span(value, i->value.size());
+		}
 	}
 
 	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
@@ -758,9 +817,16 @@ void node::output(char*& buf, CACHE_STATUS cache_status)
 		buf += i->key.size();
 		*buf++ = '=';
 		*buf++ = '"';
-		memcpy(buf, i->value.begin(), i->value.size());
-		i->value = string_span(buf, i->value.size());
-		buf += i->value.size();
+		if(memchr(i->value.begin(), '"', i->value.size()) == nullptr) {
+			memcpy(buf, i->value.begin(), i->value.size());
+			i->value = string_span(buf, i->value.size());
+			buf += i->value.size();
+		} else {
+			char* value = i->value.duplicate();
+			doc_->take_ownership_of_buffer(value);
+			i->value = string_span(value, i->value.size());
+			escape_value(i->value, &buf);
+		}
 		*buf++ = '"';
 		*buf++ = '\n';
 	}
