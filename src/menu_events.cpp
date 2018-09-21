@@ -138,10 +138,7 @@ void menu_handler::objectives()
 		return;
 	}
 
-	config cfg;
-	cfg["side"] = gui_->viewing_side();
-	gamestate().lua_kernel_->run_wml_action("show_objectives", vconfig(cfg),
-			game_events::queued_event("_from_interface", "", map_location(), map_location(), config()));
+	pc_.refresh_objectives();
 	pc_.show_objectives();
 }
 

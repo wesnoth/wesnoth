@@ -388,6 +388,13 @@ void play_controller::fire_prestart()
 	gamestate().gamedata_.get_variable("turn_number") = static_cast<int>(turn());
 }
 
+void play_controller::refresh_objectives() const
+{
+	const config cfg("side", gui_->viewing_side());
+	gamestate().lua_kernel_->run_wml_action("show_objectives", vconfig(cfg),
+			game_events::queued_event("_from_interface", "", map_location(), map_location(), config()));
+}
+
 void play_controller::fire_start()
 {
 	gamestate().gamedata_.set_phase(game_data::START);
@@ -396,6 +403,7 @@ void play_controller::fire_start()
 	// start event may modify start turn with WML, reflect any changes.
 	gamestate().gamedata_.get_variable("turn_number") = static_cast<int>(turn());
 
+	refresh_objectives();
 	check_objectives();
 
 	// prestart and start events may modify the initial gold amount, reflect any changes.
