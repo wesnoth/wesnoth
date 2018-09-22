@@ -33,6 +33,11 @@ static std::string get_heal_sound(const config& cfg)
 	return cfg["healed_sound"].empty() ? "heal.wav" : cfg["healed_sound"].str();
 }
 
+static std::string get_harm_sound(const config& cfg)
+{
+	return cfg["harmed_sound"].empty() ? "poison.ogg" : cfg["harmed_sound"].str();
+}
+
 struct animation_branch
 {
 	animation_branch()
