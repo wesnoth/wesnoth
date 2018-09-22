@@ -823,4 +823,42 @@ void unit_healing(unit& healed, const std::vector<unit*>& healers, int healing, 
 	animator.set_all_standing();
 }
 
+void unit_harming(unit &harmed, const std::vector<unit *> &harmers, int harming,
+                  const std::string & extra_text)
+{
+	game_display* disp = game_display::get_singleton();
+	const map_location &harmed_loc = harmed.get_location();
+	if(!disp || disp->video().update_locked() || disp->video().faked() || disp->fogged(harmed_loc)) return;
+
+	// This is all the pretty stuff.
+	disp->scroll_to_tile(harmed_loc, game_display::ONSCREEN,true,false);
+	disp->display_unit_hex(harmed_loc);
+	unit_animator animator;
+
+	for (unit *h : harmers) {
+		h->set_facing(h->get_location().get_relative_dir(harmed_loc));
+		animator.add_animation(h, "harming", h->get_location(),
+			harmed_loc, harming);
+	}
+
+	if (harming < 0) {
+        animator.add_animation(&harmed, "harmed", harmed_loc,
+		                       map_location::null_location(), -harming, false,
+		                       number_and_text(-harming, extra_text),
+		                       {255,0,0});
+	} else if ( harming > 0 ) {
+		animator.add_animation(&harmed, "healed", harmed_loc,
+		                       map_location::null_location(), harming, false,
+		                       number_and_text(harming, extra_text),
+		                       {255,0,0});
+	} else {
+		animator.add_animation(&harmed, "healed", harmed_loc,
+		                       map_location::null_location(), 0, false,
+		                       extra_text, {0,255,0});
+	}
+	animator.start_animations();
+	animator.wait_for_end();
+	animator.set_all_standing();
+}
+
 } // end unit_display namespace
