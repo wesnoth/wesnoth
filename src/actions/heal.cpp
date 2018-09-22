@@ -493,4 +493,56 @@ void calculate_healing(int side, bool update_display)
 	animate_heals(unit_list);
 
 	DBG_NG << "end of healing calculations\n";
+} 
+void calculate_harming(int side, bool update_display)
+{
+	DBG_NG << "beginning of harming calculations\n";
+
+	std::list<harm_unit> unit_list;
+
+	// We look for all allied units, then we see if our healer is near them.
+	for (unit &patient : resources::gameboard->units()) {
+
+
+		DBG_NG << "found harmable unit at (" << patient.get_location() << ")\n";
+
+		int harming = 0;
+		std::vector<unit *> harmers;
+
+		// Main healing.
+			harming -= harm_amount(side, patient, harmers);
+
+		// Cap the healing.
+		int max_heal = std::max(0, patient.max_hitpoints() - patient.hitpoints());
+		int min_heal = std::min(0, 1 - patient.hitpoints());
+		if ( harming < min_heal )
+			harming = min_heal;
+		else if ( harming > max_heal )
+			harming = max_heal;
+
+		// Is there nothing to do?
+		if ( harming == 0 )
+			continue;
+
+		if (!harmers.empty()) {
+			DBG_NG << "Just before harming animations, unit has " << harmers.size() << " potential harmers.\n";
+		}
+
+		const team & viewing_team =
+			resources::gameboard->teams()[display::get_singleton()->viewing_team()];
+		if (!resources::controller->is_skipping_replay() && update_display &&
+		    patient.is_visible_to_team(viewing_team, *resources::gameboard, false) )
+		{
+			unit_list.emplace_front(patient, harmers, harming);
+		}
+		else
+		{
+			// Do the healing now since it will not be animated.
+			do_harm(patient, harming);
+		}
+	}
+
+	animate_harms(unit_list);
+
+	DBG_NG << "end of harming calculations\n";
 }
