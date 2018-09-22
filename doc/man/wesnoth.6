@@ -47,13 +47,13 @@ campaigns, and share them with others.
 Show all translations in the in-game language selection list,
 even if they are deemed insufficiently complete.
 .TP
-.BI --bunzip \ infile.bz2
+.BI --bunzip2 \ infile.bz2
 decompresses a file which should be in bzip2 format and stores it
 without the .bz2 suffix. The
 .I infile.bz2
 will be removed.
 .TP
-.BI --bzip \ infile
+.BI --bzip2 \ infile
 compresses a file in bzip2 format, stores it as
 .IR infile .bz2
 and removes
@@ -176,7 +176,7 @@ as explained below.
 .B --mp-test
 load the test mp scenarios.
 .TP
-.B --no-delay
+.B --nodelay
 runs the game without any delays for graphic benchmarking. This is automatically enabled by
 .BR --nogui .
 .TP
@@ -252,7 +252,7 @@ sets the screen resolution. Example:
 .B -r 800x600
 .TP
 .BI --render-image \ image \  output
-takes a valid wesnoth 'image path string' with image path functions, and outputs to a .png file. Outputs to a windows .bmp file if the filename ends with .bmp or if libpng is not available. Image path functions are documented at https://wiki.wesnoth.org/ImagePathFunctionWML.
+takes a valid wesnoth 'image path string' with image path functions, and outputs to a .png file. Image path functions are documented at https://wiki.wesnoth.org/ImagePathFunctionWML.
 .TP
 .BI -R,\ --report
 initializes game directories, prints build information suitable for use in bug reports, and exits.
@@ -354,7 +354,7 @@ The side-specific multiplayer options are marked with
 has to be replaced by a side number. It usually is 1 or 2 but depends on
 the number of players possible in the chosen scenario.
 .TP
-.BI --ai_config \ number : value
+.BI --ai-config \ number : value
 selects a configuration file to load for the AI controller for this side.
 .TP
 .BI --algorithm \ number : value
