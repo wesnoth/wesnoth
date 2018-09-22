@@ -493,7 +493,8 @@ void calculate_healing(int side, bool update_display)
 	animate_heals(unit_list);
 
 	DBG_NG << "end of healing calculations\n";
-} 
+}
+
 void calculate_harming(int side, bool update_display)
 {
 	DBG_NG << "beginning of harming calculations\n";
