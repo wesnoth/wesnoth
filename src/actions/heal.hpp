@@ -24,3 +24,5 @@
  * Should be called at the beginning of a side's turn.
  */
 void calculate_healing(int side, bool update_display);
+
+void calculate_harming(int side, bool update_display);
