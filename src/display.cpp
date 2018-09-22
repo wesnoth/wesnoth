@@ -1691,8 +1691,12 @@ void display::draw_gamemap()
 
 		const overlay& item = overlay_record.second;
 		const std::string& current_team_name = get_teams()[viewing_team()].team_name();
+		const std::vector<std::string>& current_team_names = utils::split(current_team_name);
+		const std::vector<std::string>& team_names = utils::split(item.team_name);
 
-		if((item.team_name.empty() || item.team_name.find(current_team_name) != std::string::npos) &&
+		if((item.team_name.empty() ||
+			std::find_first_of(team_names.begin(), team_names.end(),
+				current_team_names.begin(), current_team_names.end()) != team_names.end()) &&
 			(!fogged(o_loc) || item.visible_in_fog))
 		{
 			const texture tex = item.image.find("~NO_TOD_SHIFT()") == std::string::npos

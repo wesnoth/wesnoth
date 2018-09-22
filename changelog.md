@@ -48,6 +48,7 @@
    * Support male_voice and female_voice in [message]
    * Support [break], [continue], and [return] in [random_placement]
    * [remove_sound_source] now accepts a comma-separated ID list
+   * Support [filter_team] in [side] in addition to team_name=
 
 ## Version 1.14.4+dev
  ### AI

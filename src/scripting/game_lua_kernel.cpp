@@ -3325,11 +3325,23 @@ static int intf_add_known_unit(lua_State *L)
 int game_lua_kernel::intf_add_tile_overlay(lua_State *L)
 {
 	map_location loc = luaW_checklocation(L, 1);
-	config cfg = luaW_checkconfig(L, 2);
+	vconfig cfg = luaW_checkvconfig(L, 2);
+	const vconfig &ssf = cfg.child("filter_team");
+
+	std::string team_name;
+	if (!ssf.null()) {
+		const std::vector<int>& teams = side_filter(ssf, &game_state_).get_teams();
+		std::vector<std::string> team_names;
+		std::transform(teams.begin(), teams.end(), std::back_inserter(team_names),
+			[&](int team) { return game_state_.get_disp_context().get_team(team).team_name(); });
+		team_name = utils::join(team_names);
+	} else {
+		team_name = cfg["team_name"].str();
+	}
 
 	if (game_display_) {
 		game_display_->add_overlay(loc, cfg["image"], cfg["halo"],
-			cfg["team_name"], cfg["name"], cfg["visible_in_fog"].to_bool(true));
+			team_name, cfg["name"], cfg["visible_in_fog"].to_bool(true));
 	}
 	return 0;
 }
