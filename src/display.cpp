@@ -2598,8 +2598,12 @@ void display::draw_hex(const map_location& loc) {
 			image::light_string lt = image::get_light_string(-1, tod_col.r, tod_col.g, tod_col.b);
 
 			for( ; overlays.first != overlays.second; ++overlays.first) {
+				const std::string& current_team_name = get_teams()[viewing_team()].team_name();
+				const std::vector<std::string>& current_team_names = utils::split(current_team_name);
+				const std::vector<std::string>& team_names = utils::split(overlays.first->second.team_name);
 				if ((overlays.first->second.team_name.empty() ||
-						overlays.first->second.team_name.find(dc_->teams()[viewing_team()].team_name()) != std::string::npos)
+					std::find_first_of(team_names.begin(), team_names.end(),
+						current_team_names.begin(), current_team_names.end()) != team_names.end())
 						&& !(fogged(loc) && !overlays.first->second.visible_in_fog))
 				{
 
