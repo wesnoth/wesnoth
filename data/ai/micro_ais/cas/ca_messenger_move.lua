@@ -57,21 +57,21 @@ function ca_messenger_move:execution(cfg)
 
     local unit_in_way = wesnoth.get_unit(next_hop[1], next_hop[2])
     if (unit_in_way == messenger) then unit_in_way = nil end
-    if unit_in_way then wesnoth.extract_unit(unit_in_way) end
+    if unit_in_way then unit_in_way:extract() end
 
-    wesnoth.put_unit(messenger, next_hop[1], next_hop[2])
+    messenger.loc = { next_hop[1], next_hop[2] }
     local _, cost1 = AH.find_path_with_shroud(messenger, x, y, { ignore_units = 'yes' })
 
     local unit_in_way2 = wesnoth.get_unit(optimum_hop[1], optimum_hop[2])
     if (unit_in_way2 == messenger) then unit_in_way2 = nil end
-    if unit_in_way2 then wesnoth.extract_unit(unit_in_way2) end
+    if unit_in_way2 then unit_in_way2:extract() end
 
-    wesnoth.put_unit(messenger, optimum_hop[1], optimum_hop[2])
+    messenger.loc = { optimum_hop[1], optimum_hop[2] }
     local _, cost2 = AH.find_path_with_shroud(messenger, x, y, { ignore_units = 'yes' })
 
-    wesnoth.put_unit(messenger, x_current, y_current)
-    if unit_in_way then wesnoth.put_unit(unit_in_way) end
-    if unit_in_way2 then wesnoth.put_unit(unit_in_way2) end
+    messenger.loc = { x_current, y_current }
+    if unit_in_way then unit_in_way:to_map() end
+    if unit_in_way2 then unit_in_way2:to_map() end
 
     -- If cost2 is significantly less, that means that the optimum path might
     -- overall be faster even though it is currently blocked
@@ -90,12 +90,12 @@ function ca_messenger_move:execution(cfg)
 
     local targets = AH.get_attackable_enemies { { "filter_adjacent", { id = messenger.id } } }
 
-    local max_rating, best_target, best_weapon = -9e99
+    local max_rating, best_target, best_weapon = - math.huge
     for _,target in ipairs(targets) do
         for n_weapon,weapon in ipairs(messenger.attacks) do
             local att_stats, def_stats = wesnoth.simulate_combat(messenger, n_weapon, target)
 
-            local rating = -9e99
+            local rating = - math.huge
             -- This is an acceptable attack if:
             -- 1. There is no counter attack
             -- 2. Probability of death is >=67% for enemy, 0% for attacker (default values)

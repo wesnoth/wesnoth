@@ -87,15 +87,12 @@ function ca_fast_attack_utils.single_unit_info(unit_proxy)
     -- Collects unit information from proxy unit table @unit_proxy into a Lua table
     -- so that it is accessible faster.
     -- Note: Even accessing the directly readable fields of a unit proxy table
-    -- is slower than reading from a Lua table; not even talking about unit_proxy.__cfg.
+    -- is slower than reading from a smaller Lua table.
     --
     -- Important: this is slow, so it should only be called as needed,
     -- but it does need to be redone after each move, as it contains
-    -- information like HP and XP (or the unit might have level up or been changed
+    -- information like HP and XP (or the unit might have leveled up or been changed
     -- in an event).
-    -- Difference from the grunt rush version: also include x and y
-
-    local unit_cfg = unit_proxy.__cfg
 
     local single_unit_info = {
         id = unit_proxy.id,
@@ -110,10 +107,8 @@ function ca_fast_attack_utils.single_unit_info(unit_proxy)
         experience = unit_proxy.experience,
         max_experience = unit_proxy.max_experience,
 
-        alignment = unit_cfg.alignment,
-        tod_bonus = AH.get_unit_time_of_day_bonus(unit_cfg.alignment, wesnoth.get_time_of_day().lawful_bonus),
-        cost = unit_cfg.cost,
-        level = unit_cfg.level
+        cost = unit_proxy.cost,
+        level = unit_proxy.level
     }
 
     -- Include the ability type, such as: hides, heals, regenerate, skirmisher (set up as 'hides = true')
@@ -122,49 +117,6 @@ function ca_fast_attack_utils.single_unit_info(unit_proxy)
         for _,ability in ipairs(abilities) do
             single_unit_info[ability[1]] = true
         end
-    end
-
-    -- Information about the attacks indexed by weapon number,
-    -- including specials (e.g. 'poison = true')
-    single_unit_info.attacks = {}
-    for attack in wml.child_range(unit_cfg, 'attack') do
-        -- Extract information for specials; we do this first because some
-        -- custom special might have the same name as one of the default scalar fields
-        local a = {}
-        for special in wml.child_range(attack, 'specials') do
-            for _,sp in ipairs(special) do
-                if (sp[1] == 'damage') then  -- this is 'backstab'
-                    if (sp[2].id == 'backstab') then
-                        a.backstab = true
-                    else
-                        if (sp[2].id == 'charge') then a.charge = true end
-                    end
-                else
-                    -- magical, marksman, custom chance-to-hit specials
-                    if (sp[1] == 'chance_to_hit') then
-                        a[sp[2].id or 'no_id'] = true
-                    else
-                        a[sp[1]] = true
-                    end
-                end
-            end
-        end
-
-        -- Now extract the scalar (string and number) values from attack
-        for k,v in pairs(attack) do
-            if (type(v) == 'number') or (type(v) == 'string') then
-                a[k] = v
-            end
-        end
-
-        table.insert(single_unit_info.attacks, a)
-    end
-
-    -- Resistances to the 6 default attack types
-    local attack_types = { "arcane", "blade", "cold", "fire", "impact", "pierce" }
-    single_unit_info.resistances = {}
-    for _,attack_type in ipairs(attack_types) do
-        single_unit_info.resistances[attack_type] = wesnoth.unit_resistance(unit_proxy, attack_type) / 100.
     end
 
     return single_unit_info
@@ -187,7 +139,7 @@ function ca_fast_attack_utils.get_unit_copy(id, gamedata)
 
     if (not gamedata.unit_copies[id]) then
         local unit_proxy = wesnoth.get_units { id = id }[1]
-        gamedata.unit_copies[id] = wesnoth.copy_unit(unit_proxy)
+        gamedata.unit_copies[id] = unit_proxy:clone()
     end
 
     return gamedata.unit_copies[id]
@@ -209,34 +161,32 @@ function ca_fast_attack_utils.get_unit_defense(unit_copy, x, y, defense_maps)
     if (not defense_maps[unit_copy.id][x]) then defense_maps[unit_copy.id][x] = {} end
 
     if (not defense_maps[unit_copy.id][x][y]) then
-        local defense = (100. - wesnoth.unit_defense(unit_copy, wesnoth.get_terrain(x, y))) / 100.
+        local defense = (100. - unit_copy:defense(wesnoth.get_terrain(x, y))) / 100.
         defense_maps[unit_copy.id][x][y] = { defense = defense }
     end
 
     return defense_maps[unit_copy.id][x][y].defense
 end
 
-function ca_fast_attack_utils.is_acceptable_attack(damage_taken, damage_done, own_value_weight)
+function ca_fast_attack_utils.is_acceptable_attack(damage_taken, damage_done, aggression)
     -- Evaluate whether an attack is acceptable, based on the damage taken/done ratio
     --
     -- Inputs:
     -- @damage_taken, @damage_done: should be in gold units as returned by ca_fast_attack_utils.attack_rating
     --   This could be either the attacker (for taken) and defender (for done) rating of a single attack (combo)
     --   or the overall attack (for done) and counter attack rating (for taken)
-    -- @own_value_weight (optional): value for the minimum ratio of done/taken that is acceptable
-
-    own_value_weight = own_value_weight or 0.6 -- equivalent to aggression = 0.4 (default mainline value)
+    -- @aggression: value determining which ratio of damage done/taken that is acceptable
 
     -- Otherwise it depends on whether the numbers are positive or negative
     -- Negative damage means that one or several of the units are likely to level up
     if (damage_taken < 0) and (damage_done < 0) then
-        return (damage_done / damage_taken) >= own_value_weight
+        return (damage_done / damage_taken) >= (1 - aggression)
     end
 
     if (damage_taken <= 0) then damage_taken = 0.001 end
     if (damage_done <= 0) then damage_done = 0.001 end
 
-    return (damage_done / damage_taken) >= own_value_weight
+    return (damage_done / damage_taken) >= (1 - aggression)
 end
 
 function ca_fast_attack_utils.damage_rating_unit(attacker_info, defender_info, att_stat, def_stat, is_village, cfg)
@@ -247,18 +197,15 @@ function ca_fast_attack_utils.damage_rating_unit(attacker_info, defender_info, a
     -- Note: damage is damage TO the attacker, not damage done BY the attacker
     --
     -- Input parameters:
-    --  @attacker_info, @defender_info: unit_info tables produced by ca_fast_gamestate_utils.single_unit_info()
+    --  @attacker_info, @defender_info: unit_info tables produced by ca_fast_attack_utils.get_unit_info()
     --  @att_stat, @def_stat: attack statistics for the two units
     --  @is_village: whether the hex from which the attacker attacks is a village
     --    Set to nil or false if not, to anything if it is a village (does not have to be a boolean)
     --
     -- Optional parameters:
-    --  @cfg: the optional different weights listed right below
-    --        Note: this is currently not used in the Fast MAI, but kept in as a hook for potential upgrades
+    --  @cfg: the optional weights listed right below (currently only leader_weight)
 
     local leader_weight = (cfg and cfg.leader_weight) or 2.
-    local xp_weight = (cfg and cfg.xp_weight) or 1.
-    local level_weight = (cfg and cfg.level_weight) or 1.
 
     local damage = attacker_info.hitpoints - att_stat.average_hp
 
@@ -301,7 +248,7 @@ function ca_fast_attack_utils.damage_rating_unit(attacker_info, defender_info, a
         level_bonus = (1. - att_stat.hp_chance[0]) * def_stat.hp_chance[0]
     end
 
-    fractional_damage = fractional_damage - level_bonus * level_weight
+    fractional_damage = fractional_damage - level_bonus
 
     -- Now convert this into gold-equivalent value
     local value = attacker_info.cost
@@ -312,9 +259,8 @@ function ca_fast_attack_utils.damage_rating_unit(attacker_info, defender_info, a
     end
 
     -- Being closer to leveling makes the attacker more valuable
-    -- TODO: consider using a more precise measure here
     local xp_bonus = attacker_info.experience / attacker_info.max_experience
-    value = value * (1. + xp_bonus * xp_weight)
+    value = value * (1. + xp_bonus)
 
     local rating = fractional_damage * value
 
@@ -331,11 +277,12 @@ function ca_fast_attack_utils.attack_rating(attacker_infos, defender_info, dsts,
     --  @att_stats: array of the attack stats of the attack combination(!) of the attackers
     --    (must be an array even for single unit attacks)
     --  @def_stat: the combat stats of the defender after facing the combination of the attackers
-    --  @gamedata: table with the game state as produced by ca_fast_gamestate_utils.gamedata()
+    --  @gamedata: table with the game state as produced by ca_fast_attack_utils.gamedata()
     --
     -- Optional inputs:
-    --  @cfg: the different weights listed right below
-    --        Note: this is currently not used in the Fast MAI, but kept in as a hook for potential upgrades
+    --  @cfg: table with optional configuration parameters:
+    --    - aggression: the default aggression aspect, determining how to balance own vs. enemy damage
+    --    - leader_weight: to be passed on to damage_rating_unit()
     --
     -- Returns:
     --   - Overall rating for the attack or attack combo
@@ -344,14 +291,10 @@ function ca_fast_attack_utils.attack_rating(attacker_infos, defender_info, dsts,
     --   - Extra rating: additional ratings that do not directly describe damage
     --       This should be used to help decide which attack to pick,
     --       but not for, e.g., evaluating counter attacks (which should be entirely damage based)
-    --   Note: rating = defender_rating - attacker_rating * own_value_weight + extra_rating
+    --   Note: rating = defender_rating - attacker_rating * (1 - aggression) + extra_rating
 
     -- Set up the config parameters for the rating
-    local defender_starting_damage_weight = (cfg and cfg.defender_starting_damage_weight) or 0.33
-    local defense_weight = (cfg and cfg.defense_weight) or 0.1
-    local distance_leader_weight = (cfg and cfg.distance_leader_weight) or 0.002
-    local occupied_hex_penalty = (cfg and cfg.occupied_hex_penalty) or 0.001
-    local own_value_weight = (cfg and cfg.own_value_weight) or 1.0
+    local aggression = (cfg and cfg.aggression) or 0.4
 
     local attacker_rating = 0
     for i,attacker_info in ipairs(attacker_infos) do
@@ -377,7 +320,7 @@ function ca_fast_attack_utils.attack_rating(attacker_infos, defender_info, dsts,
 
     -- Prefer to attack already damaged enemies
     local defender_starting_damage_fraction = defender_info.max_hitpoints - defender_info.hitpoints
-    extra_rating = extra_rating + defender_starting_damage_fraction * defender_starting_damage_weight
+    extra_rating = extra_rating + defender_starting_damage_fraction * 0.33
 
     -- If defender is on a village, add a bonus rating (we want to get rid of those preferentially)
     -- This is in addition to the damage bonus already included above (but as an extra rating)
@@ -399,7 +342,7 @@ function ca_fast_attack_utils.attack_rating(attacker_infos, defender_info, dsts,
             gamedata.defense_maps
         )
     end
-    defense_rating = defense_rating / #dsts * defense_weight
+    defense_rating = defense_rating / #dsts * 0.1
 
     extra_rating = extra_rating + defense_rating
 
@@ -415,14 +358,14 @@ function ca_fast_attack_utils.attack_rating(attacker_infos, defender_info, dsts,
                 - M.distance_between(dst[1], dst[2], leader_x, leader_y)
             rel_dist_rating = rel_dist_rating + relative_distance
         end
-        rel_dist_rating = rel_dist_rating / #dsts * distance_leader_weight
+        rel_dist_rating = rel_dist_rating / #dsts * 0.002
 
         extra_rating = extra_rating + rel_dist_rating
     end
 
     -- Finally add up and apply factor of own unit weight to defender unit weight
     -- This is a number equivalent to 'aggression' in the default AI (but not numerically equal)
-    local rating = defender_rating - attacker_rating * own_value_weight + extra_rating
+    local rating = defender_rating - attacker_rating * (1 - aggression) + extra_rating
 
     return rating, attacker_rating, defender_rating, extra_rating
 end
@@ -436,7 +379,7 @@ function ca_fast_attack_utils.battle_outcome(attacker_copy, defender_proxy, dst,
     -- @dst: location from which the attacker will attack in form { x, y }
     -- @attacker_info, @defender_info: unit info for the two units (needed in addition to the units
     --   themselves in order to speed things up)
-    --  @gamedata: table with the game state as produced by ca_fast_gamestate_utils.gamedata()
+    --  @gamedata: table with the game state as produced by ca_fast_attack_utils.gamedata()
     --  @move_cache: for caching data *for this move only*, needs to be cleared after a gamestate change
 
     local defender_defense = ca_fast_attack_utils.get_unit_defense(defender_proxy, defender_proxy.x, defender_proxy.y, gamedata.defense_maps)

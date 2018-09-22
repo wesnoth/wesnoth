@@ -48,7 +48,7 @@ function ca_herding_attack_close_enemy:execution(cfg)
     local radius = cfg.attack_distance or 4
     local enemies = get_enemies(cfg, radius)
 
-    max_rating, best_dog, best_enemy, best_hex = -9e99
+    local max_rating, best_dog, best_enemy, best_hex = - math.huge
     for _,enemy in ipairs(enemies) do
         for _,dog in ipairs(dogs) do
             local reach_map = AH.get_reachable_unocc(dog)
@@ -90,7 +90,7 @@ function ca_herding_attack_close_enemy:execution(cfg)
     if (not dogs[1]) then return end
 
     -- Find closest sheep/enemy pair first
-    local min_dist, closest_sheep, closest_enemy = 9e99
+    local min_dist, closest_sheep, closest_enemy = math.huge
     for _,enemy in ipairs(enemies) do
         for _,single_sheep in ipairs(sheep) do
             local dist = M.distance_between(enemy.x, enemy.y, single_sheep.x, single_sheep.y)
@@ -102,7 +102,7 @@ function ca_herding_attack_close_enemy:execution(cfg)
     end
 
     -- Move dogs in between enemies and sheep
-    max_rating, best_dog, best_hex = -9e99
+    local max_rating, best_dog, best_hex = - math.huge
     for _,dog in ipairs(dogs) do
         local reach_map = AH.get_reachable_unocc(dog)
         reach_map:iter( function(x, y, v)

@@ -1,23 +1,18 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
---local LS = wesnoth.require "location_set"
 local M = wesnoth.map
 
 local ca_ogres_flee = {}
 
 function ca_ogres_flee:evaluation()
-    local units = wesnoth.get_units { side = wesnoth.current.side,
-        formula = 'movement_left > 0'
-    }
+    local units = AH.get_units_with_moves { side = wesnoth.current.side }
 
     if (not units[1]) then return 0 end
     return 110000
 end
 
 function ca_ogres_flee:execution()
-    local units = wesnoth.get_units { side = wesnoth.current.side,
-        formula = 'movement_left > 0'
-    }
+    local units = AH.get_units_with_moves { side = wesnoth.current.side }
 
     local units_noMP = wesnoth.get_units { side = wesnoth.current.side,
         formula = 'movement_left = 0'
@@ -29,12 +24,9 @@ function ca_ogres_flee:execution()
     local enemies = wesnoth.get_units {  { "filter_side", { {"enemy_of", {side = wesnoth.current.side} } } } }
     local enemy_attack_map = BC.get_attack_map(enemies)
 
-    local best_hex, best_unit, max_rating = {}, nil, -9e99
+    local max_rating, best_hex, best_unit = - math.huge
     for i,u in ipairs(units) do
         local reach = wesnoth.find_reach(u)
-
-        --local rating_map = LS.create()
-
         for j,r in ipairs(reach) do
             local unit_in_way = wesnoth.get_unit(r[1], r[2])
 
@@ -74,8 +66,6 @@ function ca_ogres_flee:execution()
 
                 rating = rating + own_unit_rating * own_unit_weight
 
-                --rating_map:insert(r[1], r[2], rating)
-
                 if (rating > max_rating) then
                     best_hex = { r[1], r[2] }
                     best_unit = u
@@ -83,10 +73,7 @@ function ca_ogres_flee:execution()
                 end
             end
         end
-
-        --AH.put_labels(rating_map)
     end
-    --print(best_unit.id, best_unit.x, best_unit.y, best_hex[1], best_hex[2], max_rating)
 
     if best_hex then
         AH.movefull_outofway_stopunit(ai, best_unit, best_hex[1], best_hex[2])

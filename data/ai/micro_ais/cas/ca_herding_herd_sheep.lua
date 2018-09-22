@@ -42,7 +42,7 @@ function ca_herding_herd_sheep:execution(cfg)
     local dogs = get_dogs(cfg)
     local sheep_to_herd = get_sheep_to_herd(cfg)
 
-    local max_rating, best_dog, best_hex = -9e99
+    local max_rating, best_dog, best_hex = - math.huge
     local c_x, c_y = cfg.herd_x, cfg.herd_y
     for _,single_sheep in ipairs(sheep_to_herd) do
         -- Farthest sheep goes first
@@ -73,11 +73,7 @@ function ca_herding_herd_sheep:execution(cfg)
          end
     end
 
-    if (best_hex[1] == best_dog.x) and (best_hex[2] == best_dog.y) then
-        AH.checked_stopunit_moves(ai, best_dog)
-    else
-        AH.checked_move(ai, best_dog, best_hex[1], best_hex[2])  -- partial move only!
-    end
+    AH.robust_move_and_attack(ai, best_dog, best_hex, nil, { partial_move = true })
 end
 
 return ca_herding_herd_sheep

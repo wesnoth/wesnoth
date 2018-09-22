@@ -12,7 +12,7 @@ local retreat_functions = {}
 function retreat_functions.min_hp(unit)
     -- The minimum hp to retreat is a function of level and terrain defense
     -- We want to stay longer on good terrain and leave early on very bad terrain
-    local hp_per_level = wesnoth.unit_defense(unit, wesnoth.get_terrain(unit.x, unit.y))/15
+    local hp_per_level = unit:defense(wesnoth.get_terrain(unit.x, unit.y))/15
     local level = unit.level
 
     -- Leaders are considered to be higher level because of their value
@@ -38,7 +38,7 @@ function retreat_functions.retreat_injured_units(units)
     local regen, non_regen = {}, {}
     for i,u in ipairs(units) do
         if u.hitpoints < retreat_functions.min_hp(u) then
-            if wesnoth.unit_ability(u, 'regenerate') then
+            if u:ability('regenerate') then
                 table.insert(regen, u)
             else
                 table.insert(non_regen, u)
@@ -114,7 +114,7 @@ function retreat_functions.get_retreat_injured_units(healees, regenerates)
 
     local healing_locs = retreat_functions.get_healing_locations()
 
-    local max_rating, best_loc, best_unit = -9e99, nil, nil
+    local max_rating, best_loc, best_unit = - math.huge
     for i,u in ipairs(healees) do
         local possible_locations = wesnoth.find_reach(u)
         -- TODO: avoid ally's villages (may be preferable to lower rating so they will
@@ -176,7 +176,7 @@ function retreat_functions.get_retreat_injured_units(healees, regenerates)
                 rating = rating - enemy_count * 100000
 
                 -- Penalty based on terrain defense for unit
-                rating = rating - wesnoth.unit_defense(u, wesnoth.get_terrain(loc[1], loc[2]))/10
+                rating = rating - u:defense(wesnoth.get_terrain(loc[1], loc[2]))/10
 
                 if (loc[1] == u.x) and (loc[2] == u.y) and (not u.status.poisoned) then
                     if enemy_count == 0 then
