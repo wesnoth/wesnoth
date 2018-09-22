@@ -486,7 +486,9 @@ void play_controller::do_init_side()
 			current_team().spend_gold(expense);
 		}
 	}
-	calculate_healing(current_side(), !is_skipping_replay());
+	if (turn() > 1 || current_side() > 1) {
+		calculate_healing(current_side(), !is_skipping_replay());
+	}
 
 	// Prepare the undo stack.
 	undo_stack().new_side_turn(current_side());
