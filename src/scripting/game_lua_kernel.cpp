@@ -4131,7 +4131,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "add_modification",         &intf_add_modification         },
 		{ "advance_unit",             &intf_advance_unit             },
 		{ "copy_unit",                &intf_copy_unit                },
-		{ "create_animator",          &intf_create_animator          },
+		{ "create_animator",          &dispatch<&game_lua_kernel::intf_create_animator>          },
 		{ "create_unit",              &intf_create_unit              },
 		{ "debug_ai",                 &intf_debug_ai                 },
 		{ "eval_conditional",         &intf_eval_conditional         },
