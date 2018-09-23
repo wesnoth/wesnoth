@@ -30,7 +30,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="-std=c++14" />
+			<Add option="-std=c++17" />
 			<Add option="-mthreads" />
 			<Add option="-fexceptions" />
 			<Add option="-fdiagnostics-show-option" />
@@ -89,7 +89,7 @@
 		<Unit filename="../../src/crypt_blowfish/crypt_blowfish.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="../../src/crypt_blowfish/crypt_blowfish.h">
+		<Unit filename="../../src/crypt_blowfish/crypt_blowfish.h" />
 		<Unit filename="../../src/about.cpp" />
 		<Unit filename="../../src/about.hpp" />
 		<Unit filename="../../src/actions/advancement.cpp" />
@@ -525,8 +525,6 @@
 		<Unit filename="../../src/gui/dialogs/addon/manager.hpp" />
 		<Unit filename="../../src/gui/dialogs/addon/uninstall_list.cpp" />
 		<Unit filename="../../src/gui/dialogs/addon/uninstall_list.hpp" />
-		<Unit filename="../../src/gui/dialogs/advanced_graphics_options.cpp" />
-		<Unit filename="../../src/gui/dialogs/advanced_graphics_options.hpp" />
 		<Unit filename="../../src/gui/dialogs/attack_predictions.cpp" />
 		<Unit filename="../../src/gui/dialogs/attack_predictions.hpp" />
 		<Unit filename="../../src/gui/dialogs/campaign_difficulty.cpp" />
@@ -588,8 +586,8 @@
 		<Unit filename="../../src/gui/dialogs/game_stats.hpp" />
 		<Unit filename="../../src/gui/dialogs/game_ui.cpp" />
 		<Unit filename="../../src/gui/dialogs/game_ui.hpp" />
-		<Unit filename="../../src/gui/dialogs/game_version.cpp" />
-		<Unit filename="../../src/gui/dialogs/game_version.hpp" />
+		<Unit filename="../../src/gui/dialogs/game_version_dialog.cpp" />
+		<Unit filename="../../src/gui/dialogs/game_version_dialog.hpp" />
 		<Unit filename="../../src/gui/dialogs/gamestate_inspector.cpp" />
 		<Unit filename="../../src/gui/dialogs/gamestate_inspector.hpp" />
 		<Unit filename="../../src/gui/dialogs/help_browser.cpp" />
@@ -723,8 +721,6 @@
 		<Unit filename="../../src/gui/widgets/integer_selector.hpp" />
 		<Unit filename="../../src/gui/widgets/label.cpp" />
 		<Unit filename="../../src/gui/widgets/label.hpp" />
-		<Unit filename="../../src/gui/widgets/list.cpp" />
-		<Unit filename="../../src/gui/widgets/list.hpp" />
 		<Unit filename="../../src/gui/widgets/listbox.cpp" />
 		<Unit filename="../../src/gui/widgets/listbox.hpp" />
 		<Unit filename="../../src/gui/widgets/map_viewer.cpp" />
@@ -837,8 +833,8 @@
 		<Unit filename="../../src/hotkey/hotkey_item.hpp" />
 		<Unit filename="../../src/hotkey/hotkey_manager.cpp" />
 		<Unit filename="../../src/hotkey/hotkey_manager.hpp" />
-		<Unit filename="../../src/image.cpp" />
-		<Unit filename="../../src/image.hpp" />
+		<Unit filename="../../src/picture.cpp" />
+		<Unit filename="../../src/picture.hpp" />
 		<Unit filename="../../src/image_modifications.cpp" />
 		<Unit filename="../../src/image_modifications.hpp" />
 		<Unit filename="../../src/key.cpp" />
@@ -1051,8 +1047,8 @@
 		<Unit filename="../../src/serialization/unicode.hpp" />
 		<Unit filename="../../src/serialization/validator.cpp" />
 		<Unit filename="../../src/serialization/validator.hpp" />
-		<Unit filename="../../src/settings.cpp" />
-		<Unit filename="../../src/settings.hpp" />
+		<Unit filename="../../src/map_settings.cpp" />
+		<Unit filename="../../src/map_settings.hpp" />
 		<Unit filename="../../src/show_dialog.cpp" />
 		<Unit filename="../../src/show_dialog.hpp" />
 		<Unit filename="../../src/side_filter.cpp" />
@@ -1170,14 +1166,15 @@
 		<Unit filename="../../src/utils/name_generator_factory.hpp" />
 		<Unit filename="../../src/utils/reference_counter.hpp" />
 		<Unit filename="../../src/utils/smart_list.hpp" />
+		<Unit filename="../../src/utils/scope_list.hpp" />
 		<Unit filename="../../src/utils/type_trait_aliases.hpp" />
 		<Unit filename="../../src/variable.cpp" />
 		<Unit filename="../../src/variable.hpp" />
 		<Unit filename="../../src/variable_info.cpp" />
 		<Unit filename="../../src/variable_info.hpp" />
 		<Unit filename="../../src/variable_info_private.hpp" />
-		<Unit filename="../../src/version.cpp" />
-		<Unit filename="../../src/version.hpp" />
+		<Unit filename="../../src/game_version.cpp" />
+		<Unit filename="../../src/game_version.hpp" />
 		<Unit filename="../../src/video.cpp" />
 		<Unit filename="../../src/video.hpp" />
 		<Unit filename="../../src/wesconfig.h" />

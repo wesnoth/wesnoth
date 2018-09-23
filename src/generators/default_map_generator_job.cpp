@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -203,7 +203,7 @@ namespace {
 		, max_temp(cfg["max_temperature"].to_int(100000))
 		, min_height(cfg["min_height"].to_int(-100000))
 		, max_height(cfg["max_height"].to_int(100000))
-		, from(t_translation::read_list(cfg["from"]))
+		, from(t_translation::read_list(cfg["from"].str()))
 		, to(t_translation::NONE_TERRAIN)
 	{
 		const std::string& to_str = cfg["to"];
@@ -629,7 +629,7 @@ static map_location place_village(const t_translation::ter_map& map,
 			if(l != adj_liked_cache.end()) {
 				adjacent_liked = &(l->second);
 			} else {
-				adj_liked_cache[t] = t_translation::read_list(child["adjacent_liked"]);
+				adj_liked_cache[t] = t_translation::read_list(child["adjacent_liked"].str());
 				adjacent_liked = &(adj_liked_cache[t]);
 			}
 
@@ -691,9 +691,9 @@ static void flood_name(const map_location& start, const std::string& name, std::
 std::string default_map_generator_job::default_generate_map(generator_data data, std::map<map_location,std::string>* labels, const config& cfg)
 {
 	log_scope("map generation");
-	
-	LOG_NG << "default_generate_map parameters" 
-		<< " width=" << data.width 
+
+	LOG_NG << "default_generate_map parameters"
+		<< " width=" << data.width
 		<< " height=" << data.height
 		<< " nplayers=" << data.nplayers
 		<< " nvillages=" << data.nvillages
@@ -934,7 +934,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		 * Castle configuration tag contains a 'valid_terrain' attribute which is a
 		 * list of terrains that the castle may appear on.
 		 */
-		const t_translation::ter_list list = t_translation::read_list(castle_config["valid_terrain"]);
+		const t_translation::ter_list list = t_translation::read_list(castle_config["valid_terrain"].str());
 
 		const is_valid_terrain terrain_tester(terrain, list);
 
@@ -1153,10 +1153,21 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		starting_positions.insert(t_translation::starting_positions::value_type(std::to_string(player), coord));
 		terrain[x][y] = t_translation::HUMAN_KEEP;
 
-		const int castle_array[13][2] {
-			{-1, 0}, {-1, -1}, {0, -1}, {1, -1}, {1, 0}, {0, 1}, {-1, 1},
-			{-2, 1}, {-2, 0}, {-2, -1}, {-1, -2}, {0, -2}, {1, -2}
-		};
+		static const std::array<std::array<int, 2>, 13> castle_array {{
+			{{-1,  0}},
+			{{-1, -1}},
+			{{ 0, -1}},
+			{{ 1, -1}},
+			{{ 1,  0}},
+			{{ 0,  1}},
+			{{-1,  1}},
+			{{-2,  1}},
+			{{-2,  0}},
+			{{-2, -1}},
+			{{-1, -2}},
+			{{ 0, -2}},
+			{{ 1, -2}}
+		}};
 
 		for(int i = 0; i < data.castle_size - 1; i++) {
 			terrain[x+ castle_array[i][0]][y+ castle_array[i][1]] = t_translation::HUMAN_CASTLE;
@@ -1179,13 +1190,13 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	 * roads could split a forest)
 	 */
 	if(misc_labels != nullptr) {
+		std::set<std::string> used_names;
 		for(int x = data.width / 3; x < (data.width / 3)*2; x++) {
 			for(int y = data.height / 3; y < (data.height / 3) * 2;y++) {
 				//check the terrain of the tile
 				const map_location loc(x - data.width / 3, y - data.height / 3);
 				const t_translation::terrain_code terr = terrain[x][y];
-				std::string name, base_name;
-				std::set<std::string> used_names;
+				std::string name = "", base_name;
 
 				if(t_translation::terrain_matches(terr, t_translation::ALL_MOUNTAINS)) {
 					//name every 15th mountain
@@ -1221,6 +1232,9 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 						// name all connected swamp tiles accordingly
 						flood_name(loc, base_name, swamp_names, t_translation::ALL_SWAMPS, terrain, data.width, data.height, 0, misc_labels, name);
 					}
+				}
+				if(!name.empty()) {
+					used_names.insert(name);
 				}
 			}
 		}

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,12 +17,7 @@
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/log.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/button.hpp"
@@ -97,8 +92,8 @@ void faction_select::pre_show(window& window)
 	for(const config *s : flg_manager_.choosable_factions()) {
 		const config& side = *s;
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		const std::string name = side["name"].str();
 		// flag_rgb here is unrelated to any handling in the unit class

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -87,11 +87,11 @@ styled_widget::styled_widget(const implementation::builder_styled_widget& builde
 			&styled_widget::signal_handler_notify_remove_tooltip, this, _2, _3));
 }
 
-void styled_widget::set_members(const string_map& data)
+void styled_widget::set_members(const widget_item& data)
 {
 	/** @todo document this feature on the wiki. */
 	/** @todo do we need to add the debug colors here as well? */
-	string_map::const_iterator itor = data.find("id");
+	widget_item::const_iterator itor = data.find("id");
 	if(itor != data.end()) {
 		set_id(itor->second);
 	}

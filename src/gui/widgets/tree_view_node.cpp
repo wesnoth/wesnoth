@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2010 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -24,7 +24,6 @@
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "sdl/rect.hpp"
-
 #include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + get_tree_view().id() + "] " + __func__
@@ -32,12 +31,10 @@
 
 namespace gui2
 {
-
-tree_view_node::tree_view_node(
-		const std::string& id,
+tree_view_node::tree_view_node(const std::string& id,
 		tree_view_node* parent_node,
 		tree_view& parent_tree_view,
-		const std::map<std::string /* widget id */, string_map>& data)
+		const widget_data& data)
 	: widget()
 	, parent_node_(parent_node)
 	, tree_view_(&parent_tree_view)
@@ -77,11 +74,12 @@ tree_view_node::tree_view_node(
 		if(toggle_) {
 			toggle_widget->set_visible(widget::visibility::hidden);
 
-			toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
-					&tree_view_node::signal_handler_left_button_click, this, _2));
-			toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
-					&tree_view_node::signal_handler_left_button_click, this, _2),
-					event::dispatcher::back_post_child);
+			toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
+				std::bind(&tree_view_node::signal_handler_left_button_click, this, _2));
+
+			toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
+				std::bind(&tree_view_node::signal_handler_left_button_click, this, _2),
+				event::dispatcher::back_post_child);
 
 			if(unfolded_) {
 				toggle_->set_value(1);
@@ -92,12 +90,13 @@ tree_view_node::tree_view_node(
 		label_ = dynamic_cast<selectable_item*>(label_widget);
 
 		if(label_) {
-			label_widget->connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
-					&tree_view_node::signal_handler_label_left_button_click, this, _2, _3, _4),
-					event::dispatcher::front_child);
-			label_widget->connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
-					&tree_view_node::signal_handler_label_left_button_click, this, _2, _3, _4),
-					event::dispatcher::front_pre_child);
+			label_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
+				std::bind(&tree_view_node::signal_handler_label_left_button_click, this, _2, _3, _4),
+				event::dispatcher::front_child);
+
+			label_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
+				std::bind(&tree_view_node::signal_handler_label_left_button_click, this, _2, _3, _4),
+				event::dispatcher::front_pre_child);
 
 			if(!get_tree_view().selected_item_) {
 				get_tree_view().selected_item_ = this;
@@ -127,10 +126,7 @@ void tree_view_node::clear_before_destruct()
 	}
 }
 
-tree_view_node& tree_view_node::add_child(
-		const std::string& id,
-		const std::map<std::string /* widget id */, string_map>& data,
-		const int index)
+tree_view_node& tree_view_node::add_child_impl(ptr_t&& new_node, const int index)
 {
 	auto itor = children_.end();
 
@@ -138,14 +134,22 @@ tree_view_node& tree_view_node::add_child(
 		itor = children_.begin() + index;
 	}
 
-	itor = children_.emplace(itor, new tree_view_node(id, this, get_tree_view(), data));
+	tree_view_node& node = **children_.insert(itor, std::move(new_node));
+
+	// NOTE: we currently don't support moving nodes between different trees, so this
+	// just ensures that wasn't tried. Remove this if we implement support for that.
+	assert(node.tree_view_ == tree_view_);
+
+	// Safety check. Might only fail if someone accidentally removed the parent_node_
+	// setter in add_child().
+	assert(node.parent_node_ == this);
 
 	if(is_folded() /*|| is_root_node()*/) {
-		return **itor;
+		return node;
 	}
 
 	if(get_tree_view().get_size() == point()) {
-		return **itor;
+		return node;
 	}
 
 	assert(get_tree_view().content_grid());
@@ -153,7 +157,7 @@ tree_view_node& tree_view_node::add_child(
 
 	// Calculate width modification.
 	// This increases tree width if the width of the new node is greater than the current width.
-	point best_size = (*itor)->get_best_size();
+	point best_size = node.get_best_size();
 	best_size.x += get_indentation_level() * get_tree_view().indentation_step_size_;
 
 	const int width_modification = best_size.x > current_size.x
@@ -165,7 +169,7 @@ tree_view_node& tree_view_node::add_child(
 	// is larger than its current size. This prevents the scrollbar being reserved even when there's obviously
 	// enough visual space.
 
-	// Throw away cached best size to force a recomputation.
+	// Throw away cached best size to force a recalculation.
 	get_tree_view().layout_initialize(false);
 
 	const point tree_best_size = get_tree_view().get_best_size();
@@ -177,9 +181,9 @@ tree_view_node& tree_view_node::add_child(
 	assert(height_modification >= 0);
 
 	// Request new size.
-	get_tree_view().resize_content(width_modification, height_modification, -1, (*itor)->calculate_ypos());
+	get_tree_view().resize_content(width_modification, height_modification, -1, node.calculate_ypos());
 
-	return **itor;
+	return node;
 }
 
 unsigned tree_view_node::get_indentation_level() const
@@ -276,8 +280,7 @@ void tree_view_node::clear()
 	int height_reduction = 0;
 
 	if(!is_folded()) {
-		for(const auto & node : children_)
-		{
+		for(const auto& node : children_) {
 			height_reduction += node->get_current_size().y;
 		}
 	}
@@ -288,31 +291,29 @@ void tree_view_node::clear()
 		return;
 	}
 
-	get_tree_view().resize_content(0, -height_reduction,  -1, calculate_ypos());
+	get_tree_view().resize_content(0, -height_reduction, -1, calculate_ypos());
 }
 
 struct tree_view_node_implementation
 {
 private:
-	template <class W, class It>
-	static W* find_at_aux(It begin,
-						  It end,
-						  const point& coordinate,
-						  const bool must_be_active)
+	template<class W, class It>
+	static W* find_at_aux(It begin, It end, const point& coordinate, const bool must_be_active)
 	{
 		for(It it = begin; it != end; ++it) {
 			if(W* widget = (*it)->find_at(coordinate, must_be_active)) {
 				return widget;
 			}
 		}
+
 		return nullptr;
 	}
 
 public:
-	template <class W>
+	template<class W>
 	static W* find_at(utils::const_clone_ref<tree_view_node, W> tree_view_node,
-					  const point& coordinate,
-					  const bool must_be_active)
+			const point& coordinate,
+			const bool must_be_active)
 	{
 		if(W* widget = tree_view_node.grid_.find_at(coordinate, must_be_active)) {
 			return widget;
@@ -322,10 +323,8 @@ public:
 			return nullptr;
 		}
 
-		return find_at_aux<W>(tree_view_node.children_.begin(),
-							  tree_view_node.children_.end(),
-							  coordinate,
-							  must_be_active);
+		return find_at_aux<W>(
+			tree_view_node.children_.begin(), tree_view_node.children_.end(), coordinate, must_be_active);
 	}
 };
 
@@ -424,6 +423,7 @@ point tree_view_node::get_folded_size() const
 	if(get_indentation_level() > 1) {
 		size.x += (get_indentation_level() - 1) * get_tree_view().indentation_step_size_;
 	}
+
 	return size;
 }
 
@@ -448,8 +448,7 @@ point tree_view_node::get_unfolded_size() const
 	return size;
 }
 
-point tree_view_node::calculate_best_size(const int indentation_level,
-											const unsigned indentation_step_size) const
+point tree_view_node::calculate_best_size(const int indentation_level, const unsigned indentation_step_size) const
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
@@ -495,9 +494,7 @@ void tree_view_node::place(const point& origin, const point& size)
 	get_tree_view().layout_children(true);
 }
 
-unsigned tree_view_node::place(const unsigned indentation_step_size,
-								point origin,
-								unsigned width)
+unsigned tree_view_node::place(const unsigned indentation_step_size, point origin, unsigned width)
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 	DBG_GUI_L << LOG_HEADER << " origin " << origin << ".\n";
@@ -522,7 +519,7 @@ unsigned tree_view_node::place(const unsigned indentation_step_size,
 	}
 
 	DBG_GUI_L << LOG_HEADER << " set children.\n";
-	for(auto & node : children_) {
+	for(auto& node : children_) {
 		origin.y += node->place(indentation_step_size, origin, width);
 	}
 
@@ -544,7 +541,7 @@ void tree_view_node::set_visible_rectangle(const SDL_Rect& rectangle)
 		return;
 	}
 
-	for(auto & node : children_) {
+	for(auto& node : children_) {
 		node->set_visible_rectangle(rectangle);
 	}
 }
@@ -557,7 +554,7 @@ void tree_view_node::impl_draw_children()
 		return;
 	}
 
-	for(auto & node : children_) {
+	for(auto& node : children_) {
 		node->impl_draw_children();
 	}
 }
@@ -580,11 +577,10 @@ void tree_view_node::signal_handler_left_button_click(const event::ui_event even
 	unfolded_ = unfolded_new;
 	is_folded() ? fold_internal() : unfold_internal();
 
-	fire(event::NOTIFY_MODIFIED, *this, nullptr);
+	fire(event::NOTIFY_MODIFIED, get_tree_view(), nullptr);
 }
 
-void tree_view_node::signal_handler_label_left_button_click(
-		const event::ui_event event, bool& handled, bool& halt)
+void tree_view_node::signal_handler_label_left_button_click(const event::ui_event event, bool& handled, bool& halt)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -605,14 +601,10 @@ void tree_view_node::signal_handler_label_left_button_click(
 
 	get_tree_view().selected_item_ = this;
 
-	if(get_tree_view().selection_change_callback_) {
-		get_tree_view().selection_change_callback_(get_tree_view());
-	}
+	fire(event::NOTIFY_MODIFIED, get_tree_view(), nullptr);
 }
 
-void tree_view_node::init_grid(
-		grid* g,
-		const std::map<std::string /* widget id */, string_map>& data)
+void tree_view_node::init_grid(grid* g, const widget_data& data)
 {
 	assert(g);
 
@@ -672,7 +664,7 @@ std::vector<int> tree_view_node::describe_path()
 	}
 
 	assert(!"tree_view_node was not found in parent nodes children");
-	throw "assertion ignored"; //To silence 'no return value in this codepath' warning.
+	throw "assertion ignored"; // To silence 'no return value in this codepath' warning.
 }
 
 int tree_view_node::calculate_ypos()
@@ -723,8 +715,11 @@ tree_view_node* tree_view_node::get_node_above()
 		cur = &cur->get_child_at(cur->count_children() - 1);
 	}
 
-	if (!cur)
-		throw std::domain_error("tree_view_node::get_node_above(): Cannot determine which node is this line, or which node is the line above this one, if any.");
+	if(!cur) {
+		throw std::domain_error(
+			"tree_view_node::get_node_above(): Cannot determine which node is this line, or which "
+			"node is the line above this one, if any.");
+	}
 
 	return cur;
 }
@@ -747,6 +742,7 @@ tree_view_node* tree_view_node::get_node_below()
 				} else {
 					cur = &parent;
 				}
+
 				break;
 			}
 		}
@@ -761,6 +757,7 @@ tree_view_node* tree_view_node::get_selectable_node_above()
 	do {
 		above = above->get_node_above();
 	} while(above != nullptr && above->label_ == nullptr);
+
 	return above;
 }
 
@@ -770,6 +767,7 @@ tree_view_node* tree_view_node::get_selectable_node_below()
 	do {
 		below = below->get_node_below();
 	} while(below != nullptr && below->label_ == nullptr);
+
 	return below;
 }
 
@@ -789,11 +787,11 @@ void tree_view_node::select_node(bool expand_parents)
 	if(get_tree_view().selected_item_ && get_tree_view().selected_item_->label_) {
 		get_tree_view().selected_item_->label_->set_value(false);
 	}
+
 	get_tree_view().selected_item_ = this;
 
-	if(get_tree_view().selection_change_callback_) {
-		get_tree_view().selection_change_callback_(get_tree_view());
-	}
+	fire(event::NOTIFY_MODIFIED, get_tree_view(), nullptr);
+
 	label_->set_value_bool(true);
 }
 
@@ -804,7 +802,7 @@ void tree_view_node::layout_initialize(const bool full_initialization)
 	grid_.layout_initialize(full_initialization);
 
 	// Clear child caches.
-	for(auto & child : children_) {
+	for(auto& child : children_) {
 		child->layout_initialize(full_initialization);
 	}
 }

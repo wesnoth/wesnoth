@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -27,7 +27,6 @@
 #include "gui/widgets/generator.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/window.hpp"
@@ -157,8 +156,8 @@ void addon_list::set_addons(const addons_list& addons)
 
 		addon_vector_.push_back(&addon);
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		if(!tracking_info.can_publish) {
 			item["label"] = addon.display_icon();

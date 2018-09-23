@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2010 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,14 +20,7 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/attack_predictions.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/label.hpp"
-#include "gui/widgets/image.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
 #include "gui/widgets/window.hpp"
 #include "game_config.hpp"
@@ -169,8 +162,8 @@ void unit_attack::pre_show(window& window)
 			<< defw_specials << "\n"
 			<< font::span_color(d_cth_color) << defender.chance_to_hit << "%</span>";
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["use_markup"] = "true";
 

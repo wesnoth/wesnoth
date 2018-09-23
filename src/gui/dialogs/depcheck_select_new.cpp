@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2012 - 2018 by Boldizsár Lipka <lipkab@zoho.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,13 +17,8 @@
 #include "gui/dialogs/depcheck_select_new.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "gettext.hpp"
 
 namespace gui2
@@ -95,7 +90,7 @@ void depcheck_select_new::pre_show(window& window)
 
 	for(const auto & item : items_)
 	{
-		std::map<std::string, string_map> data;
+		widget_data data;
 		data["option"]["label"] = item;
 
 		items.add_row(data);

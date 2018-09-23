@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2017-2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2017-2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "preferences/general.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 
 // Set the default severity with the second parameter.
 // -1 means the default is to never log on this domain.

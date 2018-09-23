@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2012 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -118,7 +118,7 @@ pane::pane(const implementation::builder_pane& builder)
 			event::dispatcher::back_pre_child);
 }
 
-unsigned pane::create_item(const std::map<std::string, string_map>& item_data,
+unsigned pane::create_item(const widget_data& item_data,
 							const std::map<std::string, std::string>& tags)
 {
 	item item { item_id_generator_++, tags, std::dynamic_pointer_cast<grid>(item_builder_->build()) };
@@ -392,7 +392,7 @@ namespace implementation
 builder_pane::builder_pane(const config& cfg)
 	: builder_widget(cfg)
 	, grow_direction(
-			  lexical_cast<placer_base::tgrow_direction>(cfg["grow_direction"]))
+			  lexical_cast<placer_base::grow_direction>(cfg["grow_direction"]))
 	, parallel_items(cfg["parallel_items"])
 	, item_definition(new builder_grid(cfg.child("item_definition", "[pane]")))
 {

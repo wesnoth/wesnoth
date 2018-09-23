@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -124,8 +124,7 @@ bool dispatcher::fire(const ui_event event, widget& target, void*)
 	return fire_event<signal_notification_function>(event, this, &target, nullptr);
 }
 
-// TODO: is there any reason msg isn't a const reference?
-bool dispatcher::fire(const ui_event event, widget& target, message& msg)
+bool dispatcher::fire(const ui_event event, widget& target, const message& msg)
 {
 	assert(is_message_event(event));
 	return fire_event<signal_message_function>(event, this, &target, msg);

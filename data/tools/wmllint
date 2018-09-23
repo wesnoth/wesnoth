@@ -920,6 +920,7 @@ linechanges = (
         ("Hadaf", "Dune Marauder"),
         ("Naffat", "Dune Burner"),
         ("Qatif-al-nar", "Dune Scorcher"),
+        ("Qatif_al_nar", "Dune Scorcher"),
         ("Tineen", "Dune Firetrooper"),
         ("Rami", "Dune Rider"),
         ("Saree", "Dune Swiftrider"),
@@ -1110,7 +1111,7 @@ def is_translatable(key):
         "option_description", "option_name", "order", "plural_name", "prefix",
         "set_description", "source", "story", "summary", "victory_string",
         "defeat_string", "gold_carryover_string", "notes_string", "text", "title",
-        "title2", "tooltip", "translator_comment", "user_team_name"
+        "title2", "tooltip", "translator_comment", "user_team_name", "side_name"
         )
     return key in translatables or (key.startswith(("type_", "range_")) and key != "type_adv_tree")
 
@@ -1302,7 +1303,7 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
        (len(ancestors) >= 2 and parent == "#ifdef" and ancestors[-1] == "[if]"):
         if isOpener(nav.element) and nav.element not in ("[and]",
                            "[else]", "[elseif]", "[frame]", "[have_location]",
-                           "[have_unit]", "[not]", "[or]", "[then]",
+                           "[have_unit]", "[not]", "[or]", "[then]", "[lua]",
                            "[variable]") and not nav.element.endswith("_frame]") and not nav.element.startswith("[filter"):
             print(errlead + 'illegal child of [if]:', nav.element)
     # Check for fluky credit parts
@@ -1671,6 +1672,7 @@ def global_sanity_check(filename, lines):
     in_goal = False
     in_set_menu_item = False
     in_clear_menu_item = False
+    in_aspect = False
     in_facet = False
     in_sound_source = False
     in_remove_sound_source = False
@@ -1685,6 +1687,12 @@ def global_sanity_check(filename, lines):
     in_unstore = False
     in_not = False
     in_clear = False
+    in_fire_event = False
+    in_primary_unit = False
+    in_secondary_unit = False
+    in_remove_event = False
+    in_tunnel = False
+    in_filter = False
     in_checkbox = False
     in_combo = False
     in_entry = False
@@ -1718,7 +1726,9 @@ def global_sanity_check(filename, lines):
         elif "[/multiplayer]" in lines[i]:
             in_multiplayer = False
         else:
-            if re.search(r"\[[a-z]", lines[i]):
+            # the + check is needed for augmentation tags
+            # otherwise subtag_depth may become negative
+            if re.search(r"\[\+?[a-z]", lines[i]):
                 subtag_depth += 1
             if "[/" in lines[i]:
                 subtag_depth -= 1
@@ -1758,6 +1768,10 @@ def global_sanity_check(filename, lines):
             in_clear_menu_item = True
         elif "[/clear_menu_item]" in lines[i]:
             in_clear_menu_item = False
+        elif "[aspect]" in lines[i]:
+            in_aspect = True
+        elif "[/aspect]" in lines[i]:
+            in_aspect = False
         elif "[facet]" in lines[i]:
             in_facet = True
         elif "[/facet]" in lines[i]:
@@ -1814,6 +1828,34 @@ def global_sanity_check(filename, lines):
             in_clear = True
         elif "[/clear_variable]" in lines[i]:
             in_clear = False
+        # starting from 1.13.6, [fire_event] supports id= fields
+        # ignore them, but don't ignore [primary_unit] and [secondary_unit]
+        elif "[fire_event]" in lines[i]:
+            in_fire_event = True
+        elif "[/fire_event]" in lines[i]:
+            in_fire_event = False
+        elif "[primary_unit]" in lines[i]:
+            in_primary_unit = True
+        elif "[/primary_unit]" in lines[i]:
+            in_primary_unit = False
+        elif "[secondary_unit]" in lines[i]:
+            in_secondary_unit = True
+        elif "[/secondary_unit]" in lines[i]:
+            in_secondary_unit = False
+        # version 1.13.0 added [remove_event], which accepts a id= field
+        elif "[remove_event]" in lines[i]:
+            in_remove_event = True
+        elif "[/remove_event]" in lines[i]:
+            in_remove_event = False
+        # [tunnel] supports a [filter] sub-tag, so handle it
+        elif "[tunnel]" in lines[i]:
+            in_tunnel = True
+        elif "[/tunnel]" in lines[i]:
+            in_tunnel = False
+        elif "[filter]" in lines[i]:
+            in_filter = True
+        elif "[/filter]" in lines[i]:
+            in_filter = False
         # sub-tags of [options] tag
         elif "[checkbox]" in lines[i]:
             in_checkbox = True
@@ -2020,13 +2062,16 @@ def global_sanity_check(filename, lines):
                     elif value and value[0] in ("$", "{"):
                         continue
                     elif preamble_seen and subtag_depth > 0 and not ignore_id \
-                         and not in_object and not in_cfg and not in_facet \
-                         and not in_sound_source and not in_remove_sound_source \
-                         and not in_stage and not in_goal and not in_set_menu_item \
+                         and not in_object and not in_cfg and not in_aspect \
+                         and not in_facet and not in_sound_source \
+                         and not in_remove_sound_source and not in_stage \
+                         and not in_goal and not in_set_menu_item \
                          and not in_clear_menu_item and not directly_in_event[-1] \
                          and not in_time_area and not in_trait and not in_checkbox \
                          and not in_combo and not in_entry and not in_slider \
-                         and not in_map_generator:
+                         and not in_map_generator \
+                         and not (in_fire_event and not (in_primary_unit or in_secondary_unit)) \
+                         and not in_remove_event and not (in_tunnel and not in_filter):
                         ids = value.split(",")
                         for id_ in ids:
                             # removal of leading whitespace of items in comma-separated lists
@@ -2251,7 +2296,7 @@ def hack_syntax(filename, lines):
                     j += 1
     # Ensure that every speaker=narrator block without an image uses
     # wesnoth-icon.png as an image.
-    need_image = in_message = False
+    narrator = has_image = in_message = False
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
@@ -2259,16 +2304,16 @@ def hack_syntax(filename, lines):
         if '[message]' in precomment:
             in_message = True
         if "speaker=narrator" in precomment:
-            need_image = True
+            narrator = True
         elif precomment.strip().startswith("image"):
-            need_image = False
+            has_image = True
         elif '[/message]' in precomment:
-            if need_image:
+            if narrator and not has_image:
                 # This line presumes the code has been through wmlindent
                 if verbose:
                     print('"%s", line %d: inserting "image=wesnoth-icon.png"'%(filename, i+1))
                 lines.insert(i, leader(precomment) + baseindent + "image=wesnoth-icon.png\n")
-            need_image = in_message = False
+            narrator = has_image = in_message = False
     # Hack tracking-map macros from 1.4 and earlier.  The idea is to lose
     # all assumptions about colors in the names
     for i in range(len(lines)):
@@ -2924,7 +2969,8 @@ vctypes = (".svn", ".git", ".hg")
 
 def interesting(fn):
     "Is a file interesting for conversion purposes?"
-    return fn.endswith(".cfg") or is_map(fn) or issave(fn)
+    return (fn.endswith(".cfg") and not fn.endswith("_info.cfg")) \
+           or is_map(fn) or issave(fn)
 
 def allcfgfiles(directory):
     "Get the names of all interesting files under directory."
@@ -2953,7 +2999,7 @@ Also validates WML to check for errors.''',
         epilog = '''For more about wmllint, including how to prevent unwanted conversions and false
 positive warnings with magic comments, read the introduction in the wmllint
 file itself.
-See also: http://wiki.wesnoth.org/Maintenance_tools.''',
+See also: https://wiki.wesnoth.org/Maintenance_tools.''',
         formatter_class = argparse.RawTextHelpFormatter
     )
 

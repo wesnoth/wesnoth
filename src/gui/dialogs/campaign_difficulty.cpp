@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2010 - 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -21,11 +21,7 @@
 #include "formatter.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "preferences/game.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
@@ -94,8 +90,8 @@ void campaign_difficulty::pre_show(window& window)
 	window.keyboard_capture(&list);
 
 	for(const config& d : difficulties_.child_range("difficulty")) {
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["label"] = d["image"];
 		data.emplace("icon", item);

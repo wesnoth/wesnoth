@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
                  2008 - 2015 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -24,11 +24,10 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/retval.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 #include "serialization/string_utils.hpp"
 #include "addon/client.hpp"
 

@@ -965,3 +965,44 @@ function wesnoth.wml_actions.store_unit_defense(cfg)
 	end
 	wml.variables[cfg.variable or "terrain_defense"] = defense
 end
+
+function wml_actions.terrain_mask(cfg)
+	cfg = helper.parsed(cfg)
+
+	local alignment = cfg.alignment
+	local is_odd = false
+	local border = cfg.border
+	local mask = cfg.mask
+	local x = cfg.x or helper.wml_error("[terrain_mask] missing x attribute")
+	local y = cfg.y or helper.wml_error("[terrain_mask] missing y attribute")
+	if alignment == "even" then
+		is_odd = false
+	elseif alignment == "odd" then
+		is_odd = true
+	elseif alignment == "raw" then
+		--todo: maybe rename this value?
+		is_odd = (x % 2 ~= 0)
+	elseif border == false then
+		is_odd = true
+	else
+		is_odd = false
+		-- the old [terrain_mask] code would insert the terrain as one
+		-- tile to the northwest from the specified hex.
+		-- todo: deprecate this strange behaviour or at least not make it
+		--       the default behaviour anymore.
+		local new_loc = wesnoth.map.get_direction({x, y}, "nw")
+		x, y = new_loc[1], new_loc[2]
+	end
+	local rules = {}
+	for rule in wml.child_range(cfg, 'rule') do
+		rules[#rules] = rule
+	end
+	if cfg.mask_file then
+		mask = wesnoth.read_file(cfg.mask_file)
+	end
+	wesnoth.terrain_mask({x, y}, mask, {
+		is_odd = is_odd,
+		rules = rules,
+		ignore_special_locations = cfg.ignore_special_locations,
+	})
+end

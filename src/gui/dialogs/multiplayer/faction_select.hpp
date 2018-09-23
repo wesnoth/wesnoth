@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -32,10 +32,11 @@ public:
 
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(faction_select)
 
+	int get_side_num() const { return side_; }
 private:
 	ng::flg_manager& flg_manager_;
 
-    const std::string tc_color_;
+	const std::string tc_color_;
 
 	const int side_;
 

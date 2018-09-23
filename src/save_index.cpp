@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2003 - 2018 by Jörg Hinrichs, refactored from various
    places formerly created by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -373,6 +373,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	cfg_summary["difficulty"] = cfg_save["difficulty"];
 	cfg_summary["random_mode"] = cfg_save["random_mode"];
 
+	cfg_summary["active_mods"] = cfg_save.child("multiplayer")["active_mods"];
 	cfg_summary["campaign"] = cfg_save["campaign"];
 	cfg_summary["version"] = cfg_save["version"];
 	cfg_summary["corrupt"] = "";

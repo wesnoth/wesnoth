@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2012 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -57,7 +57,7 @@ public:
 	/*
 	 * Creates a new item.
 	 */
-	unsigned create_item(const std::map<std::string, string_map>& item_data,
+	unsigned create_item(const widget_data& item_data,
 						 const std::map<std::string, std::string>& tags);
 
 	/** See @ref widget::place. */
@@ -192,7 +192,7 @@ struct builder_pane : public builder_widget
 
 	virtual widget_ptr build(const replacements_map& replacements) const override;
 
-	placer_base::tgrow_direction grow_direction;
+	placer_base::grow_direction grow_direction;
 
 	unsigned parallel_items;
 

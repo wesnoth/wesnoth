@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2018 by Charles Dang <exodia339@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 #include "spritesheet_generator.hpp"
 
 #include "filesystem.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 #include "sdl/point.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/surface.hpp"

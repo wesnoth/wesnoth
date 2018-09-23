@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2006 - 2018 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -274,7 +274,7 @@ unit_animation::unit_animation(int start_time,
 }
 
 unit_animation::unit_animation(const config& cfg,const std::string& frame_string )
-	: terrain_types_(t_translation::read_list(cfg["terrain_type"]))
+	: terrain_types_(t_translation::read_list(cfg["terrain_type"].str()))
 	, unit_filter_()
 	, secondary_unit_filter_()
 	, directions_()

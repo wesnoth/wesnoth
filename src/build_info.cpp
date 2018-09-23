@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2015 - 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@
 #include "formatter.hpp"
 #include "gettext.hpp"
 #include "serialization/unicode.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 
 #include <algorithm>
 
@@ -75,7 +75,7 @@ std::string format_version(const SDL_version& v)
 std::string format_openssl_patch_level(uint8_t p)
 {
 	return p <= 26
-		? std::string(1, 'a' + char(p) - 1)
+		? std::string(1, 'a' + static_cast<char>(p) - 1)
 		: "patch" + std::to_string(p);
 }
 

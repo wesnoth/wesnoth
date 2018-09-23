@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -163,11 +163,15 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	// Compute chance to hit.
 	signed int cth = opp.defense_modifier(resources::gameboard->map().get_terrain(opp_loc)) + weapon->accuracy()
 		- (opp_weapon ? opp_weapon->parry() : 0);
-		
+
+
+
+
 	cth = utils::clamp(cth, 0, 100);
 
 	unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
 	unit_abilities::effect cth_effects(cth_specials, cth, backstab_pos);
+
 	cth = cth_effects.get_composite_value(); 
 	cth = utils::clamp(cth, 0, 100);
 		
@@ -322,8 +326,10 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
 	unit_abilities::effect cth_effects(cth_specials, cth, backstab_pos);
 	cth = cth_effects.get_composite_value();
-		
-	chance_to_hit = utils::clamp(cth, 0, 100);;
+
+
+	chance_to_hit = utils::clamp(cth, 0, 100);
+
 
 	int base_damage = weapon->modified_damage(backstab_pos);
 	int damage_multiplier = 100;
@@ -1405,6 +1411,11 @@ void attack::perform()
 		return;
 	}
 
+	if(a_.get_unit().attacks_left() <= 0) {
+		LOG_NG << "attack::perform(): not enough ap.\n";
+		return;
+	}
+
 	a_.get_unit().set_facing(a_.loc_.get_relative_dir(d_.loc_));
 	d_.get_unit().set_facing(d_.loc_.get_relative_dir(a_.loc_));
 
@@ -1425,6 +1436,11 @@ void attack::perform()
 
 	a_stats_ = &bc_->get_attacker_stats();
 	d_stats_ = &bc_->get_defender_stats();
+
+	if(a_stats_->disable) {
+		LOG_NG << "attack::perform(): tried to attack with a disabled attack.\n";
+		return;
+	}
 
 	if(a_stats_->weapon) {
 		a_.weap_id_ = a_stats_->weapon->id();
@@ -1450,8 +1466,8 @@ void attack::perform()
 	d_.orig_attacks_ = d_stats_->num_blows;
 	a_.n_attacks_ = a_.orig_attacks_;
 	d_.n_attacks_ = d_.orig_attacks_;
-	a_.xp_ = d_.get_unit().level();
-	d_.xp_ = a_.get_unit().level();
+	a_.xp_ = game_config::combat_xp(d_.get_unit().level());
+	d_.xp_ = game_config::combat_xp(a_.get_unit().level());
 
 	bool defender_strikes_first = (d_stats_->firststrike && !a_stats_->firststrike);
 	unsigned int rounds = std::max<unsigned int>(a_stats_->rounds, d_stats_->rounds) - 1;

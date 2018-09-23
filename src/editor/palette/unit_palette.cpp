@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2012 - 2018 by Fabian Mueller <fabianmueller5@gmx.de>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -97,8 +97,8 @@ void unit_palette::draw_item(const unit_type& u, surface& image, std::stringstre
 unit_palette::unit_palette(editor_display &gui, const config& cfg,
                            editor_toolkit &toolkit)
 //TODO avoid magic numbers
-	:	editor_palette<unit_type>(gui, cfg, 36, 4, toolkit),
-		selected_bg_items_()
+	: editor_palette<const unit_type&>(gui, cfg, 36, 4, toolkit)
+	, selected_bg_items_()
 {
 }
 

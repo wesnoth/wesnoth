@@ -13,9 +13,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-06-04 02:04-0700\n"
+"PO-Revision-Date: 2018-09-09 16:54+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.1.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -1650,7 +1650,7 @@ msgstr "Prendila"
 
 #: data/core/macros/items.cfg:275
 msgid "holy water^Leave it"
-msgstr "Lasciala"
+msgstr "Lasciala lì"
 
 #: data/core/macros/items.cfg:276
 msgid "$unit.name has no need for this Holy Water! Let another take it."
@@ -1746,8 +1746,8 @@ msgstr ""
 #: data/core/macros/items.cfg:521
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
-"Questo tridente permette a un nereide di lanciare saette contro i suoi "
-"nemici!"
+"Questo tridente conferisce ad un nereide il potere di lanciare saette contro "
+"i suoi nemici!"
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:525
@@ -7609,14 +7609,8 @@ msgid "Save and abort game"
 msgstr "Abbandona il gioco"
 
 #: src/playturn.cpp:283
-#, fuzzy
-#| msgid ""
-#| "$player who controlled side $side_drop has left the game. What do you "
-#| "want to do?"
 msgid "$player has left the game. What do you want to do?"
-msgstr ""
-"$player che controllava la squadra $side_drop ha abbandonato la partita. Che "
-"cosa vuoi fare?"
+msgstr "$player ha abbandonato la partita. Che cosa vuoi fare?"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -8212,11 +8206,8 @@ msgstr ""
 "debug"
 
 #: src/synced_user_choice.cpp:326
-#, fuzzy
-#| msgid "waiting for $desc from side $sides"
-#| msgid_plural "waiting for $desc from sides $sides"
 msgid "waiting for $desc from side(s) $sides"
-msgstr "in attesa di $desc dalla squadra $sides"
+msgstr "in attesa di $desc dalla squadra(e) $sides"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8420,6 +8411,26 @@ msgstr "Nascondi i piani di $player"
 #: src/whiteboard/manager.cpp:1103
 msgid "Whiteboard Options"
 msgstr "Opzioni della lavagna"
+
+#~ msgid "Use experimental PRNG combat"
+#~ msgstr "Usa combattimento sperimentale PRNG"
+
+#~ msgid ""
+#~ "Enables more determinstic chance-to-hit calculations. This is an "
+#~ "experimental feature designed to bring the observed hit/miss rate more in "
+#~ "line with the displayed percentages.\n"
+#~ "\n"
+#~ "Note: this option only affects singleplayer, and the ‘Save random seed’ "
+#~ "option must also be enabled when creating a game for this to work."
+#~ msgstr ""
+#~ "Abilita una modalità di calcolo delle possibilità di colpire un bersaglio "
+#~ "più deterministica. Questa è una caratteristica sperimentale progettata "
+#~ "per allineare il rateo successo/fallimento osservato alle percentuali "
+#~ "mostrate in gioco.\n"
+#~ "\n"
+#~ "Nota: questa opzione è attiva soltanto in modalità giocatore singolo; per "
+#~ "funzionare, deve anche assere selezionata l’opzione \"Salva seme numerico "
+#~ "casuale\" al momento della creazione di una partita."
 
 #~ msgid "Trailers"
 #~ msgstr "Anteprime"

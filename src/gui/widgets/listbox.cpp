@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -11,8 +11,6 @@
 
    See the COPYING file for more details.
 */
-
-#ifndef GUI2_EXPERIMENTAL_LISTBOX
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
@@ -28,7 +26,6 @@
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/widgets/pane.hpp"
 #include "gui/widgets/selectable_item.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/viewport.hpp"
 #include "gui/widgets/widget_helpers.hpp"
@@ -65,7 +62,7 @@ listbox::listbox(const implementation::builder_styled_widget& builder,
 {
 }
 
-grid& listbox::add_row(const string_map& item, const int index)
+grid& listbox::add_row(const widget_item& item, const int index)
 {
 	assert(generator_);
 	grid& row = generator_->create_item(index, list_builder_, item, std::bind(&listbox::list_item_clicked, this, _1));
@@ -75,7 +72,7 @@ grid& listbox::add_row(const string_map& item, const int index)
 	return row;
 }
 
-grid& listbox::add_row(const std::map<std::string /* widget id */, string_map>& data, const int index)
+grid& listbox::add_row(const widget_data& data, const int index)
 {
 	assert(generator_);
 	grid& row = generator_->create_item(index, list_builder_, data, std::bind(&listbox::list_item_clicked, this, _1));
@@ -526,7 +523,7 @@ void listbox::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 
 void listbox::finalize(builder_grid_const_ptr header,
 		builder_grid_const_ptr footer,
-		const std::vector<std::map<std::string, string_map>>& list_data)
+		const std::vector<widget_data>& list_data)
 {
 	// "Inherited."
 	scrollbar_container::finalize_setup();
@@ -888,9 +885,9 @@ listbox_definition::resolution::resolution(const config& cfg)
 
 namespace implementation
 {
-static std::vector<std::map<std::string, string_map>> parse_list_data(const config& data, const unsigned int req_cols)
+static std::vector<widget_data> parse_list_data(const config& data, const unsigned int req_cols)
 {
-	std::vector<std::map<std::string, string_map>> list_data;
+	std::vector<widget_data> list_data;
 
 	for(const auto& row : data.child_range("row")) {
 		auto cols = row.child_range("column");
@@ -954,17 +951,6 @@ builder_listbox::builder_listbox(const config& cfg)
 
 widget_ptr builder_listbox::build() const
 {
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	list_view* widget = new list_view(true, true, generator_base::vertical_list, true, list_builder);
-
-	// init_control(widget);
-	if(!list_data.empty()) {
-		widget->append_rows(list_data);
-	}
-
-	return widget;
-#else
-
 	auto widget = std::make_shared<listbox>(*this, generator_base::vertical_list, list_builder, has_minimum_, has_maximum_);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
@@ -980,7 +966,6 @@ widget_ptr builder_listbox::build() const
 	widget->finalize(header, footer, list_data);
 
 	return widget;
-#endif
 }
 
 /*WIKI_MACRO
@@ -1071,17 +1056,6 @@ builder_horizontal_listbox::builder_horizontal_listbox(const config& cfg)
 
 widget_ptr builder_horizontal_listbox::build() const
 {
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	list_view* widget = new list_view(true, true, generator_base::horizontal_list, true, list_builder);
-
-	// init_control(widget);
-	if(!list_data.empty()) {
-		widget->append_rows(list_data);
-	}
-
-	return widget;
-#else
-
 	auto widget = std::make_shared<listbox>(*this, generator_base::horizontal_list, list_builder, has_minimum_, has_maximum_);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
@@ -1097,7 +1071,6 @@ widget_ptr builder_horizontal_listbox::build() const
 	widget->finalize(nullptr, nullptr, list_data);
 
 	return widget;
-#endif
 }
 
 /*WIKI_MACRO
@@ -1188,17 +1161,6 @@ builder_grid_listbox::builder_grid_listbox(const config& cfg)
 
 widget_ptr builder_grid_listbox::build() const
 {
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	list_view* widget = new list_view(true, true, generator_base::grid, true, list_builder);
-
-	// init_control(widget);
-	if(!list_data.empty()) {
-		widget->append_rows(list_data);
-	}
-
-	return widget;
-#else
-
 	auto widget = std::make_shared<listbox>(*this, generator_base::table, list_builder, has_minimum_, has_maximum_);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
@@ -1214,7 +1176,6 @@ widget_ptr builder_grid_listbox::build() const
 	widget->finalize(nullptr, nullptr, list_data);
 
 	return widget;
-#endif
 }
 
 } // namespace implementation
@@ -1222,5 +1183,3 @@ widget_ptr builder_grid_listbox::build() const
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

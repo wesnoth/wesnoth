@@ -15,9 +15,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 17:01 UTC\n"
-"PO-Revision-Date: 2018-04-03 14:15+0200\n"
+"PO-Revision-Date: 2018-07-09 14:40+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.8\n"
 
 # Název zvolen po delší úvaze a je schválně nedoslovný. Moře tu značí jak vlastní vodu, domov mořských lidí, tak i označení velkého množství.
 #. [campaign]: id=Dead_Water
@@ -1756,6 +1756,8 @@ msgstr "Vlagnor"
 
 #. [message]: speaker=Vlagnor
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:124
+#, fuzzy
+#| msgid "What are you merfolk doing here?"
 msgid "What are you mermen doing here?"
 msgstr "Co tu vy rybáci děláte?"
 
@@ -1781,6 +1783,10 @@ msgstr "Čarodějnicí?!"
 
 #. [message]: speaker=Vlagnor
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:144
+#, fuzzy
+#| msgid ""
+#| "She kill drakes. If you are her friend, we will kill you. We do not want "
+#| "MORE merfolk blasting and stabbing."
 msgid ""
 "She kill drakes. If you are her friend, we will kill you. We do not want "
 "MORE mermen blasting and stabbing."
@@ -2545,6 +2551,10 @@ msgstr "Hned se k vám přidám! To monstrum je prostě nepřirozené."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:570
+#, fuzzy
+#| msgid ""
+#| "The merfolk clapped their hands over their ears as a terrible wail echoed "
+#| "off the castle walls."
 msgid ""
 "The mermen clapped their hands over their ears as a terrible wail echoed off "
 "the castle walls."
@@ -2770,6 +2780,14 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:17
+#, fuzzy
+#| msgid ""
+#| "The tribe that had fled Jotha unable to fight returned as an army "
+#| "stiffened by veteran fighters and led by a warrior king. Though they were "
+#| "tired from their journey, weariness fell from them as they neared home. "
+#| "The merfolk arrived during the night, and found the mouth of their bay "
+#| "guarded, so they headed south along the coast to some outlying villages "
+#| "to gather news of the invaders."
 msgid ""
 "The tribe that had fled Jotha unable to fight returned as an army stiffened "
 "by veteran fighters and led by a warrior king. Though they were tired from "
@@ -2838,6 +2856,8 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:491
+#, fuzzy
+#| msgid "At dawn, the merfolk got a good look at their opponents."
 msgid "At dawn, the mermen got a good look at their opponents."
 msgstr "Za svítání mořští lidé zaujali pozici proti svým nepřátelům."
 
@@ -2979,6 +2999,15 @@ msgstr "Epilog"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:33
+#, fuzzy
+#| msgid ""
+#| "After destroying Mal-Ravanal’s henchmen, Kai Krellis awaited another "
+#| "attack. But it never came. Krellis sent some messengers south to discover "
+#| "what they could. The news that came back was better than good. Mal-"
+#| "Ravanal was dead! Soldiers of Wesnoth had defeated him at about the same "
+#| "time the merfolk had defeated the undead at Jotha. With the evil wizard "
+#| "gone, the merfolk relaxed and began rebuilding in earnest, and soon Jotha "
+#| "was restored."
 msgid ""
 "After destroying Mal-Ravanal’s henchmen, Kai Krellis awaited another attack. "
 "But it never came. Krellis sent some messengers south to discover what they "
@@ -3161,6 +3190,10 @@ msgstr "Mořský obyvatel"
 
 #. [unit_type]: id=Merman Citizen, race=merman
 #: data/campaigns/Dead_Water/units/Citizen.cfg:17
+#, fuzzy
+#| msgid ""
+#| "Merfolk are mostly peaceful, but will fight to defend their homes. In "
+#| "this situation, even merfolk with no weapons or training can be dangerous."
 msgid ""
 "Mermen are mostly peaceful, but will fight to defend their homes. In this "
 "situation, even mermen with no weapons or training can be dangerous."
@@ -3248,13 +3281,19 @@ msgstr "Trojzubec bouře"
 
 #. [object]: id={ID}
 #: data/campaigns/Dead_Water/utils/items.cfg:11
+#, fuzzy
+#| msgid ""
+#| "This trident gives merfolk the power to throw lightning at their enemies."
 msgid "This weapon shoots powerful lightning bolts at your enemies."
-msgstr "Tato zbraň umožňuje střílet na tvé nepřátele mocné blesky."
+msgstr ""
+"Tento trojzubec umožňuje mořských lidech svádět blesky na jejich nepřátele."
 
 #. [object]: id={ID}
 #: data/campaigns/Dead_Water/utils/items.cfg:13
+#, fuzzy
+#| msgid "Only the merfolk can use this item."
 msgid "Only a merman can use this item."
-msgstr "Tento předmět může používat pouze mořský člověk."
+msgstr "Tento předmět může používat pouze příslušník mořského lidu."
 
 #. [effect]: type=fire
 #: data/campaigns/Dead_Water/utils/items.cfg:33
@@ -3380,6 +3419,12 @@ msgstr ""
 "Tento útok je tak drtivý, že je zasažená jednotka omráčena a není schopna "
 "dále zajištovat svou zónu kontroly. Tento efekt pomine na začátku dalšího "
 "kola zasažené jednotky."
+
+#~ msgid "Now we must defeat the undead."
+#~ msgstr "Teď musíme porazit nemrtvé."
+
+#~ msgid "user_team_name^Merfolk"
+#~ msgstr "Mořští lidé"
 
 #~ msgid "fist"
 #~ msgstr "pěst"

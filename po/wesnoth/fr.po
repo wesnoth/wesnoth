@@ -13,9 +13,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-06-17 15:21+0200\n"
+"PO-Revision-Date: 2018-09-12 14:05+0200\n"
 "Last-Translator: Syll <syll-dev@laposte.net>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -1741,6 +1741,9 @@ msgstr ""
 
 #. [object]
 #: data/core/macros/items.cfg:521
+#, fuzzy
+#| msgid ""
+#| "This trident gives merfolk the power to throw lightning at their enemies."
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr "Ce trident permet à un ondin de tirer des éclairs sur ses ennemis !"
 
@@ -4235,7 +4238,6 @@ msgstr "Voir"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:448 data/themes/_initial.cfg:608
-#, fuzzy
 msgid "continuous replay"
 msgstr "Revoir la partie sans interruption"
 
@@ -4246,7 +4248,6 @@ msgstr "Arrêter"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:463
-#, fuzzy
 msgid "pause after current move"
 msgstr "Pause après le déplacement en cours"
 
@@ -4257,7 +4258,6 @@ msgstr "Réinitialiser"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:479 data/themes/_initial.cfg:636
-#, fuzzy
 msgid "reset to beginning"
 msgstr "Revenir au début"
 
@@ -4268,9 +4268,8 @@ msgstr "Tour suivant"
 
 #. [action]: id=button-nextturn, type=image
 #: data/themes/_initial.cfg:495 data/themes/_initial.cfg:650
-#, fuzzy
 msgid "play turn"
-msgstr "Voir le tour"
+msgstr "Jouer le tour"
 
 #. [action]: id=button-nextside, type=image
 #: data/themes/_initial.cfg:510 data/themes/_initial.cfg:663
@@ -4279,9 +4278,8 @@ msgstr "Équipe suivante"
 
 #. [action]: id=button-nextside, type=image
 #: data/themes/_initial.cfg:511 data/themes/_initial.cfg:664
-#, fuzzy
 msgid "play side turn"
-msgstr "Voir le tour de cette équipe"
+msgstr "Jouer le tour de ce camp"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:525 data/themes/_initial.cfg:677
@@ -4290,9 +4288,8 @@ msgstr "Coup suivant"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:526 data/themes/_initial.cfg:678
-#, fuzzy
 msgid "play single move"
-msgstr "Voir un tour"
+msgstr "Jouer un seul mouvement"
 
 #. [menu]: id=show-what
 #: data/themes/_initial.cfg:538 data/themes/_initial.cfg:690
@@ -4306,7 +4303,6 @@ msgstr "Continuer à jouer"
 
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:550
-#, fuzzy
 msgid "Exit the replay mode and continue playing normally."
 msgstr "Sortir du mode rejeu et continuer à joueur normalement."
 
@@ -4322,7 +4318,6 @@ msgstr "Revoir la partie"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:622
-#, fuzzy
 msgid "pause"
 msgstr "Pause"
 
@@ -6020,59 +6015,50 @@ msgstr "Plage de couleur non valide : "
 
 #: src/game_config_manager.cpp:198 src/game_config_manager.cpp:207
 #: src/game_config_manager.cpp:219
-#, fuzzy
 msgid "Error validating data core."
-msgstr "Erreur de validation des données du cœur."
+msgstr "Erreur de validation des données du noyau."
 
 #: src/game_config_manager.cpp:199
-#, fuzzy
 msgid "Found a core without id attribute."
-msgstr "Un cœur sans attribut id a été trouvé."
+msgstr "Un noyau sans attribut id a été trouvé."
 
 #: src/game_config_manager.cpp:200 src/game_config_manager.cpp:210
 #: src/game_config_manager.cpp:223
-#, fuzzy
 msgid "Skipping the core."
-msgstr "Le cœur est ignoré."
+msgstr "Le noyau est ignoré."
 
 #: src/game_config_manager.cpp:208 src/game_config_manager.cpp:220
 #: src/game_config_manager.cpp:243
-#, fuzzy
 msgid "Core ID: "
-msgstr "ID du cœur : "
+msgstr "ID du noyau : "
 
 #: src/game_config_manager.cpp:209
 msgid "The ID is already in use."
 msgstr "L'identifiant est déjà utilisé."
 
 #: src/game_config_manager.cpp:221
-#, fuzzy
 msgid "Core Path: "
-msgstr "Chemin du cœur : "
+msgstr "Chemin du noyau : "
 
 #: src/game_config_manager.cpp:222
 msgid "File not found."
 msgstr "Fichier non trouvé."
 
 #: src/game_config_manager.cpp:242 src/game_config_manager.cpp:254
-#, fuzzy
 msgid "Error loading core data."
-msgstr "Erreur de chargement des données du cœur."
+msgstr "Erreur de chargement des données du noyau."
 
 #: src/game_config_manager.cpp:244
-#, fuzzy
 msgid "Error loading the core with named id."
-msgstr "Erreur de chargement du cœur associé à cet identifiant."
+msgstr "Erreur de chargement du noyau associé à cet identifiant."
 
 #: src/game_config_manager.cpp:245
-#, fuzzy
 msgid "Falling back to the default core."
-msgstr "Les données du cœur par défaut seront utilisées."
+msgstr "Les données du noyau par défaut seront utilisées."
 
 #: src/game_config_manager.cpp:255
-#, fuzzy
 msgid "Can't locate the default core."
-msgstr "Impossible de trouver le cœur par défaut."
+msgstr "Impossible de trouver le noyau par défaut."
 
 #: src/game_config_manager.cpp:256
 msgid "The game will now exit."
@@ -6087,20 +6073,18 @@ msgstr ""
 "jeu. Les extension ne seront pas chargées."
 
 #: src/game_config_manager.cpp:323
-#, fuzzy
 msgid ""
 "Error loading custom game configuration files. The game will fallback to the "
 "default core files."
 msgstr ""
 "Erreur lors du chargement des fichiers de configuration personnalisés du "
-"jeu. Utilisation des valeurs du cœur par défaut."
+"jeu. Utilisation des valeurs du noyau par défaut."
 
 #: src/game_config_manager.cpp:332
-#, fuzzy
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr ""
-"Erreur lors du chargement des fichiers de configuration du cœur par défaut "
+"Erreur lors du chargement des fichiers de configuration du noyau par défaut "
 "du jeu. Le jeu va maintenant s'arrêter."
 
 #: src/game_config_manager.cpp:478
@@ -8465,13 +8449,34 @@ msgstr "Masquer les planifications de $player"
 msgid "Whiteboard Options"
 msgstr "Options de planification"
 
+#~ msgid "Use experimental PRNG combat"
+#~ msgstr "Utilisation du PRNG experimental pour le combat"
+
+#~ msgid ""
+#~ "Enables more determinstic chance-to-hit calculations. This is an "
+#~ "experimental feature designed to bring the observed hit/miss rate more in "
+#~ "line with the displayed percentages.\n"
+#~ "\n"
+#~ "Note: this option only affects singleplayer, and the ‘Save random seed’ "
+#~ "option must also be enabled when creating a game for this to work."
+#~ msgstr ""
+#~ "Active des calculs plus détermistes pour les chances de toucher. Il "
+#~ "s'agit d'une fonctionnalité experimentale visanat à rapprocher le taux de "
+#~ "touché/manqué de celui indiqué par les poucentages.\n"
+#~ "\n"
+#~ "Note : cette option n'agit qu'en mode un seul joueur, de plus l'option « "
+#~ "Sauvegarder la graine aléatoire » doit être activée lors de la création "
+#~ "de la partie pour assurer le bon fonctionnement."
+
 #~ msgid "Trailers"
 #~ msgstr "Bandes-annonces"
 
-# A priori il est possible de proposer d'autres cœurs (règles de bases je pense) sous forme d'extensions.
-#, fuzzy
+#~ msgid "color^Gold"
+#~ msgstr "Or"
+
+# A priori il est possible de proposer d'autres noyaux (règles de bases je pense) sous forme d'extensions.
 #~ msgid "The standard Wesnoth core."
-#~ msgstr "Le cœur standard de Wesnoth."
+#~ msgstr "Le noyau standard de Wesnoth."
 
 #~ msgid ""
 #~ "There are no custom options available for the selected era, game, or "
@@ -8492,6 +8497,9 @@ msgstr "Options de planification"
 #~ msgstr ""
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
+
+#~ msgid "battery"
+#~ msgstr "batterie"
 
 #~ msgid "an advancement choice"
 #~ msgstr "un choix d'avancement"
@@ -8532,8 +8540,23 @@ msgstr "Options de planification"
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "Référence à un sujet inconnu : "
 
+#~ msgid "No unit recalled"
+#~ msgstr "Aucune unité rappelée"
+
+#~ msgid "Side '$side' is already droided."
+#~ msgstr "Le camp '$side' est déjà contrôlé par l'IA."
+
+#~ msgid "Side '$side' controller is now controlled by: AI."
+#~ msgstr "Le camp '$side' est dorénavant contrôlé par l'IA."
+
+#~ msgid "Side '$side' controller is now controlled by: human."
+#~ msgstr "Le camp '$side' est dorénavant contrôlé par un humain."
+
 #~ msgid "weapon^None"
 #~ msgstr "Aucune"
+
+#~ msgid "Battery"
+#~ msgstr "Batterie"
 
 #~ msgid "(unknown player)"
 #~ msgstr "(joueur inconnu)"

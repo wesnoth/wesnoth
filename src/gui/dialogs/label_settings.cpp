@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2017-2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2017-2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -23,13 +23,7 @@
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/label.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 #include "map/label.hpp"
@@ -83,7 +77,7 @@ label_settings::label_settings(display_context& dc)
 			team_name = _("Unknown");
 		}
 
-		string_map subst;
+		widget_item subst;
 		subst["side_number"] = std::to_string(team.side());
 		subst["name"] = team_name;
 
@@ -93,7 +87,7 @@ label_settings::label_settings(display_context& dc)
 
 void label_settings::pre_show(window& window)
 {
-	std::map<std::string, string_map> list_data;
+	widget_data list_data;
 	listbox& cats_listbox = find_widget<listbox>(&window, "label_types", false);
 
 	for(const auto& label_entry : all_labels) {

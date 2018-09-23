@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -44,9 +44,6 @@ public:
 		return selected_index_;
 	}
 
-	/** Function to sort recall_list_ by default. */
-	static bool default_compare(const unit_const_ptr first, const unit_const_ptr second);
-
 private:
 	recalls_ptr_vector& recall_list_;
 
@@ -60,6 +57,7 @@ private:
 	/** Callbacks */
 	void list_item_clicked(window& window);
 	void filter_text_changed(text_box_base* textbox, const std::string& text);
+	void rename_unit(window& window);
 	void dismiss_unit(window& window);
 	void show_help();
 

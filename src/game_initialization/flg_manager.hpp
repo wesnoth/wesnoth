@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2013 - 2018 by Andrius Silinskas <silinskas.andrius@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -104,8 +104,16 @@ private:
 
 	const std::vector<const config*>& era_factions_;
 
-	const config& side_;
+	// not sure how reilable the content of this field is, it's currently only used for debugging info.
+	const int side_num_;
+	const bool faction_from_recruit_;
 
+	const std::string original_type_;
+	const std::string original_gender_;
+	std::string savegame_gender_;
+	const std::string original_faction_;
+	const std::vector<std::string> original_recruit_;
+	const std::string choose_faction_by_leader_;
 	const bool saved_game_;
 	const bool has_no_recruits_;
 
@@ -129,7 +137,6 @@ private:
 	std::string default_leader_gender_;
 	const config* default_leader_cfg_;
 
-	static std::vector<std::string> get_original_recruits(const config& cfg);
 	static const config& get_default_faction(const config& cfg);
 };
 

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2015 - 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -21,11 +21,14 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/unicode.hpp"
-#include "../version.hpp"
 
 #include <cstring>
 
-#if defined(_X11) || defined(__APPLE__)
+#if defined(__APPLE__)
+
+#include "apple_version.hpp"
+
+#elif defined(_X11)
 
 #include <cerrno>
 #include <sys/utsname.h>
@@ -71,7 +74,7 @@ bool on_wine()
 }
 #endif
 
-#if defined(_X11) || defined(__APPLE__)
+#if defined(_X11)
 /**
  * Release policy for POSIX pipe streams opened with popen(3).
  */
@@ -117,35 +120,15 @@ std::string read_pipe_line(scoped_posix_pipe& p)
 
 std::string os_version()
 {
-#if defined(_X11) || defined(__APPLE__)
-
-#ifdef __APPLE__
+#if defined(__APPLE__)
 
 	//
 	// Standard Mac OS X version
 	//
+	
+	return desktop::apple::os_version();
 
-	static const std::string version_plist = "/System/Library/CoreServices/SystemVersion.plist";
-	static const std::string defaults_bin = "/usr/bin/defaults";
-
-	if(filesystem::file_exists(defaults_bin) && filesystem::file_exists(version_plist)) {
-		static const std::string cmdline
-				= defaults_bin + " read " + version_plist + " ProductUserVisibleVersion";
-
-		scoped_posix_pipe p(popen(cmdline.c_str(), "r"));
-		const std::string& ver = read_pipe_line(p);
-
-		if(!ver.empty()) {
-			const version_info version(ver);
-			if (version.major_version() == 10 && version.minor_version() < 12) {
-				return "Apple OS X " + ver;
-			} else {
-				return "Apple macOS " + ver;
-			}
-		}
-	}
-
-#else
+#elif defined(_X11)
 
 	//
 	// Linux Standard Base version.
@@ -169,10 +152,9 @@ std::string os_version()
 			return ver;
 		}
 	}
-#endif
 
 	//
-	// POSIX uname version.
+	// POSIX uname version fallback.
 	//
 
 	utsname u;

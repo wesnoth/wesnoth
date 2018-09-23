@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2006 - 2018 by Rusty Russell <rusty@rustcorp.com.au>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -1820,6 +1820,16 @@ double calculate_probability_of_debuff(double initial_prob, bool enemy_gives, do
 	return prob_debuff;
 }
 
+// Rounds a probability that's extremely close to 0 or 1 to exactly 0 or 1.
+void round_prob_if_close_to_sure(double& prob)
+{
+	if(prob < 1.0e-9) {
+		prob = 0.0;
+	} else if(prob > 1.0 - 1.0e-9) {
+		prob = 1.0;
+	}
+}
+
 /**
  * Returns the smallest HP we could possibly have based on the provided
  * hit point distribution.
@@ -2025,13 +2035,13 @@ void one_strike_fight(const battle_context_unit_stats& stats,
 		return;
 	}
 
-	if(stats.experience + opp_stats.level >= stats.max_experience) {
+	if(stats.experience + game_config::combat_xp(opp_stats.level) >= stats.max_experience) {
 		forced_levelup(hp_dist);
 	} else if(stats.experience + game_config::kill_xp(opp_stats.level) >= stats.max_experience) {
 		conditional_levelup(hp_dist, opp_hp_dist[0]);
 	}
 
-	if(opp_stats.experience + stats.level >= opp_stats.max_experience) {
+	if(opp_stats.experience + game_config::combat_xp(stats.level) >= opp_stats.max_experience) {
 		forced_levelup(opp_hp_dist);
 	} else if(opp_stats.experience + game_config::kill_xp(stats.level) >= opp_stats.max_experience) {
 		conditional_levelup(opp_hp_dist, hp_dist[0]);
@@ -2170,13 +2180,13 @@ void complex_fight(attack_prediction_mode mode,
 	}
 
 	if(levelup_considered) {
-		if(stats.experience + opp_stats.level >= stats.max_experience) {
+		if(stats.experience + game_config::combat_xp(opp_stats.level) >= stats.max_experience) {
 			m->forced_levelup_a();
 		} else if(stats.experience + game_config::kill_xp(opp_stats.level) >= stats.max_experience) {
 			m->conditional_levelup_a();
 		}
 
-		if(opp_stats.experience + stats.level >= opp_stats.max_experience) {
+		if(opp_stats.experience + game_config::combat_xp(stats.level) >= opp_stats.max_experience) {
 			m->forced_levelup_b();
 		} else if(opp_stats.experience + game_config::kill_xp(stats.level) >= opp_stats.max_experience) {
 			m->conditional_levelup_b();
@@ -2309,6 +2319,10 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 	double self_already_dead = hp_dist[0];
 	double opp_already_dead = opponent.hp_dist[0];
 
+	// If incoming slow probabilities are extremely close to 0 or 1, round them to exactly 0 or 1 (bug #3321)
+	round_prob_if_close_to_sure(slowed);
+	round_prob_if_close_to_sure(opponent.slowed);
+
 	// If we've fought before and we have swarm, we might have to split the
 	// calculation by number of attacks.
 	const std::vector<combat_slice> split = split_summary(u_, summary);
@@ -2433,12 +2447,12 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 		opponent.slowed = std::min(std::accumulate(opponent.summary[1].begin(), opponent.summary[1].end(), 0.0), 1.0);
 	}
 
-	if(u_.experience + opponent.u_.level >= u_.max_experience) {
+	if(u_.experience + game_config::combat_xp(opponent.u_.level) >= u_.max_experience) {
 		// We'll level up after the battle -> slow/poison will go away
 		poisoned = 0.0;
 		slowed = 0.0;
 	}
-	if(opponent.u_.experience + u_.level >= opponent.u_.max_experience) {
+	if(opponent.u_.experience + game_config::combat_xp(u_.level) >= opponent.u_.max_experience) {
 		opponent.poisoned = 0.0;
 		opponent.slowed = 0.0;
 	}

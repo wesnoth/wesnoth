@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2003-2005 by David White <dave@whitevine.net>
    Copyright (C) 2005 - 2018 by Philippe Plantier <ayin@anathas.org>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -249,6 +249,8 @@ LEVEL_RESULT campaign_controller::playmp_scenario(end_level_data& end_level)
 
 	if(mp_info_) {
 		mp_info_->connected_players = playcontroller.all_players();
+		mp_info_->skip_replay = false;
+		mp_info_->skip_replay_blindfolded = false;
 	}
 
 	return res;

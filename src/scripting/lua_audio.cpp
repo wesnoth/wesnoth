@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2017-2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+Copyright (C) 2017-2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -274,6 +274,7 @@ static int impl_track_set(lua_State* L) {
 	modify_bool_attrib("once", (*track)->set_play_once(value));
 	modify_int_attrib("ms_before", (*track)->set_ms_before(value));
 	modify_int_attrib("ms_after", (*track)->set_ms_after(value));
+	modify_string_attrib("title", (*track)->set_title(value));
 	return 0;
 }
 

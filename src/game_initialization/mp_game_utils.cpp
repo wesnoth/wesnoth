@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2013 - 2018 by Andrius Silinskas <silinskas.andrius@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "saved_game.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 #include "wesnothd_connection_error.hpp"
 
 static lg::log_domain log_engine("engine");

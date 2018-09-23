@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 #include "display.hpp"
 #include "game_board.hpp"
 #include "gettext.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "preferences/general.hpp"

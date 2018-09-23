@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -178,7 +178,7 @@ public:
 	 */
 	virtual grid& create_item(const int index,
 							   builder_grid_const_ptr list_builder,
-							   const string_map& item_data,
+							   const widget_item& item_data,
 							   const std::function<void(widget&)>& callback)
 			= 0;
 
@@ -202,7 +202,7 @@ public:
 	virtual grid&
 	create_item(const int index,
 				builder_grid_const_ptr list_builder,
-				const std::map<std::string /* widget id */, string_map>& data,
+				const widget_data& data,
 				const std::function<void(widget&)>& callback) = 0;
 
 	/**
@@ -222,7 +222,7 @@ public:
 	 */
 	virtual void create_items(const int index,
 							  builder_grid_const_ptr list_builder,
-							  const std::vector<string_map>& data,
+							  const std::vector<widget_item>& data,
 							  const std::function<void(widget&)>& callback)
 			= 0;
 
@@ -244,7 +244,7 @@ public:
 	virtual void create_items(
 			const int index,
 			builder_grid_const_ptr list_builder,
-			const std::vector<std::map<std::string /*widget id*/, string_map>>&
+			const std::vector<std::map<std::string /*widget id*/, widget_item>>&
 					data,
 			const std::function<void(widget&)>& callback) = 0;
 

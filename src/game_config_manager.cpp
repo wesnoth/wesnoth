@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2013 - 2018 by Andrius Silinskas <silinskas.andrius@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -33,9 +33,9 @@
 #include "terrain/builder.hpp"
 #include "terrain/type_data.hpp"
 #include "units/types.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 #include "theme.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
@@ -381,6 +381,7 @@ void game_config_manager::load_addons_cfg()
 
 	// Load the addons.
 	for(const std::string& addon_id : user_dirs) {
+		log_scope2(log_config, "Loading add-on '" + addon_id + "'");
 		const std::string addon_dir = user_campaign_dir + "/" + addon_id;
 
 		const std::string main_cfg = addon_dir + "/_main.cfg";

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,7 +18,6 @@
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/widget_helpers.hpp"
 #include "gui/widgets/generator.hpp"
 
@@ -40,7 +39,7 @@ multi_page::multi_page(const implementation::builder_multi_page& builder)
 {
 }
 
-grid& multi_page::add_page(const string_map& item)
+grid& multi_page::add_page(const widget_item& item)
 {
 	assert(generator_);
 	grid& page = generator_->create_item(-1, page_builders_.begin()->second, item, nullptr);
@@ -48,7 +47,7 @@ grid& multi_page::add_page(const string_map& item)
 	return page;
 }
 
-grid& multi_page::add_page(const std::string& type, int insert_pos, const string_map& item)
+grid& multi_page::add_page(const std::string& type, int insert_pos, const widget_item& item)
 {
 	assert(generator_);
 	auto it_builder = page_builders_.find(type);
@@ -57,7 +56,7 @@ grid& multi_page::add_page(const std::string& type, int insert_pos, const string
 }
 
 grid& multi_page::add_page(
-	const std::map<std::string /* widget id */, string_map>& data)
+	const widget_data& data)
 {
 	assert(generator_);
 	grid& page = generator_->create_item(-1, page_builders_.begin()->second, data, nullptr);
@@ -66,7 +65,7 @@ grid& multi_page::add_page(
 }
 
 grid& multi_page::add_page(
-	const std::string& type, int insert_pos, const std::map<std::string /* widget id */, string_map>& data)
+	const std::string& type, int insert_pos, const widget_data& data)
 {
 	assert(generator_);
 	auto it_builder = page_builders_.find(type);
@@ -137,7 +136,7 @@ unsigned multi_page::get_state() const
 	return 0;
 }
 
-void multi_page::finalize(const std::vector<string_map>& page_data)
+void multi_page::finalize(const std::vector<widget_item>& page_data)
 {
 	assert(generator_);
 	generator_->create_items(-1, page_builders_.begin()->second, page_data, nullptr);

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,15 +16,8 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/unit_recruit.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/image.hpp"
-#include "gui/widgets/label.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "gui/widgets/unit_preview_pane.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
@@ -73,8 +66,8 @@ void unit_recruit::pre_show(window& window)
 
 	for(const auto& recruit : recruit_list_)
 	{
-		std::map<std::string, string_map> row_data;
-		string_map column;
+		widget_data row_data;
+		widget_item column;
 
 		std::string	image_string = recruit->image() + "~RC(" + recruit->flag_rgb() + ">"
 			+ team_.color() + ")";

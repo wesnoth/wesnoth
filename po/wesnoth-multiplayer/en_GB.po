@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:31 UTC\n"
-"PO-Revision-Date: 2018-02-15 14:02+1100\n"
+"PO-Revision-Date: 2018-09-12 16:43+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -820,7 +820,7 @@ msgid ""
 "allegiance with the Dragon, were slaughtered. Knowing that these Drakes were "
 "innocent, Rah Ihn Mar came to Ruaskkolin Lake to hunt down and slay "
 "Terowydlithrol, who had been seen entering the region but a day ago. Burning "
-"for vengeance, Rah Ihn Mar began the hunt....."
+"for vengeance, Rah Ihn Mar began the hunt..."
 msgstr ""
 "Rah Ihn Mar, Champion of the Burning Hills, made his way to the Ruaskkolin "
 "Lake region in pursuit of the Elvish Hero Terowydlithrol, known among Elves "
@@ -830,7 +830,7 @@ msgstr ""
 "allegiance with the Dragon, were slaughtered. Knowing that these Drakes were "
 "innocent, Rah Ihn Mar came to Ruaskkolin Lake to hunt down and slay "
 "Terowydlithrol, who had been seen entering the region but a day ago. Burning "
-"for vengeance, Rah Ihn Mar began the hunt....."
+"for vengeance, Rah Ihn Mar began the hunt..."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:163
@@ -937,7 +937,7 @@ msgstr "Talael Ryndoc"
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:204
 msgid ""
 "General Talael Ryndoc came to this place to fight a duel with the Grand "
-"Marshal Aethec Corryn, but the two men never found one another. "
+"Marshal Aethec Corryn, but the two men never found one another."
 msgstr ""
 "General Talael Ryndoc came to this place to fight a duel with the Grand "
 "Marshal Aethec Corryn, but the two men never found one another."
@@ -955,7 +955,7 @@ msgid ""
 "inform the court that you were too much of a coward to attend our duel! Your "
 "disgrace shall be more agonizing than the death I’d have given you!”\n"
 "\n"
-"Perhaps he should not have shouted quite so loudly.... "
+"Perhaps he should not have shouted quite so loudly..."
 msgstr ""
 "The last words spoken by Grand Marshal Aethec Corryn: “Talael Ryndoc! I am "
 "through searching for you! I shall make my way back to Haldric’s Hall, and "
@@ -1763,8 +1763,10 @@ msgstr "2p — Thousand Stings Garrison"
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
+#, fuzzy
+#| msgid "A strange place. Designed by Doc Paterson."
 msgid "A strange place. Designed by Doc Paterson"
-msgstr "A strange place. Designed by Doc Paterson"
+msgstr "A strange place. Designed by Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:93
@@ -2086,6 +2088,12 @@ msgstr "4p — Isar’s Cross"
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A very small 2 vs. 2 map. Close quarters fighting means the successful "
+#| "rotation of units and planning of moves is important. Teams set for "
+#| "players 1 &amp; 4 vs. 2 &amp; 3 (northeast vs. southwest). Designed for "
+#| "75 starting gold, 20 villages."
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
@@ -2094,8 +2102,8 @@ msgid ""
 msgstr ""
 "A very small 2 vs 2 map. Close-quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
-"1 & 4 vs 2 & 3 (north-east vs south-west). Designed for 75 starting gold, 20 "
-"villages."
+"1 &amp; 4 vs 2 &amp; 3 (north-east vs south-west). Designed for 75 starting "
+"gold, 20 villages."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:20
@@ -2176,12 +2184,16 @@ msgstr "4p — Loris River"
 
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
+#, fuzzy
+#| msgid ""
+#| "2 vs. 2 map centered around a river with keeps in opposite corners. "
+#| "Designed for players 1 &amp; 4 vs. 2 &amp; 3. There are 28 villages."
 msgid ""
 "2 vs. 2 map centered around a river with keeps in opposite corners. Designed "
 "for players 1+4 vs. 2+3. There are 28 villages."
 msgstr ""
 "2 vs 2 map centred around a river with keeps in opposite corners. Designed "
-"for players 1 & 4 vs 2 & 3. There are 28 villages."
+"for players 1 &amp; 4 vs 2 &amp; 3. There are 28 villages."
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
@@ -2205,12 +2217,18 @@ msgstr " Recommended setting of 2 gold per village, 28 villages."
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
+#| "east vs. west (1 &amp; 4 vs. 2 &amp; 3), but works well with any teams or "
+#| "FFA."
 msgid ""
 "A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
 "east vs. west (1+4 vs. 2+3), but works well with any teams or FFA."
 msgstr ""
 "A 2 vs 2 map with 5 separate paths of engagement. Balanced to be played east "
-"vs west (1 & 4 vs 2 & 3), but works well with any teams or free-for-all."
+"vs west (1 &amp; 4 vs 2 &amp; 3), but works well with any teams or free-for-"
+"all."
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:6
@@ -2656,6 +2674,9 @@ msgid ""
 msgstr ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#~ msgid "Sides %s and %d are tied."
+#~ msgstr "Sides %s and %d are tied."
 
 #~ msgid "Default + Khalifate"
 #~ msgstr "Default + Khalifate"

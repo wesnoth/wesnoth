@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,12 +17,7 @@
 #include "gui/dialogs/language_selection.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
 #include "preferences/general.hpp"
@@ -69,7 +64,7 @@ void language_selection::pre_show(window& window)
 	const language_def& current_language = get_language();
 	for(const auto & lang : languages)
 	{
-		std::map<std::string, string_map> data;
+		widget_data data;
 
 		data["language"]["label"] = lang.language;
 

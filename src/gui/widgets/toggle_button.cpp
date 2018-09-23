@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -64,12 +64,12 @@ unsigned toggle_button::num_states() const
 	return res.quot;
 }
 
-void toggle_button::set_members(const string_map& data)
+void toggle_button::set_members(const widget_item& data)
 {
 	// Inherit
 	styled_widget::set_members(data);
 
-	string_map::const_iterator itor = data.find("icon");
+	widget_item::const_iterator itor = data.find("icon");
 	if(itor != data.end()) {
 		set_icon_name(itor->second);
 	}

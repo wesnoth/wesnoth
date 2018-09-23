@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by Jörg Hinrichs
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 #include "config.hpp"
 #include "gettext.hpp"
 #include "utils/make_enum.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 
 #include <boost/optional.hpp>
 

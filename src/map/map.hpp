@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -21,6 +21,8 @@ class config;
 #include "map/location.hpp"
 #include "terrain/translation.hpp"
 #include "terrain/type_data.hpp"
+
+#include <boost/optional.hpp>
 
 //class terrain_type_data; Can't forward declare because of enum
 
@@ -83,8 +85,29 @@ public:
 
 	std::string write() const;
 
+	struct overlay_rule
+	{
+		t_translation::ter_list old_;
+		t_translation::ter_list new_;
+		terrain_type_data::merge_mode mode_;
+		boost::optional<t_translation::terrain_code> terrain_;
+		bool use_old_;
+		bool replace_if_failed_;
+
+		overlay_rule()
+			: old_()
+			, new_()
+			, mode_(terrain_type_data::BOTH)
+			, terrain_()
+			, use_old_(false)
+			, replace_if_failed_(false)
+		{
+
+		}
+	};
+	
 	/** Overlays another map onto this one at the given position. */
-	void overlay(const gamemap& m, const config& rules, map_location loc);
+	void overlay(const gamemap& m, map_location loc, const std::vector<overlay_rule>& rules = std::vector<overlay_rule>(), bool is_odd = false, bool ignore_special_locations = false);
 
 	/** Effective map width. */
 	int w() const { return w_; }
@@ -205,7 +228,7 @@ public:
 			}
 		}
 	}
-	void add_fog_border();
+
 protected:
 	t_translation::ter_map tiles_;
 

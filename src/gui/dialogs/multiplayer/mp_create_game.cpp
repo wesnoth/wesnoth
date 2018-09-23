@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -28,16 +28,11 @@
 #include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "preferences/game.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
 #include "gui/widgets/minimap.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/status_label_helper.hpp"
@@ -46,14 +41,9 @@
 #include "gui/widgets/toggle_panel.hpp"
 #include "log.hpp"
 #include "savegame.hpp"
-#include "settings.hpp"
-
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "utils/functional.hpp"
-#endif
+#include "map_settings.hpp"
 
 #include <boost/algorithm/string.hpp>
-
 
 static lg::log_domain log_mp_create("mp/create");
 
@@ -216,8 +206,8 @@ void mp_create_game::pre_show(window& win)
 
 	const auto& activemods = preferences::modifications();
 	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["label"] = mod->name;
 		data.emplace("mod_name", item);
@@ -618,8 +608,8 @@ void mp_create_game::display_games_of_type(window& window, ng::level::TYPE type,
 			continue;
 		}
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		if(type == ng::level::TYPE::CAMPAIGN || type == ng::level::TYPE::SP_CAMPAIGN) {
 			item["label"] = game->icon();

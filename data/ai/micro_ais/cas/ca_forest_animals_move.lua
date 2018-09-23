@@ -1,7 +1,6 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "location_set"
 local M = wesnoth.map
-local T = wml.tag
 
 local function get_forest_animals(cfg)
     -- We want the deer/rabbits to move first, tuskers afterward
@@ -74,12 +73,7 @@ function ca_forest_animals_move:execution(cfg)
     local wander_terrain = wml.get_child(cfg, "filter_location") or {}
     if (not close_enemies[1]) then
         local reach = AH.get_reachable_unocc(unit)
-        local width, height = wesnoth.get_map_size()
-        local wander_locs = wesnoth.get_locations {
-            x = '1-' .. width,
-            y = '1-' .. height,
-            { "and", wander_terrain }
-        }
+        local wander_locs = AH.get_locations_no_borders(wander_terrain)
         local locs_map = LS.of_pairs(wander_locs)
 
         local reachable_wander_terrain = {}
@@ -97,7 +91,7 @@ function ca_forest_animals_move:execution(cfg)
                 AH.checked_move(ai, unit, reachable_wander_terrain[rand][1], reachable_wander_terrain[rand][2])
             end
         else  -- Or if no close reachable terrain was found, move toward the closest
-            local min_dist, best_hex = 9e99
+            local min_dist, best_hex = math.huge
             for _,loc in ipairs(wander_locs) do
                 local dist = M.distance_between(loc[1], loc[2], unit.x, unit.y)
                 if dist < min_dist then
@@ -156,7 +150,7 @@ function ca_forest_animals_move:execution(cfg)
 
         -- If this is a rabbit ending on a hole -> disappears
         if (unit.type == rabbit_type) and hole_map:get(farthest_hex[1], farthest_hex[2]) then
-			wesnoth.invoke_synced_command("rabbit_despawn", { x = farthest_hex[1], y = farthest_hex[2]})
+            wesnoth.invoke_synced_command("rabbit_despawn", { x = farthest_hex[1], y = farthest_hex[2]})
         end
     end
 

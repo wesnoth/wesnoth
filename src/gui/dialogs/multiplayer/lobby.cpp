@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -26,11 +26,7 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/chatbox.hpp"
@@ -70,7 +66,7 @@ void sub_player_list::init(window& w, const std::string& lbl, const bool unfolde
 {
 	tree_view& parent_tree = find_widget<tree_view>(&w, "player_tree", false);
 
-	std::map<std::string, string_map> tree_group_item;
+	widget_data tree_group_item;
 	tree_group_item["tree_view_node_label"]["label"] = lbl;
 
 	tree = &parent_tree.add_node("player_group", tree_group_item);
@@ -176,11 +172,11 @@ void mp_lobby::post_build(window& win)
 
 namespace
 {
-void modify_grid_with_data(grid* grid, const std::map<std::string, string_map>& map)
+void modify_grid_with_data(grid* grid, const widget_data& map)
 {
 	for(const auto& v : map) {
 		const std::string& key = v.first;
-		const string_map& strmap = v.second;
+		const widget_item& strmap = v.second;
 
 		widget* w = grid->find(key, false);
 		if(!w) {
@@ -392,20 +388,18 @@ void mp_lobby::update_gamelist_diff()
 
 void mp_lobby::update_gamelist_header()
 {
-#ifndef GUI2_EXPERIMENTAL_LISTBOX
 	const std::string games_string = VGETTEXT("Games: showing $num_shown out of $num_total", {
 		{"num_shown", std::to_string(lobby_info_.games_visibility().count())},
 		{"num_total", std::to_string(lobby_info_.games().size())}
 	});
 
 	find_widget<label>(gamelistbox_, "map", false).set_label(games_string);
-#endif
 }
 
-std::map<std::string, string_map> mp_lobby::make_game_row_data(const mp::game_info& game)
+widget_data mp_lobby::make_game_row_data(const mp::game_info& game)
 {
-	std::map<std::string, string_map> data;
-	string_map item;
+	widget_data data;
+	widget_item item;
 
 	item["use_markup"] = "true";
 
@@ -654,8 +648,8 @@ void mp_lobby::update_playerlist()
 
 		assert(target_list->tree);
 
-		string_map tree_group_field;
-		std::map<std::string, string_map> tree_group_item;
+		widget_item tree_group_field;
+		widget_data tree_group_item;
 
 		/*** Add tree item ***/
 		tree_group_field["label"] = icon_ss.str();
@@ -794,7 +788,7 @@ void mp_lobby::pre_show(window& window)
 			*filter_text_,
 			std::bind(&mp_lobby::game_filter_keypress_callback, this, _5));
 
-	chatbox_->room_window_open("lobby", true, false);
+	chatbox_->room_window_open(N_("lobby"), true, false);
 	chatbox_->active_window_changed();
 	game_filter_reload();
 
@@ -852,6 +846,11 @@ void mp_lobby::network_handler()
 	}
 
 	if ((SDL_GetTicks() - last_lobby_update_ < game_config::lobby_refresh)) {
+		return;
+	}
+
+	if(gamelist_diff_update_ && !lobby_info_.gamelist_initialized()) {
+		//don't process a corrupted gamelist further to prevent crashes later.
 		return;
 	}
 
@@ -949,7 +948,7 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 	// Prompt user to download this game's required addons if its requirements have not been met
 	if(game.addons_outcome != mp::game_info::SATISFIED) {
 		if(game.required_addons.empty()) {
-			gui2::show_error_message(_("Something is wrong with the addon version check database supporting the multiplayer lobby. Please report this at http://bugs.wesnoth.org."));
+			gui2::show_error_message(_("Something is wrong with the addon version check database supporting the multiplayer lobby. Please report this at https://bugs.wesnoth.org."));
 			return;
 		}
 

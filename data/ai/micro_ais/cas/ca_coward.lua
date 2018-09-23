@@ -52,7 +52,7 @@ function ca_coward:execution(cfg)
             -- Store this weighting in the third field of each 'reach' element
             reach[i][3] = rating
         else
-            reach[i][3] = -9e99
+            reach[i][3] = - math.huge
         end
     end
 
@@ -76,7 +76,7 @@ function ca_coward:execution(cfg)
 
     -- As final step, if there are more than one remaining locations,
     -- we take the one with the minimum score in the distance-from-enemy criterion
-    local max_rating, best_hex = -9e99
+    local max_rating, best_hex = - math.huge
     for _,pos in ipairs(best_overall) do
         if (pos[3] > max_rating) then
             max_rating, best_hex = pos[3], pos
@@ -88,7 +88,7 @@ function ca_coward:execution(cfg)
 
     -- If 'attack_if_trapped' is set, the coward attacks the weakest unit it ends up next to
     if cfg.attack_if_trapped then
-        local max_rating, best_target = -9e99
+        local max_rating, best_target = - math.huge
         for xa,ya in H.adjacent_tiles(coward.x, coward.y) do
             local target = wesnoth.get_unit(xa, ya)
             if target and wesnoth.is_enemy(coward.side, target.side) then

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -21,13 +21,8 @@
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/label.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "gui/widgets/menu_button.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "team.hpp"
 #include "units/types.hpp"
@@ -97,8 +92,8 @@ void statistics_dialog::add_stat_row(window& window, const std::string& type, co
 {
 	listbox& stat_list = find_widget<listbox>(&window, "stats_list_main", false);
 
-	std::map<std::string, string_map> data;
-	string_map item;
+	widget_data data;
+	widget_item item;
 
 	item["label"] = type;
 	data.emplace("stat_type", item);
@@ -125,8 +120,8 @@ void statistics_dialog::add_damage_row(
 {
 	listbox& damage_list = find_widget<listbox>(&window, "stats_list_damage", false);
 
-	std::map<std::string, string_map> data;
-	string_map item;
+	widget_data data;
+	widget_item item;
 
 	item["label"] = type;
 	data.emplace("damage_type", item);
@@ -244,8 +239,8 @@ void statistics_dialog::on_primary_list_select(window& window)
 			continue;
 		}
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["label"] = (formatter() << type->image() << "~RC(" << type->flag_rgb() << ">" << current_team_.color() << ")").str();
 		data.emplace("unit_image", item);

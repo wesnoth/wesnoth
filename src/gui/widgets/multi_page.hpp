@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -52,7 +52,7 @@ public:
 	 *
 	 * @returns                   The grid of the newly added page.
 	 */
-	grid& add_page(const string_map& item);
+	grid& add_page(const widget_item& item);
 	/**
 	 * Adds single page to the grid.
 	 *
@@ -68,7 +68,7 @@ public:
 	 *
 	 * @returns                   The grid of the newly added page.
 	 */
-	grid& add_page(const std::string& type, int insert_pos, const string_map& item);
+	grid& add_page(const std::string& type, int insert_pos, const widget_item& item);
 
 	/**
 	 * Adds single page to the grid.
@@ -87,7 +87,7 @@ public:
 	 *
 	 * @returns                   The grid of the newly added page.
 	 */
-	grid& add_page(const std::map<std::string /* widget id */, string_map>& data);
+	grid& add_page(const widget_data& data);
 	/**
 	 * Adds single page to the grid.
 	 *
@@ -110,7 +110,7 @@ public:
 	 *
 	 * @returns                   The grid of the newly added page.
 	 */
-	grid& add_page(const std::string& type, int insert_pos, const std::map<std::string /* widget id */, string_map>& data);
+	grid& add_page(const std::string& type, int insert_pos, const widget_data& data);
 
 	/**
 	 * Removes a page in the multi page.
@@ -186,7 +186,7 @@ private:
 	 *
 	 * @param page_data           The initial data to fill the widget with.
 	 */
-	void finalize(const std::vector<string_map>& page_data);
+	void finalize(const std::vector<widget_item>& page_data);
 
 	/**
 	 * Contains a pointer to the generator.

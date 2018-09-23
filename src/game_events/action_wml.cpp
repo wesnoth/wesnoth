@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -860,41 +860,6 @@ WML_HANDLER_FUNCTION(store_time_of_day,, cfg)
 	{
 		ERR_NG << "Found invalid variablename " << variable << " in [store_time_of_day] with " << cfg.get_config().debug() << "\n";
 	}
-}
-
-/// Creating a mask of the terrain
-WML_HANDLER_FUNCTION(terrain_mask,, cfg)
-{
-	map_location loc = cfg_to_loc(cfg, 1, 1);
-
-	gamemap mask_map(resources::gameboard->map().tdata(), "");
-
-	try {
-		if(!cfg["mask_file"].empty()) {
-			const std::string& maskfile = filesystem::get_wml_location(cfg["mask_file"].str());
-
-			if(filesystem::file_exists(maskfile)) {
-				mask_map.read(filesystem::read_file(maskfile), false);
-			} else {
-				throw incorrect_map_format_error("Invalid file path");
-			}
-		} else {
-			mask_map.read(cfg["mask"], false);
-		}
-	} catch(const incorrect_map_format_error&) {
-		ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied" << std::endl;
-		return;
-	} catch(const wml_exception& e) {
-		e.show();
-		return;
-	}
-
-	if (!cfg["border"].to_bool(true)) {
-		mask_map.add_fog_border();
-	}
-
-	resources::gameboard->overlay_map(mask_map, cfg.get_parsed_config(), loc);
-	game_display::get_singleton()->needs_rebuild(true);
 }
 
 WML_HANDLER_FUNCTION(tunnel,, cfg)

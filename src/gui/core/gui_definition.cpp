@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -204,14 +204,7 @@ resolution_definition_ptr get_control(const std::string& control_type, const std
 	const auto& current_types = current_gui->second.widget_types;
 	const auto& default_types = default_gui->second.widget_types;
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	const auto widget_definitions = (control_type == "list")
-        ? current_types.find("listbox")
-        : current_types.find(control_type);
-#else
-	const auto widget_definitions
-        = current_types.find(control_type);
-#endif
+	const auto widget_definitions = current_types.find(control_type);
 
 	gui_definition::widget_definition_map_t::const_iterator control;
 
@@ -226,14 +219,7 @@ resolution_definition_ptr get_control(const std::string& control_type, const std
 		bool found_fallback = false;
 
 		if(current_gui != default_gui) {
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-			auto default_widget_definitions = (control_type == "list")
-				? default_types.find("listbox")
-				: default_types.find(control_type);
-#else
-			auto default_widget_definitions
-				= default_types.find(control_type);
-#endif
+			auto default_widget_definitions = default_types.find(control_type);
 
 			VALIDATE(widget_definitions != current_types.end(),
 				formatter() << "Type '" << control_type << "' is unknown.");

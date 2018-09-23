@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@
 #include "gui/dialogs/message.hpp"      // for show_error_message
 #include "gui/dialogs/title_screen.hpp" // for title_screen, etc
 #include "gui/gui.hpp"                  // for init
-#include "image.hpp"                    // for flush_cache, etc
+#include "picture.hpp"                    // for flush_cache, etc
 #include "log.hpp"                      // for LOG_STREAM, general, logger, etc
 #include "preferences/general.hpp"      // for core_id, etc
 #include "scripting/application_lua_kernel.hpp"
@@ -50,7 +50,7 @@
 #include "sound.hpp"                   // for commit_music_changes, etc
 #include "statistics.hpp"              // for fresh_stats
 #include "utils/functional.hpp"
-#include "version.hpp"        // for version_info
+#include "game_version.hpp"        // for version_info
 #include "video.hpp"          // for CVideo
 #include "wesconfig.h"        // for PACKAGE
 #include "wml_exception.hpp"  // for wml_exception

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -64,7 +64,7 @@
 #include "gui/dialogs/game_save.hpp"
 #include "gui/dialogs/game_stats.hpp"
 #include "gui/dialogs/game_ui.hpp"
-#include "gui/dialogs/game_version.hpp"
+#include "gui/dialogs/game_version_dialog.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/help_browser.hpp"
 #include "gui/dialogs/hotkey_bind.hpp"
@@ -330,13 +330,12 @@ void test()
 {
 	gui2::new_widgets = false;
 
-//	for(std::size_t i = 0; i < 2; ++i) {
+	for(std::size_t i = 0; i < 2; ++i) {
 
 		test_resolutions<T>(get_gui_resolutions());
 
-//		break; // FIXME: New widgets break
-//		gui2::new_widgets = true;
-//	}
+		gui2::new_widgets = true;
+	}
 }
 
 template<class T>

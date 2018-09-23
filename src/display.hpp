@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -57,7 +57,7 @@ class manager;
 #include "events.hpp"
 #include "font/standard_colors.hpp"
 #include "game_config.hpp"
-#include "image.hpp" //only needed for enums (!)
+#include "picture.hpp" //only needed for enums (!)
 #include "key.hpp"
 #include "map/hex_rect.hpp"
 #include "sdl/rect.hpp"

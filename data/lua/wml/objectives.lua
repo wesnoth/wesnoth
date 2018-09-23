@@ -145,20 +145,25 @@ local function generate_objectives(cfg)
 		objectives = "<big>" .. insert_before_nl(summary, "</big>") .. "\n"
 	end
 	if win_objectives ~= "" then
+		if objectives ~= "" then objectives = objectives .. "\n" end
 		objectives = objectives .. "<big>" .. win_string .. "</big>\n" .. win_objectives
 	end
 	if lose_objectives ~= "" then
-		objectives = objectives .. "\n" .. "<big>" .. lose_string .. "</big>\n" .. lose_objectives
+		if objectives ~= "" then objectives = objectives .. "\n" end
+		objectives = objectives .. "<big>" .. lose_string .. "</big>\n" .. lose_objectives
 	end
 	if gold_carryover ~= "" then
-		objectives = objectives .. "\n" .. gold_carryover_string .. "\n" .. gold_carryover
+		if objectives ~= "" then objectives = objectives .. "\n" end
+		objectives = objectives .. gold_carryover_string .. "\n" .. gold_carryover
 	end
 	if notes ~= "" then
-		objectives = objectives .. "\n" .. notes_string .. "\n" .. notes
+		if objectives ~= "" then objectives = objectives .. "\n" end
+		objectives = objectives .. notes_string .. "\n" .. notes
 	end
 	local note = cfg.note
 	if note then
-		objectives = objectives .. "\n" .. note .. "\n"
+		if objectives ~= "" then objectives = objectives .. "\n" end
+		objectives = objectives .. note .. "\n"
 	end
 
 	return string.sub(tostring(objectives), 1, -2)

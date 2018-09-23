@@ -38,4 +38,19 @@ def CheckCPlusPlus(context, gcc_version = None):
         context.Result("no")
         return False
 
-config_checks = { "CheckCPlusPlus" : CheckCPlusPlus }
+def CheckFortifySource(context):
+    message = "Checking whether compiler has built-in -D_FORTIFY_SOURCE... "
+    test_program = """
+    #ifndef _FORTIFY_SOURCE
+    #error _FORTIFY_SOURCE not defined
+    #endif
+    """
+    context.Message(message)
+    if context.TryBuild(context.env.Object, test_program, ".c") == 1:
+        context.Result("yes")
+        return True
+    else:
+        context.Result("no")
+        return False
+
+config_checks = { "CheckCPlusPlus" : CheckCPlusPlus, "CheckFortifySource" : CheckFortifySource }

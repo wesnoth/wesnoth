@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@
 #include "team.hpp"
 #include "units/unit.hpp"
 #include "tod_manager.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 
 static lg::log_domain log_ai_testing("ai/testing");
 #define DBG_AI_TESTING LOG_STREAM(debug, log_ai_testing)

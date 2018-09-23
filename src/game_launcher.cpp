@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -118,7 +118,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	play_replay_(false),
 	multiplayer_server_(),
 	jump_to_multiplayer_(false),
-	jump_to_campaign_(false, -1, "", ""),
+	jump_to_campaign_(false, false, -1, "", ""),
 	jump_to_editor_(false),
 	load_data_()
 {
@@ -163,6 +163,10 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 		if (cmdline_opts_.campaign_scenario) {
 			jump_to_campaign_.scenario_id_ = *cmdline_opts_.campaign_scenario;
 			std::cerr << "selected scenario id: [" << jump_to_campaign_.scenario_id_ << "]\n";
+		}
+
+		if (cmdline_opts_.campaign_skip_story) {
+			jump_to_campaign_.skip_story_ = true;
 		}
 	}
 	if (cmdline_opts_.clock)
@@ -705,6 +709,7 @@ bool game_launcher::goto_campaign()
 {
 	if(jump_to_campaign_.jump_){
 		if(new_campaign()) {
+			state_.set_skip_story(jump_to_campaign_.skip_story_);
 			jump_to_campaign_.jump_ = false;
 			launch_game(NO_RELOAD_DATA);
 		}else{
@@ -916,9 +921,9 @@ bool game_launcher::play_multiplayer_commandline()
 
 bool game_launcher::change_language()
 {
-	gui2::dialogs::language_selection dlg;
-	dlg.show();
-	if (dlg.get_retval() != gui2::retval::OK) return false;
+	if(!gui2::dialogs::language_selection::execute()) {
+		return false;
+	}
 
 	if (!(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test)) {
 		video().set_window_title(game_config::get_default_title_string());

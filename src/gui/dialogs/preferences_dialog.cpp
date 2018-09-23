@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2011, 2015 by Iris Morelle <shadowm2006@gmail.com>
    Copyright (C) 2016 - 2018 by Charles Dang <exodia339gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -39,7 +39,7 @@
 #include "gui/dialogs/select_orb_colors.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/dialogs/game_version.hpp"
+#include "gui/dialogs/game_version_dialog.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
@@ -48,13 +48,8 @@
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/status_label_helper.hpp"
@@ -176,10 +171,10 @@ void preferences_dialog::set_resolution_list(menu_button& res_list, CVideo& vide
 	res_list.set_values(options, current_res);
 }
 
-std::map<std::string, string_map> preferences_dialog::get_friends_list_row_data(const acquaintance& entry)
+widget_data preferences_dialog::get_friends_list_row_data(const acquaintance& entry)
 {
-	std::map<std::string, string_map> data;
-	string_map item;
+	widget_data data;
+	widget_item item;
 
 	std::string image = "friend.png";
 	std::string descriptor = _("friend");
@@ -590,7 +585,7 @@ void preferences_dialog::post_build(window& window)
 
 	listbox& advanced = find_widget<listbox>(&window, "advanced_prefs", false);
 
-	std::map<std::string, string_map> row_data;
+	widget_data row_data;
 
 	for(const config& option : adv_preferences_cfg_) {
 		// Details about the current option
@@ -786,7 +781,7 @@ listbox& preferences_dialog::setup_hotkey_list(window& window)
 {
 	const std::string& default_icon = "misc/empty.png~CROP(0,0,15,15)";
 
-	std::map<std::string, string_map> row_data;
+	widget_data row_data;
 
 	t_string& row_icon =   row_data["img_icon"]["label"];
 	t_string& row_action = row_data["lbl_desc"]["label"];

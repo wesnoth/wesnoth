@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -398,8 +398,7 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 	{
 		SDL_Rect pos {xloc, yloc, 1, 1};
 		gui2::dialogs::drop_down_menu mmenu(pos, items, -1, true, false); // TODO: last value should be variable
-		mmenu.show();
-		if(mmenu.get_retval() == gui2::retval::OK) {
+		if(mmenu.show()) {
 			res = mmenu.selected_item();
 		}
 	} // This will kill the dialog.

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@
 #include "map/exception.hpp"
 #include "terrain/type_data.hpp"
 #include "wml_exception.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 
 #include <iterator>
 
@@ -235,13 +235,16 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 
 	if(!game["mp_era"].empty()) {
 		const config& era_cfg = game_config.find_child("era", "id", game["mp_era"]);
+		const bool require = game["require_era"].to_bool(true);
 		if(era_cfg) {
 			era = era_cfg["name"].str();
 
-			ADDON_REQ result = check_addon_version_compatibility(era_cfg, game);
-			addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
+			if(require) {
+				ADDON_REQ result = check_addon_version_compatibility(era_cfg, game);
+				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
+			}
 		} else {
-			have_era = !game["require_era"].to_bool(true);
+			have_era = !require;
 			era = game["mp_era_name"].str();
 			verified = false;
 
@@ -309,6 +312,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 	if(!game["mp_scenario"].empty() && game["mp_campaign"].empty()) {
 		// Check if it's a multiplayer scenario
 		const config* level_cfg = &game_config.find_child("multiplayer", "id", game["mp_scenario"]);
+		const bool require = game["require_scenario"].to_bool(false);
 
 		// Check if it's a user map
 		if(!*level_cfg) {
@@ -341,11 +345,14 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 				}
 			}
 
-			if((*level_cfg)["require_scenario"].to_bool(false)) {
+			if(require) {
 				ADDON_REQ result = check_addon_version_compatibility((*level_cfg), game);
 				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			}
 		} else {
+			if(require) {
+				addons_outcome = std::max(addons_outcome, NEED_DOWNLOAD); // Elevate to most severe error level encountered so far
+			}
 			scenario = formatter() << make_game_type_marker(_("scenario_abbreviation^S"), true) << game["mp_scenario_name"].str();
 			info_stream << scenario;
 			verified = false;
@@ -475,6 +482,13 @@ game_info::ADDON_REQ game_info::check_addon_version_compatibility(const config& 
 
 		// Check if the host is too out of date to play.
 		if(local_min_ver > remote_ver) {
+			DBG_LB << "r.outcome = CANNOT_SATISFY for item='" << local_item["id"]
+				<< "' addon='" << local_item["addon_id"]
+				<< "' addon_min_version='" << local_item["addon_min_version"]
+				<< "' addon_min_version_parsed='" << local_min_ver.str()
+				<< "' addon_version='" << local_item["addon_version"]
+				<< "' remote_ver='" << remote_ver.str()
+				<< "'\n";
 			r.outcome = CANNOT_SATISFY;
 
 			r.message = VGETTEXT("The host's version of <i>$addon</i> is incompatible. They have version <b>$host_ver</b> while you have version <b>$local_ver</b>.", {

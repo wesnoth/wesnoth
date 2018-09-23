@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -91,6 +91,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_lock_view(lua_State *L);
 	int intf_get_terrain(lua_State *L);
 	int intf_set_terrain(lua_State *L);
+	int intf_terrain_mask(lua_State *L);
 	int intf_get_terrain_info(lua_State *L);
 	int intf_get_time_of_day(lua_State *L);
 	int intf_get_village_owner(lua_State *L);

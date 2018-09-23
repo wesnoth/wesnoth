@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -127,6 +127,17 @@ void lobby_info::process_gamelist(const config& data)
 
 bool lobby_info::process_gamelist_diff(const config& data)
 {
+	if(!process_gamelist_diff_impl(data)) {
+		// the gamelist is now corrupted, stop further processing and wait for a fresh list.
+		gamelist_initialized_ = false;
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+bool lobby_info::process_gamelist_diff_impl(const config& data)
+{
 	SCOPE_LB;
 	if(!gamelist_initialized_) {
 		return false;
@@ -158,6 +169,11 @@ bool lobby_info::process_gamelist_diff(const config& data)
 		const std::string& diff_result = c[config::diff_track_attribute];
 
 		if(diff_result == "new" || diff_result == "modified") {
+			// note: at this point (1.14.3) the server never sends a 'modified' and instead
+			// just sends a 'delete' followed by a 'new', it still works becasue the delete doesn't
+			// delete the element and just marks it as game_info::DELETED so that game_info::DELETED
+			// is replaced by game_info::UPDATED below. See also
+			// https://github.com/wesnoth/wesnoth/blob/1.14/src/server/server.cpp#L149
 			if(current_i == games_by_id_.end()) {
 				games_by_id_.emplace(game_id, game_info(c, installed_addons_));
 				continue;

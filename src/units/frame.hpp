@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2006 - 2018 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@
 
 #include "color.hpp"
 #include "halo.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 
 #include <boost/logic/tribool.hpp>
 #include <boost/optional.hpp>

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -420,6 +420,18 @@ void team::write(config& cfg) const
 
 	cfg["countdown_time"] = countdown_time_;
 	cfg["action_bonus_count"] = action_bonus_count_;
+}
+
+void team::fix_villages(const gamemap &map)
+{
+	for (auto it = villages_.begin(); it != villages_.end(); ) {
+		if (map.is_village(*it)) {
+			++it;
+		}
+		else {
+			it = villages_.erase(it);
+		}
+	}
 }
 
 game_events::pump_result_t team::get_village(const map_location& loc, const int owner_side, game_data* gamedata)

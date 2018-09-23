@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
  *  @file
  *  Replay control code.
  *
- *  See http://www.wesnoth.org/wiki/ReplayWML for more info.
+ *  See https://www.wesnoth.org/wiki/ReplayWML for more info.
  */
 
 #include "replay.hpp"
@@ -649,6 +649,9 @@ void replay::add_config(const config& cfg, MARK_SENT mark)
 		if(mark == MARK_AS_SENT) {
 			cmd_cfg["sent"] = true;
 		}
+		if(cmd_cfg.has_child("speak")) {
+			cmd_cfg["undo"] = false;
+		}
 	}
 }
 bool replay::add_start_if_not_there_yet()
@@ -722,7 +725,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		}
 		else if (const config &speak = cfg->child("speak"))
 		{
-			const std::string &team_name = speak["team_name"];
+			const std::string &team_name = speak["to_sides"];
 			const std::string &speaker_name = speak["id"];
 			const std::string &message = speak["message"];
 			//if (!preferences::parse_should_show_lobby_join(speaker_name, message)) return;

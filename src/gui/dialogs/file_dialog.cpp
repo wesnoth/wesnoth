@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2011, 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -25,12 +25,7 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	#include "gui/widgets/list.hpp"
-#else
-	#include "gui/widgets/listbox.hpp"
-#endif
-#include "gui/widgets/settings.hpp"
+#include "gui/widgets/listbox.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/window.hpp"
@@ -201,7 +196,7 @@ void file_dialog::pre_show(window& window)
 	bookmark_paths_.clear();
 	current_bookmark_ = user_bookmarks_begin_ = -1;
 
-	std::map<std::string, string_map> data;
+	widget_data data;
 
 	for(const auto& pinfo : bookmarks) {
 		bookmark_paths_.push_back(pinfo.path);
@@ -533,7 +528,7 @@ void file_dialog::push_fileview_row(listbox& filelist, const std::string& name, 
 	std::string label = name;
 	utils::ellipsis_truncate(label, FILE_DIALOG_MAX_ENTRY_LENGTH);
 
-	std::map<std::string, string_map> data;
+	widget_data data;
 	data["icon"]["label"] = icon;
 	data["file"]["label"] = label;
 
@@ -672,7 +667,7 @@ void file_dialog::on_bookmark_add_cmd(window& window)
 		user_bookmarks_begin_ = top_bookmark;
 	}
 
-	std::map<std::string, string_map> data;
+	widget_data data;
 	data["bookmark"]["label"] = label;
 	bookmarks_bar.add_row(data);
 

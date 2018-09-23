@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2007 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,19 +14,20 @@
 
 #pragma once
 
-#include "gui/core/event/dispatcher.hpp"
-#include "sdl/point.hpp"
-#include "gui/widgets/event_executor.hpp"
 #include "color.hpp"
+#include "gui/core/event/dispatcher.hpp"
+#include "gui/widgets/event_executor.hpp"
+#include "sdl/point.hpp"
 
 #include <string>
 
-class surface;
-
-typedef std::map<std::string, t_string> string_map;
-
 namespace gui2
 {
+/* Data format used by styled_widget::set_members to set settings for a single widget. */
+using widget_item = std::map<std::string, t_string>;
+
+/* Indexes multiple @ref widget_item maps by widget ID. */
+using widget_data = std::map<std::string, widget_item>;
 
 struct builder_widget;
 class window;

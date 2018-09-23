@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 - 2018 The Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2018 The Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -21,7 +21,6 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
@@ -37,6 +36,7 @@
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
+#include "terrain/movement.hpp"
 #include "units/attack_type.hpp"
 #include "units/types.hpp"
 #include "units/helper.hpp"
@@ -145,6 +145,7 @@ static inline std::string get_hp_tooltip(const utils::string_map& res, const std
 
 static inline std::string get_mp_tooltip(int total_movement, std::function<int (t_translation::terrain_code)> get)
 {
+	std::set<terrain_movement> terrain_moves;
 	std::ostringstream tooltip;
 	tooltip << "<big>" << _("Movement Costs:") << "</big>";
 
@@ -161,35 +162,37 @@ static inline std::string get_mp_tooltip(int total_movement, std::function<int (
 
 		const terrain_type& info = tdata->get_terrain_info(terrain);
 		if(info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
-			const std::string& name = info.name();
-			const int moves = get(terrain);
-
-			tooltip << '\n' << font::unicode_bullet << " " << name << ": ";
-
-			// movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
-			const bool cannot_move = moves > total_movement;
-
-			std::string color;
-			if(cannot_move) {
-				// cannot move in this terrain
-				color = "red";
-			} else if(moves > 1) {
-				color = "yellow";
-			} else {
-				color = "white";
-			}
-
-			tooltip << "\t<span color='" << color << "'>";
-
-			// A 5 MP margin; if the movement costs go above the unit's max moves + 5, we replace it with dashes.
-			if(cannot_move && (moves > total_movement + 5)) {
-				tooltip << font::unicode_figure_dash;
-			} else {
-				tooltip << moves;
-			}
-
-			tooltip << "</span>";
+			terrain_moves.emplace(info.name(), get(terrain));
 		}
+	}
+
+	for(const terrain_movement& tm: terrain_moves)
+	{
+		tooltip << '\n' << font::unicode_bullet << " " << tm.name << ": ";
+
+		// movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
+		const bool cannot_move = tm.moves > total_movement;
+
+		std::string color;
+		if(cannot_move) {
+			// cannot move in this terrain
+			color = "red";
+		} else if(tm.moves > 1) {
+			color = "yellow";
+		} else {
+			color = "white";
+		}
+
+		tooltip << "<span color='" << color << "'>";
+
+		// A 5 MP margin; if the movement costs go above the unit's max moves + 5, we replace it with dashes.
+		if(cannot_move && (tm.moves > total_movement + 5)) {
+			tooltip << font::unicode_figure_dash;
+		} else {
+			tooltip << tm.moves;
+		}
+
+		tooltip << "</span>";
 	}
 
 	return tooltip.str();
@@ -454,8 +457,13 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 		str << font::span_color(u.hp_color())
 			<< _("HP: ") << u.hitpoints() << "/" << u.max_hitpoints() << "</span>" << "\n";
 
-		str << font::span_color(u.xp_color())
-			<< _("XP: ") << u.experience() << "/" << u.max_experience() << "</span>";
+		str << font::span_color(u.xp_color()) << _("XP: ");
+		if(u.can_advance()) {
+			str << u.experience() << "/" << u.max_experience();
+		} else {
+			str << font::unicode_en_dash;
+		}
+		str << "</span>";
 
 		label_details_->set_label(str.str());
 		label_details_->set_use_markup(true);
@@ -463,6 +471,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 
 	if(tree_details_) {
 		tree_details_->clear();
+		const std::string unit_xp = u.can_advance() ? (formatter() << u.experience() << "/" << u.max_experience()).str() : font::unicode_en_dash;
 		tree_details_->add_node("hp_xp_mp", {
 			{ "hp",{
 				{ "label", (formatter() << "<small>" << font::span_color(u.hp_color()) << "<b>" << _("HP: ") << "</b>" << u.hitpoints() << "/" << u.max_hitpoints() << "</span>" << " | </small>").str() },
@@ -470,7 +479,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 				{ "tooltip", get_hp_tooltip(u.get_base_resistances(), [&u](const std::string& dt, bool is_attacker) { return u.resistance_against(dt, is_attacker, u.get_location()); }) }
 			} },
 			{ "xp",{
-				{ "label", (formatter() << "<small>" << font::span_color(u.xp_color()) << "<b>" << _("XP: ") << "</b>" << u.experience() << "/" << u.max_experience() << "</span>" << " | </small>").str() },
+				{ "label", (formatter() << "<small>" << font::span_color(u.xp_color()) << "<b>" << _("XP: ") << "</b>" << unit_xp << "</span>" << " | </small>").str() },
 				{ "use_markup", "true" },
 				{ "tooltip", (formatter() << _("Experience Modifier: ") << unit_experience_accelerator::get_acceleration() << '%').str() }
 			} },

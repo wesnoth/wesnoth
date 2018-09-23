@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -227,7 +227,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 	}
 	sound::commit_music_changes();
 
-	if(!this->is_skipping_replay()) {
+	if(!this->is_skipping_replay() && !this->is_skipping_story()) {
 		// Combine all the [story] tags into a single config. Handle this here since
 		// storyscreen::controller doesn't have a default constructor.
 		config cfg;
@@ -671,7 +671,7 @@ void playsingle_controller::reset_replay()
 
 void playsingle_controller::enable_replay(bool is_unit_test)
 {
-	replay_.reset(new replay_controller(*this, gamestate().has_human_sides(), std::shared_ptr<config>( new config(saved_game_.replay_start())), std::bind(&playsingle_controller::on_replay_end, this, is_unit_test)));
+	replay_.reset(new replay_controller(*this, gamestate().has_human_sides(), std::shared_ptr<config>( new config(saved_game_.get_replay_starting_point())), std::bind(&playsingle_controller::on_replay_end, this, is_unit_test)));
 	if(is_unit_test) {
 		replay_->play_replay();
 	}

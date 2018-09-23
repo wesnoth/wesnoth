@@ -7,17 +7,23 @@
    * Removed incomplete joystick support.
    * Removed map scaling algorithm customization. Nearest-neighbor scaling will now
      always be used.
+   * Removed option to disable unit and item halos.
  ### Language and i18n
-   * Updated translations: British English, Chinese (Simplified),
-     Chinese (Traditional), Czech, French, Galician, German, Italian, Japanese,
-     Polish, Scottish Gaelic, Slovak, Spanish, Ukrainian.
+   * Updated translations: British English, Bulgarian, Chinese (Simplified),
+     Chinese (Traditional), Czech, French, Galician, German, Hungarian, Italian,
+     Japanese, Polish, Scottish Gaelic, Slovak, Spanish, Ukrainian.
+ ### Lua API
+   * Allow specifying custom flags (in particular teleport) when using a custom cost function in wesnoth.find_path
  ### Packaging
    * OpenMP support has been removed. It is no longer an optional build-time dependency.
+ ### Units
+   * Saurian warriors are now female. (issue #3392)
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a special location ID
    * Support dir in [move_unit] to perform relative movements
    * Support location_id in [teleport], [recall], [unstore_unit] for the target location
+   * Support a comma-separated list for location_id key in SLF
    * Support [filter_weapon] in leadership and resistance abilities,
      which activates the ability only when the affected unit is using
      a matching weapon.
@@ -42,8 +48,94 @@
    * Support male_voice and female_voice in [message]
    * Support [break], [continue], and [return] in [random_placement]
    * [remove_sound_source] now accepts a comma-separated ID list
+   * Support [filter_team] in [side] in addition to team_name=
 
-## Version 1.14.3+dev
+## Version 1.14.4+dev
+ ### AI
+   * Fixed crash in AI code when a side has multiple leaders.
+   * Fix AI ignoring teleport locations when moving leader to leader goals.
+   * Fast Micro AI: Fix bug crashing the AI when units with chance-to-hit
+     specials without id are on map.
+ ### Campaigns
+   * Heir to the Throne:
+     * S6: Allow canceling an attack when a move+attack spawns enemy units (issue #3459).
+     * S6: Change the trigger for spawning undead reinforcements (issue #3459).
+     * S17: Add dialog explaining the lava game mechanic and an easter egg (issue #3473).
+   * Liberty:
+     * S3: Add story and war drums music.
+   * Northern Rebirth:
+     * S12: empty sides are hidden.
+     * S13: allied leaders whose death causes defeat won't leave their keep and
+       the lich brothers and Krash got more gold.
+   * Sceptre of Fire:
+     * S4: a cave entrance has been added.
+     * S5: Gryphon Riders are now available starting form S5 (formerly S3).
+     * S7: it's now impossible to kill all pursuers.
+   * Secrets of the Ancients:
+     * Fix dialog said by wrong unit & revert previous fix (issue #3294).
+   * The Hammer of Thursagan:
+     * S10: Fix objectives requiring too much of the player.
+   * The South Guard:
+     * S2: the case where Deoran is not sent to the Citadel is handled better.
+     * S2: enemy units will no longer neutralize villages instead of capturing or burning them.
+       This also means certain units will no longer be hidden in the Game Stats list.
+     * S4: bodyguards are never spawned next to other units, and always in forest.
+     * S5: zombies have now one castle with two leaders.
+     * S6a: mermen leave after this scenario and will no longer be available.
+     * S7a & S8a: a certain hero may now die.
+   * Tutorial:
+     * Added more information to the Status Table prompt about how to access it (issue #2883).
+   * Under the Burning Suns:
+     * New graphics for Eloh.
+ ### Multiplayer
+   * A New Land: Fixed village gold being 1 instead of 2.
+   * Fixed Random Start Time not working (issue #3515).
+   * Fixed a possible crash when leaving a game as an observer (issue #3017).
+   * Fixed Start Game locked when other players abort the faction/leader selection
+     dialog (issue #3452).
+   * Fixed Skip Replay when joining MP campaigns.
+   * Fixed OOS errors when undoing after ally chat.
+   * Fixed game freezing upon droiding with Delayed Shroud Updates (issue #3453).
+   * Fixed require_scenario and require_era attributes.
+ ### Language and i18n
+   * Updated translations: British English, Chinese (Traditional), Czech, French,
+     German, Hungarian, Italian, Japanese, Scottish Gaelic, Ukrainian.
+ ### User Interface
+   * On laptop computers we now show how much battery you have left.
+   * MacOS: Fixed moving the mouse with a touchpad also scrolling GUI dialogs.
+   * MacOS: Add build number to OS version report.
+   * Fix layout of Preferences window with some localizations (such as Czech).
+   * Load Game now shows the chosen difficulty with the same name that you originally selected.
+   * Load Game now shows the modifications enabled in the selected savegame (issue #3495).
+   * Force leader sprites larger than 72x72 to be downscaled in Load Game (issue #3474).
+   * Add left padding to dialog messages shown with a portrait on the right (issue #1938).
+   * Addon Manager uses clearer terms for sort order.
+   * Fix reversed sort order by unit level in Unit List and Recall Unit.
+   * Fixed crash in Recall Unit when no units match the filter (issue #3475).
+ ### WML engine
+   * Fixed [animate_unit] and [heal_unit] preventing unit halo from disappearing if the unit
+     dies later (issue #3509).
+ ### Miscellaneous and bug fixes
+   * Fix some minor problems with the macOS package.
+   * Fixed crash when trying to attack with a unit without usable weapons (issue #3424).
+   * Fixed the debug mode Create Unit dialog crashing when changing the gender
+     of the previous selection after causing the list to come up empty using
+     the filter box.
+   * Allow searching by race and internal unit type id with the Create Unit
+     filter box as well.
+   * wmlxgettext is now included in release packages, so a separate download is no longer required to use it with GUI.pyw.
+   * Fixed crash when pressing Reset replay (issue #3439).
+   * Fixed editor cannot add starting location for > 9 players.
+   * Fixed crash in Lua tstring comparision (issue #3541).
+   * Fixed objectives at scenario start using old/cached values of conditions/variables (issue #3544).
+   * Show an error message when trying to open the Lua console while not in debug mode.
+   * On enemy side's turn, don't scroll to that side's leader if it's invisible.
+   * Fixed :droid ignoring its second argument.
+   * Fixed :droid giving no feedback when successful.
+
+## Version 1.14.4
+ ### Security Fixes
+   * Fixed Lua being able to escape sandboxing via load/loadstring (CVE-2018-1999023).
  ### Add-ons server
    * Made it so plain-text .po catalogues in add-ons are detected and added to
      the list of translations for them.
@@ -51,8 +143,20 @@
    * Dead Water:
      * In 'Tirigaz', take the situation into account of orcs being killed either
        first or by undead.
+   * Delfador's Memoirs:
+     * Fix hero units costing upkeep (issue #3277)
    * Eastern Invasion:
      * Fixed missing prisoners and loss of recallable units in 'Captured'.
+   * Northern Rebirth:
+     * Level 0 units are not available anymore after scenario 5
+   * Secrets of the Ancients:
+     * Adjust gender of enemies to better match story in S11 & 21 (issue #3294)
+     * Simplify dialog to fix possible confusion in S16 (issue #3291)
+     * Have nagas be able to recruit in S21 (issue #3293)
+   * The South Guard:
+     * S4: undead leader won't leave the castle anymore
+     * S5: the untypical situation that one can defeat the lich before finding
+       Urza Afalas is now handled
    * Under the Burning Suns:
      * S11: added custom graphics for the citadel.
      * S12: clarified the alien bodies' weaknesses.
@@ -60,24 +164,34 @@
  ### Editor
    * Fixed saving a map as a scenario not enabling scenario editor tools.
  ### Graphics
-   * Tweaked the Ruffian's attack animation timing.
    * New attack animation for the Peasant.
+   * Tweaked the Ruffian's attack animation timing.
  ### Language and i18n
-   * Updated translations: French, German, Slovak
+   * Updated translations: British English, Bulgarian, Chinese (Simplified),
+     Chinese (Traditional), Czech, French, German, Hungarian, Japanese,
+     Scottish Gaelic, Slovak, Spanish
+ ### Lua API
+   * Upgrade to Lua 5.3.5.
+ ### Multiplayer
+   * Non hosts can now change their faction in the mp wait dialog.
  ### Multiplayer server
    * Fixed lobby and whisper messages not having a maximum length.
+   * Partly fixed the mp server breaking translatable strings.
  ### User interface
    * Improved the layout of the Statistics dialog.
    * Allow changing dropdown menu selections with the scrollwheel (FR #3251).
+   * Fixed lobby chat box scrolling to top on a new message if it isn't at the
+     bottom (issue #2789).
    * Fixed the unit preview pane not showing the default race icon when detailing
      a single unit's stats.
    * Sort units secondarily by XP in the unit list dialog.
-   * Limited chatbox input to 256 characters.
+   * Whiteboard related bugfixes
  ### WML engine
    * Fixed errors about WESNOTH_VERSION not being defined when trying to load
      add-ons that have preprocessor errors (issues #1924, #1634).
  ### Miscellaneous and bug fixes
    * Added an advanced preference to enable experimental PRNG combat.
+   * Campfires use illumination instead of a different ToD.
    * Linux builds now enable security hardening by default.
    * Fixed MP admins being unable to observe private games.
    * Fixed MP faction, leader, and leader gender changes persisting even if the
@@ -85,8 +199,16 @@
    * Fixed an issue with positioned sound sources ignoring the volume set in
      Preferences after going off the audible radius and back (issue #3280).
    * Fixed wmllint choking on gzipped binary files (e.g. gzipped tarballs).
-   * Fixed wmllint crashing on inexistent paths provided in the command line
+   * Fixed wmllint crashing on nonexistent paths provided in the command line
      (issue #3286).
+   * Slight changes to the objectives dialogue (pr #3309)
+   * Greatly improved touch control support.
+   * Fixed wmlindent crashing on nonexistent paths provided in the command line
+     (issue #3346).
+   * [do_command][attack] can no longer invoke disabled attacks.
+   * [delay] is now skipped during preload events.
+   * Fixed wrong simulated movement points when planning to capture a village.
+   * Fixed attacks wrongly being disabled in the UI.
 
 ## Version 1.14.3
  ### AI
@@ -114,6 +236,7 @@
    * Fixed lan_server option not causing the server to exit once vacated, e.g.
      when using the Host Networked Game option from the Multiplayer menu in the
      game (issue #3206).
+   * It is now possible to query the client version of other players.
  ### Music and sound effects
    * The music now changes immediately when you load a save file (issue #2602).
    * Fixed Lua errors when setting a music track that cannot be found when the
@@ -3663,7 +3786,7 @@
        2 different guardians and a coward, healer support, lurkers,
        messenger escort, patrol, protect and move a unit, and 2 alternative
        recruiting strategies.
-     * Documentation at http://wiki.wesnoth.org/Micro_AIs
+     * Documentation at https://wiki.wesnoth.org/Micro_AIs
    * New leader_ignores_keep AI aspect that lets AI leader take part in the same
      AI moves as the non-leader units.
    * Rename passive_leader_shares_keep candidate action to leader_shares_keep.
@@ -6135,7 +6258,7 @@
    * Event "turn refresh" is now fired at turn 1 too
  ### Miscellaneous and bugfixes
    * Using a hotkey to reload during an attack no longer disables the mouse
-     (http://www.wesnoth.org/forum/viewtopic.php?f=4&t=27616)
+     (https://www.wesnoth.org/forum/viewtopic.php?f=4&t=27616)
    * Removed some unused Drake macros from animation_utils
    * Add recruitment anims for the Sky and Hurricane Drakes
    * Removed the old stats code (Debian bug #555276, CVE-2007-2383,
@@ -6396,7 +6519,7 @@
      pre-srng or with srng disabled as well can work without OOS. This is a
      testing feature that will likely be removed prior to 1.8.
    * Room support via /join and /room commands, better support in the
-     experimental new lobby. See http://www.wesnoth.org/wiki/MultiplayerRooms
+     experimental new lobby. See https://www.wesnoth.org/wiki/MultiplayerRooms
      for details.
  ### Multiplayer server
    * Added server-side RNG support. Old clients can still play as normal.
@@ -7587,7 +7710,7 @@
      improvements.
    * Built by default in scons, cmake and autotools, if building manually
      see RELEASE_NOTES.
-   * See http://www.wesnoth.org/wiki/Editor2 for details and known issues.
+   * See https://www.wesnoth.org/wiki/Editor2 for details and known issues.
  ### Language and i18n
    * updated fonts: DejaVuSans 2.26
    * updated translations: Chinese (Traditional), Danish, Finnish, Galician,
@@ -8006,7 +8129,7 @@
      * Fix graphic artifact bug #11438
  ### Formula AI
    * added support for Formula AI language, more info available at:
-     http://www.wesnoth.org/wiki/FormulaAI
+     https://www.wesnoth.org/wiki/FormulaAI
  ### graphics
    * Fixed broken TC on transport-galleon and drake walking corpse graphics
    * New portraits: Elvish Sorceress
@@ -9918,7 +10041,7 @@
  ### terrain system
    * The entire underlaying system has been converted to a new system,
      this might render some UMC broken, read this forum thread for more details
-     http://www.wesnoth.org/forum/viewtopic.php?t=14910
+     https://www.wesnoth.org/forum/viewtopic.php?t=14910
    * Terrain of the starting position can be changed in the map,
      the automatic conversion to a keep is no longer done
    * New definition for the maps in terrain-graphics
@@ -11256,7 +11379,7 @@
      * increased the holy resistance of the scuttlefoot movetype from 0% to 20%
      * made Fireball, Gate, Galeons & Watch Tower unpoisonable and unplaguable
      * recosting and minor stats changes for many level 2+ units:
-       http://www.wesnoth.org/forum/viewtopic.php?p=121154#121154
+       https://www.wesnoth.org/forum/viewtopic.php?p=121154#121154
  * user interface:
    * added font colors to theme
    * reorganized side-bar information
@@ -11316,7 +11439,7 @@
  * various other changes:
    * --with-preferences-dir configure option for coexistence of multiple versions
    * experimental Python API for AI.
-     See http://www.wesnoth.org/wiki/ReferencePythonAPI for more information.
+     See https://www.wesnoth.org/wiki/ReferencePythonAPI for more information.
    * various bug fixes and code cleanups
    * better support for MacOSX filesystems
 
@@ -14232,7 +14355,7 @@
  * added some explanatory tooltips for some unit attributes on sidebar
  * added in flag to show whose turn it currently is
  * added end turn confirmation when units can still move (requires
-   editing preferences-file - see WesnothPreferences on http://wiki.wesnoth.org for more information)
+   editing preferences-file - see WesnothPreferences on https://wiki.wesnoth.org for more information)
  * added 'unit list' to context menu
  * restored 'save game' in the context menu (#7172)
  * multiplayer improvements:

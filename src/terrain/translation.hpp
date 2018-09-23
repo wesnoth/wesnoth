@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2006 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -26,6 +26,7 @@
 
 #include "exceptions.hpp"
 #include "map/location.hpp"
+#include "serialization/string_view.hpp"
 
 namespace t_translation {
 
@@ -203,7 +204,7 @@ namespace t_translation {
 	 *
 	 * @returns		A vector which contains the terrain codes found in the string
 	 */
-	 ter_list read_list(const std::string& str, const ter_layer filler = NO_LAYER);
+	 ter_list read_list(utils::string_view str, const ter_layer filler = NO_LAYER);
 
 	/**
 	 * Writes a list of terrains to a string, only writes the new format.

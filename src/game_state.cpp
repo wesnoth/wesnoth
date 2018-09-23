@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -103,7 +103,7 @@ game_state::~game_state() {}
 static int placing_score(const config& side, const gamemap& map, const map_location& pos)
 {
 	int positions = 0, liked = 0;
-	const t_translation::ter_list terrain = t_translation::read_list(side["terrain_liked"]);
+	const t_translation::ter_list terrain = t_translation::read_list(side["terrain_liked"].str());
 
 	for(int i = -8; i != 8; ++i) {
 		for(int j = -8; j != +8; ++j) {

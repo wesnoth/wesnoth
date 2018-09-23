@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@
 #include "gui/core/timer.hpp"
 #include "gui/dialogs/core_selection.hpp"
 #include "gui/dialogs/debug_clock.hpp"
-#include "gui/dialogs/game_version.hpp"
+#include "gui/dialogs/game_version_dialog.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
@@ -254,8 +254,8 @@ void title_screen::pre_show(window& win)
 	}
 
 	for(const auto& tip : tips)	{
-		string_map widget;
-		std::map<std::string, string_map> page;
+		widget_item widget;
+		widget_data page;
 
 		widget["use_markup"] = "true";
 

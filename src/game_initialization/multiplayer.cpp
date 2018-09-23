@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2007 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -30,11 +30,10 @@
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 #include "gui/dialogs/multiplayer/mp_login.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
-#include "gui/widgets/settings.hpp"
 #include "hash.hpp"
 #include "log.hpp"
 #include "multiplayer_error_codes.hpp"
-#include "settings.hpp"
+#include "map_settings.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"
 #include "wesnothd_connection.hpp"

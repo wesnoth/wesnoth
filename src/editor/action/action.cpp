@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -303,7 +303,7 @@ IMPLEMENT_ACTION(apply_mask)
 
 void editor_action_apply_mask::perform_without_undo(map_context& mc) const
 {
-	mc.map().overlay(mask_, config(), {0, 0});
+	mc.map().overlay(mask_, {0, 0, wml_loc()});
 	mc.set_needs_terrain_rebuild();
 }
 

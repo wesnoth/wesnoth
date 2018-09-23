@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -43,9 +43,7 @@ class scrollbar_container : public container_base
 
 	friend struct implementation::builder_scroll_label;
 	friend struct implementation::builder_scrollbar_panel;
-#ifndef GUI2_EXPERIMENTAL_LISTBOX
 	friend class listbox;
-#endif
 	friend class tree_view;
 	friend struct scrollbar_container_implementation;
 

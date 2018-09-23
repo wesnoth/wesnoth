@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -169,9 +169,9 @@ void horizontal_list::place(const point& origin, const point& size)
 	}
 
 	if(current_origin.x != origin.x + size.x) {
-		ERR_GUI_L << "Failed to fit horizontal list to requested rect; expected right edge was " << origin.x + size.x;
-		ERR_GUI_L << ", actual right edge was " << current_origin.x;
-		ERR_GUI_L << " (left edge is " << origin.x << ")\n";
+		ERR_GUI_L << "Failed to fit horizontal list to requested rect; expected right edge was " << origin.x + size.x
+		          << ", actual right edge was " << current_origin.x
+		          << " (left edge is " << origin.x << ")\n";
 	}
 }
 
@@ -380,9 +380,9 @@ void vertical_list::place(const point& origin, const point& size)
 	}
 
 	if(current_origin.y != origin.y + size.y) {
-		ERR_GUI_L << "Failed to fit vertical list to requested rect; expected bottom edge was " << origin.y + size.y;
-		ERR_GUI_L << ", actual bottom edge was " << current_origin.y;
-		ERR_GUI_L << " (top edge is " << origin.y << ")\n";
+		ERR_GUI_L << "Failed to fit vertical list to requested rect; expected bottom edge was " << origin.y + size.y
+		          << ", actual bottom edge was " << current_origin.y
+		          << " (top edge is " << origin.y << ")\n";
 	}
 }
 
@@ -1036,7 +1036,7 @@ void selection::select(grid& grid, const bool select)
 }
 
 void selection::init(grid* g,
-		const std::map<std::string /* widget id */, string_map>& data,
+		const widget_data& data,
 		const std::function<void(widget&)>& callback)
 {
 	for(unsigned row = 0; row < g->get_rows(); ++row) {
@@ -1051,7 +1051,7 @@ void selection::init(grid* g,
 			if(btn) {
 				connect_signal_notify_modified(*btn, std::bind(callback, _1));
 
-				std::map<std::string, string_map>::const_iterator itor = data.find(btn->id());
+				widget_data::const_iterator itor = data.find(btn->id());
 
 				if(itor == data.end()) {
 					itor = data.find("");
@@ -1073,7 +1073,7 @@ void selection::init(grid* g,
 }
 
 void show::init(grid* grid,
-		const std::map<std::string /* widget id */, string_map>& data,
+		const widget_data& data,
 		const std::function<void(widget&)>& callback)
 {
 	assert(!callback);

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,7 +18,6 @@
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/widget_helpers.hpp"
 #include "gui/widgets/generator.hpp"
 #include "gettext.hpp"
@@ -86,7 +85,7 @@ void
 stacked_widget::finalize(std::vector<builder_grid_const_ptr> widget_builder)
 {
 	assert(generator_);
-	string_map empty_data;
+	widget_item empty_data;
 	for(const auto & builder : widget_builder)
 	{
 		generator_->create_item(-1, builder, empty_data, nullptr);

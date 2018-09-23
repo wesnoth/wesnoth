@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2011 - 2018 by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -56,6 +56,8 @@ public:
 	boost::optional<int> campaign_difficulty;
 	/// Non-empty if --campaign-scenario was given on the command line. Chooses starting scenario in the campaign to be played. Dependent on --campaign.
 	boost::optional<std::string> campaign_scenario;
+	/// True if --skip-story was given on the command line. Skips [story] and [message]s through the end of the "start" event. Dependent on --campaign.
+	bool campaign_skip_story;
 	/// True if --clock was given on the command line. Enables
 	bool clock;
 	/// Non-empty if --core was given on the command line. Chooses the core to be loaded.

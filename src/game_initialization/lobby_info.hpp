@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -46,6 +46,8 @@ public:
 	 *                        not apply correctly).
 	 */
 	bool process_gamelist_diff(const config& data);
+
+	bool process_gamelist_diff_impl(const config& data);
 
 	void sync_games_display_status();
 
@@ -140,6 +142,10 @@ public:
 		return users_;
 	}
 
+	bool gamelist_initialized() const 
+	{
+		return gamelist_initialized_;
+	}
 private:
 	void process_userlist();
 

@@ -25,7 +25,7 @@ local function custom_cost(x, y, unit, enemy_rating_map, prefer_map)
     --    must return values >=1 for the a* search to work.
 
     local terrain = wesnoth.get_terrain(x, y)
-    local move_cost = wesnoth.unit_movement_cost(unit, terrain)
+    local move_cost = unit:movement(terrain)
 
     move_cost = move_cost + (enemy_rating_map:get(x, y) or 0)
 
@@ -66,7 +66,7 @@ function ca_assassin_move:execution(cfg)
         if (not enemy.status.petrified) then
             -- Need to "move" enemy next to unit for attack calculation
             -- Do this with a unit copy, so that no actual unit has to be moved
-            local enemy_copy = wesnoth.copy_unit(enemy)
+            local enemy_copy = enemy:clone()
 
             -- First get the reach of the enemy with full moves though
             enemy_copy.moves = enemy_copy.max_moves
@@ -95,7 +95,7 @@ function ca_assassin_move:execution(cfg)
     -- Penalties for damage by enemies
     local enemy_rating_map = LS.create()
     enemy_damage_map:iter(function(x, y, enemy_damage)
-        local hit_chance = (wesnoth.unit_defense(unit, wesnoth.get_terrain(x, y))) / 100.
+        local hit_chance = (unit:defense(wesnoth.get_terrain(x, y))) / 100.
 
         local rating = hit_chance * enemy_damage
         rating = rating / unit.max_hitpoints
@@ -105,7 +105,7 @@ function ca_assassin_move:execution(cfg)
     end)
 
     -- Penalties for blocked hexes and ZOC
-    local is_skirmisher = wesnoth.unit_ability(unit, "skirmisher")
+    local is_skirmisher = unit:ability("skirmisher")
     for _,enemy in ipairs(enemies) do
         -- Hexes an enemy is on get a very large penalty
         enemy_rating_map:insert(enemy.x, enemy.y, (enemy_rating_map:get(enemy.x, enemy.y) or 0) + 100)

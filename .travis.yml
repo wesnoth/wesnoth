@@ -31,12 +31,10 @@ matrix:
 
     - os: osx
       compiler: clang
-      osx_image: xcode8.3
       env: TOOL=scons CXXSTD=14 NLS=false OPT=-O0
 
     - os: osx
       compiler: clang
-      osx_image: xcode9.2
       env: TOOL=xcodebuild
 
 install:

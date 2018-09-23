@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2010 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,6 +15,7 @@
 #pragma once
 
 #include "gui/widgets/scrollbar_container.hpp"
+#include "gui/widgets/tree_view_node.hpp"
 
 namespace gui2
 {
@@ -56,10 +57,18 @@ public:
 
 	tree_view_node&
 	add_node(const std::string& id,
-			 const std::map<std::string /* widget id */, string_map>& data,
+			 const widget_data& data,
 			 const int index = -1);
 
-	int remove_node(tree_view_node* tree_view_node);
+	/**
+	 * Removes the given node as a child of its parent node.
+	 *
+	 * @param node      A pointer to the node to remove.
+	 *
+	 * @returns         A pair consisting of a smart pointer managing the removed
+	 *                  node, and its position before removal.
+	 */
+	std::pair<tree_view_node::ptr_t, int> remove_node(tree_view_node* node);
 
 	void clear();
 
@@ -86,11 +95,6 @@ public:
 	const tree_view_node* selected_item() const
 	{
 		return selected_item_;
-	}
-
-	void set_selection_change_callback(std::function<void(widget&)> callback)
-	{
-		selection_change_callback_ = callback;
 	}
 
 	const std::vector<node_definition>& get_node_definitions() const
@@ -128,8 +132,6 @@ private:
 	std::shared_ptr<tree_view_node> root_node_;
 
 	tree_view_node* selected_item_;
-
-	std::function<void(widget&)> selection_change_callback_;
 
 	/**
 	 * Resizes the content.

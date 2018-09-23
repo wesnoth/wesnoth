@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -44,7 +44,13 @@ static std::map<std::size_t, timer>& get_timers()
 	static std::map<std::size_t, timer>* ptimers = new std::map<std::size_t, timer>();
 	return *ptimers;
 }
-/** The id of the event being executed, 0 if none. */
+/** 
+	The id of the event being executed, 0 if none.
+	NOTE: it is possible that multiple timers are executed at the same time
+	      if one of the timer starts an event loop for example if its handler
+		  shows a dialog. In that case code that relies on this breaks. This
+		  could probably fixed my making this a list/stack of ids.
+*/
 static std::size_t executing_id = 0;
 
 /** Did somebody try to remove the timer during its execution? */

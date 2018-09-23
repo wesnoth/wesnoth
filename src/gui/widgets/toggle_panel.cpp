@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -86,7 +86,7 @@ unsigned toggle_panel::num_states() const
 }
 
 void toggle_panel::set_child_members(
-		const std::map<std::string /* widget id */, string_map>& data)
+		const widget_data& data)
 {
 	for(const auto & item : data)
 	{

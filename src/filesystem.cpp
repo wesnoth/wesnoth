@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2012 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 #include "log.hpp"
 #include "serialization/unicode.hpp"
 #include "serialization/unicode_cast.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 
 #include <boost/algorithm/string.hpp>
 #include <boost/iostreams/device/file_descriptor.hpp>

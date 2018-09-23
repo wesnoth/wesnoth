@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
    Copyright (C) 2005 - 2018 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@
 #include "utils/const_clone.hpp"
 #include "utils/functional.hpp"
 #include "deprecation.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <algorithm>
@@ -540,6 +540,42 @@ config& config::add_child_at(config_key_type key, const config& val, unsigned in
 	}
 
 	return *v[index];
+}
+
+config& config::add_child_at(config_key_type key, const config &val, const const_all_children_iterator& pos)
+{
+	if(pos == ordered_end()) {
+		//optimisation
+		config::add_child(key, val);
+	}
+
+	auto end = ordered_children.end();
+	assert(pos.i_ <= end);
+
+	auto pos_it = ordered_children.begin() + (pos.i_ - ordered_children.begin()); //'const cast'.
+	auto next = std::find_if(pos_it, end,[&](const child_pos& p){ return p.pos->first == key; });
+	
+	if(next == end) {
+		config& res = config::add_child(key, val);
+		std::rotate( pos_it, ordered_children.end(), ordered_children.end());
+		return res;
+	}
+
+	auto pl = next->pos;
+	child_list& l = pl->second;
+	unsigned int index = next->index;
+	config& res = **(l.emplace(l.begin() + index, new config(val)));
+	
+	for(auto ord = next; ord != end; ++ord) {
+		//this changes next->index and all later refernces to that tag.
+		if(ord->pos == pl) {
+			++ord->index;
+		}
+	}
+
+	//finally insert our new child in ordered_children.
+	ordered_children.insert(pos.i_, { pl, index });
+	return res;
 }
 
 namespace
@@ -1247,7 +1283,7 @@ std::ostream& operator<<(std::ostream& outstream, const config& cfg)
 		}
 
 		for(int j = 0; j < i - 1; j++) {
-			outstream << char(9);
+			outstream << '\t';
 		}
 
 		outstream << val.first << " = " << val.second << '\n';
@@ -1255,14 +1291,14 @@ std::ostream& operator<<(std::ostream& outstream, const config& cfg)
 
 	for(const config::any_child& child : cfg.all_children_range()) {
 		for(int j = 0; j < i - 1; ++j) {
-			outstream << char(9);
+			outstream << '\t';
 		}
 
 		outstream << "[" << child.key << "]\n";
 		outstream << child.cfg;
 
 		for(int j = 0; j < i - 1; ++j) {
-			outstream << char(9);
+			outstream << '\t';
 		}
 
 		outstream << "[/" << child.key << "]\n";

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -719,12 +719,12 @@ void display::draw_fog_shroud_transition_images(const map_location& loc, image::
 	adjacent_loc_array_t adjacent;
 	get_adjacent_tiles(loc, adjacent.data());
 
-	enum visibility { FOG = 0, SHROUD = 1, CLEAR = 2 };
-	visibility tiles[6];
+	enum VISIBILITY { FOG = 0, SHROUD = 1, CLEAR = 2 };
+	std::array<VISIBILITY, 6> tiles;
 
-	const std::string* image_prefix[]{&game_config::fog_prefix, &game_config::shroud_prefix};
+	const std::array<const std::string*, 2> image_prefix {{&game_config::fog_prefix, &game_config::shroud_prefix}};
 
-	for(int i = 0; i < 6; ++i) {
+	for(unsigned i = 0; i < tiles.size(); ++i) {
 		if(shrouded(adjacent[i])) {
 			tiles[i] = SHROUD;
 		} else if(!fogged(loc) && fogged(adjacent[i])) {
@@ -789,7 +789,7 @@ void display::draw_fog_shroud_transition_images(const map_location& loc, image::
 	}
 
 	// Now render the images
-	for(std::string& name : names) {
+	for(const std::string& name : names) {
 		render_scaled_to_zoom(image::get_texture(name), loc); // TODO: image_type
 	}
 }
@@ -1691,8 +1691,12 @@ void display::draw_gamemap()
 
 		const overlay& item = overlay_record.second;
 		const std::string& current_team_name = get_teams()[viewing_team()].team_name();
+		const std::vector<std::string>& current_team_names = utils::split(current_team_name);
+		const std::vector<std::string>& team_names = utils::split(item.team_name);
 
-		if((item.team_name.empty() || item.team_name.find(current_team_name) != std::string::npos) &&
+		if((item.team_name.empty() ||
+			std::find_first_of(team_names.begin(), team_names.end(),
+				current_team_names.begin(), current_team_names.end()) != team_names.end()) &&
 			(!fogged(o_loc) || item.visible_in_fog))
 		{
 			const texture tex = item.image.find("~NO_TOD_SHIFT()") == std::string::npos

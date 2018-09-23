@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2011 - 2018 by Lukasz Dobrogowski
    <lukasz.dobrogowski@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -25,12 +25,7 @@
 #include "preferences/credentials.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/label.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "menu_events.hpp"
@@ -102,8 +97,8 @@ void mp_change_control::pre_show(window& window)
 
 		sides_.push_back(side);
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		std::string side_str = VGETTEXT("Side $side", {{"side", std::to_string(side)}});
 		side_str = font::span_color(team::get_side_color(side)) + side_str + "</span>";
@@ -140,8 +135,8 @@ void mp_change_control::pre_show(window& window)
 	for(const std::string& nick : temp_nicks) {
 		nicks_.push_back(nick);
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["id"] = nick;
 		item["label"] = nick;

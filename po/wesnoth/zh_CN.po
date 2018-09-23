@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-05-16 22:19+0800\n"
+"PO-Revision-Date: 2018-07-08 20:29+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.0.8\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -1709,8 +1709,11 @@ msgstr "$unit.name|无法使用风暴三叉戟！让能够使用它的人鱼拥�
 
 #. [object]
 #: data/core/macros/items.cfg:521
+#, fuzzy
+#| msgid ""
+#| "This trident gives merfolk the power to throw lightning at their enemies."
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
-msgstr "这柄三叉戟能让人鱼向敌人发射闪电球！"
+msgstr "这柄三叉戟赐予人鱼向敌人发射闪电的力量。"
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:525
@@ -6316,7 +6319,7 @@ msgstr "（观察中）"
 #: src/game_initialization/lobby_data.cpp:334
 #: src/game_initialization/lobby_data.cpp:364
 msgid "S"
-msgstr "S"
+msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:353
 msgid "Remote scenario"
@@ -6325,7 +6328,7 @@ msgstr "远程场景"
 #: src/game_initialization/lobby_data.cpp:372
 #: src/game_initialization/lobby_data.cpp:395
 msgid "C"
-msgstr "C"
+msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:400
 msgid "Unknown scenario"
@@ -8421,6 +8424,23 @@ msgstr "隐藏$player的计划"
 msgid "Whiteboard Options"
 msgstr "白板选项"
 
+#~ msgid "Use experimental PRNG combat"
+#~ msgstr "在战斗中使用试验性的PRNG"
+
+#~ msgid ""
+#~ "Enables more determinstic chance-to-hit calculations. This is an "
+#~ "experimental feature designed to bring the observed hit/miss rate more in "
+#~ "line with the displayed percentages.\n"
+#~ "\n"
+#~ "Note: this option only affects singleplayer, and the ‘Save random seed’ "
+#~ "option must also be enabled when creating a game for this to work."
+#~ msgstr ""
+#~ "启用更具有确定性的命中率计算模式。这是一个试验性的特性，是为了让观察到的命"
+#~ "中/射失率和显示的百分比更接近而设计的。\n"
+#~ "\n"
+#~ "注：此选项只影响单人游戏，且为了让此特性正常工作，在创建游戏时必须启用“保"
+#~ "存随机种子”选项。"
+
 #~ msgid "Trailers"
 #~ msgstr "预告片"
 
@@ -8444,6 +8464,15 @@ msgstr "白板选项"
 #~ msgstr ""
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansFallbackFull.ttf,"
 #~ "DroidSansJapanese.ttf,Junicode-Regular.ttf"
+
+#~ msgid "an advancement choice"
+#~ msgstr "升级选择"
+
+#~ msgid "scenario_abbreviation^S"
+#~ msgstr "S"
+
+#~ msgid "campaign_abbreviation^C"
+#~ msgstr "C"
 
 #~ msgid "mp_game_available_slots^Full"
 #~ msgstr "已满"
@@ -8476,9 +8505,6 @@ msgstr "白板选项"
 
 #~ msgid "(unknown player)"
 #~ msgstr "（未知玩家）"
-
-#~ msgid "Unit with negative HP found"
-#~ msgstr "发现生命值为负的单位"
 
 #~ msgid "Disconnected from server."
 #~ msgstr "已与服务器断开链接。"

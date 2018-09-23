@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -49,7 +49,7 @@
 #include "units/id.hpp"
 #include "units/map.hpp"	   // for unit_map, etc
 #include "variable.hpp"		   // for vconfig, etc
-#include "version.hpp"
+#include "game_version.hpp"
 
 #include "utils/functional.hpp"
 #include <boost/dynamic_bitset.hpp>
@@ -578,6 +578,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	max_experience_ = std::max(1, cfg["max_experience"].to_int(max_experience_));
 
 	vision_ = cfg["vision"].to_int(vision_);
+	jamming_ = cfg["jamming"].to_int(jamming_);
 
 	std::vector<std::string> temp_advances = utils::split(cfg["advances_to"]);
 	if(temp_advances.size() == 1 && temp_advances.front() == "null") {

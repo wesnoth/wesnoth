@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2012 - 2018 by Fabian Mueller <fabianmueller5@gmx.de>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ class editor_toolkit;
 //std::string get_selected_terrain();
 
 /** Palette where the terrain to be drawn can be selected. */
-class unit_palette : public editor_palette<unit_type> {
+class unit_palette : public editor_palette<const unit_type&> {
 public:
 
 	unit_palette(editor_display &gui,

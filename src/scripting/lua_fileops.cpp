@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -217,7 +217,7 @@ public:
 		//lua uses '@' to know that this is a file (as opposed to something loaded via loadstring )
 		std::string chunkname = '@' + relativename;
 		LOG_LUA << "starting to read from " << fname << "\n";
-		return  lua_load(L, &lua_filestream::lua_read_data, &lfs, chunkname.c_str(), nullptr);
+		return  lua_load(L, &lua_filestream::lua_read_data, &lfs, chunkname.c_str(), "t");
 	}
 private:
 	char buff_[LUAL_BUFFERSIZE];

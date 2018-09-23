@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -117,6 +117,7 @@ game::game(player_connections& player_connections,
 	, num_turns_(0)
 	, all_observers_muted_(false)
 	, bans_()
+	, players_not_advanced_()
 	, termination_()
 	, save_replays_(save_replays)
 	, replay_save_path_(replay_save_path)
@@ -545,7 +546,7 @@ void game::transfer_side_control(const socket_ptr& sock, const simple_wml::node&
 	}
 
 	const simple_wml::string_span& newplayer_name = cfg["player"];
-	const socket_ptr& old_player = sides_[side_num - 1];
+	const socket_ptr old_player = sides_[side_num - 1];
 	const auto oldplayer = player_connections_.find(old_player);
 	if(oldplayer == player_connections_.end()) {
 		missing_user(old_player, __func__);
@@ -1123,6 +1124,7 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr& user)
 		auto message = std::make_unique<simple_wml::document>();
 		simple_wml::node& message_turn = message->root().add_child("turn");
 		simple_wml::node& message_turn_command = message_turn.add_child("command");
+		message_turn_command.set_attr("undo", "no");
 		speak->copy_into(message_turn_command.add_child("speak"));
 
 		if(to_sides.empty()) {
@@ -1227,16 +1229,24 @@ void game::handle_controller_choice(const simple_wml::node& req)
 
 void game::handle_choice(const simple_wml::node& data, const socket_ptr& user)
 {
+
+	if(!started_) {
+		return;
+	}
+
 	// note, that during end turn events, it's side=1 for the server but side= side_count() on the clients.
 
 	// Otherwise we allow observers to cause OOS for the playing clients by sending
 	// server choice requests based on incompatible local changes. To solve this we block
 	// server choice requests from observers.
-	if(!started_) {
+	if(user != owner_ && !is_player(user)) {
 		return;
 	}
 
-	if(user != owner_ && !is_player(user)) {
+	// since we reset the last_choice_request_id_ when a new scenario is loaded,
+	// the code would otherwise wrongly accept these requests from client in old
+	// scenarios. which would result on oos.
+	if(players_not_advanced_.find(user) != players_not_advanced_.end()) {
 		return;
 	}
 
@@ -1464,6 +1474,7 @@ bool game::remove_player(const socket_ptr& player, const bool disconnect, const 
 
 	players_.erase(std::remove(players_.begin(), players_.end(), player), players_.end());
 	observers_.erase(std::remove(observers_.begin(), observers_.end(), player), observers_.end());
+	players_not_advanced_.erase(player);
 
 	const bool game_ended = players_.empty() || (host && !started_);
 
@@ -1589,6 +1600,17 @@ void game::send_user_list(const socket_ptr& exclude) const
 	send_data(cfg, exclude);
 }
 
+void game::new_scenario(const socket_ptr& sender)
+{
+	assert(sender == owner_);
+	players_not_advanced_.clear();
+	for(const socket_ptr& user_ptr : all_game_users()) {
+		if(user_ptr != sender) {
+			players_not_advanced_.insert(user_ptr);
+		}
+	}
+}
+
 void game::load_next_scenario(const socket_ptr& user)
 {
 	send_server_message_to_all(player_connections_.find(user)->info().name() + " advances to the next scenario", user);
@@ -1631,6 +1653,8 @@ void game::load_next_scenario(const socket_ptr& user)
 
 	send_to_player(user, cfg_scenario);
 	send_to_player(user, doc_controllers);
+
+	players_not_advanced_.erase(user);
 
 	// Send the player the history of the game to-date.
 	send_history(user);
@@ -1996,6 +2020,7 @@ void game::send_server_message(const char* message, const socket_ptr& sock, simp
 	if(started_) {
 		simple_wml::node& cmd = doc.root().add_child("turn");
 		simple_wml::node& cfg = cmd.add_child("command");
+		cfg.set_attr("undo", "no");
 		simple_wml::node& msg = cfg.add_child("speak");
 
 		msg.set_attr("id", "server");
