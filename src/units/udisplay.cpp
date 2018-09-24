@@ -71,23 +71,37 @@ static void teleport_unit_between(const map_location& a, const map_location& b,
 	if ( disp.fogged(a) && disp.fogged(b) ) {
 		return;
 	}
+	const display_context& dc = disp.get_disp_context();
+	const team& viewing_team = dc.get_team(disp.viewing_side());
 
+	// Temporarily change the unit's location to check if it's visible
+	// before and after the teleport.
+	assert(temp_unit.get_location() == a);
+	const bool a_visible = temp_unit.is_visible_to_team(viewing_team, dc, false);
+	temp_unit.set_location(b);
+	const bool b_visible = temp_unit.is_visible_to_team(viewing_team, dc, false);
 	temp_unit.set_location(a);
-	if ( !disp.fogged(a) ) { // teleport
+
+	if ( a_visible ) { // teleport
 		disp.invalidate(a);
 		temp_unit.set_facing(a.get_relative_dir(b));
-		disp.scroll_to_tiles(a, b, game_display::ONSCREEN, true, 0.0, false);
+		if ( b_visible )
+			disp.scroll_to_tiles(a, b, game_display::ONSCREEN, true, 0.0, false);
+		else
+			disp.scroll_to_tile(a, game_display::ONSCREEN, true, false);
 		unit_animator animator;
 		animator.add_animation(&temp_unit,"pre_teleport",a);
 		animator.start_animations();
 		animator.wait_for_end();
 	}
 
-	temp_unit.set_location(b);
-	if ( !disp.fogged(b) ) { // teleport
+	if ( b_visible ) { // teleport
 		disp.invalidate(b);
 		temp_unit.set_facing(a.get_relative_dir(b));
-		disp.scroll_to_tiles(b, a, game_display::ONSCREEN, true, 0.0, false);
+		if ( a_visible )
+			disp.scroll_to_tiles(b, a, game_display::ONSCREEN, true, 0.0, false);
+		else
+			disp.scroll_to_tile(b, game_display::ONSCREEN, true, false);
 		unit_animator animator;
 		animator.add_animation(&temp_unit,"post_teleport",b);
 		animator.start_animations();
@@ -316,10 +330,17 @@ void unit_mover::proceed_to(unit_ptr u, size_t path_index, bool update, bool wai
 	// Safety check.
 	path_index = std::min(path_index, path_.size()-1);
 
-	for ( ; current_ < path_index; ++current_ )
+	for ( ; current_ < path_index; ++current_ ) {
+		// It is possible for paths_[current_] and paths_[current_+1] not to be adjacent.
+		// When that is the case, and the unit is invisible at paths_[current_], we shouldn't
+		// scroll to that hex.
+		std::vector<map_location> locs;
+		if (!temp_unit_ptr_->invisible(path_[current_], disp_->get_disp_context()))
+			locs.push_back(path_[current_]);
+		if (!temp_unit_ptr_->invisible(path_[current_+1], disp_->get_disp_context()))
+			locs.push_back(path_[current_+1]);
 		// If the unit can be seen by the viewing side while making this step:
-		if ( !is_enemy_ || !temp_unit_ptr_->invisible(path_[current_], disp_->get_disp_context()) ||
-		     !temp_unit_ptr_->invisible(path_[current_+1], disp_->get_disp_context()) )
+		if ( !is_enemy_ || !locs.empty() )
 		{
 			// Wait for the previous step to complete before drawing the next one.
 			wait_for_anims();
@@ -333,8 +354,7 @@ void unit_mover::proceed_to(unit_ptr u, size_t path_index, bool update, bool wai
 				// scroll in as much of the remaining path as possible
 				if ( temp_unit_ptr_->anim_comp().get_animation() )
 					temp_unit_ptr_->anim_comp().get_animation()->pause_animation();
-				disp_->scroll_to_tiles(path_.begin() + current_,
-				                       path_.end(), game_display::ONSCREEN,
+				disp_->scroll_to_tiles(locs, game_display::ONSCREEN,
 				                       true, false, 0.0, force_scroll_);
 				if ( temp_unit_ptr_->anim_comp().get_animation() )
 					temp_unit_ptr_->anim_comp().get_animation()->restart_animation();
@@ -350,6 +370,7 @@ void unit_mover::proceed_to(unit_ptr u, size_t path_index, bool update, bool wai
 				teleport_unit_between(path_[current_], path_[current_+1],
 				                      *temp_unit_ptr_, *disp_);
 		}
+	}
 
 	// Update the unit's facing.
 	u->set_facing(temp_unit_ptr_->facing());
