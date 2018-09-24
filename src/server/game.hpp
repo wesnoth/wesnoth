@@ -19,6 +19,7 @@
 #include "player_connection.hpp"
 #include "simple_wml.hpp"
 #include "utils/make_enum.hpp"
+#include "game_version.hpp"
 
 #include <boost/ptr_container/ptr_vector.hpp>
 
@@ -80,6 +81,8 @@ public:
 	/** when the host sends the new scenario of a mp campaign */
 	void new_scenario(const socket_ptr& player);
 
+	version_info wesnoth_min_version() const;
+	
 	bool level_init() const
 	{
 		return level_.child("snapshot") || level_.child("scenario");

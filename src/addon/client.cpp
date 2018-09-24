@@ -20,6 +20,7 @@
 #include "cursor.hpp"
 #include "font/pango/escape.hpp"
 #include "formula/string_utils.hpp"
+#include "game_config.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/addon/install_dependencies.hpp"
 #include "gui/dialogs/message.hpp"
@@ -85,7 +86,7 @@ bool addons_client::request_addons_list(config& cfg)
 	/** @todo FIXME: get rid of this legacy "campaign"/"campaigns" silliness
 	 */
 
-	this->send_simple_request("request_campaign_list", response_buf);
+	this->send_request(config("request_campaign_list", config("client_version", game_config::version)), response_buf);
 	this->wait_for_transfer_done(_("Downloading list of add-ons..."));
 
 	std::swap(cfg, response_buf.child("campaigns"));
@@ -234,6 +235,7 @@ bool addons_client::download_addon(config& archive_cfg, const std::string& id, c
 
 	request_body["name"] = id;
 	request_body["increase_downloads"] = increase_downloads;
+	request_body["client_version"] = game_config::version;
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["addon_title"] = font::escape_text(title);

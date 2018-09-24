@@ -124,7 +124,7 @@ public:
 	/// Whether to play [story] tags
 	bool skip_story() const { return skip_story_; }
 	void set_skip_story(bool skip_story) { skip_story_ = skip_story; }
-
+	version_info min_wesnoth_version() const { return min_wesnoth_version_; }
 private:
 	bool has_carryover_expanded_;
 	/**
@@ -147,6 +147,8 @@ private:
 	config starting_point_;
 
 	replay_recorder_base replay_data_;
+
+	version_info min_wesnoth_version_;
 
 	bool skip_story_;
 };

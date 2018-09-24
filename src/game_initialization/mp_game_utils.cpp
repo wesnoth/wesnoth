@@ -45,6 +45,8 @@ static void add_multiplayer_classification(config& multiplayer, saved_game& stat
 	multiplayer["difficulty_define"] = state.classification().difficulty;
 	multiplayer["mp_campaign"] = state.classification().campaign;
 	multiplayer["mp_campaign_name"] = state.classification().campaign_name;
+	multiplayer["min_wesnoth_version"] = state.min_wesnoth_version();
+	
 }
 
 config initial_level_config(saved_game& state)

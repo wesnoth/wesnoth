@@ -580,6 +580,7 @@ void server::handle_request_campaign_list(const server::request& req)
 	config campaign_list;
 
 	campaign_list["timestamp"] = epoch;
+	version_info client_version = version_info(req.cfg["client_version"]);
 	if(req.cfg["times_relative_to"] != "now") {
 		epoch = 0;
 	}
@@ -608,6 +609,11 @@ void server::handle_request_campaign_list(const server::request& req)
 		}
 
 		if(i["hidden"].to_bool()) {
+			continue;
+		}
+
+		version_info min_version = version_info(i["min_wesnoth_version"]);
+		if(client_version < min_version) {
 			continue;
 		}
 
@@ -680,6 +686,14 @@ void server::handle_request_campaign(const server::request& req)
 	if(!campaign || campaign["hidden"].to_bool()) {
 		send_error("Add-on '" + req.cfg["name"].str() + "' not found.", req.sock);
 	} else {
+
+		version_info client_version = version_info(req.cfg["client_version"]);
+		version_info min_version = version_info(campaign["wesnoth_min_version"]);
+		if(client_version < min_version) {
+			send_error("Add-on '" + req.cfg["name"].str() + "' requires a newer wesnoth version.", req.sock);
+			return;
+		}
+
 		const int size = filesystem::file_size(campaign["filename"]);
 
 		if(size < 0) {
@@ -864,6 +878,7 @@ void server::handle_upload(const server::request& req)
 		(*campaign)["author"] = upload["author"];
 		(*campaign)["description"] = upload["description"];
 		(*campaign)["version"] = upload["version"];
+		(*campaign)["wesnoth_min_version"] = upload["wesnoth_min_version"];
 		(*campaign)["icon"] = upload["icon"];
 		(*campaign)["translate"] = upload["translate"];
 		(*campaign)["dependencies"] = upload["dependencies"];

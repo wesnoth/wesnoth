@@ -36,6 +36,8 @@ struct addon_info
 
 	version_info version;
 
+	version_info wesnoth_min_version;
+
 	std::string author;
 
 	int size;
@@ -68,7 +70,7 @@ struct addon_info
 
 	addon_info()
 		: id(), title(), description(), icon()
-		, version(), author(), size(), downloads()
+		, version(), wesnoth_min_version(), author(), size(), downloads()
 		, uploads(), type(), tags(), locales()
 		, core()
 		, depends()
@@ -81,7 +83,7 @@ struct addon_info
 
 	explicit addon_info(const config& cfg)
 		: id(), title(), description(), icon()
-		, version(), author(), size(), downloads()
+		, version(), wesnoth_min_version(), author(), size(), downloads()
 		, uploads(), type(), tags(), locales()
 		, core()
 		, depends()
@@ -115,6 +117,7 @@ struct addon_info
 			this->created = o.created;
 			this->order = o.order;
 			this->local_only = o.local_only;
+			this->wesnoth_min_version = o.wesnoth_min_version;
 		}
 		return *this;
 	}
