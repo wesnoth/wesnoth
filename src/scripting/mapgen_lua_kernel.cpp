@@ -30,6 +30,7 @@
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
 #include "scripting/push_check.hpp"
+#include "generators/default_map_generator_job.hpp"
 
 static lg::log_domain log_mapgen("mapgen");
 #define ERR_NG LOG_STREAM(err, log_mapgen)
@@ -71,6 +72,82 @@ static int intf_random(lua_State *L)
 	}
 }
 
+/**
+ * calls the default mapgenerator.
+ */
+static int intf_default_generate(lua_State *L)
+{
+	std::mt19937& rng = lua_kernel_base::get_lua_kernel<mapgen_lua_kernel>(L).get_default_rng();
+	
+	int width = luaL_checkinteger(L, 1);
+	int height = luaL_checkinteger(L, 2);
+
+	config cfg = luaW_checkconfig(L, 3);
+
+	generator_data arg;
+	arg.width = width;
+	arg.height = height;
+	arg.nplayers = cfg["nplayers"].to_int(2);
+	arg.nvillages = cfg["nvillages"].to_int(0);
+	arg.iterations = cfg["iterations"].to_int(0);
+	arg.hill_size = cfg["hill_size"].to_int(0);
+	arg.castle_size = cfg["castle_size"].to_int(0);
+	arg.island_size = cfg["island_size"].to_int(0);
+	arg.island_off_center = cfg["island_off_center"].to_int(0);
+	arg.max_lakes = cfg["max_lakes"].to_int(0);
+	arg.link_castles = cfg["link_castles"].to_bool();
+	arg.show_labels = cfg["show_labels"].to_bool(0);
+	
+	uint32_t seed = cfg["seed"].to_int(0);
+	if(!cfg.has_attribute("seed")) {
+		seed = rng();
+	}
+
+	default_map_generator_job job(seed);
+	std::string res = job.default_generate_map(arg, nullptr, cfg);
+
+	lua_push(L, res);
+	return 1;
+}
+
+/**
+ * calls the default mapgenerator.
+ */
+static int intf_default_generate_height_map(lua_State *L)
+{
+	std::mt19937& rng = lua_kernel_base::get_lua_kernel<mapgen_lua_kernel>(L).get_default_rng();
+	
+	int width = luaL_checkinteger(L, 1);
+	int height = luaL_checkinteger(L, 2);
+
+	config cfg = luaW_checkconfig(L, 3);
+
+	int iterations = cfg["iterations"].to_int(1);
+	int hill_size = cfg["hill_size"].to_int(1);
+	int island_size = cfg["island_size"].to_int(width/2);
+	int center_x = cfg["center_x"].to_int(width/2);
+	int center_y = cfg["center_y"].to_int(height/2);
+	bool flip_layout = cfg["flip_format"].to_bool();
+	uint32_t seed = cfg["seed"].to_int(0);
+
+	if(!cfg.has_attribute("seed")) {
+		seed = rng();
+	}
+	default_map_generator_job job(seed);
+	default_map_generator_job::height_map res = job.generate_height_map(width, height, iterations, hill_size, island_size, center_x, center_y);
+	lua_createtable (L, width * height, 0);
+	assert(int(res.size()) == width);
+	assert((width == 0 || int(res[0].size()) == height));
+	for(int x = 0; x != width; ++x) {
+		for(int y = 0; y != height; ++y) {
+			int h = res[x][y];
+			int i = flip_layout ? (y + x * height) : (x + y * width);
+			lua_pushinteger (L, h);
+			lua_rawseti(L, -2, i);
+		}
+	}
+	return 1;
+}
 /**
  * Finds a path between two locations.
  * - Args 1,2: source location.
@@ -139,6 +216,8 @@ mapgen_lua_kernel::mapgen_lua_kernel()
 		{ "random",              &intf_random              },
 		{ "create_filter",       &intf_terainfilter_create },
 		{ "create_map",          &intf_terainmap_create    },
+		{ "default_generate_height_map", &intf_default_generate_height_map },
+		{ "generate_default_map",        &intf_default_generate            },
 		{ nullptr, nullptr }
 	};
 

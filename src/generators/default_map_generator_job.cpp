@@ -254,8 +254,6 @@ default_map_generator_job::default_map_generator_job(uint32_t seed)
  */
 height_map default_map_generator_job::generate_height_map(size_t width, size_t height, size_t iterations, size_t hill_size, size_t island_size, size_t island_off_center)
 {
-	height_map res(width, std::vector<int>(height,0));
-
 	size_t center_x = width/2;
 	size_t center_y = height/2;
 
@@ -285,6 +283,12 @@ height_map default_map_generator_job::generate_height_map(size_t width, size_t h
 			break;
 		}
 	}
+	return generate_height_map(width, height, iterations, hill_size, island_size, center_x, center_y);
+}
+
+height_map default_map_generator_job::generate_height_map(size_t width, size_t height, size_t iterations, size_t hill_size, size_t island_size, size_t center_x, size_t center_y)
+{
+	height_map res(width, std::vector<int>(height,0));
 
 	DBG_NG << iterations << " iterations\n";
 	for(size_t i = 0; i != iterations; ++i) {

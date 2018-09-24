@@ -38,19 +38,25 @@ public:
 	/** Generate the map. */
 	std::string default_generate_map(generator_data data, std::map<map_location,std::string>* labels, const config& cfg);
 
-private:
 	typedef std::vector<std::vector<int>> height_map;
 	typedef t_translation::ter_map terrain_map;
+
+
+	height_map generate_height_map(size_t width, size_t height,
+			size_t iterations, size_t hill_size,
+			size_t island_size, size_t island_off_center);
+			
+	height_map generate_height_map(size_t width, size_t height,
+			size_t iterations, size_t hill_size,
+			size_t island_size, size_t center_x, size_t center_y);
+
+private:
 
 	bool generate_river_internal(const height_map& heights,
 			terrain_map& terrain, int x, int y, std::vector<map_location>& river,
 			std::set<map_location>& seen_locations, int river_uphill);
 
 	std::vector<map_location> generate_river(const height_map& heights, terrain_map& terrain, int x, int y, int river_uphill);
-
-	height_map generate_height_map(size_t width, size_t height,
-			size_t iterations, size_t hill_size,
-			size_t island_size, size_t island_off_center);
 
 	bool generate_lake(t_translation::ter_map& terrain, int x, int y, int lake_fall_off, std::set<map_location>& locs_touched);
 	map_location random_point_at_side(size_t width, size_t height);
