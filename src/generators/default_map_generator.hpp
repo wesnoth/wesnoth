@@ -19,6 +19,7 @@
 
 struct generator_data {
 	generator_data(const config& cfg);
+	generator_data() = default;
 
 	int width;
 	int height;
