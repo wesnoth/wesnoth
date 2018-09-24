@@ -69,6 +69,7 @@
 #include "replay.hpp"                   // for get_user_choice, etc
 #include "reports.hpp"                  // for register_generator, etc
 #include "resources.hpp"                // for whiteboard
+#include "saved_game.hpp"
 #include "scripting/lua_audio.hpp"
 #include "scripting/lua_unit.hpp"
 #include "scripting/lua_unit_attacks.hpp"
@@ -1257,7 +1258,39 @@ int game_lua_kernel::intf_get_starting_location(lua_State* L)
 	luaW_pushlocation(L, starting_pos);
 	return 1;
 }
-
+/**
+ * - Arg 1: version number
+ * - Arg 2: function to execute when this version number is given.
+ * - Arg 3: function to execute when this version number is not given.
+*/
+int game_lua_kernel::intf_switch_version(lua_State *L)
+{
+	version_info required_version = version_info(luaL_checkstring(L, 1));
+	version_info api_level = play_controller_.get_saved_game().min_wesnoth_version();
+	version_info wesnoth_version = game_config::version;
+	if(api_level < version_info("1.14.6")) {
+		return luaL_error(L, "wesnoth.switch_version requires wesnoth api level 1.14.6 or higher.");
+	}
+	if(wesnoth_version >= required_version) {
+		if(!lua_isnoneornil(L, 2)) {
+			play_controller_.get_saved_game().set_min_wesnoth_version(required_version);
+			int top = lua_gettop(L);
+			lua_pushvalue(L, 2);
+			luaW_pcall(L, 0, LUA_MULTRET , false);
+			play_controller_.get_saved_game().set_min_wesnoth_version(api_level);
+			return lua_gettop(L) - top;
+		}
+	}
+	else {
+		if(!lua_isnoneornil(L, 3)) {
+			int top = lua_gettop(L);
+			lua_pushvalue(L, 3);		
+			luaW_pcall(L, 0, LUA_MULTRET , false);
+			return lua_gettop(L) - top;
+		}
+	}
+	return 0;
+}
 /**
  * Gets a table for an era tag.
  * - Arg 1: userdata (ignored).
@@ -1289,6 +1322,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 	return_string_attrib("scenario_id", gamedata().get_id());
 	return_vector_string_attrib("defeat_music", gamedata().get_defeat_music());
 	return_vector_string_attrib("victory_music", gamedata().get_victory_music());
+	return_string_attrib("api_level", play_controller_.get_saved_game().min_wesnoth_version().str() );
 
 	const mp_game_settings& mp_settings = play_controller_.get_mp_settings();
 	const game_classification & classification = play_controller_.get_classification();
@@ -4146,6 +4180,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "set_village_owner",         &dispatch<&game_lua_kernel::intf_set_village_owner          >        },
 		{ "simulate_combat",           &dispatch<&game_lua_kernel::intf_simulate_combat            >        },
 		{ "switch_ai",                 &intf_switch_ai                                                      },
+		// { "switch_version",            &dispatch<&game_lua_kernel::intf_switch_version             >        },
 		{ "synchronize_choice",        &intf_synchronize_choice                                             },
 		{ "synchronize_choices",       &intf_synchronize_choices                                            },
 		{ "zoom",                      &dispatch<&game_lua_kernel::intf_zoom                       >        },

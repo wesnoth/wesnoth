@@ -125,6 +125,7 @@ public:
 	bool skip_story() const { return skip_story_; }
 	void set_skip_story(bool skip_story) { skip_story_ = skip_story; }
 	version_info min_wesnoth_version() const { return min_wesnoth_version_; }
+	void set_min_wesnoth_version(const version_info& v) { min_wesnoth_version_ = v; }
 private:
 	bool has_carryover_expanded_;
 	/**
