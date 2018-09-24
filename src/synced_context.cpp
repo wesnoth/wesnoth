@@ -31,6 +31,7 @@
 #include "play_controller.hpp"
 #include "actions/undo.hpp"
 #include "game_end_exceptions.hpp"
+#include "scripting/game_lua_kernel.hpp"
 #include "seed_rng.hpp"
 #include "syncmp_handler.hpp"
 #include "units/id.hpp"
@@ -392,6 +393,11 @@ set_scontext_synced_base::set_scontext_synced_base()
 	synced_context::reset_undo_commands();
 	old_rng_ = randomness::generator;
 	randomness::generator = new_rng_.get();
+	
+	game_lua_kernel* lk = resources::controller->gamestate().get_lua_kernel();
+	if(lk) {
+		lk->reset_apilevel();
+	}
 }
 set_scontext_synced_base::~set_scontext_synced_base()
 {
@@ -399,6 +405,11 @@ set_scontext_synced_base::~set_scontext_synced_base()
 	assert(synced_context::get_synced_state() == synced_context::SYNCED);
 	randomness::generator = old_rng_;
 	synced_context::set_synced_state(synced_context::UNSYNCED);
+
+	game_lua_kernel* lk = resources::controller->gamestate().get_lua_kernel();
+	if(lk) {
+		lk->reset_apilevel();
+	}
 }
 
 set_scontext_synced::set_scontext_synced()

@@ -76,7 +76,7 @@ static const char * Gen = "name generator";
  * - Arg 2: comparison operator (string)
  * - Ret 1: comparison result
  */
-static int intf_compare_versions(lua_State* L)
+int lua_kernel_base::intf_compare_versions(lua_State* L)
 {
 	char const *v1 = luaL_checkstring(L, 1);
 
@@ -84,6 +84,14 @@ static int intf_compare_versions(lua_State* L)
 	if(vop == OP_INVALID) return luaL_argerror(L, 2, "unknown version comparison operator - allowed are ==, !=, <, <=, > and >=");
 
 	char const *v2 = luaL_checkstring(L, 3);
+
+	//HACK: try to detect umc code that compares for wesnoth version before accessing new api. remove in 1.15 and use wensoth.switch_version instead.
+	if(version_info(v1) == game_config::version) {
+		temporarily_raise_apilevel(version_info(v2));
+	}	
+	if(version_info(v2) == game_config::version) {
+		temporarily_raise_apilevel(version_info(v1));
+	}
 
 	const bool result = do_version_check(version_info(v1), vop, version_info(v2));
 	lua_pushboolean(L, result);
@@ -507,7 +515,7 @@ lua_kernel_base::lua_kernel_base()
 	cmd_log_ << "Registering basic wesnoth API...\n";
 
 	static luaL_Reg const callbacks[] {
-		{ "compare_versions",         &intf_compare_versions         		},
+		{ "compare_versions",         &dispatch<&lua_kernel_base::intf_compare_versions> },
 		{ "debug",                    &intf_debug                           },
 		{ "deprecated_message",       &intf_deprecated_message              },
 		{ "have_file",                &lua_fileops::intf_have_file          },
@@ -1040,3 +1048,15 @@ uint32_t lua_kernel_base::get_random_seed()
 {
 	return seed_rng::next_seed();
 }
+
+void lua_kernel_base::temporarily_raise_apilevel(const version_info& v)
+{
+	checked_api_level_ = std::max(checked_api_level_, v);
+}
+void lua_kernel_base::reset_apilevel()
+{
+	checked_api_level_ = version_info();
+}
+
+
+	

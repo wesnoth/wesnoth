@@ -1258,6 +1258,10 @@ int game_lua_kernel::intf_get_starting_location(lua_State* L)
 	luaW_pushlocation(L, starting_pos);
 	return 1;
 }
+version_info game_lua_kernel::get_api_level() const
+{
+	return std::max(play_controller_.get_saved_game().min_wesnoth_version(), checked_api_level());
+}
 /**
  * - Arg 1: version number
  * - Arg 2: function to execute when this version number is given.
@@ -1268,7 +1272,7 @@ int game_lua_kernel::intf_switch_version(lua_State *L)
 	version_info required_version = version_info(luaL_checkstring(L, 1));
 	version_info api_level = play_controller_.get_saved_game().min_wesnoth_version();
 	version_info wesnoth_version = game_config::version;
-	if(api_level < version_info("1.14.6")) {
+	if(get_api_level() < version_info("1.14.6")) {
 		return luaL_error(L, "wesnoth.switch_version requires wesnoth api level 1.14.6 or higher.");
 	}
 	if(wesnoth_version >= required_version) {

@@ -18,6 +18,7 @@
 #include <string>
 #include <vector>
 #include "utils/functional.hpp"
+#include "game_version.hpp"
 #include <cstdint>
 
 struct lua_State;
@@ -73,9 +74,12 @@ public:
 		return *static_cast<T*>(get_lua_kernel_base_ptr(L));
 	}
 
+	virtual void temporarily_raise_apilevel(const version_info& v);
+	virtual void reset_apilevel();
 	virtual uint32_t get_random_seed();
 	lua_State * get_state() { return mState; }
 	void add_widget_definition(const std::string& type, const std::string& id) { registered_widget_definitions_.emplace_back(type, id); }
+	const version_info& checked_api_level() const { return checked_api_level_; }
 protected:
 	lua_State *mState;
 
@@ -110,6 +114,7 @@ protected:
 	};
 
 	command_log cmd_log_;
+	version_info checked_api_level_;
 
 	// Print text to the command log for this lua kernel. Used as a replacement impl for lua print.
 	int intf_print(lua_State * L);
@@ -134,6 +139,8 @@ protected:
 	int intf_require(lua_State * L);
 
 	int intf_kernel_type(lua_State* L);
+
+	int intf_compare_versions(lua_State* L);
 
 	virtual int impl_game_config_get(lua_State* L);
 	virtual int impl_game_config_set(lua_State* L);
