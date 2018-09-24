@@ -164,15 +164,12 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	signed int cth = opp.defense_modifier(resources::gameboard->map().get_terrain(opp_loc)) + weapon->accuracy()
 		- (opp_weapon ? opp_weapon->parry() : 0);
 
-
-
-
 	cth = utils::clamp(cth, 0, 100);
 
 	unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
 	unit_abilities::effect cth_effects(cth_specials, cth, backstab_pos);
+	cth = cth_effects.get_composite_value();
 
-	cth = cth_effects.get_composite_value(); 
 	cth = utils::clamp(cth, 0, 100);
 		
 	cth = weapon->combat_ability("chance_to_hit", cth).first;
@@ -327,9 +324,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	unit_abilities::effect cth_effects(cth_specials, cth, backstab_pos);
 	cth = cth_effects.get_composite_value();
 
-
 	chance_to_hit = utils::clamp(cth, 0, 100);
-
 
 	int base_damage = weapon->modified_damage(backstab_pos);
 	int damage_multiplier = 100;
