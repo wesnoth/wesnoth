@@ -1,6 +1,18 @@
 ## Version 1.14.5+dev
  ### Language and i18n
    * Updated translations: Italian, Spanish.
+ ### Lua API
+   * Fix wesnoth.set_dialog_value not triggering re-layout. (issue #3572)
+ ### Miscellaneous and bug fixes
+   * Add --campaign-skip-story command line switch for skipping directly to turn 1. (issue #3472)
+   * Fix documentation of --render-image command line switch. (issue #3568)
+ ### User interface
+   * Fix regression: Game Load screen would not select 1.12 savegames. (issue #3561)
+   * Fix regression: the in-game "Observers" icon (an eye) was covered by the minimap. (issue #3543)
+   * Increase step size when clicking sliders in the MP Create Game dialog. (issue #3552)
+   * Don't scroll to an invisible unit that recruits another invisible unit. (issue #3559)
+   * When a recruited unit is fogged, scroll to the recruiting unit and play recruit
+     animation. (issue #3577)
 
 ## Version 1.14.5
  ### AI
