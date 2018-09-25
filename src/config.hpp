@@ -158,6 +158,7 @@ public:
 		typedef config &reference;
 		typedef child_list::iterator Itor;
 		typedef child_iterator this_type;
+		child_iterator(): i_() {}
 		explicit child_iterator(const Itor &i): i_(i) {}
 
 		child_iterator &operator++() { ++i_; return *this; }
@@ -201,6 +202,7 @@ public:
 		typedef child_list::const_iterator Itor;
 		typedef const_child_iterator this_type;
 		explicit const_child_iterator(const Itor &i): i_(i) {}
+		const_child_iterator(): i_() {}
 		const_child_iterator(const child_iterator &i): i_(i.i_) {}
 
 		const_child_iterator &operator++() { ++i_; return *this; }
@@ -571,6 +573,7 @@ public:
 		typedef any_child reference;
 		typedef std::vector<child_pos>::iterator Itor;
 		typedef all_children_iterator this_type;
+		all_children_iterator(): i_() {}
 		explicit all_children_iterator(const Itor &i): i_(i) {}
 
 		all_children_iterator &operator++() { ++i_; return *this; }
@@ -624,6 +627,7 @@ public:
 		typedef std::vector<child_pos>::const_iterator Itor;
 		typedef const_all_children_iterator this_type;
 		explicit const_all_children_iterator(const Itor &i): i_(i) {}
+		const_all_children_iterator(): i_() {}
 		const_all_children_iterator(all_children_iterator& i): i_(i.i_) {}
 
 		const_all_children_iterator &operator++() { ++i_; return *this; }
