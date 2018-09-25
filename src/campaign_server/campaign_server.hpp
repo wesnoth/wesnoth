@@ -24,6 +24,8 @@
 
 #include <chrono>
 
+class version_info;
+
 namespace campaignd {
 
 /**
@@ -142,6 +144,9 @@ private:
 
 	/** Retrieves a campaign by id if found, or a null config otherwise. */
 	config& get_campaign(const std::string& id) { return campaigns().find_child("campaign", "name", id); }
+
+	/** Retrieves a campaign by id if found, or a null config otherwise. */
+	config* get_campaign(const std::string& id, const version_info& wesnoth_version);
 
 	void delete_campaign(const std::string& id);
 

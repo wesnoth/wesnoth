@@ -45,6 +45,7 @@
 #include <boost/exception/get_error_info.hpp>
 #include <boost/random.hpp>
 #include <boost/generator_iterator.hpp>
+#include <boost/range/adaptor/reversed.hpp>
 
 // the fork execute is unix specific only tested on Linux quite sure it won't
 // work on Windows not sure which other platforms have a problem with it.
@@ -209,6 +210,22 @@ void server::load_config()
 	// depend on its existence.
 	cfg_.child_or_add("campaigns");
 
+	// Check validity of [campaigns] and fixup if needed.
+	std::map<std::string, version_info> versions;
+	for(config& c : boost::adaptors::reverse(campaigns().child_range("campaign")))
+	{
+		c.remove_attribute("new_min_wesnoth_version");
+		version_info req_w_version(c["min_wesnoth_version"]);
+		std::string id = c["name"].str();
+		auto versions_it = versions.find(id);
+		if(versions_it != versions.end()) {
+			if(req_w_version >= versions_it->second) {
+				ERR_CS << "[campaigns] data for '" << id << "' in disorder\n";
+			}
+			c["new_min_wesnoth_version"] = versions_it->second.str();
+		}
+		versions[id] = req_w_version;
+	}
 	// Certain config values are saved to WML again so that a given server
 	// instance's parameters remain constant even if the code defaults change
 	// at some later point.
@@ -557,6 +574,31 @@ void server::delete_campaign(const std::string& id)
 
 	LOG_CS << "Deleted add-on '" << id << "'\n";
 }
+config* server::get_campaign(const std::string& id, const version_info& wesnoth_version)
+{
+	config* fallback = nullptr;
+	for(config& i : campaigns().child_range("campaign"))
+	{
+		if(id != i["name"]) {
+			continue;
+		}
+
+
+		fallback = &i;
+		version_info min_version = version_info(i["min_wesnoth_version"]);
+		version_info new_min_version = version_info(i["new_min_wesnoth_version"]);
+		if(wesnoth_version < min_version) {
+			//the client cannot run this campaign.
+			continue;
+		}
+		if(wesnoth_version >= new_min_version) {
+			//the there exists a newer version of this campaign.
+			continue;
+		}
+		return &i;
+	}
+	return fallback;
+}
 
 #define REGISTER_CAMPAIGND_HANDLER(req_id) \
 	handlers_[#req_id] = std::bind(&server::handle_##req_id, \
@@ -613,7 +655,13 @@ void server::handle_request_campaign_list(const server::request& req)
 		}
 
 		version_info min_version = version_info(i["min_wesnoth_version"]);
+		version_info new_min_version = version_info(i["new_min_wesnoth_version"]);
 		if(client_version < min_version) {
+			//the client cannot run this campaign.
+			continue;
+		}
+		if(client_version >= new_min_version) {
+			//the client can download a newer version of this campaign.
 			continue;
 		}
 
@@ -681,13 +729,14 @@ void server::handle_request_campaign(const server::request& req)
 {
 	LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr << " using gzip\n";
 
-	config& campaign = get_campaign(req.cfg["name"]);
+	version_info client_version = version_info(req.cfg["client_version"]);
+	config* campaign_ptr = get_campaign(req.cfg["name"], client_version);
 
-	if(!campaign || campaign["hidden"].to_bool()) {
+	if(!campaign_ptr || (*campaign_ptr)["hidden"].to_bool()) {
 		send_error("Add-on '" + req.cfg["name"].str() + "' not found.", req.sock);
 	} else {
+		config& campaign = *campaign_ptr;
 
-		version_info client_version = version_info(req.cfg["client_version"]);
 		version_info min_version = version_info(campaign["wesnoth_min_version"]);
 		if(client_version < min_version) {
 			send_error("Add-on '" + req.cfg["name"].str() + "' requires a newer wesnoth version.", req.sock);
@@ -758,7 +807,8 @@ void server::handle_upload(const server::request& req)
 		const std::string& lc_name = utf8::lowercase(name);
 		passed_name_utf8_check = true;
 
-		for(config& c : campaigns().child_range("campaign"))
+		//campaigns with the same same id are stored in-order.
+		for(config& c : boost::adaptors::reverse(campaigns().child_range("campaign")))
 		{
 			if(utf8::lowercase(c["name"]) == lc_name) {
 				campaign = &c;
@@ -862,14 +912,44 @@ void server::handle_upload(const server::request& req)
 			send_error("Add-on rejected: The add-on publish information contains an invalid UTF-8 sequence.", req.sock);
 			return;
 		}
+		enum version_diff_t { NEWER, SAME, OLDER, NEW };
+	
+		version_info wesnoth_min_version(upload["wesnoth_min_version"]);
+		version_diff_t w_version_diff = NEW;
+		if(campaign != nullptr) {
+			version_info old_v((*campaign)["wesnoth_min_version"]);
+
+			if(wesnoth_min_version > old_v) {
+				w_version_diff = NEWER;
+			}
+			else if(wesnoth_min_version < old_v) {
+				w_version_diff = OLDER;
+			}
+			else {
+				w_version_diff = SAME;
+			}
+		}
 
 		const bool existing_upload = campaign != nullptr;
 
 		std::string message = "Add-on accepted.";
 
-		if(campaign == nullptr) {
+		if(w_version_diff == NEW) {
 			campaign = &campaigns().add_child("campaign");
 			(*campaign)["original_timestamp"] = upload_ts;
+		}
+		else if(w_version_diff == NEWER) {
+			config* old_campaign = campaign;
+			campaign = &campaigns().add_child("campaign", *campaign);
+			(*old_campaign)["new_min_wesnoth_version"] = upload["wesnoth_min_version"];
+			//TODO: maybe check (on clientside or serverside) that no campaign can be uploaded with a newer wesnoth version then what the client currently used.
+			int folder_count = (*old_campaign)["folder_count"].to_int(1);
+			(*campaign)["folder_count"] = folder_count + 1;
+			std::string new_filename = "data/" + upload["name"].str() + "_upload" + std::to_string(folder_count);
+			std::string old_filename = (*old_campaign)["filename"];
+			//TODO: check return value.
+			std::rename(old_filename.c_str(), new_filename.c_str());
+			(*old_campaign)["filename"] = new_filename;
 		}
 
 		(*campaign)["title"] = upload["title"];
@@ -935,6 +1015,30 @@ void server::handle_upload(const server::request& req)
 		send_message(message, req.sock);
 
 		fire("hook_post_upload", upload["name"]);
+		if(w_version_diff == OLDER) {
+			// remove all versions of the campaign that can be replaced by this.			
+			campaigns().remove_children("campaign", [&](const config& cfg){
+				//TODO: remove files from disk?
+				if(&cfg == campaign) {
+					return false;
+				}
+				return version_info(cfg["min_wesnoth_version"]) >= wesnoth_min_version;
+			});
+
+
+			std::string req_w_version;
+			const std::string& lc_name = utf8::lowercase(name);
+			//fix new_min_wesnoth_version attributes.
+			for(config& c : boost::adaptors::reverse(campaigns().child_range("campaign")))
+			{
+				if(utf8::lowercase(c["name"]) != lc_name) {
+					continue;
+				}
+				if(!req_w_version.empty())
+				c["new_min_wesnoth_version"] = req_w_version;
+				req_w_version = c["min_wesnoth_version"].str();
+			}
+		}
 	}
 }
 
