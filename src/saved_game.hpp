@@ -124,8 +124,8 @@ public:
 	/// Whether to play [story] tags
 	bool skip_story() const { return skip_story_; }
 	void set_skip_story(bool skip_story) { skip_story_ = skip_story; }
-	version_info min_wesnoth_version() const { return min_wesnoth_version_; }
-	void set_min_wesnoth_version(const version_info& v) { min_wesnoth_version_ = v; }
+	version_info req_w_version() const { return req_w_version_; }
+	void set_req_w_version(const version_info& v) { req_w_version_ = v; }
 private:
 	bool has_carryover_expanded_;
 	/**
@@ -149,7 +149,7 @@ private:
 
 	replay_recorder_base replay_data_;
 
-	version_info min_wesnoth_version_;
+	version_info req_w_version_;
 
 	bool skip_story_;
 };

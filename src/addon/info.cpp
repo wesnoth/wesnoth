@@ -65,7 +65,7 @@ void addon_info::read(const config& cfg)
 	this->description = cfg["description"].str();
 	this->icon = cfg["icon"].str();
 	this->version = cfg["version"].str();
-	this->wesnoth_min_version = cfg["wesnoth_min_version"].str();
+	this->req_w_version = cfg["required_wesnoth_version"].str();
 	this->author = cfg["author"].str();
 	this->size = cfg["size"];
 	this->downloads = cfg["downloads"];
@@ -96,7 +96,7 @@ void addon_info::write(config& cfg) const
 	cfg["description"] = this->description;
 	cfg["icon"] = this->icon;
 	cfg["version"] = this->version.str();
-	cfg["wesnoth_min_version"] = this->wesnoth_min_version.str();
+	cfg["required_wesnoth_version"] = this->req_w_version.str();
 	cfg["author"] = this->author;
 	cfg["size"] = this->size;
 	cfg["downloads"] = this->downloads;
@@ -119,7 +119,7 @@ void addon_info::write(config& cfg) const
 void addon_info::write_minimal(config& cfg) const
 {
 	cfg["version"] = this->version.str();
-	cfg["wesnoth_min_version"] = this->wesnoth_min_version.str();
+	cfg["required_wesnoth_version"] = this->req_w_version.str();
 	cfg["uploads"] = this->uploads;
 	cfg["type"] = get_addon_type_string(this->type);
 	cfg["title"] = this->title;

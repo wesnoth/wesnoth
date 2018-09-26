@@ -214,15 +214,15 @@ void server::load_config()
 	std::map<std::string, version_info> versions;
 	for(config& c : boost::adaptors::reverse(campaigns().child_range("campaign")))
 	{
-		c.remove_attribute("new_min_wesnoth_version");
-		version_info req_w_version(c["min_wesnoth_version"]);
+		c.remove_attribute("next_required_wesnoth_version");
+		version_info req_w_version(c["required_wesnoth_version"]);
 		std::string id = c["name"].str();
 		auto versions_it = versions.find(id);
 		if(versions_it != versions.end()) {
 			if(req_w_version >= versions_it->second) {
 				ERR_CS << "[campaigns] data for '" << id << "' in disorder\n";
 			}
-			c["new_min_wesnoth_version"] = versions_it->second.str();
+			c["next_required_wesnoth_version"] = versions_it->second.str();
 		}
 		versions[id] = req_w_version;
 	}
@@ -585,8 +585,8 @@ config* server::get_campaign(const std::string& id, const version_info& wesnoth_
 
 
 		fallback = &i;
-		version_info min_version = version_info(i["min_wesnoth_version"]);
-		version_info new_min_version = version_info(i["new_min_wesnoth_version"]);
+		version_info min_version = version_info(i["required_wesnoth_version"]);
+		version_info new_min_version = version_info(i["next_required_wesnoth_version"]);
 		if(wesnoth_version < min_version) {
 			//the client cannot run this campaign.
 			continue;
@@ -654,8 +654,8 @@ void server::handle_request_campaign_list(const server::request& req)
 			continue;
 		}
 
-		version_info min_version = version_info(i["min_wesnoth_version"]);
-		version_info new_min_version = version_info(i["new_min_wesnoth_version"]);
+		version_info min_version = version_info(i["required_wesnoth_version"]);
+		version_info new_min_version = version_info(i["next_required_wesnoth_version"]);
 		if(client_version < min_version) {
 			//the client cannot run this campaign.
 			continue;
@@ -737,7 +737,7 @@ void server::handle_request_campaign(const server::request& req)
 	} else {
 		config& campaign = *campaign_ptr;
 
-		version_info min_version = version_info(campaign["wesnoth_min_version"]);
+		version_info min_version = version_info(campaign["required_wesnoth_version"]);
 		if(client_version < min_version) {
 			send_error("Add-on '" + req.cfg["name"].str() + "' requires a newer wesnoth version.", req.sock);
 			return;
@@ -914,15 +914,15 @@ void server::handle_upload(const server::request& req)
 		}
 		enum version_diff_t { NEWER, SAME, OLDER, NEW };
 	
-		version_info wesnoth_min_version(upload["wesnoth_min_version"]);
+		version_info req_w_version(upload["required_wesnoth_version"]);
 		version_diff_t w_version_diff = NEW;
 		if(campaign != nullptr) {
-			version_info old_v((*campaign)["wesnoth_min_version"]);
+			version_info old_v((*campaign)["required_wesnoth_version"]);
 
-			if(wesnoth_min_version > old_v) {
+			if(req_w_version > old_v) {
 				w_version_diff = NEWER;
 			}
-			else if(wesnoth_min_version < old_v) {
+			else if(req_w_version < old_v) {
 				w_version_diff = OLDER;
 			}
 			else {
@@ -941,7 +941,7 @@ void server::handle_upload(const server::request& req)
 		else if(w_version_diff == NEWER) {
 			config* old_campaign = campaign;
 			campaign = &campaigns().add_child("campaign", *campaign);
-			(*old_campaign)["new_min_wesnoth_version"] = upload["wesnoth_min_version"];
+			(*old_campaign)["next_required_wesnoth_version"] = upload["required_wesnoth_version"];
 			//TODO: maybe check (on clientside or serverside) that no campaign can be uploaded with a newer wesnoth version then what the client currently used.
 			int folder_count = (*old_campaign)["folder_count"].to_int(1);
 			(*campaign)["folder_count"] = folder_count + 1;
@@ -958,7 +958,7 @@ void server::handle_upload(const server::request& req)
 		(*campaign)["author"] = upload["author"];
 		(*campaign)["description"] = upload["description"];
 		(*campaign)["version"] = upload["version"];
-		(*campaign)["wesnoth_min_version"] = upload["wesnoth_min_version"];
+		(*campaign)["required_wesnoth_version"] = upload["required_wesnoth_version"];
 		(*campaign)["icon"] = upload["icon"];
 		(*campaign)["translate"] = upload["translate"];
 		(*campaign)["dependencies"] = upload["dependencies"];
@@ -1022,21 +1022,21 @@ void server::handle_upload(const server::request& req)
 				if(&cfg == campaign) {
 					return false;
 				}
-				return version_info(cfg["min_wesnoth_version"]) >= wesnoth_min_version;
+				return version_info(cfg["required_wesnoth_version"]) >= req_w_version;
 			});
 
 
 			std::string req_w_version;
 			const std::string& lc_name = utf8::lowercase(name);
-			//fix new_min_wesnoth_version attributes.
+			//fix new_req_w_version attributes.
 			for(config& c : boost::adaptors::reverse(campaigns().child_range("campaign")))
 			{
 				if(utf8::lowercase(c["name"]) != lc_name) {
 					continue;
 				}
 				if(!req_w_version.empty())
-				c["new_min_wesnoth_version"] = req_w_version;
-				req_w_version = c["min_wesnoth_version"].str();
+				c["next_required_wesnoth_version"] = req_w_version;
+				req_w_version = c["required_wesnoth_version"].str();
 			}
 		}
 	}

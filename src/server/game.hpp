@@ -81,7 +81,7 @@ public:
 	/** when the host sends the new scenario of a mp campaign */
 	void new_scenario(const socket_ptr& player);
 
-	version_info wesnoth_min_version() const;
+	version_info req_w_version() const;
 	
 	bool level_init() const
 	{

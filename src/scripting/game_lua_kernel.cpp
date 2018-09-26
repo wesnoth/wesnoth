@@ -1260,7 +1260,7 @@ int game_lua_kernel::intf_get_starting_location(lua_State* L)
 }
 version_info game_lua_kernel::get_api_level() const
 {
-	return std::max(play_controller_.get_saved_game().min_wesnoth_version(), checked_api_level());
+	return std::max(play_controller_.get_saved_game().req_w_version(), checked_api_level());
 }
 /**
  * - Arg 1: version number
@@ -1270,18 +1270,18 @@ version_info game_lua_kernel::get_api_level() const
 int game_lua_kernel::intf_switch_version(lua_State *L)
 {
 	version_info required_version = version_info(luaL_checkstring(L, 1));
-	version_info api_level = play_controller_.get_saved_game().min_wesnoth_version();
+	version_info api_level = play_controller_.get_saved_game().req_w_version();
 	version_info wesnoth_version = game_config::version;
 	if(get_api_level() < version_info("1.14.6")) {
 		return luaL_error(L, "wesnoth.switch_version requires wesnoth api level 1.14.6 or higher.");
 	}
 	if(wesnoth_version >= required_version) {
 		if(!lua_isnoneornil(L, 2)) {
-			play_controller_.get_saved_game().set_min_wesnoth_version(required_version);
+			play_controller_.get_saved_game().set_req_w_version(required_version);
 			int top = lua_gettop(L);
 			lua_pushvalue(L, 2);
 			luaW_pcall(L, 0, LUA_MULTRET , false);
-			play_controller_.get_saved_game().set_min_wesnoth_version(api_level);
+			play_controller_.get_saved_game().set_req_w_version(api_level);
 			return lua_gettop(L) - top;
 		}
 	}
@@ -1326,7 +1326,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 	return_string_attrib("scenario_id", gamedata().get_id());
 	return_vector_string_attrib("defeat_music", gamedata().get_defeat_music());
 	return_vector_string_attrib("victory_music", gamedata().get_victory_music());
-	return_string_attrib("api_level", play_controller_.get_saved_game().min_wesnoth_version().str() );
+	return_string_attrib("api_level", play_controller_.get_saved_game().req_w_version().str() );
 
 	const mp_game_settings& mp_settings = play_controller_.get_mp_settings();
 	const game_classification & classification = play_controller_.get_classification();

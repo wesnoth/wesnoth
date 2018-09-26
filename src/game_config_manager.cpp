@@ -424,7 +424,7 @@ void game_config_manager::load_addons_cfg()
 		}
 
 		version_info addon_version(metadata["version"]);
-		version_info min_wesnoth_version(metadata["min_wesnoth_version"]);
+		version_info req_w_version(metadata["required_wesnoth_version"]);
 
 		try {
 			// Load this addon from the cache to a config.
@@ -448,7 +448,7 @@ void game_config_manager::load_addons_cfg()
 					cfg["addon_title"] = addon_title;
 					// Note that this may reformat the string in a canonical form.
 					cfg["addon_version"] = addon_version.str();
-					cfg["min_wesnoth_version"] = min_wesnoth_version.str();
+					cfg["required_wesnoth_version"] = req_w_version.str();
 				}
 			}
 

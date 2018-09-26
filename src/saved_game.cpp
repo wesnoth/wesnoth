@@ -94,7 +94,7 @@ saved_game::saved_game()
 	, starting_point_type_(STARTING_POINT_NONE)
 	, starting_point_()
 	, replay_data_()
-	, min_wesnoth_version_()
+	, req_w_version_()
 	, skip_story_(false)
 {
 }
@@ -108,7 +108,7 @@ saved_game::saved_game(config cfg)
 	, starting_point_type_(STARTING_POINT_NONE)
 	, starting_point_()
 	, replay_data_()
-	, min_wesnoth_version_()
+	, req_w_version_()
 	, skip_story_(false)
 
 {
@@ -124,7 +124,7 @@ saved_game::saved_game(const saved_game& state)
 	, starting_point_type_(state.starting_point_type_)
 	, starting_point_(state.starting_point_)
 	, replay_data_(state.replay_data_)
-	, min_wesnoth_version_(state.min_wesnoth_version_)
+	, req_w_version_(state.req_w_version_)
 	, skip_story_(state.skip_story_)
 {
 }
@@ -242,7 +242,7 @@ void saved_game::expand_scenario()
 		if(scenario) {
 			this->starting_point_type_ = STARTING_POINT_SCENARIO;
 			this->starting_point_ = scenario;
-			min_wesnoth_version_ = std::max(min_wesnoth_version_, version_info(this->starting_pos_["min_wesnoth_version"]));
+			req_w_version_ = std::max(req_w_version_, version_info(this->starting_pos_["required_wesnoth_version"]));
 
 			// A hash has to be generated using an unmodified scenario data.
 			mp_settings_.hash = scenario.hash();
@@ -307,7 +307,7 @@ void saved_game::load_mod(const std::string& type, const std::string& id)
 		// Note the addon_id if this mod is required to play the game in mp.
 		std::string require_attr = "require_" + type;
 
-		min_wesnoth_version_ = std::max(min_wesnoth_version_, version_info(cfg["min_wesnoth_version"]));
+		req_w_version_ = std::max(req_w_version_, version_info(cfg["required_wesnoth_version"]));
 		// By default, eras have "require_era = true", and mods have "require_modification = false".
 		bool require_default = (type == "era");
 
@@ -682,7 +682,7 @@ void saved_game::swap(saved_game& other)
 	starting_point_.swap(other.starting_point_);
 
 	std::swap(starting_point_type_, other.starting_point_type_);
-	std::swap(min_wesnoth_version_, other.min_wesnoth_version_);
+	std::swap(req_w_version_, other.req_w_version_);
 }
 
 void saved_game::set_data(config& cfg)
@@ -735,7 +735,7 @@ void saved_game::set_data(config& cfg)
 
 	classification_ = game_classification(cfg);
 	mp_settings_ = mp_game_settings(cfg.child_or_empty("multiplayer"));
-	min_wesnoth_version_ = version_info(cfg["min_wesnoth_version"]);
+	req_w_version_ = version_info(cfg["required_wesnoth_version"]);
 	cfg.clear();
 }
 

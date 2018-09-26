@@ -162,9 +162,9 @@ static const simple_wml::node& get_multiplayer(const simple_wml::node& root)
 		return root;
 	}
 }
-version_info game::wesnoth_min_version() const
+version_info game::req_w_version() const
 {
-	return version_info(get_multiplayer(level_.root())["wesnoth_min_version"].to_string());
+	return version_info(get_multiplayer(level_.root())["required_wesnoth_version"].to_string());
 }
 
 bool game::allow_observers() const
@@ -1393,8 +1393,8 @@ bool game::add_player(const socket_ptr& player, bool observer)
 	bool became_observer = false;
 	
 	const auto& player_info = player_connections_.find(user)->info();
-	if(version_info(player_info.version()) < wesnoth_min_version()) {
-		send_server_message("This game used an add-on that requires wesnoth version " + wesnoth_min_version().str() + " to run.", player);
+	if(version_info(player_info.version()) < req_w_version()) {
+		send_server_message("This game used an add-on that requires wesnoth version " + req_w_version().str() + " to run.", player);
 		return false;
 	}
 	if(!started_ && !observer && take_side(user)) {
