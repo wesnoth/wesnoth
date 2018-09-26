@@ -99,6 +99,10 @@
 		4649B8D62028927A00827CFB /* function_gamestate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468C1B951F09245E002DF652 /* function_gamestate.cpp */; };
 		465410A02078BC77002BCD13 /* l10n-track in Resources */ = {isa = PBXBuildFile; fileRef = 4654109E2078BC02002BCD13 /* l10n-track */; };
 		4664B9441F462ED9009E4881 /* irdya_datetime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */; };
+		46826EF4215B6AE500E82B70 /* apple_battery_info.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46181DCE2119F73A00908BC2 /* apple_battery_info.mm */; };
+		46826EF5215B6AF500E82B70 /* battery_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46181DD12119F74C00908BC2 /* battery_info.cpp */; };
+		46826EF6215B6B2A00E82B70 /* apple_version.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46F54C26211DFB7200374A1C /* apple_version.mm */; };
+		46826EF7215B6B9200E82B70 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BCC904211A1E68003BDB8C /* IOKit.framework */; };
 		468C1B971F09245F002DF652 /* function_gamestate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468C1B951F09245E002DF652 /* function_gamestate.cpp */; };
 		469BDB55205C357500DBF748 /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
 		469BDB56205C357500DBF748 /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
@@ -2865,6 +2869,7 @@
 				46BAF787206672300004711F /* libboost_timer-mt.dylib in Frameworks */,
 				916719071CADAC0D00B055A9 /* libboost_random-mt.dylib in Frameworks */,
 				91C554691D77A545002DB0C8 /* libpcre.1.dylib in Frameworks */,
+				46826EF7215B6B9200E82B70 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5776,11 +5781,13 @@
 				91E357151CACCA5700774252 /* tips.cpp in Sources */,
 				4649B8A3202890F600827CFB /* depcheck_select_new.cpp in Sources */,
 				91E357161CACCA5700774252 /* widget_definition.cpp in Sources */,
+				46826EF6215B6B2A00E82B70 /* apple_version.mm in Sources */,
 				91E357171CACCA5700774252 /* window_builder.cpp in Sources */,
 				91E357181CACCA9900774252 /* dispatcher.cpp in Sources */,
 				91E357191CACCA9900774252 /* distributor.cpp in Sources */,
 				4649B8AB202890F600827CFB /* game_cache_options.cpp in Sources */,
 				91E3571A1CACCA9900774252 /* handler.cpp in Sources */,
+				46826EF5215B6AF500E82B70 /* battery_info.cpp in Sources */,
 				91E3571B1CACCA9900774252 /* horizontal_list.cpp in Sources */,
 				91E3571C1CACCA9900774252 /* vertical_list.cpp in Sources */,
 				91E3571D1CACCA9900774252 /* helper.cpp in Sources */,
@@ -6075,6 +6082,7 @@
 				4649B89F202890F600827CFB /* chat_log.cpp in Sources */,
 				91E5521C1DD7CA7300AEF4AA /* text_formatting.cpp in Sources */,
 				91EED9671DE0D13D00759295 /* size_lock.cpp in Sources */,
+				46826EF4215B6AE500E82B70 /* apple_battery_info.mm in Sources */,
 				9157B6031DE0FCBB00E46192 /* statistics_dialog.cpp in Sources */,
 				915C68EC1DF1DCB000594B07 /* color.cpp in Sources */,
 				915C68F01DF1DCD200594B07 /* terrain_layers.cpp in Sources */,
