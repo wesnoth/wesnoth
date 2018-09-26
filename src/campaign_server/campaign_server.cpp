@@ -1009,12 +1009,6 @@ void server::handle_upload(const server::request& req)
 		}
 
 		(*campaign)["size"] = filesystem::file_size(filename);
-
-		write_config();
-
-		send_message(message, req.sock);
-
-		fire("hook_post_upload", upload["name"]);
 		if(w_version_diff == OLDER) {
 			// remove all versions of the campaign that can be replaced by this.			
 			campaigns().remove_children("campaign", [&](const config& cfg){
@@ -1039,6 +1033,12 @@ void server::handle_upload(const server::request& req)
 				req_w_version = c["required_wesnoth_version"].str();
 			}
 		}
+
+		write_config();
+
+		send_message(message, req.sock);
+
+		fire("hook_post_upload", upload["name"]);
 	}
 }
 
