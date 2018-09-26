@@ -689,8 +689,33 @@ void server::handle_request_campaign_list(const server::request& req)
 				continue;
 			}
 		}
-
+#ifdef __UNUSED__
+		// todo: when we change the campaigns format internally it might be easier 
+		//       to do it this way than to explicitly remove attributes in the
+		//       row below.
+		config& j = campaign_list.add_child("campaign", config(
+			"author", i["author"],
+			"dependencies", i["dependencies"],
+			"description", i["description"],
+			"downloads", i["downloads"],
+			"icon", i["icon"],
+			"name", i["name"],
+			"required_wesnoth_version", i["required_wesnoth_version"],
+			"timestamp", i["timestamp"],
+			"title", i["title"],
+			"translate", i["translate"],
+			"type", i["type"],
+			"uploads", i["uploads"],
+			"version", i["version"],
+		));
+		
+		const config& url_params = i.child_or_empty("feedback");
+		if(!url_params.empty() && !feedback_url_format_.empty()) {
+			j["feedback_url"] = format_addon_feedback_url(feedback_url_format_, url_params);
+		}
+#else
 		campaign_list.add_child("campaign", i);
+#endif
 	}
 
 	for(config& j : campaign_list.child_range("campaign"))
