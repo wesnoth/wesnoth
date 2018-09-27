@@ -3237,6 +3237,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Tests\Utils\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\theme.cpp" />
+    <ClCompile Include="..\..\src\thread_pool.cpp" />
     <ClCompile Include="..\..\src\time_of_day.cpp" />
     <ClCompile Include="..\..\src\tod_manager.cpp" />
     <ClCompile Include="..\..\src\tooltips.cpp" />
@@ -4025,6 +4026,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </CustomBuild>
     <ClInclude Include="..\..\src\theme.hpp" />
+    <ClInclude Include="..\..\src\thread_pool.hpp" />
     <ClInclude Include="..\..\src\time_of_day.hpp" />
     <ClInclude Include="..\..\src\tod_manager.hpp" />
     <ClInclude Include="..\..\src\serialization\tag.hpp" />

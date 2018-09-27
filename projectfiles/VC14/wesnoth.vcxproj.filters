@@ -1555,6 +1555,7 @@
     <ClCompile Include="..\..\src\ogl\shader.cpp">
       <Filter>OGL</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\thread_pool.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -3029,6 +3030,7 @@
     <ClInclude Include="..\..\src\ogl\shader.hpp">
       <Filter>OGL</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\thread_pool.hpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\src\tests\test_sdl_utils.hpp">
