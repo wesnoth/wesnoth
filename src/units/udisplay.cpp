@@ -730,7 +730,7 @@ void reset_helpers(const unit *attacker,const unit *defender)
 void unit_recruited(const map_location& loc,const map_location& leader_loc)
 {
 	game_display* disp = game_display::get_singleton();
-	if(do_not_show_anims(disp) || disp->fogged(loc)) {
+	if(do_not_show_anims(disp) || (disp->fogged(loc) && disp->fogged(leader_loc))) {
 		return;
 	}
 
