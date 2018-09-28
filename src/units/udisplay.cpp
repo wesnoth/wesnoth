@@ -700,7 +700,8 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 	game_display* disp = game_display::get_singleton();
 	const display_context& dc = disp->get_disp_context();
 	const team& viewing_team = dc.get_team(disp->viewing_side());
-	if(!disp || disp->video().update_locked() || disp->video().faked() ||disp->fogged(loc)) return;
+	if(!disp || disp->video().update_locked() || disp->video().faked() ||
+		(disp->fogged(loc) && disp->fogged(leader_loc))) return;
 
 	unit_map::const_iterator u = disp->get_units().find(loc);
 	if(u == disp->get_units().end()) return;
