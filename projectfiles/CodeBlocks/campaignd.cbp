@@ -2,12 +2,12 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="wesnothd" />
+		<Option title="campaignd" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Release">
-				<Option output="../../wesnothd" prefix_auto="1" extension_auto="1" />
+				<Option output="../../campaignd" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="../../" />
 				<Option object_output=".objs-release" />
 				<Option type="1" />
@@ -17,7 +17,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Debug">
-				<Option output="../../wesnothd-debug" prefix_auto="1" extension_auto="1" />
+				<Option output="../../campaignd-debug" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="../../" />
 				<Option object_output=".objs-debug" />
 				<Option type="1" />
@@ -52,25 +52,42 @@
 			<Add library="ws2_32" />
 			<Add library="wsock32" />
 			<Add library="shlwapi" />
-			<Add library="libboost_iostreams-mgw51-mt-1_64"/>
-			<Add library="libboost_bzip2-mgw51-mt-1_64"/>
-			<Add library="libboost_filesystem-mgw51-mt-1_64"/>
-			<Add library="libboost_locale-mgw51-mt-1_64"/>
-			<Add library="libboost_program_options-mgw51-mt-1_64"/>
-			<Add library="libboost_random-mgw51-mt-1_64"/>
-			<Add library="libboost_regex-mgw51-mt-1_64"/>
-			<Add library="libboost_system-mgw51-mt-1_64"/>
-			<Add library="libboost_thread-mgw51-mt-1_64"/>
-			<Add library="libboost_timer-mgw51-mt-1_64"/>
-			<Add library="libboost_zlib-mgw51-mt-1_64"/>
+			<Add library="libboost_iostreams-mgw51-mt-1_64" />
+			<Add library="libboost_bzip2-mgw51-mt-1_64" />
+			<Add library="libboost_filesystem-mgw51-mt-1_64" />
+			<Add library="libboost_locale-mgw51-mt-1_64" />
+			<Add library="libboost_program_options-mgw51-mt-1_64" />
+			<Add library="libboost_random-mgw51-mt-1_64" />
+			<Add library="libboost_regex-mgw51-mt-1_64" />
+			<Add library="libboost_system-mgw51-mt-1_64" />
+			<Add library="libboost_thread-mgw51-mt-1_64" />
+			<Add library="libboost_timer-mgw51-mt-1_64" />
+			<Add library="libboost_zlib-mgw51-mt-1_64" />
 			<Add library="libole32" />
 			<Add library="libuuid" />
 			<Add library="libcrypto-1_1"/>
-			</Linker>
-		<Unit filename="../../packaging/windows/wesnothd.rc">
+			<Add library="winmm" />
+			<Add directory="./" />
+		</Linker>
+		<Unit filename="../../packaging/windows/campaignd.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
+		<Unit filename="../../src/crypt_blowfish/crypt_blowfish.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../src/crypt_blowfish/crypt_blowfish.h" />
 		<Unit filename="../../src/about.hpp" />
+		<Unit filename="../../src/addon/validation.cpp" />
+		<Unit filename="../../src/addon/validation.hpp" />
+		<Unit filename="../../src/campaign_server/addon_utils.cpp" />
+		<Unit filename="../../src/campaign_server/addon_utils.hpp" />
+		<Unit filename="../../src/campaign_server/blacklist.cpp" />
+		<Unit filename="../../src/campaign_server/blacklist.hpp" />
+		<Unit filename="../../src/campaign_server/campaign_server.cpp" />
+		<Unit filename="../../src/campaign_server/campaign_server.hpp" />
+		<Unit filename="../../src/campaign_server/control.hpp" />
+		<Unit filename="../../src/campaign_server/fs_commit.cpp" />
+		<Unit filename="../../src/campaign_server/fs_commit.hpp" />
 		<Unit filename="../../src/color.cpp" />
 		<Unit filename="../../src/color.hpp" />
 		<Unit filename="../../src/color_range.cpp" />
@@ -87,9 +104,13 @@
 		<Unit filename="../../src/font/constants.hpp" />
 		<Unit filename="../../src/game_config.cpp" />
 		<Unit filename="../../src/game_config.hpp" />
+		<Unit filename="../../src/game_version.cpp" />
+		<Unit filename="../../src/game_version.hpp" />
 		<Unit filename="../../src/gettext.hpp" />
 		<Unit filename="../../src/gettext.cpp" />
 		<Unit filename="../../src/global.hpp" />
+		<Unit filename="../../src/hash.cpp" />
+		<Unit filename="../../src/hash.hpp" />
 		<Unit filename="../../src/libc_error.hpp" />
 		<Unit filename="../../src/log.cpp" />
 		<Unit filename="../../src/log.hpp" />
@@ -112,32 +133,9 @@
 		<Unit filename="../../src/serialization/preprocessor.hpp" />
 		<Unit filename="../../src/serialization/string_utils.cpp" />
 		<Unit filename="../../src/serialization/string_utils.hpp" />
-		<Unit filename="../../src/serialization/string_view.hpp" />
-		<Unit filename="../../src/serialization/tag.cpp" />
-		<Unit filename="../../src/serialization/tag.hpp" />
 		<Unit filename="../../src/serialization/tokenizer.cpp" />
-		<Unit filename="../../src/serialization/tokenizer.hpp" />
 		<Unit filename="../../src/serialization/unicode.cpp" />
 		<Unit filename="../../src/serialization/unicode.hpp" />
-		<Unit filename="../../src/server/ban.cpp" />
-		<Unit filename="../../src/server/ban.hpp" />
-		<Unit filename="../../src/server/forum_user_handler.cpp" />
-		<Unit filename="../../src/server/forum_user_handler.hpp" />
-		<Unit filename="../../src/server/game.cpp" />
-		<Unit filename="../../src/server/game.hpp" />
-		<Unit filename="../../src/server/metrics.cpp" />
-		<Unit filename="../../src/server/metrics.hpp" />
-		<Unit filename="../../src/server/player.cpp" />
-		<Unit filename="../../src/server/player.hpp" />
-		<Unit filename="../../src/server/player_connection.cpp" />
-		<Unit filename="../../src/server/player_connection.hpp" />
-		<Unit filename="../../src/server/player_network.cpp" />
-		<Unit filename="../../src/server/player_network.hpp" />
-		<Unit filename="../../src/server/room.hpp" />
-		<Unit filename="../../src/server/sample_user_handler.cpp" />
-		<Unit filename="../../src/server/sample_user_handler.hpp" />
-		<Unit filename="../../src/server/server.cpp" />
-		<Unit filename="../../src/server/server.hpp" />
 		<Unit filename="../../src/server/server_base.cpp" />
 		<Unit filename="../../src/server/server_base.hpp" />
 		<Unit filename="../../src/server/simple_wml.cpp" />
@@ -147,8 +145,6 @@
 		<Unit filename="../../src/tstring.cpp" />
 		<Unit filename="../../src/tstring.hpp" />
 		<Unit filename="../../src/util.hpp" />
-		<Unit filename="../../src/game_version.cpp" />
-		<Unit filename="../../src/game_version.hpp" />
 		<Unit filename="../../src/wesconfig.h" />
 		<Extensions>
 			<code_completion />
