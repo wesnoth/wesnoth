@@ -453,6 +453,8 @@ int show_message_box(lua_State* L) {
 int intf_set_dialog_value(lua_State* L)
 {
 	gui2::widget *w = find_widget(L, 2, false);
+	if (w)
+		w->get_window()->invalidate_layout();
 
 	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(w))
 	{
