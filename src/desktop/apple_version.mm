@@ -22,38 +22,44 @@
 #define __IPHONEOS__ (__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__*1000)
 #endif
 
-#if defined(__IPHONEOS__)
-//TODO: Implement iOS version detection
-#else
 #import <Foundation/Foundation.h>
+
+#if defined(__IPHONEOS__)
+#import <UIKit/UIKit.h>
 #endif
 
 namespace desktop {
-	namespace apple {
-		std::string os_version() {
+namespace apple {
+	std::string os_version() {
+
+		//
+		// Standard Apple version
+		//
+
+		std::string version_string = "";
+
+		NSArray *version_array = [[[NSProcessInfo processInfo] operatingSystemVersionString] componentsSeparatedByString:@" "];
+
 #if defined(__IPHONEOS__)
-			//TODO: Implement iOS version detection
+		std::string version_string = "iOS ";
 #else
-			std::string version_string = "Apple";
-			NSArray *version_array = [[[NSProcessInfo processInfo] operatingSystemVersionString] componentsSeparatedByString:@" "];
-			
-			const version_info version_info([[version_array objectAtIndex:1] UTF8String]);
-			
-			if (version_info.major_version() == 10 && version_info.minor_version() < 12) {
-				version_string += " OS X ";
-			} else {
-				version_string += " macOS ";
-			}
-			
-			version_string += [[version_array objectAtIndex:1] UTF8String];
-			version_string += " (";
-			version_string += [[version_array objectAtIndex:3] UTF8String];
-			
-			return version_string;
-#endif
+		const version_info version_info([[version_array objectAtIndex:1] UTF8String]);
+
+		if (version_info.major_version() == 10 && version_info.minor_version() < 12) {
+			version_string = "Apple OS X ";
+		} else {
+			version_string = "Apple macOS ";
 		}
-		
-	} // end namespace apple
+#endif
+
+		version_string += [[version_array objectAtIndex:1] UTF8String];
+		version_string += " (";
+		version_string += [[version_array objectAtIndex:3] UTF8String];
+
+		return version_string;
+	}
+
+} // end namespace apple
 } // end namespace desktop
 
 #endif //end __APPLE__
