@@ -14,7 +14,6 @@
 #include "thread_pool.hpp"
 
 #include <algorithm>
-#include <cassert>
 #include <iterator>
 
 thread_pool::thread_pool()
