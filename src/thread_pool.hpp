@@ -85,8 +85,7 @@ void thread_pool::worker(W& work, F func)
 {
 	// Note that fetch_add() returns the previous value.
 	// Thus, this returns zero for the first worker like it should.
-	std::atomic<unsigned int> index = counter_.fetch_add(1u,
-		std::memory_order::memory_order_relaxed);
+	unsigned int index = counter_.fetch_add(1u, std::memory_order::memory_order_relaxed);
 
 	while(index < work.size()) {
 		func(work[index]);
