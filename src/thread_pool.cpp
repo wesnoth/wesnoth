@@ -49,7 +49,6 @@ void thread_pool::init()
 	num_finished_threads_ = 0u;
 	ready_for_work_ = false;
 	work_ = nullptr;
-	done_ = false;
 }
 
 void thread_pool::thread_proc()
@@ -75,7 +74,6 @@ void thread_pool::thread_proc()
 		lock.lock();
 		++num_finished_threads_;
 		if(num_finished_threads_ == NUM_THREADS) {
-			done_ = true;
 			done_promise_.set_value();
 			work_ = nullptr;
 		}
