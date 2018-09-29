@@ -1013,7 +1013,12 @@ REGISTER_MOD_PARSER(BLIT, args)
 		ERR_DP << "no arguments passed to the ~BLIT() function" << std::endl;
 		return nullptr;
 	}
-
+	
+	if(s > 3){
+		ERR_DP << "too many arguments passed to the ~BLIT() function" << std::endl;
+		return nullptr;
+	}
+	
 	int x = 0, y = 0;
 
 	if(s == 3) {

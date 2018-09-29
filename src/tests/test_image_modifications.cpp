@@ -499,9 +499,13 @@ BOOST_AUTO_TEST_CASE(test_blit_modification_decoding_invalid_args)
 	environment_setup env_setup;
 
 	modification_queue queue =
-		modification::decode("~BLIT()");
+		modification::decode("~BLIT()"
+				     "~BLIT(wesnoth-icon.png,1,-2)"
+				     "~BLIT(wesnoth-icon.png,-1,2)"
+				     "~BLIT(wesnoth-icon.png,-1,-2)"
+				     "~BLIT(wesnoth-icon.png,1,2,3)");
 
-	BOOST_CHECK_EQUAL(queue.size(), 0);
+	BOOST_CHECK_EQUAL(queue.size(), 3);
 }
 
 /** Tests if the MASK modification with one argument is correctly decoded
