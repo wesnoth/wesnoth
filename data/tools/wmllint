@@ -2043,7 +2043,7 @@ def global_sanity_check(filename, lines):
                 if markcheck and not value.startswith("$") and not value.startswith("{") and not re.match(" +", value) and not has_tr_mark and '""' not in line and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
                     print('"%s", line %d: %s needs translation mark' \
                           % (filename, i+1, key))
-                    lines[i] = lines[i].replace('=', "=_ ")
+                    lines[i] = lines[i].replace('=', "=_ ", 1)
                 nv = sentence_end.sub(" ", value)
                 if nv != value:
                     print('"%s", line %d: double space after sentence end' \
