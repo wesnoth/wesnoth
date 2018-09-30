@@ -2036,11 +2036,11 @@ def global_sanity_check(filename, lines):
                     print('"%s", line %d: %s should be renamed as variation_id and/or marked as translatable' \
                           % (filename, i+1, key))
             elif is_translatable(key):
-                if markcheck and has_tr_mark and '""' in line:
+                if markcheck and has_tr_mark and '""' in lines[i]:
                     print('"%s", line %d: %s doesn`t need translation mark (translatable string is empty)' \
                           % (filename, i+1, key))
                     lines[i] = lines[i].replace("=_","=")
-                if markcheck and not value.startswith("$") and not value.startswith("{") and not re.match(" +", value) and not has_tr_mark and '""' not in line and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
+                if markcheck and not value.startswith("$") and not value.startswith("{") and not re.match(" +", value) and not has_tr_mark and '""' not in lines[i] and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
                     print('"%s", line %d: %s needs translation mark' \
                           % (filename, i+1, key))
                     lines[i] = lines[i].replace('=', "=_ ", 1)
