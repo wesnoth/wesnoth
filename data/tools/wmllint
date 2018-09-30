@@ -2696,7 +2696,9 @@ def translator(filename, mapxforms, textxform):
             if len(fields) > 1:
                 comment = fields[1]
             # Now do warnings based on the state of the tag stack.
-            if not unbalanced:
+            # the regex check for "path=" is needed due to [modify_ai]
+            # which uses square braces in its syntax
+            if not unbalanced and not re.match(r"\s*path\=", destringed):
                 for instance in re.finditer(r"\[\/?\+?([a-z][a-z_]*[a-z])\]", destringed):
                     tag = instance.group(1)
                     closer = instance.group(0)[1] == '/'
