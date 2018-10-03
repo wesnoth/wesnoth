@@ -16,6 +16,7 @@
 
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/grid.hpp"
+
 #include <memory>
 
 namespace gui2
@@ -34,7 +35,8 @@ class tree_view_node : public widget
 	friend class tree_view;
 
 public:
-	using node_children_vector = std::vector<std::unique_ptr<tree_view_node>>;
+	using ptr_t = std::shared_ptr<tree_view_node>;
+	using node_children_vector = std::vector<ptr_t>;
 
 	bool operator==(const tree_view_node& node)
 	{
