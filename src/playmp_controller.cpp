@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -39,10 +39,10 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 
 playmp_controller::playmp_controller(const config& level,
-		saved_game& state_of_game, const config& game_config,
+		saved_game& state_of_game,
 		const ter_data_cache & tdata,
 		mp_campaign_info* mp_info)
-	: playsingle_controller(level, state_of_game, game_config, tdata, mp_info && mp_info->skip_replay)
+	: playsingle_controller(level, state_of_game, tdata, mp_info && mp_info->skip_replay)
 	, network_processing_stopped_(false)
 	, blindfold_(*gui_, mp_info && mp_info->skip_replay_blindfolded)
 	, mp_info_(mp_info)
@@ -444,7 +444,8 @@ void playmp_controller::send_user_choice()
 
 void playmp_controller::play_slice(bool is_delay_enabled)
 {
-	if(!linger_) {
+	if(!linger_ && !is_replay()) {
+		//receive chat during animations and delay
 		process_network_data(true);
 		//cannot use turn_data_.send_data() here.
 		replay_sender_.sync_non_undoable();

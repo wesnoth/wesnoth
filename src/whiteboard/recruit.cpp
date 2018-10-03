@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project http://www.wesnoth.org
+ Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -197,10 +197,14 @@ action::error recruit::check_validity() const
 		return LOCATION_OCCUPIED;
 	}
 	//Check that unit to recruit is still in side's recruit list
-	//FIXME: look at leaders extra_recruit too.
 	const std::set<std::string>& recruits = resources::gameboard->teams()[team_index()].recruits();
 	if(recruits.find(unit_name_) == recruits.end()) {
-		return UNIT_UNAVAILABLE;
+		bool in_extra_recruit = any_recruiter(team_index() + 1, get_recruit_hex(), [&](unit& leader) {
+			return std::find(leader.recruits().begin(), leader.recruits().end(), unit_name_) != leader.recruits().end();
+		});
+		if (!in_extra_recruit) {
+			return UNIT_UNAVAILABLE;
+		}
 	}
 	//Check that there is still enough gold to recruit this unit
 	if(temp_unit_->cost() > resources::gameboard->teams()[team_index()].gold()) {

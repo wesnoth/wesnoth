@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -193,10 +193,6 @@ class acquaintance;
 
 	bool message_private();
 	void set_message_private(bool value);
-
-	bool show_haloes();
-	void set_show_haloes(bool value);
-
 
 	// Multiplayer functions
 	std::string get_chat_timestamp(const std::time_t& t);

@@ -8,10 +8,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2018\n"
+"Last-Translator: 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -914,13 +914,17 @@ msgstr "開いている木の扉"
 
 #. [terrain_type]: id=p_open_rusty
 #: data/core/terrain.cfg:1443
+#, fuzzy
+#| msgid "Rusty Gate"
 msgid "Rusty Open Gate"
-msgstr "開いた錆びた門"
+msgstr "錆びた門"
 
 #. [terrain_type]: id=p_open_wooden
 #: data/core/terrain.cfg:1457
+#, fuzzy
+#| msgid "Wooden Door"
 msgid "Wooden Open Door"
-msgstr "開いた木の扉"
+msgstr "木の扉"
 
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:1473
@@ -2514,7 +2518,7 @@ msgstr "Mod"
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:409
 msgid "Deterministic mode"
-msgstr "決定論モード"
+msgstr ""
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:411
@@ -3577,18 +3581,20 @@ msgstr "観戦"
 
 #. [label]
 #: data/gui/window/lobby_main.cfg:223
+#, fuzzy
+#| msgid "Players:"
 msgid "Sort players:"
-msgstr "プレイヤーの並び替え："
+msgstr "プレイヤー数："
 
 #. [toggle_button]: id=player_list_sort_relation
 #: data/gui/window/lobby_main.cfg:236
 msgid "Friends first, ignored people last"
-msgstr "友人を先に、無視対象を後に"
+msgstr ""
 
 #. [toggle_button]: id=player_list_sort_name
 #: data/gui/window/lobby_main.cfg:249
 msgid "Alphabetically"
-msgstr "アルファベット順"
+msgstr ""
 
 #. [widget]: id=tab_label
 #. [toggle_button]: id=filter_with_friends
@@ -4414,13 +4420,17 @@ msgstr "AIが操作するユニットの移動時にアニメーションを行�
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:83
+#, fuzzy
+#| msgid "Scroll speed:"
 msgid "Speed:"
-msgstr "速度："
+msgstr "スクロール速度："
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:88
+#, fuzzy
+#| msgid "Make units move and fight faster"
 msgid "Units move and fight speed"
-msgstr "ユニットの移動と戦闘の速度を変更します"
+msgstr "ユニットの移動と戦闘を高速化します"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:104
@@ -4981,11 +4991,15 @@ msgstr "統計情報"
 
 #. [widget]: id=tab_label
 #: data/gui/window/statistics_dialog.cfg:485
+#, fuzzy
+#| msgid "Scenarios"
 msgid "Scenario"
 msgstr "シナリオ"
 
 #. [widget]: id=tab_label
 #: data/gui/window/statistics_dialog.cfg:498
+#, fuzzy
+#| msgid "Campaigns"
 msgid "Campaign"
 msgstr "キャンペーン"
 
@@ -5370,8 +5384,10 @@ msgid "operating_system^<unknown>"
 msgstr "<不明>"
 
 #: src/font/text.cpp:789
+#, fuzzy
+#| msgid "The text contains invalid Pango markup: "
 msgid "The text contains invalid markup: "
-msgstr "テキストに無効なマークアップが含まれています："
+msgstr "テキストに無効な Pango マークアップが含まれています："
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:251
@@ -5565,12 +5581,16 @@ msgid "addons_order^Type ($order)"
 msgstr "タイプ（$order）"
 
 #: src/gui/dialogs/addon/manager.cpp:228
+#, fuzzy
+#| msgid "addons_order^Last updated ($datelike_order)"
 msgid "addons_order^Last updated ($order)"
-msgstr "最終更新（$order）"
+msgstr "最終更新（$datelike_order）"
 
 #: src/gui/dialogs/addon/manager.cpp:231
+#, fuzzy
+#| msgid "addons_order^First uploaded ($datelike_order)"
 msgid "addons_order^First uploaded ($order)"
-msgstr "初アップロード（$order）"
+msgstr "初アップロード（$datelike_order）"
 
 #: src/gui/dialogs/addon/manager.cpp:260 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -5636,12 +5656,12 @@ msgstr "不明"
 #. TRANSLATORS: ascending
 #: src/gui/dialogs/addon/manager.cpp:360
 msgid "asc"
-msgstr "昇順"
+msgstr ""
 
 #. TRANSLATORS: descending
 #: src/gui/dialogs/addon/manager.cpp:364
 msgid "desc"
-msgstr "降順"
+msgstr ""
 
 #: src/gui/dialogs/addon/manager.cpp:380 src/gui/dialogs/chat_log.cpp:420
 #: src/gui/dialogs/game_cache_options.cpp:105
@@ -6101,15 +6121,19 @@ msgstr "ゲーム： $num_total 中の $num_shown を表示"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:452
 msgid "Era:"
-msgstr "時代："
+msgstr ""
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:469
+#, fuzzy
+#| msgid "Settings"
 msgid "Settings:"
-msgstr "設定："
+msgstr "設定"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:473
+#, fuzzy
+#| msgid "Registered Users Only"
 msgid "Registered users only:"
-msgstr "登録ユーザーのみ："
+msgstr "登録済みユーザー限定"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:474
 msgid "Reloaded:"
@@ -6132,11 +6156,15 @@ msgid "Use map settings:"
 msgstr "マップ設定を使用："
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:486
+#, fuzzy
+#| msgid ""
+#| "One or more add-ons need to be installed\n"
+#| "in order to join this game."
 msgid ""
 "One or more items need to be installed\n"
 "in order to join this game."
 msgstr ""
-"このゲームに参加するには、１つあるいは複数のアイテムをインストールする必要が"
+"このゲームに参加するには、１つあるいは複数のアドオンをインストールする必要が"
 "あります。"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:511
@@ -6150,7 +6178,7 @@ msgstr "観戦不可"
 #: src/gui/dialogs/multiplayer/lobby.cpp:957
 msgid ""
 "Something is wrong with the addon version check database supporting the "
-"multiplayer lobby. Please report this at http://bugs.wesnoth.org."
+"multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
 "マルチプレイヤーロビーのアドオンバージョンチェックデータベースに何らかの不具"
 "合があったようです。bugs.wesnoth.orgにバグ報告をお願いします。"
@@ -6237,8 +6265,10 @@ msgid "Select at which point to begin this campaign."
 msgstr "どこからキャンペーンを開始しますか？"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:193
+#, fuzzy
+#| msgid "No eras found."
 msgid "No era information found."
-msgstr "時代の情報が見つかりません。"
+msgstr "時代が存在しません。"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:248
 msgid "Computer Player"
@@ -6458,12 +6488,16 @@ msgid "whisper to $receiver"
 msgstr "$receiver にささやく"
 
 #: src/gui/widgets/chatbox.cpp:396
+#, fuzzy
+#| msgid ""
+#| "Whisper session with <i>“$name”</i> started. If you do not want to "
+#| "receive messages from this user, type <i>/ignore $name</i>"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>\n"
 msgstr ""
 "<i>「 $name 」</i>とのささやきが開始されました。このユーザーからのメッセージ"
-"を受けとりたくなければ、<i>/ignore $name</i>と入力してください。\n"
+"を受けとりたくなければ、<i>/ignore $name</i>と入力してください。"
 
 #: src/gui/widgets/chatbox.cpp:400
 msgid "Room <i>“$name”</i> joined"
@@ -7525,6 +7559,9 @@ msgstr ""
 "キー「$deprecated_key」は「$key」に名前が変更されました。「$deprecated_key」"
 "のサポートはバージョン$removal_versionで削除されます。"
 
+#~ msgid "Save random seed"
+#~ msgstr "乱数のシードを保存"
+
 #~ msgid "Open saves folder"
 #~ msgstr "保存フォルダを開く"
 
@@ -7553,30 +7590,75 @@ msgstr ""
 #~ msgid "Sign Up"
 #~ msgstr "登録"
 
-#~ msgid "FPS limiter"
+#~ msgid "Acceleration factor:"
+#~ msgstr "高速化の倍率："
+
+#~ msgid ""
+#~ "Speed at which unit moves and animations play when ‘Accelerated speed’ is "
+#~ "enabled or when Shift is held down in-game"
+#~ msgstr ""
+#~ "ユニットの移動とアニメーションの速度です。「高速化」が有効になっているか、"
+#~ "ゲーム中で Shift キーを押している間に適用されます。"
+
+#~ msgid "Limit FPS"
 #~ msgstr "FPS 制限"
 
 #~ msgid ""
-#~ "Disabling this increases CPU usage to 100 % but may slightly improve "
+#~ "Disabling this increases CPU usage to 100% but may slightly improve "
 #~ "performance at high resolutions"
 #~ msgstr ""
 #~ "CPU 使用率が 100% になるのを抑えますが、高解像度でのパフォーマンスが大きく"
 #~ "向上します。"
 
+#~ msgid "Rename"
+#~ msgstr "名前を変更する"
+
 #~ msgid "The maximum text width is less than 1."
-#~ msgstr "最大テキスト幅が1より小さいです。"
+#~ msgstr "最大テキスト幅が 1 より小さいです。"
+
+#~ msgid "ascending"
+#~ msgstr "昇順"
+
+#~ msgid "oldest to newest"
+#~ msgstr "古い順"
+
+#~ msgid "descending"
+#~ msgstr "降順"
+
+#~ msgid "newest to oldest"
+#~ msgstr "新しい順"
 
 #~ msgid "active_modifications^None"
 #~ msgstr "なし"
 
+#~ msgid "Modifications: "
+#~ msgstr "Mod："
+
+#~ msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
+#~ msgstr ""
+#~ "Lua コンソールはデバッグモードでのみ使用可能です！　( まず ’:debug’ を起動"
+#~ "してください)"
+
+#~ msgid "lua console"
+#~ msgstr "Luaコンソール"
+
 #~ msgid "$game_name (Era: $era_name)"
 #~ msgstr "$game_name（時代： $era_name）"
 
-#~ msgid "era^missing"
-#~ msgstr "未所持"
+#~ msgid "era_or_mod^not installed"
+#~ msgstr "未インストール"
 
-#~ msgid "$min to $max"
+#~ msgid "Era"
+#~ msgstr "時代"
+
+#~ msgid "lobby"
+#~ msgstr "ロビー"
+
+#~ msgid "number of players^$min to $max"
 #~ msgstr "$min ～ $max"
+
+#~ msgid "this game"
+#~ msgstr "このゲーム"
 
 #~ msgid ""
 #~ "Unsupported image format.\n"
@@ -7586,3 +7668,12 @@ msgstr ""
 #~ "サポートされていない画像のフォーマットです。\n"
 #~ "\n"
 #~ "代わりに、PNG でスクリーンショットを保存します。"
+
+#~ msgid "All Scenarios"
+#~ msgstr "すべてのシナリオ"
+
+#~ msgid "$count|× $name"
+#~ msgstr "$count|× $name"
+
+#~ msgid "Touch"
+#~ msgstr "タッチ"

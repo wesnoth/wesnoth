@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project http://www.wesnoth.org
+ Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -34,6 +34,7 @@
 #include "statistics.hpp"
 #include "synced_context.hpp"
 #include "team.hpp"
+#include "units/filter.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
 
@@ -225,7 +226,12 @@ action::error recall::check_validity() const
 		return NOT_ENOUGH_GOLD;
 	}
 	//Check that there is a leader available to recall this unit
-	if(!find_recruiter(team_index(),get_recall_hex())) {
+	bool has_recruiter = any_recruiter(team_index() + 1, get_recall_hex(), [&](unit& leader) {
+		const unit_filter ufilt(vconfig(leader.recall_filter()));
+		return ufilt(*temp_unit_, map_location::null_location());
+	});
+
+	if(!has_recruiter) {
 		return NO_LEADER;
 	}
 

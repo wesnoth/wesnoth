@@ -11,10 +11,10 @@
 extern "C" int wesnoth_main(int argc, char **argv);
 static std::vector<char*> gArgs;
 
-@interface SDLApplication : NSApplication
+@interface WesnothSDLApplication : NSApplication
 @end
 
-@implementation SDLApplication
+@implementation WesnothSDLApplication
 /* Invoked from the Quit menu item */
 - (void)terminate:(id)sender
 {
@@ -51,7 +51,7 @@ static std::vector<char*> gArgs;
 - (IBAction) openHomepage:(id)sender
 {
 	(void) sender;
-	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.wesnoth.org/"]];
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://www.wesnoth.org/"]];
 }
 
 /* Called when the internal event loop has just started running */
@@ -66,7 +66,7 @@ static std::vector<char*> gArgs;
 	setenv ("PANGO_RC_FILE", "./pangorc", 1);
 	setenv ("PANGO_SYSCONFDIR", ".", 1);
 	setenv ("PANGO_LIBDIR", ".", 1);
-	setenv ("FONTCONFIG_PATH", ".", 1);
+	setenv ("FONTCONFIG_PATH", "./fonts/", 1);
 	setenv ("FONTCONFIG_FILE", "fonts.conf", 1);
 
 	int status;
@@ -113,30 +113,9 @@ int main (int argc, char **argv)
 	}
 	gArgs.push_back(nullptr);
 
-	[SDLApplication sharedApplication];
+	[WesnothSDLApplication sharedApplication];
 
-	// loadNibNamed:owner:topLevelObjects was introduced in 10.8 (Mountain Lion).
-	// In order to support Lion and Mountain Lion +, we need to see which OS we're
-	// on. We do this by testing to see if [NSBundle mainBundle] responds to
-	// loadNibNamed:owner:topLevelObjects: ... If so, the app is running on at least
-	// Mountain Lion... If not, then the app is running on Lion so we fall back to the
-	// the older loadNibNamed:owner: method. If your app does not support Lion, then
-	// you can go with strictly the newer one and not deal with the if/else conditional.
-
-	if ([[NSBundle mainBundle] respondsToSelector:@selector(loadNibNamed:owner:topLevelObjects:)]) {
-		// We're running on Mountain Lion or higher
-		[[NSBundle mainBundle] loadNibNamed:@"SDLMain"
-		owner:NSApp
-		topLevelObjects:nil];
-	} else {
-		// We're running on Lion
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-
-		[NSBundle loadNibNamed:@"SDLMain" owner:NSApp];
-
-#pragma clang diagnostic pop
-	}
+	[[NSBundle mainBundle] loadNibNamed:@"SDLMain" owner:NSApp topLevelObjects:nil];
 
 	[NSApp run];
 	return 0;

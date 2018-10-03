@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -1368,7 +1368,7 @@ formula_function_expression::formula_function_expression(const std::string& name
 	, star_arg_(-1)
 {
 	for(std::size_t n = 0; n != arg_names_.size(); ++n) {
-		if(arg_names_.empty() == false && arg_names_[n][arg_names_[n].size() - 1] == '*') {
+		if(arg_names_.empty() == false && arg_names_[n].back() == '*') {
 			arg_names_[n].resize(arg_names_[n].size() - 1);
 			star_arg_ = n;
 			break;

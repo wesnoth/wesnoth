@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 - 2018 The Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2018 The Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -24,7 +24,6 @@
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -55,7 +54,7 @@ namespace gui2
 REGISTER_WIDGET(chatbox)
 
 chatbox::chatbox(const implementation::builder_chatbox& builder)
-	: container_base(builder, get_control_type())
+	: container_base(builder, type())
 	, roomlistbox_(nullptr)
 	, chat_log_container_(nullptr)
 	, chat_input_(nullptr)
@@ -217,6 +216,7 @@ void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const b
 
 	scroll_label& log = find_widget<scroll_label>(&grid, "log_text", false);
 	const bool chatbox_at_end = log.vertical_scrollbar_at_end();
+	const unsigned chatbox_position = log.get_vertical_scrollbar_item_position();
 
 	const std::string new_text = formatter()
 		<< log.get_label() << "\n" << "<span color='#bcb088'>" << preferences::get_chat_timestamp(std::time(0)) << text << "</span>";
@@ -231,8 +231,6 @@ void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const b
 		} catch(const std::out_of_range&) {
 		}
 	}
-
-	const unsigned chatbox_position = log.get_vertical_scrollbar_item_position();
 
 	if(chatbox_at_end || force_scroll) {
 		log.scroll_vertical_scrollbar(scrollbar_base::END);
@@ -384,14 +382,14 @@ bool chatbox::room_window_active(const std::string& room)
 lobby_chat_window* chatbox::room_window_open(const std::string& room, const bool open_new, const bool allow_close)
 {
 	return find_or_create_window(room, false, open_new, allow_close,
-		VGETTEXT("Room <i>“$name”</i> joined", { { "name", room } }));
+		VGETTEXT("Room <i>“$name”</i> joined", { { "name", translation::dsgettext("wesnoth-lib", room.c_str()) } }));
 }
 
 lobby_chat_window* chatbox::whisper_window_open(const std::string& name, bool open_new)
 {
 	return find_or_create_window(name, true, open_new, true,
 		VGETTEXT("Whisper session with <i>“$name”</i> started. "
-		"If you do not want to receive messages from this user, type <i>/ignore $name</i>\n", { { "name", name } }));
+		"If you do not want to receive messages from this user, type <i>/ignore $name</i>", { { "name", name } }));
 }
 
 lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
@@ -415,10 +413,10 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 	//
 	// Add a new chat log page.
 	//
-	string_map item;
+	widget_item item;
 	item["use_markup"] = "true";
 	item["label"] = initial_text;
-	std::map<std::string, string_map> data{{"log_text", item}};
+	widget_data data{{"log_text", item}};
 
 	if(!whisper) {
 		lobby_info_->open_room(name);
@@ -434,8 +432,14 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 	// Add a new room window tab.
 	//
 	data.clear();
+	item.clear();
 
-	item["label"] = whisper ? font::escape_text("<" + name + ">") : name;
+	if(!whisper) {
+		item["label"] = translation::dsgettext("wesnoth-lib", name.c_str());
+	} else {
+		item["label"] = "<" + name + ">";
+	}
+
 	data.emplace("room", item);
 
 	grid& row_grid = roomlistbox_->add_row(data);
@@ -810,9 +814,9 @@ builder_chatbox::builder_chatbox(const config& cfg)
 {
 }
 
-widget* builder_chatbox::build() const
+widget_ptr builder_chatbox::build() const
 {
-	chatbox* widget = new chatbox(*this);
+	auto widget = std::make_shared<chatbox>(*this);
 
 	DBG_GUI_G << "Window builder: placed unit preview pane '" << id
 			  << "' with definition '" << definition << "'.\n";

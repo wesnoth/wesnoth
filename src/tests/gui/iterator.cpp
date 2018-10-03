@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2011 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -105,12 +105,12 @@ static std::string bottom_up_t_t_t_result()
 }
 
 static void add_widget(gui2::grid& grid
-		, gui2::widget* widget
+		, gui2::widget_ptr widget
 		, const std::string& id
 		, const unsigned row
 		, const unsigned column)
 {
-	BOOST_REQUIRE_NE(widget, static_cast<gui2::widget*>(nullptr));
+	BOOST_REQUIRE_NE(widget.get(), static_cast<gui2::widget*>(nullptr));
 
 	widget->set_id(id);
 	grid.set_child(widget
@@ -182,16 +182,16 @@ static void test_grid()
 	gui2::grid grid(2 ,2);
 	grid.set_id("0");
 
-	gui2::grid* g = new gui2::grid(2, 2);
+	auto g = std::make_shared<gui2::grid>(2, 2);
 	add_widget(grid, g, "1", 0, 0);
-	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "2", 1, 0);
-	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "3", 0, 1);
-	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "4", 1, 1);
+	add_widget(grid, gui2::build_single_widget_and_cast_to<gui2::label>(), "2", 1, 0);
+	add_widget(grid, gui2::build_single_widget_and_cast_to<gui2::label>(), "3", 0, 1);
+	add_widget(grid, gui2::build_single_widget_and_cast_to<gui2::label>(), "4", 1, 1);
 
-	add_widget(*g, new gui2::label(gui2::implementation::builder_label(config())), "5", 0, 0);
-	add_widget(*g, new gui2::label(gui2::implementation::builder_label(config())), "6", 1, 0);
-	add_widget(*g, new gui2::label(gui2::implementation::builder_label(config())), "7", 0, 1);
-	add_widget(*g, new gui2::label(gui2::implementation::builder_label(config())), "8", 1, 1);
+	add_widget(*g, gui2::build_single_widget_and_cast_to<gui2::label>(), "5", 0, 0);
+	add_widget(*g, gui2::build_single_widget_and_cast_to<gui2::label>(), "6", 1, 0);
+	add_widget(*g, gui2::build_single_widget_and_cast_to<gui2::label>(), "7", 0, 1);
+	add_widget(*g, gui2::build_single_widget_and_cast_to<gui2::label>(), "8", 1, 1);
 
 	{
 		std::stringstream sstr;

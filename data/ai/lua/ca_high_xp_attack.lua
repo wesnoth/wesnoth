@@ -26,6 +26,8 @@ local M = wesnoth.map
 --    so that we can follow up with stronger units. In addition, use of poison or
 --    slow attacks is strongly discouraged. See code for exact equations.
 
+local XP_attack
+
 local ca_attack_highxp = {}
 
 function ca_attack_highxp:evaluation(cfg, data)
@@ -82,7 +84,7 @@ function ca_attack_highxp:evaluation(cfg, data)
     if (not target_infos[1]) then return 0 end
 
     -- The following location sets are used so that we at most need to call
-    -- find_reach() and wesnoth.copy_unit() once per unit
+    -- find_reach() and unit:clone() once per unit
     local reaches = LS.create()
     local attacker_copies = LS.create()
 
@@ -217,7 +219,7 @@ function ca_attack_highxp:evaluation(cfg, data)
                 if attacker_copies:get(attacker.x, attacker.y) then
                     attacker_copy = attacker_copies:get(attacker.x, attacker.y)
                 else
-                    attacker_copy = wesnoth.copy_unit(attacker)
+                    attacker_copy = attacker:clone()
                     attacker_copies:insert(attacker.x, attacker.y, attacker_copy)
                 end
 
@@ -242,14 +244,14 @@ function ca_attack_highxp:evaluation(cfg, data)
                         rating = 1000
 
                         local enemy_value_loss = (target.hitpoints - def_stats.average_hp) / target.max_hitpoints
-                        enemy_value_loss = enemy_value_loss * wesnoth.unit_types[target.type].cost
+                        enemy_value_loss = enemy_value_loss * target.cost
 
                         -- We want the _least_ damage to the enemy, so the minus sign is no typo!
                         rating = rating - enemy_value_loss
 
                         local own_value_loss = (attacker_copy.hitpoints - att_stats.average_hp) / attacker_copy.max_hitpoints
                         own_value_loss = own_value_loss + att_stats.hp_chance[0]
-                        own_value_loss = own_value_loss * wesnoth.unit_types[attacker_copy.type].cost
+                        own_value_loss = own_value_loss * attacker_copy.cost
 
                         rating = rating - own_value_loss
 
@@ -284,15 +286,15 @@ function ca_attack_highxp:evaluation(cfg, data)
     end
 
     if best_attack then
-        data.XP_attack = best_attack
+        XP_attack = best_attack
     end
 
     return max_ca_score
 end
 
 function ca_attack_highxp:execution(cfg, data)
-    AH.robust_move_and_attack(ai, data.XP_attack.src, data.XP_attack.dst, data.XP_attack.target, { weapon = data.XP_attack.attack_num })
-    data.XP_attack = nil
+    AH.robust_move_and_attack(ai, XP_attack.src, XP_attack.dst, XP_attack.target, { weapon = XP_attack.attack_num })
+    XP_attack = nil
 end
 
 return ca_attack_highxp

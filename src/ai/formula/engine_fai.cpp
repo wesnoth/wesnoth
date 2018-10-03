@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -87,7 +87,7 @@ void engine_fai::do_parse_candidate_action_from_config( rca_context &context, co
 		DBG_AI_ENGINE_FAI << "config snippet contains: " << std::endl << cfg << std::endl;
 		return;
 	}
-	candidate_action_ptr ca = candidate_action_ptr(new fai_candidate_action_wrapper(context,cfg,fai_ca,*formula_ai_));
+	auto ca = std::make_shared<fai_candidate_action_wrapper>(context, cfg, fai_ca, *formula_ai_);
 	*b = ca;
 
 }

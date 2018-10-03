@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -49,8 +49,7 @@ public:
 	 * @param data                Map with the key value pairs to set the
 	 *                            members.
 	 */
-	void set_child_members(
-			const std::map<std::string /* widget id */, string_map>& data);
+	void set_child_members(const widget_data& data);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
@@ -90,16 +89,16 @@ public:
 	virtual point border_space() const override;
 
 	/** Inherited from selectable_item */
-	unsigned get_value() const override
+	virtual unsigned get_value() const override
 	{
 		return state_num_;
 	}
 
 	/** Inherited from selectable_item */
-	void set_value(unsigned selected, bool fire_event = false) override;
+	virtual void set_value(unsigned selected, bool fire_event = false) override;
 
 	/** Inherited from selectable_item */
-	unsigned num_states() const override;
+	virtual unsigned num_states() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -148,11 +147,16 @@ private:
 	std::function<void(widget&)> callback_mouse_left_double_click_;
 
 	/** See @ref widget::impl_draw_background. */
-	virtual void impl_draw_background(int x_offset, int y_offset) override;
+	virtual void impl_draw_background() override;
 
 	/** See @ref widget::impl_draw_foreground. */
-	virtual void impl_draw_foreground(int x_offset, int y_offset) override;
+	virtual void impl_draw_foreground() override;
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
@@ -200,7 +204,7 @@ struct builder_toggle_panel : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
 	builder_grid_ptr grid;
 

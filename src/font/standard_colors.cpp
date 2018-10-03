@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
- * Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+ * Part of the Battle for Wesnoth Project https://www.wesnoth.org/
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,9 +18,9 @@ namespace font {
 
 const color_t
 	NORMAL_COLOR    {221, 221, 221},
-	GRAY_COLOR      {119, 119, 119},
+	GRAY_COLOR      {136, 136, 136},
 	LOBBY_COLOR     {187, 187, 187},
-	GOOD_COLOR      {0  , 255, 0  },
+	GOOD_COLOR      {0  , 181, 26 },
 	BAD_COLOR       {255, 0  , 0  },
 	BLACK_COLOR     {0  , 0  , 0  },
 	YELLOW_COLOR    {255, 255, 0  },

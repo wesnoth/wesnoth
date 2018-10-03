@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -25,6 +25,7 @@
 #include "reports.hpp"
 #include "color.hpp"
 #include "team.hpp"
+#include "terrain/movement.hpp"
 #include "tod_manager.hpp"
 #include "units/unit.hpp"
 #include "units/helper.hpp"
@@ -462,8 +463,13 @@ static config unit_xp(const unit* u)
 {
 	if (!u) return config();
 	std::ostringstream str, tooltip;
-	str << span_color(u->xp_color()) << u->experience()
-		<< '/' << u->max_experience() << naps;
+	str << span_color(u->xp_color());
+	if(u->can_advance()) {
+		str << u->experience() << '/' << u->max_experience();
+	} else {
+		str << font::unicode_en_dash;
+	}
+	str << naps;
 
 	int exp_mod = unit_experience_accelerator::get_acceleration();
 	tooltip << _("Experience Modifier: ") << exp_mod << '%';
@@ -581,50 +587,48 @@ static config unit_moves(reports::context & rc, const unit* u)
 	if (!u) return config();
 	std::ostringstream str, tooltip;
 	double movement_frac = 1.0;
+
+	std::set<terrain_movement> terrain_moves;
+
 	if (u->side() == rc.screen().playing_side()) {
 		movement_frac = static_cast<double>(u->movement_left()) / std::max<int>(1, u->total_movement());
 		if (movement_frac > 1.0)
 			movement_frac = 1.0;
 	}
 
-	std::set<t_translation::terrain_code>::const_iterator terrain_it =
-				preferences::encountered_terrains().begin();
-
 	tooltip << _("Movement Costs:") << "\n";
-	for (; terrain_it != preferences::encountered_terrains().end();
-			++terrain_it) {
-		const t_translation::terrain_code terrain = *terrain_it;
+	for (t_translation::terrain_code terrain : preferences::encountered_terrains()) {
 		if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP))
 			continue;
 
 		const terrain_type& info = rc.map().get_terrain_info(terrain);
 
 		if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
-
-			const std::string& name = info.name();
-			const int moves = u->movement_cost(terrain);
-
-			tooltip << name << ": ";
-
-			std::string color;
-			//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
-			const bool cannot_move = moves > u->total_movement();
-			if (cannot_move)		// cannot move in this terrain
-				color = "red";
-			else if (moves > 1)
-				color = "yellow";
-			else
-				color = "white";
-			tooltip << "<span foreground=\"" << color << "\">";
-			// A 5 MP margin; if the movement costs go above
-			// the unit's max moves + 5, we replace it with dashes.
-			if(cannot_move && (moves > u->total_movement() + 5)) {
-				tooltip << font::unicode_figure_dash;
-			} else {
-				tooltip << moves;
-			}
-			tooltip << naps << '\n';
+			terrain_moves.emplace(info.name(), u->movement_cost(terrain));
 		}
+	}
+
+	for (const terrain_movement& tm : terrain_moves) {
+		tooltip << tm.name << ": ";
+		
+		std::string color;
+		//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
+		const bool cannot_move = tm.moves > u->total_movement();
+		if (cannot_move)		// cannot move in this terrain
+			color = "red";
+		else if (tm.moves > 1)
+			color = "yellow";
+		else
+			color = "white";
+		tooltip << "<span foreground=\"" << color << "\">";
+		// A 5 MP margin; if the movement costs go above
+		// the unit's max moves + 5, we replace it with dashes.
+		if (cannot_move && (tm.moves > u->total_movement() + 5)) {
+			tooltip << font::unicode_figure_dash;
+		} else {
+			tooltip << tm.moves;
+		}
+		tooltip << naps << '\n';
 	}
 
 	int grey = 128 + static_cast<int>((255 - 128) * movement_frac);
@@ -813,7 +817,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 	}
 
 	{
-		auto ctx = at.specials_context_for_listing();
+		auto ctx = at.specials_context_for_listing(u.side() == rc.screen().playing_side());
 		boost::dynamic_bitset<> active;
 		const std::vector<std::pair<t_string, t_string>> &specials = at.special_tooltips(&active);
 		const std::size_t specials_size = specials.size();
@@ -843,9 +847,11 @@ static std::string format_prob(double prob)
 {
 	if(prob > 0.9995) {
 		return "100%";
+	} else if(prob < 0.0005) {
+		return "0%";
 	}
 	std::ostringstream res;
-	res << std::setprecision(1) << std::setw(4) << 100.0 * prob << "%";
+	res << std::setprecision(prob < 0.1 ? 2 : 3) << 100.0 * prob << "%";
 	return res.str();
 }
 

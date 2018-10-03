@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project http://www.wesnoth.org
+ Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -103,7 +103,7 @@ void mapbuilder::build_map()
 				side_actions::iterator it = actions.turn_begin(turn), next = it, end = actions.turn_end(turn);
 				while(it != end) {
 					std::advance(next, 1);
-					process(actions, it);
+					process(actions, it, side.is_local());
 					it = next;
 				}
 
@@ -113,7 +113,7 @@ void mapbuilder::build_map()
 	}
 }
 
-void mapbuilder::process(side_actions &sa, side_actions::iterator action_it)
+void mapbuilder::process(side_actions &sa, side_actions::iterator action_it, bool is_local_side)
 {
 	action_ptr action = *action_it;
 	bool acted=false;
@@ -136,7 +136,7 @@ void mapbuilder::process(side_actions &sa, side_actions::iterator action_it)
 	if(erval != action::OK) {
 		// We do not delete obstructed moves, nor invalid actions caused by obstructed moves.
 		if(has_invalid_actions_.find(unit.get()) == has_invalid_actions_.end()) {
-			if(erval == action::TOO_FAR || (erval == action::LOCATION_OCCUPIED && std::dynamic_pointer_cast<move>(action))) {
+			if(!is_local_side || erval == action::TOO_FAR || (erval == action::LOCATION_OCCUPIED && std::dynamic_pointer_cast<move>(action))) {
 				has_invalid_actions_.insert(unit.get());
 				invalid_actions_.push_back(action_it);
 			} else {
@@ -150,17 +150,19 @@ void mapbuilder::process(side_actions &sa, side_actions::iterator action_it)
 	}
 
 	// We do not keep invalid actions replaced by a valid one.
-	std::set<class unit const*>::iterator invalid_it = has_invalid_actions_.find(unit.get());
-	if(invalid_it != has_invalid_actions_.end()) {
-		for(std::list<side_actions::iterator>::iterator it = invalid_actions_.begin(); it != invalid_actions_.end();) {
-			if((**it)->get_unit().get() == unit.get()) {
-				sa.remove_action(*it, false);
-				it = invalid_actions_.erase(it);
-			} else {
-				++it;
+	if(is_local_side) {
+		std::set<class unit const*>::iterator invalid_it = has_invalid_actions_.find(unit.get());
+		if(invalid_it != has_invalid_actions_.end()) {
+			for(std::list<side_actions::iterator>::iterator it = invalid_actions_.begin(); it != invalid_actions_.end();) {
+				if((**it)->get_unit().get() == unit.get()) {
+					sa.remove_action(*it, false);
+					it = invalid_actions_.erase(it);
+				} else {
+					++it;
+				}
 			}
+			has_invalid_actions_.erase(invalid_it);
 		}
-		has_invalid_actions_.erase(invalid_it);
 	}
 
 	if(acted || action->places_new_unit()) {

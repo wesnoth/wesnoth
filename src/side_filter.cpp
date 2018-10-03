@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2010 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -138,7 +138,7 @@ bool side_filter::match_internal(const team &t) const
 		}
 		if(!found && ufilt_cfg["search_recall_list"].to_bool(false)) {
 			for(const unit_const_ptr & u : t.recall_list()) {
-				scoped_recall_unit this_unit("this_unit", t.save_id(),t.recall_list().find_index(u->id()));
+				scoped_recall_unit this_unit("this_unit", t.save_id_or_number(), t.recall_list().find_index(u->id()));
 				if(ufilter_->matches(*u)) {
 					found = true;
 					break;

@@ -13,9 +13,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-05-15 20:42+0200\n"
+"PO-Revision-Date: 2018-09-16 19:50+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -3509,12 +3509,12 @@ msgstr "La batalla por Wesnoth"
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:528
 msgid "Paths"
-msgstr "Direcciones de los archivos"
+msgstr "Rutas"
 
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:541
 msgid "Libraries"
-msgstr "Bibliotecas"
+msgstr "Librerías"
 
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:554
@@ -5476,8 +5476,10 @@ msgid "operating_system^<unknown>"
 msgstr "<desconocido>"
 
 #: src/font/text.cpp:789
+#, fuzzy
+#| msgid "The text contains invalid Pango markup: "
 msgid "The text contains invalid markup: "
-msgstr "El texto contiene marcado inválido: "
+msgstr "El texto contiene marcado Pango inválido: "
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:251
@@ -5671,12 +5673,16 @@ msgid "addons_order^Type ($order)"
 msgstr "Tipo ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:228
+#, fuzzy
+#| msgid "addons_order^Last updated ($datelike_order)"
 msgid "addons_order^Last updated ($order)"
-msgstr "Última actualización ($order)"
+msgstr "Última actualización ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:231
+#, fuzzy
+#| msgid "addons_order^First uploaded ($datelike_order)"
 msgid "addons_order^First uploaded ($order)"
-msgstr "Primera publicación ($order)"
+msgstr "Primera publicación ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:260 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -6260,11 +6266,11 @@ msgstr "No se permiten observadores"
 #: src/gui/dialogs/multiplayer/lobby.cpp:957
 msgid ""
 "Something is wrong with the addon version check database supporting the "
-"multiplayer lobby. Please report this at http://bugs.wesnoth.org."
+"multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
 "Hay algún error en la base de datos de verificación de la versión de los "
 "complementos que respalda la sala multijugador. Por favor, informe de esto a "
-"http://bugs.wesnoth.org."
+"https://bugs.wesnoth.org."
 
 #: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:131
 msgid ""
@@ -6565,12 +6571,16 @@ msgid "whisper to $receiver"
 msgstr "susurrar a $receiver"
 
 #: src/gui/widgets/chatbox.cpp:396
+#, fuzzy
+#| msgid ""
+#| "Whisper session with <i>“$name”</i> started. If you do not want to "
+#| "receive messages from this user, type <i>/ignore $name</i>"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>\n"
 msgstr ""
-"Ha iniciado una sesión de susurros con <i>“$name”</i>. Si no desea recibir "
-"mensajes de este usuario, escriba <i>/ignore $name</i>\n"
+"Se ha iniciado una sesión de susurros con <i>“$name”</i>. Si no desea "
+"recibir mensajes de este usuario, escriba <i>/ignore $name</i>"
 
 #: src/gui/widgets/chatbox.cpp:400
 msgid "Room <i>“$name”</i> joined"
@@ -7645,6 +7655,9 @@ msgstr ""
 "«$deprecated_key|» dejará de tener mantenimiento en la versión "
 "$removal_version."
 
+#~ msgid "Save random seed"
+#~ msgstr "Guardar la semilla aleatoria"
+
 #~ msgid "Open saves folder"
 #~ msgstr "Abrir la carpeta de partidas guardadas"
 
@@ -7673,36 +7686,79 @@ msgstr ""
 #~ msgid "Sign Up"
 #~ msgstr "Inscribirse"
 
+#~ msgid "Acceleration factor:"
+#~ msgstr "Coeficiente de aceleración:"
+
+#~ msgid ""
+#~ "Speed at which unit moves and animations play when ‘Accelerated speed’ is "
+#~ "enabled or when Shift is held down in-game"
+#~ msgstr ""
+#~ "Velocidad a la que se mueve una unidad y a la que se muestran sus "
+#~ "animaciones cuando ‘Velocidad acelerada’ está activada o cuando se "
+#~ "mantiene presionada la tecla Mayúsculas durante la partida"
+
 #~ msgid "Available at main menu"
 #~ msgstr "Disponible en la pantalla de título"
 
-#~ msgid "FPS limiter"
-#~ msgstr "Limitador de FPS"
+#~ msgid "Limit FPS"
+#~ msgstr "Limitar FPS"
 
 #~ msgid ""
-#~ "Disabling this increases CPU usage to 100 % but may slightly improve "
+#~ "Disabling this increases CPU usage to 100% but may slightly improve "
 #~ "performance at high resolutions"
 #~ msgstr ""
 #~ "Deshabilitando esta opción se aumenta el uso de la CPU hasta el 100 % "
 #~ "aunque podría mejorar sensiblemente el rendimiento en resoluciones altas"
 
+#~ msgid "Rename"
+#~ msgstr "Renombrar"
+
 #~ msgid "The maximum text width is less than 1."
 #~ msgstr "La anchura máxima del texto es menos de 1."
+
+#~ msgid "ascending"
+#~ msgstr "ascendente"
+
+#~ msgid "oldest to newest"
+#~ msgstr "de más viejo a más nuevo"
+
+#~ msgid "descending"
+#~ msgstr "descendente"
+
+#~ msgid "newest to oldest"
+#~ msgstr "de más nuevo a más viejo"
 
 #~ msgid "active_modifications^None"
 #~ msgstr "Ninguna"
 
+#~ msgid "Modifications: "
+#~ msgstr "Modificaciones: "
+
+#~ msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
+#~ msgstr ""
+#~ "¡La consola de lua solo puede usarse en modo depuración! (Ejecute primero "
+#~ "':debug')"
+
+#~ msgid "lua console"
+#~ msgstr "Consola de Lua"
+
 #~ msgid "$game_name (Era: $era_name)"
 #~ msgstr "$game_name (Era: $era_name)"
+
+#~ msgid "era_or_mod^not installed"
+#~ msgstr "Sin instalar"
 
 #~ msgid "Era"
 #~ msgstr "Era"
 
-#~ msgid "era^missing"
-#~ msgstr "desconocida"
+#~ msgid "lobby"
+#~ msgstr "sala"
 
-#~ msgid "$min to $max"
+#~ msgid "number of players^$min to $max"
 #~ msgstr "$min a $max"
+
+#~ msgid "this game"
+#~ msgstr "esta partida"
 
 #~ msgid ""
 #~ "Unsupported image format.\n"
@@ -7713,8 +7769,26 @@ msgstr ""
 #~ "\n"
 #~ "Intente guardar la captura de pantalla como PNG."
 
+#~ msgid "All Scenarios"
+#~ msgstr "Todos los escenarios"
+
+#~ msgid "$count|× $name"
+#~ msgstr "$count|× $name"
+
+#~ msgid "Touch"
+#~ msgstr "Toque"
+
 #~ msgid "Quit to Main Menu"
 #~ msgstr "Salir a la pantalla de título"
+
+#~ msgid "$min to $max"
+#~ msgstr "$min a $max"
+
+#~ msgid "FPS limiter"
+#~ msgstr "Limitador de FPS"
+
+#~ msgid "era^missing"
+#~ msgstr "desconocida"
 
 #~ msgid "Password Reminder"
 #~ msgstr "Recordatorio de contraseña"
@@ -7896,12 +7970,6 @@ msgstr ""
 
 #~ msgid "sort^By first upload"
 #~ msgstr "Por fecha de primera subida al repositorio"
-
-#~ msgid "sort^Ascending"
-#~ msgstr "Ascendente"
-
-#~ msgid "sort^Descending"
-#~ msgstr "Descendente"
 
 #~ msgid "Filter:"
 #~ msgstr "Filtro:"

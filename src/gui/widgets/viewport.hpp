@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2012 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -34,16 +34,8 @@ class viewport : public widget
 	friend struct viewport_implementation;
 
 public:
-	/** @deprecated use the second overload. */
-	explicit viewport(widget& widget);
-
-private:
 	viewport(const implementation::builder_viewport& builder,
 			  const builder_widget::replacements_map& replacements);
-
-public:
-	static viewport* build(const implementation::builder_viewport& builder,
-							const builder_widget::replacements_map& replacements);
 
 	~viewport();
 
@@ -54,7 +46,7 @@ public:
 	virtual void layout_initialize(const bool full_initialization) override;
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(int x_offset, int y_offset) override;
+	virtual void impl_draw_children() override;
 
 	/** See @ref widget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) override;
@@ -83,12 +75,10 @@ public:
 	bool disable_click_dismiss() const override;
 
 	/** See @ref widget::create_walker. */
-	virtual iteration::walker_base* create_walker() override;
+	virtual iteration::walker_ptr create_walker() override;
 
 private:
-	widget& widget_;
-
-	bool owns_widget_;
+	widget_ptr widget_;
 };
 
 // }---------- BUILDER -----------{
@@ -100,9 +90,9 @@ struct builder_viewport : public builder_widget
 {
 	explicit builder_viewport(const config& cfg);
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
-	widget* build(const replacements_map& replacements) const;
+	virtual widget_ptr build(const replacements_map& replacements) const override;
 
 	builder_widget_ptr widget_;
 };

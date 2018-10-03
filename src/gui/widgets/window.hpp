@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2007 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -36,7 +36,6 @@
 #include <vector>
 
 class CVideo;
-class surface;
 struct point;
 
 namespace gui2
@@ -611,6 +610,11 @@ private:
 	 */
 	int mouse_button_state_;
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
@@ -716,11 +720,11 @@ private:
 
 	void signal_handler_message_show_tooltip(const event::ui_event event,
 											 bool& handled,
-											 event::message& message);
+											 const event::message& message);
 
 	void signal_handler_message_show_helptip(const event::ui_event event,
 											 bool& handled,
-											 event::message& message);
+											 const event::message& message);
 
 	void signal_handler_request_placement(const event::ui_event event,
 										  bool& handled);

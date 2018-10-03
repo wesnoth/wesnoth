@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -13,8 +13,6 @@
 */
 
 #pragma once
-
-#ifndef GUI2_EXPERIMENTAL_LISTBOX
 
 #include "gui/widgets/generator.hpp"
 #include "gui/widgets/scrollbar_container.hpp"
@@ -44,6 +42,7 @@ class listbox : public scrollbar_container
 	friend struct implementation::builder_listbox;
 	friend struct implementation::builder_horizontal_listbox;
 	friend struct implementation::builder_grid_listbox;
+
 	friend class debug_layout_graph;
 
 public:
@@ -66,6 +65,7 @@ public:
 			const bool select = true);
 
 	/***** ***** ***** ***** Row handling. ***** ***** ****** *****/
+
 	/**
 	 * When an item in the list is selected by the user we need to
 	 * update the state. We installed a callback handler which
@@ -76,7 +76,7 @@ public:
 	 * @param index               The item before which to add the new item,
 	 *                            0 == begin, -1 == end.
 	 */
-	grid& add_row(const string_map& item, const int index = -1);
+	grid& add_row(const widget_item& item, const int index = -1);
 
 	/**
 	 * Adds single row to the grid.
@@ -95,7 +95,7 @@ public:
 	 * @param index               The item before which to add the new item,
 	 *                            0 == begin, -1 == end.
 	 */
-	grid& add_row(const std::map<std::string /* widget id */, string_map>& data, const int index = -1);
+	grid& add_row(const widget_data& data, const int index = -1);
 
 	/**
 	 * Removes a row in the listbox.
@@ -357,7 +357,7 @@ private:
 	 */
 	void finalize(builder_grid_const_ptr header,
 			builder_grid_const_ptr footer,
-			const std::vector<std::map<std::string, string_map>>& list_data);
+			const std::vector<widget_data>& list_data);
 	/**
 	 * Contains a pointer to the generator.
 	 *
@@ -365,7 +365,7 @@ private:
 	 * of the scrollbar_container super class and freed when it's grid is
 	 * freed.
 	 */
-	generator_base* generator_;
+	generator_ptr generator_;
 
 	const bool is_horizontal_;
 
@@ -414,6 +414,11 @@ private:
 	/** Inherited from scrollbar_container. */
 	virtual void set_content_size(const point& origin, const point& size) override;
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
@@ -444,7 +449,7 @@ struct builder_listbox : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
@@ -460,7 +465,7 @@ struct builder_listbox : public builder_styled_widget
 	 * Contains a vector with the data to set in every cell, it's used to
 	 * serialize the data in the config, so the config is no longer required.
 	 */
-	std::vector<std::map<std::string, string_map>> list_data;
+	std::vector<widget_data> list_data;
 
 	bool has_minimum_, has_maximum_;
 };
@@ -471,7 +476,7 @@ struct builder_horizontal_listbox : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
@@ -484,7 +489,7 @@ struct builder_horizontal_listbox : public builder_styled_widget
 	 * Contains a vector with the data to set in every cell, it's used to
 	 * serialize the data in the config, so the config is no longer required.
 	 */
-	std::vector<std::map<std::string, string_map>> list_data;
+	std::vector<widget_data> list_data;
 
 	bool has_minimum_, has_maximum_;
 };
@@ -495,7 +500,7 @@ struct builder_grid_listbox : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
@@ -508,7 +513,7 @@ struct builder_grid_listbox : public builder_styled_widget
 	 * Contains a vector with the data to set in every cell, it's used to
 	 * serialize the data in the config, so the config is no longer required.
 	 */
-	std::vector<std::map<std::string, string_map>> list_data;
+	std::vector<widget_data> list_data;
 
 	bool has_minimum_, has_maximum_;
 };
@@ -518,5 +523,3 @@ struct builder_grid_listbox : public builder_styled_widget
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

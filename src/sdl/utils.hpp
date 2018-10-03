@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 #include "color.hpp"
 #include "sdl/surface.hpp"
 #include "utils/math.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 
 #include <SDL.h>
 

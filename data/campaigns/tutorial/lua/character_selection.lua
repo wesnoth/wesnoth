@@ -98,6 +98,8 @@ function wml_actions.select_character()
 			facing = unit.facing,
 		}, unit.x, unit.y )
 		wesnoth.sides[1].side_name = _"Li’sar"
+		-- enable the help to display this unit's page
+		wesnoth.add_known_unit("Fighteress")
 	else
 		wesnoth.put_unit(unit)
 	end

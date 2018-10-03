@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
 
 #include "config.hpp"
 #include "recall_list_manager.hpp"
-#include "tests/utils/game_config_manager.hpp"
+#include "tests/utils/game_config_manager_tests.hpp"
 #include "units/unit.hpp"
 #include "units/ptr.hpp"
 

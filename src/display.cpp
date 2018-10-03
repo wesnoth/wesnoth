@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -104,14 +104,12 @@ display::display(const display_context* dc,
 	, fake_unit_man_(new fake_unit_manager(*this))
 	, builder_(new terrain_builder(level, (dc_ ? &get_map() : nullptr), theme_.border().tile_image, theme_.border().show_border))
 	, minimap_location_(sdl::empty_rect)
-	, redrawMinimap_(false)
 	, grid_(false)
 	, diagnostic_label_(0)
 	, turbo_speed_(2)
 	, turbo_(false)
 	, map_labels_(new map_labels(nullptr))
 	, scroll_event_("scrolled")
-	, complete_redraw_event_("completely_redrawn")
 	, fps_counter_()
 	, fps_start_()
 	, fps_actual_()
@@ -721,12 +719,12 @@ void display::draw_fog_shroud_transition_images(const map_location& loc, image::
 	adjacent_loc_array_t adjacent;
 	get_adjacent_tiles(loc, adjacent.data());
 
-	enum visibility { FOG = 0, SHROUD = 1, CLEAR = 2 };
-	visibility tiles[6];
+	enum VISIBILITY { FOG = 0, SHROUD = 1, CLEAR = 2 };
+	std::array<VISIBILITY, 6> tiles;
 
-	const std::string* image_prefix[]{&game_config::fog_prefix, &game_config::shroud_prefix};
+	const std::array<const std::string*, 2> image_prefix {{&game_config::fog_prefix, &game_config::shroud_prefix}};
 
-	for(int i = 0; i < 6; ++i) {
+	for(unsigned i = 0; i < tiles.size(); ++i) {
 		if(shrouded(adjacent[i])) {
 			tiles[i] = SHROUD;
 		} else if(!fogged(loc) && fogged(adjacent[i])) {
@@ -791,7 +789,7 @@ void display::draw_fog_shroud_transition_images(const map_location& loc, image::
 	}
 
 	// Now render the images
-	for(std::string& name : names) {
+	for(const std::string& name : names) {
 		render_scaled_to_zoom(image::get_texture(name), loc); // TODO: image_type
 	}
 }
@@ -910,7 +908,6 @@ int display::draw_text_in_hex(const map_location& loc,
 void display::select_hex(map_location hex)
 {
 	selectedHex_ = hex;
-	recalculate_minimap();
 }
 
 void display::highlight_hex(map_location hex)
@@ -994,8 +991,6 @@ bool display::scroll(int xmove, int ymove, bool force)
 	labels().recalculate_shroud();
 
 	scroll_event_.notify_observers();
-
-	redrawMinimap_ = true;
 
 	return true;
 }
@@ -1696,8 +1691,12 @@ void display::draw_gamemap()
 
 		const overlay& item = overlay_record.second;
 		const std::string& current_team_name = get_teams()[viewing_team()].team_name();
+		const std::vector<std::string>& current_team_names = utils::split(current_team_name);
+		const std::vector<std::string>& team_names = utils::split(item.team_name);
 
-		if((item.team_name.empty() || item.team_name.find(current_team_name) != std::string::npos) &&
+		if((item.team_name.empty() ||
+			std::find_first_of(team_names.begin(), team_names.end(),
+				current_team_names.begin(), current_team_names.end()) != team_names.end()) &&
 			(!fogged(o_loc) || item.visible_in_fog))
 		{
 			const texture tex = item.image.find("~NO_TOD_SHIFT()") == std::string::npos
@@ -1948,10 +1947,6 @@ void display::draw()
 
 	// Draw floating labels (includes map labels).
 	font::draw_floating_labels();
-
-	// TODO: what dis?
-	// events::raise_volatile_draw_event();
-	// events::raise_volatile_undraw_event();
 
 	// Execute any post-draw actions from derived classes.
 	post_draw();

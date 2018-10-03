@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -191,10 +191,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 		if (resources::gameboard->is_observer() || (resources::gameboard->teams())[display::get_singleton()->playing_team()].is_local_human()) {
 			display::get_singleton()->set_team(display::get_singleton()->playing_team());
-			display::get_singleton()->recalculate_minimap();
 		} else if (tm.is_local_human()) {
 			display::get_singleton()->set_team(side - 1);
-			display::get_singleton()->recalculate_minimap();
 		}
 
 		resources::whiteboard->on_change_controller(side,tm);

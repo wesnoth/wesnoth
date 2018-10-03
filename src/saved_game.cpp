@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -77,6 +77,7 @@
 #include "variable_info.hpp"
 
 #include <cassert>
+#include <iomanip>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -93,6 +94,7 @@ saved_game::saved_game()
 	, starting_point_type_(STARTING_POINT_NONE)
 	, starting_point_()
 	, replay_data_()
+	, skip_story_(false)
 {
 }
 
@@ -105,6 +107,7 @@ saved_game::saved_game(config cfg)
 	, starting_point_type_(STARTING_POINT_NONE)
 	, starting_point_()
 	, replay_data_()
+	, skip_story_(false)
 
 {
 	set_data(cfg);
@@ -119,6 +122,7 @@ saved_game::saved_game(const saved_game& state)
 	, starting_point_type_(state.starting_point_type_)
 	, starting_point_(state.starting_point_)
 	, replay_data_(state.replay_data_)
+	, skip_story_(state.skip_story_)
 {
 }
 
@@ -134,7 +138,9 @@ void saved_game::set_random_seed()
 		return;
 	}
 
-	carryover_["random_seed"] = randomness::generator->get_random_int(0, INT_MAX);
+	std::stringstream stream;
+	stream << std::setfill('0') << std::setw(8) << std::hex << randomness::generator->get_random_int(0, INT_MAX);
+	carryover_["random_seed"] = stream.str();
 	carryover_["random_calls"] = 0;
 }
 
@@ -188,7 +194,7 @@ void saved_game::set_defaults()
 	for(config& side : starting_point_.child_range("side")) {
 		// Set save_id default value directly after loading to its default to prevent different default behaviour in
 		// mp_connect code and sp code.
-		
+
 		if(side["no_leader"].to_bool()) {
 			side["leader_lock"] = true;
 			side.remove_attribute("type");
@@ -237,17 +243,7 @@ void saved_game::expand_scenario()
 			// A hash has to be generated using an unmodified scenario data.
 			mp_settings_.hash = scenario.hash();
 
-			// Add addon_id information if it exists.
-			if(!scenario["addon_id"].empty() && scenario["require_scenario"].to_bool(false)) {
-				config required_scenario;
-
-				required_scenario["id"] = scenario["addon_id"];
-				required_scenario["name"] = scenario["addon_title"];
-				required_scenario["version"] = scenario["addon_version"];
-				required_scenario["min_version"] = scenario["addon_min_version"];
-
-				mp_settings_.update_addon_requirements(required_scenario);
-			}
+			check_require_scenario();
 
 			update_label();
 			set_defaults();
@@ -256,6 +252,27 @@ void saved_game::expand_scenario()
 			this->starting_point_.clear();
 		}
 	}
+}
+
+void saved_game::check_require_scenario()
+{
+	if(!starting_point_["require_scenario"].to_bool(false)) {
+		return;
+	}
+
+	if(starting_point_["addon_id"].empty()) {
+		//ERR_NG << "cannot handle require_scenario=yes because we don't know from which addon that scenario came from\n";
+		return;
+	}
+
+	config required_scenario;
+
+	required_scenario["id"] = starting_point_["addon_id"];
+	required_scenario["name"] = starting_point_["addon_title"];
+	required_scenario["version"] = starting_point_["addon_version"];
+	required_scenario["min_version"] = starting_point_["addon_min_version"];
+
+	mp_settings_.update_addon_requirements(required_scenario);
 }
 
 namespace
@@ -281,7 +298,7 @@ struct modevents_entry
 
 } // end anon namespace
 
-void saved_game::load_mod(const std::string& type, const std::string& id)
+void saved_game::load_mod(const std::string& type, const std::string& id, config::all_children_iterator pos)
 {
 	if(const config& cfg = game_config_manager::get()->game_config().find_child(type, "id", id)) {
 		// Note the addon_id if this mod is required to play the game in mp.
@@ -306,18 +323,18 @@ void saved_game::load_mod(const std::string& type, const std::string& id)
 			if(modevent["enable_if"].empty()
 				|| variable_to_bool(carryover_.child_or_empty("variables"), modevent["enable_if"])
 			) {
-				this->starting_point_.add_child("event", modevent);
+				this->starting_point_.add_child_at("event", modevent, pos++);
 			}
 		}
 
 		// Copy lua
 		for(const config& modlua : cfg.child_range("lua")) {
-			this->starting_point_.add_child("lua", modlua);
+			this->starting_point_.add_child_at("lua", modlua, pos++);
 		}
 
 		// Copy load_resource
 		for(const config& load_resource : cfg.child_range("load_resource")) {
-			this->starting_point_.add_child("load_resource", load_resource);
+			this->starting_point_.add_child_at("load_resource", load_resource, pos++);
 		}
 	} else {
 		// TODO: A user message instead?
@@ -350,25 +367,24 @@ void saved_game::expand_mp_events()
 			mods.emplace_back("campaign", classification_.campaign);
 		}
 
-		// In the first iteration mod contains no [resource]s in all other iterations, mods contains only [resource]s.
-		do {
-			for(modevents_entry& mod : mods) {
-				load_mod(mod.type, mod.id);
+		for(modevents_entry& mod : mods) {
+			load_mod(mod.type, mod.id, this->starting_point_.ordered_end());
+		}
+		mods.clear();
+
+		while(starting_point_.has_child("load_resource")) {
+			//todo: this looks like too much exposure of configs internals.
+			auto pos = std::find_if(starting_point_.ordered_begin(), starting_point_.ordered_end(), [&](const config::any_child& can){ return can.key == "load_resource"; });
+			assert(pos != starting_point_.ordered_end());
+			//assert(pos->index == 0);
+			std::string id = pos->cfg["id"];
+			starting_point_.remove_child("load_resource", 0);
+			//pos is still valid because starting_point_.ordered_begin() is a vector iterator.
+			if(loaded_resources.find(id) == loaded_resources.end()) {
+				loaded_resources.insert(id);
+				load_mod("resource", id, pos);
 			}
-
-			mods.clear();
-
-			for(const config& cfg : starting_point_.child_range("load_resource")) {
-				if(loaded_resources.find(cfg["id"].str()) == loaded_resources.end()) {
-					mods.emplace_back("resource", cfg["id"].str());
-
-					loaded_resources.insert(cfg["id"].str());
-				}
-			}
-
-			starting_point_.clear_children("load_resource");
-		} while(!mods.empty());
-
+		}
 		this->starting_point_["has_mod_events"] = true;
 	}
 }
@@ -417,12 +433,7 @@ void saved_game::expand_random_scenario()
 			config scenario_new =
 				random_generate_scenario(starting_point_["scenario_generation"], starting_point_.child("generator"));
 
-			// Preserve "story" form the scenario toplevel.
-			for(config& story : starting_point_.child_range("story")) {
-				scenario_new.add_child("story", story);
-			}
-
-			scenario_new["id"] = starting_point_["id"];
+			post_scenario_generation(starting_point_, scenario_new);
 			starting_point_ = scenario_new;
 
 			update_label();
@@ -445,6 +456,33 @@ void saved_game::expand_random_scenario()
 		}
 	}
 }
+
+void saved_game::post_scenario_generation(const config& old_scenario, config& generated_scenario)
+{
+	static const std::vector<std::string> attributes_to_copy {
+		"id",
+		"addon_id",
+		"addon_title",
+		"addon_version",
+		"addon_min_version",
+		"require_scenario",
+	};
+
+	// TODO: should we add "description" to this list?
+	// TODO: in theory it is possible that whether the scenario is required depends on the generated scenario, so maybe remove require_scenario from this list.
+
+	for(const auto& str : attributes_to_copy) {
+		generated_scenario[str] = old_scenario[str];
+	}
+
+	// Preserve "story" form the scenario toplevel.
+	// Note that it does not delete [story] tags in generated_scenario, so you can still have your story
+	// dependent on the generated scenario.
+	for(const config& story : old_scenario.child_range("story")) {
+		generated_scenario.add_child("story", story);
+	}
+}
+
 
 void saved_game::expand_carryover()
 {

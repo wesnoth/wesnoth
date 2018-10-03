@@ -56,7 +56,7 @@ opts.AddVariables(
     BoolVariable('enable_lto', 'Whether to enable Link Time Optimization for build=release', False),
     ('arch', 'What -march option to use for build=release, will default to pentiumpro on Windows', ""),
     ('opt', 'override for the build\'s optimization level', ""),
-    BoolVariable('harden', 'Whether to enable options to harden the executables', False),
+    BoolVariable('harden', 'Whether to enable options to harden the executables', True),
     BoolVariable('glibcxx_debug', 'Whether to define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC for build=debug', False),
     EnumVariable('profiler', 'profiler to be used for build=profile', "gprof", ["gprof", "gcov", "gperftools", "perf"]),
     EnumVariable('pgo_data', 'whether to generate profiling data for PGO, or use existing profiling data', "", ["", "generate", "use"]),
@@ -308,7 +308,7 @@ def Warning(message):
 
 from metasconf import init_metasconf
 configure_args = dict(
-    custom_tests = init_metasconf(env, ["ieee_754", "cplusplus", "python_devel", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext_tool", "lua", "gl"]),
+    custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext_tool", "lua", "gl"]),
     config_h = "$build_dir/config.h",
     log_file="$build_dir/config.log", conf_dir="$build_dir/sconf_temp")
 
@@ -338,13 +338,6 @@ if env["prereqs"]:
     conf.CheckLib("m")
     conf.CheckFunc("round")
 
-    def CheckIEEE754(conf):
-        if not env["host"]:
-            return conf.CheckIEEE754()
-        else:
-            Warning("You are cross-compiling. Skipping IEEE 754 test.")
-            return True
-
     def CheckAsio(conf):
         if env["PLATFORM"] == 'win32':
             conf.env.Append(LIBS = ["libws2_32"])
@@ -361,8 +354,10 @@ if env["prereqs"]:
             conf.CheckSDL("SDL2_mixer", header_file = "SDL_mixer") & \
             conf.CheckSDL("SDL2_image", header_file = "SDL_image")
 
+    if sys.platform == "msys":
+        env["PKG_CONFIG_FLAGS"] = "--dont-define-prefix"
+
     have_server_prereqs = (\
-        CheckIEEE754(conf) & \
         conf.CheckCPlusPlus(gcc_version = "4.8") & \
         conf.CheckLib("libcrypto") & \
         conf.CheckBoost("iostreams", require_version = boost_version) & \
@@ -379,6 +374,9 @@ if env["prereqs"]:
     if(have_server_prereqs and not env["host"]):
         conf.CheckBoostLocaleBackends(["icu", "winapi"]) \
             or Warning("Only icu and winapi backends of Boost Locale are supported. Bugs/crashes are very likely with other backends")
+
+    if env['harden']:
+        env["have_fortify"] = conf.CheckFortifySource()
 
     env = conf.Finish()
 
@@ -501,12 +499,22 @@ for env in [test_env, client_env, env]:
 
 # #
 # Add options to provide more hardened executables
+# osx doesn't seem to support RELRO
+# windows' tdm-gcc doesn't seem to provide good support for the hardening options in general
 # #
 
-        if env['harden']:
+        if env['harden'] and env["PLATFORM"] != 'win32':
             env.AppendUnique(CCFLAGS = ["-fPIE", "-fstack-protector-strong"])
-            env.AppendUnique(LINKFLAGS = ["-fPIE", "-pie", "-Wl,-z,now,-z,relro"])
-            env.AppendUnique(CPPDEFINES = ["_FORTIFY_SOURCE=2"])
+            if not env["have_fortify"] and "-O0" not in env["opt"]:
+                env.AppendUnique(CPPDEFINES = ["_FORTIFY_SOURCE=2"])
+
+            if env["enable_lto"] == True:
+                env.AppendUnique(LINKFLAGS = ["-fstack-protector-strong"])
+
+            if env["PLATFORM"] == 'darwin':
+                env.AppendUnique(LINKFLAGS = ["-fPIE", "-Wl,-pie"])
+            else:
+                env.AppendUnique(LINKFLAGS = ["-fPIE", "-pie", "-Wl,-z,relro,-z,now"])
 
 # #
 # Start determining options for debug build
@@ -564,6 +572,10 @@ for env in [test_env, client_env, env]:
                 rel_comp_flags = rel_comp_flags + " -flto=thin"
                 rel_link_flags = rel_comp_flags + " -fuse-ld=lld"
 
+# Enable ASLR and NX bit support on mingw
+        if "mingw" in env["TOOLS"]:
+            rel_link_flags += "-Wl,--dynamicbase -Wl,--nxcompat"
+
 # #
 # End setting options for release build
 # Start setting options for profile build
@@ -601,7 +613,7 @@ for env in [test_env, client_env, env]:
         env[d] = os.path.join(env["prefix"], env[d])
 
     if env["PLATFORM"] == 'win32':
-        env.Append(LIBS = ["wsock32", "iconv", "z", "shlwapi", "winmm"], CCFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"], CPPDEFINES = ["_WIN32_WINNT=0x0601"])
+        env.Append(LIBS = ["wsock32", "iconv", "z", "shlwapi", "winmm", "ole32", "uuid"], CCFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"], CPPDEFINES = ["_WIN32_WINNT=0x0601"])
 
     if env["PLATFORM"] == 'darwin':            # Mac OS X
         env.Append(FRAMEWORKS = "Cocoa")            # Cocoa GUI
@@ -767,11 +779,11 @@ if 'dist' in COMMAND_LINE_TARGETS:    # Speedup, the manifest is expensive
     def dist_manifest():
         "Get an argument list suitable for passing to a distribution archiver."
         # Start by getting a list of all files under version control
-        lst = subprocess.check_output("git ls-files | grep -v 'data\/test\/.*' | awk '/^[^?]/ {print $4;}'", shell=True).split()
+        lst = subprocess.check_output("git ls-files", shell=True).splitlines()
         lst = filter(os.path.isfile, lst)
         return lst
     dist_tarball = env.Tar('wesnoth-${version}.tar.bz2', [])
-    open("dist.manifest", "w").write("\n".join(dist_manifest() + ["src/revision.hpp"]))
+    open("dist.manifest", "w").write("\n".join(dist_manifest() + ["src/revision.h"]))
     env.Append(TARFLAGS='-j -T dist.manifest --transform "s,^,wesnoth-$version/,"',
                TARCOMSTR="Making distribution tarball...")
     env.AlwaysBuild(dist_tarball)

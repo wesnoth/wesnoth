@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -302,8 +302,9 @@ double move_leader_to_goals_phase::evaluate()
 	}
 
 	pathfind::shortest_path_calculator calc(*leader, current_team(), resources::gameboard->teams(), resources::gameboard->map());
+	const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*leader, current_team());
 	pathfind::plain_route route = a_star_search(leader->get_location(), dst_, 1000.0, calc,
-			resources::gameboard->map().w(), resources::gameboard->map().h());
+			resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
 	if(route.steps.empty()) {
 		LOG_AI_TESTING_AI_DEFAULT << "route empty";
 		return BAD_SCORE;
@@ -1616,6 +1617,11 @@ void leader_shares_keep_phase::execute()
 
 	//check for each ai leader if he should move away from his keep
 	for (unit_map::unit_iterator &ai_leader : ai_leaders) {
+		if(!ai_leader.valid()) {
+			//This can happen if wml killed or moved a leader during a movement events of another leader
+			WRN_AI_TESTING_AI_DEFAULT << "leader_shares_keep_phase: Leader vanished.\n";
+			continue;
+		}
 		//only if leader is on a keep
 		const map_location &keep = ai_leader->get_location();
 		if ( !resources::gameboard->map().is_keep(keep) ) {
@@ -1630,6 +1636,12 @@ void leader_shares_keep_phase::execute()
 		//for each leader, check if he's allied and can reach our keep
 		for(path_map::const_iterator i = possible_moves.begin(); i != possible_moves.end(); ++i){
 			const unit_map::const_iterator itor = resources::gameboard->units().find(i->first);
+			if(!itor.valid()) {
+				//This can happen if wml killed or moved a unit during a movement events of another leader
+				WRN_AI_TESTING_AI_DEFAULT << "leader_shares_keep_phase: Unit vanished.\n";
+				continue;
+			}
+
 			team &leader_team = resources::gameboard->get_team(itor->side());
 			if(itor != resources::gameboard->units().end() && itor->can_recruit() && itor->side() != get_side() && (leader_team.total_income() + leader_team.gold() > leader_team.minimum_recruit_price())){
 				pathfind::paths::dest_vect::const_iterator tokeep = i->second.destinations.find(keep);
@@ -1669,6 +1681,7 @@ void leader_shares_keep_phase::execute()
 					}else{
 						ai_leader->set_goto(keep);
 					}
+					//TODO: maybe we should we fix the entry in possible_moves for this move to avoid getting the 'Unit vanished' warning above.
 				}else{
 					LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok" << std::endl;
 				}

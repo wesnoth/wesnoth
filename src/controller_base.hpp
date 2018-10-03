@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -61,7 +61,7 @@ class manager;
 class controller_base : public events::sdl_handler, public events::pump_monitor
 {
 public:
-	controller_base(const config& game_config);
+	controller_base();
 	virtual ~controller_base();
 
 	virtual void play_slice(bool is_delay_enabled = true);

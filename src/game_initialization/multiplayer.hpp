@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2005 - 2018 Philippe Plantier <ayin@anathas.org>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -57,13 +57,12 @@ void start_client(const config& game_config,
  * Opens mp::connect screen and sets game state according to the
  * changes made.
  */
-bool goto_mp_connect(ng::connect_engine& engine,
-	const config& game_config, wesnothd_connection* connection);
+bool goto_mp_connect(ng::connect_engine& engine, wesnothd_connection* connection);
 
 /**
  * Opens mp::wait screen and sets game state according to the
  * changes made.
  */
-bool goto_mp_wait(saved_game& state, const config& game_config, wesnothd_connection* connection, bool observe);
+bool goto_mp_wait(saved_game& state, wesnothd_connection* connection, bool observe);
 
 }

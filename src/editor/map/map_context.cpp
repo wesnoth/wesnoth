@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -604,6 +604,9 @@ bool map_context::save_scenario()
 
 		throw editor_map_save_exception(msg);
 	}
+
+	// After saving the map as a scenario, it's no longer a pure map.
+	pure_map_ = false;
 
 	// TODO the return value of this method does not need to be boolean.
 	// We either return true or there is an exception thrown.

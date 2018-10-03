@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,7 +17,6 @@
 #include "gui/widgets/spacer.hpp"
 
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 
 #include "utils/functional.hpp"
 
@@ -29,7 +28,7 @@ namespace gui2
 REGISTER_WIDGET(spacer)
 
 spacer::spacer(const implementation::builder_spacer& builder, const std::string& w, const std::string& h)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 	, width_(w)
 	, height_(h)
 {
@@ -96,7 +95,7 @@ bool spacer::disable_click_dismiss() const
 	return false;
 }
 
-void spacer::impl_draw_background(int /*x_offset*/, int /*y_offset*/)
+void spacer::impl_draw_background()
 {
 	/* DO NOTHING */
 }
@@ -159,7 +158,7 @@ spacer_definition::resolution::resolution(const config& cfg)
  * @end{table}
  *
  * The variable available are the same as for the window resolution see
- * http://www.wesnoth.org/wiki/GUIToolkitWML#Resolution_2 for the list of
+ * https://www.wesnoth.org/wiki/GUIToolkitWML#Resolution_2 for the list of
  * items.
  * @end{tag}{name="spacer"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
@@ -173,9 +172,9 @@ builder_spacer::builder_spacer(const config& cfg)
 {
 }
 
-widget* builder_spacer::build() const
+widget_ptr builder_spacer::build() const
 {
-	spacer* widget = new spacer(*this, width_, height_);
+	auto widget = std::make_shared<spacer>(*this, width_, height_);
 
 	DBG_GUI_G << "Window builder: placed spacer '" << id
 			  << "' with definition '" << definition << "'.\n";

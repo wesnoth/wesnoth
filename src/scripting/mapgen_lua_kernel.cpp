@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -160,6 +160,7 @@ void mapgen_lua_kernel::user_config(const char * prog, const config & generator)
 std::string mapgen_lua_kernel::create_map(const char * prog, const config & generator, boost::optional<uint32_t> seed) // throws game::lua_error
 {
 	random_seed_ = seed;
+	default_rng_ = std::mt19937(get_random_seed());
 	run_generator(prog, generator);
 
 	if (!lua_isstring(mState,-1)) {
@@ -175,6 +176,7 @@ std::string mapgen_lua_kernel::create_map(const char * prog, const config & gene
 config mapgen_lua_kernel::create_scenario(const char * prog, const config & generator, boost::optional<uint32_t> seed) // throws game::lua_error
 {
 	random_seed_ = seed;
+	default_rng_ = std::mt19937(get_random_seed());
 	run_generator(prog, generator);
 
 	if (!lua_istable(mState, -1)) {

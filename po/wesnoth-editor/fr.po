@@ -11,9 +11,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Editor-1.12\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-04-15 17:43+0200\n"
+"PO-Revision-Date: 2018-09-12 14:29+0200\n"
 "Last-Translator: Émile Enguehard <zerbugug@gmail.com>\n"
 "Language-Team: français <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -45,10 +45,8 @@ msgstr "Ligne d'hexagones NO-SE"
 
 #. [brush]: id=brush-sw-ne
 #: data/core/editor/brushes.cfg:63
-#, fuzzy
-#| msgid "Hex Line SE-NW"
 msgid "Hex Line SW-NE"
-msgstr "Ligne d'hexagones SE-NW"
+msgstr "Ligne d'hexagones SO-NE"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -199,7 +197,7 @@ msgstr "Carte"
 #. [menu]: id=menu-unit-facing
 #: data/themes/editor.cfg:98
 msgid "Unit Facing"
-msgstr ""
+msgstr "Orientation de l'unité"
 
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:104
@@ -278,7 +276,6 @@ msgstr "Coût : "
 
 # J'arrive pas trop à voir ce que c'est, surtout que je n'arrive qu'à mettre des anciennes liches dans cette partie ce qui est bizarre.
 #: src/editor/action/mouse/mouse_action_unit.cpp:59
-#, fuzzy
 msgid "Recruit: "
 msgstr "Peut recruter : "
 
@@ -532,6 +529,15 @@ msgstr "Aucun"
 msgid "Player $player_number"
 msgstr "Joueur $player_number"
 
+#~ msgid "time of day^None"
+#~ msgstr "Aucun"
+
+#~ msgid "Error"
+#~ msgstr "Erreur"
+
+#~ msgid "Invalid location id"
+#~ msgstr "Identifiant de localisation invalide"
+
 #~ msgid "(New Map)"
 #~ msgstr "(Nouvelle carte)"
 
@@ -648,9 +654,6 @@ msgstr "Joueur $player_number"
 
 #~ msgid "Error creating action object"
 #~ msgstr "Erreur lors de la création d'un objet d'action"
-
-#~ msgid "Error"
-#~ msgstr "Erreur"
 
 #, fuzzy
 #~ msgid ""

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -635,8 +635,7 @@ void distributor::keyboard_add_to_chain(widget* widget)
 void distributor::keyboard_remove_from_chain(widget* w)
 {
 	assert(w);
-	std::vector<widget*>::iterator itor = std::find(
-			keyboard_focus_chain_.begin(), keyboard_focus_chain_.end(), w);
+	auto itor = std::find(keyboard_focus_chain_.begin(), keyboard_focus_chain_.end(), w);
 
 	if(itor != keyboard_focus_chain_.end()) {
 		keyboard_focus_chain_.erase(itor);
@@ -767,10 +766,7 @@ void distributor::signal_handler_notify_removal(dispatcher& w,
 	if(keyboard_focus_ == &w) {
 		keyboard_focus_ = nullptr;
 	}
-	const std::vector<widget*>::iterator itor
-			= std::find(keyboard_focus_chain_.begin(),
-						keyboard_focus_chain_.end(),
-						&w);
+	const auto itor = std::find(keyboard_focus_chain_.begin(), keyboard_focus_chain_.end(), &w);
 	if(itor != keyboard_focus_chain_.end()) {
 		keyboard_focus_chain_.erase(itor);
 	}

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -36,24 +36,11 @@ public:
 	typedef std::function<config(config)> accessor_function;
 	struct aReg { char const * name; accessor_function func; };
 
+	using reg_vec = std::vector<Reg>;
+	using areg_vec = std::vector<aReg>;
+
 	plugins_context( const std::string & name );
-	plugins_context( const std::string & name, const std::vector<Reg>& callbacks, const std::vector<aReg>& accessors);
-	template<int N, int M>
-	plugins_context( const std::string & name, const Reg (& callbacks)[N], const aReg (& accessors)[M])
-		: name_(name)
-	{
-		std::vector<Reg> l;
-		std::vector<aReg> r;
-		l.reserve(N);
-		r.reserve(M);
-		for(int i = 0; i < N; i++) {
-			l.push_back(callbacks[i]);
-		}
-		for(int i = 0; i < M; i++) {
-			r.push_back(accessors[i]);
-		}
-		initialize(l, r);
-	}
+	plugins_context( const std::string & name, const reg_vec& callbacks, const areg_vec& accessors);
 
 	void play_slice();
 
@@ -74,7 +61,7 @@ private:
 	typedef std::map<std::string, callback_function > callback_list;
 	typedef std::map<std::string, accessor_function > accessor_list;
 
-	void initialize(const std::vector<Reg>& callbacks, const std::vector<aReg>& accessors);
+	void initialize(const reg_vec& callbacks, const areg_vec& accessors);
 
 	callback_list callbacks_;
 	accessor_list accessors_;

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -663,7 +663,7 @@ void play_music_repeatedly(const std::string& id)
 	last_track.reset();
 }
 
-void play_music_config(const config& music_node, int i)
+void play_music_config(const config& music_node, bool allow_interrupt_current_track, int i)
 {
 	//
 	// FIXME: there is a memory leak somewhere in this function, seemingly related to the shared_ptrs
@@ -720,7 +720,8 @@ void play_music_config(const config& music_node, int i)
 		current_track = *iter;
 		current_track_index = iter - current_track_list.begin();
 		play_music();
-	} else if(!track.append() && current_track) { // Make sure the current track is finished
+	} else if(!track.append() && !allow_interrupt_current_track && current_track) {
+		// Make sure the current track will finish first
 		current_track->set_play_once(true);
 	}
 }
@@ -828,17 +829,7 @@ void reposition_sound(int id, unsigned int distance)
 		}
 
 		if(distance >= DISTANCE_SILENT) {
-			// Don't call Mix_FadeOutChannel if the channel's volume is set to
-			// zero. It doesn't do anything in that case and the channel will
-			// resume playing as soon as its volume is reset to a non-zero
-			// value, which results in issues like sound sources deleted while
-			// their volume is zero coming back to life and escaping Wesnoth's
-			// sound source management code.
-			if(Mix_Volume(ch, -1) == 0) {
-				Mix_HaltChannel(ch);
-			} else {
-				Mix_FadeOutChannel(ch, 100);
-			}
+			Mix_HaltChannel(ch);
 		} else {
 			Mix_SetDistance(ch, distance);
 		}

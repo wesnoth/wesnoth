@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,10 +16,11 @@
 #include "lexical_cast.hpp"
 
 wesnothd::player::player(const std::string& n, simple_wml::node& cfg,
-                         bool registered, const std::size_t max_messages,
+                         bool registered, const std::string& version, const std::size_t max_messages,
                          const std::size_t time_period,
                          const bool moderator)
   : name_(n)
+  , version_(version)
   , cfg_(cfg)
   , registered_(registered)
   , flood_start_(0)

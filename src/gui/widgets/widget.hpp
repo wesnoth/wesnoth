@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2007 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,19 +14,20 @@
 
 #pragma once
 
-#include "gui/core/event/dispatcher.hpp"
-#include "sdl/point.hpp"
-#include "gui/widgets/event_executor.hpp"
 #include "color.hpp"
+#include "gui/core/event/dispatcher.hpp"
+#include "gui/widgets/event_executor.hpp"
+#include "sdl/point.hpp"
 
 #include <string>
 
-class surface;
-
-typedef std::map<std::string, t_string> string_map;
-
 namespace gui2
 {
+/* Data format used by styled_widget::set_members to set settings for a single widget. */
+using widget_item = std::map<std::string, t_string>;
+
+/* Indexes multiple @ref widget_item maps by widget ID. */
+using widget_data = std::map<std::string, widget_item>;
 
 struct builder_widget;
 class window;
@@ -34,7 +35,7 @@ class grid;
 
 namespace iteration
 {
-class walker_base;
+using walker_ptr = std::unique_ptr<class walker_base>;
 } // namespace iteration
 
 /**
@@ -508,12 +509,9 @@ public:
 	 * The blitting rectangle is the entire widget rectangle, but offsetted for
 	 * drawing position.
 	 *
-	 * @param x_offset            The offset in the x-direction when drawn.
-	 * @param y_offset            The offset in the y-direction when drawn.
-	 *
 	 * @returns                   The drawing rectangle.
 	 */
-	SDL_Rect calculate_blitting_rectangle(const int x_offset, const int y_offset) const;
+	SDL_Rect calculate_blitting_rectangle() const;
 
 	/**
 	 * Calculates the clipping rectangle of the widget.
@@ -522,25 +520,17 @@ public:
 	 * @ref redraw_action::partly. Since the drawing can be offsetted it also
 	 * needs offset parameters.
 	 *
-	 * @param x_offset            The offset in the x-direction when drawn.
-	 * @param y_offset            The offset in the y-direction when drawn.
-	 *
 	 * @returns                   The clipping rectangle.
 	 */
-	SDL_Rect calculate_clipping_rectangle(const int x_offset, const int y_offset) const;
+	SDL_Rect calculate_clipping_rectangle() const;
 
 	/**
 	 * Draws the background of a widget.
 	 *
 	 * Derived should override @ref impl_draw_background instead of changing
 	 * this function.
-	 *
-	 * @param x_offset            The offset in the x-direction in the
-	 *                            @p frame_buffer to draw.
-	 * @param y_offset            The offset in the y-direction in the
-	 *                            @p frame_buffer to draw.
 	 */
-	void draw_background(int x_offset, int y_offset);
+	void draw_background();
 
 	/**
 	 * Draws the children of a widget.
@@ -549,13 +539,8 @@ public:
 	 *
 	 * Derived should override @ref impl_draw_children instead of changing
 	 * this function.
-	 *
-	 * @param x_offset            The offset in the x-direction in the
-	 *                            @p frame_buffer to draw.
-	 * @param y_offset            The offset in the y-direction in the
-	 *                            @p frame_buffer to draw.
 	 */
-	void draw_children(int x_offset, int y_offset);
+	void draw_children();
 
 	/**
 	 * Draws the foreground of the widget.
@@ -565,13 +550,8 @@ public:
 	 *
 	 * Derived should override @ref impl_draw_foreground instead of changing
 	 * this function.
-	 *
-	 * @param x_offset            The offset in the x-direction in the
-	 *                            @p frame_buffer to draw.
-	 * @param y_offset            The offset in the y-direction in the
-	 *                            @p frame_buffer to draw.
 	 */
-	void draw_foreground(int x_offset, int y_offset);
+	void draw_foreground();
 
 private:
 	/** See @ref draw_background. */
@@ -579,17 +559,13 @@ private:
 	{
 	}
 
-	virtual void impl_draw_background(int /*x_offset*/, int /*y_offset*/)
-	{
-	}
-
 	/** See @ref draw_children. */
-	virtual void impl_draw_children(int /*x_offset*/, int /*y_offset*/)
+	virtual void impl_draw_children()
 	{
 	}
 
 	/** See @ref draw_foreground. */
-	virtual void impl_draw_foreground(int /*x_offset*/, int /*y_offset*/)
+	virtual void impl_draw_foreground()
 	{
 	}
 
@@ -654,7 +630,6 @@ private:
 	color_t debug_border_color_;
 
 	void draw_debug_border();
-	void draw_debug_border(int x_offset, int y_offset);
 
 	/***** ***** ***** ***** Query functions ***** ***** ***** *****/
 
@@ -750,8 +725,10 @@ public:
 	/** Does the widget disable easy close? */
 	virtual bool disable_click_dismiss() const = 0;
 
-	/** Creates a new walker object on the heap. */
-	virtual iteration::walker_base* create_walker() = 0;
+	/** Creates a new walker object managed by a smart pointer. */
+	virtual iteration::walker_ptr create_walker() = 0;
 };
+
+using widget_ptr = std::shared_ptr<widget>;
 
 } // namespace gui2

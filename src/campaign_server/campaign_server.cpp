@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@
 #include "campaign_server/blacklist.hpp"
 #include "campaign_server/control.hpp"
 #include "campaign_server/fs_commit.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 #include "hash.hpp"
 
 #include <csignal>
@@ -805,7 +805,8 @@ void server::handle_upload(const server::request& req)
 		LOG_CS << "Upload aborted - invalid file names in add-on data (" << badnames.size() << " entries).\n";
 		send_error(
 			"Add-on rejected: The add-on contains files or directories with illegal names. "
-			"File or directory names may not contain whitespace, control characters or any of the following characters: '\" * / : < > ? \\ | ~'. "
+			// Note: the double double quote will be flattened to a single double quote.
+			"File or directory names may not contain whitespace, control characters or any of the following characters: '\"\" * / : < > ? \\ | ~'. "
 			"It also may not contain '..' end with '.' or be longer than 255 characters.",
 			filelist, req.sock);
 	} else if(!check_case_insensitive_duplicates(data, &badnames)) {

@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2011, 2015 by Iris Morelle <shadowm2006@gmail.com>
    Copyright (C) 2016 - 2018 by Charles Dang <exodia339gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -97,7 +97,7 @@ private:
 	template<bool(*toggle_getter)(), bool(*toggle_setter)(bool), int(*vol_getter)(), void(*vol_setter)(int)>
 	void initialize_sound_option_group(const std::string& id_suffix);
 
-	std::map<std::string, string_map> get_friends_list_row_data(const preferences::acquaintance& entry);
+	widget_data get_friends_list_row_data(const preferences::acquaintance& entry);
 
 	void add_friend_list_entry(const bool is_friend, text_box& textbox, window& window);
 	void remove_friend_list_entry(listbox& friends_list, text_box& textbox, window& window);

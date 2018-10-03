@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,15 +19,10 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
@@ -206,7 +201,8 @@ void campaign_selection::pre_show(window& window)
 	/***** Setup campaign tree. *****/
 	tree_view& tree = find_widget<tree_view>(&window, "campaign_tree", false);
 
-	tree.set_selection_change_callback(std::bind(&campaign_selection::campaign_selected, this, std::ref(window)));
+	connect_signal_notify_modified(tree,
+		std::bind(&campaign_selection::campaign_selected, this, std::ref(window)));
 
 	toggle_button& sort_name = find_widget<toggle_button>(&window, "sort_name", false);
 	toggle_button& sort_time = find_widget<toggle_button>(&window, "sort_time", false);
@@ -229,8 +225,8 @@ void campaign_selection::pre_show(window& window)
 		add_campaign_to_tree(window, campaign);
 
 		/*** Add detail item ***/
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["label"] = campaign["description"];
 		item["use_markup"] = "true";
@@ -280,8 +276,8 @@ void campaign_selection::pre_show(window& window)
 void campaign_selection::add_campaign_to_tree(window& window, const config& campaign)
 {
 	tree_view& tree = find_widget<tree_view>(&window, "campaign_tree", false);
-	std::map<std::string, string_map> data;
-	string_map item;
+	widget_data data;
+	widget_item item;
 
 	item["label"] = campaign["icon"];
 	data.emplace("icon", item);

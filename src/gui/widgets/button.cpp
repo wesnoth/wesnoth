@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -41,7 +41,7 @@ namespace gui2
 REGISTER_WIDGET(button)
 
 button::button(const implementation::builder_button& builder)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 	, clickable_item()
 	, state_(ENABLED)
 	, retval_(retval::NONE)
@@ -241,9 +241,9 @@ builder_button::builder_button(const config& cfg)
 {
 }
 
-widget* builder_button::build() const
+widget_ptr builder_button::build() const
 {
-	button* widget = new button(*this);
+	auto widget = std::make_shared<button>(*this);
 
 	widget->set_retval(get_retval(retval_id_, retval_, id));
 

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ namespace implementation
 struct builder_multi_page;
 }
 
-class generator_base;
+using generator_ptr = std::shared_ptr<class generator_base>;
 
 /** The multi page class. */
 class multi_page : public container_base
@@ -52,7 +52,7 @@ public:
 	 *
 	 * @returns                   The grid of the newly added page.
 	 */
-	grid& add_page(const string_map& item);
+	grid& add_page(const widget_item& item);
 	/**
 	 * Adds single page to the grid.
 	 *
@@ -68,7 +68,7 @@ public:
 	 *
 	 * @returns                   The grid of the newly added page.
 	 */
-	grid& add_page(const std::string& type, int insert_pos, const string_map& item);
+	grid& add_page(const std::string& type, int insert_pos, const widget_item& item);
 
 	/**
 	 * Adds single page to the grid.
@@ -87,7 +87,7 @@ public:
 	 *
 	 * @returns                   The grid of the newly added page.
 	 */
-	grid& add_page(const std::map<std::string /* widget id */, string_map>& data);
+	grid& add_page(const widget_data& data);
 	/**
 	 * Adds single page to the grid.
 	 *
@@ -110,7 +110,7 @@ public:
 	 *
 	 * @returns                   The grid of the newly added page.
 	 */
-	grid& add_page(const std::string& type, int insert_pos, const std::map<std::string /* widget id */, string_map>& data);
+	grid& add_page(const std::string& type, int insert_pos, const widget_data& data);
 
 	/**
 	 * Removes a page in the multi page.
@@ -174,7 +174,7 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_page_builders(const std::map<std::string, builder_grid_const_ptr>& page_builders)
+	void set_page_builders(const builder_grid_map& page_builders)
 	{
 		assert(!page_builders.empty());
 		page_builders_ = page_builders;
@@ -186,7 +186,7 @@ private:
 	 *
 	 * @param page_data           The initial data to fill the widget with.
 	 */
-	void finalize(const std::vector<string_map>& page_data);
+	void finalize(const std::vector<widget_item>& page_data);
 
 	/**
 	 * Contains a pointer to the generator.
@@ -195,14 +195,19 @@ private:
 	 * of the scrollbar_container super class and freed when it's grid is
 	 * freed.
 	 */
-	generator_base* generator_;
+	generator_ptr generator_;
 
 	/** Contains the builder for the new items. */
-	std::map<std::string, builder_grid_const_ptr> page_builders_;
+	builder_grid_map page_builders_;
 
 	/** See @ref widget::impl_draw_background. */
-	virtual void impl_draw_background(int x_offset, int y_offset) override;
+	virtual void impl_draw_background() override;
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
@@ -235,9 +240,9 @@ struct builder_multi_page : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
-	std::map<std::string, builder_grid_const_ptr> builders;
+	builder_grid_map builders;
 
 	/**
 	 * Multi page data.

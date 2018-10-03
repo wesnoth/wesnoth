@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2012 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -53,7 +53,7 @@ public:
 	/***** ***** Types. ***** *****/
 
 	/** The direction the placer should grow towards. */
-	MAKE_ENUM(tgrow_direction,
+	MAKE_ENUM(grow_direction,
 		(horizontal, "horizontal")
 		(vertical, "vertical")
 	)
@@ -75,7 +75,7 @@ public:
 	 *                            only horizontally or vertically placed items
 	 *                            the value should be 1.
 	 */
-	static placer_base* build(const tgrow_direction grow_direction,
+	static placer_base* build(const grow_direction grow_direction,
 						   const unsigned parallel_items);
 
 	virtual ~placer_base();

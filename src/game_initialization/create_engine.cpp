@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2013 - 2018 by Andrius Silinskas <silinskas.andrius@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -329,8 +329,7 @@ void create_engine::init_generated_level_data()
 
 			const std::string& description = cur_lev->data()["description"];
 			data["description"] = description;
-			// TODO: should we also carryover [story] from the outer scenario as we do in saved_game.cpp
-			data["id"] = cur_lev->data()["id"];
+			saved_game::post_scenario_generation(cur_lev->data(), data);
 
 			cur_lev->set_data(data);
 		}
@@ -478,6 +477,7 @@ void create_engine::prepare_for_other()
 	DBG_MP << "prepare_for_other\n";
 	state_.set_scenario(current_level().data());
 	state_.mp_settings().hash = current_level().data().hash();
+	state_.check_require_scenario();
 }
 
 void create_engine::apply_level_filter(const std::string& name)

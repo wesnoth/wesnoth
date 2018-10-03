@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -41,7 +41,7 @@ typedef std::map<std::string,stats> team_stats_t;
 std::string get_team_save_id(const unit & u)
 {
 	assert(resources::gameboard);
-	return resources::gameboard->get_team(u.side()).save_id();
+	return resources::gameboard->get_team(u.side()).save_id_or_number();
 }
 
 struct scenario_stats

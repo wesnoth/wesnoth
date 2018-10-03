@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2010 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,7 +20,6 @@
 #include "gui/core/window_builder.hpp"
 
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 
 #include "utils/functional.hpp"
 
@@ -32,7 +31,7 @@ namespace gui2
 REGISTER_WIDGET(drawing)
 
 drawing::drawing(const implementation::builder_drawing& builder)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 	, best_size_(0, 0)
 {
 }
@@ -159,7 +158,7 @@ drawing_definition::resolution::resolution(const config& cfg)
  * @end{tag}{name="drawing"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  * The variable available are the same as for the window resolution see
- * http://www.wesnoth.org/wiki/GUIToolkitWML#Resolution_2 for the list of
+ * https://www.wesnoth.org/wiki/GUIToolkitWML#Resolution_2 for the list of
  * items.
  */
 
@@ -175,9 +174,9 @@ builder_drawing::builder_drawing(const config& cfg)
 	assert(!draw.empty());
 }
 
-widget* builder_drawing::build() const
+widget_ptr builder_drawing::build() const
 {
-	drawing* widget = new drawing(*this);
+	auto widget = std::make_shared<drawing>(*this);
 
 	const wfl::map_formula_callable& size = get_screen_size_variables();
 

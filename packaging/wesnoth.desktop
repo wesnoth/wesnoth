@@ -69,8 +69,10 @@ Comment[sr]=Фантазијска стратешка игра на потезе
 Comment[sr@latin]=Fantazijska strateška igra na poteze
 Comment[tr]=Fantastik, sırayla oynanan bir strateji oyunu
 Comment[vi]=Một trò chơi chiến lược dựa trên lượt đi theo phong cách thần thoại
+Keywords=singleplayer;multiplayer;dark age;middle ages;medieval;mediaeval;
+Keywords[de]=Einzelspieler;Mehrspieler;mittelalterlich;Fantasie;
 Icon=wesnoth-icon
-Exec=wesnoth
+Exec=sh -c "wesnoth >/dev/null 2>&1"
 Categories=Game;StrategyGame;
 Actions=Editor;
 
@@ -91,4 +93,4 @@ Name[sr@ijekavian]=Уређивач мапа
 Name[sr@ijekavianlatin]=Uređivač mapa
 Name[sr@latin]=Uređivač mapa
 Name[tr]=Harita Düzenleyici
-Exec=wesnoth -e
+Exec=sh -c "wesnoth -e  >/dev/null 2>&1"

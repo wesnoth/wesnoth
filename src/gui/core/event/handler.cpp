@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -776,7 +776,7 @@ void init_mouse_location()
 {
 	point mouse = get_mouse_position();
 
-	SDL_Event event;
+	SDL_Event event{};
 	event.type = SDL_MOUSEMOTION;
 	event.motion.type = SDL_MOUSEMOTION;
 	event.motion.x = mouse.x;

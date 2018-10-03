@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2018 the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@ void surface::free_surface()
 		*
 		* - Jyrki, 2017-09-23
 		*/
-		if(surface_->refcount > 1 && sdl_get_version() >= version_info(2, 0, 6)) {
+		if(surface_->refcount > 1 && sdl_get_version() == version_info(2, 0, 6)) {
 			--surface_->refcount;
 		} else {
 			SDL_FreeSurface(surface_);

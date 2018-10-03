@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -263,7 +263,7 @@ void halo_impl::remove(int handle)
 
 void halo_impl::render()
 {
-	if(!preferences::show_haloes() || halos.empty()) {
+	if(halos.empty()) {
 		return;
 	}
 

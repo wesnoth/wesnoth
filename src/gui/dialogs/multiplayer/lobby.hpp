@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -22,18 +22,13 @@
 #include "game_initialization/multiplayer.hpp"
 #include "quit_confirmation.hpp"
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#endif
 class wesnothd_connection;
 namespace gui2
 {
 
 class grid;
 class label;
-#ifndef GUI2_EXPERIMENTAL_LISTBOX
 class listbox;
-#endif
 class text_box;
 class window;
 class multi_page;
@@ -55,14 +50,11 @@ struct sub_player_list
 struct player_list
 {
 	void init(window& w);
-	void update_sort_icons();
+
 	sub_player_list active_game;
 	sub_player_list active_room;
 	sub_player_list other_rooms;
 	sub_player_list other_games;
-
-	toggle_button* sort_by_name;
-	toggle_button* sort_by_relation;
 
 	tree_view* tree;
 };
@@ -85,7 +77,7 @@ protected:
 
 	void update_gamelist_filter();
 
-	std::map<std::string, string_map> make_game_row_data(const mp::game_info& game);
+	widget_data make_game_row_data(const mp::game_info& game);
 
 	void adjust_game_row_contents(const mp::game_info& game, grid* grid, bool add_callbacks = true);
 

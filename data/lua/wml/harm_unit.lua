@@ -163,8 +163,8 @@ function wml_actions.harm_unit(cfg)
 			wesnoth.float_label( unit_to_harm.x, unit_to_harm.y, string.format( "<span foreground='red'>%s</span>", text ) )
 
 			local function calc_xp( level ) -- to calculate the experience in case of kill
-				if level == 0 then return 4
-				else return level * 8 end
+				if level == 0 then return math.ceil(wesnoth.game_config.kill_experience / 2)
+				else return level * wesnoth.game_config.kill_experience end
 			end
 
 			if experience ~= false and harmer and harmer.valid
@@ -174,7 +174,7 @@ function wml_actions.harm_unit(cfg)
 					harmer.experience = harmer.experience + calc_xp( unit_to_harm.__cfg.level )
 				else
 					unit_to_harm.experience = unit_to_harm.experience + harmer.__cfg.level
-					harmer.experience = harmer.experience + unit_to_harm.__cfg.level
+					harmer.experience = harmer.experience + wesnoth.game_config.combat_experience * unit_to_harm.__cfg.level
 				end
 			end
 

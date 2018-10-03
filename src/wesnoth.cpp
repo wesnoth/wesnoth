@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@
 #include "gui/dialogs/message.hpp"      // for show_error_message
 #include "gui/dialogs/title_screen.hpp" // for title_screen, etc
 #include "gui/gui.hpp"                  // for init
-#include "image.hpp"                    // for flush_cache, etc
+#include "picture.hpp"                    // for flush_cache, etc
 #include "log.hpp"                      // for LOG_STREAM, general, logger, etc
 #include "preferences/general.hpp"      // for core_id, etc
 #include "scripting/application_lua_kernel.hpp"
@@ -50,7 +50,7 @@
 #include "sound.hpp"                   // for commit_music_changes, etc
 #include "statistics.hpp"              // for fresh_stats
 #include "utils/functional.hpp"
-#include "version.hpp"        // for version_info
+#include "game_version.hpp"        // for version_info
 #include "video.hpp"          // for CVideo
 #include "wesconfig.h"        // for PACKAGE
 #include "wml_exception.hpp"  // for wml_exception
@@ -640,7 +640,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 		return finished;
 	}
 
-	const std::unique_ptr<game_launcher> game(new game_launcher(cmdline_opts, args[0].c_str()));
+	const auto game = std::make_unique<game_launcher>(cmdline_opts, args[0].c_str());
 	const int start_ticks = SDL_GetTicks();
 
 	init_locale();
@@ -672,13 +672,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	events::initialise();
 	events::run_event_loop();
-
-	res = image::update_from_preferences();
-	if(res == false) {
-		std::cerr << "could not initialize image preferences\n";
-		return 1;
-	}
-
 	events::run_event_loop();
 
 	check_fpu();
@@ -726,11 +719,11 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	plugins_manager plugins_man(new application_lua_kernel);
 
-	plugins_context::Reg const callbacks[] {
+	const plugins_context::reg_vec callbacks {
 		{"play_multiplayer", std::bind(&game_launcher::play_multiplayer, game.get(), game_launcher::MP_CONNECT)},
 	};
 
-	plugins_context::aReg const accessors[] {
+	const plugins_context::areg_vec accessors {
 		{"command_line", std::bind(&commandline_options::to_config, &cmdline_opts)},
 	};
 
@@ -744,13 +737,15 @@ static int do_gameloop(const std::vector<std::string>& args)
 		if(!game->is_loading()) {
 			const config& cfg = config_manager.game_config().child("titlescreen_music");
 			if(cfg) {
-				sound::play_music_repeatedly(game_config::title_music);
-
 				for(const config& i : cfg.child_range("music")) {
 					sound::play_music_config(i);
 				}
 
-				sound::commit_music_changes();
+				config title_music_config;
+				title_music_config["name"] = game_config::title_music;
+				title_music_config["append"] = true;
+				title_music_config["immediate"] = true;
+				sound::play_music_config(title_music_config);
 			} else {
 				sound::empty_playlist();
 				sound::stop_music();

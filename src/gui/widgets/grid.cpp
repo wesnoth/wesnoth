@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -66,7 +66,7 @@ unsigned grid::add_row(const unsigned count)
 	return result;
 }
 
-void grid::set_child(widget* widget,
+void grid::set_child(widget_ptr widget,
 					  const unsigned row,
 					  const unsigned col,
 					  const unsigned flags,
@@ -89,16 +89,17 @@ void grid::set_child(widget* widget,
 	cell.set_flags(flags);
 	cell.set_border_size(border_size);
 	cell.set_widget(widget);
-	if(cell.get_widget()) {
-		// make sure the new child is valid before deferring
-		cell.get_widget()->set_parent(this);
+
+	// make sure the new child is valid before deferring
+	if(gui2::widget* w = cell.get_widget()) {
+		w->set_parent(this);
 	}
 }
 
-std::unique_ptr<widget> grid::swap_child(const std::string& id,
-						   widget* w,
-						   const bool recurse,
-						   widget* new_parent)
+widget_ptr grid::swap_child(const std::string& id,
+		widget_ptr w,
+		const bool recurse,
+		widget* new_parent)
 {
 	assert(w);
 
@@ -111,7 +112,7 @@ std::unique_ptr<widget> grid::swap_child(const std::string& id,
 				grid* g = dynamic_cast<grid*>(child.get_widget());
 				if(g) {
 
-					std::unique_ptr<widget> old = g->swap_child(id, w, true);
+					widget_ptr old = g->swap_child(id, w, true);
 					if(old) {
 						return old;
 					}
@@ -122,7 +123,7 @@ std::unique_ptr<widget> grid::swap_child(const std::string& id,
 		}
 
 		// Free widget from cell and validate.
-		std::unique_ptr<widget> old = child.free_widget();
+		widget_ptr old = child.free_widget();
 		assert(old);
 
 		old->set_parent(new_parent);
@@ -681,9 +682,9 @@ bool grid::disable_click_dismiss() const
 	return false;
 }
 
-iteration::walker_base* grid::create_walker()
+iteration::walker_ptr grid::create_walker()
 {
-	return new gui2::iteration::grid(*this);
+	return std::make_unique<gui2::iteration::grid>(*this);
 }
 
 void grid::set_rows(const unsigned rows)
@@ -975,7 +976,7 @@ void grid::layout(const point& origin)
 	}
 }
 
-void grid::impl_draw_children(int x_offset, int y_offset)
+void grid::impl_draw_children()
 {
 	/*
 	 * The call to SDL_PumpEvents seems a bit like black magic.
@@ -1003,9 +1004,9 @@ void grid::impl_draw_children(int x_offset, int y_offset)
 			continue;
 		}
 
-		widget->draw_background(x_offset, y_offset);
-		widget->draw_children(x_offset, y_offset);
-		widget->draw_foreground(x_offset, y_offset);
+		widget->draw_background();
+		widget->draw_children();
+		widget->draw_foreground();
 	}
 }
 
@@ -1086,7 +1087,7 @@ grid_implementation::cell_request_reduce_width(grid::child& child,
 	child.widget_->request_reduce_width(maximum_width - child.border_space().x);
 }
 
-void set_single_child(grid& grid, widget* widget)
+void set_single_child(grid& grid, widget_ptr widget)
 {
 	grid.set_rows_cols(1, 1);
 	grid.set_child(widget,

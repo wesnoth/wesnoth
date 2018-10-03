@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -43,9 +43,7 @@ class scrollbar_container : public container_base
 
 	friend struct implementation::builder_scroll_label;
 	friend struct implementation::builder_scrollbar_panel;
-#ifndef GUI2_EXPERIMENTAL_LISTBOX
 	friend class listbox;
-#endif
 	friend class tree_view;
 	friend struct scrollbar_container_implementation;
 
@@ -478,10 +476,10 @@ private:
 	scrollbar_base *vertical_scrollbar_, *horizontal_scrollbar_;
 
 	/** The grid that holds the content. */
-	std::unique_ptr<grid> content_grid_;
+	grid_ptr content_grid_;
 
 	/** Dummy spacer to hold the contents location. */
-	spacer* content_;
+	std::shared_ptr<spacer> content_;
 
 	/**
 	 * Cache for the visible area for the content.
@@ -506,7 +504,7 @@ private:
 	virtual void layout_children() override;
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(int x_offset, int y_offset) override;
+	virtual void impl_draw_children() override;
 
 	/**
 	 * Sets the size of the content grid.
@@ -522,6 +520,11 @@ private:
 	/** Helper function which needs to be called after the scollbar moved. */
 	void scrollbar_moved();
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 

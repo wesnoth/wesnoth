@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2006 - 2018 by Rusty Russell <rusty@rustcorp.com.au>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -1769,8 +1769,9 @@ double calculate_probability_of_debuff(double initial_prob, bool enemy_gives, do
 	// Prob_stay_alive can get slightly negative because of a rounding error, so ensure that it gets non-negative.
 	prob_stay_alive = std::max(prob_stay_alive, 0.0);
 	// Prob_kill can creep a bit above 100 % if the AI simulates an unit being attacked by multiple units in a row, due to rounding error.
+	// Likewise, it can get slightly negative if the unit already has negative HP.
 	// Simply limit it to suitable range.
-	prob_kill = std::min(prob_kill, 1.0);
+	prob_kill = utils::clamp(prob_kill, 0.0, 1.0);
 
 	// Probability we are already debuffed and the enemy doesn't hit us.
 	const double prob_already_debuffed_not_touched = initial_prob * (1.0 - prob_touched);
@@ -1817,6 +1818,16 @@ double calculate_probability_of_debuff(double initial_prob, bool enemy_gives, do
 	}
 
 	return prob_debuff;
+}
+
+// Rounds a probability that's extremely close to 0 or 1 to exactly 0 or 1.
+void round_prob_if_close_to_sure(double& prob)
+{
+	if(prob < 1.0e-9) {
+		prob = 0.0;
+	} else if(prob > 1.0 - 1.0e-9) {
+		prob = 1.0;
+	}
 }
 
 /**
@@ -1968,17 +1979,19 @@ void one_strike_fight(const battle_context_unit_stats& stats,
 	// If we were killed in an earlier fight, we don't get to attack.
 	// (Most likely case: we are a first striking defender subject to a series
 	// of attacks.)
-	const double alive_prob = hp_dist.empty() ? 1.0 : 1.0 - hp_dist[0];
+	double alive_prob = hp_dist.empty() ? 1.0 : 1.0 - hp_dist[0];
+	if(stats.hp == 0) {
+		alive_prob = 0.0;
+	}
 	const double hit_chance = (stats.chance_to_hit / 100.0) * alive_prob;
 
 	if(opp_hp_dist.empty()) {
 		opp_hp_dist = std::vector<double>(opp_stats.max_hp + 1);
-		if(strikes == 1) {
+		if(strikes == 1 && opp_stats.hp > 0) {
 			opp_hp_dist[opp_stats.hp] = 1.0 - hit_chance;
 			opp_hp_dist[std::max<int>(opp_stats.hp - stats.damage, 0)] = hit_chance;
 			opp_not_hit *= 1.0 - hit_chance;
 		} else {
-			assert(strikes == 0);
 			opp_hp_dist[opp_stats.hp] = 1.0;
 		}
 	} else {
@@ -1994,17 +2007,16 @@ void one_strike_fight(const battle_context_unit_stats& stats,
 	}
 
 	// If we killed opponent, it won't attack us.
-	const double opp_alive_prob = 1.0 - opp_hp_dist[0] / alive_prob;
-	const double opp_hit_chance = (opp_stats.chance_to_hit / 100.0) * opp_alive_prob;
+	const double opp_attack_prob = (1.0 - opp_hp_dist[0]) * alive_prob;
+	const double opp_hit_chance = (opp_stats.chance_to_hit / 100.0) * opp_attack_prob;
 
 	if(hp_dist.empty()) {
 		hp_dist = std::vector<double>(stats.max_hp + 1);
-		if(opp_strikes == 1) {
+		if(opp_strikes == 1 && stats.hp > 0) {
 			hp_dist[stats.hp] = 1.0 - opp_hit_chance;
 			hp_dist[std::max<int>(stats.hp - opp_stats.damage, 0)] = opp_hit_chance;
 			self_not_hit *= 1.0 - opp_hit_chance;
 		} else {
-			assert(opp_strikes == 0);
 			hp_dist[stats.hp] = 1.0;
 		}
 	} else {
@@ -2023,13 +2035,13 @@ void one_strike_fight(const battle_context_unit_stats& stats,
 		return;
 	}
 
-	if(stats.experience + opp_stats.level >= stats.max_experience) {
+	if(stats.experience + game_config::combat_xp(opp_stats.level) >= stats.max_experience) {
 		forced_levelup(hp_dist);
 	} else if(stats.experience + game_config::kill_xp(opp_stats.level) >= stats.max_experience) {
 		conditional_levelup(hp_dist, opp_hp_dist[0]);
 	}
 
-	if(opp_stats.experience + stats.level >= opp_stats.max_experience) {
+	if(opp_stats.experience + game_config::combat_xp(stats.level) >= opp_stats.max_experience) {
 		forced_levelup(opp_hp_dist);
 	} else if(opp_stats.experience + game_config::kill_xp(stats.level) >= opp_stats.max_experience) {
 		conditional_levelup(opp_hp_dist, hp_dist[0]);
@@ -2168,13 +2180,13 @@ void complex_fight(attack_prediction_mode mode,
 	}
 
 	if(levelup_considered) {
-		if(stats.experience + opp_stats.level >= stats.max_experience) {
+		if(stats.experience + game_config::combat_xp(opp_stats.level) >= stats.max_experience) {
 			m->forced_levelup_a();
 		} else if(stats.experience + game_config::kill_xp(opp_stats.level) >= stats.max_experience) {
 			m->conditional_levelup_a();
 		}
 
-		if(opp_stats.experience + stats.level >= opp_stats.max_experience) {
+		if(opp_stats.experience + game_config::combat_xp(stats.level) >= opp_stats.max_experience) {
 			m->forced_levelup_b();
 		} else if(opp_stats.experience + game_config::kill_xp(stats.level) >= opp_stats.max_experience) {
 			m->conditional_levelup_b();
@@ -2307,6 +2319,10 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 	double self_already_dead = hp_dist[0];
 	double opp_already_dead = opponent.hp_dist[0];
 
+	// If incoming slow probabilities are extremely close to 0 or 1, round them to exactly 0 or 1 (bug #3321)
+	round_prob_if_close_to_sure(slowed);
+	round_prob_if_close_to_sure(opponent.slowed);
+
 	// If we've fought before and we have swarm, we might have to split the
 	// calculation by number of attacks.
 	const std::vector<combat_slice> split = split_summary(u_, summary);
@@ -2431,12 +2447,12 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 		opponent.slowed = std::min(std::accumulate(opponent.summary[1].begin(), opponent.summary[1].end(), 0.0), 1.0);
 	}
 
-	if(u_.experience + opponent.u_.level >= u_.max_experience) {
+	if(u_.experience + game_config::combat_xp(opponent.u_.level) >= u_.max_experience) {
 		// We'll level up after the battle -> slow/poison will go away
 		poisoned = 0.0;
 		slowed = 0.0;
 	}
-	if(opponent.u_.experience + u_.level >= opponent.u_.max_experience) {
+	if(opponent.u_.experience + game_config::combat_xp(u_.level) >= opponent.u_.max_experience) {
 		opponent.poisoned = 0.0;
 		opponent.slowed = 0.0;
 	}

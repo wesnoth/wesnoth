@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,18 +18,12 @@
 #include "font/text_formatting.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/log.hpp"
+#include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/message.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/text_box.hpp"
-#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
 #include "gui/widgets/window.hpp"
 #include "help/help.hpp"
@@ -142,14 +136,6 @@ static std::string get_title_suffix(int side_num)
 	return msg.str();
 }
 
-bool unit_recall::unit_recall_default_compare(const unit_const_ptr first, const unit_const_ptr second)
-{
-	if (first->level() > second->level()) return true;
-	if (first->level() < second->level()) return false;
-	if (first->experience_to_advance() < second->experience_to_advance()) return true;
-	return false;
-}
-
 void unit_recall::pre_show(window& window)
 {
 	label& title = find_widget<label>(&window, "title", true);
@@ -171,6 +157,10 @@ void unit_recall::pre_show(window& window)
 	window.add_to_keyboard_chain(&list);
 
 	connect_signal_mouse_left_click(
+		find_widget<button>(&window, "rename", false),
+		std::bind(&unit_recall::rename_unit, this, std::ref(window)));
+
+	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "dismiss", false),
 		std::bind(&unit_recall::dismiss_unit, this, std::ref(window)));
 
@@ -179,8 +169,8 @@ void unit_recall::pre_show(window& window)
 		std::bind(&unit_recall::show_help, this));
 
 	for(const unit_const_ptr& unit : recall_list_) {
-		std::map<std::string, string_map> row_data;
-		string_map column;
+		widget_data row_data;
+		widget_item column;
 
 		std::string mods = unit->image_mods();
 
@@ -211,8 +201,13 @@ void unit_recall::pre_show(window& window)
 		row_data.emplace("unit_level", column);
 
 		std::stringstream exp_str;
-		exp_str << font::span_color(unit->xp_color()) << unit->experience() << "/"
-		        << (unit->can_advance() ? std::to_string(unit->max_experience()) : font::unicode_en_dash) << "</span>";
+		exp_str << font::span_color(unit->xp_color());
+		if(unit->can_advance()) {
+			exp_str << unit->experience() << "/" << unit->max_experience();
+		} else {
+			exp_str << font::unicode_en_dash;
+		}
+		exp_str << "</span>";
 
 		column["label"] = exp_str.str();
 		row_data.emplace("unit_experience", column);
@@ -234,20 +229,49 @@ void unit_recall::pre_show(window& window)
 		filter_options_.push_back(filter_text);
 	}
 
-	list.register_sorting_option(0, [this](const int i) { return recall_list_[i]->type_name().str(); });
-	list.register_sorting_option(1, [this](const int i) { return recall_list_[i]->name().str(); });
-	list.set_column_order(2, {{
-			[this](int lhs, int rhs) { return unit_recall_default_compare(recall_list_[rhs], recall_list_[lhs]); },
-			[this](int lhs, int rhs) { return unit_recall_default_compare(recall_list_[lhs], recall_list_[rhs]); }
-	}});
+	list.register_translatable_sorting_option(0, [this](const int i) { return recall_list_[i]->type_name().str(); });
+	list.register_translatable_sorting_option(1, [this](const int i) { return recall_list_[i]->name().str(); });
+	list.register_sorting_option(2, [this](const int i) {
+		const unit& u = *recall_list_[i];
+		return std::make_tuple(u.level(), -static_cast<int>(u.experience_to_advance()));
+	});
 	list.register_sorting_option(3, [this](const int i) { return recall_list_[i]->experience(); });
-	list.register_sorting_option(4, [this](const int i) {
+	list.register_translatable_sorting_option(4, [this](const int i) {
 		return !recall_list_[i]->trait_names().empty() ? recall_list_[i]->trait_names().front().str() : "";
 	});
 
-	list.set_active_sorting_option(sort_last.first >= 0 ? sort_last	: sort_default);
+	list.set_active_sorting_option(sort_last.first >= 0 ? sort_last	: sort_default, true);
 
 	list_item_clicked(window);
+}
+
+void unit_recall::rename_unit(window& window)
+{
+	listbox& list = find_widget<listbox>(&window, "recall_list", false);
+
+	const int index = list.get_selected_row();
+	unit& selected_unit = const_cast<unit&>(*recall_list_[index].get());
+
+	std::string name = selected_unit.name();
+	const std::string dialog_title(_("Rename Unit"));
+	const std::string dialog_label(_("Name:"));
+
+	if(gui2::dialogs::edit_text::execute(dialog_title, dialog_label, name)) {
+		selected_unit.rename(name);
+
+		find_widget<label>(list.get_row_grid(index), "unit_name", false).set_label(name);
+
+		filter_options_.erase(filter_options_.begin() + index);
+		std::ostringstream filter_text;
+		filter_text << selected_unit.type_name() << " " << name << " " << std::to_string(selected_unit.level());
+		for(const std::string& trait : selected_unit.trait_names()) {
+			filter_text << " " << trait;
+		}
+		filter_options_.insert(filter_options_.begin() + index, filter_text.str());
+
+		list_item_clicked(window);
+		window.invalidate_layout();
+	}
 }
 
 void unit_recall::dismiss_unit(window& window)
@@ -326,8 +350,12 @@ void unit_recall::list_item_clicked(window& window)
 		return;
 	}
 
+	const unit& selected_unit = *recall_list_[selected_row].get();
+
 	find_widget<unit_preview_pane>(&window, "unit_details", false)
-		.set_displayed_unit(*recall_list_[selected_row].get());
+		.set_displayed_unit(selected_unit);
+
+	find_widget<button>(&window, "rename", false).set_active(!selected_unit.unrenamable());
 }
 
 void unit_recall::post_show(window& window)

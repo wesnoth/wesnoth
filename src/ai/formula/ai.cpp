@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -80,9 +80,9 @@ ca_ptr formula_ai::load_candidate_action_from_config(const config& rc_action)
 		const t_string &type = rc_action["type"];
 
 		if( type == "movement") {
-			new_ca = ca_ptr(new move_candidate_action(name, type, rc_action, &function_table_));
+			new_ca = std::make_shared<move_candidate_action>(name, type, rc_action, &function_table_);
 		} else if( type == "attack") {
-			new_ca = ca_ptr(new attack_candidate_action(name, type, rc_action, &function_table_));
+			new_ca = std::make_shared<attack_candidate_action>(name, type, rc_action, &function_table_);
 		} else {
 			ERR_AI << "Unknown candidate action type: " << type << std::endl;
 		}

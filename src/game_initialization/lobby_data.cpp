@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,8 +19,10 @@
 #include "preferences/game.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "filesystem.hpp"
+#include "font/pango/escape.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
+#include "game_config_manager.hpp"
 #include "gettext.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
@@ -28,7 +30,7 @@
 #include "map/exception.hpp"
 #include "terrain/type_data.hpp"
 #include "wml_exception.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 
 #include <iterator>
 
@@ -146,35 +148,17 @@ void user_info::update_relation()
 	}
 }
 
+bool user_info::operator<(const user_info& b) const
+{
+	return relation < b.relation || (relation == b.relation && translation::icompare(name, b.name) < 0);
+}
+
 namespace
 {
 const std::string& spaced_em_dash()
 {
 	static const std::string res = " " + font::unicode_em_dash + " ";
 	return res;
-}
-
-// Returns an abbreviated form of the provided string - ie, 'Ageless Era' should become 'AE'
-std::string make_short_name(const std::string& long_name)
-{
-	if(long_name.empty()) {
-		return "";
-	}
-
-	std::size_t pos = 0;
-
-	std::stringstream ss;
-	ss << long_name[pos];
-
-	while(pos < long_name.size()) {
-		pos = long_name.find(' ', pos + 1);
-
-		if(pos <= long_name.size() - 2) {
-			ss << long_name[pos + 1];
-		}
-	}
-
-	return ss.str();
 }
 
 std::string make_game_type_marker(std::string text, bool color_for_missing)
@@ -188,16 +172,15 @@ std::string make_game_type_marker(std::string text, bool color_for_missing)
 
 } // end anon namespace
 
-game_info::game_info(const config& game, const config& game_config, const std::vector<std::string>& installed_addons)
+game_info::game_info(const config& game, const std::vector<std::string>& installed_addons)
 	: id(game["id"])
 	, map_data(game["map_data"])
-	, name(game["name"])
+	, name(font::escape_text(game["name"]))
 	, scenario()
 	, remote_scenario(false)
 	, map_info()
 	, map_size_info()
 	, era()
-	, era_short()
 	, gold(game["mp_village_gold"])
 	, support(game["mp_village_support"])
 	, xp(game["experience_modifier"].str() + "%")
@@ -224,6 +207,8 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 	, required_addons()
 	, addons_outcome(SATISFIED)
 {
+	const config& game_config = game_config_manager::get()->game_config();
+
 	// Parse the list of addons required to join this game.
 	for(const config& addon : game.child_range("addon")) {
 		if(addon.has_attribute("id")) {
@@ -250,19 +235,17 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 
 	if(!game["mp_era"].empty()) {
 		const config& era_cfg = game_config.find_child("era", "id", game["mp_era"]);
+		const bool require = game["require_era"].to_bool(true);
 		if(era_cfg) {
 			era = era_cfg["name"].str();
-			era_short = era_cfg["short_name"].str();
-			if(era_short.empty()) {
-				era_short = make_short_name(era);
-			}
 
-			ADDON_REQ result = check_addon_version_compatibility(era_cfg, game);
-			addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
+			if(require) {
+				ADDON_REQ result = check_addon_version_compatibility(era_cfg, game);
+				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
+			}
 		} else {
-			have_era = !game["require_era"].to_bool(true);
+			have_era = !require;
 			era = game["mp_era_name"].str();
-			era_short = make_short_name(era);
 			verified = false;
 
 			if(!have_era) {
@@ -271,7 +254,6 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 		}
 	} else {
 		era = _("Unknown era");
-		era_short = "??";
 		verified = false;
 	}
 
@@ -330,6 +312,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 	if(!game["mp_scenario"].empty() && game["mp_campaign"].empty()) {
 		// Check if it's a multiplayer scenario
 		const config* level_cfg = &game_config.find_child("multiplayer", "id", game["mp_scenario"]);
+		const bool require = game["require_scenario"].to_bool(false);
 
 		// Check if it's a user map
 		if(!*level_cfg) {
@@ -337,7 +320,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 		}
 
 		if(*level_cfg) {
-			scenario = formatter() << make_game_type_marker(_("S"), false) << (*level_cfg)["name"].str();
+			scenario = formatter() << make_game_type_marker(_("scenario_abbreviation^S"), false) << (*level_cfg)["name"].str();
 			info_stream << scenario;
 
 			// Reloaded games do not match the original scenario hash, so it makes no sense
@@ -362,12 +345,15 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 				}
 			}
 
-			if((*level_cfg)["require_scenario"].to_bool(false)) {
+			if(require) {
 				ADDON_REQ result = check_addon_version_compatibility((*level_cfg), game);
 				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			}
 		} else {
-			scenario = formatter() << make_game_type_marker(_("S"), true) << game["mp_scenario_name"].str();
+			if(require) {
+				addons_outcome = std::max(addons_outcome, NEED_DOWNLOAD); // Elevate to most severe error level encountered so far
+			}
+			scenario = formatter() << make_game_type_marker(_("scenario_abbreviation^S"), true) << game["mp_scenario_name"].str();
 			info_stream << scenario;
 			verified = false;
 		}
@@ -375,7 +361,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 		if(const config& campaign_cfg = game_config.find_child("campaign", "id", game["mp_campaign"])) {
 			std::stringstream campaign_text;
 			campaign_text
-				<< make_game_type_marker(_("C"), false)
+				<< make_game_type_marker(_("campaign_abbreviation^C"), false)
 				<< campaign_cfg["name"] << spaced_em_dash()
 				<< game["mp_scenario_name"];
 
@@ -398,7 +384,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			//}
 		} else {
-			scenario = formatter() << make_game_type_marker(_("C"), true) << game["mp_campaign_name"].str();
+			scenario = formatter() << make_game_type_marker(_("campaign_abbreviation^C"), true) << game["mp_campaign_name"].str();
 			info_stream << scenario;
 			verified = false;
 		}
@@ -496,6 +482,13 @@ game_info::ADDON_REQ game_info::check_addon_version_compatibility(const config& 
 
 		// Check if the host is too out of date to play.
 		if(local_min_ver > remote_ver) {
+			DBG_LB << "r.outcome = CANNOT_SATISFY for item='" << local_item["id"]
+				<< "' addon='" << local_item["addon_id"]
+				<< "' addon_min_version='" << local_item["addon_min_version"]
+				<< "' addon_min_version_parsed='" << local_min_ver.str()
+				<< "' addon_version='" << local_item["addon_version"]
+				<< "' remote_ver='" << remote_ver.str()
+				<< "'\n";
 			r.outcome = CANNOT_SATISFY;
 
 			r.message = VGETTEXT("The host's version of <i>$addon</i> is incompatible. They have version <b>$host_ver</b> while you have version <b>$local_ver</b>.", {

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -925,7 +925,7 @@ private:
 	/**
 	 * @}
 	 * @defgroup unit_trait Trait and upkeep functions
-	 * @}
+	 * @{
 	 */
 public:
 	/**
@@ -1597,15 +1597,6 @@ public:
 
 	void set_appearance_changed(bool value) { appearance_changed_ = value; }
 	bool appearance_changed() const { return appearance_changed_; }
-
-	/**
-	 * The location of the dying unit for the duration of last_breath and die events.
-	 * Null location when neither of those events is running.
-	 * This exists in order to detect at unit creation time whether the WML/Lua code is unstoring a unit
-	 * that was already dead (e.g. as a result of [modify_unit], which is implemented with unstoring
-	 * under the hood). That's the only situation where creating a unit with negative HP is allowed.
-	 */
-	static map_location dying_unit_loc;
 
 protected:
 	mutable long ref_count_; // used by intrusive_ptr

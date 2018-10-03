@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -23,12 +23,6 @@ namespace preferences {
 
 	bool auto_open_whisper_windows();
 	void set_auto_open_whisper_windows(bool v);
-
-	bool playerlist_sort_relation();
-	void set_playerlist_sort_relation(bool v);
-
-	bool playerlist_sort_name();
-	void set_playerlist_sort_name(bool v);
 
 	bool playerlist_group_players();
 

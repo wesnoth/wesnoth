@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -130,24 +130,24 @@ terrain_type::terrain_type(const config& cfg) :
 	def_type_.push_back(number_);
 	vision_type_.push_back(number_);
 
-	const t_translation::ter_list& alias = t_translation::read_list(cfg["aliasof"]);
+	const t_translation::ter_list& alias = t_translation::read_list(cfg["aliasof"].str());
 	if(!alias.empty()) {
 		mvt_type_ = alias;
 		vision_type_ = alias;
 		def_type_ = alias;
 	}
 
-	const t_translation::ter_list& mvt_alias = t_translation::read_list(cfg["mvt_alias"]);
+	const t_translation::ter_list& mvt_alias = t_translation::read_list(cfg["mvt_alias"].str());
 	if(!mvt_alias.empty()) {
 		mvt_type_ = mvt_alias;
 	}
 
-	const t_translation::ter_list& def_alias = t_translation::read_list(cfg["def_alias"]);
+	const t_translation::ter_list& def_alias = t_translation::read_list(cfg["def_alias"].str());
 	if(!def_alias.empty()) {
 		def_type_ = def_alias;
 	}
 
-	const t_translation::ter_list& vision_alias = t_translation::read_list(cfg["vision_alias"]);
+	const t_translation::ter_list& vision_alias = t_translation::read_list(cfg["vision_alias"].str());
 	if(!vision_alias.empty()) {
 		vision_type_ = vision_alias;
 	}

@@ -2,7 +2,7 @@
    Copyright (C) 2009 - 2018 by Thomas Baumhauer
    <thomas.baumhauer@NOSPAMgmail.com>
    Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,7 +20,6 @@
 
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "serialization/unicode.hpp"
 
 #include "desktop/clipboard.hpp"
@@ -101,10 +100,15 @@ void password_box::paste_selection(const bool mouse)
 	insert_char(text);
 }
 
-const std::string& password_box::get_control_type() const
+const std::string& password_box::type()                                                                                      \
 {
 	static const std::string type = "password_box";
 	return type;
+}
+
+const std::string& password_box::get_control_type() const
+{
+	return type();
 }
 
 // }---------- BUILDER -----------{
@@ -132,9 +136,9 @@ builder_password_box::builder_password_box(const config& cfg)
 {
 }
 
-widget* builder_password_box::build() const
+widget_ptr builder_password_box::build() const
 {
-	password_box* widget = new password_box(*this);
+	auto widget = std::make_shared<password_box>(*this);
 
 	// A password box doesn't have a label but a text.
 	// It also has no history.

@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project http://www.wesnoth.org
+ Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -354,7 +354,7 @@ void move::apply_temp_modifier(unit_map& unit_map)
 
 	if (route_->move_cost == -1) {
 		// TODO: check_validity also calls pathfind::mark_route(get_route().route), optimize/refactor this to only call that once.
-		route_->move_cost = pathfind::mark_route(get_route().route).move_cost;
+		route_->move_cost = pathfind::mark_route(get_route().route, true).move_cost;
 	}
 	//Modify movement points
 	DBG_WB <<"Move: Changing movement points for unit " << unit->name() << " [" << unit->id()

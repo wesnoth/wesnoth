@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,7 +16,6 @@
 
 #include "gui/widgets/vertical_scrollbar.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "wml_exception.hpp"
 
 #include "utils/functional.hpp"
@@ -29,7 +28,7 @@ namespace gui2
 REGISTER_WIDGET(vertical_scrollbar)
 
 vertical_scrollbar::vertical_scrollbar(const implementation::builder_vertical_scrollbar& builder)
-	: scrollbar_base(builder, get_control_type())
+	: scrollbar_base(builder, type())
 {
 }
 
@@ -194,9 +193,9 @@ builder_vertical_scrollbar::builder_vertical_scrollbar(const config& cfg)
 {
 }
 
-widget* builder_vertical_scrollbar::build() const
+widget_ptr builder_vertical_scrollbar::build() const
 {
-	vertical_scrollbar* widget = new vertical_scrollbar(*this);
+	auto widget = std::make_shared<vertical_scrollbar>(*this);
 
 	widget->finalize_setup();
 

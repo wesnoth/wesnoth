@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -22,15 +22,13 @@
 #include "color.hpp"
 #include "deprecation.hpp"
 #include "display.hpp"
-#include "filter_context.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp" // for VGETTEXT
 #include "game_board.hpp"			// for game_board
 #include "game_config.hpp"			// for add_color_info, etc
 #include "game_data.hpp"
 #include "game_errors.hpp"		   // for game_error
-#include "game_events/manager.hpp" // for add_events, pump
-#include "game_events/pump.hpp" // for running
+#include "game_events/manager.hpp" // for add_events
 #include "preferences/game.hpp"	// for encountered_units
 #include "gettext.hpp"			   // for N_
 #include "lexical_cast.hpp"
@@ -51,13 +49,11 @@
 #include "units/id.hpp"
 #include "units/map.hpp"	   // for unit_map, etc
 #include "variable.hpp"		   // for vconfig, etc
-#include "version.hpp"
-#include "wml_exception.hpp"
+#include "game_version.hpp"
 
 #include "utils/functional.hpp"
 #include <boost/dynamic_bitset.hpp>
 #include <boost/function_output_iterator.hpp>
-#include "lua/lauxlib.h"
 
 #ifdef _MSC_VER
 #pragma warning (push)
@@ -68,6 +64,7 @@
 #pragma warning (pop)
 #endif
 
+#include <array>
 #include <cassert>                     // for assert
 #include <cstdlib>                     // for rand
 #include <exception>                    // for exception
@@ -96,7 +93,7 @@ namespace
 	static std::vector<const unit*> units_with_cache;
 
 	static const std::string leader_crown_path = "misc/leader-crown.png";
-	static std::string internalized_attrs[] {
+	static std::array<std::string, 60> internalized_attrs {{
 		"type",
 		"id",
 		"name",
@@ -158,7 +155,7 @@ namespace
 		"language_name",
 		"image",
 		"image_icon"
-	};
+	}};
 
 	struct internalized_attrs_sorter
 	{
@@ -176,8 +173,8 @@ namespace
 		config::const_attribute_iterator cur = cfg.begin();
 		config::const_attribute_iterator end = cfg.end();
 
-		const std::string* cur_known = std::begin(internalized_attrs);
-		const std::string* end_known = std::end(internalized_attrs);
+		auto cur_known = internalized_attrs.begin();
+		auto end_known = internalized_attrs.end();
 
 		while(cur_known != end_known) {
 			if(cur == end) {
@@ -209,8 +206,6 @@ namespace
 		return ptr ? new T(*ptr) : nullptr;
 	}
 } // end anon namespace
-
-map_location unit::dying_unit_loc;
 
 /**
  * Intrusive Pointer interface
@@ -583,6 +578,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	max_experience_ = std::max(1, cfg["max_experience"].to_int(max_experience_));
 
 	vision_ = cfg["vision"].to_int(vision_);
+	jamming_ = cfg["jamming"].to_int(jamming_);
 
 	std::vector<std::string> temp_advances = utils::split(cfg["advances_to"]);
 	if(temp_advances.size() == 1 && temp_advances.front() == "null") {
@@ -635,14 +631,6 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	}
 
 	if(const config::attribute_value* v = cfg.get("hitpoints")) {
-		if(!(*v > 0 || loc_ == dying_unit_loc)) {
-			if(resources::game_events->pump().running()) {
-				// This function throws an exception, it doesn't return
-				luaL_error(resources::filter_con->get_lua_kernel()->get_state(), "Attempted to create a unit with negative HP");
-			} else {
-				VALIDATE(false, _("Unit with negative HP found"));
-			}
-		}
 		hit_points_ = *v;
 	} else {
 		hit_points_ = max_hit_points_;
@@ -955,14 +943,6 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	max_experience_ = new_type.experience_needed(false);
 	level_ = new_type.level();
 	recall_cost_ = new_type.recall_cost();
-
-	/* Need to add a check to see if the unit's old cost is equal
-	to the unit's old unit_type cost first.  If it is change the cost
-	otherwise keep the old cost. */
-	if(old_type.recall_cost() == recall_cost_) {
-		recall_cost_ = new_type.recall_cost();
-	}
-
 	alignment_ = new_type.alignment();
 	max_hit_points_ = new_type.hitpoints();
 	hp_bar_scaling_ = new_type.hp_bar_scaling();
@@ -981,7 +961,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	max_attacks_ = new_type.max_attacks();
 
 	flag_rgb_ = new_type.flag_rgb();
-	
+
 	upkeep_ = upkeep_full();
 	parse_upkeep(new_type.get_cfg()["upkeep"]);
 
@@ -1887,7 +1867,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		const bool violate_max = effect["violate_maximum"].to_bool();
 
 		if(!set_hp.empty()) {
-			if(set_hp[set_hp.size()-1] == '%') {
+			if(set_hp.back() == '%') {
 				hit_points_ = lexical_cast_default<int>(set_hp)*max_hit_points_/100;
 			} else {
 				hit_points_ = lexical_cast_default<int>(set_hp);
@@ -1895,7 +1875,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		}
 
 		if(!set_total.empty()) {
-			if(set_total[set_total.size()-1] == '%') {
+			if(set_total.back() == '%') {
 				max_hit_points_ = lexical_cast_default<int>(set_total)*max_hit_points_/100;
 			} else {
 				max_hit_points_ = lexical_cast_default<int>(set_total);
@@ -1961,7 +1941,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		const std::string& set = effect["set"];
 
 		if(!set.empty()) {
-			if(set[set.size()-1] == '%') {
+			if(set.back() == '%') {
 				experience_ = lexical_cast_default<int>(set)*max_experience_/100;
 			} else {
 				experience_ = lexical_cast_default<int>(set);
@@ -1976,7 +1956,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		const std::string& set = effect["set"];
 
 		if(set.empty() == false) {
-			if(set[set.size()-1] == '%') {
+			if(set.back() == '%') {
 				max_experience_ = lexical_cast_default<int>(set)*max_experience_/100;
 			} else {
 				max_experience_ = lexical_cast_default<int>(set);
@@ -2139,7 +2119,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		const int recall_cost = recall_cost_ < 0 ? resources::gameboard->teams().at(side_).recall_cost() : recall_cost_;
 
 		if(!set.empty()) {
-			if(set[set.size()-1] == '%') {
+			if(set.back() == '%') {
 				recall_cost_ = lexical_cast_default<int>(set)*recall_cost/100;
 			} else {
 				recall_cost_ = lexical_cast_default<int>(set);
@@ -2575,7 +2555,7 @@ std::string get_checksum(const unit& u)
 	config wcfg;
 	u.write(unit_config);
 
-	const std::string main_keys[] {
+	const std::array<std::string, 22> main_keys {{
 		"advances_to",
 		"alignment",
 		"cost",
@@ -2597,28 +2577,26 @@ std::string get_checksum(const unit& u)
 		"resting",
 		"undead_variation",
 		"upkeep",
-		"zoc",
-		""
-	};
+		"zoc"
+	}};
 
-	for(int i = 0; !main_keys[i].empty(); ++i) {
-		wcfg[main_keys[i]] = unit_config[main_keys[i]];
+	for(const std::string& main_key : main_keys) {
+		wcfg[main_key] = unit_config[main_key];
 	}
 
-	const std::string attack_keys[] {
+	const std::array<std::string, 5> attack_keys {{
 		"name",
 		"type",
 		"range",
 		"damage",
-		"number",
-		""
-	};
+		"number"
+	}};
 
 	for(const config& att : unit_config.child_range("attack")) {
 		config& child = wcfg.add_child("attack");
 
-		for(int i = 0; !attack_keys[i].empty(); ++i) {
-			child[attack_keys[i]] = att[attack_keys[i]];
+		for(const std::string& attack_key : attack_keys) {
+			child[attack_key] = att[attack_key];
 		}
 
 		for(const config& spec : att.child_range("specials")) {
@@ -2646,19 +2624,18 @@ std::string get_checksum(const unit& u)
 		child.recursive_clear_value("name");
 	}
 
-	const std::string child_keys[] {
+	const std::array<std::string, 6> child_keys {{
 		"advance_from",
 		"defense",
 		"movement_costs",
 		"vision_costs",
 		"jamming_costs",
-		"resistance",
-		""
-	};
+		"resistance"
+	}};
 
-	for(int i = 0; !child_keys[i].empty(); ++i) {
-		for(const config& c : unit_config.child_range(child_keys[i])) {
-			wcfg.add_child(child_keys[i], c);
+	for(const std::string& child_key : child_keys) {
+		for(const config& c : unit_config.child_range(child_key)) {
+			wcfg.add_child(child_key, c);
 		}
 	}
 

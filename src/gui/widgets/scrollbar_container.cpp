@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -759,10 +759,9 @@ void scrollbar_container::finalize_setup()
 	}
 
 	/***** Setup the content *****/
-	content_ = build_single_widget_instance<spacer>("spacer");
+	content_ = build_single_widget_and_cast_to<spacer>();
 
-	// TODO: possibly move this unique_ptr casting functionality to a helper function.
-	content_grid_.reset(dynamic_cast<grid*>(get_grid().swap_child("_content_grid", content_, true).release()));
+	content_grid_ = std::dynamic_pointer_cast<grid>(get_grid().swap_child("_content_grid", content_, true));
 	assert(content_grid_);
 
 	content_grid_->set_parent(this);
@@ -785,14 +784,14 @@ void scrollbar_container::set_horizontal_scrollbar_mode(const scrollbar_mode scr
 	}
 }
 
-void scrollbar_container::impl_draw_children(int x_offset, int y_offset)
+void scrollbar_container::impl_draw_children()
 {
 	assert(get_visible() == widget::visibility::visible && content_grid_->get_visible() == widget::visibility::visible);
 
 	// Inherited.
-	container_base::impl_draw_children(x_offset, y_offset);
+	container_base::impl_draw_children();
 
-	content_grid_->draw_children( x_offset, y_offset);
+	content_grid_->draw_children();
 }
 
 void scrollbar_container::layout_children()
@@ -1061,10 +1060,15 @@ void scrollbar_container::scrollbar_moved()
 	set_scrollbar_button_status();
 }
 
-const std::string& scrollbar_container::get_control_type() const
+const std::string& scrollbar_container::type()
 {
 	static const std::string type = "scrollbar_container";
 	return type;
+}
+
+const std::string& scrollbar_container::get_control_type() const
+{
+	return type();
 }
 
 void scrollbar_container::signal_handler_sdl_key_down(

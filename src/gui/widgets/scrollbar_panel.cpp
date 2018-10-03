@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,7 +17,6 @@
 #include "gui/widgets/scrollbar_panel.hpp"
 
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/core/window_builder/helper.hpp"
 
 #include "gettext.hpp"
@@ -33,7 +32,7 @@ namespace gui2
 REGISTER_WIDGET(scrollbar_panel)
 
 scrollbar_panel::scrollbar_panel(const implementation::builder_scrollbar_panel& builder)
-	: scrollbar_container(builder, get_control_type())
+	: scrollbar_container(builder, type())
 {
 }
 
@@ -149,9 +148,9 @@ builder_scrollbar_panel::builder_scrollbar_panel(const config& cfg)
 	assert(grid_);
 }
 
-widget* builder_scrollbar_panel::build() const
+widget_ptr builder_scrollbar_panel::build() const
 {
-	scrollbar_panel* panel = new scrollbar_panel(*this);
+	auto panel = std::make_shared<scrollbar_panel>(*this);
 
 	panel->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	panel->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
@@ -183,7 +182,7 @@ widget* builder_scrollbar_panel::build() const
 													 grid_->col_grow_factor[y]);
 			}
 
-			widget* widget = grid_->widgets[x * cols + y]->build();
+			auto widget = grid_->widgets[x * cols + y]->build();
 			content_grid->set_child(widget,
 									x,
 									y,

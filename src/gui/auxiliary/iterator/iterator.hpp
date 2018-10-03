@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2011 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -101,7 +101,21 @@ public:
 	{
 		return &(operator*());
 	}
+
+	/** See @ref operator*. */
+	widget* get()
+	{
+		return operator->();
+	}
 };
+
+/* Helper aliases templates. */
+
+template<bool visit_self, bool visit_internal, bool visit_child>
+using top_down_iterator = iterator<policy::order::top_down<visit_self, visit_internal, visit_child>>;
+
+template<bool visit_self, bool visit_internal, bool visit_child>
+using bottom_up_iterator = iterator<policy::order::bottom_up<visit_self, visit_internal, visit_child>>;
 
 } // namespace iteration
 

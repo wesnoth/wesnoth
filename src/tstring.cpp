@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2004 by Philippe Plantier <ayin@anathas.org>
    Copyright (C) 2005 - 2018 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -275,8 +275,8 @@ t_string_base::t_string_base(const std::string& string, const std::string& textd
 		id = idi->second;
 	}
 
-	value_ += char(id & 0xff);
-	value_ += char(id >> 8);
+	value_ += static_cast<char>(id & 0xff);
+	value_ += static_cast<char>(id >> 8);
 	value_ += string;
 }
 
@@ -304,8 +304,8 @@ t_string_base::t_string_base(const std::string& sing, const std::string& pl, int
 		id = idi->second;
 	}
 
-	value_ += char(id & 0xff);
-	value_ += char(id >> 8);
+	value_ += static_cast<char>(id & 0xff);
+	value_ += static_cast<char>(id >> 8);
 	value_ += sing;
 	value_ += PLURAL_PART;
 

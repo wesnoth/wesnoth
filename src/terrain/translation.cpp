@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2006 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -209,7 +209,7 @@ std::string write_terrain_code(const terrain_code& tcode)
 	return number_to_string_(tcode);
 }
 
-ter_list read_list(const std::string& str, const ter_layer filler)
+ter_list read_list(utils::string_view str, const ter_layer filler)
 {
 	// Handle an empty string
 	ter_list result;
@@ -224,7 +224,7 @@ ter_list read_list(const std::string& str, const ter_layer filler)
 		// Get a terrain chunk
 		const std::string separators = ",";
 		const std::size_t pos_separator = str.find_first_of(separators, offset);
-		const std::string terrain = str.substr(offset, pos_separator - offset);
+		const std::string terrain = str.substr(offset, pos_separator - offset).to_string();
 
 		// Process the chunk
 		const terrain_code tile = string_to_number_(terrain, filler);
@@ -749,11 +749,7 @@ static terrain_code string_to_number_(std::string str, std::string& start_positi
 	// Split if we have 1 space inside
 	std::size_t offset = str.find(' ', begin);
 	if(offset < end) {
-		try {
-			start_position = str.substr(begin, offset - begin);
-		} catch(const bad_lexical_cast&) {
-			return VOID_TERRAIN;
-		}
+		start_position = str.substr(begin, offset - begin);
 		begin = offset + 1;
 	}
 

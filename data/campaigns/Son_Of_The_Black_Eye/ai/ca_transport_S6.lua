@@ -40,7 +40,6 @@ function ca_transport:execution()
         then
             transport_map:insert(u.x, u.y)
             table.insert(transports, u)
-            --print("----> Inserting " .. u.id, u.x, u.y, u.variables.destination_x, u.variables.destination_y)
         else
             blocked_hex_map:insert(u.x, u.y)
        end
@@ -54,7 +53,7 @@ function ca_transport:execution()
         }
     )
 
-    local max_rating, best_unit, best_hex, best_adj_tiles = -9e99
+    local max_rating, best_unit, best_hex, best_adj_tiles = - math.huge
     for i,u in ipairs(transports) do
         local dst = { u.variables.destination_x, u.variables.destination_y }
 
@@ -105,18 +104,18 @@ function ca_transport:execution()
         end
     end
 
-    if (max_rating > -9e99) then
+    if best_unit then
         ai.move_full(best_unit, best_hex[1], best_hex[2])
 
         -- Also unload units
         table.sort(best_adj_tiles, function(a, b) return a[3] > b[3] end)
 
-		local command_data = { x = best_unit.x, y = best_unit.y }
-		for i = 1, math.min(#best_adj_tiles, 3) do
-			table.insert(command_data, T.dst { x = best_adj_tiles[i][1], y = best_adj_tiles[i][2]} )
-		end
+        local command_data = { x = best_unit.x, y = best_unit.y }
+        for i = 1, math.min(#best_adj_tiles, 3) do
+            table.insert(command_data, T.dst { x = best_adj_tiles[i][1], y = best_adj_tiles[i][2]} )
+        end
 
-		wesnoth.invoke_synced_command("ship_unload", command_data)
+        wesnoth.invoke_synced_command("ship_unload", command_data)
 
         return
     end
@@ -129,12 +128,12 @@ function ca_transport:execution()
         }
     )
 
-    local max_rating, best_unit, best_hex = -9e99, {}, {}
+    local max_rating, best_unit, best_hex = - math.huge
     for i,u in ipairs(transports) do
         local dst = { u.variables.destination_x, u.variables.destination_y }
         local reach = wesnoth.find_reach(u)
 
-        local max_rating_unit, best_hex_unit = -9e99, {}
+        local max_rating_unit, best_hex_unit = - math.huge
         for i,r in ipairs(reach) do
             if deep_water_map:get(r[1], r[2]) and (not blocked_hex_map:get(r[1], r[2])) then
                 local rating = -M.distance_between(r[1], r[2], dst[1], dst[2])
@@ -150,7 +149,7 @@ function ca_transport:execution()
 
         -- We give a penalty to hexes occupied by another transport that can still move away.
         -- All ratings need to be set to the same value for this to work.
-        if (max_rating_unit > -9e99) then
+        if best_hex_unit then
             max_rating_unit = 0
             if transport_map:get(best_hex_unit[1], best_hex_unit[2]) then
                 max_rating_unit = -1
@@ -164,7 +163,7 @@ function ca_transport:execution()
         end
     end
 
-    if best_unit.id then
+    if best_unit then
         ai.move_full(best_unit, best_hex[1], best_hex[2])
     else  -- still need to make sure gamestate gets changed
         ai.stopunit_moves(transports[1])

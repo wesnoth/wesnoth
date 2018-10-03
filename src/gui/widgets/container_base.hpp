@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/core/window_builder.hpp"
@@ -107,7 +108,7 @@ public:
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override;
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(int x_offset, int y_offset) override;
+	virtual void impl_draw_children() override;
 
 protected:
 	/** See @ref widget::layout_children. */
@@ -140,7 +141,7 @@ public:
 	 *
 	 * @todo Implement properly.
 	 */
-	virtual iteration::walker_base* create_walker() override
+	virtual iteration::walker_ptr create_walker() override
 	{
 		return nullptr;
 	}
@@ -193,7 +194,7 @@ public:
 		grid_.set_rows_cols(rows, cols);
 	}
 
-	void set_child(widget* widget,
+	void set_child(widget_ptr widget,
 				   const unsigned row,
 				   const unsigned col,
 				   const unsigned flags,

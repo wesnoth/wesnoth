@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -115,7 +115,6 @@ void context_manager::refresh_all()
 	gui_.rebuild_all();
 	get_map_context().set_needs_terrain_rebuild(false);
 	get_map_context().clear_changed_locations();
-	gui_.recalculate_minimap();
 	if(locs_) {
 		for(const auto& loc : get_map_context().map().special_locations().left) {
 			locs_->add_item(loc.first);
@@ -547,7 +546,6 @@ void context_manager::refresh_after_action(bool drag_part)
 	}
 
 	get_map_context().clear_changed_locations();
-	gui_.recalculate_minimap();
 }
 
 void context_manager::resize_map_dialog()
@@ -687,9 +685,8 @@ void context_manager::generate_map_dialog()
 
 	gui2::dialogs::editor_generate_map dialog(map_generators_);
 	dialog.select_map_generator(last_map_generator_);
-	dialog.show();
 
-	if(dialog.get_retval() == gui2::retval::OK) {
+	if(dialog.show()) {
 		std::string map_string;
 		map_generator* const map_generator = dialog.get_selected_map_generator();
 		try {

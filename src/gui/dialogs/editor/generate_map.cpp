@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,12 +19,7 @@
 
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "generators/map_generator.hpp"
@@ -113,7 +108,7 @@ void editor_generate_map::pre_show(window& window)
 	listbox& list = find_widget<listbox>(&window, "generators_list", false);
 	window.keyboard_capture(&list);
 
-	std::map<std::string, string_map> lrow;
+	widget_data lrow;
 	for(const auto & gen : map_generators_)
 	{
 		assert(gen);

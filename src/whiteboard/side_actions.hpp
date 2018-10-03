@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project http://www.wesnoth.org
+ Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -378,14 +378,14 @@ public:
 	 * i.e. at the front of the queue by one position.
 	 * @return The action's new position.
 	 */
-	iterator bump_earlier(iterator position);
+	iterator bump_earlier(iterator position, bool send_to_net = true);
 
 	/**
 	 * Moves an action later in the execution order.
 	 * i.e. at the back of the queue by one position.
 	 * @return The action's new position.
 	 */
-	iterator bump_later(iterator position);
+	iterator bump_later(iterator position, bool send_to_net = true);
 
 	/**
 	 * Deletes the action at the specified position.

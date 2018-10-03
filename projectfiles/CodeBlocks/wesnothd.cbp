@@ -29,7 +29,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="-std=c++14" />
+			<Add option="-std=c++17" />
 			<Add option="-mthreads" />
 			<Add option="-fexceptions" />
 			<Add option="-fdiagnostics-show-option" />
@@ -63,6 +63,8 @@
 			<Add library="libboost_thread-mgw51-mt-1_64"/>
 			<Add library="libboost_timer-mgw51-mt-1_64"/>
 			<Add library="libboost_zlib-mgw51-mt-1_64"/>
+			<Add library="libole32" />
+			<Add library="libuuid" />
 			<Add library="libcrypto-1_1"/>
 			</Linker>
 		<Unit filename="../../packaging/windows/wesnothd.rc">
@@ -77,7 +79,7 @@
 		<Unit filename="../../src/config_attribute_value.cpp" />
 		<Unit filename="../../src/config_attribute_value.hpp" />
 		<Unit filename="../../src/filesystem.hpp" />
-		<Unit filename="../../src/filesystem_boost.cpp" />
+		<Unit filename="../../src/filesystem.cpp" />
 		<Unit filename="../../src/filesystem_common.cpp" />
 		<Unit filename="../../src/filesystem_sdl.cpp" />
 		<Unit filename="../../src/filesystem_win32.ii" />
@@ -86,7 +88,7 @@
 		<Unit filename="../../src/game_config.cpp" />
 		<Unit filename="../../src/game_config.hpp" />
 		<Unit filename="../../src/gettext.hpp" />
-		<Unit filename="../../src/gettext_boost.cpp" />
+		<Unit filename="../../src/gettext.cpp" />
 		<Unit filename="../../src/global.hpp" />
 		<Unit filename="../../src/libc_error.hpp" />
 		<Unit filename="../../src/log.cpp" />
@@ -99,6 +101,8 @@
 		<Unit filename="../../src/random.hpp" />
 		<Unit filename="../../src/seed_rng.cpp" />
 		<Unit filename="../../src/seed_rng.hpp" />
+		<Unit filename="../../src/serialization/base64.cpp" />
+		<Unit filename="../../src/serialization/base64.hpp" />
 		<Unit filename="../../src/serialization/binary_or_text.cpp" />
 		<Unit filename="../../src/serialization/binary_or_text.hpp" />
 		<Unit filename="../../src/serialization/compression.hpp" />
@@ -108,7 +112,11 @@
 		<Unit filename="../../src/serialization/preprocessor.hpp" />
 		<Unit filename="../../src/serialization/string_utils.cpp" />
 		<Unit filename="../../src/serialization/string_utils.hpp" />
+		<Unit filename="../../src/serialization/string_view.hpp" />
+		<Unit filename="../../src/serialization/tag.cpp" />
+		<Unit filename="../../src/serialization/tag.hpp" />
 		<Unit filename="../../src/serialization/tokenizer.cpp" />
+		<Unit filename="../../src/serialization/tokenizer.hpp" />
 		<Unit filename="../../src/serialization/unicode.cpp" />
 		<Unit filename="../../src/serialization/unicode.hpp" />
 		<Unit filename="../../src/server/ban.cpp" />
@@ -139,8 +147,8 @@
 		<Unit filename="../../src/tstring.cpp" />
 		<Unit filename="../../src/tstring.hpp" />
 		<Unit filename="../../src/util.hpp" />
-		<Unit filename="../../src/version.cpp" />
-		<Unit filename="../../src/version.hpp" />
+		<Unit filename="../../src/game_version.cpp" />
+		<Unit filename="../../src/game_version.hpp" />
 		<Unit filename="../../src/wesconfig.h" />
 		<Extensions>
 			<code_completion />

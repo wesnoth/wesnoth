@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
    Copyright (C) 2009 - 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -50,6 +50,7 @@ public:
 	void set_shuffle(bool v) { shuffle_ = v; }
 	void set_ms_before(int v) { ms_before_ = v; }
 	void set_ms_after(int v) { ms_after_ = v; }
+	void set_title(const std::string& v) { title_ = v; }
 
 private:
 	void resolve();

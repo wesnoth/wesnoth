@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2016 - 2018 Jyrki Vesterinen <sandgtx@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@ namespace gui2
 REGISTER_WIDGET(size_lock)
 
 size_lock::size_lock(const implementation::builder_size_lock& builder)
-	: container_base(builder, get_control_type())
+	: container_base(builder, type())
 	, width_(builder.width_)
 	, height_(builder.height_)
 	, widget_(nullptr)
@@ -163,9 +163,9 @@ builder_size_lock::builder_size_lock(const config& cfg)
 	content_ = create_widget_builder(cfg.child("widget"));
 }
 
-widget* builder_size_lock::build() const
+widget_ptr builder_size_lock::build() const
 {
-	size_lock* widget = new size_lock(*this);
+	auto widget = std::make_shared<size_lock>(*this);
 
 	DBG_GUI_G << "Window builder: placed fixed size widget '" << id << "' with definition '" << definition << "'.\n";
 

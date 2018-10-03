@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -114,7 +114,7 @@ public:
 		std::shared_ptr<const attack_type> parent;
 		friend class attack_type;
 		/// Initialize weapon specials context for listing
-		explicit specials_context_t(const attack_type& weapon);
+		explicit specials_context_t(const attack_type& weapon, bool attacking);
 		/// Initialize weapon specials context for a unit type
 		specials_context_t(const attack_type& weapon, const unit_type& self_type, const map_location& loc, bool attacking = true);
 		/// Initialize weapon specials context for a single unit
@@ -144,8 +144,8 @@ public:
 	specials_context_t specials_context(const unit_type& self_type, const map_location& loc, bool attacking = true) const {
 		return specials_context_t(*this, self_type, loc, attacking);
 	}
-	specials_context_t specials_context_for_listing() const {
-		return specials_context_t(*this);
+	specials_context_t specials_context_for_listing(bool attacking = true) const {
+		return specials_context_t(*this, attacking);
 	}
 private:
 

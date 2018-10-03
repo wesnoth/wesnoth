@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -35,16 +35,14 @@ static lg::log_domain log_lobby("lobby");
 
 namespace mp
 {
-lobby_info::lobby_info(const config& game_config, const std::vector<std::string>& installed_addons)
-	: game_config_(game_config)
-	, installed_addons_(installed_addons)
+lobby_info::lobby_info(const std::vector<std::string>& installed_addons)
+	: installed_addons_(installed_addons)
 	, gamelist_()
 	, gamelist_initialized_(false)
 	, rooms_()
 	, games_by_id_()
 	, games_()
 	, users_()
-	, users_sorted_()
 	, whispers_()
 	, game_filters_()
 	, game_filter_invert_(false)
@@ -117,7 +115,7 @@ void lobby_info::process_gamelist(const config& data)
 	games_by_id_.clear();
 
 	for(const auto& c : gamelist_.child("gamelist").child_range("game")) {
-		game_info game(c, game_config_, installed_addons_);
+		game_info game(c, installed_addons_);
 		games_by_id_.emplace(game.id, std::move(game));
 	}
 
@@ -128,6 +126,17 @@ void lobby_info::process_gamelist(const config& data)
 }
 
 bool lobby_info::process_gamelist_diff(const config& data)
+{
+	if(!process_gamelist_diff_impl(data)) {
+		// the gamelist is now corrupted, stop further processing and wait for a fresh list.
+		gamelist_initialized_ = false;
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+bool lobby_info::process_gamelist_diff_impl(const config& data)
 {
 	SCOPE_LB;
 	if(!gamelist_initialized_) {
@@ -160,13 +169,18 @@ bool lobby_info::process_gamelist_diff(const config& data)
 		const std::string& diff_result = c[config::diff_track_attribute];
 
 		if(diff_result == "new" || diff_result == "modified") {
+			// note: at this point (1.14.3) the server never sends a 'modified' and instead
+			// just sends a 'delete' followed by a 'new', it still works becasue the delete doesn't
+			// delete the element and just marks it as game_info::DELETED so that game_info::DELETED
+			// is replaced by game_info::UPDATED below. See also
+			// https://github.com/wesnoth/wesnoth/blob/1.14/src/server/server.cpp#L149
 			if(current_i == games_by_id_.end()) {
-				games_by_id_.emplace(game_id, game_info(c, game_config_, installed_addons_));
+				games_by_id_.emplace(game_id, game_info(c, installed_addons_));
 				continue;
 			}
 
 			// Had a game with that id, so update it and mark it as such
-			current_i->second = game_info(c, game_config_, installed_addons_);
+			current_i->second = game_info(c, installed_addons_);
 			current_i->second.display_status = game_info::UPDATED;
 		} else if(diff_result == "deleted") {
 			if(current_i == games_by_id_.end()) {
@@ -208,12 +222,7 @@ void lobby_info::process_userlist()
 		users_.emplace_back(c);
 	}
 
-	users_sorted_.reserve(users_.size());
-	users_sorted_.clear();
-
-	for(auto& u : users_) {
-		users_sorted_.push_back(&u);
-	}
+	std::stable_sort(users_.begin(), users_.end());
 
 	for(auto& ui : users_) {
 		if(ui.game_id == 0) {
@@ -371,18 +380,6 @@ void lobby_info::update_user_statuses(int game_id, const room_info* room)
 	for(auto& user : users_) {
 		user.update_state(game_id, room);
 	}
-}
-
-void lobby_info::sort_users(bool by_name, bool by_relation)
-{
-	std::sort(users_sorted_.begin(), users_sorted_.end(), [&](const user_info* u1, const user_info* u2) {
-		if(by_name && by_relation) {
-			return u1->relation <  u2->relation ||
-			      (u1->relation == u2->relation && translation::icompare(u1->name, u2->name) < 0);
-		}
-
-		return (by_name && translation::icompare(u1->name, u2->name) < 0) || (by_relation && u1->relation < u2->relation);
-	});
 }
 
 } // end namespace mp

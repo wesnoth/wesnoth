@@ -9,9 +9,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tsg-es\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 17:02 UTC\n"
-"PO-Revision-Date: 2018-03-23 11:18+0100\n"
+"PO-Revision-Date: 2018-09-16 16:12+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-Bookmarks: -1,2,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. [campaign]: id=The_South_Guard
@@ -690,7 +690,7 @@ msgid ""
 "Look! There is smoke coming from Westin. That can only mean that bandits "
 "have overrun the garrison and are sacking the city!"
 msgstr ""
-"¡Mirad! Hay humo en Westin. ¡Eso sólo puede significar que los bandidos se "
+"¡Mirad! Sale humo de Westin. ¡Eso sólo puede significar que los bandidos se "
 "han impuesto sobre la guarnición y están saqueando la ciudad!"
 
 #. [message]: speaker=Sir Gerrick
@@ -1441,6 +1441,9 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:358
+#, fuzzy
+#| msgid ""
+#| "I shall not join these accursed undead! Bury me deeply, my friends..."
 msgid "I shall not join these accursed undead! Bury me deeply my friends..."
 msgstr ""
 "¡No me uniré a estos malditos no muertos! Enterradme hondo, amigos míos..."
@@ -1690,8 +1693,10 @@ msgstr "Investigue las áreas al sur del Río Negro"
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:317
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:324
+#, fuzzy
+#| msgid "The masters of the undead are defeated!"
 msgid "The master of the undead is defeated!"
-msgstr "¡El maestro de los no muertos ha sido derrotado!"
+msgstr "¡Los amos de los no muertos ha sido derrotados!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:331
@@ -1700,12 +1705,16 @@ msgstr "No... Me temo que aún queda mucha maldad."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:336
+#, fuzzy
+#| msgid ""
+#| "Surely the undead infestation cannot be dispatched so easily. We have "
+#| "merely destroyed servants of a far darker master."
 msgid ""
 "Surely the undead infestation cannot be dispatched so easily. We have merely "
 "destroyed a servant of a far darker master."
 msgstr ""
-"Seguramente la plaga de no muertos no pueda ser eliminada tan fácilmente. "
-"Sólo hemos destruido un sirviente de un maestro mucho más oscuro."
+"Seguro que la plaga de no muertos no puede ser eliminada tan fácilmente. "
+"Sólo hemos destruido a un sirviente de un maestro mucho más oscuro."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:358
@@ -2420,13 +2429,16 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:458
+#, fuzzy
+#| msgid ""
+#| "While the council debated the best course of action, Deoran and Ethiliel "
+#| "prepared to enter the caves under the fortress..."
 msgid ""
 "While the council debated the best course of action, Deoran and Ethiliel "
 "prepared to enter the caves under Mebrin’s fortress..."
 msgstr ""
 "Mientras el Consejo debatía acerca del mejor curso de acción, Deoran y "
-"Ethiliel se preparaban para acceder a las cuevas bajo la fortaleza de "
-"Mebrin..."
+"Ethiliel se preparaban para acceder a las cuevas bajo la fortaleza..."
 
 #. [scenario]: id=06b_The_Long_March
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:5
@@ -4188,6 +4200,53 @@ msgstr ""
 "durante la reconstrucción de los muros y baluartes destrozados de la ciudad. "
 "Finalmente, mientras se fundía la nieve y las caravanas transportaban de "
 "nuevo sus mercancías, un mensajero del rey Haldric se anunció."
+
+#~ msgid "female^Criminal"
+#~ msgstr "Criminal"
+
+#~ msgid ""
+#~ "It grieves me to learn of his death, foolish though he may have been! At "
+#~ "least we managed to defeat some of these bandits here and now. What else "
+#~ "happened?"
+#~ msgstr ""
+#~ "Me apena saber de su muerte, por imprudente que haya podido ser. Al menos "
+#~ "acabamos de derrotar aquí a parte de los bandidos. ¿Qué otras cosas han "
+#~ "ocurrido?"
+
+#~ msgid "The bandits are defeated!"
+#~ msgstr "¡Los bandidos han sido derrotados!"
+
+#~ msgid "Westin is safe again."
+#~ msgstr "Westin se encuentra de nuevo a salvo."
+
+#~ msgid "Westin will soon be safe again."
+#~ msgstr "Westin pronto se encontrará a salvo de nuevo."
+
+#~ msgid "female^Elvish Bodyguard"
+#~ msgstr "Guardaespaldas elfa"
+
+#~ msgid "Gerd"
+#~ msgstr "Gerd"
+
+#~ msgid "He was not alone."
+#~ msgstr "Él no estaba solo."
+
+#~ msgid "Two undead leaders have fallen…"
+#~ msgstr "Han caído dos líderes de los no muertos..."
+
+#~ msgid "Though we have merely destroyed the servants of a far darker master…"
+#~ msgstr ""
+#~ "Aunque no hemos destruido más que a unos sirvientes de un maestro mucho "
+#~ "más oscuro..."
+
+#~ msgid "They were just servants of a far darker master…"
+#~ msgstr "No eran más que unos sirvientes de un maestro mucho más oscuro..."
+
+#~ msgid "One less evil in this forest…"
+#~ msgstr "Un mal menos para este bosque..."
+
+#~ msgid "female^Disciple of Mebrin"
+#~ msgstr "Discípula de Mebrin"
 
 #~ msgid "lance"
 #~ msgstr "pica"

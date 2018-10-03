@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -28,16 +28,10 @@
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/image.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "gui/widgets/label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/status_label_helper.hpp"
-#include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "mp_ui_alerts.hpp"
@@ -107,7 +101,7 @@ void mp_staging::pre_show(window& window)
 		chat.set_wesnothd_connection(*network_connection_);
 	}
 
-	chat.room_window_open("this game", true, false); // TODO: better title?
+	chat.room_window_open(N_("this game"), true, false);
 	chat.active_window_changed();
 	chat.load_log(default_chat_log, false);
 
@@ -131,13 +125,25 @@ void mp_staging::pre_show(window& window)
 	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
 }
 
+int mp_staging::get_side_node_position(ng::side_engine_ptr side) const
+{
+	int position = 0;
+	for(const auto& side_engine : connect_engine_.side_engines()) {
+		if(side->team() == side_engine->team() && side->index() > side_engine->index()) {
+			++position;
+		}
+	}
+
+	return position;
+}
+
 void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 {
 	tree_view& tree = find_widget<tree_view>(&window, "side_list", false);
-	static const std::map<std::string, string_map> empty_map;
+	static const widget_data empty_map;
 
-	std::map<std::string, string_map> data;
-	string_map item;
+	widget_data data;
+	widget_item item;
 
 	item["label"] = std::to_string(side->index() + 1);
 	data.emplace("side_number", item);
@@ -151,8 +157,8 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 
 	// Check to see whether we've added a toplevel tree node for this team. If not, add one
 	if(team_tree_map_.find(side->team_name()) == team_tree_map_.end()) {
-		std::map<std::string, string_map> tree_data;
-		string_map tree_item;
+		widget_data tree_data;
+		widget_item tree_item;
 
 		tree_item["label"] = (formatter() << _("Team:") << " " << side->user_team_name()).str();
 		tree_data.emplace("tree_view_node_label", tree_item);
@@ -163,17 +169,8 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 		team_tree_map_[side->team_name()] = &team_node;
 	}
 
-	// Find an appropriate position to insert this node. This ensures the side nodes are always
-	// arranged by descending index order in each team group.
-	int position = 0;
-	for(const auto& side_engine : connect_engine_.side_engines()) {
-		if(side->team() == side_engine->team() && side->index() > side_engine->index()) {
-			++position;
-		}
-	}
-
 	// Must be *after* the above if block, or the node ptr could be invalid
-	tree_view_node& node = team_tree_map_[side->team_name()]->add_child("side_panel", data, position);
+	tree_view_node& node = team_tree_map_[side->team_name()]->add_child("side_panel", data, get_side_node_position(side));
 
 	side_tree_map_[side] = &node;
 
@@ -210,7 +207,9 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	menu_button& ai_selection = find_widget<menu_button>(&row_grid, "ai_controller", false);
 
 	ai_selection.set_values(ai_options, selection);
-	ai_selection.connect_click_handler(std::bind(&mp_staging::on_ai_select, this, side, std::ref(ai_selection)));
+
+	connect_signal_notify_modified(ai_selection,
+		std::bind(&mp_staging::on_ai_select, this, side, std::ref(ai_selection)));
 
 	on_ai_select(side, ai_selection);
 
@@ -226,7 +225,9 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 
 	controller_selection.set_values(controller_names, side->current_controller_index());
 	controller_selection.set_active(controller_names.size() > 1);
-	controller_selection.connect_click_handler(std::bind(&mp_staging::on_controller_select, this, side, std::ref(row_grid)));
+
+	connect_signal_notify_modified(controller_selection,
+		std::bind(&mp_staging::on_controller_select, this, side, std::ref(row_grid)));
 
 	on_controller_select(side, row_grid);
 
@@ -275,7 +276,9 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 
 	team_selection.set_values(team_names, initial_team_selection);
 	team_selection.set_active(!saved_game);
-	team_selection.connect_click_handler(std::bind(&mp_staging::on_team_select, this, std::ref(window), side, std::ref(team_selection), _3, _4));
+
+	connect_signal_notify_modified(team_selection,
+		std::bind(&mp_staging::on_team_select, this, std::ref(window), side, std::ref(team_selection)));
 
 	//
 	// Colors
@@ -293,7 +296,9 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	color_selection.set_values(color_options, side->color());
 	color_selection.set_active(!saved_game);
 	color_selection.set_use_markup(true);
-	color_selection.connect_click_handler(std::bind(&mp_staging::on_color_select, this, side, std::ref(row_grid)));
+
+	connect_signal_notify_modified(color_selection,
+		std::bind(&mp_staging::on_color_select, this, side, std::ref(row_grid)));
 
 	//
 	// Gold and Income
@@ -368,7 +373,7 @@ void mp_staging::on_color_select(ng::side_engine_ptr side, grid& row_grid)
 	set_state_changed();
 }
 
-void mp_staging::on_team_select(window& window, ng::side_engine_ptr side, menu_button& team_menu, bool& handled, bool& halt)
+void mp_staging::on_team_select(window& window, ng::side_engine_ptr side, menu_button& team_menu)
 {
 	// Since we're not necessarily displaying every every team in the menu, we can't just
 	// use the selected index to set a side's team. Instead, we grab the index we stored
@@ -383,23 +388,17 @@ void mp_staging::on_team_select(window& window, ng::side_engine_ptr side, menu_b
 	side->set_team(team_index);
 
 	// First, remove the node from the tree
-	find_widget<tree_view>(&window, "side_list", false).remove_node(side_tree_map_[side]);
+	auto node = find_widget<tree_view>(&window, "side_list", false).remove_node(side_tree_map_[side]);
 
 	// Then add a new node as a child to the appropriate team's node
-	add_side_node(window, side);
+	team_tree_map_[side->team_name()]->add_child(std::move(node.first), get_side_node_position(side));
 
 	set_state_changed();
-
-	handled = true;
-	halt = true;
 }
 
 void mp_staging::select_leader_callback(ng::side_engine_ptr side, grid& row_grid)
 {
-	gui2::dialogs::faction_select dlg(side->flg(), side->color_id(), side->index() + 1);
-	dlg.show();
-
-	if(dlg.get_retval() == retval::OK) {
+	if(gui2::dialogs::faction_select::execute(side->flg(), side->color_id(), side->index() + 1)) {
 		update_leader_display(side, row_grid);
 
 		set_state_changed();
@@ -416,7 +415,7 @@ void mp_staging::on_side_slider_change(ng::side_engine_ptr side, slider& slider)
 
 void mp_staging::update_leader_display(ng::side_engine_ptr side, grid& row_grid)
 {
-	const std::string current_faction = (*side->flg().choosable_factions()[side->flg().current_faction_index()])["name"];
+	const std::string current_faction = side->flg().current_faction()["name"];
 
 	// BIG FAT TODO: get rid of this shitty "null" string value in the FLG manager
 	std::string current_leader = side->flg().current_leader() != "null" ? side->flg().current_leader() : font::unicode_em_dash;
@@ -453,9 +452,7 @@ void mp_staging::update_leader_display(ng::side_engine_ptr side, grid& row_grid)
 		const std::string gender_icon = formatter() << "icons/icon-" << current_gender << ".png";
 
 		image& icon = find_widget<image>(&row_grid, "leader_gender", false);
-
 		icon.set_label(gender_icon);
-		icon.set_tooltip(current_gender);
 	}
 }
 

@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -128,10 +128,9 @@ static void clear_resources()
 
 play_controller::play_controller(const config& level,
 		saved_game& state_of_game,
-		const config& game_config,
 		const ter_data_cache& tdata,
 		bool skip_replay)
-	: controller_base(game_config)
+	: controller_base()
 	, observer()
 	, quit_confirmation()
 	, ticks_(SDL_GetTicks())
@@ -144,7 +143,7 @@ play_controller::play_controller(const config& level,
 	, plugins_context_()
 	, labels_manager_()
 	, mouse_handler_(nullptr, *this)
-	, menu_handler_(nullptr, *this, game_config)
+	, menu_handler_(nullptr, *this)
 	, hotkey_handler_(new hotkey_handler(*this, saved_game_))
 	, soundsources_manager_()
 	, persist_()
@@ -154,6 +153,7 @@ play_controller::play_controller(const config& level,
 	, statistics_context_(new statistics::scenario_context(level["name"]))
 	, replay_(new replay(state_of_game.get_replay()))
 	, skip_replay_(skip_replay)
+	, skip_story_(state_of_game.skip_story())
 	, linger_(false)
 	, init_side_done_now_(false)
 	, map_start_()
@@ -308,7 +308,8 @@ void play_controller::initialize_and_show_ui()
 	ui_.reset(new gui2::dialogs::game_ui());
 	assert(ui_);
 
-	ui_->show(true);
+	// TODO: reenable once we get the HUD/map event separation problems sorted out...
+	//ui_->show(true);
 }
 
 void play_controller::reset_gamestate(const config& level, int replay_pos)
@@ -388,14 +389,24 @@ void play_controller::fire_prestart()
 	gamestate().gamedata_.get_variable("turn_number") = static_cast<int>(turn());
 }
 
+void play_controller::refresh_objectives() const
+{
+	const config cfg("side", gui_->viewing_side());
+	gamestate().lua_kernel_->run_wml_action("show_objectives", vconfig(cfg),
+			game_events::queued_event("_from_interface", "", map_location(), map_location(), config()));
+}
+
 void play_controller::fire_start()
 {
 	gamestate().gamedata_.set_phase(game_data::START);
 	pump().fire("start");
 
+	skip_story_ = false; // Show [message]s from now on even with --campaign-skip-story
+
 	// start event may modify start turn with WML, reflect any changes.
 	gamestate().gamedata_.get_variable("turn_number") = static_cast<int>(turn());
 
+	refresh_objectives();
 	check_objectives();
 
 	// prestart and start events may modify the initial gold amount, reflect any changes.
@@ -991,7 +1002,6 @@ void play_controller::process_oos(const std::string& msg) const
 void play_controller::update_gui_to_player(const int team_index, const bool observe)
 {
 	gui_->set_team(team_index, observe);
-	gui_->recalculate_minimap();
 }
 
 void play_controller::do_autosave()
@@ -1094,7 +1104,6 @@ void play_controller::start_game()
 		}
 
 		sync.do_final_checkup();
-		gui_->recalculate_minimap();
 
 		// Initialize countdown clock.
 		for(const team& t : gamestate().board_.teams()) {
@@ -1105,7 +1114,6 @@ void play_controller::start_game()
 	} else {
 		init_gui();
 		gamestate().gamedata_.set_phase(game_data::PLAY);
-		gui_->recalculate_minimap();
 	}
 }
 
@@ -1143,7 +1151,7 @@ void play_controller::play_side()
 		// This flag can be set by derived classes (in overridden functions).
 		player_type_changed_ = false;
 
-		statistics::reset_turn_stats(gamestate().board_.get_team(current_side()).save_id());
+		statistics::reset_turn_stats(gamestate().board_.get_team(current_side()).save_id_or_number());
 
 		play_side_impl();
 

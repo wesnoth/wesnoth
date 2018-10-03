@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -141,14 +141,14 @@ void hotkey_base::save(config& item) const
 
 hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event)
 {
-	hotkey_ptr base = hotkey_ptr(new hotkey_void);
+	hotkey_ptr base = std::make_shared<hotkey_void>();
 	const hotkey_command& command = get_hotkey_command(id);
 	unsigned mods = sdl_get_mods();
 
 	switch (event.type) {
 	case SDL_KEYUP: {
 		if (mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI || CKey::is_uncomposable(event.key) || command.toggle) {
-			hotkey_keyboard_ptr keyboard(new hotkey_keyboard());
+			auto keyboard = std::make_shared<hotkey_keyboard>();
 			base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
 			SDL_Keycode code;
 			code = event.key.keysym.sym;
@@ -161,7 +161,7 @@ hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event)
 		if(command.toggle) {
 			return nullptr;
 		}
-		hotkey_keyboard_ptr keyboard(new hotkey_keyboard());
+		auto keyboard = std::make_shared<hotkey_keyboard>();
 		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
 		std::string text =  std::string(event.text.text);
 		keyboard->set_text(text);
@@ -171,7 +171,7 @@ hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event)
 	}
 		break;
 	case SDL_MOUSEBUTTONUP: {
-		hotkey_mouse_ptr mouse(new hotkey_mouse());
+		auto mouse = std::make_shared<hotkey_mouse>();
 		base = std::dynamic_pointer_cast<hotkey_base>(mouse);
 		mouse->set_button(event.button.button);
 		break;
@@ -190,18 +190,18 @@ hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event)
 
 hotkey_ptr load_from_config(const config& cfg)
 {
-	hotkey_ptr base = hotkey_ptr(new hotkey_void());
+	hotkey_ptr base = std::make_shared<hotkey_void>();
 
 	const std::string& mouse_cfg = cfg["mouse"];
 	if (!mouse_cfg.empty()) {
-		hotkey_mouse_ptr mouse(new hotkey_mouse());
+		auto mouse = std::make_shared<hotkey_mouse>();
 		base = std::dynamic_pointer_cast<hotkey_base>(mouse);
 		mouse->set_button(cfg["button"].to_int());
 	}
 
 	const std::string& key_cfg = cfg["key"];
 	if (!key_cfg.empty()) {
-		hotkey_keyboard_ptr keyboard(new hotkey_keyboard());
+		auto keyboard = std::make_shared<hotkey_keyboard>();
 		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
 
 		SDL_Keycode keycode = SDL_GetKeyFromName(key_cfg.c_str());

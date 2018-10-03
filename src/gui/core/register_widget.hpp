@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2007 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -57,10 +57,16 @@
  *
  * "Calls" REGISTER_WIDGET3(id_definition, id, nullptr)
  */
-#define REGISTER_WIDGET(id) REGISTER_WIDGET3(id##_definition, id, nullptr)                                             \
+#define REGISTER_WIDGET(id)                                                                                            \
+	REGISTER_WIDGET3(id##_definition, id, nullptr)                                                                     \
                                                                                                                        \
-	const std::string& id::get_control_type() const                                                                    \
+	const std::string& id::type()                                                                                      \
 	{                                                                                                                  \
 		static const std::string result(#id);                                                                          \
 		return result;                                                                                                 \
+	}                                                                                                                  \
+                                                                                                                       \
+	const std::string& id::get_control_type() const                                                                    \
+	{                                                                                                                  \
+		return id::type();                                                                                             \
 	}

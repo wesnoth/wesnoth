@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -165,103 +165,106 @@ constexpr bool is_text_input_event(const ui_event event)
 struct message;
 
 /**
- * Callback function signature.
+ * Callback function signature alias template.
  *
- * There are several kinds of callback signature, this only has the parameters
- * shared by all callbacks.
+ * All callbacks take these four arguments in addition to any arguments
+ * specified by the parameter pack.
  *
- * This function is used for the callbacks in set_event.
+ * Parameters:
+ * 1. The widget handling this event.
+ * 2. The event type.
+ * 3. Reference to the flag controlling whether this event has been handled.
+ * 4. Reference to the flag controlling whether to halt execution of this event.
  */
-typedef std::function<void(widget& dispatcher,
-							const ui_event event,
-							bool& handled, bool& halt)> signal_function;
+template<typename... T>
+using dispatcher_callback_func = std::function<void(widget&, const ui_event, bool&, bool&, T...)>;
 
 /**
  * Callback function signature.
  *
- * This function is used for the callbacks in set_event_mouse.
+ * This is used for events matching @ref is_general_event.
  */
-typedef std::function<void(widget& dispatcher,
-							 const ui_event event,
-							 bool& handled,
-							 bool& halt,
-							 const point& coordinate)> signal_mouse_function;
+using signal_function = dispatcher_callback_func<>;
 
 /**
  * Callback function signature.
  *
- * This function is used for the callbacks in set_event_keyboard.
+ * This is used for events matching @ref is_mouse_event.
+ *
+ * Extra parameters:
+ * 5. The x,y coordinate of the mouse when this event is fired.
  */
-typedef std::function<void(widget& dispatcher,
-							 const ui_event event,
-							 bool& handled,
-							 bool& halt,
-							 const SDL_Keycode key,
-							 const SDL_Keymod modifier,
-							 const std::string& unicode)> signal_keyboard_function;
+using signal_mouse_function = dispatcher_callback_func<const point&>;
 
 /**
  * Callback function signature.
  *
- * This function is used for the callbacks in set_event_touch.
+ * This is used for events matching @ref is_keyboard_event.
+ *
+ * Extra parameters:
+ * 5. The keycode of the key that triggered this event.
+ * 6. Any applicable active modifer key.
+ * 7. Any applicable text associated with the key.
  */
-typedef std::function<void(widget& dispatcher,
-							 const ui_event event,
-							 bool& handled,
-							 bool& halt,
-							 const point& pos,
-							 const point& distance)> signal_touch_function;
+using signal_keyboard_function =
+	dispatcher_callback_func<const SDL_Keycode, const SDL_Keymod, const std::string&>;
 
 /**
  * Callback function signature.
  *
- * This function is used for the callbacks in set_event_notification.
- * Added the dummy void* parameter which will be nullptr to get a different
- * signature as signal_function's callback.
+ * This is used for events matching @ref is_touch_event.
+ *
+ * Extra parameters:
+ * 5. Origin of the touch event, in x,y format.
+ * 6. Number of pixels dragged, in x,y format.
  */
-typedef std::function<void(widget& dispatcher,
-							 const ui_event event,
-							 bool& handled,
-							 bool& halt,
-							 void*)> signal_notification_function;
+using signal_touch_function = dispatcher_callback_func<const point&, const point&>;
 
 /**
  * Callback function signature.
  *
- * This function is used for the callbacks in set_event_message.
+ * This is used for events matching @ref is_notification_event.
+ *
+ * Extra parameters:
+ * 5. A dummy void* parameter which will always be nullptr, used to differentiate
+ *    this function from signal_function.
  */
-typedef std::function<void(widget& dispatcher,
-							 const ui_event event,
-							 bool& handled,
-							 bool& halt,
-							 message& message)> signal_message_function;
+using signal_notification_function = dispatcher_callback_func<void*>;
 
 /**
  * Callback function signature.
  *
- * This function is used for the callbacks in set_event_raw_event.
+ * This is used for events matching @ref is_message_event.
+ *
+ * Extra parameters:
+ * 5. The applicable data this event requires.
  */
-typedef std::function<void(widget& dispatcher,
-						   const ui_event event,
-						   bool& handled,
-						   bool& halt,
-						   const SDL_Event& sdlevent)> signal_raw_event_function;
+using signal_message_function = dispatcher_callback_func<const message&>;
+
+/**
+ * Raw event callback function signature.
+ *
+ * This is used for events matching @ref is_raw_event_event.
+ *
+ * Extra parameters:
+ * 5. The raw SDL_Event.
+ */
+using signal_raw_event_function = dispatcher_callback_func<const SDL_Event&>;
 
 /**
  * Callback function signature.
  *
- * This function is used for the callbacks in set_event_text_input.
+ * This is used for events matching @ref is_text_input_event.
+ *
+ * Extra parameters:
+ * 5. The text entered.
+ * 6. The current input position.
+ * 7. The current text selection length.
  */
-typedef std::function<void(widget& dispatcher,
-						   const ui_event event,
-						   bool& handled,
-						   bool& halt,
-						   const std::string& text,
-						   int32_t current_pos,
-						   int32_t select_len)> signal_text_input_function;
+using signal_text_input_function = dispatcher_callback_func<const std::string&, int32_t, int32_t>;
 
 /** Hotkey function handler signature. */
-typedef std::function<void(widget& dispatcher, hotkey::HOTKEY_COMMAND id)> hotkey_function;
+using hotkey_function = std::function<void(widget& dispatcher, hotkey::HOTKEY_COMMAND id)>;
 
 /**
  * Base class for event handling.
@@ -386,7 +389,7 @@ public:
 	 */
 	bool fire(const ui_event event,
 			  widget& target,
-			  message& msg);
+			  const message& msg);
 
 	/**
 	 * Fires an event that's a raw SDL event
@@ -1012,6 +1015,9 @@ void connect_signal_mouse_left_double_click(dispatcher& dispatcher, const signal
 
 /** Connects a signal handler for getting a notification upon modification. */
 void connect_signal_notify_modified(dispatcher& dispatcher, const signal_notification_function& signal);
+
+/** Connects a signal handler for a callback when the widget is drawn. */
+void connect_signal_on_draw(dispatcher& dispatcher, const signal_function& signal);
 
 } // namespace event
 

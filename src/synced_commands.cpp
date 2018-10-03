@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2014 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -574,7 +574,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, use_undo, /*show*/, /*error_h
 		if (i.valid()) {
 			unit_display::unit_die(loc, *i);
 		}
-		display::get_singleton()->redraw_minimap();
 		if (i.valid()) {
 			i->set_hitpoints(0);
 		}
@@ -696,8 +695,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_fog, /*child*/, use_undo, /*show*/, /*erro
 	current_team.set_fog(!current_team.uses_fog());
 	actions::recalculate_fog(current_team.side());
 
-	display::get_singleton()->recalculate_minimap();
-
 	return true;
 }
 
@@ -713,8 +710,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_shroud, /*child*/, use_undo, /*show*/, /*e
 	team& current_team = resources::controller->current_team();
 	current_team.set_shroud(!current_team.uses_shroud());
 	actions::clear_shroud(current_team.side());
-
-	display::get_singleton()->recalculate_minimap();
 
 	return true;
 }

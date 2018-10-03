@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 17:01 UTC\n"
-"PO-Revision-Date: 2018-03-27 21:43+0800\n"
+"PO-Revision-Date: 2018-07-08 20:33+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.8\n"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:13
@@ -1656,6 +1656,8 @@ msgstr "弗拉格诺"
 
 #. [message]: speaker=Vlagnor
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:124
+#, fuzzy
+#| msgid "What are you merfolk doing here?"
 msgid "What are you mermen doing here?"
 msgstr "你们人鱼来这里做什么？"
 
@@ -1681,6 +1683,10 @@ msgstr "臭巫婆？"
 
 #. [message]: speaker=Vlagnor
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:144
+#, fuzzy
+#| msgid ""
+#| "She kill drakes. If you are her friend, we will kill you. We do not want "
+#| "MORE merfolk blasting and stabbing."
 msgid ""
 "She kill drakes. If you are her friend, we will kill you. We do not want "
 "MORE mermen blasting and stabbing."
@@ -2400,6 +2406,10 @@ msgstr "我现在也要加入你们！那怪物太不自然了。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:570
+#, fuzzy
+#| msgid ""
+#| "The merfolk clapped their hands over their ears as a terrible wail echoed "
+#| "off the castle walls."
 msgid ""
 "The mermen clapped their hands over their ears as a terrible wail echoed off "
 "the castle walls."
@@ -2616,6 +2626,14 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:17
+#, fuzzy
+#| msgid ""
+#| "The tribe that had fled Jotha unable to fight returned as an army "
+#| "stiffened by veteran fighters and led by a warrior king. Though they were "
+#| "tired from their journey, weariness fell from them as they neared home. "
+#| "The merfolk arrived during the night, and found the mouth of their bay "
+#| "guarded, so they headed south along the coast to some outlying villages "
+#| "to gather news of the invaders."
 msgid ""
 "The tribe that had fled Jotha unable to fight returned as an army stiffened "
 "by veteran fighters and led by a warrior king. Though they were tired from "
@@ -2679,8 +2697,10 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:491
+#, fuzzy
+#| msgid "At dawn, the merfolk got a good look at their opponents."
 msgid "At dawn, the mermen got a good look at their opponents."
-msgstr "黎明来临，人鱼们看清了对手的情况。"
+msgstr "黎明来临，人鱼们看清了对手的面目。"
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:497
@@ -2810,6 +2830,15 @@ msgstr "尾声"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:33
+#, fuzzy
+#| msgid ""
+#| "After destroying Mal-Ravanal’s henchmen, Kai Krellis awaited another "
+#| "attack. But it never came. Krellis sent some messengers south to discover "
+#| "what they could. The news that came back was better than good. Mal-"
+#| "Ravanal was dead! Soldiers of Wesnoth had defeated him at about the same "
+#| "time the merfolk had defeated the undead at Jotha. With the evil wizard "
+#| "gone, the merfolk relaxed and began rebuilding in earnest, and soon Jotha "
+#| "was restored."
 msgid ""
 "After destroying Mal-Ravanal’s henchmen, Kai Krellis awaited another attack. "
 "But it never came. Krellis sent some messengers south to discover what they "
@@ -2984,6 +3013,10 @@ msgstr "人鱼平民"
 
 #. [unit_type]: id=Merman Citizen, race=merman
 #: data/campaigns/Dead_Water/units/Citizen.cfg:17
+#, fuzzy
+#| msgid ""
+#| "Merfolk are mostly peaceful, but will fight to defend their homes. In "
+#| "this situation, even merfolk with no weapons or training can be dangerous."
 msgid ""
 "Mermen are mostly peaceful, but will fight to defend their homes. In this "
 "situation, even mermen with no weapons or training can be dangerous."
@@ -3052,8 +3085,10 @@ msgstr ""
 "鼓舞而全力作战，但是久经沙场的老兵们则不会多以为然。"
 
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:72
+#, fuzzy
+#| msgid "Undead Forces"
 msgid "Merman Forces"
-msgstr "人鱼部队"
+msgstr "亡灵军团"
 
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:76
 msgid "Kai Krellis"
@@ -3066,11 +3101,16 @@ msgstr "风暴三叉戟"
 
 #. [object]: id={ID}
 #: data/campaigns/Dead_Water/utils/items.cfg:11
+#, fuzzy
+#| msgid ""
+#| "This trident gives merfolk the power to throw lightning at their enemies."
 msgid "This weapon shoots powerful lightning bolts at your enemies."
-msgstr "此武器会向你的敌人发射强力的闪电。"
+msgstr "这柄三叉戟赐予人鱼向敌人发射闪电的力量。"
 
 #. [object]: id={ID}
 #: data/campaigns/Dead_Water/utils/items.cfg:13
+#, fuzzy
+#| msgid "Only the merfolk can use this item."
 msgid "Only a merman can use this item."
 msgstr "只有人鱼才能使用此物品。"
 
@@ -3190,3 +3230,9 @@ msgid ""
 msgstr ""
 "此攻击很重，以至于对手会被打得眩晕，因此无法维持控制区域。眩晕效果将在对手的"
 "下个回合消除。"
+
+#~ msgid "Now we must defeat the undead."
+#~ msgstr "现在我们必须击败亡灵。"
+
+#~ msgid "user_team_name^Merfolk"
+#~ msgstr "人鱼"

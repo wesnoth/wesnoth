@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2017-2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+Copyright (C) 2017-2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -137,7 +137,7 @@ static int impl_music_set(lua_State* L) {
 				// Remove the track at that index and add the new one in its place
 				// It's a little inefficient though...
 				sound::remove_track(i);
-				sound::play_music_config(cfg, i);
+				sound::play_music_config(cfg, false, i);
 			}
 		} else {
 			lua_music_track& track = *get_track(L, 3);
@@ -206,7 +206,7 @@ static int intf_music_add(lua_State* L) {
 			return luaL_argerror(L, i, "unrecognized argument");
 		}
 	}
-	sound::play_music_config(cfg, index);
+	sound::play_music_config(cfg, false, index);
 	return 0;
 }
 
@@ -274,6 +274,7 @@ static int impl_track_set(lua_State* L) {
 	modify_bool_attrib("once", (*track)->set_play_once(value));
 	modify_int_attrib("ms_before", (*track)->set_ms_before(value));
 	modify_int_attrib("ms_after", (*track)->set_ms_after(value));
+	modify_string_attrib("title", (*track)->set_title(value));
 	return 0;
 }
 

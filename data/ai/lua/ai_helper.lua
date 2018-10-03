@@ -125,7 +125,7 @@ function ai_helper.print_ts(...)
     local arg = { ... }
     arg[#arg+1] = string.format('[ t = %.3f ]', ts)
 
-    print(table.unpack(arg))
+    std_print(table.unpack(arg))
 
     return ts
 end
@@ -143,7 +143,7 @@ function ai_helper.print_ts_delta(start_time, ...)
     local arg = { ... }
     arg[#arg+1] = string.format('[ t = %.3f, dt = %.3f ]', ts, delta)
 
-    print(table.unpack(arg))
+    std_print(table.unpack(arg))
 
     return ts, delta
 end
@@ -639,6 +639,21 @@ function ai_helper.is_opposite_adjacent(hex1, hex2, center_hex)
     return false
 end
 
+function ai_helper.get_locations_no_borders(location_filter)
+    -- Returns the same locations array as wesnoth.get_locations(location_filter),
+    -- but excluding hexes on the map border.
+    --
+    -- This is faster than alternative methods, at least with the current
+    -- implementation of standard location filter evaluation by the engine.
+    -- Note that this might not work if @location_filter is a vconfig object.
+
+    local old_include_borders = location_filter.include_borders
+    location_filter.include_borders = false
+    local locs = wesnoth.get_locations(location_filter)
+    location_filter.include_borders = old_include_borders
+    return locs
+end
+
 function ai_helper.get_closest_location(hex, location_filter, unit)
     -- Get the location closest to @hex (in format { x, y })
     -- that matches @location_filter (in WML table format)
@@ -678,7 +693,7 @@ function ai_helper.get_closest_location(hex, location_filter, unit)
 
         if unit then
             for _,loc in ipairs(locs) do
-                local movecost = wesnoth.unit_movement_cost(unit, wesnoth.get_terrain(loc[1], loc[2]))
+                local movecost = unit:movement(wesnoth.get_terrain(loc[1], loc[2]))
                 if (movecost <= unit.max_moves) then return loc end
             end
         else
@@ -698,18 +713,13 @@ function ai_helper.get_passable_locations(location_filter, unit)
     -- excluding border hexes are returned
 
     -- All hexes that are not on the map border
-    local width, height = wesnoth.get_map_size()
-    local all_locs = wesnoth.get_locations{
-        x = '1-' .. width,
-        y = '1-' .. height,
-        { "and", location_filter }
-    }
+    local all_locs = ai_helper.get_locations_no_borders(location_filter)
 
     -- If @unit is provided, exclude terrain that's impassable for the unit
     if unit then
         local locs = {}
         for _,loc in ipairs(all_locs) do
-            local movecost = wesnoth.unit_movement_cost(unit, wesnoth.get_terrain(loc[1], loc[2]))
+            local movecost = unit:movement(wesnoth.get_terrain(loc[1], loc[2]))
             if (movecost <= unit.max_moves) then table.insert(locs, loc) end
         end
         return locs
@@ -895,43 +905,26 @@ end
 --------- Unit related helper functions ----------
 
 function ai_helper.get_live_units(filter)
-    -- Same as wesnoth.get_units(), except that it only returns non-petrified units
-
-    local all_units = wesnoth.get_units(filter)
-
-    local units = {}
-    for _,unit in ipairs(all_units) do
-        if (not unit.status.petrified) then table.insert(units, unit) end
-    end
-
-    return units
+    -- Note: the order of the filters and the [and] tags are important for speed reasons
+    return wesnoth.get_units { { "not", { status = "petrified" } }, { "and", filter } }
 end
 
 function ai_helper.get_units_with_moves(filter)
-    -- Using formula = '$this_unit.moves > 0' is slow, this method is much faster
-    local all_units = wesnoth.get_units(filter)
-
-    local units = {}
-    for _,unit in ipairs(all_units) do
-        if (unit.moves > 0) then table.insert(units, unit) end
-    end
-
-    return units
+    -- Note: the order of the filters and the [and] tags are important for speed reasons
+    return wesnoth.get_units {
+        { "and", { formula = "moves > 0" } },
+        { "not", { status = "petrified" } },
+        { "and", filter }
+    }
 end
 
 function ai_helper.get_units_with_attacks(filter)
-    -- Using formula = '$this_unit.attacks_left > 0' is slow, this method is much faster
-    -- Also need to check that units actually have attacks (as attacks_left > 0 with no attacks is possible)
-    local all_units = wesnoth.get_units(filter)
-
-    local units = {}
-    for _,unit in ipairs(all_units) do
-        if (unit.attacks_left > 0) and (#unit.attacks > 0) then
-            table.insert(units, unit)
-        end
-    end
-
-    return units
+    -- Note: the order of the filters and the [and] tags are important for speed reasons
+    return wesnoth.get_units {
+        { "and", { formula = "attacks_left > 0 and size(attacks) > 0" } },
+        { "not", { status = "petrified" } },
+        { "and", filter }
+    }
 end
 
 function ai_helper.get_visible_units(viewing_side, filter)
@@ -1077,7 +1070,7 @@ function ai_helper.get_closest_enemy(loc, side, cfg)
         x, y = loc[1], loc[2]
     end
 
-    local closest_distance, location = 9e99
+    local closest_distance, location = math.huge
     for _,enemy in ipairs(enemies) do
         enemy_distance = M.distance_between(x, y, enemy.x, enemy.y)
         if (enemy_distance < closest_distance) then
@@ -1113,7 +1106,7 @@ function ai_helper.has_weapon_special(unit, special)
 end
 
 function ai_helper.get_cheapest_recruit_cost()
-    local cheapest_unit_cost = 9e99
+    local cheapest_unit_cost = math.huge
     for _,recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
         if wesnoth.unit_types[recruit_id].cost < cheapest_unit_cost then
             cheapest_unit_cost = wesnoth.unit_types[recruit_id].cost
@@ -1389,7 +1382,7 @@ function ai_helper.find_path_with_shroud(unit, x, y, cfg)
                 if (u.side ~= viewing_side)
                     and (not ai_helper.is_visible_unit(viewing_side, u))
                 then
-                    wesnoth.extract_unit(u)
+                    u:extract()
                     table.insert(extracted_units, u)
                 end
             end
@@ -1401,7 +1394,7 @@ function ai_helper.find_path_with_shroud(unit, x, y, cfg)
         path, cost = wesnoth.find_path(unit, x, y, cfg_copy)
 
         for _,extracted_unit in ipairs(extracted_units) do
-            wesnoth.put_unit(extracted_unit)
+            extracted_unit:to_map()
         end
     else
         path, cost = wesnoth.find_path(unit, x, y, cfg)
@@ -1433,7 +1426,7 @@ function ai_helper.find_best_move(units, rating_function, cfg)
     -- If this is an individual unit, turn it into an array
     if units.hitpoints then units = { units } end
 
-    local max_rating, best_hex, best_unit = -9e99, {}, {}
+    local max_rating, best_hex, best_unit = - math.huge, {}, {}
     for _,unit in ipairs(units) do
         -- Hexes each unit can reach
         local reach_map = ai_helper.get_reachable_unocc(unit, cfg)
@@ -1477,7 +1470,7 @@ function ai_helper.move_unit_out_of_way(ai, unit, cfg)
     local reach = wesnoth.find_reach(unit, cfg)
     local reach_map = LS.create()
 
-    local max_rating, best_hex = -9e99
+    local max_rating, best_hex = - math.huge
     for _,loc in ipairs(reach) do
         local unit_in_way = wesnoth.get_unit(loc[1], loc[2])
         if (not unit_in_way)       -- also excludes current hex
@@ -1548,7 +1541,6 @@ function ai_helper.movefull_outofway_stopunit(ai, unit, x, y, cfg)
         if unit_in_way and (unit_in_way ~= unit)
             and ai_helper.is_visible_unit(viewing_side, unit_in_way)
         then
-            --W.message { speaker = 'narrator', message = 'Moving out of way' }
             ai_helper.move_unit_out_of_way(ai, unit_in_way, cfg)
         end
     end
@@ -1690,7 +1682,7 @@ function ai_helper.get_attacks(units, cfg)
                     for _,target in ipairs(attack_hex_map:get(loc[1], loc[2])) do
                         local att_stats, def_stats
                         if cfg.simulate_combat then
-                            local unit_dst = wesnoth.copy_unit(unit)
+                            local unit_dst = unit:clone()
                             unit_dst.x, unit_dst.y = loc[1], loc[2]
 
                             local enemy = all_units[target.i]

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -124,8 +124,7 @@ bool dispatcher::fire(const ui_event event, widget& target, void*)
 	return fire_event<signal_notification_function>(event, this, &target, nullptr);
 }
 
-// TODO: is there any reason msg isn't a const reference?
-bool dispatcher::fire(const ui_event event, widget& target, message& msg)
+bool dispatcher::fire(const ui_event event, widget& target, const message& msg)
 {
 	assert(is_message_event(event));
 	return fire_event<signal_message_function>(event, this, &target, msg);
@@ -179,6 +178,12 @@ void connect_signal_mouse_left_double_click(dispatcher& dispatcher, const signal
 void connect_signal_notify_modified(dispatcher& dispatcher, const signal_notification_function& signal)
 {
 	dispatcher.connect_signal<NOTIFY_MODIFIED>(signal);
+}
+
+void connect_signal_on_draw(dispatcher& dispatcher, const signal_function& signal)
+{
+	// TODO: evaluate whether draw events need go in this queue position.
+	dispatcher.connect_signal<DRAW>(signal, dispatcher::front_child);
 }
 
 } // namespace event

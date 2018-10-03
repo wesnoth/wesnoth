@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,14 +18,7 @@
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/log.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/button.hpp"
-#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/text_box.hpp"
@@ -117,16 +110,13 @@ void unit_create::pre_show(window& window)
 
 	for(const auto & i : unit_types.types())
 	{
-		if(i.second.do_not_list())
-			continue;
-
 		// Make sure this unit type is built with the data we need.
 		unit_types.build_unit_type(i.second, unit_type::FULL);
 
 		units_.push_back(&i.second);
 
-		std::map<std::string, string_map> row_data;
-		string_map column;
+		widget_data row_data;
+		widget_item column;
 
 		column["label"] = units_.back()->race()->plural_name();
 		row_data.emplace("race", column);
@@ -187,6 +177,10 @@ void unit_create::update_displayed_type() const
 	const int selected_row
 		= find_widget<listbox>(w, "unit_type_list", false).get_selected_row();
 
+	if(selected_row == -1) {
+		return;
+	}
+
 	find_widget<unit_preview_pane>(w, "unit_details", false)
 		.set_displayed_type(units_[selected_row]->get_gender_unit_type(gender_));
 }
@@ -206,6 +200,18 @@ void unit_create::list_item_clicked(window& window)
 		return units_[selected_row]->has_gender_variation(gender);
 	});
 }
+
+namespace
+{
+
+bool ci_search(const std::string& a, const std::string& b)
+{
+	return std::search(a.begin(), a.end(),
+	                   b.begin(), b.end(),
+	                   chars_equal_insensitive) != a.end();
+}
+
+} // end unnamed namespace
 
 void unit_create::filter_text_changed(text_box_base* textbox, const std::string& text)
 {
@@ -229,16 +235,18 @@ void unit_create::filter_text_changed(text_box_base* textbox, const std::string&
 			grid::iterator it = row->begin();
 			label& type_label
 					= find_widget<label>(*it, "unit_type", false);
+			label& race_label
+					= find_widget<label>(*it, "race", false);
+
+			assert(i < units_.size());
+			const std::string& unit_type_id = units_[i] ? units_[i]->id() : "";
 
 			bool found = false;
 			for(const auto & word : words)
 			{
-				found = std::search(type_label.get_label().str().begin(),
-									type_label.get_label().str().end(),
-									word.begin(),
-									word.end(),
-									chars_equal_insensitive)
-						!= type_label.get_label().str().end();
+				found = ci_search(type_label.get_label().str(), word) ||
+				        ci_search(race_label.get_label().str(), word) ||
+				        ci_search(unit_type_id, word);
 
 				if(!found) {
 					// one word doesn't match, we don't reach words.end()

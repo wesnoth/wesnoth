@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Pauli Nieminen <paniemin@cc.hut.fi>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -21,9 +21,9 @@
 #include "config.hpp"
 #include "game_config.hpp"
 #include "language.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 
-#include "tests/utils/game_config_manager.hpp"
+#include "tests/utils/game_config_manager_tests.hpp"
 
 #include "utils/functional.hpp"
 

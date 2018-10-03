@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2010 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,7 +18,6 @@
 
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 
 #include "utils/functional.hpp"
 
@@ -33,7 +32,7 @@ namespace gui2
 REGISTER_WIDGET(progress_bar)
 
 progress_bar::progress_bar(const implementation::builder_progress_bar& builder)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 	, percentage_(static_cast<unsigned>(-1))
 {
 	// Force canvas update
@@ -144,9 +143,9 @@ builder_progress_bar::builder_progress_bar(const config& cfg)
 {
 }
 
-widget* builder_progress_bar::build() const
+widget_ptr builder_progress_bar::build() const
 {
-	progress_bar* widget = new progress_bar(*this);
+	auto widget = std::make_shared<progress_bar>(*this);
 
 	DBG_GUI_G << "Window builder: placed progress bar '" << id
 			  << "' with definition '" << definition << "'.\n";

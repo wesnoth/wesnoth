@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2013 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,11 +14,10 @@
 #include "game_initialization/configure_engine.hpp"
 
 #include "formula/string_utils.hpp"
-#include "game_config_manager.hpp"
 #include "mp_game_settings.hpp"
 #include "preferences/credentials.hpp"
 #include "preferences/game.hpp"
-#include "settings.hpp"
+#include "map_settings.hpp"
 #include "tod_manager.hpp"
 
 #include <cassert>

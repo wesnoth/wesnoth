@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -182,14 +182,17 @@ fuh::BAN_TYPE fuh::user_is_banned(const std::string& name, const std::string& ad
 	//       for the time being.
 	//
 
-	if(!addr.empty() && prepared_statement<bool>("SELECT 1 FROM `" + db_banlist_table_ + "` WHERE UPPER(ban_ip) = UPPER(?) AND ban_exclude = 0", addr)) {
-		LOG_UH << "User '" << name << "' ip " << addr << " banned by IP address\n";
-		return BAN_IP;
+	try {
+		if(!addr.empty() && prepared_statement<bool>("SELECT 1 FROM `" + db_banlist_table_ + "` WHERE UPPER(ban_ip) = UPPER(?) AND ban_exclude = 0", addr)) {
+			LOG_UH << "User '" << name << "' ip " << addr << " banned by IP address\n";
+			return BAN_IP;
+		}
+	} catch(const sql_error& e) {
+		ERR_UH << "Could not check forum bans on address '" << addr << "' :" << e.message << '\n';
+		return BAN_NONE;
 	}
 
-	if(!user_exists(name)) {
-		throw error("No user with the name '" + name + "' exists.");
-	}
+	if(!user_exists(name)) return BAN_NONE;
 
 	try {
 		auto uid = get_detail_for_user<unsigned int>(name, "user_id");

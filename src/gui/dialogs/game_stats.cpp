@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,17 +18,9 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/log.hpp"
 #include "gui/dialogs/message.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/button.hpp"
-#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/stacked_widget.hpp"
-#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 #include "formatter.hpp"
 #include "game_classification.hpp"
@@ -87,8 +79,8 @@ void game_stats::pre_show(window& window)
 			continue;
 		}
 
-		std::map<std::string, string_map> row_data_stats;
-		string_map column_stats;
+		widget_data row_data_stats;
+		widget_item column_stats;
 
 		const bool known = viewing_team_.knows_about_team(team.side() - 1);
 		const bool enemy = viewing_team_.is_enemy(team.side());
@@ -169,8 +161,8 @@ void game_stats::pre_show(window& window)
 		//
 		// Settings list
 		//
-		std::map<std::string, string_map> row_data_settings;
-		string_map column_settings;
+		widget_data row_data_settings;
+		widget_item column_settings;
 
 		column_settings["use_markup"] = "true";
 

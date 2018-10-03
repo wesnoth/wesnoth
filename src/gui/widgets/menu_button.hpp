@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -54,28 +54,11 @@ public:
 	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
-	/** Inherited from clickable_item. */
-	void connect_click_handler(const event::signal_function& signal)
-	{
-		connect_signal_mouse_left_click(*this, signal);
-	}
-
-	/** Inherited from clickable_item. */
-	void disconnect_click_handler(const event::signal_function& signal)
-	{
-		disconnect_signal_mouse_left_click(*this, signal);
-	}
-
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_retval(const int retval)
-	{
-		retval_ = retval;
-	}
+	void set_values(const std::vector<::config>& values, unsigned selected = 0);
 
-	void set_values(const std::vector<::config>& values, int selected = 0);
-
-	void set_selected(int selected, bool fire_event = true);
+	void set_selected(unsigned selected, bool fire_event = true);
 
 	/** Inherited from selectable_item */
 	virtual unsigned get_value() const override { return selected_; }
@@ -126,20 +109,17 @@ private:
 	 */
 	state_t state_;
 
-	/**
-	 * The return value of the button.
-	 *
-	 * If this value is not 0 and the button is clicked it sets the retval of
-	 * the window and the window closes itself.
-	 */
-	int retval_;
-
 	std::vector<::config> values_;
 
-	int selected_;
+	unsigned selected_;
 
 	bool keep_open_;
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
@@ -154,6 +134,10 @@ private:
 	void signal_handler_left_button_up(const event::ui_event event, bool& handled);
 
 	void signal_handler_left_button_click(const event::ui_event event, bool& handled);
+
+	void signal_handler_sdl_wheel_up(const event::ui_event event, bool& handled);
+
+	void signal_handler_sdl_wheel_down(const event::ui_event event, bool& handled);
 };
 
 // }---------- DEFINITION ---------{
@@ -182,11 +166,9 @@ public:
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
 private:
-	std::string retval_id_;
-	int retval_;
 	std::vector<::config> options_;
 };
 

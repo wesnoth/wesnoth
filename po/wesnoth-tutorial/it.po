@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:31 UTC\n"
-"PO-Revision-Date: 2018-05-07 18:54+0200\n"
+"PO-Revision-Date: 2018-09-09 17:57+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [lua]: wml_actions.select_character
 #: data/campaigns/tutorial/lua/character_selection.lua:26
@@ -158,13 +158,13 @@ msgid ""
 "your destination. (You can press <b>u</b> to undo a move if you move to the "
 "wrong place.)"
 msgstr ""
-"Quando selezioni una unità, in questo caso Konrad, le caselle dove può "
-"muoversi vengono evidenziate. Tutte le unità hanno dei <i>punti movimento</"
-"i> che limitano il numero di esagoni percorribili da una unità in un turno "
-"di gioco. Normalmente, muoversi di un esagono consuma un punto movimento. "
-"Per muovere una unità, clicca semplicemente sulla destinazione desiderata. "
-"(Puoi sempre premere il tasto <b>u</b> per annullare una mossa se pensi di "
-"esserti mosso in un posto sbagliato.)"
+"Quando passi il cursore sopra una unità o la selezioni, in questo caso "
+"Konrad, vengono evidenziale le caselle dove può muoversi. Tutte le unità "
+"hanno dei <i>punti movimento</i> che limitano il numero di esagoni "
+"percorribili da una unità in un turno di gioco. Normalmente, muoversi di un "
+"esagono consuma un punto movimento. Per muovere una unità, clicca su Konrad "
+"e poi sulla destinazione desiderata. (Puoi sempre premere il tasto <b>u</b> "
+"per annullare una mossa se pensi di esserti mosso in un posto sbagliato.)"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:219
@@ -186,17 +186,13 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:230
-#, fuzzy
-#| msgid "Move Konrad next to Delfador"
 msgid "Move Konrad next to Delfador."
-msgstr "Sposta Konrad vicino a Delfador"
+msgstr "Sposta Konrad vicino a Delfador."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:232
-#, fuzzy
-#| msgid "Move Li’sar next to Delfador"
 msgid "Move Li’sar next to Delfador."
-msgstr "Sposta Li’sar vicino a Delfador"
+msgstr "Sposta Li’sar vicino a Delfador."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:249
@@ -269,11 +265,6 @@ msgstr "Attacco"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:340
-#, fuzzy
-#| msgid ""
-#| "To attack the quintain, first select the attacker (Konrad), then the "
-#| "target (the quintain). You will see an attack description. Click "
-#| "<b>Attack</b> when you’re ready."
 msgid ""
 "To attack the quintain, first select the attacker (Konrad), then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
@@ -281,15 +272,10 @@ msgid ""
 msgstr ""
 "Per attaccare la quintana, seleziona prima l’attaccante (Konrad) e poi il "
 "bersaglio (la quintana). Vedrai una descrizione relativa all’attacco. "
-"Facendo clic su <b>Attacca</b>, Konrad attaccherà."
+"Facendo clic su <b>OK</b>, Konrad attaccherà."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:347
-#, fuzzy
-#| msgid ""
-#| "To attack the quintain, first select the attacker (Li’sar), then the "
-#| "target (the quintain). You will see an attack description. Click "
-#| "<b>Attack</b> when you’re ready."
 msgid ""
 "To attack the quintain, first select the attacker (Li’sar), then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
@@ -297,7 +283,7 @@ msgid ""
 msgstr ""
 "Per attaccare la quintana, seleziona prima l’attaccante (Li’sar ) e poi il "
 "bersaglio (la quintana). Vedrai una descrizione relativa all’attacco. "
-"Facendo clic su <b>Attacca</b>, Li’sar attaccherà."
+"Facendo clic su <b>OK</b>, Li’sar attaccherà."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:362
@@ -1373,7 +1359,8 @@ msgstr ""
 "ad attraversare lentamente il guado: il nemico avrebbe l’80% di probabilità "
 "di colpirti. Visto che invece gli elfi hanno una buona difesa quando sono "
 "trai boschi, ti consiglio di rimanere tra gli alberi ed attaccare da li gli "
-"orchi: hanno soltanto il 40% di probabilità di colpirti nel contrattacco."
+"orchi: le tue unità avranno soltanto il 40% di probabilità di essere colpite "
+"nel contrattacco."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:416
@@ -1567,7 +1554,7 @@ msgid ""
 "them each 4 hitpoints at the beginning of the next turn."
 msgstr ""
 "Già. Se la tua sciamana rimane alle spalle delle tue unità ferite, "
-"all’inizio del prossimo turno potra curare 4 punti ferita per ciascuna di "
+"all’inizio del prossimo turno potrà curare 4 punti ferita per ciascuna di "
 "loro."
 
 #. [message]: speaker=second_unit
@@ -1739,11 +1726,6 @@ msgstr "Condizioni di vittoria"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:703
-#, fuzzy
-#| msgid ""
-#| "In this scenario, you only need to defeat the orc leader to win. Victory "
-#| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
-#| "<b>Menu</b>."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. Victory "
 "conditions for a scenario are given under <b>Scenario Objectives</b> in  "
@@ -1751,7 +1733,7 @@ msgid ""
 msgstr ""
 "In questo scenario, per vincere ti basta sconfiggere il condottiero degli "
 "orchi. Le condizioni di vittoria di uno scenario sono riportate alla voce "
-"<b>Obiettivi dello scenario</b> nel <b>Menù principale</b>."
+"<b>Obiettivi dello scenario</b> nel <b>Menù principale</b>)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:712
@@ -1942,6 +1924,12 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1011
+#, fuzzy
+#| msgid ""
+#| "female^Advancing a level has fully healed me! When attacking, I always "
+#| "have at least a 60% chance of hitting with my longbow thanks to my "
+#| "<i>Marksman</i> ability, and I deal 9 damage each for 4 attacks. Use me "
+#| "to dislodge hard-to-hit units."
 msgid ""
 "female^Advancing a level has fully healed me! I always have a 60% chance of "
 "hitting with my <i>Marksman</i> ability, and I deal 9 damage each for 4 "
@@ -2102,6 +2090,12 @@ msgstr ""
 "\n"
 "<big>Premi un tasto del mouse o la barra spaziatrice per continuare...</big>"
 
+#~ msgid "Village"
+#~ msgstr "Villaggio"
+
+#~ msgid "Keep"
+#~ msgstr "Fortezza"
+
 #~ msgid ""
 #~ "female^Hang on! You need to gather your forces. Or do you intend to fight "
 #~ "the orcs single-handedly?"
@@ -2224,9 +2218,6 @@ msgstr ""
 #~ "Click on the <b>End Turn</b> button in the bottom right of the screen"
 #~ msgstr "Fai clic sul pulsante <b>Fine turno</b> in basso a destra"
 
-#~ msgid "Village"
-#~ msgstr "Villaggio"
-
 #~ msgid ""
 #~ "female^There is a village on the other side of the river. Visiting "
 #~ "villages is a good idea, and ending your turn in one will heal you. To "
@@ -2251,9 +2242,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Stai per recuperare $hp_difference punti ferita, ma è ora di chiamare dei "
 #~ "rinforzi contro quella quintana."
-
-#~ msgid "Keep"
-#~ msgstr "Fortezza"
 
 #~ msgid ""
 #~ "female^A splendid idea. You can recruit two units if you return to the "

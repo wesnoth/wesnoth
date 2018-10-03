@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2010 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,14 +20,7 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/attack_predictions.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/label.hpp"
-#include "gui/widgets/image.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
 #include "gui/widgets/window.hpp"
 #include "game_config.hpp"
@@ -120,11 +113,6 @@ void unit_attack::pre_show(window& window)
 		const attack_type& defender_weapon = defender.weapon ?
 			*defender.weapon : *no_weapon;
 
-		// Don't show if the attacker's weapon has at least one active "disable" special.
-		if(attacker.disable) {
-			continue;
-		}
-
 		const color_t a_cth_color = game_config::red_to_green(attacker.chance_to_hit);
 		const color_t d_cth_color = game_config::red_to_green(defender.chance_to_hit);
 
@@ -174,8 +162,8 @@ void unit_attack::pre_show(window& window)
 			<< defw_specials << "\n"
 			<< font::span_color(d_cth_color) << defender.chance_to_hit << "%</span>";
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["use_markup"] = "true";
 
@@ -197,8 +185,11 @@ void unit_attack::pre_show(window& window)
 		weapon_list.add_row(data);
 	}
 
-	const int last_item = weapon_list.get_item_count() - 1;
-	weapon_list.select_row(std::min(best_weapon_, last_item));
+	// If these two aren't the same size, we can't use list selection incides
+	// to access to weapons list!
+	assert(weapons_.size() == weapon_list.get_item_count());
+
+	weapon_list.select_row(best_weapon_);
 }
 
 void unit_attack::post_show(window& window)

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -57,7 +57,7 @@ class manager;
 #include "events.hpp"
 #include "font/standard_colors.hpp"
 #include "game_config.hpp"
-#include "image.hpp" //only needed for enums (!)
+#include "picture.hpp" //only needed for enums (!)
 #include "key.hpp"
 #include "map/hex_rect.hpp"
 #include "sdl/rect.hpp"
@@ -601,11 +601,6 @@ public:
 		return scroll_event_;
 	}
 
-	events::generic_event& complete_redraw_event()
-	{
-		return complete_redraw_event_;
-	}
-
 	/** Check if a tile is fully visible on screen. */
 	bool tile_fully_on_screen(const map_location& loc) const;
 
@@ -639,24 +634,6 @@ public:
 	void announce(const std::string& msg,
 			const color_t& color = font::GOOD_COLOR,
 			const announce_options& options = announce_options());
-
-	/**
-	 * Schedule the minimap for recalculation.
-	 * Useful if any terrain in the map has changed.
-	 */
-	void recalculate_minimap()
-	{
-		redrawMinimap_ = true;
-	}
-
-	/**
-	 * Schedule the minimap to be redrawn.
-	 * Useful if units have moved about on the map.
-	 */
-	void redraw_minimap()
-	{
-		redrawMinimap_ = true;
-	}
 
 	virtual const time_of_day& get_time_of_day(const map_location& loc = map_location::null_location()) const;
 
@@ -867,7 +844,6 @@ protected:
 	const std::unique_ptr<fake_unit_manager> fake_unit_man_;
 	const std::unique_ptr<terrain_builder> builder_;
 	SDL_Rect minimap_location_;
-	bool redrawMinimap_;
 	bool grid_;
 	int diagnostic_label_;
 	double turbo_speed_;
@@ -876,12 +852,6 @@ protected:
 
 	/** Event raised when the map is being scrolled */
 	mutable events::generic_event scroll_event_;
-
-	/**
-	 * notify observers that the screen has been redrawn completely
-	 * atm this is used for replay_controller to add replay controls to the standard theme
-	 */
-	events::generic_event complete_redraw_event_;
 
 	boost::circular_buffer<unsigned> frametimes_; // in milliseconds
 	unsigned int fps_counter_;

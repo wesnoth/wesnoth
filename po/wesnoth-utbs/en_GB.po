@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 17:02 UTC\n"
-"PO-Revision-Date: 2018-05-10 13:38+1000\n"
+"PO-Revision-Date: 2018-07-14 14:48+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.0.9\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -672,8 +672,10 @@ msgstr "Eloshi"
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:408
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/01_The_Morning_After.cfg:413
+#, fuzzy
+#| msgid "Illuvin"
 msgid "Illuvia"
-msgstr "Illuvia"
+msgstr "Illuvin"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:413
@@ -698,8 +700,10 @@ msgstr "Jorazan"
 #. [event]: role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:519
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/01_The_Morning_After.cfg:524
+#, fuzzy
+#| msgid "Zyar"
 msgid "Zyara"
-msgstr "Zyara"
+msgstr "Zyar"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:526
@@ -886,8 +890,10 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:772
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/01_The_Morning_After.cfg:777
+#, fuzzy
+#| msgid "These fields seem strangely vacant. Where are the dustboks?"
 msgid "These fields seem strangely vacant. Where are the horses?"
-msgstr "These fields seem strangely vacant. Where are the horses?"
+msgstr "These fields seem strangely vacant. Where are the dustboks?"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:777
@@ -910,12 +916,20 @@ msgstr "Is it safe to come out? I was so scared."
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:824
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/01_The_Morning_After.cfg:829
+#, fuzzy
+#| msgid "Where are all the other dustboks?"
 msgid "Where are all the other horses?"
-msgstr "Where are all the other horses?"
+msgstr "Where are all the other dustboks?"
 
 #. [message]: speaker=Naru
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:829
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/01_The_Morning_After.cfg:834
+#, fuzzy
+#| msgid ""
+#| "A hunting party left just yesterday, so unless the rocks fell all over "
+#| "the land, many of the dustboks have probably survived. The few that "
+#| "remained here were scared by the falling rocks and fled into the night. "
+#| "It took all my skill to calm Yasi and keep him from running."
 msgid ""
 "A hunting party left just yesterday, so unless the rocks fell all over the "
 "land, many of the horses have probably survived. The few that remained here "
@@ -923,23 +937,29 @@ msgid ""
 "skill to calm Yasi and keep him from running."
 msgstr ""
 "A hunting party left just yesterday, so unless the rocks fell all over the "
-"land, many of the horses have probably survived. The few that remained here "
-"were scared by the falling rocks and fled into the night. It took all my "
-"skill to calm Yasi and keep him from running."
+"land, many of the dustboks have probably survived. The few that remained "
+"here were scared by the falling rocks and fled into the night. It took all "
+"my skill to calm Yasi and keep him from running."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:834
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/01_The_Morning_After.cfg:839
+#, fuzzy
+#| msgid ""
+#| "We’ll need your help in checking to see if the outer settlements "
+#| "survived. Who knows what kinds of damage they suffered in the night? And "
+#| "perhaps some of the people out in the desert have been able to round up "
+#| "some of the loose dusties."
 msgid ""
 "We’ll need your help in checking to see if the outer settlements survived. "
 "Who knows what kinds of damage they suffered in the night? And perhaps some "
 "of the people out in the desert have been able to round up some of the loose "
 "horses."
 msgstr ""
-"We’ll need your help in checking to see if the outer settlements are okay. "
+"We’ll need your help in checking to see if the outer settlements survived. "
 "Who knows what kinds of damage they suffered in the night? And perhaps some "
 "of the people out in the desert have been able to round up some of the loose "
-"horses."
+"dusties."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:839
@@ -950,8 +970,10 @@ msgstr "We can only hope that hunting party returns soon."
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:849
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/01_The_Morning_After.cfg:854
+#, fuzzy
+#| msgid "Hey, Nisen, the rocks have stopped falling. You can come out now!"
 msgid "Hey, Nisa, the rocks have stopped falling. You can come out now!"
-msgstr "Hey, Nisa, the rocks have stopped falling. You can come out now!"
+msgstr "Hey, Nisen, the rocks have stopped falling. You can come out now!"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:852
@@ -1036,12 +1058,16 @@ msgstr ""
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1080
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/01_The_Morning_After.cfg:1084
+#, fuzzy
+#| msgid ""
+#| "Bah, I’ve fought these dark cultists before. They can be killed just like "
+#| "anyone else, and our riders can easily defeat their skeleton armies."
 msgid ""
 "Bah, I’ve fought these dark cultists before. They can be killed just like "
 "anyone else, and our elvish hunters can easily defeat their skeleton armies."
 msgstr ""
 "Bah, I’ve fought these dark cultists before. They can be killed just like "
-"anyone else, and our elvish hunters can easily defeat their skeleton armies."
+"anyone else, and our riders can easily defeat their skeleton armies."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1085
@@ -2760,14 +2786,19 @@ msgstr ""
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:634
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:632
+#, fuzzy
+#| msgid ""
+#| "I bless you with the light that will come, I bless you with the memory "
+#| "and the promise. Lay down your shield, champion, and let your blade shine "
+#| "in the dark."
 msgid ""
 "I bless you champion with the light that will come, I bless you with the "
 "memory and the promise. Lay down your bow, champion, and let your sword "
 "shine in the dark."
 msgstr ""
-"I bless you champion with the light that will come, I bless you with the "
-"memory and the promise. Lay down your bow, champion, and let your sword "
-"shine in the dark."
+"I bless you with the light that will come, I bless you with the memory and "
+"the promise. Lay down your shield, champion, and let your blade shine in the "
+"dark."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:737
@@ -5045,8 +5076,10 @@ msgstr "What by the names of my forefathers are they?"
 #. [message]: speaker=first_dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1266
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/05_A_Subterranean_Struggle.cfg:1265
+#, fuzzy
+#| msgid "Wait a minute... Vacuous eyes, pointy ears — they must be elves."
 msgid "Wait a minute... Blond hair, pointy ears — they must be elves."
-msgstr "Wait a minute... Blond hair, pointy ears — they must be elves."
+msgstr "Wait a minute... Vacuous eyes, pointy ears — they must be elves."
 
 #. [message]: speaker=second_dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1271
@@ -8387,14 +8420,19 @@ msgstr "Huh? Elves?"
 #. [message]: speaker=Bellerin
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:953
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/08_Out_of_the_Frying_Pan.cfg:951
+#, fuzzy
+#| msgid ""
+#| "Yeah, just like my old grandmam used to tell us: pointy ears, those "
+#| "shifty eyes, hearts as hard as a hermit crab’s shell. It must be an "
+#| "invasion! They must have started the flood!"
 msgid ""
 "Yeah, just like my old grandmam used to tell us: pointy ears, pale hair, "
 "those shifty eyes, hearts as hard as a hermit crab’s shell. It must be an "
 "invasion! They must have started the flood!"
 msgstr ""
-"Yeah, just like my old grandmam used to tell us: pointy ears, pale hair, "
-"those shifty eyes, hearts as hard as a hermit crab’s shell. It must be an "
-"invasion! They must have started the flood!"
+"Yeah, just like my old grandmam used to tell us: pointy ears, those shifty "
+"eyes, hearts as hard as a hermit crab’s shell. It must be an invasion! They "
+"must have started the flood!"
 
 #. [set_variable]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:958
@@ -18892,8 +18930,10 @@ msgstr "stunned"
 
 #. [unstore_unit]
 #: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg:29
+#, fuzzy
+#| msgid "female^Desert Hunter"
 msgid "female^stunned"
-msgstr "stunned"
+msgstr "Desert Hunter"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:6
@@ -19868,7 +19908,43 @@ msgstr "Phantom Keep"
 #~ msgid "Lyer"
 #~ msgstr "Lyer"
 
-#~| msgid "female^stunned"
+#~| msgid "The Long Dark (1)"
+#~ msgid "The Long Dark"
+#~ msgstr "The Long Dark"
+
+#~ msgid "alien regenerates"
+#~ msgstr "alien regenerates"
+
+#~| msgid "female^disengage"
+#~ msgid "female^alien regenerates"
+#~ msgstr "alien regenerates"
+
+#~| msgid "The unit will heal itself 6 HP per turn on sand or dirt terrain."
+#~ msgid ""
+#~ "The unit will heal itself 100 HP per turn. If it is poisoned, it will "
+#~ "remove the poison instead of healing."
+#~ msgstr ""
+#~ "The unit will heal itself 100 HP per turn. If it is poisoned, it will "
+#~ "remove the poison instead of healing."
+
+#~ msgid "Dustbok"
+#~ msgstr "Dustbok"
+
+#~ msgid "female^teaching"
+#~ msgstr "teaching"
+
+#~ msgid "female^formation"
+#~ msgstr "formation"
+
+#~ msgid "female^disengage"
+#~ msgstr "disengage"
+
+#~ msgid "female^distract"
+#~ msgstr "distract"
+
+#~ msgid "female^support"
+#~ msgstr "support"
+
 #~ msgid "female^dazed"
 #~ msgstr "dazed"
 
@@ -20023,9 +20099,6 @@ msgstr "Phantom Keep"
 
 #~ msgid "The Short Dark"
 #~ msgstr "The Short Dark"
-
-#~ msgid "The Long Dark (1)"
-#~ msgstr "The Long Dark (1)"
 
 #~ msgid "The Long Dark (2)"
 #~ msgstr "The Long Dark (2)"

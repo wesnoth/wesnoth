@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,9 +20,7 @@
 #include <map>
 
 class gamemap;
-class surface;
 class team;
-class texture;
 class unit_map;
 struct map_location;
 class gamemap;
@@ -30,9 +28,10 @@ class gamemap;
 namespace image
 {
 /**
- * Renders the minimap to the given texture.
+ * Renders the minimap to the screen.
  */
-void render_minimap(texture& tex,
+void render_minimap(unsigned dst_w,
+		unsigned dst_h,
 		const gamemap& map,
 		const team* vw = nullptr,
 		const unit_map* units = nullptr,

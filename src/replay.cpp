@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
  *  @file
  *  Replay control code.
  *
- *  See http://www.wesnoth.org/wiki/ReplayWML for more info.
+ *  See https://www.wesnoth.org/wiki/ReplayWML for more info.
  */
 
 #include "replay.hpp"
@@ -39,6 +39,7 @@
 #include "whiteboard/manager.hpp"
 #include "replay_recorder_base.hpp"
 
+#include <array>
 #include <set>
 #include <map>
 
@@ -104,12 +105,12 @@ static void verify(const unit_map& units, const config& cfg) {
 		u->write(u_cfg);
 
 		bool is_ok = true;
-		static const std::string fields[] {"type","hitpoints","experience","side",""};
-		for(const std::string* str = fields; str->empty() == false; ++str) {
-			if (u_cfg[*str] != un[*str]) {
-				errbuf << "ERROR IN FIELD '" << *str << "' for unit at "
-					   << loc << " data source: '" << un[*str]
-					   << "' local: '" << u_cfg[*str] << "'\n";
+		static const std::array<std::string, 4> fields {{"type","hitpoints","experience","side"}};
+		for(const std::string& field : fields) {
+			if (u_cfg[field] != un[field]) {
+				errbuf << "ERROR IN FIELD '" << field << "' for unit at "
+					   << loc << " data source: '" << un[field]
+					   << "' local: '" << u_cfg[field] << "'\n";
 				is_ok = false;
 			}
 		}
@@ -145,8 +146,7 @@ chat_msg::chat_msg(const config &cfg)
 	, nick_()
 	, text_(cfg["message"].str())
 {
-	const std::string& team_name = cfg["team_name"];
-	if(team_name.empty())
+	if(cfg["team_name"].empty() && cfg["to_sides"].empty())
 	{
 		nick_ = cfg["id"].str();
 	} else {
@@ -649,6 +649,9 @@ void replay::add_config(const config& cfg, MARK_SENT mark)
 		if(mark == MARK_AS_SENT) {
 			cmd_cfg["sent"] = true;
 		}
+		if(cmd_cfg.has_child("speak")) {
+			cmd_cfg["undo"] = false;
+		}
 	}
 }
 bool replay::add_start_if_not_there_yet()
@@ -675,10 +678,6 @@ static void show_oos_error_error_function(const std::string& message, bool /*hea
 REPLAY_RETURN do_replay(bool one_move)
 {
 	log_scope("do replay");
-
-	if (!resources::controller->is_skipping_replay()) {
-		display::get_singleton()->recalculate_minimap();
-	}
 
 	update_locker lock_update(CVideo::get_singleton(), resources::controller->is_skipping_replay());
 	return do_replay_handle(one_move);
@@ -726,7 +725,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		}
 		else if (const config &speak = cfg->child("speak"))
 		{
-			const std::string &team_name = speak["team_name"];
+			const std::string &team_name = speak["to_sides"];
 			const std::string &speaker_name = speak["id"];
 			const std::string &message = speak["message"];
 			//if (!preferences::parse_should_show_lobby_join(speaker_name, message)) return;

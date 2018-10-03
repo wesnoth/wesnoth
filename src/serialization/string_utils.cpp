@@ -2,7 +2,7 @@
    Copyright (C) 2003 by David White <dave@whitevine.net>
    Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Copyright (C) 2005 - 2018 by Philippe Plantier <ayin@anathas.org>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -412,18 +412,25 @@ std::pair<string_view, string_view> vertical_split(const std::string& val)
 }
 
 // Modify a number by string representing integer difference, or optionally %
-int apply_modifier( const int number, const std::string &amount, const int minimum ) {
-	// wassert( amount.empty() == false );
+int apply_modifier(const int number, const std::string& amount, const int minimum)
+{
 	int value = 0;
+
 	try {
 		value = std::stoi(amount);
-	} catch(const std::invalid_argument&) {}
-	if(amount[amount.size()-1] == '%') {
+	} catch(const std::invalid_argument&) {
+	}
+
+	if(amount.back() == '%') {
 		value = div100rounded(number * value);
 	}
+
 	value += number;
-	if (( minimum > 0 ) && ( value < minimum ))
-	    value = minimum;
+
+	if(minimum > 0 && value < minimum) {
+		value = minimum;
+	}
+
 	return value;
 }
 

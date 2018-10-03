@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
    Copyright (C) 2005 - 2018 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -281,14 +281,7 @@ std::string format_disjunct_list(const t_string& empty, const std::vector<t_stri
 
 }
 
-std::string vgettext(const char *msgid, const utils::string_map& symbols)
-{
-	const std::string orig(_(msgid));
-	const std::string msg = utils::interpolate_variables_into_string(orig, &symbols);
-	return msg;
-}
-
-std::string vgettext(const char *domain
+std::string vgettext_impl(const char *domain
 		, const char *msgid
 		, const utils::string_map& symbols)
 {
@@ -296,16 +289,14 @@ std::string vgettext(const char *domain
 	const std::string msg = utils::interpolate_variables_into_string(orig, &symbols);
 	return msg;
 }
-std::string vngettext(const char* sing, const char* plur, int n, const utils::string_map& symbols)
-{
-	const std::string orig(_n(sing, plur, n));
-	const std::string msg = utils::interpolate_variables_into_string(orig, &symbols);
-	return msg;
-}
 
-std::string vngettext(const char *domain, const char *sing, const char* plur, int n, const utils::string_map& symbols)
+std::string vngettext_impl(const char* domain,
+		const char* singular,
+		const char* plural,
+		int count,
+		const utils::string_map& symbols)
 {
-	const std::string orig(translation::dsngettext(domain, sing, plur, n));
+	const std::string orig(translation::dsngettext(domain, singular, plural, count));
 	const std::string msg = utils::interpolate_variables_into_string(orig, &symbols);
 	return msg;
 }

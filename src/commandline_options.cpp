@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2011 - 2018 by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,6 +19,7 @@
 #include "lexical_cast.hpp"
 #include "log.hpp"                      // for logger, set_strict_severity, etc
 #include "serialization/string_utils.hpp"  // for split
+#include "utils/general.hpp" // for clamp
 
 #include <boost/any.hpp>                // for any
 #include <boost/program_options/cmdline.hpp>
@@ -27,6 +28,8 @@
 #include <boost/program_options/positional_options.hpp>
 #include <boost/program_options/value_semantic.hpp>  // for value, etc
 #include <boost/program_options/variables_map.hpp>  // for variables_map, etc
+
+#include <array>
 #include <iostream>                     // for operator<<, basic_ostream, etc
 
 namespace po = boost::program_options;
@@ -64,6 +67,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	campaign(),
 	campaign_difficulty(),
 	campaign_scenario(),
+	campaign_skip_story(false),
 	clock(false),
 	data_path(false),
 	data_dir(),
@@ -146,6 +150,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	// Options are sorted alphabetically by --long-option.
 	po::options_description general_opts("General options");
 	general_opts.add_options()
+		("all-translations", "Show all translations, even incomplete ones.")
 		("bunzip2", po::value<std::string>(), "decompresses a file (<arg>.bz2) in bzip2 format and stores it without the .bz2 suffix. <arg>.bz2 will be removed.")
 		("bzip2", po::value<std::string>(), "compresses a file (<arg>) in bzip2 format, stores it as <arg>.bz2 and removes <arg>.")
 		("clock", "Adds the option to show a clock for testing the drawing timer.")
@@ -171,9 +176,10 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("nodelay", "runs the game without any delays.")
 		("nomusic", "runs the game without music.")
 		("nosound", "runs the game without sounds and music.")
+		("password", po::value<std::string>(), "uses <password> when connecting to a server, ignoring other preferences.")
 		("path", "prints the path to the data directory and exits.")
 		("plugin", po::value<std::string>(), "(experimental) load a script which defines a wesnoth plugin. similar to --script below, but lua file should return a function which will be run as a coroutine and periodically woken up with updates.")
-		("render-image", po::value<two_strings>()->multitoken(), "takes two arguments: <image> <output>. Like screenshot, but instead of a map, takes a valid wesnoth 'image path string' with image path functions, and outputs to a windows .bmp file."
+		("render-image", po::value<two_strings>()->multitoken(), "takes two arguments: <image> <output>. Like screenshot, but instead of a map, takes a valid wesnoth 'image path string' with image path functions, and writes it to a .png file."
 #ifdef _WIN32
 		 " Implies --wconsole."
 #endif // _WIN32
@@ -190,15 +196,15 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 #endif // _WIN32
 		 )
 		("script", po::value<std::string>(), "(experimental) file containing a lua script to control the client")
-		("unsafe-scripts", "makes the \'package\' package available to lua scripts, so that they can load arbitrary packages. Do not do this with untrusted scripts! This action gives lua the same permissions as the wesnoth executable.")
 		("server,s", po::value<std::string>()->implicit_value(std::string()), "connects to the host <arg> if specified or to the first host in your preferences.")
-		("username", po::value<std::string>(), "uses <username> when connecting to a server, ignoring other preferences.")
-		("password", po::value<std::string>(), "uses <password> when connecting to a server, ignoring other preferences.")
 		("strict-validation", "makes validation errors fatal")
+		("translations-over", po::value<unsigned int>(), "Specify the standard for determining whether a translation is complete.")
+		("unsafe-scripts", "makes the \'package\' package available to lua scripts, so that they can load arbitrary packages. Do not do this with untrusted scripts! This action gives lua the same permissions as the wesnoth executable.")
 		("userconfig-dir", po::value<std::string>(), "sets the path of the user config directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. Defaults to $HOME/.config/wesnoth on X11 and to the userdata-dir on other systems.")
 		("userconfig-path", "prints the path of the user config directory and exits.")
 		("userdata-dir", po::value<std::string>(), "sets the path of the userdata directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory.")
 		("userdata-path", "prints the path of the userdata directory and exits.")
+		("username", po::value<std::string>(), "uses <username> when connecting to a server, ignoring other preferences.")
 		("validcache", "assumes that the cache is valid. (dangerous)")
 		("version,v", "prints the game's version number and exits.")
 		("with-replay", "replays the file loaded with the --load option.")
@@ -212,6 +218,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("campaign,c", po::value<std::string>()->implicit_value(std::string()), "goes directly to the campaign with id <arg>. A selection menu will appear if no id was specified.")
 		("campaign-difficulty", po::value<int>(), "The difficulty of the specified campaign (1 to max). If none specified, the campaign difficulty selection widget will appear.")
 		("campaign-scenario", po::value<std::string>(),"The id of the scenario from the specified campaign. The default is the first scenario.")
+		("campaign-skip-story", "Skip [story] tags of the specified campaign.")
 		;
 
 	po::options_description display_opts("Display options");
@@ -309,6 +316,8 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		campaign_difficulty = vm["campaign-difficulty"].as<int>();
 	if (vm.count("campaign-scenario"))
 		campaign_scenario = vm["campaign-scenario"].as<std::string>();
+	if (vm.count("campaign-skip-story"))
+		campaign_skip_story = true;
 	if (vm.count("clock"))
 		clock = true;
 	if (vm.count("core"))
@@ -481,6 +490,10 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		windowed = true;
 	if (vm.count("with-replay"))
 		with_replay = true;
+	if(vm.count("all-translations"))
+		translation_percent = 0;
+	else if(vm.count("translations-over"))
+		translation_percent = utils::clamp<unsigned int>(vm["translations-over"].as<unsigned int>(), 0, 100);
 }
 
 void commandline_options::parse_log_domains_(const std::string &domains_string, const int severity)
@@ -495,7 +508,7 @@ void commandline_options::parse_log_domains_(const std::string &domains_string, 
 }
 
 void commandline_options::parse_log_strictness (const std::string & severity ) {
-	static lg::logger const *loggers[] { &lg::err(), &lg::warn(), &lg::info(), &lg::debug() };
+	static const std::array<lg::logger const*, 4> loggers {{&lg::err(), &lg::warn(), &lg::info(), &lg::debug()}};
 	for (const lg::logger * l : loggers ) {
 		if (severity == l->get_name()) {
 			lg::set_strict_severity(*l);

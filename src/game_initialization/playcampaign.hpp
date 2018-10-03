@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2003-2005 by David White <dave@whitevine.net>
    Copyright (C) 2005 - 2018 by Philippe Plantier <ayin@anathas.org>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -57,15 +57,13 @@ struct mp_campaign_info
 class campaign_controller
 {
 	saved_game& state_;
-	const config& game_config_;
 	const ter_data_cache & tdata_;
 	const bool is_unit_test_;
 	bool is_replay_;
 	mp_campaign_info* mp_info_;
 public:
-	campaign_controller(saved_game& state, const config& game_config, const ter_data_cache & tdata, bool is_unit_test = false)
+	campaign_controller(saved_game& state, const ter_data_cache & tdata, bool is_unit_test = false)
 		: state_(state)
-		, game_config_(game_config)
 		, tdata_(tdata)
 		, is_unit_test_(is_unit_test)
 		, is_replay_(false)

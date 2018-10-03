@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -47,7 +47,7 @@ namespace gui2
 REGISTER_WIDGET(slider)
 
 slider::slider(const implementation::builder_slider& builder)
-	: slider_base(builder, get_control_type())
+	: slider_base(builder, type())
 	, best_slider_length_(0)
 	, minimum_value_(0)
 	, step_size_(1)
@@ -450,9 +450,9 @@ builder_slider::builder_slider(const config& cfg)
 	}
 }
 
-widget* builder_slider::build() const
+widget_ptr builder_slider::build() const
 {
-	slider* widget = new slider(*this);
+	auto widget = std::make_shared<slider>(*this);
 
 	widget->set_best_slider_length(best_slider_length_);
 	widget->set_value_range(minimum_value_, maximum_value_);

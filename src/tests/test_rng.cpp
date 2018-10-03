@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -309,7 +309,7 @@ BOOST_AUTO_TEST_CASE( validate_get_random_int )
 
 	randomness::mt_rng mt_(cfg);
 
-	std::shared_ptr<randomness::rng> gen_ (new randomness::rng_deterministic(mt_));
+	auto gen_ = std::make_shared<randomness::rng_deterministic>(mt_);
 
 	int val = gen_->get_random_int(0, validation_get_random_int_max);
 	BOOST_CHECK_EQUAL ( val , validation_get_random_int_correct_answer );
@@ -317,7 +317,7 @@ BOOST_AUTO_TEST_CASE( validate_get_random_int )
 
 BOOST_AUTO_TEST_CASE( validate_get_random_int2 )
 {
-	std::shared_ptr<randomness::rng> gen_ (new randomness::synced_rng(validate_get_random_int_seed_generator));
+	auto gen_ = std::make_shared<randomness::synced_rng>(validate_get_random_int_seed_generator);
 
 	for (int i = 0; i < validation_get_random_int_num_draws; i++) {
 		gen_->next_random();

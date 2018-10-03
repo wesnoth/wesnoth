@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2017-2018 by Charles Dang <exodia339@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,7 +20,6 @@
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/timer.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
 namespace gui2
@@ -52,8 +51,7 @@ void outro::pre_show(window& window)
 	window.set_enter_disabled(true);
 	window.get_canvas(0).set_variable("outro_text", wfl::variant(text_));
 
-	window.connect_signal<event::DRAW>(
-		std::bind(&outro::draw_callback, this, std::ref(window)), event::dispatcher::front_child);
+	connect_signal_on_draw(window, std::bind(&outro::draw_callback, this, std::ref(window)));
 
 	set_next_draw();
 }

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,8 +14,10 @@
 
 #pragma once
 
-namespace font {
+#include <sstream>
 
+namespace font
+{
 /**
  * Escapes the pango markup characters in a text.
  *
@@ -29,32 +31,35 @@ namespace font {
  */
 inline std::string escape_text(const std::string& text)
 {
-	std::string result;
+	std::ostringstream ss;
 	for(const char c : text) {
 		switch(c) {
-			case '&':  result += "&amp;";  break;
-			case '<':  result += "&lt;";   break;
-			case '>':  result += "&gt;";   break;
-			case '\'': result += "&apos;"; break;
-			case '"':  result += "&quot;"; break;
-			default:   result += c;
+		case '&':  ss << "&amp;";  break;
+		case '<':  ss << "&lt;";   break;
+		case '>':  ss << "&gt;";   break;
+		case '\'': ss << "&apos;"; break;
+		case '"':  ss << "&quot;"; break;
+		default:   ss << c;
 		}
 	}
-	return result;
+
+	return ss.str();
 }
 
 // Escape only the ampersands. This is used by pango_text to try to recover from
 // markup parsing failure.
-inline std::string semi_escape_text(const std::string & text) {
-	std::string semi_escaped;
+inline std::string semi_escape_text(const std::string & text)
+{
+	std::ostringstream ss;
 	for(const char c : text) {
 		if(c == '&') {
-			semi_escaped += "&amp;";
+			ss << "&amp;";
 		} else {
-			semi_escaped += c;
+			ss << c;
 		}
 	}
-	return semi_escaped;
+
+	return ss.str();
 }
 
 } // end namespace font

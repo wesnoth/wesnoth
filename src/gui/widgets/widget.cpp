@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2007 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -341,20 +341,14 @@ void widget::set_linked_group(const std::string& linked_group)
 
 /***** ***** ***** ***** Drawing functions. ***** ***** ***** *****/
 
-SDL_Rect widget::calculate_blitting_rectangle(const int x_offset, const int y_offset) const
+SDL_Rect widget::calculate_blitting_rectangle() const
 {
-	SDL_Rect result = get_rectangle();
-	result.x += x_offset;
-	result.y += y_offset;
-	return result;
+	return get_rectangle();
 }
 
-SDL_Rect widget::calculate_clipping_rectangle(const int x_offset, const int y_offset) const
+SDL_Rect widget::calculate_clipping_rectangle() const
 {
-	SDL_Rect result = clipping_rectangle_;
-	result.x += x_offset;
-	result.y += y_offset;
-	return result;
+	return clipping_rectangle_;
 }
 
 namespace
@@ -365,11 +359,11 @@ namespace
 class viewport_and_clip_rect_setter
 {
 public:
-	viewport_and_clip_rect_setter(const widget& widget, int x_offset, int y_offset)
+	explicit viewport_and_clip_rect_setter(const widget& widget)
 		: renderer_(CVideo::get_singleton().get_renderer())
 	{
 		// Set viewport.
-		const SDL_Rect dst_rect = widget.calculate_blitting_rectangle(x_offset, y_offset);
+		const SDL_Rect dst_rect = widget.calculate_blitting_rectangle();
 		SDL_RenderSetViewport(renderer_, &dst_rect);
 
 		// Set clip rect, if appropriate.
@@ -377,7 +371,7 @@ public:
 			return;
 		}
 
-		SDL_Rect clip_rect = widget.calculate_clipping_rectangle(x_offset, y_offset);
+		SDL_Rect clip_rect = widget.calculate_clipping_rectangle();
 
 		// Adjust clip rect origin to match the viewport origin. Currently, the both rects are mapped to
 		// absolute screen coordinates. However, setting the viewport essentially moves the screen origin,
@@ -401,37 +395,32 @@ private:
 
 } // anon namespace
 
-/**
- * @todo remove the offset arguments from these functions.
- * Currently they're only needed by the minimap.
- */
-
-void widget::draw_background(int x_offset, int y_offset)
+void widget::draw_background()
 {
 	assert(visible_ == visibility::visible);
 
-	viewport_and_clip_rect_setter setter(*this, x_offset, y_offset);
+	viewport_and_clip_rect_setter setter(*this);
 
-	draw_debug_border(x_offset, y_offset);
-	impl_draw_background(x_offset, y_offset);
+	draw_debug_border();
+	impl_draw_background();
 }
 
-void widget::draw_children(int x_offset, int y_offset)
+void widget::draw_children()
 {
 	assert(visible_ == visibility::visible);
 
-	viewport_and_clip_rect_setter setter(*this, x_offset, y_offset);
+	viewport_and_clip_rect_setter setter(*this);
 
-	impl_draw_children(x_offset, y_offset);
+	impl_draw_children();
 }
 
-void widget::draw_foreground(int x_offset, int y_offset)
+void widget::draw_foreground()
 {
 	assert(visible_ == visibility::visible);
 
-	viewport_and_clip_rect_setter setter(*this, x_offset, y_offset);
+	viewport_and_clip_rect_setter setter(*this);
 
-	impl_draw_foreground(x_offset, y_offset);
+	impl_draw_foreground();
 }
 
 SDL_Rect widget::get_dirty_rectangle() const
@@ -501,32 +490,9 @@ void widget::set_debug_border_color(const color_t debug_border_color)
 
 void widget::draw_debug_border()
 {
-	SDL_Rect r = redraw_action_ == redraw_action::partly ? clipping_rectangle_
-														  : get_rectangle();
-
-	switch(debug_border_mode_) {
-		case 0:
-			/* DO NOTHING */
-			break;
-		case 1:
-			sdl::draw_rectangle(r, debug_border_color_);
-			break;
-
-		case 2:
-			sdl::fill_rectangle(r, debug_border_color_);
-			break;
-
-		default:
-			assert(false);
-	}
-}
-
-void
-widget::draw_debug_border(int x_offset, int y_offset)
-{
 	SDL_Rect r = redraw_action_ == redraw_action::partly
-						 ? calculate_clipping_rectangle(x_offset, y_offset)
-						 : calculate_blitting_rectangle(x_offset, y_offset);
+		? calculate_clipping_rectangle()
+		: calculate_blitting_rectangle();
 
 	switch(debug_border_mode_) {
 		case 0:

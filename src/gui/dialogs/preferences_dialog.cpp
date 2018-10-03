@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2011, 2015 by Iris Morelle <shadowm2006@gmail.com>
    Copyright (C) 2016 - 2018 by Charles Dang <exodia339gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -32,7 +32,6 @@
 #include "video.hpp"
 
 // Sub-dialog includes
-#include "gui/dialogs/advanced_graphics_options.hpp"
 #include "gui/dialogs/game_cache_options.hpp"
 #include "gui/dialogs/hotkey_bind.hpp"
 #include "gui/dialogs/log_settings.hpp"
@@ -40,6 +39,7 @@
 #include "gui/dialogs/select_orb_colors.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/dialogs/game_version_dialog.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
@@ -48,13 +48,8 @@
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/status_label_helper.hpp"
@@ -176,10 +171,10 @@ void preferences_dialog::set_resolution_list(menu_button& res_list, CVideo& vide
 	res_list.set_values(options, current_res);
 }
 
-std::map<std::string, string_map> preferences_dialog::get_friends_list_row_data(const acquaintance& entry)
+widget_data preferences_dialog::get_friends_list_row_data(const acquaintance& entry)
 {
-	std::map<std::string, string_map> data;
-	string_map item;
+	widget_data data;
+	widget_item item;
 
 	std::string image = "friend.png";
 	std::string descriptor = _("friend");
@@ -358,8 +353,7 @@ void preferences_dialog::post_build(window& window)
 		scroll_speed, set_scroll_speed);
 
 	/* ACCELERATED SPEED */
-	register_bool("turbo_toggle", true, turbo, set_turbo,
-		[&](widget& w) { disable_widget_on_toggle<slider>(window, w, "turbo_slider"); }, true);
+	register_bool("turbo_toggle", true, turbo, set_turbo);
 
 	const auto accl_load = [this]()->int {
 		return std::distance(accl_speeds_.begin(), std::find(accl_speeds_.begin(), accl_speeds_.end(), turbo_speed()));
@@ -440,9 +434,8 @@ void preferences_dialog::post_build(window& window)
 
 	set_resolution_list(res_list, window.video());
 
-	res_list.connect_click_handler(
-			std::bind(&preferences_dialog::handle_res_select,
-			this, std::ref(window)));
+	connect_signal_notify_modified(res_list,
+		std::bind(&preferences_dialog::handle_res_select, this, std::ref(window)));
 
 	/* SHOW FLOATING LABELS */
 	register_bool("show_floating_labels", true,
@@ -592,7 +585,7 @@ void preferences_dialog::post_build(window& window)
 
 	listbox& advanced = find_widget<listbox>(&window, "advanced_prefs", false);
 
-	std::map<std::string, string_map> row_data;
+	widget_data row_data;
 
 	for(const config& option : adv_preferences_cfg_) {
 		// Details about the current option
@@ -634,9 +627,8 @@ void preferences_dialog::post_build(window& window)
 
 				// We need to bind a lambda here since preferences::set is overloaded.
 				// A lambda alone would be more verbose because it'd need to specify all the parameters.
-				connect_signal_mouse_left_click(toggle_box, std::bind(
-					[&, pref_name]() { set(pref_name, toggle_box.get_value_bool()); }
-				));
+				connect_signal_mouse_left_click(toggle_box,
+					std::bind([&, pref_name]() { set(pref_name, toggle_box.get_value_bool()); }));
 
 				gui2::bind_status_label<toggle_button>(
 					main_grid, "value_toggle", default_status_value_getter<toggle_button>, "value");
@@ -645,26 +637,23 @@ void preferences_dialog::post_build(window& window)
 			}
 
 			case ADVANCED_PREF_TYPE::SLIDER: {
-				slider* setter_widget = build_single_widget_instance<slider>("slider", config {"definition", "minimal"});
-				setter_widget->set_id("setter");
-				// Maximum must be set first or this will assert
-				setter_widget->set_value_range(option["min"].to_int(), option["max"].to_int());
-				setter_widget->set_step_size(option["step"].to_int(1));
+				// Build new widget. Definiton must be set at build time.
+				auto slider_w = build_single_widget_and_cast_to<slider>(config {"definition", "minimal"});
 
-				details_grid.swap_child("setter", setter_widget, true);
+				// Add it to the grid.
+				details_grid.swap_child("setter", slider_w, true);
 
-				slider& slide = find_widget<slider>(&details_grid, "setter", false);
-
-				slide.set_value(lexical_cast_default<int>(get(pref_name), option["default"].to_int()));
+				slider_w->set_id("setter");
+				slider_w->set_value_range(option["min"].to_int(), option["max"].to_int());
+				slider_w->set_step_size(option["step"].to_int(1));
+				slider_w->set_value(lexical_cast_default<int>(get(pref_name), option["default"].to_int()));
 
 				// We need to bind a lambda here since preferences::set is overloaded.
 				// A lambda alone would be more verbose because it'd need to specify all the parameters.
-				connect_signal_notify_modified(slide, std::bind(
-					[&, pref_name]() { set(pref_name, slide.get_value()); }
-				));
+				connect_signal_notify_modified(*slider_w,
+					std::bind([=]() { set(pref_name, slider_w->get_value()); }));
 
 				gui2::bind_status_label<slider>(main_grid, "setter", default_status_value_getter<slider>, "value");
-
 				break;
 			}
 
@@ -675,9 +664,11 @@ void preferences_dialog::post_build(window& window)
 				for(const config& choice : option.child_range("option")) {
 					config menu_item;
 					menu_item["label"] = choice["name"];
+
 					if(choice.has_attribute("description")) {
 						menu_item["details"] = std::string("<span color='#777'>") + choice["description"] + "</span>";
 					}
+
 					menu_data.push_back(menu_item);
 					option_ids.push_back(choice["id"]);
 				}
@@ -692,20 +683,20 @@ void preferences_dialog::post_build(window& window)
 					selected = 0;
 				}
 
-				menu_button* setter_widget = build_single_widget_instance<menu_button>("menu_button");
-				setter_widget->set_id("setter");
+				// Build new widget.
+				auto menu = build_single_widget_and_cast_to<menu_button>();
 
-				details_grid.swap_child("setter", setter_widget, true);
+				// Add it to the grid.
+				details_grid.swap_child("setter", menu, true);
 
-				menu_button& menu = find_widget<menu_button>(&details_grid, "setter", false);
-
-				menu.set_use_markup(true);
-				menu.set_values(menu_data, selected);
+				menu->set_id("setter");
+				menu->set_use_markup(true);
+				menu->set_values(menu_data, selected);
 
 				// We need to bind a lambda here since preferences::set is overloaded.
 				// A lambda alone would be more verbose because it'd need to specify all the parameters.
-				connect_signal_notify_modified(menu,
-					std::bind([=](widget& w) { set(pref_name, option_ids[dynamic_cast<menu_button&>(w).get_value()]); }, _1));
+				connect_signal_notify_modified(*menu,
+					std::bind([=]() { set(pref_name, option_ids[menu->get_value()]); }));
 
 				gui2::bind_status_label<menu_button>(main_grid, "setter", [](menu_button& m)->std::string {
 					return m.get_value_string();
@@ -717,11 +708,13 @@ void preferences_dialog::post_build(window& window)
 			case ADVANCED_PREF_TYPE::SPECIAL: {
 				//main_grid->remove_child("setter");
 
-				image* value_widget = build_single_widget_instance<image>("image");
-				value_widget->set_label("icons/arrows/arrows_blank_right_25.png~CROP(3,3,18,18)");
+				// Build new widget
+				auto image_w = build_single_widget_and_cast_to<image>();
 
-				main_grid->swap_child("value", value_widget, true);
+				// Add it to the grid
+				main_grid->swap_child("value", image_w, true);
 
+				image_w->set_label("icons/arrows/arrows_blank_right_25.png~CROP(3,3,18,18)");
 				break;
 			}
 		}
@@ -788,7 +781,7 @@ listbox& preferences_dialog::setup_hotkey_list(window& window)
 {
 	const std::string& default_icon = "misc/empty.png~CROP(0,0,15,15)";
 
-	std::map<std::string, string_map> row_data;
+	widget_data row_data;
 
 	t_string& row_icon =   row_data["img_icon"]["label"];
 	t_string& row_action = row_data["lbl_desc"]["label"];
@@ -952,9 +945,7 @@ void preferences_dialog::on_advanced_prefs_list_select(listbox& list)
 	const std::string& selected_field = adv_preferences_cfg_[selected_row]["field"].str();
 
 	if(selected_type == ADVANCED_PREF_TYPE::SPECIAL) {
-		if(selected_field == "advanced_graphic_options") {
-			gui2::dialogs::advanced_graphics_options::display();
-		} else if(selected_field == "logging") {
+		if(selected_field == "logging") {
 			gui2::dialogs::log_settings::display();
 		} else if(selected_field == "orb_color") {
 			gui2::dialogs::select_orb_colors::display();
@@ -992,6 +983,8 @@ void preferences_dialog::initialize_tabs(window& window, listbox& selector)
 void preferences_dialog::pre_show(window& window)
 {
 	set_always_save_fields(true);
+
+	connect_signal_mouse_left_click(find_widget<button>(&window, "about", false), std::bind(&game_version::display<>));
 
 	//
 	// Status labels

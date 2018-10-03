@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -359,23 +359,18 @@ bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*inde
 			break;
 		case HOTKEY_MINIMAP_DRAW_TERRAIN:
 			preferences::toggle_minimap_draw_terrain();
-			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_CODING_TERRAIN:
 			preferences::toggle_minimap_terrain_coding();
-			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_CODING_UNIT:
 			preferences::toggle_minimap_movement_coding();
-			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_DRAW_UNITS:
 			preferences::toggle_minimap_draw_units();
-			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_DRAW_VILLAGES:
 			preferences::toggle_minimap_draw_villages();
-			recalculate_minimap();
 			break;
 		default:
 			return false;
@@ -403,8 +398,7 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 	{
 		SDL_Rect pos {xloc, yloc, 1, 1};
 		gui2::dialogs::drop_down_menu mmenu(pos, items, -1, true, false); // TODO: last value should be variable
-		mmenu.show();
-		if(mmenu.get_retval() == gui2::retval::OK) {
+		if(mmenu.show()) {
 			res = mmenu.selected_item();
 		}
 	} // This will kill the dialog.
@@ -674,7 +668,6 @@ void command_executor::run_queued_commands()
 
 void command_executor_default::recalculate_minimap()
 {
-	get_display().recalculate_minimap();
 }
 
 void command_executor_default::lua_console()

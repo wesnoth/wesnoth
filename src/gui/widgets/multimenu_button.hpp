@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -54,24 +54,7 @@ public:
 	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
-	/** Inherited from clickable_item. */
-	void connect_click_handler(const event::signal_function& signal)
-	{
-		connect_signal_mouse_left_click(*this, signal);
-	}
-
-	/** Inherited from clickable_item. */
-	void disconnect_click_handler(const event::signal_function& signal)
-	{
-		disconnect_signal_mouse_left_click(*this, signal);
-	}
-
 	/***** ***** ***** setters / getters for members ***** ****** *****/
-
-	void set_retval(const int retval)
-	{
-		retval_ = retval;
-	}
 
 	/**
 	 * Sets the maximum number of selected elements shown on the label.
@@ -79,7 +62,7 @@ public:
 	 *
 	 * @param max      The maximum number of elements to show
 	 */
-	void set_max_shown(const int max)
+	void set_max_shown(const unsigned max)
 	{
 		max_shown_ = max;
 	}
@@ -89,7 +72,7 @@ public:
 	 *
 	 * @returns        The maximum number of elements to show
 	 */
-	int get_max_shown()
+	unsigned get_max_shown()
 	{
 		return max_shown_;
 	}
@@ -165,17 +148,9 @@ private:
 	state_t state_;
 
 	/**
-	 * The return value of the button.
-	 *
-	 * If this value is not 0 and the button is clicked it sets the retval of
-	 * the window and the window closes itself.
-	 */
-	int retval_;
-
-	/**
 	 * The maximum number of selected states to list in the label
 	 */
-	int max_shown_;
+	unsigned max_shown_;
 
 	std::vector<::config> values_;
 
@@ -186,6 +161,11 @@ private:
 	void update_config_from_toggle_states();
 	void update_label();
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
@@ -230,11 +210,10 @@ public:
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
 private:
-	std::string retval_id_;
-	int retval_, max_shown_;
+	unsigned max_shown_;
 	std::vector<::config> options_;
 };
 

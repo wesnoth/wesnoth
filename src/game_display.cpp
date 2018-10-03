@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -188,7 +188,7 @@ void game_display::scroll_to_leader(int side, SCROLL_TYPE scroll_type, bool forc
 {
 	unit_map::const_iterator leader = dc_->units().find_leader(side);
 
-	if(leader.valid()) {
+	if(leader.valid() && leader->is_visible_to_team(dc_->get_team(viewing_side()), false)) {
 		scroll_to_tile(leader->get_location(), scroll_type, true, force);
 	}
 }
@@ -686,7 +686,6 @@ bool game_display::maybe_rebuild()
 {
 	if(needs_rebuild_) {
 		needs_rebuild_ = false;
-		recalculate_minimap();
 		rebuild_all();
 		return true;
 	}

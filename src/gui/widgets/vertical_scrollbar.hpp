@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -35,38 +35,43 @@ public:
 
 private:
 	/** Inherited from scrollbar_base. */
-	unsigned get_length() const override
+	virtual unsigned get_length() const override
 	{
 		return get_height();
 	}
 
 	/** Inherited from scrollbar_base. */
-	unsigned minimum_positioner_length() const override;
+	virtual unsigned minimum_positioner_length() const override;
 
 	/** Inherited from scrollbar_base. */
-	unsigned maximum_positioner_length() const override;
+	virtual unsigned maximum_positioner_length() const override;
 
 	/** Inherited from scrollbar_base. */
-	unsigned offset_before() const override;
+	virtual unsigned offset_before() const override;
 
 	/** Inherited from scrollbar_base. */
-	unsigned offset_after() const override;
+	virtual unsigned offset_after() const override;
 
 	/** Inherited from scrollbar_base. */
-	bool on_positioner(const point& coordinate) const override;
+	virtual bool on_positioner(const point& coordinate) const override;
 
 	/** Inherited from scrollbar_base. */
-	int on_bar(const point& coordinate) const override;
+	virtual int on_bar(const point& coordinate) const override;
 
 	/** Inherited from scrollbar_base. */
-	bool in_orthogonal_range(const point& coordinate) const override;
+	virtual bool in_orthogonal_range(const point& coordinate) const override;
 
 	/** Inherited from scrollbar_base. */
-	int get_length_difference(const point& original, const point& current) const override
+	virtual int get_length_difference(const point& original, const point& current) const override
 	{
 		return current.y - original.y;
 	}
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 };
@@ -100,7 +105,7 @@ struct builder_vertical_scrollbar : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 };
 
 } // namespace implementation

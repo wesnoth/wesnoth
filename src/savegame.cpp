@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2003 - 2018 by Jörg Hinrichs, refactored from various
    places formerly created by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -32,7 +32,6 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/retval.hpp"
 #include "log.hpp"
 #include "persist_manager.hpp"
@@ -43,7 +42,7 @@
 #include "serialization/parser.hpp"
 #include "serialization/utf8_exception.hpp"
 #include "statistics.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 #include "video.hpp"
 
 #include <algorithm>
@@ -101,7 +100,7 @@ bool loadgame::show_difficulty_dialog()
 		difficulty_dlg.show();
 
 		// Return if canceled, since otherwise load_data_.difficulty will be set to 'CANCEL'
-		if (difficulty_dlg.get_retval() != gui2::retval::OK) {
+		if(!difficulty_dlg.show()) {
 			return false;
 		}
 

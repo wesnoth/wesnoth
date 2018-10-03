@@ -985,14 +985,19 @@ msgstr "B<--exit-at-end>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:370
+#, fuzzy
+#| msgid ""
+#| "exits once the scenario is over, without displaying victory/defeat dialog "
+#| "which normally requires the user to click End Scenario.  This is also "
+#| "used for scriptable benchmarking."
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which requires the user to click OK.  This is also used for scriptable "
 "benchmarking."
 msgstr ""
-"シナリオが終わると、ユーザーが OK をクリックする必要のある勝利／敗北のダイア"
-"ログを表示せずに終了する。これはスクリプト化可能なベンチマークにも利用され"
-"る。"
+"シナリオ終了時の勝利／敗北ダイアログが非表示となり、ユーザーが「シナリオ終"
+"了」をクリックせずとも終了するようになる。スクリプトによるベンチマーク時に利"
+"用される。"
 
 #. type: TP
 #: doc/man/wesnoth.6:370
@@ -1973,13 +1978,34 @@ msgstr ""
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
 
+#~ msgid "B<--all-translations>"
+#~ msgstr "B<--all-translations>"
+
+#~ msgid ""
+#~ "Show all translations in the in-game language selection list, even if "
+#~ "they are deemed insufficiently complete."
+#~ msgstr ""
+#~ "ゲーム内の言語選択リストに、翻訳率が低いものを含むすべての翻訳を表示する。"
+
 #~ msgid ""
 #~ "sets the severity level of the log domains.  B<all> can be used to match "
 #~ "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
 #~ "B<debug>,\\ B<none>.  By default the B<warning> level is used for most "
-#~ "domains, but B<deprecation> defaults to none."
+#~ "domains, but B<deprecation> defaults to B<none> unless combined with the "
+#~ "B<-d> option."
 #~ msgstr ""
 #~ "ログ領域(domain)の厳密さのレベルを設定する。 B<all> は、どのログ領域にも対"
 #~ "応させるために利用される。有効なレベルは以下の通り。 B<error>、\\ "
 #~ "B<warning>、\\ B<info>、\\ B<debug>。既定値では B<warning> レベルがほとん"
-#~ "どのログ領域に使用されるが、B<deprecation>は無効である。"
+#~ "どのログ領域に使用されるが、 B<-d> オプションと組み合わせた場合を除いて "
+#~ "B<deprecation>は B<none>である。"
+
+#~ msgid "B<--translations-over>I<\\ percent>"
+#~ msgstr "B<--translations-over>I<\\ percent>"
+
+#~ msgid ""
+#~ "Set the standard for deeming a translation is complete enough to show in "
+#~ "the in-game language list to I<percent>.  Valid values are 0 to 100."
+#~ msgstr ""
+#~ "言語の基準翻訳率を I に設定する。言語の翻訳率が I<percent> を越えている場"
+#~ "合のみ、ゲーム内の言語リストに表示される。有効な値は 0 から 100 。"

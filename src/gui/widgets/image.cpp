@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,13 +16,12 @@
 
 #include "gui/widgets/image.hpp"
 
-#include "../../image.hpp" // We want the file in src/
+#include "picture.hpp" // We want the file in src/
 
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 
 #include "utils/functional.hpp"
 
@@ -37,7 +36,7 @@ namespace gui2
 REGISTER_WIDGET(image)
 
 image::image(const implementation::builder_image& builder)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 {
 }
 
@@ -165,9 +164,9 @@ builder_image::builder_image(const config& cfg) : builder_styled_widget(cfg)
 {
 }
 
-widget* builder_image::build() const
+widget_ptr builder_image::build() const
 {
-	image* widget = new image(*this);
+	auto widget = std::make_shared<image>(*this);
 
 	DBG_GUI_G << "Window builder: placed image '" << id << "' with definition '"
 			  << definition << "'.\n";

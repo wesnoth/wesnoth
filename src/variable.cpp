@@ -2,7 +2,7 @@
    Copyright (C) 2003 by David White <dave@whitevine.net>
    Copyright (C) 2005 - 2018 by Philippe Plantier <ayin@anathas.org>
 
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -534,7 +534,7 @@ void scoped_recall_unit::activate()
 
 	const std::vector<team>& teams = resources::gameboard->teams();
 
-	std::vector<team>::const_iterator team_it = std::find_if(teams.begin(), teams.end(), [&](const team& t) { return t.save_id() == player_; });
+	std::vector<team>::const_iterator team_it = std::find_if(teams.begin(), teams.end(), [&](const team& t) { return t.save_id_or_number() == player_; });
 
 	if(team_it != teams.end()) {
 		if(team_it->recall_list().size() > recall_index_) {

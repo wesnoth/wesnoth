@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -31,6 +31,7 @@
 #include "serialization/unicode.hpp"
 #include "utils/functional.hpp"
 #include "utils/iterable_pair.hpp"
+#include "game_version.hpp"
 
 #include "server/ban.hpp"
 #include "server/game.hpp"
@@ -84,6 +85,7 @@ namespace wesnothd
 {
 // we take profiling info on every n requests
 int request_sample_frequency = 1;
+version_info secure_version = version_info("1.14.4");
 
 static void make_add_diff(
 		const simple_wml::node& src, const char* gamelist, const char* type, simple_wml::document& out, int index = -1)
@@ -259,16 +261,19 @@ server::server(int port,
 	, games_and_users_list_("[gamelist]\n[/gamelist]\n", simple_wml::INIT_STATIC)
 	, metrics_()
 	, last_ping_(std::time(nullptr))
-	, last_stats_(last_ping_)
+	, dump_stats_timer_(io_service_)
 	, last_uh_clean_(last_ping_)
 	, cmd_handlers_()
 	, timer_(io_service_)
+	, lan_server_timer_(io_service_)
 {
 	setup_handlers();
 	load_config();
 	ban_manager_.read();
 
 	start_server();
+
+	start_dump_stats();
 }
 
 #ifndef _WIN32
@@ -296,6 +301,25 @@ void server::handle_graceful_timeout(const boost::system::error_code& error)
 		timer_.expires_from_now(boost::posix_time::seconds(1));
 		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, _1));
 	}
+}
+
+void server::start_lan_server_timer()
+{
+	lan_server_timer_.expires_from_now(std::chrono::seconds(lan_server_));
+	lan_server_timer_.async_wait([this](const boost::system::error_code& ec) { handle_lan_server_shutdown(ec); });
+}
+
+void server::abort_lan_server_timer()
+{
+	lan_server_timer_.cancel();
+}
+
+void server::handle_lan_server_shutdown(const boost::system::error_code& error)
+{
+	if(error)
+		return;
+
+	throw server_shutdown("lan server shutdown");
 }
 
 void server::setup_fifo()
@@ -355,6 +379,7 @@ void server::setup_handlers()
 	SETUP_HANDLER("sample", &server::sample_handler);
 	SETUP_HANDLER("help", &server::help_handler);
 	SETUP_HANDLER("stats", &server::stats_handler);
+	SETUP_HANDLER("version", &server::version_handler);
 	SETUP_HANDLER("metrics", &server::metrics_handler);
 	SETUP_HANDLER("requests", &server::requests_handler);
 	SETUP_HANDLER("games", &server::games_handler);
@@ -466,6 +491,7 @@ void server::load_config()
 	// remember to make new one as a daemon or it will block old one
 	restart_command = cfg_["restart_command"].str();
 
+	recommended_version_ = cfg_["recommended_version"].str();
 	accepted_versions_.clear();
 	const std::string& versions = cfg_["versions_accepted"];
 	if(versions.empty() == false) {
@@ -541,12 +567,22 @@ std::string server::is_ip_banned(const std::string& ip)
 	return ban_manager_.is_ip_banned(ip);
 }
 
-void server::dump_stats(const std::time_t& now)
+void server::start_dump_stats()
 {
-	last_stats_ = now;
+	dump_stats_timer_.expires_from_now(std::chrono::minutes(5));
+	dump_stats_timer_.async_wait([this](const boost::system::error_code& ec) { dump_stats(ec); });
+}
+
+void server::dump_stats(const boost::system::error_code& ec)
+{
+	if(ec) {
+		ERR_SERVER << "Error waiting for timer: " << ec.message() << "\n";
+		return;
+	}
 	LOG_SERVER << "Statistics:"
 			   << "\tnumber_of_games = " << games().size() << "\tnumber_of_users = " << player_connections_.size()
 			   << "\n";
+	start_dump_stats();
 }
 
 void server::clean_user_handler(const std::time_t& now)
@@ -582,7 +618,7 @@ void server::read_version(socket_ptr socket, std::shared_ptr<simple_wml::documen
 		if(accepted_it != accepted_versions_.end()) {
 			LOG_SERVER << client_address(socket) << "\tplayer joined using accepted version " << version_str
 					   << ":\ttelling them to log in.\n";
-			async_send_doc(socket, login_response_, std::bind(&server::login, this, _1));
+			async_send_doc(socket, login_response_, std::bind(&server::login, this, _1, version_str));
 			return;
 		}
 
@@ -619,23 +655,23 @@ void server::read_version(socket_ptr socket, std::shared_ptr<simple_wml::documen
 	}
 }
 
-void server::login(socket_ptr socket)
+void server::login(socket_ptr socket, std::string version)
 {
-	async_receive_doc(socket, std::bind(&server::handle_login, this, _1, _2));
+	async_receive_doc(socket, std::bind(&server::handle_login, this, _1, _2, version));
 }
 
-void server::handle_login(socket_ptr socket, std::shared_ptr<simple_wml::document> doc)
+void server::handle_login(socket_ptr socket, std::shared_ptr<simple_wml::document> doc, std::string version)
 {
 	if(const simple_wml::node* const login = doc->child("login")) {
-		if(!is_login_allowed(socket, login)) {
-			server::login(socket); // keep reading logins from client until we get a successful one
+		if(!is_login_allowed(socket, login, version)) {
+			server::login(socket, version); // keep reading logins from client until we get a successful one
 		}
 	} else {
 		async_send_error(socket, "You must login first.", MP_MUST_LOGIN);
 	}
 }
 
-bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const login)
+bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const login, const std::string& version)
 {
 	// Check if the username is valid (all alpha-numeric plus underscore and hyphen)
 	std::string username = (*login)["username"].to_string();
@@ -672,7 +708,7 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 	// Check for password
 
 	bool registered;
-	if(!authenticate(socket, username, (*login)["password"].to_string(), name_taken, registered))
+	if(!authenticate(socket, username, (*login)["password"].to_string(), version, name_taken, registered))
 		return true; // it's a failed login but we don't want to call server::login again
 					 // because send_password_request() will handle the next network write and read instead
 
@@ -739,20 +775,19 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 		}
 	}
 
-	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
-
-	async_send_doc(socket, join_lobby_response_,
-		std::bind(&server::add_player, this, _1,
-			wesnothd::player(
+	async_send_doc(socket, join_lobby_response_, [this, username, registered, version](socket_ptr socket) {
+		simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
+		add_player(socket, wesnothd::player(
 				username,
 				player_cfg,
 				registered,
+				version,
 				default_max_messages_,
 				default_time_period_,
 				user_handler_ && user_handler_->user_is_moderator(username)
 			)
-		)
-	);
+		);
+	});
 
 	LOG_SERVER << client_address(socket) << "\t" << username << "\thas logged on"
 			   << (registered ? " to a registered account" : "") << "\n";
@@ -787,7 +822,7 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 }
 
 bool server::authenticate(
-		socket_ptr socket, const std::string& username, const std::string& password, bool name_taken, bool& registered)
+		socket_ptr socket, const std::string& username, const std::string& password, const std::string& version, bool name_taken, bool& registered)
 {
 	// Current login procedure  for registered nicks is:
 	// - Client asks to log in with a particular nick
@@ -816,14 +851,14 @@ bool server::authenticate(
 			// This name is registered and no password provided
 			if(password.empty()) {
 				if(!name_taken) {
-					send_password_request(socket, "The nickname '" + username + "' is registered on this server.",
-						username, MP_PASSWORD_REQUEST);
+					send_password_request(socket, "The nickname '" + username + "' is registered on this server.",  
+						username, version, MP_PASSWORD_REQUEST);
 				} else {
 					send_password_request(socket,
 						"The nickname '" + username + "' is registered on this server."
 						"\n\nWARNING: There is already a client using this username, "
 						"logging in will cause that client to be kicked!",
-						username, MP_PASSWORD_REQUEST_FOR_LOGGED_IN_NAME, true
+						username, version, MP_PASSWORD_REQUEST_FOR_LOGGED_IN_NAME, true
 					);
 				}
 
@@ -832,17 +867,17 @@ bool server::authenticate(
 
 			// A password (or hashed password) was provided, however
 			// there is no seed
-			if(seeds_[reinterpret_cast<long int>(socket.get())].empty()) {
-				send_password_request(socket, "Please try again.", username, MP_NO_SEED_ERROR);
+			if(seeds_[socket.get()].empty()) {
+				send_password_request(socket, "Please try again.", username, version, MP_NO_SEED_ERROR);
 				return false;
 			}
 
 			// This name is registered and an incorrect password provided
-			else if(!(user_handler_->login(username, password, seeds_[reinterpret_cast<unsigned long>(socket.get())]))) {
+			else if(!(user_handler_->login(username, password, seeds_[socket.get()]))) {
 				const std::time_t now = std::time(nullptr);
 
 				// Reset the random seed
-				seeds_.erase(reinterpret_cast<unsigned long>(socket.get()));
+				seeds_.erase(socket.get());
 
 				login_log login_ip = login_log(client_address(socket), 0, now);
 				auto i = std::find(failed_logins_.begin(), failed_logins_.end(), login_ip);
@@ -874,7 +909,7 @@ bool server::authenticate(
 						"You have made too many failed login attempts.", MP_TOO_MANY_ATTEMPTS_ERROR);
 				} else {
 					send_password_request(socket,
-						"The password you provided for the nickname '" + username + "' was incorrect.", username,
+						"The password you provided for the nickname '" + username + "' was incorrect.", username,version, 
 						MP_INCORRECT_PASSWORD_ERROR);
 				}
 
@@ -888,7 +923,7 @@ bool server::authenticate(
 			registered = true;
 
 			// Reset the random seed
-			seeds_.erase(reinterpret_cast<long int>(socket.get()));
+			seeds_.erase(socket.get());
 			user_handler_->user_logged_in(username);
 		}
 	}
@@ -899,6 +934,7 @@ bool server::authenticate(
 void server::send_password_request(socket_ptr socket,
 		const std::string& msg,
 		const std::string& user,
+		const std::string& version,
 		const char* error_code,
 		bool force_confirmation)
 {
@@ -917,11 +953,11 @@ void server::send_password_request(socket_ptr socket,
 			"cannot log in due to an error in the hashing algorithm. "
 			"Logging into your forum account on https://forums.wesnoth.org "
 			"may fix this problem.");
-		login(socket);
+		login(socket, version);
 		return;
 	}
 
-	seeds_[reinterpret_cast<long int>(socket.get())] = nonce;
+	seeds_[socket.get()] = nonce;
 
 	simple_wml::document doc;
 	simple_wml::node& e = doc.root().add_child("error");
@@ -935,11 +971,14 @@ void server::send_password_request(socket_ptr socket,
 		e.set_attr("error_code", error_code);
 	}
 
-	async_send_doc(socket, doc, std::bind(&server::login, this, _1));
+	async_send_doc(socket, doc, std::bind(&server::login, this, _1, version));
 }
 
 void server::add_player(socket_ptr socket, const wesnothd::player& player)
 {
+	if(lan_server_)
+		abort_lan_server_timer();
+
 	bool inserted;
 	std::tie(std::ignore, inserted) = player_connections_.insert(player_connections::value_type(socket, player));
 	assert(inserted);
@@ -948,6 +987,12 @@ void server::add_player(socket_ptr socket, const wesnothd::player& player)
 
 	if(!motd_.empty()) {
 		send_server_message(socket, motd_);
+	}
+	if(version_info(player.version()) < secure_version ){
+		send_server_message(socket, "You are using version " + player.version() + " which has known security issues that can be used to compromise your computer. We strongly recommend updating to a Wesnoth version " + secure_version.str() + " or newer!");
+	}
+	if(version_info(player.version()) < version_info(recommended_version_)) {
+		send_server_message(socket, "A newer Wesnoth version, " + recommended_version_ + ", is out!");
 	}
 
 	read_from_player(socket);
@@ -1046,7 +1091,12 @@ void server::handle_whisper(socket_ptr socket, simple_wml::node& whisper)
 	}
 
 	simple_wml::document cwhisper;
-	whisper.copy_into(cwhisper.root().add_child("whisper"));
+
+	simple_wml::node& trunc_whisper = cwhisper.root().add_child("whisper");
+	whisper.copy_into(trunc_whisper);
+
+	const simple_wml::string_span& msg = trunc_whisper["message"];
+	chat_message::truncate_message(msg, trunc_whisper);
 
 	send_to_player(receiver_iter->socket(), cwhisper);
 }
@@ -1065,7 +1115,7 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 
 	const std::string& query_help_msg =
 		"Available commands are: adminmsg <msg>, help, games, metrics,"
-		" motd, netstats [all], requests, sample, stats, status, wml.";
+		" motd, netstats [all], requests, sample, stats, status, version, wml.";
 
 	// Commands a player may issue.
 	if(command == "status") {
@@ -1078,6 +1128,7 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 		command == "motd" ||
 		command == "netstats" ||
 		command == "netstats all" ||
+		command.compare(0, 7, "version") == 0 ||
 		command == "requests" ||
 		command == "sample" ||
 		command == "stats" ||
@@ -1268,10 +1319,12 @@ void server::handle_message(socket_ptr socket, simple_wml::node& message)
 
 	simple_wml::document relay_message;
 	message.set_attr_dup("sender", user->name().c_str());
-	message.copy_into(relay_message.root().add_child("message"));
 
-	const simple_wml::string_span& msg = message["message"];
-	chat_message::truncate_message(msg, message);
+	simple_wml::node& trunc_message = relay_message.root().add_child("message");
+	message.copy_into(trunc_message);
+
+	const simple_wml::string_span& msg = trunc_message["message"];
+	chat_message::truncate_message(msg, trunc_message);
 
 	if(msg.size() >= 3 && simple_wml::string_span(msg.begin(), 4) == "/me ") {
 		LOG_SERVER << client_address(socket) << "\t<" << user->name()
@@ -1509,8 +1562,11 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		// Update the game's description.
 		// If there is no shroud, then tell players in the lobby
 		// what the map looks like
+		const simple_wml::node& s = *wesnothd::game::starting_pos(data.root());
+		// fixme: the hanlder of [store_next_scenario] below searches for 'mp_shroud' in [scenario]
+		//        at least of the these cosed is likely wrong.
 		if(!data["mp_shroud"].to_bool()) {
-			desc.set_attr_dup("map_data", (*wesnothd::game::starting_pos(data.root()))["map_data"]);
+			desc.set_attr_dup("map_data", s["map_data"]);
 		}
 
 		if(const simple_wml::node* e = data.child("era")) {
@@ -1519,7 +1575,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			}
 		}
 
-		if(data.attr("require_scenario").to_bool(false)) {
+		if(s["require_scenario"].to_bool(false)) {
 			desc.set_attr("require_scenario", "yes");
 		}
 
@@ -1573,6 +1629,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			return;
 		}
 
+		g.new_scenario(socket);
 		g.save_replay();
 		g.reset_last_synced_context_id();
 
@@ -1614,7 +1671,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			}
 		}
 
-		if(data.attr("require_scenario").to_bool(false)) {
+		if(s["require_scenario"].to_bool(false)) {
 			desc.set_attr("require_scenario", "yes");
 		}
 
@@ -1815,7 +1872,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 using SendQueue = std::map<socket_ptr, std::deque<std::shared_ptr<simple_wml::document>>>;
 SendQueue send_queue;
 
-void handle_send_to_player(socket_ptr socket)
+static void handle_send_to_player(socket_ptr socket)
 {
 	if(send_queue[socket].empty()) {
 		send_queue.erase(socket);
@@ -1848,11 +1905,15 @@ void send_server_message(socket_ptr socket, const std::string& message)
 
 void server::remove_player(socket_ptr socket)
 {
-	std::string ip = client_address(socket);
+	std::string ip;
 
 	auto iter = player_connections_.find(socket);
 	if(iter == player_connections_.end()) {
 		return;
+	} else {
+		// client_address() is very likely to return <unknown address> at this point
+		// so we remember ip in player_connections_
+		ip = iter->saved_client_ip();
 	}
 
 	const std::shared_ptr<game> g = iter->get_game();
@@ -1888,6 +1949,9 @@ void server::remove_player(socket_ptr socket)
 	if(socket->is_open()) {
 		socket->close();
 	}
+
+	if(lan_server_ && player_connections_.size() == 0)
+		start_lan_server_timer();
 }
 
 void server::send_to_lobby(simple_wml::document& data, socket_ptr exclude) const
@@ -2185,12 +2249,21 @@ void server::adminmsg_handler(
 		}
 	}
 
-	if(n == 0) {
-		*out << "Sorry, no admin available right now. But your message got logged.";
+	bool is_admin = false;
+
+	for(const auto& player : player_connections_) {
+		if(issuer_name == player.info().name() && player.info().is_moderator()) {
+			is_admin = true;
+			break;
+		}
+	}
+
+	if(!is_admin) {
+		*out << "Your report has been logged and sent to the server administrators. Thanks!";
 		return;
 	}
 
-	*out << "Message sent to " << n << " admins.";
+	*out << "Your report has been logged and sent to " << n << " online administrators. Thanks!";
 }
 
 void server::pm_handler(
@@ -2280,6 +2353,26 @@ void server::lobbymsg_handler(const std::string& /*issuer_name*/,
 	*out << "message '" << parameters << "' relayed to players";
 }
 
+void server::version_handler(
+		const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream* out)
+{
+	assert(out != nullptr);
+
+	if(parameters.empty()) {
+		*out << "Server version is " << game_config::wesnoth_version.str();
+		return;
+	}
+
+	for(const auto& player : player_connections_) {
+		if(parameters == player.info().name()) {
+			*out << "Player " << parameters << " is using wesnoth " << player.info().version();
+			return;
+		}
+	}
+
+	*out << "Player '" << parameters << "' not found.";
+}
+
 void server::status_handler(
 		const std::string& issuer_name, const std::string& /*query*/, std::string& parameters, std::ostringstream* out)
 {
@@ -2291,7 +2384,7 @@ void server::status_handler(
 	// If a simple username is given we'll check for its IP instead.
 	if(utils::isvalid_username(parameters)) {
 		for(const auto& player : player_connections_) {
-			if(parameters == player.info().name()) {
+			if(utf8::lowercase(parameters) == utf8::lowercase(player.info().name())) {
 				parameters = client_address(player.socket());
 				found_something = true;
 				break;
@@ -2310,7 +2403,7 @@ void server::status_handler(
 	for(const auto& player : player_connections_) {
 		if(parameters.empty() || parameters == "*" ||
 			(match_ip  && utils::wildcard_string_match(client_address(player.socket()), parameters)) ||
-			(!match_ip && utils::wildcard_string_match(player.info().name(), parameters))
+			(!match_ip && utils::wildcard_string_match(utf8::lowercase(player.info().name()), utf8::lowercase(parameters)))
 		) {
 			found_something = true;
 			*out << std::endl << player_status(player);
@@ -2758,7 +2851,7 @@ void server::searchlog_handler(const std::string& /*issuer_name*/,
 		const std::string& ip = i.ip;
 
 		if((match_ip && utils::wildcard_string_match(ip, parameters)) ||
-		  (!match_ip && utils::wildcard_string_match(username, parameters))
+		  (!match_ip && utils::wildcard_string_match(utf8::lowercase(username), utf8::lowercase(parameters)))
 		) {
 			found_something = true;
 			auto player = player_connections_.get<name_t>().find(username);

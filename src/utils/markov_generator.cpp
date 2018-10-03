@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -81,9 +81,9 @@ static std::u32string markov_generate_name(const markov_prefix_map& prefixes,
 		}
 
 		res.resize(res.size()+1);
-		res[res.size()-1] = c;
+		res.back() = c;
 		prefix.resize(prefix.size()+1);
-		prefix[prefix.size()-1] = c;
+		prefix.back() = c;
 		while(prefix.size() > chain_size) {
 			prefix.erase(prefix.begin());
 		}

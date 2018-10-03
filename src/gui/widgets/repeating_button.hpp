@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -66,13 +66,13 @@ public:
 	virtual unsigned get_state() const override;
 
 	/** Inherited from clickable_item. */
-	void connect_click_handler(const event::signal_function& signal) override
+	virtual void connect_click_handler(const event::signal_function& signal) override
 	{
 		connect_signal_mouse_left_down(signal);
 	}
 
 	/** Inherited from clickable_item. */
-	void disconnect_click_handler(const event::signal_function& signal) override
+	virtual void disconnect_click_handler(const event::signal_function& signal) override
 	{
 		disconnect_signal_mouse_left_down(signal);
 	}
@@ -102,6 +102,11 @@ private:
 	/** The timer for the repeating events. */
 	std::size_t repeat_timer_;
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
@@ -142,7 +147,7 @@ public:
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 };
 
 } // namespace implementation

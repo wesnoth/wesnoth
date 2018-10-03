@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -177,6 +177,7 @@ public:
 
 	void write(config& cfg) const;
 
+	void fix_villages(const gamemap &map);
 	game_events::pump_result_t get_village(const map_location&, const int owner_side, game_data * fire_event); //!< Acquires a village from owner_side. Pointer fire_event should be the game_data for the game if it is desired to fire an event -- a "capture" event with owner_side variable scoped in will be fired. For no event, pass it nullptr. Default is the resources::gamedata pointer
 	void lose_village(const map_location&);
 	void clear_villages() { villages_.clear(); }
@@ -228,6 +229,7 @@ public:
 	void last_recruit(const std::string & u_type) { last_recruit_ = u_type; }
 
 	const std::string& save_id() const { return info_.save_id; }
+	std::string save_id_or_number() const { return info_.save_id.empty() ? std::to_string(info_.side) : info_.save_id; }
 	void set_save_id(const std::string& save_id) { info_.save_id = save_id; }
 	const std::string& current_player() const { return info_.current_player; }
 

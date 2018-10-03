@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -36,30 +36,31 @@ static lg::log_domain log_event_handler("event_handler");
 
 namespace
 {
-	// Event handlers can't be destroyed as long as at least one of these locks exist.
-	class event_handler_list_lock
+// Event handlers can't be destroyed as long as at least one of these locks exist.
+class event_handler_list_lock
+{
+public:
+	event_handler_list_lock()
 	{
-	public:
-		event_handler_list_lock()
-		{
-			++num_locks_;
-		}
+		++num_locks_;
+	}
 
-		~event_handler_list_lock()
-		{
-			--num_locks_;
-		}
+	~event_handler_list_lock()
+	{
+		--num_locks_;
+	}
 
-		static bool none()
-		{
-			return num_locks_ == 0u;
-		}
-	private:
-		static unsigned int num_locks_;
-	};
+	static bool none()
+	{
+		return num_locks_ == 0u;
+	}
 
-	unsigned int event_handler_list_lock::num_locks_ = 0u;
-}
+private:
+	static unsigned int num_locks_;
+};
+
+unsigned int event_handler_list_lock::num_locks_ = 0u;
+} // namespace
 
 namespace game_events
 {
@@ -150,7 +151,7 @@ void manager::write_events(config& cfg) const
 			assert(!eh->disabled());
 		}
 
-		cfg.add_child("event", eh->get_config());;
+		cfg.add_child("event", eh->get_config());
 	}
 
 	cfg["unit_wml_ids"] = utils::join(unit_wml_ids_);
@@ -167,45 +168,42 @@ void manager::execute_on_events(const std::string& event_id, manager::event_func
 	// even if new events are added to the queue.
 	const unsigned saved_end = active_handlers.size();
 
-
 	{
 		// Ensure that event handlers won't be cleaned up while we're iterating them.
 		event_handler_list_lock lock;
 
-		for (unsigned i = 0; i < saved_end; ++i) {
+		for(unsigned i = 0; i < saved_end; ++i) {
 			handler_ptr handler = nullptr;
 
 			try {
 				handler = active_handlers.at(i);
-			}
-			catch (const std::out_of_range&) {
+			} catch(const std::out_of_range&) {
 				continue;
 			}
 
 			// Shouldn't happen, but we're just being safe.
-			if (!handler || handler->disabled()) {
+			if(!handler || handler->disabled()) {
 				continue;
 			}
 
 			// Could be more than one.
-			for (const std::string& name : handler->names()) {
+			for(const std::string& name : handler->names()) {
 				bool matches = false;
 
-				if (utils::might_contain_variables(name)) {
+				if(utils::might_contain_variables(name)) {
 					// If we don't have gamedata, we can't interpolate variables, so there's
 					// no way the name will match. Move on to the next one in that case.
-					if (!gd) {
+					if(!gd) {
 						continue;
 					}
 
 					matches = standardized_event_id ==
 						event_handlers::standardize_name(utils::interpolate_variables_into_string(name, *gd));
-				}
-				else {
+				} else {
 					matches = standardized_event_id == name;
 				}
 
-				if (matches) {
+				if(matches) {
 					func(*this, handler);
 					break;
 				}

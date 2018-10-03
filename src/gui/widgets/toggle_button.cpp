@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@ namespace gui2
 REGISTER_WIDGET(toggle_button)
 
 toggle_button::toggle_button(const implementation::builder_toggle_button& builder)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 	, state_(ENABLED)
 	, state_num_(0)
 	, retval_(retval::NONE)
@@ -64,12 +64,12 @@ unsigned toggle_button::num_states() const
 	return res.quot;
 }
 
-void toggle_button::set_members(const string_map& data)
+void toggle_button::set_members(const widget_item& data)
 {
 	// Inherit
 	styled_widget::set_members(data);
 
-	string_map::const_iterator itor = data.find("icon");
+	widget_item::const_iterator itor = data.find("icon");
 	if(itor != data.end()) {
 		set_icon_name(itor->second);
 	}
@@ -278,9 +278,9 @@ builder_toggle_button::builder_toggle_button(const config& cfg)
 {
 }
 
-widget* builder_toggle_button::build() const
+widget_ptr builder_toggle_button::build() const
 {
-	toggle_button* widget = new toggle_button(*this);
+	auto widget = std::make_shared<toggle_button>(*this);
 
 	widget->set_icon_name(icon_name_);
 	widget->set_retval(get_retval(retval_id_, retval_, id));

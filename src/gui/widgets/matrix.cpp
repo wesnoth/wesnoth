@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2012 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,12 +17,12 @@
 #include "gui/widgets/matrix.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 
 #include "utils/functional.hpp"
 
@@ -87,13 +87,8 @@ matrix::matrix(const implementation::builder_matrix& builder)
 	pane_ = find_widget<pane>(&content_, "pane", false, true);
 }
 
-matrix* matrix::build(const implementation::builder_matrix& builder)
-{
-	return new matrix(builder);
-}
-
 unsigned
-matrix::create_item(const std::map<std::string, string_map>& item_data,
+matrix::create_item(const widget_data& item_data,
 					 const std::map<std::string, std::string>& tags)
 {
 	return pane_->create_item(item_data, tags);
@@ -111,10 +106,9 @@ void matrix::layout_initialize(const bool full_initialization)
 	content_.layout_initialize(full_initialization);
 }
 
-void
-matrix::impl_draw_children(int x_offset, int y_offset)
+void matrix::impl_draw_children()
 {
-	content_.draw_children(x_offset, y_offset);
+	content_.draw_children();
 }
 
 void matrix::layout_children()
@@ -168,11 +162,8 @@ bool matrix::disable_click_dismiss() const
 	return false;
 }
 
-iteration::walker_base* matrix::create_walker()
+iteration::walker_ptr matrix::create_walker()
 {
-	/**
-	 * @todo Implement properly.
-	 */
 	return nullptr;
 }
 
@@ -287,9 +278,9 @@ builder_matrix::builder_matrix(const config& cfg)
 	}
 }
 
-widget* builder_matrix::build() const
+widget_ptr builder_matrix::build() const
 {
-	return matrix::build(*this);
+	return std::make_shared<matrix>(*this);
 }
 
 } // namespace implementation

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,7 +18,6 @@
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/widget_helpers.hpp"
 #include "gui/widgets/generator.hpp"
 #include "gettext.hpp"
@@ -57,7 +56,7 @@ struct stacked_widget_implementation
 };
 
 stacked_widget::stacked_widget(const implementation::builder_stacked_widget& builder)
-	: container_base(builder, get_control_type())
+	: container_base(builder, type())
 	, generator_(generator_base::build(false, false, generator_base::independent, false))
 	, selected_layer_(-1)
 	, find_in_all_layers_(false)
@@ -86,7 +85,7 @@ void
 stacked_widget::finalize(std::vector<builder_grid_const_ptr> widget_builder)
 {
 	assert(generator_);
-	string_map empty_data;
+	widget_item empty_data;
 	for(const auto & builder : widget_builder)
 	{
 		generator_->create_item(-1, builder, empty_data, nullptr);
@@ -282,9 +281,9 @@ builder_stacked_widget::builder_stacked_widget(const config& real_cfg)
 	}
 }
 
-widget* builder_stacked_widget::build() const
+widget_ptr builder_stacked_widget::build() const
 {
-	stacked_widget* widget = new stacked_widget(*this);
+	auto widget = std::make_shared<stacked_widget>(*this);
 
 	DBG_GUI_G << "Window builder: placed stacked widget '" << id
 			  << "' with definition '" << definition << "'.\n";

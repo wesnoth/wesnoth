@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -28,16 +28,11 @@
 #include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "preferences/game.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
 #include "gui/widgets/minimap.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/status_label_helper.hpp"
@@ -46,14 +41,9 @@
 #include "gui/widgets/toggle_panel.hpp"
 #include "log.hpp"
 #include "savegame.hpp"
-#include "settings.hpp"
-
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "utils/functional.hpp"
-#endif
+#include "map_settings.hpp"
 
 #include <boost/algorithm/string.hpp>
-
 
 static lg::log_domain log_mp_create("mp/create");
 
@@ -205,7 +195,9 @@ void mp_create_game::pre_show(window& win)
 	};
 
 	game_menu_button.set_values(game_types, get_initial_type_index());
-	game_menu_button.connect_click_handler(std::bind(&mp_create_game::update_games_list, this, std::ref(win)));
+
+	connect_signal_notify_modified(game_menu_button,
+		std::bind(&mp_create_game::update_games_list, this, std::ref(win)));
 
 	//
 	// Set up mods list
@@ -214,8 +206,8 @@ void mp_create_game::pre_show(window& win)
 
 	const auto& activemods = preferences::modifications();
 	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["label"] = mod->name;
 		data.emplace("mod_name", item);
@@ -256,7 +248,9 @@ void mp_create_game::pre_show(window& win)
 	}
 
 	eras_menu_button_->set_values(era_names);
-	eras_menu_button_->connect_click_handler(std::bind(&mp_create_game::on_era_select, this, std::ref(win)));
+
+	connect_signal_notify_modified(*eras_menu_button_,
+		std::bind(&mp_create_game::on_era_select, this, std::ref(win)));
 
 	const int era_selection = create_engine_.find_extra_by_id(ng::create_engine::ERA, preferences::era());
 	if(era_selection >= 0) {
@@ -289,7 +283,9 @@ void mp_create_game::pre_show(window& win)
 	menu_button& rfm_menu_button = find_widget<menu_button>(&win, "random_faction_mode", false);
 
 	rfm_menu_button.set_values(rfm_options, initial_index);
-	rfm_menu_button.connect_click_handler(std::bind(&mp_create_game::on_random_faction_mode_select, this, std::ref(win)));
+
+	connect_signal_notify_modified(rfm_menu_button,
+		std::bind(&mp_create_game::on_random_faction_mode_select, this, std::ref(win)));
 
 	on_random_faction_mode_select(win);
 
@@ -612,8 +608,8 @@ void mp_create_game::display_games_of_type(window& window, ng::level::TYPE type,
 			continue;
 		}
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		if(type == ng::level::TYPE::CAMPAIGN || type == ng::level::TYPE::SP_CAMPAIGN) {
 			item["label"] = game->icon();
@@ -732,7 +728,7 @@ void mp_create_game::update_details(window& win)
 			const int p_max = current_campaign->max_players();
 
 			if(p_max > p_min) {
-				players.set_label(VGETTEXT("$min to $max", {{"min", std::to_string(p_min)}, {"max", std::to_string(p_max)}}));
+				players.set_label(VGETTEXT("number of players^$min to $max", {{"min", std::to_string(p_min)}, {"max", std::to_string(p_max)}}));
 			} else {
 				players.set_label(std::to_string(p_min));
 			}

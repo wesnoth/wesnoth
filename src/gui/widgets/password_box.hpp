@@ -2,7 +2,7 @@
    Copyright (C) 2009 - 2018 by Thomas Baumhauer
    <thomas.baumhauer@NOSPAMgmail.com>
    Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -60,6 +60,11 @@ private:
 
 	std::string real_value_;
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 };
@@ -78,7 +83,7 @@ public:
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
 private:
 	std::string history_;

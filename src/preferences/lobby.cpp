@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -30,26 +30,6 @@ void set_whisper_friends_only(bool v)
 bool auto_open_whisper_windows()
 {
 	return preferences::get("lobby_auto_open_whisper_windows", true);
-}
-
-bool playerlist_sort_relation()
-{
-	return preferences::get("lobby_playerlist_sort_relation", true);
-}
-
-void set_playerlist_sort_relation(bool v)
-{
-	return preferences::set("lobby_playerlist_sort_relation", v);
-}
-
-bool playerlist_sort_name()
-{
-	return preferences::get("lobby_playerlist_sort_name", true);
-}
-
-void set_playerlist_sort_name(bool v)
-{
-	return preferences::set("lobby_playerlist_sort_name", v);
 }
 
 bool playerlist_group_players()

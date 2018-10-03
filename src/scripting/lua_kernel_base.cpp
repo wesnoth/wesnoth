@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -36,8 +36,8 @@
 #include "scripting/lua_rng.hpp"
 #include "scripting/push_check.hpp"
 
-#include "version.hpp"                  // for do_version_check, etc
-#include "image.hpp"
+#include "game_version.hpp"                  // for do_version_check, etc
+#include "picture.hpp"
 
 #include "formula/string_utils.hpp"
 #include "utils/functional.hpp"
@@ -122,6 +122,44 @@ int lua_kernel_base::intf_print(lua_State* L)
 	DBG_LUA << "\n";
 
 	return 0;
+}
+
+/**
+ * Replacement load function. Mostly the same as regular load, but disallows loading binary chunks
+ * due to CVE-2018-1999023.
+ */
+static int intf_load(lua_State* L)
+{
+	std::string chunk = luaL_checkstring(L, 1);
+	const char* name = luaL_optstring(L, 2, chunk.c_str());
+	std::string mode = luaL_optstring(L, 3, "t");
+	bool override_env = !lua_isnone(L, 4);
+
+	if(mode != "t") {
+		return luaL_argerror(L, 3, "binary chunks are not allowed for security reasons");
+	}
+
+	int result = luaL_loadbufferx(L, chunk.data(), chunk.length(), name, "t");
+	if(result != LUA_OK) {
+		lua_pushnil(L);
+		// Move the nil as the first return value, like Lua's own load() does.
+		lua_insert(L, -2);
+
+		return 2;
+	}
+
+	if(override_env) {
+		// Copy "env" to the top of the stack.
+		lua_pushvalue(L, 4);
+		// Set "env" as the first upvalue.
+		const char* upvalue_name = lua_setupvalue(L, -2, 1);
+		if(upvalue_name == nullptr) {
+			// lua_setupvalue() didn't remove the copy of "env" from the stack, so we need to do it ourselves.
+			lua_pop(L, 1);
+		}
+	}
+
+	return 1;
 }
 
 // The show lua console callback is similarly a method of lua kernel
@@ -257,7 +295,7 @@ static int intf_wml_matches_filter(lua_State* L)
 static int intf_log(lua_State *L) {
 	const std::string& logger = lua_isstring(L, 2) ? luaL_checkstring(L, 1) : "";
 	std::string msg = lua_isstring(L, 2) ? luaL_checkstring(L, 2) : luaL_checkstring(L, 1);
-	if(msg.empty() || msg[msg.size() - 1] != '\n') {
+	if(msg.empty() || msg.back() != '\n') {
 		msg += '\n';
 	}
 
@@ -510,6 +548,11 @@ lua_kernel_base::lua_kernel_base()
 	lua_pushcfunction(L, &dispatch<&lua_kernel_base::intf_print>);
 	lua_setglobal(L, "print");
 
+	lua_pushcfunction(L, intf_load);
+	lua_setglobal(L, "load");
+	lua_pushnil(L);
+	lua_setglobal(L, "loadstring");
+
 	cmd_log_ << "Initializing package repository...\n";
 	// Create the package table.
 	lua_getglobal(L, "wesnoth");
@@ -674,7 +717,9 @@ bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, error_
 
 bool lua_kernel_base::load_string(char const * prog, error_handler e_h)
 {
-	int errcode = luaL_loadstring(mState, prog);
+	// pass 't' to prevent loading bytecode which is unsafe and can be used to escape the sandbox.
+	// todo: maybe allow a 'name' parameter to give better error messages.
+	int errcode = luaL_loadbufferx(mState, prog, strlen(prog), /*name*/ prog, "t");
 	if (errcode != LUA_OK) {
 		char const * msg = lua_tostring(mState, -1);
 		std::string message = msg ? msg : "null string";
@@ -833,6 +878,7 @@ int lua_kernel_base::impl_game_config_get(lua_State* L)
 	return_int_attrib("rest_heal_amount", game_config::rest_heal_amount);
 	return_int_attrib("recall_cost", game_config::recall_cost);
 	return_int_attrib("kill_experience", game_config::kill_experience);
+	return_int_attrib("combat_experience", game_config::combat_experience);
 	return_string_attrib("version", game_config::wesnoth_version.str());
 	return_bool_attrib("debug", game_config::debug);
 	return_bool_attrib("debug_lua", game_config::debug_lua);

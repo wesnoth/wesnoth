@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2012 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 #include "log.hpp"
 #include "serialization/unicode.hpp"
 #include "serialization/unicode_cast.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 
 #include <boost/algorithm/string.hpp>
 #include <boost/iostreams/device/file_descriptor.hpp>
@@ -897,7 +897,7 @@ filesystem::scoped_istream istream_file(const std::string& fname, bool treat_fai
 
 	if(fname.empty()) {
 		ERR_FS << "Trying to open file with empty name.\n";
-		filesystem::scoped_istream s(new fstream_t());
+		filesystem::scoped_istream s = std::make_unique<fstream_t>();
 		s->clear(std::ios_base::failbit);
 		return s;
 	}
@@ -912,7 +912,7 @@ filesystem::scoped_istream istream_file(const std::string& fname, bool treat_fai
 			ERR_FS << "Could not open '" << fname << "' for reading.\n";
 		} else if(!is_filename_case_correct(fname, fd)) {
 			ERR_FS << "Not opening '" << fname << "' due to case mismatch.\n";
-			filesystem::scoped_istream s(new fstream_t());
+			filesystem::scoped_istream s = std::make_unique<fstream_t>();
 			s->clear(std::ios_base::failbit);
 			return s;
 		}
@@ -923,7 +923,7 @@ filesystem::scoped_istream istream_file(const std::string& fname, bool treat_fai
 			ERR_FS << "Could not open '" << fname << "' for reading.\n";
 		}
 
-		filesystem::scoped_istream s(new fstream_t());
+		filesystem::scoped_istream s = std::make_unique<fstream_t>();
 		s->clear(std::ios_base::failbit);
 		return s;
 	}
@@ -1212,7 +1212,7 @@ void binary_paths_manager::set_paths(const config& cfg)
 			continue;
 		}
 
-		if(!path.empty() && path[path.size() - 1] != '/')
+		if(!path.empty() && path.back() != '/')
 			path += "/";
 		if(binary_paths.count(path) == 0) {
 			binary_paths.insert(path);

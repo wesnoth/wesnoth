@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -254,7 +254,7 @@ namespace std
 	template<>
 	struct hash<color_t>
 	{
-		std::size_t operator()(const color_t& c) const
+		std::size_t operator()(const color_t& c) const noexcept
 		{
 			return c.to_rgba_bytes();
 		}

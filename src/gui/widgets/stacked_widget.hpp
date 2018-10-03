@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ namespace implementation
 struct builder_stacked_widget;
 }
 
-class generator_base;
+using generator_ptr = std::shared_ptr<class generator_base>;
 
 class stacked_widget : public container_base
 {
@@ -143,7 +143,7 @@ private:
 	 * In that case, the generator would not allow the interim state where no layer
 	 * before the new chosen layer is reached in the loop.
 	 */
-	generator_base* generator_;
+	generator_ptr generator_;
 
 	/**
 	 * The number of the current selected layer.
@@ -161,6 +161,11 @@ private:
 	/** Internal implementation detail for selecting layers. */
 	void select_layer_impl(std::function<bool(unsigned int i)> display_condition);
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
@@ -200,7 +205,7 @@ struct builder_stacked_widget : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
 	/** The builders for all layers of the stack .*/
 	std::vector<builder_grid_const_ptr> stack;

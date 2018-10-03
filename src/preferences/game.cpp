@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@
 #include "map/map.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode_cast.hpp"
-#include "settings.hpp"
+#include "map_settings.hpp"
 #include "units/unit.hpp"
 #include "units/map.hpp"
 #include "utils/general.hpp"
@@ -39,8 +39,6 @@ using acquaintances_map = std::map<std::string, preferences::acquaintance>;
 namespace {
 
 bool message_private_on = false;
-
-bool haloes = true;
 
 std::map<std::string, std::set<std::string>> completed_campaigns;
 std::set<std::string> encountered_units_set;
@@ -82,7 +80,6 @@ manager::manager() :
 	set_music_volume(music_volume());
 	set_sound_volume(sound_volume());
 
-	set_show_haloes(preferences::get("show_haloes", true));
 	if (!preferences::get("remember_timer_settings", false)) {
 		preferences::erase("mp_countdown_init_time");
 		preferences::erase("mp_countdown_reservoir_time");
@@ -856,17 +853,6 @@ bool message_private()
 void set_message_private(bool value)
 {
 	message_private_on = value;
-}
-
-bool show_haloes()
-{
-	return haloes;
-}
-
-void set_show_haloes(bool value)
-{
-	haloes = value;
-	preferences::set("show_haloes", value);
 }
 
 compression::format save_compression_format()

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -40,7 +40,7 @@ public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** See @ref styled_widget::set_members. */
-	void set_members(const string_map& data) override;
+	void set_members(const widget_item& data) override;
 
 	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
@@ -52,17 +52,19 @@ public:
 	virtual unsigned get_state() const override;
 
 	/** Inherited from styled_widget. */
-	void update_canvas() override;
+	virtual void update_canvas() override;
 
 	/** Inherited from selectable_item */
-	unsigned get_value() const override
+	virtual unsigned get_value() const override
 	{
 		return state_num_;
 	}
+
 	/** Inherited from selectable_item */
-	unsigned num_states() const override;
+	virtual unsigned num_states() const override;
+
 	/** Inherited from selectable_item */
-	void set_value(unsigned selected, bool fire_event = false) override;
+	virtual void set_value(unsigned selected, bool fire_event = false) override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -73,6 +75,7 @@ public:
 		icon_name_ = icon_name;
 		update_canvas();
 	}
+
 	const std::string& icon_name() const
 	{
 		return icon_name_;
@@ -122,6 +125,11 @@ private:
 	 */
 	std::string icon_name_;
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
@@ -161,7 +169,7 @@ struct builder_toggle_button : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
 private:
 	std::string icon_name_;

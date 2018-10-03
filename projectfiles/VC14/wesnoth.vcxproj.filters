@@ -434,9 +434,6 @@
     <ClCompile Include="..\..\src\gui\widgets\label.cpp">
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\widgets\list.cpp">
-      <Filter>Gui\Widgets</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\listbox.cpp">
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
@@ -539,9 +536,6 @@
     <ClCompile Include="..\..\src\gui\widgets\window.cpp">
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\advanced_graphics_options.cpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\attack_predictions.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
@@ -606,9 +600,6 @@
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\game_ui.cpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\game_version.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\gamestate_inspector.cpp">
@@ -802,9 +793,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\synced_choice_wait.cpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\auxiliary\old_markup.cpp">
-      <Filter>Gui\Auxiliary</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\auxiliary\tips.cpp">
       <Filter>Gui\Auxiliary</Filter>
@@ -1100,7 +1088,7 @@
     <ClCompile Include="..\..\src\tests\utils\fake_event_source.cpp">
       <Filter>Tests\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\tests\utils\game_config_manager.cpp">
+    <ClCompile Include="..\..\src\tests\utils\game_config_manager_tests.cpp">
       <Filter>Tests\Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\tests\utils\play_scenario.cpp">
@@ -1454,7 +1442,7 @@
     <ClCompile Include="..\..\src\generic_event.cpp" />
     <ClCompile Include="..\..\src\halo.cpp" />
     <ClCompile Include="..\..\src\hash.cpp" />
-    <ClCompile Include="..\..\src\image.cpp" />
+    <ClCompile Include="..\..\src\picture.cpp" />
     <ClCompile Include="..\..\src\image_modifications.cpp" />
     <ClCompile Include="..\..\src\key.cpp" />
     <ClCompile Include="..\..\src\language.cpp" />
@@ -1492,7 +1480,7 @@
     <ClCompile Include="..\..\src\saved_game.cpp" />
     <ClCompile Include="..\..\src\savegame.cpp" />
     <ClCompile Include="..\..\src\seed_rng.cpp" />
-    <ClCompile Include="..\..\src\settings.cpp" />
+    <ClCompile Include="..\..\src\map_settings.cpp" />
     <ClCompile Include="..\..\src\side_filter.cpp" />
     <ClCompile Include="..\..\src\sound.cpp" />
     <ClCompile Include="..\..\src\sound_music_track.cpp" />
@@ -1554,6 +1542,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\preferences\lobby.cpp">
       <Filter>Preferences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\game_version_dialog.cpp">
+      <Filter>Gui\Dialogs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1833,9 +1824,6 @@
     <ClInclude Include="..\..\src\gui\widgets\label.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\widgets\list.hpp">
-      <Filter>Gui\Widgets</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\gui\widgets\listbox.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
@@ -1953,9 +1941,6 @@
     <ClInclude Include="..\..\src\gui\widgets\window_private.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\advanced_graphics_options.hpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\attack_predictions.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
@@ -2020,9 +2005,6 @@
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\game_ui.hpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\game_version.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\gamestate_inspector.hpp">
@@ -2230,9 +2212,6 @@
       <Filter>Gui\Auxiliary</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\auxiliary\find_widget.hpp">
-      <Filter>Gui\Auxiliary</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\auxiliary\old_markup.hpp">
       <Filter>Gui\Auxiliary</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\auxiliary\tips.hpp">
@@ -2889,7 +2868,7 @@
     <ClInclude Include="..\..\src\global.hpp" />
     <ClInclude Include="..\..\src\halo.hpp" />
     <ClInclude Include="..\..\src\hash.hpp" />
-    <ClInclude Include="..\..\src\image.hpp" />
+    <ClInclude Include="..\..\src\picture.hpp" />
     <ClInclude Include="..\..\src\image_modifications.hpp" />
     <ClInclude Include="..\..\src\key.hpp" />
     <ClInclude Include="..\..\src\language.hpp" />
@@ -2931,7 +2910,7 @@
     <ClInclude Include="..\..\src\savegame.hpp" />
     <ClInclude Include="..\..\src\savegame_config.hpp" />
     <ClInclude Include="..\..\src\seed_rng.hpp" />
-    <ClInclude Include="..\..\src\settings.hpp" />
+    <ClInclude Include="..\..\src\map_settings.hpp" />
     <ClInclude Include="..\..\src\side_filter.hpp" />
     <ClInclude Include="..\..\src\sound.hpp" />
     <ClInclude Include="..\..\src\sound_music_track.hpp" />
@@ -2953,7 +2932,7 @@
     <ClInclude Include="..\..\src\variable_info.hpp" />
     <ClInclude Include="..\..\src\variable_info_detail.hpp" />
     <ClInclude Include="..\..\src\variable_info_private.hpp" />
-    <ClInclude Include="..\..\src\version.hpp" />
+    <ClInclude Include="..\..\src\game_version.hpp" />
     <ClInclude Include="..\..\src\video.hpp" />
     <ClInclude Include="..\..\src\wesconfig.h" />
     <ClInclude Include="..\..\src\wesnothd_connection.hpp" />
@@ -3016,6 +2995,16 @@
     <ClInclude Include="..\..\src\preferences\lobby.hpp">
       <Filter>Preferences</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\utils\scope_exit.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\chat_log.hpp" />
+    <ClInclude Include="..\..\src\terrain\movement.hpp">
+      <Filter>Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\game_version_dialog.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\src\tests\test_sdl_utils.hpp">
@@ -3030,7 +3019,7 @@
     <CustomBuild Include="..\..\src\tests\utils\fake_event_source.hpp">
       <Filter>Tests\Utils</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\src\tests\utils\game_config_manager.hpp">
+    <CustomBuild Include="..\..\src\tests\utils\game_config_manager_tests.hpp">
       <Filter>Tests\Utils</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\src\tests\utils\play_scenario.hpp">

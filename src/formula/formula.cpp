@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -232,7 +232,7 @@ formula::formula(const std::string& text, function_symbol_table* symbols)
 	if(!tokens.empty()) {
 		expr_ = parse_expression(&tokens[0], &tokens[0] + tokens.size(), symbols_);
 	} else {
-		expr_ = expression_ptr(new null_expression());
+		expr_ = std::make_shared<null_expression>();
 	}
 }
 
@@ -245,7 +245,7 @@ formula::formula(const tk::token* i1, const tk::token* i2, function_symbol_table
 	if(i1 != i2) {
 		expr_ = parse_expression(i1, i2, symbols);
 	} else {
-		expr_ = expression_ptr(new null_expression());
+		expr_ = std::make_shared<null_expression>();
 	}
 }
 
@@ -1296,13 +1296,13 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 
 			symbols->add_function(formula_name,
 				std::make_shared<user_formula_function>(
-					formula_name, const_formula_ptr(new formula(beg, i1, symbols)),
+					formula_name, std::make_shared<const formula>(beg, i1, symbols),
 					formula::create_optional_formula(precond, symbols), args
 				)
 			);
 
 			if((i1 == i2) || (i1 == (i2-1))) {
-				return expression_ptr(new function_list_expression(symbols));
+				return std::make_shared<function_list_expression>(symbols);
 			} else {
 				return parse_expression((i1+1), i2, symbols);
 			}
@@ -1337,7 +1337,7 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 		} else if((i2-1)->type == tk::TOKEN_RSQUARE) { //check if there is [ ] : either a list/map definition, or a operator
 			// First, a special case for an empty map
 			if(i2 - i1 == 3 && i1->type == tk::TOKEN_LSQUARE && (i1+1)->type == tk::TOKEN_POINTER) {
-				return expression_ptr(new map_expression(std::vector<expression_ptr>()));
+				return std::make_shared<map_expression>(std::vector<expression_ptr>());
 			}
 
 			const tk::token* tok = i2-2;
@@ -1361,19 +1361,17 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 
 					if( is_map ) {
 						parse_set_args(i1+1, i2-1, &args, symbols);
-						return expression_ptr(new map_expression(args));
+						return std::make_shared<map_expression>(args);
 					} else {
 						parse_args(i1+1,i2-1,&args,symbols);
-						return expression_ptr(new list_expression(args));
+						return std::make_shared<list_expression>(args);
 					}
 				} else {
 					// Execute operator [ ]
 					try{
-						return expression_ptr(
-							new square_bracket_expression(
-								parse_expression(i1,      tok,    symbols),
-								parse_expression(tok + 1, i2 - 1, symbols)
-							)
+						return std::make_shared<square_bracket_expression>(
+							parse_expression(i1,      tok,    symbols),
+							parse_expression(tok + 1, i2 - 1, symbols)
 						);
 					} catch (const formula_error& e){
 						throw formula_error( e.type, tokens_to_string(i1, i2-1), *i1->filename, i1->line_number );
@@ -1383,13 +1381,13 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 		} else if(i2 - i1 == 1) {
 			if(i1->type == tk::TOKEN_KEYWORD) {
 				if(std::string(i1->begin, i1->end) == "functions") {
-					return expression_ptr(new function_list_expression(symbols));
+					return std::make_shared<function_list_expression>(symbols);
 				}
 			} else if(i1->type == tk::TOKEN_IDENTIFIER) {
-				return expression_ptr(new identifier_expression(std::string(i1->begin, i1->end)));
+				return std::make_shared<identifier_expression>(std::string(i1->begin, i1->end));
 			} else if(i1->type == tk::TOKEN_INTEGER) {
 				int n = std::stoi(std::string(i1->begin, i1->end));
-				return expression_ptr(new integer_expression(n));
+				return std::make_shared<integer_expression>(n);
 			} else if(i1->type == tk::TOKEN_DECIMAL) {
 				tk::iterator dot = i1->begin;
 				while(*dot != '.') {
@@ -1415,9 +1413,9 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 					++dot;
 				}
 
-				return expression_ptr(new decimal_expression(n, f));
+				return std::make_shared<decimal_expression>(n, f);
 			} else if(i1->type == tk::TOKEN_STRING_LITERAL) {
-				return expression_ptr(new string_expression(std::string(i1->begin + 1, i1->end - 1)));
+				return std::make_shared<string_expression>(std::string(i1->begin + 1, i1->end - 1));
 			}
 		} else if(i1->type == tk::TOKEN_IDENTIFIER &&
 		          (i1+1)->type == tk::TOKEN_LPARENS &&
@@ -1476,7 +1474,7 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 		expr_table_ptr table(new expr_table());
 		parse_where_clauses(op+1, i2, table, symbols);
 
-		return expression_ptr(new where_expression(parse_expression(i1, op, symbols), table));
+		return std::make_shared<where_expression>(parse_expression(i1, op, symbols), table);
 	}
 
 	return expression_ptr(

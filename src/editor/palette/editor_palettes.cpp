@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -330,7 +330,7 @@ void editor_palette<Item>::draw_contents()
 
 // Force compilation of the following template instantiations
 template class editor_palette<t_translation::terrain_code>;
-template class editor_palette<unit_type>;
+template class editor_palette<const unit_type&>;
 template class editor_palette<overlay>;
 
 } // end namespace editor

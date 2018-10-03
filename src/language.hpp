@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -100,3 +100,5 @@ void init_textdomains(const config& cfg);
 bool init_strings(const config& cfg);
 
 bool load_language_list();
+
+void set_min_translation_percent(int percent);

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2016 - 2018 by Sergey Popov <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License 2
@@ -209,7 +209,7 @@ void async_send_message(socket_ptr socket, const std::string& msg)
 }
 
 // This is just here to get it to build without the deprecation_message function
-#include "version.hpp"
+#include "game_version.hpp"
 #include "deprecation.hpp"
 
 std::string deprecated_message(const std::string&, DEP_LEVEL, const version_info&, const std::string&) {return "";}

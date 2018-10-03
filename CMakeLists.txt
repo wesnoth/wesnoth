@@ -63,19 +63,6 @@ if(NOT CXX_STD)
 	set(CXX_STD "14")
 endif()
 
-if(NOT CMAKE_CROSSCOMPILING)
-	try_run(IEEE754_TEST_RETURN_CODE IEEE754_TEST_COMPILED ${CMAKE_BINARY_DIR} ${CMAKE_SOURCE_DIR}/src/compile_time_tests/ieee_754.cpp
-		CMAKE_FLAGS "-DCMAKE_CXX_STANDARD=${CXX_STD}" COMPILE_OUTPUT_VARIABLE IEEE754_TEST_COMPILE_OUTPUT)
-	if(NOT IEEE754_TEST_COMPILED)
-		message(WARNING "Failed to compile the IEEE 754 test. Skipping it.")
-		message(${IEEE754_TEST_COMPILE_OUTPUT})
-	elseif(NOT IEEE754_TEST_RETURN_CODE EQUAL 0)
-		message(FATAL_ERROR "Your platform does not represent floating point numbers in the IEEE 754 format.")
-	endif()
-else()
-	message(WARNING "You are cross-compiling. Skipping IEEE 754 test.")
-endif()
-
 if(ENABLE_GAME OR ENABLE_TESTS)
 	find_package(OpenGL REQUIRED)
 	find_package(GLEW REQUIRED)
@@ -159,6 +146,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
 	option(ENABLE_APPDATA_FILE "enable installation of an appdata file for appstream" ON)
 endif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
 
+option(HARDEN "Whether to enable options to harden the executables" ON)
 option(ENABLE_STRICT_COMPILATION "Sets the strict compilation mode" OFF)
 option(ENABLE_PEDANTIC_COMPILATION "Sets the pedantic compilation mode" OFF)
 option(ENABLE_DEBUG_WINDOW_LAYOUT "Add the debug option to allow the generation of debug layout files in dot format" OFF)
@@ -255,39 +243,6 @@ if(NOT "${CMAKE_CXX_FLAGS}" STREQUAL "${COMPILER_FLAGS}")
 	)
 endif(NOT "${CMAKE_CXX_FLAGS}" STREQUAL "${COMPILER_FLAGS}")
 
-# check for hardening options
-if(HARDEN)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIE -fstack-protector-strong")
-	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIE -fstack-protector-strong")
-	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -pie -Wl,-z,now,-z,relro")
-	add_definitions(-D_FORTIFY_SOURCE=2)
-endif(HARDEN)
-
-if(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
-	# Assume the compiler is the clang compiler.
-	set(CMAKE_EXE_LINKER_FLAGS "-lstdc++ -lm ${CMAKE_EXE_LINKER_FLAGS}")
-endif(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
-
-if(NOT WIN32)
-	add_definitions(-DWESNOTH_PATH="${CMAKE_INSTALL_FULL_DATADIR}/${DATADIRNAME}")
-endif(NOT WIN32)
-
-if(X11_FOUND)
-	add_definitions(-D_X11)
-endif(X11_FOUND)
-
-add_definitions(-DLOCALEDIR="${LOCALEDIR}")
-
-# -DNDEBUG is automatically added to all release build types, so manually remove this define from the related variables
-RemoveFlag(CMAKE_CXX_FLAGS_RELWITHDEBINFO CACHE "-DNDEBUG" "Default C++ flags for RelWithDebInfo")
-RemoveFlag(CMAKE_C_FLAGS_RELWITHDEBINFO CACHE "-DNDEBUG" "Default C flags for RelWithDebInfo")
-RemoveFlag(CMAKE_CXX_FLAGS_MINSIZEREL CACHE "-DNDEBUG" "Default C++ flags for MinSizeRel")
-RemoveFlag(CMAKE_C_FLAGS_MINSIZEREL CACHE "-DNDEBUG" "Default C flags for MinSizeRel")
-
-# -rdynamic is automatically added, but we don't need it, and it increases the executable size
-RemoveFlag(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS SCRIPT "-rdynamic" "")
-RemoveFlag(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS SCRIPT "-rdynamic" "")
-
 # #
 # Determine optimization level
 # #
@@ -316,6 +271,47 @@ else(NOT OPT)
 	set(CMAKE_CXX_FLAGS_PROFILE "${OPT}")
 	set(CMAKE_C_FLAGS_PROFILE "${OPT}")
 endif(NOT OPT)
+
+# check for hardening options
+if(HARDEN AND NOT WIN32)
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIE -fstack-protector-strong")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIE -fstack-protector-strong")
+
+	if(APPLE)
+		set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -Wl,-pie")
+	else()
+		set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -pie -Wl,-z,relro,-z,now")
+	endif()
+
+	if(NOT CMAKE_CXX_FLAGS_DEBUG STREQUAL "-O0")
+		add_definitions(-D_FORTIFY_SOURCE=2)
+	endif()
+endif(HARDEN AND NOT WIN32)
+
+if(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
+	# Assume the compiler is the clang compiler.
+	set(CMAKE_EXE_LINKER_FLAGS "-lstdc++ -lm ${CMAKE_EXE_LINKER_FLAGS}")
+endif(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
+
+if(NOT WIN32)
+	add_definitions(-DWESNOTH_PATH="${CMAKE_INSTALL_FULL_DATADIR}/${DATADIRNAME}")
+endif(NOT WIN32)
+
+if(X11_FOUND)
+	add_definitions(-D_X11)
+endif(X11_FOUND)
+
+add_definitions(-DLOCALEDIR="${LOCALEDIR}")
+
+# -DNDEBUG is automatically added to all release build types, so manually remove this define from the related variables
+RemoveFlag(CMAKE_CXX_FLAGS_RELWITHDEBINFO CACHE "-DNDEBUG" "Default C++ flags for RelWithDebInfo")
+RemoveFlag(CMAKE_C_FLAGS_RELWITHDEBINFO CACHE "-DNDEBUG" "Default C flags for RelWithDebInfo")
+RemoveFlag(CMAKE_CXX_FLAGS_MINSIZEREL CACHE "-DNDEBUG" "Default C++ flags for MinSizeRel")
+RemoveFlag(CMAKE_C_FLAGS_MINSIZEREL CACHE "-DNDEBUG" "Default C flags for MinSizeRel")
+
+# -rdynamic is automatically added, but we don't need it, and it increases the executable size
+RemoveFlag(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS SCRIPT "-rdynamic" "")
+RemoveFlag(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS SCRIPT "-rdynamic" "")
 
 # #
 # Start determining options for Release build

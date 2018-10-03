@@ -90,6 +90,7 @@ if env["PLATFORM"] == "win32":
 
 if env["PLATFORM"] == 'darwin':
     wesnoth_client_sources.append("desktop/apple_notification.mm")
+    wesnoth_client_sources.append("desktop/apple_version.mm")
 
 if env["notifications"]:
     wesnoth_client_sources.append("desktop/dbus_notification.cpp")
@@ -164,7 +165,8 @@ elif env["PLATFORM"] == 'win32':
 else:
     wesnoth = client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects, have_client_prereqs)
     client_env.Append(LINKFLAGS=['-Wl,--whole-archive', libwesnoth_widgets, '-Wl,--no-whole-archive'])
-Depends(wesnoth, libwesnoth_widgets)
+if have_client_prereqs:
+    Depends(wesnoth, libwesnoth_widgets)
 
 #---wesnothd---
 wesnothd_sources = GetSources("wesnothd")

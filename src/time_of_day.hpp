@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -27,9 +27,9 @@ class config;
 // This is a color delta, so do not replace with color_t!
 struct tod_color {
 	explicit tod_color(int red = 0, int green = 0, int blue = 0)
-		: r(utils::clamp(red, -255, 255))
-		, g(utils::clamp(green, -255, 255))
-		, b(utils::clamp(blue, -255, 255))
+		: r(utils::clamp(red, -510, 510))
+		, g(utils::clamp(green, -510, 510))
+		, b(utils::clamp(blue, -510, 510))
 	{}
 	bool operator==(const tod_color& o) const {
 		return r == o.r && g == o.g && b == o.b;

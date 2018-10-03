@@ -13,9 +13,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-04-25 10:48-0700\n"
+"PO-Revision-Date: 2018-09-09 16:54+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 2.1.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -1650,7 +1650,7 @@ msgstr "Prendila"
 
 #: data/core/macros/items.cfg:275
 msgid "holy water^Leave it"
-msgstr "Lasciala"
+msgstr "Lasciala lì"
 
 #: data/core/macros/items.cfg:276
 msgid "$unit.name has no need for this Holy Water! Let another take it."
@@ -1746,8 +1746,8 @@ msgstr ""
 #: data/core/macros/items.cfg:521
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
-"Questo tridente permette a un nereide di lanciare saette contro i suoi "
-"nemici!"
+"Questo tridente conferisce ad un nereide il potere di lanciare saette contro "
+"i suoi nemici!"
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:525
@@ -8207,7 +8207,7 @@ msgstr ""
 
 #: src/synced_user_choice.cpp:326
 msgid "waiting for $desc from side(s) $sides"
-msgstr "in attesa di $desc dalla squadra/e $sides"
+msgstr "in attesa di $desc dalla squadra(e) $sides"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8412,6 +8412,32 @@ msgstr "Nascondi i piani di $player"
 msgid "Whiteboard Options"
 msgstr "Opzioni della lavagna"
 
+#~ msgid "Use experimental PRNG combat"
+#~ msgstr "Usa combattimento sperimentale PRNG"
+
+#~ msgid ""
+#~ "Enables more determinstic chance-to-hit calculations. This is an "
+#~ "experimental feature designed to bring the observed hit/miss rate more in "
+#~ "line with the displayed percentages.\n"
+#~ "\n"
+#~ "Note: this option only affects singleplayer, and the ‘Save random seed’ "
+#~ "option must also be enabled when creating a game for this to work."
+#~ msgstr ""
+#~ "Abilita una modalità di calcolo delle possibilità di colpire un bersaglio "
+#~ "più deterministica. Questa è una caratteristica sperimentale progettata "
+#~ "per allineare il rateo successo/fallimento osservato alle percentuali "
+#~ "mostrate in gioco.\n"
+#~ "\n"
+#~ "Nota: questa opzione è attiva soltanto in modalità giocatore singolo; per "
+#~ "funzionare, deve anche assere selezionata l’opzione \"Salva seme numerico "
+#~ "casuale\" al momento della creazione di una partita."
+
+#~ msgid "Trailers"
+#~ msgstr "Anteprime"
+
+#~ msgid "The standard Wesnoth core."
+#~ msgstr "Il nucleo standar di Wesnoth."
+
 #~ msgid ""
 #~ "There are no custom options available for the selected era, game, or "
 #~ "modification."
@@ -8422,10 +8448,70 @@ msgstr "Opzioni della lavagna"
 #~ msgid "Defaults"
 #~ msgstr "Impostazioni predefinite"
 
-#, fuzzy
-#~| msgid "Computer Player"
 #~ msgid "Connected Players"
-#~ msgstr "Computer"
+#~ msgstr "Giocatori connessi"
+
+#~ msgid ""
+#~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
+#~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
+#~ msgstr ""
+#~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
+#~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
+
+#~ msgid "an advancement choice"
+#~ msgstr "una scelta di avanzamento"
+
+#~ msgid "scenario_abbreviation^S"
+#~ msgstr "S"
+
+#~ msgid "campaign_abbreviation^C"
+#~ msgstr "C"
+
+#~ msgid "mp_game_available_slots^Full"
+#~ msgstr "Pieno"
+
+#~ msgid "vision^none"
+#~ msgstr "nessuna"
+
+#~ msgid "time limit^none"
+#~ msgstr "nessuno"
+
+#~ msgid "The nickname ‘$nick’ is banned on this server’s forums."
+#~ msgstr "Il nickname «$nick» è stato bandito dai forum di questo server."
+
+#~ msgid "Your IP address is banned on this server’s forums."
+#~ msgstr "Il tuo indirizzo IP è stato bandito dai forum di questo server."
+
+#~ msgid ""
+#~ "The email address for the nickname ‘$nick’ is banned on this server’s "
+#~ "forums."
+#~ msgstr ""
+#~ "L’indirizzo email del nickname «$nick» è stato bandito dai forum di "
+#~ "questo server."
+
+#~ msgid "Connection failed: "
+#~ msgstr "Connessione fallita: "
+
+#~ msgid "Reference to unknown topic: "
+#~ msgstr "Riferimento a un argomento sconosciuto: "
+
+#~ msgid "weapon^None"
+#~ msgstr "nessuna"
+
+#~ msgid "(unknown player)"
+#~ msgstr "(giocatore sconosciuto)"
+
+#~ msgid "<span color=\"$color\">$number_or_percent</span> movement point"
+#~ msgid_plural ""
+#~ "<span color=\"$color\">$number_or_percent</span> movement points"
+#~ msgstr[0] "<span color=\"$color\">$number_or_percent</span> punto movimento"
+#~ msgstr[1] "<span color=\"$color\">$number_or_percent</span> punti movimento"
+
+#~ msgid "Disconnected from server."
+#~ msgstr "Disconnesso dal server."
+
+#~ msgid "Unit with negative HP found"
+#~ msgstr "Trovata unità con PF negativi"
 
 #, fuzzy
 #~| msgid "Screenshot"
@@ -8436,16 +8522,6 @@ msgstr "Opzioni della lavagna"
 #~| msgid "Saved"
 #~ msgid "Save"
 #~ msgstr "Partita salvata"
-
-#~ msgid ""
-#~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
-#~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
-#~ msgstr ""
-#~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
-#~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
-
-#~ msgid "Reference to unknown topic: "
-#~ msgstr "Riferimento a un argomento sconosciuto: "
 
 #~ msgid "wesnoth"
 #~ msgstr "Wesnoth"

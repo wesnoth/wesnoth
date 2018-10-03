@@ -44,9 +44,9 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None, header_file = Non
         if sdldir:
             env["ENV"]["PATH"] = PrependPath(environ["PATH"], join(sdldir, "bin"))
             env["ENV"]["PKG_CONFIG_PATH"] = PrependPath(environ.get("PKG_CONFIG_PATH", ""), join(sdldir, "lib/pkgconfig"))
-        if env["PLATFORM"] != "win32":
+        if env["PLATFORM"] != "win32" or sys.platform == "msys":
             for foo_config in [
-                "pkg-config --cflags --libs %s" % sdl_lib_name_pkgconfig,
+                "pkg-config --cflags --libs $PKG_CONFIG_FLAGS %s" % sdl_lib_name_pkgconfig,
                 "%s --cflags --libs" % sdl_config_name
                 ]:
                 try:

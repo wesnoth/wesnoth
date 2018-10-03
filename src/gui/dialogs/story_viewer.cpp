@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2017-2018 by Charles Dang <exodia339@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -24,7 +24,6 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"
@@ -88,8 +87,8 @@ void story_viewer::pre_show(window& window)
 	connect_signal_mouse_left_click(find_widget<button>(&window, "back", false),
 		std::bind(&story_viewer::nav_button_callback, this, std::ref(window), DIR_BACKWARDS));
 
-	window.connect_signal<event::DRAW>(
-		std::bind(&story_viewer::draw_callback, this, std::ref(window)), event::dispatcher::front_child);
+	connect_signal_on_draw(window,
+		std::bind(&story_viewer::draw_callback, this, std::ref(window)));
 
 	display_part(window);
 }
@@ -350,7 +349,6 @@ void story_viewer::draw_floating_image(window& window, floating_image_list::cons
 
 	// Needed to make the background redraw correctly.
 	window_canvas.append_cfg(cfg);
-	window_canvas.set_is_dirty(true);
 
 	++image_iter;
 

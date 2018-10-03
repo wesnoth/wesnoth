@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,6 +18,7 @@
 
 #include "desktop/open.hpp"
 #include "filesystem.hpp"
+#include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "game_config.hpp"
@@ -29,17 +30,13 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "gui/widgets/minimap.hpp"
-#include "gui/widgets/settings.hpp"
+#include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 #include "language.hpp"
 #include "utils/general.hpp"
 
@@ -125,8 +122,8 @@ void game_load::pre_show(window& window)
 	list.clear();
 
 	for(const auto& game : games_) {
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		std::string name = game.name();
 		utils::ellipsis_truncate(name, 40);
@@ -177,9 +174,11 @@ void game_load::display_savegame(window& window)
 
 	leader_list.clear();
 
+	const std::string sprite_scale_mod = (formatter() << "~SCALE_INTO(" << game_config::tile_size << ',' << game_config::tile_size << ')').str();
+
 	for(const auto& leader : summary_.child_range("leader")) {
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		// First, we evaluate whether the leader image as provided exists.
 		// If not, we try getting a binary path-independent path. If that still doesn't
@@ -197,6 +196,9 @@ void game_load::display_savegame(window& window)
 
 		if(leader_image.empty()) {
 			leader_image = "units/unknown-unit.png" + leader["leader_image_tc_modifier"].str();
+		} else {
+			// Scale down any sprites larger than 72x72
+			leader_image += sprite_scale_mod;
 		}
 
 		item["label"] = leader_image;
@@ -221,7 +223,9 @@ void game_load::display_savegame(window& window)
 	str << game.format_time_local() << "\n";
 	evaluate_summary_string(str, summary_);
 
-	find_widget<label>(&window, "lblSummary", false).set_label(str.str());
+	// The new label value may have more or less lines than the previous value, so invalidate the layout.
+	find_widget<scroll_label>(&window, "slblSummary", false).set_label(str.str());
+	window.invalidate_layout();
 
 	toggle_button& replay_toggle            = dynamic_cast<toggle_button&>(*show_replay_->get_widget());
 	toggle_button& cancel_orders_toggle     = dynamic_cast<toggle_button&>(*cancel_orders_->get_widget());
@@ -296,6 +300,7 @@ void game_load::filter_text_changed(text_box_base* textbox, const std::string& t
 
 void game_load::evaluate_summary_string(std::stringstream& str, const config& cfg_summary)
 {
+	std::string difficulty_human_str = string_table[cfg_summary["difficulty"]];
 	if(cfg_summary["corrupt"].to_bool()) {
 		str << "\n<span color='#f00'>" << _("(Invalid)") << "</span>";
 
@@ -313,6 +318,16 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 				if(!campaign_id.empty()) {
 					if(const config& c = cache_config_.find_child("campaign", "id", campaign_id)) {
 						campaign = &c;
+					}
+				}
+
+				if (campaign != nullptr) {
+					try {
+						const config &difficulty = campaign->find_child("difficulty", "define", cfg_summary["difficulty"]);
+						std::ostringstream ss;
+						ss << difficulty["label"] << " (" << difficulty["description"] << ")";
+						difficulty_human_str = ss.str();
+					} catch(const config::error&) {
 					}
 				}
 
@@ -357,10 +372,26 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 	}
 
 	str << "\n" << _("Difficulty: ")
-		<< string_table[cfg_summary["difficulty"]];
+		<< difficulty_human_str;
 
 	if(!cfg_summary["version"].empty()) {
 		str << "\n" << _("Version: ") << cfg_summary["version"];
+	}
+
+	const std::vector<std::string>& active_mods = utils::split(cfg_summary["active_mods"]);
+	if(!active_mods.empty()) {
+		str << "\n" << _("Modifications: ");
+		for(const auto& mod_id : active_mods) {
+			std::string mod_name;
+			try {
+				mod_name = cache_config_.find_child("modification", "id", mod_id)["name"].str();
+			} catch(const config::error&) {
+				// Fallback to nontranslatable mod id.
+				mod_name = "(" + mod_id + ")";
+			}
+
+			str << "\n" << font::unicode_bullet << " " << mod_name;
+		}
 	}
 }
 

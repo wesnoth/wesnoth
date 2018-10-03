@@ -1,7 +1,7 @@
 
 /*
    Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -154,7 +154,7 @@ public:
 	}
 
 	virtual engine_ptr get_new_instance( readonly_context &ai, const config &cfg ){
-		engine_ptr e = engine_ptr(new ENGINE(ai,cfg));
+		engine_ptr e = std::make_shared<ENGINE>(ai, cfg);
 		if (!e->is_ok()) {
 			return engine_ptr();
 		}

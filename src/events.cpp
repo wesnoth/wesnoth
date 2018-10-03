@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -26,6 +26,7 @@
 #endif
 
 #include <algorithm>
+#include <atomic>
 #include <cassert>
 #include <deque>
 #include <iterator>
@@ -43,18 +44,33 @@ namespace
 {
 struct invoked_function_data
 {
-	bool finished;
-	const std::function<void(void)>& f;
-
-	invoked_function_data(bool finished_, const std::function<void(void)>& func)
-		: finished(finished_)
-		, f(func)
+	explicit invoked_function_data(const std::function<void(void)>& func)
+		: f(func)
+		, finished(false)
+		, thrown_exception()
 	{
 	}
 
+	/** The actual function to call. */
+	const std::function<void(void)>& f;
+
+	/** Whether execution in the main thread is complete. */
+	std::atomic_bool finished;
+
+	/** Stores any exception thrown during the execution of @ref f. */
+	std::exception_ptr thrown_exception;
+
 	void call()
 	{
-		f();
+		try {
+			f();
+		} catch(const CVideo::quit&) {
+			// Handle this exception in the main thread.
+			throw;
+		} catch(...) {
+			thrown_exception = std::current_exception();
+		}
+
 		finished = true;
 	}
 };
@@ -458,7 +474,7 @@ void run_event_loop()
 		events.push_back(temp_event);
 	}
 
-	std::vector<SDL_Event>::iterator ev_it = events.begin();
+	auto ev_it = events.begin();
 	for(int i = 1; i < begin_ignoring; ++i) {
 		if(is_input(*ev_it)) {
 			// ignore user input events that occurred before the window was activated
@@ -468,14 +484,15 @@ void run_event_loop()
 		}
 	}
 
-	std::vector<SDL_Event>::iterator ev_end = events.end();
 	bool resize_found = false;
-	for(ev_it = events.begin(); ev_it != ev_end; ++ev_it) {
-		SDL_Event& event = *ev_it;
+	for(const SDL_Event& event : boost::adaptors::reverse(events)) {
 		if(event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_RESIZED) {
 			resize_found = true;
 			last_resize_event = event;
 			last_resize_event_used = false;
+
+			// Since we're working backwards, the first resize event found is the last in the list.
+			break;
 		}
 	}
 
@@ -488,14 +505,11 @@ void run_event_loop()
 		last_resize_event_used = true;
 	}
 
-	ev_end = events.end();
-
-	for(ev_it = events.begin(); ev_it != ev_end; ++ev_it) {
+	for(const SDL_Event& event : events) {
 		for(context& c : event_contexts) {
 			c.add_staging_handlers();
 		}
 
-		SDL_Event& event = *ev_it;
 		switch(event.type) {
 		case SDL_WINDOWEVENT:
 			switch(event.window.event) {
@@ -535,7 +549,6 @@ void run_event_loop()
 		case SDL_MOUSEMOTION: {
 			// Always make sure a cursor is displayed if the mouse moves or if the user clicks
 			cursor::set_focus(true);
-			raise_help_string_event(event.motion.x, event.motion.y);
 			break;
 		}
 
@@ -671,43 +684,6 @@ void raise_draw_all_event()
 	}
 }
 
-void raise_volatile_draw_event()
-{
-	if(event_contexts.empty() == false) {
-		for(auto handler : event_contexts.back().handlers) {
-			handler->volatile_draw();
-		}
-	}
-}
-
-void raise_volatile_draw_all_event()
-{
-	for(auto& context : event_contexts) {
-		for(auto handler : context.handlers) {
-			handler->volatile_draw();
-		}
-	}
-}
-
-void raise_volatile_undraw_event()
-{
-	if(event_contexts.empty() == false) {
-		for(auto handler : event_contexts.back().handlers) {
-			handler->volatile_undraw();
-		}
-	}
-}
-
-void raise_help_string_event(int mousex, int mousey)
-{
-	if(event_contexts.empty() == false) {
-		for(auto handler : event_contexts.back().handlers) {
-			handler->process_help_string(mousex, mousey);
-			handler->process_tooltip_string(mousex, mousey);
-		}
-	}
-}
-
 int pump_info::ticks(unsigned* refresh_counter, unsigned refresh_rate)
 {
 	if(!ticks_ && !(refresh_counter && ++*refresh_counter % refresh_rate)) {
@@ -752,7 +728,7 @@ void call_in_main_thread(const std::function<void(void)>& f)
 		return;
 	}
 
-	invoked_function_data fdata{false, f};
+	invoked_function_data fdata{f};
 
 	SDL_Event sdl_event;
 	sdl::UserEvent sdl_userevent(INVOKE_FUNCTION_EVENT, &fdata);
@@ -764,6 +740,10 @@ void call_in_main_thread(const std::function<void(void)>& f)
 
 	while(!fdata.finished) {
 		SDL_Delay(10);
+	}
+
+	if(fdata.thrown_exception) {
+		std::rethrow_exception(fdata.thrown_exception);
 	}
 }
 

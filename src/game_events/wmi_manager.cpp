@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -194,7 +194,7 @@ void wmi_manager::set_item(const std::string& id, const vconfig& menu_item)
 	bool success;
 
 	// First, try to insert a brand new menu item.
-	std::tie(iter, success) = wml_menu_items_.emplace(id, item_ptr(new wml_menu_item(id, menu_item)));
+	std::tie(iter, success) = wml_menu_items_.emplace(id, std::make_shared<wml_menu_item>(id, menu_item));
 
 	// If an entry already exists, reset it.
 	if(!success) {
@@ -218,7 +218,7 @@ void wmi_manager::set_menu_items(const config& cfg)
 		const std::string& id = item["id"];
 		bool success;
 
-		std::tie(std::ignore, success) = wml_menu_items_.emplace(id, item_ptr(new wml_menu_item(id, item)));
+		std::tie(std::ignore, success) = wml_menu_items_.emplace(id, std::make_shared<wml_menu_item>(id, item));
 
 		if(!success) {
 			WRN_NG << "duplicate menu item (" << id << ") while loading from config" << std::endl;

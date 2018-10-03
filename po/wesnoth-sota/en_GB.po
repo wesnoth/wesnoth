@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:31 UTC\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
@@ -10,7 +10,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [campaign]: id=Secrets of the Ancients
 #. [editor_group]: id=sota
@@ -1592,8 +1592,10 @@ msgstr "Capture every village"
 
 #. [unit]: type=Shadow
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:92
+#, fuzzy
+#| msgid "Vash-Gorn"
 msgid "Vash Gorn"
-msgstr "Vash Gorn"
+msgstr "Vash-Gorn"
 
 #. [unit]: type=Mage, id=Wynran
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:114
@@ -2052,14 +2054,19 @@ msgstr ""
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:507
+#, fuzzy
+#| msgid ""
+#| "This is going to cost us, but I want to keep some gold around for "
+#| "emergencies — I think 50 is about right. Help me collect some. (<i>Cough, "
+#| "cough</i>)"
 msgid ""
 "This is going to cost us, but I want to keep some gold around for "
 "emergencies — I think 50 is about right. You kids help me collect some. "
 "(<i>Cough, cough</i>)"
 msgstr ""
 "This is going to cost us, but I want to keep some gold around for "
-"emergencies — I think 50 is about right. You kids help me collect some. "
-"(<i>Cough, cough</i>)"
+"emergencies — I think 50 is about right. Help me collect some. (<i>Cough, "
+"cough</i>)"
 
 #. [message]: speaker=Carcyn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:511
@@ -2944,12 +2951,16 @@ msgstr "Defeat Crelanu"
 
 #. [note]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:83
+#, fuzzy
+#| msgid ""
+#| "Ras-Tabahn is slowed and will lose four hitpoints every turn. He will die "
+#| "if he reaches zero."
 msgid ""
 "Ras-Tabahn is slowed. He will also lose four hitpoints every turn unless "
 "this amount is modified by healing."
 msgstr ""
-"Ras-Tabahn is slowed. He will also lose four hit-points every turn unless "
-"this amount is modified by healing."
+"Ras-Tabahn is slowed and will lose four hit-points every turn. He will die "
+"if he reaches zero."
 
 #. [note]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:86
@@ -3050,14 +3061,17 @@ msgstr "We shall see."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:363
+#, fuzzy
+#| msgid ""
+#| "Ras-Tabahn is sick. He is slowed, and will lose four hitpoints every "
+#| "turn. He will die if he reaches zero."
 msgid ""
 "Ras-Tabahn is sick. He is slowed, and will lose four hitpoints every turn. "
 "He will die if he reaches zero. Villages will heal him four points, and he "
 "will lose only two if he is resting."
 msgstr ""
 "Ras-Tabahn is sick. He is slowed, and will lose four hit-points every turn. "
-"He will die if he reaches zero. Villages will heal him four points, and he "
-"will lose only two if he is resting."
+"He will die if he reaches zero."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:391
@@ -3232,9 +3246,9 @@ msgid ""
 "spirit, but only once it has been unbound from the body. To become a lich, "
 "the mage must make the necessary incantations with his dying breaths. He "
 "thus binds his own spirit in much the same way he binds the spirits of "
-"others.... An altar serves to hold his soul in the physical plane long "
-"enough to make the transition, and a suitable object must be found to hold "
-"the consciousness for one crucial moment when the body expires."
+"others... An altar serves to hold his soul in the physical plane long enough "
+"to make the transition, and a suitable object must be found to hold the "
+"consciousness for one crucial moment when the body expires."
 msgstr ""
 "9 VI, 23 YW\n"
 "\n"
@@ -3242,9 +3256,9 @@ msgstr ""
 "spirit, but only once it has been unbound from the body. To become a lich, "
 "the mage must make the necessary incantations with his dying breaths. He "
 "thus binds his own spirit in much the same way he binds the spirits of "
-"others.... An altar serves to hold his soul in the physical plane long "
-"enough to make the transition, and a suitable object must be found to hold "
-"the consciousness for one crucial moment when the body expires."
+"others... An altar serves to hold his soul in the physical plane long enough "
+"to make the transition, and a suitable object must be found to hold the "
+"consciousness for one crucial moment when the body expires."
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:40
@@ -3758,8 +3772,14 @@ msgstr "Fizztsars"
 
 #. [message]: speaker=Fizztsars
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:531
+#, fuzzy
+#| msgid ""
+#| "We have arrived, Taxsstrimon. We will fight bessside you. They will pay "
+#| "for killing our malesss!"
 msgid "We have arrived, Taxsstrimon. We will fight bessside you."
-msgstr "We have arrived, Taxsstrimon. We will fight bessside you."
+msgstr ""
+"We have arrived, Taxsstrimon. We will fight bessside you. They will pay for "
+"killing our malesss!"
 
 #. [message]: speaker=Taxtrimon
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:535
@@ -3880,12 +3900,16 @@ msgstr "Taxtrimon"
 
 #. [message]: speaker=Taxtrimon
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:832
+#, fuzzy
+#| msgid ""
+#| "We have found them! These magi destroyed a profitable business venture. "
+#| "We will take vengeance. You horse humans can assist us."
 msgid ""
 "We have found them! These magi destroyed a profitable business venture, and "
 "killed our males. We will take vengeance. You horse humans can assist us."
 msgstr ""
-"We have found them! These magi destroyed a profitable business venture, and "
-"killed our males. We will take vengeance. You horse humans can assist us."
+"We have found them! These magi destroyed a profitable business venture. We "
+"will take vengeance. You horse humans can assist us."
 
 #. [unit]: type=Merman Hoplite, id=Mauapan
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:845
@@ -4382,26 +4406,18 @@ msgstr "Void Overlay"
 msgid "Half Void"
 msgstr "Half Void"
 
-#~| msgid "Syrillin"
 #~ msgid "Gwyllin"
 #~ msgstr "Gwyllin"
 
-#~| msgid "You may watch."
 #~ msgid "plural^You may watch."
 #~ msgstr "You may watch."
 
-#~| msgid "As you wish. (<i>Cough, cough</i>)"
 #~ msgid "plural^As you wish. (<i>Cough, cough</i>)"
 #~ msgstr "As you wish. (<i>Cough, cough</i>)"
 
-#~| msgid "Can I help?"
 #~ msgid "self_female^Can I help?"
 #~ msgstr "Can I help?"
 
-#~| msgid ""
-#~| "This is going to cost us, but I want to keep some gold around for "
-#~| "emergencies — I think 50 is about right. You kids help me collect some. "
-#~| "(<i>Cough, cough</i>)"
 #~ msgid ""
 #~ "addressed_plural^This is going to cost us, but I want to keep some gold "
 #~ "around for emergencies — I think 50 is about right. You help me collect "
@@ -4411,14 +4427,26 @@ msgstr "Half Void"
 #~ "emergencies — I think 50 is about right. You help me collect some. "
 #~ "(<i>Cough, cough</i>)"
 
-#~| msgid "Have you never been fishing before? With bait of course."
 #~ msgid ""
 #~ "addressed_plural^Have you never been fishing before? With bait of course."
 #~ msgstr "Have you never been fishing before? With bait of course."
 
-#~| msgid "I don’t fancy wading in the water to fight these things."
 #~ msgid "self_female^I don’t fancy wading in the water to fight these things."
 #~ msgstr "I don’t fancy wading in the water to fight these things."
+
+#~ msgid ""
+#~ "I have a sssense of dark foreboding regarding the sssnowy peaksss ahead. "
+#~ "We may meet our doom if we don't have enough coinsss."
+#~ msgstr ""
+#~ "I have a sssense of dark foreboding regarding the sssnowy peaksss ahead. "
+#~ "We may meet our doom if we don't have enough coinsss."
+
+#~ msgid ""
+#~ "The passes to the north are the end of many travelers. We would be wise "
+#~ "to reach them with a reserve of gold. (<i>Cough, cough</i>)"
+#~ msgstr ""
+#~ "The passes to the north are the end of many travellers. We would be wise "
+#~ "to reach them with a reserve of gold. (<i>Cough, cough</i>)"
 
 #~ msgid "Khalif"
 #~ msgstr "Khalif"

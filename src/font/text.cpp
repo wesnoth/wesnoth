@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -77,7 +77,7 @@ pango_text::pango_text()
 
 	/*
 	 * Set the pango spacing a bit bigger since the default is deemed to small
-	 * http://www.wesnoth.org/forum/viewtopic.php?p=358832#p358832
+	 * https://www.wesnoth.org/forum/viewtopic.php?p=358832#p358832
 	 */
 	pango_layout_set_spacing(layout_.get(), 4 * PANGO_SCALE);
 
@@ -786,7 +786,7 @@ bool pango_text::set_markup(utils::string_view text, PangoLayout& layout) {
 		ERR_GUI_L << "pango_text::" << __func__
 			<< " text '" << text
 			<< "' has broken markup, set to normal text.\n";
-		set_text(_("The text contains invalid markup: ") + text.to_string(), false);
+		set_text(_("The text contains invalid Pango markup: ") + text.to_string(), false);
 	}
 
 	return valid;

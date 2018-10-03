@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2013 - 2018 by Andrius Silinskas <silinskas.andrius@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "saved_game.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 #include "wesnothd_connection_error.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -119,7 +119,9 @@ config initial_level_config(saved_game& state)
 	const std::vector<std::string>& mods = params.active_mods;
 
 	for(unsigned i = 0; i < mods.size(); ++i) {
-		level.add_child("modification", game_config.find_child("modification", "id", mods[i]));
+		if(const config& mod_cfg = game_config.find_child("modification", "id", mods[i])) {
+			level.add_child("modification", mod_cfg);
+		}
 	}
 
 	// This will force connecting clients to be using the same version number as us.

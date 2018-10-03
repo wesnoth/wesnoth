@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -87,11 +87,11 @@ styled_widget::styled_widget(const implementation::builder_styled_widget& builde
 			&styled_widget::signal_handler_notify_remove_tooltip, this, _2, _3));
 }
 
-void styled_widget::set_members(const string_map& data)
+void styled_widget::set_members(const widget_item& data)
 {
 	/** @todo document this feature on the wiki. */
 	/** @todo do we need to add the debug colors here as well? */
-	string_map::const_iterator itor = data.find("id");
+	widget_item::const_iterator itor = data.find("id");
 	if(itor != data.end()) {
 		set_id(itor->second);
 	}
@@ -132,9 +132,9 @@ bool styled_widget::disable_click_dismiss() const
 	return get_visible() == widget::visibility::visible && get_active();
 }
 
-iteration::walker_base* styled_widget::create_walker()
+iteration::walker_ptr styled_widget::create_walker()
 {
-	return new iteration::walker::widget(*this);
+	return std::make_unique<iteration::walker::widget>(*this);
 }
 
 point styled_widget::get_config_minimum_size() const
@@ -407,7 +407,7 @@ int styled_widget::get_text_maximum_height() const
 	return get_height() - config_->text_extra_height;
 }
 
-void styled_widget::impl_draw_background(int /*x_offset*/, int /*y_offset*/)
+void styled_widget::impl_draw_background()
 {
 	DBG_GUI_D << LOG_HEADER << " label '" << debug_truncate(label_) << "' size "
 			  << get_rectangle() << ".\n";
@@ -415,7 +415,7 @@ void styled_widget::impl_draw_background(int /*x_offset*/, int /*y_offset*/)
 	get_canvas(get_state()).render();
 }
 
-void styled_widget::impl_draw_foreground(int /*x_offset*/, int /*y_offset*/)
+void styled_widget::impl_draw_foreground()
 {
 	/* DO NOTHING */
 }
@@ -661,7 +661,7 @@ builder_styled_widget::builder_styled_widget(const config& cfg)
 			  << "' and definition '" << definition << "'.\n";
 }
 
-widget* builder_styled_widget::build(const replacements_map& /*replacements*/) const
+widget_ptr builder_styled_widget::build(const replacements_map& /*replacements*/) const
 {
 	return build();
 }

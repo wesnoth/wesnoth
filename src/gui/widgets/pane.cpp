@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2012 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,6 +17,7 @@
 #include "gui/widgets/pane.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/window.hpp"
@@ -96,26 +97,13 @@ struct pane_implementation
 		{
 
 			if(item.id == id) {
-				return item.item_grid;
+				return item.item_grid.get();
 			}
 		}
 
 		return nullptr;
 	}
 };
-
-pane::pane(const builder_grid_ptr item_builder)
-	: widget()
-	, items_()
-	, item_builder_(item_builder)
-	, item_id_generator_(0)
-	, placer_(placer_base::build(placer_base::tgrow_direction::vertical, 1))
-{
-	connect_signal<event::REQUEST_PLACEMENT>(
-			std::bind(
-					&pane::signal_handler_request_placement, this, _1, _2, _3),
-			event::dispatcher::back_pre_child);
-}
 
 pane::pane(const implementation::builder_pane& builder)
 	: widget(builder)
@@ -130,22 +118,17 @@ pane::pane(const implementation::builder_pane& builder)
 			event::dispatcher::back_pre_child);
 }
 
-pane* pane::build(const implementation::builder_pane& builder)
-{
-	return new pane(builder);
-}
-
-unsigned pane::create_item(const std::map<std::string, string_map>& item_data,
+unsigned pane::create_item(const widget_data& item_data,
 							const std::map<std::string, std::string>& tags)
 {
-	item item = { item_id_generator_++, tags, item_builder_->build() };
+	item item { item_id_generator_++, tags, std::dynamic_pointer_cast<grid>(item_builder_->build()) };
 
 	item.item_grid->set_parent(this);
 
 	for(const auto & data : item_data)
 	{
 		styled_widget* control
-				= find_widget<styled_widget>(item.item_grid, data.first, false, false);
+				= find_widget<styled_widget>(item.item_grid.get(), data.first, false, false);
 
 		if(control) {
 			control->set_members(data.second);
@@ -186,14 +169,14 @@ void pane::layout_initialize(const bool full_initialization)
 }
 
 void
-pane::impl_draw_children(int x_offset, int y_offset)
+pane::impl_draw_children()
 {
 	DBG_GUI_D << LOG_HEADER << '\n';
 
 	for(auto & item : items_)
 	{
 		if(item.item_grid->get_visible() != widget::visibility::invisible) {
-			item.item_grid->draw_children(x_offset, y_offset);
+			item.item_grid->draw_children();
 		}
 	}
 }
@@ -243,11 +226,8 @@ bool pane::disable_click_dismiss() const
 	return false;
 }
 
-iteration::walker_base* pane::create_walker()
+iteration::walker_ptr pane::create_walker()
 {
-	/**
-	 * @todo Implement properly.
-	 */
 	return nullptr;
 }
 
@@ -412,21 +392,21 @@ namespace implementation
 builder_pane::builder_pane(const config& cfg)
 	: builder_widget(cfg)
 	, grow_direction(
-			  lexical_cast<placer_base::tgrow_direction>(cfg["grow_direction"]))
+			  lexical_cast<placer_base::grow_direction>(cfg["grow_direction"]))
 	, parallel_items(cfg["parallel_items"])
 	, item_definition(new builder_grid(cfg.child("item_definition", "[pane]")))
 {
 	VALIDATE(parallel_items > 0, _("Need at least 1 parallel item."));
 }
 
-widget* builder_pane::build() const
+widget_ptr builder_pane::build() const
 {
 	return build(replacements_map());
 }
 
-widget* builder_pane::build(const replacements_map& /*replacements*/) const
+widget_ptr builder_pane::build(const replacements_map& /*replacements*/) const
 {
-	return pane::build(*this);
+	return std::make_shared<pane>(*this);
 }
 
 } // namespace implementation

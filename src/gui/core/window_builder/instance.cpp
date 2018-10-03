@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2012 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -29,12 +29,12 @@ builder_instance::builder_instance(const config& cfg)
 {
 }
 
-widget* builder_instance::build() const
+widget_ptr builder_instance::build() const
 {
 	return build(replacements_map());
 }
 
-widget* builder_instance::build(const replacements_map& replacements) const
+widget_ptr builder_instance::build(const replacements_map& replacements) const
 {
 	const replacements_map::const_iterator itor = replacements.find(id);
 	if(itor != replacements.end()) {

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -155,8 +155,7 @@ public:
 	// Manipulator from actionwml
 
 	bool try_add_unit_to_recall_list(const map_location& loc, const unit_ptr u);
-	boost::optional<std::string> replace_map (const gamemap & r);
-	void overlay_map (const gamemap & o, const config & cfg, map_location loc);
+	boost::optional<std::string> replace_map(const gamemap & r);
 
 	bool change_terrain(const map_location &loc, const std::string &t,
 	                    const std::string & mode, bool replace_if_failed); //used only by lua

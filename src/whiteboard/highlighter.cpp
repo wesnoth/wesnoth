@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project http://www.wesnoth.org
+ Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -190,24 +190,6 @@ void highlighter::last_action_redraw(move_ptr move)
 	if(move->get_fake_unit()) {
 		side_actions& sa = *resources::gameboard->teams().at(move->team_index()).get_side_actions().get();
 
-#if 0
-		// Disabled this since for moves of planned recruits get_unit() returns nullptr, een tough they are still valid.
-
-		// Units with planned actions may have been killed in the previous turn before all actions were completed.
-		// In these cases, remove these planned actions for any invalid units and do not redraw anything.
-		if (move->get_unit() == nullptr)
-		{
-			// Note: the planned actions seem to only get removed from the screen when
-			// a redraw is triggered by the mouse cursor moving over them.
-			for (side_actions::iterator iterator = sa.begin(); iterator < sa.end(); ++iterator)
-			{
-				if (iterator->get()->get_unit() == nullptr)
-					sa.remove_action (iterator);
-			}
-
-			return;
-		}
-#endif
 		side_actions::iterator last_action = sa.find_last_action_of(move->get_unit_id());
 		side_actions::iterator second_to_last_action = last_action != sa.end() && last_action != sa.begin() ? last_action - 1 : sa.end();
 

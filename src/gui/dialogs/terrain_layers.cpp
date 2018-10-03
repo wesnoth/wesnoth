@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,14 +19,9 @@
 #include "formatter.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/label.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 
 namespace gui2
 {
@@ -78,8 +73,8 @@ void terrain_layers::pre_show(window& window)
 		//const std::string& modif = img.get_modifications();
 		const map_location& loc_cut = img.get_loc();
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["label"] = (formatter() << (ri->is_background() ? "B ": "F ") << order).str();
 		data.emplace("index", item);

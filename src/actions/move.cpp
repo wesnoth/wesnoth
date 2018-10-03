@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -537,7 +537,6 @@ namespace { // Private helpers for move_unit()
 			animator.proceed_to(move_it_.get_shared_ptr(), step_to - begin_,
 			                    move_it_->appearance_changed(), false);
 			move_it_->set_appearance_changed(false);
-			disp.redraw_minimap();
 		}
 
 		return success;
@@ -831,14 +830,8 @@ namespace { // Private helpers for move_unit()
 	 */
 	void unit_mover::pump_sighted(const route_iterator & from)
 	{
-		const std::size_t track = resources::game_events->pump().wml_tracking();
-
-		auto pump_res = clearer_.fire_events();
-
-		if (track != resources::game_events->pump().wml_tracking()) {
-			// Some WML fired, so update our status.
-			post_wml(pump_res, from);
-		}
+		game_events::pump_result_t pump_res = clearer_.fire_events();
+		post_wml(pump_res, from);
 	}
 
 
@@ -1095,9 +1088,6 @@ namespace { // Private helpers for move_unit()
 				undo_stack->clear();
 			}
 		}
-
-		// Update the screen.
-		display::get_singleton()->redraw_minimap();
 	}
 
 

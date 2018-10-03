@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -34,6 +34,7 @@
 
 #include <boost/regex.hpp>
 
+#include <array>
 #include <locale>
 
 static lg::log_domain log_config("config");
@@ -539,18 +540,6 @@ int unit_type::experience_needed(bool with_acceleration) const
 	return experience_needed_;
 }
 
-#if 0
-const char* unit_type::alignment_description(unit_type::ALIGNMENT align, unit_race::GENDER gender)
-{
-	static const char* aligns[] { N_("lawful"), N_("neutral"), N_("chaotic"), N_("liminal") };
-	static const char* aligns_female[] { N_("female^lawful"), N_("female^neutral"), N_("female^chaotic"),
-N_("female^liminal") };
-	const char** tlist = (gender == unit_race::MALE ? aligns : aligns_female);
-
-	return (translation::sgettext(tlist[align]));
-}
-#endif
-
 bool unit_type::has_ability_by_id(const std::string& ability) const
 {
 	if(const config& abil = cfg_.child("abilities")) {
@@ -805,7 +794,7 @@ const config& unit_type::build_unit_cfg() const
 
 	// Remove "pure" unit_type attributes (attributes that do not get directly
 	// copied to units; some do get copied, but under different keys).
-	static char const* unit_type_attrs[] {
+	static std::array<std::string, 25> unit_type_attrs {{
 		"attacks",
 		"base_ids",
 		"die_sound",
@@ -816,7 +805,8 @@ const config& unit_type::build_unit_cfg() const
 		"hitpoints",
 		"id",
 		"ignore_race_traits",
-		"inherit", "movement",
+		"inherit",
+		"movement",
 		"movement_type",
 		"name",
 		"num_traits",
@@ -830,9 +820,9 @@ const config& unit_type::build_unit_cfg() const
 		"alignment",
 		"advances_to",
 		"do_not_list"
-	};
+	}};
 
-	for(const char* attr : unit_type_attrs) {
+	for(const std::string& attr : unit_type_attrs) {
 		unit_cfg_.remove_attribute(attr);
 	}
 
@@ -1162,7 +1152,7 @@ void unit_type_data::set_config(config& cfg)
 		const std::string& ter_type = terrain["id"];
 		config temp_cfg;
 
-		static const std::string terrain_info_tags[] {"movement", "vision", "jamming", "defense"};
+		static const std::array<std::string, 4> terrain_info_tags {{"movement", "vision", "jamming", "defense"}};
 
 		for(const std::string& tag : terrain_info_tags) {
 			if(!terrain.has_child(tag)) {

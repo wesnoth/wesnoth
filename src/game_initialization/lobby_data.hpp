@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -110,8 +110,8 @@ struct user_info
 	void update_relation();
 
 	enum user_relation {
-		FRIEND,
 		ME,
+		FRIEND,
 		NEUTRAL,
 		IGNORED
 	};
@@ -122,7 +122,7 @@ struct user_info
 		SEL_GAME
 	};
 
-	bool operator>(const user_info& b) const;
+	bool operator<(const user_info& b) const;
 
 	std::string name;
 	int game_id;
@@ -137,7 +137,7 @@ struct user_info
  */
 struct game_info
 {
-	game_info(const config& c, const config& game_config, const std::vector<std::string>& installed_addons);
+	game_info(const config& c, const std::vector<std::string>& installed_addons);
 
 	bool can_join() const;
 	bool can_observe() const;
@@ -150,7 +150,6 @@ struct game_info
 	std::string map_info;
 	std::string map_size_info;
 	std::string era;
-	std::string era_short;
 
 	/** List of modification names and whether they're installed or not. */
 	std::vector<std::pair<std::string, bool>> mod_info;

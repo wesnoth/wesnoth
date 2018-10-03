@@ -8,7 +8,7 @@ local M = wesnoth.map
 
 local function custom_cost(x, y, unit, enemy_map, enemy_attack_map, multiplier)
     local terrain = wesnoth.get_terrain(x, y)
-    local move_cost = wesnoth.unit_movement_cost(unit, terrain)
+    local move_cost = unit:movement(terrain)
 
     move_cost = move_cost + (enemy_map:get(x,y) or 0)
     move_cost = move_cost + (enemy_attack_map.units:get(x,y) or 0) * multiplier
@@ -25,14 +25,27 @@ function ca_goto:evaluation(cfg, data)
         return 0
     end
 
+    local all_units = AH.get_units_with_moves {
+        { "and", { side = wesnoth.current.side } },
+        { "and", wml.get_child(cfg, "filter") }
+    }
+
+    local units = {}
+    if cfg.release_unit_at_goal then
+        for _,unit in ipairs(all_units) do
+            if (not MAIUV.get_mai_unit_variables(unit, cfg.ai_id, "release")) then
+                table.insert(units, unit)
+            end
+        end
+    else
+        units = all_units
+    end
+
+    if (not units[1]) then return 0 end
+
     -- For convenience, we check for locations here, and just pass that to the exec function
     -- This is mostly to make the unique_goals option easier
-    local width, height = wesnoth.get_map_size()
-    local all_locs = wesnoth.get_locations {
-        x = '1-' .. width,
-        y = '1-' .. height,
-        { "and", wml.get_child(cfg, "filter_location") }
-    }
+    local all_locs = AH.get_locations_no_borders(wml.get_child(cfg, "filter_location"))
     if (#all_locs == 0) then return 0 end
 
     -- If 'unique_goals' is set, check whether there are locations left to go to.
@@ -59,23 +72,6 @@ function ca_goto:evaluation(cfg, data)
         locs = all_locs
     end
     if (not locs[1]) then return 0 end
-
-    local all_units = AH.get_units_with_moves {
-        side = wesnoth.current.side,
-        { "and", wml.get_child(cfg, "filter") }
-    }
-
-    local units = {}
-    if cfg.release_unit_at_goal then
-        for _,unit in ipairs(all_units) do
-            if (not MAIUV.get_mai_unit_variables(unit, cfg.ai_id, "release")) then
-                table.insert(units, unit)
-            end
-        end
-    else
-        units = all_units
-    end
-    if (not units[1]) then return 0 end
 
     -- Now store units and locs, so that we don't need to duplicate this in the exec function
     GO_units, GO_locs = units, locs
@@ -117,7 +113,7 @@ function ca_goto:execution(cfg, data)
         enemy_attack_map = BC.get_attack_map(live_enemies)
     end
 
-    local max_rating, closest_hex, best_path, best_unit = -9e99
+    local max_rating, closest_hex, best_path, best_unit = - math.huge
     for _,unit in ipairs(units) do
         for _,loc in ipairs(locs) do
             -- If cfg.use_straight_line is set, we simply find the closest
@@ -148,14 +144,14 @@ function ca_goto:execution(cfg, data)
                     if cfg.ignore_enemy_at_goal then
                         enemy_at_goal = wesnoth.get_unit(loc[1], loc[2])
                         if enemy_at_goal and wesnoth.is_enemy(wesnoth.current.side, enemy_at_goal.side) then
-                             wesnoth.extract_unit(enemy_at_goal)
+                             enemy_at_goal:extract()
                         else
                             enemy_at_goal = nil
                         end
                     end
                     path, cost = AH.find_path_with_shroud(unit, loc[1], loc[2], { ignore_units = cfg.ignore_units })
                     if enemy_at_goal then
-                        wesnoth.put_unit(enemy_at_goal)
+                        enemy_at_goal:to_map()
                         --- Give massive penalty for this goal hex
                         cost = cost + 100
                     end

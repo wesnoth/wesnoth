@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -47,22 +47,22 @@ public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** Inherited from integer_selector. */
-	void set_value(int value) override;
+	virtual void set_value(int value) override;
 
 	/** Inherited from integer_selector. */
-	int get_value() const override
+	virtual int get_value() const override
 	{
 		return minimum_value_ + get_slider_position() * get_step_size();
 	}
 
 	/** Inherited from integer_selector. */
-	int get_minimum_value() const override
+	virtual int get_minimum_value() const override
 	{
 		return minimum_value_;
 	}
 
 	/** Inherited from integer_selector. */
-	int get_maximum_value() const override
+	virtual int get_maximum_value() const override
 	{
 		// The number of items needs to include the begin and end so count - 1.
 		return minimum_value_ + slider_get_item_last() * step_size_;
@@ -119,7 +119,7 @@ public:
 
 protected:
 	/** Inherited from scrollbar_base. */
-	void child_callback_positioner_moved() override;
+	virtual void child_callback_positioner_moved() override;
 
 private:
 	/** The best size for the slider part itself, if 0 ignored. */
@@ -135,7 +135,7 @@ private:
 	int step_size_;
 
 	/** Inherited from scrollbar_base. */
-	unsigned get_length() const override
+	virtual unsigned get_length() const override
 	{
 		return get_width();
 	}
@@ -195,6 +195,11 @@ private:
 
 	// void update_current_item_mouse_position();
 
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
@@ -243,7 +248,7 @@ struct builder_slider : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget_ptr build() const override;
 
 private:
 	unsigned best_slider_length_;

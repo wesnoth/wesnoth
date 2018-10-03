@@ -16,9 +16,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-05-06 12:14+0200\n"
+"PO-Revision-Date: 2018-09-14 22:35+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -1734,10 +1734,12 @@ msgstr ""
 
 #. [object]
 #: data/core/macros/items.cfg:521
+#, fuzzy
+#| msgid ""
+#| "This trident gives merfolk the power to throw lightning at their enemies."
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
-"Tento trojzubec umožňuje vodním lidem střílet na své nepřátele elektrické "
-"blesky!"
+"Tento trojzubec umožňuje mořských lidech svádět blesky na jejich nepřátele."
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:525
@@ -3992,10 +3994,8 @@ msgstr "(Poznámka: Měl bys místo toho použít $replacement)"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:194 src/deprecation.cpp:69
-#, fuzzy
-#| msgid "Invalid deprecation level (should be 1-4)"
 msgid "Invalid deprecation level $level (should be 1-4)"
-msgstr "Neplatná úroveň zastarání (měla by být 1-4)"
+msgstr "Neplatná úroveň zastarání $level (měla by být 1-4)"
 
 #. [lua]: wml_actions.deprecated_message
 #: data/lua/wml-tags.lua:883
@@ -4235,17 +4235,17 @@ msgstr "Zkušenosti"
 #. [label]: id=gold-icon
 #: data/themes/classic.cfg:214 data/themes/default.cfg:177
 msgid "gold"
-msgstr "zlatých"
+msgstr "zlato"
 
 #. [label]: id=villages-icon
 #: data/themes/classic.cfg:223 data/themes/default.cfg:186
 msgid "villages"
-msgstr "vesnic"
+msgstr "vesnice"
 
 #. [label]: id=units-icon
 #: data/themes/classic.cfg:232 data/themes/default.cfg:195
 msgid "units"
-msgstr "jednotek"
+msgstr "jednotky"
 
 #. [label]: id=upkeep-icon
 #: data/themes/classic.cfg:241 data/themes/default.cfg:204
@@ -7667,22 +7667,25 @@ msgstr "Šeré jednotky: "
 
 #: src/reports.cpp:1235
 msgid "Turn Number"
-msgstr "Kolo číslo"
+msgstr "Číslo kola"
 
 #: src/reports.cpp:1237
 msgid ""
 "When the game reaches the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
+"Když hra dosáhne počet kol, který je zobrazen ve druhým číslem, tak skončí."
 
 #: src/reports.cpp:1262
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
+"Množství zlata, které je aktuálně dostupné k verbování a udržování tvé "
+"armády."
 
 #: src/reports.cpp:1281
 msgid "The fraction of known villages that your side has captured."
-msgstr ""
+msgstr "Část známých vesnic, které obsadila tvá strana."
 
 #: src/reports.cpp:1281
 msgid "Villages"
@@ -7690,7 +7693,7 @@ msgstr "Vesnic"
 
 #: src/reports.cpp:1286
 msgid "The total number of units on your side."
-msgstr ""
+msgstr "Celkový počet jednotek na tvé straně."
 
 #: src/reports.cpp:1286
 msgid "Units"
@@ -7732,7 +7735,7 @@ msgstr ""
 
 #: src/reports.cpp:1567
 msgid "Turn Countdown"
-msgstr ""
+msgstr "Čas na kolo"
 
 #: src/save_index.cpp:218
 msgid "%a %b %d %I:%M %p %Y"
@@ -7834,7 +7837,7 @@ msgstr "Ulož hru"
 
 #: src/savegame.cpp:638
 msgid "Game state is corrupted"
-msgstr ""
+msgstr "Stav hry je poškozen"
 
 #: src/serialization/parser.cpp:153
 msgid "Unexpected characters at line start"
@@ -7981,13 +7984,15 @@ msgstr "i"
 
 #: src/synced_commands.cpp:404
 msgid "The :$command debug command was used during $player’s turn"
-msgstr ""
+msgstr "Ladící příkaz $command byl využit během kola hráče $player"
 
 #: src/synced_commands.cpp:412
 msgid ""
 "A player used a debug command during the game. If this is unexpected, it is "
 "possible the player in question is cheating."
 msgstr ""
+"Hráč během hry využil ladící příkaz. Pokud je to neočekávané, tak je možné, "
+"že hráč podváděl."
 
 #: src/synced_commands.cpp:414
 msgid "Details:"
@@ -7995,7 +8000,7 @@ msgstr "Detaily:"
 
 #: src/synced_commands.cpp:417
 msgid "Do you wish to save the game before continuing?"
-msgstr ""
+msgstr "Chcete před pokračováním hru uložit?"
 
 #: src/synced_commands.cpp:419
 msgid "Debug Command Used"
@@ -8004,6 +8009,7 @@ msgstr "Ladící příkaz použit"
 #: src/synced_commands.cpp:503
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
+"Jednotka byla vytvořena pomocí ladícího příkazu během kola hráče $player"
 
 #: src/synced_user_choice.cpp:326
 #, fuzzy
@@ -8025,7 +8031,7 @@ msgstr "Vlastní vesnice"
 
 #: src/theme.cpp:309
 msgid "border_size should be between 0.0 and 0.5."
-msgstr "Hodnota „border_size“ by měla ležet mezi 0,0 a 0,5."
+msgstr "Hodnota „border_size“ by měla být mezi 0,0 a 0,5."
 
 #: src/theme.cpp:552 src/theme.cpp:557
 msgid "Hotkey(s): "
@@ -8245,8 +8251,14 @@ msgstr "Skryj plány pro hráče $player"
 msgid "Whiteboard Options"
 msgstr "Nastavení plánovacího módu"
 
+#~ msgid "Use experimental PRNG combat"
+#~ msgstr "Použít experimentální PRNG souboj"
+
 #~ msgid "Trailers"
 #~ msgstr "Upoutávky"
+
+#~ msgid "color^Gold"
+#~ msgstr "Zlatá"
 
 #~ msgid "The standard Wesnoth core."
 #~ msgstr "Standartní jádro Wesnothu."
@@ -8271,13 +8283,24 @@ msgstr "Nastavení plánovacího módu"
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
+#~ msgid "battery"
+#~ msgstr "baterie"
+
+# text místo klikacího seznamu povýšení v nápovědě
+#~ msgid "an advancement choice"
+#~ msgstr "výběr povýšení"
+
+#~ msgid "scenario_abbreviation^S"
+#~ msgstr "scenario_abbreviation^S"
+
+#~ msgid "campaign_abbreviation^C"
+#~ msgstr "campaign_abbreviation^C"
+
 #~ msgid "mp_game_available_slots^Full"
 #~ msgstr "Plný"
 
-#, fuzzy
-#~| msgid "vision"
 #~ msgid "vision^none"
-#~ msgstr "vidění"
+#~ msgstr "nikdo"
 
 #~ msgid "time limit^none"
 #~ msgstr "žádný"
@@ -8301,8 +8324,14 @@ msgstr "Nastavení plánovacího módu"
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "Odkaz na neznámé téma: "
 
+#~ msgid "No unit recalled"
+#~ msgstr "Žádná jednotka nebyla přivolána"
+
 #~ msgid "weapon^None"
 #~ msgstr "Žádná"
+
+#~ msgid "Battery"
+#~ msgstr "Baterie"
 
 #~ msgid "(unknown player)"
 #~ msgstr "(neznámý hráč)"
@@ -9259,9 +9288,6 @@ msgstr "Nastavení plánovacího módu"
 #~ msgid "attacks per turn"
 #~ msgstr "útoků za kolo"
 
-#~ msgid "cost to recall"
-#~ msgstr "cena za odvolání"
-
 #~ msgid "Maximum WML menu items"
 #~ msgstr "Maximální počet WML položek"
 
@@ -9467,9 +9493,6 @@ msgstr "Nastavení plánovacího módu"
 
 #~ msgid "scenario settings^Leader"
 #~ msgstr "Vůdce"
-
-#~ msgid "scenario settings^Side"
-#~ msgstr "Strana"
 
 # zlato?
 #~ msgid ""

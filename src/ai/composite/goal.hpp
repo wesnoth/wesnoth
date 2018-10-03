@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -206,7 +206,7 @@ public:
 	}
 
 	virtual goal_ptr get_new_instance( readonly_context &context, const config &cfg ){
-		goal_ptr a(new GOAL(context,cfg));
+		goal_ptr a = std::make_shared<GOAL>(context, cfg);
 		a->on_create();
 		return a;
 	}

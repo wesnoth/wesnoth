@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2017-2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2017-2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -138,12 +138,14 @@ bool ends_with(const std::string& str, const std::string& suffix)
 std::string read_map(const std::string& name)
 {
 	std::string res;
-	std::string map_location = get_wml_location("maps/" + name);
+	std::string map_location = get_wml_location(name);
 	if(!map_location.empty()) {
 		res = read_file(map_location);
 	}
 
-	if (res.empty()) {
+	// TODO: might be nice to have automatic detection of the maps/ directory?
+
+	if(res.empty()) {
 		res = read_file(get_user_data_dir() + "/editor/maps/" + name);
 	}
 

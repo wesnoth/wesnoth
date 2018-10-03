@@ -3,6 +3,9 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local FAU = wesnoth.require "ai/micro_ais/cas/ca_fast_attack_utils.lua"
 local LS = wesnoth.require "location_set"
 
+local leader, fast_target, fast_dst
+local gamedata, move_cache
+
 local ca_fast_combat_leader = {}
 
 function ca_fast_combat_leader:evaluation(cfg, data)
@@ -15,8 +18,8 @@ function ca_fast_combat_leader:evaluation(cfg, data)
     leader_attack_max_units = (cfg and cfg.leader_attack_max_units) or 3
     leader_additional_threat = (cfg and cfg.leader_additional_threat) or 1
 
-    data.move_cache = { turn = wesnoth.current.turn }
-    data.gamedata = FAU.gamedata_setup()
+    move_cache = { turn = wesnoth.current.turn }
+    gamedata = FAU.gamedata_setup()
 
     local filter_own = wml.get_child(cfg, "filter")
     local filter_enemy = wml.get_child(cfg, "filter_second")
@@ -64,7 +67,6 @@ function ca_fast_combat_leader:evaluation(cfg, data)
 
     local aggression = ai.aspects.aggression
     if (aggression > 1) then aggression = 1 end
-    local own_value_weight = 1. - aggression
 
     -- Get the locations to be avoided
     local avoid_map = FAU.get_avoid_map(cfg)
@@ -102,8 +104,8 @@ function ca_fast_combat_leader:evaluation(cfg, data)
         end
     end
 
-    local leader_info = FAU.get_unit_info(leader, data.gamedata)
-    local leader_copy = FAU.get_unit_copy(leader.id, data.gamedata)
+    local leader_info = FAU.get_unit_info(leader, gamedata)
+    local leader_copy = FAU.get_unit_copy(leader.id, gamedata)
 
     -- If threatened_leader_fights=yes, check out the current threat (power only,
     -- not units) on the AI leader
@@ -120,7 +122,7 @@ function ca_fast_combat_leader:evaluation(cfg, data)
     local attacks = AH.get_attacks({ leader }, { include_occupied = cfg.include_occupied_attack_hexes, viewing_side = viewing_side })
 
     if (#attacks > 0) then
-        local max_rating, best_target, best_dst = -9e99
+        local max_rating, best_target, best_dst = - math.huge
         for _,attack in ipairs(attacks) do
             if enemy_map:get(attack.target.x, attack.target.y)
                 and (not avoid_map:get(attack.dst.x, attack.dst.y))
@@ -150,23 +152,23 @@ function ca_fast_combat_leader:evaluation(cfg, data)
 
                 if acceptable_attack then
                     local target = wesnoth.get_unit(attack.target.x, attack.target.y)
-                    local target_info = FAU.get_unit_info(target, data.gamedata)
+                    local target_info = FAU.get_unit_info(target, gamedata)
 
                     local att_stat, def_stat = FAU.battle_outcome(
                         leader_copy, target, { attack.dst.x, attack.dst.y },
-                        leader_info, target_info, data.gamedata, data.move_cache
+                        leader_info, target_info, gamedata, move_cache
                     )
 
                     local rating, attacker_rating, defender_rating, extra_rating = FAU.attack_rating(
                         { leader_info }, target_info, { { attack.dst.x, attack.dst.y } },
-                        { att_stat }, def_stat, data.gamedata,
+                        { att_stat }, def_stat, gamedata,
                         {
-                            own_value_weight = own_value_weight,
-                            leader_weight = cfg.leader_weight
+                            aggression = aggression,
+                            leader_weight = leader_weight
                         }
                     )
 
-                    acceptable_attack = FAU.is_acceptable_attack(attacker_rating, defender_rating, own_value_weight)
+                    acceptable_attack = FAU.is_acceptable_attack(attacker_rating, defender_rating, aggression)
 
                     if acceptable_attack and (rating > max_rating) then
                         max_rating, best_target, best_dst = rating, target, attack.dst
@@ -176,8 +178,8 @@ function ca_fast_combat_leader:evaluation(cfg, data)
         end
 
         if best_target then
-            data.leader = leader
-            data.fast_target, data.fast_dst = best_target, best_dst
+            leader = leader
+            fast_target, fast_dst = best_target, best_dst
             return cfg.ca_score
         end
     end
@@ -186,8 +188,8 @@ function ca_fast_combat_leader:evaluation(cfg, data)
 end
 
 function ca_fast_combat_leader:execution(cfg, data)
-    AH.robust_move_and_attack(ai, data.leader, data.fast_dst, data.fast_target)
-    data.leader, data.fast_target, data.fast_dst = nil, nil, nil
+    AH.robust_move_and_attack(ai, leader, fast_dst, fast_target)
+    leader, fast_target, fast_dst = nil, nil, nil
 end
 
 return ca_fast_combat_leader

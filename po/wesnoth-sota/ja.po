@@ -1,12 +1,14 @@
 # Translators:
+# IWAI, Masaharu <iwaim.sub@gmail.com>, 2018
 # RatArmy <broadbarredfirefish@gmail.com>, 2018
+# 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:31 UTC\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2018\n"
+"Last-Translator: 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -1834,7 +1836,7 @@ msgid ""
 msgstr ""
 "ここで何があったのじゃろう？まあ、問題は無いわい。ここの家族を襲った不幸はわ"
 "しらにとっては好都合じゃ。わしがここに住んでいた者たちを操るから、君たちはそ"
-"れを攻撃するのじゃ。一人一体ずつわしの兵士を貸すぞ。わし自信が手を貸すことは"
+"れを攻撃するのじゃ。一人一体ずつわしの兵士を貸すぞ。わし自身が手を貸すことは"
 "ないがのう。君たちには是非生き延びて欲しいから、死ぬではないぞ。"
 
 #. [message]: speaker=Ras-Tabahn
@@ -2873,12 +2875,16 @@ msgstr "Crelanu を倒す"
 
 #. [note]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:83
+#, fuzzy
+#| msgid ""
+#| "Ras-Tabahn is slowed and will lose four hitpoints every turn. He will die "
+#| "if he reaches zero."
 msgid ""
 "Ras-Tabahn is slowed. He will also lose four hitpoints every turn unless "
 "this amount is modified by healing."
 msgstr ""
 "Ras-Tabahn は遅化状態となっています。 また、回復を行わなければ、毎ターン 4HP "
-"を失います。"
+"を失います。HP が 0 となれば、彼は死んでしまいます。"
 
 #. [note]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:86
@@ -2979,14 +2985,17 @@ msgstr "そのうち分かるわい。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:363
+#, fuzzy
+#| msgid ""
+#| "Ras-Tabahn is sick. He is slowed, and will lose four hitpoints every "
+#| "turn. He will die if he reaches zero."
 msgid ""
 "Ras-Tabahn is sick. He is slowed, and will lose four hitpoints every turn. "
 "He will die if he reaches zero. Villages will heal him four points, and he "
 "will lose only two if he is resting."
 msgstr ""
-"Ras-Tabahnは病に蝕まれています。彼は遅化状態となり、毎ターンHPを4づつ失いま"
-"す。HPが0になれば彼は死んでしまいます。村にいれば毎ターン4回復でき、身動きを"
-"とらずにいればHPの減少を2に抑えることができます。"
+"Ras-Tabahn は病に冒されています。そのため、遅化状態となり、毎ターン 4HP を失"
+"います。HP が 0 となれば、彼は死んでしまいます。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:391
@@ -3162,9 +3171,9 @@ msgid ""
 "spirit, but only once it has been unbound from the body. To become a lich, "
 "the mage must make the necessary incantations with his dying breaths. He "
 "thus binds his own spirit in much the same way he binds the spirits of "
-"others.... An altar serves to hold his soul in the physical plane long "
-"enough to make the transition, and a suitable object must be found to hold "
-"the consciousness for one crucial moment when the body expires."
+"others... An altar serves to hold his soul in the physical plane long enough "
+"to make the transition, and a suitable object must be found to hold the "
+"consciousness for one crucial moment when the body expires."
 msgstr ""
 "Wesnoth 歴 23 年 6 月 9 日\n"
 "\n"
@@ -3663,8 +3672,14 @@ msgstr "Fizztsars"
 
 #. [message]: speaker=Fizztsars
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:531
+#, fuzzy
+#| msgid ""
+#| "We have arrived, Taxsstrimon. We will fight bessside you. They will pay "
+#| "for killing our malesss!"
 msgid "We have arrived, Taxsstrimon. We will fight bessside you."
-msgstr "到着したぞぉぉ、Taxsstrimon。お前たちとともにぃぃ戦おう。"
+msgstr ""
+"到着したぞぉぉ、Taxsstrimon。お前たちとともにぃぃ戦おう。奴らはあぁ我々のお"
+"おぉぉ男たちをぉぉ殺した報いを受けるうぅ。"
 
 #. [message]: speaker=Taxtrimon
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:535
@@ -3782,12 +3797,16 @@ msgstr "Taxtrimon"
 
 #. [message]: speaker=Taxtrimon
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:832
+#, fuzzy
+#| msgid ""
+#| "We have found them! These magi destroyed a profitable business venture. "
+#| "We will take vengeance. You horse humans can assist us."
 msgid ""
 "We have found them! These magi destroyed a profitable business venture, and "
 "killed our males. We will take vengeance. You horse humans can assist us."
 msgstr ""
-"見つけたぞ！あの魔術師どもは良いビジネス場を破壊し、我らの男たちを殺した。復"
-"讐の時だ。騎士たちよ、手伝ってくれ。"
+"見つけたぞ！あの魔術師どもは良いビジネス場を破壊した。復讐の時だ。騎士たち"
+"よ、手伝ってくれ。"
 
 #. [unit]: type=Merman Hoplite, id=Mauapan
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:845
@@ -3936,7 +3955,7 @@ msgstr "つるはし"
 #. [unit_type]: id=Ancient Lich SotA, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:4
 msgid "Ancient Lich"
-msgstr "古代リッチ"
+msgstr ""
 
 #. [unit_type]: id=Ancient Lich SotA, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:18
@@ -4306,3 +4325,17 @@ msgstr "半分空っぽ"
 
 #~ msgid "self_female^I don’t fancy wading in the water to fight these things."
 #~ msgstr "水辺でこのような生物と戦うことになるとは思いもしなかった。"
+
+#~ msgid ""
+#~ "I have a sssense of dark foreboding regarding the sssnowy peaksss ahead. "
+#~ "We may meet our doom if we don't have enough coinsss."
+#~ msgstr ""
+#~ "前のおぉ雪山にはあぁ暗いぃ予感があああぁするううぅ。金をおぉぉ十分にいぃ"
+#~ "持って行かないとおおぉぉぉ墓場行きにいいぃぃなるうううぅ。"
+
+#~ msgid ""
+#~ "The passes to the north are the end of many travelers. We would be wise "
+#~ "to reach them with a reserve of gold. (<i>Cough, cough</i>)"
+#~ msgstr ""
+#~ "北への道は、多くの旅人の終着点となった。金を蓄えて行くのが賢明というもの"
+#~ "じゃろう。（<i>ごほっ、ごほっ</i>）"

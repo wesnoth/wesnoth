@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ namespace mp
 class lobby_info
 {
 public:
-	explicit lobby_info(const config& game_config, const std::vector<std::string>& installed_addons);
+	explicit lobby_info(const std::vector<std::string>& installed_addons);
 
 	typedef std::map<int, game_info> game_info_map;
 
@@ -46,6 +46,8 @@ public:
 	 *                        not apply correctly).
 	 */
 	bool process_gamelist_diff(const config& data);
+
+	bool process_gamelist_diff_impl(const config& data);
 
 	void sync_games_display_status();
 
@@ -89,15 +91,6 @@ public:
 
 	/** Const overload of @ref get_game_by_id. */
 	const game_info* get_game_by_id(int id) const;
-
-	/**
-	 * Sorts the user list by the given parameters.
-	 *
-	 * @param by_name         Whether to sort users alphabetically by name.
-	 * @param by_relation     Whether to sort users by their relation to each other (ie,
-	 *                        display friends before blocked users).
-	 */
-	void sort_users(bool by_name, bool by_relation);
 
 	/** Open a new chat room with the given name. */
 	void open_room(const std::string& name);
@@ -144,15 +137,17 @@ public:
 		return users_;
 	}
 
-	const std::vector<user_info*>& users_sorted() const
+	std::vector<user_info>& users()
 	{
-		return users_sorted_;
+		return users_;
 	}
 
+	bool gamelist_initialized() const 
+	{
+		return gamelist_initialized_;
+	}
 private:
 	void process_userlist();
-
-	const config& game_config_;
 
 	const std::vector<std::string>& installed_addons_;
 
@@ -167,7 +162,6 @@ private:
 	std::vector<game_info*> games_;
 
 	std::vector<user_info> users_;
-	std::vector<user_info*> users_sorted_;
 
 	std::map<std::string, chat_session> whispers_;
 

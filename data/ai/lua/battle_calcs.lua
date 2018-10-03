@@ -38,45 +38,42 @@ function battle_calcs.unit_attack_info(unit, cache)
         resist_mod = {},
         alignment = unit_cfg.alignment
     }
-    for attack in wml.child_range(unit_cfg, 'attack') do
+    local attacks = unit.attacks
+    for i_a = 1,#attacks do
+        local attack = attacks[i_a]
         -- Extract information for specials; we do this first because some
         -- custom special might have the same name as one of the default scalar fields
         local a = {}
-        for special in wml.child_range(attack, 'specials') do
-            for _,sp in ipairs(special) do
-                if (sp[1] == 'damage') then  -- this is 'backstab'
-                    if (sp[2].id == 'backstab') then
-                        a.backstab = true
-                    else
-                        if (sp[2].id == 'charge') then a.charge = true end
-                    end
+        for _,sp in ipairs(attack.specials) do
+            if (sp[1] == 'damage') then  -- this is 'backstab'
+                if (sp[2].id == 'backstab') then
+                    a.backstab = true
                 else
-                    -- magical, marksman
-                    if (sp[1] == 'chance_to_hit') then
-                        a[sp[2].id] = true
-                    else
-                        a[sp[1]] = true
-                    end
+                    if (sp[2].id == 'charge') then a.charge = true end
+                end
+            else
+                -- magical, marksman
+                if (sp[1] == 'chance_to_hit') then
+                    a[sp[2].id or 'no_id'] = true
+                else
+                    a[sp[1]] = true
                 end
             end
         end
 
         -- Now extract the scalar (string and number) values from attack
-        for k,v in pairs(attack) do
-            if (type(v) == 'number') or (type(v) == 'string') then
-                a[k] = v
-            end
-        end
-
-        -- [attack]number= defaults to zero; must be defined for battle_calcs.best_weapons()
-        a.number = a.number or 0
+        a.damage = attack.damage
+        a.type = attack.type
+        a.range = attack.range
+        -- number must be defined for battle_calcs.best_weapons()
+        a.number = attack.number or 0
 
         table.insert(unit_info.attacks, a)
     end
 
     local attack_types = { "arcane", "blade", "cold", "fire", "impact", "pierce" }
     for _,attack_type in ipairs(attack_types) do
-        unit_info.resist_mod[attack_type] = wesnoth.unit_resistance(unit, attack_type) / 100.
+        unit_info.resist_mod[attack_type] = unit:resistance(attack_type) / 100.
     end
 
     if cache then cache[cind] = unit_info end
@@ -202,10 +199,10 @@ function battle_calcs.best_weapons(attacker, defender, dst, cache)
     local defender_info = battle_calcs.unit_attack_info(defender, cache)
 
     -- Best attacker weapon
-    local max_rating, best_att_weapon, best_def_weapon = -9e99, 0, 0
+    local max_rating, best_att_weapon, best_def_weapon = - math.huge, 0, 0
     for att_weapon_number,att_weapon in ipairs(attacker_info.attacks) do
         local att_damage = battle_calcs.strike_damage(attacker, defender, att_weapon_number, 0, { dst[1], dst[2] }, cache)
-        local max_def_rating, tmp_best_def_weapon = -9e99, 0
+        local max_def_rating, tmp_best_def_weapon = - math.huge, 0
         for def_weapon_number,def_weapon in ipairs(defender_info.attacks) do
             if (def_weapon.range == att_weapon.range) then
                 local def_damage = battle_calcs.strike_damage(defender, attacker, def_weapon_number, 0, { defender.x, defender.y }, cache)
@@ -217,7 +214,7 @@ function battle_calcs.best_weapons(attacker, defender, dst, cache)
         end
 
         local rating = att_damage * att_weapon.number
-        if (max_def_rating > -9e99) then rating = rating - max_def_rating / 2. end
+        if (max_def_rating > - math.huge) then rating = rating - max_def_rating / 2. end
 
         if (rating > max_rating) then
             max_rating, best_att_weapon, best_def_weapon = rating, att_weapon_number, tmp_best_def_weapon
@@ -532,10 +529,10 @@ function battle_calcs.print_coefficients()
                 dummy, coeffs = battle_calcs.battle_outcome_coefficients(cfg)
             end
 
-            print()
-            print('Attacker: ' .. cfg.att.strikes .. ' strikes, can survive ' .. cfg.att.max_hits .. ' hits')
-            print('Defender: ' .. cfg.def.strikes .. ' strikes, can survive ' .. cfg.def.max_hits .. ' hits')
-            print('Chance of hits on defender: ')
+            std_print()
+            std_print('Attacker: ' .. cfg.att.strikes .. ' strikes, can survive ' .. cfg.att.max_hits .. ' hits')
+            std_print('Defender: ' .. cfg.def.strikes .. ' strikes, can survive ' .. cfg.def.max_hits .. ' hits')
+            std_print('Chance of hits on defender: ')
 
             -- The first indices of coeffs are the possible number of hits the attacker can land on the defender
             for hits = 0,#coeffs do
@@ -570,8 +567,8 @@ function battle_calcs.print_coefficients()
                 local skip_str = ''
                 if combs.skip then skip_str = ' (skip)' end
 
-                print(hits .. skip_str .. ':  ' .. str)
-                print('      = ' .. hit_prob)
+                std_print(hits .. skip_str .. ':  ' .. str)
+                std_print('      = ' .. hit_prob)
             end
         end
     end
@@ -680,8 +677,8 @@ function battle_calcs.battle_outcome(attacker, defender, cfg, cache)
     if (def_max_hits > att_strikes) then def_max_hits = att_strikes end
 
     -- Probability of landing a hit
-    local att_hit_prob = wesnoth.unit_defense(defender, wesnoth.get_terrain(defender.x, defender.y)) / 100.
-    local def_hit_prob = wesnoth.unit_defense(attacker, wesnoth.get_terrain(dst[1], dst[2])) / 100.
+    local att_hit_prob = defender:defense(wesnoth.get_terrain(defender.x, defender.y)) / 100.
+    local def_hit_prob = attacker:defense(wesnoth.get_terrain(dst[1], dst[2])) / 100.
 
     -- Magical: attack and defense, and under all circumstances
     if att_attack.magical then att_hit_prob = 0.7 end
@@ -731,7 +728,7 @@ function battle_calcs.simulate_combat_loc(attacker, dst, defender, weapon)
     -- when on terrain of same type as that at @dst, which is of form { x, y }
     -- If @weapon is set, use that weapon (Lua index starting at 1), otherwise use best weapon
 
-    local attacker_dst = wesnoth.copy_unit(attacker)
+    local attacker_dst = attacker:clone()
     attacker_dst.x, attacker_dst.y = dst[1], dst[2]
 
     if weapon then
@@ -837,7 +834,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     -- In addition, potentially leveling up in this attack is a huge bonus,
     -- proportional to the chance of it happening and the chance of not dying itself
     local level_bonus = 0.
-    local defender_level = wesnoth.unit_types[defender.type].level
+    local defender_level = defender.level
     if (attacker.max_experience - attacker.experience <= defender_level) then
         level_bonus = 1. - att_stats.hp_chance[0]
     else
@@ -849,7 +846,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
 
 
     -- Now convert this into gold-equivalent value
-    local attacker_value = wesnoth.unit_types[attacker.type].cost
+    local attacker_value = attacker.cost
 
     -- Being closer to leveling is good (this makes AI prefer units with lots of XP)
     local xp_bonus = attacker.experience / attacker.max_experience
@@ -886,7 +883,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     -- In addition, the defender potentially leveling up in this attack is a huge penalty,
     -- proportional to the chance of it happening and the chance of not dying itself
     local defender_level_penalty = 0.
-    local attacker_level = wesnoth.unit_types[attacker.type].level
+    local attacker_level = attacker.level
     if (defender.max_experience - defender.experience <= attacker_level) then
         defender_level_penalty = 1. - def_stats.hp_chance[0]
     else
@@ -897,7 +894,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     value_fraction = value_fraction - defender_level_penalty * defender_level_weight
 
     -- Now convert this into gold-equivalent value
-    local defender_value = wesnoth.unit_types[defender.type].cost
+    local defender_value = defender.cost
 
     -- If this is the enemy leader, make damage to it much more important
     if defender.canrecruit then
@@ -932,7 +929,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     -- We don't need a bonus for good terrain for the attacker, as that is covered in the damage calculation
     -- However, we add a small bonus for good terrain defense of the _defender_ on the _attack_ hex
     -- This is in order to take good terrain away from defender on next move, all else being equal
-    local defender_defense = - wesnoth.unit_defense(defender, wesnoth.get_terrain(dst[1], dst[2])) / 100.
+    local defender_defense = - defender:defense(wesnoth.get_terrain(dst[1], dst[2])) / 100.
     defender_value = defender_value + defender_defense * defense_weight
 
     -- Get a very small bonus for hexes in between defender and AI leader
@@ -1011,15 +1008,13 @@ function battle_calcs.attack_combo_stats(tmp_attackers, tmp_dsts, defender, cach
 
             --for hp,p in pairs(tmp_def_stats[i].hp_chance) do
             --    if (p > 0) then
-            --        local dhp_norm = (hp - av) / defender.max_hitpoints * wesnoth.unit_types[defender.type].cost
+            --        local dhp_norm = (hp - av) / defender.max_hitpoints * defender.cost
             --        local dvar = p * dhp_norm^2
-                    --print(hp,p,av, dvar)
             --        outcome_variance = outcome_variance + dvar
             --        n_outcomes = n_outcomes + 1
             --    end
             --end
             --outcome_variance = outcome_variance / n_outcomes
-            --print('outcome_variance', outcome_variance)
 
             -- Note that this is a variance, not a standard deviations (as in, it's squared),
             -- so it does not matter much for low-variance attacks, but takes on large values for
@@ -1030,7 +1025,7 @@ function battle_calcs.attack_combo_stats(tmp_attackers, tmp_dsts, defender, cach
             -- Almost, bonus should not be quite as high as a really high CTK
             -- This isn't quite true in reality, but can be refined later
             if AH.has_weapon_special(attacker, "slow") then
-                rating = rating + wesnoth.unit_types[defender.type].cost / 2.
+                rating = rating + defender.cost / 2.
             end
 
             ratings[i] = { i, rating, base_rating, def_rating, att_rating }
@@ -1173,7 +1168,7 @@ function battle_calcs.get_attack_map_unit(unit, cfg)
         for _,unit in ipairs(all_units) do
             if (unit.moves > 0) then
                 table.insert(units_MP, unit)
-                wesnoth.extract_unit(unit)
+                unit:extract()
             end
         end
     end
@@ -1183,7 +1178,7 @@ function battle_calcs.get_attack_map_unit(unit, cfg)
 
     -- Put the units back out there
     if (unit.side ~= wesnoth.current.side) then
-        for _,uMP in ipairs(units_MP) do wesnoth.put_unit(uMP) end
+        for _,uMP in ipairs(units_MP) do uMP:to_map() end
     end
 
     for _,loc in ipairs(initial_reach) do
@@ -1250,7 +1245,7 @@ function battle_calcs.relative_damage_map(units, enemies, cache)
     -- against any of the enemy units
     local unit_ratings = {}
     for i,unit in ipairs(units) do
-        local max_rating, best_enemy = -9e99, {}
+        local max_rating, best_enemy = - math.huge, {}
         for _,enemy in ipairs(enemies) do
             local rating, defender_rating, attacker_rating =
                 battle_calcs.attack_rating(unit, enemy, { unit.x, unit.y }, { enemy_leader_weight = 1 }, cache)
@@ -1267,7 +1262,7 @@ function battle_calcs.relative_damage_map(units, enemies, cache)
     -- Then we want the same thing for all of the enemy units (for the counter attack on enemy turn)
     local enemy_ratings = {}
     for i,enemy in ipairs(enemies) do
-        local max_rating, best_unit = -9e99, {}
+        local max_rating, best_unit = - math.huge, {}
         for _,unit in ipairs(units) do
             local rating, defender_rating, attacker_rating =
                 battle_calcs.attack_rating(enemy, unit, { enemy.x, enemy.y }, { enemy_leader_weight = 1 }, cache)
@@ -1312,7 +1307,7 @@ function battle_calcs.best_defense_map(units, cfg)
     local defense_map = LS.create()
 
     if cfg.ignore_these_units then
-        for _,unit in ipairs(cfg.ignore_these_units) do wesnoth.extract_unit(unit) end
+        for _,unit in ipairs(cfg.ignore_these_units) do unit:extract() end
     end
 
     for _,unit in ipairs(units) do
@@ -1326,16 +1321,16 @@ function battle_calcs.best_defense_map(units, cfg)
         if max_moves then unit.moves = old_moves end
 
         for _,loc in ipairs(reach) do
-            local defense = 100 - wesnoth.unit_defense(unit, wesnoth.get_terrain(loc[1], loc[2]))
+            local defense = 100 - unit:defense(wesnoth.get_terrain(loc[1], loc[2]))
 
-            if (defense > (defense_map:get(loc[1], loc[2]) or -9e99)) then
+            if (defense > (defense_map:get(loc[1], loc[2]) or - math.huge)) then
                 defense_map:insert(loc[1], loc[2], defense)
             end
         end
     end
 
     if cfg.ignore_these_units then
-        for _,unit in ipairs(cfg.ignore_these_units) do wesnoth.put_unit(unit) end
+        for _,unit in ipairs(cfg.ignore_these_units) do unit:to_map() end
     end
 
     return defense_map
@@ -1378,7 +1373,7 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
 
     cfg = cfg or {}
     cfg.order_matters = cfg.order_matters or false
-    cfg.max_combos = cfg.max_combos or 9e99
+    cfg.max_combos = cfg.max_combos or math.huge
     cfg.max_time = cfg.max_time or false
     cfg.skip_presort = cfg.skip_presort or 5
 
@@ -1534,7 +1529,7 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
                     -- Store information about it in 'loc' and add this to 'locs'
                     -- Want coordinates (dst) and terrain defense (for sorting)
                     loc.dst = xa * 1000 + ya
-                    loc.hit_prob = wesnoth.unit_defense(unit, wesnoth.get_terrain(xa, ya))
+                    loc.hit_prob = unit:defense(wesnoth.get_terrain(xa, ya))
                     table.insert(locs, loc)
 
                     -- Also mark this hex as usable

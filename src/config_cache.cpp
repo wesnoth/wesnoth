@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Pauli Nieminen <paniemin@cc.hut.fi>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
@@ -35,6 +35,20 @@ static lg::log_domain log_cache("cache");
 
 namespace game_config
 {
+
+namespace
+{
+
+void add_builtin_defines(preproc_map& target)
+{
+#ifdef __APPLE__
+	target["APPLE"] = preproc_define();
+#endif
+
+	target["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
+}
+
+}
 
 config_cache& config_cache::instance()
 {
@@ -68,11 +82,7 @@ void config_cache::clear_defines()
 	// Set-up default defines map.
 	//
 
-#ifdef __APPLE__
-	defines_map_["APPLE"] = preproc_define();
-#endif
-
-	defines_map_["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
+	add_builtin_defines(defines_map_);
 }
 
 void config_cache::get_config(const std::string& file_path, config& cfg)
@@ -113,7 +123,11 @@ void config_cache::read_file(const std::string& file_path, config& cfg)
 
 preproc_map& config_cache::make_copy_map()
 {
-	return config_cache_transaction::instance().get_active_map(defines_map_);
+	preproc_map& res = config_cache_transaction::instance().get_active_map(defines_map_);
+	// HACK: copy_map doesn't have built-in defines in some cases (issue #1924)
+	//       or they may be out of date, so brute-force them in.
+	add_builtin_defines(res);
+	return res;
 }
 
 void config_cache::add_defines_map_diff(preproc_map& defines_map)
@@ -428,7 +442,7 @@ preproc_map& config_cache_transaction::get_active_map(const preproc_map& defines
 		if(get_state() == NEW) {
 			state_ = ACTIVE;
 		}
-	 }
+	}
 
 	return active_map_;
 }

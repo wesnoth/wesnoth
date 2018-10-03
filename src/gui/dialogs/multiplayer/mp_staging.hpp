@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -59,10 +59,18 @@ private:
 
 	void add_side_node(window& window, ng::side_engine_ptr side);
 
+	/**
+	 * Find an appropriate position to insert a side node.
+	 *
+	 * This ensures the side nodes are always arranged by descending index order
+	 * in each team group.
+	 */
+	int get_side_node_position(ng::side_engine_ptr side) const;
+
 	void on_controller_select(ng::side_engine_ptr side, grid& row_grid);
 	void on_ai_select(ng::side_engine_ptr side, menu_button& ai_menu);
 	void on_color_select(ng::side_engine_ptr side, grid& row_grid);
-	void on_team_select(window& window, ng::side_engine_ptr side, menu_button& team_menu, bool& handled, bool& halt);
+	void on_team_select(window& window, ng::side_engine_ptr side, menu_button& team_menu);
 
 	template<void(ng::side_engine::*fptr)(int)>
 	void on_side_slider_change(ng::side_engine_ptr side, slider& slider);

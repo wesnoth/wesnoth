@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2014 - 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -24,7 +24,6 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/styled_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/string_utils.hpp"
 
@@ -37,7 +36,7 @@ namespace
 
 void strip_trailing_dir_separators(std::string& str)
 {
-	while(filesystem::is_path_sep(str[str.size() - 1])) {
+	while(filesystem::is_path_sep(str.back())) {
 		str.erase(str.size() - 1);
 	}
 }

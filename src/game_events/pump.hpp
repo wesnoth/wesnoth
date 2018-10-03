@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -140,12 +140,6 @@ public:
 
 	/** Flushes WML messages and errors. */
 	void flush_messages();
-
-	/** This function can be used to detect when no WML/Lua has been executed. */
-	std::size_t wml_tracking();
-
-	/** Returns true if we're currently executing an event handler. */
-	bool running() const;
 
 private:
 	bool filter_event(const event_handler& handler, const queued_event& ev);

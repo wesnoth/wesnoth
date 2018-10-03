@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -23,7 +23,6 @@
 #include "gui/widgets/repeating_button.hpp"
 #include "gui/widgets/scrollbar.hpp"
 #include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 
@@ -55,7 +54,7 @@ void end_credits::pre_show(window& window)
 		last_scroll_ = SDL_GetTicks() + 3000;
 	});
 
-	window.connect_signal<event::DRAW>(std::bind(&end_credits::timer_callback, this), event::dispatcher::front_child);
+	connect_signal_on_draw(window, std::bind(&end_credits::timer_callback, this));
 
 	connect_signal_pre_key_press(window, std::bind(&end_credits::key_press_callback, this, _5));
 

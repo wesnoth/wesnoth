@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2007 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -30,11 +30,10 @@
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 #include "gui/dialogs/multiplayer/mp_login.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
-#include "gui/widgets/settings.hpp"
 #include "hash.hpp"
 #include "log.hpp"
 #include "multiplayer_error_codes.hpp"
-#include "settings.hpp"
+#include "map_settings.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"
 #include "wesnothd_connection.hpp"
@@ -174,6 +173,12 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 			config* error = &data.child("error");
 			error_message = (*error)["message"].str();
 			throw wesnothd_rejected_client_error(error_message);
+		}
+
+		// The only message we should get here is the admin authentication message.
+		// It's sent after [join_lobby] and before the initial gamelist.
+		if(const config& message = data.child("message")) {
+			preferences::parse_admin_authentication(message["sender"], message["message"]);
 		}
 
 		// Continue if we did not get a direction to login
@@ -410,7 +415,7 @@ void enter_wait_mode(mp_workflow_helper_ptr helper, int game_id, bool observe)
 
 	statistics::fresh_stats();
 
-	std::unique_ptr<mp_campaign_info> campaign_info(new mp_campaign_info(*helper->connection));
+	auto campaign_info = std::make_unique<mp_campaign_info>(*helper->connection);
 	campaign_info->is_host = false;
 
 	if(helper->lobby_info->get_game_by_id(game_id)) {
@@ -436,7 +441,7 @@ void enter_wait_mode(mp_workflow_helper_ptr helper, int game_id, bool observe)
 	}
 
 	if(dlg_ok) {
-		campaign_controller controller(helper->state, helper->game_config, game_config_manager::get()->terrain_types());
+		campaign_controller controller(helper->state, game_config_manager::get()->terrain_types());
 		controller.set_mp_info(campaign_info.get());
 		controller.play_game();
 	}
@@ -467,7 +472,7 @@ void enter_staging_mode(mp_workflow_helper_ptr helper)
 	} // end connect_engine_ptr, dlg scope
 
 	if(dlg_ok) {
-		campaign_controller controller(helper->state, helper->game_config, game_config_manager::get()->terrain_types());
+		campaign_controller controller(helper->state, game_config_manager::get()->terrain_types());
 		controller.set_mp_info(campaign_info.get());
 		controller.play_game();
 	}
@@ -521,7 +526,7 @@ bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::stri
 			sound::stop_music();
 		}
 
-		mp::lobby_info li(helper->game_config, installed_addons);
+		mp::lobby_info li(installed_addons);
 		helper->lobby_info = &li;
 
 		if(!initial_lobby_config.empty()) {
@@ -633,16 +638,16 @@ void start_client(const config& game_config,	saved_game& state, const std::strin
 	} while(re_enter);
 }
 
-bool goto_mp_connect(ng::connect_engine& engine, const config& game_config, wesnothd_connection* connection)
+bool goto_mp_connect(ng::connect_engine& engine, wesnothd_connection* connection)
 {
-	lobby_info li(game_config, {});
+	lobby_info li({});
 
 	return gui2::dialogs::mp_staging::execute(engine, li, connection);
 }
 
-bool goto_mp_wait(saved_game& state, const config& game_config, wesnothd_connection* connection, bool observe)
+bool goto_mp_wait(saved_game& state, wesnothd_connection* connection, bool observe)
 {
-	lobby_info li(game_config, std::vector<std::string>());
+	lobby_info li({});
 
 	gui2::dialogs::mp_join_game dlg(state, li, *connection, false, observe);
 
@@ -665,7 +670,7 @@ void start_local_game(const config& game_config, saved_game& state)
 	preferences::set_message_private(false);
 
 	// TODO: should lobby_info take a nullptr in this case, or should we pass the installed_addons data here too?
-	lobby_info li(game_config, {});
+	lobby_info li({});
 	mp_workflow_helper_ptr workflow_helper = std::make_shared<mp_workflow_helper>(game_config, state, nullptr, &li);
 
 	enter_create_mode(workflow_helper);
@@ -767,7 +772,7 @@ void start_local_game_commandline(const config& game_config, saved_game& state, 
 	unsigned int repeat = (cmdline_opts.multiplayer_repeat) ? *cmdline_opts.multiplayer_repeat : 1;
 	for(unsigned int i = 0; i < repeat; i++){
 		saved_game state_copy(state);
-		campaign_controller controller(state_copy, game_config, game_config_manager::get()->terrain_types());
+		campaign_controller controller(state_copy, game_config_manager::get()->terrain_types());
 		controller.play_game();
 	}
 }

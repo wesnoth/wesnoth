@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2010 - 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,14 +17,11 @@
 #include "gui/dialogs/campaign_difficulty.hpp"
 
 #include "config.hpp"
+#include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "preferences/game.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
@@ -93,21 +90,23 @@ void campaign_difficulty::pre_show(window& window)
 	window.keyboard_capture(&list);
 
 	for(const config& d : difficulties_.child_range("difficulty")) {
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["label"] = d["image"];
 		data.emplace("icon", item);
 
 		item["use_markup"] = "true";
 
-		item["label"] = d["label"];
-		data.emplace("label", item);
+		std::ostringstream ss;
+		ss << d["label"];
 
 		if(!d["description"].empty()) {
-			item["label"] = (formatter() << "(" << d["description"].str() << ")").str();
-			data.emplace("description", item);
+			ss << "\n<small>" << font::span_color(font::GRAY_COLOR) << "(" << d["description"].str() << ")</span></small>";
 		}
+
+		item["label"] = ss.str();
+		data.emplace("label", item);
 
 		grid& grid = list.add_row(data);
 

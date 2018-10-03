@@ -42,7 +42,7 @@ set(DOMAINS
 # If a source file has not GETTEXT_DOMAIN it belongs to this domain.
 set(DEFAULT_DOMAIN wesnoth)
 
-set(WMLXGETTEXT ${PROJECT_SOURCE_DIR}/utils/wmlxgettext)
+set(WMLXGETTEXT ${PROJECT_SOURCE_DIR}/data/tools/wmlxgettext)
 
 ############ pot update. ###########
 

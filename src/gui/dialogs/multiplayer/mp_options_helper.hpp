@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -58,7 +58,7 @@ private:
 
 	int remove_nodes_for_type(const std::string& type);
 
-	using data_map = std::map<std::string, string_map>;
+	using data_map = widget_data;
 
 	template <typename T>
 	std::pair<T*, config::attribute_value> add_node_and_get_widget(

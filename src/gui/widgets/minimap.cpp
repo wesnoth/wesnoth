@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,7 +20,6 @@
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "map/map.hpp"
 #include "map/exception.hpp"
 #include "sdl/rect.hpp"
@@ -49,12 +48,11 @@ namespace gui2
 REGISTER_WIDGET(minimap)
 
 minimap::minimap(const implementation::builder_minimap& builder)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 	, map_data_()
 	, terrain_(nullptr)
 	, map_(nullptr)
 {
-	get_canvas(0).set_draw_function(std::bind(&minimap::canvas_draw_background, this, _1));
 }
 
 void minimap::set_active(const bool /*active*/)
@@ -91,15 +89,12 @@ void minimap::set_map_data(const std::string& map_data)
 		map_.reset(nullptr);
 		ERR_CF << "Error while loading the map: " << e.message << '\n';
 	}
-
-	// Flag the background canvas as dirty so the minimap is redrawn.
-	get_canvas(0).set_is_dirty(true);
 }
 
-void minimap::canvas_draw_background(texture& tex)
+void minimap::impl_draw_background()
 {
 	if(map_) {
-		image::render_minimap(tex, *map_, nullptr, nullptr, nullptr, true);
+		image::render_minimap(get_width(), get_height(), *map_, nullptr, nullptr, nullptr, true);
 	}
 }
 
@@ -172,9 +167,9 @@ builder_minimap::builder_minimap(const config& cfg) : builder_styled_widget(cfg)
 {
 }
 
-widget* builder_minimap::build() const
+widget_ptr builder_minimap::build() const
 {
-	minimap* widget = new minimap(*this);
+	auto widget = std::make_shared<minimap>(*this);
 
 	DBG_GUI_G << "Window builder: placed minimap '" << id
 			  << "' with definition '" << definition << "'.\n";

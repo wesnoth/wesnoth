@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
    Copyright (C) 2005 - 2018 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -1237,6 +1237,7 @@ bool preprocessor_data::get_chunk()
 								deprecation_detail += '\n';
 							}
 							deprecation_detail = read_rest_of_line();
+							skip_eol();
 						}
 					}
 

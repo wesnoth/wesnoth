@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2007 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -98,7 +98,7 @@ public:
 
 	using builder_styled_widget::build;
 
-	widget* build() const
+	virtual widget_ptr build() const override
 	{
 		return nullptr;
 	}
@@ -252,7 +252,7 @@ window* manager::get_window(const unsigned id)
 } // namespace
 
 window::window(const builder_window::window_resolution* definition)
-	: panel(implementation::builder_window(::config {"definition", definition->definition}), get_control_type())
+	: panel(implementation::builder_window(::config {"definition", definition->definition}), type())
 	, cursor::setter(cursor::NORMAL)
 	, video_(CVideo::get_singleton())
 	, status_(NEW)
@@ -292,8 +292,7 @@ window::window(const builder_window::window_resolution* definition)
 
 	connect();
 
-	if (!video_.faked())
-	{
+	if(!video_.faked() && !video_.non_interactive()) {
 		connect_signal<event::DRAW>(std::bind(&window::draw, this));
 	}
 
@@ -582,13 +581,13 @@ void window::draw()
 	}
 
 	// Draw background.
-	this->draw_background(0, 0);
+	this->draw_background();
 
 	// Draw children.
-	this->draw_children(0, 0);
+	this->draw_children();
 
 	// Draw foreground.
-	this->draw_foreground(0, 0);
+	this->draw_foreground();
 
 
 	if(callback_next_draw_ != nullptr) {
@@ -948,7 +947,7 @@ namespace
  */
 void window_swap_grid(grid* g,
 			   grid* content_grid,
-			   widget* widget,
+			   widget_ptr widget,
 			   const std::string& id)
 {
 	assert(content_grid);
@@ -1199,12 +1198,12 @@ void window::signal_handler_sdl_key_down(const event::ui_event event,
 
 void window::signal_handler_message_show_tooltip(const event::ui_event event,
 												  bool& handled,
-												  event::message& message)
+												  const event::message& message)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	event::message_show_tooltip& request
-			= dynamic_cast<event::message_show_tooltip&>(message);
+	const event::message_show_tooltip& request
+			= dynamic_cast<const event::message_show_tooltip&>(message);
 
 	dialogs::tip::show(tooltip_.id, request.message, request.location, request.source_rect);
 
@@ -1213,12 +1212,12 @@ void window::signal_handler_message_show_tooltip(const event::ui_event event,
 
 void window::signal_handler_message_show_helptip(const event::ui_event event,
 												  bool& handled,
-												  event::message& message)
+												  const event::message& message)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	event::message_show_helptip& request
-			= dynamic_cast<event::message_show_helptip&>(message);
+	const event::message_show_helptip& request
+			= dynamic_cast<const event::message_show_helptip&>(message);
 
 	dialogs::tip::show(helptip_.id, request.message, request.location, request.source_rect);
 

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -281,12 +281,6 @@ boost::optional<std::string> game_board::replace_map(const gamemap & newmap) {
 
 	*map_ = newmap;
 	return ret;
-}
-
-
-
-void game_board::overlay_map(const gamemap & mask_map, const config & cfg, map_location loc) {
-	map_->overlay(mask_map, cfg, loc);
 }
 
 bool game_board::change_terrain(const map_location &loc, const std::string &t_str,

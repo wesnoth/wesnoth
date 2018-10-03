@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2011 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -25,12 +25,12 @@
 #include <typeinfo>
 
 static void add_widget(gui2::grid& grid
-		, gui2::widget* widget
+		, gui2::widget_ptr widget
 		, const std::string& id
 		, const unsigned row
 		, const unsigned column)
 {
-	BOOST_REQUIRE_NE(widget, static_cast<gui2::widget*>(nullptr));
+	BOOST_REQUIRE_NE(widget.get(), static_cast<gui2::widget*>(nullptr));
 
 	widget->set_id(id);
 	grid.set_child(widget
@@ -94,10 +94,10 @@ static void test_grid()
 
 	/* Test the child part here. */
 	gui2::grid grid(2 ,2);
-	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "(1,1)", 0, 0);
-	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "(1,2)", 0, 1);
-	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "(2,1)", 1, 0);
-	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "(2,2)", 1, 1);
+	add_widget(grid, gui2::build_single_widget_and_cast_to<gui2::label>(), "(1,1)", 0, 0);
+	add_widget(grid, gui2::build_single_widget_and_cast_to<gui2::label>(), "(1,2)", 0, 1);
+	add_widget(grid, gui2::build_single_widget_and_cast_to<gui2::label>(), "(2,1)", 1, 0);
+	add_widget(grid, gui2::build_single_widget_and_cast_to<gui2::label>(), "(2,2)", 1, 1);
 
 	const std::unique_ptr<gui2::iteration::walker_base> visitor(grid.create_walker());
 

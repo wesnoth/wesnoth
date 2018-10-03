@@ -42,7 +42,11 @@ local function get_caption(cfg, speaker)
 	local caption = cfg.caption
 
 	if not caption and speaker ~= nil then
-		caption = speaker.name or speaker.type_name
+		if speaker.name ~= nil and tostring(speaker.name):len() > 0 then
+			caption = speaker.name
+		else
+			caption = speaker.__cfg.language_name
+		end
 	end
 
 	return caption
@@ -413,10 +417,11 @@ function wesnoth.wml_actions.message(cfg)
 		wesnoth.deselect_hex()
 		-- The speaker is expected to be either nil or a unit later
 		speaker = nil
+		wesnoth.fire("redraw")
 	else
 		-- Check ~= false, because the default if omitted should be true
 		if cfg.scroll ~= false then
-			wesnoth.scroll_to_tile(speaker.x, speaker.y, false, false, true)
+			wesnoth.scroll_to_tile(speaker.x, speaker.y, true, false, true)
 		end
 
 		wesnoth.highlight_hex(speaker.x, speaker.y)

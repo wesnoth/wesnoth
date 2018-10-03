@@ -277,17 +277,23 @@ function wml_actions.music(cfg)
 		wesnoth.music_list.play(cfg.name)
 	else
 		if not cfg.append then
-			if cfg.immediate then
+			if cfg.immediate and wesnoth.music_list.current_i then
 				wesnoth.music_list.current.once = true
 			end
 			wesnoth.music_list.clear()
 		end
+		local m = #wesnoth.music_list
 		wesnoth.music_list.add(cfg.name, not not cfg.immediate, cfg.ms_before or 0, cfg.ms_after or 0)
 		local n = #wesnoth.music_list
+		if n == 0 then
+			return
+		end
 		if cfg.shuffle == false then
 			wesnoth.music_list[n].shuffle = false
 		end
-		if cfg.title ~= nil then
+		-- Always overwrite shuffle even if the new track couldn't be added,
+		-- but title shouldn't be overwritten.
+		if cfg.title ~= nil and m ~= n then
 			wesnoth.music_list[n].title = cfg.title
 		end
 	end
@@ -877,7 +883,10 @@ wml_actions.teleport = function(cfg)
 end
 
 function wml_actions.remove_sound_source(cfg)
-	wesnoth.remove_sound_source(cfg.id)
+	local ids = cfg.id or helper.wml_error("[remove_sound_source] missing required id= attribute")
+	for id in utils.split(ids) do
+		wesnoth.remove_sound_source(id)
+	end
 end
 
 function wml_actions.sound_source(cfg)
@@ -920,7 +929,13 @@ function wml_actions.reset_fog(cfg)
 end
 
 function wesnoth.wml_actions.change_theme(cfg)
-	wesnoth.game_config.theme = cfg.theme
+	local new_theme = cfg.theme
+
+	if new_theme == nil then
+		new_theme = ""
+	end
+
+	wesnoth.game_config.theme = new_theme
 end
 
 function wesnoth.wml_actions.zoom(cfg)
@@ -949,4 +964,45 @@ function wesnoth.wml_actions.store_unit_defense(cfg)
 		defense = wesnoth.unit_defense(unit, wesnoth.get_terrain(unit.x, unit.y))
 	end
 	wml.variables[cfg.variable or "terrain_defense"] = defense
+end
+
+function wml_actions.terrain_mask(cfg)
+	cfg = helper.parsed(cfg)
+
+	local alignment = cfg.alignment
+	local is_odd = false
+	local border = cfg.border
+	local mask = cfg.mask
+	local x = cfg.x or helper.wml_error("[terrain_mask] missing x attribute")
+	local y = cfg.y or helper.wml_error("[terrain_mask] missing y attribute")
+	if alignment == "even" then
+		is_odd = false
+	elseif alignment == "odd" then
+		is_odd = true
+	elseif alignment == "raw" then
+		--todo: maybe rename this value?
+		is_odd = (x % 2 ~= 0)
+	elseif border == false then
+		is_odd = true
+	else
+		is_odd = false
+		-- the old [terrain_mask] code would insert the terrain as one
+		-- tile to the northwest from the specified hex.
+		-- todo: deprecate this strange behaviour or at least not make it
+		--       the default behaviour anymore.
+		local new_loc = wesnoth.map.get_direction({x, y}, "nw")
+		x, y = new_loc[1], new_loc[2]
+	end
+	local rules = {}
+	for rule in wml.child_range(cfg, 'rule') do
+		rules[#rules] = rule
+	end
+	if cfg.mask_file then
+		mask = wesnoth.read_file(cfg.mask_file)
+	end
+	wesnoth.terrain_mask({x, y}, mask, {
+		is_odd = is_odd,
+		rules = rules,
+		ignore_special_locations = cfg.ignore_special_locations,
+	})
 end

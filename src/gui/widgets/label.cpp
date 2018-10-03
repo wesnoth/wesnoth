@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -22,7 +22,6 @@
 #include "gui/core/window_builder.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/dialogs/message.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
 #include "desktop/clipboard.hpp"
@@ -41,7 +40,7 @@ namespace gui2
 REGISTER_WIDGET(label)
 
 label::label(const implementation::builder_label& builder)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 	, state_(ENABLED)
 	, can_wrap_(false)
 	, characters_per_line_(0)
@@ -309,9 +308,9 @@ builder_label::builder_label(const config& cfg)
 {
 }
 
-widget* builder_label::build() const
+widget_ptr builder_label::build() const
 {
-	label* lbl = new label(*this);
+	auto lbl = std::make_shared<label>(*this);
 
 	const auto conf = lbl->cast_config_to<label_definition>();
 	assert(conf);

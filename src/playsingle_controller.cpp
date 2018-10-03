@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -66,9 +66,8 @@ static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
 playsingle_controller::playsingle_controller(const config& level,
-	saved_game& state_of_game,
-	const config& game_config, const ter_data_cache & tdata, bool skip_replay)
-	: play_controller(level, state_of_game, game_config, tdata, skip_replay)
+	saved_game& state_of_game, const ter_data_cache & tdata, bool skip_replay)
+	: play_controller(level, state_of_game, tdata, skip_replay)
 	, cursor_setter_(cursor::NORMAL)
 	, replay_sender_(*resources::recorder)
 	, network_reader_([this](config& cfg) {return receive_from_wesnothd(cfg);})
@@ -208,7 +207,9 @@ void playsingle_controller::play_scenario_main_loop()
 				resources::gameboard->teams()[i].set_local(local_players[i]);
 			}
 			play_scenario_init();
-			replay_.reset(new replay_controller(*this, false, ex.level));
+			if (replay_ == nullptr) {
+				replay_.reset(new replay_controller(*this, false, ex.level, [this](){ on_replay_end(false); } ));
+			}
 			if(ex.start_replay) {
 				replay_->play_replay();
 			}
@@ -222,11 +223,11 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 
 	// Start music.
 	for(const config &m : level.child_range("music")) {
-		sound::play_music_config(m);
+		sound::play_music_config(m, true);
 	}
 	sound::commit_music_changes();
 
-	if(!this->is_skipping_replay()) {
+	if(!this->is_skipping_replay() && !this->is_skipping_story()) {
 		// Combine all the [story] tags into a single config. Handle this here since
 		// storyscreen::controller doesn't have a default constructor.
 		config cfg;
@@ -363,6 +364,7 @@ void playsingle_controller::play_side_impl()
 		end_turn_ = END_TURN_NONE;
 	}
 	if(replay_.get() != nullptr) {
+		init_side_done_now_ = false;
 		REPLAY_RETURN res = replay_->play_side_impl();
 		if(res == REPLAY_FOUND_END_TURN) {
 			end_turn_ = END_TURN_SYNCED;
@@ -413,7 +415,7 @@ void playsingle_controller::before_human_turn()
 		return;
 	}
 
-	if(init_side_done_now_) {
+	if(init_side_done_now_ && !game_config::disable_autosave && preferences::autosavemax() > 0) {
 		scoped_savegame_snapshot snapshot(*this);
 		savegame::autosave_savegame save(saved_game_, preferences::save_compression_format());
 		save.autosave(game_config::disable_autosave, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
@@ -427,7 +429,6 @@ void playsingle_controller::before_human_turn()
 void playsingle_controller::show_turn_dialog(){
 	if(preferences::turn_dialog() && !is_regular_game_end() ) {
 		blindfold b(*gui_, true); //apply a blindfold for the duration of this dialog
-		gui_->recalculate_minimap();
 		std::string message = _("It is now $name|’s turn");
 		utils::string_map symbols;
 		symbols["name"] = gamestate().board_.get_team(current_side()).side_name();
@@ -522,7 +523,6 @@ void playsingle_controller::play_ai_turn()
 	LOG_NG << "is ai...\n";
 
 	end_turn_enable(false);
-	gui_->recalculate_minimap();
 
 	const cursor::setter cursor_setter(cursor::WAIT);
 
@@ -560,7 +560,6 @@ void playsingle_controller::play_ai_turn()
 		end_turn_ = END_TURN_REQUIRED;
 	}
 	turn_data_.sync_network();
-	gui_->recalculate_minimap();
 }
 
 
@@ -672,7 +671,7 @@ void playsingle_controller::reset_replay()
 
 void playsingle_controller::enable_replay(bool is_unit_test)
 {
-	replay_.reset(new replay_controller(*this, gamestate().has_human_sides(), std::shared_ptr<config>( new config(saved_game_.replay_start())), std::bind(&playsingle_controller::on_replay_end, this, is_unit_test)));
+	replay_.reset(new replay_controller(*this, gamestate().has_human_sides(), std::shared_ptr<config>( new config(saved_game_.get_replay_starting_point())), std::bind(&playsingle_controller::on_replay_end, this, is_unit_test)));
 	if(is_unit_test) {
 		replay_->play_replay();
 	}
@@ -693,7 +692,10 @@ bool playsingle_controller::should_return_to_play_side() const
 
 void playsingle_controller::on_replay_end(bool is_unit_test)
 {
-	if(is_unit_test) {
+	if(is_networked_mp()) {
+		set_player_type_changed();
+	}
+	else if(is_unit_test) {
 		replay_->return_to_play_side();
 		if(!is_regular_game_end()) {
 			end_level_data e;

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,21 +16,18 @@
 #include "gui/dialogs/multiplayer/faction_select.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/auxiliary/old_markup.hpp"
 #include "gui/core/log.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
+#include "gui/widgets/button.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
+#include "help/help.hpp"
+#include "preferences/game.hpp"	// for encountered_units
 #include "units/types.hpp"
 
 #include "utils/functional.hpp"
@@ -46,6 +43,9 @@ faction_select::faction_select(ng::flg_manager& flg_manager, const std::string& 
 	: flg_manager_(flg_manager)
 	, tc_color_(color)
 	, side_(side)
+	, last_faction_(flg_manager.current_faction_index())
+	, last_leader_(flg_manager.current_leader_index())
+	, last_gender_(flg_manager.current_gender_index())
 {
 }
 
@@ -72,8 +72,12 @@ void faction_select::pre_show(window& window)
 	//
 	// Set up leader menu button
 	//
-	find_widget<menu_button>(&window, "leader_menu", false).connect_click_handler(
+	connect_signal_notify_modified(find_widget<menu_button>(&window, "leader_menu", false),
 		std::bind(&faction_select::on_leader_select, this, std::ref(window)));
+
+	// Leader's profile button
+	find_widget<button>(&window, "type_profile", false).connect_click_handler(
+		std::bind(&faction_select::profile_button_callback, this, std::ref(window)));
 
 	//
 	// Set up faction list
@@ -88,8 +92,8 @@ void faction_select::pre_show(window& window)
 	for(const config *s : flg_manager_.choosable_factions()) {
 		const config& side = *s;
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		const std::string name = side["name"].str();
 		// flag_rgb here is unrelated to any handling in the unit class
@@ -168,7 +172,6 @@ void faction_select::on_leader_select(window& window)
 {
 	flg_manager_.set_current_leader(find_widget<menu_button>(&window, "leader_menu", false).get_value());
 
-
 	// TODO: should we decouple this from the flg manager and instead just check the unit type directly?
 	// If that's done so, we'd need to come up with a different check for Random availability.
 	gender_toggle_.set_members_enabled([this](const std::string& gender)->bool {
@@ -177,6 +180,21 @@ void faction_select::on_leader_select(window& window)
 	});
 
 	update_leader_image(window);
+
+	// Disable the profile button if leader_type is dash or "Random"
+	button& profile_button = find_widget<button>(&window, "type_profile", false);
+	const std::string& leader_type = find_widget<menu_button>(&window, "leader_menu", false).get_value_string();
+	profile_button.set_active(unit_types.find(leader_type) != nullptr);
+}
+
+void faction_select::profile_button_callback(window& window)
+{
+	const std::string& leader_type = find_widget<menu_button>(&window, "leader_menu", false).get_value_string();
+	const unit_type* ut = unit_types.find(leader_type);
+	if(ut != nullptr) {
+		preferences::encountered_units().insert(ut->id());
+		help::show_unit_description(*ut);
+	}
 }
 
 void faction_select::on_gender_select(window& window)
@@ -196,6 +214,25 @@ void faction_select::update_leader_image(window& window)
 	}
 
 	find_widget<image>(&window, "leader_image", false).set_label(leader_image);
+}
+
+void faction_select::post_show(window& /*window*/)
+{
+	//
+	// If we're canceling, restore the previous selections. It might be worth looking
+	// into only making selections at all here in post_show, but that would require a
+	// refactor of the flg_manager class.
+	//
+	// Also, note it's important to set these in the order of faction -> leader -> gender
+	// or the saved indices will be invalid!
+	//
+	// -- vultraz, 2018-06-16
+	//
+	if(get_retval() != retval::OK) {
+		flg_manager_.set_current_faction(last_faction_);
+		flg_manager_.set_current_leader(last_leader_);
+		flg_manager_.set_current_gender(last_gender_);
+	}
 }
 
 } // namespace dialogs

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -40,15 +40,14 @@ namespace gui2
 REGISTER_WIDGET(multimenu_button)
 
 multimenu_button::multimenu_button(const implementation::builder_multimenu_button& builder)
-	: styled_widget(builder, get_control_type())
+	: styled_widget(builder, type())
 	, state_(ENABLED)
-	, retval_(retval::NONE)
 	, max_shown_(1)
 	, values_()
 	, toggle_states_()
 	, droplist_(nullptr)
 {
-	values_.emplace_back(::config {"label", this->get_label()});
+	values_.emplace_back("label", this->get_label());
 
 	connect_signal<event::MOUSE_ENTER>(
 			std::bind(&multimenu_button::signal_handler_mouse_enter, this, _2, _3));
@@ -139,13 +138,6 @@ void multimenu_button::signal_handler_left_button_click(const event::ui_event ev
 	droplist.show();
 	droplist_ = nullptr;
 
-	if(retval_ != retval::NONE) {
-		if(window* window = get_window()) {
-			window->set_retval(retval_);
-			return;
-		}
-	}
-
 	/* In order to allow toggle button states to be specified by various dialogs in the values config, we write the state
 	 * bools to the values_ config here, but only if a checkbox= key was already provided. The value of the checkbox= key
 	 * is handled by the drop_down_menu widget.
@@ -173,8 +165,8 @@ void multimenu_button::update_label()
 	if(selected.size() == values_.size()) {
 		set_label(_("multimenu^All Selected"));
 	} else {
-		if(selected.size() > static_cast<std::size_t>(max_shown_)) {
-			const int excess = selected.size() - max_shown_;
+		if(selected.size() > max_shown_) {
+			const unsigned excess = selected.size() - max_shown_;
 			selected.resize(max_shown_ + 1);
 			selected.back() = VNGETTEXT("multimenu^$excess other", "$excess others", excess, {{"excess", std::to_string(excess)}});
 		}
@@ -329,9 +321,7 @@ namespace implementation
 
 builder_multimenu_button::builder_multimenu_button(const config& cfg)
 	: builder_styled_widget(cfg)
-	, retval_id_(cfg["return_value_id"])
-	, retval_(cfg["return_value"])
-	, max_shown_(cfg["maximum_shown"])
+	, max_shown_(cfg["maximum_shown"].to_unsigned(1))
 	, options_()
 {
 	for(const auto& option : cfg.child_range("option")) {
@@ -339,11 +329,10 @@ builder_multimenu_button::builder_multimenu_button(const config& cfg)
 	}
 }
 
-widget* builder_multimenu_button::build() const
+widget_ptr builder_multimenu_button::build() const
 {
-	multimenu_button* widget = new multimenu_button(*this);
+	auto widget = std::make_shared<multimenu_button>(*this);
 
-	widget->set_retval(get_retval(retval_id_, retval_, id));
 	widget->set_max_shown(max_shown_);
 	if(!options_.empty()) {
 		widget->set_values(options_);

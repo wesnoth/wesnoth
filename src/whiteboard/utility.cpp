@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project http://www.wesnoth.org
+ Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -87,6 +87,22 @@ unit* find_recruiter(std::size_t team_index, const map_location& hex)
 				&& dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(u, hex))
 			return &u;
 	return nullptr;
+}
+
+bool any_recruiter(int team_num, const map_location& loc, std::function<bool(unit&)> func)
+{
+	if ( !resources::gameboard->map().is_castle(loc) ) {
+		return false;
+	}
+
+	for(unit& u : resources::gameboard->units()) {
+		if(u.can_recruit() && u.side() == team_num && dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(u, loc)) {
+			if(func(u)) {
+				return true;
+			}
+		}
+	}
+	return false;
 }
 
 unit* future_visible_unit(map_location hex, int viewer_side)

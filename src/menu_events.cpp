@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -89,10 +89,10 @@ static lg::log_domain log_engine("engine");
 
 namespace events
 {
-menu_handler::menu_handler(game_display* gui, play_controller& pc, const config& game_config)
+menu_handler::menu_handler(game_display* gui, play_controller& pc)
 	: gui_(gui)
 	, pc_(pc)
-	, game_config_(game_config)
+	, game_config_(game_config_manager::get()->game_config())
 	, last_search_()
 	, last_search_hit_()
 {
@@ -138,10 +138,7 @@ void menu_handler::objectives()
 		return;
 	}
 
-	config cfg;
-	cfg["side"] = gui_->viewing_side();
-	gamestate().lua_kernel_->run_wml_action("show_objectives", vconfig(cfg),
-			game_events::queued_event("_from_interface", "", map_location(), map_location(), config()));
+	pc_.refresh_objectives();
 	pc_.show_objectives();
 }
 
@@ -284,9 +281,7 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 
 	gui2::dialogs::unit_recruit dlg(sample_units, board().get_team(side_num));
 
-	dlg.show();
-
-	if(dlg.get_retval() == gui2::retval::OK) {
+	if(dlg.show()) {
 		map_location recruit_hex = last_hex;
 		do_recruit(sample_units[dlg.get_selected_index()]->id(), side_num, recruit_hex);
 	}
@@ -382,13 +377,15 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 
 	gui2::dialogs::unit_recall dlg(recall_list_team, current_team);
 
-	dlg.show();
-
-	if(dlg.get_retval() != gui2::retval::OK) {
+	if(!dlg.show()) {
 		return;
 	}
 
 	int res = dlg.get_selected_index();
+	if (res < 0) {
+		gui2::show_transient_message("", _("No unit recalled"));
+		return;
+	}
 	int unit_cost = current_team.recall_cost();
 
 	// we need to check if unit has a specific recall cost
@@ -593,7 +590,8 @@ bool menu_handler::end_turn(int side_num)
 void menu_handler::goto_leader(int side_num)
 {
 	unit_map::const_iterator i = units().find_leader(side_num);
-	if(i != units().end()) {
+	const display_context& dc = gui_->current_display_context();
+	if(i != units().end() && i->is_visible_to_team(dc.get_team(gui_->viewing_side()), false)) {
 		gui_->scroll_to_tile(i->get_location(), game_display::WARP);
 	}
 }
@@ -1421,7 +1419,10 @@ void console_handler::do_droid()
 		command_failed(VGETTEXT("Can't droid networked side: '$side'.", symbols));
 		return;
 	} else if(menu_handler_.board().get_team(side).is_local_human()) {
-		if(menu_handler_.board().get_team(side).is_droid() ? action == " on" : action == " off") {
+		utils::string_map symbols;
+		symbols["side"] = std::to_string(side);
+		if(menu_handler_.board().get_team(side).is_droid() ? action == "on" : action == "off") {
+			print(get_cmd(), VGETTEXT("Side '$side' is already droided.", symbols));
 			return;
 		}
 		menu_handler_.board().get_team(side).toggle_droid();
@@ -1429,6 +1430,11 @@ void console_handler::do_droid()
 			if(playsingle_controller* psc = dynamic_cast<playsingle_controller*>(&menu_handler_.pc_)) {
 				psc->set_player_type_changed();
 			}
+		}
+		if (menu_handler_.board().get_team(side).is_droid()) {
+			print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: AI.", symbols));
+		} else {
+			print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: human.", symbols));
 		}
 	} else if(menu_handler_.board().get_team(side).is_local_ai()) {
 		//		menu_handler_.board().get_team(side).make_human();

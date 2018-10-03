@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -76,7 +76,7 @@ std::shared_ptr<attacks_vector> aspect_attacks_base::analyze_targets() const
 		const move_map& enemy_srcdst = get_enemy_srcdst();
 		const move_map& enemy_dstsrc = get_enemy_dstsrc();
 
-		std::shared_ptr<attacks_vector> res(new attacks_vector());
+		auto res = std::make_shared<attacks_vector>();
 		unit_map& units_ = resources::gameboard->units();
 
 		std::vector<map_location> unit_locs;

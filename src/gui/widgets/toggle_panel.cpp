@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -38,7 +38,7 @@ namespace gui2
 REGISTER_WIDGET(toggle_panel)
 
 toggle_panel::toggle_panel(const implementation::builder_toggle_panel& builder)
-	: panel(builder, get_control_type())
+	: panel(builder, type())
 	, state_(ENABLED)
 	, state_num_(0)
 	, retval_(retval::NONE)
@@ -86,7 +86,7 @@ unsigned toggle_panel::num_states() const
 }
 
 void toggle_panel::set_child_members(
-		const std::map<std::string /* widget id */, string_map>& data)
+		const widget_data& data)
 {
 	for(const auto & item : data)
 	{
@@ -191,18 +191,18 @@ void toggle_panel::set_state(const state_t state)
 	assert(conf);
 }
 
-void toggle_panel::impl_draw_background(int x_offset, int y_offset)
+void toggle_panel::impl_draw_background()
 {
 	// We don't have a fore and background and need to draw depending on
 	// our state, like a styled_widget. So we use the styled_widget's drawing method.
-	styled_widget::impl_draw_background(x_offset, y_offset);
+	styled_widget::impl_draw_background();
 }
 
-void toggle_panel::impl_draw_foreground(int x_offset, int y_offset)
+void toggle_panel::impl_draw_foreground()
 {
 	// We don't have a fore and background and need to draw depending on
 	// our state, like a styled_widget. So we use the styled_widget's drawing method.
-	styled_widget::impl_draw_foreground(x_offset, y_offset);
+	styled_widget::impl_draw_foreground();
 }
 
 void toggle_panel::signal_handler_mouse_enter(const event::ui_event event,
@@ -398,9 +398,9 @@ builder_toggle_panel::builder_toggle_panel(const config& cfg)
 	grid = std::make_shared<builder_grid>(c);
 }
 
-widget* builder_toggle_panel::build() const
+widget_ptr builder_toggle_panel::build() const
 {
-	toggle_panel* widget = new toggle_panel(*this);
+	auto widget = std::make_shared<toggle_panel>(*this);
 
 	widget->set_retval(get_retval(retval_id_, retval_, id));
 

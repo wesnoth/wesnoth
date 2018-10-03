@@ -79,6 +79,17 @@ game_stringfixes = {
 ("The server accepts versions '$version1' while you are using version '$version2'", "The server accepts versions '$required_version', but you are using version '$your_version'")
 ),
 
+"wesnoth-ai": (
+# conversion added in 1.14.3+dev
+("http://wiki.wesnoth.org/Micro_AIs", "https://wiki.wesnoth.org/Micro_AIs"),
+),
+
+"wesnoth-aoi": (
+# conversion added in 1.14.4+dev
+("the bodies of both sides, ", "the bodies of both sides. "),
+("there was no hale orc in sight,", "There was no hale orc in sight,"),
+),
+
 "wesnoth-editor" : (
 # conversion added in 1.11.10+dev
 ("Choose file", "Choose File"),
@@ -93,6 +104,19 @@ game_stringfixes = {
 #fix added in 1.13.11+dev
 ("This unit can lead our own units", "This unit can lead your own units"),
 ("moreso", "more so"),
+# Typographical fixes added in 1.14.3+dev
+("Despite orcs' reliance on raw strength", "Despite orcs’ reliance on raw strength"),
+# FIXME: this won't work for some mysterious reason. The strings will have to be fuzzied.
+#('who grow to the strength of a \\"true orc\\"', "who grow to the strength of a “true orc”"),
+("making them a useful asset to aid in an army's charge.", "making them a useful asset to aid in an army’s charge."),
+("The Dunefolk's inclination", "The Dunefolk’s inclination"),
+("The Dunefolk's inquisitive", "The Dunefolk’s inquisitive"),
+("the heritage of the Dunefolk's", "the heritage of the Dunefolk’s"),
+),
+
+"wesnoth-l" : (
+# conversion added in 1.14.4+dev
+("Retreat!!", "Retreat!"),
 ),
 
 "wesnoth-lib" : (
@@ -119,6 +143,11 @@ game_stringfixes = {
 ("You must lead your men to the city and help defend it. Or recapture it if it falls before you arrive.", "You must lead your men to the city. Help defend it, or recapture it if it falls before you arrive!"),
 # fix added in 1.13.11+dev
 ("with the greatest generals, and battle tactics", "with the greatest generals and battle tactics"),
+# fixes added in 1.14.3+dev
+("Whatever.... I still think we should make an effort", "Whatever... I still think we should make an effort"),
+("That is so very encouraging....","That is so very encouraging..."),
+# fixes added in 1.14.4+dev
+("can now aid those around her in the art of combat.", "can aid those around her in the art of combat."),
 ),
 
 "wesnoth-low" : (
@@ -141,11 +170,15 @@ game_stringfixes = {
 ("fearsome a foe then a dwarf.", "fearsome a foe than a dwarf."),
 ("hold the orcs off far longer and with less loss then ye could ha’ done", "hold the orcs off far longer and with less loss than ye could ha’ done"),
 ("Bah! I have better things to do then stamp out your insignificant life.", "Bah! I have better things to do than stamp out your insignificant life."),
+# fixes added in 1.14.3+dev
+("most important things about being a leader is....", "most important things about being a leader is..."),
 ),
 
-# fixes added in 1.13.13+dev
 "wesnoth-sota" : (
+# fixes added in 1.13.13+dev
 ("Welcome to my laboratory, Ardonna of Tarynth", "Welcome to my laboratory, Ardonna of Tarrynth"),
+# fixes added in 1.14.3+dev
+("others.... An altar serves", "others... An altar serves"),
 ),
 
 "wesnoth-sotbe" : (
@@ -159,6 +192,16 @@ game_stringfixes = {
 
 "wesnoth-tb" : (
 ("try to force him off of his keep", "try to force him off his keep"),
+),
+
+"wesnoth-tsg": (
+# fixes added in 1.14.4+dev
+("Bury me deeply my friends...", "Bury me deeply, my friends..."),
+),
+
+"wesnoth-trow" : (
+# fixes added in 1.14.3+dev
+("a noble of the line of Kings should utter the following....", "a noble of the line of Kings should utter the following..."),
 ),
 
 "wesnoth-tutorial" : (
@@ -192,6 +235,10 @@ game_stringfixes = {
 "wesnoth-multiplayer" : (
 # 1.13.4+dev
 ("Changes the gold worth of the enemy spawns by a certain perentage", "Changes the gold worth of the enemy spawns by a certain percentage"),
+# fixes added in 1.14.3+dev
+("Rah Ihn Mar began the hunt.....", "Rah Ihn Mar began the hunt..."),
+("Perhaps he should not have shouted quite so loudly.... ", "Perhaps he should not have shouted quite so loudly..."),
+("but the two men never found one another. ", "but the two men never found one another."),
 ),
 
 }
@@ -201,17 +248,23 @@ website_stringfixes = {
 "1.14-announcement" : (
 ("better ingrate them", "better integrate them"),
 
-("wesnoth-1.14.0/wesnoth-1.14.0.tar.bz2", "wesnoth-1.14.1/wesnoth-1.14.1.tar.bz2"),
-("wesnoth-1.14.0/wesnoth-1.14.0-win32.exe", "wesnoth-1.14.1/wesnoth-1.14.1-win32.exe"),
-("wesnoth-1.14.0/Wesnoth_1.14.0.dmg", "wesnoth-1.14.1/Wesnoth_1.14.1a.dmg"),
+# Lua version number
+("5.3.4", "5.3"),
 
 # Yes, these are really flimsy. In hindsight it was a bad idea to include
 # download sizes in the announcement. Hopefully we won't end up with
 # files that have the same size in a release/in the last two releases
 # any time soon.
-("442.2", "442.4"),
-("403.1", "403.2"),
-("447.0", "450.5"),
+
+# Source
+("wesnoth-1.14.4/wesnoth-1.14.4.tar.bz2", "wesnoth-1.14.5/wesnoth-1.14.5.tar.bz2"),
+("450.6", "450.8"),
+# Windows
+("wesnoth-1.14.4/wesnoth-1.14.4-win32.exe", "wesnoth-1.14.5/wesnoth-1.14.5-win32.exe"),
+("408.2", "408.4"),
+# macOS
+("wesnoth-1.14.4/Wesnoth_1.14.4.dmg", "wesnoth-1.14.5/Wesnoth_1.14.5.dmg"),
+("466.9", "472.7"),
 ),
 
 }
@@ -250,7 +303,7 @@ def process_file(path):
         # In case of screwed-up pairs that are hard to find, uncomment the following:
         #for fix in fixes:
         #    if len(fix) != 2:
-        #        print fix
+        #        print(fix)
         for (old, new) in fixes:
             if old is new:
                 #complain loudly

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -26,7 +26,10 @@ namespace gui2
 struct builder_grid;
 typedef std::shared_ptr<const builder_grid> builder_grid_const_ptr;
 
+class generator_base;
 class grid;
+
+using generator_ptr = std::shared_ptr<generator_base>;
 
 /**
  * Abstract base class for the generator.
@@ -59,7 +62,7 @@ public:
 	 * @param has_minimum         Does one item need to be selected.
 	 * @param has_maximum         Is one the maximum number of items that can
 	 *                            be selected?
-	 * @param placement           The placement of the grids, see tplacement
+	 * @param placement           The placement of the grids, see placement
 	 *                            for more info.
 	 * @param select              If a grid is selected, what should happen?
 	 *                            If true the grid is selected, if false the
@@ -68,7 +71,7 @@ public:
 	 * @returns                   A pointer to a new object. The caller gets
 	 *                            ownership of the new object.
 	 */
-	static generator_base* build(const bool has_minimum,
+	static generator_ptr build(const bool has_minimum,
 							  const bool has_maximum,
 							  const placement placement,
 							  const bool select);
@@ -175,7 +178,7 @@ public:
 	 */
 	virtual grid& create_item(const int index,
 							   builder_grid_const_ptr list_builder,
-							   const string_map& item_data,
+							   const widget_item& item_data,
 							   const std::function<void(widget&)>& callback)
 			= 0;
 
@@ -199,7 +202,7 @@ public:
 	virtual grid&
 	create_item(const int index,
 				builder_grid_const_ptr list_builder,
-				const std::map<std::string /* widget id */, string_map>& data,
+				const widget_data& data,
 				const std::function<void(widget&)>& callback) = 0;
 
 	/**
@@ -219,7 +222,7 @@ public:
 	 */
 	virtual void create_items(const int index,
 							  builder_grid_const_ptr list_builder,
-							  const std::vector<string_map>& data,
+							  const std::vector<widget_item>& data,
 							  const std::function<void(widget&)>& callback)
 			= 0;
 
@@ -241,7 +244,7 @@ public:
 	virtual void create_items(
 			const int index,
 			builder_grid_const_ptr list_builder,
-			const std::vector<std::map<std::string /*widget id*/, string_map>>&
+			const std::vector<std::map<std::string /*widget id*/, widget_item>>&
 					data,
 			const std::function<void(widget&)>& callback) = 0;
 
@@ -279,7 +282,7 @@ public:
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override = 0;
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(int x_offset, int y_offset) override = 0;
+	virtual void impl_draw_children() override = 0;
 
 	/** See @ref widget::find_at. */
 	virtual widget* find_at(const point& coordinate,

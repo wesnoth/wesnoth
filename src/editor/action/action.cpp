@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -195,7 +195,7 @@ void editor_action_paste::extend(const editor_map& map, const std::set<map_locat
 editor_action_paste* editor_action_paste::perform(map_context& mc) const
 {
 	map_fragment mf(mc.map(), paste_.get_offset_area(offset_));
-	std::unique_ptr<editor_action_paste> undo(new editor_action_paste(mf));
+	auto undo = std::make_unique<editor_action_paste>(mf);
 
 	perform_without_undo(mc);
 	return undo.release();
@@ -303,7 +303,7 @@ IMPLEMENT_ACTION(apply_mask)
 
 void editor_action_apply_mask::perform_without_undo(map_context& mc) const
 {
-	mc.map().overlay(mask_, config(), {0, 0});
+	mc.map().overlay(mask_, {0, 0, wml_loc()});
 	mc.set_needs_terrain_rebuild();
 }
 

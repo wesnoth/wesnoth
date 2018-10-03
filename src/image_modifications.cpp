@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 #include "color.hpp"
 #include "config.hpp"
 #include "game_config.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
@@ -1250,9 +1250,10 @@ REGISTER_MOD_PARSER(RIGHT, )
 // Add a background color.
 REGISTER_MOD_PARSER(BG, args)
 {
-	int c[4] { 0, 0, 0, SDL_ALPHA_OPAQUE };
+	std::array<int, 4> c {{ 0, 0, 0, SDL_ALPHA_OPAQUE }};
 	std::vector<std::string> factors = utils::split(args, ',');
 
+	// Doesn't use color_t::from_rgba_string since there maybe fewer than 4 arguments
 	for(int i = 0; i < std::min<int>(factors.size(), 4); ++i) {
 		c[i] = lexical_cast_default<int>(factors[i]);
 	}

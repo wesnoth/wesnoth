@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2013 - 2018 by Andrius Silinskas <silinskas.andrius@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -26,6 +26,7 @@
 #include "team.hpp"
 #include "wesnothd_connection.hpp"
 
+#include <array>
 #include <cstdlib>
 #include <ctime>
 
@@ -42,15 +43,15 @@ static lg::log_domain log_mp_connect_engine("mp/connect/engine");
 static lg::log_domain log_network("network");
 #define LOG_NW LOG_STREAM(info, log_network)
 
-static const std::string controller_names[] {
+static const std::array<std::string, 5> controller_names {{
 	"human",
 	"human",
 	"ai",
 	"null",
 	"reserved"
-};
+}};
 
-static const std::string attributes_to_trim[] {
+static const std::array<std::string, 15> attributes_to_trim {{
 	"side",
 	"type",
 	"gender",
@@ -66,7 +67,7 @@ static const std::string attributes_to_trim[] {
 	"income",
 	"allow_changes",
 	"faction"
-};
+}};
 
 namespace ng {
 
@@ -177,6 +178,25 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 	for(const config& era : level_.child("era").child_range("multiplayer_side")) {
 		era_factions_.push_back(&era);
 	}
+
+	// Sort alphabetically, but with the random faction options always first.
+	// Since some eras have multiple random options we can't just assume there is
+	// only one random faction on top of the list.
+	std::sort(era_factions_.begin(), era_factions_.end(), [](const config* c1, const config* c2) {
+		const config& lhs = *c1;
+		const config& rhs = *c2;
+
+		// Random factions always first.
+		if(lhs["random_faction"].to_bool() && !rhs["random_faction"].to_bool()) {
+			return true;
+		}
+
+		if(!lhs["random_faction"].to_bool() && rhs["random_faction"].to_bool()) {
+			return false;
+		}
+
+		return translation::compare(lhs["name"].str(), rhs["name"].str()) < 0;
+	});
 
 	game_config::add_color_info(scenario());
 
@@ -908,11 +928,6 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 
 		cfg_["previous_save_id"] = parent_.side_engines()[side_cntr_index]->previous_save_id();
 		ERR_MP << "controller=<number> is deperecated\n";
-	}
-
-	if(!parent_.params_.saved_game && cfg_["save_id"].str().empty()) {
-		assert(cfg_["id"].empty()); // we already set "save_id" to "id" if "id" existed.
-		cfg_["save_id"] = parent_.scenario()["id"].str() + "_" + std::to_string(index);
 	}
 
 	if(cfg_["controller"] != "human" && cfg_["controller"] != "ai" && cfg_["controller"] != "null") {

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -24,7 +24,6 @@
 #include "game_display.hpp"
 #include "log.hpp"
 #include "gui/dialogs/formula_debugger.hpp"
-#include "gui/widgets/settings.hpp"
 
 static lg::log_domain log_formula_debugger("scripting/formula/debug");
 #define DBG_FDB LOG_STREAM(debug, log_formula_debugger)

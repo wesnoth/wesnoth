@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License 2
@@ -26,6 +26,7 @@
 #include <boost/shared_array.hpp>
 
 #include <boost/asio/signal_set.hpp>
+#include <boost/asio/steady_timer.hpp>
 
 namespace wesnothd
 {
@@ -41,12 +42,12 @@ private:
 	void handle_version(socket_ptr socket);
 	void read_version(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
 
-	void login(socket_ptr socket);
-	void handle_login(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
-	bool is_login_allowed(socket_ptr socket, const simple_wml::node* const login);
-	bool authenticate(socket_ptr socket, const std::string& username, const std::string& password, bool name_taken, bool& registered);
+	void login(socket_ptr socket, std::string version);
+	void handle_login(socket_ptr socket, std::shared_ptr<simple_wml::document> doc, std::string version);
+	bool is_login_allowed(socket_ptr socket, const simple_wml::node* const login, const std::string& version);
+	bool authenticate(socket_ptr socket, const std::string& username, const std::string& password, const std::string& version, bool name_taken, bool& registered);
 	void send_password_request(socket_ptr socket, const std::string& msg,
-		const std::string& user, const char* error_code = "", bool force_confirmation = false);
+		const std::string& user, const std::string& version, const char* error_code = "", bool force_confirmation = false);
 	bool accepting_connections() const { return !graceful_restart; }
 
 	void add_player(socket_ptr socket, const wesnothd::player&);
@@ -105,7 +106,7 @@ private:
 	std::deque<login_log> failed_logins_;
 
 	std::unique_ptr<user_handler> user_handler_;
-	std::map<long int,std::string> seeds_;
+	std::map<socket_ptr::element_type*, std::string> seeds_;
 
 	player_connections player_connections_;
 	std::deque<std::shared_ptr<game>> games() {
@@ -131,6 +132,7 @@ private:
 
 	// settings from the server config
 	std::vector<std::string> accepted_versions_;
+	std::string recommended_version_;
 	std::map<std::string,config> redirected_versions_;
 	std::map<std::string,config> proxy_versions_;
 	std::vector<std::string> disallowed_names_;
@@ -168,8 +170,9 @@ private:
 	metrics metrics_;
 
 	std::time_t last_ping_;
-	std::time_t last_stats_;
-	void dump_stats(const std::time_t& now);
+	boost::asio::steady_timer dump_stats_timer_;
+	void start_dump_stats();
+	void dump_stats(const boost::system::error_code& ec);
 
 	std::time_t last_uh_clean_;
 	void clean_user_handler(const std::time_t& now);
@@ -204,6 +207,7 @@ private:
 	void netstats_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void adminmsg_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void pm_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void version_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void msg_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void lobbymsg_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void status_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
@@ -225,6 +229,11 @@ private:
 
 	boost::asio::deadline_timer timer_;
 	void handle_graceful_timeout(const boost::system::error_code& error);
+
+	boost::asio::steady_timer lan_server_timer_;
+	void start_lan_server_timer();
+	void abort_lan_server_timer();
+	void handle_lan_server_shutdown(const boost::system::error_code& error);
 };
 
 void send_to_player(socket_ptr socket, simple_wml::document& doc);

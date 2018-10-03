@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -30,24 +30,16 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/label.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/image.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
-#include "gui/widgets/pane.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "formula/string_utils.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 #include "language.hpp"
 #include "preferences/general.hpp"
 #include "utils/general.hpp"
@@ -224,10 +216,10 @@ const std::vector<addon_manager::addon_order> addon_manager::all_orders_{
 	{N_("addons_order^Type ($order)"), 4,
 	[](const addon_info& a, const addon_info& b) { return a.display_type() < b.display_type(); },
 	[](const addon_info& a, const addon_info& b) { return a.display_type() > b.display_type(); }},
-	{N_("addons_order^Last updated ($order)"), -1,
+	{N_("addons_order^Last updated ($datelike_order)"), -1,
 	[](const addon_info& a, const addon_info& b) { return a.updated < b.updated; },
 	[](const addon_info& a, const addon_info& b) { return a.updated > b.updated; }},
-	{N_("addons_order^First uploaded ($order)"), -1,
+	{N_("addons_order^First uploaded ($datelike_order)"), -1,
 	[](const addon_info& a, const addon_info& b) { return a.created < b.created; },
 	[](const addon_info& a, const addon_info& b) { return a.created > b.created; }}
 };
@@ -336,7 +328,9 @@ void addon_manager::pre_show(window& window)
 	}
 
 	status_filter.set_values(status_filter_entries);
-	status_filter.connect_click_handler(std::bind(&addon_manager::apply_filters, this, std::ref(window)));
+
+	connect_signal_notify_modified(status_filter,
+		std::bind(&addon_manager::apply_filters, this, std::ref(window)));
 
 	multimenu_button& type_filter = find_widget<multimenu_button>(&window, "type_filter", false);
 
@@ -347,7 +341,8 @@ void addon_manager::pre_show(window& window)
 
 	type_filter.set_values(type_filter_entries);
 
-	connect_signal_notify_modified(type_filter, std::bind(&addon_manager::apply_filters, this, std::ref(window)));
+	connect_signal_notify_modified(type_filter,
+		std::bind(&addon_manager::apply_filters, this, std::ref(window)));
 
 	menu_button& order_dropdown = find_widget<menu_button>(&window, "order_dropdown", false);
 
@@ -355,18 +350,22 @@ void addon_manager::pre_show(window& window)
 	for(const auto& f : all_orders_) {
 		utils::string_map symbols;
 
-		// TRANSLATORS: ascending
-		symbols["order"] = _("asc");
+		symbols["order"] = _("ascending");
+		// TRANSLATORS: Sorting order of dates, oldest first
+		symbols["datelike_order"] = _("oldest to newest");
 		config entry{"label", VGETTEXT(f.label.c_str(), symbols)};
 		order_dropdown_entries.push_back(entry);
-		// TRANSLATORS: descending
-		symbols["order"] = _("desc");
+		symbols["order"] = _("descending");
+		// TRANSLATORS: Sorting order of dates, newest first
+		symbols["datelike_order"] = _("newest to oldest");
 		entry["label"] = VGETTEXT(f.label.c_str(), symbols);
 		order_dropdown_entries.push_back(entry);
 	}
 
 	order_dropdown.set_values(order_dropdown_entries);
-	order_dropdown.connect_click_handler(std::bind(&addon_manager::order_addons, this, std::ref(window)));
+
+	connect_signal_notify_modified(order_dropdown,
+		std::bind(&addon_manager::order_addons, this, std::ref(window)));
 
 	button& url_go_button = find_widget<button>(&window, "url_go", false);
 	button& url_copy_button = find_widget<button>(&window, "url_copy", false);

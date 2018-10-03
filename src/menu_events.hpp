@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -45,7 +45,7 @@ namespace events
 class menu_handler : private chat_handler
 {
 public:
-	menu_handler(game_display* gui, play_controller& pc, const config& game_config);
+	menu_handler(game_display* gui, play_controller& pc);
 	virtual ~menu_handler();
 
 	void set_gui(game_display* gui)

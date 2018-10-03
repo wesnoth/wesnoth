@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -157,20 +157,20 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	}
 
 	// Compute chance to hit.
-	chance_to_hit = opp.defense_modifier(resources::gameboard->map().get_terrain(opp_loc)) + weapon->accuracy()
+	signed int cth = opp.defense_modifier(resources::gameboard->map().get_terrain(opp_loc)) + weapon->accuracy()
 		- (opp_weapon ? opp_weapon->parry() : 0);
 
-	if(chance_to_hit > 100) {
-		chance_to_hit = 100;
-	}
+	cth = utils::clamp(cth, 0, 100);
 
 	unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
-	unit_abilities::effect cth_effects(cth_specials, chance_to_hit, backstab_pos);
-	chance_to_hit = cth_effects.get_composite_value();
+	unit_abilities::effect cth_effects(cth_specials, cth, backstab_pos);
+	cth = cth_effects.get_composite_value();
 
 	if(opp.get_state("invulnerable")) {
-		chance_to_hit = 0;
+		cth = 0;
 	}
+
+	chance_to_hit = utils::clamp(cth, 0, 100);
 
 	// Compute base damage done with the weapon.
 	int base_damage = weapon->modified_damage(backstab_pos);
@@ -306,13 +306,13 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	}
 
 	signed int cth = 100 - opp_terrain_defense + weapon->accuracy() - (opp_weapon ? opp_weapon->parry() : 0);
-	cth = std::min(100, cth);
-	cth = std::max(0, cth);
-	chance_to_hit = cth;
+	cth = utils::clamp(cth, 0, 100);
 
 	unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
-	unit_abilities::effect cth_effects(cth_specials, chance_to_hit, backstab_pos);
-	chance_to_hit = cth_effects.get_composite_value();
+	unit_abilities::effect cth_effects(cth_specials, cth, backstab_pos);
+	cth = cth_effects.get_composite_value();
+
+	chance_to_hit = utils::clamp(cth, 0, 100);
 
 	int base_damage = weapon->modified_damage(backstab_pos);
 	int damage_multiplier = 100;
@@ -715,18 +715,18 @@ int battle_context::choose_defender_weapon(const unit& attacker,
 	for(i = 0; i < choices.size(); ++i) {
 		const attack_type& def = defender.attacks()[choices[i]];
 
-		std::unique_ptr<battle_context_unit_stats> att_stats(new battle_context_unit_stats(
-				attacker, attacker_loc, attacker_weapon, true, defender, defender_loc, def.shared_from_this(), units));
+		auto att_stats = std::make_unique<battle_context_unit_stats>(
+				attacker, attacker_loc, attacker_weapon, true, defender, defender_loc, def.shared_from_this(), units);
 
-		std::unique_ptr<battle_context_unit_stats> def_stats(new battle_context_unit_stats(
-				defender, defender_loc, choices[i], false, attacker, attacker_loc, att.shared_from_this(), units));
+		auto def_stats = std::make_unique<battle_context_unit_stats>(
+				defender, defender_loc, choices[i], false, attacker, attacker_loc, att.shared_from_this(), units);
 
 		if(def_stats->disable) {
 			continue;
 		}
 
-		std::unique_ptr<combatant> att_comb(new combatant(*att_stats));
-		std::unique_ptr<combatant> def_comb(new combatant(*def_stats, prev_def));
+		auto att_comb = std::make_unique<combatant>(*att_stats);
+		auto def_comb = std::make_unique<combatant>(*def_stats, prev_def);
 
 		att_comb->fight(*def_comb);
 
@@ -988,10 +988,6 @@ void attack::fire_event(const std::string& n)
 	) {
 		actions::recalculate_fog(defender_side);
 
-		if(update_display_) {
-			display::get_singleton()->redraw_minimap();
-		}
-
 		fire_event("attack_end");
 		throw attack_end_exception();
 	}
@@ -1199,16 +1195,10 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 		OOS_error_ = true;
 	}
 
-	if(dies) {
-		// Will be reset in unit_killed() later.
-		unit::dying_unit_loc = defender.loc_;
-	}
-
 	if(hits) {
 		try {
 			fire_event(attacker_turn ? "attacker_hits" : "defender_hits");
 		} catch(const attack_end_exception&) {
-			unit::dying_unit_loc = map_location::null_location();
 			refresh_bc();
 			return false;
 		}
@@ -1216,7 +1206,6 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 		try {
 			fire_event(attacker_turn ? "attacker_misses" : "defender_misses");
 		} catch(const attack_end_exception&) {
-			unit::dying_unit_loc = map_location::null_location();
 			refresh_bc();
 			return false;
 		}
@@ -1298,8 +1287,6 @@ void attack::unit_killed(unit_info& attacker,
 
 	std::string undead_variation = defender.get_unit().undead_variation();
 
-	unit::dying_unit_loc = defender.loc_;
-
 	fire_event("attack_end");
 	refresh_bc();
 
@@ -1324,7 +1311,6 @@ void attack::unit_killed(unit_info& attacker,
 
 	// WML has invalidated the dying unit, abort.
 	if(!defender.valid() || defender.get_unit().hitpoints() > 0) {
-		unit::dying_unit_loc = map_location::null_location();
 		return;
 	}
 
@@ -1348,8 +1334,6 @@ void attack::unit_killed(unit_info& attacker,
 
 	resources::game_events->pump().fire("die", death_loc, attacker_loc, dat);
 	refresh_bc();
-
-	unit::dying_unit_loc = map_location::null_location();
 
 	if(!defender.valid() || defender.get_unit().hitpoints() > 0) {
 		// WML has invalidated the dying unit, abort
@@ -1410,6 +1394,11 @@ void attack::perform()
 		return;
 	}
 
+	if(a_.get_unit().attacks_left() <= 0) {
+		LOG_NG << "attack::perform(): not enough ap.\n";
+		return;
+	}
+
 	a_.get_unit().set_facing(a_.loc_.get_relative_dir(d_.loc_));
 	d_.get_unit().set_facing(d_.loc_.get_relative_dir(a_.loc_));
 
@@ -1430,6 +1419,11 @@ void attack::perform()
 
 	a_stats_ = &bc_->get_attacker_stats();
 	d_stats_ = &bc_->get_defender_stats();
+
+	if(a_stats_->disable) {
+		LOG_NG << "attack::perform(): tried to attack with a disabled attack.\n";
+		return;
+	}
 
 	if(a_stats_->weapon) {
 		a_.weap_id_ = a_stats_->weapon->id();
@@ -1455,8 +1449,8 @@ void attack::perform()
 	d_.orig_attacks_ = d_stats_->num_blows;
 	a_.n_attacks_ = a_.orig_attacks_;
 	d_.n_attacks_ = d_.orig_attacks_;
-	a_.xp_ = d_.get_unit().level();
-	d_.xp_ = a_.get_unit().level();
+	a_.xp_ = game_config::combat_xp(d_.get_unit().level());
+	d_.xp_ = game_config::combat_xp(a_.get_unit().level());
 
 	bool defender_strikes_first = (d_stats_->firststrike && !a_stats_->firststrike);
 	unsigned int rounds = std::max<unsigned int>(a_stats_->rounds, d_stats_->rounds) - 1;
@@ -1514,11 +1508,6 @@ void attack::perform()
 
 	if(update_def_fog_) {
 		actions::recalculate_fog(defender_side);
-	}
-
-	// TODO: if we knew the viewing team, we could skip this display update
-	if(update_minimap_ && update_display_) {
-		display::get_singleton()->redraw_minimap();
 	}
 
 	if(a_.valid()) {

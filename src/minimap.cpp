@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 #include "display.hpp"
 #include "game_board.hpp"
 #include "gettext.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "preferences/general.hpp"
@@ -37,20 +37,18 @@ static lg::log_domain log_display("display");
 
 namespace image
 {
-void render_minimap(texture& tex, const gamemap& map, const team* vw, const unit_map* units, const std::map<map_location, unsigned int>* reach_map, bool ignore_terrain_disabled)
+void render_minimap(unsigned dst_w,
+		unsigned dst_h,
+		const gamemap& map,
+		const team* vw,
+		const unit_map* units,
+		const std::map<map_location, unsigned int>* reach_map,
+		bool ignore_terrain_disabled)
 {
-	if(tex.null()) {
-		return;
-	}
-
 	CVideo& video = CVideo::get_singleton();
 	display* disp = display::get_singleton();
 
 	const bool is_blindfolded = disp && disp->is_blindfolded();
-
-	// Validate that the passed texture is the current render target.
-	// TODO: if it's not, maybe set it here?
-	assert(SDL_GetRenderTarget(video.get_renderer()) == tex);
 
 	const terrain_type_data& tdata = *map.tdata();
 
@@ -314,10 +312,9 @@ void render_minimap(texture& tex, const gamemap& map, const team* vw, const unit
 	}
 
 	texture::info src_info = minimap.get_info();
-	texture::info dst_info = tex.get_info();
 
-	const double wratio = dst_info.w * 1.0 / src_info.w;
-	const double hratio = dst_info.h * 1.0 / src_info.h;
+	const double wratio = dst_w * 1.0 / src_info.w;
+	const double hratio = dst_h * 1.0 / src_info.h;
 
 	const double ratio = std::min<double>(wratio, hratio);
 

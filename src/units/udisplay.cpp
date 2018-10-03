@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -758,26 +758,36 @@ void unit_recruited(const map_location& loc, const map_location& leader_loc)
 		return;
 	}
 
+	const display_context& dc = disp->current_display_context();
+	const team& viewing_team = dc.get_team(disp->viewing_side());
+
 	unit_map::const_iterator u = disp->get_units().find(loc);
 	if(u == disp->get_units().end()) {
 		return;
 	}
+	const bool unit_visible = u->is_visible_to_team(viewing_team, false);
+
+	unit_map::const_iterator leader = disp->get_units().find(leader_loc); // may be null_location
+	const bool leader_visible = (leader != disp->get_units().end()) && leader->is_visible_to_team(viewing_team, false);
 
 	u->set_hidden(true);
 
 	unit_animator animator;
 
-	if(leader_loc != map_location::null_location()) {
-		unit_map::const_iterator leader = disp->get_units().find(leader_loc);
-		if(leader == disp->get_units().end()) {
-			return;
-		}
-
-		disp->scroll_to_tiles(loc, leader_loc, game_display::ONSCREEN, true, 0.0, false);
-		leader->set_facing(leader_loc.get_relative_dir(loc));
-		animator.add_animation(&*leader, "recruiting", leader_loc, loc, 0, true);
+	if (leader_visible && unit_visible) {
+		disp->scroll_to_tiles(loc,leader_loc,game_display::ONSCREEN,true,0.0,false);
+	} else if (leader_visible) {
+		disp->scroll_to_tile(leader_loc,game_display::ONSCREEN,true,false);
+	} else if (unit_visible) {
+		disp->scroll_to_tile(loc,game_display::ONSCREEN,true,false);
 	} else {
-		disp->scroll_to_tile(loc, game_display::ONSCREEN, true, false);
+		return;
+	}
+	if (leader != disp->get_units().end()) {
+		leader->set_facing(leader_loc.get_relative_dir(loc));
+		if (leader_visible) {
+			animator.add_animation(&*leader, "recruiting", leader_loc, loc, 0, true);
+		}
 	}
 
 	u->set_hidden(false);

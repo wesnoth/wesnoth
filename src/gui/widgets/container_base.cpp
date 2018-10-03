@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -194,12 +194,12 @@ void container_base::set_visible_rectangle(const SDL_Rect& rectangle)
 	grid_.set_visible_rectangle(rectangle);
 }
 
-void container_base::impl_draw_children(int x_offset, int y_offset)
+void container_base::impl_draw_children()
 {
 	assert(get_visible() == widget::visibility::visible
 		   && grid_.get_visible() == widget::visibility::visible);
 
-	grid_.draw_children(x_offset, y_offset);
+	grid_.draw_children();
 }
 
 void container_base::layout_children()
@@ -257,7 +257,7 @@ container_base::init_grid(const std::shared_ptr<builder_grid>& grid_builder)
 
 	assert(grid_.get_rows() == 0 && grid_.get_cols() == 0);
 
-	grid_builder->build(&grid_);
+	grid_builder->build(grid_);
 }
 
 point container_base::border_space() const

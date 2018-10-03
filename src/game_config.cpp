@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 #include "log.hpp"
 #include "utils/general.hpp"
 #include "utils/math.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 #include "wesconfig.h"
 #include "serialization/string_utils.hpp"
 
@@ -55,6 +55,7 @@ int village_income   = 1;
 int village_support  = 1;
 int recall_cost      = 20;
 int kill_experience  = 8;
+int combat_experience  = 1;
 
 int poison_amount    = 8;
 int rest_heal_amount = 2;
@@ -269,6 +270,7 @@ void load_config(const config &v)
 	rest_heal_amount = v["rest_heal_amount"].to_int(2);
 	recall_cost      = v["recall_cost"].to_int(20);
 	kill_experience  = v["kill_experience"].to_int(8);
+	combat_experience= v["combat_experience"].to_int(1);
 	lobby_refresh    = v["lobby_refresh"].to_int(2000);
 	default_terrain  = v["default_terrain"].str();
 	tile_size        = v["tile_size"].to_int(72);

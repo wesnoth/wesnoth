@@ -76,7 +76,7 @@ function ca_wolves_multipacks_attack:execution(cfg)
                 end
 
                 -- Find which target can be attacked by the most units, from the most hexes; and rate by fewest HP if equal
-                local max_rating, best_target = -9e99
+                local max_rating, best_target = - math.huge
                 for attack_ind,attack in pairs(attack_map_wolves) do
                     local number_wolves, number_hexes = 0, 0
                     for _,w in pairs(attack) do number_wolves = number_wolves + 1 end
@@ -110,7 +110,7 @@ function ca_wolves_multipacks_attack:execution(cfg)
                 -- Now we know the best target and need to attack
                 -- This is done on a wolf-by-wolf basis, the outside while loop taking care of
                 -- the next wolf in the pack on subsequent iterations
-                local max_rating, best_attack = -9e99
+                local max_rating, best_attack = - math.huge
                 for _,attack in ipairs(attacks) do
                     if (attack.target.x == best_target.x) and (attack.target.y == best_target.y) then
                         local rating = attack.att_stats.average_hp / 2. - attack.def_stats.average_hp

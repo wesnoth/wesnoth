@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Fabian Mueller <fabianmueller5@gmx.de>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -98,7 +98,7 @@ editor_action* mouse_action_unit::up_left(editor_display& disp, int x, int y)
 		return nullptr;
 	}
 
-	unit_type type = unit_palette_.selected_fg_item();
+	const unit_type& type = unit_palette_.selected_fg_item();
 
 	// Does this serve a purpose other than making sure the type is built?
 	// (Calling unit_types.build_unit_type(type) would now accomplish that

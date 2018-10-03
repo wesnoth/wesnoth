@@ -12,9 +12,9 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:31 UTC\n"
-"PO-Revision-Date: 2018-05-07 07:23+0100\n"
+"PO-Revision-Date: 2018-05-16 06:51+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
-"Language-Team: Galician <proxecto@trasno.gal>\n"
+"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -97,7 +97,6 @@ msgstr "Destruír un inimigo forte."
 msgid "Get yourself killed"
 msgstr "Que te maten."
 
-#
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:144
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:157
@@ -162,6 +161,14 @@ msgstr "Movemento"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:211
+#, fuzzy
+#| msgid ""
+#| "When you hover over or select a unit, in this case Konrad, the places he "
+#| "can move to are highlighted. All units have a certain number of "
+#| "<i>movement points</i>, which dictate how many hexes that unit can move "
+#| "per turn. Normally, moving one hex on flat terrain uses one movement "
+#| "point. To move, simply click on Konrad and then your destination. (You "
+#| "can press <b>u</b> to undo a move if you move to the wrong place.)"
 msgid ""
 "When you select a unit, in this case Konrad, the places he can move to are "
 "highlighted. All units have a certain number of <i>movement points</i>, "
@@ -170,16 +177,25 @@ msgid ""
 "your destination. (You can press <b>u</b> to undo a move if you move to the "
 "wrong place.)"
 msgstr ""
-"Cando seleccionas unha unidade, neste caso Conrad, saliéntanse os lugares "
-"onde pode ir. Todas as unidades teñen un certo número de <i>puntos de "
-"movemento</i>, que determinan a cantidade de hexágonos que a unidade pode "
-"moverse cada rolda. Normalmente, para moverse un hexágono en terreo chan "
-"necesítase un punto de movemento. Para moverte, preme o lugar de destino. "
-"Podes premer <b>U</b> para desfacer un movemento se acabas nun lugar "
-"distinto do lugar onde querías ir."
+"Cando sitúas o cursor sobre unha unidade ou a seleccionas, neste caso "
+"Conrad, saliéntanse os lugares onde pode ir. Todas as unidades teñen un "
+"certo número de <i>puntos de movemento</i>, que determinan a cantidade de "
+"hexágonos que a unidade pode moverse cada rolda. Normalmente, para moverse "
+"un hexágono en terreo chan necesítase un punto de movemento. Para moverte, "
+"preme sobre Konrad e a continuación sobre o lugar de destino. Podes premer "
+"<b>U</b> para desfacer un movemento se acabas nun lugar distinto do lugar "
+"onde querías ir."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:219
+#, fuzzy
+#| msgid ""
+#| "When you hover over or select a unit, in this case Li’sar, the places she "
+#| "can move to are highlighted. All units have a certain number of "
+#| "<i>movement points</i>, which dictate how many hexes that unit can move "
+#| "per turn. Normally, moving one hex on flat terrain uses one movement "
+#| "point. To move, simply click on Li’sar and then your destination. (You "
+#| "can press <b>u</b> to undo a move if you move to the wrong place.)"
 msgid ""
 "When you select a unit, in this case Li’sar, the places she can move to are "
 "highlighted. All units have a certain number of <i>movement points</i>, "
@@ -188,23 +204,28 @@ msgid ""
 "your destination. (You can press <b>u</b> to undo a move if you move to the "
 "wrong place.)"
 msgstr ""
-"Cando seleccionas unha unidade, neste caso Li’sar, saliéntanse os lugares "
-"onde pode ir. Todas as unidades teñen un certo número de <i>puntos de "
-"movemento</i>, que determinan a cantidade de hexágonos que a unidade pode "
-"moverse cada rolda. Normalmente, para moverse un hexágono de terreo chan "
-"necesítase un punto de movemento. Para moverte, preme o lugar de destino. "
-"Podes premer <b>U</b> para desfacer un movemento se acabas nun lugar "
-"distinto do lugar onde querías ir."
+"Cando sitúas o cursor sobre unha unidade ou a seleccionas, neste caso "
+"Li’sar, saliéntanse os lugares onde pode ir. Todas as unidades teñen un "
+"certo número de <i>puntos de movemento</i>, que determinan a cantidade de "
+"hexágonos que a unidade pode moverse cada rolda. Normalmente, para moverse "
+"un hexágono en terreo chan necesítase un punto de movemento. Para moverte, "
+"preme sobre Li’sar e a continuación sobre o lugar de destino. Podes premer "
+"<b>U</b> para desfacer un movemento se acabas nun lugar distinto do lugar "
+"onde querías ir."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:230
+#, fuzzy
+#| msgid "Move Konrad next to Delfador"
 msgid "Move Konrad next to Delfador."
-msgstr "Leva a Conrad canda Delfador."
+msgstr "Leva a Conrad canda Delfador"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:232
+#, fuzzy
+#| msgid "Move Li’sar next to Delfador"
 msgid "Move Li’sar next to Delfador."
-msgstr "Leva a Li’sar canda Delfador."
+msgstr "Leva a Li’sar canda Delfador"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:249
@@ -277,25 +298,35 @@ msgstr "Atacar"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:340
+#, fuzzy
+#| msgid ""
+#| "To attack the quintain, first select the attacker (Konrad), then the "
+#| "target (the quintain). You will see an attack description. Click "
+#| "<b>Attack</b> when you’re ready."
 msgid ""
 "To attack the quintain, first select the attacker (Konrad), then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
 "b>, Konrad will attack."
 msgstr ""
 "Para atacar o estafermo, primeiro selecciona o atacante (Conrad) e logo o "
-"obxectivo (o estafermo). Verás unha descrición do ataque. Cando premas "
-"<b>Atacar</b>, Conrad atacará."
+"obxectivo (o estafermo). Verás unha descrición do ataque. Preme <b>Atacar</"
+"b> cando esteas listo."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:347
+#, fuzzy
+#| msgid ""
+#| "To attack the quintain, first select the attacker (Li’sar), then the "
+#| "target (the quintain). You will see an attack description. Click "
+#| "<b>Attack</b> when you’re ready."
 msgid ""
 "To attack the quintain, first select the attacker (Li’sar), then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
 "b>, Li’sar will attack."
 msgstr ""
 "Para atacar o estafermo, primeiro selecciona o atacante (Li’sar) e logo o "
-"obxectivo (o estafermo). Verás unha descrición do ataque. Cando premas "
-"<b>Atacar</b>, Li’sar atacará."
+"obxectivo (o estafermo). Verás unha descrición do ataque. Preme <b>Atacar</"
+"b> cando esteas listo."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:362
@@ -1329,6 +1360,14 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:411
+#, fuzzy
+#| msgid ""
+#| "You could. However, elves (and orcs) have bad <i>defense</i> in water. "
+#| "You’ll be more vulnerable as you try to wade slowly across the ford; the "
+#| "enemy will have an 80% chance to hit you. Since elves have good defense "
+#| "in the forest, I would advise you keep to the trees and attack the orcs "
+#| "from there; your Fighters will only suffer a 40% chance of being hit in "
+#| "return, while Shamans and Archers will only incur a 30% chance."
 msgid ""
 "You could. However, elves (and orcs) have bad <i>defense</i> in water. "
 "You’ll be more vulnerable as you try to wade slowly across the ford; the "
@@ -1340,7 +1379,8 @@ msgstr ""
 "na auga. Serás máis vulnerábel mentres intentas cruzar lentamente o vao; o "
 "inimigo terá unha probabilidade do 80% de atinarte. Dado que os elfos teñen "
 "unha boa defensa nos bosques, recoméndote quedar entre as árbores e atacar "
-"aos orcos desde elas; só terán unha probabilidade do 40% de atinarte."
+"aos orcos desde elas; os teus loitadores só terán unha probabilidade do 40% "
+"de recibir un golpe, e as xamáns e os arqueiros só un 30%."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:416
@@ -1639,6 +1679,13 @@ msgstr "O momento do día"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:661
+#, fuzzy
+#| msgid ""
+#| "During a scenario, the time of day will shift as turns pass. There are "
+#| "four <i>alignments</i> a unit may be: Lawful, Neutral, Chaotic, or "
+#| "Liminal. Each alignment gets a different bonus or handicap depending on "
+#| "the time of day. You can hover over the sky image below the minimap on "
+#| "the right to see the current time of day and who has the advantage."
 msgid ""
 "During a scenario, the time of day will shift as turns pass. There are four "
 "<i>alignments</i> a unit may be: Lawful, Neutral, Chaotic, or Liminal. Each "
@@ -1651,8 +1698,8 @@ msgstr ""
 "lle afecta o momento do día. Existen catro tipos de aliñamento: leal, "
 "neutral, caótico ou crepuscular.  Cada aliñamento fornece á unidade unha "
 "bonificación ou penalización distinta segundo o momento do día actual. Podes "
-"deixar o cursor sobre a imaxe da paisaxe que hai baixo o mapa, na barra "
-"lateral dereita, para ver cal é o momento do día actual e a quen beneficia."
+"deixar o cursor sobre a imaxe do ceo que hai baixo o mapa, na barra lateral "
+"dereita, para ver cal é o momento do día actual e a quen beneficia."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:672
@@ -1702,6 +1749,11 @@ msgstr "As condicións para a vitoria"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:703
+#, fuzzy
+#| msgid ""
+#| "In this scenario, you only need to defeat the orc leader to win. Victory "
+#| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
+#| "<b>Menu</b>."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. Victory "
 "conditions for a scenario are given under <b>Scenario Objectives</b> in  "
@@ -1884,27 +1936,41 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1010
+#, fuzzy
+#| msgid ""
+#| "Advancing a level has fully healed me! When attacking, I always have at "
+#| "least a 60% chance of hitting with my longbow thanks to my <i>Marksman</"
+#| "i> ability, and I deal 9 damage each for 4 attacks. Use me to dislodge "
+#| "hard-to-hit units."
 msgid ""
 "Advancing a level has fully healed me! I always have a 60% chance of hitting "
 "with my <i>Marksman</i> ability, and I deal 9 damage each for 4 attacks. Use "
 "me to dislodge hard-to-hit units."
 msgstr ""
 "Sandei completamente ao subir de nivel! Agora, coa miña habilidade de "
-"<i>tirador</i> terei sempre unha probabilidade do 60% de atinar, teño 4 "
-"oportunidades de ataque por combate e fago 9 puntos de dano por cada vez que "
-"atino. Úsame para ocuparte das unidades ben protexidas."
+"<i>tirador</i> terei sempre unha probabilidade de polo menos o 60% de atinar "
+"ao atacar co meu, teño 4 oportunidades de ataque por combate e fago 9 puntos "
+"de dano por cada vez que atino. Úsame para ocuparte das unidades ben "
+"protexidas."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1011
+#, fuzzy
+#| msgid ""
+#| "female^Advancing a level has fully healed me! When attacking, I always "
+#| "have at least a 60% chance of hitting with my longbow thanks to my "
+#| "<i>Marksman</i> ability, and I deal 9 damage each for 4 attacks. Use me "
+#| "to dislodge hard-to-hit units."
 msgid ""
 "female^Advancing a level has fully healed me! I always have a 60% chance of "
 "hitting with my <i>Marksman</i> ability, and I deal 9 damage each for 4 "
 "attacks. Use me to dislodge hard-to-hit units."
 msgstr ""
-"Avanzando un nivel sandei completamente! Agora, coa miña habilidade de "
-"<i>tirador</i> poderei atinar sempre tres de cada cinco veces como mínimo, "
-"teño catro oportunidades de ataque por combate e fago nove puntos de dano "
-"por cada vez que atino. Úsame para ocuparte das unidades ben protexidas."
+"Sandei completamente ao subir de nivel! Agora, coa miña habilidade de "
+"<i>tiradora</i> terei sempre unha probabilidade de polo menos o 60% de "
+"atinar ao atacar co meu arco, teño 4 oportunidades de ataque por combate e "
+"fago 9 puntos de dano por cada vez que atino. Úsame para ocuparte das "
+"unidades ben protexidas."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1024
@@ -2048,6 +2114,19 @@ msgstr ""
 "\n"
 "<big>Preme o botón principal ou a barra espaciadora para continuar…</big>"
 
+#~ msgid "Village"
+#~ msgstr "Vila"
+
+#~ msgid "Keep"
+#~ msgstr "Torre"
+
+#~ msgid ""
+#~ "female^Hang on! You need to gather your forces. Or do you intend to fight "
+#~ "the orcs single-handedly?"
+#~ msgstr ""
+#~ "Agarda! Debes reunir as túas forzas. Ou pensas loitar contra os orcos ti "
+#~ "soíña?"
+
 #~ msgid "End Scenario"
 #~ msgstr "Rematar o escenario"
 
@@ -2160,9 +2239,6 @@ msgstr ""
 #~ "Preme o botón de <b>Continuar</b> que hai na esquina inferior dereita da "
 #~ "pantalla."
 
-#~ msgid "Village"
-#~ msgstr "Vila"
-
 #~ msgid ""
 #~ "female^There is a village on the other side of the river. Visiting "
 #~ "villages is a good idea, and ending your turn in one will heal you. To "
@@ -2186,9 +2262,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Estás a piques de sandar $hp_difference puntos de vida, pero vai sendo "
 #~ "hora de conseguir axuda contra ese estafermo."
-
-#~ msgid "Keep"
-#~ msgstr "Torre"
 
 #~ msgid ""
 #~ "female^A splendid idea. You can recruit two units if you return to the "

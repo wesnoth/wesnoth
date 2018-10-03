@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2018\n"
@@ -1724,9 +1724,12 @@ msgstr ""
 
 #. [object]
 #: data/core/macros/items.cfg:521
+#, fuzzy
+#| msgid ""
+#| "This trident gives merfolk the power to throw lightning at their enemies."
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
-"このトライデントを持ったマーフォークは、敵に電気の矢を放つことができます！"
+"このトライデントを持ったマーフォークは、敵に電気の矢を放つことができます。"
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:525
@@ -6052,23 +6055,23 @@ msgid "Missing addon: $id"
 msgstr "未所持のアドオン： $id"
 
 #: src/game_initialization/lobby_data.cpp:264
-#, fuzzy
-#| msgid "(missing)"
 msgid "$era_name (missing)"
-msgstr "（不明）"
+msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:271
 msgid "Unknown era"
 msgstr "不明な時代"
 
 #: src/game_initialization/lobby_data.cpp:288
+#, fuzzy
+#| msgid "(observing)"
 msgid "(missing)"
-msgstr "（不明）"
+msgstr "（観戦中）"
 
 #: src/game_initialization/lobby_data.cpp:334
 #: src/game_initialization/lobby_data.cpp:364
 msgid "S"
-msgstr "S"
+msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:353
 msgid "Remote scenario"
@@ -6077,7 +6080,7 @@ msgstr "リモートシナリオ"
 #: src/game_initialization/lobby_data.cpp:372
 #: src/game_initialization/lobby_data.cpp:395
 msgid "C"
-msgstr "C"
+msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:400
 msgid "Unknown scenario"
@@ -6861,7 +6864,7 @@ msgid ""
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
 "召還可能な部隊がありません\n"
-"（以前のシナリオを生き延びた、熟練ユニットがいるはずです）"
+"（召喚できるのは以前のシナリオを生き延びたユニットだけです）"
 
 #: src/menu_events.cpp:378
 msgid "You currently can't recall at the highlighted location"
@@ -8204,8 +8207,28 @@ msgstr "$player の計画を非表示"
 msgid "Whiteboard Options"
 msgstr "行動予定オプション"
 
+#~ msgid "Use experimental PRNG combat"
+#~ msgstr "実験的な PRNG 戦闘を使用"
+
+#~ msgid ""
+#~ "Enables more determinstic chance-to-hit calculations. This is an "
+#~ "experimental feature designed to bring the observed hit/miss rate more in "
+#~ "line with the displayed percentages.\n"
+#~ "\n"
+#~ "Note: this option only affects singleplayer, and the ‘Save random seed’ "
+#~ "option must also be enabled when creating a game for this to work."
+#~ msgstr ""
+#~ "より決定論的な命中率の計算を行います。これは実験的な機能は、観測される命中"
+#~ "結果を、表示されている確率により近づけるようにデザインされています。\n"
+#~ "\n"
+#~ "メモ：このオプションはシングルプレイヤーでのみ適用されます。また、「乱数の"
+#~ "シードを保存」オプションをゲーム作成時に有効にしなｋれば動作しません。"
+
 #~ msgid "Trailers"
 #~ msgstr "トレーラー"
+
+#~ msgid "color^Gold"
+#~ msgstr "ゴールド"
 
 #~ msgid "The standard Wesnoth core."
 #~ msgstr "標準の Wesnoth コアです。"
@@ -8227,6 +8250,18 @@ msgstr "行動予定オプション"
 #~ msgstr ""
 #~ "DroidSansJapanese.ttf,Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
+
+#~ msgid "battery"
+#~ msgstr "バッテリー"
+
+#~ msgid "an advancement choice"
+#~ msgstr "レベルアップ先の選択"
+
+#~ msgid "scenario_abbreviation^S"
+#~ msgstr "シ"
+
+#~ msgid "campaign_abbreviation^C"
+#~ msgstr "キ"
 
 #~ msgid "mp_game_available_slots^Full"
 #~ msgstr "満席"
@@ -8255,8 +8290,23 @@ msgstr "行動予定オプション"
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "不明な項目への参照："
 
+#~ msgid "No unit recalled"
+#~ msgstr "ユニットは召還されませんでした"
+
+#~ msgid "Side '$side' is already droided."
+#~ msgstr "陣営「$side」はすでにコンピュータに操作されています．"
+
+#~ msgid "Side '$side' controller is now controlled by: AI."
+#~ msgstr "陣営「$side」は AI によって操作されます．"
+
+#~ msgid "Side '$side' controller is now controlled by: human."
+#~ msgstr "陣営「$side」は人間によって操作されます．"
+
 #~ msgid "weapon^None"
 #~ msgstr "なし"
+
+#~ msgid "Battery"
+#~ msgstr "バッテリー"
 
 #~ msgid "(unknown player)"
 #~ msgstr "（不明なプレイヤー）"

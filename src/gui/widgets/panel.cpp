@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,7 +18,6 @@
 
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gettext.hpp"
 #include "sdl/rect.hpp"
 #include "wml_exception.hpp"
@@ -36,7 +35,7 @@ namespace gui2
 REGISTER_WIDGET(panel)
 
 panel::panel(const implementation::builder_styled_widget& builder, const std::string& control_type)
-	: container_base(builder, control_type.empty() ? get_control_type() : control_type)
+	: container_base(builder, control_type.empty() ? type() : control_type)
 {
 }
 
@@ -64,14 +63,14 @@ unsigned panel::get_state() const
 	return 0;
 }
 
-void panel::impl_draw_background(int /*x_offset*/, int /*y_offset*/)
+void panel::impl_draw_background()
 {
 	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
 
 	get_canvas(0).render();
 }
 
-void panel::impl_draw_foreground(int /*x_offset*/, int /*y_offset*/)
+void panel::impl_draw_foreground()
 {
 	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
 
@@ -194,9 +193,9 @@ builder_panel::builder_panel(const config& cfg)
 	grid = std::make_shared<builder_grid>(c);
 }
 
-widget* builder_panel::build() const
+widget_ptr builder_panel::build() const
 {
-	panel* widget = new panel(*this);
+	auto widget = std::make_shared<panel>(*this);
 
 	DBG_GUI_G << "Window builder: placed panel '" << id << "' with definition '"
 			  << definition << "'.\n";

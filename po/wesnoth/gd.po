@@ -2,22 +2,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Wesnoth development team
 # This file is distributed under the same license as the PACKAGE package.
-# GunChleoc <fios@foramnagaidhlig.net>, 2018.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-05-07 10:56+0100\n"
-"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
-"Language-Team: Fòram na Gàidhlig\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: GunChleoc, 2017\n"
+"Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
+"teams/12769/gd/)\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Generator: Virtaal 0.7.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -232,6 +234,7 @@ msgstr "Seall èifeachdan grafaigeachd nan aonadan sònraichte"
 #: data/advanced_preferences.cfg:189
 msgid "Show deprecation messages in-game"
 msgstr ""
+"Seall teachdaireachdan mu nithean nach molar tuilleadh am broinn a’ gheama"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:190
@@ -240,6 +243,11 @@ msgid ""
 "will still be shown in the log, even if this is disabled. In addition, the "
 "deprecation log-domain controls how many messages are printed."
 msgstr ""
+"Seall rabhaidhean mu API nach molar tuilleadh air raon na cabadaich am "
+"broinn a’ gheama. Thèid na teachdaireachdan sin a shealltainn san loga "
+"fhathast ma chuireas tu seo dheth. Cuideachd, stiùirichidh àrainn an loga "
+"air nithean nach molar tuilleadh co mheud teachdaireachdan a thèid a "
+"shealltainn. "
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:198
@@ -797,7 +805,7 @@ msgstr "Bogha criostail"
 #. [item]: id=bow-elven
 #: data/core/editor/items.cfg:136
 msgid "Elven Bow"
-msgstr "Bogha shìthiche"
+msgstr "Bogha-shìthe"
 
 #. [item]: id=bow
 #: data/core/editor/items.cfg:142
@@ -1728,10 +1736,13 @@ msgstr ""
 
 #. [object]
 #: data/core/macros/items.cfg:521
+#, fuzzy
+#| msgid ""
+#| "This trident gives merfolk the power to throw lightning at their enemies."
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
-"Leigidh am muirgheadh seo le daoine-mara beathraichean a thilgeil air na "
-"nàimhdean!"
+"Bheir am muirgheadh seo cumhachd dhan t-sluagh-mhara ach an tilg iad "
+"dealanach air an nàimhean."
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:525
@@ -3445,7 +3456,7 @@ msgstr "Deas-ghnàth nan gaisgeach"
 #. [music]
 #: data/core/macros/sound-utils.cfg:330
 msgid "Into the Shadows"
-msgstr "Dha na faileasan"
+msgstr "Dha na sgàilean"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:336
@@ -4234,12 +4245,12 @@ msgstr "na chlach"
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:130
 msgid "female^unhealable"
-msgstr "dho-slànach"
+msgstr "dho-slànaichte"
 
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:130
 msgid "unhealable"
-msgstr "do-slànach"
+msgstr "do-slànaichte"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
@@ -4698,7 +4709,7 @@ msgid ""
 msgstr ""
 "Sabaididh aonadan <i>dligheach</i> nas fhearr air an latha is aonadan "
 "<i>coimeasgach</i> nas fhearr air an oidhche. Tha aonadan <i>neodrach</i> "
-"coma mu dhèidhinn oidhche no latha. Sabaididh na h-aonadan ainneamh "
+"coma mu dhèidhinn an ama dhen latha. Sabaididh na h-aonadan ainneamh "
 "<i>stairsnich</i> nas fhearr air a’ chiaradh is chamhanaich."
 
 #. [tip]
@@ -4714,8 +4725,8 @@ msgstr ""
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
 msgstr ""
-"Faodaidh plana math tuiteam às a chèile ma bheir thu ionnsaigh air àm an "
-"latha cearr."
+"Faodaidh plana math tuiteam às a chèile ma bheir thu ionnsaigh air àm cearr "
+"dhen latha."
 
 #. [tip]
 #: data/tips.cfg:61 data/tips.cfg:85 data/tips.cfg:137 data/tips.cfg:145
@@ -5120,7 +5131,7 @@ msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
 msgstr ""
-"Tha aonadan le cruinn-leum nas fearr an aghaidh nàimhdean a mharbhas iad le "
+"Tha aonadan le brùchdadh nas fearr an aghaidh nàimhdean a mharbhas iad le "
 "aon bhuille."
 
 #. [tip]
@@ -5222,11 +5233,11 @@ msgid ""
 msgstr ""
 "Tha an comas <i>maille</i> fìor chumhachdach oir tha buaidhean fad is "
 "farsaing aige. Chan fhaigh an nàmhaid ach an dàrna leth à comas <i>sùigh</"
-"i>, chan fhaigh e buannachd à <i>cruinn-leum</i> no <i>cùl-shàthadh</i> idir "
-"is tha <i>caothach a’ chatha</i> nas laige. Tha e doirbh dha nàimhdean "
-"luatha teicheadh, tha nàimhdean malla cha mhòr gun ghluasad is chan fhaigh "
-"na h-aonadan agad fhèin cus dochann dìoghaltais is mar sin gheibh iad "
-"slànachadh nas luaithe."
+"i>, chan fhaigh e buannachd à <i>brùchdadh</i> no <i>cùl-shàthadh</i> idir "
+"is tha <i>mire-chatha</i> nas laige air. Tha e doirbh dha nàimhdean luatha "
+"teicheadh, tha nàimhdean malla cha mhòr gun ghluasad is chan fhaigh na h-"
+"aonadan agad fhèin cus dochann dìoghaltais is mar sin gheibh iad slànachadh "
+"nas luaithe."
 
 #. [tip]
 #: data/tips.cfg:225
@@ -5292,7 +5303,7 @@ msgid ""
 "<i>Charge</i> against a slowed opponent, the results can be impressive."
 msgstr ""
 "Faodaidh iomadh chomas sònraichte còmhla a bhith marbhtach. Ged a bheireadh "
-"e obair gus <i>ceannardas</i>, <i>soillseachadh</i> is <i>cruinn-leum</i> a "
+"e obair gus <i>ceannardas</i>, <i>soillseachadh</i> is <i>brùchdadh</i> a "
 "chur còmhla an aghaigh nàmhad air a bheil maille, mar eisimpleir, faodaidh "
 "an toradh a bhith drùidhteach."
 
@@ -6357,23 +6368,23 @@ msgid "Missing addon: $id"
 msgstr "Tha tuilleadan a dhìth: $id"
 
 #: src/game_initialization/lobby_data.cpp:264
-#, fuzzy
-#| msgid "(missing)"
 msgid "$era_name (missing)"
-msgstr "(a dhìth)"
+msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:271
 msgid "Unknown era"
 msgstr "Linn nach aithne dhuinn"
 
 #: src/game_initialization/lobby_data.cpp:288
+#, fuzzy
+#| msgid "(observing)"
 msgid "(missing)"
-msgstr "(a dhìth)"
+msgstr "(ag amharc)"
 
 #: src/game_initialization/lobby_data.cpp:334
 #: src/game_initialization/lobby_data.cpp:364
 msgid "S"
-msgstr "S"
+msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:353
 msgid "Remote scenario"
@@ -6382,7 +6393,7 @@ msgstr "Cnàmh-sgeul air astar"
 #: src/game_initialization/lobby_data.cpp:372
 #: src/game_initialization/lobby_data.cpp:395
 msgid "C"
-msgstr "C"
+msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:400
 msgid "Unknown scenario"
@@ -7379,8 +7390,8 @@ msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
-"Atharraich àireamh nan cuairtean (is àm an latha), no cuir 1 ris mura h-eil "
-"àireamh ’ga cur a-steach."
+"Atharraich àireamh nan cuairtean (is an t-àm dhen latha), no cuir 1 ris mura "
+"h-eil àireamh ’ga cur a-steach."
 
 #: src/menu_events.cpp:1207
 msgid "[turn]"
@@ -7801,8 +7812,14 @@ msgid "Save and abort game"
 msgstr "Sàbhail is sgur dhen gheama"
 
 #: src/playturn.cpp:283
+#, fuzzy
+#| msgid ""
+#| "$player who controlled side $side_drop has left the game. What do you "
+#| "want to do?"
 msgid "$player has left the game. What do you want to do?"
 msgstr ""
+"Dh’fhàg $player a stiùirich taobh $side_drop an geama. Dè a tha thu airson "
+"dèanamh?"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -7949,7 +7966,7 @@ msgstr "Le feartan sònraichte: "
 
 #: src/reports.cpp:704
 msgid "Time of day: "
-msgstr "Àm an latha: "
+msgstr "Àm dhen latha: "
 
 #: src/reports.cpp:708
 msgid "Leadership: "
@@ -8399,8 +8416,11 @@ msgstr ""
 "chluicheadair $player"
 
 #: src/synced_user_choice.cpp:326
+#, fuzzy
+#| msgid "waiting for $desc from side $sides"
+#| msgid_plural "waiting for $desc from sides $sides"
 msgid "waiting for $desc from side(s) $sides"
-msgstr ""
+msgstr "a’ feitheamh air $desc o thaobh $sides"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8424,11 +8444,11 @@ msgstr "Grad-iuchair: "
 
 #: src/time_of_day.cpp:45
 msgid "Stub Time of Day"
-msgstr "Bun-àm an latha"
+msgstr "Bun-àm dhen latha"
 
 #: src/time_of_day.cpp:46
 msgid "This Time of Day is only a Stub!"
-msgstr "Chan eil àm an latha seo ach ’na bhun-àm!"
+msgstr "Chan eil an t-àm dhen latha seo ach ’na bhun-àm!"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:356
@@ -8497,13 +8517,15 @@ msgstr[3] "$number puing-gluasaid"
 #. TRANSLATORS: Current value for WML code increase_movement, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:429
 #, fuzzy
-#| msgid "<span color=\"$color\">$number_or_percent</span> vision"
+#| msgid "<span color=\"$color\">$number_or_percent</span> movement point"
+#| msgid_plural ""
+#| "<span color=\"$color\">$number_or_percent</span> movement points"
 msgid "<span color=\"$color\">$number_or_percent movement</span> point"
 msgid_plural "<span color=\"$color\">$number_or_percent movement</span> points"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span> a lèirsinn"
-msgstr[1] "<span color=\"$color\">$number_or_percent</span> a lèirsinn"
-msgstr[2] "<span color=\"$color\">$number_or_percent</span> a lèirsinn"
-msgstr[3] "<span color=\"$color\">$number_or_percent</span> a lèirsinn"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> puing gluasaid"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> phuing gluasaid"
+msgstr[2] "<span color=\"$color\">$number_or_percent</span> puingean gluasaid"
+msgstr[3] "<span color=\"$color\">$number_or_percent</span> puing gluasaid"
 
 #: src/units/types.cpp:545 src/units/types.hpp:181
 msgid "chaotic"
@@ -8626,6 +8648,35 @@ msgstr "Falaich na planaichean aig $player"
 msgid "Whiteboard Options"
 msgstr "Roghainnean a’ bhùird-ghil"
 
+#~ msgid "Use experimental PRNG combat"
+#~ msgstr "Cleachd còmhrag PRNG probhail"
+
+#~ msgid ""
+#~ "Enables more determinstic chance-to-hit calculations. This is an "
+#~ "experimental feature designed to bring the observed hit/miss rate more in "
+#~ "line with the displayed percentages.\n"
+#~ "\n"
+#~ "Note: this option only affects singleplayer, and the ‘Save random seed’ "
+#~ "option must also be enabled when creating a game for this to work."
+#~ msgstr ""
+#~ "Cuiridh seo an coma àireamhachadh air seans bualaidh a tha nas cinntiche. "
+#~ "Seo gleus probhail a chaidh a dhealbhadh ach am bi tricead nam bualadh/"
+#~ "nan call a-rèir nan ceudan a thèid a shealltainn.\n"
+#~ "\n"
+#~ "An aire: cha bhith buaidh aig a’ ghleus seo ach air a’ mhodh aon-"
+#~ "chluicheadair agus ach an obraich seo, feumaidh tu an roghainn “Sàbhail "
+#~ "sìol na tuairmeachd” a chur an comas cuideachd nuair a chruthaicheas tu "
+#~ "geama."
+
+#~ msgid "Trailers"
+#~ msgstr "Trèilearan"
+
+#~ msgid "color^Gold"
+#~ msgstr "Òrach"
+
+#~ msgid "The standard Wesnoth core."
+#~ msgstr "Eitean stannardach Bheasnaid."
+
 #~ msgid ""
 #~ "There are no custom options available for the selected era, game, or "
 #~ "modification."
@@ -8646,11 +8697,70 @@ msgstr "Roghainnean a’ bhùird-ghil"
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
+#~ msgid "battery"
+#~ msgstr "bataraidh"
+
+#~ msgid "an advancement choice"
+#~ msgstr "taghadh àrdachaidh"
+
+#~ msgid "scenario_abbreviation^S"
+#~ msgstr "C"
+
+#~ msgid "campaign_abbreviation^C"
+#~ msgstr "I"
+
+#~ msgid "mp_game_available_slots^Full"
+#~ msgstr "Làn"
+
+#~ msgid "vision^none"
+#~ msgstr "chan eil gin"
+
+#~ msgid "time limit^none"
+#~ msgstr "chan eil gin"
+
+#~ msgid "The nickname ‘$nick’ is banned on this server’s forums."
+#~ msgstr ""
+#~ "Chaidh am far-ainm “$nick” a thoirmeasg air bòrd-brath an fhrithealaiche "
+#~ "seo."
+
+#~ msgid "Your IP address is banned on this server’s forums."
+#~ msgstr ""
+#~ "Chaidh an seòladh IP agad a thoirmeasg air bòrd-brath an fhrithealaiche "
+#~ "seo."
+
+#~ msgid ""
+#~ "The email address for the nickname ‘$nick’ is banned on this server’s "
+#~ "forums."
+#~ msgstr ""
+#~ "Chaidh seòladh puist-d an fhar-ainm “$nick” a thoirmeasg air bòrd-brath "
+#~ "an fhrithealaiche seo."
+
 #~ msgid "Connection failed: "
-#~ msgstr " "
+#~ msgstr "Dh’fhàillig leis a’ cheangal: "
 
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "Iomradh dha chuspair nach aithne dhuinn: "
 
+#~ msgid "No unit recalled"
+#~ msgstr "Cha deach aonad ais-ghairm"
+
+#~ msgid "Side '$side' is already droided."
+#~ msgstr "Tha smachd aig IF air “$side” mu thràth."
+
+#~ msgid "Side '$side' controller is now controlled by: AI."
+#~ msgstr "Tha “$side” fo smachd IF a-nis."
+
+#~ msgid "Side '$side' controller is now controlled by: human."
+#~ msgstr "Tha “$side” fo smachd daonna a-nis."
+
+#~ msgid "weapon^None"
+#~ msgstr "Chan eil gin"
+
+#~ msgid "Battery"
+#~ msgstr "Bataraidh"
+
 #~ msgid "(unknown player)"
 #~ msgstr "(cluicheadair nach aithne dhuinn)"
+
+#~ msgid "Disconnected from server."
+#~ msgstr "Chaidh an ceangal dhan fhrithealaiche a bhriseadh."

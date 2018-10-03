@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -569,7 +569,6 @@ game_events::pump_result_t shroud_clearer::fire_events()
  */
 void shroud_clearer::invalidate_after_clear()
 {
-	display::get_singleton()->recalculate_minimap();
 	display::get_singleton()->labels().recalculate_shroud();
 	// The tiles are invalidated as they are cleared, so no need
 	// to invalidate them here.

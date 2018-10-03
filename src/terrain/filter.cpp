@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -154,7 +154,14 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 			}
 		}
 		if (cfg_.has_attribute("location_id")) {
-			if (loc != fc_->get_disp_context().map().special_location(cfg_["location_id"])) {
+			std::set<map_location> matching_locs;
+			for(const auto& id : utils::split(cfg_["location_id"])) {
+				map_location test_loc = fc_->get_disp_context().map().special_location(id);
+				if(test_loc.valid()) {
+					matching_locs.insert(test_loc);
+				}
+			}
+			if (matching_locs.count(loc) == 0) {
 				return false;
 			}
 		}
@@ -330,11 +337,12 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 			const wfl::terrain_callable main(fc_->get_disp_context(), loc);
 			wfl::map_formula_callable callable(main.fake_ptr());
 			if(ref_unit) {
-				std::shared_ptr<wfl::unit_callable> ref(new wfl::unit_callable(*ref_unit));
+				auto ref = std::make_shared<wfl::unit_callable>(*ref_unit);
 				callable.add("teleport_unit", wfl::variant(ref));
 				// It's not destroyed upon scope exit because the variant holds a reference
 			}
-			const wfl::formula form(cfg_["formula"], new wfl::gamestate_function_symbol_table);
+			wfl::gamestate_function_symbol_table symbols;
+			const wfl::formula form(cfg_["formula"], &symbols);
 			if(!form.evaluate(callable).as_bool()) {
 				return false;
 			}
@@ -465,8 +473,14 @@ public:
 	static void filter_special_loc(T&& src, location_set& dest, const terrain_filter& filter, const F1& f1, const F2& f2)
 	{
 		if (filter.cfg_.has_attribute("location_id")) {
-			map_location loc2 = filter.fc_->get_disp_context().map().special_location(filter.cfg_["location_id"]);
-			filter_final(src, dest, filter, f1, f2, [loc2](const map_location& loc) { return loc == loc2; });
+			std::set<map_location> matching_locs;
+			for(const auto& id : utils::split(filter.cfg_["location_id"])) {
+				map_location test_loc = filter.fc_->get_disp_context().map().special_location(id);
+				if(test_loc.valid()) {
+					matching_locs.insert(test_loc);
+				}
+			}
+			filter_final(src, dest, filter, f1, f2, [matching_locs](const map_location& loc) { return matching_locs.count(loc) > 0; });
 		}
 		else {
 			filter_final(src, dest, filter, f1, f2, no_filter());
@@ -542,9 +556,11 @@ void terrain_filter::get_locs_impl(std::set<map_location>& locs, const unit* ref
 		terrain_filterimpl::filter_special_loc(area, match_set, *this, terrain_filterimpl::no_filter(), terrain_filterimpl::no_filter());
 	}
 	else if (cfg_.has_attribute("location_id")) {
-		map_location loc2 = fc_->get_disp_context().map().special_location(cfg_["location_id"]);
-		if (loc2.valid()) {
-			match_set.insert(loc2);
+		for(const auto& id : utils::split(cfg_["location_id"])) {
+			map_location test_loc = fc_->get_disp_context().map().special_location(id);
+			if(test_loc.valid()) {
+				match_set.insert(test_loc);
+			}
 		}
 	}
 	else {

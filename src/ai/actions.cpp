@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -1097,7 +1097,7 @@ attack_result_ptr actions::execute_attack_action(side_number side,
 		double aggression,
 		const unit_advancements_aspect& advancements)
 {
-	attack_result_ptr action(new attack_result(side, attacker_loc, defender_loc, attacker_weapon, aggression, advancements));
+	auto action = std::make_unique<attack_result>(side, attacker_loc, defender_loc, attacker_weapon, aggression, advancements);
 	execute_or_check(*action, execute);
 	return action;
 }
@@ -1109,7 +1109,7 @@ move_result_ptr actions::execute_move_action(side_number side,
 		bool remove_movement,
 		bool unreach_is_ok)
 {
-	move_result_ptr action(new move_result(side, from, to, remove_movement, unreach_is_ok));
+	auto action = std::make_unique<move_result>(side, from, to, remove_movement, unreach_is_ok);
 	execute_or_check(*action, execute);
 	return action;
 }
@@ -1117,7 +1117,7 @@ move_result_ptr actions::execute_move_action(side_number side,
 recall_result_ptr actions::execute_recall_action(
 		side_number side, bool execute, const std::string& unit_id, const map_location& where, const map_location& from)
 {
-	recall_result_ptr action(new recall_result(side, unit_id, where, from));
+	auto action = std::make_unique<recall_result>(side, unit_id, where, from);
 	execute_or_check(*action, execute);
 	return action;
 }
@@ -1128,7 +1128,7 @@ recruit_result_ptr actions::execute_recruit_action(side_number side,
 		const map_location& where,
 		const map_location& from)
 {
-	recruit_result_ptr action(new recruit_result(side, unit_name, where, from));
+	auto action = std::make_unique<recruit_result>(side, unit_name, where, from);
 	execute_or_check(*action, execute);
 	return action;
 }
@@ -1136,7 +1136,7 @@ recruit_result_ptr actions::execute_recruit_action(side_number side,
 stopunit_result_ptr actions::execute_stopunit_action(
 		side_number side, bool execute, const map_location& unit_location, bool remove_movement, bool remove_attacks)
 {
-	stopunit_result_ptr action(new stopunit_result(side, unit_location, remove_movement, remove_attacks));
+	auto action = std::make_unique<stopunit_result>(side, unit_location, remove_movement, remove_attacks);
 	execute_or_check(*action, execute);
 	return action;
 }
@@ -1144,7 +1144,7 @@ stopunit_result_ptr actions::execute_stopunit_action(
 synced_command_result_ptr actions::execute_synced_command_action(
 		side_number side, bool execute, const std::string& lua_code, const map_location& location)
 {
-	synced_command_result_ptr action(new synced_command_result(side, lua_code, location));
+	auto action = std::make_unique<synced_command_result>(side, lua_code, location);
 	execute_or_check(*action, execute);
 	return action;
 }

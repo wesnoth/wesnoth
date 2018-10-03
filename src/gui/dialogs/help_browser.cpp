@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2017-2018 by Charles Dang <exodia339@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -21,7 +21,6 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/multi_page.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
@@ -57,7 +56,8 @@ void help_browser::pre_show(window& window)
 	connect_signal_mouse_left_click(next_button,
 		std::bind(&help_browser::on_history_navigate, this, std::ref(window), false));
 
-	topic_tree.set_selection_change_callback(std::bind(&help_browser::on_topic_select, this, std::ref(window)));
+	connect_signal_notify_modified(topic_tree,
+		std::bind(&help_browser::on_topic_select, this, std::ref(window)));
 
 	window.keyboard_capture(&topic_tree);
 
@@ -89,8 +89,8 @@ void help_browser::add_topics_for_section(const help::section& parent_section, t
 tree_view_node& help_browser::add_topic(
 		const std::string& topic_id, const std::string& topic_title, bool expands, tree_view_node& parent)
 {
-	std::map<std::string, string_map> data;
-	string_map item;
+	widget_data data;
+	widget_item item;
 
 	item["label"] = topic_title;
 	data.emplace("topic_name", item);
@@ -169,8 +169,8 @@ void help_browser::on_topic_select(window& window)
 			return;
 		}
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["label"] = format_help_text(topic->parsed_text());
 		data.emplace("topic_text", item);

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2014 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,17 +15,20 @@
 #include "random.hpp"
 #include "log.hpp"
 
+#include <boost/random/random_device.hpp>
 
 #include <cassert>
 #include <cstdlib>
+#include <limits>
 #include <random>
-#include <boost/random/random_device.hpp>
 
 static lg::log_domain log_random("random");
 #define DBG_RND LOG_STREAM(debug, log_random)
 #define LOG_RND LOG_STREAM(info, log_random)
 #define WRN_RND LOG_STREAM(warn, log_random)
 #define ERR_RND LOG_STREAM(err, log_random)
+
+static_assert(std::numeric_limits<double>::is_iec559, "Floating point representation is not IEEE 754-compliant");
 
 namespace {
 

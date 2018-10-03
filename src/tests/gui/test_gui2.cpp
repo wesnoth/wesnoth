@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -34,7 +34,6 @@
 #include "gui/dialogs/addon/connect.hpp"
 #include "gui/dialogs/addon/install_dependencies.hpp"
 #include "gui/dialogs/addon/manager.hpp"
-#include "gui/dialogs/advanced_graphics_options.hpp"
 #include "gui/dialogs/attack_predictions.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
@@ -65,7 +64,7 @@
 #include "gui/dialogs/game_save.hpp"
 #include "gui/dialogs/game_stats.hpp"
 #include "gui/dialogs/game_ui.hpp"
-#include "gui/dialogs/game_version.hpp"
+#include "gui/dialogs/game_version_dialog.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/help_browser.hpp"
 #include "gui/dialogs/hotkey_bind.hpp"
@@ -331,13 +330,12 @@ void test()
 {
 	gui2::new_widgets = false;
 
-//	for(std::size_t i = 0; i < 2; ++i) {
+	for(std::size_t i = 0; i < 2; ++i) {
 
 		test_resolutions<T>(get_gui_resolutions());
 
-//		break; // FIXME: New widgets break
-//		gui2::new_widgets = true;
-//	}
+		gui2::new_widgets = true;
+	}
 }
 
 template<class T>
@@ -423,7 +421,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	/* The modal_dialog classes. */
 	test<addon_connect>();
 	//test<addon_manager>();
-	test<advanced_graphics_options>();
 	//test<attack_predictions>();
 	test<campaign_difficulty>();
 	test<campaign_selection>();
@@ -858,7 +855,7 @@ struct dialog_tester<mp_lobby>
 	wesnothd_connection_init init;
 	std::vector<std::string> installed_addons;
 	mp::lobby_info li;
-	dialog_tester() : connection("", ""), init(connection), li(game_config, installed_addons)
+	dialog_tester() : connection("", ""), init(connection), li(installed_addons)
 	{
 	}
 	mp_lobby* create()
@@ -887,7 +884,7 @@ struct dialog_tester<lobby_player_info>
 	mp::lobby_info li;
 	dialog_tester()
 		: connection("", ""), init(connection)
-		, ui(c), li(c, installed_addons)
+		, ui(c), li(installed_addons)
 	{
 	}
 	lobby_player_info* create()

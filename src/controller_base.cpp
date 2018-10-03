@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,6 +17,7 @@
 
 #include "display.hpp"
 #include "events.hpp"
+#include "game_config_manager.hpp"
 #include "gui/core/event/handler.hpp" // gui2::is_in_dialog
 #include "gui/dialogs/loading_screen.hpp"
 #include "hotkey/command_executor.hpp"
@@ -31,9 +32,9 @@
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
-controller_base::controller_base(const config& game_config)
+controller_base::controller_base()
 	: events::sdl_handler(false)
-	, game_config_(game_config)
+	, game_config_(game_config_manager::get()->game_config())
 	, key_()
 	, scrolling_(false)
 	, scroll_up_(false)

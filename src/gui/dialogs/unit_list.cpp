@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,17 +17,8 @@
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/log.hpp"
-#include "gui/dialogs/message.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
-#include "gui/widgets/label.hpp"
-#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
 #include "gui/widgets/window.hpp"
 #include "display.hpp"
@@ -103,8 +94,8 @@ void unit_list::pre_show(window& window)
 	window.keyboard_capture(&list);
 
 	for(const unit_const_ptr& unit : unit_list_) {
-		std::map<std::string, string_map> row_data;
-		string_map column;
+		widget_data row_data;
+		widget_item column;
 
 		column["use_markup"] = "true";
 
@@ -128,8 +119,13 @@ void unit_list::pre_show(window& window)
 		row_data.emplace("unit_level", column);
 
 		std::stringstream exp_str;
-		exp_str << font::span_color(unit->xp_color()) << unit->experience() << "/"
-		        << (unit->can_advance() ? std::to_string(unit->max_experience()) : font::unicode_en_dash) << "</span>";
+		exp_str << font::span_color(unit->xp_color());
+		if(unit->can_advance()) {
+			exp_str << unit->experience() << "/" << unit->max_experience();
+		} else {
+			exp_str << font::unicode_en_dash;
+		}
+		exp_str << "</span>";
 
 		column["label"] = exp_str.str();
 		row_data.emplace("unit_experience", column);
@@ -162,7 +158,10 @@ void unit_list::pre_show(window& window)
 	list.register_translatable_sorting_option(1, [this](const int i) { return unit_list_[i]->name().str(); });
 	list.register_sorting_option(2, [this](const int i) { return unit_list_[i]->movement_left(); });
 	list.register_sorting_option(3, [this](const int i) { return unit_list_[i]->hitpoints(); });
-	list.register_sorting_option(4, [this](const int i) { return unit_list_[i]->level(); });
+	list.register_sorting_option(4, [this](const int i) {
+		const unit& u = *unit_list_[i];
+		return std::make_tuple(u.level(), -static_cast<int>(u.experience_to_advance()));
+	});
 	list.register_sorting_option(5, [this](const int i) { return unit_list_[i]->experience(); });
 	list.register_translatable_sorting_option(6, [this](const int i) {
 		return !unit_list_[i]->trait_names().empty() ? unit_list_[i]->trait_names().front().str() : ""; });

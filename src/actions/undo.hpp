@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -34,8 +34,9 @@ namespace actions {
 /// Class to store the actions that a player can undo and redo.
 class undo_list {
 
-	typedef boost::ptr_vector<undo_action_base> action_list;
-	typedef boost::ptr_vector<config> redos_list;
+	typedef std::unique_ptr<undo_action_base> action_ptr_t;
+	typedef std::vector<action_ptr_t> action_list;
+	typedef std::vector<std::unique_ptr<config>> redos_list;
 
 public:
 	undo_list(const undo_list&) = delete;
@@ -100,7 +101,7 @@ public:
 private: // functions
 	/// Adds an action to the undo stack.
 	void add(undo_action_base * action)
-	{ undos_.push_back(action);  redos_.clear(); }
+	{ undos_.emplace_back(action);  redos_.clear(); }
 	/// Applies the pending fog/shroud changes from the undo stack.
 	bool apply_shroud_changes() const;
 

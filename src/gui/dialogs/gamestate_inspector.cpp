@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -23,7 +23,6 @@
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
 #include "desktop/clipboard.hpp"
@@ -165,7 +164,7 @@ public:
 
 	stuff_list_adder& widget(const std::string& ref, const std::string& label, bool markup = false)
 	{
-		string_map& item = data_[ref];
+		widget_item& item = data_[ref];
 		item["label"] = label;
 		item["use_markup"] = utils::bool_string(markup);
 		return *this;
@@ -174,7 +173,7 @@ public:
 private:
 	tree_view_node& stuff_list_;
 	const std::string defn_;
-	std::map<std::string, string_map> data_;
+	widget_data data_;
 };
 
 class gamestate_inspector::view
@@ -397,7 +396,8 @@ public:
 		auto left_button = find_widget<button>(&window, "page_left", false, true);
 		auto right_button = find_widget<button>(&window, "page_right", false, true);
 
-		stuff_list->set_selection_change_callback(std::bind(&gamestate_inspector::controller::handle_stuff_list_item_clicked, this, _1));
+		connect_signal_notify_modified(*stuff_list,
+			std::bind(&gamestate_inspector::controller::handle_stuff_list_item_clicked, this, _1));
 
 		connect_signal_mouse_left_click(
 				*copy_button,

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2018 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -25,6 +25,7 @@
 #include "preferences/credentials.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/core/timer.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/multiplayer/faction_select.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -33,27 +34,21 @@
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "log.hpp"
 #include "mp_ui_alerts.hpp"
 #include "statistics.hpp"
 #include "units/types.hpp"
+#include "utils/scope_exit.hpp"
 #include "wesnothd_connection.hpp"
-
 
 static lg::log_domain log_mp_connect_engine("mp/connect/engine");
 #define DBG_MP LOG_STREAM(debug, log_mp_connect_engine)
 #define LOG_MP LOG_STREAM(info, log_mp_connect_engine)
 #define WRN_MP LOG_STREAM(warn, log_mp_connect_engine)
 #define ERR_MP LOG_STREAM(err, log_mp_connect_engine)
-
 
 namespace gui2
 {
@@ -72,6 +67,7 @@ mp_join_game::mp_join_game(saved_game& state, mp::lobby_info& lobby_info, wesnot
 	, observe_game_(observe_game)
 	, stop_updates_(false)
 	, player_list_(nullptr)
+	, flg_dialog_(nullptr)
 {
 	set_show_even_without_video(true);
 }
@@ -152,23 +148,25 @@ bool mp_join_game::fetch_game_config()
 	// available side.
 	const config* side_choice = nullptr;
 
-	int side_num = 0, nb_sides = 0;
+	int side_num_choice = 1, side_num_counter = 1;
 	for(const config& side : get_scenario().child_range("side")) {
+		// TODO: it can happen that the scenario specifies that the controller
+		//       of a side should also gain control of another side.
 		if(side["controller"] == "reserved" && side["current_player"] == preferences::login()) {
 			side_choice = &side;
-			side_num = nb_sides;
+			side_num_choice = side_num_counter;
 			break;
 		}
 
 		if(side["controller"] == "human" && side["player_id"].empty()) {
 			if(!side_choice) { // Found the first empty side
 				side_choice = &side;
-				side_num = nb_sides;
+				side_num_choice = side_num_counter;
 			}
 
 			if(side["current_player"] == preferences::login()) {
 				side_choice = &side;
-				side_num = nb_sides;
+				side_num_choice = side_num_counter;
 				break;  // Found the preferred one
 			}
 		}
@@ -178,7 +176,7 @@ bool mp_join_game::fetch_game_config()
 			return true;
 		}
 
-		++nb_sides;
+		++side_num_counter;
 	}
 
 	if(!side_choice) {
@@ -188,47 +186,9 @@ bool mp_join_game::fetch_game_config()
 
 	// If the client is allowed to choose their team, do that here instead of having it set by the server
 	if((*side_choice)["allow_changes"].to_bool(true)) {
-		const config& era = level_.child("era");
-		// TODO: Check whether we have the era. If we don't, inform the player
-		if(!era) {
-			throw config::error(_("No era information found."));
-		}
-
-		config::const_child_itors possible_sides = era.child_range("multiplayer_side");
-		if(possible_sides.empty()) {
+		if(!show_flg_select(side_num_choice, true)) {
 			return false;
 		}
-
-		const std::string color = (*side_choice)["color"].str();
-
-		std::vector<const config*> era_factions;
-		for(const config& side : possible_sides) {
-			era_factions.push_back(&side);
-		}
-
-		const bool is_mp = state_.classification().is_normal_mp_game();
-		const bool lock_settings = get_scenario()["force_lock_settings"].to_bool(!is_mp);
-		const bool use_map_settings = level_.child("multiplayer")["mp_use_map_settings"].to_bool();
-		const bool saved_game = level_.child("multiplayer")["savegame"].to_bool();
-
-		ng::flg_manager flg(era_factions, *side_choice, lock_settings, use_map_settings, saved_game);
-
-		gui2::dialogs::faction_select dlg(flg, color, side_num);
-		dlg.show();
-
-		if(dlg.get_retval() != gui2::retval::OK) {
-			return true;
-		}
-
-		config faction;
-		config& change = faction.add_child("change_faction");
-		change["change_faction"] = true;
-		change["name"] = preferences::login();
-		change["faction"] = flg.current_faction()["id"];
-		change["leader"] = flg.current_leader();
-		change["gender"] = flg.current_gender();
-
-		network_connection_.send_data(faction);
 	}
 
 	return true;
@@ -283,7 +243,7 @@ void mp_join_game::pre_show(window& window)
 	chat.set_lobby_info(lobby_info_);
 	chat.set_wesnothd_connection(network_connection_);
 
-	chat.room_window_open("this game", true, false); // TODO: better title?
+	chat.room_window_open(N_("this game"), true, false);
 	chat.active_window_changed();
 	chat.load_log(default_chat_log, false);
 
@@ -307,6 +267,68 @@ void mp_join_game::pre_show(window& window)
 	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
 }
 
+bool mp_join_game::show_flg_select(int side_num, bool first_time)
+{
+	if(const config& side_choice = get_scenario().child("side", side_num - 1)) {
+		if(!side_choice["allow_changes"].to_bool(true)) {
+			return true;
+		}
+
+		const config& era = level_.child("era");
+		if(!era) {
+			ERR_MP << "no era information\n";
+			return false;
+		}
+
+		config::const_child_itors possible_sides = era.child_range("multiplayer_side");
+		if(possible_sides.empty()) {
+			WRN_MP << "no [multiplayer_side] found in era '" << era["id"] << "'.\n";
+			return false;
+		}
+
+		const std::string color = side_choice["color"].str();
+
+		std::vector<const config*> era_factions;
+		//make this safe against changes to level_ that might make possible_sides invalid pointers.
+		config era_copy;
+		for(const config& side : possible_sides) {
+			config& side_new = era_copy.add_child("multiplayer_side", side);
+			era_factions.push_back(&side_new);
+		}
+
+		const bool is_mp = state_.classification().is_normal_mp_game();
+		const bool lock_settings = get_scenario()["force_lock_settings"].to_bool(!is_mp);
+		const bool use_map_settings = level_.child("multiplayer")["mp_use_map_settings"].to_bool();
+		const bool saved_game = level_.child("multiplayer")["savegame"].to_bool();
+
+		ng::flg_manager flg(era_factions, side_choice, lock_settings, use_map_settings, saved_game);
+
+		{
+			gui2::dialogs::faction_select flg_dialog(flg, color, side_num);
+			flg_dialog_ = &flg_dialog;
+			utils::scope_exit se([this]() { flg_dialog_ = nullptr; });
+
+			if(!flg_dialog.show() && !first_time) {
+				return true;
+			}
+		}
+
+		config faction;
+		config& change = faction.add_child("change_faction");
+		change["change_faction"] = true;
+		change["name"] = preferences::login();
+		change["faction"] = flg.current_faction()["id"];
+		change["leader"] = flg.current_leader();
+		change["gender"] = flg.current_gender();
+		// TODO: the host cannot yet handle this and always uses the first side owned by that player.
+		change["side_num"] = side_num;
+
+		network_connection_.send_data(faction);
+	}
+
+	return true;
+}
+
 void mp_join_game::generate_side_list(window& window)
 {
 	if(stop_updates_) {
@@ -319,17 +341,19 @@ void mp_join_game::generate_side_list(window& window)
 
 	tree.clear();
 	team_tree_map_.clear();
-	const std::map<std::string, string_map> empty_map;
+	const widget_data empty_map;
 
+	int side_num = 0;
 	for(const auto& side : get_scenario().child_range("side")) {
+		++side_num;
 		if(!side["allow_player"].to_bool(true)) {
 			continue;
 		}
 
 		// Check to see whether we've added a toplevel tree node for this team. If not, add one
 		if(team_tree_map_.find(side["team_name"].str()) == team_tree_map_.end()) {
-			std::map<std::string, string_map> data;
-			string_map item;
+			widget_data data;
+			widget_item item;
 
 			item["label"] = (formatter() << _("Team:") << " " << t_string::from_serialized(side["user_team_name"])).str();
 			data.emplace("tree_view_node_label", item);
@@ -340,8 +364,8 @@ void mp_join_game::generate_side_list(window& window)
 			team_tree_map_[side["team_name"].str()] = &team_node;
 		}
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		const std::string color = !side["color"].empty() ? side["color"] : side["side"].str();
 
@@ -414,9 +438,44 @@ void mp_join_game::generate_side_list(window& window)
 
 		grid& row_grid = node.get_grid();
 
+		auto* select_leader_button = find_widget<button>(&row_grid, "select_leader", false, false);
+		if(select_leader_button) {
+			if(side["player_id"] == preferences::login() && side["allow_changes"].to_bool(true)) {
+				//
+				// Small wrapper function in order to set the handled and halt parameters and prevent
+				// crashes in case the dialog closes and the original button to which the callback was
+				// bound had already been destroyed. The other use of show_flg_select doesn't need these
+				// parameters, so it's easier not to declare them as function arguments.
+				//
+				const auto handler = [this, side_num](bool& handled, bool& halt) {
+					show_flg_select(side_num);
+					// note: this function is called from a std::function object stored in the widget 
+					//       and show_flg_select which internally calls
+					//       show_dialog -> pump -> ... -> network_handler -> ... -> generate_side_list
+					//       might destroy that std::function object while it is executed, this means that
+					//       using the captured variables 'this' and 'side_num' after this will result in
+					//       unexpected behaviour or crashes.
+					handled = halt = true;
+				};
+
+				connect_signal_mouse_left_click(*select_leader_button, std::bind(handler, _3, _4));
+			} else {
+				select_leader_button->set_visible(widget::visibility::hidden);
+			}
+		}
+
 		if(income_amt == 0) {
 			find_widget<image>(&row_grid, "income_icon", false).set_visible(widget::visibility::invisible);
 			find_widget<label>(&row_grid, "side_income", false).set_visible(widget::visibility::invisible);
+		}
+	}
+}
+
+void mp_join_game::close_faction_select_dialog_if_open()
+{
+	if(flg_dialog_) {
+		if(window* w = flg_dialog_->get_window()) {
+			w->set_retval(retval::CANCEL);
 		}
 	}
 }
@@ -442,11 +501,17 @@ void mp_join_game::network_handler(window& window)
 	}
 
 	if(data["failed"].to_bool()) {
+		close_faction_select_dialog_if_open();
+
 		window.set_retval(retval::CANCEL);
 	} else if(data.child("start_game")) {
+		close_faction_select_dialog_if_open();
+
 		level_["started"] = true;
 		window.set_retval(retval::OK);
 	} else if(data.child("leave_game")) {
+		close_faction_select_dialog_if_open();
+
 		window.set_retval(retval::CANCEL);
 	}
 
@@ -460,6 +525,10 @@ void mp_join_game::network_handler(window& window)
 	} else if(const config& change = data.child("change_controller")) {
 		if(config& side_to_change = get_scenario().find_child("side", "side", change["side"])) {
 			side_to_change.merge_with(change);
+		}
+
+		if(flg_dialog_ && flg_dialog_->get_side_num() == change["side"].to_int()) {
+			close_faction_select_dialog_if_open();
 		}
 	} else if(data.has_child("scenario") || data.has_child("snapshot") || data.child("next_scenario")) {
 		level_ = first_scenario_ ? data : data.child("next_scenario");

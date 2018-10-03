@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -24,8 +24,6 @@
 #include "gettext.hpp"                       // for _
 #include "gui/dialogs/transient_message.hpp" // for show_transient_message
 #include "gui/dialogs/unit_attack.hpp"       // for unit_attack
-#include "gui/widgets/settings.hpp"          // for new_widgets
-#include "gui/widgets/retval.hpp"            // for enum
 #include "language.hpp"                      // for string_table, symbol_table
 #include "log.hpp"                           // for LOG_STREAM, logger, etc
 #include "map/map.hpp"                       // for gamemap
@@ -950,6 +948,11 @@ int mouse_handler::fill_weapon_choices(
 		if(attacker->attacks()[i].attack_weight() > 0) {
 			battle_context bc(pc_.gamestate().board_.units_, attacker->get_location(), defender->get_location(), i);
 
+			// Don't include if the attacker's weapon has at least one active "disable" special.
+			if(bc.get_attacker_stats().disable) {
+				continue;
+			}
+
 			if(!bc_vector.empty() && bc.better_attack(bc_vector[best], 0.5)) {
 				// as some weapons can be hidden, i is not a valid index into the resulting vector
 				best = bc_vector.size();
@@ -977,12 +980,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 	std::vector<battle_context> bc_vector;
 	const int best = fill_weapon_choices(bc_vector, attacker, defender);
 
-	//TODO: this "disable" check has no attack context.
-	const bool all_disabled = std::all_of(bc_vector.begin(), bc_vector.end(),
-		[](battle_context& context) { return (*context.get_attacker_stats().weapon).get_special_bool("disable"); }
-	);
-
-	if((*attacker).attacks().empty() || all_disabled) {
+	if(bc_vector.empty()) {
 		gui2::show_transient_message("No Attacks", _("This unit has no usable weapons."));
 
 		return -1;
@@ -990,9 +988,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 
 	gui2::dialogs::unit_attack dlg(attacker, defender, bc_vector, best);
 
-	dlg.show();
-
-	if(dlg.get_retval() == gui2::retval::OK) {
+	if(dlg.show()) {
 		return dlg.get_selected_weapon();
 	}
 
