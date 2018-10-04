@@ -1,6 +1,6 @@
 ## Compiling Wesnoth on Windows using CodeBlocks
 
-(Last tested using Wesnoth 1.13.5+ on Code::Blocks 16.01)
+(Last tested using Wesnoth 1.14.5+ on Code::Blocks 16.01)
 
 1.  Get a Wesnoth source tarball or Git repository clone. The folder which
     contains the data/, projectfiles/, and src/ subfolders is referred to as
