@@ -9,8 +9,8 @@
 2.  Install CodeBlocks from <http://www.codeblocks.org/>.
     MinGW is not needed.
 
-3.  Download and unpack MinGW-w64 from https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/7.2.0/threads-posix/dwarf/i686-7.2.0-release-posix-dwarf-rt_v5-rev0.7z or
-    https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/7.2.0/threads-posix/sjlj/i686-7.2.0-release-posix-sjlj-rt_v5-rev0.7z.
+3.  Download and unpack MinGW-w64 from <https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/7.2.0/threads-posix/dwarf/i686-7.2.0-release-posix-dwarf-rt_v5-rev0.7z> or
+    <https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/7.2.0/threads-posix/sjlj/i686-7.2.0-release-posix-sjlj-rt_v5-rev0.7z>.
     Note that the project files in `wesnoth_root/projectfiles/CodeBlocks/` may
     contain a setting to compile with OpenMP support, so you should make sure
     that this option is enabled while installing the compiler (mark the
@@ -20,7 +20,15 @@
     Building a 64-bit Wesnoth executable on Windows is currently not supported and will
     fail with the SDK package provided in the next step.
 
-4.  Download the latest `CodeBlocksWinSDK*.zip` package from <http://sourceforge.net/projects/wesnoth/files/SDK/>.
+	For resolve out of memory of compilation problem in DEBUG, follow the next steps:
+	
+	1. If your OS is 32bit, then in cmd (as Admin) put bcdedit/set IncreaseUserVa 3072
+	2. Install masm32;
+	3. Open cmd( as Admin too);
+	4. Put cd C:\..\mingw32\libexec\gcc\i686-w64-mingw32\7.2.0
+	5. C:\masm32\bineditbin.exe /LARGEADDRESSAWARE cc1plus.exe
+
+4.  Download the latest `CodeBlocksWinSDK*.zip` package from <https://github.com/newfrenchy83/codeblock/blob/master/CodeBlocksWinSDK_13_8_2018.7z>.
     The package contains the right version/build combination of source headers,
     build-time libraries (`*.a`) and run-time libraries (`*.dll`) needed to build
     and run Wesnoth. Older versions of the package may no longer be useful
