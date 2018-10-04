@@ -26,7 +26,7 @@
 3. Run these commands in an admin command prompt:
 cd C:\mingw32\libexec\gcc\i686-w64-mingw32\7.2.0 C:\masm32\bineditbin.exe /LARGEADDRESSAWARE cc1plus.
 
-4.  Download the latest `CodeBlocksWinSDK*.zip` package from  http://sourceforge.net/projects/wesnoth/files/SDK/.
+4. Download the latest `CodeBlocksWinSDK*.zip` package from <http://sourceforge.net/projects/wesnoth/files/SDK/>.
     The package contains the right version/build combination of source headers,
     build-time libraries (`*.a`) and run-time libraries (`*.dll`) needed to build
     and run Wesnoth. Older versions of the package may no longer be useful
