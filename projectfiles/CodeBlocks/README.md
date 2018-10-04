@@ -20,13 +20,11 @@
     Building a 64-bit Wesnoth executable on Windows is currently not supported and will
     fail with the SDK package provided in the next step.
 
-	For resolve out of memory of compilation problem in DEBUG, follow the next steps:
-	
-	1. If your OS is 32bit, then in cmd (as Admin) put bcdedit/set IncreaseUserVa 3072
-	2. Install masm32;
-	3. Open cmd( as Admin too);
-	4. Put cd C:\..\mingw32\libexec\gcc\i686-w64-mingw32\7.2.0
-	5. C:\masm32\bineditbin.exe /LARGEADDRESSAWARE cc1plus.exe
+	To resolve out-of-memory errors when creating debug builds, follow these steps:
+1. If you use 32-bit Windows, run in admin command prompt bcdedit /set IncreaseUserVA 3072
+2. Install MASM32
+3. Run these commands in an admin command prompt:
+cd C:\mingw32\libexec\gcc\i686-w64-mingw32\7.2.0 C:\masm32\bineditbin.exe /LARGEADDRESSAWARE cc1plus.
 
 4.  Download the latest `CodeBlocksWinSDK*.zip` package from <https://github.com/newfrenchy83/codeblock/blob/master/CodeBlocksWinSDK_13_8_2018.7z>.
     The package contains the right version/build combination of source headers,
