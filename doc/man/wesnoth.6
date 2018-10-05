@@ -72,9 +72,20 @@ the campaign difficulty selection widget will appear.
 The id of the scenario from the specified campaign. The default is the first scenario.
 .TP
 .B --campaign-skip-story
-Skip story screens and dialog through the end of the
+Skip [story] screens and dialog through the end of the
 .B start
 event.
+.TP
+.B --clock
+Adds the option to show a clock for testing the drawing timer.
+.TP
+.BI --config-dir \ name
+Deprecated, use
+.BR --userconfig-dir .
+.TP
+.B --config-path
+Deprecated, use
+.BR --userconfig-path .
 .TP
 .BI --core \ id_core
 overrides the loaded core with the one whose id is specified.
@@ -90,11 +101,15 @@ enables additional command mode options in-game
 (see the wiki page at https://www.wesnoth.org/wiki/CommandMode for more
 information about command mode).
 .TP
+.B --debug-lua
+enables some Lua debugging mechanisms
+.TP
 .BI -e[ file ],\ --editor[ =file ]
 start the in-game map editor directly. If
 .I file
 is specified, equivalent to
-.B -l --load
+.B -l
+.BR --load .
 .TP
 .B --fps
 displays the number of frames per second the game is currently running
@@ -167,9 +182,9 @@ if used) and exits
 .TP
 .BI --max-fps \ fps
 the number of frames per second the game can show, the value should be between
-.I 1
+.B 1
 and
-.IR 1000 ,
+.BR 1000 ,
 the default is the monitor's refresh rate.
 .TP
 .B -m, --multiplayer
@@ -180,6 +195,9 @@ as explained below.
 .TP
 .B --mp-test
 load the test mp scenarios.
+.TP
+.B --new-widgets
+there is a new WIP widget toolkit, this option enables it. This is very experimental, don't fill bug reports since most are known. Parts of the library are deemed stable and will work without this switch.
 .TP
 .B --nodelay
 runs the game without any delays for graphic benchmarking. This is automatically enabled by
@@ -217,6 +235,13 @@ when connecting to a server, ignoring other preferences. Unsafe.
 .B --path
 prints the name of the game data directory and exits.
 .TP
+.BI --plugin \ script
+(experimental) load a
+.I script
+which defines a Wesnoth plugin. Similar to
+.BR --script ,
+but Lua file should return a function which will be run as a coroutine and periodically woken up with updates.
+.TP
 .BI -p,\ --preprocess \ source-file/folder \  target-directory
 preprocesses a specified file/folder. For each file(s) a plain .cfg file and a processed .cfg
 file will be written in specified target directory. If a folder is specified, it will
@@ -225,7 +250,7 @@ from the "data/core/macros" directory will be preprocessed before the specified 
 Example:
 .B -p ~/wesnoth/data/campaigns/tutorial ~/result.
 For details regarding the preprocessor visit:
-https://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor
+https://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor.
 .TP
 .BI --preprocess-defines= DEFINE1 , DEFINE2 , ...
 comma separated list of defines to be used by the
@@ -252,9 +277,33 @@ This switch should be typed before the
 .B --preprocess
 command.
 .TP
+.B --proxy
+enables usage of proxy for network connections.
+.TP
+.BI --proxy-address \ address
+specifies
+.I address
+of the proxy.
+.TP
+.BI --proxy-port \ port
+specifies
+.I port
+of the proxy.
+.TP
+.BI --proxy-user \ username
+specifies
+.I username
+to log in to the proxy.
+.TP
+.BI --proxy-password \ password
+specifies
+.I password
+to log in to the proxy.
+.TP
 .BI -r\  X x Y ,\ --resolution\  X x Y
 sets the screen resolution. Example:
-.B -r 800x600
+.B -r
+.BR 800x600 .
 .TP
 .BI --render-image \ image \  output
 takes a valid wesnoth 'image path string' with image path functions, and outputs to a .png file. Image path functions are documented at https://wiki.wesnoth.org/ImagePathFunctionWML.
@@ -262,9 +311,12 @@ takes a valid wesnoth 'image path string' with image path functions, and outputs
 .BI -R,\ --report
 initializes game directories, prints build information suitable for use in bug reports, and exits.
 .TP
-.BI --rng-seed \ seed
-seeds the random number generator with number <arg>. Example:
-.B --rng-seed 0
+.BI --rng-seed \ number
+seeds the random number generator with
+.IR number .
+Example:
+.B --rng-seed
+.BR 0 .
 .TP
 .BI --screenshot \ map \  output
 saves a screenshot of
@@ -273,9 +325,15 @@ to
 .I output
 without initializing a screen.
 .TP
+.BI --script \ file
+(experimental)
+.I file
+containing a Lua script to control the client.
+.TP
 .BI -s[ host ],\ --server[ =host ]
 connects to the specified host if any, otherwise connect to the first server in preferences. Example:
-.B --server server.wesnoth.org
+.B --server
+.BR server.wesnoth.org .
 .TP
 .B --showgui
 runs the game with the GUI, overriding any implicit
@@ -306,6 +364,11 @@ Valid values are 0 to 100.
 runs the specified test scenario as a unit test. Implies
 .BR --nogui .
 .TP
+.B --unsafe-scripts
+makes the
+.B package
+package available to lua scripts, so that they can load arbitrary packages. Do not do this with untrusted scripts! This action gives lua the same permissions as the wesnoth executable.
+.TP
 .BI --userconfig-dir \ name
 sets the user configuration directory to
 .I name
@@ -329,13 +392,13 @@ the $HOME or "My Documents\\My Games". On Windows it is also possible to
 specify a directory relative to the process working directory by using path
 starting with ".\\" or "..\\".
 .TP
+.B --userdata-path
+prints the path of the userdata directory and exits.
+.TP
 .BI --username \ username
 uses
 .I username
 when connecting to a server, ignoring other preferences.
-.TP
-.B --userdata-path
-prints the path of the userdata directory and exits.
 .TP
 .B --validcache
 assumes that the cache is valid. (dangerous)
@@ -391,6 +454,11 @@ This is also used for scriptable benchmarking.
 .TP
 .B --ignore-map-settings
 do not use map settings, use default values instead.
+.TP
+.BI --label \ label
+sets the
+.I label
+for AIs.
 .TP
 .BI --multiplayer-repeat \ value
 repeats a multiplayer game
