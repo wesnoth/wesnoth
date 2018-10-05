@@ -96,3 +96,16 @@ SDL_Image: Again, you'll want the "GCC 32/64-bit" Development Libraries.
 SDL_Mixer: Again, you'll want the "GCC 32/64-bit" Development Libraries.
 
 The other libraries require complicated compilation procedures too in-depth to document here.
+
+Updating Boost libraries
+Download and unpack the source of the libraries zlib, libbzip2, boost (version 1.56 or 1.58+ preferred)
+http://www.bzip.org/downloads.html
+http://www.boost.org/users/download/
+http://www.zlib.net/
+Open cmd and put command prompt 'cd C:\..\boost_1_68' and type (with the correct paths of the other two libraries):
+bootstrap
+.\b2 -sZLIB_SOURCE=..\zlib-1.2.8 -sBZIP2_SOURCE=..\bzip2-1.0.6 -jN --with-date_time --with-filesystem --with-iostreams --with-locale --with-program_options --with-random --with-regex --with-system --with-test --with-thread --toolset=gcc
+with N being the number of cores in your CPU (e.g. -j4 for a quad core). Depending on your boost version, you may need to replace ..\ with the absolute paths to zlib and bzip. If you have multiple versions of Visual Studio installed, add --toolset=gccX.Y.Z with X being the target version number.
+Separate the required subset of the Boost source:
+.\b2 tools\bcp dist\bin\bcp.exe algorithm asio assign bimap container date_time dynamic_bitset exception filesyste
+Replace the outdated files in 'cb/lib' with those from 'boost_.../stage/lib' and those in 'cb/include/boost' with the ones in '_include/boost'.
