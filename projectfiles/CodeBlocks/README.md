@@ -83,3 +83,16 @@
 
 12. To be able to run your build, copy all `*.dll` files from the `sdk_root/dll/`
     folder to `wesnoth_root` where the `*.exe` files are.
+    
+    Manually updating the external dependencies
+We do our best to keep the build dependency repository up-to-date with the latest versions of the libraries within, as well as synced with any build requirement changes. If you want to build with a different version of a certain library, however, you can fetch the relevant files at the links below:
+
+Boost: Do note that you will need to build the necessary Boost libraries yourself. See the instructions in the dependency repository for details.
+
+SDL 2: You'll want the "GCC 32/64-bit" Development Libraries.
+
+SDL_Image: Again, you'll want the "GCC 32/64-bit" Development Libraries.
+
+SDL_Mixer: Again, you'll want the "GCC 32/64-bit" Development Libraries.
+
+The other libraries require complicated compilation procedures too in-depth to document here.
