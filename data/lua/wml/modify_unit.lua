@@ -2,7 +2,155 @@ local helper = wesnoth.require "helper"
 local utils = wesnoth.require "wml-utils"
 local wml_actions = wesnoth.wml_actions
 
+-- The [modify_unit] implementation
+--  modify_unit has basicially two implementations, the optimized implementation
+--  in the first part of this file and the fallback (old) implementation in the
+--  second part of this file
+
+local function split_to_array(s, res)
+    -- Split string @str into a table using the delimiter @sep (default: ',')
+
+    local sep, fields = sep or ",", {}
+    local pattern = string.format("([^%s]+)", sep)
+    string.gsub(str, pattern, function(c) fields[#fields+1] = c end)
+    return fields
+end
+
+local function make_set(t)
+	local res = {}
+	for i, v in ipairs(t) do
+		res[v] = true
+	end
+	return res
+end
+
+local knwon_attributes = make_set {
+	"x",
+	"y",
+	"ai_special",
+	"goto_x",
+	"goto_y",
+	"extra_recruit",
+	"side",
+	"name",
+	"role",
+	"facing",
+	"attacks_left",
+	"hitpoints",
+	"max_hitpoints",
+	"moves",
+	"max_moves",
+	"experience",
+	"max_experience",
+	"resting",
+	"canrecruit",
+	"type",
+}
+
+local knwon_tags = make_set {
+	"object",
+	"advancement",
+	"trait",
+	"filter",
+}
+
+local function is_simple(cfg)
+	for k, v in pairs(wml.shallow_literal(cfg)) do
+		if type(k) == "string" then
+			if not knwon_attributes[k] then
+				return false
+			end
+		else
+			if not knwon_tags[v[1]] then
+				return false
+			end
+		end
+	end
+	return true
+end
+
+local function simple_modify_unit(cfg)
+	local filter = wml.get_child(cfg, "filter") or helper.wml_error "[modify_unit] missing required [filter] tag"
+	-- todo: investigate the follwoing attrtibutes:
+	--       id, ellipse, recall_cost, alpha, flying,
+	--       hidden, halo, description, overlays, unrenamable
+	-- and tags: [status] [variables]
+	local simple_attributes = {
+		"side",
+		"name",
+		"role",
+		"facing",
+		"attacks_left",
+		"hitpoints",
+		"max_hitpoints",
+		"moves",
+		"max_moves",
+		"experience",
+		"max_experience",
+		"resting",
+		"canrecruit"
+	}
+
+	local function handle_unit(u)
+		---------- ATTRIBUTES THAT NEED SPECIAL HANDLING ----------
+		if cfg.x or cfg.y then
+			u.loc = { cfg.x or u.x , cfg.y or u.y }
+		end
+		if cfg.goto_x or cfg.goto_y then
+			u["goto"] = { cfg.goto_x or u["goto"][1] , cfg.goto_y or u["goto"][2] }
+		end
+		if cfg.extra_recruit then
+			u.extra_recruit = split_to_array(cfg.extra_recruit)
+		end
+		if cfg.ai_special == "guardian" then
+			u.status.guardian = true
+		end
+		---------- SIMPLE ATTRIBUTES  ----------
+		for i, name in ipairs(simple_attributes) do
+			if cfg[name] then
+				u[name] = cfg[name]
+			end
+		end
+
+		---------- TAGS ----------
+		for i, t in ipairs(wml.shallow_parsed(cfg)) do
+			local tagname, tagcontent = t[1], t[2]
+			if tagname == "object" or tagname == "trait" or tagname == "advancement" then
+				if tagcontent.delayed_variable_substitution then
+					tagcontent = wml.literal(tagcontent)
+				else
+					tagcontent = wml.parsed(tagcontent)
+				end
+				u:add_modification(tagname, tagcontent);
+			end
+		end
+
+		-- handle 'type' last.
+		if cfg.type == "" then
+			u.experience = u.max_experience
+		elseif cfg.type then
+			u.experience = 0
+			u:transform(cfg.type)
+		end
+
+		-- always do an advancement here (not only when experience/max_experience/type was modified)
+		-- for compatability with old code.
+		u:advance()
+	end
+
+	local this_unit = utils.start_var_scope("this_unit")
+	for i, u in ipairs(wesnoth.get_units(filter)) do
+		wml.variables["this_unit"] = u.__cfg	
+		handle_unit(u)
+	end
+	utils.end_var_scope("this_unit", this_unit)
+end
+
 function wml_actions.modify_unit(cfg)
+	if is_simple(cfg) then
+		simple_modify_unit(cfg)
+		return
+	end
 	local unit_variable = "LUA_modify_unit"
 
 	local replace_mode = cfg.mode == "replace"
