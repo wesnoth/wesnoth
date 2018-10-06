@@ -55,6 +55,12 @@ static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(err, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)
 
+static lg::log_domain log_attack("engine/attack");
+#define DBG_AT LOG_STREAM(debug, log_attack)
+#define LOG_AT LOG_STREAM(info, log_attack)
+#define WRN_AT LOG_STREAM(err, log_attack)
+#define ERR_AT LOG_STREAM(err, log_attack)
+
 static lg::log_domain log_config("config");
 #define LOG_CF LOG_STREAM(info, log_config)
 
@@ -520,6 +526,7 @@ battle_context battle_context::choose_attacker_weapon(const unit& attacker,
 		double harm_weight,
 		const combatant* prev_def)
 {
+	log_scope2(log_attack, "choose_attacker_weapon");
 	std::vector<battle_context> choices;
 
 	// What options does attacker have?
@@ -573,6 +580,7 @@ battle_context battle_context::choose_defender_weapon(const unit& attacker,
 		const map_location& defender_loc,
 		const combatant* prev_def)
 {
+	log_scope2(log_attack, "choose_defender_weapon");
 	VALIDATE(attacker_weapon < attacker.attacks().size(), _("An invalid attacker weapon got selected."));
 
 	const attack_type& att = attacker.attacks()[attacker_weapon];
@@ -831,7 +839,7 @@ attack::attack(const map_location& attacker,
 
 void attack::fire_event(const std::string& n)
 {
-	LOG_NG << "firing " << n << " event\n";
+	LOG_NG << "attack: firing '" << n << "' event\n";
 
 	// prepare the event data for weapon filtering
 	config ev_data;
