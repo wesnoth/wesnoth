@@ -407,20 +407,18 @@ surface blit_modification::operator()(const surface& src) const
 		throw imod_exception(sstr);
 	}
 
-	if(surf_->w + x_ > src->w) {
+	if(surf_->w + x_ < 0) {
 		std::stringstream sstr;
 		sstr << "~BLIT(): offset and width '"
-			<< x_ + surf_->w << "' larger than destination image's width '"
-			<< src->w << "' no blitting performed.\n";
+			<< x_ + surf_->w << "' less than zero no blitting performed.\n";
 
 		throw imod_exception(sstr);
 	}
 
-	if(surf_->h + y_ > src->h) {
+	if(surf_->h + y_ < 0) {
 		std::stringstream sstr;
 		sstr << "~BLIT(): offset and height '"
-			<< y_ + surf_->h << "' larger than destination image's height '"
-			<< src->h << "' no blitting performed.\n";
+			<< y_ + surf_->h << "' less than zero no blitting performed.\n";
 
 		throw imod_exception(sstr);
 	}
@@ -1015,17 +1013,17 @@ REGISTER_MOD_PARSER(BLIT, args)
 		ERR_DP << "no arguments passed to the ~BLIT() function" << std::endl;
 		return nullptr;
 	}
-
+	
+	if(s > 3){
+		ERR_DP << "too many arguments passed to the ~BLIT() function" << std::endl;
+		return nullptr;
+	}
+	
 	int x = 0, y = 0;
 
 	if(s == 3) {
 		x = lexical_cast_default<int>(param[1]);
 		y = lexical_cast_default<int>(param[2]);
-	}
-
-	if(x < 0 || y < 0) {
-		ERR_DP << "negative position arguments in ~BLIT() function" << std::endl;
-		return nullptr;
 	}
 
 	const image::locator img(param[0]);
