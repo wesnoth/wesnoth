@@ -428,30 +428,6 @@ battle_context::battle_context(const battle_context_unit_stats& att, const battl
 {
 }
 
-battle_context::battle_context(const battle_context& other)
-	: attacker_stats_(nullptr)
-	, defender_stats_(nullptr)
-	, attacker_combatant_(nullptr)
-	, defender_combatant_(nullptr)
-{
-	*this = other;
-}
-
-battle_context& battle_context::operator=(const battle_context& other)
-{
-	if(&other != this) {
-		attacker_stats_.reset(new battle_context_unit_stats(*other.attacker_stats_));
-		defender_stats_.reset(new battle_context_unit_stats(*other.defender_stats_));
-
-		attacker_combatant_.reset(other.attacker_combatant_
-			? new combatant(*other.attacker_combatant_, *attacker_stats_) : nullptr);
-
-		defender_combatant_.reset(other.defender_combatant_
-			? new combatant(*other.defender_combatant_, *defender_stats_) : nullptr);
-	}
-
-	return *this;
-}
 
 /** @todo FIXME: better to initialize combatant initially (move into
 				 battle_context_unit_stats?), just do fight() when required. */
