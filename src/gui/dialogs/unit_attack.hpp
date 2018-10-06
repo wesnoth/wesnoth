@@ -28,7 +28,7 @@ class unit_attack : public modal_dialog
 public:
 	unit_attack(const unit_map::iterator& attacker_itor,
 				 const unit_map::iterator& defender_itor,
-				 const std::vector<battle_context>& weapons,
+				 std::vector<battle_context>&& weapons,
 				 const int best_weapon);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
