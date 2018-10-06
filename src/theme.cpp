@@ -462,12 +462,15 @@ theme::status_item::status_item(const config& cfg)
 
 SDL_Rect& theme::countdown::location(const SDL_Rect& screen) const
 {
-	if(desktop::battery_info::does_device_have_battery()) {
-		return status_item::location(screen);
-	} else {
-		return display::get_singleton()->get_theme().
-			get_status_item("battery")->location(screen);
+	if(!desktop::battery_info::does_device_have_battery()) {
+		const object* battery = display::get_singleton()->get_theme().
+			get_status_item("battery");
+		if(battery != nullptr) {
+			return battery->location(screen);
+		}
 	}
+
+	return status_item::location(screen);
 }
 
 theme::panel::panel(const config& cfg)
