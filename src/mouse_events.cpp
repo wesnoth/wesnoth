@@ -1254,7 +1254,7 @@ int mouse_handler::fill_weapon_choices(
 				best = bc_vector.size();
 			}
 
-			bc_vector.push_back(bc);
+			bc_vector.emplace_back(std::move(bc));
 		}
 	}
 
@@ -1282,7 +1282,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 		return -1;
 	}
 
-	gui2::dialogs::unit_attack dlg(attacker, defender, bc_vector, best);
+	gui2::dialogs::unit_attack dlg(attacker, defender, std::move(bc_vector), best);
 
 	dlg.show();
 

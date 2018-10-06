@@ -190,7 +190,10 @@ public:
 
 	battle_context(const battle_context& other);
 
+	battle_context(battle_context&& other) = default;
+
 	battle_context& operator=(const battle_context& other);
+	battle_context& operator=(battle_context&& other) = default;
 
 	/** This method returns the statistics of the attacker. */
 	const battle_context_unit_stats& get_attacker_stats() const
@@ -210,6 +213,8 @@ public:
 
 	/** Given this harm_weight, is this attack better than that? */
 	bool better_attack(class battle_context& that, double harm_weight);
+	/** Given this harm_weight, is this attack better than that? */
+	bool better_defense(class battle_context& that, double harm_weight);
 
 	static bool better_combat(const combatant& us_a,
 			const combatant& them_a,
@@ -217,17 +222,26 @@ public:
 			const combatant& them_b,
 			double harm_weight);
 
+	void simulate(const combatant* prev_def);
 private:
-	int choose_attacker_weapon(const unit& attacker,
+	battle_context(
+			const unit& attacker,
+			const map_location& attacker_loc,
+			int attacker_weapon,
+			const unit& defender,
+			const map_location& defender_loc,
+			int defender_weapon,
+			const unit_map& units);
+
+	static battle_context choose_attacker_weapon(const unit& attacker,
 			const unit& defender,
 			const unit_map& units,
 			const map_location& attacker_loc,
 			const map_location& defender_loc,
 			double harm_weight,
-			int* defender_weapon,
 			const combatant* prev_def);
 
-	int choose_defender_weapon(const unit& attacker,
+	static battle_context choose_defender_weapon(const unit& attacker,
 			const unit& defender,
 			unsigned attacker_weapon,
 			const unit_map& units,
