@@ -4,6 +4,7 @@
  ### Lua API
    * Fix wesnoth.set_dialog_value not triggering re-layout. (issue #3572)
  ### Miscellaneous and bug fixes
+   * Fix crash with custom themes on desktop PCs. (issue #3599)
    * Add --campaign-skip-story command line switch for skipping directly to turn 1. (issue #3472)
    * Fix documentation of --render-image command line switch. (issue #3568)
  ### User interface
