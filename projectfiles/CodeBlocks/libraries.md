@@ -25,7 +25,8 @@ Download and unpack the source of the libraries zlib, libbzip2, boost (version 1
 * http://www.boost.org/users/download/
 * http://www.zlib.net/
 
- Open `cmd`, go to the boost directory and type (with the correct paths of the other two libraries):```
+ Open `cmd`, go to the boost directory and type (with the correct paths of the other two libraries):
+ ```
 bootstrap gcc
 ```
  If you're already did this, run this immediately this command: 
