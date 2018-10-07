@@ -30,7 +30,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="-std=c++14" />
+			<Add option="-std=c++17" />
 			<Add option="-mthreads" />
 			<Add option="-fexceptions" />
 			<Add option="-fdiagnostics-show-option" />
@@ -66,17 +66,17 @@
 			<Add library="libglib-2.0" />
 			<Add library="liblua" />
 			<Add library="libpng" />
-			<Add library="libboost_iostreams-mgw51-mt-1_64" />
-			<Add library="libboost_bzip2-mgw51-mt-1_64" />
-			<Add library="libboost_filesystem-mgw51-mt-1_64" />
-			<Add library="libboost_locale-mgw51-mt-1_64" />
-			<Add library="libboost_program_options-mgw51-mt-1_64" />
-			<Add library="libboost_random-mgw51-mt-1_64" />
-			<Add library="libboost_regex-mgw51-mt-1_64" />
-			<Add library="libboost_system-mgw51-mt-1_64" />
-			<Add library="libboost_thread-mgw51-mt-1_64" />
-			<Add library="libboost_timer-mgw51-mt-1_64" />
-			<Add library="libboost_zlib-mgw51-mt-1_64" />
+			<Add library="libboost_iostreams-mgw72-mt-1_68" />
+			<Add library="libboost_bzip2-mgw72-mt-1_68" />
+			<Add library="libboost_filesystem-mgw72-mt-1_68" />
+			<Add library="libboost_locale-mgw72-mt-1_68" />
+			<Add library="libboost_program_options-mgw72-mt-1_68" />
+			<Add library="libboost_random-mgw72-mt-1_68" />
+			<Add library="libboost_regex-mgw72-mt-1_68" />
+			<Add library="libboost_system-mgw72-mt-1_68" />
+			<Add library="libboost_thread-mgw72-mt-1_68" />
+			<Add library="libboost_timer-mgw72-mt-1_68" />
+			<Add library="libboost_zlib-mgw72-mt-1_68" />
 			<Add library="libcrypto-1_1" />
 			<Add library="winmm" />
 			<Add directory="./" />

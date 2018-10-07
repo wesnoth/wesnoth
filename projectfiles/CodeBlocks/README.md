@@ -1,6 +1,6 @@
 ## Compiling Wesnoth on Windows using CodeBlocks
 
-(Last tested using Wesnoth 1.13.5+ on Code::Blocks 16.01)
+(Last tested using Wesnoth 1.14.5+ on Code::Blocks 16.01)
 
 1.  Get a Wesnoth source tarball or Git repository clone. The folder which
     contains the data/, projectfiles/, and src/ subfolders is referred to as
@@ -9,8 +9,8 @@
 2.  Install CodeBlocks from <http://www.codeblocks.org/>.
     MinGW is not needed.
 
-3.  Download and unpack MinGW-w64 from https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/7.2.0/threads-posix/dwarf/i686-7.2.0-release-posix-dwarf-rt_v5-rev0.7z or
-    https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/7.2.0/threads-posix/sjlj/i686-7.2.0-release-posix-sjlj-rt_v5-rev0.7z.
+3.  Download and unpack MinGW-w64 from <https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/7.2.0/threads-posix/dwarf/i686-7.2.0-release-posix-dwarf-rt_v5-rev0.7z> or
+    <https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/7.2.0/threads-posix/sjlj/i686-7.2.0-release-posix-sjlj-rt_v5-rev0.7z>.
     Note that the project files in `wesnoth_root/projectfiles/CodeBlocks/` may
     contain a setting to compile with OpenMP support, so you should make sure
     that this option is enabled while installing the compiler (mark the
@@ -19,6 +19,21 @@
     NOTE: You must make sure to download the 32-bit version.
     Building a 64-bit Wesnoth executable on Windows is currently not supported and will
     fail with the SDK package provided in the next step.
+    
+    To resolve out-of-memory errors when creating debug builds, follow these steps:
+    
+    1. If you use 32-bit Windows, run in admin command prompt bcdedit /set IncreaseUserVA 3072
+    
+    2. Install MASM32
+    
+    3. Run these commands in an admin command prompt:
+    ```
+    cd C:\mingw32\libexec\gcc\i686-w64-mingw32\7.2.0
+    ```
+ and
+     ```
+    C:\masm32\bineditbin.exe /LARGEADDRESSAWARE cc1plus.exe
+    ```
 
 4.  Download the latest `CodeBlocksWinSDK*.zip` package from <http://sourceforge.net/projects/wesnoth/files/SDK/>.
     The package contains the right version/build combination of source headers,
@@ -70,3 +85,47 @@
 
 12. To be able to run your build, copy all `*.dll` files from the `sdk_root/dll/`
     folder to `wesnoth_root` where the `*.exe` files are.
+    
+    Manually updating the external dependencies
+We do our best to keep the build dependency repository up-to-date with the latest versions of the libraries within, as well as synced with any build requirement changes. If you want to build with a different version of a certain library, however, you can fetch the relevant files at the links below:
+
+* [**Boost:**](http://www.boost.org/users/download) Do note that you will need to build the necessary Boost
+libraries yourself. See the [instructions](https://github.com/aquileia/external/blob/master/README.md#updating-boost-libraries)
+in the dependency repository for details.
+
+* [**SDL 2:**](https://www.libsdl.org/download-2.0.php) You'll want the "GCC 32/64-bit" Development
+Libraries.
+
+* [**SDL_Image:**](https://www.libsdl.org/projects/SDL_image) Again, you'll want the "GCC 32/64-bit"
+Development Libraries.
+
+* [**SDL_Mixer:**](https://www.libsdl.org/projects/SDL_mixer) Again, you'll want the "GCC 32/64-bit"
+Development Libraries.
+
+The other libraries require complicated compilation procedures too in-depth to document here.
+
+Updating Boost libraries
+Download and unpack the source of the libraries zlib, libbzip2, boost (version 1.56 or 1.58+ preferred)
+http://www.bzip.org/downloads.html
+http://www.boost.org/users/download/
+http://www.zlib.net/
+Open `cmd` and put command prompt 
+```
+cd C:\..\boost_1_68
+``` 
+and type (with the correct paths of the other two libraries):
+```
+bootstrap
+.\b2 -sZLIB_SOURCE=..\zlib-1.2.8 -sBZIP2_SOURCE=..\bzip2-1.0.6 -jN --with-date_time --with-filesystem --with-iostreams --with-locale --with-program_options --with-random --with-regex --with-system --with-test --with-thread --toolset=gcc
+```
+with N being the number of cores in your CPU (e.g. -j4 for a quad core). Depending on your boost version, you may need to replace ..\ with the absolute paths to zlib and bzip. If you have multiple versions of Visual Studio installed, add --toolset=gcc-X.Y.Z with X being the target version number.
+Separate the required subset of the Boost source:
+```
+.\b2 tools\bcp
+```
+copy/paste `bxp.exe` in boost_ folder create `include` folder in same path what `boost_...` and put
+```
+bcp algorithm asio assign bimap container date_time dynamic_bitset exception filesystem fusion iostreams iterator locale math mpl multi_array multi_index phoenix program_options ptr_container random range regex serialization spirit system test boost\nondet_random.hpp ..\_include
+```
+
+Replace the outdated files in 'cb/lib' with those from 'boost_.../stage/lib' and those in 'cb/include/boost' with the ones in '_include/boost'.
