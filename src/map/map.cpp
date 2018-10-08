@@ -373,8 +373,8 @@ bool gamemap::on_board(const map_location& loc) const
 bool gamemap::on_board_with_border(const map_location& loc) const
 {
 	return !tiles_.data.empty()  &&  // tiles_ is not empty when initialized.
-	       loc.x >= -border_size() &&  loc.x < w_ + border_size() &&
-	       loc.y >= -border_size() &&  loc.y < h_ + border_size();
+	       loc.wml_x() >= 0 &&  loc.wml_x() < total_width() &&
+	       loc.wml_y() >= 0 &&  loc.wml_y() < total_height();
 }
 
 void gamemap::set_terrain(const map_location& loc, const t_translation::terrain_code & terrain, const terrain_type_data::merge_mode mode, bool replace_if_failed) {

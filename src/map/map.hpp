@@ -103,7 +103,7 @@ public:
 
 	const t_translation::terrain_code operator[](const map_location& loc) const
 	{
-		return tiles_.get(loc.x + border_size(), loc.y + border_size());
+		return tiles_.get(loc.wml_x(), loc.wml_y());
 	}
 private:
 	//private method, use set_terrain instead which also updates villages_.

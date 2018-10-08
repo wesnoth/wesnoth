@@ -173,7 +173,7 @@ bool halo_impl::effect::render()
 		return false;
 	}
 
-	if(loc_.x != -1 && loc_.y != -1) {
+	if(loc_.wml_x() != 0 && loc_.wml_y() != 0) {
 		if(disp->shrouded(loc_)) {
 			return false;
 		} else {
