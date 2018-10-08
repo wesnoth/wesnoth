@@ -943,6 +943,31 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n)
 	}
 }
 
+bool luaW_tableget(lua_State *L, int index, const char* key)
+{
+	if(index < 0) {
+		//with the next lua_pushstring negative indicies will no longer be correct.
+		--index;
+	}
+	lua_pushstring(L, key);
+	lua_gettable(L, index);
+	if(lua_isnoneornil(L, -1)) {
+		lua_pop(L, 1);
+		return false;
+	}
+	return true;
+}
+
+utils::string_view luaW_tostring(lua_State *L, int index)
+{
+	size_t len = 0;
+	const char* str = lua_tolstring(L, index, &len);
+	if(!str) {
+		throw luaL_error (L, "not a string");
+	}
+	return utils::string_view(str, len);
+}
+
 void chat_message(const std::string& caption, const std::string& msg)
 {
 	if (!game_display::get_singleton()) return;

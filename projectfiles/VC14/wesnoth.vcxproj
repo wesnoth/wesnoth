@@ -2710,6 +2710,12 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Scripting\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_terrainfilter.cpp">
+      <ObjectFileName>$(IntDir)Scripting\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_terrainmap.cpp">
+      <ObjectFileName>$(IntDir)Scripting\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\scripting\lua_unit.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Scripting\</ObjectFileName>
@@ -3945,6 +3951,8 @@
     <ClInclude Include="..\..\src\scripting\lua_race.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_rng.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_team.hpp" />
+    <ClInclude Include="..\..\src\scripting\lua_terrainfilter.hpp" />
+    <ClInclude Include="..\..\src\scripting\lua_terrainmap.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_unit.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_unit_attacks.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_unit_type.hpp" />
