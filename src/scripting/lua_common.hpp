@@ -26,6 +26,8 @@ class vconfig;
 #include "config.hpp"
 #include "variable_info.hpp"
 #include "map/location.hpp"
+#include "serialization/string_view.hpp"
+
 #include <vector>
 #include <string>
 
@@ -171,6 +173,10 @@ bool luaW_toboolean(lua_State *L, int n);
 bool luaW_pushvariable(lua_State *L, variable_access_const& v);
 
 bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n);
+
+bool luaW_tableget(lua_State *L, int index, const char* key);
+
+utils::string_view luaW_tostring(lua_State *L, int index);
 
 /**
  * Displays a message in the chat window.

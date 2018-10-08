@@ -20,6 +20,8 @@
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_rng.hpp"
 #include "scripting/lua_pathfind_cost_calculator.hpp"
+#include "scripting/lua_terrainfilter.hpp"
+#include "scripting/lua_terrainmap.hpp"
 
 #include <ostream>
 #include <string>
@@ -135,6 +137,8 @@ mapgen_lua_kernel::mapgen_lua_kernel()
 	static luaL_Reg const callbacks[] {
 		{ "find_path",           &intf_find_path           },
 		{ "random",              &intf_random              },
+		{ "create_filter",       &intf_terainfilter_create },
+		{ "create_map",          &intf_terainmap_create    },
 		{ nullptr, nullptr }
 	};
 
@@ -143,6 +147,10 @@ mapgen_lua_kernel::mapgen_lua_kernel()
 	luaL_setfuncs(L, callbacks, 0);
 	lua_pop(L, 1);
 	assert(lua_gettop(L) == 0);
+	
+	
+	cmd_log_ << lua_terrainmap::register_metatables(L);
+	cmd_log_ << lua_terrainfilter::register_metatables(L);
 }
 
 void mapgen_lua_kernel::run_generator(const char * prog, const config & generator)
@@ -193,6 +201,7 @@ config mapgen_lua_kernel::create_scenario(const char * prog, const config & gene
 	}
 	return result;
 }
+
 uint32_t mapgen_lua_kernel::get_random_seed()
 {
 	if(uint32_t* pint = random_seed_.get_ptr()) {
