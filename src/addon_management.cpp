@@ -434,7 +434,7 @@ namespace {
 		std::string missing = "";
 		size_t count_missing = 0;
 
-		foreach(const std::string& i, deplist) {
+		BOOST_FOREACH(const std::string& i, deplist) {
 			if (std::find(installed.begin(), installed.end(), i) == installed.end()) {
 				missing += "\n" + i;
 				++count_missing;
@@ -664,7 +664,7 @@ namespace {
 		std::vector<version_info> safe_local_versions;
 		std::vector<version_info> unsafe_local_versions;
 		std::map<std::string, version_info> remote_version_map;
-		foreach(config* const remote_addon, remote_addons_list) {
+		BOOST_FOREACH(config* const remote_addon, remote_addons_list) {
 			if(remote_addon == NULL) continue; // shouldn't happen...
 			const std::string& name = (*remote_addon)["name"];
 			const std::string& version = (*remote_addon)["version"];
@@ -846,7 +846,7 @@ namespace {
 		if(!result) {
 			assert(failed_titles.empty() == false);
 			std::string failed_titles_list_fmt;
-			foreach(const std::string& entry, failed_titles) {
+			BOOST_FOREACH(const std::string& entry, failed_titles) {
 				failed_titles_list_fmt += '\n';
 				failed_titles_list_fmt += entry;
 			}
@@ -935,7 +935,7 @@ namespace {
 
 			std::vector< std::string > delete_options;
 
-			foreach(const config* i, addon_cfgs) {
+			BOOST_FOREACH(const config* i, addon_cfgs) {
 				const config& c = *i;
 
 				const std::string& name = c["name"];
@@ -992,13 +992,13 @@ namespace {
 
 			std::string pub_option_text, del_option_text;
 
-			foreach(const std::string& pub, publish_options) {
+			BOOST_FOREACH(const std::string& pub, publish_options) {
 				static const std::string publish_icon = "icons/icon-addon-publish.png";
 				const std::string text = _("Publish add-on: ") + pub;
 				options.push_back(IMAGE_PREFIX + publish_icon + COLUMN_SEPARATOR + font::GOOD_TEXT + text);
 				options_to_filter.push_back(text);
 			}
-			foreach(const std::string& del, delete_options) {
+			BOOST_FOREACH(const std::string& del, delete_options) {
 				static const std::string delete_icon = "icons/icon-addon-delete.png";
 				const std::string text = _("Delete add-on: ") + del;
 				options.push_back(IMAGE_PREFIX + delete_icon + COLUMN_SEPARATOR + font::BAD_TEXT + text);
@@ -1213,12 +1213,12 @@ void refresh_addon_version_info_cache()
 	}
 	static const std::string parentd = get_addon_campaigns_dir();
 	std::vector<std::string> addon_info_files;
-	foreach(std::string const& dir, addons)
+	BOOST_FOREACH(std::string const& dir, addons)
 		addon_info_files.push_back(parentd+"/"+dir+"/_info.cfg");
 
 	size_t i = 0;
 
-	foreach(std::string const& info_file, addon_info_files) {
+	BOOST_FOREACH(std::string const& info_file, addon_info_files) {
 		assert(i < addons.size());
 
 		config cfg;

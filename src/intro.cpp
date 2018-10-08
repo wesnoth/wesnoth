@@ -36,7 +36,7 @@
 namespace {
 	void scan_deprecation_messages(const config& cfg)
 	{
-		foreach(config const * const child, cfg.get_children("deprecated_message")) {
+		BOOST_FOREACH(config const * const child, cfg.get_children("deprecated_message")) {
 			if(child == NULL) {
 				ERR_NG << "NULL config while searching deprecated_messages\n";
 				continue;

@@ -477,7 +477,7 @@ public:
 	/** Inherited from tgenerator_. */
 	void clear()
 	{
-		foreach(titem* item, items_) {
+		BOOST_FOREACH(titem* item, items_) {
 			delete item;
 		}
 		selected_item_count_ = 0;
@@ -599,14 +599,14 @@ public:
 	/** Inherited from tgenerator_. */
 	void layout_init()
 	{
-		foreach(titem* item, items_) {
+		BOOST_FOREACH(titem* item, items_) {
 			item->grid.layout_init();
 		}
 	}
 
 	void layout_init2(const bool full_initialization)
 	{
-		foreach(titem* item, items_) {
+		BOOST_FOREACH(titem* item, items_) {
 			if(item->grid.get_visible() != twidget::INVISIBLE) {
 				item->grid.layout_init2(full_initialization);
 			}
@@ -647,7 +647,7 @@ public:
 	/** Inherited from tgenerator_. */
 	void impl_draw_children(surface& frame_buffer)
 	{
-		foreach(titem* item, items_) {
+		BOOST_FOREACH(titem* item, items_) {
 			item->grid.draw_children(frame_buffer);
 		}
 	}
@@ -656,7 +656,7 @@ public:
 	void child_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack)
 	{
-		foreach(titem* item, items_) {
+		BOOST_FOREACH(titem* item, items_) {
 			item->grid.child_populate_dirty_list(caller, call_stack);
 		}
 	}
@@ -788,7 +788,7 @@ private:
 			void (*callback)(twidget*))
 	{
 		int i = index;
-		foreach(const T& item_data, data) {
+		BOOST_FOREACH(const T& item_data, data) {
 			create_item(i, list_builder, item_data, callback);
 			if(i != -1) {
 				++i;

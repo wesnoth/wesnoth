@@ -1044,7 +1044,7 @@ private:
 				option << COLUMN_SEPARATOR;
 				const std::vector<std::string> traits =
 						 utils::split(std::string(u->traits_description()), ',');
-				foreach(const std::string& trait, traits) {
+				BOOST_FOREACH(const std::string& trait, traits) {
 					option << trait << '\n';
 					option_to_filter << " " << trait;
 				}

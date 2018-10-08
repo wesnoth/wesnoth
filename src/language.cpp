@@ -114,7 +114,7 @@ bool language_def::available() const
 		if(has_language(localename)) {
 			return true;
 		} else {
-			foreach(const std::string& lang, alternates) {
+			BOOST_FOREACH(const std::string& lang, alternates) {
 				if(has_language(lang)) {
 					return true;
 				}

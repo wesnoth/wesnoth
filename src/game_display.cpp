@@ -267,7 +267,7 @@ void game_display::pre_draw() {
 
 std::vector<map_location> game_display::get_invalidated_unit_locations() {
 	std::vector<map_location> unit_locations;
-	foreach (const map_location& loc, invalidated_) {
+	BOOST_FOREACH (const map_location& loc, invalidated_) {
 		if ((temp_unit_ && temp_unit_loc_ == loc) || units_.find(loc) != units_.end()) {
 			unit_locations.push_back(loc);
 		}
@@ -396,7 +396,7 @@ void game_display::redraw_units(const std::vector<map_location>& invalidated_uni
 {
 	// Units can overlap multiple hexes, so we need
 	// to redraw them last and in the good sequence.
-	foreach (map_location loc, invalidated_unit_locations) {
+	BOOST_FOREACH (map_location loc, invalidated_unit_locations) {
 		unit_map::iterator u_it = units_.find(loc);
 		if (u_it != units_.end()) {
 			u_it->second.redraw_unit(*this, loc);

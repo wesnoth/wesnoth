@@ -700,7 +700,7 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 
 	// Remove old type's halo, animations, abilities, attacks and advancement options (AMLA)
 	cfg_["halo"] = "";
-	foreach(const std::string& tag_name, unit_animation::all_tag_names()) {
+	BOOST_FOREACH(const std::string& tag_name, unit_animation::all_tag_names()) {
 		cfg_.clear_children(tag_name);
 	}
 	cfg_.clear_children("abilities");
@@ -1546,7 +1546,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	// Attach animations for this unit to the in-core object
 	unit_animation::fill_initial_animations(animations_,cfg_);
 	// Remove animations from private cfg, they're not needed there now
-	foreach(const std::string& tag_name, unit_animation::all_tag_names()) {
+	BOOST_FOREACH(const std::string& tag_name, unit_animation::all_tag_names()) {
 		cfg_.clear_children(tag_name);
 	}
 
@@ -2393,7 +2393,7 @@ void unit::reset_modifications()
 	defense_mods_.clear();
 
 	// Clear modified configs
-	foreach(const std::string& tag, mod_childs) {
+	BOOST_FOREACH(const std::string& tag, mod_childs) {
 		cfg_.clear_children(tag);
 	}
 
@@ -2404,8 +2404,8 @@ void unit::reset_modifications()
 		cfg_.merge_with(t->movement_type().get_parent()->get_cfg());
 	}
 	config to_merge;
-	foreach(const std::string& tag, mod_childs) {
-		foreach(config* child, t->cfg_.get_children(tag)) {
+	BOOST_FOREACH(const std::string& tag, mod_childs) {
+		BOOST_FOREACH(config* child, t->cfg_.get_children(tag)) {
 			to_merge.add_child(tag, *child);
 		}
 	}
@@ -3130,7 +3130,7 @@ std::string unit::image_mods() const{
 const tportrait* unit::portrait(
 		const unsigned size, const tportrait::tside side) const
 {
-	foreach(const tportrait& portrait, (type()->portraits())) {
+	BOOST_FOREACH(const tportrait& portrait, (type()->portraits())) {
 		if(portrait.size == size
 				&& (side ==  portrait.side || portrait.side == tportrait::BOTH)) {
 
@@ -3293,7 +3293,7 @@ std::string get_checksum(const unit& u) {
 	unit_config["overlays"] = "";
 	// Non-critical tags to ignore.
 	unit_config.clear_children("comment");
-	foreach(const std::string& tag_name, unit_animation::all_tag_names()) {
+	BOOST_FOREACH(const std::string& tag_name, unit_animation::all_tag_names()) {
 		unit_config.clear_children(tag_name);
 	}
 

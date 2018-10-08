@@ -83,13 +83,13 @@ manager::manager() :
 */
 		const config::child_map& history_id_list = history->all_children();
 		typedef std::pair<std::string, config::child_list> hack;
-		foreach(const hack& history_id, history_id_list) {
+		BOOST_FOREACH(const hack& history_id, history_id_list) {
 
 			std::vector<std::string> current_history;
-			foreach(const config* history_id_child, history_id.second) {
+			BOOST_FOREACH(const config* history_id_child, history_id.second) {
 
 				const config::child_list& line = history_id_child->get_children("line");
-				foreach(const config* line_data, line) {
+				BOOST_FOREACH(const config* line_data, line) {
 
 					current_history.push_back((*line_data)["message"]);
 				}
@@ -121,10 +121,10 @@ manager::~manager()
 */
 	config history;
 	typedef std::pair<std::string, std::vector<std::string> > hack;
-	foreach(const hack& history_id, history_map) {
+	BOOST_FOREACH(const hack& history_id, history_map) {
 
 		config history_id_cfg; // [history_id]
-		foreach(const std::string& line, history_id.second) {
+		BOOST_FOREACH(const std::string& line, history_id.second) {
 			config cfg; // [line]
 
 			cfg["message"] = line;

@@ -365,7 +365,7 @@ surface locator::load_image_sub_file() const
 
 		const std::vector<std::string> modlist = utils::paranthetical_split(val_.modifications_,'~');
 
-		foreach(const std::string& s, modlist) {
+		BOOST_FOREACH(const std::string& s, modlist) {
 			const std::vector<std::string> tmpmod = utils::paranthetical_split(s);
 			std::vector<std::string>::const_iterator j = tmpmod.begin();
 			while(j!= tmpmod.end()){
@@ -429,7 +429,7 @@ surface locator::load_image_sub_file() const
 							tmp_map.clear();
 						}
 
-						foreach(const rc_entry_type& rc_entry, tmp_map) {
+						BOOST_FOREACH(const rc_entry_type& rc_entry, tmp_map) {
 							rc.map()[rc_entry.first] = rc_entry.second;
 						}
 					}
@@ -467,7 +467,7 @@ surface locator::load_image_sub_file() const
 							tmp_map.clear();
 						}
 
-						foreach(const rc_entry_type& rc_entry, tmp_map) {
+						BOOST_FOREACH(const rc_entry_type& rc_entry, tmp_map) {
 							rc.map()[rc_entry.first] = rc_entry.second;
 						}
 					}
@@ -498,7 +498,7 @@ surface locator::load_image_sub_file() const
 								tmp_map.clear();
 							}
 
-							foreach(const rc_entry_type& rc_entry, tmp_map) {
+							BOOST_FOREACH(const rc_entry_type& rc_entry, tmp_map) {
 								rc.map()[rc_entry.first] = rc_entry.second;
 							}
 						}
@@ -629,7 +629,7 @@ surface locator::load_image_sub_file() const
 			surf = fl(surf);
 		}
 
-		foreach(function_base* f, functor_queue) {
+		BOOST_FOREACH(function_base* f, functor_queue) {
 			if(f == NULL) {
 				ERR_DP << "somebody set up us the bomb\n";
 				continue;

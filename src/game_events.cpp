@@ -1620,7 +1620,7 @@ namespace {
 			std::set<std::string> player_ids;
 			std::vector<std::string> sides = utils::split(cfg["side"]);
 			const bool has_any_sides = !sides.empty();
-			foreach(std::string const& side_str, sides) {
+			BOOST_FOREACH(std::string const& side_str, sides) {
 				size_t side_num = lexical_cast_default<size_t>(side_str,0);
 				if(side_num > 0 && side_num <= teams->size()) {
 					player_ids.insert((teams->begin()+(side_num-1))->save_id());
@@ -2580,7 +2580,7 @@ namespace {
 		const std::string name = cfg["name"];
 		std::vector<std::string> vars_to_clear =
 			utils::split(name, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
-		foreach(const std::string& var, vars_to_clear) {
+		BOOST_FOREACH(const std::string& var, vars_to_clear) {
 			state_of_game->clear_variable(var);
 		}
 	}
@@ -3181,7 +3181,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 		if(remove) {
 			const std::vector<std::string> id_list =
 				utils::split(ids, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
-			foreach(const std::string& id, id_list) {
+			BOOST_FOREACH(const std::string& id, id_list) {
 				status_ptr->remove_time_area(id);
 				LOG_NG << "event WML removed time_area '" << id << "'\n";
 			}
@@ -3289,7 +3289,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 				if(is_empty_command) {
 					mref->command.add_child("allow_undo");
 				}
-				foreach(game_events::event_handler& hand, event_handlers) {
+				BOOST_FOREACH(game_events::event_handler& hand, event_handlers) {
 					if(hand.is_menu_item() && hand.matches_name(mref->name)) {
 						LOG_NG << "changing command for " << mref->name << " to:\n" << *wcc.second;
 						hand.read(vconfig(&mref->command,true));
@@ -3727,7 +3727,7 @@ namespace game_events {
 
 			bool init_event_vars = true;
 
-			foreach(game_events::event_handler& handler, event_handlers) {
+			BOOST_FOREACH(game_events::event_handler& handler, event_handlers) {
 				if(!handler.matches_name(event_name))
 					continue;
 				// Set the variables for the event

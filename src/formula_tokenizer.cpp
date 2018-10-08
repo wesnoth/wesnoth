@@ -54,7 +54,7 @@ token_type token_types[] = { { regex("^(not\\b|and\\b|or\\b|where\\b|d(?=[^a-zA-
 }
 
 token get_token(iterator& i1, iterator i2) {
-	foreach(const token_type& t, token_types) {
+	BOOST_FOREACH(const token_type& t, token_types) {
 		boost::smatch match;
 		if(boost::regex_search(i1, i2, match, t.re, boost::match_single_line)) {
 			token res;

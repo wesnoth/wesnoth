@@ -84,7 +84,7 @@ void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 	std::vector<std::string> maps;
 	get_files_in_dir(get_user_data_dir() + "/editor/maps", &maps, NULL, FILE_NAME_ONLY);
 
-	foreach(const std::string& map, maps) {
+	BOOST_FOREACH(const std::string& map, maps) {
 		std::map<std::string, t_string> item;
 		item.insert(std::make_pair("label", map));
 		list->add_row(item);
@@ -93,7 +93,7 @@ void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 
 	// Standard maps
 	int i = 0;
-	foreach(const config* map, cfg_.get_children("multiplayer")) {
+	BOOST_FOREACH(const config* map, cfg_.get_children("multiplayer")) {
 
 		if(utils::string_bool((*map)["allow_new_game"], true)) {
 			string_map item;

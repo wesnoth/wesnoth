@@ -330,7 +330,7 @@ std::string parser::lineno_string(utils::string_map &i18n_symbols, std::string c
 {
 	i18n_symbols["pos"] = ::lineno_string(lineno);
 	std::string result = _(error_string.c_str());
-	foreach(utils::string_map::value_type& var, i18n_symbols)
+	BOOST_FOREACH(utils::string_map::value_type& var, i18n_symbols)
 		boost::algorithm::replace_all(result, std::string("$") + var.first, std::string(var.second));
 	return result;
 }

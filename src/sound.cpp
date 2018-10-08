@@ -252,7 +252,7 @@ static const music_track &choose_track()
 	assert(!current_track_list.empty());
 
 	bool all_invalid = true;
-	foreach(const music_track& mt, current_track_list) {
+	BOOST_FOREACH(const music_track& mt, current_track_list) {
 		if(!mt.name.empty()) {
 			all_invalid = false;
 			break;
@@ -533,7 +533,7 @@ static void play_new_music()
 			ERR_AUDIO << "Could not open track '" << current_track.name << "', disabling for this playlist\n";
 
 			current_track.name = "";
-			foreach(music_track& trk, current_track_list) {
+			BOOST_FOREACH(music_track& trk, current_track_list) {
 				if(trk.name == bad_track) {
 					trk.name = "";
 				}

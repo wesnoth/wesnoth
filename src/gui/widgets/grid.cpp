@@ -98,7 +98,7 @@ twidget* tgrid::swap_child(
 {
 	assert(widget);
 
-	foreach(tchild& child, children_) {
+	BOOST_FOREACH(tchild& child, children_) {
 		if(child.id() != id) {
 
 			if(recurse) {
@@ -189,7 +189,7 @@ void tgrid::layout_init()
 	twidget::layout_init();
 
 	// Clear child caches.
-	foreach(tchild& child, children_) {
+	BOOST_FOREACH(tchild& child, children_) {
 
 		twidget* widget = child.widget();
 		if(widget) {
@@ -204,7 +204,7 @@ void tgrid::layout_init2(const bool full_initialization)
 	twidget::layout_init2(full_initialization);
 
 	// Clear child caches.
-	foreach(tchild& child, children_) {
+	BOOST_FOREACH(tchild& child, children_) {
 
 		twidget* widget = child.widget();
 		if(widget && widget->get_visible() != twidget::INVISIBLE) {
@@ -260,7 +260,7 @@ tpoint tgrid::calculate_best_size() const
 
 bool tgrid::can_wrap() const
 {
-	foreach(const tchild& child, children_) {
+	BOOST_FOREACH(const tchild& child, children_) {
 		if(child.can_wrap()) {
 			return true;
 		}
@@ -683,7 +683,7 @@ void tgrid::set_size(const tpoint& origin, const tpoint& size)
 
 			if(w_size == 0) {
 				// If all sizes are 0 reset them to 1
-				foreach(unsigned& val, col_grow_factor_) {
+				BOOST_FOREACH(unsigned& val, col_grow_factor_) {
 					val = 1;
 				}
 				w_size = cols_;
@@ -710,7 +710,7 @@ void tgrid::set_size(const tpoint& origin, const tpoint& size)
 
 			if(h_size == 0) {
 				// If all sizes are 0 reset them to 1
-				foreach(unsigned& val, row_grow_factor_) {
+				BOOST_FOREACH(unsigned& val, row_grow_factor_) {
 					val = 1;
 				}
 				h_size = rows_;
@@ -743,7 +743,7 @@ void tgrid::set_origin(const tpoint& origin)
 	// Inherited.
 	twidget::set_origin(origin);
 
-	foreach(tchild& child, children_) {
+	BOOST_FOREACH(tchild& child, children_) {
 
 		twidget* widget = child.widget();
 		assert(widget);
@@ -759,7 +759,7 @@ void tgrid::set_visible_area(const SDL_Rect& area)
 	// Inherited.
 	twidget::set_visible_area(area);
 
-	foreach(tchild& child, children_) {
+	BOOST_FOREACH(tchild& child, children_) {
 
 		twidget* widget = child.widget();
 		assert(widget);
@@ -771,7 +771,7 @@ void tgrid::set_visible_area(const SDL_Rect& area)
 void tgrid::child_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack)
 {
-	foreach(tchild& child, children_) {
+	BOOST_FOREACH(tchild& child, children_) {
 
 		assert(child.widget());
 
@@ -1188,7 +1188,7 @@ void tgrid::layout(const tpoint& origin)
 
 void tgrid::impl_draw_children(surface& frame_buffer)
 {
-	foreach(tchild& child, children_) {
+	BOOST_FOREACH(tchild& child, children_) {
 
 		twidget* widget = child.widget();
 		assert(widget);

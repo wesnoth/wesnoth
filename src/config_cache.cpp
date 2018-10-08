@@ -119,7 +119,7 @@ namespace game_config {
 		config_writer writer(*stream, gzip, game_config::cache_compression_level);
 
 		// write all defines to stream;
-		// call foreach define is: second.write(config_writer,first);
+		// call BOOST_FOREACH define is: second.write(config_writer,first);
 		std::for_each(defines_map.begin(), defines_map.end(),
 			   	boost::bind(&preproc_define::write,
 					boost::bind(&preproc_map::value_type::second,_1),

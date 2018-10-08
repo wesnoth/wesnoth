@@ -249,7 +249,7 @@ tpoint tcontrol::calculate_best_size() const
 void tcontrol::set_size(const tpoint& origin, const tpoint& size)
 {
 	// resize canvasses
-	foreach(tcanvas& canvas, canvas_) {
+	BOOST_FOREACH(tcanvas& canvas, canvas_) {
 		canvas.set_width(size.x);
 		canvas.set_height(size.y);
 	}
@@ -333,7 +333,7 @@ void tcontrol::update_canvas()
 	const int max_height = get_text_maximum_height();
 
 	// set label in canvases
-	foreach(tcanvas& canvas, canvas_) {
+	BOOST_FOREACH(tcanvas& canvas, canvas_) {
 		switch(markup_mode_) {
 			case NO_MARKUP :
 				canvas.set_variable("text", variant(label_));
@@ -520,7 +520,7 @@ std::string tcontrol::get_pango_markup() const
 {
 	std::vector<std::string> lines = utils::split(label_, '\n', 0);
 
-	foreach(std::string& line, lines) {
+	BOOST_FOREACH(std::string& line, lines) {
 		if(line.empty()) {
 			continue;
 		}

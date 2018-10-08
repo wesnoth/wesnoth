@@ -78,13 +78,13 @@ void editor_action_whole_map::perform_without_undo(map_context& mc) const {
 
 editor_action_chain::~editor_action_chain()
 {
-	foreach (editor_action* a, actions_) {
+	BOOST_FOREACH (editor_action* a, actions_) {
 		delete a;
 	}
 }
 int editor_action_chain::action_count() const {
 	int count = 0;
-	foreach (const editor_action* a, actions_) {
+	BOOST_FOREACH (const editor_action* a, actions_) {
 		if (a) {
 			count += a->action_count();
 		}
@@ -114,7 +114,7 @@ editor_action* editor_action_chain::pop_first_action() {
 }
 editor_action_chain* editor_action_chain::perform(map_context& mc) const {
 	std::auto_ptr<editor_action_chain> undo(new editor_action_chain());
-	foreach (editor_action* a, actions_) {
+	BOOST_FOREACH (editor_action* a, actions_) {
 		if (a != NULL) {
 			undo->append_action(a->perform(mc));
 		}
@@ -124,7 +124,7 @@ editor_action_chain* editor_action_chain::perform(map_context& mc) const {
 }
 void editor_action_chain::perform_without_undo(map_context& mc) const
 {
-	foreach (editor_action* a, actions_) {
+	BOOST_FOREACH (editor_action* a, actions_) {
 		if (a != NULL) {
 			a->perform_without_undo(mc);
 		}
@@ -236,7 +236,7 @@ void editor_action_starting_position::perform_without_undo(map_context& mc) cons
 
 void editor_action_select::extend(const editor_map& map, const std::set<map_location>& locs)
 {
-	foreach (const map_location& loc, locs) {
+	BOOST_FOREACH (const map_location& loc, locs) {
 		LOG_ED << "Checking " << loc << "\n";
 		if (map.in_selection(loc)) {
 			LOG_ED << "Extending by " << loc << "\n";
@@ -247,7 +247,7 @@ void editor_action_select::extend(const editor_map& map, const std::set<map_loca
 editor_action* editor_action_select::perform(map_context& mc) const
 {
 	std::set<map_location> undo_locs;
-	foreach (const map_location& loc, area_) {
+	BOOST_FOREACH (const map_location& loc, area_) {
 		if (!mc.get_map().in_selection(loc)) {
 			undo_locs.insert(loc);
 			mc.add_changed_location(loc);
@@ -258,7 +258,7 @@ editor_action* editor_action_select::perform(map_context& mc) const
 }
 void editor_action_select::perform_without_undo(map_context& mc) const
 {
-	foreach (const map_location& loc, area_) {
+	BOOST_FOREACH (const map_location& loc, area_) {
 		mc.get_map().add_to_selection(loc);
 		mc.add_changed_location(loc);
 	}
@@ -266,7 +266,7 @@ void editor_action_select::perform_without_undo(map_context& mc) const
 
 void editor_action_deselect::extend(const editor_map& map, const std::set<map_location>& locs)
 {
-	foreach (const map_location& loc, locs) {
+	BOOST_FOREACH (const map_location& loc, locs) {
 		LOG_ED << "Checking " << loc << "\n";
 		if (!map.in_selection(loc)) {
 			LOG_ED << "Extending by " << loc << "\n";
@@ -277,7 +277,7 @@ void editor_action_deselect::extend(const editor_map& map, const std::set<map_lo
 editor_action* editor_action_deselect::perform(map_context& mc) const
 {
 	std::set<map_location> undo_locs;
-	foreach (const map_location& loc, area_) {
+	BOOST_FOREACH (const map_location& loc, area_) {
 		if (mc.get_map().in_selection(loc)) {
 			undo_locs.insert(loc);
 			mc.add_changed_location(loc);
@@ -288,7 +288,7 @@ editor_action* editor_action_deselect::perform(map_context& mc) const
 }
 void editor_action_deselect::perform_without_undo(map_context& mc) const
 {
-	foreach (const map_location& loc, area_) {
+	BOOST_FOREACH (const map_location& loc, area_) {
 		mc.get_map().remove_from_selection(loc);
 		mc.add_changed_location(loc);
 	}

@@ -401,7 +401,7 @@ int dummy_path_calculator::get_max_cost() const
 std::ostream& operator << (std::ostream& outstream, const paths::route& rt) {
 	outstream << "\n[route]\n\tsteps=\"";
 	bool first_loop = true;
-	foreach(map_location const& loc, rt.steps) {
+	BOOST_FOREACH(map_location const& loc, rt.steps) {
 		if(first_loop) {
 			first_loop = false;
 		} else {
@@ -411,7 +411,7 @@ std::ostream& operator << (std::ostream& outstream, const paths::route& rt) {
 	}
 	outstream << "\"\n\tmove_left=\"" << rt.move_left << "\"\n";
 	typedef std::pair<map_location, paths::route::waypoint> loc_waypoint;
-	foreach(loc_waypoint const& lw, rt.waypoints) {
+	BOOST_FOREACH(loc_waypoint const& lw, rt.waypoints) {
 		outstream << "\t[waypoint]\n\t\tx,y=\"" << lw.first
 		<< "\"\n\t\tturns=\"" << lw.second.turns
 		<< "\"\n\t\tzoc=\"" << (lw.second.zoc?"yes":"no")

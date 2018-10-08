@@ -336,7 +336,7 @@ void twindow::draw()
 		return;
 	}
 
-	foreach(std::vector<twidget*>& item, dirty_list_) {
+	BOOST_FOREACH(std::vector<twidget*>& item, dirty_list_) {
 
 		assert(!item.empty());
 
@@ -504,12 +504,12 @@ void twindow::layout()
 	 */
 	// evaluate the group sizes
 	typedef std::pair<const std::string, tlinked_size> hack;
-	foreach(hack& linked_size, linked_size_) {
+	BOOST_FOREACH(hack& linked_size, linked_size_) {
 
 		tpoint max_size(0, 0);
 
 		// Determine the maximum size.
-		foreach(twidget* widget, linked_size.second.widgets) {
+		BOOST_FOREACH(twidget* widget, linked_size.second.widgets) {
 
 			const tpoint size = widget->get_best_size();
 
@@ -522,7 +522,7 @@ void twindow::layout()
 		}
 
 		// Set the maximum size.
-		foreach(twidget* widget, linked_size.second.widgets) {
+		BOOST_FOREACH(twidget* widget, linked_size.second.widgets) {
 
 			tpoint size = widget->get_best_size();
 

@@ -926,7 +926,7 @@ void binary_paths_manager::set_paths(const config& cfg)
 	cleanup();
 	init_binary_paths();
 
-	foreach (const config *item, cfg.get_children("binary_path"))
+	BOOST_FOREACH (const config *item, cfg.get_children("binary_path"))
 	{
 		std::string path = (*item)["path"].str();
 		if (path.find("..") != std::string::npos) {
@@ -973,7 +973,7 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 
 	init_binary_paths();
 
-	foreach (const std::string &path, binary_paths)
+	BOOST_FOREACH (const std::string &path, binary_paths)
 	{
 		res.push_back(get_user_data_dir() + "/" + path + type + "/");
 
@@ -1014,7 +1014,7 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 		return std::string();
 	}
 
-	foreach (const std::string &path, get_binary_paths(type))
+	BOOST_FOREACH (const std::string &path, get_binary_paths(type))
 	{
 		const std::string file = path + filename;
 		DBG_FS << "  checking '" << path << "'\n";
@@ -1042,7 +1042,7 @@ std::string get_binary_dir_location(const std::string &type, const std::string &
 		return std::string();
 	}
 
-	foreach (const std::string &path, get_binary_paths(type))
+	BOOST_FOREACH (const std::string &path, get_binary_paths(type))
 	{
 		const std::string file = path + filename;
 		DBG_FS << "  checking '" << path << "'\n";
@@ -1174,7 +1174,7 @@ std::string normalize_path(const std::string &p1)
 	p4 << drive;
 #endif
 
-	foreach (const std::string &s, components)
+	BOOST_FOREACH (const std::string &s, components)
 	{
 		p4 << '/' << s;
 	}

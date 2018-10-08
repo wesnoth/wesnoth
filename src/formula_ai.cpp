@@ -228,7 +228,7 @@ private:
                     visited_locs.erase(starting_loc);
 
                 std::vector<variant> res;
-                foreach( const map_location ml, visited_locs) {
+                BOOST_FOREACH( const map_location ml, visited_locs) {
                     res.push_back( variant(new location_callable( ml ) ) );
                 }
 
@@ -465,7 +465,7 @@ private:
 		ai::attack_analysis* analysis = convert_variant<ai::attack_analysis>(attack);
 		unit_map units_with_moves(ai_.get_info().units);
 		typedef std::pair<map_location, map_location> mv;
-		foreach (const mv &m, analysis->movements) {
+		BOOST_FOREACH (const mv &m, analysis->movements) {
 			units_with_moves.move(m.first, m.second);
 		}
 
@@ -2140,7 +2140,7 @@ template<typename Container>
 variant villages_from_set(const Container& villages,
 				          const std::set<map_location>* exclude=NULL) {
 	std::vector<variant> vars;
-	foreach(const map_location& loc, villages) {
+	BOOST_FOREACH(const map_location& loc, villages) {
 		if(exclude && exclude->count(loc)) {
 			continue;
 		}

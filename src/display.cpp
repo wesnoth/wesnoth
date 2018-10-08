@@ -1877,7 +1877,7 @@ void display::redraw_everything()
 	int ticks3 = SDL_GetTicks();
 	INFO_DP << "invalidate and draw: " << (ticks3 - ticks2) << " and " << (ticks2 - ticks1) << "\n";
 
-	foreach (boost::function<void(display&)> f, redraw_observers_) {
+	BOOST_FOREACH (boost::function<void(display&)> f, redraw_observers_) {
 		f(*this);
 	}
 }
@@ -1963,7 +1963,7 @@ void display::draw_invalidated() {
 	SDL_Rect clip_rect = get_clip_rect();
 	surface screen = get_screen_surface();
 	clip_rect_setter set_clip_rect(screen, clip_rect);
-	foreach (map_location loc, invalidated_) {
+	BOOST_FOREACH (map_location loc, invalidated_) {
 		int xpos = get_location_x(loc);
 		int ypos = get_location_y(loc);
 		const bool on_map = get_map().on_board(loc);
@@ -2297,7 +2297,7 @@ bool display::invalidate(const std::set<map_location>& locs)
 	if(invalidateAll_)
 		return false;
 	bool ret = false;
-	foreach (const map_location& loc, locs) {
+	BOOST_FOREACH (const map_location& loc, locs) {
 		ret = invalidated_.insert(loc).second || ret;
 	}
 	return ret;

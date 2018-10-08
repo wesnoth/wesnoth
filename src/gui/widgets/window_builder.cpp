@@ -857,7 +857,7 @@ tbuilder_menubar::tbuilder_menubar(const config& cfg) :
 	const config* data = cfg.child("data");
 
 	if(data) {
-		foreach(const config* cell, data->get_children("cell")) {
+		BOOST_FOREACH(const config* cell, data->get_children("cell")) {
 			cells_.push_back(tbuilder_gridcell(*cell));
 		}
 	}
@@ -1039,7 +1039,7 @@ tbuilder_slider::tbuilder_slider(const config& cfg) :
 	if(labels) {
 
 		const config::child_list& value = labels->get_children("value");
-		foreach(const config* label, value) {
+		BOOST_FOREACH(const config* label, value) {
 
 			value_labels_.push_back((*label)["label"]);
 		}
