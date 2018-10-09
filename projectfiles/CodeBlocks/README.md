@@ -1,6 +1,6 @@
 ## Compiling Wesnoth on Windows using CodeBlocks
 
-(Last tested using Wesnoth 1.13.5+ on Code::Blocks 16.01)
+(Last tested using Wesnoth 1.14.5+ on Code::Blocks 16.01)
 
 1.  Get a Wesnoth source tarball or Git repository clone. The folder which
     contains the data/, projectfiles/, and src/ subfolders is referred to as
@@ -9,8 +9,8 @@
 2.  Install CodeBlocks from <http://www.codeblocks.org/>.
     MinGW is not needed.
 
-3.  Download and unpack MinGW-w64 from https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/7.2.0/threads-posix/dwarf/i686-7.2.0-release-posix-dwarf-rt_v5-rev0.7z or
-    https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/7.2.0/threads-posix/sjlj/i686-7.2.0-release-posix-sjlj-rt_v5-rev0.7z.
+3.  Download and unpack MinGW-w64 from <https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/7.2.0/threads-posix/dwarf/i686-7.2.0-release-posix-dwarf-rt_v5-rev0.7z> or
+    <https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/7.2.0/threads-posix/sjlj/i686-7.2.0-release-posix-sjlj-rt_v5-rev0.7z>.
     Note that the project files in `wesnoth_root/projectfiles/CodeBlocks/` may
     contain a setting to compile with OpenMP support, so you should make sure
     that this option is enabled while installing the compiler (mark the
@@ -19,6 +19,26 @@
     NOTE: You must make sure to download the 32-bit version.
     Building a 64-bit Wesnoth executable on Windows is currently not supported and will
     fail with the SDK package provided in the next step.
+	
+	To resolve out of memory errors when creating debug builds, follow these steps:
+	
+	1. If you use 32-bit Windows, run Admin command prompt
+	```
+	bcdedit/set IncreaseUserVa 3072
+	```
+	
+	2. Install MASM32;
+	
+	3. Open `cmd`( as Admin too);
+	
+	4. Run these commands in an admin command prompt 
+	```
+	cd C:\..\mingw32\libexec\gcc\i686-w64-mingw32\7.2.0
+	```
+	and
+	```
+	C:\masm32\bineditbin.exe /LARGEADDRESSAWARE cc1plus.exe
+	```
 
 4.  Download the latest `CodeBlocksWinSDK*.zip` package from <http://sourceforge.net/projects/wesnoth/files/SDK/>.
     The package contains the right version/build combination of source headers,
@@ -27,11 +47,15 @@
     after new dependencies are added to Wesnoth or its version requirements
     change.
 
+	for versions > 1.12, follow these steps in `libraries.md` for updating libraries yourself.
+	
+
     Unpack the file to any path of your choice, which will be referred to as
     `sdk_root` for the remainder of this file.
 
     The exact names of the folders containing the required files may vary; take
     note of them for the next steps.
+	
 
 5.  In CodeBlocks, open `wesnoth_root/projectfiles/CodeBlocks/wesnoth.workspace`.
 
@@ -46,15 +70,15 @@
     dialog. Enter the following settings into the text boxes:
 
     * Compiler's installation directory: the path to which you installed
-      tdm-gcc-5.1.0 (click on ... to browse for it).
+      mingw-w64 (click on ... to browse for it).
     * C compiler, C++ compiler, Linker for dynamic libs: g++.exe
     * Linker for static libs: ar.exe
 
 7.  Change to the Search directories -> Compiler tab and choose Add; enter the
-    path to `sdk_root/include_tdm_gcc/`.
+    path to `sdk_root/include_w64-mingw32/`.
 
 8.  Change to the Search directories -> Linker tab and choose Add; enter the
-    path to `sdk_root/lib_tdm_gcc/`.
+    path to `sdk_root/lib_w64-mingw32/`.
 
 9.  OPTIONAL: By default, CodeBlocks will only run one compiler instance at a
     time, making the overall build process very slow even with fast hardware.
@@ -70,3 +94,5 @@
 
 12. To be able to run your build, copy all `*.dll` files from the `sdk_root/dll/`
     folder to `wesnoth_root` where the `*.exe` files are.
+	
+

@@ -30,7 +30,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="-std=c++14" />
+			<Add option="-std=c++17" />
 			<Add option="-mthreads" />
 			<Add option="-fexceptions" />
 			<Add option="-fdiagnostics-show-option" />
@@ -66,17 +66,17 @@
 			<Add library="libglib-2.0" />
 			<Add library="liblua" />
 			<Add library="libpng" />
-			<Add library="libboost_iostreams-mgw51-mt-1_64" />
-			<Add library="libboost_bzip2-mgw51-mt-1_64" />
-			<Add library="libboost_filesystem-mgw51-mt-1_64" />
-			<Add library="libboost_locale-mgw51-mt-1_64" />
-			<Add library="libboost_program_options-mgw51-mt-1_64" />
-			<Add library="libboost_random-mgw51-mt-1_64" />
-			<Add library="libboost_regex-mgw51-mt-1_64" />
-			<Add library="libboost_system-mgw51-mt-1_64" />
-			<Add library="libboost_thread-mgw51-mt-1_64" />
-			<Add library="libboost_timer-mgw51-mt-1_64" />
-			<Add library="libboost_zlib-mgw51-mt-1_64" />
+			<Add library="libboost_iostreams" />
+			<Add library="libboost_bzip2" />
+			<Add library="libboost_filesystem" />
+			<Add library="libboost_locale" />
+			<Add library="libboost_program_options" />
+			<Add library="libboost_random" />
+			<Add library="libboost_regex" />
+			<Add library="libboost_system" />
+			<Add library="libboost_thread" />
+			<Add library="libboost_timer" />
+			<Add library="libboost_zlib" />
 			<Add library="libcrypto-1_1" />
 			<Add library="winmm" />
 			<Add directory="./" />
@@ -84,10 +84,6 @@
 		<Unit filename="../../packaging/windows/wesnoth.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
-		<Unit filename="../../src/crypt_blowfish/crypt_blowfish.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="../../src/crypt_blowfish/crypt_blowfish.h" />
 		<Unit filename="../../src/about.cpp" />
 		<Unit filename="../../src/about.hpp" />
 		<Unit filename="../../src/actions/advancement.cpp" />
@@ -239,18 +235,22 @@
 		<Unit filename="../../src/controller_base.hpp" />
 		<Unit filename="../../src/countdown_clock.cpp" />
 		<Unit filename="../../src/countdown_clock.hpp" />
+		<Unit filename="../../src/crypt_blowfish/crypt_blowfish.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../src/crypt_blowfish/crypt_blowfish.h" />
 		<Unit filename="../../src/cursor.cpp" />
 		<Unit filename="../../src/cursor.hpp" />
 		<Unit filename="../../src/deprecation.cpp" />
 		<Unit filename="../../src/deprecation.hpp" />
-		<Unit filename="../../src/desktop/apple_battery_info.mm" />
 		<Unit filename="../../src/desktop/apple_battery_info.hpp" />
-		<Unit filename="../../src/desktop/apple_notification.mm" />
+		<Unit filename="../../src/desktop/apple_battery_info.mm" />
 		<Unit filename="../../src/desktop/apple_notification.hpp" />
-		<Unit filename="../../src/desktop/apple_version.mm" />
+		<Unit filename="../../src/desktop/apple_notification.mm" />
 		<Unit filename="../../src/desktop/apple_version.hpp" />
+		<Unit filename="../../src/desktop/apple_version.mm" />
 		<Unit filename="../../src/desktop/battery_info.cpp" />
-		<Unit filename="../../src/desktop/battery_info.hpp"/>
+		<Unit filename="../../src/desktop/battery_info.hpp" />
 		<Unit filename="../../src/desktop/clipboard.cpp" />
 		<Unit filename="../../src/desktop/clipboard.hpp" />
 		<Unit filename="../../src/desktop/notifications.cpp" />
@@ -456,6 +456,8 @@
 		<Unit filename="../../src/game_launcher.hpp" />
 		<Unit filename="../../src/game_state.cpp" />
 		<Unit filename="../../src/game_state.hpp" />
+		<Unit filename="../../src/game_version.cpp" />
+		<Unit filename="../../src/game_version.hpp" />
 		<Unit filename="../../src/generators/cave_map_generator.cpp" />
 		<Unit filename="../../src/generators/cave_map_generator.hpp" />
 		<Unit filename="../../src/generators/default_map_generator.cpp" />
@@ -496,8 +498,6 @@
 		<Unit filename="../../src/gui/core/canvas.cpp" />
 		<Unit filename="../../src/gui/core/canvas.hpp" />
 		<Unit filename="../../src/gui/core/canvas_private.hpp" />
-		<Unit filename="../../src/gui/core/gui_definition.cpp" />
-		<Unit filename="../../src/gui/core/gui_definition.hpp" />
 		<Unit filename="../../src/gui/core/event/dispatcher.cpp" />
 		<Unit filename="../../src/gui/core/event/dispatcher.hpp" />
 		<Unit filename="../../src/gui/core/event/dispatcher_private.hpp" />
@@ -506,6 +506,8 @@
 		<Unit filename="../../src/gui/core/event/handler.cpp" />
 		<Unit filename="../../src/gui/core/event/handler.hpp" />
 		<Unit filename="../../src/gui/core/event/message.hpp" />
+		<Unit filename="../../src/gui/core/gui_definition.cpp" />
+		<Unit filename="../../src/gui/core/gui_definition.hpp" />
 		<Unit filename="../../src/gui/core/layout_exception.hpp" />
 		<Unit filename="../../src/gui/core/linked_group_definition.cpp" />
 		<Unit filename="../../src/gui/core/linked_group_definition.hpp" />
@@ -519,10 +521,10 @@
 		<Unit filename="../../src/gui/core/placer/horizontal_list.hpp" />
 		<Unit filename="../../src/gui/core/placer/vertical_list.cpp" />
 		<Unit filename="../../src/gui/core/placer/vertical_list.hpp" />
-		<Unit filename="../../src/gui/core/timer.cpp" />
-		<Unit filename="../../src/gui/core/timer.hpp" />
 		<Unit filename="../../src/gui/core/static_registry.cpp" />
 		<Unit filename="../../src/gui/core/static_registry.hpp" />
+		<Unit filename="../../src/gui/core/timer.cpp" />
+		<Unit filename="../../src/gui/core/timer.hpp" />
 		<Unit filename="../../src/gui/core/widget_definition.cpp" />
 		<Unit filename="../../src/gui/core/widget_definition.hpp" />
 		<Unit filename="../../src/gui/core/window_builder.cpp" />
@@ -733,8 +735,6 @@
 		<Unit filename="../../src/gui/widgets/integer_selector.hpp" />
 		<Unit filename="../../src/gui/widgets/label.cpp" />
 		<Unit filename="../../src/gui/widgets/label.hpp" />
-		<Unit filename="../../src/gui/widgets/list.cpp" />
-		<Unit filename="../../src/gui/widgets/list.hpp" />
 		<Unit filename="../../src/gui/widgets/listbox.cpp" />
 		<Unit filename="../../src/gui/widgets/listbox.hpp" />
 		<Unit filename="../../src/gui/widgets/matrix.cpp" />
@@ -837,8 +837,6 @@
 		<Unit filename="../../src/hotkey/hotkey_item.hpp" />
 		<Unit filename="../../src/hotkey/hotkey_manager.cpp" />
 		<Unit filename="../../src/hotkey/hotkey_manager.hpp" />
-		<Unit filename="../../src/picture.cpp" />
-		<Unit filename="../../src/picture.hpp" />
 		<Unit filename="../../src/image_modifications.cpp" />
 		<Unit filename="../../src/image_modifications.hpp" />
 		<Unit filename="../../src/joystick.cpp" />
@@ -886,6 +884,8 @@
 		<Unit filename="../../src/map/location.hpp" />
 		<Unit filename="../../src/map/map.cpp" />
 		<Unit filename="../../src/map/map.hpp" />
+		<Unit filename="../../src/map_settings.cpp" />
+		<Unit filename="../../src/map_settings.hpp" />
 		<Unit filename="../../src/menu_events.cpp" />
 		<Unit filename="../../src/menu_events.hpp" />
 		<Unit filename="../../src/minimap.cpp" />
@@ -919,6 +919,8 @@
 		<Unit filename="../../src/persist_manager.hpp" />
 		<Unit filename="../../src/persist_var.cpp" />
 		<Unit filename="../../src/persist_var.hpp" />
+		<Unit filename="../../src/picture.cpp" />
+		<Unit filename="../../src/picture.hpp" />
 		<Unit filename="../../src/play_controller.cpp" />
 		<Unit filename="../../src/play_controller.hpp" />
 		<Unit filename="../../src/playmp_controller.cpp" />
@@ -1047,8 +1049,6 @@
 		<Unit filename="../../src/serialization/unicode.hpp" />
 		<Unit filename="../../src/serialization/validator.cpp" />
 		<Unit filename="../../src/serialization/validator.hpp" />
-		<Unit filename="../../src/map_settings.cpp" />
-		<Unit filename="../../src/map_settings.hpp" />
 		<Unit filename="../../src/show_dialog.cpp" />
 		<Unit filename="../../src/show_dialog.hpp" />
 		<Unit filename="../../src/side_filter.cpp" />
@@ -1171,8 +1171,6 @@
 		<Unit filename="../../src/variable_info.cpp" />
 		<Unit filename="../../src/variable_info.hpp" />
 		<Unit filename="../../src/variable_info_private.hpp" />
-		<Unit filename="../../src/game_version.cpp" />
-		<Unit filename="../../src/game_version.hpp" />
 		<Unit filename="../../src/video.cpp" />
 		<Unit filename="../../src/video.hpp" />
 		<Unit filename="../../src/wesconfig.h" />
@@ -1229,4 +1227,3 @@
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
-
