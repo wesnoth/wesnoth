@@ -73,7 +73,7 @@ terrain_type::terrain_type(const config& cfg) :
 		editor_name_(cfg["editor_name"].t_str()),
 		description_(cfg["description"].t_str()),
 		help_topic_text_(cfg["help_topic_text"].t_str()),
-		number_(t_translation::read_terrain_code(cfg["string"])),
+		number_(t_translation::read_terrain_code(cfg["string"].str())),
 		mvt_type_(),
 		vision_type_(),
 		def_type_(),
@@ -96,7 +96,7 @@ terrain_type::terrain_type(const config& cfg) :
 		keep_(cfg["recruit_from"].to_bool()),
 		overlay_(number_.base == t_translation::NO_LAYER),
 		combined_(false),
-		editor_default_base_(t_translation::read_terrain_code(cfg["default_base"])),
+		editor_default_base_(t_translation::read_terrain_code(cfg["default_base"].str())),
 		hide_help_(cfg["hide_help"].to_bool(false)),
 		hide_in_editor_(cfg["hidden"].to_bool(false)),
 		hide_if_impassable_(cfg["hide_if_impassable"].to_bool(false))
