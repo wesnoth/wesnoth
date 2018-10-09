@@ -449,7 +449,6 @@ int game_lua_kernel::impl_run_animation(lua_State* L)
 	anim.start_animations();
 	anim.wait_for_end();
 	anim.set_all_standing();
-	anim.clear();
 	return 0;
 }
 
