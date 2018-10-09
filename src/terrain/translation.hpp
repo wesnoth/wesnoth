@@ -49,7 +49,7 @@ namespace t_translation {
 	 */
 	struct terrain_code {
 		terrain_code(const std::string& b, const std::string& o);
-		terrain_code(const std::string& b, ter_layer o = NO_LAYER);
+		explicit terrain_code(const std::string& b, ter_layer o = NO_LAYER);
 		terrain_code(ter_layer b, ter_layer o) : base(b), overlay(o) {}
 		terrain_code() : base(0), overlay(NO_LAYER) {}
 
@@ -107,7 +107,7 @@ namespace t_translation {
 	 */
 	struct ter_match{
 		ter_match();
-		ter_match(const std::string& str, const ter_layer filler = NO_LAYER);
+		ter_match(utils::string_view str, const ter_layer filler = NO_LAYER);
 		ter_match(const terrain_code& tcode);
 
 		ter_list terrain;
@@ -185,7 +185,7 @@ namespace t_translation {
 	 *
 	 * @return			A single terrain code
 	 */
-	terrain_code read_terrain_code(const std::string& str, const ter_layer filler = NO_LAYER);
+	terrain_code read_terrain_code(utils::string_view, const ter_layer filler = NO_LAYER);
 
 	/**
 	 * Writes a single terrain code to a string.
@@ -252,7 +252,7 @@ namespace t_translation {
 	 * @returns			A 2D vector with the terrains found the vector data is stored
 	 *					like result[x][y] where x the column number is and y the row number.
 	 */
-	ter_map read_game_map(const std::string& str, starting_positions& positions, coordinate border_offset = coordinate{ 0, 0 });
+	ter_map read_game_map(utils::string_view, starting_positions& positions, coordinate border_offset = coordinate{ 0, 0 });
 
 	/**
 	 * Write a gamemap in to a vector string.

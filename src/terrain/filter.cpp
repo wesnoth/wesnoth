@@ -117,7 +117,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 
 	if(cfg_.has_attribute("terrain")) {
 		if(cache_.parsed_terrain == nullptr) {
-			cache_.parsed_terrain.reset(new t_translation::ter_match(cfg_["terrain"]));
+			cache_.parsed_terrain.reset(new t_translation::ter_match(utils::string_view(cfg_["terrain"].str())));
 		}
 		if(!cache_.parsed_terrain->is_empty) {
 			const t_translation::terrain_code letter = fc_->get_disp_context().map().get_terrain_info(loc).number();

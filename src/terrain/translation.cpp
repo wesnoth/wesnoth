@@ -88,8 +88,8 @@ namespace t_translation {
 	 * @return                  The terrain code found in the string if no
 	 *                          valid terrain is found VOID will be returned.
 	 */
-	static terrain_code string_to_number_(std::string str, std::string& start_position, const ter_layer filler);
-	static terrain_code string_to_number_(const std::string& str, const ter_layer filler = NO_LAYER);
+	static terrain_code string_to_number_(utils::string_view, std::string& start_position, const ter_layer filler);
+	static terrain_code string_to_number_(utils::string_view, const ter_layer filler = NO_LAYER);
 
 	/**
 	 * Converts a terrain number to a string
@@ -166,7 +166,7 @@ ter_match::ter_match() :
 	is_empty(true)
 {}
 
-ter_match::ter_match(const std::string& str, const ter_layer filler) :
+ter_match::ter_match(utils::string_view str, const ter_layer filler) :
 	terrain(t_translation::read_list(str, filler)),
 	mask(),
 	masked_terrain(),
@@ -199,7 +199,7 @@ ter_match::ter_match(const terrain_code& tcode):
 	}
 }
 
-terrain_code read_terrain_code(const std::string& str, const ter_layer filler)
+terrain_code read_terrain_code(utils::string_view str, const ter_layer filler)
 {
 	return string_to_number_(str, filler);
 }
@@ -224,7 +224,7 @@ ter_list read_list(utils::string_view str, const ter_layer filler)
 		// Get a terrain chunk
 		const std::string separators = ",";
 		const size_t pos_separator = str.find_first_of(separators, offset);
-		const std::string terrain = str.substr(offset, pos_separator - offset).to_string();
+		utils::string_view terrain = str.substr(offset, pos_separator - offset);
 
 		// Process the chunk
 		const terrain_code tile = string_to_number_(terrain, filler);
@@ -233,7 +233,7 @@ ter_list read_list(utils::string_view str, const ter_layer filler)
 		result.push_back(tile);
 
 		// Evaluate the separator
-		if(pos_separator == std::string::npos) {
+		if(pos_separator == utils::string_view::npos) {
 			offset =  str.length();
 		} else {
 			offset = pos_separator + 1;
@@ -283,22 +283,22 @@ static std::pair<int, int> get_map_size(const char* begin, const char* end)
 	return{ w, h };
 }
 
-ter_map read_game_map(const std::string& str, starting_positions& starting_positions, coordinate border_offset)
+ter_map read_game_map(utils::string_view str, starting_positions& starting_positions, coordinate border_offset)
 {
 	size_t offset = 0;
 	int x = 0, y = 0, width = 0;
 
 	// Skip the leading newlines
-	while(offset < str.length() && utils::isnewline(str[offset])) {
-		++offset;
+	while(!str.empty() && utils::isnewline(str.front())) {
+		str.remove_prefix(1);
 	}
 
 	// Did we get an empty map?
-	if((offset + 1) >= str.length()) {
+	if(str.length() <= 1) {
 		return ter_map();
 	}
 
-	auto map_size = get_map_size(&str[offset], str.c_str() + str.size());
+	auto map_size = get_map_size(&str[0], &str[0] + str.size());
 	ter_map result(map_size.first, map_size.second);
 
 	while(offset < str.length()) {
@@ -306,7 +306,7 @@ ter_map read_game_map(const std::string& str, starting_positions& starting_posit
 		// Get a terrain chunk
 		const std::string separators = ",\n\r";
 		const size_t pos_separator = str.find_first_of(separators, offset);
-		const std::string terrain = str.substr(offset, pos_separator - offset);
+		utils::string_view terrain = str.substr(offset, pos_separator - offset);
 
 		// Process the chunk
 		std::string starting_position;
@@ -728,14 +728,14 @@ static ter_layer string_to_layer_(const char* begin, const char* end)
 	return result;
 }
 
-static terrain_code string_to_number_(const std::string& str, const ter_layer filler) {
+static terrain_code string_to_number_(utils::string_view str, const ter_layer filler) {
 	std::string dummy;
 	return string_to_number_(str, dummy, filler);
 }
 
-static terrain_code string_to_number_(std::string str, std::string& start_position, const ter_layer filler)
+static terrain_code string_to_number_(utils::string_view str, std::string& start_position, const ter_layer filler)
 {
-	const char* c_str = str.c_str();
+	const char* c_str = &str[0];
 	terrain_code result;
 
 	// Strip the spaces around us
@@ -749,7 +749,7 @@ static terrain_code string_to_number_(std::string str, std::string& start_positi
 	// Split if we have 1 space inside
 	size_t offset = str.find(' ', begin);
 	if(offset < end) {
-		start_position = str.substr(begin, offset - begin);
+		start_position = std::string(str.substr(begin, offset - begin));
 		begin = offset + 1;
 	}
 
