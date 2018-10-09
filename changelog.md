@@ -1,6 +1,6 @@
 ## Version 1.14.5+dev
  ### Language and i18n
-   * Updated translations: Chinese (Traditional), Italian, Spanish.
+   * Updated translations: Chinese (Traditional), French, Italian, Spanish.
  ### Lua API
    * Fix wesnoth.set_dialog_value not triggering re-layout. (issue #3572)
  ### Miscellaneous and bug fixes
