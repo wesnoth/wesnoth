@@ -974,7 +974,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 			}
 
 			if(best_ranking == 0) {
-				ERR_NG << "No castle location found, aborting." << std::endl;
+				ERR_NG << "No castle location found, for " << data.nplayers << " players aborting. " << std::endl;
 				const std::string error = _("No valid castle location found. Too many or too few mountain hexes? (please check the 'max hill size' parameter)");
 				throw mapgen_exception(error);
 			}
