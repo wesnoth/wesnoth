@@ -445,7 +445,7 @@ int game_lua_kernel::impl_run_animation(lua_State* L)
 	}
 	events::command_disabler command_disabler;
 	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
-	play_controller_.play_slice(false);
+	play_controller_.play_slice(false); 
 	anim.start_animations();
 	anim.wait_for_end();
 	anim.set_all_standing();
