@@ -1556,6 +1556,9 @@
       <Filter>OGL</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\thread_pool.cpp" />
+    <ClCompile Include="..\..\src\ogl\texture_atlas.cpp">
+      <Filter>OGL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -3031,6 +3034,9 @@
       <Filter>OGL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\thread_pool.hpp" />
+    <ClInclude Include="..\..\src\ogl\texture_atlas.hpp">
+      <Filter>OGL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\src\tests\test_sdl_utils.hpp">

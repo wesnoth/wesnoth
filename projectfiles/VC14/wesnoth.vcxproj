@@ -2486,6 +2486,13 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Hotkeys\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Hotkeys\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\ogl\texture_atlas.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)OGL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)OGL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)OGL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)OGL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)OGL\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\picture.cpp" />
     <ClCompile Include="..\..\src\image_modifications.cpp" />
     <ClCompile Include="..\..\src\key.cpp" />
@@ -3878,6 +3885,7 @@
     <ClInclude Include="..\..\src\hotkey\hotkey_handler_sp.hpp" />
     <ClInclude Include="..\..\src\hotkey\hotkey_item.hpp" />
     <ClInclude Include="..\..\src\hotkey\hotkey_manager.hpp" />
+    <ClInclude Include="..\..\src\ogl\texture_atlas.hpp" />
     <ClInclude Include="..\..\src\picture.hpp" />
     <ClInclude Include="..\..\src\image_modifications.hpp" />
     <ClInclude Include="..\..\src\key.hpp" />
