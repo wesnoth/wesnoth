@@ -4,6 +4,8 @@
 @echo off
 setlocal enabledelayedexpansion
 
+if "%SKIP_WMLTESTS%" == "TRUE" exit 0
+
 :: if OMP_WAIT_POLICY isn't set, the process restarts itself and !ERRORLEVEL!=0
 set OMP_WAIT_POLICY=PASSIVE
 
