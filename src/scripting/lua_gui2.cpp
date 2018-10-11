@@ -453,8 +453,6 @@ int show_message_box(lua_State* L) {
 int intf_set_dialog_value(lua_State* L)
 {
 	gui2::widget *w = find_widget(L, 2, false);
-	if (w)
-		w->get_window()->invalidate_layout();
 
 	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(w))
 	{
@@ -493,6 +491,7 @@ int intf_set_dialog_value(lua_State* L)
 			selectable->set_value(luaL_checkinteger(L, 1) -1);
 		}
 	} else if (gui2::text_box* text_box = dynamic_cast<gui2::text_box*>(w)) {
+		w->get_window()->invalidate_layout();
 		const t_string& text = luaW_checktstring(L, 1);
 		text_box->set_value(text.str());
 	} else if (gui2::slider* slider = dynamic_cast<gui2::slider*>(w)) {
@@ -529,6 +528,7 @@ int intf_set_dialog_value(lua_State* L)
 			}
 		}
 	} else if(gui2::unit_preview_pane* unit_preview_pane = dynamic_cast<gui2::unit_preview_pane*>(w)) {
+		w->get_window()->invalidate_layout();
 		if(const unit_type* ut = luaW_tounittype(L, 1)) {
 			unit_preview_pane->set_displayed_type(*ut);
 		} else if(unit* u = luaW_tounit(L, 1)) {
@@ -563,6 +563,7 @@ int intf_set_dialog_value(lua_State* L)
 			}
 		}
 	} else {
+		w->get_window()->invalidate_layout();
 		t_string v = luaW_checktstring(L, 1);
 		gui2::styled_widget* c = dynamic_cast<gui2::styled_widget*>(w);
 		if(!c) {
