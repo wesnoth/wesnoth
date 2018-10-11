@@ -24,6 +24,7 @@
 #include <boost/algorithm/string/trim.hpp>
 #include <SDL_image.h>
 
+#include <algorithm>
 #include <future>
 #include <set>
 
@@ -159,6 +160,32 @@ std::string get_localized_path(const std::string& file, const std::string& suff 
 	return "";
 }
 
+// Merges adjacent rectangles together when possible.
+void rectangle_merge(std::vector<SDL_Rect>& rectangles)
+{
+	for(std::size_t i = 0; i < rectangles.size(); ++i) {
+		for(std::size_t j = 0; j < rectangles.size(); ++j) {
+			if(i == j) {
+				continue;
+			}
+
+			if(rectangles[i].x == rectangles[j].x && rectangles[i].w == rectangles[j].w &&
+				rectangles[i].y == rectangles[j].y + rectangles[j].h) {
+				rectangles[j].h += rectangles[i].h;
+				rectangles.erase(rectangles.begin() + i);
+				i = 0;
+				j = 0;
+			} else if(rectangles[i].y == rectangles[j].y && rectangles[i].h == rectangles[j].h &&
+				rectangles[i].x == rectangles[j].x + rectangles[j].w) {
+				rectangles[j].w += rectangles[i].w;
+				rectangles.erase(rectangles.begin() + i);
+				i = 0;
+				j = 0;
+			}
+		}
+	}
+}
+
 }
 
 namespace gl
@@ -203,6 +230,59 @@ void texture_atlas::init(const std::vector<std::string>& images, thread_pool& th
 	thread_pool.run(sprites, &apply_IPFs).wait();
 
 	// TODO: pack sprites into the texture atlas
+}
+
+bool texture_atlas::sprite_data::operator<(const sprite_data& other) const
+{
+	std::pair<int, int> my_dims = std::minmax(surf->w, surf->h);
+	std::pair<int, int> other_dims = std::minmax(other.surf->w, other.surf->h);
+	return my_dims > other_dims;
+}
+
+void texture_atlas::pack_sprites(std::vector<sprite_data>& sprites)
+{
+	free_rectangles_.clear();
+
+	std::pair<int, int> texture_size = texture_.get_size();
+	SDL_Rect rect;
+	rect.x = 0;
+	rect.y = 0;
+	rect.w = texture_size.first;
+	rect.h = texture_size.second;
+	free_rectangles_.push_back(rect);
+
+	std::for_each(sprites.begin(), sprites.end(),
+		std::bind(&texture_atlas::place_sprite, this, std::placeholders::_1));
+}
+
+void texture_atlas::place_sprite(sprite_data& sprite)
+{
+	// Find the target rectangle.
+	auto rect = std::min_element(free_rectangles_.begin(), free_rectangles_.end(),
+		std::bind(&better_fit, sprite, std::placeholders::_1, std::placeholders::_2));
+	if(rect->w < sprite.surf->w || rect->h < sprite.surf->h) {
+		// The sprite doesn't fit anywhere. Packing has failed.
+		throw packing_error();
+	}
+
+	// Place the sprite into the rectangle.
+	sprite.x_min = rect->x;
+	sprite.x_max = rect->x + sprite.surf->w;
+	sprite.y_max = rect->y + rect->h;
+	sprite.y_min = sprite.y_max - sprite.surf->h;
+
+	// Split the remaining parts of the rectangle.
+	auto new_rectangles = split_rectangle(*rect, sprite);
+	free_rectangles_.erase(rect);
+	if(new_rectangles.first.w != 0 && new_rectangles.first.h != 0) {
+		free_rectangles_.push_back(new_rectangles.first);
+	}
+	if(new_rectangles.second.w != 0 && new_rectangles.second.h != 0) {
+		free_rectangles_.push_back(new_rectangles.second);
+	}
+
+	// Merge adjacent rectangles.
+	rectangle_merge(free_rectangles_);
 }
 
 void texture_atlas::load_image(sprite_data& sprite)
@@ -267,6 +347,54 @@ void texture_atlas::apply_IPFs(sprite_data& sprite)
 	}
 
 	sprite.surf = surf;
+}
+
+bool texture_atlas::better_fit(const sprite_data& sprite, const SDL_Rect& rect_a, const SDL_Rect& rect_b)
+{
+	// Best Short Side Fit: use the rectangle with the lowest amount of leftover area
+	// in the smaller dimension.
+	int leftover_a = std::min(rect_a.w - sprite.surf->w, rect_a.h - sprite.surf->h);
+	int leftover_b = std::min(rect_b.w - sprite.surf->w, rect_b.h - sprite.surf->h);
+	// If either doesn't have enough space to fit the sprite...
+	if(std::min(leftover_a, leftover_b) < 0) {
+		// ...choose the other rectangle, it might fit.
+		return leftover_b < leftover_a;
+	}
+	else {
+	 // Otherwise choose the rectangle with less leftover space.
+		return leftover_a < leftover_b;
+	}
+}
+
+std::pair<SDL_Rect, SDL_Rect> texture_atlas::split_rectangle(const SDL_Rect& rectangle, const sprite_data& sprite)
+{
+	// Shorter Axis Split: split the rectangle in the shorter direction
+	SDL_Rect rect_a;
+	SDL_Rect rect_b;
+	if(rectangle.w < rectangle.h) {
+		rect_a.x = sprite.x_max;
+		rect_a.y = rectangle.y;
+		rect_a.w = rectangle.w - sprite.surf->w;
+		rect_a.h = rectangle.h;
+
+		rect_b.x = rectangle.x;
+		rect_b.y = rectangle.y;
+		rect_b.w = sprite.surf->w;
+		rect_b.h = rectangle.h - sprite.surf->h;
+	}
+	else {
+		rect_a.x = rectangle.x;
+		rect_a.y = rectangle.y;
+		rect_a.w = rectangle.w;
+		rect_a.h = rectangle.h - sprite.surf->h;
+
+		rect_b.x = sprite.x_max;
+		rect_b.y = sprite.y_min;
+		rect_b.w = rectangle.w - sprite.surf->w;
+		rect_b.h = sprite.surf->h;
+	}
+
+	return {rect_a, rect_b};
 }
 
 }

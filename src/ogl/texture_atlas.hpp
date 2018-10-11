@@ -18,9 +18,13 @@
 #include "sdl/surface.hpp"
 #include "thread_pool.hpp"
 
+#include <SDL.h>
+
 #include <list>
+#include <stdexcept>
 #include <string>
 #include <unordered_map>
+#include <utility>
 #include <vector>
 
 namespace gl
@@ -28,6 +32,15 @@ namespace gl
 class texture_atlas
 {
 public:
+	texture_atlas()
+		: texture_()
+		, sprites_()
+		, sprites_by_name_()
+		, free_rectangles_()
+	{}
+
+	texture_atlas(const texture_atlas&) = delete;
+
 	/** Initializes the texture atlas.
 	Clears existing sprites, if any.
 	@param images Images to pack into the texture atlas.
@@ -43,6 +56,14 @@ public:
 		return *sprites_by_name_.at(name);
 	}
 
+	texture_atlas& operator=(texture_atlas&) = delete;
+
+	/// Thrown if packing sprites fails.
+	class packing_error : public std::exception
+	{
+
+	};
+
 private:
 	struct sprite_data
 	{
@@ -52,13 +73,21 @@ private:
 		unsigned int x_max;
 		unsigned int y_min;
 		unsigned int y_max;
+
+		bool operator<(const sprite_data& other) const;
 	};
 
 	texture texture_;
 	std::list<sprite> sprites_;
 	std::unordered_map<std::string, const sprite*> sprites_by_name_;
+	std::vector<SDL_Rect> free_rectangles_;
 
+	void pack_sprites(std::vector<sprite_data>& sprites);
+	void place_sprite(sprite_data& sprite);
 	static void load_image(sprite_data& sprite);
 	static void apply_IPFs(sprite_data& sprite);
+	/// @return true if it would be better to place the @param sprite to @param rect_a than @param rect_b.
+	static bool better_fit(const sprite_data& sprite, const SDL_Rect& rect_a, const SDL_Rect& rect_b);
+	static std::pair<SDL_Rect, SDL_Rect> split_rectangle(const SDL_Rect& rectangle, const sprite_data& sprite);
 };
 }
