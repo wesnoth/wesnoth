@@ -92,15 +92,11 @@ bool operator<(const irdya_date& a, const irdya_date& b)
 	using EPOCH = irdya_date::EPOCH;
 
 	// The BW and BF epochs count backward, much like BCE
-	if((a.get_epoch() == EPOCH::BEFORE_WESNOTH || a.get_epoch() == EPOCH::BEFORE_FALL) && a.get_year() > b.get_year()) {
-		return true;
+	if(a.get_epoch() == EPOCH::BEFORE_WESNOTH || a.get_epoch() == EPOCH::BEFORE_FALL) {
+		return (a.get_year() > b.get_year());
+	} else {
+		return (a.get_year() < b.get_year());
 	}
-
-	if(a.get_year() < b.get_year()) {
-		return true;
-	}
-
-	return false;
 }
 
 bool operator>(const irdya_date& a, const irdya_date& b)
