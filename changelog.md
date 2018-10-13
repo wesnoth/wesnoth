@@ -50,7 +50,29 @@
    * [remove_sound_source] now accepts a comma-separated ID list
    * Support [filter_team] in [side] in addition to team_name=
 
-## Version 1.14.4+dev
+## Version 1.14.5+dev
+ ### Language and i18n
+   * Updated translations: Chinese (Traditional), French, Italian, Spanish.
+ ### Lua API
+   * Fix wesnoth.set_dialog_value not triggering re-layout. (issue #3572)
+ ### Miscellaneous and bug fixes
+   * Fix crash with custom themes on desktop PCs. (issue #3599)
+   * Add --campaign-skip-story command line switch for skipping directly to turn 1. (issue #3472)
+   * Fix documentation of --render-image command line switch. (issue #3568)
+   * Fix wrong ordering for BW / BF years, for example in Play a Campaign when sorted by date. (issue #3187)
+ ### Multiplayer server
+   * Fix stale temporary bans continuing to have an effect on players until cleared by
+     phpBB on the next ban/unban operation.
+ ### User interface
+   * Fix regression: Game Load screen would not select 1.12 savegames. (issue #3561)
+   * Fix regression: the in-game "Observers" icon (an eye) was covered by the minimap. (issue #3543)
+   * Increase step size when clicking sliders in the MP Create Game dialog. (issue #3552)
+   * Don't scroll to an invisible unit that recruits another invisible unit. (issue #3559)
+   * When a recruited unit is fogged, scroll to the recruiting unit and play recruit
+     animation. (issue #3577)
+   * Fix line breaks in first statistics line in unit type pages in the help. (issue #3256)
+
+## Version 1.14.5
  ### AI
    * Fixed crash in AI code when a side has multiple leaders.
    * Fix AI ignoring teleport locations when moving leader to leader goals.
@@ -84,6 +106,7 @@
      * S6a: mermen leave after this scenario and will no longer be available.
      * S7a & S8a: a certain hero may now die.
    * Tutorial:
+     * Show an undo reminder if one is out of moves, but can't end the turn yet.
      * Added more information to the Status Table prompt about how to access it (issue #2883).
    * Under the Burning Suns:
      * New graphics for Eloh.
