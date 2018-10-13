@@ -208,6 +208,26 @@ inline unsigned int count_leading_zeros_impl(N n, std::size_t w) {
 #endif
 
 /**
+ * Rounds `n` up to the nearest power of two. As examples, returns 64 for 64,
+ * and 128 for 65.
+ *
+ * @tparam N The type of `n`. Requirements are the same as for
+ * @ref count_leading_zeros().
+ *
+ * @param n An integer upon which to operate.
+ *
+ * @returns The nearest power of two that's equal or larger than n.
+ */
+template<typename N>
+inline N round_up_to_power_of_two(N n) {
+	if(!is_power_of_two(n)) {
+		return static_cast<N>(1) << (bit_width<N>() - count_leading_zeros(n));
+	} else {
+		return n;
+	}
+}
+
+/**
  * Returns the quantity of leading `0` bits in `n` — i.e., the quantity of
  * bits in `n`, minus the 1-based bit index of the most significant `1` bit in
  * `n`, or minus 0 if `n` is 0.
@@ -285,6 +305,11 @@ inline int rounded_division(int a, int b)
 {
 	auto res = std::div(a,b);
 	return 2 * res.rem > b ? (res.quot + 1) : res.quot;
+}
+
+template<typename N>
+bool is_power_of_two(N n) {
+	return n != 0 && (n & (n - 1)) == 0;
 }
 
 

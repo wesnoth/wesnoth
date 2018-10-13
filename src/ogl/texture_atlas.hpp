@@ -82,6 +82,7 @@ private:
 	std::unordered_map<std::string, const sprite*> sprites_by_name_;
 	std::vector<SDL_Rect> free_rectangles_;
 
+	void pack_sprites_wrapper(std::vector<sprite_data>& sprites);
 	void pack_sprites(std::vector<sprite_data>& sprites);
 	void place_sprite(sprite_data& sprite);
 	static void load_image(sprite_data& sprite);
@@ -89,5 +90,6 @@ private:
 	/// @return true if it would be better to place the @param sprite to @param rect_a than @param rect_b.
 	static bool better_fit(const sprite_data& sprite, const SDL_Rect& rect_a, const SDL_Rect& rect_b);
 	static std::pair<SDL_Rect, SDL_Rect> split_rectangle(const SDL_Rect& rectangle, const sprite_data& sprite);
+	static std::pair<int, int> calculate_initial_texture_size(unsigned int combined_sprite_size);
 };
 }

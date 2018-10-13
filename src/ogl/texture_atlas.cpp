@@ -20,15 +20,20 @@
 #include "log.hpp"
 #include "sdl/utils.hpp"
 #include "serialization/string_utils.hpp"
+#include "utils/math.hpp"
 
 #include <boost/algorithm/string/trim.hpp>
 #include <SDL_image.h>
 
 #include <algorithm>
+#include <chrono>
 #include <future>
+#include <iomanip>
+#include <numeric>
 #include <set>
 
 static lg::log_domain log_opengl("opengl");
+#define DBG_GL LOG_STREAM(debug, log_opengl)
 #define LOG_GL LOG_STREAM(info, log_opengl)
 #define ERR_GL LOG_STREAM(err, log_opengl)
 
@@ -193,9 +198,6 @@ namespace gl
 
 void texture_atlas::init(const std::vector<std::string>& images, thread_pool& thread_pool)
 {
-	sprites_.clear();
-	sprites_by_name_.clear();
-
 	// Determine unique base images.
 	std::unordered_map<std::string, surface> base_images;
 	for(const std::string& i : images) {
@@ -229,7 +231,8 @@ void texture_atlas::init(const std::vector<std::string>& images, thread_pool& th
 	// Apply IPFs.
 	thread_pool.run(sprites, &apply_IPFs).wait();
 
-	// TODO: pack sprites into the texture atlas
+	// Pack sprites.
+	pack_sprites_wrapper(sprites);
 }
 
 bool texture_atlas::sprite_data::operator<(const sprite_data& other) const
@@ -237,6 +240,70 @@ bool texture_atlas::sprite_data::operator<(const sprite_data& other) const
 	std::pair<int, int> my_dims = std::minmax(surf->w, surf->h);
 	std::pair<int, int> other_dims = std::minmax(other.surf->w, other.surf->h);
 	return my_dims > other_dims;
+}
+
+void texture_atlas::pack_sprites_wrapper(std::vector<sprite_data>& sprites)
+{
+	using std::chrono::duration_cast;
+	using std::chrono::milliseconds;
+
+	auto start_time = std::chrono::high_resolution_clock::now();
+
+	sprites_.clear();
+	sprites_by_name_.clear();
+
+	// Sort the sprites to make them pack better.
+	std::stable_sort(sprites.begin(), sprites.end());
+
+	unsigned int total_size = std::accumulate(sprites.begin(), sprites.end(), 0u,
+		[](const unsigned int& size, const sprite_data& sprite)
+	{
+		return size + sprite.surf->w * sprite.surf->h;
+	});
+
+	std::pair<int, int> texture_size = calculate_initial_texture_size(total_size);
+	if(texture_size.first > texture::MAX_DIMENSION ||
+		texture_size.second > texture::MAX_DIMENSION) {
+		// No way the sprites would fit.
+		throw packing_error();
+	}
+
+	texture_.set_size(texture_size);
+
+	while(true) {
+		try {
+			pack_sprites(sprites);
+			break;
+		} catch(packing_error&) {
+			// Double the shorter dimension (width in case of tie).
+			if(texture_size.first <= texture_size.second) {
+				texture_size.first *= 2;
+			} else {
+				texture_size.second *= 2;
+			}
+			if(texture_size.first > texture::MAX_DIMENSION ||
+				texture_size.second > texture::MAX_DIMENSION) {
+				// Ran out of space.
+				throw;
+			}
+			texture_.set_size(texture_size);
+		}
+	}
+
+	auto end_time = std::chrono::high_resolution_clock::now();
+	auto time = end_time - start_time;
+
+	const double BYTES_PER_PIXEL = 4.0;
+	double efficiency = static_cast<double>(total_size) /
+		(texture_size.first * texture_size.second);
+
+	DBG_GL << std::setprecision(3u) << "Texture atlas packed: " << sprites.size() <<
+		" sprites (" << (BYTES_PER_PIXEL * total_size / (1 << 20)) << " MB)" <<
+		" packed to a " << texture_size.first << "x" << texture_size.second <<
+		" texture, efficiency << " << 100.0 * efficiency << " %, packing took " <<
+		duration_cast<milliseconds>(time).count() << " ms";
+
+	// TODO: construct the texture atlas
 }
 
 void texture_atlas::pack_sprites(std::vector<sprite_data>& sprites)
@@ -327,8 +394,7 @@ void texture_atlas::apply_IPFs(sprite_data& sprite)
 
 		try {
 			surf = (*mod)(surf);
-		}
-		catch(const image::modification::imod_exception& e) {
+		} catch(const image::modification::imod_exception& e) {
 			std::ostringstream ss;
 			ss << "\n";
 
@@ -359,8 +425,7 @@ bool texture_atlas::better_fit(const sprite_data& sprite, const SDL_Rect& rect_a
 	if(std::min(leftover_a, leftover_b) < 0) {
 		// ...choose the other rectangle, it might fit.
 		return leftover_b < leftover_a;
-	}
-	else {
+	} else {
 	 // Otherwise choose the rectangle with less leftover space.
 		return leftover_a < leftover_b;
 	}
@@ -381,8 +446,7 @@ std::pair<SDL_Rect, SDL_Rect> texture_atlas::split_rectangle(const SDL_Rect& rec
 		rect_b.y = rectangle.y;
 		rect_b.w = sprite.surf->w;
 		rect_b.h = rectangle.h - sprite.surf->h;
-	}
-	else {
+	} else {
 		rect_a.x = rectangle.x;
 		rect_a.y = rectangle.y;
 		rect_a.w = rectangle.w;
@@ -395,6 +459,14 @@ std::pair<SDL_Rect, SDL_Rect> texture_atlas::split_rectangle(const SDL_Rect& rec
 	}
 
 	return {rect_a, rect_b};
+}
+
+std::pair<int, int> texture_atlas::calculate_initial_texture_size(unsigned int combined_sprite_size)
+{
+	double num_bits = bit_width<unsigned int>() - count_leading_zeros(combined_sprite_size) + 1;
+	int width = 1 << static_cast<unsigned int>(std::ceil(num_bits / 2.0));
+	int height = 1 << static_cast<unsigned int>(std::floor(num_bits / 2.0));
+	return {width, height};
 }
 
 }
