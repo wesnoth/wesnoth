@@ -8,6 +8,9 @@
    * Add --campaign-skip-story command line switch for skipping directly to turn 1. (issue #3472)
    * Fix documentation of --render-image command line switch. (issue #3568)
    * Fix wrong ordering for BW / BF years, for example in Play a Campaign when sorted by date. (issue #3187)
+ ### Multiplayer server
+   * Fix stale temporary bans continuing to have an effect on players until cleared by
+     phpBB on the next ban/unban operation.
  ### User interface
    * Fix regression: Game Load screen would not select 1.12 savegames. (issue #3561)
    * Fix regression: the in-game "Observers" icon (an eye) was covered by the minimap. (issue #3543)
