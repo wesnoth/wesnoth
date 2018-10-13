@@ -15,6 +15,7 @@
    * Don't scroll to an invisible unit that recruits another invisible unit. (issue #3559)
    * When a recruited unit is fogged, scroll to the recruiting unit and play recruit
      animation. (issue #3577)
+   * Fix line breaks in first statistics line in unit type pages in the help. (issue #3256)
 
 ## Version 1.14.5
  ### AI
