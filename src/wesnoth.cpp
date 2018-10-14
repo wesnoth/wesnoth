@@ -672,7 +672,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	events::initialise();
 	events::run_event_loop();
-	events::run_event_loop();
 
 	check_fpu();
 	const cursor::manager cursor_manager;
