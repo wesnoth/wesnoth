@@ -77,13 +77,8 @@ void teleport_unit_between(const map_location& a, const map_location& b, unit& t
 	const display_context& dc = disp.get_disp_context();
 	const team& viewing_team = dc.get_team(disp.viewing_side());
 
-	// Temporarily change the unit's location to check if it's visible
-	// before and after the teleport.
-	assert(temp_unit.get_location() == a);
-	const bool a_visible = temp_unit.is_visible_to_team(viewing_team, false);
-	temp_unit.set_location(b);
-	const bool b_visible = temp_unit.is_visible_to_team(viewing_team, false);
-	temp_unit.set_location(a);
+	const bool a_visible = temp_unit.is_visible_to_team(a, viewing_team, false);
+	const bool b_visible = temp_unit.is_visible_to_team(b, viewing_team, false);
 
 	if ( a_visible ) { // teleport
 		disp.invalidate(a);
@@ -342,8 +337,8 @@ void unit_mover::proceed_to(unit_ptr u, std::size_t path_index, bool update, boo
 	path_index = std::min(path_index, path_.size()-1);
 
 	for ( ; current_ < path_index; ++current_ ) {
-		// It is possible for paths_[current_] and paths_[current_+1] not to be adjacent.
-		// When that is the case, and the unit is invisible at paths_[current_], we shouldn't
+		// It is possible for path_[current_] and path_[current_+1] not to be adjacent.
+		// When that is the case, and the unit is invisible at path_[current_], we shouldn't
 		// scroll to that hex.
 		std::vector<map_location> locs;
 		if (!temp_unit_ptr_->invisible(path_[current_]))

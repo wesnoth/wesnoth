@@ -2359,6 +2359,11 @@ bool unit::invisible(const map_location& loc, bool see_all) const
 bool unit::is_visible_to_team(const team& team, bool const see_all) const
 {
 	const map_location& loc = get_location();
+	return is_visible_to_team(loc, team, see_all);
+}
+
+bool unit::is_visible_to_team(const map_location& loc, const team& team, bool const see_all) const
+{
 	if(!display::get_singleton()->get_map().on_board(loc)) {
 		return false;
 	}
