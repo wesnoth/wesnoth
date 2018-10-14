@@ -2358,6 +2358,11 @@ bool unit::invisible(const map_location& loc, const display_context& dc, bool se
 bool unit::is_visible_to_team(const team& team,const  display_context& dc, bool const see_all) const
 {
 	const map_location& loc = get_location();
+	return is_visible_to_team(loc, team, dc, see_all);
+}
+
+bool unit::is_visible_to_team(const map_location& loc, const team& team, const  display_context& dc, bool const see_all) const
+{
 	if(!dc.map().on_board(loc)) {
 		return false;
 	}

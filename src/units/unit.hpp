@@ -1571,6 +1571,8 @@ public:
 	bool invisible(const map_location& loc, const display_context& dc, bool see_all = true) const;
 
 	bool is_visible_to_team(const team& team, const display_context& dc, bool const see_all = true) const;
+	/// Return true if the unit would be visible to team if its location were loc.
+	bool is_visible_to_team(const map_location& loc, const team& team, const display_context& dc, bool const see_all = true) const;
 
 	/**
 	 * Serializes the current unit metadata values.
