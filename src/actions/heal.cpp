@@ -284,6 +284,135 @@ namespace {
 			unit_list.erase(nearest);
 		}
 	}
+	struct harm_unit {
+		harm_unit(unit &patient, const std::vector<unit *> &treaters, int harming) :
+			harmed(patient),
+			harmers(treaters),
+			amount(harming)
+		{}
+
+		unit & harmed;
+		std::vector<unit *> harmers;
+		int amount;
+	};
+
+
+	/**
+	 * Updates the current healing and harming amounts based on a new value.
+	 * This is a helper function for heal_amount().
+	 * @returns true if an amount was updated.
+	 */
+	inline bool update_harming(int & healing, int & harming, int value)
+	{
+		// If the new value magnifies the healing, update and return true.
+		if ( value < healing ) {
+			healing = value;
+			return true;
+		}
+
+		// If the new value magnifies the harming, update and return true.
+		if ( value > harming ) {
+			harming = value;
+			return true;
+		}
+
+		// Keeping the same values as before.
+		return false;
+	}
+	/**
+	 * Calculate how much @patient heals this turn.
+	 * If harmed by units, those units are added to @a harmers.
+	 */
+
+	int harm_amount(int side, const unit & patient, std::vector<unit *> & harmers)
+	{
+		unit_map &units = resources::gameboard->units();
+
+		int healing = 0;
+		int harming = 0;
+
+		unit_ability_list harm_list = patient.get_abilities("harms");
+		// Remove all harmers not on this side (since they do not heal now).
+		unit_ability_list::iterator harm_it = harm_list.begin();
+		while ( harm_it != harm_list.end() ) {
+			unit_map::iterator healer = units.find(harm_it->second);
+			assert(healer != units.end());
+
+			if ( healer->side() != side )
+				harm_it = harm_list.erase(harm_it);
+			else {
+                 ++harm_it;
+			}
+		}
+
+
+		// Now we can get the aggregate healing amount.
+		unit_abilities::effect harm_effect(harm_list, 0, false);
+		if ( update_harming(healing, harming, harm_effect.get_composite_value()) )
+		{
+			// Collect the harmers involved.
+			for (const unit_abilities::individual_effect & harm : harm_effect)
+				harmers.push_back(&*units.find(harm.loc));
+
+			if ( !harmers.empty() ) {
+				DBG_NG << "Unit has " << harmers.size() << " harmers.\n";
+			}
+		}
+
+		return healing + harming;
+	}
+
+
+	/**
+	 * Handles the actual healing.
+	 */
+	void do_harm(unit &patient, int amount)
+	{
+		if ( amount > 0)
+			patient.heal(amount);
+		else if ( amount < 0 )
+			patient.take_hit(-amount);
+	}
+
+	/**
+	 * Animates the healings in the provided list.
+	 * (The list will be empty when this returns.)
+	 */
+
+	void animate_harms(std::list<harm_unit> &unit_list)
+	{
+		// Use a nearest-first algorithm.
+		map_location last_loc(0,-1);
+		while ( !unit_list.empty() )
+		{
+			std::list<harm_unit>::iterator nearest;
+			int min_dist = INT_MAX;
+
+			// Next unit to be harmed is the entry in list nearest to last_loc.
+			for ( std::list<harm_unit>::iterator check_it = unit_list.begin();
+			      check_it != unit_list.end(); ++check_it )
+			{
+				int distance = distance_between(last_loc, check_it->harmed.get_location());
+				if ( distance < min_dist ) {
+					min_dist = distance;
+					nearest = check_it;
+					// Allow an early exit if we cannot get closer.
+					if ( distance == 1 )
+						break;
+				}
+			}
+
+
+			// The heal (animated, then actual):
+			unit_display::unit_harming(nearest->harmed, nearest->harmers,
+			                           nearest->amount, "");
+			do_harm(nearest->harmed, nearest->amount);
+
+			// Update the loop variables.
+			last_loc = nearest->harmed.get_location();
+			unit_list.erase(nearest);
+		}
+	}
 
 }//anonymous namespace
 
@@ -363,4 +492,57 @@ void calculate_healing(int side, bool update_display)
 	animate_heals(unit_list);
 
 	DBG_NG << "end of healing calculations\n";
+}
+
+void calculate_harming(int side, bool update_display)
+{
+	DBG_NG << "beginning of harming calculations\n";
+
+	std::list<harm_unit> unit_list;
+
+	// We look for all allied units, then we see if our healer is near them.
+	for (unit &patient : resources::gameboard->units()) {
+
+
+		DBG_NG << "found harmable unit at (" << patient.get_location() << ")\n";
+
+		int harming = 0;
+		std::vector<unit *> harmers;
+
+		// Main healing.
+			harming -= harm_amount(side, patient, harmers);
+
+		// Cap the healing.
+		int max_heal = std::max(0, patient.max_hitpoints() - patient.hitpoints());
+		int min_heal = std::min(0, 1 - patient.hitpoints());
+		if ( harming < min_heal )
+			harming = min_heal;
+		else if ( harming > max_heal )
+			harming = max_heal;
+
+		// Is there nothing to do?
+		if ( harming == 0 )
+			continue;
+
+		if (!harmers.empty()) {
+			DBG_NG << "Just before harming animations, unit has " << harmers.size() << " potential harmers.\n";
+		}
+
+		const team & viewing_team =
+			resources::gameboard->teams()[display::get_singleton()->viewing_team()];
+		if (!resources::controller->is_skipping_replay() && update_display &&
+		    patient.is_visible_to_team(viewing_team, false) )
+		{
+			unit_list.emplace_front(patient, harmers, harming);
+		}
+		else
+		{
+			// Do the healing now since it will not be animated.
+			do_harm(patient, harming);
+		}
+	}
+
+	animate_harms(unit_list);
+
+	DBG_NG << "end of harming calculations\n";
 }

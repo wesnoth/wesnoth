@@ -512,6 +512,8 @@ void play_controller::do_init_side()
 		}
 
 		calculate_healing(current_side(), !is_skipping_replay());
+		
+		calculate_harming(current_side(), !is_skipping_replay());
 	}
 
 	// Prepare the undo stack.
