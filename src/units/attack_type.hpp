@@ -66,6 +66,10 @@ public:
 	void set_defense_weight(double value) { defense_weight_ = value; }
 	void set_specials(config value) { specials_ = value; }
 
+	
+	// In action/attack.cpp
+	std::pair<int, bool> combat_ability(const std::string& ability, int abil_value =0) const;
+	bool bool_ability(const std::string& ability) const;
 
 	// In unit_abilities.cpp:
 

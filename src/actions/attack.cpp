@@ -42,6 +42,7 @@
 #include "tod_manager.hpp"
 #include "units/abilities.hpp"
 #include "units/animation_component.hpp"
+#include "units/filter.hpp"
 #include "units/helper.hpp"
 #include "units/map.hpp"
 #include "units/udisplay.hpp"
@@ -129,13 +130,16 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 		opp_ctx.emplace(opp_weapon->specials_context(&opp, &u, opp_loc, u_loc, !attacking, weapon));
 	}
 
-	slows = weapon->get_special_bool("slow");
-	drains = !opp.get_state("undrainable") && weapon->get_special_bool("drains");
-	petrifies = weapon->get_special_bool("petrifies");
-	poisons = !opp.get_state("unpoisonable") && weapon->get_special_bool("poison") && !opp.get_state(unit::STATE_POISONED);
+	slows = weapon->bool_ability("slow");
+	drains = !opp.get_state("undrainable") && weapon->bool_ability("drains");
+	petrifies = weapon->bool_ability("petrifies");
+	poisons = !opp.get_state("unpoisonable") && weapon->bool_ability("poison") && !opp.get_state(unit::STATE_POISONED);
 	backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, resources::gameboard->teams());
 	rounds = weapon->get_specials("berserk").highest("value", 1).first;
-	firststrike = weapon->get_special_bool("firststrike");
+	if(weapon->combat_ability("berserk", 1).second) {
+		rounds = weapon->combat_ability("berserk", 1).first;
+	}
+	firststrike = weapon->bool_ability("firststrike");
 
 	{
 		const int distance = distance_between(u_loc, opp_loc);
@@ -166,6 +170,10 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	unit_abilities::effect cth_effects(cth_specials, cth, backstab_pos);
 	cth = cth_effects.get_composite_value();
 
+	cth = utils::clamp(cth, 0, 100);
+		
+	cth = weapon->combat_ability("chance_to_hit", cth).first;
+
 	if(opp.get_state("invulnerable")) {
 		cth = 0;
 	}
@@ -183,7 +191,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 			resources::gameboard->units(), resources::gameboard->map(), u_loc, u.alignment(), u.is_fearless());
 
 	// Leadership bonus.
-	int leader_bonus = under_leadership(units, u_loc, weapon, opp_weapon).first;
+	int leader_bonus = under_leadership(units, u_loc, attacking, weapon, opp_weapon);
 	if(leader_bonus != 0) {
 		damage_multiplier += leader_bonus;
 	}
@@ -201,11 +209,15 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 
 	// Compute drain amounts only if draining is possible.
 	if(drains) {
+	if (weapon->get_special_bool("drains")){
 		unit_ability_list drain_specials = weapon->get_specials("drains");
-
 		// Compute the drain percent (with 50% as the base for backward compatibility)
 		unit_abilities::effect drain_percent_effects(drain_specials, 50, backstab_pos);
 		drain_percent = drain_percent_effects.get_composite_value();
+		}
+		if (weapon->combat_ability("drains", 25).second){
+	        drain_percent = weapon->combat_ability("drains", 25).first;
+	    }
 	}
 
 	// Add heal_on_hit (the drain constant)
@@ -1616,16 +1628,180 @@ void attack_unit_and_advance(const map_location& attacker,
 	}
 }
 
-std::pair<int, map_location> under_leadership(const unit_map& units, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon)
+//integrate active_on in leadership ability
+int under_leadership(const unit_map& units, const map_location& loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
 	const unit_map::const_iterator un = units.find(loc);
 	if(un == units.end()) {
-		return {0, map_location::null_location()};
+		return 0;
 	}
 
 	unit_ability_list abil = un->get_abilities("leadership", weapon, opp_weapon);
-	return abil.highest("value");
+	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
+             const std::string& active_on = (*i->first)["active_on"];
+            if(!(active_on.empty() || (attacker && active_on == "offense") || (!attacker && active_on == "defense"))){
+                i = abil.erase(i);
+    } else {
+        ++i;
+        }
+    }
+	if(!abil.empty()) {
+		unit_abilities::effect leader_effect(abil, 0, false);
+		return leader_effect.get_composite_value();
+	}
+    return 0;
 }
+
+bool unit::abilities_filter_matches(const config& cfg, bool attacker, int res) const
+{
+	if(!(cfg["active_on"].empty() || (attacker && cfg["active_on"] == "offense") || (!attacker && cfg["active_on"] == "defense"))) {
+		return false;
+	}
+
+	if(!unit_abilities::filter_base_matches(cfg, res)) {
+		return false;
+	}
+
+	return true;
+}
+
+//functions for emulate weapon specials.
+//filter opponent and affect self/opponent/both option.
+bool unit::ability_filter_opponent(const std::string& ability,const config& cfg,const map_location& loc) const
+{
+	const config &filter = cfg.child("filter_opponent");
+	if (!filter) return true;
+	return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc);
+}
+
+bool leadership_affects_self(const std::string& ability,const unit_map& units, const map_location& loc, const_attack_ptr weapon,const_attack_ptr opp_weapon)
+{
+	const unit_map::const_iterator un = units.find(loc);
+	if(un == units.end()) {
+		return false;
+	}
+
+     unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
+     for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
+              const std::string& apply_to = (*i->first)["apply_to"];
+            if(!(apply_to.empty()||apply_to == "both"||apply_to == "under")) {
+                return false;
+     } else {
+         return true;
+         }
+         ++i;
+         }
+     return false;
+}
+
+bool leadership_affects_opponent(const std::string& ability,const unit_map& units, const map_location& loc, const_attack_ptr weapon,const_attack_ptr opp_weapon)
+{
+	const unit_map::const_iterator un = units.find(loc);
+	if(un == units.end()) {
+		return false;
+	}
+
+     unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
+     for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
+              const std::string& apply_to = (*i->first)["apply_to"];
+            if(apply_to.empty()||!(apply_to == "both"||apply_to == "opponent")) {
+                return false;
+     } else {
+         return true;
+         }
+         ++i;
+         }
+     return false;
+}
+
+//sub function for emulate chance_to_hit,damage drains and attacks special.
+std::pair<int, bool> ability_leadership(const std::string& ability,const unit_map& units, const map_location& loc, const map_location& opp_loc, bool attacker, int abil_value, const_attack_ptr weapon, const_attack_ptr opp_weapon)
+{
+	const unit_map::const_iterator un = units.find(loc);
+	const unit_map::const_iterator up = units.find(opp_loc);
+	if(un == units.end()) {
+		return {abil_value, false};
+	}
+	
+	bool backstab_pos = false;
+	unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
+	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
+            const config &filter = (*i->first).child("filter_opponent");
+            bool show_result = false;
+            if (up == units.end() && !filter){
+                    show_result = un->abilities_filter_matches(*i->first, attacker, abil_value);
+            } else if (up == units.end() && filter){
+                return {abil_value, false};
+                } else {
+                    backstab_pos = attacker && backstab_check(loc, opp_loc, units, resources::gameboard->teams());
+                    show_result = !(!un->abilities_filter_matches(*i->first, attacker, abil_value) || !up->ability_filter_opponent(ability, *i->first, opp_loc));
+                    }
+
+            if(!show_result) {
+                i = abil.erase(i);
+                } else {
+                    ++i;
+            }
+    }
+	if(!abil.empty()) {
+            unit_abilities::effect leader_effect(abil, abil_value, backstab_pos);
+            return {leader_effect.get_composite_value(), true};
+    }
+    return {abil_value, false};
+}
+
+//sub function for wmulate boolean special(slow, poison...)
+bool bool_leadership(const std::string& ability,const unit_map& units, const map_location& loc, const map_location& opp_loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon)
+{
+	const unit_map::const_iterator un = units.find(loc);
+	const unit_map::const_iterator up = units.find(opp_loc);
+	if(un == units.end() || up == units.end()) {
+		return false;
+	}
+
+	unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
+	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
+            const std::string& active_on = (*i->first)["active_on"];
+            if(!(active_on.empty() || (attacker && active_on == "offense") || (!attacker && active_on == "defense")) || !up->ability_filter_opponent(ability, *i->first, opp_loc)) {
+                i = abil.erase(i);
+                } else {
+                    ++i;
+            }
+    }
+	if(!abil.empty()) {
+            return true;
+    }
+    return false;
+}
+
+//emulate boolean special for self/adjacent and/or opponent.
+bool attack_type::bool_ability(const std::string& ability) const {
+
+    bool abil_bool= get_special_bool(ability);
+    const unit_map& units = display::get_singleton()->get_units();
+            if(leadership_affects_self(ability, units, self_loc_, shared_from_this(), other_attack_)){
+            abil_bool = bool_leadership(ability, units, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_);
+    }
+     if(leadership_affects_opponent(ability, units, other_loc_, other_attack_, shared_from_this())) {
+            abil_bool = bool_leadership(ability, units, other_loc_, self_loc_, !is_attacker_, other_attack_, shared_from_this());
+
+    }
+   return abil_bool;
+}
+
+//emulate numerical special for self/adjacent and/or opponent.
+std::pair<int, bool> attack_type::combat_ability(const std::string& ability, int abil_value) const {
+    const unit_map& units = display::get_singleton()->get_units();
+            if(leadership_affects_self(ability, units, self_loc_, shared_from_this(), other_attack_)){
+            return ability_leadership(ability, units, self_loc_, other_loc_, is_attacker_, abil_value, shared_from_this(), other_attack_);
+    }
+     if(leadership_affects_opponent(ability, units, other_loc_, other_attack_, shared_from_this())) {
+            return ability_leadership(ability, units, other_loc_,self_loc_, !is_attacker_, abil_value, other_attack_, shared_from_this());
+
+    }
+   return {abil_value, false};
+}
+//end of emulate weapon special functions.
 
 int combat_modifier(const unit_map& units,
 		const gamemap& map,
