@@ -12,22 +12,22 @@ cache:
 matrix:
   include:
     - compiler: gcc
-      env: CXXSTD=14 NLS=true LTS=1604 BRANCH=master
+      env: CXXSTD=14 NLS=true LTS=1604 BRANCH=development
 
     - compiler: gcc
-      env: TOOL=scons CXXSTD=17 NLS=false LTS=1804 BRANCH=master
+      env: TOOL=scons CXXSTD=17 NLS=false LTS=1804 BRANCH=development
 
     - compiler: gcc
-      env: TOOL=scons CXXSTD=14 NLS=false LTS=1604 BRANCH=master OPT=-O0
+      env: TOOL=scons CXXSTD=14 NLS=false LTS=1604 BRANCH=development OPT=-O0
 
     - compiler: gcc
-      env: TOOL=cmake CXXSTD=14 NLS=false LTS=1604 BRANCH=master
+      env: TOOL=cmake CXXSTD=14 NLS=false LTS=1604 BRANCH=development
 
     - compiler: clang
-      env: TOOL=scons CXXSTD=14 NLS=false LTS=1604 BRANCH=master OPT=-O0
+      env: TOOL=scons CXXSTD=14 NLS=false LTS=1604 BRANCH=development OPT=-O0
 
     - compiler: clang
-      env: TOOL=cmake CXXSTD=14 NLS=false LTS=1604 BRANCH=master
+      env: TOOL=cmake CXXSTD=14 NLS=false LTS=1604 BRANCH=development
 
     - os: osx
       compiler: clang
