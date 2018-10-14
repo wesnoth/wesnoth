@@ -850,8 +850,8 @@ int attack_type::modified_damage(bool is_backstab) const
 {
 	unit_abilities::effect dmg_effect(get_specials("damage"), damage(), is_backstab);
 	int damage_value = dmg_effect.get_composite_value();
- 	if(combat_ability("damage", damage()).second){
-    damage_value = combat_ability("damage", damage()).first;
+ 	if(combat_ability("damage", damage_value).second){
+    damage_value = combat_ability("damage", damage_value).first;
     }
     return damage_value;
 }
