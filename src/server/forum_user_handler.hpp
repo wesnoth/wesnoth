@@ -18,6 +18,7 @@
 
 #include <vector>
 #include <memory>
+#include <ctime>
 
 #include <mysql/mysql.h>
 
