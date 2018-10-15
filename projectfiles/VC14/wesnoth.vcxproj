@@ -1521,13 +1521,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\command_console.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\core_selection.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
@@ -1704,13 +1697,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\game_stats.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\game_ui.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
@@ -3737,7 +3723,6 @@
     <ClInclude Include="..\..\src\gui\dialogs\campaign_difficulty.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\campaign_selection.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\chat_log.hpp" />
-    <ClInclude Include="..\..\src\gui\dialogs\command_console.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\core_selection.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\debug_clock.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\depcheck_confirm_change.hpp" />
@@ -3764,7 +3749,6 @@
     <ClInclude Include="..\..\src\gui\dialogs\game_load.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\game_save.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\game_stats.hpp" />
-    <ClInclude Include="..\..\src\gui\dialogs\game_ui.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\game_version_dialog.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\help_browser.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\hotkey_bind.hpp" />
