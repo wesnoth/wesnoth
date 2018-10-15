@@ -69,7 +69,7 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 	find_package(SDL2 2.0.4 REQUIRED)
 endif(ENABLE_GAME OR ENABLE_TESTS)
 find_package(Crypto 1.0 REQUIRED)
-find_package(Boost 1.56 REQUIRED COMPONENTS iostreams program_options regex system random)
+find_package(Boost 1.56 REQUIRED COMPONENTS iostreams program_options regex system thread random)
 
 # no, gettext executables are not required when NLS is deactivated
 find_package(Gettext)
