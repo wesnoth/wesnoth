@@ -64,22 +64,22 @@ if ! [ -d temp ]; then
         mkdir temp
 fi
 cd temp
-if ! [ -d MacCompileStuff-master ]; then
-        git clone -b master https://github.com/hrubymar10/MacCompileStuff MacCompileStuff-master
+if ! [ -d MacCompileStuff-1.14 ]; then
+        git clone -b 1.14 https://github.com/hrubymar10/MacCompileStuff MacCompileStuff-1.14
 fi
-cd MacCompileStuff-master
+cd MacCompileStuff-1.14
 git pull
 cd ..
 cd ..
 
 if ! [ -L "Headers" ]; then
         rm -rf Headers
-        ln -s temp/MacCompileStuff-master/Headers
+        ln -s temp/MacCompileStuff-1.14/Headers
 fi
 
 if ! [ -L "lib" ]; then
         rm -rf lib
-        ln -s temp/MacCompileStuff-master/lib
+        ln -s temp/MacCompileStuff-1.14/lib
 fi
 
 echo "==> DONE ..."
