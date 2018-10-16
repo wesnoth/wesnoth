@@ -354,7 +354,7 @@ function wml_actions.unit_overlay(cfg)
 			if w == img then has_already = true end
 		end
 		if has_already == false then
-			u:add_modification("object" {
+			u:add_modification("object", {
 				id = cfg.object_id,
 				wml.tag.effect {
 					apply_to = "overlay",
