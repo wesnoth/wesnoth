@@ -59,12 +59,12 @@
     <ClCompile Include="..\..\src\filesystem.cpp" />
     <ClCompile Include="..\..\src\filesystem_common.cpp" />
     <ClCompile Include="..\..\src\game_config.cpp" />
+    <ClCompile Include="..\..\src\game_version.cpp" />
     <ClCompile Include="..\..\src\gettext.cpp" />
     <ClCompile Include="..\..\src\log.cpp" />
     <ClCompile Include="..\..\src\log_windows.cpp" />
     <ClCompile Include="..\..\src\random.cpp" />
     <ClCompile Include="..\..\src\tstring.cpp" />
-    <ClCompile Include="..\..\src\game_version.cpp" />
     <ClCompile Include="..\..\src\crypt_blowfish\crypt_blowfish.c">
       <Filter>crypt_blowfish</Filter>
     </ClCompile>
@@ -112,6 +112,7 @@
     <ClInclude Include="..\..\src\config_attribute_value.hpp" />
     <ClInclude Include="..\..\src\filesystem.hpp" />
     <ClInclude Include="..\..\src\game_config.hpp" />
+    <ClInclude Include="..\..\src\game_version.hpp" />
     <ClInclude Include="..\..\src\gettext.hpp" />
     <ClInclude Include="..\..\src\global.hpp" />
     <ClInclude Include="..\..\src\lexical_cast.hpp" />
@@ -120,7 +121,6 @@
     <ClInclude Include="..\..\src\log_windows.hpp" />
     <ClInclude Include="..\..\src\random.hpp" />
     <ClInclude Include="..\..\src\tstring.hpp" />
-    <ClInclude Include="..\..\src\game_version.hpp" />
     <ClInclude Include="..\..\src\wesconfig.h" />
     <ClInclude Include="..\..\src\crypt_blowfish\crypt_blowfish.h">
       <Filter>crypt_blowfish</Filter>
