@@ -172,7 +172,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 
 	cth = utils::clamp(cth, 0, 100);
 		
-	cth = weapon->combat_ability("chance_to_hit", cth).first;
+	cth = weapon->combat_ability("chance_to_hit", cth, backstab_pos).first;
 
 	if(opp.get_state("invulnerable")) {
 		cth = 0;
@@ -215,8 +215,8 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 		unit_abilities::effect drain_percent_effects(drain_specials, 50, backstab_pos);
 		drain_percent = drain_percent_effects.get_composite_value();
 		}
-		if (weapon->combat_ability("drains", 25).second){
-	        drain_percent = weapon->combat_ability("drains", 25).first;
+		if (weapon->combat_ability("drains", 25, backstab_pos).second){
+	        drain_percent = weapon->combat_ability("drains", 25, backstab_pos).first;
 	    }
 	}
 
@@ -1734,7 +1734,7 @@ bool leadership_affects_opponent(const std::string& ability,const unit_map& unit
 }
 
 //sub function for emulate chance_to_hit,damage drains and attacks special.
-std::pair<int, bool> ability_leadership(const std::string& ability,const unit_map& units, const map_location& loc, const map_location& opp_loc, bool attacker, int abil_value, const_attack_ptr weapon, const_attack_ptr opp_weapon)
+std::pair<int, bool> ability_leadership(const std::string& ability,const unit_map& units, const map_location& loc, const map_location& opp_loc, bool attacker, int abil_value, bool backstab_pos, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
 	const unit_map::const_iterator un = units.find(loc);
 	const unit_map::const_iterator up = units.find(opp_loc);
@@ -1742,7 +1742,6 @@ std::pair<int, bool> ability_leadership(const std::string& ability,const unit_ma
 		return {abil_value, false};
 	}
 	
-	bool backstab_pos = false;
 	unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
             const config &filter = (*i->first).child("filter_opponent");
@@ -1809,13 +1808,13 @@ bool attack_type::bool_ability(const std::string& ability) const {
 }
 
 //emulate numerical special for self/adjacent and/or opponent.
-std::pair<int, bool> attack_type::combat_ability(const std::string& ability, int abil_value) const {
+std::pair<int, bool> attack_type::combat_ability(const std::string& ability, int abil_value, bool backstab_pos) const {
     const unit_map& units = display::get_singleton()->get_units();
             if(leadership_affects_self(ability, units, self_loc_, shared_from_this(), other_attack_)){
-            return ability_leadership(ability, units, self_loc_, other_loc_, is_attacker_, abil_value, shared_from_this(), other_attack_);
+            return ability_leadership(ability, units, self_loc_, other_loc_, is_attacker_, abil_value, backstab_pos, shared_from_this(), other_attack_);
     }
      if(leadership_affects_opponent(ability, units, other_loc_, other_attack_, shared_from_this())) {
-            return ability_leadership(ability, units, other_loc_,self_loc_, !is_attacker_, abil_value, other_attack_, shared_from_this());
+            return ability_leadership(ability, units, other_loc_,self_loc_, !is_attacker_, abil_value, backstab_pos, other_attack_, shared_from_this());
 
     }
    return {abil_value, false};
