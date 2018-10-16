@@ -161,9 +161,6 @@
     <Filter Include="Font\Pango">
       <UniqueIdentifier>{c4a05de3-89fe-417e-a054-751a5d9d171b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="OGL">
-      <UniqueIdentifier>{9100fa1e-3fe6-4809-a351-ee0052f94a6d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Preferences">
       <UniqueIdentifier>{b0433154-cf07-4ead-b777-917bbb4d553c}</UniqueIdentifier>
     </Filter>
@@ -356,9 +353,6 @@
     <ClCompile Include="..\..\src\editor\palette\editor_palettes.cpp">
       <Filter>Editor\Palette</Filter>
     </ClCompile>
-    <ClInclude Include="..\..\src\editor\palette\empty_palette.hpp">
-      <Filter>Editor\Palette</Filter>
-    </ClInclude>
     <ClCompile Include="..\..\src\editor\palette\item_palette.cpp">
       <Filter>Editor\Palette</Filter>
     </ClCompile>
@@ -548,9 +542,6 @@
     <ClCompile Include="..\..\src\gui\dialogs\campaign_selection.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\command_console.cpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\chat_log.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
@@ -602,7 +593,7 @@
     <ClCompile Include="..\..\src\gui\dialogs\game_stats.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\game_ui.cpp">
+    <ClCompile Include="..\..\src\gui\dialogs\game_version_dialog.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\gamestate_inspector.cpp">
@@ -612,9 +603,6 @@
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\hotkey_bind.cpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\ingame_ui_base.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\label_settings.cpp">
@@ -1241,9 +1229,6 @@
     <ClCompile Include="..\..\src\sdl\surface.cpp">
       <Filter>SDL</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\sdl\texture.cpp">
-      <Filter>SDL</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\sdl\utils.cpp">
       <Filter>SDL</Filter>
     </ClCompile>
@@ -1304,13 +1289,19 @@
     <ClCompile Include="..\..\src\desktop\windows_tray_notification.cpp">
       <Filter>Desktop</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\help\constants.cpp">
-      <Filter>Help</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\help\help.cpp">
       <Filter>Help</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\help\help_browser.cpp">
+      <Filter>Help</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\help\help_impl.cpp">
+      <Filter>Help</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\help\help_menu.cpp">
+      <Filter>Help</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\help\help_text_area.cpp">
       <Filter>Help</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\help\help_topic_generators.cpp">
@@ -1452,12 +1443,12 @@
     <ClCompile Include="..\..\src\generic_event.cpp" />
     <ClCompile Include="..\..\src\halo.cpp" />
     <ClCompile Include="..\..\src\hash.cpp" />
-    <ClCompile Include="..\..\src\picture.cpp" />
     <ClCompile Include="..\..\src\image_modifications.cpp" />
     <ClCompile Include="..\..\src\joystick.cpp" />
     <ClCompile Include="..\..\src\key.cpp" />
     <ClCompile Include="..\..\src\language.cpp" />
     <ClCompile Include="..\..\src\lua_jailbreak_exception.cpp" />
+    <ClCompile Include="..\..\src\map_settings.cpp" />
     <ClCompile Include="..\..\src\menu_events.cpp" />
     <ClCompile Include="..\..\src\minimap.cpp" />
     <ClCompile Include="..\..\src\mouse_events.cpp" />
@@ -1471,6 +1462,7 @@
     <ClCompile Include="..\..\src\persist_context.cpp" />
     <ClCompile Include="..\..\src\persist_manager.cpp" />
     <ClCompile Include="..\..\src\persist_var.cpp" />
+    <ClCompile Include="..\..\src\picture.cpp" />
     <ClCompile Include="..\..\src\play_controller.cpp" />
     <ClCompile Include="..\..\src\playmp_controller.cpp" />
     <ClCompile Include="..\..\src\playsingle_controller.cpp" />
@@ -1491,13 +1483,11 @@
     <ClCompile Include="..\..\src\saved_game.cpp" />
     <ClCompile Include="..\..\src\savegame.cpp" />
     <ClCompile Include="..\..\src\seed_rng.cpp" />
-    <ClCompile Include="..\..\src\map_settings.cpp" />
     <ClCompile Include="..\..\src\show_dialog.cpp" />
     <ClCompile Include="..\..\src\side_filter.cpp" />
     <ClCompile Include="..\..\src\sound.cpp" />
     <ClCompile Include="..\..\src\sound_music_track.cpp" />
     <ClCompile Include="..\..\src\soundsource.cpp" />
-    <ClCompile Include="..\..\src\spritesheet_generator.cpp" />
     <ClCompile Include="..\..\src\statistics.cpp" />
     <ClCompile Include="..\..\src\synced_checkup.cpp" />
     <ClCompile Include="..\..\src\synced_commands.cpp" />
@@ -1540,12 +1530,6 @@
     <ClCompile Include="..\..\src\font\text_surface.cpp">
       <Filter>Font</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\ogl\context.cpp">
-      <Filter>OGL</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\ogl\utils.cpp">
-      <Filter>OGL</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\preferences\credentials.cpp">
       <Filter>Preferences</Filter>
     </ClCompile>
@@ -1563,9 +1547,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\preferences\lobby.cpp">
       <Filter>Preferences</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\game_version_dialog.cpp">
-      <Filter>Gui\Dialogs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1750,6 +1731,9 @@
       <Filter>Editor\Palette</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\editor\palette\editor_palettes.hpp">
+      <Filter>Editor\Palette</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\palette\empty_palette.hpp">
       <Filter>Editor\Palette</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\editor\palette\item_palette.hpp">
@@ -1977,9 +1961,6 @@
     <ClInclude Include="..\..\src\gui\dialogs\chat_log.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\command_console.hpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\core_selection.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
@@ -2028,7 +2009,7 @@
     <ClInclude Include="..\..\src\gui\dialogs\game_stats.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\game_ui.hpp">
+    <ClInclude Include="..\..\src\gui\dialogs\game_version_dialog.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\gamestate_inspector.hpp">
@@ -2038,9 +2019,6 @@
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\hotkey_bind.hpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\ingame_ui_base.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\label_settings.hpp">
@@ -2520,6 +2498,9 @@
     <ClInclude Include="..\..\src\utils\reference_counter.hpp">
       <Filter>utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\utils\scope_exit.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\serialization\tag.hpp">
       <Filter>serialization</Filter>
     </ClInclude>
@@ -2652,9 +2633,6 @@
     <ClInclude Include="..\..\src\sdl\surface.hpp">
       <Filter>SDL</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\sdl\texture.hpp">
-      <Filter>SDL</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\sdl\userevent.hpp">
       <Filter>SDL</Filter>
     </ClInclude>
@@ -2721,13 +2699,19 @@
     <ClInclude Include="..\..\src\desktop\windows_tray_notification.hpp">
       <Filter>Desktop</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\help\constants.hpp">
-      <Filter>Help</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\help\help.hpp">
       <Filter>Help</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\help\help_browser.hpp">
+      <Filter>Help</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\help\help_impl.hpp">
+      <Filter>Help</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\help\help_menu.hpp">
+      <Filter>Help</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\help\help_text_area.hpp">
       <Filter>Help</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\help\help_topic_generators.hpp">
@@ -2773,6 +2757,9 @@
       <Filter>Terrain</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\terrain\filter.hpp">
+      <Filter>Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\terrain\movement.hpp">
       <Filter>Terrain</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\terrain\terrain.hpp">
@@ -2841,9 +2828,6 @@
     <ClInclude Include="..\..\src\map\exception.hpp">
       <Filter>Map</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\map\hex_rect.hpp">
-      <Filter>Map</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\map\label.hpp">
       <Filter>Map</Filter>
     </ClInclude>
@@ -2891,17 +2875,18 @@
     <ClInclude Include="..\..\src\game_errors.hpp" />
     <ClInclude Include="..\..\src\game_launcher.hpp" />
     <ClInclude Include="..\..\src\game_state.hpp" />
+    <ClInclude Include="..\..\src\game_version.hpp" />
     <ClInclude Include="..\..\src\generic_event.hpp" />
     <ClInclude Include="..\..\src\global.hpp" />
     <ClInclude Include="..\..\src\halo.hpp" />
     <ClInclude Include="..\..\src\hash.hpp" />
-    <ClInclude Include="..\..\src\picture.hpp" />
     <ClInclude Include="..\..\src\image_modifications.hpp" />
     <ClInclude Include="..\..\src\joystick.hpp" />
     <ClInclude Include="..\..\src\key.hpp" />
     <ClInclude Include="..\..\src\language.hpp" />
     <ClInclude Include="..\..\src\lua_jailbreak_exception.hpp" />
     <ClInclude Include="..\..\src\map_command_handler.hpp" />
+    <ClInclude Include="..\..\src\map_settings.hpp" />
     <ClInclude Include="..\..\src\menu_events.hpp" />
     <ClInclude Include="..\..\src\minimap.hpp" />
     <ClInclude Include="..\..\src\mouse_events.hpp" />
@@ -2917,6 +2902,7 @@
     <ClInclude Include="..\..\src\persist_context.hpp" />
     <ClInclude Include="..\..\src\persist_manager.hpp" />
     <ClInclude Include="..\..\src\persist_var.hpp" />
+    <ClInclude Include="..\..\src\picture.hpp" />
     <ClInclude Include="..\..\src\play_controller.hpp" />
     <ClInclude Include="..\..\src\playmp_controller.hpp" />
     <ClInclude Include="..\..\src\playsingle_controller.hpp" />
@@ -2938,13 +2924,11 @@
     <ClInclude Include="..\..\src\savegame.hpp" />
     <ClInclude Include="..\..\src\savegame_config.hpp" />
     <ClInclude Include="..\..\src\seed_rng.hpp" />
-    <ClInclude Include="..\..\src\map_settings.hpp" />
     <ClInclude Include="..\..\src\show_dialog.hpp" />
     <ClInclude Include="..\..\src\side_filter.hpp" />
     <ClInclude Include="..\..\src\sound.hpp" />
     <ClInclude Include="..\..\src\sound_music_track.hpp" />
     <ClInclude Include="..\..\src\soundsource.hpp" />
-    <ClInclude Include="..\..\src\spritesheet_generator.hpp" />
     <ClInclude Include="..\..\src\statistics.hpp" />
     <ClInclude Include="..\..\src\synced_checkup.hpp" />
     <ClInclude Include="..\..\src\synced_commands.hpp" />
@@ -2961,7 +2945,6 @@
     <ClInclude Include="..\..\src\variable_info.hpp" />
     <ClInclude Include="..\..\src\variable_info_detail.hpp" />
     <ClInclude Include="..\..\src\variable_info_private.hpp" />
-    <ClInclude Include="..\..\src\game_version.hpp" />
     <ClInclude Include="..\..\src\video.hpp" />
     <ClInclude Include="..\..\src\wesconfig.h" />
     <ClInclude Include="..\..\src\wesnothd_connection.hpp" />
@@ -3016,12 +2999,6 @@
     <ClInclude Include="..\..\src\font\pango\stream_ops.hpp">
       <Filter>Font\Pango</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\ogl\context.hpp">
-      <Filter>OGL</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\ogl\utils.hpp">
-      <Filter>OGL</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\preferences\credentials.hpp">
       <Filter>Preferences</Filter>
     </ClInclude>
@@ -3039,16 +3016,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\preferences\lobby.hpp">
       <Filter>Preferences</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\utils\scope_exit.hpp">
-      <Filter>utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\chat_log.hpp" />
-    <ClInclude Include="..\..\src\terrain\movement.hpp">
-      <Filter>Terrain</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\game_version_dialog.hpp">
-      <Filter>Gui\Dialogs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

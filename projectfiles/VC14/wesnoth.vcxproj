@@ -1521,13 +1521,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\command_console.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\core_selection.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
@@ -1704,13 +1697,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\game_stats.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\game_ui.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
@@ -2410,7 +2396,28 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Help\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Help\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\help\help_browser.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Help\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Help\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Help\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Help\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Help\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\help\help_impl.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Help\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Help\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Help\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Help\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Help\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\help\help_menu.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Help\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Help\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Help\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Help\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Help\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\help\help_text_area.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Help\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Help\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Help\</ObjectFileName>
@@ -2473,7 +2480,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Hotkeys\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Hotkeys\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\picture.cpp" />
     <ClCompile Include="..\..\src\image_modifications.cpp" />
     <ClCompile Include="..\..\src\joystick.cpp" />
     <ClCompile Include="..\..\src\key.cpp" />
@@ -2500,6 +2506,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Map\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Map\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\map_settings.cpp" />
     <ClCompile Include="..\..\src\menu_events.cpp" />
     <ClCompile Include="..\..\src\minimap.cpp" />
     <ClCompile Include="..\..\src\mouse_events.cpp" />
@@ -2510,20 +2517,6 @@
     <ClCompile Include="..\..\src\mt_rng.cpp" />
     <ClCompile Include="..\..\src\network_asio.cpp">
       <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4800;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-    </ClCompile>
-    <ClCompile Include="..\..\src\ogl\context.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)OGL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)OGL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)OGL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)OGL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)OGL\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="..\..\src\ogl\utils.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)OGL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)OGL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)OGL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)OGL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)OGL\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\pathfind\astarsearch.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Pathfind\</ObjectFileName>
@@ -2550,6 +2543,7 @@
     <ClCompile Include="..\..\src\persist_context.cpp" />
     <ClCompile Include="..\..\src\persist_manager.cpp" />
     <ClCompile Include="..\..\src\persist_var.cpp" />
+    <ClCompile Include="..\..\src\picture.cpp" />
     <ClCompile Include="..\..\src\playmp_controller.cpp" />
     <ClCompile Include="..\..\src\playsingle_controller.cpp" />
     <ClCompile Include="..\..\src\playturn.cpp" />
@@ -2786,13 +2780,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)SDL\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)SDL\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\sdl\texture.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)SDL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)SDL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)SDL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)SDL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)SDL\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\sdl\utils.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)SDL\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)SDL\</ObjectFileName>
@@ -2815,7 +2802,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Serialization\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Serialization\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\map_settings.cpp" />
     <ClCompile Include="..\..\src\show_dialog.cpp" />
     <ClCompile Include="..\..\src\side_filter.cpp" />
     <ClCompile Include="..\..\src\sound.cpp" />
@@ -3682,6 +3668,7 @@
     <ClInclude Include="..\..\src\game_initialization\singleplayer.hpp" />
     <ClInclude Include="..\..\src\game_launcher.hpp" />
     <ClInclude Include="..\..\src\game_state.hpp" />
+    <ClInclude Include="..\..\src\game_version.hpp" />
     <ClInclude Include="..\..\src\generators\cave_map_generator.hpp" />
     <ClInclude Include="..\..\src\generators\default_map_generator.hpp" />
     <ClInclude Include="..\..\src\generators\default_map_generator_job.hpp" />
@@ -3737,7 +3724,6 @@
     <ClInclude Include="..\..\src\gui\dialogs\campaign_difficulty.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\campaign_selection.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\chat_log.hpp" />
-    <ClInclude Include="..\..\src\gui\dialogs\command_console.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\core_selection.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\debug_clock.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\depcheck_confirm_change.hpp" />
@@ -3764,7 +3750,6 @@
     <ClInclude Include="..\..\src\gui\dialogs\game_load.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\game_save.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\game_stats.hpp" />
-    <ClInclude Include="..\..\src\gui\dialogs\game_ui.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\game_version_dialog.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\help_browser.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\hotkey_bind.hpp" />
@@ -3877,7 +3862,10 @@
     <ClInclude Include="..\..\src\halo.hpp" />
     <ClInclude Include="..\..\src\hash.hpp" />
     <ClInclude Include="..\..\src\help\help.hpp" />
+    <ClInclude Include="..\..\src\help\help_browser.hpp" />
     <ClInclude Include="..\..\src\help\help_impl.hpp" />
+    <ClInclude Include="..\..\src\help\help_menu.hpp" />
+    <ClInclude Include="..\..\src\help\help_text_area.hpp" />
     <ClInclude Include="..\..\src\help\help_topic_generators.hpp" />
     <ClInclude Include="..\..\src\hotkey\command_executor.hpp" />
     <ClInclude Include="..\..\src\hotkey\hotkey_command.hpp" />
@@ -3886,7 +3874,6 @@
     <ClInclude Include="..\..\src\hotkey\hotkey_handler_sp.hpp" />
     <ClInclude Include="..\..\src\hotkey\hotkey_item.hpp" />
     <ClInclude Include="..\..\src\hotkey\hotkey_manager.hpp" />
-    <ClInclude Include="..\..\src\picture.hpp" />
     <ClInclude Include="..\..\src\image_modifications.hpp" />
     <ClInclude Include="..\..\src\joystick.hpp" />
     <ClInclude Include="..\..\src\key.hpp" />
@@ -3897,6 +3884,7 @@
     <ClInclude Include="..\..\src\map\location.hpp" />
     <ClInclude Include="..\..\src\map\map.hpp" />
     <ClInclude Include="..\..\src\map_command_handler.hpp" />
+    <ClInclude Include="..\..\src\map_settings.hpp" />
     <ClInclude Include="..\..\src\menu_events.hpp" />
     <ClInclude Include="..\..\src\minimap.hpp" />
     <ClInclude Include="..\..\src\mouse_events.hpp" />
@@ -3907,8 +3895,6 @@
     <ClInclude Include="..\..\src\mt_rng.hpp" />
     <ClInclude Include="..\..\src\multiplayer_error_codes.hpp" />
     <ClInclude Include="..\..\src\network_asio.hpp" />
-    <ClInclude Include="..\..\src\ogl\context.hpp" />
-    <ClInclude Include="..\..\src\ogl\utils.hpp" />
     <ClInclude Include="..\..\src\overlay.hpp" />
     <ClInclude Include="..\..\src\pathfind\pathfind.hpp" />
     <ClInclude Include="..\..\src\pathfind\teleport.hpp" />
@@ -3916,6 +3902,7 @@
     <ClInclude Include="..\..\src\persist_context.hpp" />
     <ClInclude Include="..\..\src\persist_manager.hpp" />
     <ClInclude Include="..\..\src\persist_var.hpp" />
+    <ClInclude Include="..\..\src\picture.hpp" />
     <ClInclude Include="..\..\src\playmp_controller.hpp" />
     <ClInclude Include="..\..\src\playsingle_controller.hpp" />
     <ClInclude Include="..\..\src\playturn.hpp" />
@@ -3970,12 +3957,10 @@
     <ClInclude Include="..\..\src\sdl\rect.hpp" />
     <ClInclude Include="..\..\src\sdl\render_utils.hpp" />
     <ClInclude Include="..\..\src\sdl\surface.hpp" />
-    <ClInclude Include="..\..\src\sdl\texture.hpp" />
     <ClInclude Include="..\..\src\sdl\userevent.hpp" />
     <ClInclude Include="..\..\src\sdl\utils.hpp" />
     <ClInclude Include="..\..\src\sdl\window.hpp" />
     <ClInclude Include="..\..\src\seed_rng.hpp" />
-    <ClInclude Include="..\..\src\map_settings.hpp" />
     <ClInclude Include="..\..\src\show_dialog.hpp" />
     <ClInclude Include="..\..\src\side_filter.hpp" />
     <ClInclude Include="..\..\src\sound.hpp" />
@@ -4068,7 +4053,6 @@
     <ClInclude Include="..\..\src\variable_info.hpp" />
     <ClInclude Include="..\..\src\variable_info_detail.hpp" />
     <ClInclude Include="..\..\src\variable_info_private.hpp" />
-    <ClInclude Include="..\..\src\game_version.hpp" />
     <ClInclude Include="..\..\src\video.hpp" />
     <ClInclude Include="..\..\src\wesconfig.h" />
     <ClInclude Include="..\..\src\wesnothd_connection.hpp" />
