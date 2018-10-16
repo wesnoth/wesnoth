@@ -1751,7 +1751,6 @@ std::pair<int, bool> ability_leadership(const std::string& ability,const unit_ma
             } else if (up == units.end() && filter){
                 return {abil_value, false};
                 } else {
-                    backstab_pos = attacker && backstab_check(loc, opp_loc, units, resources::gameboard->teams());
                     show_result = !(!un->abilities_filter_matches(*i->first, attacker, abil_value) || !up->ability_filter_opponent(ability, *i->first, opp_loc));
                     }
 
