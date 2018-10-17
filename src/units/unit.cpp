@@ -475,6 +475,11 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	underlying_id_ = n_unit::unit_id(cfg["underlying_id"].to_size_t());
 	set_underlying_id(resources::gameboard ? resources::gameboard->unit_id_manager() : n_unit::id_manager::global_instance());
 
+	overlays_ = utils::parenthetical_split(cfg["overlays"], ',');
+	if(overlays_.size() == 1 && overlays_.front().empty()) {
+		overlays_.clear();
+	}
+
 	if(vcfg) {
 		const vconfig& filter_recall = vcfg->child("filter_recall");
 		if(!filter_recall.null())
@@ -508,11 +513,6 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 
 	// Apply the unit type's data to this unit.
 	advance_to(*type_, use_traits);
-
-	overlays_ = utils::parenthetical_split(cfg["overlays"], ',');
-	if(overlays_.size() == 1 && overlays_.front().empty()) {
-		overlays_.clear();
-	}
 
 	if(const config& variables = cfg.child("variables")) {
 		variables_ = variables;
@@ -897,8 +897,6 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	trait_descriptions_.clear(),
 	is_fearless_ = false;
 	is_healthy_ = false;
-	image_mods_.clear();
-	overlays_.clear();
 
 	// Clear modification-related caches
 	modification_descriptions_.clear();
