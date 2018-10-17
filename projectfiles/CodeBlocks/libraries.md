@@ -3,20 +3,20 @@ We do our best to keep the build dependency repository up-to-date with the lates
 within, as well as synced with any build requirement changes. If you want to build with a different version
 of a certain library, however, you can fetch the relevant files at the links below:
 
-[**Boost:**](http://www.boost.org/users/download) Do note that you will need to build the necessary Boost
+* [**Boost:**](http://www.boost.org/users/download) Do note that you will need to build the necessary Boost
 libraries yourself. See the [instructions]#updating-boost-libraries)
 in the dependency repository for details.
 
-[**SDL 2:**](https://www.libsdl.org/download-2.0.php) You'll want the "GCC 32/64-bit" Development
+* [**SDL 2:**](https://www.libsdl.org/download-2.0.php) You'll want the "GCC 32/64-bit" Development
 Libraries.
 
-[**SDL_Image:**](https://www.libsdl.org/projects/SDL_image) Again, you'll want the "GCC 32/64-bit"
+* [**SDL_Image:**](https://www.libsdl.org/projects/SDL_image) Again, you'll want the "GCC 32/64-bit"
 Development Libraries.
 
-[**SDL_Mixer:**](https://www.libsdl.org/projects/SDL_mixer) Again, you'll want the "GCC 32/64-bit"
+* [**SDL_Mixer:**](https://www.libsdl.org/projects/SDL_mixer) Again, you'll want the "GCC 32/64-bit"
 Development Libraries.
 
-[**SDL_ttf:**](https://www.libsdl.org/projects/SDL_ttf) Again, you'll want the "GCC 32/64-bit"
+* [**SDL_ttf:**](https://www.libsdl.org/projects/SDL_ttf) Again, you'll want the "GCC 32/64-bit"
 Development Libraries.
 
 The other libraries require complicated compilation procedures too in-depth to document here.
@@ -24,15 +24,15 @@ The other libraries require complicated compilation procedures too in-depth to d
 ## Updating Boost libraries
 
 Download and unpack the source of the libraries zlib, libbzip2, boost (version 1.64 or 1.68 preferred)
-http://www.bzip.org/downloads.html
-http://www.boost.org/users/download/
-http://www.zlib.net/
+* http://www.bzip.org/downloads.html
+* http://www.boost.org/users/download/
+* http://www.zlib.net/
 
-Open `cmd`, go to the Boost directory and type (with the correct paths of the other two libraries):
+ Open `cmd`, go to the boost directory and type (with the correct paths of the other two libraries):
  ```
 bootstrap gcc
 ```
-Then run this command:
+ If you're already did this, run this immediately this command: 
 ```
 .\b2 -sZLIB_SOURCE=..\zlib-1.2.11 -sBZIP2_SOURCE=..\bzip2-1.0.6 -j2 --with-date_time --with-filesystem --with-iostreams --with-locale --with-program_options --with-random --with-regex --with-system --with-thread --with-test --with-timer --toolset=gcc --layout=system variant=release address-model=32
 ```

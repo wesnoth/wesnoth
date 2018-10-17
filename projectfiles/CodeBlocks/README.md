@@ -22,19 +22,21 @@
 	
 	To resolve out of memory errors when creating debug builds, follow these steps:
 	
-	1. If you use 32-bit Windows, run in admin command prompt
+	1. If you use 32-bit Windows, run Admin command prompt
 	```
 	bcdedit/set IncreaseUserVa 3072
 	```
 	
 	2. Install MASM32;
 	
-	3. Open `cmd` (also as admin);
+	3. Open `cmd`( as Admin too);
 	
 	4. Run these commands in an admin command prompt 
 	```
 	cd C:\..\mingw32\libexec\gcc\i686-w64-mingw32\7.2.0
-	
+	```
+	and
+	```
 	C:\masm32\bineditbin.exe /LARGEADDRESSAWARE cc1plus.exe
 	```
 
@@ -45,7 +47,7 @@
     after new dependencies are added to Wesnoth or its version requirements
     change.
 
-    for versions > 1.12, follow the steps in `libraries.md` to update libraries yourself.
+	for versions > 1.12, follow these steps in `libraries.md` for updating libraries yourself.
 	
 
     Unpack the file to any path of your choice, which will be referred to as
