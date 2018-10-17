@@ -22,7 +22,7 @@
 	
 	To resolve out of memory errors when creating debug builds, follow these steps:
 	
-	1. If you use 32-bit Windows, run Admin command prompt
+	1. If you use 32-bit Windows, run in admin command prompt
 	```
 	bcdedit/set IncreaseUserVa 3072
 	```
