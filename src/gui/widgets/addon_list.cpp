@@ -167,7 +167,7 @@ void addon_list::set_addons(const addons_list& addons)
 			item["label"] = addon.display_title();
 			data.emplace("name", item);
 		} else {
-			item["label"] = addon.display_icon() + "~BLIT(icons/icon-addon-publish.png)";
+			item["label"] = addon.display_icon() + "~SCALE(72,72)~BLIT(icons/icon-addon-publish.png,8,8)";
 			data.emplace("icon", item);
 
 			const std::string publish_name = formatter()
