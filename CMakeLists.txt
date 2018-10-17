@@ -190,7 +190,7 @@ if(ENABLE_TESTS)
 	find_package( Boost 1.35 REQUIRED COMPONENTS unit_test_framework )
 endif(ENABLE_TESTS)
 if(ENABLE_GAME)
-	find_package( Lua51 REQUIRED)
+	find_package( Lua 5.1 EXACT REQUIRED)
 
 	if(NOT MSVC)
 		find_package( PkgConfig REQUIRED )
