@@ -47,7 +47,7 @@
     after new dependencies are added to Wesnoth or its version requirements
     change.
 
-	for versions > 1.12, follow these steps in `libraries.md` for updating libraries yourself.
+    for versions > 1.12, follow the steps in `libraries.md` to update libraries yourself.
 	
 
     Unpack the file to any path of your choice, which will be referred to as
