@@ -32,7 +32,7 @@ Download and unpack the source of the libraries zlib, libbzip2, boost (version 1
  ```
 bootstrap gcc
 ```
- If you're already did this, run this immediately this command: 
+Then run this command:
 ```
 .\b2 -sZLIB_SOURCE=..\zlib-1.2.11 -sBZIP2_SOURCE=..\bzip2-1.0.6 -j2 --with-date_time --with-filesystem --with-iostreams --with-locale --with-program_options --with-random --with-regex --with-system --with-thread --with-test --with-timer --toolset=gcc --layout=system variant=release address-model=32
 ```
