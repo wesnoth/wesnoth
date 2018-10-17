@@ -29,7 +29,7 @@
 	
 	2. Install MASM32;
 	
-	3. Open `cmd`( as Admin too);
+	3. Open `cmd` (also as admin);
 	
 	4. Run these commands in an admin command prompt 
 	```
