@@ -25,9 +25,9 @@ The other libraries require complicated compilation procedures too in-depth to d
 
 Download and unpack the source of the libraries zlib, libbzip2, boost (version 1.64 or 1.68 preferred
 
-- [**Bzip2:**](http://www.bzip.org/downloads.html).
-- [**Boost:**](http://www.boost.org/users/download/).
-- [**Zlib:**](http://www.zlib.net/).
+- **Bzip2**(http://www.bzip.org/downloads.html)
+- **Boost**(http://www.boost.org/users/download/)
+- **Zlib:**(http://www.zlib.net/)
 
 Open `cmd`, go to the Boost directory and type (with the correct paths of the other two libraries):
  ```
