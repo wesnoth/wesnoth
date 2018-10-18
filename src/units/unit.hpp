@@ -1537,6 +1537,9 @@ public:
 	 */
 	void remove_ability_by_id(const std::string& ability);
 
+	bool abilities_filter_matches(const config& cfg, bool attacker, int res) const;
+	bool ability_filter_opponent(const std::string& ability,const config& cfg,const map_location& loc) const;
+
 private:
 	/**
 	 * Check if an ability is active.
