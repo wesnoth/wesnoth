@@ -44,49 +44,54 @@ BOOST_AUTO_TEST_CASE(test_irdya_date_ordering) {
 	irdya_date BW_34(irdya_date::EPOCH::BEFORE_WESNOTH, 34), BW_12(irdya_date::EPOCH::BEFORE_WESNOTH, 12), YW_40(irdya_date::EPOCH::WESNOTH, 40), YW_52(irdya_date::EPOCH::WESNOTH, 52);
 	irdya_date BF_29(irdya_date::EPOCH::BEFORE_FALL, 29), BF_42(irdya_date::EPOCH::BEFORE_FALL, 42), AF_12(irdya_date::EPOCH::AFTER_FALL, 12), AF_102(irdya_date::EPOCH::AFTER_FALL, 102), Y0;
 
-	BOOST_CHECK(!(BW_12 < BW_34));
-	BOOST_CHECK(BW_34 < BW_12);
-	BOOST_CHECK(BW_34 < YW_40);
-	BOOST_CHECK(BW_34 < YW_52);
-	BOOST_CHECK(BW_34 < BF_42);
-	BOOST_CHECK(BW_34 < BF_29);
-	BOOST_CHECK(BW_34 < AF_12);
-	BOOST_CHECK(BW_34 < AF_102);
-	BOOST_CHECK(BW_34 < Y0);
+	std::vector<std::pair<irdya_date, irdya_date>> test_cases {
+		{BW_34, BW_12},
+		{BW_34, YW_40},
+		{BW_34, YW_52},
+		{BW_34, BF_42},
+		{BW_34, BF_29},
+		{BW_34, AF_12},
+		{BW_34, AF_102},
+		{BW_34, Y0},
 
-	BOOST_CHECK(BW_12 < YW_40);
-	BOOST_CHECK(BW_12 < YW_52);
-	BOOST_CHECK(BW_12 < BF_42);
-	BOOST_CHECK(BW_12 < BF_29);
-	BOOST_CHECK(BW_12 < AF_12);
-	BOOST_CHECK(BW_12 < AF_102);
-	BOOST_CHECK(BW_12 < Y0);
+		{BW_12, YW_40},
+		{BW_12, YW_52},
+		{BW_12, BF_42},
+		{BW_12, BF_29},
+		{BW_12, AF_12},
+		{BW_12, AF_102},
+		{BW_12, Y0},
 
-	BOOST_CHECK(YW_40 < YW_52);
-	BOOST_CHECK(YW_40 < BF_42);
-	BOOST_CHECK(YW_40 < BF_29);
-	BOOST_CHECK(YW_40 < AF_12);
-	BOOST_CHECK(YW_40 < AF_102);
-	BOOST_CHECK(YW_40 < Y0);
+		{YW_40, YW_52},
+		{YW_40, BF_42},
+		{YW_40, BF_29},
+		{YW_40, AF_12},
+		{YW_40, AF_102},
+		{YW_40, Y0},
 
-	BOOST_CHECK(YW_52 < BF_42);
-	BOOST_CHECK(YW_52 < BF_29);
-	BOOST_CHECK(YW_52 < AF_12);
-	BOOST_CHECK(YW_52 < AF_102);
-	BOOST_CHECK(YW_52 < Y0);
+		{YW_52, BF_42},
+		{YW_52, BF_29},
+		{YW_52, AF_12},
+		{YW_52, AF_102},
+		{YW_52, Y0},
 
-	BOOST_CHECK(BF_42 < BF_29);
-	BOOST_CHECK(BF_42 < AF_12);
-	BOOST_CHECK(BF_42 < AF_102);
-	BOOST_CHECK(BF_42 < Y0);
+		{BF_42, BF_29},
+		{BF_42, AF_12},
+		{BF_42, AF_102},
+		{BF_42, Y0},
 
-	BOOST_CHECK(BF_29 < AF_12);
-	BOOST_CHECK(BF_29 < AF_102);
-	BOOST_CHECK(BF_29 < Y0);
+		{BF_29, AF_12},
+		{BF_29, AF_102},
+		{BF_29, Y0},
 
-	BOOST_CHECK(AF_12 < AF_102);
-	BOOST_CHECK(AF_12 < Y0);
-	BOOST_CHECK(AF_102 < Y0);
+		{AF_12, AF_102},
+		{AF_12, Y0},
+		{AF_102, Y0},
+	};
+	for(const auto& pair : test_cases) {
+		BOOST_CHECK(pair.first < pair.second);
+		BOOST_CHECK(!(pair.second < pair.first));
+	}
 }
 
 BOOST_AUTO_TEST_SUITE_END()
