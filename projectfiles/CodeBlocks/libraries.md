@@ -25,7 +25,7 @@ The other libraries require complicated compilation procedures too in-depth to d
 
 Download and unpack the source of the libraries zlib, libbzip2, boost (version 1.64 or 1.68 preferred
 
-[**Libzip2**](http://www.bzip.org/downloads.html)
+[**Libbzip2**](http://www.bzip.org/downloads.html)
 
 [**Boost**](http://www.boost.org/users/download/)
 
