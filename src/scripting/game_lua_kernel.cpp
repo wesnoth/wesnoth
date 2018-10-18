@@ -437,7 +437,7 @@ static int impl_add_animation(lua_State* L)
 	return 0;
 }
 
-static int impl_run_animation(lua_State* L)
+int game_lua_kernel::impl_run_animation(lua_State* L)
 {
 	CVideo& v = CVideo::get_singleton();
 	if(v.update_locked() || v.faked()) {
@@ -445,6 +445,7 @@ static int impl_run_animation(lua_State* L)
 	}
 	events::command_disabler command_disabler;
 	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
+	play_controller_.play_slice(false);
 	anim.start_animations();
 	anim.wait_for_end();
 	anim.set_all_standing();
@@ -464,7 +465,7 @@ static int impl_animator_get(lua_State* L)
 	return luaW_getmetafield(L, 1, m);
 }
 
-static int intf_create_animator(lua_State* L)
+int game_lua_kernel::intf_create_animator(lua_State* L)
 {
 	new(L) unit_animator;
 	if(luaL_newmetatable(L, animatorKey)) {
@@ -472,7 +473,7 @@ static int intf_create_animator(lua_State* L)
 			{"__gc", impl_animator_collect},
 			{"__index", impl_animator_get},
 			{"add", impl_add_animation},
-			{"run", impl_run_animation},
+			{"run", &dispatch<&game_lua_kernel::impl_run_animation>},
 			{"clear", impl_clear_animation},
 			{nullptr, nullptr},
 		};
@@ -4039,7 +4040,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "add_modification",         &intf_add_modification         },
 		{ "advance_unit",             &intf_advance_unit             },
 		{ "copy_unit",                &intf_copy_unit                },
-		{ "create_animator",          &intf_create_animator          },
+		{ "create_animator",          &dispatch<&game_lua_kernel::intf_create_animator>          },
 		{ "create_unit",              &intf_create_unit              },
 		{ "debug_ai",                 &intf_debug_ai                 },
 		{ "eval_conditional",         &intf_eval_conditional         },
