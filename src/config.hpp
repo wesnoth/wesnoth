@@ -624,7 +624,7 @@ public:
 		typedef std::vector<child_pos>::const_iterator Itor;
 		typedef const_all_children_iterator this_type;
 		explicit const_all_children_iterator(const Itor &i): i_(i) {}
-		const_all_children_iterator(all_children_iterator& i): i_(i.i_) {}
+		const_all_children_iterator(const all_children_iterator& i): i_(i.i_) {}
 
 		const_all_children_iterator &operator++() { ++i_; return *this; }
 		const_all_children_iterator operator++(int) { return const_all_children_iterator(i_++); }
@@ -658,6 +658,11 @@ public:
 
 		friend class config;
 	};
+
+	/// here pos is the index of the new child in _all_ childs, while in add_child_at
+	/// it is the index of the new child within all chils of type @key.
+	config& add_child_at_total(config_key_type key, const config &val, size_t pos);
+	size_t find_total_first_of(config_key_type key, size_t start = 0);
 
 	typedef boost::iterator_range<all_children_iterator> all_children_itors;
 	typedef boost::iterator_range<const_all_children_iterator> const_all_children_itors;

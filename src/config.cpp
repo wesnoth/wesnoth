@@ -542,6 +542,55 @@ config& config::add_child_at(config_key_type key, const config& val, unsigned in
 	return *v[index];
 }
 
+size_t config::find_total_first_of(config_key_type key, size_t start)
+{
+	assert(start <= ordered_children.size());
+	const size_t npos = static_cast<size_t>(-1);
+	
+	auto pos = std::find_if(ordered_begin() + start, ordered_end(), [&](const config::any_child& can){ return can.key == key; });
+	
+	if(pos == ordered_end()) {
+		return npos;
+	}
+
+	return static_cast<size_t>(pos - ordered_begin());
+}
+
+config& config::add_child_at_total(config_key_type key, const config &val, size_t pos)
+{
+	assert(pos <= ordered_children.size());
+	if(pos == ordered_children.size()) {
+		//optimisation
+		config::add_child(key, val);
+	}
+
+	auto end = ordered_children.end();
+	auto pos_it = ordered_children.begin() + pos;
+	auto next = std::find_if(pos_it, end,[&](const child_pos& p){ return p.pos->first == key; });
+	
+	if(next == end) {
+		config& res = config::add_child(key, val);
+		std::rotate(ordered_children.begin() + pos, ordered_children.end(), ordered_children.end());
+		return res;
+	}
+
+	auto pl = next->pos;
+	child_list& l = pl->second;
+	unsigned int index = next->index;
+	config& res = **(l.emplace(l.begin() + index, new config(val)));
+	
+	for(auto ord = next; ord != end; ++ord) {
+		//this changes next->index and all later refernces to that tag.
+		if(ord->pos == pl) {
+			++ord->index;
+		}
+	}
+
+	//finally insert our new child in ordered_children.
+	ordered_children.insert(pos_it, { pl, index });
+	return res;
+}
+
 namespace
 {
 struct remove_ordered
