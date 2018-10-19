@@ -11,23 +11,15 @@ local function f_terrain(terrain)
 end
 
 local function f_and(...)
-	return { "and",  ... }
-end
-
-local function f_nand(...)
-	return { "nand",  ... }
+	return { "all",  ... }
 end
 
 local function f_not(...)
-	return { "nand",  ... }
+	return { "none",  ... }
 end
 
 local function f_or(...)
-	return { "or",  ... }
-end
-
-local function f_nor(...)
-	return { "nor",  ... }
+	return { "any",  ... }
 end
 
 local function f_adjacent(f, ad, count)

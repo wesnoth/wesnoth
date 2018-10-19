@@ -638,10 +638,10 @@ enum filter_keys { F_AND, F_OR, F_NAND, F_NOR, F_X, F_Y, F_FIND_IN, F_ADJACENT, 
 //todoc++14: std::unordered_map doesn'tsupport herterogrnous lookup.
 //todo consider renaming and -> all ,or ->any, nor -> none, nand -> notall
 static const std::unordered_map<std::string, filter_keys> keys {
-	{ "and", F_AND }, 
-	{ "or", F_OR }, 
-	{ "nand", F_NAND }, 
-	{ "or", F_NOR }, 
+	{ "all", F_AND }, 
+	{ "any", F_OR }, 
+	{ "not_all", F_NAND }, 
+	{ "none", F_NOR }, 
 	{ "x", F_X },
 	{ "y", F_Y },
 	{ "find_in", F_FIND_IN },
