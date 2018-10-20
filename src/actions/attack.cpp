@@ -1605,16 +1605,16 @@ bool leadership_affects_self(const std::string& ability,const unit_map& units, c
 	}
 
      unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
-     for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
-              const std::string& apply_to = (*i->first)["apply_to"];
-            if(!(apply_to.empty()||apply_to == "both"||apply_to == "under")) {
-                return false;
-     } else {
-         return true;
-         }
-         ++i;
-         }
-     return false;
+	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
+		const std::string& apply_to = (*i->first)["apply_to"];
+		if(!(apply_to.empty()||apply_to == "both"||apply_to == "under")){
+			return false;
+		} else {
+			return true;
+		}
+		++i;
+	}
+	return false;
 }
 
 bool leadership_affects_opponent(const std::string& ability,const unit_map& units, const map_location& loc, const_attack_ptr weapon,const_attack_ptr opp_weapon)
@@ -1625,16 +1625,16 @@ bool leadership_affects_opponent(const std::string& ability,const unit_map& unit
 	}
 
      unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
-     for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
-              const std::string& apply_to = (*i->first)["apply_to"];
-            if(apply_to.empty()||!(apply_to == "both"||apply_to == "opponent")) {
-                return false;
-     } else {
-         return true;
-         }
-         ++i;
-         }
-     return false;
+	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
+		const std::string& apply_to = (*i->first)["apply_to"];
+		if(apply_to.empty()||!(apply_to == "both"||apply_to == "opponent")) {
+			return false;
+		} else {
+			return true;
+		}
+		++i;
+	}
+	return false;
 }
 
 //sub function for emulate chance_to_hit,damage drains and attacks special.
@@ -1650,25 +1650,26 @@ std::pair<int, bool> ability_leadership(const std::string& ability,const unit_ma
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
             const config &filter = (*i->first).child("filter_opponent");
             bool show_result = false;
-            if (up == units.end() && !filter){
-                    show_result = un->abilities_filter_matches(*i->first, attacker, abil_value);
-            } else if (up == units.end() && filter){
-                return {abil_value, false};
-                } else {
-                    show_result = !(!un->abilities_filter_matches(*i->first, attacker, abil_value) || !up->ability_filter_opponent(ability, *i->first, opp_loc));
-                    }
+		if (up == units.end() && !filter){
+			show_result = un->abilities_filter_matches(*i->first, attacker, abil_value);
+		} else if (up == units.end() && filter){
+			return {abil_value, false};
+		} else {
+			show_result = !(!un->abilities_filter_matches(*i->first, attacker, abil_value) || !up->ability_filter_opponent(ability, *i->first, opp_loc));
+		}
 
             if(!show_result) {
-                i = abil.erase(i);
-                } else {
-                    ++i;
-            }
-    }
+		    i = abil.erase(i);
+	    } else {
+		    ++i;
+	    }
+	}
+	
 	if(!abil.empty()) {
-            unit_abilities::effect leader_effect(abil, abil_value, backstab_pos);
-            return {leader_effect.get_composite_value(), true};
-    }
-    return {abil_value, false};
+		unit_abilities::effect leader_effect(abil, abil_value, backstab_pos);
+		return {leader_effect.get_composite_value(), true};
+	}
+	return {abil_value, false};
 }
 
 //sub function for wmulate boolean special(slow, poison...)
@@ -1700,27 +1701,29 @@ bool attack_type::bool_ability(const std::string& ability) const {
 
     bool abil_bool= get_special_bool(ability);
     const unit_map& units = display::get_singleton()->get_units();
-            if(leadership_affects_self(ability, units, self_loc_, shared_from_this(), other_attack_)){
-            abil_bool = bool_leadership(ability, units, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_);
-    }
-     if(leadership_affects_opponent(ability, units, other_loc_, other_attack_, shared_from_this())) {
-            abil_bool = bool_leadership(ability, units, other_loc_, self_loc_, !is_attacker_, other_attack_, shared_from_this());
-
-    }
-   return abil_bool;
+	
+	if(leadership_affects_self(ability, units, self_loc_, shared_from_this(), other_attack_)){
+		abil_bool = bool_leadership(ability, units, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_);
+	}
+	
+	if(leadership_affects_opponent(ability, units, other_loc_, other_attack_, shared_from_this())) {
+		abil_bool = bool_leadership(ability, units, other_loc_, self_loc_, !is_attacker_, other_attack_, shared_from_this());
+	}
+	return abil_bool;
 }
 
 //emulate numerical special for self/adjacent and/or opponent.
 std::pair<int, bool> attack_type::combat_ability(const std::string& ability, int abil_value, bool backstab_pos) const {
     const unit_map& units = display::get_singleton()->get_units();
-            if(leadership_affects_self(ability, units, self_loc_, shared_from_this(), other_attack_)){
-            return ability_leadership(ability, units, self_loc_, other_loc_, is_attacker_, abil_value, backstab_pos, shared_from_this(), other_attack_);
-    }
-     if(leadership_affects_opponent(ability, units, other_loc_, other_attack_, shared_from_this())) {
-            return ability_leadership(ability, units, other_loc_,self_loc_, !is_attacker_, abil_value, backstab_pos, other_attack_, shared_from_this());
-
-    }
-   return {abil_value, false};
+            
+	if(leadership_affects_self(ability, units, self_loc_, shared_from_this(), other_attack_)){
+		return ability_leadership(ability, units, self_loc_, other_loc_, is_attacker_, abil_value, backstab_pos, shared_from_this(), other_attack_);
+	}
+	
+	if(leadership_affects_opponent(ability, units, other_loc_, other_attack_, shared_from_this())) {
+		return ability_leadership(ability, units, other_loc_,self_loc_, !is_attacker_, abil_value, backstab_pos, other_attack_, shared_from_this());
+	}
+	return {abil_value, false};
 }
 //end of emulate weapon special functions.
 
