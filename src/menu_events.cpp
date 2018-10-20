@@ -1668,14 +1668,17 @@ void console_handler::do_choose_level()
 	} else {
 		// find scenarios of multiplayer campaigns
 		// (assumes that scenarios are ordered properly in the game_config)
-		std::string scenario = menu_handler_.pc_.get_mp_settings().mp_scenario;
-		for(const config& mp : menu_handler_.game_config_.child_range("multiplayer")) {
-			if(mp["id"] == scenario) {
-				const std::string& id = mp["id"];
-				options.push_back(id);
-				if(id == menu_handler_.gamedata().next_scenario())
-					next = id;
-				scenario = mp["next_scenario"].str();
+		std::string scenario_id = menu_handler_.pc_.get_mp_settings().mp_scenario;
+		if(const config& this_scenario = menu_handler_.game_config_.find_child(tag, "id", scenario_id)) {
+			std::string addon_id = this_scenario["addon_id"].str();
+			for(const config& sc : menu_handler_.game_config_.child_range(tag)) {
+				if(sc["addon_id"] == addon_id) {
+					std::string id = sc["id"];
+					options.push_back(id);
+					if(id == menu_handler_.gamedata().next_scenario()) {
+						next = id;
+					}
+				}
 			}
 		}
 	}
