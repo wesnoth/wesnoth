@@ -19,16 +19,32 @@
 struct overlay
 {
 
-	overlay(const std::string& img, const std::string& halo_img,
-			halo::handle handle, const std::string& overlay_team_name, const std::string& item_id, const bool fogged) : image(img), halo(halo_img),
-					team_name(overlay_team_name), id(item_id), halo_handle(handle) , visible_in_fog(fogged)
+	overlay(const std::string& img,
+			const std::string& halo_img,
+			halo::handle handle,
+			const std::string& overlay_team_name,
+			const std::string& item_id,
+			const bool fogged,
+			float item_z_order = 0)
+		: image(img)
+		, halo(halo_img)
+		, team_name(overlay_team_name)
+		, id(item_id)
+		, halo_handle(handle)
+		, visible_in_fog(fogged)
+		, z_order(item_z_order)
 	{}
 
 
-	overlay(const config& cfg) :
-		image(cfg["image"]), halo(cfg["halo"]), team_name(cfg["team_name"]),
-		name(cfg["name"].t_str()), id(cfg["id"]),
-		halo_handle(), visible_in_fog(cfg["visible_in_fog"].to_bool())
+	overlay(const config& cfg)
+		: image(cfg["image"])
+		, halo(cfg["halo"])
+		, team_name(cfg["team_name"])
+		, name(cfg["name"].t_str())
+		, id(cfg["id"])
+		, halo_handle()
+		, visible_in_fog(cfg["visible_in_fog"].to_bool())
+		, z_order(cfg["z_order"].to_double(0))
 	{
 	}
 
@@ -40,5 +56,6 @@ struct overlay
 
 	halo::handle halo_handle;
 	bool visible_in_fog;
+	float z_order;
 
 };

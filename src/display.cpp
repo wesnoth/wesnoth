@@ -106,7 +106,7 @@ void display::parse_team_overlays()
 }
 
 
-void display::add_overlay(const map_location& loc, const std::string& img, const std::string& halo, const std::string& team_name, const std::string& item_id, bool visible_under_fog)
+void display::add_overlay(const map_location& loc, const std::string& img, const std::string& halo, const std::string& team_name, const std::string& item_id, bool visible_under_fog, float z_order)
 {
 	if (halo_man_) {
 		halo::handle halo_handle;
@@ -115,7 +115,21 @@ void display::add_overlay(const map_location& loc, const std::string& img, const
 				get_location_y(loc) + hex_size() / 2, halo, loc);
 		}
 
-		get_overlays().emplace(loc, overlay(img, halo, halo_handle, team_name, item_id, visible_under_fog));
+		auto it1 = get_overlays().emplace(loc, overlay(img, halo, halo_handle, team_name, item_id, visible_under_fog, z_order));
+		auto itor_pair = get_overlays().equal_range(loc);
+		//get_overlays().emplace adds at the end.
+		assert(itor_pair.second != itor_pair.first && std::next(it1, 1) == itor_pair.second);
+		UNUSED(it1); //it is only used in the assert above.
+		if(std::next(itor_pair.first, 1) != itor_pair.second) {
+			//the range itor_pair is already sorted, except for the last element we just inserted, 
+			for (auto it = itor_pair.second; it != std::next(itor_pair.first, 1);--it) {
+				overlay& one = std::next(it, - 1)->second;
+				overlay& two = (it)->second;
+				if(one.z_order > two.z_order) {
+					std::swap(one, two);
+				}
+			}
+		}
 	}
 }
 

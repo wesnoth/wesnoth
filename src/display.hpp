@@ -148,7 +148,7 @@ public:
 	 */
 	void add_overlay(const map_location& loc, const std::string& image,
 		const std::string& halo="", const std::string& team_name="",const std::string& item_id="",
-		bool visible_under_fog = true);
+		bool visible_under_fog = true, float z_order = 0);
 
 	/** remove_overlay will remove all overlays on a tile. */
 	void remove_overlay(const map_location& loc);

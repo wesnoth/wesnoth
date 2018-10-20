@@ -3345,7 +3345,7 @@ int game_lua_kernel::intf_add_tile_overlay(lua_State *L)
 
 	if (game_display_) {
 		game_display_->add_overlay(loc, cfg["image"], cfg["halo"],
-			team_name, cfg["name"], cfg["visible_in_fog"].to_bool(true));
+			team_name, cfg["name"], cfg["visible_in_fog"].to_bool(true), cfg["z_order"].to_double(0));
 	}
 	return 0;
 }
