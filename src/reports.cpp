@@ -1077,9 +1077,10 @@ REPORT_GENERATOR(tod_stats, rc)
 
 	const map_location& hex = mouseover_hex.valid() ? mouseover_hex : selected_hex;
 
-	const std::vector<time_of_day>& schedule = rc.tod().times(hex);
+	const map_location& tod_schedule_hex = display::get_singleton()->shrouded(hex) ? map_location::null_location() : hex;
+	const std::vector<time_of_day>& schedule = rc.tod().times(tod_schedule_hex);
 
-	int current = rc.tod().get_current_time(hex);
+	int current = rc.tod().get_current_time(tod_schedule_hex);
 	int i = 0;
 	for (const time_of_day& tod : schedule) {
 		if (i == current) tooltip << "<big><b>";
