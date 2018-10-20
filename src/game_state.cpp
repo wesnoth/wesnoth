@@ -56,6 +56,7 @@ game_state::game_state(const config & level, play_controller & pc, const ter_dat
 	undo_stack_(new actions::undo_list(level.child("undo_stack"))),
 	player_number_(level["playing_team"].to_int() + 1),
 	next_player_number_(level["next_player_number"].to_int(player_number_ + 1)),
+	do_healing_(level["do_healing"].to_bool(false)),
 	init_side_done_(level["init_side_done"].to_bool(false)),
 	start_event_fired_(!level["playing_team"].empty()),
 	server_request_number_(level["server_request_number"].to_int()),
@@ -81,6 +82,7 @@ game_state::game_state(const config & level, play_controller & pc, game_board& b
 	events_manager_(new game_events::manager()),
 	player_number_(level["playing_team"].to_int() + 1),
 	next_player_number_(level["next_player_number"].to_int(player_number_ + 1)),
+	do_healing_(level["do_healing"].to_bool(false)),
 	end_level_data_(),
 	init_side_done_(level["init_side_done"].to_bool(false)),
 	start_event_fired_(!level["playing_team"].empty()),
@@ -242,6 +244,7 @@ void game_state::write(config& cfg) const
 		cfg["next_player_number"] = next_player_number_;
 	}
 	cfg["server_request_number"] = server_request_number_;
+	cfg["do_healing"] = do_healing_;
 	//Call the lua save_game functions
 	lua_kernel_->save_game(cfg);
 

@@ -56,6 +56,8 @@ public:
 	const std::unique_ptr<actions::undo_list> undo_stack_;
 	int player_number_;
 	int next_player_number_;
+	/// True if healing should be done at the beginning of the next side turn
+	bool do_healing_;
 
 	boost::optional<end_level_data> end_level_data_;
 	bool init_side_done_;

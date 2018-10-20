@@ -155,6 +155,14 @@ public:
 		return gamestate().board_.is_observer();
 	}
 
+	bool do_healing() const {
+		return gamestate().do_healing_;
+	}
+
+	void set_do_healing(bool do_healing) {
+		gamestate().do_healing_ = do_healing;
+	}
+
 	game_state& gamestate() {
 		return *gamestate_;
 	}

@@ -486,9 +486,12 @@ void play_controller::do_init_side()
 			current_team().spend_gold(expense);
 		}
 	}
-	if (turn() > 1 || current_side() > 1) {
+	if (do_healing()) {
 		calculate_healing(current_side(), !is_skipping_replay());
 	}
+	// Do healing on every side turn except the very first side turn.
+	// (1.14 and earlier did healing whenever turn >= 2.)
+	set_do_healing(true);
 
 	// Prepare the undo stack.
 	undo_stack().new_side_turn(current_side());
