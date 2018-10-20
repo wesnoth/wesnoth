@@ -1012,24 +1012,6 @@ int game_lua_kernel::intf_set_terrain(lua_State *L)
 
 	return 0;
 }
-
-static bool luaW_tableget(lua_State *L, int index, const char* key)
-{
-	lua_pushstring(L, key);
-	lua_gettable(L, index);
-	if(lua_isnil(L, -1)) {
-		lua_pop(L, 1);
-		return false;
-	}
-	return true;
-}
-
-static utils::string_view luaW_tostring(lua_State *L, int index)
-{
-	size_t len = 0;
-	const char* str = lua_tolstring (L, index, &len);
-	return utils::string_view(str, len);
-}
  
 /**
  * Reaplces part of rhe map.
