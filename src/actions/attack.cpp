@@ -1597,40 +1597,30 @@ bool unit::ability_filter_opponent(const std::string& ability,const config& cfg,
 	return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc);
 }
 
-bool leadership_affects_self(const std::string& ability,const unit_map& units, const map_location& loc, const_attack_ptr weapon,const_attack_ptr opp_weapon)
+bool leadership_affects_self(const config& special)
 {
-	const unit_map::const_iterator un = units.find(loc);
-	if(un == units.end()) {
+		//log_scope("special_affects_self");
+		const std::string& apply_to = special["apply_to"];
+		if ( apply_to.empty() )
+			return true;
+		if ( apply_to == "both" )
+			return true;
+		if ( apply_to == "under" )
+			return true;
 		return false;
-	}
-
-     unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
-     for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
-              const std::string& apply_to = (*i->first)["apply_to"];
-            if(!(apply_to.empty()||apply_to == "both"||apply_to == "under")) {
-                return false;
-     }
-         ++i;
-         }
-     return true;
 }
 
-bool leadership_affects_opponent(const std::string& ability,const unit_map& units, const map_location& loc, const_attack_ptr weapon,const_attack_ptr opp_weapon)
+bool leadership_affects_opponent(const config& special)
 {
-	const unit_map::const_iterator un = units.find(loc);
-	if(un == units.end()) {
+		//log_scope("special_affects_opponent");
+		const std::string& apply_to = special["apply_to"];
+		if ( apply_to.empty() )
+			return false;
+		if ( apply_to == "both" )
+			return true;
+		if ( apply_to == "opponent" )
+			return true;
 		return false;
-	}
-
-     unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
-     for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
-              const std::string& apply_to = (*i->first)["apply_to"];
-            if(apply_to == "both"||apply_to == "opponent") {
-                return true;
-     }
-         ++i;
-         }
-     return false;
 }
 
 //sub function for emulate chance_to_hit,damage drains and attacks special.
