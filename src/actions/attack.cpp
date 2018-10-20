@@ -1609,12 +1609,10 @@ bool leadership_affects_self(const std::string& ability,const unit_map& units, c
               const std::string& apply_to = (*i->first)["apply_to"];
             if(!(apply_to.empty()||apply_to == "both"||apply_to == "under")) {
                 return false;
-     } else {
-         return true;
-         }
+     }
          ++i;
          }
-     return false;
+     return true;
 }
 
 bool leadership_affects_opponent(const std::string& ability,const unit_map& units, const map_location& loc, const_attack_ptr weapon,const_attack_ptr opp_weapon)
@@ -1627,11 +1625,9 @@ bool leadership_affects_opponent(const std::string& ability,const unit_map& unit
      unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
      for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
               const std::string& apply_to = (*i->first)["apply_to"];
-            if(apply_to.empty()||!(apply_to == "both"||apply_to == "opponent")) {
-                return false;
-     } else {
-         return true;
-         }
+            if(apply_to == "both"||apply_to == "opponent") {
+                return true;
+     }
          ++i;
          }
      return false;
