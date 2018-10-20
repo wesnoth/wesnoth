@@ -18,6 +18,7 @@
 #include "log.hpp"
 #include "map/location.hpp"
 #include "map/map.hpp"
+#include "pathutils_impl.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/push_check.hpp"
 #include "scripting/game_lua_kernel.hpp"
@@ -194,48 +195,7 @@ namespace {
  * on-board locations matching @a pred that are connected to elements of
  * locs by a chain of at most @a radius tiles, each of which matches @a pred.
  * @a add_result a function that takes a location_range
- * @pred1 a fast predicate (used before cachecheck).
- * @pred2 a slow predicate (used after cachecheck).
 */
-using location_range = boost::iterator_range<location_set::const_iterator>;
-template<typename FPred1, typename FPred2>
-void get_tiles_radius(location_set&& locs, size_t radius, location_set& result, const FPred1& pred1, const FPred2& pred2)
-{
-	
-	location_set must_visit, filtered_out;
-	location_set not_visited(locs.begin(), locs.end());
-	
-	for ( ; radius != 0  &&  !not_visited.empty(); --radius )
-	{
-		location_set::const_iterator it = not_visited.begin();
-		location_set::const_iterator it_end = not_visited.end();
-		
-		result.insert(it, it_end);
-		for(; it != it_end; ++it) {
-			adjacent_loc_array_t adj;
-			get_adjacent_tiles(*it, adj.data());
-			for(size_t i = 0; i < adj.size(); ++i) {
-				const map_location& loc = adj[i];
-				if( pred1(loc) ) {
-					if( !result.count(loc) && !filtered_out.count(loc) ) {
-						if( pred2(loc) ) {
-							must_visit.insert(loc);
-						}
-						else {
-							filtered_out.insert(loc);
-						}
-					}
-				}
-			}
-		}
-		
-		not_visited.swap(must_visit);
-		must_visit.clear();
-	}
-	
-	result.insert(not_visited.begin(), not_visited.end());
-}
-
 
 } //end namespace
 

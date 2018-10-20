@@ -18,6 +18,7 @@
  */
 
 #include "pathutils.hpp"
+#include "pathutils_impl.hpp"
 
 #include "map/map.hpp"
 
@@ -238,36 +239,14 @@ void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
                       bool with_border, const xy_pred& pred)
 {
 	typedef std::set<map_location> location_set;
-
-	location_set must_visit, filtered_out;
 	location_set not_visited(locs.begin(), locs.end());
 
-	for ( ; radius != 0  &&  !not_visited.empty(); --radius )
-	{
-		location_set::const_iterator it = not_visited.begin();
-		location_set::const_iterator it_end = not_visited.end();
-
-		result.insert(it, it_end);
-		for(; it != it_end; ++it) {
-			adjacent_loc_array_t adj;
-			get_adjacent_tiles(*it, adj.data());
-			for(std::size_t i = 0; i < adj.size(); ++i) {
-				const map_location& loc = adj[i];
-				if ( with_border ? map.on_board_with_border(loc) :
-				                   map.on_board(loc) ) {
-					if ( !result.count(loc) && !filtered_out.count(loc) ) {
-						if ( pred(loc) )
-							must_visit.insert(loc);
-						else
-							filtered_out.insert(loc);
-					}
-				}
-			}
+	get_tiles_radius(std::move(not_visited), radius, result, 
+		[&](const map_location& l) {
+			return with_border ? map.on_board_with_border(l) : map.on_board(l);
+		},
+		[&](const map_location& l) {
+			return pred(l);
 		}
-
-		not_visited.swap(must_visit);
-		must_visit.clear();
-	}
-
-	result.insert(not_visited.begin(), not_visited.end());
+	);
 }
