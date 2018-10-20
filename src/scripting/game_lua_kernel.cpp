@@ -2636,26 +2636,26 @@ int game_lua_kernel::intf_simulate_combat(lua_State *L)
 {
 	int arg_num = 1, att_w = -1, def_w = -1;
 
-	const unit& att = luaW_checkunit(L, arg_num);
+	unit_const_ptr att = luaW_checkunit(L, arg_num).shared_from_this();
 	++arg_num;
 	if (lua_isnumber(L, arg_num)) {
 		att_w = lua_tointeger(L, arg_num) - 1;
-		if (att_w < 0 || att_w >= static_cast<int>(att.attacks().size()))
+		if (att_w < 0 || att_w >= static_cast<int>(att->attacks().size()))
 			return luaL_argerror(L, arg_num, "weapon index out of bounds");
 		++arg_num;
 	}
 
-	const unit& def = luaW_checkunit(L, arg_num);
+	unit_const_ptr def = luaW_checkunit(L, arg_num).shared_from_this();
 	++arg_num;
 	if (lua_isnumber(L, arg_num)) {
 		def_w = lua_tointeger(L, arg_num) - 1;
-		if (def_w < 0 || def_w >= static_cast<int>(def.attacks().size()))
+		if (def_w < 0 || def_w >= static_cast<int>(def->attacks().size()))
 			return luaL_argerror(L, arg_num, "weapon index out of bounds");
 		++arg_num;
 	}
 
-	battle_context context(units(), att.get_location(),
-		def.get_location(), att_w, def_w, 0.0, nullptr, &att, &def);
+	battle_context context(units(), att->get_location(),
+		def->get_location(), att_w, def_w, 0.0, nullptr, att.get(), def.get());
 
 	luaW_pushsimdata(L, context.get_attacker_combatant());
 	luaW_pushsimdata(L, context.get_defender_combatant());

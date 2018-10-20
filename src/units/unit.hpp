@@ -142,6 +142,11 @@ public:
 	{
 		return unit_ptr(new unit(*this));
 	}
+	
+	unit_ptr shared_from_this()
+	{
+		return unit_ptr(this);
+	}
 
 	virtual ~unit();
 
