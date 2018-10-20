@@ -492,6 +492,12 @@ void play_controller::do_init_side()
 	// Do healing on every side turn except the very first side turn.
 	// (1.14 and earlier did healing whenever turn >= 2.)
 	set_do_healing(true);
+	// Set resting now after the healing has been done.
+	for(unit &patient : resources::gameboard->units()) {
+	    if(patient.side() == current_side()) {
+		patient.set_resting(true);
+	    }
+	}
 
 	// Prepare the undo stack.
 	undo_stack().new_side_turn(current_side());

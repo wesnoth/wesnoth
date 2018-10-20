@@ -299,8 +299,6 @@ void calculate_healing(int side, bool update_display)
 	for (unit &patient : resources::gameboard->units()) {
 
 		if ( patient.get_state("unhealable") || patient.incapacitated() ) {
-			if ( patient.side() == side )
-				patient.set_resting(true);
 			continue;
 		}
 
@@ -315,7 +313,6 @@ void calculate_healing(int side, bool update_display)
 		if ( patient.side() == side ) {
 			if ( patient.resting() || patient.is_healthy() )
 				healing += game_config::rest_heal_amount;
-			patient.set_resting(true);
 		}
 
 		// Main healing.
