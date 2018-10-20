@@ -2626,6 +2626,7 @@ static void luaW_pushsimweapon(lua_State *L, const battle_context_unit_stats &bc
  * - Arg 2: optional weapon index.
  * - Arg 3: defender userdata.
  * - Arg 4: optional weapon index.
+ *
  * - Ret 1: attacker results.
  * - Ret 2: defender results.
  * - Ret 3: info about the attacker weapon.
@@ -2644,7 +2645,7 @@ int game_lua_kernel::intf_simulate_combat(lua_State *L)
 		++arg_num;
 	}
 
-	const unit& def = luaW_checkunit(L, arg_num, true);
+	const unit& def = luaW_checkunit(L, arg_num);
 	++arg_num;
 	if (lua_isnumber(L, arg_num)) {
 		def_w = lua_tointeger(L, arg_num) - 1;
@@ -2654,7 +2655,7 @@ int game_lua_kernel::intf_simulate_combat(lua_State *L)
 	}
 
 	battle_context context(units(), att.get_location(),
-		def.get_location(), att_w, def_w, 0.0, nullptr, &att);
+		def.get_location(), att_w, def_w, 0.0, nullptr, &att, &def);
 
 	luaW_pushsimdata(L, context.get_attacker_combatant());
 	luaW_pushsimdata(L, context.get_defender_combatant());

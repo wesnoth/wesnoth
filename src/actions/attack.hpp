@@ -183,7 +183,8 @@ public:
 			int defender_weapon = -1,
 			double aggression = 0.0,
 			const combatant* prev_def = nullptr,
-			const unit* attacker_ptr = nullptr);
+			const unit* attacker_ptr = nullptr,
+			const unit* defender_ptr = nullptr);
 
 	/** Used by the AI which caches battle_context_unit_stats */
 	battle_context(const battle_context_unit_stats& att, const battle_context_unit_stats& def);

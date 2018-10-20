@@ -398,14 +398,16 @@ battle_context::battle_context(const unit_map& units,
 		int defender_weapon,
 		double aggression,
 		const combatant* prev_def,
-		const unit* attacker_ptr)
+		const unit* attacker_ptr,
+		const unit* defender_ptr)
 	: attacker_stats_(nullptr)
 	, defender_stats_(nullptr)
 	, attacker_combatant_(nullptr)
 	, defender_combatant_(nullptr)
 {
+	//TODO: maybe check before dereferencing units.find(attacker_loc),units.find(defender_loc) ?
 	const unit& attacker = attacker_ptr ? *attacker_ptr : *units.find(attacker_loc);
-	const unit& defender = *units.find(defender_loc);
+	const unit& defender = defender_ptr ? *defender_ptr : *units.find(defender_loc);
 	const double harm_weight = 1.0 - aggression;
 
 	if(attacker_weapon == -1) {
