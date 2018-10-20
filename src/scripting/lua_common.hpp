@@ -177,6 +177,7 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n);
 bool luaW_tableget(lua_State *L, int index, const char* key);
 
 utils::string_view luaW_tostring(lua_State *L, int index);
+utils::string_view luaW_tostring_or_default(lua_State *L, int index, utils::string_view def = utils::string_view());
 
 /**
  * Displays a message in the chat window.

@@ -14,6 +14,7 @@
 #pragma once
 
 #include "scripting/lua_common.hpp"
+#include "serialization/string_view.hpp"
 
 #include <type_traits>
 #include <boost/mpl/not.hpp>
@@ -85,6 +86,26 @@ namespace lua_check_impl
 		lua_pushlstring(L, val.c_str(), val.size());
 	}
 
+	//utils::string_view
+	template<typename T>
+	std::enable_if_t<std::is_same<T, utils::string_view>::value, utils::string_view>
+	lua_check(lua_State *L, int n)
+	{
+		return luaW_tostring(L, n);
+	}
+	template<typename T>
+	std::enable_if_t<std::is_same<T, utils::string_view>::value, utils::string_view>
+	lua_to_or_default(lua_State *L, int n, const T& def)
+	{
+		return luaW_tostring_or_default(L, n, def);
+	}
+	template<typename T>
+	std::enable_if_t<std::is_same<T, utils::string_view>::value, void>
+	lua_push(lua_State *L, const T& val)
+	{
+		lua_pushlstring(L, val.data()(), val.size());
+	}
+
 	//config
 	template<typename T>
 	std::enable_if_t<std::is_same<T, config>::value, config>
@@ -107,6 +128,16 @@ namespace lua_check_impl
 		return luaW_checklocation(L, n);
 	}
 	template<typename T>
+	std::enable_if_t<std::is_same<T, map_location>::value, map_location>
+	lua_to_or_default(lua_State *L, int n, const T& def)
+	{
+		map_location res;
+		if (!luaW_tolocation(L, n, res)) {
+			return def;
+		}
+		return res;
+	}
+	template<typename T>
 	std::enable_if_t<std::is_same<T, map_location>::value, void>
 	lua_push(lua_State *L, const map_location& val)
 	{
@@ -123,6 +154,18 @@ namespace lua_check_impl
 		if(!val.parse(str))
 		{
 			luaL_argerror(L, n, ("cannot convert " + str + " to enum " + T::name()).c_str());
+		}
+		return val;
+	}
+	template<typename T>
+	std::enable_if_t<std::is_base_of<enum_tag, T>::value, T>
+	lua_to_or_default(lua_State *L, int n, const T& def)
+	{
+		T val;
+		utils::string_view str = lua_check_impl::lua_to_or_default<utils::string_view>(L, n, utils::string_view());
+		if(!val.parse(str))
+		{
+			return def;
 		}
 		return val;
 	}
@@ -155,6 +198,12 @@ namespace lua_check_impl
 		return luaW_toboolean(L, n);
 	}
 	template<typename T>
+	std::enable_if_t<std::is_same<T, bool>::value, bool>
+	lua_to_or_default(lua_State *L, int n, const T& /*def*/)
+	{
+		return luaW_toboolean(L, n);
+	}
+	template<typename T>
 	std::enable_if_t<std::is_same<T, bool>::value, void>
 	lua_push(lua_State *L, bool val)
 	{
@@ -169,6 +218,17 @@ namespace lua_check_impl
 		return luaL_checknumber(L, n);
 	}
 	template<typename T>
+	std::enable_if_t<std::is_floating_point<T>::value, T>
+	lua_to_or_default(lua_State *L, int n, const T& def)
+	{
+		int isnum;
+		lua_Number d = lua_tonumberx(L, n, &isnum);
+		if (!isnum) {
+			return def;
+		}
+		return d;
+	}
+	template<typename T>
 	std::enable_if_t<std::is_floating_point<T>::value, void>
 	lua_push(lua_State *L, T val)
 	{
@@ -181,6 +241,17 @@ namespace lua_check_impl
 	lua_check(lua_State *L, int n)
 	{
 		return luaL_checkinteger(L, n);
+	}
+	template<typename T>
+	std::enable_if_t<std::is_integral<T>::value && !std::is_same<T, bool>::value, T>
+	lua_to_or_default(lua_State *L, int n, const T& def)
+	{
+		int isnum;
+		lua_Integer res = lua_tointegerx(L, n, &isnum);
+		if (!isnum) {
+			return def;
+		}
+		return res;
 	}
 
 	template<typename T>
@@ -290,7 +361,39 @@ lua_check_impl::remove_constref<T> lua_check(lua_State *L, int n)
 }
 
 template<typename T>
+lua_check_impl::remove_constref<T> lua_to_or_default(lua_State *L, int n, const T& def)
+{
+	//remove possible const& to make life easier for the impl namespace.
+	return lua_check_impl::lua_to_or_default<lua_check_impl::remove_constref<T>>(L, n, def);
+}
+
+template<typename T>
 void lua_push(lua_State *L, const T& val)
 {
 	return lua_check_impl::lua_push<lua_check_impl::remove_constref<T>>(L, val);
+}
+
+/**
+ * returns t[k] where k is the table at index @a index and k is @a k or @a def if it is not convertible to the correct type.
+ *
+ */
+template<typename T>
+lua_check_impl::remove_constref<T> luaW_table_get_def(lua_State *L, int index, utils::string_view k,  const T& def)
+{
+	if(!lua_istable(L, index)) {
+		luaL_argerror(L, index, "table expected");
+	}
+	if(index < 0) {
+		//with the next lua_pushstring negative indicies will no longer be correct otherwise.
+		--index;
+	}
+	lua_pushlstring(L, k.data(), k.size());
+	lua_gettable(L, index);
+	if(lua_isnoneornil(L, -1)) {
+		lua_pop(L, 1);
+		return def;
+	}
+	T res =  lua_check_impl::lua_to_or_default<lua_check_impl::remove_constref<T>>(L, -1, def);
+	lua_pop(L, -1);
+	return res;
 }

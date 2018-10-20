@@ -968,6 +968,16 @@ utils::string_view luaW_tostring(lua_State *L, int index)
 	return utils::string_view(str, len);
 }
 
+utils::string_view luaW_tostring_or_default(lua_State *L, int index, utils::string_view def)
+{
+	size_t len = 0;
+	const char* str = lua_tolstring(L, index, &len);
+	if(!str) {
+		return def;
+	}
+	return utils::string_view(str, len);
+}
+
 void chat_message(const std::string& caption, const std::string& msg)
 {
 	if (!game_display::get_singleton()) return;
