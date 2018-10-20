@@ -1097,6 +1097,11 @@ public:
 		return max_movement_;
 	}
 
+	void set_total_movement(int value)
+	{
+		max_movement_ = value;
+	}
+
 	/**
 	 * Gets how far a unit can move, considering the `incapacitated` flag.
 	 *
