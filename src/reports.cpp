@@ -87,6 +87,20 @@ static std::string flush(std::ostringstream &s)
 	return r;
 }
 
+static const time_of_day get_visible_time_of_day_at(reports::context & rc, const map_location & hex)
+{
+	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
+	if (viewing_team.shrouded(hex)) {
+		// Don't show time on shrouded tiles.
+		return rc.tod().get_time_of_day();
+	} else if (viewing_team.fogged(hex)) {
+		// Don't show illuminated time on fogged tiles.
+		return rc.tod().get_time_of_day(hex);
+	} else {
+		return rc.tod().get_illuminated_time_of_day(rc.units(), rc.map(), hex);
+	}
+}
+
 typedef std::map<std::string, reports::generator_function> static_report_generators;
 static static_report_generators static_generators;
 
@@ -1098,17 +1112,7 @@ REPORT_GENERATOR(tod_stats, rc)
 static config time_of_day_at(reports::context & rc, const map_location& mouseover_hex)
 {
 	std::ostringstream tooltip;
-	time_of_day tod;
-	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
-	if (viewing_team.shrouded(mouseover_hex)) {
-		// Don't show time on shrouded tiles.
-		tod = rc.tod().get_time_of_day();
-	} else if (viewing_team.fogged(mouseover_hex)) {
-		// Don't show illuminated time on fogged tiles.
-		tod = rc.tod().get_time_of_day(mouseover_hex);
-	} else {
-		tod = rc.tod().get_illuminated_time_of_day(rc.units(), rc.map(), mouseover_hex);
-	}
+	time_of_day tod = get_visible_time_of_day_at(rc, mouseover_hex);
 
 	int b = tod.lawful_bonus;
 
@@ -1149,18 +1153,8 @@ REPORT_GENERATOR(time_of_day, rc)
 static config unit_box_at(reports::context & rc, const map_location& mouseover_hex)
 {
 	std::ostringstream tooltip;
-	time_of_day local_tod;
 	time_of_day global_tod = rc.tod().get_time_of_day();
-	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
-	if (viewing_team.shrouded(mouseover_hex)) {
-		// Don't show time on shrouded tiles.
-		local_tod = global_tod;
-	} else if (viewing_team.fogged(mouseover_hex)) {
-		// Don't show illuminated time on fogged tiles.
-		local_tod = rc.tod().get_time_of_day(mouseover_hex);
-	} else {
-		local_tod = rc.tod().get_illuminated_time_of_day(rc.units(), rc.map(),mouseover_hex);
-	}
+	time_of_day local_tod = get_visible_time_of_day_at(rc, mouseover_hex);
 
 	int bonus = local_tod.lawful_bonus;
 
