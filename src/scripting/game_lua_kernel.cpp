@@ -1382,6 +1382,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 
 	// Find the corresponding attribute.
 	return_int_attrib("last_turn", tod_man().number_of_turns());
+	return_bool_attrib("do_healing", play_controller_.gamestate().do_healing_);
 	return_string_attrib("next_scenario", gamedata().next_scenario());
 	return_string_attrib("theme", gamedata().get_theme());
 	return_string_attrib("scenario_id", gamedata().get_id());
@@ -1430,6 +1431,7 @@ int game_lua_kernel::impl_game_config_set(lua_State *L)
 	modify_int_attrib("kill_experience", game_config::kill_experience = value);
 	modify_int_attrib("combat_experience", game_config::combat_experience = value);
 	modify_int_attrib("last_turn", tod_man().set_number_of_turns_by_wml(value));
+	modify_bool_attrib("do_healing", play_controller_.gamestate().do_healing_ = value);
 	modify_string_attrib("next_scenario", gamedata().set_next_scenario(value));
 	modify_string_attrib("theme",
 		gamedata().set_theme(value);
