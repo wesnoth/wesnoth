@@ -48,6 +48,9 @@
  ### Miscellaneous and bug fixes
 
 ## Version 1.14.5+dev
+ ### Campaigns
+   * The Hammer of Thursagan
+     * S12 'The Underlevels': redesigned with completely new map and scenario
  ### Language and i18n
    * Updated translations: Chinese (Traditional), French, Italian, Spanish.
  ### Lua API
