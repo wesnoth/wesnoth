@@ -279,6 +279,11 @@ static int impl_unit_get(lua_State *L)
 		lua_pushinteger(L, u.get_location().wml_y());
 		return 2;
 	}
+	if(strcmp(m, "goto") == 0) {
+		lua_pushinteger(L, u.get_goto().wml_x());
+		lua_pushinteger(L, u.get_goto().wml_y());
+		return 2;
+	}
 	return_int_attrib("side", u.side());
 	return_string_attrib("id", u.id());
 	return_string_attrib("type", u.type_id());
@@ -401,6 +406,7 @@ static int impl_unit_set(lua_State *L)
 	modify_tstring_attrib("name", u.set_name(value));
 	modify_string_attrib("role", u.set_role(value));
 	modify_string_attrib("facing", u.set_facing(map_location::parse_direction(value)));
+	modify_string_attrib("usage", u.set_usage(value));
 	modify_bool_attrib("hidden", u.set_hidden(value));
 	modify_bool_attrib("zoc", u.set_emit_zoc(value));
 	modify_bool_attrib("canrecruit", u.set_can_recruit(value));
@@ -484,6 +490,11 @@ static int impl_unit_set(lua_State *L)
 
 			return 0;
 		}
+	}
+
+	if(strcmp(m, "goto") == 0) {
+		u.set_goto(luaW_checklocation(L, 3));
+		return 0;
 	}
 
 	std::string err_msg = "unknown modifiable property of unit: ";
