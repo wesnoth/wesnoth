@@ -341,14 +341,14 @@ REPORT_GENERATOR(selected_unit_status, rc)
 	return unit_status(rc, u);
 }
 
-static config unit_alignment(reports::context & rc, const unit* u)
+static config unit_alignment(reports::context & rc, const unit* u, const map_location& hex)
 {
 	if (!u) return config();
 	std::ostringstream str, tooltip;
 	const std::string align = unit_type::alignment_description(u->alignment(), u->gender());
 	const std::string align_id = u->alignment().to_string();
-	int cm = combat_modifier(rc.units(), rc.map(), rc.screen().displayed_unit_hex(), u->alignment(),
-			u->is_fearless());
+	const time_of_day effective_tod = get_visible_time_of_day_at(rc, hex);
+	int cm = combat_modifier(effective_tod, u->alignment(), u->is_fearless());
 
 	color_t color = font::weapon_color;
 	if (cm != 0)
@@ -365,12 +365,18 @@ static config unit_alignment(reports::context & rc, const unit* u)
 REPORT_GENERATOR(unit_alignment, rc)
 {
 	const unit *u = get_visible_unit(rc);
-	return unit_alignment(rc, u);
+	const map_location& mouseover_hex = rc.screen().mouseover_hex();
+	const map_location& displayed_unit_hex = rc.screen().displayed_unit_hex();
+	const map_location& hex = mouseover_hex.valid() ? mouseover_hex : displayed_unit_hex;
+	return unit_alignment(rc, u, hex);
 }
 REPORT_GENERATOR(selected_unit_alignment, rc)
 {
 	const unit *u = get_selected_unit(rc);
-	return unit_alignment(rc, u);
+	const map_location& attack_indicator_src = game_display::get_singleton()->get_attack_indicator_src();
+	const map_location& hex_to_show_alignment_at =
+		attack_indicator_src.valid() ? attack_indicator_src : u->get_location();
+	return unit_alignment(rc, u, hex_to_show_alignment_at);
 }
 
 
