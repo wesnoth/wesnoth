@@ -675,20 +675,20 @@ static inline const color_t attack_info_percent_color(int resistance)
 	return font::YELLOW_COLOR;
 }
 
-static int attack_info(reports::context & rc, const attack_type &at, config &res, const unit &u, const map_location &displayed_unit_hex)
+static int attack_info(reports::context & rc, const attack_type &at, config &res, const unit &u, const map_location &hex)
 {
 	std::ostringstream str, tooltip;
 	int damage = 0;
 
 	{
-		auto ctx = at.specials_context(unit_const_ptr(&u), displayed_unit_hex, u.side() == rc.screen().playing_side());
+		auto ctx = at.specials_context(unit_const_ptr(&u), hex, u.side() == rc.screen().playing_side());
 		int base_damage = at.damage();
 		int specials_damage = at.modified_damage(false);
 		int damage_multiplier = 100;
 		const_attack_ptr weapon  = at.shared_from_this();
-		int tod_bonus = combat_modifier(get_visible_time_of_day_at(rc, displayed_unit_hex), u.alignment(), u.is_fearless());
+		int tod_bonus = combat_modifier(get_visible_time_of_day_at(rc, hex), u.alignment(), u.is_fearless());
 		damage_multiplier += tod_bonus;
-		int leader_bonus = under_leadership(u, displayed_unit_hex, weapon);
+		int leader_bonus = under_leadership(u, hex, weapon);
 		if (leader_bonus != 0)
 			damage_multiplier += leader_bonus;
 
