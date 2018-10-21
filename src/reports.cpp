@@ -574,7 +574,7 @@ static config unit_vision(const unit* u)
 	std::ostringstream str;
 	if (u->vision() != u->total_movement()) {
 		str << _("vision: ") << u->vision(); }
-	return text_report(str.str());
+	return text_report(str.str(), str.str());
 }
 REPORT_GENERATOR(unit_vision, rc)
 {
