@@ -276,10 +276,9 @@ void attack_unit_and_advance(const map_location& attacker,
  * Tests if the unit at loc is currently affected by leadership.
  * (i.e. has a higher-level unit with the 'leadership' ability next to it).
  *
- * Returns a pair of bonus percentage and the leader's location if the unit is affected,
- * or 0 and map_location::null_location() otherwise.
+ * Returns the bonus percentage (possibly 0 if there's no leader adjacent).
  */
-std::pair<int, map_location> under_leadership(const unit_map& units, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon = nullptr);
+int under_leadership(const unit &u, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon = nullptr);
 bool leadership_affects_self(const std::string& ability,const unit_map& units, const map_location& loc, const_attack_ptr weapon=nullptr,const_attack_ptr opp_weapon=nullptr);
 bool leadership_affects_opponent(const std::string& ability,const unit_map& units, const map_location& loc, const_attack_ptr weapon=nullptr,const_attack_ptr opp_weapon=nullptr);
 std::pair<int, bool> ability_leadership(const std::string& ability, const unit_map& units, const map_location& loc, const map_location& opp_loc, bool attacker=true, int abil_value=0, bool backstab_pos=false, const_attack_ptr weapon=nullptr, const_attack_ptr opp_weapon=nullptr);
