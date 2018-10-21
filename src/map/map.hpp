@@ -109,6 +109,18 @@ public:
 	/** Overlays another map onto this one at the given position. */
 	void overlay(const gamemap& m, map_location loc, const std::vector<overlay_rule>& rules = std::vector<overlay_rule>(), bool is_odd = false, bool ignore_special_locations = false);
 
+	static void overlay_impl(
+			// const but changed via set_terrain
+			const t_translation::ter_map& m1,
+			starting_positions& m1_st,
+			const t_translation::ter_map& m2,
+			const starting_positions& m2_st,
+			std::function<void (const map_location&, const t_translation::terrain_code&, terrain_type_data::merge_mode, bool)> set_terrain,
+			map_location loc,
+			const std::vector<overlay_rule>& rules,
+			bool is_odd,
+			bool ignore_special_locations);
+	
 	/** Effective map width. */
 	int w() const { return w_; }
 

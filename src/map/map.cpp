@@ -209,19 +209,34 @@ std::string gamemap::write() const
 
 void gamemap::overlay(const gamemap& m, map_location loc, const std::vector<overlay_rule>& rules, bool m_is_odd, bool ignore_special_locations)
 {
+	overlay_impl(tiles_, starting_positions_, m.tiles_, m.starting_positions_, [this](auto&&... arg) { set_terrain(std::forward<decltype(arg)>(arg)...); }, loc, rules, m_is_odd, ignore_special_locations);
+}
+
+void gamemap::overlay_impl(
+		// const but changed via set_terrain
+		const t_translation::ter_map& m1,
+		starting_positions& m1_st,
+		const t_translation::ter_map& m2,
+		const starting_positions& m2_st,
+		std::function<void (const map_location&, const t_translation::terrain_code&, terrain_type_data::merge_mode, bool)> set_terrain,
+		map_location loc,
+		const std::vector<overlay_rule>& rules,
+		bool m_is_odd,
+		bool ignore_special_locations)
+{
 	int xpos = loc.wml_x();
 	int ypos = loc.wml_y();
 
 	const int xstart = std::max<int>(0, -xpos);
-	const int xend = std::min<int>(m.total_width(), total_width() -xpos);
+	const int xend = std::min<int>(m2.w, m1.w -xpos);
 	const int xoffset = xpos;
 
 	const int ystart_even = std::max<int>(0, -ypos);
-	const int yend_even = std::min<int>(m.total_height(), total_height() - ypos);
+	const int yend_even = std::min<int>(m2.h, m1.h - ypos);
 	const int yoffset_even = ypos;
 
 	const int ystart_odd = std::max<int>(0, -ypos +(xpos & 1) -(m_is_odd ? 1 : 0));
-	const int yend_odd = std::min<int>(m.total_height(), total_height() - ypos +(xpos & 1) -(m_is_odd ? 1 : 0));
+	const int yend_odd = std::min<int>(m2.h, m1.h - ypos +(xpos & 1) -(m_is_odd ? 1 : 0));
 	const int yoffset_odd = ypos -(xpos & 1) + (m_is_odd ? 1 : 0);
 
 	for(int x1 = xstart; x1 != xend; ++x1) {
@@ -234,10 +249,10 @@ void gamemap::overlay(const gamemap& m, map_location loc, const std::vector<over
 		}
 		for(int y1 = ystart; y1 != yend; ++y1) {
 			const int x2 = x1 + xoffset;
-			const int y2 = y1 + yoffset;//ypos + ((xpos & 1) && (x1 & 1) ? 1 : 0);
+			const int y2 = y1 + yoffset;
 
-			const t_translation::terrain_code t = m.tiles_.get(x1,y1);
-			const t_translation::terrain_code current = tiles_.get(x2, y2);
+			const t_translation::terrain_code t = m2.get(x1,y1);
+			const t_translation::terrain_code current = m1.get(x2, y2);
 
 			if(t == t_translation::FOGGED || t == t_translation::VOID_TERRAIN) {
 				continue;
@@ -258,7 +273,7 @@ void gamemap::overlay(const gamemap& m, map_location loc, const std::vector<over
 			}
 
 			if (!rule) {
-				set_terrain(map_location(x2, y2, wml_loc()), t);
+				set_terrain(map_location(x2, y2, wml_loc()), t, terrain_type_data::BOTH, false);
 			}
 			else if(!rule->use_old_) {
 				set_terrain(map_location(x2, y2, wml_loc()), rule->terrain_ ? *rule->terrain_ : t , rule->mode_, rule->replace_if_failed_);
@@ -267,7 +282,7 @@ void gamemap::overlay(const gamemap& m, map_location loc, const std::vector<over
 	}
 
 	if (!ignore_special_locations) {
-		for(auto& pair : m.starting_positions_.left) {
+		for(auto& pair : m2_st.left) {
 
 			int x = pair.second.wml_x();
 			int y = pair.second.wml_y();
@@ -285,8 +300,8 @@ void gamemap::overlay(const gamemap& m, map_location loc, const std::vector<over
 			int y_new = y + ((x & 1 ) ? yoffset_odd : yoffset_even);
 			map_location pos_new = map_location(x_new, y_new, wml_loc());
 
-			starting_positions_.left.erase(pair.first);
-			starting_positions_.insert(starting_positions::value_type(pair.first, t_translation::coordinate(pos_new.x, pos_new.y)));
+			m1_st.left.erase(pair.first);
+			m1_st.insert(starting_positions::value_type(pair.first, t_translation::coordinate(pos_new.x, pos_new.y)));
 		}
 	}
 }

@@ -341,6 +341,103 @@ static int intf_get_terrain(lua_State *L)
 	return 1;
 }
 
+static std::vector<gamemap::overlay_rule> read_rules_vector(lua_State *L, int index)
+{
+	std::vector<gamemap::overlay_rule> rules;
+	for (int i = 1, i_end = lua_rawlen(L, index); i <= i_end; ++i)
+	{
+		lua_rawgeti(L, index, i);
+		if(!lua_istable(L, -1)) {
+			return luaL_argerror(L, index, "rules must be a table of tables");
+		}
+		rules.push_back(gamemap::overlay_rule());
+		auto& rule = rules.back();
+		if(luaW_tableget(L, -1, "old")) {
+			rule.old_ = t_translation::read_list(luaW_tostring(L, -1));
+			lua_pop(L, 1);
+		}
+		if(luaW_tableget(L, -1, "new")) {
+			rule.new_ = t_translation::read_list(luaW_tostring(L, -1));
+			lua_pop(L, 1);
+		}
+
+		if(luaW_tableget(L, -1, "mode")) {
+			auto str = luaW_tostring(L, -1);
+			rule.mode_ = str == "base" ? terrain_type_data::BASE : (str == "overlay" ? terrain_type_data::OVERLAY : terrain_type_data::BOTH);
+			lua_pop(L, 1);
+		}
+
+		if(luaW_tableget(L, -1, "terrain")) {
+			const t_translation::ter_list terrain = t_translation::read_list(luaW_tostring(L, -1));
+			if(!terrain.empty()) {
+				rule.terrain_ = terrain[0];
+			}
+			lua_pop(L, 1);
+		}
+
+		if(luaW_tableget(L, -1, "use_old")) {
+			rule.use_old_ = luaW_toboolean(L, -1);
+			lua_pop(L, 1);
+		}
+
+		if(luaW_tableget(L, -1, "replace_if_failed")) {
+			rule.replace_if_failed_ = luaW_toboolean(L, -1);
+			lua_pop(L, 1);
+		}
+
+		lua_pop(L, 1);
+	}
+	return rules;
+}
+/**
+ * Reaplces part of the map.
+ * - Arg 1: map location.
+ * - Arg 2: map data string.
+ * - Arg 3: table for optional named arguments
+ *   - is_odd: boolen, if Arg2 has the odd mapo format (as if it was cut from a odd map location)
+ *   - ignore_special_locations: boolean
+ *   - rules: table of tables
+*/
+static int intf_mg_terrain_mask(lua_State *L)
+{
+	mapgen_gamemap& tm1 = luaW_checkterrainmap(L, 1);
+	map_location loc = luaW_checklocation(L, 2);
+	mapgen_gamemap& tm1 = luaW_checkterrainmap(L, 3);
+
+	bool is_odd = false;
+	bool ignore_special_locations = false;
+	std::vector<gamemap::overlay_rule> rules;
+
+	if(lua_istable(L, 4)) {
+		is_odd = luaW_table_get_def<bool>(L, 4, "is_odd", false);
+		ignore_special_locations = luaW_table_get_def<bool>(L, 4, "ignore_special_locations", false);
+
+		if(luaW_tableget(L, 4, "rules")) {
+			if(!lua_istable(L, -1)) {
+				return luaL_argerror(L, 4, "rules must be a table");
+			}
+			rules = read_rules_vector(L, -1)
+			lua_pop(L, 1);
+		}
+	}
+
+	board().map_->overlay(mask_map, loc, rules, is_odd, ignore_special_locations);
+
+	gamemap::overlay_impl(
+		tm1.tiles_,
+		tm1.starting_positions_,
+		tm2.tiles_,
+		tm2.starting_positions_,
+		[&](const map_location& loc, const t_translation::terrain_code& t, terrain_type_data::merge_mode mode, bool) { tm1.set_terrain(loc, t, mode); },
+		loc,
+		rules,
+		is_odd,
+		ignore_special_locations
+	);
+		
+	return 0;
+}
+
 namespace lua_terrainmap {
 	std::string register_metatables(lua_State* L)
 	{
@@ -366,6 +463,8 @@ namespace lua_terrainmap {
 		lua_setfield(L, -2, "get_locations");
 		lua_pushcfunction(L, intf_mg_get_tiles_radius);
 		lua_setfield(L, -2, "get_tiles_radius");
+		lua_pushcfunction(L, intf_mg_terrain_mask);
+		lua_setfield(L, -2, "terrain_mask");
 
 		cmd_out << "Adding terrainmamap2 metatable...\n";
 
