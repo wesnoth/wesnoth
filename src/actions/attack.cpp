@@ -221,8 +221,8 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 		unit_abilities::effect drain_percent_effects(drain_specials, 50, backstab_pos);
 		drain_percent = drain_percent_effects.get_composite_value();
 		}
-		if (weapon->combat_ability("drains", 25, backstab_pos).second){
-	        drain_percent = weapon->combat_ability("drains", 25, backstab_pos).first;
+		if (weapon->combat_ability("drains", 50, backstab_pos).second){
+	        drain_percent = weapon->combat_ability("drains", 50, backstab_pos).first;
 	    }
 	}
 
