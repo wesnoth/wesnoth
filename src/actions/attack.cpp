@@ -1567,7 +1567,15 @@ int combat_modifier(const unit_map& units,
 		bool is_fearless)
 {
 	const tod_manager& tod_m = *resources::tod_manager;
-	int lawful_bonus = tod_m.get_illuminated_time_of_day(units, map, loc).lawful_bonus;
+	const time_of_day& effective_tod = tod_m.get_illuminated_time_of_day(units, map, loc);
+	return combat_modifier(effective_tod, alignment, is_fearless);
+}
+
+int combat_modifier(const time_of_day& effective_tod,
+		unit_type::ALIGNMENT alignment,
+		bool is_fearless)
+{
+	const int lawful_bonus = effective_tod.lawful_bonus;
 	return generic_combat_modifier(lawful_bonus, alignment, is_fearless);
 }
 
