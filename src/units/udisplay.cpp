@@ -778,8 +778,11 @@ void unit_healing(unit &healed, const std::vector<unit *> &healers, int healing,
 {
 	game_display* disp = game_display::get_singleton();
 	const map_location& healed_loc = healed.get_location();
+	const bool some_healer_is_unfogged =
+		(healers.end() != std::find_if_not(healers.begin(), healers.end(),
+			[&](unit* h) { return disp->fogged(h->get_location()); }));
 
-	if(do_not_show_anims(disp) || disp->fogged(healed_loc)) {
+	if(do_not_show_anims(disp) || (disp->fogged(healed_loc) && !some_healer_is_unfogged)) {
 		return;
 	}
 
