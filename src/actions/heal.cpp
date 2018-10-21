@@ -343,10 +343,7 @@ void calculate_healing(int side, bool update_display)
 			DBG_NG << "Just before healing animations, unit has " << healers.size() << " potential healers.\n";
 		}
 
-		const team & viewing_team =
-			resources::gameboard->teams()[display::get_singleton()->viewing_team()];
-		if (!resources::controller->is_skipping_replay() && update_display &&
-		    patient.is_visible_to_team(viewing_team, false) )
+		if (!resources::controller->is_skipping_replay() && update_display)
 		{
 			unit_list.emplace_front(patient, healers, healing, curing == POISON_CURE);
 		}
