@@ -1013,9 +1013,9 @@ int game_lua_kernel::intf_set_terrain(lua_State *L)
 
 	return 0;
 }
- 
+
 /**
- * Reaplces part of rhe map.
+ * Reaplces part of the map.
  * - Arg 1: map location.
  * - Arg 2: map data string.
  * - Arg 3: table for optional named arguments
@@ -1041,6 +1041,7 @@ int game_lua_kernel::intf_terrain_mask(lua_State *L)
 			lua_pop(L, 1);
 		}
 		if(luaW_tableget(L, 3, "rules")) {
+			//todo: reduce code dublication by using read_rules_vector.
 			if(!lua_istable(L, -1)) {
 				return luaL_argerror(L, 3, "rules must be a table");
 			}
@@ -1737,21 +1738,12 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 
 	if (lua_istable(L, arg))
 	{
-		lua_pushstring(L, "ignore_units");
-		lua_rawget(L, arg);
-		ignore_units = luaW_toboolean(L, -1);
-		lua_pop(L, 1);
+		ignore_units = luaW_table_get_def<bool>(L, arg, "ignore_units", false);
 
-		lua_pushstring(L, "ignore_teleport");
-		lua_rawget(L, arg);
-		ignore_teleport = luaW_toboolean(L, -1);
-		lua_pop(L, 1);
+		ignore_teleport = luaW_table_get_def<bool>(L, arg, "ignore_teleport", false);
+	
+		stop_at = luaW_table_get_def<double>(L, arg, "stop_at", stop_at);
 
-		lua_pushstring(L, "max_cost");
-		lua_rawget(L, arg);
-		if (!lua_isnil(L, -1))
-			stop_at = luaL_checknumber(L, -1);
-		lua_pop(L, 1);
 
 		lua_pushstring(L, "viewing_side");
 		lua_rawget(L, arg);
