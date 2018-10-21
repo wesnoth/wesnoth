@@ -146,6 +146,8 @@ public:
 	/** Set the attack direction indicator. */
 	void set_attack_indicator(const map_location& src, const map_location& dst);
 	void clear_attack_indicator();
+	// TODO: compare reports::context::mhb()->current_unit_attacks_from()
+	const map_location& get_attack_indicator_src() { return attack_indicator_src_; }
 
 	/** Function to get attack direction suffix. */
 	std::string attack_indicator_direction() const {
