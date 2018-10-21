@@ -209,7 +209,8 @@ std::string gamemap::write() const
 
 void gamemap::overlay(const gamemap& m, map_location loc, const std::vector<overlay_rule>& rules, bool m_is_odd, bool ignore_special_locations)
 {
-	overlay_impl(tiles_, starting_positions_, m.tiles_, m.starting_positions_, [this](auto&&... arg) { set_terrain(std::forward<decltype(arg)>(arg)...); }, loc, rules, m_is_odd, ignore_special_locations);
+	//the following line doesn't compile on all compiler without the 'this->'
+	overlay_impl(tiles_, starting_positions_, m.tiles_, m.starting_positions_, [this](auto&&... arg) { this->set_terrain(std::forward<decltype(arg)>(arg)...); }, loc, rules, m_is_odd, ignore_special_locations);
 }
 
 void gamemap::overlay_impl(

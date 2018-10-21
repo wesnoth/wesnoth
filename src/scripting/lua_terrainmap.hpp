@@ -88,7 +88,7 @@ public:
 			}
 		}
 	}
-	friend int intf_terrain_mask(lua_State *L);
+	static int intf_mg_terrain_mask(lua_State *L);
 private:
 	t_translation::ter_map tiles_;
 	starting_positions starting_positions_;	

@@ -348,7 +348,7 @@ static std::vector<gamemap::overlay_rule> read_rules_vector(lua_State *L, int in
 	{
 		lua_rawgeti(L, index, i);
 		if(!lua_istable(L, -1)) {
-			return luaL_argerror(L, index, "rules must be a table of tables");
+			luaL_argerror(L, index, "rules must be a table of tables");
 		}
 		rules.push_back(gamemap::overlay_rule());
 		auto& rule = rules.back();
@@ -398,11 +398,11 @@ static std::vector<gamemap::overlay_rule> read_rules_vector(lua_State *L, int in
  *   - ignore_special_locations: boolean
  *   - rules: table of tables
 */
-static int intf_mg_terrain_mask(lua_State *L)
+int mapgen_gamemap::intf_mg_terrain_mask(lua_State *L)
 {
 	mapgen_gamemap& tm1 = luaW_checkterrainmap(L, 1);
 	map_location loc = luaW_checklocation(L, 2);
-	mapgen_gamemap& tm1 = luaW_checkterrainmap(L, 3);
+	mapgen_gamemap& tm2 = luaW_checkterrainmap(L, 3);
 
 	bool is_odd = false;
 	bool ignore_special_locations = false;
@@ -416,12 +416,10 @@ static int intf_mg_terrain_mask(lua_State *L)
 			if(!lua_istable(L, -1)) {
 				return luaL_argerror(L, 4, "rules must be a table");
 			}
-			rules = read_rules_vector(L, -1)
+			rules = read_rules_vector(L, -1);
 			lua_pop(L, 1);
 		}
 	}
-
-	board().map_->overlay(mask_map, loc, rules, is_odd, ignore_special_locations);
 
 	gamemap::overlay_impl(
 		tm1.tiles_,
@@ -463,7 +461,7 @@ namespace lua_terrainmap {
 		lua_setfield(L, -2, "get_locations");
 		lua_pushcfunction(L, intf_mg_get_tiles_radius);
 		lua_setfield(L, -2, "get_tiles_radius");
-		lua_pushcfunction(L, intf_mg_terrain_mask);
+		lua_pushcfunction(L, &mapgen_gamemap::intf_mg_terrain_mask);
 		lua_setfield(L, -2, "terrain_mask");
 
 		cmd_out << "Adding terrainmamap2 metatable...\n";
