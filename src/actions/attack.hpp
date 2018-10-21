@@ -275,10 +275,9 @@ void attack_unit_and_advance(const map_location& attacker,
  * Tests if the unit at loc is currently affected by leadership.
  * (i.e. has a higher-level unit with the 'leadership' ability next to it).
  *
- * Returns a pair of bonus percentage and the leader's location if the unit is affected,
- * or 0 and map_location::null_location() otherwise.
+ * Returns the bonus percentage (possibly 0 if there's no leader adjacent).
  */
-std::pair<int, map_location> under_leadership(const unit_map& units, const map_location& loc);
+int under_leadership(const unit &u, const map_location& loc);
 
 /**
  * Returns the amount that a unit's damage should be multiplied by
