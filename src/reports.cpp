@@ -686,7 +686,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 		int specials_damage = at.modified_damage(false);
 		int damage_multiplier = 100;
 		const_attack_ptr weapon  = at.shared_from_this();
-		int tod_bonus = combat_modifier(rc.units(), rc.map(), displayed_unit_hex, u.alignment(), u.is_fearless());
+		int tod_bonus = combat_modifier(get_visible_time_of_day_at(rc, displayed_unit_hex), u.alignment(), u.is_fearless());
 		damage_multiplier += tod_bonus;
 		int leader_bonus = under_leadership(rc.units(), displayed_unit_hex, weapon).first;
 		if (leader_bonus != 0)
@@ -999,12 +999,14 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 	return res;
 }
 
-static config unit_weapons(reports::context & rc, const unit *u)
+/*
+ * Display the attacks of the displayed unit against the unit passed as argument.
+ * 'hex' is the location the attacker will be at during combat.
+ */
+static config unit_weapons(reports::context & rc, const unit *u, const map_location &hex)
 {
 	config res = config();
 	if ((u != nullptr) && (!u->attacks().empty())) {
-		map_location displayed_unit_hex = rc.screen().displayed_unit_hex();
-
 		const std::string attack_headline = _n("Attack", "Attacks", u->attacks().size());
 
 		add_text(res,  span_color(font::weapon_details_color)
@@ -1012,7 +1014,7 @@ static config unit_weapons(reports::context & rc, const unit *u)
 
 		for (const attack_type &at : u->attacks())
 		{
-			attack_info(rc, at, res, *u, displayed_unit_hex);
+			attack_info(rc, at, res, *u, hex);
 		}
 	}
 	return res;
@@ -1020,9 +1022,12 @@ static config unit_weapons(reports::context & rc, const unit *u)
 REPORT_GENERATOR(unit_weapons, rc)
 {
 	const unit *u = get_visible_unit(rc);
+	const map_location& mouseover_hex = rc.screen().mouseover_hex();
+	const map_location& displayed_unit_hex = rc.screen().displayed_unit_hex();
+	const map_location& hex = mouseover_hex.valid() ? mouseover_hex : displayed_unit_hex;
 	if (!u) return config();
 
-	return unit_weapons(rc, u);
+	return unit_weapons(rc, u, hex);
 }
 REPORT_GENERATOR(highlighted_unit_weapons, rc)
 {
@@ -1030,7 +1035,7 @@ REPORT_GENERATOR(highlighted_unit_weapons, rc)
 	const unit *sec_u = get_visible_unit(rc);
 
 	if (!u) return config();
-	if (!sec_u || u == sec_u) return unit_weapons(rc, sec_u);
+	if (!sec_u || u == sec_u) return unit_weapons(rc, sec_u, rc.screen().mouseover_hex());
 
 	map_location highlighted_hex = rc.screen().displayed_unit_hex();
 	map_location attack_loc;
@@ -1038,7 +1043,7 @@ REPORT_GENERATOR(highlighted_unit_weapons, rc)
 		attack_loc = rc.mhb()->current_unit_attacks_from(highlighted_hex);
 
 	if (!attack_loc.valid())
-		return unit_weapons(rc, sec_u);
+		return unit_weapons(rc, sec_u, rc.screen().mouseover_hex());
 
 	return unit_weapons(rc, u, attack_loc, sec_u, false);
 }
@@ -1048,7 +1053,7 @@ REPORT_GENERATOR(selected_unit_weapons, rc)
 	const unit *sec_u = get_visible_unit(rc);
 
 	if (!u) return config();
-	if (!sec_u || u == sec_u) return unit_weapons(rc, u);
+	if (!sec_u || u == sec_u) return unit_weapons(rc, u, u->get_location());
 
 	map_location highlighted_hex = rc.screen().displayed_unit_hex();
 	map_location attack_loc;
@@ -1056,7 +1061,7 @@ REPORT_GENERATOR(selected_unit_weapons, rc)
 		attack_loc = rc.mhb()->current_unit_attacks_from(highlighted_hex);
 
 	if (!attack_loc.valid())
-		return unit_weapons(rc, u);
+		return unit_weapons(rc, u, u->get_location());
 
 	return unit_weapons(rc, u, attack_loc, sec_u, true);
 }
