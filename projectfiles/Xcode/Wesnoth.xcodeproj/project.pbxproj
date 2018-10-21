@@ -41,6 +41,10 @@
 		46B2A7C12028DDA2006C2323 /* libpng16.16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C243118EF07B4001FA499 /* libpng16.16.dylib */; };
 		46BAF785206672250004711F /* libboost_chrono-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BAF784206672240004711F /* libboost_chrono-mt.dylib */; };
 		46BAF787206672300004711F /* libboost_timer-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BAF786206672300004711F /* libboost_timer-mt.dylib */; };
+		46BDBBEA217C6F6200D2820C /* lua_terrainfilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46BDBBE6217C6F6100D2820C /* lua_terrainfilter.cpp */; };
+		46BDBBEB217C6F6200D2820C /* lua_terrainfilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46BDBBE6217C6F6100D2820C /* lua_terrainfilter.cpp */; };
+		46BDBBEC217C6F6200D2820C /* lua_terrainmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46BDBBE8217C6F6200D2820C /* lua_terrainmap.cpp */; };
+		46BDBBED217C6F6200D2820C /* lua_terrainmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46BDBBE8217C6F6200D2820C /* lua_terrainmap.cpp */; };
 		46BED4D3205060EA00842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46BED4D4205060EA00842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46BED4D52050611600842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
@@ -1460,6 +1464,10 @@
 		469BDB54205C357500DBF748 /* base64.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = base64.hpp; sourceTree = "<group>"; };
 		46BAF784206672240004711F /* libboost_chrono-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_chrono-mt.dylib"; path = "lib/libboost_chrono-mt.dylib"; sourceTree = "<group>"; };
 		46BAF786206672300004711F /* libboost_timer-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_timer-mt.dylib"; path = "lib/libboost_timer-mt.dylib"; sourceTree = "<group>"; };
+		46BDBBE6217C6F6100D2820C /* lua_terrainfilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_terrainfilter.cpp; sourceTree = "<group>"; };
+		46BDBBE7217C6F6100D2820C /* lua_terrainfilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_terrainfilter.hpp; sourceTree = "<group>"; };
+		46BDBBE8217C6F6200D2820C /* lua_terrainmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_terrainmap.cpp; sourceTree = "<group>"; };
+		46BDBBE9217C6F6200D2820C /* lua_terrainmap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_terrainmap.hpp; sourceTree = "<group>"; };
 		46BED4D0205060EA00842FA5 /* crypt_blowfish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt_blowfish.h; sourceTree = "<group>"; };
 		46BED4D1205060EA00842FA5 /* crypt_blowfish.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypt_blowfish.c; sourceTree = "<group>"; };
 		46BED4D92050710800842FA5 /* scenario-story.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "scenario-story.cfg"; sourceTree = "<group>"; };
@@ -4573,12 +4581,16 @@
 				91B621EC1B76BB2200B00E0F /* lua_rng.hpp */,
 				EC5430211A4E6024006D206C /* lua_team.cpp */,
 				91B621ED1B76BB2600B00E0F /* lua_team.hpp */,
-				9193FC801D5C2CF7004F6C07 /* lua_unit.cpp */,
-				9193FC811D5C2CF8004F6C07 /* lua_unit.hpp */,
+				46BDBBE6217C6F6100D2820C /* lua_terrainfilter.cpp */,
+				46BDBBE7217C6F6100D2820C /* lua_terrainfilter.hpp */,
+				46BDBBE8217C6F6200D2820C /* lua_terrainmap.cpp */,
+				46BDBBE9217C6F6200D2820C /* lua_terrainmap.hpp */,
 				9193FC841D5D7452004F6C07 /* lua_unit_attacks.cpp */,
 				9193FC851D5D745D004F6C07 /* lua_unit_attacks.hpp */,
 				EC5430221A4E6024006D206C /* lua_unit_type.cpp */,
 				91B621EE1B76BB2C00B00E0F /* lua_unit_type.hpp */,
+				9193FC801D5C2CF7004F6C07 /* lua_unit.cpp */,
+				9193FC811D5C2CF8004F6C07 /* lua_unit.hpp */,
 				EC59F2601A4529D2001910CB /* manager.cpp */,
 				91B621E31B76BAF600B00E0F /* manager.hpp */,
 				ECA1E1001A12755B00426E00 /* mapgen_lua_kernel.cpp */,
@@ -5145,6 +5157,7 @@
 				B55BE03A11234AC700154E6C /* gamestate_observer.cpp in Sources */,
 				46F92DF12174F6A400602C1C /* manager.cpp in Sources */,
 				B5599B640EC62181008DD061 /* generic_event.cpp in Sources */,
+				46BDBBEA217C6F6200D2820C /* lua_terrainfilter.cpp in Sources */,
 				EC4DF45519FEA7A8000EC086 /* gettext.cpp in Sources */,
 				B59F96D6103478C900A57C1A /* goal.cpp in Sources */,
 				B5599B390EC62181008DD061 /* halo.cpp in Sources */,
@@ -5421,6 +5434,7 @@
 				46F92E272174F6A400602C1C /* mp_create_game.cpp in Sources */,
 				B5599AE40EC62181008DD061 /* game_version.cpp in Sources */,
 				46F92EA32174F6A400602C1C /* minimap.cpp in Sources */,
+				46BDBBEC217C6F6200D2820C /* lua_terrainmap.cpp in Sources */,
 				B5599AE30EC62181008DD061 /* video.cpp in Sources */,
 				620A387315E9364F00A4F513 /* vision.cpp in Sources */,
 				EC219454196064C500420969 /* wesnoth.cpp in Sources */,
@@ -5654,6 +5668,7 @@
 				91E356801CACC71A00774252 /* save_blocker.cpp in Sources */,
 				91E356811CACC71A00774252 /* save_index.cpp in Sources */,
 				91E356821CACC71A00774252 /* saved_game.cpp in Sources */,
+				46BDBBEB217C6F6200D2820C /* lua_terrainfilter.cpp in Sources */,
 				46F92E0C2174F6A400602C1C /* formula_debugger.cpp in Sources */,
 				91E356831CACC71A00774252 /* savegame.cpp in Sources */,
 				91E356841CACC77E00774252 /* map_settings.cpp in Sources */,
@@ -5960,6 +5975,7 @@
 				46F92F1A2174FEC000602C1C /* text_formatting.cpp in Sources */,
 				4649B8D52028923500827CFB /* variant_value.cpp in Sources */,
 				91A215711CAD6E7500927AEA /* manager.cpp in Sources */,
+				46BDBBED217C6F6200D2820C /* lua_terrainmap.cpp in Sources */,
 				91A215721CAD6E7500927AEA /* mapgen_lua_kernel.cpp in Sources */,
 				46F92E662174F6A400602C1C /* tree_view.cpp in Sources */,
 				46F92E9E2174F6A400602C1C /* menu_button.cpp in Sources */,
