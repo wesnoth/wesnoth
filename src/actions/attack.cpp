@@ -142,9 +142,9 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	poisons = !opp.get_state("unpoisonable") && weapon->bool_ability("poison") && !opp.get_state(unit::STATE_POISONED);
 	backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, resources::gameboard->teams());
 	rounds = weapon->get_specials("berserk").highest("value", 1).first;
-	if(weapon->combat_ability("berserk", 1).second) {
-		rounds = weapon->combat_ability("berserk", 1).first;
-	}
+		if(weapon->combat_ability("berserk", 1).second) {
+			rounds = weapon->combat_ability("berserk", 1).first;
+		}
 	firststrike = weapon->bool_ability("firststrike");
 
 	{
@@ -215,14 +215,14 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 
 	// Compute drain amounts only if draining is possible.
 	if(drains) {
-	if (weapon->get_special_bool("drains")){
-		unit_ability_list drain_specials = weapon->get_specials("drains");
-		// Compute the drain percent (with 50% as the base for backward compatibility)
-		unit_abilities::effect drain_percent_effects(drain_specials, 50, backstab_pos);
-		drain_percent = drain_percent_effects.get_composite_value();
+		if (weapon->get_special_bool("drains")){
+			unit_ability_list drain_specials = weapon->get_specials("drains");
+			// Compute the drain percent (with 50% as the base for backward compatibility)
+			unit_abilities::effect drain_percent_effects(drain_specials, 50, backstab_pos);
+			drain_percent = drain_percent_effects.get_composite_value();
 		}
 		if (weapon->combat_ability("drains", 50, backstab_pos).second){
-	        drain_percent = weapon->combat_ability("drains", 50, backstab_pos).first;
+			drain_percent = weapon->combat_ability("drains", 50, backstab_pos).first;
 	    }
 	}
 
