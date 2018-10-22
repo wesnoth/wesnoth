@@ -397,8 +397,11 @@ static int impl_unit_set(lua_State *L)
 	modify_int_attrib("side", u.set_side(value));
 	modify_int_attrib("moves", u.set_movement(value));
 	modify_int_attrib("max_moves", u.set_total_movement(value));
+	modify_int_attrib("max_attacks", u.set_max_attacks(value));
 	modify_int_attrib("hitpoints", u.set_hitpoints(value));
+	modify_int_attrib("max_hitpoints", u.set_max_hitpoints(value));
 	modify_int_attrib("experience", u.set_experience(value));
+	modify_int_attrib("max_experience", u.set_max_experience(value));
 	modify_int_attrib("recall_cost", u.set_recall_cost(value));
 	modify_int_attrib("attacks_left", u.set_attacks(value));
 	modify_int_attrib("level", u.set_level(value));
@@ -407,6 +410,7 @@ static int impl_unit_set(lua_State *L)
 	modify_string_attrib("role", u.set_role(value));
 	modify_string_attrib("facing", u.set_facing(map_location::parse_direction(value)));
 	modify_string_attrib("usage", u.set_usage(value));
+	modify_string_attrib("undead_variation", u.set_undead_variation(value));
 	modify_bool_attrib("hidden", u.set_hidden(value));
 	modify_bool_attrib("zoc", u.set_emit_zoc(value));
 	modify_bool_attrib("canrecruit", u.set_can_recruit(value));

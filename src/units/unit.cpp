@@ -529,17 +529,17 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	level_ = cfg["level"].to_int(level_);
 
 	if(const config::attribute_value* v = cfg.get("undead_variation")) {
-		undead_variation_ = v->str();
+		set_undead_variation(v->str());
 	}
 
 	if(const config::attribute_value* v = cfg.get("max_attacks")) {
-		max_attacks_ = std::max(0, v->to_int(1));
+		set_max_attacks(std::max(0, v->to_int(1)));
 	}
 
 	attacks_left_ = std::max(0, cfg["attacks_left"].to_int(max_attacks_));
 
 	if(const config::attribute_value* v = cfg.get("zoc")) {
-		emit_zoc_ = v->to_bool(level_ > 0);
+		set_emit_zoc(v->to_bool(level_ > 0));
 	}
 
 	if(const config::attribute_value* v = cfg.get("description")) {
@@ -563,13 +563,13 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	}
 
 	if(const config::attribute_value* v = cfg.get("profile")) {
-		std::string profile = (*v).str();
+		set_big_profile((*v).str());
 		adjust_profile(profile);
 		profile_ = profile;
 	}
 
 	if(const config::attribute_value* v = cfg.get("small_profile")) {
-		small_profile_ = (*v).str();
+		set_small_profile((*v).str());
 	}
 
 	max_hit_points_ = std::max(1, cfg["max_hitpoints"].to_int(max_hit_points_));

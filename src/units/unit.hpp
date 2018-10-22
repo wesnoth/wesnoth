@@ -427,6 +427,11 @@ public:
 		return max_hit_points_;
 	}
 
+	void set_max_hitpoints(int value)
+	{
+		max_hit_points_ = value;
+	}
+
 	/** Sets the current hitpoint amount. */
 	void set_hitpoints(int hp)
 	{
@@ -443,6 +448,11 @@ public:
 	int max_experience() const
 	{
 		return max_experience_;
+	}
+
+	void set_max_experience(int value)
+	{
+		max_experience_ = value;
 	}
 
 	/** The number of experience points this unit needs to level up, or 0 if current XP > max XP. */
@@ -482,6 +492,10 @@ public:
 	}
 
 	/** The ID of the undead variation (ie, dwarf, swimmer) of this unit. */
+	void set_undead_variation(const std::string& value)
+	{
+		undead_variation_ = value;
+	}
 	const std::string& undead_variation() const
 	{
 		return undead_variation_;
@@ -495,6 +509,10 @@ public:
 	 */
 	std::string small_profile() const;
 
+	void set_small_profile(const std::string& value)
+	{
+		small_profile_ = value;
+	}
 	/**
 	 * An optional profile image displays when this unit is 'speaking' via [message].
 	 *
@@ -503,6 +521,11 @@ public:
 	 */
 	std::string big_profile() const;
 
+	void set_big_profile(const std::string& value)
+	{
+		profile_ = value;
+		adjust_profile(profile_);
+	}
 	/** Whether this unit can recruit other units - ie, are they a leader unit. */
 	bool can_recruit() const
 	{
@@ -860,6 +883,11 @@ public:
 	int max_attacks() const
 	{
 		return max_attacks_;
+	}
+
+	void set_max_attacks(int value)
+	{
+		max_attacks_ = value;
 	}
 
 	/**
