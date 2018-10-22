@@ -709,58 +709,56 @@ end
 function decoration()
 	-- rich terrain around rivers
 	set_terrain { "*^Vhc",
-		{ "and",
-			{ "terrain", "H*^V*"},
-			{ "adjacent",
-				{ "terrain", "Ww"}
-			}
-		},
+		f_and(
+			f_terrain("H*^V*"),
+			f_adjacent(f_terrain("Ww"))
+		),
 		layer = "overlay"
 	}
 	set_terrain { "Rp^Vhc",
-		{ "and",
-			{ "terrain", "G*^V*"},
-			{ "adjacent",
-				{ "terrain", "Ww"}
-			}
-		}
+		f_and(
+			f_terrain("G*^V*"),
+			f_adjacent(
+				f_terrain("Ww")
+			)
+		)
 	}
 	set_terrain { "Gg",
-		{ "and",
-			{ "terrain", "G*^*"},
-			{ "adjacent",
-				{ "terrain", "Ww"}
-			}
-		},
+		f_and(
+			f_terrain("G*^*"),
+			f_adjacent(
+				f_terrain("Ww")
+			)
+		),
 		layer = "base"
 	}
 	set_terrain { "Gg",
-		{ "and",
-			{ "terrain", "Gs^*,Gd^*"},
-			{ "radius", 2,
-				{ "terrain", "Ww"}
-			}
-		},
+		f_and(
+			f_terrain("Gs^*,Gd^*"),
+			f_radius(2,
+				f_terrain("Ww")
+			)
+		),
 		layer = "base",
 		fraction = 3,
 	}
 	set_terrain { "Gg",
-		{ "and",
-			{ "terrain", "Gs^*,Gd^*"},
-			{ "radius", 3,
-				{ "terrain", "Ww"}
-			}
-		},
+		f_and(
+			f_terrain("Gs^*,Gd^*"),
+			f_radius(3,
+				f_terrain("Ww")
+			)
+		),
 		layer = "base",
 		fraction = 3,
 	}
 	set_terrain { "Gs^*",
-		{ "and",
-			{ "terrain", "Gd*^*"},
-			{ "radius", 3,
-				{ "terrain", "Ww"}
-			}
-		},
+		f_and(
+			f_terrain("Gd*^*"),
+			f_radius(3,
+				f_terrain("Ww")
+			)
+		),
 		layer = "base",
 	}
 	-- generate big docks villages
@@ -1024,12 +1022,12 @@ function repaint()
 	}
 	--dirt beachs far from docks
 	set_terrain { "Ds^Esd", 
-		{ "and",
+		{ "all",
 			{ "terrain", "Ds"},
 			{ "adjacent",
 				{ "terrain", "Wwg,Wog"}
 			},
-			{ "nand",
+			{ "none",
 				{ "radius", 6,
 					{ "terrain", "*^Vl"}
 				},
