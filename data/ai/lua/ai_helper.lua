@@ -1446,7 +1446,7 @@ function ai_helper.move_unit_out_of_way(ai, unit, cfg)
     local dx, dy
     if cfg.dx and cfg.dy then
         local r = math.sqrt(cfg.dx * cfg.dx + cfg.dy * cfg.dy)
-        dx, dy = cfg.dx / r, cfg.dy / r
+        if (r ~= 0) then dx, dy = cfg.dx / r, cfg.dy / r end
     end
 
     local reach = wesnoth.find_reach(unit, cfg)
