@@ -1703,11 +1703,11 @@ bool attack_type::bool_ability(const std::string& ability) const
 	const unit_map& units = display::get_singleton()->get_units();
 
 	if(leadership_affects_self(ability, units, self_loc_, shared_from_this(), other_attack_)) {
-		abil_bool = bool_leadership(ability, units, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_);
+		abil_bool = get_special_bool(ability) || bool_leadership(ability, units, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_);
 	}
 
 	if(leadership_affects_opponent(ability, units, other_loc_, other_attack_, shared_from_this())) {
-		abil_bool = bool_leadership(ability, units, other_loc_, self_loc_, !is_attacker_, other_attack_, shared_from_this());
+		abil_bool = get_special_bool(ability) || bool_leadership(ability, units, other_loc_, self_loc_, !is_attacker_, other_attack_, shared_from_this());
 	}
 	return abil_bool;
 }
