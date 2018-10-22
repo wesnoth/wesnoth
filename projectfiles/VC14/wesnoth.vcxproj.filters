@@ -908,6 +908,12 @@
     <ClCompile Include="..\..\src\scripting\lua_team.cpp">
       <Filter>Scripting</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_terrainfilter.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_terrainmap.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\scripting\lua_unit.cpp">
       <Filter>Scripting</Filter>
     </ClCompile>
@@ -2375,6 +2381,12 @@
     <ClInclude Include="..\..\src\scripting\lua_team.hpp">
       <Filter>Scripting</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_terrainfilter.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_terrainmap.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\scripting\lua_unit.hpp">
       <Filter>Scripting</Filter>
     </ClInclude>
@@ -2899,6 +2911,7 @@
     <ClInclude Include="..\..\src\network_asio.hpp" />
     <ClInclude Include="..\..\src\overlay.hpp" />
     <ClInclude Include="..\..\src\pathutils.hpp" />
+    <ClInclude Include="..\..\src\pathutils_impl.hpp" />
     <ClInclude Include="..\..\src\persist_context.hpp" />
     <ClInclude Include="..\..\src\persist_manager.hpp" />
     <ClInclude Include="..\..\src\persist_var.hpp" />
