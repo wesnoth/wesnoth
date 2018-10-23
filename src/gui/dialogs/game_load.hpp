@@ -54,6 +54,7 @@ private:
 	void filter_text_changed(text_box_base* textbox, const std::string& text);
 	void delete_button_callback(window& window);
 
+	void display_savegame_internal(window& window);
 	void display_savegame(window& window);
 	void evaluate_summary_string(std::stringstream& str, const config& cfg_summary);
 
