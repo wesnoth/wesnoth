@@ -1551,10 +1551,7 @@ void attack_unit_and_advance(const map_location& attacker,
 
 int under_leadership(const unit &u, const map_location& loc)
 {
-	unit_ptr new_unit = u.clone();
-	new_unit->set_location(loc);
-
-	unit_ability_list abil = new_unit->get_abilities("leadership");
+	unit_ability_list abil = u.get_abilities("leadership", loc);
 	return abil.highest("value").first;
 }
 
