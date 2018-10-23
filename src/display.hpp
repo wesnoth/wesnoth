@@ -71,6 +71,7 @@ namespace wb {
 #include <list>
 #include <map>
 #include <memory>
+#include <vector>
 
 class gamemap;
 
@@ -1026,7 +1027,7 @@ protected:
 	bool reach_map_changed_;
 	void process_reachmap_changes();
 
-	typedef std::multimap<map_location, overlay> overlay_map;
+	typedef std::map<map_location, std::vector<overlay>> overlay_map;
 
 	virtual overlay_map& get_overlays() = 0;
 

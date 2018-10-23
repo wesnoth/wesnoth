@@ -343,7 +343,7 @@ void map_context::load_scenario(const config& game_config)
 
 	for(const config& item : scenario.child_range("item")) {
 		const map_location loc(item);
-		overlays_.emplace(loc, overlay(item));
+		overlays_[loc].push_back(overlay(item));
 	}
 
 	for(const config& music : scenario.child_range("music")) {
@@ -491,22 +491,22 @@ config map_context::to_config()
 	labels_.write(scenario);
 
 	for(const auto& overlay_pair : overlays_) {
-		config& item = scenario.add_child("item");
+		for(const overlay& o : overlay_pair.second) {
+			config& item = scenario.add_child("item");
 
-		// Write x,y location
-		overlay_pair.first.write(item);
+			// Write x,y location
+			overlay_pair.first.write(item);
 
-		const overlay& o = overlay_pair.second;
+			// These should always have a value
+			item["image"] = o.image;
+			item["visible_in_fog"] = o.visible_in_fog;
 
-		// These should always have a value
-		item["image"] = o.image;
-		item["visible_in_fog"] = o.visible_in_fog;
-
-		// Optional keys
-		item["id"].write_if_not_empty(o.id);
-		item["name"].write_if_not_empty(o.name);
-		item["team_name"].write_if_not_empty(o.team_name);
-		item["halo"].write_if_not_empty(o.halo);
+			// Optional keys
+			item["id"].write_if_not_empty(o.id);
+			item["name"].write_if_not_empty(o.name);
+			item["team_name"].write_if_not_empty(o.team_name);
+			item["halo"].write_if_not_empty(o.halo);
+		}
 	}
 
 	for(const music_map::value_type& track : music_tracks_) {

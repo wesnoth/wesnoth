@@ -53,6 +53,7 @@
 
 #include <SDL_image.h>
 
+#include <algorithm>
 #include <array>
 #include <cmath>
 #include <iomanip>
@@ -94,13 +95,14 @@ void display::parse_team_overlays()
 	const team& prev_team = playing_team() == 0
 		? dc_->teams().back()
 		: dc_->get_team(playing_team());
-	for (const game_display::overlay_map::value_type i : get_overlays()) {
-		const overlay& ov = i.second;
-		if (!ov.team_name.empty() &&
-			((ov.team_name.find(curr_team.team_name()) + 1) != 0) !=
-			((ov.team_name.find(prev_team.team_name()) + 1) != 0))
-		{
-			invalidate(i.first);
+	for (const auto& i : get_overlays()) {
+		for(const overlay& ov : i.second) {
+			if(!ov.team_name.empty() &&
+				((ov.team_name.find(curr_team.team_name()) + 1) != 0) !=
+				((ov.team_name.find(prev_team.team_name()) + 1) != 0))
+			{
+				invalidate(i.first);
+			}
 		}
 	}
 }
@@ -115,58 +117,27 @@ void display::add_overlay(const map_location& loc, const std::string& img, const
 				get_location_y(loc) + hex_size() / 2, halo, loc);
 		}
 
-		auto it1 = get_overlays().emplace(loc, overlay(img, halo, halo_handle, team_name, item_id, visible_under_fog, z_order));
-		auto itor_pair = get_overlays().equal_range(loc);
-		//get_overlays().emplace adds at the end.
-		assert(itor_pair.second != itor_pair.first && std::next(it1, 1) == itor_pair.second);
-		UNUSED(it1); //it is only used in the assert above.
-		if(std::next(itor_pair.first, 1) != itor_pair.second) {
-			//the range itor_pair is already sorted, except for the last element we just inserted, 
-			for (auto it = itor_pair.second; it != std::next(itor_pair.first, 1);--it) {
-				overlay& one = std::next(it, - 1)->second;
-				overlay& two = (it)->second;
-				if(one.z_order > two.z_order) {
-					std::swap(one, two);
-				}
-			}
-		}
+		std::vector<overlay>& overlays = get_overlays()[loc];
+		auto it = std::find_if(overlays.begin(), overlays.end(), [z_order](const overlay& ov) { return ov.z_order > z_order; });
+		overlays.emplace(it, img, halo, halo_handle, team_name, item_id, visible_under_fog, z_order);
 	}
 }
 
 void display::remove_overlay(const map_location& loc)
 {
-	/* This code no longer needed because of RAII in halo::handles
-	if (halo_man_) {
-		typedef overlay_map::const_iterator Itor;
-		std::pair<Itor,Itor> itors = get_overlays().equal_range(loc);
-		while(itors.first != itors.second) {
-			halo_man_->remove(itors.first->second.halo_handle);
-			++itors.first;
-		}
-	}
-	*/
-
 	get_overlays().erase(loc);
 }
 
 void display::remove_single_overlay(const map_location& loc, const std::string& toDelete)
 {
-	//Iterate through the values with key of loc
-	typedef overlay_map::iterator Itor;
-	overlay_map::iterator iteratorCopy;
-	std::pair<Itor,Itor> itors = get_overlays().equal_range(loc);
-	while(itors.first != itors.second) {
-		//If image or halo of overlay struct matches toDelete, remove the overlay
-		if(itors.first->second.image == toDelete || itors.first->second.halo == toDelete || itors.first->second.id == toDelete) {
-			iteratorCopy = itors.first;
-			++itors.first;
-			//Not needed because of RAII --> halo_man_->remove(iteratorCopy->second.halo_handle);
-			get_overlays().erase(iteratorCopy);
-		}
-		else {
-			++itors.first;
-		}
-	}
+	std::vector<overlay>& overlays = get_overlays()[loc];
+	overlays.erase(
+		std::remove_if(
+			overlays.begin(), overlays.end(),
+			[&toDelete](const overlay& ov) { return ov.image == toDelete || ov.halo == toDelete || ov.id == toDelete; }
+		),
+		overlays.end()
+	);
 }
 
 display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, reports & reports_object, const config& theme_cfg, const config& level, bool auto_join) :
@@ -2603,28 +2574,26 @@ void display::draw_hex(const map_location& loc) {
 	}
 
 	if(!shrouded(loc)) {
-		typedef overlay_map::const_iterator Itor;
-		std::pair<Itor,Itor> overlays = get_overlays().equal_range(loc);
-		const bool have_overlays = overlays.first != overlays.second;
+		auto it = get_overlays().find(loc);
+		if(it != get_overlays().end()) {
+			std::vector<overlay>& overlays = it->second;
+			if(overlays.size() != 0) {
+				tod_color tod_col = tod.color + color_adjust_;
+				image::light_string lt = image::get_light_string(-1, tod_col.r, tod_col.g, tod_col.b);
 
-		if(have_overlays) {
-			tod_color tod_col = tod.color + color_adjust_;
-			image::light_string lt = image::get_light_string(-1, tod_col.r, tod_col.g, tod_col.b);
-
-			for( ; overlays.first != overlays.second; ++overlays.first) {
-				const std::string& current_team_name = get_teams()[viewing_team()].team_name();
-				const std::vector<std::string>& current_team_names = utils::split(current_team_name);
-				const std::vector<std::string>& team_names = utils::split(overlays.first->second.team_name);
-				if ((overlays.first->second.team_name.empty() ||
-					std::find_first_of(team_names.begin(), team_names.end(),
-						current_team_names.begin(), current_team_names.end()) != team_names.end())
-						&& !(fogged(loc) && !overlays.first->second.visible_in_fog))
-				{
-
-					const std::string image = overlays.first->second.image;
-					const surface surf = image.find("~NO_TOD_SHIFT()") == std::string::npos ?
-						image::get_lighted_image(image, lt, image::SCALED_TO_HEX) : image::get_image(image, image::SCALED_TO_HEX);
-					drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, surf);
+				for(const overlay& ov : overlays) {
+					const std::string& current_team_name = get_teams()[viewing_team()].team_name();
+					const std::vector<std::string>& current_team_names = utils::split(current_team_name);
+					const std::vector<std::string>& team_names = utils::split(ov.team_name);
+					if((ov.team_name.empty() ||
+						std::find_first_of(team_names.begin(), team_names.end(),
+							current_team_names.begin(), current_team_names.end()) != team_names.end())
+						&& !(fogged(loc) && !ov.visible_in_fog))
+					{
+						const surface surf = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos ?
+							image::get_lighted_image(ov.image, lt, image::SCALED_TO_HEX) : image::get_image(ov.image, image::SCALED_TO_HEX);
+						drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, surf);
+					}
 				}
 			}
 		}

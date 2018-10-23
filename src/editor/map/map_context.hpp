@@ -25,6 +25,8 @@
 #include "overlay.hpp"
 #include "display_context.hpp"
 
+#include <vector>
+
 namespace editor {
 
 struct editor_team_info {
@@ -502,7 +504,7 @@ private:
 	typedef std::map<std::string, sound::music_track> music_map;
 	music_map music_tracks_;
 
-	typedef std::multimap<map_location, overlay> overlay_map;
+	typedef std::map<map_location, std::vector<overlay>> overlay_map;
 	overlay_map overlays_;
 
 public:
