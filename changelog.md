@@ -1,4 +1,7 @@
 ## Version 1.14.5+dev
+ ### AI
+   * Fixed crash when the AI simulates a fight between two units which can slow but aren't yet slowed, then
+     simulates another fight for one of them in Monte Carlo mode (issue #3650).
  ### Campaigns
    * Descent Into Darkness:
      * Allow converting L3 necromancers to liches from S12 onwards (issue #3165).
