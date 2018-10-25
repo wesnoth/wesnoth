@@ -1,5 +1,4 @@
 local H = wesnoth.require "helper"
-local W = H.set_wml_action_metatable {}
 local LS = wesnoth.require "location_set"
 local F = wesnoth.require "functional"
 local M = wesnoth.map
@@ -76,7 +75,7 @@ function ai_helper.clear_labels()
     local width, height = wesnoth.get_map_size()
     for x = 1,width do
         for y = 1,height do
-            W.label { x = x, y = y, text = "" }
+            wesnoth.label { x = x, y = y, text = "" }
         end
     end
 end
@@ -112,7 +111,7 @@ function ai_helper.put_labels(map, cfg)
         end
 
         if (type(out) == 'number') then out = out * factor end
-        W.label { x = x, y = y, text = out }
+        wesnoth.label { x = x, y = y, text = out }
     end)
 end
 
