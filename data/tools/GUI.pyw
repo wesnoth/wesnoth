@@ -47,37 +47,57 @@ def wrap_elem(line):
         return "\"{0}\"".format(line)
     return line
 
-def run_tool(tool,queue,command):
-    """Runs a maintenance tool with the desired arguments and pushes the output in the supplied queue"""
-    # set the encoding for the subprocess
-    # otherwise, with the new Unicode literals used by the wml tools,
-    # we may get UnicodeDecodeErros
-    env=os.environ
-    env['PYTHONIOENCODING']="utf8"
-    if sys.platform=="win32":
-        # Windows wants a string, Linux wants a list and Polly wants a cracker
-        # Windows wants also strings flavoured with double quotes
-        # since maps return iterators, we must cast them as lists, otherwise join won't work
-        # not doing this causes an OSError: [WinError 87]
-        # this doesn't happen on Python 2.7, because here map() returns a list
-        wrapped_line=list(map(wrap_elem,command))
-        queue.put_nowait(' '.join(wrapped_line)+"\n")
-        si=subprocess.STARTUPINFO()
-        si.dwFlags=subprocess.STARTF_USESHOWWINDOW|subprocess.SW_HIDE # to avoid showing a DOS prompt
-        try:
-            output=subprocess.check_output(' '.join(wrapped_line),stderr=subprocess.STDOUT,startupinfo=si,env=env)
-            queue.put_nowait(str(output, "utf8"))
-        except subprocess.CalledProcessError as error:
-            # post the precise message and the remaining output as a tuple
-            queue.put_nowait((tool,error.returncode,str(error.output, "utf8")))
-    else: # STARTUPINFO is not available, nor needed, outside of Windows
-        queue.put_nowait(' '.join(command)+"\n")
-        try:
-            output=subprocess.check_output(command,stderr=subprocess.STDOUT,env=env)
-            queue.put_nowait(str(output, "utf8"))
-        except subprocess.CalledProcessError as error:
-            # post the precise message and the remaining output as a tuple
-            queue.put_nowait((tool,error.returncode, str(error.output, "utf8")))
+class ToolThread(threading.Thread):
+    def __init__(self,tool,queue,command):
+        super().__init__()
+        self.tool=tool
+        self.command=command
+        self.queue=queue
+        self.subproc=None
+    def run(self):
+        # we can't use check_output, because it doesn't support
+        # performing operations on the subprocess
+        # so we'll have to use subprocess.Popen() instead
+
+        # set the encoding for the subprocess
+        # otherwise, with the new Unicode literals used by the wml tools,
+        # we may get UnicodeDecodeErros
+        env=os.environ
+        env['PYTHONIOENCODING']="utf8"
+        if sys.platform=="win32":
+            # Windows wants a string, Linux wants a list and Polly wants a cracker
+            # Windows wants also strings flavoured with double quotes
+            # since maps return iterators, we must cast them as lists, otherwise join won't work
+            # not doing this causes an OSError: [WinError 87]
+            # this doesn't happen on Python 2.7, because here map() returns a list
+            wrapped_line=list(map(wrap_elem,self.command))
+            self.queue.put_nowait(' '.join(wrapped_line)+"\n")
+            si=subprocess.STARTUPINFO()
+            si.dwFlags=subprocess.STARTF_USESHOWWINDOW|subprocess.SW_HIDE # to avoid showing a DOS prompt
+            self.subproc=subprocess.Popen(' '.join(wrapped_line),
+                                          stdout=subprocess.PIPE,
+                                          stderr=subprocess.PIPE,
+                                          startupinfo=si,
+                                          env=env)
+        else: # STARTUPINFO is not available, nor needed, outside of Windows
+            self.queue.put_nowait(' '.join(self.command)+"\n")
+            self.subproc=subprocess.Popen(self.command,
+                                          stdout=subprocess.PIPE,
+                                          stderr=subprocess.PIPE,
+                                          env=env)
+        out,err=self.subproc.communicate() # waits for the subprocess to finish and gets the output
+        self.queue.put_nowait(str(out, "utf8"))
+        self.queue.put_nowait(str(err, "utf8"))
+        # unlike check_output, Popen never raises if a subprocess terminates abnormally
+        # the documentation writes about the chance of OSError being raised
+        # but I tested by deleting wmllint and it doesn't happen
+        # perhaps because it's a Python script and the Python interpreter
+        # certainly exists
+        if self.subproc.returncode!=0:
+            # post a tuple into the queue to allow showing the error
+            self.queue.put_nowait((self.tool,self.subproc.returncode))
+    def terminate(self):
+        self.subproc.kill()
 
 def is_wesnoth_tools_path(path):
     """Checks if the supplied path may be a wesnoth/data/tools directory"""
@@ -259,13 +279,22 @@ Self destroys when the tool thread is over"""
                            sticky=E+W,
                            padx=5,
                            pady=5)
+        terminate_button=Button(frame,
+                                text="Terminate script",
+                                image=ICONS["process-stop"],
+                                compound=LEFT,
+                                command=self.terminate)
+        terminate_button.grid(row=2,
+                              column=0,
+                              padx=5,
+                              pady=5)
         frame.columnconfigure(0,weight=1)
         # place the popup in the middle of the main window
         # get the main window position and dimension
         self.geometry("{0}x{1}+{2}+{3}".format(400,
-                                               80,
+                                               140,
                                                int(root.winfo_rootx()+(root.winfo_width()-400)/2),
-                                               int(root.winfo_rooty()+(root.winfo_height()-80)/2)))
+                                               int(root.winfo_rooty()+(root.winfo_height()-140)/2)))
         wait_progress.start(10)
         self.check_thread_alive()
     def check_thread_alive(self):
@@ -277,6 +306,8 @@ Self destroys when the tool thread is over"""
             self.after(100,self.check_thread_alive)
         else:
             self.after(1,self.destroy)
+    def terminate(self):
+        self.thread.terminate()
 
 class ContextMenu(Menu):
     def __init__(self,x,y,widget):
@@ -1184,7 +1215,7 @@ wmllint will be run only on the Wesnoth core directory""")
             showerror("Error","""The selected directory does not exists""")
             return # stop here
         # start thread and wmllint subprocess
-        wmllint_thread=threading.Thread(target=run_tool,args=("wmllint",self.queue,wmllint_command_string))
+        wmllint_thread=ToolThread("wmllint",self.queue,wmllint_command_string)
         wmllint_thread.start()
         # build popup
         dialog=Popup(self.parent,"wmllint",wmllint_thread)
@@ -1250,7 +1281,7 @@ wmlscope will be run only on the Wesnoth core directory""")
             showerror("Error","""The selected directory does not exists""")
             return # stop here
         # start thread and wmlscope subprocess
-        wmlscope_thread=threading.Thread(target=run_tool,args=("wmlscope",self.queue,wmlscope_command_string))
+        wmlscope_thread=ToolThread("wmlscope",self.queue,wmlscope_command_string)
         wmlscope_thread.start()
         # build popup
         dialog=Popup(self.parent,"wmlscope",wmlscope_thread)
@@ -1285,7 +1316,7 @@ wmlindent will be run on the Wesnoth core directory""")
             showerror("Error","""The selected directory does not exists""")
             return # stop here
         # start thread and wmllint subprocess
-        wmlindent_thread=threading.Thread(target=run_tool,args=("wmlindent",self.queue,wmlindent_command_string))
+        wmlindent_thread=ToolThread("wmlindent",self.queue,wmlindent_command_string)
         wmlindent_thread.start()
         # build popup
         dialog=Popup(self.parent,"wmlindent",wmlindent_thread)
@@ -1338,7 +1369,7 @@ wmlxgettext won't be run""")
         if initialdomain:
             wmlxgettext_command_string.extend(["--initialdomain",initialdomain])
         # start thread and wmlxgettext subprocess
-        wmlxgettext_thread=threading.Thread(target=run_tool,args=("wmlxgettext",self.queue,wmlxgettext_command_string))
+        wmlxgettext_thread=ToolThread("wmlxgettext",self.queue,wmlxgettext_command_string)
         wmlxgettext_thread.start()
         # build popup
         dialog=Popup(self.parent,"wmlxgettext",wmlxgettext_thread)
@@ -1349,15 +1380,13 @@ If it contains a string, pushes it into the Text widget.
 If it contains an error in form of a tuple, displays a message and pushes the remaining output in the Text widget"""
         if not self.queue.empty():
             queue_item=self.queue.get_nowait()
-            # I tried posting directly the error in the queue, but for some reason
-            # isinstance(queue_item,subprocess.CalledProcessError) is ignored
+            # if there's a tuple in the queue, it's because a tool exited with
+            # non-zero status
             if isinstance(queue_item,tuple):
                 showerror("Error","""There was an error while executing {0}.
 
 Error code: {1}""".format(queue_item[0],queue_item[1]))
-                self.text.configure(state=NORMAL)
-                self.text.insert(END,queue_item[2])
-                self.text.configure(state=DISABLED)
+            # otherwise it's just the output
             elif isinstance(queue_item,str):
                 self.text.configure(state=NORMAL)
                 self.text.insert(END,queue_item)
@@ -1625,7 +1654,36 @@ turIeO7MeevMhu3Nfe7SjevWn+zZq+3aou7aofjdj/bfmfLgo/zim/fkmfzurP//////////////
 /////////////////////////////////////////////////////////////////////////yH5
 BAEKAH8ALAAAAAAQABAAAAeOgH+Cg4SFgx+GhB6EIVqDQzCDWiCEVypHNSkcDggZPidYhUYWL0xV
 TygGDDKGSxtTaWJjZz8EO4ZCGlBmYWBlPAI0hkAXRWhfXWQkDTmGNh0sXF5bWRATMYklGEhRTkEK
-Iol/LRImVFYjAyviTRUBOj0AFEqJUn9JEQcFD0R/9uI4EixwIa7QjRkFExIKBAA7=''')
+Iol/LRImVFYjAyviTRUBOj0AFEqJUn9JEQcFD0R/9uI4EixwIa7QjRkFExIKBAA7='''),
+           "process-stop":PhotoImage(data=b'''
+R0lGODlhIAAgAOf/AIgAAZAID7gAALkAAL8AAMEAAMIAALsCAZwKD8MAAMQAAMMABsYBAMwAArwF
+AsYCCMcEAI4UD6AREsgHAL4LBKIUFKEUGZEZGJoXFsoLAZsYHLURF8kMFJUdIJ0bHrgVGaYaHcIT
+EJ8dGp4dH5AiJM0TDqAfILoZGpMkIM0UFqkeJIwnKcQYGc4WHr4eHcccG9EaGacmJZIsLckfHdMe
+G9UgHMsjJdcjJMcqKtglK9knJsotLNspJ80wLdUuLN4tKc0xNNYwMs8yNdgxM9A0NtE1N9kzNNI2
+N9o0NdQ3ONU5OdY6OuY2Nd04Pdc7O9g8POA6Oeg4N+k5N9o9PZlPT9s/Pto/Q+s7PtxAP9xARN1B
+QJhUUd1BRd9CQN5CRqBVVdlGRelDQOFFSNtHRtxIR+tGR+VIRd5KSPVFRuZJS+5ISa1aXKhcW+FN
+S+lLSOBNUP5GSv9HRapeXeJPUqtfXuRQU+tPUK1hYPtNUfBSU/dRUKtmaPlSUa5oau1ZWudbXvdZ
+WfZZXuteW+RgXrBwcOZiYPpdYe5hY7JyculkYuhkaLR0dPdiYvJlZu1nZbd2dvpkZO9pZ/BqaO9q
+bbV7d/5nZ/dpa7V9f/lrbPJtb+5wb7iAgvZxc/5vcLWDg/Fzcvlyb/Z3du95evl5ePN8ffZ/gPOD
+gPqCg/OEh/WFgvyEhfaGg/iIi/KKiqCin/+Iiaahn/qKjfWMjPCOjPaNjaKkofiPj/GRlP+OjPmQ
+kKWnpKaopfaUkamrqPmWk6qsqfyZlrKtq/uZnK6wrfednbCyrrK0sbO1ssqzsO6qqLe5trm7uLy+
+u8i7u72/vO+ytMu+v8DCvsHDwO23t/O2uM/Cw/C6uve6vMbIxfK9vMfKxvW/v8vNyvLDwM3PzPLF
+yM/RzvbHxNLU0dPV0vnMz/XQ0PfR0ufa2urd3ebh3/vc2+3g4ePl4eTm4/Dj5Ovl5OXn5Obo5e3n
+5ufq5u/p6Ors6Ovu6u3v7PPu7PXv7u/x7vDy7/Hz8PL08fP18tbW1iH5BAEKAP8ALAAAAAAgACAA
+AAj+AP8JHDjQE4CDCBMeZEOwoUOBmzC04kWRYi5btmixWhXjzsOPlzSYSlSlZJUnKFE6mUNKxZ6P
+DSl5MKXIik0rJlM+WSkKRB+YAmWiSmSTC5ebJXWu/ASCEMxHI4YaBUMVzFGcJ1U6eaNJxKKHi6IW
+4lK17NWsKpe8mSTiUUNEJlAVskIWTBo8Z6raLBkGzZMlSo68cWTh0kBCcQcVtcsomR4yVPeWwTQL
+DeAjR84kwuBJIABaf0rSNWPoHLtnerxcnZyO3S00gY8QOeMIgOdcKKvYhJOMXbx4qLVYUcPp3e9z
+cZocKUIEiCTb/wDgfiJai55p87JTA2Qn1Lvs6CD+aVlOpHkk6NJTmuQCyFr2etZGycu+DpMYzMyB
+ADl/Wyf1Klgwso099xRYoDugnIFfc/o1gl4uTjjh3xNYYLLNPfpkKM8oCpK3ww444CAIerYsEeGE
+fqiyDz8smtPJETZwsMACCSRQgANXkIiEiRGe6Ecu+LDYTz/8bKMHBDXWeOMAUqBHCxJQLiGlE4L4
+kg8//uCjDpH7bBMIjTYOIGYU6MlihBFQQimIMEH6k88plYTjDz/7dNPIAgWIOYAATKDHShBnnnkI
+MW3mU8oNE2BCzpz6fMMJBWIKwCd6qbQRxKVBnJLNiviccoMCCSwQijn97LPOKyHsKcAAfQrERgz0
+oliKKSnX0BNLDqDWuEAp5rhjywuqDqBDC9D9s0YMmUABQwkTTJAJLj7kmuQCsgADrKQD8DBDAMgQ
+xIYFedDQAATkpiCtkg5QkCq2PLwQQTMO0VGBHTRAwAAD59rogJ7ssnABNB/dIQG9+CaJLr8COMCD
+Cx1UA5QcErhBg8H6IuzADyegADBM3ETzhQRlwJDkkpEm/MMHJATDDDbjPDSONs4cQwUCaqhRRhlh
+hHHFFVJEwQQTG6wASzHLsPyRONgwY8wWCjUNgAxDF90yUOJwI40yxfyySy2udO2KLr0Mo4w03EwN
+VEPjiOPN2tys7Y04Zj8UEAA7''')
            }
     ROOT_W,ROOT_H=800,480
     # the following string may be confusing, so here there's an explanation
