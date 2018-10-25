@@ -51,6 +51,13 @@ namespace unit_filter_impl
 		(OR, "or")
 		(NOT, "not")
 	)
+	struct filter_error : public game::error
+	{
+		explicit filter_error(const std::string& message = "filter error")
+			: game::error(message)
+		{
+		}
+	};
 
 	struct unit_filter_args
 	{
@@ -60,6 +67,13 @@ namespace unit_filter_impl
 		const filter_context* fc;
 		bool use_flat_tod;
 
+		const filter_context& context() const
+		{
+			if(fc) {
+				return *fc;
+			}
+			throw filter_error();
+		}
 		// This constructor is here to shut down warnings that the default constructor couldn't be generated.
 		// It's technically unnecessary since lacking of a default constructor doesn't prevent aggregate-initialization, but...
 		unit_filter_args(const unit& u, map_location loc, const unit* u2, const filter_context* fc, bool use_flat_tod)

@@ -103,7 +103,7 @@ struct unit_filter_xy : public unit_filter_base
 			return false;
 		}
 		else if(x == "recall" && y == "recall") {
-			return !args.fc->get_disp_context().map().on_board(args.loc);
+			return !args.context().get_disp_context().map().on_board(args.loc);
 		}
 		else {
 			return args.loc.matches_range(x, y);
@@ -124,7 +124,7 @@ struct unit_filter_adjacent : public unit_filter_base
 
 	virtual bool matches(const unit_filter_args& args) const override
 	{
-		const unit_map& units = args.fc->get_disp_context().units();
+		const unit_map& units = args.context().get_disp_context().units();
 		adjacent_loc_array_t adjacent;
 		get_adjacent_tiles(args.loc, adjacent.data());
 		int match_count=0;
@@ -142,7 +142,7 @@ struct unit_filter_adjacent : public unit_filter_base
 				continue;
 			}
 			auto is_enemy = cfg_["is_enemy"];
-			if (!is_enemy.empty() && is_enemy.to_bool() != args.fc->get_disp_context().get_team(args.u.side()).is_enemy(unit_itor->side())) {
+			if (!is_enemy.empty() && is_enemy.to_bool() != args.context().get_disp_context().get_team(args.u.side()).is_enemy(unit_itor->side())) {
 				continue;
 			}
 			++match_count;
@@ -229,10 +229,10 @@ bool unit_filter_compound::matches(const unit_filter_args& args) const
 	bool res;
 
 	if(args.loc.valid()) {
-		scoped_xy_unit auto_store("this_unit", args.u.get_location(), args.fc->get_disp_context().units());
+		scoped_xy_unit auto_store("this_unit", args.u.get_location(), args.context().get_disp_context().units());
 		if (args.u2) {
 			const map_location& loc2 = args.u2->get_location();
-			scoped_xy_unit u2_auto_store("other_unit", loc2, args.fc->get_disp_context().units());
+			scoped_xy_unit u2_auto_store("other_unit", loc2, args.context().get_disp_context().units());
 			res = filter_impl(args);
 		} else {
 			res = filter_impl(args);
@@ -555,7 +555,7 @@ void unit_filter_compound::fill(vconfig cfg)
 			[](const config::attribute_value& c) { return utils::parse_ranges(c.str()); },
 			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
 			{
-				int actual_defense = args.u.defense_modifier(args.fc->get_disp_context().map().get_terrain(args.loc));
+				int actual_defense = args.u.defense_modifier(args.context().get_disp_context().map().get_terrain(args.loc));
 				for(auto def : ranges) {
 					if(def.first <= actual_defense && actual_defense <= def.second) {
 						return true;
@@ -569,7 +569,7 @@ void unit_filter_compound::fill(vconfig cfg)
 			[](const config::attribute_value& c) { return utils::parse_ranges(c.str()); },
 			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
 			{
-				int actual_cost = args.u.movement_cost(args.fc->get_disp_context().map().get_terrain(args.loc));
+				int actual_cost = args.u.movement_cost(args.context().get_disp_context().map().get_terrain(args.loc));
 				for(auto cost : ranges) {
 					if(cost.first <= actual_cost && actual_cost <= cost.second) {
 						return true;
@@ -583,7 +583,7 @@ void unit_filter_compound::fill(vconfig cfg)
 			[](const config::attribute_value& c) { return utils::parse_ranges(c.str()); },
 			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
 			{
-				int actual_cost = args.u.vision_cost(args.fc->get_disp_context().map().get_terrain(args.loc));
+				int actual_cost = args.u.vision_cost(args.context().get_disp_context().map().get_terrain(args.loc));
 				for(auto cost : ranges) {
 					if(cost.first <= actual_cost && actual_cost <= cost.second) {
 						return true;
@@ -597,7 +597,7 @@ void unit_filter_compound::fill(vconfig cfg)
 			[](const config::attribute_value& c) { return utils::parse_ranges(c.str()); },
 			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
 			{
-				int actual_cost = args.u.jamming_cost(args.fc->get_disp_context().map().get_terrain(args.loc));
+				int actual_cost = args.u.jamming_cost(args.context().get_disp_context().map().get_terrain(args.loc));
 				for(auto cost : ranges) {
 					if(cost.first <= actual_cost && actual_cost <= cost.second) {
 						return true;
@@ -611,7 +611,7 @@ void unit_filter_compound::fill(vconfig cfg)
 			[](const config::attribute_value& c) { return c.str(); },
 			[](const std::string& lua_function, const unit_filter_args& args)
 			{
-				if (game_lua_kernel * lk = args.fc->get_lua_kernel()) {
+				if (game_lua_kernel * lk = args.context().get_lua_kernel()) {
 					return lk->run_filter(lua_function.c_str(), args.u);
 				}
 				return true;
@@ -651,7 +651,7 @@ void unit_filter_compound::fill(vconfig cfg)
 			[](const std::string& find_in, const unit_filter_args& args)
 			{
 				// Allow filtering by searching a stored variable of units
-				if (const game_data * gd = args.fc->get_game_data()) {
+				if (const game_data * gd = args.context().get_game_data()) {
 					try
 					{
 						for (const config& c : gd->get_variable_access_read(find_in).as_array())
@@ -704,8 +704,8 @@ void unit_filter_compound::fill(vconfig cfg)
 					viewers.insert(sides.begin(), sides.end());
 
 					for (const int viewer : viewers) {
-						bool fogged = args.fc->get_disp_context().get_team(viewer).fogged(args.loc);
-						bool hiding = args.u.invisible(args.loc) && args.fc->get_disp_context().get_team(viewer).is_enemy(args.u.side());
+						bool fogged = args.context().get_disp_context().get_team(viewer).fogged(args.loc);
+						bool hiding = args.u.invisible(args.loc) && args.context().get_disp_context().get_team(viewer).is_enemy(args.u.side());
 						bool unit_hidden = fogged || hiding;
 						if (c["visible"].to_bool(true) != unit_hidden) {
 							return true;
