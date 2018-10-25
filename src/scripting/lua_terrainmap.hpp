@@ -94,6 +94,20 @@ private:
 	starting_positions starting_positions_;	
 };
 
+bool luaW_isslocs(lua_State* L, int index);
+
+mapgen_gamemap* luaW_toslocs(lua_State *L, int index);
+
+mapgen_gamemap& luaW_check_slocs(lua_State *L, int index);
+
+void lua_slocs_setmetatable(lua_State *L);
+
+void luaW_pushslocs(lua_State *L, int index);
+
+int impl_slocs_get(lua_State* L);
+
+int impl_slocs_set(lua_State* L);
+
 bool luaW_isterrainmap(lua_State* L, int index);
 
 mapgen_gamemap* luaW_toterrainmap(lua_State *L, int index);
