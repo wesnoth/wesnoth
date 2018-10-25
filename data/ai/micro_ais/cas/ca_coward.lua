@@ -1,5 +1,6 @@
 local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
+local F = wesnoth.require "functional"
 
 local function get_coward(cfg)
     local filter = wml.get_child(cfg, "filter") or { id = cfg.id }
@@ -58,7 +59,7 @@ function ca_coward:execution(cfg)
 
     -- Select those within factor 2 of the maximum (note: ratings are negative)
     table.sort(reach, function(a, b) return a[3] > b[3] end )
-    local best_pos = AH.filter(reach, function(tmp) return tmp[3] > reach[1][3] * 2 end)
+    local best_pos = F.filter(reach, function(tmp) return tmp[3] > reach[1][3] * 2 end)
 
     -- Now take 'seek' and 'avoid' into account
     for i,pos in ipairs(best_pos) do
@@ -72,7 +73,7 @@ function ca_coward:execution(cfg)
 
     -- Select all those that have the maximum score
     table.sort(best_pos, function(a, b) return a[4] > b[4] end)
-    local best_overall = AH.filter(best_pos, function(tmp) return tmp[4] == best_pos[1][4] end)
+    local best_overall = F.filter(best_pos, function(tmp) return tmp[4] == best_pos[1][4] end)
 
     -- As final step, if there are more than one remaining locations,
     -- we take the one with the minimum score in the distance-from-enemy criterion

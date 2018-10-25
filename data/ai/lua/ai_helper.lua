@@ -457,13 +457,8 @@ end
 
 ----- General functionality and maths helper functions ------
 
-function ai_helper.filter(input, condition)
-    return F.filter(input, condition)
-end
-
-function ai_helper.choose(input, value)
-    return F.choose(input, value)
-end
+ai_helper.filter = wesnoth.deprecate_api('ai_helper.filter', 'functional.filter', 3, '1.17.0', F.filter)
+ai_helper.choose = wesnoth.deprecate_api('ai_helper.choose', 'functional.filter', 3, '1.17.0', F.choose)
 
 function ai_helper.table_copy(t)
     -- Make a copy of a table (rather than just another pointer to the same table)
@@ -810,6 +805,8 @@ function ai_helper.xyoff(x, y, ori, hex)
     --   's': self, 'u': up, 'lu': left up, 'ld': left down, 'ru': right up, 'rd': right down
     --   This is all relative "looking" in the direction of 'ori'
     -- returns x,y for the queried hex
+
+    wesnoth.deprecated_message('ai_helper.xyoff', 3, '1.17.0', "Use of ai_helper.xyoff is deprecated. There is no replacement as this is not a generally useful function, but equivalent results can be obtained with combinations of the wesnoth.map functions.")
 
     -- Unlike Lua default, we count 'ori' from 0 (north) to 5 (nw), so that modulo operator can be used
     ori = ori % 6

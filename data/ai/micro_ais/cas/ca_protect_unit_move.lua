@@ -1,6 +1,7 @@
 local LS = wesnoth.require "location_set"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
+local F = wesnoth.require "functional"
 
 local function get_protected_units(cfg)
     local units = {}
@@ -35,7 +36,7 @@ function ca_protect_unit_move:execution(cfg, data)
     for _,unit in ipairs(protected_units) do unit:to_map() end
 
     -- We move the weakest (fewest HP unit) first
-    local unit = AH.choose(protected_units, function(u) return - u.hitpoints end)
+    local unit = F.choose(protected_units, function(u) return - u.hitpoints end)
     local goal = {}
     for u in wml.child_range(cfg, "unit") do
         if (unit.id == u.id) then goal = { u.goal_x, u.goal_y } end
