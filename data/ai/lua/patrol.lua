@@ -1,7 +1,5 @@
 
-local _ = wesnoth.textdomain "wesnoth-ai"
-
-wesnoth.deprecated_message('data/ai/lua/patrol.lua', 3, '1.17.0', _"Use the Patrols Micro AI instead of patrol.lua.")
+wesnoth.deprecated_message('data/ai/lua/patrol.lua', 3, '1.17.0', "Use the Patrols Micro AI instead of patrol.lua.")
 
 function patrol_gen(n, wp)
     -- n is the name of the unit, like Kiressh
