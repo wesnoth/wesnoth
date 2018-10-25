@@ -932,7 +932,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	type_name_ = new_type.type_name();
 	description_ = new_type.unit_description();
 	undead_variation_ = new_type.undead_variation();
-	max_experience_ = new_type.experience_needed(false);
+	max_experience_ = new_type.experience_needed(true);
 	level_ = new_type.level();
 	recall_cost_ = new_type.recall_cost();
 	alignment_ = new_type.alignment();
@@ -2300,10 +2300,6 @@ void unit::apply_modifications()
 			add_modification(mod, m, true);
 		}
 	}
-
-	// Apply the experience acceleration last
-	int exp_accel = unit_experience_accelerator::get_acceleration();
-	max_experience_ = std::max<int>(1, (max_experience_ * exp_accel + 50)/100);
 }
 
 bool unit::invisible(const map_location& loc, bool see_all) const
