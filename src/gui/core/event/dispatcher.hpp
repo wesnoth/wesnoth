@@ -260,8 +260,10 @@ public:
 	 *
 	 * @param event                  The event to fire.
 	 * @param target                 The widget that should receive the event.
-	 * @param pos                    The location touched.
-	 * @param distance               The distance moved.
+	 * @param center                 The location touched.
+	 * @param dTheta                 Typically an angle, but who knows what it means here?
+	 * @param dDist                  The distance moved.
+	 * @param numFingers             Typically five per hand, but probably this means something else.
 	 */
 	bool fire(const ui_event event,
 			  widget& target,
