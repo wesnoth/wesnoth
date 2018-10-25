@@ -88,8 +88,8 @@ namespace t_translation {
 	 * @return                  The terrain code found in the string if no
 	 *                          valid terrain is found VOID will be returned.
 	 */
-	static terrain_code string_to_number_(utils::string_view, std::string& start_position, const ter_layer filler);
-	static terrain_code string_to_number_(utils::string_view, const ter_layer filler = NO_LAYER);
+	static terrain_code string_to_number_(utils::string_view str, std::string& start_position, const ter_layer filler);
+	static terrain_code string_to_number_(utils::string_view str, const ter_layer filler = NO_LAYER);
 
 	/**
 	 * Converts a terrain number to a string
