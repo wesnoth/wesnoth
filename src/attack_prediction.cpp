@@ -2707,12 +2707,12 @@ static void run(unsigned specific_battle)
 	auto total = end - start;
 
 #ifdef BENCHMARK
-	printf("Total time for %i combats was %lf\n", NUM_UNITS * (NUM_UNITS - 1) * (NUM_UNITS - 2),
+	printf("Total time for %u combats was %lf\n", NUM_UNITS * (NUM_UNITS - 1) * (NUM_UNITS - 2),
 			static_cast<double>(duration_cast<microseconds>(total).count()) / 1000000.0);
 	printf("Time per calc = %li us\n", static_cast<long>(duration_cast<microseconds>(total).count())
 											   / (NUM_UNITS * (NUM_UNITS - 1) * (NUM_UNITS - 2)));
 #else
-	printf("Total combats: %i\n", NUM_UNITS * (NUM_UNITS - 1) * (NUM_UNITS - 2));
+	printf("Total combats: %u\n", NUM_UNITS * (NUM_UNITS - 1) * (NUM_UNITS - 2));
 #endif
 
 	for(i = 0; i < NUM_UNITS; ++i) {
