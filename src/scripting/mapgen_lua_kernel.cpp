@@ -40,6 +40,13 @@ static lg::log_domain log_mapgen("mapgen");
 struct lua_State;
 
 
+// Template which allows to push member functions to the lua kernel into lua as C functions, using a shim
+typedef int (mapgen_lua_kernel::*member_callback)(lua_State *);
+
+template <member_callback method>
+int dispatch(lua_State *L) {
+	return ((lua_kernel_base::get_lua_kernel<mapgen_lua_kernel>(L)).*method)(L);
+}
 
 /**
  * Returns a random numer, same interface as math.random.
@@ -196,10 +203,11 @@ static int intf_find_path(lua_State *L)
 }
 
 
-mapgen_lua_kernel::mapgen_lua_kernel()
+mapgen_lua_kernel::mapgen_lua_kernel(const config* vars)
 	: lua_kernel_base()
 	, random_seed_()
 	, default_rng_()
+	, vars_(vars)
 {
 	lua_State *L = mState;
 
@@ -218,6 +226,7 @@ mapgen_lua_kernel::mapgen_lua_kernel()
 		{ "create_map",          &intf_terainmap_create    },
 		{ "default_generate_height_map", &intf_default_generate_height_map },
 		{ "generate_default_map",        &intf_default_generate            },
+		{ "get_variable", &dispatch<&mapgen_lua_kernel::intf_get_variable> },
 		{ nullptr, nullptr }
 	};
 
@@ -244,6 +253,16 @@ void mapgen_lua_kernel::user_config(const char * prog, const config & generator)
 	run_generator(prog, generator);
 }
 
+int mapgen_lua_kernel::intf_get_variable(lua_State *L)
+{
+	if(!vars_) {
+		return 0;
+	}
+
+	char const *m = luaL_checkstring(L, 1);
+	variable_access_const v(m, *vars_);
+	return luaW_pushvariable(L, v) ? 1 : 0;
+}
 std::string mapgen_lua_kernel::create_map(const char * prog, const config & generator, boost::optional<uint32_t> seed) // throws game::lua_error
 {
 	random_seed_ = seed;

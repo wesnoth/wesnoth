@@ -427,7 +427,7 @@ void saved_game::expand_random_scenario()
 			const cursor::setter cursor_setter(cursor::WAIT);
 
 			config scenario_new =
-				random_generate_scenario(starting_point_["scenario_generation"], starting_point_.child("generator"));
+				random_generate_scenario(starting_point_["scenario_generation"], starting_point_.child("generator"), &carryover_.child_or_empty("variables"));
 
 			post_scenario_generation(starting_point_, scenario_new);
 			starting_point_ = std::move(scenario_new);
@@ -448,7 +448,7 @@ void saved_game::expand_random_scenario()
 			const cursor::setter cursor_setter(cursor::WAIT);
 
 			starting_point_["map_data"] =
-				random_generate_map(starting_point_["map_generation"], starting_point_.child("generator"));
+				random_generate_map(starting_point_["map_generation"], starting_point_.child("generator"), &carryover_.child_or_empty("variables"));
 		}
 	}
 }

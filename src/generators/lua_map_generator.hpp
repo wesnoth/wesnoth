@@ -23,7 +23,7 @@
 
 class lua_map_generator : public map_generator {
 public:
-	lua_map_generator(const config & cfg);
+	lua_map_generator(const config & cfg, const config* vars);
 
 	bool allow_user_config() const override { return !user_config_.empty(); }
 
@@ -47,4 +47,5 @@ private:
 	mapgen_lua_kernel lk_;
 
 	config generator_data_;
+	const config* vars_;
 };
