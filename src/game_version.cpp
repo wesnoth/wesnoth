@@ -49,6 +49,11 @@ version_info::version_info()
 {
 }
 
+version_info::version_info(const char* str)
+	: version_info(std::string(str))
+{
+}
+
 version_info::version_info(unsigned int major, unsigned int minor, unsigned int revision_level,
                            char special_separator, const std::string& special)
 	: nums_(3,0), special_(special), special_separator_(special_separator)
