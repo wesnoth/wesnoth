@@ -430,7 +430,7 @@ void saved_game::expand_random_scenario()
 				random_generate_scenario(starting_point_["scenario_generation"], starting_point_.child("generator"));
 
 			post_scenario_generation(starting_point_, scenario_new);
-			starting_point_ = scenario_new;
+			starting_point_ = std::move(scenario_new);
 
 			update_label();
 			set_defaults();
