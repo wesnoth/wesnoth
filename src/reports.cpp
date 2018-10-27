@@ -87,6 +87,20 @@ static std::string flush(std::ostringstream &s)
 	return r;
 }
 
+static const time_of_day get_visible_time_of_day_at(reports::context & rc, const map_location & hex)
+{
+	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
+	if (viewing_team.shrouded(hex)) {
+		// Don't show time on shrouded tiles.
+		return rc.tod().get_time_of_day();
+	} else if (viewing_team.fogged(hex)) {
+		// Don't show illuminated time on fogged tiles.
+		return rc.tod().get_time_of_day(hex);
+	} else {
+		return rc.tod().get_illuminated_time_of_day(rc.units(), rc.map(), hex);
+	}
+}
+
 typedef std::map<std::string, reports::generator_function> static_report_generators;
 static static_report_generators static_generators;
 
@@ -327,14 +341,14 @@ REPORT_GENERATOR(selected_unit_status, rc)
 	return unit_status(rc, u);
 }
 
-static config unit_alignment(reports::context & rc, const unit* u)
+static config unit_alignment(reports::context & rc, const unit* u, const map_location& hex)
 {
 	if (!u) return config();
 	std::ostringstream str, tooltip;
 	const std::string align = unit_type::alignment_description(u->alignment(), u->gender());
 	const std::string align_id = u->alignment().to_string();
-	int cm = combat_modifier(rc.units(), rc.map(), rc.screen().displayed_unit_hex(), u->alignment(),
-			u->is_fearless());
+	const time_of_day effective_tod = get_visible_time_of_day_at(rc, hex);
+	int cm = combat_modifier(effective_tod, u->alignment(), u->is_fearless());
 
 	color_t color = font::weapon_color;
 	if (cm != 0)
@@ -351,12 +365,18 @@ static config unit_alignment(reports::context & rc, const unit* u)
 REPORT_GENERATOR(unit_alignment, rc)
 {
 	const unit *u = get_visible_unit(rc);
-	return unit_alignment(rc, u);
+	const map_location& mouseover_hex = rc.screen().mouseover_hex();
+	const map_location& displayed_unit_hex = rc.screen().displayed_unit_hex();
+	const map_location& hex = mouseover_hex.valid() ? mouseover_hex : displayed_unit_hex;
+	return unit_alignment(rc, u, hex);
 }
 REPORT_GENERATOR(selected_unit_alignment, rc)
 {
 	const unit *u = get_selected_unit(rc);
-	return unit_alignment(rc, u);
+	const map_location& attack_indicator_src = game_display::get_singleton()->get_attack_indicator_src();
+	const map_location& hex_to_show_alignment_at =
+		attack_indicator_src.valid() ? attack_indicator_src : u->get_location();
+	return unit_alignment(rc, u, hex_to_show_alignment_at);
 }
 
 
@@ -655,20 +675,20 @@ static inline const color_t attack_info_percent_color(int resistance)
 	return font::YELLOW_COLOR;
 }
 
-static int attack_info(reports::context & rc, const attack_type &at, config &res, const unit &u, const map_location &displayed_unit_hex)
+static int attack_info(reports::context & rc, const attack_type &at, config &res, const unit &u, const map_location &hex)
 {
 	std::ostringstream str, tooltip;
 	int damage = 0;
 
 	{
-		auto ctx = at.specials_context(unit_const_ptr(&u), displayed_unit_hex, u.side() == rc.screen().playing_side());
+		auto ctx = at.specials_context(unit_const_ptr(&u), hex, u.side() == rc.screen().playing_side());
 		int base_damage = at.damage();
 		int specials_damage = at.modified_damage(false);
 		int damage_multiplier = 100;
 		const_attack_ptr weapon  = at.shared_from_this();
-		int tod_bonus = combat_modifier(rc.units(), rc.map(), displayed_unit_hex, u.alignment(), u.is_fearless());
+		int tod_bonus = combat_modifier(get_visible_time_of_day_at(rc, hex), u.alignment(), u.is_fearless());
 		damage_multiplier += tod_bonus;
-		int leader_bonus = under_leadership(rc.units(), displayed_unit_hex, weapon).first;
+		int leader_bonus = under_leadership(u, hex, weapon);
 		if (leader_bonus != 0)
 			damage_multiplier += leader_bonus;
 
@@ -979,12 +999,14 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 	return res;
 }
 
-static config unit_weapons(reports::context & rc, const unit *u)
+/*
+ * Display the attacks of the displayed unit against the unit passed as argument.
+ * 'hex' is the location the attacker will be at during combat.
+ */
+static config unit_weapons(reports::context & rc, const unit *u, const map_location &hex)
 {
 	config res = config();
 	if ((u != nullptr) && (!u->attacks().empty())) {
-		map_location displayed_unit_hex = rc.screen().displayed_unit_hex();
-
 		const std::string attack_headline = _n("Attack", "Attacks", u->attacks().size());
 
 		add_text(res,  span_color(font::weapon_details_color)
@@ -992,7 +1014,7 @@ static config unit_weapons(reports::context & rc, const unit *u)
 
 		for (const attack_type &at : u->attacks())
 		{
-			attack_info(rc, at, res, *u, displayed_unit_hex);
+			attack_info(rc, at, res, *u, hex);
 		}
 	}
 	return res;
@@ -1000,9 +1022,12 @@ static config unit_weapons(reports::context & rc, const unit *u)
 REPORT_GENERATOR(unit_weapons, rc)
 {
 	const unit *u = get_visible_unit(rc);
+	const map_location& mouseover_hex = rc.screen().mouseover_hex();
+	const map_location& displayed_unit_hex = rc.screen().displayed_unit_hex();
+	const map_location& hex = mouseover_hex.valid() ? mouseover_hex : displayed_unit_hex;
 	if (!u) return config();
 
-	return unit_weapons(rc, u);
+	return unit_weapons(rc, u, hex);
 }
 REPORT_GENERATOR(highlighted_unit_weapons, rc)
 {
@@ -1010,7 +1035,7 @@ REPORT_GENERATOR(highlighted_unit_weapons, rc)
 	const unit *sec_u = get_visible_unit(rc);
 
 	if (!u) return config();
-	if (!sec_u || u == sec_u) return unit_weapons(rc, sec_u);
+	if (!sec_u || u == sec_u) return unit_weapons(rc, sec_u, rc.screen().mouseover_hex());
 
 	map_location highlighted_hex = rc.screen().displayed_unit_hex();
 	map_location attack_loc;
@@ -1018,7 +1043,7 @@ REPORT_GENERATOR(highlighted_unit_weapons, rc)
 		attack_loc = rc.mhb()->current_unit_attacks_from(highlighted_hex);
 
 	if (!attack_loc.valid())
-		return unit_weapons(rc, sec_u);
+		return unit_weapons(rc, sec_u, rc.screen().mouseover_hex());
 
 	return unit_weapons(rc, u, attack_loc, sec_u, false);
 }
@@ -1028,7 +1053,7 @@ REPORT_GENERATOR(selected_unit_weapons, rc)
 	const unit *sec_u = get_visible_unit(rc);
 
 	if (!u) return config();
-	if (!sec_u || u == sec_u) return unit_weapons(rc, u);
+	if (!sec_u || u == sec_u) return unit_weapons(rc, u, u->get_location());
 
 	map_location highlighted_hex = rc.screen().displayed_unit_hex();
 	map_location attack_loc;
@@ -1036,7 +1061,7 @@ REPORT_GENERATOR(selected_unit_weapons, rc)
 		attack_loc = rc.mhb()->current_unit_attacks_from(highlighted_hex);
 
 	if (!attack_loc.valid())
-		return unit_weapons(rc, u);
+		return unit_weapons(rc, u, u->get_location());
 
 	return unit_weapons(rc, u, attack_loc, sec_u, true);
 }
@@ -1098,17 +1123,7 @@ REPORT_GENERATOR(tod_stats, rc)
 static config time_of_day_at(reports::context & rc, const map_location& mouseover_hex)
 {
 	std::ostringstream tooltip;
-	time_of_day tod;
-	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
-	if (viewing_team.shrouded(mouseover_hex)) {
-		// Don't show time on shrouded tiles.
-		tod = rc.tod().get_time_of_day();
-	} else if (viewing_team.fogged(mouseover_hex)) {
-		// Don't show illuminated time on fogged tiles.
-		tod = rc.tod().get_time_of_day(mouseover_hex);
-	} else {
-		tod = rc.tod().get_illuminated_time_of_day(rc.units(), rc.map(), mouseover_hex);
-	}
+	time_of_day tod = get_visible_time_of_day_at(rc, mouseover_hex);
 
 	int b = tod.lawful_bonus;
 
@@ -1149,18 +1164,8 @@ REPORT_GENERATOR(time_of_day, rc)
 static config unit_box_at(reports::context & rc, const map_location& mouseover_hex)
 {
 	std::ostringstream tooltip;
-	time_of_day local_tod;
 	time_of_day global_tod = rc.tod().get_time_of_day();
-	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
-	if (viewing_team.shrouded(mouseover_hex)) {
-		// Don't show time on shrouded tiles.
-		local_tod = global_tod;
-	} else if (viewing_team.fogged(mouseover_hex)) {
-		// Don't show illuminated time on fogged tiles.
-		local_tod = rc.tod().get_time_of_day(mouseover_hex);
-	} else {
-		local_tod = rc.tod().get_illuminated_time_of_day(rc.units(), rc.map(),mouseover_hex);
-	}
+	time_of_day local_tod = get_visible_time_of_day_at(rc, mouseover_hex);
 
 	int bonus = local_tod.lawful_bonus;
 
