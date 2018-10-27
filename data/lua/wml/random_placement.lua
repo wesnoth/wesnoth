@@ -92,7 +92,6 @@ wesnoth.wml_actions.random_placement = function(cfg)
 				return
 			end
 		end
-		wesnoth.wml_actions.command (command)
 	end
 	utils.end_var_scope(variable, variable_previous)
 
