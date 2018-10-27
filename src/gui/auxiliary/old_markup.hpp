@@ -73,6 +73,7 @@ public:
 			label_ = rhs.label_;
 			desc_ = rhs.desc_;
 			default_ = rhs.default_;
+			contained_markup_ = rhs.contained_markup_;
 		}
 		return *this;
 	}
