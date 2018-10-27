@@ -562,8 +562,6 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 
 	if(const config::attribute_value* v = cfg.get("profile")) {
 		set_big_profile((*v).str());
-		adjust_profile(profile);
-		profile_ = profile;
 	}
 
 	if(const config::attribute_value* v = cfg.get("small_profile")) {
