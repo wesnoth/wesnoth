@@ -654,7 +654,6 @@ std::unique_ptr<filter_impl> build_filter(lua_State* L, int res_index, knows_set
 	default:
 		throw "invalid filter key enum";
 	}
-	throw "the compilter says control reaches end of non-void function";
 }
 }
 

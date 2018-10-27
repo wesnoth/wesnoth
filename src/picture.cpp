@@ -629,8 +629,8 @@ static surface load_image_sub_file(const image::locator& loc)
 			std::ostringstream ss;
 			ss << "\n";
 
-			for(const std::string& mod : utils::parenthetical_split(loc.get_modifications(), '~')) {
-				ss << "\t" << mod << "\n";
+			for(const std::string& mod_name : utils::parenthetical_split(loc.get_modifications(), '~')) {
+				ss << "\t" << mod_name << "\n";
 			}
 
 			ERR_CFG << "Failed to apply a modification to an image:\n"
