@@ -27,7 +27,7 @@ function ca_move_to_any_enemy:evaluation(cfg, data)
     local unit, destination
     -- Find a unit that has a path to an space close to an enemy
     for i,u in ipairs(units) do
-        local distance, target = AH.get_closest_enemy({u.x, u.y})
+        local target = AH.get_closest_enemy({u.x, u.y})
         if target then
             unit = u
 

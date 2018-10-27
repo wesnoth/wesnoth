@@ -620,7 +620,7 @@ return {
                 local max_rating = -1
 
                 local enemy_leaders = AH.get_attackable_enemies { canrecruit = 'yes' }
-                local closest_enemy_distance, closest_enemy_location = AH.get_closest_enemy()
+                local closest_enemy = AH.get_closest_enemy()
 
                 for i,c in ipairs(data.castle.locs) do
                     local rating = 0
@@ -629,8 +629,8 @@ return {
                         for j,e in ipairs(enemy_leaders) do
                             rating = rating + 1 / M.distance_between(c[1], c[2], e.x, e.y) ^ 2.
                         end
-                        if closest_enemy_location then
-                            rating = rating + 1 / M.distance_between(c[1], c[2], closest_enemy_location.x, closest_enemy_location.y) ^ 2.
+                        if closest_enemy then
+                            rating = rating + 1 / M.distance_between(c[1], c[2], closest_enemy.x, closest_enemy.y) ^ 2.
                         end
                         if (rating > max_rating) then
                             max_rating, best_hex = rating, { c[1], c[2] }
@@ -657,7 +657,8 @@ return {
             local target_hex = recruit_data.recruit.target_hex
 
             local reference_hex = target_hex[1] and target_hex or best_hex
-            local distance_to_enemy, enemy_location = AH.get_closest_enemy(reference_hex, wesnoth.current.side, { viewing_side = 0 })
+            local enemy_location, distance_to_enemy = AH.get_closest_enemy(reference_hex, wesnoth.current.side, { viewing_side = 0 })
+
             -- If no enemy is on the map, then we first use closest enemy start hex,
             -- and if that does not exist either, a location mirrored w.r.t the center of the map
             if not enemy_location then

@@ -1045,7 +1045,7 @@ function ai_helper.is_attackable_enemy(unit, side, cfg)
 end
 
 function ai_helper.get_closest_enemy(loc, side, cfg)
-    -- Return distance to and location of the enemy closest to @loc, or to the
+    -- Return the enemy closest to @loc and its distance from @loc, or to the
     -- leader of side with number @side if @loc is not specified
     --
     -- Optional parameters:
@@ -1066,16 +1066,16 @@ function ai_helper.get_closest_enemy(loc, side, cfg)
         x, y = loc[1], loc[2]
     end
 
-    local closest_distance, location = math.huge
+    local closest_distance, closest_enemy = math.huge
     for _,enemy in ipairs(enemies) do
         enemy_distance = M.distance_between(x, y, enemy.x, enemy.y)
         if (enemy_distance < closest_distance) then
+            closest_enemy = enemy
             closest_distance = enemy_distance
-            location = { x = enemy.x, y = enemy.y}
         end
     end
 
-    return closest_distance, location
+    return closest_enemy, closest_distance
 end
 
 function ai_helper.has_ability(unit, ability)
