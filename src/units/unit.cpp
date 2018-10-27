@@ -536,8 +536,6 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		set_max_attacks(std::max(0, v->to_int(1)));
 	}
 
-	attacks_left_ = std::max(0, cfg["attacks_left"].to_int(max_attacks_));
-
 	if(const config::attribute_value* v = cfg.get("zoc")) {
 		set_emit_zoc(v->to_bool(level_ > 0));
 	}
@@ -629,12 +627,6 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		set_state(STATE_GUARDIAN, true);
 	}
 
-	if(const config::attribute_value* v = cfg.get("hitpoints")) {
-		hit_points_ = *v;
-	} else {
-		hit_points_ = max_hit_points_;
-	}
-
 	if(const config::attribute_value* v = cfg.get("invulnerable")) {
 		set_state("invulnerable", v->to_bool());
 	}
@@ -642,15 +634,14 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	goto_.set_wml_x(cfg["goto_x"].to_int());
 	goto_.set_wml_y(cfg["goto_y"].to_int());
 
-	if(const config::attribute_value* v = cfg.get("moves")) {
-		movement_ = *v;
-		if(movement_ < 0) {
-			attacks_left_ = 0;
-			movement_ = 0;
-		}
-	} else {
-		movement_ = max_movement_;
-	}
+	attacks_left_ = std::max(0, cfg["attacks_left"].to_int(max_attacks_));
+
+	movement_ = std::max(0, cfg["moves"].to_int(max_movement_));
+	// we allow negative hitpoints, one of the reasons is that a unit
+	// might be stored+unstored during a attack related event before it
+	// dies when it has negative hp and when dont want the event to
+	// change the unit hp when it was not intended.
+	hit_points_ = cfg["hitpoints"].to_int(max_hit_points_);
 
 	experience_ = cfg["experience"];
 	resting_ = cfg["resting"].to_bool();
