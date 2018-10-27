@@ -81,6 +81,7 @@
    * When a recruited unit is fogged, scroll to the recruiting unit and play recruit
      animation. (issue #3577)
    * Fix line breaks in first statistics line in unit type pages in the help. (issue #3256)
+   * Game Load screen gracefully handles savefiles that can't be parsed. (issue #3652)
 
 ## Version 1.14.5
  ### AI
