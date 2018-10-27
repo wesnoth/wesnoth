@@ -116,7 +116,39 @@ private:
 	unit(const unit& u);
 
 	unit();
-
+	enum UNIT_ATTRIBUTE
+	{
+		UA_MAX_HP,
+		UA_MAX_MP,
+		UA_MAX_AP,
+		UA_MAX_XP,
+		UA_IS_HEALTHY,
+		UA_IS_FEARLESS,
+		UA_LEVEL,
+		UA_MOVEMENT_TYPE,
+		UA_ZOC,
+		UA_ADVANCE_TO,
+		UA_ADVANCEMENTS,
+		UA_ALIGNMENT,
+		UA_UNDEAD_VARIATION,
+		//note that UA_ATTACKS only tracks added/deleted attacks, not modified attacks.
+		UA_ATTACKS,
+		UA_PROFILE,
+		UA_SMALL_PROFILE,
+		UA_ABILITIES,
+		UA_UPKEEP,
+		UA_COUNT
+	};
+	void set_attr_changed(UNIT_ATTRIBUTE attr)
+	{
+		changed_attributes_[int(attr)] = true;
+	}
+	bool get_attacks_changed() const;
+	bool get_attr_changed(UNIT_ATTRIBUTE attr) const
+	{
+		return changed_attributes_[int(attr)];
+	}
+	void clear_changed_attributes();
 public:
 	/** Initializes a unit from a config */
 	static unit_ptr create(const config& cfg, bool use_traits = false, const vconfig* vcfg = nullptr)
@@ -162,12 +194,13 @@ public:
 	/** Advances this unit to another type */
 	void advance_to(const unit_type& t, bool use_traits = false);
 
+	using advances_to_t = std::vector<std::string>;
 	/**
 	 * Gets the possible types this unit can advance to on level-up.
 	 *
 	 * @returns                   A list of type IDs this unit may advance to.
 	 */
-	const std::vector<std::string>& advances_to() const
+	const advances_to_t& advances_to() const
 	{
 		return advances_to_;
 	}
@@ -401,6 +434,7 @@ public:
 	/** Sets the alignment of this unit. */
 	void set_alignment(unit_type::ALIGNMENT alignment)
 	{
+		set_attr_changed(UA_ALIGNMENT);
 		alignment_ = alignment;
 	}
 
@@ -429,6 +463,7 @@ public:
 
 	void set_max_hitpoints(int value)
 	{
+		set_attr_changed(UA_MAX_HP);
 		max_hit_points_ = value;
 	}
 
@@ -452,6 +487,7 @@ public:
 
 	void set_max_experience(int value)
 	{
+		set_attr_changed(UA_MAX_XP);
 		max_experience_ = value;
 	}
 
@@ -482,6 +518,7 @@ public:
 	/** Sets the current level of this unit. */
 	void set_level(int level)
 	{
+		set_attr_changed(UA_LEVEL);
 		level_ = level;
 	}
 
@@ -494,6 +531,7 @@ public:
 	/** The ID of the undead variation (ie, dwarf, swimmer) of this unit. */
 	void set_undead_variation(const std::string& value)
 	{
+		set_attr_changed(UA_UNDEAD_VARIATION);
 		undead_variation_ = value;
 	}
 	const std::string& undead_variation() const
@@ -511,6 +549,7 @@ public:
 
 	void set_small_profile(const std::string& value)
 	{
+		set_attr_changed(UA_SMALL_PROFILE);
 		small_profile_ = value;
 	}
 	/**
@@ -523,6 +562,7 @@ public:
 
 	void set_big_profile(const std::string& value)
 	{
+		set_attr_changed(UA_PROFILE);
 		profile_ = value;
 		adjust_profile(profile_);
 	}
@@ -850,6 +890,7 @@ public:
 	template<typename... Args>
 	attack_ptr add_attack(attack_itors::iterator position, Args&&... args)
 	{
+		set_attr_changed(UA_ATTACKS);
 		return *attacks_.emplace(position.base(), new attack_type(std::forward<Args>(args)...));
 	}
 
@@ -887,6 +928,7 @@ public:
 
 	void set_max_attacks(int value)
 	{
+		set_attr_changed(UA_MAX_AP);
 		max_attacks_ = value;
 	}
 
@@ -1127,6 +1169,7 @@ public:
 
 	void set_total_movement(int value)
 	{
+		set_attr_changed(UA_MAX_MP);
 		max_movement_ = value;
 	}
 
@@ -1205,6 +1248,7 @@ public:
 	/** Sets the raw zone-of-control flag. */
 	void set_emit_zoc(bool val)
 	{
+		set_attr_changed(UA_ZOC);
 		emit_zoc_ = val;
 	}
 
@@ -1618,8 +1662,9 @@ public:
 	 * Serializes the current unit metadata values.
 	 *
 	 * @param cfg                 The config to write to.
+	 * @param write_all           set this to false to not write unchanged attributes.
 	 */
-	void write(config& cfg) const;
+	void write(config& cfg, bool write_all = true) const;
 
 	/**
 	 * Mark this unit as clone so it can be inserted to unit_map.
@@ -1765,6 +1810,7 @@ private:
 
 	//Used to check whether the moving units during a move needs to be updated
 	mutable bool appearance_changed_ = true;
+	std::bitset<UA_COUNT> changed_attributes_;
 
 	void parse_upkeep(const config::attribute_value& upkeep);
 	void write_upkeep(config::attribute_value& upkeep) const;

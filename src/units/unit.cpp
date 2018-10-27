@@ -365,6 +365,7 @@ unit::unit(const unit& o)
 	, upkeep_(o.upkeep_)
 	, profile_(o.profile_)
 	, small_profile_(o.small_profile_)
+	, changed_attributes_(o.changed_attributes_)
 	, invisibility_cache_()
 {
 	// Copy the attacks rather than just copying references
@@ -442,6 +443,7 @@ unit::unit()
 	, random_traits_(true)
 	, generate_name_(true)
 	, upkeep_(upkeep_full())
+	, changed_attributes_(0)
 	, invisibility_cache_()
 {
 
@@ -526,7 +528,9 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		}
 	}
 
-	level_ = cfg["level"].to_int(level_);
+	if(const config::attribute_value* v = cfg.get("level")) {
+		set_level(v->to_int(level_));
+	}
 
 	if(const config::attribute_value* v = cfg.get("undead_variation")) {
 		set_undead_variation(v->str());
@@ -561,25 +565,31 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	}
 
 	if(const config::attribute_value* v = cfg.get("profile")) {
-		set_big_profile((*v).str());
+		set_big_profile(v->str());
 	}
 
 	if(const config::attribute_value* v = cfg.get("small_profile")) {
-		set_small_profile((*v).str());
+		set_small_profile(v->str());
 	}
 
-	max_hit_points_ = std::max(1, cfg["max_hitpoints"].to_int(max_hit_points_));
-	max_movement_ = std::max(0, cfg["max_moves"].to_int(max_movement_));
-	max_experience_ = std::max(1, cfg["max_experience"].to_int(max_experience_));
+	if(const config::attribute_value* v = cfg.get("max_hitpoints")) {
+		set_max_hitpoints(std::max(1, v->to_int(max_hit_points_)));
+	}
+	if(const config::attribute_value* v = cfg.get("max_moves")) {
+		set_total_movement(std::max(1, v->to_int(max_movement_)));
+	}
+	if(const config::attribute_value* v = cfg.get("max_experience")) {
+		set_max_experience(std::max(1, v->to_int(max_experience_)));
+	}
 
 	vision_ = cfg["vision"].to_int(vision_);
 	jamming_ = cfg["jamming"].to_int(jamming_);
 
-	std::vector<std::string> temp_advances = utils::split(cfg["advances_to"]);
+	advances_to_t temp_advances = utils::split(cfg["advances_to"]);
 	if(temp_advances.size() == 1 && temp_advances.front() == "null") {
-		advances_to_.clear();
+		set_advances_to(advances_to_t());
 	} else if(temp_advances.size() >= 1 && !temp_advances.front().empty()) {
-		advances_to_ = temp_advances;
+		set_advances_to(temp_advances);
 	}
 
 	if(const config& ai = cfg.child("ai")) {
@@ -588,6 +598,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 
 	// Don't use the unit_type's attacks if this config has its own defined
 	if(config::const_child_itors cfg_range = cfg.child_range("attack")) {
+		set_attr_changed(UA_ATTACKS);
 		attacks_.clear();
 		for(const config& c : cfg_range) {
 			attacks_.emplace_back(new attack_type(c));
@@ -596,6 +607,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 
 	// If cfg specifies [advancement]s, replace this [advancement]s with them.
 	if(cfg.has_child("advancement")) {
+		set_attr_changed(UA_ADVANCEMENTS);
 		this->advancements_.clear();
 		boost::copy(cfg.child_range("advancement"), boost::make_function_output_iterator(ptr_vector_pushback(advancements_)));
 	}
@@ -603,14 +615,30 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	// Don't use the unit_type's abilities if this config has its own defined
 	// Why do we allow multiple [abilities] tags?
 	if(config::const_child_itors cfg_range = cfg.child_range("abilities")) {
+		set_attr_changed(UA_ABILITIES);
 		abilities_.clear();
 		for(const config& abilities : cfg_range) {
 			this->abilities_.append(abilities);
 		}
 	}
 
+	if(const config::attribute_value* v = cfg.get("alignment")) {
+		set_attr_changed(UA_ALIGNMENT);
+		alignment_.parse(v->str());
+	}
+
 	// Adjust the unit's defense, movement, vision, jamming, resistances, and
 	// flying status if this config has its own defined.
+	if(cfg.has_child("movement_costs")
+	|| cfg.has_child("vision_costs")
+	|| cfg.has_child("jamming_costs")
+	|| cfg.has_child("defense")
+	|| cfg.has_child("resistance")
+	|| cfg.has_attribute("flying"))
+	{
+		set_attr_changed(UA_MOVEMENT_TYPE);
+	}
+
 	movement_type_.merge(cfg);
 
 	if(const config& status_flags = cfg.child("status")) {
@@ -650,8 +678,6 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	if(!cfg["recall_cost"].blank()) {
 		recall_cost_ = cfg["recall_cost"].to_int(recall_cost_);
 	}
-
-	alignment_.parse(cfg["alignment"].str());
 
 	generate_name();
 
@@ -989,6 +1015,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	if(resources::game_events) {
 		resources::game_events->add_events(new_type.events(), new_type.id());
 	}
+	clear_changed_attributes();
 }
 
 std::string unit::big_profile() const
@@ -1140,6 +1167,7 @@ const std::vector<std::string> unit::advances_to_translated() const
 
 void unit::set_advances_to(const std::vector<std::string>& advances_to)
 {
+	set_attr_changed(UA_ADVANCE_TO);
 	unit_types.check_types(advances_to);
 	advances_to_ = advances_to;
 }
@@ -1361,6 +1389,7 @@ bool unit::has_ability_by_id(const std::string& ability) const
 
 void unit::remove_ability_by_id(const std::string& ability)
 {
+	set_attr_changed(UA_ABILITIES);
 	config::all_children_iterator i = this->abilities_.ordered_begin();
 	while (i != this->abilities_.ordered_end()) {
 		if(i->cfg["id"] == ability) {
@@ -1371,7 +1400,17 @@ void unit::remove_ability_by_id(const std::string& ability)
 	}
 }
 
-void unit::write(config& cfg) const
+bool unit::get_attacks_changed() const
+{
+	for(const auto& a_ptr : attacks_) {
+		if(a_ptr->get_changed()) {
+			return true;
+		}
+		
+	}
+	return false;
+}
+void unit::write(config& cfg, bool write_all) const
 {
 	config back;
 	auto write_subtag = [&](const std::string& key, const config& child)
@@ -1385,10 +1424,15 @@ void unit::write(config& cfg) const
 		}
 	};
 
-	movement_type_.write(cfg);
-	cfg["small_profile"] = small_profile_;
-	cfg["profile"] = profile_;
-
+	if(write_all || get_attr_changed(UA_MOVEMENT_TYPE)) {
+		movement_type_.write(cfg);
+	}
+	if(write_all || get_attr_changed(UA_SMALL_PROFILE)) {
+		cfg["small_profile"] = small_profile_;
+	}
+	if(write_all || get_attr_changed(UA_PROFILE)) {
+		cfg["profile"] = profile_;
+	}
 	if(description_ != type().unit_description()) {
 		cfg["description"] = description_;
 	}
@@ -1408,14 +1452,17 @@ void unit::write(config& cfg) const
 	write_upkeep(cfg["upkeep"]);
 
 	cfg["hitpoints"] = hit_points_;
-	cfg["max_hitpoints"] = max_hit_points_;
-
+	if(write_all || get_attr_changed(UA_MAX_HP)) {
+		cfg["max_hitpoints"] = max_hit_points_;
+	}
 	cfg["image_icon"] = type().icon();
 	cfg["image"] = type().image();
 	cfg["random_traits"] = random_traits_;
 	cfg["generate_name"] = generate_name_;
 	cfg["experience"] = experience_;
-	cfg["max_experience"] = max_experience_;
+	if(write_all || get_attr_changed(UA_MAX_XP)) {
+		cfg["max_experience"] = max_experience_;
+	}
 	cfg["recall_cost"] = recall_cost_;
 
 	cfg["side"] = side_;
@@ -1463,42 +1510,58 @@ void unit::write(config& cfg) const
 	cfg["goto_y"] = goto_.wml_y();
 
 	cfg["moves"] = movement_;
-	cfg["max_moves"] = max_movement_;
+	if(write_all || get_attr_changed(UA_MAX_MP)) {
+		cfg["max_moves"] = max_movement_;
+	}
 	cfg["vision"] = vision_;
 	cfg["jamming"] = jamming_;
 
 	cfg["resting"] = resting_;
 
-	cfg["advances_to"] = utils::join(advances_to_);
+	if(write_all || get_attr_changed(UA_ADVANCE_TO)) {
+		cfg["advances_to"] = utils::join(advances_to_);
+	}
 
 	cfg["race"] = race_->id();
 	cfg["language_name"] = type_name_;
 	cfg["undead_variation"] = undead_variation_;
-	cfg["level"] = level_;
-	cfg["alignment"] = alignment_.to_string();
+	if(write_all || get_attr_changed(UA_LEVEL)) {
+		cfg["level"] = level_;
+	}
+	if(write_all || get_attr_changed(UA_ALIGNMENT)) {
+		cfg["alignment"] = alignment_.to_string();
+	}
 	cfg["flag_rgb"] = flag_rgb_;
 	cfg["unrenamable"] = unrenamable_;
 
 	cfg["attacks_left"] = attacks_left_;
-	cfg["max_attacks"] = max_attacks_;
-	cfg["zoc"] = emit_zoc_;
-
+	if(write_all || get_attr_changed(UA_MAX_AP)) {
+		cfg["max_attacks"] = max_attacks_;
+	}
+	if(write_all || get_attr_changed(UA_ZOC)) {
+		cfg["zoc"] = emit_zoc_;
+	}
 	cfg["hidden"] = hidden_;
 
-	cfg.clear_children("attack");
-	for(attack_ptr i : attacks_) {
-		i->write(cfg.add_child("attack"));
+	if(write_all || get_attr_changed(UA_ATTACKS) || get_attacks_changed()) {
+		cfg.clear_children("attack");
+		for(attack_ptr i : attacks_) {
+			i->write(cfg.add_child("attack"));
+		}
 	}
 
 	cfg["cost"] = unit_value_;
 
 	write_subtag("modifications", modifications_);
-	write_subtag("abilities", abilities_);
-
-	cfg.clear_children("advancement");
-	for(const config& advancement : this->advancements_) {
-		if(!advancement.empty()) {
-			cfg.add_child("advancement", advancement);
+	if(write_all || get_attr_changed(UA_ABILITIES)) {
+		write_subtag("abilities", abilities_);
+	}
+	if(write_all || get_attr_changed(UA_ADVANCEMENTS)) {
+		cfg.clear_children("advancement");
+		for(const config& advancement : this->advancements_) {
+			if(!advancement.empty()) {
+				cfg.add_child("advancement", advancement);
+			}
 		}
 	}
 	cfg.append(back);
@@ -1715,6 +1778,7 @@ std::vector<config> unit::get_modification_advances() const
 
 void unit::set_advancements(std::vector<config> advancements)
 {
+	set_attr_changed(UA_ADVANCEMENTS);
 	this->advancements_.clear();
 	for(config& advancement : advancements) {
 		this->advancements_.push_back(new config());
@@ -1817,32 +1881,35 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 {
 	appearance_changed_ = true;
 	if(apply_to == "fearless") {
+		set_attr_changed(UA_IS_FEARLESS);
 		is_fearless_ = effect["set"].to_bool(true);
 	} else if(apply_to == "healthy") {
+		set_attr_changed(UA_IS_HEALTHY);
 		is_healthy_ = effect["set"].to_bool(true);
 	} else if(apply_to == "profile") {
 		if(const config::attribute_value* v = effect.get("portrait")) {
-			std::string portrait = (*v).str();
-			adjust_profile(portrait);
-			profile_ = portrait;
+			set_big_profile((*v).str());
 		}
 
 		if(const config::attribute_value* v = effect.get("small_portrait")) {
-			small_profile_ = (*v).str();
+			set_small_profile((*v).str());
 		}
 
 		if(const config::attribute_value* v = effect.get("description")) {
 			description_ = *v;
 		}
 	} else if(apply_to == "new_attack") {
+		set_attr_changed(UA_ATTACKS);
 		attacks_.emplace_back(new attack_type(effect));
 	} else if(apply_to == "remove_attacks") {
+		set_attr_changed(UA_ATTACKS);
 		auto iter = std::remove_if(attacks_.begin(), attacks_.end(), [&effect](attack_ptr a) {
 			return a->matches_filter(effect);
 		});
 
 		attacks_.erase(iter, attacks_.end());
 	} else if(apply_to == "attack") {
+		set_attr_changed(UA_ATTACKS);
 		for(attack_ptr a : attacks_) {
 			a->apply_modification(effect);
 		}
@@ -1866,19 +1933,19 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 
 		if(!set_total.empty()) {
 			if(set_total.back() == '%') {
-				max_hit_points_ = lexical_cast_default<int>(set_total)*max_hit_points_/100;
+				set_max_hitpoints(lexical_cast_default<int>(set_total)*max_hit_points_/100);
 			} else {
-				max_hit_points_ = lexical_cast_default<int>(set_total);
+				set_max_hitpoints(lexical_cast_default<int>(set_total));
 			}
 		}
 
 		if(!increase_total.empty()) {
 			// A percentage on the end means increase by that many percent
-			max_hit_points_ = utils::apply_modifier(max_hit_points_, increase_total);
+			set_max_hitpoints(utils::apply_modifier(max_hit_points_, increase_total));
 		}
 
 		if(max_hit_points_ < 1)
-			max_hit_points_ = 1;
+			set_max_hitpoints(1);
 
 		if(effect["heal_full"].to_bool()) {
 			heal_fully();
@@ -1901,10 +1968,10 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		const std::string& increase = effect["increase"];
 
 		if(!increase.empty()) {
-			max_movement_ = utils::apply_modifier(max_movement_, increase, 1);
+			set_total_movement(utils::apply_modifier(max_movement_, increase, 1));
 		}
 
-		max_movement_ = effect["set"].to_int(max_movement_);
+		set_total_movement(effect["set"].to_int(max_movement_));
 
 		if(movement_ > max_movement_) {
 			movement_ = max_movement_;
@@ -1947,14 +2014,14 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 
 		if(set.empty() == false) {
 			if(set.back() == '%') {
-				max_experience_ = lexical_cast_default<int>(set)*max_experience_/100;
+				set_max_experience(lexical_cast_default<int>(set)*max_experience_/100);
 			} else {
-				max_experience_ = lexical_cast_default<int>(set);
+				set_max_experience(lexical_cast_default<int>(set));
 			}
 		}
 
 		if(increase.empty() == false) {
-			max_experience_ = utils::apply_modifier(max_experience_, increase, 1);
+			set_max_experience(utils::apply_modifier(max_experience_, increase, 1));
 		}
 	} else if(apply_to == upkeep_loyal::type()) {
 		upkeep_ = upkeep_loyal();
@@ -1975,30 +2042,37 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 	//       combines the next five options (the movetype effects).
 	} else if(apply_to == "movement_costs") {
 		if(const config& ap = effect.child("movement_costs")) {
+			set_attr_changed(UA_MOVEMENT_TYPE);
 			movement_type_.get_movement().merge(ap, effect["replace"].to_bool());
 		}
 	} else if(apply_to == "vision_costs") {
 		if(const config& ap = effect.child("vision_costs")) {
+			set_attr_changed(UA_MOVEMENT_TYPE);
 			movement_type_.get_vision().merge(ap, effect["replace"].to_bool());
 		}
 	} else if(apply_to == "jamming_costs") {
 		if(const config& ap = effect.child("jamming_costs")) {
+			set_attr_changed(UA_MOVEMENT_TYPE);
 			movement_type_.get_jamming().merge(ap, effect["replace"].to_bool());
 		}
 	} else if(apply_to == "defense") {
 		if(const config& ap = effect.child("defense")) {
+			set_attr_changed(UA_MOVEMENT_TYPE);
 			movement_type_.get_defense().merge(ap, effect["replace"].to_bool());
 		}
 	} else if(apply_to == "resistance") {
 		if(const config& ap = effect.child("resistance")) {
+			set_attr_changed(UA_MOVEMENT_TYPE);
 			movement_type_.get_resistances().merge(ap, effect["replace"].to_bool());
 		}
 	} else if(apply_to == "zoc") {
-		if(const config::attribute_value* v = effect.get("value")) {
+		if(const config::attribute_value* v = effect.get("value")) {			
+			set_attr_changed(UA_ZOC);
 			emit_zoc_ = v->to_bool();
 		}
 	} else if(apply_to == "new_ability") {
 		if(const config& ab_effect = effect.child("abilities")) {
+			set_attr_changed(UA_ABILITIES);
 			config to_append;
 			for(const config::any_child &ab : ab_effect.all_children_range()) {
 				if(!has_ability_by_id(ab.cfg["id"])) {
@@ -2054,6 +2128,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 	} else if(apply_to == "new_advancement") {
 		const std::string& types = effect["types"];
 		const bool replace = effect["replace"].to_bool(false);
+		set_attr_changed(UA_ADVANCEMENTS);
 
 		if(!types.empty()) {
 			if(replace) {
@@ -2075,6 +2150,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 	} else if(apply_to == "remove_advancement") {
 		const std::string& types = effect["types"];
 		const std::string& amlas = effect["amlas"];
+		set_attr_changed(UA_ADVANCEMENTS);
 
 		std::vector<std::string> temp_advances = utils::parenthetical_split(types, ',');
 		std::vector<std::string>::iterator iter;
@@ -2095,13 +2171,13 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 	} else if(apply_to == "alignment") {
 		unit_type::ALIGNMENT new_align;
 		if(new_align.parse(effect["set"])) {
-			alignment_ = new_align;
+			set_alignment(new_align);
 		}
 	} else if(apply_to == "max_attacks") {
 		const std::string& increase = effect["increase"];
 
 		if(!increase.empty()) {
-			max_attacks_ = utils::apply_modifier(max_attacks_, increase, 1);
+			set_max_attacks(utils::apply_modifier(max_attacks_, increase, 1));
 		}
 	} else if(apply_to == "recall_cost") {
 		const std::string& increase = effect["increase"];
@@ -2468,6 +2544,7 @@ std::string unit::image_mods() const
 // Called by the Lua API after resetting an attack pointer.
 bool unit::remove_attack(attack_ptr atk)
 {
+	set_attr_changed(UA_ATTACKS);
 	auto iter = std::find(attacks_.begin(), attacks_.end(), atk);
 	if(iter == attacks_.end()) {
 		return false;
@@ -2536,6 +2613,14 @@ void unit::parse_upkeep(const config::attribute_value& upkeep)
 void unit::write_upkeep(config::attribute_value& upkeep) const
 {
 	upkeep = boost::apply_visitor(upkeep_type_visitor(), upkeep_);
+}
+
+void unit::clear_changed_attributes()
+{
+	changed_attributes_.reset();
+	for(const auto& a_ptr : attacks_) {
+		a_ptr->set_changed(false);	
+	}
 }
 
 // Filters unimportant stats from the unit config and returns a checksum of
@@ -2642,3 +2727,5 @@ void swap(unit& lhs, unit& rhs)
 {
 	lhs.swap(rhs);
 }
+
+

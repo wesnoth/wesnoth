@@ -53,18 +53,18 @@ public:
 	double defense_weight() const { return defense_weight_; }
 	const config &specials() const { return specials_; }
 
-	void set_name(const t_string& value) { description_  = value; }
-	void set_id(const std::string& value) { id_ = value; }
-	void set_type(const std::string& value) { type_ = value; }
-	void set_icon(const std::string& value) { icon_ = value; }
-	void set_range(const std::string& value) { range_ = value; }
-	void set_accuracy(int value) { accuracy_ = value; }
-	void set_parry(int value) { parry_ = value; }
-	void set_damage(int value) { damage_ = value; }
-	void set_num_attacks(int value) { num_attacks_ = value; }
-	void set_attack_weight(double value) { attack_weight_ = value; }
-	void set_defense_weight(double value) { defense_weight_ = value; }
-	void set_specials(config value) { specials_ = value; }
+	void set_name(const t_string& value) { description_  = value; set_changed(true); }
+	void set_id(const std::string& value) { id_ = value; set_changed(true); }
+	void set_type(const std::string& value) { type_ = value; set_changed(true); }
+	void set_icon(const std::string& value) { icon_ = value; set_changed(true); }
+	void set_range(const std::string& value) { range_ = value; set_changed(true); }
+	void set_accuracy(int value) { accuracy_ = value; set_changed(true); }
+	void set_parry(int value) { parry_ = value; set_changed(true); }
+	void set_damage(int value) { damage_ = value; set_changed(true); }
+	void set_num_attacks(int value) { num_attacks_ = value; set_changed(true); }
+	void set_attack_weight(double value) { attack_weight_ = value; set_changed(true); }
+	void set_defense_weight(double value) { defense_weight_ = value; set_changed(true); }
+	void set_specials(config value) { specials_ = value; set_changed(true); }
 
 	// In action/attack.cpp
 	std::pair<int, bool> combat_ability(const std::string& ability, int abil_value = 0, bool backstab_pos = false) const;
@@ -151,6 +151,14 @@ public:
 	specials_context_t specials_context_for_listing(bool attacking = true) const {
 		return specials_context_t(*this, attacking);
 	}
+	void set_changed(bool value)
+	{
+		changed_ = value;
+	}
+	bool get_changed() const
+	{
+		return changed_;
+	}
 private:
 
 	t_string description_;
@@ -168,6 +176,7 @@ private:
 	int movement_used_;
 	int parry_;
 	config specials_;
+	bool changed_;
 };
 
 using attack_list = std::vector<attack_ptr>;

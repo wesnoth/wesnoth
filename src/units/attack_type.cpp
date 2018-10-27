@@ -60,7 +60,8 @@ attack_type::attack_type(const config& cfg) :
 	accuracy_(cfg["accuracy"]),
 	movement_used_(cfg["movement_used"].to_int(100000)),
 	parry_(cfg["parry"]),
-	specials_(cfg.child_or_empty("specials"))
+	specials_(cfg.child_or_empty("specials")),
+	changed_(true)
 {
 	if (description_.empty())
 		description_ = translation::egettext(id_.c_str());
@@ -213,6 +214,7 @@ bool attack_type::apply_modification(const config& cfg)
 	if( !matches_filter(cfg) )
 		return false;
 
+	set_changed(true);
 	const std::string& set_name = cfg["set_name"];
 	const t_string& set_desc = cfg["set_description"];
 	const std::string& set_type = cfg["set_type"];
