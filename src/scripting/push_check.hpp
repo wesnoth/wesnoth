@@ -394,6 +394,6 @@ lua_check_impl::remove_constref<T> luaW_table_get_def(lua_State *L, int index, u
 		return def;
 	}
 	T res =  lua_check_impl::lua_to_or_default<lua_check_impl::remove_constref<T>>(L, -1, def);
-	lua_pop(L, -1);
+	lua_pop(L, 1);
 	return res;
 }
