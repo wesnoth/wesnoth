@@ -28,6 +28,7 @@
      animation. (issue #3577)
    * Fix line breaks in first statistics line in unit type pages in the help. (issue #3256)
    * Don't show in the sidebar the time of day schedule of a shrouded hex. (issue #3638)
+   * Game Load screen gracefully handles savefiles that can't be parsed. (issue #3652)
 
 ## Version 1.14.5
  ### AI
