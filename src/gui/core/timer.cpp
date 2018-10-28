@@ -19,8 +19,10 @@
 
 #include <SDL_timer.h>
 
-#include <map>
-#include <mutex>
+#include <unordered_map>
+
+#include <boost/thread/locks.hpp>
+#include <boost/thread/shared_mutex.hpp>
 
 namespace gui2
 {
@@ -40,70 +42,32 @@ struct timer
 static size_t next_timer_id = 0;
 
 /** The active timers. */
-static std::map<size_t, timer>& get_timers()
+static std::unordered_map<size_t, timer>& get_timers()
 {
-	static std::map<size_t, timer>* ptimers = new std::map<size_t, timer>();
+	static auto ptimers = new std::unordered_map<size_t, timer>();
 	return *ptimers;
 }
-/** 
-	The id of the event being executed, 0 if none.
-	NOTE: it is possible that multiple timers are executed at the same time
-	      if one of the timer starts an event loop for example if its handler
-		  shows a dialog. In that case code that relies on this breaks. This
-		  could probably fixed my making this a list/stack of ids.
-*/
-static size_t executing_id = 0;
 
-std::mutex timers_mutex;
+// R/W lock can be converted from Boost to std in C++17.
+boost::shared_mutex timers_mutex;
 
-/** Did somebody try to remove the timer during its execution? */
-static bool executing_id_removed = false;
+typedef boost::shared_lock<boost::shared_mutex> read_lock_guard;
+typedef boost::unique_lock<boost::shared_mutex> write_lock_guard;
 
-/**
- * Helper to make removing a timer in a callback safe.
- *
- * Upon creation it sets the executing id and clears the remove request flag.
- *
- * If an remove_timer() is called for the id being executed it requests a
- * remove the timer and exits remove_timer().
- *
- * Upon destruction it tests whether there was a request to remove the id and
- * does so. It also clears the executing id. It leaves the remove request flag
- * since the execution function needs to know whether or not the event was
- * removed.
- */
-class executor
-{
-public:
-	executor(size_t id)
-	{
-		executing_id = id;
-		executing_id_removed = false;
-	}
-
-	~executor()
-	{
-		const size_t id = executing_id;
-		executing_id = 0;
-		if(executing_id_removed) {
-			remove_timer(id);
-		}
-	}
-};
 
 extern "C" {
 
 static uint32_t timer_callback(uint32_t, void* id)
 {
 	DBG_GUI_E << "Pushing timer event in queue.\n";
-	// iTunes still reports a couple of crashes here. Cannot see a problem yet.
 
 	Uint32 result;
 	{
-		std::lock_guard<std::mutex> lock(timers_mutex);
+		// iTunes reported several crashes here, when it was a lock_guard<mutex>. 
+		// This means timer_callback is called from a thread that already holds timers_mutex. How can this be?..
+		read_lock_guard lock(timers_mutex);
 
-		std::map<size_t, timer>::iterator itor
-				= get_timers().find(reinterpret_cast<size_t>(id));
+		auto itor = get_timers().find(reinterpret_cast<size_t>(id));
 		if(itor == get_timers().end()) {
 			return 0;
 		}
@@ -124,6 +88,18 @@ static uint32_t timer_callback(uint32_t, void* id)
 
 } // extern "C"
 
+static size_t get_next_timer_id()
+{
+	size_t next_id;
+	write_lock_guard lock(timers_mutex);
+
+	do {
+		next_id = ++next_timer_id;
+	} while(next_id == 0 || get_timers().count(next_id) > 0);
+
+	return next_id;
+}
+
 size_t add_timer(const uint32_t interval,
 				 const std::function<void(size_t id)>& callback,
 				 const bool repeat)
@@ -133,16 +109,10 @@ size_t add_timer(const uint32_t interval,
 	DBG_GUI_E << "Adding timer.\n";
 
 	timer timer;
-	{
-		std::lock_guard<std::mutex> lock(timers_mutex);
+	size_t next_id = get_next_timer_id();
 
-		do {
-			++next_timer_id;
-		} while(next_timer_id == 0 || get_timers().count(next_timer_id) > 0);
-
-		timer.sdl_id = SDL_AddTimer(
-				interval, timer_callback, reinterpret_cast<void*>(next_timer_id));
-	}
+	timer.sdl_id = SDL_AddTimer(
+			interval, timer_callback, reinterpret_cast<void*>(next_id));
 
 	if(timer.sdl_id == 0) {
 		WRN_GUI_E << "Failed to create an sdl timer." << std::endl;
@@ -156,33 +126,35 @@ size_t add_timer(const uint32_t interval,
 	timer.callback = callback;
 
 	{
-		std::lock_guard<std::mutex> lock(timers_mutex);
+		write_lock_guard lock(timers_mutex);
 
-		get_timers().emplace(next_timer_id, timer);
+		get_timers().emplace(next_id, timer);
 	}
 
-	DBG_GUI_E << "Added timer " << next_timer_id << ".\n";
-	return next_timer_id;
+	DBG_GUI_E << "Added timer " << next_id << ".\n";
+	return next_id;
 }
 
 bool remove_timer(const size_t id)
 {
 	DBG_GUI_E << "Removing timer " << id << ".\n";
 
-	std::lock_guard<std::mutex> lock(timers_mutex);
+	SDL_TimerID sdl_id;
+	{
+		write_lock_guard lock(timers_mutex);
 
-	std::map<size_t, timer>::iterator itor = get_timers().find(id);
-	if(itor == get_timers().end()) {
-		LOG_GUI_E << "Can't remove timer since it no longer exists.\n";
-		return false;
+		auto itor = get_timers().find(id);
+		if(itor == get_timers().end()) {
+			LOG_GUI_E << "Can't remove timer since it no longer exists.\n";
+			return false;
+		}
+
+		sdl_id = itor->second.sdl_id;
+
+		get_timers().erase(itor);
 	}
 
-	if(id == executing_id) {
-		executing_id_removed = true;
-		return true;
-	}
-
-	if(!SDL_RemoveTimer(itor->second.sdl_id)) {
+	if(!SDL_RemoveTimer(sdl_id)) {
 		/*
 		 * This can happen if the caller of the timer didn't get the event yet
 		 * but the timer has already been fired. This due to the fact that a
@@ -194,7 +166,6 @@ bool remove_timer(const size_t id)
 		 */
 		DBG_GUI_E << "The timer is already out of the SDL timer list.\n";
 	}
-	get_timers().erase(itor);
 	return true;
 }
 
@@ -204,9 +175,9 @@ bool execute_timer(const size_t id)
 
 	std::function<void(size_t)> callback = nullptr;
 	{
-		std::lock_guard<std::mutex> lock(timers_mutex);
+		write_lock_guard lock(timers_mutex);
 
-		std::map<size_t, timer>::iterator itor = get_timers().find(id);
+		auto itor = get_timers().find(id);
 		if(itor == get_timers().end()) {
 			LOG_GUI_E << "Can't execute timer since it no longer exists.\n";
 			return false;
