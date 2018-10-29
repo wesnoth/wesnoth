@@ -1,5 +1,4 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
-local LS = wesnoth.require "location_set"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 local MAISD = wesnoth.require "ai/micro_ais/micro_ai_self_data.lua"
 local M = wesnoth.map
@@ -55,28 +54,8 @@ function ca_hang_out:execution(cfg)
     -- Use [micro_ai][avoid] tag with priority over [ai][avoid].
     -- If neither is given, default to all castle terrain.
     local avoid_tag = wml.get_child(cfg, "avoid")
-    local avoid_map
-    if avoid_tag then
-        avoid_map = LS.of_pairs(wesnoth.get_locations(avoid_tag))
-    else
-        local ai_tag = wml.get_child(wesnoth.sides[wesnoth.current.side].__cfg, 'ai')
-        for aspect in wml.child_range(ai_tag, 'aspect') do
-            if (aspect.id == 'avoid') then
-                local facet = wml.get_child(aspect, 'facet')
-                if facet or aspect.name ~= "composite_aspect" then
-                    -- If there's a [facet] child, it's set as a composite aspect,
-                    -- with at least one facet.
-                    -- But it might not be a composite aspect; it could be
-                    -- a Lua aspect or a standard aspect.
-                    avoid_map = LS.of_pairs(ai.aspects.avoid)
-                    break
-                end
-            end
-        end
-    end
-    if not avoid_map then
-        avoid_map = LS.of_pairs(wesnoth.get_locations { terrain = 'C*,C*^*,*^C*' })
-    end
+    local default_avoid_tag = { terrain = 'C*,C*^*,*^C*' }
+    local avoid_map = AH.get_avoid_map(ai, avoid_tag, true, default_avoid_tag)
 
     local max_rating, best_hex, best_unit = - math.huge
     for _,unit in ipairs(units) do

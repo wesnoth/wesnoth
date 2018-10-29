@@ -1,5 +1,4 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
-local LS = wesnoth.require "location_set"
 local T = wml.tag
 local M = wesnoth.map
 
@@ -15,20 +14,6 @@ local M = wesnoth.map
 --   parts from the code.
 
 local ca_fast_attack_utils = {}
-
-function ca_fast_attack_utils.get_avoid_map(cfg)
-    -- Get map of locations to be avoided.
-    -- Use [micro_ai][avoid] tag with priority over [ai][avoid].
-    -- If neither is given, return an empty location set.
-
-    local avoid_tag = wml.get_child(cfg, "avoid")
-
-    if not avoid_tag then
-        return LS.of_pairs(ai.aspects.avoid)
-    end
-
-    return LS.of_pairs(wesnoth.get_locations(avoid_tag))
-end
 
 local function attack_filter(which, filter, is_leader)
     if (is_leader == nil) then is_leader = false end

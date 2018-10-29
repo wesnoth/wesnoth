@@ -1,4 +1,3 @@
-local LS = wesnoth.require "location_set"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local M = wesnoth.map
@@ -61,7 +60,8 @@ function ca_healer_move:evaluation(cfg, data)
     local enemy_attack_map = BC.get_attack_map(enemies)
     for _,healee in ipairs(healees_MP) do healee:to_map() end
 
-    local avoid_map = LS.of_pairs(ai.aspects.avoid)
+    -- Other options of adding avoid zones may be added later
+    local avoid_map = AH.get_avoid_map(ai, nil, true)
 
     local max_rating = - math.huge
     for _,healer in ipairs(healers) do
