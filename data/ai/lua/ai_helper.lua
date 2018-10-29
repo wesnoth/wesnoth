@@ -898,6 +898,55 @@ function ai_helper.split_location_list_to_strings(list)
     return locsx, locsy
 end
 
+function ai_helper.get_avoid_map(ai, avoid_tag, use_ai_aspect, default_avoid_tag)
+    -- Returns a location set of hexes to be avoided by the AI. Information about
+    -- these hexes can be provided in different ways:
+    -- 1. If @avoid_tag is passed, we always use that. An example of this is when a
+    --    Micro AI configuration contains an [avoid] tag
+    -- 2. If @use_ai_aspect (boolean) is set, we use the avoid aspect of the default AI.
+    -- 3. @default_avoid_tag is used when @avoid_tag is not passed and either
+    --    @use_ai_aspect == false or the default AI aspect is not set.
+
+    if avoid_tag then
+        return LS.of_pairs(wesnoth.get_locations(avoid_tag))
+    end
+
+    if use_ai_aspect then
+        -- We need to be careful here as ai.aspects.avoid is an empty table both
+        -- when the aspect is not set and when no hexes match the [avoid] tag.
+        -- If @default_avoid_tag is not set, we can simply return the content of
+        -- the aspect, it does not matter why it is an empty array (if it is).
+        -- However, if @default_avoid_tag is set, we need to check whether the
+        -- [avoid] tag is set for the default AI or not.
+
+        if (not default_avoid_tag) then
+            return LS.of_pairs(ai.aspects.avoid)
+        else
+            local ai_tag = wml.get_child(wesnoth.sides[wesnoth.current.side].__cfg, 'ai')
+            for aspect in wml.child_range(ai_tag, 'aspect') do
+                if (aspect.id == 'avoid') then
+                    local facet = wml.get_child(aspect, 'facet')
+                    if facet or aspect.name ~= "composite_aspect" then
+                        -- If there's a [facet] child, it's set as a composite aspect,
+                        -- with at least one facet.
+                        -- But it might not be a composite aspect; it could be
+                        -- a Lua aspect or a standard aspect.
+                        return LS.of_pairs(ai.aspects.avoid)
+                    end
+                end
+            end
+        end
+    end
+
+    -- If we got here, that means neither @avoid_tag nor the default AI [avoid] aspect were used
+    if default_avoid_tag then
+        return LS.of_pairs(wesnoth.get_locations(default_avoid_tag))
+    else
+        return LS.create()
+    end
+end
+
+
 --------- Unit related helper functions ----------
 
 function ai_helper.get_live_units(filter)
