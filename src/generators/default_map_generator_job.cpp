@@ -108,8 +108,8 @@ namespace {
 		static std::string terrain;
 		terrain = t_translation::write_terrain_code(c);
 		double res = getNoPathValue();
-		if(const config &child = cfg_.find_child("road_cost", "terrain", terrain)) {
-			res = child["cost"].to_double();
+		if(auto child = cfg_.find_child("road_cost", "terrain", terrain)) {
+			res = (*child)["cost"].to_double();
 		}
 
 		cache_.emplace(c, res);
@@ -628,17 +628,17 @@ static map_location place_village(const t_translation::ter_map& map,
 
 		const t_translation::terrain_code t = map[i.x][i.y];
 		const std::string str = t_translation::write_terrain_code(t);
-		if(const config &child = cfg.find_child("village", "terrain", str)) {
+		if(auto child = cfg.find_child("village", "terrain", str)) {
 			tcode_list_cache::iterator l = adj_liked_cache.find(t);
 			t_translation::ter_list *adjacent_liked;
 			if(l != adj_liked_cache.end()) {
 				adjacent_liked = &(l->second);
 			} else {
-				adj_liked_cache[t] = t_translation::read_list(child["adjacent_liked"].str());
+				adj_liked_cache[t] = t_translation::read_list((*child)["adjacent_liked"].str());
 				adjacent_liked = &(adj_liked_cache[t]);
 			}
 
-			int rating = child["rating"];
+			int rating = (*child)["rating"];
 			adjacent_loc_array_t adj;
 			get_adjacent_tiles(map_location(i.x,i.y),adj.data());
 			for(std::size_t n = 0; n < adj.size(); ++n) {
@@ -715,7 +715,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	VALIDATE(is_even(data.width), _("Random maps with an odd width aren't supported."));
 
 	// Try to find configuration for castles
-	const config& castle_config = cfg.child("castle");
+	const config* castle_config = cfg.child("castle");
 
 	int ticks = SDL_GetTicks();
 
@@ -729,8 +729,8 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	config naming;
 
 	if(cfg.has_child("naming")) {
-		naming = game_config_.child("naming");
-		naming.append_attributes(cfg.child("naming"));
+		naming = game_config_.child_or_empty("naming");
+		naming.append_attributes(cfg.child_or_empty("naming"));
 	}
 
 	// If the [naming] child is empty, we cannot provide good names.
@@ -939,7 +939,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		 * Castle configuration tag contains a 'valid_terrain' attribute which is a
 		 * list of terrains that the castle may appear on.
 		 */
-		const t_translation::ter_list list = t_translation::read_list(castle_config["valid_terrain"].str());
+		const t_translation::ter_list list = t_translation::read_list((*castle_config)["valid_terrain"].str());
 
 		const is_valid_terrain terrain_tester(terrain, list);
 
@@ -950,7 +950,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 			const int min_y = data.height/3 + 3;
 			const int max_x = (data.width/3)*2 - 4;
 			const int max_y = (data.height/3)*2 - 4;
-			int min_distance = castle_config["min_distance"];
+			int min_distance = (*castle_config)["min_distance"];
 
 			map_location best_loc;
 			int best_ranking = 0;
@@ -1063,8 +1063,8 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 			}
 
 			// Find the configuration which tells us what to convert this tile to, to make it into a road.
-			const config& child = cfg.find_child("road_cost", "terrain", t_translation::write_terrain_code(terrain[x][y]));
-			if(child.empty()){
+			const config* child = cfg.find_child("road_cost", "terrain", t_translation::write_terrain_code(terrain[x][y]));
+			if(!child || child->empty()){
 				continue;
 			}
 
@@ -1075,7 +1075,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 			 * '\' will be used if the road is going south east-north west
 			 * The terrain will be left unchanged otherwise (if there is no clear direction).
 			 */
-			const std::string& convert_to_bridge = child["convert_to_bridge"];
+			const std::string& convert_to_bridge = (*child)["convert_to_bridge"];
 			if(!convert_to_bridge.empty()) {
 				if(step == rt.steps.begin() || step+1 == rt.steps.end()) {
 					continue;
@@ -1127,7 +1127,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 			}
 
 			// Just a plain terrain substitution for a road
-			const std::string& convert_to = child["convert_to"];
+			const std::string& convert_to = (*child)["convert_to"];
 			if(!convert_to.empty()) {
 				const t_translation::terrain_code letter = t_translation::read_terrain_code(convert_to);
 				if(misc_labels != nullptr && terrain[x][y] != letter && name_count++ == name_frequency && !on_bridge) {
@@ -1265,10 +1265,10 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		std::set<std::string> used_names;
 		tcode_list_cache adj_liked_cache;
 
-		config village_naming = game_config_.child("village_naming");
+		config village_naming = game_config_.child_or_empty("village_naming");
 
 		if(cfg.has_child("village_naming")) {
-			village_naming.append_attributes(cfg.child("village_naming"));
+			village_naming.append_attributes(*cfg.child("village_naming"));
 		}
 
 		// If the [village_naming] child is empty, we cannot provide good names.
@@ -1293,7 +1293,8 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 
 				const std::string str = t_translation::write_terrain_code(terrain[res.x][res.y]);
 
-				const std::string& convert_to = cfg.find_child("village", "terrain", str)["convert_to"].str();
+				// TODO: What if the tag does not exist?
+				const std::string& convert_to = (*cfg.find_child("village", "terrain", str))["convert_to"].str();
 				if(convert_to.empty()) {
 					continue;
 				}

@@ -110,8 +110,8 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 		if(data.has_child("reject") || data.has_attribute("version")) {
 			std::string version;
 
-			if(const config& reject = data.child("reject")) {
-				version = reject["accepted_versions"].str();
+			if(auto reject = data.child("reject")) {
+				version = (*reject)["accepted_versions"].str();
 			} else {
 				// Backwards-compatibility "version" attribute
 				version = data["version"].str();
@@ -126,9 +126,9 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 		}
 
 		// Check for "redirect" messages
-		if(const config& redirect = data.child("redirect")) {
-			host = redirect["host"].str();
-			port = redirect["port"].to_int(15000);
+		if(auto redirect = data.child("redirect")) {
+			host = (*redirect)["host"].str();
+			port = (*redirect)["port"].to_int(15000);
 
 			if(shown_hosts.find(hostpair(host, port)) != shown_hosts.end()) {
 				throw wesnothd_error(_("Server-side redirect loop"));
@@ -171,15 +171,15 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 
 		if(data.has_child("error")) {
 			std::string error_message;
-			config* error = &data.child("error");
+			config* error = data.child("error");
 			error_message = (*error)["message"].str();
 			throw wesnothd_rejected_client_error(error_message);
 		}
 
 		// The only message we should get here is the admin authentication message.
 		// It's sent after [join_lobby] and before the initial gamelist.
-		if(const config& message = data.child("message")) {
-			preferences::parse_admin_authentication(message["sender"], message["message"]);
+		if(auto message = data.child("message")) {
+			preferences::parse_admin_authentication((*message)["sender"], (*message)["message"]);
 		}
 
 		// Continue if we did not get a direction to login
@@ -200,9 +200,9 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 
 			gui2::dialogs::loading_screen::progress(loading_stage::login_response);
 
-			config* warning = &data.child("warning");
+			config* warning = data.child("warning");
 
-			if(*warning) {
+			if(warning) {
 				std::string warning_msg;
 
 				if((*warning)["warning_code"] == MP_NAME_INACTIVE_WARNING) {
@@ -224,10 +224,10 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 				}
 			}
 
-			config* error = &data.child("error");
+			config* error = data.child("error");
 
 			// ... and get us out of here if the server did not complain
-			if(!*error) break;
+			if(!error) break;
 
 			do {
 				std::string password = preferences::password(host, login);
@@ -291,10 +291,10 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 
 					gui2::dialogs::loading_screen::progress(loading_stage::login_response);
 
-					error = &data.child("error");
+					error = data.child("error");
 
 					// ... and get us out of here if the server is happy now
-					if(!*error) break;
+					if(!error) break;
 				}
 
 				// Providing a password either was not attempted because we did not
@@ -365,7 +365,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 			// Somewhat hacky...
 			// If we broke out of the do-while loop above error
 			// is still going to be nullptr
-			if(!*error) break;
+			if(!error) break;
 		} // end login loop
 
 		if(data.has_child("join_lobby")) {
@@ -516,8 +516,8 @@ bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::stri
 
 	// We use a loop here to allow returning to the lobby if you, say, cancel game creation.
 	while(true) {
-		if(const config& cfg = helper->game_config.child("lobby_music")) {
-			for(const config& i : cfg.child_range("music")) {
+		if(auto cfg = helper->game_config.child("lobby_music")) {
+			for(const config& i : cfg->child_range("music")) {
 				sound::play_music_config(i);
 			}
 
@@ -721,8 +721,8 @@ void start_local_game_commandline(const config& game_config, saved_game& state, 
 		parameters.mp_era = *cmdline_opts.multiplayer_era;
 	}
 
-	if(const config& cfg_era = game_config.find_child("era", "id", parameters.mp_era)) {
-		state.classification().era_define = cfg_era["define"].str();
+	if(auto cfg_era = game_config.find_child("era", "id", parameters.mp_era)) {
+		state.classification().era_define = (*cfg_era)["define"].str();
 	} else {
 		std::cerr << "Could not find era '" << parameters.mp_era << "'\n";
 		return;
@@ -733,8 +733,8 @@ void start_local_game_commandline(const config& game_config, saved_game& state, 
 		parameters.name = *cmdline_opts.multiplayer_scenario;
 	}
 
-	if(const config& cfg_multiplayer = game_config.find_child("multiplayer", "id", parameters.name)) {
-		state.classification().scenario_define = cfg_multiplayer["define"].str();
+	if(auto cfg_multiplayer = game_config.find_child("multiplayer", "id", parameters.name)) {
+		state.classification().scenario_define = (*cfg_multiplayer)["define"].str();
 	} else {
 		std::cerr << "Could not find [multiplayer] '" << parameters.name << "'\n";
 		return;

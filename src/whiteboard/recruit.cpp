@@ -67,7 +67,7 @@ recruit::recruit(std::size_t team_index, bool hidden, const std::string& unit_na
 recruit::recruit(const config& cfg, bool hidden)
 	: action(cfg,hidden)
 	, unit_name_(cfg["unit_name_"])
-	, recruit_hex_(cfg.child("recruit_hex_")["x"],cfg.child("recruit_hex_")["y"], wml_loc())
+	, recruit_hex_(cfg.child_or_empty("recruit_hex_"))
 	, temp_unit_()
 	, fake_unit_()
 	, cost_(0)

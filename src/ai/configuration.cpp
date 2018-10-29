@@ -43,15 +43,19 @@ void configuration::init(const config &game_config)
 	era_ai_configurations_.clear();
 	mod_ai_configurations_.clear();
 
-	const config &ais = game_config.child("ais");
-	default_config_ = ais.child("default_config");
-	if (!default_config_) {
+	const config* ais = game_config.child("ais");
+	if(!ais) {
+		// TODO: Error message?
+	}
+	if(auto def = ais->child("default_config")) {
+		default_config_ = *def;
+	} else {
 		ERR_AI_CONFIGURATION << "Missing AI [default_config]. Therefore, default_config_ set to empty." << std::endl;
 		default_config_.clear();
 	}
 
 
-	for (const config &ai_configuration : ais.child_range("ai")) {
+	for (const config &ai_configuration : ais->child_range("ai")) {
 		const std::string &id = ai_configuration["id"];
 		if (id.empty()){
 
@@ -205,7 +209,8 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 	DBG_AI_CONFIGURATION << "side " << side << ": config contains:"<< std::endl << cfg << std::endl;
 
 	//insert default config at the beginning
-	if (default_config_) {
+	// TODO: Is this correct? Or should we remove the error case altogether?
+	if(!default_config_.empty()) {
 		DBG_AI_CONFIGURATION << "side "<< side <<": applying default configuration" << std::endl;
 		cfg.add_child_at("ai",default_config_,0);
 	} else {
@@ -234,15 +239,15 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 			// No point in warning about Lua or standard aspects lacking [default]
 			continue;
 		}
-		if (!aspect_cfg.child("default")) {
+		if (!aspect_cfg.has_child("default")) {
 			WRN_AI_CONFIGURATION << "side "<< side <<": aspect with id=["<<aspect_cfg["id"]<<"] lacks default config facet!" <<std::endl;
 			continue;
 		}
 		aspect_cfg.merge_children("default");
-		config& dflt = aspect_cfg.child("default");
-		if (dflt.has_child("value")) {
-			while (dflt.child_count("value") > 1) {
-				dflt.remove_child("value", 0);
+		config* dflt = aspect_cfg.child("default");
+		if(dflt->has_child("value")) {
+			while (dflt->child_count("value") > 1) {
+				dflt->remove_child("value", 0);
 			}
 		}
 	}

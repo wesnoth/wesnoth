@@ -121,10 +121,10 @@ size_lock_definition::resolution::resolution(const config& cfg)
 	static config dummy("draw");
 	state.emplace_back(dummy);
 
-	const config& child = cfg.child("grid");
+	const config* child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(child);
+	grid = std::make_shared<builder_grid>(*child);
 }
 
 /*WIKI
@@ -160,7 +160,7 @@ builder_size_lock::builder_size_lock(const config& cfg)
 	, content_(nullptr)
 {
 	VALIDATE(cfg.has_child("widget"), _("No widget defined."));
-	content_ = create_widget_builder(cfg.child("widget"));
+	content_ = create_widget_builder(*cfg.child("widget"));
 }
 
 widget* builder_size_lock::build() const

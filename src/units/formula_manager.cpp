@@ -32,12 +32,12 @@ void unit_formula_manager::read(const config & ai)
 	unit_loop_formula_ = ai["loop_formula"].str();
 	unit_priority_formula_ = ai["priority"].str();
 
-	if (const config &ai_vars = ai.child("vars"))
+	if(auto ai_vars = ai.child("vars"))
 	{
 		formula_vars_ = std::make_shared<wfl::map_formula_callable>();
 
 		wfl::variant var;
-		for (const config::attribute &i : ai_vars.attribute_range()) {
+		for (const config::attribute &i : ai_vars->attribute_range()) {
 			var.serialize_from_string(i.second);
 			formula_vars_->add(i.first, var);
 		}

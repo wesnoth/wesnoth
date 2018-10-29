@@ -44,9 +44,9 @@ namespace gui2
  *
  */
 state_definition::state_definition(const config& cfg)
-	: canvas_cfg_(cfg ? cfg.child("draw") : cfg)
+	: canvas_cfg_(cfg.empty() ? cfg.child_or_empty("draw") : cfg)
 {
-	VALIDATE(canvas_cfg_, _("No state or draw section defined."));
+	VALIDATE(!canvas_cfg_.empty(), _("No state or draw section defined."));
 }
 
 /*WIKI

@@ -124,7 +124,7 @@ protected:
 			if (force)
 				return get_node(cfg.child_or_add(next.root_), next, true);
 			else if (cfg.has_child(next.root_))
-				return get_node(cfg.child(next.root_), next);
+				return get_node(*cfg.child(next.root_), next);
 			else
 				return nullptr;
 		}
@@ -136,7 +136,7 @@ protected:
 		name_space next = ns.next();
 		if (next) {
 			if (cfg.has_child(next.root_))
-				return get_node(cfg.child(next.root_), next);
+				return get_node(*cfg.child(next.root_), next);
 			else
 				return nullptr;
 		}

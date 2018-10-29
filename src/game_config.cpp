@@ -297,7 +297,8 @@ void load_config(const config &v)
 	default_victory_music = utils::split(v["default_victory_music"].str());
 	default_defeat_music  = utils::split(v["default_defeat_music"].str());
 
-	if(const config& i = v.child("colors")){
+	if(auto pcfg = v.child("colors")){
+		const config& i = *pcfg;
 		using namespace game_config::colors;
 
 		moved_orb_color    = i["moved_orb_color"].str();
@@ -313,7 +314,8 @@ void load_config(const config &v)
 	show_partial_orb  = v["show_partly_orb"].to_bool(true);
 	show_unmoved_orb  = v["show_unmoved_orb"].to_bool(true);
 
-	if(const config& i = v.child("images")){
+	if(auto pcfg = v.child("images")){
+		const config& i = *pcfg;
 		using namespace game_config::images;
 
 		game_title            = i["game_title"].str();
@@ -401,7 +403,8 @@ void load_config(const config &v)
         server_list.push_back(sinf);
 	}
 
-	if(const config& s = v.child("sounds")) {
+	if(auto pcfg = v.child("sounds")) {
+		const config& s = *pcfg;
 		using namespace game_config::sounds;
 
 		const auto load_attribute = [](const config& c, const std::string& key, std::string& member) {
@@ -423,7 +426,8 @@ void load_config(const config &v)
 		load_attribute(s, "ready_for_start",  ready_for_start);
 		load_attribute(s, "game_has_begun",   game_has_begun);
 
-		if(const config & ss = s.child("status")) {
+		if(auto pcfg2 = s.child("status")) {
+			const config& ss = *pcfg;
 			using namespace game_config::sounds::status;
 
 			load_attribute(ss, "poisoned",  poisoned);

@@ -622,7 +622,7 @@ void chatbox::process_room_join(const ::config& data)
 	if(r) {
 		if(player == preferences::login()) {
 			if(const auto& members = data.child("members")) {
-				r->process_room_members(members);
+				r->process_room_members(*members);
 			}
 		} else {
 			r->add_member(player);
@@ -643,7 +643,7 @@ void chatbox::process_room_join(const ::config& data)
 			assert(r);
 
 			if(const auto& members = data.child("members")) {
-				r->process_room_members(members);
+				r->process_room_members(*members);
 			}
 
 			switch_to_window(t);
@@ -691,12 +691,12 @@ void chatbox::process_room_query_response(const ::config& data)
 			add_active_window_message("server", message);
 		}
 
-		if(const ::config& rooms = data.child("rooms")) {
+		if(auto rooms = data.child("rooms")) {
 			// TODO: this should really open a nice join room dialog instead
 			std::stringstream ss;
 			ss << "Rooms:";
 
-			for(const auto & r : rooms.child_range("room")) {
+			for(const auto & r : rooms->child_range("room")) {
 				ss << " " << r["name"];
 			}
 
@@ -708,10 +708,10 @@ void chatbox::process_room_query_response(const ::config& data)
 				add_chat_room_message_received(room, "server", message);
 			}
 
-			if(const ::config& members = data.child("members")) {
+			if(auto members = data.child("members")) {
 				mp::room_info* r = lobby_info_->get_room(room);
 				assert(r);
-				r->process_room_members(members);
+				r->process_room_members(*members);
 				if(r == active_window_room()) {
 					active_window_changed_callback_();
 				}
@@ -765,16 +765,16 @@ void chatbox::process_message(const ::config& data, bool whisper /*= false*/)
 
 void chatbox::process_network_data(const ::config& data)
 {
-	if(const ::config& message = data.child("message")) {
-		process_message(message);
-	} else if(const ::config& whisper = data.child("whisper")) {
-		process_message(whisper, true);
-	} else if(const ::config& room_join = data.child("room_join")) {
-		process_room_join(room_join);
-	} else if(const ::config& room_part = data.child("room_part")) {
-		process_room_part(room_part);
-	} else if(const ::config& room_query_response = data.child("room_query_response")) {
-		process_room_query_response(room_query_response);
+	if(auto message = data.child("message")) {
+		process_message(*message);
+	} else if(auto whisper = data.child("whisper")) {
+		process_message(*whisper, true);
+	} else if(auto room_join = data.child("room_join")) {
+		process_room_join(*room_join);
+	} else if(auto room_part = data.child("room_part")) {
+		process_room_part(*room_part);
+	} else if(auto room_query_response = data.child("room_query_response")) {
+		process_room_query_response(*room_query_response);
 	}
 }
 
@@ -797,13 +797,13 @@ chatbox_definition::chatbox_definition(const config& cfg)
 chatbox_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid()
 {
-	state.emplace_back(cfg.child("background"));
-	state.emplace_back(cfg.child("foreground"));
+	state.emplace_back(cfg.child_or_empty("background"));
+	state.emplace_back(cfg.child_or_empty("foreground"));
 
-	const config& child = cfg.child("grid");
+	const config* child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(child);
+	grid = std::make_shared<builder_grid>(*child);
 }
 // }---------- BUILDER -----------{
 

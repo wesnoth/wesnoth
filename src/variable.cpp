@@ -251,8 +251,8 @@ std::size_t vconfig::count_children(const std::string& key) const
  */
 vconfig vconfig::child(const std::string& key) const
 {
-	if (const config &natural = cfg_->child(key)) {
-		return vconfig(natural, cache_);
+	if (auto natural = cfg_->child(key)) {
+		return vconfig(*natural, cache_);
 	}
 	for (const config &ins : cfg_->child_range("insert_tag"))
 	{
@@ -523,9 +523,7 @@ void scoped_xy_unit::activate()
 
 void scoped_weapon_info::activate()
 {
-	if (data_) {
-		store(data_);
-	}
+	store(data_);
 }
 
 void scoped_recall_unit::activate()

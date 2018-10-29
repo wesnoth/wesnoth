@@ -500,8 +500,8 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	facing_ = map_location::parse_direction(cfg["facing"]);
 	if(facing_ == map_location::NDIRECTIONS) facing_ = static_cast<map_location::DIRECTION>(randomness::rng::default_instance().get_random_int(0, map_location::NDIRECTIONS-1));
 
-	if(const config& mods = cfg.child("modifications")) {
-		modifications_ = mods;
+	if(auto mods = cfg.child("modifications")) {
+		modifications_ = *mods;
 	}
 
 	generate_name_ = cfg["generate_name"].to_bool(true);
@@ -514,8 +514,8 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		overlays_.clear();
 	}
 
-	if(const config& variables = cfg.child("variables")) {
-		variables_ = variables;
+	if(auto variables = cfg.child("variables")) {
+		variables_ = *variables;
 	}
 
 	if(const config::attribute_value* v = cfg.get("race")) {
@@ -582,8 +582,8 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		advances_to_ = temp_advances;
 	}
 
-	if(const config& ai = cfg.child("ai")) {
-		formula_man_->read(ai);
+	if(auto ai = cfg.child("ai")) {
+		formula_man_->read(*ai);
 	}
 
 	// Don't use the unit_type's attacks if this config has its own defined
@@ -613,8 +613,8 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	// flying status if this config has its own defined.
 	movement_type_.merge(cfg);
 
-	if(const config& status_flags = cfg.child("status")) {
-		for(const config::attribute &st : status_flags.attribute_range()) {
+	if(auto status_flags = cfg.child("status")) {
+		for(const config::attribute &st : status_flags->attribute_range()) {
 			if(st.second.to_bool()) {
 				set_state(st.first, true);
 			}
@@ -1181,7 +1181,7 @@ void unit::expire_modifications(const std::string& duration)
 		// Looping in reverse since we may delete the current modification.
 		for(int j = modifications_.child_count(mod_name)-1; j >= 0; --j)
 		{
-			const config& mod = modifications_.child(mod_name, j);
+			const config& mod = *modifications_.child(mod_name, j);
 
 			if(mod_duration_match(mod["duration"], duration)) {
 				// If removing this mod means reverting the unit's type:
@@ -1974,33 +1974,33 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 	// Note: It would not be hard to define a new "applies_to=" that
 	//       combines the next five options (the movetype effects).
 	} else if(apply_to == "movement_costs") {
-		if(const config& ap = effect.child("movement_costs")) {
-			movement_type_.get_movement().merge(ap, effect["replace"].to_bool());
+		if(auto ap = effect.child("movement_costs")) {
+			movement_type_.get_movement().merge(*ap, effect["replace"].to_bool());
 		}
 	} else if(apply_to == "vision_costs") {
-		if(const config& ap = effect.child("vision_costs")) {
-			movement_type_.get_vision().merge(ap, effect["replace"].to_bool());
+		if(auto ap = effect.child("vision_costs")) {
+			movement_type_.get_vision().merge(*ap, effect["replace"].to_bool());
 		}
 	} else if(apply_to == "jamming_costs") {
-		if(const config& ap = effect.child("jamming_costs")) {
-			movement_type_.get_jamming().merge(ap, effect["replace"].to_bool());
+		if(auto ap = effect.child("jamming_costs")) {
+			movement_type_.get_jamming().merge(*ap, effect["replace"].to_bool());
 		}
 	} else if(apply_to == "defense") {
-		if(const config& ap = effect.child("defense")) {
-			movement_type_.get_defense().merge(ap, effect["replace"].to_bool());
+		if(auto ap = effect.child("defense")) {
+			movement_type_.get_defense().merge(*ap, effect["replace"].to_bool());
 		}
 	} else if(apply_to == "resistance") {
-		if(const config& ap = effect.child("resistance")) {
-			movement_type_.get_resistances().merge(ap, effect["replace"].to_bool());
+		if(auto ap = effect.child("resistance")) {
+			movement_type_.get_resistances().merge(*ap, effect["replace"].to_bool());
 		}
 	} else if(apply_to == "zoc") {
 		if(const config::attribute_value* v = effect.get("value")) {
 			emit_zoc_ = v->to_bool();
 		}
 	} else if(apply_to == "new_ability") {
-		if(const config& ab_effect = effect.child("abilities")) {
+		if(auto ab_effect = effect.child("abilities")) {
 			config to_append;
-			for(const config::any_child &ab : ab_effect.all_children_range()) {
+			for(const config::any_child &ab : ab_effect->all_children_range()) {
 				if(!has_ability_by_id(ab.cfg["id"])) {
 					to_append.add_child(ab.key, ab.cfg);
 				}
@@ -2008,8 +2008,8 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			this->abilities_.append(to_append);
 		}
 	} else if(apply_to == "remove_ability") {
-		if(const config& ab_effect = effect.child("abilities")) {
-			for(const config::any_child &ab : ab_effect.all_children_range()) {
+		if(auto ab_effect = effect.child("abilities")) {
+			for(const config::any_child &ab : ab_effect->all_children_range()) {
 				remove_ability_by_id(ab.cfg["id"]);
 			}
 		}
@@ -2157,9 +2157,9 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 	std::vector<t_string> effects_description;
 	for(const config& effect : mod.child_range("effect")) {
 		// Apply SUF.
-		if(const config& afilter = effect.child("filter")) {
+		if(auto afilter = effect.child("filter")) {
 			assert(resources::filter_con);
-			if(!unit_filter(vconfig(afilter)).matches(*this, loc_)) {
+			if(!unit_filter(vconfig(*afilter)).matches(*this, loc_)) {
 				continue;
 			}
 		}

@@ -94,18 +94,6 @@ class config
 	friend bool operator==(const config& a, const config& b);
 	friend struct config_implementation;
 
-	static config invalid;
-
-	/**
-	 * Raises an exception if @a this is not valid.
-	 */
-	void check_valid() const;
-
-	/**
-	 * Raises an exception if @a this or @a cfg is not valid.
-	 */
-	void check_valid(const config &cfg) const;
-
 public:
 	// Create an empty node.
 	config();
@@ -136,9 +124,6 @@ public:
 
 	// Verifies that the string can be used as an attribute name
 	static bool valid_attribute(config_key_type name);
-
-	explicit operator bool() const
-	{ return this != &invalid; }
 
 	typedef std::vector<std::unique_ptr<config>> child_list;
 	typedef std::map<std::string, child_list
@@ -338,54 +323,43 @@ public:
 	const config & child_or_empty(config_key_type key) const;
 
 	/**
-	 * Returns the nth child with the given @a key, or
-	 * a reference to an invalid config if there is none.
-	 * @note A negative @a n accesses from the end of the object.
-	 *       For instance, -1 is the index of the last child.
+	 * Returns the first child with the given @a key, or the alt config if there is none.
 	 */
-	config &child(config_key_type key, int n = 0);
+	const config& child_or(config_key_type key, const config& alt) const;
 
 	/**
 	 * Returns the nth child with the given @a key, or
-	 * a reference to an invalid config if there is none.
+	 * nullptr if there is none.
 	 * @note A negative @a n accesses from the end of the object.
 	 *       For instance, -1 is the index of the last child.
 	 */
-	const config& child(config_key_type key, int n = 0) const
+	config* child(config_key_type key, int n = 0);
+
+	/**
+	 * Returns the nth child with the given @a key, or
+	 * nullptr if there is none.
+	 * @note A negative @a n accesses from the end of the object.
+	 *       For instance, -1 is the index of the last child.
+	 */
+	const config* child(config_key_type key, int n = 0) const
 	{ return const_cast<config *>(this)->child(key, n); }
-	/**
-	 * Returns a mandatory child node.
-	 *
-	 * If the child is not found a @ref wml_exception is thrown.
-	 *
-	 * @pre                       parent[0] == '['
-	 * @pre                       parent[parent.size() - 1] == ']'
-	 *
-	 * @param key                 The key of the child item to return.
-	 * @param parent              The section in which the child should reside.
-	 *                            This is only used for error reporting.
-	 *
-	 * @returns                   The wanted child node.
-	 */
-	config& child(config_key_type key, const std::string& parent);
 
 	/**
-	 * Returns a mandatory child node.
-	 *
-	 * If the child is not found a @ref wml_exception is thrown.
-	 *
-	 * @pre                       parent[0] == '['
-	 * @pre                       parent[parent.size() - 1] == ']'
-	 *
-	 * @param key                 The key of the child item to return.
-	 * @param parent              The section in which the child should reside.
-	 *                            This is only used for error reporting.
-	 *
-	 * @returns                   The wanted child node.
+	 * Returns the nth child with the given @a key, or
+	 * throws if there is none.
+	 * @note A negative @a n accesses from the end of the object.
+	 *       For instance, -1 is the index of the last child.
 	 */
-	const config& child(
-		config_key_type key
-			, const std::string& parent) const;
+	config& child_checked(config_key_type key, int n = 0);
+
+	/**
+	 * Returns the nth child with the given @a key, or
+	 * throws if there is none.
+	 * @note A negative @a n accesses from the end of the object.
+	 *       For instance, -1 is the index of the last child.
+	 */
+	const config& child_checked(config_key_type key, int n = 0) const
+	{ return const_cast<config *>(this)->child_checked(key, n); }
 
 	config& add_child(config_key_type key);
 	config& add_child(config_key_type key, const config& val);
@@ -444,10 +418,66 @@ public:
 	}
 
 	/**
+	 * Returns a reference to the attribute with the given @a key.
+	 * Throws if it does not exist.
+	 */
+	attribute_value& at(config_key_type key);
+
+	/**
+	 * Returns a reference to the attribute with the given @a key.
+	 * Throws if it does not exist.
+	 */
+	const attribute_value& at(config_key_type key) const;
+
+#ifdef USE_HETEROGENOUS_LOOKUPS
+	/**
+	* Returns a reference to the attribute with the given @a key.
+	* Creates it if it does not exist.
+	*/
+	attribute_value& at(const std::string& key)
+	{
+		return at(config_key_type(key));
+	}
+
+	/**
+	* Returns a reference to the attribute with the given @a key
+	* or to a dummy empty attribute if it does not exist.
+	*/
+	const attribute_value& at(const std::string& key) const
+	{
+		return at(config_key_type(key));
+	}
+#endif
+
+	/**
+	* Returns a reference to the attribute with the given @a key.
+	* Creates it if it does not exist.
+	*/
+	attribute_value& at(const char* key)
+	{
+		return at(config_key_type(key));
+	}
+
+	/**
+	* Returns a reference to the attribute with the given @a key
+	* or to a dummy empty attribute if it does not exist.
+	*/
+	const attribute_value& at(const char* key) const
+	{
+		return at(config_key_type(key));
+	}
+
+	/**
 	 * Returns a pointer to the attribute with the given @a key
 	 * or nullptr if it does not exist.
 	 */
 	const attribute_value *get(config_key_type key) const;
+
+	/**
+	 * Returns a pointer to the attribute with the given @a key
+	 * or an empty value if it does not exist.
+	 */
+	const attribute_value& get_or_empty(config_key_type key) const;
 
 	/**
 	 * Function to handle backward compatibility
@@ -495,12 +525,30 @@ public:
 
 	/**
 	 * Returns the first child of tag @a key with a @a name attribute
-	 * containing @a value.
+	 * containing @a value, or nullptr if it does not exist.
 	 */
-	config& find_child(config_key_type key, const std::string &name,
+	config* find_child(config_key_type key, const std::string &name,
 		const std::string &value);
+	/**
+	 * Returns the first child of tag @a key with a @a name attribute
+	 * containing @a value, or an empty config if it does not exist.
+	 */
+	const config& find_child_opt(config_key_type key, const std::string &name,
+		const std::string &value) const;
+	/**
+	 * Returns the first child of tag @a key with a @a name attribute
+	 * containing @a value. Throws if it does not exist.
+	 */
+	config& find_child_checked(config_key_type key, const std::string &name,
+		const std::string &value);
+	/**
+	 * Returns the first child of tag @a key with a @a name attribute
+	 * containing @a value. Throws if it does not exist.
+	 */
+	const config& find_child_checked(config_key_type key, const std::string &name,
+		const std::string &value) const;
 
-	const config& find_child(config_key_type key, const std::string &name,
+	const config* find_child(config_key_type key, const std::string &name,
 		const std::string &value) const
 	{ return const_cast<config *>(this)->find_child(key, name, value); }
 

@@ -562,7 +562,8 @@ void variable_mode_controller::show_array(tree_view_node& node)
 		std::size_t n_start = var.find_last_of('[') + 1;
 		std::size_t n_len = var.size() - n_start - 1;
 		int n = std::stoi(var.substr(n_start, n_len));
-		model().set_data(config_to_string(vars().child(var.substr(1, n_start - 3), n)));
+		// TODO: What if the child is missing?
+		model().set_data(config_to_string(*vars().child(var.substr(1, n_start - 3), n)));
 	}
 }
 
@@ -597,7 +598,8 @@ void event_mode_controller::show_list(tree_view_node& node, bool is_wmi)
 void event_mode_controller::show_event(tree_view_node& node, bool is_wmi)
 {
 	int n = node.describe_path().back();
-	model().set_data(config_to_string(events.child(is_wmi ? "menu_item" : "event", n)));
+	// TODO: What if the child is missing?
+	model().set_data(config_to_string(*events.child(is_wmi ? "menu_item" : "event", n)));
 }
 
 static stuff_list_adder add_unit_entry(stuff_list_adder& progress, const unit& u, const display_context& dc)

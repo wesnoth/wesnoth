@@ -105,12 +105,10 @@ manager::manager() :
 	for (const std::string &c : utils::split(preferences::get("completed_campaigns"))) {
 		completed_campaigns[c]; // create the elements
 	}
-	if (const config &ccc = preferences::get_child("completed_campaigns")) {
-		for (const config &cc : ccc.child_range("campaign")) {
-			std::set<std::string> &d = completed_campaigns[cc["name"]];
-			std::vector<std::string> nd = utils::split(cc["difficulty_levels"]);
-			std::copy(nd.begin(), nd.end(), std::inserter(d, d.begin()));
-		}
+	for(const config &cc : preferences::get_child("completed_campaigns").child_range("campaign")) {
+		std::set<std::string> &d = completed_campaigns[cc["name"]];
+		std::vector<std::string> nd = utils::split(cc["difficulty_levels"]);
+		std::copy(nd.begin(), nd.end(), std::inserter(d, d.begin()));
 	}
 
 	const std::vector<std::string> v (utils::split(preferences::get("encountered_units")));
@@ -119,8 +117,6 @@ manager::manager() :
 	const t_translation::ter_list terrain (t_translation::read_list(preferences::get("encountered_terrain_list")));
 	encountered_terrains_set.insert(terrain.begin(), terrain.end());
 
-	if (const config &history = preferences::get_child("history"))
-	{
 /* Structure of the history
 	[history]
 		[history_id]
@@ -128,11 +124,9 @@ manager::manager() :
 				message = foobar
 			[/line]
 */
-		for (const config::any_child &h : history.all_children_range())
-		{
-			for (const config &l : h.cfg.child_range("line")) {
-				history_map[h.key].push_back(l["message"]);
-			}
+	for(const config::any_child &h : preferences::get_child("history").all_children_range()) {
+		for(const config &l : h.cfg.child_range("line")) {
+			history_map[h.key].push_back(l["message"]);
 		}
 	}
 }
@@ -571,14 +565,7 @@ const config& options()
 		return option_values;
 	}
 
-	if (!preferences::get_child("options")) {
-		// It may be an invalid config, which would cause problems in
-		// multiplayer_create, so let's replace it with an empty but valid
-		// config
-		option_values.clear();
-	} else {
-		option_values = preferences::get_child("options");
-	}
+	option_values = preferences::get_child("options");
 
 	options_initialized = true;
 

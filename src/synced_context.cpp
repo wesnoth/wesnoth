@@ -364,7 +364,8 @@ config synced_context::ask_server_choice(const server_choice& sch)
 				//we can proceed without getting OOS in this case, but allowing this would allow a "player chan choose their attack results in mp" cheat
 				replay::process_error("wrong from_side or side_invalid this could mean someone wants to cheat\n");
 			}
-			return action->child(sch.name());
+			// Already checked the child exists, so we know this won't give nullptr
+			return *action->child(sch.name());
 		}
 	}
 }

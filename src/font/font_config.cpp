@@ -86,13 +86,13 @@ namespace
 bool add_font_to_fontlist(const config &fonts_config,
 	std::vector<font::subset_descriptor>& fontlist, const std::string& name)
 {
-	const config &font = fonts_config.find_child("font", "name", name);
+	auto font = fonts_config.find_child("font", "name", name);
 	if (!font) {
 		return false;
 	}
 	//DBG_FT << "Adding a font record: " << font.debug() << std::endl;
 
-	fontlist.push_back(font::subset_descriptor(font));
+	fontlist.push_back(font::subset_descriptor(*font));
 
 	return true;
 }
@@ -145,12 +145,12 @@ bool load_font_config()
 		return false;
 	}
 
-	const config &fonts_config = cfg.child("fonts");
+	auto fonts_config = cfg.child("fonts");
 	if (!fonts_config)
 		return false;
 
 	std::set<std::string> known_fonts;
-	for (const config &font : fonts_config.child_range("font")) {
+	for (const config &font : fonts_config->child_range("font")) {
 		known_fonts.insert(font["name"]);
 		if (font.has_attribute("bold_name")) {
 			known_fonts.insert(font["bold_name"]);
@@ -160,10 +160,10 @@ bool load_font_config()
 		}
 	}
 
-	family_order_sans = fonts_config["family_order"];
-	family_order_mono = fonts_config["family_order_monospace"];
-	family_order_light = fonts_config["family_order_light"];
-	family_order_script = fonts_config["family_order_script"];
+	family_order_sans = (*fonts_config)["family_order"];
+	family_order_mono = (*fonts_config)["family_order_monospace"];
+	family_order_light = (*fonts_config)["family_order_light"];
+	family_order_script = (*fonts_config)["family_order_script"];
 
 	if(family_order_mono.empty()) {
 		ERR_FT << "No monospace font family order defined, falling back to sans serif order\n";
@@ -182,13 +182,13 @@ bool load_font_config()
 
 	std::vector<font::subset_descriptor> fontlist;
 
-	for(auto font : utils::split(fonts_config["order"])) {
-		add_font_to_fontlist(fonts_config, fontlist, font);
+	for(auto font : utils::split((*fonts_config)["order"])) {
+		add_font_to_fontlist(*fonts_config, fontlist, font);
 		known_fonts.erase(font);
 	}
 
 	for(auto kfont : known_fonts) {
-		add_font_to_fontlist(fonts_config, fontlist, kfont);
+		add_font_to_fontlist(*fonts_config, fontlist, kfont);
 	}
 
 	if(fontlist.empty())

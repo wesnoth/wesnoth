@@ -394,14 +394,14 @@ const config& controller_base::get_theme(const config& game_config, std::string 
 		theme_name = preferences::theme();
 	}
 
-	if(const config& c = game_config.find_child("theme", "id", theme_name)) {
-		return c;
+	if(auto c = game_config.find_child("theme", "id", theme_name)) {
+		return *c;
 	}
 
 	ERR_DP << "Theme '" << theme_name << "' not found. Trying the default theme." << std::endl;
 
-	if(const config& c = game_config.find_child("theme", "id", "Default")) {
-		return c;
+	if(auto c = game_config.find_child("theme", "id", "Default")) {
+		return *c;
 	}
 
 	ERR_DP << "Default theme not found." << std::endl;

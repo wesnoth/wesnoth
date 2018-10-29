@@ -53,7 +53,7 @@ game_state::game_state(const config & level, play_controller & pc, const ter_dat
 	events_manager_(new game_events::manager()),
 	//TODO: this construct units (in dimiss undo action) but resrouces:: are not available yet,
 	//      so we might want to move the innitialisation of undo_stack_ to game_state::init
-	undo_stack_(new actions::undo_list(level.child("undo_stack"))),
+	undo_stack_(new actions::undo_list(level.child_or_empty("undo_stack"))),
 	player_number_(level["playing_team"].to_int() + 1),
 	next_player_number_(level["next_player_number"].to_int(player_number_ + 1)),
 	do_healing_(level["do_healing"].to_bool(false)),
@@ -63,9 +63,9 @@ game_state::game_state(const config & level, play_controller & pc, const ter_dat
 	first_human_team_(-1)
 {
 	lua_kernel_->load_core();
-	if(const config& endlevel_cfg = level.child("end_level_data")) {
+	if(auto endlevel_cfg = level.child("end_level_data")) {
 		end_level_data el_data;
-		el_data.read(endlevel_cfg);
+		el_data.read(*endlevel_cfg);
 		el_data.transient.carryover_report = false;
 		end_level_data_ = el_data;
 	}
@@ -91,9 +91,9 @@ game_state::game_state(const config & level, play_controller & pc, game_board& b
 {
 	lua_kernel_->load_core();
 	events_manager_->read_scenario(level);
-	if(const config& endlevel_cfg = level.child("end_level_data")) {
+	if(auto endlevel_cfg = level.child("end_level_data")) {
 		end_level_data el_data;
-		el_data.read(endlevel_cfg);
+		el_data.read(*endlevel_cfg);
 		el_data.transient.carryover_report = false;
 		end_level_data_ = el_data;
 	}

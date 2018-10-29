@@ -352,8 +352,6 @@ void replay::speak(const config& cfg)
 
 void replay::add_chat_log_entry(const config &cfg, std::back_insert_iterator<std::vector<chat_msg>> &i) const
 {
-	if (!cfg) return;
-
 	if (!preferences::parse_should_show_lobby_join(cfg["id"], cfg["message"])) return;
 	if (preferences::is_ignored(cfg["id"])) return;
 	*i = chat_msg(cfg);
@@ -383,9 +381,9 @@ const std::vector<chat_msg>& replay::build_chat_log() const
 	{
 		last_location = *loc_it;
 
-		const config &speak = command(last_location).child("speak");
+		const config* speak = command(last_location).child("speak");
 		assert(speak);
-		add_chat_log_entry(speak, chat_log_appender);
+		add_chat_log_entry(*speak, chat_log_appender);
 
 	}
 	return message_log;
@@ -451,16 +449,16 @@ config& replay::get_last_real_command()
 /// @return: true if the command should be removed.
 static bool fix_rename_command(const config& c, config& async_child)
 {
-	if (const config &child = c.child("move"))
+	if(auto child = c.child("move"))
 	{
 		// A unit's move is being undone.
 		// Repair unsynced cmds whose locations depend on that unit's location.
 		std::vector<map_location> steps;
 
 		try {
-			read_locations(child,steps);
+			read_locations(*child,steps);
 		} catch(const bad_lexical_cast &) {
-			WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child.debug() << std::endl;
+			WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child->debug() << std::endl;
 		}
 
 		if (steps.empty()) {
@@ -475,9 +473,9 @@ static bool fix_rename_command(const config& c, config& async_child)
 	}
 	else
 	{
-		const config *chld = &c.child("recruit");
-		if (!*chld) chld = &c.child("recall");
-		if (*chld) {
+		const config* chld = c.child("recruit");
+		if(!chld) chld = c.child("recall");
+		if(chld) {
 			// A unit is being un-recruited or un-recalled.
 			// Remove unsynced commands that would act on that unit.
 			map_location src(*chld);
@@ -535,9 +533,9 @@ void replay::undo_cut(config& dst)
 		}
 		else if(cc["async"].to_bool(false))
 		{
-			if(config& rename = c.child("rename"))
+			if(auto rename = c.child("rename"))
 			{
-				if(fix_rename_command(command(cmd_index), rename))
+				if(fix_rename_command(command(cmd_index), *rename))
 				{
 					//remove the command from the replay if fix_rename_command requested it.
 					remove_command(i);
@@ -567,7 +565,6 @@ void replay::undo()
 config &replay::command(int n) const
 {
 	config & retv = base_->get_command_at(n);
-	assert(retv);
 	return retv;
 }
 
@@ -726,18 +723,18 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			ERR_REPLAY << "found "<<  cfg->debug() <<" in replay" << std::endl;
 			//do nothing
 		}
-		else if (const config &speak = cfg->child("speak"))
+		else if(auto speak = cfg->child("speak"))
 		{
-			const std::string &team_name = speak["to_sides"];
-			const std::string &speaker_name = speak["id"];
-			const std::string &message = speak["message"];
+			const std::string &team_name = (*speak)["to_sides"];
+			const std::string &speaker_name = (*speak)["id"];
+			const std::string &message = (*speak)["message"];
 			//if (!preferences::parse_should_show_lobby_join(speaker_name, message)) return;
 			bool is_whisper = (speaker_name.find("whisper: ") == 0);
 			if(resources::recorder->add_chat_message_location()) {
 				DBG_REPLAY << "tried to add a chat message twice.\n";
 				if (!resources::controller->is_skipping_replay() || is_whisper) {
-					int side = speak["side"];
-					game_display::get_singleton()->get_chat_manager().add_chat_message(get_time(speak), speaker_name, side, message,
+					int side = (*speak)["side"];
+					game_display::get_singleton()->get_chat_manager().add_chat_message(get_time(*speak), speaker_name, side, message,
 						(team_name.empty() ? events::chat_handler::MESSAGE_PUBLIC
 						: events::chat_handler::MESSAGE_PRIVATE),
 						preferences::message_bell());
@@ -748,9 +745,9 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		{
 			//prevent sending of a synced command for surrender
 		}
-		else if (const config &label_config = cfg->child("label"))
+		else if(auto label_config = cfg->child("label"))
 		{
-			terrain_label label(display::get_singleton()->labels(), label_config);
+			terrain_label label(display::get_singleton()->labels(), *label_config);
 
 			display::get_singleton()->labels().set_label(label.location(),
 						label.text(),
@@ -758,14 +755,14 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 						label.team_name(),
 						label.color());
 		}
-		else if (const config &clear_labels = cfg->child("clear_labels"))
+		else if(auto clear_labels = cfg->child("clear_labels"))
 		{
-			display::get_singleton()->labels().clear(std::string(clear_labels["team_name"]), clear_labels["force"].to_bool());
+			display::get_singleton()->labels().clear(std::string((*clear_labels)["team_name"]), (*clear_labels)["force"].to_bool());
 		}
-		else if (const config &rename = cfg->child("rename"))
+		else if(auto rename = cfg->child("rename"))
 		{
-			const map_location loc(rename);
-			const std::string &name = rename["name"];
+			const map_location loc(*rename);
+			const std::string &name = (*rename)["name"];
 
 			unit_map::iterator u = resources::gameboard->units().find(loc);
 			if (u.valid() && !u->unrenamable()) {
@@ -801,7 +798,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		}
 
 		//if there is an end turn directive
-		else if (const config& end_turn = cfg->child("end_turn"))
+		else if(auto end_turn = cfg->child("end_turn"))
 		{
 			if(!is_unsynced)
 			{
@@ -811,17 +808,17 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			}
 			else
 			{
-				if (const config &cfg_verify = cfg->child("verify")) {
-					verify(resources::gameboard->units(), cfg_verify);
+				if(auto cfg_verify = cfg->child("verify")) {
+					verify(resources::gameboard->units(), *cfg_verify);
 				}
-				resources::controller->gamestate().next_player_number_ = end_turn["next_player_number"];
+				resources::controller->gamestate().next_player_number_ = (*end_turn)["next_player_number"];
 				return REPLAY_FOUND_END_TURN;
 			}
 		}
-		else if (const config &countdown_update = cfg->child("countdown_update"))
+		else if(auto countdown_update = cfg->child("countdown_update"))
 		{
-			int val = countdown_update["value"];
-			int tval = countdown_update["team"];
+			int val = (*countdown_update)["value"];
+			int tval = (*countdown_update)["team"];
 			if (tval <= 0  || tval > static_cast<int>(resources::gameboard->teams().size())) {
 				std::stringstream errbuf;
 				errbuf << "Illegal countdown update \n"
@@ -886,8 +883,8 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			}
 		}
 
-		if (const config &child = cfg->child("verify")) {
-			verify(resources::gameboard->units(), child);
+		if(auto child = cfg->child("verify")) {
+			verify(resources::gameboard->units(), *child);
 		}
 	}
 }

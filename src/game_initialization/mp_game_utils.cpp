@@ -94,7 +94,7 @@ config initial_level_config(saved_game& state)
 	 */
 
 	const config& game_config = game_config_manager::get()->game_config();
-	const config& era_cfg = game_config.find_child("era", "id", era);
+	const config* era_cfg = game_config.find_child("era", "id", era);
 
 	if(!era_cfg) {
 		if(params.saved_game == mp_game_settings::SAVED_GAME_MODE::NONE) {
@@ -107,20 +107,20 @@ config initial_level_config(saved_game& state)
 		// Otherwise we get an error when when we try to add ai algorithms in mp_staging.
 		level.add_child("era");
 	} else {
-		level.add_child("era", era_cfg);
+		auto& new_era = level.add_child("era", *era_cfg);
 
 		// Initialize the list of sides available for the current era.
 		// We also need this so not to get a segfault in mp_staging for ai configuration.
-		const config& custom_side = game_config.find_child("multiplayer_side", "id", "Custom");
-		level.child("era").add_child_at("multiplayer_side", custom_side, 0);
+		auto custom_side = game_config.find_child("multiplayer_side", "id", "Custom");
+		new_era.add_child_at("multiplayer_side", *custom_side, 0);
 	}
 
 	// Add modifications, needed for ai algorithms which are applied in mp_staging.
 	const std::vector<std::string>& mods = params.active_mods;
 
 	for(unsigned i = 0; i < mods.size(); ++i) {
-		if(const config& mod_cfg = game_config.find_child("modification", "id", mods[i])) {
-			level.add_child("modification", mod_cfg);
+		if(auto mod_cfg = game_config.find_child("modification", "id", mods[i])) {
+			level.add_child("modification", *mod_cfg);
 		}
 	}
 
@@ -142,8 +142,8 @@ void check_response(bool res, const config& data)
 		throw wesnothd_error(_("Connection timed out"));
 	}
 
-	if(const config& err = data.child("error")) {
-		throw wesnothd_error(err["message"]);
+	if(auto err = data.child("error")) {
+		throw wesnothd_error((*err)["message"]);
 	}
 }
 

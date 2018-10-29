@@ -95,9 +95,9 @@ config& replay_recorder_base::insert_command(int index)
 
 void replay_recorder_base::append_config(const config& data)
 {
-	if(const config& upload_log = data.child("upload_log"))
+	if(auto upload_log = data.child("upload_log"))
 	{
-		upload_log_ = upload_log;
+		upload_log_ = *upload_log;
 	}
 	for(const config& command : data.child_range("command"))
 	{
@@ -107,9 +107,9 @@ void replay_recorder_base::append_config(const config& data)
 
 void replay_recorder_base::append_config(config& data)
 {
-	if(config& upload_log = data.child("upload_log"))
+	if(auto upload_log = data.child("upload_log"))
 	{
-		upload_log_.swap(upload_log);
+		upload_log_.swap(*upload_log);
 	}
 	for(config& command : data.child_range("command"))
 	{

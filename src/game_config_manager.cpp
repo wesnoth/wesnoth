@@ -89,7 +89,10 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 	game_config::reset_color_info();
 	load_game_config_with_loadscreen(force_reload);
 
-	game_config::load_config(game_config_.child("game_config"));
+	if(!game_config_.has_child("game_config")) {
+		// TODO: Error message
+	}
+	game_config::load_config(*game_config_.child("game_config"));
 
 	hotkey::deactivate_all_scopes();
 	hotkey::set_scope_active(hotkey::SCOPE_MAIN_MENU);
@@ -202,7 +205,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 				});
 				continue;
 			}
-			if (*&valid_cores.find_child("core", "id", id)) {
+			if(valid_cores.find_child("core", "id", id)) {
 				events::call_in_main_thread([&]() {
 					gui2::dialogs::wml_error::display(
 						_("Error validating data core."),
@@ -277,9 +280,9 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		// become [multiplayer] tags and campaign's id should be added to them
 		// to allow to recognize which scenarios belongs to a loaded campaign.
 		if (classification != nullptr) {
-			if (const config& campaign = game_config().find_child("campaign", "id", classification->campaign))
+			if(auto campaign = game_config().find_child("campaign", "id", classification->campaign))
 			{
-				const bool require_campaign = campaign["require_campaign"].to_bool(true);
+				const bool require_campaign = (*campaign)["require_campaign"].to_bool(true);
 				for (config& scenario : game_config_.child_range("scenario"))
 				{
 					scenario["require_scenario"] = require_campaign;
@@ -497,8 +500,8 @@ void game_config_manager::set_unit_data()
 {
 	game_config_.merge_children("units");
 	gui2::dialogs::loading_screen::progress(loading_stage::load_unit_types);
-	if(config &units = game_config_.child("units")) {
-		unit_types.set_config(units);
+	if(auto units = game_config_.child("units")) {
+		unit_types.set_config(*units);
 	}
 }
 

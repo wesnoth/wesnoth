@@ -61,12 +61,10 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 	const std::string& leader_id = side["id"];
 	if(!leader_id.empty()) {
 		// Check if leader was carried over and now is in [unit] tag.
-		default_leader_cfg_ = &side.find_child("unit", "id", leader_id);
-		if(*default_leader_cfg_) {
+		default_leader_cfg_ = side.find_child("unit", "id", leader_id);
+		if(default_leader_cfg_) {
 			default_leader_type_ = (*default_leader_cfg_)["type"].str();
 			default_leader_gender_ = (*default_leader_cfg_)["gender"].str();
-		} else {
-			default_leader_cfg_ = nullptr;
 		}
 	} else if(default_leader_type_.empty()) {
 		// Find a unit which can recruit.
@@ -545,8 +543,8 @@ void flg_manager::set_current_gender(const std::string& gender)
 
 const config& flg_manager::get_default_faction(const config& cfg)
 {
-	if(const config& df = cfg.child("default_faction")) {
-		return df;
+	if(auto df = cfg.child("default_faction")) {
+		return *df;
 	} else {
 		return cfg;
 	}

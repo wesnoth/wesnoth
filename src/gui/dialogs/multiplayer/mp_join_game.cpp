@@ -105,17 +105,17 @@ bool mp_join_game::fetch_game_config()
 
 		if(revc.child("leave_game")) {
 			return false;
-		} else if(config& next_scenario = revc.child("next_scenario")) {
-			level_.swap(next_scenario);
+		} else if(auto next_scenario = revc.child("next_scenario")) {
+			level_.swap(*next_scenario);
 		} else if(revc.has_attribute("version")) {
 			level_.swap(revc);
 
 			has_scenario_and_controllers = true;
-		} else if(config& controllers = revc.child("controllers")) {
+		} else if(auto controllers = revc.child("controllers")) {
 			int index = 0;
-			for(const config& controller : controllers.child_range("controller")) {
-				if(config& side = get_scenario().child("side", index)) {
-					side["is_local"] = controller["is_local"];
+			for(const config& controller : controllers->child_range("controller")) {
+				if(auto side = get_scenario().child("side", index)) {
+					(*side)["is_local"] = controller["is_local"];
 				}
 				++index;
 			}
@@ -270,24 +270,24 @@ void mp_join_game::pre_show(window& window)
 
 bool mp_join_game::show_flg_select(int side_num, bool first_time)
 {
-	if(const config& side_choice = get_scenario().child("side", side_num - 1)) {
-		if(!side_choice["allow_changes"].to_bool(true)) {
+	if(auto side_choice = get_scenario().child("side", side_num - 1)) {
+		if(!(*side_choice)["allow_changes"].to_bool(true)) {
 			return true;
 		}
 
-		const config& era = level_.child("era");
+		const config* era = level_.child("era");
 		if(!era) {
 			ERR_MP << "no era information\n";
 			return false;
 		}
 
-		config::const_child_itors possible_sides = era.child_range("multiplayer_side");
+		config::const_child_itors possible_sides = era->child_range("multiplayer_side");
 		if(possible_sides.empty()) {
-			WRN_MP << "no [multiplayer_side] found in era '" << era["id"] << "'.\n";
+			WRN_MP << "no [multiplayer_side] found in era '" << (*era)["id"] << "'.\n";
 			return false;
 		}
 
-		const std::string color = side_choice["color"].str();
+		const std::string color = (*side_choice)["color"].str();
 
 		std::vector<const config*> era_factions;
 		//make this safe against changes to level_ that might make possible_sides invalid pointers.
@@ -299,10 +299,12 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 
 		const bool is_mp = state_.classification().is_normal_mp_game();
 		const bool lock_settings = get_scenario()["force_lock_settings"].to_bool(!is_mp);
-		const bool use_map_settings = level_.child("multiplayer")["mp_use_map_settings"].to_bool();
-		const mp_game_settings::SAVED_GAME_MODE saved_game = level_.child("multiplayer")["savegame"].to_enum<mp_game_settings::SAVED_GAME_MODE>(mp_game_settings::SAVED_GAME_MODE::NONE);
+		// TODO: What if the child doesn't exist?
+		auto mp_cfg = level_.child("multiplayer");
+		const bool use_map_settings = (*mp_cfg)["mp_use_map_settings"].to_bool();
+		const mp_game_settings::SAVED_GAME_MODE saved_game = (*mp_cfg)["savegame"].to_enum<mp_game_settings::SAVED_GAME_MODE>(mp_game_settings::SAVED_GAME_MODE::NONE);
 
-		ng::flg_manager flg(era_factions, side_choice, lock_settings, use_map_settings, saved_game == mp_game_settings::SAVED_GAME_MODE::MIDGAME);
+		ng::flg_manager flg(era_factions, *side_choice, lock_settings, use_map_settings, saved_game == mp_game_settings::SAVED_GAME_MODE::MIDGAME);
 
 		{
 			gui2::dialogs::faction_select flg_dialog(flg, color, side_num);
@@ -518,21 +520,22 @@ void mp_join_game::network_handler(window& window)
 
 	if(data.child("stop_updates")) {
 		stop_updates_ = true;
-	} else if(const config& c = data.child("scenario_diff")) {
+	} else if(auto c = data.child("scenario_diff")) {
 		// TODO: We should catch config::error and then leave the game.
-		level_.apply_diff(c);
+		level_.apply_diff(*c);
 
 		generate_side_list(window);
-	} else if(const config& change = data.child("change_controller")) {
-		if(config& side_to_change = get_scenario().find_child("side", "side", change["side"])) {
-			side_to_change.merge_with(change);
+	} else if(auto change = data.child("change_controller")) {
+		if(auto side_to_change = get_scenario().find_child("side", "side", (*change)["side"])) {
+			side_to_change->merge_with(*change);
 		}
 
-		if(flg_dialog_ && flg_dialog_->get_side_num() == change["side"].to_int()) {
+		if(flg_dialog_ && flg_dialog_->get_side_num() == (*change)["side"].to_int()) {
 			close_faction_select_dialog_if_open();
 		}
-	} else if(data.has_child("scenario") || data.has_child("snapshot") || data.child("next_scenario")) {
-		level_ = first_scenario_ ? data : data.child("next_scenario");
+	} else if(data.has_child("scenario") || data.has_child("snapshot") || data.has_child("next_scenario")) {
+		// TODO: WTH is really supposed to happen here?
+		//level_ = first_scenario_ ? data : data.child("next_scenario");
 
 		generate_side_list(window);
 	}
@@ -549,10 +552,10 @@ void mp_join_game::network_handler(window& window)
 
 config& mp_join_game::get_scenario()
 {
-	if(config& scenario = level_.child("scenario")) {
-		return scenario;
-	} else if(config& snapshot = level_.child("snapshot")) {
-		return snapshot;
+	if(auto scenario = level_.child("scenario")) {
+		return *scenario;
+	} else if(auto snapshot = level_.child("snapshot")) {
+		return *snapshot;
 	}
 
 	return level_;
@@ -566,9 +569,9 @@ void mp_join_game::post_show(window& window)
 	}
 
 	if(window.get_retval() == retval::OK) {
-		if(const config& stats = level_.child("statistics")) {
+		if(auto stats = level_.child("statistics")) {
 			statistics::fresh_stats();
-			statistics::read_stats(stats);
+			statistics::read_stats(*stats);
 		}
 
 		mp::level_to_gamestate(level_, state_);

@@ -89,7 +89,8 @@ bool addons_client::request_addons_list(config& cfg)
 	this->send_simple_request("request_campaign_list", response_buf);
 	this->wait_for_transfer_done(_("Downloading list of add-ons..."));
 
-	std::swap(cfg, response_buf.child("campaigns"));
+	// TODO: Error if there's no campaign tag?
+	std::swap(cfg, response_buf.child_or_add("campaigns"));
 
 	return !this->update_last_error(response_buf);
 }
@@ -103,8 +104,8 @@ bool addons_client::request_distribution_terms(std::string& terms)
 	this->send_simple_request("request_terms", response_buf);
 	this->wait_for_transfer_done(_("Requesting distribution terms..."));
 
-	if(const config& msg_cfg = response_buf.child("message")) {
-		terms = msg_cfg["message"].str();
+	if(auto msg_cfg = response_buf.child("message")) {
+		terms = (*msg_cfg)["message"].str();
 	}
 
 	return !this->update_last_error(response_buf);
@@ -185,8 +186,8 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 	this->wait_for_transfer_done(VGETTEXT("Sending add-on <i>$addon_title</i>...", i18n_symbols
 	), transfer_mode::upload);
 
-	if(const config& message_cfg = response_buf.child("message")) {
-		response_message = message_cfg["message"].str();
+	if(auto message_cfg = response_buf.child("message")) {
+		response_message = (*message_cfg)["message"].str();
 		LOG_ADDONS << "server response: " << response_message << '\n';
 	}
 
@@ -218,8 +219,8 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 	this->wait_for_transfer_done(VGETTEXT("Removing add-on <i>$addon_title</i> from the server...", i18n_symbols
 	));
 
-	if(const config& message_cfg = response_buf.child("message")) {
-		response_message = message_cfg["message"].str();
+	if(auto message_cfg = response_buf.child("message")) {
+		response_message = (*message_cfg)["message"].str();
 		LOG_ADDONS << "server response: " << response_message << '\n';
 	}
 
@@ -268,8 +269,8 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 
 	// Add local version information before unpacking
 
-	config* maindir = &archive_cfg.find_child("dir", "name", info.id);
-	if(!*maindir) {
+	config* maindir = archive_cfg.find_child("dir", "name", info.id);
+	if(!maindir) {
 		LOG_ADDONS << "downloaded add-on '" << info.id << "' is missing its directory in the archive; creating it\n";
 		maindir = &archive_cfg.add_child("dir");
 		(*maindir)["name"] = info.id;
@@ -492,10 +493,10 @@ addons_client::install_result addons_client::install_addon_with_checks(const add
 
 bool addons_client::update_last_error(config& response_cfg)
 {
-	if(const config& error = response_cfg.child("error")) {
-		this->last_error_ = font::escape_text(error["message"].str());
-		this->last_error_data_ = font::escape_text(error["extra_data"].str());
-		ERR_ADDONS << "server error: " << error << '\n';
+	if(auto error = response_cfg.child("error")) {
+		this->last_error_ = font::escape_text((*error)["message"].str());
+		this->last_error_data_ = font::escape_text((*error)["extra_data"].str());
+		ERR_ADDONS << "server error: " << *error << '\n';
 		return true;
 	} else {
 		this->last_error_.clear();

@@ -1479,12 +1479,12 @@ window_definition::window_definition(const config& cfg)
 window_definition::resolution::resolution(const config& cfg)
 	: panel_definition::resolution(cfg), grid(nullptr)
 {
-	const config& child = cfg.child("grid");
+	const config* child = cfg.child("grid");
 	// VALIDATE(child, _("No grid defined."));
 
 	/** @todo Evaluate whether the grid should become mandatory. */
 	if(child) {
-		grid = std::make_shared<builder_grid>(child);
+		grid = std::make_shared<builder_grid>(*child);
 	}
 }
 

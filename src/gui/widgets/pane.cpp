@@ -424,7 +424,7 @@ builder_pane::builder_pane(const config& cfg)
 	, grow_direction(
 			  lexical_cast<placer_base::tgrow_direction>(cfg["grow_direction"]))
 	, parallel_items(cfg["parallel_items"])
-	, item_definition(new builder_grid(cfg.child("item_definition", "[pane]")))
+	, item_definition(new builder_grid(cfg.child_checked("item_definition")))
 {
 	VALIDATE(parallel_items > 0, _("Need at least 1 parallel item."));
 }

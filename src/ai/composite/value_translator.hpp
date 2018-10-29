@@ -119,8 +119,8 @@ public:
 
 	static void cfg_to_value(const config &cfg, config &value)
 	{
-		if (const config &v = cfg.child("value")) {
-			value = v;
+		if(auto v = cfg.child("value")) {
+			value = *v;
 		} else {
 			value.clear();
 		}
@@ -150,8 +150,8 @@ public:
 
 	static terrain_filter cfg_to_value(const config &cfg)
 	{
-		if (const config &v = cfg.child("value")) {
-			return terrain_filter(vconfig(v), resources::filter_con);
+		if(auto v = cfg.child("value")) {
+			return terrain_filter(vconfig(*v), resources::filter_con);
 		}
 		static config c("not");
 		return terrain_filter(vconfig(c),resources::filter_con);

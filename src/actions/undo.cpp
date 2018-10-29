@@ -84,13 +84,19 @@ undo_action_base * undo_list::create_action(const config & cfg)
 
 	else if ( str == "recruit" ) {
 		// Validate the unit type.
-		const config & child = cfg.child("unit");
-		const unit_type * u_type = unit_types.find(child["type"]);
+		const config* child = cfg.child("unit");
+		if(!child) {
+			// Bad data.
+			ERR_NG << "Invalid recruit found in [undo] or [redo]; unit type was not specified.\n";
+			return nullptr;
+		}
+		
+		const unit_type* u_type = unit_types.find((*child)["type"]);
 
 		if ( !u_type ) {
 			// Bad data.
 			ERR_NG << "Invalid recruit found in [undo] or [redo]; unit type '"
-			       << child["type"] << "' was not found.\n";
+			       << (*child)["type"] << "' was not found.\n";
 			return nullptr;
 		}
 		res = new undo::recruit_action(cfg, *u_type, map_location(cfg.child_or_empty("leader"), nullptr));
@@ -100,7 +106,7 @@ undo_action_base * undo_list::create_action(const config & cfg)
 		res =  new undo::recall_action(cfg, map_location(cfg.child_or_empty("leader"), nullptr));
 
 	else if ( str == "dismiss" )
-		res =  new undo::dismiss_action(cfg, cfg.child("unit"));
+		res =  new undo::dismiss_action(cfg, cfg.child_or_empty("unit"));
 
 	else if ( str == "auto_shroud" )
 		res =  new undo::auto_shroud_action(cfg["active"].to_bool());
@@ -126,8 +132,7 @@ undo_action_base * undo_list::create_action(const config & cfg)
 undo_list::undo_list(const config & cfg) :
 	undos_(), redos_(), side_(1), committed_actions_(false)
 {
-	if ( cfg )
-		read(cfg);
+	read(cfg);
 }
 
 /**
@@ -415,9 +420,12 @@ void undo_list::redo()
 	auto action = std::move(redos_.back());
 	redos_.pop_back();
 
-	const config& command_wml = action->child("command");
-	std::string commandname = command_wml.all_children_range().front().key;
-	const config& data = command_wml.all_children_range().front().cfg;
+	auto command_wml = action->child("command");
+	if(!command_wml) {
+		// TODO: Error message?
+	}
+	std::string commandname = command_wml->all_children_range().front().key;
+	const config& data = command_wml->all_children_range().front().cfg;
 
 	resources::recorder->redo(const_cast<const config&>(*action));
 

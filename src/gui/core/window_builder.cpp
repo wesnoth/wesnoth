@@ -101,20 +101,20 @@ builder_widget_ptr create_widget_builder(const config& cfg)
 	config::const_all_children_itors children = cfg.all_children_range();
 	VALIDATE(children.size() == 1, "Grid cell does not have exactly 1 child.");
 
-	if(const config& grid = cfg.child("grid")) {
-		return std::make_shared<builder_grid>(grid);
+	if(auto grid = cfg.child("grid")) {
+		return std::make_shared<builder_grid>(*grid);
 	}
 
-	if(const config& instance = cfg.child("instance")) {
-		return std::make_shared<implementation::builder_instance>(instance);
+	if(auto instance = cfg.child("instance")) {
+		return std::make_shared<implementation::builder_instance>(*instance);
 	}
 
-	if(const config& pane = cfg.child("pane")) {
-		return std::make_shared<implementation::builder_pane>(pane);
+	if(auto pane = cfg.child("pane")) {
+		return std::make_shared<implementation::builder_pane>(*pane);
 	}
 
-	if(const config& viewport = cfg.child("viewport")) {
-		return std::make_shared<implementation::builder_viewport>(viewport);
+	if(auto viewport = cfg.child("viewport")) {
+		return std::make_shared<implementation::builder_viewport>(*viewport);
 	}
 
 	for(const auto& item : widget_builder_lookup()) {
@@ -122,8 +122,8 @@ builder_widget_ptr create_widget_builder(const config& cfg)
 			continue;
 		}
 
-		if(const config& c = cfg.child(item.first)) {
-			return item.second(c);
+		if(auto c = cfg.child(item.first)) {
+			return item.second(*c);
 		}
 	}
 
@@ -309,11 +309,11 @@ builder_window::window_resolution::window_resolution(const config& cfg)
 		wfl::formula(cfg["functions"], &functions).evaluate();
 	}
 
-	const config& c = cfg.child("grid");
+	const config* c = cfg.child("grid");
 
 	VALIDATE(c, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(builder_grid(c));
+	grid = std::make_shared<builder_grid>(builder_grid(*c));
 
 	if(!automatic_placement) {
 		VALIDATE(width.has_formula() || width(), missing_mandatory_wml_key("resolution", "width"));

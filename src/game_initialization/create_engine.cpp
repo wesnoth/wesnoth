@@ -161,7 +161,7 @@ random_map::random_map(const config& data)
 		data_["description"] = "Error: Random map found with missing generator information. Scenario should have a [generator] child.";
 		data_["error_message"] = "missing [generator] tag";
 	} else {
-		generator_data_ = data.child("generator");
+		generator_data_ = *data.child("generator");
 	}
 
 	if(!data.has_attribute("scenario_generation") && !data.has_attribute("map_generation")) {
@@ -371,9 +371,13 @@ void create_engine::prepare_for_new_level()
 
 void create_engine::prepare_for_era_and_mods()
 {
-	state_.classification().era_define = game_config_.find_child("era", "id", get_parameters().mp_era)["define"].str();
+	if(auto era = game_config_.find_child("era", "id", get_parameters().mp_era)) {
+		state_.classification().era_define = (*era)["define"].str();
+	}
 	for(const std::string& mod_id : get_parameters().active_mods) {
-		state_.classification().mod_defines.push_back(game_config_.find_child("modification", "id", mod_id)["define"].str());
+		if(auto mod = game_config_.find_child("modification", "id", mod_id)) {
+			state_.classification().mod_defines.push_back((*mod)["define"].str());
+		}
 	}
 }
 
@@ -645,8 +649,8 @@ const mp_game_settings& create_engine::get_parameters()
 
 void create_engine::init_all_levels()
 {
-	if(const config& generic_multiplayer = game_config_.child("generic_multiplayer")) {
-		config gen_mp_data = generic_multiplayer;
+	if(auto generic_multiplayer = game_config_.child("generic_multiplayer")) {
+		config gen_mp_data = *generic_multiplayer;
 
 		// User maps.
 		int dep_index_offset = 0;

@@ -186,14 +186,18 @@ void campaign_controller::show_carryover_message(playsingle_controller& playcont
 
 LEVEL_RESULT campaign_controller::playsingle_scenario(end_level_data &end_level)
 {
-	playsingle_controller playcontroller(is_replay_ ? state_.get_replay_starting_point() : state_.get_starting_point(),
-		state_, tdata_, false);
+	const config* starting_point = nullptr;
+	if(is_replay_)
+		starting_point = state_.get_replay_starting_point();
+	if(!starting_point)
+		starting_point = &state_.get_starting_point();
+	playsingle_controller playcontroller(*starting_point, state_, tdata_, false);
 
 	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
 	if(is_replay_) {
 		playcontroller.enable_replay(is_unit_test_);
 	}
-	LEVEL_RESULT res = playcontroller.play_scenario(is_replay_ ? state_.get_replay_starting_point() : state_.get_starting_point());
+	LEVEL_RESULT res = playcontroller.play_scenario(*starting_point);
 
 	if (res == LEVEL_RESULT::QUIT) {
 		return LEVEL_RESULT::QUIT;

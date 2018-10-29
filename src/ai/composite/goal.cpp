@@ -140,11 +140,11 @@ void target_unit_goal::add_targets(std::back_insert_iterator< std::vector< targe
 		return;
 	}
 
-	const config &criteria = cfg_.child("criteria");
+	const config* criteria = cfg_.child("criteria");
 	if (!criteria) return;
 
 	//find the enemy leaders and explicit targets
-	const unit_filter ufilt{ vconfig(criteria) };
+	const unit_filter ufilt{ vconfig(*criteria) };
 	for (const unit &u : resources::gameboard->units()) {
 		if (ufilt( u )) {
 			LOG_AI_GOAL << "found explicit target unit at ... " << u.get_location() << " with value: " << value() << "\n";
@@ -174,9 +174,9 @@ void target_location_goal::on_create()
 	if (cfg_.has_attribute("value")) {
 		value_ = cfg_["value"].to_double(0);
 	}
-	const config &criteria = cfg_.child("criteria");
+	const config* criteria = cfg_.child("criteria");
 	if (criteria) {
-		filter_ptr_.reset(new terrain_filter(vconfig(criteria),resources::filter_con));
+		filter_ptr_.reset(new terrain_filter(vconfig(*criteria),resources::filter_con));
 	}
 }
 
@@ -225,9 +225,9 @@ void protect_goal::on_create()
 	if (radius_<1) {
 		radius_=20;
 	}
-	const config &criteria = cfg_.child("criteria");
+	const config* criteria = cfg_.child("criteria");
 	if (criteria) {
-		filter_ptr_.reset(new terrain_filter(vconfig(criteria),resources::filter_con));
+		filter_ptr_.reset(new terrain_filter(vconfig(*criteria),resources::filter_con));
 	}
 
 
@@ -248,7 +248,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target >>
 		return;
 	}
 
-	const config &criteria = cfg_.child("criteria");
+	const config* criteria = cfg_.child("criteria");
 	if (!criteria) {
 		LOG_AI_GOAL << "skipping " << goal_type << " goal - no criteria given" << std::endl;
 		return;
@@ -260,7 +260,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target >>
 
 	std::set<map_location> items;
 	if (protect_unit_) {
-		const unit_filter ufilt{ vconfig(criteria) };
+		const unit_filter ufilt{ vconfig(*criteria) };
 		for (const unit &u : units)
 		{
 			//TODO: we will protect hidden units, by not testing for invisibility to current side

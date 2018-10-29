@@ -676,7 +676,11 @@ void playsingle_controller::reset_replay()
 
 void playsingle_controller::enable_replay(bool is_unit_test)
 {
-	replay_controller_.reset(new replay_controller(*this, gamestate().has_human_sides(), std::shared_ptr<config>( new config(saved_game_.get_replay_starting_point())), std::bind(&playsingle_controller::on_replay_end, this, is_unit_test)));
+	if(auto rs_cfg = saved_game_.get_replay_starting_point()) {
+		replay_controller_.reset(new replay_controller(*this, gamestate().has_human_sides(), std::make_shared<config>(*rs_cfg), std::bind(&playsingle_controller::on_replay_end, this, is_unit_test)));
+	} else {
+		// TODO: What do we do if there's no [replay_start] or [scenario]?
+	}
 	if(is_unit_test) {
 		replay_controller_->play_replay();
 	}

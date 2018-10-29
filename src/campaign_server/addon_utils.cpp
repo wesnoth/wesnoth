@@ -113,7 +113,7 @@ void find_translations(const config& base_dir, config& addon)
 
 void add_license(config& cfg)
 {
-	config& dir = cfg.find_child("dir", "name", cfg["campaign_name"]);
+	config* dir = cfg.find_child("dir", "name", cfg["campaign_name"]);
 
 	// No top-level directory? Hm..
 	if(!dir) {
@@ -121,11 +121,11 @@ void add_license(config& cfg)
 	}
 
 	// Don't add if it already exists.
-	if(dir.find_child("file", "name", "COPYING.txt")
-	   || dir.find_child("file", "name", "COPYING")
-	   || dir.find_child("file", "name", "copying.txt")
-	   || dir.find_child("file", "name", "Copying.txt")
-	   || dir.find_child("file", "name", "COPYING.TXT"))
+	if(dir->find_child("file", "name", "COPYING.txt")
+	   || dir->find_child("file", "name", "COPYING")
+	   || dir->find_child("file", "name", "copying.txt")
+	   || dir->find_child("file", "name", "Copying.txt")
+	   || dir->find_child("file", "name", "COPYING.TXT"))
 	{
 		return;
 	}

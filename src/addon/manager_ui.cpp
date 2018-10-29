@@ -54,10 +54,6 @@ bool get_addons_list(addons_client& client, addons_list& list)
 	config cfg;
 	client.request_addons_list(cfg);
 
-	if(!cfg) {
-		return false;
-	}
-
 	read_addons_list(cfg, list);
 
 	return true;
@@ -130,10 +126,8 @@ bool uninstall_local_addons()
 			config cfg;
 			get_addon_install_info(id, cfg);
 
-			const config& info_cfg = cfg.child("info");
-
-			if(info_cfg) {
-				title = info_cfg["title"].str();
+			if(const config* info_cfg = cfg.child("info")) {
+				title = (*info_cfg)["title"].str();
 			}
 		}
 

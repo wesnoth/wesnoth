@@ -306,12 +306,12 @@ void refresh_addon_version_info_cache()
 			config cfg;
 			get_addon_install_info(addon, cfg);
 
-			const config& info_cfg = cfg.child("info");
+			const config* info_cfg = cfg.child("info");
 			if(!info_cfg) {
 				continue;
 			}
 
-			const std::string& version = info_cfg["version"].str();
+			const std::string& version = (*info_cfg)["version"].str();
 			LOG_CFG << "cached add-on version: " << addon << " [" << version << "]\n";
 
 			version_info_cache[addon] = version;

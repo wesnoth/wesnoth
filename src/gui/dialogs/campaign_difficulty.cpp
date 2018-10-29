@@ -162,7 +162,8 @@ void campaign_difficulty::post_show(window& window)
 {
 	if(get_retval() == retval::OK) {
 		listbox& list = find_widget<listbox>(&window, "listbox", false);
-		selected_difficulty_ = difficulties_.child("difficulty", list.get_selected_row())["define"].str();
+		// TODO: Do we need to consider the possibility of the child not existing?
+		selected_difficulty_ = (*difficulties_.child("difficulty", list.get_selected_row()))["define"].str();
 	}
 }
 } // namespace dialogs

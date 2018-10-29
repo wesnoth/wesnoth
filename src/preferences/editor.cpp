@@ -75,9 +75,6 @@ namespace editor {
 			const config& cfg = preferences::get_child("editor_recent_files");
 
 			std::vector<std::string> mru;
-			if(!cfg) {
-				return mru;
-			}
 
 			for(const config& child : cfg.child_range("entry"))
 			{

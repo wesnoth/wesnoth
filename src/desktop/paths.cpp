@@ -143,7 +143,7 @@ inline std::string pretty_path(const std::string& path)
 inline config get_bookmarks_config()
 {
 	const config& cfg = preferences::get_child("dir_bookmarks");
-	return cfg ? cfg : config{};
+	return cfg;
 }
 
 inline void commit_bookmarks_config(config& cfg)

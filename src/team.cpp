@@ -364,10 +364,9 @@ void team::build(const config& cfg, const gamemap& map, int gold)
 		   << ", fog: " << uses_fog() << ".\n";
 
 	// Load the WML-cleared fog.
-	const config& fog_override = cfg.child("fog_override");
-	if(fog_override) {
+	if(auto fog_override = cfg.child("fog_override")) {
 		const std::vector<map_location> fog_vector
-				= map.parse_location_range(fog_override["x"], fog_override["y"], true);
+				= map.parse_location_range((*fog_override)["x"], (*fog_override)["y"], true);
 		fog_clearer_.insert(fog_vector.begin(), fog_vector.end());
 	}
 

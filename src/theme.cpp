@@ -446,8 +446,8 @@ theme::status_item::status_item(const config& cfg)
 	if(font_ == 0)
 		font_ = DefaultFontSize;
 
-	if(const config& label_child = cfg.child("label")) {
-		label_ = label(label_child);
+	if(auto label_child = cfg.child("label")) {
+		label_ = label(*label_child);
 	}
 
 	if(cfg.has_attribute("font_rgb")) {
@@ -654,24 +654,24 @@ bool theme::set_resolution(const SDL_Rect& screen)
 
 void theme::add_object(const config& cfg)
 {
-	if(const config& c = cfg.child("main_map")) {
-		main_map_ = object(c);
+	if(auto c = cfg.child("main_map")) {
+		main_map_ = object(*c);
 	}
 
-	if(const config& c = cfg.child("mini_map")) {
-		mini_map_ = object(c);
+	if(auto c = cfg.child("mini_map")) {
+		mini_map_ = object(*c);
 	}
 
-	if(const config& c = cfg.child("palette")) {
-		palette_ = object(c);
+	if(auto c = cfg.child("palette")) {
+		palette_ = object(*c);
 	}
 
-	if(const config& status_cfg = cfg.child("status")) {
-		for(const config::any_child& i : status_cfg.all_children_range()) {
+	if(auto status_cfg = cfg.child("status")) {
+		for(const config::any_child& i : status_cfg->all_children_range()) {
 			status_.emplace(i.key, status_item(i.cfg));
 		}
-		if(const config& unit_image_cfg = status_cfg.child("unit_image")) {
-			unit_image_ = object(unit_image_cfg);
+		if(auto unit_image_cfg = status_cfg->child("unit_image")) {
+			unit_image_ = object(*unit_image_cfg);
 		} else {
 			unit_image_ = object();
 		}
@@ -724,8 +724,8 @@ void theme::add_object(const config& cfg)
 		DBG_DP << "done adding slider...\n";
 	}
 
-	if(const config& c = cfg.child("main_map_border")) {
-		border_ = border_t(c);
+	if(auto c = cfg.child("main_map_border")) {
+		border_ = border_t(*c);
 	}
 }
 

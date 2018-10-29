@@ -214,7 +214,7 @@ void set_child(const std::string& key, const config& val) {
 
 const config &get_child(const std::string& key)
 {
-	return prefs.child(key);
+	return prefs.child_or_empty(key);
 }
 
 void erase(const std::string& key) {

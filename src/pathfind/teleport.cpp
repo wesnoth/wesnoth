@@ -266,8 +266,11 @@ const teleport_map get_teleport_locations(const unit &u,
 		for (const unit_ability & teleport : u.get_abilities("teleport")) {
 			const int tunnel_count = (teleport.first)->child_count("tunnel");
 			for(int i = 0; i < tunnel_count; ++i) {
-				config teleport_group_cfg = (teleport.first)->child("tunnel", i);
-				groups.emplace_back(vconfig(teleport_group_cfg, true), false);
+				if(auto teleport_group_cfg = (teleport.first)->child("tunnel", i)) {
+					groups.emplace_back(vconfig(*teleport_group_cfg, true), false);
+				} else {
+					// TODO: Error message?
+				}
 			}
 		}
 	}
@@ -281,12 +284,12 @@ const teleport_map get_teleport_locations(const unit &u,
 manager::manager(const config &cfg) : tunnels_(), id_(cfg["next_teleport_group_id"].to_int(0)) {
 	const int tunnel_count = cfg.child_count("tunnel");
 	for(int i = 0; i < tunnel_count; ++i) {
-		const config& t = cfg.child("tunnel", i);
-		if(!t["saved"].to_bool()) {
+		auto t = cfg.child("tunnel", i);
+		if(!(*t)["saved"].to_bool()) {
 			lg::wml_error() << "Do not use [tunnel] directly in a [scenario]. Use it in an [event] or [abilities] tag.\n";
 			continue;
 		}
-		const teleport_group tunnel(t);
+		const teleport_group tunnel(*t);
 		this->add(tunnel);
 	}
 }

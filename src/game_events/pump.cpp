@@ -218,7 +218,7 @@ bool wml_event_pump::filter_event(const event_handler& handler, const queued_eve
 	bool special_matches = special_filters.empty();
 	if(!special_matches && unit1 != units.end()) {
 		const bool matches_unit = ev.loc1.matches_unit(unit1);
-		const config& attack = ev.data.child("first");
+		const config& attack = ev.data.child_or_empty("first");
 		for(const vconfig& f : special_filters) {
 			if(f.empty()) {
 				special_matches = true;
@@ -244,7 +244,7 @@ bool wml_event_pump::filter_event(const event_handler& handler, const queued_eve
 	special_matches = special_filters.empty();
 	if(!special_matches && unit2 != units.end()) {
 		const bool matches_unit = ev.loc2.matches_unit(unit2);
-		const config& attack = ev.data.child("second");
+		const config& attack = ev.data.child_or_empty("second");
 		for(const vconfig& f : special_filters) {
 			if(f.empty()) {
 				special_matches = true;
@@ -286,8 +286,8 @@ void wml_event_pump::process_event(handler_ptr& handler_p, const queued_event& e
 	unit_map& units = resources::gameboard->units();
 	scoped_xy_unit first_unit("unit", ev.loc1, units);
 	scoped_xy_unit second_unit("second_unit", ev.loc2, units);
-	scoped_weapon_info first_weapon("weapon", ev.data.child("first"));
-	scoped_weapon_info second_weapon("second_weapon", ev.data.child("second"));
+	scoped_weapon_info first_weapon("weapon", ev.data.child_or_empty("first"));
+	scoped_weapon_info second_weapon("second_weapon", ev.data.child_or_empty("second"));
 
 	if(!filter_event(*handler_p, ev)) {
 		return;

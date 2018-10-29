@@ -1589,11 +1589,11 @@ bool unit::abilities_filter_matches(const config& cfg, bool attacker, int res) c
 //filter opponent and affect self/opponent/both option.
 bool unit::ability_filter_opponent(const std::string& ability,const config& cfg,const map_location& loc) const
 {
-	const config &filter = cfg.child("filter_opponent");
+	auto filter = cfg.child("filter_opponent");
 	if(!filter) {
 		return true;
 	}
-	return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc);
+	return unit_filter(vconfig(*filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc);
 }
 
 bool leadership_affects_self(const std::string& ability,const unit_map& units, const map_location& loc, const_attack_ptr weapon,const_attack_ptr opp_weapon)
@@ -1643,7 +1643,7 @@ std::pair<int, bool> ability_leadership(const std::string& ability,const unit_ma
 
 	unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
-		const config &filter = (*i->first).child("filter_opponent");
+		bool filter = (*i->first).has_child("filter_opponent");
 		bool show_result = false;
 		if(up == units.end() && !filter) {
 			show_result = un->abilities_filter_matches(*i->first, attacker, abil_value);

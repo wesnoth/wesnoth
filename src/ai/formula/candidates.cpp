@@ -62,10 +62,8 @@ candidate_action_with_filters::candidate_action_with_filters(
 	: base_candidate_action(name, type, cfg, function_table)
 	, filter_map_()
 {
-	const config & filter_params = cfg.child("filter");
-
-	if( filter_params ) {
-		for(const config::attribute filter_param : filter_params.attribute_range())
+	if(auto filter_params = cfg.child("filter")) {
+		for(const config::attribute filter_param : filter_params->attribute_range())
 		{
 			const_formula_ptr filter_formula(
 					new formula(filter_param.second, function_table));

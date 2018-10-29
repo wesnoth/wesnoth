@@ -243,9 +243,9 @@ toggle_button_definition::resolution::resolution(const config& cfg)
 	// toggle_button.hpp.
 	for(const auto& c : cfg.child_range("state"))
 	{
-		state.emplace_back(c.child("enabled"));
-		state.emplace_back(c.child("disabled"));
-		state.emplace_back(c.child("focused"));
+		state.emplace_back(c.child_or_empty("enabled"));
+		state.emplace_back(c.child_or_empty("disabled"));
+		state.emplace_back(c.child_or_empty("focused"));
 	}
 }
 

@@ -149,8 +149,8 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recall, child, use_undo, show, error_handler)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler)
 {
-	const config &destination = child.child("destination");
-	const config &source = child.child("source");
+	const config* destination = child.child("destination");
+	const config* source = child.child("source");
 	//check_checksums(*cfg);
 
 	if (!destination) {
@@ -165,8 +165,8 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 
 	//we must get locations by value instead of by references, because the iterators
 	//may become invalidated later
-	const map_location src(source, resources::gamedata);
-	const map_location dst(destination, resources::gamedata);
+	const map_location src(*source, resources::gamedata);
+	const map_location dst(*destination, resources::gamedata);
 
 	int weapon_num = child["weapon"];
 	// having defender_weapon in the replay fixes a bug (OOS) where one player (or observer) chooses a different defensive weapon.
@@ -322,14 +322,14 @@ SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child,  use_undo, /*show*/, /*error_
 {
 	bool undoable = true;
 
-	if(const config &last_select = child.child("last_select"))
+	if(auto last_select = child.child("last_select"))
 	{
 		//the select event cannot clear the undo stack.
-		resources::game_events->pump().fire("select", map_location(last_select, resources::gamedata));
+		resources::game_events->pump().fire("select", map_location(*last_select, resources::gamedata));
 	}
 	const std::string &event_name = child["raise"];
-	if (const config &source = child.child("source")) {
-		undoable = undoable & !std::get<0>(resources::game_events->pump().fire(event_name, map_location(source, resources::gamedata)));
+	if (auto source = child.child("source")) {
+		undoable = undoable & !std::get<0>(resources::game_events->pump().fire(event_name, map_location(*source, resources::gamedata)));
 	} else {
 		undoable = undoable & !std::get<0>(resources::game_events->pump().fire(event_name));
 	}

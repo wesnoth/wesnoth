@@ -176,7 +176,7 @@ void game_lua_kernel::extract_preload_scripts(const config& game_config)
 	for (const config& cfg : game_config.child_range("lua")) {
 		game_lua_kernel::preload_scripts.push_back(cfg);
 	}
-	game_lua_kernel::preload_config = game_config.child("game_config");
+	game_lua_kernel::preload_config = *game_config.child("game_config");
 }
 
 void game_lua_kernel::log_error(char const * msg, char const * context)
@@ -1365,7 +1365,7 @@ int game_lua_kernel::intf_get_starting_location(lua_State* L)
 static int intf_get_era(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
-	luaW_pushconfig(L, game_config_manager::get()->game_config().find_child("era","id",m));
+	luaW_pushconfig(L, *game_config_manager::get()->game_config().find_child("era","id",m));
 	return 1;
 }
 
@@ -1395,7 +1395,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 	return_string_attrib("campaign_type", classification.campaign_type.to_string());
 	if(classification.campaign_type==game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
 		return_cfgref_attrib("mp_settings", mp_settings.to_config());
-		return_cfgref_attrib("era", game_config_manager::get()->game_config().find_child("era","id",mp_settings.mp_era));
+		return_cfgref_attrib("era", *game_config_manager::get()->game_config().find_child("era","id",mp_settings.mp_era));
 		//^ finds the era with name matching mp_era, and creates a lua reference from the config of that era.
 
 		//This code for SigurdFD, not the cleanest implementation but seems to work just fine.
@@ -1489,11 +1489,11 @@ int game_lua_kernel::impl_current_get(lua_State *L)
 		config cfg;
 		cfg["name"] = ev.name;
 		cfg["id"]   = ev.id;
-		if (const config &weapon = ev.data.child("first")) {
-			cfg.add_child("weapon", weapon);
+		if(auto weapon = ev.data.child("first")) {
+			cfg.add_child("weapon", *weapon);
 		}
-		if (const config &weapon = ev.data.child("second")) {
-			cfg.add_child("second_weapon", weapon);
+		if(auto weapon = ev.data.child("second")) {
+			cfg.add_child("second_weapon", *weapon);
 		}
 
 		const config::attribute_value di = ev.data["damage_inflicted"];
@@ -3148,10 +3148,11 @@ static int intf_append_ai(lua_State *L)
 	if(!cfg.has_child("ai")) {
 		cfg = config {"ai", cfg};
 	}
+	config& ai_cfg = cfg.child_or_add("ai");
 	bool added_dummy_stage = false;
-	if(!cfg.child("ai").has_child("stage")) {
+	if(!ai_cfg.has_child("stage")) {
 		added_dummy_stage = true;
-		cfg.child("ai").add_child("stage", config {"name", "empty"});
+		ai_cfg.add_child("stage", config {"name", "empty"});
 	}
 	ai::configuration::expand_simplified_aspects(side_num, cfg);
 	if(added_dummy_stage) {
@@ -3161,7 +3162,7 @@ static int intf_append_ai(lua_State *L)
 			}
 		}
 	}
-	ai::manager::get_singleton().append_active_ai_for_side(side_num, cfg.child("ai"));
+	ai::manager::get_singleton().append_active_ai_for_side(side_num, cfg.child_or_empty("ai"));
 	return 0;
 }
 

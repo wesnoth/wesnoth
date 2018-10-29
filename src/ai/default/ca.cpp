@@ -261,13 +261,8 @@ double move_leader_to_goals_phase::evaluate()
 
 	const config &goal = get_leader_goal();
 	//passive leader can reach a goal
-	if (!goal) {
-		LOG_AI_TESTING_AI_DEFAULT << get_name() << "No goal found\n";
-		return BAD_SCORE;
-	}
-
 	if (goal.empty()) {
-		LOG_AI_TESTING_AI_DEFAULT << get_name() << "Empty goal found\n";
+		LOG_AI_TESTING_AI_DEFAULT << get_name() << "No goal or empty goal found\n";
 		return BAD_SCORE;
 	}
 

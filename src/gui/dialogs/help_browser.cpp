@@ -46,7 +46,7 @@ REGISTER_DIALOG(help_browser)
 
 help_browser::help_browser()
 	: initial_topic_("introduction")
-	, help_cfg_(game_config_manager::get()->game_config().child("help"))
+	, help_cfg_(game_config_manager::get()->game_config().child_or_empty("help"))
 {
 }
 

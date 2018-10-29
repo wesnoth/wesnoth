@@ -63,17 +63,17 @@ static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 	config::attribute_value pcfg_side = pcfg["side"];
 	const int side = pcfg_side.to_int(resources::controller->current_side());
 	persist_choice choice(ctx, global, side);
-	config cfg = mp_sync::get_user_choice("global_variable",choice,side).child("variables");
+	config* cfg = mp_sync::get_user_choice("global_variable",choice,side).child("variables");
 	try
 	{
 		if (cfg) {
-			std::size_t arrsize = cfg.child_count(global);
+			std::size_t arrsize = cfg->child_count(global);
 			if (arrsize == 0) {
-				resources::gamedata->set_variable(local,cfg[global]);
+				resources::gamedata->set_variable(local,(*cfg)[global]);
 			} else {
 				resources::gamedata->clear_variable(local);
 				for (std::size_t i = 0; i < arrsize; i++)
-					resources::gamedata->add_variable_cfg(local,cfg.child(global,i));
+					resources::gamedata->add_variable_cfg(local,*cfg->child(global,i));
 			}
 		} else {
 			resources::gamedata->set_variable(local,"");
@@ -112,7 +112,7 @@ static void set_global_variable(persist_context &ctx, const vconfig &pcfg)
 			}
 		} else {
 			for (std::size_t i = 0; i < arraylen; i++)
-				val.add_child(global,vars.child(local,i));
+				val.add_child(global,*vars.child(local,i));
 		}
 		ctx.set_var(global, val, pcfg["immediate"].to_bool());
 	}

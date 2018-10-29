@@ -663,10 +663,10 @@ void formula_ai::on_create(){
 
 
 	vars_ = map_formula_callable();
-	if (const config &ai_vars = cfg_.child("vars"))
+	if(auto ai_vars = cfg_.child("vars"))
 	{
 		variant var;
-		for(const config::attribute &i : ai_vars.attribute_range()) {
+		for(const config::attribute &i : ai_vars->attribute_range()) {
 			var.serialize_from_string(i.second);
 			vars_.add(i.first, var);
 		}
@@ -735,10 +735,6 @@ bool formula_ai::gamestate_change_observer::continue_check() {
 
 config formula_ai::to_config() const
 {
-	if (!cfg_)
-	{
-		return config();
-	}
 	DBG_AI << "formula_ai::to_config(): "<< cfg_<<std::endl;
 	config cfg = cfg_;
 

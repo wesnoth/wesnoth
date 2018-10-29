@@ -782,7 +782,7 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 	if(type=="insert") {
 		std::size_t turn = cmd["turn"].to_int();
 		std::size_t pos = cmd["pos"].to_int();
-		action_ptr act = action::from_config(cmd.child("action"), hidden_);
+		action_ptr act = action::from_config(cmd.child_or_empty("action"), hidden_);
 		if(!act) {
 			ERR_WB << "side_actions::execute_network_command(): received invalid action data!" << std::endl;
 			return;
@@ -804,7 +804,7 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 	} else if(type=="replace") {
 		std::size_t turn = cmd["turn"].to_int();
 		std::size_t pos = cmd["pos"].to_int();
-		action_ptr act = action::from_config(cmd.child("action"), hidden_);
+		action_ptr act = action::from_config(cmd.child_or_empty("action"), hidden_);
 		if(!act) {
 			ERR_WB << "side_actions::execute_network_command(): received invalid action data!" << std::endl;
 			return;

@@ -109,8 +109,8 @@ namespace {
 			u2.reset(new scoped_xy_unit("unit", who->get_location(), resources::gameboard->units()));
 		}
 
-		scoped_weapon_info w1("weapon", e.data.child("first"));
-		scoped_weapon_info w2("second_weapon", e.data.child("second"));
+		scoped_weapon_info w1("weapon", e.data.child_or_empty("first"));
+		scoped_weapon_info w2("second_weapon", e.data.child_or_empty("second"));
 
 		game_events::queued_event q(tag, "", map_location(x1, y1, wml_loc()), map_location(x2, y2, wml_loc()), e.data);
 		resources::lua_kernel->run_wml_action("command", vconfig(e.commands), q);
@@ -140,7 +140,8 @@ void undo_action::write(config & cfg) const
 void undo_action::read_event_vector(event_vector& vec, const config& cfg, const std::string& tag)
 {
 	for(auto c : cfg.child_range(tag)) {
-		vec.emplace_back(c.child("filter"), c.child("filter_second"), c.child("filter_weapons"), c.child("commands"));
+		// TODO: Error if any of the children are missing?
+		vec.emplace_back(c.child_or_empty("filter"), c.child_or_empty("filter_second"), c.child_or_empty("filter_weapons"), c.child_or_empty("commands"));
 	}
 }
 

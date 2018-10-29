@@ -293,10 +293,6 @@ void engine_lua::push_ai_table()
 }
 
 void engine_lua::do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b ){
-	if (!cfg) {
-		return;
-	}
-
 	if (!lua_ai_context_) {
 		return;
 	}
@@ -322,10 +318,6 @@ void engine_lua::do_parse_candidate_action_from_config( rca_context &context, co
 
 void engine_lua::do_parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr > > b )
 {
-	if (!cfg) {
-		return;
-	}
-
 	if (!lua_ai_context_) {
 		return;
 	}

@@ -233,15 +233,15 @@ void saved_game::expand_scenario()
 		game_config_manager::get()->load_game_config_for_game(this->classification());
 
 		const config& game_config = game_config_manager::get()->game_config();
-		const config& scenario =
+		const config* scenario =
 			game_config.find_child(classification().get_tagname(), "id", carryover_["next_scenario"]);
 
 		if(scenario) {
 			this->starting_point_type_ = STARTING_POINT_SCENARIO;
-			this->starting_point_ = scenario;
+			this->starting_point_ = *scenario;
 
 			// A hash has to be generated using an unmodified scenario data.
-			mp_settings_.hash = scenario.hash();
+			mp_settings_.hash = scenario->hash();
 
 			check_require_scenario();
 
@@ -300,26 +300,26 @@ struct modevents_entry
 
 void saved_game::load_mod(const std::string& type, const std::string& id, size_t pos)
 {
-	if(const config& cfg = game_config_manager::get()->game_config().find_child(type, "id", id)) {
+	if(auto cfg = game_config_manager::get()->game_config().find_child(type, "id", id)) {
 		// Note the addon_id if this mod is required to play the game in mp.
 		std::string require_attr = "require_" + type;
 
 		// By default, eras have "require_era = true", and mods have "require_modification = false".
 		bool require_default = (type == "era");
 
-		if(!cfg["addon_id"].empty() && cfg[require_attr].to_bool(require_default)) {
+		if(!(*cfg)["addon_id"].empty() && (*cfg)[require_attr].to_bool(require_default)) {
 			config required_mod;
 
-			required_mod["id"] = cfg["addon_id"];
-			required_mod["name"] = cfg["addon_title"];
-			required_mod["version"] = cfg["addon_version"];
-			required_mod["min_version"] = cfg["addon_min_version"];
+			required_mod["id"] = (*cfg)["addon_id"];
+			required_mod["name"] = (*cfg)["addon_title"];
+			required_mod["version"] = (*cfg)["addon_version"];
+			required_mod["min_version"] = (*cfg)["addon_min_version"];
 
 			mp_settings_.update_addon_requirements(required_mod);
 		}
 
 		// Copy events
-		for(const config& modevent : cfg.child_range("event")) {
+		for(const config& modevent : cfg->child_range("event")) {
 			if(modevent["enable_if"].empty()
 				|| variable_to_bool(carryover_.child_or_empty("variables"), modevent["enable_if"])
 			) {
@@ -328,12 +328,12 @@ void saved_game::load_mod(const std::string& type, const std::string& id, size_t
 		}
 
 		// Copy lua
-		for(const config& modlua : cfg.child_range("lua")) {
+		for(const config& modlua : cfg->child_range("lua")) {
 			this->starting_point_.add_child_at_total("lua", modlua, pos++);
 		}
 
 		// Copy load_resource
-		for(const config& load_resource : cfg.child_range("load_resource")) {
+		for(const config& load_resource : cfg->child_range("load_resource")) {
 			this->starting_point_.add_child_at_total("load_resource", load_resource, pos++);
 		}
 	} else {
@@ -373,7 +373,7 @@ void saved_game::expand_mp_events()
 		mods.clear();
 
 		while(starting_point_.has_child("load_resource")) {
-			std::string id = starting_point_.child("load_resource")["id"];
+			std::string id = (*starting_point_.child("load_resource"))["id"];
 			size_t pos = starting_point_.find_total_first_of("load_resource");
 			starting_point_.remove_child("load_resource", 0);
 			if(loaded_resources.find(id) == loaded_resources.end()) {
@@ -401,8 +401,8 @@ void saved_game::expand_mp_options()
 		config& variables = carryover_.child_or_add("variables");
 
 		for(modevents_entry& mod : mods) {
-			if(const config& cfg = this->mp_settings().options.find_child(mod.type, "id", mod.id)) {
-				for(const config& option : cfg.child_range("option")) {
+			if(auto cfg = this->mp_settings().options.find_child(mod.type, "id", mod.id)) {
+				for(const config& option : cfg->child_range("option")) {
 					try {
 						variable_access_create(option["id"], variables).as_scalar() = option["value"];
 					} catch(const invalid_variablename_exception&) {
@@ -426,11 +426,15 @@ void saved_game::expand_random_scenario()
 			LOG_NG << "randomly generating scenario...\n";
 			const cursor::setter cursor_setter(cursor::WAIT);
 
-			config scenario_new =
-				random_generate_scenario(starting_point_["scenario_generation"], starting_point_.child("generator"));
+			if(auto settings = starting_point_.child("generator")) {
+				config scenario_new = random_generate_scenario(starting_point_["scenario_generation"], *settings);
 
-			post_scenario_generation(starting_point_, scenario_new);
-			starting_point_ = scenario_new;
+				post_scenario_generation(starting_point_, scenario_new);
+				starting_point_ = scenario_new;
+			} else {
+				// TODO: Is this the right way to raise an error here?
+				//throw error("Missing [generator] tag in procedurally-generated scenario");
+			}
 
 			update_label();
 			set_defaults();
@@ -442,13 +446,17 @@ void saved_game::expand_random_scenario()
 		}
 
 		// If the map should be randomly generated
-		// We don’t want that we accidentally to this twice so we check for starting_point_["map_data"].empty()
+		// We don’t want that we accidentally do this twice so we check for starting_point_["map_data"].empty()
 		if(starting_point_["map_data"].empty() && !starting_point_["map_generation"].empty()) {
 			LOG_NG << "randomly generating map...\n";
 			const cursor::setter cursor_setter(cursor::WAIT);
 
-			starting_point_["map_data"] =
-				random_generate_map(starting_point_["map_generation"], starting_point_.child("generator"));
+			if(auto settings = starting_point_.child("generator")) {
+				starting_point_["map_data"] = random_generate_map(starting_point_["map_generation"], *settings);
+			} else {
+				// TODO: Is this the right way to raise an error here?
+				//throw error("Missing [generator] tag in procedurally-generated scenario");
+			}
 		}
 	}
 }
@@ -530,10 +538,10 @@ config& saved_game::get_starting_point()
 	return starting_point_;
 }
 
-const config& saved_game::get_replay_starting_point()
+const config* saved_game::get_replay_starting_point()
 {
 	if(!replay_start_.empty()) {
-		return replay_start_;
+		return &replay_start_;
 	}
 
 	if(!has_carryover_expanded_) {
@@ -543,10 +551,10 @@ const config& saved_game::get_replay_starting_point()
 	}
 
 	if(starting_point_type_ == STARTING_POINT_SCENARIO) {
-		return starting_point_;
+		return &starting_point_;
 	}
 
-	return this->replay_start_.child("some_non_existet_invalid");
+	return nullptr;
 }
 
 void saved_game::convert_to_start_save()
@@ -678,19 +686,19 @@ void saved_game::set_data(config& cfg)
 {
 	log_scope("read_game");
 
-	if(config& caryover_sides = cfg.child("carryover_sides")) {
-		carryover_.swap(caryover_sides);
+	if(auto caryover_sides = cfg.child("carryover_sides")) {
+		carryover_.swap(*caryover_sides);
 		has_carryover_expanded_ = true;
-	} else if(config& caryover_sides_start = cfg.child("carryover_sides_start")) {
-		carryover_.swap(caryover_sides_start);
+	} else if(auto caryover_sides_start = cfg.child("carryover_sides_start")) {
+		carryover_.swap(*caryover_sides_start);
 		has_carryover_expanded_ = false;
 	} else {
 		carryover_.clear();
 		has_carryover_expanded_ = false;
 	}
 
-	if(config& replay_start = cfg.child("replay_start")) {
-		replay_start_.swap(replay_start);
+	if(auto replay_start = cfg.child("replay_start")) {
+		replay_start_.swap(*replay_start);
 	} else {
 		replay_start_.clear();
 	}
@@ -704,12 +712,12 @@ void saved_game::set_data(config& cfg)
 
 	replay_data_.set_to_end();
 
-	if(config& snapshot = cfg.child("snapshot")) {
+	if(auto snapshot = cfg.child("snapshot")) {
 		this->starting_point_type_ = STARTING_POINT_SNAPSHOT;
-		this->starting_point_.swap(snapshot);
-	} else if(config& scenario = cfg.child("scenario")) {
+		this->starting_point_.swap(*snapshot);
+	} else if(auto scenario = cfg.child("scenario")) {
 		this->starting_point_type_ = STARTING_POINT_SCENARIO;
-		this->starting_point_.swap(scenario);
+		this->starting_point_.swap(*scenario);
 	} else {
 		this->starting_point_type_ = STARTING_POINT_NONE;
 		this->starting_point_.clear();
@@ -717,9 +725,9 @@ void saved_game::set_data(config& cfg)
 
 	LOG_NG << "scenario: '" << carryover_["next_scenario"].str() << "'\n";
 
-	if(const config& stats = cfg.child("statistics")) {
+	if(auto stats = cfg.child("statistics")) {
 		statistics::fresh_stats();
-		statistics::read_stats(stats);
+		statistics::read_stats(*stats);
 	}
 
 	classification_ = game_classification(cfg);

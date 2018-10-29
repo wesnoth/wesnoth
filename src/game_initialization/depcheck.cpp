@@ -152,7 +152,8 @@ bool manager::exists(const elem& e) const
 
 std::string manager::find_name_for(const elem& e) const
 {
-	const config& cfg = depinfo_.find_child(e.type, "id", e.id);
+	// TODO: What if the tag does not exist?
+	const config& cfg = depinfo_.find_child_opt(e.type, "id", e.id);
 	return cfg["name"];
 }
 
@@ -179,7 +180,8 @@ std::vector<std::string> manager::get_required(const elem& e) const
 		return result;
 	}
 
-	config data = depinfo_.find_child(e.type, "id", e.id);
+	// TODO: What if the tag does not exist?
+	config data = depinfo_.find_child_opt(e.type, "id", e.id);
 
 	if(data.has_attribute("force_modification")) {
 		result = utils::split(data["force_modification"], ',');
@@ -227,8 +229,9 @@ bool manager::conflicts(const elem& elem1, const elem& elem2, bool directonly) c
 		return false;
 	}
 
-	config data1 = depinfo_.find_child(elem1.type, "id", elem1.id);
-	config data2 = depinfo_.find_child(elem2.type, "id", elem2.id);
+	// TODO: What if the tag does not exist?
+	config data1 = depinfo_.find_child_opt(elem1.type, "id", elem1.id);
+	config data2 = depinfo_.find_child_opt(elem2.type, "id", elem2.id);
 
 	// Whether we should skip the check entirely
 	if(data1.has_attribute("ignore_incompatible_" + elem2.type)) {
@@ -320,7 +323,8 @@ bool manager::requires(const elem& elem1, const elem& elem2) const
 		return false;
 	}
 
-	config data = depinfo_.find_child(elem1.type, "id", elem1.id);
+	// TODO: What if the tag does not exist?
+	config data = depinfo_.find_child_opt(elem1.type, "id", elem1.id);
 
 	if(data.has_attribute("force_modification")) {
 		std::vector<std::string> required = utils::split(data["force_modification"]);
@@ -366,7 +370,8 @@ void manager::try_modifications(const std::vector<std::string>& ids, bool force)
 
 void manager::try_modification_by_index(int index, bool activate, bool force)
 {
-	std::string id = depinfo_.child("modification", index)["id"];
+	// TODO: What if the tag does not exist?
+	std::string id = (*depinfo_.child("modification", index))["id"];
 	std::vector<std::string> mods_copy = mods_;
 
 	if(activate) {
@@ -385,12 +390,14 @@ void manager::try_modification_by_index(int index, bool activate, bool force)
 
 void manager::try_era_by_index(int index, bool force)
 {
-	try_era(depinfo_.child("era", index)["id"], force);
+	// TODO: What if the tag does not exist?
+	try_era((*depinfo_.child("era", index))["id"], force);
 }
 
 void manager::try_scenario_by_index(int index, bool force)
 {
-	try_scenario(depinfo_.child("scenario", index)["id"], force);
+	// TODO: What if the tag does not exist?
+	try_scenario((*depinfo_.child("scenario", index))["id"], force);
 }
 
 int manager::get_era_index() const
@@ -424,7 +431,8 @@ int manager::get_scenario_index() const
 
 bool manager::is_modification_active(int index) const
 {
-	std::string id = depinfo_.child("modification", index)["id"];
+	// TODO: What if the tag does not exist?
+	std::string id = (*depinfo_.child("modification", index))["id"];
 	return std::find(mods_.begin(), mods_.end(), id) != mods_.end();
 }
 
@@ -437,7 +445,8 @@ bool manager::enable_mods_dialog(const std::vector<std::string>& mods, const std
 {
 	std::vector<std::string> items;
 	for(const std::string& mod : mods) {
-		items.push_back(depinfo_.find_child("modification", "id", mod)["name"]);
+		// TODO: What if the tag does not exist?
+		items.push_back((depinfo_.find_child_opt("modification", "id", mod))["name"]);
 	}
 
 	gui2::dialogs::depcheck_confirm_change dialog(true, items, requester);
@@ -448,7 +457,8 @@ bool manager::disable_mods_dialog(const std::vector<std::string>& mods, const st
 {
 	std::vector<std::string> items;
 	for(const std::string& mod : mods) {
-		items.push_back(depinfo_.find_child("modification", "id", mod)["name"]);
+		// TODO: What if the tag does not exist?
+		items.push_back((depinfo_.find_child_opt("modification", "id", mod))["name"]);
 	}
 
 	gui2::dialogs::depcheck_confirm_change dialog(false, items, requester);
@@ -459,7 +469,8 @@ std::string manager::change_era_dialog(const std::vector<std::string>& eras)
 {
 	std::vector<std::string> items;
 	for(const std::string& era : eras) {
-		items.push_back(depinfo_.find_child("era", "id", era)["name"]);
+		// TODO: What if the tag does not exist?
+		items.push_back((depinfo_.find_child_opt("era", "id", era))["name"]);
 	}
 
 	gui2::dialogs::depcheck_select_new dialog(ERA, items);
@@ -475,7 +486,8 @@ std::string manager::change_scenario_dialog(const std::vector<std::string>& scen
 {
 	std::vector<std::string> items;
 	for(const std::string& scenario : scenarios) {
-		items.push_back(depinfo_.find_child("scenario", "id", scenario)["name"]);
+		// TODO: What if the tag does not exist?
+		items.push_back((depinfo_.find_child_opt("scenario", "id", scenario))["name"]);
 	}
 
 	gui2::dialogs::depcheck_select_new dialog(SCENARIO, items);

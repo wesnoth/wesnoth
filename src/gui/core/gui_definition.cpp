@@ -123,7 +123,8 @@ gui_definition::gui_definition(const config& cfg)
 	 * - Override the default and above per instance of the widget, some buttons
 	 *   can give a different sound.
 	 */
-	const config& settings = cfg.child("settings");
+	// TODO: Error if the [settings] child is missing?
+	const config& settings = cfg.child_or_empty("settings");
 
 	popup_show_delay_ = settings["popup_show_delay"];
 	popup_show_time_ = settings["popup_show_time"];

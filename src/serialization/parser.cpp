@@ -215,8 +215,8 @@ void parser::parse_element()
 		}
 
 		// Find the last child of the current element whose name is element
-		if(config& c = elements.top().cfg->child(elname, -1)) {
-			current_element = &c;
+		if(auto c = elements.top().cfg->child(elname, -1)) {
+			current_element = c;
 
 			if(validator_) {
 				validator_->open_tag(elname, tok_.get_start_line(), tok_.get_file(), true);

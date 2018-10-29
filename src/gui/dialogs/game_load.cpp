@@ -354,18 +354,16 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 
 				const config* campaign = nullptr;
 				if(!campaign_id.empty()) {
-					if(const config& c = cache_config_.find_child("campaign", "id", campaign_id)) {
-						campaign = &c;
+					if(auto c = cache_config_.find_child("campaign", "id", campaign_id)) {
+						campaign = c;
 					}
 				}
 
 				if (campaign != nullptr) {
-					try {
-						const config &difficulty = campaign->find_child("difficulty", "define", cfg_summary["difficulty"]);
+					if(auto difficulty = campaign->find_child("difficulty", "define", cfg_summary["difficulty"])) {
 						std::ostringstream ss;
-						ss << difficulty["label"] << " (" << difficulty["description"] << ")";
+						ss << (*difficulty)["label"] << " (" << (*difficulty)["description"] << ")";
 						difficulty_human_str = ss.str();
-					} catch(const config::error&) {
 					}
 				}
 
@@ -421,9 +419,9 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 		str << "\n" << _("Modifications: ");
 		for(const auto& mod_id : active_mods) {
 			std::string mod_name;
-			try {
-				mod_name = cache_config_.find_child("modification", "id", mod_id)["name"].str();
-			} catch(const config::error&) {
+			if(auto mod_cfg = cache_config_.find_child("modification", "id", mod_id)) {
+				mod_name = (*mod_cfg)["name"].str();
+			} else {
 				// Fallback to nontranslatable mod id.
 				mod_name = "(" + mod_id + ")";
 			}

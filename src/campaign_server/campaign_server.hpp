@@ -141,7 +141,7 @@ private:
 	config& campaigns() { return cfg_.child("campaigns"); }
 
 	/** Retrieves a campaign by id if found, or a null config otherwise. */
-	config& get_campaign(const std::string& id) { return campaigns().find_child("campaign", "name", id); }
+	config& get_campaign(const std::string& id) { return campaigns().find_child_checked("campaign", "name", id); }
 
 	void delete_campaign(const std::string& id);
 

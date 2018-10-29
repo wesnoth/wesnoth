@@ -352,9 +352,9 @@ toggle_panel_definition::resolution::resolution(const config& cfg)
 	// Note the order should be the same as the enum state_t in toggle_panel.hpp.
 	for(const auto& c : cfg.child_range("state"))
 	{
-		state.emplace_back(c.child("enabled"));
-		state.emplace_back(c.child("disabled"));
-		state.emplace_back(c.child("focused"));
+		state.emplace_back(c.child_or_empty("enabled"));
+		state.emplace_back(c.child_or_empty("disabled"));
+		state.emplace_back(c.child_or_empty("focused"));
 	}
 }
 
@@ -397,11 +397,11 @@ builder_toggle_panel::builder_toggle_panel(const config& cfg)
 	, retval_id_(cfg["return_value_id"])
 	, retval_(cfg["return_value"])
 {
-	const config& c = cfg.child("grid");
+	const config* c = cfg.child("grid");
 
 	VALIDATE(c, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(c);
+	grid = std::make_shared<builder_grid>(*c);
 }
 
 widget* builder_toggle_panel::build() const

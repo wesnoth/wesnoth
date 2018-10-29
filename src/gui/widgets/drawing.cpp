@@ -170,7 +170,7 @@ builder_drawing::builder_drawing(const config& cfg)
 	: builder_styled_widget(cfg)
 	, width(cfg["width"])
 	, height(cfg["height"])
-	, draw(cfg.child("draw"))
+	, draw(cfg.child_or_empty("draw"))
 {
 	assert(!draw.empty());
 }

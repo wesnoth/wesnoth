@@ -216,11 +216,11 @@ matrix_definition::matrix_definition(const config& cfg)
 
 matrix_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
-	, content(new builder_grid(cfg.child("content", "[matrix_definition]")))
+	, content(new builder_grid(cfg.child_checked("content")))
 {
 	// Note the order should be the same as the enum state_t in matrix.hpp.
-	state.emplace_back(cfg.child("state_enabled"));
-	state.emplace_back(cfg.child("state_disabled"));
+	state.emplace_back(cfg.child_or_empty("state_enabled"));
+	state.emplace_back(cfg.child_or_empty("state_disabled"));
 }
 
 // }---------- BUILDER -----------{
@@ -275,22 +275,22 @@ builder_matrix::builder_matrix(const config& cfg)
 	, builder_bottom(nullptr)
 	, builder_left(nullptr)
 	, builder_right(nullptr)
-	, builder_main(create_widget_builder(cfg.child("main", "[matrix]")))
+	, builder_main(create_widget_builder(cfg.child_checked("main")))
 {
-	if(const config& top = cfg.child("top")) {
-		builder_top = std::make_shared<builder_grid>(top);
+	if(auto top = cfg.child("top")) {
+		builder_top = std::make_shared<builder_grid>(*top);
 	}
 
-	if(const config& bottom = cfg.child("bottom")) {
-		builder_bottom = std::make_shared<builder_grid>(bottom);
+	if(auto bottom = cfg.child("bottom")) {
+		builder_bottom = std::make_shared<builder_grid>(*bottom);
 	}
 
-	if(const config& left = cfg.child("left")) {
-		builder_left = std::make_shared<builder_grid>(left);
+	if(auto left = cfg.child("left")) {
+		builder_left = std::make_shared<builder_grid>(*left);
 	}
 
-	if(const config& right = cfg.child("right")) {
-		builder_right = std::make_shared<builder_grid>(right);
+	if(auto right = cfg.child("right")) {
+		builder_right = std::make_shared<builder_grid>(*right);
 	}
 }
 

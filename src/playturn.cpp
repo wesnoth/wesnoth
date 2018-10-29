@@ -135,50 +135,50 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		ERR_NW << "processing network data while still having data on the replay." << std::endl;
 	}
 
-	if (const config &message = cfg.child("message"))
+	if(auto message = cfg.child("message"))
 	{
-		game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), message["sender"], message["side"],
-				message["message"], events::chat_handler::MESSAGE_PUBLIC,
+		game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), (*message)["sender"], (*message)["side"],
+				(*message)["message"], events::chat_handler::MESSAGE_PUBLIC,
 				preferences::message_bell());
 	}
-	else if (const config &whisper = cfg.child("whisper") /*&& is_observer()*/)
+	else if(auto whisper = cfg.child("whisper") /*&& is_observer()*/)
 	{
-		game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), "whisper: " + whisper["sender"].str(), 0,
-				whisper["message"], events::chat_handler::MESSAGE_PRIVATE,
+		game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), "whisper: " + (*whisper)["sender"].str(), 0,
+				(*whisper)["message"], events::chat_handler::MESSAGE_PRIVATE,
 				preferences::message_bell());
 	}
-	else if (const config &observer = cfg.child("observer") )
+	else if(auto observer = cfg.child("observer") )
 	{
-		game_display::get_singleton()->get_chat_manager().add_observer(observer["name"]);
+		game_display::get_singleton()->get_chat_manager().add_observer((*observer)["name"]);
 	}
-	else if (const config &observer_quit = cfg.child("observer_quit"))
+	else if(auto observer_quit = cfg.child("observer_quit"))
 	{
-		game_display::get_singleton()->get_chat_manager().remove_observer(observer_quit["name"]);
+		game_display::get_singleton()->get_chat_manager().remove_observer((*observer_quit)["name"]);
 	}
-	else if (cfg.child("leave_game")) {
+	else if(cfg.child("leave_game")) {
 		throw ingame_wesnothd_error("");
 	}
-	else if (const config &turn = cfg.child("turn"))
+	else if(auto turn = cfg.child("turn"))
 	{
-		return handle_turn(turn, chat_only);
+		return handle_turn(*turn, chat_only);
 	}
 	else if (cfg.has_child("whiteboard"))
 	{
 		resources::whiteboard->process_network_data(cfg);
 	}
-	else if (const config &change = cfg.child("change_controller"))
+	else if(auto change = cfg.child("change_controller"))
 	{
-		if(change.empty()) {
+		if(change->empty()) {
 			ERR_NW << "Bad [change_controller] signal from server, [change_controller] tag was empty." << std::endl;
 			return PROCESS_CONTINUE;
 		}
 
-		const int side = change["side"].to_int();
-		const bool is_local = change["is_local"].to_bool();
-		const std::string player = change["player"];
+		const int side = (*change)["side"].to_int();
+		const bool is_local = (*change)["is_local"].to_bool();
+		const std::string player = (*change)["player"];
 		const std::size_t index = side - 1;
 		if(index >= resources::gameboard->teams().size()) {
-			ERR_NW << "Bad [change_controller] signal from server, side out of bounds: " << change.debug() << std::endl;
+			ERR_NW << "Bad [change_controller] signal from server, side out of bounds: " << change->debug() << std::endl;
 			return PROCESS_CONTINUE;
 		}
 
@@ -209,9 +209,9 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		return restart ? PROCESS_RESTART_TURN : PROCESS_CONTINUE;
 	}
 
-	else if (const config &side_drop_c = cfg.child("side_drop"))
+	else if(auto side_drop_c = cfg.child("side_drop"))
 	{
-		const int  side_drop = side_drop_c["side_num"].to_int(0);
+		const int  side_drop = (*side_drop_c)["side_num"].to_int(0);
 		std::size_t index = side_drop -1;
 
 		bool restart = side_drop == game_display::get_singleton()->playing_side();
@@ -222,8 +222,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		}
 
 		team::CONTROLLER ctrl;
-		if(!ctrl.parse(side_drop_c["controller"])) {
-			ERR_NW << "unknown controller type issued from server on side drop: " << side_drop_c["controller"] << std::endl;
+		if(!ctrl.parse((*side_drop_c)["controller"])) {
+			ERR_NW << "unknown controller type issued from server on side drop: " << (*side_drop_c)["controller"] << std::endl;
 			throw ingame_wesnothd_error("");
 		}
 

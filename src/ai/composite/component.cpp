@@ -193,11 +193,11 @@ bool component_manager::add_component(component *root, const std::string &path, 
 	if (c==nullptr) {
 		return false;
 	}
-	const config &ch = cfg.child(tail.property);
+	const config* ch = cfg.child(tail.property);
 	if (!ch) {
 		return false;
 	}
-	return c->add_child(tail, ch);
+	return c->add_child(tail, *ch);
 
 }
 
@@ -208,11 +208,11 @@ bool component_manager::change_component(component *root, const std::string &pat
 	if (c==nullptr) {
 		return false;
 	}
-	const config &ch = cfg.child(tail.property);
+	const config* ch = cfg.child(tail.property);
 	if (!ch) {
 		return false;
 	}
-	return c->change_child(tail,ch);
+	return c->change_child(tail,*ch);
 }
 
 bool component_manager::delete_component(component *root, const std::string &path)
