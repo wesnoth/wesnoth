@@ -449,13 +449,13 @@ if __name__ == "__main__":
         logging.getLogger().addHandler(handler)
 
     server = "localhost"
-    if(args.server != None):
+    if(args.server is not None):
         server = args.server
 
-    if args.port != None:
+    if args.port is not None:
         server += ":" + args.port
         campaignd_configured = True
-    elif args.branch != None:
+    elif args.branch is not None:
         for port, version in libwml.CampaignClient.portmap:
             if version.startswith(args.branch):
                 server += ":" + port
@@ -464,7 +464,7 @@ if __name__ == "__main__":
 
     target = None
     tmp = tempdir()
-    if(args.temp_dir != None):
+    if(args.temp_dir is not None):
         if(args.upload_all):
             logging.error("TEMP-DIR not allowed for UPLOAD-ALL.")
             sys.exit(2)
@@ -520,10 +520,10 @@ if __name__ == "__main__":
                 print(k)
 
     # Upload an addon to wescamp.
-    elif(args.upload != None):
+    elif(args.upload is not None):
         assert_campaignd(campaignd_configured)
         assert_wescamp(wescamp_configured)
-        if(wescamp == None):
+        if(wescamp is None):
             logging.error("No wescamp checkout specified")
             sys.exit(2)
 
@@ -546,7 +546,7 @@ if __name__ == "__main__":
     elif(args.upload_all):
         assert_campaignd(campaignd_configured)
         assert_wescamp(wescamp_configured)
-        if(wescamp == None):
+        if(wescamp is None):
             logging.error("No wescamp checkout specified.")
             sys.exit(2)
 
@@ -581,7 +581,7 @@ if __name__ == "__main__":
     elif(args.checkout or args.checkout_readonly):
         assert_wescamp(wescamp_configured)
 
-        if(wescamp == None):
+        if(wescamp is None):
             logging.error("No wescamp checkout specified.")
             sys.exit(2)
 

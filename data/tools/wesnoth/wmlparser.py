@@ -378,12 +378,12 @@ class Parser:
         elif macro[0] == ".":
             dirpath = self.current_path + macro[1:]
         # Otherwise, try to interpret the macro as a filename in the data dir.
-        elif self.data_dir != None:
+        elif self.data_dir is not None:
             dirpath = self.data_dir + "/" + macro
         else:
             dirpath = None
 
-        if dirpath != None and os.path.exists(dirpath):
+        if dirpath is not None and os.path.exists(dirpath):
             dirpath = os.path.normpath(dirpath)
             if self.only_expand_pathes:
                 if not [x for x in self.only_expand_pathes if os.path.commonprefix([dirpath, x]) == x]:
@@ -675,7 +675,7 @@ class Parser:
                         self.read_while(" ")
 
                     text = self.read_lines_until("#enddef")
-                    if text == None:
+                    if text is None:
                         raise Error(self, "#define without #enddef")
 
                     self.macros[params[0]] = self.Macro(

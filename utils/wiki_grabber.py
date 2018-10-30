@@ -121,7 +121,7 @@ if __name__ == "__main__":
 
         res = re.compile("^" + key + " *= *(.*)$", re.M).search(data)
 
-        if res != None:
+        if res is not None:
             res = res.group(1)
 
         return res
@@ -131,7 +131,7 @@ if __name__ == "__main__":
 
         page = get_value(data, "@page")
         order = get_value(data, "@order")
-        if order == None:
+        if order is None:
             order = 10000
 
         return [page, order]
