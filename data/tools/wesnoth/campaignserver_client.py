@@ -57,7 +57,7 @@ class CampaignClient:
         self.verbose = False
         self.quiet = quiet
 
-        if address != None:
+        if address is not None:
             self.canceled = False
             self.error = False
             s = address.split(":")

@@ -50,7 +50,7 @@ while len(clients) > 0 and time.monotonic() < waiting_start_time + EXIT_WAIT_TIM
   time.sleep(1.0)
   clients_copy = list(clients)
   for c in clients_copy:
-    if c.poll() != None:
+    if c.poll() is not None:
       # The process has terminated, remove it from the set.
       clients.remove(c)
 

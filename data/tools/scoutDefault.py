@@ -36,7 +36,7 @@ AI_SCOUTS_TEXT = "\n\t[ai]%s\n\t[/ai]" % SCOUTS_TEXT.replace('\n','\n\t')
 
 def applySearch(text, RE, groupId):
     data = RE.search(text, 0)
-    if data != None:
+    if data is not None:
         return data.group(groupId)
     else:
         return ""
@@ -65,7 +65,7 @@ class wikiAi:
         self.updated_description = ""
 
     def addAiData(self, aiContent):
-        if aiContent != None:
+        if aiContent is not None:
             self.start = applySearch(aiContent, AI_START, 'text')
             self.scouts = applySearch(aiContent, AI_SCOUTS, 'text')
             self.full_description = aiContent
@@ -89,9 +89,9 @@ class wikiSide:
         self.scouts_setting = False
 
     def addAiData(self, sideContent):
-        if sideContent != None:
+        if sideContent is not None:
             aiDetail = ai_block.search(sideContent, 0)
-            while aiDetail != None:
+            while aiDetail is not None:
                 if applySearch(aiDetail.group(), AI_TIME, 'text') == "" and applySearch(aiDetail.group(), AI_TURNS, 'text') == "":
                     self.ai.append(wikiAi())
                     self.ai[self.getCurrentAiNumber()].addAiData(aiDetail.group())
@@ -145,7 +145,7 @@ class wikiScenario:
     def parseScenario (self, scenarioContent):
         self.addScenarioData(scenarioContent)
         sideDetail = side_block.search(scenarioContent, 0)
-        while sideDetail != None:
+        while sideDetail is not None:
             self.addSideData(sideDetail.group())
             self.addAiData(sideDetail.group())
             searchStart = sideDetail.end()

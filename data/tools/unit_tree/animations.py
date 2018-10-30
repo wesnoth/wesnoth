@@ -64,7 +64,7 @@ def write_table_row(out, unit, color, name = None):
         if abil.get_all(tag = "teleport"):
             needed["teleport"] = True
 
-    if name == None: name = unit.id
+    if name is None: name = unit.id
 
     out.write("<tr><td class=\"%s\">%s</td>" % (color and "c1" or "c2", name))
 
