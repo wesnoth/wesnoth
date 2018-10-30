@@ -258,8 +258,10 @@ public:
 	 *
 	 * @param event                  The event to fire.
 	 * @param target                 The widget that should receive the event.
-	 * @param pos                    The location touched.
-	 * @param distance               The distance moved.
+	 * @param center                 The location touched.
+	 * @param dTheta                 Probably the direction moved.
+	 * @param dDist                  The distance moved.
+	 * @param numFingers             Probably the number of fingers touching the screen.
 	 */
 	bool fire(const ui_event event,
 			  widget& target,
