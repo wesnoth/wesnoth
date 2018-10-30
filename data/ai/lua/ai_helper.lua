@@ -1369,38 +1369,62 @@ function ai_helper.can_reach(unit, x, y, cfg)
     return can_reach
 end
 
-function ai_helper.get_reachable_unocc(unit, cfg)
-    -- Get all reachable hexes for @unit that are (or appear) unoccupied, taking
-    -- vision into account as specified by the @cfg.viewing_side parameter.
-    -- Returned array is a location set, with value = 1 for each reachable hex
+function ai_helper.get_reachmap(unit, cfg)
+    -- Get all reachable hexes for @unit that are actually available; that is,
+    -- hexes that, at most, have own units on them which can move out of the way.
+    -- By contrast, wesnoth.find_reach also includes hexes with allied units on
+    -- them, as well as own unit with no moves left.
+    -- Returned array is a location set, with values set to remaining MP after the
+    -- unit moves to the respective hexes.
     --
     -- @cfg: table with optional configuration parameters:
     --   moves: if set to 'max', unit MP is set to max_moves before calculation
     --   viewing_side: see comments at beginning of this file. Defaults to side of @unit
+    --   exclude_occupied: if true, exclude hexes that have units on them; defaults to
+    --     false, in which case hexes with own units with moves > 0 are included
+    --   avoid_map: location set of hexes to be excluded
     --   plus all other parameters to wesnoth.find_reach
 
     local viewing_side = cfg and cfg.viewing_side or unit.side
 
     local old_moves = unit.moves
-    if cfg then
-        if (cfg.moves == 'max') then unit.moves = unit.max_moves end
-    end
+    if cfg and (cfg.moves == 'max') then unit.moves = unit.max_moves end
 
-    local reach = LS.create()
+    local reachmap = LS.create()
     local initial_reach = wesnoth.find_reach(unit, cfg)
     for _,loc in ipairs(initial_reach) do
-        local unit_in_way = wesnoth.get_unit(loc[1], loc[2])
-        if (not unit_in_way) or (not ai_helper.is_visible_unit(viewing_side, unit_in_way)) then
-            reach:insert(loc[1], loc[2], 1)
+        local is_available = true
+        if cfg and cfg.avoid_map and cfg.avoid_map:get(loc[1], loc[2]) then
+            is_available = false
+        else
+            local unit_in_way = wesnoth.get_unit(loc[1], loc[2])
+            if unit_in_way and (unit_in_way.id ~= unit.id) and ai_helper.is_visible_unit(viewing_side, unit_in_way) then
+                if cfg and cfg.exclude_occupied then
+                    is_available = false
+                elseif (unit_in_way.side ~= unit.side) or (unit_in_way.moves == 0) then
+                    is_available = false
+                end
+            end
+        end
+
+        if is_available then
+            reachmap:insert(loc[1], loc[2], loc[3])
         end
     end
 
-    -- Also need to include the hex the unit is on itself
-    reach:insert(unit.x, unit.y, 1)
-
     unit.moves = old_moves
 
-    return reach
+    return reachmap
+end
+
+function ai_helper.get_reachable_unocc(unit, cfg)
+    -- Same as ai_helper.get_reachmap with exclude_occupied = true
+    -- This function is now redundant, but we keep it for backward compatibility.
+
+    local cfg_GRU = cfg and ai_helper.table_copy(cfg) or {}
+    cfg_GRU.exclude_occupied = true
+
+    return ai_helper.get_reachmap(unit, cfg_GRU)
 end
 
 function ai_helper.find_path_with_shroud(unit, x, y, cfg)
