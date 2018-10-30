@@ -131,7 +131,7 @@ bool positional_source::is_global() const
 
 void positional_source::update(unsigned int time, const display &disp)
 {
-	if (time - last_played_ < unsigned(min_delay_) || sound::is_sound_playing(id_))
+	if (time - last_played_ < static_cast<unsigned>(min_delay_) || sound::is_sound_playing(id_))
 		return;
 
 	int i = randomness::rng::default_instance().get_random_int(1, 100);

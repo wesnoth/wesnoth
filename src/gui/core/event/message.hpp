@@ -22,8 +22,7 @@
 #pragma once
 
 #include "gui/widgets/helper.hpp"
-
-#include <SDL_rect.h>
+#include "sdl/point.hpp"
 
 namespace gui2
 {

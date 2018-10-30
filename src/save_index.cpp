@@ -373,7 +373,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	cfg_summary["difficulty"] = cfg_save["difficulty"];
 	cfg_summary["random_mode"] = cfg_save["random_mode"];
 
-	cfg_summary["active_mods"] = cfg_save.child("multiplayer")["active_mods"];
+	cfg_summary["active_mods"] = cfg_save.child_or_empty("multiplayer")["active_mods"];
 	cfg_summary["campaign"] = cfg_save["campaign"];
 	cfg_summary["version"] = cfg_save["version"];
 	cfg_summary["corrupt"] = "";
