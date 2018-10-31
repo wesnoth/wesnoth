@@ -65,34 +65,28 @@ function ca_healer_move:evaluation(cfg, data)
 
     local max_rating = - math.huge
     for _,healer in ipairs(healers) do
-        local reach = wesnoth.find_reach(healer)
-
-        for _,loc in ipairs(reach) do
+        local reach_map = AH.get_reachmap(healer, { avoid_map = avoid_map, exclude_occupied = true })
+        reach_map:iter( function(x, y, v)
             -- Only consider hexes that are next to at least one noMP unit that
             --  - either can be attacked by an enemy (15 points per enemy)
             --  - or has non-perfect HP (1 point per missing HP)
 
             local rating, adjacent_healer = 0
-            if (not avoid_map:get(loc[1], loc[2])) then
-                local unit_in_way = wesnoth.get_unit(loc[1], loc[2])
-                if (not unit_in_way) or (unit_in_way == healer) then
-                    for _,healee in ipairs(healees) do
-                        if (M.distance_between(healee.x, healee.y, loc[1], loc[2]) == 1) then
-                            -- Note: These ratings have to be positive or the method doesn't work
-                            rating = rating + healee.max_hitpoints - healee.hitpoints
+            for _,healee in ipairs(healees) do
+                if (M.distance_between(healee.x, healee.y, x, y) == 1) then
+                    -- Note: These ratings have to be positive or the method doesn't work
+                    rating = rating + healee.max_hitpoints - healee.hitpoints
 
-                            -- If injured_units_only = true then don't count units with full HP
-                            if (healee.max_hitpoints - healee.hitpoints > 0) or (not cfg.injured_units_only) then
-                                rating = rating + 15 * (enemy_attack_map.units:get(healee.x, healee.y) or 0)
-                            end
-                        end
+                    -- If injured_units_only = true then don't count units with full HP
+                    if (healee.max_hitpoints - healee.hitpoints > 0) or (not cfg.injured_units_only) then
+                        rating = rating + 15 * (enemy_attack_map.units:get(healee.x, healee.y) or 0)
                     end
                 end
             end
 
             -- Number of enemies that can threaten the healer at that position
             -- This has to be no larger than cfg.max_threats for hex to be considered
-            local enemies_in_reach = enemy_attack_map.units:get(loc[1], loc[2]) or 0
+            local enemies_in_reach = enemy_attack_map.units:get(x, y) or 0
 
             -- If this hex fulfills those requirements, 'rating' is now greater than 0
             -- and we do the rest of the rating, otherwise set rating to below max_rating
@@ -103,7 +97,7 @@ function ca_healer_move:evaluation(cfg, data)
                 rating = rating - enemies_in_reach * 1000
 
                 -- All else being more or less equal, prefer villages and strong terrain
-                local terrain = wesnoth.get_terrain(loc[1], loc[2])
+                local terrain = wesnoth.get_terrain(x, y)
                 local is_village = wesnoth.get_terrain_info(terrain).village
                 if is_village then rating = rating + 2 end
 
@@ -112,9 +106,9 @@ function ca_healer_move:evaluation(cfg, data)
             end
 
             if (rating > max_rating) then
-                max_rating, best_healer, best_hex = rating, healer, { loc[1], loc[2] }
+                max_rating, best_healer, best_hex = rating, healer, { x, y }
             end
-        end
+        end)
     end
 
     if best_healer then

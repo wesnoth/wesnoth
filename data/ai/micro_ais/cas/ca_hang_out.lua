@@ -64,24 +64,22 @@ function ca_hang_out:execution(cfg)
             local max_rating_unit, best_hex_unit = - math.huge
 
             -- Check out all unoccupied hexes the unit can reach
-            local reach_map = AH.get_reachable_unocc(unit)
+            local reach_map = AH.get_reachmap(unit, { avoid_map = avoid_map, exclude_occupied = true })
             reach_map:iter( function(x, y, v)
-                if (not avoid_map:get(x, y)) then
-                    for _,loc in ipairs(locs) do
-                        -- Main rating is the distance from any of the goal hexes
-                        local rating = -M.distance_between(x, y, loc[1], loc[2])
+                for _,loc in ipairs(locs) do
+                    -- Main rating is the distance from any of the goal hexes
+                    local rating = -M.distance_between(x, y, loc[1], loc[2])
 
-                        -- Fastest unit moves first
-                        rating = rating + unit.max_moves / 100.
+                    -- Fastest unit moves first
+                    rating = rating + unit.max_moves / 100.
 
-                        -- Minor penalty for distance from current position of unit
-                        -- so that there's not too much shuffling around
-                        local rating = rating - M.distance_between(x, y, unit.x, unit.y) / 1000.
+                    -- Minor penalty for distance from current position of unit
+                    -- so that there's not too much shuffling around
+                    local rating = rating - M.distance_between(x, y, unit.x, unit.y) / 1000.
 
-                        if (rating > max_rating_unit) then
-                            max_rating_unit = rating
-                            best_hex_unit = { x, y }
-                        end
+                    if (rating > max_rating_unit) then
+                        max_rating_unit = rating
+                        best_hex_unit = { x, y }
                     end
                 end
             end)
