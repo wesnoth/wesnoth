@@ -6,17 +6,23 @@ local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 local MAISD = wesnoth.require "ai/micro_ais/micro_ai_self_data.lua"
 local M = wesnoth.map
 
-local function custom_cost(x, y, unit, enemy_map, enemy_attack_map, multiplier)
+local function custom_cost(x, y, unit, avoid_map, enemy_map, enemy_attack_map, multiplier)
     local terrain = wesnoth.get_terrain(x, y)
     local move_cost = unit:movement(terrain)
 
-    move_cost = move_cost + (enemy_map:get(x,y) or 0)
-    move_cost = move_cost + (enemy_attack_map.units:get(x,y) or 0) * multiplier
+    if avoid_map and avoid_map:get(x, y) then
+        move_cost = move_cost + AH.no_path
+    end
+
+    if enemy_map then
+        move_cost = move_cost + (enemy_map:get(x,y) or 0)
+        move_cost = move_cost + (enemy_attack_map.units:get(x,y) or 0) * multiplier
+    end
 
     return move_cost
 end
 
-local ca_goto, GO_units, GO_locs = {}
+local ca_goto, GO_units, GO_locs, GO_avoid_map = {}
 
 function ca_goto:evaluation(cfg, data)
     -- If cfg.release_all_units_at_goal is set, check whether the goal has
@@ -48,6 +54,16 @@ function ca_goto:evaluation(cfg, data)
     local all_locs = AH.get_locations_no_borders(wml.get_child(cfg, "filter_location"))
     if (#all_locs == 0) then return 0 end
 
+    -- Exclude locations specified in an [avoid] tag in either the Micro AI or the default AI
+    GO_avoid_map = AH.get_avoid_map(ai, wml.get_child(cfg, "avoid"), true)
+    local valid_locs = {} -- Copying to new table is faster than deleting elements
+    for _,loc in ipairs(all_locs) do
+        if (not GO_avoid_map:get(loc[1], loc[2])) then
+            table.insert(valid_locs, loc)
+        end
+    end
+    if (#valid_locs == 0) then return 0 end
+
     -- If 'unique_goals' is set, check whether there are locations left to go to.
     -- This does not have to be a persistent variable
     local locs = {}
@@ -62,14 +78,14 @@ function ca_goto:evaluation(cfg, data)
         end
 
         -- Now on to the current turn
-        for _,loc in ipairs(all_locs) do
+        for _,loc in ipairs(valid_locs) do
             local str = 'goal_taken_' .. wesnoth.current.turn  .. '_' .. loc[1] .. '_' .. loc[2]
             if (not MAISD.get_mai_self_data(data, cfg.ai_id, str)) then
                 table.insert(locs, loc)
             end
         end
     else
-        locs = all_locs
+        locs = valid_locs
     end
     if (not locs[1]) then return 0 end
 
@@ -125,7 +141,7 @@ function ca_goto:execution(cfg, data)
                     -- This is mostly here to keep unit in place when no better hexes are available
                     r = r - M.distance_between(x, y, unit.x, unit.y) / 1000.
                     return r
-                end, { no_random = true })
+                end, { avoid_map = GO_avoid_map, no_random = true })
 
                 if (rating > max_rating) then
                     max_rating = rating
@@ -133,10 +149,10 @@ function ca_goto:execution(cfg, data)
                 end
             else  -- Otherwise find the best path to take
                 local path, cost
-                if cfg.avoid_enemies then
+                if GO_avoid_map or cfg.avoid_enemies then
                     path, cost = wesnoth.find_path(unit, loc[1], loc[2],
                         function(x, y, current_cost)
-                            return custom_cost(x, y, unit, enemy_map, enemy_attack_map, cfg.avoid_enemies)
+                            return custom_cost(x, y, unit, GO_avoid_map, enemy_map, enemy_attack_map, cfg.avoid_enemies)
                         end
                     )
                 else
