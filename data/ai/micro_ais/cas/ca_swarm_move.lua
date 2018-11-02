@@ -29,6 +29,8 @@ function ca_swarm_move:execution(cfg)
 
     local enemies = AH.get_attackable_enemies()
 
+    local avoid_map = AH.get_avoid_map(ai, wml.get_child(cfg, "avoid"), true)
+
     -- Pick one unit at random, swarm does not move systematically
     local unit = units[math.random(#units)]
 
@@ -62,9 +64,9 @@ function ca_swarm_move:execution(cfg)
         end
 
         return rating
-    end)
+    end, { avoid_map = avoid_map })
 
-    AH.movefull_stopunit(ai, unit, best_hex)
+    AH.movefull_stopunit(ai, unit, best_hex or { unit.x, unit.y })
 end
 
 return ca_swarm_move
