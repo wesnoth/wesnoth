@@ -154,7 +154,7 @@ function wesnoth.micro_ais.swarm(cfg)
 end
 
 function wesnoth.micro_ais.wolves_multipacks(cfg)
-	local optional_keys = { "type", "pack_size", "show_pack_number" }
+	local optional_keys = { "[avoid]", "type", "pack_size", "show_pack_number" }
 	local score = cfg.ca_score or 300000
 	local CA_parms = {
 		ai_id = 'mai_wolves_multipacks',
