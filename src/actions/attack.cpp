@@ -378,6 +378,24 @@ battle_context::battle_context(
 	defender_stats_.reset(new battle_context_unit_stats(defender, d_loc, d_wep_index, false, attacker, a_loc, a_wep, units));
 }
 
+battle_context::battle_context(battle_context&& other)
+	: attacker_stats_(std::move(other.attacker_stats_))
+	, defender_stats_(std::move(other.defender_stats_))
+	, attacker_combatant_(std::move(other.attacker_combatant_))
+	, defender_combatant_(std::move(other.defender_combatant_))
+{
+
+}
+
+battle_context& battle_context::operator=(battle_context&& other)
+{
+	attacker_stats_ = std::move(other.attacker_stats_);
+	defender_stats_ = std::move(other.defender_stats_);
+	attacker_combatant_ = std::move(other.attacker_combatant_);
+	defender_combatant_ = std::move(other.defender_combatant_);
+	return *this;
+}
+
 void battle_context::simulate(const combatant* prev_def)
 {
 	assert((attacker_combatant_.get() != nullptr) == (defender_combatant_.get() != nullptr));
