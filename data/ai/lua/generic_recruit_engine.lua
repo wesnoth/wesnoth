@@ -14,6 +14,8 @@ return {
     --          (default always returns false)
     --      leader_takes_village: function that returns true if and only if the leader is going to move to capture a village this turn
     --          (default returns 'not ai.aspects.passive_leader')
+    --      enemy_types: array of default enemy unit types to consider if there are no enemies on the map
+    --          and no enemy sides exist or have recruit lists
     -- Note: the recruiting code assumes full knowledge of units on the map and the recruit lists of other sides for the purpose of
     --   finding the best unit types to recruit. It does not work otherwise. It assumes normal vision of the AI side (that is, it disregards
     --   hidden enemy units) for determining from which keep hex the leader should recruit and on which castle hexes to recruit new units
@@ -413,14 +415,21 @@ return {
                 end
             end
 
-            -- If no enemies were found, add a small number of "representative" unit types
+            -- If no enemies were found, check params.enemy_types,
+            -- otherwise add a small number of "representative" unit types
             if #enemy_types == 0 then
-                add_unit_type('Orcish Grunt')
-                add_unit_type('Orcish Archer')
-                add_unit_type('Wolf Rider')
-                add_unit_type('Spearman')
-                add_unit_type('Bowman')
-                add_unit_type('Cavalryman')
+                if params.enemy_types then
+                    for _,enemy_type in ipairs(params.enemy_types) do
+                        add_unit_type(enemy_type)
+                    end
+                else
+                    add_unit_type('Orcish Grunt')
+                    add_unit_type('Orcish Archer')
+                    add_unit_type('Wolf Rider')
+                    add_unit_type('Spearman')
+                    add_unit_type('Bowman')
+                    add_unit_type('Cavalryman')
+                end
             end
 
             data.enemy_counts = enemy_counts
