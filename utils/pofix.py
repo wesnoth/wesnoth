@@ -146,8 +146,6 @@ game_stringfixes = {
 # fixes added in 1.14.3+dev
 ("Whatever.... I still think we should make an effort", "Whatever... I still think we should make an effort"),
 ("That is so very encouraging....","That is so very encouraging..."),
-# fixes added in 1.14.4+dev
-("can now aid those around her in the art of combat.", "can aid those around her in the art of combat."),
 ),
 
 "wesnoth-low" : (
