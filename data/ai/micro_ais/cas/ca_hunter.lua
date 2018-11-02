@@ -52,7 +52,7 @@ end
 
 function ca_hunter:execution(cfg)
     -- Hunter does a random wander in area given by @cfg.hunting_ground until it finds
-    -- and kills an enemy unit, then retreats to position given by @cfg.home_x/y
+    -- and kills an enemy unit, then retreats to position given by @cfg.home_loc or @cfg.home_x/y
     -- for @cfg.rest_turns turns, or until fully healed
 
     local hunter = get_hunter(cfg)
@@ -129,7 +129,8 @@ function ca_hunter:execution(cfg)
 
     -- If we got here, this means the hunter is either returning, or resting
     if (hunter_vars.hunting_status == 'returning') then
-        goto_x, goto_y = wesnoth.find_vacant_tile(cfg.home_x, cfg.home_y, hunter)
+        local home_loc = AH.get_named_loc_xy('home', cfg)
+        goto_x, goto_y = wesnoth.find_vacant_tile(home_loc[1], home_loc[2], hunter)
 
         local next_hop = AH.next_hop(hunter, goto_x, goto_y)
         if next_hop then
@@ -137,8 +138,8 @@ function ca_hunter:execution(cfg)
             if (not hunter) or (not hunter.valid) then return end
 
             -- If there's an enemy on the 'home' hex and we got right next to it, attack that enemy
-            if (M.distance_between(cfg.home_x, cfg.home_y, hunter.x, hunter.y) == 1) then
-                local enemy = wesnoth.get_unit(cfg.home_x, cfg.home_y)
+            if (M.distance_between(home_loc[1], home_loc[2], hunter.x, hunter.y) == 1) then
+                local enemy = wesnoth.get_unit(home_loc[1], home_loc[2])
                 if AH.is_attackable_enemy(enemy) then
                     if cfg.show_messages then
                         wesnoth.wml_actions.message { speaker = hunter.id, message = 'Get out of my home!' }
@@ -155,7 +156,7 @@ function ca_hunter:execution(cfg)
         if (not hunter) or (not hunter.valid) then return end
 
         -- If the hunter got home, start the resting counter
-        if (hunter.x == cfg.home_x) and (hunter.y == cfg.home_y) then
+        if (hunter.x == home_loc[1]) and (hunter.y == home_loc[2]) then
             hunter_vars.hunting_status = 'resting'
             hunter_vars.resting_until = wesnoth.current.turn + (cfg.rest_turns or 3)
             MAIUV.set_mai_unit_variables(hunter, cfg.ai_id, hunter_vars)

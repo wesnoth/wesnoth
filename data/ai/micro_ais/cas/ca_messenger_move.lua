@@ -119,11 +119,10 @@ function ca_messenger_move:execution(cfg)
         AH.checked_attack(ai, messenger, best_target, best_weapon)
     else
         -- Always attack enemy on last waypoint
-        local waypoint_x = AH.split(cfg.waypoint_x, ",")
-        local waypoint_y = AH.split(cfg.waypoint_y, ",")
+        local waypoints = AH.get_multi_named_locs_xy('waypoint', cfg)
         local target = AH.get_attackable_enemies {
-            x = tonumber(waypoint_x[#waypoint_x]),
-            y = tonumber(waypoint_y[#waypoint_y]),
+            x = waypoints[#waypoints][1],
+            y = waypoints[#waypoints][2],
             { "filter_adjacent", { id = messenger.id } }
         }[1]
 

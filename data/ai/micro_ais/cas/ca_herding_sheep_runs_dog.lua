@@ -27,7 +27,8 @@ function ca_herding_sheep_runs_dog:execution(cfg)
         { "filter_adjacent", { x = sheep.x, y = sheep.y } }
     }[1]
 
-    local c_x, c_y = cfg.herd_x, cfg.herd_y
+    local herd_loc = AH.get_named_loc_xy('herd', cfg)
+    local c_x, c_y = herd_loc[1], herd_loc[2]
     -- If dog is farther from center, sheep moves in, otherwise it moves out
     local sign = 1
     if (M.distance_between(dog.x, dog.y, c_x, c_y) >= M.distance_between(sheep.x, sheep.y, c_x, c_y)) then

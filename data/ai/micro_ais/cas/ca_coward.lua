@@ -64,8 +64,15 @@ function ca_coward:execution(cfg)
     -- Now take 'seek' and 'avoid' into account
     for i,pos in ipairs(best_pos) do
         -- Weighting based on distance from 'seek' and 'avoid'
-        local dist_seek = AH.generalized_distance(pos[1], pos[2], cfg.seek_x, cfg.seek_y)
-        local dist_avoid = AH.generalized_distance(pos[1], pos[2], cfg.avoid_x, cfg.avoid_y)
+        -- It is allowed to specify only x or y, thus the slightly more complex variable assignments
+        local seek_x, seek_y = cfg.seek_x, cfg.seek_y
+        local seek_loc = AH.get_named_loc_xy('seek', cfg)
+        if seek_loc then seek_x, seek_y = seek_loc[1], seek_loc[2] end
+        local avoid_x, avoid_y = cfg.avoid_x, cfg.avoid_y
+        local avoid_loc = AH.get_named_loc_xy('avoid', cfg)
+        if avoid_loc then avoid_x, avoid_y = avoid_loc[1], avoid_loc[2] end
+        local dist_seek = AH.generalized_distance(pos[1], pos[2], seek_x, seek_y)
+        local dist_avoid = AH.generalized_distance(pos[1], pos[2], avoid_x, avoid_y)
         local rating = 1 / (dist_seek + 1) - 1 / (dist_avoid + 1)^2 * 0.75
 
         best_pos[i][4] = rating

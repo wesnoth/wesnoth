@@ -15,7 +15,8 @@ local ca_return_guardian = {}
 function ca_return_guardian:evaluation(cfg)
     local guardian = get_guardian(cfg)
     if guardian then
-        if (guardian.x == cfg.return_x) and (guardian.y == cfg.return_y) then
+        local return_loc = AH.get_named_loc_xy('return', cfg)
+        if (guardian.x == return_loc[1]) and (guardian.y == return_loc[2]) then
             return cfg.ca_score - 200
         else
             return cfg.ca_score
@@ -27,9 +28,10 @@ end
 
 function ca_return_guardian:execution(cfg)
     local guardian = get_guardian(cfg)
+    local return_loc = AH.get_named_loc_xy('return', cfg)
 
     -- In case the return hex is occupied:
-    local x, y = cfg.return_x, cfg.return_y
+    local x, y = return_loc[1], return_loc[2]
     if (guardian.x ~= x) or (guardian.y ~= y) then
         x, y = wesnoth.find_vacant_tile(x, y, guardian)
     end

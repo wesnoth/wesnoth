@@ -39,7 +39,7 @@ function ca_protect_unit_move:execution(cfg, data)
     local unit = F.choose(protected_units, function(u) return - u.hitpoints end)
     local goal = {}
     for u in wml.child_range(cfg, "unit") do
-        if (unit.id == u.id) then goal = { u.goal_x, u.goal_y } end
+        if (unit.id == u.id) then goal = AH.get_named_loc_xy('goal', u) end
     end
 
     local reach_map = AH.get_reachable_unocc(unit)

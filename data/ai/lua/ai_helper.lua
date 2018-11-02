@@ -633,6 +633,98 @@ function ai_helper.is_opposite_adjacent(hex1, hex2, center_hex)
     return false
 end
 
+function ai_helper.get_named_loc_xy(param_core, cfg, required_for)
+    -- Get coordinates for either a named location or from x/y coordinates specified
+    -- in @cfg. The location can be provided:
+    --   - as name: cfg[param_core .. '_loc'] (string)
+    --   - or as coordinates: cfg[param_core .. '_x'] and cfg[param_core .. '_y'] (integers)
+    -- This is the syntax used by many Micro AIs.
+    -- Exception to this variable name syntax: if param_core = '', then the location
+    -- variables are 'location_id', 'x' and 'y'
+    --
+    -- Error messages are displayed if the named location does not exist, or if
+    -- the coordinates are not on the map. In addition, if @required_for (a string)
+    -- is provided, an error message is also displayed if neither a named location
+    -- nor both coordinates are provided. If @required_for is not passed and neither
+    -- input exists, nil is returned.
+
+    local param_loc = 'location_id'
+    if (param_core ~= '') then param_loc = param_core .. '_loc' end
+    local loc_id = cfg[param_loc]
+    if loc_id then
+        local loc = wesnoth.special_locations[loc_id]
+        if loc then
+            return loc
+        else
+            H.wml_error("Named location does not exist: " .. loc_id)
+        end
+    end
+
+    local param_x, param_y = 'x', 'y'
+    if (param_core ~= '') then param_x, param_y = param_core .. '_x', param_core .. '_y' end
+    local x, y = cfg[param_x], cfg[param_y]
+    if x and y then
+        local width, height = wesnoth.get_map_size()
+        if (x < 1) or (x > width) or (y < 1) or (y > height) then
+            H.wml_error("Location is not on map: " .. param_x .. ',' .. param_y .. ' = ' .. x .. ',' .. y)
+        end
+
+        return { x, y }
+    end
+
+    if required_for then
+        H.wml_error(required_for .. " requires either " .. param_loc .. "= or " .. param_x .. "/" .. param_y .. "= keys")
+    end
+end
+
+function ai_helper.get_multi_named_locs_xy(param_core, cfg, required_for)
+    -- Same as ai_helper.get_named_loc_xy, except that it takes comma separated
+    -- lists of locations.
+    -- The result is returned as an array of locations.
+    -- Empty table is returned if no locations are found.
+
+    local locs = {}
+    local param_loc = 'location_id'
+    if (param_core ~= '') then param_loc = param_core .. '_loc' end
+    local cfg_loc = cfg[param_loc]
+    if cfg_loc then
+        local loc_ids = ai_helper.split(cfg_loc, ",")
+        for _,loc_id in ipairs(loc_ids) do
+            local tmp_cfg = {}
+            tmp_cfg[param_loc] = loc_id
+            local loc = ai_helper.get_named_loc_xy(param_core, tmp_cfg)
+            table.insert(locs, loc)
+        end
+        return locs
+    end
+
+    local param_x, param_y = 'x', 'y'
+    if (param_core ~= '') then param_x, param_y = param_core .. '_x', param_core .. '_y' end
+    local cfg_x, cfg_y = cfg[param_x], cfg[param_y]
+    if cfg_x and cfg_y then
+        local xs = ai_helper.split(cfg_x, ",")
+        local ys = ai_helper.split(cfg_y, ",")
+        if (#xs ~= #ys) then
+            H.wml_error("Coordinate lists need to have same number of elements: " .. param_x .. ' and ' .. param_y)
+        end
+
+        for i,x in ipairs(xs) do
+            local tmp_cfg = {}
+            tmp_cfg[param_x] = tonumber(x)
+            tmp_cfg[param_y] = tonumber(ys[i])
+            local loc = ai_helper.get_named_loc_xy(param_core, tmp_cfg)
+            table.insert(locs, loc)
+        end
+        return locs
+    end
+
+    if required_for then
+        H.wml_error(required_for .. " requires either " .. param_loc .. "= or " .. param_x .. "/" .. param_y .. "= keys")
+    end
+
+    return locs
+end
+
 function ai_helper.get_locations_no_borders(location_filter)
     -- Returns the same locations array as wesnoth.get_locations(location_filter),
     -- but excluding hexes on the map border.

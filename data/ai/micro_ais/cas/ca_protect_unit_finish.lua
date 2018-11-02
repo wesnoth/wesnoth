@@ -7,10 +7,11 @@ function ca_protect_unit_finish:evaluation(cfg)
     for u in wml.child_range(cfg, "unit") do
         local unit = AH.get_units_with_moves { id = u.id }[1]
         if unit then
-            local path, cost = AH.find_path_with_shroud(unit, u.goal_x, u.goal_y)
-            if (cost <= unit.moves) and ((unit.x ~= u.goal_x) or (unit.y ~= u.goal_y)) then
+            local goal = AH.get_named_loc_xy('goal', u)
+            local path, cost = AH.find_path_with_shroud(unit, goal[1], goal[2])
+            if (cost <= unit.moves) and ((unit.x ~= goal[1]) or (unit.y ~= goal[2])) then
                 PU_unit = unit
-                PU_goal = { u.goal_x, u.goal_y }
+                PU_goal = { goal[1], goal[2] }
                 return 300000
             end
         end

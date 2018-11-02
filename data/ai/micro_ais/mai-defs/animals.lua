@@ -1,3 +1,4 @@
+local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local H = wesnoth.require "helper"
 local MAIH = wesnoth.require("ai/micro_ais/micro_ai_helper.lua")
 
@@ -66,8 +67,11 @@ function wesnoth.micro_ais.wolves(cfg)
 end
 
 function wesnoth.micro_ais.herding(cfg)
-	local required_keys = { "[filter_location]", "[filter]", "[filter_second]", "herd_x", "herd_y" }
-	local optional_keys = { "attention_distance", "attack_distance" }
+	if (cfg.action ~= 'delete') then
+		AH.get_named_loc_xy('herd', cfg, 'Herding [micro_ai] tag')
+	end
+	local required_keys = { "[filter_location]", "[filter]", "[filter_second]" }
+	local optional_keys = { "attention_distance", "attack_distance", "herd_loc", "herd_x", "herd_y" }
 	local score = cfg.ca_score or 300000
 	local CA_parms = {
 		ai_id = 'mai_herding',
@@ -165,11 +169,14 @@ function wesnoth.micro_ais.wolves_multipacks(cfg)
 end
 
 function wesnoth.micro_ais.hunter(cfg)
-	if (cfg.action ~= 'delete') and (not cfg.id) and (not wml.get_child(cfg, "filter")) then
-		H.wml_error("Hunter [micro_ai] tag requires either id= key or [filter] tag")
+	if (cfg.action ~= 'delete') then
+	    if (not cfg.id) and (not wml.get_child(cfg, "filter")) then
+			H.wml_error("Hunter [micro_ai] tag requires either id= key or [filter] tag")
+		end
+		AH.get_named_loc_xy('home', cfg, 'Hunter [micro_ai] tag')
 	end
-	local required_keys = { "home_x", "home_y" }
-	local optional_keys = { "id", "[filter]", "[filter_location]", "rest_turns", "show_messages" }
+	local required_keys = {}
+	local optional_keys = { "id", "[filter]", "[filter_location]", "home_loc", "home_x", "home_y", "rest_turns", "show_messages" }
 	local CA_parms = {
 		ai_id = 'mai_hunter',
 		{ ca_id = "move", location = 'ca_hunter.lua', score = cfg.ca_score or 300000 }

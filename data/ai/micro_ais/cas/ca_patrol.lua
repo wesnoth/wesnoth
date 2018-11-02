@@ -23,16 +23,14 @@ function ca_patrol:execution(cfg)
 
     -- Set up waypoints, taking into account whether 'reverse' is set
     -- This works even the first time, when patrol_vars.patrol_reverse is not set yet
-    cfg.waypoint_x = AH.split(cfg.waypoint_x, ",")
-    cfg.waypoint_y = AH.split(cfg.waypoint_y, ",")
-    local n_wp = #cfg.waypoint_x
-    local waypoints = {}
-    for i = 1,n_wp do
-        if patrol_vars.patrol_reverse then
-            waypoints[i] = { tonumber(cfg.waypoint_x[n_wp-i+1]), tonumber(cfg.waypoint_y[n_wp-i+1]) }
-        else
-            waypoints[i] = { tonumber(cfg.waypoint_x[i]), tonumber(cfg.waypoint_y[i]) }
+    local waypoints = AH.get_multi_named_locs_xy('waypoint', cfg)
+    local n_wp = #waypoints
+    if patrol_vars.patrol_reverse then
+        local tmp = {}
+        for i = 1,n_wp do
+            tmp[i] = { waypoints[n_wp-i+1][1], waypoints[n_wp-i+1][2] }
         end
+        waypoints = tmp
     end
 
     -- If not set, set next location (first move)

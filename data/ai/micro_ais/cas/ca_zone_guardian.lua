@@ -84,12 +84,10 @@ function ca_zone_guardian:execution(cfg)
 
     -- If no enemy around or within the zone, move toward station or zone
     else
-        local newpos
-        -- If cfg.station_x/y are given, move toward that location
-        if cfg.station_x and cfg.station_y then
-            newpos = { cfg.station_x, cfg.station_y }
+        -- If cfg.station_loc or cfg.station_x/y are given, move toward that location
+        local newpos = AH.get_named_loc_xy('station', cfg)
         -- Otherwise choose one randomly from those given in filter_location
-        else
+        if (not newpos) then
             local locs_map = LS.of_pairs(AH.get_locations_no_borders(zone))
 
             -- Check out which of those hexes the guardian can reach

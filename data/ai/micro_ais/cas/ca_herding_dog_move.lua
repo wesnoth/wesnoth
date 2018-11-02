@@ -25,9 +25,10 @@ function ca_herding_dog_move:execution(cfg)
     local herding_perimeter = LS.of_pairs(wesnoth.get_locations(wml.get_child(cfg, "filter_location")))
 
     -- Find average distance of herding_perimeter from center
+    local herd_loc = AH.get_named_loc_xy('herd', cfg)
     local av_dist = 0
     herding_perimeter:iter( function(x, y, v)
-        av_dist = av_dist + M.distance_between(x, y, cfg.herd_x, cfg.herd_y)
+        av_dist = av_dist + M.distance_between(x, y, herd_loc[1], herd_loc[2])
     end)
     av_dist = av_dist / herding_perimeter:size()
 
@@ -39,7 +40,7 @@ function ca_herding_dog_move:execution(cfg)
             rating = rating + 1000 + math.random(99) / 100.
         else
             rating = rating
-                - math.abs(M.distance_between(x, y, cfg.herd_x, cfg.herd_y) - av_dist)
+                - math.abs(M.distance_between(x, y, herd_loc[1], herd_loc[2]) - av_dist)
                 + math.random(99) / 100.
         end
 
