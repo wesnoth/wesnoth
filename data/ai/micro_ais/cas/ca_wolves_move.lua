@@ -22,7 +22,18 @@ local ca_wolves_move = {}
 
 function ca_wolves_move:evaluation(cfg)
     if (not get_wolves(cfg)[1]) then return 0 end
-    if (not get_prey(cfg)[1]) then return 0 end
+
+    local avoid_map = AH.get_avoid_map(ai, nil, true)
+    local prey = get_prey(cfg)
+    local prey_found = false
+    for _,prey_unit in ipairs(prey) do
+        if (not avoid_map:get(prey_unit.x, prey_unit.y)) then
+            prey_found = true
+            break
+        end
+    end
+    if (not prey_found) then return 0 end
+
     return cfg.ca_score
 end
 
@@ -30,18 +41,23 @@ function ca_wolves_move:execution(cfg)
     local wolves = get_wolves(cfg)
     local prey = get_prey(cfg)
 
+    -- Only default AI [avoid] tag makes sense for the wolves since attacks are done by RCA AI
+    local avoid_map = AH.get_avoid_map(ai, nil, true)
+
     local avoid_units = AH.get_attackable_enemies({ type = cfg.avoid_type })
-    local avoid_map = BC.get_attack_map(avoid_units).units
+    local avoid_enemies_map = BC.get_attack_map(avoid_units).units
 
     -- Find prey that is closest to the wolves
     local min_dist, target = math.huge
     for _,prey_unit in ipairs(prey) do
-        local dist = 0
-        for _,wolf in ipairs(wolves) do
-            dist = dist + M.distance_between(wolf.x, wolf.y, prey_unit.x, prey_unit.y)
-        end
-        if (dist < min_dist) then
-            min_dist, target = dist, prey_unit
+        if (not avoid_map:get(prey_unit.x, prey_unit.y)) then
+            local dist = 0
+            for _,wolf in ipairs(wolves) do
+                dist = dist + M.distance_between(wolf.x, wolf.y, prey_unit.x, prey_unit.y)
+            end
+            if (dist < min_dist) then
+                min_dist, target = dist, prey_unit
+            end
         end
     end
 
@@ -61,12 +77,12 @@ function ca_wolves_move:execution(cfg)
         if (height - y <= 5) then rating = rating - (6 - (height - y)) / 1.4 end
 
        -- Hexes that avoid_type units can reach get a massive penalty
-       if avoid_map:get(x, y) then rating = rating - 1000 end
+       if avoid_enemies_map:get(x, y) then rating = rating - 1000 end
 
        return rating
-    end)
+    end, { avoid_map = avoid_map })
 
-    local move_result = AH.movefull_stopunit(ai, wolves[1], wolf1)
+    local move_result = AH.movefull_stopunit(ai, wolves[1], wolf1 or { wolf1.x, wolf1.y })
     -- If the wolf was ambushed, return and reconsider; also if an event removed a wolf
     if (AH.is_incomplete_move(move_result)) then return end
     for _,check_wolf in ipairs(wolves) do
@@ -90,12 +106,12 @@ function ca_wolves_move:execution(cfg)
             rating = rating - (dist_t - dist_1t)^2
 
             -- Hexes that avoid_type units can reach get a massive penalty
-            if avoid_map:get(x, y) then rating = rating - 1000 end
+            if avoid_enemies_map:get(x, y) then rating = rating - 1000 end
 
             return rating
-        end)
+        end, { avoid_map = avoid_map })
 
-        local move_result = AH.movefull_stopunit(ai, wolves[i], move)
+        local move_result = AH.movefull_stopunit(ai, wolves[i], move or { wolves[i].x, wolves[i].y })
         -- If the wolf was ambushed, return and reconsider; also if an event removed a wolf
         if (AH.is_incomplete_move(move_result)) then return end
         for _,check_wolf in ipairs(wolves) do
