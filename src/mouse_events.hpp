@@ -148,6 +148,12 @@ protected:
 	void show_attack_options(const unit_map::const_iterator &u);
 	unit_map::const_iterator find_unit(const map_location& hex) const;
 	unit_map::iterator find_unit(const map_location& hex);
+	/*
+	 * These return raw pointers instead of smart pointers.
+	 * Useful if you don't want to increase the unit reference count.
+	 */
+	unit* find_unit_nonowning(const map_location& hex);
+	const unit* find_unit_nonowning(const map_location& hex) const;
 	bool unit_in_cycle(unit_map::const_iterator it);
 private:
 	team& viewing_team();
