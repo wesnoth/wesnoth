@@ -633,6 +633,18 @@ unit_map::const_iterator mouse_handler::find_unit(const map_location& hex) const
 	return pc_.gamestate().board_.find_visible_unit(hex, viewing_team());
 }
 
+unit* mouse_handler::find_unit_nonowning(const map_location& hex)
+{
+	unit_map::iterator it = pc_.gamestate().board_.find_visible_unit(hex, viewing_team());
+	return it.valid() ? &*it : nullptr;
+}
+
+const unit* mouse_handler::find_unit_nonowning(const map_location& hex) const
+{
+	unit_map::const_iterator it = pc_.gamestate().board_.find_visible_unit(hex, viewing_team());
+	return it.valid() ? &*it : nullptr;
+}
+
 const map_location mouse_handler::hovered_hex() const
 {
 	int x = -1;
@@ -833,7 +845,7 @@ void mouse_handler::move_action(bool browse)
 	//	}
 
 	unit_map::iterator u;
-	unit_map::iterator clicked_u;
+	const unit* clicked_u = nullptr;
 
 	map_location src;
 	pathfind::paths orig_paths;
@@ -849,7 +861,7 @@ void mouse_handler::move_action(bool browse)
 			u->set_goto(map_location());
 		}
 
-		clicked_u = find_unit(hex);
+		clicked_u = find_unit_nonowning(hex);
 
 		src = selected_hex_;
 		orig_paths = current_paths_;
@@ -863,7 +875,7 @@ void mouse_handler::move_action(bool browse)
 			return;
 		}
 
-		if(((u.valid() && u->side() == side_num_) || pc_.get_whiteboard()->is_active()) && clicked_u.valid()) {
+		if(((u.valid() && u->side() == side_num_) || pc_.get_whiteboard()->is_active()) && clicked_u != nullptr) {
 			if(attack_from == selected_hex_) { // no move needed
 				int choice = -1;
 				{
@@ -988,7 +1000,7 @@ void mouse_handler::move_action(bool browse)
 		} else {
 			// Don't move if the unit already has actions
 			// from the whiteboard.
-			if(pc_.get_whiteboard()->unit_has_actions(u ? &*u : &*clicked_u)) {
+			if(pc_.get_whiteboard()->unit_has_actions(u ? &*u : clicked_u)) {
 				return;
 			}
 
@@ -1307,18 +1319,26 @@ void mouse_handler::attack_enemy_(const map_location& att_loc, const map_locatio
 	const map_location attacker_loc = att_loc;
 	const map_location defender_loc = def_loc;
 
-	unit_map::iterator attacker = find_unit(attacker_loc);
-	if(!attacker || attacker->side() != side_num_ || attacker->incapacitated()) {
-		return;
-	}
-
-	unit_map::iterator defender = find_unit(defender_loc);
-	if(!defender || current_team().is_enemy(defender->side()) == false || defender->incapacitated()) {
-		return;
-	}
-
+	unit* attacker = nullptr;
+	const unit* defender = nullptr;
 	std::vector<battle_context> bc_vector;
-	fill_weapon_choices(bc_vector, attacker, defender);
+
+	{
+		unit_map::iterator attacker_it = find_unit(attacker_loc);
+		if(!attacker_it || attacker_it->side() != side_num_ || attacker_it->incapacitated()) {
+			return;
+		}
+
+		unit_map::iterator defender_it = find_unit(defender_loc);
+		if(!defender_it || current_team().is_enemy(defender_it->side()) == false || defender_it->incapacitated()) {
+			return;
+		}
+
+		fill_weapon_choices(bc_vector, attacker_it, defender_it);
+
+		attacker = &*attacker_it;
+		defender = &*defender_it;
+	}
 
 	if(size_t(choice) >= bc_vector.size()) {
 		return;
