@@ -362,7 +362,7 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 	std::stringstream toplevel;
 
 	if (! resources::tod_manager) {
-		toplevel << N_("Only available during a scenario.");
+		toplevel << _("Only available during a scenario.");
 		topics.emplace_back("Time of Day Schedule", "..schedule", toplevel.str());
 		return topics;
 	}
@@ -379,7 +379,7 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 		text << image << '\n' <<
 				time.description.str() << '\n' <<
 				"Lawful Bonus: " << time.lawful_bonus << '\n' <<
-				'\n' << make_link(N_("Schedule"), "..schedule");
+				'\n' << make_link(_("Schedule"), "..schedule");
 
 		topics.emplace_back(time.name.str(), id, text.str());
 	}
