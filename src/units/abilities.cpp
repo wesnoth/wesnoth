@@ -1027,6 +1027,11 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 	temporary_facing self_facing(self, self_loc_.get_relative_dir(other_loc_));
 	temporary_facing other_facing(other, other_loc_.get_relative_dir(self_loc_));
 
+	// Filter poison
+	if (special["id"] == "poison" && other && other->get_state("unpoisonable")) {
+		return false;
+	}
+
 	// Translate our context into terms of "attacker" and "defender".
 	unit_const_ptr & att = is_attacker_ ? self : other;
 	unit_const_ptr & def = is_attacker_ ? other : self;
