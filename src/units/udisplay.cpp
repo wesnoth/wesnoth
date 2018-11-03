@@ -77,6 +77,7 @@ static void teleport_unit_between(const map_location& a, const map_location& b,
 	const bool a_visible = temp_unit.is_visible_to_team(a, viewing_team, dc, false);
 	const bool b_visible = temp_unit.is_visible_to_team(b, viewing_team, dc, false);
 
+	temp_unit.set_location(a);
 	if ( a_visible ) { // teleport
 		disp.invalidate(a);
 		temp_unit.set_facing(a.get_relative_dir(b));
@@ -90,6 +91,7 @@ static void teleport_unit_between(const map_location& a, const map_location& b,
 		animator.wait_for_end();
 	}
 
+	temp_unit.set_location(b);
 	if ( b_visible ) { // teleport
 		disp.invalidate(b);
 		temp_unit.set_facing(a.get_relative_dir(b));
