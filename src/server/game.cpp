@@ -113,7 +113,6 @@ game::game(player_connections& player_connections,
 	, description_(nullptr)
 	, current_turn_(0)
 	, current_side_index_(0)
-	, end_turn_(0)
 	, num_turns_(0)
 	, all_observers_muted_(false)
 	, bans_()
@@ -1014,14 +1013,14 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr& user)
 
 	for(simple_wml::node* command : commands) {
 		DBG_GAME << "game " << id_ << " received [" << (*command).first_child() << "] from player '" << username(user)
-				 << "'(" << user << ") during turn " << end_turn_ << "\n";
+				 << "'(" << user << ") during turn " << current_side_index_ + 1 << "," << current_turn_ << "\n";
 		if(!is_legal_command(*command, user)) {
 			LOG_GAME << "ILLEGAL COMMAND in game: " << id_ << " (((" << simple_wml::node_to_string(*command)
 					 << ")))\n";
 
 			std::stringstream msg;
 			msg << "Removing illegal command '" << (*command).first_child().to_string() << "' from: " << username(user)
-				<< ". Current player is: " << username(current_player()) << " (" << end_turn_ + 1 << "/" << nsides_
+				<< ". Current player is: " << username(current_player()) << " (" << current_side_index_ + 1 << "/" << nsides_
 				<< ").";
 			LOG_GAME << msg.str() << " (socket: " << current_player() << ") (game id: " << id_ << ")\n";
 			send_and_record_server_message(msg.str());
