@@ -79,7 +79,7 @@ void teleport_unit_between(const map_location& a, const map_location& b, unit& t
 
 	const bool a_visible = temp_unit.is_visible_to_team(a, viewing_team, false);
 	const bool b_visible = temp_unit.is_visible_to_team(b, viewing_team, false);
-	
+
 	temp_unit.set_location(a);
 	if ( a_visible ) { // teleport
 		disp.invalidate(a);
