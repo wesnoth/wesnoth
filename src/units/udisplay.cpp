@@ -79,7 +79,8 @@ void teleport_unit_between(const map_location& a, const map_location& b, unit& t
 
 	const bool a_visible = temp_unit.is_visible_to_team(a, viewing_team, false);
 	const bool b_visible = temp_unit.is_visible_to_team(b, viewing_team, false);
-
+	
+	temp_unit.set_location(a);
 	if ( a_visible ) { // teleport
 		disp.invalidate(a);
 		temp_unit.set_facing(a.get_relative_dir(b));
@@ -87,13 +88,13 @@ void teleport_unit_between(const map_location& a, const map_location& b, unit& t
 			disp.scroll_to_tiles(a, b, game_display::ONSCREEN, true, 0.0, false);
 		else
 			disp.scroll_to_tile(a, game_display::ONSCREEN, true, false);
-		temp_unit.set_location(a);
 		unit_animator animator;
 		animator.add_animation(&temp_unit,"pre_teleport",a);
 		animator.start_animations();
 		animator.wait_for_end();
 	}
 
+	temp_unit.set_location(b);
 	if ( b_visible ) { // teleport
 		disp.invalidate(b);
 		temp_unit.set_facing(a.get_relative_dir(b));
@@ -101,7 +102,6 @@ void teleport_unit_between(const map_location& a, const map_location& b, unit& t
 			disp.scroll_to_tiles(b, a, game_display::ONSCREEN, true, 0.0, false);
 		else
 			disp.scroll_to_tile(b, game_display::ONSCREEN, true, false);
-		temp_unit.set_location(b);
 		unit_animator animator;
 		animator.add_animation(&temp_unit,"post_teleport",b);
 		animator.start_animations();
