@@ -27,11 +27,11 @@
    * When a recruited unit is fogged, scroll to the recruiting unit and play recruit
      animation. (issue #3577)
    * Fix line breaks in first statistics line in unit type pages in the help. (issue #3256)
-   * Don't scroll to an enemy unit that teleports to or from an invisible hex. (issue #3578)
-   * Don't show in the sidebar the time of day schedule of a shrouded hex. (issue #3638)
+   * Don't scroll to an enemy unit that teleports to or from an invisible hex. (PR #3578)
+   * Don't show in the sidebar the time of day schedule of a shrouded hex. (PR #3638)
    * Game Load screen gracefully handles savefiles that can't be parsed. (issue #3652)
    * The sidebar now shows alignment and damages as they would be on the hex under
-     the mouse, rather than at the unit's current location. (issue #3642)
+     the mouse, rather than at the unit's current location. (PR #3642)
 
 ## Version 1.14.5
  ### AI
