@@ -17,148 +17,14 @@
  * Implementation of tag.hpp.
  */
 
-#include "serialization/tag.hpp"
+#include "serialization/schema/tag.hpp"
 #include "serialization/string_utils.hpp"
-#include "boost/optional.hpp"
 #include "formatter.hpp"
-
-#include "config.hpp"
 
 namespace schema_validation
 {
 
 class_tag any_tag("", 0, -1, "", true);
-
-/*WIKI
- * @begin{parent}{name="wml_schema/tag/"}
- * @begin{tag}{name="key"}{min=0}{max=-1}
- * @begin{table}{config}
- *     name & string & &              The name of key. $
- *     type & string & &              The type of key value. $
- *     default & string & &        The default value of the key. $
- *     mandatory & string & &   Shows if key is mandatory $
- * @end{table}
- * @end{tag}{name="key"}
- * @end{parent}{name="wml_schema/tag/"}
- */
-std::shared_ptr<class_type> class_type::from_config(const config& cfg)
-{
-	boost::optional<config::const_child_itors> composite_range;
-	std::shared_ptr<class_type> type;
-	if(cfg.has_child("union")) {
-		type = std::make_shared<class_type_union>(cfg["name"]);
-		composite_range.emplace(cfg.child("union").child_range("type"));
-	} else if(cfg.has_child("intersection")) {
-		type = std::make_shared<class_type_intersection>(cfg["name"]);
-		composite_range.emplace(cfg.child("intersection").child_range("type"));
-	} else if(cfg.has_child("list")) {
-		const config& list_cfg = cfg.child("list");
-		int list_min = list_cfg["min"].to_int();
-		int list_max = list_cfg["max"].str() == "infinite" ? -1 : list_cfg["max"].to_int(-1);
-		if(list_max < 0) list_max = INT_MAX;
-		type = std::make_shared<class_type_list>(cfg["name"], list_cfg["split"].str("\\s*,\\s*"), list_min, list_max);
-		composite_range.emplace(list_cfg.child_range("element"));
-	} else if(cfg.has_attribute("value")) {
-		type = std::make_shared<class_type_simple>(cfg["name"], cfg["value"]);
-	} else if(cfg.has_attribute("link")) {
-		type = std::make_shared<class_type_alias>(cfg["name"], cfg["link"]);
-	}
-	if(composite_range) {
-		auto composite_type = std::dynamic_pointer_cast<class_type_composite>(type);
-		for(const config& elem : *composite_range) {
-			composite_type->add_type(class_type::from_config(elem));
-		}
-	}
-	return type;
-}
-
-bool class_type_simple::matches(const std::string& value, const map&) const
-{
-	boost::smatch sub;
-	return boost::regex_match(value, sub, pattern_);
-}
-
-bool class_type_alias::matches(const std::string& value, const map& type_map) const
-{
-	if(!cached_) {
-		auto it = type_map.find(link_);
-		if(it == type_map.end()) {
-			// TODO: Error message about the invalid type?
-			return false;
-		}
-		cached_ = it->second;
-	}
-	return cached_->matches(value, type_map);
-}
-
-bool class_type_union::matches(const std::string& value, const map& type_map) const
-{
-	for(const auto& type : subtypes_) {
-		if(type->matches(value, type_map)) {
-			return true;
-		}
-	}
-	return false;
-}
-
-bool class_type_intersection::matches(const std::string& value, const map& type_map) const
-{
-	for(const auto& type : subtypes_) {
-		if(!type->matches(value, type_map)) {
-			return false;
-		}
-	}
-	return true;
-}
-
-bool class_type_list::matches(const std::string& value, const map& type_map) const
-{
-	boost::sregex_token_iterator it(value.begin(), value.end(), split_, -1), end;
-	int n = 0;
-	bool result = std::all_of(it, end, [this, &type_map, &n](const boost::ssub_match& match){
-		// Not sure if this is necessary?
-		if(!match.matched) return true;
-		n++;
-		return this->class_type_union::matches(std::string(match.first, match.second), type_map);
-	});
-	return result && n >= min_ && n <= max_;
-}
-
-class_key::class_key(const config& cfg)
-	: name_(cfg["name"].str())
-	, type_(cfg["type"].str())
-	, default_()
-	, mandatory_(false)
-	, fuzzy_(name_.find_first_of("*?") != std::string::npos)
-{
-	if(cfg.has_attribute("mandatory")) {
-		mandatory_ = cfg["mandatory"].to_bool();
-	} else {
-		if(cfg.has_attribute("default")) {
-			default_ = cfg["default"].str();
-		}
-	}
-}
-
-void class_key::print(std::ostream& os, int level) const
-{
-	std::string s;
-	for(int j = 0; j < level; j++) {
-		s.append(" ");
-	}
-
-	os << s << "[key]\n" << s << "    name=\"" << name_ << "\"\n" << s << "    type=\"" << type_ << "\"\n";
-
-	if(is_mandatory()) {
-		os << s << "    mandatory=\"true\"\n";
-	} else {
-		os << s << "    default=" << default_ << "\n";
-	}
-
-	// TODO: Other attributes
-
-	os << s << "[/key]\n";
-}
 
 class_tag::class_tag(const config& cfg)
 	: name_(cfg["name"].str())
@@ -206,6 +72,22 @@ class_tag::class_tag(const config& cfg)
 void class_tag::print(std::ostream& os)
 {
 	printl(os, 4, 4);
+}
+
+void class_tag::set_min(const std::string& s)
+{
+	std::istringstream i(s);
+	if(!(i >> min_)) {
+		min_ = 0;
+	}
+}
+
+void class_tag::set_max(const std::string& s)
+{
+	std::istringstream i(s);
+	if(!(i >> max_)) {
+		max_ = 0;
+	}
 }
 
 void class_tag::add_link(const std::string& link)
@@ -491,7 +373,7 @@ void class_tag::expand(class_tag& root)
 				super_refs_.push_back(super_tag);
 			} else {
 				// TODO: Detect super cycles too!
-				std::cerr << "the same" << super_tag->name_ << "\n";
+				//std::cerr << "the same" << super_tag->name_ << "\n";
 			}
 		}
 		// TODO: Warn if the super doesn't exist

@@ -16,7 +16,9 @@
 
 #include "config_cache.hpp"
 #include "serialization/parser.hpp"
-#include "serialization/tag.hpp"
+#include "serialization/schema/type.hpp"
+#include "serialization/schema/tag.hpp"
+#include "serialization/schema/key.hpp"
 #include "serialization/validator.hpp"
 
 #include <iostream>
