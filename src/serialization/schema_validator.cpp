@@ -181,12 +181,12 @@ bool schema_validator::read_config_file(const std::string& filename)
 		for(const config& schema : g.child_range("tag")) {
 			if(schema["name"].str() == "root") {
 				//@NOTE Don't know, maybe merging of roots needed.
-				root_ = class_tag(schema);
+				root_ = wml_tag(schema);
 			}
 		}
 		for(const config& type : g.child_range("type")) {
 			try {
-				types_[type["name"].str()] = class_type::from_config(type);
+				types_[type["name"].str()] = wml_type::from_config(type);
 			} catch(const std::exception&) {
 				// Need to check all type values in schema-generator
 			}
@@ -205,7 +205,7 @@ bool schema_validator::read_config_file(const std::string& filename)
 void schema_validator::open_tag(const std::string& name, const config& parent, int start_line, const std::string& file, bool addittion)
 {
 	if(!stack_.empty()) {
-		const class_tag* tag = nullptr;
+		const wml_tag* tag = nullptr;
 
 		if(stack_.top()) {
 			tag = active_tag().find_tag(name, root_, parent);
@@ -285,7 +285,7 @@ void schema_validator::validate_key(
 {
 	if(have_active_tag() && !active_tag().get_name().empty() && is_valid()) {
 		// checking existing keys
-		const class_key* key = active_tag().find_key(name, cfg);
+		const wml_key* key = active_tag().find_key(name, cfg);
 		if(key) {
 			bool matched = false;
 			for(auto& possible_type : utils::split(key->get_type())) {
@@ -310,13 +310,13 @@ void schema_validator::queue_message(const config& cfg, message_type t, const st
 	cache_.top()[&cfg].emplace_back(t, file, line, n, tag, key, value);
 }
 
-const class_tag& schema_validator::active_tag() const
+const wml_tag& schema_validator::active_tag() const
 {
 	assert(have_active_tag() && "Tried to get active tag name when there was none");
 	return *stack_.top();
 }
 
-class_type::ptr schema_validator::find_type(const std::string& type) const
+wml_type::ptr schema_validator::find_type(const std::string& type) const
 {
 	auto it = types_.find(type);
 	if(it == types_.end()) {
@@ -331,7 +331,7 @@ bool schema_validator::have_active_tag() const
 }
 
 std::string schema_validator::active_tag_path() const {
-	std::stack<const class_tag*> temp = stack_;
+	std::stack<const wml_tag*> temp = stack_;
 	std::deque<std::string> path;
 	while(!temp.empty()) {
 		path.push_front(temp.top()->get_name());
@@ -538,7 +538,7 @@ bool schema_self_validator::reference::match(const std::set<std::string>& with)
 	return with.count(value_) > 0;
 }
 
-bool schema_self_validator::reference::can_find(const class_tag& root, const config& cfg)
+bool schema_self_validator::reference::can_find(const wml_tag& root, const config& cfg)
 {
 	// The problem is that the schema being validated is that of the schema!!!
 	return root.find_tag(value_, root, cfg) != nullptr;

@@ -127,9 +127,9 @@ private:
 	bool create_exceptions_;
 
 	/** Root of schema information. */
-	class_tag root_;
+	wml_tag root_;
 
-	std::stack<const class_tag*> stack_;
+	std::stack<const wml_tag*> stack_;
 
 	/** Contains number of children. */
 	cnt_stack counter_;
@@ -138,16 +138,16 @@ private:
 	std::stack<message_map> cache_;
 
 	/** Type validators. */
-	class_type::map types_;
+	wml_type::map types_;
 
 	bool validate_schema_;
 protected:
 	void queue_message(const config& cfg, message_type t, const std::string& file, int line = 0, int n = 0, const std::string& tag = "", const std::string& key = "", const std::string& value = "");
-	const class_tag& active_tag() const;
+	const wml_tag& active_tag() const;
 	std::string active_tag_path() const;
 	bool have_active_tag() const;
 	bool is_valid() const {return config_read_;}
-	class_type::ptr find_type(const std::string& type) const;
+	wml_type::ptr find_type(const std::string& type) const;
 };
 
 // A validator specifically designed for validating a schema
@@ -171,7 +171,7 @@ private:
 		std::string value_, file_, tag_;
 		int line_;
 		bool match(const std::set<std::string>& with);
-		bool can_find(const class_tag& root, const config& cfg);
+		bool can_find(const wml_tag& root, const config& cfg);
 		bool operator<(const reference& other);
 	};
 	std::string current_path() const;

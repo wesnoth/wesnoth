@@ -33,7 +33,7 @@
 namespace schema_validation
 {
 
-class class_condition;
+class wml_condition;
 
 /**
  * Stores information about tag.
@@ -43,25 +43,25 @@ class class_condition;
  * Each tag has name, minimum and maximum occasions number,
  * and lists of subtags, keys and links.
  */
-class class_tag
+class wml_tag
 {
 public:
-	using tag_map  = std::map<std::string, class_tag>;
-	using key_map  = std::map<std::string, class_key>;
+	using tag_map  = std::map<std::string, wml_tag>;
+	using key_map  = std::map<std::string, wml_key>;
 	using link_map = std::map<std::string, std::string>;
-	using condition_list = std::vector<class_condition>;
-	using super_list = std::vector<class_tag*>;
+	using condition_list = std::vector<wml_condition>;
+	using super_list = std::vector<wml_tag*>;
 private:
-	void push_new_tag_conditions(std::queue<const class_tag*> q, const class_tag& tag);
+	void push_new_tag_conditions(std::queue<const wml_tag*> q, const wml_tag& tag);
 	template<typename T, typename Map = std::map<std::string, T>>
 	class iterator : public boost::iterator_facade<iterator<T>, const typename Map::value_type, std::forward_iterator_tag>
 	{
-		std::queue<const class_tag*> condition_queue;
+		std::queue<const wml_tag*> condition_queue;
 		typename Map::const_iterator current;
 		const config& match;
 	public:
 		// Construct a begin iterator
-		iterator(const class_tag& base_tag, const config& match) : match(match)
+		iterator(const wml_tag& base_tag, const config& match) : match(match)
 		{
 			init(base_tag);
 			push_new_tag_conditions(base_tag);
@@ -72,14 +72,14 @@ private:
 		iterator() : match(config().child("a")) {}
 	private:
 		friend class boost::iterator_core_access;
-		void init(const class_tag& base_tag);
+		void init(const wml_tag& base_tag);
 		void ensure_valid_or_end();
 		void increment()
 		{
 			++current;
 			ensure_valid_or_end();
 		}
-		void push_new_tag_conditions(const class_tag& tag)
+		void push_new_tag_conditions(const wml_tag& tag)
 		{
 			for(const auto& condition : tag.conditions_) {
 				if(condition.matches(match)) {
@@ -109,11 +109,11 @@ private:
 		}
 	};
 	template<typename T, typename Map> friend class iterator;
-	using tag_iterator = iterator<class_tag>;
-	using key_iterator = iterator<class_key>;
+	using tag_iterator = iterator<wml_tag>;
+	using key_iterator = iterator<wml_key>;
 public:
 
-	class_tag()
+	wml_tag()
 		: name_("")
 		, min_(0)
 		, max_(0)
@@ -126,7 +126,7 @@ public:
 	{
 	}
 
-	class_tag(const std::string& name, int min, int max, const std::string& super = "", bool any = false)
+	wml_tag(const std::string& name, int min, int max, const std::string& super = "", bool any = false)
 		: name_(name)
 		, min_(min)
 		, max_(max)
@@ -139,9 +139,9 @@ public:
 	{
 	}
 
-	class_tag(const config&);
+	wml_tag(const config&);
 
-	~class_tag()
+	~wml_tag()
 	{
 	}
 
@@ -222,12 +222,12 @@ public:
 		any_tag_ = any;
 	}
 	
-	void add_key(const class_key& new_key)
+	void add_key(const wml_key& new_key)
 	{
 		keys_.emplace(new_key.get_name(), new_key);
 	}
 
-	void add_tag(const class_tag& new_tag)
+	void add_tag(const wml_tag& new_tag)
 	{
 		tags_.emplace(new_tag.name_, new_tag);
 	}
@@ -247,20 +247,20 @@ public:
 	 * Path is getting shotter and shoter with each call.
 	 * Path should look like tag1/tag2/parent/ Slash at end is mandatory.
 	 */
-	void add_tag(const std::string& path, const class_tag& tag, class_tag& root);
+	void add_tag(const std::string& path, const wml_tag& tag, wml_tag& root);
 
-	bool operator<(const class_tag& t) const
+	bool operator<(const wml_tag& t) const
 	{
 		return name_ < t.name_;
 	}
 
-	bool operator==(const class_tag& other) const
+	bool operator==(const wml_tag& other) const
 	{
 		return name_ == other.name_;
 	}
 
 	/** Returns pointer to child key. */
-	const class_key* find_key(const std::string& name, const config& match, bool ignore_super = false) const;
+	const wml_key* find_key(const std::string& name, const config& match, bool ignore_super = false) const;
 
 	/** Returns pointer to child link. */
 	const std::string* find_link(const std::string& name) const;
@@ -269,10 +269,10 @@ public:
 	 * Returns pointer to tag using full path to it.
 	 * Also work with links
 	 */
-	const class_tag* find_tag(const std::string& fullpath, const class_tag& root, const config& match, bool ignore_super = false) const;
+	const wml_tag* find_tag(const std::string& fullpath, const wml_tag& root, const config& match, bool ignore_super = false) const;
 
 	/** Calls the expansion on each child. */
-	void expand_all(class_tag& root);
+	void expand_all(wml_tag& root);
 
 	boost::iterator_range<tag_iterator> tags(const config& cfg_match) const
 	{
@@ -343,7 +343,7 @@ private:
 	bool any_tag_;
 
 	/**
-	 * the same as class_tag::print(std::ostream&)
+	 * the same as wml_tag::print(std::ostream&)
 	 * but indents different levels with step space.
 	 * @param os stream to print
 	 * @param level  current level of indentation
@@ -351,9 +351,9 @@ private:
 	 */
 	void printl(std::ostream& os, int level, int step = 4);
 
-	class_tag* find_tag(const std::string & fullpath, class_tag & root, const config& match)
+	wml_tag* find_tag(const std::string & fullpath, wml_tag & root, const config& match)
 	{
-		return const_cast<class_tag*>(const_cast<const class_tag*>(this)->find_tag(fullpath, root, match));
+		return const_cast<wml_tag*>(const_cast<const wml_tag*>(this)->find_tag(fullpath, root, match));
 	}
 
 	void add_tags(const tag_map& list)
@@ -377,20 +377,20 @@ private:
 	}
 
 	/** Expands all "super", storing direct references for easier access. */
-	void expand(class_tag& root);
+	void expand(wml_tag& root);
 };
 
-extern template class class_tag::iterator<class_tag>;
-extern template class class_tag::iterator<class_key>;
+extern template class wml_tag::iterator<wml_tag>;
+extern template class wml_tag::iterator<wml_key>;
 
 /**
  * Stores information about a conditional portion of a tag.
- * Format is the same as class_tag.
+ * Format is the same as wml_tag.
  */
-class class_condition : public class_tag {
+class wml_condition : public wml_tag {
 	config filter_;
 public:
-	class_condition(const config& info, const config& filter) : class_tag(info), filter_(filter) {}
+	wml_condition(const config& info, const config& filter) : wml_tag(info), filter_(filter) {}
 	bool matches(const config& cfg) const;
 };
 }

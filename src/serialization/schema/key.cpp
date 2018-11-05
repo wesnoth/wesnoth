@@ -24,7 +24,7 @@
 namespace schema_validation
 {
 
-class_key::class_key(const config& cfg)
+wml_key::wml_key(const config& cfg)
 	: name_(cfg["name"].str())
 	, type_(cfg["type"].str())
 	, default_()
@@ -40,7 +40,7 @@ class_key::class_key(const config& cfg)
 	}
 }
 
-void class_key::print(std::ostream& os, int level) const
+void wml_key::print(std::ostream& os, int level) const
 {
 	std::string s;
 	for(int j = 0; j < level; j++) {

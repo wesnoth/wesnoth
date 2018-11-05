@@ -24,9 +24,9 @@
 namespace schema_validation
 {
 
-class_tag any_tag("", 0, -1, "", true);
+wml_tag any_tag("", 0, -1, "", true);
 
-class_tag::class_tag(const config& cfg)
+wml_tag::wml_tag(const config& cfg)
 	: name_(cfg["name"].str())
 	, min_(cfg["min"].to_int())
 	, max_(cfg["max"].str() == "infinite" ? -1 : cfg["max"].to_int(1))
@@ -46,12 +46,12 @@ class_tag::class_tag(const config& cfg)
 	}
 
 	for(const config& child : cfg.child_range("tag")) {
-		class_tag child_tag(child);
+		wml_tag child_tag(child);
 		add_tag(child_tag);
 	}
 
 	for(const config& child : cfg.child_range("key")) {
-		class_key child_key(child);
+		wml_key child_key(child);
 		add_key(child_key);
 	}
 
@@ -69,12 +69,12 @@ class_tag::class_tag(const config& cfg)
 	}
 }
 
-void class_tag::print(std::ostream& os)
+void wml_tag::print(std::ostream& os)
 {
 	printl(os, 4, 4);
 }
 
-void class_tag::set_min(const std::string& s)
+void wml_tag::set_min(const std::string& s)
 {
 	std::istringstream i(s);
 	if(!(i >> min_)) {
@@ -82,7 +82,7 @@ void class_tag::set_min(const std::string& s)
 	}
 }
 
-void class_tag::set_max(const std::string& s)
+void wml_tag::set_max(const std::string& s)
 {
 	std::istringstream i(s);
 	if(!(i >> max_)) {
@@ -90,7 +90,7 @@ void class_tag::set_max(const std::string& s)
 	}
 }
 
-void class_tag::add_link(const std::string& link)
+void wml_tag::add_link(const std::string& link)
 {
 	std::string::size_type pos_last = link.rfind('/');
 	// if (pos_last == std::string::npos) return;
@@ -98,7 +98,7 @@ void class_tag::add_link(const std::string& link)
 	links_.emplace(name_link, link);
 }
 
-const class_key* class_tag::find_key(const std::string& name, const config& match, bool ignore_super) const
+const wml_key* wml_tag::find_key(const std::string& name, const config& match, bool ignore_super) const
 {
 	// Check the conditions first, so that conditional definitions
 	// override base definitions in the event of duplicates.
@@ -135,7 +135,7 @@ const class_key* class_tag::find_key(const std::string& name, const config& matc
 			}
 		}
 		for(auto& super_tag : super_refs_) {
-			if(const class_key* found_key = super_tag->find_key(name, match)) {
+			if(const wml_key* found_key = super_tag->find_key(name, match)) {
 				return found_key;
 			}
 		}
@@ -144,7 +144,7 @@ const class_key* class_tag::find_key(const std::string& name, const config& matc
 	return nullptr;
 }
 
-const std::string* class_tag::find_link(const std::string& name) const
+const std::string* wml_tag::find_link(const std::string& name) const
 {
 	const auto it_links = links_.find(name);
 	if(it_links != links_.end()) {
@@ -154,7 +154,7 @@ const std::string* class_tag::find_link(const std::string& name) const
 	return nullptr;
 }
 
-const class_tag* class_tag::find_tag(const std::string& fullpath, const class_tag& root, const config& match, bool ignore_super) const
+const wml_tag* wml_tag::find_tag(const std::string& fullpath, const wml_tag& root, const config& match, bool ignore_super) const
 {
 	if(fullpath.empty()) {
 		return nullptr;
@@ -219,7 +219,7 @@ const class_tag* class_tag::find_tag(const std::string& fullpath, const class_ta
 			}
 		}
 		for(auto& super_tag : super_refs_) {
-			if(const class_tag* found_tag = super_tag->find_tag(fullpath, root, match)) {
+			if(const wml_tag* found_tag = super_tag->find_tag(fullpath, root, match)) {
 				return found_tag;
 			}
 		}
@@ -232,7 +232,7 @@ const class_tag* class_tag::find_tag(const std::string& fullpath, const class_ta
 	return nullptr;
  }
 
-void class_tag::expand_all(class_tag& root)
+void wml_tag::expand_all(wml_tag& root)
 {
 	for(auto& tag : tags_) {
 		tag.second.expand(root);
@@ -244,7 +244,7 @@ void class_tag::expand_all(class_tag& root)
 	}
 }
 
-void class_tag::remove_keys_by_type(const std::string& type)
+void wml_tag::remove_keys_by_type(const std::string& type)
 {
 	auto i = keys_.begin();
 	while(i != keys_.end()) {
@@ -285,7 +285,7 @@ void class_tag::remove_keys_by_type(const std::string& type)
  * @end{tag}{name="type"}
  * @end{parent}{name="wml_schema/"}
  */
-void class_tag::printl(std::ostream& os, int level, int step)
+void wml_tag::printl(std::ostream& os, int level, int step)
 {
 	std::string s;
 	for(int j = 0; j < level; j++) {
@@ -323,7 +323,7 @@ void class_tag::printl(std::ostream& os, int level, int step)
 	os << s << "[/tag]\n";
 }
 
-void class_tag::add_tag(const std::string& path, const class_tag& tag, class_tag& root)
+void wml_tag::add_tag(const std::string& path, const wml_tag& tag, wml_tag& root)
 {
 	if(path.empty() || path == "/") {
 		auto it = tags_.find(tag.name_);
@@ -354,7 +354,7 @@ void class_tag::add_tag(const std::string& path, const class_tag& tag, class_tag
 
 	auto it_tags = tags_.find(name);
 	if(it_tags == tags_.end()) {
-		class_tag subtag;
+		wml_tag subtag;
 		subtag.set_name(name);
 		subtag.add_tag(next_path, tag, root);
 		tags_.emplace(name, subtag);
@@ -364,10 +364,10 @@ void class_tag::add_tag(const std::string& path, const class_tag& tag, class_tag
 	it_tags->second.add_tag(next_path, tag, root);
 }
 
-void class_tag::expand(class_tag& root)
+void wml_tag::expand(wml_tag& root)
 {
 	for(auto& super : utils::split(super_)) {
-		class_tag* super_tag = root.find_tag(super, root, config());
+		wml_tag* super_tag = root.find_tag(super, root, config());
 		if(super_tag) {
 			if(super_tag != this) {
 				super_refs_.push_back(super_tag);
@@ -380,7 +380,7 @@ void class_tag::expand(class_tag& root)
 	}
 }
 
-void class_tag::add_switch(const config& switch_cfg)
+void wml_tag::add_switch(const config& switch_cfg)
 {
 	config default_cfg;
 	const std::string key = switch_cfg["key"];
@@ -425,7 +425,7 @@ void class_tag::add_switch(const config& switch_cfg)
 	}
 }
 
-void class_tag::add_filter(const config& cond_cfg)
+void wml_tag::add_filter(const config& cond_cfg)
 {
 	config filter = cond_cfg, else_filter;
 	filter.clear_children("then", "else", "elseif");
@@ -455,7 +455,7 @@ void class_tag::add_filter(const config& cond_cfg)
 	}
 }
 
-bool class_condition::matches(const config& cfg) const
+bool wml_condition::matches(const config& cfg) const
 {
 	if(cfg.empty()) {
 		// Conditions are not allowed to match an empty config.
@@ -467,37 +467,37 @@ bool class_condition::matches(const config& cfg) const
 	return cfg.matches(filter_);
 }
 
-void class_tag::tag_iterator::init(const class_tag& base_tag)
+void wml_tag::tag_iterator::init(const wml_tag& base_tag)
 {
 	current = base_tag.tags_.begin();
 	condition_queue.push(&base_tag);
 }
 
-void class_tag::tag_iterator::ensure_valid_or_end() {
+void wml_tag::tag_iterator::ensure_valid_or_end() {
 	while(current == condition_queue.front()->tags_.end()) {
 		condition_queue.pop();
 		if(condition_queue.empty()) {
 			return;
 		}
-		const class_tag& new_base = *condition_queue.front();
+		const wml_tag& new_base = *condition_queue.front();
 		current= new_base.tags_.begin();
 		push_new_tag_conditions(new_base);
 	}
 }
 
-void class_tag::key_iterator::init(const class_tag& base_tag)
+void wml_tag::key_iterator::init(const wml_tag& base_tag)
 {
 	current = base_tag.keys_.begin();
 	condition_queue.push(&base_tag);
 }
 
-void class_tag::key_iterator::ensure_valid_or_end() {
+void wml_tag::key_iterator::ensure_valid_or_end() {
 	while(current == condition_queue.front()->keys_.end()) {
 		condition_queue.pop();
 		if(condition_queue.empty()) {
 			return;
 		}
-		const class_tag& new_base = *condition_queue.front();
+		const wml_tag& new_base = *condition_queue.front();
 		current = new_base.keys_.begin();
 		push_new_tag_conditions(new_base);
 	}

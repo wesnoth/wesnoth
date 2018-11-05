@@ -29,13 +29,13 @@ namespace schema_validation
 {
 
 /**
- * class_key is used to save the information about one key.
+ * wml_key is used to save the information about one key.
  * Key has next info: name, type, default value or key is mandatory.
  */
-class class_key
+class wml_key
 {
 public:
-	class_key()
+	wml_key()
 		: name_("")
 		, type_("")
 		, default_("\"\"")
@@ -44,7 +44,7 @@ public:
 	{
 	}
 
-	class_key(const std::string& name, const std::string& type, const std::string& def = "\"\"")
+	wml_key(const std::string& name, const std::string& type, const std::string& def = "\"\"")
 		: name_(name)
 		, type_(type)
 		, default_(def)
@@ -53,7 +53,7 @@ public:
 	{
 	}
 
-	class_key(const config&);
+	wml_key(const config&);
 
 	const std::string& get_name() const
 	{
@@ -119,7 +119,7 @@ public:
 	void print(std::ostream& os, int level) const;
 
 	/** Compares keys by name. Used in std::sort, i.e. */
-	bool operator<(const class_key& k) const
+	bool operator<(const wml_key& k) const
 	{
 		return (get_name() < k.get_name());
 	}
