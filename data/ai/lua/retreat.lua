@@ -142,6 +142,14 @@ function retreat_functions.get_retreat_injured_units(healees, regenerates)
             possible_locations = location_subset
         end
 
+        local is_healthy = false
+        for _,trait in ipairs(u.traits) do
+            if (trait == 'healthy') then
+                is_healthy = true
+                break
+            end
+        end
+
         local base_rating = - u.hitpoints + u.max_hitpoints / 2.
         if u.status.poisoned then base_rating = base_rating + 8 end
         if u.status.slowed then base_rating = base_rating + 4 end
@@ -179,9 +187,8 @@ function retreat_functions.get_retreat_injured_units(healees, regenerates)
                 rating = rating - u:defense(wesnoth.get_terrain(loc[1], loc[2]))/10
 
                 if (loc[1] == u.x) and (loc[2] == u.y) and (not u.status.poisoned) then
-                    if enemy_count == 0 then
+                    if is_healthy or enemy_count == 0 then
                         -- Bonus if we can rest heal
-                        -- TODO: Always apply bonus if unit has healthy trait
                         heal_score = heal_score + 2
                     end
                 elseif unit_in_way then
