@@ -851,7 +851,6 @@ return {
             local locsx, locsy = AH.split_location_list_to_strings(data.castle.locs)
 
             -- get a list of all unowned villages within fastest_unit_speed
-            -- TODO get list of villages not owned by allies instead
             -- this may have false positives (villages that can't be reached due to difficult/impassible terrain)
             local exclude_x, exclude_y = "0", "0"
             if data.castle.assigned_villages_x and data.castle.assigned_villages_x[1] then
@@ -859,7 +858,12 @@ return {
                 exclude_y = table.concat(data.castle.assigned_villages_y, ",")
             end
             local villages = wesnoth.get_villages {
-                owner_side = 0,
+                { "and", {
+                    { "filter_owner", {
+                        { "enemy_of", { side = wesnoth.current.side } }
+                    } },
+                    { "or", { owner_side = 0 } }
+                }},
                 { "and", {
                     radius = fastest_unit_speed,
                     x = locsx, y = locsy
