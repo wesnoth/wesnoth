@@ -908,6 +908,7 @@ return {
             end
 
             local width,height,border = wesnoth.get_map_size()
+            if (not recruit_data.unit_distances) then recruit_data.unit_distances = {} end
             for i,v in ipairs(villages) do
                 local close_castle_hexes = {}
                 for _,loc in ipairs(data.castle.locs) do
@@ -930,7 +931,15 @@ return {
                     if c[1] > 0 and c[2] > 0 and c[1] <= width and c[2] <= height then
                         local distance = 0
                         for x,unit in ipairs(test_units) do
-                            local path, unit_distance = wesnoth.find_path(unit, c[1], c[2], {viewing_side=0, max_cost=fastest_unit_speed+1})
+                            local key = unit.type .. '_' .. v[1] .. '-' .. v[2] .. '_' .. c[1]  .. '-' .. c[2]
+                            local path, unit_distance
+                            if (not recruit_data.unit_distances[key]) then
+                                path, unit_distance = wesnoth.find_path(unit, c[1], c[2], {viewing_side=0, max_cost=fastest_unit_speed+1})
+                                recruit_data.unit_distances[key] = unit_distance
+                            else
+                                unit_distance = recruit_data.unit_distances[key]
+                            end
+
                             distance = distance + unit_distance
 
                             -- Village is only viable if at least one unit can reach it
