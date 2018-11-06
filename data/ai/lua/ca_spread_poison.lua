@@ -47,7 +47,7 @@ function ca_spread_poison:evaluation(cfg, data)
         local on_village = wesnoth.get_terrain_info(defender_terrain).village
 
         -- Also, poisoning units that would level up through the attack or could level on their turn as a result is very bad
-        local about_to_level = defender.max_experience - defender.experience <= (attacker.level * 2)
+        local about_to_level = defender.max_experience - defender.experience <= (attacker.level * 2 * wesnoth.game_config.combat_experience)
 
         if (not cant_poison) and (not on_village) and (not about_to_level) then
             -- Strongest enemy gets poisoned first

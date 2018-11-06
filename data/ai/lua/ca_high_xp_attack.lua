@@ -56,12 +56,12 @@ function ca_attack_highxp:evaluation(cfg, data)
     for i_t,enemy in ipairs(attacks_aspect.enemy) do
         if AH.is_attackable_enemy(enemy) then
             local XP_to_levelup = enemy.max_experience - enemy.experience
-            if (max_unit_level >= XP_to_levelup) then
+            if (max_unit_level * wesnoth.game_config.combat_experience >= XP_to_levelup) then
                 local potential_target = false
                 local ind_attackers, ind_other_units = {}, {}
                 for i_u,unit in ipairs(units) do
                     if (M.distance_between(enemy.x, enemy.y, unit.x, unit.y) <= unit.moves + 1) then
-                        if (unit.level >= XP_to_levelup) then
+                        if (unit.level * wesnoth.game_config.combat_experience >= XP_to_levelup) then
                             potential_target = true
                             table.insert(ind_attackers, i_u)
                         else

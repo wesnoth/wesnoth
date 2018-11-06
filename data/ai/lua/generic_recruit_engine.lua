@@ -223,7 +223,7 @@ return {
                     local poison_damage = 0
                     if poison then
                         -- Add poison damage * probability of poisoning
-                        poison_damage = 8*(1-((1-defense)^attack.number))
+                        poison_damage = wesnoth.game_config.poison_amount*(1-((1-defense)^attack.number))
                     end
 
                     if (not best_attack) or (attack_damage+poison_damage > best_damage+best_poison_damage) then
