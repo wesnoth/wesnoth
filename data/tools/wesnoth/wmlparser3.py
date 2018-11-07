@@ -309,7 +309,7 @@ class Parser:
         if data_dir: self.data_dir = os.path.abspath(data_dir)
         self.keep_temp_dir = None
         self.temp_dir = None
-        self.no_preprocess = (wesnoth_exe == None)
+        self.no_preprocess = (wesnoth_exe is None)
         self.preprocessed = None
         self.verbose = False
 

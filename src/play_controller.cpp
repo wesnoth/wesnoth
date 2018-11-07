@@ -438,6 +438,13 @@ void play_controller::maybe_do_init_side()
 		return;
 	}
 
+	if (current_team().is_idle()) {
+		// In this case it can happen that we just gave control of this side to another player so doing init_side
+		// could lead to errors since we no longer own this side from the servers perspective.
+		// (see playturn.cpp)
+		return;
+	}
+
 	resources::recorder->init_side();
 	do_init_side();
 }

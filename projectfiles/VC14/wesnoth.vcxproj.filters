@@ -1554,6 +1554,12 @@
     <ClCompile Include="..\..\src\preferences\lobby.cpp">
       <Filter>Preferences</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\desktop\battery_info.cpp">
+      <Filter>Desktop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\desktop\windows_battery_info.cpp">
+      <Filter>Desktop</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -3029,6 +3035,12 @@
     </ClInclude>
     <ClInclude Include="..\..\src\preferences\lobby.hpp">
       <Filter>Preferences</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\desktop\battery_info.hpp">
+      <Filter>Desktop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\desktop\windows_battery_info.hpp">
+      <Filter>Desktop</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

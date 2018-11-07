@@ -504,10 +504,68 @@ void pump()
 		events.erase(first_draw_event + 1, events.end());
 	}
 
-	for(const SDL_Event& event : events) {
+	for(SDL_Event& event : events) {
 		for(context& c : event_contexts) {
 			c.add_staging_handlers();
 		}
+
+#ifdef MOUSE_TOUCH_EMULATION
+		switch (event.type) {
+			// TODO: Implement SDL_MULTIGESTURE. Some day.
+			case SDL_MOUSEMOTION:
+				if(event.motion.which != SDL_TOUCH_MOUSEID && event.motion.state == 0) {
+					return;
+				}
+
+				if(event.motion.state & SDL_BUTTON(SDL_BUTTON_RIGHT))
+				{
+					SDL_Rect r = CVideo::get_singleton().screen_area();
+					
+					// TODO: Check if SDL_FINGERMOTION is actually signaled for COMPLETE motions (I doubt, but tbs)
+					SDL_Event touch_event;
+					touch_event.type = SDL_FINGERMOTION;
+					touch_event.tfinger.type = SDL_FINGERMOTION;
+					touch_event.tfinger.timestamp = event.motion.timestamp;
+					touch_event.tfinger.touchId = 1;
+					touch_event.tfinger.fingerId = 1;
+					touch_event.tfinger.dx = static_cast<float>(event.motion.xrel) / r.w;
+					touch_event.tfinger.dy = static_cast<float>(event.motion.yrel) / r.h;
+					touch_event.tfinger.x = static_cast<float>(event.motion.x) / r.w;
+					touch_event.tfinger.y = static_cast<float>(event.motion.y) / r.h;
+					touch_event.tfinger.pressure = 1;
+					::SDL_PushEvent(&touch_event);
+					
+					event.motion.state = SDL_BUTTON(SDL_BUTTON_LEFT);
+					event.motion.which = SDL_TOUCH_MOUSEID;
+				}
+				break;
+			case SDL_MOUSEBUTTONDOWN:
+			case SDL_MOUSEBUTTONUP:
+				if(event.button.button == SDL_BUTTON_RIGHT)
+				{
+					event.button.button = SDL_BUTTON_LEFT;
+					event.button.which = SDL_TOUCH_MOUSEID;
+					
+					SDL_Rect r = CVideo::get_singleton().screen_area();
+					SDL_Event touch_event;
+					touch_event.type = (event.type == SDL_MOUSEBUTTONDOWN) ? SDL_FINGERDOWN : SDL_FINGERUP;
+					touch_event.tfinger.type = touch_event.type;
+					touch_event.tfinger.timestamp = event.button.timestamp;
+					touch_event.tfinger.touchId = 1;
+					touch_event.tfinger.fingerId = 1;
+					touch_event.tfinger.dx = 0;
+					touch_event.tfinger.dy = 0;
+					touch_event.tfinger.x = static_cast<float>(event.button.x) / r.w;
+					touch_event.tfinger.y = static_cast<float>(event.button.y) / r.h;
+					touch_event.tfinger.pressure = 1;
+					::SDL_PushEvent(&touch_event);
+
+				}
+				break;
+			default:
+				break;
+		}
+#endif
 
 		switch(event.type) {
 		case SDL_WINDOWEVENT:
@@ -555,15 +613,19 @@ void pump()
 		case SDL_MOUSEBUTTONDOWN: {
 			// Always make sure a cursor is displayed if the mouse moves or if the user clicks
 			cursor::set_focus(true);
-			if(event.button.button == SDL_BUTTON_LEFT) {
+			if(event.button.button == SDL_BUTTON_LEFT || event.button.which == SDL_TOUCH_MOUSEID) {
 				static const int DoubleClickTime = 500;
+#ifdef __IPHONEOS__
+				static const int DoubleClickMaxMove = 15;
+#else
 				static const int DoubleClickMaxMove = 3;
+#endif
 
 				if(last_mouse_down >= 0 && info.ticks() - last_mouse_down < DoubleClickTime
 						&& std::abs(event.button.x - last_click_x) < DoubleClickMaxMove
 						&& std::abs(event.button.y - last_click_y) < DoubleClickMaxMove
 				) {
-					sdl::UserEvent user_event(DOUBLE_CLICK_EVENT, event.button.x, event.button.y);
+					sdl::UserEvent user_event(DOUBLE_CLICK_EVENT, event.button.which, event.button.x, event.button.y);
 					::SDL_PushEvent(reinterpret_cast<SDL_Event*>(&user_event));
 				}
 

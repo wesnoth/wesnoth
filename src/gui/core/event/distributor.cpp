@@ -125,6 +125,15 @@ mouse_motion::mouse_motion(widget& owner,
 						_5),
 			queue_position);
 
+	owner.connect_signal<event::SDL_TOUCH_MOTION>(
+			std::bind(&mouse_motion::signal_handler_sdl_touch_motion,
+						this,
+						_2,
+						_3,
+						_5,
+						_6),
+			queue_position);
+
 	owner_.connect_signal<event::SDL_WHEEL_UP>(std::bind(
 			&mouse_motion::signal_handler_sdl_wheel, this, _2, _3, _5));
 	owner_.connect_signal<event::SDL_WHEEL_DOWN>(std::bind(
@@ -194,6 +203,25 @@ void mouse_motion::signal_handler_sdl_mouse_motion(const event::ui_event event,
 			mouse_enter(mouse_over);
 		} else {
 			assert(!mouse_focus_ && !mouse_over);
+		}
+	}
+	handled = true;
+}
+
+void mouse_motion::signal_handler_sdl_touch_motion(const event::ui_event event,
+									 bool& handled,
+									 const point& coordinate,
+									 const point& distance)
+{
+	DBG_GUI_E << LOG_HEADER << event << ".\n";
+
+	if(mouse_captured_) {
+		assert(mouse_focus_);
+		owner_.fire(event, *mouse_focus_, coordinate, distance);
+	} else {
+		widget* mouse_over = owner_.find_at(coordinate, true);
+		if(mouse_over) {
+			owner_.fire(event, *mouse_over, coordinate, distance);
 		}
 	}
 	handled = true;
@@ -316,6 +344,14 @@ void mouse_motion::mouse_leave()
 void mouse_motion::start_hover_timer(widget* widget, const point& coordinate)
 {
 	assert(widget);
+
+#ifdef __IPHONEOS__
+	// Guessing a crash location in a nasty stack in gui2::execute_timer.
+	// Either this or a long-touch menu.
+	// Remove this when the crash in gui2::execute_timer() and gui2::timer_callback() is gone and try again.
+	return;
+#endif
+
 	stop_hover_timer();
 
 	if(hover_shown_ || !widget->wants_mouse_hover()) {

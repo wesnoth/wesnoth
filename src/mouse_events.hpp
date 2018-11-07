@@ -84,6 +84,8 @@ public:
 		const bool fire_event = true);
 
 	void move_action(bool browse);
+	
+	void touch_action(const map_location hex, bool browse);
 
 	void select_or_action(bool browse);
 
@@ -130,6 +132,8 @@ protected:
 //	bool left_click(int x, int y, const bool browse);
 	bool move_unit_along_current_route();
 
+	void touch_motion(int x, int y, const bool browse, bool update=false, map_location loc = map_location::null_location());
+
 	void save_whiteboard_attack(const map_location& attacker_loc, const map_location& defender_loc, int weapon_choice);
 
 	// fill weapon choices into bc_vector
@@ -144,6 +148,12 @@ protected:
 	void show_attack_options(const unit_map::const_iterator &u);
 	unit_map::const_iterator find_unit(const map_location& hex) const;
 	unit_map::iterator find_unit(const map_location& hex);
+	/*
+	 * These return raw pointers instead of smart pointers.
+	 * Useful if you don't want to increase the unit reference count.
+	 */
+	unit* find_unit_nonowning(const map_location& hex);
+	const unit* find_unit_nonowning(const map_location& hex) const;
 	bool unit_in_cycle(unit_map::const_iterator it);
 private:
 	team& viewing_team();

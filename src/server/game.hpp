@@ -498,7 +498,6 @@ private:
 
 	int current_turn_;
 	int current_side_index_;
-	int end_turn_;
 	int num_turns_;
 	bool all_observers_muted_;
 

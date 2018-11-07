@@ -519,7 +519,7 @@ class GitHub(object):
         return json_parsed
 
     def _github_have_authorization(self):
-        return self.authorization != None
+        return self.authorization is not None
     def _github_authorization(self):
         if self.authorization:
             return self.authorization
@@ -541,7 +541,7 @@ class GitHub(object):
         p = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=True, cwd=cwd)
         out = ""
         err = ""
-        while(p.poll() == None):
+        while(p.poll() is None):
             out += p.stdout.read()
             err += p.stderr.read()
 
@@ -615,6 +615,6 @@ def get_build_system(possible_dirs=[]):
     Returns: The Addon object of the build-system
     """
     global _g
-    if _g == None:
+    if _g is None:
         _g = _gen(possible_dirs)
     return next(_g)

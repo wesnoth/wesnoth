@@ -51,11 +51,19 @@
    * Support [break], [continue], and [return] in [random_placement]
    * [remove_sound_source] now accepts a comma-separated ID list
    * Support [filter_team] in [side] in addition to team_name=
+   * Support an optional EXTRA_WML argument to {REMOVE_LABEL}.
  ### Miscellaneous and bug fixes
    * Rest healing now happens on turn 2. (issue #3562)
    * Normal healing now happens on turn 1 for all sides except the first. (issue #3562)
+   * [change_theme] no longer requires running a separate action to update the
+     UI afterwards (e.g. [redraw]) and the status panels are updated immediately.
+     as well.
+   * Re-added the Font Scaling preference.
 
 ## Version 1.14.5+dev
+ ### AI
+   * Fixed crash when the AI simulates a fight between two units which can slow but aren't yet slowed, then
+     simulates another fight for one of them in Monte Carlo mode (issue #3650).
  ### Campaigns
    * Descent Into Darkness:
      * Allow converting L3 necromancers to liches from S12 onwards (issue #3165).
@@ -81,7 +89,11 @@
    * When a recruited unit is fogged, scroll to the recruiting unit and play recruit
      animation. (issue #3577)
    * Fix line breaks in first statistics line in unit type pages in the help. (issue #3256)
+   * Don't scroll to an enemy unit that teleports to or from an invisible hex. (PR #3578)
+   * Don't show in the sidebar the time of day schedule of a shrouded hex. (PR #3638)
    * Game Load screen gracefully handles savefiles that can't be parsed. (issue #3652)
+   * The sidebar now shows alignment and damages as they would be on the hex under
+     the mouse, rather than at the unit's current location. (PR #3642)
 
 ## Version 1.14.5
  ### AI

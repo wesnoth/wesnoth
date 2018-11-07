@@ -174,6 +174,7 @@ private:
 // Helper functions for execute()
 	action_result_ptr execute_recall(const std::string& id, data& leader_data);
 	action_result_ptr execute_recruit(const std::string& type, data& leader_data);
+	double recall_unit_value(const unit_const_ptr & recall_unit) const;
 	const std::string* get_appropriate_recall(const std::string& type,
 			const data& leader_data) const;
 	data* get_best_leader_from_ratio_scores(std::vector<data>& leader_data,

@@ -275,7 +275,7 @@ class DataSub(Data):
 
         bytes = ""
         for r in result:
-            if r != None:
+            if r is not None:
                 # For networking, we need actual bytestream here, not unicode.
                 if type(r) is unicode: r = r.encode("utf8")
                 bytes += str(r)
@@ -577,11 +577,11 @@ class DataSub(Data):
         """For the even lazier, looks for a value inside a difficulty ifdef.
         """
         v = self.get_text_val(tag)
-        if v != None: return v
+        if v is not None: return v
 
         for ifdef in self.get_ifdefs(["EASY", "NORMAL", "HARD"][difficulty]):
             v = ifdef.get_text_val(tag)
-            if v != None: return v
+            if v is not None: return v
 
         return default
 

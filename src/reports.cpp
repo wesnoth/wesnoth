@@ -14,6 +14,7 @@
 
 #include "actions/attack.hpp"
 #include "attack_prediction.hpp"
+#include "desktop/battery_info.hpp"
 #include "font/pango/escape.hpp"
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
@@ -35,6 +36,8 @@
 #include <ctime>
 #include <iomanip>
 #include <boost/dynamic_bitset.hpp>
+#include <boost/format.hpp>
+#include <boost/lexical_cast.hpp>
 
 static void add_text(config &report, const std::string &text,
 	const std::string &tooltip, const std::string &help = "")
@@ -1540,6 +1543,9 @@ REPORT_GENERATOR(edit_left_button_function)
 
 REPORT_GENERATOR(report_clock, /*rc*/)
 {
+	config report;
+	add_image(report, game_config::images::time_icon, "");
+
 	std::ostringstream ss;
 
 	const char* format = preferences::use_twelve_hour_clock_format()
@@ -1548,8 +1554,22 @@ REPORT_GENERATOR(report_clock, /*rc*/)
 
 	std::time_t t = std::time(nullptr);
 	ss << std::put_time(std::localtime(&t), format);
+	add_text(report, ss.str(), _("Clock"));
 
-	return text_report(ss.str(), _("Clock"));
+	return report;
+}
+
+
+REPORT_GENERATOR(battery, /*rc*/)
+{
+	config report;
+
+	if(desktop::battery_info::does_device_have_battery()) {
+		add_image(report, game_config::images::battery_icon, "");
+		add_text(report, (boost::format("%.0f %%") % desktop::battery_info::get_battery_percentage()).str(), _("Battery"));
+	}
+
+	return report;
 }
 
 REPORT_GENERATOR(report_countdown, rc)
