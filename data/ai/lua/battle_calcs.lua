@@ -809,10 +809,10 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
         damage = damage + 6 * (att_stats.slowed - att_stats.hp_chance[0])
     end
 
-    -- If attack is from a village (or other healing location), count that as slightly more than the healing amount
+    -- If attack is from a healing location, count that as slightly more than the healing amount
     damage = damage - 1.25 * wesnoth.get_terrain_info(wesnoth.get_terrain(dst[1], dst[2])).healing
 
-    -- Equivalently, if attack is adjacent to an unoccupied village, that's bad
+    -- Equivalently, if attack is adjacent to an unoccupied healing location, that's bad
     for xa,ya in H.adjacent_tiles(dst[1], dst[2]) do
         local healing = wesnoth.get_terrain_info(wesnoth.get_terrain(xa, ya)).healing
         if (healing > 0) and (not wesnoth.get_unit(xa, ya)) then
@@ -863,7 +863,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
         damage = damage + 6 * (def_stats.slowed - def_stats.hp_chance[0])
     end
 
-    -- If defender is on a village (or other healing location), count that as slightly more than the healing amount
+    -- If defender is on a healing location, count that as slightly more than the healing amount
     damage = damage - 1.25 * wesnoth.get_terrain_info(wesnoth.get_terrain(defender.x, defender.y)).healing
 
     if (damage < 0) then damage = 0. end
@@ -905,9 +905,8 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
 
     -- If defender is on a village, add a bonus rating (we want to get rid of those preferentially)
     -- So yes, this is positive, even though it's a plus for the defender
-    -- Defenders on villages also got a negative damage rating above (these don't exactly cancel each other though)
-    local is_village = wesnoth.get_terrain_info(wesnoth.get_terrain(defender.x, defender.y)).village
-    if is_village then
+    -- Note: defenders on healing locations also got a negative damage rating above (these don't exactly cancel each other though)
+    if wesnoth.get_terrain_info(wesnoth.get_terrain(defender.x, defender.y)).village then
         defender_value = defender_value * (1. + 10. / attacker.max_hitpoints)
     end
 

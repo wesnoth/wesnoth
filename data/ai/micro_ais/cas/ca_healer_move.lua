@@ -35,11 +35,11 @@ function ca_healer_move:evaluation(cfg, data)
     local healees, healees_MP = {}, {}
     for _,healee in ipairs(all_healees) do
         -- Potential healees are units without MP that don't already have a healer (also without MP) next to them
-        -- Also, they cannot be on a village or regenerate
+        -- Also, they cannot be on a healing location or regenerate
         if (healee.moves == 0) then
             if (not healee:matches { ability = "regenerates" }) then
-                local is_village = wesnoth.get_terrain_info(wesnoth.get_terrain(healee.x, healee.y)).village
-                if (not is_village) then
+                local healing = wesnoth.get_terrain_info(wesnoth.get_terrain(healee.x, healee.y)).healing
+                if (healing == 0) then
                     local is_healee = true
                     for _,healer in ipairs(healers_noMP) do
                         if (M.distance_between(healee.x, healee.y, healer.x, healer.y) == 1) then
