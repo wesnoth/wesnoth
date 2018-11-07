@@ -814,6 +814,21 @@ function ai_helper.get_passable_locations(location_filter, unit)
     return all_locs
 end
 
+function ai_helper.get_healing_locations(location_filter)
+    -- Finds all locations matching @location_filter that provide healing, excluding border hexes.
+
+    local all_locs = ai_helper.get_locations_no_borders(location_filter)
+
+    local locs = {}
+    for _,loc in ipairs(all_locs) do
+        if wesnoth.get_terrain_info(wesnoth.get_terrain(loc[1],loc[2])).healing > 0 then
+            table.insert(locs, loc)
+        end
+    end
+
+    return locs
+end
+
 function ai_helper.distance_map(units, map)
     -- Get the distance map DM for all units in @units (as a location set)
     -- DM = sum ( distance_from_unit )
