@@ -58,6 +58,7 @@
    * [change_theme] no longer requires running a separate action to update the
      UI afterwards (e.g. [redraw]) and the status panels are updated immediately.
      as well.
+   * Re-added the Font Scaling preference.
 
 ## Version 1.14.5+dev
  ### AI
