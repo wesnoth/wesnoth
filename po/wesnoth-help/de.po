@@ -3,16 +3,16 @@
 #  Boris Stumm <wesnoth@bstumm.de>, 2005
 #  Nils Kneuper <crazy-ivanovic@gmx.net>, 2005, 2006
 #  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2012
-#  Gerfried Fuchs <rhonda@deb.at>, 2005, 2006, 2010
+#  Rhonda D'Vine <rhonda@deb.at>, 2005, 2006, 2010
 #  Marcel Miebach <marcel_miebach@gmx.de>, 2012
 #  Aaron Winter <winter.aaron93@gmail.com>, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-05-26 15:04+0300\n"
-"PO-Revision-Date: 2018-06-29 08:30+0200\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2018-09-09 11:38+0300\n"
+"PO-Revision-Date: 2018-09-15 23:14+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
@@ -29,14 +29,14 @@ msgid "Underground"
 msgstr "Unter Tage"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:658
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:667
 #: data/core/macros/abilities.cfg:274
 msgid "berserk"
 msgstr "Kampfrausch"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:660
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:669
 #: data/core/macros/abilities.cfg:275
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -47,14 +47,14 @@ msgstr ""
 "oder im Kampfrausch 30 Runden verstrichen sind."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:669
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:678
 #: data/core/macros/abilities.cfg:359
 msgid "magical"
 msgstr "Magie"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:671
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:680
 #: data/core/macros/abilities.cfg:360
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
@@ -1019,7 +1019,7 @@ msgid ""
 "which the Arkan-thoria empties.\n"
 "    • Lintanir Forest: The southernmost portion of the Great Northern "
 "Forest, a gigantic wood whose eastern and northern boundaries are known only "
-"the elves. Their capitol, Elensiria, has only seldom been visited by "
+"to the elves. Their capital, Elensiria, has only seldom been visited by "
 "humans.\n"
 "    • Great River: The origin of this river is somewhere in the east of the "
 "northern lands."
@@ -1259,7 +1259,7 @@ msgstr "Erweiterungen"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:88 data/core/help.cfg:529
+#: data/core/help.cfg:88 data/core/help.cfg:535
 msgid "Commands"
 msgstr "Befehle"
 
@@ -1948,7 +1948,7 @@ msgstr ""
 "besteht. Geraten Gegner in diese Zone, verlieren sie sofort alle BP und "
 "müssen ihren Zug beenden. Zu lernen, wie man Kontrollzonen zum eigenen "
 "Vorteil nutzt, gehört zu den wichtigsten Taktiken in Wesnoth, zumal nur "
-"<ref>dst='ability_skirmisher' text='Plänkler'</ref> die Sicherheitszonen "
+"<ref>dst='ability_skirmisher' text='Plänkler'</ref> die Kontrollzonen "
 "ignorieren können."
 
 #. [topic]: id=movement
@@ -3113,6 +3113,41 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
+"<header>text='Cores'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Kerne'</header>"
+
+#. [topic]: id=using_addons
+#: data/core/help.cfg:496
+msgid ""
+"\n"
+"\n"
+"Cores enable total conversion of The Battle for Wesnoth. A core can replace "
+"all the content in Wesnoth: when a different core is loaded, the regular "
+"units, terrains and the like do not exist.\n"
+"\n"
+"Cores allow a significantly different game experience: for example, a World "
+"War II campaign, or even a different game altogether, as long as it can be "
+"represented as a hexagonal map with ’units’ in some way."
+msgstr ""
+"\n"
+"\n"
+"Mit Kernen lässt sich »Total Conversion« in Battle for Wesnoth erreichen. "
+"Ein Kern kann jegliche vordefinieren Inhalte ersetzen, Standardeinheiten, "
+"Terrains und ähnliches existieren dann nicht.\n"
+"\n"
+"Mit Kernen lässt sich das Spiel sehr weit umstellen, beispielsweise wäre "
+"eine WK II Kampagne möglich, oder ein komplett anderes Spiel, sofern es sich "
+"in irgendeiner Art mit Einheiten auf einer hexagonalen Karte darstellen "
+"lässt."
+
+#. [topic]: id=using_addons
+#: data/core/help.cfg:500
+msgid ""
+"\n"
+"\n"
 "<header>text='Creator Resources'</header>"
 msgstr ""
 "\n"
@@ -3120,7 +3155,7 @@ msgstr ""
 "<header>text='Ressourcen für Entwickler von Erweiterungen'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:496
+#: data/core/help.cfg:502
 msgid ""
 "\n"
 "\n"
@@ -3140,12 +3175,12 @@ msgstr ""
 "Downloads würde deren Installation empfohlen bzw. unerlässlich sein."
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:505
+#: data/core/help.cfg:511
 msgid "Installing Add-ons"
 msgstr "Installation von Erweiterungen"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:506
+#: data/core/help.cfg:512
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -3158,16 +3193,16 @@ msgid ""
 "in the <italic>text='Version'</italic> column.\n"
 "\n"
 "To search for add-ons by keywords, type any relevant terms in any order in "
-"the <bold>text='Filter'</bold> box, separated by spaces. You can also sort "
-"the add-on list by clicking the column headers. It is also possible to "
-"choose to only display add-ons of specific categories by clicking on the "
-"<bold>text='Options'</bold> button in the top-right corner.\n"
+"the search box, separated by spaces. You can also sort the add-on list by "
+"clicking the column headers. It is also possible to choose to only display "
+"add-ons of specific categories by clicking on the <bold>text='Type'</bold> "
+"dropdown.\n"
 "\n"
 "To install an add-on, select it from the list and click the <bold>text='+'</"
-"bold> icon, or simply double-click on the add-on’s title. The "
-"<bold>text='Description'</bold> button provides you with additional details "
-"about the add-on, such as its full description, installation status, and "
-"available languages."
+"bold> icon, or simply double-click on the add-on’s title. If the window is "
+"too small to show them inline, the <bold>text='Addon Details'</bold> button "
+"provides you with additional details about the add-on, such as its full "
+"description, installation status, and available translations."
 msgstr ""
 "Zur Palette der von Benutzern entworfenen Erweiterungen gelangt Ihr über den "
 "Link <italic>text='Erweiterungen'</italic> im Hauptmenü. Sobald die "
@@ -3182,25 +3217,26 @@ msgstr ""
 "angezeigt.\n"
 "\n"
 "Um per Stichwort nach einem Titel zu suchen, reicht es, eine beliebige "
-"Referenz im Feld <bold>text='Filter'</bold> einzutippen (Worte durch "
+"Referenz im Feld <bold>text='Suche'</bold> einzutippen (Worte durch "
 "Leerzeichen trennen). Durch Anklicken des jeweiligen Spaltentitels kann man "
 "die Liste der Erweiterungen entsprechend sortieren. Und über den Schalter "
-"<bold>text='Optionen'</bold> gelangt Ihr zu einer Auswahlbox, wo sich die "
+"<bold>text='Typ'</bold> gelangt Ihr zu einer Auswahlbox, wo sich die "
 "Auflistung auf definierte Kategorien einschränken lässt.\n"
 "\n"
-"Via <bold>text='Beschreibung'</bold> wird ein Fenster mit weiteren Details "
-"eingeblendet, es enthält eine Kurzfassung zum Inhalt, Verweise auf "
-"Übersetzungen, Abhängigkeit von anderen Erweiterungen oder einen Link zum "
-"Forum. Mit Klick auf <bold>text='+'</bold> oder Doppelklick auf den Titel "
-"der Erweiterung wird die Installation durchgeführt."
+"Mit Klick auf <bold>text='+'</bold> oder Doppelklick auf den Titel der "
+"Erweiterung wird die Installation durchgeführt. Bei kleinen Fenstergfrößen "
+"lässt sich via <bold>text='Erweiterungsdetails'</bold> ein Fenster mit "
+"weiteren Details einblenden, es enthält eine Kurzfassung zum Inhalt, "
+"Verweise auf Übersetzungen, Abhängigkeiten von anderen Erweiterungen oder "
+"einen Link zum Forum."
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:519
+#: data/core/help.cfg:525
 msgid "Removing Add-ons"
 msgstr "Deinstallation von Erweiterungen"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:520
+#: data/core/help.cfg:526
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -3225,14 +3261,14 @@ msgstr ""
 "deinstallieren."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:535
+#: data/core/help.cfg:541
 msgid "General Commands"
 msgstr "Allgemeine Befehle"
 
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:537 data/core/help.cfg:580 data/core/help.cfg:618
+#: data/core/help.cfg:543 data/core/help.cfg:586 data/core/help.cfg:624
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3247,7 +3283,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:539
+#: data/core/help.cfg:545
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3258,7 +3294,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:542
+#: data/core/help.cfg:548
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3275,7 +3311,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:546
+#: data/core/help.cfg:552
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -3298,7 +3334,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:549
+#: data/core/help.cfg:555
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -3309,7 +3345,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:552
+#: data/core/help.cfg:558
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3320,7 +3356,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:555
+#: data/core/help.cfg:561
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3331,7 +3367,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:558
+#: data/core/help.cfg:564
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3343,7 +3379,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:561
+#: data/core/help.cfg:567
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3354,7 +3390,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:564
+#: data/core/help.cfg:570
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3365,7 +3401,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:567
+#: data/core/help.cfg:573
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3376,7 +3412,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:570
+#: data/core/help.cfg:576
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3385,12 +3421,12 @@ msgstr ""
 "Spiel speichern und Szenario beenden (ohne vorherige Rückfrage)"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:579
+#: data/core/help.cfg:585
 msgid "Multiplayer Commands"
 msgstr "Mehrspieler-Befehle"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:582
+#: data/core/help.cfg:588
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3407,7 +3443,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:585
+#: data/core/help.cfg:591
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3429,7 +3465,7 @@ msgstr ""
 
 # Erklärung zum Mehrspieler-Kommando  " :give_contrl "
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:588
+#: data/core/help.cfg:594
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -3450,7 +3486,7 @@ msgstr ""
 # ... für ein Team aktivieren / deaktivieren\n
 # *Mehrspieler-Kommando *
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:591
+#: data/core/help.cfg:597
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -3464,7 +3500,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:594
+#: data/core/help.cfg:600
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -3481,7 +3517,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:597
+#: data/core/help.cfg:603
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3496,7 +3532,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:600
+#: data/core/help.cfg:606
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3510,7 +3546,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:603
+#: data/core/help.cfg:609
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -3521,7 +3557,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:606
+#: data/core/help.cfg:612
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3536,7 +3572,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:609
+#: data/core/help.cfg:615
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -3548,12 +3584,12 @@ msgstr ""
 "Beobachtern wieder Redefreiheit erteilt."
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:617
+#: data/core/help.cfg:623
 msgid "Debug Mode Commands"
 msgstr "Debug-Befehle"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:620
+#: data/core/help.cfg:626
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3566,7 +3602,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:623
+#: data/core/help.cfg:629
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3577,7 +3613,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:626
+#: data/core/help.cfg:632
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3589,7 +3625,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:629
+#: data/core/help.cfg:635
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3600,7 +3636,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:632
+#: data/core/help.cfg:638
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3611,7 +3647,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:635
+#: data/core/help.cfg:641
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3622,7 +3658,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:638
+#: data/core/help.cfg:644
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3633,7 +3669,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:641
+#: data/core/help.cfg:647
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3644,7 +3680,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:644
+#: data/core/help.cfg:650
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3657,7 +3693,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:647
+#: data/core/help.cfg:653
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -4395,7 +4431,7 @@ msgid "The Long Dark (2)"
 msgstr "Lange Finsternis (2)"
 
 #. [time]: id=long_dark3
-#: data/core/macros/schedules.cfg:652
+#: data/core/macros/schedules.cfg:650
 msgid "The Long Dark (3)"
 msgstr "Lange Finsternis (3)"
 
@@ -5061,8 +5097,7 @@ msgstr "furchtlos"
 #: data/core/macros/traits.cfg:224 data/core/macros/traits.cfg:241
 msgid "Fights normally during unfavorable times of day/night"
 msgstr ""
-"Tag/Nacht haben keinen negativen Einfluss, der positive Bonus bleibt "
-"erhalten."
+"Tag/Nacht haben keinen negativen Einfluss, der positive Bonus bleibt erhalten"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:225 data/core/macros/traits.cfg:242
@@ -5217,12 +5252,12 @@ msgid ""
 "siblings to the orcs and members of the same race. While other races usually "
 "bear children singly or in pairs, orcs will have large litters of children "
 "all at once, causing their populations to explode. Within any litter, there "
-"will be only one or two who grow to the strength of a \"true orc\", a few "
-"who are born slightly smaller and weaker, and the rest, often a full half of "
-"any litter, are much weaker and destined to be goblins. Almost as newborns "
-"the class system of orcish society is visible, with the weak put in their "
-"place by their stronger siblings. The stronger ones will routinely grab most "
-"of the food and thus grow stronger still, while their weaker siblings do not."
+"will be only one or two who grow to the strength of a “true orc”, a few who "
+"are born slightly smaller and weaker, and the rest, often a full half of any "
+"litter, are much weaker and destined to be goblins. Almost as newborns the "
+"class system of orcish society is visible, with the weak put in their place "
+"by their stronger siblings. The stronger ones will routinely grab most of "
+"the food and thus grow stronger still, while their weaker siblings do not."
 msgstr ""
 "Obwohl die Orks Abhängig von ihrer Stärke sind, gibt es wenige ihrer Kinder, "
 "die nicht mit dieser Stärke geboren werden. Kobolde werden, trotz ihres "
@@ -5867,19 +5902,19 @@ msgstr ""
 "effiziente Armeen hervorbringt."
 
 #. [race]: id=dunefolk
-#. [race]: id=khalifate
+#. [race]: id=khalifate # wmllint: noconvert
 #: data/core/units.cfg:208 data/core/units.cfg:233
 msgid "race^Dunefolk Human"
 msgstr "Mensch (Dünenvolk)"
 
 #. [race]: id=dunefolk
-#. [race]: id=khalifate
+#. [race]: id=khalifate # wmllint: noconvert
 #: data/core/units.cfg:209 data/core/units.cfg:234
 msgid "race+female^Dunefolk Human"
 msgstr "Mensch (Dünenvolk)"
 
 #. [race]: id=dunefolk
-#. [race]: id=khalifate
+#. [race]: id=khalifate # wmllint: noconvert
 #: data/core/units.cfg:210 data/core/units.cfg:235
 msgid "race+plural^Dunefolk"
 msgstr "Menschen (Dünenvolk)"
@@ -5999,38 +6034,168 @@ msgstr ""
 "wahrscheinlich im Erbe der fernen Vergangenheit des Dünenvolks in den "
 "exotischen, weit entfernten Ecken von Irdya."
 
-#. [race]: id=khalifate
+#. [race]: id=khalifate # wmllint: noconvert
 #: data/core/units.cfg:236
 msgid "This race does not have a description yet."
 msgstr "Eine Beschreibung dieser Ethnie ist derzeit noch in Bearbeitung."
 
-#. [race]: id=lizard, description=
+#. [race]: id=lizard
 #: data/core/units.cfg:247
 msgid "race^Saurian"
 msgstr "Saurianer"
 
-#. [race]: id=lizard, description=
+#. [race]: id=lizard
 #: data/core/units.cfg:248
 msgid "race+female^Saurian"
 msgstr "Saurianerin"
 
-#. [race]: id=lizard, description=
+#. [race]: id=lizard
 #: data/core/units.cfg:249
 msgid "race^Saurians"
 msgstr "Saurianer"
 
+#. [race]: id=lizard
+#: data/core/units.cfg:250
+msgid ""
+"Saurians are lizard-like creatures. Smaller and more slender than humans, "
+"they rarely stand taller than a ten year old child, though from tip of snout "
+"to end of tail a Saurian can be as long as the average man is tall. Light "
+"and nimble, the warriors prefer to fight as they hunt — slipping through "
+"enemy lines to target the weak and the injured while evading their "
+"attackers.\n"
+"\n"
+"<header>text='Society'</header>\n"
+"Saurians are very mysterious creatures due to their tendency to live in "
+"areas inhospitable to others, such as swamps. Fatalistic in the extreme, "
+"Saurians believe all the events in a life can be predicted by the use of a "
+"complex form of astrology.\n"
+"\n"
+"Saurian culture is sharply segregated between the genders. Within each "
+"gender the members compete, and through skill, determination, and reputation "
+"establish a clear pecking order, with a chief at the top. On those occasions "
+"when the two genders interact they do not contest for dominance; instead, "
+"the situation determines the dominant gender. The chief of the males is "
+"alpha within the clan's village or encampment while the chief of females is "
+"dominant anywhere else. This continues down the rank structure with each "
+"male or female being dominant over any member of the opposite gender with "
+"lower rank and submitting to members of the opposite gender with higher "
+"rank.\n"
+"\n"
+"The segregation and alternating gender-dominance of Saurian society is an "
+"outgrowth of their clearly defined gender roles. It is the responsibility of "
+"the female to hunt and find food, skills which ultimately train them to be "
+"warriors: the skirmishers, flankers, and ambushers other races so fear. "
+"Males, meanwhile, are responsible for guarding the clutch — the eggs left by "
+"the females. While this leaves time for the males to develop and hone the "
+"arts of astrology, healing, and magic, it also exposes them to significant "
+"danger, as they are stationary targets for a Saurian clan's number one enemy "
+"— other Saurian clans.\n"
+"\n"
+"New Saurian clans are started when the proper astrological signs are read. "
+"Called a “hatching,” each female indicated by the conjunction selects a "
+"group of individuals with lower rank and leave their source clan. Frequently "
+"all females with a specific trait will be indicated, causing multiple clans "
+"to “hatch” at the same time. Selection is a simple process: no group leaving "
+"can be larger than any other, all the groups together cannot be larger than "
+"the group being left, and higher ranking allows a female to overrule another "
+"female's choice of who they take.\n"
+"\n"
+"Because of their rapid population growth, frequent splits in clans, and the "
+"fact that cannibalism is not taboo, violence is one of the defining features "
+"of Saurian life. This limits the growth of the Saurian culture to fits and "
+"starts, as much of their knowledge is passed by oral tradition and their "
+"possessions must be mobile.\n"
+"\n"
+"<header>text='Geography'</header>\n"
+"Saurians can live in many different areas, though swamps are by far their "
+"most common habitat.\n"
+"\n"
+"<header>text='Biology'</header>\n"
+"Saurians live spectacularly short lives by comparison to most of the other "
+"races of Wesnoth, reaching full adulthood within three years and often dying "
+"by the time they are 10 to 15 years old. By far, the most common cause of "
+"death is violence. Saurian females produce clutches of about 20 eggs roughly "
+"once a year, which creates constant population pressure and would stress "
+"most carnivores' food supply. Hunters and scavengers, Saurians have "
+"extremely strong jaws and have a very powerful digestive system with highly "
+"acidic fluids, making them capable of eating and digesting all of their prey "
+"including skin, teeth, horns and bones. Further, they have no aversion to "
+"eating carrion and even committing cannibalism, which are both regular "
+"occurrences."
+msgstr ""
+"Saurianer sind echsenähnliche Kreaturen. Sie sind kleiner und schlanker als "
+"Menschen, meist nicht größer als ein zehnjähriges Kind, können aber von der "
+"Schnauze bis zum Schwanz so lang sein wie ein durschnittlicher Erwachsener. "
+"Klein und flink wie sie sind, kämpfen die Krieger als wären sie auf der Jagd "
+"– sie schlüpfen durch die gegnerischen Linien und greifen die Schwachen und "
+"Verwundeten an, während sie ihren Angreifern ausweichen.\n"
+"\n"
+"<header>text='Gesellschaft'</header>\n"
+"Saurianer sind mysteriöse Kreaturen, was daher kommt dass sie in für andere "
+"unwirtlichen Gegenden wohnen, beispielsweise in Sümpfen. Saurianer sind dem "
+"Fatalismus sehr zugetan, sie glauben dass alle Ereignisse im Leben durch "
+"eine komplexe Art der Astronomie vorhergesagt werden können.\n"
+"\n"
+"Kulturell gibt es klare Aufteilung der Geschlechterrolle. Innerhalb des "
+"selben Geschlechts konkurrieren die stärksten und klügsten und besten "
+"miteinander, woraus sich eine Hierarchie ableitet, mit einem Anführer an der "
+"Spitze. Zwischen den Geschlechtern gibt es keinen Kampf um die Dominanz, "
+"stattdessen ist es situationsabhängig wer das sagen hat. In Dörfern und der "
+"Umgebung ist der Anführer der Männchen der Entscheider, während die Weibchen "
+"es sonst sind. Dieses Prinzip setz sich in der Hierarchie von der Spitze bis "
+"nach unten durch.\n"
+"\n"
+"Die Trennung und Abwechslung der Geschlechterdominanz in der sarianischen "
+"Gesellschaft ist nur ein Teil der fest definierten Geschlechterrollen. Die "
+"Jagd und Nahrungsbeschaffung ist die Aufgabe der Weibchen, die dabei "
+"erlernten Fähigkeiten eignen sich auch im Kampf – sie sind die von anderen "
+"Völkern so gefürchteten Plänkler, Hinterlistlinge oder Flänkler. Die "
+"Männchen dagegen haben die Aufgabe die Eier zu beschützen. Eine Aufgabe, "
+"welche ihnen zum einen genügend Zeit lässt um die Künste der Astrologie, "
+"Heilung und Magie zu erlernen, sie aber auch zu einem leichten Ziel für ihre "
+"ärgsten Feinde macht – andere saurianische Sippen.\n"
+"\n"
+"Neue saurianische Sippen werden gegründet wenn die Sterne es vorsehen. Jedes "
+"Weibchen, auf welches die astrologischen Zeichen zutreffen, wählt Saurianer "
+"niedrigeren Ranges aus und gründet mit ihnen eine neue Sippe. Üblicherweise "
+"treffen die Zeichen auf mehrere Weibchen zu, und es werden mehrere neue "
+"Sippen zeitgleich gegründet. Die Regel sind einfach: Keine der neuen Sippen "
+"darf größer als eine andere sein, und die neuen Sippen dürfen zusammen nicht "
+"größer sein als die verbleibende, und der Rang entscheidet eventuelle "
+"Interessenkonflikte im Auswahlprozess.\n"
+"\n"
+"Aufgrund des starken Bevölkerungswachstums, den sich oft aufteilenden Sippen "
+"und der Tatsache, dass Kannibalismus nicht tabu ist, leben Saurianer ein von "
+"Gewalt geprägtes Leben.\n"
+"\n"
+"<header>text='Geographie'</header>\n"
+"Saurianer können in vielen verschiedenen Gebieten leben, sie sind aber am "
+"häufigsten in Sümpfen anzutreffen.\n"
+"\n"
+"<header>text='Biologie'</header>\n"
+"Sauranier haben eine sehr kurze Lebensspanne im Vergleich zu anderen Völkern "
+"in Wesnoth, sie erreichen das Erwachsenenalter nach drei Jahren und sterben "
+"oft zwischen dem 10. und 15. Lebensjahr. Der bei weitem größte Grund dafür "
+"ist Gewalt. Weibliche Saurianer legen einmal im Jahr etwa 20 Eier, genug um "
+"dem entgegenzuwirken und den Hunger fleischfressender Arten zu stillen. Auch "
+"Jäger und Plünderer haben es auf Sarianer abgesehen. Sie haben sehr starken "
+"Zähne, und ihr Verdaungssystem produziert ätzende Flüssigkeiten, weshalb sie "
+"nicht nur das Fleisch ihrer Opfer, sondern auch Haut, Zähne, Hörner und "
+"Knochen verzehren können. Sie sind auch gegnüber Aas und Kannibalismus nicht "
+"abgeneigt, was beides vonzeiten vorkommt."
+
 #. [race]: id=mechanical
-#: data/core/units.cfg:259
+#: data/core/units.cfg:276
 msgid "race^Mechanical"
 msgstr "Kriegsgerät"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:260
+#: data/core/units.cfg:277
 msgid "race+plural^Mechanical"
 msgstr "Kriegsgeräte"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:261
+#: data/core/units.cfg:278
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -6045,22 +6210,22 @@ msgstr ""
 "Verzauberung möglich."
 
 #. [race]: id=merman
-#: data/core/units.cfg:270
+#: data/core/units.cfg:287
 msgid "race^Merman"
 msgstr "Meermann"
 
 #. [race]: id=merman
-#: data/core/units.cfg:271
+#: data/core/units.cfg:288
 msgid "race^Mermaid"
 msgstr "Meerjungfrau"
 
 #. [race]: id=merman
-#: data/core/units.cfg:272
+#: data/core/units.cfg:289
 msgid "race^Merfolk"
 msgstr "Meervolk"
 
 #. [race]: id=merman
-#: data/core/units.cfg:274
+#: data/core/units.cfg:291
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -6089,22 +6254,22 @@ msgstr ""
 "agieren und nur unter Schwierigkeiten vorankommen."
 
 #. [race]: id=monster
-#: data/core/units.cfg:282
+#: data/core/units.cfg:299
 msgid "race^Monster"
 msgstr "Monster"
 
 #. [race]: id=monster
-#: data/core/units.cfg:283
+#: data/core/units.cfg:300
 msgid "race+female^Monster"
 msgstr "Monster"
 
 #. [race]: id=monster
-#: data/core/units.cfg:284
+#: data/core/units.cfg:301
 msgid "race^Monsters"
 msgstr "Monster"
 
 #. [race]: id=monster
-#: data/core/units.cfg:285
+#: data/core/units.cfg:302
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -6116,12 +6281,12 @@ msgstr ""
 "und Alpträumen ihrer Bewohner auf."
 
 #. [race]: id=naga
-#: data/core/units.cfg:292
+#: data/core/units.cfg:309
 msgid "race^Naga"
 msgstr "Naga"
 
 #. [race]: id=naga
-#: data/core/units.cfg:293
+#: data/core/units.cfg:310
 msgid "race^Nagini"
 msgstr "Nagini"
 
@@ -6130,12 +6295,12 @@ msgstr "Nagini"
 # vorher:
 # Naga
 #. [race]: id=naga
-#: data/core/units.cfg:294
+#: data/core/units.cfg:311
 msgid "race^Nagas"
 msgstr "Nagas"
 
 #. [race]: id=naga
-#: data/core/units.cfg:295
+#: data/core/units.cfg:312
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -6174,22 +6339,22 @@ msgstr ""
 "sich in Sümpfen und Flüssen wohl, genauso wie im offenen Meer."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:303
+#: data/core/units.cfg:320
 msgid "race^Ogre"
 msgstr "Oger"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:304
+#: data/core/units.cfg:321
 msgid "race+female^Ogre"
 msgstr "Oger"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:305
+#: data/core/units.cfg:322
 msgid "race^Ogres"
 msgstr "Oger"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:306
+#: data/core/units.cfg:323
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -6230,22 +6395,22 @@ msgstr ""
 "bleibt ungeklärt."
 
 #. [race]: id=orc
-#: data/core/units.cfg:314
+#: data/core/units.cfg:331
 msgid "race^Orc"
 msgstr "Ork"
 
 #. [race]: id=orc
-#: data/core/units.cfg:315
+#: data/core/units.cfg:332
 msgid "race+female^Orc"
 msgstr "Ork"
 
 #. [race]: id=orc
-#: data/core/units.cfg:316
+#: data/core/units.cfg:333
 msgid "race^Orcs"
 msgstr "Orks"
 
 #. [race]: id=orc
-#: data/core/units.cfg:317
+#: data/core/units.cfg:334
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -6361,7 +6526,7 @@ msgstr ""
 "Dinge, wie Bogenschießen oder die »Kunst« der Meuchelei.\n"
 
 #. [race]: id=orc
-#: data/core/units.cfg:328
+#: data/core/units.cfg:345
 msgid ""
 "\n"
 "\n"
@@ -6374,22 +6539,22 @@ msgstr ""
 "Fertigkeiten wie das Bogenschießen oder die Kunst des Meuchelns anzueignen."
 
 #. [race]: id=troll
-#: data/core/units.cfg:337
+#: data/core/units.cfg:354
 msgid "race^Troll"
 msgstr "Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:338
+#: data/core/units.cfg:355
 msgid "race+female^Troll"
 msgstr "Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:339
+#: data/core/units.cfg:356
 msgid "race^Trolls"
 msgstr "Trolle"
 
 #. [race]: id=troll
-#: data/core/units.cfg:340
+#: data/core/units.cfg:357
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -6472,22 +6637,22 @@ msgstr ""
 "dort, wo Orkhorden einem weiteren Krieg entgegenziehen."
 
 #. [race]: id=undead
-#: data/core/units.cfg:360
+#: data/core/units.cfg:377
 msgid "race^Undead"
 msgstr "Untoter"
 
 #. [race]: id=undead
-#: data/core/units.cfg:361
+#: data/core/units.cfg:378
 msgid "race+female^Undead"
 msgstr "Untote"
 
 #. [race]: id=undead
-#: data/core/units.cfg:362
+#: data/core/units.cfg:379
 msgid "race+plural^Undead"
 msgstr "Untote"
 
 #. [race]: id=undead
-#: data/core/units.cfg:363
+#: data/core/units.cfg:380
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -6545,22 +6710,22 @@ msgstr ""
 "aber aus Vorzeiten bereits bekannt."
 
 #. [race]: id=wolf
-#: data/core/units.cfg:376
+#: data/core/units.cfg:393
 msgid "race^Wolf"
 msgstr "Wolf"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:377
+#: data/core/units.cfg:394
 msgid "race+female^Wolf"
 msgstr "Wölfin"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:378
+#: data/core/units.cfg:395
 msgid "race^Wolves"
 msgstr "Wölfe"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:379
+#: data/core/units.cfg:396
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -6577,12 +6742,12 @@ msgstr ""
 "die Nähe von Viehherden."
 
 #. [race]: id=wose
-#: data/core/units.cfg:388
+#: data/core/units.cfg:405
 msgid "race^Wose"
 msgstr "Waldschrat"
 
 #. [race]: id=wose
-#: data/core/units.cfg:389
+#: data/core/units.cfg:406
 msgid "race^Woses"
 msgstr "Waldschrate"
 
@@ -6591,7 +6756,7 @@ msgstr "Waldschrate"
 # "Feentum und Magie" (Konrad v. Würzburg)
 # "In der Feenschaft verbirgt sich viel Macht."
 #. [race]: id=wose
-#: data/core/units.cfg:390
+#: data/core/units.cfg:407
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "

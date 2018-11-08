@@ -1,7 +1,7 @@
 # Translators:
 #  Andre Schmidt <andre@schmidtandre.de>, 2004, 2005
 #  Boris Stumm <wesnoth@bstumm.de>, 2005
-#  Gerfried Fuchs <alfie@ist.org>, 2005, 2006
+#  Rhonda D'Vine <rhonda@deb.at>, 2005, 2006
 #  Nils Kneuper <crazy-ivanovic@gmx.net>, 2005, 2006
 #  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2012
 #  Oliver Lange <oli-lange äd web Pünktchen de>, 2009 - 2010
@@ -9,9 +9,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-06-09 20:33 UTC\n"
-"PO-Revision-Date: 2018-06-18 15:24+0200\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2018-09-09 08:38 UTC\n"
+"PO-Revision-Date: 2018-09-14 22:44+0200\n"
 "Last-Translator: Crommy\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [attack]: type=impact
 #. [attack]: type=arcane
@@ -27,7 +27,7 @@ msgstr ""
 #: data/campaigns/Dead_Water/units/Citizen.cfg:23
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Darawf.cfg:23
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Small_Mudcrawler.cfg:16
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:26
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:28
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:31
 #: data/core/units/monsters/Yeti.cfg:37
 #: data/core/units/trolls/Rocklobber.cfg:25
@@ -150,7 +150,7 @@ msgstr "Frostwelle"
 #. [attack]: type=arcane
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:43
 #: data/campaigns/Descent_Into_Darkness/units/Dark_Mage.cfg:47
-#: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:54
+#: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:56
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:101
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:47
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:59
@@ -255,7 +255,7 @@ msgstr "Flegel"
 #: data/core/units/elves/Archer.cfg:23 data/core/units/elves/Avenger.cfg:38
 #: data/core/units/elves/Captain.cfg:34 data/core/units/elves/Champion.cfg:23
 #: data/core/units/elves/Fighter.cfg:22 data/core/units/elves/Hero.cfg:22
-#: data/core/units/elves/High_Lord.cfg:45 data/core/units/elves/Lord.cfg:24
+#: data/core/units/elves/High_Lord.cfg:46 data/core/units/elves/Lord.cfg:24
 #: data/core/units/elves/Marksman.cfg:29 data/core/units/elves/Marshal.cfg:33
 #: data/core/units/elves/Outrider.cfg:32 data/core/units/elves/Ranger.cfg:35
 #: data/core/units/elves/Rider.cfg:34 data/core/units/elves/Scout.cfg:32
@@ -355,8 +355,8 @@ msgstr "Wandelnde Leiche"
 #. [unit_type]: id=Walking Corpse, race=undead
 #. [unit_type]: id=Walking Corpse Shynal, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:17
-#: data/core/units/undead/Corpse_Walking.cfg:68
-#: data/core/units/undead/Corpse_Walking.cfg:156
+#: data/core/units/undead/Corpse_Walking.cfg:67
+#: data/core/units/undead/Corpse_Walking.cfg:155
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Though not especially dangerous to a trained soldier, the sight of one’s "
@@ -372,12 +372,12 @@ msgstr ""
 #. [attack]: type=fire
 #. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:35
-#: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:30
+#: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:32
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:27
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:23
-#: data/core/units/undead/Corpse_Soulless.cfg:74
-#: data/core/units/undead/Corpse_Walking.cfg:73
+#: data/core/units/undead/Corpse_Soulless.cfg:73
+#: data/core/units/undead/Corpse_Walking.cfg:72
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:35
 #: data/core/units/undead/Necro_Lich.cfg:35
 #: data/core/units/undead/Spirit_Ghost.cfg:57
@@ -394,8 +394,15 @@ msgstr "Berührung"
 msgid "club"
 msgstr "Keule"
 
+#. [unit_type]: id=Ancient Lich, race=undead
+#. [unit_type]: id=Ancient Lich SotA, race=undead
+#: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:5
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:4
+msgid "Ancient Lich"
+msgstr "Uralter Lich"
+
 #. [attack]: type=cold
-#: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:42
+#: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:44
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:89
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:47
 #: data/core/units/undead/Necro_Lich.cfg:47
@@ -522,7 +529,6 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Sentinel.cfg:37
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Stalwart.cfg:32
 #: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:30
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Corrupted_Elf.cfg:24
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:31
 #: data/core/units/drakes/Clasher.cfg:33 data/core/units/drakes/Thrasher.cfg:31
 #: data/core/units/dunefolk/Spearguard.cfg:25
@@ -756,7 +762,7 @@ msgid "fangs"
 msgstr "Fänge"
 
 #. [attack]: type=arcane
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:34
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:36
 #: data/core/units/humans/Mage_White.cfg:53
 #: data/core/units/humans/Mage_of_Light.cfg:56
 #: data/core/units/merfolk/Diviner.cfg:54
@@ -791,7 +797,7 @@ msgstr "Bolas"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:36
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:39
 #: data/core/units/elves/Enchantress.cfg:47
-#: data/core/units/elves/High_Lord.cfg:54 data/core/units/elves/Lord.cfg:33
+#: data/core/units/elves/High_Lord.cfg:55 data/core/units/elves/Lord.cfg:33
 #: data/core/units/elves/Sorceress.cfg:49 data/core/units/elves/Sylph.cfg:53
 msgid "faerie fire"
 msgstr "Feenfeuer"
@@ -1443,14 +1449,14 @@ msgstr ""
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Burner.cfg:28
 #: data/core/units/dunefolk/Firetrooper.cfg:29
-#: data/core/units/dunefolk/Scorcher.cfg:29
+#: data/core/units/dunefolk/Scorcher.cfg:28
 msgid "naphtha attack"
 msgstr "Naphthafeuer"
 
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Burner.cfg:37
 #: data/core/units/dunefolk/Firetrooper.cfg:38
-#: data/core/units/dunefolk/Scorcher.cfg:38
+#: data/core/units/dunefolk/Scorcher.cfg:37
 msgid "fire arrow"
 msgstr "Brandpfeil"
 
@@ -1763,12 +1769,12 @@ msgstr ""
 "Temperaturen gemäßigt sind."
 
 #. [unit_type]: id=Dune Scorcher, race=dunefolk
-#: data/core/units/dunefolk/Scorcher.cfg:5
+#: data/core/units/dunefolk/Scorcher.cfg:4
 msgid "Dune Scorcher"
 msgstr "Dünenbrandstifter"
 
 #. [unit_type]: id=Dune Scorcher, race=dunefolk
-#: data/core/units/dunefolk/Scorcher.cfg:24
+#: data/core/units/dunefolk/Scorcher.cfg:23
 msgid ""
 "Scorchers spend so much time experimenting with their weapons that they "
 "smell constantly of ash and flame. Regarded with wariness by their fellow "
@@ -2416,7 +2422,8 @@ msgid "Elvish High Lord"
 msgstr "Elfenfürst"
 
 #. [unit_type]: id=Elvish High Lord, race=elf
-#: data/core/units/elves/High_Lord.cfg:18
+#. "awesome" is used here in the sense of "causing awe", not in the sense of "very good".
+#: data/core/units/elves/High_Lord.cfg:19
 msgid ""
 "The leaders of elvenkind command an instinctive loyalty from their people "
 "that rulers of other races can only envy, and earn it with great mindfulness "
@@ -6067,8 +6074,8 @@ msgstr "Seelenloser"
 
 #. [variation]
 #. [unit_type]: id=Soulless, race=undead
-#: data/core/units/undead/Corpse_Soulless.cfg:69
-#: data/core/units/undead/Corpse_Soulless.cfg:141
+#: data/core/units/undead/Corpse_Soulless.cfg:68
+#: data/core/units/undead/Corpse_Soulless.cfg:140
 msgid ""
 "The technique of animating a dead body is unfortunately well-known in the "
 "dark arts; practitioners often use it to raise servants and soldiers from "
@@ -6084,75 +6091,70 @@ msgstr ""
 "aufzuhalten."
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:100
-#: data/core/units/undead/Corpse_Walking.cfg:99
+#: data/core/units/undead/Corpse_Soulless.cfg:99
+#: data/core/units/undead/Corpse_Walking.cfg:98
 msgid "wc_variation^Drake"
 msgstr "Drake"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:115
-#: data/core/units/undead/Corpse_Walking.cfg:114
+#: data/core/units/undead/Corpse_Soulless.cfg:114
+#: data/core/units/undead/Corpse_Walking.cfg:113
 msgid "wc_variation^Dwarf"
 msgstr "Zwerg"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:127
-#: data/core/units/undead/Corpse_Walking.cfg:126
+#: data/core/units/undead/Corpse_Soulless.cfg:126
+#: data/core/units/undead/Corpse_Walking.cfg:125
 msgid "wc_variation^Goblin"
 msgstr "Kobold"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:136
-#: data/core/units/undead/Corpse_Walking.cfg:151
+#: data/core/units/undead/Corpse_Soulless.cfg:135
+#: data/core/units/undead/Corpse_Walking.cfg:150
 msgid "wc_variation^Mounted"
 msgstr "Berittener"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:146
-#: data/core/units/undead/Corpse_Walking.cfg:135
+#: data/core/units/undead/Corpse_Soulless.cfg:145
+#: data/core/units/undead/Corpse_Walking.cfg:134
 msgid "wc_variation^Gryphon"
 msgstr "Greif"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:162
-#: data/core/units/undead/Corpse_Walking.cfg:161
+#: data/core/units/undead/Corpse_Soulless.cfg:161
+#: data/core/units/undead/Corpse_Walking.cfg:160
 msgid "wc_variation^Saurian"
 msgstr "Saurianer"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:171
-#: data/core/units/undead/Corpse_Walking.cfg:170
+#: data/core/units/undead/Corpse_Soulless.cfg:170
+#: data/core/units/undead/Corpse_Walking.cfg:169
 msgid "wc_variation^Swimmer"
 msgstr "Schwimmer"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:188
-#: data/core/units/undead/Corpse_Walking.cfg:187
+#: data/core/units/undead/Corpse_Soulless.cfg:187
+#: data/core/units/undead/Corpse_Walking.cfg:186
 msgid "wc_variation^Troll"
 msgstr "Troll"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:197
-#: data/core/units/undead/Corpse_Walking.cfg:196
+#: data/core/units/undead/Corpse_Soulless.cfg:196
+#: data/core/units/undead/Corpse_Walking.cfg:195
 msgid "wc_variation^Wose"
 msgstr "Waldschrat"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:209
-#: data/core/units/undead/Corpse_Walking.cfg:208
+#: data/core/units/undead/Corpse_Soulless.cfg:208
+#: data/core/units/undead/Corpse_Walking.cfg:207
 msgid "wc_variation^Wolf"
 msgstr "Wolf"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:221
-#: data/core/units/undead/Corpse_Walking.cfg:220
+#: data/core/units/undead/Corpse_Soulless.cfg:220
+#: data/core/units/undead/Corpse_Walking.cfg:219
 msgid "wc_variation^Bat"
 msgstr "Fledermaus"
-
-#. [unit_type]: id=Ancient Lich, race=undead
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:4
-msgid "Ancient Lich"
-msgstr "Uralter Lich"
 
 #. [unit_type]: id=Ancient Lich, race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:24
@@ -6693,8 +6695,8 @@ msgid ""
 "There is a curious story of a farmer who had a great oak in his lawn, a tree "
 "which had stood when his father first broke the soil on that land, and under "
 "which his family had many memories. It was thus a shock to him, one morning, "
-"when he awoke to find it somehow spirited away, with nothing but a bare "
-"patch of earth where it once stood.\n"
+"when he awoke to find nothing but a bare patch of earth where the tree once "
+"stood, as though it had been spirited away in the wee hours of the night.\n"
 "\n"
 "Such encounters are all that is known of what are presumably the most "
 "ancient of woses."
@@ -6704,8 +6706,7 @@ msgstr ""
 "als sein Vater das erste Mal dieses Land betreten hatte. Es war ein großer "
 "Schock für ihn, als er eines Morgens aufwachte und sah, dass der Baum wie "
 "von Geisterhand verschwunden war. Alles, was von der Anwesenheit dieses "
-"Baumes noch zeugte, war ein großer Haufen Erde. Der arme Bauer war danach "
-"nie wieder, wie er vor diesen Erlebnis gewesen war.\n"
+"Baumes noch zeugte, war ein großer Haufen Erde.\n"
 "\n"
 "Solche Geschichten sind die einzigen Hinweise darauf, dass es noch viel "
 "ältere Waldschrate gibt, als man bisher angenommen hatte."
