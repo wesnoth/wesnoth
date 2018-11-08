@@ -506,6 +506,9 @@ class Parser:
         self.in_tag = b""
         if tag.startswith(b"/"):
             self.parent_node = self.parent_node[:-1]
+        elif tag.startswith(b"+"):
+            node_to_append_to = self.parent_node[-1].get_all(tag = tag[1:].decode())[-1]
+            self.parent_node.append(node_to_append_to)
         else:
             node = TagNode(tag, location=(self.line_in_file, self.chunk_start))
             if self.parent_node:
@@ -717,6 +720,40 @@ a=1
     a='1'
 [/test]
 """, "simple")
+
+        test(
+"""
+[test]
+[foo]
+a=1
+[/foo]
+[/test]
+""", """
+[test]
+    [foo]
+        a='1'
+    [/foo]
+[/test]
+""", "subtag, part 1")
+
+        test(
+"""
+[test]
+[foo]
+a=1
+[/foo]
+[/test]
+[+test]
+[+foo]
+[/foo]
+[/test]
+""", """
+[test]
+    [foo]
+        a='1'
+    [/foo]
+[/test]
+""", "subtag, part 2")
 
         test(
 """
