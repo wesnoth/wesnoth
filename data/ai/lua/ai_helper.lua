@@ -1,5 +1,4 @@
 local H = wesnoth.require "helper"
-local W = H.set_wml_action_metatable {}
 local LS = wesnoth.require "location_set"
 local F = wesnoth.require "functional"
 local M = wesnoth.map
@@ -76,7 +75,7 @@ function ai_helper.clear_labels()
     local width, height = wesnoth.get_map_size()
     for x = 1,width do
         for y = 1,height do
-            W.label { x = x, y = y, text = "" }
+            wesnoth.label { x = x, y = y, text = "" }
         end
     end
 end
@@ -112,7 +111,7 @@ function ai_helper.put_labels(map, cfg)
         end
 
         if (type(out) == 'number') then out = out * factor end
-        W.label { x = x, y = y, text = out }
+        wesnoth.label { x = x, y = y, text = out }
     end)
 end
 
@@ -458,13 +457,8 @@ end
 
 ----- General functionality and maths helper functions ------
 
-function ai_helper.filter(input, condition)
-    return F.filter(input, condition)
-end
-
-function ai_helper.choose(input, value)
-    return F.choose(input, value)
-end
+ai_helper.filter = wesnoth.deprecate_api('ai_helper.filter', 'functional.filter', 3, '1.17.0', F.filter)
+ai_helper.choose = wesnoth.deprecate_api('ai_helper.choose', 'functional.filter', 3, '1.17.0', F.choose)
 
 function ai_helper.table_copy(t)
     -- Make a copy of a table (rather than just another pointer to the same table)
@@ -639,6 +633,98 @@ function ai_helper.is_opposite_adjacent(hex1, hex2, center_hex)
     return false
 end
 
+function ai_helper.get_named_loc_xy(param_core, cfg, required_for)
+    -- Get coordinates for either a named location or from x/y coordinates specified
+    -- in @cfg. The location can be provided:
+    --   - as name: cfg[param_core .. '_loc'] (string)
+    --   - or as coordinates: cfg[param_core .. '_x'] and cfg[param_core .. '_y'] (integers)
+    -- This is the syntax used by many Micro AIs.
+    -- Exception to this variable name syntax: if param_core = '', then the location
+    -- variables are 'location_id', 'x' and 'y'
+    --
+    -- Error messages are displayed if the named location does not exist, or if
+    -- the coordinates are not on the map. In addition, if @required_for (a string)
+    -- is provided, an error message is also displayed if neither a named location
+    -- nor both coordinates are provided. If @required_for is not passed and neither
+    -- input exists, nil is returned.
+
+    local param_loc = 'location_id'
+    if (param_core ~= '') then param_loc = param_core .. '_loc' end
+    local loc_id = cfg[param_loc]
+    if loc_id then
+        local loc = wesnoth.special_locations[loc_id]
+        if loc then
+            return loc
+        else
+            H.wml_error("Named location does not exist: " .. loc_id)
+        end
+    end
+
+    local param_x, param_y = 'x', 'y'
+    if (param_core ~= '') then param_x, param_y = param_core .. '_x', param_core .. '_y' end
+    local x, y = cfg[param_x], cfg[param_y]
+    if x and y then
+        local width, height = wesnoth.get_map_size()
+        if (x < 1) or (x > width) or (y < 1) or (y > height) then
+            H.wml_error("Location is not on map: " .. param_x .. ',' .. param_y .. ' = ' .. x .. ',' .. y)
+        end
+
+        return { x, y }
+    end
+
+    if required_for then
+        H.wml_error(required_for .. " requires either " .. param_loc .. "= or " .. param_x .. "/" .. param_y .. "= keys")
+    end
+end
+
+function ai_helper.get_multi_named_locs_xy(param_core, cfg, required_for)
+    -- Same as ai_helper.get_named_loc_xy, except that it takes comma separated
+    -- lists of locations.
+    -- The result is returned as an array of locations.
+    -- Empty table is returned if no locations are found.
+
+    local locs = {}
+    local param_loc = 'location_id'
+    if (param_core ~= '') then param_loc = param_core .. '_loc' end
+    local cfg_loc = cfg[param_loc]
+    if cfg_loc then
+        local loc_ids = ai_helper.split(cfg_loc, ",")
+        for _,loc_id in ipairs(loc_ids) do
+            local tmp_cfg = {}
+            tmp_cfg[param_loc] = loc_id
+            local loc = ai_helper.get_named_loc_xy(param_core, tmp_cfg)
+            table.insert(locs, loc)
+        end
+        return locs
+    end
+
+    local param_x, param_y = 'x', 'y'
+    if (param_core ~= '') then param_x, param_y = param_core .. '_x', param_core .. '_y' end
+    local cfg_x, cfg_y = cfg[param_x], cfg[param_y]
+    if cfg_x and cfg_y then
+        local xs = ai_helper.split(cfg_x, ",")
+        local ys = ai_helper.split(cfg_y, ",")
+        if (#xs ~= #ys) then
+            H.wml_error("Coordinate lists need to have same number of elements: " .. param_x .. ' and ' .. param_y)
+        end
+
+        for i,x in ipairs(xs) do
+            local tmp_cfg = {}
+            tmp_cfg[param_x] = tonumber(x)
+            tmp_cfg[param_y] = tonumber(ys[i])
+            local loc = ai_helper.get_named_loc_xy(param_core, tmp_cfg)
+            table.insert(locs, loc)
+        end
+        return locs
+    end
+
+    if required_for then
+        H.wml_error(required_for .. " requires either " .. param_loc .. "= or " .. param_x .. "/" .. param_y .. "= keys")
+    end
+
+    return locs
+end
+
 function ai_helper.get_locations_no_borders(location_filter)
     -- Returns the same locations array as wesnoth.get_locations(location_filter),
     -- but excluding hexes on the map border.
@@ -728,6 +814,21 @@ function ai_helper.get_passable_locations(location_filter, unit)
     return all_locs
 end
 
+function ai_helper.get_healing_locations(location_filter)
+    -- Finds all locations matching @location_filter that provide healing, excluding border hexes.
+
+    local all_locs = ai_helper.get_locations_no_borders(location_filter)
+
+    local locs = {}
+    for _,loc in ipairs(all_locs) do
+        if wesnoth.get_terrain_info(wesnoth.get_terrain(loc[1],loc[2])).healing > 0 then
+            table.insert(locs, loc)
+        end
+    end
+
+    return locs
+end
+
 function ai_helper.distance_map(units, map)
     -- Get the distance map DM for all units in @units (as a location set)
     -- DM = sum ( distance_from_unit )
@@ -811,6 +912,8 @@ function ai_helper.xyoff(x, y, ori, hex)
     --   's': self, 'u': up, 'lu': left up, 'ld': left down, 'ru': right up, 'rd': right down
     --   This is all relative "looking" in the direction of 'ori'
     -- returns x,y for the queried hex
+
+    wesnoth.deprecated_message('ai_helper.xyoff', 3, '1.17.0', "Use of ai_helper.xyoff is deprecated. There is no replacement as this is not a generally useful function, but equivalent results can be obtained with combinations of the wesnoth.map functions.")
 
     -- Unlike Lua default, we count 'ori' from 0 (north) to 5 (nw), so that modulo operator can be used
     ori = ori % 6
@@ -901,6 +1004,55 @@ function ai_helper.split_location_list_to_strings(list)
 
     return locsx, locsy
 end
+
+function ai_helper.get_avoid_map(ai, avoid_tag, use_ai_aspect, default_avoid_tag)
+    -- Returns a location set of hexes to be avoided by the AI. Information about
+    -- these hexes can be provided in different ways:
+    -- 1. If @avoid_tag is passed, we always use that. An example of this is when a
+    --    Micro AI configuration contains an [avoid] tag
+    -- 2. If @use_ai_aspect (boolean) is set, we use the avoid aspect of the default AI.
+    -- 3. @default_avoid_tag is used when @avoid_tag is not passed and either
+    --    @use_ai_aspect == false or the default AI aspect is not set.
+
+    if avoid_tag then
+        return LS.of_pairs(wesnoth.get_locations(avoid_tag))
+    end
+
+    if use_ai_aspect then
+        -- We need to be careful here as ai.aspects.avoid is an empty table both
+        -- when the aspect is not set and when no hexes match the [avoid] tag.
+        -- If @default_avoid_tag is not set, we can simply return the content of
+        -- the aspect, it does not matter why it is an empty array (if it is).
+        -- However, if @default_avoid_tag is set, we need to check whether the
+        -- [avoid] tag is set for the default AI or not.
+
+        if (not default_avoid_tag) then
+            return LS.of_pairs(ai.aspects.avoid)
+        else
+            local ai_tag = wml.get_child(wesnoth.sides[wesnoth.current.side].__cfg, 'ai')
+            for aspect in wml.child_range(ai_tag, 'aspect') do
+                if (aspect.id == 'avoid') then
+                    local facet = wml.get_child(aspect, 'facet')
+                    if facet or aspect.name ~= "composite_aspect" then
+                        -- If there's a [facet] child, it's set as a composite aspect,
+                        -- with at least one facet.
+                        -- But it might not be a composite aspect; it could be
+                        -- a Lua aspect or a standard aspect.
+                        return LS.of_pairs(ai.aspects.avoid)
+                    end
+                end
+            end
+        end
+    end
+
+    -- If we got here, that means neither @avoid_tag nor the default AI [avoid] aspect were used
+    if default_avoid_tag then
+        return LS.of_pairs(wesnoth.get_locations(default_avoid_tag))
+    else
+        return LS.create()
+    end
+end
+
 
 --------- Unit related helper functions ----------
 
@@ -1049,7 +1201,7 @@ function ai_helper.is_attackable_enemy(unit, side, cfg)
 end
 
 function ai_helper.get_closest_enemy(loc, side, cfg)
-    -- Return distance to and location of the enemy closest to @loc, or to the
+    -- Return the enemy closest to @loc and its distance from @loc, or to the
     -- leader of side with number @side if @loc is not specified
     --
     -- Optional parameters:
@@ -1070,16 +1222,16 @@ function ai_helper.get_closest_enemy(loc, side, cfg)
         x, y = loc[1], loc[2]
     end
 
-    local closest_distance, location = math.huge
+    local closest_distance, closest_enemy = math.huge
     for _,enemy in ipairs(enemies) do
         enemy_distance = M.distance_between(x, y, enemy.x, enemy.y)
         if (enemy_distance < closest_distance) then
+            closest_enemy = enemy
             closest_distance = enemy_distance
-            location = { x = enemy.x, y = enemy.y}
         end
     end
 
-    return closest_distance, location
+    return closest_enemy, closest_distance
 end
 
 function ai_helper.has_ability(unit, ability)
@@ -1324,38 +1476,62 @@ function ai_helper.can_reach(unit, x, y, cfg)
     return can_reach
 end
 
-function ai_helper.get_reachable_unocc(unit, cfg)
-    -- Get all reachable hexes for @unit that are (or appear) unoccupied, taking
-    -- vision into account as specified by the @cfg.viewing_side parameter.
-    -- Returned array is a location set, with value = 1 for each reachable hex
+function ai_helper.get_reachmap(unit, cfg)
+    -- Get all reachable hexes for @unit that are actually available; that is,
+    -- hexes that, at most, have own units on them which can move out of the way.
+    -- By contrast, wesnoth.find_reach also includes hexes with allied units on
+    -- them, as well as own unit with no moves left.
+    -- Returned array is a location set, with values set to remaining MP after the
+    -- unit moves to the respective hexes.
     --
     -- @cfg: table with optional configuration parameters:
     --   moves: if set to 'max', unit MP is set to max_moves before calculation
     --   viewing_side: see comments at beginning of this file. Defaults to side of @unit
+    --   exclude_occupied: if true, exclude hexes that have units on them; defaults to
+    --     false, in which case hexes with own units with moves > 0 are included
+    --   avoid_map: location set of hexes to be excluded
     --   plus all other parameters to wesnoth.find_reach
 
     local viewing_side = cfg and cfg.viewing_side or unit.side
 
     local old_moves = unit.moves
-    if cfg then
-        if (cfg.moves == 'max') then unit.moves = unit.max_moves end
-    end
+    if cfg and (cfg.moves == 'max') then unit.moves = unit.max_moves end
 
-    local reach = LS.create()
+    local reachmap = LS.create()
     local initial_reach = wesnoth.find_reach(unit, cfg)
     for _,loc in ipairs(initial_reach) do
-        local unit_in_way = wesnoth.get_unit(loc[1], loc[2])
-        if (not unit_in_way) or (not ai_helper.is_visible_unit(viewing_side, unit_in_way)) then
-            reach:insert(loc[1], loc[2], 1)
+        local is_available = true
+        if cfg and cfg.avoid_map and cfg.avoid_map:get(loc[1], loc[2]) then
+            is_available = false
+        else
+            local unit_in_way = wesnoth.get_unit(loc[1], loc[2])
+            if unit_in_way and (unit_in_way.id ~= unit.id) and ai_helper.is_visible_unit(viewing_side, unit_in_way) then
+                if cfg and cfg.exclude_occupied then
+                    is_available = false
+                elseif (unit_in_way.side ~= unit.side) or (unit_in_way.moves == 0) then
+                    is_available = false
+                end
+            end
+        end
+
+        if is_available then
+            reachmap:insert(loc[1], loc[2], loc[3])
         end
     end
 
-    -- Also need to include the hex the unit is on itself
-    reach:insert(unit.x, unit.y, 1)
-
     unit.moves = old_moves
 
-    return reach
+    return reachmap
+end
+
+function ai_helper.get_reachable_unocc(unit, cfg)
+    -- Same as ai_helper.get_reachmap with exclude_occupied = true
+    -- This function is now redundant, but we keep it for backward compatibility.
+
+    local cfg_GRU = cfg and ai_helper.table_copy(cfg) or {}
+    cfg_GRU.exclude_occupied = true
+
+    return ai_helper.get_reachmap(unit, cfg_GRU)
 end
 
 function ai_helper.find_path_with_shroud(unit, x, y, cfg)
@@ -1417,16 +1593,14 @@ function ai_helper.find_best_move(units, rating_function, cfg)
     --  best_hex: format { x, y }
     --  best_unit: unit for which this rating function produced the maximum value
     --  max_rating: the rating found for this hex/unit combination
-    -- If no valid moves were found, best_unit and best_hex are empty arrays
-
-    -- TODO: change return value to nil if no unit/hex is found later in 1.13., but keep as is in 1.12
+    -- If no valid moves were found, best_unit and best_hex are nil
 
     cfg = cfg or {}
 
     -- If this is an individual unit, turn it into an array
     if units.hitpoints then units = { units } end
 
-    local max_rating, best_hex, best_unit = - math.huge, {}, {}
+    local max_rating, best_hex, best_unit = - math.huge
     for _,unit in ipairs(units) do
         -- Hexes each unit can reach
         local reach_map = ai_helper.get_reachable_unocc(unit, cfg)

@@ -1,5 +1,4 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
-local FAU = wesnoth.require "ai/micro_ais/cas/ca_fast_attack_utils.lua"
 local M = wesnoth.map
 
 local ca_fast_move = {}
@@ -16,7 +15,7 @@ function ca_fast_move:execution(cfg)
     if (move_cost_factor < 1.1) then move_cost_factor = 1.1 end
 
     -- Get the locations to be avoided
-    local avoid_map = FAU.get_avoid_map(cfg)
+    local avoid_map = AH.get_avoid_map(ai, wml.get_child(cfg, "avoid"), true)
 
     local all_units_MP = AH.get_units_with_moves { side = wesnoth.current.side, canrecruit = 'no' }
     local units = {}

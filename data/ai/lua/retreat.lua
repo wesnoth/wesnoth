@@ -21,7 +21,7 @@ function retreat_functions.min_hp(unit)
     local min_hp = hp_per_level*(level+2)
 
     -- Account for poison damage on next turn
-    if unit.status.poisoned then min_hp = min_hp + 8 end
+    if unit.status.poisoned then min_hp = min_hp + wesnoth.game_config.poison_amount end
 
     -- Make sure that units are actually injured
     if min_hp > unit.max_hitpoints - 4 then
@@ -35,11 +35,22 @@ end
 -- Return nil if no unit needs to retreat
 function retreat_functions.retreat_injured_units(units)
     -- Split units into those that regenerate and those that do not
-    local regen, non_regen = {}, {}
+    local regen, regen_amounts, non_regen = {}, {}, {}
     for i,u in ipairs(units) do
         if u.hitpoints < retreat_functions.min_hp(u) then
             if u:ability('regenerate') then
+                -- Find the best regeneration ability and use it to estimate hp regained by regeneration
+                local abilities = wml.get_child(u.__cfg, "abilities")
+                local regen_amount = 0
+                if abilities then
+                    for regen in wml.child_range(abilities, "regenerate") do
+                        if regen.value > regen_amount then
+                            regen_amount = regen.value
+                        end
+                    end
+                end
                 table.insert(regen, u)
+                table.insert(regen_amounts, regen_amount)
             else
                 table.insert(non_regen, u)
             end
@@ -49,7 +60,7 @@ function retreat_functions.retreat_injured_units(units)
     -- First we retreat non-regenerating units to healing terrain, if they can get to a safe location
     local unit_nr, loc_nr, threat_nr
     if non_regen[1] then
-        unit_nr, loc_nr, threat_nr = retreat_functions.get_retreat_injured_units(non_regen, false)
+        unit_nr, loc_nr, threat_nr = retreat_functions.get_retreat_injured_units(non_regen, {})
         if unit_nr and (threat_nr == 0) then
             return unit_nr, loc_nr, threat_nr
         end
@@ -58,7 +69,7 @@ function retreat_functions.retreat_injured_units(units)
     -- Then we retreat regenerating units to terrain with high defense, if they can get to a safe location
     local unit_r, loc_r, threat_r
     if regen[1] then
-        unit_r, loc_r, threat_r = retreat_functions.get_retreat_injured_units(regen, true)
+        unit_r, loc_r, threat_r = retreat_functions.get_retreat_injured_units(regen, regen_amounts)
         if unit_r and (threat_r == 0) then
             return unit_r, loc_r, threat_r
         end
@@ -107,7 +118,7 @@ function retreat_functions.get_healing_locations()
     return healing_locs
 end
 
-function retreat_functions.get_retreat_injured_units(healees, regenerates)
+function retreat_functions.get_retreat_injured_units(healees, regen_amounts)
     -- Only retreat to safe locations
     local enemies = AH.get_attackable_enemies()
     local enemy_attack_map = BC.get_attack_map(enemies)
@@ -119,7 +130,7 @@ function retreat_functions.get_retreat_injured_units(healees, regenerates)
         local possible_locations = wesnoth.find_reach(u)
         -- TODO: avoid ally's villages (may be preferable to lower rating so they will
         -- be used if unit is very injured)
-        if not regenerates then
+        if (not regen_amounts[i]) then
             -- Unit cannot self heal, make the terrain do it for us if possible
             local location_subset = {}
             for j,loc in ipairs(possible_locations) do
@@ -142,8 +153,16 @@ function retreat_functions.get_retreat_injured_units(healees, regenerates)
             possible_locations = location_subset
         end
 
+        local is_healthy = false
+        for _,trait in ipairs(u.traits) do
+            if (trait == 'healthy') then
+                is_healthy = true
+                break
+            end
+        end
+
         local base_rating = - u.hitpoints + u.max_hitpoints / 2.
-        if u.status.poisoned then base_rating = base_rating + 8 end
+        if u.status.poisoned then base_rating = base_rating + wesnoth.game_config.poison_amount end
         if u.status.slowed then base_rating = base_rating + 4 end
         base_rating = base_rating * 1000
 
@@ -154,12 +173,12 @@ function retreat_functions.get_retreat_injured_units(healees, regenerates)
             then
                 local rating = base_rating
                 local heal_score = 0
-                if regenerates then
-                    heal_score = math.min(8, u.max_hitpoints - u.hitpoints)
+                if regen_amounts[i] then
+                    heal_score = math.min(regen_amounts[i], u.max_hitpoints - u.hitpoints)
                 else
                     if u.status.poisoned then
                         if loc[4] > 0 then
-                            heal_score = math.min(8, u.hitpoints - 1)
+                            heal_score = math.min(wesnoth.game_config.poison_amount, u.hitpoints - 1)
                             if loc[4] == 2 then
                                 -- This value is arbitrary, it just represents the ability to heal on the turn after
                                 heal_score = heal_score + 1
@@ -179,10 +198,9 @@ function retreat_functions.get_retreat_injured_units(healees, regenerates)
                 rating = rating - u:defense(wesnoth.get_terrain(loc[1], loc[2]))/10
 
                 if (loc[1] == u.x) and (loc[2] == u.y) and (not u.status.poisoned) then
-                    if enemy_count == 0 then
+                    if is_healthy or enemy_count == 0 then
                         -- Bonus if we can rest heal
-                        -- TODO: Always apply bonus if unit has healthy trait
-                        heal_score = heal_score + 2
+                        heal_score = heal_score + wesnoth.game_config.rest_heal_amount
                     end
                 elseif unit_in_way then
                     -- Penalty if a unit has to move out of the way

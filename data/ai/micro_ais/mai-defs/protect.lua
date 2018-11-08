@@ -1,3 +1,4 @@
+local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local H = wesnoth.require "helper"
 local MAIH = wesnoth.require("ai/micro_ais/micro_ai_helper.lua")
 
@@ -15,12 +16,7 @@ function wesnoth.micro_ais.protect_unit(cfg)
 		if not u.id then
 			H.wml_error("Protect Unit Micro AI missing id key in [unit] tag")
 		end
-		if not u.goal_x then
-			H.wml_error("Protect Unit Micro AI missing goal_x key in [unit] tag")
-		end
-		if not u.goal_y then
-			H.wml_error("Protect Unit Micro AI missing goal_y key in [unit] tag")
-		end
+		AH.get_multi_named_locs_xy('goal', u, 'Protect Unit Micro AI [unit] tag')
 		table.insert(unit_ids, u.id)
 	end
 

@@ -23,7 +23,7 @@ end
 wesnoth.micro_ais["goto"] = function(cfg)
 	local required_keys = { "[filter_location]" }
 	local optional_keys = {
-		"avoid_enemies", "[filter]", "ignore_units", "ignore_enemy_at_goal",
+		"[avoid]", "avoid_enemies", "[filter]", "ignore_units", "ignore_enemy_at_goal",
 		"release_all_units_at_goal", "release_unit_at_goal", "unique_goals", "use_straight_line"
 	}
 	local CA_parms = {

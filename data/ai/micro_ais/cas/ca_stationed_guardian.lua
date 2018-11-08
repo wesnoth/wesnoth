@@ -37,10 +37,12 @@ function ca_stationed_guardian:execution(cfg)
     -- Otherwise, guardian will either attack or move toward station
     -- Enemies must be within cfg.distance of guardian, (s_x, s_y) *and* (g_x, g_y)
     -- simultaneously for guardian to attack
+    local station_loc = AH.get_named_loc_xy('station', cfg)
+    local guard_loc = AH.get_named_loc_xy('guard', cfg) or station_loc
     local min_dist, target = math.huge
     for _,enemy in ipairs(enemies) do
-        local dist_s = M.distance_between(cfg.station_x, cfg.station_y, enemy.x, enemy.y)
-        local dist_g = M.distance_between(cfg.guard_x or cfg.station_x, cfg.guard_y or cfg.station_y, enemy.x, enemy.y)
+        local dist_s = M.distance_between(station_loc[1], station_loc[2], enemy.x, enemy.y)
+        local dist_g = M.distance_between(guard_loc[1], guard_loc[2], enemy.x, enemy.y)
 
         -- If valid target found, save the one with the shortest distance from (g_x, g_y)
         if (dist_s <= cfg.distance) and (dist_g <= cfg.distance) and (dist_g < min_dist) then
@@ -96,7 +98,7 @@ function ca_stationed_guardian:execution(cfg)
 
     -- If no enemy is within the target zone, move toward station position
     else
-        local nh = AH.next_hop(guardian, cfg.station_x, cfg.station_y)
+        local nh = AH.next_hop(guardian, station_loc[1], station_loc[2])
         if not nh then
             nh = { guardian.x, guardian.y }
         end

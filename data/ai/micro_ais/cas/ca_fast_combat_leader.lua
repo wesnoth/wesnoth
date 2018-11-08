@@ -69,7 +69,7 @@ function ca_fast_combat_leader:evaluation(cfg, data)
     if (aggression > 1) then aggression = 1 end
 
     -- Get the locations to be avoided
-    local avoid_map = FAU.get_avoid_map(cfg)
+    local avoid_map = AH.get_avoid_map(ai, wml.get_child(cfg, "avoid"), true)
 
     -- Enemy power and number maps
     -- Currently, the power is simply the summed hitpoints of all enemies that

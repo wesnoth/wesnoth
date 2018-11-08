@@ -27,6 +27,7 @@ function ca_swarm_scatter:execution(cfg)
     local enemies = get_enemies(cfg)
     local units = get_swarm_units(cfg)
     local vision_distance = cfg.vision_distance or 12
+    local avoid_map = AH.get_avoid_map(ai, wml.get_child(cfg, "avoid"), true)
 
     -- In this case we simply maximize the distance from all these close enemies
     -- but only for units that are within 'vision_distance' of one of those enemies
@@ -45,9 +46,9 @@ function ca_swarm_scatter:execution(cfg)
                     rating = rating + M.distance_between(x, y, enemy.x, enemy.y)
                 end
                 return rating
-            end)
+            end, { avoid_map = avoid_map })
 
-            AH.movefull_stopunit(ai, unit, best_hex)
+            AH.movefull_stopunit(ai, unit, best_hex or { unit.x, unit.y })
 
             -- Reconsider, as situation on the map might have changed
             return

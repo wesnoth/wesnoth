@@ -14,6 +14,8 @@ return {
     --          (default always returns false)
     --      leader_takes_village: function that returns true if and only if the leader is going to move to capture a village this turn
     --          (default returns 'not ai.aspects.passive_leader')
+    --      enemy_types: array of default enemy unit types to consider if there are no enemies on the map
+    --          and no enemy sides exist or have recruit lists
     -- Note: the recruiting code assumes full knowledge of units on the map and the recruit lists of other sides for the purpose of
     --   finding the best unit types to recruit. It does not work otherwise. It assumes normal vision of the AI side (that is, it disregards
     --   hidden enemy units) for determining from which keep hex the leader should recruit and on which castle hexes to recruit new units
@@ -25,6 +27,7 @@ return {
 
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
         local M = wesnoth.map
+        local LS = wesnoth.require "location_set"
 
         local recruit_data = {}
 
@@ -221,7 +224,7 @@ return {
                     local poison_damage = 0
                     if poison then
                         -- Add poison damage * probability of poisoning
-                        poison_damage = 8*(1-((1-defense)^attack.number))
+                        poison_damage = wesnoth.game_config.poison_amount*(1-((1-defense)^attack.number))
                     end
 
                     if (not best_attack) or (attack_damage+poison_damage > best_damage+best_poison_damage) then
@@ -413,14 +416,21 @@ return {
                 end
             end
 
-            -- If no enemies were found, add a small number of "representative" unit types
+            -- If no enemies were found, check params.enemy_types,
+            -- otherwise add a small number of "representative" unit types
             if #enemy_types == 0 then
-                add_unit_type('Orcish Grunt')
-                add_unit_type('Orcish Archer')
-                add_unit_type('Wolf Rider')
-                add_unit_type('Spearman')
-                add_unit_type('Bowman')
-                add_unit_type('Cavalryman')
+                if params.enemy_types then
+                    for _,enemy_type in ipairs(params.enemy_types) do
+                        add_unit_type(enemy_type)
+                    end
+                else
+                    add_unit_type('Orcish Grunt')
+                    add_unit_type('Orcish Archer')
+                    add_unit_type('Wolf Rider')
+                    add_unit_type('Spearman')
+                    add_unit_type('Bowman')
+                    add_unit_type('Cavalryman')
+                end
             end
 
             data.enemy_counts = enemy_counts
@@ -620,7 +630,7 @@ return {
                 local max_rating = -1
 
                 local enemy_leaders = AH.get_attackable_enemies { canrecruit = 'yes' }
-                local closest_enemy_distance, closest_enemy_location = AH.get_closest_enemy()
+                local closest_enemy = AH.get_closest_enemy()
 
                 for i,c in ipairs(data.castle.locs) do
                     local rating = 0
@@ -629,8 +639,8 @@ return {
                         for j,e in ipairs(enemy_leaders) do
                             rating = rating + 1 / M.distance_between(c[1], c[2], e.x, e.y) ^ 2.
                         end
-                        if closest_enemy_location then
-                            rating = rating + 1 / M.distance_between(c[1], c[2], closest_enemy_location.x, closest_enemy_location.y) ^ 2.
+                        if closest_enemy then
+                            rating = rating + 1 / M.distance_between(c[1], c[2], closest_enemy.x, closest_enemy.y) ^ 2.
                         end
                         if (rating > max_rating) then
                             max_rating, best_hex = rating, { c[1], c[2] }
@@ -657,7 +667,8 @@ return {
             local target_hex = recruit_data.recruit.target_hex
 
             local reference_hex = target_hex[1] and target_hex or best_hex
-            local distance_to_enemy, enemy_location = AH.get_closest_enemy(reference_hex, wesnoth.current.side, { viewing_side = 0 })
+            local enemy_location, distance_to_enemy = AH.get_closest_enemy(reference_hex, wesnoth.current.side, { viewing_side = 0 })
+
             -- If no enemy is on the map, then we first use closest enemy start hex,
             -- and if that does not exist either, a location mirrored w.r.t the center of the map
             if not enemy_location then
@@ -838,27 +849,31 @@ return {
                 end
             end
 
-            local locsx, locsy = AH.split_location_list_to_strings(data.castle.locs)
-
-            -- get a list of all unowned villages within fastest_unit_speed
-            -- TODO get list of villages not owned by allies instead
+            -- get a list of all unowned and enemy-owned villages within fastest_unit_speed
             -- this may have false positives (villages that can't be reached due to difficult/impassible terrain)
-            local exclude_x, exclude_y = "0", "0"
+            local exclude_map = LS.create()
             if data.castle.assigned_villages_x and data.castle.assigned_villages_x[1] then
-                exclude_x = table.concat(data.castle.assigned_villages_x, ",")
-                exclude_y = table.concat(data.castle.assigned_villages_y, ",")
+                for i,x in ipairs(data.castle.assigned_villages_x) do
+                    exclude_map:insert(x, data.castle.assigned_villages_y[i])
+                end
             end
-            local villages = wesnoth.get_villages {
-                owner_side = 0,
-                { "and", {
-                    radius = fastest_unit_speed,
-                    x = locsx, y = locsy
-                }},
-                { "not", {
-                    x = exclude_x,
-                    y = exclude_y
-                }}
-            }
+
+            local all_villages = wesnoth.get_villages()
+            local villages = {}
+            for _,v in ipairs(all_villages) do
+                local owner = wesnoth.get_village_owner(v[1], v[2])
+                if ((not owner) or wesnoth.is_enemy(owner, wesnoth.current.side))
+                    and (not exclude_map:get(v[1], v[2]))
+                then
+                    for _,loc in ipairs(data.castle.locs) do
+                        local dist = M.distance_between(v[1], v[2], loc[1], loc[2])
+                        if (dist <= fastest_unit_speed) then
+                           table.insert(villages, v)
+                           break
+                        end
+                    end
+                end
+            end
 
             local hex, target, shortest_distance = {}, {}, AH.no_path
 
@@ -893,15 +908,18 @@ return {
             end
 
             local width,height,border = wesnoth.get_map_size()
+            if (not recruit_data.unit_distances) then recruit_data.unit_distances = {} end
             for i,v in ipairs(villages) do
-                local close_castle_hexes = wesnoth.get_locations {
-                    x = locsx, y = locsy,
-                    { "and", {
-                      x = v[1], y = v[2],
-                      radius = fastest_unit_speed
-                    }},
-                    { "not", { { "filter", {} } } }
-                }
+                local close_castle_hexes = {}
+                for _,loc in ipairs(data.castle.locs) do
+                    local dist = M.distance_between(v[1], v[2], loc[1], loc[2])
+                    if (dist <= fastest_unit_speed) then
+                        if (not wesnoth.get_unit(loc[1], loc[2])) then
+                           table.insert(close_castle_hexes, loc)
+                        end
+                    end
+                end
+
                 for u,unit in ipairs(test_units) do
                     test_units[u].x = v[1]
                     test_units[u].y = v[2]
@@ -913,7 +931,15 @@ return {
                     if c[1] > 0 and c[2] > 0 and c[1] <= width and c[2] <= height then
                         local distance = 0
                         for x,unit in ipairs(test_units) do
-                            local path, unit_distance = wesnoth.find_path(unit, c[1], c[2], {viewing_side=0, max_cost=fastest_unit_speed+1})
+                            local key = unit.type .. '_' .. v[1] .. '-' .. v[2] .. '_' .. c[1]  .. '-' .. c[2]
+                            local path, unit_distance
+                            if (not recruit_data.unit_distances[key]) then
+                                path, unit_distance = wesnoth.find_path(unit, c[1], c[2], {viewing_side=0, max_cost=fastest_unit_speed+1})
+                                recruit_data.unit_distances[key] = unit_distance
+                            else
+                                unit_distance = recruit_data.unit_distances[key]
+                            end
+
                             distance = distance + unit_distance
 
                             -- Village is only viable if at least one unit can reach it

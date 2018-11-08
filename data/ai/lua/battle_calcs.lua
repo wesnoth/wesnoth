@@ -800,26 +800,23 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
 
     -- Average damage to unit is negative rating
     local damage = attacker.hitpoints - att_stats.average_hp
-    -- Count poisoned as additional 8 HP damage times probability of being poisoned
+    -- Count poisoned as additional damage done by poison times probability of being poisoned
     if (att_stats.poisoned ~= 0) then
-        damage = damage + 8 * (att_stats.poisoned - att_stats.hp_chance[0])
+        damage = damage + wesnoth.game_config.poison_amount * (att_stats.poisoned - att_stats.hp_chance[0])
     end
     -- Count slowed as additional 6 HP damage times probability of being slowed
     if (att_stats.slowed ~= 0) then
         damage = damage + 6 * (att_stats.slowed - att_stats.hp_chance[0])
     end
 
-    -- If attack is from a village, we count that as a 10 HP bonus
-    local is_village = wesnoth.get_terrain_info(wesnoth.get_terrain(dst[1], dst[2])).village
-    if is_village then
-        damage = damage - 10.
-    end
+    -- If attack is from a healing location, count that as slightly more than the healing amount
+    damage = damage - 1.25 * wesnoth.get_terrain_info(wesnoth.get_terrain(dst[1], dst[2])).healing
 
-    -- If attack is adjacent to an unoccupied village, that's bad
+    -- Equivalently, if attack is adjacent to an unoccupied healing location, that's bad
     for xa,ya in H.adjacent_tiles(dst[1], dst[2]) do
-        local is_adjacent_village = wesnoth.get_terrain_info(wesnoth.get_terrain(xa, ya)).village
-        if is_adjacent_village and (not wesnoth.get_unit(xa, ya)) then
-            damage = damage + 10
+        local healing = wesnoth.get_terrain_info(wesnoth.get_terrain(xa, ya)).healing
+        if (healing > 0) and (not wesnoth.get_unit(xa, ya)) then
+            damage = damage + 1.25 * healing
         end
     end
 
@@ -835,10 +832,10 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     -- proportional to the chance of it happening and the chance of not dying itself
     local level_bonus = 0.
     local defender_level = defender.level
-    if (attacker.max_experience - attacker.experience <= defender_level) then
+    if (attacker.max_experience - attacker.experience <= defender_level * wesnoth.game_config.combat_experience) then
         level_bonus = 1. - att_stats.hp_chance[0]
     else
-        if (attacker.max_experience - attacker.experience <= defender_level * 8) then
+        if (attacker.max_experience - attacker.experience <= defender_level * wesnoth.game_config.kill_experience) then
             level_bonus = (1. - att_stats.hp_chance[0]) * def_stats.hp_chance[0]
         end
     end
@@ -857,20 +854,17 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     ------ Now (most of) the same for the defender ------
     -- Average damage to defender is positive rating
     local damage = defender.hitpoints - def_stats.average_hp
-    -- Count poisoned as additional 8 HP damage times probability of being poisoned
+    -- Count poisoned as additional damage done by poison times probability of being poisoned
     if (def_stats.poisoned ~= 0) then
-        damage = damage + 8 * (def_stats.poisoned - def_stats.hp_chance[0])
+        damage = damage + wesnoth.game_config.poison_amount * (def_stats.poisoned - def_stats.hp_chance[0])
     end
     -- Count slowed as additional 6 HP damage times probability of being slowed
     if (def_stats.slowed ~= 0) then
         damage = damage + 6 * (def_stats.slowed - def_stats.hp_chance[0])
     end
 
-    -- If defender is on a village, we count that as a 10 HP bonus
-    local is_village = wesnoth.get_terrain_info(wesnoth.get_terrain(defender.x, defender.y)).village
-    if is_village then
-        damage = damage - 10.
-    end
+    -- If defender is on a healing location, count that as slightly more than the healing amount
+    damage = damage - 1.25 * wesnoth.get_terrain_info(wesnoth.get_terrain(defender.x, defender.y)).healing
 
     if (damage < 0) then damage = 0. end
 
@@ -884,10 +878,10 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     -- proportional to the chance of it happening and the chance of not dying itself
     local defender_level_penalty = 0.
     local attacker_level = attacker.level
-    if (defender.max_experience - defender.experience <= attacker_level) then
+    if (defender.max_experience - defender.experience <= attacker_level * wesnoth.game_config.combat_experience) then
         defender_level_penalty = 1. - def_stats.hp_chance[0]
     else
-        if (defender.max_experience - defender.experience <= attacker_level * 8) then
+        if (defender.max_experience - defender.experience <= attacker_level * wesnoth.game_config.kill_experience) then
             defender_level_penalty = (1. - def_stats.hp_chance[0]) * att_stats.hp_chance[0]
         end
     end
@@ -911,9 +905,8 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
 
     -- If defender is on a village, add a bonus rating (we want to get rid of those preferentially)
     -- So yes, this is positive, even though it's a plus for the defender
-    -- Defenders on villages also got a negative damage rating above (these don't exactly cancel each other though)
-    local is_village = wesnoth.get_terrain_info(wesnoth.get_terrain(defender.x, defender.y)).village
-    if is_village then
+    -- Note: defenders on healing locations also got a negative damage rating above (these don't exactly cancel each other though)
+    if wesnoth.get_terrain_info(wesnoth.get_terrain(defender.x, defender.y)).village then
         defender_value = defender_value * (1. + 10. / attacker.max_hitpoints)
     end
 

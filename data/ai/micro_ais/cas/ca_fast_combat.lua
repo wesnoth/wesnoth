@@ -76,7 +76,7 @@ function ca_fast_combat:evaluation(cfg, data)
     if (aggression > 1) then aggression = 1 end
 
     -- Get the locations to be avoided
-    local avoid_map = FAU.get_avoid_map(cfg)
+    local avoid_map = AH.get_avoid_map(ai, wml.get_child(cfg, "avoid"), true)
 
     for i = #fast_combat_units,1,-1 do
         local unit = fast_combat_units[i]

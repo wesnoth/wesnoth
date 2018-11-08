@@ -1,5 +1,4 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
-local LS = wesnoth.require "location_set"
 local T = wml.tag
 local M = wesnoth.map
 
@@ -15,20 +14,6 @@ local M = wesnoth.map
 --   parts from the code.
 
 local ca_fast_attack_utils = {}
-
-function ca_fast_attack_utils.get_avoid_map(cfg)
-    -- Get map of locations to be avoided.
-    -- Use [micro_ai][avoid] tag with priority over [ai][avoid].
-    -- If neither is given, return an empty location set.
-
-    local avoid_tag = wml.get_child(cfg, "avoid")
-
-    if not avoid_tag then
-        return LS.of_pairs(ai.aspects.avoid)
-    end
-
-    return LS.of_pairs(wesnoth.get_locations(avoid_tag))
-end
 
 local function attack_filter(which, filter, is_leader)
     if (is_leader == nil) then is_leader = false end
@@ -64,9 +49,16 @@ function ca_fast_attack_utils.gamedata_setup()
     local village_map = {}
     for _,village in ipairs(wesnoth.get_villages()) do
         if (not village_map[village[1]]) then village_map[village[1]] = {} end
-        village_map[village[1]][village[2]] = { owner = wesnoth.get_village_owner(village[1], village[2]) }
+        village_map[village[1]][village[2]] = true
     end
     gamedata.village_map = village_map
+
+    local healing_map = {}
+    for _,loc in ipairs(AH.get_healing_locations {}) do
+        if (not healing_map[loc[1]]) then healing_map[loc[1]] = {} end
+        healing_map[loc[1]][loc[2]] = wesnoth.get_terrain_info(wesnoth.get_terrain(loc[1], loc[2])).healing
+    end
+    gamedata.healing_map = healing_map
 
     -- Only uses one leader per side right now, but only used for finding direction
     -- of move -> sufficient for this.
@@ -115,7 +107,11 @@ function ca_fast_attack_utils.single_unit_info(unit_proxy)
     local abilities = wml.get_child(unit_proxy.__cfg, "abilities")
     if abilities then
         for _,ability in ipairs(abilities) do
-            single_unit_info[ability[1]] = true
+            if ability[1] == 'regenerate' then
+                single_unit_info[ability[1]] = ability[2].value
+            else
+                single_unit_info[ability[1]] = true
+            end
         end
     end
 
@@ -189,7 +185,7 @@ function ca_fast_attack_utils.is_acceptable_attack(damage_taken, damage_done, ag
     return (damage_done / damage_taken) >= (1 - aggression)
 end
 
-function ca_fast_attack_utils.damage_rating_unit(attacker_info, defender_info, att_stat, def_stat, is_village, cfg)
+function ca_fast_attack_utils.damage_rating_unit(attacker_info, defender_info, att_stat, def_stat, is_village, healing, cfg)
     -- Calculate the rating for the damage received by a single attacker on a defender.
     -- The attack att_stat both for the attacker and the defender need to be precalculated for this.
     -- Unit information is passed in unit_infos format, rather than as unit proxy tables for speed reasons.
@@ -201,6 +197,8 @@ function ca_fast_attack_utils.damage_rating_unit(attacker_info, defender_info, a
     --  @att_stat, @def_stat: attack statistics for the two units
     --  @is_village: whether the hex from which the attacker attacks is a village
     --    Set to nil or false if not, to anything if it is a village (does not have to be a boolean)
+    --  @healing: the amount of healing given by the hex from which the attacker attacks
+    --    Set to nil or false if there is no healing
     --
     -- Optional parameters:
     --  @cfg: the optional weights listed right below (currently only leader_weight)
@@ -209,21 +207,21 @@ function ca_fast_attack_utils.damage_rating_unit(attacker_info, defender_info, a
 
     local damage = attacker_info.hitpoints - att_stat.average_hp
 
-    -- Count poisoned as additional 8 HP damage times probability of being poisoned
+    -- Count poisoned as additional damage done by poison times probability of being poisoned
     if (att_stat.poisoned ~= 0) then
-        damage = damage + 8 * (att_stat.poisoned - att_stat.hp_chance[0])
+        damage = damage + wesnoth.game_config.poison_amount * (att_stat.poisoned - att_stat.hp_chance[0])
     end
     -- Count slowed as additional 4 HP damage times probability of being slowed
     if (att_stat.slowed ~= 0) then
         damage = damage + 4 * (att_stat.slowed - att_stat.hp_chance[0])
     end
 
-    -- If attack is from a village, we count that as an 8 HP bonus
-    if is_village then
-        damage = damage - 8.
-    -- Otherwise only: if attacker can regenerate, this is an 8 HP bonus
-    elseif attacker_info.regenerate then
-        damage = damage - 8.
+    -- If attack is from a healing location, count its healing_value
+    if healing then
+        damage = damage - healing
+    -- Otherwise only: if attacker can regenerate, add the regeneration bonus
+    else
+        damage = damage - (attacker_info.regenerate or 0)
     end
 
     if (damage < 0) then damage = 0 end
@@ -242,9 +240,9 @@ function ca_fast_attack_utils.damage_rating_unit(attacker_info, defender_info, a
     if (defender_level == 0) then defender_level = 0.5 end  -- L0 units
 
     local level_bonus = 0.
-    if (attacker_info.max_experience - attacker_info.experience <= defender_level) then
+    if (attacker_info.max_experience - attacker_info.experience <= defender_level * wesnoth.game_config.combat_experience) then
         level_bonus = 1. - att_stat.hp_chance[0]
-    elseif (attacker_info.max_experience - attacker_info.experience <= defender_level * 8) then
+    elseif (attacker_info.max_experience - attacker_info.experience <= defender_level * wesnoth.game_config.kill_experience) then
         level_bonus = (1. - att_stat.hp_chance[0]) * def_stat.hp_chance[0]
     end
 
@@ -298,18 +296,24 @@ function ca_fast_attack_utils.attack_rating(attacker_infos, defender_info, dsts,
 
     local attacker_rating = 0
     for i,attacker_info in ipairs(attacker_infos) do
-        local attacker_on_village = gamedata.village_map[dsts[i][1]] and gamedata.village_map[dsts[i][1]][dsts[i][2]]
+        local attacker_on_village = gamedata.village_map[dsts[i][1]]
+            and gamedata.village_map[dsts[i][1]][dsts[i][2]]
+        local attacker_healing = gamedata.healing_map[dsts[i][1]]
+            and gamedata.healing_map[dsts[i][1]][dsts[i][2]]
         attacker_rating = attacker_rating + ca_fast_attack_utils.damage_rating_unit(
-            attacker_info, defender_info, att_stats[i], def_stat, attacker_on_village, cfg
+            attacker_info, defender_info, att_stats[i], def_stat, attacker_on_village, attacker_healing, cfg
         )
     end
 
     -- attacker_info is passed only to figure out whether the attacker might level up
     -- TODO: This is only works for the first attacker in a combo at the moment
     local defender_x, defender_y = defender_info.x, defender_info.y
-    local defender_on_village = gamedata.village_map[defender_x] and gamedata.village_map[defender_x][defender_y]
+    local defender_on_village = gamedata.village_map[defender_x]
+        and gamedata.village_map[defender_x][defender_y]
+    local defender_healing = gamedata.healing_map[defender_x]
+        and gamedata.healing_map[defender_x][defender_y]
     local defender_rating = ca_fast_attack_utils.damage_rating_unit(
-        defender_info, attacker_infos[1], def_stat, att_stats[1], defender_on_village, cfg
+        defender_info, attacker_infos[1], def_stat, att_stats[1], defender_on_village, defender_healing, cfg
     )
 
     -- Now we add some extra ratings. They are positive for attacks that should be preferred
@@ -323,7 +327,7 @@ function ca_fast_attack_utils.attack_rating(attacker_infos, defender_info, dsts,
     extra_rating = extra_rating + defender_starting_damage_fraction * 0.33
 
     -- If defender is on a village, add a bonus rating (we want to get rid of those preferentially)
-    -- This is in addition to the damage bonus already included above (but as an extra rating)
+    -- This is in addition to the healing bonus already included above (but as an extra rating)
     if defender_on_village then
         extra_rating = extra_rating + 10.
     end

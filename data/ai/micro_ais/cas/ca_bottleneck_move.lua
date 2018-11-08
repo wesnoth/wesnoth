@@ -69,18 +69,12 @@ local function bottleneck_is_my_territory(map, enemy_map)
     return territory_map
 end
 
-local function bottleneck_triple_from_keys(key_x, key_y, max_value)
+local function bottleneck_triple_from_locs(locs, max_value)
     -- Turn comma-separated lists of values in @key_x,@key_y into a location set.
     -- Add a rating that has @max_value as its maximum, differentiated by order in the list.
-    local coords = {}
-    for x in string.gmatch(key_x, "%d+") do
-        table.insert(coords, { x })
-    end
-    local i = 1
-    for y in string.gmatch(key_y, "%d+") do
-        table.insert(coords[i], y)
-        table.insert(coords[i], max_value + 10 - i * 10)
-        i = i + 1
+    local coords = AH.table_copy(locs)
+    for i,coord in ipairs(coords) do
+        coord[3] = max_value + 10 - i * 10
     end
 
     return LS.of_triples(coords)
@@ -236,20 +230,23 @@ function ca_bottleneck_move:evaluation(cfg, data)
     if (not units[1]) then return 0 end
 
     -- Set up the array that tells the AI where to defend the bottleneck
-    BD_def_map = bottleneck_triple_from_keys(cfg.x, cfg.y, 10000)
+    local locs = AH.get_multi_named_locs_xy('', cfg)
+    BD_def_map = bottleneck_triple_from_locs(locs, 10000)
 
     -- Territory map, describing which hex is on AI's side of the bottleneck
     -- This one is a bit expensive, esp. on large maps -> don't delete every move and reuse
     -- However, after a reload, BD_is_my_territory is empty
     --  -> need to recalculate in that case also
     if (not BD_is_my_territory) or (type(BD_is_my_territory) == 'string') then
-        local enemy_map = bottleneck_triple_from_keys(cfg.enemy_x, cfg.enemy_y, 10000)
+        local enemy_locs = AH.get_multi_named_locs_xy('enemy', cfg)
+        local enemy_map = bottleneck_triple_from_locs(enemy_locs, 10000)
         BD_is_my_territory = bottleneck_is_my_territory(BD_def_map, enemy_map)
     end
 
     -- Healer positioning map
-    if cfg.healer_x and cfg.healer_y then
-        BD_healer_map = bottleneck_triple_from_keys(cfg.healer_x, cfg.healer_y, 5000)
+    local healer_locs = AH.get_multi_named_locs_xy('healer', cfg)
+    if healer_locs[1] then
+        BD_healer_map = bottleneck_triple_from_locs(healer_locs, 5000)
     else
         BD_healer_map = bottleneck_create_positioning_map(5000, data)
     end
@@ -259,8 +256,9 @@ function ca_bottleneck_move:evaluation(cfg, data)
     )
 
     -- Leadership position map
-    if cfg.leadership_x and cfg.leadership_y then
-        BD_leadership_map = bottleneck_triple_from_keys(cfg.leadership_x, cfg.leadership_y, 4000)
+    local leadership_locs = AH.get_multi_named_locs_xy('leadership', cfg)
+    if leadership_locs[1] then
+        BD_leadership_map = bottleneck_triple_from_locs(leadership_locs, 4000)
     else
         BD_leadership_map = bottleneck_create_positioning_map(4000, data)
     end
@@ -382,24 +380,24 @@ function ca_bottleneck_move:evaluation(cfg, data)
             for _,attack in ipairs(attacks) do
                 -- Only do calc. if there's a theoretical chance for leveling up (speeds things up a lot)
                 if (attack.x == loc[1]) and (attack.y == loc[2]) and
-                    (unit.max_experience - unit.experience <= 8 * attack.defender_level)
+                    (unit.max_experience - unit.experience <= wesnoth.game_config.kill_experience * attack.defender_level)
                 then
                     for n_weapon,weapon in ipairs(unit.attacks) do
                         local att_stats, def_stats = BC.simulate_combat_loc(unit, { attack.x, attack.y }, attack.defender, n_weapon)
 
                         -- Execute level-up attack when:
-                        -- 1. max_experience-experience <= target.level and chance to die = 0
-                        -- 2. max_experience-experience <= target.level*8 and chance to die = 0
+                        -- 1. max_experience-experience <= target.level*combat_experience and chance to die = 0
+                        -- 2. max_experience-experience <= target.level*kill_experience and chance to die = 0
                         --   and chance to kill > 66% and remaining av hitpoints > 20
                         -- #1 is a definite level up, #2 is not, so #1 gets priority
                         local level_up_rating = 0
-                        if (unit.max_experience - unit.experience <= attack.defender_level) then
+                        if (unit.max_experience - unit.experience <= wesnoth.game_config.combat_experience * attack.defender_level) then
                             if (att_stats.hp_chance[0] == 0) then
                                 -- Weakest enemy is best (favors stronger weapon)
                                 level_up_rating = 15000 - def_stats.average_hp
                             end
                         else
-                            if (unit.max_experience - unit.experience <= 8 * attack.defender_level)
+                            if (unit.max_experience - unit.experience <= wesnoth.game_config.kill_experience * attack.defender_level)
                                 and (att_stats.hp_chance[0] == 0)
                                 and (def_stats.hp_chance[0] >= 0.66)
                                 and (att_stats.average_hp >= 20)

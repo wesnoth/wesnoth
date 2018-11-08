@@ -1,19 +1,17 @@
-local H = wesnoth.require "helper"
-local W = H.set_wml_action_metatable {}
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 local M = wesnoth.map
 
 local wolves_multipacks_functions = {}
 
 function wolves_multipacks_functions.clear_label(x, y)
-    W.label{ x = x, y = y, text = "" }
+    wesnoth.label{ x = x, y = y, text = "" }
 end
 
 function wolves_multipacks_functions.put_label(x, y, text)
     -- For displaying the wolf pack number underneath each wolf
     -- Only use gray for now, but easily expandable to add a color option
     text = "<span color='#c0c0c0'>" .. text .. "</span>"
-    W.label{ x = x, y = y, text = text }
+    wesnoth.label{ x = x, y = y, text = text }
 end
 
 function wolves_multipacks_functions.assign_packs(cfg)

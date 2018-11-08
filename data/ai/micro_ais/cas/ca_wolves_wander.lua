@@ -21,20 +21,23 @@ end
 function ca_wolves_wander:execution(cfg)
     local wolves = get_wolves(cfg)
 
+    -- Only default AI [avoid] tag makes sense for the wolves
+    local avoid_map = AH.get_avoid_map(ai, nil, true)
+
     -- Number of wolves that can reach each hex
     local reach_map = LS.create()
     for _,wolf in ipairs(wolves) do
-        local r = AH.get_reachable_unocc(wolf)
+        local r = AH.get_reachable_unocc(wolf, { avoid_map = avoid_map })
         reach_map:union_merge(r, function(x, y, v1, v2) return (v1 or 0) + (v2 or 0) end)
     end
 
     local avoid_units = AH.get_attackable_enemies({ type = cfg.avoid_type })
-    local avoid_map = BC.get_attack_map(avoid_units).units
+    local avoid_enemies_map = BC.get_attack_map(avoid_units).units
 
     local max_rating, goal_hex = - math.huge
     reach_map:iter( function (x, y, v)
         local rating = v + math.random(99)/100.
-        if avoid_map:get(x, y) then rating = rating - 1000 end
+        if avoid_enemies_map:get(x, y) then rating = rating - 1000 end
 
         if (rating > max_rating) then
             max_rating, goal_hex = rating, { x, y }
@@ -47,11 +50,11 @@ function ca_wolves_wander:execution(cfg)
         -- For each wolf, we need to check that goal hex is reachable, and out of harm's way
         local best_hex = AH.find_best_move(wolf, function(x, y)
             local rating = -wesnoth.map.distance_between(x, y, goal_hex[1], goal_hex[2])
-            if avoid_map:get(x, y) then rating = rating - 1000 end
+            if avoid_enemies_map:get(x, y) then rating = rating - 1000 end
             return rating
-        end)
+        end, { avoid_map = avoid_map })
 
-        local move_result = AH.movefull_stopunit(ai, wolf, best_hex)
+        local move_result = AH.movefull_stopunit(ai, wolf, best_hex or { wolf.x, wolf.y })
         -- If the wolf was ambushed, return and reconsider; also if an event removed a wolf
         if (AH.is_incomplete_move(move_result)) then return end
         for _,check_wolf in ipairs(wolves) do
