@@ -6,6 +6,14 @@
    * Descent Into Darkness:
      * Allow converting L3 necromancers to liches from S12 onwards (issue #3165).
      * Added an alternative method of completing the campaign (issue #3167).
+   * Northern Rebirth:
+     * Fix loyal units obtained in S7 costing upkeep (introduced in 1.14.5)
+     * S13: Improvement to the AIs
+   * The South Guard:
+     * Extensive text revisions
+   * Tutorial:
+     * S2: Wolf riders are not initially recruited, to not hinder the player
+       from reaching the island in time
  ### Language and i18n
    * Updated translations: Chinese (Traditional), French, Italian, Spanish.
  ### Lua API
