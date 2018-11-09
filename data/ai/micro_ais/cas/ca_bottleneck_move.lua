@@ -399,15 +399,12 @@ function ca_bottleneck_move:evaluation(cfg, data)
                                 -- Weakest enemy is best (favors stronger weapon)
                                 level_up_rating = 15000 - def_stats.average_hp
                             end
-                        else
-                            if (unit.max_experience - unit.experience <= wesnoth.game_config.kill_experience * eff_defender_level)
-                                and (att_stats.hp_chance[0] == 0)
-                                and (def_stats.hp_chance[0] >= 0.66)
-                                and (att_stats.average_hp >= 20)
-                            then
-                                -- Strongest attacker and weakest enemy is best
-                                level_up_rating = 14000 + att_stats.average_hp - def_stats.average_hp / 2.
-                            end
+                        elseif (att_stats.hp_chance[0] == 0)
+                            and (def_stats.hp_chance[0] >= 0.66)
+                            and (att_stats.average_hp >= 20)
+                        then
+                            -- Strongest attacker and weakest enemy is best
+                            level_up_rating = 14000 + att_stats.average_hp - def_stats.average_hp / 2.
                         end
 
                         -- Small penalty if there's a unit in the way
