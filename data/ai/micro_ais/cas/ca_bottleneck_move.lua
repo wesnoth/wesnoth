@@ -379,25 +379,28 @@ function ca_bottleneck_move:evaluation(cfg, data)
             -- Level-up-attacks will always get a rating greater than any move
             for _,attack in ipairs(attacks) do
                 -- Only do calc. if there's a theoretical chance for leveling up (speeds things up a lot)
+                local eff_defender_level = attack.defender_level
+                if (eff_defender_level == 0) then eff_defender_level = 0.5 end
                 if (attack.x == loc[1]) and (attack.y == loc[2]) and
-                    (unit.max_experience - unit.experience <= wesnoth.game_config.kill_experience * attack.defender_level)
+                    (unit.max_experience - unit.experience <= wesnoth.game_config.kill_experience * eff_defender_level)
                 then
                     for n_weapon,weapon in ipairs(unit.attacks) do
                         local att_stats, def_stats = BC.simulate_combat_loc(unit, { attack.x, attack.y }, attack.defender, n_weapon)
 
                         -- Execute level-up attack when:
                         -- 1. max_experience-experience <= target.level*combat_experience and chance to die = 0
-                        -- 2. max_experience-experience <= target.level*kill_experience and chance to die = 0
+                        -- 2. kill_experience enough for leveling up and chance to die = 0
                         --   and chance to kill > 66% and remaining av hitpoints > 20
                         -- #1 is a definite level up, #2 is not, so #1 gets priority
                         local level_up_rating = 0
+                        -- Note: in this conditional it needs to be the real defender level, not eff_defender_level
                         if (unit.max_experience - unit.experience <= wesnoth.game_config.combat_experience * attack.defender_level) then
                             if (att_stats.hp_chance[0] == 0) then
                                 -- Weakest enemy is best (favors stronger weapon)
                                 level_up_rating = 15000 - def_stats.average_hp
                             end
                         else
-                            if (unit.max_experience - unit.experience <= wesnoth.game_config.kill_experience * attack.defender_level)
+                            if (unit.max_experience - unit.experience <= wesnoth.game_config.kill_experience * eff_defender_level)
                                 and (att_stats.hp_chance[0] == 0)
                                 and (def_stats.hp_chance[0] >= 0.66)
                                 and (att_stats.average_hp >= 20)

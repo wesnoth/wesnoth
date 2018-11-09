@@ -237,12 +237,12 @@ function ca_fast_attack_utils.damage_rating_unit(attacker_info, defender_info, a
     -- by the chance of not dying itself.
     -- Note: this can make the fractional damage negative (as it should)
     local defender_level = defender_info.level
-    if (defender_level == 0) then defender_level = 0.5 end  -- L0 units
 
     local level_bonus = 0.
     if (attacker_info.max_experience - attacker_info.experience <= defender_level * wesnoth.game_config.combat_experience) then
         level_bonus = 1. - att_stat.hp_chance[0]
     elseif (attacker_info.max_experience - attacker_info.experience <= defender_level * wesnoth.game_config.kill_experience) then
+        if (defender_level == 0) then defender_level = 0.5 end
         level_bonus = (1. - att_stat.hp_chance[0]) * def_stat.hp_chance[0]
     end
 

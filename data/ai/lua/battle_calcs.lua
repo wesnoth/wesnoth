@@ -835,6 +835,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     if (attacker.max_experience - attacker.experience <= defender_level * wesnoth.game_config.combat_experience) then
         level_bonus = 1. - att_stats.hp_chance[0]
     else
+        if (defender_level == 0) then defender_level = 0.5 end
         if (attacker.max_experience - attacker.experience <= defender_level * wesnoth.game_config.kill_experience) then
             level_bonus = (1. - att_stats.hp_chance[0]) * def_stats.hp_chance[0]
         end
@@ -881,6 +882,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     if (defender.max_experience - defender.experience <= attacker_level * wesnoth.game_config.combat_experience) then
         defender_level_penalty = 1. - def_stats.hp_chance[0]
     else
+        if (attacker_level == 0) then attacker_level = 0.5 end
         if (defender.max_experience - defender.experience <= attacker_level * wesnoth.game_config.kill_experience) then
             defender_level_penalty = (1. - def_stats.hp_chance[0]) * att_stats.hp_chance[0]
         end
