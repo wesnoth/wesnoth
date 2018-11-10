@@ -574,6 +574,23 @@ int intf_set_dialog_value(lua_State* L)
 
 	return 0;
 }
+/**
+ * Sets the value of a widget on the current dialog.
+ * - Arg 1: text.
+ * - Args 2..n: path of strings and integers.
+ */
+int intf_set_dialog_tooltip(lua_State* L)
+{
+	t_string v = luaW_checktstring(L, 1);
+	gui2::widget *w = find_widget(L, 2, false);
+	gui2::styled_widget* c = dynamic_cast<gui2::styled_widget*>(w);
+	if(!c) {
+		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
+	}
+	c->set_tooltip(v);
+
+	return 0;
+}
 
 /**
  * Gets the value of a widget on the current dialog.

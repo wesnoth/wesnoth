@@ -23,6 +23,7 @@ class game_state;
 namespace lua_gui2 {
 
 int intf_set_dialog_value(lua_State *L);
+int intf_set_dialog_tooltip(lua_State *L);
 int intf_get_dialog_value(lua_State *L);
 int intf_set_dialog_callback(lua_State *L);
 int intf_set_dialog_markup(lua_State *L);
