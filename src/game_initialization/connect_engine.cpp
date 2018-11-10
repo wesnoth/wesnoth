@@ -51,24 +51,6 @@ static const std::string controller_names[] {
 	"reserved"
 };
 
-static const std::string attributes_to_trim[] {
-	"side",
-	"type",
-	"gender",
-	"recruit",
-	"player_id",
-	"previous_recruits",
-	"controller",
-	"current_player",
-	"team_name",
-	"user_team_name",
-	"color",
-	"gold",
-	"income",
-	"allow_changes",
-	"faction"
-};
-
 namespace ng {
 
 connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_campaign_info* campaign_info)
@@ -1186,18 +1168,12 @@ config side_engine::new_config() const
 	}
 
 	if(parent_.params_.use_map_settings && !parent_.params_.saved_game) {
-		config trimmed = cfg_;
-
-		for(const std::string& attribute : attributes_to_trim) {
-			trimmed.remove_attribute(attribute);
+		if(cfg_.has_attribute("name")){
+			res["name"] = "name";
 		}
-
-		if(controller_ != CNTR_COMPUTER) {
-			// Only override names for computer controlled players.
-			trimmed.remove_attribute("user_description");
+		if(cfg_.has_attribute("user_description") && controller_ == CNTR_COMPUTER){
+			res["user_description"] = "user_description";
 		}
-
-		res.merge_with(trimmed);
 	}
 
 	return res;
