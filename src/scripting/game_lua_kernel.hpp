@@ -183,6 +183,7 @@ public:
 	game_board & board();
 	std::vector<team> & teams();
 	const gamemap & map() const;
+	game_display * get_display() const { return game_display_; }
 	/**
 		A value != 0 means that the shouldn't remove any units from the map, usually because
 		we are currently operating on a unit& and removing it might cause memory corruptions

@@ -15,9 +15,11 @@
 #include "scripting/lua_team.hpp"
 
 #include "scripting/lua_common.hpp"
+#include "scripting/game_lua_kernel.hpp"
 #include "team.hpp"
 #include "resources.hpp" // for gameboard
 #include "game_board.hpp"
+#include "game_display.hpp"
 
 #include <string>
 
@@ -142,7 +144,13 @@ static int impl_side_set(lua_State *L)
 	modify_tstring_attrib("user_team_name", t.change_team(t.team_name(), value));
 	modify_string_attrib("team_name", t.change_team(value, t.user_team_name()));
 	modify_string_attrib("controller", t.change_controller_by_wml(value));
-	modify_string_attrib("color", t.set_color(value));
+	modify_string_attrib("color", {
+		auto* disp = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).get_display();
+		t.set_color(value);
+		if(disp) {
+			disp->reinit_flags_for_side(t.side());
+		}
+	});
 	modify_string_attrib("defeat_condition", t.set_defeat_condition_string(value));
 	modify_int_attrib("carryover_percentage", t.set_carryover_percentage(value));
 	modify_bool_attrib("carryover_add", t.set_carryover_add(value));
