@@ -843,7 +843,7 @@ void mouse_handler::move_action(bool browse)
 	//		return false;
 	//	}
 
-	unit_map::iterator u;
+	unit* u = nullptr;
 	const unit* clicked_u = nullptr;
 
 	map_location src;
@@ -852,7 +852,7 @@ void mouse_handler::move_action(bool browse)
 
 	{ // start planned unit map scope
 		wb::future_map_if_active planned_unit_map;
-		u = find_unit(selected_hex_);
+		u = find_unit_nonowning(selected_hex_);
 
 		// if the unit is selected and then itself clicked on,
 		// any goto command is canceled
@@ -874,7 +874,7 @@ void mouse_handler::move_action(bool browse)
 			return;
 		}
 
-		if(((u.valid() && u->side() == side_num_) || pc_.get_whiteboard()->is_active()) && clicked_u != nullptr) {
+		if(((u != nullptr && u->side() == side_num_) || pc_.get_whiteboard()->is_active()) && clicked_u != nullptr) {
 			if(attack_from == selected_hex_) { // no move needed
 				int choice = -1;
 				{
@@ -954,7 +954,7 @@ void mouse_handler::move_action(bool browse)
 			(!browse || pc_.get_whiteboard()->is_active())
 			&& selected_hex_.valid()
 			&& selected_hex_ != hex
-			&& u.valid()
+			&& u != nullptr
 			&& (u->side() == side_num_ || pc_.get_whiteboard()->is_active())
 			&& !clicked_u
 			&& !current_route_.steps.empty()
@@ -999,7 +999,7 @@ void mouse_handler::move_action(bool browse)
 		} else {
 			// Don't move if the unit already has actions
 			// from the whiteboard.
-			if(pc_.get_whiteboard()->unit_has_actions(u ? &*u : clicked_u)) {
+			if(pc_.get_whiteboard()->unit_has_actions(u ? u : clicked_u)) {
 				return;
 			}
 
