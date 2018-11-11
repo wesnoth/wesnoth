@@ -138,9 +138,9 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	report(false),
 	windowed(false),
 	with_replay(false),
+	validate_core(false),
 	args_(args.begin() + 1 , args.end()),
 	args0_(*args.begin()),
-	validate_core(false),
 	all_(),
 	visible_(),
 	hidden_()
