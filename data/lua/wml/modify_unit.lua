@@ -7,7 +7,7 @@ local wml_actions = wesnoth.wml_actions
 --  in the first part of this file and the fallback (old) implementation in the
 --  second part of this file
 
-local function split_to_array(s, res)
+local function split_to_array(str, sep)
     -- Split string @str into a table using the delimiter @sep (default: ',')
 
     local sep, fields = sep or ",", {}
@@ -24,7 +24,7 @@ local function make_set(t)
 	return res
 end
 
-local knwon_attributes = make_set {
+local known_attributes = make_set {
 	"x",
 	"y",
 	"ai_special",
@@ -47,7 +47,7 @@ local knwon_attributes = make_set {
 	"type",
 }
 
-local knwon_tags = make_set {
+local known_tags = make_set {
 	"object",
 	"advancement",
 	"trait",
@@ -57,11 +57,11 @@ local knwon_tags = make_set {
 local function is_simple(cfg)
 	for k, v in pairs(wml.shallow_literal(cfg)) do
 		if type(k) == "string" then
-			if not knwon_attributes[k] then
+			if not known_attributes[k] then
 				return false
 			end
 		else
-			if not knwon_tags[v[1]] then
+			if not known_tags[v[1]] then
 				return false
 			end
 		end
