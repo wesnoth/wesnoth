@@ -1,7 +1,31 @@
 ## Version 1.15.0-dev
+ ### AI
+   * Micro AIs
+     * Add [avoid] tag functionality to Multipack Wolves, Wolves, Swarm and Goto Micro AIs
+     * Support named locations for [micro_ai] tag location keys
+   * Experimental AI
+     * Convert to using external candidate actions
+     * Significantly speed up recruiting evaluation
+     * Recruiting: add optional 'enemy_types' parameter
+     * Adjustments to candidate action scores
+     * Variety of internal evaluation improvements
+   * All Lua AIs
+     * Fix bug crashing some AIs when units with chance-to-hit specials without id are on map
+       (same as what had already been done for the Fast Micro AI)
+     * Do not use hard-coded values for modifiable parameters in wesnoth.game_config
+     * Fix experience for killing level 0 units
+     * Distinguish between healing locations and villages
+     * Significant amount of internal cleanup, including some efficiency improvements
+   * ai_helper library
+     * New functions get_healing_locations(), get_reachmap(), get_avoid_map() and get_locations_no_borders()
+     * get_closest_enemy(): change return values (breaks backward compatibility)
+     * find_best_move(): return nil instead of {} if no move found (may break backward compatibility in rare cases)
+     * Deprecate filter(), choose() and xyoff()
+     * move_unit_out_of_way(): prevent potential for divide-by-zero
  ### Campaigns
    * A Tale of Two Brothers
      * S2 'Chase': improved behavior of undead side leader with custom AI
+   * Deprecate AI Controller and remove it from mainline campaign scenarios
  ### Engine
    * Windows 7 is now the minimum supported Windows version.
  ### Language and i18n
