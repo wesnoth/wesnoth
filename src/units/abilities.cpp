@@ -22,6 +22,7 @@
 #include "game_board.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
+#include "map/map.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "terrain/filter.hpp"
@@ -1027,10 +1028,20 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 	temporary_facing self_facing(self, self_loc_.get_relative_dir(other_loc_));
 	temporary_facing other_facing(other, other_loc_.get_relative_dir(self_loc_));
 
-	// Filter poison
-	if (special["id"] == "poison" && other && other->get_state("unpoisonable")) {
+	// Filter poison, plague, drain
+	if (special["id"] == "drains" && other && other->get_state("undrainable")) {
 		return false;
 	}
+	if (special["id"] == "plague" && other &&
+		(other->get_state("unplagueable") ||
+		 resources::gameboard->map().is_village(other_loc_))) {
+		return false;
+	}
+	if (special["id"] == "poison" && other &&
+		(other->get_state("unpoisonable") || other->get_state(unit::STATE_POISONED))) {
+		return false;
+	}
+
 
 	// Translate our context into terms of "attacker" and "defender".
 	unit_const_ptr & att = is_attacker_ ? self : other;
