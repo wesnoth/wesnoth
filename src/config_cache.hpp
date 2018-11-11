@@ -26,6 +26,7 @@
 #include "serialization/preprocessor.hpp"
 
 class config;
+class abstract_validator;
 
 namespace game_config
 {
@@ -106,7 +107,7 @@ public:
 	 * @param path file to load. Should be _main.cfg.
 	 * @param cfg config object that is written to. Should be empty on entry.
 	 */
-	void get_config(const std::string& path, config& cfg);
+	void get_config(const std::string& path, config& cfg, abstract_validator* validator = nullptr);
 
 	/**
 	 * Clear stored defines map to default values
@@ -161,10 +162,10 @@ private:
 	void write_file(std::string file, const config& cfg);
 	void write_file(std::string file, const preproc_map& defines);
 
-	void read_cache(const std::string& path, config& cfg);
+	void read_cache(const std::string& path, config& cfg, abstract_validator* validator = nullptr);
 
-	void read_configs(const std::string& path, config& cfg, preproc_map& defines);
-	void load_configs(const std::string& path, config& cfg);
+	void read_configs(const std::string& path, config& cfg, preproc_map& defines, abstract_validator* validator = nullptr);
+	void load_configs(const std::string& path, config& cfg, abstract_validator* validator = nullptr);
 	void read_defines_queue();
 	void read_defines_file(const std::string& path);
 

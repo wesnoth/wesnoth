@@ -141,6 +141,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	args_(args.begin() + 1 , args.end()),
 	args0_(*args.begin()),
 	all_(),
+	validate_core(false),
 	visible_(),
 	hidden_()
 {
@@ -267,6 +268,11 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("log-strict", po::value<std::string>(), "sets the strict level of the logger. any messages sent to log domains of this level or more severe will cause the unit test to fail regardless of the victory result.")
 		("noreplaycheck", "don't try to validate replay of unit test.")
 		("mp-test", "load the test mp scenarios.")
+		("use-schema,S", "specify a schema to validate WML against (defaults to the core schema)")
+		("validate,V", "validate a specified WML file against a schema")
+		("validate-addon", "validate the specified addon's WML against the schema")
+		("validate-core", "validate the core WML against the schema")
+		("validate-schema", "validate a specified WML schema")
 		;
 
 	po::options_description preprocessor_opts("Preprocessor mode options");
@@ -482,6 +488,16 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		userdata_path = true;
 	if (vm.count("validcache"))
 		validcache = true;
+	if (vm.count("validate"))
+		validate_wml = vm["validate"].as<std::string>();
+	if (vm.count("validate-core"))
+		validate_core = true;
+	if (vm.count("validate-addon"))
+		validate_addon = vm["validate-addon"].as<std::string>();
+	if (vm.count("validate-schema"))
+		validate_schema = vm["validate-schema"].as<std::string>();
+	if (vm.count("use-schema"))
+		validate_with = vm["use-schema"].as<std::string>();;
 	if (vm.count("version"))
 		version = true;
 	if (vm.count("windowed"))

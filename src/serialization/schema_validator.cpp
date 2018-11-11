@@ -18,7 +18,9 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/preprocessor.hpp"
+#include "serialization/string_utils.hpp"
 #include "wml_exception.hpp"
+#include <tuple>
 
 namespace schema_validation
 {
@@ -111,7 +113,29 @@ static void wrong_value_error(const std::string& file,
 {
 	std::ostringstream ss;
 	ss << "Invalid value '" << value << "' in key '" << key << "=' in tag [" << tag << "]\n" << at(file, line) << "\n";
+	print_output(ss.str(), flag_exception);
+}
 
+static void wrong_path_error(const std::string& file,
+		int line,
+		const std::string& tag,
+		const std::string& key,
+		const std::string& value,
+		bool flag_exception)
+{
+	std::ostringstream ss;
+	ss << "Unknown path reference '" << value << "' in key '" << key << "=' in tag [" << tag << "]\n" << at(file, line) << "\n";
+	print_output(ss.str(), flag_exception);
+}
+
+static void wrong_type_error(const std::string & file, int line,
+		const std::string & tag,
+		const std::string & key,
+		const std::string & type,
+		bool flag_exception)
+{
+	std::ostringstream ss;
+	ss << "Invalid type '" << type << "' in key '" << key << "=' in tag [" << tag << "]\n" << at(file, line) << "\n";
 	print_output(ss.str(), flag_exception);
 }
 
@@ -119,14 +143,10 @@ schema_validator::~schema_validator()
 {
 }
 
-schema_validator::schema_validator(const std::string& config_file_name)
+schema_validator::schema_validator(const std::string& config_file_name, bool validate_schema)
 	: config_read_(false)
 	, create_exceptions_(strict_validation_enabled)
-	, root_()
-	, stack_()
-	, counter_()
-	, cache_()
-	, types_()
+	, validate_schema_(validate_schema)
 {
 	if(!read_config_file(config_file_name)) {
 		ERR_VL << "Schema file " << config_file_name << " was not read." << std::endl;
@@ -145,9 +165,13 @@ bool schema_validator::read_config_file(const std::string& filename)
 {
 	config cfg;
 	try {
+		std::unique_ptr<abstract_validator> validator;
+		if(validate_schema_) {
+			validator.reset(new schema_self_validator());
+		}
 		preproc_map preproc(game_config::config_cache::instance().get_preproc_map());
 		filesystem::scoped_istream stream = preprocess_file(filename, &preproc);
-		read(cfg, *stream);
+		read(cfg, *stream, validator.get());
 	} catch(const config::error& e) {
 		ERR_VL << "Failed to read file " << filename << ":\n" << e.what() << "\n";
 		return false;
@@ -157,13 +181,12 @@ bool schema_validator::read_config_file(const std::string& filename)
 		for(const config& schema : g.child_range("tag")) {
 			if(schema["name"].str() == "root") {
 				//@NOTE Don't know, maybe merging of roots needed.
-				root_ = class_tag(schema);
+				root_ = wml_tag(schema);
 			}
 		}
-
 		for(const config& type : g.child_range("type")) {
 			try {
-				types_[type["name"].str()] = boost::regex(type["value"].str());
+				types_[type["name"].str()] = wml_type::from_config(type);
 			} catch(const std::exception&) {
 				// Need to check all type values in schema-generator
 			}
@@ -179,13 +202,13 @@ bool schema_validator::read_config_file(const std::string& filename)
  * assume they all are on their place due to parser algorithm
  * and validation logic
  */
-void schema_validator::open_tag(const std::string& name, int start_line, const std::string& file, bool addittion)
+void schema_validator::open_tag(const std::string& name, const config& parent, int start_line, const std::string& file, bool addittion)
 {
 	if(!stack_.empty()) {
-		const class_tag* tag = nullptr;
+		const wml_tag* tag = nullptr;
 
 		if(stack_.top()) {
-			tag = stack_.top()->find_tag(name, root_);
+			tag = active_tag().find_tag(name, root_, parent);
 
 			if(!tag) {
 				wrong_tag_error(file, start_line, name, stack_.top()->get_name(), create_exceptions_);
@@ -232,27 +255,25 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 
 	// Please note that validating unknown tag keys the result will be false
 	// Checking all elements counters.
-	if(!stack_.empty() && stack_.top() && config_read_) {
-		for(const auto& tag : stack_.top()->tags()) {
+	if(have_active_tag() && is_valid()) {
+		for(const auto& tag : active_tag().tags(cfg)) {
 			int cnt = counter_.top()[tag.first].cnt;
 
 			if(tag.second.get_min() > cnt) {
-				cache_.top()[&cfg].emplace_back(
-					MISSING_TAG, file, start_line, tag.second.get_min(), tag.first, "", name);
+				queue_message(cfg, MISSING_TAG, file, start_line, tag.second.get_min(), tag.first, "", name);
 				continue;
 			}
 
 			if(tag.second.get_max() < cnt) {
-				cache_.top()[&cfg].emplace_back(
-					EXTRA_TAG, file, start_line, tag.second.get_max(), tag.first, "", name);
+				queue_message(cfg, EXTRA_TAG, file, start_line, tag.second.get_max(), tag.first, "", name);
 			}
 		}
 
 		// Checking if all mandatory keys are present
-		for(const auto& key : stack_.top()->keys()) {
+		for(const auto& key : active_tag().keys(cfg)) {
 			if(key.second.is_mandatory()) {
 				if(cfg.get(key.first) == nullptr) {
-					cache_.top()[&cfg].emplace_back(MISSING_KEY, file, start_line, 0, name, key.first);
+					queue_message(cfg, MISSING_KEY, file, start_line, 0, name, key.first);
 				}
 			}
 		}
@@ -262,25 +283,64 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 void schema_validator::validate_key(
 		const config& cfg, const std::string& name, const std::string& value, int start_line, const std::string& file)
 {
-	if(!stack_.empty() && stack_.top() && config_read_) {
+	if(have_active_tag() && !active_tag().get_name().empty() && is_valid()) {
 		// checking existing keys
-		const class_key* key = stack_.top()->find_key(name);
+		const wml_key* key = active_tag().find_key(name, cfg);
 		if(key) {
-			auto itt = types_.find(key->get_type());
-
-			if(itt != types_.end()) {
-				boost::smatch sub;
-				bool res = boost::regex_match(value, sub, itt->second);
-
-				if(!res) {
-					cache_.top()[&cfg].emplace_back(
-						WRONG_VALUE, file, start_line, 0, stack_.top()->get_name(), name, value);
+			bool matched = false;
+			for(auto& possible_type : utils::split(key->get_type())) {
+				if(auto type = find_type(possible_type)) {
+					if(type->matches(value, types_)) {
+						matched = true;
+						break;
+					}
 				}
 			}
+			if(!matched) {
+				queue_message(cfg, WRONG_VALUE, file, start_line, 0, active_tag().get_name(), name, value);
+			}
 		} else {
-			cache_.top()[&cfg].emplace_back(EXTRA_KEY, file, start_line, 0, stack_.top()->get_name(), name);
+			queue_message(cfg, EXTRA_KEY, file, start_line, 0, active_tag().get_name(), name);
 		}
 	}
+}
+
+void schema_validator::queue_message(const config& cfg, message_type t, const std::string& file, int line, int n, const std::string& tag, const std::string& key, const std::string& value)
+{
+	cache_.top()[&cfg].emplace_back(t, file, line, n, tag, key, value);
+}
+
+const wml_tag& schema_validator::active_tag() const
+{
+	assert(have_active_tag() && "Tried to get active tag name when there was none");
+	return *stack_.top();
+}
+
+wml_type::ptr schema_validator::find_type(const std::string& type) const
+{
+	auto it = types_.find(type);
+	if(it == types_.end()) {
+		return nullptr;
+	}
+	return it->second;
+}
+
+bool schema_validator::have_active_tag() const
+{
+	return !stack_.empty() && stack_.top();
+}
+
+std::string schema_validator::active_tag_path() const {
+	std::stack<const wml_tag*> temp = stack_;
+	std::deque<std::string> path;
+	while(!temp.empty()) {
+		path.push_front(temp.top()->get_name());
+		temp.pop();
+	}
+	if(path.front() == "root") {
+		path.pop_front();
+	}
+	return utils::join(path, "/");
 }
 
 void schema_validator::print(message_info& el)
@@ -303,6 +363,185 @@ void schema_validator::print(message_info& el)
 		break;
 	case MISSING_KEY:
 		missing_key_error(el.file, el.line, el.tag, el.key, create_exceptions_);
+	case WRONG_TYPE:
+		wrong_type_error(el.file, el.line, el.tag, el.key, el.value, create_exceptions_);
+		break;
+	case WRONG_PATH:
+		wrong_path_error(el.file, el.line, el.tag, el.key, el.value, create_exceptions_);
+		break;
 	}
 }
+
+schema_self_validator::schema_self_validator()
+	: schema_validator(filesystem::get_wml_location("schema/schema.cfg"), false)
+	, type_nesting_()
+	, condition_nesting_()
+{}
+
+void schema_self_validator::open_tag(const std::string& name, const config& parent, int start_line, const std::string& file, bool addition)
+{
+	schema_validator::open_tag(name, parent, start_line, file, addition);
+	if(name == "type") {
+		type_nesting_++;
+	}
+	if(condition_nesting_ == 0) {
+		if(name == "if" || name == "switch") {
+			condition_nesting_ = 1;
+		} else if(name == "tag") {
+			tag_stack_.emplace();
+		}
+	} else {
+		condition_nesting_++;
+	}
+}
+
+void schema_self_validator::close_tag()
+{
+	if(have_active_tag()) {
+		auto tag_name = active_tag().get_name();
+		if(tag_name == "type") {
+			type_nesting_--;
+		} else if(condition_nesting_ == 0 && tag_name == "tag") {
+			tag_stack_.pop();
+		}
+	}
+	if(condition_nesting_ > 0) {
+		condition_nesting_--;
+	}
+	schema_validator::close_tag();
+}
+
+bool schema_self_validator::tag_path_exists(const config& cfg, const reference& ref) {
+	std::vector<std::string> path = utils::split(ref.value_, '/');
+	std::string suffix = path.back();
+	path.pop_back();
+	while(!path.empty()) {
+		std::string prefix = utils::join(path, "/");
+		auto link = links_.find(prefix);
+		if(link != links_.end()) {
+			std::string new_path = link->second + "/" + suffix;
+			if(defined_tag_paths_.count(new_path) > 0) {
+				return true;
+			}
+			path = utils::split(new_path, '/');
+			suffix = path.back();
+			//suffix = link->second + "/" + suffix;
+		} else {
+			auto supers = derivations_.equal_range(prefix);
+			if(supers.first != supers.second) {
+				reference super_ref = ref;
+				for( ; supers.first != supers.second; ++supers.first) {
+					super_ref.value_ = supers.first->second + "/" + suffix;
+					if(tag_path_exists(cfg, super_ref)) {
+						return true;
+					}
+				}
+			}
+			std::string new_path = prefix + "/" + suffix;
+			if(defined_tag_paths_.count(new_path) > 0) {
+				return true;
+			}
+			suffix = path.back() + "/" + suffix;
+		}
+		path.pop_back();
+	}
+	return false;
+}
+
+void schema_self_validator::validate(const config& cfg, const std::string& name, int start_line, const std::string& file)
+{
+	if(type_nesting_ == 1 && name == "type") {
+		defined_types_.insert(cfg["name"]);
+	} else if(name == "wml_schema") {
+		using namespace std::placeholders;
+		std::vector<reference> missing_types = referenced_types_, missing_tags = referenced_tag_paths_;
+		// Remove all the known types
+		missing_types.erase(std::remove_if(missing_types.begin(), missing_types.end(), std::bind(&reference::match, _1, std::cref(defined_types_))), missing_types.end());
+		// Remove all the known tags. This is more complicated since links behave similar to a symbolic link.
+		// In other words, the presence of links means there may be more than one way to refer to a given tag.
+		// But that's not all! It's possible to refer to a tag through a derived tag even if it's actually defined in the base tag.
+		auto end = std::remove_if(missing_tags.begin(), missing_tags.end(), std::bind(&reference::match, _1, std::cref(defined_tag_paths_)));
+		missing_tags.erase(std::remove_if(missing_tags.begin(), end, std::bind(&schema_self_validator::tag_path_exists, this, std::ref(cfg), _1)), missing_tags.end());
+		std::sort(missing_types.begin(), missing_types.end());
+		std::sort(missing_tags.begin(), missing_tags.end());
+		static const config dummy;
+		for(auto& ref : missing_types) {
+			std::string name;
+			if(ref.tag_ == "key") {
+				name = "type";
+			} else {
+				name = "link";
+			}
+			queue_message(dummy, WRONG_TYPE, ref.file_, ref.line_, 0, ref.tag_, name, ref.value_);
+		}
+		for(auto& ref : missing_tags) {
+			std::string name;
+			if(ref.tag_ == "tag") {
+				name = "super";
+			} else if(ref.tag_ == "link") {
+				name = "name";
+			}
+			queue_message(dummy, WRONG_PATH, ref.file_, ref.line_, 0, ref.tag_, name, ref.value_);
+		}
+	}
+	schema_validator::validate(cfg, name, start_line, file);
+}
+
+void schema_self_validator::validate_key(const config& cfg, const std::string& name, const std::string& value, int start_line, const std::string& file)
+{
+	schema_validator::validate_key(cfg, name, value, start_line, file);
+	if(have_active_tag() && !active_tag().get_name().empty() && is_valid()) {
+		const std::string& tag_name = active_tag().get_name();
+		if(tag_name == "key" && name == "type" ) {
+			for(auto& possible_type : utils::split(cfg["type"])) {
+				referenced_types_.emplace_back(possible_type, file, start_line, tag_name);
+			}
+		} else if((tag_name == "type" || tag_name == "element") && name == "link") {
+			referenced_types_.emplace_back(cfg["link"], file, start_line, tag_name);
+		} else if(tag_name == "link" && name == "name") {
+			referenced_tag_paths_.emplace_back(cfg["name"], file, start_line, tag_name);
+			std::string link_name = utils::split(cfg["name"], '/').back();
+			links_.emplace(current_path() + "/" + link_name, cfg["name"]);
+		} else if(tag_name == "tag" && name == "super") {
+			for(auto super : utils::split(cfg["super"])) {
+				referenced_tag_paths_.emplace_back(super, file, start_line, tag_name);
+				derivations_.emplace(std::make_pair(current_path(), super));
+			}
+		} else if(condition_nesting_ == 0 && tag_name == "tag" && name == "name") {
+			tag_stack_.top() = value;
+			defined_tag_paths_.insert(current_path());
+		}
+	}
+}
+
+std::string schema_self_validator::current_path() const
+{
+	std::stack<std::string> temp = tag_stack_;
+	std::deque<std::string> path;
+	while(!temp.empty()) {
+		path.push_front(temp.top());
+		temp.pop();
+	}
+	if(path.front() == "root") {
+		path.pop_front();
+	}
+	return utils::join(path, "/");
+}
+
+bool schema_self_validator::reference::operator<(const reference& other)
+{
+	return std::make_tuple(file_, line_) < std::make_tuple(other.file_, other.line_);
+}
+
+bool schema_self_validator::reference::match(const std::set<std::string>& with)
+{
+	return with.count(value_) > 0;
+}
+
+bool schema_self_validator::reference::can_find(const wml_tag& root, const config& cfg)
+{
+	// The problem is that the schema being validated is that of the schema!!!
+	return root.find_tag(value_, root, cfg) != nullptr;
+}
+
 } // namespace schema_validation{

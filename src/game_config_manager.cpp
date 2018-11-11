@@ -36,6 +36,7 @@
 #include "game_version.hpp"
 #include "theme.hpp"
 #include "picture.hpp"
+#include "serialization/schema_validator.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
@@ -260,7 +261,12 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		}
 
 		// Load the selected core
-		cache_.get_config(filesystem::get_wml_location(wml_tree_root), game_config_);
+		std::unique_ptr<schema_validation::schema_validator> validator;
+		if(cmdline_opts_.validate_core) {
+			validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location("schema/game_config.cfg")));
+			validator->set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
+		}
+		cache_.get_config(filesystem::get_wml_location(wml_tree_root), game_config_, validator.get());
 		game_config_.append(valid_cores);
 
 		main_transaction.lock();
@@ -426,9 +432,14 @@ void game_config_manager::load_addons_cfg()
 		version_info addon_version(metadata["version"]);
 
 		try {
+			std::unique_ptr<schema_validation::schema_validator> validator;
+			if( cmdline_opts_.validate_addon && *cmdline_opts_.validate_addon == addon_id) {
+				validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location("schema/game_config.cfg")));
+				validator->set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
+			}
 			// Load this addon from the cache to a config.
 			config umc_cfg;
-			cache_.get_config(main_cfg, umc_cfg);
+			cache_.get_config(main_cfg, umc_cfg, validator.get());
 
 			static const std::set<std::string> tags_with_addon_id {
 				"era",

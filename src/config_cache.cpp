@@ -90,9 +90,9 @@ void config_cache::clear_defines()
 	add_builtin_defines(defines_map_);
 }
 
-void config_cache::get_config(const std::string& file_path, config& cfg)
+void config_cache::get_config(const std::string& file_path, config& cfg, abstract_validator* validator)
 {
-	load_configs(file_path, cfg);
+	load_configs(file_path, cfg, validator);
 }
 
 void config_cache::write_file(std::string file_path, const config& cfg)
@@ -140,14 +140,14 @@ void config_cache::add_defines_map_diff(preproc_map& defines_map)
 	return config_cache_transaction::instance().add_defines_map_diff(defines_map);
 }
 
-void config_cache::read_configs(const std::string& file_path, config& cfg, preproc_map& defines_map)
+void config_cache::read_configs(const std::string& file_path, config& cfg, preproc_map& defines_map, abstract_validator* validator)
 {
 	//read the file and then write to the cache
 	filesystem::scoped_istream stream = preprocess_file(file_path, &defines_map);
-	read(cfg, *stream);
+	read(cfg, *stream, validator);
 }
 
-void config_cache::read_cache(const std::string& file_path, config& cfg)
+void config_cache::read_cache(const std::string& file_path, config& cfg, abstract_validator* validator)
 {
 	static const std::string extension = ".gz";
 
@@ -235,7 +235,7 @@ void config_cache::read_cache(const std::string& file_path, config& cfg)
 
 		preproc_map copy_map(make_copy_map());
 
-		read_configs(file_path, cfg, copy_map);
+		read_configs(file_path, cfg, copy_map, validator);
 		add_defines_map_diff(copy_map);
 
 		try {
@@ -256,7 +256,7 @@ void config_cache::read_cache(const std::string& file_path, config& cfg)
 	LOG_CACHE << "Loading plain config instead of cache\n";
 
 	preproc_map copy_map(make_copy_map());
-	read_configs(file_path, cfg, copy_map);
+	read_configs(file_path, cfg, copy_map, validator);
 	add_defines_map_diff(copy_map);
 }
 
@@ -284,16 +284,16 @@ void config_cache::read_defines_queue()
 	}
 }
 
-void config_cache::load_configs(const std::string& config_path, config& cfg)
+void config_cache::load_configs(const std::string& config_path, config& cfg, abstract_validator* validator)
 {
 	// Make sure that we have fake transaction if no real one is going on
 	fake_transaction fake;
 
 	if (use_cache_) {
-		read_cache(config_path, cfg);
+		read_cache(config_path, cfg, validator);
 	} else {
 		preproc_map copy_map(make_copy_map());
-		read_configs(config_path, cfg, copy_map);
+		read_configs(config_path, cfg, copy_map, validator);
 		add_defines_map_diff(copy_map);
 	}
 }

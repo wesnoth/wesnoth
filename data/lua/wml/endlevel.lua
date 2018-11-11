@@ -35,7 +35,7 @@ function wesnoth.wml_actions.endlevel(cfg)
 	local there_is_a_human_defeat = false
 	local there_is_a_local_human_victory = false
 	local there_is_a_local_human_defeat = false
-	local bool_int = function(b)
+	local bool_num = function(b)
 		if b == true then
 			return 1
 		elseif b == false then
@@ -66,9 +66,9 @@ function wesnoth.wml_actions.endlevel(cfg)
 			end
 		end
 		if side_result.bonus ~= nil then
-			v.carryover_bonus = bool_int(side_result.bonus)
+			v.carryover_bonus = bool_num(side_result.bonus)
 		elseif cfg.bonus ~= nil then
-			v.carryover_bonus = bool_int(cfg.bonus)
+			v.carryover_bonus = bool_num(cfg.bonus)
 		end
 		if side_result.carryover_add ~= nil then
 			v.carryover_add = side_result.carryover_add

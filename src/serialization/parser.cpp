@@ -184,6 +184,7 @@ void parser::parse_element()
 
 	std::string elname;
 	config* current_element = nullptr;
+	config* parent = nullptr;
 
 	switch(tok_.current_token().type) {
 	case token::STRING: // [element]
@@ -194,11 +195,12 @@ void parser::parse_element()
 		}
 
 		// Add the element
-		current_element = &(elements.top().cfg->add_child(elname));
+		parent = elements.top().cfg;
+		current_element = &(parent->add_child(elname));
 		elements.emplace(current_element, elname, tok_.get_start_line(), tok_.get_file());
 
 		if(validator_) {
-			validator_->open_tag(elname, tok_.get_start_line(), tok_.get_file());
+			validator_->open_tag(elname, *parent, tok_.get_start_line(), tok_.get_file());
 		}
 
 		break;
@@ -215,17 +217,18 @@ void parser::parse_element()
 		}
 
 		// Find the last child of the current element whose name is element
-		if(config& c = elements.top().cfg->child(elname, -1)) {
+		parent = elements.top().cfg;
+		if(config& c = parent->child(elname, -1)) {
 			current_element = &c;
 
 			if(validator_) {
-				validator_->open_tag(elname, tok_.get_start_line(), tok_.get_file(), true);
+				validator_->open_tag(elname, *parent, tok_.get_start_line(), tok_.get_file(), true);
 			}
 		} else {
-			current_element = &elements.top().cfg->add_child(elname);
+			current_element = &parent->add_child(elname);
 
 			if(validator_) {
-				validator_->open_tag(elname, tok_.get_start_line(), tok_.get_file());
+				validator_->open_tag(elname, *parent, tok_.get_start_line(), tok_.get_file());
 			}
 		}
 

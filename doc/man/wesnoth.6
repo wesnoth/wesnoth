@@ -369,6 +369,10 @@ makes the
 .B package
 package available to lua scripts, so that they can load arbitrary packages. Do not do this with untrusted scripts! This action gives lua the same permissions as the wesnoth executable.
 .TP
+.BI --use-schema  \ path
+sets the WML schema for use with
+.BR --validate .
+.TP
 .BI --userconfig-dir \ name
 sets the user configuration directory to
 .I name
@@ -399,6 +403,18 @@ prints the path of the userdata directory and exits.
 uses
 .I username
 when connecting to a server, ignoring other preferences.
+.TP
+.BI --validate \ path
+validates a file against the WML schema.
+.TP
+.BI --validate-addon \ addon_id
+validates the WML of the given addon as you play.
+.TP
+.B --validate-core
+validates the core WML as you play.
+.TP
+.B --validate-schema \ path
+validates a file as a WML schema.
 .TP
 .B --validcache
 assumes that the cache is valid. (dangerous)

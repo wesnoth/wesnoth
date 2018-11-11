@@ -16,10 +16,10 @@
 
 #include "config_cache.hpp"
 #include "serialization/parser.hpp"
-#include "serialization/tag.hpp"
+#include "serialization/schema/type.hpp"
+#include "serialization/schema/tag.hpp"
+#include "serialization/schema/key.hpp"
 #include "serialization/validator.hpp"
-
-#include <boost/regex.hpp>
 
 #include <iostream>
 #include <queue>
@@ -46,22 +46,17 @@ public:
 	 * Initializes validator from file.
 	 * Throws abstract_validator::error if any error.
 	 */
-	schema_validator(const std::string& filename);
+	schema_validator(const std::string& filename, bool validate_schema = false);
 
 	void set_create_exceptions(bool value)
 	{
 		create_exceptions_ = value;
 	}
 
-	virtual void open_tag(
-			const std::string& name, int start_line = 0, const std::string& file = "", bool addittion = false);
-	virtual void close_tag();
-	virtual void validate(const config& cfg, const std::string& name, int start_line, const std::string& file);
-	virtual void validate_key(const config& cfg,
-			const std::string& name,
-			const std::string& value,
-			int start_line,
-			const std::string& file);
+	virtual void open_tag(const std::string& name, const config& parent, int start_line = 0, const std::string& file = "", bool addition = false) override;
+	virtual void close_tag() override;
+	virtual void validate(const config& cfg, const std::string& name, int start_line, const std::string& file) override;
+	virtual void validate_key(const config& cfg, const std::string& name, const std::string& value, int start_line, const std::string& file) override;
 
 private:
 	// types section
@@ -81,7 +76,9 @@ private:
 	/** And counter maps are organize in stack. */
 	typedef std::stack<cnt_map> cnt_stack;
 
-	enum message_type { WRONG_TAG, EXTRA_TAG, MISSING_TAG, EXTRA_KEY, MISSING_KEY, WRONG_VALUE };
+protected:
+	enum message_type{ WRONG_TAG, EXTRA_TAG, MISSING_TAG, EXTRA_KEY, MISSING_KEY, WRONG_VALUE, WRONG_TYPE, WRONG_PATH };
+private:
 	// error_cache
 
 	/**
@@ -103,13 +100,7 @@ private:
 		std::string key;
 		std::string value;
 
-		message_info(message_type t,
-				const std::string& file,
-				int line = 0,
-				int n = 0,
-				const std::string& tag = "",
-				const std::string& key = "",
-				const std::string& value = "")
+		message_info(message_type t, const std::string& file, int line = 0, int n = 0, const std::string& tag = "", const std::string& key = "", const std::string& value = "")
 			: type(t)
 			, file(file)
 			, line(line)
@@ -136,9 +127,9 @@ private:
 	bool create_exceptions_;
 
 	/** Root of schema information. */
-	class_tag root_;
+	wml_tag root_;
 
-	std::stack<const class_tag*> stack_;
+	std::stack<const wml_tag*> stack_;
 
 	/** Contains number of children. */
 	cnt_stack counter_;
@@ -147,6 +138,50 @@ private:
 	std::stack<message_map> cache_;
 
 	/** Type validators. */
-	std::map<std::string, boost::regex> types_;
+	wml_type::map types_;
+
+	bool validate_schema_;
+protected:
+	void queue_message(const config& cfg, message_type t, const std::string& file, int line = 0, int n = 0, const std::string& tag = "", const std::string& key = "", const std::string& value = "");
+	const wml_tag& active_tag() const;
+	std::string active_tag_path() const;
+	bool have_active_tag() const;
+	bool is_valid() const {return config_read_;}
+	wml_type::ptr find_type(const std::string& type) const;
 };
+
+// A validator specifically designed for validating a schema
+// In addition to the usual, it verifies that references within the schema are valid, for example via the [link] tag
+class schema_self_validator : public schema_validator
+{
+public:
+	schema_self_validator();
+	virtual void open_tag(const std::string& name, const config& parent, int start_line = 0, const std::string& file = "", bool addition = false) override;
+	virtual void close_tag() override;
+	virtual void validate(const config& cfg, const std::string& name, int start_line, const std::string& file) override;
+	virtual void validate_key(const config& cfg, const std::string& name, const std::string& value, int start_line, const std::string& file) override;
+private:
+	struct reference {
+		reference(const std::string& value, const std::string& file, int line, const std::string& tag)
+			: value_(value)
+			, file_(file)
+			, tag_(tag)
+			, line_(line)
+		{}
+		std::string value_, file_, tag_;
+		int line_;
+		bool match(const std::set<std::string>& with);
+		bool can_find(const wml_tag& root, const config& cfg);
+		bool operator<(const reference& other);
+	};
+	std::string current_path() const;
+	std::set<std::string> defined_types_, defined_tag_paths_;
+	std::vector<reference> referenced_types_, referenced_tag_paths_;
+	std::stack<std::string> tag_stack_;
+	std::map<std::string, std::string> links_;
+	std::multimap<std::string, std::string> derivations_;
+	int type_nesting_, condition_nesting_;
+	bool tag_path_exists(const config& cfg, const reference& ref);
+};
+
 } // namespace schema_validation{

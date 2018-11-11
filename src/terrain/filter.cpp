@@ -282,7 +282,8 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 				if(std::find(vals.begin(),vals.end(),unit_type::ALIGNMENT::enum_to_string(unit_type::ALIGNMENT::LAWFUL)) == vals.end()) {
 					return false;
 				}
-			} else if(std::find(vals.begin(),vals.end(),unit_type::ALIGNMENT::enum_to_string(unit_type::ALIGNMENT::NEUTRAL)) == vals.end()) {
+			} else if(std::find(vals.begin(),vals.end(),unit_type::ALIGNMENT::enum_to_string(unit_type::ALIGNMENT::NEUTRAL)) == vals.end() &&
+				std::find(vals.begin(),vals.end(),unit_type::ALIGNMENT::enum_to_string(unit_type::ALIGNMENT::LIMINAL)) == vals.end()) {
 				return false;
 			}
 		}

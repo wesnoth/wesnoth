@@ -46,7 +46,7 @@
 #include "serialization/parser.hpp"         // for read
 #include "serialization/preprocessor.hpp"   // for preproc_define, etc
 #include "serialization/unicode_cast.hpp"
-#include "serialization/validator.hpp" // for strict_validation_enabled
+#include "serialization/schema_validator.hpp" // for strict_validation_enabled and schema_validator
 #include "sound.hpp"                   // for commit_music_changes, etc
 #include "statistics.hpp"              // for fresh_stats
 #include "utils/functional.hpp"
@@ -333,6 +333,24 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 	std::cerr << "preprocessing finished. Took " << SDL_GetTicks() - startTime << " ticks.\n";
 }
 
+static int handle_validate_command(const std::string& file, abstract_validator& validator, const std::vector<std::string>& defines) {
+	preproc_map defines_map;
+	for(const std::string& define : defines) {
+		if(define.empty()) {
+			std::cerr << "empty define supplied\n";
+			continue;
+		}
+
+		LOG_PREPROC << "adding define: " << define << '\n';
+		defines_map.emplace(define, preproc_define(define));
+	}
+	filesystem::scoped_istream stream = preprocess_file(file, &defines_map);
+	config result;
+	read(result, *stream, &validator);
+	// TODO: Return 1 if any errors found.
+	return 0;
+}
+
 /** Process commandline-arguments */
 static int process_command_args(const commandline_options& cmdline_opts)
 {
@@ -478,12 +496,30 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		std::cout << "\n========= BUILD INFORMATION =========\n\n" << game_config::full_build_report();
 		return 0;
 	}
+	
+	if(cmdline_opts.validate_schema) {
+		schema_validation::schema_self_validator validator;
+		validator.set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
+		handle_validate_command(*cmdline_opts.validate_schema, validator, {});
+	}
 
 	// Options changing their behavior dependent on some others should be checked below.
 
 	if(cmdline_opts.preprocess) {
 		handle_preprocess_command(cmdline_opts);
 		return 0;
+	}
+	
+	if(cmdline_opts.validate_wml) {
+		std::string schema_path;
+		if(cmdline_opts.validate_with) {
+			schema_path = *cmdline_opts.validate_with;
+		} else {
+			schema_path = filesystem::get_wml_location("schema/game_config.cfg");
+		}
+		schema_validation::schema_validator validator(schema_path);
+		validator.set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
+		handle_validate_command(*cmdline_opts.validate_wml, validator, boost::get_optional_value_or(cmdline_opts.preprocess_defines, {}));
 	}
 
 	// Not the most intuitive solution, but I wanted to leave current semantics for now
