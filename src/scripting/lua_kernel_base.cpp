@@ -41,6 +41,9 @@
 
 #include "formula/string_utils.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/schema_validator.hpp"
+#include "serialization/parser.hpp"
+#include "serialization/preprocessor.hpp"
 #include "utils/functional.hpp"
 #include "utils/name_generator.hpp"
 #include "utils/markov_generator.hpp"
@@ -53,6 +56,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <fstream>
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
@@ -395,6 +399,71 @@ static int intf_debug(lua_State* L) {
 	return 1;
 }
 
+/**
+ * Loads a WML file into a config
+ * - Arg 1: WML file path
+ * - Arg 2: (optional) Array of preprocessor defines, or false to skip preprocessing (true is also valid)
+ * - Arg 3: (optional) Path to a schema file for validation (omit for no validation)
+ * - Ret: config
+ */
+static int intf_load_wml(lua_State* L)
+{
+	std::string file = luaL_checkstring(L, 1);
+	bool preprocess = true;
+	preproc_map defines_map;
+	if(lua_type(L, 2) == LUA_TBOOLEAN) {
+		preprocess = luaW_toboolean(L, 2);
+	} else if(lua_type(L, 2) == LUA_TTABLE || lua_type(L, 2) == LUA_TUSERDATA) {
+		lua_len(L, 2);
+		int n = lua_tonumber(L, -1);
+		lua_pop(L, 1);
+		for(int i = 0; i < n; i++) {
+			lua_geti(L, 2, i);
+			if(!lua_isstring(L, -1)) {
+				return luaL_argerror(L, 2, "expected bool or array of strings");
+			}
+			std::string define = lua_tostring(L, -1);
+			lua_pop(L, 1);
+			if(!define.empty()) {
+				defines_map.emplace(define, preproc_define(define));
+			}
+		}
+	} else if(!lua_isnoneornil(L, 2)) {
+		return luaL_argerror(L, 2, "expected bool or array of strings");
+	}
+	std::string schema_path = luaL_optstring(L, 3, "");
+	std::shared_ptr<schema_validation::schema_validator> validator;
+	if(!schema_path.empty()) {
+		validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location(schema_path)));
+		validator->set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
+	}
+	std::string wml_file = filesystem::get_wml_location(file);
+	filesystem::scoped_istream stream;
+	config result;
+	if(preprocess) {
+		stream = preprocess_file(wml_file, &defines_map);
+	} else {
+		stream.reset(new std::ifstream(wml_file));
+	}
+	read(result, *stream, validator.get());
+	luaW_pushconfig(L, result);
+	return 1;
+}
+
+/**
+ * Parses a WML string into a config; does not preprocess or validate
+ * - Arg 1: WML string
+ * - Ret: config
+ */
+static int intf_parse_wml(lua_State* L)
+{
+	std::string wml = luaL_checkstring(L, 1);
+	config result;
+	read(result, wml, nullptr);
+	luaW_pushconfig(L, result);
+	return 1;
+}
+
 // End Callback implementations
 
 // Template which allows to push member functions to the lua kernel base into lua as C functions, using a shim
@@ -539,6 +608,15 @@ lua_kernel_base::lua_kernel_base()
 	luaL_setfuncs(L, callbacks, 0);
 	//lua_cpp::set_functions(L, cpp_callbacks, 0);
 	lua_setglobal(L, "wesnoth");
+	
+	static luaL_Reg const wml_callbacks[]= {
+		{ "load",      &intf_load_wml},
+		{ "parse",     &intf_parse_wml},
+		{ nullptr, nullptr },
+	};
+	lua_newtable(L);
+	luaL_setfuncs(L, wml_callbacks, 0);
+	lua_setglobal(L, "wml");
 
 	// Override the print function
 	cmd_log_ << "Redirecting print function...\n";

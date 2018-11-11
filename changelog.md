@@ -34,6 +34,7 @@
      Japanese, Polish, Scottish Gaelic, Slovak, Spanish, Ukrainian.
  ### Lua API
    * Allow specifying custom flags (in particular teleport) when using a custom cost function in wesnoth.find_path
+   * Add wml.load() and wml.parse() functions
  ### User Interface
    * Don't show in the sidebar the time of day schedule of a shrouded hex. (issue #3638)
  ### Packaging

@@ -19,7 +19,6 @@ end
 
 --[========[Config Manipulation Functions]========]
 
-wml = {}
 wml.tovconfig = wesnoth.tovconfig
 wml.tostring = wesnoth.debug
 
