@@ -52,7 +52,7 @@ public:
 	using condition_list = std::vector<wml_condition>;
 	using super_list = std::vector<wml_tag*>;
 private:
-	void push_new_tag_conditions(std::queue<const wml_tag*> q, const wml_tag& tag);
+	static void push_new_tag_conditions(std::queue<const wml_tag*> q, const config& match, const wml_tag& tag);
 	template<typename T, typename Map = std::map<std::string, T>>
 	class iterator : public boost::iterator_facade<iterator<T>, const typename Map::value_type, std::forward_iterator_tag>
 	{
@@ -81,11 +81,7 @@ private:
 		}
 		void push_new_tag_conditions(const wml_tag& tag)
 		{
-			for(const auto& condition : tag.conditions_) {
-				if(condition.matches(match)) {
-					condition_queue.push(&condition);
-				}
-			}
+			wml_tag::push_new_tag_conditions(condition_queue, match, tag);
 		}
 		bool equal(const iterator<T, Map>& other) const
 		{

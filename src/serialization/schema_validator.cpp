@@ -466,22 +466,22 @@ void schema_self_validator::validate(const config& cfg, const std::string& name,
 		std::sort(missing_tags.begin(), missing_tags.end());
 		static const config dummy;
 		for(auto& ref : missing_types) {
-			std::string name;
+			std::string tag_name;
 			if(ref.tag_ == "key") {
-				name = "type";
+				tag_name = "type";
 			} else {
-				name = "link";
+				tag_name = "link";
 			}
-			queue_message(dummy, WRONG_TYPE, ref.file_, ref.line_, 0, ref.tag_, name, ref.value_);
+			queue_message(dummy, WRONG_TYPE, ref.file_, ref.line_, 0, ref.tag_, tag_name, ref.value_);
 		}
 		for(auto& ref : missing_tags) {
-			std::string name;
+			std::string tag_name;
 			if(ref.tag_ == "tag") {
-				name = "super";
+				tag_name = "super";
 			} else if(ref.tag_ == "link") {
-				name = "name";
+				tag_name = "name";
 			}
-			queue_message(dummy, WRONG_PATH, ref.file_, ref.line_, 0, ref.tag_, name, ref.value_);
+			queue_message(dummy, WRONG_PATH, ref.file_, ref.line_, 0, ref.tag_, tag_name, ref.value_);
 		}
 	}
 	schema_validator::validate(cfg, name, start_line, file);

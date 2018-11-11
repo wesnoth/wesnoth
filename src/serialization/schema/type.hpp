@@ -41,6 +41,7 @@ public:
 	using map = std::map<std::string, ptr>;
 	virtual bool matches(const std::string& value, const map& type_map) const = 0;
 	static std::shared_ptr<wml_type> from_config(const config& cfg);
+	virtual ~wml_type() {}
 };
 
 /**

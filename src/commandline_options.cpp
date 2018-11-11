@@ -140,8 +140,8 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	with_replay(false),
 	args_(args.begin() + 1 , args.end()),
 	args0_(*args.begin()),
-	all_(),
 	validate_core(false),
+	all_(),
 	visible_(),
 	hidden_()
 {
