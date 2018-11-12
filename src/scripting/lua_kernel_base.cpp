@@ -392,10 +392,11 @@ static int intf_format_list(lua_State* L)
 * - Arg 1: wml table or vconfig userdata
 * - Ret 1: string
 */
-static int intf_debug(lua_State* L) {
+static int intf_wml_tostring(lua_State* L) {
 	const config& arg = luaW_checkconfig(L, 1);
-	const std::string& result = arg.debug();
-	lua_pushstring(L, result.c_str());
+	std::ostringstream stream;
+	write(stream, arg);
+	lua_pushstring(L, stream.str().c_str());
 	return 1;
 }
 
@@ -559,7 +560,7 @@ lua_kernel_base::lua_kernel_base()
 
 	static luaL_Reg const callbacks[] {
 		{ "compare_versions",         &intf_compare_versions         		},
-		{ "debug",                    &intf_debug                           },
+		{ "debug",                    &intf_wml_tostring                           },
 		{ "deprecated_message",       &intf_deprecated_message              },
 		{ "have_file",                &lua_fileops::intf_have_file          },
 		{ "read_file",                &lua_fileops::intf_read_file          },
