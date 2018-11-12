@@ -363,6 +363,7 @@ void schema_validator::print(message_info& el)
 		break;
 	case MISSING_KEY:
 		missing_key_error(el.file, el.line, el.tag, el.key, create_exceptions_);
+		break;
 	case WRONG_TYPE:
 		wrong_type_error(el.file, el.line, el.tag, el.key, el.value, create_exceptions_);
 		break;

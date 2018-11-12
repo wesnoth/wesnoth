@@ -34,8 +34,10 @@ wml_tag::wml_tag(const config& cfg)
 	, tags_()
 	, keys_()
 	, links_()
-	, any_tag_(cfg["any_tag"].to_bool())
+	, conditions_()
+	, super_refs_()
 	, fuzzy_(name_.find_first_of("*?") != std::string::npos)
+	, any_tag_(cfg["any_tag"].to_bool())
 {
 	if(max_ < 0) {
 		max_ = INT_MAX;
@@ -467,12 +469,14 @@ bool wml_condition::matches(const config& cfg) const
 	return cfg.matches(filter_);
 }
 
+template<>
 void wml_tag::tag_iterator::init(const wml_tag& base_tag)
 {
 	current = base_tag.tags_.begin();
 	condition_queue.push(&base_tag);
 }
 
+template<>
 void wml_tag::tag_iterator::ensure_valid_or_end() {
 	while(current == condition_queue.front()->tags_.end()) {
 		condition_queue.pop();
@@ -485,12 +489,14 @@ void wml_tag::tag_iterator::ensure_valid_or_end() {
 	}
 }
 
+template<>
 void wml_tag::key_iterator::init(const wml_tag& base_tag)
 {
 	current = base_tag.keys_.begin();
 	condition_queue.push(&base_tag);
 }
 
+template<>
 void wml_tag::key_iterator::ensure_valid_or_end() {
 	while(current == condition_queue.front()->keys_.end()) {
 		condition_queue.pop();

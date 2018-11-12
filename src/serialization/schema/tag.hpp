@@ -376,9 +376,6 @@ private:
 	void expand(wml_tag& root);
 };
 
-extern template class wml_tag::iterator<wml_tag>;
-extern template class wml_tag::iterator<wml_key>;
-
 /**
  * Stores information about a conditional portion of a tag.
  * Format is the same as wml_tag.
