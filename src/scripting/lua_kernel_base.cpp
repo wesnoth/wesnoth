@@ -459,8 +459,14 @@ static int intf_load_wml(lua_State* L)
 static int intf_parse_wml(lua_State* L)
 {
 	std::string wml = luaL_checkstring(L, 1);
+	std::string schema_path = luaL_optstring(L, 2, "");
+	std::shared_ptr<schema_validation::schema_validator> validator;
+	if(!schema_path.empty()) {
+		validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location(schema_path)));
+		validator->set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
+	}
 	config result;
-	read(result, wml, nullptr);
+	read(result, wml, validator.get());
 	luaW_pushconfig(L, result);
 	return 1;
 }
