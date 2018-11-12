@@ -465,6 +465,26 @@ static int intf_parse_wml(lua_State* L)
 	return 1;
 }
 
+/**
+ * Returns a clone (deep copy) of the passed config, which can be either a normal config or a vconfig
+ * If it is a vconfig, the underlying config is also cloned.
+ * - Arg 1: a config
+ * - Ret: the cloned config
+ */
+static int intf_clone_wml(lua_State* L)
+{
+	const vconfig* vcfg = nullptr;
+	const config& cfg = luaW_checkconfig(L, 1, vcfg);
+	if(vcfg) {
+		config clone_underlying = vcfg->get_config();
+		vconfig clone(clone_underlying);
+		luaW_pushvconfig(L, clone);
+	} else {
+		luaW_pushconfig(L, cfg);
+	}
+	return 1;
+}
+
 // End Callback implementations
 
 // Template which allows to push member functions to the lua kernel base into lua as C functions, using a shim
@@ -613,6 +633,7 @@ lua_kernel_base::lua_kernel_base()
 	static luaL_Reg const wml_callbacks[]= {
 		{ "load",      &intf_load_wml},
 		{ "parse",     &intf_parse_wml},
+		{ "clone",     &intf_clone_wml},
 		{ nullptr, nullptr },
 	};
 	lua_newtable(L);

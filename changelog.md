@@ -36,6 +36,7 @@
    * Allow specifying custom flags (in particular teleport) when using a custom cost function in wesnoth.find_path
    * Add wml.load() and wml.parse() functions
    * wml.tostring() now outputs a string that can be parsed back to WML without loss of data.
+   * Add wml.clone() function that performs a deep copy of a config or vconfig.
  ### User Interface
    * Don't show in the sidebar the time of day schedule of a shrouded hex. (issue #3638)
  ### Packaging
