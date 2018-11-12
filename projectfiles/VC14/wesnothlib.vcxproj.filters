@@ -23,6 +23,9 @@
     <Filter Include="crypt_blowfish">
       <UniqueIdentifier>{ba7645fc-4486-437c-845e-9f30d991e7b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Serialization\Schema">
+      <UniqueIdentifier>{70c53e2e-736c-4429-a18c-b4ded4d7c531}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\serialization\base64.cpp">
@@ -73,6 +76,15 @@
     </ClCompile>
     <ClCompile Include="..\..\src\formula\string_utils.cpp">
       <Filter>Formula</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\serialization\schema\key.cpp">
+      <Filter>Serialization\Schema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\serialization\schema\tag.cpp">
+      <Filter>Serialization\Schema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\serialization\schema\type.cpp">
+      <Filter>Serialization\Schema</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +175,15 @@
     </ClInclude>
     <ClInclude Include="..\..\src\utils\type_trait_aliases.hpp">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\serialization\schema\key.hpp">
+      <Filter>Serialization\Schema</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\serialization\schema\tag.hpp">
+      <Filter>Serialization\Schema</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\serialization\schema\type.hpp">
+      <Filter>Serialization\Schema</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

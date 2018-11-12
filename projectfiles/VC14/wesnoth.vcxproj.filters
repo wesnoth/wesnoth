@@ -104,9 +104,6 @@
     <Filter Include="utils">
       <UniqueIdentifier>{23b03f49-f123-4efc-9a5d-4434fb3ee9cc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Serialization">
-      <UniqueIdentifier>{6434b92d-5101-4e6a-8e78-dfb7eaac992c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Tests">
       <UniqueIdentifier>{e220d025-af4f-4012-9895-ed91e90434b0}</UniqueIdentifier>
     </Filter>
@@ -1009,15 +1006,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\utils\name_generator_factory.cpp">
       <Filter>utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\serialization\schema\key.cpp">
-      <Filter>serialization</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\serialization\schema\tag.cpp">
-      <Filter>serialization</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\serialization\schema\type.cpp">
-      <Filter>serialization</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\tests\main.cpp">
       <Filter>Tests</Filter>
@@ -2524,15 +2512,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\utils\scope_exit.hpp">
       <Filter>utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\serialization\schema\key.hpp">
-      <Filter>serialization</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\serialization\schema\tag.hpp">
-      <Filter>serialization</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\serialization\schema\type.hpp">
-      <Filter>serialization</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\actions\advancement.hpp">
       <Filter>Actions</Filter>

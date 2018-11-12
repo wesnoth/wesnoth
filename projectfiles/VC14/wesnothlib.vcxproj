@@ -160,6 +160,21 @@
       <DisableSpecificWarnings>4706;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <ClCompile Include="..\..\src\serialization\preprocessor.cpp" />
+    <ClCompile Include="..\..\src\serialization\schema\key.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Serialization\Schema\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Serialization\Schema\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Serialization\Schema\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\serialization\schema\tag.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Serialization\Schema\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Serialization\Schema\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Serialization\Schema\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\serialization\schema\type.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Serialization\Schema\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Serialization\Schema\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Serialization\Schema\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\serialization\schema_validator.cpp" />
     <ClCompile Include="..\..\src\serialization\string_utils.cpp" />
     <ClCompile Include="..\..\src\serialization\tokenizer.cpp" />
@@ -189,6 +204,9 @@
     <ClInclude Include="..\..\src\serialization\binary_or_text.hpp" />
     <ClInclude Include="..\..\src\serialization\parser.hpp" />
     <ClInclude Include="..\..\src\serialization\preprocessor.hpp" />
+    <ClInclude Include="..\..\src\serialization\schema\key.hpp" />
+    <ClInclude Include="..\..\src\serialization\schema\tag.hpp" />
+    <ClInclude Include="..\..\src\serialization\schema\type.hpp" />
     <ClInclude Include="..\..\src\serialization\schema_validator.hpp" />
     <ClInclude Include="..\..\src\serialization\string_utils.hpp" />
     <ClInclude Include="..\..\src\serialization\string_view.hpp" />
