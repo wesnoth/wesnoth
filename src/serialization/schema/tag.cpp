@@ -366,6 +366,11 @@ void wml_tag::add_tag(const std::string& path, const wml_tag& tag, wml_tag& root
 	it_tags->second.add_tag(next_path, tag, root);
 }
 
+void wml_tag::add_conditions(const condition_list& list)
+{
+	conditions_.insert(conditions_.end(), list.begin(), list.end());
+}
+
 void wml_tag::expand(wml_tag& root)
 {
 	for(auto& super : utils::split(super_)) {

@@ -367,10 +367,7 @@ private:
 		links_.insert(list.begin(), list.end());
 	}
 
-	void add_conditions(const condition_list& list)
-	{
-		conditions_.insert(conditions_.end(), list.begin(), list.end());
-	}
+	void add_conditions(const condition_list& list);
 
 	/** Expands all "super", storing direct references for easier access. */
 	void expand(wml_tag& root);
