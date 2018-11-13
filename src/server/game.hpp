@@ -19,8 +19,10 @@
 #include "player_connection.hpp"
 #include "simple_wml.hpp"
 #include "utils/make_enum.hpp"
+#include "game_version.hpp"
 
 #include <boost/ptr_container/ptr_vector.hpp>
+#include <boost/optional.hpp> 
 
 #include <map>
 #include <vector>
@@ -434,6 +436,8 @@ private:
 	/** Function to log when we don't find a connection in player_info_. */
 	void missing_user(socket_ptr socket, const std::string& func) const;
 
+	struct version_range { version_info oldest; version_info newest; };
+	const version_range& get_player_versions() const;
 	/** calculates the initial value for sides_, side_controllerds_, nsides_*/
 	void reset_sides();
 
@@ -515,6 +519,8 @@ private:
 	/** A wrapper for mersenne twister rng which generates randomness for this game */
 	randomness::mt_rng rng_;
 	int last_choice_request_id_;
+	mutable boost::optional<version_range> player_versions_;
+	
 };
 
 } // namespace wesnothd
