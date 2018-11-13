@@ -23,6 +23,7 @@
 #include "language.hpp"
 #include "map/map.hpp"
 #include "mouse_events.hpp"
+#include "picture.hpp"
 #include "reports.hpp"
 #include "color.hpp"
 #include "team.hpp"
@@ -714,6 +715,11 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 	std::ostringstream str, tooltip;
 	int damage = 0;
 
+	struct string_with_tooltip {
+		std::string str;
+		std::string tooltip;
+	};
+
 	{
 		auto ctx = at.specials_context(unit_const_ptr(&u), hex, u.side() == rc.screen().playing_side());
 		int base_damage = at.damage();
@@ -803,14 +809,22 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 			tooltip << '\t' << _("With specials: ") << num_attacks << '\n';
 		}
 
-		add_text(res, flush(str), flush(tooltip));
+		const string_with_tooltip damage_and_num_attacks {flush(str), flush(tooltip)};
 
 		std::string range = string_table["range_" + at.range()];
 		std::string lang_type = string_table["type_" + at.type()];
 
-		str << span_color(font::weapon_details_color) << "  " << "  "
-			<< range << font::weapon_details_sep
-			<< lang_type << "</span>\n";
+		// SCALE_INTO_SHARP() is needed in case the 72x72 images/misc/missing-image.png is substituted.
+		const std::string range_png = std::string("icons/profiles/") + at.range() + "_attack.png~SCALE_INTO_SHARP(16,16)";
+		const std::string type_png = std::string("icons/profiles/") + at.type() + ".png~SCALE_INTO_SHARP(16,16)";
+		const bool range_png_exists = image::locator(range_png).file_exists();
+		const bool type_png_exists = image::locator(type_png).file_exists();
+
+		if(!range_png_exists || !type_png_exists) {
+			str << span_color(font::weapon_details_color) << "  " << "  "
+				<< range << font::weapon_details_sep
+				<< lang_type << "</span>\n";
+		}
 
 		tooltip << _("Weapon range: ") << "<b>" << range << "</b>\n"
 			<< _("Damage type: ")  << "<b>" << lang_type << "</b>\n"
@@ -849,7 +863,23 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 				<< " :  \t" // spaces to align the tab to a multiple of 8
 				<< utils::join(resist.second, " " + font::unicode_bullet + " ") << '\n';
 		}
-		add_text(res, flush(str), flush(tooltip));
+		const string_with_tooltip damage_versus {flush(str), flush(tooltip)};
+
+#if 0
+		// We wanted to use the attack icon here, but couldn't find a good layout.
+		// The default images are 60x60 and have a 2-pixel transparent border. Trim it.
+		// The first SCALE() accounts for theoretically possible add-ons attack images larger than 60x60.
+		const std::string attack_icon = at.icon() + "~SCALE_INTO_SHARP(60,60)~CROP(2,2,56,56)~SCALE_INTO_SHARP(32,32)";
+		add_image(res, attack_icon, at.name());
+		add_text(res, " ", "");
+#endif
+
+		// The icons are 16x16. We add 5px padding for alignment reasons (placement of the icon in relation to ascender and descender letters).
+		const std::string spacer = "misc/blank.png~CROP(0, 0, 16, 21)"; // 21 == 16+5
+		if (range_png_exists) add_image(res, spacer + "~BLIT(" + range_png + ",0,5)", damage_versus.tooltip);
+		if (type_png_exists) add_image(res, spacer + "~BLIT(" + type_png + ",0,5)", damage_versus.tooltip);
+		add_text(res, damage_and_num_attacks.str, damage_and_num_attacks.tooltip);
+		add_text(res, damage_versus.str, damage_versus.tooltip); // This string is usually empty
 
 		const std::string &accuracy_parry = at.accuracy_parry_description();
 		if (!accuracy_parry.empty())
