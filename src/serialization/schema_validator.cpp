@@ -529,7 +529,7 @@ std::string schema_self_validator::current_path() const
 	return utils::join(path, "/");
 }
 
-bool schema_self_validator::reference::operator<(const reference& other)
+bool schema_self_validator::reference::operator<(const reference& other) const
 {
 	return std::make_tuple(file_, line_) < std::make_tuple(other.file_, other.line_);
 }

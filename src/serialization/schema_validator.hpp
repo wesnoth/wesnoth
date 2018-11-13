@@ -172,7 +172,7 @@ private:
 		int line_;
 		bool match(const std::set<std::string>& with);
 		bool can_find(const wml_tag& root, const config& cfg);
-		bool operator<(const reference& other);
+		bool operator<(const reference& other) const;
 	};
 	std::string current_path() const;
 	std::set<std::string> defined_types_, defined_tag_paths_;
