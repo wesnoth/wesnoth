@@ -1278,6 +1278,12 @@ void game::process_whiteboard(simple_wml::document& data, const socket_ptr& user
 	if(!started_ || !is_player(user)) {
 		return;
 	}
+	// Out of sync erros were observed when processing whiteboard data on older clients, see #3717.
+	// Lets hope his will be fixed in 1.14.6 .
+	static version_info min_ver_wb("1.14.6");
+	if(get_player_versions().oldest < min_ver_wb) {
+		return;
+	}
 
 	const simple_wml::node& wb_node = *data.child("whiteboard");
 
