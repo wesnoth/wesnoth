@@ -40,6 +40,8 @@
    * Game Load screen gracefully handles savefiles that can't be parsed. (issue #3652)
    * The sidebar now shows alignment and damages as they would be on the hex under
      the mouse, rather than at the unit's current location. (PR #3642)
+   * When a unit has multiple statuses (slowed/poisoned/invisible/etc), the
+     sidebar shows all of them, not just the first. (issue #3197)
 
 ## Version 1.14.5
  ### AI
