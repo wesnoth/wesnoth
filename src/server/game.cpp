@@ -123,6 +123,7 @@ game::game(player_connections& player_connections,
 	, replay_save_path_(replay_save_path)
 	, rng_()
 	, last_choice_request_id_(-1) /* or maybe 0 ? it shouldn't matter*/
+	, player_versions_(boost::none)
 {
 	assert(owner_);
 	players_.push_back(owner_);
@@ -452,6 +453,7 @@ void game::reset_sides()
 
 void game::update_side_data()
 {
+	player_versions_ = boost::none;
 	// Added by iceiceice: since level_ will now reflect how an observer views the replay start
 	// position and not the current position, the sides_, side_controllers_, players_ info should
 	// not be updated from the level_ after the game has started. Controller changes are now stored
@@ -524,6 +526,7 @@ void game::update_side_data()
 
 void game::transfer_side_control(const socket_ptr& sock, const simple_wml::node& cfg)
 {
+	player_versions_ = boost::none;
 	DBG_GAME << "transfer_side_control...\n";
 
 	if(!is_player(sock) && sock != owner_) {
@@ -621,6 +624,7 @@ void game::transfer_side_control(const socket_ptr& sock, const simple_wml::node&
 void game::change_controller(
 		const size_t side_index, const socket_ptr& sock, const std::string& player_name, const bool player_left)
 {
+	player_versions_ = boost::none;
 	DBG_GAME << __func__ << "...\n";
 
 	const std::string& side = lexical_cast_default<std::string, size_t>(side_index + 1);
@@ -1377,6 +1381,7 @@ void game::update_turn_data()
 //      maybe return a string with an error message.
 bool game::add_player(const socket_ptr& player, bool observer)
 {
+	player_versions_ = boost::none;
 	if(is_member(player)) {
 		ERR_GAME << "ERROR: Player is already in this game. (socket: " << player << ")\n";
 		return false;
@@ -1461,6 +1466,7 @@ bool game::add_player(const socket_ptr& player, bool observer)
 
 bool game::remove_player(const socket_ptr& player, const bool disconnect, const bool destruct)
 {
+	player_versions_ = boost::none;
 	if(!is_member(player)) {
 		ERR_GAME << "ERROR: User is not in this game. (socket: " << player << ")\n";
 		return false;
@@ -2036,5 +2042,25 @@ void game::send_server_message(const char* message, const socket_ptr& sock, simp
 	if(sock) {
 		send_to_player(sock, doc);
 	}
+}
+const game::version_range& game::get_player_versions() const
+{
+	if(!player_versions_) {
+		for(const socket_ptr& user_ptr : all_game_users()) {
+			const auto pl = player_connections_.find(user_ptr);
+			if(pl != player_connections_.end()) {
+				version_info ver(pl->info().version());
+				if(player_versions_) {
+					player_versions_->oldest = std::min(player_versions_->oldest, ver);
+					player_versions_->newest = std::max(player_versions_->newest, ver);
+				}
+				else {
+					player_versions_ = version_range{ver, ver};
+				}
+			}
+		}
+	}
+	assert(player_versions_);
+	return *player_versions_;
 }
 } // namespace wesnothd
