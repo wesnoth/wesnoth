@@ -1277,6 +1277,11 @@ void game::process_whiteboard(simple_wml::document& data, const socket_ptr& user
 	if(!started_ || !is_player(user)) {
 		return;
 	}
+	//oos were observed when processing whiteboard data on older clients see #3717
+	static version_info min_ver_wb("1.14.6");
+	if(get_player_versions().oldest < min_ver_wb) {
+		return;
+	}
 
 	const simple_wml::node& wb_node = *data.child("whiteboard");
 
