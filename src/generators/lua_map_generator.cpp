@@ -28,7 +28,6 @@ lua_map_generator::lua_map_generator(const config & cfg, const config* vars)
 	, create_scenario_(cfg["create_scenario"])
 	, lk_(vars)
 	, generator_data_(cfg)
-	, vars_(vars)
 {
 	lk_.load_core();
 	const char* required[] {"id", "config_name", "create_map"};

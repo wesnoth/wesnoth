@@ -47,5 +47,4 @@ private:
 	mapgen_lua_kernel lk_;
 
 	config generator_data_;
-	const config* vars_;
 };
