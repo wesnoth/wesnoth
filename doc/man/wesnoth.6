@@ -104,6 +104,11 @@ information about command mode).
 .B --debug-lua
 enables some Lua debugging mechanisms
 .TP
+.BI -D,--diff \ left-file \  right-file
+diffs the two WML files; does not preprocess them first (to do that, run them through
+.B -p
+first). Outputs the diff as DiffWML on standard output.
+.TP
 .BI -e[ file ],\ --editor[ =file ]
 start the in-game map editor directly. If
 .I file
@@ -238,6 +243,10 @@ when connecting to a server, ignoring other preferences. Unsafe.
 which defines a Wesnoth plugin. Similar to
 .BR --script ,
 but Lua file should return a function which will be run as a coroutine and periodically woken up with updates.
+.TP
+.BI -P,--patch \ base-file \  patch-file
+applies a DiffWML patch to a WML file; does not preprocess either of the files.
+Outputs the patched WML to standard output.
 .TP
 .BI -p,\ --preprocess \ source-file/folder \  target-directory
 preprocesses a specified file/folder. For each file(s) a plain .cfg file and a processed .cfg
