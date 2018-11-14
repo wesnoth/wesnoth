@@ -176,7 +176,6 @@ def main():
         fdebug = open('debug.txt', 'w', encoding='utf-8')
     pywmlx.statemachine.setup(sentlist, args.initdom, args.domain,
                               args.warnall, fdebug)
-    filelist = None
     if args.recursive is False and args.filelist is None:
         pywmlx.wmlerr("bad command line", "FILELIST must not be empty. "
                "Please, run wmlxgettext again and, this time, add some file "
