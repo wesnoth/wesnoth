@@ -215,6 +215,9 @@ public:
 	boost::optional<std::string> validate_wml;
 	/// Non-empty if --use-schema was given on the command line. Specifies the schema for use with --validate.
 	boost::optional<std::string> validate_with;
+	bool do_diff, do_patch;
+	/// Files for diffing or patching
+	std::string diff_left, diff_right;
 	/// True if --version was given on the command line. Prints version and exits.
 	bool version;
 	/// True if --report was given on the command line. Prints a bug report-style info dump and exits.

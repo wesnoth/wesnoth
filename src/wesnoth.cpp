@@ -503,6 +503,29 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		validator.set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
 		return handle_validate_command(*cmdline_opts.validate_schema, validator, {});
 	}
+	
+	if(cmdline_opts.do_diff) {
+		config left, right;
+		std::ifstream in_left(cmdline_opts.diff_left);
+		std::ifstream in_right(cmdline_opts.diff_right);
+		read(left, in_left);
+		read(right, in_right);
+		config_writer out(std::cout, compression::format::NONE);
+		out.write(right.get_diff(left));
+		return 0;
+	}
+	
+	if(cmdline_opts.do_patch) {
+		config base, diff;
+		std::ifstream in_base(cmdline_opts.diff_left);
+		std::ifstream in_diff(cmdline_opts.diff_right);
+		read(base, in_base);
+		read(diff, in_diff);
+		base.apply_diff(diff);
+		config_writer out(std::cout, compression::format::NONE);
+		out.write(base);
+		return 0;
+	}
 
 	// Options changing their behavior dependent on some others should be checked below.
 
@@ -1036,6 +1059,8 @@ int main(int argc, char** argv)
 		   args[k] == "-R" ||
 		   args[k] == "--screenshot" ||
 		   args[k] == "--data-path" ||
+		   args[k] == "--diff" ||
+		   args[k] == "--patch" ||
 		   args[k] == "--userdata-path" ||
 		   args[k] == "--userconfig-path" ||
 		   args[k].compare(0, 11, "--validate=") == 0  ||

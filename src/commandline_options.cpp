@@ -144,6 +144,10 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	validate_schema(),
 	validate_wml(),
 	validate_with(),
+	do_diff(),
+	do_patch(),
+	diff_left(),
+	diff_right(),
 	version(false),
 	report(false),
 	windowed(false),
@@ -282,6 +286,8 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("validate-addon", po::value<std::string>(), "validate the specified addon's WML against the schema")
 		("validate-core", "validate the core WML against the schema")
 		("validate-schema", po::value<std::string>(), "validate a specified WML schema")
+		("diff,D", po::value<two_strings>()->multitoken(), "diff two preprocessed WML documents")
+		("patch,P", po::value<two_strings>()->multitoken(), "apply a patch to a preprocessed WML document")
 		;
 
 	po::options_description preprocessor_opts("Preprocessor mode options");
@@ -428,6 +434,18 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		preprocess = true;
 		preprocess_path = vm["preprocess"].as<two_strings>().first;
 		preprocess_target = vm["preprocess"].as<two_strings>().second;
+	}
+	if (vm.count("diff"))
+	{
+		do_diff = true;
+		diff_left = vm["diff"].as<two_strings>().first;
+		diff_right = vm["diff"].as<two_strings>().second;
+	}
+	if (vm.count("patch"))
+	{
+		do_patch = true;
+		diff_left = vm["patch"].as<two_strings>().first;
+		diff_right = vm["patch"].as<two_strings>().second;
 	}
 	if (vm.count("preprocess-defines"))
 		preprocess_defines = utils::split(vm["preprocess-defines"].as<std::string>(), ',');
