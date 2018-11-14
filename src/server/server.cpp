@@ -1353,12 +1353,6 @@ void server::handle_create_game(socket_ptr socket, simple_wml::node& create_game
 	player_connections_.modify(
 		player_connections_.find(socket), std::bind(&server::create_game, this, _1, std::ref(create_game)));
 
-	simple_wml::document diff;
-	if(make_change_diff(games_and_users_list_.root(), nullptr, "user",
-			   player_connections_.find(socket)->info().config_address(), diff)) {
-		send_to_lobby(diff);
-	}
-
 	return;
 }
 
@@ -1603,6 +1597,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		// Send the update of the game description to the lobby.
 		simple_wml::document diff;
 		make_add_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", diff);
+		make_change_diff(games_and_users_list_.root(), nullptr, "user", player_connections_.find(socket)->info().config_address(), diff);
 
 		send_to_lobby(diff);
 
