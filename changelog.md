@@ -15,13 +15,15 @@
      * S2: Wolf riders are not initially recruited, to not hinder the player
        from reaching the island in time
  ### Language and i18n
-   * Updated translations: Chinese (Traditional), French, Italian, Spanish.
+   * Updated translations: Chinese (Traditional), French, German, Italian,
+     Spanish.
  ### Lua API
    * Fix wesnoth.set_dialog_value not triggering re-layout. (issue #3572)
  ### Miscellaneous and bug fixes
    * Fix crash with custom themes on desktop PCs. (issue #3599)
    * Add --campaign-skip-story command line switch for skipping directly to turn 1. (issue #3472)
    * Fix documentation of --render-image command line switch. (issue #3568)
+   * Update manpage with options previously only documented by wesnoth --help.
    * Fix wrong ordering for BW / BF years, for example in Play a Campaign when sorted by date. (issue #3187)
    * GUI.pyw can now terminate a running maintenance script
  ### Multiplayer server
