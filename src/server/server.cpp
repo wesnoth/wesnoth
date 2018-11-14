@@ -1600,8 +1600,6 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		g.update_side_data();
 		g.describe_slots();
 
-		assert(games_and_users_list_.child("gamelist")->children("game").empty() == false);
-
 		// Send the update of the game description to the lobby.
 		simple_wml::document diff;
 		make_add_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", diff);
