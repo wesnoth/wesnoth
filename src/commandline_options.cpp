@@ -279,11 +279,11 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("log-strict", po::value<std::string>(), "sets the strict level of the logger. any messages sent to log domains of this level or more severe will cause the unit test to fail regardless of the victory result.")
 		("noreplaycheck", "don't try to validate replay of unit test.")
 		("mp-test", "load the test mp scenarios.")
-		("use-schema,S", "specify a schema to validate WML against (defaults to the core schema)")
-		("validate,V", "validate a specified WML file against a schema")
-		("validate-addon", "validate the specified addon's WML against the schema")
+		("use-schema,S", po::value<std::string>(), "specify a schema to validate WML against (defaults to the core schema)")
+		("validate,V", po::value<std::string>(), "validate a specified WML file against a schema")
+		("validate-addon", po::value<std::string>(), "validate the specified addon's WML against the schema")
 		("validate-core", "validate the core WML against the schema")
-		("validate-schema", "validate a specified WML schema")
+		("validate-schema", po::value<std::string>(), "validate a specified WML schema")
 		;
 
 	po::options_description preprocessor_opts("Preprocessor mode options");
