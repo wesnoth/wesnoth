@@ -331,18 +331,6 @@ public:
 	bool add_ai_for_side_from_config(side_number side, const config &cfg, bool replace = true);
 
 
-	/**
-	 * Adds active AI for specified @a side from parameters.
-	 * @note Running this command may invalidate references previously returned
-	 *       by manager. AI is not initialized at this point.
-	 * @param side side number (1-based, as in game_info).
-	 * @param ai_algorithm_type type of AI algorithm to create.
-	 * @param replace should new ai replace the current ai or 'be placed on top of it'.
-	 * @return true if successful.
-	 */
-	bool add_ai_for_side( side_number side, const std::string& ai_algorithm_type, bool replace = true);
-
-
 	// =======================================================================
 	// REMOVE
 	// =======================================================================

@@ -631,20 +631,6 @@ bool manager::add_ai_for_side_from_config( side_number side, const config& cfg, 
 }
 
 
-///@todo 1.9 add error reporting
-bool manager::add_ai_for_side( side_number side, const std::string& ai_algorithm_type, bool replace )
-{
-	if (replace) {
-		remove_ai_for_side (side);
-	}
-	config cfg;
-	cfg["ai_algorithm"] = ai_algorithm_type;
-	std::stack<holder>& ai_stack_for_specific_side = get_or_create_ai_stack_for_side(side);
-	ai_stack_for_specific_side.emplace(side, cfg);
-	return true;
-}
-
-
 // =======================================================================
 // REMOVE
 // =======================================================================
