@@ -188,9 +188,6 @@ static register_aspect_factory< composite_aspect< unit_advancements_aspect >>
 static register_aspect_factory< composite_aspect<double>>
 	aggression__composite_aspect_factory("aggression*composite_aspect");
 
-static register_aspect_factory< composite_aspect<int>>
-	attack_depth__composite_aspect_factory("attack_depth*composite_aspect");
-
 static register_aspect_factory< composite_aspect< attacks_vector >>
 	attacks__composite_aspect_factory("attacks*composite_aspect");
 
@@ -261,9 +258,6 @@ static register_aspect_factory< standard_aspect< unit_advancements_aspect >>
 
 static register_aspect_factory< standard_aspect<double>>
 	aggression__standard_aspect_factory("aggression*standard_aspect");
-
-static register_aspect_factory< standard_aspect<int>>
-	attack_depth__standard_aspect_factory("attack_depth*standard_aspect");
 
 static register_aspect_factory< ai_default_rca::aspect_attacks >
 	attacks__testing_ai_default_aspect_attacks_factory("attacks*ai_default_rca::aspect_attacks");
@@ -340,9 +334,6 @@ static register_aspect_factory< standard_aspect< unit_advancements_aspect >>
 static register_aspect_factory< standard_aspect<double>>
 	aggression__standard_aspect_factory2("aggression*");
 
-static register_aspect_factory< standard_aspect<int>>
-	attack_depth__standard_aspect_factory2("attack_depth*");
-
 static register_aspect_factory< ai_default_rca::aspect_attacks >
 	attacks__testing_ai_default_aspect_attacks_factory2("attacks*");
 
@@ -413,9 +404,6 @@ static register_lua_aspect_factory< lua_aspect< unit_advancements_aspect >>
 
 static register_lua_aspect_factory< lua_aspect<double>>
 	aggression__lua_aspect_factory("aggression*lua_aspect");
-
-static register_lua_aspect_factory< lua_aspect<int>>
-	attack_depth__lua_aspect_factory("attack_depth*lua_aspect");
 
 static register_lua_aspect_factory< aspect_attacks_lua >
 	attacks__lua_aspect_factory("attacks*lua_aspect");

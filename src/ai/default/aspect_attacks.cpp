@@ -142,7 +142,6 @@ void aspect_attacks_base::do_attack_analysis(
 	ai::manager::get_singleton().raise_user_interact();
 	const int default_attack_depth = 5;
 	if(cur_analysis.movements.size() >= std::size_t(default_attack_depth)) {
-		//std::cerr << "ANALYSIS " << cur_analysis.movements.size() << " >= " << get_attack_depth() << "\n";
 		return;
 	}
 	const gamemap &map_ = resources::gameboard->map();

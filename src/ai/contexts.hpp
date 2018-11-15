@@ -214,9 +214,6 @@ public:
 	virtual double get_aggression() const = 0;
 
 
-	virtual int get_attack_depth() const = 0;
-
-
 	virtual const aspect_map& get_aspects() const = 0;
 
 
@@ -629,12 +626,6 @@ public:
 	virtual double get_aggression() const override
 	{
 		return target_->get_aggression();
-	}
-
-
-	virtual int get_attack_depth() const override
-	{
-		return target_->get_attack_depth();
 	}
 
 
@@ -1306,9 +1297,6 @@ public:
 	virtual double get_aggression() const override;
 
 
-	virtual int get_attack_depth() const override;
-
-
 	virtual const aspect_map& get_aspects() const override;
 
 
@@ -1490,7 +1478,6 @@ private:
 
 	typesafe_aspect_ptr<unit_advancements_aspect> advancements_;
 	typesafe_aspect_ptr<double> aggression_;
-	typesafe_aspect_ptr<int> attack_depth_;
 	aspect_map aspects_;
 	typesafe_aspect_ptr<attacks_vector> attacks_;
 	mutable typesafe_aspect_ptr<terrain_filter> avoid_;

@@ -237,7 +237,6 @@ const std::string holder::get_ai_overview()
 	std::stringstream s;
 	s << "advancements:  " << this->ai_->get_advancements().get_value() << std::endl;
 	s << "aggression:  " << this->ai_->get_aggression() << std::endl;
-	s << "attack_depth:  " << this->ai_->get_attack_depth() << std::endl;
 	s << "caution:  " << this->ai_->get_caution() << std::endl;
 	s << "grouping:  " << this->ai_->get_grouping() << std::endl;
 	s << "leader_aggression:  " << this->ai_->get_leader_aggression() << std::endl;

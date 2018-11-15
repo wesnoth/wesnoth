@@ -183,7 +183,6 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		known_aspects_(),
 		advancements_(),
 		aggression_(),
-		attack_depth_(),
 		aspects_(),
 		attacks_(),
 		avoid_(),
@@ -228,7 +227,6 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 
 		add_known_aspect("advancements", advancements_);
 		add_known_aspect("aggression",aggression_);
-		add_known_aspect("attack_depth",attack_depth_);
 		add_known_aspect("attacks",attacks_);
 		add_known_aspect("avoid",avoid_);
 		add_known_aspect("caution",caution_);
@@ -538,15 +536,6 @@ double readonly_context_impl::get_aggression() const
 		return aggression_->get();
 	}
 	return 0;
-}
-
-
-int readonly_context_impl::get_attack_depth() const
-{
-	if (attack_depth_) {
-		return std::max<int>(1,attack_depth_->get()); ///@todo 1.9: add validators, such as minmax filters to aspects
-	}
-	return 1;
 }
 
 
