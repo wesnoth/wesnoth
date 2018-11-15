@@ -11,6 +11,8 @@
 		46181DCF2119F73A00908BC2 /* apple_battery_info.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46181DCE2119F73A00908BC2 /* apple_battery_info.mm */; };
 		46181DD22119F74D00908BC2 /* battery_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46181DD12119F74C00908BC2 /* battery_info.cpp */; };
 		461CE967205C3A8700E6E98F /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
+		4621074B219DBFEF004FEBE7 /* schema in Resources */ = {isa = PBXBuildFile; fileRef = 4621074A219DBFEE004FEBE7 /* schema */; };
+		4621074C219DC03C004FEBE7 /* schema in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 4621074A219DBFEE004FEBE7 /* schema */; };
 		463896712034180900075E54 /* deprecation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 463896702034180900075E54 /* deprecation.cpp */; };
 		463896722034180900075E54 /* deprecation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 463896702034180900075E54 /* deprecation.cpp */; };
 		4649B87A202886F000827CFB /* test_irdya_date.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4649B879202886F000827CFB /* test_irdya_date.cpp */; };
@@ -1368,6 +1370,7 @@
 			dstPath = data;
 			dstSubfolderSpec = 7;
 			files = (
+				4621074C219DC03C004FEBE7 /* schema in Copy Data Files */,
 				91273E8F1C7BF1D7005E7F81 /* _main.cfg in Copy Data Files */,
 				91273E901C7BF1D7005E7F81 /* advanced_preferences.cfg in Copy Data Files */,
 				91273E911C7BF1D7005E7F81 /* ai in Copy Data Files */,
@@ -1457,6 +1460,7 @@
 		46181DCE2119F73A00908BC2 /* apple_battery_info.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = apple_battery_info.mm; path = ../../src/desktop/apple_battery_info.mm; sourceTree = "<group>"; };
 		46181DD02119F74C00908BC2 /* battery_info.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = battery_info.hpp; sourceTree = "<group>"; };
 		46181DD12119F74C00908BC2 /* battery_info.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = battery_info.cpp; sourceTree = "<group>"; };
+		4621074A219DBFEE004FEBE7 /* schema */ = {isa = PBXFileReference; lastKnownFileType = folder; path = schema; sourceTree = "<group>"; };
 		4638966F2034180800075E54 /* deprecation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = deprecation.hpp; sourceTree = "<group>"; };
 		463896702034180900075E54 /* deprecation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = deprecation.cpp; sourceTree = "<group>"; };
 		4649B879202886F000827CFB /* test_irdya_date.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_irdya_date.cpp; sourceTree = "<group>"; };
@@ -3975,6 +3979,7 @@
 				91273E851C7BF1C3005E7F81 /* scenario-movethrough.cfg */,
 				46BED4D92050710800842FA5 /* scenario-story.cfg */,
 				91273E871C7BF1C3005E7F81 /* scenario-test.cfg */,
+				4621074A219DBFEE004FEBE7 /* schema */,
 				91273E8A1C7BF1C4005E7F81 /* shaders */,
 				91273E8B1C7BF1C4005E7F81 /* test */,
 				91273E8C1C7BF1C4005E7F81 /* themes */,
@@ -4944,6 +4949,7 @@
 				B5F9C5950F93BB0B00C02205 /* InfoPlist.strings in Resources */,
 				B5BB6EFE0F93B83500444FBF /* SDLMain.nib in Resources */,
 				B5A9B22C0ECA4074002BE442 /* sounds in Resources */,
+				4621074B219DBFEF004FEBE7 /* schema in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
