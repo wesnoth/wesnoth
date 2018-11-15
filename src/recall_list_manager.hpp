@@ -64,6 +64,4 @@ public:
 
 private:
 	std::vector<unit_ptr > recall_list_; //!< The underlying data struture. TODO: Should this be a map based on underlying id instead?
-
-	friend class ai::readonly_context_impl; //!< Friend AI module for ease of implementation there.
 };

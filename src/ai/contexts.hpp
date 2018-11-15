@@ -294,9 +294,6 @@ public:
 	virtual const moves_map& get_possible_moves() const = 0;
 
 
-	virtual const std::vector<unit_ptr>& get_recall_list() const = 0;
-
-
 	virtual double get_recruitment_diversity() const = 0;
 
 
@@ -797,12 +794,6 @@ public:
 	virtual double power_projection(const map_location& loc, const move_map& dstsrc) const override
 	{
 		return target_->power_projection(loc,dstsrc);
-	}
-
-
-	virtual const std::vector<unit_ptr>& get_recall_list() const override
-	{
-		return target_->get_recall_list();
 	}
 
 
@@ -1385,9 +1376,6 @@ public:
 
 
 	virtual const moves_map& get_possible_moves() const override;
-
-
-	virtual const std::vector<unit_ptr>& get_recall_list() const override;
 
 
 	virtual double get_recruitment_diversity() const override;

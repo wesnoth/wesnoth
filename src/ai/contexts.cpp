@@ -40,7 +40,6 @@
 #include "log.hpp"                   // for LOG_STREAM, logger, etc
 #include "map/map.hpp"                   // for gamemap
 #include "pathfind/pathfind.hpp"        // for paths::dest_vect, paths, etc
-#include "recall_list_manager.hpp"   // for recall_list_manager
 #include "resources.hpp"             // for units, gameboard, etc
 #include "serialization/string_utils.hpp"  // for split, etc
 #include "team.hpp"                     // for team
@@ -769,13 +768,6 @@ const moves_map& readonly_context_impl::get_possible_moves() const
 		recalculate_move_maps();
 	}
 	return possible_moves_;
-}
-
-
-const std::vector<unit_ptr>& readonly_context_impl::get_recall_list() const
-{
-	///@todo 1.9: check for (level_["disallow_recall"]))
-	return current_team().recall_list().recall_list_; //TODO: Refactor ai so that friend of ai context is not required of recall_list_manager at this line
 }
 
 
