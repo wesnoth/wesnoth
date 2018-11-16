@@ -63,7 +63,7 @@ public:
 
 	bool can_start_game() const;
 	void start_game();
-	void start_game_commandline(const commandline_options& cmdline_opts);
+	void start_game_commandline(const commandline_options& cmdline_opts, const config& game_config);
 
 	void leave_game();
 

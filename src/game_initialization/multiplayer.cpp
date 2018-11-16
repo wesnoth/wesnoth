@@ -763,7 +763,7 @@ void start_local_game_commandline(const config& game_config, saved_game& state, 
 		ng::connect_engine_ptr connect_engine(new ng::connect_engine(state, true, nullptr));
 
 		// Update the parameters to reflect game start conditions
-		connect_engine->start_game_commandline(cmdline_opts);
+		connect_engine->start_game_commandline(cmdline_opts, game_config);
 	}
 
 	if(resources::recorder && cmdline_opts.multiplayer_label) {
