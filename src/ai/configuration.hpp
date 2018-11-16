@@ -120,6 +120,7 @@ private:
 	static description_map era_ai_configurations_;
 	static description_map mod_ai_configurations_;
 	static config default_config_;
+	static std::string default_ai_algorithm_;
 
 };
 
