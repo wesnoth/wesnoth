@@ -119,8 +119,4 @@ local methods = {
 	place_halo = wesnoth.deprecate_api('items.place_halo', 'wesnoth.interface.add_item_halo', 1, nil, wesnoth.interface.add_item_halo)
 }
 
-wesnoth.interface.remove_item = methods.remove
-wesnoth.interface.add_item_image = methods.place_image
-wesnoth.interface.add_item_halo = methods.place_halo
-
 return methods
