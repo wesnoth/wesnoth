@@ -816,7 +816,7 @@ void unit_healing(unit &healed, const std::vector<unit *> &healers, int healing,
 	animator.set_all_standing();
 }
 	
-	void unit_harming(unit &harmed, const std::vector<unit *> &harmers, int harming,
+void unit_harming(unit &harmed, const std::vector<unit *> &harmers, int harming,
                   const std::string & extra_text)
 {
 	game_display* disp = game_display::get_singleton();
