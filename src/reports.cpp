@@ -1095,15 +1095,10 @@ REPORT_GENERATOR(unit_profile, rc)
 	return image_report(u->small_profile());
 }
 
-REPORT_GENERATOR(tod_stats, rc)
+static config tod_stats_at(reports::context & rc, const map_location& hex)
 {
 	std::ostringstream tooltip;
 	std::ostringstream text;
-
-	const map_location& selected_hex = rc.screen().selected_hex();
-	const map_location& mouseover_hex = rc.screen().mouseover_hex();
-
-	const map_location& hex = mouseover_hex.valid() ? mouseover_hex : selected_hex;
 
 	const map_location& tod_schedule_hex = display::get_singleton()->shrouded(hex) ? map_location::null_location() : hex;
 	const std::vector<time_of_day>& schedule = rc.tod().times(tod_schedule_hex);
@@ -1121,6 +1116,13 @@ REPORT_GENERATOR(tod_stats, rc)
 	text << current + 1 << "/" << times;
 
 	return text_report(text.str(), tooltip.str(), "..schedule");
+}
+
+REPORT_GENERATOR(tod_stats, rc)
+{
+	map_location mouseover_hex = rc.screen().mouseover_hex();
+	if (mouseover_hex.valid()) return tod_stats_at(rc, mouseover_hex);
+	return tod_stats_at(rc, rc.screen().selected_hex());
 }
 
 static config time_of_day_at(reports::context & rc, const map_location& mouseover_hex)
