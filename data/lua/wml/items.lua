@@ -103,24 +103,24 @@ function wml_actions.store_items(cfg)
 	end
 end
 
-wesnoth.intf.remove_item = remove_overlay
+wesnoth.interface.remove_item = remove_overlay
 
-function wesnoth.intf.add_item_image(x, y, name)
+function wesnoth.interface.add_item_image(x, y, name)
 	add_overlay(x, y, { x = x, y = y, image = name })
 end
 
-function wesnoth.intf.add_item_halo(x, y, name)
+function wesnoth.interface.add_item_halo(x, y, name)
 	add_overlay(x, y, { x = x, y = y, halo = name })
 end
 
-wesnoth.intf.remove_item = methods.remove
-wesnoth.intf.add_item_image = methods.place_image
-wesnoth.intf.add_item_halo = methods.place_halo
-
 local methods = {
-	remove = wesnoth.deprecate_api('items.remove', 'wesnoth.intf.remove_item', 1, nil, remove_overlay),
-	place_image = wesnoth.deprecate_api('items.place_image', 'wesnoth.intf.add_item_image', 1, nil, wesnoth.intf.add_item_image),
-	place_halo = wesnoth.deprecate_api('items.place_halo', 'wesnoth.intf.add_item_halo', 1, nil, wesnoth.intf.add_item_halo)
+	remove = wesnoth.deprecate_api('items.remove', 'wesnoth.interface.remove_item', 1, nil, remove_overlay),
+	place_image = wesnoth.deprecate_api('items.place_image', 'wesnoth.interface.add_item_image', 1, nil, wesnoth.interface.add_item_image),
+	place_halo = wesnoth.deprecate_api('items.place_halo', 'wesnoth.interface.add_item_halo', 1, nil, wesnoth.interface.add_item_halo)
 }
+
+wesnoth.interface.remove_item = methods.remove
+wesnoth.interface.add_item_image = methods.place_image
+wesnoth.interface.add_item_halo = methods.place_halo
 
 return methods

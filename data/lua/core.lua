@@ -394,7 +394,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		end
 		return result
 	end
-	
+
 	-- More convenient when accessing global variables
 	wml.array_variables = setmetatable({}, {
 		__metatable = "WML variables",
@@ -413,7 +413,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 			return t[k]
 		end
 	})
-	
+
 	-- Note: We don't save the old on_load and on_save here.
 	-- It's not necessary because we know this will be the first one registered.
 	function wesnoth.game_events.on_load(cfg)
@@ -445,6 +445,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 			end
 		end
 		return data_to_save
+	end
 
 	--[========[Game Interface Control]========]
 
@@ -589,7 +590,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.select_unit = wesnoth.deprecate_api('wesnoth.select_unit', 'wesnoth.interface.select_unit', 1, nil, wesnoth.interface.select_unit)
 	wesnoth.highlight_hex = wesnoth.deprecate_api('wesnoth.highlight_hex', 'wesnoth.interface.highlight_hex', 1, nil, wesnoth.interface.highlight_hex)
 	wesnoth.deselect_hex = wesnoth.deprecate_api('wesnoth.deselect_hex', 'wesnoth.interface.deselect_hex', 1, nil, wesnoth.interface.deselect_hex)
-	wesnoth.get_selected_tile = wesnoth.deprecate_api('wesnoth.get_selected_tile', 'wesnoth.interface.get_selected_hex', 1, nil, wesnoth.interface.get_selected_)
+	wesnoth.get_selected_tile = wesnoth.deprecate_api('wesnoth.get_selected_tile', 'wesnoth.interface.get_selected_hex', 1, nil, wesnoth.interface.get_selected_hex)
 	wesnoth.scroll_to_tile = wesnoth.deprecate_api('wesnoth.scroll_to_tile', 'wesnot.interface.scroll_to_hex', 1, nil, wesnoth.interface.scroll_to_hex)
 	wesnoth.lock_view = wesnoth.deprecate_api('wesnoth.lock_view', 'wesnoth.interface.lock', 1, nil, wesnoth.interface.lock)
 	wesnoth.view_locked = wesnoth.deprecate_api('wesnoth.view_locked', 'wesnoth.interface.is_locked', 1, nil, wesnoth.interface.is_locked)
