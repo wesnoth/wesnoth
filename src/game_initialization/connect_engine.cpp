@@ -508,7 +508,7 @@ void connect_engine::start_game()
 	send_to_server(config("start_game"));
 }
 
-void connect_engine::start_game_commandline(const commandline_options& cmdline_opts)
+void connect_engine::start_game_commandline(const commandline_options& cmdline_opts, const config& game_config)
 {
 	DBG_MP << "starting a new game in commandline mode" << std::endl;
 
@@ -550,9 +550,10 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 			}
 		}
 
-		// Set AI algorithm to RCA AI for all sides,
+		// Set AI algorithm to default for all sides,
 		// then override if commandline option was given.
-		side->set_ai_algorithm("ai_default_rca");
+		std::string ai_algorithm = game_config.child("ais")["default_ai_algorithm"].str();
+		side->set_ai_algorithm(ai_algorithm);
 		if(cmdline_opts.multiplayer_algorithm) {
 			for(const mp_option& option : *cmdline_opts.multiplayer_algorithm) {
 
