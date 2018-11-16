@@ -33,6 +33,11 @@ static std::string get_heal_sound(const config& cfg)
 	return cfg["healed_sound"].empty() ? "heal.wav" : cfg["healed_sound"].str();
 }
 
+static std::string get_harm_sound(const config& cfg)
+{
+	return cfg["harmed_sound"].empty() ? "poison.ogg" : cfg["harmed_sound"].str();
+}
+
 struct animation_branch
 {
 	animation_branch()
@@ -594,6 +599,17 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 		const std::string healed_sound = get_heal_sound(cfg);
 
 		animations.back().sub_anims_["_healed_sound"].add_frame(1, frame_builder().sound(healed_sound), true);
+		
+		animations.push_back(base);
+		animations.back().event_ = { "harming" };
+
+		animations.push_back(base);
+		animations.back().event_ = { "harmed" };
+		animations.back().unit_anim_.override(0, 300, particle::NO_CYCLE, "", "0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30", {0,255,0});
+
+		const std::string harmed_sound = get_harm_sound(cfg);
+
+		animations.back().sub_anims_["_harmed_sound"].add_frame(1, frame_builder().sound(harmed_sound), true);
 
 		animations.push_back(base);
 		animations.back().event_ = { "poisoned" };
