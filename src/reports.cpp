@@ -1100,7 +1100,7 @@ static config tod_stats_at(reports::context & rc, const map_location& hex)
 	std::ostringstream tooltip;
 	std::ostringstream text;
 
-	const map_location& tod_schedule_hex = display::get_singleton()->shrouded(hex) ? map_location::null_location() : hex;
+	const map_location& tod_schedule_hex = (hex.valid() && !display::get_singleton()->shrouded(hex)) ? hex : map_location::null_location();
 	const std::vector<time_of_day>& schedule = rc.tod().times(tod_schedule_hex);
 
 	int current = rc.tod().get_current_time(tod_schedule_hex);
@@ -1117,12 +1117,20 @@ static config tod_stats_at(reports::context & rc, const map_location& hex)
 
 	return text_report(text.str(), tooltip.str(), "..schedule");
 }
-
 REPORT_GENERATOR(tod_stats, rc)
 {
 	map_location mouseover_hex = rc.screen().mouseover_hex();
 	if (mouseover_hex.valid()) return tod_stats_at(rc, mouseover_hex);
 	return tod_stats_at(rc, rc.screen().selected_hex());
+}
+REPORT_GENERATOR(selected_tod_stats, rc)
+{
+	const unit *u = get_selected_unit(rc);
+	if(!u) return tod_stats_at(rc, map_location::null_location());
+	const map_location& attack_indicator_src = game_display::get_singleton()->get_attack_indicator_src();
+	const map_location& hex =
+		attack_indicator_src.valid() ? attack_indicator_src : u->get_location();
+	return tod_stats_at(rc, hex);
 }
 
 static config time_of_day_at(reports::context & rc, const map_location& mouseover_hex)
@@ -1166,6 +1174,15 @@ REPORT_GENERATOR(time_of_day, rc)
 	map_location mouseover_hex = rc.screen().mouseover_hex();
 	if (mouseover_hex.valid()) return time_of_day_at(rc, mouseover_hex);
 	return time_of_day_at(rc, rc.screen().selected_hex());
+}
+REPORT_GENERATOR(selected_time_of_day, rc)
+{
+	const unit *u = get_selected_unit(rc);
+	if(!u) return time_of_day_at(rc, map_location::null_location());
+	const map_location& attack_indicator_src = game_display::get_singleton()->get_attack_indicator_src();
+	const map_location& hex =
+		attack_indicator_src.valid() ? attack_indicator_src : u->get_location();
+	return time_of_day_at(rc, hex);
 }
 
 static config unit_box_at(reports::context & rc, const map_location& mouseover_hex)
