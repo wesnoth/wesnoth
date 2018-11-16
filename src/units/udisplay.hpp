@@ -129,4 +129,7 @@ void unit_recruited(const map_location& loc,
 void unit_healing(unit &healed, const std::vector<unit *> &healers, int healing,
                   const std::string & extra_text="");
 
+void unit_harming(unit &harmed, const std::vector<unit *> &harmers, int harming,
+                  const std::string & extra_text="");
+
 }
