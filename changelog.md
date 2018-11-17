@@ -1,13 +1,31 @@
 ## Version 1.14.5+dev
+ ### AI
+   * Fixed crash when the AI simulates a fight between two units which can slow but aren't yet slowed, then
+     simulates another fight for one of them in Monte Carlo mode (issue #3650).
+ ### Campaigns
+   * Descent Into Darkness:
+     * Allow converting L3 necromancers to liches from S12 onwards (issue #3165).
+     * Added an alternative method of completing the campaign (issue #3167).
+   * Northern Rebirth:
+     * Fix loyal units obtained in S7 costing upkeep (introduced in 1.14.5)
+     * S13: Improvement to the AIs
+   * The South Guard:
+     * Extensive text revisions
+   * Tutorial:
+     * S2: Wolf riders are not initially recruited, to not hinder the player
+       from reaching the island in time
  ### Language and i18n
-   * Updated translations: Chinese (Traditional), French, Italian, Spanish.
+   * Updated translations: Chinese (Traditional), French, German, Italian,
+     Spanish.
  ### Lua API
    * Fix wesnoth.set_dialog_value not triggering re-layout. (issue #3572)
  ### Miscellaneous and bug fixes
    * Fix crash with custom themes on desktop PCs. (issue #3599)
    * Add --campaign-skip-story command line switch for skipping directly to turn 1. (issue #3472)
    * Fix documentation of --render-image command line switch. (issue #3568)
+   * Update manpage with options previously only documented by wesnoth --help.
    * Fix wrong ordering for BW / BF years, for example in Play a Campaign when sorted by date. (issue #3187)
+   * GUI.pyw can now terminate a running maintenance script
  ### Multiplayer server
    * Fix stale temporary bans continuing to have an effect on players until cleared by
      phpBB on the next ban/unban operation.
@@ -19,6 +37,13 @@
    * When a recruited unit is fogged, scroll to the recruiting unit and play recruit
      animation. (issue #3577)
    * Fix line breaks in first statistics line in unit type pages in the help. (issue #3256)
+   * Don't scroll to an enemy unit that teleports to or from an invisible hex. (PR #3578)
+   * Don't show in the sidebar the time of day schedule of a shrouded hex. (PR #3638)
+   * Game Load screen gracefully handles savefiles that can't be parsed. (issue #3652)
+   * The sidebar now shows alignment and damages as they would be on the hex under
+     the mouse, rather than at the unit's current location. (PR #3642)
+   * When a unit has multiple statuses (slowed/poisoned/invisible/etc), the
+     sidebar shows all of them, not just the first. (issue #3197)
 
 ## Version 1.14.5
  ### AI

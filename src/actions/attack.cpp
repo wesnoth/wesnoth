@@ -189,7 +189,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 			resources::gameboard->units(), resources::gameboard->map(), u_loc, u.alignment(), u.is_fearless());
 
 	// Leadership bonus.
-	int leader_bonus = under_leadership(units, u_loc).first;
+	int leader_bonus = under_leadership(u, u_loc);
 	if(leader_bonus != 0) {
 		damage_multiplier += leader_bonus;
 	}
@@ -376,6 +376,24 @@ battle_context::battle_context(
 	
 	attacker_stats_.reset(new battle_context_unit_stats(attacker, a_loc, a_wep_index, true , defender, d_loc, d_wep, units));
 	defender_stats_.reset(new battle_context_unit_stats(defender, d_loc, d_wep_index, false, attacker, a_loc, a_wep, units));
+}
+
+battle_context::battle_context(battle_context&& other)
+	: attacker_stats_(std::move(other.attacker_stats_))
+	, defender_stats_(std::move(other.defender_stats_))
+	, attacker_combatant_(std::move(other.attacker_combatant_))
+	, defender_combatant_(std::move(other.defender_combatant_))
+{
+
+}
+
+battle_context& battle_context::operator=(battle_context&& other)
+{
+	attacker_stats_ = std::move(other.attacker_stats_);
+	defender_stats_ = std::move(other.defender_stats_);
+	attacker_combatant_ = std::move(other.attacker_combatant_);
+	defender_combatant_ = std::move(other.defender_combatant_);
+	return *this;
 }
 
 void battle_context::simulate(const combatant* prev_def)
@@ -1549,15 +1567,10 @@ void attack_unit_and_advance(const map_location& attacker,
 	}
 }
 
-std::pair<int, map_location> under_leadership(const unit_map& units, const map_location& loc)
+int under_leadership(const unit &u, const map_location& loc)
 {
-	const unit_map::const_iterator un = units.find(loc);
-	if(un == units.end()) {
-		return {0, map_location::null_location()};
-	}
-
-	unit_ability_list abil = un->get_abilities("leadership");
-	return abil.highest("value");
+	unit_ability_list abil = u.get_abilities("leadership", loc);
+	return abil.highest("value").first;
 }
 
 int combat_modifier(const unit_map& units,
@@ -1567,7 +1580,15 @@ int combat_modifier(const unit_map& units,
 		bool is_fearless)
 {
 	const tod_manager& tod_m = *resources::tod_manager;
-	int lawful_bonus = tod_m.get_illuminated_time_of_day(units, map, loc).lawful_bonus;
+	const time_of_day& effective_tod = tod_m.get_illuminated_time_of_day(units, map, loc);
+	return combat_modifier(effective_tod, alignment, is_fearless);
+}
+
+int combat_modifier(const time_of_day& effective_tod,
+		unit_type::ALIGNMENT alignment,
+		bool is_fearless)
+{
+	const int lawful_bonus = effective_tod.lawful_bonus;
 	return generic_combat_modifier(lawful_bonus, alignment, is_fearless);
 }
 

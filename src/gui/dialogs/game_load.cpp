@@ -45,6 +45,12 @@
 #include <cctype>
 #include "utils/functional.hpp"
 
+static lg::log_domain log_gameloaddlg{"gui/dialogs/game_load_dialog"};
+#define ERR_GAMELOADDLG   LOG_STREAM(err,   log_gameloaddlg)
+#define WRN_GAMELOADDLG   LOG_STREAM(warn,  log_gameloaddlg)
+#define LOG_GAMELOADDLG   LOG_STREAM(info,  log_gameloaddlg)
+#define DBG_GAMELOADDLG   LOG_STREAM(debug, log_gameloaddlg)
+
 namespace gui2
 {
 namespace dialogs
@@ -153,7 +159,7 @@ void game_load::pre_show(window& window)
 	display_savegame(window);
 }
 
-void game_load::display_savegame(window& window)
+void game_load::display_savegame_internal(window& window)
 {
 	const int selected_row =
 		find_widget<listbox>(&window, "savegame_list", false).get_selected_row();
@@ -245,6 +251,36 @@ void game_load::display_savegame(window& window)
 
 	// Changing difficulty doesn't make sense on non-start-of-scenario saves
 	change_difficulty_toggle.set_active(!is_replay && is_scenario_start);
+}
+
+// This is a wrapper that prevents a corrupted save file (if it happens to be
+// the first in the list) from making the dialog fail to open.
+void game_load::display_savegame(window& window)
+{
+	try {
+		game_load::display_savegame_internal(window);
+	} catch(const config::error& e) {
+		// Clear the UI widgets, show an error message.
+		const std::string preamble = _("The selected file is corrupt: ");
+		const std::string message = e.message.empty() ? "(no details)" : e.message;
+		ERR_GAMELOADDLG << preamble << message << "\n";
+		find_widget<minimap>(&window, "minimap", false).set_map_data("");
+		find_widget<label>(&window, "lblScenario", false)
+			.set_label(preamble);
+		find_widget<scroll_label>(&window, "slblSummary", false)
+			.set_label(message);
+
+		listbox& leader_list = find_widget<listbox>(&window, "leader_list", false);
+		leader_list.clear();
+
+		toggle_button& replay_toggle            = dynamic_cast<toggle_button&>(*show_replay_->get_widget());
+		toggle_button& cancel_orders_toggle     = dynamic_cast<toggle_button&>(*cancel_orders_->get_widget());
+		toggle_button& change_difficulty_toggle = dynamic_cast<toggle_button&>(*change_difficulty_->get_widget());
+
+		replay_toggle.set_active(false);
+		cancel_orders_toggle.set_active(false);
+		change_difficulty_toggle.set_active(false);
+	}
 }
 
 void game_load::filter_text_changed(text_box_base* textbox, const std::string& text)

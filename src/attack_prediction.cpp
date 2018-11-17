@@ -945,6 +945,10 @@ double prob_matrix::prob_of_zero(bool check_a, bool check_b) const
  */
 double prob_matrix::row_sum(unsigned plane, unsigned row) const
 {
+	if(!plane_used(plane)) {
+		return 0.0;
+	}
+
 	double sum = 0.0;
 	for(unsigned col : used_cols_[plane]) {
 		sum += val(plane, row, col);
@@ -957,6 +961,10 @@ double prob_matrix::row_sum(unsigned plane, unsigned row) const
  */
 double prob_matrix::col_sum(unsigned plane, unsigned column) const
 {
+	if(!plane_used(plane)) {
+		return 0.0;
+	}
+
 	double sum = 0.0;
 	for(unsigned row : used_rows_[plane]) {
 		sum += val(plane, row, column);
@@ -2148,10 +2156,14 @@ void complex_fight(attack_prediction_mode mode,
 			 * with simple addition.
 			 * Instead, just fetch the probability from the combat matrix.
 			 */
-			opp_not_hit = original_opp_not_hit * pm->col_sum(plane_index(stats, opp_stats), opp_stats.hp);
+			unsigned int plane = plane_index(stats, opp_stats);
+			double not_hit = pm->col_sum(plane, opp_stats.hp) + ((plane & 1) ? 0.0 : pm->col_sum(plane | 1, opp_stats.hp));
+			opp_not_hit = original_opp_not_hit * not_hit;
 		}
 		if(opp_stats.slows) {
-			self_not_hit = original_self_not_hit * pm->row_sum(plane_index(stats, opp_stats), stats.hp);
+			unsigned int plane = plane_index(stats, opp_stats);
+			double not_hit = pm->row_sum(plane, stats.hp) + ((plane & 2) ? 0.0 : pm->row_sum(plane | 2, stats.hp));
+			self_not_hit = original_self_not_hit * not_hit;
 		}
 	} else {
 		debug(("Using Monte Carlo simulation.\n"));
@@ -2695,12 +2707,12 @@ static void run(unsigned specific_battle)
 	auto total = end - start;
 
 #ifdef BENCHMARK
-	printf("Total time for %i combats was %lf\n", NUM_UNITS * (NUM_UNITS - 1) * (NUM_UNITS - 2),
+	printf("Total time for %u combats was %lf\n", NUM_UNITS * (NUM_UNITS - 1) * (NUM_UNITS - 2),
 			static_cast<double>(duration_cast<microseconds>(total).count()) / 1000000.0);
 	printf("Time per calc = %li us\n", static_cast<long>(duration_cast<microseconds>(total).count())
 											   / (NUM_UNITS * (NUM_UNITS - 1) * (NUM_UNITS - 2)));
 #else
-	printf("Total combats: %i\n", NUM_UNITS * (NUM_UNITS - 1) * (NUM_UNITS - 2));
+	printf("Total combats: %u\n", NUM_UNITS * (NUM_UNITS - 1) * (NUM_UNITS - 2));
 #endif
 
 	for(i = 0; i < NUM_UNITS; ++i) {
