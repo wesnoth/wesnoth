@@ -335,7 +335,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	int base_damage = weapon->modified_damage(backstab_pos);
 	int damage_multiplier = 100;
 	damage_multiplier
-			+= generic_combat_modifier(lawful_bonus, u_type->alignment(), u_type->musthave_status("fearless"));
+			+= generic_combat_modifier(lawful_bonus, u_type->alignment(), u_type->musthave_status("fearless"), 0);
 	damage_multiplier *= opp_type->resistance_against(weapon->type(), !attacking);
 
 	damage = round_damage(base_damage, damage_multiplier, 10000);
@@ -1739,10 +1739,10 @@ int combat_modifier(const time_of_day& effective_tod,
 		bool is_fearless)
 {
 	const int lawful_bonus = effective_tod.lawful_bonus;
-	return generic_combat_modifier(lawful_bonus, alignment, is_fearless);
+	return generic_combat_modifier(lawful_bonus, alignment, is_fearless, tod_m.get_max_liminal_bonus());
 }
 
-int generic_combat_modifier(int lawful_bonus, unit_type::ALIGNMENT alignment, bool is_fearless)
+int generic_combat_modifier(int lawful_bonus, unit_type::ALIGNMENT alignment, bool is_fearless, int max_liminal_bonus)
 {
 	int bonus;
 
@@ -1757,7 +1757,7 @@ int generic_combat_modifier(int lawful_bonus, unit_type::ALIGNMENT alignment, bo
 		bonus = -lawful_bonus;
 		break;
 	case unit_type::ALIGNMENT::LIMINAL:
-		bonus = -std::abs(lawful_bonus);
+		bonus = std::max(0, max_liminal_bonus-std::abs(lawful_bonus));
 		break;
 	default:
 		bonus = 0;
