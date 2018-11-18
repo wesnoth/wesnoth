@@ -39,7 +39,7 @@ public:
 	 * Constructor of validator can throw validator::error
 	 * @throws abstract_validator::error
 	 */
-	abstract_validator(){}
+	abstract_validator(const std::string& name) : name_(name) {}
 
 	virtual ~abstract_validator(){}
 	/**
@@ -92,4 +92,6 @@ public:
 	struct error : public game::error {
 		error(const std::string& message) : game::error(message) {}
 	};
+	
+	const std::string name_;
 };

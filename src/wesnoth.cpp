@@ -344,11 +344,12 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 		LOG_PREPROC << "adding define: " << define << '\n';
 		defines_map.emplace(define, preproc_define(define));
 	}
+	std::cout << "Validating " << file << " against schema " << validator.name_ << std::endl;
+	lg::set_strict_severity(0);
 	filesystem::scoped_istream stream = preprocess_file(file, &defines_map);
 	config result;
 	read(result, *stream, &validator);
-	// TODO: Return 1 if any errors found.
-	return 0;
+	return lg::broke_strict();
 }
 
 /** Process commandline-arguments */
@@ -500,7 +501,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	if(cmdline_opts.validate_schema) {
 		schema_validation::schema_self_validator validator;
 		validator.set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
-		handle_validate_command(*cmdline_opts.validate_schema, validator, {});
+		return handle_validate_command(*cmdline_opts.validate_schema, validator, {});
 	}
 
 	// Options changing their behavior dependent on some others should be checked below.
@@ -519,7 +520,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		}
 		schema_validation::schema_validator validator(schema_path);
 		validator.set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
-		handle_validate_command(*cmdline_opts.validate_wml, validator, boost::get_optional_value_or(cmdline_opts.preprocess_defines, {}));
+		return handle_validate_command(*cmdline_opts.validate_wml, validator, boost::get_optional_value_or(cmdline_opts.preprocess_defines, {}));
 	}
 
 	// Not the most intuitive solution, but I wanted to leave current semantics for now
@@ -1038,7 +1039,7 @@ int main(int argc, char** argv)
 		   args[k] == "--data-path" ||
 		   args[k] == "--userdata-path" ||
 		   args[k] == "--userconfig-path" ||
-		   args[k] == "--validate" ||
+		   args[k].compare(0, 10, "--validate") == 0  ||
 		   args[k] == "--version"
 		) {
 			lg::enable_native_console_output();
