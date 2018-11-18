@@ -19,6 +19,7 @@
 
 #include "display.hpp"
 #include "display_context.hpp"
+#include "font/text_formatting.hpp"
 #include "game_board.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
@@ -680,13 +681,14 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 	std::string res;
 	for (const config::any_child &sp : specials_.all_children_range())
 	{
-		if ( only_active  &&  !special_active(sp.cfg, AFFECT_EITHER, is_backstab) )
-			continue;
+		const bool active = special_active(sp.cfg, AFFECT_EITHER, is_backstab);
 
 		const std::string& name = sp.cfg["name"].str();
 		if (!name.empty()) {
 			if (!res.empty()) res += ", ";
+			if (only_active && !active) res += font::span_color(font::inactive_details_color);
 			res += name;
+			if (only_active && !active) res += "</span>";
 		}
 	}
 
