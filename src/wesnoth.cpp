@@ -349,6 +349,11 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 	filesystem::scoped_istream stream = preprocess_file(file, &defines_map);
 	config result;
 	read(result, *stream, &validator);
+	if(lg::broke_strict()) {
+		std::cout << "validation failed\n";
+	} else {
+		std::cout << "validation succeeded\n";
+	}
 	return lg::broke_strict();
 }
 
