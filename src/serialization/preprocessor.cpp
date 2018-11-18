@@ -1566,8 +1566,9 @@ bool preprocessor_data::get_chunk()
 
 				if(nb_arg - optional_arg_num != val.arguments.size()) {
 					const std::vector<std::string>& locations = utils::quoted_split(val.location, ' ');
+					const std::string filename = locations.empty() ? "<command-line>" : get_filename(locations[0]);
 					std::ostringstream error;
-					error << "Preprocessor symbol '" << symbol << "' defined at " << get_filename(locations[0]) << ":"
+					error << "Preprocessor symbol '" << symbol << "' defined at " << filename << ":"
 						  << val.linenum << " expects " << val.arguments.size() << " arguments, but has "
 						  << nb_arg - optional_arg_num << " arguments";
 					parent_.error(error.str(), linenum_);
