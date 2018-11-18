@@ -205,7 +205,9 @@ bool schema_validator::read_config_file(const std::string& filename)
  */
 void schema_validator::open_tag(const std::string& name, const config& parent, int start_line, const std::string& file, bool addittion)
 {
-	if(!stack_.empty()) {
+	if(name.empty()) {
+		// Opened the root tag; nothing special to do here
+	} else if(!stack_.empty()) {
 		const wml_tag* tag = nullptr;
 
 		if(stack_.top()) {

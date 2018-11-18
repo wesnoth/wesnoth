@@ -125,6 +125,10 @@ void parser::operator()()
 	cfg_.clear();
 	elements.emplace(&cfg_, "");
 
+	if(validator_) {
+		validator_->open_tag("", cfg_, tok_.get_start_line(), tok_.get_file());
+	}
+
 	do {
 		tok_.next_token();
 
@@ -162,6 +166,12 @@ void parser::operator()()
 
 	// The main element should be there. If it is not, this is a parser error.
 	assert(!elements.empty());
+
+	if(validator_) {
+		element& el = elements.top();
+		validator_->validate(*el.cfg, el.name, el.start_line, el.file);
+		validator_->close_tag();
+	}
 
 	if(elements.size() != 1) {
 		utils::string_map i18n_symbols;
