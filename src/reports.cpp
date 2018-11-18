@@ -1037,7 +1037,7 @@ REPORT_GENERATOR(highlighted_unit_weapons, rc)
 	const unit *u = get_selected_unit(rc);
 	const unit *sec_u = get_visible_unit(rc);
 
-	if (!u) return config();
+	if (!u) return report_unit_weapons(rc);
 	if (!sec_u || u == sec_u) return unit_weapons(rc, sec_u, rc.screen().mouseover_hex());
 
 	map_location highlighted_hex = rc.screen().displayed_unit_hex();
