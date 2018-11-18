@@ -1566,10 +1566,8 @@ REPORT_GENERATOR(battery, /*rc*/)
 {
 	config report;
 
-	if(desktop::battery_info::does_device_have_battery()) {
-		add_image(report, game_config::images::battery_icon, "");
-		add_text(report, (boost::format("%.0f %%") % desktop::battery_info::get_battery_percentage()).str(), _("Battery"));
-	}
+	add_image(report, game_config::images::battery_icon, "");
+	add_text(report, (boost::format("%.0f %%") % desktop::battery_info::get_battery_percentage()).str(), _("Battery"));
 
 	return report;
 }
