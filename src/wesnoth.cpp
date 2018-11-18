@@ -1039,7 +1039,8 @@ int main(int argc, char** argv)
 		   args[k] == "--data-path" ||
 		   args[k] == "--userdata-path" ||
 		   args[k] == "--userconfig-path" ||
-		   args[k].compare(0, 10, "--validate") == 0  ||
+		   args[k].compare(0, 11, "--validate=") == 0  ||
+		   args[k].compare(0, 17, "--validate-schema") == 0  ||
 		   args[k] == "--version"
 		) {
 			lg::enable_native_console_output();
