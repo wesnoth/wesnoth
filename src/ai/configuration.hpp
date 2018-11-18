@@ -46,12 +46,14 @@ public:
 	description()
 		: text()
 		, id()
+		, mp_rank()
 		, cfg()
 	{
 	}
 
 	t_string text;
 	std::string id;
+	int mp_rank;
 	config cfg;
 };
 

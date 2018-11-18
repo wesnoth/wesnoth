@@ -69,6 +69,7 @@ void configuration::init(const config &game_config)
 
 		description desc;
 		desc.id=id;
+		desc.mp_rank=ai_configuration["mp_rank"].to_int(0);
 		desc.text = ai_configuration["description"].t_str();
 		desc.cfg=ai_configuration;
 
@@ -95,6 +96,7 @@ void extract_ai_configurations(std::map<std::string, description> &storage, cons
 		description desc;
 		desc.id=id;
 		desc.text = ai_configuration["description"].t_str();
+		desc.mp_rank = ai_configuration["mp_rank"].to_int(0);
 		desc.cfg=ai_configuration;
 
 		storage.emplace(id, desc);
@@ -142,6 +144,13 @@ std::vector<description*> configuration::get_available_ais()
 	for(auto& m_config : mod_ai_configurations_) {
 		add_if_not_hidden(&m_config.second);
 	}
+
+	// Sort by mp_rank. For same mp_rank, keep alphabetical order.
+	std::stable_sort(ais_list.begin(), ais_list.end(),
+        [](const description* a, const description* b) {
+			return a->mp_rank > b->mp_rank;
+		}
+    );
 
 	return ais_list;
 }
