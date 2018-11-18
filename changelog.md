@@ -28,6 +28,8 @@
    * Deprecate AI Controller and remove it from mainline campaign scenarios
  ### Engine
    * Windows 7 is now the minimum supported Windows version.
+   * Add command-line arguments for detecting invalid WML.
+   * Revise mechanics of the liminal alignment to match up with the intended meaning.
  ### Language and i18n
    * Updated translations: British English, Bulgarian, Chinese (Simplified),
      Chinese (Traditional), Czech, French, Galician, German, Hungarian, Italian,
@@ -37,6 +39,7 @@
    * Add wml.load() and wml.parse() functions
    * wml.tostring() now outputs a string that can be parsed back to WML without loss of data.
    * Add wml.clone() function that performs a deep copy of a config or vconfig.
+   * Organize API functions into several new (sub)modules: gui, wesnoth.units, wesnoth.interface
  ### User Interface
    * Don't show in the sidebar the time of day schedule of a shrouded hex. (issue #3638)
  ### Packaging
