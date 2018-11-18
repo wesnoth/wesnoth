@@ -1738,6 +1738,7 @@ int combat_modifier(const time_of_day& effective_tod,
 		unit_type::ALIGNMENT alignment,
 		bool is_fearless)
 {
+	const tod_manager& tod_m = *resources::tod_manager;
 	const int lawful_bonus = effective_tod.lawful_bonus;
 	return generic_combat_modifier(lawful_bonus, alignment, is_fearless, tod_m.get_max_liminal_bonus());
 }
