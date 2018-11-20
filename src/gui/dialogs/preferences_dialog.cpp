@@ -141,6 +141,11 @@ preferences_dialog::preferences_dialog(const config& game_cfg, const PREFERENCE_
 	}
 }
 
+void preferences_dialog::on_filtertext_changed(text_box_base* textbox)
+{
+	hotkey_name_filter_callback(*textbox->get_window());
+}
+
 // Helper function to refresh resolution list
 void preferences_dialog::set_resolution_list(menu_button& res_list, CVideo& video)
 {
@@ -751,6 +756,9 @@ void preferences_dialog::post_build(window& window)
 
 	listbox& hotkey_list = setup_hotkey_list(window);
 
+	text_box& filter = find_widget<text_box>(&window, "filter", false);
+	filter.set_text_changed_callback(std::bind(&preferences_dialog::on_filtertext_changed, this, _1));
+
 	// Action column
 	hotkey_list.register_translatable_sorting_option(0, [this](const int i) { return visible_hotkeys_[i]->description.str(); });
 
@@ -906,6 +914,30 @@ void preferences_dialog::remove_hotkey_callback(listbox& hotkeys)
 	const hotkey::hotkey_command& hotkey_item = *visible_hotkeys_[row_number];
 	hotkey::clear_hotkeys(hotkey_item.command);
 	find_widget<label>(hotkeys.get_row_grid(row_number), "lbl_hotkey", false).set_label(hotkey::get_names(hotkey_item.command));
+}
+
+void preferences_dialog::hotkey_name_filter_callback(window& window) const
+{
+	const text_box& name_filter = find_widget<const text_box>(&window, "filter", false);
+	std::string text = name_filter.get_value();
+	boost::algorithm::to_lower(text);
+
+	boost::dynamic_bitset<> res(visible_hotkeys_.size());
+
+	for (std::size_t h = 0; h < visible_hotkeys_.size(); ++h)
+	{
+		const std::string description_lower = boost::algorithm::to_lower_copy(visible_hotkeys_[h]->description.str(), std::locale::classic());
+
+		if (description_lower.find(text) != std::string::npos) {
+			res[h] = true;
+		}
+		else {
+			res[h] = false;
+		}
+
+	}
+
+	find_widget<listbox>(&window, "list_hotkeys", false).set_row_shown(res);
 }
 
 void preferences_dialog::hotkey_type_filter_callback(window& window) const
