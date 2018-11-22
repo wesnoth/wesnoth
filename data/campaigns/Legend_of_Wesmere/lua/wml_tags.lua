@@ -2,7 +2,6 @@
 
 local labels = {}
 local wml_label = wesnoth.wml_actions.label
-local replace_map = wesnoth.wml_actions.replace_map
 
 local wml_actions = wesnoth.wml_actions
 local T = wml.tag
@@ -28,9 +27,9 @@ function wesnoth.wml_actions.label(cfg)
 	wml_label(cfg)
 end
 
-function wesnoth.wml_actions.replace_map(cfg)
+function wesnoth.wml_actions.replace_map_section(cfg)
 	if not cfg.x and not cfg.y then
-		return replace_map(cfg)
+		return wesnoth.wml_actions.replace_map(cfg)
 	end
 	local x1,x2 = string.match(cfg.x, "(%d+)-(%d+)")
 	local y1,y2 = string.match(cfg.y, "(%d+)-(%d+)")
@@ -54,7 +53,7 @@ function wesnoth.wml_actions.replace_map(cfg)
 		y = y + 1
 	end
 	local new_map = table.concat(t, '\n')
-	replace_map { map = new_map, expand = true, shrink = true }
+	wesnoth.wml_actions.replace_map { map = new_map, expand = true, shrink = true }
 end
 
 
