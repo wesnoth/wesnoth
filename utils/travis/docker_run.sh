@@ -18,6 +18,7 @@ MP_TEST="${10}"
 BOOST_TEST="${11}"
 LTO="${12}"
 SAN="${13}"
+VALIDATE="${14}"
 
 if [ "$OPT" == "-O0" ]; then
     STRICT="true"
@@ -92,6 +93,18 @@ else
 
 # needed since docker returns the exit code of the final command executed, so a failure needs to be returned if any unit tests fail
     EXIT_VAL=0
+    
+    if [ "$VALIDATE" == "true" ]; then
+        echo "Executing schema_validation.sh"
+        
+        ./utils/travis/schema_validation.sh
+        RET=$?
+        
+        if [ $RET != 0 ]; then
+            echo "WML validation failed!"
+            EXIT_VAL=$RET
+        fi
+    fi
 
     if [ "$WML_TESTS" == "true" ]; then
         echo "Executing run_wml_tests"
