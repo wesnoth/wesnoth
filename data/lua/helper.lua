@@ -230,6 +230,8 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	helper.set_variable_array = wesnoth.deprecate_api('helper.set_variable_array', 'wml.array_access.set', 1, nil, wml.array_access.set)
 	helper.get_variable_proxy_array = wesnoth.deprecate_api('helper.get_variable_proxy_array', 'wml.array_access.get_proxy', 1, nil, wml.array_access.get_proxy)
 	helper.wml_error = wesnoth.deprecate_api('helper.wml_error', 'wml.error', 1, nil, wml.error)
+	helper.move_unit_fake = wesnoth.deprecate_api('helper.move_unit_fake', 'wesnoth.interface.move_unit_fake', 1, nil, wesnoth.interface.move_unit_fake)
+	helper.modify_unit = wesnoth.deprecate_api('helper.modify_unit', 'wesnoth.units.modify', 1, nil, wesnoth.units.modify)
 end
 helper.literal = wesnoth.deprecate_api('helper.literal', 'wml.literal', 1, nil, wml.literal)
 helper.parsed = wesnoth.deprecate_api('helper.parsed', 'wml.parsed', 1, nil, wml.parsed)
@@ -237,8 +239,6 @@ helper.shallow_literal = wesnoth.deprecate_api('helper.shallow_literal', 'wml.sh
 helper.shallow_parsed = wesnoth.deprecate_api('helper.shallow_parsed', 'wml.shallow_parsed', 1, nil, wml.shallow_parsed)
 helper.set_wml_var_metatable = wesnoth.deprecate_api('helper.set_wml_var_metatable', 'wml.variable.proxy', 2, nil, helper.set_wml_var_metatable)
 helper.set_wml_tag_metatable = wesnoth.deprecate_api('helper.set_wml_tag_metatable', 'wml.tag', 2, nil, helper.set_wml_tag_metatable)
-helper.move_unit_fake = wesnoth.deprecate_api('helper.move_unit_fake', 'wesnoth.interface.move_unit_fake', 1, nil, wesnoth.interface.move_unit_fake)
 helper.get_user_choice = wesnoth.deprecate_api('helper.get_user_choice', 'gui.get_user_choice', 1, nil, gui.get_user_choice)
-helper.modify_unit = wesnoth.deprecate_api('helper.modify_unit', 'wesnoth.units.modify', 1, nil, wesnoth.units.modify)
 
 return helper
