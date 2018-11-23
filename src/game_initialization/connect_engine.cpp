@@ -1169,10 +1169,10 @@ config side_engine::new_config() const
 
 	if(parent_.params_.use_map_settings && !parent_.params_.saved_game) {
 		if(cfg_.has_attribute("name")){
-			res["name"] = "name";
+			res["name"] = cfg_["name"];
 		}
 		if(cfg_.has_attribute("user_description") && controller_ == CNTR_COMPUTER){
-			res["user_description"] = "user_description";
+			res["user_description"] = cfg_["user_description"];
 		}
 	}
 
