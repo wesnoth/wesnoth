@@ -1606,7 +1606,7 @@ bool leadership_affects_self(const std::string& ability,const unit_map& units, c
 	unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
 		const std::string& apply_to = (*i->first)["apply_to"];
-		if(apply_to.empty()||apply_to == "both"||apply_to == "under") {
+		if(apply_to.empty() || apply_to == "both" || apply_to == "self") {
 			return true;
 		}
 		++i;
@@ -1624,7 +1624,7 @@ bool leadership_affects_opponent(const std::string& ability,const unit_map& unit
 	unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
 		const std::string& apply_to = (*i->first)["apply_to"];
-		if(apply_to == "both"||apply_to == "opponent") {
+		if(apply_to == "both" || apply_to == "opponent") {
 			return true;
 		}
 		++i;
