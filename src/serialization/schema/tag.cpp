@@ -514,7 +514,7 @@ void wml_tag::key_iterator::ensure_valid_or_end() {
 	}
 }
 
-void wml_tag::push_new_tag_conditions(std::queue<const wml_tag*> q, const config& match, const wml_tag& tag) {
+void wml_tag::push_new_tag_conditions(std::queue<const wml_tag*>& q, const config& match, const wml_tag& tag) {
 	for(const auto& condition : tag.conditions_) {
 		if(condition.matches(match)) {
 			q.push(&condition);
