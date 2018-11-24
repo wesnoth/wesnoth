@@ -82,6 +82,7 @@
    * [remove_sound_source] now accepts a comma-separated ID list
    * Support [filter_team] in [side] in addition to team_name=
    * Support an optional EXTRA_WML argument to {REMOVE_LABEL}.
+   * Support [disallow_end_turn]reason=
  ### Miscellaneous and bug fixes
    * Rest healing now happens on turn 2. (issue #3562)
    * Normal healing now happens on turn 1 for all sides except the first. (issue #3562)

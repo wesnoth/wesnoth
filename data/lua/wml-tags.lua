@@ -702,7 +702,7 @@ function wml_actions.allow_end_turn(cfg)
 end
 
 function wml_actions.disallow_end_turn(cfg)
-	wesnoth.allow_end_turn(false)
+	wesnoth.allow_end_turn(cfg.reason or false)
 end
 
 function wml_actions.clear_menu_item(cfg)

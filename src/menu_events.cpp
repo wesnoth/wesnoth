@@ -534,7 +534,11 @@ bool unmoved_units(
 bool menu_handler::end_turn(int side_num)
 {
 	if(!gamedata().allow_end_turn()) {
-		gui2::show_transient_message("", _("You cannot end your turn yet!"));
+		t_string reason = gamedata().cannot_end_turn_reason();
+		if(reason.empty()) {
+			reason = _("You cannot end your turn yet!");
+		}
+		gui2::show_transient_message("", reason);
 		return false;
 	}
 

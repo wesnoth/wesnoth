@@ -3668,7 +3668,16 @@ static int intf_debug_ai(lua_State *L)
 /// Allow undo sets the flag saying whether the event has mutated the game to false.
 int game_lua_kernel::intf_allow_end_turn(lua_State * L)
 {
-	gamedata().set_allow_end_turn(luaW_toboolean(L, 1));
+	bool allow;
+	t_string reason;
+	// The extra iststring is required to prevent totstring from converting a bool value
+	if(luaW_iststring(L, 1) && luaW_totstring(L, 1, reason)) {
+		allow = false;
+	} else {
+		allow = luaW_toboolean(L, 1);
+		luaW_totstring(L, 2, reason);
+	}
+	gamedata().set_allow_end_turn(allow, reason);
 	return 0;
 }
 

@@ -76,8 +76,14 @@ public:
 	PHASE phase() const { return phase_; }
 	void set_phase(PHASE phase) { phase_ = phase; }
 
+	const t_string& cannot_end_turn_reason() {
+		return cannot_end_turn_reason_;
+	}
 	bool allow_end_turn() const { return can_end_turn_; }
-	void set_allow_end_turn(bool value) { can_end_turn_ = value; }
+	void set_allow_end_turn(bool value, const t_string& reason = "") {
+		can_end_turn_ = value;
+		cannot_end_turn_reason_ = reason;
+	}
 
 	/** the last location where a select event fired. Used by wml menu items with needs_select=yes*/
 	map_location last_selected;
@@ -112,6 +118,7 @@ private:
 	config variables_;
 	PHASE phase_;
 	bool can_end_turn_;
+	t_string cannot_end_turn_reason_;
 	/// the scenario coming next (for campaigns)
 	std::string next_scenario_;
 	// the id of a scenario cannot change during a scenario
