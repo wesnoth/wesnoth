@@ -45,6 +45,7 @@
    * When a unit has multiple statuses (slowed/poisoned/invisible/etc), the
      sidebar shows all of them, not just the first. (issue #3197)
    * Fixed being able to dismiss a game lobby by pressing Esc.
+   * Fixed multiple severe issues in the classic theme.
 
 ## Version 1.14.5
  ### AI
