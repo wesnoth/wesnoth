@@ -204,7 +204,7 @@ namespace {
 			unit_map::iterator healer = units.find(heal_it->second);
 			assert(healer != units.end());
 
-			if ( healer->side() != side )
+			if ( healer->side() != side ||(*heal_it->first)["value"].to_int()<0)
 				heal_it = heal_list.erase(heal_it);
 			else
 				++heal_it;
@@ -226,6 +226,43 @@ namespace {
 		return healing + harming;
 	}
 
+	int harm_amount(int side, const unit & patient, std::vector<unit *> & harmers)
+	{
+		unit_map &units = resources::gameboard->units();
+
+		int healing = 0;
+		int harming = 0;
+
+		unit_ability_list harm_list = patient.get_abilities("heals");
+		// Remove all harmers not on this side (since they do not heal now).
+		unit_ability_list::iterator harm_it = harm_list.begin();
+		while ( harm_it != harm_list.end() ) {
+			unit_map::iterator healer = units.find(harm_it->second);
+			assert(healer != units.end());
+
+			if ( healer->side() != side  ||!(*harm_it->first)["value"].to_int()<0)
+				harm_it = harm_list.erase(harm_it);
+			else {
+                 ++harm_it;
+			}
+		}
+
+
+		// Now we can get the aggregate healing amount.
+		unit_abilities::effect harm_effect(harm_list, 0, false);
+		if ( update_healing(healing, harming, harm_list.lowest("value").first) )
+		{
+			// Collect the harmers involved.
+			for (const unit_abilities::individual_effect & harm : harm_effect)
+				harmers.push_back(&*units.find(harm.loc));
+
+			if ( !harmers.empty() ) {
+				DBG_NG << "Unit has " << harmers.size() << " harmers.\n";
+			}
+		}
+
+		return healing + harming;
+	}
 
 	/**
 	 * Handles the actual healing.
@@ -318,6 +355,7 @@ void calculate_healing(int side, bool update_display)
 		// Main healing.
 		if ( !patient.get_state(unit::STATE_POISONED) ) {
 			healing += heal_amount(side, patient, healers);
+			healing += harm_amount(side, patient, healers);
 		}
 		else {
 			curing = poison_progress(side, patient, healers);
