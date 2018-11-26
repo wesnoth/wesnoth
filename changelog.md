@@ -44,6 +44,7 @@
      the mouse, rather than at the unit's current location. (PR #3642)
    * When a unit has multiple statuses (slowed/poisoned/invisible/etc), the
      sidebar shows all of them, not just the first. (issue #3197)
+   * Fixed being able to dismiss a game lobby by pressing Esc.
 
 ## Version 1.14.5
  ### AI

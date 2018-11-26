@@ -73,6 +73,7 @@ mp_staging::~mp_staging()
 void mp_staging::pre_show(window& window)
 {
 	window.set_enter_disabled(true);
+	window.set_escape_disabled(true);
 
 	//
 	// Set title and status widget states
