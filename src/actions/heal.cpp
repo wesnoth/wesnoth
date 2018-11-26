@@ -240,11 +240,10 @@ namespace {
 			unit_map::iterator healer = units.find(harm_it->second);
 			assert(healer != units.end());
 
-			if ( healer->side() != side  ||!(*harm_it->first)["value"].to_int()<0)
+			if ( healer->side() != side  ||!((*harm_it->first)["value"].to_int()<0))
 				harm_it = harm_list.erase(harm_it);
-			else {
-                 ++harm_it;
-			}
+			else 
+				++harm_it;
 		}
 
 
