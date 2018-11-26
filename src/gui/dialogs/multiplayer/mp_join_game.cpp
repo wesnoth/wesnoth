@@ -224,6 +224,7 @@ static std::string generate_user_description(const config& side)
 void mp_join_game::pre_show(window& window)
 {
 	window.set_enter_disabled(true);
+	window.set_escape_disabled(true);
 
 	//
 	// Set title
@@ -450,7 +451,7 @@ void mp_join_game::generate_side_list(window& window)
 				//
 				const auto handler = [this, side_num](bool& handled, bool& halt) {
 					show_flg_select(side_num);
-					// note: this function is called from a std::function object stored in the widget 
+					// note: this function is called from a std::function object stored in the widget
 					//       and show_flg_select which internally calls
 					//       show_dialog -> pump -> ... -> network_handler -> ... -> generate_side_list
 					//       might destroy that std::function object while it is executed, this means that

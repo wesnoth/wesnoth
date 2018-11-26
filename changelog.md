@@ -125,6 +125,7 @@
    * Game Load screen gracefully handles savefiles that can't be parsed. (issue #3652)
    * The sidebar now shows alignment and damages as they would be on the hex under
      the mouse, rather than at the unit's current location. (PR #3642)
+   * Fixed being able to dismiss a game lobby by pressing Esc.
 
 ## Version 1.14.5
  ### AI
