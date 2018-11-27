@@ -164,6 +164,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	}
 	else if (cfg.has_child("whiteboard"))
 	{
+		set_scontext_unsynced scontext;
 		resources::whiteboard->process_network_data(cfg);
 	}
 	else if (const config &change = cfg.child("change_controller"))
