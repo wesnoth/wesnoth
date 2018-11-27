@@ -33,6 +33,7 @@
    * Fix regression: Game Load screen would not select 1.12 savegames. (issue #3561)
    * Fix regression: the in-game "Observers" icon (an eye) was covered by the minimap. (issue #3543)
    * Increase step size when clicking sliders in the MP Create Game dialog. (issue #3552)
+   * Fix overlapping top bar elements with small screen resolutions. (issue #3714)
    * Don't scroll to an invisible unit that recruits another invisible unit. (issue #3559)
    * When a recruited unit is fogged, scroll to the recruiting unit and play recruit
      animation. (issue #3577)
