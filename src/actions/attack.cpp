@@ -223,8 +223,8 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 		}
 		if (weapon->combat_ability("drains", 50, backstab_pos).second) {
                 int negative_drains = 0;
-                unit_ability_list drains_abilities = get_abilities("drains", u_loc, weapon, opp_weapon);
-                if(drains_abilities.lowest("value") < 0) negative_drains = drains_abilities.lowest("value");
+                unit_ability_list drains_abilities = u.get_abilities("drains", u_loc, weapon, opp_weapon);
+                if(drains_abilities.lowest("value").first < 0) negative_drains = drains_abilities.lowest("value").first;
                 drain_percent = weapon->combat_ability("drains", 50, backstab_pos).first + negative_drains;
 		}
 	}
