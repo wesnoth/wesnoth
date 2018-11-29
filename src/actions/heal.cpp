@@ -182,6 +182,7 @@ namespace {
 
 		int healing = 0;
 		int harming = 0;
+		int healer_down = 0;
 
 
 		if ( patient.side() == side )
@@ -212,7 +213,9 @@ namespace {
 
 		// Now we can get the aggregate healing amount.
 		unit_abilities::effect heal_effect(heal_list, 0, false);
-		if ( update_healing(healing, harming, heal_effect.get_composite_value()) )
+		if (heal_list.lowest("value").first < 0) healer_down = heal_list.lowest("value").first;
+		int heal_value = heal_effect.get_composite_value() + healer_down;
+		if ( update_healing(healing, harming, heal_value) )
 		{
 			// Collect the healers involved.
 			for (const unit_abilities::individual_effect & heal : heal_effect)
