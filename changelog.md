@@ -6,6 +6,8 @@
    * Descent Into Darkness:
      * Allow converting L3 necromancers to liches from S12 onwards (issue #3165).
      * Added an alternative method of completing the campaign (issue #3167).
+     * S8, S9 (A Small Favor II & III): Clarify objectives. (PR #3711)
+     * S8 (A Small Favor II): Fixed units created via the plague ability not available in S9. (PR #3711)
    * The Hammer of Thursagan
      * S12 'The Underlevels': redesigned with completely new map and scenario
    * Northern Rebirth:
