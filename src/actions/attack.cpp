@@ -223,9 +223,11 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 		}
 		if (weapon->combat_ability("drains", 50, backstab_pos).second) {
                 int negative_drains = 0;
+                int positive_drains = 0;
                 unit_ability_list drains_abilities = u.get_abilities("drains", u_loc, weapon, opp_weapon);
+                if(!(drains_abilities.highest("value").first < 0)) positive_drains = weapon->combat_ability("drains", 50, backstab_pos).first;
                 if(drains_abilities.lowest("value").first < 0) negative_drains = drains_abilities.lowest("value").first;
-                drain_percent = weapon->combat_ability("drains", 50, backstab_pos).first + negative_drains;
+                drain_percent = positive_drains + negative_drains;
 		}
 	}
 
@@ -1570,11 +1572,11 @@ void attack_unit_and_advance(const map_location& attacker,
 int under_leadership(const unit &u, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
 	int leader_up=0;
-	int leader_down =0;
+    int leader_down =0;
 	unit_ability_list abil = u.get_abilities("leadership", loc, weapon, opp_weapon);
-	if (abil.highest("value").first>0) leader_up = abil.highest("value").first;
-	if (abil.lowest("value").first<0) leader_down = abil.lowest("value").first;
-	return leader_up + leader_down;
+    if (abil.highest("value").first>0) leader_up=abil.highest("value").first;
+    if (abil.lowest("value").first<0) leader_down=abil.lowest("value").first;
+    return leader_up + leader_down;
 }
 
 //begin of weapon emulates function.
