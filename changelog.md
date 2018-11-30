@@ -33,6 +33,7 @@
    * Windows 7 is now the minimum supported Windows version.
    * Add command-line arguments for detecting invalid WML.
    * Revise mechanics of the liminal alignment to match up with the intended meaning.
+   * Healing animation is shown when the patient is invisible. (PR #3643)
  ### Language and i18n
    * Updated translations: British English, Bulgarian, Chinese (Simplified),
      Chinese (Traditional), Czech, French, Galician, German, Hungarian, Italian,
