@@ -47,6 +47,7 @@
      sidebar shows all of them, not just the first. (issue #3197)
    * Fixed being able to dismiss a game lobby by pressing Esc.
    * Fixed multiple severe issues in the classic theme.
+   * The "Attack Enemy" dialog now shows inactive weapon specials in gray. (PR #3686)
 
 ## Version 1.14.5
  ### AI
