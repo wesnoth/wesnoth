@@ -25,6 +25,9 @@
  ### Campaigns
    * A Tale of Two Brothers
      * S2 'Chase': improved behavior of undead side leader with custom AI
+   * Descent into Darkness
+     * S8, S9 (A Small Favor II & III): Clarify objectives
+     * S8 (A Small Favor II): Fixed units created via the plague ability not available in S9
    * Deprecate AI Controller and remove it from mainline campaign scenarios
  ### Engine
    * Windows 7 is now the minimum supported Windows version.
