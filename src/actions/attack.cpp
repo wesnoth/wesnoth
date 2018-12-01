@@ -1630,7 +1630,13 @@ bool leadership_affects_opponent(const std::string& ability,const unit_map& unit
 	unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
 		const std::string& apply_to = (*i->first)["apply_to"];
-		if(apply_to == "both" || apply_to == "opponent" || (attacker && apply_to == "defender") || (!attacker && apply_to == "attacker")) {
+		if(apply_to == "both" || apply_to == "opponent") {
+			return true;
+		}
+		if(attacker && apply_to == "defender") {
+			return true;
+		}
+		if(!attacker && apply_to == "attacker") {
 			return true;
 		}
 		++i;
