@@ -1600,7 +1600,7 @@ bool ability_apply_filter(const std::string& ability,const config& cfg, const un
 {
     const unit_map::const_iterator un = units.find(loc);
 	const unit_map::const_iterator up = units.find(opp_loc);
-	if((!up->ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc))|| ( !attacker && !up->ability_filter_fighter(ability, "filter_attacker", cfg, opp_loc))){
+	if(!up->ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc)){
             return true;
     }
     if((attacker && !un->ability_filter_fighter(ability, "filter_attacker", cfg, loc))|| ( !attacker && !up->ability_filter_fighter(ability, "filter_attacker", cfg, opp_loc))){
