@@ -1596,6 +1596,22 @@ bool unit::ability_filter_fighter(const std::string& ability, const std::string&
 	return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc);
 }
 
+bool ability_apply_filter(const std::string& ability,const config& cfg, const unit_map& units, const map_location& loc, const map_location& opp_loc, bool attacker )
+{
+    const unit_map::const_iterator un = units.find(loc);
+	const unit_map::const_iterator up = units.find(opp_loc);
+	if((!up->ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc))|| ( !attacker && !up->ability_filter_fighter(ability, "filter_attacker", cfg, opp_loc))){
+            return true;
+    }
+    if((attacker && !un->ability_filter_fighter(ability, "filter_attacker", cfg, loc))|| ( !attacker && !up->ability_filter_fighter(ability, "filter_attacker", cfg, opp_loc))){
+            return true;
+    }
+    if((!attacker && !un->ability_filter_fighter(ability, "filter_defender", cfg, loc)) || (attacker && !up->ability_filter_fighter(ability, "filter_defender", cfg, opp_loc))){
+            return true;
+    }
+    return false;
+}
+
 bool leadership_affects_self(const std::string& ability,const unit_map& units, const map_location& loc, bool attacker, const_attack_ptr weapon,const_attack_ptr opp_weapon)
 {
 	const unit_map::const_iterator un = units.find(loc);
@@ -1664,7 +1680,7 @@ std::pair<int, bool> ability_leadership(const std::string& ability,const unit_ma
 		} else if(up == units.end() && (filter || filter_attacker || filter_defender)) {
 			return {abil_value, false};
 		} else {
-			show_result = !(!un->abilities_filter_matches(*i->first, attacker, abil_value) || !up->ability_filter_fighter(ability, "filter_opponent", *i->first, opp_loc) || ( attacker && !un->ability_filter_fighter(ability, "filter_attacker", *i->first, loc)) || ( !attacker && !up->ability_filter_fighter(ability, "filter_attacker", *i->first, opp_loc)) || (!attacker && !un->ability_filter_fighter(ability, "filter_defender", *i->first, loc)) || (attacker && !up->ability_filter_fighter(ability, "filter_defender", *i->first, opp_loc)));
+			show_result = !(!un->abilities_filter_matches(*i->first, attacker, abil_value) || ability_apply_filter(ability, *i->first, units, loc, opp_loc, attacker));
 		}
 
 		if(!show_result) {
@@ -1693,7 +1709,7 @@ bool bool_leadership(const std::string& ability,const unit_map& units, const map
 	unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
 		const std::string& active_on = (*i->first)["active_on"];
-		if(!(active_on.empty() || (attacker && active_on == "offense") || (!attacker && active_on == "defense")) || !up->ability_filter_fighter(ability, "filter_opponent", *i->first, opp_loc) || ( attacker && !un->ability_filter_fighter(ability, "filter_attacker" , *i->first, loc)) || ( !attacker && !up->ability_filter_fighter(ability, "filter_attacker" , *i->first, opp_loc)) || (!attacker && !un->ability_filter_fighter(ability, "filter_defender", *i->first, loc)) || (attacker && !up->ability_filter_fighter(ability, "filter_defender", *i->first, opp_loc))) {
+		if(!(active_on.empty() || (attacker && active_on == "offense") || (!attacker && active_on == "defense")) || ability_apply_filter(ability, *i->first, units, loc, opp_loc, attacker)) {
 			i = abil.erase(i);
 		} else {
 			++i;
