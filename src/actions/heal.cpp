@@ -214,8 +214,12 @@ namespace {
 
 		// Now we can get the aggregate healing amount.
 		unit_abilities::effect heal_effect(heal_list, 0, false);
-		if (heal_list.lowest("value").first < 0) healer_down = heal_list.lowest("value").first;
-		if (heal_list.highest("value").first >= 0) healer_up = heal_list.highest("value").first;
+		if (heal_list.lowest("value").first < 0) {
+			healer_down = heal_list.lowest("value").first;
+		}
+		if (heal_list.highest("value").first >= 0){
+			healer_up = heal_list.highest("value").first;
+		}
 		int heal_value = healer_up + healer_down;
 		if ( update_healing(healing, harming, heal_value) )
 		{
