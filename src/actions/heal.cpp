@@ -217,6 +217,9 @@ namespace {
 		healer_down = std::min(0, heal_list.lowest("value").first);
 		healer_up = std::max(0, heal_list.highest("value").first);
 		int heal_value = healer_up + healer_down;
+		if(healer_down == 0){
+			heal_value = heal_effect.get_composite_value();
+		}
 		if ( update_healing(healing, harming, heal_value) )
 		{
 			// Collect the healers involved.
