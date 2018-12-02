@@ -1215,7 +1215,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 				return formula.evaluate(callable).as_int();
 			});
 			std::map<std::string,individual_effect>::iterator sub_effect = values_add.find(effect_id);
-			if(sub_effect == values_add.end() || sub > sub_effect->second.value) {
+			if(sub_effect == values_add.end() || sub < sub_effect->second.value) {
 				values_add[effect_id].set(ADD, sub, ability.first, ability.second);
 			}
 		}
