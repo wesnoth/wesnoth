@@ -23,6 +23,10 @@
 #include "scripting/push_check.hpp"
 #include "scripting/game_lua_kernel.hpp"
 
+#include "formula/callable_objects.hpp"
+#include "formula/formula.hpp"
+#include "formula/string_utils.hpp"
+
 #include <boost/dynamic_bitset.hpp>
 #include <boost/range/iterator_range.hpp>
 #include <unordered_map>
@@ -593,8 +597,40 @@ public:
 	std::unique_ptr<filter_impl> filter_;
 };
 
+class formula_filter : public filter_impl
+{
+public:
+	formula_filter(lua_State* L, int, knows_sets_t&)
+		: formula_()
+	{
+		LOG_LMG << "creating formula filter\n";
+		lua_geti(L, -1, 2);
+		std::string code = std::string(luaW_tostring(L, -1));
+		lua_pop(L, 1);
+
+		try {
+			formula_ = utils::make_unique<wfl::formula>(code);
+		} catch(const wfl::formula_error& e) {
+			ERR_LMG << "formula error" << e.what() << "\n";
+		}
+	}
+	bool matches(const mapgen_gamemap&, map_location l) override
+	{
+		LOG_MATCHES(formula);
+		try {
+			const wfl::location_callable callable1(l);
+			wfl::map_formula_callable callable(callable1.fake_ptr());
+			return (formula_.get() != nullptr) && formula_->evaluate(callable).as_bool();
+		} catch(const wfl::formula_error& e) {
+			ERR_LMG << "Formula error: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+			return false;
+		}
+	}
+	std::unique_ptr<wfl::formula> formula_;
+};
+
 // todo: maybe invent a gerneral macro for this string_switch implementation.
-enum filter_keys { F_AND, F_OR, F_NAND, F_NOR, F_X, F_Y, F_FIND_IN, F_ADJACENT, F_TERRAIN, F_RADUIS, F_CACHED };
+enum filter_keys { F_AND, F_OR, F_NAND, F_NOR, F_X, F_Y, F_FIND_IN, F_ADJACENT, F_TERRAIN, F_RADUIS, F_FORMULA, F_CACHED };
 //todoc++14: std::unordered_map doesn'tsupport herterogrnous lookup.
 //todo consider renaming and -> all ,or ->any, nor -> none, nand -> notall
 static const std::unordered_map<std::string, filter_keys> keys {
@@ -608,6 +644,7 @@ static const std::unordered_map<std::string, filter_keys> keys {
 	{ "adjacent", F_ADJACENT },
 	{ "terrain", F_TERRAIN },
 	{ "cached", F_CACHED },
+	{ "formula", F_FORMULA },
 	{ "radius", F_RADUIS }
 };
 
@@ -651,6 +688,8 @@ std::unique_ptr<filter_impl> build_filter(lua_State* L, int res_index, knows_set
 		return utils::make_unique<radius_filter>(L, res_index, ks);
 	case F_CACHED:
 		return utils::make_unique<cached_filter>(L, res_index, ks);
+	case F_FORMULA:
+		return utils::make_unique<formula_filter>(L, res_index, ks);
 	default:
 		throw "invalid filter key enum";
 	}
