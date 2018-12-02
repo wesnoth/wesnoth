@@ -1569,8 +1569,12 @@ int under_leadership(const unit &u, const map_location& loc, const_attack_ptr we
 	int leader_up = 0;
 	int leader_down = 0;
 	unit_ability_list abil = u.get_abilities("leadership", loc, weapon, opp_weapon);
-	if (abil.highest("value").first >= 0) leader_up = abil.highest("value").first;
-	if (abil.lowest("value").first < 0) leader_down = abil.lowest("value").first;
+	if (abil.highest("value").first >= 0){ 
+		leader_up = abil.highest("value").first;
+	}
+	if (abil.lowest("value").first < 0){ 
+		leader_down = abil.lowest("value").first;
+	}
 	return leader_up + leader_down;
 }
 
