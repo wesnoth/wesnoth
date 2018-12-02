@@ -373,6 +373,7 @@ void saved_game::expand_mp_events()
 		mods.clear();
 
 		while(starting_point_.has_child("load_resource")) {
+			assert(starting_point_.child_count("load_resource") > 0);
 			std::string id = starting_point_.child("load_resource")["id"];
 			size_t pos = starting_point_.find_total_first_of("load_resource");
 			starting_point_.remove_child("load_resource", 0);
