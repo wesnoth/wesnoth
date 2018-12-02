@@ -56,7 +56,12 @@ namespace
 {
 	int advance_unit_dialog(const map_location &loc)
 	{
-		const unit& u = *resources::gameboard->units().find(loc);
+		const auto u_it = resources::gameboard->units().find(loc);
+		if(!u_it) {
+			ERR_NG << "advance_unit_dialog: unit not found\n";
+			return 0;
+		}
+		const unit& u = *u_it;
 		std::vector<unit_const_ptr> previews;
 
 		for (const std::string& advance : u.advances_to()) {
@@ -186,6 +191,10 @@ namespace
 				if(ai_advancement_ != nullptr)
 				{
 					unit_map::iterator u = resources::gameboard->units().find(loc_);
+					if(!u) {
+						ERR_NG << "unit_advancement_choice: unit not found\n";
+						return config{};
+					}
 					const std::vector<std::string>& options = u->advances_to();
 					const std::vector<std::string>& allowed = ai_advancement_->get_advancements(u);
 
