@@ -377,14 +377,6 @@ static int cfun_ai_get_aggression(lua_State *L)
 	return 1;
 }
 
-static int cfun_ai_get_attack_depth(lua_State *L)
-{
-	DEPRECATED_ASPECT_MESSAGE("attack_depth");
-	int attack_depth = get_readonly_context(L).get_attack_depth();
-	lua_pushnumber(L, attack_depth);
-	return 1;
-}
-
 static int cfun_ai_get_attacks(lua_State *L)
 {
 	// Unlike the other aspect fetchers, this one is not deprecated!
@@ -897,7 +889,6 @@ static int impl_ai_get(lua_State* L)
 			// Aspects
 			{ "get_aggression", &cfun_ai_get_aggression },
 			{ "get_avoid", &cfun_ai_get_avoid },
-			{ "get_attack_depth", &cfun_ai_get_attack_depth },
 			{ "get_attacks", &cfun_ai_get_attacks },
 			{ "get_caution", &cfun_ai_get_caution },
 			{ "get_grouping", &cfun_ai_get_grouping },

@@ -49,6 +49,10 @@ void configuration::init(const config &game_config)
 		ERR_AI_CONFIGURATION << "Missing AI [default_config]. Therefore, default_config_ set to empty." << std::endl;
 		default_config_.clear();
 	}
+	default_ai_algorithm_ = ais["default_ai_algorithm"].str();
+	if (default_ai_algorithm_.empty()) {
+		ERR_AI_CONFIGURATION << "Missing default_ai_algorithm. This will result in no AI being loaded by default." << std::endl;
+	}
 
 
 	for (const config &ai_configuration : ais.child_range("ai")) {
@@ -65,6 +69,7 @@ void configuration::init(const config &game_config)
 
 		description desc;
 		desc.id=id;
+		desc.mp_rank=ai_configuration["mp_rank"].to_int(0);
 		desc.text = ai_configuration["description"].t_str();
 		desc.cfg=ai_configuration;
 
@@ -91,6 +96,7 @@ void extract_ai_configurations(std::map<std::string, description> &storage, cons
 		description desc;
 		desc.id=id;
 		desc.text = ai_configuration["description"].t_str();
+		desc.mp_rank = ai_configuration["mp_rank"].to_int(0);
 		desc.cfg=ai_configuration;
 
 		storage.emplace(id, desc);
@@ -139,6 +145,13 @@ std::vector<description*> configuration::get_available_ais()
 		add_if_not_hidden(&m_config.second);
 	}
 
+	// Sort by mp_rank. For same mp_rank, keep alphabetical order.
+	std::stable_sort(ais_list.begin(), ais_list.end(),
+        [](const description* a, const description* b) {
+			return a->mp_rank > b->mp_rank;
+		}
+    );
+
 	return ais_list;
 }
 
@@ -166,6 +179,7 @@ configuration::description_map configuration::ai_configurations_ = configuration
 configuration::description_map configuration::era_ai_configurations_ = configuration::description_map();
 configuration::description_map configuration::mod_ai_configurations_ = configuration::description_map();
 config configuration::default_config_ = config();
+std::string configuration::default_ai_algorithm_;
 
 bool configuration::get_side_config_from_file(const std::string& file, config& cfg ){
 	try {
@@ -359,7 +373,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 		}
 	}
 	if (algorithm.empty() && !parsed_config.has_child("stage")) {
-		base_config = get_ai_config_for("ai_default_rca");
+		base_config = get_ai_config_for(default_ai_algorithm_);
 	}
 	for (const config::any_child &child : parsed_config.all_children_range()) {
 		base_config.add_child(child.key, child.cfg);

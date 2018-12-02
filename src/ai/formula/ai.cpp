@@ -292,10 +292,6 @@ variant formula_ai::get_value(const std::string& key) const
 	{
 		return variant(get_aggression()*1000,variant::DECIMAL_VARIANT);
 
-	} else if(key == "attack_depth")
-	{
-		return variant(get_attack_depth());
-
 	} else if(key == "avoid")
 	{
 		std::set<map_location> av_locs;

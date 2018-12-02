@@ -140,9 +140,8 @@ void aspect_attacks_base::do_attack_analysis(
 	// This function is called fairly frequently, so interact with the user here.
 
 	ai::manager::get_singleton().raise_user_interact();
-	const int default_attack_depth = 5;
-	if(cur_analysis.movements.size() >= std::size_t(default_attack_depth)) {
-		//std::cerr << "ANALYSIS " << cur_analysis.movements.size() << " >= " << get_attack_depth() << "\n";
+	const int max_attack_depth = 5;
+	if(cur_analysis.movements.size() >= std::size_t(max_attack_depth)) {
 		return;
 	}
 	const gamemap &map_ = resources::gameboard->map();

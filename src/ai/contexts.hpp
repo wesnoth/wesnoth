@@ -214,9 +214,6 @@ public:
 	virtual double get_aggression() const = 0;
 
 
-	virtual int get_attack_depth() const = 0;
-
-
 	virtual const aspect_map& get_aspects() const = 0;
 
 
@@ -292,9 +289,6 @@ public:
 
 
 	virtual const moves_map& get_possible_moves() const = 0;
-
-
-	virtual const std::vector<unit_ptr>& get_recall_list() const = 0;
 
 
 	virtual double get_recruitment_diversity() const = 0;
@@ -635,12 +629,6 @@ public:
 	}
 
 
-	virtual int get_attack_depth() const override
-	{
-		return target_->get_attack_depth();
-	}
-
-
 	virtual const aspect_map& get_aspects() const override
 	{
 		return target_->get_aspects();
@@ -797,12 +785,6 @@ public:
 	virtual double power_projection(const map_location& loc, const move_map& dstsrc) const override
 	{
 		return target_->power_projection(loc,dstsrc);
-	}
-
-
-	virtual const std::vector<unit_ptr>& get_recall_list() const override
-	{
-		return target_->get_recall_list();
 	}
 
 
@@ -1315,9 +1297,6 @@ public:
 	virtual double get_aggression() const override;
 
 
-	virtual int get_attack_depth() const override;
-
-
 	virtual const aspect_map& get_aspects() const override;
 
 
@@ -1385,9 +1364,6 @@ public:
 
 
 	virtual const moves_map& get_possible_moves() const override;
-
-
-	virtual const std::vector<unit_ptr>& get_recall_list() const override;
 
 
 	virtual double get_recruitment_diversity() const override;
@@ -1502,7 +1478,6 @@ private:
 
 	typesafe_aspect_ptr<unit_advancements_aspect> advancements_;
 	typesafe_aspect_ptr<double> aggression_;
-	typesafe_aspect_ptr<int> attack_depth_;
 	aspect_map aspects_;
 	typesafe_aspect_ptr<attacks_vector> attacks_;
 	mutable typesafe_aspect_ptr<terrain_filter> avoid_;

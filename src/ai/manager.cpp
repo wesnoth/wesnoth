@@ -237,7 +237,6 @@ const std::string holder::get_ai_overview()
 	std::stringstream s;
 	s << "advancements:  " << this->ai_->get_advancements().get_value() << std::endl;
 	s << "aggression:  " << this->ai_->get_aggression() << std::endl;
-	s << "attack_depth:  " << this->ai_->get_attack_depth() << std::endl;
 	s << "caution:  " << this->ai_->get_caution() << std::endl;
 	s << "grouping:  " << this->ai_->get_grouping() << std::endl;
 	s << "leader_aggression:  " << this->ai_->get_leader_aggression() << std::endl;
@@ -627,20 +626,6 @@ bool manager::add_ai_for_side_from_config( side_number side, const config& cfg, 
 
 	std::stack<holder>& ai_stack_for_specific_side = get_or_create_ai_stack_for_side(side);
 	ai_stack_for_specific_side.emplace(side, parsed_cfg);
-	return true;
-}
-
-
-///@todo 1.9 add error reporting
-bool manager::add_ai_for_side( side_number side, const std::string& ai_algorithm_type, bool replace )
-{
-	if (replace) {
-		remove_ai_for_side (side);
-	}
-	config cfg;
-	cfg["ai_algorithm"] = ai_algorithm_type;
-	std::stack<holder>& ai_stack_for_specific_side = get_or_create_ai_stack_for_side(side);
-	ai_stack_for_specific_side.emplace(side, cfg);
 	return true;
 }
 
