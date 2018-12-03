@@ -1596,7 +1596,7 @@ bool unit::ability_filter_fighter(const std::string& ability, const std::string&
 	return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc);
 }
 
-static bool ability_apply_filter(const unit_map::const_iterator un,const unit_map::const_iterator up,const std::string& ability,const config& cfg, const unit_map& units, const map_location& loc, const map_location& opp_loc, bool attacker )
+static bool ability_apply_filter(const unit_map::const_iterator un, const unit_map::const_iterator up, const std::string& ability, const config& cfg, const map_location& loc, const map_location& opp_loc, bool attacker )
 {
 	if(!up->ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc)){
 		return true;
@@ -1678,7 +1678,7 @@ std::pair<int, bool> ability_leadership(const std::string& ability,const unit_ma
 		} else if(up == units.end() && (filter || filter_attacker || filter_defender)) {
 			return {abil_value, false};
 		} else {
-			show_result = !(!un->abilities_filter_matches(*i->first, attacker, abil_value) || ability_apply_filter(un, up, ability, *i->first, units, loc, opp_loc, attacker));
+			show_result = !(!un->abilities_filter_matches(*i->first, attacker, abil_value) || ability_apply_filter(un, up, ability, *i->first, loc, opp_loc, attacker));
 		}
 
 		if(!show_result) {
@@ -1707,7 +1707,7 @@ bool bool_leadership(const std::string& ability,const unit_map& units, const map
 	unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
 		const std::string& active_on = (*i->first)["active_on"];
-		if(!(active_on.empty() || (attacker && active_on == "offense") || (!attacker && active_on == "defense")) || ability_apply_filter(un, up, ability, *i->first, units, loc, opp_loc, attacker)) {
+		if(!(active_on.empty() || (attacker && active_on == "offense") || (!attacker && active_on == "defense")) || ability_apply_filter(un, up, ability, *i->first, loc, opp_loc, attacker)) {
 			i = abil.erase(i);
 		} else {
 			++i;
