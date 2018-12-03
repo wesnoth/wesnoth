@@ -44,13 +44,14 @@ bool luaW_isslocs(lua_State* L, int index)
 
 mapgen_gamemap* luaW_toslocs(lua_State *L, int index)
 {
-	if(luaW_isterrainmap(L, index)) {
-		lua_rawgeti(L, index, 1);
-		mapgen_gamemap* m = luaW_toterrainmap(L, -1);
-		lua_pop(L, 1);
-		return m;
+	if(!lua_istable(L, index)) {
+		return nullptr;
 	}
-	return nullptr;
+	
+	lua_rawgeti(L, index, 1);
+	mapgen_gamemap* m = luaW_toterrainmap(L, -1);
+	lua_pop(L, 1);
+	return m;
 }
 
 mapgen_gamemap& luaW_check_slocs(lua_State *L, int index)
