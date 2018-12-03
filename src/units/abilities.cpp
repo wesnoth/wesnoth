@@ -1191,7 +1191,13 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 				set_effect.set(SET, value, ability.first, ability.second);
 			} else {
 				if (cumulative) value_set = std::max<int>(value_set, def);
-				if (value > value_set) {
+				int value_down = std::min(0, list.lowest("value").first);
+				int value_up = std::max(0, list.highest("value").first);
+				if (value_down < 0) {
+					value_set = value_up + value_down;
+					set_effect.set(SET, value, ability.first, ability.second);
+				}
+				else if (value > value_set) {
 					value_set = value;
 					set_effect.set(SET, value, ability.first, ability.second);
 				}
