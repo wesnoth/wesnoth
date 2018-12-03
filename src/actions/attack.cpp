@@ -1596,7 +1596,6 @@ bool unit::ability_filter_fighter(const std::string& ability, const std::string&
 	return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc);
 }
 
-
 static bool ability_apply_filter(const unit_map::const_iterator un, const unit_map::const_iterator up, const std::string& ability, const config& cfg, const map_location& loc, const map_location& opp_loc, bool attacker )
 {
 	if(!up->ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc)){
