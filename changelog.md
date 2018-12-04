@@ -72,6 +72,7 @@
    * The "Attack Enemy" dialog now shows inactive weapon specials in gray. (PR #3686)
    * Taking screenshots in title screen is possible again (issue #3235)
    * The "Recruit Unit" dialog is searchable by unit type name. (PR #3787)
+   * Add text filter to hotkeys preferences. (PR #3759)
 
 ## Version 1.14.5
  ### AI

@@ -143,7 +143,7 @@ preferences_dialog::preferences_dialog(const config& game_cfg, const PREFERENCE_
 
 void preferences_dialog::on_filtertext_changed(text_box_base* textbox)
 {
-	hotkey_name_filter_callback(*textbox->get_window());
+	hotkey_filter_callback(*textbox->get_window());
 }
 
 // Helper function to refresh resolution list
@@ -752,7 +752,7 @@ void preferences_dialog::post_build(window& window)
 	hotkey_menu.set_values(hotkey_category_entries);
 
 	connect_signal_notify_modified(hotkey_menu,
-		std::bind(&preferences_dialog::hotkey_type_filter_callback, this, std::ref(window)));
+		std::bind(&preferences_dialog::hotkey_filter_callback, this, std::ref(window)));
 
 	listbox& hotkey_list = setup_hotkey_list(window);
 
@@ -916,61 +916,50 @@ void preferences_dialog::remove_hotkey_callback(listbox& hotkeys)
 	find_widget<label>(hotkeys.get_row_grid(row_number), "lbl_hotkey", false).set_label(hotkey::get_names(hotkey_item.command));
 }
 
-void preferences_dialog::hotkey_name_filter_callback(window& window) const
-{
-	const text_box& name_filter = find_widget<const text_box>(&window, "filter", false);
-	std::string text = name_filter.get_value();
-	boost::algorithm::to_lower(text);
-
-	boost::dynamic_bitset<> res(visible_hotkeys_.size());
-
-	for (std::size_t h = 0; h < visible_hotkeys_.size(); ++h)
-	{
-		const std::string description_lower = boost::algorithm::to_lower_copy(visible_hotkeys_[h]->description.str(), std::locale::classic());
-
-		if (description_lower.find(text) != std::string::npos) {
-			res[h] = true;
-		}
-		else {
-			res[h] = false;
-		}
-
-	}
-
-	find_widget<listbox>(&window, "list_hotkeys", false).set_row_shown(res);
-}
-
-void preferences_dialog::hotkey_type_filter_callback(window& window) const
+void preferences_dialog::hotkey_filter_callback(window& window) const
 {
 	const multimenu_button& hotkey_menu = find_widget<const multimenu_button>(&window, "hotkey_category_menu", false);
+	const text_box& name_filter = find_widget<const text_box>(&window, "filter", false);
 
 	boost::dynamic_bitset<> toggle_states = hotkey_menu.get_toggle_states();
 	boost::dynamic_bitset<> res(visible_hotkeys_.size());
 
-	if(!toggle_states.none()) {
-		for(size_t h = 0; h < visible_hotkeys_.size(); ++h) {
-			unsigned index = 0;
+	std::string text = name_filter.get_value();
+	boost::algorithm::to_lower(text);
 
-			for(const auto& name : cat_names_) {
-				if(visible_hotkeys_[h]->category == name.first) {
-					break;
-				} else {
-					++index;
-				}
-			}
-
-			if(index < toggle_states.size()) {
-				res[h] = toggle_states[index];
-			} else {
-				res[h] = false;
-			}
-		}
-	} else {
+	if (toggle_states.none()) {
 		// Nothing selected. It means that *all* categories are shown.
-		res = ~res;
+		toggle_states = ~toggle_states;
 	}
 
+	for (std::size_t h = 0; h < visible_hotkeys_.size(); ++h) {
+
+		unsigned index = 0;
+
+		const std::string description_lower = boost::algorithm::to_lower_copy(visible_hotkeys_[h]->description.str(), std::locale::classic());
+		// Either no text is entered or text matches description
+		bool textFilter = text.length() == 0 || description_lower.find(text) != std::string::npos;
+
+		for (const auto& name : cat_names_) {
+			if (visible_hotkeys_[h]->category == name.first) {
+				break;
+			}
+			else {
+				++index;
+			}
+		}
+
+		if (index < toggle_states.size() && textFilter) {
+			res[h] = toggle_states[index];
+		}
+		else {
+			res[h] = false;
+		}
+	}
+
+
 	find_widget<listbox>(&window, "list_hotkeys", false).set_row_shown(res);
+
 }
 
 void preferences_dialog::on_advanced_prefs_list_select(listbox& list)

@@ -122,8 +122,7 @@ private:
 	void add_hotkey_callback(listbox& hotkeys);
 	void remove_hotkey_callback(listbox& hotkeys);
 	void default_hotkey_callback(window& window);
-	void hotkey_type_filter_callback(window& window) const;
-	void hotkey_name_filter_callback(window& window) const;
+	void hotkey_filter_callback(window& window) const;
 
 	group<preferences::LOBBY_JOINS> lobby_joins_group;
 
