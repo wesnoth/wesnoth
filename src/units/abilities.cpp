@@ -1160,6 +1160,8 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 
 	int value_set = def;
 	bool value_is_set = false;
+	int value_down = 0;
+	int value_up = 0;
 	std::map<std::string,individual_effect> values_add;
 	std::map<std::string,individual_effect> values_mul;
 	std::map<std::string,individual_effect> values_div;
@@ -1191,13 +1193,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 				set_effect.set(SET, value, ability.first, ability.second);
 			} else {
 				if (cumulative) value_set = std::max<int>(value_set, def);
-				int value_down = std::min(0, list.lowest("value").first);
-				int value_up = std::max(0, list.highest("value").first);
-				if (value_down < 0) {
-					value_set = value_up + value_down;
-					set_effect.set(SET, value, ability.first, ability.second);
-				}
-				else if (value > value_set) {
+				 if (value > value_set) {
 					value_set = value;
 					set_effect.set(SET, value, ability.first, ability.second);
 				}
@@ -1255,6 +1251,14 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 
 	if(value_is_set && set_effect.type != NOT_USED) {
 		effect_list_.push_back(set_effect);
+	}
+		
+	if(value_is_set) {
+		value_down = std::min(0, list.lowest("value").first);
+		if(value_down < 0){
+		    value_up = std::max(0, list.highest("value").first);
+            value_set = value_up + value_down;
+		}
 	}
 
 	/* Do multiplication with floating point values rather than integers
