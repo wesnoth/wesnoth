@@ -1256,8 +1256,8 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 	if(value_is_set) {
 		value_down = std::min(0, list.lowest("value").first);
 		if(value_down < 0){
-		    value_up = std::max(0, list.highest("value").first);
-            value_set = value_up + value_down;
+			value_up = std::max(0, list.highest("value").first);
+			value_set = value_up + value_down;
 		}
 	}
 
