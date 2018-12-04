@@ -1250,14 +1250,13 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 		}
 	}
 
-	int value_set = def;
 	if(set_effect_max.type != NOT_USED) {
 		value_set = std::max(set_effect_max.value, 0) + std::min(set_effect_min.value, 0);
 		if(set_effect_max.value > def) {
-			effect_list_.push_back(set_effect);
+			effect_list_.push_back(set_effect_max);
 		}
 		if(set_effect_min.value < def) {
-			effect_list_.push_back(set_effect);
+			effect_list_.push_back(set_effect_min);
 		}
 	}
 
