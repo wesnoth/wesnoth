@@ -39,6 +39,7 @@
    * Add wml.clone() function that performs a deep copy of a config or vconfig.
  ### User Interface
    * Don't show in the sidebar the time of day schedule of a shrouded hex. (issue #3638)
+   * Add text filter to hotkeys preferences.
  ### Packaging
    * OpenMP support has been removed. It is no longer an optional build-time dependency.
  ### Units
