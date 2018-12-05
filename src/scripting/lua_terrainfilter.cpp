@@ -221,7 +221,7 @@ static int luaW_push_locationset(lua_State* L, const std::set<map_location>& loc
 static std::set<map_location> luaW_to_locationset(lua_State* L, int index)
 {
 	std::set<map_location> res;
-	lua_push(L, index);
+	lua_pushvalue(L, index);
 	size_t len = lua_rawlen(L, -1);
 	for(size_t i = 0; i != len; ++i) {
 		lua_geti(L, -1, i + 1);
