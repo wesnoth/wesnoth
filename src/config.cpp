@@ -417,7 +417,8 @@ bool config::has_child(config_key_type key) const
 {
 	check_valid();
 
-	return children_.find(key) != children_.end();
+	child_map::const_iterator i = children_.find(key);
+	return i != children_.end() && !i->second.empty();
 }
 
 config& config::child(config_key_type key, int n)
