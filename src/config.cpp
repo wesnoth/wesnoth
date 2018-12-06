@@ -571,7 +571,7 @@ config& config::add_child_at_total(config_key_type key, const config &val, size_
 	
 	if(next == end) {
 		config& res = config::add_child(key, val);
-		std::rotate(ordered_children.begin() + pos, ordered_children.end(), ordered_children.end());
+		std::rotate(ordered_children.begin() + pos, ordered_children.end(), ordered_children.end() - 1);
 		return res;
 	}
 
