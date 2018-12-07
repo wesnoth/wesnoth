@@ -1181,7 +1181,6 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 			continue;
 
 		if (const config::attribute_value *v = cfg.get("value")) {
-			
 			int value = get_single_ability_value(*v, def, ability.second, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 				callable.add("base_value", wfl::variant(def));
 				return formula.evaluate(callable).as_int();
