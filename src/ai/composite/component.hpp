@@ -30,7 +30,6 @@ class config;
 //============================================================================
 namespace ai {
 
-//TODO: find a good place for this
 struct path_element {
 	path_element()
 		: property()

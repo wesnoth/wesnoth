@@ -111,7 +111,7 @@ public:
 	{
 	}
 
-	/** hack. @todo 1.9 rework that via extended event system, or at least ensure it hurts no one */
+	/** Rework if extended event system is imlpemented */
 	std::set<map_location> recent_attacks;
 };
 

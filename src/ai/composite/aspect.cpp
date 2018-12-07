@@ -57,7 +57,6 @@ aspect::~aspect()
 			manager.remove_gamestate_observer(this);
 		}
 		if (invalidate_on_minor_gamestate_change_) {
-			///@todo 1.9 add minor_gamestate_change_observer
 			//manager::remove_minor_gamestate_observer(this);
 		}
 	}
@@ -85,7 +84,6 @@ bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 		manager.remove_gamestate_observer(this);
 	}
 	if (invalidate_on_minor_gamestate_change_) {
-		///@todo 1.9 add minor_gamestate_change_observer
 		//manager::remove_minor_gamestate_observer(this);
 	}
 
@@ -111,7 +109,6 @@ bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 		manager.add_gamestate_observer(this);
 	}
 	if (invalidate_on_minor_gamestate_change_) {
-		///@todo 1.9 add minor_gamestate_change_observer
 		//manager::add_minor_gamestate_observer(this);
 	}
 	return true;

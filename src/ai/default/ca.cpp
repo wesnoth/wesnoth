@@ -81,7 +81,7 @@ double goto_phase::evaluate()
 		unit_map::const_iterator ui = units_.find(*g);
 		// passive_leader: never moves or attacks
 		if(ui->can_recruit() && get_passive_leader() && !get_passive_leader_shares_keep()){
-			continue;//@todo: only bail out if goto is on keep
+			continue;
 		}
 		// end of passive_leader
 
@@ -564,12 +564,6 @@ void get_villages_phase::execute()
 				    power_projection(i->first, get_enemy_dstsrc()) >= new_unit->hitpoints() / 4.0)
 				{
 					LOG_AI_TESTING_AI_DEFAULT << "found support target... " << new_unit->get_location() << '\n';
-					//FIXME: suokko tweaked the constant 1.0 to the formula:
-					//25.0* current_team().caution() * power_projection(loc,enemy_dstsrc) / new_unit->second.hitpoints()
-					//Is this an improvement?
-
-					///@todo 1.7 check if this an improvement
-					//add_target(target(new_unit->first,1.0,target::SUPPORT));
 				}
 			}
 		}

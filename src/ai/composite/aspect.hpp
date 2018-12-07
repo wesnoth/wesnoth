@@ -299,7 +299,6 @@ public:
 
 	virtual void recalculate() const
 	{
-		///@todo 1.9 optimize in case of an aspect which returns variant
 		for(const auto& f : boost::adaptors::reverse(facets_)) {
 			if (f->active()) {
 				this->value_ = f->get_ptr();

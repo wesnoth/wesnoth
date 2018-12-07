@@ -692,17 +692,6 @@ DEFINE_WFL_FUNCTION(outcomes, 1, 1)
 	return variant(vars);
 }
 
-/* // TODO: Not really sure what this was meant to do or if there's any reason left to keep it...
-DEFINE_FAI_FUNCTION(evaluate_for_position, 2, 2)
-{
-	variant position = args()[0]->evaluate(variables,add_debug_info(fdb,0,"evaluate_for_position:position"));
-	ai_.store_outcome_position(position);
-	position_callable* pos = position.convert_to<position_callable>();
-	position_callable::swapper swapper(ai_, *pos);
-	return args()[1]->evaluate(variables,add_debug_info(fdb,1,"evaluate_for_position:formula"));
-}
-*/
-
 DEFINE_FAI_FUNCTION(rate_action, 1, 1)
 {
 	variant act = args()[0]->evaluate(variables,add_debug_info(fdb,0,"rate_action:action"));

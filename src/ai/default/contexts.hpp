@@ -44,7 +44,6 @@ struct target {
 	double value;
 
 	TYPE type;
-	///@todo 1.7: ai goals: this is a 'target' marker class which should be expanded with additional information which is generic enough to apply to all targets.
 };
 
 

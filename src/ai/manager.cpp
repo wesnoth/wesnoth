@@ -604,7 +604,6 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 // ADD, CREATE AIs, OR LIST AI TYPES
 // =======================================================================
 
-///@todo 1.9 add error reporting
 bool manager::add_ai_for_side_from_file( side_number side, const std::string& file, bool replace )
 {
 	config cfg;
@@ -725,7 +724,7 @@ void manager::play_turn( side_number side ){
 	last_interact_ = 0;
 	num_interact_ = 0;
 	const int turn_start_time = SDL_GetTicks();
-	/*hack. @todo 1.9 rework via extended event system*/
+	/* Rework if extended event system is implemented */
 	get_ai_info().recent_attacks.clear();
 	ai_composite& ai_obj = get_active_ai_for_side(side);
 	resources::game_events->pump().fire("ai_turn");

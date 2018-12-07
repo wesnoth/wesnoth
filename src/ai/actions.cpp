@@ -306,8 +306,7 @@ void attack_result::do_execute()
 
 
 	set_gamestate_changed();
-	//start of ugly hack. @todo 1.9 rework that via extended event system
-	//until event system is reworked, we note the attack this way
+	// Rework if extended event system is implemented
 	get_info().recent_attacks.insert(defender_loc_);
 	//end of ugly hack
 	try {
@@ -381,7 +380,7 @@ bool move_result::test_route(const unit &un)
 	const pathfind::shortest_path_calculator calc(un, my_team, resources::gameboard->teams(), resources::gameboard->map());
 
 	//allowed teleports
-	pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(un, my_team, true);///@todo 1.9: see_all -> false
+	pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(un, my_team, true);
 
 	//do an A*-search
 	route_.reset(new pathfind::plain_route(pathfind::a_star_search(un.get_location(), to_, 10000.0, calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports)));
