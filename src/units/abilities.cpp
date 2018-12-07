@@ -1190,12 +1190,12 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 			bool cumulative = cfg["cumulative"].to_bool();
 			if (!value_is_set && !cumulative) {
 				value_set = value;
-				set_effect.set(SET, value, ability.first, ability.second);
+				set_effect_max.set(SET, value, ability.first, ability.second);
 			} else {
 				if (cumulative) value_set = std::max<int>(value_set, def);
 				if (value > value_set) {
 					value_set = value;
-					set_effect.set(SET, value, ability.first, ability.second);
+					set_effect_max.set(SET, value, ability.first, ability.second);
 				}
 			}
 			value_is_set = true;
