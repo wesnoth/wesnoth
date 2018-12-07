@@ -255,7 +255,7 @@ const time_of_day tod_manager::get_illuminated_time_of_day(const unit_map & unit
 			    !itor->incapacitated())
 			{
 				unit_ability_list illum = itor->get_abilities("illuminates");
-				unit_abilities::effect illum_effect(illum, terrain_light, false);
+				unit_abilities::effect illum_effect(illum, terrain_light, false , true);
 				const int unit_mod = illum_effect.get_composite_value();
 
 				// Record this value.
