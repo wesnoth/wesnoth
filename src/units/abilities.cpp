@@ -1159,6 +1159,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 {
 
 	int value_set = def;
+	bool value_is_set = false;
 	std::map<std::string,individual_effect> values_add;
 	std::map<std::string,individual_effect> values_mul;
 	std::map<std::string,individual_effect> values_div;
@@ -1180,6 +1181,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 			continue;
 
 		if (const config::attribute_value *v = cfg.get("value")) {
+			 if (!old_calc){
 			int value = get_single_ability_value(*v, def, ability.second, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 				callable.add("base_value", wfl::variant(def));
 				return formula.evaluate(callable).as_int();
@@ -1200,6 +1202,25 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 					set_effect_min.set(SET, value_cum, ability.first, ability.second);
 				}
 			}
+		} else {
+			int value = get_single_ability_value(*v, def, ability.second, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+				callable.add("base_value", wfl::variant(def));
+				return formula.evaluate(callable).as_int();
+			});
+
+			bool cumulative = cfg["cumulative"].to_bool();
+			if (!value_is_set && !cumulative) {
+				value_set = value;
+				set_effect_max.set(SET, value, ability.first, ability.second);
+			} else {
+				if (cumulative) value_set = std::max<int>(value_set, def);
+				if (value > value_set) {
+					value_set = value;
+					set_effect_max.set(SET, value, ability.first, ability.second);
+				}
+			}
+			value_is_set = true;
+			 }
 		}
 
 		if (const config::attribute_value *v = cfg.get("add")) {
@@ -1250,7 +1271,9 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 		}
 	}
 
-	if(set_effect_max.type != NOT_USED) {
+	 if(value_is_set && set_effect_max.type != NOT_USED && old_calc) {
+		effect_list_.push_back(set_effect_max);
+	} else if(set_effect_max.type != NOT_USED) {
 		value_set = std::max(set_effect_max.value, 0) + std::min(set_effect_min.value, 0);
 		if(set_effect_max.value > def) {
 			effect_list_.push_back(set_effect_max);
