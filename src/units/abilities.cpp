@@ -1153,7 +1153,7 @@ bool filter_base_matches(const config& cfg, int def)
 	return true;
 }
 
-effect::effect(const unit_ability_list& list, int def, bool backstab) :
+effect::effect(const unit_ability_list& list, int def, bool backstab, bool old_calc) :
 	effect_list_(),
 	composite_value_(0)
 {
