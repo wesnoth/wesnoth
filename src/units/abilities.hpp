@@ -40,7 +40,7 @@ struct individual_effect
 class effect
 {
 	public:
-		effect(const unit_ability_list& list, int def, bool backstab);
+		effect(const unit_ability_list& list, int def, bool backstab, bool old_calc = false);
 
 		// Provide read-only access to the effect list:
 		typedef std::vector<individual_effect>::const_iterator iterator;
