@@ -1185,7 +1185,21 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 				callable.add("base_value", wfl::variant(def));
 				return formula.evaluate(callable).as_int();
 			});
-			if (!old_calc){
+			
+			if(old_calc){
+			bool cumulative = cfg["cumulative"].to_bool();
+			if (!value_is_set && !cumulative) {
+				value_set = value;
+				set_effect.set(SET, value, ability.first, ability.second);
+			} else {
+				if (cumulative) value_set = std::max<int>(value_set, def);
+				if (value > value_set) {
+					value_set = value;
+					set_effect.set(SET, value, ability.first, ability.second);
+				}
+			}
+			value_is_set = true;
+			} else {
 				int value_cum = cfg["cumulative"].to_bool() ? std::max(def, value) : value;
 				assert((set_effect_min.type != NOT_USED) == (set_effect_max.type != NOT_USED));
 				if(set_effect_min.type == NOT_USED) {
@@ -1200,22 +1214,9 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 						set_effect_min.set(SET, value_cum, ability.first, ability.second);
 					}
 				}
-			} 
-			else {
-				bool cumulative = cfg["cumulative"].to_bool();
-				if (!value_is_set && !cumulative) {
-					value_set = value;
-					set_effect_max.set(SET, value, ability.first, ability.second);
-				} else {
-					if (cumulative) value_set = std::max<int>(value_set, def);
-					if (value > value_set) {
-						value_set = value;
-						set_effect_max.set(SET, value, ability.first, ability.second);
-					}
-				}
-				value_is_set = true;
 			}
 		}
+	}
 
 		if (const config::attribute_value *v = cfg.get("add")) {
 			int add = get_single_ability_value(*v, def, ability.second, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
