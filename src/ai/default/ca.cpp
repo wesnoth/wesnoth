@@ -1619,7 +1619,6 @@ void leader_shares_keep_phase::execute()
 	for (unit_map::unit_iterator &ai_leader : ai_leaders) {
 		if(!ai_leader.valid()) {
 			//This can happen if wml killed or moved a leader during a movement events of another leader
-			WRN_AI_TESTING_AI_DEFAULT << "leader_shares_keep_phase: Leader vanished.\n";
 			continue;
 		}
 		//only if leader is on a keep
@@ -1636,12 +1635,7 @@ void leader_shares_keep_phase::execute()
 		//for each leader, check if he's allied and can reach our keep
 		for(path_map::const_iterator i = possible_moves.begin(); i != possible_moves.end(); ++i){
 			const unit_map::const_iterator itor = resources::gameboard->units().find(i->first);
-			if(!itor.valid()) {
-				//This can happen if wml killed or moved a unit during a movement events of another leader
-				WRN_AI_TESTING_AI_DEFAULT << "leader_shares_keep_phase: Unit vanished.\n";
-				continue;
-			}
-
+			assert(itor.valid());
 			team &leader_team = resources::gameboard->get_team(itor->side());
 			if(itor != resources::gameboard->units().end() && itor->can_recruit() && itor->side() != get_side() && (leader_team.total_income() + leader_team.gold() > leader_team.minimum_recruit_price())){
 				pathfind::paths::dest_vect::const_iterator tokeep = i->second.destinations.find(keep);
@@ -1681,7 +1675,10 @@ void leader_shares_keep_phase::execute()
 					}else{
 						ai_leader->set_goto(keep);
 					}
-					//TODO: maybe we should we fix the entry in possible_moves for this move to avoid getting the 'Unit vanished' warning above.
+					// This is needed for sides with multiple leaders, in case a WML event does something
+					// or to account for a leader having previously been moved by this CA execution
+					possible_moves.clear();
+					calculate_moves(resources::gameboard->units(), possible_moves, friends_srcdst, friends_dstsrc, false, true);
 				}else{
 					LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok" << std::endl;
 				}
@@ -1689,6 +1686,8 @@ void leader_shares_keep_phase::execute()
 		}
 		ai_leader->remove_movement_ai();
 	}
+	// re-get the AI leaders, in case an event did something
+	ai_leaders = resources::gameboard->units().find_leaders(get_side());
 	for(unit_map::unit_iterator &leader : ai_leaders) {
 		leader->remove_movement_ai();
 	}
