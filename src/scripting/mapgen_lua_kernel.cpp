@@ -255,12 +255,10 @@ void mapgen_lua_kernel::user_config(const char * prog, const config & generator)
 
 int mapgen_lua_kernel::intf_get_variable(lua_State *L)
 {
-	if(!vars_) {
-		return 0;
-	}
+	static const config empty_cfg;
 
 	char const *m = luaL_checkstring(L, 1);
-	variable_access_const v(m, *vars_);
+	variable_access_const v(m, vars_ ? *vars_ : empty_cfg);
 	return luaW_pushvariable(L, v) ? 1 : 0;
 }
 std::string mapgen_lua_kernel::create_map(const char * prog, const config & generator, boost::optional<uint32_t> seed) // throws game::lua_error
