@@ -98,7 +98,6 @@ protected:
 	bool invalidate_on_turn_start_;
 	bool invalidate_on_tod_change_;
 	bool invalidate_on_gamestate_change_;
-	bool invalidate_on_minor_gamestate_change_;
 	std::string engine_;
 	std::string name_;
 	std::string id_;
