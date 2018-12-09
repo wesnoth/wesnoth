@@ -306,7 +306,6 @@ void attack_result::do_execute()
 
 
 	set_gamestate_changed();
-	// Rework if extended event system is implemented
 	get_info().recent_attacks.insert(defender_loc_);
 	//end of ugly hack
 	try {

@@ -186,7 +186,6 @@ std::string ai_composite::evaluate(const std::string& str)
 
 void ai_composite::new_turn()
 {
-	///	Rework if extended event system is implemented
 	recalculate_move_maps();
 	invalidate_defensive_position_cache();
 	invalidate_keeps_cache();

@@ -111,7 +111,6 @@ public:
 	{
 	}
 
-	/** Rework if extended event system is imlpemented */
 	std::set<map_location> recent_attacks;
 };
 
