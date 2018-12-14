@@ -23,6 +23,8 @@
 #include "actions/vision.hpp"
 
 #include "ai/lua/aspect_advancements.hpp"
+#include "formula/callable_objects.hpp"
+#include "formula/formula.hpp"
 #include "game_config.hpp"
 #include "game_data.hpp"
 #include "game_events/pump.hpp"
@@ -1587,24 +1589,24 @@ bool unit::abilities_filter_matches(const config& cfg, bool attacker, int res) c
 
 //functions for emulate weapon specials.
 //filter opponent and affect self/opponent/both option.
-bool unit::ability_filter_fighter(const std::string& ability, const std::string& filter_attacker , const config& cfg, const map_location& loc) const
+bool unit::ability_filter_fighter(const std::string& ability, const std::string& filter_attacker , const config& cfg, const map_location& loc, const unit& u2) const
 {
 	const config &filter = cfg.child(filter_attacker);
 	if(!filter) {
 		return true;
 	}
-	return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc);
+	return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc, u2);
 }
 
 static bool ability_apply_filter(const unit_map::const_iterator un, const unit_map::const_iterator up, const std::string& ability, const config& cfg, const map_location& loc, const map_location& opp_loc, bool attacker )
 {
-	if(!up->ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc)){
+	if(!up->ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc, *un)){
 		return true;
 	}
-	if((attacker && !un->ability_filter_fighter(ability, "filter_attacker", cfg, loc)) || (!attacker && !up->ability_filter_fighter(ability, "filter_attacker", cfg, opp_loc))){
+	if((attacker && !un->ability_filter_fighter(ability, "filter_attacker", cfg, loc, *up)) || (!attacker && !up->ability_filter_fighter(ability, "filter_attacker", cfg, opp_loc, *un))){
 		return true;
 	}
-	if((!attacker && !un->ability_filter_fighter(ability, "filter_defender", cfg, loc)) || (attacker && !up->ability_filter_fighter(ability, "filter_defender", cfg, opp_loc))){
+	if((!attacker && !un->ability_filter_fighter(ability, "filter_defender", cfg, loc, *up)) || (attacker && !up->ability_filter_fighter(ability, "filter_defender", cfg, opp_loc, *un))){
 		return true;
 	}
 	return false;
