@@ -1610,7 +1610,7 @@ public:
 	void remove_ability_by_id(const std::string& ability);
 
 	bool abilities_filter_matches(const config& cfg, bool attacker, int res) const;
-	bool ability_filter_fighter(const std::string& ability, const std::string& filter_attacker , const config& cfg,const map_location& loc) const;
+	bool ability_filter_fighter(const std::string& ability, const std::string& filter_attacker , const config& cfg, const map_location& loc, const unit& u2) const;
 
 private:
 	/**
