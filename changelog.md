@@ -105,6 +105,8 @@
      * Added an alternative method of completing the campaign (issue #3167).
    * The Hammer of Thursagan
      * S12 'The Underlevels': redesigned with completely new map and scenario
+   * The South Guard:
+     * Extensive scenario design improvements
  ### Language and i18n
    * Updated translations: Chinese (Traditional), French, Italian, Spanish.
  ### Lua API
