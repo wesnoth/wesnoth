@@ -259,10 +259,7 @@ void aspect_attacks_base::do_attack_analysis(
 				}
 			}
 
-			unit_ability_list abil = unit_itor->get_abilities("leadership",tiles[j]);
-			int leader_up = std::max(0, abil.highest("value").first);
-			int leader_down = std::min(0, abil.lowest("value").first);
-			int best_leadership_bonus = leader_up + leader_down;
+			int best_leadership_bonus = under_leadership(*unit_itor, tiles[j]);
 			double leadership_bonus = static_cast<double>(best_leadership_bonus+100)/100.0;
 			if (leadership_bonus > 1.1) {
 				LOG_AI << unit_itor->name() << " is getting leadership " << leadership_bonus << "\n";
