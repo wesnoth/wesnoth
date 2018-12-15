@@ -249,12 +249,21 @@ static config unit_level(const unit* u)
 	std::ostringstream str, tooltip;
 	str << u->level();
 	tooltip << _("Level: ") << "<b>" << u->level() << "</b>\n";
-	const std::vector<std::string> &adv_to = u->advances_to_translated();
-	if (adv_to.empty())
-		tooltip << _("No advancement");
-	else
+	const std::vector<std::string> &adv_to_types = u->advances_to_translated();
+	const std::vector<config> &adv_to_mods = u->get_modification_advances();
+	if(!adv_to_types.empty())
 		tooltip << _("Advances to:") << "\n<b>\t"
-			<< utils::join(adv_to, "\n\t") << "</b>";
+			<< utils::join(adv_to_types, "\n\t") << "</b>";
+	if(!adv_to_mods.empty()) {
+		std::vector<std::string> descriptions;
+		for(const config& adv : adv_to_mods)
+			descriptions.push_back(adv["description"].str());
+		if(!adv_to_types.empty()) tooltip << "\n";
+		tooltip << _("Modification advancements:") << "\n<b>\t"
+			<< utils::join(descriptions, "\n\t") << "</b>";
+	}
+	if(adv_to_types.empty() && adv_to_mods.empty())
+		tooltip << _("No advancement");
 	return text_report(str.str(), tooltip.str());
 }
 REPORT_GENERATOR(unit_level, rc)
