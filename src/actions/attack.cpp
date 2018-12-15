@@ -1604,6 +1604,9 @@ static bool ability_apply_filter(const unit_map::const_iterator un, const unit_m
 	if(!up->ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc, *un)){
 		return true;
 	}
+	if(!un->ability_filter_fighter(ability, "filter_student", cfg, loc, *up)){
+		return true;
+	}
 	if((attacker && !un->ability_filter_fighter(ability, "filter_attacker", cfg, loc, *up)) || (!attacker && !up->ability_filter_fighter(ability, "filter_attacker", cfg, opp_loc, *un))){
 		return true;
 	}
@@ -1673,12 +1676,13 @@ std::pair<int, bool> ability_leadership(const std::string& ability,const unit_ma
 	unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
 		const config &filter = (*i->first).child("filter_opponent");
+		const config &filter_student = (*i->first).child("filter_student");
 		const config &filter_attacker = (*i->first).child("filter_attacker");
 		const config &filter_defender = (*i->first).child("filter_defender");
 		bool show_result = false;
-		if(up == units.end() && !filter && !filter_attacker && !filter_defender) {
+		if(up == units.end() && !filter_student && !filter && !filter_attacker && !filter_defender) {
 			show_result = un->abilities_filter_matches(*i->first, attacker, abil_value);
-		} else if(up == units.end() && (filter || filter_attacker || filter_defender)) {
+		} else if(up == units.end() && (filter_student || filter || filter_attacker || filter_defender)) {
 			return {abil_value, false};
 		} else {
 			show_result = !(!un->abilities_filter_matches(*i->first, attacker, abil_value) || ability_apply_filter(un, up, ability, *i->first, loc, opp_loc, attacker));
