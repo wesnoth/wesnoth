@@ -592,7 +592,7 @@ theme::theme(const config& cfg, const SDL_Rect& screen)
 theme& theme::operator=(theme&& other)
 {
 	theme_reset_event_ = other.theme_reset_event_;
-	known_themes = std::move(other.known_themes);
+	known_themes = other.known_themes;
 	cur_theme = std::move(other.cur_theme);
 	cfg_ = std::move(other.cfg_);
 	panels_ = std::move(other.panels_);
