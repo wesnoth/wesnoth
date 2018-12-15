@@ -1,0 +1,15 @@
+# top-most EditorConfig file
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+
+[*.cfg]
+indent_style = space
+indent_size = 4
+
+[*.{cpp,hpp}]
+indent_style = tab
+indent_size = 8
