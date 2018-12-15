@@ -6,6 +6,8 @@
    * Descent Into Darkness:
      * Allow converting L3 necromancers to liches from S12 onwards (issue #3165).
      * Added an alternative method of completing the campaign (issue #3167).
+   * The Hammer of Thursagan
+     * S12 'The Underlevels': redesigned with completely new map and scenario
    * Northern Rebirth:
      * Fix loyal units obtained in S7 costing upkeep (introduced in 1.14.5)
      * S13: Improvement to the AIs
