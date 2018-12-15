@@ -12,7 +12,7 @@
      * Fix loyal units obtained in S7 costing upkeep (introduced in 1.14.5)
      * S13: Improvement to the AIs
    * The South Guard:
-     * Extensive text revisions
+     * Extensive text revisions and scenario improvements
    * Tutorial:
      * S2: Wolf riders are not initially recruited, to not hinder the player
        from reaching the island in time
