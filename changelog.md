@@ -103,6 +103,8 @@
    * Descent Into Darkness:
      * Allow converting L3 necromancers to liches from S12 onwards (issue #3165).
      * Added an alternative method of completing the campaign (issue #3167).
+   * The Hammer of Thursagan
+     * S12 'The Underlevels': redesigned with completely new map and scenario
  ### Language and i18n
    * Updated translations: Chinese (Traditional), French, Italian, Spanish.
  ### Lua API
