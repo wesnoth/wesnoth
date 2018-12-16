@@ -1153,7 +1153,7 @@ bool filter_base_matches(const config& cfg, int def)
 	return true;
 }
 
-effect::effect(const unit_ability_list& list, int def, bool backstab, bool old_calc) :
+effect::effect(const unit_ability_list& list, int def, bool backstab) :
 	effect_list_(),
 	composite_value_(0)
 {
@@ -1185,34 +1185,18 @@ effect::effect(const unit_ability_list& list, int def, bool backstab, bool old_c
 				callable.add("base_value", wfl::variant(def));
 				return formula.evaluate(callable).as_int();
 			});
-			
-			if(old_calc){
-			bool cumulative = cfg["cumulative"].to_bool();
-			if (!value_is_set && !cumulative) {
-				value_set = value;
-				set_effect_max.set(SET, value, ability.first, ability.second);
-			} else {
-				if (cumulative) value_set = std::max<int>(value_set, def);
-				if (value > value_set) {
-					value_set = value;
-					set_effect_max.set(SET, value, ability.first, ability.second);
-				}
+			int value_cum = cfg["cumulative"].to_bool() ? std::max(def, value) : value;
+			assert((set_effect_min.type != NOT_USED) == (set_effect_max.type != NOT_USED));
+			if(set_effect_min.type == NOT_USED) {
+				set_effect_min.set(SET, value_cum, ability.first, ability.second);
+				set_effect_max.set(SET, value_cum, ability.first, ability.second);
 			}
-			value_is_set = true;
-			} else {
-				int value_cum = cfg["cumulative"].to_bool() ? std::max(def, value) : value;
-				assert((set_effect_min.type != NOT_USED) == (set_effect_max.type != NOT_USED));
-				if(set_effect_min.type == NOT_USED) {
-					set_effect_min.set(SET, value_cum, ability.first, ability.second);
+			else {
+				if(value_cum > set_effect_max.value) {
 					set_effect_max.set(SET, value_cum, ability.first, ability.second);
 				}
-				else {
-					if(value_cum > set_effect_max.value) {
-						set_effect_max.set(SET, value_cum, ability.first, ability.second);
-					}
-					if(value_cum < set_effect_min.value) {
-						set_effect_min.set(SET, value_cum, ability.first, ability.second);
-					}
+				if(value_cum < set_effect_min.value) {
+					set_effect_min.set(SET, value_cum, ability.first, ability.second);
 				}
 			}
 		}
@@ -1265,10 +1249,8 @@ effect::effect(const unit_ability_list& list, int def, bool backstab, bool old_c
 			}
 		}
 	}
-
-	 if(value_is_set && set_effect_max.type != NOT_USED && old_calc) {
-		effect_list_.push_back(set_effect_max);
-	} else if(set_effect_max.type != NOT_USED) {
+	
+	if(set_effect_max.type != NOT_USED) {
 		value_set = std::max(set_effect_max.value, 0) + std::min(set_effect_min.value, 0);
 		if(set_effect_max.value > def) {
 			effect_list_.push_back(set_effect_max);
