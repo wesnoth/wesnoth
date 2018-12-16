@@ -95,7 +95,7 @@ void unit_recruit::filter_text_changed(text_box_base* textbox, const std::string
 			for(const auto & word : words)
 			{
 				// Search for the name in the local language.
-				// In debug mode, also search for the English name.
+				// In debug mode, also search for the type id.
 				found =
 				        (game_config::debug && ci_search(type->id(), word)) ||
 					ci_search(type->type_name(), word);
