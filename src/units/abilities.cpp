@@ -1159,7 +1159,6 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 {
 
 	int value_set = def;
-	bool value_is_set = false;
 	std::map<std::string,individual_effect> values_add;
 	std::map<std::string,individual_effect> values_mul;
 	std::map<std::string,individual_effect> values_div;
@@ -1249,7 +1248,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 			}
 		}
 	}
-	
+
 	if(set_effect_max.type != NOT_USED) {
 		value_set = std::max(set_effect_max.value, 0) + std::min(set_effect_min.value, 0);
 		if(set_effect_max.value > def) {
