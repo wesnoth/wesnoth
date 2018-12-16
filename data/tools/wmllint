@@ -1347,6 +1347,8 @@ def global_sanity_check(filename, lines):
     notecheck = True
     trait_note = dict(notepairs)
     note_trait = {p[1]:p[0] for p in notepairs}
+    unit_id = ""
+    base_unit = ""
     for nav in WmllintIterator(lines, filename):
         if "wmllint: notecheck off" in nav.text:
             notecheck = False
