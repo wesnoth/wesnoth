@@ -21,6 +21,8 @@
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/text_box.hpp"
+#include "gui/widgets/text_box_base.hpp"
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
@@ -55,13 +57,74 @@ static std::string can_afford_unit(const std::string& text, const bool can_affor
 	return can_afford ? text : "<span color='#ff0000'>" + text + "</span>";
 }
 
+namespace
+{
+
+bool ci_search(const std::string& a, const std::string& b)
+{
+	return std::search(a.begin(), a.end(),
+	                   b.begin(), b.end(),
+	                   chars_equal_insensitive) != a.end();
+}
+
+} // end unnamed namespace
+
+// Compare unit_create::filter_text_change
+void unit_recruit::filter_text_changed(text_box_base* textbox, const std::string& text)
+{
+	window& window = *textbox->get_window();
+
+	listbox& list = find_widget<listbox>(&window, "recruit_list", false);
+
+	const std::vector<std::string> words = utils::split(text, ' ');
+
+	if(words == last_words_)
+		return;
+	last_words_ = words;
+
+	boost::dynamic_bitset<> show_items;
+	show_items.resize(list.get_item_count(), true);
+
+	if(!text.empty()) {
+		for(unsigned int i = 0; i < list.get_item_count(); i++) {
+			assert(i < recruit_list_.size());
+			const unit_type* type = recruit_list_[i];
+			if(!type) continue;
+
+			bool found = false;
+			for(const auto & word : words)
+			{
+				// Search for the name in the local language.
+				// In debug mode, also search for the English name.
+				found =
+				        (game_config::debug && ci_search(type->id(), word)) ||
+					ci_search(type->type_name(), word);
+
+				if(!found) {
+					// one word doesn't match, we don't reach words.end()
+					break;
+				}
+			}
+
+			show_items[i] = found;
+		}
+	}
+
+	list.set_row_shown(show_items);
+}
+
 void unit_recruit::pre_show(window& window)
 {
+	text_box* filter = find_widget<text_box>(&window, "filter_box", false, true);
+	filter->set_text_changed_callback(
+			std::bind(&unit_recruit::filter_text_changed, this, _1, _2));
+
 	listbox& list = find_widget<listbox>(&window, "recruit_list", false);
 
 	connect_signal_notify_modified(list, std::bind(&unit_recruit::list_item_clicked, this, std::ref(window)));
 
-	window.keyboard_capture(&list);
+	window.keyboard_capture(filter);
+	window.add_to_keyboard_chain(&list);
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "show_help", false),
