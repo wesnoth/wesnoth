@@ -384,7 +384,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 			dstsrc.insert(trivial_mv);
 		}
 		/**
-		 * @todo This is where support for a speculative unit map is incomplete.
+		 * TODO: This is where support for a speculative unit map is incomplete.
 		 *       There are several places (deep) within the paths constructor
 		 *       where resources::gameboard->units() is assumed to be the unit map. Rather
 		 *       than introduce a new parameter to numerous functions, a better

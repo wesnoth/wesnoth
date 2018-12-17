@@ -377,7 +377,7 @@ void engine_lua::do_parse_goal_from_config(const config &cfg, std::back_insert_i
 
 std::string engine_lua::evaluate(const std::string &/*str*/)
 {
-	///@todo this is not mandatory, but if we want to allow lua to evaluate
+	// TODO: this is not mandatory, but if we want to allow lua to evaluate
 	// something 'in context' of this ai, this will be useful
 	return "";
 }

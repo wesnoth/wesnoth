@@ -15,8 +15,8 @@
 /**
  * @file
  * Managing the AIs lifecycle - headers
- * @todo 1.9 Refactor history handling and internal commands.
- * @todo 1.9 AI Interface command to clear the history.
+ * TODO: Refactor history handling and internal commands.
+ * TODO: AI Interface command to clear the history.
  */
 
 #pragma once
@@ -91,7 +91,7 @@ private:
 };
 
 /**
- * AI Command History Item. It is an implementation detail
+ * AI Command History Item. It is an implementation detail. See TODOs above.
  */
 class command_history_item{
 public:
@@ -484,7 +484,7 @@ private:
 	 * @param side side number (1-based).
 	 * @param str string to evaluate.
 	 * @return string result of evaluation.
-	 * @todo 1.9 rewrite this function to use a fai or lua parser.
+	 * TODO: rewrite this function to use a fai or lua parser.
 	 */
 	const std::string internal_evaluate_command( side_number side, const std::string& str );
 

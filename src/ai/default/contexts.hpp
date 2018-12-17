@@ -285,7 +285,7 @@ public:
 
 private:
 	recursion_counter recursion_counter_;
-	mutable std::vector<target> additional_targets_;///@todo 1.9 refactor this
+	mutable std::vector<target> additional_targets_;// TODO: refactor this (remove mutable)
 
 
 };

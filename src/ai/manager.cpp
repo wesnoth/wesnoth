@@ -490,7 +490,7 @@ bool manager::should_intercept( const std::string& str ) const
 //this is stub code to allow testing of basic 'history', 'repeat-last-command', 'add/remove/replace ai' capabilities.
 //yes, it doesn't look nice. but it is usable.
 //to be refactored at earliest opportunity
-///@todo 1.9 extract to separate class which will use fai or lua parser
+// TODO: extract to separate class which will use fai or lua parser
 const std::string manager::internal_evaluate_command( side_number side, const std::string& str ){
 	const int MAX_HISTORY_VISIBLE = 30;
 
