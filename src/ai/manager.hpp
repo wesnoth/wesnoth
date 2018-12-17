@@ -48,7 +48,6 @@ namespace ai
 /**
  * Base class that holds the AI and current AI parameters.
  * It is an implementation detail.
- * @todo 1.9 move it out of public view
  */
 class holder{
 public:

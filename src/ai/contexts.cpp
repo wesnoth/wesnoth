@@ -1163,7 +1163,6 @@ void readonly_context_impl::recalculate_move_maps() const
 					++it;
 				}
 			}
-		///@todo: shall possible moves be modified as well ?
 		}
 	}
 	move_maps_valid_ = true;

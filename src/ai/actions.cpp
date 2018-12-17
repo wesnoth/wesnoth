@@ -417,7 +417,6 @@ void move_result::do_check_after()
 		set_error(E_FAILED_TELEPORT);
 		return;
 	}
-	///@todo 1.9 add 'new units spotted' failure mode
 
 	if (!unreach_is_ok_ && unit_location_!=to_) {
 		set_error(E_NOT_REACHED_DESTINATION);
@@ -471,7 +470,7 @@ void move_result::do_execute()
 		std::size_t num_steps = ::actions::move_unit_and_record(
 			/*std::vector<map_location> steps*/ route_->steps,
 			/*::actions::undo_list* undo_stack*/ nullptr,
-			/*bool continue_move*/ true, ///@todo 1.9 set to false after implementing interrupt awareness
+			/*bool continue_move*/ true,
 			/*bool show_move*/ !preferences::skip_ai_moves(),
 			/*bool* interrupted*/ nullptr,
 			/*::actions::move_unit_spectator* move_spectator*/ &move_spectator);
@@ -799,9 +798,6 @@ void recruit_result::do_execute()
 	}
 
 	synced_context::run_in_synced_context_if_not_already("recruit", replay_helper::get_recruit(u->id(), recruit_location_, recruit_from_), false, !preferences::skip_ai_moves());
-	//TODO: should we do something to pass use_undo = false in replays and ai moves ?
-	//::actions::recruit_unit(*u, get_side(), recruit_location_, recruit_from_,
-	//                        !preferences::skip_ai_moves(), false);
 
 	set_gamestate_changed();
 	try {
