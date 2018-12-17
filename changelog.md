@@ -52,6 +52,7 @@
    * Fixed being able to dismiss a game lobby by pressing Esc.
    * Fixed multiple severe issues in the classic theme.
    * The "Attack Enemy" dialog now shows inactive weapon specials in gray. (PR #3686)
+   * Taking screenshots in title screen is possible again (issue #3235)
 
 ## Version 1.14.5
  ### AI
