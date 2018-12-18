@@ -2316,11 +2316,17 @@ def hack_syntax(filename, lines):
                 print('"%s", line %d: %s -> %s -- DO NOT PREFIX PATHS WITH "userdata/"' \
                       % (filename, i+1, userdata.group(), userdata.group(1)))
         lines[i] = precomment + comment
+
     # Ensure that every attack has a translatable description.
+    in_filter_wml = False
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
 
             break
+        elif "[filter_wml]" in lines[i]:
+            in_filter_wml = True
+        elif "[/filter_wml]" in lines[i]:
+            in_filter_wml = False
         elif "[attack]" in lines[i]:
             j = i
             have_description = False
@@ -2342,7 +2348,7 @@ def hack_syntax(filename, lines):
                             description = '"' + description + '"\n'
                         # Skip the insertion if this is a dummy declaration
                         # or one modifying an attack inherited from a base unit.
-                        if "no-icon" not in comment:
+                        if "no-icon" not in comment and not in_filter_wml:
                             new_line = leader(syntactic) + "description=_"+description
                             if verbose:
                                 print('"%s", line %d: inserting %s' % (filename, i+1, repr(new_line)))
