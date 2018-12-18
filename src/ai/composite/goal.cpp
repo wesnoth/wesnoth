@@ -263,8 +263,12 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target >>
 		const unit_filter ufilt{ vconfig(criteria) };
 		for (const unit &u : units)
 		{
-			//TODO: we will protect hidden units, by not testing for invisibility to current side
-			if (ufilt(u)) {
+			// 'protect_unit' can be set to any unit of any side -> exclude hidden units
+			// unless they are visible to the AI side (e.g. allies with shared vision).
+			// As is done in other parts of the AI, units under fog/shroud count as visible to the AI.
+			if (ufilt(u)
+				&& (!u.invisible(u.get_location()) || u.is_visible_to_team(current_team(), false)))
+			{
 				DBG_AI_GOAL << "side " << get_side() << ": in " << goal_type << ": " << u.get_location() << " should be protected\n";
 				items.insert(u.get_location());
 			}

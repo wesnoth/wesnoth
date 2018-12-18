@@ -490,7 +490,7 @@ bool manager::should_intercept( const std::string& str ) const
 //this is stub code to allow testing of basic 'history', 'repeat-last-command', 'add/remove/replace ai' capabilities.
 //yes, it doesn't look nice. but it is usable.
 //to be refactored at earliest opportunity
-///@todo 1.9 extract to separate class which will use fai or lua parser
+// TODO: extract to separate class which will use fai or lua parser
 const std::string manager::internal_evaluate_command( side_number side, const std::string& str ){
 	const int MAX_HISTORY_VISIBLE = 30;
 
@@ -604,7 +604,6 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 // ADD, CREATE AIs, OR LIST AI TYPES
 // =======================================================================
 
-///@todo 1.9 add error reporting
 bool manager::add_ai_for_side_from_file( side_number side, const std::string& file, bool replace )
 {
 	config cfg;
@@ -725,7 +724,6 @@ void manager::play_turn( side_number side ){
 	last_interact_ = 0;
 	num_interact_ = 0;
 	const int turn_start_time = SDL_GetTicks();
-	/*hack. @todo 1.9 rework via extended event system*/
 	get_ai_info().recent_attacks.clear();
 	ai_composite& ai_obj = get_active_ai_for_side(side);
 	resources::game_events->pump().fire("ai_turn");

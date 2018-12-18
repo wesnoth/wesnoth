@@ -174,7 +174,7 @@ std::string ai_composite::get_engine() const
 std::string ai_composite::evaluate(const std::string& str)
 {
 	config cfg;
-	cfg["engine"] = "fai";///@todo 1.9 : consider allowing other engines to evaluate
+	cfg["engine"] = "fai";
 	engine_ptr e_ptr = get_engine_by_cfg(cfg);
 	if (!e_ptr) {
 		// This should be unreachable, but not entirely sure...
@@ -186,7 +186,6 @@ std::string ai_composite::evaluate(const std::string& str)
 
 void ai_composite::new_turn()
 {
-	///@todo 1.9 replace with event system
 	recalculate_move_maps();
 	invalidate_defensive_position_cache();
 	invalidate_keeps_cache();

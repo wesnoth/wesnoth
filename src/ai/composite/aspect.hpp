@@ -98,7 +98,6 @@ protected:
 	bool invalidate_on_turn_start_;
 	bool invalidate_on_tod_change_;
 	bool invalidate_on_gamestate_change_;
-	bool invalidate_on_minor_gamestate_change_;
 	std::string engine_;
 	std::string name_;
 	std::string id_;
@@ -299,7 +298,6 @@ public:
 
 	virtual void recalculate() const
 	{
-		///@todo 1.9 optimize in case of an aspect which returns variant
 		for(const auto& f : boost::adaptors::reverse(facets_)) {
 			if (f->active()) {
 				this->value_ = f->get_ptr();

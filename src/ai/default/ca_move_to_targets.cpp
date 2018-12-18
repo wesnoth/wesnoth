@@ -402,12 +402,9 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 
 			const move_cost_calculator calc(*u, map_, units_, enemy_dstsrc);
 
-			///@todo 1.9: lower this value for perf,
-			// but best_rating is too big for scout and support
-			// which give a too small locStopValue
-			// so keep costy A* for the moment.
-			//const double locStopValue = std::min(best_target->value / best_rating, (double) 100.0);
-
+			// locStopValue controls how quickly we give up on the A* search, due
+			// to it seeming futile. Be very cautious about changing this value,
+			// as it can cause the AI to give up on searches and just do nothing.
 			const double locStopValue = 500.0;
 			const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*u, current_team());
 			pathfind::plain_route cur_route = pathfind::a_star_search(u->get_location(), best_target->loc, locStopValue, calc, map_.w(), map_.h(), &allowed_teleports);

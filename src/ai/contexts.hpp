@@ -1260,7 +1260,7 @@ public:
 	 * use of a speculative unit map.
 	 * NOTE: Support for a speculative map is broken (not used when pathfinding)
 	 *       and has not been used since (probably) r38610 (September 2009).
-	 *       (See the todo in the implementation.)
+	 *       (See the TODO in the implementation.)
 	 */
 	void calculate_moves(const unit_map& units,
 		std::map<map_location,pathfind::paths>& possible_moves, move_map& srcdst,

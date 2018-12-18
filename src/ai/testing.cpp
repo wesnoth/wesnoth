@@ -94,7 +94,6 @@ void ai_testing::log_game_start()
 		LOG_AI_TESTING << "AI_IDENTIFIER " << side << ": " << ai::manager::get_singleton().get_active_ai_identifier_for_side(side) << std::endl;
 		LOG_AI_TESTING << "TEAM " << side << ": " << tm->side() << std::endl;
 		resources::recorder->add_log_data("ai_log", "ai_id" + std::to_string(side), ai::manager::get_singleton().get_active_ai_identifier_for_side(side));
-		///@todo 1.9: add information about ai_config
 	}
 	LOG_AI_TESTING << "VERSION: " << game_config::revision << std::endl;
 	resources::recorder->add_log_data("ai_log","version",game_config::revision);
