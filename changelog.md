@@ -2,6 +2,10 @@
  ### AI
    * Fixed crash when the AI simulates a fight between two units which can slow but aren't yet slowed, then
      simulates another fight for one of them in Monte Carlo mode (issue #3650).
+   * Experimental AI recruiting: fixed AI crash for unit type with unknown race
+   * Support for modifying the available AIs using cores:
+     * New parameter default_ai_algorithm for setting the default AI
+     * New parameter mp_rank for setting the order in which AIs appear in the MP computer player selection menu
  ### Campaigns
    * Descent Into Darkness:
      * Allow converting L3 necromancers to liches from S12 onwards (issue #3165).
