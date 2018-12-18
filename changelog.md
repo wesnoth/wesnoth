@@ -4,6 +4,7 @@
      * Add [avoid] tag functionality to Multipack Wolves, Wolves, Swarm and Goto Micro AIs
      * Support named locations for [micro_ai] tag location keys
    * Experimental AI
+     * Deprecate EXPERIMENTAL_AI macro: use ai_algorithm=experimental_ai in the [ai] tag instead
      * Convert to using external candidate actions
      * Significantly speed up recruiting evaluation
      * Recruiting: add optional 'enemy_types' parameter
@@ -22,6 +23,10 @@
      * find_best_move(): return nil instead of {} if no move found (may break backward compatibility in rare cases)
      * Deprecate filter(), choose() and xyoff()
      * move_unit_out_of_way(): prevent potential for divide-by-zero
+   * Default AI
+     * Remove attack_depth aspect (had been non-functional for a long time already)
+     * [goal]name=protect_unit: do not protect units hidden from the AI
+     * General code clean-up, in particular of TODOs left over from 1.7 and 1.9
  ### Campaigns
    * A Tale of Two Brothers
      * S2 'Chase': improved behavior of undead side leader with custom AI
@@ -96,6 +101,10 @@
  ### AI
    * Fixed crash when the AI simulates a fight between two units which can slow but aren't yet slowed, then
      simulates another fight for one of them in Monte Carlo mode (issue #3650).
+   * Experimental AI recruiting: fixed AI crash for unit type with unknown race
+   * Support for modifying the available AIs using cores:
+     * New parameter default_ai_algorithm for setting the default AI
+     * New parameter mp_rank for setting the order in which AIs appear in the MP computer player selection menu
  ### Campaigns
    * Descent Into Darkness:
      * Allow converting L3 necromancers to liches from S12 onwards (issue #3165).
