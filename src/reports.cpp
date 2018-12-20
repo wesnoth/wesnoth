@@ -251,19 +251,23 @@ static config unit_level(const unit* u)
 	tooltip << _("Level: ") << "<b>" << u->level() << "</b>\n";
 	const std::vector<std::string> &adv_to_types = u->advances_to_translated();
 	const std::vector<config> &adv_to_mods = u->get_modification_advances();
-	if(!adv_to_types.empty())
-		tooltip << _("Advances to:") << "\n<b>\t"
-			<< utils::join(adv_to_types, "\n\t") << "</b>";
-	if(!adv_to_mods.empty()) {
-		std::vector<std::string> descriptions;
-		for(const config& adv : adv_to_mods)
-			descriptions.push_back(adv["description"].str());
-		if(!adv_to_types.empty()) tooltip << "\n";
-		tooltip << _("Modification advancements:") << "\n<b>\t"
-			<< utils::join(descriptions, "\n\t") << "</b>";
-	}
-	if(adv_to_types.empty() && adv_to_mods.empty())
+	const bool has_advancements = !adv_to_types.empty() || !adv_to_mods.empty();
+	if(has_advancements) {
+		tooltip << _("Advancements:") << "\n<b>\t";
+		if(!adv_to_types.empty())
+			tooltip << utils::join(adv_to_types, "\n\t");
+		if(!adv_to_mods.empty()) {
+			if(!adv_to_types.empty())
+				tooltip << "\n\t";
+			std::vector<std::string> descriptions;
+			for(const config& adv : adv_to_mods)
+				descriptions.push_back(adv["description"].str());
+			tooltip << utils::join(descriptions, "\n\t");
+		}
+		tooltip << "</b>";
+	} else {
 		tooltip << _("No advancement");
+	}
 	return text_report(str.str(), tooltip.str());
 }
 REPORT_GENERATOR(unit_level, rc)
