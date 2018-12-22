@@ -733,10 +733,12 @@ namespace { // helpers of intf_set_dialog_callback()
 	/** Helper struct for intf_set_dialog_callback. */
 	struct dialog_callback_wrapper
 	{
-		void forward(gui2::widget* widget)
+		void forward(gui2::widget* widget, bool& handled, bool& halt)
 		{
 			assert(widget);
 			dialog_callback(*widget);
+			handled = true;
+			halt = true;
 		}
 	};
 }//unnamed namespace for helpers of intf_set_dialog_callback()
@@ -767,14 +769,14 @@ int intf_set_dialog_callback(lua_State* L)
 
 	if(gui2::clickable_item* c = dynamic_cast<gui2::clickable_item*>(w)) {
 		static dialog_callback_wrapper wrapper;
-		c->connect_click_handler(std::bind(&dialog_callback_wrapper::forward, wrapper, w));
+		c->connect_click_handler(std::bind(&dialog_callback_wrapper::forward, wrapper, w, _3, _4));
 	} else if(gui2::selectable_item* si = dynamic_cast<gui2::selectable_item*>(w)) {
 		connect_signal_notify_modified(dynamic_cast<gui2::widget&>(*si), std::bind(dialog_callback, _1));
 	} else if(gui2::integer_selector* is = dynamic_cast<gui2::integer_selector*>(w)) {
 		connect_signal_notify_modified(dynamic_cast<gui2::widget&>(*is), std::bind(dialog_callback, _1));
 	} else if(gui2::listbox* l = dynamic_cast<gui2::listbox*>(w)) {
 		static dialog_callback_wrapper wrapper;
-		connect_signal_notify_modified(*l, std::bind(&dialog_callback_wrapper::forward, wrapper, w));
+		connect_signal_notify_modified(*l, std::bind(&dialog_callback_wrapper::forward, wrapper, w, _3, _4));
 	} else if(gui2::tree_view* tv = dynamic_cast<gui2::tree_view*>(w)) {
 		tv->set_selection_change_callback(&dialog_callback);
 	} else {
