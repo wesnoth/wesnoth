@@ -26,6 +26,7 @@
    * Updated translations: Chinese (Traditional), French, German, Italian,
      Spanish.
  ### Lua API
+   * Fix wesnoth.set_dialog_callback calling the function immediately when used in the previous callback. (issue #3794)
    * Fix wesnoth.set_dialog_value not triggering re-layout. (issue #3572)
  ### Miscellaneous and bug fixes
    * Fix crash with custom themes on desktop PCs. (issue #3599)
