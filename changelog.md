@@ -96,6 +96,7 @@
      UI afterwards (e.g. [redraw]) and the status panels are updated immediately.
      as well.
    * Re-added the Font Scaling preference.
+   * Enabled wesnothd and campaignd to accept IPv6 connections too
 
 ## Version 1.14.5+dev
  ### AI

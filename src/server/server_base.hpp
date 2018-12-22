@@ -43,10 +43,12 @@ protected:
 	unsigned short port_;
 	bool keep_alive_;
 	boost::asio::io_service io_service_;
-	boost::asio::ip::tcp::acceptor acceptor_;
+	boost::asio::ip::tcp::acceptor acceptor_v6_;
+	boost::asio::ip::tcp::acceptor acceptor_v4_;
+	void setup_acceptor(boost::asio::ip::tcp::acceptor& acceptor, boost::asio::ip::tcp::endpoint endpoint);
 	void start_server();
-	void serve();
-	void accept_connection(const boost::system::error_code& error, socket_ptr socket);
+	void serve(boost::asio::ip::tcp::acceptor& acceptor);
+	void accept_connection(boost::asio::ip::tcp::acceptor& acceptor, const boost::system::error_code& error, socket_ptr socket);
 
 	union {
 		uint32_t connection_num;
