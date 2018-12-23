@@ -115,7 +115,9 @@
    * The Hammer of Thursagan
      * S12 'The Underlevels': redesigned with completely new map and scenario
    * The South Guard:
-     * Extensive scenario design improvements
+     * Revised scenario and story dialogue.
+     * Reworked and rebalanced all scenario and map designs.
+     * Removed S6a 'Tidings Good and Ill'.
  ### Language and i18n
    * Updated translations: Chinese (Traditional), French, Italian, Spanish.
  ### Lua API
