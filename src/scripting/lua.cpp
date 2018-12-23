@@ -1052,7 +1052,7 @@ public:
 		//lua uses '@' to know that this is a file (as opposed to a something as opposed to something loaded via loadstring )
 		std::string chunkname = '@' + fname;
 		LOG_LUA << "starting to read from " << fname << "\n";
-		return  lua_load(L, &lua_filestream::lua_read_data, &lfs, chunkname.c_str(), NULL);
+		return  lua_load(L, &lua_filestream::lua_read_data, &lfs, chunkname.c_str(), "t");
 	}
 private:
 	char buff_[LUAL_BUFFERSIZE];
@@ -4239,7 +4239,9 @@ bool LuaKernel::execute(char const *prog, int nArgs, int nRets)
 	lua_State *L = mState;
 
 	// Compile script into a variadic function.
-	int res = luaL_loadstring(L, prog);
+	// pass 't' to prevent loading bytecode which is unsafe and can be used to escape the sandbox.
+	// todo: maybe allow a 'name' parameter to give better error messages.
+	int res = luaL_loadbufferx(L, prog, strlen(prog), /*name*/ prog, "t");
 	if (res)
 	{
 		char const *m = lua_tostring(L, -1);
