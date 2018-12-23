@@ -62,7 +62,7 @@ private:
 	int get_side_node_position(ng::side_engine_ptr side) const;
 
 	void on_controller_select(ng::side_engine_ptr side, grid& row_grid);
-	void on_ai_select(ng::side_engine_ptr side, menu_button& ai_menu);
+	void on_ai_select(ng::side_engine_ptr side, menu_button& ai_menu, const bool saved_game);
 	void on_color_select(ng::side_engine_ptr side, grid& row_grid);
 	void on_team_select(window& window, ng::side_engine_ptr side, menu_button& team_menu);
 

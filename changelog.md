@@ -6,6 +6,8 @@
    * Support for modifying the available AIs using cores:
      * New parameter default_ai_algorithm for setting the default AI
      * New parameter mp_rank for setting the order in which AIs appear in the MP computer player selection menu
+   * New option "Keep saved AI" when reloading games from the MP Create Game screen. Choosing this option
+     prevents overwriting of the saved AI by the default AI. (issue #3791)
  ### Campaigns
    * Descent Into Darkness:
      * Allow converting L3 necromancers to liches from S12 onwards (issue #3165).
