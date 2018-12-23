@@ -1052,7 +1052,7 @@ config side_engine::new_config() const
 		// AI algorithm, we do nothing. Otherwise we add the chosen AI and if this
 		// is a saved game, we also remove the old stages from the AI config.
 		if(ai_algorithm_ != "use_saved") {
-			if(parent_.params_.saved_game) {
+			if(parent_.params_.saved_game == mp_game_settings::SAVED_GAME_MODE::MIDGAME) {
 				for (config &ai_config : res.child_range("ai")) {
 					ai_config.clear_children("stage");
 				}
