@@ -20,7 +20,9 @@
      * Fix loyal units obtained in S7 costing upkeep (introduced in 1.14.5)
      * S13: Improvement to the AIs
    * The South Guard:
-     * Extensive text revisions and scenario improvements
+     * Revised scenario and story dialogue.
+     * Reworked and rebalanced all scenario and map designs.
+     * Removed S6a 'Tidings Good and Ill'.
    * Tutorial:
      * S2: Wolf riders are not initially recruited, to not hinder the player
        from reaching the island in time
