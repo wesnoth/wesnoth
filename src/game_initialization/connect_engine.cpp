@@ -1048,8 +1048,17 @@ config side_engine::new_config() const
 	}
 
 	if(controller_ == CNTR_COMPUTER && allow_player_) {
-		// Do not import default ai cfg otherwise - all is set by scenario config.
-		res.add_child_at("ai", config {"ai_algorithm", ai_algorithm_}, 0);
+		// If this is a saved game and "use_saved" (the default) was chosen for the
+		// AI algorithm, we do nothing. Otherwise we add the chosen AI and if this
+		// is a saved game, we also remove the old stages from the AI config.
+		if(ai_algorithm_ != "use_saved") {
+			if(parent_.params_.saved_game) {
+				for (config &ai_config : res.child_range("ai")) {
+					ai_config.clear_children("stage");
+				}
+			}
+			res.add_child_at("ai", config {"ai_algorithm", ai_algorithm_}, 0);
+		}
 	}
 
 	// A side's "current_player" is the player which has currently taken that side or the one for which it is reserved.
