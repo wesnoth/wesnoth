@@ -4935,7 +4935,7 @@ msgstr ""
 "такие территории, которые вынудят вашего противника занять такую же "
 "невыгодную позицию. Избегайте мест, где защита ваших бойцов низкая, а бойцов "
 "противника — средняя или выше. Учтите, что Вы будете нести тяжёлые потери, и "
-"занимайте все выгодняе для Вас поля."
+"занимайте все выгодные для Вас поля."
 
 #. [tip]
 #: data/tips.cfg:253
@@ -8328,6 +8328,14 @@ msgstr "Скрыть план $player"
 msgid "Whiteboard Options"
 msgstr "Настройки планировщика"
 
+#~ msgid "Ping timeout"
+#~ msgstr "Таймаут пинга"
+
+#~ msgid ""
+#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
+#~ "disable"
+#~ msgstr "Сколько секунд ждать ответа сервера на пинг. 0 — отключить"
+
 #, fuzzy
 #~| msgid "(this turn left)"
 #~ msgid "(this turn left)"
@@ -8338,12 +8346,12 @@ msgstr "Настройки планировщика"
 
 #, fuzzy
 #~| msgid " (missing)"
-#~ msgid "(missing)"
+#~ msgid "$era_name (missing)"
 #~ msgstr " (отсутствует)"
 
 #, fuzzy
 #~| msgid " (missing)"
-#~ msgid "$era_name (missing)"
+#~ msgid "(missing)"
 #~ msgstr " (отсутствует)"
 
 #~ msgid "none"
@@ -8360,14 +8368,6 @@ msgstr "Настройки планировщика"
 #~ msgstr[0] "за ход"
 #~ msgstr[1] "за ход"
 #~ msgstr[2] "за ход"
-
-#~ msgid "Ping timeout"
-#~ msgstr "Таймаут пинга"
-
-#~ msgid ""
-#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
-#~ "disable"
-#~ msgstr "Сколько секунд ждать ответа сервера на пинг. 0 — отключить"
 
 #, fuzzy
 #~| msgid "Size: "
