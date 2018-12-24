@@ -10,16 +10,16 @@ msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-09-09 11:38+0300\n"
-"PO-Revision-Date: 2012-10-31 12:38+0200\n"
-"Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2018-10-28 22:11+0200\n"
+"Last-Translator: AncientGeneral <greatgeneral12@gmail.com>\n"
+"Language-Team: \n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
@@ -120,12 +120,12 @@ msgstr ""
 #. [section]: id=editor
 #: data/core/editor/help.cfg:5
 msgid "Map and Scenario Editor"
-msgstr ""
+msgstr "Редактор карт та сценаріїв"
 
 #. [topic]: id=editor_brush
 #: data/core/editor/help.cfg:13
 msgid "Editor Brush"
-msgstr ""
+msgstr "Пензлі редактора"
 
 #. [topic]: id=editor_brush
 #. [topic]: id=editor_clipboard
@@ -150,7 +150,7 @@ msgstr ""
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:29
 msgid "Paint Tool"
-msgstr ""
+msgstr "Інструмент малювання"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:30
@@ -163,7 +163,7 @@ msgstr ""
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:39
 msgid "Fill Tool"
-msgstr ""
+msgstr "Інструмент заповнення"
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:40
@@ -176,7 +176,7 @@ msgstr ""
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:49
 msgid "Select Tool"
-msgstr ""
+msgstr "Інструмент вибору"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:50
@@ -189,7 +189,7 @@ msgstr ""
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:59
 msgid "Paste Tool"
-msgstr ""
+msgstr "Інструмент вставки"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:60
@@ -199,7 +199,7 @@ msgstr ""
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:67
 msgid "Starting Tool"
-msgstr ""
+msgstr "Інструмент Початкова позиція"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:68
@@ -213,12 +213,12 @@ msgstr ""
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:77
 msgid "Label Tool"
-msgstr ""
+msgstr "Інструмент Мітка"
 
 #. [topic]: id=editor_tool_item
 #: data/core/editor/help.cfg:85
 msgid "Item Tool"
-msgstr ""
+msgstr "Інструмент Предмет"
 
 #. [topic]: id=editor_tool_soundsource
 #: data/core/editor/help.cfg:93
@@ -236,17 +236,17 @@ msgstr ""
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:103
 msgid "Village Ownership Tool"
-msgstr ""
+msgstr "Інструмент Власник села"
 
 #. [topic]: id=editor_tool_unit
 #: data/core/editor/help.cfg:111
 msgid "Unit Tool"
-msgstr ""
+msgstr "Інструмент Боєць"
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:119
 msgid "Named Areas"
-msgstr ""
+msgstr "Іменовані області"
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:120
@@ -263,7 +263,7 @@ msgstr ""
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:130
 msgid "Playlist Manager"
-msgstr ""
+msgstr "Менеджер списоку музики"
 
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:131
@@ -429,11 +429,6 @@ msgstr ""
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:198
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -441,7 +436,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Ресурси творця'</header>"
+"<header>text='Режим Сценарій'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:200
@@ -459,7 +454,7 @@ msgstr ""
 #. [topic]: id=editor_toolkit
 #: data/core/editor/help.cfg:211
 msgid "Editor Tools"
-msgstr ""
+msgstr "Інструменти редактора"
 
 #. [topic]: id=editor_toolkit
 #: data/core/editor/help.cfg:212
@@ -485,10 +480,8 @@ msgstr ""
 
 #. [topic]: id=editor_terrain
 #: data/core/editor/help.cfg:234
-#, fuzzy
-#| msgid "Terrain Modifiers"
 msgid "Terrain Editor"
-msgstr "Модифікатори місцевості"
+msgstr "Редактор місцевості"
 
 #. [topic]: id=editor_terrain
 #: data/core/editor/help.cfg:235
@@ -513,12 +506,12 @@ msgstr ""
 #. [topic]: id=editor_time_schedule
 #: data/core/editor/help.cfg:250
 msgid "Time Schedule Editor"
-msgstr ""
+msgstr "Редактор часу доби"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:258
 msgid "Editor Palette"
-msgstr ""
+msgstr "Палітра редактора"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:259
@@ -598,12 +591,6 @@ msgstr "Великий океан"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:33
-#, fuzzy
-#| msgid ""
-#| "Lies to the west of the <ref>dst='great_continent' text='continent'</ref> "
-#| "and all rivers eventually flow to it. Far to the west in the the Great "
-#| "Ocean is a huge archipelago called <ref>dst='morogor' text='Morogor'</"
-#| "ref>."
 msgid ""
 "Lies to the west of the <ref>dst='great_continent' text='continent'</ref> "
 "and all rivers eventually flow to it. Far to the west in the Great Ocean is "
@@ -620,13 +607,6 @@ msgstr "Морогор"
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:39
-#, fuzzy
-#| msgid ""
-#| "Archipelago, located somewhere in the <ref>dst='great_ocean' text='Great "
-#| "Ocean'</ref> west of the <ref>dst='green_isle' text='Green Isle'</ref> "
-#| "and east of the <ref>dst=old_continent text='Old Continent'</ref>.\n"
-#| "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
-#| "The central island of the archipelago is also called ‘Morogor’."
 msgid ""
 "Archipelago, located somewhere in the <ref>dst='great_ocean' text='Great "
 "Ocean'</ref> east of the <ref>dst='green_isle' text='Green Isle'</ref> and "
@@ -636,7 +616,8 @@ msgid ""
 msgstr ""
 "Архипелаг, розташований десь в <ref>dst='great_ocean' text='Великому "
 "океані'</ref> на захід від <ref>dst='green_isle' text='Зеленого острову'</"
-"ref> і на схід від <ref>dst=old_continent text='Старого континенту'</ref>.\n"
+"ref> і на схід від <ref>dst=great_continent text='Великого континенту'</"
+"ref>.\n"
 "В основному заселений <ref>dst='..race_drake' text='дрейками'</ref>.\n"
 "Центральний острів архипелагу також називається \"Морогор\"."
 
@@ -1226,10 +1207,8 @@ msgstr ""
 
 #. [section]: id=schedule
 #: data/core/help.cfg:14
-#, fuzzy
-#| msgid "Time of Day"
 msgid "Time of Day Schedule"
-msgstr "Час Доби"
+msgstr "Розклад часу доби"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
@@ -1271,7 +1250,7 @@ msgstr "Особливості зброї"
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:66 data/core/help.cfg:131
 msgid "Eras"
-msgstr ""
+msgstr "Ери"
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
@@ -2303,10 +2282,6 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:324
-#, fuzzy
-#| msgid ""
-#| " red if it can no longer move or attack, or the user ended the unit’s "
-#| "turn."
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
@@ -2320,8 +2295,6 @@ msgstr " синій, якщо боєць - ваш союзник, яким ви 
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:326
-#, fuzzy
-#| msgid " Enemy units have no orb on top of their energy bar."
 msgid " Enemy units have no orb on top of their energy bar."
 msgstr " Бійці противника не мають кулі над смужкою здоров'я."
 
@@ -2425,15 +2398,11 @@ msgstr "Друга варта"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:350
-#, fuzzy
-#| msgid ""
-#| "Keep in mind that some scenarios take place underground, where it is "
-#| "perpetually night!"
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!\n"
 msgstr ""
-"Пам'ятайте, що деякі сценарії відбуваються в підземеллі, де завжди ніч!"
+"Пам'ятайте, що деякі сценарії відбуваються в підземеллі, де завжди ніч!\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:352
@@ -3435,8 +3404,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:585
-#, fuzzy
-#| msgid "Multiplayer commands"
 msgid "Multiplayer Commands"
 msgstr "Команди мультиплеєру"
 
@@ -3573,8 +3540,6 @@ msgstr ""
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:623
-#, fuzzy
-#| msgid "Debug mode commands"
 msgid "Debug Mode Commands"
 msgstr "Команди режиму налагодження"
 
@@ -3809,15 +3774,6 @@ msgstr "лідерство"
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:108
-#, fuzzy
-#| msgid ""
-#| "This unit can lead our own units that are next to it, making them fight "
-#| "better.\n"
-#| "\n"
-#| "Adjacent own units of lower level will do more damage in battle. When a "
-#| "unit adjacent to, of a lower level than, and on the same side as a unit "
-#| "with Leadership engages in combat, its attacks do 25% more damage times "
-#| "the difference in their levels."
 msgid ""
 "This unit can lead your own units that are next to it, making them fight "
 "better.\n"
@@ -4045,11 +4001,6 @@ msgstr "чума"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/abilities.cfg:305
-#, fuzzy
-#| msgid ""
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "on the same side as the unit with the Plague attack. This doesn’t work on "
@@ -4175,11 +4126,6 @@ msgstr "отрута"
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:415
-#, fuzzy
-#| msgid ""
-#| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
-#| "until they are cured or are reduced to 1 HP. Poison can not, of itself, "
-#| "kill a unit."
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
@@ -4332,17 +4278,13 @@ msgstr "Друга варта"
 
 #. [time]: id=morning1
 #: data/core/macros/schedules.cfg:520
-#, fuzzy
-#| msgid "Morning"
 msgid "First Morning"
-msgstr "Ранок"
+msgstr "Перший ранок"
 
 #. [time]: id=morning2
 #: data/core/macros/schedules.cfg:532
-#, fuzzy
-#| msgid "Morning"
 msgid "Second Morning"
-msgstr "Ранок"
+msgstr "Другий ранок"
 
 #. [time]: id=midday1
 #: data/core/macros/schedules.cfg:544
@@ -5241,7 +5183,7 @@ msgstr "Дрейк"
 #. [race]: id=drake
 #: data/core/units.cfg:59
 msgid "race+female^Drake"
-msgstr "Дрейка"
+msgstr "Дрейк"
 
 #. [race]: id=drake
 #: data/core/units.cfg:60
@@ -5450,7 +5392,7 @@ msgstr "Гном"
 #. [race]: id=dwarf
 #: data/core/units.cfg:95
 msgid "race+female^Dwarf"
-msgstr "Гнома"
+msgstr "Гном"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:96
@@ -6102,10 +6044,8 @@ msgstr "Русалка"
 
 #. [race]: id=merman
 #: data/core/units.cfg:289
-#, fuzzy
-#| msgid "race^Troll"
 msgid "race^Merfolk"
-msgstr "Троль"
+msgstr "Водяні"
 
 #. [race]: id=merman
 #: data/core/units.cfg:291
@@ -6208,7 +6148,7 @@ msgstr "Огр"
 #. [race]: id=ogre
 #: data/core/units.cfg:321
 msgid "race+female^Ogre"
-msgstr "Огра"
+msgstr "Огр"
 
 #. [race]: id=ogre
 #: data/core/units.cfg:322
@@ -6217,22 +6157,6 @@ msgstr "Огри"
 
 #. [race]: id=ogre
 #: data/core/units.cfg:323
-#, fuzzy
-#| msgid ""
-#| "Ogres are a wild and uncivilized race who dwell mainly in the wilderness "
-#| "of the Great Continent. Physically, they resemble humans and orcs but are "
-#| "larger and stronger. Even their adolescents are more than a match for "
-#| "most men. Ogres are distrusted in many populated areas and usually either "
-#| "avoid them or are driven out by force. Instead, they lurk the mountainous "
-#| "areas on the edges of civilization, where hungry ogre bandits provide a "
-#| "constant threat to travelers and caravans. While ogres are not "
-#| "particularly intelligent or quick, their toughness and physical strength "
-#| "make them a valuable asset in the armies of other races. They are "
-#| "especially valued by more ruthless commanders who don't mind the ogres' "
-#| "brutality. Little is known about their biology or society, if they can "
-#| "truly be said to have one, but they are said to attack alongside wolves "
-#| "and other beasts. Whether this is a sign of cooperation, domestication, "
-#| "or simply mutual opportunism is not known."
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -6249,7 +6173,7 @@ msgid ""
 "is a sign of cooperation, domestication, or simply mutual opportunism is not "
 "known."
 msgstr ""
-"Огри - дика, нецивілізована раса, що мешкає переважно нв диких землях "
+"Огри - дика, нецивілізована раса, що мешкає переважно на диких землях "
 "Великого Континенту. Зовні вони нагадують людей і орків, але вони більші та "
 "сильніші. Дорослий чоловік навряд чи зрівняється навіть з їх дітьми. В "
 "заселених місцях до огрів відносяться непривітно, і, як правило, вони "
@@ -6271,7 +6195,7 @@ msgstr "Орк"
 #. [race]: id=orc
 #: data/core/units.cfg:332
 msgid "race+female^Orc"
-msgstr "Орка"
+msgstr "Орк"
 
 #. [race]: id=orc
 #: data/core/units.cfg:333

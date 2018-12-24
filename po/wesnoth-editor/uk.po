@@ -10,16 +10,16 @@ msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-07-08 04:51-0400\n"
-"PO-Revision-Date: 2012-10-31 12:38+0200\n"
-"Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2018-10-28 19:23+0200\n"
+"Last-Translator: AncientGeneral <greatgeneral12@gmail.com>\n"
+"Language-Team: \n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -43,10 +43,8 @@ msgstr "Лінія Пн.Зх.-Пд.Сх."
 
 #. [brush]: id=brush-sw-ne
 #: data/core/editor/brushes.cfg:63
-#, fuzzy
-#| msgid "Hex Line SE-NW"
 msgid "Hex Line SW-NE"
-msgstr "Лінія Пд.Сх.-Пн.Зх."
+msgstr "Лінія Пд.Зх.-Пн.Сх."
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -127,59 +125,57 @@ msgstr "особливе"
 #. Describes a scenario in the editor that has not set a time of day schedule
 #: data/core/editor/time-of-day.cfg:6
 msgid "time of day^None"
-msgstr ""
+msgstr "Немає"
 
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:11
 msgid "Test"
-msgstr ""
+msgstr "Тест"
 
 #. [editor_times]: id=default
 #: data/core/editor/time-of-day.cfg:22
 msgid "Default"
-msgstr ""
+msgstr "Типово"
 
 #. [editor_times]: id=summer
 #: data/core/editor/time-of-day.cfg:28
 msgid "Summer"
-msgstr ""
+msgstr "Літо"
 
 #. [editor_times]: id=winter
 #: data/core/editor/time-of-day.cfg:34
 msgid "Winter"
-msgstr ""
+msgstr "Зима"
 
 #. [editor_times]: id=underground
 #: data/core/editor/time-of-day.cfg:40
 msgid "Underground"
-msgstr ""
+msgstr "Підземелля"
 
 #. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:46
 msgid "Deep Underground"
-msgstr ""
+msgstr "Глибоке підземелля"
 
 #. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:52
 msgid "Indoors"
-msgstr ""
+msgstr "В приміщенні"
 
 #. [editor_times]: id=24
 #: data/core/editor/time-of-day.cfg:58
 msgid "24 Hour Schedule"
-msgstr ""
+msgstr "24-годинний час"
 
 #. [editor_times]: id=after_the_fall
 #: data/core/editor/time-of-day.cfg:64
 msgid "After the Fall"
-msgstr ""
+msgstr "Після Падіння"
 
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
-#, fuzzy
-#| msgid "Quit Editor"
 msgid "theme^Editor"
-msgstr "Вийти з редактора"
+msgstr "Редактор"
 
 #. [menu]: id=menu-editor-file, type=turbo
 #: data/themes/editor.cfg:61
@@ -189,7 +185,7 @@ msgstr "Файл"
 #. [menu]: id=menu-editor-recent
 #: data/themes/editor.cfg:72
 msgid "Load Recent"
-msgstr ""
+msgstr "Завантажити недавні"
 
 #. [menu]: id=menu-editor-map
 #: data/themes/editor.cfg:90
@@ -199,12 +195,12 @@ msgstr "Карта"
 #. [menu]: id=menu-unit-facing
 #: data/themes/editor.cfg:98
 msgid "Unit Facing"
-msgstr ""
+msgstr "Напрямок бійця"
 
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:104
 msgid "Transition Update"
-msgstr ""
+msgstr "Оновити переходи"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor.cfg:111
@@ -214,17 +210,17 @@ msgstr "Вікно"
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:120
 msgid "Areas"
-msgstr ""
+msgstr "Області"
 
 #. [menu]: id=menu-editor-local-time
 #: data/themes/editor.cfg:128
 msgid "Assign Local Time"
-msgstr ""
+msgstr "Призначити місцевий час"
 
 #. [menu]: id=menu-editor-local-schedule
 #: data/themes/editor.cfg:134
 msgid "Assign Local Time Schedule"
-msgstr ""
+msgstr "Призначити розклад місцевого часу"
 
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:142
@@ -239,46 +235,46 @@ msgstr "села"
 #. [label]: id=units-icon
 #: data/themes/editor.cfg:175
 msgid "units"
-msgstr ""
+msgstr "бійці"
 
 #. [menu]: id=switch_time
 #: data/themes/editor.cfg:454
 msgid "Time Schedule Menu"
-msgstr ""
+msgstr "Меню часу доби"
 
 #. [menu]: id=menu-playlist
 #: data/themes/editor.cfg:465
 msgid "Playlist"
-msgstr ""
+msgstr "Список музики"
 
 #. [menu]: id=menu-editor-schedule
 #: data/themes/editor.cfg:471
 msgid "Assign Time Schedule"
-msgstr ""
+msgstr "Призначити розклад часу доби"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:62
 msgid "Identifier: "
-msgstr ""
+msgstr "Індефікатор: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Name: "
-msgstr ""
+msgstr "Ім'я: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:64
 msgid "Type: "
-msgstr ""
+msgstr "Тип: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:65
 msgid "Level: "
-msgstr ""
+msgstr "Рівень: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:66
 msgid "Cost: "
-msgstr ""
+msgstr "Вартість: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:67
 msgid "Recruit: "
-msgstr ""
+msgstr "Вербувати: "
 
 #: src/editor/controller/editor_controller.cpp:178
 msgid "Fatal error"
@@ -289,10 +285,6 @@ msgid "Do you really want to quit?"
 msgstr "Ви точно хочете вийти?"
 
 #: src/editor/controller/editor_controller.cpp:210
-#, fuzzy
-#| msgid ""
-#| "Do you really want to quit? Changes in the map since the last save will "
-#| "be lost."
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -314,55 +306,47 @@ msgstr "Редактора часу доби не знайдено."
 
 #: src/editor/controller/editor_controller.cpp:1147
 msgid "Change Unit ID"
-msgstr ""
+msgstr "Змінити ID бійця"
 
 #: src/editor/controller/editor_controller.cpp:1148
 msgid "ID:"
-msgstr ""
+msgstr "ID:"
 
 #: src/editor/controller/editor_controller.cpp:1164
 msgid "Rename Unit"
-msgstr ""
+msgstr "Перейменувати бійця"
 
 #: src/editor/controller/editor_controller.cpp:1165
 msgid "Name:"
-msgstr ""
+msgstr "Назва:"
 
 #: src/editor/map/context_manager.cpp:205
 msgid "Load Map"
-msgstr ""
+msgstr "Завантажити карту"
 
 #: src/editor/map/context_manager.cpp:273 src/editor/map/map_context.cpp:838
-#, fuzzy
-#| msgid "(New Map)"
 msgid "New Map"
-msgstr "(Нова Карта)"
+msgstr "Нова карта"
 
 #: src/editor/map/context_manager.cpp:286 src/editor/map/map_context.cpp:838
-#, fuzzy
-#| msgid "(New Map)"
 msgid "New Scenario"
-msgstr "(Нова Карта)"
+msgstr "Новий сценарій"
 
 #: src/editor/map/context_manager.cpp:342
 msgid "No Recent Files"
-msgstr ""
+msgstr "Немає недавніх файлів"
 
 #: src/editor/map/context_manager.cpp:380
-#, fuzzy
-#| msgid "(New Map)"
 msgid "Unnamed Area"
-msgstr "(Нова Карта)"
+msgstr "Неназвана область"
 
 #: src/editor/map/context_manager.cpp:411
-#, fuzzy
-#| msgid "(New Map)"
 msgid "New Side"
-msgstr "(Нова Карта)"
+msgstr "Нова сторона"
 
 #: src/editor/map/context_manager.cpp:467
 msgid "Apply Mask"
-msgstr ""
+msgstr "Застосувати маску"
 
 #: src/editor/map/context_manager.cpp:476
 msgid "Error loading mask"
@@ -370,11 +354,11 @@ msgstr "Помилка при завантаженні маски"
 
 #: src/editor/map/context_manager.cpp:496
 msgid "Identifier:"
-msgstr ""
+msgstr "Індефікатор:"
 
 #: src/editor/map/context_manager.cpp:496
 msgid "Rename Area"
-msgstr ""
+msgstr "Переіменувати область"
 
 #: src/editor/map/context_manager.cpp:510
 msgid "Choose Target Map"
@@ -386,16 +370,12 @@ msgid "Error loading map"
 msgstr "Помилка при завантаженні карти"
 
 #: src/editor/map/context_manager.cpp:645
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Зберегти карту як"
 
 #: src/editor/map/context_manager.cpp:666
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save Scenario As"
-msgstr "Зберегти карту як"
+msgstr "Зберегти сценарій як"
 
 #: src/editor/map/context_manager.cpp:698
 msgid "No random map generators found."
@@ -411,20 +391,14 @@ msgid "Unsaved Changes"
 msgstr "Незбережені зміни"
 
 #: src/editor/map/context_manager.cpp:733
-#, fuzzy
-#| msgid ""
-#| "Do you want to discard all changes you made to the map since the last "
-#| "save?"
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "Ви дійсно хочете відкинути всі зміни, які внесли від часу останнього "
 "збереження карти?"
 
 #: src/editor/map/context_manager.cpp:789
-#, fuzzy
-#| msgid "This map is already open."
 msgid "This scenario is already open."
-msgstr "Ця карта вже відкрита."
+msgstr "Цей сценарій вже відкритий."
 
 #: src/editor/map/context_manager.cpp:812
 #: src/editor/map/context_manager.cpp:875
@@ -432,10 +406,8 @@ msgid "This map is already open."
 msgstr "Ця карта вже відкрита."
 
 #: src/editor/map/context_manager.cpp:836
-#, fuzzy
-#| msgid "Map saved."
 msgid "Scenario saved."
-msgstr "Карту збережено."
+msgstr "Сценарій збережено."
 
 #: src/editor/map/context_manager.cpp:851
 msgid "Map saved."
@@ -460,10 +432,8 @@ msgstr ""
 
 #: src/editor/map/editor_map.cpp:148
 #: src/editor/palette/location_palette.cpp:119
-#, fuzzy
-#| msgid "Player $player_number"
 msgid "Player $side_num"
-msgstr "Гравець $player_number"
+msgstr "Гравець $side_num"
 
 #: src/editor/map/editor_map.cpp:283
 msgid "The size of the target map is different from the current map"
@@ -474,10 +444,8 @@ msgid "File not found"
 msgstr "Файл не знайдено"
 
 #: src/editor/map/map_context.cpp:152
-#, fuzzy
-#| msgid "Empty map file"
 msgid "Empty file"
-msgstr "Файл карти порожній"
+msgstr "Порожній файл"
 
 #: src/editor/map/map_context.cpp:208
 msgid ""
@@ -488,10 +456,8 @@ msgstr ""
 "файл"
 
 #: src/editor/map/map_context.cpp:604
-#, fuzzy
-#| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
-msgstr "Неможливо зберегти карту: $msg"
+msgstr "Неможливо зберегти сценарій: $msg"
 
 #: src/editor/map/map_context.cpp:639
 msgid "Could not save into scenario"
@@ -515,27 +481,27 @@ msgstr "Просто так в грі не буде працювати."
 
 #: src/editor/palette/location_palette.cpp:256
 msgid "Go To"
-msgstr ""
+msgstr "Йти до"
 
 #: src/editor/palette/location_palette.cpp:263
 msgid "Add"
-msgstr ""
+msgstr "Додати"
 
 #: src/editor/palette/location_palette.cpp:265
 msgid "New Location Identifier"
-msgstr ""
+msgstr "Новий ідентифікатор місцевості"
 
 #: src/editor/palette/location_palette.cpp:272
 msgid "Error"
-msgstr ""
+msgstr "Помилка"
 
 #: src/editor/palette/location_palette.cpp:273
 msgid "Invalid location id"
-msgstr ""
+msgstr "Невірний id місцевості"
 
 #: src/editor/palette/location_palette.cpp:280
 msgid "Delete"
-msgstr ""
+msgstr "Видалити"
 
 #: src/editor/palette/terrain_palettes.cpp:231
 msgid "FG: "
@@ -546,16 +512,17 @@ msgid "BG: "
 msgstr "Тло:"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:137
+#, fuzzy
 msgid "Clipboard support not found, contact your packager"
-msgstr ""
+msgstr "Підтримка буферу обміну не знайдено, зв'яжіться з вашим packager"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:201
 msgid "Choose File"
-msgstr ""
+msgstr "Виберіть файл"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:202
 msgid "Select"
-msgstr ""
+msgstr "Вибрати"
 
 #: src/gui/dialogs/editor/set_starting_position.cpp:88
 msgid "player^None"
