@@ -642,8 +642,8 @@ if test "$FREETYPE_CONFIG" = "no" ; then
 *** Unable to find FreeType2 library (http://www.freetype.org/)
 ])
 else
-    CPPFLAGS="$CPPFLAGS `$FREETYPE_CONFIG $freetypeconf_args --cflags`"
-    FREETYPE_LIBS=`$FREETYPE_CONFIG $freetypeconf_args --libs`
+    CPPFLAGS="$CPPFLAGS `pkg-config --cflags freetype2`"
+    FREETYPE_LIBS="`pkg-config --libs freetype2`"
 fi
 
 AC_SUBST([FREETYPE_LIBS])
