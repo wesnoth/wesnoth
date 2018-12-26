@@ -212,7 +212,12 @@ namespace {
 
 		// Now we can get the aggregate healing amount.
 		unit_abilities::effect heal_effect(heal_list, 0, false);
-		if ( update_healing(healing, harming, heal_effect.get_composite_value()) )
+		int heal_up = std::max(0, heal_list.highest("value").first);
+		int heal_down = std::min(0, heal_list.lowest("value").first);
+		int heal_add = heal_list.highest("add").first;
+		int heal_sub = heal_list.highest("sub").first;
+		int heals = heal_up + heal_down + heal_add - heal_sub;
+		if ( update_healing(healing, harming, heals) )
 		{
 			// Collect the healers involved.
 			for (const unit_abilities::individual_effect & heal : heal_effect)
