@@ -853,12 +853,16 @@ LIBS="$LIBS $ZLIB_LIBS"
 # Check for Lua                                                       #
 #######################################################################
 
-PKG_CHECK_MODULES(LUA, [lua >= 5.1], , [
+PKG_CHECK_MODULES(LUA, [lua >= 5.1 lua < 5.2], , [
 	AC_MSG_RESULT([no])
-	PKG_CHECK_MODULES(LUA, [lua5.1 >= 5.1], , [
+	PKG_CHECK_MODULES(LUA, [lua5.1 >= 5.1 lua5.1 < 5.2], , [
 		AC_MSG_RESULT([no])
-		PKG_CHECK_MODULES(LUA, [lua-5.1 >= 5.1])
-	])])
+		PKG_CHECK_MODULES(LUA, [lua-5.1 >= 5.1 lua-5.1 < 5.2], , [
+		    AC_MSG_RESULT([no])
+		    PKG_CHECK_MODULES(LUA, [lua51 >= 5.1 lua51 < 5.2])
+	    ])
+	])
+])
 CPPFLAGS="$CPPFLAGS $LUA_CFLAGS"
 LIBS="$LIBS $LUA_LIBS"
 
