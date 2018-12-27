@@ -47,7 +47,7 @@ function ca_forest_animals_move:execution(cfg)
     wesnoth.wml_actions.clear_variable { name = 'holes_wml' }
 
     -- If cfg.rabbit_hole_img is set, only items with that image or halo count as holes
-    local holes
+    local holes = {}
     if cfg.rabbit_hole_img then
         for _,item in ipairs(all_items) do
             if (item.image == cfg.rabbit_hole_img) or (item.halo == cfg.rabbit_hole_img) then

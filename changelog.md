@@ -108,6 +108,7 @@
      * New parameter mp_rank for setting the order in which AIs appear in the MP computer player selection menu
    * New option "Keep saved AI" when reloading games from the MP Create Game screen. Choosing this option
      prevents overwriting of the saved AI by the default AI. (issue #3791)
+   * Forest Animals Micro AI: fix AI crash when using custom rabbit hole image
  ### Campaigns
    * Descent Into Darkness:
      * Allow converting L3 necromancers to liches from S12 onwards (issue #3165).
