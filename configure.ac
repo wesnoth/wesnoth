@@ -608,42 +608,22 @@ AC_SUBST([SDL_IMAGE_LIBS])
 AC_SUBST([SDL_MIXER_LIBS])
 AC_SUBST([SDL_NET_LIBS])
 
-# Checking for the freetype library. This was copied from the
-# config script of SDL_ttf, modified for CPPFLAGS
+# Checking for the freetype library.
 
-dnl Get the cflags and libraries from the freetype-config script
-
-AC_ARG_WITH([freetype-prefix],
-            AS_HELP_STRING([--with-freetype-prefix=PFX], [Prefix where FREETYPE is installed (optional)]),
-            [freetype_prefix="$withval"],
-            [freetype_prefix=""])
-
-AC_ARG_WITH([freetype-exec-prefix],
-            AS_HELP_STRING([--with-freetype-exec-prefix=PFX], [Exec prefix where FREETYPE is installed (optional)]),
-            [freetype_exec_prefix="$withval"],
-            [freetype_exec_prefix=""])
-
-if test x$freetype_exec_prefix != x ; then
-     freetype_args="$freetype_args --exec-prefix=$freetype_exec_prefix"
-     if test x${FREETYPE_CONFIG+set} != xset ; then
-        FREETYPE_CONFIG=$freetype_exec_prefix/bin/freetype-config
-     fi
+AC_PATH_PROG([PKG_CONFIG], [pkg-config], [none])
+if test "x$PKG_CONFIG" = "xnone"; then
+    AC_MSG_ERROR([*** Please install pkg-config or pkgconf])
 fi
-if test x$freetype_prefix != x ; then
-     freetype_args="$freetype_args --prefix=$freetype_prefix"
-     if test x${FREETYPE_CONFIG+set} != xset ; then
-        FREETYPE_CONFIG=$freetype_prefix/bin/freetype-config
-     fi
-fi
-AC_PATH_PROG(FREETYPE_CONFIG, freetype-config, no)
-no_freetype=""
-if test "$FREETYPE_CONFIG" = "no" ; then
-    AC_MSG_ERROR([
-*** Unable to find FreeType2 library (http://www.freetype.org/)
-])
+
+AC_MSG_CHECKING(for freetype2)
+$PKG_CONFIG --exists freetype2
+if test $? != 0 ; then
+    AC_MSG_RESULT(no)
+    AC_MSG_ERROR([*** Unable to find FreeType2 library (https://www.freetype.org/)])
 else
-    CPPFLAGS="$CPPFLAGS `pkg-config --cflags freetype2`"
-    FREETYPE_LIBS="`pkg-config --libs freetype2`"
+    AC_MSG_RESULT(yes)
+    CPPFLAGS="$CPPFLAGS `$PKG_CONFIG --cflags freetype2`"
+    FREETYPE_LIBS="`$PKG_CONFIG --libs freetype2`"
 fi
 
 AC_SUBST([FREETYPE_LIBS])
