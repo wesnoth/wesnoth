@@ -4,6 +4,7 @@
      * Add [avoid] tag functionality to Multipack Wolves, Wolves, Swarm and Goto Micro AIs
      * Support named locations for [micro_ai] tag location keys
    * Experimental AI
+     * Deprecate EXPERIMENTAL_AI macro: use ai_algorithm=experimental_ai in the [ai] tag instead
      * Convert to using external candidate actions
      * Significantly speed up recruiting evaluation
      * Recruiting: add optional 'enemy_types' parameter
@@ -22,12 +23,13 @@
      * find_best_move(): return nil instead of {} if no move found (may break backward compatibility in rare cases)
      * Deprecate filter(), choose() and xyoff()
      * move_unit_out_of_way(): prevent potential for divide-by-zero
+   * Default AI
+     * Remove attack_depth aspect (had been non-functional for a long time already)
+     * [goal]name=protect_unit: do not protect units hidden from the AI
+     * General code clean-up, in particular of TODOs left over from 1.7 and 1.9
  ### Campaigns
    * A Tale of Two Brothers
      * S2 'Chase': improved behavior of undead side leader with custom AI
-   * Descent into Darkness
-     * S8, S9 (A Small Favor II & III): Clarify objectives
-     * S8 (A Small Favor II): Fixed units created via the plague ability not available in S9
    * Deprecate AI Controller and remove it from mainline campaign scenarios
  ### Engine
    * Windows 7 is now the minimum supported Windows version.
@@ -37,7 +39,7 @@
  ### Language and i18n
    * Updated translations: British English, Bulgarian, Chinese (Simplified),
      Chinese (Traditional), Czech, French, Galician, German, Hungarian, Italian,
-     Japanese, Polish, Scottish Gaelic, Slovak, Spanish, Ukrainian.
+     Japanese, Polish, Russian, Scottish Gaelic, Slovak, Spanish, Ukrainian.
  ### Lua API
    * Allow specifying custom flags (in particular teleport) when using a custom cost function in wesnoth.find_path
    * Add wml.load() and wml.parse() functions
@@ -94,11 +96,18 @@
      UI afterwards (e.g. [redraw]) and the status panels are updated immediately.
      as well.
    * Re-added the Font Scaling preference.
+   * Enabled wesnothd and campaignd to accept IPv6 connections too
 
 ## Version 1.14.5+dev
  ### AI
    * Fixed crash when the AI simulates a fight between two units which can slow but aren't yet slowed, then
      simulates another fight for one of them in Monte Carlo mode (issue #3650).
+   * Experimental AI recruiting: fixed AI crash for unit type with unknown race
+   * Support for modifying the available AIs using cores:
+     * New parameter default_ai_algorithm for setting the default AI
+     * New parameter mp_rank for setting the order in which AIs appear in the MP computer player selection menu
+   * New option "Keep saved AI" when reloading games from the MP Create Game screen. Choosing this option
+     prevents overwriting of the saved AI by the default AI. (issue #3791)
  ### Campaigns
    * Descent Into Darkness:
      * Allow converting L3 necromancers to liches from S12 onwards (issue #3165).
@@ -106,7 +115,9 @@
    * The Hammer of Thursagan
      * S12 'The Underlevels': redesigned with completely new map and scenario
    * The South Guard:
-     * Extensive scenario design improvements
+     * Revised scenario and story dialogue.
+     * Reworked and rebalanced all scenario and map designs.
+     * Removed S6a 'Tidings Good and Ill'.
  ### Language and i18n
    * Updated translations: Chinese (Traditional), French, Italian, Spanish.
  ### Lua API

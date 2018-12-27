@@ -219,7 +219,7 @@ static int ai_attack(lua_State *L, bool exec)
 		}
 	}
 
-	//TODO: Right now, aggression is used by the attack execution functions to determine the weapon to be used.
+	// Note: Right now, aggression is used by the attack execution functions to determine the weapon to be used.
 	// If a decision is made to expand the function that determines the weapon, this block must be refactored
 	// to parse aggression if a single int is on the stack, or create a table of parameters, if a table is on the
 	// stack.
@@ -280,7 +280,6 @@ static int ai_recruit(lua_State *L, bool exec)
 		where.set_wml_x(lua_tonumber(L, 2));
 		where.set_wml_y(lua_tonumber(L, 3));
 	}
-	//TODO fendrin: talk to Crab about the from argument.
 	map_location from = map_location::null_location();
 	ai::recruit_result_ptr recruit_result = ai::actions::execute_recruit_action(side,exec,std::string(unit_name),where,from);
 	return transform_ai_action(L,recruit_result);
@@ -305,7 +304,6 @@ static int ai_recall(lua_State *L, bool exec)
 		where.set_wml_x(lua_tonumber(L, 2));
 		where.set_wml_y(lua_tonumber(L, 3));
 	}
-	//TODO fendrin: talk to Crab about the from argument.
 	map_location from = map_location::null_location();
 	ai::recall_result_ptr recall_result = ai::actions::execute_recall_action(side,exec,std::string(unit_id),where,from);
 	return transform_ai_action(L,recall_result);

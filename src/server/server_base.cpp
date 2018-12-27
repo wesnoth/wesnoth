@@ -34,7 +34,8 @@ server_base::server_base(unsigned short port, bool keep_alive) :
 	port_(port),
 	keep_alive_(keep_alive),
 	io_service_(),
-	acceptor_(io_service_),
+	acceptor_v6_(io_service_),
+	acceptor_v4_(io_service_),
 	#ifndef _WIN32
 	input_(io_service_),
 	sighup_(io_service_, SIGHUP),
@@ -43,15 +44,26 @@ server_base::server_base(unsigned short port, bool keep_alive) :
 {
 }
 
+void server_base::setup_acceptor(boost::asio::ip::tcp::acceptor& acceptor, boost::asio::ip::tcp::endpoint endpoint)
+{
+	acceptor.open(endpoint.protocol());
+	acceptor.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
+	acceptor.set_option(boost::asio::ip::tcp::acceptor::keep_alive(keep_alive_));
+	if(endpoint.protocol() == boost::asio::ip::tcp::v6())
+		acceptor.set_option(boost::asio::ip::v6_only(true));
+	acceptor.bind(endpoint);
+	acceptor.listen();
+}
+
 void server_base::start_server()
 {
-	boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::tcp::v4(), port_);
-	acceptor_.open(endpoint.protocol());
-	acceptor_.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
-	acceptor_.set_option(boost::asio::ip::tcp::acceptor::keep_alive(keep_alive_));
-	acceptor_.bind(endpoint);
-	acceptor_.listen();
-	serve();
+	boost::asio::ip::tcp::endpoint endpoint_v6(boost::asio::ip::tcp::v6(), port_);
+	setup_acceptor(acceptor_v6_, endpoint_v6);
+	serve(acceptor_v6_);
+
+	boost::asio::ip::tcp::endpoint endpoint_v4(boost::asio::ip::tcp::v4(), port_);
+	setup_acceptor(acceptor_v4_, endpoint_v4);
+	serve(acceptor_v4_);
 
 	handshake_response_.connection_num = htonl(42);
 
@@ -63,16 +75,18 @@ void server_base::start_server()
 	sigs_.async_wait(std::bind(&server_base::handle_termination, this, _1, _2));
 }
 
-void server_base::serve()
+void server_base::serve(boost::asio::ip::tcp::acceptor& acceptor)
 {
 	socket_ptr socket = std::make_shared<boost::asio::ip::tcp::socket>(std::ref(io_service_));
-	acceptor_.async_accept(*socket, std::bind(&server_base::accept_connection, this, _1, socket));
+	acceptor.async_accept(*socket, [&acceptor, socket, this](const boost::system::error_code& error){
+		this->accept_connection(acceptor, error, socket);
+	});
 }
 
-void server_base::accept_connection(const boost::system::error_code& error, socket_ptr socket)
+void server_base::accept_connection(boost::asio::ip::tcp::acceptor& acceptor, const boost::system::error_code& error, socket_ptr socket)
 {
 	if(accepting_connections())
-		serve();
+		serve(acceptor);
 	if(error) {
 		ERR_SERVER << "Accept failed: " << error.message() << "\n";
 		return;

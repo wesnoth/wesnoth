@@ -448,9 +448,6 @@ static std::map<int,std::string> error_names_;
 };
 
 
-///@todo 1.7.11 important! Add an ai action (and fai function) to set a goto on a unit
-///@todo 1.7.11 important! Add an ai action (and fai function) to send a chat message to a player
-
 } //end of namespace ai
 
 std::ostream &operator<<(std::ostream &s, const ai::attack_result& r);

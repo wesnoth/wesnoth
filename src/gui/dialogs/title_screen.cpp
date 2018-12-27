@@ -17,6 +17,7 @@
 #include "gui/dialogs/title_screen.hpp"
 
 #include "addon/manager_ui.hpp"
+#include "filesystem.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
 #include "game_config_manager.hpp"
@@ -33,6 +34,7 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp"
 #include "gui/dialogs/multiplayer/mp_method_selection.hpp"
+#include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "log.hpp"
 #include "preferences/game.hpp"
@@ -48,7 +50,10 @@
 #include "gui/widgets/window.hpp"
 #include "help/help.hpp"
 #include "hotkey/hotkey_command.hpp"
+#include "sdl/surface.hpp"
+#include "sdl/utils.hpp"
 #include "utils/functional.hpp"
+#include "video.hpp"
 
 #include <algorithm>
 
@@ -162,6 +167,16 @@ static void launch_lua_console()
 	gui2::dialogs::lua_interpreter::display(gui2::dialogs::lua_interpreter::APP);
 }
 
+static void make_screenshot(window& win)
+{
+	surface screenshot = make_neutral_surface(win.video().getSurface());
+	if(!screenshot.null()) {
+		std::string filename = filesystem::get_screenshot_dir() + "/" + _("Screenshot") + "_";
+		filename = filesystem::get_next_filename(filename, ".png");
+		gui2::dialogs::screenshot_notification::display(filename, screenshot);
+	}
+}
+
 #ifdef DEBUG_TOOLTIP
 /*
  * This function is used to test the tooltip placement algorithms as
@@ -216,6 +231,8 @@ void title_screen::pre_show(window& win)
 	// A wrapper is needed here since the relevant display function is overloaded, and
 	// since the wrapper's signature doesn't exactly match what register_hotkey expects.
 	win.register_hotkey(hotkey::LUA_CONSOLE, std::bind(&launch_lua_console));
+
+	win.register_hotkey(hotkey::HOTKEY_SCREENSHOT, std::bind(&make_screenshot, std::ref(win)));
 
 	//
 	// Background and logo images

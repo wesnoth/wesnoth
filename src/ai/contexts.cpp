@@ -384,7 +384,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 			dstsrc.insert(trivial_mv);
 		}
 		/**
-		 * @todo This is where support for a speculative unit map is incomplete.
+		 * TODO: This is where support for a speculative unit map is incomplete.
 		 *       There are several places (deep) within the paths constructor
 		 *       where resources::gameboard->units() is assumed to be the unit map. Rather
 		 *       than introduce a new parameter to numerous functions, a better
@@ -566,7 +566,7 @@ const wfl::variant& readonly_context_impl::get_attacks_as_variant() const
 	if (attacks_) {
 		return attacks_->get_variant();
 	}
-	static wfl::variant v;///@todo 1.9: replace with variant::null_variant;
+	static wfl::variant v;
 	return v;
 }
 
@@ -642,7 +642,6 @@ engine_ptr readonly_context_impl::get_engine_by_cfg(const config& cfg)
 		return *en;
 	}
 
-	//TODO: fix, removing some code duplication
 	engine_factory::factory_map::iterator eng = engine_factory::get_list().find(engine_name);
 	if (eng == engine_factory::get_list().end()){
 		ERR_AI << "side "<<get_side()<<" : UNABLE TO FIND engine["<<
@@ -1164,7 +1163,6 @@ void readonly_context_impl::recalculate_move_maps() const
 					++it;
 				}
 			}
-		///@todo: shall possible moves be modified as well ?
 		}
 	}
 	move_maps_valid_ = true;

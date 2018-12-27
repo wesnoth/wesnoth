@@ -156,7 +156,6 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		// Note we didn't fight at all if defender is already dead.
 		double prob_fought = (1.0 - prob_dead_already);
 
-		/** @todo 1.9 add combatant.prob_killed */
 		double prob_killed = def.hp_dist[0] - prob_dead_already;
 		prob_dead_already = def.hp_dist[0];
 
@@ -228,11 +227,6 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		// If we didn't advance, we took this damage.
 		avg_damage_taken += (up->hitpoints() - att.average_hp()) * (1.0 - advance_prob);
 
-		/**
-		 * @todo 1.9: attack_prediction.cpp should understand advancement
-		 * directly.  For each level of attacker def gets 1 xp or
-		 * kill_experience.
-		 */
 		int fight_xp = game_config::combat_xp(up->level());
 		int kill_xp = game_config::kill_xp(fight_xp);
 		def_avg_experience += fight_xp * (1.0 - att.hp_dist[0]) + kill_xp * att.hp_dist[0];

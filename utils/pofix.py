@@ -297,6 +297,7 @@ except ImportError:
 def process_file(path):
     before = io.open(path, "r", encoding="utf-8").read()
     decommented = re.sub("#.*", "", before)
+    decommented_msgids = re.sub(r'^msgstr .*?' + '\n\n', '', decommented, flags = re.MULTILINE | re.DOTALL)
     lines = before.split('\n')
     if website_mode:
         stringfixes = website_stringfixes
@@ -317,7 +318,7 @@ def process_file(path):
             #lead to "real" probs not found, the real check would be "does replacing
             #old with new lead to duplicate msgids? (including old ones marked with #~)"
             #which is not easily done in the current design...
-            elif new in decommented and old in decommented and not new in old:
+            elif new in decommented_msgids and old in decommented_msgids and not new in old:
                 print ("pofix: %s already includes the new string\n\t\"%s\"\nbut also the old\n\t\"%s\"\nthis needs handfixing for now since it likely creates duplicate msgids." % (path, new, old))
             else:
                 for (i, line) in enumerate(lines):

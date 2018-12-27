@@ -2060,7 +2060,8 @@ void server::shut_down_handler(
 	} else {
 		// Graceful shut down.
 		graceful_restart = true;
-		acceptor_.close();
+		acceptor_v6_.close();
+		acceptor_v4_.close();
 
 		timer_.expires_from_now(boost::posix_time::seconds(10));
 		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, _1));
@@ -2091,7 +2092,8 @@ void server::restart_handler(const std::string& issuer_name,
 		*out << "No restart_command configured! Not restarting.";
 	} else {
 		graceful_restart = true;
-		acceptor_.close();
+		acceptor_v6_.close();
+		acceptor_v4_.close();
 		timer_.expires_from_now(boost::posix_time::seconds(10));
 		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, _1));
 

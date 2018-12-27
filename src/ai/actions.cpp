@@ -306,8 +306,6 @@ void attack_result::do_execute()
 
 
 	set_gamestate_changed();
-	//start of ugly hack. @todo 1.9 rework that via extended event system
-	//until event system is reworked, we note the attack this way
 	get_info().recent_attacks.insert(defender_loc_);
 	//end of ugly hack
 	try {
@@ -381,7 +379,7 @@ bool move_result::test_route(const unit &un)
 	const pathfind::shortest_path_calculator calc(un, my_team, resources::gameboard->teams(), resources::gameboard->map());
 
 	//allowed teleports
-	pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(un, my_team, true);///@todo 1.9: see_all -> false
+	pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(un, my_team, true);
 
 	//do an A*-search
 	route_.reset(new pathfind::plain_route(pathfind::a_star_search(un.get_location(), to_, 10000.0, calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports)));
@@ -419,7 +417,6 @@ void move_result::do_check_after()
 		set_error(E_FAILED_TELEPORT);
 		return;
 	}
-	///@todo 1.9 add 'new units spotted' failure mode
 
 	if (!unreach_is_ok_ && unit_location_!=to_) {
 		set_error(E_NOT_REACHED_DESTINATION);
@@ -473,7 +470,7 @@ void move_result::do_execute()
 		std::size_t num_steps = ::actions::move_unit_and_record(
 			/*std::vector<map_location> steps*/ route_->steps,
 			/*::actions::undo_list* undo_stack*/ nullptr,
-			/*bool continue_move*/ true, ///@todo 1.9 set to false after implementing interrupt awareness
+			/*bool continue_move*/ true,
 			/*bool show_move*/ !preferences::skip_ai_moves(),
 			/*bool* interrupted*/ nullptr,
 			/*::actions::move_unit_spectator* move_spectator*/ &move_spectator);
@@ -801,9 +798,6 @@ void recruit_result::do_execute()
 	}
 
 	synced_context::run_in_synced_context_if_not_already("recruit", replay_helper::get_recruit(u->id(), recruit_location_, recruit_from_), false, !preferences::skip_ai_moves());
-	//TODO: should we do something to pass use_undo = false in replays and ai moves ?
-	//::actions::recruit_unit(*u, get_side(), recruit_location_, recruit_from_,
-	//                        !preferences::skip_ai_moves(), false);
 
 	set_gamestate_changed();
 	try {

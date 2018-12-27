@@ -14,6 +14,7 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
+#include "gui/widgets/text_box_base.hpp"
 
 class unit_type;
 class team;
@@ -42,6 +43,7 @@ private:
 	virtual void post_show(window& window) override;
 
 	void list_item_clicked(window& window);
+	void filter_text_changed(text_box_base* textbox, const std::string& text);
 
 	void show_help();
 
@@ -50,6 +52,8 @@ private:
 	team& team_;
 
 	int selected_index_;
+
+	std::vector<std::string> last_words_;
 };
 
 } // namespace dialogs

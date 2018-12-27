@@ -198,6 +198,12 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 
 	// We use an index-based loop in order to get the index of the selected option
 	std::vector<config> ai_options;
+	// If this is loading a saved game, we add an option at the beginning of the menu.
+	// This results in a mismatch between the indices of ai_options and ai_algorithms_
+	// that we need to account for later.
+	if(saved_game) {
+		ai_options.emplace_back("label", "Keep saved AI");
+	}
 	for(unsigned i = 0; i < ai_algorithms_.size(); ++i) {
 		ai_options.emplace_back("label", ai_algorithms_[i]->text);
 
@@ -211,10 +217,9 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	ai_selection.set_values(ai_options, selection);
 
 	connect_signal_notify_modified(ai_selection,
-		std::bind(&mp_staging::on_ai_select, this, side, std::ref(ai_selection)));
+		std::bind(&mp_staging::on_ai_select, this, side, std::ref(ai_selection), saved_game));
 
-	on_ai_select(side, ai_selection);
-
+	on_ai_select(side, ai_selection, saved_game);
 	//
 	// Controller
 	//
@@ -361,9 +366,20 @@ void mp_staging::on_controller_select(ng::side_engine_ptr side, grid& row_grid)
 	}
 }
 
-void mp_staging::on_ai_select(ng::side_engine_ptr side, menu_button& ai_menu)
+void mp_staging::on_ai_select(ng::side_engine_ptr side, menu_button& ai_menu, const bool saved_game)
 {
-	side->set_ai_algorithm(ai_algorithms_[ai_menu.get_value()]->id);
+	// If this is a saved game, we need to reduce the index by one, to account for
+	// the "Keep saved AI" option having been added to the computer player menu
+	int i = ai_menu.get_value();
+	if(saved_game) {
+		i--;
+	}
+
+	if(i < 0) {
+		side->set_ai_algorithm("use_saved");
+	} else {
+		side->set_ai_algorithm(ai_algorithms_[i]->id);
+	}
 
 	set_state_changed();
 }

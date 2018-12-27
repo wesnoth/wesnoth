@@ -34,7 +34,6 @@ aspect::aspect(readonly_context &context, const config &cfg, const std::string &
 	invalidate_on_turn_start_(cfg["invalidate_on_turn_start"].to_bool(true)),
 	invalidate_on_tod_change_(cfg["invalidate_on_tod_change"].to_bool(true)),
 	invalidate_on_gamestate_change_(cfg["invalidate_on_gamestate_change"].to_bool()),
-	invalidate_on_minor_gamestate_change_(cfg["invalidate_on_minor_gamestate_change"].to_bool()),
 	engine_(cfg["engine"]), name_(cfg["name"]), id_(id)
 	{
 		DBG_AI_ASPECT << "creating new aspect: engine=["<<engine_<<"], name=["<<name_<<"], id=["<<id_<<"]"<< std::endl;
@@ -55,10 +54,6 @@ aspect::~aspect()
 		}
 		if (invalidate_on_gamestate_change_) {
 			manager.remove_gamestate_observer(this);
-		}
-		if (invalidate_on_minor_gamestate_change_) {
-			///@todo 1.9 add minor_gamestate_change_observer
-			//manager::remove_minor_gamestate_observer(this);
 		}
 	}
 
@@ -84,10 +79,6 @@ bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 	if (invalidate_on_gamestate_change_) {
 		manager.remove_gamestate_observer(this);
 	}
-	if (invalidate_on_minor_gamestate_change_) {
-		///@todo 1.9 add minor_gamestate_change_observer
-		//manager::remove_minor_gamestate_observer(this);
-	}
 
 	valid_ = false;
 	valid_variant_ =false;
@@ -96,7 +87,6 @@ bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 	invalidate_on_turn_start_ = cfg["invalidate_on_turn_start"].to_bool(true);
 	invalidate_on_tod_change_ = cfg["invalidate_on_tod_change"].to_bool(true);
 	invalidate_on_gamestate_change_ = cfg["invalidate_on_gamestate_change"].to_bool();
-	invalidate_on_minor_gamestate_change_ = cfg["invalidate_on_minor_gamestate_change"].to_bool();
 	engine_ = cfg["engine"].str();
 	name_ = cfg["name"].str();
 	id_ = cfg["id"].str();
@@ -110,10 +100,6 @@ bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 	if (invalidate_on_gamestate_change_) {
 		manager.add_gamestate_observer(this);
 	}
-	if (invalidate_on_minor_gamestate_change_) {
-		///@todo 1.9 add minor_gamestate_change_observer
-		//manager::add_minor_gamestate_observer(this);
-	}
 	return true;
 }
 
@@ -123,7 +109,6 @@ config aspect::to_config() const
 	cfg["invalidate_on_turn_start"] = invalidate_on_turn_start_;
 	cfg["invalidate_on_tod_change"] = invalidate_on_tod_change_;
 	cfg["invalidate_on_gamestate_change"] = invalidate_on_gamestate_change_;
-	cfg["invalidate_on_minor_gamestate_change"] = invalidate_on_minor_gamestate_change_;
 	if (!time_of_day_.empty()) {
 		cfg["time_of_day"] = time_of_day_;
 	}

@@ -72,7 +72,6 @@ void stage_side_formulas::on_create()
 config stage_side_formulas::to_config() const
 {
 	config cfg = stage::to_config();
-	///@todo 1.7: serialize to config
 	cfg.append(cfg_);
 	return cfg;
 }
