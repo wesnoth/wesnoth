@@ -113,6 +113,7 @@ opts.AddVariables(
     BoolVariable('openmp', 'Enable openmp use.', False),
     ('sanitize', 'Enable clang and GCC sanitizer functionality. A comma separated list of sanitize suboptions must be passed as value.', ''),
     BoolVariable("fast", "Make scons faster at cost of less precise dependency tracking.", False),
+    BoolVariable("autorevision", 'Use autorevision tool to fetch current git revision that will be embedded in version string', True),
     BoolVariable("lockfile", "Create a lockfile to prevent multiple instances of scons from being run at the same time on this working copy.", False),
     BoolVariable("OS_ENV", "Forward the entire OS environment to scons", False),
     BoolVariable("history", "Clear to disable GNU history support in lua console", True)
@@ -625,13 +626,14 @@ for env in [test_env, client_env, env]:
 if not env['static_test']:
     test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
 
-try:
-    if call(env.subst("utils/autorevision.sh -t h > $build_dir/revision.h"), shell=True) == 0:
-        env["have_autorevision"] = True
-        if not call(env.subst("cmp -s $build_dir/revision.h src/revision.h"), shell=True) == 0:
-            call(env.subst("cp $build_dir/revision.h src/revision.h"), shell=True)
-except:
-    pass
+if env['autorevision']:
+    try:
+        if call(env.subst("utils/autorevision.sh -t h > $build_dir/revision.h"), shell=True) == 0:
+            env["have_autorevision"] = True
+            if not call(env.subst("cmp -s $build_dir/revision.h src/revision.h"), shell=True) == 0:
+                call(env.subst("cp $build_dir/revision.h src/revision.h"), shell=True)
+    except:
+        pass
 
 Export(Split("env client_env test_env have_client_prereqs have_server_prereqs have_test_prereqs"))
 SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
