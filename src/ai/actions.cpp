@@ -904,12 +904,14 @@ void stopunit_result::do_execute()
 	}
 
 	try {
-		if (remove_movement_){
+		// Don't mark the game state as changed if unit already has no moves or attacks.
+		// Doing so can cause infinite candidate action loops.
+		if (remove_movement_ && un->movement_left() != 0) {
 			un->remove_movement_ai();
 			set_gamestate_changed();
 			manager::get_singleton().raise_gamestate_changed();
 		}
-		if (remove_attacks_){
+		if (remove_attacks_ && un->attacks_left() != 0){
 			un->remove_attacks_ai();
 			set_gamestate_changed();
 			manager::get_singleton().raise_gamestate_changed();//to be on the safe side
