@@ -109,6 +109,7 @@
    * New option "Keep saved AI" when reloading games from the MP Create Game screen. Choosing this option
      prevents overwriting of the saved AI by the default AI. (issue #3791)
    * Forest Animals Micro AI: fix AI crash when using custom rabbit hole image
+   * Fix Lua AIs using the ai.stopunit_*() functions potentially creating infinite candidate action loops
  ### Campaigns
    * Descent Into Darkness:
      * Allow converting L3 necromancers to liches from S12 onwards (issue #3165).
