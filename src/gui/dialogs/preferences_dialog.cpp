@@ -925,41 +925,48 @@ void preferences_dialog::hotkey_filter_callback(window& window) const
 	boost::dynamic_bitset<> res(visible_hotkeys_.size());
 
 	std::string text = name_filter.get_value();
-	boost::algorithm::to_lower(text);
 
-	if (toggle_states.none()) {
+	if(toggle_states.none()) {
 		// Nothing selected. It means that *all* categories are shown.
 		toggle_states = ~toggle_states;
 	}
 
-	for (std::size_t h = 0; h < visible_hotkeys_.size(); ++h) {
-
+	for(std::size_t h = 0; h < visible_hotkeys_.size(); ++h) {
 		unsigned index = 0;
 
-		const std::string description_lower = boost::algorithm::to_lower_copy(visible_hotkeys_[h]->description.str(), std::locale::classic());
-		// Either no text is entered or text matches description
-		bool textFilter = text.length() == 0 || description_lower.find(text) != std::string::npos;
+		const std::string description = visible_hotkeys_[h]->description.str();
 
-		for (const auto& name : cat_names_) {
-			if (visible_hotkeys_[h]->category == name.first) {
-				break;
+		// Default to true if there is no filter text
+		bool found = true;
+
+		if(!text.empty()) {
+			for(const auto& word : utils::split(text, ' ')) {
+				found = std::search(description.begin(), description.end(), word.begin(), word.end(), chars_equal_insensitive)
+							!= description.end();
+
+				if(!found) {
+					break;
+				}
 			}
-			else {
+		}
+
+		// Filter categories
+		for(const auto& name : cat_names_) {
+			if(visible_hotkeys_[h]->category == name.first) {
+				break;
+			} else {
 				++index;
 			}
 		}
 
-		if (index < toggle_states.size() && textFilter) {
+		if(index < toggle_states.size() && found) {
 			res[h] = toggle_states[index];
-		}
-		else {
+		} else {
 			res[h] = false;
 		}
 	}
 
-
 	find_widget<listbox>(&window, "list_hotkeys", false).set_row_shown(res);
-
 }
 
 void preferences_dialog::on_advanced_prefs_list_select(listbox& list)
