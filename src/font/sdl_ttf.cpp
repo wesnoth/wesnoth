@@ -450,17 +450,22 @@ std::string make_text_ellipsis(const std::string &text, int font_size,
 
 	std::string current_substring;
 
-	utf8::iterator itor(text);
+	try {
+		utf8::iterator itor(text);
+		for(; itor != utf8::iterator::end(text); ++itor) {
+			std::string tmp = current_substring;
+			tmp.append(itor.substr().first, itor.substr().second);
 
-	for(; itor != utf8::iterator::end(text); ++itor) {
-		std::string tmp = current_substring;
-		tmp.append(itor.substr().first, itor.substr().second);
+			if (line_width(tmp + ellipsis, font_size, style) > max_width) {
+				return current_substring + ellipsis;
+			}
 
-		if (line_width(tmp + ellipsis, font_size, style) > max_width) {
-			return current_substring + ellipsis;
+			current_substring.append(itor.substr().first, itor.substr().second);
 		}
-
-		current_substring.append(itor.substr().first, itor.substr().second);
+	}
+	catch(utf8::invalid_utf8_exception&) {
+		WRN_FT << "Invalid UTF-8 string: \"" << text << "\"" << std::endl;
+		return "";
 	}
 
 	return text; // Should not happen
