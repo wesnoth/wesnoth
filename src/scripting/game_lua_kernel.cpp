@@ -1765,8 +1765,8 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 	}
 	else if (lua_isfunction(L, arg))
 	{
+		deprecated_message("wesnoth.find_path with cost_function as last argument", DEP_LEVEL::FOR_REMOVAL, {1, 17, 0}, "Use calculate=cost_function inside the path options table instead.");
 		calc.reset(new lua_pathfind_cost_calculator(L, arg));
-		ignore_teleport = lua_isnoneornil(L, arg + 1) || luaW_toboolean(L, arg + 1);
 	}
 
 	const team& viewing_team = viewing_side
