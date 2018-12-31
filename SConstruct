@@ -387,19 +387,19 @@ if env["prereqs"]:
 
     client_env = env.Clone()
     conf = client_env.Configure(**configure_args)
-    have_client_prereqs = have_server_prereqs & have_sdl_other() & \
-        (('TRAVIS' in os.environ and os.environ["TRAVIS_OS_NAME"] == "osx") or (conf.CheckLib("vorbisfile") & \
-        conf.CheckOgg())) & \
-        conf.CheckPNG() & \
-        conf.CheckJPG() & \
-        conf.CheckOpenGL() and \
-        conf.CheckGLEW() and \
-        conf.CheckCairo(min_version = "1.10") & \
-        conf.CheckPango("cairo", require_version = "1.22.0") & \
-        conf.CheckPKG("fontconfig") & \
-        conf.CheckBoost("program_options", require_version = boost_version) & \
-        conf.CheckBoost("regex") \
-            or Warning("Client prerequisites are not met. wesnoth cannot be built")
+    have_client_prereqs = have_server_prereqs & have_sdl_other()
+    have_client_prereqs = have_client_prereqs & (('TRAVIS' in os.environ and os.environ["TRAVIS_OS_NAME"] == "osx") or (conf.CheckLib("vorbisfile") & conf.CheckOgg()))
+    have_client_prereqs = have_client_prereqs & conf.CheckPNG()
+    have_client_prereqs = have_client_prereqs & conf.CheckJPG()
+#    have_client_prereqs = have_client_prereqs & conf.CheckOpenGL()
+#    have_client_prereqs = have_client_prereqs & conf.CheckGLEW()
+    have_client_prereqs = have_client_prereqs & conf.CheckCairo(min_version = "1.10")
+    have_client_prereqs = have_client_prereqs & conf.CheckPango("cairo", require_version = "1.22.0")
+    have_client_prereqs = have_client_prereqs & conf.CheckPKG("fontconfig")
+    have_client_prereqs = have_client_prereqs & conf.CheckBoost("program_options", require_version = boost_version)
+    have_client_prereqs = have_client_prereqs & conf.CheckBoost("regex")
+    if not have_client_prereqs:
+        Warning("Client prerequisites are not met. wesnoth cannot be built.")
 
     have_X = False
     if have_client_prereqs:

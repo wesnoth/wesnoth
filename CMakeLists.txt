@@ -64,8 +64,8 @@ if(NOT CXX_STD)
 endif()
 
 if(ENABLE_GAME OR ENABLE_TESTS)
-	find_package(OpenGL REQUIRED)
-	find_package(GLEW REQUIRED)
+#	find_package(OpenGL REQUIRED)
+#	find_package(GLEW REQUIRED)
 	find_package(SDL2 2.0.4 REQUIRED)
 endif(ENABLE_GAME OR ENABLE_TESTS)
 
