@@ -38,8 +38,6 @@ order to build Wesnoth:
  * libbz2
  * libz
  * libcrypto (from OpenSSL)
- * OpenGL
- * GLEW
 
 The following libraries are optional dependencies that enable additional
 features:
