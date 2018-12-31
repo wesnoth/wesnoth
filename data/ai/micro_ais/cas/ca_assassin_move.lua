@@ -138,11 +138,11 @@ function ca_assassin_move:execution(cfg)
         end
     end
 
-    local path, cost = wesnoth.find_path(unit, target.x, target.y,
-        function(x, y, current_cost)
+    local path, cost = wesnoth.find_path(unit, target.x, target.y, {
+        calculate = function(x, y, current_cost)
             return custom_cost(x, y, unit, enemy_rating_map, prefer_map)
         end
-    )
+    })
 
     local path_map = LS.of_pairs(path)
 

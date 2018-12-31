@@ -3,6 +3,7 @@
    * Micro AIs
      * Add [avoid] tag functionality to Multipack Wolves, Wolves, Swarm and Goto Micro AIs
      * Support named locations for [micro_ai] tag location keys
+     * Goto and Assassin: fix MAIs not working with tunnels when using custom path finding cost functions
    * Experimental AI
      * Deprecate EXPERIMENTAL_AI macro: use ai_algorithm=experimental_ai in the [ai] tag instead
      * Convert to using external candidate actions
