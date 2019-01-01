@@ -511,9 +511,11 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	// Apply the unit type's data to this unit.
 	advance_to(*type_, use_traits);
 
-	overlays_ = utils::parenthetical_split(cfg["overlays"], ',');
-	if(overlays_.size() == 1 && overlays_.front().empty()) {
-		overlays_.clear();
+	if(const config::attribute_value* v = cfg.get("overlays")) {
+		overlays_ = utils::parenthetical_split(v->str(), ',');
+		if(overlays_.size() == 1 && overlays_.front().empty()) {
+			overlays_.clear();
+		}
 	}
 
 	if(const config& variables = cfg.child("variables")) {
