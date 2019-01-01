@@ -90,6 +90,7 @@ end
 
 function wml_actions.store_items(cfg)
 	local variable = cfg.variable or "items"
+	local item_name = cfg.item_name
 	variable = tostring(variable or helper.wml_error("invalid variable= in [store_items]"))
 	wml.variables[variable] = nil
 	local index = 0
@@ -97,8 +98,14 @@ function wml_actions.store_items(cfg)
 		local items = scenario_items[loc[1] * 10000 + loc[2]]
 		if items then
 			for j, item in ipairs(items) do
-				wml.variables[string.format("%s[%u]", variable, index)] = item
-				index = index + 1
+				-- note: item_name can not be part of standard location filter because
+				--       there might be multiple items on one locations and we don't
+				--       want to return them all if only one matches the name
+				-- todo: consider making cfg.item_name a comma list or a regex.
+				if item_name == nil or item.name == item_name then
+					wml.variables[string.format("%s[%u]", variable, index)] = item
+					index = index + 1
+				end
 			end
 		end
 	end
