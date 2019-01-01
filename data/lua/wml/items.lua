@@ -19,7 +19,8 @@ local function add_overlay(x, y, cfg)
 			filter_team = cfg.filter_team,
 			visible_in_fog = cfg.visible_in_fog,
 			redraw = cfg.redraw,
-			name = cfg.name
+			name = cfg.name,
+			z_order = cfg.z_order,
 		})
 end
 
