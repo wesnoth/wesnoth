@@ -88,6 +88,11 @@ void luaW_pushslocs(lua_State *L, int index)
 
 int impl_slocs_get(lua_State* L)
 {
+	//todo: calling map.special_locations[1] will return the underlying map
+	//      object instead of the first starting position, because the lua
+	//      special locations is actually a table with the map object at
+	//      index 1. The probably easiest way to fix this inconsitency is
+	//      to just disallow all integerindicies here.
 	mapgen_gamemap& m = luaW_check_slocs(L, 1);
 	string_view id = luaL_checkstring(L, 2);
 	auto res = m.special_location(std::string(id));
