@@ -1159,12 +1159,12 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 {
 
 	int value_set = def;
-	bool value_is_set = false;
 	std::map<std::string,individual_effect> values_add;
 	std::map<std::string,individual_effect> values_mul;
 	std::map<std::string,individual_effect> values_div;
 
-	individual_effect set_effect;
+	individual_effect set_effect_max;
+	individual_effect set_effect_min;
 
 	for (const unit_ability & ability : list) {
 		const config& cfg = *ability.first;
@@ -1185,18 +1185,20 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 				return formula.evaluate(callable).as_int();
 			});
 
-			bool cumulative = cfg["cumulative"].to_bool();
-			if (!value_is_set && !cumulative) {
-				value_set = value;
-				set_effect.set(SET, value, ability.first, ability.second);
-			} else {
-				if (cumulative) value_set = std::max<int>(value_set, def);
-				if (value > value_set) {
-					value_set = value;
-					set_effect.set(SET, value, ability.first, ability.second);
+			int value_cum = cfg["cumulative"].to_bool() ? std::max(def, value) : value;
+			assert((set_effect_min.type != NOT_USED) == (set_effect_max.type != NOT_USED));
+			if(set_effect_min.type == NOT_USED) {
+				set_effect_min.set(SET, value_cum, ability.first, ability.second);
+				set_effect_max.set(SET, value_cum, ability.first, ability.second);
+			}
+			else {
+				if(value_cum > set_effect_max.value) {
+					set_effect_max.set(SET, value_cum, ability.first, ability.second);
+				}
+				if(value_cum < set_effect_min.value) {
+					set_effect_min.set(SET, value_cum, ability.first, ability.second);
 				}
 			}
-			value_is_set = true;
 		}
 
 		if (const config::attribute_value *v = cfg.get("add")) {
@@ -1247,8 +1249,14 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 		}
 	}
 
-	if(value_is_set && set_effect.type != NOT_USED) {
-		effect_list_.push_back(set_effect);
+	if(set_effect_max.type != NOT_USED) {
+		value_set = std::max(set_effect_max.value, 0) + std::min(set_effect_min.value, 0);
+		if(set_effect_max.value > def) {
+			effect_list_.push_back(set_effect_max);
+		}
+		if(set_effect_min.value < def) {
+			effect_list_.push_back(set_effect_min);
+		}
 	}
 
 	/* Do multiplication with floating point values rather than integers
