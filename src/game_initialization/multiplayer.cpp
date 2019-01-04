@@ -37,6 +37,7 @@
 #include "map_settings.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"
+#include "utils/parse_network_address.hpp"
 #include "wesnothd_connection.hpp"
 #include "resources.hpp"
 #include "replay.hpp"
@@ -59,24 +60,20 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 		return std::make_pair(std::move(sock), config());
 	}
 
-	const int colon_index = host.find_first_of(":");
-	unsigned int port;
-
-	if(colon_index == -1) {
-		port = 15000;
-	} else {
-		port = lexical_cast_default<unsigned int>(host.substr(colon_index + 1), 15000);
-		host = host.substr(0, colon_index);
-	}
-
 	// shown_hosts is used to prevent the client being locked in a redirect loop.
-	using hostpair = std::pair<std::string, int>;
+	using hostpair = std::pair<std::string, std::string>;
 
 	std::set<hostpair> shown_hosts;
-	shown_hosts.emplace(host, port);
+	hostpair addr;
+	try {
+		addr = parse_network_address(host, "15000");
+	} catch(const std::runtime_error&) {
+		throw wesnothd_error(_("Invalid address specified for multiplayer server"));
+	}
+	shown_hosts.insert(addr);
 
 	// Initializes the connection to the server.
-	sock = std::make_unique<wesnothd_connection>(host, std::to_string(port));
+	sock = std::make_unique<wesnothd_connection>(addr.first, addr.second);
 	if(!sock) {
 		return std::make_pair(std::move(sock), config());
 	}
@@ -127,20 +124,20 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 
 		// Check for "redirect" messages
 		if(const config& redirect = data.child("redirect")) {
-			host = redirect["host"].str();
-			port = redirect["port"].to_int(15000);
+			auto redirect_host = redirect["host"].str();
+			auto redirect_port = redirect["port"].str("15000");
 
-			if(shown_hosts.find(hostpair(host, port)) != shown_hosts.end()) {
+			if(shown_hosts.find(hostpair(redirect_host, redirect_port)) != shown_hosts.end()) {
 				throw wesnothd_error(_("Server-side redirect loop"));
 			}
 
-			shown_hosts.emplace(host, port);
+			shown_hosts.emplace(redirect_host, redirect_port);
 
 			gui2::dialogs::loading_screen::progress(loading_stage::redirect);
 
 			// Open a new connection with the new host and port.
 			sock.reset();
-			sock = std::make_unique<wesnothd_connection>(host, std::to_string(port));
+			sock = std::make_unique<wesnothd_connection>(redirect_host, redirect_port);
 
 			// Wait for new handshake.
 			while(!sock->handshake_finished()) {

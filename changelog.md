@@ -98,6 +98,7 @@
      as well.
    * Re-added the Font Scaling preference.
    * Enabled wesnothd and campaignd to accept IPv6 connections too
+   * Added support for directly supplying IPv6 address of the server to multiplayer client and addon client. It must be done like this: ```[ipv6_address]``` or ```[ipv6_address]:port```
 
 ## Version 1.14.5+dev
  ### AI

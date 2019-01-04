@@ -29,6 +29,7 @@
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/utf8_exception.hpp"
+#include "utils/parse_network_address.hpp"
 
 #include <stdexcept>
 
@@ -50,17 +51,11 @@ addons_client::addons_client(const std::string& address)
 	, last_error_()
 	, last_error_data_()
 {
-	const std::vector<std::string>& address_components =
-		utils::split(addr_, ':');
-
-	if(address_components.empty()) {
+	try {
+		std::tie(host_, port_) = parse_network_address(addr_, std::to_string(default_campaignd_port));
+	} catch(const std::runtime_error&) {
 		throw invalid_server_address();
 	}
-
-	// FIXME: this parsing will break IPv6 numeric addresses! */
-	host_ = address_components[0];
-	port_ = address_components.size() == 2 ?
-		address_components[1] : std::to_string(default_campaignd_port);
 }
 
 void addons_client::connect()
