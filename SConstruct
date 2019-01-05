@@ -334,6 +334,7 @@ if env["prereqs"]:
     have_client_prereqs = have_server_prereqs and \
         conf.CheckBoost("system") and \
         conf.CheckBoost("asio", header_only = True) and \
+        conf.CheckPKG("gobject-2.0") and \
         conf.CheckPango("cairo") and \
         conf.CheckPKG("fontconfig") and \
         conf.CheckBoost("program_options", require_version="1.35.0") and \
