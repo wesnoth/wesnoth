@@ -159,6 +159,8 @@ if(ENABLE_TESTS)
 	find_package( Boost 1.33 REQUIRED COMPONENTS unit_test_framework )
 endif(ENABLE_TESTS)
 if(ENABLE_GAME)
+	#use pkg-config to find gobject:
+	pkg_check_modules( GOBJECT REQUIRED gobject-2.0 )
 	#use pkg-config to find pangocairo:
 	pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.14.8 )
 	#use pkg-config to find fontconfig:

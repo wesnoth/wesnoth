@@ -226,6 +226,7 @@ if env["prereqs"]:
         conf.CheckSDL('SDL_net') or Warning("Base prerequisites are not met.")
 
     have_client_prereqs = have_server_prereqs and \
+        conf.CheckPKG("gobject-2.0") and \
         conf.CheckPango("cairo") and \
         conf.CheckPKG("fontconfig") and \
         conf.CheckBoost("regex") and \

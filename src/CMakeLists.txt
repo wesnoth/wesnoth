@@ -41,6 +41,7 @@ set( game-external-libs
     ${SDLMIXER_LIBRARY}
     ${SDLNET_LIBRARY}
     ${SDLTTF_LIBRARY}
+    ${GOBJECT_LIBRARIES}
     ${PANGOCAIRO_LDFLAGS}
     ${FONTCONFIG_LDFLAGS}
 )
