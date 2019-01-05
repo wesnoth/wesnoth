@@ -107,7 +107,6 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	nomusic(false),
 	nosound(false),
 	new_widgets(false),
-	path(false),
 	preprocess(false),
 	preprocess_defines(),
 	preprocess_input_macros(),
@@ -175,9 +174,8 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("nomusic", "runs the game without music.")
 		("nosound", "runs the game without sounds and music.")
 		("password", po::value<std::string>(), "uses <password> when connecting to a server, ignoring other preferences.")
-		("path", "prints the path to the data directory and exits.")
-		("plugin", po::value<std::string>(), "(experimental) load a script which defines a wesnoth plugin. similar to --script below, but lua file should return a function which will be run as a coroutine and periodically woken up with updates.")
-		("render-image", po::value<two_strings>()->multitoken(), "takes two arguments: <image> <output>. Like screenshot, but instead of a map, takes a valid wesnoth 'image path string' with image path functions, and writes it to a .png file."
+		("plugin", po::value<std::string>(), "(experimental) load a script which defines a wesnoth plugin. similar to --script below, but Lua file should return a function which will be run as a coroutine and periodically woken up with updates.")
+		("render-image", po::value<two_strings>()->multitoken(), "takes two arguments: <image> <output>. Like screenshot, but instead of a map, takes a valid Wesnoth 'image path string' with image path functions, and writes it to a .png file."
 #ifdef _WIN32
 		 " Implies --wconsole."
 #endif // _WIN32
@@ -193,11 +191,11 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		 " Implies --wconsole."
 #endif // _WIN32
 		 )
-		("script", po::value<std::string>(), "(experimental) file containing a lua script to control the client")
+		("script", po::value<std::string>(), "(experimental) file containing a Lua script to control the client")
 		("server,s", po::value<std::string>()->implicit_value(std::string()), "connects to the host <arg> if specified or to the first host in your preferences.")
 		("strict-validation", "makes validation errors fatal")
 		("translations-over", po::value<unsigned int>(), "Specify the standard for determining whether a translation is complete.")
-		("unsafe-scripts", "makes the \'package\' package available to lua scripts, so that they can load arbitrary packages. Do not do this with untrusted scripts! This action gives lua the same permissions as the wesnoth executable.")
+		("unsafe-scripts", "makes the \'package\' package available to Lua scripts, so that they can load arbitrary packages. Do not do this with untrusted scripts! This action gives ua the same permissions as the Wesnoth executable.")
 		("userconfig-dir", po::value<std::string>(), "sets the path of the user config directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. Defaults to $HOME/.config/wesnoth on X11 and to the userdata-dir on other systems.")
 		("userconfig-path", "prints the path of the user config directory and exits.")
 		("userdata-dir", po::value<std::string>(), "sets the path of the userdata directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory.")
@@ -255,7 +253,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("parm", po::value<std::vector<std::string>>()->composing(), "sets additional parameters for this side. <arg> should have format side:name:value.")
 		("scenario", po::value<std::string>(), "selects a multiplayer scenario. The default scenario is \"multiplayer_The_Freelands\".")
 		("side", po::value<std::vector<std::string>>()->composing(), "selects a faction of the current era for this side by id. <arg> should have format side:value.")
-		("turns", po::value<std::string>(), "sets the number of turns. The default is \"50\".")
+                ("turns", po::value<std::string>(), "sets the number of turns. By default no turn limit is set.")
 		;
 
 	po::options_description testing_opts("Testing options");
@@ -408,8 +406,6 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		nogui = true;
 	if (vm.count("parm"))
 		multiplayer_parm = parse_to_uint_string_string_tuples_(vm["parm"].as<std::vector<std::string>>());
-	if (vm.count("path"))
-		path = true;
 	if (vm.count("preprocess"))
 	{
 		preprocess = true;
