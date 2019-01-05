@@ -936,6 +936,15 @@ AM_CONDITIONAL([BOOST_TEST_DYN_LINK], [test x"$boost_test_dyn_link" = xyes])
 
 if test "x$game" = "xyes" || test "x$tests" = "xyes"; then
 
+	# error messages are very cryptic if pkg-config is not installed, check explicit
+	AC_PATH_PROG([PKG_CONFIG], [pkg-config], [none])
+	if test "x$PKG_CONFIG" = "xnone"; then
+		AC_MSG_ERROR([*** Please install pkg-config or pkgconf])
+	fi
+
+	PKG_CHECK_MODULES(GOBJECT, gobject-2.0)
+	LIBS="$LIBS $GOBJECT_LIBS"
+
 	PKG_CHECK_MODULES(PANGO, pangocairo >= 1.14.8)
 	CPPFLAGS="$CPPFLAGS $PANGO_CFLAGS"
 
