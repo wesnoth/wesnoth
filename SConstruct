@@ -298,6 +298,7 @@ if env["prereqs"]:
     client_env = env.Clone()
     conf = client_env.Configure(**configure_args)
     have_client_prereqs = have_server_prereqs and \
+        conf.CheckPKG("gobject-2.0") and \
         conf.CheckPango("cairo") and \
         conf.CheckPKG("fontconfig") and \
         conf.CheckLua(require_version = "5.1") and \
