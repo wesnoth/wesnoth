@@ -65,7 +65,6 @@ BOOST_AUTO_TEST_CASE (test_empty_options)
 	BOOST_CHECK(!co.nomusic);
 	BOOST_CHECK(!co.nosound);
 	BOOST_CHECK(!co.new_widgets);
-	BOOST_CHECK(!co.path);
 	BOOST_CHECK(!co.preprocess);
 	BOOST_CHECK(!co.preprocess_defines);
 	BOOST_CHECK(!co.preprocess_input_macros);
@@ -142,7 +141,6 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 	BOOST_CHECK(!co.nomusic);
 	BOOST_CHECK(!co.nosound);
 	BOOST_CHECK(!co.new_widgets);
-	BOOST_CHECK(!co.path);
 	BOOST_CHECK(!co.preprocess);
 	BOOST_CHECK(!co.preprocess_defines);
 	BOOST_CHECK(!co.preprocess_input_macros);
@@ -214,7 +212,6 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--nogui",
 		"--parm=7:parmfoo:valfoo",
 		"--parm=8:parmbar:valbar",
-		"--path",
 		"--preprocess", "preppathfoo", "preptargfoo",
 		"--preprocess-defines=DEFFOO,DEFBAR",
 		"--preprocess-input-macros=inmfoo",
@@ -300,7 +297,6 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.nomusic);
 	BOOST_CHECK(co.nosound);
 	BOOST_CHECK(co.new_widgets);
-	BOOST_CHECK(co.path);
 	BOOST_CHECK(co.preprocess && co.preprocess_path && co.preprocess_target);
 	BOOST_CHECK(*co.preprocess_path == "preppathfoo" && *co.preprocess_target == "preptargfoo");
 	BOOST_CHECK(co.preprocess_defines && co.preprocess_defines->size() == 2);
@@ -372,7 +368,6 @@ BOOST_AUTO_TEST_CASE (test_positional_options)
 	BOOST_CHECK(!co.nomusic);
 	BOOST_CHECK(!co.nosound);
 	BOOST_CHECK(!co.new_widgets);
-	BOOST_CHECK(!co.path);
 	BOOST_CHECK(!co.preprocess);
 	BOOST_CHECK(!co.preprocess_defines);
 	BOOST_CHECK(!co.preprocess_input_macros);

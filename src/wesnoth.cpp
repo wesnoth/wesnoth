@@ -469,11 +469,6 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		return 0;
 	}
 
-	if(cmdline_opts.path) {
-		std::cout << game_config::path << "\n";
-		return 0;
-	}
-
 	if(cmdline_opts.log_precise_timestamps) {
 		lg::precise_timestamps(true);
 	}
@@ -1036,7 +1031,6 @@ int main(int argc, char** argv)
 		if(args[k] == "--wconsole" ||
 		   args[k] == "--help" ||
 		   args[k] == "--logdomains" ||
-		   args[k] == "--path" ||
 		   args[k] == "--render-image" ||
 		   args[k] == "--report" ||
 		   args[k] == "-R" ||
