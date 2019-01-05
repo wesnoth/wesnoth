@@ -367,6 +367,7 @@ if env["prereqs"]:
     conf = client_env.Configure(**configure_args)
     have_client_prereqs = have_server_prereqs and \
         CheckAsio(conf) and \
+        conf.CheckPKG("gobject-2.0") and \
         conf.CheckPango("cairo", require_version = "1.21.3") and \
         conf.CheckPKG("fontconfig") and \
         conf.CheckBoost("program_options", require_version="1.35.0") and \
