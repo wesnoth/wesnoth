@@ -44,6 +44,8 @@
  ### Multiplayer server
    * Fix stale temporary bans continuing to have an effect on players until cleared by
      phpBB on the next ban/unban operation.
+ ### Packaging
+   * Fix build with Pango 1.43. (issue #3840)
  ### User interface
    * Fix regression: Game Load screen would not select 1.12 savegames. (issue #3561)
    * Fix regression: the in-game "Observers" icon (an eye) was covered by the minimap. (issue #3543)
