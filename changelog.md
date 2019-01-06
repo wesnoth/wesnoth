@@ -16,6 +16,9 @@
      * Added an alternative method of completing the campaign (issue #3167).
      * S8, S9 (A Small Favor II & III): Clarify objectives. (PR #3711)
      * S8 (A Small Favor II): Fixed units created via the plague ability not available in S9. (PR #3711)
+   * Sceptre of Fire:
+     * S1&2: increased difficulty
+     * S6: additional guards for the elves
    * The Hammer of Thursagan
      * S12 'The Underlevels': redesigned with completely new map and scenario
    * Northern Rebirth:
@@ -37,6 +40,7 @@
  ### Miscellaneous and bug fixes
    * Fix crash with custom themes on desktop PCs. (issue #3599)
    * Add --campaign-skip-story command line switch for skipping directly to turn 1. (issue #3472)
+   * Remove --data option, --data-path has the same functionality.
    * Fix documentation of --render-image command line switch. (issue #3568)
    * Update manpage with options previously only documented by wesnoth --help.
    * Fix wrong ordering for BW / BF years, for example in Play a Campaign when sorted by date. (issue #3187)
@@ -45,6 +49,7 @@
    * Fix stale temporary bans continuing to have an effect on players until cleared by
      phpBB on the next ban/unban operation.
  ### Packaging
+   * Fix build with Boost 1.69. (issue #3646)
    * Fix build with Pango 1.43. (issue #3840)
  ### User interface
    * Fix regression: Game Load screen would not select 1.12 savegames. (issue #3561)
