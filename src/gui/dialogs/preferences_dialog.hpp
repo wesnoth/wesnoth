@@ -18,6 +18,7 @@
 #include "config.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
+#include "gui/widgets/text_box.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "preferences/game.hpp"
 #include "utils/make_enum.hpp"
@@ -111,6 +112,7 @@ private:
 	void on_page_select(window& window);
 	void on_tab_select(window& window);
 	void on_advanced_prefs_list_select(listbox& tree);
+	void on_filtertext_changed(text_box_base* textbox);
 
 	/** Special callback functions */
 	void handle_res_select(window& window);
@@ -118,7 +120,7 @@ private:
 	void add_hotkey_callback(listbox& hotkeys);
 	void remove_hotkey_callback(listbox& hotkeys);
 	void default_hotkey_callback(window& window);
-	void hotkey_type_filter_callback(window& window) const;
+	void hotkey_filter_callback(window& window) const;
 
 	group<preferences::LOBBY_JOINS> lobby_joins_group;
 
