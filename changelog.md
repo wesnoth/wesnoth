@@ -49,7 +49,6 @@
    * Organize API functions into several new (sub)modules: gui, wesnoth.units, wesnoth.interface
  ### User Interface
    * Don't show in the sidebar the time of day schedule of a shrouded hex. (issue #3638)
-   * Add text filter to hotkeys preferences.
  ### Packaging
    * OpenMP support has been removed. It is no longer an optional build-time dependency.
  ### Units
