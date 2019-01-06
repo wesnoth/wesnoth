@@ -16,7 +16,7 @@
 
 std::pair<std::string, std::string> parse_network_address(const std::string& address, const std::string& default_port)
 {
-	const char* address_re = "\\[([[:xdigit:]:]*)\\](:(.*))?|([^:]*)(:([[:alnum:]]*))?";
+	const char* address_re = "\\[([[:xdigit:]:]*)\\](:([[:alnum:]]*))?|([[:alnum:]-_\\.]{1,253})(:([[:alnum:]]*))?";
 
 	std::smatch m;
 	std::regex_match(address, m, std::regex(address_re));
