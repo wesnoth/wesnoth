@@ -24,6 +24,7 @@
 #include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
@@ -149,17 +150,28 @@ void campaign_selection::sort_campaigns(window& window, campaign_selection::CAMP
 	tree_view& tree = find_widget<tree_view>(&window, "campaign_tree", false);
 
 	// Remember which campaign was selected...
-	std::string was_selected = tree.selected_item()->id();
-
-	tree.clear();
-
-	for(const auto& level : levels) {
-		add_campaign_to_tree(window, level->data());
+	std::string was_selected;
+	if (!tree.empty()) {
+		was_selected = tree.selected_item()->id();
+		tree.clear();
 	}
 
-	if(!was_selected.empty()) {
+	bool exists_in_filtered_result = false;
+	for(const auto& level : levels) {
+		if (translation::ci_search(level->name(), last_search_text_)) {
+			add_campaign_to_tree(window, level->data());
+
+			if (!exists_in_filtered_result) {
+				exists_in_filtered_result = level->id() == was_selected;
+			}
+		}
+	}
+
+	if(!was_selected.empty() && exists_in_filtered_result) {
 		find_widget<tree_view_node>(&window, was_selected, false).select_node();
 	}
+
+	campaign_selected(window);
 }
 
 void campaign_selection::toggle_sorting_selection(window& window, CAMPAIGN_ORDER order)
@@ -197,8 +209,23 @@ void campaign_selection::toggle_sorting_selection(window& window, CAMPAIGN_ORDER
 	sort_campaigns(window, current_sorting_, currently_sorted_asc_);
 }
 
+void campaign_selection::filter_text_changed(text_box_base* textbox, const std::string& text)
+{
+	if (text == last_search_text_) {
+		return;
+	}
+
+	last_search_text_ = text;
+	window& window = *textbox->get_window();
+	sort_campaigns(window, current_sorting_, currently_sorted_asc_);
+}
+
 void campaign_selection::pre_show(window& window)
 {
+	text_box* filter = find_widget<text_box>(&window, "filter_box", false, true);
+	filter->set_text_changed_callback(
+			std::bind(&campaign_selection::filter_text_changed, this, _1, _2));
+
 	/***** Setup campaign tree. *****/
 	tree_view& tree = find_widget<tree_view>(&window, "campaign_tree", false);
 
