@@ -151,18 +151,36 @@ void campaign_selection::sort_campaigns(window& window, campaign_selection::CAMP
 
 	// Remember which campaign was selected...
 	std::string was_selected;
-	if (!tree.empty()) {
+	if(!tree.empty()) {
 		was_selected = tree.selected_item()->id();
 		tree.clear();
 	}
 
+	boost::dynamic_bitset<> show_items;
+	show_items.resize(levels.size(), true);
+
+	if(!last_search_words_.empty()) {
+		for(unsigned i = 0; i < levels.size(); ++i) {
+			bool found = false;
+			for(const auto& word : last_search_words_) {
+				found = translation::ci_search(levels[i]->name(), word);
+
+				if(!found) {
+					break;
+				}
+			}
+
+			show_items[i] = found;
+		}
+	}
+
 	bool exists_in_filtered_result = false;
-	for(const auto& level : levels) {
-		if (translation::ci_search(level->name(), last_search_text_)) {
-			add_campaign_to_tree(window, level->data());
+	for(unsigned i = 0; i < levels.size(); ++i) {
+		if(show_items[i]) {
+			add_campaign_to_tree(window, levels[i]->data());
 
 			if (!exists_in_filtered_result) {
-				exists_in_filtered_result = level->id() == was_selected;
+				exists_in_filtered_result = levels[i]->id() == was_selected;
 			}
 		}
 	}
@@ -211,11 +229,13 @@ void campaign_selection::toggle_sorting_selection(window& window, CAMPAIGN_ORDER
 
 void campaign_selection::filter_text_changed(text_box_base* textbox, const std::string& text)
 {
-	if (text == last_search_text_) {
+	const std::vector<std::string> words = utils::split(text, ' ');
+
+	if(words == last_search_words_) {
 		return;
 	}
 
-	last_search_text_ = text;
+	last_search_words_ = words;
 	window& window = *textbox->get_window();
 	sort_campaigns(window, current_sorting_, currently_sorted_asc_);
 }
@@ -240,7 +260,8 @@ void campaign_selection::pre_show(window& window)
 	connect_signal_notify_modified(sort_time,
 		std::bind(&campaign_selection::toggle_sorting_selection, this, std::ref(window), DATE));
 
-	window.keyboard_capture(&tree);
+	window.keyboard_capture(filter);
+	window.add_to_keyboard_chain(&tree);
 
 	/***** Setup campaign details. *****/
 	multi_page& pages = find_widget<multi_page>(&window, "campaign_details", false);
