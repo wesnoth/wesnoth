@@ -115,7 +115,7 @@ void t_string_base::walker::update()
 			end_ = string_.size();
 		}
 
-		id = string_[begin_ + 1] + string_[begin_ + 2] * 256;
+		id = static_cast<unsigned int>(string_[begin_ + 1]) + static_cast<unsigned int>(string_[begin_ + 2]) * 256;
 		if(id >= id_to_textdomain.size()) {
 			ERR_CF << "Error: invalid string: " << string_ << std::endl;
 			begin_ = string_.size();
