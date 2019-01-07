@@ -99,10 +99,10 @@ void game_stats::pre_show(window& window)
 		std::string leader_image;
 
 		if(leader) {
-			const bool fogged = viewing_team_.fogged(leader->get_location());
+			const bool visible = leader->is_visible_to_team(leader->get_location(), viewing_team_, false);
 
-			// Add leader image. If it's fogged show only a random leader image.
-			if(!fogged || known || game_config::debug) {
+			// Add leader image. If it's fogged/[hides], show only a random leader image.
+			if(visible || known || game_config::debug) {
 				leader_image = leader->absolute_image() + leader->image_mods();
 				leader_name  = leader->name();
 			} else {
