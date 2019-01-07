@@ -93,7 +93,7 @@ private:
 
 	bool currently_sorted_asc_;
 
-	std::string last_search_text_;
+	std::vector<std::string> last_search_words_;
 };
 
 } // namespace dialogs

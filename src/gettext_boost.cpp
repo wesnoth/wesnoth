@@ -536,7 +536,7 @@ bool ci_search(const std::string& s1, const std::string& s2)
 	std::string ls2 = bl::to_lower(s2, locale);
 
 	return std::search(ls1.begin(), ls1.end(),
-					   ls2.begin(), ls2.end()) != ls1.end();
+	                   ls2.begin(), ls2.end()) != ls1.end();
 }
 
 }
