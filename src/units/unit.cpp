@@ -2328,7 +2328,9 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 			description += "\n";
 		}
 
-		description += utils::format_conjunct_list("", effects_description);
+		for(const auto& desc_line : effects_description) {
+			description += desc_line + "\n";
+		}
 	}
 
 	// store trait info
