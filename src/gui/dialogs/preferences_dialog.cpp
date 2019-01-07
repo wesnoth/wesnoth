@@ -941,9 +941,7 @@ void preferences_dialog::hotkey_filter_callback(window& window) const
 
 		if(!text.empty()) {
 			for(const auto& word : utils::split(text, ' ')) {
-				found = std::search(description.begin(), description.end(), word.begin(), word.end(), chars_equal_insensitive)
-							!= description.end();
-
+				found = translation::ci_search(description, word);
 				if(!found) {
 					break;
 				}
