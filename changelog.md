@@ -73,6 +73,7 @@
    * Taking screenshots in title screen is possible again (issue #3235)
    * The "Recruit Unit" dialog is searchable by unit type name. (PR #3787)
    * Add text filter to hotkeys preferences. (PR #3759)
+   * Hide leader in status table if it's unfogged but invisible. (PR #3854)
 
 ## Version 1.14.5
  ### AI
