@@ -187,9 +187,9 @@ void campaign_selection::sort_campaigns(window& window, campaign_selection::CAMP
 
 	if(!was_selected.empty() && exists_in_filtered_result) {
 		find_widget<tree_view_node>(&window, was_selected, false).select_node();
+	} else {
+		campaign_selected(window);
 	}
-
-	campaign_selected(window);
 }
 
 void campaign_selection::toggle_sorting_selection(window& window, CAMPAIGN_ORDER order)
