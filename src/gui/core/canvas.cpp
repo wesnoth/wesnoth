@@ -1379,7 +1379,8 @@ canvas::canvas(canvas&& c)
 
 canvas::~canvas()
 {
-	SDL_DestroyRenderer(renderer_);
+	if(renderer_)
+		SDL_DestroyRenderer(renderer_);
 }
 
 void canvas::draw(const bool force)
