@@ -94,6 +94,13 @@ class StringNode:
         else:
             return "'%s'" % self.data.decode("utf8", "ignore")
 
+    def __str__(self):
+        return "StringNode({})".format(self.debug())
+
+    def __repr__(self):
+        return str(self)
+
+
 class AttributeNode:
     """
     A WML attribute. For example the "id=Elfish Archer" in:
@@ -144,6 +151,13 @@ class AttributeNode:
 
     def get_name(self):
         return self.name.decode("utf8")
+
+    def __str__(self):
+        return "AttributeNode({})".format(self.debug())
+
+    def __repr__(self):
+        return str(self)
+
 
 class TagNode:
     """
@@ -274,6 +288,13 @@ class TagNode:
     def get_name(self):
         return self.name.decode("utf8")
 
+    def __str__(self):
+        return "TagNode({})".format(self.get_name())
+
+    def __repr__(self):
+        return str(self)
+
+
 class RootNode(TagNode):
     """
     The root node. There is exactly one such node.
@@ -287,6 +308,13 @@ class RootNode(TagNode):
             for subline in sub.debug().splitlines():
                 s += subline + "\n"
         return s
+
+    def __str__(self):
+        return "RootNode()"
+
+    def __repr__(self):
+        return str(self)
+
 
 class Parser:
     def __init__(self, wesnoth_exe = None, config_dir = None,
