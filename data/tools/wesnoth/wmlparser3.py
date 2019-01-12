@@ -48,16 +48,19 @@ import atexit
 
 tempdirs_to_clean = []
 
+
 @atexit.register
 def cleaner():
     for temp_dir in tempdirs_to_clean:
         shutil.rmtree(temp_dir, ignore_errors=True)
+
 
 class WMLError(Exception):
     """
     Catch this exception to retrieve the first error message from
     the parser.
     """
+
     def __init__(self, parser=None, message=None):
         if parser:
             self.line = parser.parser_line
@@ -72,14 +75,16 @@ class WMLError(Exception):
     %s
 """ % (str(self.line), self.preprocessed, self.wml_line, self.message)
 
+
 class StringNode:
     """
     One part of an attribute's value. Because a single WML string
     can be made from multiple translatable strings we model
     it as a list of several StringNode each with its own text domain.
     """
-    def __init__(self, data : bytes):
-        self.textdomain = None # non-translatable by default
+
+    def __init__(self, data: bytes):
+        self.textdomain = None  # non-translatable by default
         self.data = data
 
     def wml(self) -> bytes:
@@ -90,7 +95,7 @@ class StringNode:
     def debug(self):
         if self.textdomain:
             return "_<%s>'%s'" % (self.textdomain,
-                self.data.decode("utf8", "ignore"))
+                                  self.data.decode("utf8", "ignore"))
         else:
             return "'%s'" % self.data.decode("utf8", "ignore")
 
@@ -108,10 +113,11 @@ class AttributeNode:
             id=Elfish Archer
         [/unit]
     """
+
     def __init__(self, name, location=None):
         self.name = name
         self.location = location
-        self.value = [] # List of StringNode
+        self.value = []  # List of StringNode
 
     def wml(self) -> bytes:
         s = self.name + b"=\""
@@ -124,7 +130,7 @@ class AttributeNode:
         return self.name.decode("utf8") + "=" + " .. ".join(
             [v.debug() for v in self.value])
 
-    def get_text(self, translation = None) -> str:
+    def get_text(self, translation=None) -> str:
         """
         Returns a text representation of the node's value. The
         translation callback, if provided, will be called on each
@@ -166,6 +172,7 @@ class TagNode:
             id=Elfish Archer
         [/unit]
     """
+
     def __init__(self, name, location=None):
         self.name = name
         self.location = location
@@ -237,11 +244,15 @@ class TagNode:
             for k, v in list(kw.items()):
                 v = v.encode("utf8")
                 if k == "tag":
-                    if not isinstance(sub, TagNode): ok = False
-                    elif v != b"" and sub.name != v: ok = False
+                    if not isinstance(sub, TagNode):
+                        ok = False
+                    elif v != b"" and sub.name != v:
+                        ok = False
                 elif k == "att":
-                    if not isinstance(sub, AttributeNode): ok = False
-                    elif v != b"" and sub.name != v: ok = False
+                    if not isinstance(sub, AttributeNode):
+                        ok = False
+                    elif v != b"" and sub.name != v:
+                        ok = False
             if ok:
                 r.append(sub)
         return r
@@ -259,17 +270,17 @@ class TagNode:
         it to gettext.translation if you have the binary message
         catalogues loaded.
         """
-        x = self.get_all(att = name)
+        x = self.get_all(att=name)
         if not x: return default
         return x[val].get_text(translation)
 
-    def get_binary(self, name, default = None):
+    def get_binary(self, name, default=None):
         """
         Returns the unmodified binary data for the first attribute
         of the given name or the passed default value if it is not
         found.
         """
-        x = self.get_all(att = name)
+        x = self.get_all(att=name)
         if not x: return default
         return x[0].get_binary()
 
@@ -299,6 +310,7 @@ class RootNode(TagNode):
     """
     The root node. There is exactly one such node.
     """
+
     def __init__(self):
         TagNode.__init__(self, None)
 
@@ -317,8 +329,8 @@ class RootNode(TagNode):
 
 
 class Parser:
-    def __init__(self, wesnoth_exe = None, config_dir = None,
-            data_dir = None):
+    def __init__(self, wesnoth_exe=None, config_dir=None,
+                 data_dir=None):
         """
         wesnoth_exe - Wesnoth executable to use. This should have been
             configured to use the desired data and config directories.
@@ -346,7 +358,7 @@ class Parser:
         self.line_in_file = 42424242
         self.chunk_start = "?"
 
-    def parse_file(self, path, defines = "") -> RootNode:
+    def parse_file(self, path, defines="") -> RootNode:
         """
         Parse the given file found under path.
         """
@@ -355,12 +367,12 @@ class Parser:
             self.preprocess(defines)
         return self.parse()
 
-    def parse_binary(self, binary : bytes, defines = "") -> RootNode:
+    def parse_binary(self, binary: bytes, defines="") -> RootNode:
         """
         Parse a chunk of binary WML.
         """
-        temp = tempfile.NamedTemporaryFile(prefix = "wmlparser_",
-            suffix=".cfg")
+        temp = tempfile.NamedTemporaryFile(prefix="wmlparser_",
+                                           suffix=".cfg")
         temp.write(binary)
         temp.flush()
         self.path = temp.name
@@ -368,7 +380,7 @@ class Parser:
             self.preprocess(defines)
         return self.parse()
 
-    def parse_text(self, text, defines = "") -> RootNode:
+    def parse_text(self, text, defines="") -> RootNode:
         """
         Parse a text string.
         """
@@ -398,21 +410,21 @@ class Parser:
         if self.verbose:
             print((" ".join(commandline)))
         p = subprocess.Popen(commandline,
-            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         out, err = p.communicate()
         if self.verbose:
             print((out + err).decode("utf8"))
-        self.preprocessed = output + "/" + os.path.basename(self.path) +\
-            ".plain"
+        self.preprocessed = output + "/" + os.path.basename(self.path) + \
+                            ".plain"
         if not os.path.exists(self.preprocessed):
             first_line = open(self.path).readline().strip()
             raise WMLError(self, "Preprocessor error:\n" +
-                " ".join(commandline) + "\n" +
-                "First line: " + first_line + "\n" +
-                out.decode("utf8") +
-                err.decode("utf8"))
+                           " ".join(commandline) + "\n" +
+                           "First line: " + first_line + "\n" +
+                           out.decode("utf8") +
+                           err.decode("utf8"))
 
-    def parse_line_without_commands_loop(self, line : str) -> str:
+    def parse_line_without_commands_loop(self, line: str) -> str:
         """
         Once the .plain commands are handled WML lines are passed to
         this.
@@ -522,7 +534,6 @@ class Parser:
                     if not segment: continue
                 self.handle_value(segment)
 
-
     def handle_tag(self, line):
         end = line.find(b"]")
         if end < 0:
@@ -534,8 +545,8 @@ class Parser:
         self.in_tag = b""
         if tag.startswith(b"/"):
             self.parent_node = self.parent_node[:-1]
-        elif tag.startswith(b"+") and self.parent_node and self.parent_node[-1].get_all(tag = tag[1:].decode()):
-            node_to_append_to = self.parent_node[-1].get_all(tag = tag[1:].decode())[-1]
+        elif tag.startswith(b"+") and self.parent_node and self.parent_node[-1].get_all(tag=tag[1:].decode()):
+            node_to_append_to = self.parent_node[-1].get_all(tag=tag[1:].decode())[-1]
             self.parent_node.append(node_to_append_to)
         else:
             node = TagNode(tag, location=(self.line_in_file, self.chunk_start))
@@ -632,7 +643,7 @@ class Parser:
         if com.startswith(b"line "):
             self.last_wml_line = com[5:]
             _ = self.last_wml_line.split(b" ")
-            self.chunk_start = [(_[i+1], int(_[i])) for i in range(0, len(_), 2)]
+            self.chunk_start = [(_[i + 1], int(_[i])) for i in range(0, len(_), 2)]
             self.line_in_file = self.chunk_start[0][1]
         elif com.startswith(b"textdomain "):
             self.textdomain = com[11:].decode("utf8")
@@ -645,6 +656,7 @@ class Parser:
     def get_text_val(self, name, default=None, translation=None):
         return self.root.get_text_val(name, default, translation)
 
+
 def jsonify(tree, verbose=False, depth=1):
     """
 Convert a Parser tree into JSON
@@ -655,30 +667,32 @@ item on its own line), otherwise, condense everything into a single line.
     import json
     def node_to_dict(n):
         d = {}
-        tags = set(x.get_name() for x in n.get_all(tag = ""))
+        tags = set(x.get_name() for x in n.get_all(tag=""))
         for tag in tags:
-            d[tag] = [node_to_dict(x) for x in n.get_all(tag = tag)]
-        for att in n.get_all(att = ""):
+            d[tag] = [node_to_dict(x) for x in n.get_all(tag=tag)]
+        for att in n.get_all(att=""):
             d[att.get_name()] = att.get_text()
         return d
 
-    print(json.dumps(node_to_dict(tree), indent = depth if verbose else None))
+    print(json.dumps(node_to_dict(tree), indent=depth if verbose else None))
+
 
 def xmlify(tree, verbose=False, depth=0):
     import xml.etree.ElementTree as ET
 
     def node_to_et(n):
         et = ET.Element(n.get_name())
-        for att in n.get_all(att = ""):
+        for att in n.get_all(att=""):
             attel = ET.Element(att.get_name())
             attel.text = att.get_text()
             et.append(attel)
-        for tag in n.get_all(tag = ""):
+        for tag in n.get_all(tag=""):
             et.append(node_to_et(tag))
         return et
 
     ET.ElementTree(node_to_et(tree.get_all()[0])).write(
-        sys.stdout, encoding = "unicode")
+        sys.stdout, encoding="unicode")
+
 
 if __name__ == "__main__":
     arg = argparse.ArgumentParser()
@@ -705,17 +719,19 @@ if __name__ == "__main__":
 
     if not args.wesnoth:
         print("Warning: Without the -w option WML is not preprocessed!",
-            file = sys.stderr)
+              file=sys.stderr)
 
     if args.test:
         print("Running tests")
         p = Parser(args.wesnoth, args.config_dir,
-            args.data_dir)
+                   args.data_dir)
         if args.keep_temp:
             p.keep_temp_dir = args.keep_temp
         if args.verbose: p.verbose = True
 
         only = None
+
+
         def test2(input, expected, note, function):
             if only and note != only: return
             input = input.strip()
@@ -735,8 +751,10 @@ if __name__ == "__main__":
             else:
                 print(("PASSED " + note))
 
+
         def test(input, expected, note):
             test2(input, expected, note, lambda p: p.root.debug())
+
 
         test(
 """
@@ -980,8 +998,10 @@ foo='bar' .. 'baz'
     if args.keep_temp:
         p.keep_temp_dir = args.keep_temp
     if args.verbose: p.verbose = True
-    if args.input: p.parse_file(args.input, args.defines)
-    elif args.text: p.parse_text(args.text, args.defines)
+    if args.input:
+        p.parse_file(args.input, args.defines)
+    elif args.text:
+        p.parse_text(args.text, args.defines)
     if args.to_json:
         jsonify(p.root, True)
         print()
