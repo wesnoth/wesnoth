@@ -528,6 +528,7 @@ std::string strftime(const std::string& format, const std::tm* time)
 
 bool ci_search(const std::string& s1, const std::string& s2)
 {
+	std::lock_guard<std::mutex> lock(get_mutex());
 	const std::locale& locale = get_manager().get_locale();
 
 	std::string ls1 = bl::to_lower(s1, locale);
