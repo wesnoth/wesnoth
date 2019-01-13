@@ -69,6 +69,18 @@ local function is_simple(cfg)
 	return true
 end
 
+-- gets map and recalllist units.
+local function get_all_units(filter)
+	local res = wesnoth.get_units(filter)
+	if (not filter.x or filter.x == "recall") and (not filter.y or filter.y == "recall") then
+		--append recall units to result.
+		for i, u in ipairs(wesnoth.get_recall_units(filter)) do
+			res[#res + 1] = u
+		end
+	end
+	return res
+end
+
 local function simple_modify_unit(cfg)
 	local filter = wml.get_child(cfg, "filter") or helper.wml_error "[modify_unit] missing required [filter] tag"
 	-- todo: investigate the follwoing attrtibutes:
@@ -139,7 +151,7 @@ local function simple_modify_unit(cfg)
 	end
 
 	local this_unit = utils.start_var_scope("this_unit")
-	for i, u in ipairs(wesnoth.get_units(filter)) do
+	for i, u in ipairs(get_all_units(filter)) do
 		wml.variables["this_unit"] = u.__cfg	
 		handle_unit(u)
 	end
